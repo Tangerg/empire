@@ -176,17 +176,25 @@ export class GameController {
         const field = this.session.moveField(unit);
         const i = idx(s.map, c.x, c.y);
 
-        // Clicking an enemy inside reach: auto-pick a firing position.
+        // Clicking an enemy picks a firing position and arms the attack; the
+        // forecast appears first, and a second click on the target confirms.
         if (clicked && areEnemies(s, clicked.owner, unit.owner) && this.isVisible(clicked)) {
           const spot = this.bestAttackSpot(unit, clicked);
           if (spot) {
             const path = this.session.pathTo(unit, spot) ?? [{ x: unit.x, y: unit.y }];
-            await this.dispatch({
-              kind: 'command',
+            const target = { x: clicked.x, y: clicked.y };
+            this.mode = {
+              kind: 'target',
               unit: unit.id,
+              dest: spot,
               path,
-              command: { ability: 'attack', target: { x: clicked.x, y: clicked.y } },
-            });
+              ability: 'attack',
+              targets: commandOptions(s, unit, spot).find((o) => o.ability === 'attack')?.targets ?? [
+                target,
+              ],
+            };
+            this.hoverTarget = target;
+            this.refresh();
             return;
           }
         }
