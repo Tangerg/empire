@@ -211,6 +211,8 @@ export interface PlayerState {
   controller: 'human' | 'ai';
   funds: number;
   alive: boolean;
+  /** Did this player control a keep at level start? Gates the captureHQ goal. */
+  startedWithHQ: boolean;
   objectives: Objective[];
   ai: { aggression: number };
 }
