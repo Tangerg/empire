@@ -1,0 +1,312 @@
+/* Map editor chrome. Shares the base tokens from app.css. */
+
+.editor-top {
+  position: relative;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.editor-top .topbar-center {
+  margin: 0 auto;
+}
+
+.name-input,
+.id-input,
+.panel input,
+.panel select,
+.panel textarea {
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #141922;
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  min-width: 0;
+}
+
+.name-input {
+  width: 168px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.id-input {
+  width: 116px;
+  color: var(--text-dim);
+}
+
+.panel input[type='color'] {
+  width: 28px;
+  height: 26px;
+  padding: 1px;
+}
+
+.panel textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+.tool-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.btn.tool {
+  padding: 6px 9px;
+  font-size: 12px;
+}
+
+.btn.tool span {
+  display: none;
+}
+
+@media (width >= 1240px) {
+  .btn.tool span {
+    display: inline;
+  }
+}
+
+.btn.active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 24%, transparent);
+  color: #fff;
+}
+
+.sep {
+  width: 1px;
+  height: 22px;
+  margin: 0 4px;
+  background: var(--line);
+}
+
+.status-toast {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-50%, 8px);
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #222b3a;
+  box-shadow: var(--shadow);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------ palette */
+
+.palette {
+  width: 226px;
+  border-right: 1px solid var(--line);
+  border-left: 0;
+}
+
+.props {
+  width: 318px;
+}
+
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.swatch,
+.unit-chip {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 4px 2px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 4%);
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.swatch svg,
+.unit-chip svg {
+  display: block;
+  border-radius: 4px;
+}
+
+.swatch:hover,
+.unit-chip:hover {
+  background: rgb(255 255 255 / 9%);
+}
+
+.swatch.active,
+.unit-chip.active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  color: #fff;
+}
+
+.unit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.owner-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.owner-chip {
+  padding: 4px 10px;
+  border: 1px solid color-mix(in srgb, var(--team) 50%, var(--line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--team) 12%, transparent);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.owner-chip.active {
+  background: color-mix(in srgb, var(--team) 42%, transparent);
+  box-shadow: 0 0 0 1px var(--team);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 0;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.check input {
+  width: 14px;
+  height: 14px;
+  accent-color: var(--accent);
+}
+
+label.stack {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+  color: var(--text-dim);
+  font-size: 11px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.row > label {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-dim);
+  font-size: 11px;
+}
+
+.row input,
+.row select {
+  flex: 1;
+  width: 100%;
+}
+
+.row > label.tiny {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+}
+
+.btn.tiny {
+  padding: 3px 6px;
+}
+
+.player-edit {
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid color-mix(in srgb, var(--team) 40%, var(--line));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--team) 7%, transparent);
+}
+
+.player-edit .row:first-child input[data-field='p.name'] {
+  flex: 1;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.chip {
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.chip.on {
+  border-color: var(--good);
+  background: color-mix(in srgb, var(--good) 18%, transparent);
+  color: #d8ffe4;
+}
+
+.hint.tiny {
+  margin: 6px 0 0;
+  font-size: 11px;
+}
+
+.hint.good {
+  color: var(--good);
+}
+
+.issue-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+}
+
+.issue-list li {
+  padding: 3px 0;
+  border-bottom: 1px dashed rgb(255 255 255 / 6%);
+  line-height: 1.4;
+}
+
+.issue-list li.error {
+  color: #ffb4a8;
+}
+
+.issue-list li.warning {
+  color: var(--accent-2);
+}
+
+.card.has-error {
+  border-color: #6d3630;
+}
+
+.editor-board {
+  cursor: crosshair;
+  box-shadow: 0 0 0 1px var(--line), var(--shadow);
+}
+
+.tile-coord {
+  fill: #fff;
+  font-size: 7px;
+  opacity: 0.45;
+}

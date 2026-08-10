@@ -93,6 +93,9 @@ export class GameController {
     document.addEventListener('keydown', this.onKey);
     this.pushMessage(`第 1 回合 · ${this.human?.name ?? ''} 开始行动`);
     this.refresh();
+
+    // A level may open on an AI player (or have no human at all).
+    if (!this.isHumanTurn && this.state.phase === 'playing') void this.runAiTurns();
   }
 
   dispose(): void {
