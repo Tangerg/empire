@@ -1,0 +1,59 @@
+const SVG_NS = 'http://www.w3.org/2000/svg';
+
+type Attrs = Record<string, string | number | boolean | null | undefined>;
+
+/** Minimal SVG element helper — the whole renderer is built on this. */
+export function svg<K extends keyof SVGElementTagNameMap>(
+  tag: K,
+  attrs: Attrs = {},
+  children: (SVGElement | string)[] = [],
+): SVGElementTagNameMap[K] {
+  const el = document.createElementNS(SVG_NS, tag);
+  setAttrs(el, attrs);
+  for (const c of children) {
+    el.append(typeof c === 'string' ? c : c);
+  }
+  return el;
+}
+
+export function setAttrs(el: Element, attrs: Attrs): void {
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v === null || v === undefined || v === false) {
+      el.removeAttribute(k);
+    } else {
+      el.setAttribute(k, String(v));
+    }
+  }
+}
+
+/** Parse an SVG markup string into elements (used by the sprite library). */
+export function fromMarkup(markup: string): SVGGElement {
+  const doc = new DOMParser().parseFromString(
+    `<svg xmlns="${SVG_NS}"><g>${markup}</g></svg>`,
+    'image/svg+xml',
+  );
+  const g = doc.documentElement.firstElementChild as SVGGElement;
+  return document.importNode(g, true);
+}
+
+export function html<K extends keyof HTMLElementTagNameMap>(
+  tag: K,
+  attrs: Record<string, string | number | boolean | null | undefined> = {},
+  children: (Node | string)[] = [],
+): HTMLElementTagNameMap[K] {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v === null || v === undefined || v === false) continue;
+    if (k === 'class') el.className = String(v);
+    else if (k === 'text') el.textContent = String(v);
+    else if (k.startsWith('data-') || k === 'title' || k === 'type' || k === 'value')
+      el.setAttribute(k, String(v));
+    else el.setAttribute(k, String(v));
+  }
+  for (const c of children) el.append(typeof c === 'string' ? c : c);
+  return el;
+}
+
+export function clear(el: Element): void {
+  while (el.firstChild) el.removeChild(el.firstChild);
+}
