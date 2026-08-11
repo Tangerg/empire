@@ -68,6 +68,7 @@ export class GameController {
   private messages: string[] = [];
   private aiRunning = false;
   private disposed = false;
+  private resizeObserver: ResizeObserver | null = null;
 
   constructor(
     level: LevelData,
@@ -115,6 +116,13 @@ export class GameController {
 
     this.root.append(this.hud.topEl, stage, this.hud.modalEl);
 
+    const fitBoard = () => this.board.fitWithin(this.scroller.clientWidth, this.scroller.clientHeight);
+    requestAnimationFrame(fitBoard);
+    if (typeof ResizeObserver !== 'undefined') {
+      this.resizeObserver = new ResizeObserver(fitBoard);
+      this.resizeObserver.observe(this.scroller);
+    }
+
     this.board.el.addEventListener(
       'wheel',
       (ev) => {
@@ -135,6 +143,7 @@ export class GameController {
 
   dispose(): void {
     this.disposed = true;
+    this.resizeObserver?.disconnect();
     document.removeEventListener('keydown', this.onKey);
   }
 

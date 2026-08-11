@@ -24,7 +24,7 @@ export const CANDIDATE_01_UNITS: readonly UnitDef[] = [
   unit({
     id: 'c01.laiya', name: '莱娅', weapons: ['c01.border-blade', 'c01.gray-oath'], value: 420,
     maxHp: 116, defense: 0.15, movement: 4, abilities: ['attack', 'capture', 'wait'],
-    defaultReaction: 'support', formations: ['formation-line', 'formation-loose'],
+    defaultReaction: 'support', formations: ['formation-defensive', 'formation-line', 'formation-loose'],
     morale: { maximum: 120, resilience: 0.35 },
     tags: ['hero', 'commander', 'infantry'], blurb: '从见习旗官开始学习让他人也能说“不”的年轻指挥官。',
   }),
@@ -53,7 +53,7 @@ export const CANDIDATE_01_UNITS: readonly UnitDef[] = [
   }),
   unit({
     id: 'c01.tasha', name: '塔莎', weapons: ['c01.engineer-hammer', 'c01.satchel-charge'], value: 400,
-    maxHp: 92, defense: 0.08, movement: 4, tags: ['hero', 'engineer', 'infantry'],
+    maxHp: 92, defense: 0.08, movement: 4, formations: ['formation-defensive', 'formation-loose'], tags: ['hero', 'engineer', 'infantry'],
     blurb: '用账目、契约和工程把理想变成可维护组织的佣兵首领。',
   }),
   unit({

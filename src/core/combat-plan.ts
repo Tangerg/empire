@@ -324,8 +324,13 @@ function applyUnitHit(
   progression: RankProgressionPolicy,
   resources: BattleResourceSystem,
   content: ContentCatalog,
-): void {
-  const target = requireUnit(state, hit.target);
+): boolean {
+  // A prior hit in the same area plan can rout a later recipient through
+  // morale shock. The immutable plan still describes the aimed area, but a
+  // unit that has already left the battlefield is no longer a legal mutation
+  // target and must not make the remaining resolution fail.
+  const target = state.units.find((unit) => unit.id === hit.target);
+  if (!target) return false;
   const result = new BattleAggregate(state, content).damageUnit(hit.target, hit.damage.damage);
   emit({
     type: hit.primary ? 'attack' : 'areaAttack',
@@ -351,6 +356,7 @@ function applyUnitHit(
   }
   if (result.killed) resolveMoraleAfterDamage(state, target, result.amount, true, result.at, emit, content);
   if (!result.killed) awardDamageTakenMomentum(target, emit, resources);
+  return result.killed;
 }
 
 function applyStructureHit(
@@ -401,11 +407,14 @@ export function executeCombatPlan(
     });
   }
 
-  for (const hit of plan.unitHits) applyUnitHit(state, attacker, hit, emit, hitEffects, progression, resources, content);
+  let unitKilled = false;
+  for (const hit of plan.unitHits) {
+    unitKilled = applyUnitHit(state, attacker, hit, emit, hitEffects, progression, resources, content) || unitKilled;
+  }
   for (const hit of plan.structureHits) applyStructureHit(state, attacker, hit, emit, progression, content);
   changeMomentum(
     attacker,
-    plan.unitHits.some((hit) => hit.killed) || plan.structureHits.some((hit) => hit.forecast.destroyed) ? 10 : 5,
+    unitKilled || plan.structureHits.some((hit) => hit.forecast.destroyed) ? 10 : 5,
     emit,
     resources,
   );

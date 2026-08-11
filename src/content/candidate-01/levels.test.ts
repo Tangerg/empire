@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { GameSession } from '../../core/session';
 import { validateLevel } from '../../core/mapio';
 import { CANDIDATE_01_LEVELS, CANDIDATE_01_ROSTER_BINDINGS } from './levels';
+import { auditBattlefield } from './battlefield-audit';
 
 describe('candidate-01 first three chapters', () => {
   it('ships sixteen ordered, structurally valid battles', () => {
@@ -36,6 +37,19 @@ describe('candidate-01 first three chapters', () => {
     const terrainSymbols = new Set(CANDIDATE_01_LEVELS.flatMap((level) => level.terrain.flatMap((row) => [...row])));
     expect(objectiveKinds.size).toBeGreaterThanOrEqual(8);
     expect([...terrainSymbols]).toEqual(expect.arrayContaining(['s', 'g', 'f', 'R', 'o']));
+  });
+
+  it('maintains production-scale battlefields instead of compact demo formations', () => {
+    const audits = CANDIDATE_01_LEVELS.map(auditBattlefield);
+    expect(audits.every((audit) => audit.width >= 20 && audit.height >= 13 && audit.cells >= 260)).toBe(true);
+    expect(audits.every((audit) => audit.playerUnits >= 6 && audit.enemyUnits >= 7)).toBe(true);
+    expect(audits.every((audit) => audit.playerSpan.width >= 4 && audit.playerSpan.height >= 5)).toBe(true);
+    expect(audits.every((audit) => audit.enemySpan.height >= 5 && audit.enemySpan.area >= 40)).toBe(true);
+    expect(audits.every((audit) => audit.occupiedSectors >= 4)).toBe(true);
+    expect(audits.filter((audit) => audit.closestContact < 2 || audit.closestContact > 12).map((audit) => ({ id: audit.id, closestContact: audit.closestContact }))).toEqual([]);
+    expect(audits.filter((audit) => audit.reinforcements > 0).length).toBeGreaterThanOrEqual(4);
+    expect(new Set(audits.map((audit) => `${audit.width}x${audit.height}`)).size).toBeGreaterThanOrEqual(10);
+    expect(CANDIDATE_01_LEVELS.every((level) => Number(level.extra?.fronts) >= 2 && typeof level.extra?.battleScale === 'string')).toBe(true);
   });
 
   it('treats story witnesses and captives as protected allies, not hidden rout targets', () => {

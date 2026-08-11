@@ -79,4 +79,25 @@ describe('combat plans and area weapons', () => {
     const plan = forecastCombatPlan(state, state.units[0], { x: 2, y: 0 }, { x: 0, y: 0 }, 'dragon_breath');
     expect(plan.unitHits.map((hit) => hit.target).sort()).toEqual([state.units[1].id, state.units[2].id]);
   });
+
+  it('skips a later area recipient that already routed from an earlier morale shock', () => {
+    const state = createState(
+      makeLevel(['...', '...', '...'], {
+        units: [u(0, 1, 'mage', 1), u(1, 1, 'soldier', 2, 1), u(1, 0, 'soldier', 2)],
+        rules: { moraleEnabled: true },
+      }),
+    );
+    const routedId = state.units[2].id;
+    state.units[2].morale.current = 1;
+
+    const events = applyAction(state, {
+      kind: 'command',
+      unit: state.units[0].id,
+      path: [{ x: 0, y: 1 }],
+      command: { ability: 'attack', weapon: 'mage_overcharge', target: { x: 1, y: 1 } },
+    });
+
+    expect(state.units.some((unit) => unit.id === routedId)).toBe(false);
+    expect(events).toContainEqual(expect.objectContaining({ type: 'unitRouted', unit: routedId }));
+  });
 });

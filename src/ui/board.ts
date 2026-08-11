@@ -155,6 +155,16 @@ export class BoardView {
     this.el.style.height = `${this.state.map.height * TILE * this.zoom}px`;
   }
 
+  /** Fits the whole tactical field into a viewport while preserving pixel scale. */
+  fitWithin(width: number, height: number, padding = 32): void {
+    const availableWidth = width - padding;
+    const availableHeight = height - padding;
+    if (availableWidth <= 0 || availableHeight <= 0) return;
+    const horizontal = availableWidth / (this.state.map.width * TILE);
+    const vertical = availableHeight / (this.state.map.height * TILE);
+    this.setZoom(Math.min(1.25, horizontal, vertical));
+  }
+
   get zoomLevel(): number {
     return this.zoom;
   }

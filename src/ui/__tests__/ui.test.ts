@@ -6,6 +6,8 @@ import { unitIcon } from '../../art/units';
 import { UnitTypes } from '../../core/data/units';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '../../content/ancient-empires/levels';
 import { GameController } from '../game';
+import { BoardView } from '../board';
+import { createState } from '../../core/state';
 
 /** jsdom has no layout, so give the board a deterministic box for hit-testing. */
 function stubLayout(svg: SVGSVGElement, width: number): void {
@@ -72,6 +74,20 @@ describe('game controller', () => {
     expect(c.root.querySelector('.topbar')!.textContent).toContain(level.name);
     expect(c.root.querySelector('.panel')!.textContent).toContain('作战目标');
     c.dispose();
+  });
+
+  it('fits a large board into the available tactical viewport', () => {
+    const level = BUILTIN_LEVELS[0];
+    const board = new BoardView(createState(level), {
+      onTileClick: () => {},
+      onTileEnter: () => {},
+      onLeave: () => {},
+      onSecondary: () => {},
+    });
+    board.fitWithin(540, 380);
+    expect(Number.parseFloat(board.el.style.width)).toBeLessThanOrEqual(508);
+    expect(Number.parseFloat(board.el.style.height)).toBeLessThanOrEqual(348);
+    expect(board.zoomLevel).toBeGreaterThanOrEqual(0.5);
   });
 
   it('selects a unit, previews the path, and shows a move range', () => {
