@@ -336,6 +336,10 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
   .register(evaluator('attack', (context) => {
     if (!context.target || !context.option.weapon) return null;
     const foe = unitAt(context.state, context.target.x, context.target.y);
+    // Scenario effects and morale resolution may change ownership between
+    // option enumeration and scoring.  Treat that option as stale instead of
+    // asking combat prediction to plan an illegal friendly-fire strike.
+    if (foe && !areEnemies(context.state, foe.owner, context.unit.owner)) return null;
     const plan = forecastCombatPlan(
       context.state,
       context.unit,

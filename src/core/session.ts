@@ -18,7 +18,7 @@ export class GameSession {
   readonly level: LevelData;
   readonly log: GameEvent[] = [];
 
-  private undoStack: GameState[] = [];
+  private undoStack: Array<{ state: GameState; logLength: number }> = [];
   private listeners = new Set<SessionListener>();
   private fieldCache = new Map<number, { field: MoveField; stamp: number }>();
   private stamp = 0;
@@ -104,7 +104,7 @@ export class GameSession {
     const undoable = action.kind !== 'endTurn' && action.kind !== 'finishDeployment';
     const { events, before } = this.engine.dispatchWithReceipt(this.state, action);
 
-    if (undoable) this.undoStack.push(before);
+    if (undoable) this.undoStack.push({ state: before, logLength: this.log.length });
     else this.undoStack = []; // no rewinding across a turn boundary
 
     this.stamp++;
@@ -128,9 +128,10 @@ export class GameSession {
   }
 
   undo(): boolean {
-    const prev = this.undoStack.pop();
-    if (!prev) return false;
-    this.state = prev;
+    const checkpoint = this.undoStack.pop();
+    if (!checkpoint) return false;
+    this.state = checkpoint.state;
+    this.log.length = checkpoint.logLength;
     this.stamp++;
     this.fieldCache.clear();
     this.notify([]);

@@ -1,18 +1,19 @@
 # 远古帝国 · 通用 SRPG 战斗引擎
 
-Ancient Empires 风格的回合制战棋，Web 技术栈实现：
+Ancient Empires 风格的回合制战棋与小型 SRPG 引擎，Web 技术栈实现：
 
 - **纯 TypeScript 规则引擎**（`src/core`），不依赖 DOM，可测试、可移到 worker / 服务端
-- **全部美术由 SVG 手绘**：11 种地形、9 个兵种精灵、9 张兵种立绘，阵营颜色实时换色
-- **地图编辑器**（`editor.html`），关卡即编辑器文档，内置 4 张关卡都可以在编辑器里打开继续改
-- 211 个测试覆盖规则、AI、空间层、士气、阵形、运输、复合目标、职业树、微内核、战役桥接、存档边界、三题材契约、关卡合法性与三个页面的运行时
+- **《断冠之誓》前三章可玩战役**：小说式演出、11 次抉择、16 场连续战斗、跨关名册/伤亡/资源与战果结算
+- **双美术管线**：通用题材支持 SVG 与阵营换色，《断冠之誓》使用已交付的像素地形、角色动作、立绘和剧情场景素材
+- **地图编辑器**（`editor.html`），关卡即编辑器文档，默认内容包中的地形与单位会自动进入调色板
+- 224 个测试覆盖规则、AI、空间层、战役原语、职业树、微内核、战役桥接、存档边界、16 关平衡包络、关卡合法性与三个页面的运行时
 
-详细设计：[通用战斗引擎架构](./docs/combat-engine-architecture.md) · [剧情战役框架](./docs/campaign-engine-architecture.md) · [经典 SRPG 战斗系统研究](./docs/combat-system-design.md)
+详细设计：[《断冠之誓》可玩战役](./docs/story-candidates/candidate-01/PLAYABLE-CAMPAIGN.md) · [通用战斗引擎架构](./docs/combat-engine-architecture.md) · [剧情战役框架](./docs/campaign-engine-architecture.md) · [经典 SRPG 战斗系统研究](./docs/combat-system-design.md)
 
 ```bash
 npm install
+npm run dev        # http://localhost:5173  主游戏与《断冠之誓》前三章
 npm run demo       # 自动打开引擎能力 Demo（推荐）
-npm run dev        # http://localhost:5173  游戏
                    # http://localhost:5173/editor.html  编辑器
                    # http://localhost:5173/demo.html  引擎能力 Demo
 npm test           # 全部测试
@@ -118,14 +119,15 @@ src/
     common/             跨题材移动、状态、结构、环境和战术原语
     ancient-empires/    当前奇幻题材的伤害、兵种、武器、地形与关卡
       levels/*.json     当前内置关卡（= 编辑器文档）
+    candidate-01/       《断冠之誓》单位/武器/地形、16 关、战役节点与剧情表现
     install-default.ts  默认内容组合函数（无副作用）
     bootstrap-default.ts 应用/测试唯一的默认安装副作用入口
   campaign/             通用章节状态机、战斗防腐层与版本化存档
   content/campaigns/    三套候选故事的七章结构契约
   application/          浏览器存储、试玩交接等应用适配器
   demo/                 微内核、实体资源与语义事件的可交互演示
-  art/                  SVG 绘制
-    palette.ts terrain.ts units.ts portraits.ts icons.ts svg.ts
+  art/                  SVG 通用绘制 + 题材像素素材运行时适配
+    candidate-01-runtime.ts  《断冠之誓》素材到内容 ID 的映射
   ui/                   游戏界面
     board.ts            SVG 棋盘 + 全部动画
     hud.ts              顶栏 / 侧栏 / 弹窗（纯展示）

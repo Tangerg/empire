@@ -20,6 +20,17 @@ import type {
 import { BoardView, emptyOverlay, type BoardOverlay } from './board';
 import { Hud, type HudView } from './hud';
 
+export interface BattleCompletionSnapshot {
+  state: GameState;
+  events: GameEvent[];
+}
+
+export interface GameControllerOptions {
+  exitLabel?: string;
+  completionLabel?: string;
+  onComplete?: (snapshot: BattleCompletionSnapshot) => void;
+}
+
 type Mode =
   | { kind: 'idle' }
   | { kind: 'unit'; unit: number }
@@ -61,6 +72,7 @@ export class GameController {
   constructor(
     level: LevelData,
     private readonly onExit: () => void,
+    private readonly options: GameControllerOptions = {},
   ) {
     this.session = new GameSession(level);
     this.root.className = 'game-root';
@@ -88,6 +100,7 @@ export class GameController {
       onRestart: () => this.restart(),
       onRecruit: (u) => void this.recruit(u),
       onExit: () => this.exit(),
+      onContinue: () => this.continueAfterBattle(),
       onZoom: (d) => {
         this.board.setZoom(this.board.zoomLevel + d);
       },
@@ -452,6 +465,16 @@ export class GameController {
     this.onExit();
   }
 
+  private continueAfterBattle(): void {
+    if (this.state.phase !== 'over' || !this.options.onComplete) return;
+    const snapshot: BattleCompletionSnapshot = {
+      state: structuredClone(this.state),
+      events: structuredClone(this.session.log),
+    };
+    this.dispose();
+    this.options.onComplete(snapshot);
+  }
+
   /* -------------------------------------------------------------- dispatching */
 
   /** Runs an action with animation: move first, then resolve, then effects. */
@@ -755,6 +778,8 @@ export class GameController {
       busy: this.busy,
       canUndo: this.session.canUndo,
       messages: this.messages,
+      exitLabel: this.options.exitLabel,
+      completionLabel: this.options.completionLabel,
     };
   }
 

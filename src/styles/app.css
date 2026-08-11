@@ -145,6 +145,74 @@ kbd {
 
 /* ------------------------------------------------------------------- layout */
 
+.campaign-feature {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  margin: 28px 0 22px;
+  border: 1px solid rgb(230 195 126 / 28%);
+  border-radius: 18px;
+  background: #17120f;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 38%), 0 16px 42px rgb(0 0 0 / 48%);
+}
+
+.campaign-feature > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+  image-rendering: pixelated;
+  filter: saturate(0.92) contrast(1.05);
+}
+
+.campaign-feature-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(17 13 10 / 95%) 0%, rgb(17 13 10 / 76%) 47%, rgb(17 13 10 / 12%) 82%), linear-gradient(0deg, rgb(12 9 7 / 52%), transparent 58%);
+}
+
+.campaign-feature-copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: min(610px, 70%);
+  min-height: 320px;
+  padding: clamp(28px, 5vw, 54px);
+}
+
+.campaign-feature-copy > span {
+  color: var(--accent-2);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.campaign-feature-copy h2 {
+  margin: 7px 0 9px;
+  font-family: 'Songti SC', 'STSong', serif;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1;
+}
+
+.campaign-feature-copy p {
+  max-width: 540px;
+  margin: 0;
+  color: #d0c0a8;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.campaign-feature-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
 .game-root,
 .editor-root {
   display: flex;

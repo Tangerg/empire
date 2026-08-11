@@ -1,0 +1,685 @@
+.campaign-root {
+  --campaign-ink: #20140f;
+  --campaign-paper: #ead6ad;
+  --campaign-paper-deep: #c9a66e;
+  --campaign-blue: #4d86b8;
+  --campaign-gold: #d7aa50;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  color: #f6ead2;
+  background:
+    radial-gradient(circle at 50% -20%, rgb(100 120 102 / 34%), transparent 42%),
+    linear-gradient(145deg, #1c1713, #0e0c0b 72%);
+  font-variant-numeric: tabular-nums;
+}
+
+.campaign-topbar {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: grid;
+  grid-template-columns: 48px minmax(180px, 1fr) minmax(140px, 280px);
+  align-items: center;
+  gap: 12px;
+  min-height: 66px;
+  padding: 8px 20px;
+  border-bottom: 1px solid rgb(232 197 129 / 22%);
+  background: rgb(24 18 14 / 92%);
+  box-shadow: 0 5px 18px rgb(0 0 0 / 34%);
+  backdrop-filter: blur(14px);
+}
+
+.campaign-topbar > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.campaign-topbar span {
+  color: #bba88b;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.campaign-topbar strong {
+  font-family: 'Songti SC', 'STSong', serif;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+}
+
+.campaign-icon-button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(232 197 129 / 18%);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 4%);
+  color: #ead8b8;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 25%), 0 3px 8px rgb(0 0 0 / 22%);
+  font: 28px/1 Georgia, serif;
+  cursor: pointer;
+  transition: background 140ms ease, transform 90ms ease, border-color 140ms ease;
+}
+
+.campaign-icon-button:hover {
+  border-color: rgb(232 197 129 / 42%);
+  background: rgb(255 255 255 / 8%);
+}
+
+.campaign-icon-button:active,
+.campaign-primary:active,
+.choice-option:active {
+  transform: scale(0.96);
+}
+
+.campaign-progress {
+  position: relative;
+  height: 30px;
+  overflow: hidden;
+  border: 1px solid rgb(232 197 129 / 16%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 5%);
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 38%);
+}
+
+.campaign-progress i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(var(--progress) * 100%);
+  background: linear-gradient(90deg, #355f82, var(--campaign-blue));
+  box-shadow: 2px 0 9px rgb(78 140 186 / 48%);
+  transition: width 320ms ease;
+}
+
+.campaign-progress b {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff4dc;
+  font-size: 12px;
+  text-shadow: 0 1px 3px #000;
+}
+
+.campaign-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 46px;
+  padding: 10px 20px;
+  border: 1px solid #7fa5c3;
+  border-radius: 10px;
+  background: linear-gradient(#5b91ba, #3f7097);
+  color: #fff8e9;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 32%), 0 5px 13px rgb(0 0 0 / 34%), inset 0 1px rgb(255 255 255 / 20%);
+  font: 600 14px/1 inherit;
+  cursor: pointer;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 48%);
+  transition: filter 140ms ease, transform 90ms ease, box-shadow 140ms ease;
+}
+
+.campaign-primary:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 35%), 0 7px 18px rgb(0 0 0 / 40%), inset 0 1px rgb(255 255 255 / 24%);
+}
+
+.campaign-eyebrow {
+  color: #e2bb69;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Story presentation */
+
+.story-screen {
+  position: relative;
+  display: grid;
+  min-height: calc(100vh - 66px);
+  place-items: end center;
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 68px);
+}
+
+.story-backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.story-backdrop::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background:
+    linear-gradient(180deg, rgb(8 7 6 / 8%) 0%, rgb(8 7 6 / 46%) 52%, rgb(8 7 6 / 88%) 100%),
+    radial-gradient(circle at 50% 30%, transparent 20%, rgb(9 7 5 / 30%) 100%);
+}
+
+.story-backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  filter: saturate(0.9) contrast(1.04);
+}
+
+.story-card {
+  position: relative;
+  width: min(1050px, 100%);
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid rgb(236 205 145 / 28%);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgb(40 30 23 / 96%), rgb(22 17 14 / 97%)),
+    repeating-linear-gradient(90deg, transparent 0 19px, rgb(255 255 255 / 2%) 19px 20px);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 36%), 0 18px 55px rgb(0 0 0 / 56%), inset 0 1px rgb(255 255 255 / 6%);
+  animation: campaign-card-in 300ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
+}
+
+.story-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  color: #d6ba89;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.story-card h1,
+.choice-card h1,
+.staging-hero h1,
+.result-card h1 {
+  margin: 8px 0;
+  font-family: 'Songti SC', 'STSong', 'Noto Serif CJK SC', serif;
+  font-weight: 700;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.story-card h1 {
+  font-size: clamp(28px, 4vw, 48px);
+}
+
+.story-summary {
+  max-width: 760px;
+  margin: 0 0 16px;
+  color: #c9bba6;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.mission-brief {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 1px;
+  overflow: hidden;
+  margin: 17px 0;
+  border: 1px solid rgb(213 177 106 / 20%);
+  border-radius: 12px;
+  background: rgb(0 0 0 / 28%);
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 38%);
+}
+
+.mission-brief > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 76px;
+  padding: 12px 14px;
+  background: rgb(255 255 255 / 3%);
+}
+
+.mission-brief small,
+.result-detail small {
+  color: #d7aa50;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.mission-brief span,
+.mission-brief b {
+  color: #dbcdb8;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.dialogue-row {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  align-items: end;
+  gap: 18px;
+  min-height: 110px;
+  margin-top: 14px;
+  animation: campaign-dialogue-in 220ms ease-out both;
+}
+
+.dialogue-row.narration {
+  grid-template-columns: 1fr;
+}
+
+.dialogue-portrait {
+  width: 92px;
+  height: 112px;
+  object-fit: cover;
+  object-position: 50% 18%;
+  border: 1px solid rgb(225 192 126 / 30%);
+  border-radius: 12px;
+  background: #18130f;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 45%), 0 7px 18px rgb(0 0 0 / 44%);
+  image-rendering: pixelated;
+}
+
+.dialogue-copy {
+  min-height: 100px;
+  padding: 17px 20px;
+  border: 1px solid rgb(239 207 150 / 19%);
+  border-radius: 14px;
+  background: rgb(8 7 6 / 45%);
+  box-shadow: inset 0 1px rgb(255 255 255 / 3%);
+}
+
+.dialogue-copy small {
+  color: #e7bd68;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.dialogue-copy p {
+  margin: 7px 0 0;
+  color: #f4e8d2;
+  font-family: 'Songti SC', 'STSong', serif;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.68;
+  text-wrap: pretty;
+}
+
+.story-actions,
+.staging-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.beat-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.beat-dots i {
+  width: 22px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 15%);
+  transition: background 160ms ease;
+}
+
+.beat-dots i.active {
+  background: var(--campaign-gold);
+}
+
+/* Choices */
+
+.choice-screen,
+.result-screen {
+  display: grid;
+  min-height: calc(100vh - 66px);
+  place-items: center;
+  padding: clamp(24px, 6vw, 72px);
+  background:
+    linear-gradient(rgb(16 13 11 / 92%), rgb(16 13 11 / 96%)),
+    radial-gradient(circle at 25% 20%, #405245, transparent 36%);
+}
+
+.choice-card,
+.result-card {
+  width: min(980px, 100%);
+  padding: clamp(26px, 5vw, 52px);
+  border: 1px solid rgb(218 182 112 / 22%);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #2c211a, #1b1511);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 36%), 0 20px 60px rgb(0 0 0 / 48%), inset 0 1px rgb(255 255 255 / 5%);
+  animation: campaign-card-in 300ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
+}
+
+.choice-card h1,
+.result-card h1 {
+  max-width: 760px;
+  font-size: clamp(28px, 4vw, 44px);
+}
+
+.choice-card > p,
+.result-card > p {
+  max-width: 760px;
+  color: #c7b8a3;
+  line-height: 1.7;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.choice-option {
+  position: relative;
+  min-height: 190px;
+  padding: 22px;
+  border: 1px solid rgb(224 190 124 / 19%);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgb(255 255 255 / 6%), rgb(255 255 255 / 2%));
+  color: #eee1cb;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 24%), 0 8px 20px rgb(0 0 0 / 24%);
+  text-align: left;
+  cursor: pointer;
+  animation: campaign-option-in 260ms calc(var(--index) * 65ms) ease-out both;
+  transition: border-color 150ms ease, background 150ms ease, transform 90ms ease, box-shadow 150ms ease;
+}
+
+.choice-option:hover {
+  border-color: rgb(225 188 115 / 58%);
+  background: linear-gradient(145deg, rgb(91 134 165 / 18%), rgb(255 255 255 / 4%));
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 24%), 0 12px 26px rgb(0 0 0 / 30%);
+}
+
+.choice-number {
+  color: #806c51;
+  font: 700 11px/1.3 ui-monospace, monospace;
+}
+
+.choice-option strong {
+  display: block;
+  margin-top: 7px;
+  font-family: 'Songti SC', 'STSong', serif;
+  font-size: 22px;
+}
+
+.choice-option p {
+  margin: 9px 0 15px;
+  color: #c7b9a5;
+  line-height: 1.55;
+}
+
+.choice-option small {
+  color: #d8ad5c;
+}
+
+.choice-note {
+  margin: 18px 0 0;
+  font-size: 12px;
+}
+
+/* Staging and result */
+
+.staging-screen {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 36px 0 52px;
+}
+
+.staging-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.92fr) 1fr;
+  min-height: 245px;
+  overflow: hidden;
+  border: 1px solid rgb(228 193 126 / 23%);
+  border-radius: 18px;
+  background: #251c16;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 33%), 0 14px 36px rgb(0 0 0 / 40%);
+}
+
+.staging-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-right: 1px solid rgb(228 193 126 / 20%);
+  image-rendering: pixelated;
+}
+
+.staging-hero > div {
+  align-self: center;
+  padding: 34px;
+}
+
+.staging-hero h1 {
+  font-size: clamp(30px, 4vw, 48px);
+}
+
+.staging-hero p {
+  color: #c8b8a1;
+  line-height: 1.65;
+}
+
+.staging-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.campaign-panel {
+  padding: 22px;
+  border: 1px solid rgb(225 190 123 / 17%);
+  border-radius: 14px;
+  background: rgb(44 33 26 / 82%);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 25%), 0 8px 20px rgb(0 0 0 / 23%);
+}
+
+.campaign-panel h2 {
+  margin: 0 0 14px;
+  font: 700 16px/1.2 'Songti SC', 'STSong', serif;
+}
+
+.roster-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.campaign-unit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid rgb(255 255 255 / 6%);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 3%);
+}
+
+.campaign-unit img,
+.unit-fallback {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(220 185 118 / 20%);
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: 50% 18%;
+  background: #1a1511;
+  image-rendering: pixelated;
+}
+
+.unit-fallback {
+  display: grid;
+  place-items: center;
+  color: #d5a950;
+}
+
+.campaign-unit div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.campaign-unit b {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.campaign-unit small {
+  color: #ad9e89;
+}
+
+.resource-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto;
+  gap: 8px 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgb(0 0 0 / 20%);
+}
+
+.resource-row span {
+  color: #ae9f8a;
+}
+
+.resource-row b {
+  color: #e2b961;
+}
+
+.relation-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.relation-list > div {
+  display: grid;
+  grid-template-columns: 84px 1fr 30px;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.relation-list i {
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #7d4b43 0 50%, #477e6c 50% 100%);
+}
+
+.relation-list i::after {
+  display: block;
+  width: calc(var(--relation) * 100%);
+  height: 100%;
+  background: #e1b45e;
+  content: '';
+}
+
+.staging-actions {
+  margin-top: 20px;
+}
+
+.staging-actions > span {
+  color: #a99a86;
+  font-size: 12px;
+}
+
+.result-card {
+  text-align: center;
+}
+
+.result-card > p {
+  margin-inline: auto;
+}
+
+.result-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+  margin: 28px 0 18px;
+  border: 1px solid rgb(226 190 121 / 18%);
+  border-radius: 14px;
+  background: rgb(0 0 0 / 20%);
+}
+
+.result-metrics > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 18px 12px;
+  border-right: 1px solid rgb(255 255 255 / 7%);
+}
+
+.result-metrics > div:last-child {
+  border-right: 0;
+}
+
+.result-metrics b {
+  color: #e2b961;
+  font-size: 28px;
+}
+
+.result-metrics span {
+  color: #a99a86;
+  font-size: 11px;
+}
+
+.result-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.result-detail > div {
+  padding: 14px;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 3%);
+}
+
+.result-detail p {
+  margin: 5px 0 0;
+  color: #d4c6b2;
+}
+
+@keyframes campaign-card-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.992); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes campaign-dialogue-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes campaign-option-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 760px) {
+  .campaign-topbar { grid-template-columns: 44px 1fr; padding-inline: 10px; }
+  .campaign-progress { display: none; }
+  .story-screen { padding: 16px; }
+  .story-card { border-radius: 14px; }
+  .mission-brief, .choice-grid, .staging-grid, .staging-hero, .result-detail { grid-template-columns: 1fr; }
+  .dialogue-row { grid-template-columns: 64px 1fr; gap: 10px; }
+  .dialogue-portrait { width: 64px; height: 88px; }
+  .story-actions, .staging-actions { align-items: stretch; flex-direction: column; }
+  .campaign-primary { width: 100%; }
+  .staging-screen { width: min(100% - 24px, 1120px); padding-top: 18px; }
+  .staging-hero img { max-height: 220px; border-right: 0; border-bottom: 1px solid rgb(228 193 126 / 20%); }
+  .roster-list { grid-template-columns: 1fr; }
+  .result-metrics { grid-template-columns: repeat(2, 1fr); }
+  .result-metrics > div:nth-child(2) { border-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-card, .dialogue-row, .choice-option, .choice-card, .result-card { animation: none; }
+  .campaign-progress i, .campaign-icon-button, .campaign-primary, .choice-option { transition-duration: 0.01ms; }
+}

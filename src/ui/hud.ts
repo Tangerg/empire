@@ -51,6 +51,9 @@ export interface HudView {
   busy: boolean;
   canUndo: boolean;
   messages: string[];
+  /** Application-owned labels keep campaign/navigation wording out of battle rules. */
+  exitLabel?: string;
+  completionLabel?: string;
 }
 
 export interface HudHandlers {
@@ -65,6 +68,7 @@ export interface HudHandlers {
   onRestart(): void;
   onRecruit(unit: string): void;
   onExit(): void;
+  onContinue(): void;
   onZoom(delta: number): void;
 }
 
@@ -198,6 +202,9 @@ export class Hud {
           case 'exit':
             this.handlers.onExit();
             break;
+          case 'continue':
+            this.handlers.onContinue();
+            break;
           case 'zoom':
             this.handlers.onZoom(Number(arg));
             break;
@@ -232,7 +239,7 @@ export class Hud {
     const turnLimit = s.rules.turnLimit ? ` / ${s.rules.turnLimit}` : '';
     return `
       <div class="topbar-left">
-        <button class="btn ghost" data-act="exit" title="返回关卡列表">${icon('grid')}</button>
+        <button class="btn ghost" data-act="exit" title="${escapeHtml(v.exitLabel ?? '返回关卡列表')}">${icon('grid')}</button>
         <div class="level-name">${escapeHtml(s.levelName)}</div>
         <div class="turn-chip">第 <b>${s.turn}</b>${turnLimit} 回合</div>
       </div>
@@ -496,7 +503,7 @@ export class Hud {
           .filter((objective) => !me.objectiveStates[objective.id!]?.hidden)
           .map(
             (o) =>
-              `<li>${icon('flag')}<span>${escapeHtml(describeObjective(o))}</span><em>${escapeHtml(
+              `<li>${icon('flag')}<span>${escapeHtml(o.label ?? describeObjective(o))}</span><em>${escapeHtml(
                 objectiveProgress(s, me.id, o),
               )}</em></li>`,
           )
@@ -571,13 +578,17 @@ export class Hud {
     if (s.phase !== 'over') return '';
     const me = s.players.find((p) => p.controller === 'human');
     const won = me ? s.winnerTeam === me.team : false;
+    const continueButton = won && v.completionLabel
+      ? `<button class="btn primary" data-act="continue">${icon('flag')} ${escapeHtml(v.completionLabel)}</button>`
+      : '';
     return `<div class="modal">
       <div class="modal-box narrow ${won ? 'win' : 'lose'}">
         <h2>${s.winnerTeam === null ? '平局' : won ? '胜利' : '战败'}</h2>
         <p>${escapeHtml(s.endReason)}</p>
         <div class="modal-actions">
-          <button class="btn primary" data-act="restart">${icon('play')} 再来一次</button>
-          <button class="btn" data-act="exit">${icon('grid')} 关卡列表</button>
+          ${continueButton}
+          <button class="btn ${continueButton ? '' : 'primary'}" data-act="restart">${icon('play')} 再来一次</button>
+          <button class="btn" data-act="exit">${icon('grid')} ${escapeHtml(v.exitLabel ?? '关卡列表')}</button>
         </div>
       </div>
     </div>`;

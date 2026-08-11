@@ -3,6 +3,8 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { TILE } from '../../art/terrain';
 import { mapFromLevel, normaliseLevel, validateLevel } from '../../core/mapio';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '../../content/ancient-empires/levels';
+import { Terrains } from '../../core/data/terrain';
+import { UnitTypes } from '../../core/data/units';
 import { EditorApp } from '../app';
 
 function stubLayout(svg: SVGSVGElement, width: number, height: number): void {
@@ -51,8 +53,10 @@ describe('map editor', () => {
   });
 
   it('renders the palette, the board and the validation panel', () => {
-    expect(host.querySelectorAll('.swatch').length).toBe(11);
-    expect(host.querySelectorAll('.unit-chip').length).toBe(9);
+    expect(host.querySelectorAll('.swatch').length).toBe(Terrains.all().length);
+    expect(host.querySelectorAll('.unit-chip').length).toBe(UnitTypes.all().length);
+    expect(host.querySelector('.swatch[data-arg="c01.scorched"]')).toBeTruthy();
+    expect(host.querySelector('.unit-chip[data-arg="c01.laiya"]')).toBeTruthy();
     expect(board.querySelectorAll('.layer-terrain g[data-tile]').length).toBe(
       BUILTIN_LEVELS[0].width * BUILTIN_LEVELS[0].height,
     );

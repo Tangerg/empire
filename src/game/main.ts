@@ -1,6 +1,7 @@
 import '../content/bootstrap-default';
 import '../styles/app.css';
 import { deleteCustomLevel, loadCustomLevels, takePlaytest } from '../application/level-storage';
+import { deleteCampaignState, loadCampaignState } from '../application/campaign-storage';
 import { icon } from '../art/icons';
 import { portraitSvg } from '../art/portraits';
 import { TILE, terrainLayerMarkup } from '../art/terrain';
@@ -10,6 +11,11 @@ import { weaponDef } from '../core/data/weapons';
 import { mapFromLevel } from '../core/mapio';
 import type { LevelData } from '../core/types';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '../content/ancient-empires/levels';
+import {
+  CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN,
+  CANDIDATE_01_MENU_ART,
+} from '../content/candidate-01';
+import { Candidate01CampaignController } from '../ui/campaign-game';
 import { GameController } from '../ui/game';
 import { escapeHtml } from '../ui/html';
 
@@ -17,7 +23,7 @@ const recruitCost = (unit: ReturnType<typeof UnitTypes.all>[number]) =>
   unit.recruitCosts.map((cost) => `${cost.resource} ${cost.amount}`).join(' · ') || '不可招募';
 
 const app = document.getElementById('app')!;
-let active: GameController | null = null;
+let active: GameController | Candidate01CampaignController | null = null;
 
 /** Static minimap for a level card. */
 function thumbnail(level: LevelData): string {
@@ -92,11 +98,26 @@ function renderMenu(): void {
   active = null;
 
   const custom = loadCustomLevels();
+  const campaignSave = loadCampaignState(CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN);
+  const campaignBattles = campaignSave?.battleHistory.length ?? 0;
   const screen = document.createElement('div');
   screen.style.height = '100%';
   screen.innerHTML = `<div class="menu"><div class="menu-inner">
     <h1>远古帝国 · 战术复刻</h1>
-    <p class="tagline">回合制战棋 · 确定性战斗预测 · 手绘像素风 SVG 素材</p>
+    <p class="tagline">剧情战役型 SRPG · 确定性战斗预测 · 像素西幻素材</p>
+    <section class="campaign-feature">
+      <img src="${CANDIDATE_01_MENU_ART}" alt="灰旗立在烧毁的边境村庄"/>
+      <div class="campaign-feature-shade"></div>
+      <div class="campaign-feature-copy">
+        <span>完整战役 · 前三章现已可玩</span>
+        <h2>断冠之誓</h2>
+        <p>从十八岁的边境见习旗官开始，经历灰旗流亡与诸族远征。16 场连续战斗，选择、关系、补给与伤亡跨关保留。</p>
+        <div class="campaign-feature-actions">
+          ${campaignSave ? `<button class="btn primary" data-act="campaignContinue">${icon('flag')} 继续战役 · ${campaignBattles}/16</button>` : ''}
+          <button class="btn ${campaignSave ? '' : 'primary'}" data-act="campaignNew">${icon('play')} ${campaignSave ? '重新开始' : '开始战役'}</button>
+        </div>
+      </div>
+    </section>
     <div class="menu-actions">
       <a class="btn primary" href="./editor.html">${icon('grid')} 打开地图编辑器</a>
       <a class="btn" href="./demo.html">${icon('crosshair')} 引擎能力 Demo</a>
@@ -141,11 +162,27 @@ function renderMenu(): void {
       case 'codex':
         modal.innerHTML = codexMarkup();
         break;
+      case 'campaignContinue':
+        startCampaign(campaignSave);
+        break;
+      case 'campaignNew':
+        if (!campaignSave || confirm('重新开始会覆盖当前《断冠之誓》战役进度。继续吗？')) {
+          deleteCampaignState(CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN);
+          startCampaign(null);
+        }
+        break;
       case 'closeCodex':
         modal.innerHTML = '';
         break;
     }
   });
+}
+
+function startCampaign(state: ReturnType<typeof loadCampaignState>): void {
+  active?.dispose();
+  const controller = new Candidate01CampaignController(state, () => renderMenu());
+  active = controller;
+  app.replaceChildren(controller.root);
 }
 
 function findLevel(id: string): LevelData | null {

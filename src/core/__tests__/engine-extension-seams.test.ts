@@ -108,6 +108,25 @@ describe('balanced engine extension seams', () => {
     expect(session.canUndo).toBe(false);
   });
 
+  it('rolls the semantic event log back with an undone action', () => {
+    const abilities = Abilities.clone();
+    abilities.define(pulse);
+    const session = new GameSession(duel(), createBattleEngine({ abilities }));
+    const actor = session.state.units[0];
+    actor.learnedAbilities.push(pulse.id);
+    session.dispatch({
+      kind: 'command',
+      unit: actor.id,
+      path: [{ x: actor.x, y: actor.y }],
+      command: { ability: pulse.id },
+    });
+    expect(session.log.length).toBeGreaterThan(0);
+
+    expect(session.undo()).toBe(true);
+    expect(session.log).toEqual([]);
+    expect(session.state.scenario.variables.pulses).toBeUndefined();
+  });
+
   it('keeps direct BattleEngine dispatch transactional without a session shell', () => {
     const handlers = CoreActionHandlers.clone().replace(new FailingEndTurn());
     const engine = createBattleEngine({ actionHandlers: handlers as ActionHandlerRegistry });
