@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { idx } from '../grid';
+import { MovementProfiles } from '../data/movement';
+import { Terrains } from '../data/terrain';
 import { computeMoveField, pathTo, threatTiles } from '../movement';
 import { createState } from '../state';
 import { makeLevel, u } from './fixtures';
@@ -7,6 +9,15 @@ import { makeLevel, u } from './fixtures';
 const at = (map: { width: number }, x: number, y: number) => idx(map, x, y);
 
 describe('movement field', () => {
+  it('exposes extensible naval and amphibious profiles without changing core unions', () => {
+    expect(MovementProfiles.has('naval')).toBe(true);
+    expect(MovementProfiles.has('amphibious')).toBe(true);
+    expect(Terrains.get('water').cost.naval).toBe(1);
+    expect(Terrains.get('water').cost.amphibious).toBe(1);
+    expect(Terrains.get('plain').cost.naval).toBeNull();
+    expect(Terrains.get('plain').cost.amphibious).toBe(1);
+  });
+
   it('spends the listed terrain cost and stops at the budget', () => {
     // soldier: 3 movement, foot. forest costs 2, plain 1.
     const s = createState(makeLevel(['.....', '.TTT.', '.....'], { units: [u(0, 0, 'soldier', 1)] }));

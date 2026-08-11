@@ -4,7 +4,7 @@ import { TILE } from '../../art/terrain';
 import { portraitSvg } from '../../art/portraits';
 import { unitIcon } from '../../art/units';
 import { UnitTypes } from '../../core/data/units';
-import { BUILTIN_LEVELS } from '../../levels';
+import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '../../content/ancient-empires/levels';
 import { GameController } from '../game';
 
 /** jsdom has no layout, so give the board a deterministic box for hit-testing. */

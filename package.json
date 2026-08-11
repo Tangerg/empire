@@ -6,11 +6,13 @@
   "description": "Ancient Empires style turn-based tactics — headless TS core + SVG renderer + map editor",
   "scripts": {
     "dev": "vite",
+    "demo": "vite --host 127.0.0.1 --open /demo.html",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "bench:core": "vitest bench --run src/core/__bench__/engine.bench.ts"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",

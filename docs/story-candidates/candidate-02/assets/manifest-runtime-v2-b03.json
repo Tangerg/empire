@@ -1,0 +1,811 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-02",
+  "campaignTitle": "群星熄灭之前",
+  "batchId": "b03",
+  "qualityTier": "runtime-v2-candidate",
+  "runtimeReady": false,
+  "generatedAt": "2026-08-12",
+  "topicLock": "runtime-v2/batch-03/TOPIC-LOCK.json",
+  "assetCount": 28,
+  "coverage": {
+    "combat-unit": 28
+  },
+  "cumulativeCoverage": {
+    "combat-unit": 40,
+    "target": 40
+  },
+  "notes": [
+    "Final combat-unit closeout batch; primary 4 and batch-02 8 remain untouched.",
+    "Large vehicles, paired squads and beast/walker units use wider declared runtime frames with footprint and zOrder.",
+    "runtimeReady remains false pending in-engine screenshots and collision/pivot validation."
+  ],
+  "assets": [
+    {
+      "id": "c02-v2-b03-unit-tide-priest",
+      "topicId": "c02-unit-tide-priest",
+      "contentId": "stars.unit.tide-priest",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-tide-priest.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-tide-priest.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-a-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-memory-monk",
+      "topicId": "c02-unit-memory-monk",
+      "contentId": "stars.unit.memory-monk",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-memory-monk.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-memory-monk.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-a-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-field-medic",
+      "topicId": "c02-unit-field-medic",
+      "contentId": "stars.unit.field-medic",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-field-medic.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-field-medic.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-a-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-protocol-analyst",
+      "topicId": "c02-unit-protocol-analyst",
+      "contentId": "stars.unit.protocol-analyst",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-protocol-analyst.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-protocol-analyst.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-a-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-turret-vehicle",
+      "topicId": "c02-unit-turret-vehicle",
+      "contentId": "stars.unit.turret-vehicle",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-turret-vehicle.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-turret-vehicle.svg",
+      "width": 384,
+      "height": 64,
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        48,
+        63
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-b-master.png",
+      "footprint": [
+        3,
+        2
+      ],
+      "zOrder": 2
+    },
+    {
+      "id": "c02-v2-b03-unit-light-mech",
+      "topicId": "c02-unit-light-mech",
+      "contentId": "stars.unit.light-mech",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-light-mech.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-light-mech.svg",
+      "width": 256,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        32,
+        63
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-b-master.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "zOrder": 2
+    },
+    {
+      "id": "c02-v2-b03-unit-antler-knight",
+      "topicId": "c02-unit-antler-knight",
+      "contentId": "stars.unit.antler-knight",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-antler-knight.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-antler-knight.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-b-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-forest-beast-handler",
+      "topicId": "c02-unit-forest-beast-handler",
+      "contentId": "stars.unit.forest-beast-handler",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-forest-beast-handler.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-forest-beast-handler.svg",
+      "width": 256,
+      "height": 48,
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        32,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-b-master.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "zOrder": 1
+    },
+    {
+      "id": "c02-v2-b03-unit-eco-maintainer",
+      "topicId": "c02-unit-eco-maintainer",
+      "contentId": "stars.unit.eco-maintainer",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-eco-maintainer.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-eco-maintainer.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-c-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-boarding-team",
+      "topicId": "c02-unit-boarding-team",
+      "contentId": "stars.unit.boarding-team",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-boarding-team.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-boarding-team.svg",
+      "width": 256,
+      "height": 48,
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        32,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-c-master.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "zOrder": 1
+    },
+    {
+      "id": "c02-v2-b03-unit-vacuum-trooper",
+      "topicId": "c02-unit-vacuum-trooper",
+      "contentId": "stars.unit.vacuum-trooper",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-vacuum-trooper.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-vacuum-trooper.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-c-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-stargate-guard",
+      "topicId": "c02-unit-stargate-guard",
+      "contentId": "stars.unit.stargate-guard",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-stargate-guard.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-stargate-guard.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-c-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-rain-tower-engineer",
+      "topicId": "c02-unit-rain-tower-engineer",
+      "contentId": "stars.unit.rain-tower-engineer",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-rain-tower-engineer.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-rain-tower-engineer.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-d-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-wind-sail-skirmisher",
+      "topicId": "c02-unit-wind-sail-skirmisher",
+      "contentId": "stars.unit.wind-sail-skirmisher",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-wind-sail-skirmisher.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-wind-sail-skirmisher.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-d-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-heat-lamp-shield",
+      "topicId": "c02-unit-heat-lamp-shield",
+      "contentId": "stars.unit.heat-lamp-shield",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-heat-lamp-shield.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-heat-lamp-shield.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-d-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-ice-hook-hunter",
+      "topicId": "c02-unit-ice-hook-hunter",
+      "contentId": "stars.unit.ice-hook-hunter",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-ice-hook-hunter.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-ice-hook-hunter.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-d-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-floating-city-guard",
+      "topicId": "c02-unit-floating-city-guard",
+      "contentId": "stars.unit.floating-city-guard",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-floating-city-guard.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-floating-city-guard.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-e-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-tide-anchor-engineer",
+      "topicId": "c02-unit-tide-anchor-engineer",
+      "contentId": "stars.unit.tide-anchor-engineer",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-tide-anchor-engineer.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-tide-anchor-engineer.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-e-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-fungus-bed-medic",
+      "topicId": "c02-unit-fungus-bed-medic",
+      "contentId": "stars.unit.fungus-bed-medic",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-fungus-bed-medic.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-fungus-bed-medic.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-e-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-defoliator-pilot",
+      "topicId": "c02-unit-defoliator-pilot",
+      "contentId": "stars.unit.defoliator-pilot",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-defoliator-pilot.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-defoliator-pilot.svg",
+      "width": 256,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        32,
+        63
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-e-master.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "zOrder": 2
+    },
+    {
+      "id": "c02-v2-b03-unit-ring-rail-guard",
+      "topicId": "c02-unit-ring-rail-guard",
+      "contentId": "stars.unit.ring-rail-guard",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-ring-rail-guard.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-ring-rail-guard.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-f-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-gravity-rescuer",
+      "topicId": "c02-unit-gravity-rescuer",
+      "contentId": "stars.unit.gravity-rescuer",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-gravity-rescuer.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-gravity-rescuer.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-f-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-physical-archive-keeper",
+      "topicId": "c02-unit-physical-archive-keeper",
+      "contentId": "stars.unit.physical-archive-keeper",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-physical-archive-keeper.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-physical-archive-keeper.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-f-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-echo-tracker",
+      "topicId": "c02-unit-echo-tracker",
+      "contentId": "stars.unit.echo-tracker",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-echo-tracker.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-echo-tracker.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-f-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-reset-guard",
+      "topicId": "c02-unit-reset-guard",
+      "contentId": "stars.unit.reset-guard",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-reset-guard.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-reset-guard.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-g-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-protocol-adjudicator",
+      "topicId": "c02-unit-protocol-adjudicator",
+      "contentId": "stars.unit.protocol-adjudicator",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-protocol-adjudicator.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-protocol-adjudicator.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-g-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-starbreaker-sapper",
+      "topicId": "c02-unit-starbreaker-sapper",
+      "contentId": "stars.unit.starbreaker-sapper",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-starbreaker-sapper.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-starbreaker-sapper.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        16,
+        47
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-g-master.png"
+    },
+    {
+      "id": "c02-v2-b03-unit-rain-shepherd",
+      "topicId": "c02-unit-rain-shepherd",
+      "contentId": "stars.unit.rain-shepherd",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-03/units/c02-v2-b03-unit-rain-shepherd.png",
+      "svg": "runtime-v2/batch-03/units/c02-v2-b03-unit-rain-shepherd.svg",
+      "width": 256,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "facing": "right",
+      "anchor": [
+        32,
+        63
+      ],
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-03/masters/c02-v2-b03-combat-board-g-master.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "zOrder": 2
+    }
+  ]
+}

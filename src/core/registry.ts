@@ -50,4 +50,11 @@ export class Registry<T extends { id: string }> {
   ids(): string[] {
     return [...this.items.keys()];
   }
+
+  /** Structural copy used by isolated content catalogs and tooling. */
+  clone(): Registry<T> {
+    const copy = new Registry<T>(this.label);
+    copy.defineAll(this.all());
+    return copy;
+  }
 }

@@ -2,7 +2,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { TILE } from '../../art/terrain';
 import { mapFromLevel, normaliseLevel, validateLevel } from '../../core/mapio';
-import { BUILTIN_LEVELS } from '../../levels';
+import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '../../content/ancient-empires/levels';
 import { EditorApp } from '../app';
 
 function stubLayout(svg: SVGSVGElement, width: number, height: number): void {

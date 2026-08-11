@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "2.0.0",
+  "qualityTier": "prototype",
+  "runtimeReady": false,
+  "intendedUse": "topic coverage and engine wiring; not final game art",
+  "totalTopics": 1212,
+  "totalDeliveries": 98,
+  "totalOutputFiles": 196,
+  "campaigns": [
+    {
+      "id": "candidate-01",
+      "title": "断冠之誓",
+      "assetRoot": "candidate-01/assets",
+      "manifest": "candidate-01/assets/manifest-complete.json",
+      "qualityTier": "prototype",
+      "runtimeReady": false,
+      "topics": 404,
+      "deliveries": 32,
+      "outputFiles": 64,
+      "categoryTargets": {
+        "narrative-static": 80,
+        "combat-unit": 40,
+        "mission-unit": 24,
+        "faction-kit": 12,
+        "terrain": 32,
+        "interactive-structure": 24,
+        "battle-prop": 32,
+        "equipment": 48,
+        "skill": 48,
+        "status": 24,
+        "fx": 24,
+        "hud": 16
+      }
+    },
+    {
+      "id": "candidate-02",
+      "title": "群星熄灭之前",
+      "assetRoot": "candidate-02/assets",
+      "manifest": "candidate-02/assets/manifest-complete.json",
+      "qualityTier": "prototype",
+      "runtimeReady": false,
+      "topics": 404,
+      "deliveries": 33,
+      "outputFiles": 66,
+      "categoryTargets": {
+        "narrative-static": 80,
+        "combat-unit": 40,
+        "mission-unit": 24,
+        "faction-kit": 12,
+        "terrain": 32,
+        "interactive-structure": 24,
+        "battle-prop": 32,
+        "equipment": 48,
+        "skill": 48,
+        "status": 24,
+        "fx": 24,
+        "hud": 16
+      }
+    },
+    {
+      "id": "candidate-03",
+      "title": "布衣定鼎",
+      "assetRoot": "candidate-03/assets",
+      "manifest": "candidate-03/assets/manifest-complete.json",
+      "qualityTier": "prototype",
+      "runtimeReady": false,
+      "topics": 404,
+      "deliveries": 33,
+      "outputFiles": 66,
+      "categoryTargets": {
+        "narrative-static": 80,
+        "combat-unit": 40,
+        "mission-unit": 24,
+        "faction-kit": 12,
+        "terrain": 32,
+        "interactive-structure": 24,
+        "battle-prop": 32,
+        "equipment": 48,
+        "skill": 48,
+        "status": 24,
+        "fx": 24,
+        "hud": 16
+      }
+    }
+  ]
+}

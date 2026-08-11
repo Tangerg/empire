@@ -1,13 +1,20 @@
+import '../content/bootstrap-default';
 import '../styles/app.css';
+import { deleteCustomLevel, loadCustomLevels, takePlaytest } from '../application/level-storage';
 import { icon } from '../art/icons';
 import { portraitSvg } from '../art/portraits';
 import { TILE, terrainLayerMarkup } from '../art/terrain';
-import { UnitTypes, ARMOR_LABEL, DAMAGE_TYPE_LABEL, MOVEMENT_LABEL } from '../core/data/units';
+import { armorClassDef, damageTypeDef } from '../core/data/damage';
+import { UnitTypes, movementLabel } from '../core/data/units';
+import { weaponDef } from '../core/data/weapons';
 import { mapFromLevel } from '../core/mapio';
 import type { LevelData } from '../core/types';
-import { BUILTIN_LEVELS, deleteCustomLevel, loadCustomLevels, takePlaytest } from '../levels';
+import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '../content/ancient-empires/levels';
 import { GameController } from '../ui/game';
-import { escapeHtml } from '../ui/hud';
+import { escapeHtml } from '../ui/html';
+
+const recruitCost = (unit: ReturnType<typeof UnitTypes.all>[number]) =>
+  unit.recruitCosts.map((cost) => `${cost.resource} ${cost.amount}`).join(' · ') || '不可招募';
 
 const app = document.getElementById('app')!;
 let active: GameController | null = null;
@@ -55,17 +62,24 @@ function codexMarkup(): string {
       <div class="recruit-grid">
         ${UnitTypes.all()
           .map(
-            (d) => `<div class="recruit-card">
+            (d) => {
+              const weapons = d.weapons.map(weaponDef);
+              const power = Math.max(...weapons.map((weapon) => weapon.power));
+              const minRange = Math.min(...weapons.map((weapon) => weapon.minRange));
+              const maxRange = Math.max(...weapons.map((weapon) => weapon.maxRange));
+              const damageTypes = [...new Set(weapons.map((weapon) => damageTypeDef(weapon.damageType).name))].join(' / ');
+              return `<div class="recruit-card">
               <div class="rc-art" style="width:64px;height:auto;background:none">${portraitSvg(d.id, team, 64)}</div>
               <div class="rc-body">
-                <div class="rc-name">${escapeHtml(d.name)}<span class="rc-cost">${icon('coin')}${d.cost}</span></div>
-                <div class="rc-stats">${icon('sword')}${d.attack} · ${icon('heart')}${d.maxHp} · ${icon('boot')}${d.movement} · 射程 ${
-                  d.minRange === d.maxRange ? d.maxRange : `${d.minRange}-${d.maxRange}`
+                <div class="rc-name">${escapeHtml(d.name)}<span class="rc-cost">${icon('coin')}${escapeHtml(recruitCost(d))}</span></div>
+                <div class="rc-stats">${icon('sword')}${power} · ${icon('heart')}${d.maxHp} · ${icon('boot')}${d.movement} · 射程 ${
+                  minRange === maxRange ? maxRange : `${minRange}-${maxRange}`
                 }</div>
-                <div class="rc-stats">${DAMAGE_TYPE_LABEL[d.damageType]} / ${ARMOR_LABEL[d.armorClass]} / ${MOVEMENT_LABEL[d.movementClass]}</div>
+                <div class="rc-stats">${damageTypes} / ${armorClassDef(d.armorClass).name} / ${movementLabel(d.movementClass)}</div>
                 <div class="rc-blurb">${escapeHtml(d.blurb)}</div>
               </div>
-            </div>`,
+            </div>`;
+            },
           )
           .join('')}
       </div>
@@ -82,9 +96,10 @@ function renderMenu(): void {
   screen.style.height = '100%';
   screen.innerHTML = `<div class="menu"><div class="menu-inner">
     <h1>远古帝国 · 战术复刻</h1>
-    <p class="tagline">回合制战棋 · 确定性战斗预测 · 全部美术由 SVG 绘制</p>
+    <p class="tagline">回合制战棋 · 确定性战斗预测 · 手绘像素风 SVG 素材</p>
     <div class="menu-actions">
       <a class="btn primary" href="./editor.html">${icon('grid')} 打开地图编辑器</a>
+      <a class="btn" href="./demo.html">${icon('crosshair')} 引擎能力 Demo</a>
       <button class="btn" data-act="codex">${icon('shield')} 兵种图鉴</button>
     </div>
 

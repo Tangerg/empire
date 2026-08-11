@@ -1,0 +1,981 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-01",
+  "campaignTitle": "断冠之誓",
+  "batchId": "b03",
+  "qualityTier": "runtime-v2-candidate",
+  "runtimeReady": false,
+  "extends": [
+    "manifest-runtime-v2.json",
+    "manifest-runtime-v2-b02.json"
+  ],
+  "topicLock": "runtime-v2/batch-03/TOPIC-LOCK.json",
+  "prompts": "runtime-v2/batch-03/PROMPTS.md",
+  "assetCount": 28,
+  "coverage": {
+    "combat-unit": 28
+  },
+  "cumulativeCoverage": {
+    "combat-unit": 40,
+    "target": 40
+  },
+  "notes": [
+    "Final combat closeout batch; primary 4 and batch-02 8 remain untouched.",
+    "Large siege, mounted, monster and dragon units declare wider frames, footprint and zOrder.",
+    "runtimeReady remains false pending in-engine screenshots and pivot/collision validation."
+  ],
+  "assets": [
+    {
+      "id": "c01-v2-b03-unit-silver-longbow",
+      "topicId": "C01-UNIT-SILVER-LONGBOW",
+      "label": "长弓守卫",
+      "contentId": "crown.unit.silver-longbow",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-silver-longbow.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-silver-longbow.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-a-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-ranger",
+      "topicId": "C01-UNIT-RANGER",
+      "label": "游侠",
+      "contentId": "crown.unit.ranger",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-ranger.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-ranger.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-a-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-assassin",
+      "topicId": "C01-UNIT-ASSASSIN",
+      "label": "刺客",
+      "contentId": "crown.unit.assassin",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-assassin.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-assassin.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-a-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-mage",
+      "topicId": "C01-UNIT-MAGE",
+      "label": "法师",
+      "contentId": "crown.unit.mage",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-mage.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-mage.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-a-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-ballista",
+      "topicId": "C01-UNIT-BALLISTA",
+      "label": "弩车",
+      "contentId": "crown.unit.ballista",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-ballista.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-ballista.svg",
+      "width": 384,
+      "height": 64,
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 48,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "zOrder": 14,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-b-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-lance-cavalry",
+      "topicId": "C01-UNIT-LANCE-CAVALRY",
+      "label": "长枪骑兵",
+      "contentId": "crown.unit.lance-cavalry",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-lance-cavalry.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-lance-cavalry.svg",
+      "width": 256,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      },
+      "zOrder": 14,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-b-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-battle-mage",
+      "topicId": "C01-UNIT-BATTLE-MAGE",
+      "label": "战斗法师",
+      "contentId": "crown.unit.battle-mage",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-battle-mage.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-battle-mage.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-b-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-eagle-scout",
+      "topicId": "C01-UNIT-EAGLE-SCOUT",
+      "label": "鹰骑斥候",
+      "contentId": "crown.unit.eagle-scout",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-eagle-scout.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-eagle-scout.svg",
+      "width": 384,
+      "height": 64,
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 48,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "zOrder": 14,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-b-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-woodland-walker",
+      "topicId": "C01-UNIT-WOODLAND-WALKER",
+      "label": "林地行者",
+      "contentId": "crown.unit.woodland-walker",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-woodland-walker.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-woodland-walker.svg",
+      "width": 256,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      },
+      "zOrder": 14,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-c-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-druid",
+      "topicId": "C01-UNIT-DRUID",
+      "label": "德鲁伊",
+      "contentId": "crown.unit.druid",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-druid.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-druid.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-c-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-white-stag-rider",
+      "topicId": "C01-UNIT-WHITE-STAG-RIDER",
+      "label": "白鹿骑手",
+      "contentId": "crown.unit.white-stag-rider",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-white-stag-rider.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-white-stag-rider.svg",
+      "width": 256,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      },
+      "zOrder": 14,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-c-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-rune-shield",
+      "topicId": "C01-UNIT-RUNE-SHIELD",
+      "label": "符文盾卫",
+      "contentId": "crown.unit.rune-shield",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-rune-shield.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-rune-shield.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-c-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-axe-breaker",
+      "topicId": "C01-UNIT-AXE-BREAKER",
+      "label": "战斧兵",
+      "contentId": "crown.unit.axe-breaker",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-axe-breaker.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-axe-breaker.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-d-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-stone-golem",
+      "topicId": "C01-UNIT-STONE-GOLEM",
+      "label": "石魔像",
+      "contentId": "crown.unit.stone-golem",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-stone-golem.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-stone-golem.svg",
+      "width": 256,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      },
+      "zOrder": 14,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-d-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-shaman",
+      "topicId": "C01-UNIT-SHAMAN",
+      "label": "萨满",
+      "contentId": "crown.unit.shaman",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-shaman.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-shaman.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-d-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-javelin-hunter",
+      "topicId": "C01-UNIT-JAVELIN-HUNTER",
+      "label": "投矛猎手",
+      "contentId": "crown.unit.javelin-hunter",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-javelin-hunter.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-javelin-hunter.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-d-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-heavy-knight",
+      "topicId": "C01-UNIT-HEAVY-KNIGHT",
+      "label": "重装骑士",
+      "contentId": "crown.unit.heavy-knight",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-heavy-knight.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-heavy-knight.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-e-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-spirit-fire",
+      "topicId": "C01-UNIT-SPIRIT-FIRE",
+      "label": "灵火精怪",
+      "contentId": "crown.unit.spirit-fire",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-spirit-fire.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-spirit-fire.svg",
+      "width": 256,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      },
+      "zOrder": 14,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-e-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-cannon-wagon",
+      "topicId": "C01-UNIT-CANNON-WAGON",
+      "label": "火炮车",
+      "contentId": "crown.unit.cannon-wagon",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-cannon-wagon.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-cannon-wagon.svg",
+      "width": 384,
+      "height": 64,
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 48,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "zOrder": 14,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-e-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-troll",
+      "topicId": "C01-UNIT-TROLL",
+      "label": "巨魔",
+      "contentId": "crown.unit.troll",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-troll.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-troll.svg",
+      "width": 256,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      },
+      "zOrder": 14,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-e-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-berserker",
+      "topicId": "C01-UNIT-BERSERKER",
+      "label": "狂战士",
+      "contentId": "crown.unit.berserker",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-berserker.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-berserker.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-f-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-templar",
+      "topicId": "C01-UNIT-TEMPLAR",
+      "label": "圣殿骑士",
+      "contentId": "crown.unit.templar",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-templar.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-templar.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-f-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-inquisitor",
+      "topicId": "C01-UNIT-INQUISITOR",
+      "label": "审判官",
+      "contentId": "crown.unit.inquisitor",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-inquisitor.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-inquisitor.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-f-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-ghost",
+      "topicId": "C01-UNIT-GHOST",
+      "label": "幽魂",
+      "contentId": "crown.unit.ghost",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-ghost.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-ghost.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-f-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-cemetery-colossus",
+      "topicId": "C01-UNIT-CEMETERY-COLOSSUS",
+      "label": "墓地巨像",
+      "contentId": "crown.unit.cemetery-colossus",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-cemetery-colossus.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-cemetery-colossus.svg",
+      "width": 384,
+      "height": 64,
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 48,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "zOrder": 14,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-g-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-ivra-growth",
+      "topicId": "C01-UNIT-IVRA-GROWTH",
+      "label": "伊芙拉成长单位",
+      "contentId": "crown.unit.ivra-growth",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-ivra-growth.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-ivra-growth.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": 10,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-g-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-wyvern-rider",
+      "topicId": "C01-UNIT-WYVERN-RIDER",
+      "label": "飞龙骑手",
+      "contentId": "crown.unit.wyvern-rider",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-wyvern-rider.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-wyvern-rider.svg",
+      "width": 384,
+      "height": 64,
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 48,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "zOrder": 14,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-g-master.png"
+    },
+    {
+      "id": "c01-v2-b03-unit-ancient-dragon",
+      "topicId": "C01-UNIT-ANCIENT-DRAGON",
+      "label": "古龙",
+      "contentId": "crown.unit.ancient-dragon",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/c01-v2-b03-unit-ancient-dragon.png",
+      "svg": "runtime-v2/batch-03/units/c01-v2-b03-unit-ancient-dragon.svg",
+      "width": 384,
+      "height": 64,
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "facing": "right",
+      "anchor": {
+        "x": 48,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "zOrder": 14,
+      "fps": 6,
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/batch-03/masters/combat-board-g-master.png"
+    }
+  ]
+}

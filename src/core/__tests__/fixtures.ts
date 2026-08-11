@@ -1,19 +1,39 @@
 import { normaliseLevel } from '../mapio';
-import type { LevelData, LevelUnit, Objective, PlayerId, RuleSet } from '../types';
+import type {
+  LevelData,
+  LevelCommander,
+  LevelScenario,
+  LevelStructure,
+  LevelUnit,
+  LevelDeployment,
+  LevelCliffEdge,
+  LevelDirectionalCover,
+  Objective,
+  PlayerId,
+  RuleSet,
+} from '../types';
+import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from '../resources';
 
 /** Build a level from an ASCII sketch — keeps the tests readable. */
 export function makeLevel(
   terrain: string[],
   opts: {
     units?: LevelUnit[];
+    commanders?: LevelCommander[];
     owners?: { x: number; y: number; owner: PlayerId }[];
     rules?: Partial<RuleSet>;
     victory?: Objective[];
     funds?: [number, number];
+    structures?: LevelStructure[];
+    scenario?: LevelScenario;
+    deployment?: LevelDeployment;
+    elevation?: number[];
+    cliffs?: LevelCliffEdge[];
+    directionalCover?: LevelDirectionalCover[];
   } = {},
 ): LevelData {
   return normaliseLevel({
-    schema: 1,
+    schema: 2,
     id: 'test',
     name: 'test',
     width: terrain[0].length,
@@ -21,6 +41,8 @@ export function makeLevel(
     terrain,
     owners: opts.owners ?? [],
     units: opts.units ?? [],
+    commanders: opts.commanders ?? [],
+    structures: opts.structures ?? [],
     players: [
       {
         id: 1,
@@ -28,7 +50,10 @@ export function makeLevel(
         team: 1,
         color: '#3f7fd8',
         controller: 'human',
-        funds: opts.funds?.[0] ?? 0,
+        resources: {
+          [FUNDS_RESOURCE]: { current: opts.funds?.[0] ?? 0, capacity: null },
+          [COMMAND_POINTS_RESOURCE]: { current: 0, capacity: 5 },
+        },
       },
       {
         id: 2,
@@ -36,12 +61,20 @@ export function makeLevel(
         team: 2,
         color: '#d8483f',
         controller: 'ai',
-        funds: opts.funds?.[1] ?? 0,
+        resources: {
+          [FUNDS_RESOURCE]: { current: opts.funds?.[1] ?? 0, capacity: null },
+          [COMMAND_POINTS_RESOURCE]: { current: 0, capacity: 5 },
+        },
         ai: { aggression: 0.5 },
       },
     ],
     rules: opts.rules ?? {},
     victory: opts.victory ?? [{ type: 'routEnemies' }, { type: 'captureHQ' }],
+    scenario: opts.scenario,
+    deployment: opts.deployment,
+    elevation: opts.elevation,
+    cliffs: opts.cliffs,
+    directionalCover: opts.directionalCover,
   } satisfies Partial<LevelData>);
 }
 

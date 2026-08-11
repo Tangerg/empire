@@ -4,6 +4,7 @@ import { idx } from '../grid';
 import { GameSession } from '../session';
 import { createState, player, unitAt } from '../state';
 import { makeLevel, u } from './fixtures';
+import { FUNDS_RESOURCE } from '../resources';
 
 const wait = (unit: number, path: { x: number; y: number }[]) =>
   ({ kind: 'command', unit, path, command: { ability: 'wait' } }) as const;
@@ -83,7 +84,7 @@ describe('economy and turn cycle', () => {
     );
     applyAction(s, { kind: 'endTurn' }); // -> P2
     applyAction(s, { kind: 'endTurn' }); // -> P1, turn 2
-    expect(player(s, 1).funds).toBe(200); // village 100 + castle 100
+    expect(player(s, 1).resources[FUNDS_RESOURCE].current).toBe(200); // village 100 + castle 100
     expect(s.units[0].hp).toBe(60); // village heals 20
     expect(s.turn).toBe(2);
   });
@@ -96,8 +97,15 @@ describe('economy and turn cycle', () => {
         funds: [400, 0],
       }),
     );
-    applyAction(s, { kind: 'recruit', at: { x: 0, y: 0 }, unit: 'knight' });
-    expect(player(s, 1).funds).toBe(50);
+    const events = applyAction(s, { kind: 'recruit', at: { x: 0, y: 0 }, unit: 'knight' });
+    expect(player(s, 1).resources[FUNDS_RESOURCE].current).toBe(50);
+    expect(events).toContainEqual(expect.objectContaining({
+      type: 'resourceChanged',
+      resource: FUNDS_RESOURCE,
+      subject: { kind: 'player', id: 1 },
+      amount: -350,
+      current: 50,
+    }));
     expect(unitAt(s, 0, 0)!.type).toBe('knight');
     expect(unitAt(s, 0, 0)!.done).toBe(true); // recruits wait a turn by default
   });
@@ -184,6 +192,21 @@ describe('victory', () => {
     });
     expect(s.phase).toBe('over');
     expect(s.winnerTeam).toBe(1);
+  });
+
+  it('resolves surviveTurns without requiring a global turn limit', () => {
+    const s = createState(
+      makeLevel(['...'], {
+        units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)],
+        victory: [{ type: 'surviveTurns', turns: 1 }],
+      }),
+    );
+    applyAction(s, { kind: 'endTurn' });
+    expect(s.phase).toBe('playing');
+    applyAction(s, { kind: 'endTurn' });
+    expect(s.phase).toBe('over');
+    expect(s.winnerTeam).toBe(1);
+    expect(s.endReason).toContain('坚守 1 回合');
   });
 });
 

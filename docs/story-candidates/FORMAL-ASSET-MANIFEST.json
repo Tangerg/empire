@@ -1,0 +1,706 @@
+{
+  "schemaVersion": "1.0.0",
+  "coordinateOrigin": "top-left",
+  "pixelScaling": "nearest-neighbor integer multiples",
+  "totalLogicalAssets": 66,
+  "totalOutputFiles": 132,
+  "conventions": {
+    "portrait": "96x112, binary alpha",
+    "unit-sheet": "128x48, four horizontal 32x48 frames, binary alpha",
+    "architecture": "128x128, binary alpha",
+    "scene": "256x144, fully opaque",
+    "prop-sheet": "192x48, four horizontal 48x48 cells, binary alpha"
+  },
+  "campaigns": [
+    {
+      "id": "candidate-01",
+      "title": "断冠之誓",
+      "assetRoot": "candidate-01/assets",
+      "gallery": "gallery-hd.html",
+      "readme": "README.md",
+      "qaReport": "qa-report.md",
+      "assets": [
+        {
+          "id": "laiya-18-portrait",
+          "label": "莱娅 18 岁头像",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/laiya-18-portrait-hd.png",
+          "svg": "characters/laiya-18-portrait-hd.svg",
+          "narrativeUse": "主角初始形态；见习旗官、第一次独立指挥与灰旗选择的视觉身份。"
+        },
+        {
+          "id": "roderick-portrait",
+          "label": "罗德里克头像",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/roderick-portrait-hd.png",
+          "svg": "characters/roderick-portrait-hd.svg",
+          "narrativeUse": "导师、帝国追兵与有限和解者；承载旧誓言和军职责任。"
+        },
+        {
+          "id": "kain-portrait",
+          "label": "凯恩头像",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/kain-portrait-hd.png",
+          "svg": "characters/kain-portrait-hd.svg",
+          "narrativeUse": "帝国敌将、阶段性盟友与独立盟军领袖；体现严整秩序和酒红军团身份。"
+        },
+        {
+          "id": "mirelle-portrait",
+          "label": "米蕾尔头像",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/mirelle-portrait-hd.png",
+          "svg": "characters/mirelle-portrait-hd.svg",
+          "narrativeUse": "守墓人、异端与最后誓约见证者；以灰紫兜帽和誓灯连接亡者记忆。"
+        },
+        {
+          "id": "laiya-18-walk-sheet",
+          "label": "莱娅 18 岁四帧单位",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/laiya-18-walk-sheet-hd.png",
+          "svg": "units/laiya-18-walk-sheet-hd.svg",
+          "narrativeUse": "莱娅初始战场形态；轻甲和蓝灰短披风保证小尺寸辨识。"
+        },
+        {
+          "id": "roderick-walk-sheet",
+          "label": "罗德里克四帧单位",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/roderick-walk-sheet-hd.png",
+          "svg": "units/roderick-walk-sheet-hd.svg",
+          "narrativeUse": "老骑士战场形态；重肩甲使导师与追兵阶段保持相同核心轮廓。"
+        },
+        {
+          "id": "kain-walk-sheet",
+          "label": "凯恩四帧单位",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/kain-walk-sheet-hd.png",
+          "svg": "units/kain-walk-sheet-hd.svg",
+          "narrativeUse": "帝国将领战场形态；酒红军团色和方正重装维持敌我阶段辨识。"
+        },
+        {
+          "id": "mirelle-walk-sheet",
+          "label": "米蕾尔四帧单位",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/mirelle-walk-sheet-hd.png",
+          "svg": "units/mirelle-walk-sheet-hd.svg",
+          "narrativeUse": "誓灯守墓人的战场形态；灰紫兜帽与小面积琥珀灯火构成识别点。"
+        },
+        {
+          "id": "redstone-oath-tower",
+          "label": "赤石誓约烽塔",
+          "type": "architecture",
+          "width": 128,
+          "height": 128,
+          "png": "architecture/redstone-oath-tower-hd.png",
+          "svg": "architecture/redstone-oath-tower-hd.svg",
+          "narrativeUse": "旧王权誓约网络的地方节点；把制度压力和琥珀誓火具象化。"
+        },
+        {
+          "id": "gray-banner-field-camp",
+          "label": "灰旗野战营",
+          "type": "architecture",
+          "width": 128,
+          "height": 128,
+          "png": "architecture/gray-banner-field-camp-hd.png",
+          "svg": "architecture/gray-banner-field-camp-hd.svg",
+          "narrativeUse": "流亡联盟的临时政治与后勤中心；表现无纹灰旗从选择变成共同制度。"
+        },
+        {
+          "id": "gray-flag-over-burned-village",
+          "label": "焚村后的第一面灰旗",
+          "type": "scene",
+          "width": 256,
+          "height": 144,
+          "png": "scenes/gray-flag-over-burned-village-hd.png",
+          "svg": "scenes/gray-flag-over-burned-village-hd.svg",
+          "narrativeUse": "灰旗第一次成为共同符号的关键过场；把焦木、雨泥、幸存者与旗置于同一制度性构图。"
+        },
+        {
+          "id": "twin-hills-first-command",
+          "label": "双子丘陵初次指挥",
+          "type": "scene",
+          "width": 256,
+          "height": 144,
+          "png": "scenes/twin-hills-first-command-hd.png",
+          "svg": "scenes/twin-hills-first-command-hd.svg",
+          "narrativeUse": "莱娅第一次独立指挥的建立性镜头；突出地形、队列和命令后果。"
+        },
+        {
+          "id": "story-props-sheet",
+          "label": "剧情道具图集",
+          "type": "prop-sheet",
+          "width": 192,
+          "height": 48,
+          "png": "props/story-props-sheet-hd.png",
+          "svg": "props/story-props-sheet-hd.svg",
+          "narrativeUse": "四个贯穿战役选择的视觉锚点：灰旗、自由誓石、王冠碎片、巨龙盟约扣。"
+        },
+        {
+          "id": "bran-portrait",
+          "label": "布兰头像",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/bran-portrait-hd.png",
+          "svg": "characters/bran-portrait-hd.svg",
+          "narrativeUse": "苇草村猎人、焚村追责者与自由斥候；修靴工具、短弩、幸存者名袋和焦痕布料把照料与愤怒放在同一身份中。"
+        },
+        {
+          "id": "bran-walk-sheet",
+          "label": "布兰四帧单位",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/bran-walk-sheet-hd.png",
+          "svg": "units/bran-walk-sheet-hd.svg",
+          "narrativeUse": "灰境猎人与斥候指挥官的战场形态；深绿修补衣、短弩和低姿态步伐强调侦察而非贵族刺客。"
+        },
+        {
+          "id": "tasha-portrait",
+          "label": "塔莎头像",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/tasha-portrait-hd.png",
+          "svg": "characters/tasha-portrait-hd.svg",
+          "narrativeUse": "自由佣兵团首领、军需负责人和公开账制度建立者；账本、筹绳、靴牌与工程工具表现她对死者债权的记忆。"
+        },
+        {
+          "id": "tasha-walk-sheet",
+          "label": "塔莎四帧单位",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/tasha-walk-sheet-hd.png",
+          "svg": "units/tasha-walk-sheet-hd.svg",
+          "narrativeUse": "佣兵首领与军需官的战场形态；黄褐工作层、账本、靴牌、工程工具和实用短弩维持职业辨识。"
+        },
+        {
+          "id": "three-bridges-river-valley",
+          "label": "三桥河谷",
+          "type": "architecture",
+          "width": 128,
+          "height": 128,
+          "png": "architecture/three-bridges-river-valley-hd.png",
+          "svg": "architecture/three-bridges-river-valley-hd.svg",
+          "narrativeUse": "第一章两军难民停火的地理节点；三条分流、三种桥制、修复木与无纹白布使停火成为可执行空间。"
+        },
+        {
+          "id": "silverwood-tree-city",
+          "label": "银林树城",
+          "type": "architecture",
+          "width": 128,
+          "height": 128,
+          "png": "architecture/silverwood-tree-city-hd.png",
+          "svg": "architecture/silverwood-tree-city-hd.svg",
+          "narrativeUse": "长生者共同照护与人口衰退的地点锚点；银皮母树、生活步道、空育儿亭和人类边缘屋并置。"
+        },
+        {
+          "id": "white-river-night-crossing",
+          "label": "白河夜渡",
+          "type": "scene",
+          "width": 256,
+          "height": 144,
+          "png": "scenes/white-river-night-crossing-hd.png",
+          "svg": "scenes/white-river-night-crossing-hd.svg",
+          "narrativeUse": "第二章流亡后勤选择的建立镜头；粮车、工具车、伤员车与布兰引导的浅滩路线让损失对象具体可见。"
+        },
+        {
+          "id": "seven-towers-at-dusk",
+          "label": "七塔王城终局远景",
+          "type": "scene",
+          "width": 256,
+          "height": 144,
+          "png": "scenes/seven-towers-at-dusk-hd.png",
+          "svg": "scenes/seven-towers-at-dusk-hd.svg",
+          "narrativeUse": "终局前对秩序诱惑的远景：七座可数主塔、仍正常运行的城市设施与不统一的多旗联军同框。"
+        },
+        {
+          "id": "campaign-props-sheet-02",
+          "label": "第二组战役道具图集",
+          "type": "prop-sheet",
+          "width": 192,
+          "height": 48,
+          "png": "props/campaign-props-sheet-02-hd.png",
+          "svg": "props/campaign-props-sheet-02-hd.svg",
+          "narrativeUse": "四个深化稿生活与制度回扣：莱娅左手护腕、逃亡硬饼、控制誓文残片、三族盟约扣件。"
+        }
+      ]
+    },
+    {
+      "id": "candidate-02",
+      "title": "群星熄灭之前",
+      "assetRoot": "candidate-02/assets",
+      "gallery": "gallery-hd.html",
+      "readme": "README.md",
+      "qaReport": "qa-report.md",
+      "assets": [
+        {
+          "id": "mira-portrait-hd",
+          "label": "米拉人物头像",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/mira-portrait-hd.png",
+          "svg": "characters/mira-portrait-hd.svg",
+          "narrativeUse": "第一章主角对话、队伍界面与星约见证人身份建立；青色诊断巾和神经桥用于远距离识别。"
+        },
+        {
+          "id": "roan-portrait-hd",
+          "label": "罗安人物头像",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/roan-portrait-hd.png",
+          "svg": "characters/roan-portrait-hd.svg",
+          "narrativeUse": "灾害官阵营对话与队伍界面；旧制服呈现秩序职责，而非反派黑化。"
+        },
+        {
+          "id": "naim-portrait-hd",
+          "label": "奈姆人物头像",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/naim-portrait-hd.png",
+          "svg": "characters/naim-portrait-hd.svg",
+          "narrativeUse": "返星会行动、爆破任务和责任抉择对话；珊瑚工作层标记被挪用的星脉力量。"
+        },
+        {
+          "id": "talos-7-portrait-hd",
+          "label": "塔洛斯七号人物头像",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/talos-7-portrait-hd.png",
+          "svg": "characters/talos-7-portrait-hd.svg",
+          "narrativeUse": "维护协议、设施修复与机器记忆相关对话；拆装缝和单线状态灯维持非人轮廓。"
+        },
+        {
+          "id": "helo-portrait-hd",
+          "label": "赫洛人物头像",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/helo-portrait-hd.png",
+          "svg": "characters/helo-portrait-hd.svg",
+          "narrativeUse": "远灯号所有权、货舱容量与私人撤离名额相关对话；旧许可、工具和民用拼修夹克保持劳动者身份。"
+        },
+        {
+          "id": "iya-portrait-hd",
+          "label": "伊娅人物头像",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/iya-portrait-hd.png",
+          "svg": "characters/iya-portrait-hd.svg",
+          "narrativeUse": "第五章留名者人格边界、私人投影室和关闭权相关对话；自选衣着与本地控件避免将她抽象成幽灵议题。"
+        },
+        {
+          "id": "mira-walk-sheet-hd",
+          "label": "米拉四帧单位图集",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/mira-walk-sheet-hd.png",
+          "svg": "units/mira-walk-sheet-hd.svg",
+          "narrativeUse": "米拉在探索、战术地图和雨塔维护战中的基础站立/踏步循环。"
+        },
+        {
+          "id": "roan-walk-sheet-hd",
+          "label": "罗安四帧单位图集",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/roan-walk-sheet-hd.png",
+          "svg": "units/roan-walk-sheet-hd.svg",
+          "narrativeUse": "罗安在护送、撤离和对峙地图中的基础站立/踏步循环。"
+        },
+        {
+          "id": "naim-walk-sheet-hd",
+          "label": "奈姆四帧单位图集",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/naim-walk-sheet-hd.png",
+          "svg": "units/naim-walk-sheet-hd.svg",
+          "narrativeUse": "奈姆在潜入、爆破和返星会战斗中的基础站立/踏步循环。"
+        },
+        {
+          "id": "talos-7-walk-sheet-hd",
+          "label": "塔洛斯七号四帧单位图集",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/talos-7-walk-sheet-hd.png",
+          "svg": "units/talos-7-walk-sheet-hd.svg",
+          "narrativeUse": "塔洛斯七号在设施维护、护卫和废墟探索中的机械步态循环。"
+        },
+        {
+          "id": "helo-walk-sheet-hd",
+          "label": "赫洛四帧单位图集",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/helo-walk-sheet-hd.png",
+          "svg": "units/helo-walk-sheet-hd.svg",
+          "narrativeUse": "赫洛在远灯号、船坞、货运和撤离地图中的基础站立/踏步循环；扫描器和工具维持民用船长轮廓。"
+        },
+        {
+          "id": "iya-walk-sheet-hd",
+          "label": "伊娅四帧单位图集",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/iya-walk-sheet-hd.png",
+          "svg": "units/iya-walk-sheet-hd.svg",
+          "narrativeUse": "伊娅在厄客、远灯号投影室和星约界面场景中的基础站立/踏步循环；窄扫描边保留投影身份。"
+        },
+        {
+          "id": "zero-rain-tower-hd",
+          "label": "零号雨塔",
+          "type": "architecture",
+          "width": 128,
+          "height": 128,
+          "png": "architecture/zero-rain-tower-hd.png",
+          "svg": "architecture/zero-rain-tower-hd.svg",
+          "narrativeUse": "第一章核心设施与争夺目标；三角星脉节点、青色水路和风蚀陶瓷同时表达权限、供水和年代。"
+        },
+        {
+          "id": "farlight-cargo-ship-hd",
+          "label": "远灯号货船",
+          "type": "architecture",
+          "width": 128,
+          "height": 128,
+          "png": "architecture/farlight-cargo-ship-hd.png",
+          "svg": "architecture/farlight-cargo-ship-hd.svg",
+          "narrativeUse": "第二章离乡后的移动据点与地图载具；外露货舱和民用拼修结构支持后续舱室扩展。"
+        },
+        {
+          "id": "soler-archive-monastery-hd",
+          "label": "索勒档案修院",
+          "type": "architecture",
+          "width": 128,
+          "height": 128,
+          "png": "architecture/soler-archive-monastery-hd.png",
+          "svg": "architecture/soler-archive-monastery-hd.svg",
+          "narrativeUse": "第三章索勒档案、只读接口和热源阶层地图锚点；冷外层、暖内核与生活窗让维护劳动保持可见。"
+        },
+        {
+          "id": "kairon-ring-node-hd",
+          "label": "凯隆环都星脉节点",
+          "type": "architecture",
+          "width": 128,
+          "height": 128,
+          "png": "architecture/kairon-ring-node-hd.png",
+          "svg": "architecture/kairon-ring-node-hd.svg",
+          "narrativeUse": "第四章环都交通、能源配额和权限层地图锚点；分层门、轨道、分离锁和内外维修差异支持坠环任务。"
+        },
+        {
+          "id": "season-without-rain-hd",
+          "label": "没有下雨的季节",
+          "type": "scene",
+          "width": 256,
+          "height": 144,
+          "png": "scenes/season-without-rain-hd.png",
+          "svg": "scenes/season-without-rain-hd.svg",
+          "narrativeUse": "第一章开场和赫沙生活基线：赤砂聚落、零号雨塔与干涸设施共同建立长期缺水。"
+        },
+        {
+          "id": "seven-minute-rain-hd",
+          "label": "七分钟的雨",
+          "type": "scene",
+          "width": 256,
+          "height": 144,
+          "png": "scenes/seven-minute-rain-hd.png",
+          "svg": "scenes/seven-minute-rain-hd.svg",
+          "narrativeUse": "赫沙篇关键回报场景：短暂真实降雨让供水冲突、人工太阳和共同见证汇于同一画面。"
+        },
+        {
+          "id": "farlight-departure-hd",
+          "label": "远灯号载着难民起飞",
+          "type": "scene",
+          "width": 256,
+          "height": 144,
+          "png": "scenes/farlight-departure-hd.png",
+          "svg": "scenes/farlight-departure-hd.svg",
+          "narrativeUse": "第二章第九关离开赫沙：拥挤货舱、有限舱位、未装物资与地面留下者让飞船从私产生计变成不完整的共同空间。"
+        },
+        {
+          "id": "folding-table-covenant-hd",
+          "label": "折叠桌星约",
+          "type": "scene",
+          "width": 256,
+          "height": 144,
+          "png": "scenes/folding-table-covenant-hd.png",
+          "svg": "scenes/folding-table-covenant-hd.svg",
+          "narrativeUse": "第六章第三十关最低星约：五界材料组成的桌、各自独立接口、伊娅的门和普通饭食共同表达可撤回合作。"
+        },
+        {
+          "id": "story-props-sheet-hd",
+          "label": "四件剧情道具图集",
+          "type": "prop-sheet",
+          "width": 192,
+          "height": 48,
+          "png": "props/story-props-sheet-hd.png",
+          "svg": "props/story-props-sheet-hd.svg",
+          "narrativeUse": "任务界面、拾取提示和剧情特写；从左到右为净水芯、星脉密钥、萤火无人机、记忆回声容器。"
+        },
+        {
+          "id": "campaign-props-sheet-02-hd",
+          "label": "第二组四件贯穿剧情道具图集",
+          "type": "prop-sheet",
+          "width": 192,
+          "height": 48,
+          "png": "props/campaign-props-sheet-02-hd.png",
+          "svg": "props/campaign-props-sheet-02-hd.svg",
+          "narrativeUse": "任务界面、回扣特写与权限说明；从左到右为赫沙金属杯、罗安风险清单装置、两张撤离票、伊娅可关闭门控件。"
+        }
+      ]
+    },
+    {
+      "id": "candidate-03",
+      "title": "布衣定鼎",
+      "assetRoot": "candidate-03/assets",
+      "gallery": "gallery-hd.html",
+      "readme": "README.md",
+      "qaReport": "qa-report.md",
+      "assets": [
+        {
+          "id": "shen-li-22-portrait",
+          "label": "沈砺（22 岁）",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/shen-li-22-portrait-hd.png",
+          "svg": "characters/shen-li-22-portrait-hd.svg",
+          "narrativeUse": "第一章河工主角锚点；用粗麻、头巾与测水工具建立其出身。"
+        },
+        {
+          "id": "lu-qinghe-portrait",
+          "label": "陆青禾",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/lu-qinghe-portrait-hd.png",
+          "svg": "characters/lu-qinghe-portrait-hd.svg",
+          "narrativeUse": "以湿靛工作服、药箱与名册承载救济、统计和制度治理。"
+        },
+        {
+          "id": "han-yue-portrait",
+          "label": "韩岳",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/han-yue-portrait-hd.png",
+          "svg": "characters/han-yue-portrait-hd.svg",
+          "narrativeUse": "以铁匠痕迹、重锤与旧札甲表现民间武装力量及其扩张风险。"
+        },
+        {
+          "id": "pei-zhao-portrait",
+          "label": "裴昭",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/pei-zhao-portrait-hd.png",
+          "svg": "characters/pei-zhao-portrait-hd.svg",
+          "narrativeUse": "以关陇札甲、长枪和克制朱砂表现门阀军事专业体系。"
+        },
+        {
+          "id": "jiang-zhaoye-portrait",
+          "label": "江照夜",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/jiang-zhaoye-portrait-hd.png",
+          "svg": "characters/jiang-zhaoye-portrait-hd.svg",
+          "narrativeUse": "以防水短衣、船钩和账绳表现水盟船主的专业边界与不被收编的地方自治立场。"
+        },
+        {
+          "id": "aletan-portrait",
+          "label": "阿勒坦",
+          "type": "portrait",
+          "width": 96,
+          "height": 112,
+          "png": "characters/aletan-portrait-hd.png",
+          "svg": "characters/aletan-portrait-hd.svg",
+          "narrativeUse": "以多文化雪地骑装、复合弓和修补札甲表现大朔边将的军职、盟约意识与专业性。"
+        },
+        {
+          "id": "shen-li-22-walk-sheet",
+          "label": "沈砺（22 岁）四帧单位",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/shen-li-22-walk-sheet-hd.png",
+          "svg": "units/shen-li-22-walk-sheet-hd.svg",
+          "narrativeUse": "沈砺在战术地图、河工现场与剧情走位中的基础循环。"
+        },
+        {
+          "id": "lu-qinghe-walk-sheet",
+          "label": "陆青禾四帧单位",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/lu-qinghe-walk-sheet-hd.png",
+          "svg": "units/lu-qinghe-walk-sheet-hd.svg",
+          "narrativeUse": "陆青禾在药棚、仓场、官署与行军地图中的基础循环。"
+        },
+        {
+          "id": "han-yue-walk-sheet",
+          "label": "韩岳四帧单位",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/han-yue-walk-sheet-hd.png",
+          "svg": "units/han-yue-walk-sheet-hd.svg",
+          "narrativeUse": "韩岳在铁坊、营地和战术地图中的重装基础循环。"
+        },
+        {
+          "id": "pei-zhao-walk-sheet",
+          "label": "裴昭四帧单位",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/pei-zhao-walk-sheet-hd.png",
+          "svg": "units/pei-zhao-walk-sheet-hd.svg",
+          "narrativeUse": "裴昭在关陇军阵、会盟和战术地图中的长枪基础循环。"
+        },
+        {
+          "id": "jiang-zhaoye-walk-sheet",
+          "label": "江照夜四帧单位",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/jiang-zhaoye-walk-sheet-hd.png",
+          "svg": "units/jiang-zhaoye-walk-sheet-hd.svg",
+          "narrativeUse": "江照夜在渡口、水门、大泽船营与战术地图中的船钩基础循环。"
+        },
+        {
+          "id": "aletan-walk-sheet",
+          "label": "阿勒坦四帧单位",
+          "type": "unit-sheet",
+          "width": 128,
+          "height": 48,
+          "png": "units/aletan-walk-sheet-hd.png",
+          "svg": "units/aletan-walk-sheet-hd.svg",
+          "narrativeUse": "阿勒坦在旧都盟约、燕云雪地和边军战术地图中的复合弓基础循环。"
+        },
+        {
+          "id": "county-granary",
+          "label": "淮右县仓",
+          "type": "architecture",
+          "width": 128,
+          "height": 128,
+          "png": "architecture/county-granary-hd.png",
+          "svg": "architecture/county-granary-hd.svg",
+          "narrativeUse": "第一章开仓抉择的空间中心；封条、台基和粮仓结构使权力与生存同框。"
+        },
+        {
+          "id": "huai-right-bank-dike",
+          "label": "淮右河堤",
+          "type": "architecture",
+          "width": 128,
+          "height": 128,
+          "png": "architecture/huai-right-bank-dike-hd.png",
+          "svg": "architecture/huai-right-bank-dike-hd.svg",
+          "narrativeUse": "表现河患、决口压力、抢修与分洪治理，是淮右地图的结构性锚点。"
+        },
+        {
+          "id": "linchuan-government-hub",
+          "label": "临川行台五功能治理区",
+          "type": "architecture",
+          "width": 128,
+          "height": 128,
+          "png": "architecture/linchuan-government-hub-hd.png",
+          "svg": "architecture/linchuan-government-hub-hd.svg",
+          "narrativeUse": "第三章后基地；以户曹、工曹、学馆、史馆和市井服务区表现政权从军令转向持续治理。"
+        },
+        {
+          "id": "great-lake-mixed-fleet",
+          "label": "大泽水陆军民混合连营",
+          "type": "architecture",
+          "width": 128,
+          "height": 128,
+          "png": "architecture/great-lake-mixed-fleet-hd.png",
+          "svg": "architecture/great-lake-mixed-fleet-hd.svg",
+          "narrativeUse": "第四章大泽地图锚点；用军、粮、医、工、民功能船混合表现战争体系仍承载普通生活。"
+        },
+        {
+          "id": "opening-the-county-granary",
+          "label": "白灯夜开仓",
+          "type": "scene",
+          "width": 256,
+          "height": 144,
+          "png": "scenes/opening-the-county-granary-hd.png",
+          "svg": "scenes/opening-the-county-granary-hd.svg",
+          "narrativeUse": "第一章核心抉择场景；通过白灯、粮秤和有序人群表现救济如何成为政治行动。"
+        },
+        {
+          "id": "rain-night-crossing",
+          "label": "雨夜渡淮",
+          "type": "scene",
+          "width": 256,
+          "height": 144,
+          "png": "scenes/rain-night-crossing-hd.png",
+          "svg": "scenes/rain-night-crossing-hd.svg",
+          "narrativeUse": "第二章关键行军场景；以暴雨、浊水、木筏、绳索与白灯表现普通人在险境中的集体行动。"
+        },
+        {
+          "id": "great-lake-precision-fire-attack",
+          "label": "大泽精准火攻",
+          "type": "scene",
+          "width": 256,
+          "height": 144,
+          "png": "scenes/great-lake-precision-fire-attack-hd.png",
+          "svg": "scenes/great-lake-precision-fire-attack-hd.svg",
+          "narrativeUse": "第十八关主干火攻；让受控火线、撤民航道、民船和受保护粮医船同时可读，拒绝全烧式胜利奇观。"
+        },
+        {
+          "id": "one-bowl-of-new-grain",
+          "label": "一碗新粮",
+          "type": "scene",
+          "width": 256,
+          "height": 144,
+          "png": "scenes/one-bowl-of-new-grain-hd.png",
+          "svg": "scenes/one-bowl-of-new-grain-hd.svg",
+          "narrativeUse": "推荐尾声；以普通食肆、无官印粮袋、公开木牌与河堤日常表现制度改变，不让皇帝占据最终镜头。"
+        },
+        {
+          "id": "story-props-sheet",
+          "label": "第一章叙事道具图集",
+          "type": "prop-sheet",
+          "width": 192,
+          "height": 48,
+          "png": "props/story-props-sheet-hd.png",
+          "svg": "props/story-props-sheet-hd.svg",
+          "narrativeUse": "四格依次承载粮食供给、白灯互助、户籍治理与旧官权破裂四种状态语义。"
+        },
+        {
+          "id": "campaign-props-sheet-02",
+          "label": "跨章叙事道具图集 02",
+          "type": "prop-sheet",
+          "width": 192,
+          "height": 48,
+          "png": "props/campaign-props-sheet-02-hd.png",
+          "svg": "props/campaign-props-sheet-02-hd.svg",
+          "narrativeUse": "四格依次承载未染色第一面军旗、裴昭叠合军图、田界丈量玩法与裴氏先解部曲军籍的制度证据。"
+        }
+      ]
+    }
+  ]
+}

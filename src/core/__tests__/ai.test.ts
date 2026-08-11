@@ -3,6 +3,7 @@ import { chooseAction } from '../ai';
 import { applyAction } from '../actions';
 import { createState, player, unitsOf } from '../state';
 import { makeLevel, u } from './fixtures';
+import { FUNDS_RESOURCE } from '../resources';
 
 /** A compact but non-trivial arena: two keeps, villages, mixed terrain. */
 const arena = () =>
@@ -53,11 +54,11 @@ describe('ai driver', () => {
 
   it('spends its gold on units', () => {
     const s = createState(arena());
-    const before = player(s, 1).funds;
+    const before = player(s, 1).resources[FUNDS_RESOURCE].current;
     const action = chooseAction(s);
     expect(action.kind).toBe('recruit');
     applyAction(s, action);
-    expect(player(s, 1).funds).toBeLessThan(before);
+    expect(player(s, 1).resources[FUNDS_RESOURCE].current).toBeLessThan(before);
     expect(unitsOf(s, 1).length).toBe(3);
   });
 
@@ -82,5 +83,59 @@ describe('ai driver', () => {
       kind: 'command',
       command: { ability: 'attack', target: { x: 2, y: 0 } },
     });
+  });
+
+  it('moves the selected escort toward its extraction zone instead of a decoy enemy', () => {
+    const s = createState(
+      makeLevel(['.........'], {
+        units: [u(4, 0, 'soldier', 1), u(0, 0, 'soldier', 2)],
+        scenario: { zones: [{ id: 'exit', cells: [{ x: 8, y: 0 }] }] },
+        victory: [{ type: 'escort', selector: { ids: [1] }, zone: 'exit', count: 1 }],
+      }),
+    );
+    let action = chooseAction(s);
+    if (action.kind === 'reaction') {
+      applyAction(s, action);
+      action = chooseAction(s);
+    }
+    expect(action.kind).toBe('command');
+    if (action.kind !== 'command') return;
+    expect(action.unit).toBe(1);
+    expect(action.path.at(-1)).toEqual({ x: 7, y: 0 });
+  });
+
+  it('prioritizes the current sequence stage and ignores a tempting later objective', () => {
+    const level = makeLevel(['....'], {
+      units: [u(1, 0, 'knight', 1), u(0, 0, 'mage', 2, 10), u(2, 0, 'ogre', 2)],
+      structures: [{ id: 'gate', type: 'gate', x: 3, y: 0, owner: 2 }],
+      victory: [{
+        type: 'sequence',
+        objectives: [
+          { type: 'eliminate', selector: { ids: [3] } },
+          { type: 'destroy', structures: ['gate'] },
+        ],
+      }],
+    });
+    const s = createState(level);
+    const action = chooseAction(s);
+    expect(action).toMatchObject({
+      kind: 'command',
+      command: { ability: 'attack', target: { x: 2, y: 0 } },
+    });
+  });
+
+  it('changes a threatened protected unit to guard before spending its action', () => {
+    const s = createState(
+      makeLevel(['.....'], {
+        units: [u(1, 0, 'soldier', 1), u(2, 0, 'cleric', 1), u(4, 0, 'knight', 2)],
+        victory: [{
+          type: 'protect',
+          selector: { ids: [1] },
+          minimumAlive: 1,
+          untilTurn: 5,
+        }],
+      }),
+    );
+    expect(chooseAction(s)).toEqual({ kind: 'reaction', unit: 1, stance: 'guard' });
   });
 });

@@ -1,0 +1,819 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-03",
+  "qualityTier": "runtime-v2-candidate",
+  "runtimeReady": false,
+  "passed": true,
+  "summary": {
+    "assetCount": 27,
+    "combatUnits": 4,
+    "terrainTiles": 8,
+    "interactiveStructures": 2,
+    "equipmentIcons": 4,
+    "skillIcons": 4,
+    "fxSheets": 4,
+    "storyScenes": 1,
+    "pngFiles": 27,
+    "svgFiles": 27,
+    "machineErrors": 0
+  },
+  "checks": [
+    {
+      "id": "manifest.asset-count",
+      "passed": true,
+      "actual": 27,
+      "expected": 27
+    },
+    {
+      "id": "manifest.unique-id",
+      "passed": true,
+      "count": 27
+    },
+    {
+      "id": "manifest.unique-content-id",
+      "passed": true,
+      "count": 27
+    },
+    {
+      "id": "manifest.content-id-prefix",
+      "passed": true
+    },
+    {
+      "id": "manifest.runtime-ready-false",
+      "passed": true
+    },
+    {
+      "id": "files.existence-dimensions",
+      "passed": true,
+      "assets": [
+        {
+          "id": "c03-v2-unit-saber-shield",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 188
+        },
+        {
+          "id": "c03-v2-unit-spear-line",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 188
+        },
+        {
+          "id": "c03-v2-unit-rural-archer",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 190
+        },
+        {
+          "id": "c03-v2-unit-river-engineer",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 189
+        },
+        {
+          "id": "c03-v2-terrain-river",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGB",
+          "colors": 185
+        },
+        {
+          "id": "c03-v2-terrain-ford",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGB",
+          "colors": 185
+        },
+        {
+          "id": "c03-v2-terrain-dike",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGB",
+          "colors": 180
+        },
+        {
+          "id": "c03-v2-terrain-dike-breach",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGB",
+          "colors": 170
+        },
+        {
+          "id": "c03-v2-terrain-paddy-flooded",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGB",
+          "colors": 243
+        },
+        {
+          "id": "c03-v2-terrain-paddy-mature",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGB",
+          "colors": 223
+        },
+        {
+          "id": "c03-v2-terrain-road-mud",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGB",
+          "colors": 181
+        },
+        {
+          "id": "c03-v2-terrain-road-stone",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGB",
+          "colors": 176
+        },
+        {
+          "id": "c03-v2-structure-county-granary",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 188
+        },
+        {
+          "id": "c03-v2-structure-sluice-bridgehead",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 188
+        },
+        {
+          "id": "c03-v2-equipment-saber-shield",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 49
+        },
+        {
+          "id": "c03-v2-equipment-spear",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 48
+        },
+        {
+          "id": "c03-v2-equipment-rural-bow",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 49
+        },
+        {
+          "id": "c03-v2-equipment-river-tools",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 49
+        },
+        {
+          "id": "c03-v2-skill-guard",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 49
+        },
+        {
+          "id": "c03-v2-skill-spear-brace",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 49
+        },
+        {
+          "id": "c03-v2-skill-volley",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 48
+        },
+        {
+          "id": "c03-v2-skill-dike-repair",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 49
+        },
+        {
+          "id": "c03-v2-fx-hit-sparks",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 833
+        },
+        {
+          "id": "c03-v2-fx-controlled-fire",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 1377
+        },
+        {
+          "id": "c03-v2-fx-mud-splash",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 958
+        },
+        {
+          "id": "c03-v2-fx-repair-chips",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGBA",
+          "colors": 1217
+        },
+        {
+          "id": "c03-v2-scene-open-granary",
+          "png": true,
+          "svg": true,
+          "size": true,
+          "mode": "RGB",
+          "colors": 96
+        }
+      ]
+    },
+    {
+      "id": "units.frames-alpha-anchor",
+      "passed": true,
+      "assets": [
+        {
+          "id": "c03-v2-unit-saber-shield",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "alphaValues": [
+            0,
+            255
+          ],
+          "feetBottomY": [
+            47,
+            47,
+            47,
+            47
+          ]
+        },
+        {
+          "id": "c03-v2-unit-spear-line",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "alphaValues": [
+            0,
+            255
+          ],
+          "feetBottomY": [
+            47,
+            47,
+            47,
+            47
+          ]
+        },
+        {
+          "id": "c03-v2-unit-rural-archer",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "alphaValues": [
+            0,
+            255
+          ],
+          "feetBottomY": [
+            47,
+            47,
+            47,
+            47
+          ]
+        },
+        {
+          "id": "c03-v2-unit-river-engineer",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "alphaValues": [
+            0,
+            255
+          ],
+          "feetBottomY": [
+            47,
+            47,
+            47,
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "id": "terrain.variants-and-compatible-edges",
+      "passed": true,
+      "assets": [
+        {
+          "id": "c03-v2-terrain-river",
+          "passed": true,
+          "maskCount": 16,
+          "uniqueMasks": 16,
+          "compatibleHorizontalEdges": true,
+          "compatibleVerticalEdges": true
+        },
+        {
+          "id": "c03-v2-terrain-ford",
+          "passed": true,
+          "maskCount": 16,
+          "uniqueMasks": 16,
+          "compatibleHorizontalEdges": true,
+          "compatibleVerticalEdges": true
+        },
+        {
+          "id": "c03-v2-terrain-dike",
+          "passed": true,
+          "maskCount": 16,
+          "uniqueMasks": 16,
+          "compatibleHorizontalEdges": true,
+          "compatibleVerticalEdges": true
+        },
+        {
+          "id": "c03-v2-terrain-dike-breach",
+          "passed": true,
+          "maskCount": 16,
+          "uniqueMasks": 16,
+          "compatibleHorizontalEdges": true,
+          "compatibleVerticalEdges": true
+        },
+        {
+          "id": "c03-v2-terrain-paddy-flooded",
+          "passed": true,
+          "variantCount": 4,
+          "uniqueVariants": 4,
+          "opposingEdges": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "id": "c03-v2-terrain-paddy-mature",
+          "passed": true,
+          "variantCount": 4,
+          "uniqueVariants": 4,
+          "opposingEdges": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "id": "c03-v2-terrain-road-mud",
+          "passed": true,
+          "maskCount": 16,
+          "uniqueMasks": 16,
+          "compatibleHorizontalEdges": true,
+          "compatibleVerticalEdges": true
+        },
+        {
+          "id": "c03-v2-terrain-road-stone",
+          "passed": true,
+          "maskCount": 16,
+          "uniqueMasks": 16,
+          "compatibleHorizontalEdges": true,
+          "compatibleVerticalEdges": true
+        }
+      ]
+    },
+    {
+      "id": "transparent.binary-alpha-corners",
+      "passed": true,
+      "assets": [
+        {
+          "id": "c03-v2-structure-county-granary",
+          "passed": true,
+          "alphaValues": [
+            0,
+            255
+          ],
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "c03-v2-structure-sluice-bridgehead",
+          "passed": true,
+          "alphaValues": [
+            0,
+            255
+          ],
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "c03-v2-equipment-saber-shield",
+          "passed": true,
+          "alphaValues": [
+            0,
+            255
+          ],
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "c03-v2-equipment-spear",
+          "passed": true,
+          "alphaValues": [
+            0,
+            255
+          ],
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "c03-v2-equipment-rural-bow",
+          "passed": true,
+          "alphaValues": [
+            0,
+            255
+          ],
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "c03-v2-equipment-river-tools",
+          "passed": true,
+          "alphaValues": [
+            0,
+            255
+          ],
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "c03-v2-skill-guard",
+          "passed": true,
+          "alphaValues": [
+            0,
+            255
+          ],
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "c03-v2-skill-spear-brace",
+          "passed": true,
+          "alphaValues": [
+            0,
+            255
+          ],
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "c03-v2-skill-volley",
+          "passed": true,
+          "alphaValues": [
+            0,
+            255
+          ],
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "c03-v2-skill-dike-repair",
+          "passed": true,
+          "alphaValues": [
+            0,
+            255
+          ],
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fx.four-nonempty-ordered-frames",
+      "passed": true,
+      "assets": [
+        {
+          "id": "c03-v2-fx-hit-sparks",
+          "passed": true,
+          "frameBoxes": [
+            [
+              0,
+              4,
+              31,
+              27
+            ],
+            [
+              0,
+              2,
+              31,
+              29
+            ],
+            [
+              0,
+              2,
+              31,
+              29
+            ],
+            [
+              0,
+              3,
+              31,
+              28
+            ]
+          ],
+          "uniqueFrames": 4
+        },
+        {
+          "id": "c03-v2-fx-controlled-fire",
+          "passed": true,
+          "frameBoxes": [
+            [
+              4,
+              1,
+              27,
+              32
+            ],
+            [
+              2,
+              1,
+              30,
+              32
+            ],
+            [
+              0,
+              1,
+              31,
+              32
+            ],
+            [
+              0,
+              3,
+              31,
+              32
+            ]
+          ],
+          "uniqueFrames": 4
+        },
+        {
+          "id": "c03-v2-fx-mud-splash",
+          "passed": true,
+          "frameBoxes": [
+            [
+              3,
+              7,
+              28,
+              32
+            ],
+            [
+              2,
+              7,
+              29,
+              32
+            ],
+            [
+              2,
+              8,
+              29,
+              32
+            ],
+            [
+              0,
+              15,
+              31,
+              32
+            ]
+          ],
+          "uniqueFrames": 4
+        },
+        {
+          "id": "c03-v2-fx-repair-chips",
+          "passed": true,
+          "frameBoxes": [
+            [
+              0,
+              5,
+              31,
+              32
+            ],
+            [
+              0,
+              5,
+              31,
+              32
+            ],
+            [
+              0,
+              10,
+              31,
+              32
+            ],
+            [
+              0,
+              10,
+              31,
+              32
+            ]
+          ],
+          "uniqueFrames": 4
+        }
+      ]
+    },
+    {
+      "id": "previews.required",
+      "passed": true,
+      "files": [
+        "runtime-v2/previews/runtime-v2-contact-1x.png",
+        "runtime-v2/previews/runtime-v2-contact-2x.png",
+        "runtime-v2/previews/terrain-3x3.png",
+        "runtime-v2/previews/terrain-random-12x8.png",
+        "runtime-v2/previews/icons-grayscale-1x.png"
+      ]
+    }
+  ],
+  "errors": [],
+  "manualReview": {
+    "required": true,
+    "completed": [
+      "1x contact sheet inspection",
+      "2x nearest-neighbor contact sheet inspection",
+      "transparent edge inspection",
+      "terrain 3x3 seam inspection",
+      "terrain 12x8 composition inspection",
+      "icon grayscale silhouette inspection"
+    ],
+    "pendingBeforeRuntimeReady": [
+      "game-board integration screenshot",
+      "engine registration test using contentId",
+      "gameplay collision and interaction hotzone test",
+      "faction capture banner recolor test"
+    ],
+    "decision": "Keep runtimeReady=false until root-agent in-engine acceptance."
+  },
+  "prototype404Status": "Separate expanded/ 404-topic pack remains prototype-only; this QA does not promote it."
+}

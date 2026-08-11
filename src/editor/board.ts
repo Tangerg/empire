@@ -1,5 +1,6 @@
 import { clear, fromMarkup, setAttrs, svg } from '../art/svg';
 import { PAL } from '../art/palette';
+import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../art/battlefield-layer';
 import { TILE, terrainLayerMarkup } from '../art/terrain';
 import { unitSpriteMarkup } from '../art/units';
 import { Terrains } from '../core/data/terrain';
@@ -31,7 +32,11 @@ export class EditorBoard {
     private players: PlayerConfig[],
     private readonly handlers: EditorBoardHandlers,
   ) {
-    this.el = svg('svg', { class: 'board editor-board' });
+    this.el = svg('svg', {
+      class: 'board editor-board',
+      'shape-rendering': 'crispEdges',
+      'text-rendering': 'optimizeLegibility',
+    });
     this.layers = {};
     for (const n of ['terrain', 'grid', 'units', 'marks', 'cursor']) {
       const g = svg('g', { class: `layer layer-${n}` });
@@ -123,7 +128,7 @@ export class EditorBoard {
     this.units = units;
     this.players = players;
 
-    const sig = `${map.width}x${map.height}|${map.tiles.join('')}|${map.owners.join(',')}`;
+    const sig = battlefieldRenderKey(map);
     if (sig !== this.signature) {
       this.signature = sig;
       clear(this.layers.terrain);
@@ -136,7 +141,7 @@ export class EditorBoard {
       .map((u) => {
         const color = players.find((p) => p.id === u.owner)?.color ?? PAL.neutral;
         const bad = this.isBadPlacement(u);
-        return `<g transform="translate(${u.x * TILE},${u.y * TILE})">
+        return `<g class="unit${u.facing === 'west' ? ' face-left' : ''}" transform="translate(${u.x * TILE},${u.y * TILE})">
           ${unitSpriteMarkup(u.unit, color)}
           ${bad ? `<rect width="32" height="32" fill="#ff2d1f" opacity="0.35"/>` : ''}
         </g>`;
@@ -169,6 +174,8 @@ export class EditorBoard {
         }
       }
     }
+    const features = battlefieldFeatureMarkup(map);
+    if (features) marks.push(features);
     if (marks.length) this.layers.marks.append(fromMarkup(marks.join('')));
 
     clear(this.layers.cursor);
@@ -194,6 +201,6 @@ export class EditorBoard {
     const def = UnitTypes.tryGet(u.unit);
     if (!def) return true;
     const terrain = Terrains.get(this.map.tiles[idx(this.map, u.x, u.y)]);
-    return terrain.cost[def.movementClass] === null;
+    return terrain.cost[def.movementClass] == null;
   }
 }

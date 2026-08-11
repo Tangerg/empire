@@ -1,17 +1,19 @@
 :root {
-  --bg: #10131a;
-  --bg-soft: #171b24;
-  --bg-card: #1e2430;
-  --bg-card-2: #252d3b;
-  --line: #313a4a;
-  --text: #e6e9ef;
-  --text-dim: #9aa4b4;
-  --accent: #4c8dff;
-  --accent-2: #ffce4c;
-  --good: #5fd07a;
-  --bad: #e0604f;
-  --radius: 10px;
-  --shadow: 0 6px 24px rgb(0 0 0 / 35%);
+  --bg: #17120f;
+  --bg-soft: #221914;
+  --bg-card: #2c211b;
+  --bg-card-2: #38291f;
+  --line: #624834;
+  --text: #f2e4c8;
+  --text-dim: #bea98d;
+  --accent: #d78c3f;
+  --accent-2: #e6bd55;
+  --good: #7bb968;
+  --bad: #d96851;
+  --radius: 16px;
+  --shadow: 0 1px 0 rgb(255 255 255 / 5%), 0 8px 24px rgb(0 0 0 / 42%);
+  --shadow-border: 0 0 0 1px rgb(255 255 255 / 8%), 0 3px 10px rgb(0 0 0 / 24%);
+  --shadow-border-hover: 0 0 0 1px rgb(255 255 255 / 14%), 0 6px 16px rgb(0 0 0 / 32%);
   color-scheme: dark;
 }
 
@@ -26,7 +28,10 @@ body {
 }
 
 body {
-  background: var(--bg);
+  background:
+    linear-gradient(rgb(23 18 15 / 96%), rgb(23 18 15 / 96%)),
+    repeating-linear-gradient(90deg, transparent 0 9px, rgb(255 255 255 / 2%) 9px 10px),
+    var(--bg);
   color: var(--text);
   font:
     14px/1.5 'Inter',
@@ -37,7 +42,22 @@ body {
     sans-serif;
   font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p,
+li,
+.level-desc,
+.unit-blurb {
+  text-wrap: pretty;
 }
 
 #app {
@@ -69,8 +89,9 @@ kbd {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  min-height: 40px;
   padding: 7px 12px;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: 8px;
   background: var(--bg-card-2);
   color: var(--text);
@@ -79,17 +100,18 @@ kbd {
   cursor: pointer;
   transition:
     background 120ms ease,
-    border-color 120ms ease,
+    box-shadow 120ms ease,
     transform 80ms ease;
+  box-shadow: var(--shadow-border);
 }
 
 .btn:hover:not(:disabled) {
-  background: #2e3849;
-  border-color: #45516a;
+  background: #493424;
+  box-shadow: var(--shadow-border-hover);
 }
 
 .btn:active:not(:disabled) {
-  transform: translateY(1px);
+  transform: scale(0.96);
 }
 
 .btn:disabled {
@@ -99,13 +121,12 @@ kbd {
 
 .btn.primary {
   background: var(--accent);
-  border-color: #6ba2ff;
-  color: #06122b;
+  color: #29180d;
   font-weight: 600;
 }
 
 .btn.primary:hover:not(:disabled) {
-  background: #6ba2ff;
+  background: #e2a25f;
 }
 
 .btn.ghost {
@@ -145,13 +166,18 @@ kbd {
   place-items: center;
   padding: 16px;
   background:
-    radial-gradient(circle at 50% 0%, #1d2431 0%, #10131a 70%);
+    radial-gradient(circle at 50% 10%, #342a1f 0%, #17120f 72%);
 }
 
 .board {
   display: block;
-  border-radius: 6px;
-  box-shadow: var(--shadow);
+  border-radius: 4px;
+  outline: 1px solid rgb(255 255 255 / 10%);
+  outline-offset: -1px;
+  box-shadow:
+    0 0 0 5px #3e2c20,
+    0 0 0 7px #1e1510,
+    0 12px 32px rgb(0 0 0 / 52%);
   cursor: pointer;
   touch-action: none;
 }
@@ -164,7 +190,10 @@ kbd {
   gap: 12px;
   padding: 8px 12px;
   border-bottom: 1px solid var(--line);
-  background: var(--bg-soft);
+  background:
+    linear-gradient(rgb(46 31 23 / 96%), rgb(33 24 19 / 98%)),
+    repeating-linear-gradient(90deg, transparent 0 16px, rgb(255 255 255 / 3%) 16px 17px);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 34%);
 }
 
 .topbar-left,
@@ -185,8 +214,9 @@ kbd {
 }
 
 .turn-chip {
-  padding: 3px 8px;
-  border: 1px solid var(--line);
+  min-height: 28px;
+  padding: 4px 9px;
+  border: 1px solid rgb(255 255 255 / 7%);
   border-radius: 999px;
   color: var(--text-dim);
   font-size: 12px;
@@ -197,7 +227,7 @@ kbd {
   align-items: center;
   gap: 7px;
   padding: 4px 12px;
-  border: 1px solid color-mix(in srgb, var(--team) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--team) 62%, transparent);
   border-radius: 999px;
   background: color-mix(in srgb, var(--team) 18%, transparent);
 }
@@ -221,6 +251,7 @@ kbd {
   gap: 5px;
   color: var(--accent-2);
   font-weight: 600;
+  text-shadow: 0 1px 0 #000;
 }
 
 /* -------------------------------------------------------------------- panel */
@@ -231,7 +262,9 @@ kbd {
   padding: 10px;
   overflow-y: auto;
   border-left: 1px solid var(--line);
-  background: var(--bg-soft);
+  background:
+    linear-gradient(rgb(34 25 20 / 97%), rgb(27 20 16 / 99%)),
+    repeating-linear-gradient(0deg, transparent 0 13px, rgb(255 255 255 / 2%) 13px 14px);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -239,14 +272,17 @@ kbd {
 
 .card {
   padding: 10px 12px;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--radius);
   background: var(--bg-card);
+  box-shadow: var(--shadow-border);
 }
 
 .card.accent {
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
-  background: linear-gradient(180deg, #202a3c, var(--bg-card));
+  background: #36271e;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 42%, transparent),
+    0 4px 12px rgb(0 0 0 / 24%);
 }
 
 .card h3 {
@@ -352,6 +388,25 @@ kbd {
   color: var(--bad);
 }
 
+.fc-detail b {
+  float: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.modifier-source {
+  display: inline-block;
+  min-width: 28px;
+  color: var(--text-dim);
+  opacity: 0.72;
+}
+
+.fc-chain-title {
+  margin-top: 9px;
+  color: var(--text-dim);
+  font-size: 11px;
+  font-weight: 600;
+}
+
 /* --------------------------------------------------------------- unit card */
 
 .unit-head {
@@ -453,6 +508,20 @@ kbd {
   opacity: 0.6;
 }
 
+.unit-section {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.unit-section h4 {
+  margin: 0 0 4px;
+  color: var(--text-dim);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
 /* --------------------------------------------------------- tile/objectives */
 
 .kv {
@@ -540,7 +609,10 @@ kbd {
 /* -------------------------------------------------------------------- board */
 
 .layer-units .unit {
-  transition: opacity 120ms ease;
+  filter: drop-shadow(0 1px 0 rgb(0 0 0 / 72%)) drop-shadow(1px 0 0 rgb(0 0 0 / 34%));
+  transition:
+    opacity 120ms ease,
+    filter 120ms ease;
 }
 
 .layer-units .unit.face-left {
@@ -551,8 +623,49 @@ kbd {
   transform: translate(32px, 0) scale(-1, 1);
 }
 
+.runtime-unit-strip {
+  image-rendering: pixelated;
+  transform-box: fill-box;
+  transform-origin: 0 0;
+}
+
+.layer-units .unit.is-moving .runtime-unit-strip {
+  animation: runtime-unit-walk 320ms linear infinite;
+}
+
+@keyframes runtime-unit-walk {
+  0%,
+  24.99% {
+    transform: translateX(0);
+  }
+
+  25%,
+  49.99% {
+    transform: translateX(-32px);
+  }
+
+  50%,
+  74.99% {
+    transform: translateX(-64px);
+  }
+
+  75%,
+  100% {
+    transform: translateX(-96px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer-units .unit.is-moving .runtime-unit-strip {
+    animation: none;
+  }
+}
+
 .layer-units .unit.is-selected {
-  filter: drop-shadow(0 0 3px #fff);
+  filter:
+    drop-shadow(0 0 1px #fff)
+    drop-shadow(0 0 3px var(--accent-2))
+    drop-shadow(0 2px 1px rgb(0 0 0 / 75%));
 }
 
 .fx-damage {
@@ -724,6 +837,9 @@ kbd {
   height: 100%;
   overflow-y: auto;
   padding: 40px 24px 60px;
+  background:
+    radial-gradient(circle at 50% -20%, rgb(119 80 42 / 22%), transparent 42%),
+    linear-gradient(rgb(23 18 15 / 85%), rgb(23 18 15 / 96%));
 }
 
 .menu-inner {
@@ -735,6 +851,8 @@ kbd {
   margin: 0 0 4px;
   font-size: 30px;
   letter-spacing: 0.02em;
+  color: #f5dfb4;
+  text-shadow: 0 2px 0 #000;
 }
 
 .menu .tagline {
@@ -766,8 +884,8 @@ kbd {
   display: flex;
   flex-direction: column;
   padding: 0;
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  border: 1px solid transparent;
+  border-radius: 14px;
   background: var(--bg-card);
   color: inherit;
   font: inherit;
@@ -775,13 +893,20 @@ kbd {
   overflow: hidden;
   cursor: pointer;
   transition:
-    border-color 140ms ease,
+    box-shadow 140ms ease,
     transform 140ms ease;
+  box-shadow: var(--shadow-border);
 }
 
 .level-card:hover {
-  border-color: var(--accent);
   transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 70%, transparent),
+    0 9px 20px rgb(0 0 0 / 38%);
+}
+
+.level-card:active {
+  transform: scale(0.96);
 }
 
 .level-thumb {
@@ -789,7 +914,9 @@ kbd {
   width: 100%;
   height: 132px;
   object-fit: cover;
-  background: #0d1017;
+  background: #1a2718;
+  outline: 1px solid rgb(255 255 255 / 10%);
+  outline-offset: -1px;
 }
 
 .level-thumb svg {

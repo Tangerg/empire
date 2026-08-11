@@ -1,0 +1,820 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-03",
+  "campaignTitle": "布衣定鼎",
+  "qualityTier": "runtime-v2-candidate",
+  "runtimeReady": false,
+  "source": "built-in-imagegen+official-chroma-key+deterministic-postprocess",
+  "notes": "First playable runtime-v2 batch; it does not represent completion of the 404-topic library.",
+  "assetCount": 27,
+  "assets": [
+    {
+      "id": "c03-v2-unit-saber-shield",
+      "contentId": "grain.unit.saber-shield",
+      "type": "combat-unit",
+      "png": "runtime-v2/units/saber-shield.png",
+      "svg": "runtime-v2/units/saber-shield.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/masters/combat-units-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-v2-unit-spear-line",
+      "contentId": "grain.unit.spear-line",
+      "type": "combat-unit",
+      "png": "runtime-v2/units/spear-line.png",
+      "svg": "runtime-v2/units/spear-line.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/masters/combat-units-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-v2-unit-rural-archer",
+      "contentId": "grain.unit.rural-archer",
+      "type": "combat-unit",
+      "png": "runtime-v2/units/rural-archer.png",
+      "svg": "runtime-v2/units/rural-archer.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/masters/combat-units-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-v2-unit-river-engineer",
+      "contentId": "grain.unit.river-engineer",
+      "type": "combat-unit",
+      "png": "runtime-v2/units/river-engineer.png",
+      "svg": "runtime-v2/units/river-engineer.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/masters/combat-units-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-v2-terrain-river",
+      "contentId": "grain.terrain.river",
+      "type": "terrain-tile",
+      "png": "runtime-v2/terrain/river.png",
+      "svg": "runtime-v2/terrain/river.svg",
+      "width": 512,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/terrain-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "maskBits": {
+        "north": 1,
+        "east": 2,
+        "south": 4,
+        "west": 8
+      },
+      "variantOrder": [
+        "none",
+        "n",
+        "e",
+        "ne",
+        "s",
+        "ns",
+        "es",
+        "nes",
+        "w",
+        "nw",
+        "ew",
+        "new",
+        "sw",
+        "nsw",
+        "esw",
+        "nesw"
+      ],
+      "connectGroup": "watercourse",
+      "edgeMode": "neighbor-mask-pixel-exact",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-v2-terrain-ford",
+      "contentId": "grain.terrain.ford",
+      "type": "terrain-tile",
+      "png": "runtime-v2/terrain/ford.png",
+      "svg": "runtime-v2/terrain/ford.svg",
+      "width": 512,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/terrain-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "maskBits": {
+        "north": 1,
+        "east": 2,
+        "south": 4,
+        "west": 8
+      },
+      "variantOrder": [
+        "none",
+        "n",
+        "e",
+        "ne",
+        "s",
+        "ns",
+        "es",
+        "nes",
+        "w",
+        "nw",
+        "ew",
+        "new",
+        "sw",
+        "nsw",
+        "esw",
+        "nesw"
+      ],
+      "connectGroup": "watercourse",
+      "edgeMode": "neighbor-mask-pixel-exact",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-v2-terrain-dike",
+      "contentId": "grain.terrain.dike",
+      "type": "terrain-tile",
+      "png": "runtime-v2/terrain/dike.png",
+      "svg": "runtime-v2/terrain/dike.svg",
+      "width": 512,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/terrain-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "maskBits": {
+        "north": 1,
+        "east": 2,
+        "south": 4,
+        "west": 8
+      },
+      "variantOrder": [
+        "none",
+        "n",
+        "e",
+        "ne",
+        "s",
+        "ns",
+        "es",
+        "nes",
+        "w",
+        "nw",
+        "ew",
+        "new",
+        "sw",
+        "nsw",
+        "esw",
+        "nesw"
+      ],
+      "connectGroup": "dike-line",
+      "edgeMode": "neighbor-mask-pixel-exact",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-v2-terrain-dike-breach",
+      "contentId": "grain.terrain.dike-breach",
+      "type": "terrain-tile",
+      "png": "runtime-v2/terrain/dike-breach.png",
+      "svg": "runtime-v2/terrain/dike-breach.svg",
+      "width": 512,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/terrain-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "maskBits": {
+        "north": 1,
+        "east": 2,
+        "south": 4,
+        "west": 8
+      },
+      "variantOrder": [
+        "none",
+        "n",
+        "e",
+        "ne",
+        "s",
+        "ns",
+        "es",
+        "nes",
+        "w",
+        "nw",
+        "ew",
+        "new",
+        "sw",
+        "nsw",
+        "esw",
+        "nesw"
+      ],
+      "connectGroup": "dike-line",
+      "edgeMode": "neighbor-mask-pixel-exact",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-v2-terrain-paddy-flooded",
+      "contentId": "grain.terrain.paddy-flooded",
+      "type": "terrain-tile",
+      "png": "runtime-v2/terrain/paddy-flooded.png",
+      "svg": "runtime-v2/terrain/paddy-flooded.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/terrain-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "repeat-variants",
+      "variantOrder": [
+        "hash-0",
+        "hash-1",
+        "hash-2",
+        "hash-3"
+      ],
+      "variantSelector": "stable-coordinate-hash",
+      "edgeMode": "opposing-pixels-exact",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-v2-terrain-paddy-mature",
+      "contentId": "grain.terrain.paddy-mature",
+      "type": "terrain-tile",
+      "png": "runtime-v2/terrain/paddy-mature.png",
+      "svg": "runtime-v2/terrain/paddy-mature.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/terrain-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "repeat-variants",
+      "variantOrder": [
+        "hash-0",
+        "hash-1",
+        "hash-2",
+        "hash-3"
+      ],
+      "variantSelector": "stable-coordinate-hash",
+      "edgeMode": "opposing-pixels-exact",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-v2-terrain-road-mud",
+      "contentId": "grain.terrain.road-mud",
+      "type": "terrain-tile",
+      "png": "runtime-v2/terrain/road-mud.png",
+      "svg": "runtime-v2/terrain/road-mud.svg",
+      "width": 512,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/terrain-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "maskBits": {
+        "north": 1,
+        "east": 2,
+        "south": 4,
+        "west": 8
+      },
+      "variantOrder": [
+        "none",
+        "n",
+        "e",
+        "ne",
+        "s",
+        "ns",
+        "es",
+        "nes",
+        "w",
+        "nw",
+        "ew",
+        "new",
+        "sw",
+        "nsw",
+        "esw",
+        "nesw"
+      ],
+      "connectGroup": "road-line",
+      "edgeMode": "neighbor-mask-pixel-exact",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-v2-terrain-road-stone",
+      "contentId": "grain.terrain.road-stone",
+      "type": "terrain-tile",
+      "png": "runtime-v2/terrain/road-stone.png",
+      "svg": "runtime-v2/terrain/road-stone.svg",
+      "width": 512,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/terrain-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "maskBits": {
+        "north": 1,
+        "east": 2,
+        "south": 4,
+        "west": 8
+      },
+      "variantOrder": [
+        "none",
+        "n",
+        "e",
+        "ne",
+        "s",
+        "ns",
+        "es",
+        "nes",
+        "w",
+        "nw",
+        "ew",
+        "new",
+        "sw",
+        "nsw",
+        "esw",
+        "nesw"
+      ],
+      "connectGroup": "road-line",
+      "edgeMode": "neighbor-mask-pixel-exact",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-v2-structure-county-granary",
+      "contentId": "grain.structure.county-granary",
+      "type": "interactive-structure",
+      "png": "runtime-v2/structures/county-granary.png",
+      "svg": "runtime-v2/structures/county-granary.svg",
+      "width": 288,
+      "height": 96,
+      "sourceMaster": "runtime-v2/masters/structures-master.png",
+      "frameWidth": 96,
+      "frameHeight": 96,
+      "frames": 3,
+      "states": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "stateRows": [
+        {
+          "row": 0,
+          "states": [
+            "normal",
+            "damaged",
+            "captured"
+          ]
+        }
+      ],
+      "stateLayout": "horizontal",
+      "anchor": {
+        "x": 48,
+        "y": 95
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "collision": {
+        "x": 0,
+        "y": 32,
+        "width": 96,
+        "height": 64
+      },
+      "interactionHotzone": {
+        "x": 24,
+        "y": 48,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c03-v2-structure-sluice-bridgehead",
+      "contentId": "grain.structure.sluice-bridgehead",
+      "type": "interactive-structure",
+      "png": "runtime-v2/structures/sluice-bridgehead.png",
+      "svg": "runtime-v2/structures/sluice-bridgehead.svg",
+      "width": 288,
+      "height": 96,
+      "sourceMaster": "runtime-v2/masters/structures-master.png",
+      "frameWidth": 96,
+      "frameHeight": 96,
+      "frames": 3,
+      "states": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "stateRows": [
+        {
+          "row": 0,
+          "states": [
+            "normal",
+            "damaged",
+            "captured"
+          ]
+        }
+      ],
+      "stateLayout": "horizontal",
+      "anchor": {
+        "x": 48,
+        "y": 95
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "collision": {
+        "x": 0,
+        "y": 32,
+        "width": 96,
+        "height": 64
+      },
+      "interactionHotzone": {
+        "x": 24,
+        "y": 48,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c03-v2-equipment-saber-shield",
+      "contentId": "grain.equipment.saber-shield",
+      "type": "equipment",
+      "png": "runtime-v2/icons/equipment-saber-shield.png",
+      "svg": "runtime-v2/icons/equipment-saber-shield.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/icons-master.png",
+      "displaySizes": [
+        16,
+        24,
+        32
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 16
+      }
+    },
+    {
+      "id": "c03-v2-equipment-spear",
+      "contentId": "grain.equipment.spear",
+      "type": "equipment",
+      "png": "runtime-v2/icons/equipment-spear.png",
+      "svg": "runtime-v2/icons/equipment-spear.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/icons-master.png",
+      "displaySizes": [
+        16,
+        24,
+        32
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 16
+      }
+    },
+    {
+      "id": "c03-v2-equipment-rural-bow",
+      "contentId": "grain.equipment.rural-bow",
+      "type": "equipment",
+      "png": "runtime-v2/icons/equipment-rural-bow.png",
+      "svg": "runtime-v2/icons/equipment-rural-bow.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/icons-master.png",
+      "displaySizes": [
+        16,
+        24,
+        32
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 16
+      }
+    },
+    {
+      "id": "c03-v2-equipment-river-tools",
+      "contentId": "grain.equipment.river-tools",
+      "type": "equipment",
+      "png": "runtime-v2/icons/equipment-river-tools.png",
+      "svg": "runtime-v2/icons/equipment-river-tools.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/icons-master.png",
+      "displaySizes": [
+        16,
+        24,
+        32
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 16
+      }
+    },
+    {
+      "id": "c03-v2-skill-guard",
+      "contentId": "grain.skill.guard",
+      "type": "skill",
+      "png": "runtime-v2/icons/skill-guard.png",
+      "svg": "runtime-v2/icons/skill-guard.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/icons-master.png",
+      "displaySizes": [
+        16,
+        24,
+        32
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 16
+      }
+    },
+    {
+      "id": "c03-v2-skill-spear-brace",
+      "contentId": "grain.skill.spear-brace",
+      "type": "skill",
+      "png": "runtime-v2/icons/skill-spear-brace.png",
+      "svg": "runtime-v2/icons/skill-spear-brace.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/icons-master.png",
+      "displaySizes": [
+        16,
+        24,
+        32
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 16
+      }
+    },
+    {
+      "id": "c03-v2-skill-volley",
+      "contentId": "grain.skill.volley",
+      "type": "skill",
+      "png": "runtime-v2/icons/skill-volley.png",
+      "svg": "runtime-v2/icons/skill-volley.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/icons-master.png",
+      "displaySizes": [
+        16,
+        24,
+        32
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 16
+      }
+    },
+    {
+      "id": "c03-v2-skill-dike-repair",
+      "contentId": "grain.skill.dike-repair",
+      "type": "skill",
+      "png": "runtime-v2/icons/skill-dike-repair.png",
+      "svg": "runtime-v2/icons/skill-dike-repair.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/icons-master.png",
+      "displaySizes": [
+        16,
+        24,
+        32
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 16
+      }
+    },
+    {
+      "id": "c03-v2-fx-hit-sparks",
+      "contentId": "grain.fx.hit-sparks",
+      "type": "fx",
+      "png": "runtime-v2/fx/hit-sparks.png",
+      "svg": "runtime-v2/fx/hit-sparks.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/fx-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 14,
+      "blendMode": "add",
+      "loop": false,
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "frameOrder": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c03-v2-fx-controlled-fire",
+      "contentId": "grain.fx.controlled-fire",
+      "type": "fx",
+      "png": "runtime-v2/fx/controlled-fire.png",
+      "svg": "runtime-v2/fx/controlled-fire.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/fx-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 10,
+      "blendMode": "add",
+      "loop": false,
+      "anchor": {
+        "x": 16,
+        "y": 31
+      },
+      "frameOrder": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c03-v2-fx-mud-splash",
+      "contentId": "grain.fx.mud-splash",
+      "type": "fx",
+      "png": "runtime-v2/fx/mud-splash.png",
+      "svg": "runtime-v2/fx/mud-splash.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/fx-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "blendMode": "normal",
+      "loop": false,
+      "anchor": {
+        "x": 16,
+        "y": 31
+      },
+      "frameOrder": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c03-v2-fx-repair-chips",
+      "contentId": "grain.fx.repair-chips",
+      "type": "fx",
+      "png": "runtime-v2/fx/repair-chips.png",
+      "svg": "runtime-v2/fx/repair-chips.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/masters/fx-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 10,
+      "blendMode": "normal",
+      "loop": false,
+      "anchor": {
+        "x": 16,
+        "y": 31
+      },
+      "frameOrder": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c03-v2-scene-open-granary",
+      "contentId": "grain.scene.open-granary",
+      "type": "story-scene",
+      "png": "runtime-v2/scenes/open-granary-night.png",
+      "svg": "runtime-v2/scenes/open-granary-night.svg",
+      "width": 256,
+      "height": 144,
+      "sourceMaster": "runtime-v2/masters/granary-scene-master.png",
+      "opaque": true,
+      "dialogueSafeArea": {
+        "x": 0,
+        "y": 112,
+        "width": 256,
+        "height": 32
+      },
+      "displayScale": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

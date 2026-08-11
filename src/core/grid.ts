@@ -55,6 +55,31 @@ export function ring(
 export const terrainAt = (map: GameMap, c: Coord): TerrainId => map.tiles[idx(map, c.x, c.y)];
 export const ownerAt = (map: GameMap, c: Coord): PlayerId => map.owners[idx(map, c.x, c.y)];
 
+/** Integer Bresenham trace including both endpoints. */
+export function lineBetween(from: Coord, to: Coord): Coord[] {
+  const out: Coord[] = [];
+  let x = from.x;
+  let y = from.y;
+  const dx = Math.abs(to.x - from.x);
+  const dy = Math.abs(to.y - from.y);
+  const sx = from.x < to.x ? 1 : -1;
+  const sy = from.y < to.y ? 1 : -1;
+  let error = dx - dy;
+  for (;;) {
+    out.push({ x, y });
+    if (x === to.x && y === to.y) return out;
+    const twice = error * 2;
+    if (twice > -dy) {
+      error -= dy;
+      x += sx;
+    }
+    if (twice < dx) {
+      error += dx;
+      y += sy;
+    }
+  }
+}
+
 /** Stable per-tile pseudo-random value in [0,1) — used for art variation. */
 export function tileHash(x: number, y: number, salt = 0): number {
   let h = (x * 374761393 + y * 668265263 + salt * 2246822519) | 0;

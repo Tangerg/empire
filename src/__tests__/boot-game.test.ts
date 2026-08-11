@@ -10,7 +10,7 @@ describe('game entry point', () => {
     const menu = document.querySelector('.menu');
     expect(menu).toBeTruthy();
     expect(menu!.textContent).toContain('内置关卡');
-    expect(document.querySelectorAll('.level-card').length).toBe(3);
+    expect(document.querySelectorAll('.level-card').length).toBe(4);
     // Each card paints a real minimap.
     expect(document.querySelectorAll('.level-thumb svg g[data-tile]').length).toBeGreaterThan(100);
   });

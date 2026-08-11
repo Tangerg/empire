@@ -1,0 +1,1309 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>三剧本题材覆盖原型总览</title>
+  <style>
+    :root { color-scheme: dark; --bg:#111719; --surface:#182124; --surface-2:#202c2f; --line:#354548; --text:#f2eee4; --muted:#9eaaa8; --accent:#e0ad62; --accent-2:#7eb2a2; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at 85% 0,#243234 0,transparent 34rem),var(--bg); color:var(--text); font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; }
+    header,main { width:min(1500px,calc(100% - 32px)); margin-inline:auto; }
+    .page-head { padding:44px 0 24px; }
+    .eyebrow { color:var(--accent); font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { margin:6px 0 8px; font-size:clamp(30px,5vw,58px); line-height:1.05; letter-spacing:-.04em; }
+    .page-head p { margin:0; max-width:760px; color:var(--muted); }
+    .summary { display:flex; gap:22px; margin-top:20px; color:var(--muted); flex-wrap:wrap; }
+    .summary strong { color:var(--text); font-variant-numeric:tabular-nums; }
+    .toolbar-wrap { position:sticky; top:0; z-index:10; border-block:1px solid var(--line); background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(14px); }
+    .toolbar { width:min(1500px,calc(100% - 32px)); margin:auto; display:grid; grid-template-columns:minmax(180px,1fr) minmax(180px,1fr) minmax(240px,2fr) auto; gap:10px; padding:12px 0; align-items:center; }
+    select,input { width:100%; min-height:42px; border:1px solid var(--line); border-radius:6px; background:var(--surface); color:var(--text); padding:9px 12px; font:inherit; }
+    input::placeholder { color:var(--muted); }
+    #visible-count { color:var(--accent-2); font-variant-numeric:tabular-nums; white-space:nowrap; text-align:right; }
+    main { padding:30px 0 72px; }
+    .campaign-section { margin-bottom:54px; }
+    .campaign-heading { display:flex; justify-content:space-between; gap:20px; align-items:end; border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:28px; }
+    .campaign-heading span { color:var(--accent); font:700 12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .campaign-heading h2 { margin:3px 0 0; font-size:28px; }
+    .campaign-heading p { margin:0; color:var(--muted); }
+    .category-section { margin:0 0 38px; }
+    .section-heading { display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:12px; }
+    .section-heading h2 { margin:0; font-size:20px; }
+    .section-heading span { color:var(--muted); font-size:13px; }
+    .asset-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; }
+    .asset-card { min-width:0; border:1px solid var(--line); background:var(--surface); border-radius:8px; overflow:hidden; }
+    .asset-preview { height:210px; display:grid; place-items:center; padding:14px; background-color:#0d1214; background-image:linear-gradient(45deg,#172022 25%,transparent 25%),linear-gradient(-45deg,#172022 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#172022 75%),linear-gradient(-45deg,transparent 75%,#172022 75%); background-size:20px 20px; background-position:0 0,0 10px,10px -10px,-10px 0; }
+    .asset-preview img { display:block; max-width:100%; max-height:100%; image-rendering:pixelated; object-fit:contain; filter:drop-shadow(0 8px 16px rgba(0,0,0,.28)); }
+    .asset-copy { padding:13px 14px 15px; }
+    .asset-kicker,.asset-meta { display:flex; justify-content:space-between; gap:12px; color:var(--muted); font-size:12px; }
+    .asset-kicker span:first-child { color:var(--accent-2); text-transform:uppercase; letter-spacing:.06em; }
+    .asset-copy h3 { overflow-wrap:anywhere; margin:7px 0; font:700 14px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    code { display:block; margin-top:9px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--muted); font-size:11px; }
+    .empty { display:none; padding:64px 0; text-align:center; color:var(--muted); }
+    [hidden] { display:none !important; }
+    @media (max-width:760px) { .toolbar { grid-template-columns:1fr 1fr; } #asset-search { grid-column:1/-1; } #visible-count { text-align:left; } .campaign-heading { align-items:start; flex-direction:column; } .asset-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header class="page-head">
+    <div class="eyebrow">Prototype coverage library</div>
+    <h1>三剧本题材覆盖原型</h1>
+    <p><strong>非正式游戏美术。</strong>本页用于检查 1212 个题材的 ID、切片和引擎接线；程序化扩展图已标记为 prototype，正由 runtime-v2 逐批替换。</p>
+    <div class="summary"><span><strong>3</strong> 个剧本</span><span><strong>1212</strong> 个题材</span><span><strong>98</strong> 份 PNG</span><span><strong>12</strong> 个类别</span></div>
+  </header>
+  <div class="toolbar-wrap">
+    <div class="toolbar" role="search">
+      <select id="campaign-filter" aria-label="筛选剧本"><option value="all">全部剧本</option>
+          <option value="candidate-01">断冠之誓</option>
+          <option value="candidate-02">群星熄灭之前</option>
+          <option value="candidate-03">布衣定鼎</option>
+      </select>
+      <select id="category-filter" aria-label="筛选类别"><option value="all">全部类别</option>
+          <option value="narrative-static">叙事静态</option>
+          <option value="combat-unit">战斗单位</option>
+          <option value="mission-unit">任务单位</option>
+          <option value="faction-kit">阵营套件</option>
+          <option value="terrain">地形</option>
+          <option value="interactive-structure">交互建筑</option>
+          <option value="battle-prop">战场物件</option>
+          <option value="equipment">装备</option>
+          <option value="skill">技能</option>
+          <option value="status">状态</option>
+          <option value="fx">FX</option>
+          <option value="hud">HUD</option>
+      </select>
+      <input id="asset-search" type="search" placeholder="搜索交付 ID、路径、题材 ID 或名称" autocomplete="off">
+      <output id="visible-count" aria-live="polite">显示 98 / 98</output>
+    </div>
+  </div>
+  <main>
+    <section class="campaign-section" data-campaign-section data-campaign="candidate-01">
+      <header class="campaign-heading">
+        <div><span>candidate-01</span><h2>断冠之誓</h2></div>
+        <p>404 题材 · 32 份 PNG</p>
+      </header>
+      <section class="category-section" data-category-section data-campaign="candidate-01" data-category="narrative-static">
+        <div class="section-heading">
+          <h2>叙事静态</h2>
+          <span>80 题材 · 21 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-char-leia-01 portrait candidate-01/assets/characters/laiya-18-portrait-hd.png c01-char-leia-01 莱娅 18 岁见习旗官">
+          <div class="asset-preview"><img src="candidate-01/assets/characters/laiya-18-portrait-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-CHAR-LEIA-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-CHAR-LEIA-01</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-01/assets/characters/laiya-18-portrait-hd.png">candidate-01/assets/characters/laiya-18-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-char-roderick-01 portrait candidate-01/assets/characters/roderick-portrait-hd.png c01-char-roderick-01 罗德里克教程导师">
+          <div class="asset-preview"><img src="candidate-01/assets/characters/roderick-portrait-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-CHAR-RODERICK-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-CHAR-RODERICK-01</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-01/assets/characters/roderick-portrait-hd.png">candidate-01/assets/characters/roderick-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-char-cain-01 portrait candidate-01/assets/characters/kain-portrait-hd.png c01-char-cain-01 凯恩帝国敌将">
+          <div class="asset-preview"><img src="candidate-01/assets/characters/kain-portrait-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-CHAR-CAIN-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-CHAR-CAIN-01</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-01/assets/characters/kain-portrait-hd.png">candidate-01/assets/characters/kain-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-char-mirel-01 portrait candidate-01/assets/characters/mirelle-portrait-hd.png c01-char-mirel-01 米蕾尔教廷守墓人">
+          <div class="asset-preview"><img src="candidate-01/assets/characters/mirelle-portrait-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-CHAR-MIREL-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-CHAR-MIREL-01</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-01/assets/characters/mirelle-portrait-hd.png">candidate-01/assets/characters/mirelle-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-char-bran-01 portrait candidate-01/assets/characters/bran-portrait-hd.png c01-char-bran-01 布兰苇草村猎人">
+          <div class="asset-preview"><img src="candidate-01/assets/characters/bran-portrait-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-CHAR-BRAN-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-CHAR-BRAN-01</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-01/assets/characters/bran-portrait-hd.png">candidate-01/assets/characters/bran-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-char-tasha-01 portrait candidate-01/assets/characters/tasha-portrait-hd.png c01-char-tasha-01 塔莎佣兵首领">
+          <div class="asset-preview"><img src="candidate-01/assets/characters/tasha-portrait-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-CHAR-TASHA-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-CHAR-TASHA-01</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-01/assets/characters/tasha-portrait-hd.png">candidate-01/assets/characters/tasha-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-arch-redstone architecture candidate-01/assets/architecture/redstone-oath-tower-hd.png c01-arch-redstone 赤石誓约烽塔">
+          <div class="asset-preview"><img src="candidate-01/assets/architecture/redstone-oath-tower-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-ARCH-REDSTONE" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-ARCH-REDSTONE</h3>
+            <div class="asset-meta"><span>128 × 128</span><span>PNG</span></div>
+            <code title="candidate-01/assets/architecture/redstone-oath-tower-hd.png">candidate-01/assets/architecture/redstone-oath-tower-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-arch-gray-camp architecture candidate-01/assets/architecture/gray-banner-field-camp-hd.png c01-arch-gray-camp 灰旗野战营">
+          <div class="asset-preview"><img src="candidate-01/assets/architecture/gray-banner-field-camp-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-ARCH-GRAY-CAMP" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-ARCH-GRAY-CAMP</h3>
+            <div class="asset-meta"><span>128 × 128</span><span>PNG</span></div>
+            <code title="candidate-01/assets/architecture/gray-banner-field-camp-hd.png">candidate-01/assets/architecture/gray-banner-field-camp-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-arch-three-bridges architecture candidate-01/assets/architecture/three-bridges-river-valley-hd.png c01-arch-three-bridges 三桥河谷">
+          <div class="asset-preview"><img src="candidate-01/assets/architecture/three-bridges-river-valley-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-ARCH-THREE-BRIDGES" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-ARCH-THREE-BRIDGES</h3>
+            <div class="asset-meta"><span>128 × 128</span><span>PNG</span></div>
+            <code title="candidate-01/assets/architecture/three-bridges-river-valley-hd.png">candidate-01/assets/architecture/three-bridges-river-valley-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-arch-silverwood architecture candidate-01/assets/architecture/silverwood-tree-city-hd.png c01-arch-silverwood 银林树城">
+          <div class="asset-preview"><img src="candidate-01/assets/architecture/silverwood-tree-city-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-ARCH-SILVERWOOD" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-ARCH-SILVERWOOD</h3>
+            <div class="asset-meta"><span>128 × 128</span><span>PNG</span></div>
+            <code title="candidate-01/assets/architecture/silverwood-tree-city-hd.png">candidate-01/assets/architecture/silverwood-tree-city-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-ch01-s05 scene candidate-01/assets/scenes/gray-flag-over-burned-village-hd.png c01-ch01-s05 焚村后的第一面灰旗">
+          <div class="asset-preview"><img src="candidate-01/assets/scenes/gray-flag-over-burned-village-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-CH01-S05" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-CH01-S05</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-01/assets/scenes/gray-flag-over-burned-village-hd.png">candidate-01/assets/scenes/gray-flag-over-burned-village-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-ch01-s01 scene candidate-01/assets/scenes/twin-hills-first-command-hd.png c01-ch01-s01 双子丘陵初次指挥">
+          <div class="asset-preview"><img src="candidate-01/assets/scenes/twin-hills-first-command-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-CH01-S01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-CH01-S01</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-01/assets/scenes/twin-hills-first-command-hd.png">candidate-01/assets/scenes/twin-hills-first-command-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-ch02-s06 scene candidate-01/assets/scenes/white-river-night-crossing-hd.png c01-ch02-s06 白河夜渡">
+          <div class="asset-preview"><img src="candidate-01/assets/scenes/white-river-night-crossing-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-CH02-S06" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-CH02-S06</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-01/assets/scenes/white-river-night-crossing-hd.png">candidate-01/assets/scenes/white-river-night-crossing-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-ch07-s33-est scene candidate-01/assets/scenes/seven-towers-at-dusk-hd.png c01-ch07-s33-est 七塔王城终局远景">
+          <div class="asset-preview"><img src="candidate-01/assets/scenes/seven-towers-at-dusk-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-CH07-S33-EST" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene</span><span>1 题材</span></div>
+            <h3>C01-EXISTING-CH07-S33-EST</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-01/assets/scenes/seven-towers-at-dusk-hd.png">candidate-01/assets/scenes/seven-towers-at-dusk-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-props-01 prop-sheet candidate-01/assets/props/story-props-sheet-hd.png c01-prop-first-grey-flag c01-prop-free-oath-stone c01-prop-crown-fragment c01-prop-dragon-alliance-clasp 第一面灰旗 自由誓石 誓约王冠碎片 巨龙盟约扣">
+          <div class="asset-preview"><img src="candidate-01/assets/props/story-props-sheet-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-PROPS-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>prop-sheet</span><span>4 题材</span></div>
+            <h3>C01-EXISTING-PROPS-01</h3>
+            <div class="asset-meta"><span>192 × 48</span><span>PNG</span></div>
+            <code title="candidate-01/assets/props/story-props-sheet-hd.png">candidate-01/assets/props/story-props-sheet-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-existing-props-02 prop-sheet candidate-01/assets/props/campaign-props-sheet-02-hd.png c01-prop-left-glove c01-prop-exile-hardtack c01-prop-control-fragment c01-prop-three-peoples-clasp 莱娅左手护腕 逃亡硬饼 控制誓文残片 三族盟约扣件">
+          <div class="asset-preview"><img src="candidate-01/assets/props/campaign-props-sheet-02-hd.png" alt="断冠之誓 叙事静态 C01-EXISTING-PROPS-02" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>prop-sheet</span><span>4 题材</span></div>
+            <h3>C01-EXISTING-PROPS-02</h3>
+            <div class="asset-meta"><span>192 × 48</span><span>PNG</span></div>
+            <code title="candidate-01/assets/props/campaign-props-sheet-02-hd.png">candidate-01/assets/props/campaign-props-sheet-02-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-atlas-style-v1 style-atlas candidate-01/assets/complete/static/style-reference-atlas-v1.png c01-style-keyart c01-style-border-autumn c01-style-oath-light c01-style-long-night c01-style-elder-peoples c01-style-capital-order 莱娅面对王冠与多面军旗 灰境边境秋季视觉基准 誓火视觉语言 七塔长夜灰光 古老诸族文化并置 阿斯塔里亚王都秩序">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/static/style-reference-atlas-v1.png" alt="断冠之誓 叙事静态 C01-ATLAS-STYLE-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>style-atlas</span><span>6 题材</span></div>
+            <h3>C01-ATLAS-STYLE-V1</h3>
+            <div class="asset-meta"><span>576 × 224</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/static/style-reference-atlas-v1.png">candidate-01/assets/complete/static/style-reference-atlas-v1.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-atlas-char-stages-v1 character-atlas candidate-01/assets/complete/static/character-stage-atlas-v1.png c01-char-leia-02 c01-char-leia-03 c01-char-roderick-02 c01-char-ivra-01 c01-char-ivra-02 c01-char-ivra-03 c01-char-cain-02 c01-char-bran-02 c01-char-mirel-02 c01-char-nobanner-01 c01-char-nobanner-02 c01-char-severin c01-char-ada-01 c01-char-ada-02 c01-char-torren-01 c01-char-torren-02 莱娅 22 岁灰旗女王 莱娅 27 岁联盟统帅 罗德里克王冠军统帅 伊芙拉幼龙 伊芙拉青年龙 伊芙拉成年指挥官 凯恩独立改革军统帅 布兰自由斥候指挥官 米蕾尔最后誓约建立者 无旗者不稳定聚忆体 无旗者协调者 摄政王塞维恩 艾达 8 岁桥上孩子 艾达 17 岁王都医师 托伦北丘士兵 托伦旧旗军官">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/static/character-stage-atlas-v1.png" alt="断冠之誓 叙事静态 C01-ATLAS-CHAR-STAGES-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>character-atlas</span><span>16 题材</span></div>
+            <h3>C01-ATLAS-CHAR-STAGES-V1</h3>
+            <div class="asset-meta"><span>384 × 448</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/static/character-stage-atlas-v1.png">candidate-01/assets/complete/static/character-stage-atlas-v1.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-atlas-story-scenes-v1 scene-atlas candidate-01/assets/complete/static/story-scene-atlas-v1.png c01-ch01-s00 c01-ch01-s02 c01-ch02-s09 c01-ch03-s16 c01-ch04-s19 c01-ch05-s24 c01-ch05-s26 c01-ch06-s32 c01-ch07-s34 c01-ch07-s36e c01-ch03-s11 c01-ch03-s14 c01-ch05-s22 c01-ch06-s29 c01-scene-public-rations c01-scene-refugee-bridgework c01-scene-nursery-debate c01-scene-archive-forge-open c01-scene-old-flag-homecoming 罗德里克系护腕 三桥停火 伊芙拉断缰 无旗者形成 龙眠共同逃生 第一次命令后的安静 灰誓议会与灰夜 联盟失联后自行行动 万人跪拜之城 最后议会与无骑龙影 墓园姓名木片 山炉共同修炉 安瑟尔秩序街道 最后誓约逐一确认 灰旗营地公开分粮 难民与工程师共同修桥 银林育儿屋争议 山炉档案炉开封 旧旗士兵归乡">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/static/story-scene-atlas-v1.png" alt="断冠之誓 叙事静态 C01-ATLAS-STORY-SCENES-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene-atlas</span><span>19 题材</span></div>
+            <h3>C01-ATLAS-STORY-SCENES-V1</h3>
+            <div class="asset-meta"><span>1024 × 720</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/static/story-scene-atlas-v1.png">candidate-01/assets/complete/static/story-scene-atlas-v1.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-atlas-architecture-v1 architecture-atlas candidate-01/assets/complete/static/architecture-atlas-v1.png c01-arch-twin-hills c01-arch-veinport c01-arch-capital c01-arch-loak-bakery c01-arch-forge-city c01-arch-ansel-tower c01-arch-bone-tower c01-arch-field-hospital c01-arch-mercenary-market c01-arch-dragon-covenant-ruin 双子丘陵战斗地点 维恩港三阶段治理区 阿斯塔里亚王都 洛岬玛尔塔面包房 山炉炉城 安瑟尔控制治疗塔 白骨军塔 圣辉野战医院 佣兵补给市集 古龙盟约遗址">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/static/architecture-atlas-v1.png" alt="断冠之誓 叙事静态 C01-ATLAS-ARCHITECTURE-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture-atlas</span><span>10 题材</span></div>
+            <h3>C01-ATLAS-ARCHITECTURE-V1</h3>
+            <div class="asset-meta"><span>640 × 256</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/static/architecture-atlas-v1.png">candidate-01/assets/complete/static/architecture-atlas-v1.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="narrative-static" data-search="candidate-01 断冠之誓 narrative-static 叙事静态 c01-atlas-narrative-props-v1 prop-atlas candidate-01/assets/complete/static/narrative-prop-atlas-v1.png c01-prop-ada-medicine c01-prop-ivra-broken-bridle c01-prop-expiring-mandate c01-prop-name-tags c01-prop-casualty-register c01-prop-granary-key c01-prop-evacuation-map 艾达双文字药瓶 伊芙拉断裂缰具 可拆战时统帅期限扣 墓园活人木片与亡者姓名牌 普通士兵伤亡册 三方共管粮仓钥匙 多语言撤离路线图">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/static/narrative-prop-atlas-v1.png" alt="断冠之誓 叙事静态 C01-ATLAS-NARRATIVE-PROPS-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>prop-atlas</span><span>7 题材</span></div>
+            <h3>C01-ATLAS-NARRATIVE-PROPS-V1</h3>
+            <div class="asset-meta"><span>336 × 48</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/static/narrative-prop-atlas-v1.png">candidate-01/assets/complete/static/narrative-prop-atlas-v1.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-01" data-category="combat-unit">
+        <div class="section-heading">
+          <h2>战斗单位</h2>
+          <span>40 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="combat-unit" data-search="candidate-01 断冠之誓 combat-unit 战斗单位 c01-atlas-combat-packages-v1 combat-unit-package-atlas candidate-01/assets/complete/units/combat-unit-package-atlas-v1.png c01-unit-swordsman c01-unit-spearman c01-unit-archer c01-unit-cleric c01-unit-engineer c01-unit-banner-guard c01-unit-legion-shield c01-unit-silver-longbow c01-unit-rune-artificer c01-unit-wolf-rider c01-unit-gravekeeper c01-unit-skeleton-guard c01-unit-ranger c01-unit-assassin c01-unit-mage c01-unit-knight c01-unit-ballista c01-unit-lance-cavalry c01-unit-battle-mage c01-unit-eagle-scout c01-unit-woodland-walker c01-unit-druid c01-unit-white-stag-rider c01-unit-rune-shield c01-unit-axe-breaker c01-unit-stone-golem c01-unit-shaman c01-unit-javelin-hunter c01-unit-heavy-knight c01-unit-spirit-fire c01-unit-cannon-wagon c01-unit-troll c01-unit-berserker c01-unit-templar c01-unit-inquisitor c01-unit-ghost c01-unit-cemetery-colossus c01-unit-ivra-growth c01-unit-wyvern-rider c01-unit-ancient-dragon 剑士 枪兵 弓箭手 牧师 工程师 旗卫 军团盾卫 长弓守卫 符文工匠 狼骑兵 守墓人 骸骨卫士 游侠 刺客 法师 骑士 弩车 长枪骑兵 战斗法师 鹰骑斥候 林地行者 德鲁伊 白鹿骑手 符文盾卫 战斧兵 石魔像 萨满 投矛猎手 重装骑士 灵火精怪 火炮车 巨魔 狂战士 圣殿骑士 审判官 幽魂 墓地巨像 伊芙拉成长单位 飞龙骑手 古龙">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/units/combat-unit-package-atlas-v1.png" alt="断冠之誓 战斗单位 C01-ATLAS-COMBAT-PACKAGES-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>combat-unit-package-atlas</span><span>40 题材</span></div>
+            <h3>C01-ATLAS-COMBAT-PACKAGES-V1</h3>
+            <div class="asset-meta"><span>1280 × 1120</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/units/combat-unit-package-atlas-v1.png">candidate-01/assets/complete/units/combat-unit-package-atlas-v1.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-01" data-category="mission-unit">
+        <div class="section-heading">
+          <h2>任务单位</h2>
+          <span>24 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="mission-unit" data-search="candidate-01 断冠之誓 mission-unit 任务单位 c01-atlas-mission-packages-v1 mission-unit-package-atlas candidate-01/assets/complete/mission-units/mission-unit-package-atlas-v1.png c01-mission-border-farmer c01-mission-refugee-adult c01-mission-refugee-child c01-mission-evacuation-driver c01-mission-baker c01-mission-miner c01-mission-forge-artisan c01-mission-bridge-laborer c01-mission-relief-cook c01-mission-city-doctor c01-mission-wounded c01-mission-wall-laborer c01-mission-scribe c01-mission-name-registrar c01-mission-council-delegate c01-mission-field-messenger c01-mission-caravan-escort c01-mission-cemetery-caretaker c01-mission-town-militia c01-mission-mercenary-quartermaster c01-mission-controlled-soldier c01-mission-released-veteran c01-mission-nursery-caretaker c01-mission-detained-witness 边境农户 难民成人 难民儿童 撤离车夫 面包师 采矿工 炉城工匠 桥梁劳工 救济厨工 城市医师 伤员 城墙劳工 抄写员 姓名登记员 地方议会代表 战地传令员 商团护运员 墓园看守 城镇民兵 佣兵军需员 被控制的普通士兵 解除控制的退伍兵 森林育儿屋照护者 被押证人">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/mission-units/mission-unit-package-atlas-v1.png" alt="断冠之誓 任务单位 C01-ATLAS-MISSION-PACKAGES-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>mission-unit-package-atlas</span><span>24 题材</span></div>
+            <h3>C01-ATLAS-MISSION-PACKAGES-V1</h3>
+            <div class="asset-meta"><span>896 × 672</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/mission-units/mission-unit-package-atlas-v1.png">candidate-01/assets/complete/mission-units/mission-unit-package-atlas-v1.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-01" data-category="faction-kit">
+        <div class="section-heading">
+          <h2>阵营套件</h2>
+          <span>12 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="faction-kit" data-search="candidate-01 断冠之誓 faction-kit 阵营套件 c01-atlas-faction-kits-v1 faction-kit-atlas candidate-01/assets/complete/factions/faction-kit-atlas-v1.png c01-faction-lorne c01-faction-vilsa c01-faction-holy-light c01-faction-gray-banner c01-faction-silverwood c01-faction-mountain-forge c01-faction-wasteland c01-faction-militia-mercenary c01-faction-dragon-covenant c01-faction-oath-controlled c01-faction-named-dead c01-faction-late-alliance 洛恩王国装备基准 维尔萨帝国装备基准 圣辉教廷装备基准 灰旗自由领装备基准 银林装备基准 山炉装备基准 荒原诸部装备基准 城市民兵与佣兵装备基准 巨龙盟约装备基准 誓文受控态基准 归名亡者态基准 后期联盟态基准">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/factions/faction-kit-atlas-v1.png" alt="断冠之誓 阵营套件 C01-ATLAS-FACTION-KITS-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>faction-kit-atlas</span><span>12 题材</span></div>
+            <h3>C01-ATLAS-FACTION-KITS-V1</h3>
+            <div class="asset-meta"><span>768 × 336</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/factions/faction-kit-atlas-v1.png">candidate-01/assets/complete/factions/faction-kit-atlas-v1.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-01" data-category="terrain">
+        <div class="section-heading">
+          <h2>地形</h2>
+          <span>32 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="terrain" data-search="candidate-01 断冠之誓 terrain 地形 c01-atlas-terrain-v1 terrain-tileset-atlas candidate-01/assets/complete/terrain/terrain-group-atlas-v1.png c01-terrain-border-1 c01-terrain-border-2 c01-terrain-border-3 c01-terrain-border-4 c01-terrain-river-1 c01-terrain-river-2 c01-terrain-river-3 c01-terrain-river-4 c01-terrain-capital-1 c01-terrain-capital-2 c01-terrain-capital-3 c01-terrain-capital-4 c01-terrain-silverwood-1 c01-terrain-silverwood-2 c01-terrain-silverwood-3 c01-terrain-silverwood-4 c01-terrain-forge-1 c01-terrain-forge-2 c01-terrain-forge-3 c01-terrain-forge-4 c01-terrain-wasteland-1 c01-terrain-wasteland-2 c01-terrain-wasteland-3 c01-terrain-wasteland-4 c01-terrain-graveyard-1 c01-terrain-graveyard-2 c01-terrain-graveyard-3 c01-terrain-graveyard-4 c01-terrain-oathlight-1 c01-terrain-oathlight-2 c01-terrain-oathlight-3 c01-terrain-oathlight-4 晒麦农田 雨泥道路 焦土农田 难民车辙 河岸 浅水 桥头地面 断桥边缘 城墙步道 王都街道 医院区地面 宫城地面 普通林地 母树根区 育儿屋边缘 隐蔽草丛 炉城石地 熔沟 符文地面 档案炉区 风蚀土 岩坡 部族营地 风暴危险区 普通墓碑地 记名区 污染地 归名净化区 普通节点地 誓文受控区 失联区 自由誓石区">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/terrain/terrain-group-atlas-v1.png" alt="断冠之誓 地形 C01-ATLAS-TERRAIN-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>terrain-tileset-atlas</span><span>32 题材</span></div>
+            <h3>C01-ATLAS-TERRAIN-V1</h3>
+            <div class="asset-meta"><span>512 × 1024</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/terrain/terrain-group-atlas-v1.png">candidate-01/assets/complete/terrain/terrain-group-atlas-v1.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-01" data-category="interactive-structure">
+        <div class="section-heading">
+          <h2>交互建筑</h2>
+          <span>24 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="interactive-structure" data-search="candidate-01 断冠之誓 interactive-structure 交互建筑 c01-atlas-structures-v1 structure-state-atlas candidate-01/assets/complete/structures/interactive-structure-atlas-v1.png c01-struct-gray-flag-point c01-struct-lorne-keep c01-struct-oath-tower-console c01-struct-capital-gate c01-struct-joint-granary c01-struct-forge-workshop c01-struct-holy-medicine-shed c01-struct-mercenary-depot c01-struct-three-bridge-span c01-struct-sunken-bell-sluice c01-struct-wall-lift-gate c01-struct-old-city-tunnel c01-struct-repairable-gate c01-struct-ballista-emplacement c01-struct-forge-gun-position c01-struct-wasteland-chevaux c01-struct-field-hospital c01-struct-refugee-shelter c01-struct-public-ration-point c01-struct-wounded-shelter c01-struct-archive-furnace c01-struct-name-memorial c01-struct-gray-oath-notice c01-struct-military-registry 灰旗旗点 洛恩堡垒据点 誓约塔控制台 王都宫门 三方共管粮仓 山炉工坊 圣辉药棚 佣兵补给仓 三桥桥段 沉钟水闸 城墙升降门 旧城地道口 可修城门 弩车部署位 山炉炮位 荒原拒马 圣辉野战医院 难民避难棚 公开分粮点 伤兵棚 山炉档案炉 墓园姓名碑 灰誓公开告示 军籍登记点">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/structures/interactive-structure-atlas-v1.png" alt="断冠之誓 交互建筑 C01-ATLAS-STRUCTURES-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>structure-state-atlas</span><span>24 题材</span></div>
+            <h3>C01-ATLAS-STRUCTURES-V1</h3>
+            <div class="asset-meta"><span>768 × 576</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/structures/interactive-structure-atlas-v1.png">candidate-01/assets/complete/structures/interactive-structure-atlas-v1.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-01" data-category="battle-prop">
+        <div class="section-heading">
+          <h2>战场物件</h2>
+          <span>32 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="battle-prop" data-search="candidate-01 断冠之誓 battle-prop 战场物件 c01-atlas-battle-props-v1 battle-prop-atlas candidate-01/assets/complete/battle-props/battle-prop-atlas-v1.png c01-bprop-cover-1 c01-bprop-cover-2 c01-bprop-cover-3 c01-bprop-cover-4 c01-bprop-hazard-1 c01-bprop-hazard-2 c01-bprop-hazard-3 c01-bprop-hazard-4 c01-bprop-logistics-1 c01-bprop-logistics-2 c01-bprop-logistics-3 c01-bprop-logistics-4 c01-bprop-engineering-1 c01-bprop-engineering-2 c01-bprop-engineering-3 c01-bprop-engineering-4 c01-bprop-life-1 c01-bprop-life-2 c01-bprop-life-3 c01-bprop-life-4 c01-bprop-evidence-1 c01-bprop-evidence-2 c01-bprop-evidence-3 c01-bprop-evidence-4 c01-bprop-faction-1 c01-bprop-faction-2 c01-bprop-faction-3 c01-bprop-faction-4 c01-bprop-aftermath-1 c01-bprop-aftermath-2 c01-bprop-aftermath-3 c01-bprop-aftermath-4 木箱堆 临时盾墙 风蚀岩 翻倒粮车 油桶与火盆 攻城火药 失控誓石 亡者污染残片 粮袋车 水桶架 备件架 战地药箱 木桩 量绳 桥板 修塔脚手架 营地炊具 难民床铺 议会折叠桌 晾晒衣物 伤亡名册 公开告示 军籍牌 商团货单 灰旗组 洛恩盾标 维尔萨道路牌 圣辉状态灯 焦木废墟 弃械堆 伤员分区 共同修复痕迹">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/battle-props/battle-prop-atlas-v1.png" alt="断冠之誓 战场物件 C01-ATLAS-BATTLE-PROPS-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>battle-prop-atlas</span><span>32 题材</span></div>
+            <h3>C01-ATLAS-BATTLE-PROPS-V1</h3>
+            <div class="asset-meta"><span>512 × 512</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/battle-props/battle-prop-atlas-v1.png">candidate-01/assets/complete/battle-props/battle-prop-atlas-v1.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-01" data-category="equipment">
+        <div class="section-heading">
+          <h2>装备</h2>
+          <span>48 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="equipment" data-search="candidate-01 断冠之誓 equipment 装备 c01-atlas-equipment-v1 equipment-atlas candidate-01/assets/complete/equipment/equipment-atlas-v1.png c01-equip-swordsman c01-equip-spearman c01-equip-archer c01-equip-cleric c01-equip-engineer c01-equip-banner-guard c01-equip-legion-shield c01-equip-silver-longbow c01-equip-rune-artificer c01-equip-wolf-rider c01-equip-gravekeeper c01-equip-skeleton-guard c01-equip-ranger c01-equip-assassin c01-equip-mage c01-equip-knight c01-equip-ballista c01-equip-lance-cavalry c01-equip-battle-mage c01-equip-eagle-scout c01-equip-woodland-walker c01-equip-druid c01-equip-white-stag-rider c01-equip-rune-shield c01-equip-axe-breaker c01-equip-stone-golem c01-equip-shaman c01-equip-javelin-hunter c01-equip-heavy-knight c01-equip-spirit-fire c01-equip-cannon-wagon c01-equip-troll c01-equip-berserker c01-equip-templar c01-equip-inquisitor c01-equip-ghost c01-equip-cemetery-colossus c01-equip-ivra-growth c01-equip-wyvern-rider c01-equip-ancient-dragon c01-equip-field-medical-kit c01-equip-bridge-tower-tools c01-equip-long-range-scout-kit c01-equip-quartermaster-supply-kit c01-equip-anti-large-kit c01-equip-anti-oath-gear c01-equip-mobility-gear c01-equip-evidence-seal-kit 剑士主装备 枪兵主装备 弓箭手主装备 牧师主装备 工程师主装备 旗卫主装备 军团盾卫主装备 长弓守卫主装备 符文工匠主装备 狼骑兵主装备 守墓人主装备 骸骨卫士主装备 游侠主装备 刺客主装备 法师主装备 骑士主装备 弩车主装备 长枪骑兵主装备 战斗法师主装备 鹰骑斥候主装备 林地行者主装备 德鲁伊主装备 白鹿骑手主装备 符文盾卫主装备 战斧兵主装备 石魔像主装备 萨满主装备 投矛猎手主装备 重装骑士主装备 灵火精怪主装备 火炮车主装备 巨魔主装备 狂战士主装备 圣殿骑士主装备 审判官主装备 幽魂主装备 墓地巨像主装备 伊芙拉成长单位主装备 飞龙骑手主装备 古龙主装备 战地治疗包 桥塔工程包 长距侦察包 军需补给包 反大型破甲包 抗誓文护具 涉水攀岩机动具 证据封存交互包">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/equipment/equipment-atlas-v1.png" alt="断冠之誓 装备 C01-ATLAS-EQUIPMENT-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>equipment-atlas</span><span>48 题材</span></div>
+            <h3>C01-ATLAS-EQUIPMENT-V1</h3>
+            <div class="asset-meta"><span>1152 × 384</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/equipment/equipment-atlas-v1.png">candidate-01/assets/complete/equipment/equipment-atlas-v1.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-01" data-category="skill">
+        <div class="section-heading">
+          <h2>技能</h2>
+          <span>48 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="skill" data-search="candidate-01 断冠之誓 skill 技能 c01-atlas-skills-v1 skill-icon-atlas candidate-01/assets/complete/skills/skill-icon-atlas-v1.png c01-skill-01 c01-skill-02 c01-skill-03 c01-skill-04 c01-skill-05 c01-skill-06 c01-skill-07 c01-skill-08 c01-skill-09 c01-skill-10 c01-skill-11 c01-skill-12 c01-skill-13 c01-skill-14 c01-skill-15 c01-skill-16 c01-skill-17 c01-skill-18 c01-skill-19 c01-skill-20 c01-skill-21 c01-skill-22 c01-skill-23 c01-skill-24 c01-skill-25 c01-skill-26 c01-skill-27 c01-skill-28 c01-skill-29 c01-skill-30 c01-skill-31 c01-skill-32 c01-skill-33 c01-skill-34 c01-skill-35 c01-skill-36 c01-skill-37 c01-skill-38 c01-skill-39 c01-skill-40 c01-skill-41 c01-skill-42 c01-skill-43 c01-skill-44 c01-skill-45 c01-skill-46 c01-skill-47 c01-skill-48 占领 护卫 反骑 射击 侦察 背刺 治疗 净化 破甲术 冲锋 修复 指挥延伸 灰旗共誓 洛恩封地援护 维尔萨盾墙 道路急行 银林隐蔽 林地再生 山炉符文加固 荒原风暴鼓舞 圣辉照明盾 归名唤醒 自由之翼 誓文拒绝 架桥 拆桥 修塔 切断控制 部署弩车 架设炮位 清理污染 开启地道 战地补给 分粮 急救 抬运伤员 公开伤亡 权限确认 地方动员 撤离引导 双旗推进 右侧交给你 最后誓约 旧誓新答 白鹿穿林 符文过载 亡者归名 古龙盟约">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/skills/skill-icon-atlas-v1.png" alt="断冠之誓 技能 C01-ATLAS-SKILLS-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>skill-icon-atlas</span><span>48 题材</span></div>
+            <h3>C01-ATLAS-SKILLS-V1</h3>
+            <div class="asset-meta"><span>576 × 192</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/skills/skill-icon-atlas-v1.png">candidate-01/assets/complete/skills/skill-icon-atlas-v1.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-01" data-category="status">
+        <div class="section-heading">
+          <h2>状态</h2>
+          <span>24 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="status" data-search="candidate-01 断冠之誓 status 状态 c01-atlas-status-v1 status-icon-atlas candidate-01/assets/complete/status/status-icon-atlas-v1.png c01-status-01 c01-status-02 c01-status-03 c01-status-04 c01-status-05 c01-status-06 c01-status-07 c01-status-08 c01-status-09 c01-status-10 c01-status-11 c01-status-12 c01-status-13 c01-status-14 c01-status-15 c01-status-16 c01-status-17 c01-status-18 c01-status-19 c01-status-20 c01-status-21 c01-status-22 c01-status-23 c01-status-24 中毒 沉默 护卫 誓文受控 溃退 隐蔽 风暴暴露 受伤 资金 粮秣 弹药 士气 誓约权限 工程材料 补给 地方支持 占领目标 护送目标 撤离目标 救援目标 维修目标 破坏目标 守时目标 证据送达">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/status/status-icon-atlas-v1.png" alt="断冠之誓 状态 C01-ATLAS-STATUS-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>status-icon-atlas</span><span>24 题材</span></div>
+            <h3>C01-ATLAS-STATUS-V1</h3>
+            <div class="asset-meta"><span>384 × 144</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/status/status-icon-atlas-v1.png">candidate-01/assets/complete/status/status-icon-atlas-v1.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-01" data-category="fx">
+        <div class="section-heading">
+          <h2>FX</h2>
+          <span>24 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="fx" data-search="candidate-01 断冠之誓 fx fx c01-atlas-fx-v1 fx-atlas candidate-01/assets/complete/fx/fx-atlas-v1.png c01-fx-01 c01-fx-02 c01-fx-03 c01-fx-04 c01-fx-05 c01-fx-06 c01-fx-07 c01-fx-08 c01-fx-09 c01-fx-10 c01-fx-11 c01-fx-12 c01-fx-13 c01-fx-14 c01-fx-15 c01-fx-16 c01-fx-17 c01-fx-18 c01-fx-19 c01-fx-20 c01-fx-21 c01-fx-22 c01-fx-23 c01-fx-24 斩击 穿刺 箭矢命中 钝击 普通火焰 琥珀誓火 攻城碎屑 亡者记忆冲击 秋雨 河流浅水 荒原强风 山炉热浪 焦土余火 墓园污染 银林灵火 七塔灰光 治疗 受控 隐蔽 援护盾 结构受损 工程修复 塔网失联 据点占领">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/fx/fx-atlas-v1.png" alt="断冠之誓 FX C01-ATLAS-FX-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>fx-atlas</span><span>24 题材</span></div>
+            <h3>C01-ATLAS-FX-V1</h3>
+            <div class="asset-meta"><span>768 × 144</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/fx/fx-atlas-v1.png">candidate-01/assets/complete/fx/fx-atlas-v1.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-01" data-category="hud">
+        <div class="section-heading">
+          <h2>HUD</h2>
+          <span>16 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-01" data-category="hud" data-search="candidate-01 断冠之誓 hud hud c01-atlas-hud-v1 hud-atlas candidate-01/assets/complete/ui/hud-atlas-v1.png c01-hud-01 c01-hud-02 c01-hud-03 c01-hud-04 c01-hud-05 c01-hud-06 c01-hud-07 c01-hud-08 c01-hud-09 c01-hud-10 c01-hud-11 c01-hud-12 c01-hud-13 c01-hud-14 c01-hud-15 c01-hud-16 友军 敌军 中立 可招降 主目标 次要目标 护送目标 危险区域 补给点 治疗点 工程交互 可破坏结构 可修复结构 增援入口 撤离出口 多阵营权限争议点">
+          <div class="asset-preview"><img src="candidate-01/assets/complete/ui/hud-atlas-v1.png" alt="断冠之誓 HUD C01-ATLAS-HUD-V1" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>hud-atlas</span><span>16 题材</span></div>
+            <h3>C01-ATLAS-HUD-V1</h3>
+            <div class="asset-meta"><span>384 × 96</span><span>PNG</span></div>
+            <code title="candidate-01/assets/complete/ui/hud-atlas-v1.png">candidate-01/assets/complete/ui/hud-atlas-v1.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+    </section>
+    <section class="campaign-section" data-campaign-section data-campaign="candidate-02">
+      <header class="campaign-heading">
+        <div><span>candidate-02</span><h2>群星熄灭之前</h2></div>
+        <p>404 题材 · 33 份 PNG</p>
+      </header>
+      <section class="category-section" data-category-section data-campaign="candidate-02" data-category="narrative-static">
+        <div class="section-heading">
+          <h2>叙事静态</h2>
+          <span>80 题材 · 22 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-char-mira-01-delivery portrait candidate-02/assets/characters/mira-portrait-hd.png c02-char-mira-01 米拉·见习巡猎士">
+          <div class="asset-preview"><img src="candidate-02/assets/characters/mira-portrait-hd.png" alt="群星熄灭之前 叙事静态 c02-char-mira-01-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>c02-char-mira-01-delivery</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-02/assets/characters/mira-portrait-hd.png">candidate-02/assets/characters/mira-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-char-roan-01-delivery portrait candidate-02/assets/characters/roan-portrait-hd.png c02-char-roan-01 罗安·巡猎导师">
+          <div class="asset-preview"><img src="candidate-02/assets/characters/roan-portrait-hd.png" alt="群星熄灭之前 叙事静态 c02-char-roan-01-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>c02-char-roan-01-delivery</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-02/assets/characters/roan-portrait-hd.png">candidate-02/assets/characters/roan-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-char-naim-01-delivery portrait candidate-02/assets/characters/naim-portrait-hd.png c02-char-naim-01 奈姆·返星会指挥">
+          <div class="asset-preview"><img src="candidate-02/assets/characters/naim-portrait-hd.png" alt="群星熄灭之前 叙事静态 c02-char-naim-01-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>c02-char-naim-01-delivery</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-02/assets/characters/naim-portrait-hd.png">candidate-02/assets/characters/naim-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-char-talos-7-delivery portrait candidate-02/assets/characters/talos-7-portrait-hd.png c02-char-talos-7 塔洛斯七号">
+          <div class="asset-preview"><img src="candidate-02/assets/characters/talos-7-portrait-hd.png" alt="群星熄灭之前 叙事静态 c02-char-talos-7-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>c02-char-talos-7-delivery</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-02/assets/characters/talos-7-portrait-hd.png">candidate-02/assets/characters/talos-7-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-char-helo-delivery portrait candidate-02/assets/characters/helo-portrait-hd.png c02-char-helo 赫洛船长">
+          <div class="asset-preview"><img src="candidate-02/assets/characters/helo-portrait-hd.png" alt="群星熄灭之前 叙事静态 c02-char-helo-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>c02-char-helo-delivery</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-02/assets/characters/helo-portrait-hd.png">candidate-02/assets/characters/helo-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-char-iya-delivery portrait candidate-02/assets/characters/iya-portrait-hd.png c02-char-iya 伊娅投影">
+          <div class="asset-preview"><img src="candidate-02/assets/characters/iya-portrait-hd.png" alt="群星熄灭之前 叙事静态 c02-char-iya-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>c02-char-iya-delivery</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-02/assets/characters/iya-portrait-hd.png">candidate-02/assets/characters/iya-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-arch-rain-tower-delivery architecture candidate-02/assets/architecture/zero-rain-tower-hd.png c02-arch-rain-tower 零号雨塔">
+          <div class="asset-preview"><img src="candidate-02/assets/architecture/zero-rain-tower-hd.png" alt="群星熄灭之前 叙事静态 c02-arch-rain-tower-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture</span><span>1 题材</span></div>
+            <h3>c02-arch-rain-tower-delivery</h3>
+            <div class="asset-meta"><span>128 × 128</span><span>PNG</span></div>
+            <code title="candidate-02/assets/architecture/zero-rain-tower-hd.png">candidate-02/assets/architecture/zero-rain-tower-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-arch-farlight-01-delivery architecture candidate-02/assets/architecture/farlight-cargo-ship-hd.png c02-arch-farlight-01 远灯号初始货船态">
+          <div class="asset-preview"><img src="candidate-02/assets/architecture/farlight-cargo-ship-hd.png" alt="群星熄灭之前 叙事静态 c02-arch-farlight-01-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture</span><span>1 题材</span></div>
+            <h3>c02-arch-farlight-01-delivery</h3>
+            <div class="asset-meta"><span>128 × 128</span><span>PNG</span></div>
+            <code title="candidate-02/assets/architecture/farlight-cargo-ship-hd.png">candidate-02/assets/architecture/farlight-cargo-ship-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-arch-soler-archive-delivery architecture candidate-02/assets/architecture/soler-archive-monastery-hd.png c02-arch-soler-archive 索勒档案修院">
+          <div class="asset-preview"><img src="candidate-02/assets/architecture/soler-archive-monastery-hd.png" alt="群星熄灭之前 叙事静态 c02-arch-soler-archive-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture</span><span>1 题材</span></div>
+            <h3>c02-arch-soler-archive-delivery</h3>
+            <div class="asset-meta"><span>128 × 128</span><span>PNG</span></div>
+            <code title="candidate-02/assets/architecture/soler-archive-monastery-hd.png">candidate-02/assets/architecture/soler-archive-monastery-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-arch-ring-city-delivery architecture candidate-02/assets/architecture/kairon-ring-node-hd.png c02-arch-ring-city 凯隆环都节点">
+          <div class="asset-preview"><img src="candidate-02/assets/architecture/kairon-ring-node-hd.png" alt="群星熄灭之前 叙事静态 c02-arch-ring-city-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture</span><span>1 题材</span></div>
+            <h3>c02-arch-ring-city-delivery</h3>
+            <div class="asset-meta"><span>128 × 128</span><span>PNG</span></div>
+            <code title="candidate-02/assets/architecture/kairon-ring-node-hd.png">candidate-02/assets/architecture/kairon-ring-node-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-scene-season-without-rain-delivery scene candidate-02/assets/scenes/season-without-rain-hd.png c02-scene-season-without-rain 没有下雨的季节">
+          <div class="asset-preview"><img src="candidate-02/assets/scenes/season-without-rain-hd.png" alt="群星熄灭之前 叙事静态 c02-scene-season-without-rain-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene</span><span>1 题材</span></div>
+            <h3>c02-scene-season-without-rain-delivery</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-02/assets/scenes/season-without-rain-hd.png">candidate-02/assets/scenes/season-without-rain-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-scene-seven-minute-rain-delivery scene candidate-02/assets/scenes/seven-minute-rain-hd.png c02-scene-seven-minute-rain 七分钟的雨">
+          <div class="asset-preview"><img src="candidate-02/assets/scenes/seven-minute-rain-hd.png" alt="群星熄灭之前 叙事静态 c02-scene-seven-minute-rain-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene</span><span>1 题材</span></div>
+            <h3>c02-scene-seven-minute-rain-delivery</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-02/assets/scenes/seven-minute-rain-hd.png">candidate-02/assets/scenes/seven-minute-rain-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-scene-farlight-departure-delivery scene candidate-02/assets/scenes/farlight-departure-hd.png c02-scene-farlight-departure 远灯号起飞">
+          <div class="asset-preview"><img src="candidate-02/assets/scenes/farlight-departure-hd.png" alt="群星熄灭之前 叙事静态 c02-scene-farlight-departure-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene</span><span>1 题材</span></div>
+            <h3>c02-scene-farlight-departure-delivery</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-02/assets/scenes/farlight-departure-hd.png">candidate-02/assets/scenes/farlight-departure-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-scene-folding-table-covenant-delivery scene candidate-02/assets/scenes/folding-table-covenant-hd.png c02-scene-folding-table-covenant 折叠桌星约">
+          <div class="asset-preview"><img src="candidate-02/assets/scenes/folding-table-covenant-hd.png" alt="群星熄灭之前 叙事静态 c02-scene-folding-table-covenant-delivery" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene</span><span>1 题材</span></div>
+            <h3>c02-scene-folding-table-covenant-delivery</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-02/assets/scenes/folding-table-covenant-hd.png">candidate-02/assets/scenes/folding-table-covenant-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-existing-story-props prop-atlas candidate-02/assets/props/story-props-sheet-hd.png c02-prop-rain-filter-core c02-prop-maintenance-key c02-prop-firefly-drone c02-prop-memory-echo-container 净水芯 星脉低权限密钥 萤火维修无人机 记忆回声容器">
+          <div class="asset-preview"><img src="candidate-02/assets/props/story-props-sheet-hd.png" alt="群星熄灭之前 叙事静态 c02-existing-story-props" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>prop-atlas</span><span>4 题材</span></div>
+            <h3>c02-existing-story-props</h3>
+            <div class="asset-meta"><span>192 × 48</span><span>PNG</span></div>
+            <code title="candidate-02/assets/props/story-props-sheet-hd.png">candidate-02/assets/props/story-props-sheet-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-existing-campaign-props prop-atlas candidate-02/assets/props/campaign-props-sheet-02-hd.png c02-prop-hesha-cup c02-prop-roan-risk-list c02-prop-two-tickets c02-prop-iya-door 赫沙金属杯 罗安风险清单 两张撤离票 伊娅可关闭门控件">
+          <div class="asset-preview"><img src="candidate-02/assets/props/campaign-props-sheet-02-hd.png" alt="群星熄灭之前 叙事静态 c02-existing-campaign-props" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>prop-atlas</span><span>4 题材</span></div>
+            <h3>c02-existing-campaign-props</h3>
+            <div class="asset-meta"><span>192 × 48</span><span>PNG</span></div>
+            <code title="candidate-02/assets/props/campaign-props-sheet-02-hd.png">candidate-02/assets/props/campaign-props-sheet-02-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-style-atlas-complete style-atlas candidate-02/assets/expansion/atlases/c02-style-atlas-complete.png c02-style-keyart c02-style-hesha c02-style-echo-tide c02-style-dark-stars c02-style-soler c02-style-nereia c02-style-verdant c02-style-kairon c02-style-farlight-life c02-style-ring-maintenance c02-style-five-world-materials c02-style-post-milight 远灯号驶向熄灭弥光 赫沙赤砂与水循环 寂潮生活记忆视觉语言 弥光熄灭应急照明 索勒蓝冰与热灯 涅瑞亚多层潮城 维尔达活体城市 凯隆权限层环城 远灯号拥挤生活层 环庭维护界面 五界材料语言 熄星后物理生存">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-style-atlas-complete.png" alt="群星熄灭之前 叙事静态 c02-style-atlas-complete" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>style-atlas</span><span>12 题材</span></div>
+            <h3>c02-style-atlas-complete</h3>
+            <div class="asset-meta"><span>1024 × 432</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-style-atlas-complete.png">candidate-02/assets/expansion/atlases/c02-style-atlas-complete.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-character-atlas-expanded portrait-atlas candidate-02/assets/expansion/atlases/c02-character-atlas-expanded.png c02-char-mira-02 c02-char-mira-03 c02-char-roan-02 c02-char-firefly c02-char-naim-02 c02-char-olo c02-char-kota c02-char-ishan c02-char-sadi c02-char-lanko c02-char-misa-family 米拉·远灯号领队 米拉·星约巡行员 罗安·归零代行者 萤火维修单位设定 奈姆·受审后行动员 奥洛潮汐祭司 珂塔共生者 伊珊模型分析员 萨迪赫沙医师 岚柯见习维护员 米萨外环家庭">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-character-atlas-expanded.png" alt="群星熄灭之前 叙事静态 c02-character-atlas-expanded" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait-atlas</span><span>11 题材</span></div>
+            <h3>c02-character-atlas-expanded</h3>
+            <div class="asset-meta"><span>384 × 336</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-character-atlas-expanded.png">candidate-02/assets/expansion/atlases/c02-character-atlas-expanded.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-creature-atlas-expanded creature-atlas candidate-02/assets/expansion/atlases/c02-creature-atlas-expanded.png c02-creature-rain-shepherd 雨牧者结构设定">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-creature-atlas-expanded.png" alt="群星熄灭之前 叙事静态 c02-creature-atlas-expanded" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>creature-atlas</span><span>1 题材</span></div>
+            <h3>c02-creature-atlas-expanded</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-creature-atlas-expanded.png">candidate-02/assets/expansion/atlases/c02-creature-atlas-expanded.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-scene-atlas-expanded scene-atlas candidate-02/assets/expansion/atlases/c02-scene-atlas-expanded.png c02-scene-growing-wall c02-scene-five-world-broadcast c02-scene-iya-gets-door c02-scene-inverted-city-maintenance c02-scene-last-natural-rain c02-scene-soler-ice-beacon c02-scene-two-percent-dock c02-scene-falling-ring-team c02-scene-uker-festival c02-scene-return-hesha c02-scene-sandstorm-water-repair c02-scene-soler-heat-shift c02-scene-nereia-platform-vote c02-scene-verdant-bridge-pruning c02-scene-kairon-train-evacuation c02-scene-quarantine-ship-rotation 维尔达生长城墙 五界责任广播 伊娅获得门 倒悬城低权限维护 最后一场自然雨 索勒冰海信标 百分之二船坞 坠环分队 厄客前世城市节日 返回赫沙与共管雨塔 沙暴中维修水塔 索勒热灯轮值 涅瑞亚浮台表决 维尔达居民修剪活桥 凯隆列车撤离 隔离舰公开轮换">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-scene-atlas-expanded.png" alt="群星熄灭之前 叙事静态 c02-scene-atlas-expanded" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene-atlas</span><span>16 题材</span></div>
+            <h3>c02-scene-atlas-expanded</h3>
+            <div class="asset-meta"><span>1024 × 576</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-scene-atlas-expanded.png">candidate-02/assets/expansion/atlases/c02-scene-atlas-expanded.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-architecture-atlas-expanded architecture-atlas candidate-02/assets/expansion/atlases/c02-architecture-atlas-expanded.png c02-arch-farlight-02 c02-arch-farlight-03 c02-arch-inverted-city c02-arch-nereia-float c02-arch-verdant-living-city c02-arch-uker-city c02-arch-hesha-water-guild c02-arch-soler-heat-chain c02-arch-nereia-tide-anchor c02-arch-verdant-fungus-clinic c02-arch-kairon-outer-repair 远灯号中期难民生活态 远灯号终章物理系统态 弥光倒悬城 涅瑞亚浮城 维尔达活体城市 厄客前世城 赫沙水务公会 索勒热灯链 涅瑞亚潮锚站 维尔达菌床诊所 凯隆外环维修站">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-architecture-atlas-expanded.png" alt="群星熄灭之前 叙事静态 c02-architecture-atlas-expanded" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture-atlas</span><span>11 题材</span></div>
+            <h3>c02-architecture-atlas-expanded</h3>
+            <div class="asset-meta"><span>512 × 384</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-architecture-atlas-expanded.png">candidate-02/assets/expansion/atlases/c02-architecture-atlas-expanded.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="narrative-static" data-search="candidate-02 群星熄灭之前 narrative-static 叙事静态 c02-prop-atlas-expanded prop-atlas candidate-02/assets/expansion/atlases/c02-prop-atlas-expanded.png c02-prop-covenant-table c02-prop-mira-license c02-prop-talos-wills c02-prop-public-cargo-rotation c02-prop-living-isolation c02-prop-physical-route-box c02-prop-five-world-roster 五界星约折叠桌 米拉巡猎执照 塔洛斯三份冲突遗书 公开货舱与撤离轮换板 维尔达活体隔离网 离线物理航路盒 五界维护班表">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-prop-atlas-expanded.png" alt="群星熄灭之前 叙事静态 c02-prop-atlas-expanded" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>prop-atlas</span><span>7 题材</span></div>
+            <h3>c02-prop-atlas-expanded</h3>
+            <div class="asset-meta"><span>192 × 96</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-prop-atlas-expanded.png">candidate-02/assets/expansion/atlases/c02-prop-atlas-expanded.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-02" data-category="combat-unit">
+        <div class="section-heading">
+          <h2>战斗单位</h2>
+          <span>40 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="combat-unit" data-search="candidate-02 群星熄灭之前 combat-unit 战斗单位 c02-combat-unit-atlas-complete unit-atlas candidate-02/assets/expansion/atlases/c02-combat-unit-atlas-complete.png c02-unit-star-shield c02-unit-power-swordsman c02-unit-symbiotic-guard c02-unit-sand-rider c02-unit-hover-lancer c02-unit-tide-fin-scout c02-unit-rail-rifleman c02-unit-long-beam-sniper c02-unit-spore-shooter c02-unit-star-vein-mage c02-unit-tide-priest c02-unit-memory-monk c02-unit-field-medic c02-unit-repair-engineer c02-unit-protocol-analyst c02-unit-guard-robot c02-unit-turret-vehicle c02-unit-light-mech c02-unit-antler-knight c02-unit-forest-beast-handler c02-unit-eco-maintainer c02-unit-boarding-team c02-unit-vacuum-trooper c02-unit-stargate-guard c02-unit-rain-tower-engineer c02-unit-wind-sail-skirmisher c02-unit-heat-lamp-shield c02-unit-ice-hook-hunter c02-unit-floating-city-guard c02-unit-tide-anchor-engineer c02-unit-fungus-bed-medic c02-unit-defoliator-pilot c02-unit-ring-rail-guard c02-unit-gravity-rescuer c02-unit-physical-archive-keeper c02-unit-echo-tracker c02-unit-reset-guard c02-unit-protocol-adjudicator c02-unit-starbreaker-sapper c02-unit-rain-shepherd 星盾兵 动力剑士 共生卫士 沙地游骑 悬浮枪骑 潮鳍斥候 轨道步枪手 长束狙击手 孢子射手 星脉术士 潮汐祭司 记忆修士 战地医师 维修师 协议分析员 守卫机器人 炮台工程车 轻型机甲 角枝骑士 林兽驭手 生态维护体 接舷队 真空兵 星门守卫 雨塔工程员 风帆散兵 热灯盾修 冰钩猎手 浮城枪卫 潮锚工程员 菌床医师 除生机驾驶员 环城轨卫 重力救援员 物理档案守护员 回声追迹者 归零守卫 协议裁定员 断星工兵 雨牧者战斗体">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-combat-unit-atlas-complete.png" alt="群星熄灭之前 战斗单位 c02-combat-unit-atlas-complete" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>unit-atlas</span><span>40 题材</span></div>
+            <h3>c02-combat-unit-atlas-complete</h3>
+            <div class="asset-meta"><span>1024 × 240</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-combat-unit-atlas-complete.png">candidate-02/assets/expansion/atlases/c02-combat-unit-atlas-complete.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-02" data-category="mission-unit">
+        <div class="section-heading">
+          <h2>任务单位</h2>
+          <span>24 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="mission-unit" data-search="candidate-02 群星熄灭之前 mission-unit 任务单位 c02-mission-unit-atlas-complete mission-unit-atlas candidate-02/assets/expansion/atlases/c02-mission-unit-atlas-complete.png c02-mission-water-maintainer c02-mission-water-collector c02-mission-red-sand-child c02-mission-cargo-crew c02-mission-refugee c02-mission-patient c02-mission-dock-builder c02-mission-heat-lamp-monk c02-mission-floating-city-civilian c02-mission-eco-cultivator c02-mission-outer-ring-worker c02-mission-named-echo-civilian c02-mission-rain-dispatcher c02-mission-climate-observer c02-mission-physical-archivist c02-mission-seed-bank-carer c02-mission-ring-train-conductor c02-mission-vacuum-rescuer c02-mission-quarantine-resident c02-mission-maintenance-union-rep c02-mission-five-world-medic c02-mission-food-cultivator c02-mission-offline-courier c02-mission-evacuation-registrar 赫沙水务维护员 接水居民 赤砂镇儿童 远灯号货运船员 难民 病患 船坞造船工 索勒热灯维护修士 涅瑞亚浮城船民 维尔达生态培育员 凯隆外环维修工 厄客留名者生活投影 雨塔调度员 气候观测员 物理档案员 胚胎库种子库照护员 环城列车员 真空事故救援员 隔离舰普通居民 维护工会代表 五界战地医护 远灯号食物培育员 离线物理信使 撤离登记员">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-mission-unit-atlas-complete.png" alt="群星熄灭之前 任务单位 c02-mission-unit-atlas-complete" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>mission-unit-atlas</span><span>24 题材</span></div>
+            <h3>c02-mission-unit-atlas-complete</h3>
+            <div class="asset-meta"><span>768 × 192</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-mission-unit-atlas-complete.png">candidate-02/assets/expansion/atlases/c02-mission-unit-atlas-complete.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-02" data-category="faction-kit">
+        <div class="section-heading">
+          <h2>阵营套件</h2>
+          <span>12 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="faction-kit" data-search="candidate-02 群星熄灭之前 faction-kit 阵营套件 c02-faction-kit-atlas-complete faction-kit-atlas candidate-02/assets/expansion/atlases/c02-faction-kit-atlas-complete.png c02-faction-hesha c02-faction-soler c02-faction-nereia c02-faction-verdant c02-faction-kairon c02-faction-uker c02-faction-ring-court c02-faction-returners-farlight c02-faction-light-chaser-fleet c02-faction-reset-state c02-faction-echo-tide-corruption c02-faction-milight-emergency 赫沙装备基准 索勒装备基准 涅瑞亚装备基准 维尔达装备基准 凯隆装备基准 厄客装备基准 环庭装备基准 返星会与远灯号基准 逐光舰队基准 归零状态基准 寂潮侵蚀状态基准 弥光熄灭应急基准">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-faction-kit-atlas-complete.png" alt="群星熄灭之前 阵营套件 c02-faction-kit-atlas-complete" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>faction-kit-atlas</span><span>12 题材</span></div>
+            <h3>c02-faction-kit-atlas-complete</h3>
+            <div class="asset-meta"><span>768 × 384</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-faction-kit-atlas-complete.png">candidate-02/assets/expansion/atlases/c02-faction-kit-atlas-complete.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-02" data-category="terrain">
+        <div class="section-heading">
+          <h2>地形</h2>
+          <span>32 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="terrain" data-search="candidate-02 群星熄灭之前 terrain 地形 c02-terrain-atlas-complete terrain-atlas candidate-02/assets/expansion/atlases/c02-terrain-atlas-complete.png c02-terrain-hesha-red-sand c02-terrain-hesha-glass-sea c02-terrain-hesha-sealed-waterway c02-terrain-hesha-sandstorm-quicksand c02-terrain-soler-blue-ice c02-terrain-soler-brittle-ice c02-terrain-soler-heated-walkway c02-terrain-soler-deep-factory c02-terrain-nereia-floating-platform c02-terrain-nereia-shallow-tide c02-terrain-nereia-deep-water c02-terrain-nereia-reverse-current c02-terrain-verdant-living-bridge c02-terrain-verdant-fungus-bed c02-terrain-verdant-spore-fog c02-terrain-verdant-root-nest c02-terrain-kairon-train-platform c02-terrain-kairon-vertical-city c02-terrain-kairon-vacuum-breach c02-terrain-kairon-separation-ring c02-terrain-uker-grave-fragments c02-terrain-uker-physical-ruin c02-terrain-uker-memory-overlay c02-terrain-uker-reality-rebuild c02-terrain-farlight-cargo-hold c02-terrain-farlight-living-deck c02-terrain-farlight-service-pipes c02-terrain-farlight-projection-garden c02-terrain-milight-corona-service c02-terrain-milight-vein-ring c02-terrain-milight-inverted-city c02-terrain-milight-rotating-blackout 赫沙赤砂沙丘 赫沙玻璃海 赫沙密封水路 赫沙沙暴流沙 索勒蓝冰 索勒脆冰 索勒热灯步道 索勒深层工厂 涅瑞亚浮台 涅瑞亚浅潮 涅瑞亚深水 涅瑞亚逆向洋流 维尔达活桥 维尔达菌床 维尔达孢子雾 维尔达根巢 凯隆列车站台 凯隆垂直城区 凯隆真空破口 凯隆分离环 厄客墓星碎片 厄客物理废墟 厄客记忆覆盖 厄客现实重构 远灯号货舱 远灯号生活舱 远灯号管道维修层 远灯号投影培育舱 弥光日冕维护面 弥光星脉环 弥光倒悬城 弥光旋转重力熄灯态">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-terrain-atlas-complete.png" alt="群星熄灭之前 地形 c02-terrain-atlas-complete" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>terrain-atlas</span><span>32 题材</span></div>
+            <h3>c02-terrain-atlas-complete</h3>
+            <div class="asset-meta"><span>512 × 256</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-terrain-atlas-complete.png">candidate-02/assets/expansion/atlases/c02-terrain-atlas-complete.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-02" data-category="interactive-structure">
+        <div class="section-heading">
+          <h2>交互建筑</h2>
+          <span>24 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="interactive-structure" data-search="candidate-02 群星熄灭之前 interactive-structure 交互建筑 c02-interactive-atlas-complete interactive-structure-atlas candidate-02/assets/expansion/atlases/c02-interactive-atlas-complete.png c02-structure-rain-tower-console c02-structure-star-vein-node c02-structure-tide-anchor-console c02-structure-gravity-switch c02-structure-water-filter-station c02-structure-heat-lamp-hub c02-structure-cargo-terminal c02-structure-fungus-seed-bank c02-structure-sky-elevator c02-structure-rail-switch c02-structure-movable-platform c02-structure-pressure-door c02-structure-orbital-gun-console c02-structure-folding-turret c02-structure-vacuum-bulkhead c02-structure-living-isolation-grid c02-structure-civil-shelter c02-structure-medical-isolation c02-structure-evacuation-point c02-structure-emergency-life-support c02-structure-physical-archive-cabinet c02-structure-permission-log c02-structure-public-cargo-board c02-structure-five-world-broadcast-node 雨塔控台 星脉权限节点 潮锚控制台 重力切换台 水封过滤站 热灯枢纽 货舱终端 菌床种子库 天梯港升降机 列车道岔 可移动浮台 压力舱门 轨道炮控台 折叠炮台 真空隔断门 活体隔离网 民用避难所 医疗隔离站 撤离集合点 应急维生站 物理档案柜 权限日志台 公开货舱板 五界广播节点">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-interactive-atlas-complete.png" alt="群星熄灭之前 交互建筑 c02-interactive-atlas-complete" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>interactive-structure-atlas</span><span>24 题材</span></div>
+            <h3>c02-interactive-atlas-complete</h3>
+            <div class="asset-meta"><span>768 × 384</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-interactive-atlas-complete.png">candidate-02/assets/expansion/atlases/c02-interactive-atlas-complete.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-02" data-category="battle-prop">
+        <div class="section-heading">
+          <h2>战场物件</h2>
+          <span>32 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="battle-prop" data-search="candidate-02 群星熄灭之前 battle-prop 战场物件 c02-battle-prop-atlas-complete battle-prop-atlas candidate-02/assets/expansion/atlases/c02-battle-prop-atlas-complete.png c02-battle-prop-ceramic-water-tanks c02-battle-prop-cargo-crates c02-battle-prop-platform-shields c02-battle-prop-giant-roots c02-battle-prop-overload-nodes c02-battle-prop-fuel-oxygen-tanks c02-battle-prop-ice-cracks c02-battle-prop-spore-sacs c02-battle-prop-water-barrels c02-battle-prop-spare-part-racks c02-battle-prop-stretcher-medkits c02-battle-prop-seed-coolers c02-battle-prop-repair-arms c02-battle-prop-cable-reels c02-battle-prop-anchor-winches c02-battle-prop-hull-patches c02-battle-prop-cups-cookware c02-battle-prop-bunks c02-battle-prop-folding-tables c02-battle-prop-drying-racks c02-battle-prop-risk-list-evidence c02-battle-prop-tickets-manifests c02-battle-prop-physical-film c02-battle-prop-permission-badges c02-battle-prop-hesha-water-signs c02-battle-prop-soler-heat-emblems c02-battle-prop-five-world-flags c02-battle-prop-permission-lights c02-battle-prop-discarded-arms c02-battle-prop-broken-rails c02-battle-prop-dead-fungus-beds c02-battle-prop-community-repairs 陶瓷水罐掩体组 货箱掩体组 站台盾掩体组 巨根掩体组 过载节点危险组 燃料氧气罐危险组 冰裂危险组 孢子囊危险组 水桶后勤组 备件架后勤组 担架药箱后勤组 种子冷柜后勤组 维修臂工程组 线缆卷工程组 潮锚绞盘工程组 舱壁补片工程组 金属杯炊具生活组 床铺生活组 折叠桌生活组 晾衣架生活组 风险清单证据组 票与货单证据组 实体胶片证据组 权限牌证据组 赫沙水务标识组 索勒热灯标识组 五界材料旗组 权限状态灯组 弃械战后组 断轨战后组 枯死菌床战后组 社区修复痕迹组">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-battle-prop-atlas-complete.png" alt="群星熄灭之前 战场物件 c02-battle-prop-atlas-complete" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>battle-prop-atlas</span><span>32 题材</span></div>
+            <h3>c02-battle-prop-atlas-complete</h3>
+            <div class="asset-meta"><span>512 × 256</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-battle-prop-atlas-complete.png">candidate-02/assets/expansion/atlases/c02-battle-prop-atlas-complete.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-02" data-category="equipment">
+        <div class="section-heading">
+          <h2>装备</h2>
+          <span>48 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="equipment" data-search="candidate-02 群星熄灭之前 equipment 装备 c02-equipment-atlas-complete equipment-atlas candidate-02/assets/expansion/atlases/c02-equipment-atlas-complete.png c02-equipment-star-shield c02-equipment-power-swordsman c02-equipment-symbiotic-guard c02-equipment-sand-rider c02-equipment-hover-lancer c02-equipment-tide-fin-scout c02-equipment-rail-rifleman c02-equipment-long-beam-sniper c02-equipment-spore-shooter c02-equipment-star-vein-mage c02-equipment-tide-priest c02-equipment-memory-monk c02-equipment-field-medic c02-equipment-repair-engineer c02-equipment-protocol-analyst c02-equipment-guard-robot c02-equipment-turret-vehicle c02-equipment-light-mech c02-equipment-antler-knight c02-equipment-forest-beast-handler c02-equipment-eco-maintainer c02-equipment-boarding-team c02-equipment-vacuum-trooper c02-equipment-stargate-guard c02-equipment-rain-tower-engineer c02-equipment-wind-sail-skirmisher c02-equipment-heat-lamp-shield c02-equipment-ice-hook-hunter c02-equipment-floating-city-guard c02-equipment-tide-anchor-engineer c02-equipment-fungus-bed-medic c02-equipment-defoliator-pilot c02-equipment-ring-rail-guard c02-equipment-gravity-rescuer c02-equipment-physical-archive-keeper c02-equipment-echo-tracker c02-equipment-reset-guard c02-equipment-protocol-adjudicator c02-equipment-starbreaker-sapper c02-equipment-rain-shepherd c02-equipment-sealed-medical-kit c02-equipment-multi-standard-repair-pack c02-equipment-offline-scout-instrument c02-equipment-public-supply-crate c02-equipment-anti-large-charge c02-equipment-memory-spore-isolator c02-equipment-magboot-tractor-set c02-equipment-mission-evidence-box 星盾兵主装备 动力剑士主装备 共生卫士主装备 沙地游骑主装备 悬浮枪骑主装备 潮鳍斥候主装备 轨道步枪手主装备 长束狙击手主装备 孢子射手主装备 星脉术士主装备 潮汐祭司主装备 记忆修士主装备 战地医师主装备 维修师主装备 协议分析员主装备 守卫机器人主装备 炮台工程车主装备 轻型机甲主装备 角枝骑士主装备 林兽驭手主装备 生态维护体主装备 接舷队主装备 真空兵主装备 星门守卫主装备 雨塔工程员主装备 风帆散兵主装备 热灯盾修主装备 冰钩猎手主装备 浮城枪卫主装备 潮锚工程员主装备 菌床医师主装备 除生机驾驶员主装备 环城轨卫主装备 重力救援员主装备 物理档案守护员主装备 回声追迹者主装备 归零守卫主装备 协议裁定员主装备 断星工兵主装备 雨牧者战斗体主装备 密封担架医疗包 多规格维修背架 离线侦察仪 公共补给箱 反大型定向爆破包 记忆孢子隔离装 磁靴牵引组 任务权限证据箱">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-equipment-atlas-complete.png" alt="群星熄灭之前 装备 c02-equipment-atlas-complete" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>equipment-atlas</span><span>48 题材</span></div>
+            <h3>c02-equipment-atlas-complete</h3>
+            <div class="asset-meta"><span>768 × 576</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-equipment-atlas-complete.png">candidate-02/assets/expansion/atlases/c02-equipment-atlas-complete.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-02" data-category="skill">
+        <div class="section-heading">
+          <h2>技能</h2>
+          <span>48 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="skill" data-search="candidate-02 群星熄灭之前 skill 技能 c02-skill-atlas-complete skill-atlas candidate-02/assets/expansion/atlases/c02-skill-atlas-complete.png c02-skill-guard c02-skill-assault c02-skill-rescue-dash c02-skill-suppress c02-skill-snipe c02-skill-spore-shot c02-skill-vein-downgrade c02-skill-field-heal c02-skill-quick-repair c02-skill-scan c02-skill-boarding c02-skill-vacuum-traction c02-skill-sand-sail c02-skill-redirect-wind c02-skill-heat-zone c02-skill-ice-hook c02-skill-shift-tide c02-skill-deploy-tide-anchor c02-skill-symbiotic-regen c02-skill-fungus-purify c02-skill-rail-permission c02-skill-gravity-rescue c02-skill-memory-reveal c02-skill-echo-isolation c02-skill-repair-node c02-skill-reroute-water c02-skill-deploy-turret c02-skill-toggle-bulkhead c02-skill-switch-rail c02-skill-brace-platform c02-skill-prune-bridge c02-skill-rotate-gravity c02-skill-resupply-ammo c02-skill-emergency-water c02-skill-emergency-heat c02-skill-confirm-permission c02-skill-physical-backup c02-skill-mark-evacuation c02-skill-medical-transfer c02-skill-publish-cargo c02-skill-shield-chain c02-skill-rider-rescue-chain c02-skill-rail-calibration c02-skill-maintainer-rebuild c02-skill-zero-permission-breach c02-skill-five-world-combo c02-skill-memory-reality-overlap c02-skill-climate-correction 援护 动力突击 救援冲刺 轨道压制 长束狙击 孢子射击 星脉降权 战地治疗 快速维修 协议扫描 接舷突入 真空牵引 沙帆机动 改风向 热灯区 冰钩拉拽 潮线移动 部署潮锚 共生再生 菌床净化 列车权限 重力救援 记忆显影 回声隔离 修复节点 改接水路 部署炮台 开闭舱门 切换道岔 加固浮台 修剪活桥 旋转重力 补给弹药 应急供水 应急供热 权限确认 物理备份 撤离标记 医疗转运 公开货舱 星盾联防 游骑连救 轨道校准 维护体重构 零权限突入 五界协同 记忆现实重叠 气候校正">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-skill-atlas-complete.png" alt="群星熄灭之前 技能 c02-skill-atlas-complete" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>skill-atlas</span><span>48 题材</span></div>
+            <h3>c02-skill-atlas-complete</h3>
+            <div class="asset-meta"><span>384 × 288</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-skill-atlas-complete.png">candidate-02/assets/expansion/atlases/c02-skill-atlas-complete.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-02" data-category="status">
+        <div class="section-heading">
+          <h2>状态</h2>
+          <span>24 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="status" data-search="candidate-02 群星熄灭之前 status 状态 c02-status-atlas-complete status-atlas candidate-02/assets/expansion/atlases/c02-status-atlas-complete.png c02-status-controlled c02-status-hidden c02-status-shielded c02-status-overheated c02-status-hypothermia c02-status-spore-contamination c02-status-low-oxygen c02-status-memory-corrosion c02-status-water c02-status-heat c02-status-ammo c02-status-star-vein-energy c02-status-permission c02-status-spare-parts c02-status-cargo-capacity c02-status-local-support c02-status-capture c02-status-escort c02-status-evacuate c02-status-rescue c02-status-repair c02-status-destroy c02-status-hold-timer c02-status-deliver-evidence 受控 隐蔽 护盾 过热 失温 孢子污染 低氧 记忆侵蚀 水资源 热量资源 弹药资源 星脉能 权限资源 备件资源 舱容资源 地方支持 占领目标 护送目标 撤离目标 救援目标 维修目标 破坏目标 守时目标 证据送达目标">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-status-atlas-complete.png" alt="群星熄灭之前 状态 c02-status-atlas-complete" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>status-atlas</span><span>24 题材</span></div>
+            <h3>c02-status-atlas-complete</h3>
+            <div class="asset-meta"><span>288 × 192</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-status-atlas-complete.png">candidate-02/assets/expansion/atlases/c02-status-atlas-complete.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-02" data-category="fx">
+        <div class="section-heading">
+          <h2>FX</h2>
+          <span>24 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="fx" data-search="candidate-02 群星熄灭之前 fx fx c02-fx-atlas-complete fx-atlas candidate-02/assets/expansion/atlases/c02-fx-atlas-complete.png c02-fx-blade-hit c02-fx-blunt-hit c02-fx-rail-penetration c02-fx-energy-pulse c02-fx-explosion c02-fx-bio-hit c02-fx-crush c02-fx-vacuum-rupture c02-fx-sandstorm c02-fx-rain-black-rain c02-fx-ice-cold c02-fx-heat-zone c02-fx-tide-water c02-fx-spore-fog c02-fx-vacuum-zone c02-fx-memory-overlay c02-fx-healing c02-fx-shield c02-fx-control c02-fx-stealth c02-fx-structure-damage c02-fx-repair-sparks c02-fx-offline c02-fx-capture-light 刃击 fx 钝击 fx 轨道穿透 fx 能量脉冲 fx 爆破 fx 生化命中 fx 碾压 fx 真空破裂 fx 沙暴区域层 雨与黑雨层 冰寒区域层 热区层 潮水区域层 孢子雾层 真空区域层 记忆覆盖层 治疗状态层 护盾状态层 受控状态层 隐蔽状态层 结构受损层 修复火花层 失联状态层 占领权限灯层">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-fx-atlas-complete.png" alt="群星熄灭之前 FX c02-fx-atlas-complete" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>fx-atlas</span><span>24 题材</span></div>
+            <h3>c02-fx-atlas-complete</h3>
+            <div class="asset-meta"><span>384 × 256</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-fx-atlas-complete.png">candidate-02/assets/expansion/atlases/c02-fx-atlas-complete.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-02" data-category="hud">
+        <div class="section-heading">
+          <h2>HUD</h2>
+          <span>16 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-02" data-category="hud" data-search="candidate-02 群星熄灭之前 hud hud c02-hud-atlas-complete hud-atlas candidate-02/assets/expansion/atlases/c02-hud-atlas-complete.png c02-hud-ally c02-hud-enemy c02-hud-neutral c02-hud-recruitable c02-hud-main-objective c02-hud-side-objective c02-hud-escort c02-hud-danger c02-hud-supply c02-hud-healing c02-hud-engineering c02-hud-breakable c02-hud-repairable c02-hud-reinforcement c02-hud-evacuation c02-hud-permission-dispute 友军标记 敌军标记 中立标记 可招降标记 主目标标记 次要目标标记 护送目标标记 危险区域标记 补给点标记 治疗点标记 工程交互标记 可破坏结构标记 可修复结构标记 增援入口标记 撤离出口标记 多阵营权限争议点">
+          <div class="asset-preview"><img src="candidate-02/assets/expansion/atlases/c02-hud-atlas-complete.png" alt="群星熄灭之前 HUD c02-hud-atlas-complete" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>hud-atlas</span><span>16 题材</span></div>
+            <h3>c02-hud-atlas-complete</h3>
+            <div class="asset-meta"><span>256 × 64</span><span>PNG</span></div>
+            <code title="candidate-02/assets/expansion/atlases/c02-hud-atlas-complete.png">candidate-02/assets/expansion/atlases/c02-hud-atlas-complete.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+    </section>
+    <section class="campaign-section" data-campaign-section data-campaign="candidate-03">
+      <header class="campaign-heading">
+        <div><span>candidate-03</span><h2>布衣定鼎</h2></div>
+        <p>404 题材 · 33 份 PNG</p>
+      </header>
+      <section class="category-section" data-category-section data-campaign="candidate-03" data-category="narrative-static">
+        <div class="section-heading">
+          <h2>叙事静态</h2>
+          <span>80 题材 · 22 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 shen-li-22-portrait portrait candidate-03/assets/characters/shen-li-22-portrait-hd.png c03-char-shen-01 沈砺·22岁河工">
+          <div class="asset-preview"><img src="candidate-03/assets/characters/shen-li-22-portrait-hd.png" alt="布衣定鼎 叙事静态 shen-li-22-portrait" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>shen-li-22-portrait</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-03/assets/characters/shen-li-22-portrait-hd.png">candidate-03/assets/characters/shen-li-22-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 lu-qinghe-portrait portrait candidate-03/assets/characters/lu-qinghe-portrait-hd.png c03-char-lu-01 陆青禾·淮上账房">
+          <div class="asset-preview"><img src="candidate-03/assets/characters/lu-qinghe-portrait-hd.png" alt="布衣定鼎 叙事静态 lu-qinghe-portrait" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>lu-qinghe-portrait</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-03/assets/characters/lu-qinghe-portrait-hd.png">candidate-03/assets/characters/lu-qinghe-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 han-yue-portrait portrait candidate-03/assets/characters/han-yue-portrait-hd.png c03-char-han-01 韩岳·铁匠义军">
+          <div class="asset-preview"><img src="candidate-03/assets/characters/han-yue-portrait-hd.png" alt="布衣定鼎 叙事静态 han-yue-portrait" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>han-yue-portrait</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-03/assets/characters/han-yue-portrait-hd.png">candidate-03/assets/characters/han-yue-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 pei-zhao-portrait portrait candidate-03/assets/characters/pei-zhao-portrait-hd.png c03-char-pei-01 裴昭·朝廷追粮将领">
+          <div class="asset-preview"><img src="candidate-03/assets/characters/pei-zhao-portrait-hd.png" alt="布衣定鼎 叙事静态 pei-zhao-portrait" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>pei-zhao-portrait</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-03/assets/characters/pei-zhao-portrait-hd.png">candidate-03/assets/characters/pei-zhao-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 jiang-zhaoye-portrait portrait candidate-03/assets/characters/jiang-zhaoye-portrait-hd.png c03-char-jiang-01 江照夜·水盟船主">
+          <div class="asset-preview"><img src="candidate-03/assets/characters/jiang-zhaoye-portrait-hd.png" alt="布衣定鼎 叙事静态 jiang-zhaoye-portrait" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>jiang-zhaoye-portrait</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-03/assets/characters/jiang-zhaoye-portrait-hd.png">candidate-03/assets/characters/jiang-zhaoye-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 aletan-portrait portrait candidate-03/assets/characters/aletan-portrait-hd.png c03-char-aletan-01 阿勒坦·大朔边将">
+          <div class="asset-preview"><img src="candidate-03/assets/characters/aletan-portrait-hd.png" alt="布衣定鼎 叙事静态 aletan-portrait" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait</span><span>1 题材</span></div>
+            <h3>aletan-portrait</h3>
+            <div class="asset-meta"><span>96 × 112</span><span>PNG</span></div>
+            <code title="candidate-03/assets/characters/aletan-portrait-hd.png">candidate-03/assets/characters/aletan-portrait-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 county-granary architecture candidate-03/assets/architecture/county-granary-hd.png c03-arch-granary 淮右县仓">
+          <div class="asset-preview"><img src="candidate-03/assets/architecture/county-granary-hd.png" alt="布衣定鼎 叙事静态 county-granary" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture</span><span>1 题材</span></div>
+            <h3>county-granary</h3>
+            <div class="asset-meta"><span>128 × 128</span><span>PNG</span></div>
+            <code title="candidate-03/assets/architecture/county-granary-hd.png">candidate-03/assets/architecture/county-granary-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 huai-right-bank-dike architecture candidate-03/assets/architecture/huai-right-bank-dike-hd.png c03-arch-huai-dike-01 淮右河堤">
+          <div class="asset-preview"><img src="candidate-03/assets/architecture/huai-right-bank-dike-hd.png" alt="布衣定鼎 叙事静态 huai-right-bank-dike" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture</span><span>1 题材</span></div>
+            <h3>huai-right-bank-dike</h3>
+            <div class="asset-meta"><span>128 × 128</span><span>PNG</span></div>
+            <code title="candidate-03/assets/architecture/huai-right-bank-dike-hd.png">candidate-03/assets/architecture/huai-right-bank-dike-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 linchuan-government-hub architecture candidate-03/assets/architecture/linchuan-government-hub-hd.png c03-arch-linchuan-hub 临川行台五功能治理区">
+          <div class="asset-preview"><img src="candidate-03/assets/architecture/linchuan-government-hub-hd.png" alt="布衣定鼎 叙事静态 linchuan-government-hub" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture</span><span>1 题材</span></div>
+            <h3>linchuan-government-hub</h3>
+            <div class="asset-meta"><span>128 × 128</span><span>PNG</span></div>
+            <code title="candidate-03/assets/architecture/linchuan-government-hub-hd.png">candidate-03/assets/architecture/linchuan-government-hub-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 great-lake-mixed-fleet architecture candidate-03/assets/architecture/great-lake-mixed-fleet-hd.png c03-arch-great-lake-fleet 大泽军民混合连营">
+          <div class="asset-preview"><img src="candidate-03/assets/architecture/great-lake-mixed-fleet-hd.png" alt="布衣定鼎 叙事静态 great-lake-mixed-fleet" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture</span><span>1 题材</span></div>
+            <h3>great-lake-mixed-fleet</h3>
+            <div class="asset-meta"><span>128 × 128</span><span>PNG</span></div>
+            <code title="candidate-03/assets/architecture/great-lake-mixed-fleet-hd.png">candidate-03/assets/architecture/great-lake-mixed-fleet-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 opening-the-county-granary scene candidate-03/assets/scenes/opening-the-county-granary-hd.png c03-scene-ch01-s03 官仓开门">
+          <div class="asset-preview"><img src="candidate-03/assets/scenes/opening-the-county-granary-hd.png" alt="布衣定鼎 叙事静态 opening-the-county-granary" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene</span><span>1 题材</span></div>
+            <h3>opening-the-county-granary</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-03/assets/scenes/opening-the-county-granary-hd.png">candidate-03/assets/scenes/opening-the-county-granary-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 rain-night-crossing scene candidate-03/assets/scenes/rain-night-crossing-hd.png c03-scene-ch02-s08 雨夜渡淮">
+          <div class="asset-preview"><img src="candidate-03/assets/scenes/rain-night-crossing-hd.png" alt="布衣定鼎 叙事静态 rain-night-crossing" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene</span><span>1 题材</span></div>
+            <h3>rain-night-crossing</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-03/assets/scenes/rain-night-crossing-hd.png">candidate-03/assets/scenes/rain-night-crossing-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 great-lake-precision-fire-attack scene candidate-03/assets/scenes/great-lake-precision-fire-attack-hd.png c03-scene-ch04-s18 大泽精准火攻">
+          <div class="asset-preview"><img src="candidate-03/assets/scenes/great-lake-precision-fire-attack-hd.png" alt="布衣定鼎 叙事静态 great-lake-precision-fire-attack" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene</span><span>1 题材</span></div>
+            <h3>great-lake-precision-fire-attack</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-03/assets/scenes/great-lake-precision-fire-attack-hd.png">candidate-03/assets/scenes/great-lake-precision-fire-attack-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 one-bowl-of-new-grain scene candidate-03/assets/scenes/one-bowl-of-new-grain-hd.png c03-scene-ch07-s35e 一碗新粮">
+          <div class="asset-preview"><img src="candidate-03/assets/scenes/one-bowl-of-new-grain-hd.png" alt="布衣定鼎 叙事静态 one-bowl-of-new-grain" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene</span><span>1 题材</span></div>
+            <h3>one-bowl-of-new-grain</h3>
+            <div class="asset-meta"><span>256 × 144</span><span>PNG</span></div>
+            <code title="candidate-03/assets/scenes/one-bowl-of-new-grain-hd.png">candidate-03/assets/scenes/one-bowl-of-new-grain-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 c03-prop-light-rework-atlas prop-atlas candidate-03/assets/expanded/narrative/c03-prop-light-rework-atlas.png c03-prop-grain-seal c03-prop-temp-roll 官粮封条强化版 无籍灾民临时册强化版">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/narrative/c03-prop-light-rework-atlas.png" alt="布衣定鼎 叙事静态 c03-prop-light-rework-atlas" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>prop-atlas</span><span>2 题材</span></div>
+            <h3>c03-prop-light-rework-atlas</h3>
+            <div class="asset-meta"><span>96 × 48</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/narrative/c03-prop-light-rework-atlas.png">candidate-03/assets/expanded/narrative/c03-prop-light-rework-atlas.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 story-props-sheet prop-atlas candidate-03/assets/props/story-props-sheet-hd.png c03-prop-white-lantern-plain c03-prop-broken-official-seal 素白互助灯 破官印">
+          <div class="asset-preview"><img src="candidate-03/assets/props/story-props-sheet-hd.png" alt="布衣定鼎 叙事静态 story-props-sheet" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>prop-atlas</span><span>2 题材</span></div>
+            <h3>story-props-sheet</h3>
+            <div class="asset-meta"><span>192 × 48</span><span>PNG</span></div>
+            <code title="candidate-03/assets/props/story-props-sheet-hd.png">candidate-03/assets/props/story-props-sheet-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 campaign-props-sheet-02 prop-atlas candidate-03/assets/props/campaign-props-sheet-02-hd.png c03-prop-first-banner c03-prop-pei-campaign-map c03-prop-field-markers c03-prop-pei-clan-roll 第一面未染色军旗 裴昭战役叠图 田契丈量标记 裴氏部曲军籍卷">
+          <div class="asset-preview"><img src="candidate-03/assets/props/campaign-props-sheet-02-hd.png" alt="布衣定鼎 叙事静态 campaign-props-sheet-02" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>prop-atlas</span><span>4 题材</span></div>
+            <h3>campaign-props-sheet-02</h3>
+            <div class="asset-meta"><span>192 × 48</span><span>PNG</span></div>
+            <code title="candidate-03/assets/props/campaign-props-sheet-02-hd.png">candidate-03/assets/props/campaign-props-sheet-02-hd.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 c03-style-atlas-01 style-atlas candidate-03/assets/expanded/narrative/c03-style-atlas-01.png c03-style-4f44ef3f c03-style-164bde4a c03-style-6a81a91d c03-style-87d29bfe c03-style-33bd8704 c03-style-1ff31937 c03-style-cd7cb289 主视觉：官仓与宫门之间 淮右灾年雨色与湿麻 大泽风火与民船 开国冬季宫城 江东建设期春景 燕云雪原与多族营具 军中反复改写的水陆墨图">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/narrative/c03-style-atlas-01.png" alt="布衣定鼎 叙事静态 c03-style-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>style-atlas</span><span>7 题材</span></div>
+            <h3>c03-style-atlas-01</h3>
+            <div class="asset-meta"><span>1024 × 288</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/narrative/c03-style-atlas-01.png">candidate-03/assets/expanded/narrative/c03-style-atlas-01.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 c03-character-stage-atlas-01 portrait-atlas candidate-03/assets/expanded/narrative/c03-character-stage-atlas-01.png c03-char-shen-02 c03-char-shen-03 c03-char-shen-04 c03-char-lu-02 c03-char-lu-03 c03-char-han-02 c03-char-han-03 c03-char-pei-02 c03-char-jiang-02 c03-char-xiao-01 c03-char-xiao-02 c03-char-wen-01 c03-char-xiaoman-01 c03-char-xiaoman-02 c03-char-xiaoman-03 c03-char-peng-01 c03-char-peng-02 沈砺·28岁江东统帅 沈砺·36岁北伐吴王 沈砺·40岁开国皇帝 陆青禾·临川户曹 陆青禾·开国法制主事 韩岳·大泽前锋 韩岳·开国功臣 裴昭·新军统帅 江照夜·大泽水师统帅 萧慎·落第县吏 萧慎·密察司主事 闻素·随军史官 赵小满·11岁灾民 赵小满·学馆书吏 赵小满·开国户曹书吏 彭三篙·水盟船工 彭三篙·伤残渡口主人">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/narrative/c03-character-stage-atlas-01.png" alt="布衣定鼎 叙事静态 c03-character-stage-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>portrait-atlas</span><span>17 题材</span></div>
+            <h3>c03-character-stage-atlas-01</h3>
+            <div class="asset-meta"><span>576 × 336</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/narrative/c03-character-stage-atlas-01.png">candidate-03/assets/expanded/narrative/c03-character-stage-atlas-01.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 c03-scene-atlas-01 scene-atlas candidate-03/assets/expanded/narrative/c03-scene-atlas-01.png c03-scene-8be502ba c03-scene-737e345e c03-scene-016bc02a c03-scene-bb81dbfe c03-scene-f40c6e2b c03-scene-1330acd2 c03-scene-10cdb51a c03-scene-61b2f412 c03-scene-01690aa0 c03-scene-3a40b552 c03-scene-3b834342 c03-scene-32b53c29 c03-scene-df2a730d c03-scene-c16fafcf c03-scene-6f493710 c03-scene-ab61a45c c03-scene-77b27d08 c03-scene-adb9cf25 c03-scene-85b49a10 天未亮的押粮车 决口后的界碑争议 芦苇滩白灯赠粮 白灯夜后 第一面军旗与军法宣读 白灯赠别与八十九日粮 和州借城 田契之争后的播种 梁震旗舰 吴王之台 登基与讨饷并置 新朝田册之乱 公开审理 临川新政告示 湖口破船 富城两条队伍 三路出师 燕云盟约 老兵交兵、登记退伍与家属接人">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/narrative/c03-scene-atlas-01.png" alt="布衣定鼎 叙事静态 c03-scene-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>scene-atlas</span><span>19 题材</span></div>
+            <h3>c03-scene-atlas-01</h3>
+            <div class="asset-meta"><span>1280 × 576</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/narrative/c03-scene-atlas-01.png">candidate-03/assets/expanded/narrative/c03-scene-atlas-01.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 c03-architecture-atlas-01 architecture-atlas candidate-03/assets/expanded/narrative/c03-architecture-atlas-01.png c03-arch-huai-dike-final c03-arch-palace-gate c03-arch-hezhou-gate c03-arch-floating-bridge c03-arch-wuyue-gate c03-arch-old-capital c03-arch-yanyun-post c03-arch-jiangdong-salt-port 终章加固河堤 宫门、市坊、军营与史馆组合区 和州城门 模块化浮桥 吴越富城水闸与盐仓 旧都与登基城 燕云雪原驿站 江东盐港税卡与民船混合区">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/narrative/c03-architecture-atlas-01.png" alt="布衣定鼎 叙事静态 c03-architecture-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>architecture-atlas</span><span>8 题材</span></div>
+            <h3>c03-architecture-atlas-01</h3>
+            <div class="asset-meta"><span>512 × 256</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/narrative/c03-architecture-atlas-01.png">candidate-03/assets/expanded/narrative/c03-architecture-atlas-01.png</code>
+          </div>
+        </article>
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="narrative-static" data-search="candidate-03 布衣定鼎 narrative-static 叙事静态 c03-narrative-prop-atlas-01 prop-atlas candidate-03/assets/expanded/narrative/c03-narrative-prop-atlas-01.png c03-prop-shoe-ledger c03-prop-register-evidence-set c03-prop-white-lantern-patched c03-prop-white-lantern-gilded c03-prop-sunken-roll c03-prop-unstable-list c03-prop-aletan-covenant 沈砺鞋底私账 书吏第一页账册与两册并置证据组 三次缝补的白灯 镀金白灯 大泽沉船名册 开国不安定者名册 阿勒坦互市军法自治盟约">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/narrative/c03-narrative-prop-atlas-01.png" alt="布衣定鼎 叙事静态 c03-narrative-prop-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>prop-atlas</span><span>7 题材</span></div>
+            <h3>c03-narrative-prop-atlas-01</h3>
+            <div class="asset-meta"><span>192 × 96</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/narrative/c03-narrative-prop-atlas-01.png">candidate-03/assets/expanded/narrative/c03-narrative-prop-atlas-01.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-03" data-category="combat-unit">
+        <div class="section-heading">
+          <h2>战斗单位</h2>
+          <span>40 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="combat-unit" data-search="candidate-03 布衣定鼎 combat-unit 战斗单位 c03-combat-unit-atlas-01 unit-atlas candidate-03/assets/expanded/units/c03-combat-unit-atlas-01.png c03-unit-4c02a584 c03-unit-9ad7ca0f c03-unit-ff5e54ed c03-unit-915fc486 c03-unit-6fa9292e c03-unit-15c058cc c03-unit-0137a889 c03-unit-c11ad030 c03-unit-58b98436 c03-unit-222078e0 c03-unit-25f91749 c03-unit-fd4c21da c03-unit-79f06a6f c03-unit-2be16bd2 c03-unit-4dad36ef c03-unit-0609e6e6 c03-unit-3d86046f c03-unit-5e64c3a6 c03-unit-9881f2a3 c03-unit-4566788b c03-unit-b59c3f96 c03-unit-a53b725f c03-unit-8f49e6ef c03-unit-8842d111 c03-unit-75ee37ba c03-unit-f0a4ddaa c03-unit-76cd6822 c03-unit-73d2bcb4 c03-unit-6a62b51e c03-unit-4377f3e4 c03-unit-3f6fea2f c03-unit-6d03b909 c03-unit-c30bf360 c03-unit-747800db c03-unit-118c7423 c03-unit-4619e546 c03-unit-3f4a6e1d c03-unit-0c42f6d3 c03-unit-2bc4ddf7 c03-unit-cecc448d 刀盾卒 长枪阵 陌刀队 乡弓手 强弩营 神臂弩 游骑 甲骑 边军斥候 艨艟 楼船兵 火船队 河工 架桥营 云梯队 炮石营 火铳手 火箭营 震天雷队 军医 旗鼓手 粮秣官 军师 斥候司 说客 乡勇 城门盾兵 将领亲兵 铁锤破阵手 筑城守备 潜渡凿船手 漕运护军 盐仓护卫 雪原骑射 互市护卫 宁朝禁军 密察司缉事 地道营 火油防备队 降兵整编队">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/units/c03-combat-unit-atlas-01.png" alt="布衣定鼎 战斗单位 c03-combat-unit-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>unit-atlas</span><span>40 题材</span></div>
+            <h3>c03-combat-unit-atlas-01</h3>
+            <div class="asset-meta"><span>640 × 384</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/units/c03-combat-unit-atlas-01.png">candidate-03/assets/expanded/units/c03-combat-unit-atlas-01.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-03" data-category="mission-unit">
+        <div class="section-heading">
+          <h2>任务单位</h2>
+          <span>24 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="mission-unit" data-search="candidate-03 布衣定鼎 mission-unit 任务单位 c03-mission-unit-atlas-01 unit-atlas candidate-03/assets/expanded/units/c03-mission-unit-atlas-01.png c03-mission-57df34e0 c03-mission-8e6e6bf3 c03-mission-0d1763ad c03-mission-1ba1c2b5 c03-mission-74ec4633 c03-mission-d647c582 c03-mission-2edb8e76 c03-mission-b283af47 c03-mission-7d65d7f6 c03-mission-80d52653 c03-mission-281d4f68 c03-mission-c2e2ed84 c03-mission-236dc958 c03-mission-cdee8e3c c03-mission-3278b1cd c03-mission-c1a88dc7 c03-mission-d658ba41 c03-mission-9f089520 c03-mission-500e07b9 c03-mission-81ca03bd c03-mission-8fd93354 c03-mission-f8a23f60 c03-mission-cb07fe5d c03-mission-06ca7225 饥民与灾民 农户 播种队 河工学徒 水盟船工 盐工 仓库工 粮车夫 挑夫 县吏 书吏与登记员 城市工匠 学馆学生 伤兵 逃兵 退伍老兵 商旅 渡口主人 地方向导 军户家属 救济厨工 漕渠民夫 被押俘虏与证人 史馆抄录员">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/units/c03-mission-unit-atlas-01.png" alt="布衣定鼎 任务单位 c03-mission-unit-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>unit-atlas</span><span>24 题材</span></div>
+            <h3>c03-mission-unit-atlas-01</h3>
+            <div class="asset-meta"><span>768 × 192</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/units/c03-mission-unit-atlas-01.png">candidate-03/assets/expanded/units/c03-mission-unit-atlas-01.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-03" data-category="faction-kit">
+        <div class="section-heading">
+          <h2>阵营套件</h2>
+          <span>12 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="faction-kit" data-search="candidate-03 布衣定鼎 faction-kit 阵营套件 c03-faction-kit-atlas-01 faction-kit-atlas candidate-03/assets/expanded/systems/c03-faction-kit-atlas-01.png c03-faction-bf730961 c03-faction-d149da6f c03-faction-a61b76f9 c03-faction-18a38531 c03-faction-fb407e16 c03-faction-98861b36 c03-faction-53ed52e7 c03-faction-26acaef4 c03-faction-e58fb49d c03-faction-abad59fa c03-faction-48d391ea c03-faction-5eb3995f 白炬义军装备基准 旧朝官军装备基准 水盟装备基准 梁震大泽军装备基准 吴越富城装备基准 大朔与燕云装备基准 宁朝新军装备基准 地方乡勇装备基准 河工与工程营装备基准 水军与舰队装备基准 宫城禁军装备基准 降兵整编态基准">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/systems/c03-faction-kit-atlas-01.png" alt="布衣定鼎 阵营套件 c03-faction-kit-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>faction-kit-atlas</span><span>12 题材</span></div>
+            <h3>c03-faction-kit-atlas-01</h3>
+            <div class="asset-meta"><span>768 × 288</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/systems/c03-faction-kit-atlas-01.png">candidate-03/assets/expanded/systems/c03-faction-kit-atlas-01.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-03" data-category="terrain">
+        <div class="section-heading">
+          <h2>地形</h2>
+          <span>32 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="terrain" data-search="candidate-03 布衣定鼎 terrain 地形 c03-terrain-atlas-01 terrain-atlas candidate-03/assets/expanded/systems/c03-terrain-atlas-01.png c03-terrain-99390ac8 c03-terrain-980abbed c03-terrain-b499c3bf c03-terrain-c053bd0c c03-terrain-70b193fa c03-terrain-44bffd59 c03-terrain-769e91a5 c03-terrain-b7e36bf1 c03-terrain-e1b682d1 c03-terrain-62e36a0f c03-terrain-237c17a6 c03-terrain-98a758f5 c03-terrain-144e2a2b c03-terrain-603bcbff c03-terrain-c84c1d67 c03-terrain-5540f619 c03-terrain-7e8540ac c03-terrain-e8301db7 c03-terrain-c644d0f1 c03-terrain-efd25ffa c03-terrain-f3c866de c03-terrain-3422fba2 c03-terrain-cf372208 c03-terrain-6d3d030c c03-terrain-4bc2c8ba c03-terrain-87e77f14 c03-terrain-9af6eb7b c03-terrain-fb94afb0 c03-terrain-f38c3861 c03-terrain-23ed43fa c03-terrain-f059779e c03-terrain-06ce5a60 龟裂灾田 退水烂泥 复耕田垄 粮车与难民车辙路 夯土堤顶 石脚渗沟 分洪渠 水冲决口 芦苇岸 浅滩 深水急流 浮桥板与桥缘 灌水稻田 成熟田埂 青石市街 盐仓水巷 大泽平湖 大泽风浪流向 芦苇隐蔽区 湿船板与栈桥 城墙顶面 门洞地面 壕沟瓦砾 云梯地道作业面 燕云积雪原 风蚀骑迹 冻土驿路 互市水源点 旧都坊市地面 宫城石阶 朱门门槛 漕渠码头">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/systems/c03-terrain-atlas-01.png" alt="布衣定鼎 地形 c03-terrain-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>terrain-atlas</span><span>32 题材</span></div>
+            <h3>c03-terrain-atlas-01</h3>
+            <div class="asset-meta"><span>512 × 1024</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/systems/c03-terrain-atlas-01.png">candidate-03/assets/expanded/systems/c03-terrain-atlas-01.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-03" data-category="interactive-structure">
+        <div class="section-heading">
+          <h2>交互建筑</h2>
+          <span>24 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="interactive-structure" data-search="candidate-03 布衣定鼎 interactive-structure 交互建筑 c03-interactive-structure-atlas-01 structure-atlas candidate-03/assets/expanded/systems/c03-interactive-structure-atlas-01.png c03-structure-8c1f5eac c03-structure-14b4ae0d c03-structure-f93c3796 c03-structure-59225afb c03-structure-da2f5b93 c03-structure-f793619a c03-structure-f9b43d6b c03-structure-c3e2e8d7 c03-structure-47186f13 c03-structure-945da1f8 c03-structure-109b2230 c03-structure-d577aa95 c03-structure-81e32d79 c03-structure-b854f5d8 c03-structure-80221641 c03-structure-1fbf8e8c c03-structure-94c75092 c03-structure-edac22ef c03-structure-733300be c03-structure-c627d407 c03-structure-731f5440 c03-structure-84e7f122 c03-structure-45b46002 c03-structure-dfc98ebc 中军旗点 城门控制位 宫门门禁 航道信号台 县仓交互体 野战粮站 火头营 盐仓税卡 河堤闸门 浮桥桥头 渡口绞盘 地道入口 弩车位 炮石阵地 拒马营门 火油防备站 药棚 分粮点 伤兵棚 白灯避难所 户籍登记案 军籍交接点 公开税额告示 史馆证据柜">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/systems/c03-interactive-structure-atlas-01.png" alt="布衣定鼎 交互建筑 c03-interactive-structure-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>structure-atlas</span><span>24 题材</span></div>
+            <h3>c03-interactive-structure-atlas-01</h3>
+            <div class="asset-meta"><span>768 × 512</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/systems/c03-interactive-structure-atlas-01.png">candidate-03/assets/expanded/systems/c03-interactive-structure-atlas-01.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-03" data-category="battle-prop">
+        <div class="section-heading">
+          <h2>战场物件</h2>
+          <span>32 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="battle-prop" data-search="candidate-03 布衣定鼎 battle-prop 战场物件 c03-battle-prop-atlas-01 battle-prop-atlas candidate-03/assets/expanded/systems/c03-battle-prop-atlas-01.png c03-battle-prop-b6bd8efb c03-battle-prop-0fb580c9 c03-battle-prop-ff4a64b9 c03-battle-prop-a7b85246 c03-battle-prop-809c152b c03-battle-prop-7a878eb8 c03-battle-prop-ede52a71 c03-battle-prop-1f1ab459 c03-battle-prop-c7e05f1c c03-battle-prop-f7033df9 c03-battle-prop-2e0af0f2 c03-battle-prop-cd97a638 c03-battle-prop-cfb13cec c03-battle-prop-cb065f97 c03-battle-prop-30a92ab8 c03-battle-prop-10c026c1 c03-battle-prop-2f038eea c03-battle-prop-8ec886d2 c03-battle-prop-6ecfadac c03-battle-prop-16fa4a1f c03-battle-prop-5cc33643 c03-battle-prop-27872fa1 c03-battle-prop-a7c96f59 c03-battle-prop-7d42603a c03-battle-prop-caa5ebba c03-battle-prop-6a51fb07 c03-battle-prop-2e7df413 c03-battle-prop-a4886438 c03-battle-prop-d983ce23 c03-battle-prop-ba469b15 c03-battle-prop-6fff5dc5 c03-battle-prop-b31edea6 粮箱掩体组 木盾墙组 盐袋掩体组 翻倒粮车组 火药桶危险组 火油罐危险组 松动堤土危险组 燃烧箭束危险组 粮袋量斗后勤组 水桶后勤组 药箱后勤组 备箭架后勤组 木桩工程组 绳盘工程组 桥板工程组 沙袋湿毡工程组 行军锅生活组 铺盖生活组 折叠案生活组 晾衣绳生活组 户册证据组 军籍牌证据组 税卡证据组 沉船名牌证据组 未染旗标识组 官军门牌标识组 水盟航旗标识组 宁朝门禁牌标识组 弃械堆 伤员区 修补墙 退伍交兵台">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/systems/c03-battle-prop-atlas-01.png" alt="布衣定鼎 战场物件 c03-battle-prop-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>battle-prop-atlas</span><span>32 题材</span></div>
+            <h3>c03-battle-prop-atlas-01</h3>
+            <div class="asset-meta"><span>512 × 512</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/systems/c03-battle-prop-atlas-01.png">candidate-03/assets/expanded/systems/c03-battle-prop-atlas-01.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-03" data-category="equipment">
+        <div class="section-heading">
+          <h2>装备</h2>
+          <span>48 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="equipment" data-search="candidate-03 布衣定鼎 equipment 装备 c03-equipment-atlas-01 equipment-atlas candidate-03/assets/expanded/systems/c03-equipment-atlas-01.png c03-equip-4c02a584 c03-equip-9ad7ca0f c03-equip-ff5e54ed c03-equip-915fc486 c03-equip-6fa9292e c03-equip-15c058cc c03-equip-0137a889 c03-equip-c11ad030 c03-equip-58b98436 c03-equip-222078e0 c03-equip-25f91749 c03-equip-fd4c21da c03-equip-79f06a6f c03-equip-2be16bd2 c03-equip-4dad36ef c03-equip-0609e6e6 c03-equip-3d86046f c03-equip-5e64c3a6 c03-equip-9881f2a3 c03-equip-4566788b c03-equip-b59c3f96 c03-equip-a53b725f c03-equip-8f49e6ef c03-equip-8842d111 c03-equip-75ee37ba c03-equip-f0a4ddaa c03-equip-76cd6822 c03-equip-73d2bcb4 c03-equip-6a62b51e c03-equip-4377f3e4 c03-equip-3f6fea2f c03-equip-6d03b909 c03-equip-c30bf360 c03-equip-747800db c03-equip-118c7423 c03-equip-4619e546 c03-equip-3f4a6e1d c03-equip-0c42f6d3 c03-equip-2bc4ddf7 c03-equip-cecc448d c03-equip-shared-6233dfe4 c03-equip-shared-b4ba078c c03-equip-shared-eff22900 c03-equip-shared-4193591d c03-equip-shared-0adf8733 c03-equip-shared-d36a6ab2 c03-equip-shared-8cbab9a4 c03-equip-shared-5d494e47 刀盾卒主装备组 长枪阵主装备组 陌刀队主装备组 乡弓手主装备组 强弩营主装备组 神臂弩主装备组 游骑主装备组 甲骑主装备组 边军斥候主装备组 艨艟主装备组 楼船兵主装备组 火船队主装备组 河工主装备组 架桥营主装备组 云梯队主装备组 炮石营主装备组 火铳手主装备组 火箭营主装备组 震天雷队主装备组 军医主装备组 旗鼓手主装备组 粮秣官主装备组 军师主装备组 斥候司主装备组 说客主装备组 乡勇主装备组 城门盾兵主装备组 将领亲兵主装备组 铁锤破阵手主装备组 筑城守备主装备组 潜渡凿船手主装备组 漕运护军主装备组 盐仓护卫主装备组 雪原骑射主装备组 互市护卫主装备组 宁朝禁军主装备组 密察司缉事主装备组 地道营主装备组 火油防备队主装备组 降兵整编队主装备组 战地救护共享装备 工程修复共享装备 侦察标路共享装备 粮秣分发共享装备 反甲爆破共享装备 防火防水共享装备 绳索机动共享装备 军籍证据交互共享装备">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/systems/c03-equipment-atlas-01.png" alt="布衣定鼎 装备 c03-equipment-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>equipment-atlas</span><span>48 题材</span></div>
+            <h3>c03-equipment-atlas-01</h3>
+            <div class="asset-meta"><span>768 × 576</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/systems/c03-equipment-atlas-01.png">candidate-03/assets/expanded/systems/c03-equipment-atlas-01.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-03" data-category="skill">
+        <div class="section-heading">
+          <h2>技能</h2>
+          <span>48 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="skill" data-search="candidate-03 布衣定鼎 skill 技能 c03-skill-atlas-01 skill-atlas candidate-03/assets/expanded/ui/c03-skill-atlas-01.png c03-skill-67a1d71b c03-skill-77348937 c03-skill-1c47f1ad c03-skill-9238e301 c03-skill-140c5ddd c03-skill-344cc154 c03-skill-96ff26d1 c03-skill-59e0edce c03-skill-4181fbc8 c03-skill-7d81885c c03-skill-ee087273 c03-skill-fb3f53d1 c03-skill-1d2f003b c03-skill-6765b63a c03-skill-234774fc c03-skill-44305486 c03-skill-98f13147 c03-skill-3abf88f6 c03-skill-747800db c03-skill-f739d46e c03-skill-7c407c64 c03-skill-365f19b0 c03-skill-cf3faa1b c03-skill-a938b019 c03-skill-07289cb2 c03-skill-1e43d47b c03-skill-5298b5cb c03-skill-150f6cb7 c03-skill-8ac12991 c03-skill-3fef707a c03-skill-9d34d1f6 c03-skill-323f8c16 c03-skill-4389724e c03-skill-96f19d01 c03-skill-be079d47 c03-skill-ca79981a c03-skill-1f8a786a c03-skill-1d9ed8c4 c03-skill-9f597d11 c03-skill-d8f6782c c03-skill-21b44a84 c03-skill-7f769954 c03-skill-a8710e0b c03-skill-95324d93 c03-skill-55ec4964 c03-skill-8156df8c c03-skill-8e16d375 c03-skill-b1de2bea 护卫 盾阵 枪拒 破甲 瞄射 压制 骑军侧击 追击 接舷 治疗 旗鼓振奋 侦察标记 白灯集结 未染旗鼓舞 官军轮换 水盟识流 精准火道 吴越闭闸 雪原骑射 互市停战 新军入籍 乡勇守土 降兵整编 公开军法 筑堤 开闸分洪 架桥 拆桥 架梯 掘地道 测风控火 湿毡灭火 分粮 紧急补给 伤员分诊 补箭补药 路线标识 劝降 证据送达 退伍交兵 盾枪协同 弩手轮射 骑射诱敌 钩索接舷 火船释放 炮石校射 地道破门 亲兵援护">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/ui/c03-skill-atlas-01.png" alt="布衣定鼎 技能 c03-skill-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>skill-atlas</span><span>48 题材</span></div>
+            <h3>c03-skill-atlas-01</h3>
+            <div class="asset-meta"><span>384 × 288</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/ui/c03-skill-atlas-01.png">candidate-03/assets/expanded/ui/c03-skill-atlas-01.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-03" data-category="status">
+        <div class="section-heading">
+          <h2>状态</h2>
+          <span>24 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="status" data-search="candidate-03 布衣定鼎 status 状态 c03-status-atlas-01 status-atlas candidate-03/assets/expanded/ui/c03-status-atlas-01.png c03-status-444f7804 c03-status-355f61aa c03-status-396c70f2 c03-status-a9b5519b c03-status-a32c64c0 c03-status-1fecbd7e c03-status-12899841 c03-status-6dd467a1 c03-status-55c056d4 c03-status-09f44016 c03-status-c70d591b c03-status-f13c9402 c03-status-856740bc c03-status-a59da10d c03-status-5bdbd94c c03-status-360f3511 c03-status-fd77fd05 c03-status-05257b52 c03-status-aac93b06 c03-status-56a19fe9 c03-status-bdc136db c03-status-201997b4 c03-status-93ea9434 c03-status-d40c7a28 负伤 着火 湿透 溃退 芦苇隐蔽 护卫状态 被拘受控 降兵待编 粮秣资源 弹药资源 士气资源 工程材料 药材资源 地方支持 证据可信度 船运力 占领目标 护送目标 撤离目标 救援目标 维修目标 破坏目标 守时目标 证据送达目标">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/ui/c03-status-atlas-01.png" alt="布衣定鼎 状态 c03-status-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>status-atlas</span><span>24 题材</span></div>
+            <h3>c03-status-atlas-01</h3>
+            <div class="asset-meta"><span>384 × 144</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/ui/c03-status-atlas-01.png">candidate-03/assets/expanded/ui/c03-status-atlas-01.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-03" data-category="fx">
+        <div class="section-heading">
+          <h2>FX</h2>
+          <span>24 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="fx" data-search="candidate-03 布衣定鼎 fx fx c03-fx-atlas-01 fx-atlas candidate-03/assets/expanded/fx/c03-fx-atlas-01.png c03-fx-7a8b685c c03-fx-840b63e6 c03-fx-979062e9 c03-fx-65554e05 c03-fx-bdc68cab c03-fx-e590996f c03-fx-da112311 c03-fx-e835ecd4 c03-fx-aab458ba c03-fx-78d874c1 c03-fx-c2f22b7a c03-fx-0d47f747 c03-fx-2e92cff9 c03-fx-38a88bd8 c03-fx-9b4246b5 c03-fx-ccb081fb c03-fx-fb2a2599 c03-fx-fcfbdba1 c03-fx-606c54e3 c03-fx-7f7b464c c03-fx-28309fac c03-fx-d7178f8f c03-fx-7b06f9cf c03-fx-409f272d 斩击命中 穿刺命中 钝击命中 箭弩命中 火铳命中 爆破命中 燃烧伤害 攻城冲击 暴雨区域 风雪区域 浅水区域 水流区域 泥泞区域 芦苇隐蔽区域 烟火区域 尘土瓦砾区域 治疗状态 鼓舞状态 侦察标记状态 隐蔽状态 拘捕受控状态 结构受损状态 修复状态 占领换旗状态">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/fx/c03-fx-atlas-01.png" alt="布衣定鼎 FX c03-fx-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>fx-atlas</span><span>24 题材</span></div>
+            <h3>c03-fx-atlas-01</h3>
+            <div class="asset-meta"><span>576 × 384</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/fx/c03-fx-atlas-01.png">candidate-03/assets/expanded/fx/c03-fx-atlas-01.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="category-section" data-category-section data-campaign="candidate-03" data-category="hud">
+        <div class="section-heading">
+          <h2>HUD</h2>
+          <span>16 题材 · 1 份 PNG</span>
+        </div>
+        <div class="asset-grid">
+        <article class="asset-card" data-card data-campaign="candidate-03" data-category="hud" data-search="candidate-03 布衣定鼎 hud hud c03-hud-atlas-01 hud-atlas candidate-03/assets/expanded/ui/c03-hud-atlas-01.png c03-hud-358588ad c03-hud-abe1e247 c03-hud-f870305b c03-hud-ed346324 c03-hud-cb1f5cc3 c03-hud-27d02a24 c03-hud-55f762c1 c03-hud-6bf4f047 c03-hud-04abec3b c03-hud-a6a1a227 c03-hud-ed62237e c03-hud-e4f24d33 c03-hud-c7c36f93 c03-hud-cc6af821 c03-hud-1024fd1a c03-hud-930f0f89 友军标记 敌军标记 中立标记 可招降标记 主目标标记 次要目标标记 护送目标标记 危险区域标记 补给点标记 治疗点标记 工程交互标记 可破坏结构标记 可修复结构标记 增援入口标记 撤离出口标记 多阵营军令争议点">
+          <div class="asset-preview"><img src="candidate-03/assets/expanded/ui/c03-hud-atlas-01.png" alt="布衣定鼎 HUD c03-hud-atlas-01" loading="lazy" decoding="async"></div>
+          <div class="asset-copy">
+            <div class="asset-kicker"><span>hud-atlas</span><span>16 题材</span></div>
+            <h3>c03-hud-atlas-01</h3>
+            <div class="asset-meta"><span>384 × 96</span><span>PNG</span></div>
+            <code title="candidate-03/assets/expanded/ui/c03-hud-atlas-01.png">candidate-03/assets/expanded/ui/c03-hud-atlas-01.png</code>
+          </div>
+        </article>
+        </div>
+      </section>
+    </section>
+    <p class="empty" id="empty-state">没有符合当前筛选条件的素材。</p>
+  </main>
+  <script>
+    (() => {
+      const campaign = document.getElementById('campaign-filter');
+      const category = document.getElementById('category-filter');
+      const search = document.getElementById('asset-search');
+      const count = document.getElementById('visible-count');
+      const empty = document.getElementById('empty-state');
+      const cards = [...document.querySelectorAll('[data-card]')];
+      const categorySections = [...document.querySelectorAll('[data-category-section]')];
+      const campaignSections = [...document.querySelectorAll('[data-campaign-section]')];
+
+      function applyFilters() {
+        const campaignValue = campaign.value;
+        const categoryValue = category.value;
+        const query = search.value.trim().toLocaleLowerCase('zh-CN');
+        let visible = 0;
+        for (const card of cards) {
+          const matches = (campaignValue === 'all' || card.dataset.campaign === campaignValue)
+            && (categoryValue === 'all' || card.dataset.category === categoryValue)
+            && (!query || card.dataset.search.includes(query));
+          card.hidden = !matches;
+          if (matches) visible += 1;
+        }
+        for (const section of categorySections) {
+          section.hidden = !section.querySelector('[data-card]:not([hidden])');
+        }
+        for (const section of campaignSections) {
+          section.hidden = !section.querySelector('[data-category-section]:not([hidden])');
+        }
+        count.value = `显示 ${visible} / ${cards.length}`;
+        empty.style.display = visible ? 'none' : 'block';
+      }
+
+      campaign.addEventListener('change', applyFilters);
+      category.addEventListener('change', applyFilters);
+      search.addEventListener('input', applyFilters);
+    })();
+  </script>
+</body>
+</html>

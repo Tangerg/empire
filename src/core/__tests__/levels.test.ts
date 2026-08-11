@@ -7,7 +7,7 @@ import { mapFromLevel, normaliseLevel, terrainRows, validateLevel } from '../map
 import { createState } from '../state';
 import type { LevelData } from '../types';
 
-const dir = join(import.meta.dirname, '../../levels');
+const dir = join(import.meta.dirname, '../../content/ancient-empires/levels');
 const files = readdirSync(dir).filter((f) => f.endsWith('.json'));
 
 const levels: { file: string; level: LevelData }[] = files.map((file) => ({

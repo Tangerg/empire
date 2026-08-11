@@ -1,7 +1,17 @@
-import { Terrains } from './data/terrain';
+import { PlayerEntity } from './domain/player-entity';
 import { idx } from './grid';
-import { areEnemies, hqTilesOf, productionTilesOf, unitsOf } from './state';
-import type { GameState, Objective, PlayerId } from './types';
+import {
+  ObjectiveHandlers,
+  type ObjectiveHandlerRegistry,
+  type ObjectiveOutcome,
+} from './objective-system';
+import { Battlefield } from './domain/battlefield';
+import { player, productionTilesOf, unitsOf } from './state';
+import type { GameEvent, GameState, Objective, PlayerId, ResourceAmount } from './types';
+import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+
+export type { ObjectiveOutcome } from './objective-system';
+export { ObjectiveHandlers, ObjectiveHandlerRegistry } from './objective-system';
 
 export interface VictoryResult {
   team: number | null;
@@ -9,146 +19,163 @@ export interface VictoryResult {
 }
 
 /** A player is out when they have neither units nor any way to make more. */
-export function isDefeated(s: GameState, id: PlayerId): boolean {
-  return unitsOf(s, id).length === 0 && productionTilesOf(s, id).length === 0;
+export function isDefeated(state: GameState, id: PlayerId, content: ContentCatalog = GlobalContentCatalog): boolean {
+  return unitsOf(state, id).length === 0 && productionTilesOf(state, id, content).length === 0;
 }
 
-/**
- * True if the player started with a keep and no longer holds one. Players who
- * never had a keep are excluded, so "capture the enemy castle" cannot be won by
- * default on maps where the enemy has none.
- */
-function lostHQ(s: GameState, id: PlayerId): boolean {
-  const p = s.players.find((x) => x.id === id);
-  if (!p?.startedWithHQ) return false;
-  return hqTilesOf(s, id).length === 0;
+function objectiveStatus(state: GameState, owner: PlayerId, objective: Objective) {
+  return player(state, owner).objectiveStates[objective.id!]?.status ?? 'active';
 }
 
-function objectiveMet(s: GameState, id: PlayerId, o: Objective): boolean {
-  switch (o.type) {
-    case 'routEnemies':
-      return s.players
-        .filter((p) => areEnemies(s, p.id, id))
-        .every((p) => unitsOf(s, p.id).length === 0);
-    case 'captureHQ': {
-      const contenders = s.players.filter((p) => areEnemies(s, p.id, id) && p.startedWithHQ);
-      return contenders.length > 0 && contenders.every((p) => lostHQ(s, p.id));
-    }
-    case 'holdAllVillages': {
-      let total = 0;
-      let mine = 0;
-      for (let i = 0; i < s.map.tiles.length; i++) {
-        if (!Terrains.get(s.map.tiles[i]).capturable) continue;
-        total++;
-        if (s.map.owners[i] === id) mine++;
-      }
-      return total > 0 && mine === total;
-    }
-    case 'surviveTurns':
-      return s.turn > o.turns;
-    default:
-      return false;
-  }
+export function objectiveOutcome(
+  state: GameState,
+  owner: PlayerId,
+  objective: Objective,
+  handlers: ObjectiveHandlerRegistry = ObjectiveHandlers,
+  content: ContentCatalog = GlobalContentCatalog,
+): ObjectiveOutcome {
+  return handlers.evaluate(state, owner, objective, content);
 }
 
-const OBJECTIVE_LABEL: Record<Objective['type'], string> = {
-  routEnemies: '歼灭所有敌军',
-  captureHQ: '攻占敌方城堡',
-  holdAllVillages: '控制全部据点',
-  surviveTurns: '坚守回合',
-};
-
-export function describeObjective(o: Objective): string {
-  if (o.type === 'surviveTurns') return `坚守 ${o.turns} 回合`;
-  return OBJECTIVE_LABEL[o.type];
+function transitionObjective(
+  state: GameState,
+  owner: PlayerId,
+  objective: Objective,
+  outcome: ObjectiveOutcome,
+  emit: (event: GameEvent) => void,
+): void {
+  if (outcome === 'pending') return;
+  const runtime = new PlayerEntity(player(state, owner)).objective(objective.id!);
+  if (!runtime.resolve(outcome)) return;
+  emit({
+    type: 'objectiveChanged',
+    player: owner,
+    objective: runtime.id,
+    status: runtime.status,
+    hidden: runtime.hidden,
+  });
 }
 
-/**
- * Evaluates the board. Elimination is checked first (it also flips `alive`),
- * then each living player's own objective list.
- */
-export function evaluateVictory(s: GameState): VictoryResult {
-  for (const p of s.players) {
-    if (!p.alive) continue;
-    if (isDefeated(s, p.id)) p.alive = false;
-  }
-
-  const living = s.players.filter((p) => p.alive);
-  const teams = new Set(living.map((p) => p.team));
-  if (living.length === 0) return { team: null, reason: '全员覆灭' };
-  if (teams.size === 1) {
-    return { team: living[0].team, reason: '敌军已被全歼' };
-  }
-
-  for (const p of living) {
-    for (const o of p.objectives) {
-      if (o.type === 'surviveTurns') continue; // resolved by the turn limit
-      if (objectiveMet(s, p.id, o)) {
-        return { team: p.team, reason: `${p.name} 完成目标：${describeObjective(o)}` };
-      }
+function refreshOne(
+  state: GameState,
+  owner: PlayerId,
+  objective: Objective,
+  emit: (event: GameEvent) => void,
+  handlers: ObjectiveHandlerRegistry,
+  content: ContentCatalog,
+): void {
+  if (objectiveStatus(state, owner, objective) !== 'active') return;
+  const children = handlers.children(objective);
+  if (handlers.refreshMode(objective) === 'children') {
+    for (const child of children) refreshOne(state, owner, child, emit, handlers, content);
+  } else if (handlers.refreshMode(objective) === 'sequence') {
+    for (const child of children) {
+      const status = objectiveStatus(state, owner, child);
+      if (status === 'completed' || status === 'cancelled') continue;
+      refreshOne(state, owner, child, emit, handlers, content);
+      if (objectiveStatus(state, owner, child) !== 'completed') break;
     }
   }
+  transitionObjective(state, owner, objective, handlers.evaluate(state, owner, objective, content), emit);
+}
 
-  const limit = s.rules.turnLimit;
-  if (limit !== null && s.turn > limit) {
-    const survivors = living.filter((p) =>
-      p.objectives.some((o) => o.type === 'surviveTurns' && s.turn > o.turns),
+export function refreshObjectiveStates(
+  state: GameState,
+  emit: (event: GameEvent) => void = () => {},
+  handlers: ObjectiveHandlerRegistry = ObjectiveHandlers,
+  content: ContentCatalog = GlobalContentCatalog,
+): void {
+  for (const owner of state.players) {
+    for (const objective of owner.objectives) refreshOne(state, owner.id, objective, emit, handlers, content);
+  }
+}
+
+export function describeObjective(
+  objective: Objective,
+  handlers: ObjectiveHandlerRegistry = ObjectiveHandlers,
+): string {
+  return handlers.describe(objective);
+}
+
+export function objectiveProgress(
+  state: GameState,
+  owner: PlayerId,
+  objective: Objective,
+  handlers: ObjectiveHandlerRegistry = ObjectiveHandlers,
+  content: ContentCatalog = GlobalContentCatalog,
+): string {
+  return handlers.progress(state, owner, objective, content);
+}
+
+export function evaluateVictory(
+  state: GameState,
+  emit: (event: GameEvent) => void = () => {},
+  handlers: ObjectiveHandlerRegistry = ObjectiveHandlers,
+  content: ContentCatalog = GlobalContentCatalog,
+): VictoryResult {
+  refreshObjectiveStates(state, emit, handlers, content);
+
+  for (const owner of state.players) {
+    if (!owner.alive) continue;
+    if (isDefeated(state, owner.id, content)) new PlayerEntity(owner).defeat();
+    const criticalFailure = owner.objectives.some(
+      (objective) => handlers.role(objective) === 'critical' && objectiveStatus(state, owner.id, objective) === 'failed',
     );
-    if (survivors.length > 0) {
-      return { team: survivors[0].team, reason: `${survivors[0].name} 坚守到了最后` };
-    }
-    return { team: null, reason: '回合数耗尽，平局' };
+    if (criticalFailure) new PlayerEntity(owner).defeat();
   }
 
+  const living = state.players.filter((owner) => owner.alive);
+  const teams = new Set(living.map((owner) => owner.team));
+  if (living.length === 0) return { team: null, reason: '全员覆灭' };
+  if (teams.size === 1) return { team: living[0].team, reason: '敌军已被全歼' };
+
+  for (const owner of living) {
+    const completed = owner.objectives.find(
+      (objective) => handlers.role(objective) !== 'optional' && objectiveStatus(state, owner.id, objective) === 'completed',
+    );
+    if (completed) {
+      return { team: owner.team, reason: `${owner.name} 完成目标：${handlers.describe(completed)}` };
+    }
+  }
+
+  const limit = state.rules.turnLimit;
+  if (limit !== null && state.turn > limit) return { team: null, reason: '回合数耗尽，平局' };
   return { team: null, reason: '' };
 }
 
-/** Progress string for the HUD, e.g. "3/5 据点". */
-export function objectiveProgress(s: GameState, id: PlayerId, o: Objective): string {
-  switch (o.type) {
-    case 'routEnemies': {
-      const left = s.players
-        .filter((p) => areEnemies(s, p.id, id))
-        .reduce((n, p) => n + unitsOf(s, p.id).length, 0);
-      return `剩余敌军 ${left}`;
+/** Resource grants a player collects at the start of their turn. */
+export function turnResourceGrantsFor(
+  state: GameState,
+  owner: PlayerId,
+  content: ContentCatalog = GlobalContentCatalog,
+): ResourceAmount[] {
+  const totals = new Map<string, number>();
+  const add = (grant: ResourceAmount): void => {
+    totals.set(grant.resource, (totals.get(grant.resource) ?? 0) + grant.amount);
+  };
+  for (const grant of state.rules.baseResourceGrants) add(grant);
+  for (let index = 0; index < state.map.owners.length; index++) {
+    if (state.map.owners[index] !== owner) continue;
+    const terrain = content.terrains.get(state.map.tiles[index]);
+    for (const grant of terrain.ownerTurnGrants) {
+      add({
+        resource: grant.resource,
+        amount: state.rules.siteResourceOverrides[grant.resource] ?? grant.amount,
+      });
     }
-    case 'captureHQ': {
-      const left = s.players
-        .filter((p) => areEnemies(s, p.id, id))
-        .reduce((n, p) => n + hqTilesOf(s, p.id).length, 0);
-      return `敌方城堡 ${left}`;
-    }
-    case 'holdAllVillages': {
-      let total = 0;
-      let mine = 0;
-      for (let i = 0; i < s.map.tiles.length; i++) {
-        if (!Terrains.get(s.map.tiles[i]).capturable) continue;
-        total++;
-        if (s.map.owners[i] === id) mine++;
-      }
-      return `${mine}/${total} 据点`;
-    }
-    case 'surviveTurns':
-      return `${Math.min(s.turn, o.turns)}/${o.turns} 回合`;
-    default:
-      return '';
   }
+  return [...totals].map(([resource, amount]) => ({ resource, amount }));
 }
 
-/** Income a player collects at the start of their turn. */
-export function incomeFor(s: GameState, id: PlayerId): number {
-  let total = s.rules.baseIncome;
-  for (let i = 0; i < s.map.owners.length; i++) {
-    if (s.map.owners[i] !== id) continue;
-    const t = Terrains.get(s.map.tiles[i]);
-    total += s.rules.incomeOverride ?? t.income;
-  }
-  return total;
-}
-
-export function healRateAt(s: GameState, x: number, y: number, owner: PlayerId): number {
-  const i = idx(s.map, x, y);
-  if (!s.rules.healOnOwnedBuilding) return 0;
-  if (s.map.owners[i] !== owner) return 0;
-  return Terrains.get(s.map.tiles[i]).heal;
+export function healRateAt(
+  state: GameState,
+  x: number,
+  y: number,
+  owner: PlayerId,
+  content: ContentCatalog = GlobalContentCatalog,
+): number {
+  const index = idx(state.map, x, y);
+  if (!state.rules.healOnOwnedBuilding) return 0;
+  if (state.map.owners[index] !== owner) return 0;
+  return new Battlefield(state, content).cellAt(x, y).heal;
 }

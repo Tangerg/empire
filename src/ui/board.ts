@@ -2,6 +2,7 @@ import { unitDef } from '../core/data/units';
 import { idx } from '../core/grid';
 import type { Coord, GameState, Unit } from '../core/types';
 import { PAL } from '../art/palette';
+import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../art/battlefield-layer';
 import { TILE, terrainLayerMarkup } from '../art/terrain';
 import { unitSpriteMarkup } from '../art/units';
 import { clear, fromMarkup, setAttrs, svg } from '../art/svg';
@@ -74,11 +75,11 @@ export class BoardView {
     this.el = svg('svg', {
       viewBox: `0 0 ${w} ${h}`,
       class: 'board',
-      'shape-rendering': 'geometricPrecision',
+      'shape-rendering': 'crispEdges',
       'text-rendering': 'optimizeLegibility',
     });
 
-    const names = ['terrain', 'grid', 'range', 'path', 'units', 'effects', 'cursor'];
+    const names = ['terrain', 'spatial', 'grid', 'range', 'path', 'units', 'effects', 'cursor'];
     this.layers = {};
     for (const n of names) {
       const g = svg('g', { class: `layer layer-${n}` });
@@ -87,7 +88,7 @@ export class BoardView {
     }
     this.buildGrid();
     this.bindPointer();
-    this.setZoom(1);
+    this.setZoom(1.25);
   }
 
   /* ------------------------------------------------------------------ setup */
@@ -167,12 +168,15 @@ export class BoardView {
   /** Terrain only changes when ownership does, so it is cheap to diff by hash. */
   syncTerrain(): void {
     const s = this.state;
-    const signature = `${s.map.owners.join('')}|${s.map.tiles.join('')}`;
+    const signature = battlefieldRenderKey(s.map);
     if (signature === this.mapSignature) return;
     this.mapSignature = signature;
     clear(this.layers.terrain);
     const colorOf = (id: number) => s.players.find((p) => p.id === id)?.color;
     this.layers.terrain.append(fromMarkup(terrainLayerMarkup(s.map, colorOf)));
+    clear(this.layers.spatial);
+    const spatial = battlefieldFeatureMarkup(s.map);
+    if (spatial) this.layers.spatial.append(fromMarkup(spatial));
   }
 
   render(overlay: BoardOverlay): void {
@@ -254,6 +258,7 @@ export class BoardView {
 
     for (const u of s.units) {
       const el = this.unitElement(u);
+      if (!el.classList.contains('is-moving')) el.classList.toggle('face-left', u.facing === 'west');
       const hidden = o.hiddenUnits.has(u.id);
       el.style.display = hidden ? 'none' : '';
       if (hidden) continue;
@@ -266,6 +271,8 @@ export class BoardView {
       const def = unitDef(u.type);
       const ratio = u.hp / def.maxHp;
       const parts: string[] = [];
+      const arrow = ({ north: '↑', east: '→', south: '↓', west: '←' } as const)[u.facing];
+      parts.push(`<circle cx="5" cy="6" r="4.8" fill="${PAL.ink}" opacity="0.78"/><text x="5" y="8.8" text-anchor="middle" font-size="7.5" fill="#fff">${arrow}</text>`);
       if (ratio < 1) {
         const color = ratio > 0.6 ? PAL.hpGood : ratio > 0.3 ? PAL.hpMid : PAL.hpLow;
         parts.push(

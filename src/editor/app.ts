@@ -1,53 +1,53 @@
 import { icon } from '../art/icons';
+import { loadCustomLevels, saveCustomLevel, stashPlaytest } from '../application/level-storage';
 import { terrainSwatch } from '../art/terrain';
 import { unitIcon } from '../art/units';
 import { TEAM_COLORS } from '../art/palette';
+import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '../content/ancient-empires/levels';
 import { Terrains } from '../core/data/terrain';
 import { UnitTypes } from '../core/data/units';
 import { idx } from '../core/grid';
 import {
-  CHAR_OF_TERRAIN,
   emptyLevel,
   normaliseLevel,
-  terrainRows,
+  terrainCharacter,
   validateLevel,
   type LevelIssue,
 } from '../core/mapio';
 import { mapFromLevel } from '../core/mapio';
 import type {
   Coord,
-  GameMap,
+  CoverLevel,
+  Direction,
   LevelData,
-  LevelUnit,
   Objective,
   PlayerConfig,
   RuleSet,
   TerrainId,
 } from '../core/types';
-import { BUILTIN_LEVELS, loadCustomLevels, saveCustomLevel, stashPlaytest } from '../levels';
-import { escapeHtml } from '../ui/hud';
+import { escapeHtml } from '../ui/html';
 import { EditorBoard } from './board';
+import { EditorDocument } from './document';
+import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from '../core/resources';
 
-type Tool = 'terrain' | 'rect' | 'fill' | 'unit' | 'owner' | 'erase' | 'pick';
-
-interface Doc {
-  id: string;
-  name: string;
-  author: string;
-  description: string;
-  map: GameMap;
-  units: LevelUnit[];
-  players: PlayerConfig[];
-  rules: Partial<RuleSet>;
-  victory: Objective[];
-}
+type Tool = 'terrain' | 'rect' | 'fill' | 'elevation' | 'cliff' | 'cover' | 'unit' | 'owner' | 'erase' | 'pick';
 
 const DRAFT_KEY = 'empire.editorDraft';
+
+const playerFunds = (player: PlayerConfig) => player.resources[FUNDS_RESOURCE]?.current ?? 0;
+const unitRecruitCost = (id: string) => UnitTypes.get(id).recruitCosts
+  .map((cost) => `${cost.resource} ${cost.amount}`)
+  .join(' · ') || '不可招募';
+const fundsGrant = (rules: Partial<RuleSet>) =>
+  rules.baseResourceGrants?.find((grant) => grant.resource === FUNDS_RESOURCE)?.amount ?? 0;
 
 const TOOL_LABEL: Record<Tool, { name: string; key: string; icon: string }> = {
   terrain: { name: '笔刷', key: 'B', icon: 'grid' },
   rect: { name: '矩形', key: 'R', icon: 'save' },
   fill: { name: '填充', key: 'F', icon: 'flag' },
+  elevation: { name: '海拔', key: 'H', icon: 'grid' },
+  cliff: { name: '悬崖边', key: 'J', icon: 'shield' },
+  cover: { name: '方向掩体', key: 'K', icon: 'shield' },
   unit: { name: '放置单位', key: 'U', icon: 'sword' },
   owner: { name: '归属', key: 'O', icon: 'shield' },
   erase: { name: '擦除单位', key: 'E', icon: 'trash' },
@@ -62,7 +62,7 @@ const OBJECTIVE_TYPES: { type: Objective['type']; label: string }[] = [
 ];
 
 export class EditorApp {
-  private doc: Doc;
+  private doc: EditorDocument;
   private board: EditorBoard;
   private undoStack: string[] = [];
   private redoStack: string[] = [];
@@ -72,6 +72,9 @@ export class EditorApp {
   private unitType = 'soldier';
   private owner = 1;
   private brushSize = 1;
+  private elevation = 0;
+  private coverLevel: Exclude<CoverLevel, 'none'> = 'half';
+  private coverSide: Direction = 'north';
   private rectAnchor: Coord | null = null;
   private cursor: Coord | null = null;
   private showCoords = false;
@@ -86,7 +89,8 @@ export class EditorApp {
   private readonly scroller = document.createElement('div');
 
   constructor(level: LevelData) {
-    this.doc = toDoc(level);
+    this.doc = EditorDocument.fromLevel(level);
+    this.ensureOwnerSelection();
     this.root.className = 'editor-root';
     this.topEl.className = 'topbar editor-top';
     this.leftEl.className = 'panel palette';
@@ -129,7 +133,7 @@ export class EditorApp {
   /* ------------------------------------------------------------- doc history */
 
   private snapshot(): void {
-    this.undoStack.push(serialiseDoc(this.doc));
+    this.undoStack.push(this.doc.serialize());
     if (this.undoStack.length > 80) this.undoStack.shift();
     this.redoStack.length = 0;
   }
@@ -138,18 +142,16 @@ export class EditorApp {
   undo(): void {
     const prev = this.undoStack.pop();
     if (!prev) return;
-    this.redoStack.push(serialiseDoc(this.doc));
-    this.doc = deserialiseDoc(prev);
-    this.board.resize(this.doc.map);
+    this.redoStack.push(this.doc.serialize());
+    this.replaceDocument(EditorDocument.deserialize(prev));
     this.renderAll();
   }
 
   redo(): void {
     const next = this.redoStack.pop();
     if (!next) return;
-    this.undoStack.push(serialiseDoc(this.doc));
-    this.doc = deserialiseDoc(next);
-    this.board.resize(this.doc.map);
+    this.undoStack.push(this.doc.serialize());
+    this.replaceDocument(EditorDocument.deserialize(next));
     this.renderAll();
   }
 
@@ -158,6 +160,18 @@ export class EditorApp {
       localStorage.setItem(DRAFT_KEY, JSON.stringify(this.exportLevel()));
     } catch {
       /* storage full or unavailable — drafts are a convenience, not a contract */
+    }
+  }
+
+  private replaceDocument(document: EditorDocument): void {
+    this.doc = document;
+    this.ensureOwnerSelection();
+    this.board.resize(document.map);
+  }
+
+  private ensureOwnerSelection(): void {
+    if (!this.doc.players.some((player) => player.id === this.owner)) {
+      this.owner = this.doc.players[0]?.id ?? 0;
     }
   }
 
@@ -173,16 +187,12 @@ export class EditorApp {
         for (let dx = -r; dx <= r; dx++) {
           const x = this.cursor.x + dx;
           const y = this.cursor.y + dy;
-          if (this.inBounds(x, y)) out.push({ x, y });
+          if (this.doc.inBounds({ x, y })) out.push({ x, y });
         }
       }
       return out;
     }
     return [this.cursor];
-  }
-
-  private inBounds(x: number, y: number): boolean {
-    return x >= 0 && y >= 0 && x < this.doc.map.width && y < this.doc.map.height;
   }
 
   private onStroke(c: Coord, phase: 'start' | 'move' | 'end', button: number): void {
@@ -196,11 +206,29 @@ export class EditorApp {
         this.paintBoard();
         return;
       }
+      if (this.tool === 'cliff') {
+        this.rectAnchor = c;
+        this.paintBoard();
+        return;
+      }
     }
 
     if (this.tool === 'rect') {
       if (phase === 'end' && this.rectAnchor) {
         for (const t of rectTiles(this.rectAnchor, c)) this.setTerrain(t, this.terrain);
+        this.rectAnchor = null;
+        this.finishStroke();
+      } else {
+        this.cursor = c;
+        this.paintBoard();
+      }
+      return;
+    }
+
+    if (this.tool === 'cliff') {
+      if (phase === 'end' && this.rectAnchor) {
+        const anchor = this.rectAnchor;
+        if (Math.abs(anchor.x - c.x) + Math.abs(anchor.y - c.y) === 1) this.toggleCliff(anchor, c);
         this.rectAnchor = null;
         this.finishStroke();
       } else {
@@ -221,6 +249,14 @@ export class EditorApp {
         break;
       case 'fill':
         this.floodFill(c, this.terrain);
+        break;
+      case 'elevation':
+        for (const tile of this.brushTilesAt(c)) {
+          this.doc.setElevation(tile, erasing ? 0 : this.elevation);
+        }
+        break;
+      case 'cover':
+        this.setDirectionalCover(c, erasing ? null : this.coverLevel);
         break;
       case 'unit':
         if (erasing) this.removeUnitAt(c);
@@ -256,53 +292,31 @@ export class EditorApp {
   }
 
   private setTerrain(c: Coord, id: TerrainId): void {
-    const i = idx(this.doc.map, c.x, c.y);
-    if (this.doc.map.tiles[i] === id) return;
-    this.doc.map.tiles[i] = id;
-    // Ownership only exists on capturable tiles.
-    if (!Terrains.get(id).capturable) this.doc.map.owners[i] = 0;
-    else if (this.doc.map.owners[i] === 0 && this.tool !== 'terrain') this.doc.map.owners[i] = 0;
+    this.doc.setTerrain(c, id);
   }
 
   private floodFill(from: Coord, id: TerrainId): void {
-    const map = this.doc.map;
-    const target = map.tiles[idx(map, from.x, from.y)];
-    if (target === id) return;
-    const queue: Coord[] = [from];
-    const seen = new Set<number>([idx(map, from.x, from.y)]);
-    while (queue.length) {
-      const c = queue.pop()!;
-      this.setTerrain(c, id);
-      for (const d of [
-        { x: 1, y: 0 },
-        { x: -1, y: 0 },
-        { x: 0, y: 1 },
-        { x: 0, y: -1 },
-      ]) {
-        const x = c.x + d.x;
-        const y = c.y + d.y;
-        if (!this.inBounds(x, y)) continue;
-        const i = idx(map, x, y);
-        if (seen.has(i) || map.tiles[i] !== target) continue;
-        seen.add(i);
-        queue.push({ x, y });
-      }
-    }
+    this.doc.floodFill(from, id);
   }
 
   private placeUnit(c: Coord): void {
-    this.doc.units = this.doc.units.filter((u) => !(u.x === c.x && u.y === c.y));
-    this.doc.units.push({ x: c.x, y: c.y, unit: this.unitType, owner: this.owner });
+    this.doc.placeUnit(c, this.unitType, this.owner);
   }
 
   private removeUnitAt(c: Coord): void {
-    this.doc.units = this.doc.units.filter((u) => !(u.x === c.x && u.y === c.y));
+    this.doc.removeUnitAt(c);
   }
 
   private setOwner(c: Coord, owner: number): void {
-    const i = idx(this.doc.map, c.x, c.y);
-    if (!Terrains.get(this.doc.map.tiles[i]).capturable) return;
-    this.doc.map.owners[i] = owner;
+    this.doc.setOwner(c, owner);
+  }
+
+  private toggleCliff(from: Coord, to: Coord): void {
+    this.doc.toggleCliff(from, to);
+  }
+
+  private setDirectionalCover(at: Coord, level: Exclude<CoverLevel, 'none'> | null): void {
+    this.doc.setDirectionalCover(at, this.coverSide, level);
   }
 
   private pick(c: Coord): void {
@@ -321,25 +335,9 @@ export class EditorApp {
   resize(width: number, height: number): void {
     width = Math.max(4, Math.min(64, Math.round(width)));
     height = Math.max(4, Math.min(64, Math.round(height)));
-    const old = this.doc.map;
-    if (width === old.width && height === old.height) return;
+    if (width === this.doc.map.width && height === this.doc.map.height) return;
     this.snapshot();
-    const tiles: TerrainId[] = new Array(width * height).fill('plain');
-    const owners: number[] = new Array(width * height).fill(0);
-    for (let y = 0; y < Math.min(height, old.height); y++) {
-      for (let x = 0; x < Math.min(width, old.width); x++) {
-        tiles[y * width + x] = old.tiles[y * old.width + x];
-        owners[y * width + x] = old.owners[y * old.width + x];
-      }
-    }
-    this.doc.map = {
-      width,
-      height,
-      tiles,
-      owners,
-      captureProgress: new Array(width * height).fill(0),
-    };
-    this.doc.units = this.doc.units.filter((u) => u.x < width && u.y < height);
+    this.doc.resize(width, height);
     this.board.resize(this.doc.map);
     this.autosave();
     this.renderAll();
@@ -396,21 +394,7 @@ export class EditorApp {
 
   /** Serialise the document to the on-disk level format. */
   exportLevel(): LevelData {
-    return {
-      schema: 1,
-      id: this.doc.id,
-      name: this.doc.name,
-      author: this.doc.author,
-      description: this.doc.description,
-      width: this.doc.map.width,
-      height: this.doc.map.height,
-      terrain: terrainRows(this.doc.map),
-      owners: ownersOf(this.doc.map),
-      units: this.doc.units.map((u) => ({ ...u })),
-      players: this.doc.players.map((p) => ({ ...p })),
-      rules: { ...this.doc.rules },
-      victory: this.doc.victory.map((o) => ({ ...o })),
-    };
+    return this.doc.toLevel();
   }
 
   private save(): void {
@@ -457,8 +441,7 @@ export class EditorApp {
         const level = normaliseLevel(JSON.parse(await file.text()));
         mapFromLevel(level); // fail fast on a broken terrain grid
         this.snapshot();
-        this.doc = toDoc(level);
-        this.board.resize(this.doc.map);
+        this.replaceDocument(EditorDocument.fromLevel(level));
         this.status = `已载入 ${level.name}`;
         this.renderAll();
       } catch (e) {
@@ -537,13 +520,26 @@ export class EditorApp {
           ${terrainList
             .map(
               (t, i) => `<button class="swatch ${this.terrain === t.id ? 'active' : ''}"
-                data-act="terrain" data-arg="${t.id}" title="${escapeHtml(t.name)} · 字符 ${CHAR_OF_TERRAIN[t.id]}${i < 9 ? ` · 快捷键 ${i + 1}` : ''}">
+                data-act="terrain" data-arg="${t.id}" title="${escapeHtml(t.name)} · 字符 ${terrainCharacter(t.id) ?? '?'}${i < 9 ? ` · 快捷键 ${i + 1}` : ''}">
                 ${terrainSwatch(t.id, t.capturable ? this.colorOf(this.owner) : undefined)}
                 <span>${escapeHtml(t.name)}</span>
               </button>`,
             )
             .join('')}
         </div>
+      </section>
+
+      <section class="card">
+        <h3>空间规则</h3>
+        <div class="row"><label>海拔<input type="number" min="-9" max="20" data-field="elevation" value="${this.elevation}"/></label></div>
+        <div class="owner-row">
+          ${(['north', 'east', 'south', 'west'] as const).map((side) => `<button class="owner-chip ${this.coverSide === side ? 'active' : ''}" data-act="cover-side" data-arg="${side}">${({ north: '北', east: '东', south: '南', west: '西' })[side]}</button>`).join('')}
+        </div>
+        <div class="owner-row">
+          <button class="owner-chip ${this.coverLevel === 'half' ? 'active' : ''}" data-act="cover-level" data-arg="half">半掩体</button>
+          <button class="owner-chip ${this.coverLevel === 'full' ? 'active' : ''}" data-act="cover-level" data-arg="full">全掩体</button>
+        </div>
+        <p class="hint">海拔工具直接绘制高度；悬崖工具从一个格拖到相邻格；方向掩体按来袭方向保护单位。</p>
       </section>
 
       <section class="card">
@@ -566,7 +562,7 @@ export class EditorApp {
           ${UnitTypes.all()
             .map(
               (d) => `<button class="unit-chip ${this.unitType === d.id ? 'active' : ''}"
-                data-act="unit" data-arg="${d.id}" title="${escapeHtml(d.name)} · ${d.cost}">
+                data-act="unit" data-arg="${d.id}" title="${escapeHtml(d.name)} · ${escapeHtml(unitRecruitCost(d.id))}">
                 ${unitIcon(d.id, this.colorOf(this.owner), 30)}
                 <span>${escapeHtml(d.name)}</span>
               </button>`,
@@ -620,7 +616,7 @@ export class EditorApp {
               </div>
               <div class="row">
                 <label class="tiny">阵营<input type="number" min="1" max="8" data-field="p.team" data-id="${p.id}" value="${p.team}"/></label>
-                <label class="tiny">资金<input type="number" min="0" step="50" data-field="p.funds" data-id="${p.id}" value="${p.funds}"/></label>
+                <label class="tiny">资金<input type="number" min="0" step="50" data-field="p.funds" data-id="${p.id}" value="${playerFunds(p)}"/></label>
                 <label class="tiny">控制
                   <select data-field="p.controller" data-id="${p.id}">
                     <option value="human" ${p.controller === 'human' ? 'selected' : ''}>玩家</option>
@@ -665,10 +661,10 @@ export class EditorApp {
         </label>
         <div class="row">
           <label class="tiny">回合上限<input type="number" min="0" data-field="r.turnLimit" value="${rules.turnLimit ?? ''}" placeholder="无"/></label>
-          <label class="tiny">基础收入<input type="number" min="0" step="50" data-field="r.baseIncome" value="${rules.baseIncome ?? 0}"/></label>
+          <label class="tiny">基础资金产出<input type="number" min="0" step="50" data-field="r.baseFundsGrant" value="${fundsGrant(rules)}"/></label>
         </div>
         <div class="row">
-          <label class="tiny">据点收入<input type="number" min="0" step="50" data-field="r.incomeOverride" value="${rules.incomeOverride ?? ''}" placeholder="按地形"/></label>
+          <label class="tiny">据点资金产出<input type="number" min="0" step="50" data-field="r.siteFundsOverride" value="${rules.siteResourceOverrides?.[FUNDS_RESOURCE] ?? ''}" placeholder="按地形"/></label>
           <label class="tiny">单位上限<input type="number" min="0" data-field="r.maxUnitsPerPlayer" value="${rules.maxUnitsPerPlayer ?? ''}" placeholder="无"/></label>
         </div>
       </section>
@@ -725,6 +721,14 @@ export class EditorApp {
           if (this.tool !== 'rect' && this.tool !== 'fill') this.tool = 'terrain';
           this.renderAll();
           break;
+        case 'cover-side':
+          this.coverSide = arg as Direction;
+          this.renderLeft();
+          break;
+        case 'cover-level':
+          this.coverLevel = arg as Exclude<CoverLevel, 'none'>;
+          this.renderLeft();
+          break;
         case 'unit':
           this.unitType = arg;
           this.tool = 'unit';
@@ -762,8 +766,7 @@ export class EditorApp {
         case 'clear':
           if (confirm('清空当前地图？')) {
             this.snapshot();
-            this.doc = toDoc(emptyLevel(this.doc.map.width, this.doc.map.height));
-            this.board.resize(this.doc.map);
+            this.replaceDocument(EditorDocument.fromLevel(emptyLevel(this.doc.map.width, this.doc.map.height)));
             this.renderAll();
           }
           break;
@@ -776,7 +779,10 @@ export class EditorApp {
             team: id,
             color: TEAM_COLORS[(id - 1) % TEAM_COLORS.length],
             controller: 'ai',
-            funds: 0,
+            resources: {
+              [FUNDS_RESOURCE]: { current: 0, capacity: null },
+              [COMMAND_POINTS_RESOURCE]: { current: 0, capacity: 5 },
+            },
             ai: { aggression: 0.5 },
           });
           this.renderAll();
@@ -840,7 +846,12 @@ export class EditorApp {
       if (key === 'name') p.name = String(value);
       if (key === 'color') p.color = String(value);
       if (key === 'team') p.team = Math.max(1, Number(value) || 1);
-      if (key === 'funds') p.funds = Math.max(0, Number(value) || 0);
+      if (key === 'funds') {
+        p.resources[FUNDS_RESOURCE] = {
+          current: Math.max(0, Number(value) || 0),
+          capacity: p.resources[FUNDS_RESOURCE]?.capacity ?? null,
+        };
+      }
       if (key === 'controller') p.controller = value === 'ai' ? 'ai' : 'human';
       if (key === 'aggression') p.ai = { aggression: Math.max(0, Math.min(1, Number(value) || 0)) };
       this.renderAll();
@@ -849,7 +860,28 @@ export class EditorApp {
 
     if (field.startsWith('r.')) {
       this.snapshot();
-      const key = field.slice(2) as keyof RuleSet;
+      const fieldName = field.slice(2);
+      if (fieldName === 'baseFundsGrant') {
+        const amount = Math.max(0, Number(value) || 0);
+        const other = (this.doc.rules.baseResourceGrants ?? [])
+          .filter((grant) => grant.resource !== FUNDS_RESOURCE);
+        this.doc.rules.baseResourceGrants = amount > 0
+          ? [...other, { resource: FUNDS_RESOURCE, amount }]
+          : other;
+        this.renderRight();
+        this.autosave();
+        return;
+      }
+      if (fieldName === 'siteFundsOverride') {
+        const overrides = { ...(this.doc.rules.siteResourceOverrides ?? {}) };
+        if (value === '') delete overrides[FUNDS_RESOURCE];
+        else overrides[FUNDS_RESOURCE] = Math.max(0, Number(value) || 0);
+        this.doc.rules.siteResourceOverrides = overrides;
+        this.renderRight();
+        this.autosave();
+        return;
+      }
+      const key = fieldName as keyof RuleSet;
       const rules = this.doc.rules as Record<string, unknown>;
       if (typeof value === 'boolean') rules[key] = value;
       else if (key === 'captureMode') rules[key] = value;
@@ -872,6 +904,10 @@ export class EditorApp {
       case 'author':
         this.doc.author = String(value);
         break;
+      case 'elevation':
+        this.elevation = Math.max(-9, Math.min(20, Math.round(Number(value) || 0)));
+        this.renderLeft();
+        return;
       case 'width':
         this.resize(Number(value), this.doc.map.height);
         return;
@@ -896,8 +932,7 @@ export class EditorApp {
             : loadCustomLevels().find((s) => s.level.id === levelId)?.level;
         if (level) {
           this.snapshot();
-          this.doc = toDoc(level);
-          this.board.resize(this.doc.map);
+          this.replaceDocument(EditorDocument.fromLevel(level));
           this.status = `已载入 ${level.name}`;
           this.renderAll();
         }
@@ -926,35 +961,6 @@ function toggleObjective(
     type === 'surviveTurns' ? { type, turns: rules.turnLimit ?? 12 } : ({ type } as Objective);
   return [...list, next];
 }
-
-function ownersOf(map: GameMap): { x: number; y: number; owner: number }[] {
-  const out: { x: number; y: number; owner: number }[] = [];
-  for (let i = 0; i < map.owners.length; i++) {
-    if (!Terrains.get(map.tiles[i]).capturable) continue;
-    out.push({ x: i % map.width, y: Math.floor(i / map.width), owner: map.owners[i] });
-  }
-  return out;
-}
-
-function toDoc(level: LevelData): Doc {
-  const map = mapFromLevel(level);
-  return {
-    id: level.id,
-    name: level.name,
-    author: level.author ?? '',
-    description: level.description ?? '',
-    map,
-    units: level.units.map((u) => ({ ...u })),
-    players: level.players.map((p) => ({ ...p, ai: { ...(p.ai ?? { aggression: 0.5 }) } })),
-    rules: { ...level.rules },
-    victory: level.victory.map((o) => ({ ...o })),
-  };
-}
-
-const serialiseDoc = (d: Doc): string =>
-  JSON.stringify({ ...d, map: { ...d.map, tiles: d.map.tiles, owners: d.map.owners } });
-
-const deserialiseDoc = (s: string): Doc => JSON.parse(s) as Doc;
 
 function rectTiles(a: Coord, b: Coord): Coord[] {
   const out: Coord[] = [];

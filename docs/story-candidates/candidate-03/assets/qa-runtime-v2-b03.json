@@ -1,0 +1,1040 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-03",
+  "batchId": "b03",
+  "qualityTier": "runtime-v2-candidate",
+  "runtimeReady": false,
+  "passed": true,
+  "summary": {
+    "assetCount": 28,
+    "coverage": {
+      "combat-unit": 28
+    },
+    "cumulativeCombatTopics": 40,
+    "combatTarget": 40,
+    "machineErrors": 0
+  },
+  "checks": [
+    {
+      "id": "manifest.topic-category-label-expanded",
+      "passed": true,
+      "count": 28
+    },
+    {
+      "id": "manifest.unique-id-topic-content",
+      "passed": true
+    },
+    {
+      "id": "manifest.no-primary-b02-overlap",
+      "passed": true
+    },
+    {
+      "id": "coverage.combat-unit-40-of-40",
+      "passed": true,
+      "target": 40,
+      "primarySemanticMappings": 4,
+      "batch02": 8,
+      "batch03": 28,
+      "covered": 40,
+      "missingTopicIds": [],
+      "unexpectedTopicIds": []
+    },
+    {
+      "id": "files.png-svg-dimensions",
+      "passed": true,
+      "count": 28
+    },
+    {
+      "id": "units.four-frames-grounded-alpha",
+      "passed": true,
+      "assets": [
+        {
+          "id": "c03-b03-unit-fire-ship",
+          "topicId": "c03-unit-fd4c21da",
+          "passed": true,
+          "frameBoxes": [
+            [
+              5,
+              16,
+              94,
+              64
+            ],
+            [
+              6,
+              19,
+              92,
+              64
+            ],
+            [
+              8,
+              23,
+              91,
+              64
+            ],
+            [
+              2,
+              21,
+              94,
+              64
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-bridge-corps",
+          "topicId": "c03-unit-2be16bd2",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              13,
+              63,
+              48
+            ],
+            [
+              1,
+              13,
+              63,
+              48
+            ],
+            [
+              1,
+              15,
+              63,
+              48
+            ],
+            [
+              1,
+              13,
+              63,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-ladder-corps",
+          "topicId": "c03-unit-4dad36ef",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              18,
+              63,
+              48
+            ],
+            [
+              1,
+              14,
+              63,
+              48
+            ],
+            [
+              1,
+              19,
+              63,
+              48
+            ],
+            [
+              1,
+              17,
+              63,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-catapult-crew",
+          "topicId": "c03-unit-0609e6e6",
+          "passed": true,
+          "frameBoxes": [
+            [
+              3,
+              7,
+              63,
+              48
+            ],
+            [
+              2,
+              6,
+              63,
+              48
+            ],
+            [
+              2,
+              8,
+              63,
+              48
+            ],
+            [
+              2,
+              6,
+              63,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-musketeer",
+          "topicId": "c03-unit-3d86046f",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              9,
+              31,
+              48
+            ],
+            [
+              1,
+              16,
+              29,
+              48
+            ],
+            [
+              1,
+              9,
+              31,
+              48
+            ],
+            [
+              1,
+              15,
+              30,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-fire-arrow-corps",
+          "topicId": "c03-unit-5e64c3a6",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              11,
+              31,
+              48
+            ],
+            [
+              1,
+              10,
+              31,
+              48
+            ],
+            [
+              1,
+              6,
+              31,
+              48
+            ],
+            [
+              1,
+              9,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-thunder-bomb-corps",
+          "topicId": "c03-unit-9881f2a3",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              7,
+              31,
+              48
+            ],
+            [
+              1,
+              11,
+              31,
+              48
+            ],
+            [
+              1,
+              8,
+              31,
+              48
+            ],
+            [
+              1,
+              14,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-field-medic",
+          "topicId": "c03-unit-4566788b",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              4,
+              31,
+              48
+            ],
+            [
+              1,
+              6,
+              31,
+              48
+            ],
+            [
+              1,
+              5,
+              31,
+              48
+            ],
+            [
+              1,
+              7,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-drummer-standard",
+          "topicId": "c03-unit-b59c3f96",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              11,
+              31,
+              48
+            ],
+            [
+              1,
+              10,
+              31,
+              48
+            ],
+            [
+              1,
+              6,
+              31,
+              48
+            ],
+            [
+              1,
+              12,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-quartermaster",
+          "topicId": "c03-unit-a53b725f",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              12,
+              31,
+              48
+            ],
+            [
+              1,
+              11,
+              31,
+              48
+            ],
+            [
+              1,
+              12,
+              31,
+              48
+            ],
+            [
+              1,
+              13,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-strategist",
+          "topicId": "c03-unit-8f49e6ef",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              18,
+              31,
+              48
+            ],
+            [
+              1,
+              13,
+              31,
+              48
+            ],
+            [
+              1,
+              9,
+              31,
+              48
+            ],
+            [
+              1,
+              17,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-scout-office-agent",
+          "topicId": "c03-unit-8842d111",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              16,
+              31,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-envoy",
+          "topicId": "c03-unit-75ee37ba",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              9,
+              31,
+              48
+            ],
+            [
+              1,
+              10,
+              31,
+              48
+            ],
+            [
+              1,
+              9,
+              31,
+              48
+            ],
+            [
+              1,
+              8,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-village-militia",
+          "topicId": "c03-unit-f0a4ddaa",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              22,
+              31,
+              48
+            ],
+            [
+              1,
+              23,
+              30,
+              48
+            ],
+            [
+              1,
+              22,
+              30,
+              48
+            ],
+            [
+              1,
+              21,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-gate-shield-guard",
+          "topicId": "c03-unit-76cd6822",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              19,
+              31,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-commander-retinue",
+          "topicId": "c03-unit-73d2bcb4",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              17,
+              31,
+              48
+            ],
+            [
+              1,
+              20,
+              30,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-warhammer-breaker",
+          "topicId": "c03-unit-6a62b51e",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              21,
+              31,
+              48
+            ],
+            [
+              1,
+              20,
+              31,
+              48
+            ],
+            [
+              1,
+              20,
+              31,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-fortification-guard",
+          "topicId": "c03-unit-4377f3e4",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              14,
+              31,
+              48
+            ],
+            [
+              1,
+              12,
+              31,
+              48
+            ],
+            [
+              1,
+              9,
+              31,
+              48
+            ],
+            [
+              1,
+              13,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-covert-hull-saboteur",
+          "topicId": "c03-unit-3f6fea2f",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              24,
+              31,
+              48
+            ],
+            [
+              1,
+              24,
+              31,
+              48
+            ],
+            [
+              1,
+              24,
+              31,
+              48
+            ],
+            [
+              1,
+              26,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-canal-escort",
+          "topicId": "c03-unit-6d03b909",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              24,
+              30,
+              48
+            ],
+            [
+              1,
+              22,
+              31,
+              48
+            ],
+            [
+              1,
+              23,
+              31,
+              48
+            ],
+            [
+              1,
+              18,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-salt-store-guard",
+          "topicId": "c03-unit-c30bf360",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              20,
+              31,
+              48
+            ],
+            [
+              1,
+              20,
+              31,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ],
+            [
+              1,
+              20,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-snowfield-horse-archer",
+          "topicId": "c03-unit-747800db",
+          "passed": true,
+          "frameBoxes": [
+            [
+              9,
+              2,
+              54,
+              48
+            ],
+            [
+              11,
+              2,
+              54,
+              48
+            ],
+            [
+              9,
+              2,
+              54,
+              48
+            ],
+            [
+              9,
+              2,
+              55,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-frontier-market-guard",
+          "topicId": "c03-unit-118c7423",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              23,
+              30,
+              48
+            ],
+            [
+              1,
+              21,
+              31,
+              48
+            ],
+            [
+              1,
+              23,
+              31,
+              48
+            ],
+            [
+              1,
+              20,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-ning-imperial-guard",
+          "topicId": "c03-unit-4619e546",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              23,
+              31,
+              48
+            ],
+            [
+              1,
+              23,
+              31,
+              48
+            ],
+            [
+              1,
+              22,
+              31,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-secret-inspector",
+          "topicId": "c03-unit-3f4a6e1d",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              7,
+              31,
+              48
+            ],
+            [
+              1,
+              13,
+              31,
+              48
+            ],
+            [
+              1,
+              11,
+              31,
+              48
+            ],
+            [
+              1,
+              12,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-tunnel-corps",
+          "topicId": "c03-unit-0c42f6d3",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              14,
+              31,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ],
+            [
+              1,
+              19,
+              31,
+              48
+            ],
+            [
+              1,
+              17,
+              30,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-fire-oil-defense",
+          "topicId": "c03-unit-2bc4ddf7",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              21,
+              31,
+              48
+            ],
+            [
+              1,
+              26,
+              31,
+              48
+            ],
+            [
+              1,
+              24,
+              31,
+              48
+            ],
+            [
+              1,
+              20,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        },
+        {
+          "id": "c03-b03-unit-reorganized-surrendered",
+          "topicId": "c03-unit-cecc448d",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              10,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              30,
+              48
+            ],
+            [
+              1,
+              17,
+              31,
+              48
+            ],
+            [
+              1,
+              11,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true,
+          "binaryAlpha": true,
+          "transparentCorners": true
+        }
+      ]
+    },
+    {
+      "id": "visualDiversity.no-duplicate-cells",
+      "passed": true,
+      "cellCount": 112,
+      "exactDuplicateCells": 0,
+      "normalizedDuplicateCells": 0,
+      "uniqueAlphaSilhouettes": 112,
+      "minimumUniqueAlphaSilhouettes": 56
+    },
+    {
+      "id": "previews.one-and-two-x",
+      "passed": true,
+      "files": [
+        "runtime-v2/batch-03/previews/combat-units-1x.png",
+        "runtime-v2/batch-03/previews/combat-units-2x.png"
+      ]
+    }
+  ],
+  "errors": [],
+  "manualReview": {
+    "required": true,
+    "completed": [
+      "1x/2x contact preview",
+      "weapon and occupational silhouette review",
+      "large-unit framing review",
+      "four-frame baseline review"
+    ],
+    "pendingBeforeRuntimeReady": [
+      "in-engine contentId registration",
+      "game-board screenshot",
+      "large-unit footprint and z-order test",
+      "animation timing acceptance"
+    ]
+  },
+  "completionClaim": "C03 combat-unit topic coverage is 40/40 across Primary 4 + Batch 02 8 + Batch 03 28; Batch 03 remains runtime-v2-candidate until in-engine acceptance."
+}

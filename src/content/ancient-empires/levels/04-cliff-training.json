@@ -1,0 +1,77 @@
+{
+  "schema": 2,
+  "id": "cliff-training",
+  "name": "断崖演武场",
+  "author": "引擎机制示例",
+  "description": "高低差、悬崖、方向掩体、背刺夹击与职业转职的综合试验场。中央坡台只能从南侧缓坡或桥口进入，飞行单位可以直接跨越悬崖。",
+  "width": 10,
+  "height": 8,
+  "terrain": [
+    "..........",
+    ".C..h..T..",
+    ".-..h..T..",
+    ".b..h..v..",
+    "....=.....",
+    "..T..h....",
+    "..v..h..bC",
+    ".........."
+  ],
+  "elevation": [
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,1,2,2,1,0,0,0,
+    0,0,0,1,2,2,1,0,0,0,
+    0,0,0,1,2,2,1,0,0,0,
+    0,0,0,0,1,1,0,0,0,0,
+    0,0,0,1,2,2,1,0,0,0,
+    0,0,0,1,2,2,1,0,0,0,
+    0,0,0,0,0,0,0,0,0,0
+  ],
+  "cliffs": [
+    { "from": { "x": 3, "y": 1 }, "to": { "x": 4, "y": 1 } },
+    { "from": { "x": 3, "y": 2 }, "to": { "x": 4, "y": 2 } },
+    { "from": { "x": 3, "y": 3 }, "to": { "x": 4, "y": 3 } },
+    { "from": { "x": 5, "y": 5 }, "to": { "x": 6, "y": 5 } },
+    { "from": { "x": 5, "y": 6 }, "to": { "x": 6, "y": 6 } }
+  ],
+  "directionalCover": [
+    { "at": { "x": 3, "y": 2 }, "sides": { "east": "full" } },
+    { "at": { "x": 6, "y": 2 }, "sides": { "west": "half" } },
+    { "at": { "x": 3, "y": 5 }, "sides": { "east": "half" } },
+    { "at": { "x": 6, "y": 5 }, "sides": { "west": "full" } }
+  ],
+  "owners": [
+    { "x": 1, "y": 1, "owner": 1 },
+    { "x": 1, "y": 3, "owner": 1 },
+    { "x": 7, "y": 3, "owner": 0 },
+    { "x": 2, "y": 6, "owner": 0 },
+    { "x": 8, "y": 6, "owner": 2 },
+    { "x": 9, "y": 6, "owner": 2 }
+  ],
+  "units": [
+    { "key": "blue-trainee", "x": 2, "y": 1, "unit": "soldier", "owner": 1, "rank": 1, "rankProgress": 120, "facing": "east" },
+    { "x": 2, "y": 2, "unit": "archer", "owner": 1, "facing": "east" },
+    { "x": 2, "y": 3, "unit": "knight", "owner": 1, "facing": "east" },
+    { "x": 7, "y": 5, "unit": "rogue", "owner": 2, "facing": "west" },
+    { "x": 7, "y": 6, "unit": "soldier", "owner": 2, "facing": "west" },
+    { "x": 8, "y": 5, "unit": "archer", "owner": 2, "facing": "west" }
+  ],
+  "players": [
+    {
+      "id": 1, "name": "蓝军", "team": 1, "color": "#3f7fd8", "controller": "human",
+      "resources": {
+        "funds": { "current": 500, "capacity": null },
+        "command_points": { "current": 0, "capacity": 5 }
+      }
+    },
+    {
+      "id": 2, "name": "红军", "team": 2, "color": "#d8483f", "controller": "ai",
+      "resources": {
+        "funds": { "current": 500, "capacity": null },
+        "command_points": { "current": 0, "capacity": 5 }
+      },
+      "ai": { "aggression": 0.6 }
+    }
+  ],
+  "rules": { "turnLimit": 16 },
+  "victory": [{ "type": "routEnemies" }, { "type": "captureHQ" }]
+}

@@ -1,0 +1,883 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-03",
+  "campaignTitle": "布衣定鼎",
+  "batchId": "b03",
+  "qualityTier": "runtime-v2-candidate",
+  "runtimeReady": false,
+  "extends": "manifest-runtime-v2-b02.json",
+  "source": "built-in-imagegen+official-chroma-key+deterministic-postprocess",
+  "topicLock": "runtime-v2/batch-03/TOPICS.md",
+  "notes": "Additive combat-unit closure batch. Primary and Batch 02 remain unchanged; cumulative topic coverage is 40/40, pending in-engine acceptance.",
+  "assetCount": 28,
+  "assets": [
+    {
+      "id": "c03-b03-unit-fire-ship",
+      "topicId": "c03-unit-fd4c21da",
+      "label": "火船队",
+      "contentId": "grain.unit.fire-ship",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/fire-ship.png",
+      "svg": "runtime-v2/batch-03/units/fire-ship.svg",
+      "width": 384,
+      "height": 64,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-01-engineering-master.png",
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 48,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "sourceFacing": "right",
+      "zOrder": "vessel"
+    },
+    {
+      "id": "c03-b03-unit-bridge-corps",
+      "topicId": "c03-unit-2be16bd2",
+      "label": "架桥营",
+      "contentId": "grain.unit.bridge-corps",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/bridge-corps.png",
+      "svg": "runtime-v2/batch-03/units/bridge-corps.svg",
+      "width": 256,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-01-engineering-master.png",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 32,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "engineering-large"
+    },
+    {
+      "id": "c03-b03-unit-ladder-corps",
+      "topicId": "c03-unit-4dad36ef",
+      "label": "云梯队",
+      "contentId": "grain.unit.ladder-corps",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/ladder-corps.png",
+      "svg": "runtime-v2/batch-03/units/ladder-corps.svg",
+      "width": 256,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-01-engineering-master.png",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 32,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "engineering-large"
+    },
+    {
+      "id": "c03-b03-unit-catapult-crew",
+      "topicId": "c03-unit-0609e6e6",
+      "label": "炮石营",
+      "contentId": "grain.unit.catapult-crew",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/catapult-crew.png",
+      "svg": "runtime-v2/batch-03/units/catapult-crew.svg",
+      "width": 256,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-01-engineering-master.png",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 32,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "siege-engine"
+    },
+    {
+      "id": "c03-b03-unit-musketeer",
+      "topicId": "c03-unit-3d86046f",
+      "label": "火铳手",
+      "contentId": "grain.unit.musketeer",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/musketeer.png",
+      "svg": "runtime-v2/batch-03/units/musketeer.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-02-gunpowder-support-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-fire-arrow-corps",
+      "topicId": "c03-unit-5e64c3a6",
+      "label": "火箭营",
+      "contentId": "grain.unit.fire-arrow-corps",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/fire-arrow-corps.png",
+      "svg": "runtime-v2/batch-03/units/fire-arrow-corps.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-02-gunpowder-support-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-thunder-bomb-corps",
+      "topicId": "c03-unit-9881f2a3",
+      "label": "震天雷队",
+      "contentId": "grain.unit.thunder-bomb-corps",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/thunder-bomb-corps.png",
+      "svg": "runtime-v2/batch-03/units/thunder-bomb-corps.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-02-gunpowder-support-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-field-medic",
+      "topicId": "c03-unit-4566788b",
+      "label": "军医",
+      "contentId": "grain.unit.field-medic",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/field-medic.png",
+      "svg": "runtime-v2/batch-03/units/field-medic.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-02-gunpowder-support-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-drummer-standard",
+      "topicId": "c03-unit-b59c3f96",
+      "label": "旗鼓手",
+      "contentId": "grain.unit.drummer-standard",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/drummer-standard.png",
+      "svg": "runtime-v2/batch-03/units/drummer-standard.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-03-command-intel-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-quartermaster",
+      "topicId": "c03-unit-a53b725f",
+      "label": "粮秣官",
+      "contentId": "grain.unit.quartermaster",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/quartermaster.png",
+      "svg": "runtime-v2/batch-03/units/quartermaster.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-03-command-intel-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-strategist",
+      "topicId": "c03-unit-8f49e6ef",
+      "label": "军师",
+      "contentId": "grain.unit.strategist",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/strategist.png",
+      "svg": "runtime-v2/batch-03/units/strategist.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-03-command-intel-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-scout-office-agent",
+      "topicId": "c03-unit-8842d111",
+      "label": "斥候司",
+      "contentId": "grain.unit.scout-office-agent",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/scout-office-agent.png",
+      "svg": "runtime-v2/batch-03/units/scout-office-agent.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-03-command-intel-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-envoy",
+      "topicId": "c03-unit-75ee37ba",
+      "label": "说客",
+      "contentId": "grain.unit.envoy",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/envoy.png",
+      "svg": "runtime-v2/batch-03/units/envoy.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-04-garrison-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-village-militia",
+      "topicId": "c03-unit-f0a4ddaa",
+      "label": "乡勇",
+      "contentId": "grain.unit.village-militia",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/village-militia.png",
+      "svg": "runtime-v2/batch-03/units/village-militia.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-04-garrison-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-gate-shield-guard",
+      "topicId": "c03-unit-76cd6822",
+      "label": "城门盾兵",
+      "contentId": "grain.unit.gate-shield-guard",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/gate-shield-guard.png",
+      "svg": "runtime-v2/batch-03/units/gate-shield-guard.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-04-garrison-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-commander-retinue",
+      "topicId": "c03-unit-73d2bcb4",
+      "label": "将领亲兵",
+      "contentId": "grain.unit.commander-retinue",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/commander-retinue.png",
+      "svg": "runtime-v2/batch-03/units/commander-retinue.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-04-garrison-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-warhammer-breaker",
+      "topicId": "c03-unit-6a62b51e",
+      "label": "铁锤破阵手",
+      "contentId": "grain.unit.warhammer-breaker",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/warhammer-breaker.png",
+      "svg": "runtime-v2/batch-03/units/warhammer-breaker.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-05-assault-defense-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-fortification-guard",
+      "topicId": "c03-unit-4377f3e4",
+      "label": "筑城守备",
+      "contentId": "grain.unit.fortification-guard",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/fortification-guard.png",
+      "svg": "runtime-v2/batch-03/units/fortification-guard.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-05-assault-defense-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-covert-hull-saboteur",
+      "topicId": "c03-unit-3f6fea2f",
+      "label": "潜渡凿船手",
+      "contentId": "grain.unit.covert-hull-saboteur",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/covert-hull-saboteur.png",
+      "svg": "runtime-v2/batch-03/units/covert-hull-saboteur.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-05-assault-defense-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-canal-escort",
+      "topicId": "c03-unit-6d03b909",
+      "label": "漕运护军",
+      "contentId": "grain.unit.canal-escort",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/canal-escort.png",
+      "svg": "runtime-v2/batch-03/units/canal-escort.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-05-assault-defense-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-salt-store-guard",
+      "topicId": "c03-unit-c30bf360",
+      "label": "盐仓护卫",
+      "contentId": "grain.unit.salt-store-guard",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/salt-store-guard.png",
+      "svg": "runtime-v2/batch-03/units/salt-store-guard.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-06-border-elite-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-snowfield-horse-archer",
+      "topicId": "c03-unit-747800db",
+      "label": "雪原骑射",
+      "contentId": "grain.unit.snowfield-horse-archer",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/snowfield-horse-archer.png",
+      "svg": "runtime-v2/batch-03/units/snowfield-horse-archer.svg",
+      "width": 256,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-06-border-elite-master.png",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 32,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "mounted"
+    },
+    {
+      "id": "c03-b03-unit-frontier-market-guard",
+      "topicId": "c03-unit-118c7423",
+      "label": "互市护卫",
+      "contentId": "grain.unit.frontier-market-guard",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/frontier-market-guard.png",
+      "svg": "runtime-v2/batch-03/units/frontier-market-guard.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-06-border-elite-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-ning-imperial-guard",
+      "topicId": "c03-unit-4619e546",
+      "label": "宁朝禁军",
+      "contentId": "grain.unit.ning-imperial-guard",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/ning-imperial-guard.png",
+      "svg": "runtime-v2/batch-03/units/ning-imperial-guard.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-06-border-elite-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-secret-inspector",
+      "topicId": "c03-unit-3f4a6e1d",
+      "label": "密察司缉事",
+      "contentId": "grain.unit.secret-inspector",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/secret-inspector.png",
+      "svg": "runtime-v2/batch-03/units/secret-inspector.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-07-covert-reintegration-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-tunnel-corps",
+      "topicId": "c03-unit-0c42f6d3",
+      "label": "地道营",
+      "contentId": "grain.unit.tunnel-corps",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/tunnel-corps.png",
+      "svg": "runtime-v2/batch-03/units/tunnel-corps.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-07-covert-reintegration-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-fire-oil-defense",
+      "topicId": "c03-unit-2bc4ddf7",
+      "label": "火油防备队",
+      "contentId": "grain.unit.fire-oil-defense",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/fire-oil-defense.png",
+      "svg": "runtime-v2/batch-03/units/fire-oil-defense.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-07-covert-reintegration-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b03-unit-reorganized-surrendered",
+      "topicId": "c03-unit-cecc448d",
+      "label": "降兵整编队",
+      "contentId": "grain.unit.reorganized-surrendered",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-03/units/reorganized-surrendered.png",
+      "svg": "runtime-v2/batch-03/units/reorganized-surrendered.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-03/masters/units-b03-07-covert-reintegration-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    }
+  ]
+}

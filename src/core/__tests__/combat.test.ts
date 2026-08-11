@@ -46,16 +46,51 @@ describe('damage model', () => {
     );
   });
 
-  it('uses the damage-type chart: pierce shreds flyers, blunt beats armour', () => {
+  it('combines the generic damage-type chart with weapon-specific unit identity', () => {
     const vsDragon = createState(
       makeLevel(['..'], { units: [u(0, 0, 'archer', 1), u(1, 0, 'dragon', 2)] }),
     );
-    expect(computeDamage(vsDragon, vsDragon.units[0], vsDragon.units[1]).effectiveness).toBeCloseTo(1.4);
+    const antiAir = computeDamage(vsDragon, vsDragon.units[0], vsDragon.units[1]);
+    expect(antiAir.effectiveness).toBeCloseTo(1.1);
+    expect(antiAir.targetBonusMultiplier).toBeCloseTo(1.4);
+    expect(antiAir.targetBonusReasons).toEqual(['弓箭对空']);
 
     const vsOgre = createState(
       makeLevel(['..'], { units: [u(0, 0, 'cleric', 1), u(1, 0, 'ogre', 2)] }),
     );
     expect(computeDamage(vsOgre, vsOgre.units[0], vsOgre.units[1]).effectiveness).toBeCloseTo(1.3);
+  });
+
+  it('emits an attack before the death it causes', () => {
+    const s = createState(
+      makeLevel(['..'], { units: [u(0, 0, 'knight', 1), u(1, 0, 'mage', 2, 5)] }),
+    );
+    const events = applyAction(s, {
+      kind: 'command',
+      unit: s.units[0].id,
+      path: [{ x: 0, y: 0 }],
+      command: { ability: 'attack', target: { x: 1, y: 0 } },
+    });
+    const attackIndex = events.findIndex((event) => event.type === 'attack');
+    const deathIndex = events.findIndex((event) => event.type === 'death');
+    expect(attackIndex).toBeGreaterThanOrEqual(0);
+    expect(deathIndex).toBeGreaterThan(attackIndex);
+  });
+
+  it('emits a counter before the death it causes', () => {
+    const s = createState(
+      makeLevel(['..'], { units: [u(0, 0, 'mage', 1, 5), u(1, 0, 'knight', 2)] }),
+    );
+    const events = applyAction(s, {
+      kind: 'command',
+      unit: s.units[0].id,
+      path: [{ x: 0, y: 0 }],
+      command: { ability: 'attack', target: { x: 1, y: 0 } },
+    });
+    const counterIndex = events.findIndex((event) => event.type === 'counter');
+    const deathIndex = events.findIndex((event) => event.type === 'death' && event.unit === 1);
+    expect(counterIndex).toBeGreaterThanOrEqual(0);
+    expect(deathIndex).toBeGreaterThan(counterIndex);
   });
 });
 

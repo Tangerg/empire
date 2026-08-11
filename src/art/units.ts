@@ -1,4 +1,5 @@
 import type { UnitTypeId } from '../core/types';
+import { candidate01UnitIcon, candidate01UnitMarkup } from './candidate-01-runtime';
 import { PAL, shade } from './palette';
 
 /**
@@ -20,7 +21,8 @@ export const spriteColors = (team: string): SpriteColors => ({
 
 type Sprite = (c: SpriteColors) => string;
 
-const shadow = `<ellipse cx="16" cy="29" rx="8.4" ry="2.4" fill="${PAL.ink}" opacity="0.22"/>`;
+const shadow = `<ellipse cx="16" cy="29" rx="8.8" ry="2.6" fill="${PAL.ink}" opacity="0.34"/>
+  <rect x="11" y="28" width="8" height="1" fill="#ffffff" opacity="0.08"/>`;
 const legs = (color: string) =>
   `<rect x="12" y="21" width="3.2" height="7" rx="1.2" fill="${color}"/>
    <rect x="16.8" y="21" width="3.2" height="7" rx="1.2" fill="${color}"/>
@@ -181,13 +183,17 @@ const sprites: Record<UnitTypeId, Sprite> = {
 };
 
 export function unitSpriteMarkup(type: UnitTypeId, team: string): string {
+  const runtime = candidate01UnitMarkup(type, team);
+  if (runtime) return runtime;
   const sprite = sprites[type] ?? sprites.soldier;
-  return sprite(spriteColors(team));
+  return `<g class="sprite-pixel" shape-rendering="crispEdges">${sprite(spriteColors(team))}</g>`;
 }
 
 /** Standalone svg string, for palettes, menus and the recruit dialog. */
 export function unitIcon(type: UnitTypeId, team: string, size = 32): string {
-  return `<svg viewBox="0 0 32 32" width="${size}" height="${size}">${unitSpriteMarkup(type, team)}</svg>`;
+  const runtime = candidate01UnitIcon(type, team, size);
+  if (runtime) return runtime;
+  return `<svg viewBox="0 0 32 32" width="${size}" height="${size}" shape-rendering="crispEdges">${unitSpriteMarkup(type, team)}</svg>`;
 }
 
 export const hasSprite = (type: UnitTypeId): boolean => type in sprites;

@@ -1,0 +1,258 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-03",
+  "batchId": "b03",
+  "runtimeReady": false,
+  "sourceManifest": "manifest-complete.json",
+  "primarySemanticMapping": {
+    "grain.unit.saber-shield": "c03-unit-4c02a584",
+    "grain.unit.spear-line": "c03-unit-9ad7ca0f",
+    "grain.unit.rural-archer": "c03-unit-915fc486",
+    "grain.unit.river-engineer": "c03-unit-79f06a6f"
+  },
+  "primaryTopicIds": [
+    "c03-unit-4c02a584",
+    "c03-unit-79f06a6f",
+    "c03-unit-915fc486",
+    "c03-unit-9ad7ca0f"
+  ],
+  "batch02TopicIds": [
+    "c03-unit-0137a889",
+    "c03-unit-15c058cc",
+    "c03-unit-222078e0",
+    "c03-unit-25f91749",
+    "c03-unit-58b98436",
+    "c03-unit-6fa9292e",
+    "c03-unit-c11ad030",
+    "c03-unit-ff5e54ed"
+  ],
+  "previousCombatCoverage": 12,
+  "batchCombatCoverage": 28,
+  "cumulativeCombatCoverage": 40,
+  "topics": [
+    {
+      "topicId": "c03-unit-fd4c21da",
+      "label": "火船队",
+      "category": "combat-unit",
+      "contentId": "grain.unit.fire-ship",
+      "frameWidth": 96,
+      "frameHeight": 64
+    },
+    {
+      "topicId": "c03-unit-2be16bd2",
+      "label": "架桥营",
+      "category": "combat-unit",
+      "contentId": "grain.unit.bridge-corps",
+      "frameWidth": 64,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-4dad36ef",
+      "label": "云梯队",
+      "category": "combat-unit",
+      "contentId": "grain.unit.ladder-corps",
+      "frameWidth": 64,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-0609e6e6",
+      "label": "炮石营",
+      "category": "combat-unit",
+      "contentId": "grain.unit.catapult-crew",
+      "frameWidth": 64,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-3d86046f",
+      "label": "火铳手",
+      "category": "combat-unit",
+      "contentId": "grain.unit.musketeer",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-5e64c3a6",
+      "label": "火箭营",
+      "category": "combat-unit",
+      "contentId": "grain.unit.fire-arrow-corps",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-9881f2a3",
+      "label": "震天雷队",
+      "category": "combat-unit",
+      "contentId": "grain.unit.thunder-bomb-corps",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-4566788b",
+      "label": "军医",
+      "category": "combat-unit",
+      "contentId": "grain.unit.field-medic",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-b59c3f96",
+      "label": "旗鼓手",
+      "category": "combat-unit",
+      "contentId": "grain.unit.drummer-standard",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-a53b725f",
+      "label": "粮秣官",
+      "category": "combat-unit",
+      "contentId": "grain.unit.quartermaster",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-8f49e6ef",
+      "label": "军师",
+      "category": "combat-unit",
+      "contentId": "grain.unit.strategist",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-8842d111",
+      "label": "斥候司",
+      "category": "combat-unit",
+      "contentId": "grain.unit.scout-office-agent",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-75ee37ba",
+      "label": "说客",
+      "category": "combat-unit",
+      "contentId": "grain.unit.envoy",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-f0a4ddaa",
+      "label": "乡勇",
+      "category": "combat-unit",
+      "contentId": "grain.unit.village-militia",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-76cd6822",
+      "label": "城门盾兵",
+      "category": "combat-unit",
+      "contentId": "grain.unit.gate-shield-guard",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-73d2bcb4",
+      "label": "将领亲兵",
+      "category": "combat-unit",
+      "contentId": "grain.unit.commander-retinue",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-6a62b51e",
+      "label": "铁锤破阵手",
+      "category": "combat-unit",
+      "contentId": "grain.unit.warhammer-breaker",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-4377f3e4",
+      "label": "筑城守备",
+      "category": "combat-unit",
+      "contentId": "grain.unit.fortification-guard",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-3f6fea2f",
+      "label": "潜渡凿船手",
+      "category": "combat-unit",
+      "contentId": "grain.unit.covert-hull-saboteur",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-6d03b909",
+      "label": "漕运护军",
+      "category": "combat-unit",
+      "contentId": "grain.unit.canal-escort",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-c30bf360",
+      "label": "盐仓护卫",
+      "category": "combat-unit",
+      "contentId": "grain.unit.salt-store-guard",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-747800db",
+      "label": "雪原骑射",
+      "category": "combat-unit",
+      "contentId": "grain.unit.snowfield-horse-archer",
+      "frameWidth": 64,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-118c7423",
+      "label": "互市护卫",
+      "category": "combat-unit",
+      "contentId": "grain.unit.frontier-market-guard",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-4619e546",
+      "label": "宁朝禁军",
+      "category": "combat-unit",
+      "contentId": "grain.unit.ning-imperial-guard",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-3f4a6e1d",
+      "label": "密察司缉事",
+      "category": "combat-unit",
+      "contentId": "grain.unit.secret-inspector",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-0c42f6d3",
+      "label": "地道营",
+      "category": "combat-unit",
+      "contentId": "grain.unit.tunnel-corps",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-2bc4ddf7",
+      "label": "火油防备队",
+      "category": "combat-unit",
+      "contentId": "grain.unit.fire-oil-defense",
+      "frameWidth": 32,
+      "frameHeight": 48
+    },
+    {
+      "topicId": "c03-unit-cecc448d",
+      "label": "降兵整编队",
+      "category": "combat-unit",
+      "contentId": "grain.unit.reorganized-surrendered",
+      "frameWidth": 32,
+      "frameHeight": 48
+    }
+  ]
+}

@@ -1,0 +1,1730 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-02",
+  "campaignTitle": "群星熄灭之前",
+  "batchId": "b02",
+  "qualityTier": "runtime-v2-candidate",
+  "runtimeReady": false,
+  "generatedAt": "2026-08-12",
+  "topicLock": "runtime-v2/batch-02/TOPIC-LOCK.json",
+  "assetCount": 68,
+  "coverage": {
+    "combat-unit": 8,
+    "mission-unit": 8,
+    "terrain": 8,
+    "interactive-structure": 4,
+    "battle-prop": 8,
+    "equipment": 8,
+    "skill": 8,
+    "status": 4,
+    "hud": 4,
+    "fx": 4,
+    "narrative-static": 4
+  },
+  "notes": [
+    "Additive second production batch; batch-01 remains untouched.",
+    "The 8 new combat units bring runtime-v2 combat coverage to 12/40; this batch does not claim 404 completion.",
+    "ImageGen masters are source-only; in-engine screenshot validation is still required before runtimeReady can change."
+  ],
+  "assets": [
+    {
+      "id": "c02-v2-b02-unit-power-swordsman",
+      "topicId": "c02-unit-power-swordsman",
+      "contentId": "stars.unit.power-swordsman",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-unit-power-swordsman.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-unit-power-swordsman.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-combat-board-board-a-master.png"
+    },
+    {
+      "id": "c02-v2-b02-unit-symbiotic-guard",
+      "topicId": "c02-unit-symbiotic-guard",
+      "contentId": "stars.unit.symbiotic-guard",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-unit-symbiotic-guard.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-unit-symbiotic-guard.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-combat-board-board-a-master.png"
+    },
+    {
+      "id": "c02-v2-b02-unit-sand-rider",
+      "topicId": "c02-unit-sand-rider",
+      "contentId": "stars.unit.sand-rider",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-unit-sand-rider.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-unit-sand-rider.svg",
+      "width": 256,
+      "height": 48,
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-combat-board-board-a-master.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "zOrder": 1
+    },
+    {
+      "id": "c02-v2-b02-unit-hover-lancer",
+      "topicId": "c02-unit-hover-lancer",
+      "contentId": "stars.unit.hover-lancer",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-unit-hover-lancer.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-unit-hover-lancer.svg",
+      "width": 256,
+      "height": 48,
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-combat-board-board-a-master.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "zOrder": 1
+    },
+    {
+      "id": "c02-v2-b02-unit-tide-fin-scout",
+      "topicId": "c02-unit-tide-fin-scout",
+      "contentId": "stars.unit.tide-fin-scout",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-unit-tide-fin-scout.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-unit-tide-fin-scout.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-combat-board-b-master.png"
+    },
+    {
+      "id": "c02-v2-b02-unit-long-beam-sniper",
+      "topicId": "c02-unit-long-beam-sniper",
+      "contentId": "stars.unit.long-beam-sniper",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-unit-long-beam-sniper.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-unit-long-beam-sniper.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-combat-board-b-master.png"
+    },
+    {
+      "id": "c02-v2-b02-unit-spore-shooter",
+      "topicId": "c02-unit-spore-shooter",
+      "contentId": "stars.unit.spore-shooter",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-unit-spore-shooter.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-unit-spore-shooter.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-combat-board-b-master.png"
+    },
+    {
+      "id": "c02-v2-b02-unit-star-vein-mage",
+      "topicId": "c02-unit-star-vein-mage",
+      "contentId": "stars.unit.star-vein-mage",
+      "type": "combat-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-unit-star-vein-mage.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-unit-star-vein-mage.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-combat-board-b-master.png"
+    },
+    {
+      "id": "c02-v2-b02-mission-water-maintainer",
+      "topicId": "c02-mission-water-maintainer",
+      "contentId": "stars.mission.water-maintainer",
+      "type": "mission-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-mission-water-maintainer.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-mission-water-maintainer.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-mission-board-board-a-master.png"
+    },
+    {
+      "id": "c02-v2-b02-mission-water-collector",
+      "topicId": "c02-mission-water-collector",
+      "contentId": "stars.mission.water-collector",
+      "type": "mission-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-mission-water-collector.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-mission-water-collector.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-mission-board-board-a-master.png"
+    },
+    {
+      "id": "c02-v2-b02-mission-red-sand-child",
+      "topicId": "c02-mission-red-sand-child",
+      "contentId": "stars.mission.red-sand-child",
+      "type": "mission-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-mission-red-sand-child.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-mission-red-sand-child.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-mission-board-board-a-master.png"
+    },
+    {
+      "id": "c02-v2-b02-mission-cargo-crew",
+      "topicId": "c02-mission-cargo-crew",
+      "contentId": "stars.mission.cargo-crew",
+      "type": "mission-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-mission-cargo-crew.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-mission-cargo-crew.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-mission-board-board-a-master.png"
+    },
+    {
+      "id": "c02-v2-b02-mission-refugee",
+      "topicId": "c02-mission-refugee",
+      "contentId": "stars.mission.refugee",
+      "type": "mission-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-mission-refugee.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-mission-refugee.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-mission-board-b-master.png"
+    },
+    {
+      "id": "c02-v2-b02-mission-patient",
+      "topicId": "c02-mission-patient",
+      "contentId": "stars.mission.patient",
+      "type": "mission-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-mission-patient.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-mission-patient.svg",
+      "width": 256,
+      "height": 48,
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-mission-board-b-master.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "zOrder": 1
+    },
+    {
+      "id": "c02-v2-b02-mission-dock-builder",
+      "topicId": "c02-mission-dock-builder",
+      "contentId": "stars.mission.dock-builder",
+      "type": "mission-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-mission-dock-builder.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-mission-dock-builder.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-mission-board-b-master.png"
+    },
+    {
+      "id": "c02-v2-b02-mission-heat-lamp-monk",
+      "topicId": "c02-mission-heat-lamp-monk",
+      "contentId": "stars.mission.heat-lamp-monk",
+      "type": "mission-unit-sheet",
+      "png": "runtime-v2/batch-02/units/c02-v2-b02-mission-heat-lamp-monk.png",
+      "svg": "runtime-v2/batch-02/units/c02-v2-b02-mission-heat-lamp-monk.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "standA",
+        "stepA",
+        "standB",
+        "stepB"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "facing": "right",
+      "fps": 6,
+      "loop": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-mission-board-b-master.png"
+    },
+    {
+      "id": "c02-v2-b02-terrain-hesha-glass-sea",
+      "topicId": "c02-terrain-hesha-glass-sea",
+      "contentId": "stars.terrain.hesha-glass-sea",
+      "type": "terrain-atlas",
+      "png": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-hesha-glass-sea.png",
+      "svg": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-hesha-glass-sea.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "seamless-repeat",
+      "variantCount": 4,
+      "variantOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-terrain-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-terrain-soler-brittle-ice",
+      "topicId": "c02-terrain-soler-brittle-ice",
+      "contentId": "stars.terrain.soler-brittle-ice",
+      "type": "terrain-atlas",
+      "png": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-soler-brittle-ice.png",
+      "svg": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-soler-brittle-ice.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "seamless-repeat",
+      "variantCount": 4,
+      "variantOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-terrain-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-terrain-verdant-fungus-bed",
+      "topicId": "c02-terrain-verdant-fungus-bed",
+      "contentId": "stars.terrain.verdant-fungus-bed",
+      "type": "terrain-atlas",
+      "png": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-verdant-fungus-bed.png",
+      "svg": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-verdant-fungus-bed.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "seamless-repeat",
+      "variantCount": 4,
+      "variantOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-terrain-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-terrain-farlight-living-deck",
+      "topicId": "c02-terrain-farlight-living-deck",
+      "contentId": "stars.terrain.farlight-living-deck",
+      "type": "terrain-atlas",
+      "png": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-farlight-living-deck.png",
+      "svg": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-farlight-living-deck.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "seamless-repeat",
+      "variantCount": 4,
+      "variantOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-terrain-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-terrain-hesha-sealed-waterway",
+      "topicId": "c02-terrain-hesha-sealed-waterway",
+      "contentId": "stars.terrain.hesha-sealed-waterway",
+      "type": "terrain-atlas",
+      "png": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-hesha-sealed-waterway.png",
+      "svg": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-hesha-sealed-waterway.svg",
+      "width": 512,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "maskCount": 16,
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "maskBits": {
+        "N": 1,
+        "E": 2,
+        "S": 4,
+        "W": 8
+      },
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-terrain-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-terrain-soler-heated-walkway",
+      "topicId": "c02-terrain-soler-heated-walkway",
+      "contentId": "stars.terrain.soler-heated-walkway",
+      "type": "terrain-atlas",
+      "png": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-soler-heated-walkway.png",
+      "svg": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-soler-heated-walkway.svg",
+      "width": 512,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "maskCount": 16,
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "maskBits": {
+        "N": 1,
+        "E": 2,
+        "S": 4,
+        "W": 8
+      },
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-terrain-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-terrain-nereia-reverse-current",
+      "topicId": "c02-terrain-nereia-reverse-current",
+      "contentId": "stars.terrain.nereia-reverse-current",
+      "type": "terrain-atlas",
+      "png": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-nereia-reverse-current.png",
+      "svg": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-nereia-reverse-current.svg",
+      "width": 512,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "maskCount": 16,
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "maskBits": {
+        "N": 1,
+        "E": 2,
+        "S": 4,
+        "W": 8
+      },
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-terrain-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-terrain-kairon-train-platform",
+      "topicId": "c02-terrain-kairon-train-platform",
+      "contentId": "stars.terrain.kairon-train-platform",
+      "type": "terrain-atlas",
+      "png": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-kairon-train-platform.png",
+      "svg": "runtime-v2/batch-02/terrain/c02-v2-b02-terrain-kairon-train-platform.svg",
+      "width": 512,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "maskCount": 16,
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "maskBits": {
+        "N": 1,
+        "E": 2,
+        "S": 4,
+        "W": 8
+      },
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-terrain-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-structure-star-vein-node",
+      "topicId": "c02-structure-star-vein-node",
+      "contentId": "stars.structure.star-vein-node",
+      "type": "interactive-facility",
+      "png": "runtime-v2/batch-02/structures/c02-v2-b02-structure-star-vein-node.png",
+      "svg": "runtime-v2/batch-02/structures/c02-v2-b02-structure-star-vein-node.svg",
+      "width": 64,
+      "height": 240,
+      "frameWidth": 64,
+      "frameHeight": 80,
+      "frames": 3,
+      "states": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "stateRows": {
+        "normal": 0,
+        "damaged": 1,
+        "captured": 2
+      },
+      "anchor": [
+        32,
+        79
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "collision": {
+        "x": 6,
+        "y": 56,
+        "width": 52,
+        "height": 24
+      },
+      "interactionHotspot": {
+        "x": 14,
+        "y": 24,
+        "width": 36,
+        "height": 44
+      },
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-structure-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-structure-tide-anchor-console",
+      "topicId": "c02-structure-tide-anchor-console",
+      "contentId": "stars.structure.tide-anchor-console",
+      "type": "interactive-facility",
+      "png": "runtime-v2/batch-02/structures/c02-v2-b02-structure-tide-anchor-console.png",
+      "svg": "runtime-v2/batch-02/structures/c02-v2-b02-structure-tide-anchor-console.svg",
+      "width": 64,
+      "height": 240,
+      "frameWidth": 64,
+      "frameHeight": 80,
+      "frames": 3,
+      "states": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "stateRows": {
+        "normal": 0,
+        "damaged": 1,
+        "captured": 2
+      },
+      "anchor": [
+        32,
+        79
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "collision": {
+        "x": 6,
+        "y": 56,
+        "width": 52,
+        "height": 24
+      },
+      "interactionHotspot": {
+        "x": 14,
+        "y": 24,
+        "width": 36,
+        "height": 44
+      },
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-structure-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-structure-gravity-switch",
+      "topicId": "c02-structure-gravity-switch",
+      "contentId": "stars.structure.gravity-switch",
+      "type": "interactive-facility",
+      "png": "runtime-v2/batch-02/structures/c02-v2-b02-structure-gravity-switch.png",
+      "svg": "runtime-v2/batch-02/structures/c02-v2-b02-structure-gravity-switch.svg",
+      "width": 64,
+      "height": 240,
+      "frameWidth": 64,
+      "frameHeight": 80,
+      "frames": 3,
+      "states": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "stateRows": {
+        "normal": 0,
+        "damaged": 1,
+        "captured": 2
+      },
+      "anchor": [
+        32,
+        79
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "collision": {
+        "x": 6,
+        "y": 56,
+        "width": 52,
+        "height": 24
+      },
+      "interactionHotspot": {
+        "x": 14,
+        "y": 24,
+        "width": 36,
+        "height": 44
+      },
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-structure-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-structure-water-filter-station",
+      "topicId": "c02-structure-water-filter-station",
+      "contentId": "stars.structure.water-filter-station",
+      "type": "interactive-facility",
+      "png": "runtime-v2/batch-02/structures/c02-v2-b02-structure-water-filter-station.png",
+      "svg": "runtime-v2/batch-02/structures/c02-v2-b02-structure-water-filter-station.svg",
+      "width": 64,
+      "height": 240,
+      "frameWidth": 64,
+      "frameHeight": 80,
+      "frames": 3,
+      "states": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "stateRows": {
+        "normal": 0,
+        "damaged": 1,
+        "captured": 2
+      },
+      "anchor": [
+        32,
+        79
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "collision": {
+        "x": 6,
+        "y": 56,
+        "width": 52,
+        "height": 24
+      },
+      "interactionHotspot": {
+        "x": 14,
+        "y": 24,
+        "width": 36,
+        "height": 44
+      },
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-structure-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-battle-prop-ceramic-water-tanks",
+      "topicId": "c02-battle-prop-ceramic-water-tanks",
+      "contentId": "stars.prop.ceramic-water-tanks",
+      "type": "map-object",
+      "png": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-ceramic-water-tanks.png",
+      "svg": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-ceramic-water-tanks.svg",
+      "width": 48,
+      "height": 48,
+      "frameWidth": 48,
+      "frameHeight": 48,
+      "frames": 1,
+      "anchor": [
+        24,
+        47
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-prop-board-master.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "collision": {
+        "x": 4,
+        "y": 28,
+        "width": 40,
+        "height": 20
+      }
+    },
+    {
+      "id": "c02-v2-b02-battle-prop-cargo-crates",
+      "topicId": "c02-battle-prop-cargo-crates",
+      "contentId": "stars.prop.cargo-crates",
+      "type": "map-object",
+      "png": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-cargo-crates.png",
+      "svg": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-cargo-crates.svg",
+      "width": 48,
+      "height": 48,
+      "frameWidth": 48,
+      "frameHeight": 48,
+      "frames": 1,
+      "anchor": [
+        24,
+        47
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-prop-board-master.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "collision": {
+        "x": 4,
+        "y": 28,
+        "width": 40,
+        "height": 20
+      }
+    },
+    {
+      "id": "c02-v2-b02-battle-prop-platform-shields",
+      "topicId": "c02-battle-prop-platform-shields",
+      "contentId": "stars.prop.platform-shields",
+      "type": "map-object",
+      "png": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-platform-shields.png",
+      "svg": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-platform-shields.svg",
+      "width": 48,
+      "height": 48,
+      "frameWidth": 48,
+      "frameHeight": 48,
+      "frames": 1,
+      "anchor": [
+        24,
+        47
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-prop-board-master.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "collision": {
+        "x": 4,
+        "y": 28,
+        "width": 40,
+        "height": 20
+      }
+    },
+    {
+      "id": "c02-v2-b02-battle-prop-giant-roots",
+      "topicId": "c02-battle-prop-giant-roots",
+      "contentId": "stars.prop.giant-roots",
+      "type": "map-object",
+      "png": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-giant-roots.png",
+      "svg": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-giant-roots.svg",
+      "width": 48,
+      "height": 48,
+      "frameWidth": 48,
+      "frameHeight": 48,
+      "frames": 1,
+      "anchor": [
+        24,
+        47
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-prop-board-master.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "collision": {
+        "x": 4,
+        "y": 28,
+        "width": 40,
+        "height": 20
+      }
+    },
+    {
+      "id": "c02-v2-b02-battle-prop-overload-nodes",
+      "topicId": "c02-battle-prop-overload-nodes",
+      "contentId": "stars.prop.overload-nodes",
+      "type": "map-object",
+      "png": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-overload-nodes.png",
+      "svg": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-overload-nodes.svg",
+      "width": 48,
+      "height": 48,
+      "frameWidth": 48,
+      "frameHeight": 48,
+      "frames": 1,
+      "anchor": [
+        24,
+        47
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-prop-board-master.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "collision": {
+        "x": 4,
+        "y": 28,
+        "width": 40,
+        "height": 20
+      }
+    },
+    {
+      "id": "c02-v2-b02-battle-prop-fuel-oxygen-tanks",
+      "topicId": "c02-battle-prop-fuel-oxygen-tanks",
+      "contentId": "stars.prop.fuel-oxygen-tanks",
+      "type": "map-object",
+      "png": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-fuel-oxygen-tanks.png",
+      "svg": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-fuel-oxygen-tanks.svg",
+      "width": 48,
+      "height": 48,
+      "frameWidth": 48,
+      "frameHeight": 48,
+      "frames": 1,
+      "anchor": [
+        24,
+        47
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-prop-board-master.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "collision": {
+        "x": 4,
+        "y": 28,
+        "width": 40,
+        "height": 20
+      }
+    },
+    {
+      "id": "c02-v2-b02-battle-prop-ice-cracks",
+      "topicId": "c02-battle-prop-ice-cracks",
+      "contentId": "stars.prop.ice-cracks",
+      "type": "map-object",
+      "png": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-ice-cracks.png",
+      "svg": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-ice-cracks.svg",
+      "width": 48,
+      "height": 48,
+      "frameWidth": 48,
+      "frameHeight": 48,
+      "frames": 1,
+      "anchor": [
+        24,
+        47
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-prop-board-master.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "collision": {
+        "x": 4,
+        "y": 28,
+        "width": 40,
+        "height": 20
+      }
+    },
+    {
+      "id": "c02-v2-b02-battle-prop-spore-sacs",
+      "topicId": "c02-battle-prop-spore-sacs",
+      "contentId": "stars.prop.spore-sacs",
+      "type": "map-object",
+      "png": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-spore-sacs.png",
+      "svg": "runtime-v2/batch-02/props/c02-v2-b02-battle-prop-spore-sacs.svg",
+      "width": 48,
+      "height": 48,
+      "frameWidth": 48,
+      "frameHeight": 48,
+      "frames": 1,
+      "anchor": [
+        24,
+        47
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-prop-board-master.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "collision": {
+        "x": 4,
+        "y": 28,
+        "width": 40,
+        "height": 20
+      }
+    },
+    {
+      "id": "c02-v2-b02-equipment-power-swordsman",
+      "topicId": "c02-equipment-power-swordsman",
+      "contentId": "stars.equipment.power-swordsman",
+      "type": "equipment-icon",
+      "png": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-power-swordsman.png",
+      "svg": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-power-swordsman.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-equipment-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-equipment-symbiotic-guard",
+      "topicId": "c02-equipment-symbiotic-guard",
+      "contentId": "stars.equipment.symbiotic-guard",
+      "type": "equipment-icon",
+      "png": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-symbiotic-guard.png",
+      "svg": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-symbiotic-guard.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-equipment-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-equipment-sand-rider",
+      "topicId": "c02-equipment-sand-rider",
+      "contentId": "stars.equipment.sand-rider",
+      "type": "equipment-icon",
+      "png": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-sand-rider.png",
+      "svg": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-sand-rider.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-equipment-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-equipment-hover-lancer",
+      "topicId": "c02-equipment-hover-lancer",
+      "contentId": "stars.equipment.hover-lancer",
+      "type": "equipment-icon",
+      "png": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-hover-lancer.png",
+      "svg": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-hover-lancer.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-equipment-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-equipment-tide-fin-scout",
+      "topicId": "c02-equipment-tide-fin-scout",
+      "contentId": "stars.equipment.tide-fin-scout",
+      "type": "equipment-icon",
+      "png": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-tide-fin-scout.png",
+      "svg": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-tide-fin-scout.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-equipment-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-equipment-long-beam-sniper",
+      "topicId": "c02-equipment-long-beam-sniper",
+      "contentId": "stars.equipment.long-beam-sniper",
+      "type": "equipment-icon",
+      "png": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-long-beam-sniper.png",
+      "svg": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-long-beam-sniper.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-equipment-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-equipment-spore-shooter",
+      "topicId": "c02-equipment-spore-shooter",
+      "contentId": "stars.equipment.spore-shooter",
+      "type": "equipment-icon",
+      "png": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-spore-shooter.png",
+      "svg": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-spore-shooter.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-equipment-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-equipment-star-vein-mage",
+      "topicId": "c02-equipment-star-vein-mage",
+      "contentId": "stars.equipment.star-vein-mage",
+      "type": "equipment-icon",
+      "png": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-star-vein-mage.png",
+      "svg": "runtime-v2/batch-02/equipment/c02-v2-b02-equipment-star-vein-mage.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-equipment-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-skill-assault",
+      "topicId": "c02-skill-assault",
+      "contentId": "stars.skill.assault",
+      "type": "skill-icon",
+      "png": "runtime-v2/batch-02/skills/c02-v2-b02-skill-assault.png",
+      "svg": "runtime-v2/batch-02/skills/c02-v2-b02-skill-assault.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-skill-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-skill-rescue-dash",
+      "topicId": "c02-skill-rescue-dash",
+      "contentId": "stars.skill.rescue-dash",
+      "type": "skill-icon",
+      "png": "runtime-v2/batch-02/skills/c02-v2-b02-skill-rescue-dash.png",
+      "svg": "runtime-v2/batch-02/skills/c02-v2-b02-skill-rescue-dash.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-skill-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-skill-snipe",
+      "topicId": "c02-skill-snipe",
+      "contentId": "stars.skill.snipe",
+      "type": "skill-icon",
+      "png": "runtime-v2/batch-02/skills/c02-v2-b02-skill-snipe.png",
+      "svg": "runtime-v2/batch-02/skills/c02-v2-b02-skill-snipe.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-skill-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-skill-spore-shot",
+      "topicId": "c02-skill-spore-shot",
+      "contentId": "stars.skill.spore-shot",
+      "type": "skill-icon",
+      "png": "runtime-v2/batch-02/skills/c02-v2-b02-skill-spore-shot.png",
+      "svg": "runtime-v2/batch-02/skills/c02-v2-b02-skill-spore-shot.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-skill-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-skill-vein-downgrade",
+      "topicId": "c02-skill-vein-downgrade",
+      "contentId": "stars.skill.vein-downgrade",
+      "type": "skill-icon",
+      "png": "runtime-v2/batch-02/skills/c02-v2-b02-skill-vein-downgrade.png",
+      "svg": "runtime-v2/batch-02/skills/c02-v2-b02-skill-vein-downgrade.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-skill-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-skill-sand-sail",
+      "topicId": "c02-skill-sand-sail",
+      "contentId": "stars.skill.sand-sail",
+      "type": "skill-icon",
+      "png": "runtime-v2/batch-02/skills/c02-v2-b02-skill-sand-sail.png",
+      "svg": "runtime-v2/batch-02/skills/c02-v2-b02-skill-sand-sail.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-skill-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-skill-shift-tide",
+      "topicId": "c02-skill-shift-tide",
+      "contentId": "stars.skill.shift-tide",
+      "type": "skill-icon",
+      "png": "runtime-v2/batch-02/skills/c02-v2-b02-skill-shift-tide.png",
+      "svg": "runtime-v2/batch-02/skills/c02-v2-b02-skill-shift-tide.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-skill-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-skill-symbiotic-regen",
+      "topicId": "c02-skill-symbiotic-regen",
+      "contentId": "stars.skill.symbiotic-regen",
+      "type": "skill-icon",
+      "png": "runtime-v2/batch-02/skills/c02-v2-b02-skill-symbiotic-regen.png",
+      "svg": "runtime-v2/batch-02/skills/c02-v2-b02-skill-symbiotic-regen.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-skill-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-status-controlled",
+      "topicId": "c02-status-controlled",
+      "contentId": "stars.status.controlled",
+      "type": "status-icon",
+      "png": "runtime-v2/batch-02/status/c02-v2-b02-status-controlled.png",
+      "svg": "runtime-v2/batch-02/status/c02-v2-b02-status-controlled.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-status-hud-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-status-hidden",
+      "topicId": "c02-status-hidden",
+      "contentId": "stars.status.hidden",
+      "type": "status-icon",
+      "png": "runtime-v2/batch-02/status/c02-v2-b02-status-hidden.png",
+      "svg": "runtime-v2/batch-02/status/c02-v2-b02-status-hidden.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-status-hud-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-status-overheated",
+      "topicId": "c02-status-overheated",
+      "contentId": "stars.status.overheated",
+      "type": "status-icon",
+      "png": "runtime-v2/batch-02/status/c02-v2-b02-status-overheated.png",
+      "svg": "runtime-v2/batch-02/status/c02-v2-b02-status-overheated.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-status-hud-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-status-hypothermia",
+      "topicId": "c02-status-hypothermia",
+      "contentId": "stars.status.hypothermia",
+      "type": "status-icon",
+      "png": "runtime-v2/batch-02/status/c02-v2-b02-status-hypothermia.png",
+      "svg": "runtime-v2/batch-02/status/c02-v2-b02-status-hypothermia.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-status-hud-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-hud-ally",
+      "topicId": "c02-hud-ally",
+      "contentId": "stars.hud.ally",
+      "type": "hud-icon",
+      "png": "runtime-v2/batch-02/hud/c02-v2-b02-hud-ally.png",
+      "svg": "runtime-v2/batch-02/hud/c02-v2-b02-hud-ally.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-status-hud-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-hud-enemy",
+      "topicId": "c02-hud-enemy",
+      "contentId": "stars.hud.enemy",
+      "type": "hud-icon",
+      "png": "runtime-v2/batch-02/hud/c02-v2-b02-hud-enemy.png",
+      "svg": "runtime-v2/batch-02/hud/c02-v2-b02-hud-enemy.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-status-hud-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-hud-main-objective",
+      "topicId": "c02-hud-main-objective",
+      "contentId": "stars.hud.main-objective",
+      "type": "hud-icon",
+      "png": "runtime-v2/batch-02/hud/c02-v2-b02-hud-main-objective.png",
+      "svg": "runtime-v2/batch-02/hud/c02-v2-b02-hud-main-objective.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-status-hud-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-hud-danger",
+      "topicId": "c02-hud-danger",
+      "contentId": "stars.hud.danger",
+      "type": "hud-icon",
+      "png": "runtime-v2/batch-02/hud/c02-v2-b02-hud-danger.png",
+      "svg": "runtime-v2/batch-02/hud/c02-v2-b02-hud-danger.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "anchor": [
+        16,
+        16
+      ],
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-status-hud-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-fx-blade-hit",
+      "topicId": "c02-fx-blade-hit",
+      "contentId": "stars.fx.blade-hit",
+      "type": "fx-sheet",
+      "png": "runtime-v2/batch-02/fx/c02-v2-b02-fx-blade-hit.png",
+      "svg": "runtime-v2/batch-02/fx/c02-v2-b02-fx-blade-hit.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "frameOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "fps": 12,
+      "blendMode": "add",
+      "loop": false,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-fx-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-fx-explosion",
+      "topicId": "c02-fx-explosion",
+      "contentId": "stars.fx.explosion",
+      "type": "fx-sheet",
+      "png": "runtime-v2/batch-02/fx/c02-v2-b02-fx-explosion.png",
+      "svg": "runtime-v2/batch-02/fx/c02-v2-b02-fx-explosion.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "frameOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "fps": 10,
+      "blendMode": "add",
+      "loop": false,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-fx-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-fx-bio-hit",
+      "topicId": "c02-fx-bio-hit",
+      "contentId": "stars.fx.bio-hit",
+      "type": "fx-sheet",
+      "png": "runtime-v2/batch-02/fx/c02-v2-b02-fx-bio-hit.png",
+      "svg": "runtime-v2/batch-02/fx/c02-v2-b02-fx-bio-hit.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "frameOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "fps": 9,
+      "blendMode": "normal",
+      "loop": false,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-fx-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-fx-vacuum-rupture",
+      "topicId": "c02-fx-vacuum-rupture",
+      "contentId": "stars.fx.vacuum-rupture",
+      "type": "fx-sheet",
+      "png": "runtime-v2/batch-02/fx/c02-v2-b02-fx-vacuum-rupture.png",
+      "svg": "runtime-v2/batch-02/fx/c02-v2-b02-fx-vacuum-rupture.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "frameOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "fps": 10,
+      "blendMode": "screen",
+      "loop": false,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-fx-board-master.png"
+    },
+    {
+      "id": "c02-v2-b02-scene-growing-wall",
+      "topicId": "c02-scene-growing-wall",
+      "contentId": "stars.scene.growing-wall",
+      "type": "story-scene",
+      "png": "runtime-v2/batch-02/scenes/c02-v2-b02-scene-growing-wall.png",
+      "svg": "runtime-v2/batch-02/scenes/c02-v2-b02-scene-growing-wall.svg",
+      "width": 256,
+      "height": 144,
+      "frameWidth": 256,
+      "frameHeight": 144,
+      "frames": 1,
+      "safeAreaBottom": 32,
+      "opaque": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-scene-growing-wall-master.png"
+    },
+    {
+      "id": "c02-v2-b02-scene-inverted-city-maintenance",
+      "topicId": "c02-scene-inverted-city-maintenance",
+      "contentId": "stars.scene.inverted-city-maintenance",
+      "type": "story-scene",
+      "png": "runtime-v2/batch-02/scenes/c02-v2-b02-scene-inverted-city-maintenance.png",
+      "svg": "runtime-v2/batch-02/scenes/c02-v2-b02-scene-inverted-city-maintenance.svg",
+      "width": 256,
+      "height": 144,
+      "frameWidth": 256,
+      "frameHeight": 144,
+      "frames": 1,
+      "safeAreaBottom": 32,
+      "opaque": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-scene-inverted-city-maintenance-master.png"
+    },
+    {
+      "id": "c02-v2-b02-scene-soler-ice-beacon",
+      "topicId": "c02-scene-soler-ice-beacon",
+      "contentId": "stars.scene.soler-ice-beacon",
+      "type": "story-scene",
+      "png": "runtime-v2/batch-02/scenes/c02-v2-b02-scene-soler-ice-beacon.png",
+      "svg": "runtime-v2/batch-02/scenes/c02-v2-b02-scene-soler-ice-beacon.svg",
+      "width": 256,
+      "height": 144,
+      "frameWidth": 256,
+      "frameHeight": 144,
+      "frames": 1,
+      "safeAreaBottom": 32,
+      "opaque": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-scene-soler-ice-beacon-master.png"
+    },
+    {
+      "id": "c02-v2-b02-scene-nereia-platform-vote",
+      "topicId": "c02-scene-nereia-platform-vote",
+      "contentId": "stars.scene.nereia-platform-vote",
+      "type": "story-scene",
+      "png": "runtime-v2/batch-02/scenes/c02-v2-b02-scene-nereia-platform-vote.png",
+      "svg": "runtime-v2/batch-02/scenes/c02-v2-b02-scene-nereia-platform-vote.svg",
+      "width": 256,
+      "height": 144,
+      "frameWidth": 256,
+      "frameHeight": 144,
+      "frames": 1,
+      "safeAreaBottom": 32,
+      "opaque": true,
+      "sourceMaster": "runtime-v2/batch-02/masters/c02-v2-b02-scene-nereia-platform-vote-master.png"
+    }
+  ]
+}

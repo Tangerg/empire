@@ -1,0 +1,1874 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-03",
+  "campaignTitle": "布衣定鼎",
+  "batchId": "b02",
+  "qualityTier": "runtime-v2-candidate",
+  "runtimeReady": false,
+  "extends": "manifest-runtime-v2.json",
+  "source": "built-in-imagegen+official-chroma-key+deterministic-postprocess",
+  "notes": "Additive production batch; Batch 01 remains unchanged. Not a 404-topic completion claim.",
+  "assetCount": 68,
+  "assets": [
+    {
+      "id": "c03-b02-unit-modao",
+      "topicId": "c03-unit-ff5e54ed",
+      "label": "陌刀队",
+      "contentId": "grain.unit.modao",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-02/units/modao.png",
+      "svg": "runtime-v2/batch-02/units/modao.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/combat-infantry-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b02-unit-heavy-crossbow",
+      "topicId": "c03-unit-6fa9292e",
+      "label": "强弩营",
+      "contentId": "grain.unit.heavy-crossbow",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-02/units/heavy-crossbow.png",
+      "svg": "runtime-v2/batch-02/units/heavy-crossbow.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/combat-infantry-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b02-unit-divine-arm-crossbow",
+      "topicId": "c03-unit-15c058cc",
+      "label": "神臂弩",
+      "contentId": "grain.unit.divine-arm-crossbow",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-02/units/divine-arm-crossbow.png",
+      "svg": "runtime-v2/batch-02/units/divine-arm-crossbow.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/combat-infantry-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b02-unit-light-cavalry",
+      "topicId": "c03-unit-0137a889",
+      "label": "游骑",
+      "contentId": "grain.unit.light-cavalry",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-02/units/light-cavalry.png",
+      "svg": "runtime-v2/batch-02/units/light-cavalry.svg",
+      "width": 256,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/combat-special-master.png",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 32,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "mounted"
+    },
+    {
+      "id": "c03-b02-unit-armored-cavalry",
+      "topicId": "c03-unit-c11ad030",
+      "label": "甲骑",
+      "contentId": "grain.unit.armored-cavalry",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-02/units/armored-cavalry.png",
+      "svg": "runtime-v2/batch-02/units/armored-cavalry.svg",
+      "width": 256,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/combat-special-master.png",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 32,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "mounted"
+    },
+    {
+      "id": "c03-b02-unit-border-scout",
+      "topicId": "c03-unit-58b98436",
+      "label": "边军斥候",
+      "contentId": "grain.unit.border-scout",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-02/units/border-scout.png",
+      "svg": "runtime-v2/batch-02/units/border-scout.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/combat-infantry-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b02-unit-mengchong",
+      "topicId": "c03-unit-222078e0",
+      "label": "艨艟",
+      "contentId": "grain.unit.mengchong",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-02/units/mengchong.png",
+      "svg": "runtime-v2/batch-02/units/mengchong.svg",
+      "width": 384,
+      "height": 64,
+      "sourceMaster": "runtime-v2/batch-02/masters/combat-special-master.png",
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 48,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "sourceFacing": "right",
+      "zOrder": "vessel"
+    },
+    {
+      "id": "c03-b02-unit-tower-ship-marine",
+      "topicId": "c03-unit-25f91749",
+      "label": "楼船兵",
+      "contentId": "grain.unit.tower-ship-marine",
+      "type": "combat-unit",
+      "png": "runtime-v2/batch-02/units/tower-ship-marine.png",
+      "svg": "runtime-v2/batch-02/units/tower-ship-marine.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/combat-special-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "unit"
+    },
+    {
+      "id": "c03-b02-mission-refugee",
+      "topicId": "c03-mission-57df34e0",
+      "label": "饥民与灾民",
+      "contentId": "grain.mission.refugee",
+      "type": "mission-unit",
+      "png": "runtime-v2/batch-02/mission-units/refugee.png",
+      "svg": "runtime-v2/batch-02/mission-units/refugee.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/mission-civilians-a-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "mission-unit"
+    },
+    {
+      "id": "c03-b02-mission-farmer",
+      "topicId": "c03-mission-8e6e6bf3",
+      "label": "农户",
+      "contentId": "grain.mission.farmer",
+      "type": "mission-unit",
+      "png": "runtime-v2/batch-02/mission-units/farmer.png",
+      "svg": "runtime-v2/batch-02/mission-units/farmer.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/mission-civilians-a-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "mission-unit"
+    },
+    {
+      "id": "c03-b02-mission-sowing-team",
+      "topicId": "c03-mission-0d1763ad",
+      "label": "播种队",
+      "contentId": "grain.mission.sowing-team",
+      "type": "mission-unit",
+      "png": "runtime-v2/batch-02/mission-units/sowing-team.png",
+      "svg": "runtime-v2/batch-02/mission-units/sowing-team.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/mission-civilians-a-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "mission-unit"
+    },
+    {
+      "id": "c03-b02-mission-dike-apprentice",
+      "topicId": "c03-mission-1ba1c2b5",
+      "label": "河工学徒",
+      "contentId": "grain.mission.dike-apprentice",
+      "type": "mission-unit",
+      "png": "runtime-v2/batch-02/mission-units/dike-apprentice.png",
+      "svg": "runtime-v2/batch-02/mission-units/dike-apprentice.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/mission-civilians-a-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "mission-unit"
+    },
+    {
+      "id": "c03-b02-mission-water-league-deckhand",
+      "topicId": "c03-mission-74ec4633",
+      "label": "水盟船工",
+      "contentId": "grain.mission.water-league-deckhand",
+      "type": "mission-unit",
+      "png": "runtime-v2/batch-02/mission-units/water-league-deckhand.png",
+      "svg": "runtime-v2/batch-02/mission-units/water-league-deckhand.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/mission-civilians-b-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "mission-unit"
+    },
+    {
+      "id": "c03-b02-mission-salt-worker",
+      "topicId": "c03-mission-d647c582",
+      "label": "盐工",
+      "contentId": "grain.mission.salt-worker",
+      "type": "mission-unit",
+      "png": "runtime-v2/batch-02/mission-units/salt-worker.png",
+      "svg": "runtime-v2/batch-02/mission-units/salt-worker.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/mission-civilians-b-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "mission-unit"
+    },
+    {
+      "id": "c03-b02-mission-granary-porter",
+      "topicId": "c03-mission-2edb8e76",
+      "label": "仓库工",
+      "contentId": "grain.mission.granary-porter",
+      "type": "mission-unit",
+      "png": "runtime-v2/batch-02/mission-units/granary-porter.png",
+      "svg": "runtime-v2/batch-02/mission-units/granary-porter.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/mission-civilians-b-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "mission-unit"
+    },
+    {
+      "id": "c03-b02-mission-grain-cart-driver",
+      "topicId": "c03-mission-b283af47",
+      "label": "粮车夫",
+      "contentId": "grain.mission.grain-cart-driver",
+      "type": "mission-unit",
+      "png": "runtime-v2/batch-02/mission-units/grain-cart-driver.png",
+      "svg": "runtime-v2/batch-02/mission-units/grain-cart-driver.svg",
+      "width": 128,
+      "height": 48,
+      "sourceMaster": "runtime-v2/batch-02/masters/mission-civilians-b-master.png",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "sourceFacing": "right",
+      "zOrder": "mission-unit"
+    },
+    {
+      "id": "c03-b02-terrain-cracked-field",
+      "topicId": "c03-terrain-99390ac8",
+      "label": "龟裂灾田",
+      "contentId": "grain.terrain.cracked-famine-field",
+      "type": "terrain",
+      "png": "runtime-v2/batch-02/terrain/cracked-famine-field.png",
+      "svg": "runtime-v2/batch-02/terrain/cracked-famine-field.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/terrain-b02-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "repeat-variants",
+      "variantOrder": [
+        "hash-0",
+        "hash-1",
+        "hash-2",
+        "hash-3"
+      ],
+      "variantSelector": "stable-coordinate-hash",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-b02-terrain-receding-mud",
+      "topicId": "c03-terrain-980abbed",
+      "label": "退水烂泥",
+      "contentId": "grain.terrain.receding-mud",
+      "type": "terrain",
+      "png": "runtime-v2/batch-02/terrain/receding-mud.png",
+      "svg": "runtime-v2/batch-02/terrain/receding-mud.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/terrain-b02-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "repeat-variants",
+      "variantOrder": [
+        "hash-0",
+        "hash-1",
+        "hash-2",
+        "hash-3"
+      ],
+      "variantSelector": "stable-coordinate-hash",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-b02-terrain-reclaimed-furrow",
+      "topicId": "c03-terrain-b499c3bf",
+      "label": "复耕田垄",
+      "contentId": "grain.terrain.reclaimed-furrow",
+      "type": "terrain",
+      "png": "runtime-v2/batch-02/terrain/reclaimed-furrow.png",
+      "svg": "runtime-v2/batch-02/terrain/reclaimed-furrow.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/terrain-b02-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "repeat-variants",
+      "variantOrder": [
+        "hash-0",
+        "hash-1",
+        "hash-2",
+        "hash-3"
+      ],
+      "variantSelector": "stable-coordinate-hash",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-b02-terrain-stone-seep-ditch",
+      "topicId": "c03-terrain-44bffd59",
+      "label": "石脚渗沟",
+      "contentId": "grain.terrain.stone-seep-ditch",
+      "type": "terrain",
+      "png": "runtime-v2/batch-02/terrain/stone-seep-ditch.png",
+      "svg": "runtime-v2/batch-02/terrain/stone-seep-ditch.svg",
+      "width": 512,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/terrain-b02-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "variantOrder": [
+        "none",
+        "n",
+        "e",
+        "ne",
+        "s",
+        "ns",
+        "es",
+        "nes",
+        "w",
+        "nw",
+        "ew",
+        "new",
+        "sw",
+        "nsw",
+        "esw",
+        "nesw"
+      ],
+      "maskBits": {
+        "north": 1,
+        "east": 2,
+        "south": 4,
+        "west": 8
+      },
+      "connectGroup": "drainage",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-b02-terrain-flood-channel",
+      "topicId": "c03-terrain-769e91a5",
+      "label": "分洪渠",
+      "contentId": "grain.terrain.flood-channel",
+      "type": "terrain",
+      "png": "runtime-v2/batch-02/terrain/flood-channel.png",
+      "svg": "runtime-v2/batch-02/terrain/flood-channel.svg",
+      "width": 512,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/terrain-b02-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "variantOrder": [
+        "none",
+        "n",
+        "e",
+        "ne",
+        "s",
+        "ns",
+        "es",
+        "nes",
+        "w",
+        "nw",
+        "ew",
+        "new",
+        "sw",
+        "nsw",
+        "esw",
+        "nesw"
+      ],
+      "maskBits": {
+        "north": 1,
+        "east": 2,
+        "south": 4,
+        "west": 8
+      },
+      "connectGroup": "flood-channel",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-b02-terrain-reed-bank",
+      "topicId": "c03-terrain-e1b682d1",
+      "label": "芦苇岸",
+      "contentId": "grain.terrain.reed-bank",
+      "type": "terrain",
+      "png": "runtime-v2/batch-02/terrain/reed-bank.png",
+      "svg": "runtime-v2/batch-02/terrain/reed-bank.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/terrain-b02-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "repeat-variants",
+      "variantOrder": [
+        "hash-0",
+        "hash-1",
+        "hash-2",
+        "hash-3"
+      ],
+      "variantSelector": "stable-coordinate-hash",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-b02-terrain-pontoon-edge",
+      "topicId": "c03-terrain-98a758f5",
+      "label": "浮桥板与桥缘",
+      "contentId": "grain.terrain.pontoon-edge",
+      "type": "terrain",
+      "png": "runtime-v2/batch-02/terrain/pontoon-edge.png",
+      "svg": "runtime-v2/batch-02/terrain/pontoon-edge.svg",
+      "width": 512,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/terrain-b02-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "variantOrder": [
+        "none",
+        "n",
+        "e",
+        "ne",
+        "s",
+        "ns",
+        "es",
+        "nes",
+        "w",
+        "nw",
+        "ew",
+        "new",
+        "sw",
+        "nsw",
+        "esw",
+        "nesw"
+      ],
+      "maskBits": {
+        "north": 1,
+        "east": 2,
+        "south": 4,
+        "west": 8
+      },
+      "connectGroup": "pontoon",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-b02-terrain-wall-walk",
+      "topicId": "c03-terrain-f3c866de",
+      "label": "城墙顶面",
+      "contentId": "grain.terrain.wall-walk",
+      "type": "terrain",
+      "png": "runtime-v2/batch-02/terrain/wall-walk.png",
+      "svg": "runtime-v2/batch-02/terrain/wall-walk.svg",
+      "width": 512,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/terrain-b02-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-16",
+      "variantOrder": [
+        "none",
+        "n",
+        "e",
+        "ne",
+        "s",
+        "ns",
+        "es",
+        "nes",
+        "w",
+        "nw",
+        "ew",
+        "new",
+        "sw",
+        "nsw",
+        "esw",
+        "nesw"
+      ],
+      "maskBits": {
+        "north": 1,
+        "east": 2,
+        "south": 4,
+        "west": 8
+      },
+      "connectGroup": "wall-walk",
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "c03-b02-structure-command-banner",
+      "topicId": "c03-structure-8c1f5eac",
+      "label": "中军旗点",
+      "contentId": "grain.structure.command-banner",
+      "type": "interactive-structure",
+      "png": "runtime-v2/batch-02/structures/command-banner.png",
+      "svg": "runtime-v2/batch-02/structures/command-banner.svg",
+      "width": 384,
+      "height": 128,
+      "sourceMaster": "runtime-v2/batch-02/masters/structures-b02-master.png",
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 3,
+      "states": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "stateRows": [
+        {
+          "row": 0,
+          "states": [
+            "normal",
+            "damaged",
+            "captured"
+          ]
+        }
+      ],
+      "stateLayout": "horizontal",
+      "anchor": {
+        "x": 64,
+        "y": 127
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "collision": {
+        "x": 8,
+        "y": 64,
+        "width": 112,
+        "height": 64
+      },
+      "interactionHotzone": {
+        "x": 32,
+        "y": 72,
+        "width": 64,
+        "height": 56
+      }
+    },
+    {
+      "id": "c03-b02-structure-city-gate-control",
+      "topicId": "c03-structure-14b4ae0d",
+      "label": "城门控制位",
+      "contentId": "grain.structure.city-gate-control",
+      "type": "interactive-structure",
+      "png": "runtime-v2/batch-02/structures/city-gate-control.png",
+      "svg": "runtime-v2/batch-02/structures/city-gate-control.svg",
+      "width": 384,
+      "height": 128,
+      "sourceMaster": "runtime-v2/batch-02/masters/structures-b02-master.png",
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 3,
+      "states": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "stateRows": [
+        {
+          "row": 0,
+          "states": [
+            "normal",
+            "damaged",
+            "captured"
+          ]
+        }
+      ],
+      "stateLayout": "horizontal",
+      "anchor": {
+        "x": 64,
+        "y": 127
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "collision": {
+        "x": 8,
+        "y": 64,
+        "width": 112,
+        "height": 64
+      },
+      "interactionHotzone": {
+        "x": 32,
+        "y": 72,
+        "width": 64,
+        "height": 56
+      }
+    },
+    {
+      "id": "c03-b02-structure-navigation-beacon",
+      "topicId": "c03-structure-59225afb",
+      "label": "航道信号台",
+      "contentId": "grain.structure.navigation-beacon",
+      "type": "interactive-structure",
+      "png": "runtime-v2/batch-02/structures/navigation-beacon.png",
+      "svg": "runtime-v2/batch-02/structures/navigation-beacon.svg",
+      "width": 384,
+      "height": 128,
+      "sourceMaster": "runtime-v2/batch-02/masters/structures-b02-master.png",
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 3,
+      "states": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "stateRows": [
+        {
+          "row": 0,
+          "states": [
+            "normal",
+            "damaged",
+            "captured"
+          ]
+        }
+      ],
+      "stateLayout": "horizontal",
+      "anchor": {
+        "x": 64,
+        "y": 127
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      },
+      "collision": {
+        "x": 8,
+        "y": 64,
+        "width": 112,
+        "height": 64
+      },
+      "interactionHotzone": {
+        "x": 32,
+        "y": 72,
+        "width": 64,
+        "height": 56
+      }
+    },
+    {
+      "id": "c03-b02-structure-field-supply-depot",
+      "topicId": "c03-structure-f793619a",
+      "label": "野战粮站",
+      "contentId": "grain.structure.field-supply-depot",
+      "type": "interactive-structure",
+      "png": "runtime-v2/batch-02/structures/field-supply-depot.png",
+      "svg": "runtime-v2/batch-02/structures/field-supply-depot.svg",
+      "width": 384,
+      "height": 128,
+      "sourceMaster": "runtime-v2/batch-02/masters/structures-b02-master.png",
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 3,
+      "states": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "stateRows": [
+        {
+          "row": 0,
+          "states": [
+            "normal",
+            "damaged",
+            "captured"
+          ]
+        }
+      ],
+      "stateLayout": "horizontal",
+      "anchor": {
+        "x": 64,
+        "y": 127
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 2
+      },
+      "collision": {
+        "x": 8,
+        "y": 64,
+        "width": 112,
+        "height": 64
+      },
+      "interactionHotzone": {
+        "x": 32,
+        "y": 72,
+        "width": 64,
+        "height": 56
+      }
+    },
+    {
+      "id": "c03-b02-prop-grain-crate-cover",
+      "topicId": "c03-battle-prop-b6bd8efb",
+      "label": "粮箱掩体组",
+      "contentId": "grain.prop.grain-crate-cover",
+      "type": "battle-prop",
+      "png": "runtime-v2/batch-02/props/grain-crate-cover.png",
+      "svg": "runtime-v2/batch-02/props/grain-crate-cover.svg",
+      "width": 64,
+      "height": 64,
+      "sourceMaster": "runtime-v2/batch-02/masters/props-b02-master.png",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": "map-object"
+    },
+    {
+      "id": "c03-b02-prop-wood-shield-wall",
+      "topicId": "c03-battle-prop-0fb580c9",
+      "label": "木盾墙组",
+      "contentId": "grain.prop.wood-shield-wall",
+      "type": "battle-prop",
+      "png": "runtime-v2/batch-02/props/wood-shield-wall.png",
+      "svg": "runtime-v2/batch-02/props/wood-shield-wall.svg",
+      "width": 64,
+      "height": 64,
+      "sourceMaster": "runtime-v2/batch-02/masters/props-b02-master.png",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 1
+      },
+      "zOrder": "map-object"
+    },
+    {
+      "id": "c03-b02-prop-saltbag-cover",
+      "topicId": "c03-battle-prop-ff4a64b9",
+      "label": "盐袋掩体组",
+      "contentId": "grain.prop.saltbag-cover",
+      "type": "battle-prop",
+      "png": "runtime-v2/batch-02/props/saltbag-cover.png",
+      "svg": "runtime-v2/batch-02/props/saltbag-cover.svg",
+      "width": 64,
+      "height": 64,
+      "sourceMaster": "runtime-v2/batch-02/masters/props-b02-master.png",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": "map-object"
+    },
+    {
+      "id": "c03-b02-prop-overturned-grain-cart",
+      "topicId": "c03-battle-prop-a7b85246",
+      "label": "翻倒粮车组",
+      "contentId": "grain.prop.overturned-grain-cart",
+      "type": "battle-prop",
+      "png": "runtime-v2/batch-02/props/overturned-grain-cart.png",
+      "svg": "runtime-v2/batch-02/props/overturned-grain-cart.svg",
+      "width": 64,
+      "height": 64,
+      "sourceMaster": "runtime-v2/batch-02/masters/props-b02-master.png",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 1
+      },
+      "zOrder": "map-object"
+    },
+    {
+      "id": "c03-b02-prop-powder-barrel",
+      "topicId": "c03-battle-prop-809c152b",
+      "label": "火药桶危险组",
+      "contentId": "grain.prop.powder-barrel",
+      "type": "battle-prop",
+      "png": "runtime-v2/batch-02/props/powder-barrel.png",
+      "svg": "runtime-v2/batch-02/props/powder-barrel.svg",
+      "width": 64,
+      "height": 64,
+      "sourceMaster": "runtime-v2/batch-02/masters/props-b02-master.png",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": "map-object"
+    },
+    {
+      "id": "c03-b02-prop-fire-oil-jar",
+      "topicId": "c03-battle-prop-7a878eb8",
+      "label": "火油罐危险组",
+      "contentId": "grain.prop.fire-oil-jar",
+      "type": "battle-prop",
+      "png": "runtime-v2/batch-02/props/fire-oil-jar.png",
+      "svg": "runtime-v2/batch-02/props/fire-oil-jar.svg",
+      "width": 64,
+      "height": 64,
+      "sourceMaster": "runtime-v2/batch-02/masters/props-b02-master.png",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": "map-object"
+    },
+    {
+      "id": "c03-b02-prop-loose-dike-earth",
+      "topicId": "c03-battle-prop-ede52a71",
+      "label": "松动堤土危险组",
+      "contentId": "grain.prop.loose-dike-earth",
+      "type": "battle-prop",
+      "png": "runtime-v2/batch-02/props/loose-dike-earth.png",
+      "svg": "runtime-v2/batch-02/props/loose-dike-earth.svg",
+      "width": 64,
+      "height": 64,
+      "sourceMaster": "runtime-v2/batch-02/masters/props-b02-master.png",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 1
+      },
+      "zOrder": "map-object"
+    },
+    {
+      "id": "c03-b02-prop-fire-arrow-bundle",
+      "topicId": "c03-battle-prop-1f1ab459",
+      "label": "燃烧箭束危险组",
+      "contentId": "grain.prop.fire-arrow-bundle",
+      "type": "battle-prop",
+      "png": "runtime-v2/batch-02/props/fire-arrow-bundle.png",
+      "svg": "runtime-v2/batch-02/props/fire-arrow-bundle.svg",
+      "width": 64,
+      "height": 64,
+      "sourceMaster": "runtime-v2/batch-02/masters/props-b02-master.png",
+      "anchor": {
+        "x": 32,
+        "y": 63
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "zOrder": "map-object"
+    },
+    {
+      "id": "c03-b02-equipment-modao",
+      "topicId": "c03-equip-ff5e54ed",
+      "label": "陌刀队主装备组",
+      "contentId": "grain.equipment.modao",
+      "type": "equipment",
+      "png": "runtime-v2/batch-02/equipment/equipment-modao.png",
+      "svg": "runtime-v2/batch-02/equipment/equipment-modao.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/equipment-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-equipment-heavy-crossbow",
+      "topicId": "c03-equip-6fa9292e",
+      "label": "强弩营主装备组",
+      "contentId": "grain.equipment.heavy-crossbow",
+      "type": "equipment",
+      "png": "runtime-v2/batch-02/equipment/equipment-heavy-crossbow.png",
+      "svg": "runtime-v2/batch-02/equipment/equipment-heavy-crossbow.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/equipment-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-equipment-divine-arm-crossbow",
+      "topicId": "c03-equip-15c058cc",
+      "label": "神臂弩主装备组",
+      "contentId": "grain.equipment.divine-arm-crossbow",
+      "type": "equipment",
+      "png": "runtime-v2/batch-02/equipment/equipment-divine-arm-crossbow.png",
+      "svg": "runtime-v2/batch-02/equipment/equipment-divine-arm-crossbow.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/equipment-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-equipment-light-cavalry",
+      "topicId": "c03-equip-0137a889",
+      "label": "游骑主装备组",
+      "contentId": "grain.equipment.light-cavalry",
+      "type": "equipment",
+      "png": "runtime-v2/batch-02/equipment/equipment-light-cavalry.png",
+      "svg": "runtime-v2/batch-02/equipment/equipment-light-cavalry.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/equipment-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-equipment-armored-cavalry",
+      "topicId": "c03-equip-c11ad030",
+      "label": "甲骑主装备组",
+      "contentId": "grain.equipment.armored-cavalry",
+      "type": "equipment",
+      "png": "runtime-v2/batch-02/equipment/equipment-armored-cavalry.png",
+      "svg": "runtime-v2/batch-02/equipment/equipment-armored-cavalry.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/equipment-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-equipment-border-scout",
+      "topicId": "c03-equip-58b98436",
+      "label": "边军斥候主装备组",
+      "contentId": "grain.equipment.border-scout",
+      "type": "equipment",
+      "png": "runtime-v2/batch-02/equipment/equipment-border-scout.png",
+      "svg": "runtime-v2/batch-02/equipment/equipment-border-scout.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/equipment-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-equipment-mengchong",
+      "topicId": "c03-equip-222078e0",
+      "label": "艨艟主装备组",
+      "contentId": "grain.equipment.mengchong",
+      "type": "equipment",
+      "png": "runtime-v2/batch-02/equipment/equipment-mengchong.png",
+      "svg": "runtime-v2/batch-02/equipment/equipment-mengchong.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/equipment-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-equipment-tower-ship-marine",
+      "topicId": "c03-equip-25f91749",
+      "label": "楼船兵主装备组",
+      "contentId": "grain.equipment.tower-ship-marine",
+      "type": "equipment",
+      "png": "runtime-v2/batch-02/equipment/equipment-tower-ship-marine.png",
+      "svg": "runtime-v2/batch-02/equipment/equipment-tower-ship-marine.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/equipment-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-skill-armor-break",
+      "topicId": "c03-skill-9238e301",
+      "label": "破甲",
+      "contentId": "grain.skill.armor-break",
+      "type": "skill",
+      "png": "runtime-v2/batch-02/skills/skill-armor-break.png",
+      "svg": "runtime-v2/batch-02/skills/skill-armor-break.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/skills-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-skill-aimed-shot",
+      "topicId": "c03-skill-140c5ddd",
+      "label": "瞄射",
+      "contentId": "grain.skill.aimed-shot",
+      "type": "skill",
+      "png": "runtime-v2/batch-02/skills/skill-aimed-shot.png",
+      "svg": "runtime-v2/batch-02/skills/skill-aimed-shot.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/skills-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-skill-suppression",
+      "topicId": "c03-skill-344cc154",
+      "label": "压制",
+      "contentId": "grain.skill.suppression",
+      "type": "skill",
+      "png": "runtime-v2/batch-02/skills/skill-suppression.png",
+      "svg": "runtime-v2/batch-02/skills/skill-suppression.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/skills-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-skill-cavalry-flank",
+      "topicId": "c03-skill-96ff26d1",
+      "label": "骑军侧击",
+      "contentId": "grain.skill.cavalry-flank",
+      "type": "skill",
+      "png": "runtime-v2/batch-02/skills/skill-cavalry-flank.png",
+      "svg": "runtime-v2/batch-02/skills/skill-cavalry-flank.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/skills-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-skill-pursuit",
+      "topicId": "c03-skill-59e0edce",
+      "label": "追击",
+      "contentId": "grain.skill.pursuit",
+      "type": "skill",
+      "png": "runtime-v2/batch-02/skills/skill-pursuit.png",
+      "svg": "runtime-v2/batch-02/skills/skill-pursuit.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/skills-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-skill-boarding",
+      "topicId": "c03-skill-4181fbc8",
+      "label": "接舷",
+      "contentId": "grain.skill.boarding",
+      "type": "skill",
+      "png": "runtime-v2/batch-02/skills/skill-boarding.png",
+      "svg": "runtime-v2/batch-02/skills/skill-boarding.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/skills-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-skill-field-treatment",
+      "topicId": "c03-skill-7d81885c",
+      "label": "治疗",
+      "contentId": "grain.skill.field-treatment",
+      "type": "skill",
+      "png": "runtime-v2/batch-02/skills/skill-field-treatment.png",
+      "svg": "runtime-v2/batch-02/skills/skill-field-treatment.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/skills-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-skill-banner-inspire",
+      "topicId": "c03-skill-ee087273",
+      "label": "旗鼓振奋",
+      "contentId": "grain.skill.banner-inspire",
+      "type": "skill",
+      "png": "runtime-v2/batch-02/skills/skill-banner-inspire.png",
+      "svg": "runtime-v2/batch-02/skills/skill-banner-inspire.svg",
+      "width": 32,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/skills-b02-master.png",
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "displaySizes": [
+        16,
+        24,
+        32
+      ]
+    },
+    {
+      "id": "c03-b02-status-wounded",
+      "topicId": "c03-status-444f7804",
+      "label": "负伤",
+      "contentId": "grain.status.wounded",
+      "type": "status",
+      "png": "runtime-v2/batch-02/status/status-wounded.png",
+      "svg": "runtime-v2/batch-02/status/status-wounded.svg",
+      "width": 24,
+      "height": 24,
+      "sourceMaster": "runtime-v2/batch-02/masters/status-hud-b02-master.png",
+      "anchor": {
+        "x": 12,
+        "y": 12
+      },
+      "displaySizes": [
+        16,
+        24
+      ]
+    },
+    {
+      "id": "c03-b02-status-burning",
+      "topicId": "c03-status-355f61aa",
+      "label": "着火",
+      "contentId": "grain.status.burning",
+      "type": "status",
+      "png": "runtime-v2/batch-02/status/status-burning.png",
+      "svg": "runtime-v2/batch-02/status/status-burning.svg",
+      "width": 24,
+      "height": 24,
+      "sourceMaster": "runtime-v2/batch-02/masters/status-hud-b02-master.png",
+      "anchor": {
+        "x": 12,
+        "y": 12
+      },
+      "displaySizes": [
+        16,
+        24
+      ]
+    },
+    {
+      "id": "c03-b02-status-soaked",
+      "topicId": "c03-status-396c70f2",
+      "label": "湿透",
+      "contentId": "grain.status.soaked",
+      "type": "status",
+      "png": "runtime-v2/batch-02/status/status-soaked.png",
+      "svg": "runtime-v2/batch-02/status/status-soaked.svg",
+      "width": 24,
+      "height": 24,
+      "sourceMaster": "runtime-v2/batch-02/masters/status-hud-b02-master.png",
+      "anchor": {
+        "x": 12,
+        "y": 12
+      },
+      "displaySizes": [
+        16,
+        24
+      ]
+    },
+    {
+      "id": "c03-b02-status-routed",
+      "topicId": "c03-status-a9b5519b",
+      "label": "溃退",
+      "contentId": "grain.status.routed",
+      "type": "status",
+      "png": "runtime-v2/batch-02/status/status-routed.png",
+      "svg": "runtime-v2/batch-02/status/status-routed.svg",
+      "width": 24,
+      "height": 24,
+      "sourceMaster": "runtime-v2/batch-02/masters/status-hud-b02-master.png",
+      "anchor": {
+        "x": 12,
+        "y": 12
+      },
+      "displaySizes": [
+        16,
+        24
+      ]
+    },
+    {
+      "id": "c03-b02-hud-ally",
+      "topicId": "c03-hud-358588ad",
+      "label": "友军标记",
+      "contentId": "grain.hud.ally",
+      "type": "hud",
+      "png": "runtime-v2/batch-02/hud/hud-ally.png",
+      "svg": "runtime-v2/batch-02/hud/hud-ally.svg",
+      "width": 24,
+      "height": 24,
+      "sourceMaster": "runtime-v2/batch-02/masters/status-hud-b02-master.png",
+      "anchor": {
+        "x": 12,
+        "y": 12
+      },
+      "displaySizes": [
+        16,
+        24
+      ]
+    },
+    {
+      "id": "c03-b02-hud-enemy",
+      "topicId": "c03-hud-abe1e247",
+      "label": "敌军标记",
+      "contentId": "grain.hud.enemy",
+      "type": "hud",
+      "png": "runtime-v2/batch-02/hud/hud-enemy.png",
+      "svg": "runtime-v2/batch-02/hud/hud-enemy.svg",
+      "width": 24,
+      "height": 24,
+      "sourceMaster": "runtime-v2/batch-02/masters/status-hud-b02-master.png",
+      "anchor": {
+        "x": 12,
+        "y": 12
+      },
+      "displaySizes": [
+        16,
+        24
+      ]
+    },
+    {
+      "id": "c03-b02-hud-neutral",
+      "topicId": "c03-hud-f870305b",
+      "label": "中立标记",
+      "contentId": "grain.hud.neutral",
+      "type": "hud",
+      "png": "runtime-v2/batch-02/hud/hud-neutral.png",
+      "svg": "runtime-v2/batch-02/hud/hud-neutral.svg",
+      "width": 24,
+      "height": 24,
+      "sourceMaster": "runtime-v2/batch-02/masters/status-hud-b02-master.png",
+      "anchor": {
+        "x": 12,
+        "y": 12
+      },
+      "displaySizes": [
+        16,
+        24
+      ]
+    },
+    {
+      "id": "c03-b02-hud-recruitable",
+      "topicId": "c03-hud-ed346324",
+      "label": "可招降标记",
+      "contentId": "grain.hud.recruitable",
+      "type": "hud",
+      "png": "runtime-v2/batch-02/hud/hud-recruitable.png",
+      "svg": "runtime-v2/batch-02/hud/hud-recruitable.svg",
+      "width": 24,
+      "height": 24,
+      "sourceMaster": "runtime-v2/batch-02/masters/status-hud-b02-master.png",
+      "anchor": {
+        "x": 12,
+        "y": 12
+      },
+      "displaySizes": [
+        16,
+        24
+      ]
+    },
+    {
+      "id": "c03-b02-fx-musket-hit",
+      "topicId": "c03-fx-bdc68cab",
+      "label": "火铳命中",
+      "contentId": "grain.fx.musket-hit",
+      "type": "fx",
+      "png": "runtime-v2/batch-02/fx/musket-hit.png",
+      "svg": "runtime-v2/batch-02/fx/musket-hit.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/fx-b02-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "frameOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fps": 14,
+      "blendMode": "add",
+      "loop": false,
+      "anchor": {
+        "x": 16,
+        "y": 16
+      }
+    },
+    {
+      "id": "c03-b02-fx-demolition-blast",
+      "topicId": "c03-fx-e590996f",
+      "label": "爆破命中",
+      "contentId": "grain.fx.demolition-blast",
+      "type": "fx",
+      "png": "runtime-v2/batch-02/fx/demolition-blast.png",
+      "svg": "runtime-v2/batch-02/fx/demolition-blast.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/fx-b02-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "frameOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fps": 12,
+      "blendMode": "normal",
+      "loop": false,
+      "anchor": {
+        "x": 16,
+        "y": 31
+      }
+    },
+    {
+      "id": "c03-b02-fx-heavy-rain-area",
+      "topicId": "c03-fx-aab458ba",
+      "label": "暴雨区域",
+      "contentId": "grain.fx.heavy-rain-area",
+      "type": "fx",
+      "png": "runtime-v2/batch-02/fx/heavy-rain-area.png",
+      "svg": "runtime-v2/batch-02/fx/heavy-rain-area.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/fx-b02-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "frameOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fps": 10,
+      "blendMode": "normal",
+      "loop": true,
+      "anchor": {
+        "x": 16,
+        "y": 31
+      }
+    },
+    {
+      "id": "c03-b02-fx-snowstorm-area",
+      "topicId": "c03-fx-78d874c1",
+      "label": "风雪区域",
+      "contentId": "grain.fx.snowstorm-area",
+      "type": "fx",
+      "png": "runtime-v2/batch-02/fx/snowstorm-area.png",
+      "svg": "runtime-v2/batch-02/fx/snowstorm-area.svg",
+      "width": 128,
+      "height": 32,
+      "sourceMaster": "runtime-v2/batch-02/masters/fx-b02-master.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "frameOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fps": 10,
+      "blendMode": "normal",
+      "loop": true,
+      "anchor": {
+        "x": 16,
+        "y": 16
+      }
+    },
+    {
+      "id": "c03-b02-scene-pre-dawn-grain-cart",
+      "topicId": "c03-scene-8be502ba",
+      "label": "天未亮的押粮车",
+      "contentId": "grain.scene.pre-dawn-grain-cart",
+      "type": "narrative-static",
+      "png": "runtime-v2/batch-02/scenes/pre-dawn-grain-cart.png",
+      "svg": "runtime-v2/batch-02/scenes/pre-dawn-grain-cart.svg",
+      "width": 256,
+      "height": 144,
+      "sourceMaster": "runtime-v2/batch-02/masters/scene-pre-dawn-grain-cart-master.png",
+      "opaque": true,
+      "dialogueSafeArea": {
+        "x": 0,
+        "y": 112,
+        "width": 256,
+        "height": 32
+      },
+      "displayScale": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c03-b02-scene-breach-boundary-dispute",
+      "topicId": "c03-scene-737e345e",
+      "label": "决口后的界碑争议",
+      "contentId": "grain.scene.breach-boundary-dispute",
+      "type": "narrative-static",
+      "png": "runtime-v2/batch-02/scenes/breach-boundary-dispute.png",
+      "svg": "runtime-v2/batch-02/scenes/breach-boundary-dispute.svg",
+      "width": 256,
+      "height": 144,
+      "sourceMaster": "runtime-v2/batch-02/masters/scene-breach-boundary-dispute-master.png",
+      "opaque": true,
+      "dialogueSafeArea": {
+        "x": 0,
+        "y": 112,
+        "width": 256,
+        "height": 32
+      },
+      "displayScale": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c03-b02-scene-reed-bank-white-lamp",
+      "topicId": "c03-scene-016bc02a",
+      "label": "芦苇滩白灯赠粮",
+      "contentId": "grain.scene.reed-bank-white-lamp",
+      "type": "narrative-static",
+      "png": "runtime-v2/batch-02/scenes/reed-bank-white-lamp.png",
+      "svg": "runtime-v2/batch-02/scenes/reed-bank-white-lamp.svg",
+      "width": 256,
+      "height": 144,
+      "sourceMaster": "runtime-v2/batch-02/masters/scene-reed-bank-white-lamp-master.png",
+      "opaque": true,
+      "dialogueSafeArea": {
+        "x": 0,
+        "y": 112,
+        "width": 256,
+        "height": 32
+      },
+      "displayScale": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c03-b02-scene-first-banner-law",
+      "topicId": "c03-scene-f40c6e2b",
+      "label": "第一面军旗与军法宣读",
+      "contentId": "grain.scene.first-banner-law",
+      "type": "narrative-static",
+      "png": "runtime-v2/batch-02/scenes/first-banner-law.png",
+      "svg": "runtime-v2/batch-02/scenes/first-banner-law.svg",
+      "width": 256,
+      "height": 144,
+      "sourceMaster": "runtime-v2/batch-02/masters/scene-first-banner-law-master.png",
+      "opaque": true,
+      "dialogueSafeArea": {
+        "x": 0,
+        "y": 112,
+        "width": 256,
+        "height": 32
+      },
+      "displayScale": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

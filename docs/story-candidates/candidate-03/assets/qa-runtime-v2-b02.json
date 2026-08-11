@@ -1,0 +1,643 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-03",
+  "batchId": "b02",
+  "qualityTier": "runtime-v2-candidate",
+  "runtimeReady": false,
+  "passed": true,
+  "summary": {
+    "assetCount": 68,
+    "coverage": {
+      "combat-unit": 8,
+      "mission-unit": 8,
+      "terrain": 8,
+      "interactive-structure": 4,
+      "battle-prop": 8,
+      "equipment": 8,
+      "skill": 8,
+      "status": 4,
+      "hud": 4,
+      "fx": 4,
+      "narrative-static": 4
+    },
+    "machineErrors": 0
+  },
+  "checks": [
+    {
+      "id": "manifest.topic-category-expanded",
+      "passed": true
+    },
+    {
+      "id": "manifest.unique-ids",
+      "passed": true,
+      "count": 68
+    },
+    {
+      "id": "manifest.no-batch01-content-overlap",
+      "passed": true
+    },
+    {
+      "id": "files.png-svg-size",
+      "passed": true,
+      "count": 68
+    },
+    {
+      "id": "units.frames-anchor-distinct",
+      "passed": true,
+      "assets": [
+        {
+          "id": "c03-b02-unit-modao",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-unit-heavy-crossbow",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-unit-divine-arm-crossbow",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-unit-light-cavalry",
+          "passed": true,
+          "frameBoxes": [
+            [
+              14,
+              2,
+              51,
+              48
+            ],
+            [
+              11,
+              2,
+              53,
+              48
+            ],
+            [
+              12,
+              2,
+              51,
+              48
+            ],
+            [
+              9,
+              2,
+              55,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-unit-armored-cavalry",
+          "passed": true,
+          "frameBoxes": [
+            [
+              4,
+              2,
+              60,
+              48
+            ],
+            [
+              3,
+              2,
+              61,
+              48
+            ],
+            [
+              5,
+              2,
+              59,
+              48
+            ],
+            [
+              7,
+              3,
+              58,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-unit-border-scout",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-unit-mengchong",
+          "passed": true,
+          "frameBoxes": [
+            [
+              7,
+              13,
+              94,
+              64
+            ],
+            [
+              5,
+              14,
+              94,
+              64
+            ],
+            [
+              6,
+              13,
+              95,
+              64
+            ],
+            [
+              6,
+              9,
+              95,
+              64
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-unit-tower-ship-marine",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-mission-refugee",
+          "passed": true,
+          "frameBoxes": [
+            [
+              2,
+              2,
+              30,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              2,
+              2,
+              30,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-mission-farmer",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-mission-sowing-team",
+          "passed": true,
+          "frameBoxes": [
+            [
+              2,
+              2,
+              29,
+              48
+            ],
+            [
+              1,
+              2,
+              30,
+              48
+            ],
+            [
+              2,
+              2,
+              30,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-mission-dike-apprentice",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-mission-water-league-deckhand",
+          "passed": true,
+          "frameBoxes": [
+            [
+              3,
+              2,
+              28,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              3,
+              2,
+              28,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-mission-salt-worker",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-mission-granary-porter",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        },
+        {
+          "id": "c03-b02-mission-grain-cart-driver",
+          "passed": true,
+          "frameBoxes": [
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ],
+            [
+              1,
+              2,
+              31,
+              48
+            ]
+          ],
+          "fourDistinctFrames": true
+        }
+      ]
+    },
+    {
+      "id": "terrain.variants-compatible-edges",
+      "passed": true,
+      "assets": [
+        {
+          "id": "c03-b02-terrain-cracked-field",
+          "passed": true,
+          "uniqueFrames": 4
+        },
+        {
+          "id": "c03-b02-terrain-receding-mud",
+          "passed": true,
+          "uniqueFrames": 4
+        },
+        {
+          "id": "c03-b02-terrain-reclaimed-furrow",
+          "passed": true,
+          "uniqueFrames": 4
+        },
+        {
+          "id": "c03-b02-terrain-stone-seep-ditch",
+          "passed": true,
+          "uniqueFrames": 16
+        },
+        {
+          "id": "c03-b02-terrain-flood-channel",
+          "passed": true,
+          "uniqueFrames": 16
+        },
+        {
+          "id": "c03-b02-terrain-reed-bank",
+          "passed": true,
+          "uniqueFrames": 4
+        },
+        {
+          "id": "c03-b02-terrain-pontoon-edge",
+          "passed": true,
+          "uniqueFrames": 16
+        },
+        {
+          "id": "c03-b02-terrain-wall-walk",
+          "passed": true,
+          "uniqueFrames": 16
+        }
+      ]
+    },
+    {
+      "id": "visual.no-exact-duplicate-category-files",
+      "passed": true,
+      "duplicateHashCounts": {
+        "combat-unit": 0,
+        "mission-unit": 0,
+        "terrain": 0,
+        "interactive-structure": 0,
+        "battle-prop": 0,
+        "equipment": 0,
+        "skill": 0,
+        "status": 0,
+        "hud": 0,
+        "fx": 0,
+        "narrative-static": 0
+      }
+    },
+    {
+      "id": "alpha.transparent-corners",
+      "passed": true
+    },
+    {
+      "id": "previews.required",
+      "passed": true,
+      "files": [
+        "runtime-v2/batch-02/previews/batch-02-contact-1x.png",
+        "runtime-v2/batch-02/previews/batch-02-contact-2x.png",
+        "runtime-v2/batch-02/previews/batch-02-scenes-1x.png",
+        "runtime-v2/batch-02/previews/batch-02-scenes-2x.png",
+        "runtime-v2/batch-02/previews/terrain-3x3.png"
+      ]
+    }
+  ],
+  "errors": [],
+  "manualReview": {
+    "required": true,
+    "completed": [
+      "1x/2x contact preview",
+      "scene contact preview",
+      "terrain 3x3 preview",
+      "unit silhouette and weapon review",
+      "FX frame progression review"
+    ],
+    "pendingBeforeRuntimeReady": [
+      "in-engine registration using contentId",
+      "game-board screenshot",
+      "collision/hotzone test",
+      "large-unit z-order test"
+    ]
+  },
+  "completionClaim": "Additive 68-asset Batch 02 only; not the 404-topic library completion."
+}

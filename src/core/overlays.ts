@@ -1,0 +1,87 @@
+import { Battlefield } from './domain/battlefield';
+import { addStatus } from './statuses';
+import type { Coord, GameEvent, GameState, MovementClass, TerrainOverlayState } from './types';
+import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+
+export function overlaysAt(state: GameState, at: Coord, content: ContentCatalog = GlobalContentCatalog): TerrainOverlayState[] {
+  return new Battlefield(state, content).cell(at).overlayStates;
+}
+
+export function movementCostAt(
+  state: GameState,
+  movementClass: MovementClass,
+  at: Coord,
+  content: ContentCatalog = GlobalContentCatalog,
+): number | null {
+  return new Battlefield(state, content).cell(at).movementCost(movementClass);
+}
+
+export function overlayDefenseAt(state: GameState, at: Coord, content: ContentCatalog = GlobalContentCatalog): number {
+  return new Battlefield(state, content).cell(at).overlayDefense;
+}
+
+export function overlayVisionAt(state: GameState, at: Coord, content: ContentCatalog = GlobalContentCatalog): number {
+  return new Battlefield(state, content).cell(at).overlayVision;
+}
+
+export function overlayHealAt(state: GameState, at: Coord, content: ContentCatalog = GlobalContentCatalog): number {
+  return new Battlefield(state, content).cell(at).overlayHeal;
+}
+
+export function addTerrainOverlay(
+  state: GameState,
+  overlay: TerrainOverlayState,
+  emit: (event: GameEvent) => void,
+  content: ContentCatalog = GlobalContentCatalog,
+): void {
+  if (state.scenario.overlays.some((candidate) => candidate.id === overlay.id)) {
+    throw new Error(`duplicate terrain overlay id "${overlay.id}"`);
+  }
+  content.terrainOverlays.get(overlay.type);
+  state.scenario.overlays.push({ ...overlay, cells: overlay.cells.map((cell) => ({ ...cell })) });
+  emit({
+    type: 'overlayAdded',
+    overlay: overlay.id,
+    overlayType: overlay.type,
+    cells: overlay.cells.map((cell) => ({ ...cell })),
+  });
+}
+
+export function removeTerrainOverlay(
+  state: GameState,
+  id: string,
+  emit: (event: GameEvent) => void,
+): boolean {
+  const index = state.scenario.overlays.findIndex((overlay) => overlay.id === id);
+  if (index < 0) return false;
+  state.scenario.overlays.splice(index, 1);
+  emit({ type: 'overlayRemoved', overlay: id });
+  return true;
+}
+
+/** Applies environmental statuses before normal owner-turn status resolution. */
+export function applyOverlayTurnStartEffects(
+  state: GameState,
+  owner: number,
+  emit: (event: GameEvent) => void,
+  content: ContentCatalog = GlobalContentCatalog,
+): void {
+  for (const unit of state.units.filter((candidate) => candidate.owner === owner)) {
+    for (const instance of overlaysAt(state, unit, content)) {
+      const effect = content.terrainOverlays.get(instance.type).turnStartStatus;
+      if (effect) addStatus(unit, effect.id, effect.duration, emit, undefined, content);
+    }
+  }
+}
+
+/** Called exactly when the player order wraps, so durations use full rounds. */
+export function advanceTerrainOverlayRound(
+  state: GameState,
+  emit: (event: GameEvent) => void,
+): void {
+  for (const overlay of [...state.scenario.overlays]) {
+    if (overlay.remainingRounds === null) continue;
+    overlay.remainingRounds--;
+    if (overlay.remainingRounds <= 0) removeTerrainOverlay(state, overlay.id, emit);
+  }
+}

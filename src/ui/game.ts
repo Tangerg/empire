@@ -1,13 +1,22 @@
-import { chooseAction } from '../core/ai';
-import { commandOptions, IllegalActionError } from '../core/actions';
-import { forecast } from '../core/combat';
+import { IllegalActionError } from '../core/actions';
+import { tacticOptions } from '../core/commanders';
 import { Terrains } from '../core/data/terrain';
 import { unitDef } from '../core/data/units';
+import { careerDef } from '../core/data/careers';
 import { idx } from '../core/grid';
 import { GameSession } from '../core/session';
 import { areEnemies, recruitOptions, unitAt, unitsOf } from '../core/state';
-import { visibleTiles, isUnitVisible } from '../core/vision';
-import type { Action, Coord, GameEvent, GameState, LevelData, Unit } from '../core/types';
+import type {
+  Action,
+  Coord,
+  Direction,
+  GameEvent,
+  GameState,
+  LevelData,
+  ReactionStance,
+  Unit,
+  WeaponId,
+} from '../core/types';
 import { BoardView, emptyOverlay, type BoardOverlay } from './board';
 import { Hud, type HudView } from './hud';
 
@@ -15,7 +24,16 @@ type Mode =
   | { kind: 'idle' }
   | { kind: 'unit'; unit: number }
   | { kind: 'dest'; unit: number; dest: Coord; path: Coord[] }
-  | { kind: 'target'; unit: number; dest: Coord; path: Coord[]; ability: string; targets: Coord[] }
+  | {
+      kind: 'target';
+      unit: number;
+      dest: Coord;
+      path: Coord[];
+      ability: string;
+      weapon?: WeaponId;
+      targets: Coord[];
+    }
+  | { kind: 'tacticTarget'; commander: string; tactic: string; targets: Coord[] }
   | { kind: 'recruit'; at: Coord };
 
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
@@ -60,6 +78,10 @@ export class GameController {
 
     this.hud = new Hud({
       onCommand: (a) => void this.chooseCommand(a),
+      onTactic: (key) => void this.chooseTactic(key),
+      onReaction: (stance) => void this.chooseReaction(stance),
+      onFacing: (facing) => void this.chooseFacing(facing),
+      onCareer: (career) => void this.chooseCareer(career),
       onCancel: () => this.cancel(),
       onEndTurn: () => void this.endTurn(),
       onUndo: () => this.undo(),
@@ -141,7 +163,7 @@ export class GameController {
     if (u && this.isVisible(u)) this.inspect = u;
     else if (!this.selectedUnit) this.inspect = null;
 
-    if (this.mode.kind === 'target') {
+    if (this.mode.kind === 'target' || this.mode.kind === 'tacticTarget') {
       this.hoverTarget = this.mode.targets.some((t) => t.x === c.x && t.y === c.y) ? c : null;
     } else {
       this.hoverTarget = null;
@@ -150,7 +172,11 @@ export class GameController {
   }
 
   private get selectedUnit(): Unit | null {
-    if (this.mode.kind === 'idle' || this.mode.kind === 'recruit') return null;
+    if (
+      this.mode.kind === 'idle' ||
+      this.mode.kind === 'recruit' ||
+      this.mode.kind === 'tacticTarget'
+    ) return null;
     return this.session.unit(this.mode.unit) ?? null;
   }
 
@@ -158,10 +184,24 @@ export class GameController {
     if (this.busy || this.state.phase !== 'playing') return;
     const s = this.state;
 
+    if (this.mode.kind === 'tacticTarget') {
+      if (this.mode.targets.some((target) => target.x === c.x && target.y === c.y)) {
+        await this.dispatch({
+          kind: 'tactic',
+          commander: this.mode.commander,
+          tactic: this.mode.tactic,
+          target: c,
+        });
+      } else {
+        this.cancel();
+      }
+      return;
+    }
+
     if (this.mode.kind === 'target') {
       if (this.mode.targets.some((t) => t.x === c.x && t.y === c.y)) {
-        const { unit, path, ability } = this.mode;
-        await this.dispatch({ kind: 'command', unit, path, command: { ability, target: c } });
+        const { unit, path, ability, weapon } = this.mode;
+        await this.dispatch({ kind: 'command', unit, path, command: { ability, weapon, target: c } });
       } else {
         this.cancel();
       }
@@ -179,19 +219,18 @@ export class GameController {
         // Clicking an enemy picks a firing position and arms the attack; the
         // forecast appears first, and a second click on the target confirms.
         if (clicked && areEnemies(s, clicked.owner, unit.owner) && this.isVisible(clicked)) {
-          const spot = this.bestAttackSpot(unit, clicked);
-          if (spot) {
-            const path = this.session.pathTo(unit, spot) ?? [{ x: unit.x, y: unit.y }];
+          const choice = this.bestAttackSpot(unit, clicked);
+          if (choice) {
+            const path = this.session.pathTo(unit, choice.at) ?? [{ x: unit.x, y: unit.y }];
             const target = { x: clicked.x, y: clicked.y };
             this.mode = {
               kind: 'target',
               unit: unit.id,
-              dest: spot,
+              dest: choice.at,
               path,
               ability: 'attack',
-              targets: commandOptions(s, unit, spot).find((o) => o.ability === 'attack')?.targets ?? [
-                target,
-              ],
+              weapon: choice.weapon,
+              targets: choice.targets,
             };
             this.hoverTarget = target;
             this.refresh();
@@ -202,7 +241,7 @@ export class GameController {
         if (field.stops.has(i)) {
           const path = this.session.pathTo(unit, c);
           if (path) {
-            const commands = commandOptions(s, unit, c);
+            const commands = this.session.commandsAt(unit, c);
             // A lone "wait" needs no menu round-trip.
             if (commands.length === 1 && commands[0].ability === 'wait') {
               await this.dispatch({
@@ -256,39 +295,53 @@ export class GameController {
   }
 
   /** Reachable tile from which `target` can be hit, preferring safe cover. */
-  private bestAttackSpot(unit: Unit, target: Unit): Coord | null {
+  private bestAttackSpot(
+    unit: Unit,
+    target: Unit,
+  ): { at: Coord; weapon: WeaponId; targets: Coord[]; score: number } | null {
     const s = this.state;
-    const def = unitDef(unit.type);
     const field = this.session.moveField(unit);
-    let best: { at: Coord; score: number } | null = null;
+    let best: { at: Coord; weapon: WeaponId; targets: Coord[]; score: number } | null = null;
     for (const i of field.stops) {
       const at = { x: i % s.map.width, y: Math.floor(i / s.map.width) };
       const moved = at.x !== unit.x || at.y !== unit.y;
-      if (moved && !def.attackAfterMove) continue;
-      const d = Math.abs(at.x - target.x) + Math.abs(at.y - target.y);
-      if (d < def.minRange || d > def.maxRange) continue;
-      const fc = forecast(s, unit, target, at);
-      const terrain = Terrains.get(s.map.tiles[i]);
-      const score =
-        fc.strike.damage * 2 +
-        terrain.defense * 60 -
-        (fc.counter?.damage ?? 0) * 1.5 -
-        (moved ? 1 : 0);
-      if (!best || score > best.score) best = { at, score };
+      for (const option of this.session.commandsAt(unit, at).filter((entry) => entry.ability === 'attack')) {
+        if (!option.weapon) continue;
+        if (!option.targets.some((cell) => cell.x === target.x && cell.y === target.y)) continue;
+        const plan = this.session.attackPlan(unit, target, at, option.weapon);
+        const fc = plan.primaryUnit!;
+        const splash = plan.unitHits
+          .filter((hit) => !hit.primary)
+          .reduce((sum, hit) => sum + hit.damage.damage, 0) +
+          plan.structureHits.filter((hit) => !hit.primary).reduce((sum, hit) => sum + hit.forecast.damage, 0);
+        const terrain = Terrains.get(s.map.tiles[i]);
+        const score =
+          fc.strike.damage * 2 +
+          splash * 1.25 +
+          terrain.defense * 60 -
+          (fc.counter?.damage ?? 0) * 1.5 -
+          (moved ? 1 : 0);
+        if (!best || score > best.score) {
+          best = { at, weapon: option.weapon, targets: option.targets, score };
+        }
+      }
     }
-    return best?.at ?? null;
+    return best;
   }
 
-  private async chooseCommand(ability: string): Promise<void> {
+  private async chooseCommand(optionKeyOrAbility: string): Promise<void> {
     if (this.mode.kind !== 'dest' || this.busy) return;
     const { unit, dest, path } = this.mode;
     const u = this.session.unit(unit);
     if (!u) return;
-    const option = commandOptions(this.state, u, dest).find((o) => o.ability === ability);
+    const options = this.session.commandsAt(u, dest);
+    const option = options.find((o) => o.key === optionKeyOrAbility) ??
+      options.find((o) => o.ability === optionKeyOrAbility);
     if (!option) return;
+    const { ability, weapon } = option;
 
     if (option.selfTargeted) {
-      await this.dispatch({ kind: 'command', unit, path, command: { ability } });
+      await this.dispatch({ kind: 'command', unit, path, command: { ability, weapon } });
       return;
     }
     if (option.targets.length === 1) {
@@ -296,12 +349,46 @@ export class GameController {
         kind: 'command',
         unit,
         path,
-        command: { ability, target: option.targets[0] },
+        command: { ability, weapon, target: option.targets[0] },
       });
       return;
     }
-    this.mode = { kind: 'target', unit, dest, path, ability, targets: option.targets };
+    this.mode = { kind: 'target', unit, dest, path, ability, weapon, targets: option.targets };
     this.refresh();
+  }
+
+  private async chooseTactic(key: string): Promise<void> {
+    if (this.busy || !this.isHumanTurn) return;
+    const separator = key.indexOf(':');
+    if (separator < 1) return;
+    const commander = key.slice(0, separator);
+    const tactic = key.slice(separator + 1);
+    const option = tacticOptions(this.state, commander).find((candidate) => candidate.id === tactic);
+    if (!option) return;
+    if (option.targets.length === 1) {
+      await this.dispatch({ kind: 'tactic', commander, tactic, target: option.targets[0] });
+      return;
+    }
+    this.mode = { kind: 'tacticTarget', commander, tactic, targets: option.targets };
+    this.refresh();
+  }
+
+  private async chooseReaction(stance: ReactionStance): Promise<void> {
+    const unit = this.selectedUnit;
+    if (!unit || this.busy || !this.isHumanTurn) return;
+    await this.dispatch({ kind: 'reaction', unit: unit.id, stance });
+  }
+
+  private async chooseFacing(facing: Direction): Promise<void> {
+    const unit = this.selectedUnit;
+    if (!unit || this.busy || !this.isHumanTurn) return;
+    await this.dispatch({ kind: 'face', unit: unit.id, facing });
+  }
+
+  private async chooseCareer(career: string): Promise<void> {
+    const unit = this.selectedUnit;
+    if (!unit || this.busy || !this.isHumanTurn) return;
+    await this.dispatch({ kind: 'changeCareer', unit: unit.id, career });
   }
 
   private async recruit(unitType: string): Promise<void> {
@@ -314,6 +401,9 @@ export class GameController {
     switch (this.mode.kind) {
       case 'target':
         this.mode = { kind: 'dest', unit: this.mode.unit, dest: this.mode.dest, path: this.mode.path };
+        break;
+      case 'tacticTarget':
+        this.mode = { kind: 'idle' };
         break;
       case 'dest':
         this.mode = { kind: 'unit', unit: this.mode.unit };
@@ -417,6 +507,37 @@ export class GameController {
           if (at) await this.board.animateHit(at, e.damage, e.killed);
           break;
         }
+        case 'supportAttack': {
+          const supporter = this.session.unit(e.attacker);
+          const defender = this.session.unit(e.defender);
+          const at = defender
+            ? { x: defender.x, y: defender.y }
+            : this.lastKnownPosition(e.defender);
+          if (supporter && at) await this.board.animateStrike(supporter, at);
+          if (at) await this.board.animateHit(at, e.damage, e.killed);
+          break;
+        }
+        case 'areaAttack': {
+          const defender = this.session.unit(e.defender);
+          const at = defender
+            ? { x: defender.x, y: defender.y }
+            : this.lastKnownPosition(e.defender);
+          if (at) await this.board.animateHit(at, e.damage, e.killed);
+          break;
+        }
+        case 'attackStructure': {
+          const attacker = this.session.unit(e.attacker);
+          const structure = this.state.structures.find((candidate) => candidate.id === e.structure);
+          const at = structure ? { x: structure.x, y: structure.y } : null;
+          if (attacker && at) await this.board.animateStrike(attacker, at);
+          if (at) await this.board.animateHit(at, e.damage, e.destroyed);
+          break;
+        }
+        case 'areaAttackStructure': {
+          const structure = this.state.structures.find((candidate) => candidate.id === e.structure);
+          if (structure) await this.board.animateHit({ x: structure.x, y: structure.y }, e.damage, e.destroyed);
+          break;
+        }
         case 'death':
           await this.board.animateDeath(e.unit);
           break;
@@ -473,7 +594,7 @@ export class GameController {
       let guard = 0;
       while (!this.disposed && this.state.phase === 'playing' && !this.isHumanTurn) {
         if (++guard > 2000) break;
-        const action = chooseAction(this.state);
+        const action = this.session.chooseAiAction();
 
         if (action.kind === 'command' && action.path.length > 1) {
           const unit = this.session.unit(action.unit);
@@ -506,7 +627,7 @@ export class GameController {
 
   private isVisible(u: Unit): boolean {
     const me = this.human?.id ?? this.state.currentPlayer;
-    return isUnitVisible(this.state, me, u);
+    return this.session.isUnitVisible(me, u);
   }
 
   private overlay(): BoardOverlay {
@@ -515,8 +636,10 @@ export class GameController {
     const viewer = this.human?.id ?? s.currentPlayer;
 
     if (s.rules.fog) {
-      o.visible = visibleTiles(s, viewer);
-      for (const u of s.units) if (!isUnitVisible(s, viewer, u, o.visible)) o.hiddenUnits.add(u.id);
+      o.visible = this.session.visibleTiles(viewer);
+      for (const u of s.units) {
+        if (!this.session.isUnitVisible(viewer, u, o.visible)) o.hiddenUnits.add(u.id);
+      }
     }
 
     o.cursor = this.cursor;
@@ -542,6 +665,14 @@ export class GameController {
           if (this.mode.kind === 'target') {
             const set = this.mode.ability === 'heal' ? o.heal : o.attack;
             for (const t of this.mode.targets) set.add(idx(s.map, t.x, t.y));
+            if (this.mode.ability === 'attack' && this.hoverTarget) {
+              try {
+                const plan = this.session.attackPlan(unit, this.hoverTarget, this.mode.dest, this.mode.weapon);
+                for (const cell of plan.affectedCells) o.attack.add(idx(s.map, cell.x, cell.y));
+              } catch {
+                // Hover may move between valid targets while the overlay refreshes.
+              }
+            }
           }
         }
       }
@@ -551,6 +682,9 @@ export class GameController {
         for (const i of this.session.threatOf(this.inspect)) o.threat.add(i);
         o.selected = { x: this.inspect.x, y: this.inspect.y };
       }
+    }
+    if (this.mode.kind === 'tacticTarget') {
+      for (const target of this.mode.targets) o.heal.add(idx(s.map, target.x, target.y));
     }
 
     return o;
@@ -564,22 +698,58 @@ export class GameController {
     if (unit && this.mode.kind === 'target' && this.hoverTarget && this.mode.ability === 'attack') {
       const defender = unitAt(s, this.hoverTarget.x, this.hoverTarget.y);
       if (defender) {
-        fcView = { fc: forecast(s, unit, defender, this.mode.dest), attacker: unit, defender };
+        const plan = this.session.attackPlan(unit, this.hoverTarget, this.mode.dest, this.mode.weapon);
+        const fc = plan.primaryUnit!;
+        const recipient = s.units.find((candidate) => candidate.id === fc.damageRecipient) ?? defender;
+        fcView = {
+          plan,
+          fc,
+          attacker: unit,
+          defender,
+          recipient,
+        };
       }
     }
 
     const commands =
       this.mode.kind === 'dest' && unit && !this.busy
-        ? commandOptions(s, unit, this.mode.dest)
+        ? this.session.commandsAt(unit, this.mode.dest)
         : null;
+    const tactics =
+      this.isHumanTurn && !this.busy && this.mode.kind === 'idle'
+        ? s.commanders
+            .filter((commander) => commander.owner === s.currentPlayer)
+            .flatMap((commander) =>
+              tacticOptions(s, commander.id, this.session.engine.rules.resources).map((option) => ({
+                ...option,
+                key: `${commander.id}:${option.id}`,
+                commander: commander.id,
+              })),
+            )
+        : [];
 
     return {
       state: s,
+      resources: this.session.engine.rules.resources,
       inspect: this.inspect,
       tile: this.cursor,
       forecast: fcView,
       commands,
-      targeting: this.mode.kind === 'target' ? this.mode.ability : null,
+      tactics,
+      reactionUnit:
+        unit && unit.owner === s.currentPlayer && !unit.done && this.isHumanTurn ? unit.id : null,
+      rankNextThreshold: this.inspect
+        ? this.session.engine.rules.progression.nextThreshold(this.inspect.rank)
+        : null,
+      careerOptions: unit && unit.owner === s.currentPlayer && !unit.done && this.isHumanTurn
+        ? this.session.careerOptions(unit)
+        : [],
+      targeting:
+        this.mode.kind === 'target'
+          ? this.mode.ability
+          : this.mode.kind === 'tacticTarget'
+            ? this.mode.tactic
+            : null,
       recruitAt: this.mode.kind === 'recruit' ? this.mode.at : null,
       hint: this.hint(),
       busy: this.busy,
@@ -627,16 +797,33 @@ function describeEvent(s: GameState, e: GameEvent): string {
   switch (e.type) {
     case 'attack':
       return `${name(e.attacker)} 造成 ${e.damage} 点伤害${e.killed ? '，目标阵亡' : ''}`;
+    case 'areaAttack':
+      return `范围攻击对 ${name(e.defender)} 造成 ${e.damage} 点伤害${e.killed ? '，目标阵亡' : ''}`;
     case 'counter':
       return `反击造成 ${e.damage} 点伤害${e.killed ? '，我方阵亡' : ''}`;
+    case 'supportAttack':
+      return `${name(e.attacker)} 援护攻击造成 ${e.damage} 点伤害${e.killed ? '，目标阵亡' : ''}`;
+    case 'attackStructure':
+      return `对结构造成 ${e.damage} 点伤害${e.destroyed ? '，结构被摧毁' : ''}`;
+    case 'areaAttackStructure':
+      return `范围攻击对结构造成 ${e.damage} 点伤害${e.destroyed ? '，结构被摧毁' : ''}`;
     case 'heal':
       return `${name(e.source)} 治疗了 ${e.amount} 点生命`;
     case 'capture':
       return e.captured ? `${pname(e.player)} 占领了 (${e.at.x}, ${e.at.y})` : '占领进度提升';
     case 'recruit':
       return `${pname(s.currentPlayer)} 征募了 ${name(e.unit)}`;
-    case 'income':
-      return `${pname(e.player)} 获得 ${e.amount} 金币`;
+    case 'resourceChanged': {
+      const resource = e.resource === 'funds' ? '资金' : e.resource === 'command_points' ? '指挥点' : e.resource === 'momentum' ? '气势' : e.resource;
+      const subject = e.subject.kind === 'player' ? pname(e.subject.id) : e.subject.kind === 'unit' ? name(e.subject.id) : name(e.subject.unit);
+      return `${subject} ${resource} ${e.amount >= 0 ? '+' : ''}${e.amount}（${e.current}）`;
+    }
+    case 'rankChanged':
+      return `${name(e.unit)} 晋升为 ${(['新兵', '老兵', '精英'] as const)[e.to]}`;
+    case 'careerChanged':
+      return `${name(e.unit)} 转职为 ${careerDef(e.to).name}`;
+    case 'facingChanged':
+      return `${name(e.unit)} 调整了朝向`;
     case 'turnStart':
       return `第 ${e.turn} 回合 · ${pname(e.player)}`;
     case 'defeat':

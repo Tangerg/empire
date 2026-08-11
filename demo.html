@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SRPG 微内核演示 · 远古帝国</title>
+    <style>
+      .file-launch-help {
+        box-sizing: border-box;
+        width: min(680px, calc(100% - 32px));
+        margin: 8vh auto;
+        padding: 36px;
+        border: 1px solid #b79558;
+        border-radius: 18px;
+        color: #f5ead1;
+        background: #17202c;
+        box-shadow: 0 22px 70px rgb(0 0 0 / 35%);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.7;
+      }
+
+      .file-launch-help h1 {
+        margin: 0 0 12px;
+        color: #ffd888;
+        font-size: clamp(24px, 5vw, 38px);
+      }
+
+      .file-launch-help p {
+        margin: 10px 0;
+      }
+
+      .file-launch-help ol {
+        padding-left: 22px;
+      }
+
+      .file-launch-help code {
+        padding: 3px 7px;
+        border-radius: 6px;
+        color: #ffe4a9;
+        background: #0c131c;
+      }
+
+      .file-launch-help .reason {
+        color: #b9c5d3;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      const app = document.querySelector('#app');
+
+      if (location.protocol === 'file:') {
+        app.innerHTML = `
+          <main class="file-launch-help">
+            <h1>需要通过本地服务器启动</h1>
+            <p>这是使用真实 TypeScript 战斗引擎的交互 Demo，浏览器不会允许它直接从 <code>file://</code> 加载模块。</p>
+            <ol>
+              <li>推荐：双击项目根目录的 <code>打开引擎Demo.command</code>。</li>
+              <li>或者在项目目录运行 <code>npm run demo</code>。</li>
+            </ol>
+            <p>启动器会自动打开正确的演示页面；关闭启动器的终端窗口即可停止服务。</p>
+            <p class="reason">当前页面只是安全提示，不会再尝试加载模块，因此不会产生 CORS 报错。</p>
+          </main>
+        `;
+      } else {
+        await import('/src/demo/main.ts');
+      }
+    </script>
+  </body>
+</html>

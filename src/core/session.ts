@@ -1,7 +1,10 @@
-import { applyAction, commandOptions, IllegalActionError } from './actions';
-import { computeMoveField, pathTo, threatTiles, type MoveField } from './movement';
-import { cloneState, createState, unitById } from './state';
-import type { Action, Coord, GameEvent, GameState, LevelData, Unit } from './types';
+import { IllegalActionError } from './action-system';
+import type { AiOptions } from './ai';
+import type { BattleEngine } from './engine';
+import { createDefaultBattleEngine } from './plugins/default';
+import type { MoveField } from './movement';
+import { unitById } from './state';
+import type { Action, Coord, GameEvent, GameState, LevelData, PlayerId, Unit, WeaponId } from './types';
 
 export type SessionListener = (events: GameEvent[], state: GameState) => void;
 
@@ -20,9 +23,12 @@ export class GameSession {
   private fieldCache = new Map<number, { field: MoveField; stamp: number }>();
   private stamp = 0;
 
-  constructor(level: LevelData) {
+  constructor(
+    level: LevelData,
+    readonly engine: BattleEngine = createDefaultBattleEngine(),
+  ) {
     this.level = level;
-    this.state = createState(level);
+    this.state = engine.createState(level);
   }
 
   /* --------------------------------------------------------- subscriptions */
@@ -42,21 +48,49 @@ export class GameSession {
   moveField(unit: Unit): MoveField {
     const hit = this.fieldCache.get(unit.id);
     if (hit && hit.stamp === this.stamp) return hit.field;
-    const field = computeMoveField(this.state, unit);
+    const field = this.engine.moveField(this.state, unit);
     this.fieldCache.set(unit.id, { field, stamp: this.stamp });
     return field;
   }
 
   pathTo(unit: Unit, to: Coord): Coord[] | null {
-    return pathTo(this.moveField(unit), this.state.map, to);
+    return this.engine.pathTo(this.moveField(unit), this.state, to);
   }
 
   commandsAt(unit: Unit, at: Coord) {
-    return commandOptions(this.state, unit, at);
+    return this.engine.commandsAt(this.state, unit, at);
+  }
+
+  careerOptions(unit: Unit) {
+    return this.engine.careerOptions(this.state, unit);
   }
 
   threatOf(unit: Unit): Set<number> {
-    return threatTiles(this.state, unit, this.moveField(unit));
+    return this.engine.threatOf(this.state, unit, this.moveField(unit));
+  }
+
+  visibleTiles(viewer: PlayerId): Set<number> {
+    return this.engine.visibleTiles(this.state, viewer);
+  }
+
+  isUnitVisible(viewer: PlayerId, unit: Unit, seen?: Set<number>): boolean {
+    return this.engine.isUnitVisible(this.state, viewer, unit, seen);
+  }
+
+  visibleUnits(viewer: PlayerId): Unit[] {
+    return this.engine.visibleUnits(this.state, viewer);
+  }
+
+  forecast(attacker: Unit, defender: Unit, at?: Coord, weapon?: WeaponId) {
+    return this.engine.forecast(this.state, attacker, defender, at, weapon);
+  }
+
+  attackPlan(attacker: Unit, aimedAt: Coord, at?: Coord, weapon?: WeaponId) {
+    return this.engine.attackPlan(this.state, attacker, aimedAt, at, weapon);
+  }
+
+  chooseAiAction(options?: Partial<AiOptions>): Action {
+    return this.engine.chooseAiAction(this.state, options);
   }
 
   unit(id: number): Unit | undefined {
@@ -67,18 +101,10 @@ export class GameSession {
 
   /** Applies an action. Returns the event list, or throws IllegalActionError. */
   dispatch(action: Action): GameEvent[] {
-    const undoable = action.kind !== 'endTurn';
-    const snapshot = undoable ? cloneState(this.state) : null;
+    const undoable = action.kind !== 'endTurn' && action.kind !== 'finishDeployment';
+    const { events, before } = this.engine.dispatchWithReceipt(this.state, action);
 
-    let events: GameEvent[];
-    try {
-      events = applyAction(this.state, action);
-    } catch (e) {
-      if (e instanceof IllegalActionError && snapshot) this.state = snapshot;
-      throw e;
-    }
-
-    if (snapshot) this.undoStack.push(snapshot);
+    if (undoable) this.undoStack.push(before);
     else this.undoStack = []; // no rewinding across a turn boundary
 
     this.stamp++;
@@ -98,7 +124,7 @@ export class GameSession {
   }
 
   get canUndo(): boolean {
-    return this.undoStack.length > 0 && this.state.phase === 'playing';
+    return this.undoStack.length > 0 && this.state.phase !== 'over';
   }
 
   undo(): boolean {
@@ -112,7 +138,7 @@ export class GameSession {
   }
 
   restart(): void {
-    this.state = createState(this.level);
+    this.state = this.engine.createState(this.level);
     this.undoStack = [];
     this.log.length = 0;
     this.stamp++;

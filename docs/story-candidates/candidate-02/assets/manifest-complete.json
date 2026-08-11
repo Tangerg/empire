@@ -1,0 +1,5974 @@
+{
+  "schemaVersion": "2.0.0",
+  "campaignId": "candidate-02",
+  "title": "群星熄灭之前",
+  "qualityTier": "prototype",
+  "runtimeReady": false,
+  "intendedUse": "topic coverage, engine wiring, collision and slicing tests only",
+  "targetTopics": 404,
+  "categoryTargets": {
+    "narrative-static": 80,
+    "combat-unit": 40,
+    "mission-unit": 24,
+    "faction-kit": 12,
+    "terrain": 32,
+    "interactive-structure": 24,
+    "battle-prop": 32,
+    "equipment": 48,
+    "skill": 48,
+    "status": 24,
+    "fx": 24,
+    "hud": 16
+  },
+  "generation": {
+    "pixelBuild": "tools/build_complete_library.py",
+    "imagegenMaster": "expansion/masters/c02-style-keyart-master-imagegen.png",
+    "imagegenUse": "c02-style-keyart source master; cropped, downsampled and palette-quantized into the runtime style atlas",
+    "transparentRuntime": "binary alpha for unit/icon/prop atlases; scenes and style cells are opaque"
+  },
+  "topics": [
+    {
+      "id": "c02-char-mira-01",
+      "label": "米拉·见习巡猎士",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-char-mira-01-delivery"
+    },
+    {
+      "id": "c02-char-roan-01",
+      "label": "罗安·巡猎导师",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-char-roan-01-delivery"
+    },
+    {
+      "id": "c02-char-naim-01",
+      "label": "奈姆·返星会指挥",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-char-naim-01-delivery"
+    },
+    {
+      "id": "c02-char-talos-7",
+      "label": "塔洛斯七号",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-char-talos-7-delivery"
+    },
+    {
+      "id": "c02-char-helo",
+      "label": "赫洛船长",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-char-helo-delivery"
+    },
+    {
+      "id": "c02-char-iya",
+      "label": "伊娅投影",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-char-iya-delivery"
+    },
+    {
+      "id": "c02-arch-rain-tower",
+      "label": "零号雨塔",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-arch-rain-tower-delivery"
+    },
+    {
+      "id": "c02-arch-farlight-01",
+      "label": "远灯号初始货船态",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-arch-farlight-01-delivery"
+    },
+    {
+      "id": "c02-arch-soler-archive",
+      "label": "索勒档案修院",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-arch-soler-archive-delivery"
+    },
+    {
+      "id": "c02-arch-ring-city",
+      "label": "凯隆环都节点",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-arch-ring-city-delivery"
+    },
+    {
+      "id": "c02-scene-season-without-rain",
+      "label": "没有下雨的季节",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-scene-season-without-rain-delivery"
+    },
+    {
+      "id": "c02-scene-seven-minute-rain",
+      "label": "七分钟的雨",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-scene-seven-minute-rain-delivery"
+    },
+    {
+      "id": "c02-scene-farlight-departure",
+      "label": "远灯号起飞",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-scene-farlight-departure-delivery"
+    },
+    {
+      "id": "c02-scene-folding-table-covenant",
+      "label": "折叠桌星约",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-scene-folding-table-covenant-delivery"
+    },
+    {
+      "id": "c02-prop-rain-filter-core",
+      "label": "净水芯",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-existing-story-props",
+      "cell": 0
+    },
+    {
+      "id": "c02-prop-maintenance-key",
+      "label": "星脉低权限密钥",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-existing-story-props",
+      "cell": 1
+    },
+    {
+      "id": "c02-prop-firefly-drone",
+      "label": "萤火维修无人机",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-existing-story-props",
+      "cell": 2
+    },
+    {
+      "id": "c02-prop-memory-echo-container",
+      "label": "记忆回声容器",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-existing-story-props",
+      "cell": 3
+    },
+    {
+      "id": "c02-prop-hesha-cup",
+      "label": "赫沙金属杯",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-existing-campaign-props",
+      "cell": 0
+    },
+    {
+      "id": "c02-prop-roan-risk-list",
+      "label": "罗安风险清单",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-existing-campaign-props",
+      "cell": 1
+    },
+    {
+      "id": "c02-prop-two-tickets",
+      "label": "两张撤离票",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-existing-campaign-props",
+      "cell": 2
+    },
+    {
+      "id": "c02-prop-iya-door",
+      "label": "伊娅可关闭门控件",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "existing",
+      "assetId": "c02-existing-campaign-props",
+      "cell": 3
+    },
+    {
+      "id": "c02-style-keyart",
+      "label": "远灯号驶向熄灭弥光",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-style-atlas-complete",
+      "cell": 0
+    },
+    {
+      "id": "c02-style-hesha",
+      "label": "赫沙赤砂与水循环",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-style-atlas-complete",
+      "cell": 1
+    },
+    {
+      "id": "c02-style-echo-tide",
+      "label": "寂潮生活记忆视觉语言",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-style-atlas-complete",
+      "cell": 2
+    },
+    {
+      "id": "c02-style-dark-stars",
+      "label": "弥光熄灭应急照明",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-style-atlas-complete",
+      "cell": 3
+    },
+    {
+      "id": "c02-style-soler",
+      "label": "索勒蓝冰与热灯",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-style-atlas-complete",
+      "cell": 4
+    },
+    {
+      "id": "c02-style-nereia",
+      "label": "涅瑞亚多层潮城",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-style-atlas-complete",
+      "cell": 5
+    },
+    {
+      "id": "c02-style-verdant",
+      "label": "维尔达活体城市",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-style-atlas-complete",
+      "cell": 6
+    },
+    {
+      "id": "c02-style-kairon",
+      "label": "凯隆权限层环城",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-style-atlas-complete",
+      "cell": 7
+    },
+    {
+      "id": "c02-style-farlight-life",
+      "label": "远灯号拥挤生活层",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-style-atlas-complete",
+      "cell": 8
+    },
+    {
+      "id": "c02-style-ring-maintenance",
+      "label": "环庭维护界面",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-style-atlas-complete",
+      "cell": 9
+    },
+    {
+      "id": "c02-style-five-world-materials",
+      "label": "五界材料语言",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-style-atlas-complete",
+      "cell": 10
+    },
+    {
+      "id": "c02-style-post-milight",
+      "label": "熄星后物理生存",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-style-atlas-complete",
+      "cell": 11
+    },
+    {
+      "id": "c02-char-mira-02",
+      "label": "米拉·远灯号领队",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-character-atlas-expanded",
+      "cell": 0
+    },
+    {
+      "id": "c02-char-mira-03",
+      "label": "米拉·星约巡行员",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-character-atlas-expanded",
+      "cell": 1
+    },
+    {
+      "id": "c02-char-roan-02",
+      "label": "罗安·归零代行者",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-character-atlas-expanded",
+      "cell": 2
+    },
+    {
+      "id": "c02-char-firefly",
+      "label": "萤火维修单位设定",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-character-atlas-expanded",
+      "cell": 3
+    },
+    {
+      "id": "c02-char-naim-02",
+      "label": "奈姆·受审后行动员",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-character-atlas-expanded",
+      "cell": 4
+    },
+    {
+      "id": "c02-char-olo",
+      "label": "奥洛潮汐祭司",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-character-atlas-expanded",
+      "cell": 5
+    },
+    {
+      "id": "c02-char-kota",
+      "label": "珂塔共生者",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-character-atlas-expanded",
+      "cell": 6
+    },
+    {
+      "id": "c02-char-ishan",
+      "label": "伊珊模型分析员",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-character-atlas-expanded",
+      "cell": 7
+    },
+    {
+      "id": "c02-char-sadi",
+      "label": "萨迪赫沙医师",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-character-atlas-expanded",
+      "cell": 8
+    },
+    {
+      "id": "c02-char-lanko",
+      "label": "岚柯见习维护员",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-character-atlas-expanded",
+      "cell": 9
+    },
+    {
+      "id": "c02-char-misa-family",
+      "label": "米萨外环家庭",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-character-atlas-expanded",
+      "cell": 10
+    },
+    {
+      "id": "c02-creature-rain-shepherd",
+      "label": "雨牧者结构设定",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-creature-atlas-expanded",
+      "cell": 0
+    },
+    {
+      "id": "c02-scene-growing-wall",
+      "label": "维尔达生长城墙",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 0
+    },
+    {
+      "id": "c02-scene-five-world-broadcast",
+      "label": "五界责任广播",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 1
+    },
+    {
+      "id": "c02-scene-iya-gets-door",
+      "label": "伊娅获得门",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 2
+    },
+    {
+      "id": "c02-scene-inverted-city-maintenance",
+      "label": "倒悬城低权限维护",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 3
+    },
+    {
+      "id": "c02-scene-last-natural-rain",
+      "label": "最后一场自然雨",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 4
+    },
+    {
+      "id": "c02-scene-soler-ice-beacon",
+      "label": "索勒冰海信标",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 5
+    },
+    {
+      "id": "c02-scene-two-percent-dock",
+      "label": "百分之二船坞",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 6
+    },
+    {
+      "id": "c02-scene-falling-ring-team",
+      "label": "坠环分队",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 7
+    },
+    {
+      "id": "c02-scene-uker-festival",
+      "label": "厄客前世城市节日",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 8
+    },
+    {
+      "id": "c02-scene-return-hesha",
+      "label": "返回赫沙与共管雨塔",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 9
+    },
+    {
+      "id": "c02-scene-sandstorm-water-repair",
+      "label": "沙暴中维修水塔",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 10
+    },
+    {
+      "id": "c02-scene-soler-heat-shift",
+      "label": "索勒热灯轮值",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 11
+    },
+    {
+      "id": "c02-scene-nereia-platform-vote",
+      "label": "涅瑞亚浮台表决",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 12
+    },
+    {
+      "id": "c02-scene-verdant-bridge-pruning",
+      "label": "维尔达居民修剪活桥",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 13
+    },
+    {
+      "id": "c02-scene-kairon-train-evacuation",
+      "label": "凯隆列车撤离",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 14
+    },
+    {
+      "id": "c02-scene-quarantine-ship-rotation",
+      "label": "隔离舰公开轮换",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-scene-atlas-expanded",
+      "cell": 15
+    },
+    {
+      "id": "c02-arch-farlight-02",
+      "label": "远灯号中期难民生活态",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-architecture-atlas-expanded",
+      "cell": 0
+    },
+    {
+      "id": "c02-arch-farlight-03",
+      "label": "远灯号终章物理系统态",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-architecture-atlas-expanded",
+      "cell": 1
+    },
+    {
+      "id": "c02-arch-inverted-city",
+      "label": "弥光倒悬城",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-architecture-atlas-expanded",
+      "cell": 2
+    },
+    {
+      "id": "c02-arch-nereia-float",
+      "label": "涅瑞亚浮城",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-architecture-atlas-expanded",
+      "cell": 3
+    },
+    {
+      "id": "c02-arch-verdant-living-city",
+      "label": "维尔达活体城市",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-architecture-atlas-expanded",
+      "cell": 4
+    },
+    {
+      "id": "c02-arch-uker-city",
+      "label": "厄客前世城",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-architecture-atlas-expanded",
+      "cell": 5
+    },
+    {
+      "id": "c02-arch-hesha-water-guild",
+      "label": "赫沙水务公会",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-architecture-atlas-expanded",
+      "cell": 6
+    },
+    {
+      "id": "c02-arch-soler-heat-chain",
+      "label": "索勒热灯链",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-architecture-atlas-expanded",
+      "cell": 7
+    },
+    {
+      "id": "c02-arch-nereia-tide-anchor",
+      "label": "涅瑞亚潮锚站",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-architecture-atlas-expanded",
+      "cell": 8
+    },
+    {
+      "id": "c02-arch-verdant-fungus-clinic",
+      "label": "维尔达菌床诊所",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-architecture-atlas-expanded",
+      "cell": 9
+    },
+    {
+      "id": "c02-arch-kairon-outer-repair",
+      "label": "凯隆外环维修站",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-architecture-atlas-expanded",
+      "cell": 10
+    },
+    {
+      "id": "c02-prop-covenant-table",
+      "label": "五界星约折叠桌",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-prop-atlas-expanded",
+      "cell": 0
+    },
+    {
+      "id": "c02-prop-mira-license",
+      "label": "米拉巡猎执照",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-prop-atlas-expanded",
+      "cell": 1
+    },
+    {
+      "id": "c02-prop-talos-wills",
+      "label": "塔洛斯三份冲突遗书",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-prop-atlas-expanded",
+      "cell": 2
+    },
+    {
+      "id": "c02-prop-public-cargo-rotation",
+      "label": "公开货舱与撤离轮换板",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-prop-atlas-expanded",
+      "cell": 3
+    },
+    {
+      "id": "c02-prop-living-isolation",
+      "label": "维尔达活体隔离网",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-prop-atlas-expanded",
+      "cell": 4
+    },
+    {
+      "id": "c02-prop-physical-route-box",
+      "label": "离线物理航路盒",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-prop-atlas-expanded",
+      "cell": 5
+    },
+    {
+      "id": "c02-prop-five-world-roster",
+      "label": "五界维护班表",
+      "category": "narrative-static",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-prop-atlas-expanded",
+      "cell": 6
+    },
+    {
+      "id": "c02-unit-star-shield",
+      "label": "星盾兵",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 0,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-power-swordsman",
+      "label": "动力剑士",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 1,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-symbiotic-guard",
+      "label": "共生卫士",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 2,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-sand-rider",
+      "label": "沙地游骑",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 3,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-hover-lancer",
+      "label": "悬浮枪骑",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 4,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-tide-fin-scout",
+      "label": "潮鳍斥候",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 5,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-rail-rifleman",
+      "label": "轨道步枪手",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 6,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-long-beam-sniper",
+      "label": "长束狙击手",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 7,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-spore-shooter",
+      "label": "孢子射手",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 8,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-star-vein-mage",
+      "label": "星脉术士",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 9,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-tide-priest",
+      "label": "潮汐祭司",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 10,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-memory-monk",
+      "label": "记忆修士",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 11,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-field-medic",
+      "label": "战地医师",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 12,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-repair-engineer",
+      "label": "维修师",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 13,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-protocol-analyst",
+      "label": "协议分析员",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 14,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-guard-robot",
+      "label": "守卫机器人",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 15,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-turret-vehicle",
+      "label": "炮台工程车",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 16,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-light-mech",
+      "label": "轻型机甲",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 17,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-antler-knight",
+      "label": "角枝骑士",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 18,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-forest-beast-handler",
+      "label": "林兽驭手",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 19,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-eco-maintainer",
+      "label": "生态维护体",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 20,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-boarding-team",
+      "label": "接舷队",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 21,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-vacuum-trooper",
+      "label": "真空兵",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 22,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-stargate-guard",
+      "label": "星门守卫",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 23,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-rain-tower-engineer",
+      "label": "雨塔工程员",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 24,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-wind-sail-skirmisher",
+      "label": "风帆散兵",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 25,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-heat-lamp-shield",
+      "label": "热灯盾修",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 26,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-ice-hook-hunter",
+      "label": "冰钩猎手",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 27,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-floating-city-guard",
+      "label": "浮城枪卫",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 28,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-tide-anchor-engineer",
+      "label": "潮锚工程员",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 29,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-fungus-bed-medic",
+      "label": "菌床医师",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 30,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-defoliator-pilot",
+      "label": "除生机驾驶员",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 31,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-ring-rail-guard",
+      "label": "环城轨卫",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 32,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-gravity-rescuer",
+      "label": "重力救援员",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 33,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-physical-archive-keeper",
+      "label": "物理档案守护员",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 34,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-echo-tracker",
+      "label": "回声追迹者",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 35,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-reset-guard",
+      "label": "归零守卫",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 36,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-protocol-adjudicator",
+      "label": "协议裁定员",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 37,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-starbreaker-sapper",
+      "label": "断星工兵",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 38,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-unit-rain-shepherd",
+      "label": "雨牧者战斗体",
+      "category": "combat-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-combat-unit-atlas-complete",
+      "cell": 39,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-water-maintainer",
+      "label": "赫沙水务维护员",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 0,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-water-collector",
+      "label": "接水居民",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 1,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-red-sand-child",
+      "label": "赤砂镇儿童",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 2,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-cargo-crew",
+      "label": "远灯号货运船员",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 3,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-refugee",
+      "label": "难民",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 4,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-patient",
+      "label": "病患",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 5,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-dock-builder",
+      "label": "船坞造船工",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 6,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-heat-lamp-monk",
+      "label": "索勒热灯维护修士",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 7,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-floating-city-civilian",
+      "label": "涅瑞亚浮城船民",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 8,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-eco-cultivator",
+      "label": "维尔达生态培育员",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 9,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-outer-ring-worker",
+      "label": "凯隆外环维修工",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 10,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-named-echo-civilian",
+      "label": "厄客留名者生活投影",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 11,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-rain-dispatcher",
+      "label": "雨塔调度员",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 12,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-climate-observer",
+      "label": "气候观测员",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 13,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-physical-archivist",
+      "label": "物理档案员",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 14,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-seed-bank-carer",
+      "label": "胚胎库种子库照护员",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 15,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-ring-train-conductor",
+      "label": "环城列车员",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 16,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-vacuum-rescuer",
+      "label": "真空事故救援员",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 17,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-quarantine-resident",
+      "label": "隔离舰普通居民",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 18,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-maintenance-union-rep",
+      "label": "维护工会代表",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 19,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-five-world-medic",
+      "label": "五界战地医护",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 20,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-food-cultivator",
+      "label": "远灯号食物培育员",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 21,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-offline-courier",
+      "label": "离线物理信使",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 22,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-mission-evacuation-registrar",
+      "label": "撤离登记员",
+      "category": "mission-unit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-mission-unit-atlas-complete",
+      "cell": 23,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 48,
+        "order": [
+          "stand-a",
+          "step-a",
+          "stand-b",
+          "step-b"
+        ]
+      }
+    },
+    {
+      "id": "c02-faction-hesha",
+      "label": "赫沙装备基准",
+      "category": "faction-kit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-faction-kit-atlas-complete",
+      "cell": 0
+    },
+    {
+      "id": "c02-faction-soler",
+      "label": "索勒装备基准",
+      "category": "faction-kit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-faction-kit-atlas-complete",
+      "cell": 1
+    },
+    {
+      "id": "c02-faction-nereia",
+      "label": "涅瑞亚装备基准",
+      "category": "faction-kit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-faction-kit-atlas-complete",
+      "cell": 2
+    },
+    {
+      "id": "c02-faction-verdant",
+      "label": "维尔达装备基准",
+      "category": "faction-kit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-faction-kit-atlas-complete",
+      "cell": 3
+    },
+    {
+      "id": "c02-faction-kairon",
+      "label": "凯隆装备基准",
+      "category": "faction-kit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-faction-kit-atlas-complete",
+      "cell": 4
+    },
+    {
+      "id": "c02-faction-uker",
+      "label": "厄客装备基准",
+      "category": "faction-kit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-faction-kit-atlas-complete",
+      "cell": 5
+    },
+    {
+      "id": "c02-faction-ring-court",
+      "label": "环庭装备基准",
+      "category": "faction-kit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-faction-kit-atlas-complete",
+      "cell": 6
+    },
+    {
+      "id": "c02-faction-returners-farlight",
+      "label": "返星会与远灯号基准",
+      "category": "faction-kit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-faction-kit-atlas-complete",
+      "cell": 7
+    },
+    {
+      "id": "c02-faction-light-chaser-fleet",
+      "label": "逐光舰队基准",
+      "category": "faction-kit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-faction-kit-atlas-complete",
+      "cell": 8
+    },
+    {
+      "id": "c02-faction-reset-state",
+      "label": "归零状态基准",
+      "category": "faction-kit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-faction-kit-atlas-complete",
+      "cell": 9
+    },
+    {
+      "id": "c02-faction-echo-tide-corruption",
+      "label": "寂潮侵蚀状态基准",
+      "category": "faction-kit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-faction-kit-atlas-complete",
+      "cell": 10
+    },
+    {
+      "id": "c02-faction-milight-emergency",
+      "label": "弥光熄灭应急基准",
+      "category": "faction-kit",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-faction-kit-atlas-complete",
+      "cell": 11
+    },
+    {
+      "id": "c02-terrain-hesha-red-sand",
+      "label": "赫沙赤砂沙丘",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 0,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-hesha-glass-sea",
+      "label": "赫沙玻璃海",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 1,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-hesha-sealed-waterway",
+      "label": "赫沙密封水路",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 2,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-hesha-sandstorm-quicksand",
+      "label": "赫沙沙暴流沙",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 3,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-soler-blue-ice",
+      "label": "索勒蓝冰",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 4,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-soler-brittle-ice",
+      "label": "索勒脆冰",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 5,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-soler-heated-walkway",
+      "label": "索勒热灯步道",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 6,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-soler-deep-factory",
+      "label": "索勒深层工厂",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 7,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-nereia-floating-platform",
+      "label": "涅瑞亚浮台",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 8,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-nereia-shallow-tide",
+      "label": "涅瑞亚浅潮",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 9,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-nereia-deep-water",
+      "label": "涅瑞亚深水",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 10,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-nereia-reverse-current",
+      "label": "涅瑞亚逆向洋流",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 11,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-verdant-living-bridge",
+      "label": "维尔达活桥",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 12,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-verdant-fungus-bed",
+      "label": "维尔达菌床",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 13,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-verdant-spore-fog",
+      "label": "维尔达孢子雾",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 14,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-verdant-root-nest",
+      "label": "维尔达根巢",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 15,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-kairon-train-platform",
+      "label": "凯隆列车站台",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 16,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-kairon-vertical-city",
+      "label": "凯隆垂直城区",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 17,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-kairon-vacuum-breach",
+      "label": "凯隆真空破口",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 18,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-kairon-separation-ring",
+      "label": "凯隆分离环",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 19,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-uker-grave-fragments",
+      "label": "厄客墓星碎片",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 20,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-uker-physical-ruin",
+      "label": "厄客物理废墟",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 21,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-uker-memory-overlay",
+      "label": "厄客记忆覆盖",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 22,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-uker-reality-rebuild",
+      "label": "厄客现实重构",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 23,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-farlight-cargo-hold",
+      "label": "远灯号货舱",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 24,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-farlight-living-deck",
+      "label": "远灯号生活舱",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 25,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-farlight-service-pipes",
+      "label": "远灯号管道维修层",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 26,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-farlight-projection-garden",
+      "label": "远灯号投影培育舱",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 27,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-milight-corona-service",
+      "label": "弥光日冕维护面",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 28,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-milight-vein-ring",
+      "label": "弥光星脉环",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 29,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-milight-inverted-city",
+      "label": "弥光倒悬城",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 30,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-terrain-milight-rotating-blackout",
+      "label": "弥光旋转重力熄灯态",
+      "category": "terrain",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-terrain-atlas-complete",
+      "cell": 31,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-structure-rain-tower-console",
+      "label": "雨塔控台",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 0,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-star-vein-node",
+      "label": "星脉权限节点",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 1,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-tide-anchor-console",
+      "label": "潮锚控制台",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 2,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-gravity-switch",
+      "label": "重力切换台",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 3,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-water-filter-station",
+      "label": "水封过滤站",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 4,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-heat-lamp-hub",
+      "label": "热灯枢纽",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 5,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-cargo-terminal",
+      "label": "货舱终端",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 6,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-fungus-seed-bank",
+      "label": "菌床种子库",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 7,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-sky-elevator",
+      "label": "天梯港升降机",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 8,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-rail-switch",
+      "label": "列车道岔",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 9,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-movable-platform",
+      "label": "可移动浮台",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 10,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-pressure-door",
+      "label": "压力舱门",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 11,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-orbital-gun-console",
+      "label": "轨道炮控台",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 12,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-folding-turret",
+      "label": "折叠炮台",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 13,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-vacuum-bulkhead",
+      "label": "真空隔断门",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 14,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-living-isolation-grid",
+      "label": "活体隔离网",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 15,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-civil-shelter",
+      "label": "民用避难所",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 16,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-medical-isolation",
+      "label": "医疗隔离站",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 17,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-evacuation-point",
+      "label": "撤离集合点",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 18,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-emergency-life-support",
+      "label": "应急维生站",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 19,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-physical-archive-cabinet",
+      "label": "物理档案柜",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 20,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-permission-log",
+      "label": "权限日志台",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 21,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-public-cargo-board",
+      "label": "公开货舱板",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 22,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-structure-five-world-broadcast-node",
+      "label": "五界广播节点",
+      "category": "interactive-structure",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-interactive-atlas-complete",
+      "cell": 23,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 64,
+        "order": [
+          "normal",
+          "captured",
+          "damaged",
+          "repaired"
+        ]
+      }
+    },
+    {
+      "id": "c02-battle-prop-ceramic-water-tanks",
+      "label": "陶瓷水罐掩体组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 0,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-cargo-crates",
+      "label": "货箱掩体组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 1,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-platform-shields",
+      "label": "站台盾掩体组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 2,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-giant-roots",
+      "label": "巨根掩体组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 3,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-overload-nodes",
+      "label": "过载节点危险组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 4,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-fuel-oxygen-tanks",
+      "label": "燃料氧气罐危险组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 5,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-ice-cracks",
+      "label": "冰裂危险组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 6,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-spore-sacs",
+      "label": "孢子囊危险组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 7,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-water-barrels",
+      "label": "水桶后勤组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 8,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-spare-part-racks",
+      "label": "备件架后勤组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 9,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-stretcher-medkits",
+      "label": "担架药箱后勤组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 10,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-seed-coolers",
+      "label": "种子冷柜后勤组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 11,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-repair-arms",
+      "label": "维修臂工程组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 12,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-cable-reels",
+      "label": "线缆卷工程组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 13,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-anchor-winches",
+      "label": "潮锚绞盘工程组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 14,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-hull-patches",
+      "label": "舱壁补片工程组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 15,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-cups-cookware",
+      "label": "金属杯炊具生活组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 16,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-bunks",
+      "label": "床铺生活组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 17,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-folding-tables",
+      "label": "折叠桌生活组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 18,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-drying-racks",
+      "label": "晾衣架生活组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 19,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-risk-list-evidence",
+      "label": "风险清单证据组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 20,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-tickets-manifests",
+      "label": "票与货单证据组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 21,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-physical-film",
+      "label": "实体胶片证据组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 22,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-permission-badges",
+      "label": "权限牌证据组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 23,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-hesha-water-signs",
+      "label": "赫沙水务标识组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 24,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-soler-heat-emblems",
+      "label": "索勒热灯标识组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 25,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-five-world-flags",
+      "label": "五界材料旗组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 26,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-permission-lights",
+      "label": "权限状态灯组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 27,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-discarded-arms",
+      "label": "弃械战后组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 28,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-broken-rails",
+      "label": "断轨战后组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 29,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-dead-fungus-beds",
+      "label": "枯死菌床战后组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 30,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-battle-prop-community-repairs",
+      "label": "社区修复痕迹组",
+      "category": "battle-prop",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-battle-prop-atlas-complete",
+      "cell": 31,
+      "frames": {
+        "count": 4,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "c02-equipment-star-shield",
+      "label": "星盾兵主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 0,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-power-swordsman",
+      "label": "动力剑士主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 1,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-symbiotic-guard",
+      "label": "共生卫士主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 2,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-sand-rider",
+      "label": "沙地游骑主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 3,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-hover-lancer",
+      "label": "悬浮枪骑主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 4,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-tide-fin-scout",
+      "label": "潮鳍斥候主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 5,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-rail-rifleman",
+      "label": "轨道步枪手主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 6,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-long-beam-sniper",
+      "label": "长束狙击手主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 7,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-spore-shooter",
+      "label": "孢子射手主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 8,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-star-vein-mage",
+      "label": "星脉术士主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 9,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-tide-priest",
+      "label": "潮汐祭司主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 10,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-memory-monk",
+      "label": "记忆修士主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 11,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-field-medic",
+      "label": "战地医师主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 12,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-repair-engineer",
+      "label": "维修师主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 13,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-protocol-analyst",
+      "label": "协议分析员主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 14,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-guard-robot",
+      "label": "守卫机器人主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 15,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-turret-vehicle",
+      "label": "炮台工程车主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 16,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-light-mech",
+      "label": "轻型机甲主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 17,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-antler-knight",
+      "label": "角枝骑士主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 18,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-forest-beast-handler",
+      "label": "林兽驭手主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 19,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-eco-maintainer",
+      "label": "生态维护体主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 20,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-boarding-team",
+      "label": "接舷队主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 21,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-vacuum-trooper",
+      "label": "真空兵主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 22,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-stargate-guard",
+      "label": "星门守卫主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 23,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-rain-tower-engineer",
+      "label": "雨塔工程员主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 24,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-wind-sail-skirmisher",
+      "label": "风帆散兵主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 25,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-heat-lamp-shield",
+      "label": "热灯盾修主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 26,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-ice-hook-hunter",
+      "label": "冰钩猎手主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 27,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-floating-city-guard",
+      "label": "浮城枪卫主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 28,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-tide-anchor-engineer",
+      "label": "潮锚工程员主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 29,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-fungus-bed-medic",
+      "label": "菌床医师主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 30,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-defoliator-pilot",
+      "label": "除生机驾驶员主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 31,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-ring-rail-guard",
+      "label": "环城轨卫主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 32,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-gravity-rescuer",
+      "label": "重力救援员主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 33,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-physical-archive-keeper",
+      "label": "物理档案守护员主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 34,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-echo-tracker",
+      "label": "回声追迹者主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 35,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-reset-guard",
+      "label": "归零守卫主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 36,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-protocol-adjudicator",
+      "label": "协议裁定员主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 37,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-starbreaker-sapper",
+      "label": "断星工兵主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 38,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-rain-shepherd",
+      "label": "雨牧者战斗体主装备",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 39,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-sealed-medical-kit",
+      "label": "密封担架医疗包",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 40,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-multi-standard-repair-pack",
+      "label": "多规格维修背架",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 41,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-offline-scout-instrument",
+      "label": "离线侦察仪",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 42,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-public-supply-crate",
+      "label": "公共补给箱",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 43,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-anti-large-charge",
+      "label": "反大型定向爆破包",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 44,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-memory-spore-isolator",
+      "label": "记忆孢子隔离装",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 45,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-magboot-tractor-set",
+      "label": "磁靴牵引组",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 46,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-equipment-mission-evidence-box",
+      "label": "任务权限证据箱",
+      "category": "equipment",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-equipment-atlas-complete",
+      "cell": 47,
+      "frames": {
+        "count": 4,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "c02-skill-guard",
+      "label": "援护",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 0
+    },
+    {
+      "id": "c02-skill-assault",
+      "label": "动力突击",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 1
+    },
+    {
+      "id": "c02-skill-rescue-dash",
+      "label": "救援冲刺",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 2
+    },
+    {
+      "id": "c02-skill-suppress",
+      "label": "轨道压制",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 3
+    },
+    {
+      "id": "c02-skill-snipe",
+      "label": "长束狙击",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 4
+    },
+    {
+      "id": "c02-skill-spore-shot",
+      "label": "孢子射击",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 5
+    },
+    {
+      "id": "c02-skill-vein-downgrade",
+      "label": "星脉降权",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 6
+    },
+    {
+      "id": "c02-skill-field-heal",
+      "label": "战地治疗",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 7
+    },
+    {
+      "id": "c02-skill-quick-repair",
+      "label": "快速维修",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 8
+    },
+    {
+      "id": "c02-skill-scan",
+      "label": "协议扫描",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 9
+    },
+    {
+      "id": "c02-skill-boarding",
+      "label": "接舷突入",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 10
+    },
+    {
+      "id": "c02-skill-vacuum-traction",
+      "label": "真空牵引",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 11
+    },
+    {
+      "id": "c02-skill-sand-sail",
+      "label": "沙帆机动",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 12
+    },
+    {
+      "id": "c02-skill-redirect-wind",
+      "label": "改风向",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 13
+    },
+    {
+      "id": "c02-skill-heat-zone",
+      "label": "热灯区",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 14
+    },
+    {
+      "id": "c02-skill-ice-hook",
+      "label": "冰钩拉拽",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 15
+    },
+    {
+      "id": "c02-skill-shift-tide",
+      "label": "潮线移动",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 16
+    },
+    {
+      "id": "c02-skill-deploy-tide-anchor",
+      "label": "部署潮锚",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 17
+    },
+    {
+      "id": "c02-skill-symbiotic-regen",
+      "label": "共生再生",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 18
+    },
+    {
+      "id": "c02-skill-fungus-purify",
+      "label": "菌床净化",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 19
+    },
+    {
+      "id": "c02-skill-rail-permission",
+      "label": "列车权限",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 20
+    },
+    {
+      "id": "c02-skill-gravity-rescue",
+      "label": "重力救援",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 21
+    },
+    {
+      "id": "c02-skill-memory-reveal",
+      "label": "记忆显影",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 22
+    },
+    {
+      "id": "c02-skill-echo-isolation",
+      "label": "回声隔离",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 23
+    },
+    {
+      "id": "c02-skill-repair-node",
+      "label": "修复节点",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 24
+    },
+    {
+      "id": "c02-skill-reroute-water",
+      "label": "改接水路",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 25
+    },
+    {
+      "id": "c02-skill-deploy-turret",
+      "label": "部署炮台",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 26
+    },
+    {
+      "id": "c02-skill-toggle-bulkhead",
+      "label": "开闭舱门",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 27
+    },
+    {
+      "id": "c02-skill-switch-rail",
+      "label": "切换道岔",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 28
+    },
+    {
+      "id": "c02-skill-brace-platform",
+      "label": "加固浮台",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 29
+    },
+    {
+      "id": "c02-skill-prune-bridge",
+      "label": "修剪活桥",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 30
+    },
+    {
+      "id": "c02-skill-rotate-gravity",
+      "label": "旋转重力",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 31
+    },
+    {
+      "id": "c02-skill-resupply-ammo",
+      "label": "补给弹药",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 32
+    },
+    {
+      "id": "c02-skill-emergency-water",
+      "label": "应急供水",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 33
+    },
+    {
+      "id": "c02-skill-emergency-heat",
+      "label": "应急供热",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 34
+    },
+    {
+      "id": "c02-skill-confirm-permission",
+      "label": "权限确认",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 35
+    },
+    {
+      "id": "c02-skill-physical-backup",
+      "label": "物理备份",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 36
+    },
+    {
+      "id": "c02-skill-mark-evacuation",
+      "label": "撤离标记",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 37
+    },
+    {
+      "id": "c02-skill-medical-transfer",
+      "label": "医疗转运",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 38
+    },
+    {
+      "id": "c02-skill-publish-cargo",
+      "label": "公开货舱",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 39
+    },
+    {
+      "id": "c02-skill-shield-chain",
+      "label": "星盾联防",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 40
+    },
+    {
+      "id": "c02-skill-rider-rescue-chain",
+      "label": "游骑连救",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 41
+    },
+    {
+      "id": "c02-skill-rail-calibration",
+      "label": "轨道校准",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 42
+    },
+    {
+      "id": "c02-skill-maintainer-rebuild",
+      "label": "维护体重构",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 43
+    },
+    {
+      "id": "c02-skill-zero-permission-breach",
+      "label": "零权限突入",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 44
+    },
+    {
+      "id": "c02-skill-five-world-combo",
+      "label": "五界协同",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 45
+    },
+    {
+      "id": "c02-skill-memory-reality-overlap",
+      "label": "记忆现实重叠",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 46
+    },
+    {
+      "id": "c02-skill-climate-correction",
+      "label": "气候校正",
+      "category": "skill",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-skill-atlas-complete",
+      "cell": 47
+    },
+    {
+      "id": "c02-status-controlled",
+      "label": "受控",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 0
+    },
+    {
+      "id": "c02-status-hidden",
+      "label": "隐蔽",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 1
+    },
+    {
+      "id": "c02-status-shielded",
+      "label": "护盾",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 2
+    },
+    {
+      "id": "c02-status-overheated",
+      "label": "过热",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 3
+    },
+    {
+      "id": "c02-status-hypothermia",
+      "label": "失温",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 4
+    },
+    {
+      "id": "c02-status-spore-contamination",
+      "label": "孢子污染",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 5
+    },
+    {
+      "id": "c02-status-low-oxygen",
+      "label": "低氧",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 6
+    },
+    {
+      "id": "c02-status-memory-corrosion",
+      "label": "记忆侵蚀",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 7
+    },
+    {
+      "id": "c02-status-water",
+      "label": "水资源",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 8
+    },
+    {
+      "id": "c02-status-heat",
+      "label": "热量资源",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 9
+    },
+    {
+      "id": "c02-status-ammo",
+      "label": "弹药资源",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 10
+    },
+    {
+      "id": "c02-status-star-vein-energy",
+      "label": "星脉能",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 11
+    },
+    {
+      "id": "c02-status-permission",
+      "label": "权限资源",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 12
+    },
+    {
+      "id": "c02-status-spare-parts",
+      "label": "备件资源",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 13
+    },
+    {
+      "id": "c02-status-cargo-capacity",
+      "label": "舱容资源",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 14
+    },
+    {
+      "id": "c02-status-local-support",
+      "label": "地方支持",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 15
+    },
+    {
+      "id": "c02-status-capture",
+      "label": "占领目标",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 16
+    },
+    {
+      "id": "c02-status-escort",
+      "label": "护送目标",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 17
+    },
+    {
+      "id": "c02-status-evacuate",
+      "label": "撤离目标",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 18
+    },
+    {
+      "id": "c02-status-rescue",
+      "label": "救援目标",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 19
+    },
+    {
+      "id": "c02-status-repair",
+      "label": "维修目标",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 20
+    },
+    {
+      "id": "c02-status-destroy",
+      "label": "破坏目标",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 21
+    },
+    {
+      "id": "c02-status-hold-timer",
+      "label": "守时目标",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 22
+    },
+    {
+      "id": "c02-status-deliver-evidence",
+      "label": "证据送达目标",
+      "category": "status",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-status-atlas-complete",
+      "cell": 23
+    },
+    {
+      "id": "c02-fx-blade-hit",
+      "label": "刃击 FX",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 0
+    },
+    {
+      "id": "c02-fx-blunt-hit",
+      "label": "钝击 FX",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 1
+    },
+    {
+      "id": "c02-fx-rail-penetration",
+      "label": "轨道穿透 FX",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 2
+    },
+    {
+      "id": "c02-fx-energy-pulse",
+      "label": "能量脉冲 FX",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 3
+    },
+    {
+      "id": "c02-fx-explosion",
+      "label": "爆破 FX",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 4
+    },
+    {
+      "id": "c02-fx-bio-hit",
+      "label": "生化命中 FX",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 5
+    },
+    {
+      "id": "c02-fx-crush",
+      "label": "碾压 FX",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 6
+    },
+    {
+      "id": "c02-fx-vacuum-rupture",
+      "label": "真空破裂 FX",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 7
+    },
+    {
+      "id": "c02-fx-sandstorm",
+      "label": "沙暴区域层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 8
+    },
+    {
+      "id": "c02-fx-rain-black-rain",
+      "label": "雨与黑雨层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 9
+    },
+    {
+      "id": "c02-fx-ice-cold",
+      "label": "冰寒区域层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 10
+    },
+    {
+      "id": "c02-fx-heat-zone",
+      "label": "热区层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 11
+    },
+    {
+      "id": "c02-fx-tide-water",
+      "label": "潮水区域层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 12
+    },
+    {
+      "id": "c02-fx-spore-fog",
+      "label": "孢子雾层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 13
+    },
+    {
+      "id": "c02-fx-vacuum-zone",
+      "label": "真空区域层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 14
+    },
+    {
+      "id": "c02-fx-memory-overlay",
+      "label": "记忆覆盖层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 15
+    },
+    {
+      "id": "c02-fx-healing",
+      "label": "治疗状态层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 16
+    },
+    {
+      "id": "c02-fx-shield",
+      "label": "护盾状态层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 17
+    },
+    {
+      "id": "c02-fx-control",
+      "label": "受控状态层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 18
+    },
+    {
+      "id": "c02-fx-stealth",
+      "label": "隐蔽状态层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 19
+    },
+    {
+      "id": "c02-fx-structure-damage",
+      "label": "结构受损层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 20
+    },
+    {
+      "id": "c02-fx-repair-sparks",
+      "label": "修复火花层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 21
+    },
+    {
+      "id": "c02-fx-offline",
+      "label": "失联状态层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 22
+    },
+    {
+      "id": "c02-fx-capture-light",
+      "label": "占领权限灯层",
+      "category": "fx",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-fx-atlas-complete",
+      "cell": 23
+    },
+    {
+      "id": "c02-hud-ally",
+      "label": "友军标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 0
+    },
+    {
+      "id": "c02-hud-enemy",
+      "label": "敌军标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 1
+    },
+    {
+      "id": "c02-hud-neutral",
+      "label": "中立标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 2
+    },
+    {
+      "id": "c02-hud-recruitable",
+      "label": "可招降标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 3
+    },
+    {
+      "id": "c02-hud-main-objective",
+      "label": "主目标标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 4
+    },
+    {
+      "id": "c02-hud-side-objective",
+      "label": "次要目标标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 5
+    },
+    {
+      "id": "c02-hud-escort",
+      "label": "护送目标标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 6
+    },
+    {
+      "id": "c02-hud-danger",
+      "label": "危险区域标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 7
+    },
+    {
+      "id": "c02-hud-supply",
+      "label": "补给点标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 8
+    },
+    {
+      "id": "c02-hud-healing",
+      "label": "治疗点标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 9
+    },
+    {
+      "id": "c02-hud-engineering",
+      "label": "工程交互标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 10
+    },
+    {
+      "id": "c02-hud-breakable",
+      "label": "可破坏结构标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 11
+    },
+    {
+      "id": "c02-hud-repairable",
+      "label": "可修复结构标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 12
+    },
+    {
+      "id": "c02-hud-reinforcement",
+      "label": "增援入口标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 13
+    },
+    {
+      "id": "c02-hud-evacuation",
+      "label": "撤离出口标记",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 14
+    },
+    {
+      "id": "c02-hud-permission-dispute",
+      "label": "多阵营权限争议点",
+      "category": "hud",
+      "status": "formal",
+      "source": "expanded",
+      "assetId": "c02-hud-atlas-complete",
+      "cell": 15
+    }
+  ],
+  "deliveries": [
+    {
+      "id": "c02-char-mira-01-delivery",
+      "type": "portrait",
+      "png": "characters/mira-portrait-hd.png",
+      "svg": "characters/mira-portrait-hd.svg",
+      "width": 96,
+      "height": 112,
+      "topicIds": [
+        "c02-char-mira-01"
+      ]
+    },
+    {
+      "id": "c02-char-roan-01-delivery",
+      "type": "portrait",
+      "png": "characters/roan-portrait-hd.png",
+      "svg": "characters/roan-portrait-hd.svg",
+      "width": 96,
+      "height": 112,
+      "topicIds": [
+        "c02-char-roan-01"
+      ]
+    },
+    {
+      "id": "c02-char-naim-01-delivery",
+      "type": "portrait",
+      "png": "characters/naim-portrait-hd.png",
+      "svg": "characters/naim-portrait-hd.svg",
+      "width": 96,
+      "height": 112,
+      "topicIds": [
+        "c02-char-naim-01"
+      ]
+    },
+    {
+      "id": "c02-char-talos-7-delivery",
+      "type": "portrait",
+      "png": "characters/talos-7-portrait-hd.png",
+      "svg": "characters/talos-7-portrait-hd.svg",
+      "width": 96,
+      "height": 112,
+      "topicIds": [
+        "c02-char-talos-7"
+      ]
+    },
+    {
+      "id": "c02-char-helo-delivery",
+      "type": "portrait",
+      "png": "characters/helo-portrait-hd.png",
+      "svg": "characters/helo-portrait-hd.svg",
+      "width": 96,
+      "height": 112,
+      "topicIds": [
+        "c02-char-helo"
+      ]
+    },
+    {
+      "id": "c02-char-iya-delivery",
+      "type": "portrait",
+      "png": "characters/iya-portrait-hd.png",
+      "svg": "characters/iya-portrait-hd.svg",
+      "width": 96,
+      "height": 112,
+      "topicIds": [
+        "c02-char-iya"
+      ]
+    },
+    {
+      "id": "c02-arch-rain-tower-delivery",
+      "type": "architecture",
+      "png": "architecture/zero-rain-tower-hd.png",
+      "svg": "architecture/zero-rain-tower-hd.svg",
+      "width": 128,
+      "height": 128,
+      "topicIds": [
+        "c02-arch-rain-tower"
+      ]
+    },
+    {
+      "id": "c02-arch-farlight-01-delivery",
+      "type": "architecture",
+      "png": "architecture/farlight-cargo-ship-hd.png",
+      "svg": "architecture/farlight-cargo-ship-hd.svg",
+      "width": 128,
+      "height": 128,
+      "topicIds": [
+        "c02-arch-farlight-01"
+      ]
+    },
+    {
+      "id": "c02-arch-soler-archive-delivery",
+      "type": "architecture",
+      "png": "architecture/soler-archive-monastery-hd.png",
+      "svg": "architecture/soler-archive-monastery-hd.svg",
+      "width": 128,
+      "height": 128,
+      "topicIds": [
+        "c02-arch-soler-archive"
+      ]
+    },
+    {
+      "id": "c02-arch-ring-city-delivery",
+      "type": "architecture",
+      "png": "architecture/kairon-ring-node-hd.png",
+      "svg": "architecture/kairon-ring-node-hd.svg",
+      "width": 128,
+      "height": 128,
+      "topicIds": [
+        "c02-arch-ring-city"
+      ]
+    },
+    {
+      "id": "c02-scene-season-without-rain-delivery",
+      "type": "scene",
+      "png": "scenes/season-without-rain-hd.png",
+      "svg": "scenes/season-without-rain-hd.svg",
+      "width": 256,
+      "height": 144,
+      "topicIds": [
+        "c02-scene-season-without-rain"
+      ]
+    },
+    {
+      "id": "c02-scene-seven-minute-rain-delivery",
+      "type": "scene",
+      "png": "scenes/seven-minute-rain-hd.png",
+      "svg": "scenes/seven-minute-rain-hd.svg",
+      "width": 256,
+      "height": 144,
+      "topicIds": [
+        "c02-scene-seven-minute-rain"
+      ]
+    },
+    {
+      "id": "c02-scene-farlight-departure-delivery",
+      "type": "scene",
+      "png": "scenes/farlight-departure-hd.png",
+      "svg": "scenes/farlight-departure-hd.svg",
+      "width": 256,
+      "height": 144,
+      "topicIds": [
+        "c02-scene-farlight-departure"
+      ]
+    },
+    {
+      "id": "c02-scene-folding-table-covenant-delivery",
+      "type": "scene",
+      "png": "scenes/folding-table-covenant-hd.png",
+      "svg": "scenes/folding-table-covenant-hd.svg",
+      "width": 256,
+      "height": 144,
+      "topicIds": [
+        "c02-scene-folding-table-covenant"
+      ]
+    },
+    {
+      "id": "c02-existing-story-props",
+      "type": "prop-atlas",
+      "png": "props/story-props-sheet-hd.png",
+      "svg": "props/story-props-sheet-hd.svg",
+      "width": 192,
+      "height": 48,
+      "topicIds": [
+        "c02-prop-rain-filter-core",
+        "c02-prop-maintenance-key",
+        "c02-prop-firefly-drone",
+        "c02-prop-memory-echo-container"
+      ],
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "columns": 4
+    },
+    {
+      "id": "c02-existing-campaign-props",
+      "type": "prop-atlas",
+      "png": "props/campaign-props-sheet-02-hd.png",
+      "svg": "props/campaign-props-sheet-02-hd.svg",
+      "width": 192,
+      "height": 48,
+      "topicIds": [
+        "c02-prop-hesha-cup",
+        "c02-prop-roan-risk-list",
+        "c02-prop-two-tickets",
+        "c02-prop-iya-door"
+      ],
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "columns": 4
+    },
+    {
+      "id": "c02-style-atlas-complete",
+      "type": "style-atlas",
+      "png": "expansion/atlases/c02-style-atlas-complete.png",
+      "svg": "expansion/atlases/c02-style-atlas-complete.svg",
+      "width": 1024,
+      "height": 432,
+      "cellWidth": 256,
+      "cellHeight": 144,
+      "columns": 4,
+      "topicIds": [
+        "c02-style-keyart",
+        "c02-style-hesha",
+        "c02-style-echo-tide",
+        "c02-style-dark-stars",
+        "c02-style-soler",
+        "c02-style-nereia",
+        "c02-style-verdant",
+        "c02-style-kairon",
+        "c02-style-farlight-life",
+        "c02-style-ring-maintenance",
+        "c02-style-five-world-materials",
+        "c02-style-post-milight"
+      ]
+    },
+    {
+      "id": "c02-character-atlas-expanded",
+      "type": "portrait-atlas",
+      "png": "expansion/atlases/c02-character-atlas-expanded.png",
+      "svg": "expansion/atlases/c02-character-atlas-expanded.svg",
+      "width": 384,
+      "height": 336,
+      "cellWidth": 96,
+      "cellHeight": 112,
+      "columns": 4,
+      "topicIds": [
+        "c02-char-mira-02",
+        "c02-char-mira-03",
+        "c02-char-roan-02",
+        "c02-char-firefly",
+        "c02-char-naim-02",
+        "c02-char-olo",
+        "c02-char-kota",
+        "c02-char-ishan",
+        "c02-char-sadi",
+        "c02-char-lanko",
+        "c02-char-misa-family"
+      ]
+    },
+    {
+      "id": "c02-creature-atlas-expanded",
+      "type": "creature-atlas",
+      "png": "expansion/atlases/c02-creature-atlas-expanded.png",
+      "svg": "expansion/atlases/c02-creature-atlas-expanded.svg",
+      "width": 256,
+      "height": 144,
+      "cellWidth": 256,
+      "cellHeight": 144,
+      "columns": 1,
+      "topicIds": [
+        "c02-creature-rain-shepherd"
+      ]
+    },
+    {
+      "id": "c02-scene-atlas-expanded",
+      "type": "scene-atlas",
+      "png": "expansion/atlases/c02-scene-atlas-expanded.png",
+      "svg": "expansion/atlases/c02-scene-atlas-expanded.svg",
+      "width": 1024,
+      "height": 576,
+      "cellWidth": 256,
+      "cellHeight": 144,
+      "columns": 4,
+      "topicIds": [
+        "c02-scene-growing-wall",
+        "c02-scene-five-world-broadcast",
+        "c02-scene-iya-gets-door",
+        "c02-scene-inverted-city-maintenance",
+        "c02-scene-last-natural-rain",
+        "c02-scene-soler-ice-beacon",
+        "c02-scene-two-percent-dock",
+        "c02-scene-falling-ring-team",
+        "c02-scene-uker-festival",
+        "c02-scene-return-hesha",
+        "c02-scene-sandstorm-water-repair",
+        "c02-scene-soler-heat-shift",
+        "c02-scene-nereia-platform-vote",
+        "c02-scene-verdant-bridge-pruning",
+        "c02-scene-kairon-train-evacuation",
+        "c02-scene-quarantine-ship-rotation"
+      ]
+    },
+    {
+      "id": "c02-architecture-atlas-expanded",
+      "type": "architecture-atlas",
+      "png": "expansion/atlases/c02-architecture-atlas-expanded.png",
+      "svg": "expansion/atlases/c02-architecture-atlas-expanded.svg",
+      "width": 512,
+      "height": 384,
+      "cellWidth": 128,
+      "cellHeight": 128,
+      "columns": 4,
+      "topicIds": [
+        "c02-arch-farlight-02",
+        "c02-arch-farlight-03",
+        "c02-arch-inverted-city",
+        "c02-arch-nereia-float",
+        "c02-arch-verdant-living-city",
+        "c02-arch-uker-city",
+        "c02-arch-hesha-water-guild",
+        "c02-arch-soler-heat-chain",
+        "c02-arch-nereia-tide-anchor",
+        "c02-arch-verdant-fungus-clinic",
+        "c02-arch-kairon-outer-repair"
+      ]
+    },
+    {
+      "id": "c02-prop-atlas-expanded",
+      "type": "prop-atlas",
+      "png": "expansion/atlases/c02-prop-atlas-expanded.png",
+      "svg": "expansion/atlases/c02-prop-atlas-expanded.svg",
+      "width": 192,
+      "height": 96,
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "columns": 4,
+      "topicIds": [
+        "c02-prop-covenant-table",
+        "c02-prop-mira-license",
+        "c02-prop-talos-wills",
+        "c02-prop-public-cargo-rotation",
+        "c02-prop-living-isolation",
+        "c02-prop-physical-route-box",
+        "c02-prop-five-world-roster"
+      ]
+    },
+    {
+      "id": "c02-combat-unit-atlas-complete",
+      "type": "unit-atlas",
+      "png": "expansion/atlases/c02-combat-unit-atlas-complete.png",
+      "svg": "expansion/atlases/c02-combat-unit-atlas-complete.svg",
+      "width": 1024,
+      "height": 240,
+      "cellWidth": 128,
+      "cellHeight": 48,
+      "columns": 8,
+      "topicIds": [
+        "c02-unit-star-shield",
+        "c02-unit-power-swordsman",
+        "c02-unit-symbiotic-guard",
+        "c02-unit-sand-rider",
+        "c02-unit-hover-lancer",
+        "c02-unit-tide-fin-scout",
+        "c02-unit-rail-rifleman",
+        "c02-unit-long-beam-sniper",
+        "c02-unit-spore-shooter",
+        "c02-unit-star-vein-mage",
+        "c02-unit-tide-priest",
+        "c02-unit-memory-monk",
+        "c02-unit-field-medic",
+        "c02-unit-repair-engineer",
+        "c02-unit-protocol-analyst",
+        "c02-unit-guard-robot",
+        "c02-unit-turret-vehicle",
+        "c02-unit-light-mech",
+        "c02-unit-antler-knight",
+        "c02-unit-forest-beast-handler",
+        "c02-unit-eco-maintainer",
+        "c02-unit-boarding-team",
+        "c02-unit-vacuum-trooper",
+        "c02-unit-stargate-guard",
+        "c02-unit-rain-tower-engineer",
+        "c02-unit-wind-sail-skirmisher",
+        "c02-unit-heat-lamp-shield",
+        "c02-unit-ice-hook-hunter",
+        "c02-unit-floating-city-guard",
+        "c02-unit-tide-anchor-engineer",
+        "c02-unit-fungus-bed-medic",
+        "c02-unit-defoliator-pilot",
+        "c02-unit-ring-rail-guard",
+        "c02-unit-gravity-rescuer",
+        "c02-unit-physical-archive-keeper",
+        "c02-unit-echo-tracker",
+        "c02-unit-reset-guard",
+        "c02-unit-protocol-adjudicator",
+        "c02-unit-starbreaker-sapper",
+        "c02-unit-rain-shepherd"
+      ]
+    },
+    {
+      "id": "c02-mission-unit-atlas-complete",
+      "type": "mission-unit-atlas",
+      "png": "expansion/atlases/c02-mission-unit-atlas-complete.png",
+      "svg": "expansion/atlases/c02-mission-unit-atlas-complete.svg",
+      "width": 768,
+      "height": 192,
+      "cellWidth": 128,
+      "cellHeight": 48,
+      "columns": 6,
+      "topicIds": [
+        "c02-mission-water-maintainer",
+        "c02-mission-water-collector",
+        "c02-mission-red-sand-child",
+        "c02-mission-cargo-crew",
+        "c02-mission-refugee",
+        "c02-mission-patient",
+        "c02-mission-dock-builder",
+        "c02-mission-heat-lamp-monk",
+        "c02-mission-floating-city-civilian",
+        "c02-mission-eco-cultivator",
+        "c02-mission-outer-ring-worker",
+        "c02-mission-named-echo-civilian",
+        "c02-mission-rain-dispatcher",
+        "c02-mission-climate-observer",
+        "c02-mission-physical-archivist",
+        "c02-mission-seed-bank-carer",
+        "c02-mission-ring-train-conductor",
+        "c02-mission-vacuum-rescuer",
+        "c02-mission-quarantine-resident",
+        "c02-mission-maintenance-union-rep",
+        "c02-mission-five-world-medic",
+        "c02-mission-food-cultivator",
+        "c02-mission-offline-courier",
+        "c02-mission-evacuation-registrar"
+      ]
+    },
+    {
+      "id": "c02-faction-kit-atlas-complete",
+      "type": "faction-kit-atlas",
+      "png": "expansion/atlases/c02-faction-kit-atlas-complete.png",
+      "svg": "expansion/atlases/c02-faction-kit-atlas-complete.svg",
+      "width": 768,
+      "height": 384,
+      "cellWidth": 192,
+      "cellHeight": 128,
+      "columns": 4,
+      "topicIds": [
+        "c02-faction-hesha",
+        "c02-faction-soler",
+        "c02-faction-nereia",
+        "c02-faction-verdant",
+        "c02-faction-kairon",
+        "c02-faction-uker",
+        "c02-faction-ring-court",
+        "c02-faction-returners-farlight",
+        "c02-faction-light-chaser-fleet",
+        "c02-faction-reset-state",
+        "c02-faction-echo-tide-corruption",
+        "c02-faction-milight-emergency"
+      ]
+    },
+    {
+      "id": "c02-terrain-atlas-complete",
+      "type": "terrain-atlas",
+      "png": "expansion/atlases/c02-terrain-atlas-complete.png",
+      "svg": "expansion/atlases/c02-terrain-atlas-complete.svg",
+      "width": 512,
+      "height": 256,
+      "cellWidth": 128,
+      "cellHeight": 32,
+      "columns": 4,
+      "topicIds": [
+        "c02-terrain-hesha-red-sand",
+        "c02-terrain-hesha-glass-sea",
+        "c02-terrain-hesha-sealed-waterway",
+        "c02-terrain-hesha-sandstorm-quicksand",
+        "c02-terrain-soler-blue-ice",
+        "c02-terrain-soler-brittle-ice",
+        "c02-terrain-soler-heated-walkway",
+        "c02-terrain-soler-deep-factory",
+        "c02-terrain-nereia-floating-platform",
+        "c02-terrain-nereia-shallow-tide",
+        "c02-terrain-nereia-deep-water",
+        "c02-terrain-nereia-reverse-current",
+        "c02-terrain-verdant-living-bridge",
+        "c02-terrain-verdant-fungus-bed",
+        "c02-terrain-verdant-spore-fog",
+        "c02-terrain-verdant-root-nest",
+        "c02-terrain-kairon-train-platform",
+        "c02-terrain-kairon-vertical-city",
+        "c02-terrain-kairon-vacuum-breach",
+        "c02-terrain-kairon-separation-ring",
+        "c02-terrain-uker-grave-fragments",
+        "c02-terrain-uker-physical-ruin",
+        "c02-terrain-uker-memory-overlay",
+        "c02-terrain-uker-reality-rebuild",
+        "c02-terrain-farlight-cargo-hold",
+        "c02-terrain-farlight-living-deck",
+        "c02-terrain-farlight-service-pipes",
+        "c02-terrain-farlight-projection-garden",
+        "c02-terrain-milight-corona-service",
+        "c02-terrain-milight-vein-ring",
+        "c02-terrain-milight-inverted-city",
+        "c02-terrain-milight-rotating-blackout"
+      ]
+    },
+    {
+      "id": "c02-interactive-atlas-complete",
+      "type": "interactive-structure-atlas",
+      "png": "expansion/atlases/c02-interactive-atlas-complete.png",
+      "svg": "expansion/atlases/c02-interactive-atlas-complete.svg",
+      "width": 768,
+      "height": 384,
+      "cellWidth": 192,
+      "cellHeight": 64,
+      "columns": 4,
+      "topicIds": [
+        "c02-structure-rain-tower-console",
+        "c02-structure-star-vein-node",
+        "c02-structure-tide-anchor-console",
+        "c02-structure-gravity-switch",
+        "c02-structure-water-filter-station",
+        "c02-structure-heat-lamp-hub",
+        "c02-structure-cargo-terminal",
+        "c02-structure-fungus-seed-bank",
+        "c02-structure-sky-elevator",
+        "c02-structure-rail-switch",
+        "c02-structure-movable-platform",
+        "c02-structure-pressure-door",
+        "c02-structure-orbital-gun-console",
+        "c02-structure-folding-turret",
+        "c02-structure-vacuum-bulkhead",
+        "c02-structure-living-isolation-grid",
+        "c02-structure-civil-shelter",
+        "c02-structure-medical-isolation",
+        "c02-structure-evacuation-point",
+        "c02-structure-emergency-life-support",
+        "c02-structure-physical-archive-cabinet",
+        "c02-structure-permission-log",
+        "c02-structure-public-cargo-board",
+        "c02-structure-five-world-broadcast-node"
+      ]
+    },
+    {
+      "id": "c02-battle-prop-atlas-complete",
+      "type": "battle-prop-atlas",
+      "png": "expansion/atlases/c02-battle-prop-atlas-complete.png",
+      "svg": "expansion/atlases/c02-battle-prop-atlas-complete.svg",
+      "width": 512,
+      "height": 256,
+      "cellWidth": 128,
+      "cellHeight": 32,
+      "columns": 4,
+      "topicIds": [
+        "c02-battle-prop-ceramic-water-tanks",
+        "c02-battle-prop-cargo-crates",
+        "c02-battle-prop-platform-shields",
+        "c02-battle-prop-giant-roots",
+        "c02-battle-prop-overload-nodes",
+        "c02-battle-prop-fuel-oxygen-tanks",
+        "c02-battle-prop-ice-cracks",
+        "c02-battle-prop-spore-sacs",
+        "c02-battle-prop-water-barrels",
+        "c02-battle-prop-spare-part-racks",
+        "c02-battle-prop-stretcher-medkits",
+        "c02-battle-prop-seed-coolers",
+        "c02-battle-prop-repair-arms",
+        "c02-battle-prop-cable-reels",
+        "c02-battle-prop-anchor-winches",
+        "c02-battle-prop-hull-patches",
+        "c02-battle-prop-cups-cookware",
+        "c02-battle-prop-bunks",
+        "c02-battle-prop-folding-tables",
+        "c02-battle-prop-drying-racks",
+        "c02-battle-prop-risk-list-evidence",
+        "c02-battle-prop-tickets-manifests",
+        "c02-battle-prop-physical-film",
+        "c02-battle-prop-permission-badges",
+        "c02-battle-prop-hesha-water-signs",
+        "c02-battle-prop-soler-heat-emblems",
+        "c02-battle-prop-five-world-flags",
+        "c02-battle-prop-permission-lights",
+        "c02-battle-prop-discarded-arms",
+        "c02-battle-prop-broken-rails",
+        "c02-battle-prop-dead-fungus-beds",
+        "c02-battle-prop-community-repairs"
+      ]
+    },
+    {
+      "id": "c02-equipment-atlas-complete",
+      "type": "equipment-atlas",
+      "png": "expansion/atlases/c02-equipment-atlas-complete.png",
+      "svg": "expansion/atlases/c02-equipment-atlas-complete.svg",
+      "width": 768,
+      "height": 576,
+      "cellWidth": 192,
+      "cellHeight": 48,
+      "columns": 4,
+      "topicIds": [
+        "c02-equipment-star-shield",
+        "c02-equipment-power-swordsman",
+        "c02-equipment-symbiotic-guard",
+        "c02-equipment-sand-rider",
+        "c02-equipment-hover-lancer",
+        "c02-equipment-tide-fin-scout",
+        "c02-equipment-rail-rifleman",
+        "c02-equipment-long-beam-sniper",
+        "c02-equipment-spore-shooter",
+        "c02-equipment-star-vein-mage",
+        "c02-equipment-tide-priest",
+        "c02-equipment-memory-monk",
+        "c02-equipment-field-medic",
+        "c02-equipment-repair-engineer",
+        "c02-equipment-protocol-analyst",
+        "c02-equipment-guard-robot",
+        "c02-equipment-turret-vehicle",
+        "c02-equipment-light-mech",
+        "c02-equipment-antler-knight",
+        "c02-equipment-forest-beast-handler",
+        "c02-equipment-eco-maintainer",
+        "c02-equipment-boarding-team",
+        "c02-equipment-vacuum-trooper",
+        "c02-equipment-stargate-guard",
+        "c02-equipment-rain-tower-engineer",
+        "c02-equipment-wind-sail-skirmisher",
+        "c02-equipment-heat-lamp-shield",
+        "c02-equipment-ice-hook-hunter",
+        "c02-equipment-floating-city-guard",
+        "c02-equipment-tide-anchor-engineer",
+        "c02-equipment-fungus-bed-medic",
+        "c02-equipment-defoliator-pilot",
+        "c02-equipment-ring-rail-guard",
+        "c02-equipment-gravity-rescuer",
+        "c02-equipment-physical-archive-keeper",
+        "c02-equipment-echo-tracker",
+        "c02-equipment-reset-guard",
+        "c02-equipment-protocol-adjudicator",
+        "c02-equipment-starbreaker-sapper",
+        "c02-equipment-rain-shepherd",
+        "c02-equipment-sealed-medical-kit",
+        "c02-equipment-multi-standard-repair-pack",
+        "c02-equipment-offline-scout-instrument",
+        "c02-equipment-public-supply-crate",
+        "c02-equipment-anti-large-charge",
+        "c02-equipment-memory-spore-isolator",
+        "c02-equipment-magboot-tractor-set",
+        "c02-equipment-mission-evidence-box"
+      ]
+    },
+    {
+      "id": "c02-skill-atlas-complete",
+      "type": "skill-atlas",
+      "png": "expansion/atlases/c02-skill-atlas-complete.png",
+      "svg": "expansion/atlases/c02-skill-atlas-complete.svg",
+      "width": 384,
+      "height": 288,
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "columns": 8,
+      "topicIds": [
+        "c02-skill-guard",
+        "c02-skill-assault",
+        "c02-skill-rescue-dash",
+        "c02-skill-suppress",
+        "c02-skill-snipe",
+        "c02-skill-spore-shot",
+        "c02-skill-vein-downgrade",
+        "c02-skill-field-heal",
+        "c02-skill-quick-repair",
+        "c02-skill-scan",
+        "c02-skill-boarding",
+        "c02-skill-vacuum-traction",
+        "c02-skill-sand-sail",
+        "c02-skill-redirect-wind",
+        "c02-skill-heat-zone",
+        "c02-skill-ice-hook",
+        "c02-skill-shift-tide",
+        "c02-skill-deploy-tide-anchor",
+        "c02-skill-symbiotic-regen",
+        "c02-skill-fungus-purify",
+        "c02-skill-rail-permission",
+        "c02-skill-gravity-rescue",
+        "c02-skill-memory-reveal",
+        "c02-skill-echo-isolation",
+        "c02-skill-repair-node",
+        "c02-skill-reroute-water",
+        "c02-skill-deploy-turret",
+        "c02-skill-toggle-bulkhead",
+        "c02-skill-switch-rail",
+        "c02-skill-brace-platform",
+        "c02-skill-prune-bridge",
+        "c02-skill-rotate-gravity",
+        "c02-skill-resupply-ammo",
+        "c02-skill-emergency-water",
+        "c02-skill-emergency-heat",
+        "c02-skill-confirm-permission",
+        "c02-skill-physical-backup",
+        "c02-skill-mark-evacuation",
+        "c02-skill-medical-transfer",
+        "c02-skill-publish-cargo",
+        "c02-skill-shield-chain",
+        "c02-skill-rider-rescue-chain",
+        "c02-skill-rail-calibration",
+        "c02-skill-maintainer-rebuild",
+        "c02-skill-zero-permission-breach",
+        "c02-skill-five-world-combo",
+        "c02-skill-memory-reality-overlap",
+        "c02-skill-climate-correction"
+      ]
+    },
+    {
+      "id": "c02-status-atlas-complete",
+      "type": "status-atlas",
+      "png": "expansion/atlases/c02-status-atlas-complete.png",
+      "svg": "expansion/atlases/c02-status-atlas-complete.svg",
+      "width": 288,
+      "height": 192,
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "columns": 6,
+      "topicIds": [
+        "c02-status-controlled",
+        "c02-status-hidden",
+        "c02-status-shielded",
+        "c02-status-overheated",
+        "c02-status-hypothermia",
+        "c02-status-spore-contamination",
+        "c02-status-low-oxygen",
+        "c02-status-memory-corrosion",
+        "c02-status-water",
+        "c02-status-heat",
+        "c02-status-ammo",
+        "c02-status-star-vein-energy",
+        "c02-status-permission",
+        "c02-status-spare-parts",
+        "c02-status-cargo-capacity",
+        "c02-status-local-support",
+        "c02-status-capture",
+        "c02-status-escort",
+        "c02-status-evacuate",
+        "c02-status-rescue",
+        "c02-status-repair",
+        "c02-status-destroy",
+        "c02-status-hold-timer",
+        "c02-status-deliver-evidence"
+      ]
+    },
+    {
+      "id": "c02-fx-atlas-complete",
+      "type": "fx-atlas",
+      "png": "expansion/atlases/c02-fx-atlas-complete.png",
+      "svg": "expansion/atlases/c02-fx-atlas-complete.svg",
+      "width": 384,
+      "height": 256,
+      "cellWidth": 64,
+      "cellHeight": 64,
+      "columns": 6,
+      "topicIds": [
+        "c02-fx-blade-hit",
+        "c02-fx-blunt-hit",
+        "c02-fx-rail-penetration",
+        "c02-fx-energy-pulse",
+        "c02-fx-explosion",
+        "c02-fx-bio-hit",
+        "c02-fx-crush",
+        "c02-fx-vacuum-rupture",
+        "c02-fx-sandstorm",
+        "c02-fx-rain-black-rain",
+        "c02-fx-ice-cold",
+        "c02-fx-heat-zone",
+        "c02-fx-tide-water",
+        "c02-fx-spore-fog",
+        "c02-fx-vacuum-zone",
+        "c02-fx-memory-overlay",
+        "c02-fx-healing",
+        "c02-fx-shield",
+        "c02-fx-control",
+        "c02-fx-stealth",
+        "c02-fx-structure-damage",
+        "c02-fx-repair-sparks",
+        "c02-fx-offline",
+        "c02-fx-capture-light"
+      ]
+    },
+    {
+      "id": "c02-hud-atlas-complete",
+      "type": "hud-atlas",
+      "png": "expansion/atlases/c02-hud-atlas-complete.png",
+      "svg": "expansion/atlases/c02-hud-atlas-complete.svg",
+      "width": 256,
+      "height": 64,
+      "cellWidth": 32,
+      "cellHeight": 32,
+      "columns": 8,
+      "topicIds": [
+        "c02-hud-ally",
+        "c02-hud-enemy",
+        "c02-hud-neutral",
+        "c02-hud-recruitable",
+        "c02-hud-main-objective",
+        "c02-hud-side-objective",
+        "c02-hud-escort",
+        "c02-hud-danger",
+        "c02-hud-supply",
+        "c02-hud-healing",
+        "c02-hud-engineering",
+        "c02-hud-breakable",
+        "c02-hud-repairable",
+        "c02-hud-reinforcement",
+        "c02-hud-evacuation",
+        "c02-hud-permission-dispute"
+      ]
+    }
+  ]
+}

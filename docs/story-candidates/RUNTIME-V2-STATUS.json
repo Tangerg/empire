@@ -1,0 +1,602 @@
+{
+  "schemaVersion": "1.0.0",
+  "generator": "pixel-master-tools/generate_runtime_v2_status.py",
+  "definitions": {
+    "outputCount": "Runtime assets declared by runtime-v2 manifests.",
+    "exactTopicCount": "Unique topicIds that exist in the campaign complete manifest and match the runtime category.",
+    "runtimeReadySourceCount": "Outputs listed by gameIntegration.runtimeReadyAssetIds when present; otherwise outputs from a manifest whose top-level runtimeReady is true.",
+    "candidateCount": "Outputs not counted by the effective asset-level runtime-ready policy.",
+    "primarySemanticMappingCount": "Named primary combat outputs without topicId; excluded from exactTopicCount."
+  },
+  "campaigns": [
+    {
+      "campaignId": "candidate-01",
+      "title": "断冠之誓",
+      "completeManifest": "candidate-01/assets/manifest-complete.json",
+      "targetTopics": 404,
+      "runtimeManifests": [
+        {
+          "path": "candidate-01/assets/manifest-runtime-v2.json",
+          "batch": "primary",
+          "qualityTier": "runtime-v2-partial",
+          "declaredRuntimeReady": false,
+          "runtimeReady": false,
+          "effectiveReadyState": "partial",
+          "readyPolicy": "gameIntegration.runtimeReadyAssetIds",
+          "outputCount": 30,
+          "exactTopicCount": 0,
+          "runtimeReadySourceCount": 15,
+          "candidateCount": 15
+        },
+        {
+          "path": "candidate-01/assets/manifest-runtime-v2-b02.json",
+          "batch": "b02",
+          "qualityTier": "runtime-v2-candidate",
+          "declaredRuntimeReady": false,
+          "runtimeReady": false,
+          "effectiveReadyState": "none",
+          "readyPolicy": "manifest.runtimeReady",
+          "outputCount": 68,
+          "exactTopicCount": 68,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 68
+        },
+        {
+          "path": "candidate-01/assets/manifest-runtime-v2-b03.json",
+          "batch": "b03",
+          "qualityTier": "runtime-v2-candidate",
+          "declaredRuntimeReady": false,
+          "runtimeReady": false,
+          "effectiveReadyState": "none",
+          "readyPolicy": "manifest.runtimeReady",
+          "outputCount": 28,
+          "exactTopicCount": 28,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 28
+        }
+      ],
+      "totals": {
+        "targetCount": 404,
+        "outputCount": 126,
+        "exactTopicCount": 96,
+        "runtimeReadySourceCount": 15,
+        "candidateCount": 111
+      },
+      "categories": [
+        {
+          "category": "narrative-static",
+          "label": "叙事静态图",
+          "targetCount": 80,
+          "outputCount": 5,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 5
+        },
+        {
+          "category": "combat-unit",
+          "label": "战斗单位",
+          "targetCount": 40,
+          "outputCount": 40,
+          "exactTopicCount": 36,
+          "runtimeReadySourceCount": 4,
+          "candidateCount": 36
+        },
+        {
+          "category": "mission-unit",
+          "label": "任务单位",
+          "targetCount": 24,
+          "outputCount": 8,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 8
+        },
+        {
+          "category": "faction-kit",
+          "label": "阵营套件",
+          "targetCount": 12,
+          "outputCount": 0,
+          "exactTopicCount": 0,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 0
+        },
+        {
+          "category": "terrain",
+          "label": "地形",
+          "targetCount": 32,
+          "outputCount": 16,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 8,
+          "candidateCount": 8
+        },
+        {
+          "category": "interactive-structure",
+          "label": "交互设施",
+          "targetCount": 24,
+          "outputCount": 9,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 3,
+          "candidateCount": 6
+        },
+        {
+          "category": "battle-prop",
+          "label": "战场物件",
+          "targetCount": 32,
+          "outputCount": 8,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 8
+        },
+        {
+          "category": "equipment",
+          "label": "装备",
+          "targetCount": 48,
+          "outputCount": 12,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 12
+        },
+        {
+          "category": "skill",
+          "label": "技能",
+          "targetCount": 48,
+          "outputCount": 12,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 12
+        },
+        {
+          "category": "status",
+          "label": "状态",
+          "targetCount": 24,
+          "outputCount": 4,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 4
+        },
+        {
+          "category": "fx",
+          "label": "FX",
+          "targetCount": 24,
+          "outputCount": 8,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 8
+        },
+        {
+          "category": "hud",
+          "label": "HUD",
+          "targetCount": 16,
+          "outputCount": 4,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 4
+        }
+      ],
+      "combatCoverage": {
+        "targetCount": 40,
+        "primary": {
+          "outputCount": 4,
+          "primarySemanticMappingCount": 4,
+          "exactTopicCount": 0,
+          "note": "Primary semantic mappings are named outputs only; without topicId they are not exact topic coverage."
+        },
+        "batch02": {
+          "outputCount": 8,
+          "exactTopicCount": 8
+        },
+        "batch03": {
+          "outputCount": 28,
+          "exactTopicCount": 28
+        },
+        "cumulative": {
+          "outputCount": 40,
+          "exactTopicCount": 36,
+          "semanticOnlyCount": 4,
+          "productionCoverageCount": 40,
+          "targetCount": 40,
+          "productionCoverageStatus": "40/40",
+          "exactTopicStatus": "36/40",
+          "productionComplete": true,
+          "exactTopicComplete": false
+        }
+      }
+    },
+    {
+      "campaignId": "candidate-02",
+      "title": "群星熄灭之前",
+      "completeManifest": "candidate-02/assets/manifest-complete.json",
+      "targetTopics": 404,
+      "runtimeManifests": [
+        {
+          "path": "candidate-02/assets/manifest-runtime-v2.json",
+          "batch": "primary",
+          "qualityTier": "runtime-v2-candidate",
+          "declaredRuntimeReady": false,
+          "runtimeReady": false,
+          "effectiveReadyState": "none",
+          "readyPolicy": "manifest.runtimeReady",
+          "outputCount": 27,
+          "exactTopicCount": 0,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 27
+        },
+        {
+          "path": "candidate-02/assets/manifest-runtime-v2-b02.json",
+          "batch": "b02",
+          "qualityTier": "runtime-v2-candidate",
+          "declaredRuntimeReady": false,
+          "runtimeReady": false,
+          "effectiveReadyState": "none",
+          "readyPolicy": "manifest.runtimeReady",
+          "outputCount": 68,
+          "exactTopicCount": 68,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 68
+        },
+        {
+          "path": "candidate-02/assets/manifest-runtime-v2-b03.json",
+          "batch": "b03",
+          "qualityTier": "runtime-v2-candidate",
+          "declaredRuntimeReady": false,
+          "runtimeReady": false,
+          "effectiveReadyState": "none",
+          "readyPolicy": "manifest.runtimeReady",
+          "outputCount": 28,
+          "exactTopicCount": 28,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 28
+        }
+      ],
+      "totals": {
+        "targetCount": 404,
+        "outputCount": 123,
+        "exactTopicCount": 96,
+        "runtimeReadySourceCount": 0,
+        "candidateCount": 123
+      },
+      "categories": [
+        {
+          "category": "narrative-static",
+          "label": "叙事静态图",
+          "targetCount": 80,
+          "outputCount": 5,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 5
+        },
+        {
+          "category": "combat-unit",
+          "label": "战斗单位",
+          "targetCount": 40,
+          "outputCount": 40,
+          "exactTopicCount": 36,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 40
+        },
+        {
+          "category": "mission-unit",
+          "label": "任务单位",
+          "targetCount": 24,
+          "outputCount": 8,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 8
+        },
+        {
+          "category": "faction-kit",
+          "label": "阵营套件",
+          "targetCount": 12,
+          "outputCount": 0,
+          "exactTopicCount": 0,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 0
+        },
+        {
+          "category": "terrain",
+          "label": "地形",
+          "targetCount": 32,
+          "outputCount": 16,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 16
+        },
+        {
+          "category": "interactive-structure",
+          "label": "交互设施",
+          "targetCount": 24,
+          "outputCount": 6,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 6
+        },
+        {
+          "category": "battle-prop",
+          "label": "战场物件",
+          "targetCount": 32,
+          "outputCount": 8,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 8
+        },
+        {
+          "category": "equipment",
+          "label": "装备",
+          "targetCount": 48,
+          "outputCount": 12,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 12
+        },
+        {
+          "category": "skill",
+          "label": "技能",
+          "targetCount": 48,
+          "outputCount": 12,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 12
+        },
+        {
+          "category": "status",
+          "label": "状态",
+          "targetCount": 24,
+          "outputCount": 4,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 4
+        },
+        {
+          "category": "fx",
+          "label": "FX",
+          "targetCount": 24,
+          "outputCount": 8,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 8
+        },
+        {
+          "category": "hud",
+          "label": "HUD",
+          "targetCount": 16,
+          "outputCount": 4,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 4
+        }
+      ],
+      "combatCoverage": {
+        "targetCount": 40,
+        "primary": {
+          "outputCount": 4,
+          "primarySemanticMappingCount": 4,
+          "exactTopicCount": 0,
+          "note": "Primary semantic mappings are named outputs only; without topicId they are not exact topic coverage."
+        },
+        "batch02": {
+          "outputCount": 8,
+          "exactTopicCount": 8
+        },
+        "batch03": {
+          "outputCount": 28,
+          "exactTopicCount": 28
+        },
+        "cumulative": {
+          "outputCount": 40,
+          "exactTopicCount": 36,
+          "semanticOnlyCount": 4,
+          "productionCoverageCount": 40,
+          "targetCount": 40,
+          "productionCoverageStatus": "40/40",
+          "exactTopicStatus": "36/40",
+          "productionComplete": true,
+          "exactTopicComplete": false
+        }
+      }
+    },
+    {
+      "campaignId": "candidate-03",
+      "title": "布衣定鼎",
+      "completeManifest": "candidate-03/assets/manifest-complete.json",
+      "targetTopics": 404,
+      "runtimeManifests": [
+        {
+          "path": "candidate-03/assets/manifest-runtime-v2.json",
+          "batch": "primary",
+          "qualityTier": "runtime-v2-candidate",
+          "declaredRuntimeReady": false,
+          "runtimeReady": false,
+          "effectiveReadyState": "none",
+          "readyPolicy": "manifest.runtimeReady",
+          "outputCount": 27,
+          "exactTopicCount": 0,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 27
+        },
+        {
+          "path": "candidate-03/assets/manifest-runtime-v2-b02.json",
+          "batch": "b02",
+          "qualityTier": "runtime-v2-candidate",
+          "declaredRuntimeReady": false,
+          "runtimeReady": false,
+          "effectiveReadyState": "none",
+          "readyPolicy": "manifest.runtimeReady",
+          "outputCount": 68,
+          "exactTopicCount": 68,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 68
+        },
+        {
+          "path": "candidate-03/assets/manifest-runtime-v2-b03.json",
+          "batch": "b03",
+          "qualityTier": "runtime-v2-candidate",
+          "declaredRuntimeReady": false,
+          "runtimeReady": false,
+          "effectiveReadyState": "none",
+          "readyPolicy": "manifest.runtimeReady",
+          "outputCount": 28,
+          "exactTopicCount": 28,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 28
+        }
+      ],
+      "totals": {
+        "targetCount": 404,
+        "outputCount": 123,
+        "exactTopicCount": 96,
+        "runtimeReadySourceCount": 0,
+        "candidateCount": 123
+      },
+      "categories": [
+        {
+          "category": "narrative-static",
+          "label": "叙事静态图",
+          "targetCount": 80,
+          "outputCount": 5,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 5
+        },
+        {
+          "category": "combat-unit",
+          "label": "战斗单位",
+          "targetCount": 40,
+          "outputCount": 40,
+          "exactTopicCount": 36,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 40
+        },
+        {
+          "category": "mission-unit",
+          "label": "任务单位",
+          "targetCount": 24,
+          "outputCount": 8,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 8
+        },
+        {
+          "category": "faction-kit",
+          "label": "阵营套件",
+          "targetCount": 12,
+          "outputCount": 0,
+          "exactTopicCount": 0,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 0
+        },
+        {
+          "category": "terrain",
+          "label": "地形",
+          "targetCount": 32,
+          "outputCount": 16,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 16
+        },
+        {
+          "category": "interactive-structure",
+          "label": "交互设施",
+          "targetCount": 24,
+          "outputCount": 6,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 6
+        },
+        {
+          "category": "battle-prop",
+          "label": "战场物件",
+          "targetCount": 32,
+          "outputCount": 8,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 8
+        },
+        {
+          "category": "equipment",
+          "label": "装备",
+          "targetCount": 48,
+          "outputCount": 12,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 12
+        },
+        {
+          "category": "skill",
+          "label": "技能",
+          "targetCount": 48,
+          "outputCount": 12,
+          "exactTopicCount": 8,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 12
+        },
+        {
+          "category": "status",
+          "label": "状态",
+          "targetCount": 24,
+          "outputCount": 4,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 4
+        },
+        {
+          "category": "fx",
+          "label": "FX",
+          "targetCount": 24,
+          "outputCount": 8,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 8
+        },
+        {
+          "category": "hud",
+          "label": "HUD",
+          "targetCount": 16,
+          "outputCount": 4,
+          "exactTopicCount": 4,
+          "runtimeReadySourceCount": 0,
+          "candidateCount": 4
+        }
+      ],
+      "combatCoverage": {
+        "targetCount": 40,
+        "primary": {
+          "outputCount": 4,
+          "primarySemanticMappingCount": 4,
+          "exactTopicCount": 0,
+          "note": "Primary semantic mappings are named outputs only; without topicId they are not exact topic coverage."
+        },
+        "batch02": {
+          "outputCount": 8,
+          "exactTopicCount": 8
+        },
+        "batch03": {
+          "outputCount": 28,
+          "exactTopicCount": 28
+        },
+        "cumulative": {
+          "outputCount": 40,
+          "exactTopicCount": 36,
+          "semanticOnlyCount": 4,
+          "productionCoverageCount": 40,
+          "targetCount": 40,
+          "productionCoverageStatus": "40/40",
+          "exactTopicStatus": "36/40",
+          "productionComplete": true,
+          "exactTopicComplete": false
+        }
+      }
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "errorCount": 0,
+    "errors": [],
+    "checks": [
+      "duplicate contentId within campaigns and across campaigns",
+      "duplicate exact topicId within campaigns and across campaigns",
+      "topicId exists in manifest-complete and category matches",
+      "PNG path stays under campaign assets and file exists",
+      "PNG signature and dimensions match manifest",
+      "gameIntegration.runtimeReadyAssetIds is an assets id subset when present"
+    ]
+  }
+}

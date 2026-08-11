@@ -1,0 +1,67 @@
+{
+  "schema": 2,
+  "id": "twin-hills",
+  "name": "双子丘陵",
+  "author": "内置关卡",
+  "description": "教学地图。一条小河把战场分成两半，唯一的石桥是所有战斗的焦点。抢下中立村庄扩大收入，再压过桥去。",
+  "width": 16,
+  "height": 11,
+  "terrain": [
+    "..T..h.~~..T..^.",
+    ".C-...-~~-..v.h.",
+    ".-b..--==--...T.",
+    "..T..h.~~.h...^.",
+    ".v.....~~....T..",
+    "...T...~~..T....",
+    "..h....~~.....v.",
+    ".T...--==--.--..",
+    "....T..~~...b.C.",
+    "..v.T..~~...--..",
+    ".^.....~~..h..T."
+  ],
+  "owners": [
+    { "x": 1, "y": 1, "owner": 1 },
+    { "x": 2, "y": 2, "owner": 1 },
+    { "x": 1, "y": 4, "owner": 1 },
+    { "x": 14, "y": 8, "owner": 2 },
+    { "x": 12, "y": 8, "owner": 2 },
+    { "x": 14, "y": 6, "owner": 2 },
+    { "x": 12, "y": 1, "owner": 0 },
+    { "x": 2, "y": 9, "owner": 0 }
+  ],
+  "units": [
+    { "x": 2, "y": 1, "unit": "soldier", "owner": 1 },
+    { "x": 1, "y": 2, "unit": "soldier", "owner": 1 },
+    { "x": 2, "y": 3, "unit": "archer", "owner": 1 },
+    { "x": 13, "y": 8, "unit": "soldier", "owner": 2 },
+    { "x": 14, "y": 7, "unit": "soldier", "owner": 2 },
+    { "x": 13, "y": 9, "unit": "archer", "owner": 2 }
+  ],
+  "players": [
+    {
+      "id": 1,
+      "name": "蓝军",
+      "team": 1,
+      "color": "#3f7fd8",
+      "controller": "human",
+      "resources": {
+        "funds": { "current": 300, "capacity": null },
+        "command_points": { "current": 0, "capacity": 5 }
+      }
+    },
+    {
+      "id": 2,
+      "name": "红军",
+      "team": 2,
+      "color": "#d8483f",
+      "controller": "ai",
+      "resources": {
+        "funds": { "current": 300, "capacity": null },
+        "command_points": { "current": 0, "capacity": 5 }
+      },
+      "ai": { "aggression": 0.45 }
+    }
+  ],
+  "rules": {},
+  "victory": [{ "type": "routEnemies" }, { "type": "captureHQ" }]
+}

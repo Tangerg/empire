@@ -1,8 +1,8 @@
-import { Terrains } from './data/terrain';
-import { unitDef } from './data/units';
+import { Battlefield } from './domain/battlefield';
 import { dist, idx, ring } from './grid';
 import { areAllies } from './state';
 import type { GameState, PlayerId, Unit } from './types';
+import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
 
 /**
  * Fog of war (off by default, per-level flag). Terrain is always known — only
@@ -10,16 +10,17 @@ import type { GameState, PlayerId, Unit } from './types';
  * only from an adjacent tile. Simple, readable, and enough to make scouting
  * matter for future modes.
  */
-export function visibleTiles(s: GameState, viewer: PlayerId): Set<number> {
+export function visibleTiles(s: GameState, viewer: PlayerId, content: ContentCatalog = GlobalContentCatalog): Set<number> {
   const seen = new Set<number>();
+  const battlefield = new Battlefield(s, content);
   if (!s.rules.fog) {
     for (let i = 0; i < s.map.tiles.length; i++) seen.add(i);
     return seen;
   }
   for (const u of s.units) {
     if (!areAllies(s, u.owner, viewer) && u.owner !== viewer) continue;
-    const def = unitDef(u.type);
-    const bonus = Terrains.get(s.map.tiles[idx(s.map, u.x, u.y)]).vision;
+    const def = content.units.get(u.type);
+    const bonus = battlefield.cell(u).vision;
     for (const c of ring(s.map, { x: u.x, y: u.y }, 0, def.vision + bonus)) {
       seen.add(idx(s.map, c.x, c.y));
     }
@@ -34,13 +35,15 @@ export function isUnitVisible(
   s: GameState,
   viewer: PlayerId,
   u: Unit,
-  seen: Set<number> = visibleTiles(s, viewer),
+  seen: Set<number> | undefined = undefined,
+  content: ContentCatalog = GlobalContentCatalog,
 ): boolean {
   if (!s.rules.fog) return true;
   if (u.owner === viewer || areAllies(s, u.owner, viewer)) return true;
   const i = idx(s.map, u.x, u.y);
-  if (!seen.has(i)) return false;
-  if (!Terrains.get(s.map.tiles[i]).opaque) return true;
+  const visible = seen ?? visibleTiles(s, viewer, content);
+  if (!visible.has(i)) return false;
+  if (!new Battlefield(s, content).cell(u).terrain.opaque) return true;
   // Hidden in cover unless something friendly is standing right next to it.
   return s.units.some(
     (o) =>
@@ -49,7 +52,7 @@ export function isUnitVisible(
   );
 }
 
-export function visibleUnits(s: GameState, viewer: PlayerId): Unit[] {
-  const seen = visibleTiles(s, viewer);
-  return s.units.filter((u) => isUnitVisible(s, viewer, u, seen));
+export function visibleUnits(s: GameState, viewer: PlayerId, content: ContentCatalog = GlobalContentCatalog): Unit[] {
+  const seen = visibleTiles(s, viewer, content);
+  return s.units.filter((u) => isUnitVisible(s, viewer, u, seen, content));
 }

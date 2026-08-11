@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-02",
+  "batchId": "b02",
+  "qualityTier": "runtime-v2-candidate",
+  "runtimeReady": false,
+  "passed": true,
+  "assetCount": 68,
+  "runtimeFileCount": 136,
+  "masterCount": 15,
+  "coverage": {
+    "combat-unit": 8,
+    "mission-unit": 8,
+    "terrain": 8,
+    "interactive-structure": 4,
+    "battle-prop": 8,
+    "equipment": 8,
+    "skill": 8,
+    "status": 4,
+    "hud": 4,
+    "fx": 4,
+    "narrative-static": 4
+  },
+  "checks": [
+    {
+      "name": "topic-lock-exact",
+      "passed": true,
+      "detail": {
+        "assets": 68,
+        "locked": 68
+      }
+    },
+    {
+      "name": "unique-id-content-topic",
+      "passed": true,
+      "detail": "68/68 unique"
+    },
+    {
+      "name": "runtime-png-svg-exist",
+      "passed": true,
+      "detail": "136 files present"
+    },
+    {
+      "name": "declared-dimensions",
+      "passed": true,
+      "detail": "all exact"
+    },
+    {
+      "name": "binary-alpha-clear-corners",
+      "passed": true,
+      "detail": "all transparent runtime cells clean"
+    },
+    {
+      "name": "unit-frames-anchors-large-footprints",
+      "passed": true,
+      "detail": "16 sheets; 64px riders/patient preserve silhouette"
+    },
+    {
+      "name": "structure-physical-three-states",
+      "passed": true,
+      "detail": "4 facilities normal/damaged/captured core differ"
+    },
+    {
+      "name": "terrain-variants-unique",
+      "passed": true,
+      "detail": "4x4 repeat and 4x16 connection cells unique"
+    },
+    {
+      "name": "terrain-adjacency",
+      "passed": true,
+      "detail": "repeat and N/E/S/W seams byte-identical"
+    },
+    {
+      "name": "no-exact-category-duplicates",
+      "passed": true,
+      "detail": "all normalized asset hashes unique per category"
+    },
+    {
+      "name": "small-asset-silhouettes",
+      "passed": true,
+      "detail": {
+        "battle-prop": [
+          8,
+          8
+        ],
+        "equipment": [
+          8,
+          8
+        ],
+        "skill": [
+          8,
+          8
+        ],
+        "status": [
+          4,
+          4
+        ],
+        "hud": [
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "name": "fx-four-phase-diversity",
+      "passed": true,
+      "detail": "4 FX groups x 4 distinct nonempty phases"
+    },
+    {
+      "name": "scene-size-opacity-composition",
+      "passed": true,
+      "detail": "4 distinct opaque 256x144 scenes"
+    },
+    {
+      "name": "visual-previews",
+      "passed": true,
+      "detail": [
+        "runtime-v2/batch-02/previews/c02-v2-b02-preview-1x.png",
+        "runtime-v2/batch-02/previews/c02-v2-b02-preview-2x.png",
+        "runtime-v2/batch-02/previews/c02-v2-b02-terrain-3x3.png",
+        "runtime-v2/batch-02/previews/c02-v2-b02-terrain-12x8.png"
+      ]
+    }
+  ],
+  "errors": [],
+  "sharedValidator": {
+    "command": "python3 docs/story-candidates/pixel-master-tools/validate_runtime_v2_batches.py",
+    "expectedCampaignStatus": "passed-machine-qa"
+  },
+  "visualReview": {
+    "oneX": "runtime-v2/batch-02/previews/c02-v2-b02-preview-1x.png",
+    "twoX": "runtime-v2/batch-02/previews/c02-v2-b02-preview-2x.png",
+    "terrainThreeByThree": "runtime-v2/batch-02/previews/c02-v2-b02-terrain-3x3.png",
+    "terrainTwelveByEight": "runtime-v2/batch-02/previews/c02-v2-b02-terrain-12x8.png",
+    "requiredNext": "Root agent must validate game-scale readability, collisions, pivots, z-order and autotile selection before promotion."
+  }
+}

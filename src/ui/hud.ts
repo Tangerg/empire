@@ -3,26 +3,47 @@ import { portraitSvg } from '../art/portraits';
 import { unitIcon } from '../art/units';
 import { PAL } from '../art/palette';
 import type { CommandOption } from '../core/actions';
+import type { CareerOption } from '../core/careers';
+import { careerDef } from '../core/data/careers';
+import type { TacticOption } from '../core/commanders';
 import type { CombatForecast } from '../core/combat';
+import type { CombatModifier } from '../core/combat-modifiers';
+import type { CombatPlan } from '../core/combat-plan';
+import { activeCommanderFor, commanderUnit } from '../core/commanders';
+import { armorClassDef, damageTypeDef } from '../core/data/damage';
 import { Terrains } from '../core/data/terrain';
 import {
-  ARMOR_LABEL,
-  DAMAGE_TYPE_LABEL,
-  MOVEMENT_LABEL,
+  movementLabel,
   unitDef,
 } from '../core/data/units';
+import { MovementProfiles } from '../core/data/movement';
+import { weaponDef } from '../core/data/weapons';
 import { idx } from '../core/grid';
 import { recruitOptions } from '../core/state';
+import { statusDef } from '../core/statuses';
 import { describeObjective, objectiveProgress } from '../core/victory';
-import type { Coord, GameState, Unit } from '../core/types';
+import type { Coord, Direction, GameState, ReactionStance, ResourceAmount, Unit } from '../core/types';
+import {
+  type BattleResourceSystem,
+  type ResourceSubject,
+  playerResource,
+  unitResource,
+  weaponResource,
+} from '../core/resources';
+import { escapeHtml } from './html';
 
 export interface HudView {
   state: GameState;
+  resources: BattleResourceSystem;
   /** Unit under the cursor or currently selected. */
   inspect: Unit | null;
   tile: Coord | null;
-  forecast: { fc: CombatForecast; attacker: Unit; defender: Unit } | null;
+  forecast: { plan: CombatPlan; fc: CombatForecast; attacker: Unit; defender: Unit; recipient: Unit } | null;
   commands: CommandOption[] | null;
+  tactics: Array<TacticOption & { key: string; commander: string }>;
+  reactionUnit: number | null;
+  rankNextThreshold: number | null;
+  careerOptions: CareerOption[];
   /** Ability whose target we are picking, if any. */
   targeting: string | null;
   recruitAt: Coord | null;
@@ -34,6 +55,10 @@ export interface HudView {
 
 export interface HudHandlers {
   onCommand(ability: string): void;
+  onTactic(key: string): void;
+  onReaction(stance: ReactionStance): void;
+  onFacing(facing: Direction): void;
+  onCareer(career: string): void;
   onCancel(): void;
   onEndTurn(): void;
   onUndo(): void;
@@ -44,6 +69,77 @@ export interface HudHandlers {
 }
 
 const pct = (n: number) => `${Math.round(n * 100)}%`;
+
+function resourceName(resources: BattleResourceSystem, id: string): string {
+  try {
+    return resources.adapters.get(id).name;
+  } catch {
+    return id;
+  }
+}
+
+function formatAmounts(resources: BattleResourceSystem, amounts: readonly ResourceAmount[]): string {
+  return amounts.length === 0
+    ? '无'
+    : amounts.map((amount) => `${resourceName(resources, amount.resource)} ${amount.amount}`).join(' · ');
+}
+
+function accountSummary(resources: BattleResourceSystem, subject: ResourceSubject): string[] {
+  return resources.adapters.ids().flatMap((id) => {
+    if (!resources.hasAccount(id, subject)) return [];
+    const account = resources.inspect(id, subject);
+    const value = account.current === null
+      ? '∞'
+      : account.capacity === null
+        ? String(account.current)
+        : `${account.current}/${account.capacity}`;
+    return [`${resourceName(resources, id)} ${value}`];
+  });
+}
+
+const MODIFIER_SOURCE_LABEL: Record<CombatModifier['source'], string> = {
+  weapon: '武器',
+  matchup: '克制',
+  unit: '单位',
+  status: '状态',
+  commander: '指挥',
+  terrain: '地形',
+  reaction: '反应',
+  elevation: '高低差',
+  position: '方位',
+  cover: '掩体',
+  extension: '扩展',
+};
+
+const REACTION_LABEL: Record<ReactionStance, string> = {
+  counter: '反击',
+  guard: '防御',
+  support: '援护',
+  conserve: '节制',
+};
+
+const RANK_LABEL = ['新兵', '老兵', '精英'] as const;
+const FACING_LABEL: Record<Direction, string> = { north: '北 ↑', east: '东 →', south: '南 ↓', west: '西 ←' };
+
+function modifierClass(modifier: CombatModifier): string {
+  if (modifier.stage === 'mitigation') return modifier.value > 0 ? 'bad' : modifier.value < 0 ? 'good' : '';
+  if (modifier.operation === 'multiply') return modifier.value > 1 ? 'good' : modifier.value < 1 ? 'bad' : '';
+  return modifier.value > 0 ? 'good' : modifier.value < 0 ? 'bad' : '';
+}
+
+function modifierValue(modifier: CombatModifier): string {
+  if (modifier.stage === 'mitigation') {
+    return `${modifier.value >= 0 ? '+' : ''}${pct(modifier.value)} 减伤`;
+  }
+  if (modifier.operation === 'multiply') return `×${modifier.value.toFixed(2)}`;
+  return `${modifier.value >= 0 ? '+' : ''}${modifier.value.toFixed(2)}`;
+}
+
+function modifierList(modifiers: CombatModifier[]): string {
+  return modifiers.map((modifier) =>
+    `<li class="${modifierClass(modifier)}"><span class="modifier-source">${MODIFIER_SOURCE_LABEL[modifier.source]}</span> ${escapeHtml(modifier.label)} <b>${modifierValue(modifier)}</b></li>`,
+  ).join('');
+}
 
 function hpBar(ratio: number, width = 96): string {
   const color = ratio > 0.6 ? PAL.hpGood : ratio > 0.3 ? PAL.hpMid : PAL.hpLow;
@@ -71,6 +167,18 @@ export class Hud {
         switch (act) {
           case 'command':
             this.handlers.onCommand(arg);
+            break;
+          case 'tactic':
+            this.handlers.onTactic(arg);
+            break;
+          case 'reaction':
+            this.handlers.onReaction(arg as ReactionStance);
+            break;
+          case 'facing':
+            this.handlers.onFacing(arg as Direction);
+            break;
+          case 'career':
+            this.handlers.onCareer(arg);
             break;
           case 'cancel':
             this.handlers.onCancel();
@@ -105,6 +213,7 @@ export class Hud {
     this.topEl.innerHTML = this.renderTop(v);
     this.panelEl.innerHTML = [
       this.renderCommands(v),
+      this.renderTactics(v),
       this.renderForecast(v),
       this.renderUnit(v),
       this.renderTile(v),
@@ -119,6 +228,7 @@ export class Hud {
   private renderTop(v: HudView): string {
     const s = v.state;
     const p = s.players.find((x) => x.id === s.currentPlayer)!;
+    const accounts = accountSummary(v.resources, playerResource(p));
     const turnLimit = s.rules.turnLimit ? ` / ${s.rules.turnLimit}` : '';
     return `
       <div class="topbar-left">
@@ -132,7 +242,7 @@ export class Hud {
           <b>${escapeHtml(p.name)}</b>
           <span class="sub">${p.controller === 'human' ? '你的回合' : 'AI 行动中'}</span>
         </div>
-        <div class="funds">${icon('coin')}<b>${p.funds}</b></div>
+        ${accounts.map((account) => `<div class="funds">${icon('coin')}<b>${escapeHtml(account)}</b></div>`).join('')}
       </div>
       <div class="topbar-right">
         <button class="btn ghost" data-act="zoom" data-arg="-0.15" title="缩小">−</button>
@@ -173,7 +283,7 @@ export class Hud {
       <div class="cmd-list">
         ${v.commands
           .map(
-            (c) => `<button class="btn cmd" data-act="command" data-arg="${c.ability}" title="${escapeHtml(c.hint)}">
+            (c) => `<button class="btn cmd" data-act="command" data-arg="${escapeHtml(c.key)}" title="${escapeHtml(c.hint)}">
               ${icon(iconOf[c.ability] ?? 'crosshair')}<span>${escapeHtml(c.name)}</span>
               ${keyOf[c.ability] ? `<kbd>${keyOf[c.ability]}</kbd>` : ''}
             </button>`,
@@ -184,41 +294,64 @@ export class Hud {
     </section>`;
   }
 
+  private renderTactics(v: HudView): string {
+    if (v.targeting || v.commands || v.tactics.length === 0) return '';
+    return `<section class="card accent">
+      <h3>指挥战术</h3>
+      <div class="cmd-list">
+        ${v.tactics
+          .map(
+            (tactic) => `<button class="btn cmd" data-act="tactic" data-arg="${escapeHtml(tactic.key)}">
+              ${icon('flag')}<span>${escapeHtml(tactic.name)}</span><em>${escapeHtml(formatAmounts(v.resources, tactic.costs))}</em>
+            </button>`,
+          )
+          .join('')}
+      </div>
+    </section>`;
+  }
+
   /* --------------------------------------------------------------- forecast */
 
   private renderForecast(v: HudView): string {
     if (!v.forecast) return '';
-    const { fc, attacker, defender } = v.forecast;
+    const { plan, fc, attacker, defender, recipient } = v.forecast;
     const aDef = unitDef(attacker.type);
-    const dDef = unitDef(defender.type);
-    const eff = fc.strike.effectiveness;
-    const effClass = eff > 1.05 ? 'good' : eff < 0.95 ? 'bad' : '';
+    const dDef = unitDef(recipient.type);
     return `<section class="card forecast">
       <h3>战斗预测</h3>
       <div class="fc-row">
         <span class="fc-name">${escapeHtml(aDef.name)}</span>
         <span class="fc-arrow">${icon('sword')}</span>
-        <span class="fc-name">${escapeHtml(dDef.name)}</span>
+        <span class="fc-name">${escapeHtml(unitDef(defender.type).name)}</span>
       </div>
+      ${fc.interceptor ? `<div class="hint">${escapeHtml(dDef.name)} 将进行援护并承受伤害</div>` : ''}
+      ${fc.reaction?.stance === 'guard' ? '<div class="hint">目标将触发防御姿态</div>' : ''}
+      ${plan.unitHits.length + plan.structureHits.length > 1
+        ? `<div class="hint">范围攻击还将波及 ${plan.unitHits.length - 1} 个单位、${plan.structureHits.length} 个结构</div>`
+        : ''}
+      ${plan.supportAttack
+        ? `<div class="hint">援护攻击预计追加 ${plan.supportAttack.damage.damage} 点伤害</div>`
+        : ''}
       <div class="fc-line">
         <span>造成伤害</span>
         <b class="dmg">${fc.strike.damage}</b>
-        <span class="fc-hp">${defender.hp} → ${fc.defenderHpAfter}</span>
+        <span class="fc-hp">${recipient.hp} → ${fc.recipientHpAfter}</span>
       </div>
-      ${hpBar(fc.defenderHpAfter / dDef.maxHp)}
+      ${hpBar(fc.recipientHpAfter / dDef.maxHp)}
       <div class="fc-line">
         <span>遭到反击</span>
         <b class="${fc.counter ? 'dmg' : 'none'}">${fc.counter ? fc.counter.damage : '无'}</b>
         <span class="fc-hp">${attacker.hp} → ${fc.attackerHpAfter}</span>
       </div>
       ${hpBar(fc.attackerHpAfter / aDef.maxHp)}
+      <div class="fc-chain-title">攻击修正链 · ${damageTypeDef(fc.strike.damageType).name} → ${armorClassDef(dDef.armorClass).name}</div>
       <ul class="fc-detail">
-        <li class="${effClass}">属性克制 ×${eff.toFixed(2)}（${DAMAGE_TYPE_LABEL[aDef.damageType]} → ${ARMOR_LABEL[dDef.armorClass]}）</li>
-        <li>攻击方状态 ×${fc.strike.strength.toFixed(2)}</li>
-        <li>目标减伤 ${pct(fc.strike.mitigation)}（地形 ${pct(fc.strike.terrainDefense)} + 自身 ${pct(fc.strike.unitDefense)}）</li>
-        ${fc.defenderDies ? '<li class="good">可以击杀</li>' : ''}
+        ${modifierList(fc.strike.modifiers)}
+        <li>最终减伤上限后 <b>${pct(fc.strike.mitigation)}</b></li>
+        ${fc.recipientDies ? '<li class="good">可以击杀伤害承担者</li>' : ''}
         ${fc.attackerDies ? '<li class="bad">反击会导致我方阵亡</li>' : ''}
       </ul>
+      ${fc.counter ? `<div class="fc-chain-title">反击修正链</div><ul class="fc-detail">${modifierList(fc.counter.modifiers)}</ul>` : ''}
     </section>`;
   }
 
@@ -228,8 +361,18 @@ export class Hud {
     const u = v.inspect;
     if (!u) return '';
     const def = unitDef(u.type);
+    const weapons = def.weapons.map(weaponDef);
+    const maximumPower = Math.max(...weapons.map((weapon) => weapon.power));
+    const minimumRange = Math.min(...weapons.map((weapon) => weapon.minRange));
+    const maximumRange = Math.max(...weapons.map((weapon) => weapon.maxRange));
+    const damageTypes = [...new Set(weapons.map((weapon) => damageTypeDef(weapon.damageType).name))].join(' / ');
     const owner = v.state.players.find((p) => p.id === u.owner);
     const ratio = u.hp / def.maxHp;
+    const commander = u.commanderId
+      ? v.state.commanders.find((candidate) => candidate.id === u.commanderId)
+      : null;
+    const leader = commander ? commanderUnit(v.state, commander) : null;
+    const commandActive = Boolean(activeCommanderFor(v.state, u));
     return `<section class="card unit-card">
       <div class="unit-head">
         ${portraitSvg(u.type, owner?.color ?? PAL.neutral, 84)}
@@ -242,21 +385,76 @@ export class Hud {
         </div>
       </div>
       <div class="stat-grid">
-        <div><span>攻击</span><b>${def.attack}</b></div>
+        <div><span>最高威力</span><b>${maximumPower}</b></div>
         <div><span>减伤</span><b>${pct(def.defense)}</b></div>
         <div><span>移动</span><b>${def.movement}</b></div>
-        <div><span>射程</span><b>${def.minRange === def.maxRange ? def.minRange : `${def.minRange}-${def.maxRange}`}</b></div>
-        <div><span>伤害</span><b>${DAMAGE_TYPE_LABEL[def.damageType]}</b></div>
-        <div><span>护甲</span><b>${ARMOR_LABEL[def.armorClass]}</b></div>
-        <div><span>移动型</span><b>${MOVEMENT_LABEL[def.movementClass]}</b></div>
-        <div><span>造价</span><b>${def.cost}</b></div>
+        <div><span>射程</span><b>${minimumRange === maximumRange ? minimumRange : `${minimumRange}-${maximumRange}`}</b></div>
+        <div><span>伤害</span><b>${damageTypes}</b></div>
+        <div><span>护甲</span><b>${armorClassDef(def.armorClass).name}</b></div>
+        <div><span>移动型</span><b>${movementLabel(def.movementClass)}</b></div>
+        <div><span>战力价值</span><b>${def.value}</b></div>
       </div>
       <div class="tag-row">
-        ${def.attackAfterMove ? '' : '<span class="tag warn">移动后无法攻击</span>'}
+        ${weapons.some((weapon) => weapon.moveAndAttack) ? '' : '<span class="tag warn">移动后无法攻击</span>'}
         ${def.abilities.includes('capture') ? '<span class="tag">可占领</span>' : '<span class="tag dim">不可占领</span>'}
         ${def.abilities.includes('heal') ? '<span class="tag good">可治疗</span>' : ''}
+        <span class="tag">反应：${REACTION_LABEL[u.reaction]}</span>
         ${u.done ? '<span class="tag dim">已行动</span>' : ''}
       </div>
+      <div class="unit-section">
+        <h4>武器与资源</h4>
+        ${def.weapons.map((id) => {
+          const weapon = weaponDef(id);
+          const runtime = u.weaponState[id];
+          const range = weapon.minRange === weapon.maxRange
+            ? String(weapon.minRange)
+            : `${weapon.minRange}-${weapon.maxRange}`;
+          const cooldown = runtime.cooldownRemaining > 0 ? ` · 冷却 ${runtime.cooldownRemaining}` : '';
+          const accounts = accountSummary(v.resources, weaponResource(u, id));
+          const requirements = weapon.resourceRequirements.length > 0
+            ? ` · 需要 ${formatAmounts(v.resources, weapon.resourceRequirements)}`
+            : '';
+          const costs = weapon.resourceCosts.length > 0
+            ? ` · 消耗 ${formatAmounts(v.resources, weapon.resourceCosts)}`
+            : '';
+          const state = accounts.length > 0 ? accounts.join(' · ') : '无限制';
+          return `<div class="kv wrap"><span>${escapeHtml(weapon.name)} · ${damageTypeDef(weapon.damageType).name} ${weapon.power} · 射程 ${range}</span><b>${escapeHtml(state)}${cooldown}${escapeHtml(requirements)}${escapeHtml(costs)}</b></div>`;
+        }).join('')}
+      </div>
+      <div class="unit-section">
+        <h4>战场状态</h4>
+        ${u.statuses.length > 0
+          ? u.statuses.map((status) => `<div class="kv"><span>${escapeHtml(statusDef(status.id).name)}</span><b>${status.remaining} 回合${status.stacks > 1 ? ` · ${status.stacks} 层` : ''}</b></div>`).join('')
+          : '<div class="hint">无状态效果</div>'}
+        <div class="kv"><span>军衔</span><b>${RANK_LABEL[u.rank]}${v.rankNextThreshold === null ? '' : ` · ${u.rankProgress}/${v.rankNextThreshold}`}</b></div>
+        <div class="kv"><span>朝向</span><b>${FACING_LABEL[u.facing]}</b></div>
+        ${u.career.current ? `<div class="kv"><span>职业</span><b>${escapeHtml(careerDef(u.career.current).name)} · 熟练度 ${u.career.mastery[u.career.current] ?? 0}/${careerDef(u.career.current).masteryThreshold}</b></div>` : ''}
+        ${accountSummary(v.resources, unitResource(u)).map((account) => `<div class="kv"><span>单位资源</span><b>${escapeHtml(account)}</b></div>`).join('')}
+        ${commander
+          ? `<div class="kv"><span>编队 ${escapeHtml(commander.id)}</span><b class="${commandActive ? 'good' : 'bad'}">${leader ? (commandActive ? '光环生效' : '超出指挥范围') : '指挥官已离场'}</b></div>`
+          : ''}
+      </div>
+      ${v.reactionUnit === u.id ? `<div class="cmd-list">
+        ${([
+          ['counter', '反击'],
+          ['guard', '防御'],
+          ['support', '援护'],
+          ['conserve', '节制'],
+        ] as const)
+          .map(([stance, label]) => `<button class="btn ${u.reaction === stance ? 'primary' : 'ghost'}" data-act="reaction" data-arg="${stance}">${label}</button>`)
+          .join('')}
+        ${(['north', 'east', 'south', 'west'] as const)
+          .map((facing) => `<button class="btn ${u.facing === facing ? 'primary' : 'ghost'}" data-act="facing" data-arg="${facing}">${FACING_LABEL[facing]}</button>`)
+          .join('')}
+      </div>` : ''}
+      ${v.reactionUnit === u.id && v.careerOptions.length > 0 ? `<div class="unit-section">
+        <h4>职业树与转职</h4>
+        <div class="cmd-list">${v.careerOptions.map((option) => `<button class="btn ${option.eligible ? 'ghost' : 'disabled'}" ${option.eligible ? '' : 'disabled'}
+          data-act="${option.eligible ? 'career' : 'noop'}" data-arg="${escapeHtml(option.career.id)}"
+          title="${escapeHtml(option.reasons.join('；') || (option.unlocked ? '已解锁，可自由切换' : '满足进阶条件'))}">
+          ${escapeHtml(option.career.name)} · T${option.career.tier}${option.unlocked ? ' · 已解锁' : ''}
+        </button>`).join('')}</div>
+      </div>` : ''}
     </section>`;
   }
 
@@ -268,14 +466,19 @@ export class Hud {
     const i = idx(s.map, v.tile.x, v.tile.y);
     const t = Terrains.get(s.map.tiles[i]);
     const owner = s.players.find((p) => p.id === s.map.owners[i]);
-    const costs = (['foot', 'mounted', 'heavy', 'flying'] as const)
-      .map((k) => `${MOVEMENT_LABEL[k]} ${t.cost[k] === null ? '—' : t.cost[k]}`)
+    const costs = MovementProfiles.all()
+      .map((profile) => {
+        const cost = t.cost[profile.id];
+        return `${profile.name} ${cost == null ? '—' : cost}`;
+      })
       .join(' · ');
     return `<section class="card tile-card">
       <h3>${escapeHtml(t.name)} <span class="coord">(${v.tile.x}, ${v.tile.y})</span></h3>
       <div class="kv"><span>防御加成</span><b>${pct(t.defense)}</b></div>
+      <div class="kv"><span>海拔</span><b>${s.map.elevation[i]}</b></div>
+      <div class="kv"><span>基础掩体</span><b>${t.cover === 'full' ? '全掩体' : t.cover === 'half' ? '半掩体' : '无'}</b></div>
       ${t.capturable ? `<div class="kv"><span>归属</span><b style="color:${owner?.color ?? PAL.neutral}">${escapeHtml(owner?.name ?? '中立')}</b></div>` : ''}
-      ${t.income ? `<div class="kv"><span>收入</span><b>${t.income}/回合</b></div>` : ''}
+      ${t.ownerTurnGrants.length > 0 ? `<div class="kv"><span>回合产出</span><b>${escapeHtml(formatAmounts(v.resources, t.ownerTurnGrants))}</b></div>` : ''}
       ${t.heal ? `<div class="kv"><span>治疗</span><b>${t.heal}/回合</b></div>` : ''}
       <div class="kv wrap"><span>移动消耗</span><b>${costs}</b></div>
     </section>`;
@@ -290,6 +493,7 @@ export class Hud {
       <h3>作战目标</h3>
       <ul class="obj-list">
         ${me.objectives
+          .filter((objective) => !me.objectiveStates[objective.id!]?.hidden)
           .map(
             (o) =>
               `<li>${icon('flag')}<span>${escapeHtml(describeObjective(o))}</span><em>${escapeHtml(
@@ -304,7 +508,7 @@ export class Hud {
             const n = s.units.filter((u) => u.owner === p.id).length;
             return `<div class="roster-row" style="--team:${p.color}">
               <span class="dot"></span>${escapeHtml(p.name)}
-              <em>${n} 单位 · ${p.funds}${icon('coin')}</em>
+              <em>${n} 单位 · ${escapeHtml(accountSummary(v.resources, playerResource(p)).join(' · '))}</em>
             </div>`;
           })
           .join('')}
@@ -326,26 +530,31 @@ export class Hud {
     if (!v.recruitAt) return '';
     const s = v.state;
     const p = s.players.find((x) => x.id === s.currentPlayer)!;
-    const options = recruitOptions(s, v.recruitAt);
+    const options = recruitOptions(s, v.recruitAt, v.resources);
+    const accounts = accountSummary(v.resources, playerResource(p));
     return `<div class="modal">
       <div class="modal-box">
         <div class="modal-head">
           <h2>征募单位</h2>
-          <div class="funds">${icon('coin')}<b>${p.funds}</b></div>
+          <div class="funds">${icon('coin')}<b>${escapeHtml(accounts.join(' · '))}</b></div>
           <button class="btn ghost" data-act="cancel">✕</button>
         </div>
         <div class="recruit-grid">
           ${options
             .map((o) => {
               const def = unitDef(o.unit);
+              const weapons = def.weapons.map(weaponDef);
+              const maximumPower = Math.max(...weapons.map((weapon) => weapon.power));
+              const minimumRange = Math.min(...weapons.map((weapon) => weapon.minRange));
+              const maximumRange = Math.max(...weapons.map((weapon) => weapon.maxRange));
               return `<button class="recruit-card ${o.affordable ? '' : 'disabled'}"
                 data-act="${o.affordable ? 'recruit' : 'noop'}" data-arg="${o.unit}">
                 <div class="rc-art">${unitIcon(o.unit, p.color, 46)}</div>
                 <div class="rc-body">
-                  <div class="rc-name">${escapeHtml(def.name)}<span class="rc-cost">${icon('coin')}${def.cost}</span></div>
+                  <div class="rc-name">${escapeHtml(def.name)}<span class="rc-cost">${icon('coin')}${escapeHtml(formatAmounts(v.resources, o.costs))}</span></div>
                   <div class="rc-stats">
-                    ${icon('sword')}${def.attack} · ${icon('heart')}${def.maxHp} · ${icon('boot')}${def.movement}
-                    · ${def.minRange === def.maxRange ? `射程 ${def.maxRange}` : `射程 ${def.minRange}-${def.maxRange}`}
+                    ${icon('sword')}${maximumPower} · ${icon('heart')}${def.maxHp} · ${icon('boot')}${def.movement}
+                    · ${minimumRange === maximumRange ? `射程 ${maximumRange}` : `射程 ${minimumRange}-${maximumRange}`}
                   </div>
                   <div class="rc-blurb">${escapeHtml(def.blurb)}</div>
                 </div>
@@ -373,10 +582,4 @@ export class Hud {
       </div>
     </div>`;
   }
-}
-
-export function escapeHtml(s: string): string {
-  return s.replace(/[&<>"']/g, (c) =>
-    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!,
-  );
 }

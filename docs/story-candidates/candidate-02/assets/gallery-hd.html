@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《群星熄灭之前》正式像素素材画廊</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f2e6cf;
+      --muted: #bcae9a;
+      --panel: #211c1a;
+      --line: #54463b;
+      --cyan: #56d7d7;
+      --coral: #d66950;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #120f0e;
+      color: var(--ink);
+      font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main { width: min(1240px, calc(100% - 32px)); margin: 0 auto; padding: 40px 0 72px; }
+    header { max-width: 780px; margin-bottom: 44px; }
+    h1, h2 { margin: 0; letter-spacing: .03em; }
+    h1 { font-size: clamp(28px, 4vw, 44px); }
+    h2 { margin-top: 40px; padding-bottom: 9px; border-bottom: 1px solid var(--line); font-size: 22px; }
+    p { color: var(--muted); }
+    code { color: var(--cyan); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 18px; }
+    .wide { grid-template-columns: repeat(auto-fit, minmax(540px, 1fr)); }
+    figure { margin: 0; overflow: hidden; border: 1px solid var(--line); background: var(--panel); }
+    .preview {
+      min-height: 260px;
+      display: grid;
+      place-items: center;
+      overflow: auto;
+      padding: 20px;
+      background-color: #d0c6b7;
+      background-image:
+        linear-gradient(45deg, #a9a092 25%, transparent 25%),
+        linear-gradient(-45deg, #a9a092 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #a9a092 75%),
+        linear-gradient(-45deg, transparent 75%, #a9a092 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    }
+    img { display: block; flex: none; image-rendering: pixelated; image-rendering: crisp-edges; }
+    figcaption { padding: 13px 15px 15px; }
+    strong { display: block; color: var(--ink); }
+    small { color: var(--muted); }
+    .tag { color: var(--coral); }
+    @media (max-width: 600px) {
+      .wide { grid-template-columns: 1fr; }
+      main { width: min(100% - 20px, 1240px); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>《群星熄灭之前》正式像素素材</h1>
+      <p>仅展示正式 PNG，不包含 <code>draft-v1/</code> 与母版。所有图像按整数倍率显示并关闭插值；透明素材使用棋盘底。点击图像可直接打开原始文件。</p>
+    </header>
+
+    <h2>人物头像 <span class="tag">96×112 · 2×</span></h2>
+    <section class="grid">
+      <figure><div class="preview"><a href="characters/mira-portrait-hd.png"><img src="characters/mira-portrait-hd.png" width="192" height="224" alt="米拉人物头像"></a></div><figcaption><strong>米拉</strong><small>雨塔学徒、星约见证人；青色诊断巾与太阳穴神经桥。</small></figcaption></figure>
+      <figure><div class="preview"><a href="characters/roan-portrait-hd.png"><img src="characters/roan-portrait-hd.png" width="192" height="224" alt="罗安人物头像"></a></div><figcaption><strong>罗安</strong><small>灾害官旧制服与撤离装备，承担秩序和选择的冲突。</small></figcaption></figure>
+      <figure><div class="preview"><a href="characters/naim-portrait-hd.png"><img src="characters/naim-portrait-hd.png" width="192" height="224" alt="奈姆人物头像"></a></div><figcaption><strong>奈姆</strong><small>返星会爆破手；珊瑚工作层与盗接星脉线路。</small></figcaption></figure>
+      <figure><div class="preview"><a href="characters/talos-7-portrait-hd.png"><img src="characters/talos-7-portrait-hd.png" width="192" height="224" alt="塔洛斯七号人物头像"></a></div><figcaption><strong>塔洛斯七号</strong><small>可拆装维护机体，以青色单线状态灯表达运行状态。</small></figcaption></figure>
+      <figure><div class="preview"><a href="characters/helo-portrait-hd.png"><img src="characters/helo-portrait-hd.png" width="192" height="224" alt="赫洛人物头像"></a></div><figcaption><strong>赫洛</strong><small>民用货船长；旧货运许可、工具和拼修夹克都服务于载量思维。</small></figcaption></figure>
+      <figure><div class="preview"><a href="characters/iya-portrait-hd.png"><img src="characters/iya-portrait-hd.png" width="192" height="224" alt="伊娅人物头像"></a></div><figcaption><strong>伊娅</strong><small>拥有私人边界的留名者投影；衣着、亮度和本地关闭权均由自己选择。</small></figcaption></figure>
+    </section>
+
+    <h2>战斗单位 <span class="tag">128×48 · 3×</span></h2>
+    <section class="grid wide">
+      <figure><div class="preview"><a href="units/mira-walk-sheet-hd.png"><img src="units/mira-walk-sheet-hd.png" width="384" height="144" alt="米拉四帧单位图集"></a></div><figcaption><strong>米拉 · 四帧图集</strong><small>站立 A、踏步 A、站立 B、踏步 B；每帧 32×48。</small></figcaption></figure>
+      <figure><div class="preview"><a href="units/roan-walk-sheet-hd.png"><img src="units/roan-walk-sheet-hd.png" width="384" height="144" alt="罗安四帧单位图集"></a></div><figcaption><strong>罗安 · 四帧图集</strong><small>长枪、旧灾害官外套和队形识别轮廓。</small></figcaption></figure>
+      <figure><div class="preview"><a href="units/naim-walk-sheet-hd.png"><img src="units/naim-walk-sheet-hd.png" width="384" height="144" alt="奈姆四帧单位图集"></a></div><figcaption><strong>奈姆 · 四帧图集</strong><small>爆破盒与低重心机动姿态。</small></figcaption></figure>
+      <figure><div class="preview"><a href="units/talos-7-walk-sheet-hd.png"><img src="units/talos-7-walk-sheet-hd.png" width="384" height="144" alt="塔洛斯七号四帧单位图集"></a></div><figcaption><strong>塔洛斯七号 · 四帧图集</strong><small>维护型方头和清楚的机械关节步态。</small></figcaption></figure>
+      <figure><div class="preview"><a href="units/helo-walk-sheet-hd.png"><img src="units/helo-walk-sheet-hd.png" width="384" height="144" alt="赫洛四帧单位图集"></a></div><figcaption><strong>赫洛 · 四帧图集</strong><small>民用工具、扫描器与稳重货运步态；不使用海盗式英雄动作。</small></figcaption></figure>
+      <figure><div class="preview"><a href="units/iya-walk-sheet-hd.png"><img src="units/iya-walk-sheet-hd.png" width="384" height="144" alt="伊娅四帧单位图集"></a></div><figcaption><strong>伊娅 · 四帧图集</strong><small>实体可读的自选衣着配合窄青色扫描边，保留完整人物轮廓。</small></figcaption></figure>
+    </section>
+
+    <h2>建筑与载具 <span class="tag">128×128 · 2×</span></h2>
+    <section class="grid">
+      <figure><div class="preview"><a href="architecture/zero-rain-tower-hd.png"><img src="architecture/zero-rain-tower-hd.png" width="256" height="256" alt="零号雨塔"></a></div><figcaption><strong>零号雨塔</strong><small>第一章权力与生存资源的核心设施，保留三角星脉节点。</small></figcaption></figure>
+      <figure><div class="preview"><a href="architecture/farlight-cargo-ship-hd.png"><img src="architecture/farlight-cargo-ship-hd.png" width="256" height="256" alt="远灯号货船"></a></div><figcaption><strong>远灯号货船</strong><small>离开赫沙后的移动据点；外露货舱和民用修补结构。</small></figcaption></figure>
+      <figure><div class="preview"><a href="architecture/soler-archive-monastery-hd.png"><img src="architecture/soler-archive-monastery-hd.png" width="256" height="256" alt="索勒档案修院"></a></div><figcaption><strong>索勒档案修院</strong><small>蓝冰冷外层、琥珀热核、普通生活窗与档案维护平台形成热源层级。</small></figcaption></figure>
+      <figure><div class="preview"><a href="architecture/kairon-ring-node-hd.png"><img src="architecture/kairon-ring-node-hd.png" width="256" height="256" alt="凯隆环都星脉节点"></a></div><figcaption><strong>凯隆环都星脉节点</strong><small>低矮环形公共设施；轨道、权限门、分离锁与外环维修面同框。</small></figcaption></figure>
+    </section>
+
+    <h2>剧情场景 <span class="tag">256×144 · 2×</span></h2>
+    <section class="grid wide">
+      <figure><div class="preview"><a href="scenes/season-without-rain-hd.png"><img src="scenes/season-without-rain-hd.png" width="512" height="288" alt="没有下雨的季节场景"></a></div><figcaption><strong>没有下雨的季节</strong><small>以赤砂、空水管和零号雨塔建立第一章的长期缺水。</small></figcaption></figure>
+      <figure><div class="preview"><a href="scenes/seven-minute-rain-hd.png"><img src="scenes/seven-minute-rain-hd.png" width="512" height="288" alt="七分钟的雨场景"></a></div><figcaption><strong>七分钟的雨</strong><small>真实降雨短暂降临聚落，让资源冲突转为共同见证。</small></figcaption></figure>
+      <figure><div class="preview"><a href="scenes/farlight-departure-hd.png"><img src="scenes/farlight-departure-hd.png" width="512" height="288" alt="远灯号载着难民起飞场景"></a></div><figcaption><strong>远灯号起飞</strong><small>拥挤货舱、有限床位、未装物资与留下的人，让离乡保持具体代价。</small></figcaption></figure>
+      <figure><div class="preview"><a href="scenes/folding-table-covenant-hd.png"><img src="scenes/folding-table-covenant-hd.png" width="512" height="288" alt="折叠桌星约场景"></a></div><figcaption><strong>折叠桌星约</strong><small>五界材料、独立断开接口和普通饭食，把最低星约放回拥挤共同生活。</small></figcaption></figure>
+    </section>
+
+    <h2>剧情道具 <span class="tag">192×48 · 3×</span></h2>
+    <section class="grid wide">
+      <figure><div class="preview"><a href="props/story-props-sheet-hd.png"><img src="props/story-props-sheet-hd.png" width="576" height="144" alt="四件剧情道具横向图集"></a></div><figcaption><strong>剧情道具图集</strong><small>从左到右：净水芯、星脉密钥、萤火无人机、记忆回声容器；每件 48×48。</small></figcaption></figure>
+      <figure><div class="preview"><a href="props/campaign-props-sheet-02-hd.png"><img src="props/campaign-props-sheet-02-hd.png" width="576" height="144" alt="第二组四件贯穿剧情道具横向图集"></a></div><figcaption><strong>贯穿剧情道具图集 02</strong><small>从左到右：赫沙金属杯、罗安风险清单装置、两张撤离票、伊娅可关闭门控件；每件 48×48。</small></figcaption></figure>
+    </section>
+  </main>
+</body>
+</html>
