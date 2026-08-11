@@ -455,6 +455,7 @@ function evaluateUnit(
           content,
         });
         if (score === null || !Number.isFinite(score)) continue;
+        const directiveAdjustment = unit.directive.mode === 'retreat' && opt.ability === 'attack' ? -5_000 : 0;
         consider({
           action: {
             kind: 'command',
@@ -464,7 +465,7 @@ function evaluateUnit(
               ? { ability: opt.ability, weapon: opt.weapon, target }
               : { ability: opt.ability, weapon: opt.weapon },
           },
-          score,
+          score: score + directiveAdjustment,
         });
       }
     }

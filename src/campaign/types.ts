@@ -63,6 +63,8 @@ export type CampaignNode =
   | (CampaignNodeBase & {
       type: 'battle';
       level: string;
+      /** Player whose team defines campaign victory/defeat. Defaults to 1. */
+      perspectivePlayer?: PlayerId;
       rosterBindings?: Array<{ campaignUnit: CampaignUnitId; levelUnitKey: string }>;
       next: Partial<Record<CampaignOutcome, CampaignNodeId>>;
       outcomeEffects?: Partial<Record<CampaignOutcome, CampaignEffect[]>>;
@@ -144,6 +146,7 @@ export interface BattleRequest {
   campaignId: string;
   node: CampaignNodeId;
   levelId: string;
+  perspectivePlayer: PlayerId;
   /** Ready-to-run immutable-by-contract level snapshot. */
   level: LevelData;
   rosterBindings: Array<{ campaignUnit: CampaignUnitId; levelUnitKey: string }>;

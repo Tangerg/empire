@@ -3,7 +3,7 @@ import { dist, inBounds } from './grid';
 import { areAllies, removeUnit, requireUnit, unitAtCoord } from './state';
 import type { ContentCatalog } from './content-pack';
 import { GlobalContentCatalog } from './content-pack';
-import type { Coord, GameEvent, GameState, Unit } from './types';
+import type { BattlefieldMarker, Coord, GameEvent, GameState, Unit } from './types';
 import { cloneUnitState } from './unit-state';
 
 function transportProfile(state: GameState, carrierId: number, content: ContentCatalog) {
@@ -79,12 +79,20 @@ export function loseTransportPassengers(
   at: Coord,
   emit: (event: GameEvent) => void,
 ): number[] {
-  const entries = state.embarkedUnits.filter((entry) => entry.carrier === carrierId);
-  if (entries.length === 0) return [];
-  const ids: number[] = [];
-  for (const entry of entries) {
-    ids.push(entry.unit.id);
-    const marker = {
+  const markers = extractLostTransportPassengers(state, carrierId, at);
+  emitTransportLossEvents(carrierId, at, markers, emit);
+  return markers.map((marker) => marker.fallenUnit!.id);
+}
+
+/** State-only half of fatal transport cleanup, owned by the battle aggregate. */
+export function extractLostTransportPassengers(
+  state: GameState,
+  carrierId: number,
+  at: Coord,
+): BattlefieldMarker[] {
+  const markers: BattlefieldMarker[] = [];
+  for (const entry of state.embarkedUnits.filter((candidate) => candidate.carrier === carrierId)) {
+    const marker: BattlefieldMarker = {
       id: state.nextMarkerId++,
       kind: 'transport-loss',
       at: { ...at },
@@ -93,9 +101,52 @@ export function loseTransportPassengers(
       meta: { carrier: carrierId },
     };
     state.markers.push(marker);
+    markers.push(marker);
+  }
+  state.embarkedUnits = state.embarkedUnits.filter((entry) => entry.carrier !== carrierId);
+  return markers;
+}
+
+export function emitTransportLossEvents(
+  carrierId: number,
+  at: Coord,
+  markers: readonly BattlefieldMarker[],
+  emit: (event: GameEvent) => void,
+): void {
+  if (markers.length === 0) return;
+  for (const marker of markers) emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
+  emit({
+    type: 'transportLost',
+    carrier: carrierId,
+    passengers: markers.flatMap((marker) => marker.fallenUnit ? [marker.fallenUnit.id] : []),
+    at: { ...at },
+  });
+}
+
+/** Removes passengers together with a non-fatal carrier withdrawal. */
+export function withdrawTransportPassengers(
+  state: GameState,
+  carrierId: number,
+  at: Coord,
+  kind: 'routed' | 'surrendered' | 'withdrawn',
+  emit: (event: GameEvent) => void,
+  meta: Record<string, number | string | boolean> = {},
+): number[] {
+  const entries = state.embarkedUnits.filter((entry) => entry.carrier === carrierId);
+  const ids: number[] = [];
+  for (const entry of entries) {
+    ids.push(entry.unit.id);
+    const marker = {
+      id: state.nextMarkerId++,
+      kind,
+      at: { ...at },
+      owner: entry.unit.owner,
+      fallenUnit: cloneUnitState(entry.unit),
+      meta: { carrier: carrierId, ...meta },
+    };
+    state.markers.push(marker);
     emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
   }
   state.embarkedUnits = state.embarkedUnits.filter((entry) => entry.carrier !== carrierId);
-  emit({ type: 'transportLost', carrier: carrierId, passengers: ids, at: { ...at } });
   return ids;
 }

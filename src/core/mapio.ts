@@ -275,7 +275,6 @@ export function validateLevel(
       err(`单位 ${unit.key ?? `${unit.x},${unit.y}`} 链接到未知指挥官 ${unit.commander}`);
     }
   }
-
   const structureIds = new Set<string>();
   for (const structure of level.structures ?? []) {
     if (!structure.id.trim()) err('结构缺少 id');
@@ -315,6 +314,19 @@ export function validateLevel(
         err(`区域 ${zone.id} 包含越界格：${cell.x},${cell.y}`);
       }
     }
+  }
+  for (const unit of level.units) {
+    if (unit.directive?.zone && !zoneIds.has(unit.directive.zone)) {
+      err(`单位 ${unit.key ?? unit.unit} 的战术指令引用了未知区域 ${unit.directive.zone}`);
+    }
+  }
+  const engagementRuleIds = new Set<string>();
+  for (const rule of level.scenario?.engagementRules ?? []) {
+    if (!rule.id.trim()) err('交战规则缺少 id');
+    if (engagementRuleIds.has(rule.id)) err(`交战规则 id 重复：${rule.id}`);
+    engagementRuleIds.add(rule.id);
+    if (!zoneIds.has(rule.zone)) err(`交战规则 ${rule.id} 引用了未知区域 ${rule.zone}`);
+    for (const owner of rule.players ?? []) if (!ids.has(owner)) err(`交战规则 ${rule.id} 引用了未知玩家 ${owner}`);
   }
 
   if (level.deployment) {

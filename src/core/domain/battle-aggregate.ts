@@ -6,6 +6,7 @@ import { StructureEntity } from './structure-entity';
 import { UnitEntity } from './unit-entity';
 import { GlobalContentCatalog, type ContentCatalog } from '../content-pack';
 import { cloneUnitState } from '../unit-state';
+import { extractLostTransportPassengers } from '../transports';
 
 /** Aggregate root for every mutation that changes battle ownership or life. */
 export class BattleAggregate {
@@ -55,27 +56,38 @@ export class BattleAggregate {
     killed: boolean;
     at: Coord;
     marker: BattlefieldMarker | null;
+    passengerMarkers: BattlefieldMarker[];
   } {
     const unit = this.unit(id);
     const at = unit.position;
     const result = unit.takeDamage(requested);
     let marker: BattlefieldMarker | null = null;
+    let passengerMarkers: BattlefieldMarker[] = [];
     if (result.killed) {
       this.clearCaptureAt(at);
       marker = this.createCorpse(unit.state);
       this.removeUnit(id);
+      passengerMarkers = extractLostTransportPassengers(this.state, id, at);
     }
-    return { ...result, at, marker };
+    return { ...result, at, marker, passengerMarkers };
   }
 
   createCorpse(unit: Unit): BattlefieldMarker {
+    return this.createUnitMarker(unit, 'corpse');
+  }
+
+  createUnitMarker(
+    unit: Unit,
+    kind: string,
+    meta: BattlefieldMarker['meta'] = {},
+  ): BattlefieldMarker {
     const marker: BattlefieldMarker = {
       id: this.state.nextMarkerId++,
-      kind: 'corpse',
+      kind,
       at: { x: unit.x, y: unit.y },
       owner: unit.owner,
       fallenUnit: cloneUnitState(unit),
-      meta: {},
+      meta: { ...meta },
     };
     this.state.markers.push(marker);
     return marker;

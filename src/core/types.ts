@@ -804,6 +804,7 @@ export interface LevelScenario {
     remainingRounds?: number | null;
   }>;
   triggers?: ScenarioTrigger[];
+  engagementRules?: ZoneEngagementRule[];
 }
 
 export interface ScenarioState {

@@ -35,6 +35,7 @@ import { cloneUnitState } from './unit-state';
 import { changeMorale, surrenderUnit } from './morale';
 import { addEngagementRule, removeEngagementRule } from './engagement';
 import { compositeStatus, moveComposite } from './composites';
+import { withdrawTransportPassengers } from './transports';
 
 export type ScenarioTiming = ScenarioTrigger['timing'];
 type ConditionKind = Extract<keyof ScenarioConditionKindMap, string>;
@@ -363,11 +364,13 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   .register(effectHandler('withdrawUnits', (context, effect) => {
     for (const unit of [...context.select(effect.selector)]) {
       const at = { x: unit.x, y: unit.y };
-      if (effect.leaveCorpse) {
-        const marker = new BattleAggregate(context.state, context.content).createCorpse(unit);
-        context.emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
-      }
+      const aggregate = new BattleAggregate(context.state, context.content);
+      const marker = effect.leaveCorpse
+        ? aggregate.createCorpse(unit)
+        : aggregate.createUnitMarker(unit, 'withdrawn');
+      context.emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
       removeUnit(context.state, unit.id);
+      withdrawTransportPassengers(context.state, unit.id, at, 'withdrawn', context.emit);
       handleCommanderDefeat(context.state, unit.id, context.emit, context.content);
       context.emit({ type: 'unitWithdrawn', unit: unit.id, at });
     }
@@ -486,6 +489,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     for (const marker of [...context.selectMarkers(effect.selector)]) {
       const fallen = marker.fallenUnit;
       if (!fallen) continue;
+      if (context.state.units.some((unit) => unit.id === fallen.id || (fallen.key && unit.key === fallen.key))) continue;
       const destination = destinations.find((cell) => {
         if (unitAtCoord(context.state, cell)) return false;
         const battlefieldCell = new Battlefield(context.state, context.content).cell(cell);

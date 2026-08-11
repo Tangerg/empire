@@ -61,7 +61,7 @@ describe('source dependency boundaries', () => {
       const source = readFileSync(file, 'utf8');
       const forbidden = [...source.matchAll(/from\s+['"]([^'"]+)['"]|import\s+['"]([^'"]+)['"]/g)]
         .map((match) => match[1] ?? match[2])
-        .filter((specifier) => /(?:^|\/)\.{1,2}\/(?:content|application|art|ui|editor|game)(?:\/|$)/.test(specifier));
+        .filter((specifier) => /(?:^|\/)\.{1,2}\/(?:campaign|content|application|art|ui|editor|game)(?:\/|$)/.test(specifier));
       return forbidden.map((specifier) => `${relative(coreRoot, file)} -> ${specifier}`);
     });
 

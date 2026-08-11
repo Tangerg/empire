@@ -56,7 +56,7 @@ function createUnitState(
     reactionUsedRound: -1,
     facing: source.facing ?? 'south',
     morale: {
-      current: Math.max(0, Math.min(def.morale?.maximum ?? 100, Math.round(source.morale ?? def.morale?.maximum ?? 100))),
+      current: Math.max(1, Math.min(def.morale?.maximum ?? 100, Math.round(source.morale ?? def.morale?.maximum ?? 100))),
       maximum: def.morale?.maximum ?? 100,
       resilience: Math.max(0, Math.min(0.9, def.morale?.resilience ?? 0)),
     },
@@ -247,7 +247,10 @@ export function createState(level: LevelData, content: ContentCatalog = GlobalCo
       zoneTags: Object.fromEntries(
         (level.scenario?.zones ?? []).map((zone) => [zone.id, [...new Set(zone.tags ?? [])]]),
       ),
-      engagementRules: [],
+      engagementRules: (level.scenario?.engagementRules ?? []).map((rule) => ({
+        ...rule,
+        players: rule.players?.slice(),
+      })),
     },
   };
   return state;

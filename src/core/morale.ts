@@ -1,20 +1,13 @@
 import { dist } from './grid';
-import { removeUnit, requireUnit } from './state';
+import { areAllies, removeUnit, requireUnit } from './state';
 import type { ContentCatalog } from './content-pack';
 import { GlobalContentCatalog } from './content-pack';
 import type { BattlefieldMarker, GameEvent, GameState, PlayerId, Unit } from './types';
-import { cloneUnitState } from './unit-state';
+import { withdrawTransportPassengers } from './transports';
+import { BattleAggregate } from './domain/battle-aggregate';
 
 function withdrawalMarker(state: GameState, unit: Unit, kind: string, meta: BattlefieldMarker['meta']): BattlefieldMarker {
-  const marker: BattlefieldMarker = {
-    id: state.nextMarkerId++,
-    kind,
-    at: { x: unit.x, y: unit.y },
-    owner: unit.owner,
-    fallenUnit: cloneUnitState(unit),
-    meta,
-  };
-  state.markers.push(marker);
+  const marker = new BattleAggregate(state).createUnitMarker(unit, kind, meta);
   removeUnit(state, unit.id);
   return marker;
 }
@@ -22,6 +15,7 @@ function withdrawalMarker(state: GameState, unit: Unit, kind: string, meta: Batt
 export function routeUnit(state: GameState, unitId: number, emit: (event: GameEvent) => void): BattlefieldMarker {
   const unit = requireUnit(state, unitId);
   const marker = withdrawalMarker(state, unit, 'routed', {});
+  withdrawTransportPassengers(state, unitId, marker.at, 'routed', emit);
   emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
   emit({ type: 'unitRouted', unit: unitId, marker: marker.id, at: marker.at });
   return marker;
@@ -35,6 +29,14 @@ export function surrenderUnit(
 ): BattlefieldMarker {
   const unit = requireUnit(state, unitId);
   const marker = withdrawalMarker(state, unit, 'surrendered', to === undefined ? {} : { surrenderedTo: to });
+  withdrawTransportPassengers(
+    state,
+    unitId,
+    marker.at,
+    'surrendered',
+    emit,
+    to === undefined ? {} : { surrenderedTo: to },
+  );
   emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
   emit({ type: 'unitSurrendered', unit: unitId, marker: marker.id, at: marker.at, to });
   return marker;
@@ -76,7 +78,8 @@ export function resolveMoraleAfterDamage(
     changeMorale(state, target.id, -loss, 'damage', emit);
   }
   if (killed) {
-    const allies = state.units.filter((unit) => unit.owner === target.owner && dist(unit, at) <= state.rules.moraleDefeatShockRadius);
+    const allies = state.units.filter((unit) =>
+      areAllies(state, unit.owner, target.owner) && dist(unit, at) <= state.rules.moraleDefeatShockRadius);
     for (const ally of allies) changeMorale(state, ally.id, -state.rules.moraleAllyDefeatLoss, 'ally-defeated', emit);
   }
   return !killed && !state.units.some((unit) => unit.id === target.id);

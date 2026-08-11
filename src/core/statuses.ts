@@ -2,7 +2,7 @@ import { BattleAggregate } from './domain/battle-aggregate';
 import type { GameEvent, GameState, StatusDef, StatusId, StatusModifiers, Unit } from './types';
 import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
 import { resolveMoraleAfterDamage } from './morale';
-import { loseTransportPassengers } from './transports';
+import { emitTransportLossEvents } from './transports';
 
 export { Statuses } from './data/statuses';
 
@@ -36,7 +36,7 @@ export class StatusLifecycleContext {
       this.emit({ type: 'death', unit: this.unit.id, at: result.at });
       if (result.marker) this.emit({ type: 'markerAdded', marker: result.marker.id, kind: result.marker.kind, at: result.marker.at });
       this.onDeath?.(this.unit.id);
-      loseTransportPassengers(this.state, this.unit.id, result.at, this.emit);
+      emitTransportLossEvents(this.unit.id, result.at, result.passengerMarkers, this.emit);
       resolveMoraleAfterDamage(this.state, this.unit, result.amount, true, result.at, this.emit, this.content);
     } else if (resolveMoraleAfterDamage(this.state, this.unit, result.amount, false, result.at, this.emit, this.content)) {
       this.onDeath?.(this.unit.id);

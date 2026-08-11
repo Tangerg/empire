@@ -8,6 +8,7 @@ import type {
   LevelDeployment,
   LevelCliffEdge,
   LevelDirectionalCover,
+  LevelComposite,
   Objective,
   PlayerId,
   RuleSet,
@@ -25,6 +26,7 @@ export function makeLevel(
     victory?: Objective[];
     funds?: [number, number];
     structures?: LevelStructure[];
+    composites?: LevelComposite[];
     scenario?: LevelScenario;
     deployment?: LevelDeployment;
     elevation?: number[];
@@ -43,6 +45,7 @@ export function makeLevel(
     units: opts.units ?? [],
     commanders: opts.commanders ?? [],
     structures: opts.structures ?? [],
+    composites: opts.composites ?? [],
     players: [
       {
         id: 1,

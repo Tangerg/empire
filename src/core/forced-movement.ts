@@ -8,7 +8,7 @@ import { requireUnit, unitAtCoord } from './state';
 import type { Coord, GameEvent, GameState, Unit } from './types';
 import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
 import { resolveMoraleAfterDamage } from './morale';
-import { loseTransportPassengers } from './transports';
+import { emitTransportLossEvents } from './transports';
 
 export type ForcedMovementMode = 'push' | 'pull';
 
@@ -90,7 +90,7 @@ export function forceMoveUnit(
       emit({ type: 'death', unit: unit.id, at: result.at });
       if (result.marker) emit({ type: 'markerAdded', marker: result.marker.id, kind: result.marker.kind, at: result.marker.at });
       handleCommanderDefeat(state, unit.id, emit, content);
-      loseTransportPassengers(state, unit.id, result.at, emit);
+      emitTransportLossEvents(unit.id, result.at, result.passengerMarkers, emit);
       resolveMoraleAfterDamage(state, unit, result.amount, true, result.at, emit, content);
     } else if (resolveMoraleAfterDamage(state, unit, result.amount, false, result.at, emit, content)) {
       handleCommanderDefeat(state, unit.id, emit, content);

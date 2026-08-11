@@ -1,4 +1,4 @@
-import { Abilities, abilityDef, canUseAbility, type AbilityDef } from './abilities';
+import { Abilities, abilityDef, abilityTargets, canUseAbility, type AbilityDef } from './abilities';
 import { advanceWeaponCooldowns, unitWeapons } from './combat';
 import { idx, sameCoord } from './grid';
 import { player, removeUnit, requireUnit, spawnUnit, unitAt, unitsOf } from './state';
@@ -63,7 +63,7 @@ export function commandOptions(
     if (abilityId === 'attack') continue;
     const ability = abilityDef(abilityId, abilities);
     if (!canUseAbility(ability, q)) continue;
-    const targets = ability.targets(q);
+    const targets = abilityTargets(ability, q);
     if (!ability.selfTargeted && targets.length === 0) continue;
     out.push({
       key: ability.id,
@@ -80,7 +80,7 @@ export function commandOptions(
     for (const weapon of unitWeapons(unit, content)) {
       const weaponQuery = { ...q, weaponId: weapon.id };
       if (!canUseAbility(attack, weaponQuery)) continue;
-      const targets = attack.targets(weaponQuery);
+      const targets = abilityTargets(attack, weaponQuery);
       if (targets.length === 0) continue;
       out.push({
         key: `attack:${weapon.id}`,
@@ -251,7 +251,7 @@ class CommandActionHandler implements ActionHandler<'command'> {
     const target = 'target' in action.command ? action.command.target ?? null : null;
     if (!ability.selfTargeted) {
       if (!target) context.fail(`「${ability.name}」需要指定目标`);
-      if (!ability.targets(query).some((candidate) => sameCoord(candidate, target))) {
+      if (!abilityTargets(ability, query).some((candidate) => sameCoord(candidate, target))) {
         context.fail('目标不合法');
       }
     }

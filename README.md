@@ -5,9 +5,9 @@ Ancient Empires 风格的回合制战棋，Web 技术栈实现：
 - **纯 TypeScript 规则引擎**（`src/core`），不依赖 DOM，可测试、可移到 worker / 服务端
 - **全部美术由 SVG 手绘**：11 种地形、9 个兵种精灵、9 张兵种立绘，阵营颜色实时换色
 - **地图编辑器**（`editor.html`），关卡即编辑器文档，内置 4 张关卡都可以在编辑器里打开继续改
-- 199 个测试覆盖规则、AI、空间层、职业树、微内核、扩展隔离、资源原子性、内容包边界、三题材契约、关卡合法性与三个页面的运行时
+- 211 个测试覆盖规则、AI、空间层、士气、阵形、运输、复合目标、职业树、微内核、战役桥接、存档边界、三题材契约、关卡合法性与三个页面的运行时
 
-详细设计：[通用战斗引擎架构](./docs/combat-engine-architecture.md) · [经典 SRPG 战斗系统研究](./docs/combat-system-design.md)
+详细设计：[通用战斗引擎架构](./docs/combat-engine-architecture.md) · [剧情战役框架](./docs/campaign-engine-architecture.md) · [经典 SRPG 战斗系统研究](./docs/combat-system-design.md)
 
 ```bash
 npm install
@@ -44,6 +44,7 @@ npm run build      # 产出 dist/
 | 方位 | 四方向朝向、移动/攻击自动转向、手动转向、侧击、背刺与对向夹击 |
 | 掩体 | 地形/结构基础掩体与四边方向掩体；半/全掩体、高地压制、曲射与无视掩体标签 |
 | 职业 | 数据化有向职业树、军衔/熟练度门槛、职业掌握、已解锁职业自由切换与事务回滚 |
+| 战役级原语 | 士气/溃退/投降、阵形、运输、守卫/巡逻/撤退指令、停火区、周期环境与移动复合目标 |
 | 占领 | 踏入即占领（`captureMode: 'instant'`），只有带 `capture` 能力的步兵可以占 |
 | 经济 | 回合开始结算所属建筑收入；单位站在己方建筑上回血 |
 | 生产 | 城堡 / 兵营出兵，新单位当回合默认不能行动 |
@@ -99,7 +100,12 @@ src/
     overlays.ts         动态地形效果查询
     objective-model.ts  稳定目标 ID 与运行状态
     objective-system.ts 开放目标类型与策略注册表
-    scenario.ts         开放条件/效果 DSL 与策略注册表
+    scenario.ts         开放条件/效果 DSL、周期触发与策略注册表
+    morale.ts           士气变化、溃退与投降
+    formations.ts       空间约束阵形
+    transports.ts       登载、卸载与载具损失不变量
+    composites.ts       多部件与移动战场目标
+    engagement.ts       区域敌对行动政策
     progression.ts      当关军衔、可注入阈值与英雄气势
     abilities.ts        实例隔离的能力目录（attack/heal/capture/wait）
     actions.ts          内置行动策略、事务后处理与回合推进
@@ -114,6 +120,8 @@ src/
       levels/*.json     当前内置关卡（= 编辑器文档）
     install-default.ts  默认内容组合函数（无副作用）
     bootstrap-default.ts 应用/测试唯一的默认安装副作用入口
+  campaign/             通用章节状态机、战斗防腐层与版本化存档
+  content/campaigns/    三套候选故事的七章结构契约
   application/          浏览器存储、试玩交接等应用适配器
   demo/                 微内核、实体资源与语义事件的可交互演示
   art/                  SVG 绘制
@@ -206,7 +214,7 @@ const engine = createDefaultMicrokernel().use(FireMagicPlugin).buildBattleEngine
 
 ### 预留但没用的口子
 
-- `LevelData.extra`：尚未正式建模的战役层元数据；剧情和对话不由战斗核心解释
+- `LevelData.extra`：战斗核心不解释的不透明应用元数据；正式跨关状态使用 `src/campaign`
 - `Unit.meta`：只用于短期原型；经验、状态、气势等正式机制不能放回这里
 - `rules.damageVariance`：预留的模式字段，当前确定性结算不读取它
 - 多阵营：`PlayerConfig.team` 已经是独立字段，同队即为盟友（`areAllies`），编辑器支持添加到 8 名玩家

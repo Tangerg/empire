@@ -30,6 +30,15 @@ export class CampaignConditionRegistry {
     return this;
   }
 
+  replace<K extends ConditionKind>(handler: CampaignConditionHandler<K>): this {
+    this.handlers.set(handler.kind, handler as CampaignConditionHandler);
+    return this;
+  }
+
+  kinds(): string[] {
+    return [...this.handlers.keys()];
+  }
+
   evaluate(state: CampaignState, condition: CampaignCondition): boolean {
     const handler = this.handlers.get(condition.type);
     if (!handler) throw new Error(`no campaign condition handler for "${condition.type}"`);
@@ -73,6 +82,15 @@ export class CampaignEffectRegistry {
     if (this.handlers.has(handler.kind)) throw new Error(`campaign effect handler already registered: "${handler.kind}"`);
     this.handlers.set(handler.kind, handler as CampaignEffectHandler);
     return this;
+  }
+
+  replace<K extends EffectKind>(handler: CampaignEffectHandler<K>): this {
+    this.handlers.set(handler.kind, handler as CampaignEffectHandler);
+    return this;
+  }
+
+  kinds(): string[] {
+    return [...this.handlers.keys()];
   }
 
   apply(state: CampaignState, effect: CampaignEffect): void {

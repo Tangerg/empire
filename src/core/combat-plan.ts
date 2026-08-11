@@ -42,7 +42,8 @@ import type {
 } from './types';
 import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
 import { resolveMoraleAfterDamage } from './morale';
-import { loseTransportPassengers } from './transports';
+import { emitTransportLossEvents } from './transports';
+import { hostileActionAllowed } from './engagement';
 
 export interface PlannedUnitHit {
   target: number;
@@ -211,6 +212,9 @@ export function forecastCombatPlan(
   content: ContentCatalog = GlobalContentCatalog,
 ): CombatPlan {
   const resolvedWeaponId = weaponId ?? primaryWeapon(attacker, content).id;
+  if (!hostileActionAllowed(state, attacker.owner, from, aimedAt, 'attack')) {
+    throw new Error('combat plan target is protected by an engagement rule');
+  }
   const weapon = content.weapons.get(resolvedWeaponId);
   const primaryTarget = unitAtCoord(state, aimedAt);
   const primaryStructureTarget = hostileStructure(state, attacker, aimedAt, content);
@@ -336,7 +340,7 @@ function applyUnitHit(
     emit({ type: 'death', unit: hit.target, at: result.at });
     if (result.marker) emit({ type: 'markerAdded', marker: result.marker.id, kind: result.marker.kind, at: result.marker.at });
     handleCommanderDefeat(state, hit.target, emit, content);
-    loseTransportPassengers(state, hit.target, result.at, emit);
+    emitTransportLossEvents(hit.target, result.at, result.passengerMarkers, emit);
   }
   awardCombatProgress(attacker, result.amount, result.killed, emit, progression, content);
   if (!result.killed && hit.effects.length > 0) {
@@ -424,7 +428,7 @@ export function executeCombatPlan(
       emit({ type: 'death', unit: attacker.id, at: result.at });
       if (result.marker) emit({ type: 'markerAdded', marker: result.marker.id, kind: result.marker.kind, at: result.marker.at });
       handleCommanderDefeat(state, attacker.id, emit, content);
-      loseTransportPassengers(state, attacker.id, result.at, emit);
+      emitTransportLossEvents(attacker.id, result.at, result.passengerMarkers, emit);
     } else {
       hitEffects.apply(state, defender, requireUnit(state, attacker.id), content.weapons.get(counter.weapon).hitEffects, emit, content);
       awardDamageTakenMomentum(attacker, emit, resources);
@@ -457,7 +461,7 @@ export function executeCombatPlan(
     emit({ type: 'death', unit: target.id, at: result.at });
     if (result.marker) emit({ type: 'markerAdded', marker: result.marker.id, kind: result.marker.kind, at: result.marker.at });
     handleCommanderDefeat(state, target.id, emit, content);
-    loseTransportPassengers(state, target.id, result.at, emit);
+    emitTransportLossEvents(target.id, result.at, result.passengerMarkers, emit);
   } else {
     hitEffects.apply(state, supporter, requireUnit(state, target.id), support.effects, emit, content);
     awardDamageTakenMomentum(target, emit, resources);

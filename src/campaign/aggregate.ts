@@ -92,6 +92,31 @@ export function createCampaignState(definition: CampaignDefinition): CampaignSta
   };
 }
 
+export function validateCampaignState(definition: CampaignDefinition, state: CampaignState): void {
+  if (state.definitionId !== definition.id || state.definitionVersion !== definition.version) {
+    throw new Error('campaign state does not match definition identity/version');
+  }
+  if (!definition.nodes.some((node) => node.id === state.currentNode)) {
+    throw new Error(`campaign state references unknown node "${state.currentNode}"`);
+  }
+  if (!['active', 'completed', 'failed'].includes(state.status)) throw new Error('campaign state has invalid status');
+  if (!Number.isInteger(state.battleSequence) || state.battleSequence < 0) throw new Error('campaign battle sequence is invalid');
+  for (const [id, unit] of Object.entries(state.roster)) {
+    if (unit.id !== id) throw new Error(`campaign roster key mismatch for "${id}"`);
+    if (!['available', 'fallen', 'routed', 'surrendered', 'missing'].includes(unit.disposition)) {
+      throw new Error(`campaign roster unit "${id}" has invalid disposition`);
+    }
+    if (!Number.isFinite(unit.hpRatio) || unit.hpRatio < 0 || unit.hpRatio > 1 ||
+      !Number.isFinite(unit.moraleRatio) || unit.moraleRatio < 0 || unit.moraleRatio > 1) {
+      throw new Error(`campaign roster unit "${id}" has invalid battle ratios`);
+    }
+  }
+  if (state.pendingBattle && (state.pendingBattle.node !== state.currentNode ||
+    definition.nodes.find((node) => node.id === state.currentNode)?.type !== 'battle')) {
+    throw new Error('campaign pending battle does not match current node');
+  }
+}
+
 /** Rich aggregate: all cross-node and battle-result invariants live here. */
 export class CampaignAggregate {
   private readonly nodes: ReadonlyMap<string, CampaignNode>;
@@ -102,9 +127,7 @@ export class CampaignAggregate {
     private readonly rules: CampaignRuleServices,
   ) {
     validateCampaignDefinition(definition);
-    if (state.definitionId !== definition.id || state.definitionVersion !== definition.version) {
-      throw new Error('campaign state does not match definition identity/version');
-    }
+    validateCampaignState(definition, state);
     this.nodes = new Map(definition.nodes.map((node) => [node.id, node]));
   }
 

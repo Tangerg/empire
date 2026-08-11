@@ -213,6 +213,18 @@ export function canUseAbility(ability: AbilityDef, query: AbilityQuery): boolean
   return blockedAbilityStatus(query.unit, tags, query.content ?? GlobalContentCatalog) === null && ability.usable(query);
 }
 
+/** Shared target-policy projection used by menus, AI and authoritative actions. */
+export function abilityTargets(ability: AbilityDef, query: AbilityQuery): Coord[] {
+  const targets = ability.targets(query);
+  const engagementKind = ability.tags.includes('attack')
+    ? 'attack'
+    : ability.tags.includes('hostile') || ability.tags.includes('hostile-action')
+      ? 'hostile-action' : null;
+  if (!engagementKind) return targets;
+  return targets.filter((target) =>
+    hostileActionAllowed(query.state, query.unit.owner, query.at, target, engagementKind));
+}
+
 /** Abilities this unit can use right now, in menu order. */
 export function availableAbilities(
   q: AbilityQuery,
