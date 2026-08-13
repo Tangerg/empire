@@ -1,18 +1,14 @@
-import { icon } from '@empire/game-ui/art/icons';
 import { loadCustomLevels, saveCustomLevel, stashPlaytest } from '@empire/game-ui/application/level-storage';
-import { terrainSwatch } from '@empire/game-ui/art/terrain';
 import type { ContentCatalog } from '@empire/battle-engine/content-pack';
-import { unitIcon } from '@empire/game-ui/art/units';
 import { TEAM_COLORS } from '@empire/game-ui/art/palette';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
 import {
   emptyLevel,
+  mapFromLevel,
   normaliseLevel,
-  terrainCharacter,
   validateLevel,
   type LevelIssue,
 } from '@empire/battle-engine/level';
-import { mapFromLevel } from '@empire/battle-engine/level';
 import type {
   Coord,
   CoverLevel,
@@ -22,33 +18,66 @@ import type {
   PlayerConfig,
   RuleSet,
 } from '@empire/battle-engine/types';
-import { escapeHtml } from '@empire/game-ui/ui/html';
+import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from '@empire/battle-engine/resources';
 import { EditorBoard } from './board';
 import { EditorDocument } from './document';
+import { EditorHistory } from './history';
+import { EditorPanels, type EditorPanelView } from './panels';
 import { BrushSettings, EDITOR_TOOLS, type EditorTool, type EditorToolContext } from './tools';
-import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from '@empire/battle-engine/resources';
 
 const DRAFT_KEY = 'empire.editorDraft';
 
-const playerFunds = (player: PlayerConfig) => player.resources[FUNDS_RESOURCE]?.current ?? 0;
-const unitRecruitCost = (content: ContentCatalog, id: string) => content.units.get(id).recruitCosts
-  .map((cost) => `${cost.resource} ${cost.amount}`)
-  .join(' · ') || '不可招募';
-const fundsGrant = (rules: Partial<RuleSet>) =>
-  rules.baseResourceGrants?.find((grant) => grant.resource === FUNDS_RESOURCE)?.amount ?? 0;
+/**
+ * Writing one player field. Pure: a player's own settings need nothing but the
+ * player, so these are stated as a table rather than as a run of `if (key ===)`.
+ */
+type PlayerFieldWriter = (player: PlayerConfig, value: string | boolean) => void;
 
-const OBJECTIVE_TYPES: { type: Objective['type']; label: string }[] = [
-  { type: 'routEnemies', label: '歼灭敌军' },
-  { type: 'captureHQ', label: '攻占城堡' },
-  { type: 'holdAllVillages', label: '控制全部据点' },
-  { type: 'surviveTurns', label: '坚守回合' },
-];
+const PLAYER_FIELDS: Record<string, PlayerFieldWriter> = {
+  name: (player, value) => { player.name = String(value); },
+  color: (player, value) => { player.color = String(value); },
+  team: (player, value) => { player.team = Math.max(1, Number(value) || 1); },
+  funds: (player, value) => {
+    player.resources[FUNDS_RESOURCE] = {
+      current: Math.max(0, Number(value) || 0),
+      capacity: player.resources[FUNDS_RESOURCE]?.capacity ?? null,
+    };
+  },
+  controller: (player, value) => { player.controller = value === 'ai' ? 'ai' : 'human'; },
+  aggression: (player, value) => {
+    player.ai = { aggression: Math.max(0, Math.min(1, Number(value) || 0)) };
+  },
+};
+
+/**
+ * Rule inputs that do not map one-to-one onto a `RuleSet` field: the editor
+ * offers "funds per turn" as a number, while the ruleset stores a list of
+ * resource grants. Everything else is written by name.
+ */
+const COMPOUND_RULE_FIELDS: Record<string, (rules: Partial<RuleSet>, value: string | boolean) => void> = {
+  baseFundsGrant: (rules, value) => {
+    const amount = Math.max(0, Number(value) || 0);
+    const others = (rules.baseResourceGrants ?? []).filter((grant) => grant.resource !== FUNDS_RESOURCE);
+    rules.baseResourceGrants = amount > 0 ? [...others, { resource: FUNDS_RESOURCE, amount }] : others;
+  },
+  siteFundsOverride: (rules, value) => {
+    const overrides = { ...(rules.siteResourceOverrides ?? {}) };
+    if (value === '') delete overrides[FUNDS_RESOURCE];
+    else overrides[FUNDS_RESOURCE] = Math.max(0, Number(value) || 0);
+    rules.siteResourceOverrides = overrides;
+  },
+};
+
+/** Rule fields whose value is a string rather than a number or a flag. */
+const NAMED_RULE_FIELDS: ReadonlySet<string> = new Set(['captureMode', 'turnOrder']);
+
+const numberOrNull = (value: string | boolean) => (value === '' ? null : Number(value));
 
 export class EditorApp {
   private doc: EditorDocument;
   private board: EditorBoard;
-  private undoStack: string[] = [];
-  private redoStack: string[] = [];
+  private readonly panels = new EditorPanels();
+  private readonly history = new EditorHistory();
 
   private tool: EditorTool = EDITOR_TOOLS.default;
   private readonly brush = new BrushSettings('plain', 'soldier');
@@ -60,9 +89,6 @@ export class EditorApp {
   private status = '';
 
   private readonly root = document.createElement('div');
-  private readonly topEl = document.createElement('header');
-  private readonly leftEl = document.createElement('aside');
-  private readonly rightEl = document.createElement('aside');
   private readonly scroller = document.createElement('div');
 
   constructor(
@@ -72,15 +98,12 @@ export class EditorApp {
     this.doc = EditorDocument.fromLevel(content, level);
     this.ensureOwnerSelection();
     this.root.className = 'editor-root';
-    this.topEl.className = 'topbar editor-top';
-    this.leftEl.className = 'panel palette';
-    this.rightEl.className = 'panel props';
     this.scroller.className = 'board-scroll';
 
     this.board = new EditorBoard(this.doc.map, this.doc.units, this.doc.players, {
-      onStroke: (c, phase, button) => this.onStroke(c, phase, button),
-      onHover: (c) => {
-        this.cursor = c;
+      onStroke: (at, phase, button) => this.onStroke(at, phase, button),
+      onHover: (at) => {
+        this.cursor = at;
         this.paintBoard();
       },
     }, content);
@@ -88,17 +111,17 @@ export class EditorApp {
 
     const stage = document.createElement('div');
     stage.className = 'stage';
-    stage.append(this.leftEl, this.scroller, this.rightEl);
-    this.root.append(this.topEl, stage);
+    stage.append(this.panels.paletteEl, this.scroller, this.panels.propertiesEl);
+    this.root.append(this.panels.topEl, stage);
 
     this.bindDelegates();
-    document.addEventListener('keydown', (ev) => this.onKey(ev));
+    document.addEventListener('keydown', (event) => this.onKey(event));
     this.board.el.addEventListener(
       'wheel',
-      (ev) => {
-        if (!ev.ctrlKey && !ev.metaKey) return;
-        ev.preventDefault();
-        this.board.setZoom(this.board.zoomLevel - Math.sign(ev.deltaY) * 0.1);
+      (event) => {
+        if (!event.ctrlKey && !event.metaKey) return;
+        event.preventDefault();
+        this.board.setZoom(this.board.zoomLevel - Math.sign(event.deltaY) * 0.1);
       },
       { passive: false },
     );
@@ -113,25 +136,21 @@ export class EditorApp {
   /* ------------------------------------------------------------- doc history */
 
   private snapshot(): void {
-    this.undoStack.push(this.doc.serialize());
-    if (this.undoStack.length > 80) this.undoStack.shift();
-    this.redoStack.length = 0;
+    this.history.record(this.doc.serialize());
   }
 
   /** Public so the editor host (and tests) can drive history. */
   undo(): void {
-    const prev = this.undoStack.pop();
-    if (!prev) return;
-    this.redoStack.push(this.doc.serialize());
-    this.replaceDocument(EditorDocument.deserialize(this.content, prev));
-    this.renderAll();
+    this.restore(this.history.undo(this.doc.serialize()));
   }
 
   redo(): void {
-    const next = this.redoStack.pop();
-    if (!next) return;
-    this.undoStack.push(this.doc.serialize());
-    this.replaceDocument(EditorDocument.deserialize(this.content, next));
+    this.restore(this.history.redo(this.doc.serialize()));
+  }
+
+  private restore(snapshot: string | null): void {
+    if (snapshot === null) return;
+    this.replaceDocument(EditorDocument.deserialize(this.content, snapshot));
     this.renderAll();
   }
 
@@ -197,9 +216,9 @@ export class EditorApp {
     }
     this.tool.paint?.(this.toolContext(), at, erasing);
     this.paintBoard();
-    this.renderRight();
+    this.renderProperties();
     // The eyedropper changes the palette rather than the map.
-    if (this.tool.id === 'pick') this.renderLeft();
+    if (this.tool.id === 'pick') this.renderPalette();
   }
 
   private finishStroke(): void {
@@ -215,11 +234,11 @@ export class EditorApp {
   }
 
   resize(width: number, height: number): void {
-    width = Math.max(4, Math.min(64, Math.round(width)));
-    height = Math.max(4, Math.min(64, Math.round(height)));
-    if (width === this.doc.map.width && height === this.doc.map.height) return;
+    const clampedWidth = Math.max(4, Math.min(64, Math.round(width)));
+    const clampedHeight = Math.max(4, Math.min(64, Math.round(height)));
+    if (clampedWidth === this.doc.map.width && clampedHeight === this.doc.map.height) return;
     this.snapshot();
-    this.doc.resize(width, height);
+    this.doc.resize(clampedWidth, clampedHeight);
     this.board.resize(this.doc.map);
     this.autosave();
     this.renderAll();
@@ -227,35 +246,35 @@ export class EditorApp {
 
   /* ---------------------------------------------------------------- keyboard */
 
-  private onKey(ev: KeyboardEvent): void {
-    const target = ev.target as HTMLElement;
+  private onKey(event: KeyboardEvent): void {
+    const target = event.target as HTMLElement;
     if (target && /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName)) return;
 
-    if ((ev.metaKey || ev.ctrlKey) && ev.key.toLowerCase() === 'z') {
-      ev.preventDefault();
-      if (ev.shiftKey) this.redo();
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'z') {
+      event.preventDefault();
+      if (event.shiftKey) this.redo();
       else this.undo();
       return;
     }
-    if ((ev.metaKey || ev.ctrlKey) && ev.key.toLowerCase() === 's') {
-      ev.preventDefault();
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') {
+      event.preventDefault();
       this.save();
       return;
     }
     // Every tool declares its own hotkey, so the palette tooltip and the key
     // handler can no longer disagree — three tools used to advertise a shortcut
     // that nothing listened for.
-    const pressed = EDITOR_TOOLS.forHotkey(ev.key);
+    const pressed = EDITOR_TOOLS.forHotkey(event.key);
     if (pressed) {
       this.selectTool(pressed);
       this.renderAll();
       return;
     }
-    if (ev.key === 'Escape') {
+    if (event.key === 'Escape') {
       this.strokeAnchor = null;
       this.paintBoard();
     }
-    const slot = Number(ev.key);
+    const slot = Number(event.key);
     if (slot >= 1 && slot <= 9) {
       const ids = this.content.terrains.ids();
       if (ids[slot - 1]) {
@@ -273,10 +292,17 @@ export class EditorApp {
     return this.doc.toLevel();
   }
 
+  private errorsInDocument(): LevelIssue[] {
+    return this.lint().filter((issue) => issue.severity === 'error');
+  }
+
+  private lint(): LevelIssue[] {
+    return validateLevel(this.exportLevel(), this.content);
+  }
+
   private save(): void {
-    const level = this.exportLevel();
-    const errors = validateLevel(level, this.content).filter((i) => i.severity === 'error');
-    saveCustomLevel(level);
+    const errors = this.errorsInDocument();
+    saveCustomLevel(this.exportLevel());
     this.autosave();
     this.status = errors.length
       ? `已保存（仍有 ${errors.length} 个错误，游戏中可能无法开始）`
@@ -287,11 +313,11 @@ export class EditorApp {
   private exportFile(): void {
     const level = this.exportLevel();
     const blob = new Blob([JSON.stringify(level, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `${level.id || 'level'}.json`;
-    a.click();
-    URL.revokeObjectURL(a.href);
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${level.id || 'level'}.json`;
+    link.click();
+    URL.revokeObjectURL(link.href);
     this.status = '已导出 JSON';
     this.renderTop();
   }
@@ -316,12 +342,9 @@ export class EditorApp {
       try {
         const level = normaliseLevel(JSON.parse(await file.text()));
         mapFromLevel(level, this.content); // fail fast on a broken terrain grid
-        this.snapshot();
-        this.replaceDocument(EditorDocument.fromLevel(this.content, level));
-        this.status = `已载入 ${level.name}`;
-        this.renderAll();
-      } catch (e) {
-        this.status = `载入失败：${(e as Error).message}`;
+        this.loadLevel(level, `已载入 ${level.name}`);
+      } catch (error) {
+        this.status = `载入失败：${(error as Error).message}`;
         this.renderTop();
       }
     };
@@ -330,7 +353,7 @@ export class EditorApp {
 
   private playtest(): void {
     const level = this.exportLevel();
-    const errors = validateLevel(level, this.content).filter((i) => i.severity === 'error');
+    const errors = this.errorsInDocument();
     if (errors.length) {
       this.status = `无法试玩：${errors[0].message}`;
       this.renderAll();
@@ -340,13 +363,55 @@ export class EditorApp {
     location.href = './index.html';
   }
 
+  private loadLevel(level: LevelData, status: string): void {
+    this.snapshot();
+    this.replaceDocument(EditorDocument.fromLevel(this.content, level));
+    this.status = status;
+    this.renderAll();
+  }
+
   /* --------------------------------------------------------------- rendering */
+
+  private panelView(issues: readonly LevelIssue[] = []): EditorPanelView {
+    return {
+      document: this.doc,
+      content: this.content,
+      tool: this.tool,
+      brush: this.brush,
+      status: this.status,
+      showCoords: this.showCoords,
+      showOwners: this.showOwners,
+      canUndo: this.history.canUndo,
+      canRedo: this.history.canRedo,
+      issues,
+      presets: [
+        ...BUILTIN_LEVELS.map((level) => ({ value: `b:${level.id}`, label: `内置 · ${level.name}` })),
+        ...loadCustomLevels().map((saved) => ({
+          value: `c:${saved.level.id}`,
+          label: `我的 · ${saved.level.name}`,
+        })),
+      ],
+    };
+  }
 
   private renderAll(): void {
     this.renderTop();
-    this.renderLeft();
-    this.renderRight();
+    this.renderPalette();
+    this.renderProperties();
     this.paintBoard();
+  }
+
+  private renderTop(): void {
+    this.panels.renderTop(this.panelView());
+  }
+
+  private renderPalette(): void {
+    this.panels.renderPalette(this.panelView());
+  }
+
+  /** The inspector is the only panel that shows lint, so it pays for it. */
+  private renderProperties(): void {
+    this.panels.renderProperties(this.panelView(this.lint()));
   }
 
   private paintBoard(): void {
@@ -358,491 +423,267 @@ export class EditorApp {
     });
   }
 
-  private renderTop(): void {
-    this.topEl.innerHTML = `
-      <div class="topbar-left">
-        <a class="btn ghost" href="./index.html" title="返回游戏">${icon('play')}</a>
-        <input class="name-input" data-field="name" value="${escapeHtml(this.doc.name)}" placeholder="关卡名称" />
-        <input class="id-input" data-field="id" value="${escapeHtml(this.doc.id)}" placeholder="id" />
-      </div>
-      <div class="topbar-center tool-row">
-        ${EDITOR_TOOLS.tools
-          .map(
-            (tool) => `<button class="btn tool ${this.tool === tool ? 'active' : ''}" data-act="tool" data-arg="${tool.id}"
-              title="${tool.name} (${tool.hotkey.toUpperCase()})">${icon(tool.icon)}<span>${tool.name}</span></button>`,
-          )
-          .join('')}
-        <span class="sep"></span>
-        <button class="btn ghost ${this.brush.size === 1 ? 'active' : ''}" data-act="brush" data-arg="1">1×1</button>
-        <button class="btn ghost ${this.brush.size === 3 ? 'active' : ''}" data-act="brush" data-arg="3">3×3</button>
-      </div>
-      <div class="topbar-right">
-        <button class="btn ghost" data-act="undo" ${this.undoStack.length ? '' : 'disabled'}>${icon('undo')}</button>
-        <button class="btn ghost" data-act="redo" ${this.redoStack.length ? '' : 'disabled'}>${icon('play')}</button>
-        <button class="btn ghost" data-act="zoom" data-arg="-0.15">−</button>
-        <button class="btn ghost" data-act="zoom" data-arg="0.15">+</button>
-        <button class="btn" data-act="save">${icon('save')} 保存</button>
-        <button class="btn primary" data-act="playtest">${icon('play')} 试玩</button>
-      </div>
-      ${this.status ? `<div class="status-toast">${escapeHtml(this.status)}</div>` : ''}`;
-  }
+  /* -------------------------------------------------------------- commands */
 
-  private renderLeft(): void {
-    const terrainList = this.content.terrains.all();
-    this.leftEl.innerHTML = `
-      <section class="card">
-        <h3>地形</h3>
-        <div class="swatch-grid">
-          ${terrainList
-            .map(
-              (t, i) => `<button class="swatch ${this.brush.terrain === t.id ? 'active' : ''}"
-                data-act="terrain" data-arg="${t.id}" title="${escapeHtml(t.name)} · 字符 ${terrainCharacter(this.content, t.id) ?? '?'}${i < 9 ? ` · 快捷键 ${i + 1}` : ''}">
-                ${terrainSwatch(t.id, t.capturable ? this.colorOf(this.brush.owner) : undefined)}
-                <span>${escapeHtml(t.name)}</span>
-              </button>`,
-            )
-            .join('')}
-        </div>
-      </section>
+  /**
+   * Every intent a rendered control can declare, and what it does.
+   *
+   * This was a hundred-line `switch` inside the click listener, so the fact that
+   * a button existed and the fact that anything handled it lived in different
+   * halves of the file, and nothing checked they agreed — a typo in `data-act`
+   * produced a silently dead button. A fitness test now walks the rendered
+   * markup and requires every declared intent to appear here.
+   */
+  private readonly commands: Record<string, (arg: string) => void> = {
+    tool: (arg) => {
+      this.selectTool(EDITOR_TOOLS.get(arg) ?? this.tool);
+      this.renderAll();
+    },
+    brush: (arg) => {
+      this.brush.size = Number(arg);
+      this.renderTop();
+      this.paintBoard();
+    },
+    terrain: (arg) => {
+      this.brush.terrain = arg;
+      // Picking a terrain means you want to paint it; the shape tools already do.
+      if (this.tool.id !== 'rect' && this.tool.id !== 'fill') this.selectTool(EDITOR_TOOLS.default);
+      this.renderAll();
+    },
+    'cover-side': (arg) => {
+      this.brush.coverSide = arg as Direction;
+      this.renderPalette();
+    },
+    'cover-level': (arg) => {
+      this.brush.coverLevel = arg as Exclude<CoverLevel, 'none'>;
+      this.renderPalette();
+    },
+    unit: (arg) => {
+      this.brush.unitType = arg;
+      this.selectTool(EDITOR_TOOLS.get('unit') ?? this.tool);
+      this.renderAll();
+    },
+    owner: (arg) => {
+      this.brush.owner = Number(arg);
+      this.renderPalette();
+      this.renderTop();
+    },
+    undo: () => this.undo(),
+    redo: () => this.redo(),
+    zoom: (arg) => this.board.setZoom(this.board.zoomLevel + Number(arg)),
+    save: () => this.save(),
+    playtest: () => this.playtest(),
+    export: () => this.exportFile(),
+    copy: () => void this.copyJson(),
+    import: () => this.importFile(),
+    clear: () => {
+      if (!confirm('清空当前地图？')) return;
+      this.loadLevel(emptyLevel(this.doc.map.width, this.doc.map.height), this.status);
+    },
+    addPlayer: () => {
+      this.snapshot();
+      this.doc.players.push(this.nextPlayer());
+      this.renderAll();
+    },
+    delPlayer: (arg) => {
+      this.snapshot();
+      this.removePlayer(Number(arg));
+      this.renderAll();
+    },
+    vObj: (arg) => {
+      this.snapshot();
+      this.doc.victory = toggleObjective(this.doc.victory, arg as Objective['type'], this.doc.rules);
+      this.renderProperties();
+    },
+    pObj: (arg) => {
+      this.snapshot();
+      const [owner, type] = arg.split(':');
+      this.togglePlayerObjective(Number(owner), type as Objective['type']);
+      this.renderProperties();
+    },
+  };
 
-      <section class="card">
-        <h3>空间规则</h3>
-        <div class="row"><label>海拔<input type="number" min="-9" max="20" data-field="elevation" value="${this.brush.elevation}"/></label></div>
-        <div class="owner-row">
-          ${(['north', 'east', 'south', 'west'] as const).map((side) => `<button class="owner-chip ${this.brush.coverSide === side ? 'active' : ''}" data-act="cover-side" data-arg="${side}">${({ north: '北', east: '东', south: '南', west: '西' })[side]}</button>`).join('')}
-        </div>
-        <div class="owner-row">
-          <button class="owner-chip ${this.brush.coverLevel === 'half' ? 'active' : ''}" data-act="cover-level" data-arg="half">半掩体</button>
-          <button class="owner-chip ${this.brush.coverLevel === 'full' ? 'active' : ''}" data-act="cover-level" data-arg="full">全掩体</button>
-        </div>
-        <p class="hint">海拔工具直接绘制高度；悬崖工具从一个格拖到相邻格；方向掩体按来袭方向保护单位。</p>
-      </section>
-
-      <section class="card">
-        <h3>归属</h3>
-        <div class="owner-row">
-          <button class="owner-chip ${this.brush.owner === 0 ? 'active' : ''}" data-act="owner" data-arg="0"
-            style="--team:#9aa3ad">中立</button>
-          ${this.doc.players
-            .map(
-              (p) => `<button class="owner-chip ${this.brush.owner === p.id ? 'active' : ''}" data-act="owner" data-arg="${p.id}"
-                style="--team:${p.color}">${escapeHtml(p.name)}</button>`,
-            )
-            .join('')}
-        </div>
-      </section>
-
-      <section class="card">
-        <h3>单位</h3>
-        <div class="unit-grid">
-          ${this.content.units.all()
-            .map(
-              (d) => `<button class="unit-chip ${this.brush.unitType === d.id ? 'active' : ''}"
-                data-act="unit" data-arg="${d.id}" title="${escapeHtml(d.name)} · ${escapeHtml(unitRecruitCost(this.content, d.id))}">
-                ${unitIcon(d.id, this.colorOf(this.brush.owner), 30)}
-                <span>${escapeHtml(d.name)}</span>
-              </button>`,
-            )
-            .join('')}
-        </div>
-      </section>
-
-      <section class="card">
-        <h3>显示</h3>
-        <label class="check"><input type="checkbox" data-field="showOwners" ${this.showOwners ? 'checked' : ''}/> 归属描边</label>
-        <label class="check"><input type="checkbox" data-field="showCoords" ${this.showCoords ? 'checked' : ''}/> 坐标</label>
-        <p class="hint">左键绘制 · 右键擦除 / 置为平原 · Ctrl+滚轮缩放</p>
-      </section>`;
-  }
-
-  private colorOf(id: number): string {
-    return this.doc.players.find((p) => p.id === id)?.color ?? '#9aa3ad';
-  }
-
-  private renderRight(): void {
-    const level = this.exportLevel();
-    const issues = validateLevel(level, this.content);
-    const rules = this.doc.rules;
-    this.rightEl.innerHTML = `
-      <section class="card">
-        <h3>尺寸</h3>
-        <div class="row">
-          <label>宽<input type="number" min="4" max="64" data-field="width" value="${this.doc.map.width}"/></label>
-          <label>高<input type="number" min="4" max="64" data-field="height" value="${this.doc.map.height}"/></label>
-        </div>
-        <p class="hint">缩小地图会裁掉超出范围的内容。</p>
-      </section>
-
-      <section class="card">
-        <h3>说明</h3>
-        <textarea data-field="description" rows="3" placeholder="关卡简介">${escapeHtml(this.doc.description)}</textarea>
-        <label class="stack">作者<input data-field="author" value="${escapeHtml(this.doc.author)}"/></label>
-      </section>
-
-      <section class="card">
-        <h3>玩家</h3>
-        ${this.doc.players
-          .map(
-            (p) => `<div class="player-edit" style="--team:${p.color}">
-              <div class="row">
-                <span class="dot"></span>
-                <input data-field="p.name" data-id="${p.id}" value="${escapeHtml(p.name)}"/>
-                <input type="color" data-field="p.color" data-id="${p.id}" value="${p.color}"/>
-                ${this.doc.players.length > 2 ? `<button class="btn ghost danger tiny" data-act="delPlayer" data-arg="${p.id}">${icon('trash')}</button>` : ''}
-              </div>
-              <div class="row">
-                <label class="tiny">阵营<input type="number" min="1" max="8" data-field="p.team" data-id="${p.id}" value="${p.team}"/></label>
-                <label class="tiny">资金<input type="number" min="0" step="50" data-field="p.funds" data-id="${p.id}" value="${playerFunds(p)}"/></label>
-                <label class="tiny">控制
-                  <select data-field="p.controller" data-id="${p.id}">
-                    <option value="human" ${p.controller === 'human' ? 'selected' : ''}>玩家</option>
-                    <option value="ai" ${p.controller === 'ai' ? 'selected' : ''}>AI</option>
-                  </select>
-                </label>
-                <label class="tiny">激进<input type="number" min="0" max="1" step="0.05" data-field="p.aggression" data-id="${p.id}" value="${p.ai?.aggression ?? 0.5}"/></label>
-              </div>
-              <div class="chip-row">
-                ${OBJECTIVE_TYPES.map((o) => {
-                  const on = (p.objectives ?? []).some((x) => x.type === o.type);
-                  return `<button class="chip ${on ? 'on' : ''}" data-act="pObj" data-arg="${p.id}:${o.type}">${o.label}</button>`;
-                }).join('')}
-              </div>
-              ${(p.objectives ?? []).length === 0 ? '<p class="hint tiny">未选择时使用下方通用胜利条件</p>' : ''}
-            </div>`,
-          )
-          .join('')}
-        <button class="btn wide ghost" data-act="addPlayer">+ 添加玩家</button>
-      </section>
-
-      <section class="card">
-        <h3>通用胜利条件</h3>
-        <div class="chip-row">
-          ${OBJECTIVE_TYPES.map((o) => {
-            const on = this.doc.victory.some((x) => x.type === o.type);
-            return `<button class="chip ${on ? 'on' : ''}" data-act="vObj" data-arg="${o.type}">${o.label}</button>`;
-          }).join('')}
-        </div>
-      </section>
-
-      <section class="card">
-        <h3>规则</h3>
-        <label class="check"><input type="checkbox" data-field="r.fog" ${rules.fog ? 'checked' : ''}/> 战争迷雾</label>
-        <label class="check"><input type="checkbox" data-field="r.counterAttack" ${rules.counterAttack ?? true ? 'checked' : ''}/> 允许反击</label>
-        <label class="check"><input type="checkbox" data-field="r.recruitsActImmediately" ${rules.recruitsActImmediately ? 'checked' : ''}/> 新单位当回合可行动</label>
-        <label class="stack">行动序
-          <select data-field="r.turnOrder">
-            <option value="side" ${(rules.turnOrder ?? 'side') === 'side' ? 'selected' : ''}>阵营回合（远古帝国 / AW）</option>
-            <option value="initiative" ${rules.turnOrder === 'initiative' ? 'selected' : ''}>个体行动序（皇家骑士团 / FFT）</option>
-          </select>
-        </label>
-        <label class="stack">占领方式
-          <select data-field="r.captureMode">
-            <option value="instant" ${(rules.captureMode ?? 'instant') === 'instant' ? 'selected' : ''}>踏入即占领（远古帝国）</option>
-            <option value="progressive" ${rules.captureMode === 'progressive' ? 'selected' : ''}>按生命值累积</option>
-          </select>
-        </label>
-        <div class="row">
-          <label class="tiny">回合上限<input type="number" min="0" data-field="r.turnLimit" value="${rules.turnLimit ?? ''}" placeholder="无"/></label>
-          <label class="tiny">基础资金产出<input type="number" min="0" step="50" data-field="r.baseFundsGrant" value="${fundsGrant(rules)}"/></label>
-        </div>
-        <div class="row">
-          <label class="tiny">据点资金产出<input type="number" min="0" step="50" data-field="r.siteFundsOverride" value="${rules.siteResourceOverrides?.[FUNDS_RESOURCE] ?? ''}" placeholder="按地形"/></label>
-          <label class="tiny">单位上限<input type="number" min="0" data-field="r.maxUnitsPerPlayer" value="${rules.maxUnitsPerPlayer ?? ''}" placeholder="无"/></label>
-        </div>
-      </section>
-
-      <section class="card ${issues.some((i) => i.severity === 'error') ? 'has-error' : ''}">
-        <h3>检查 ${issues.length ? `(${issues.length})` : ''}</h3>
-        ${
-          issues.length === 0
-            ? '<p class="hint good">没有发现问题，可以试玩。</p>'
-            : `<ul class="issue-list">${issues.map(issueLine).join('')}</ul>`
-        }
-      </section>
-
-      <section class="card">
-        <h3>文件</h3>
-        <div class="row">
-          <button class="btn" data-act="import">${icon('save')} 载入 JSON</button>
-          <button class="btn" data-act="export">${icon('save')} 导出</button>
-        </div>
-        <button class="btn wide ghost" data-act="copy">复制 JSON</button>
-        <label class="stack">载入内置 / 已保存关卡
-          <select data-field="loadPreset">
-            <option value="">选择…</option>
-            ${BUILTIN_LEVELS.map((l) => `<option value="b:${l.id}">内置 · ${escapeHtml(l.name)}</option>`).join('')}
-            ${loadCustomLevels()
-              .map((s) => `<option value="c:${s.level.id}">我的 · ${escapeHtml(s.level.name)}</option>`)
-              .join('')}
-          </select>
-        </label>
-        <button class="btn wide ghost danger" data-act="clear">清空为空白地图</button>
-      </section>`;
-  }
-
-  /* ------------------------------------------------------------- delegation */
-
-  private bindDelegates(): void {
-    const onClick = (ev: Event) => {
-      const el = (ev.target as HTMLElement).closest('[data-act]') as HTMLElement | null;
-      if (!el) return;
-      const arg = el.dataset.arg ?? '';
-      switch (el.dataset.act) {
-        case 'tool':
-          this.selectTool(EDITOR_TOOLS.get(arg) ?? this.tool);
-          this.renderAll();
-          break;
-        case 'brush':
-          this.brush.size = Number(arg);
-          this.renderTop();
-          this.paintBoard();
-          break;
-        case 'terrain':
-          this.brush.terrain = arg;
-          if (this.tool.id !== 'rect' && this.tool.id !== 'fill') this.selectTool(EDITOR_TOOLS.default);
-          this.renderAll();
-          break;
-        case 'cover-side':
-          this.brush.coverSide = arg as Direction;
-          this.renderLeft();
-          break;
-        case 'cover-level':
-          this.brush.coverLevel = arg as Exclude<CoverLevel, 'none'>;
-          this.renderLeft();
-          break;
-        case 'unit':
-          this.brush.unitType = arg;
-          this.selectTool(EDITOR_TOOLS.get('unit') ?? this.tool);
-          this.renderAll();
-          break;
-        case 'owner':
-          this.brush.owner = Number(arg);
-          this.renderLeft();
-          this.renderTop();
-          break;
-        case 'undo':
-          this.undo();
-          break;
-        case 'redo':
-          this.redo();
-          break;
-        case 'zoom':
-          this.board.setZoom(this.board.zoomLevel + Number(arg));
-          break;
-        case 'save':
-          this.save();
-          break;
-        case 'playtest':
-          this.playtest();
-          break;
-        case 'export':
-          this.exportFile();
-          break;
-        case 'copy':
-          void this.copyJson();
-          break;
-        case 'import':
-          this.importFile();
-          break;
-        case 'clear':
-          if (confirm('清空当前地图？')) {
-            this.snapshot();
-            this.replaceDocument(EditorDocument.fromLevel(this.content, emptyLevel(this.doc.map.width, this.doc.map.height)));
-            this.renderAll();
-          }
-          break;
-        case 'addPlayer': {
-          this.snapshot();
-          const id = Math.max(0, ...this.doc.players.map((p) => p.id)) + 1;
-          this.doc.players.push({
-            id,
-            name: `玩家 ${id}`,
-            team: id,
-            color: TEAM_COLORS[(id - 1) % TEAM_COLORS.length],
-            controller: 'ai',
-            resources: {
-              [FUNDS_RESOURCE]: { current: 0, capacity: null },
-              [COMMAND_POINTS_RESOURCE]: { current: 0, capacity: 5 },
-            },
-            ai: { aggression: 0.5 },
-          });
-          this.renderAll();
-          break;
-        }
-        case 'delPlayer': {
-          this.snapshot();
-          const id = Number(arg);
-          this.doc.players = this.doc.players.filter((p) => p.id !== id);
-          this.doc.units = this.doc.units.filter((u) => u.owner !== id);
-          for (let i = 0; i < this.doc.map.owners.length; i++) {
-            if (this.doc.map.owners[i] === id) this.doc.map.owners[i] = 0;
-          }
-          if (this.brush.owner === id) this.brush.owner = this.doc.players[0]?.id ?? 0;
-          this.renderAll();
-          break;
-        }
-        case 'vObj': {
-          this.snapshot();
-          this.doc.victory = toggleObjective(this.doc.victory, arg as Objective['type'], this.doc.rules);
-          this.renderRight();
-          break;
-        }
-        case 'pObj': {
-          this.snapshot();
-          const [pid, type] = arg.split(':');
-          const p = this.doc.players.find((x) => x.id === Number(pid));
-          if (p) {
-            p.objectives = toggleObjective(p.objectives ?? [], type as Objective['type'], this.doc.rules);
-            if (p.objectives.length === 0) delete p.objectives;
-          }
-          this.renderRight();
-          break;
-        }
-      }
-      this.autosave();
+  private nextPlayer(): PlayerConfig {
+    const id = Math.max(0, ...this.doc.players.map((player) => player.id)) + 1;
+    return {
+      id,
+      name: `玩家 ${id}`,
+      team: id,
+      color: TEAM_COLORS[(id - 1) % TEAM_COLORS.length],
+      controller: 'ai',
+      resources: {
+        [FUNDS_RESOURCE]: { current: 0, capacity: null },
+        [COMMAND_POINTS_RESOURCE]: { current: 0, capacity: 5 },
+      },
+      ai: { aggression: 0.5 },
     };
+  }
 
-    const onChange = (ev: Event) => {
-      const el = ev.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
-      const field = el.dataset.field;
-      if (!field) return;
-      const value = el instanceof HTMLInputElement && el.type === 'checkbox' ? el.checked : el.value;
-      this.applyField(field, value, el.dataset.id);
-    };
-
-    for (const host of [this.topEl, this.leftEl, this.rightEl]) {
-      host.addEventListener('click', onClick);
-      host.addEventListener('change', onChange);
+  /** Removing a side also removes what belonged to it; a level cannot half-forget one. */
+  private removePlayer(id: number): void {
+    this.doc.players = this.doc.players.filter((player) => player.id !== id);
+    this.doc.units = this.doc.units.filter((unit) => unit.owner !== id);
+    for (let tile = 0; tile < this.doc.map.owners.length; tile++) {
+      if (this.doc.map.owners[tile] === id) this.doc.map.owners[tile] = 0;
     }
+    if (this.brush.owner === id) this.brush.owner = this.doc.players[0]?.id ?? 0;
+  }
+
+  private togglePlayerObjective(owner: number, type: Objective['type']): void {
+    const player = this.doc.players.find((candidate) => candidate.id === owner);
+    if (!player) return;
+    player.objectives = toggleObjective(player.objectives ?? [], type, this.doc.rules);
+    // An empty list means "use the level's shared victory conditions".
+    if (player.objectives.length === 0) delete player.objectives;
+  }
+
+  /* ----------------------------------------------------------------- fields */
+
+  /**
+   * Every value a rendered input can write, and where it goes.
+   *
+   * `p.` and `r.` are namespaces, not string prefixes to be sliced apart at the
+   * top of a hundred-line function: one addresses a player, the other the
+   * ruleset, and each has its own table.
+   */
+  private readonly documentFields: Record<string, (value: string | boolean) => void> = {
+    name: (value) => this.writeAndRedrawTop(() => { this.doc.name = String(value); }),
+    id: (value) => this.writeAndRedrawTop(() => {
+      this.doc.id = String(value).trim().replace(/\s+/g, '-') || 'untitled';
+    }),
+    description: (value) => this.writeAndRedrawTop(() => { this.doc.description = String(value); }),
+    author: (value) => this.writeAndRedrawTop(() => { this.doc.author = String(value); }),
+    elevation: (value) => {
+      this.brush.elevation = Math.max(-9, Math.min(20, Math.round(Number(value) || 0)));
+      this.renderPalette();
+    },
+    width: (value) => this.resize(Number(value), this.doc.map.height),
+    height: (value) => this.resize(this.doc.map.width, Number(value)),
+    showCoords: (value) => {
+      this.showCoords = Boolean(value);
+      this.paintBoard();
+    },
+    showOwners: (value) => {
+      this.showOwners = Boolean(value);
+      this.paintBoard();
+    },
+    loadPreset: (value) => {
+      const chosen = String(value);
+      if (!chosen) return;
+      const level = this.presetLevel(chosen);
+      if (level) this.loadLevel(level, `已载入 ${level.name}`);
+    },
+  };
+
+  private writeAndRedrawTop(write: () => void): void {
+    write();
+    this.autosave();
+    this.renderTop();
+  }
+
+  private presetLevel(chosen: string): LevelData | undefined {
+    const [kind, levelId] = [chosen.slice(0, 1), chosen.slice(2)];
+    return kind === 'b'
+      ? BUILTIN_LEVELS.find((level) => level.id === levelId)
+      : loadCustomLevels().find((saved) => saved.level.id === levelId)?.level;
   }
 
   private applyField(field: string, value: string | boolean, id?: string): void {
-    const num = (v: string | boolean) => (v === '' ? null : Number(v));
-
     if (field.startsWith('p.')) {
       this.snapshot();
-      const p = this.doc.players.find((x) => x.id === Number(id));
-      if (!p) return;
-      const key = field.slice(2);
-      if (key === 'name') p.name = String(value);
-      if (key === 'color') p.color = String(value);
-      if (key === 'team') p.team = Math.max(1, Number(value) || 1);
-      if (key === 'funds') {
-        p.resources[FUNDS_RESOURCE] = {
-          current: Math.max(0, Number(value) || 0),
-          capacity: p.resources[FUNDS_RESOURCE]?.capacity ?? null,
-        };
-      }
-      if (key === 'controller') p.controller = value === 'ai' ? 'ai' : 'human';
-      if (key === 'aggression') p.ai = { aggression: Math.max(0, Math.min(1, Number(value) || 0)) };
+      const player = this.doc.players.find((candidate) => candidate.id === Number(id));
+      if (!player) return;
+      PLAYER_FIELDS[field.slice(2)]?.(player, value);
       this.renderAll();
       return;
     }
 
     if (field.startsWith('r.')) {
       this.snapshot();
-      const fieldName = field.slice(2);
-      if (fieldName === 'baseFundsGrant') {
-        const amount = Math.max(0, Number(value) || 0);
-        const other = (this.doc.rules.baseResourceGrants ?? [])
-          .filter((grant) => grant.resource !== FUNDS_RESOURCE);
-        this.doc.rules.baseResourceGrants = amount > 0
-          ? [...other, { resource: FUNDS_RESOURCE, amount }]
-          : other;
-        this.renderRight();
-        this.autosave();
-        return;
-      }
-      if (fieldName === 'siteFundsOverride') {
-        const overrides = { ...(this.doc.rules.siteResourceOverrides ?? {}) };
-        if (value === '') delete overrides[FUNDS_RESOURCE];
-        else overrides[FUNDS_RESOURCE] = Math.max(0, Number(value) || 0);
-        this.doc.rules.siteResourceOverrides = overrides;
-        this.renderRight();
-        this.autosave();
-        return;
-      }
-      const key = fieldName as keyof RuleSet;
-      const rules = this.doc.rules as Record<string, unknown>;
-      if (typeof value === 'boolean') rules[key] = value;
-      else if (key === 'captureMode' || key === 'turnOrder') rules[key] = value;
-      else rules[key] = num(value);
-      this.renderRight();
+      this.applyRuleField(field.slice(2), value);
+      this.renderProperties();
       this.autosave();
       return;
     }
 
-    switch (field) {
-      case 'name':
-        this.doc.name = String(value);
-        break;
-      case 'id':
-        this.doc.id = String(value).trim().replace(/\s+/g, '-') || 'untitled';
-        break;
-      case 'description':
-        this.doc.description = String(value);
-        break;
-      case 'author':
-        this.doc.author = String(value);
-        break;
-      case 'elevation':
-        this.brush.elevation = Math.max(-9, Math.min(20, Math.round(Number(value) || 0)));
-        this.renderLeft();
-        return;
-      case 'width':
-        this.resize(Number(value), this.doc.map.height);
-        return;
-      case 'height':
-        this.resize(this.doc.map.width, Number(value));
-        return;
-      case 'showCoords':
-        this.showCoords = Boolean(value);
-        this.paintBoard();
-        return;
-      case 'showOwners':
-        this.showOwners = Boolean(value);
-        this.paintBoard();
-        return;
-      case 'loadPreset': {
-        const v = String(value);
-        if (!v) return;
-        const [kind, levelId] = [v.slice(0, 1), v.slice(2)];
-        const level =
-          kind === 'b'
-            ? BUILTIN_LEVELS.find((l) => l.id === levelId)
-            : loadCustomLevels().find((s) => s.level.id === levelId)?.level;
-        if (level) {
-          this.snapshot();
-          this.replaceDocument(EditorDocument.fromLevel(this.content, level));
-          this.status = `已载入 ${level.name}`;
-          this.renderAll();
-        }
-        return;
-      }
+    this.documentFields[field]?.(value);
+  }
+
+  private applyRuleField(field: string, value: string | boolean): void {
+    const compound = COMPOUND_RULE_FIELDS[field];
+    if (compound) {
+      compound(this.doc.rules, value);
+      return;
     }
-    this.autosave();
-    this.renderTop();
+    const rules = this.doc.rules as Record<string, unknown>;
+    if (typeof value === 'boolean') rules[field] = value;
+    else if (NAMED_RULE_FIELDS.has(field)) rules[field] = value;
+    else rules[field] = numberOrNull(value);
+  }
+
+  /* ------------------------------------------------------------- delegation */
+
+  private bindDelegates(): void {
+    const onClick = (event: Event) => {
+      const element = (event.target as HTMLElement).closest('[data-act]') as HTMLElement | null;
+      if (!element) return;
+      this.commands[element.dataset.act ?? '']?.(element.dataset.arg ?? '');
+      this.autosave();
+    };
+
+    const onChange = (event: Event) => {
+      const element = event.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+      const field = element.dataset.field;
+      if (!field) return;
+      const value = element instanceof HTMLInputElement && element.type === 'checkbox'
+        ? element.checked
+        : element.value;
+      this.applyField(field, value, element.dataset.id);
+    };
+
+    for (const host of [this.panels.topEl, this.panels.paletteEl, this.panels.propertiesEl]) {
+      host.addEventListener('click', onClick);
+      host.addEventListener('change', onChange);
+    }
+  }
+
+  /**
+   * The intents this app answers, so a test can compare them with the markup.
+   *
+   * `r.` is generic on purpose: a rule input writes the `RuleSet` field of the
+   * same name, so there is no table to compare against — only the compound ones
+   * that do not map field-for-field are listed.
+   */
+  get handledIntents(): {
+    commands: string[];
+    fields: string[];
+    genericFieldPrefixes: string[];
+  } {
+    return {
+      commands: Object.keys(this.commands),
+      fields: [
+        ...Object.keys(this.documentFields),
+        ...Object.keys(PLAYER_FIELDS).map((field) => `p.${field}`),
+        ...Object.keys(COMPOUND_RULE_FIELDS).map((field) => `r.${field}`),
+      ],
+      genericFieldPrefixes: ['r.'],
+    };
   }
 }
 
 /* ------------------------------------------------------------------ helpers */
-
-function issueLine(i: LevelIssue): string {
-  return `<li class="${i.severity}">${i.severity === 'error' ? '✕' : '!'} ${escapeHtml(i.message)}</li>`;
-}
 
 function toggleObjective(
   list: Objective[],
   type: Objective['type'],
   rules: Partial<RuleSet>,
 ): Objective[] {
-  const has = list.some((o) => o.type === type);
-  if (has) return list.filter((o) => o.type !== type);
+  const has = list.some((objective) => objective.type === type);
+  if (has) return list.filter((objective) => objective.type !== type);
   const next: Objective =
     type === 'surviveTurns' ? { type, turns: rules.turnLimit ?? 12 } : ({ type } as Objective);
   return [...list, next];
 }
-
 
 /* ------------------------------------------------------------ level loading */
 
@@ -851,8 +692,8 @@ export function initialLevel(content: ContentCatalog): LevelData {
   const wanted = params.get('level');
   if (wanted) {
     const found =
-      BUILTIN_LEVELS.find((l) => l.id === wanted) ??
-      loadCustomLevels().find((s) => s.level.id === wanted)?.level;
+      BUILTIN_LEVELS.find((level) => level.id === wanted) ??
+      loadCustomLevels().find((saved) => saved.level.id === wanted)?.level;
     if (found) return found;
   }
   const draft = localStorage.getItem(DRAFT_KEY);

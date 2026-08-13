@@ -56,6 +56,26 @@ describe('map editor', () => {
     stubLayout(board, BUILTIN_LEVELS[0].width * TILE, BUILTIN_LEVELS[0].height * TILE);
   });
 
+  /**
+   * A control declares an intent in `data-act` or `data-field`; the app holds the
+   * tables that answer them. They used to live in different halves of one file
+   * with nothing comparing them, so a typo produced a control that looked alive
+   * and did nothing.
+   */
+  it('answers every intent its own markup declares', () => {
+    const { commands, fields, genericFieldPrefixes } = app.handledIntents;
+    const declared = (attribute: string) =>
+      [...host.querySelectorAll(`[${attribute}]`)]
+        .map((element) => element.getAttribute(attribute)!)
+        .filter((intent) => intent.length > 0);
+
+    const deadControls = [...new Set(declared('data-act'))].filter((act) => !commands.includes(act));
+    const deadInputs = [...new Set(declared('data-field'))].filter((field) =>
+      !fields.includes(field) && !genericFieldPrefixes.some((prefix) => field.startsWith(prefix)));
+
+    expect({ deadControls, deadInputs }).toEqual({ deadControls: [], deadInputs: [] });
+  });
+
   it('renders the palette, the board and the validation panel', () => {
     expect(host.querySelectorAll('.swatch').length).toBe(TEST_CATALOG.terrains.all().length);
     expect(host.querySelectorAll('.unit-chip').length).toBe(TEST_CATALOG.units.all().length);
