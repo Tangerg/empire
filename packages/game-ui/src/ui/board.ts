@@ -42,10 +42,10 @@ export const emptyOverlay = (): BoardOverlay => ({
 });
 
 export interface BoardHandlers {
-  onTileClick(c: Coord, ev: PointerEvent): void;
-  onTileEnter(c: Coord): void;
+  onTileClick(at: Coord, event: PointerEvent): void;
+  onTileEnter(at: Coord): void;
   onLeave(): void;
-  onSecondary(c: Coord): void;
+  onSecondary(at: Coord): void;
 }
 
 const frame = () => new Promise<number>((r) => requestAnimationFrame(r));
@@ -369,19 +369,19 @@ export class BoardView {
     );
   }
 
-  private unitElement(u: Unit): SVGGElement {
-    let el = this.unitEls.get(u.id);
+  private unitElement(unit: Unit): SVGGElement {
+    let el = this.unitEls.get(unit.id);
     if (el) return el;
-    const color = this.state.players.find((p) => p.id === u.owner)?.color ?? PAL.neutral;
-    el = svg('g', { class: 'unit', 'data-unit': u.id });
-    el.append(fromMarkup(unitSpriteMarkup(u.type, color)));
+    const color = this.state.players.find((p) => p.id === unit.owner)?.color ?? PAL.neutral;
+    el = svg('g', { class: 'unit', 'data-unit': unit.id });
+    el.append(fromMarkup(unitSpriteMarkup(unit.type, color)));
     const badges = svg('g', { class: 'badges' });
     el.append(badges);
     this.layers.units.append(el);
-    this.unitEls.set(u.id, el);
+    this.unitEls.set(unit.id, el);
     const strip = el.querySelector('.runtime-frame-strip') as SVGImageElement | null;
     if (strip) {
-      const animationId = this.unitAnimationId(u.id);
+      const animationId = this.unitAnimationId(unit.id);
       registerSvgStrip(this.frameAnimations, animationId, strip);
       this.frameAnimations.play(animationId, 'idle');
     }
@@ -593,9 +593,9 @@ export class BoardView {
     g.remove();
   }
 
-  centerOn(c: Coord, container: HTMLElement): void {
-    const px = (this.viewport.originX + (c.x + 0.5) * TILE) * this.zoom;
-    const py = (this.viewport.originY + (c.y + 0.5) * TILE) * this.zoom;
+  centerOn(at: Coord, container: HTMLElement): void {
+    const px = (this.viewport.originX + (at.x + 0.5) * TILE) * this.zoom;
+    const py = (this.viewport.originY + (at.y + 0.5) * TILE) * this.zoom;
     container.scrollTo({
       left: px - container.clientWidth / 2,
       top: py - container.clientHeight / 2,

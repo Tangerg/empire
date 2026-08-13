@@ -287,6 +287,11 @@
 | 能不能给它下这条指令 | `ActionExecutionContext.commandableUnit()` |
 | 战斗阶段与回合数何时改变 | `BattleLifecycle` |
 | 一条指令为什么被拒绝 | 协作者抛 `IllegalActionError`，不由处理器改标签 |
+| 一张开放扩展表怎么存、怎么问、怎么复制 | `KeyedRegistry` / `PriorityRegistry`（基类） |
+| 一个关卡文件声明了哪些名字 | `LevelDeclarations` |
+| 站在这一格值多少 | `TileAppraisal`（每项考虑一个有名字的方法） |
+| 一次决策共享哪些分析 | `AiTurnContext`（惰性，整体传递） |
+| 界面控件声明的意图由谁应答 | HUD 与编辑器各自的意图表，适应度测试比对渲染结果 |
 
 以上连同依赖注入约定都有架构适应度测试守着（见 `architecture-boundaries.test.ts`）。
 
@@ -297,7 +302,8 @@
 | TypeScript 整仓类型检查 | 已实现 | `npm run typecheck` |
 | 战斗规则单元和契约测试 | 已实现 | 覆盖领域、扩展、三题材契约和 AI |
 | 应用 DOM 挂载测试 | 已实现 | 游戏、编辑器、Demo 和体验入口 |
-| 架构依赖测试 | 已实现 | 无环和包边界 |
+| 架构依赖测试 | 已实现 | 无环、包边界、行为归属、调用形状，共 24 条 |
+| 界面意图完整性测试 | 已实现 | HUD 与编辑器渲染出的每个 `data-act` / `data-field` 都有人接 |
 | 关卡校验与 AI 冒烟 | 已实现 | 内置关卡自动推演 |
 | 战斗热路径 benchmark | 已实现 | `npm run bench:core` |
 | 四应用构建 | 已实现 | `npm run build` |

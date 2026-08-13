@@ -8,8 +8,8 @@ import { idx } from '@empire/battle-engine/grid';
 import type { Coord, GameMap, LevelUnit, PlayerConfig } from '@empire/battle-engine/types';
 
 export interface EditorBoardHandlers {
-  onStroke(c: Coord, phase: 'start' | 'move' | 'end', button: number): void;
-  onHover(c: Coord | null): void;
+  onStroke(at: Coord, phase: 'start' | 'move' | 'end', button: number): void;
+  onHover(at: Coord | null): void;
 }
 
 /**

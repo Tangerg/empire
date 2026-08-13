@@ -174,9 +174,9 @@ export class GameController {
 
   /* ------------------------------------------------------------------ input */
 
-  private handleHover(c: Coord): void {
-    this.cursor = c;
-    const u = unitAt(this.state, c.x, c.y);
+  private handleHover(at: Coord): void {
+    this.cursor = at;
+    const u = unitAt(this.state, at.x, at.y);
     if (u && this.isVisible(u)) this.inspect = u;
     else if (!this.selectedUnit) this.inspect = null;
     this.refresh();
@@ -211,9 +211,9 @@ export class GameController {
     };
   }
 
-  private async handleClick(c: Coord): Promise<void> {
+  private async handleClick(at: Coord): Promise<void> {
     if (this.busy || this.state.phase !== 'playing') return;
-    const outcome = this.selection.click(this.selectionContext(), c);
+    const outcome = this.selection.click(this.selectionContext(), at);
     if (outcome.action) {
       await this.dispatch(outcome.action);
       return;
@@ -221,7 +221,7 @@ export class GameController {
     this.selection = outcome.selection;
     // One rule where there were five: the inspector shows what you just
     // clicked, if you are allowed to see it, and nothing otherwise.
-    const clicked = unitAt(this.state, c.x, c.y);
+    const clicked = unitAt(this.state, at.x, at.y);
     this.inspect = clicked && this.isVisible(clicked) ? clicked : null;
     this.refresh();
   }
@@ -529,9 +529,9 @@ export class GameController {
 
   /* ---------------------------------------------------------------- painting */
 
-  private isVisible(u: Unit): boolean {
+  private isVisible(unit: Unit): boolean {
     const me = this.human?.id ?? this.state.currentPlayer;
-    return this.session.isUnitVisible(me, u);
+    return this.session.isUnitVisible(me, unit);
   }
 
   private overlay(): BoardOverlay {

@@ -178,11 +178,11 @@ export function threatTiles(
   field?: MoveField,
 ): Set<number> {
   const out = new Set<number>();
-  const add = (c: Coord) => out.add(idx(state.map, c.x, c.y));
+  const add = (at: Coord) => out.add(idx(state.map, at.x, at.y));
 
   const weapons = unitWeapons(unit, content);
   for (const weapon of weapons) {
-    for (const c of attackTilesFrom(content, state, unit, { x: unit.x, y: unit.y }, weapon)) add(c);
+    for (const at of attackTilesFrom(content, state, unit, { x: unit.x, y: unit.y }, weapon)) add(at);
   }
 
   const f = field ?? computeMoveField(content, state, unit);

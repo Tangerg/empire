@@ -2,7 +2,7 @@
 
 本页参考 `LevelData` schema 2，说明关卡文件的字段、引用关系、正规化和校验行为。它适用于 TypeScript 关卡定义与编辑器导出的 JSON。
 
-> 文档类型：Reference · 当前 schema：2 · 代码真值：`packages/battle-engine/src/types.ts`、`packages/battle-engine/src/mapio.ts`
+> 文档类型：Reference · 当前 schema：2 · 代码真值：`packages/battle-engine/src/types.ts`、`packages/battle-engine/src/level/`
 
 ## 最小关卡
 
