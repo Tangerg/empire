@@ -5,7 +5,6 @@ import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import { unitIcon } from '@empire/game-ui/art/units';
 import { TEAM_COLORS } from '@empire/game-ui/art/palette';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
-import { idx } from '@empire/battle-engine/grid';
 import {
   emptyLevel,
   normaliseLevel,
@@ -22,14 +21,12 @@ import type {
   Objective,
   PlayerConfig,
   RuleSet,
-  TerrainId,
 } from '@empire/battle-engine/types';
 import { escapeHtml } from '@empire/game-ui/ui/html';
 import { EditorBoard } from './board';
 import { EditorDocument } from './document';
+import { BrushSettings, EDITOR_TOOLS, type EditorTool, type EditorToolContext } from './tools';
 import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from '@empire/battle-engine/resources';
-
-type Tool = 'terrain' | 'rect' | 'fill' | 'elevation' | 'cliff' | 'cover' | 'unit' | 'owner' | 'erase' | 'pick';
 
 const DRAFT_KEY = 'empire.editorDraft';
 
@@ -39,19 +36,6 @@ const unitRecruitCost = (content: ContentCatalog, id: string) => content.units.g
   .join(' · ') || '不可招募';
 const fundsGrant = (rules: Partial<RuleSet>) =>
   rules.baseResourceGrants?.find((grant) => grant.resource === FUNDS_RESOURCE)?.amount ?? 0;
-
-const TOOL_LABEL: Record<Tool, { name: string; key: string; icon: string }> = {
-  terrain: { name: '笔刷', key: 'B', icon: 'grid' },
-  rect: { name: '矩形', key: 'R', icon: 'save' },
-  fill: { name: '填充', key: 'F', icon: 'flag' },
-  elevation: { name: '海拔', key: 'H', icon: 'grid' },
-  cliff: { name: '悬崖边', key: 'J', icon: 'shield' },
-  cover: { name: '方向掩体', key: 'K', icon: 'shield' },
-  unit: { name: '放置单位', key: 'U', icon: 'sword' },
-  owner: { name: '归属', key: 'O', icon: 'shield' },
-  erase: { name: '擦除单位', key: 'E', icon: 'trash' },
-  pick: { name: '吸取', key: 'I', icon: 'crosshair' },
-};
 
 const OBJECTIVE_TYPES: { type: Objective['type']; label: string }[] = [
   { type: 'routEnemies', label: '歼灭敌军' },
@@ -66,15 +50,9 @@ export class EditorApp {
   private undoStack: string[] = [];
   private redoStack: string[] = [];
 
-  private tool: Tool = 'terrain';
-  private terrain: TerrainId = 'plain';
-  private unitType = 'soldier';
-  private owner = 1;
-  private brushSize = 1;
-  private elevation = 0;
-  private coverLevel: Exclude<CoverLevel, 'none'> = 'half';
-  private coverSide: Direction = 'north';
-  private rectAnchor: Coord | null = null;
+  private tool: EditorTool = EDITOR_TOOLS.default;
+  private readonly brush = new BrushSettings('plain', 'soldier');
+  private strokeAnchor: Coord | null = null;
   private cursor: Coord | null = null;
   private showCoords = false;
   private showOwners = true;
@@ -172,71 +150,44 @@ export class EditorApp {
   }
 
   private ensureOwnerSelection(): void {
-    if (!this.doc.players.some((player) => player.id === this.owner)) {
-      this.owner = this.doc.players[0]?.id ?? 0;
+    if (!this.doc.players.some((player) => player.id === this.brush.owner)) {
+      this.brush.owner = this.doc.players[0]?.id ?? 0;
     }
   }
 
   /* ------------------------------------------------------------------ tools */
 
-  private brushTiles(): Coord[] {
-    if (!this.cursor) return [];
-    if (this.tool === 'rect' && this.rectAnchor) return rectTiles(this.rectAnchor, this.cursor);
-    if (this.tool === 'terrain' && this.brushSize > 1) {
-      const out: Coord[] = [];
-      const r = Math.floor(this.brushSize / 2);
-      for (let dy = -r; dy <= r; dy++) {
-        for (let dx = -r; dx <= r; dx++) {
-          const x = this.cursor.x + dx;
-          const y = this.cursor.y + dy;
-          if (this.doc.inBounds({ x, y })) out.push({ x, y });
-        }
-      }
-      return out;
-    }
-    return [this.cursor];
+  /** What a tool is handed: the document it edits and the palette it paints with. */
+  private toolContext(): EditorToolContext {
+    return { document: this.doc, brush: this.brush, content: this.content };
   }
 
-  private onStroke(c: Coord, phase: 'start' | 'move' | 'end', button: number): void {
-    const erasing = button === 2;
+  private brushTiles(): Coord[] {
+    if (!this.cursor) return [];
+    return this.tool.highlight(this.toolContext(), this.cursor, this.strokeAnchor);
+  }
 
+  /**
+   * One stroke protocol for every tool: press opens an undo step, drag paints,
+   * release commits. Two-phase tools keep the press point and act on release.
+   */
+  private onStroke(at: Coord, phase: 'start' | 'move' | 'end', button: number): void {
+    const erasing = button === 2;
     if (phase === 'start') {
       this.snapshot();
       this.strokeOpen = true;
-      if (this.tool === 'rect') {
-        this.rectAnchor = c;
+      if (this.tool.twoPhase) this.strokeAnchor = at;
+    }
+    this.cursor = at;
+
+    if (this.tool.twoPhase) {
+      if (phase !== 'end') {
         this.paintBoard();
         return;
       }
-      if (this.tool === 'cliff') {
-        this.rectAnchor = c;
-        this.paintBoard();
-        return;
-      }
-    }
-
-    if (this.tool === 'rect') {
-      if (phase === 'end' && this.rectAnchor) {
-        for (const t of rectTiles(this.rectAnchor, c)) this.setTerrain(t, this.terrain);
-        this.rectAnchor = null;
-        this.finishStroke();
-      } else {
-        this.cursor = c;
-        this.paintBoard();
-      }
-      return;
-    }
-
-    if (this.tool === 'cliff') {
-      if (phase === 'end' && this.rectAnchor) {
-        const anchor = this.rectAnchor;
-        if (Math.abs(anchor.x - c.x) + Math.abs(anchor.y - c.y) === 1) this.toggleCliff(anchor, c);
-        this.rectAnchor = null;
-        this.finishStroke();
-      } else {
-        this.cursor = c;
-        this.paintBoard();
-      }
+      if (this.strokeAnchor) this.tool.commit?.(this.toolContext(), this.strokeAnchor, at, erasing);
+      this.strokeAnchor = null;
+      this.finishStroke();
       return;
     }
 
@@ -244,46 +195,11 @@ export class EditorApp {
       this.finishStroke();
       return;
     }
-
-    switch (this.tool) {
-      case 'terrain':
-        for (const t of this.brushTilesAt(c)) this.setTerrain(t, erasing ? 'plain' : this.terrain);
-        break;
-      case 'fill':
-        this.floodFill(c, this.terrain);
-        break;
-      case 'elevation':
-        for (const tile of this.brushTilesAt(c)) {
-          this.doc.setElevation(tile, erasing ? 0 : this.elevation);
-        }
-        break;
-      case 'cover':
-        this.setDirectionalCover(c, erasing ? null : this.coverLevel);
-        break;
-      case 'unit':
-        if (erasing) this.removeUnitAt(c);
-        else this.placeUnit(c);
-        break;
-      case 'owner':
-        this.setOwner(c, erasing ? 0 : this.owner);
-        break;
-      case 'erase':
-        this.removeUnitAt(c);
-        break;
-      case 'pick':
-        this.pick(c);
-        break;
-    }
+    this.tool.paint?.(this.toolContext(), at, erasing);
     this.paintBoard();
     this.renderRight();
-  }
-
-  private brushTilesAt(c: Coord): Coord[] {
-    const saved = this.cursor;
-    this.cursor = c;
-    const tiles = this.brushTiles();
-    this.cursor = saved;
-    return tiles;
+    // The eyedropper changes the palette rather than the map.
+    if (this.tool.id === 'pick') this.renderLeft();
   }
 
   private finishStroke(): void {
@@ -293,45 +209,9 @@ export class EditorApp {
     this.renderAll();
   }
 
-  private setTerrain(c: Coord, id: TerrainId): void {
-    this.doc.setTerrain(c, id);
-  }
-
-  private floodFill(from: Coord, id: TerrainId): void {
-    this.doc.floodFill(from, id);
-  }
-
-  private placeUnit(c: Coord): void {
-    this.doc.placeUnit(c, this.unitType, this.owner);
-  }
-
-  private removeUnitAt(c: Coord): void {
-    this.doc.removeUnitAt(c);
-  }
-
-  private setOwner(c: Coord, owner: number): void {
-    this.doc.setOwner(c, owner);
-  }
-
-  private toggleCliff(from: Coord, to: Coord): void {
-    this.doc.toggleCliff(from, to);
-  }
-
-  private setDirectionalCover(at: Coord, level: Exclude<CoverLevel, 'none'> | null): void {
-    this.doc.setDirectionalCover(at, this.coverSide, level);
-  }
-
-  private pick(c: Coord): void {
-    const i = idx(this.doc.map, c.x, c.y);
-    this.terrain = this.doc.map.tiles[i];
-    const u = this.doc.units.find((x) => x.x === c.x && x.y === c.y);
-    if (u) {
-      this.unitType = u.unit;
-      this.owner = u.owner;
-    } else if (this.content.terrains.get(this.terrain).capturable) {
-      this.owner = this.doc.map.owners[i] || this.owner;
-    }
-    this.renderLeft();
+  private selectTool(tool: EditorTool): void {
+    this.tool = tool;
+    this.strokeAnchor = null;
   }
 
   resize(width: number, height: number): void {
@@ -362,31 +242,25 @@ export class EditorApp {
       this.save();
       return;
     }
-    const toolKeys: Record<string, Tool> = {
-      b: 'terrain',
-      r: 'rect',
-      f: 'fill',
-      u: 'unit',
-      o: 'owner',
-      e: 'erase',
-      i: 'pick',
-    };
-    const k = ev.key.toLowerCase();
-    if (toolKeys[k]) {
-      this.tool = toolKeys[k];
+    // Every tool declares its own hotkey, so the palette tooltip and the key
+    // handler can no longer disagree — three tools used to advertise a shortcut
+    // that nothing listened for.
+    const pressed = EDITOR_TOOLS.forHotkey(ev.key);
+    if (pressed) {
+      this.selectTool(pressed);
       this.renderAll();
       return;
     }
     if (ev.key === 'Escape') {
-      this.rectAnchor = null;
+      this.strokeAnchor = null;
       this.paintBoard();
     }
-    const n = Number(ev.key);
-    if (n >= 1 && n <= 9) {
+    const slot = Number(ev.key);
+    if (slot >= 1 && slot <= 9) {
       const ids = this.content.terrains.ids();
-      if (ids[n - 1]) {
-        this.terrain = ids[n - 1];
-        this.tool = 'terrain';
+      if (ids[slot - 1]) {
+        this.brush.terrain = ids[slot - 1];
+        this.selectTool(EDITOR_TOOLS.default);
         this.renderAll();
       }
     }
@@ -492,15 +366,15 @@ export class EditorApp {
         <input class="id-input" data-field="id" value="${escapeHtml(this.doc.id)}" placeholder="id" />
       </div>
       <div class="topbar-center tool-row">
-        ${(Object.keys(TOOL_LABEL) as Tool[])
+        ${EDITOR_TOOLS.tools
           .map(
-            (t) => `<button class="btn tool ${this.tool === t ? 'active' : ''}" data-act="tool" data-arg="${t}"
-              title="${TOOL_LABEL[t].name} (${TOOL_LABEL[t].key})">${icon(TOOL_LABEL[t].icon)}<span>${TOOL_LABEL[t].name}</span></button>`,
+            (tool) => `<button class="btn tool ${this.tool === tool ? 'active' : ''}" data-act="tool" data-arg="${tool.id}"
+              title="${tool.name} (${tool.hotkey.toUpperCase()})">${icon(tool.icon)}<span>${tool.name}</span></button>`,
           )
           .join('')}
         <span class="sep"></span>
-        <button class="btn ghost ${this.brushSize === 1 ? 'active' : ''}" data-act="brush" data-arg="1">1×1</button>
-        <button class="btn ghost ${this.brushSize === 3 ? 'active' : ''}" data-act="brush" data-arg="3">3×3</button>
+        <button class="btn ghost ${this.brush.size === 1 ? 'active' : ''}" data-act="brush" data-arg="1">1×1</button>
+        <button class="btn ghost ${this.brush.size === 3 ? 'active' : ''}" data-act="brush" data-arg="3">3×3</button>
       </div>
       <div class="topbar-right">
         <button class="btn ghost" data-act="undo" ${this.undoStack.length ? '' : 'disabled'}>${icon('undo')}</button>
@@ -521,9 +395,9 @@ export class EditorApp {
         <div class="swatch-grid">
           ${terrainList
             .map(
-              (t, i) => `<button class="swatch ${this.terrain === t.id ? 'active' : ''}"
+              (t, i) => `<button class="swatch ${this.brush.terrain === t.id ? 'active' : ''}"
                 data-act="terrain" data-arg="${t.id}" title="${escapeHtml(t.name)} · 字符 ${terrainCharacter(this.content, t.id) ?? '?'}${i < 9 ? ` · 快捷键 ${i + 1}` : ''}">
-                ${terrainSwatch(t.id, t.capturable ? this.colorOf(this.owner) : undefined)}
+                ${terrainSwatch(t.id, t.capturable ? this.colorOf(this.brush.owner) : undefined)}
                 <span>${escapeHtml(t.name)}</span>
               </button>`,
             )
@@ -533,13 +407,13 @@ export class EditorApp {
 
       <section class="card">
         <h3>空间规则</h3>
-        <div class="row"><label>海拔<input type="number" min="-9" max="20" data-field="elevation" value="${this.elevation}"/></label></div>
+        <div class="row"><label>海拔<input type="number" min="-9" max="20" data-field="elevation" value="${this.brush.elevation}"/></label></div>
         <div class="owner-row">
-          ${(['north', 'east', 'south', 'west'] as const).map((side) => `<button class="owner-chip ${this.coverSide === side ? 'active' : ''}" data-act="cover-side" data-arg="${side}">${({ north: '北', east: '东', south: '南', west: '西' })[side]}</button>`).join('')}
+          ${(['north', 'east', 'south', 'west'] as const).map((side) => `<button class="owner-chip ${this.brush.coverSide === side ? 'active' : ''}" data-act="cover-side" data-arg="${side}">${({ north: '北', east: '东', south: '南', west: '西' })[side]}</button>`).join('')}
         </div>
         <div class="owner-row">
-          <button class="owner-chip ${this.coverLevel === 'half' ? 'active' : ''}" data-act="cover-level" data-arg="half">半掩体</button>
-          <button class="owner-chip ${this.coverLevel === 'full' ? 'active' : ''}" data-act="cover-level" data-arg="full">全掩体</button>
+          <button class="owner-chip ${this.brush.coverLevel === 'half' ? 'active' : ''}" data-act="cover-level" data-arg="half">半掩体</button>
+          <button class="owner-chip ${this.brush.coverLevel === 'full' ? 'active' : ''}" data-act="cover-level" data-arg="full">全掩体</button>
         </div>
         <p class="hint">海拔工具直接绘制高度；悬崖工具从一个格拖到相邻格；方向掩体按来袭方向保护单位。</p>
       </section>
@@ -547,11 +421,11 @@ export class EditorApp {
       <section class="card">
         <h3>归属</h3>
         <div class="owner-row">
-          <button class="owner-chip ${this.owner === 0 ? 'active' : ''}" data-act="owner" data-arg="0"
+          <button class="owner-chip ${this.brush.owner === 0 ? 'active' : ''}" data-act="owner" data-arg="0"
             style="--team:#9aa3ad">中立</button>
           ${this.doc.players
             .map(
-              (p) => `<button class="owner-chip ${this.owner === p.id ? 'active' : ''}" data-act="owner" data-arg="${p.id}"
+              (p) => `<button class="owner-chip ${this.brush.owner === p.id ? 'active' : ''}" data-act="owner" data-arg="${p.id}"
                 style="--team:${p.color}">${escapeHtml(p.name)}</button>`,
             )
             .join('')}
@@ -563,9 +437,9 @@ export class EditorApp {
         <div class="unit-grid">
           ${this.content.units.all()
             .map(
-              (d) => `<button class="unit-chip ${this.unitType === d.id ? 'active' : ''}"
+              (d) => `<button class="unit-chip ${this.brush.unitType === d.id ? 'active' : ''}"
                 data-act="unit" data-arg="${d.id}" title="${escapeHtml(d.name)} · ${escapeHtml(unitRecruitCost(this.content, d.id))}">
-                ${unitIcon(d.id, this.colorOf(this.owner), 30)}
+                ${unitIcon(d.id, this.colorOf(this.brush.owner), 30)}
                 <span>${escapeHtml(d.name)}</span>
               </button>`,
             )
@@ -715,35 +589,34 @@ export class EditorApp {
       const arg = el.dataset.arg ?? '';
       switch (el.dataset.act) {
         case 'tool':
-          this.tool = arg as Tool;
-          this.rectAnchor = null;
+          this.selectTool(EDITOR_TOOLS.get(arg) ?? this.tool);
           this.renderAll();
           break;
         case 'brush':
-          this.brushSize = Number(arg);
+          this.brush.size = Number(arg);
           this.renderTop();
           this.paintBoard();
           break;
         case 'terrain':
-          this.terrain = arg;
-          if (this.tool !== 'rect' && this.tool !== 'fill') this.tool = 'terrain';
+          this.brush.terrain = arg;
+          if (this.tool.id !== 'rect' && this.tool.id !== 'fill') this.selectTool(EDITOR_TOOLS.default);
           this.renderAll();
           break;
         case 'cover-side':
-          this.coverSide = arg as Direction;
+          this.brush.coverSide = arg as Direction;
           this.renderLeft();
           break;
         case 'cover-level':
-          this.coverLevel = arg as Exclude<CoverLevel, 'none'>;
+          this.brush.coverLevel = arg as Exclude<CoverLevel, 'none'>;
           this.renderLeft();
           break;
         case 'unit':
-          this.unitType = arg;
-          this.tool = 'unit';
+          this.brush.unitType = arg;
+          this.selectTool(EDITOR_TOOLS.get('unit') ?? this.tool);
           this.renderAll();
           break;
         case 'owner':
-          this.owner = Number(arg);
+          this.brush.owner = Number(arg);
           this.renderLeft();
           this.renderTop();
           break;
@@ -804,7 +677,7 @@ export class EditorApp {
           for (let i = 0; i < this.doc.map.owners.length; i++) {
             if (this.doc.map.owners[i] === id) this.doc.map.owners[i] = 0;
           }
-          if (this.owner === id) this.owner = this.doc.players[0]?.id ?? 0;
+          if (this.brush.owner === id) this.brush.owner = this.doc.players[0]?.id ?? 0;
           this.renderAll();
           break;
         }
@@ -913,7 +786,7 @@ export class EditorApp {
         this.doc.author = String(value);
         break;
       case 'elevation':
-        this.elevation = Math.max(-9, Math.min(20, Math.round(Number(value) || 0)));
+        this.brush.elevation = Math.max(-9, Math.min(20, Math.round(Number(value) || 0)));
         this.renderLeft();
         return;
       case 'width':
@@ -970,13 +843,6 @@ function toggleObjective(
   return [...list, next];
 }
 
-function rectTiles(a: Coord, b: Coord): Coord[] {
-  const out: Coord[] = [];
-  for (let y = Math.min(a.y, b.y); y <= Math.max(a.y, b.y); y++) {
-    for (let x = Math.min(a.x, b.x); x <= Math.max(a.x, b.x); x++) out.push({ x, y });
-  }
-  return out;
-}
 
 /* ------------------------------------------------------------ level loading */
 
