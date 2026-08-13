@@ -1,6 +1,6 @@
 import { CoreActionHandlers } from '../actions';
 import { DefaultAiObjectiveAdvisors } from '../ai-objectives';
-import { DefaultAbilityAiEvaluators } from '../ai';
+import { DefaultAbilityAiEvaluators, DefaultAiIntents } from '../ai';
 import { CombatModifierPipeline, CombatModifierProviders } from '../combat-modifiers';
 import { WeaponHitEffectHandlers } from '../hit-effects';
 import { SrpgMicrokernel, type EnginePlugin } from '../kernel';
@@ -111,11 +111,12 @@ export const ResourceEconomyPlugin: EnginePlugin = {
 export const AiPlanningPlugin: EnginePlugin = {
   id: 'engine.ai-planning',
   version: 1,
-  provides: ['aiObjectiveAdvisors', 'abilityAiEvaluators'],
+  provides: ['aiObjectiveAdvisors', 'abilityAiEvaluators', 'aiIntents'],
   requiresCapabilities: ['content', 'abilities', 'space', 'objectives', 'resources'],
   install: (context) => {
     context.provide('aiObjectiveAdvisors', DefaultAiObjectiveAdvisors.clone());
     context.provide('abilityAiEvaluators', DefaultAbilityAiEvaluators.clone());
+    context.provide('aiIntents', DefaultAiIntents.clone());
   },
 };
 

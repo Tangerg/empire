@@ -29,7 +29,7 @@ import {
   unitAt,
   unitsOf,
 } from './state';
-import type { Action, Coord, GameState, Unit, UnitTypeId } from './types';
+import type { Action, Coord, GameState, PlayerId, Unit, UnitTypeId } from './types';
 import { type ContentCatalog } from './content-pack';
 
 /**
@@ -82,7 +82,8 @@ function dangerMap(s: GameState, me: number, space: TacticalSpace, content: Cont
   return danger;
 }
 
-interface Objectives {
+/** Shared reading of what this side is trying to achieve, computed once a turn. */
+export interface AiObjectives {
   /** Tiles worth walking to: enemy/neutral capturables, weighted. */
   captureTargets: { at: Coord; weight: number }[];
   enemyHqs: Coord[];
@@ -96,7 +97,7 @@ function objectivesFor(
   advisors: AiObjectiveAdvisorRegistry,
   handlers: ObjectiveHandlerRegistry,
   content: ContentCatalog,
-): Objectives {
+): AiObjectives {
   const captureTargets: { at: Coord; weight: number }[] = [];
   const enemyHqs: Coord[] = [];
   const myHqs: Coord[] = [];
@@ -147,7 +148,7 @@ function positionScore(
   s: GameState,
   unit: Unit,
   at: Coord,
-  obj: Objectives,
+  obj: AiObjectives,
   danger: Map<number, number>,
   opts: AiOptions,
   battlefield: Battlefield,
@@ -430,7 +431,7 @@ function evaluateUnit(
   dependencies: AiPlanningDependencies,
   s: GameState,
   unit: Unit,
-  obj: Objectives,
+  obj: AiObjectives,
   danger: Map<number, number>,
   opts: AiOptions,
   battlefield: Battlefield,
@@ -486,7 +487,7 @@ function evaluateUnit(
   return best;
 }
 
-function desiredReaction(s: GameState, unit: Unit, obj: Objectives, content: ContentCatalog): Unit['reaction'] {
+function desiredReaction(s: GameState, unit: Unit, obj: AiObjectives, content: ContentCatalog): Unit['reaction'] {
   const def = content.units.get(unit.type);
   const protectedWeight = obj.mission.protectedUnits.get(unit.id) ?? 0;
   const enemyNear = enemyUnitsOf(s, unit.owner).some((enemy) =>
@@ -505,7 +506,7 @@ function desiredReaction(s: GameState, unit: Unit, obj: Objectives, content: Con
   return def.defaultReaction;
 }
 
-function reactionAction(s: GameState, owner: number, obj: Objectives, content: ContentCatalog): Action | null {
+function reactionAction(s: GameState, owner: number, obj: AiObjectives, content: ContentCatalog): Action | null {
   for (const unit of unitsOf(s, owner).filter((candidate) => !candidate.done)) {
     const stance = desiredReaction(s, unit, obj, content);
     if (stance !== unit.reaction) return { kind: 'reaction', unit: unit.id, stance };
@@ -595,16 +596,173 @@ function recruitAction(s: GameState, me: number, resources: BattleResourceSystem
 
 /* -------------------------------------------------------------------- driver */
 
-/**
- * The next single action for the current (AI) player. Returns `endTurn` when
- * there is nothing left worth doing, so callers can simply loop.
- */
 export interface AiPlanningDependencies {
   readonly rules: AiRules;
   readonly objectiveAdvisors: AiObjectiveAdvisorRegistry;
   readonly abilityEvaluators: AbilityAiEvaluatorRegistry;
+  readonly intents: AiIntentRegistry;
 }
 
+/**
+ * One decision, and the analysis every decision is entitled to share.
+ *
+ * The mission reading and the danger map are derived lazily: a turn settled by
+ * a cheap intent never pays for the expensive ones, which is exactly how the
+ * hand-written chain behaved before it became a registry.
+ */
+export class AiTurnContext {
+  private objectivesCache: AiObjectives | null = null;
+  private dangerCache: Map<number, number> | null = null;
+  private battlefieldCache: Battlefield | null = null;
+
+  constructor(
+    readonly planning: AiPlanningDependencies,
+    readonly state: GameState,
+    readonly player: PlayerId,
+    readonly options: AiOptions,
+  ) {}
+
+  get rules(): AiRules {
+    return this.planning.rules;
+  }
+
+  get content(): ContentCatalog {
+    return this.rules.content;
+  }
+
+  get objectives(): AiObjectives {
+    return this.objectivesCache ??= objectivesFor(
+      this.state,
+      this.player,
+      this.planning.objectiveAdvisors,
+      this.rules.objectives,
+      this.content,
+    );
+  }
+
+  /** Threat weight per tile, including tiles a charging strike already marked. */
+  get danger(): Map<number, number> {
+    return this.dangerCache ??= dangerMap(this.state, this.player, this.rules.space, this.content);
+  }
+
+  get battlefield(): Battlefield {
+    return this.battlefieldCache ??= new Battlefield(this.state, this.content);
+  }
+
+  /**
+   * Units the ordering policy entitles to act right now. Under per-unit orders
+   * that is exactly one unit, and planning for any other would produce an
+   * action execution is obliged to reject.
+   */
+  actors(): Unit[] {
+    return this.rules.turnOrders.get(this.state.turnOrder.policy).actors(this.state)
+      .filter((unit) => !unit.done);
+  }
+}
+
+/**
+ * One thing the AI considers doing.
+ *
+ * The driver used to be a fixed chain: a tactic, else a recruit, else a stance
+ * change, else the best unit move. A rule plugin could already *add* an action
+ * kind and have it executed — but nothing could make the AI ever choose one,
+ * so half of every extension stopped at the human player.
+ *
+ * Priority keeps the original order rather than turning it into a score:
+ * "a tactic pre-empts a march" is a decision about kinds of action, not a
+ * comparison of their values, and inventing a common currency for it would
+ * have been a rebalance disguised as a refactor.
+ */
+export interface AiIntent {
+  readonly id: string;
+  /** Lower goes first. The built-ins sit at 10/20/30/40, leaving room between. */
+  readonly priority: number;
+  propose(context: AiTurnContext): Action | null;
+}
+
+export class AiIntentRegistry {
+  private readonly intents = new Map<string, AiIntent>();
+
+  register(intent: AiIntent): this {
+    if (this.intents.has(intent.id)) throw new Error(`ai intent already registered: "${intent.id}"`);
+    this.intents.set(intent.id, intent);
+    return this;
+  }
+
+  replace(intent: AiIntent): this {
+    this.intents.set(intent.id, intent);
+    return this;
+  }
+
+  /** Priority order, ties broken by id so registration order never decides. */
+  ordered(): AiIntent[] {
+    return [...this.intents.values()]
+      .sort((left, right) => left.priority - right.priority || left.id.localeCompare(right.id));
+  }
+
+  ids(): string[] {
+    return this.ordered().map((intent) => intent.id);
+  }
+
+  /** The first intent with something to propose. */
+  choose(context: AiTurnContext): Action | null {
+    for (const intent of this.ordered()) {
+      const action = intent.propose(context);
+      if (action) return action;
+    }
+    return null;
+  }
+
+  clone(): AiIntentRegistry {
+    const copy = new AiIntentRegistry();
+    for (const intent of this.intents.values()) copy.register(intent);
+    return copy;
+  }
+}
+
+export const DefaultAiIntents = new AiIntentRegistry()
+  .register({
+    id: 'tactic',
+    priority: 10,
+    propose: (context) => tacticAction(context.rules, context.state, context.player),
+  })
+  .register({
+    id: 'recruit',
+    priority: 20,
+    propose: (context) =>
+      recruitAction(context.state, context.player, context.rules.resources, context.content),
+  })
+  .register({
+    id: 'reaction',
+    priority: 30,
+    propose: (context) =>
+      reactionAction(context.state, context.player, context.objectives, context.content),
+  })
+  .register({
+    id: 'command',
+    priority: 40,
+    propose: (context) => {
+      let best: Candidate | null = null;
+      for (const unit of context.actors()) {
+        const candidate = evaluateUnit(
+          context.planning,
+          context.state,
+          unit,
+          context.objectives,
+          context.danger,
+          context.options,
+          context.battlefield,
+        );
+        if (candidate && (!best || candidate.score > best.score)) best = candidate;
+      }
+      return best?.action ?? null;
+    },
+  });
+
+/**
+ * The next single action for the current (AI) player. Returns `endTurn` when
+ * no intent has anything to propose, so callers can simply loop.
+ */
 export function chooseAction(
   dependencies: AiPlanningDependencies,
   s: GameState,
@@ -612,35 +770,9 @@ export function chooseAction(
 ): Action {
   if (s.phase === 'deployment') return { kind: 'finishDeployment' };
   const me = s.currentPlayer;
-  const aggression = opts?.aggression ?? player(s, me).ai.aggression;
-  const options: AiOptions = { aggression };
-
-  const rules = dependencies.rules;
-  const { content, resources, space } = rules;
-  const tactic = tacticAction(rules, s, me);
-  if (tactic) return tactic;
-
-  const recruit = recruitAction(s, me, resources, content);
-  if (recruit) return recruit;
-
-  const obj = objectivesFor(s, me, dependencies.objectiveAdvisors, rules.objectives, content);
-  const danger = dangerMap(s, me, space, content);
-
-  const reaction = reactionAction(s, me, obj, content);
-  if (reaction) return reaction;
-
-  let best: Candidate | null = null;
-  const battlefield = new Battlefield(s, content);
-  // Only units the ordering policy entitles to act; under per-unit orders that
-  // is exactly one unit, and planning for any other would produce an action
-  // execution is obliged to reject.
-  for (const u of rules.turnOrders.get(s.turnOrder.policy).actors(s)) {
-    if (u.done) continue;
-    const c = evaluateUnit(dependencies, s, u, obj, danger, options, battlefield);
-    if (c && (!best || c.score > best.score)) best = c;
-  }
-
-  return best ? best.action : { kind: 'endTurn' };
+  const options: AiOptions = { aggression: opts?.aggression ?? player(s, me).ai.aggression };
+  const context = new AiTurnContext(dependencies, s, me, options);
+  return dependencies.intents.choose(context) ?? { kind: 'endTurn' };
 }
 
 /** Convenience: drives one whole AI turn. */

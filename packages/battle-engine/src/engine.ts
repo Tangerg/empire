@@ -3,7 +3,9 @@ import { BattleLifecycle } from './turn-cycle';
 import {
   chooseAction,
   DefaultAbilityAiEvaluators,
+  DefaultAiIntents,
   type AbilityAiEvaluatorRegistry,
+  type AiIntentRegistry,
   type AiOptions,
 } from './ai';
 import {
@@ -36,6 +38,7 @@ export interface BattleEngineDependencies extends BattleRuleServices {
   readonly actionHandlers: ActionHandlerRegistry;
   readonly aiObjectiveAdvisors: AiObjectiveAdvisorRegistry;
   readonly abilityAiEvaluators: AbilityAiEvaluatorRegistry;
+  readonly aiIntents: AiIntentRegistry;
 }
 
 export interface BattleDispatchReceipt {
@@ -70,6 +73,7 @@ export class BattleEngine {
   readonly combatModifiers: CombatModifierPipeline;
   readonly aiObjectiveAdvisors: AiObjectiveAdvisorRegistry;
   readonly abilityAiEvaluators: AbilityAiEvaluatorRegistry;
+  readonly aiIntents: AiIntentRegistry;
   readonly rules: BattleRuleServices;
 
   constructor(dependencies: BattleEngineDependencies) {
@@ -77,6 +81,7 @@ export class BattleEngine {
     this.combatModifiers = dependencies.combatModifiers;
     this.aiObjectiveAdvisors = dependencies.aiObjectiveAdvisors;
     this.abilityAiEvaluators = dependencies.abilityAiEvaluators;
+    this.aiIntents = dependencies.aiIntents;
     this.rules = {
       content: dependencies.content,
       abilities: dependencies.abilities,
@@ -226,6 +231,7 @@ export class BattleEngine {
       rules: this.rules,
       objectiveAdvisors: this.aiObjectiveAdvisors,
       abilityEvaluators: this.abilityAiEvaluators,
+      intents: this.aiIntents,
     }, state, options);
   }
 
@@ -302,5 +308,6 @@ export function createBattleEngine(overrides: BattleEngineOverrides): BattleEngi
     actionHandlers: overrides.actionHandlers ?? CoreActionHandlers.clone(),
     aiObjectiveAdvisors: overrides.aiObjectiveAdvisors ?? DefaultAiObjectiveAdvisors.clone(),
     abilityAiEvaluators: overrides.abilityAiEvaluators ?? DefaultAbilityAiEvaluators.clone(),
+    aiIntents: overrides.aiIntents ?? DefaultAiIntents.clone(),
   });
 }

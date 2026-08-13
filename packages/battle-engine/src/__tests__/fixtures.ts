@@ -1,7 +1,7 @@
 import { createDefaultBattleRuleServices, type ActionHandlerRegistry, type BattleRuleServices } from '../action-system';
 import { applyActionWith, commandOptions } from '../actions';
 import { addStatus } from '../statuses';
-import { chooseAction, type AiPlanningDependencies, DefaultAbilityAiEvaluators } from '../ai';
+import { chooseAction, type AiPlanningDependencies, DefaultAbilityAiEvaluators, DefaultAiIntents } from '../ai';
 import { buildAiMissionIntent, DefaultAiObjectiveAdvisors } from '../ai-objectives';
 import { computeDamage, forecast, forecastStructure } from '../combat';
 import { forecastCombatPlan } from '../combat-plan';
@@ -216,6 +216,7 @@ export const testAiDependencies = (): AiPlanningDependencies => ({
   rules: TEST_RULES,
   objectiveAdvisors: DefaultAiObjectiveAdvisors,
   abilityEvaluators: DefaultAbilityAiEvaluators,
+  intents: DefaultAiIntents,
 });
 export const testChooseAction = (state: GameState, options?: { aggression: number }) =>
   chooseAction(testAiDependencies(), state, options);

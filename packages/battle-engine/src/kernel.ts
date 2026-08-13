@@ -1,6 +1,6 @@
 import type { ActionHandlerRegistry, BattleRuleServices } from './action-system';
 import type { AiObjectiveAdvisorRegistry } from './ai-objectives';
-import type { AbilityAiEvaluatorRegistry } from './ai';
+import type { AbilityAiEvaluatorRegistry, AiIntentRegistry } from './ai';
 import type { CombatModifierPipeline } from './combat-modifiers';
 import { orderByDependencies } from './dependency-order';
 import { BattleEngine } from './engine';
@@ -28,6 +28,7 @@ export interface KernelCapabilityMap {
   random: BattleRuleServices['random'];
   aiObjectiveAdvisors: AiObjectiveAdvisorRegistry;
   abilityAiEvaluators: AbilityAiEvaluatorRegistry;
+  aiIntents: AiIntentRegistry;
 }
 
 export type KernelCapabilityId = Extract<keyof KernelCapabilityMap, string>;
@@ -134,6 +135,7 @@ const ENGINE_CAPABILITIES = [
   'random',
   'aiObjectiveAdvisors',
   'abilityAiEvaluators',
+  'aiIntents',
 ] as const satisfies readonly KernelCapabilityId[];
 
 /** Tiny plugin host: dependency graph, deterministic install order, capability wiring. */
@@ -200,6 +202,7 @@ export class SrpgMicrokernel {
       random: context.require('random'),
       aiObjectiveAdvisors: context.require('aiObjectiveAdvisors'),
       abilityAiEvaluators: context.require('abilityAiEvaluators'),
+      aiIntents: context.require('aiIntents'),
     });
   }
 
