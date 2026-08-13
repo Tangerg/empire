@@ -335,7 +335,7 @@ function applyUnitHit(
   hit: PlannedUnitHit,
   emit: (event: GameEvent) => void,
 ): boolean {
-  const { content, resources, progression, hitEffects } = rules;
+  const { content, resources, hitEffects } = rules;
   // A prior hit in the same area plan can rout a later recipient through
   // morale shock. The immutable plan still describes the aimed area, but a
   // unit that has already left the battlefield is no longer a legal mutation
@@ -353,15 +353,15 @@ function applyUnitHit(
     killed: result.killed,
   });
   if (result.fall) announceUnitFall(rules, state, result.fall, emit);
-  awardCombatProgress(attacker, result.amount, result.killed, emit, progression, content);
+  awardCombatProgress(rules, attacker, result.amount, result.killed, emit);
   if (!result.killed && hit.effects.length > 0) {
     hitEffects.apply(rules, state, attacker, requireUnit(state, hit.target), hit.effects, emit);
   }
-  if (!result.killed && resolveMoraleAfterDamage(state, target, result.amount, false, result.at, emit, content)) {
+  if (!result.killed && resolveMoraleAfterDamage(content, state, target, result.amount, false, result.at, emit)) {
     announceUnitDeparture(rules, state, target, emit);
   }
-  if (result.killed) resolveMoraleAfterDamage(state, target, result.amount, true, result.at, emit, content);
-  if (!result.killed) awardDamageTakenMomentum(target, emit, resources);
+  if (result.killed) resolveMoraleAfterDamage(content, state, target, result.amount, true, result.at, emit);
+  if (!result.killed) awardDamageTakenMomentum(resources, target, emit);
   return result.killed;
 }
 
@@ -372,7 +372,7 @@ function applyStructureHit(
   hit: PlannedStructureHit,
   emit: (event: GameEvent) => void,
 ): void {
-  const { content, progression } = rules;
+  const { content } = rules;
   emit({
     type: hit.primary ? 'attackStructure' : 'areaAttackStructure',
     attacker: attacker.id,
@@ -381,8 +381,8 @@ function applyStructureHit(
     damage: hit.forecast.damage,
     destroyed: hit.forecast.destroyed,
   });
-  const damage = damageStructure(state, hit.target, hit.forecast.rawDamage, content, emit);
-  awardCombatProgress(attacker, damage, hit.forecast.destroyed, emit, progression, content);
+  const damage = damageStructure(content, state, hit.target, hit.forecast.rawDamage, emit);
+  awardCombatProgress(rules, attacker, damage, hit.forecast.destroyed, emit);
 }
 
 /** Commits an already forecast plan in one fixed, tested phase order. */
@@ -392,7 +392,7 @@ export function executeCombatPlan(
   plan: CombatPlan,
   emit: (event: GameEvent) => void,
 ): void {
-  const { content, resources, progression, hitEffects } = rules;
+  const { content, resources, hitEffects } = rules;
   const attacker = requireUnit(state, plan.attacker);
   consumeWeapon(rules, state, attacker, plan.weapon, emit);
 
@@ -401,7 +401,7 @@ export function executeCombatPlan(
     const reactor = state.units.find((candidate) => candidate.id === reaction.unit);
     if (reactor) {
       new UnitEntity(reactor).consumeReaction(state.turn);
-      if (reaction.stance === 'support') awardRankProgress(reactor, 20, emit, progression, content);
+      if (reaction.stance === 'support') awardRankProgress(rules, reactor, 20, emit);
     }
     emit({
       type: 'reactionTriggered',
@@ -417,10 +417,10 @@ export function executeCombatPlan(
   }
   for (const hit of plan.structureHits) applyStructureHit(rules, state, attacker, hit, emit);
   changeMomentum(
+    resources,
     attacker,
     unitKilled || plan.structureHits.some((hit) => hit.forecast.destroyed) ? 10 : 5,
     emit,
-    resources,
   );
 
   const counter = plan.primaryUnit?.counter;
@@ -440,14 +440,14 @@ export function executeCombatPlan(
     if (result.fall) announceUnitFall(rules, state, result.fall, emit);
     else {
       hitEffects.apply(rules, state, defender, requireUnit(state, attacker.id), content.weapons.get(counter.weapon).hitEffects, emit);
-      awardDamageTakenMomentum(attacker, emit, resources);
+      awardDamageTakenMomentum(resources, attacker, emit);
     }
-    if (!result.killed && resolveMoraleAfterDamage(state, attacker, result.amount, false, result.at, emit, content)) {
+    if (!result.killed && resolveMoraleAfterDamage(content, state, attacker, result.amount, false, result.at, emit)) {
       announceUnitDeparture(rules, state, attacker, emit);
     }
-    if (result.killed) resolveMoraleAfterDamage(state, attacker, result.amount, true, result.at, emit, content);
-    awardCombatProgress(defender, result.amount, result.killed, emit, progression, content);
-    changeMomentum(defender, result.killed ? 10 : 5, emit, resources);
+    if (result.killed) resolveMoraleAfterDamage(content, state, attacker, result.amount, true, result.at, emit);
+    awardCombatProgress(rules, defender, result.amount, result.killed, emit);
+    changeMomentum(resources, defender, result.killed ? 10 : 5, emit);
   }
 
   const support = plan.supportAttack;
@@ -469,12 +469,12 @@ export function executeCombatPlan(
   if (result.fall) announceUnitFall(rules, state, result.fall, emit);
   else {
     hitEffects.apply(rules, state, supporter, requireUnit(state, target.id), support.effects, emit);
-    awardDamageTakenMomentum(target, emit, resources);
+    awardDamageTakenMomentum(resources, target, emit);
   }
-  if (!result.killed && resolveMoraleAfterDamage(state, target, result.amount, false, result.at, emit, content)) {
+  if (!result.killed && resolveMoraleAfterDamage(content, state, target, result.amount, false, result.at, emit)) {
     announceUnitDeparture(rules, state, target, emit);
   }
-  if (result.killed) resolveMoraleAfterDamage(state, target, result.amount, true, result.at, emit, content);
-  awardCombatProgress(supporter, result.amount, result.killed, emit, progression, content);
-  changeMomentum(supporter, result.killed ? 10 : 5, emit, resources);
+  if (result.killed) resolveMoraleAfterDamage(content, state, target, result.amount, true, result.at, emit);
+  awardCombatProgress(rules, supporter, result.amount, result.killed, emit);
+  changeMomentum(resources, supporter, result.killed ? 10 : 5, emit);
 }

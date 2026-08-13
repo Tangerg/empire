@@ -259,7 +259,7 @@
 在此之上：
 
 - 依赖参数一律必填，从不使用全局默认值；漏传是编译错误
-- 单一 `content: ContentCatalog` 依赖尾置；需要两个以上服务时，改为前置的端口对象（`CombatRules`、`AbilityRules`、`StatusRules`、`ObjectiveRules`、`VictoryRules`、`ScenarioRules`、`CommanderRules`、`CareerRules`、`TurnOrderRules`、`TurnCycleRules`、`AiRules`…）
+- **一条调用形状**：`f(依赖, 作用对象…, emit)`。依赖永远在前，事件通道永远在最后；两个以上服务合成一个前置端口对象（`CombatRules`、`AbilityRules`、`StatusRules`、`ObjectiveRules`、`VictoryRules`、`ScenarioRules`、`CommanderRules`、`CareerRules`、`TurnOrderRules`、`TurnCycleRules`、`ProgressionRules`、`UnitDepartureRules`、`AiRules`…）
 - 端口由**消费方**声明，`BattleRuleServices` 结构化满足全部端口，因此不引入新的模块依赖边
 - 表现层从会话拿到的规则集读取内容，不 import `battle-engine/data/*`
 - 应用组合根负责建 catalog 和 engine，库不做环境安装
@@ -270,6 +270,8 @@
 
 | 问题 | 唯一归属 |
 | --- | --- |
+| 单位离场之后要发生什么 | `UnitDepartureHandlers`（开放注册表） |
+| 一种反应姿态是什么意思 | `Reactions`（内容注册表） |
 | 此刻这个单位能不能行动 | `mayAct()` |
 | 能不能给它下这条指令 | `ActionExecutionContext.commandableUnit()` |
 | 战斗阶段与回合数何时改变 | `BattleLifecycle` |

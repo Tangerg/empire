@@ -29,10 +29,10 @@ export function overlayHealAt(state: GameState, at: Coord, content: ContentCatal
 }
 
 export function addTerrainOverlay(
+  content: ContentCatalog,
   state: GameState,
   overlay: TerrainOverlayState,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog,
 ): void {
   if (state.scenario.overlays.some((candidate) => candidate.id === overlay.id)) {
     throw new Error(`duplicate terrain overlay id "${overlay.id}"`);
@@ -71,7 +71,7 @@ export function applyOverlayTurnStartEffects(
   for (const unit of scope ?? state.units.filter((candidate) => candidate.owner === owner)) {
     for (const instance of overlaysAt(state, unit, content)) {
       const effect = content.terrainOverlays.get(instance.type).turnStartStatus;
-      if (effect) addStatus(unit, effect.id, effect.duration, content, emit);
+      if (effect) addStatus(content, unit, effect.id, effect.duration, emit);
     }
   }
 }

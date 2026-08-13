@@ -164,7 +164,7 @@ Abilities.defineAll([
       const amount = healAmount(unit, ally, content);
       const healed = new UnitEntity(ally).heal(amount, content.units.get(ally.type).maxHp);
       emit({ type: 'heal', source: unit.id, target: ally.id, amount: healed });
-      awardRankProgress(unit, Math.max(5, healed), emit, rules.progression, content);
+      awardRankProgress(rules, unit, Math.max(5, healed), emit);
     },
   }),
 
@@ -183,14 +183,13 @@ Abilities.defineAll([
     },
     execute: (rules, { state, unit, at }, _t, emit) => {
       const content = rules.content;
-      const progression = rules.progression;
       const i = idx(state.map, at.x, at.y);
       const battleRules = state.rules;
       if (battleRules.captureMode === 'instant') {
         state.map.owners[i] = unit.owner;
         state.map.captureProgress[i] = 0;
         emit({ type: 'capture', at, player: unit.owner, progress: 1, captured: true });
-        awardRankProgress(unit, 60, emit, progression, content);
+        awardRankProgress(rules, unit, 60, emit);
         return;
       }
       const def = content.units.get(unit.type);
@@ -203,7 +202,7 @@ Abilities.defineAll([
         state.map.owners[i] = unit.owner;
         state.map.captureProgress[i] = 0;
         emit({ type: 'capture', at, player: unit.owner, progress: 1, captured: true });
-        awardRankProgress(unit, 60, emit, progression, content);
+        awardRankProgress(rules, unit, 60, emit);
       } else {
         state.map.captureProgress[i] = next;
         emit({
@@ -213,7 +212,7 @@ Abilities.defineAll([
           progress: next / battleRules.captureThreshold,
           captured: false,
         });
-        awardRankProgress(unit, 20, emit, progression, content);
+        awardRankProgress(rules, unit, 20, emit);
       }
     },
   }),

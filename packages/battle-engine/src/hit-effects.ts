@@ -88,7 +88,7 @@ export const WeaponHitEffectHandlers = new WeaponHitEffectHandlerRegistry()
   .register({
     kind: 'addStatus',
     apply: ({ target, attacker, emit, content }, effect) => {
-      addStatus(target, effect.status, effect.duration, content, emit, attacker.id);
+      addStatus(content, target, effect.status, effect.duration, emit, attacker.id);
     },
     describe: (effect) => `施加 ${effect.status}（${effect.duration} 回合）`,
   })

@@ -91,8 +91,8 @@ export function forceMoveUnit(
     emit({ type: 'collisionDamage', unit: unit.id, amount: result.amount, hpAfter: result.hpAfter, killed });
     if (result.fall) {
       announceUnitFall(rules, state, result.fall, emit);
-      resolveMoraleAfterDamage(state, unit, result.amount, true, result.at, emit, content);
-    } else if (resolveMoraleAfterDamage(state, unit, result.amount, false, result.at, emit, content)) {
+      resolveMoraleAfterDamage(content, state, unit, result.amount, true, result.at, emit);
+    } else if (resolveMoraleAfterDamage(content, state, unit, result.amount, false, result.at, emit)) {
       announceUnitDeparture(rules, state, unit, emit);
     }
   }
@@ -101,11 +101,11 @@ export function forceMoveUnit(
 
 /** Teleportation ignores intermediate edges, but never creates an invalid overlap. */
 export function teleportUnit(
+  content: ContentCatalog,
   state: GameState,
   unitId: number,
   destination: Coord,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog,
 ): boolean {
   const unit = requireUnit(state, unitId);
   const from = { x: unit.x, y: unit.y };

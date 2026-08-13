@@ -36,8 +36,8 @@ export class StatusLifecycleContext {
     });
     if (result.fall) {
       announceUnitFall(this.rules, this.state, result.fall, this.emit);
-      resolveMoraleAfterDamage(this.state, this.unit, result.amount, true, result.at, this.emit, this.content);
-    } else if (resolveMoraleAfterDamage(this.state, this.unit, result.amount, false, result.at, this.emit, this.content)) {
+      resolveMoraleAfterDamage(this.content, this.state, this.unit, result.amount, true, result.at, this.emit);
+    } else if (resolveMoraleAfterDamage(this.content, this.state, this.unit, result.amount, false, result.at, this.emit)) {
       announceUnitDeparture(this.rules, this.state, this.unit, this.emit);
     }
     return result.amount;
@@ -118,10 +118,10 @@ export function hasStatus(unit: Unit, id: StatusId): boolean {
 }
 
 export function addStatus(
+  content: ContentCatalog,
   unit: Unit,
   id: StatusId,
   remaining: number,
-  content: ContentCatalog,
   emit?: (event: GameEvent) => void,
   sourceUnitId?: number,
 ): void {

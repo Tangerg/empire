@@ -144,10 +144,10 @@ export function changeCareer(
 }
 
 export function awardCareerProgress(
+  content: ContentCatalog,
   unit: Unit,
   amount: number,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog,
 ): void {
   const current = unit.career.current;
   if (!current || !content.careers.has(current)) return;

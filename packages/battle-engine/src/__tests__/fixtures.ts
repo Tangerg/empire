@@ -188,7 +188,7 @@ export const testAddStatus = (
   remaining: number,
   emit?: (event: GameEvent) => void,
   sourceUnitId?: number,
-) => addStatus(unit, id, remaining, TEST_CONTENT, emit, sourceUnitId);
+) => addStatus(TEST_CONTENT, unit, id, remaining, emit, sourceUnitId);
 
 export const testVictory = (state: GameState, emit?: (event: GameEvent) => void) =>
   evaluateVictory(TEST_RULES, state, emit);

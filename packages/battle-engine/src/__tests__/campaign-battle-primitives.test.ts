@@ -106,7 +106,7 @@ describe('campaign-grade battle primitives', () => {
     }));
     const passenger = state.units[0];
     const carrier = state.units[1];
-    embarkUnit(state, passenger.id, carrier.id, () => {}, rules.content);
+    embarkUnit(rules.content, state, passenger.id, carrier.id, () => {});
     const result = new BattleAggregate(state, rules.content).damageUnit(carrier.id, 999);
     expect(result.fall?.passengerMarkers).toHaveLength(1);
     expect(state.embarkedUnits).toHaveLength(0);
@@ -121,7 +121,7 @@ describe('campaign-grade battle primitives', () => {
     }));
     const id = state.units[0].id;
     const events: GameEvent[] = [];
-    changeMorale(state, id, -999, 'test-shock', (event) => events.push(event), TEST_CONTENT);
+    changeMorale(TEST_CONTENT, state, id, -999, 'test-shock', (event: GameEvent) => events.push(event));
     expect(state.units.some((unit) => unit.id === id)).toBe(false);
     expect(state.markers[0]).toMatchObject({ kind: 'routed', fallenUnit: { id } });
     expect(events.some((event) => event.type === 'unitRouted')).toBe(true);

@@ -17,10 +17,10 @@ export function structureAt(state: GameState, x: number, y: number): StructureSt
 }
 
 export function damageStructure(
+  content: ContentCatalog,
   state: GameState,
   id: StructureId,
   rawAmount: number,
-  content: ContentCatalog,
   emit?: (event: GameEvent) => void,
 ): number {
   const structure = requireStructure(state, id);
@@ -34,10 +34,10 @@ export function damageStructure(
 }
 
 export function repairStructure(
+  content: ContentCatalog,
   state: GameState,
   id: StructureId,
   requested: number,
-  content: ContentCatalog,
   emit?: (event: GameEvent) => void,
 ): number {
   const structure = requireStructure(state, id);

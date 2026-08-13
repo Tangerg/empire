@@ -18,11 +18,11 @@ export function passengersOf(state: GameState, carrier: number): Unit[] {
 }
 
 export function embarkUnit(
+  content: ContentCatalog,
   state: GameState,
   unitId: number,
   carrierId: number,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog,
 ): void {
   if (unitId === carrierId) throw new IllegalActionError('a transport cannot embark itself');
   const unit = requireUnit(state, unitId);
@@ -47,12 +47,12 @@ export function embarkUnit(
 }
 
 export function disembarkUnit(
+  content: ContentCatalog,
   state: GameState,
   carrierId: number,
   unitId: number,
   at: Coord,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog,
 ): void {
   const { carrier } = transportProfile(state, carrierId, content);
   const index = state.embarkedUnits.findIndex((entry) => entry.carrier === carrierId && entry.unit.id === unitId);

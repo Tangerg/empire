@@ -134,17 +134,17 @@ export function executeTactic(
   );
   for (const effect of tactic.effects) {
     for (const unit of affected) {
-      if (effect.type === 'addStatus') addStatus(unit, effect.status, effect.duration, content, emit, leader.id);
+      if (effect.type === 'addStatus') addStatus(content, unit, effect.status, effect.duration, emit, leader.id);
       else removeStatus(unit, effect.status, emit);
     }
   }
 }
 
 export function refreshCommanderTurn(
+  resources: BattleResourceSystem,
   state: GameState,
   ownerId: number,
   emit: (event: GameEvent) => void,
-  resources: BattleResourceSystem,
 ): void {
   const owner = player(state, ownerId);
   const commanders = state.commanders.filter(
@@ -176,10 +176,10 @@ export function refreshCommanderTurn(
 
 /** Linked troops lose the aura immediately and receive a short morale shock. */
 export function handleCommanderDefeat(
+  content: ContentCatalog,
   state: GameState,
   unitId: number,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog,
 ): void {
   const commander = state.commanders.find((candidate) => candidate.unitId === unitId);
   if (!commander) return;
@@ -187,9 +187,9 @@ export function handleCommanderDefeat(
   for (const unit of state.units.filter(
     (candidate) => candidate.commanderId === commander.id && candidate.owner === commander.owner,
   )) {
-    if (content.statuses.has('shaken')) addStatus(unit, 'shaken', 2, content, emit, unitId);
+    if (content.statuses.has('shaken')) addStatus(content, unit, 'shaken', 2, emit, unitId);
     if (state.rules.moraleEnabled && state.units.some((candidate) => candidate.id === unit.id)) {
-      changeMorale(state, unit.id, -state.rules.moraleCommanderDefeatLoss, 'commander-defeated', emit, content);
+      changeMorale(content, state, unit.id, -state.rules.moraleCommanderDefeatLoss, 'commander-defeated', emit);
     }
   }
 }
@@ -200,5 +200,5 @@ export function handleCommanderDefeat(
  */
 UnitDepartureHandlers.register({
   id: 'commander.defeat',
-  handle: ({ state, unit, emit, content }) => handleCommanderDefeat(state, unit.id, emit, content),
+  handle: ({ state, unit, emit, content }) => handleCommanderDefeat(content, state, unit.id, emit),
 });

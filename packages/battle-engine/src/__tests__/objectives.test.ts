@@ -37,7 +37,7 @@ describe('composable mission objectives', () => {
     expect(testObjectiveOutcome(state, 1, state.players[0].objectives[1])).toBe('pending');
     expect(testObjectiveOutcome(state, 1, state.players[0].objectives[2])).toBe('success');
     expect(testObjectiveOutcome(state, 1, state.players[0].objectives[3])).toBe('success');
-    damageStructure(state, 'gate', 999, TEST_CONTENT);
+    damageStructure(TEST_CONTENT, state, 'gate', 999);
     expect(testObjectiveOutcome(state, 1, state.players[0].objectives[1])).toBe('success');
   });
 

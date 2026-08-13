@@ -308,3 +308,64 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 });
+
+describe('one call shape', () => {
+  /** Balanced-paren parameter list, so `(event: GameEvent) => void` survives. */
+  function parametersOf(source: string, from: number): string[] {
+    const open = source.indexOf('(', from);
+    let depth = 0;
+    for (let index = open; index < source.length; index++) {
+      if (source[index] === '(') depth++;
+      else if (source[index] === ')' && --depth === 0) {
+        const inner = source.slice(open + 1, index);
+        const parts: string[] = [];
+        let nesting = 0;
+        let current = '';
+        for (const character of inner) {
+          if ('([{<'.includes(character)) nesting++;
+          else if (')]}>'.includes(character)) nesting--;
+          if (character === ',' && nesting === 0) {
+            parts.push(current.trim());
+            current = '';
+          } else current += character;
+        }
+        if (current.trim()) parts.push(current.trim());
+        return parts;
+      }
+    }
+    return [];
+  }
+
+  it('takes dependencies first and the event channel last', () => {
+    // One rule, not two: what it needs, what it acts on, where it reports.
+    // "single content trailing, several services leading" was two rules, and
+    // seventeen of the forty-two emitting functions had drifted between them.
+    //
+    // Scoped to functions that emit: that is the family that mutates a battle
+    // and the family the drift happened in. Pure queries are left alone.
+    const dependencies = ['content', 'rules', 'resources', 'progression', 'policy', 'space', 'handlers'];
+    const offenders: string[] = [];
+    for (const file of runtimeTypeScriptFiles(coreRoot)) {
+      const source = readFileSync(file, 'utf8');
+      for (const match of source.matchAll(/export function (\w+)/g)) {
+        const names = parametersOf(source, match.index + match[0].length)
+          .map((parameter) => parameter.split(':')[0].trim().replace(/[?=].*$/, '').trim());
+        if (!names.includes('emit')) continue;
+        const lastDependency = names.reduce(
+          (last, name, index) => (dependencies.includes(name) ? index : last), -1);
+        const firstSubject = names.findIndex((name) => !dependencies.includes(name));
+        if (names[names.length - 1] === 'emit' && lastDependency < firstSubject) continue;
+
+        const problems: string[] = [];
+        if (lastDependency > firstSubject) problems.push(`${names[lastDependency]} follows ${names[firstSubject]}`);
+        // A trailing optional (a source id, a metadata bag) may follow `emit`;
+        // another dependency may not.
+        const afterEmit = names.slice(names.indexOf('emit') + 1);
+        if (afterEmit.some((name) => dependencies.includes(name))) problems.push('dependency after emit');
+        if (problems.length > 0) offenders.push(`${relative(coreRoot, file)}#${match[1]}: ${problems.join('; ')}`);
+      }
+    }
+
+    expect(offenders).toEqual([]);
+  });
+});

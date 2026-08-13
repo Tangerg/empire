@@ -36,17 +36,23 @@ export class ThresholdRankProgressionPolicy implements RankProgressionPolicy {
 
 export const DefaultRankProgression = new ThresholdRankProgressionPolicy();
 
+/** Port declared by this module; `BattleRuleServices` satisfies it. */
+export interface ProgressionRules {
+  readonly content: ContentCatalog;
+  readonly progression: RankProgressionPolicy;
+}
+
 export function awardRankProgress(
+  rules: ProgressionRules,
   unit: Unit,
   requested: number,
   emit: (event: GameEvent) => void,
-  policy: RankProgressionPolicy,
-  content: ContentCatalog,
 ): void {
+  const { progression: policy, content } = rules;
   const entity = new UnitEntity(unit);
   const gained = entity.addRankProgress(requested);
   if (gained <= 0) return;
-  awardCareerProgress(unit, gained, emit, content);
+  awardCareerProgress(content, unit, gained, emit);
   emit({ type: 'rankProgressChanged', unit: unit.id, amount: gained, current: unit.rankProgress });
   const next = policy.rankFor(unit.rankProgress);
   if (next <= unit.rank) return;
@@ -55,21 +61,21 @@ export function awardRankProgress(
 }
 
 export function changeMomentum(
+  resources: BattleResourceSystem,
   unit: Unit,
   requested: number,
   emit: (event: GameEvent) => void,
-  resources: BattleResourceSystem,
 ): void {
-  changeUnitResource(unit, MOMENTUM_RESOURCE, requested, emit, resources);
+  changeUnitResource(resources, unit, MOMENTUM_RESOURCE, requested, emit);
 }
 
 /** Changes any unit-scoped account without exposing its storage to mechanics. */
 export function changeUnitResource(
+  resources: BattleResourceSystem,
   unit: Unit,
   resource: string,
   requested: number,
   emit: (event: GameEvent) => void,
-  resources: BattleResourceSystem,
 ): void {
   const subject = unitResource(unit);
   if (!resources.hasAccount(resource, subject) || requested === 0) return;
@@ -94,21 +100,20 @@ export function changeUnitResource(
  * persistent XP, but combat resolution never reads a save file directly.
  */
 export function awardCombatProgress(
+  rules: ProgressionRules,
   unit: Unit,
   damage: number,
   defeatedTarget: boolean,
   emit: (event: GameEvent) => void,
-  policy: RankProgressionPolicy,
-  content: ContentCatalog,
 ): void {
   const amount = Math.max(1, Math.round(damage)) + (defeatedTarget ? 50 : 0);
-  awardRankProgress(unit, amount, emit, policy, content);
+  awardRankProgress(rules, unit, amount, emit);
 }
 
 export function awardDamageTakenMomentum(
+  resources: BattleResourceSystem,
   unit: Unit,
   emit: (event: GameEvent) => void,
-  resources: BattleResourceSystem,
 ): void {
-  changeMomentum(unit, 3, emit, resources);
+  changeMomentum(resources, unit, 3, emit);
 }

@@ -64,7 +64,7 @@ flowchart TD
 | `engine.resource-economy` | 通用资源账户策略 |
 | `engine.ai-planning` | 目标顾问和能力估值 |
 
-能力表当前有 16 项：`content` `abilities` `space` `actionHandlers` `combatModifiers` `hitEffects` `statusBehaviors` `scenarioConditions` `scenarioEffects` `objectives` `progression` `resources` `turnOrders` `random` `aiObjectiveAdvisors` `abilityAiEvaluators`。
+能力表当前有 18 项：`content` `abilities` `space` `actionHandlers` `combatModifiers` `hitEffects` `statusBehaviors` `scenarioConditions` `scenarioEffects` `objectives` `progression` `resources` `turnOrders` `reactions` `unitDepartures` `random` `aiObjectiveAdvisors` `abilityAiEvaluators`。
 
 插件按业务能力成块，不能为每个类建立一个插件。每个插件声明：
 
@@ -125,6 +125,31 @@ const ally  = context.ownUnit(action.carrier);                    // 只要求�
 这是设计上的关键取舍：个体行动序自带充能时钟，阵营回合没有，如果延迟按 tick 计，同一份内容包在两族下含义完全不同，还会逼 `TurnOrderPolicy` 长出一套排程 API。而「一次行动权」是两族都恰好一次产出一个的东西——所以内容包写 `castTurns: 2`，在两族下都读作「再过两次行动权」。
 
 它替换了五个互相传递 `(state, emit, rules)` 的自由函数。原先 `state.phase` 由三个互不相关的位置赋值，「一个回合什么时候结束」没有归属；策略报告「无人可行动」时只设了阶段就返回，战斗于是停在 `over` 却没有胜方、没有结束原因、也没有 `gameOver` 事件——等这个事件的外壳直接挂住。架构适应度测试现在守着这份归属。
+
+## 反应姿态是内容
+
+一种姿态曾经是四个硬编码字符串，含义写在 `combat.ts` 里的 `=== 'guard'` 比较和字面量 `0.7` 上。加第五种就得改伤害预测——那是内容包最不该碰的地方。
+
+现在每种姿态是注册表里的一个值对象，`ReactionStance` 也和 `TerrainId` 一样是开放 id：
+
+| 字段 | 含义 |
+| --- | --- |
+| `intercepts` | 替相邻友军挡下攻击 |
+| `incomingMultiplier` | 受到攻击的伤害系数 |
+| `retaliates` | 是否还击 |
+| `conservesResources` | 只用无消耗武器还击 |
+
+字段全部必填是刻意的：可选钩子会让某种姿态对某个问题回答「没有特别意见」，那默认值就又回到引擎里了。内容包加一个 `dodge`（0.4 减伤、放弃还击）不需要改任何一行引擎代码，HUD 也会自动列出它连同提示文本。
+
+## 单位离场是一次通告
+
+死亡的后果属于别的子系统：光环崩塌、咏唱哑火、运输载具倾覆。它们过去逐个手工接线，于是 `handleCommanderDefeat` 被从**十一处**调用，每加一种后果就要重新找齐这十一处。
+
+现在离场是一次通告加一份开放的监听者名单。指挥官模块和咏唱模块各自注册自己的后果，插件也用同样的方式加自己的。
+
+**注册表本身不 import 任何子系统**，这正是它能成立的原因：战斗要通告死亡，而对死亡的反应可能又需要战斗——上一轮把这件事推迟，就是卡在这个环上。
+
+同一个调用还吸收了「报告一次死亡」的固定动作：`death` 事件、尸体标记、`transportLost`，然后才是后果。那是六行代码在六个致命伤害点各抄一遍，每一份都离漏掉一步只有一次编辑之遥。`BattleAggregate` 现在返回 `fall`（恰好在致死时非空），调用方不必再从单位已经离开的战场上把伤亡信息拼回来。`StatusLifecycleContext` 的 `onDeath` 回调也随之退休——它存在的唯一理由是状态模块不能 import 指挥官模块。
 
 ## 咏唱与延迟结算
 

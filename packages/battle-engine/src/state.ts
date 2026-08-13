@@ -462,12 +462,12 @@ export function recruitOptions(
 }
 
 export function spawnUnit(
+  content: ContentCatalog,
   s: GameState,
   type: UnitTypeId,
   owner: PlayerId,
   at: Coord,
   opts: { hp?: number; done?: boolean; source?: Partial<LevelUnit> } = {},
-  content: ContentCatalog,
 ): Unit {
   const source: LevelUnit = {
     x: at.x,

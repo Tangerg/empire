@@ -295,7 +295,7 @@ class EmbarkActionHandler implements ActionHandler<'embark'> {
     // The passenger spends the action; the carrier only has to be yours.
     const passenger = context.commandableUnit(action.unit, '登载');
     const carrier = context.ownUnit(action.carrier);
-    embarkUnit(context.state, passenger.id, carrier.id, context.emit, context.rules.content);
+    embarkUnit(context.rules.content, context.state, passenger.id, carrier.id, context.emit);
   }
 }
 
@@ -304,7 +304,7 @@ class DisembarkActionHandler implements ActionHandler<'disembark'> {
 
   execute(context: ActionExecutionContext, action: ActionKindMap['disembark']): void {
     const carrier = context.commandableUnit(action.carrier, '卸载');
-    disembarkUnit(context.state, carrier.id, action.unit, action.at, context.emit, context.rules.content);
+    disembarkUnit(context.rules.content, context.state, carrier.id, action.unit, action.at, context.emit);
     carrier.finishAction();
   }
 }
@@ -344,9 +344,9 @@ class RecruitActionHandler implements ActionHandler<'recruit'> {
         });
       }
     }
-    const unit = spawnUnit(state, action.unit, owner.id, action.at, {
+    const unit = spawnUnit(context.rules.content, state, action.unit, owner.id, action.at, {
       done: !state.rules.recruitsActImmediately,
-    }, context.rules.content);
+    });
     context.emit({ type: 'recruit', unit: unit.id, at: action.at });
   }
 }

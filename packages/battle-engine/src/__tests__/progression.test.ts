@@ -19,10 +19,10 @@ describe('battle-local rank and hero momentum', () => {
     const rookieDamage = testDamage(state, attacker, defender).damage;
     const events: GameEvent[] = [];
 
-    awardRankProgress(attacker, 120, (event) => events.push(event), TEST_RULES.progression, TEST_CONTENT);
+    awardRankProgress(TEST_RULES, attacker, 120, (event: GameEvent) => events.push(event));
     expect(attacker.rank).toBe(1);
     expect(testDamage(state, attacker, defender).damage).toBeGreaterThan(rookieDamage);
-    awardRankProgress(attacker, 200, (event) => events.push(event), TEST_RULES.progression, TEST_CONTENT);
+    awardRankProgress(TEST_RULES, attacker, 200, (event: GameEvent) => events.push(event));
     expect(attacker.rank).toBe(2);
     expect(events.filter((event) => event.type === 'rankChanged')).toEqual([
       { type: 'rankChanged', unit: attacker.id, from: 0, to: 1 },

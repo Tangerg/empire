@@ -341,7 +341,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   }))
   .register(effectHandler('addStatus', (context, effect) => {
     for (const unit of context.select(effect.selector)) {
-      addStatus(unit, effect.status, effect.duration, context.content, context.emit);
+      addStatus(context.content, unit, effect.status, effect.duration, context.emit);
     }
   }))
   .register(effectHandler('removeStatus', (context, effect) => {
@@ -375,10 +375,10 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       if (cell.blocksMovement || cell.movementCost(definition.movementClass) === null) {
         throw new Error(`unit "${source.unit}" cannot spawn at ${source.x},${source.y}`);
       }
-      const unit = spawnUnit(context.state, source.unit, source.owner, source, {
+      const unit = spawnUnit(context.content, context.state, source.unit, source.owner, source, {
         done: !(effect.ready ?? false),
         source,
-      }, context.content);
+      });
       context.emit({
         type: 'unitSpawned',
         unit: unit.id,
@@ -459,11 +459,12 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       const destination = destinations.find((cell) => unitAtCoord(context.state, cell) === undefined &&
         new Battlefield(context.state, context.content).cell(cell).movementCost(context.content.units.get(unit.type).movementClass) !== null &&
         !new Battlefield(context.state, context.content).cell(cell).blocksMovement);
-      if (destination) teleportUnit(context.state, unit.id, destination, context.emit, context.content);
+      if (destination) teleportUnit(context.content, context.state, unit.id, destination, context.emit);
     }
   }))
   .register(effectHandler('addOverlay', (context, effect) => {
     addTerrainOverlay(
+      context.content,
       context.state,
       {
         id: effect.id,
@@ -472,7 +473,6 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
         remainingRounds: effect.rounds ?? null,
       },
       context.emit,
-      context.content,
     );
   }))
   .register(effectHandler('removeOverlay', ({ state, emit }, effect) => {
@@ -492,20 +492,20 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   }))
   .register(effectHandler('changeUnitResource', (context, effect) => {
     for (const unit of context.select(effect.selector)) {
-      changeUnitResource(unit, effect.resource, effect.amount, context.emit, context.resources);
+      changeUnitResource(context.resources, unit, effect.resource, effect.amount, context.emit);
     }
   }))
   .register(effectHandler('changeMorale', (context, effect) => {
     for (const unit of [...context.select(effect.selector)]) {
       if (context.state.units.some((candidate) => candidate.id === unit.id)) {
-        changeMorale(context.state, unit.id, effect.amount, effect.reason ?? 'scenario', context.emit, context.content);
+        changeMorale(context.content, context.state, unit.id, effect.amount, effect.reason ?? 'scenario', context.emit);
       }
     }
   }))
   .register(effectHandler('surrenderUnits', (context, effect) => {
     for (const unit of [...context.select(effect.selector)]) {
       if (context.state.units.some((candidate) => candidate.id === unit.id)) {
-        surrenderUnit(context.state, unit.id, effect.to, context.emit, context.content);
+        surrenderUnit(context.content, context.state, unit.id, effect.to, context.emit);
         announceUnitDeparture(context.rules, context.state, unit, context.emit);
       }
     }
@@ -615,10 +615,10 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     }
   }))
   .register(effectHandler('damageStructure', (context, effect) => {
-    damageStructure(context.state, effect.id, effect.amount, context.content, context.emit);
+    damageStructure(context.content, context.state, effect.id, effect.amount, context.emit);
   }))
   .register(effectHandler('repairStructure', (context, effect) => {
-    repairStructure(context.state, effect.id, effect.amount, context.content, context.emit);
+    repairStructure(context.content, context.state, effect.id, effect.amount, context.emit);
   }))
   .register(effectHandler('moveComposite', (context, effect) => {
     moveComposite(context.state, effect.id, { x: effect.dx, y: effect.dy }, context.emit);

@@ -35,7 +35,7 @@ describe('headless scenario primitives', () => {
         },
       }),
     );
-    damageStructure(s, 'story-node', 1000, TEST_CONTENT);
+    damageStructure(TEST_CONTENT, s, 'story-node', 1000);
     const events = applyAction(s, wait(s.units[0].id, 0, 0), TEST_RULES);
     expect(s.scenario.variables.nodeDown).toBe(true);
     expect(events).toContainEqual({ type: 'scenarioSignal', signal: 'node.destroyed' });

@@ -157,7 +157,7 @@ export class BattleLifecycle {
 
   /** A player's per-round upkeep: tactics recharge, income lands. */
   private openRoundFor(owner: PlayerId): void {
-    refreshCommanderTurn(this.state, owner, this.emit, this.rules.resources);
+    refreshCommanderTurn(this.rules.resources, this.state, owner, this.emit);
     this.grantIncome(owner);
   }
 
