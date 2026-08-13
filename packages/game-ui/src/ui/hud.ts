@@ -14,7 +14,8 @@ import { activeCommanderFor, commanderUnit } from '@empire/battle-engine/command
 import { idx } from '@empire/battle-engine/grid';
 import { recruitOptions } from '@empire/battle-engine/state';
 import { describeObjective, objectiveProgress } from '@empire/battle-engine/victory';
-import type { Coord, Direction, GameState, ReactionStance, ResourceAmount, Unit } from '@empire/battle-engine/types';
+import type { Coord, Direction, GameState, PendingCast, ReactionStance, ResourceAmount, Unit } from '@empire/battle-engine/types';
+import { SpellCastEntity } from '@empire/battle-engine/domain/spell-cast';
 import {
   type BattleResourceSystem,
   type ResourceSubject,
@@ -38,6 +39,8 @@ export interface HudView {
   reactionUnit: number | null;
   /** Upcoming actor turns for per-unit orders; empty for side turns. */
   turnOrder: { units: Unit[]; activeUnit: number | null };
+  /** Strikes still charging, newest last. Empty when nothing is being cast. */
+  casts: PendingCast[];
   rankNextThreshold: number | null;
   careerOptions: CareerOption[];
   /** Ability whose target we are picking, if any. */
@@ -251,6 +254,30 @@ export class Hud {
     </div>`;
   }
 
+  /**
+   * Charging strikes. A charge that nobody can see is a trap, so both sides'
+   * casts are shown: the tile is public information the moment it is marked.
+   */
+  private renderCasts(v: HudView): string {
+    if (v.casts.length === 0) return '';
+    const content = v.rules.content;
+    return `<div class="cast-strip" title="咏唱中">
+      ${v.casts
+        .map((cast) => {
+          const owner = v.state.players.find((entry) => entry.id === cast.owner);
+          const entity = new SpellCastEntity(cast);
+          const remaining = entity.remainingAt(v.state.actorTurns);
+          return `<span class="cast-slot" style="--team:${owner?.color ?? PAL.neutral}"
+            title="${escapeHtml(content.weapons.get(cast.weapon).name)} · 目标 ${cast.target.x},${cast.target.y} · 还有 ${remaining} 个行动轮">
+            ${icon('crosshair')}
+            <b>${remaining}</b>
+            <i style="--fill:${Math.round(entity.progressAt(v.state.actorTurns) * 100)}%"></i>
+          </span>`;
+        })
+        .join('')}
+    </div>`;
+  }
+
   private renderTop(v: HudView): string {
     const s = v.state;
     const p = s.players.find((x) => x.id === s.currentPlayer)!;
@@ -264,6 +291,7 @@ export class Hud {
       </div>
       <div class="topbar-center">
         ${this.renderTurnOrder(v)}
+        ${this.renderCasts(v)}
         <div class="player-chip" style="--team:${p.color}">
           <span class="dot"></span>
           <b>${escapeHtml(p.name)}</b>

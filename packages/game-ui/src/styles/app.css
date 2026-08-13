@@ -1238,3 +1238,60 @@ kbd {
 .order-slot svg {
   display: block;
 }
+
+/* ------------------------------------------------------------- cast strip */
+
+.cast-strip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border: 1px solid color-mix(in srgb, #ffb020 45%, var(--line));
+  border-radius: 999px;
+  background: rgb(255 176 32 / 10%);
+}
+
+.cast-slot {
+  position: relative;
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  padding: 2px 6px 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--team) 20%, transparent);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.cast-slot svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+/* Charge completion, so the wait reads as progress rather than a bare number. */
+.cast-slot i {
+  position: absolute;
+  right: 4px;
+  bottom: 1px;
+  left: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: rgb(255 255 255 / 18%);
+}
+
+.cast-slot i::after {
+  display: block;
+  width: var(--fill);
+  height: 100%;
+  border-radius: 2px;
+  background: #ffb020;
+  content: '';
+}
+
+.incoming-count {
+  paint-order: stroke;
+  stroke: rgb(255 255 255 / 65%);
+  stroke-width: 2px;
+  pointer-events: none;
+}

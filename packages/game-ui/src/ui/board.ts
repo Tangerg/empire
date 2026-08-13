@@ -18,6 +18,8 @@ export interface BoardOverlay {
   path: Coord[];
   selected: Coord | null;
   cursor: Coord | null;
+  /** Tiles a charging strike is already aimed at, with turns remaining. */
+  incoming: Map<number, number>;
   /** null = no fog. */
   visible: Set<number> | null;
   hiddenUnits: Set<number>;
@@ -28,6 +30,7 @@ export const emptyOverlay = (): BoardOverlay => ({
   attack: new Set(),
   heal: new Set(),
   threat: new Set(),
+  incoming: new Map(),
   path: [],
   selected: null,
   cursor: null,
@@ -312,6 +315,15 @@ export class BoardView {
         : `<ellipse class="candidate-action-spot" cx="${x + TILE / 2}" cy="${y + TILE * 0.68}" rx="12.5" ry="7.5" fill="${fill}" fill-opacity="${Math.min(0.5, opacity * 1.35)}"${outline}/>`);
     };
     for (const i of o.threat) cell(i, '#ff3b30', 0.1);
+    // A marked tile is committed damage, so it reads stronger than mere threat
+    // and carries its own countdown.
+    for (const [i, remaining] of o.incoming) {
+      cell(i, '#ffb020', 0.3, '#ffd479');
+      const x = (i % s.map.width) * TILE;
+      const y = Math.floor(i / s.map.width) * TILE;
+      parts.push(`<text class="incoming-count" x="${x + TILE / 2}" y="${y + TILE / 2 + 4}"
+        text-anchor="middle" font-size="11" font-weight="700" fill="#2a1a00">${remaining}</text>`);
+    }
     for (const i of o.move) if (!o.attack.has(i)) cell(i, '#3f9fff', 0.22);
     for (const i of o.heal) cell(i, '#5fd07a', 0.28, '#8ef7a5');
     for (const i of o.attack) cell(i, '#ff4436', 0.16, '#ff7468');

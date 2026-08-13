@@ -1,5 +1,8 @@
 import type { ContentCatalog } from '@empire/battle-engine';
 import { IllegalActionError } from '@empire/battle-engine/actions';
+import { activeCasts } from '@empire/battle-engine/casting';
+import { SpellCastEntity } from '@empire/battle-engine/domain/spell-cast';
+import { weaponAreaCells } from '@empire/battle-engine/combat-plan';
 import { tacticOptions } from '@empire/battle-engine/commanders';
 import { idx } from '@empire/battle-engine/grid';
 import type { BattleEngine } from '@empire/battle-engine/engine';
@@ -678,6 +681,16 @@ export class GameController {
 
     o.cursor = this.cursor;
 
+    // Marked tiles are public the moment a cast begins, so they show whoever is
+    // looking and whatever else the overlay is doing.
+    for (const cast of activeCasts(s)) {
+      const weapon = this.session.content.weapons.get(cast.weapon);
+      const remaining = new SpellCastEntity(cast).remainingAt(s.actorTurns);
+      for (const cell of weaponAreaCells(s, cast.origin, cast.target, weapon)) {
+        o.incoming.set(idx(s.map, cell.x, cell.y), remaining);
+      }
+    }
+
     const unit = this.selectedUnit;
     if (unit && !this.busy) {
       o.selected = { x: unit.x, y: unit.y };
@@ -772,6 +785,7 @@ export class GameController {
         units: s.turnOrder.activeUnit === null ? [] : orderPreview,
         activeUnit: s.turnOrder.activeUnit,
       },
+      casts: activeCasts(s),
       resources: this.session.rules.resources,
       inspect: this.inspect,
       tile: this.cursor,

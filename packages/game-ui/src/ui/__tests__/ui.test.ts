@@ -7,6 +7,7 @@ import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancien
 import { GameController } from '../game';
 import { BoardView, emptyOverlay } from '../board';
 import { createState } from '@empire/battle-engine/state';
+import { normaliseLevel } from '@empire/battle-engine/mapio';
 import { candidate01Level } from '@empire/story-candidate-01/levels';
 import { registerCandidate01Presentation } from '@empire/story-candidate-01/presentation';
 
@@ -164,6 +165,70 @@ describe('game controller', () => {
       c.dispose();
       host.innerHTML = '';
     }
+  });
+});
+
+/** A mage in meteor range of a lone defender, with nothing else to decide. */
+const castingLevel = () => normaliseLevel({
+  schema: 2,
+  id: 'cast-test',
+  name: '咏唱',
+  width: 6,
+  height: 1,
+  terrain: ['......'],
+  units: [
+    { x: 0, y: 0, unit: 'mage', owner: 1 },
+    { x: 3, y: 0, unit: 'soldier', owner: 2 },
+  ],
+  players: [
+    { id: 1, name: 'P1', team: 1, color: '#3f7fd8', controller: 'human', resources: {} },
+    { id: 2, name: 'P2', team: 2, color: '#d8483f', controller: 'human', resources: {} },
+  ],
+  rules: {},
+  victory: [{ type: 'routEnemies' }],
+});
+
+describe('charge time presentation', () => {
+  let host: HTMLElement;
+
+  beforeEach(() => {
+    vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) =>
+      setTimeout(() => cb(performance.now()), 0) as unknown as number,
+    );
+    document.body.innerHTML = '<div id="app"></div>';
+    host = document.getElementById('app')!;
+  });
+
+  /** Dispatch is animated, so a click settles over a few frames. */
+  const settle = async () => {
+    for (let frame = 0; frame < 12; frame++) await new Promise((resolve) => setTimeout(resolve, 0));
+  };
+
+  it('shows nothing while no strike is charging', () => {
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE });
+    host.append(c.root);
+    expect(c.root.querySelector('.cast-strip')).toBeNull();
+    c.dispose();
+  });
+
+  it('marks the aimed tiles and counts the charge down', async () => {
+    const c = new GameController(castingLevel(), () => {}, { engine: TEST_ENGINE });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board, 6 * TILE);
+
+    click(board, { x: 0, y: 0 });                                   // the mage
+    click(board, { x: 0, y: 0 });                                   // stay put
+    // The lone defender is the only aim point, so the cast commits on the spot.
+    (c.root.querySelector('[data-act="command"][data-arg="attack:mage_meteor"]') as HTMLElement).click();
+    await settle();
+
+    const strip = c.root.querySelector('.cast-strip');
+    expect(strip, 'a charge nobody can see is a trap').toBeTruthy();
+    expect(strip!.querySelector('.cast-slot b')!.textContent).toBe('2');
+    // cross1 marks the aimed tile and the neighbours it splashes.
+    expect(c.root.querySelectorAll('.layer-range .incoming-count').length).toBeGreaterThan(1);
+    c.dispose();
   });
 });
 
