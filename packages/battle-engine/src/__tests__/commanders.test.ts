@@ -46,7 +46,7 @@ describe('commanders and formation resources', () => {
     const level = commandLevel();
     level.players[0].resources[COMMAND_POINTS_RESOURCE] = { current: 2, capacity: 4 };
     const state = testState(level);
-    expect(tacticOptions(state, 'alpha', TEST_RULES.resources, TEST_CONTENT).map((option) => option.id)).toContain('rally');
+    expect(tacticOptions(TEST_RULES, state, 'alpha').map((option) => option.id)).toContain('rally');
 
     const events = applyAction(state, {
       kind: 'tactic',

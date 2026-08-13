@@ -180,11 +180,6 @@ export function consumeWeapon(
   new UnitEntity(unit).commitWeaponCooldown(weapon);
 }
 
-/** Owner-turn clock: a cooldown of 2 suppresses the unit's next turn. */
-export function advanceWeaponCooldowns(unit: Unit): void {
-  new UnitEntity(unit).advanceWeaponCooldowns();
-}
-
 export function terrainDefenseAt(s: GameState, c: Coord, content: ContentCatalog): number {
   return new Battlefield(s, content).cell(c).defense;
 }

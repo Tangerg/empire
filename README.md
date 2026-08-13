@@ -144,4 +144,14 @@ battle-engine
 4. 表现层从会话拿规则集，不 import `battle-engine/data/*`
 5. 只有应用组合根建 catalog 和 engine，库不做环境安装
 
+## 行为归属约定
+
+一条规则只能有一个归属，否则加入第二种玩法时它会分叉：
+
+1. 「能不能行动」只由 `mayAct()` 回答，阶段归战斗、资格归行动序策略
+2. 「能不能下这条指令」只由 `ActionExecutionContext.commandableUnit()` 回答
+3. `state.phase` 和 `state.turn` 只由 `BattleLifecycle` 改写
+4. 拒绝指令由发现问题的协作者抛 `IllegalActionError`，处理器不得捕获后改标签
+5. 领域缺陷用 `DomainInvariantError`，永远不呈现为「这步不允许」
+
 以上都由 `architecture-boundaries.test.ts` 中的架构适应度测试守卫。

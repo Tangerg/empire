@@ -28,7 +28,7 @@
 | 能力 | 运行时 | 通用 UI | 编辑器 | 说明 |
 | --- | --- | --- | --- | --- |
 | 阵营轮流行动 | 已实现 | 已实现 | 已实现（行动序选择） | `rules.turnOrder = 'side'`，`endTurn` 统一推进生命周期 |
-| 个体行动序（CT/WT） | 已实现 | 部分实现 | 已实现（行动序选择） | `rules.turnOrder = 'initiative'`，一次只有一个单位有行动权；通用 HUD 尚无行动序条 |
+| 个体行动序（CT/WT） | 已实现 | 部分实现 | 已实现（行动序选择） | `rules.turnOrder = 'initiative'`，一次只有一个单位有行动权，HUD 显示行动序条；尚无咏唱/充能延迟 |
 | 单位移动后行动 | 已实现 | 已实现 | 已实现 | 菜单与提交共用合法性 |
 | 行动撤销 | 已实现 | 已实现 | 不适用 | 不能跨回合或部署确认 |
 | 重新开始 | 已实现 | 已实现 | 不适用 | 从原始 `LevelData` 重建状态 |
@@ -257,12 +257,23 @@
 在此之上：
 
 - 依赖参数一律必填，从不使用全局默认值；漏传是编译错误
-- 单一 `content: ContentCatalog` 依赖尾置；需要两个以上服务时，改为前置的端口对象（`CombatRules`、`AbilityRules`、`StatusRules`、`ObjectiveRules`、`VictoryRules`、`AiRules`…）
+- 单一 `content: ContentCatalog` 依赖尾置；需要两个以上服务时，改为前置的端口对象（`CombatRules`、`AbilityRules`、`StatusRules`、`ObjectiveRules`、`VictoryRules`、`ScenarioRules`、`CommanderRules`、`CareerRules`、`TurnOrderRules`、`TurnCycleRules`、`AiRules`…）
 - 端口由**消费方**声明，`BattleRuleServices` 结构化满足全部端口，因此不引入新的模块依赖边
 - 表现层从会话拿到的规则集读取内容，不 import `battle-engine/data/*`
 - 应用组合根负责建 catalog 和 engine，库不做环境安装
 
-这四条都有架构适应度测试守着（见 `architecture-boundaries.test.ts`）。
+## 行为归属约定
+
+规则不只是要注入，还要有归属。同一条规则在多处手抄，就会在增加第二种玩法时分叉：
+
+| 问题 | 唯一归属 |
+| --- | --- |
+| 此刻这个单位能不能行动 | `mayAct()` |
+| 能不能给它下这条指令 | `ActionExecutionContext.commandableUnit()` |
+| 战斗阶段与回合数何时改变 | `BattleLifecycle` |
+| 一条指令为什么被拒绝 | 协作者抛 `IllegalActionError`，不由处理器改标签 |
+
+以上连同依赖注入约定都有架构适应度测试守着（见 `architecture-boundaries.test.ts`）。
 
 ## 工程质量
 

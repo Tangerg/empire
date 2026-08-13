@@ -387,7 +387,7 @@ export class GameController {
     if (separator < 1) return;
     const commander = key.slice(0, separator);
     const tactic = key.slice(separator + 1);
-    const option = tacticOptions(this.state, commander, this.session.rules.resources, this.session.content).find((candidate) => candidate.id === tactic);
+    const option = tacticOptions(this.session.rules, this.state, commander).find((candidate) => candidate.id === tactic);
     if (!option) return;
     if (option.targets.length === 1) {
       await this.dispatch({ kind: 'tactic', commander, tactic, target: option.targets[0] });
@@ -754,7 +754,7 @@ export class GameController {
         ? s.commanders
             .filter((commander) => commander.owner === s.currentPlayer)
             .flatMap((commander) =>
-              tacticOptions(s, commander.id, this.session.rules.resources, this.session.content).map((option) => ({
+              tacticOptions(this.session.rules, s, commander.id).map((option) => ({
                 ...option,
                 key: `${commander.id}:${option.id}`,
                 commander: commander.id,

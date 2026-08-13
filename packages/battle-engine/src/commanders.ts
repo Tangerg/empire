@@ -1,3 +1,4 @@
+import { IllegalActionError } from './domain/errors';
 import { dist } from './grid';
 import { addStatus, removeStatus } from './statuses';
 import { areAllies, player } from './state';
@@ -48,12 +49,21 @@ export interface TacticOption {
   targets: Coord[];
 }
 
+/**
+ * Port declared by this module. The composition-level `BattleRuleServices`
+ * satisfies it structurally, so neither side needs to import the other.
+ */
+export interface CommanderRules {
+  readonly content: ContentCatalog;
+  readonly resources: BattleResourceSystem;
+}
+
 export function tacticOptions(
+  rules: CommanderRules,
   state: GameState,
   commanderId: string,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): TacticOption[] {
+  const { content, resources } = rules;
   const commander = state.commanders.find((candidate) => candidate.id === commanderId);
   if (!commander || commander.owner !== state.currentPlayer) return [];
   const leader = commanderUnit(state, commander);
@@ -80,24 +90,24 @@ export function tacticOptions(
 }
 
 export function executeTactic(
+  rules: CommanderRules,
   state: GameState,
   commanderId: string,
   tacticId: string,
   requestedTarget: Coord | undefined,
   emit: (event: GameEvent) => void,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): void {
+  const { content, resources } = rules;
   const commander = state.commanders.find((candidate) => candidate.id === commanderId);
-  if (!commander) throw new Error(`unknown commander "${commanderId}"`);
-  if (commander.owner !== state.currentPlayer) throw new Error('commander does not belong to current player');
-  const option = tacticOptions(state, commanderId, resources, content).find((candidate) => candidate.id === tacticId);
-  if (!option) throw new Error(`tactic "${tacticId}" is not available`);
+  if (!commander) throw new IllegalActionError(`unknown commander "${commanderId}"`);
+  if (commander.owner !== state.currentPlayer) throw new IllegalActionError('commander does not belong to current player');
+  const option = tacticOptions(rules, state, commanderId).find((candidate) => candidate.id === tacticId);
+  if (!option) throw new IllegalActionError(`tactic "${tacticId}" is not available`);
   const leader = commanderUnit(state, commander)!;
   const tactic = content.tactics.get(tacticId);
   const target = tactic.target === 'self' ? { x: leader.x, y: leader.y } : requestedTarget;
   if (!target || !option.targets.some((cell) => cell.x === target.x && cell.y === target.y)) {
-    throw new Error('illegal tactic target');
+    throw new IllegalActionError('illegal tactic target');
   }
 
   const owner = player(state, commander.owner);

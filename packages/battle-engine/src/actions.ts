@@ -5,37 +5,28 @@ import {
   type AbilityQuery,
   type AbilityRules,
 } from './abilities';
-import { advanceWeaponCooldowns, unitWeapons } from './combat';
+import { unitWeapons } from './combat';
 import { idx, sameCoord } from './grid';
-import { player, removeUnit, requireUnit, spawnUnit, unitAt, unitsOf } from './state';
-import { evaluateVictory, healRateAt, turnResourceGrantsFor } from './victory';
-import { resolveTurnStartStatuses } from './statuses';
+import { player, spawnUnit, unitAt, unitsOf } from './state';
 import { runScenarioTriggers } from './scenario';
-import { advanceTerrainOverlayRound, applyOverlayTurnStartEffects } from './overlays';
-import { executeTactic, handleCommanderDefeat, refreshCommanderTurn } from './commanders';
-import { BattleAggregate, UnitEntity } from './domain/index';
+import { executeTactic } from './commanders';
+import { UnitEntity } from './domain/index';
 import { Battlefield } from './domain/battlefield';
 import { changeCareer, unitAbilityIds } from './careers';
 import { directionToward } from './spatial';
 import { validateFormationChange } from './formations';
 import { disembarkUnit, embarkUnit } from './transports';
 import { playerResource } from './resources';
-import type { ContentCatalog } from './content-pack';
-import { type TacticalSpace } from './tactical-space';
+import { activeTurnOrder } from './turn-order';
 import {
   ActionExecutionContext,
   ActionHandlerRegistry,
-  IllegalActionError,
   type ActionHandler,
   type BattleRuleServices,
 } from './action-system';
-import type { Action, ActionKindMap, Coord, GameEvent, GameState, PlayerId, Unit, WeaponId } from './types';
+import type { Action, ActionKindMap, Coord, GameEvent, GameState, Unit, WeaponId } from './types';
 
 export { IllegalActionError } from './action-system';
-
-function fail(msg: string): never {
-  throw new IllegalActionError(msg);
-}
 
 /* --------------------------------------------------------------- enumeration */
 
@@ -101,9 +92,6 @@ export function commandOptions(
   });
 }
 
-export const canAct = (rules: BattleRuleServices, s: GameState, u: Unit): boolean =>
-  s.phase === 'playing' && rules.turnOrders.get(s.turnOrder.policy).canAct(s, u);
-
 /* ------------------------------------------------------------------- helpers */
 
 interface ValidatedMovement {
@@ -112,43 +100,44 @@ interface ValidatedMovement {
 }
 
 function validatePath(
-  s: GameState,
+  context: ActionExecutionContext,
   unit: Unit,
   requestedPath: Coord[],
-  space: TacticalSpace,
 ): ValidatedMovement {
-  if (requestedPath.length === 0) fail('路径为空');
-  if (!sameCoord(requestedPath[0], { x: unit.x, y: unit.y })) fail('路径起点与单位位置不符');
+  const state = context.state;
+  if (requestedPath.length === 0) context.fail('路径为空');
+  if (!sameCoord(requestedPath[0], { x: unit.x, y: unit.y })) context.fail('路径起点与单位位置不符');
   const destination = requestedPath[requestedPath.length - 1];
   if (requestedPath.length === 1) return { destination, path: [{ x: unit.x, y: unit.y }] };
 
-  const field = space.moveField(s, unit);
-  const canonical = space.pathTo(field, s, destination);
-  if (!canonical) fail(`目标格 ${destination.x},${destination.y} 不在移动范围内`);
-  if (!field.stops.has(idx(s.map, destination.x, destination.y))) fail('目标格已被占据');
+  const space = context.rules.space;
+  const field = space.moveField(state, unit);
+  const canonical = space.pathTo(field, state, destination);
+  if (!canonical) context.fail(`目标格 ${destination.x},${destination.y} 不在移动范围内`);
+  if (!field.stops.has(idx(state.map, destination.x, destination.y))) context.fail('目标格已被占据');
   // Trust the engine's own cheapest path rather than the client's route.
   return { destination, path: canonical };
 }
 
 function moveUnit(
-  s: GameState,
-  unit: Unit,
+  context: ActionExecutionContext,
+  unit: UnitEntity,
   movement: ValidatedMovement,
-  emit: (e: GameEvent) => void,
-  content: ContentCatalog,
 ): void {
-  const { destination: dest, path } = movement;
-  if (unit.x === dest.x && unit.y === dest.y) return;
-  new BattleAggregate(s, content).moveUnit(unit.id, dest);
-  if (unit.directive.mode === 'patrol' && unit.directive.waypoints.length > 0) {
-    const waypoint = unit.directive.waypoints[unit.directive.cursor % unit.directive.waypoints.length];
-    if (sameCoord(dest, waypoint)) unit.directive.cursor = (unit.directive.cursor + 1) % unit.directive.waypoints.length;
-  }
-  if (path.length > 1) {
-    const previous = new UnitEntity(unit).changeFacing(directionToward(path[path.length - 2], dest));
-    if (previous !== unit.facing) emit({ type: 'facingChanged', unit: unit.id, from: previous, to: unit.facing });
-  }
-  emit({ type: 'move', unit: unit.id, path });
+  const { destination, path } = movement;
+  if (sameCoord(unit.position, destination)) return;
+  context.battle.moveUnit(unit.id, destination);
+  advancePatrol(unit.state, destination);
+  if (path.length > 1) context.turnToFace(unit, directionToward(path[path.length - 2], destination));
+  context.emit({ type: 'move', unit: unit.id, path });
+}
+
+/** A patrolling unit that reaches its waypoint aims at the next one. */
+function advancePatrol(unit: Unit, destination: Coord): void {
+  const directive = unit.directive;
+  if (directive.mode !== 'patrol' || directive.waypoints.length === 0) return;
+  const waypoint = directive.waypoints[directive.cursor % directive.waypoints.length];
+  if (sameCoord(destination, waypoint)) directive.cursor = (directive.cursor + 1) % directive.waypoints.length;
 }
 
 /* ---------------------------------------------------------- action strategies */
@@ -160,8 +149,8 @@ class DeployUnitActionHandler implements ActionHandler<'deployUnit'> {
     const state = context.state;
     const deployment = state.deployment;
     if (state.phase !== 'deployment' || !deployment) context.fail('当前不在战前部署阶段');
-    const unit = requireUnit(state, action.unit);
-    if (unit.owner !== state.currentPlayer) context.fail('不是你的单位');
+    // Deployment predates any actor turn, so ownership is the whole rule here.
+    const unit = context.ownUnit(action.unit).state;
     const assignment = deployment.assignments.find((entry) =>
       entry.player === state.currentPlayer && entry.unitIds.includes(unit.id));
     if (!assignment) context.fail('该单位不在当前部署编组中');
@@ -203,18 +192,13 @@ class FinishDeploymentActionHandler implements ActionHandler<'finishDeployment'>
     const state = context.state;
     const deployment = state.deployment;
     if (state.phase !== 'deployment' || !deployment) context.fail('当前不在战前部署阶段');
-    const confirmed = state.currentPlayer;
-    context.emit({ type: 'deploymentConfirmed', player: confirmed });
+    context.emit({ type: 'deploymentConfirmed', player: state.currentPlayer });
     deployment.currentIndex++;
     if (deployment.currentIndex < deployment.order.length) {
       state.currentPlayer = deployment.order[deployment.currentIndex];
       return;
     }
-    state.deployment = null;
-    state.phase = 'playing';
-    for (const unit of state.units) unit.done = false;
-    startTurnOrder(state, context.rules, context.emit);
-    context.emit({ type: 'battleStarted', player: state.currentPlayer, turn: state.turn });
+    context.lifecycle.beginPlaying();
   }
 }
 
@@ -222,22 +206,22 @@ class CommandActionHandler implements ActionHandler<'command'> {
   readonly kind = 'command' as const;
 
   execute(context: ActionExecutionContext, action: ActionKindMap['command']): void {
-    const state = context.state;
-    const unit = requireUnit(state, action.unit);
-    if (unit.owner !== state.currentPlayer) context.fail('不是你的单位');
-    if (unit.done) context.fail('该单位本回合已行动');
-    if (!context.rules.turnOrders.get(state.turnOrder.policy).canAct(state, unit)) {
-      context.fail('该单位当前没有行动权');
-    }
-
-    const movement = validatePath(state, unit, action.path, context.rules.space);
+    const actor = context.commandableUnit(action.unit, '行动');
+    const unit = actor.state;
+    const movement = validatePath(context, unit, action.path);
     const destination = movement.destination;
+    const content = context.rules.content;
     const ability = abilityDef(context.rules, action.command.ability);
-    const moved = !(unit.x === destination.x && unit.y === destination.y);
     const weaponId = action.command.ability === 'attack' ? action.command.weapon : undefined;
-    const query: AbilityQuery = { state, unit, at: destination, moved, weaponId };
-    if (!unitAbilityIds(unit, context.rules.content).includes(ability.id)) {
-      context.fail(`${context.rules.content.units.get(unit.type).name} 没有「${ability.name}」`);
+    const query: AbilityQuery = {
+      state: context.state,
+      unit,
+      at: destination,
+      moved: !sameCoord(actor.position, destination),
+      weaponId,
+    };
+    if (!unitAbilityIds(unit, content).includes(ability.id)) {
+      context.fail(`${content.units.get(unit.type).name} 没有「${ability.name}」`);
     }
     if (!canUseAbility(context.rules, ability, query)) context.fail(`此处无法使用「${ability.name}」`);
 
@@ -249,15 +233,11 @@ class CommandActionHandler implements ActionHandler<'command'> {
       }
     }
 
-    moveUnit(state, unit, movement, context.emit, context.rules.content);
-    if (target) {
-      const previous = new UnitEntity(unit).changeFacing(directionToward(destination, target));
-      if (previous !== unit.facing) {
-        context.emit({ type: 'facingChanged', unit: unit.id, from: previous, to: unit.facing });
-      }
-    }
+    moveUnit(context, actor, movement);
+    if (target) context.turnToFace(actor, directionToward(destination, target));
     ability.execute(context.rules, query, target, context.emit);
-    if (context.battle.findUnit(unit.id)) new UnitEntity(unit).finishAction();
+    // The ability may have killed its own user (a sacrifice, a counter-kill).
+    if (context.battle.findUnit(actor.id)) actor.finishAction();
   }
 }
 
@@ -265,19 +245,7 @@ class TacticActionHandler implements ActionHandler<'tactic'> {
   readonly kind = 'tactic' as const;
 
   execute(context: ActionExecutionContext, action: ActionKindMap['tactic']): void {
-    try {
-      executeTactic(
-        context.state,
-        action.commander,
-        action.tactic,
-        action.target,
-        context.emit,
-        context.rules.resources,
-        context.rules.content,
-      );
-    } catch (error) {
-      context.fail((error as Error).message);
-    }
+    executeTactic(context.rules, context.state, action.commander, action.tactic, action.target, context.emit);
   }
 }
 
@@ -285,9 +253,7 @@ class ReactionActionHandler implements ActionHandler<'reaction'> {
   readonly kind = 'reaction' as const;
 
   execute(context: ActionExecutionContext, action: ActionKindMap['reaction']): void {
-    const unit = context.battle.unit(action.unit);
-    if (!unit.isOwnedBy(context.state.currentPlayer)) context.fail('不是你的单位');
-    if (unit.state.done) context.fail('已行动单位不能再调整反应姿态');
+    const unit = context.commandableUnit(action.unit, '调整反应姿态');
     unit.changeReaction(action.stance);
     context.emit({ type: 'reactionChanged', unit: unit.id, stance: action.stance });
   }
@@ -297,13 +263,7 @@ class FaceActionHandler implements ActionHandler<'face'> {
   readonly kind = 'face' as const;
 
   execute(context: ActionExecutionContext, action: ActionKindMap['face']): void {
-    const unit = context.battle.unit(action.unit);
-    if (!unit.isOwnedBy(context.state.currentPlayer)) context.fail('不是你的单位');
-    if (unit.state.done) context.fail('已行动单位不能再调整朝向');
-    const previous = unit.changeFacing(action.facing);
-    if (previous !== action.facing) {
-      context.emit({ type: 'facingChanged', unit: unit.id, from: previous, to: action.facing });
-    }
+    context.turnToFace(context.commandableUnit(action.unit, '调整朝向'), action.facing);
   }
 }
 
@@ -311,14 +271,8 @@ class ChangeCareerActionHandler implements ActionHandler<'changeCareer'> {
   readonly kind = 'changeCareer' as const;
 
   execute(context: ActionExecutionContext, action: ActionKindMap['changeCareer']): void {
-    const unit = context.battle.unit(action.unit);
-    if (!unit.isOwnedBy(context.state.currentPlayer)) context.fail('不是你的单位');
-    if (unit.state.done) context.fail('已行动单位不能转职');
-    try {
-      changeCareer(context.state, unit.state, action.career, context.emit, context.rules.resources, context.rules.content);
-    } catch (error) {
-      context.fail((error as Error).message);
-    }
+    const unit = context.commandableUnit(action.unit, '转职');
+    changeCareer(context.rules, context.state, unit.state, action.career, context.emit);
   }
 }
 
@@ -326,17 +280,10 @@ class ChangeFormationActionHandler implements ActionHandler<'changeFormation'> {
   readonly kind = 'changeFormation' as const;
 
   execute(context: ActionExecutionContext, action: ActionKindMap['changeFormation']): void {
-    const unit = context.battle.unit(action.unit);
-    if (!unit.isOwnedBy(context.state.currentPlayer)) context.fail('不是你的单位');
-    if (unit.state.done) context.fail('已行动单位不能调整阵形');
-    try {
-      validateFormationChange(context.state, unit.state, action.formation, context.rules.content);
-    } catch (error) {
-      context.fail((error as Error).message);
-    }
-    const from = unit.state.formation;
-    if (from === action.formation) return;
-    unit.state.formation = action.formation;
+    const unit = context.commandableUnit(action.unit, '调整阵形');
+    validateFormationChange(context.state, unit.state, action.formation, context.rules.content);
+    if (unit.state.formation === action.formation) return;
+    const from = unit.changeFormation(action.formation);
     context.emit({ type: 'formationChanged', unit: unit.id, from, to: action.formation });
   }
 }
@@ -345,17 +292,10 @@ class EmbarkActionHandler implements ActionHandler<'embark'> {
   readonly kind = 'embark' as const;
 
   execute(context: ActionExecutionContext, action: ActionKindMap['embark']): void {
-    const unit = requireUnit(context.state, action.unit);
-    const carrier = requireUnit(context.state, action.carrier);
-    if (unit.owner !== context.state.currentPlayer || carrier.owner !== context.state.currentPlayer) {
-      context.fail('只能操作当前玩家的运输编组');
-    }
-    if (unit.done) context.fail('已行动单位不能登载');
-    try {
-      embarkUnit(context.state, unit.id, carrier.id, context.emit, context.rules.content);
-    } catch (error) {
-      context.fail((error as Error).message);
-    }
+    // The passenger spends the action; the carrier only has to be yours.
+    const passenger = context.commandableUnit(action.unit, '登载');
+    const carrier = context.ownUnit(action.carrier);
+    embarkUnit(context.state, passenger.id, carrier.id, context.emit, context.rules.content);
   }
 }
 
@@ -363,15 +303,9 @@ class DisembarkActionHandler implements ActionHandler<'disembark'> {
   readonly kind = 'disembark' as const;
 
   execute(context: ActionExecutionContext, action: ActionKindMap['disembark']): void {
-    const carrier = requireUnit(context.state, action.carrier);
-    if (carrier.owner !== context.state.currentPlayer) context.fail('不是你的运输单位');
-    if (carrier.done) context.fail('已行动运输单位不能卸载');
-    try {
-      disembarkUnit(context.state, carrier.id, action.unit, action.at, context.emit, context.rules.content);
-      new UnitEntity(carrier).finishAction();
-    } catch (error) {
-      context.fail((error as Error).message);
-    }
+    const carrier = context.commandableUnit(action.carrier, '卸载');
+    disembarkUnit(context.state, carrier.id, action.unit, action.at, context.emit, context.rules.content);
+    carrier.finishAction();
   }
 }
 
@@ -421,7 +355,7 @@ class EndTurnActionHandler implements ActionHandler<'endTurn'> {
   readonly kind = 'endTurn' as const;
 
   execute(context: ActionExecutionContext): void {
-    advanceTurn(context.state, context.emit, context.rules);
+    context.lifecycle.advanceTurn();
   }
 }
 
@@ -453,16 +387,8 @@ export function applyActionWith(
   if (state.phase === 'playing' && deploymentAction) context.fail('战斗开始后不能重新部署');
   handlers.dispatch(context, action);
   if (state.phase !== 'playing' || deploymentAction) return context.events;
-  runScenarioTriggers(
-    state,
-    'afterAction',
-    context.emit,
-    rules.scenarioConditions,
-    rules.scenarioEffects,
-    rules.resources,
-    rules.content,
-  );
-  checkGameOver(state, context.emit, rules);
+  runScenarioTriggers(rules, state, 'afterAction', context.emit);
+  context.lifecycle.concludeIfDecided();
   return context.events;
 }
 
@@ -475,149 +401,7 @@ export function applyAction(
   return applyActionWith(state, action, CoreActionHandlers, rules);
 }
 
-/* ---------------------------------------------------------------- turn cycle */
-
-/**
- * Seeds the ordering policy and claims the first actor turn. Called once the
- * battle actually starts, i.e. after deployment or straight from construction.
- */
-export function startTurnOrder(
-  state: GameState,
-  rules: BattleRuleServices,
-  emit: (event: GameEvent) => void = () => {},
-): void {
-  const policy = rules.turnOrders.get(state.rules.turnOrder);
-  state.turnOrder = policy.initialState(state, rules.content);
-  const handoff = policy.begin(state, { content: rules.content, emit });
-  state.currentPlayer = handoff.player;
-  state.turnOrder.activeUnit = handoff.activeUnit;
-}
-
-/**
- * Hands the actor turn over through the battle's ordering policy.
- *
- * The engine no longer knows whether a turn belongs to a side or to a single
- * unit; it only knows the difference between a *round* (battle clock: income,
- * overlay decay, `everyRounds` triggers) and an *actor turn* (statuses, healing,
- * cooldowns, reaction budget).
- */
-function advanceTurn(s: GameState, emit: (e: GameEvent) => void, rules: BattleRuleServices): void {
-  emit({ type: 'turnEnd', player: s.currentPlayer });
-  runScenarioTriggers(s, 'turnEnd', emit, rules.scenarioConditions, rules.scenarioEffects, rules.resources, rules.content);
-
-  const policy = rules.turnOrders.get(s.turnOrder.policy);
-  const handoff = policy.advance(s, { content: rules.content, emit });
-  if (handoff.exhausted) {
-    s.phase = 'over';
-    return;
-  }
-  if (handoff.roundAdvanced) {
-    s.turn++;
-    advanceTerrainOverlayRound(s, emit);
-    emit({ type: 'roundStart', turn: s.turn });
-  }
-  s.currentPlayer = handoff.player;
-  s.turnOrder.activeUnit = handoff.activeUnit;
-  beginTurn(s, emit, rules, handoff.roundAdvanced);
-}
-
-function grantTurnResources(
-  s: GameState,
-  owner: PlayerId,
-  emit: (e: GameEvent) => void,
-  rules: BattleRuleServices,
-): void {
-  const p = player(s, owner);
-  const resourceOwner = playerResource(p);
-  for (const grant of turnResourceGrantsFor(s, p.id, rules.content)) {
-    if (!rules.resources.hasAccount(grant.resource, resourceOwner)) continue;
-    const amount = rules.resources.credit(grant.resource, resourceOwner, grant.amount);
-    const current = rules.resources.balance(grant.resource, resourceOwner);
-    if (amount > 0 && current !== null) {
-      emit({
-        type: 'resourceChanged',
-        resource: grant.resource,
-        subject: { kind: 'player', id: p.id },
-        amount,
-        current,
-      });
-    }
-  }
-}
-
-function beginTurn(
-  s: GameState,
-  emit: (e: GameEvent) => void,
-  rules: BattleRuleServices,
-  roundAdvanced: boolean,
-): void {
-  const p = player(s, s.currentPlayer);
-  const active = s.turnOrder.activeUnit;
-  // Side turns refresh a whole army; per-unit orders refresh only the actor.
-  const scope = active === null
-    ? unitsOf(s, p.id)
-    : s.units.filter((candidate) => candidate.id === active);
-
-  emit(active === null
-    ? { type: 'turnStart', player: p.id, turn: s.turn }
-    : { type: 'turnStart', player: p.id, turn: s.turn, activeUnit: active });
-
-  applyOverlayTurnStartEffects(s, p.id, emit, rules.content, scope);
-  resolveTurnStartStatuses(rules, s, emit, scope, (unitId) =>
-    handleCommanderDefeat(s, unitId, emit, rules.content));
-
-  if (active === null) {
-    // One income grant per player per round; side turns already give each
-    // player exactly one actor turn per round.
-    refreshCommanderTurn(s, p.id, emit, rules.resources);
-    grantTurnResources(s, p.id, emit, rules);
-  } else if (roundAdvanced) {
-    for (const candidate of s.players.filter((entry) => entry.alive)) {
-      refreshCommanderTurn(s, candidate.id, emit, rules.resources);
-      grantTurnResources(s, candidate.id, emit, rules);
-    }
-  }
-
-  for (const u of scope) {
-    advanceWeaponCooldowns(u);
-    const entity = new UnitEntity(u);
-    entity.readyForTurn();
-    const heal = healRateAt(s, u.x, u.y, p.id, rules.content);
-    if (heal > 0) {
-      const max = rules.content.units.get(u.type).maxHp;
-      const amount = Math.min(heal, max - u.hp);
-      if (amount > 0) {
-        const healed = entity.heal(amount, max);
-        emit({ type: 'regen', unit: u.id, amount: healed });
-      }
-    }
-  }
-
-
-  runScenarioTriggers(s, 'turnStart', emit, rules.scenarioConditions, rules.scenarioEffects, rules.resources, rules.content);
-}
-
-function checkGameOver(s: GameState, emit: (e: GameEvent) => void, rules: BattleRuleServices): void {
-  const before = s.players.filter((p) => p.alive).map((p) => p.id);
-  const result = evaluateVictory(rules, s, emit);
-  for (const id of before) {
-    if (!player(s, id).alive) emit({ type: 'defeat', player: id });
-  }
-  if (result.team !== null || result.reason) {
-    s.phase = 'over';
-    s.winnerTeam = result.team;
-    s.endReason = result.reason;
-    emit({ type: 'gameOver', team: result.team, reason: result.reason });
-  }
-}
-
-/** Marks every remaining unit done — used by "end turn" confirmation UI. */
 /** Units still entitled to act under the battle's ordering policy. */
 export function idleUnits(rules: BattleRuleServices, s: GameState): Unit[] {
-  return rules.turnOrders.get(s.turnOrder.policy).actors(s);
-}
-
-/** Removes a unit outright (used by editor previews and scripted effects). */
-export function killUnit(s: GameState, id: number): void {
-  removeUnit(s, id);
+  return activeTurnOrder(rules, s).actors(s);
 }

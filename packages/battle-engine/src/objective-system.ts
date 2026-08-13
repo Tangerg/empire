@@ -372,7 +372,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     refresh: 'children',
     children: (objective) => [objective.objective],
     outcome: (context, objective) =>
-      conditionMet(context.state, objective.condition, context.scenarioConditions, context.content)
+      conditionMet(context, context.state, objective.condition)
         ? 'failure' : context.outcome(objective.objective),
     describe: (objective, handlers) => handlers.describe(objective.objective),
     progress: (context, objective) => context.handlers.progress(context, context.state, context.owner, objective.objective),

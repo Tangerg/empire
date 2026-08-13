@@ -97,11 +97,11 @@ describe('open extension contracts', () => {
       },
     });
 
-    expect(conditionMet(state, { type: 'testFlag', key: 'unlocked' }, conditions, TEST_CONTENT)).toBe(false);
-    applyScenarioEffect(state, { type: 'testRecord', key: 'result', value: 'accepted' }, () => {}, effects, TEST_RULES.resources, TEST_CONTENT);
+    expect(conditionMet({ ...TEST_RULES, scenarioConditions: conditions }, state, { type: 'testFlag', key: 'unlocked' })).toBe(false);
+    applyScenarioEffect({ ...TEST_RULES, scenarioEffects: effects }, state, { type: 'testRecord', key: 'result', value: 'accepted' }, () => {});
     state.scenario.variables.unlocked = true;
 
-    expect(conditionMet(state, { type: 'testFlag', key: 'unlocked' }, conditions, TEST_CONTENT)).toBe(true);
+    expect(conditionMet({ ...TEST_RULES, scenarioConditions: conditions }, state, { type: 'testFlag', key: 'unlocked' })).toBe(true);
     expect(state.scenario.variables.result).toBe('accepted');
   });
 
@@ -207,8 +207,8 @@ describe('open extension contracts', () => {
 
     expect(actionCopy.kinds()).toContain('testSignal');
     expect(CoreActionHandlers.kinds()).not.toContain('testSignal');
-    expect(conditionMet(extensionState(), { type: 'testFlag', key: 'x' }, conditionCopy, TEST_CONTENT)).toBe(true);
-    expect(() => conditionMet(extensionState(), { type: 'testFlag', key: 'x' }, ScenarioConditionHandlers, TEST_CONTENT)).toThrow();
+    expect(conditionMet({ ...TEST_RULES, scenarioConditions: conditionCopy }, extensionState(), { type: 'testFlag', key: 'x' })).toBe(true);
+    expect(() => conditionMet({ ...TEST_RULES, scenarioConditions: ScenarioConditionHandlers }, extensionState(), { type: 'testFlag', key: 'x' })).toThrow();
     expect(effectCopy.kinds()).toContain('testRecord');
     expect(ScenarioEffectHandlers.kinds()).not.toContain('testRecord');
     expect(objectiveCopy.handler('testVariable')).toBe(testObjective);

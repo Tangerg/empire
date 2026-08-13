@@ -1,4 +1,5 @@
-import { CoreActionHandlers, applyActionWith, commandOptions, startTurnOrder } from './actions';
+import { CoreActionHandlers, applyActionWith, commandOptions } from './actions';
+import { BattleLifecycle } from './turn-cycle';
 import {
   chooseAction,
   DefaultAbilityAiEvaluators,
@@ -27,7 +28,7 @@ import type { MoveField } from './movement';
 import { cloneState, createState, restoreState, type CreateStateOptions } from './state';
 import type { ContentCatalog } from './content-pack';
 import { careerOptions } from './careers';
-import type { TurnOrderPolicy } from './turn-order';
+import { activeTurnOrder, mayAct, type TurnOrderPolicy } from './turn-order';
 import type { Action, Coord, GameEvent, GameState, LevelData, PlayerId, Unit, WeaponId } from './types';
 import type { Objective, ScenarioCondition } from './types';
 
@@ -108,18 +109,23 @@ export class BattleEngine {
     const state = createState(level, this.rules.content, options);
     // A level without a deployment phase is already playing, so it needs its
     // first actor turn now; deployment levels get theirs on finishDeployment.
-    if (state.phase === 'playing') startTurnOrder(state, this.rules);
+    if (state.phase === 'playing') this.lifecycle(state).start();
     return state;
+  }
+
+  /** Phase and round transitions of one battle running under this ruleset. */
+  lifecycle(state: GameState, emit?: (event: GameEvent) => void): BattleLifecycle {
+    return new BattleLifecycle(state, this.rules, emit);
   }
 
   /** Turn-order policy this battle runs under. */
   turnOrder(state: GameState): TurnOrderPolicy {
-    return this.rules.turnOrders.get(state.turnOrder.policy);
+    return activeTurnOrder(this.rules, state);
   }
 
   /** May this unit act right now, under the battle's ordering policy? */
   canAct(state: GameState, unit: Unit): boolean {
-    return state.phase === 'playing' && this.turnOrder(state).canAct(state, unit);
+    return mayAct(this.rules, state, unit);
   }
 
   /** Units entitled to act in the current actor turn. */
@@ -171,7 +177,7 @@ export class BattleEngine {
   }
 
   careerOptions(state: GameState, unit: Unit) {
-    return careerOptions(state, unit, this.rules.resources, this.rules.content);
+    return careerOptions(this.rules, state, unit);
   }
 
   pathTo(field: MoveField, state: GameState, destination: Coord): Coord[] | null {

@@ -251,3 +251,45 @@ describe('no ambient content', () => {
     expect(installers).toEqual([]);
   });
 });
+
+describe('behaviour has an owner', () => {
+  it('lets only the lifecycle change a battle phase or advance the round', () => {
+    // `state.phase` used to be assigned from three unrelated places and the
+    // round counter from a free function, so "when does a round end" had no
+    // owner and a per-unit turn order had nowhere to plug in.
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const source = readFileSync(file, 'utf8');
+      const writes = /\bphase\s*=\s*'(?:playing|over|deployment)'|\bturn\+\+|\bturn\s*\+=/.test(source);
+      return writes && relative(coreRoot, file) !== 'turn-cycle.ts' ? [relative(coreRoot, file)] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('never relabels a caught error as a refused order', () => {
+    // Wrapping a collaborator in `try/catch` and calling `fail(error.message)`
+    // presents genuine defects to the player as "that move is not allowed".
+    // Collaborators raise `IllegalActionError` themselves instead.
+    const pattern = /catch\s*\([^)]*\)\s*\{[^}]*\bfail\(/;
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) =>
+      pattern.test(readFileSync(file, 'utf8')) ? [relative(coreRoot, file)] : []);
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('asks one question about the right to act', () => {
+    // Every caller must go through `mayAct`/`commandableUnit`. Re-deriving
+    // "mine and not yet done" inline is what silently ignored the ordering
+    // policy in six action handlers.
+    // Scoped to *unit* ownership on purpose: a commander's allegiance and a
+    // building's owner are different questions with their own rules.
+    const pattern = /\b(?:unit|actor|passenger|carrier|troop|candidate)\.owner\s*[!=]==\s*\w+\.currentPlayer/;
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (name === 'turn-order.ts') return [];
+      return pattern.test(readFileSync(file, 'utf8')) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+});

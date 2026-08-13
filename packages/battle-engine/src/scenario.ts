@@ -221,13 +221,26 @@ export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry(Sp
   .register(conditionHandler('any', (context, condition) => condition.conditions.some((child) => context.evaluate(child))))
   .register(conditionHandler('not', (context, condition) => !context.evaluate(condition.condition)));
 
+/**
+ * Ports declared by this module. The composition-level `BattleRuleServices`
+ * satisfies both structurally, so neither side needs to import the other.
+ */
+export interface ScenarioConditionRules {
+  readonly content: ContentCatalog;
+  readonly scenarioConditions: ScenarioConditionHandlerRegistry;
+}
+
+export interface ScenarioRules extends ScenarioConditionRules {
+  readonly resources: BattleResourceSystem;
+  readonly scenarioEffects: ScenarioEffectHandlerRegistry;
+}
+
 export function conditionMet(
+  rules: ScenarioConditionRules,
   state: GameState,
   condition: ScenarioCondition,
-  handlers: ScenarioConditionHandlerRegistry,
-  content: ContentCatalog,
 ): boolean {
-  return handlers.evaluate(state, condition, content);
+  return rules.scenarioConditions.evaluate(state, condition, rules.content);
 }
 
 /* ----------------------------------------------------------- effect strategies */
@@ -613,25 +626,20 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   }));
 
 export function applyScenarioEffect(
+  rules: ScenarioRules,
   state: GameState,
   effect: ScenarioEffect,
   emit: (event: GameEvent) => void,
-  handlers: ScenarioEffectHandlerRegistry,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): void {
-  handlers.apply(state, effect, emit, resources, content);
+  rules.scenarioEffects.apply(state, effect, emit, rules.resources, rules.content);
 }
 
 /** Runs one-shot or bounded repeating data triggers until no newly-enabled trigger remains. */
 export function runScenarioTriggers(
+  rules: ScenarioRules,
   state: GameState,
   timing: ScenarioTiming,
   emit: (event: GameEvent) => void,
-  conditions: ScenarioConditionHandlerRegistry,
-  effects: ScenarioEffectHandlerRegistry,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): void {
   const fired = new Set(state.scenario.firedTriggerIds);
   const firedThisOccurrence = new Set<string>();
@@ -652,7 +660,7 @@ export function runScenarioTriggers(
         if (repeat.maxFirings !== undefined && runtime.count >= repeat.maxFirings) continue;
         if (runtime.lastOccurrence === occurrence) continue;
       }
-      if (!conditionMet(state, trigger.condition, conditions, content)) continue;
+      if (!conditionMet(rules, state, trigger.condition)) continue;
       firedThisOccurrence.add(trigger.id);
       if (repeat) {
         const runtime = state.scenario.triggerRuntime[trigger.id] ?? { count: 0, lastOccurrence: '' };
@@ -661,7 +669,7 @@ export function runScenarioTriggers(
         fired.add(trigger.id);
         state.scenario.firedTriggerIds.push(trigger.id);
       }
-      for (const effect of trigger.effects) applyScenarioEffect(state, effect, emit, effects, resources, content);
+      for (const effect of trigger.effects) applyScenarioEffect(rules, state, effect, emit);
       changed = true;
     }
     if (!changed) return;

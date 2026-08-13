@@ -200,25 +200,17 @@ export const testRefreshObjectives = (state: GameState, emit?: (event: GameEvent
   refreshObjectiveStates(TEST_RULES, state, emit);
 
 export const testCondition = (state: GameState, condition: ScenarioCondition) =>
-  conditionMet(state, condition, TEST_RULES.scenarioConditions, TEST_CONTENT);
+  conditionMet(TEST_RULES, state, condition);
 export const testScenarioEffect = (
   state: GameState,
   effect: ScenarioEffect,
   emit: (event: GameEvent) => void = () => {},
-) => applyScenarioEffect(state, effect, emit, TEST_RULES.scenarioEffects, TEST_RULES.resources, TEST_CONTENT);
+) => applyScenarioEffect(TEST_RULES, state, effect, emit);
 export const testScenarioTriggers = (
   state: GameState,
   timing: 'afterAction' | 'turnStart' | 'turnEnd',
   emit: (event: GameEvent) => void = () => {},
-) => runScenarioTriggers(
-  state,
-  timing,
-  emit,
-  TEST_RULES.scenarioConditions,
-  TEST_RULES.scenarioEffects,
-  TEST_RULES.resources,
-  TEST_CONTENT,
-);
+) => runScenarioTriggers(TEST_RULES, state, timing, emit);
 
 export const testAiDependencies = (): AiPlanningDependencies => ({
   rules: TEST_RULES,

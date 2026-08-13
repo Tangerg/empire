@@ -1,3 +1,4 @@
+import { IllegalActionError } from './domain/errors';
 import { dist } from './grid';
 import { areAllies } from './state';
 import type { ContentCatalog } from './content-pack';
@@ -27,12 +28,12 @@ export function validateFormationChange(
 ): void {
   if (formation === null) return;
   const allowed = content.units.get(unit.type).formations ?? [];
-  if (!allowed.includes(formation)) throw new Error(`unit ${unit.id} cannot use formation "${formation}"`);
+  if (!allowed.includes(formation)) throw new IllegalActionError(`unit ${unit.id} cannot use formation "${formation}"`);
   const previous = unit.formation;
   unit.formation = formation;
   const active = activeFormation(state, unit, content);
   unit.formation = previous;
-  if (!active) throw new Error(`formation "${formation}" lacks adjacent allied units`);
+  if (!active) throw new IllegalActionError(`formation "${formation}" lacks adjacent allied units`);
 }
 
 export function formationMovementDelta(

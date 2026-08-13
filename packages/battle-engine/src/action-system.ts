@@ -1,4 +1,7 @@
 import { BattleAggregate } from './domain/battle-aggregate';
+import { IllegalActionError } from './domain/errors';
+import { UnitEntity } from './domain/unit-entity';
+import { BattleLifecycle } from './turn-cycle';
 import { CombatModifierPipeline, CombatModifierProviders } from './combat-modifiers';
 import { WeaponHitEffectHandlers, type WeaponHitEffectHandlerRegistry } from './hit-effects';
 import { ObjectiveHandlers, type ObjectiveHandlerRegistry } from './objective-system';
@@ -14,17 +17,12 @@ import { DefaultBattleResources, type BattleResourceSystem } from './resources';
 import { Abilities, type AbilityDef } from './abilities';
 import { type Registry } from './registry';
 import { DefaultTacticalSpace, type TacticalSpace } from './tactical-space';
-import { TurnOrders, type TurnOrderPolicy } from './turn-order';
+import { activeTurnOrder, mayAct, TurnOrders, type TurnOrderPolicy } from './turn-order';
 import { SplitMixRandom, type RandomSource } from './random';
 import { type ContentCatalog } from './content-pack';
-import type { Action, ActionKindMap, GameEvent, GameState } from './types';
+import type { Action, ActionKindMap, Direction, GameEvent, GameState } from './types';
 
-export class IllegalActionError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = 'IllegalActionError';
-  }
-}
+export { IllegalActionError };
 
 export type ActionKind = Extract<keyof ActionKindMap, string>;
 
@@ -84,6 +82,8 @@ export function createDefaultBattleRuleServices(
 
 export class ActionExecutionContext {
   readonly battle: BattleAggregate;
+  /** Phase and round transitions this order may trigger. */
+  readonly lifecycle: BattleLifecycle;
   readonly events: GameEvent[] = [];
 
   constructor(
@@ -91,6 +91,7 @@ export class ActionExecutionContext {
     readonly rules: BattleRuleServices,
   ) {
     this.battle = new BattleAggregate(state, rules.content);
+    this.lifecycle = new BattleLifecycle(state, rules, this.emit);
   }
 
   readonly emit = (event: GameEvent): void => {
@@ -100,6 +101,56 @@ export class ActionExecutionContext {
 
   fail(message: string): never {
     throw new IllegalActionError(message);
+  }
+
+  /** The ordering policy this battle is running under. */
+  get turnOrder(): TurnOrderPolicy {
+    return activeTurnOrder(this.rules, this.state);
+  }
+
+  /**
+   * Resolves a unit an order names, refusing an order aimed at nobody.
+   *
+   * A client naming a unit that already died is issuing a bad *order*, not
+   * tripping an engine invariant, so it must surface as a refusal.
+   */
+  unit(unitId: number): UnitEntity {
+    const unit = this.battle.findUnit(unitId);
+    if (!unit) this.fail(`单位 ${unitId} 不在场上`);
+    return unit;
+  }
+
+  /** Resolves a unit the acting player owns, whatever its entitlement. */
+  ownUnit(unitId: number): UnitEntity {
+    const unit = this.unit(unitId);
+    if (!unit.isOwnedBy(this.state.currentPlayer)) this.fail('不是你的单位');
+    return unit;
+  }
+
+  /**
+   * Resolves the unit an order names *and* asserts the right to order it now.
+   *
+   * Ownership, the spent-action flag and the ordering policy's entitlement are
+   * one rule, not three checks every handler has to remember. Handlers that
+   * only checked the first two were right by accident under side turns, where
+   * "mine and not yet done" happens to coincide with "entitled to act"; under an
+   * initiative order they let a player retask their whole army during one
+   * unit's turn.
+   *
+   * `order` names the refused order so the message says what was denied.
+   */
+  commandableUnit(unitId: number, order: string): UnitEntity {
+    const unit = this.ownUnit(unitId);
+    if (unit.hasActed) this.fail(`已行动单位不能${order}`);
+    if (!mayAct(this.rules, this.state, unit.state)) this.fail(`该单位当前没有行动权，不能${order}`);
+    return unit;
+  }
+
+  /** Turns a unit, announcing it only when the facing actually changed. */
+  turnToFace(unit: UnitEntity, facing: Direction): void {
+    const previous = unit.changeFacing(facing);
+    if (previous === facing) return;
+    this.emit({ type: 'facingChanged', unit: unit.id, from: previous, to: facing });
   }
 }
 

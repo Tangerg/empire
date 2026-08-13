@@ -4,7 +4,7 @@ import {
   type AiMissionIntent,
   type AiObjectiveAdvisorRegistry,
 } from './ai-objectives';
-import { tacticOptions } from './commanders';
+import { tacticOptions, type CommanderRules } from './commanders';
 import { unitWeapons } from './combat';
 import { forecastCombatPlan, type CombatPlan } from './combat-plan';
 import { Battlefield } from './domain/battlefield';
@@ -380,14 +380,14 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
   }));
 
 function tacticAction(
+  rules: CommanderRules,
   state: GameState,
   owner: number,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): Action | null {
+  const { content, resources } = rules;
   let best: { action: Action; score: number } | null = null;
   for (const commander of state.commanders.filter((entry) => entry.owner === owner)) {
-    for (const option of tacticOptions(state, commander.id, resources, content)) {
+    for (const option of tacticOptions(rules, state, commander.id)) {
       const tactic = content.tactics.get(option.id);
       for (const target of option.targets) {
         const affected = unitsOf(state, owner).filter((unit) => dist(unit, target) <= tactic.radius);
@@ -603,7 +603,7 @@ export function chooseAction(
 
   const rules = dependencies.rules;
   const { content, resources, space } = rules;
-  const tactic = tacticAction(s, me, resources, content);
+  const tactic = tacticAction(rules, s, me);
   if (tactic) return tactic;
 
   const recruit = recruitAction(s, me, resources, content);

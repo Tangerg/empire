@@ -12,7 +12,7 @@ describe('career tree and free career changes', () => {
     const session = new GameSession(level, createBattleEngine({ content: TEST_CONTENT }));
     const before = session.state.units[0];
     const id = before.id;
-    expect(careerOptions(session.state, before, TEST_RULES.resources, TEST_CONTENT).find((option) => option.career.id === 'ranger')).toMatchObject({ eligible: true });
+    expect(careerOptions(TEST_RULES, session.state, before).find((option) => option.career.id === 'ranger')).toMatchObject({ eligible: true });
 
     const events = session.dispatch({ kind: 'changeCareer', unit: id, career: 'ranger' });
     const after = session.state.units.find((unit) => unit.id === id)!;

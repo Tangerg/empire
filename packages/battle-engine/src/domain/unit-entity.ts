@@ -1,4 +1,4 @@
-import type { CareerId, Coord, Direction, GamePhase, PlayerId, ReactionStance, Unit, UnitTypeId, UnitWeaponState, WeaponDef, WeaponId } from '../types';
+import type { CareerId, Coord, Direction, FormationId, PlayerId, ReactionStance, Unit, UnitTypeId, UnitWeaponState, WeaponDef, WeaponId } from '../types';
 import { DomainInvariantError } from './errors';
 
 /**
@@ -27,8 +27,16 @@ export class UnitEntity {
     return this.state.owner === owner;
   }
 
-  canAct(currentPlayer: PlayerId, phase: GamePhase): boolean {
-    return phase === 'playing' && this.isOwnedBy(currentPlayer) && !this.state.done;
+  /**
+   * Has this unit spent its action this turn?
+   *
+   * Deliberately *not* a `canAct(player, phase)` predicate: whether a unit is
+   * entitled to act depends on the battle's turn-order policy, which a single
+   * unit cannot see. Answering that here produced a plausible-looking method
+   * that was silently wrong under any per-unit ordering — see `mayAct`.
+   */
+  get hasActed(): boolean {
+    return this.state.done;
   }
 
   moveTo(destination: Coord): void {
@@ -59,6 +67,12 @@ export class UnitEntity {
   changeFacing(facing: Direction): Direction {
     const previous = this.state.facing;
     this.state.facing = facing;
+    return previous;
+  }
+
+  changeFormation(formation: FormationId | null): FormationId | null {
+    const previous = this.state.formation;
+    this.state.formation = formation;
     return previous;
   }
 

@@ -56,6 +56,32 @@ export interface TurnOrderPolicy {
 
 export const TurnOrders = new Registry<TurnOrderPolicy>('turn order');
 
+/**
+ * Port declared by this module. The composition-level `BattleRuleServices`
+ * satisfies it structurally, so neither side needs to import the other.
+ */
+export interface TurnOrderRules {
+  readonly content: ContentCatalog;
+  readonly turnOrders: Registry<TurnOrderPolicy>;
+}
+
+/** The policy this battle is running under, as recorded in its own state. */
+export function activeTurnOrder(rules: TurnOrderRules, state: GameState): TurnOrderPolicy {
+  return rules.turnOrders.get(state.turnOrder.policy);
+}
+
+/**
+ * The single answer to "may this unit act right now".
+ *
+ * Phase and entitlement together: a policy only speaks about entitlement, and a
+ * battle that is deploying or over entitles nobody. Every caller — the engine
+ * façade, the action pipeline, the AI — must ask this one question, because
+ * three copies of it drifted apart once a second policy existed.
+ */
+export function mayAct(rules: TurnOrderRules, state: GameState, unit: Unit): boolean {
+  return state.phase === 'playing' && activeTurnOrder(rules, state).canAct(state, unit);
+}
+
 const livingPlayers = (state: GameState): PlayerId[] =>
   state.players.filter((candidate) => candidate.alive).map((candidate) => candidate.id);
 

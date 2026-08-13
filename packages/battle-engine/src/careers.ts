@@ -1,3 +1,4 @@
+import { IllegalActionError } from './domain/errors';
 import { UnitEntity } from './domain/unit-entity';
 import { player } from './state';
 import { playerResource, type BattleResourceSystem } from './resources';
@@ -29,12 +30,21 @@ export function careerMastery(unit: Unit, career: CareerId): number {
   return Math.max(0, unit.career.mastery[career] ?? 0);
 }
 
+/**
+ * Port declared by this module. The composition-level `BattleRuleServices`
+ * satisfies it structurally, so neither side needs to import the other.
+ */
+export interface CareerRules {
+  readonly content: ContentCatalog;
+  readonly resources: BattleResourceSystem;
+}
+
 export function careerOptions(
+  rules: CareerRules,
   state: GameState,
   unit: Unit,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): CareerOption[] {
+  const { content, resources } = rules;
   const current = unit.career.current;
   const currentMastery = current ? careerMastery(unit, current) : 0;
   const owner = playerResource(player(state, unit.owner));
@@ -94,16 +104,16 @@ function initialWeaponState(unit: Unit, career: CareerDef, content: ContentCatal
 }
 
 export function changeCareer(
+  rules: CareerRules,
   state: GameState,
   unit: Unit,
   requested: CareerId,
   emit: (event: GameEvent) => void,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): void {
-  const option = careerOptions(state, unit, resources, content).find((entry) => entry.career.id === requested);
-  if (!option) throw new Error(`无法转为当前职业或未知职业「${requested}」`);
-  if (!option.eligible) throw new Error(option.reasons.join('；'));
+  const { content, resources } = rules;
+  const option = careerOptions(rules, state, unit).find((entry) => entry.career.id === requested);
+  if (!option) throw new IllegalActionError(`无法转为当前职业或未知职业「${requested}」`);
+  if (!option.eligible) throw new IllegalActionError(option.reasons.join('；'));
 
   const career = option.career;
   const owner = player(state, unit.owner);
