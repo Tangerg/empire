@@ -52,6 +52,7 @@ export function defineWeapon(
     area: 'single',
     canCounter: true,
     cooldown: 0,
+    castTurns: 0,
     resources: {},
     resourceRequirements: [],
     resourceCosts: [],

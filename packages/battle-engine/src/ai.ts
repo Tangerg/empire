@@ -6,7 +6,8 @@ import {
 } from './ai-objectives';
 import { tacticOptions, type CommanderRules } from './commanders';
 import { unitWeapons } from './combat';
-import { forecastCombatPlan, type CombatPlan } from './combat-plan';
+import { forecastCombatPlan, weaponAreaCells, type CombatPlan } from './combat-plan';
+import { hostileCastsAgainst } from './casting';
 import { Battlefield } from './domain/battlefield';
 import { dist, idx } from './grid';
 import type { MoveField } from './movement';
@@ -68,6 +69,14 @@ function dangerMap(s: GameState, me: number, space: TacticalSpace, content: Cont
     const weight = maximumWeaponPower(foe.type, content) * (0.5 + 0.5 * hpRatio(foe, content));
     for (const i of space.threatOf(s, foe)) {
       danger.set(i, (danger.get(i) ?? 0) + weight);
+    }
+  }
+  // A tile already marked by a charging strike is known danger, not potential
+  // danger, so it weighs more than a tile someone merely could reach.
+  for (const cast of hostileCastsAgainst(s, me)) {
+    const weapon = content.weapons.get(cast.weapon);
+    for (const cell of weaponAreaCells(s, cast.origin, cast.target, weapon)) {
+      danger.set(idx(s.map, cell.x, cell.y), (danger.get(idx(s.map, cell.x, cell.y)) ?? 0) + weapon.power * 1.5);
     }
   }
   return danger;
@@ -339,6 +348,11 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
   }))
   .register(evaluator('attack', (context) => {
     if (!context.target || !context.option.weapon) return null;
+    // Charge time is not modelled by the planner yet: a delayed strike would be
+    // scored as if it landed now, and the caster would lock itself for a strike
+    // its target can simply walk out of. Declining to have an opinion is the
+    // honest answer — the option stays available to a human.
+    if (context.rules.content.weapons.get(context.option.weapon).castTurns > 0) return null;
     const foe = unitAt(context.state, context.target.x, context.target.y);
     // Scenario effects and morale resolution may change ownership between
     // option enumeration and scoring.  Treat that option as stale instead of

@@ -257,6 +257,8 @@ export function createState(
     nextMarkerId: 1,
     deployment,
     turnOrder: { policy: rules.turnOrder, activeUnit: null, data: {} },
+    actorTurns: 0,
+    pendingCasts: [],
     random: createRandomState(options.seed ?? defaultSeed(level)),
     scenario: {
       variables: { ...(level.scenario?.variables ?? {}) },
@@ -296,6 +298,11 @@ export function cloneState(s: GameState): GameState {
     },
     units: s.units.map(cloneUnitState),
     turnOrder: { ...s.turnOrder, data: { ...s.turnOrder.data } },
+    pendingCasts: s.pendingCasts.map((cast) => ({
+      ...cast,
+      target: { ...cast.target },
+      origin: { ...cast.origin },
+    })),
     random: { seed: s.random.seed, counters: { ...s.random.counters } },
     composites: s.composites.map((composite) => ({
       ...composite,

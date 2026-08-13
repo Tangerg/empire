@@ -58,6 +58,23 @@ export const ANCIENT_EMPIRES_WEAPONS: readonly WeaponDef[] = [
     hitEffects: [{ type: 'addStatus', status: 'armor_down', duration: 2 }],
     tags: ['ranged', 'arcane', 'cooldown'],
   }),
+  // Charge time: the tile is marked now and struck two actor turns later, so a
+  // target has a turn to walk out of it — and an ally has a turn to walk in.
+  defineWeapon({
+    id: 'mage_meteor',
+    name: '陨石术',
+    power: 92,
+    damageType: 'magic',
+    minRange: 2,
+    maxRange: 4,
+    moveAndAttack: false,
+    lineOfSight: 'arc',
+    area: 'cross1',
+    canCounter: false,
+    cooldown: 3,
+    castTurns: 2,
+    tags: ['ranged', 'arcane', 'charged', 'cooldown'],
+  }),
   defineWeapon({ id: 'knight_sword', name: '骑士剑', power: 48, tags: ['melee', 'mounted'] }),
   defineWeapon({
     id: 'knight_charge',

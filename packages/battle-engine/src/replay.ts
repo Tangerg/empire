@@ -28,6 +28,11 @@ function canonical(state: GameState): unknown {
     winnerTeam: state.winnerTeam,
     endReason: state.endReason,
     turnOrder: state.turnOrder,
+    actorTurns: state.actorTurns,
+    // Sorted by caster so the projection stays order-insensitive.
+    pendingCasts: [...state.pendingCasts]
+      .sort((left, right) => left.caster - right.caster)
+      .map((cast) => [cast.caster, cast.weapon, cast.target.x, cast.target.y, cast.resolveAt]),
     random: state.random,
     map: {
       owners: state.map.owners,

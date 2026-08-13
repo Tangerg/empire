@@ -229,6 +229,12 @@ export interface WeaponDef {
   resourceCosts: ResourceTransaction[];
   bonuses: TargetBonus[];
   hitEffects: WeaponHitEffect[];
+  /**
+   * Actor turns between committing this strike and resolving it. `0` resolves
+   * immediately; anything higher makes the weapon a *cast*: the tile is locked
+   * now and struck later, so a target may walk out of it.
+   */
+  castTurns: number;
   tags: string[];
 }
 
@@ -956,7 +962,40 @@ export interface GameState {
   deployment: DeploymentState | null;
   scenario: ScenarioState;
   turnOrder: TurnOrderState;
+  /**
+   * Monotonic count of actor turns handed out. Delays are measured in this
+   * unit so a content pack means the same thing under either turn-order
+   * family: "two turns from now" is two entitlements to act, whether those
+   * belong to whole sides or to single units.
+   */
+  actorTurns: number;
+  /** Committed strikes still charging. At most one per caster. */
+  pendingCasts: PendingCast[];
   random: RandomState;
+}
+
+/**
+ * A strike that has been committed but not yet resolved.
+ *
+ * The aim point and launch tile are frozen when the cast begins, so the shot
+ * keeps the geometry it was fired with even if the battlefield moves under it.
+ * A unit sustains at most one cast, which is why the caster is the identity.
+ */
+/** Why a committed cast failed to land. */
+export type CastRefusal = 'casterLost' | 'weaponUnavailable' | 'targetProtected' | 'targetVacated';
+
+export interface PendingCast {
+  caster: number;
+  owner: PlayerId;
+  ability: AbilityId;
+  weapon: WeaponId;
+  /** Tile the strike is aimed at, locked when the cast began. */
+  target: Coord;
+  /** Tile it was launched from, so range and line of sight stay as cast. */
+  origin: Coord;
+  /** Actor-turn readings: when it was committed, and when it lands. */
+  declaredAt: number;
+  resolveAt: number;
 }
 
 /* ----------------------------------------------------------------- events */
@@ -970,6 +1009,22 @@ export interface GameEventKindMap {
   turnStart: { type: 'turnStart'; player: PlayerId; turn: number; activeUnit?: number };
   roundStart: { type: 'roundStart'; turn: number };
   turnEnd: { type: 'turnEnd'; player: PlayerId };
+  castBegan: {
+    type: 'castBegan';
+    unit: number;
+    weapon: WeaponId;
+    at: Coord;
+    /** Actor turns still to wait when the cast was committed. */
+    turns: number;
+  };
+  castResolved: { type: 'castResolved'; unit: number; weapon: WeaponId; at: Coord };
+  castCancelled: {
+    type: 'castCancelled';
+    unit: number;
+    weapon: WeaponId;
+    at: Coord;
+    reason: CastRefusal;
+  };
   resourceChanged: {
     type: 'resourceChanged';
     resource: ResourceId;

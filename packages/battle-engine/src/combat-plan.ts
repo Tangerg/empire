@@ -231,7 +231,12 @@ export function forecastCombatPlan(
   const weapon = content.weapons.get(resolvedWeaponId);
   const primaryTarget = unitAtCoord(state, aimedAt);
   const primaryStructureTarget = hostileStructure(state, attacker, aimedAt, content);
-  if (!primaryTarget && !primaryStructureTarget) throw new Error('combat plan requires a hostile primary target');
+  // An area weapon may land on a tile whose occupant left — that is the whole
+  // point of charge time, and every step below already copes with a null
+  // primary. A single-target weapon aimed at nothing has nothing to resolve.
+  if (!primaryTarget && !primaryStructureTarget && weapon.area === 'single') {
+    throw new Error('combat plan requires a hostile primary target');
+  }
   if (primaryTarget && !areEnemies(state, primaryTarget.owner, attacker.owner)) {
     throw new Error('combat plan cannot target an allied unit');
   }

@@ -1,3 +1,4 @@
+import { isCharging, resolveDueCasts, type CastingRules } from './casting';
 import { UnitEntity } from './domain/unit-entity';
 import { advanceTerrainOverlayRound, applyOverlayTurnStartEffects } from './overlays';
 import { handleCommanderDefeat, refreshCommanderTurn } from './commanders';
@@ -14,7 +15,8 @@ import type { GameEvent, GameState, PlayerId, Unit } from './types';
  * composition-level `BattleRuleServices` satisfies it structurally, so neither
  * side needs to import the other.
  */
-export interface TurnCycleRules extends StatusRules, VictoryRules, ScenarioRules, TurnOrderRules {
+export interface TurnCycleRules
+  extends StatusRules, VictoryRules, ScenarioRules, TurnOrderRules, CastingRules {
   readonly resources: BattleResourceSystem;
 }
 
@@ -100,9 +102,16 @@ export class BattleLifecycle {
     return { content: this.rules.content, emit: this.emit };
   }
 
+  /**
+   * Hands the actor turn over and advances the actor-turn clock.
+   *
+   * That clock is the unit delays are measured in, so it must tick exactly once
+   * per entitlement to act — under either turn-order family.
+   */
   private claim(handoff: TurnHandoff): void {
     this.state.currentPlayer = handoff.player;
     this.state.turnOrder.activeUnit = handoff.activeUnit;
+    this.state.actorTurns++;
   }
 
   private conclude(team: number | null, reason: string): void {
@@ -115,6 +124,9 @@ export class BattleLifecycle {
   /** Everything a newly entitled actor — a whole side, or one unit — receives. */
   private beginActorTurn(roundAdvanced: boolean): void {
     const state = this.state;
+    // Charged strikes land before the incoming actor moves, so a unit can be
+    // caught by a spell aimed at the tile it is standing on.
+    resolveDueCasts(this.rules, state, this.emit);
     const owner = player(state, state.currentPlayer);
     const active = state.turnOrder.activeUnit;
     // Side turns refresh a whole army; per-unit orders refresh only the actor.
@@ -171,7 +183,9 @@ export class BattleLifecycle {
   private refreshActor(unit: Unit, owner: PlayerId): void {
     const entity = new UnitEntity(unit);
     entity.advanceWeaponCooldowns();
-    entity.readyForTurn();
+    // A charging unit keeps its spent action: that lock is what makes charge
+    // time a cost instead of a free delay.
+    if (!isCharging(this.state, unit)) entity.readyForTurn();
     const rate = healRateAt(this.state, unit.x, unit.y, owner, this.rules.content);
     if (rate <= 0) return;
     const healed = entity.heal(rate, this.rules.content.units.get(unit.type).maxHp);

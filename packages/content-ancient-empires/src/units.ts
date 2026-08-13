@@ -61,12 +61,12 @@ export const ANCIENT_EMPIRES_UNITS: readonly UnitDef[] = [
   unit({
     id: 'mage',
     name: '法师',
-    weapons: ['mage_bolt', 'mage_overcharge'],
+    weapons: ['mage_bolt', 'mage_overcharge', 'mage_meteor'],
     value: 300,
     maxHp: 70,
     movement: 3,
     armorClass: 'unarmored',
-    blurb: '魔法伤害无视重甲，是攻城的答案。',
+    blurb: '魔法伤害无视重甲，是攻城的答案；陨石术需要咏唱两个行动轮。',
     tags: ['infantry', 'ranged'],
   }),
   unit({

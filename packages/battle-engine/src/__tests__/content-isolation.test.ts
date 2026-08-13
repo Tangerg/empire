@@ -49,6 +49,7 @@ const weapon = (id: string, power: number): WeaponDef => ({
   area: 'single',
   canCounter: true,
   cooldown: 0,
+  castTurns: 0,
   resources: {},
   resourceRequirements: [],
   resourceCosts: [],

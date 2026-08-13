@@ -3,6 +3,7 @@ import {
   healAmount,
   primaryWeapon,
 } from './combat';
+import { beginCast } from './casting';
 import { executeCombatPlan, forecastCombatPlan } from './combat-plan';
 import type { CombatModifierPipeline } from './combat-modifiers';
 import type { WeaponHitEffectHandlerRegistry } from './hit-effects';
@@ -126,6 +127,15 @@ Abilities.defineAll([
       if (!target) throw new Error('attack requires a target');
       const { state, unit, at } = q;
       const weapon = selectedWeapon(rules, q);
+      // A charged weapon locks the tile now and strikes it later; everything
+      // else about the strike is identical, which is why charge time is a
+      // weapon property rather than a separate ability.
+      if (weapon.castTurns > 0) {
+        // Cost is paid when the strike lands, not when it is committed: a cast
+        // that never goes off never spent its ammunition.
+        beginCast(state, { caster: unit, ability: 'attack', weapon, target, origin: at }, emit);
+        return;
+      }
       const plan = forecastCombatPlan(rules, state, unit, target, { from: at, weapon: weapon.id });
       executeCombatPlan(rules, state, plan, emit);
     },
