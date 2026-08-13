@@ -1,22 +1,20 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction, commandOptions, IllegalActionError } from '../actions';
-import { forecast } from '../combat';
-import { createState } from '../state';
-import { makeLevel, u } from './fixtures';
+import { applyAction, IllegalActionError } from '../actions';
+import { makeLevel, testCommands, testForecast, testState, u } from './fixtures';
 import { WEAPON_USES_RESOURCE } from '../resources';
 
 describe('weapon actions', () => {
   it('offers and executes the weapon whose range covers the target', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...'], { units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)] }),
     );
     const attacker = state.units[0];
-    const option = commandOptions(state, attacker, { x: 0, y: 0 }).find(
+    const option = testCommands(state, attacker, { x: 0, y: 0 }).find(
       (entry) => entry.weapon === 'soldier_javelin',
     );
     expect(option?.targets).toContainEqual({ x: 2, y: 0 });
 
-    const expected = forecast(state, attacker, state.units[1], { x: 0, y: 0 }, 'soldier_javelin');
+    const expected = testForecast(state, attacker, state.units[1], { x: 0, y: 0 }, 'soldier_javelin');
     const events = applyAction(state, {
       kind: 'command',
       unit: attacker.id,
@@ -32,7 +30,7 @@ describe('weapon actions', () => {
   });
 
   it('rejects a mismatched weapon instead of silently using the default', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...'], { units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)] }),
     );
     expect(() =>
@@ -46,7 +44,7 @@ describe('weapon actions', () => {
   });
 
   it('ticks owner-turn cooldowns and restores the weapon on schedule', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...'], { units: [u(0, 0, 'mage', 1), u(2, 0, 'ogre', 2)] }),
     );
     const mage = state.units[0];
@@ -61,41 +59,41 @@ describe('weapon actions', () => {
     applyAction(state, { kind: 'endTurn' });
     applyAction(state, { kind: 'endTurn' });
     expect(mage.weaponState.mage_overcharge.cooldownRemaining).toBe(1);
-    expect(commandOptions(state, mage, { x: 0, y: 0 }).some((entry) => entry.weapon === 'mage_overcharge')).toBe(false);
+    expect(testCommands(state, mage, { x: 0, y: 0 }).some((entry) => entry.weapon === 'mage_overcharge')).toBe(false);
 
     applyAction(state, { kind: 'endTurn' });
     applyAction(state, { kind: 'endTurn' });
     expect(mage.weaponState.mage_overcharge.cooldownRemaining).toBe(0);
-    expect(commandOptions(state, mage, { x: 0, y: 0 }).some((entry) => entry.weapon === 'mage_overcharge')).toBe(true);
+    expect(testCommands(state, mage, { x: 0, y: 0 }).some((entry) => entry.weapon === 'mage_overcharge')).toBe(true);
   });
 
   it('lets a defender choose its strongest ready counter weapon', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'mage', 2)] }),
     );
-    const exchange = forecast(state, state.units[0], state.units[1]);
+    const exchange = testForecast(state, state.units[0], state.units[1]);
     expect(exchange.counter?.weapon).toBe('mage_overcharge');
 
     state.units[1].weaponState.mage_overcharge.cooldownRemaining = 1;
-    const fallback = forecast(state, state.units[0], state.units[1]);
+    const fallback = testForecast(state, state.units[0], state.units[1]);
     expect(fallback.counter?.weapon).toBe('mage_bolt');
   });
 
   it('enforces direct-fire line of sight while arcane and arcing profiles remain data choices', () => {
-    const blocked = createState(
+    const blocked = testState(
       makeLevel(['.#..'], { units: [u(0, 0, 'ballista', 1), u(3, 0, 'soldier', 2)] }),
     );
     expect(
-      commandOptions(blocked, blocked.units[0], { x: 0, y: 0 }).some(
+      testCommands(blocked, blocked.units[0], { x: 0, y: 0 }).some(
         (entry) => entry.weapon === 'ballista_bolt',
       ),
     ).toBe(false);
 
-    const clear = createState(
+    const clear = testState(
       makeLevel(['....'], { units: [u(0, 0, 'ballista', 1), u(3, 0, 'soldier', 2)] }),
     );
     expect(
-      commandOptions(clear, clear.units[0], { x: 0, y: 0 }).some(
+      testCommands(clear, clear.units[0], { x: 0, y: 0 }).some(
         (entry) => entry.weapon === 'ballista_bolt',
       ),
     ).toBe(true);

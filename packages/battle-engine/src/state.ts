@@ -1,6 +1,5 @@
 import {
   type BattleResourceSystem,
-  DefaultBattleResources,
   playerResource,
 } from './resources';
 import { idx } from './grid';
@@ -18,7 +17,7 @@ import type {
   ResourceAmount,
   LevelUnit,
 } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 import { cloneUnitState } from './unit-state';
 
 const cloneResources = (resources: ResourceAccounts = {}): ResourceAccounts =>
@@ -92,7 +91,7 @@ function createUnitState(
   };
 }
 
-export function createState(level: LevelData, content: ContentCatalog = GlobalContentCatalog): GameState {
+export function createState(level: LevelData, content: ContentCatalog): GameState {
   const map = mapFromLevel(level, content);
   const rules = resolveRules(level);
 
@@ -398,11 +397,11 @@ export function tilesOwnedBy(s: GameState, id: PlayerId): Coord[] {
   return out;
 }
 
-export function hqTilesOf(s: GameState, id: PlayerId, content: ContentCatalog = GlobalContentCatalog): Coord[] {
+export function hqTilesOf(s: GameState, id: PlayerId, content: ContentCatalog): Coord[] {
   return tilesOwnedBy(s, id).filter((c) => content.terrains.get(s.map.tiles[idx(s.map, c.x, c.y)]).hq);
 }
 
-export function productionTilesOf(s: GameState, id: PlayerId, content: ContentCatalog = GlobalContentCatalog): Coord[] {
+export function productionTilesOf(s: GameState, id: PlayerId, content: ContentCatalog): Coord[] {
   return tilesOwnedBy(s, id).filter(
     (c) => content.terrains.get(s.map.tiles[idx(s.map, c.x, c.y)]).produces.length > 0,
   );
@@ -412,8 +411,8 @@ export function productionTilesOf(s: GameState, id: PlayerId, content: ContentCa
 export function recruitOptions(
   s: GameState,
   c: Coord,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  content: ContentCatalog = GlobalContentCatalog,
+  resources: BattleResourceSystem,
+  content: ContentCatalog,
 ): { unit: UnitTypeId; costs: ResourceAmount[]; affordable: boolean }[] {
   const i = idx(s.map, c.x, c.y);
   const terrain = content.terrains.get(s.map.tiles[i]);
@@ -436,7 +435,7 @@ export function spawnUnit(
   owner: PlayerId,
   at: Coord,
   opts: { hp?: number; done?: boolean; source?: Partial<LevelUnit> } = {},
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): Unit {
   const source: LevelUnit = {
     x: at.x,

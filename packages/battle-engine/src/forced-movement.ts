@@ -6,7 +6,7 @@ import { handleCommanderDefeat } from './commanders';
 import { DIRECTION_VECTOR, directionToward } from './spatial';
 import { requireUnit, unitAtCoord } from './state';
 import type { Coord, GameEvent, GameState, Unit } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 import { resolveMoraleAfterDamage } from './morale';
 import { emitTransportLossEvents } from './transports';
 
@@ -45,7 +45,7 @@ export function forceMoveUnit(
   state: GameState,
   request: ForcedMovementRequest,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): ForcedMovementResult {
   const unit = requireUnit(state, request.unit);
   const from = { x: unit.x, y: unit.y };
@@ -105,7 +105,7 @@ export function teleportUnit(
   unitId: number,
   destination: Coord,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): boolean {
   const unit = requireUnit(state, unitId);
   const from = { x: unit.x, y: unit.y };

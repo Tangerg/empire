@@ -1,13 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
-import { forecastCombatPlan, weaponAreaCells } from '../combat-plan';
+import { weaponAreaCells } from '../combat-plan';
 import { weaponDef } from '../data/weapons';
-import { createState } from '../state';
-import { makeLevel, u } from './fixtures';
+import { makeLevel, testCombatPlan, testState, u } from './fixtures';
 
 describe('combat plans and area weapons', () => {
   it('expands cross, square-ring, and line templates deterministically', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...', '...', '...'], { units: [u(0, 0, 'mage', 1), u(2, 2, 'soldier', 2)] }),
     );
     const base = weaponDef('mage_overcharge');
@@ -21,7 +20,7 @@ describe('combat plans and area weapons', () => {
   });
 
   it('forecasts and commits every hostile unit and structure from one immutable plan', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...', '...', '...'], {
         units: [
           u(0, 1, 'mage', 1),
@@ -33,7 +32,7 @@ describe('combat plans and area weapons', () => {
       }),
     );
     const attacker = state.units[0];
-    const plan = forecastCombatPlan(
+    const plan = testCombatPlan(
       state,
       attacker,
       { x: 1, y: 1 },
@@ -71,17 +70,17 @@ describe('combat plans and area weapons', () => {
   });
 
   it('lets a line weapon hit intervening enemies once without friendly fire', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...'], {
         units: [u(0, 0, 'dragon', 1), u(1, 0, 'soldier', 2), u(2, 0, 'soldier', 2)],
       }),
     );
-    const plan = forecastCombatPlan(state, state.units[0], { x: 2, y: 0 }, { x: 0, y: 0 }, 'dragon_breath');
+    const plan = testCombatPlan(state, state.units[0], { x: 2, y: 0 }, { x: 0, y: 0 }, 'dragon_breath');
     expect(plan.unitHits.map((hit) => hit.target).sort()).toEqual([state.units[1].id, state.units[2].id]);
   });
 
   it('skips a later area recipient that already routed from an earlier morale shock', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...', '...', '...'], {
         units: [u(0, 1, 'mage', 1), u(1, 1, 'soldier', 2, 1), u(1, 0, 'soldier', 2)],
         rules: { moraleEnabled: true },

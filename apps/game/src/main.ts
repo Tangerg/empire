@@ -1,9 +1,12 @@
 import '@empire/game-ui/styles/app.css';
 import '@empire/game-ui/styles/campaign.css';
-import { installContentPacks, mapFromLevel, type LevelData } from '@empire/battle-engine';
-import { armorClassDef, damageTypeDef } from '@empire/battle-engine/data/damage';
-import { UnitTypes, movementLabel } from '@empire/battle-engine/data/units';
-import { weaponDef } from '@empire/battle-engine/data/weapons';
+import {
+  ContentPackInstaller,
+  createBattleEngine,
+  createContentCatalog,
+  mapFromLevel,
+  type LevelData,
+} from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
@@ -31,11 +34,18 @@ import {
   escapeHtml,
 } from '@empire/game-ui';
 
-installContentPacks(COMMON_CONTENT_PACK, ANCIENT_EMPIRES_CONTENT_PACK, CANDIDATE_01_CONTENT_PACK);
+/** Composition root: content and ruleset are built here, never reached for. */
+const content = createContentCatalog();
+new ContentPackInstaller(content).install(
+  COMMON_CONTENT_PACK,
+  ANCIENT_EMPIRES_CONTENT_PACK,
+  CANDIDATE_01_CONTENT_PACK,
+);
+const engine = createBattleEngine({ content });
 registerCandidate01Presentation();
 const campaignAdapter = candidate01CampaignAdapter();
 
-const recruitCost = (unit: ReturnType<typeof UnitTypes.all>[number]) =>
+const recruitCost = (unit: { recruitCosts: { resource: string; amount: number }[] }) =>
   unit.recruitCosts.map((cost) => `${cost.resource} ${cost.amount}`).join(' · ') || '不可招募';
 
 const app = document.getElementById('app')!;
@@ -43,7 +53,7 @@ let active: GameController | StoryCampaignController | null = null;
 
 /** Static minimap for a level card. */
 function thumbnail(level: LevelData): string {
-  const map = mapFromLevel(level);
+  const map = mapFromLevel(level, content);
   const colorOf = (id: number) => level.players.find((p) => p.id === id)?.color;
   const units = level.units
     .map((u) => {
@@ -53,7 +63,7 @@ function thumbnail(level: LevelData): string {
     })
     .join('');
   return `<svg viewBox="0 0 ${map.width * TILE} ${map.height * TILE}" preserveAspectRatio="xMidYMid slice">
-    ${terrainLayerMarkup(map, colorOf)}${units}
+    ${terrainLayerMarkup(content, map, colorOf)}${units}
   </svg>`;
 }
 
@@ -82,14 +92,14 @@ function codexMarkup(): string {
         <button class="btn ghost" data-act="closeCodex">✕</button>
       </div>
       <div class="recruit-grid">
-        ${UnitTypes.all()
+        ${content.units.all()
           .map(
             (d) => {
-              const weapons = d.weapons.map(weaponDef);
+              const weapons = d.weapons.map((id) => content.weapons.get(id));
               const power = Math.max(...weapons.map((weapon) => weapon.power));
               const minRange = Math.min(...weapons.map((weapon) => weapon.minRange));
               const maxRange = Math.max(...weapons.map((weapon) => weapon.maxRange));
-              const damageTypes = [...new Set(weapons.map((weapon) => damageTypeDef(weapon.damageType).name))].join(' / ');
+              const damageTypes = [...new Set(weapons.map((weapon) => content.damageTypes.get(weapon.damageType).name))].join(' / ');
               return `<div class="recruit-card">
               <div class="rc-art" style="width:64px;height:auto;background:none">${portraitSvg(d.id, team, 64)}</div>
               <div class="rc-body">
@@ -97,7 +107,7 @@ function codexMarkup(): string {
                 <div class="rc-stats">${icon('sword')}${power} · ${icon('heart')}${d.maxHp} · ${icon('boot')}${d.movement} · 射程 ${
                   minRange === maxRange ? maxRange : `${minRange}-${maxRange}`
                 }</div>
-                <div class="rc-stats">${damageTypes} / ${armorClassDef(d.armorClass).name} / ${movementLabel(d.movementClass)}</div>
+                <div class="rc-stats">${damageTypes} / ${content.armorClasses.get(d.armorClass).name} / ${content.movementProfiles.get(d.movementClass).name}</div>
                 <div class="rc-blurb">${escapeHtml(d.blurb)}</div>
               </div>
             </div>`;
@@ -196,7 +206,7 @@ function renderMenu(): void {
 
 function startCampaign(state: ReturnType<typeof loadCampaignState>): void {
   active?.dispose();
-  const controller = new StoryCampaignController(campaignAdapter, state, () => renderMenu());
+  const controller = new StoryCampaignController(campaignAdapter, state, () => renderMenu(), engine);
   active = controller;
   app.replaceChildren(controller.root);
 }
@@ -211,7 +221,7 @@ function findLevel(id: string): LevelData | null {
 
 function startGame(level: LevelData): void {
   active?.dispose();
-  const controller = new GameController(level, () => renderMenu());
+  const controller = new GameController(level, () => renderMenu(), { engine });
   active = controller;
   app.replaceChildren(controller.root);
 }

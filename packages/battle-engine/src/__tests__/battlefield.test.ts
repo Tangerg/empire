@@ -1,11 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { Battlefield } from '../domain/battlefield';
-import { createState } from '../state';
-import { makeLevel } from './fixtures';
+import { TEST_CONTENT, makeLevel, testState } from './fixtures';
 
 describe('Battlefield aggregate', () => {
   it('composes terrain, landform overlays and structures behind one cell model', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['T.'], {
         structures: [{ id: 'gate-a', type: 'gate', owner: 2, x: 0, y: 0 }],
         scenario: {
@@ -20,7 +19,7 @@ describe('Battlefield aggregate', () => {
         },
       }),
     );
-    const battlefield = new Battlefield(state);
+    const battlefield = new Battlefield(state, TEST_CONTENT);
     const forest = battlefield.cellAt(0, 0);
     const plain = battlefield.cellAt(1, 0);
 

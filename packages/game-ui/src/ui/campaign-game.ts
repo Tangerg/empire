@@ -1,9 +1,8 @@
 import { saveCampaignState } from '../application/campaign-storage';
 import { CampaignBattleBridge, CampaignRuntime, type BattleRequest, type CampaignState } from '@empire/campaign-engine';
-import { unitDef } from '@empire/battle-engine/data/units';
 import type { GameEvent, GameState } from '@empire/battle-engine/types';
 import type { BattleResult, CampaignDefinition } from '@empire/campaign-engine';
-import type { LevelData } from '@empire/battle-engine';
+import type { BattleEngine, ContentCatalog, LevelData } from '@empire/battle-engine';
 import { GameController, type BattleCompletionSnapshot } from './game';
 import { escapeHtml } from './html';
 
@@ -66,6 +65,8 @@ export interface StoryCampaignAdapter {
 
 export class StoryCampaignController {
   readonly root = document.createElement('div');
+  /** Ruleset of the campaign; every roster label resolves through it. */
+  private readonly content: ContentCatalog;
   private readonly runtime: CampaignRuntime;
   private readonly bridge: CampaignBattleBridge;
   private game: GameController | null = null;
@@ -78,7 +79,9 @@ export class StoryCampaignController {
     private readonly adapter: StoryCampaignAdapter,
     state: CampaignState | null,
     private readonly onExit: () => void,
+    private readonly engine: BattleEngine,
   ) {
+    this.content = engine.content;
     this.bridge = new CampaignBattleBridge(adapter.level);
     this.runtime = new CampaignRuntime(adapter.definition, state ?? undefined);
     this.root.className = 'campaign-root';
@@ -152,6 +155,7 @@ export class StoryCampaignController {
       this.game = null;
       this.render();
     }, {
+      engine: this.engine,
       exitLabel: '战役营地',
       completionLabel: '结算战果',
       onComplete: (snapshot) => this.completeBattle(request, snapshot),
@@ -180,7 +184,7 @@ export class StoryCampaignController {
     const human = state.players.find((player) => player.controller === 'human')!;
     const fallen = state.markers
       .filter((marker) => marker.fallenUnit?.owner === human.id)
-      .map((marker) => unitDef(marker.fallenUnit!.type).name);
+      .map((marker) => this.content.units.get(marker.fallenUnit!.type).name);
     return {
       title,
       outcome: state.endReason,
@@ -286,7 +290,7 @@ export class StoryCampaignController {
       <div class="staging-grid">
         <section class="campaign-panel"><h2>出战名册</h2><div class="roster-list">${roster.map((unit) => {
           const portrait = this.adapter.portraits[unit.id];
-          return `<div class="campaign-unit">${portrait ? `<img src="${portrait}" alt=""/>` : '<span class="unit-fallback">◆</span>'}<div><b>${escapeHtml(unitDef(unit.unitType).name)}</b><small>${unit.disposition === 'available' ? `生命 ${Math.round(unit.hpRatio * 100)}% · 军衔 ${unit.rank ?? 0}` : escapeHtml(unit.disposition)}</small></div></div>`;
+          return `<div class="campaign-unit">${portrait ? `<img src="${portrait}" alt=""/>` : '<span class="unit-fallback">◆</span>'}<div><b>${escapeHtml(this.content.units.get(unit.unitType).name)}</b><small>${unit.disposition === 'available' ? `生命 ${Math.round(unit.hpRatio * 100)}% · 军衔 ${unit.rank ?? 0}` : escapeHtml(unit.disposition)}</small></div></div>`;
         }).join('')}</div></section>
         <section class="campaign-panel"><h2>战役状态</h2><div class="resource-row"><span>补给</span><b>${this.runtime.state.resources.supplies ?? 0}</b><span>国库</span><b>${this.runtime.state.resources.treasury ?? 0}</b></div>
           <div class="relation-list">${Object.entries(this.runtime.state.relations).filter(([, value]) => value !== 0).slice(0, 5).map(([id, value]) => `<div><span>${escapeHtml(this.adapter.relationLabels?.[id] ?? id)}</span><i style="--relation:${Math.max(0, Math.min(1, (value + 3) / 6))}"></i><b>${value > 0 ? '+' : ''}${value}</b></div>`).join('') || '<p>尚未形成明确阵营关系。</p>'}</div>

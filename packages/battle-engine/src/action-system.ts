@@ -52,7 +52,7 @@ export interface BattleRuleServices {
 export function createDefaultBattleRuleServices(
   overrides: Partial<BattleRuleServices> = {},
 ): BattleRuleServices {
-  const content = overrides.content ?? cloneContentCatalog();
+  const content = overrides.content ?? cloneContentCatalog(GlobalContentCatalog);
   return {
     content,
     abilities: overrides.abilities ?? Abilities.clone(),
@@ -96,7 +96,7 @@ export class ActionExecutionContext {
 
   constructor(
     readonly state: GameState,
-    readonly rules: BattleRuleServices = DefaultBattleRuleServices,
+    readonly rules: BattleRuleServices,
   ) {
     this.battle = new BattleAggregate(state, rules.content);
   }

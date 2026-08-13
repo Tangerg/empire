@@ -1,27 +1,21 @@
 import { commandOptions, type CommandOption } from './actions';
-import { Abilities, type AbilityDef } from './abilities';
 import {
   buildAiMissionIntent,
-  DefaultAiObjectiveAdvisors,
   type AiMissionIntent,
   type AiObjectiveAdvisorRegistry,
 } from './ai-objectives';
 import { tacticOptions } from './commanders';
 import { unitWeapons } from './combat';
-import { DefaultCombatModifierPipeline, type CombatModifierPipeline } from './combat-modifiers';
 import { forecastCombatPlan, type CombatPlan } from './combat-plan';
 import { Battlefield } from './domain/battlefield';
 import { dist, idx } from './grid';
 import type { MoveField } from './movement';
-import { ObjectiveHandlers, type ObjectiveHandlerRegistry } from './objective-system';
-import {
-  type BattleResourceSystem,
-  DefaultBattleResources,
-  playerResource,
-} from './resources';
+import { type ObjectiveHandlerRegistry } from './objective-system';
+import { type BattleResourceSystem, playerResource } from './resources';
 import { hasStatus } from './statuses';
-import type { Registry } from './registry';
-import { CoreTacticalSpace, DefaultTacticalSpace, type TacticalSpace } from './tactical-space';
+import type { AbilityRules } from './abilities';
+import type { TacticalSpace } from './tactical-space';
+import type { VictoryRules } from './victory';
 import { structureAt } from './structures';
 import {
   areEnemies,
@@ -33,7 +27,7 @@ import {
   unitsOf,
 } from './state';
 import type { Action, Coord, GameState, Unit, UnitTypeId } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 
 /**
  * One-ply utility AI. It scores every (destination, ability, target) triple a
@@ -240,6 +234,12 @@ interface Candidate {
   score: number;
 }
 
+/**
+ * Everything AI planning needs: it must reason with the *same* ruleset that
+ * will execute the action, otherwise its predictions are fiction.
+ */
+export interface AiRules extends AbilityRules, VictoryRules {}
+
 export interface AbilityAiEvaluationContext {
   state: GameState;
   unit: Unit;
@@ -248,9 +248,8 @@ export interface AbilityAiEvaluationContext {
   target: Coord | null;
   positionScore: number;
   mission: AiMissionIntent;
-  combatModifiers: CombatModifierPipeline;
-  resources: BattleResourceSystem;
-  content: ContentCatalog;
+  /** Ruleset used for legality and prediction; identical to execution's. */
+  readonly rules: AiRules;
 }
 
 export interface AbilityAiEvaluator {
@@ -321,7 +320,7 @@ const evaluator = (
 export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
   .register(evaluator('wait', (context) => context.positionScore))
   .register(evaluator('capture', (context) => {
-    const tile = context.content.terrains.get(context.state.map.tiles[idx(context.state.map, context.at.x, context.at.y)]);
+    const tile = context.rules.content.terrains.get(context.state.map.tiles[idx(context.state.map, context.at.x, context.at.y)]);
     const prize = tile.hq ? 4000 : tile.produces.length > 0 ? 900 : 600;
     return context.positionScore * 0.3 + prize;
   }))
@@ -329,7 +328,7 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
     if (!context.target) return null;
     const ally = unitAt(context.state, context.target.x, context.target.y);
     if (!ally) return null;
-    const def = context.content.units.get(ally.type);
+    const def = context.rules.content.units.get(ally.type);
     const healed = Math.min(30, def.maxHp - ally.hp);
     return context.positionScore * 0.3 + (healed / def.maxHp) * def.value * 0.9;
   }))
@@ -340,16 +339,10 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
     // option enumeration and scoring.  Treat that option as stale instead of
     // asking combat prediction to plan an illegal friendly-fire strike.
     if (foe && !areEnemies(context.state, foe.owner, context.unit.owner)) return null;
-    const plan = forecastCombatPlan(
-      context.state,
-      context.unit,
-      context.target,
-      context.at,
-      context.option.weapon,
-      context.combatModifiers,
-      context.resources,
-      context.content,
-    );
+    const plan = forecastCombatPlan(context.rules, context.state, context.unit, context.target, {
+      from: context.at,
+      weapon: context.option.weapon,
+    });
     if (!foe) {
       const structure = structureAt(context.state, context.target.x, context.target.y);
       const forecast = plan.primaryStructure;
@@ -358,27 +351,27 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
         forecast.damage * 8 +
         (forecast.destroyed ? 900 : 0) +
         (context.mission.priorityStructures.get(structure.id) ?? 0) * 300 +
-        collateralValue(context.state, plan, context.content);
+        collateralValue(context.state, plan, context.rules.content);
     }
     const forecast = plan.primaryUnit;
     if (!forecast) return null;
-    const foeDef = context.content.units.get(foe.type);
-    const unitDefinition = context.content.units.get(context.unit.type);
+    const foeDef = context.rules.content.units.get(foe.type);
+    const unitDefinition = context.rules.content.units.get(context.unit.type);
     const dealt = Math.min(forecast.strike.damage, foe.hp) / foeDef.maxHp;
     let score = dealt * foeDef.value * 1.15;
-    if (forecast.defenderDies) score += unitValue(foe, context.content) * 0.65;
+    if (forecast.defenderDies) score += unitValue(foe, context.rules.content) * 0.65;
     if (forecast.counter) {
       const taken = Math.min(forecast.counter.damage, context.unit.hp) / unitDefinition.maxHp;
       score -= taken * unitDefinition.value;
-      if (forecast.attackerDies) score -= unitValue(context.unit, context.content) * 0.9;
+      if (forecast.attackerDies) score -= unitValue(context.unit, context.rules.content) * 0.9;
     }
-    if (foeDef.tags.includes('support') || unitWeapons(foe, context.content).every((weapon) => weapon.minRange > 1)) score *= 1.1;
+    if (foeDef.tags.includes('support') || unitWeapons(foe, context.rules.content).every((weapon) => weapon.minRange > 1)) score *= 1.1;
     score += (context.mission.priorityUnits.get(foe.id) ?? 0) * 260;
     for (const [protectedId, weight] of context.mission.protectedUnits) {
       const protectedUnit = context.state.units.find((candidate) => candidate.id === protectedId);
       if (protectedUnit) score += weight * 80 / (1 + dist(foe, protectedUnit));
     }
-    return context.positionScore * 0.25 + score + collateralValue(context.state, plan, context.content);
+    return context.positionScore * 0.25 + score + collateralValue(context.state, plan, context.rules.content);
   }));
 
 function tacticAction(
@@ -415,20 +408,18 @@ function tacticAction(
 }
 
 function evaluateUnit(
+  dependencies: AiPlanningDependencies,
   s: GameState,
   unit: Unit,
   obj: Objectives,
   danger: Map<number, number>,
   opts: AiOptions,
-  combatModifiers: CombatModifierPipeline,
-  resources: BattleResourceSystem,
-  abilities: Registry<AbilityDef>,
-  abilityEvaluators: AbilityAiEvaluatorRegistry,
-  space: TacticalSpace,
   battlefield: Battlefield,
-  content: ContentCatalog,
 ): Candidate | null {
-  const field = space.moveField(s, unit);
+  const rules = dependencies.rules;
+  const content = rules.content;
+  const abilityEvaluators = dependencies.abilityEvaluators;
+  const field = rules.space.moveField(s, unit);
   let best: Candidate | null = null;
 
   const consider = (c: Candidate) => {
@@ -441,12 +432,13 @@ function evaluateUnit(
     const path = pathFrom(field, s, at);
     if (!path) continue;
 
-    for (const opt of commandOptions(s, unit, at, resources, abilities, space, content)) {
+    for (const opt of commandOptions(rules, s, unit, at)) {
       const aiEvaluator = abilityEvaluators.evaluator(opt.ability);
       if (!aiEvaluator) continue;
       const targets: Array<Coord | null> = opt.selfTargeted ? [null] : opt.targets;
       for (const target of targets) {
         const score = aiEvaluator.score({
+          rules,
           state: s,
           unit,
           at,
@@ -454,9 +446,6 @@ function evaluateUnit(
           target,
           positionScore: pos,
           mission: obj.mission,
-          combatModifiers,
-          resources,
-          content,
         });
         if (score === null || !Number.isFinite(score)) continue;
         const directiveAdjustment = unit.directive.mode === 'retreat' && opt.ability === 'attack' ? -5_000 : 0;
@@ -592,43 +581,30 @@ function recruitAction(s: GameState, me: number, resources: BattleResourceSystem
  * there is nothing left worth doing, so callers can simply loop.
  */
 export interface AiPlanningDependencies {
-  objectiveAdvisors: AiObjectiveAdvisorRegistry;
-  objectives: ObjectiveHandlerRegistry;
-  combatModifiers: CombatModifierPipeline;
-  resources: BattleResourceSystem;
-  abilities: Registry<AbilityDef>;
-  abilityEvaluators: AbilityAiEvaluatorRegistry;
-  space: TacticalSpace;
-  content: ContentCatalog;
+  readonly rules: AiRules;
+  readonly objectiveAdvisors: AiObjectiveAdvisorRegistry;
+  readonly abilityEvaluators: AbilityAiEvaluatorRegistry;
 }
 
 export function chooseAction(
+  dependencies: AiPlanningDependencies,
   s: GameState,
   opts?: Partial<AiOptions>,
-  dependencies: Partial<AiPlanningDependencies> = {},
 ): Action {
   if (s.phase === 'deployment') return { kind: 'finishDeployment' };
   const me = s.currentPlayer;
   const aggression = opts?.aggression ?? player(s, me).ai.aggression;
   const options: AiOptions = { aggression };
 
-  const resources = dependencies.resources ?? DefaultBattleResources;
-  const abilities = dependencies.abilities ?? Abilities;
-  const content = dependencies.content ?? GlobalContentCatalog;
-  const space = dependencies.space ?? (dependencies.content ? new DefaultTacticalSpace(content) : CoreTacticalSpace);
+  const rules = dependencies.rules;
+  const { content, resources, space } = rules;
   const tactic = tacticAction(s, me, resources, content);
   if (tactic) return tactic;
 
   const recruit = recruitAction(s, me, resources, content);
   if (recruit) return recruit;
 
-  const obj = objectivesFor(
-    s,
-    me,
-    dependencies.objectiveAdvisors ?? DefaultAiObjectiveAdvisors,
-    dependencies.objectives ?? ObjectiveHandlers,
-    content,
-  );
+  const obj = objectivesFor(s, me, dependencies.objectiveAdvisors, rules.objectives, content);
   const danger = dangerMap(s, me, space, content);
 
   const reaction = reactionAction(s, me, obj, content);
@@ -638,30 +614,22 @@ export function chooseAction(
   const battlefield = new Battlefield(s, content);
   for (const u of unitsOf(s, me)) {
     if (u.done) continue;
-    const c = evaluateUnit(
-      s,
-      u,
-      obj,
-      danger,
-      options,
-      dependencies.combatModifiers ?? DefaultCombatModifierPipeline,
-      resources,
-      abilities,
-      dependencies.abilityEvaluators ?? DefaultAbilityAiEvaluators,
-      space,
-      battlefield,
-      content,
-    );
+    const c = evaluateUnit(dependencies, s, u, obj, danger, options, battlefield);
     if (c && (!best || c.score > best.score)) best = c;
   }
 
   return best ? best.action : { kind: 'endTurn' };
 }
 
-/** Convenience: the whole turn as a list of actions (used in tests). */
-export function planTurn(s: GameState, apply: (a: Action) => void, maxActions = 200): void {
+/** Convenience: drives one whole AI turn. */
+export function planTurn(
+  dependencies: AiPlanningDependencies,
+  s: GameState,
+  apply: (a: Action) => void,
+  maxActions = 200,
+): void {
   for (let n = 0; n < maxActions; n++) {
-    const action = chooseAction(s);
+    const action = chooseAction(dependencies, s);
     apply(action);
     if (action.kind === 'endTurn') return;
     if (s.phase !== 'playing') return;

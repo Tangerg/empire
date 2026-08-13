@@ -14,8 +14,7 @@ import { edgeKey } from './spatial';
 import { forceMoveUnit, teleportUnit } from './forced-movement';
 import {
   type BattleResourceSystem,
-  DefaultBattleResources,
-} from './resources';
+  } from './resources';
 import type {
   GameEvent,
   GameState,
@@ -30,7 +29,7 @@ import type {
   BattlefieldMarker,
   MarkerSelector,
 } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 import { cloneUnitState } from './unit-state';
 import { changeMorale, surrenderUnit } from './morale';
 import { addEngagementRule, removeEngagementRule } from './engagement';
@@ -54,7 +53,7 @@ function inZone(state: GameState, unit: Unit, zoneId: string): boolean {
 export function selectUnits(
   state: GameState,
   selector: UnitSelector,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): Unit[] {
   return state.units.filter((unit) => {
     if (selector.ids && !selector.ids.includes(unit.id)) return false;
@@ -132,7 +131,7 @@ export class ScenarioConditionHandlerRegistry {
     return this;
   }
 
-  evaluate(state: GameState, condition: ScenarioCondition, content: ContentCatalog = GlobalContentCatalog): boolean {
+  evaluate(state: GameState, condition: ScenarioCondition, content: ContentCatalog): boolean {
     const handler = this.handlers.get(condition.type);
     if (!handler) throw new Error(`no scenario condition handler for "${condition.type}"`);
     return handler.evaluate(new ScenarioConditionContext(state, this, content), condition as never);
@@ -213,8 +212,8 @@ export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry()
 export function conditionMet(
   state: GameState,
   condition: ScenarioCondition,
-  handlers: ScenarioConditionHandlerRegistry = ScenarioConditionHandlers,
-  content: ContentCatalog = GlobalContentCatalog,
+  handlers: ScenarioConditionHandlerRegistry,
+  content: ContentCatalog,
 ): boolean {
   return handlers.evaluate(state, condition, content);
 }
@@ -282,8 +281,8 @@ export class ScenarioEffectHandlerRegistry {
     state: GameState,
     effect: ScenarioEffect,
     emit: (event: GameEvent) => void,
-    resources: BattleResourceSystem = DefaultBattleResources,
-    content: ContentCatalog = GlobalContentCatalog,
+    resources: BattleResourceSystem,
+    content: ContentCatalog,
   ): void {
     const handler = this.handlers.get(effect.type);
     if (!handler) throw new Error(`no scenario effect handler for "${effect.type}"`);
@@ -315,7 +314,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   }))
   .register(effectHandler('addStatus', (context, effect) => {
     for (const unit of context.select(effect.selector)) {
-      addStatus(unit, effect.status, effect.duration, context.emit, undefined, context.content);
+      addStatus(unit, effect.status, effect.duration, context.content, context.emit);
     }
   }))
   .register(effectHandler('removeStatus', (context, effect) => {
@@ -472,14 +471,14 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   .register(effectHandler('changeMorale', (context, effect) => {
     for (const unit of [...context.select(effect.selector)]) {
       if (context.state.units.some((candidate) => candidate.id === unit.id)) {
-        changeMorale(context.state, unit.id, effect.amount, effect.reason ?? 'scenario', context.emit);
+        changeMorale(context.state, unit.id, effect.amount, effect.reason ?? 'scenario', context.emit, context.content);
       }
     }
   }))
   .register(effectHandler('surrenderUnits', (context, effect) => {
     for (const unit of [...context.select(effect.selector)]) {
       if (context.state.units.some((candidate) => candidate.id === unit.id)) {
-        surrenderUnit(context.state, unit.id, effect.to, context.emit);
+        surrenderUnit(context.state, unit.id, effect.to, context.emit, context.content);
         handleCommanderDefeat(context.state, unit.id, context.emit, context.content);
       }
     }
@@ -589,10 +588,10 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     }
   }))
   .register(effectHandler('damageStructure', (context, effect) => {
-    damageStructure(context.state, effect.id, effect.amount, context.emit, context.content);
+    damageStructure(context.state, effect.id, effect.amount, context.content, context.emit);
   }))
   .register(effectHandler('repairStructure', (context, effect) => {
-    repairStructure(context.state, effect.id, effect.amount, context.emit, context.content);
+    repairStructure(context.state, effect.id, effect.amount, context.content, context.emit);
   }))
   .register(effectHandler('moveComposite', (context, effect) => {
     moveComposite(context.state, effect.id, { x: effect.dx, y: effect.dy }, context.emit);
@@ -605,9 +604,9 @@ export function applyScenarioEffect(
   state: GameState,
   effect: ScenarioEffect,
   emit: (event: GameEvent) => void,
-  handlers: ScenarioEffectHandlerRegistry = ScenarioEffectHandlers,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  content: ContentCatalog = GlobalContentCatalog,
+  handlers: ScenarioEffectHandlerRegistry,
+  resources: BattleResourceSystem,
+  content: ContentCatalog,
 ): void {
   handlers.apply(state, effect, emit, resources, content);
 }
@@ -617,10 +616,10 @@ export function runScenarioTriggers(
   state: GameState,
   timing: ScenarioTiming,
   emit: (event: GameEvent) => void,
-  conditions: ScenarioConditionHandlerRegistry = ScenarioConditionHandlers,
-  effects: ScenarioEffectHandlerRegistry = ScenarioEffectHandlers,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  content: ContentCatalog = GlobalContentCatalog,
+  conditions: ScenarioConditionHandlerRegistry,
+  effects: ScenarioEffectHandlerRegistry,
+  resources: BattleResourceSystem,
+  content: ContentCatalog,
 ): void {
   const fired = new Set(state.scenario.firedTriggerIds);
   const firedThisOccurrence = new Set<string>();

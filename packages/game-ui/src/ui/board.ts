@@ -1,6 +1,5 @@
-import { unitDef } from '@empire/battle-engine/data/units';
-import { structureDef } from '@empire/battle-engine/data/structures';
 import { idx } from '@empire/battle-engine/grid';
+import type { ContentCatalog } from '@empire/battle-engine';
 import type { Coord, GameState, Unit, WeaponId } from '@empire/battle-engine/types';
 import { PAL } from '../art/palette';
 import { FrameAnimationSystem, registerSvgStrip } from '../art/frame-animation';
@@ -79,6 +78,7 @@ export class BoardView {
   constructor(
     private state: GameState,
     private readonly handlers: BoardHandlers,
+    private readonly content: ContentCatalog,
   ) {
     this.presentation = battlePresentation(state.levelId);
     this.viewport = createSceneViewport(
@@ -241,7 +241,7 @@ export class BoardView {
     this.mapSignature = signature;
     clear(this.layers.terrain);
     const colorOf = (id: number) => s.players.find((p) => p.id === id)?.color;
-    this.layers.terrain.append(fromMarkup(terrainLayerMarkup(s.map, colorOf, s.levelId)));
+    this.layers.terrain.append(fromMarkup(terrainLayerMarkup(this.content, s.map, colorOf, s.levelId)));
     for (const id of this.sceneryAnimationIds) this.frameAnimations.unregister(id);
     this.sceneryAnimationIds = [];
     clear(this.layers.ground);
@@ -286,7 +286,7 @@ export class BoardView {
     clear(this.layers.structures);
     const structures = s.structures.flatMap((state) => {
       const ownerColor = s.players.find((player) => player.id === state.owner)?.color;
-      const markup = this.presentation.structure(state, structureDef(state.type), ownerColor);
+      const markup = this.presentation.structure(state, this.content.structures.get(state.type), ownerColor);
       return markup
         ? [`<g transform="translate(${state.x * TILE} ${state.y * TILE})" data-structure="${state.id}">${markup}</g>`]
         : [];
@@ -393,7 +393,7 @@ export class BoardView {
 
       const badges = el.querySelector('.badges')!;
       clear(badges);
-      const def = unitDef(u.type);
+      const def = this.content.units.get(u.type);
       const ratio = u.hp / def.maxHp;
       const parts: string[] = [];
       const arrow = ({ north: '↑', east: '→', south: '↓', west: '←' } as const)[u.facing];

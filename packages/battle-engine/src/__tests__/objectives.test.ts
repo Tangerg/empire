@@ -1,10 +1,7 @@
+import { TEST_CONTENT, makeLevel, testObjectiveOutcome, testRefreshObjectives, testScenarioEffect, testState, testVictory, u } from './fixtures';
 import { describe, expect, it } from 'vitest';
-import { applyScenarioEffect } from '../scenario';
-import { createState } from '../state';
 import { damageStructure } from '../structures';
-import { evaluateVictory, objectiveOutcome, refreshObjectiveStates } from '../victory';
 import type { GameEvent, Objective } from '../types';
-import { makeLevel, u } from './fixtures';
 
 function withEnemyObjectives(level: ReturnType<typeof makeLevel>) {
   level.players[1].objectives = [{ type: 'routEnemies' }];
@@ -19,7 +16,7 @@ describe('composable mission objectives', () => {
       { id: 'rescues', type: 'score', variable: 'rescued', atLeast: 2 },
       { id: 'yard', type: 'control', zone: 'yard' },
     ];
-    const state = createState(
+    const state = testState(
       withEnemyObjectives(
         makeLevel(['.v.'], {
           units: [u(0, 0, 'soldier', 1), u(2, 0, 'ogre', 2)],
@@ -36,12 +33,12 @@ describe('composable mission objectives', () => {
         }),
       ),
     );
-    expect(objectiveOutcome(state, 1, state.players[0].objectives[0])).toBe('success');
-    expect(objectiveOutcome(state, 1, state.players[0].objectives[1])).toBe('pending');
-    expect(objectiveOutcome(state, 1, state.players[0].objectives[2])).toBe('success');
-    expect(objectiveOutcome(state, 1, state.players[0].objectives[3])).toBe('success');
-    damageStructure(state, 'gate', 999, () => {});
-    expect(objectiveOutcome(state, 1, state.players[0].objectives[1])).toBe('success');
+    expect(testObjectiveOutcome(state, 1, state.players[0].objectives[0])).toBe('success');
+    expect(testObjectiveOutcome(state, 1, state.players[0].objectives[1])).toBe('pending');
+    expect(testObjectiveOutcome(state, 1, state.players[0].objectives[2])).toBe('success');
+    expect(testObjectiveOutcome(state, 1, state.players[0].objectives[3])).toBe('success');
+    damageStructure(state, 'gate', 999, TEST_CONTENT);
+    expect(testObjectiveOutcome(state, 1, state.players[0].objectives[1])).toBe('success');
   });
 
   it('keeps sequence stages ordered even if a later condition is already true', () => {
@@ -61,15 +58,15 @@ describe('composable mission objectives', () => {
         ],
       }),
     );
-    const state = createState(level);
-    refreshObjectiveStates(state);
+    const state = testState(level);
+    testRefreshObjectives(state);
     expect(state.players[0].objectiveStates.breach.status).toBe('active');
     expect(state.players[0].objectiveStates.beacon.status).toBe('active');
     expect(state.players[0].objectiveStates.operation.status).toBe('active');
 
     state.scenario.variables.breach = true;
     const events: GameEvent[] = [];
-    refreshObjectiveStates(state, (event) => events.push(event));
+    testRefreshObjectives(state, (event) => events.push(event));
     expect(state.players[0].objectiveStates.breach.status).toBe('completed');
     expect(state.players[0].objectiveStates.beacon.status).toBe('completed');
     expect(state.players[0].objectiveStates.operation.status).toBe('completed');
@@ -77,7 +74,7 @@ describe('composable mission objectives', () => {
   });
 
   it('activates and reveals a hidden objective through the scenario DSL', () => {
-    const state = createState(
+    const state = testState(
       withEnemyObjectives(
         makeLevel(['..'], {
           units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
@@ -97,10 +94,10 @@ describe('composable mission objectives', () => {
     );
     const events: GameEvent[] = [];
     const emit = (event: GameEvent) => events.push(event);
-    applyScenarioEffect(state, { type: 'revealObjective', player: 1, id: 'secret-console' }, emit);
-    applyScenarioEffect(state, { type: 'activateObjective', player: 1, id: 'secret-console' }, emit);
-    applyScenarioEffect(state, { type: 'setVariable', key: 'console', value: true }, emit);
-    const result = evaluateVictory(state, emit);
+    testScenarioEffect(state, { type: 'revealObjective', player: 1, id: 'secret-console' }, emit);
+    testScenarioEffect(state, { type: 'activateObjective', player: 1, id: 'secret-console' }, emit);
+    testScenarioEffect(state, { type: 'setVariable', key: 'console', value: true }, emit);
+    const result = testVictory(state, emit);
     expect(state.players[0].objectiveStates['secret-console']).toMatchObject({
       hidden: false,
       status: 'completed',
@@ -109,7 +106,7 @@ describe('composable mission objectives', () => {
   });
 
   it('uses failOn as a critical loss condition', () => {
-    const state = createState(
+    const state = testState(
       withEnemyObjectives(
         makeLevel(['..'], {
           units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
@@ -125,13 +122,13 @@ describe('composable mission objectives', () => {
         }),
       ),
     );
-    const result = evaluateVictory(state);
+    const result = testVictory(state);
     expect(state.players[0].alive).toBe(false);
     expect(result.team).toBe(2);
   });
 
   it('does not let an optional objective end the battle by itself', () => {
-    const state = createState(
+    const state = testState(
       withEnemyObjectives(
         makeLevel(['..'], {
           units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
@@ -147,7 +144,7 @@ describe('composable mission objectives', () => {
         }),
       ),
     );
-    const result = evaluateVictory(state);
+    const result = testVictory(state);
     expect(state.players[0].objectiveStates.bonus.status).toBe('completed');
     expect(result.team).toBeNull();
   });

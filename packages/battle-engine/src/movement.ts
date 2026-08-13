@@ -8,7 +8,7 @@ import { commanderAuraFor } from './commanders';
 import { formationMovementDelta } from './formations';
 import type { WeaponDef } from './types';
 import type { Coord, GameState, Unit } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 
 export interface ReachableTile {
   index: number;
@@ -33,7 +33,7 @@ export interface MoveField {
  * Dijkstra over entry costs. Allies can be passed through (configurable), enemy
  * units block entirely, and only empty tiles are valid stopping points.
  */
-export function computeMoveField(s: GameState, unit: Unit, content: ContentCatalog = GlobalContentCatalog): MoveField {
+export function computeMoveField(s: GameState, unit: Unit, content: ContentCatalog): MoveField {
   const def = content.units.get(unit.type);
   const map = s.map;
   const battlefield = new Battlefield(s, content);
@@ -132,7 +132,7 @@ export function attackTilesFrom(
   unit: Unit,
   from: Coord,
   weapon: WeaponDef | undefined = undefined,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): Coord[] {
   const resolved = weapon ?? primaryWeapon(unit, content);
   if (resolved.maxRange <= 0) return [];
@@ -141,7 +141,7 @@ export function attackTilesFrom(
   );
 }
 
-export function hasDirectLineOfSight(state: GameState, from: Coord, target: Coord, content: ContentCatalog = GlobalContentCatalog): boolean {
+export function hasDirectLineOfSight(state: GameState, from: Coord, target: Coord, content: ContentCatalog): boolean {
   const trace = lineBetween(from, target);
   const battlefield = new Battlefield(state, content);
   const fromEye = battlefield.cell(from).elevation + 1;
@@ -161,7 +161,12 @@ export function hasDirectLineOfSight(state: GameState, from: Coord, target: Coor
  * always, and from each reachable stop when the unit may attack after moving.
  * Drives the "enemy threat range" overlay.
  */
-export function threatTiles(s: GameState, unit: Unit, field?: MoveField, content: ContentCatalog = GlobalContentCatalog): Set<number> {
+export function threatTiles(
+  s: GameState,
+  unit: Unit,
+  content: ContentCatalog,
+  field?: MoveField,
+): Set<number> {
   const out = new Set<number>();
   const add = (c: Coord) => out.add(idx(s.map, c.x, c.y));
 
@@ -186,7 +191,7 @@ export function targetsFrom(
   unit: Unit,
   from: Coord,
   weapon: WeaponDef | undefined = undefined,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): Unit[] {
   const out: Unit[] = [];
   for (const c of attackTilesFrom(s, unit, from, weapon, content)) {
@@ -202,7 +207,7 @@ export function attackTargetCoords(
   unit: Unit,
   from: Coord,
   weapon: WeaponDef | undefined = undefined,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): Coord[] {
   const out: Coord[] = [];
   for (const cell of attackTilesFrom(state, unit, from, weapon, content)) {
@@ -219,7 +224,7 @@ export function attackTargetCoords(
 }
 
 /** Wounded allies adjacent to `from` (support-healing targeting). */
-export function healTargetsFrom(s: GameState, unit: Unit, from: Coord, content: ContentCatalog = GlobalContentCatalog): Unit[] {
+export function healTargetsFrom(s: GameState, unit: Unit, from: Coord, content: ContentCatalog): Unit[] {
   const out: Unit[] = [];
   for (const c of ring(s.map, from, 1, 1)) {
     const other = unitAt(s, c.x, c.y);

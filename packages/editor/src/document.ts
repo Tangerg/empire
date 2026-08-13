@@ -1,7 +1,6 @@
-import { Terrains } from '@empire/battle-engine/data/terrain';
-import { UnitTypes } from '@empire/battle-engine/data/units';
 import { idx } from '@empire/battle-engine/grid';
 import { mapFromLevel, terrainRows } from '@empire/battle-engine/mapio';
+import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import type {
   Coord,
   Direction,
@@ -42,6 +41,8 @@ interface SerializedEditorDocument {
  */
 export class EditorDocument {
   constructor(
+    /** Catalog this document is authored against; never an ambient default. */
+    public readonly content: ContentCatalog,
     public id: string,
     public name: string,
     public author: string,
@@ -53,13 +54,14 @@ export class EditorDocument {
     public victory: Objective[],
   ) {}
 
-  static fromLevel(level: LevelData): EditorDocument {
+  static fromLevel(content: ContentCatalog, level: LevelData): EditorDocument {
     return new EditorDocument(
+      content,
       level.id,
       level.name,
       level.author ?? '',
       level.description ?? '',
-      mapFromLevel(level),
+      mapFromLevel(level, content),
       level.units.map((unit) => ({ ...unit })),
       level.players.map((player) => ({
         ...player,
@@ -73,9 +75,10 @@ export class EditorDocument {
     );
   }
 
-  static deserialize(serialized: string): EditorDocument {
+  static deserialize(content: ContentCatalog, serialized: string): EditorDocument {
     const value = JSON.parse(serialized) as SerializedEditorDocument;
     return new EditorDocument(
+      content,
       value.id,
       value.name,
       value.author,
@@ -100,7 +103,7 @@ export class EditorDocument {
     const index = this.indexAt(at);
     if (this.map.tiles[index] === terrain) return;
     this.map.tiles[index] = terrain;
-    if (!Terrains.get(terrain).capturable) this.map.owners[index] = 0;
+    if (!this.content.terrains.get(terrain).capturable) this.map.owners[index] = 0;
   }
 
   floodFill(from: Coord, terrain: TerrainId): void {
@@ -136,7 +139,7 @@ export class EditorDocument {
 
   placeUnit(at: Coord, unit: UnitTypeId, owner: number): void {
     this.indexAt(at);
-    UnitTypes.get(unit);
+    this.content.units.get(unit);
     this.requireOwner(owner);
     this.removeUnitAt(at);
     this.units.push({ x: at.x, y: at.y, unit, owner });
@@ -149,7 +152,7 @@ export class EditorDocument {
   setOwner(at: Coord, owner: number): void {
     const index = this.indexAt(at);
     this.requireOwner(owner);
-    if (Terrains.get(this.map.tiles[index]).capturable) this.map.owners[index] = owner;
+    if (this.content.terrains.get(this.map.tiles[index]).capturable) this.map.owners[index] = owner;
   }
 
   toggleCliff(from: Coord, to: Coord): void {
@@ -248,7 +251,7 @@ export class EditorDocument {
 
   private owners(): { x: number; y: number; owner: number }[] {
     return this.map.owners.flatMap((owner, index) =>
-      Terrains.get(this.map.tiles[index]).capturable
+      this.content.terrains.get(this.map.tiles[index]).capturable
         ? [{ x: index % this.map.width, y: Math.floor(index / this.map.width), owner }]
         : [],
     );

@@ -31,7 +31,7 @@ export interface TacticalSpace {
 }
 
 export class DefaultTacticalSpace implements TacticalSpace {
-  constructor(readonly content: ContentCatalog = GlobalContentCatalog) {}
+  constructor(readonly content: ContentCatalog) {}
 
   moveField(state: GameState, unit: Unit): MoveField {
     return computeMoveField(state, unit, this.content);
@@ -42,7 +42,7 @@ export class DefaultTacticalSpace implements TacticalSpace {
   }
 
   threatOf(state: GameState, unit: Unit, field?: MoveField): Set<number> {
-    return threatTiles(state, unit, field, this.content);
+    return threatTiles(state, unit, this.content, field);
   }
 
   attackTargets(state: GameState, unit: Unit, from: Coord, weapon: WeaponDef): Coord[] {
@@ -66,4 +66,4 @@ export class DefaultTacticalSpace implements TacticalSpace {
   }
 }
 
-export const CoreTacticalSpace: TacticalSpace = new DefaultTacticalSpace();
+export const CoreTacticalSpace: TacticalSpace = new DefaultTacticalSpace(GlobalContentCatalog);

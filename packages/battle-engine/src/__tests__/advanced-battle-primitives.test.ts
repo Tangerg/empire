@@ -6,11 +6,10 @@ import { cloneContentCatalog, GlobalContentCatalog } from '../content-pack';
 import { defineCareer } from '../content-builders';
 import { createBattleEngine } from '../engine';
 import { idx } from '../grid';
-import { applyScenarioEffect } from '../scenario';
-import { areAllies, cloneState, createState } from '../state';
+import { areAllies, cloneState } from '../state';
 import { CoreTacticalSpace } from '../tactical-space';
 import type { GameEvent } from '../types';
-import { makeLevel, u } from './fixtures';
+import { TEST_CONTENT, makeLevel, testScenarioEffect, testState, u } from './fixtures';
 
 const collect = () => {
   const events: GameEvent[] = [];
@@ -19,13 +18,13 @@ const collect = () => {
 
 describe('advanced battle-local primitives', () => {
   it('owns reinforcement, withdrawal, corpse, revival and team changes in the battle state', () => {
-    const state = createState(makeLevel(['....'], {
+    const state = testState(makeLevel(['....'], {
       units: [u(0, 0, 'soldier', 1), u(3, 0, 'soldier', 2)],
       scenario: { zones: [{ id: 'reserve', cells: [{ x: 1, y: 0 }] }] },
     }));
     const log = collect();
 
-    applyScenarioEffect(state, {
+    testScenarioEffect(state, {
       type: 'spawnUnits',
       reason: 'summon',
       ready: true,
@@ -35,14 +34,14 @@ describe('advanced battle-local primitives', () => {
     expect(summoned.done).toBe(false);
     expect(log.events).toContainEqual(expect.objectContaining({ type: 'unitSpawned', reason: 'summon' }));
 
-    applyScenarioEffect(state, {
+    testScenarioEffect(state, {
       type: 'withdrawUnits', selector: { ids: [summoned.id] }, leaveCorpse: true,
     }, log.emit);
     const corpse = state.markers[0];
     expect(state.units.some((unit) => unit.id === summoned.id)).toBe(false);
     expect(corpse).toMatchObject({ kind: 'corpse', owner: 1, at: { x: 1, y: 0 } });
 
-    applyScenarioEffect(state, {
+    testScenarioEffect(state, {
       type: 'reviveMarkers', selector: { ids: [corpse.id] }, hpPercent: 0.25,
     }, log.emit);
     const revived = state.units.find((unit) => unit.id === summoned.id)!;
@@ -50,7 +49,7 @@ describe('advanced battle-local primitives', () => {
     expect(revived.done).toBe(true);
     expect(state.markers).toEqual([]);
 
-    applyScenarioEffect(state, { type: 'setPlayerTeam', player: 2, team: 1 }, log.emit);
+    testScenarioEffect(state, { type: 'setPlayerTeam', player: 2, team: 1 }, log.emit);
     expect(areAllies(state, 1, 2)).toBe(true);
 
     const cloned = cloneState(state);
@@ -59,17 +58,17 @@ describe('advanced battle-local primitives', () => {
   });
 
   it('changes elevation, cliffs and directional cover as first-class spatial layers', () => {
-    const state = createState(makeLevel(['...'], {
+    const state = testState(makeLevel(['...'], {
       units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)],
       scenario: { zones: [{ id: 'ridge', cells: [{ x: 1, y: 0 }] }] },
     }));
     const log = collect();
 
-    applyScenarioEffect(state, { type: 'setElevation', zone: 'ridge', value: 2 }, log.emit);
-    applyScenarioEffect(state, {
+    testScenarioEffect(state, { type: 'setElevation', zone: 'ridge', value: 2 }, log.emit);
+    testScenarioEffect(state, {
       type: 'setCliffs', blocked: true, edges: [{ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }],
     }, log.emit);
-    applyScenarioEffect(state, {
+    testScenarioEffect(state, {
       type: 'setDirectionalCover', covers: [{ at: { x: 1, y: 0 }, sides: { west: 'full' } }],
     }, log.emit);
 
@@ -82,22 +81,22 @@ describe('advanced battle-local primitives', () => {
   });
 
   it('uses one forced-movement service for push, teleport and collision death', () => {
-    const state = createState(makeLevel(['....'], {
+    const state = testState(makeLevel(['....'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
       scenario: { zones: [{ id: 'portal', cells: [{ x: 2, y: 0 }] }] },
     }));
     const target = state.units[1];
     const log = collect();
 
-    applyScenarioEffect(state, {
+    testScenarioEffect(state, {
       type: 'forceMove', selector: { ids: [target.id] }, mode: 'push', source: { x: 0, y: 0 }, distance: 1,
     }, log.emit);
     expect(target.x).toBe(2);
 
-    applyScenarioEffect(state, { type: 'teleportUnits', selector: { ids: [target.id] }, zone: 'portal' }, log.emit);
+    testScenarioEffect(state, { type: 'teleportUnits', selector: { ids: [target.id] }, zone: 'portal' }, log.emit);
     expect(target.x).toBe(2);
 
-    applyScenarioEffect(state, {
+    testScenarioEffect(state, {
       type: 'forceMove',
       selector: { ids: [target.id] },
       mode: 'push',
@@ -111,7 +110,7 @@ describe('advanced battle-local primitives', () => {
   });
 
   it('models pre-battle deployment as authoritative actions before turn one', () => {
-    const state = createState(makeLevel(['....'], {
+    const state = testState(makeLevel(['....'], {
       units: [
         { ...u(0, 0, 'soldier', 1), key: 'left' },
         { ...u(1, 0, 'rogue', 1), key: 'right' },
@@ -137,8 +136,8 @@ describe('advanced battle-local primitives', () => {
 
 describe('instance-isolated content and ability-aware AI', () => {
   it('resolves every runtime definition through the engine content catalog', () => {
-    const low = cloneContentCatalog();
-    const high = cloneContentCatalog();
+    const low = cloneContentCatalog(TEST_CONTENT);
+    const high = cloneContentCatalog(TEST_CONTENT);
     const globalPower = GlobalContentCatalog.weapons.get('soldier_sword').power;
     low.weapons.override('soldier_sword', { power: 5 });
     high.weapons.override('soldier_sword', { power: 90 });
@@ -157,7 +156,7 @@ describe('instance-isolated content and ability-aware AI', () => {
   });
 
   it('enumerates isolated weapons and progression without falling back to global content', () => {
-    const content = cloneContentCatalog();
+    const content = cloneContentCatalog(TEST_CONTENT);
     const baseWeapon = content.weapons.get('soldier_sword');
     const sandboxWeapon = { ...structuredClone(baseWeapon), id: 'sandbox_sword', name: 'Sandbox Sword' };
     content.weapons.define(sandboxWeapon);
@@ -191,7 +190,7 @@ describe('instance-isolated content and ability-aware AI', () => {
   });
 
   it('applies data-defined forced movement through an isolated weapon catalog', () => {
-    const content = cloneContentCatalog();
+    const content = cloneContentCatalog(TEST_CONTENT);
     const sword = content.weapons.get('soldier_sword');
     content.weapons.override(sword.id, {
       hitEffects: [...sword.hitEffects, { type: 'forcedMove', mode: 'push', distance: 1 }],
@@ -218,7 +217,7 @@ describe('instance-isolated content and ability-aware AI', () => {
       tags: ['support'],
       targets: () => [],
       usable: () => true,
-      execute: ({ state }, _target, emit) => {
+      execute: (_rules, { state }, _target, emit) => {
         state.scenario.variables.rallied = true;
         emit({ type: 'scenarioSignal', signal: 'rallied' });
       },

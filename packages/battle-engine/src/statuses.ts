@@ -1,12 +1,12 @@
 import { BattleAggregate } from './domain/battle-aggregate';
 import type { GameEvent, GameState, StatusDef, StatusId, StatusModifiers, Unit } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 import { resolveMoraleAfterDamage } from './morale';
 import { emitTransportLossEvents } from './transports';
 
 export { Statuses } from './data/statuses';
 
-export const statusDef = (id: StatusId, content: ContentCatalog = GlobalContentCatalog): StatusDef =>
+export const statusDef = (id: StatusId, content: ContentCatalog): StatusDef =>
   content.statuses.get(id);
 
 export class StatusLifecycleContext {
@@ -15,8 +15,8 @@ export class StatusLifecycleContext {
     readonly unit: Unit,
     readonly status: Unit['statuses'][number],
     readonly emit: (event: GameEvent) => void,
+    readonly content: ContentCatalog,
     private readonly onDeath?: (unitId: number) => void,
-    readonly content: ContentCatalog = GlobalContentCatalog,
   ) {}
 
   damage(requested: number, nonlethal = false): number {
@@ -81,7 +81,7 @@ export const StatusBehaviors = new StatusBehaviorRegistry();
 export function blockedAbilityStatus(
   unit: Unit,
   tags: string[],
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): StatusId | null {
   if (tags.length === 0) return null;
   for (const instance of unit.statuses) {
@@ -93,7 +93,7 @@ export function blockedAbilityStatus(
 
 export function combinedStatusModifiers(
   unit: Unit,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): Required<Omit<StatusModifiers, 'cannotCapture'>> & {
   cannotCapture: boolean;
 } {
@@ -122,9 +122,9 @@ export function addStatus(
   unit: Unit,
   id: StatusId,
   remaining: number,
+  content: ContentCatalog,
   emit?: (event: GameEvent) => void,
   sourceUnitId?: number,
-  content: ContentCatalog = GlobalContentCatalog,
 ): void {
   if (!Number.isInteger(remaining) || remaining < 1) throw new Error('status duration must be >= 1');
   const def = statusDef(id, content);
@@ -168,26 +168,35 @@ export function removeStatus(
   return true;
 }
 
+/**
+ * Port declared by this module. The composition-level `BattleRuleServices`
+ * satisfies it structurally, so neither side needs to import the other.
+ */
+export interface StatusRules {
+  readonly content: ContentCatalog;
+  readonly statusBehaviors: StatusBehaviorRegistry;
+}
+
 /** Resolves owner-turn-start periodic effects and duration expiry. */
 export function resolveTurnStartStatuses(
+  rules: StatusRules,
   state: GameState,
   owner: number,
   emit: (event: GameEvent) => void,
   onDeath?: (unitId: number) => void,
-  behaviors: StatusBehaviorRegistry = StatusBehaviors,
-  content: ContentCatalog = GlobalContentCatalog,
 ): void {
+  const content = rules.content;
   for (const unit of state.units.filter((candidate) => candidate.owner === owner)) {
     for (const instance of [...unit.statuses]) {
       const def = statusDef(instance.id, content);
-      const context = new StatusLifecycleContext(state, unit, instance, emit, onDeath, content);
+      const context = new StatusLifecycleContext(state, unit, instance, emit, content, onDeath);
       if (def.periodic?.timing === 'ownerTurnStart') {
         const maxHp = content.units.get(unit.type).maxHp;
         const requested = Math.max(1, Math.round(maxHp * def.periodic.maxHpFraction * instance.stacks));
         context.damage(requested, def.periodic.nonlethal);
         if (!state.units.some((candidate) => candidate.id === unit.id)) break;
       }
-      behaviors.ownerTurnStart(context);
+      rules.statusBehaviors.ownerTurnStart(context);
       if (!state.units.some((candidate) => candidate.id === unit.id)) break;
       instance.remaining--;
       if (instance.remaining <= 0 && state.units.some((candidate) => candidate.id === unit.id)) {

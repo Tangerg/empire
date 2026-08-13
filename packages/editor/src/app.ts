@@ -1,11 +1,10 @@
 import { icon } from '@empire/game-ui/art/icons';
 import { loadCustomLevels, saveCustomLevel, stashPlaytest } from '@empire/game-ui/application/level-storage';
 import { terrainSwatch } from '@empire/game-ui/art/terrain';
+import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import { unitIcon } from '@empire/game-ui/art/units';
 import { TEAM_COLORS } from '@empire/game-ui/art/palette';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
-import { Terrains } from '@empire/battle-engine/data/terrain';
-import { UnitTypes } from '@empire/battle-engine/data/units';
 import { idx } from '@empire/battle-engine/grid';
 import {
   emptyLevel,
@@ -35,7 +34,7 @@ type Tool = 'terrain' | 'rect' | 'fill' | 'elevation' | 'cliff' | 'cover' | 'uni
 const DRAFT_KEY = 'empire.editorDraft';
 
 const playerFunds = (player: PlayerConfig) => player.resources[FUNDS_RESOURCE]?.current ?? 0;
-const unitRecruitCost = (id: string) => UnitTypes.get(id).recruitCosts
+const unitRecruitCost = (content: ContentCatalog, id: string) => content.units.get(id).recruitCosts
   .map((cost) => `${cost.resource} ${cost.amount}`)
   .join(' · ') || '不可招募';
 const fundsGrant = (rules: Partial<RuleSet>) =>
@@ -88,8 +87,11 @@ export class EditorApp {
   private readonly rightEl = document.createElement('aside');
   private readonly scroller = document.createElement('div');
 
-  constructor(level: LevelData) {
-    this.doc = EditorDocument.fromLevel(level);
+  constructor(
+    private readonly content: ContentCatalog,
+    level: LevelData,
+  ) {
+    this.doc = EditorDocument.fromLevel(content, level);
     this.ensureOwnerSelection();
     this.root.className = 'editor-root';
     this.topEl.className = 'topbar editor-top';
@@ -103,7 +105,7 @@ export class EditorApp {
         this.cursor = c;
         this.paintBoard();
       },
-    });
+    }, content);
     this.scroller.append(this.board.el);
 
     const stage = document.createElement('div');
@@ -143,7 +145,7 @@ export class EditorApp {
     const prev = this.undoStack.pop();
     if (!prev) return;
     this.redoStack.push(this.doc.serialize());
-    this.replaceDocument(EditorDocument.deserialize(prev));
+    this.replaceDocument(EditorDocument.deserialize(this.content, prev));
     this.renderAll();
   }
 
@@ -151,7 +153,7 @@ export class EditorApp {
     const next = this.redoStack.pop();
     if (!next) return;
     this.undoStack.push(this.doc.serialize());
-    this.replaceDocument(EditorDocument.deserialize(next));
+    this.replaceDocument(EditorDocument.deserialize(this.content, next));
     this.renderAll();
   }
 
@@ -326,7 +328,7 @@ export class EditorApp {
     if (u) {
       this.unitType = u.unit;
       this.owner = u.owner;
-    } else if (Terrains.get(this.terrain).capturable) {
+    } else if (this.content.terrains.get(this.terrain).capturable) {
       this.owner = this.doc.map.owners[i] || this.owner;
     }
     this.renderLeft();
@@ -381,7 +383,7 @@ export class EditorApp {
     }
     const n = Number(ev.key);
     if (n >= 1 && n <= 9) {
-      const ids = Terrains.ids();
+      const ids = this.content.terrains.ids();
       if (ids[n - 1]) {
         this.terrain = ids[n - 1];
         this.tool = 'terrain';
@@ -399,7 +401,7 @@ export class EditorApp {
 
   private save(): void {
     const level = this.exportLevel();
-    const errors = validateLevel(level).filter((i) => i.severity === 'error');
+    const errors = validateLevel(level, this.content).filter((i) => i.severity === 'error');
     saveCustomLevel(level);
     this.autosave();
     this.status = errors.length
@@ -439,9 +441,9 @@ export class EditorApp {
       if (!file) return;
       try {
         const level = normaliseLevel(JSON.parse(await file.text()));
-        mapFromLevel(level); // fail fast on a broken terrain grid
+        mapFromLevel(level, this.content); // fail fast on a broken terrain grid
         this.snapshot();
-        this.replaceDocument(EditorDocument.fromLevel(level));
+        this.replaceDocument(EditorDocument.fromLevel(this.content, level));
         this.status = `已载入 ${level.name}`;
         this.renderAll();
       } catch (e) {
@@ -454,7 +456,7 @@ export class EditorApp {
 
   private playtest(): void {
     const level = this.exportLevel();
-    const errors = validateLevel(level).filter((i) => i.severity === 'error');
+    const errors = validateLevel(level, this.content).filter((i) => i.severity === 'error');
     if (errors.length) {
       this.status = `无法试玩：${errors[0].message}`;
       this.renderAll();
@@ -512,7 +514,7 @@ export class EditorApp {
   }
 
   private renderLeft(): void {
-    const terrainList = Terrains.all();
+    const terrainList = this.content.terrains.all();
     this.leftEl.innerHTML = `
       <section class="card">
         <h3>地形</h3>
@@ -559,10 +561,10 @@ export class EditorApp {
       <section class="card">
         <h3>单位</h3>
         <div class="unit-grid">
-          ${UnitTypes.all()
+          ${this.content.units.all()
             .map(
               (d) => `<button class="unit-chip ${this.unitType === d.id ? 'active' : ''}"
-                data-act="unit" data-arg="${d.id}" title="${escapeHtml(d.name)} · ${escapeHtml(unitRecruitCost(d.id))}">
+                data-act="unit" data-arg="${d.id}" title="${escapeHtml(d.name)} · ${escapeHtml(unitRecruitCost(this.content, d.id))}">
                 ${unitIcon(d.id, this.colorOf(this.owner), 30)}
                 <span>${escapeHtml(d.name)}</span>
               </button>`,
@@ -585,7 +587,7 @@ export class EditorApp {
 
   private renderRight(): void {
     const level = this.exportLevel();
-    const issues = validateLevel(level);
+    const issues = validateLevel(level, this.content);
     const rules = this.doc.rules;
     this.rightEl.innerHTML = `
       <section class="card">
@@ -766,7 +768,7 @@ export class EditorApp {
         case 'clear':
           if (confirm('清空当前地图？')) {
             this.snapshot();
-            this.replaceDocument(EditorDocument.fromLevel(emptyLevel(this.doc.map.width, this.doc.map.height)));
+            this.replaceDocument(EditorDocument.fromLevel(this.content, emptyLevel(this.doc.map.width, this.doc.map.height)));
             this.renderAll();
           }
           break;
@@ -932,7 +934,7 @@ export class EditorApp {
             : loadCustomLevels().find((s) => s.level.id === levelId)?.level;
         if (level) {
           this.snapshot();
-          this.replaceDocument(EditorDocument.fromLevel(level));
+          this.replaceDocument(EditorDocument.fromLevel(this.content, level));
           this.status = `已载入 ${level.name}`;
           this.renderAll();
         }
@@ -972,7 +974,7 @@ function rectTiles(a: Coord, b: Coord): Coord[] {
 
 /* ------------------------------------------------------------ level loading */
 
-export function initialLevel(): LevelData {
+export function initialLevel(content: ContentCatalog): LevelData {
   const params = new URLSearchParams(location.search);
   const wanted = params.get('level');
   if (wanted) {
@@ -985,7 +987,7 @@ export function initialLevel(): LevelData {
   if (draft) {
     try {
       const level = normaliseLevel(JSON.parse(draft));
-      mapFromLevel(level);
+      mapFromLevel(level, content);
       return level;
     } catch {
       /* fall through to a blank map */

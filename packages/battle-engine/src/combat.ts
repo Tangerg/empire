@@ -6,21 +6,32 @@ import { commanderAuraFor } from './commanders';
 import { areAllies } from './state';
 import { player } from './state';
 import { UnitEntity } from './domain/unit-entity';
-import {
-  DefaultCombatModifierPipeline,
-  type CombatModifier,
-  type CombatModifierPipeline,
-} from './combat-modifiers';
+import { type CombatModifier, type CombatModifierPipeline } from './combat-modifiers';
 import type { Coord, GameEvent, GameState, PlayerState, StructureState, Unit, WeaponDef, WeaponId } from './types';
 import {
   type BattleResourceSystem,
   canAffordTransactions,
-  DefaultBattleResources,
   transactionSubject,
 } from './resources';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import type { ContentCatalog } from './content-pack';
 
 export { MAX_MITIGATION } from './combat-modifiers';
+
+/**
+ * Ports declared by this module, not imposed on it.
+ *
+ * Dependency inversion in the consumer's direction: combat states the narrow
+ * capability set it needs, and the composition-level `BattleRuleServices`
+ * satisfies it structurally without either side importing the other.
+ */
+export interface WeaponRules {
+  readonly content: ContentCatalog;
+  readonly resources: BattleResourceSystem;
+}
+
+export interface CombatRules extends WeaponRules {
+  readonly combatModifiers: CombatModifierPipeline;
+}
 
 export interface DamageBreakdown {
   weapon: WeaponId;
@@ -80,64 +91,78 @@ export interface StructureCombatForecast {
   destroyed: boolean;
 }
 
-const hpRatio = (u: Unit, content: ContentCatalog = GlobalContentCatalog) =>
-  u.hp / content.units.get(u.type).maxHp;
+/** Where a strike happens. Absent coordinates default to the units' tiles. */
+export interface StrikeGeometry {
+  attackerAt?: Coord;
+  defenderAt?: Coord;
+  weapon?: WeaponId;
+}
 
-export function unitWeapons(unit: Unit, content: ContentCatalog = GlobalContentCatalog): WeaponDef[] {
+export interface ForecastOptions {
+  /** Tile the attacker strikes from; defaults to its current tile. */
+  attackFrom?: Coord;
+  weapon?: WeaponId;
+}
+
+export interface StructureAttackOptions {
+  weapon?: WeaponId;
+}
+
+const hpRatio = (content: ContentCatalog, u: Unit) => u.hp / content.units.get(u.type).maxHp;
+
+export function unitWeapons(unit: Unit, content: ContentCatalog): WeaponDef[] {
   return content.units.get(unit.type).weapons.map((id) => content.weapons.get(id));
 }
 
 export function isWeaponReady(
+  rules: WeaponRules,
   unit: Unit,
   weapon: WeaponDef | WeaponId,
-  resources: BattleResourceSystem = DefaultBattleResources,
   owner?: PlayerState,
-  content: ContentCatalog = GlobalContentCatalog,
 ): boolean {
   const id = typeof weapon === 'string' ? weapon : weapon.id;
-  if (!content.units.get(unit.type).weapons.includes(id)) return false;
-  const definition = typeof weapon === 'string' ? content.weapons.get(weapon) : weapon;
+  if (!rules.content.units.get(unit.type).weapons.includes(id)) return false;
+  const definition = typeof weapon === 'string' ? rules.content.weapons.get(weapon) : weapon;
   const context = { player: owner, unit, weapon: definition.id };
   return new UnitEntity(unit).canUseWeapon(definition) &&
-    canAffordTransactions(resources, definition.resourceRequirements, context) &&
-    canAffordTransactions(resources, definition.resourceCosts, context);
+    canAffordTransactions(rules.resources, definition.resourceRequirements, context) &&
+    canAffordTransactions(rules.resources, definition.resourceCosts, context);
 }
 
-export function primaryWeapon(unit: Unit, content: ContentCatalog = GlobalContentCatalog): WeaponDef {
+export function primaryWeapon(unit: Unit, content: ContentCatalog): WeaponDef {
   const weapon = unitWeapons(unit, content)[0];
   if (!weapon) throw new Error(`${content.units.get(unit.type).name} has no weapon`);
   return weapon;
 }
 
 export function availableWeapon(
+  rules: WeaponRules,
   unit: Unit,
   id: WeaponId,
-  resources: BattleResourceSystem = DefaultBattleResources,
   owner?: PlayerState,
-  content: ContentCatalog = GlobalContentCatalog,
 ): WeaponDef {
-  if (!content.units.get(unit.type).weapons.includes(id)) throw new Error(`${content.units.get(unit.type).name} cannot use weapon "${id}"`);
-  const definition = content.weapons.get(id);
-  if (!isWeaponReady(unit, definition, resources, owner, content)) throw new Error(`weapon "${id}" is not ready`);
+  const unitDef = rules.content.units.get(unit.type);
+  if (!unitDef.weapons.includes(id)) throw new Error(`${unitDef.name} cannot use weapon "${id}"`);
+  const definition = rules.content.weapons.get(id);
+  if (!isWeaponReady(rules, unit, definition, owner)) throw new Error(`weapon "${id}" is not ready`);
   return definition;
 }
 
 /** Commits one successful strike. Forecasting never mutates this state. */
 export function consumeWeapon(
+  rules: WeaponRules,
   state: GameState,
   unit: Unit,
   id: WeaponId,
   emit: (event: GameEvent) => void = () => {},
-  resources: BattleResourceSystem = DefaultBattleResources,
-  content: ContentCatalog = GlobalContentCatalog,
 ): void {
   const owner = player(state, unit.owner);
-  const weapon = availableWeapon(unit, id, resources, owner, content);
+  const weapon = availableWeapon(rules, unit, id, owner);
   const transactionContext = { player: owner, unit, weapon: weapon.id };
   for (const cost of weapon.resourceCosts) {
     const subject = transactionSubject(cost, transactionContext);
-    const amount = resources.spend(cost.resource, subject, cost.amount);
-    const current = resources.balance(cost.resource, subject);
+    const amount = rules.resources.spend(cost.resource, subject, cost.amount);
+    const current = rules.resources.balance(cost.resource, subject);
     if (current === null) continue;
     const eventSubject = subject.kind === 'player'
       ? { kind: 'player' as const, id: subject.player.id }
@@ -160,7 +185,7 @@ export function advanceWeaponCooldowns(unit: Unit): void {
   new UnitEntity(unit).advanceWeaponCooldowns();
 }
 
-export function terrainDefenseAt(s: GameState, c: Coord, content: ContentCatalog = GlobalContentCatalog): number {
+export function terrainDefenseAt(s: GameState, c: Coord, content: ContentCatalog): number {
   return new Battlefield(s, content).cell(c).defense;
 }
 
@@ -178,21 +203,20 @@ function weaponTargetBonus(weapon: WeaponDef, tags: string[]): { multiplier: num
  *   damage = attack x effectiveness x (0.5 + 0.5 x hp%) x (1 - mitigation)
  */
 export function computeDamage(
+  rules: CombatRules,
   s: GameState,
   attacker: Unit,
   defender: Unit,
-  defenderAt: Coord = { x: defender.x, y: defender.y },
-  weaponId: WeaponId | undefined = undefined,
-  pipeline: CombatModifierPipeline = DefaultCombatModifierPipeline,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  attackerAt: Coord = { x: attacker.x, y: attacker.y },
-  content: ContentCatalog = GlobalContentCatalog,
+  geometry: StrikeGeometry = {},
 ): DamageBreakdown {
-  const resolvedWeaponId = weaponId ?? primaryWeapon(attacker, content).id;
-  const weapon = availableWeapon(attacker, resolvedWeaponId, resources, player(s, attacker.owner), content);
+  const content = rules.content;
+  const attackerAt = geometry.attackerAt ?? { x: attacker.x, y: attacker.y };
+  const defenderAt = geometry.defenderAt ?? { x: defender.x, y: defender.y };
+  const resolvedWeaponId = geometry.weapon ?? primaryWeapon(attacker, content).id;
+  const weapon = availableWeapon(rules, attacker, resolvedWeaponId, player(s, attacker.owner));
   const base = weapon.power;
   const battlefield = new Battlefield(s, content);
-  const result = pipeline.evaluate(base, {
+  const result = rules.combatModifiers.evaluate(base, {
     state: s,
     attacker,
     attackerAt,
@@ -227,19 +251,19 @@ export function computeDamage(
 }
 
 export function forecastStructure(
+  rules: WeaponRules,
   state: GameState,
   attacker: Unit,
   structure: StructureState,
-  weaponId: WeaponId | undefined = undefined,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  content: ContentCatalog = GlobalContentCatalog,
+  options: StructureAttackOptions = {},
 ): StructureCombatForecast {
-  const resolvedWeaponId = weaponId ?? primaryWeapon(attacker, content).id;
-  const weapon = availableWeapon(attacker, resolvedWeaponId, resources, player(state, attacker.owner), content);
+  const content = rules.content;
+  const resolvedWeaponId = options.weapon ?? primaryWeapon(attacker, content).id;
+  const weapon = availableWeapon(rules, attacker, resolvedWeaponId, player(state, attacker.owner));
   const def = content.structures.get(structure.type);
   const statusAttackMultiplier = combinedStatusModifiers(attacker, content).attackMultiplier;
   const commanderAttackMultiplier = commanderAuraFor(state, attacker).attackMultiplier;
-  const strength = 0.5 + 0.5 * hpRatio(attacker, content);
+  const strength = 0.5 + 0.5 * hpRatio(content, attacker);
   const targetBonus = weaponTargetBonus(weapon, def.tags);
   const rawDamage = Math.max(
     1,
@@ -268,10 +292,8 @@ export function forecastStructure(
 }
 
 /** Can `unit`, standing at `from`, reach `target` with its weapon? */
-export function canReach(unit: Unit, from: Coord, target: Coord, content: ContentCatalog = GlobalContentCatalog): boolean {
-  const weapon = primaryWeapon(unit, content);
-  const d = dist(from, target);
-  return d >= weapon.minRange && d <= weapon.maxRange;
+export function canReach(unit: Unit, from: Coord, target: Coord, content: ContentCatalog): boolean {
+  return canReachWithWeapon(primaryWeapon(unit, content), from, target);
 }
 
 export function canReachWithWeapon(weapon: WeaponDef, from: Coord, target: Coord): boolean {
@@ -280,24 +302,29 @@ export function canReachWithWeapon(weapon: WeaponDef, from: Coord, target: Coord
 }
 
 function bestCounterWeapon(
+  rules: CombatRules,
   state: GameState,
   defender: Unit,
   attacker: Unit,
   defenderAt: Coord,
   attackerAt: Coord,
   conserve: boolean,
-  pipeline: CombatModifierPipeline,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): { weapon: WeaponDef; damage: DamageBreakdown } | null {
-  const candidates = unitWeapons(defender, content)
+  const owner = player(state, defender.owner);
+  const candidates = unitWeapons(defender, rules.content)
     .filter((weapon) => {
       if (conserve && (weapon.resourceCosts.length > 0 || weapon.cooldown > 0)) return false;
-      return weapon.canCounter && isWeaponReady(defender, weapon, resources, player(state, defender.owner), content) && canReachWithWeapon(weapon, defenderAt, attackerAt);
+      return weapon.canCounter &&
+        isWeaponReady(rules, defender, weapon, owner) &&
+        canReachWithWeapon(weapon, defenderAt, attackerAt);
     })
     .map((weapon) => ({
       weapon,
-      damage: computeDamage(state, defender, attacker, attackerAt, weapon.id, pipeline, resources, defenderAt, content),
+      damage: computeDamage(rules, state, defender, attacker, {
+        attackerAt: defenderAt,
+        defenderAt: attackerAt,
+        weapon: weapon.id,
+      }),
     }))
     .sort((a, b) => b.damage.damage - a.damage.damage || a.weapon.id.localeCompare(b.weapon.id));
   return candidates[0] ?? null;
@@ -342,20 +369,22 @@ function applyReactionMultiplier(damage: DamageBreakdown, multiplier: number): D
  * never be countered by melee, and never counter themselves.
  */
 export function forecast(
+  rules: CombatRules,
   s: GameState,
   attacker: Unit,
   defender: Unit,
-  attackFrom: Coord = { x: attacker.x, y: attacker.y },
-  weaponId: WeaponId | undefined = undefined,
-  pipeline: CombatModifierPipeline = DefaultCombatModifierPipeline,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  content: ContentCatalog = GlobalContentCatalog,
+  options: ForecastOptions = {},
 ): CombatForecast {
-  const resolvedWeaponId = weaponId ?? primaryWeapon(attacker, content).id;
+  const attackFrom = options.attackFrom ?? { x: attacker.x, y: attacker.y };
+  const resolvedWeaponId = options.weapon ?? primaryWeapon(attacker, rules.content).id;
   const defenderAt = { x: defender.x, y: defender.y };
   const interceptor = supportInterceptor(s, defender);
   const recipient = interceptor ?? defender;
-  let strike = computeDamage(s, attacker, recipient, recipient, resolvedWeaponId, pipeline, resources, attackFrom, content);
+  let strike = computeDamage(rules, s, attacker, recipient, {
+    attackerAt: attackFrom,
+    defenderAt: recipient,
+    weapon: resolvedWeaponId,
+  });
   let reaction: CombatForecast['reaction'] = null;
   if (interceptor) {
     reaction = { unit: interceptor.id, stance: 'support', protectedUnit: defender.id };
@@ -376,15 +405,13 @@ export function forecast(
     const counterSource: Unit = { ...defender, hp: defenderHpAfter };
     const counterTarget: Unit = { ...attacker, facing: directionToward(attackFrom, defenderAt) };
     const candidate = bestCounterWeapon(
+      rules,
       s,
       counterSource,
       counterTarget,
       defenderAt,
       attackFrom,
       defender.reaction === 'conserve',
-      pipeline,
-      resources,
-      content,
     );
     if (candidate) {
       counter = candidate.damage;
@@ -410,7 +437,7 @@ export function forecast(
 }
 
 /** Default amount restored by a support-healing ability. */
-export function healAmount(source: Unit, target: Unit, content: ContentCatalog = GlobalContentCatalog): number {
+export function healAmount(source: Unit, target: Unit, content: ContentCatalog): number {
   const def = content.units.get(target.type);
   const power = Number(source.meta.healPower ?? 30);
   return Math.min(power, def.maxHp - target.hp);

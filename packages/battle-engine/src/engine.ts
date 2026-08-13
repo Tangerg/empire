@@ -90,6 +90,11 @@ export class BattleEngine {
     this.assertConfiguration();
   }
 
+  /** The ruleset's content catalog. Presentation must read from this, never a global. */
+  get content() {
+    return this.rules.content;
+  }
+
   createState(level: LevelData): GameState {
     const issues = validateLevel(level, this.rules.content)
       .filter((issue) => issue.severity === 'error')
@@ -126,15 +131,7 @@ export class BattleEngine {
   }
 
   commandsAt(state: GameState, unit: Unit, at: Coord) {
-    return commandOptions(
-      state,
-      unit,
-      at,
-      this.rules.resources,
-      this.rules.abilities,
-      this.rules.space,
-      this.rules.content,
-    );
+    return commandOptions(this.rules, state, unit, at);
   }
 
   moveField(state: GameState, unit: Unit): MoveField {
@@ -172,33 +169,19 @@ export class BattleEngine {
     attackFrom?: Coord,
     weapon?: WeaponId,
   ): CombatForecast {
-    return forecast(state, attacker, defender, attackFrom, weapon, this.combatModifiers, this.rules.resources, this.rules.content);
+    return forecast(this.rules, state, attacker, defender, { attackFrom, weapon });
   }
 
   attackPlan(state: GameState, attacker: Unit, aimedAt: Coord, attackFrom?: Coord, weapon?: WeaponId) {
-    return forecastCombatPlan(
-      state,
-      attacker,
-      aimedAt,
-      attackFrom,
-      weapon,
-      this.combatModifiers,
-      this.rules.resources,
-      this.rules.content,
-    );
+    return forecastCombatPlan(this.rules, state, attacker, aimedAt, { from: attackFrom, weapon });
   }
 
   chooseAiAction(state: GameState, options?: Partial<AiOptions>): Action {
-    return chooseAction(state, options, {
+    return chooseAction({
+      rules: this.rules,
       objectiveAdvisors: this.aiObjectiveAdvisors,
-      objectives: this.rules.objectives,
-      combatModifiers: this.combatModifiers,
-      resources: this.rules.resources,
-      abilities: this.rules.abilities,
       abilityEvaluators: this.abilityAiEvaluators,
-      space: this.rules.space,
-      content: this.rules.content,
-    });
+    }, state, options);
   }
 
   private assertConfiguration(): void {

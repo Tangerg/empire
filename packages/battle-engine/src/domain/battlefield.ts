@@ -1,4 +1,4 @@
-import { GlobalContentCatalog, type ContentCatalog } from '../content-pack';
+import { type ContentCatalog } from '../content-pack';
 import { idx, inBounds } from '../grid';
 import { directionToward, edgeKey } from '../spatial';
 import type {
@@ -142,7 +142,7 @@ export class Battlefield {
 
   constructor(
     readonly state: GameState,
-    readonly content: ContentCatalog = GlobalContentCatalog,
+    readonly content: ContentCatalog,
   ) {
     this.cells = new Array(state.map.tiles.length);
   }

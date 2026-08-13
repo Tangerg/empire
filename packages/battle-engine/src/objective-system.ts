@@ -10,7 +10,8 @@ import type {
   ObjectiveStatus,
   PlayerId,
 } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
+import type { ScenarioConditionHandlerRegistry } from './scenario';
 import { compositeStatus, requireComposite } from './composites';
 
 export type { ObjectiveOutcome } from './types';
@@ -19,11 +20,21 @@ export type ObjectiveRefreshMode = 'self' | 'children' | 'sequence';
 
 type ObjectiveOf<K extends keyof ObjectiveKindMap> = ObjectiveMeta & ObjectiveKindMap[K];
 
+/**
+ * Port declared by this module: `failOn` embeds a scenario condition, so
+ * objective evaluation legitimately depends on the condition registry.
+ */
+export interface ObjectiveRules {
+  readonly content: ContentCatalog;
+  readonly scenarioConditions: ScenarioConditionHandlerRegistry;
+}
+
 export interface ObjectiveEvaluationContext {
   readonly state: GameState;
   readonly owner: PlayerId;
   readonly handlers: ObjectiveHandlerRegistry;
   readonly content: ContentCatalog;
+  readonly scenarioConditions: ScenarioConditionHandlerRegistry;
   status(objective: Objective): ObjectiveStatus;
   outcome(objective: Objective): ObjectiveOutcome;
 }
@@ -98,15 +109,15 @@ export class ObjectiveHandlerRegistry {
   }
 
   evaluate(
+    rules: ObjectiveRules,
     state: GameState,
     owner: PlayerId,
     objective: Objective,
-    content: ContentCatalog = GlobalContentCatalog,
   ): ObjectiveOutcome {
     const status = player(state, owner).objectiveStates[objective.id!]?.status ?? 'active';
     const terminal = terminalOutcome(status);
     if (terminal) return terminal;
-    const context = this.context(state, owner, content);
+    const context = this.context(rules, state, owner);
     return this.handler(objective.type).outcome(context, objective as never);
   }
 
@@ -115,21 +126,26 @@ export class ObjectiveHandlerRegistry {
     return this.handler(objective.type).describe(objective as never, this);
   }
 
-  progress(state: GameState, owner: PlayerId, objective: Objective, content: ContentCatalog = GlobalContentCatalog): string {
-    const context = this.context(state, owner, content);
+  progress(rules: ObjectiveRules, state: GameState, owner: PlayerId, objective: Objective): string {
+    const context = this.context(rules, state, owner);
     const terminal = terminalProgress(context.status(objective));
     if (terminal) return terminal;
     return this.handler(objective.type).progress(context, objective as never);
   }
 
-  private context(state: GameState, owner: PlayerId, content: ContentCatalog): ObjectiveEvaluationContext {
+  private context(
+    rules: ObjectiveRules,
+    state: GameState,
+    owner: PlayerId,
+  ): ObjectiveEvaluationContext {
     return {
       state,
       owner,
       handlers: this,
-      content,
+      content: rules.content,
+      scenarioConditions: rules.scenarioConditions,
       status: (objective) => player(state, owner).objectiveStates[objective.id!]?.status ?? 'active',
-      outcome: (objective) => this.evaluate(state, owner, objective, content),
+      outcome: (objective) => this.evaluate(rules, state, owner, objective),
     };
   }
 }
@@ -349,14 +365,15 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     children: (objective) => [objective.objective],
     outcome: (context, objective) => context.outcome(objective.objective),
     describe: (objective, handlers) => `额外：${handlers.describe(objective.objective)}`,
-    progress: (context, objective) => context.handlers.progress(context.state, context.owner, objective.objective, context.content),
+    progress: (context, objective) => context.handlers.progress(context, context.state, context.owner, objective.objective),
   }))
   .register(objectiveHandler('failOn', {
     role: 'critical',
     refresh: 'children',
     children: (objective) => [objective.objective],
-    outcome: (context, objective) => conditionMet(context.state, objective.condition, undefined, context.content)
-      ? 'failure' : context.outcome(objective.objective),
+    outcome: (context, objective) =>
+      conditionMet(context.state, objective.condition, context.scenarioConditions, context.content)
+        ? 'failure' : context.outcome(objective.objective),
     describe: (objective, handlers) => handlers.describe(objective.objective),
-    progress: (context, objective) => context.handlers.progress(context.state, context.owner, objective.objective, context.content),
+    progress: (context, objective) => context.handlers.progress(context, context.state, context.owner, objective.objective),
   }));

@@ -1,20 +1,30 @@
 import { dist } from './grid';
 import { areAllies, removeUnit, requireUnit } from './state';
 import type { ContentCatalog } from './content-pack';
-import { GlobalContentCatalog } from './content-pack';
 import type { BattlefieldMarker, GameEvent, GameState, PlayerId, Unit } from './types';
 import { withdrawTransportPassengers } from './transports';
 import { BattleAggregate } from './domain/battle-aggregate';
 
-function withdrawalMarker(state: GameState, unit: Unit, kind: string, meta: BattlefieldMarker['meta']): BattlefieldMarker {
-  const marker = new BattleAggregate(state).createUnitMarker(unit, kind, meta);
+function withdrawalMarker(
+  state: GameState,
+  unit: Unit,
+  kind: string,
+  meta: BattlefieldMarker['meta'],
+  content: ContentCatalog,
+): BattlefieldMarker {
+  const marker = new BattleAggregate(state, content).createUnitMarker(unit, kind, meta);
   removeUnit(state, unit.id);
   return marker;
 }
 
-export function routeUnit(state: GameState, unitId: number, emit: (event: GameEvent) => void): BattlefieldMarker {
+export function routeUnit(
+  state: GameState,
+  unitId: number,
+  emit: (event: GameEvent) => void,
+  content: ContentCatalog,
+): BattlefieldMarker {
   const unit = requireUnit(state, unitId);
-  const marker = withdrawalMarker(state, unit, 'routed', {});
+  const marker = withdrawalMarker(state, unit, 'routed', {}, content);
   withdrawTransportPassengers(state, unitId, marker.at, 'routed', emit);
   emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
   emit({ type: 'unitRouted', unit: unitId, marker: marker.id, at: marker.at });
@@ -26,9 +36,10 @@ export function surrenderUnit(
   unitId: number,
   to: PlayerId | undefined,
   emit: (event: GameEvent) => void,
+  content: ContentCatalog,
 ): BattlefieldMarker {
   const unit = requireUnit(state, unitId);
-  const marker = withdrawalMarker(state, unit, 'surrendered', to === undefined ? {} : { surrenderedTo: to });
+  const marker = withdrawalMarker(state, unit, 'surrendered', to === undefined ? {} : { surrenderedTo: to }, content);
   withdrawTransportPassengers(
     state,
     unitId,
@@ -48,6 +59,7 @@ export function changeMorale(
   requested: number,
   reason: string,
   emit: (event: GameEvent) => void,
+  content: ContentCatalog,
 ): number {
   const unit = requireUnit(state, unitId);
   const adjusted = requested < 0 ? Math.round(requested * (1 - unit.morale.resilience)) : Math.round(requested);
@@ -56,7 +68,7 @@ export function changeMorale(
   const applied = unit.morale.current - before;
   if (applied !== 0) emit({ type: 'moraleChanged', unit: unit.id, amount: applied, current: unit.morale.current, reason });
   if (state.rules.moraleEnabled && unit.morale.current <= 0 && state.units.some((candidate) => candidate.id === unit.id)) {
-    routeUnit(state, unit.id, emit);
+    routeUnit(state, unit.id, emit, content);
   }
   return applied;
 }
@@ -69,18 +81,18 @@ export function resolveMoraleAfterDamage(
   killed: boolean,
   at: { x: number; y: number },
   emit: (event: GameEvent) => void,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): boolean {
   if (!state.rules.moraleEnabled) return false;
   if (!killed && state.units.some((unit) => unit.id === target.id)) {
     const maximumHp = content.units.get(target.type).maxHp;
     const loss = Math.max(1, Math.round(damage / maximumHp * target.morale.maximum * state.rules.moraleDamageFactor));
-    changeMorale(state, target.id, -loss, 'damage', emit);
+    changeMorale(state, target.id, -loss, 'damage', emit, content);
   }
   if (killed) {
     const allies = state.units.filter((unit) =>
       areAllies(state, unit.owner, target.owner) && dist(unit, at) <= state.rules.moraleDefeatShockRadius);
-    for (const ally of allies) changeMorale(state, ally.id, -state.rules.moraleAllyDefeatLoss, 'ally-defeated', emit);
+    for (const ally of allies) changeMorale(state, ally.id, -state.rules.moraleAllyDefeatLoss, 'ally-defeated', emit, content);
   }
   return !killed && !state.units.some((unit) => unit.id === target.id);
 }

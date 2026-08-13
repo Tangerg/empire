@@ -7,7 +7,7 @@ import type {
   WeaponHitEffect,
   WeaponHitEffectKindMap,
 } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 
 type HitEffectKind = Extract<keyof WeaponHitEffectKindMap, string>;
 
@@ -48,7 +48,7 @@ export class WeaponHitEffectHandlerRegistry {
     target: Unit,
     effects: WeaponHitEffect[],
     emit: (event: GameEvent) => void,
-    content: ContentCatalog = GlobalContentCatalog,
+    content: ContentCatalog,
   ): void {
     const context = new WeaponHitEffectContext(state, attacker, target, emit, content);
     for (const effect of effects) {
@@ -79,7 +79,7 @@ export const WeaponHitEffectHandlers = new WeaponHitEffectHandlerRegistry()
   .register({
     kind: 'addStatus',
     apply: ({ target, attacker, emit, content }, effect) => {
-      addStatus(target, effect.status, effect.duration, emit, attacker.id, content);
+      addStatus(target, effect.status, effect.duration, content, emit, attacker.id);
     },
     describe: (effect) => `施加 ${effect.status}（${effect.duration} 回合）`,
   })

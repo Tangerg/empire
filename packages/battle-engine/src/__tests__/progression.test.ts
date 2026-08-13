@@ -1,30 +1,28 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction, commandOptions, IllegalActionError } from '../actions';
-import { computeDamage } from '../combat';
+import { applyAction, IllegalActionError } from '../actions';
 import { createBattleEngine } from '../engine';
 import {
   awardRankProgress,
   ThresholdRankProgressionPolicy,
 } from '../progression';
-import { createState } from '../state';
 import type { GameEvent } from '../types';
-import { makeLevel, u } from './fixtures';
+import { TEST_CONTENT, TEST_RULES, makeLevel, testCommands, testDamage, testState, u } from './fixtures';
 import { MOMENTUM_RESOURCE } from '../resources';
 
 describe('battle-local rank and hero momentum', () => {
   it('promotes through the compact rank ladder and feeds the combat modifier pipeline', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'ogre', 2)] }),
     );
     const attacker = state.units[0];
     const defender = state.units[1];
-    const rookieDamage = computeDamage(state, attacker, defender).damage;
+    const rookieDamage = testDamage(state, attacker, defender).damage;
     const events: GameEvent[] = [];
 
-    awardRankProgress(attacker, 120, (event) => events.push(event));
+    awardRankProgress(attacker, 120, (event) => events.push(event), TEST_RULES.progression, TEST_CONTENT);
     expect(attacker.rank).toBe(1);
-    expect(computeDamage(state, attacker, defender).damage).toBeGreaterThan(rookieDamage);
-    awardRankProgress(attacker, 200, (event) => events.push(event));
+    expect(testDamage(state, attacker, defender).damage).toBeGreaterThan(rookieDamage);
+    awardRankProgress(attacker, 200, (event) => events.push(event), TEST_RULES.progression, TEST_CONTENT);
     expect(attacker.rank).toBe(2);
     expect(events.filter((event) => event.type === 'rankChanged')).toEqual([
       { type: 'rankChanged', unit: attacker.id, from: 0, to: 1 },
@@ -61,10 +59,10 @@ describe('battle-local rank and hero momentum', () => {
         u(1, 0, 'ogre', 2),
       ],
     });
-    const state = createState(level);
+    const state = testState(level);
     const hero = state.units[0];
     const target = state.units[1];
-    expect(commandOptions(state, hero, hero).some((option) => option.weapon === 'heroic_breakthrough')).toBe(false);
+    expect(testCommands(state, hero, hero).some((option) => option.weapon === 'heroic_breakthrough')).toBe(false);
     expect(() => applyAction(state, {
       kind: 'command',
       unit: hero.id,
@@ -73,7 +71,7 @@ describe('battle-local rank and hero momentum', () => {
     })).toThrow(IllegalActionError);
 
     hero.resources[MOMENTUM_RESOURCE].current = 120;
-    expect(commandOptions(state, hero, hero).some((option) => option.weapon === 'heroic_breakthrough')).toBe(true);
+    expect(testCommands(state, hero, hero).some((option) => option.weapon === 'heroic_breakthrough')).toBe(true);
     const events = applyAction(state, {
       kind: 'command',
       unit: hero.id,
@@ -98,10 +96,10 @@ describe('battle-local rank and hero momentum', () => {
   });
 
   it('does not expose hero-only weapons to an ordinary unit without a momentum pool', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['..'], { units: [u(0, 0, 'knight', 1), u(1, 0, 'ogre', 2)] }),
     );
-    expect(commandOptions(state, state.units[0], state.units[0])
+    expect(testCommands(state, state.units[0], state.units[0])
       .some((option) => option.weapon === 'heroic_breakthrough')).toBe(false);
   });
 });

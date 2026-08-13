@@ -4,7 +4,7 @@ import { combinedStatusModifiers } from './statuses';
 import { dist } from './grid';
 import { hasOpposedFlanker, relativeAttackSide } from './spatial';
 import type { Coord, GameState, Unit, WeaponDef } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 import { activeFormation } from './formations';
 
 export const MAX_MITIGATION = 0.6;
@@ -30,9 +30,9 @@ export interface UnitDamageContext {
   defender: Unit;
   defenderAt: Coord;
   weapon: WeaponDef;
-  content?: ContentCatalog;
+  readonly content: ContentCatalog;
   /** Shared spatial projection for every provider in one damage evaluation. */
-  battlefield?: Battlefield;
+  readonly battlefield: Battlefield;
 }
 
 export interface CombatModifierProvider {
@@ -145,7 +145,7 @@ export class CombatModifierPipeline {
 const effectivenessProvider: CombatModifierProvider = {
   id: 'core.matchup',
   priority: 100,
-  provide: ({ weapon, defender, content = GlobalContentCatalog }) => [
+  provide: ({ weapon, defender, content }) => [
     {
       id: 'matchup.effectiveness',
       label: '伤害类型与护甲克制',
@@ -160,7 +160,7 @@ const effectivenessProvider: CombatModifierProvider = {
 const targetTagProvider: CombatModifierProvider = {
   id: 'core.weapon-target-tags',
   priority: 200,
-  provide: ({ weapon, defender, content = GlobalContentCatalog }) => {
+  provide: ({ weapon, defender, content }) => {
     const tags = content.units.get(defender.type).tags;
     return weapon.bonuses
       .filter((bonus) => tags.includes(bonus.targetTag))
@@ -179,7 +179,7 @@ const targetTagProvider: CombatModifierProvider = {
 const strengthProvider: CombatModifierProvider = {
   id: 'core.attacker-strength',
   priority: 300,
-  provide: ({ attacker, content = GlobalContentCatalog }) => [
+  provide: ({ attacker, content }) => [
     {
       id: 'unit.hp-strength',
       label: '攻击者剩余生命',
@@ -194,7 +194,7 @@ const strengthProvider: CombatModifierProvider = {
 const statusProvider: CombatModifierProvider = {
   id: 'core.status',
   priority: 400,
-  provide: ({ attacker, content = GlobalContentCatalog }) => [
+  provide: ({ attacker, content }) => [
     {
       id: 'status.attack',
       label: '攻击方状态',
@@ -240,7 +240,7 @@ const commanderProvider: CombatModifierProvider = {
 const formationProvider: CombatModifierProvider = {
   id: 'core.formation-attack',
   priority: 510,
-  provide: ({ state, attacker, content = GlobalContentCatalog }) => {
+  provide: ({ state, attacker, content }) => {
     const formation = activeFormation(state, attacker, content);
     if (!formation || formation.attackMultiplier === 1) return [];
     return [{
@@ -258,7 +258,7 @@ const formationProvider: CombatModifierProvider = {
 const elevationProvider: CombatModifierProvider = {
   id: 'core.elevation',
   priority: 520,
-  provide: ({ state, attackerAt, defenderAt, content = GlobalContentCatalog, battlefield = new Battlefield(state, content) }) => {
+  provide: ({ state, attackerAt, defenderAt, content, battlefield = new Battlefield(state, content) }) => {
     const delta = battlefield.cell(attackerAt).elevation - battlefield.cell(defenderAt).elevation;
     if (delta < state.rules.highGroundThreshold) return [];
     return [{
@@ -304,7 +304,7 @@ const positionProvider: CombatModifierProvider = {
 const coverProvider: CombatModifierProvider = {
   id: 'core.cover',
   priority: 590,
-  provide: ({ state, attackerAt, defenderAt, weapon, content = GlobalContentCatalog, battlefield = new Battlefield(state, content) }) => {
+  provide: ({ state, attackerAt, defenderAt, weapon, content, battlefield = new Battlefield(state, content) }) => {
     if (dist(attackerAt, defenderAt) <= 1 || weapon.lineOfSight === 'arc' || weapon.tags.includes('ignores-cover')) return [];
     const cell = battlefield.cell(defenderAt);
     const score = (level: 'none' | 'half' | 'full') => level === 'full' ? 2 : level === 'half' ? 1 : 0;
@@ -332,7 +332,7 @@ const coverProvider: CombatModifierProvider = {
 const defenseProvider: CombatModifierProvider = {
   id: 'core.defense',
   priority: 600,
-  provide: ({ state, defender, defenderAt, content = GlobalContentCatalog, battlefield = new Battlefield(state, content) }) => {
+  provide: ({ state, defender, defenderAt, content, battlefield = new Battlefield(state, content) }) => {
     const definition = content.units.get(defender.type);
     const status = combinedStatusModifiers(defender, content);
     const command = commanderAuraFor(state, defender);

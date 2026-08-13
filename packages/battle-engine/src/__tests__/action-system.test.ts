@@ -8,10 +8,9 @@ import {
   type ActionHandler,
 } from '../action-system';
 import { GlobalContentCatalog } from '../content-pack';
-import { applyActionWith, CoreActionHandlers } from '../actions';
-import { createState } from '../state';
+import { CoreActionHandlers } from '../actions';
 import type { ActionKindMap } from '../types';
-import { makeLevel, u } from './fixtures';
+import { makeLevel, testApplyWith, testState, u } from './fixtures';
 
 class TestReactionHandler implements ActionHandler<'reaction'> {
   readonly kind = 'reaction' as const;
@@ -40,11 +39,11 @@ describe('action strategy registry', () => {
   });
 
   it('supports an injected strategy set without changing the reducer', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)] }),
     );
     const handlers = new ActionHandlerRegistry().register(new TestReactionHandler());
-    const events = applyActionWith(
+    const events = testApplyWith(
       state,
       { kind: 'reaction', unit: state.units[0].id, stance: 'guard' },
       handlers,
@@ -54,11 +53,11 @@ describe('action strategy registry', () => {
   });
 
   it('fails clearly when a strategy is absent', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)] }),
     );
     expect(() =>
-      applyActionWith(state, { kind: 'endTurn' }, new ActionHandlerRegistry()),
+      testApplyWith(state, { kind: 'endTurn' }, new ActionHandlerRegistry()),
     ).toThrow(IllegalActionError);
   });
 });

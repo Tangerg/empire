@@ -2,9 +2,8 @@ import { clear, fromMarkup, setAttrs, svg } from '@empire/game-ui/art/svg';
 import { PAL } from '@empire/game-ui/art/palette';
 import { battlefieldFeatureMarkup, battlefieldRenderKey } from '@empire/game-ui/art/battlefield-layer';
 import { TILE, terrainLayerMarkup } from '@empire/game-ui/art/terrain';
+import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import { unitSpriteMarkup } from '@empire/game-ui/art/units';
-import { Terrains } from '@empire/battle-engine/data/terrain';
-import { UnitTypes } from '@empire/battle-engine/data/units';
 import { idx } from '@empire/battle-engine/grid';
 import type { Coord, GameMap, LevelUnit, PlayerConfig } from '@empire/battle-engine/types';
 
@@ -31,6 +30,7 @@ export class EditorBoard {
     private units: LevelUnit[],
     private players: PlayerConfig[],
     private readonly handlers: EditorBoardHandlers,
+    private readonly content: ContentCatalog,
   ) {
     this.el = svg('svg', {
       class: 'board editor-board',
@@ -133,7 +133,7 @@ export class EditorBoard {
       this.signature = sig;
       clear(this.layers.terrain);
       const colorOf = (id: number) => players.find((p) => p.id === id)?.color;
-      this.layers.terrain.append(fromMarkup(terrainLayerMarkup(map, colorOf)));
+      this.layers.terrain.append(fromMarkup(terrainLayerMarkup(this.content, map, colorOf)));
     }
 
     clear(this.layers.units);
@@ -153,7 +153,7 @@ export class EditorBoard {
     const marks: string[] = [];
     if (opts.showOwners) {
       for (let i = 0; i < map.tiles.length; i++) {
-        if (!Terrains.get(map.tiles[i]).capturable) continue;
+        if (!this.content.terrains.get(map.tiles[i]).capturable) continue;
         const owner = map.owners[i];
         const color = players.find((p) => p.id === owner)?.color ?? PAL.neutral;
         const x = (i % map.width) * TILE;
@@ -198,9 +198,9 @@ export class EditorBoard {
     if (u.x < 0 || u.y < 0 || u.x >= this.map.width || u.y >= this.map.height) return true;
     if (!this.players.some((p) => p.id === u.owner)) return true;
     if (this.units.filter((o) => o.x === u.x && o.y === u.y).length > 1) return true;
-    const def = UnitTypes.tryGet(u.unit);
+    const def = this.content.units.tryGet(u.unit);
     if (!def) return true;
-    const terrain = Terrains.get(this.map.tiles[idx(this.map, u.x, u.y)]);
+    const terrain = this.content.terrains.get(this.map.tiles[idx(this.map, u.x, u.y)]);
     return terrain.cost[def.movementClass] == null;
   }
 }

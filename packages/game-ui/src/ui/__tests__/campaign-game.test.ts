@@ -4,6 +4,12 @@ import { CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN } from '@empire/story-candid
 import { candidate01CampaignAdapter } from '@empire/story-candidate-01/presentation';
 import { StoryCampaignController } from '../campaign-game';
 
+import { cloneContentCatalog, createBattleEngine, GlobalContentCatalog } from '@empire/battle-engine';
+
+/** Composed per suite, exactly like an application composition root. */
+const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
+
 function click(root: HTMLElement, selector: string): void {
   const element = root.querySelector<HTMLElement>(selector);
   if (!element) throw new Error(`missing element: ${selector}`);
@@ -14,7 +20,7 @@ describe('candidate-01 campaign UI', () => {
   beforeEach(() => localStorage.clear());
 
   it('moves from novel presentation to a persistent choice and battle staging', () => {
-    const controller = new StoryCampaignController(candidate01CampaignAdapter(), null, () => {});
+    const controller = new StoryCampaignController(candidate01CampaignAdapter(), null, () => {}, TEST_ENGINE);
     expect(controller.root.textContent).toContain('一双没有补好的靴子');
     for (let index = 0; index < 4; index++) click(controller.root, '[data-campaign-act="nextBeat"]');
     expect(controller.root.textContent).toContain('双子丘陵');
@@ -30,7 +36,7 @@ describe('candidate-01 campaign UI', () => {
   });
 
   it('enters the real battle controller and can return to campaign staging', () => {
-    const controller = new StoryCampaignController(candidate01CampaignAdapter(), null, () => {});
+    const controller = new StoryCampaignController(candidate01CampaignAdapter(), null, () => {}, TEST_ENGINE);
     for (let index = 0; index < 4; index++) click(controller.root, '[data-campaign-act="nextBeat"]');
     for (let index = 0; index < 3; index++) click(controller.root, '[data-campaign-act="nextBeat"]');
     click(controller.root, '[data-choice="steady-advance"]');

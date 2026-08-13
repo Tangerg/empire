@@ -31,6 +31,15 @@ export class GameSession {
     this.state = engine.createState(level);
   }
 
+  /** Ruleset of this battle; the UI renders from here, not from ambient state. */
+  get content() {
+    return this.engine.content;
+  }
+
+  get rules() {
+    return this.engine.rules;
+  }
+
   /* --------------------------------------------------------- subscriptions */
 
   subscribe(fn: SessionListener): () => void {

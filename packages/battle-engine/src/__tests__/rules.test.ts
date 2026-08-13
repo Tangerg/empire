@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction, commandOptions, IllegalActionError } from '../actions';
+import { applyAction, IllegalActionError } from '../actions';
 import { idx } from '../grid';
 import { GameSession } from '../session';
-import { createState, player, unitAt } from '../state';
-import { makeLevel, u } from './fixtures';
+import { player, unitAt } from '../state';
+import { makeLevel, testCommands, testState, u } from './fixtures';
 import { FUNDS_RESOURCE } from '../resources';
 
 const wait = (unit: number, path: { x: number; y: number }[]) =>
@@ -11,7 +11,7 @@ const wait = (unit: number, path: { x: number; y: number }[]) =>
 
 describe('capture', () => {
   it('is instant by default and only available to infantry', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['v.'], { units: [u(1, 0, 'soldier', 1)], owners: [{ x: 0, y: 0, owner: 2 }] }),
     );
     applyAction(s, {
@@ -24,13 +24,13 @@ describe('capture', () => {
   });
 
   it('is not offered to cavalry, constructs or beasts', () => {
-    const s = createState(makeLevel(['v'], { units: [u(0, 0, 'knight', 1)] }));
-    const abilities = commandOptions(s, s.units[0], { x: 0, y: 0 }).map((o) => o.ability);
+    const s = testState(makeLevel(['v'], { units: [u(0, 0, 'knight', 1)] }));
+    const abilities = testCommands(s, s.units[0], { x: 0, y: 0 }).map((o) => o.ability);
     expect(abilities).not.toContain('capture');
   });
 
   it('takes multiple turns in progressive mode and scales with HP', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['v..'], {
         units: [u(0, 0, 'soldier', 1, 50), u(2, 0, 'soldier', 2)],
         rules: { captureMode: 'progressive', captureThreshold: 100 },
@@ -52,7 +52,7 @@ describe('capture', () => {
   });
 
   it('loses progress when the unit walks away', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['v....'], {
         units: [u(0, 0, 'soldier', 1, 40), u(4, 0, 'soldier', 2)],
         rules: { captureMode: 'progressive' },
@@ -73,7 +73,7 @@ describe('capture', () => {
 
 describe('economy and turn cycle', () => {
   it('pays building income at the start of each turn and heals on owned tiles', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['v.', 'C.'], {
         units: [u(0, 0, 'soldier', 1, 40), u(1, 1, 'soldier', 2)],
         owners: [
@@ -90,7 +90,7 @@ describe('economy and turn cycle', () => {
   });
 
   it('recruits from an owned castle, spending gold', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['C.', '..'], {
         units: [u(1, 1, 'soldier', 2)],
         owners: [{ x: 0, y: 0, owner: 1 }],
@@ -111,7 +111,7 @@ describe('economy and turn cycle', () => {
   });
 
   it('rejects unaffordable or misplaced recruitment', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['C.'], { units: [u(1, 0, 'soldier', 2)], owners: [{ x: 0, y: 0, owner: 1 }] }),
     );
     expect(() => applyAction(s, { kind: 'recruit', at: { x: 0, y: 0 }, unit: 'dragon' })).toThrow(
@@ -125,37 +125,37 @@ describe('economy and turn cycle', () => {
 
 describe('legality', () => {
   it('refuses to move outside the movement field', () => {
-    const s = createState(makeLevel(['.........'], { units: [u(0, 0, 'soldier', 1), u(8, 0, 'soldier', 2)] }));
+    const s = testState(makeLevel(['.........'], { units: [u(0, 0, 'soldier', 1), u(8, 0, 'soldier', 2)] }));
     expect(() => applyAction(s, wait(s.units[0].id, [{ x: 0, y: 0 }, { x: 7, y: 0 }]))).toThrow(
       IllegalActionError,
     );
   });
 
   it('refuses to act twice with one unit', () => {
-    const s = createState(makeLevel(['...'], { units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)] }));
+    const s = testState(makeLevel(['...'], { units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)] }));
     applyAction(s, wait(s.units[0].id, [{ x: 0, y: 0 }]));
     expect(() => applyAction(s, wait(s.units[0].id, [{ x: 0, y: 0 }]))).toThrow(IllegalActionError);
   });
 
   it('refuses to move an opponent unit', () => {
-    const s = createState(makeLevel(['...'], { units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)] }));
+    const s = testState(makeLevel(['...'], { units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)] }));
     expect(() => applyAction(s, wait(s.units[1].id, [{ x: 2, y: 0 }]))).toThrow(IllegalActionError);
   });
 
   it('forbids siege units from firing after moving', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['.....'], { units: [u(0, 0, 'ballista', 1), u(3, 0, 'soldier', 2)] }),
     );
     // Standing still at range 3: in the firing arc.
-    expect(commandOptions(s, s.units[0], { x: 0, y: 0 }).map((o) => o.ability)).toContain('attack');
+    expect(testCommands(s, s.units[0], { x: 0, y: 0 }).map((o) => o.ability)).toContain('attack');
     // Same target, but only reachable by moving first: no shot this turn.
-    expect(commandOptions(s, s.units[0], { x: 1, y: 0 }).map((o) => o.ability)).not.toContain('attack');
+    expect(testCommands(s, s.units[0], { x: 1, y: 0 }).map((o) => o.ability)).not.toContain('attack');
 
     // Adjacent enemies sit inside the minimum range and cannot be hit at all.
-    const adjacent = createState(
+    const adjacent = testState(
       makeLevel(['..'], { units: [u(0, 0, 'ballista', 1), u(1, 0, 'soldier', 2)] }),
     );
-    expect(commandOptions(adjacent, adjacent.units[0], { x: 0, y: 0 }).map((o) => o.ability)).not.toContain(
+    expect(testCommands(adjacent, adjacent.units[0], { x: 0, y: 0 }).map((o) => o.ability)).not.toContain(
       'attack',
     );
   });
@@ -163,7 +163,7 @@ describe('legality', () => {
 
 describe('victory', () => {
   it('ends the game when one side is wiped out', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['..'], { units: [u(0, 0, 'knight', 1), u(1, 0, 'mage', 2, 5)] }),
     );
     const events = applyAction(s, {
@@ -177,7 +177,7 @@ describe('victory', () => {
   });
 
   it('ends the game when the enemy keep falls', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['C.', '..'], {
         units: [u(1, 0, 'soldier', 1), u(1, 1, 'soldier', 2)],
         owners: [{ x: 0, y: 0, owner: 2 }],
@@ -195,7 +195,7 @@ describe('victory', () => {
   });
 
   it('resolves surviveTurns without requiring a global turn limit', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['...'], {
         units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)],
         victory: [{ type: 'surviveTurns', turns: 1 }],

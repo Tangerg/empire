@@ -2,7 +2,6 @@ import { Battlefield } from './domain/battlefield';
 import { dist, inBounds } from './grid';
 import { areAllies, removeUnit, requireUnit, unitAtCoord } from './state';
 import type { ContentCatalog } from './content-pack';
-import { GlobalContentCatalog } from './content-pack';
 import type { BattlefieldMarker, Coord, GameEvent, GameState, Unit } from './types';
 import { cloneUnitState } from './unit-state';
 
@@ -22,7 +21,7 @@ export function embarkUnit(
   unitId: number,
   carrierId: number,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): void {
   if (unitId === carrierId) throw new Error('a transport cannot embark itself');
   const unit = requireUnit(state, unitId);
@@ -52,7 +51,7 @@ export function disembarkUnit(
   unitId: number,
   at: Coord,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): void {
   const { carrier } = transportProfile(state, carrierId, content);
   const index = state.embarkedUnits.findIndex((entry) => entry.carrier === carrierId && entry.unit.id === unitId);

@@ -1,14 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
-import { forecast } from '../combat';
-import { computeMoveField, moveCostOf } from '../movement';
-import { applyScenarioEffect } from '../scenario';
-import { createState } from '../state';
-import { makeLevel, u } from './fixtures';
+import { moveCostOf } from '../movement';
+import { makeLevel, testForecast, testMoveField, testScenarioEffect, testState, u } from './fixtures';
 
 describe('terrain overlays', () => {
   it('changes movement without replacing the base terrain', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...'], {
         units: [u(0, 0, 'soldier', 1), u(2, 0, 'knight', 2)],
         scenario: {
@@ -17,16 +14,16 @@ describe('terrain overlays', () => {
         },
       }),
     );
-    expect(moveCostOf(computeMoveField(state, state.units[0]), state.map, { x: 1, y: 0 })).toBe(2);
-    expect(computeMoveField(state, state.units[1]).tiles.has(1)).toBe(false);
+    expect(moveCostOf(testMoveField(state, state.units[0]), state.map, { x: 1, y: 0 })).toBe(2);
+    expect(testMoveField(state, state.units[1]).tiles.has(1)).toBe(false);
     expect(state.map.tiles[1]).toBe('plain');
   });
 
   it('feeds the same effective defense into forecast and resolution', () => {
-    const normal = createState(
+    const normal = testState(
       makeLevel(['.T'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)] }),
     );
-    const burning = createState(
+    const burning = testState(
       makeLevel(['.T'], {
         units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
         scenario: {
@@ -35,20 +32,20 @@ describe('terrain overlays', () => {
         },
       }),
     );
-    expect(forecast(burning, burning.units[0], burning.units[1]).strike.damage).toBeGreaterThan(
-      forecast(normal, normal.units[0], normal.units[1]).strike.damage,
+    expect(testForecast(burning, burning.units[0], burning.units[1]).strike.damage).toBeGreaterThan(
+      testForecast(normal, normal.units[0], normal.units[1]).strike.damage,
     );
   });
 
   it('adds and removes a named overlay through generic scenario effects', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...'], {
         units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)],
         scenario: { zones: [{ id: 'chamber', cells: [{ x: 1, y: 0 }] }] },
       }),
     );
     const events: ReturnType<typeof applyAction> = [];
-    applyScenarioEffect(
+    testScenarioEffect(
       state,
       { type: 'addOverlay', id: 'breach', overlay: 'vacuum', zone: 'chamber', rounds: 2 },
       (event) => events.push(event),
@@ -56,13 +53,13 @@ describe('terrain overlays', () => {
     expect(state.scenario.overlays[0]).toMatchObject({ id: 'breach', remainingRounds: 2 });
     expect(events[0]).toMatchObject({ type: 'overlayAdded', overlay: 'breach' });
 
-    applyScenarioEffect(state, { type: 'removeOverlay', id: 'breach' }, (event) => events.push(event));
+    testScenarioEffect(state, { type: 'removeOverlay', id: 'breach' }, (event) => events.push(event));
     expect(state.scenario.overlays).toHaveLength(0);
     expect(events.at(-1)).toMatchObject({ type: 'overlayRemoved', overlay: 'breach' });
   });
 
   it('resolves environmental status effects in the owner-turn lifecycle', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['..'], {
         units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
         scenario: {

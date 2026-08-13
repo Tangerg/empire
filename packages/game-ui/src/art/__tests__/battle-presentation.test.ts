@@ -5,12 +5,17 @@ import { battlePresentation } from '../battle-presentation';
 import { createSceneViewport } from '../scene-viewport';
 import { registerCandidate01Presentation } from '@empire/story-candidate-01/presentation';
 
+import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+
+/** Composed per suite, exactly like an application composition root. */
+const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+
 registerCandidate01Presentation();
 
 describe('battle presentation', () => {
   it('resolves story art at the composition edge', () => {
     const presentation = battlePresentation('c01-01');
-    const map = mapFromLevel(candidate01Level('c01-01'));
+    const map = mapFromLevel(candidate01Level('c01-01'), TEST_CATALOG);
     const viewport = createSceneViewport(
       map.width,
       map.height,
@@ -29,7 +34,7 @@ describe('battle presentation', () => {
 
     expect(presentation.id).toBe('generic');
     expect(presentation.sceneProfile('sandbox-01')).toEqual({});
-    expect(presentation.sceneLayers('sandbox-01', mapFromLevel(candidate01Level('c01-01')))).toEqual({
+    expect(presentation.sceneLayers('sandbox-01', mapFromLevel(candidate01Level('c01-01'), TEST_CATALOG))).toEqual({
       ground: '',
       underUnits: '',
       overUnits: '',

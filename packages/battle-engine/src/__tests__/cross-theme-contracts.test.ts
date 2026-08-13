@@ -1,9 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
-import { forecastStructure } from '../combat';
-import { moveCostOf, computeMoveField } from '../movement';
-import { createState } from '../state';
-import { makeLevel, u } from './fixtures';
+import { moveCostOf } from '../movement';
+import { makeLevel, testForecastStructure, testMoveField, testState, u } from './fixtures';
 
 describe('cross-theme engine contracts', () => {
   it('fantasy: a commanded siege unit breaks a gate and completes the assault objective', () => {
@@ -25,8 +23,8 @@ describe('cross-theme engine contracts', () => {
       victory: [{ id: 'breach', type: 'destroy', structures: ['black-gate'] }],
     });
     level.players[1].objectives = [{ type: 'routEnemies' }];
-    const state = createState(level);
-    expect(forecastStructure(state, state.units[1], state.structures[0]).commanderAttackMultiplier).toBe(1.2);
+    const state = testState(level);
+    expect(testForecastStructure(state, state.units[1], state.structures[0]).commanderAttackMultiplier).toBe(1.2);
     applyAction(state, {
       kind: 'command',
       unit: state.units[1].id,
@@ -68,7 +66,7 @@ describe('cross-theme engine contracts', () => {
       ],
     });
     level.players[1].objectives = [{ type: 'routEnemies' }];
-    const state = createState(level);
+    const state = testState(level);
     const events = applyAction(state, {
       kind: 'command',
       unit: state.units[0].id,
@@ -104,8 +102,8 @@ describe('cross-theme engine contracts', () => {
       ],
     });
     level.players[1].objectives = [{ type: 'routEnemies' }];
-    const state = createState(level);
-    const field = computeMoveField(state, state.units[0]);
+    const state = testState(level);
+    const field = testMoveField(state, state.units[0]);
     expect(moveCostOf(field, state.map, { x: 1, y: 0 })).toBe(2);
     applyAction(state, {
       kind: 'command',

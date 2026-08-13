@@ -1,6 +1,6 @@
 import { tileHash } from '@empire/battle-engine/grid';
 import type { GameMap, TerrainId } from '@empire/battle-engine/types';
-import { Terrains } from '@empire/battle-engine/data/terrain';
+import type { ContentCatalog } from '@empire/battle-engine';
 import { idx } from '@empire/battle-engine/grid';
 import { resolveArt } from './ports';
 import { PAL } from './palette';
@@ -277,12 +277,12 @@ export function terrainMarkup(id: TerrainId, ctx: TileContext): string {
 }
 
 /** True when the neighbour should visually connect to this tile. */
-function links(map: GameMap, id: TerrainId, x: number, y: number): boolean {
+function links(content: ContentCatalog, map: GameMap, id: TerrainId, x: number, y: number): boolean {
   if (x < 0 || y < 0 || x >= map.width || y >= map.height) return false;
   const other = map.tiles[idx(map, x, y)];
   if (other === id) return true;
-  const a = Terrains.get(id);
-  const b = Terrains.get(other);
+  const a = content.terrains.get(id);
+  const b = content.terrains.get(other);
   const roadish = (t: typeof a) => t.tags.includes('road') || t.tags.includes('building');
   if (a.tags.includes('road') && roadish(b)) return true;
   if (a.tags.includes('blocking') && b.tags.includes('blocking')) return true;
@@ -294,6 +294,7 @@ function links(map: GameMap, id: TerrainId, x: number, y: number): boolean {
  * take the owner colour so flags flip the instant a town changes hands.
  */
 export function terrainLayerMarkup(
+  content: ContentCatalog,
   map: GameMap,
   colorOfPlayer: (id: number) => string | undefined,
   theme?: string,
@@ -309,10 +310,10 @@ export function terrainLayerMarkup(
         theme,
         ownerColor: colorOfPlayer(map.owners[i]),
         linked: {
-          n: links(map, id, x, y - 1),
-          e: links(map, id, x + 1, y),
-          s: links(map, id, x, y + 1),
-          w: links(map, id, x - 1, y),
+          n: links(content, map, id, x, y - 1),
+          e: links(content, map, id, x + 1, y),
+          s: links(content, map, id, x, y + 1),
+          w: links(content, map, id, x - 1, y),
         },
       };
       parts.push(

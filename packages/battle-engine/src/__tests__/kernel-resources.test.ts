@@ -14,8 +14,7 @@ import {
   FUNDS_RESOURCE,
   playerResource,
 } from '../resources';
-import { createState } from '../state';
-import { makeLevel, u } from './fixtures';
+import { makeLevel, testState, u } from './fixtures';
 
 describe('cohesive microkernel modules', () => {
   it('ships four self-contained capability modules rather than component-sized plugins', () => {
@@ -78,7 +77,7 @@ describe('cohesive microkernel modules', () => {
 
 describe('entity-owned resource accounts', () => {
   it('stores state on the aggregate and keeps cloned engines policy-isolated', () => {
-    const state = createState(makeLevel(['..'], {
+    const state = testState(makeLevel(['..'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
       funds: [100, 0],
     }));
@@ -93,7 +92,7 @@ describe('entity-owned resource accounts', () => {
   });
 
   it('checks repeated costs atomically before changing an entity account', () => {
-    const state = createState(makeLevel(['..'], {
+    const state = testState(makeLevel(['..'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
     }));
     const subject = playerResource(state.players[0]);

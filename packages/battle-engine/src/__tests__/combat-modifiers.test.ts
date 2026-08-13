@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { Battlefield } from '../domain/battlefield';
 import {
   CombatModifierPipeline,
   CombatModifierProviderRegistry,
@@ -7,8 +8,7 @@ import {
 import { weaponDef } from '../data/weapons';
 import { createBattleEngine } from '../engine';
 import { GameSession } from '../session';
-import { createState } from '../state';
-import { makeLevel, u } from './fixtures';
+import { TEST_CONTENT, makeLevel, testState, u } from './fixtures';
 
 const provider = (
   id: string,
@@ -29,10 +29,12 @@ describe('combat modifier pipeline', () => {
       .register(provider('power.double', 100, 'power', 'multiply', 2))
       .register(provider('mitigation.cover', 200, 'mitigation', 'add', 0.25));
     const pipeline = new CombatModifierPipeline(registry);
-    const state = createState(
+    const state = testState(
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)] }),
     );
     const result = pipeline.evaluate(100, {
+      content: TEST_CONTENT,
+      battlefield: new Battlefield(state, TEST_CONTENT),
       state,
       attacker: state.units[0],
       attackerAt: state.units[0],

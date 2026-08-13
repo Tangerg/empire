@@ -3,12 +3,17 @@ import { GameSession, validateLevel } from '@empire/battle-engine';
 import { CANDIDATE_01_LEVELS, CANDIDATE_01_ROSTER_BINDINGS } from './levels';
 import { auditBattlefield } from './battlefield-audit';
 
+import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+
+/** Composed per suite, exactly like an application composition root. */
+const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+
 describe('candidate-01 first three chapters', () => {
   it('ships sixteen ordered, structurally valid battles', () => {
     expect(CANDIDATE_01_LEVELS).toHaveLength(16);
     expect(new Set(CANDIDATE_01_LEVELS.map((level) => level.id)).size).toBe(16);
     const errors = CANDIDATE_01_LEVELS.flatMap((level) =>
-      validateLevel(level)
+      validateLevel(level, TEST_CATALOG)
         .filter((issue) => issue.severity === 'error')
         .map((issue) => `${level.id}: ${issue.message}`),
     );

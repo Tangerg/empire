@@ -1,18 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
-import { forecast } from '../combat';
-import { forecastCombatPlan } from '../combat-plan';
-import { createState } from '../state';
-import { makeLevel, u } from './fixtures';
+import { makeLevel, testCombatPlan, testForecast, testState, u } from './fixtures';
 
 describe('reaction stances', () => {
   it('guards one strike, consumes the reaction, and gives up counterattacks', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...'], {
         units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 1), { ...u(1, 0, 'ogre', 2), reaction: 'guard' }],
       }),
     );
-    const first = forecast(state, state.units[0], state.units[2]);
+    const first = testForecast(state, state.units[0], state.units[2]);
     expect(first.reaction).toMatchObject({ stance: 'guard', unit: state.units[2].id });
     expect(first.strike.reactionMultiplier).toBe(0.7);
     expect(first.counter).toBeNull();
@@ -23,14 +20,14 @@ describe('reaction stances', () => {
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
     });
-    const second = forecast(state, state.units[1], state.units[2]);
+    const second = testForecast(state, state.units[1], state.units[2]);
     expect(second.reaction).toBeNull();
     expect(second.strike.reactionMultiplier).toBe(1);
     expect(second.counter).toBeNull();
   });
 
   it('has an adjacent supporter take the real damage without hiding it from forecast', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['..', '..'], {
         units: [
           u(0, 0, 'soldier', 1),
@@ -42,7 +39,7 @@ describe('reaction stances', () => {
     const attacker = state.units[0];
     const protectedUnit = state.units[1];
     const supporter = state.units[2];
-    const exchange = forecast(state, attacker, protectedUnit);
+    const exchange = testForecast(state, attacker, protectedUnit);
     expect(exchange.interceptor).toBe(supporter.id);
     expect(exchange.damageRecipient).toBe(supporter.id);
     expect(exchange.defenderHpAfter).toBe(protectedUnit.hp);
@@ -68,21 +65,21 @@ describe('reaction stances', () => {
   });
 
   it('conserves limited and cooldown weapons when selecting a counter', () => {
-    const normal = createState(
+    const normal = testState(
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'mage', 2)] }),
     );
-    expect(forecast(normal, normal.units[0], normal.units[1]).counter?.weapon).toBe('mage_overcharge');
+    expect(testForecast(normal, normal.units[0], normal.units[1]).counter?.weapon).toBe('mage_overcharge');
 
-    const conserve = createState(
+    const conserve = testState(
       makeLevel(['..'], {
         units: [u(0, 0, 'soldier', 1), { ...u(1, 0, 'mage', 2), reaction: 'conserve' }],
       }),
     );
-    expect(forecast(conserve, conserve.units[0], conserve.units[1]).counter?.weapon).toBe('mage_bolt');
+    expect(testForecast(conserve, conserve.units[0], conserve.units[1]).counter?.weapon).toBe('mage_bolt');
   });
 
   it('changes stance through a legal headless action', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)] }),
     );
     const events = applyAction(state, { kind: 'reaction', unit: state.units[0].id, stance: 'support' });
@@ -91,7 +88,7 @@ describe('reaction stances', () => {
   });
 
   it('forecasts and resolves one adjacent allied support attack after the counter', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...', '...'], {
         units: [
           { ...u(0, 0, 'archer', 1), reaction: 'support' },
@@ -103,7 +100,7 @@ describe('reaction stances', () => {
     const supporter = state.units[0];
     const attacker = state.units[1];
     const defender = state.units[2];
-    const plan = forecastCombatPlan(state, attacker, defender);
+    const plan = testCombatPlan(state, attacker, defender);
 
     expect(plan.supportAttack).toMatchObject({
       attacker: supporter.id,

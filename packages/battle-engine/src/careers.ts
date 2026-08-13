@@ -1,6 +1,6 @@
 import { UnitEntity } from './domain/unit-entity';
 import { player } from './state';
-import { DefaultBattleResources, playerResource, type BattleResourceSystem } from './resources';
+import { playerResource, type BattleResourceSystem } from './resources';
 import type {
   AbilityId,
   CareerDef,
@@ -11,7 +11,7 @@ import type {
   Unit,
   UnitWeaponState,
 } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 
 export interface CareerOption {
   career: CareerDef;
@@ -21,7 +21,7 @@ export interface CareerOption {
   reasons: string[];
 }
 
-export function unitAbilityIds(unit: Unit, content: ContentCatalog = GlobalContentCatalog): AbilityId[] {
+export function unitAbilityIds(unit: Unit, content: ContentCatalog): AbilityId[] {
   return [...new Set([...content.units.get(unit.type).abilities, ...unit.learnedAbilities])];
 }
 
@@ -32,8 +32,8 @@ export function careerMastery(unit: Unit, career: CareerId): number {
 export function careerOptions(
   state: GameState,
   unit: Unit,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  content: ContentCatalog = GlobalContentCatalog,
+  resources: BattleResourceSystem,
+  content: ContentCatalog,
 ): CareerOption[] {
   const current = unit.career.current;
   const currentMastery = current ? careerMastery(unit, current) : 0;
@@ -98,8 +98,8 @@ export function changeCareer(
   unit: Unit,
   requested: CareerId,
   emit: (event: GameEvent) => void,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  content: ContentCatalog = GlobalContentCatalog,
+  resources: BattleResourceSystem,
+  content: ContentCatalog,
 ): void {
   const option = careerOptions(state, unit, resources, content).find((entry) => entry.career.id === requested);
   if (!option) throw new Error(`无法转为当前职业或未知职业「${requested}」`);
@@ -137,7 +137,7 @@ export function awardCareerProgress(
   unit: Unit,
   amount: number,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): void {
   const current = unit.career.current;
   if (!current || !content.careers.has(current)) return;

@@ -1,4 +1,10 @@
-import { Abilities, abilityDef, abilityTargets, canUseAbility, type AbilityDef } from './abilities';
+import {
+  abilityDef,
+  abilityTargets,
+  canUseAbility,
+  type AbilityQuery,
+  type AbilityRules,
+} from './abilities';
 import { advanceWeaponCooldowns, unitWeapons } from './combat';
 import { idx, sameCoord } from './grid';
 import { player, removeUnit, requireUnit, spawnUnit, unitAt, unitsOf } from './state';
@@ -13,10 +19,9 @@ import { changeCareer, unitAbilityIds } from './careers';
 import { directionToward } from './spatial';
 import { validateFormationChange } from './formations';
 import { disembarkUnit, embarkUnit } from './transports';
-import { DefaultBattleResources, playerResource, type BattleResourceSystem } from './resources';
-import type { Registry } from './registry';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
-import { CoreTacticalSpace, type TacticalSpace } from './tactical-space';
+import { playerResource } from './resources';
+import type { ContentCatalog } from './content-pack';
+import { type TacticalSpace } from './tactical-space';
 import {
   ActionExecutionContext,
   ActionHandlerRegistry,
@@ -48,22 +53,20 @@ export interface CommandOption {
 
 /** Command menu for a unit that has moved to `at`. */
 export function commandOptions(
+  rules: AbilityRules,
   s: GameState,
   unit: Unit,
   at: Coord,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  abilities: Registry<AbilityDef> = Abilities,
-  space: TacticalSpace = CoreTacticalSpace,
-  content: ContentCatalog = GlobalContentCatalog,
 ): CommandOption[] {
+  const content = rules.content;
   const moved = !(unit.x === at.x && unit.y === at.y);
-  const q = { state: s, unit, at, moved, resources, space, content };
+  const q: AbilityQuery = { state: s, unit, at, moved };
   const out: CommandOption[] = [];
   for (const abilityId of unitAbilityIds(unit, content)) {
     if (abilityId === 'attack') continue;
-    const ability = abilityDef(abilityId, abilities);
-    if (!canUseAbility(ability, q)) continue;
-    const targets = abilityTargets(ability, q);
+    const ability = abilityDef(rules, abilityId);
+    if (!canUseAbility(rules, ability, q)) continue;
+    const targets = abilityTargets(rules, ability, q);
     if (!ability.selfTargeted && targets.length === 0) continue;
     out.push({
       key: ability.id,
@@ -76,11 +79,11 @@ export function commandOptions(
   }
 
   if (content.units.get(unit.type).abilities.includes('attack')) {
-    const attack = abilityDef('attack', abilities);
+    const attack = abilityDef(rules, 'attack');
     for (const weapon of unitWeapons(unit, content)) {
-      const weaponQuery = { ...q, weaponId: weapon.id };
-      if (!canUseAbility(attack, weaponQuery)) continue;
-      const targets = abilityTargets(attack, weaponQuery);
+      const weaponQuery: AbilityQuery = { ...q, weaponId: weapon.id };
+      if (!canUseAbility(rules, attack, weaponQuery)) continue;
+      const targets = abilityTargets(rules, attack, weaponQuery);
       if (targets.length === 0) continue;
       out.push({
         key: `attack:${weapon.id}`,
@@ -94,7 +97,7 @@ export function commandOptions(
     }
   }
   return out.sort((a, b) => {
-    const priority = (id: string) => abilityDef(id, abilities).priority;
+    const priority = (id: string) => abilityDef(rules, id).priority;
     return priority(a.ability) - priority(b.ability) || a.key.localeCompare(b.key);
   });
 }
@@ -227,31 +230,19 @@ class CommandActionHandler implements ActionHandler<'command'> {
 
     const movement = validatePath(state, unit, action.path, context.rules.space);
     const destination = movement.destination;
-    const ability = abilityDef(action.command.ability, context.rules.abilities);
+    const ability = abilityDef(context.rules, action.command.ability);
     const moved = !(unit.x === destination.x && unit.y === destination.y);
     const weaponId = action.command.ability === 'attack' ? action.command.weapon : undefined;
-    const query = {
-      state,
-      unit,
-      at: destination,
-      moved,
-      weaponId,
-      combatModifiers: context.rules.combatModifiers,
-      hitEffects: context.rules.hitEffects,
-      progression: context.rules.progression,
-      resources: context.rules.resources,
-      space: context.rules.space,
-      content: context.rules.content,
-    };
+    const query: AbilityQuery = { state, unit, at: destination, moved, weaponId };
     if (!unitAbilityIds(unit, context.rules.content).includes(ability.id)) {
       context.fail(`${context.rules.content.units.get(unit.type).name} 没有「${ability.name}」`);
     }
-    if (!canUseAbility(ability, query)) context.fail(`此处无法使用「${ability.name}」`);
+    if (!canUseAbility(context.rules, ability, query)) context.fail(`此处无法使用「${ability.name}」`);
 
     const target = 'target' in action.command ? action.command.target ?? null : null;
     if (!ability.selfTargeted) {
       if (!target) context.fail(`「${ability.name}」需要指定目标`);
-      if (!abilityTargets(ability, query).some((candidate) => sameCoord(candidate, target))) {
+      if (!abilityTargets(context.rules, ability, query).some((candidate) => sameCoord(candidate, target))) {
         context.fail('目标不合法');
       }
     }
@@ -263,7 +254,7 @@ class CommandActionHandler implements ActionHandler<'command'> {
         context.emit({ type: 'facingChanged', unit: unit.id, from: previous, to: unit.facing });
       }
     }
-    ability.execute(query, target, context.emit);
+    ability.execute(context.rules, query, target, context.emit);
     if (context.battle.findUnit(unit.id)) new UnitEntity(unit).finishAction();
   }
 }
@@ -451,7 +442,7 @@ export function applyActionWith(
   state: GameState,
   action: Action,
   handlers: ActionHandlerRegistry,
-  rules: BattleRuleServices = DefaultBattleRuleServices,
+  rules: BattleRuleServices,
 ): GameEvent[] {
   const context = new ActionExecutionContext(state, rules);
   if (state.phase === 'over') context.fail('对局已结束');
@@ -474,7 +465,7 @@ export function applyActionWith(
 }
 
 export function applyAction(state: GameState, action: Action): GameEvent[] {
-  return applyActionWith(state, action, CoreActionHandlers);
+  return applyActionWith(state, action, CoreActionHandlers, DefaultBattleRuleServices);
 }
 
 /* ---------------------------------------------------------------- turn cycle */
@@ -509,14 +500,8 @@ function beginTurn(s: GameState, emit: (e: GameEvent) => void, rules: BattleRule
   emit({ type: 'turnStart', player: p.id, turn: s.turn });
 
   applyOverlayTurnStartEffects(s, p.id, emit, rules.content);
-  resolveTurnStartStatuses(
-    s,
-    p.id,
-    emit,
-    (unitId) => handleCommanderDefeat(s, unitId, emit, rules.content),
-    rules.statusBehaviors,
-    rules.content,
-  );
+  resolveTurnStartStatuses(rules, s, p.id, emit, (unitId) =>
+    handleCommanderDefeat(s, unitId, emit, rules.content));
   refreshCommanderTurn(s, p.id, emit, rules.resources);
 
   const resourceOwner = playerResource(p);
@@ -556,7 +541,7 @@ function beginTurn(s: GameState, emit: (e: GameEvent) => void, rules: BattleRule
 
 function checkGameOver(s: GameState, emit: (e: GameEvent) => void, rules: BattleRuleServices): void {
   const before = s.players.filter((p) => p.alive).map((p) => p.id);
-  const result = evaluateVictory(s, emit, rules.objectives, rules.content);
+  const result = evaluateVictory(rules, s, emit);
   for (const id of before) {
     if (!player(s, id).alive) emit({ type: 'defeat', player: id });
   }

@@ -1,10 +1,9 @@
+import { testChooseAction, testMap, testState, testValidate } from './fixtures';
 import { describe, expect, it } from 'vitest';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { chooseAction } from '../ai';
 import { applyAction } from '../actions';
-import { mapFromLevel, normaliseLevel, terrainRows, validateLevel } from '../mapio';
-import { createState } from '../state';
+import { normaliseLevel, terrainRows } from '../mapio';
 import type { LevelData } from '../types';
 
 const dir = join(import.meta.dirname, '../../../content-ancient-empires/src/levels');
@@ -23,7 +22,7 @@ describe('built-in levels', () => {
   for (const { file, level } of levels) {
     describe(file, () => {
       it('passes validation with no errors', () => {
-        const issues = validateLevel(level);
+        const issues = testValidate(level);
         const errors = issues.filter((i) => i.severity === 'error');
         expect(errors, errors.map((e) => e.message).join('\n')).toEqual([]);
       });
@@ -34,15 +33,15 @@ describe('built-in levels', () => {
       });
 
       it('round-trips through the terrain serialiser', () => {
-        expect(terrainRows(mapFromLevel(level))).toEqual(level.terrain);
+        expect(terrainRows(testMap(level))).toEqual(level.terrain);
       });
 
       it('is playable: 12 AI-driven turns without an illegal action', () => {
-        const s = createState(level);
+        const s = testState(level);
         for (const p of s.players) p.controller = 'ai';
         for (let turn = 0; turn < 12 && s.phase === 'playing'; turn++) {
           for (let guard = 0; guard < 300; guard++) {
-            const action = chooseAction(s);
+            const action = testChooseAction(s);
             applyAction(s, action);
             if (action.kind === 'endTurn' || s.phase !== 'playing') break;
           }

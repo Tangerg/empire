@@ -11,6 +11,12 @@ import { createState } from '@empire/battle-engine/state';
 import { candidate01Level } from '@empire/story-candidate-01/levels';
 import { registerCandidate01Presentation } from '@empire/story-candidate-01/presentation';
 
+import { cloneContentCatalog, createBattleEngine, GlobalContentCatalog } from '@empire/battle-engine';
+
+/** Composed per suite, exactly like an application composition root. */
+const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
+
 registerCandidate01Presentation();
 
 /** jsdom has no layout, so give the board a deterministic box for hit-testing. */
@@ -67,7 +73,7 @@ describe('game controller', () => {
 
   it('mounts a level, draws the board and fills the HUD', () => {
     const level = BUILTIN_LEVELS[0];
-    const c = new GameController(level, () => {});
+    const c = new GameController(level, () => {}, { engine: TEST_ENGINE });
     host.append(c.root);
 
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
@@ -84,12 +90,12 @@ describe('game controller', () => {
 
   it('fits a large board into the available tactical viewport', () => {
     const level = BUILTIN_LEVELS[0];
-    const board = new BoardView(createState(level), {
+    const board = new BoardView(createState(level, TEST_CATALOG), {
       onTileClick: () => {},
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
-    });
+    }, TEST_CATALOG);
     board.fitWithin(540, 380);
     expect(Number.parseFloat(board.el.style.width)).toBeLessThanOrEqual(508);
     expect(Number.parseFloat(board.el.style.height)).toBeLessThanOrEqual(348);
@@ -98,12 +104,12 @@ describe('game controller', () => {
 
   it('keeps authored roads below every tactical actor', () => {
     const level = candidate01Level('c01-01');
-    const board = new BoardView(createState(level), {
+    const board = new BoardView(createState(level, TEST_CATALOG), {
       onTileClick: () => {},
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
-    });
+    }, TEST_CATALOG);
     board.render(emptyOverlay());
 
     const world = board.el.querySelector('.board-world')!;
@@ -121,7 +127,7 @@ describe('game controller', () => {
 
   it('selects a unit, previews the path, and shows a move range', () => {
     const level = BUILTIN_LEVELS[0];
-    const c = new GameController(level, () => {});
+    const c = new GameController(level, () => {}, { engine: TEST_ENGINE });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
     stubLayout(board, level.width * TILE);
@@ -137,7 +143,7 @@ describe('game controller', () => {
 
   it('opens the recruit modal on an owned castle and lists affordable units', () => {
     const level = BUILTIN_LEVELS[0];
-    const c = new GameController(level, () => {});
+    const c = new GameController(level, () => {}, { engine: TEST_ENGINE });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
     stubLayout(board, level.width * TILE);
@@ -151,7 +157,7 @@ describe('game controller', () => {
 
   it('renders every built-in level without throwing', () => {
     for (const level of BUILTIN_LEVELS) {
-      const c = new GameController(level, () => {});
+      const c = new GameController(level, () => {}, { engine: TEST_ENGINE });
       host.append(c.root);
       expect(c.root.querySelector('svg.board')).toBeTruthy();
       c.dispose();

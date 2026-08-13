@@ -113,7 +113,7 @@ function cloneDataRegistry<T extends { id: string }>(source: Registry<T>): Regis
 }
 
 /** Snapshot of definition registries for one engine/sandbox instance. */
-export function cloneContentCatalog(source: ContentCatalog = GlobalContentCatalog): ContentCatalog {
+export function cloneContentCatalog(source: ContentCatalog): ContentCatalog {
   return {
     movementProfiles: cloneDataRegistry(source.movementProfiles),
     damageTypes: cloneDataRegistry(source.damageTypes),
@@ -163,7 +163,7 @@ function idsIn<T extends { id: string }>(registry: Registry<T>, incoming: readon
 export class ContentPackInstaller {
   private readonly installed = new Map<string, number>();
 
-  constructor(readonly catalog: ContentCatalog = GlobalContentCatalog) {}
+  constructor(readonly catalog: ContentCatalog) {}
 
   install(...requested: readonly ContentPack[]): string[] {
     const pending = requested.filter((pack) => {

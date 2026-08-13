@@ -9,9 +9,14 @@ import {
 import { candidate01EnvironmentScene } from './candidate-01-environment';
 import { createSceneViewport } from '@empire/game-ui';
 
+import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+
+/** Composed per suite, exactly like an application composition root. */
+const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+
 describe('candidate-01 authored map scenery', () => {
   it('composes high-resolution surfaces, connected roads and authored regions for Twin Hills', () => {
-    const map = mapFromLevel(candidate01Level('c01-01'));
+    const map = mapFromLevel(candidate01Level('c01-01'), TEST_CATALOG);
     expect(candidate01EnvironmentScene('c01-01')?.mapSize).toEqual([map.width, map.height]);
     const layers = candidate01MapSceneryMarkup('c01-01', map);
     const markup = `${layers.ground}${layers.underUnits}${layers.overUnits}`;
@@ -33,7 +38,7 @@ describe('candidate-01 authored map scenery', () => {
   });
 
   it('authors a non-playable forest frame outside the logical cells', () => {
-    const map = mapFromLevel(candidate01Level('c01-01'));
+    const map = mapFromLevel(candidate01Level('c01-01'), TEST_CATALOG);
     const viewport = createSceneViewport(map.width, map.height, 32, candidate01SceneProfile('c01-01'));
     const frame = candidate01SceneFrameMarkup('c01-01', map, viewport);
 
@@ -44,7 +49,7 @@ describe('candidate-01 authored map scenery', () => {
   });
 
   it('does not leak authored Twin Hills dressing into other maps', () => {
-    const map = mapFromLevel(candidate01Level('c01-02'));
+    const map = mapFromLevel(candidate01Level('c01-02'), TEST_CATALOG);
     expect(candidate01MapSceneryMarkup('c01-02', map)).toEqual({
       ground: '',
       underUnits: '',

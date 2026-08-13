@@ -4,7 +4,7 @@ import { DomainInvariantError } from './errors';
 import { PlayerEntity } from './player-entity';
 import { StructureEntity } from './structure-entity';
 import { UnitEntity } from './unit-entity';
-import { GlobalContentCatalog, type ContentCatalog } from '../content-pack';
+import { type ContentCatalog } from '../content-pack';
 import { cloneUnitState } from '../unit-state';
 import { extractLostTransportPassengers } from '../transports';
 
@@ -12,7 +12,7 @@ import { extractLostTransportPassengers } from '../transports';
 export class BattleAggregate {
   constructor(
     readonly state: GameState,
-    readonly content: ContentCatalog = GlobalContentCatalog,
+    readonly content: ContentCatalog,
   ) {}
 
   unit(id: number): UnitEntity {

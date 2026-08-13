@@ -2,9 +2,14 @@ import { describe, expect, it } from 'vitest';
 import { emptyLevel, mapFromLevel } from '@empire/battle-engine/mapio';
 import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../battlefield-layer';
 
+import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+
+/** Composed per suite, exactly like an application composition root. */
+const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+
 describe('shared battlefield feature layer', () => {
   it('renders elevation, cliffs and directional cover through one adapter', () => {
-    const map = mapFromLevel(emptyLevel(4, 4));
+    const map = mapFromLevel(emptyLevel(4, 4), TEST_CATALOG);
     map.elevation[0] = 2;
     map.cliffs.push({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } });
     map.directionalCover.push({ at: { x: 1, y: 1 }, sides: { north: 'half', east: 'full' } });
@@ -17,7 +22,7 @@ describe('shared battlefield feature layer', () => {
   });
 
   it('changes its cache key for every visual map feature', () => {
-    const map = mapFromLevel(emptyLevel(4, 4));
+    const map = mapFromLevel(emptyLevel(4, 4), TEST_CATALOG);
     const initial = battlefieldRenderKey(map);
     map.owners[0] = 1;
     const ownership = battlefieldRenderKey(map);
@@ -29,7 +34,7 @@ describe('shared battlefield feature layer', () => {
   });
 
   it('labels a continuous plateau once instead of covering every elevated cell', () => {
-    const map = mapFromLevel(emptyLevel(3, 2));
+    const map = mapFromLevel(emptyLevel(3, 2), TEST_CATALOG);
     map.elevation = [2, 2, 0, 2, 2, 1];
 
     const markup = battlefieldFeatureMarkup(map);

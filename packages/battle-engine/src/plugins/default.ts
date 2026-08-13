@@ -11,7 +11,7 @@ import { ScenarioConditionHandlers, ScenarioEffectHandlers } from '../scenario';
 import { StatusBehaviors } from '../statuses';
 import { Abilities } from '../abilities';
 import { DefaultTacticalSpace } from '../tactical-space';
-import { cloneContentCatalog } from '../content-pack';
+import { cloneContentCatalog, GlobalContentCatalog } from '../content-pack';
 
 /** Cohesive tactical rules: resolution, effects, statuses and battle-local growth. */
 export const TacticalRulesPlugin: EnginePlugin = {
@@ -27,7 +27,7 @@ export const TacticalRulesPlugin: EnginePlugin = {
     'progression',
   ],
   install: (context) => {
-    const content = cloneContentCatalog();
+    const content = cloneContentCatalog(GlobalContentCatalog);
     context.provide('content', content);
     context.provide('abilities', Abilities.clone());
     context.provide('space', new DefaultTacticalSpace(content));

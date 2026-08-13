@@ -3,25 +3,16 @@ import { resolveArt } from '../art/ports';
 import { portraitSvg } from '../art/portraits';
 import { unitIcon } from '../art/units';
 import { PAL } from '../art/palette';
+import type { BattleRuleServices } from '@empire/battle-engine/action-system';
 import type { CommandOption } from '@empire/battle-engine/actions';
 import type { CareerOption } from '@empire/battle-engine/careers';
-import { careerDef } from '@empire/battle-engine/data/careers';
 import type { TacticOption } from '@empire/battle-engine/commanders';
 import type { CombatForecast } from '@empire/battle-engine/combat';
 import type { CombatModifier } from '@empire/battle-engine/combat-modifiers';
 import type { CombatPlan } from '@empire/battle-engine/combat-plan';
 import { activeCommanderFor, commanderUnit } from '@empire/battle-engine/commanders';
-import { armorClassDef, damageTypeDef } from '@empire/battle-engine/data/damage';
-import { Terrains } from '@empire/battle-engine/data/terrain';
-import {
-  movementLabel,
-  unitDef,
-} from '@empire/battle-engine/data/units';
-import { MovementProfiles } from '@empire/battle-engine/data/movement';
-import { weaponDef } from '@empire/battle-engine/data/weapons';
 import { idx } from '@empire/battle-engine/grid';
 import { recruitOptions } from '@empire/battle-engine/state';
-import { statusDef } from '@empire/battle-engine/statuses';
 import { describeObjective, objectiveProgress } from '@empire/battle-engine/victory';
 import type { Coord, Direction, GameState, ReactionStance, ResourceAmount, Unit } from '@empire/battle-engine/types';
 import {
@@ -35,6 +26,8 @@ import { escapeHtml } from './html';
 
 export interface HudView {
   state: GameState;
+  /** Ruleset this view was projected from; every label resolves through it. */
+  rules: BattleRuleServices;
   resources: BattleResourceSystem;
   /** Unit under the cursor or currently selected. */
   inspect: Unit | null;
@@ -329,14 +322,15 @@ export class Hud {
   private renderForecast(v: HudView): string {
     if (!v.forecast) return '';
     const { plan, fc, attacker, defender, recipient } = v.forecast;
-    const aDef = unitDef(attacker.type);
-    const dDef = unitDef(recipient.type);
+    const content = v.rules.content;
+    const aDef = content.units.get(attacker.type);
+    const dDef = content.units.get(recipient.type);
     return `<section class="card forecast">
       <h3>战斗预测</h3>
       <div class="fc-row">
         <span class="fc-name">${escapeHtml(aDef.name)}</span>
         <span class="fc-arrow">${icon('sword')}</span>
-        <span class="fc-name">${escapeHtml(unitDef(defender.type).name)}</span>
+        <span class="fc-name">${escapeHtml(content.units.get(defender.type).name)}</span>
       </div>
       ${fc.interceptor ? `<div class="hint">${escapeHtml(dDef.name)} 将进行援护并承受伤害</div>` : ''}
       ${fc.reaction?.stance === 'guard' ? '<div class="hint">目标将触发防御姿态</div>' : ''}
@@ -358,7 +352,7 @@ export class Hud {
         <span class="fc-hp">${attacker.hp} → ${fc.attackerHpAfter}</span>
       </div>
       ${hpBar(fc.attackerHpAfter / aDef.maxHp)}
-      <div class="fc-chain-title">攻击修正链 · ${damageTypeDef(fc.strike.damageType).name} → ${armorClassDef(dDef.armorClass).name}</div>
+      <div class="fc-chain-title">攻击修正链 · ${content.damageTypes.get(fc.strike.damageType).name} → ${content.armorClasses.get(dDef.armorClass).name}</div>
       <ul class="fc-detail">
         ${modifierList(fc.strike.modifiers)}
         <li>最终减伤上限后 <b>${pct(fc.strike.mitigation)}</b></li>
@@ -374,12 +368,13 @@ export class Hud {
   private renderUnit(v: HudView): string {
     const u = v.inspect;
     if (!u) return '';
-    const def = unitDef(u.type);
-    const weapons = def.weapons.map(weaponDef);
+    const content = v.rules.content;
+    const def = content.units.get(u.type);
+    const weapons = def.weapons.map((id) => content.weapons.get(id));
     const maximumPower = Math.max(...weapons.map((weapon) => weapon.power));
     const minimumRange = Math.min(...weapons.map((weapon) => weapon.minRange));
     const maximumRange = Math.max(...weapons.map((weapon) => weapon.maxRange));
-    const damageTypes = [...new Set(weapons.map((weapon) => damageTypeDef(weapon.damageType).name))].join(' / ');
+    const damageTypes = [...new Set(weapons.map((weapon) => content.damageTypes.get(weapon.damageType).name))].join(' / ');
     const owner = v.state.players.find((p) => p.id === u.owner);
     const ratio = u.hp / def.maxHp;
     const commander = u.commanderId
@@ -404,8 +399,8 @@ export class Hud {
         <div><span>移动</span><b>${def.movement}</b></div>
         <div><span>射程</span><b>${minimumRange === maximumRange ? minimumRange : `${minimumRange}-${maximumRange}`}</b></div>
         <div><span>伤害</span><b>${damageTypes}</b></div>
-        <div><span>护甲</span><b>${armorClassDef(def.armorClass).name}</b></div>
-        <div><span>移动型</span><b>${movementLabel(def.movementClass)}</b></div>
+        <div><span>护甲</span><b>${content.armorClasses.get(def.armorClass).name}</b></div>
+        <div><span>移动型</span><b>${content.movementProfiles.get(def.movementClass).name}</b></div>
         <div><span>战力价值</span><b>${def.value}</b></div>
       </div>
       <div class="tag-row">
@@ -418,7 +413,7 @@ export class Hud {
       <div class="unit-section">
         <h4>武器与资源</h4>
         ${def.weapons.map((id) => {
-          const weapon = weaponDef(id);
+          const weapon = content.weapons.get(id);
           const runtime = u.weaponState[id];
           const range = weapon.minRange === weapon.maxRange
             ? String(weapon.minRange)
@@ -433,7 +428,7 @@ export class Hud {
             : '';
           const state = accounts.length > 0 ? accounts.join(' · ') : '无限制';
           const art = resolveArt((provider) => provider.weaponIcon?.(id)) ?? '';
-          return `<div class="kv wrap art-kv"><span>${art}<i>${escapeHtml(weapon.name)} · ${damageTypeDef(weapon.damageType).name} ${weapon.power} · 射程 ${range}</i></span><b>${escapeHtml(state)}${cooldown}${escapeHtml(requirements)}${escapeHtml(costs)}</b></div>`;
+          return `<div class="kv wrap art-kv"><span>${art}<i>${escapeHtml(weapon.name)} · ${content.damageTypes.get(weapon.damageType).name} ${weapon.power} · 射程 ${range}</i></span><b>${escapeHtml(state)}${cooldown}${escapeHtml(requirements)}${escapeHtml(costs)}</b></div>`;
         }).join('')}
       </div>
       <div class="unit-section">
@@ -441,12 +436,12 @@ export class Hud {
         ${u.statuses.length > 0
           ? u.statuses.map((status) => {
             const art = resolveArt((provider) => provider.statusIcon?.(status.id)) ?? '';
-            return `<div class="kv art-kv"><span>${art}<i>${escapeHtml(statusDef(status.id).name)}</i></span><b>${status.remaining} 回合${status.stacks > 1 ? ` · ${status.stacks} 层` : ''}</b></div>`;
+            return `<div class="kv art-kv"><span>${art}<i>${escapeHtml(content.statuses.get(status.id).name)}</i></span><b>${status.remaining} 回合${status.stacks > 1 ? ` · ${status.stacks} 层` : ''}</b></div>`;
           }).join('')
           : '<div class="hint">无状态效果</div>'}
         <div class="kv"><span>军衔</span><b>${RANK_LABEL[u.rank]}${v.rankNextThreshold === null ? '' : ` · ${u.rankProgress}/${v.rankNextThreshold}`}</b></div>
         <div class="kv"><span>朝向</span><b>${FACING_LABEL[u.facing]}</b></div>
-        ${u.career.current ? `<div class="kv"><span>职业</span><b>${escapeHtml(careerDef(u.career.current).name)} · 熟练度 ${u.career.mastery[u.career.current] ?? 0}/${careerDef(u.career.current).masteryThreshold}</b></div>` : ''}
+        ${u.career.current ? `<div class="kv"><span>职业</span><b>${escapeHtml(content.careers.get(u.career.current).name)} · 熟练度 ${u.career.mastery[u.career.current] ?? 0}/${content.careers.get(u.career.current).masteryThreshold}</b></div>` : ''}
         ${accountSummary(v.resources, unitResource(u)).map((account) => `<div class="kv"><span>单位资源</span><b>${escapeHtml(account)}</b></div>`).join('')}
         ${commander
           ? `<div class="kv"><span>编队 ${escapeHtml(commander.id)}</span><b class="${commandActive ? 'good' : 'bad'}">${leader ? (commandActive ? '光环生效' : '超出指挥范围') : '指挥官已离场'}</b></div>`
@@ -482,9 +477,9 @@ export class Hud {
     if (!v.tile) return '';
     const s = v.state;
     const i = idx(s.map, v.tile.x, v.tile.y);
-    const t = Terrains.get(s.map.tiles[i]);
+    const t = v.rules.content.terrains.get(s.map.tiles[i]);
     const owner = s.players.find((p) => p.id === s.map.owners[i]);
-    const costs = MovementProfiles.all()
+    const costs = v.rules.content.movementProfiles.all()
       .map((profile) => {
         const cost = t.cost[profile.id];
         return `${profile.name} ${cost == null ? '—' : cost}`;
@@ -514,8 +509,8 @@ export class Hud {
           .filter((objective) => !me.objectiveStates[objective.id!]?.hidden)
           .map(
             (o) =>
-              `<li>${icon('flag')}<span>${escapeHtml(o.label ?? describeObjective(o))}</span><em>${escapeHtml(
-                objectiveProgress(s, me.id, o),
+              `<li>${icon('flag')}<span>${escapeHtml(o.label ?? describeObjective(o, v.rules.objectives))}</span><em>${escapeHtml(
+                objectiveProgress(v.rules, s, me.id, o),
               )}</em></li>`,
           )
           .join('')}
@@ -548,7 +543,7 @@ export class Hud {
     if (!v.recruitAt) return '';
     const s = v.state;
     const p = s.players.find((x) => x.id === s.currentPlayer)!;
-    const options = recruitOptions(s, v.recruitAt, v.resources);
+    const options = recruitOptions(s, v.recruitAt, v.resources, v.rules.content);
     const accounts = accountSummary(v.resources, playerResource(p));
     return `<div class="modal">
       <div class="modal-box">
@@ -560,8 +555,8 @@ export class Hud {
         <div class="recruit-grid">
           ${options
             .map((o) => {
-              const def = unitDef(o.unit);
-              const weapons = def.weapons.map(weaponDef);
+              const def = v.rules.content.units.get(o.unit);
+              const weapons = def.weapons.map((id) => v.rules.content.weapons.get(id));
               const maximumPower = Math.max(...weapons.map((weapon) => weapon.power));
               const minimumRange = Math.min(...weapons.map((weapon) => weapon.minRange));
               const maximumRange = Math.max(...weapons.map((weapon) => weapon.maxRange));

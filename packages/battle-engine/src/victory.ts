@@ -1,14 +1,14 @@
 import { PlayerEntity } from './domain/player-entity';
 import { idx } from './grid';
 import {
-  ObjectiveHandlers,
   type ObjectiveHandlerRegistry,
   type ObjectiveOutcome,
+  type ObjectiveRules,
 } from './objective-system';
 import { Battlefield } from './domain/battlefield';
 import { player, productionTilesOf, unitsOf } from './state';
 import type { GameEvent, GameState, Objective, PlayerId, ResourceAmount } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 
 export type { ObjectiveOutcome } from './objective-system';
 export { ObjectiveHandlers, ObjectiveHandlerRegistry } from './objective-system';
@@ -19,7 +19,7 @@ export interface VictoryResult {
 }
 
 /** A player is out when they have neither units nor any way to make more. */
-export function isDefeated(state: GameState, id: PlayerId, content: ContentCatalog = GlobalContentCatalog): boolean {
+export function isDefeated(state: GameState, id: PlayerId, content: ContentCatalog): boolean {
   return unitsOf(state, id).length === 0 && productionTilesOf(state, id, content).length === 0;
 }
 
@@ -27,14 +27,18 @@ function objectiveStatus(state: GameState, owner: PlayerId, objective: Objective
   return player(state, owner).objectiveStates[objective.id!]?.status ?? 'active';
 }
 
+/** Port used by every objective query in this module. */
+export interface VictoryRules extends ObjectiveRules {
+  readonly objectives: ObjectiveHandlerRegistry;
+}
+
 export function objectiveOutcome(
+  rules: VictoryRules,
   state: GameState,
   owner: PlayerId,
   objective: Objective,
-  handlers: ObjectiveHandlerRegistry = ObjectiveHandlers,
-  content: ContentCatalog = GlobalContentCatalog,
 ): ObjectiveOutcome {
-  return handlers.evaluate(state, owner, objective, content);
+  return rules.objectives.evaluate(rules, state, owner, objective);
 }
 
 function transitionObjective(
@@ -57,67 +61,65 @@ function transitionObjective(
 }
 
 function refreshOne(
+  rules: VictoryRules,
   state: GameState,
   owner: PlayerId,
   objective: Objective,
   emit: (event: GameEvent) => void,
-  handlers: ObjectiveHandlerRegistry,
-  content: ContentCatalog,
 ): void {
   if (objectiveStatus(state, owner, objective) !== 'active') return;
+  const handlers = rules.objectives;
   const children = handlers.children(objective);
   if (handlers.refreshMode(objective) === 'children') {
-    for (const child of children) refreshOne(state, owner, child, emit, handlers, content);
+    for (const child of children) refreshOne(rules, state, owner, child, emit);
   } else if (handlers.refreshMode(objective) === 'sequence') {
     for (const child of children) {
       const status = objectiveStatus(state, owner, child);
       if (status === 'completed' || status === 'cancelled') continue;
-      refreshOne(state, owner, child, emit, handlers, content);
+      refreshOne(rules, state, owner, child, emit);
       if (objectiveStatus(state, owner, child) !== 'completed') break;
     }
   }
-  transitionObjective(state, owner, objective, handlers.evaluate(state, owner, objective, content), emit);
+  transitionObjective(state, owner, objective, handlers.evaluate(rules, state, owner, objective), emit);
 }
 
 export function refreshObjectiveStates(
+  rules: VictoryRules,
   state: GameState,
   emit: (event: GameEvent) => void = () => {},
-  handlers: ObjectiveHandlerRegistry = ObjectiveHandlers,
-  content: ContentCatalog = GlobalContentCatalog,
 ): void {
   for (const owner of state.players) {
-    for (const objective of owner.objectives) refreshOne(state, owner.id, objective, emit, handlers, content);
+    for (const objective of owner.objectives) refreshOne(rules, state, owner.id, objective, emit);
   }
 }
 
 export function describeObjective(
   objective: Objective,
-  handlers: ObjectiveHandlerRegistry = ObjectiveHandlers,
+  handlers: ObjectiveHandlerRegistry,
 ): string {
   return handlers.describe(objective);
 }
 
 export function objectiveProgress(
+  rules: VictoryRules,
   state: GameState,
   owner: PlayerId,
   objective: Objective,
-  handlers: ObjectiveHandlerRegistry = ObjectiveHandlers,
-  content: ContentCatalog = GlobalContentCatalog,
 ): string {
-  return handlers.progress(state, owner, objective, content);
+  return rules.objectives.progress(rules, state, owner, objective);
 }
 
 export function evaluateVictory(
+  rules: VictoryRules,
   state: GameState,
   emit: (event: GameEvent) => void = () => {},
-  handlers: ObjectiveHandlerRegistry = ObjectiveHandlers,
-  content: ContentCatalog = GlobalContentCatalog,
 ): VictoryResult {
-  refreshObjectiveStates(state, emit, handlers, content);
+  const handlers = rules.objectives;
+  refreshObjectiveStates(rules, state, emit);
 
   for (const owner of state.players) {
     if (!owner.alive) continue;
-    if (isDefeated(state, owner.id, content)) new PlayerEntity(owner).defeat();
+    if (isDefeated(state, owner.id, rules.content)) new PlayerEntity(owner).defeat();
     const criticalFailure = owner.objectives.some(
       (objective) => handlers.role(objective) === 'critical' && objectiveStatus(state, owner.id, objective) === 'failed',
     );
@@ -147,7 +149,7 @@ export function evaluateVictory(
 export function turnResourceGrantsFor(
   state: GameState,
   owner: PlayerId,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): ResourceAmount[] {
   const totals = new Map<string, number>();
   const add = (grant: ResourceAmount): void => {
@@ -172,7 +174,7 @@ export function healRateAt(
   x: number,
   y: number,
   owner: PlayerId,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): number {
   const index = idx(state.map, x, y);
   if (!state.rules.healOnOwnedBuilding) return 0;

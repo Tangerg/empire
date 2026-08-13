@@ -1,10 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction, IllegalActionError } from '../actions';
 import { commanderAuraFor, tacticOptions } from '../commanders';
-import { computeDamage } from '../combat';
 import { computeMoveField } from '../movement';
-import { cloneState, createState } from '../state';
-import { makeLevel, u } from './fixtures';
+import { cloneState } from '../state';
+import { TEST_CONTENT, TEST_RULES, makeLevel, testDamage, testState, u } from './fixtures';
 import { COMMAND_POINTS_RESOURCE, MOMENTUM_RESOURCE } from '../resources';
 
 function commandLevel() {
@@ -27,7 +26,7 @@ function commandLevel() {
 
 describe('commanders and formation resources', () => {
   it('applies a local aura only to linked units inside command range', () => {
-    const state = createState(commandLevel());
+    const state = testState(commandLevel());
     const troop = state.units[1];
     const enemy = state.units[2];
     expect(commanderAuraFor(state, troop)).toMatchObject({
@@ -35,19 +34,19 @@ describe('commanders and formation resources', () => {
       defenseDelta: 0.1,
       movementDelta: 1,
     });
-    const commanded = computeDamage(state, troop, enemy).damage;
-    expect(Math.max(...[...computeMoveField(state, troop).tiles.values()].map((tile) => tile.cost))).toBe(4);
+    const commanded = testDamage(state, troop, enemy).damage;
+    expect(Math.max(...[...computeMoveField(state, troop, TEST_CONTENT).tiles.values()].map((tile) => tile.cost))).toBe(4);
 
     troop.x = 2;
     expect(commanderAuraFor(state, troop).attackMultiplier).toBe(1);
-    expect(computeDamage(state, troop, enemy).damage).toBeLessThan(commanded);
+    expect(testDamage(state, troop, enemy).damage).toBeLessThan(commanded);
   });
 
   it('spends command points on a data-defined area tactic', () => {
     const level = commandLevel();
     level.players[0].resources[COMMAND_POINTS_RESOURCE] = { current: 2, capacity: 4 };
-    const state = createState(level);
-    expect(tacticOptions(state, 'alpha').map((option) => option.id)).toContain('rally');
+    const state = testState(level);
+    expect(tacticOptions(state, 'alpha', TEST_RULES.resources, TEST_CONTENT).map((option) => option.id)).toContain('rally');
 
     const events = applyAction(state, {
       kind: 'tactic',
@@ -75,7 +74,7 @@ describe('commanders and formation resources', () => {
   it('regenerates command points and resets tactic use on the owner turn', () => {
     const level = commandLevel();
     level.players[0].resources[COMMAND_POINTS_RESOURCE] = { current: 2, capacity: 4 };
-    const state = createState(level);
+    const state = testState(level);
     applyAction(state, {
       kind: 'tactic',
       commander: 'alpha',
@@ -100,7 +99,7 @@ describe('commanders and formation resources', () => {
   it('deep-clones commander and hero runtime state', () => {
     const level = commandLevel();
     level.units[0].resources = { [MOMENTUM_RESOURCE]: { current: 0, capacity: 5 } };
-    const state = createState(level);
+    const state = testState(level);
     const copy = cloneState(state);
     copy.commanders[0].aura.attackMultiplier = 9;
     copy.commanders[0].usedTactics.push('rally');
@@ -113,7 +112,7 @@ describe('commanders and formation resources', () => {
   });
 
   it('removes the aura and shocks linked troops when the commander falls', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...'], {
         units: [
           u(0, 0, 'knight', 1),

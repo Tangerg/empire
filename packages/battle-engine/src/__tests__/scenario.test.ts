@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
 import { idx } from '../grid';
-import { cloneState, createState } from '../state';
+import { cloneState } from '../state';
 import { damageStructure } from '../structures';
 import type { Action } from '../types';
-import { makeLevel, u } from './fixtures';
+import { TEST_CONTENT, makeLevel, testState, u } from './fixtures';
 
 const wait = (unit: number, x: number, y: number): Action => ({
     kind: 'command',
@@ -15,7 +15,7 @@ const wait = (unit: number, x: number, y: number): Action => ({
 
 describe('headless scenario primitives', () => {
   it('uses the same destroyed-structure trigger for a fantasy tower or stellar node', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['...'], {
         units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)],
         structures: [{ id: 'story-node', type: 'command_node', x: 1, y: 0 }],
@@ -35,7 +35,7 @@ describe('headless scenario primitives', () => {
         },
       }),
     );
-    damageStructure(s, 'story-node', 1000);
+    damageStructure(s, 'story-node', 1000, TEST_CONTENT);
     const events = applyAction(s, wait(s.units[0].id, 0, 0));
     expect(s.scenario.variables.nodeDown).toBe(true);
     expect(events).toContainEqual({ type: 'scenarioSignal', signal: 'node.destroyed' });
@@ -43,7 +43,7 @@ describe('headless scenario primitives', () => {
   });
 
   it('applies a zone status without knowing whether the fiction is vacuum, fear, or poison', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['....'], {
         units: [u(0, 0, 'soldier', 1), u(3, 0, 'soldier', 2)],
         scenario: {
@@ -73,7 +73,7 @@ describe('headless scenario primitives', () => {
   });
 
   it('uses a turn trigger and zone terrain replacement for flood, tide, or decompression', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['....'], {
         units: [u(0, 0, 'soldier', 1), u(3, 0, 'soldier', 2)],
         scenario: {
@@ -100,7 +100,7 @@ describe('headless scenario primitives', () => {
   });
 
   it('deep-clones structures, variables, and trigger history for AI simulation', () => {
-    const s = createState(
+    const s = testState(
       makeLevel(['..', '..'], {
         units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
         structures: [{ id: 'gate-a', type: 'gate', x: 0, y: 1 }],

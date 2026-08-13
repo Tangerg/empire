@@ -2,7 +2,7 @@ import { Battlefield } from './domain/battlefield';
 import { dist, idx, ring } from './grid';
 import { areAllies } from './state';
 import type { GameState, PlayerId, Unit } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 
 /**
  * Fog of war (off by default, per-level flag). Terrain is always known — only
@@ -10,7 +10,7 @@ import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
  * only from an adjacent tile. Simple, readable, and enough to make scouting
  * matter for future modes.
  */
-export function visibleTiles(s: GameState, viewer: PlayerId, content: ContentCatalog = GlobalContentCatalog): Set<number> {
+export function visibleTiles(s: GameState, viewer: PlayerId, content: ContentCatalog): Set<number> {
   const seen = new Set<number>();
   const battlefield = new Battlefield(s, content);
   if (!s.rules.fog) {
@@ -36,7 +36,7 @@ export function isUnitVisible(
   viewer: PlayerId,
   u: Unit,
   seen: Set<number> | undefined = undefined,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): boolean {
   if (!s.rules.fog) return true;
   if (u.owner === viewer || areAllies(s, u.owner, viewer)) return true;
@@ -52,7 +52,7 @@ export function isUnitVisible(
   );
 }
 
-export function visibleUnits(s: GameState, viewer: PlayerId, content: ContentCatalog = GlobalContentCatalog): Unit[] {
+export function visibleUnits(s: GameState, viewer: PlayerId, content: ContentCatalog): Unit[] {
   const seen = visibleTiles(s, viewer, content);
   return s.units.filter((u) => isUnitVisible(s, viewer, u, seen, content));
 }

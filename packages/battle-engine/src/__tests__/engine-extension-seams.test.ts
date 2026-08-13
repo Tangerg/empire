@@ -11,7 +11,7 @@ import { cloneContentCatalog } from '../content-pack';
 import { GameSession } from '../session';
 import { DefaultTacticalSpace } from '../tactical-space';
 import type { GameEventKindMap } from '../types';
-import { makeLevel, u } from './fixtures';
+import { TEST_CONTENT, makeLevel, u } from './fixtures';
 
 declare module '../types' {
   interface GameEventKindMap {
@@ -28,7 +28,7 @@ const pulse: AbilityDef = {
   tags: ['extension'],
   targets: () => [],
   usable: () => true,
-  execute: ({ state, unit }, _target, emit) => {
+  execute: (_rules, { state, unit }, _target, emit) => {
     state.scenario.variables.pulses = Number(state.scenario.variables.pulses ?? 0) + 1;
     emit({ type: 'testPulse', unit: unit.id, strength: 3 });
   },
@@ -82,7 +82,7 @@ describe('balanced engine extension seams', () => {
   });
 
   it('uses one spatial policy for menus and authoritative validation', () => {
-    const session = new GameSession(duel(), createBattleEngine({ space: new PacifistSpace() }));
+    const session = new GameSession(duel(), createBattleEngine({ space: new PacifistSpace(TEST_CONTENT) }));
     const actor = session.state.units[0];
 
     expect(session.commandsAt(actor, actor).some((option) => option.ability === 'attack')).toBe(false);
@@ -150,7 +150,7 @@ describe('balanced engine extension seams', () => {
   });
 
   it('fails fast for incompatible engine capabilities and malformed levels', () => {
-    const content = cloneContentCatalog();
+    const content = cloneContentCatalog(TEST_CONTENT);
     const soldier = content.units.get('soldier');
     content.units.override(soldier.id, {
       abilities: [...soldier.abilities, 'missing-engine-ability'],

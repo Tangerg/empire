@@ -1,6 +1,5 @@
 import { idx } from './grid';
 import {
-  ObjectiveHandlers,
   type ObjectiveHandlerRegistry,
 } from './objective-system';
 import { selectUnits } from './scenario';
@@ -14,7 +13,7 @@ import type {
   PlayerId,
   StructureId,
 } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 
 type ObjectiveKind = Extract<keyof ObjectiveKindMap, string>;
 type ObjectiveOf<K extends ObjectiveKind> = ObjectiveMeta & ObjectiveKindMap[K];
@@ -251,9 +250,9 @@ function activeChildren(
 export function buildAiMissionIntent(
   state: GameState,
   owner: PlayerId,
-  advisors: AiObjectiveAdvisorRegistry = DefaultAiObjectiveAdvisors,
-  handlers: ObjectiveHandlerRegistry = ObjectiveHandlers,
-  content: ContentCatalog = GlobalContentCatalog,
+  advisors: AiObjectiveAdvisorRegistry,
+  handlers: ObjectiveHandlerRegistry,
+  content: ContentCatalog,
 ): AiMissionIntent {
   const destinations: AiDestination[] = [];
   const priorityUnits = new Map<number, number>();

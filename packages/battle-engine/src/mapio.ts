@@ -11,7 +11,7 @@ import type {
 } from './types';
 import { DEFAULT_RULES } from './types';
 import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from './resources';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 
 /**
  * Level files store terrain as rows of single characters so a map diff is
@@ -33,7 +33,7 @@ function serializedTerrainCharacter(terrain: TerrainId): string {
 
 /* --------------------------------------------------------------- deserialize */
 
-export function mapFromLevel(level: LevelData, content: ContentCatalog = GlobalContentCatalog): GameMap {
+export function mapFromLevel(level: LevelData, content: ContentCatalog): GameMap {
   const { width, height } = level;
   if (!Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1) {
     throw new LevelFormatError(`bad map size ${width}x${height}`);
@@ -151,7 +151,7 @@ function validateResourceAccounts(
 /** Structural + playability lint. The editor surfaces this live. */
 export function validateLevel(
   level: LevelData,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): LevelIssue[] {
   const issues: LevelIssue[] = [];
   const err = (message: string) => issues.push({ severity: 'error', message });

@@ -1,14 +1,13 @@
 import { dist } from './grid';
 import { areAllies } from './state';
 import type { ContentCatalog } from './content-pack';
-import { GlobalContentCatalog } from './content-pack';
 import type { FormationDef, FormationId, GameState, Unit } from './types';
 
 /** A formation only contributes while its spatial invariant is satisfied. */
 export function activeFormation(
   state: GameState,
   unit: Unit,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): FormationDef | null {
   if (!unit.formation) return null;
   const definition = content.formations.tryGet(unit.formation);
@@ -24,7 +23,7 @@ export function validateFormationChange(
   state: GameState,
   unit: Unit,
   formation: FormationId | null,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): void {
   if (formation === null) return;
   const allowed = content.units.get(unit.type).formations ?? [];
@@ -39,7 +38,7 @@ export function validateFormationChange(
 export function formationMovementDelta(
   state: GameState,
   unit: Unit,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): number {
   return activeFormation(state, unit, content)?.movementDelta ?? 0;
 }

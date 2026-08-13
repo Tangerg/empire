@@ -1,9 +1,8 @@
+import type { ContentCatalog } from '@empire/battle-engine';
 import { IllegalActionError } from '@empire/battle-engine/actions';
 import { tacticOptions } from '@empire/battle-engine/commanders';
-import { Terrains } from '@empire/battle-engine/data/terrain';
-import { unitDef } from '@empire/battle-engine/data/units';
-import { careerDef } from '@empire/battle-engine/data/careers';
 import { idx } from '@empire/battle-engine/grid';
+import type { BattleEngine } from '@empire/battle-engine/engine';
 import { GameSession } from '@empire/battle-engine/session';
 import { areEnemies, recruitOptions, unitAt, unitsOf } from '@empire/battle-engine/state';
 import type {
@@ -26,6 +25,8 @@ export interface BattleCompletionSnapshot {
 }
 
 export interface GameControllerOptions {
+  /** Ruleset this battle runs on. Omitted only by throwaway harnesses. */
+  engine?: BattleEngine;
   exitLabel?: string;
   completionLabel?: string;
   onComplete?: (snapshot: BattleCompletionSnapshot) => void;
@@ -75,7 +76,7 @@ export class GameController {
     private readonly onExit: () => void,
     private readonly options: GameControllerOptions = {},
   ) {
-    this.session = new GameSession(level);
+    this.session = new GameSession(level, options.engine);
     this.root.className = 'game-root';
 
     this.board = new BoardView(this.session.state, {
@@ -87,7 +88,7 @@ export class GameController {
         this.refresh();
       },
       onSecondary: () => this.cancel(),
-    });
+    }, this.session.content);
 
     this.hud = new Hud({
       onCommand: (a) => void this.chooseCommand(a),
@@ -300,12 +301,12 @@ export class GameController {
 
     // Empty production building we own: recruit.
     const i = idx(s.map, c.x, c.y);
-    const terrain = Terrains.get(s.map.tiles[i]);
+    const terrain = this.session.content.terrains.get(s.map.tiles[i]);
     if (
       this.isHumanTurn &&
       terrain.produces.length > 0 &&
       s.map.owners[i] === s.currentPlayer &&
-      recruitOptions(s, c).length > 0
+      recruitOptions(s, c, this.session.rules.resources, this.session.content).length > 0
     ) {
       this.mode = { kind: 'recruit', at: c };
       this.refresh();
@@ -337,7 +338,7 @@ export class GameController {
           .filter((hit) => !hit.primary)
           .reduce((sum, hit) => sum + hit.damage.damage, 0) +
           plan.structureHits.filter((hit) => !hit.primary).reduce((sum, hit) => sum + hit.forecast.damage, 0);
-        const terrain = Terrains.get(s.map.tiles[i]);
+        const terrain = this.session.content.terrains.get(s.map.tiles[i]);
         const score =
           fc.strike.damage * 2 +
           splash * 1.25 +
@@ -386,7 +387,7 @@ export class GameController {
     if (separator < 1) return;
     const commander = key.slice(0, separator);
     const tactic = key.slice(separator + 1);
-    const option = tacticOptions(this.state, commander).find((candidate) => candidate.id === tactic);
+    const option = tacticOptions(this.state, commander, this.session.rules.resources, this.session.content).find((candidate) => candidate.id === tactic);
     if (!option) return;
     if (option.targets.length === 1) {
       await this.dispatch({ kind: 'tactic', commander, tactic, target: option.targets[0] });
@@ -601,7 +602,7 @@ export class GameController {
         default:
           break;
       }
-      this.pushMessage(describeEvent(this.state, e));
+      this.pushMessage(describeEvent(this.session.content, this.state, e));
     }
   }
 
@@ -753,7 +754,7 @@ export class GameController {
         ? s.commanders
             .filter((commander) => commander.owner === s.currentPlayer)
             .flatMap((commander) =>
-              tacticOptions(s, commander.id, this.session.engine.rules.resources).map((option) => ({
+              tacticOptions(s, commander.id, this.session.rules.resources, this.session.content).map((option) => ({
                 ...option,
                 key: `${commander.id}:${option.id}`,
                 commander: commander.id,
@@ -763,7 +764,8 @@ export class GameController {
 
     return {
       state: s,
-      resources: this.session.engine.rules.resources,
+      rules: this.session.rules,
+      resources: this.session.rules.resources,
       inspect: this.inspect,
       tile: this.cursor,
       forecast: fcView,
@@ -823,10 +825,10 @@ export class GameController {
 
 /* --------------------------------------------------------------- event text */
 
-function describeEvent(s: GameState, e: GameEvent): string {
+function describeEvent(content: ContentCatalog, s: GameState, e: GameEvent): string {
   const name = (id: number) => {
     const u = s.units.find((x) => x.id === id);
-    return u ? unitDef(u.type).name : '单位';
+    return u ? content.units.get(u.type).name : '单位';
   };
   const pname = (id: number) => s.players.find((p) => p.id === id)?.name ?? '？';
   switch (e.type) {
@@ -856,7 +858,7 @@ function describeEvent(s: GameState, e: GameEvent): string {
     case 'rankChanged':
       return `${name(e.unit)} 晋升为 ${(['新兵', '老兵', '精英'] as const)[e.to]}`;
     case 'careerChanged':
-      return `${name(e.unit)} 转职为 ${careerDef(e.to).name}`;
+      return `${name(e.unit)} 转职为 ${content.careers.get(e.to).name}`;
     case 'facingChanged':
       return `${name(e.unit)} 调整了朝向`;
     case 'turnStart':

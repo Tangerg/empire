@@ -111,3 +111,64 @@ describe('source dependency boundaries', () => {
     expect(document).not.toMatch(/from\s+['"]\.\.\/(?:art|ui|application)/);
   });
 });
+
+describe('dependency injection invariants', () => {
+  it('never defaults a dependency parameter to a global singleton', () => {
+    const globals = [
+      'GlobalContentCatalog',
+      'DefaultBattleResources',
+      'DefaultCombatModifierPipeline',
+      'DefaultBattleRuleServices',
+      'CoreTacticalSpace',
+      'StatusBehaviors',
+      'ObjectiveHandlers',
+      'DefaultRankProgression',
+      'WeaponHitEffectHandlers',
+      'ScenarioConditionHandlers',
+      'ScenarioEffectHandlers',
+      'DefaultAiObjectiveAdvisors',
+      'DefaultAbilityAiEvaluators',
+    ];
+    const pattern = new RegExp(`[:,)]\\s*\\w+\\s*=\\s*(?:${globals.join('|')})\\b|=\\s*(?:${globals.join('|')})(?=\\s*[,)])`);
+    const offenders = runtimeTypeScriptFiles(coreRoot).filter((file) => {
+      const source = readFileSync(file, 'utf8');
+      // Only parameter lists matter; a module-level const binding is fine.
+      return source
+        .split('\n')
+        .some((line) => pattern.test(line) && !/^\s*(?:export\s+)?const\s/.test(line));
+    });
+
+    expect(offenders.map((file) => relative(coreRoot, file))).toEqual([]);
+  });
+
+  it('keeps presentation packages off the global content registries', () => {
+    const packages = ['game-ui', 'editor'];
+    const violations = packages.flatMap((packageName) =>
+      runtimeTypeScriptFiles(join(packagesRoot, packageName, 'src')).flatMap((file) => {
+        const source = readFileSync(file, 'utf8');
+        return [...source.matchAll(/from\s+['"]([^'"]+)['"]/g)]
+          .map((match) => match[1])
+          .filter((specifier) => /@empire\/battle-engine\/data\//.test(specifier))
+          .map((specifier) => `${packageName}/${relative(join(packagesRoot, packageName, 'src'), file)} -> ${specifier}`);
+      }),
+    );
+
+    // Presentation renders whatever ruleset it was handed, never an ambient one.
+    expect(violations).toEqual([]);
+  });
+
+  it('keeps ambient content installation out of libraries', () => {
+    const packages = ['game-ui', 'editor', 'campaign-engine', 'story-candidate-01'];
+    const violations = packages.flatMap((packageName) =>
+      runtimeTypeScriptFiles(join(packagesRoot, packageName, 'src')).flatMap((file) => {
+        const source = readFileSync(file, 'utf8');
+        return /\binstallContentPacks\s*\(/.test(source)
+          ? [`${packageName}/${relative(join(packagesRoot, packageName, 'src'), file)}`]
+          : [];
+      }),
+    );
+
+    // Only application composition roots may install content.
+    expect(violations).toEqual([]);
+  });
+});

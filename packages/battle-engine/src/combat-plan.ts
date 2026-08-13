@@ -8,10 +8,10 @@ import {
   isWeaponReady,
   unitWeapons,
   type CombatForecast,
+  type CombatRules,
   type DamageBreakdown,
   type StructureCombatForecast,
 } from './combat';
-import { DefaultCombatModifierPipeline, type CombatModifierPipeline } from './combat-modifiers';
 import { handleCommanderDefeat } from './commanders';
 import { BattleAggregate, UnitEntity } from './domain/index';
 import { dist, idx, inBounds, lineBetween, ring, sameCoord } from './grid';
@@ -20,16 +20,11 @@ import {
   awardDamageTakenMomentum,
   awardRankProgress,
   changeMomentum,
-  DefaultRankProgression,
   type RankProgressionPolicy,
 } from './progression';
-import { WeaponHitEffectHandlers, type WeaponHitEffectHandlerRegistry } from './hit-effects';
+import { type WeaponHitEffectHandlerRegistry } from './hit-effects';
 import { areAllies, areEnemies, requireUnit, unitAtCoord } from './state';
 import { damageStructure, structureAt } from './structures';
-import {
-  type BattleResourceSystem,
-  DefaultBattleResources,
-} from './resources';
 import type {
   Coord,
   GameEvent,
@@ -40,7 +35,7 @@ import type {
   WeaponId,
   WeaponHitEffect,
 } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 import { resolveMoraleAfterDamage } from './morale';
 import { emitTransportLossEvents } from './transports';
 import { hostileActionAllowed } from './engagement';
@@ -95,6 +90,15 @@ export interface CombatPlan {
   supportAttack: PlannedSupportAttack | null;
 }
 
+/**
+ * Execution needs everything forecasting needs, plus the effect and growth
+ * policies. Declared as a consumer port; `BattleRuleServices` satisfies it.
+ */
+export interface CombatPlanRules extends CombatRules {
+  readonly hitEffects: WeaponHitEffectHandlerRegistry;
+  readonly progression: RankProgressionPolicy;
+}
+
 const SUPPORT_ATTACK_MULTIPLIER = 0.6;
 
 function supportDamage(damage: DamageBreakdown): DamageBreakdown {
@@ -115,15 +119,14 @@ function supportDamage(damage: DamageBreakdown): DamageBreakdown {
 }
 
 function planSupportAttack(
+  rules: CombatRules,
   state: GameState,
   attacker: Unit,
   attackerAt: Coord,
   defender: Unit,
   defenderHp: number,
-  pipeline: CombatModifierPipeline,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): PlannedSupportAttack | null {
+  const content = rules.content;
   const candidates = state.units
     .filter((candidate) =>
       candidate.id !== attacker.id &&
@@ -134,12 +137,16 @@ function planSupportAttack(
     .flatMap((supporter) => unitWeapons(supporter, content)
       .filter((weapon) =>
         weapon.canCounter &&
-        isWeaponReady(supporter, weapon, resources, state.players.find((p) => p.id === supporter.owner), content) &&
+        isWeaponReady(rules, supporter, weapon, state.players.find((p) => p.id === supporter.owner)) &&
         canReachWithWeapon(weapon, supporter, defender))
       .map((weapon) => ({
         supporter,
         weapon,
-        damage: supportDamage(computeDamage(state, supporter, defender, defender, weapon.id, pipeline, resources, supporter, content)),
+        damage: supportDamage(computeDamage(rules, state, supporter, defender, {
+          attackerAt: supporter,
+          defenderAt: defender,
+          weapon: weapon.id,
+        })),
       })))
     .sort((left, right) =>
       right.damage.damage - left.damage.damage ||
@@ -201,17 +208,23 @@ function hostileStructure(state: GameState, attacker: Unit, at: Coord, content: 
   return structure.owner === 0 || areEnemies(state, structure.owner, attacker.owner) ? structure : null;
 }
 
+/** Where the strike comes from and which profile is used. */
+export interface CombatPlanOptions {
+  /** Tile the attacker fires from; defaults to its current tile. */
+  from?: Coord;
+  weapon?: WeaponId;
+}
+
 export function forecastCombatPlan(
+  rules: CombatRules,
   state: GameState,
   attacker: Unit,
   aimedAt: Coord,
-  from: Coord = { x: attacker.x, y: attacker.y },
-  weaponId: WeaponId | undefined = undefined,
-  pipeline: CombatModifierPipeline = DefaultCombatModifierPipeline,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  content: ContentCatalog = GlobalContentCatalog,
+  options: CombatPlanOptions = {},
 ): CombatPlan {
-  const resolvedWeaponId = weaponId ?? primaryWeapon(attacker, content).id;
+  const content = rules.content;
+  const from = options.from ?? { x: attacker.x, y: attacker.y };
+  const resolvedWeaponId = options.weapon ?? primaryWeapon(attacker, content).id;
   if (!hostileActionAllowed(state, attacker.owner, from, aimedAt, 'attack')) {
     throw new Error('combat plan target is protected by an engagement rule');
   }
@@ -224,10 +237,10 @@ export function forecastCombatPlan(
   }
 
   const primaryUnit = primaryTarget
-    ? forecast(state, attacker, primaryTarget, from, resolvedWeaponId, pipeline, resources, content)
+    ? forecast(rules, state, attacker, primaryTarget, { attackFrom: from, weapon: resolvedWeaponId })
     : null;
   const primaryStructure = primaryStructureTarget
-    ? forecastStructure(state, attacker, primaryStructureTarget, resolvedWeaponId, resources, content)
+    ? forecastStructure(rules, state, attacker, primaryStructureTarget, { weapon: resolvedWeaponId })
     : null;
   const affectedCells = weaponAreaCells(state, from, aimedAt, weapon);
   const unitHits: PlannedUnitHit[] = [];
@@ -263,7 +276,11 @@ export function forecastCombatPlan(
     if (sameCoord(cell, aimedAt)) continue;
     const unit = unitAtCoord(state, cell);
     if (unit && areEnemies(state, unit.owner, attacker.owner) && !excludedUnits.has(unit.id)) {
-      const damage = computeDamage(state, attacker, unit, cell, resolvedWeaponId, pipeline, resources, from, content);
+      const damage = computeDamage(rules, state, attacker, unit, {
+        attackerAt: from,
+        defenderAt: cell,
+        weapon: resolvedWeaponId,
+      });
       unitHits.push({
         target: unit.id,
         at: { ...cell },
@@ -282,22 +299,13 @@ export function forecastCombatPlan(
         target: structure.id,
         at: { ...cell },
         primary: false,
-        forecast: forecastStructure(state, attacker, structure, resolvedWeaponId, resources, content),
+        forecast: forecastStructure(rules, state, attacker, structure, { weapon: resolvedWeaponId }),
       });
     }
   }
 
   const supportAttack = primaryUnit && primaryTarget && !primaryUnit.defenderDies
-    ? planSupportAttack(
-        state,
-        attacker,
-        from,
-        primaryTarget,
-        primaryUnit.defenderHpAfter,
-        pipeline,
-        resources,
-        content,
-      )
+    ? planSupportAttack(rules, state, attacker, from, primaryTarget, primaryUnit.defenderHpAfter)
     : null;
 
   return {
@@ -316,15 +324,13 @@ export function forecastCombatPlan(
 }
 
 function applyUnitHit(
+  rules: CombatPlanRules,
   state: GameState,
   attacker: Unit,
   hit: PlannedUnitHit,
   emit: (event: GameEvent) => void,
-  hitEffects: WeaponHitEffectHandlerRegistry,
-  progression: RankProgressionPolicy,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): boolean {
+  const { content, resources, progression, hitEffects } = rules;
   // A prior hit in the same area plan can rout a later recipient through
   // morale shock. The immutable plan still describes the aimed area, but a
   // unit that has already left the battlefield is no longer a legal mutation
@@ -360,13 +366,13 @@ function applyUnitHit(
 }
 
 function applyStructureHit(
+  rules: CombatPlanRules,
   state: GameState,
   attacker: Unit,
   hit: PlannedStructureHit,
   emit: (event: GameEvent) => void,
-  progression: RankProgressionPolicy,
-  content: ContentCatalog,
 ): void {
+  const { content, progression } = rules;
   emit({
     type: hit.primary ? 'attackStructure' : 'areaAttackStructure',
     attacker: attacker.id,
@@ -375,22 +381,20 @@ function applyStructureHit(
     damage: hit.forecast.damage,
     destroyed: hit.forecast.destroyed,
   });
-  const damage = damageStructure(state, hit.target, hit.forecast.rawDamage, emit, content);
+  const damage = damageStructure(state, hit.target, hit.forecast.rawDamage, content, emit);
   awardCombatProgress(attacker, damage, hit.forecast.destroyed, emit, progression, content);
 }
 
 /** Commits an already forecast plan in one fixed, tested phase order. */
 export function executeCombatPlan(
+  rules: CombatPlanRules,
   state: GameState,
   plan: CombatPlan,
   emit: (event: GameEvent) => void,
-  hitEffects: WeaponHitEffectHandlerRegistry = WeaponHitEffectHandlers,
-  progression: RankProgressionPolicy = DefaultRankProgression,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  content: ContentCatalog = GlobalContentCatalog,
 ): void {
+  const { content, resources, progression, hitEffects } = rules;
   const attacker = requireUnit(state, plan.attacker);
-  consumeWeapon(state, attacker, plan.weapon, emit, resources, content);
+  consumeWeapon(rules, state, attacker, plan.weapon, emit);
 
   if (plan.primaryUnit?.reaction) {
     const reaction = plan.primaryUnit.reaction;
@@ -409,9 +413,9 @@ export function executeCombatPlan(
 
   let unitKilled = false;
   for (const hit of plan.unitHits) {
-    unitKilled = applyUnitHit(state, attacker, hit, emit, hitEffects, progression, resources, content) || unitKilled;
+    unitKilled = applyUnitHit(rules, state, attacker, hit, emit) || unitKilled;
   }
-  for (const hit of plan.structureHits) applyStructureHit(state, attacker, hit, emit, progression, content);
+  for (const hit of plan.structureHits) applyStructureHit(rules, state, attacker, hit, emit);
   changeMomentum(
     attacker,
     unitKilled || plan.structureHits.some((hit) => hit.forecast.destroyed) ? 10 : 5,
@@ -423,7 +427,7 @@ export function executeCombatPlan(
   const defenderId = plan.primaryUnit?.defender;
   if (counter && defenderId !== undefined && state.units.some((unit) => unit.id === defenderId)) {
     const defender = requireUnit(state, defenderId);
-    consumeWeapon(state, defender, counter.weapon, emit, resources, content);
+    consumeWeapon(rules, state, defender, counter.weapon, emit);
     const result = new BattleAggregate(state, content).damageUnit(attacker.id, counter.damage);
     emit({
       type: 'counter',
@@ -456,7 +460,7 @@ export function executeCombatPlan(
   const target = state.units.find((unit) => unit.id === support.target);
   if (!supporter || !target) return;
   new UnitEntity(supporter).consumeReaction(state.turn);
-  consumeWeapon(state, supporter, support.weapon, emit, resources, content);
+  consumeWeapon(rules, state, supporter, support.weapon, emit);
   const result = new BattleAggregate(state, content).damageUnit(target.id, support.damage.damage);
   emit({
     type: 'supportAttack',

@@ -1,9 +1,9 @@
 import { Battlefield } from './domain/battlefield';
 import { addStatus } from './statuses';
 import type { Coord, GameEvent, GameState, MovementClass, TerrainOverlayState } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 
-export function overlaysAt(state: GameState, at: Coord, content: ContentCatalog = GlobalContentCatalog): TerrainOverlayState[] {
+export function overlaysAt(state: GameState, at: Coord, content: ContentCatalog): TerrainOverlayState[] {
   return new Battlefield(state, content).cell(at).overlayStates;
 }
 
@@ -11,20 +11,20 @@ export function movementCostAt(
   state: GameState,
   movementClass: MovementClass,
   at: Coord,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): number | null {
   return new Battlefield(state, content).cell(at).movementCost(movementClass);
 }
 
-export function overlayDefenseAt(state: GameState, at: Coord, content: ContentCatalog = GlobalContentCatalog): number {
+export function overlayDefenseAt(state: GameState, at: Coord, content: ContentCatalog): number {
   return new Battlefield(state, content).cell(at).overlayDefense;
 }
 
-export function overlayVisionAt(state: GameState, at: Coord, content: ContentCatalog = GlobalContentCatalog): number {
+export function overlayVisionAt(state: GameState, at: Coord, content: ContentCatalog): number {
   return new Battlefield(state, content).cell(at).overlayVision;
 }
 
-export function overlayHealAt(state: GameState, at: Coord, content: ContentCatalog = GlobalContentCatalog): number {
+export function overlayHealAt(state: GameState, at: Coord, content: ContentCatalog): number {
   return new Battlefield(state, content).cell(at).overlayHeal;
 }
 
@@ -32,7 +32,7 @@ export function addTerrainOverlay(
   state: GameState,
   overlay: TerrainOverlayState,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): void {
   if (state.scenario.overlays.some((candidate) => candidate.id === overlay.id)) {
     throw new Error(`duplicate terrain overlay id "${overlay.id}"`);
@@ -64,12 +64,12 @@ export function applyOverlayTurnStartEffects(
   state: GameState,
   owner: number,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): void {
   for (const unit of state.units.filter((candidate) => candidate.owner === owner)) {
     for (const instance of overlaysAt(state, unit, content)) {
       const effect = content.terrainOverlays.get(instance.type).turnStartStatus;
-      if (effect) addStatus(unit, effect.id, effect.duration, emit, undefined, content);
+      if (effect) addStatus(unit, effect.id, effect.duration, content, emit);
     }
   }
 }

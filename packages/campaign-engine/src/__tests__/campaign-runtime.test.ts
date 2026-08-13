@@ -1,4 +1,8 @@
 import { describe, expect, it } from 'vitest';
+import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+
+/** This suite composes its own catalog instead of relying on ambient state. */
+const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
 import { createState } from '@empire/battle-engine';
 import { makeLevel, u } from '@empire/battle-engine/__tests__/fixtures';
 import { CampaignBattleBridge } from '../battle-bridge';
@@ -61,7 +65,7 @@ describe('generic campaign framework', () => {
     const bridge = new CampaignBattleBridge(() => level());
     const request = runtime.beginBattle(bridge);
     expect(request.level.units.find((unit) => unit.key === 'campaign-hero')).toMatchObject({ rank: 0, hp: 100 });
-    const battle = createState(request.level);
+    const battle = createState(request.level, TEST_CATALOG);
     const hero = battle.units.find((unit) => unit.key === 'campaign-hero')!;
     hero.rank = 1;
     hero.rankProgress = 42;

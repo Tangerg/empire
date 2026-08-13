@@ -1,12 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
-import { forecastCombatPlan } from '../combat-plan';
-import { createState } from '../state';
-import { makeLevel, u } from './fixtures';
+import { makeLevel, testCombatPlan, testState, u } from './fixtures';
 
 describe('weapon hit effects', () => {
   it('applies a data-defined status after a surviving target takes damage', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['..'], { units: [u(0, 0, 'rogue', 1), u(1, 0, 'ogre', 2)] }),
     );
     const events = applyAction(state, {
@@ -23,7 +21,7 @@ describe('weapon hit effects', () => {
   });
 
   it('forecasts and applies one effect to every surviving area target', () => {
-    const state = createState(
+    const state = testState(
       makeLevel(['...', '...'], {
         units: [
           u(0, 1, 'mage', 1),
@@ -32,7 +30,7 @@ describe('weapon hit effects', () => {
         ],
       }),
     );
-    const plan = forecastCombatPlan(state, state.units[0], { x: 1, y: 1 }, { x: 0, y: 1 }, 'mage_overcharge');
+    const plan = testCombatPlan(state, state.units[0], { x: 1, y: 1 }, { x: 0, y: 1 }, 'mage_overcharge');
     expect(plan.unitHits.every((hit) => hit.effects.some(
       (effect) => effect.type === 'addStatus' && effect.status === 'armor_down',
     ))).toBe(true);

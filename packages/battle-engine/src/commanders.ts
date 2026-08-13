@@ -3,7 +3,6 @@ import { addStatus, removeStatus } from './statuses';
 import { areAllies, player } from './state';
 import {
   BattleResourceSystem,
-  DefaultBattleResources,
   playerResource,
 } from './resources';
 import type {
@@ -16,7 +15,7 @@ import type {
   TacticDef,
   Unit,
 } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 import { changeMorale } from './morale';
 
 export const NO_COMMAND_AURA: CommanderAura = {
@@ -52,8 +51,8 @@ export interface TacticOption {
 export function tacticOptions(
   state: GameState,
   commanderId: string,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  content: ContentCatalog = GlobalContentCatalog,
+  resources: BattleResourceSystem,
+  content: ContentCatalog,
 ): TacticOption[] {
   const commander = state.commanders.find((candidate) => candidate.id === commanderId);
   if (!commander || commander.owner !== state.currentPlayer) return [];
@@ -86,8 +85,8 @@ export function executeTactic(
   tacticId: string,
   requestedTarget: Coord | undefined,
   emit: (event: GameEvent) => void,
-  resources: BattleResourceSystem = DefaultBattleResources,
-  content: ContentCatalog = GlobalContentCatalog,
+  resources: BattleResourceSystem,
+  content: ContentCatalog,
 ): void {
   const commander = state.commanders.find((candidate) => candidate.id === commanderId);
   if (!commander) throw new Error(`unknown commander "${commanderId}"`);
@@ -124,7 +123,7 @@ export function executeTactic(
   );
   for (const effect of tactic.effects) {
     for (const unit of affected) {
-      if (effect.type === 'addStatus') addStatus(unit, effect.status, effect.duration, emit, leader.id, content);
+      if (effect.type === 'addStatus') addStatus(unit, effect.status, effect.duration, content, emit, leader.id);
       else removeStatus(unit, effect.status, emit);
     }
   }
@@ -134,7 +133,7 @@ export function refreshCommanderTurn(
   state: GameState,
   ownerId: number,
   emit: (event: GameEvent) => void,
-  resources: BattleResourceSystem = DefaultBattleResources,
+  resources: BattleResourceSystem,
 ): void {
   const owner = player(state, ownerId);
   const commanders = state.commanders.filter(
@@ -169,7 +168,7 @@ export function handleCommanderDefeat(
   state: GameState,
   unitId: number,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog = GlobalContentCatalog,
+  content: ContentCatalog,
 ): void {
   const commander = state.commanders.find((candidate) => candidate.unitId === unitId);
   if (!commander) return;
@@ -177,9 +176,9 @@ export function handleCommanderDefeat(
   for (const unit of state.units.filter(
     (candidate) => candidate.commanderId === commander.id && candidate.owner === commander.owner,
   )) {
-    if (content.statuses.has('shaken')) addStatus(unit, 'shaken', 2, emit, unitId, content);
+    if (content.statuses.has('shaken')) addStatus(unit, 'shaken', 2, content, emit, unitId);
     if (state.rules.moraleEnabled && state.units.some((candidate) => candidate.id === unit.id)) {
-      changeMorale(state, unit.id, -state.rules.moraleCommanderDefeatLoss, 'commander-defeated', emit);
+      changeMorale(state, unit.id, -state.rules.moraleCommanderDefeatLoss, 'commander-defeated', emit, content);
     }
   }
 }

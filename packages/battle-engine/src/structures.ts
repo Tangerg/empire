@@ -1,6 +1,6 @@
 import { StructureEntity } from './domain/structure-entity';
 import type { GameEvent, GameState, StructureId, StructureState } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 
 export function structureById(state: GameState, id: StructureId): StructureState | undefined {
   return state.structures.find((structure) => structure.id === id);
@@ -20,8 +20,8 @@ export function damageStructure(
   state: GameState,
   id: StructureId,
   rawAmount: number,
+  content: ContentCatalog,
   emit?: (event: GameEvent) => void,
-  content: ContentCatalog = GlobalContentCatalog,
 ): number {
   const structure = requireStructure(state, id);
   if (structure.hp <= 0) return 0;
@@ -37,8 +37,8 @@ export function repairStructure(
   state: GameState,
   id: StructureId,
   requested: number,
+  content: ContentCatalog,
   emit?: (event: GameEvent) => void,
-  content: ContentCatalog = GlobalContentCatalog,
 ): number {
   const structure = requireStructure(state, id);
   const amount = new StructureEntity(structure, content.structures.get(structure.type)).repair(requested);

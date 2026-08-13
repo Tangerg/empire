@@ -7,6 +7,11 @@ import { Terrains } from '@empire/battle-engine/data/terrain';
 import { UnitTypes } from '@empire/battle-engine/data/units';
 import { EditorApp } from '../app';
 
+import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+
+/** Composed per suite, exactly like an application composition root. */
+const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+
 function stubLayout(svg: SVGSVGElement, width: number, height: number): void {
   svg.getBoundingClientRect = () =>
     ({ left: 0, top: 0, width, height, right: width, bottom: height, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
@@ -46,7 +51,7 @@ describe('map editor', () => {
     localStorage.clear();
     // jsdom lacks pointer capture.
     Element.prototype.setPointerCapture = () => {};
-    app = new EditorApp(level());
+    app = new EditorApp(TEST_CATALOG, level());
     app.mount(host);
     board = host.querySelector('svg.editor-board') as SVGSVGElement;
     stubLayout(board, BUILTIN_LEVELS[0].width * TILE, BUILTIN_LEVELS[0].height * TILE);
@@ -68,7 +73,7 @@ describe('map editor', () => {
     stroke(board, { x: 5, y: 4 });
     const exported = app.exportLevel();
     expect(exported.terrain[4][5]).toBe('^');
-    expect(validateLevel(exported).filter((i) => i.severity === 'error')).toEqual([]);
+    expect(validateLevel(exported, TEST_CATALOG).filter((i) => i.severity === 'error')).toEqual([]);
   });
 
   it('drag-paints a whole run of tiles in one undo step', () => {
@@ -113,7 +118,7 @@ describe('map editor', () => {
   it('flags a unit standing on impassable terrain', () => {
     (host.querySelector('.unit-chip[data-arg="soldier"]') as HTMLElement).click();
     stroke(board, { x: 8, y: 5 }); // river tile
-    const issues = validateLevel(app.exportLevel());
+    const issues = validateLevel(app.exportLevel(), TEST_CATALOG);
     expect(issues.some((i) => i.severity === 'error' && i.message.includes('无法站在'))).toBe(true);
   });
 
@@ -132,9 +137,9 @@ describe('map editor', () => {
     stroke(board, { x: 4, y: 6 }, { x: 4, y: 8 });
     const exported = app.exportLevel();
     const reloaded = normaliseLevel(JSON.parse(JSON.stringify(exported)));
-    const map = mapFromLevel(reloaded);
+    const map = mapFromLevel(reloaded, TEST_CATALOG);
     expect(map.tiles[6 * map.width + 4]).toBe('forest');
-    expect(validateLevel(reloaded).filter((i) => i.severity === 'error')).toEqual([]);
+    expect(validateLevel(reloaded, TEST_CATALOG).filter((i) => i.severity === 'error')).toEqual([]);
   });
 
   it('autosaves a draft that survives a reload', () => {

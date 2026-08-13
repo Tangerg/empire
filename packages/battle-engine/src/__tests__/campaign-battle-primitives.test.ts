@@ -1,21 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { commandOptions, CoreActionHandlers, applyActionWith } from '../actions';
+import { BattleAggregate } from '../domain/battle-aggregate';
+import { CoreActionHandlers } from '../actions';
 import { createDefaultBattleRuleServices } from '../action-system';
 import { compositeStatus, moveComposite } from '../composites';
 import { activeFormation } from '../formations';
 import { changeMorale } from '../morale';
-import { objectiveOutcome } from '../victory';
-import { conditionMet, runScenarioTriggers } from '../scenario';
-import { createState } from '../state';
-import { BattleAggregate } from '../domain/battle-aggregate';
 import { embarkUnit } from '../transports';
-import { chooseAction } from '../ai';
 import type { GameEvent } from '../types';
-import { makeLevel, u } from './fixtures';
+import { TEST_CONTENT, makeLevel, testApplyWith, testChooseAction, testCommands, testCondition, testObjectiveOutcome, testScenarioTriggers, testState, u } from './fixtures';
 
 describe('campaign-grade battle primitives', () => {
   it('runs bounded cyclic scenario triggers once per timing occurrence', () => {
-    const state = createState(makeLevel(['..'], {
+    const state = testState(makeLevel(['..'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
       scenario: {
         variables: { pulses: 0 },
@@ -28,35 +24,35 @@ describe('campaign-grade battle primitives', () => {
         }],
       },
     }));
-    runScenarioTriggers(state, 'turnStart', () => {});
-    runScenarioTriggers(state, 'turnStart', () => {});
+    testScenarioTriggers(state, 'turnStart', () => {});
+    testScenarioTriggers(state, 'turnStart', () => {});
     expect(state.scenario.variables.pulses).toBe(1);
     state.turn = 2;
-    runScenarioTriggers(state, 'turnStart', () => {});
+    testScenarioTriggers(state, 'turnStart', () => {});
     state.turn = 3;
-    runScenarioTriggers(state, 'turnStart', () => {});
+    testScenarioTriggers(state, 'turnStart', () => {});
     expect(state.scenario.variables.pulses).toBe(2);
     expect(state.scenario.triggerRuntime['environment-pulse'].count).toBe(2);
   });
 
   it('counts semantic events for declarative scenario predicates', () => {
-    const state = createState(makeLevel(['..'], {
+    const state = testState(makeLevel(['..'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
     }));
     const rules = createDefaultBattleRuleServices();
-    applyActionWith(state, { kind: 'endTurn' }, CoreActionHandlers, rules);
-    expect(conditionMet(state, { type: 'eventCount', event: 'turnEnd', op: 'gte', value: 1 })).toBe(true);
+    testApplyWith(state, { kind: 'endTurn' }, CoreActionHandlers, rules);
+    expect(testCondition(state, { type: 'eventCount', event: 'turnEnd', op: 'gte', value: 1 })).toBe(true);
   });
 
   it('enforces dynamic no-combat zones through shared attack legality', () => {
-    const state = createState(makeLevel(['...'], {
+    const state = testState(makeLevel(['...'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
       scenario: {
         zones: [{ id: 'truce', cells: [{ x: 0, y: 0 }, { x: 1, y: 0 }] }],
         engagementRules: [{ id: 'bridge-truce', zone: 'truce', mode: 'no-attacks' }],
       },
     }));
-    const options = commandOptions(state, state.units[0], { x: 0, y: 0 });
+    const options = testCommands(state, state.units[0], { x: 0, y: 0 });
     expect(options.some((option) => option.ability === 'attack')).toBe(false);
   });
 
@@ -65,11 +61,11 @@ describe('campaign-grade battle primitives', () => {
     rules.content.units.override('soldier', {
       formations: ['formation-defensive', 'formation-loose'],
     });
-    const state = createState(makeLevel(['...'], {
+    const state = testState(makeLevel(['...'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 1), u(2, 0, 'soldier', 2)],
-    }), rules.content);
+    }));
     const unit = state.units[0];
-    const events = applyActionWith(
+    const events = testApplyWith(
       state,
       { kind: 'changeFormation', unit: unit.id, formation: 'formation-defensive' },
       CoreActionHandlers,
@@ -84,15 +80,15 @@ describe('campaign-grade battle primitives', () => {
   it('embarks and disembarks identity-preserving units through formal actions', () => {
     const rules = createDefaultBattleRuleServices();
     rules.content.units.override('knight', { transport: { capacity: 2, allowedTags: ['infantry'] } });
-    const state = createState(makeLevel(['.....'], {
+    const state = testState(makeLevel(['.....'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'knight', 1), u(4, 0, 'soldier', 2)],
-    }), rules.content);
+    }));
     const passenger = state.units[0];
     const carrier = state.units[1];
-    applyActionWith(state, { kind: 'embark', unit: passenger.id, carrier: carrier.id }, CoreActionHandlers, rules);
+    testApplyWith(state, { kind: 'embark', unit: passenger.id, carrier: carrier.id }, CoreActionHandlers, rules);
     expect(state.units.some((unit) => unit.id === passenger.id)).toBe(false);
     expect(state.embarkedUnits[0].unit.id).toBe(passenger.id);
-    const events = applyActionWith(
+    const events = testApplyWith(
       state,
       { kind: 'disembark', carrier: carrier.id, unit: passenger.id, at: { x: 2, y: 0 } },
       CoreActionHandlers,
@@ -105,9 +101,9 @@ describe('campaign-grade battle primitives', () => {
   it('keeps transport-loss invariants inside the battle aggregate', () => {
     const rules = createDefaultBattleRuleServices();
     rules.content.units.override('knight', { transport: { capacity: 1 } });
-    const state = createState(makeLevel(['....'], {
+    const state = testState(makeLevel(['....'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'knight', 1), u(3, 0, 'soldier', 2)],
-    }), rules.content);
+    }));
     const passenger = state.units[0];
     const carrier = state.units[1];
     embarkUnit(state, passenger.id, carrier.id, () => {}, rules.content);
@@ -119,13 +115,13 @@ describe('campaign-grade battle primitives', () => {
   });
 
   it('routes zero-morale units into recoverable battlefield markers', () => {
-    const state = createState(makeLevel(['..'], {
+    const state = testState(makeLevel(['..'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
       rules: { moraleEnabled: true },
     }));
     const id = state.units[0].id;
     const events: GameEvent[] = [];
-    changeMorale(state, id, -999, 'test-shock', (event) => events.push(event));
+    changeMorale(state, id, -999, 'test-shock', (event) => events.push(event), TEST_CONTENT);
     expect(state.units.some((unit) => unit.id === id)).toBe(false);
     expect(state.markers[0]).toMatchObject({ kind: 'routed', fallenUnit: { id } });
     expect(events.some((event) => event.type === 'unitRouted')).toBe(true);
@@ -141,9 +137,9 @@ describe('campaign-grade battle primitives', () => {
       composites: [{ id: 'moving-fortress', parts: ['left-engine', 'right-engine'], minimumNeutralized: 1 }],
       victory: [{ type: 'neutralizeComposite', composite: 'moving-fortress' }],
     });
-    const state = createState(level);
+    const state = testState(level);
     expect(compositeStatus(state, 'moving-fortress').state).toBe('neutralized');
-    expect(objectiveOutcome(state, 1, state.players[0].objectives[0])).toBe('success');
+    expect(testObjectiveOutcome(state, 1, state.players[0].objectives[0])).toBe('success');
     const events: GameEvent[] = [];
     moveComposite(state, 'moving-fortress', { x: 1, y: 0 }, (event) => events.push(event));
     expect(state.structures.map((structure) => structure.x)).toEqual([2, 3]);
@@ -151,14 +147,14 @@ describe('campaign-grade battle primitives', () => {
   });
 
   it('lets retreat directives override opportunistic AI attacks', () => {
-    const state = createState(makeLevel(['.....'], {
+    const state = testState(makeLevel(['.....'], {
       units: [
         { ...u(3, 0, 'soldier', 1), directive: { mode: 'retreat', zone: 'exit' } },
         u(4, 0, 'soldier', 2),
       ],
       scenario: { zones: [{ id: 'exit', cells: [{ x: 0, y: 0 }] }] },
     }));
-    const action = chooseAction(state, { aggression: 1 });
+    const action = testChooseAction(state, { aggression: 1 });
     expect(action.kind).toBe('command');
     if (action.kind === 'command') {
       expect(action.path.at(-1)).toEqual({ x: 0, y: 0 });

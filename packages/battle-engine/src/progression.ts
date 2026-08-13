@@ -3,11 +3,10 @@ import { UnitEntity } from './domain/unit-entity';
 import { awardCareerProgress } from './careers';
 import {
   type BattleResourceSystem,
-  DefaultBattleResources,
   MOMENTUM_RESOURCE,
   unitResource,
 } from './resources';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 
 export interface RankProgressionPolicy {
   rankFor(progress: number): UnitRank;
@@ -41,8 +40,8 @@ export function awardRankProgress(
   unit: Unit,
   requested: number,
   emit: (event: GameEvent) => void,
-  policy: RankProgressionPolicy = DefaultRankProgression,
-  content: ContentCatalog = GlobalContentCatalog,
+  policy: RankProgressionPolicy,
+  content: ContentCatalog,
 ): void {
   const entity = new UnitEntity(unit);
   const gained = entity.addRankProgress(requested);
@@ -59,7 +58,7 @@ export function changeMomentum(
   unit: Unit,
   requested: number,
   emit: (event: GameEvent) => void,
-  resources: BattleResourceSystem = DefaultBattleResources,
+  resources: BattleResourceSystem,
 ): void {
   changeUnitResource(unit, MOMENTUM_RESOURCE, requested, emit, resources);
 }
@@ -70,7 +69,7 @@ export function changeUnitResource(
   resource: string,
   requested: number,
   emit: (event: GameEvent) => void,
-  resources: BattleResourceSystem = DefaultBattleResources,
+  resources: BattleResourceSystem,
 ): void {
   const subject = unitResource(unit);
   if (!resources.hasAccount(resource, subject) || requested === 0) return;
@@ -99,8 +98,8 @@ export function awardCombatProgress(
   damage: number,
   defeatedTarget: boolean,
   emit: (event: GameEvent) => void,
-  policy: RankProgressionPolicy = DefaultRankProgression,
-  content: ContentCatalog = GlobalContentCatalog,
+  policy: RankProgressionPolicy,
+  content: ContentCatalog,
 ): void {
   const amount = Math.max(1, Math.round(damage)) + (defeatedTarget ? 50 : 0);
   awardRankProgress(unit, amount, emit, policy, content);
@@ -109,7 +108,7 @@ export function awardCombatProgress(
 export function awardDamageTakenMomentum(
   unit: Unit,
   emit: (event: GameEvent) => void,
-  resources: BattleResourceSystem = DefaultBattleResources,
+  resources: BattleResourceSystem,
 ): void {
   changeMomentum(unit, 3, emit, resources);
 }

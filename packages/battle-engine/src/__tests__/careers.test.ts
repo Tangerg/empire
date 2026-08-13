@@ -1,8 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { careerOptions } from '../careers';
 import { GameSession } from '../session';
-import { createState } from '../state';
-import { makeLevel, u } from './fixtures';
+import { TEST_CONTENT, TEST_RULES, makeLevel, testState, u } from './fixtures';
 
 describe('career tree and free career changes', () => {
   it('unlocks a branch from rank and current-career mastery while preserving entity identity', () => {
@@ -12,7 +11,7 @@ describe('career tree and free career changes', () => {
     const session = new GameSession(level);
     const before = session.state.units[0];
     const id = before.id;
-    expect(careerOptions(session.state, before).find((option) => option.career.id === 'ranger')).toMatchObject({ eligible: true });
+    expect(careerOptions(session.state, before, TEST_RULES.resources, TEST_CONTENT).find((option) => option.career.id === 'ranger')).toMatchObject({ eligible: true });
 
     const events = session.dispatch({ kind: 'changeCareer', unit: id, career: 'ranger' });
     const after = session.state.units.find((unit) => unit.id === id)!;
@@ -38,7 +37,7 @@ describe('career tree and free career changes', () => {
   });
 
   it('initialises deployed and recruited units with their matching root or branch career', () => {
-    const state = createState(makeLevel(['..'], { units: [u(0, 0, 'knight', 1), u(1, 0, 'soldier', 2)] }));
+    const state = testState(makeLevel(['..'], { units: [u(0, 0, 'knight', 1), u(1, 0, 'soldier', 2)] }));
     expect(state.units[0].career.current).toBe('knight-order');
     expect(state.units[1].career.current).toBe('militia');
   });

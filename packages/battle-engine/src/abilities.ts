@@ -15,12 +15,17 @@ import { player } from './state';
 import { blockedAbilityStatus, combinedStatusModifiers } from './statuses';
 import { BattleAggregate, UnitEntity } from './domain/index';
 import type { Coord, GameEvent, GameState, Unit, WeaponDef, WeaponId } from './types';
-import { type BattleResourceSystem, DefaultBattleResources } from './resources';
-import { CoreTacticalSpace, type TacticalSpace } from './tactical-space';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type BattleResourceSystem } from './resources';
+import { type TacticalSpace } from './tactical-space';
+import { type ContentCatalog } from './content-pack';
 import { hostileActionAllowed } from './engagement';
 
-/** Everything an ability needs to decide legality. */
+/**
+ * The question: which unit is trying to act, from where, with what.
+ *
+ * Deliberately free of services. Conflating "what is being asked" with "which
+ * ruleset answers it" is what forced ambient singletons into this module.
+ */
 export interface AbilityQuery {
   state: GameState;
   unit: Unit;
@@ -30,14 +35,21 @@ export interface AbilityQuery {
   moved: boolean;
   /** Selected attack profile. Omitted for non-attack abilities. */
   weaponId?: WeaponId;
-  /** Injected ruleset used by execution; queries may omit it. */
-  combatModifiers?: CombatModifierPipeline;
-  hitEffects?: WeaponHitEffectHandlerRegistry;
-  progression?: RankProgressionPolicy;
-  resources?: BattleResourceSystem;
+}
+
+/**
+ * The ruleset that answers the question. Declared here as a consumer port; the
+ * composition-level `BattleRuleServices` satisfies it structurally.
+ */
+export interface AbilityRules {
+  readonly content: ContentCatalog;
+  readonly resources: BattleResourceSystem;
+  readonly combatModifiers: CombatModifierPipeline;
+  readonly hitEffects: WeaponHitEffectHandlerRegistry;
+  readonly progression: RankProgressionPolicy;
   /** Shared spatial legality used by menus, AI and action execution. */
-  space?: TacticalSpace;
-  content?: ContentCatalog;
+  readonly space: TacticalSpace;
+  readonly abilities: Registry<AbilityDef>;
 }
 
 export type Emit = (e: GameEvent) => void;
@@ -52,9 +64,9 @@ export interface AbilityDef {
   priority: number;
   /** Semantic tags used by statuses and content rules. */
   tags: string[];
-  targets(q: AbilityQuery): Coord[];
-  usable(q: AbilityQuery): boolean;
-  execute(q: AbilityQuery, target: Coord | null, emit: Emit): void;
+  targets(rules: AbilityRules, q: AbilityQuery): Coord[];
+  usable(rules: AbilityRules, q: AbilityQuery): boolean;
+  execute(rules: AbilityRules, q: AbilityQuery, target: Coord | null, emit: Emit): void;
 }
 
 export const Abilities = new Registry<AbilityDef>('ability');
@@ -74,17 +86,16 @@ function ability(def: Partial<AbilityDef> & { id: string; name: string }): Abili
 
 /* ------------------------------------------------------------------- attack */
 
-export function clearCaptureAt(s: GameState, c: Coord): void {
-  new BattleAggregate(s).clearCaptureAt(c);
+export function clearCaptureAt(content: ContentCatalog, s: GameState, c: Coord): void {
+  new BattleAggregate(s, content).clearCaptureAt(c);
 }
 
-function selectedWeapon(q: AbilityQuery): WeaponDef {
+function selectedWeapon(rules: AbilityRules, q: AbilityQuery): WeaponDef {
   return availableWeapon(
+    rules,
     q.unit,
-    q.weaponId ?? primaryWeapon(q.unit, q.content ?? GlobalContentCatalog).id,
-    q.resources ?? DefaultBattleResources,
+    q.weaponId ?? primaryWeapon(q.unit, rules.content).id,
     player(q.state, q.unit.owner),
-    q.content ?? GlobalContentCatalog,
   );
 }
 
@@ -96,29 +107,27 @@ Abilities.defineAll([
     selfTargeted: false,
     priority: 10,
     tags: ['attack'],
-    targets: (q) => {
-      const weapon = selectedWeapon(q);
-      return (q.space ?? CoreTacticalSpace).attackTargets(q.state, q.unit, q.at, weapon)
+    targets: (rules, q) => {
+      const weapon = selectedWeapon(rules, q);
+      return rules.space.attackTargets(q.state, q.unit, q.at, weapon)
         .filter((target) => hostileActionAllowed(q.state, q.unit.owner, q.at, target, 'attack'));
     },
-    usable: (q) => {
+    usable: (rules, q) => {
       let weapon: WeaponDef;
       try {
-        weapon = selectedWeapon(q);
+        weapon = selectedWeapon(rules, q);
       } catch {
         return false;
       }
       if (q.moved && !weapon.moveAndAttack) return false;
       return true;
     },
-    execute: (q, target, emit) => {
+    execute: (rules, q, target, emit) => {
       if (!target) throw new Error('attack requires a target');
       const { state, unit, at } = q;
-      const weapon = selectedWeapon(q);
-      const resources = q.resources ?? DefaultBattleResources;
-      const content = q.content ?? GlobalContentCatalog;
-      const plan = forecastCombatPlan(state, unit, target, at, weapon.id, q.combatModifiers, resources, content);
-      executeCombatPlan(state, plan, emit, q.hitEffects, q.progression, resources, content);
+      const weapon = selectedWeapon(rules, q);
+      const plan = forecastCombatPlan(rules, state, unit, target, { from: at, weapon: weapon.id });
+      executeCombatPlan(rules, state, plan, emit);
     },
   }),
 
@@ -129,18 +138,19 @@ Abilities.defineAll([
     selfTargeted: false,
     priority: 20,
     tags: ['healing'],
-    targets: (q) => (q.space ?? CoreTacticalSpace)
+    targets: (rules, q) => rules.space
       .healTargets(q.state, q.unit, q.at)
       .map((u) => ({ x: u.x, y: u.y })),
     usable: () => true,
-    execute: ({ state, unit, progression, content = GlobalContentCatalog }, target, emit) => {
+    execute: (rules, { state, unit }, target, emit) => {
       if (!target) throw new Error('heal requires a target');
+      const content = rules.content;
       const ally = unitAtCoord(state, target);
       if (!ally) throw new Error('no unit to heal');
       const amount = healAmount(unit, ally, content);
       const healed = new UnitEntity(ally).heal(amount, content.units.get(ally.type).maxHp);
       emit({ type: 'heal', source: unit.id, target: ally.id, amount: healed });
-      awardRankProgress(unit, Math.max(5, healed), emit, progression, content);
+      awardRankProgress(unit, Math.max(5, healed), emit, rules.progression, content);
     },
   }),
 
@@ -149,17 +159,20 @@ Abilities.defineAll([
     name: '占领',
     hint: '占下城镇、兵营或城堡；只有人类步兵可以占领。',
     priority: 5,
-    usable: ({ state, unit, at, content = GlobalContentCatalog }) => {
+    usable: (rules, { state, unit, at }) => {
+      const content = rules.content;
       if (combinedStatusModifiers(unit, content).cannotCapture) return false;
       const i = idx(state.map, at.x, at.y);
       const terrain = content.terrains.get(state.map.tiles[i]);
       if (!terrain.capturable) return false;
       return state.map.owners[i] !== unit.owner;
     },
-    execute: ({ state, unit, at, progression, content = GlobalContentCatalog }, _t, emit) => {
+    execute: (rules, { state, unit, at }, _t, emit) => {
+      const content = rules.content;
+      const progression = rules.progression;
       const i = idx(state.map, at.x, at.y);
-      const rules = state.rules;
-      if (rules.captureMode === 'instant') {
+      const battleRules = state.rules;
+      if (battleRules.captureMode === 'instant') {
         state.map.owners[i] = unit.owner;
         state.map.captureProgress[i] = 0;
         emit({ type: 'capture', at, player: unit.owner, progress: 1, captured: true });
@@ -169,10 +182,10 @@ Abilities.defineAll([
       const def = content.units.get(unit.type);
       const contribution = Math.max(
         1,
-        Math.round(rules.captureThreshold * (unit.hp / def.maxHp)),
+        Math.round(battleRules.captureThreshold * (unit.hp / def.maxHp)),
       );
       const next = state.map.captureProgress[i] + contribution;
-      if (next >= rules.captureThreshold) {
+      if (next >= battleRules.captureThreshold) {
         state.map.owners[i] = unit.owner;
         state.map.captureProgress[i] = 0;
         emit({ type: 'capture', at, player: unit.owner, progress: 1, captured: true });
@@ -183,7 +196,7 @@ Abilities.defineAll([
           type: 'capture',
           at,
           player: unit.owner,
-          progress: next / rules.captureThreshold,
+          progress: next / battleRules.captureThreshold,
           captured: false,
         });
         awardRankProgress(unit, 20, emit, progression, content);
@@ -199,23 +212,27 @@ Abilities.defineAll([
   }),
 ]);
 
-export const abilityDef = (id: string, abilities: Registry<AbilityDef> = Abilities): AbilityDef => abilities.get(id);
+export const abilityDef = (rules: AbilityRules, id: string): AbilityDef => rules.abilities.get(id);
 
-export function canUseAbility(ability: AbilityDef, query: AbilityQuery): boolean {
+export function canUseAbility(rules: AbilityRules, ability: AbilityDef, query: AbilityQuery): boolean {
   const tags = [...ability.tags];
   if (ability.id === 'attack') {
     try {
-      tags.push(...selectedWeapon(query).tags);
+      tags.push(...selectedWeapon(rules, query).tags);
     } catch {
       return false;
     }
   }
-  return blockedAbilityStatus(query.unit, tags, query.content ?? GlobalContentCatalog) === null && ability.usable(query);
+  return blockedAbilityStatus(query.unit, tags, rules.content) === null && ability.usable(rules, query);
 }
 
 /** Shared target-policy projection used by menus, AI and authoritative actions. */
-export function abilityTargets(ability: AbilityDef, query: AbilityQuery): Coord[] {
-  const targets = ability.targets(query);
+export function abilityTargets(
+  rules: AbilityRules,
+  ability: AbilityDef,
+  query: AbilityQuery,
+): Coord[] {
+  const targets = ability.targets(rules, query);
   const engagementKind = ability.tags.includes('attack')
     ? 'attack'
     : ability.tags.includes('hostile') || ability.tags.includes('hostile-action')
@@ -226,13 +243,10 @@ export function abilityTargets(ability: AbilityDef, query: AbilityQuery): Coord[
 }
 
 /** Abilities this unit can use right now, in menu order. */
-export function availableAbilities(
-  q: AbilityQuery,
-  abilities: Registry<AbilityDef> = Abilities,
-): AbilityDef[] {
-  return unitAbilityIds(q.unit, q.content ?? GlobalContentCatalog)
-    .map((id) => abilityDef(id, abilities))
-    .filter((a) => canUseAbility(a, q))
-    .filter((a) => a.selfTargeted || a.targets(q).length > 0)
+export function availableAbilities(rules: AbilityRules, q: AbilityQuery): AbilityDef[] {
+  return unitAbilityIds(q.unit, rules.content)
+    .map((id) => abilityDef(rules, id))
+    .filter((a) => canUseAbility(rules, a, q))
+    .filter((a) => a.selfTargeted || a.targets(rules, q).length > 0)
     .sort((a, b) => a.priority - b.priority);
 }
