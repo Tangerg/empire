@@ -1,126 +1,180 @@
-# Empire Tactics 通用剧情战役框架
+# 组织剧情战役状态
 
-> 状态：首个可执行框架已落地（2026-08-12）  
-> 适用范围：候选剧本 1、2、3 与未来章节型 SRPG  
-> 边界：本框架组织章节、选择、名单和战斗结果，不解释伤害、移动、AI 或地形
+战役引擎在单场战斗之上组织节点、选择、持久名单和版本化存档。本页只说明通用技术契约，不描述任何具体剧本、人物或章节内容。
 
-## 1. 定位
+> 文档类型：Conceptual · 状态：基础框架已实现 · 代码真值：`packages/campaign-engine/src/`
 
-战役框架是战斗引擎之上的应用领域层。它回答：
+## 战役层的职责
 
-- 玩家现在位于哪个章节节点；
-- 哪些选择可用，选择改变哪些跨关事实；
-- 下一场战斗使用哪张关卡、哪些持久角色；
-- 战斗结束后的伤亡、溃退、投降、成长和信号如何回收到战役；
-- 存档依赖哪一版剧本定义和内容包。
+战役层回答跨关问题：
 
-它不回答：
+- 当前位于哪个流程节点
+- 哪些选择可用，选择修改哪些持久事实
+- 下一场战斗使用哪张 `LevelData`
+- 哪些名单单位进入战斗，战后如何回收状态
+- 存档依赖哪一版战役定义和内容包
 
-- 一次攻击是否合法或造成多少伤害；
-- 单位如何寻路、反击、援护或获得地形修正；
-- 某段对白如何排版、某张立绘何时淡入；
-- 某题材中的“魔力”“能源”“军粮”在战斗内如何结算。
+战役层不解释伤害、移动、射程、人工智能（AI）、地形和战斗动画。它也不排版对话；节点中的 `presentation` 只是上层界面解释的不透明定位符。
 
-## 2. 核心对象
+## 运行模型
+
+战役定义不可变，战役状态可序列化，`CampaignRuntime` 负责原子迁移。
 
 ```mermaid
 flowchart LR
-  Definition["CampaignDefinition<br/>不可变流程与初始数据"] --> Runtime["CampaignRuntime<br/>应用门面"]
-  State["CampaignState<br/>可序列化跨关状态"] --> Runtime
-  Runtime --> Aggregate["CampaignAggregate<br/>状态不变量"]
-  Runtime --> Request["BattleRequest<br/>一次性关卡快照"]
+  Definition["CampaignDefinition"] --> Runtime["CampaignRuntime"]
+  State["CampaignState"] --> Runtime
+  Runtime --> Aggregate["CampaignAggregate"]
+  Runtime --> Request["BattleRequest"]
   Request --> Battle["BattleEngine / GameSession"]
-  Battle --> Result["BattleResult<br/>稳定结果 DTO"]
+  Battle --> Result["BattleResult"]
   Result --> Runtime
-  State --> Save["CampaignSave<br/>版本锁定"]
+  State --> Save["CampaignSave"]
 ```
 
-### `CampaignDefinition`
+| 对象 | 稳定职责 |
+| --- | --- |
+| `CampaignDefinition` | schema、定义版本、内容包版本、起点、节点图和初始名单 |
+| `CampaignState` | 当前节点、旗标、变量、资源、关系、功能、名单和历史 |
+| `CampaignAggregate` | 定义与状态不变量、节点查询、效果应用和战果投影 |
+| `CampaignRuntime` | `advance`、`choose`、`beginBattle`、`completeBattle` 和事务回滚 |
+| `CampaignBattleBridge` | 战役 DTO 与战斗 DTO 之间的防腐层 |
+| `CampaignSaveMigrator` | 显式、逐版本向前的存档迁移 |
 
-定义 schema、剧本 ID/版本、内容包版本、起始节点、节点图和初始名单。节点只有五类职责：
+## 节点代数
 
-- `story`：线性剧情演出定位；
-- `choice`：带条件与效果的路线选择；
-- `battle`：关卡定位、持久名单绑定、胜败/撤退出口；
-- `hub` / `travel`：营地与旅途等非战斗流程；
-- `ending`：明确完成或失败。
+`CampaignNode` 使用封闭的流程节点类型。内容通过数据组合节点，不向运行时注入剧本名称判断。
 
-`presentation` 是不透明资源定位符。框架不会读取小说文本，也不会把资源路径变成规则条件。
+| 节点 | 用途 | 离开方式 |
+| --- | --- | --- |
+| `story` | 线性演出定位 | `advance()` |
+| `hub` | 营地或整备定位 | `advance()` |
+| `travel` | 旅途或地图移动定位 | `advance()` |
+| `choice` | 条件化分支 | `choose(id)` |
+| `battle` | 关卡请求与战果出口 | `beginBattle()`、`completeBattle()` |
+| `ending` | 完成或失败终点 | `advance()` |
 
-### `CampaignState`
+节点效果和选项效果都通过 `CampaignEffectRegistry` 解释。条件由 `CampaignConditionRegistry` 解释。两个代数都支持 TypeScript declaration merging 和策略注册，但默认运行时会克隆注册表，避免实例间污染。
 
-保存当前节点、状态、旗标、变量、资源、势力关系、已解锁能力、持久名单、完成节点、战斗历史和待处理战斗。它是纯数据，可使用 `structuredClone`，没有 DOM、计时器或函数引用。
+内置条件覆盖：
 
-### `CampaignAggregate`
+- 旗标存在性
+- 变量数值比较
+- 战役资源比较
+- 势力关系比较
+- 名单单位状态
+- `all`、`any`、`not` 组合
 
-聚合负责定义/状态版本一致、节点存在、名单状态和战斗结果投影。`CampaignRuntime` 的每个状态迁移都有失败回滚；无效选择、关卡装配失败或不匹配的战斗结果不能留下半次提交。
+内置效果覆盖：
 
-## 3. 开放条件与效果
+- 设置或累加变量
+- 设置或清除旗标
+- 增加战役资源
+- 修改势力关系
+- 开关功能
+- 修改名单单位状态
 
-战役条件和效果分别由 `CampaignConditionRegistry` 与 `CampaignEffectRegistry` 解释。内置原语覆盖旗标、数值变量、战役资源、势力关系、名单状态和组合逻辑。
+## 战斗防腐层
 
-与战斗微内核一致，新题材可以通过 TypeScript declaration merging 扩展类型映射，并注册对应策略；默认运行时克隆注册表，多个战役实例不会互相污染。
-
-## 4. 战斗防腐层
-
-`CampaignBattleBridge` 是唯一允许同时理解战役 DTO 和战斗 DTO 的模块。
+`CampaignBattleBridge` 是唯一同时理解 `CampaignState` 与 `GameState` 的通用模块。战斗内核始终只接收普通 `LevelData`。
 
 ### 进入战斗
 
-1. 解析 `battle.level` 得到新的 `LevelData` 快照；
-2. 按稳定 `levelUnitKey` 绑定持久名单；
-3. 不可出战角色从快照移除；
-4. 把兵种、生命比例、士气比例、军衔、职业、熟练度、能力和资源播种到关卡单位；
-5. 返回带唯一 request ID 的 `BattleRequest`。
+`prepare()` 执行以下步骤：
 
-战斗引擎只看到普通 `LevelData`，不知道角色来自哪个剧本章节。
+1. 解析战斗节点和关卡快照
+2. 按稳定的 `levelUnitKey` 查找关卡单位
+3. 移除不可出战的名单单位
+4. 写入兵种、生命比例、士气比例、军衔、资源、职业、熟练度和能力
+5. 生成唯一 `requestId` 和只读语义上下文
+6. 返回 `BattleRequest`
+
+桥接器不会直接改变战役状态。`CampaignRuntime.beginBattle()` 在同一事务中记录 pending request，失败时恢复整个状态。
 
 ### 离开战斗
 
-桥接器按稳定 key 查询：
+`result()` 根据活跃单位、载具乘员和战场 marker 还原持久单位状态：
 
-- 活跃单位或载具乘员：`available`；
-- `routed` 标记：`routed`；
-- `surrendered` 标记：`surrendered`；
-- 尸体或运输损失：`fallen`。
+| 战场结果 | 名单状态 |
+| --- | --- |
+| 仍在场或仍在载具中 | `available` |
+| 溃退 marker | `routed` |
+| 投降 marker | `surrendered` |
+| 主动撤离 marker | `missing` |
+| 死亡 marker | `fallen` |
 
-随后生成 `BattleResult`，携带成长数据、胜负、回合数、场景信号和语义事件计数。`CampaignRuntime` 只接受与当前 pending request 完全匹配的结果，防止重复提交或串关。
+`BattleResult` 还包含胜负、回合数、场景信号和语义事件计数。`completeBattle()` 只接受与 pending request 完全匹配的结果，因此重复提交和串关结果都会失败并回滚。
 
-## 5. 存档与迁移
+## 存档与迁移
 
-`CampaignSave` schema 1 同时锁定：
+`CampaignSave` 当前为 schema 1，包含：
 
-- 剧本 ID 与版本；
-- 每个内容包 ID 与版本；
-- 完整 `CampaignState`；
-- 保存时间。
+- 战役定义 ID 和版本
+- 内容包 ID 与版本映射
+- 保存时间
+- 完整 `CampaignState`
 
-`CampaignSaveMigrator` 只执行显式、逐版本前进的迁移。缺失迁移、版本倒退、剧本不匹配或内容包不匹配都会拒绝载入，不做静默猜测。
+`CampaignSaveMigrator` 只执行已注册的逐版本迁移。以下情况会拒绝载入：
 
-这份存档不是战斗 Action 回放。战斗回放还需要初始状态哈希、Action 序列和战斗规则版本，应保持独立格式。
+- schema 非法或高于当前版本
+- 缺失某一步迁移
+- 迁移没有提高 schema
+- 定义 ID 或版本不匹配
+- 内容包版本不匹配
+- 状态不满足定义约束
 
-## 6. 三套剧本如何共用
+该格式不是战斗存档或战斗回放。战斗回放仍缺少正式的初始状态哈希、Action 序列、规则版本锁定和回放验证器。
 
-三个剧本包分别提供自己的七章结构契约：
+## 事务和失败语义
 
-- `packages/story-candidate-01/src/`；
-- `packages/story-candidate-02/src/index.ts`；
-- `packages/story-candidate-03/src/index.ts`。
+`advance`、`choose`、`beginBattle` 和 `completeBattle` 都在 `CampaignRuntime.transaction()` 内执行。任何校验、效果或桥接错误都会恢复调用前快照。
 
-- 候选 1：西幻灰旗成长史；
-- 候选 2：宏大星际旅程；
-- 候选 3：东方历史创业史。
+应用层可以依赖以下不变量：
 
-三者只替换剧本 ID、演出定位、关卡定位、内容包和角色种子，使用同一个节点代数、运行时、战斗桥接与存档格式。专项测试会对三份定义运行同一组结构验证，并确认每份都含七场战斗契约。
+- 一个战役最多有一个 pending battle
+- 战斗结果只能提交一次
+- 当前节点始终存在于定义中
+- 结束状态不能继续迁移
+- 名单状态与定义版本始终匹配
+- 失败的迁移不会留下半次旗标或资源修改
 
-## 7. 下一层应放在哪里
+## 当前能力边界
 
-下面内容可以在战役框架上继续建设，但不应进入战斗核心：
+以下能力已经实现：
 
-- 对话播放器、镜头、立绘、选项文案和本地化；
-- 战前编队 UI、角色装备 UI 和营地界面；
-- 关卡解锁表、章节地图和奖励展示；
-- 自动存档槽、云同步与存档选择界面；
-- 三套剧本的实际节点数据、关卡文件与数值内容。
+- 通用节点状态机
+- 条件、效果和组合逻辑
+- 持久名单及战斗状态投影
+- 关系、资源、旗标、变量和功能开关
+- 战斗请求与战果防腐层
+- 版本化存档和显式迁移
+- 失败原子性和定义校验
 
-当前框架已经提供稳定的领域接口，制作剧情战役不需要再次重构战斗底座。
+以下能力尚未形成通用产品闭环：
+
+- 战役定义可视化编辑器
+- 装备、物品背包和商店领域
+- 战前编队与持久装备界面
+- 多存档槽、自动存档和云同步
+- 战斗中断存档与 Action 回放
+- 本地化资源管理和配音时间线
+
+这些缺口应继续留在战役或应用层，不能塞入战斗核心。
+
+## 扩展检查表
+
+新增战役能力前确认：
+
+1. 它是否跨越多个战斗？如果否，应优先留在战斗或表现层
+2. 它能否写成故事中立的状态、条件和效果？
+3. 新条件是否同时提供类型、处理器和测试？
+4. 新效果失败时是否保持事务原子性？
+5. 它是否改变存档 schema？如果是，是否提供显式迁移？
+6. 它是否需要战斗数据？如果是，是否通过 `CampaignBattleBridge`？
+
+## 相关文档
+
+- [战斗与战役能力边界](./engine-capabilities.md)
+- [战斗引擎架构](./combat-engine-architecture.md)
+- [关卡数据格式](./level-format.md)
+- [Monorepo 架构](./monorepo-architecture.md)

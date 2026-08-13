@@ -1,112 +1,131 @@
-# Empire SRPG Workspace
+# Empire SRPG workspace
 
-剧情战役型 SRPG 的 TypeScript monorepo。核心战斗、战役状态机、编辑器、剧本内容和可分发体验关卡已经物理隔离；规则引擎不依赖 DOM，也不知道任何人物名或章节。
+Empire 是一个 TypeScript monorepo，用于开发剧情战役型战略角色扮演游戏（SRPG）。仓库把单场战斗、跨关状态、内容定义、通用界面、编辑器和可分发体验关卡拆成独立工作区。
 
-当前视觉基线是三套 `final-*` 卡通素材包：
+## 开始开发
 
-- 剧本一：西幻卡通 `final-fantasy-v1`；
-- 剧本二：星际卡通 `final-scifi-v1`；
-- 剧本三：东方历史卡通 `final-ancient-china-v1`。
-
-偏写实、旧像素和历史运行时素材不参与构建，统一保存在 Git 忽略的 `.local-asset-archive/legacy-assets.zip`。
-
-## 常用命令
+安装依赖并启动主应用：
 
 ```bash
 npm install
-npm run dev               # 主游戏与《断冠之誓》战役
-npm run demo              # 战斗微内核能力 Demo
-npm run experience        # 超级体验关卡开发模式
-npm run build:experience  # 单文件产物 dist/experience-lab/index.html
-npm run build             # 类型检查并构建四个应用
-npm test                  # 整仓测试
-npm run bench:core        # 战斗热路径基准
+npm run dev
 ```
 
-macOS 可双击根目录的 `打开引擎Demo.command`。只有构建后的超级体验关卡可直接通过 `file://` 打开；开发入口仍由 Vite 提供本地服务器。
+常用入口：
 
-## Monorepo
+```bash
+npm run demo
+npm run experience
+npm run dev --workspace @empire/editor-app
+```
+
+这些命令分别启动战斗引擎能力 Demo、单关体验应用和关卡编辑器。开发入口使用 Vite 本地服务器，不能直接通过 `file://` 打开源码 HTML。
+
+## 运行检查
+
+执行完整本地检查：
+
+```bash
+npm run typecheck
+npm test
+npm run build
+```
+
+构建四个应用：
+
+```bash
+npm run build:apps
+```
+
+构建可直接复制给测试者的单文件体验包：
+
+```bash
+npm run build:experience
+```
+
+产物位于 `dist/experience-lab/index.html`。该文件内联运行时代码、样式和引用素材，可以通过 `file://` 打开。
+
+运行战斗热路径基准：
+
+```bash
+npm run bench:core
+```
+
+## 工作区
 
 ```text
 apps/
-  game/                    主游戏与战役入口
-  editor/                  关卡编辑器入口
-  engine-demo/             战斗引擎能力演示
-  experience-lab/          面向种子玩家的单关体验入口
+  game/                    主游戏组合根
+  editor/                  关卡编辑器组合根
+  engine-demo/             引擎能力演示
+  experience-lab/          单关体验发布入口
 
 packages/
   battle-engine/           Headless SRPG 战斗内核
-  campaign-engine/         通用章节状态机、战斗桥和版本化存档
-  content-common/          跨题材状态、移动、结构、阵形和环境
-  content-ancient-empires/ 通用奇幻数值与经典演示关卡
-  game-ui/                 题材无关 SVG 棋盘、HUD 和战役外壳
-  editor/                  关卡文档聚合与编辑界面
-  story-candidate-01/      《断冠之誓》内容、16 关、剧情和卡通素材
-  story-candidate-02/      《群星熄灭之前》七章契约与卡通素材
-  story-candidate-03/      《布衣定鼎》七章契约与卡通素材
-  experience-lab/          超级体验关卡数据，只组合现有机制
+  campaign-engine/         跨关状态机、战斗桥和存档
+  content-common/          跨题材内容定义
+  content-ancient-empires/ 通用战术内容与演示关卡
+  game-ui/                 棋盘、HUD、控制器和表现端口
+  editor/                  编辑器文档与界面
+  experience-lab/          体验关卡数据
+  story-candidate-*/       相互隔离的题材内容包
 
-tooling/test/              整仓测试组合根
-docs/                      设计、架构和三套剧本文档
+tooling/test/              测试组合根
+docs/                      技术设计、参考和操作文档
 ```
 
 依赖方向固定为：
 
 ```text
-apps / stories / experience-lab
-              ↓
-game-ui / editor / campaign-engine / content packs
-              ↓
+apps / content / experience
+               ↓
+game-ui / editor / campaign-engine
+               ↓
 battle-engine
 ```
 
-`battle-engine` 禁止导入 UI、编辑器、战役或剧本包；`game-ui` 通过 `ArtProvider` 和 `StoryCampaignAdapter` 接收题材表现，不反向依赖任何剧本。
+`battle-engine` 不依赖 DOM、界面、编辑器、战役或题材包。应用在组合根显式安装内容和注册表现。
 
-## 已实现的战斗能力
+## 技术能力
 
-- 四方向 Dijkstra、地形移动、占领、经济、生产和治疗；
-- 确定性预测/结算、反击、援护、范围模板、多武器、弹药与冷却；
-- 海拔、悬崖、直射视线、高打低、方向、侧击、背刺与夹击；
-- 半/全掩体、方向掩体、结构阻挡、动态覆盖层；
-- 状态、士气、溃退、投降、阵形、运输和复合目标；
-- 指挥官光环、指挥点、范围战术、英雄气势；
-- 当关军衔、职业树、熟练度与自由转职；
-- 护送、保护、歼灭、摧毁、占区、互动、组合和阶段目标；
-- 增援、召唤、撤退、复活、强制位移、传送和场景触发 DSL；
-- 共用合法行动与战斗预测的 AI；
-- 战前部署、地图编辑、关卡校验和无 DOM 运行。
+当前单场战斗内核覆盖：
 
-完整机制见[战斗系统设计](./docs/combat-system-design.md)，边界和扩展方式见[战斗引擎架构](./docs/combat-engine-architecture.md)，跨关部分见[战役引擎架构](./docs/campaign-engine-architecture.md)。
+- 加权移动、地形、海拔、悬崖、视线和战争迷雾
+- 确定性预测、反击、援护、多武器、范围模板和攻城
+- 朝向、侧击、背刺、夹击、半掩体和全掩体
+- 状态、士气、溃退、投降、阵形、运输和职业树
+- 占领、经济、生产、指挥官、战术和通用资源账户
+- 组合目标、动态场景、增援、召唤、强制位移和战前部署
+- 共用正式合法性与战斗预测的人工智能（AI）
+- Headless 运行、事务回滚、实例隔离和开放扩展注册表
 
-## 超级体验关卡
+编辑器已经覆盖基础地图、地形、单位、归属、海拔、悬崖、方向掩体、基础规则和 JSON 工作流。高级目标、场景触发器、结构、部署和题材场景图层仍通过代码或 JSON 配置。
 
-`@empire/experience-lab` 是冻结旧关卡之后用于验证 MDA 的纵向切片。当前关卡 `灰旗试炼 · 三线合围` 包含：
+## 技术文档
 
-- 29×17 的三线战场；
-- 21 个初始单位与双方动态增援；
-- 九人玩家联队、友军观察团和敌方指挥体系；
-- 高地、悬崖、方向掩体、结构、部署区和环境覆盖；
-- 保护、占区、击退统帅的组合目标；
-- 指挥、士气、火场、场景信号和题材卡通素材。
+从[技术文档入口](./docs/README.md)按任务选择页面。核心文档包括：
 
-`npm run build:experience` 会把运行时代码、CSS 与所需素材全部内联到一个 HTML 中。该文件可以直接复制给最早的种子玩家，不依赖服务器、`node_modules` 或旁侧资源。
+- [引擎能力目录](./docs/engine-capabilities.md)
+- [战斗系统设计](./docs/combat-system-design.md)
+- [战斗引擎架构](./docs/combat-engine-architecture.md)
+- [关卡数据格式](./docs/level-format.md)
+- [关卡编辑器](./docs/editor-guide.md)
+- [战场表现系统](./docs/presentation-system.md)
+- [战役引擎架构](./docs/campaign-engine-architecture.md)
+- [Monorepo 架构](./docs/monorepo-architecture.md)
+- [质量与测试](./docs/quality-and-testing.md)
 
-## 扩展原则
+技术文档不包含人物、章节和小说内容。剧本资料保留在独立目录，不作为引擎契约。
 
-- 新机制进入 `battle-engine` 前，应证明至少能跨题材复用；
-- 兵种、武器、地形和数值属于内容包，不写入 Action/AI 分支；
-- 剧情变量、持久伤亡与关系属于 `campaign-engine` 上层适配器；
-- 素材通过剧本包的 `ArtProvider` 绑定稳定领域 ID；
-- 超级体验关卡只组合生产能力，不建立 Lab 专属规则；
-- 不采用 ECS；单位、玩家、结构和战役状态保持明确的实体归属与聚合边界。
+## 扩展规则
 
-## 测试
+新增能力时遵守：
 
-```bash
-npm run typecheck
-npm test
-npx vitest run packages/battle-engine
-npx vitest run packages/experience-lab
-```
+1. 跨题材战斗合法性和结算进入 `battle-engine`
+2. 兵种、武器、地形和数值进入内容包
+3. 跨关名单、选择和关系进入 `campaign-engine` 或上层适配器
+4. 素材、动画和场景进入 `game-ui` 表现端口或题材表现包
+5. 组合根只安装依赖和挂载应用，不保存可复用领域逻辑
+6. 不采用实体组件系统（ECS），单位、玩家和结构保持明确实体归属
 
-架构测试会检查战斗内核环依赖和 package 边界；内容测试会检查定义引用、伤害矩阵、地图尺寸、关卡合法性和 AI 推演；页面测试会真实挂载游戏、编辑器、Demo、战役 UI 与体验入口。
+每项扩展必须同时考虑类型、执行、预测、AI、事件、实例隔离和测试，不能只在界面或内容数据中增加一个名称。

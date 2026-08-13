@@ -1,69 +1,113 @@
-# Empire SRPG Monorepo 架构
+# 组织 SRPG monorepo
 
-> 状态：已落地  
-> 目标：冻结既有关卡内容后，用稳定包边界支持战斗引擎、三套剧情战役和可单独分发的超级体验关卡。
+本页定义工作区的物理边界、依赖方向和组合根。它用于判断新代码应进入哪个包，以及哪些导入关系会破坏引擎的可复用性。
 
-## 1. 边界
+> 文档类型：Reference · 状态：已落地 · 代码真值：根 `package.json`、各 workspace `package.json`、`tsconfig.json`
 
-| 工作区 | 自洽职责 | 不允许承担 |
+## 工作区边界
+
+每个包必须形成自洽能力，不能按类或工具函数拆成细碎插件。
+
+| 工作区 | 负责 | 禁止承担 |
 | --- | --- | --- |
-| `@empire/battle-engine` | 战斗状态、规则、Action、AI、空间、目标和场景 DSL | DOM、台词、人物名、素材路径、跨关流程 |
-| `@empire/campaign-engine` | 章节节点、选择、持久名单、战斗桥和存档版本 | 伤害/移动计算、具体剧本文案 |
-| `@empire/content-common` | 跨题材资源定义 | 题材角色与故事特判 |
-| `@empire/content-ancient-empires` | 通用奇幻数值和经典演示关卡 | 战役流程、UI |
-| `@empire/game-ui` | 棋盘、HUD、通用战役外壳和表现端口 | 直接导入任一剧本 |
-| `@empire/editor` | 可暂时无效的关卡文档及编辑交互 | 运行中战斗状态 |
-| `@empire/story-candidate-*` | 每个剧本自己的内容、流程、演出适配和现役卡通素材 | 修改通用引擎来迁就情节 |
-| `@empire/experience-lab` | 组合生产机制的纵向体验关卡 | Lab 专属规则和复制引擎代码 |
+| `@empire/battle-engine` | 单场战斗状态、规则、Action、Event、AI、空间、目标和场景 DSL | DOM、素材路径、章节流程、人物或题材特判 |
+| `@empire/campaign-engine` | 节点状态机、持久名单、战斗桥、存档与迁移 | 伤害、寻路、射程和战场动画 |
+| `@empire/content-common` | 跨题材移动、状态、结构、战术、阵形和覆盖层定义 | 应用入口与剧情流程 |
+| `@empire/content-ancient-empires` | 一套可玩的通用数值内容和演示关卡 | 引擎分支、界面逻辑、跨关状态 |
+| `@empire/game-ui` | 通用棋盘、HUD、控制器、战役外壳和表现端口 | 直接导入具体题材包 |
+| `@empire/editor` | 编辑器文档聚合、地图交互和关卡表单 | 运行中战斗状态与战斗规则副本 |
+| `@empire/story-candidate-*` | 独立题材的内容、关卡、流程、演出适配和素材 | 修改通用包来迁就局部内容 |
+| `@empire/experience-lab` | 组合生产机制的纵向体验关卡 | Lab 专属战斗规则 |
+| `apps/*` | 安装内容、注册表现、挂载页面和决定发布方式 | 可复用领域逻辑 |
 
-## 2. 组合根
+## 依赖方向
 
-所有全局内容注册只发生在 `apps/*/src/main.ts` 或 `tooling/test/setup-content.ts`。导入一个引擎包本身不会安装题材定义。
+依赖只能向下。`battle-engine` 是最小稳定底座，应用和题材包是组合根附近的叶子。
 
-通用 UI 通过两个端口获得题材能力：
-
-- `ArtProvider`：单位、地形、结构、立绘、图标和特效；
-- `StoryCampaignAdapter`：剧本流程、台词、选择、关系标签和题材战果政策。
-
-因此剧本二、三可复用同一棋盘和战役界面，而不要求 `game-ui` 知道它们的存在。
-
-## 3. 素材政策
-
-当前正式素材只有包内三套卡通资产：
-
-```text
-packages/story-candidate-01/assets/final-fantasy-v1
-packages/story-candidate-02/assets/final-scifi-v1
-packages/story-candidate-03/assets/final-ancient-china-v1
+```mermaid
+flowchart TD
+  Apps["apps/*"] --> Stories["story / experience packages"]
+  Apps --> Editor["editor"]
+  Apps --> UI["game-ui"]
+  Stories --> UI
+  Stories --> Campaign["campaign-engine"]
+  Stories --> Content["content packs"]
+  Editor --> UI
+  Editor --> Content
+  UI --> Campaign
+  UI --> Battle["battle-engine"]
+  Campaign --> Battle
+  Content --> Battle
 ```
 
-偏写实、旧像素和历史运行时素材已从 Git 工作内容移出，按剧本分为三个目录并打入：
+架构测试会扫描生产源码并拒绝以下关系：
 
-```text
-.local-asset-archive/legacy-assets.zip
-```
+- 战斗内核导入内容、界面、编辑器或题材包
+- 内容包导入表现包
+- 引擎与内容包导入 DOM 相关模块
+- 核心生产模块形成循环依赖
+- 编辑器文档聚合导入 DOM 或渲染模块
 
-`.local-asset-archive/` 被 `.gitignore` 排除，只供本地与云盘备份。正式运行时不得从归档路径读取文件。
+## 四个应用入口
 
-## 4. 超级体验关卡分发
+应用只负责装配和发布，不拥有规则。
 
-`apps/experience-lab` 使用 `vite-plugin-singlefile`：
+| 应用 | 命令 | 用途 | 输出目录 |
+| --- | --- | --- | --- |
+| `@empire/game-app` | `npm run dev` | 主游戏、内置关卡与战役外壳 | `dist/game` |
+| `@empire/editor-app` | `npm run dev --workspace @empire/editor-app` | 关卡编辑器 | `dist/editor` |
+| `@empire/engine-demo-app` | `npm run demo` | 解释微内核、预测、资源和事件 | `dist/engine-demo` |
+| `@empire/experience-lab-app` | `npm run experience` | 面向体验验证的单关纵向切片 | `dist/experience-lab` |
 
-1. 只注册通用、经典奇幻和剧本一内容；
-2. 只启动 `@empire/experience-lab` 的一个关卡；
-3. 将代码、CSS 和用到的卡通 PNG 全部内联；
-4. 输出 `dist/experience-lab/index.html`。
+`apps/experience-lab` 使用 `vite-plugin-singlefile`。`npm run build:experience` 会把 JavaScript、CSS 和引用素材内联到一个 HTML 文件，该文件可以通过 `file://` 直接打开。
 
-这个产物支持直接 `file://` 打开，适合发给种子玩家。它与开发者能力 Demo 不同：前者验证玩家体验，后者解释引擎机制。
+## 组合根规则
 
-## 5. 新功能归属判断
+内容注册只能出现在 `apps/*/src/main.ts` 或测试组合根 `tooling/test/setup-content.ts`。导入包本身不能隐式安装内容，否则测试顺序、热更新和多引擎实例会互相污染。
 
-新增内容时依次判断：
+标准装配顺序如下：
 
-1. 是否改变战斗合法性或结算？若跨题材成立，进入 `battle-engine`；
-2. 是否只是兵种、武器、地形或数值？进入对应内容包；
-3. 是否是章节、人物、选择或持久关系？进入对应剧本和 `campaign-engine` 适配；
-4. 是否只是表现？实现 `ArtProvider` 或 `BattlePresentation`；
-5. 是否只是验证既有能力？进入 `experience-lab`，禁止创造平行规则。
+1. 调用 `installContentPacks` 安装内容定义
+2. 注册 `ArtProvider` 或 `BattlePresentation`
+3. 创建 `BattleEngine`、`GameSession` 或 `CampaignRuntime`
+4. 将控制器挂载到应用 DOM
 
-这样可以保持核心小而稳定，同时允许三个题材取能力并集，而不是被迫只保留交集。
+引擎创建时会克隆内容目录和规则注册表。已创建引擎不会读取之后写入的全局注册表。
+
+## 导出策略
+
+包根导出稳定公共面。子路径导出用于边界清晰的高级能力，例如 `@empire/battle-engine/plugins/default` 和 `@empire/game-ui/art/frame-animation`。
+
+新增导出时遵守以下规则：
+
+- 默认导入路径应覆盖常见用法
+- 不导出只为某个应用存在的内部状态
+- 类型和执行器必须成对导出
+- 内容定义通过 `ContentPack` 进入目录，不依赖初始化副作用
+- 表现扩展通过端口注册，不在 `game-ui` 中增加题材判断
+
+## 新功能归属
+
+按以下顺序判断代码位置：
+
+1. 改变单场战斗的合法性、状态或结算：进入 `battle-engine`
+2. 只定义兵种、武器、地形或数值：进入内容包
+3. 改变章节、持久名单或跨关结果：进入 `campaign-engine` 或上层适配器
+4. 只改变素材解析、动画和场景图层：进入 `game-ui` 的表现端口或题材表现包
+5. 只改变编辑体验：进入 `editor`
+6. 只组合已有能力验证体验：进入 `experience-lab`
+
+如果一项能力只能服务某个题材，优先放在题材包。只有当它能用故事中立的数据和事件表达，并且第二个题材也能复用时，才进入通用战斗内核。
+
+## 仓库资源政策
+
+运行时素材属于对应内容包。旧素材归档位于 Git 忽略目录 `.local-asset-archive/`，正式应用不得引用该目录。
+
+生成产物统一写入 `dist/`，也不进入 Git。源码文档可以引用仓库内的技术截图，但不能把生成的体验 HTML 当作源码依赖。
+
+## 相关文档
+
+- [技术文档入口](./README.md)
+- [战斗引擎架构](./combat-engine-architecture.md)
+- [战役引擎架构](./campaign-engine-architecture.md)
+- [质量与测试](./quality-and-testing.md)
