@@ -2,14 +2,15 @@ import { describe, expect, it } from 'vitest';
 import { Abilities, type AbilityDef } from '../abilities';
 import { applyAction } from '../actions';
 import { DefaultAbilityAiEvaluators } from '../ai';
-import { cloneContentCatalog, GlobalContentCatalog } from '../content-pack';
+
 import { defineCareer } from '../content-builders';
 import { createBattleEngine } from '../engine';
 import { idx } from '../grid';
 import { areAllies, cloneState } from '../state';
-import { CoreTacticalSpace } from '../tactical-space';
+import { DefaultTacticalSpace } from '../tactical-space';
 import type { GameEvent } from '../types';
-import { TEST_CONTENT, makeLevel, testScenarioEffect, testState, u } from './fixtures';
+import { TEST_CONTENT, TEST_RULES, makeLevel, testScenarioEffect, testState, u } from './fixtures';
+import { createTestCatalog } from '@empire/test-content';
 
 const collect = () => {
   const events: GameEvent[] = [];
@@ -75,7 +76,7 @@ describe('advanced battle-local primitives', () => {
     expect(state.map.elevation[idx(state.map, 1, 0)]).toBe(2);
     expect(state.map.cliffs).toHaveLength(1);
     expect(state.map.directionalCover[0].sides.west).toBe('full');
-    expect(CoreTacticalSpace.moveField(state, state.units[0]).stops.has(idx(state.map, 1, 0))).toBe(false);
+    expect(new DefaultTacticalSpace(TEST_CONTENT).moveField(state, state.units[0]).stops.has(idx(state.map, 1, 0))).toBe(false);
     expect(log.events.some((event) => event.type === 'elevationChanged')).toBe(true);
     expect(log.events.some((event) => event.type === 'cliffChanged')).toBe(true);
   });
@@ -120,14 +121,14 @@ describe('advanced battle-local primitives', () => {
       deployment: { order: [1], zones: [{ player: 1, zone: 'blue-front' }] },
     }));
     expect(state.phase).toBe('deployment');
-    expect(() => applyAction(state, { kind: 'endTurn' })).toThrow(/部署/);
+    expect(() => applyAction(state, { kind: 'endTurn' }, TEST_RULES)).toThrow(/部署/);
 
-    const events = applyAction(state, { kind: 'deployUnit', unit: state.units[0].id, at: { x: 1, y: 0 } });
+    const events = applyAction(state, { kind: 'deployUnit', unit: state.units[0].id, at: { x: 1, y: 0 } }, TEST_RULES);
     expect(state.units.find((unit) => unit.key === 'left')?.x).toBe(1);
     expect(state.units.find((unit) => unit.key === 'right')?.x).toBe(0);
     expect(events[0]?.type).toBe('unitDeployed');
 
-    const started = applyAction(state, { kind: 'finishDeployment' });
+    const started = applyAction(state, { kind: 'finishDeployment' }, TEST_RULES);
     expect(state.phase).toBe('playing');
     expect(state.turn).toBe(1);
     expect(started.some((event) => event.type === 'battleStarted')).toBe(true);
@@ -136,9 +137,9 @@ describe('advanced battle-local primitives', () => {
 
 describe('instance-isolated content and ability-aware AI', () => {
   it('resolves every runtime definition through the engine content catalog', () => {
-    const low = cloneContentCatalog(TEST_CONTENT);
-    const high = cloneContentCatalog(TEST_CONTENT);
-    const globalPower = GlobalContentCatalog.weapons.get('soldier_sword').power;
+    const low = createTestCatalog();
+    const high = createTestCatalog();
+    const globalPower = TEST_CONTENT.weapons.get('soldier_sword').power;
     low.weapons.override('soldier_sword', { power: 5 });
     high.weapons.override('soldier_sword', { power: 90 });
     low.units.get('soldier').tags.push('low-sandbox-only');
@@ -150,13 +151,13 @@ describe('instance-isolated content and ability-aware AI', () => {
 
     expect(lowEngine.forecast(lowState, lowState.units[0], lowState.units[1]).strike.base).toBe(5);
     expect(highEngine.forecast(highState, highState.units[0], highState.units[1]).strike.base).toBe(90);
-    expect(GlobalContentCatalog.weapons.get('soldier_sword').power).toBe(globalPower);
-    expect(GlobalContentCatalog.units.get('soldier').tags).not.toContain('low-sandbox-only');
-    expect('attack' in GlobalContentCatalog.units.get('soldier')).toBe(false);
+    expect(TEST_CONTENT.weapons.get('soldier_sword').power).toBe(globalPower);
+    expect(TEST_CONTENT.units.get('soldier').tags).not.toContain('low-sandbox-only');
+    expect('attack' in TEST_CONTENT.units.get('soldier')).toBe(false);
   });
 
   it('enumerates isolated weapons and progression without falling back to global content', () => {
-    const content = cloneContentCatalog(TEST_CONTENT);
+    const content = createTestCatalog();
     const baseWeapon = content.weapons.get('soldier_sword');
     const sandboxWeapon = { ...structuredClone(baseWeapon), id: 'sandbox_sword', name: 'Sandbox Sword' };
     content.weapons.define(sandboxWeapon);
@@ -190,7 +191,7 @@ describe('instance-isolated content and ability-aware AI', () => {
   });
 
   it('applies data-defined forced movement through an isolated weapon catalog', () => {
-    const content = cloneContentCatalog(TEST_CONTENT);
+    const content = createTestCatalog();
     const sword = content.weapons.get('soldier_sword');
     content.weapons.override(sword.id, {
       hitEffects: [...sword.hitEffects, { type: 'forcedMove', mode: 'push', distance: 1 }],
@@ -228,7 +229,7 @@ describe('instance-isolated content and ability-aware AI', () => {
       ability: rally.id,
       score: () => 100_000,
     });
-    const engine = createBattleEngine({ abilities, abilityAiEvaluators: evaluators });
+    const engine = createBattleEngine({ content: TEST_CONTENT, abilities, abilityAiEvaluators: evaluators });
     const state = engine.createState(makeLevel(['...'], {
       units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)],
     }));

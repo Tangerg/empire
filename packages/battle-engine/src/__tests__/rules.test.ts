@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
+import { createBattleEngine } from '../engine';
 import { applyAction, IllegalActionError } from '../actions';
 import { idx } from '../grid';
 import { GameSession } from '../session';
 import { player, unitAt } from '../state';
-import { makeLevel, testCommands, testState, u } from './fixtures';
+import { TEST_CONTENT, TEST_RULES, makeLevel, testCommands, testState, u } from './fixtures';
 import { FUNDS_RESOURCE } from '../resources';
 
 const wait = (unit: number, path: { x: number; y: number }[]) =>
@@ -19,7 +20,7 @@ describe('capture', () => {
       unit: s.units[0].id,
       path: [{ x: 1, y: 0 }, { x: 0, y: 0 }],
       command: { ability: 'capture' },
-    });
+    }, TEST_RULES);
     expect(s.map.owners[idx(s.map, 0, 0)]).toBe(1);
   });
 
@@ -42,7 +43,7 @@ describe('capture', () => {
         unit: s.units[0].id,
         path: [{ x: 0, y: 0 }],
         command: { ability: 'capture' },
-      });
+      }, TEST_RULES);
     capture();
     expect(s.map.owners[0]).toBe(0);
     expect(s.map.captureProgress[0]).toBe(50);
@@ -63,10 +64,10 @@ describe('capture', () => {
       unit: s.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'capture' },
-    });
+    }, TEST_RULES);
     expect(s.map.captureProgress[0]).toBeGreaterThan(0);
     s.units[0].done = false;
-    applyAction(s, wait(s.units[0].id, [{ x: 0, y: 0 }, { x: 2, y: 0 }]));
+    applyAction(s, wait(s.units[0].id, [{ x: 0, y: 0 }, { x: 2, y: 0 }]), TEST_RULES);
     expect(s.map.captureProgress[0]).toBe(0);
   });
 });
@@ -82,8 +83,8 @@ describe('economy and turn cycle', () => {
         ],
       }),
     );
-    applyAction(s, { kind: 'endTurn' }); // -> P2
-    applyAction(s, { kind: 'endTurn' }); // -> P1, turn 2
+    applyAction(s, { kind: 'endTurn' }, TEST_RULES); // -> P2
+    applyAction(s, { kind: 'endTurn' }, TEST_RULES); // -> P1, turn 2
     expect(player(s, 1).resources[FUNDS_RESOURCE].current).toBe(200); // village 100 + castle 100
     expect(s.units[0].hp).toBe(60); // village heals 20
     expect(s.turn).toBe(2);
@@ -97,7 +98,7 @@ describe('economy and turn cycle', () => {
         funds: [400, 0],
       }),
     );
-    const events = applyAction(s, { kind: 'recruit', at: { x: 0, y: 0 }, unit: 'knight' });
+    const events = applyAction(s, { kind: 'recruit', at: { x: 0, y: 0 }, unit: 'knight' }, TEST_RULES);
     expect(player(s, 1).resources[FUNDS_RESOURCE].current).toBe(50);
     expect(events).toContainEqual(expect.objectContaining({
       type: 'resourceChanged',
@@ -114,10 +115,10 @@ describe('economy and turn cycle', () => {
     const s = testState(
       makeLevel(['C.'], { units: [u(1, 0, 'soldier', 2)], owners: [{ x: 0, y: 0, owner: 1 }] }),
     );
-    expect(() => applyAction(s, { kind: 'recruit', at: { x: 0, y: 0 }, unit: 'dragon' })).toThrow(
+    expect(() => applyAction(s, { kind: 'recruit', at: { x: 0, y: 0 }, unit: 'dragon' }, TEST_RULES)).toThrow(
       IllegalActionError,
     );
-    expect(() => applyAction(s, { kind: 'recruit', at: { x: 1, y: 0 }, unit: 'soldier' })).toThrow(
+    expect(() => applyAction(s, { kind: 'recruit', at: { x: 1, y: 0 }, unit: 'soldier' }, TEST_RULES)).toThrow(
       IllegalActionError,
     );
   });
@@ -126,20 +127,20 @@ describe('economy and turn cycle', () => {
 describe('legality', () => {
   it('refuses to move outside the movement field', () => {
     const s = testState(makeLevel(['.........'], { units: [u(0, 0, 'soldier', 1), u(8, 0, 'soldier', 2)] }));
-    expect(() => applyAction(s, wait(s.units[0].id, [{ x: 0, y: 0 }, { x: 7, y: 0 }]))).toThrow(
+    expect(() => applyAction(s, wait(s.units[0].id, [{ x: 0, y: 0 }, { x: 7, y: 0 }]), TEST_RULES)).toThrow(
       IllegalActionError,
     );
   });
 
   it('refuses to act twice with one unit', () => {
     const s = testState(makeLevel(['...'], { units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)] }));
-    applyAction(s, wait(s.units[0].id, [{ x: 0, y: 0 }]));
-    expect(() => applyAction(s, wait(s.units[0].id, [{ x: 0, y: 0 }]))).toThrow(IllegalActionError);
+    applyAction(s, wait(s.units[0].id, [{ x: 0, y: 0 }]), TEST_RULES);
+    expect(() => applyAction(s, wait(s.units[0].id, [{ x: 0, y: 0 }]), TEST_RULES)).toThrow(IllegalActionError);
   });
 
   it('refuses to move an opponent unit', () => {
     const s = testState(makeLevel(['...'], { units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)] }));
-    expect(() => applyAction(s, wait(s.units[1].id, [{ x: 2, y: 0 }]))).toThrow(IllegalActionError);
+    expect(() => applyAction(s, wait(s.units[1].id, [{ x: 2, y: 0 }]), TEST_RULES)).toThrow(IllegalActionError);
   });
 
   it('forbids siege units from firing after moving', () => {
@@ -171,7 +172,7 @@ describe('victory', () => {
       unit: s.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
-    });
+    }, TEST_RULES);
     expect(events.some((e) => e.type === 'gameOver')).toBe(true);
     expect(s.winnerTeam).toBe(1);
   });
@@ -189,7 +190,7 @@ describe('victory', () => {
       unit: s.units[0].id,
       path: [{ x: 1, y: 0 }, { x: 0, y: 0 }],
       command: { ability: 'capture' },
-    });
+    }, TEST_RULES);
     expect(s.phase).toBe('over');
     expect(s.winnerTeam).toBe(1);
   });
@@ -201,9 +202,9 @@ describe('victory', () => {
         victory: [{ type: 'surviveTurns', turns: 1 }],
       }),
     );
-    applyAction(s, { kind: 'endTurn' });
+    applyAction(s, { kind: 'endTurn' }, TEST_RULES);
     expect(s.phase).toBe('playing');
-    applyAction(s, { kind: 'endTurn' });
+    applyAction(s, { kind: 'endTurn' }, TEST_RULES);
     expect(s.phase).toBe('over');
     expect(s.winnerTeam).toBe(1);
     expect(s.endReason).toContain('坚守 1 回合');
@@ -213,7 +214,7 @@ describe('victory', () => {
 describe('session', () => {
   it('undoes a command but not a turn change', () => {
     const level = makeLevel(['...'], { units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)] });
-    const session = new GameSession(level);
+    const session = new GameSession(level, createBattleEngine({ content: TEST_CONTENT }));
     const id = session.state.units[0].id;
     session.dispatch(wait(id, [{ x: 0, y: 0 }, { x: 1, y: 0 }]));
     expect(session.unit(id)!.x).toBe(1);
@@ -227,7 +228,7 @@ describe('session', () => {
 
   it('keeps state intact when an illegal action is rejected', () => {
     const level = makeLevel(['.........'], { units: [u(0, 0, 'soldier', 1), u(8, 0, 'soldier', 2)] });
-    const session = new GameSession(level);
+    const session = new GameSession(level, createBattleEngine({ content: TEST_CONTENT }));
     const before = JSON.stringify(session.state);
     expect(session.tryDispatch(wait(session.state.units[0].id, [{ x: 0, y: 0 }, { x: 6, y: 0 }]))).toBeNull();
     expect(JSON.stringify(session.state)).toBe(before);

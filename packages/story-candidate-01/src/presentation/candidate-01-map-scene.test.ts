@@ -9,10 +9,11 @@ import {
 import { candidate01EnvironmentScene } from './candidate-01-environment';
 import { createSceneViewport } from '@empire/game-ui';
 
-import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+import { createTestCatalog } from '@empire/test-content';
+import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** Composed per suite, exactly like an application composition root. */
-const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 
 describe('candidate-01 authored map scenery', () => {
   it('composes high-resolution surfaces, connected roads and authored regions for Twin Hills', () => {

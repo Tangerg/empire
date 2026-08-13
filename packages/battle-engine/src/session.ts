@@ -1,7 +1,6 @@
 import { IllegalActionError } from './action-system';
 import type { AiOptions } from './ai';
 import type { BattleEngine } from './engine';
-import { createDefaultBattleEngine } from './plugins/default';
 import type { MoveField } from './movement';
 import { unitById } from './state';
 import type { Action, Coord, GameEvent, GameState, LevelData, PlayerId, Unit, WeaponId } from './types';
@@ -25,7 +24,8 @@ export class GameSession {
 
   constructor(
     level: LevelData,
-    readonly engine: BattleEngine = createDefaultBattleEngine(),
+    /** The composed ruleset this battle runs on; never an ambient default. */
+    readonly engine: BattleEngine,
   ) {
     this.level = level;
     this.state = engine.createState(level);

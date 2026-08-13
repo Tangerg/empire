@@ -252,7 +252,9 @@
 
 ## 依赖注入约定
 
-引擎里没有任何函数可以隐式读取环境内容目录：
+引擎里**不存在**环境内容目录：`GlobalContentCatalog`、`installContentPacks`、`DefaultBattleRuleServices`、`CoreTacticalSpace` 全部删除。内容目录按组合创建，由应用组合根或 `@empire/test-content` 注入。
+
+在此之上：
 
 - 依赖参数一律必填，从不使用全局默认值；漏传是编译错误
 - 单一 `content: ContentCatalog` 依赖尾置；需要两个以上服务时，改为前置的端口对象（`CombatRules`、`AbilityRules`、`StatusRules`、`ObjectiveRules`、`VictoryRules`、`AiRules`…）

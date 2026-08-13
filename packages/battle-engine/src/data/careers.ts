@@ -1,15 +1,17 @@
-import { Registry } from '../registry';
-import type { CareerDef, CareerId, UnitTypeId } from '../types';
+import type { CareerDef, UnitTypeId } from '../types';
+import type { Registry } from '../registry';
 
-export const Careers = new Registry<CareerDef>('career');
-
-export const careerDef = (id: CareerId): CareerDef => Careers.get(id);
-
-export function careersForUnitType(unitType: UnitTypeId): CareerDef[] {
-  return Careers.all().filter((career) => career.unitType === unitType);
+export function careersForUnitType(
+  careers: Registry<CareerDef>,
+  unitType: UnitTypeId,
+): CareerDef[] {
+  return careers.all().filter((career) => career.unitType === unitType);
 }
 
-export function defaultCareerForUnitType(unitType: UnitTypeId): CareerDef | undefined {
-  return careersForUnitType(unitType)
+export function defaultCareerForUnitType(
+  careers: Registry<CareerDef>,
+  unitType: UnitTypeId,
+): CareerDef | undefined {
+  return careersForUnitType(careers, unitType)
     .sort((left, right) => left.tier - right.tier || left.id.localeCompare(right.id))[0];
 }

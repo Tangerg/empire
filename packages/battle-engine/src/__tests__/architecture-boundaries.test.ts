@@ -5,15 +5,21 @@ import { dirname, join, relative } from 'node:path';
 const coreRoot = join(import.meta.dirname, '..');
 const packagesRoot = join(coreRoot, '..', '..');
 
+/**
+ * Production sources only.
+ *
+ * Tests and benchmarks are excluded by name as well as by folder: some packages
+ * keep `*.test.ts` next to the code it covers, and counting those as runtime
+ * made every boundary check quietly weaker than it looked.
+ */
 function runtimeTypeScriptFiles(directory: string): string[] {
   return readdirSync(directory).flatMap((entry) => {
     const path = join(directory, entry);
-    if (entry === '__tests__') return [];
-    return statSync(path).isDirectory()
-      ? runtimeTypeScriptFiles(path)
-      : entry.endsWith('.ts')
-        ? [path]
-        : [];
+    if (entry === '__tests__' || entry === '__bench__') return [];
+    if (statSync(path).isDirectory()) return runtimeTypeScriptFiles(path);
+    if (!entry.endsWith('.ts')) return [];
+    if (entry.endsWith('.test.ts') || entry.endsWith('.bench.ts')) return [];
+    return [path];
   });
 }
 
@@ -115,7 +121,7 @@ describe('source dependency boundaries', () => {
 describe('dependency injection invariants', () => {
   it('never defaults a dependency parameter to a global singleton', () => {
     const globals = [
-      'GlobalContentCatalog',
+      'TEST_CONTENT',
       'DefaultBattleResources',
       'DefaultCombatModifierPipeline',
       'DefaultBattleRuleServices',
@@ -176,5 +182,72 @@ describe('dependency injection invariants', () => {
 
     // Only application composition roots may install content.
     expect(violations).toEqual([]);
+  });
+});
+
+describe('no ambient content', () => {
+  it('exposes no module-level registry of content definitions', () => {
+    // Code registries (abilities, turn-order policies) are engine behaviour
+    // populated at module load and cloned per ruleset — they are prototypes, not
+    // shared data. What must never exist at module scope is a registry of
+    // *content* definitions, because those are written by external packs at boot
+    // and would put every engine instance back in one namespace.
+    const contentDefinitions = [
+      'TerrainDef', 'UnitDef', 'WeaponDef', 'StatusDef', 'StructureDef',
+      'TerrainOverlayDef', 'TacticDef', 'CareerDef', 'FormationDef',
+      'MovementProfileDef', 'DamageTypeDef', 'ArmorClassDef',
+    ];
+    const pattern = new RegExp(`^export const \\w+ = new Registry<(?:${contentDefinitions.join('|')})>`, 'm');
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) =>
+      pattern.test(readFileSync(file, 'utf8')) ? [relative(coreRoot, file)] : []);
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('has removed every ambient content entry point', () => {
+    const forbidden = [
+      'GlobalContentCatalog',
+      'GlobalContentPacks',
+      'installContentPacks',
+      'DefaultBattleRuleServices',
+      'CoreTacticalSpace',
+    ];
+    const pattern = new RegExp(`\\b(?:${forbidden.join('|')})\\b`);
+    const scanned = [
+      ...runtimeTypeScriptFiles(coreRoot),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'campaign-engine', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'editor', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'story-candidate-01', 'src')),
+    ];
+    const offenders = scanned.filter((file) => pattern.test(readFileSync(file, 'utf8')));
+
+    expect(offenders.map((file) => relative(packagesRoot, file))).toEqual([]);
+  });
+
+  it('keeps the test composition root out of runtime code', () => {
+    const scanned = [
+      ...runtimeTypeScriptFiles(coreRoot),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'campaign-engine', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'editor', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'story-candidate-01', 'src')),
+    ];
+    const offenders = scanned.filter((file) =>
+      /@empire\/test-content/.test(readFileSync(file, 'utf8')));
+
+    expect(offenders.map((file) => relative(packagesRoot, file))).toEqual([]);
+  });
+
+  it('leaves content installation to composition roots only', () => {
+    const installers = ['game-ui', 'editor', 'campaign-engine', 'content-common', 'content-ancient-empires']
+      .flatMap((packageName) =>
+        runtimeTypeScriptFiles(join(packagesRoot, packageName, 'src')).flatMap((file) =>
+          /new ContentPackInstaller\(/.test(readFileSync(file, 'utf8'))
+            ? [`${packageName}/${relative(join(packagesRoot, packageName, 'src'), file)}`]
+            : []));
+
+    // Apps and @empire/test-content compose; libraries never do.
+    expect(installers).toEqual([]);
   });
 });

@@ -1,6 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { GameSession, unitDef, type GameEvent, type LevelData } from '@empire/battle-engine';
+import { GameSession, type GameEvent, type LevelData } from '@empire/battle-engine';
 import { CANDIDATE_01_LEVELS } from './levels';
+
+import { createTestCatalog } from '@empire/test-content';
+import { createBattleEngine } from '@empire/battle-engine';
+import { CANDIDATE_01_CONTENT_PACK } from './index';
+
+/** Composed per suite, exactly like an application composition root. */
+const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
+const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
 
 export interface BalanceResult {
   id: string;
@@ -25,7 +33,7 @@ export function simulateCandidate01(level: LevelData, aggression = 0.58, actionL
       player.ai = { aggression };
     }
   }
-  const session = new GameSession(snapshot);
+  const session = new GameSession(snapshot, TEST_ENGINE);
   const events: GameEvent[] = [];
   let actions = 0;
   while (session.state.phase === 'playing' && actions < actionLimit) {
@@ -59,7 +67,7 @@ export function simulateCandidate01(level: LevelData, aggression = 0.58, actionL
     actions,
     allies: allies.length,
     enemies: enemies.length,
-    allyHp: allies.length === 0 ? 0 : Math.round(allies.reduce((sum, unit) => sum + unit.hp / unitDef(unit.type).maxHp, 0) / allies.length * 100),
+    allyHp: allies.length === 0 ? 0 : Math.round(allies.reduce((sum, unit) => sum + unit.hp / TEST_CATALOG.units.get(unit.type).maxHp, 0) / allies.length * 100),
     attacks: attackEvents.length,
     skills: skills.length,
     signals: events.filter((event) => event.type === 'scenarioSignal').length,

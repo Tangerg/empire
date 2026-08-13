@@ -7,11 +7,12 @@ import {
   BattleLevelError,
   createBattleEngine,
 } from '../engine';
-import { cloneContentCatalog } from '../content-pack';
+
 import { GameSession } from '../session';
 import { DefaultTacticalSpace } from '../tactical-space';
 import type { GameEventKindMap } from '../types';
 import { TEST_CONTENT, makeLevel, u } from './fixtures';
+import { createTestCatalog } from '@empire/test-content';
 
 declare module '../types' {
   interface GameEventKindMap {
@@ -60,7 +61,7 @@ describe('balanced engine extension seams', () => {
   it('installs a custom ability and semantic event in one isolated engine', () => {
     const abilities = Abilities.clone();
     abilities.define(pulse);
-    const session = new GameSession(duel(), createBattleEngine({ abilities }));
+    const session = new GameSession(duel(), createBattleEngine({ content: TEST_CONTENT, abilities }));
     const actor = session.state.units[0];
     actor.learnedAbilities.push(pulse.id);
 
@@ -82,7 +83,7 @@ describe('balanced engine extension seams', () => {
   });
 
   it('uses one spatial policy for menus and authoritative validation', () => {
-    const session = new GameSession(duel(), createBattleEngine({ space: new PacifistSpace(TEST_CONTENT) }));
+    const session = new GameSession(duel(), createBattleEngine({ content: TEST_CONTENT, space: new PacifistSpace(TEST_CONTENT) }));
     const actor = session.state.units[0];
 
     expect(session.commandsAt(actor, actor).some((option) => option.ability === 'attack')).toBe(false);
@@ -98,6 +99,7 @@ describe('balanced engine extension seams', () => {
   it('rolls back failed end-turn extensions without making turn changes undoable', () => {
     const handlers = CoreActionHandlers.clone().replace(new FailingEndTurn());
     const session = new GameSession(duel(), createBattleEngine({
+      content: TEST_CONTENT,
       actionHandlers: handlers as ActionHandlerRegistry,
     }));
     const before = structuredClone(session.state);
@@ -111,7 +113,7 @@ describe('balanced engine extension seams', () => {
   it('rolls the semantic event log back with an undone action', () => {
     const abilities = Abilities.clone();
     abilities.define(pulse);
-    const session = new GameSession(duel(), createBattleEngine({ abilities }));
+    const session = new GameSession(duel(), createBattleEngine({ content: TEST_CONTENT, abilities }));
     const actor = session.state.units[0];
     actor.learnedAbilities.push(pulse.id);
     session.dispatch({
@@ -129,7 +131,7 @@ describe('balanced engine extension seams', () => {
 
   it('keeps direct BattleEngine dispatch transactional without a session shell', () => {
     const handlers = CoreActionHandlers.clone().replace(new FailingEndTurn());
-    const engine = createBattleEngine({ actionHandlers: handlers as ActionHandlerRegistry });
+    const engine = createBattleEngine({ content: TEST_CONTENT, actionHandlers: handlers as ActionHandlerRegistry });
     const state = engine.createState(duel());
     const before = structuredClone(state);
 
@@ -138,8 +140,8 @@ describe('balanced engine extension seams', () => {
   });
 
   it('builds isolated default strategy graphs for every session', () => {
-    const first = new GameSession(duel());
-    const second = new GameSession(duel());
+    const first = new GameSession(duel(), createBattleEngine({ content: TEST_CONTENT }));
+    const second = new GameSession(duel(), createBattleEngine({ content: TEST_CONTENT }));
     first.engine.rules.abilities.define(pulse);
     first.engine.actionHandlers.replace(new FailingEndTurn());
 
@@ -150,14 +152,14 @@ describe('balanced engine extension seams', () => {
   });
 
   it('fails fast for incompatible engine capabilities and malformed levels', () => {
-    const content = cloneContentCatalog(TEST_CONTENT);
+    const content = createTestCatalog();
     const soldier = content.units.get('soldier');
     content.units.override(soldier.id, {
       abilities: [...soldier.abilities, 'missing-engine-ability'],
     });
     expect(() => createBattleEngine({ content })).toThrow(BattleEngineConfigurationError);
 
-    const engine = createBattleEngine();
+    const engine = createBattleEngine({ content: TEST_CONTENT });
     const invalid = duel();
     invalid.units[1].x = invalid.units[0].x;
     expect(() => engine.createState(invalid)).toThrow(BattleLevelError);

@@ -4,7 +4,7 @@ import { idx } from '../grid';
 import { cloneState } from '../state';
 import { damageStructure } from '../structures';
 import type { Action } from '../types';
-import { TEST_CONTENT, makeLevel, testState, u } from './fixtures';
+import { TEST_CONTENT, TEST_RULES, makeLevel, testState, u } from './fixtures';
 
 const wait = (unit: number, x: number, y: number): Action => ({
     kind: 'command',
@@ -36,7 +36,7 @@ describe('headless scenario primitives', () => {
       }),
     );
     damageStructure(s, 'story-node', 1000, TEST_CONTENT);
-    const events = applyAction(s, wait(s.units[0].id, 0, 0));
+    const events = applyAction(s, wait(s.units[0].id, 0, 0), TEST_RULES);
     expect(s.scenario.variables.nodeDown).toBe(true);
     expect(events).toContainEqual({ type: 'scenarioSignal', signal: 'node.destroyed' });
     expect(s.scenario.firedTriggerIds).toEqual(['node-destroyed']);
@@ -67,7 +67,7 @@ describe('headless scenario primitives', () => {
       unit: s.units[0].id,
       path: [{ x: 0, y: 0 }, { x: 1, y: 0 }],
       command: { ability: 'wait' },
-    });
+    }, TEST_RULES);
     expect(s.units[0].statuses[0]).toMatchObject({ id: 'shaken', remaining: 2 });
     expect(events.some((event) => event.type === 'statusApplied')).toBe(true);
   });
@@ -92,8 +92,8 @@ describe('headless scenario primitives', () => {
         },
       }),
     );
-    applyAction(s, { kind: 'endTurn' });
-    const events = applyAction(s, { kind: 'endTurn' });
+    applyAction(s, { kind: 'endTurn' }, TEST_RULES);
+    const events = applyAction(s, { kind: 'endTurn' }, TEST_RULES);
     expect(s.map.tiles[idx(s.map, 1, 0)]).toBe('water');
     expect(s.map.tiles[idx(s.map, 2, 0)]).toBe('water');
     expect(events.filter((event) => event.type === 'terrainChanged')).toHaveLength(2);

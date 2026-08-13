@@ -1,5 +1,8 @@
 import { bench, describe } from 'vitest';
 import { createDefaultBattleEngine } from '../plugins/default';
+import { createTestCatalog } from '@empire/test-content';
+
+const BENCH_CONTENT = createTestCatalog();
 import { Battlefield } from '../domain/battlefield';
 import type { Coord, LevelStructure, LevelUnit } from '../types';
 import { makeLevel, u } from '../__tests__/fixtures';
@@ -35,7 +38,7 @@ for (let y = 0; y < height; y++) {
   }
 }
 
-const engine = createDefaultBattleEngine();
+const engine = createDefaultBattleEngine(BENCH_CONTENT);
 const state = engine.createState(makeLevel(rows, {
   units,
   structures,

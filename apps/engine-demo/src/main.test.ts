@@ -6,7 +6,8 @@ describe('engine capability demo', () => {
     document.body.innerHTML = '<div id="app"></div>';
     await import('./main');
 
-    expect(document.querySelectorAll('.plugin-card')).toHaveLength(4);
+    // Four rule plugins plus the content plugin the composition root supplies.
+    expect(document.querySelectorAll('.plugin-card')).toHaveLength(5);
     expect(document.querySelectorAll('.demo-tile')).toHaveLength(35);
 
     (document.querySelector('[data-act="forecast-hero"]') as HTMLButtonElement).click();

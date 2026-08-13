@@ -522,7 +522,7 @@ export class EditorApp {
           ${terrainList
             .map(
               (t, i) => `<button class="swatch ${this.terrain === t.id ? 'active' : ''}"
-                data-act="terrain" data-arg="${t.id}" title="${escapeHtml(t.name)} · 字符 ${terrainCharacter(t.id) ?? '?'}${i < 9 ? ` · 快捷键 ${i + 1}` : ''}">
+                data-act="terrain" data-arg="${t.id}" title="${escapeHtml(t.name)} · 字符 ${terrainCharacter(this.content, t.id) ?? '?'}${i < 9 ? ` · 快捷键 ${i + 1}` : ''}">
                 ${terrainSwatch(t.id, t.capturable ? this.colorOf(this.owner) : undefined)}
                 <span>${escapeHtml(t.name)}</span>
               </button>`,

@@ -1,16 +1,6 @@
-import { MovementProfiles } from './data/movement';
-import { ArmorClasses, DamageMatchups, DamageMatchupRegistry, DamageTypes } from './data/damage';
-import { TerrainOverlays } from './data/overlays';
-import { Structures } from './data/structures';
-import { Tactics } from './data/tactics';
-import { TerrainEncoding, TerrainEncodingRegistry } from './data/terrain-encoding';
-import { Terrains } from './data/terrain';
-import { UnitTypes } from './data/units';
-import { Weapons } from './data/weapons';
+import { DamageMatchupRegistry } from './data/damage';
+import { TerrainEncodingRegistry } from './data/terrain-encoding';
 import { Registry } from './registry';
-import { Statuses } from './data/statuses';
-import { Careers } from './data/careers';
-import { Formations } from './data/formations';
 import { orderByDependencies } from './dependency-order';
 import type {
   CareerDef,
@@ -88,23 +78,6 @@ export function createContentCatalog(): ContentCatalog {
     formations: new Registry('formation'),
   };
 }
-
-export const GlobalContentCatalog: ContentCatalog = {
-  movementProfiles: MovementProfiles,
-  damageTypes: DamageTypes,
-  armorClasses: ArmorClasses,
-  damageMatchups: DamageMatchups,
-  terrains: Terrains,
-  terrainEncoding: TerrainEncoding,
-  weapons: Weapons,
-  units: UnitTypes,
-  statuses: Statuses,
-  structures: Structures,
-  terrainOverlays: TerrainOverlays,
-  tactics: Tactics,
-  careers: Careers,
-  formations: Formations,
-};
 
 function cloneDataRegistry<T extends { id: string }>(source: Registry<T>): Registry<T> {
   const copy = source.clone();
@@ -203,7 +176,13 @@ export class ContentPackInstaller {
     for (const pack of ordered) {
       for (const field of PACK_FIELDS) {
         const entries = pack[field.pack] as readonly { id: string }[] | undefined;
-        if (entries) (this.catalog[field.catalog] as Registry<{ id: string }>).defineAll(entries);
+        // Deep-copy on install: a pack is a *declaration*, a catalog *owns* its
+        // definitions. Sharing the objects would let one catalog's balance
+        // override leak into another catalog built from the same pack.
+        if (entries) {
+          (this.catalog[field.catalog] as Registry<{ id: string }>)
+            .defineAll(entries.map((entry) => structuredClone(entry)));
+        }
       }
       if (pack.terrainCharacters !== undefined || pack.defaultTerrain !== undefined) {
         this.catalog.terrainEncoding.register(pack.terrainCharacters ?? {}, pack.defaultTerrain);
@@ -456,8 +435,3 @@ export class ContentPackInstaller {
   }
 }
 
-export const GlobalContentPacks = new ContentPackInstaller(GlobalContentCatalog);
-
-export function installContentPacks(...packs: readonly ContentPack[]): string[] {
-  return GlobalContentPacks.install(...packs);
-}

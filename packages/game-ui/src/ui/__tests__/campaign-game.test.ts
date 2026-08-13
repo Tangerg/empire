@@ -4,10 +4,12 @@ import { CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN } from '@empire/story-candid
 import { candidate01CampaignAdapter } from '@empire/story-candidate-01/presentation';
 import { StoryCampaignController } from '../campaign-game';
 
-import { cloneContentCatalog, createBattleEngine, GlobalContentCatalog } from '@empire/battle-engine';
+import { createBattleEngine } from '@empire/battle-engine';
+import { createTestCatalog } from '@empire/test-content';
+import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** Composed per suite, exactly like an application composition root. */
-const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
 
 function click(root: HTMLElement, selector: string): void {

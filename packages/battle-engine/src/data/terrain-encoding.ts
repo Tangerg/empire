@@ -70,4 +70,3 @@ export class TerrainEncodingRegistry {
   }
 }
 
-export const TerrainEncoding = new TerrainEncodingRegistry();

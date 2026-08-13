@@ -156,6 +156,7 @@ describe('open extension contracts', () => {
     });
     const objectives = new ObjectiveHandlerRegistry().register(testObjective);
     const engine = createBattleEngine({
+      content: TEST_CONTENT,
       actionHandlers,
       scenarioConditions: conditions,
       scenarioEffects: effects,

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
-import { makeLevel, testDamage, testForecast, testState, u } from './fixtures';
+import { TEST_RULES, makeLevel, testDamage, testForecast, testState, u } from './fixtures';
 
 describe('damage model', () => {
   it('is deterministic and matches the forecast exactly', () => {
@@ -12,7 +12,7 @@ describe('damage model', () => {
       unit: a.id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
-    });
+    }, TEST_RULES);
     const attack = events.find((e) => e.type === 'attack');
     expect(attack).toMatchObject({ damage: fc.strike.damage });
     expect(b.hp).toBe(fc.defenderHpAfter);
@@ -68,7 +68,7 @@ describe('damage model', () => {
       unit: s.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
-    });
+    }, TEST_RULES);
     const attackIndex = events.findIndex((event) => event.type === 'attack');
     const deathIndex = events.findIndex((event) => event.type === 'death');
     expect(attackIndex).toBeGreaterThanOrEqual(0);
@@ -84,7 +84,7 @@ describe('damage model', () => {
       unit: s.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
-    });
+    }, TEST_RULES);
     const counterIndex = events.findIndex((event) => event.type === 'counter');
     const deathIndex = events.findIndex((event) => event.type === 'death' && event.unit === 1);
     expect(counterIndex).toBeGreaterThanOrEqual(0);

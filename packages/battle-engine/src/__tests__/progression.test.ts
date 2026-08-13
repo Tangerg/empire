@@ -32,6 +32,7 @@ describe('battle-local rank and hero momentum', () => {
 
   it('injects rank thresholds through BattleEngine and awards capture progress authoritatively', () => {
     const engine = createBattleEngine({
+      content: TEST_CONTENT,
       progression: new ThresholdRankProgressionPolicy(10, 30),
     });
     const state = engine.createState(
@@ -68,7 +69,7 @@ describe('battle-local rank and hero momentum', () => {
       unit: hero.id,
       path: [{ x: hero.x, y: hero.y }],
       command: { ability: 'attack', weapon: 'heroic_breakthrough', target },
-    })).toThrow(IllegalActionError);
+    }, TEST_RULES)).toThrow(IllegalActionError);
 
     hero.resources[MOMENTUM_RESOURCE].current = 120;
     expect(testCommands(state, hero, hero).some((option) => option.weapon === 'heroic_breakthrough')).toBe(true);
@@ -77,7 +78,7 @@ describe('battle-local rank and hero momentum', () => {
       unit: hero.id,
       path: [{ x: hero.x, y: hero.y }],
       command: { ability: 'attack', weapon: 'heroic_breakthrough', target },
-    });
+    }, TEST_RULES);
     expect(hero.weaponState.heroic_breakthrough.cooldownRemaining).toBe(3);
     expect(events).toContainEqual({
       type: 'resourceChanged',

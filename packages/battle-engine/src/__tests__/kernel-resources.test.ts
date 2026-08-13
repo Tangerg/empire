@@ -2,8 +2,9 @@ import { describe, expect, it } from 'vitest';
 import { SrpgMicrokernel, type EnginePlugin } from '../kernel';
 import {
   AiPlanningPlugin,
+  contentPluginFor,
   createDefaultMicrokernel,
-  DEFAULT_ENGINE_PLUGINS,
+  DEFAULT_RULE_PLUGINS,
   MissionRulesPlugin,
   ResourceEconomyPlugin,
   TacticalRulesPlugin,
@@ -14,18 +15,22 @@ import {
   FUNDS_RESOURCE,
   playerResource,
 } from '../resources';
-import { makeLevel, testState, u } from './fixtures';
+import { TEST_CONTENT, makeLevel, testState, u } from './fixtures';
 
 describe('cohesive microkernel modules', () => {
   it('ships four self-contained capability modules rather than component-sized plugins', () => {
-    expect(DEFAULT_ENGINE_PLUGINS).toEqual([
+    expect(DEFAULT_RULE_PLUGINS).toEqual([
       TacticalRulesPlugin,
       MissionRulesPlugin,
       ResourceEconomyPlugin,
       AiPlanningPlugin,
     ]);
+    // Content is supplied by the composition root, not by a rule plugin.
+    expect(DEFAULT_RULE_PLUGINS.some((plugin) => plugin.provides?.includes('content'))).toBe(false);
+    expect(createDefaultMicrokernel(TEST_CONTENT).compose().providerOf('content'))
+      .toBe('engine.content');
 
-    const context = createDefaultMicrokernel().compose();
+    const context = createDefaultMicrokernel(TEST_CONTENT).compose();
     expect(context.providerOf('abilities')).toBe(TacticalRulesPlugin.id);
     expect(context.providerOf('space')).toBe(TacticalRulesPlugin.id);
     expect(context.providerOf('combatModifiers')).toBe(TacticalRulesPlugin.id);
@@ -37,7 +42,7 @@ describe('cohesive microkernel modules', () => {
   });
 
   it('rejects missing dependencies, cycles, and competing capability providers', () => {
-    expect(() => new SrpgMicrokernel().use(AiPlanningPlugin).compose()).toThrow(/missing capability/);
+    expect(() => new SrpgMicrokernel().use(contentPluginFor(TEST_CONTENT)).use(AiPlanningPlugin).compose()).toThrow(/missing capability/);
 
     const left: EnginePlugin = {
       id: 'test.left', version: 1, requires: ['test.right'], install: () => {},
@@ -45,14 +50,14 @@ describe('cohesive microkernel modules', () => {
     const right: EnginePlugin = {
       id: 'test.right', version: 1, requires: ['test.left'], install: () => {},
     };
-    expect(() => new SrpgMicrokernel().useAll([left, right]).compose()).toThrow(/cyclic/);
+    expect(() => new SrpgMicrokernel().use(contentPluginFor(TEST_CONTENT)).useAll([left, right]).compose()).toThrow(/cyclic/);
 
     const duplicate: EnginePlugin = {
       id: 'test.duplicate',
       version: 1,
       install: (context) => context.provide('resources', DefaultBattleResources.clone()),
     };
-    expect(() => new SrpgMicrokernel()
+    expect(() => new SrpgMicrokernel().use(contentPluginFor(TEST_CONTENT))
       .use(ResourceEconomyPlugin)
       .use(duplicate)
       .compose()).toThrow(/already provided/);
@@ -63,14 +68,18 @@ describe('cohesive microkernel modules', () => {
       ...TacticalRulesPlugin,
       id: 'test.substitute-tactical-rules',
     };
-    const context = new SrpgMicrokernel()
+    const context = new SrpgMicrokernel().use(contentPluginFor(TEST_CONTENT))
       .use(AiPlanningPlugin)
       .use(ResourceEconomyPlugin)
       .use(MissionRulesPlugin)
       .use(substituteTactical)
       .compose();
 
-    expect(context.providerOf('content')).toBe(substituteTactical.id);
+    // Capabilities resolve by manifest, not by plugin id, so a substitute is
+    // accepted transparently. Content now comes from the composition root.
+    expect(context.providerOf('abilities')).toBe(substituteTactical.id);
+    expect(context.providerOf('space')).toBe(substituteTactical.id);
+    expect(context.providerOf('content')).toBe('engine.content');
     expect(context.providerOf('abilityAiEvaluators')).toBe(AiPlanningPlugin.id);
   });
 });
@@ -82,8 +91,8 @@ describe('entity-owned resource accounts', () => {
       funds: [100, 0],
     }));
     const subject = playerResource(state.players[0]);
-    const engineA = createDefaultMicrokernel().buildBattleEngine();
-    const engineB = createDefaultMicrokernel().buildBattleEngine();
+    const engineA = createDefaultMicrokernel(TEST_CONTENT).buildBattleEngine();
+    const engineB = createDefaultMicrokernel(TEST_CONTENT).buildBattleEngine();
 
     engineA.rules.resources.spend(FUNDS_RESOURCE, subject, 30);
 

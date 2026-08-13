@@ -1,11 +1,9 @@
 import '@empire/game-ui/styles/app.css';
 import '@empire/game-ui/styles/demo.css';
-import { installContentPacks } from '@empire/battle-engine';
+import { ContentPackInstaller, createContentCatalog } from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
 import { icon, terrainSwatch, unitIcon } from '@empire/game-ui';
-import { unitDef } from '@empire/battle-engine/data/units';
-import { weaponDef } from '@empire/battle-engine/data/weapons';
 import { createDefaultMicrokernel } from '@empire/battle-engine/plugins/default';
 import {
   type ResourceSubject,
@@ -17,7 +15,8 @@ import { GameSession } from '@empire/battle-engine/session';
 import type { CombatPlan } from '@empire/battle-engine/combat-plan';
 import type { GameEvent, LevelData, Unit } from '@empire/battle-engine/types';
 
-installContentPacks(COMMON_CONTENT_PACK, ANCIENT_EMPIRES_CONTENT_PACK);
+const content = createContentCatalog();
+new ContentPackInstaller(content).install(COMMON_CONTENT_PACK, ANCIENT_EMPIRES_CONTENT_PACK);
 
 const DEMO_LEVEL: LevelData = {
   schema: 2,
@@ -82,7 +81,7 @@ const appElement = document.getElementById('app');
 if (!appElement) throw new Error('missing #app');
 const app: HTMLElement = appElement;
 
-const kernel = createDefaultMicrokernel();
+const kernel = createDefaultMicrokernel(content);
 const engine = kernel.buildBattleEngine();
 let session = new GameSession(DEMO_LEVEL, engine);
 let preview: CombatPlan | null = null;
@@ -141,7 +140,7 @@ function boardMarkup(): string {
       <div class="tile-art">${terrainSwatch(terrain, owner?.color)}</div>
       ${unit ? `<div class="demo-unit" data-unit="${html(unit.key ?? String(unit.id))}">
         ${unitIcon(unit.type, unitOwner?.color ?? '#9aa3ad', 46)}
-        <span class="unit-label">${html(unitDef(unit.type).name)}</span>
+        <span class="unit-label">${html(content.units.get(unit.type).name)}</span>
         <span class="hp-chip">${unit.hp}</span>
       </div>` : ''}
       <span class="cell-coord">${x},${y}</span>
@@ -158,7 +157,7 @@ function forecastMarkup(): string {
     </div>`;
   }
   const primary = preview.primaryUnit;
-  const cost = weaponDef(preview.weapon).resourceCosts
+  const cost = content.weapons.get(preview.weapon).resourceCosts
     .map((entry) => `${resourceName(entry.resource)} −${entry.amount}`)
     .join(' · ');
   return `<div class="forecast-result">
@@ -305,7 +304,7 @@ function forecast(attackerKey: string, targetKey: string, weapon: string): void 
   preview = session.attackPlan(attacker, target, attacker, weapon);
   if (JSON.stringify(session.state) !== before) throw new Error('预测意外修改了状态');
   events = [];
-  headline = `已预测 ${weaponDef(weapon).name}：状态未发生变化。`;
+  headline = `已预测 ${content.weapons.get(weapon).name}：状态未发生变化。`;
 }
 
 function execute(attackerKey: string, targetKey: string, weapon: string): void {
@@ -320,7 +319,7 @@ function execute(attackerKey: string, targetKey: string, weapon: string): void {
     command: { ability: 'attack', weapon, target: { x: target.x, y: target.y } },
   });
   preview = null;
-  headline = `${weaponDef(weapon).name}已由正式行动管线提交。`;
+  headline = `${content.weapons.get(weapon).name}已由正式行动管线提交。`;
 }
 
 app.addEventListener('click', (click) => {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
 import { moveCostOf } from '../movement';
-import { makeLevel, testForecast, testMoveField, testScenarioEffect, testState, u } from './fixtures';
+import { TEST_RULES, makeLevel, testForecast, testMoveField, testScenarioEffect, testState, u } from './fixtures';
 
 describe('terrain overlays', () => {
   it('changes movement without replacing the base terrain', () => {
@@ -68,8 +68,8 @@ describe('terrain overlays', () => {
         },
       }),
     );
-    applyAction(state, { kind: 'endTurn' });
-    const events = applyAction(state, { kind: 'endTurn' });
+    applyAction(state, { kind: 'endTurn' }, TEST_RULES);
+    const events = applyAction(state, { kind: 'endTurn' }, TEST_RULES);
     expect(events.some((event) => event.type === 'statusApplied' && event.unit === 1)).toBe(true);
     expect(events.some((event) => event.type === 'statusTick' && event.unit === 1)).toBe(true);
     expect(state.units[0].hp).toBeLessThan(100);

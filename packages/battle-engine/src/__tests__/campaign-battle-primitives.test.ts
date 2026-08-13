@@ -39,7 +39,7 @@ describe('campaign-grade battle primitives', () => {
     const state = testState(makeLevel(['..'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
     }));
-    const rules = createDefaultBattleRuleServices();
+    const rules = createDefaultBattleRuleServices({ content: TEST_CONTENT });
     testApplyWith(state, { kind: 'endTurn' }, CoreActionHandlers, rules);
     expect(testCondition(state, { type: 'eventCount', event: 'turnEnd', op: 'gte', value: 1 })).toBe(true);
   });
@@ -57,7 +57,7 @@ describe('campaign-grade battle primitives', () => {
   });
 
   it('keeps formations data-defined and active only while spatially supported', () => {
-    const rules = createDefaultBattleRuleServices();
+    const rules = createDefaultBattleRuleServices({ content: TEST_CONTENT });
     rules.content.units.override('soldier', {
       formations: ['formation-defensive', 'formation-loose'],
     });
@@ -78,7 +78,7 @@ describe('campaign-grade battle primitives', () => {
   });
 
   it('embarks and disembarks identity-preserving units through formal actions', () => {
-    const rules = createDefaultBattleRuleServices();
+    const rules = createDefaultBattleRuleServices({ content: TEST_CONTENT });
     rules.content.units.override('knight', { transport: { capacity: 2, allowedTags: ['infantry'] } });
     const state = testState(makeLevel(['.....'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'knight', 1), u(4, 0, 'soldier', 2)],
@@ -99,7 +99,7 @@ describe('campaign-grade battle primitives', () => {
   });
 
   it('keeps transport-loss invariants inside the battle aggregate', () => {
-    const rules = createDefaultBattleRuleServices();
+    const rules = createDefaultBattleRuleServices({ content: TEST_CONTENT });
     rules.content.units.override('knight', { transport: { capacity: 1 } });
     const state = testState(makeLevel(['....'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'knight', 1), u(3, 0, 'soldier', 2)],

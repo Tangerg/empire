@@ -2,10 +2,11 @@ import { describe, expect, it } from 'vitest';
 import { createState, validateLevel } from '@empire/battle-engine';
 import { experienceLevel } from './index';
 
-import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+import { createTestCatalog } from '@empire/test-content';
+import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** Composed per suite, exactly like an application composition root. */
-const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 
 describe('super experience level', () => {
   it('is a valid three-front vertical slice with production mechanics', () => {

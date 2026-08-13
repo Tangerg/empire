@@ -25,6 +25,7 @@ import { forecastCombatPlan } from './combat-plan';
 import { validateLevel } from './mapio';
 import type { MoveField } from './movement';
 import { cloneState, createState, restoreState, type CreateStateOptions } from './state';
+import type { ContentCatalog } from './content-pack';
 import { careerOptions } from './careers';
 import type { TurnOrderPolicy } from './turn-order';
 import type { Action, Coord, GameEvent, GameState, LevelData, PlayerId, Unit, WeaponId } from './types';
@@ -276,9 +277,12 @@ export class BattleEngine {
  * Convenience factory for focused rule overrides. Unlike the old optional
  * constructor, every omitted mutable strategy is cloned for this engine.
  */
-export function createBattleEngine(
-  overrides: Partial<BattleEngineDependencies> = {},
-): BattleEngine {
+export interface BattleEngineOverrides extends Partial<BattleEngineDependencies> {
+  /** The catalog this engine plays on; never defaulted to ambient state. */
+  readonly content: ContentCatalog;
+}
+
+export function createBattleEngine(overrides: BattleEngineOverrides): BattleEngine {
   const rules = createDefaultBattleRuleServices(overrides);
   return new BattleEngine({
     ...rules,

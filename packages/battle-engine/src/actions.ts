@@ -25,7 +25,6 @@ import { type TacticalSpace } from './tactical-space';
 import {
   ActionExecutionContext,
   ActionHandlerRegistry,
-  DefaultBattleRuleServices,
   IllegalActionError,
   type ActionHandler,
   type BattleRuleServices,
@@ -467,8 +466,13 @@ export function applyActionWith(
   return context.events;
 }
 
-export function applyAction(state: GameState, action: Action): GameEvent[] {
-  return applyActionWith(state, action, CoreActionHandlers, DefaultBattleRuleServices);
+/** Convenience reducer for callers that already hold a ruleset. */
+export function applyAction(
+  state: GameState,
+  action: Action,
+  rules: BattleRuleServices,
+): GameEvent[] {
+  return applyActionWith(state, action, CoreActionHandlers, rules);
 }
 
 /* ---------------------------------------------------------------- turn cycle */

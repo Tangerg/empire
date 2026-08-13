@@ -1,9 +1,5 @@
 import { BattleAggregate } from './domain/battle-aggregate';
-import {
-  CombatModifierPipeline,
-  CombatModifierProviders,
-  DefaultCombatModifierPipeline,
-} from './combat-modifiers';
+import { CombatModifierPipeline, CombatModifierProviders } from './combat-modifiers';
 import { WeaponHitEffectHandlers, type WeaponHitEffectHandlerRegistry } from './hit-effects';
 import { ObjectiveHandlers, type ObjectiveHandlerRegistry } from './objective-system';
 import { DefaultRankProgression, type RankProgressionPolicy } from './progression';
@@ -17,10 +13,10 @@ import { StatusBehaviors, type StatusBehaviorRegistry } from './statuses';
 import { DefaultBattleResources, type BattleResourceSystem } from './resources';
 import { Abilities, type AbilityDef } from './abilities';
 import { type Registry } from './registry';
-import { CoreTacticalSpace, DefaultTacticalSpace, type TacticalSpace } from './tactical-space';
+import { DefaultTacticalSpace, type TacticalSpace } from './tactical-space';
 import { TurnOrders, type TurnOrderPolicy } from './turn-order';
 import { SplitMixRandom, type RandomSource } from './random';
-import { cloneContentCatalog, GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 import type { Action, ActionKindMap, GameEvent, GameState } from './types';
 
 export class IllegalActionError extends Error {
@@ -54,11 +50,18 @@ export interface BattleRuleServices {
 /**
  * Prototype factory for an isolated ruleset. Mutable registries are cloned so
  * extending one engine cannot leak into another session.
+ *
+ * `content` is required: a ruleset without a declared catalog used to fall back
+ * to ambient state, which made engine instances silently share content.
  */
+export interface BattleRuleServiceOverrides extends Partial<BattleRuleServices> {
+  readonly content: ContentCatalog;
+}
+
 export function createDefaultBattleRuleServices(
-  overrides: Partial<BattleRuleServices> = {},
+  overrides: BattleRuleServiceOverrides,
 ): BattleRuleServices {
-  const content = overrides.content ?? cloneContentCatalog(GlobalContentCatalog);
+  const content = overrides.content;
   const random = overrides.random ?? SplitMixRandom;
   return {
     random,
@@ -78,28 +81,6 @@ export function createDefaultBattleRuleServices(
   };
 }
 
-/**
- * Live global rules for low-level convenience reducers.
- *
- * Application-facing engines never use this object: their registries and
- * content are cloned by createDefaultBattleRuleServices. Keeping this global
- * façade live avoids capturing an empty content snapshot before packs install.
- */
-export const DefaultBattleRuleServices: BattleRuleServices = {
-  content: GlobalContentCatalog,
-  abilities: Abilities,
-  space: CoreTacticalSpace,
-  combatModifiers: DefaultCombatModifierPipeline,
-  hitEffects: WeaponHitEffectHandlers,
-  statusBehaviors: StatusBehaviors,
-  scenarioConditions: ScenarioConditionHandlers,
-  scenarioEffects: ScenarioEffectHandlers,
-  objectives: ObjectiveHandlers,
-  progression: DefaultRankProgression,
-  resources: DefaultBattleResources,
-  turnOrders: TurnOrders,
-  random: SplitMixRandom,
-};
 
 export class ActionExecutionContext {
   readonly battle: BattleAggregate;

@@ -1,14 +1,5 @@
-import { Registry } from '../registry';
-import type {
-  ArmorClass,
-  ArmorClassDef,
-  DamageMatchupDef,
-  DamageType,
-  DamageTypeDef,
-} from '../types';
+import type { ArmorClass, DamageMatchupDef, DamageType } from '../types';
 
-export const DamageTypes = new Registry<DamageTypeDef>('damage type');
-export const ArmorClasses = new Registry<ArmorClassDef>('armor class');
 
 const matchupKey = (damageType: DamageType, armorClass: ArmorClass): string =>
   `${damageType}\u0000${armorClass}`;
@@ -63,9 +54,3 @@ export class DamageMatchupRegistry {
   }
 }
 
-export const DamageMatchups = new DamageMatchupRegistry();
-
-export const damageTypeDef = (id: DamageType): DamageTypeDef => DamageTypes.get(id);
-export const armorClassDef = (id: ArmorClass): ArmorClassDef => ArmorClasses.get(id);
-export const damageEffectiveness = (damageType: DamageType, armorClass: ArmorClass): number =>
-  DamageMatchups.effectiveness(damageType, armorClass);

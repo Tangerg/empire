@@ -1,0 +1,15 @@
+{
+  "name": "@empire/test-content",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Test-only composition root: builds isolated content catalogs for suites",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@empire/battle-engine": "*",
+    "@empire/content-ancient-empires": "*",
+    "@empire/content-common": "*"
+  }
+}

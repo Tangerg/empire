@@ -62,6 +62,7 @@ apps/
 
 packages/
   battle-engine/           Headless SRPG 战斗内核
+  test-content/            测试组合根：为各测试套件构建隔离内容目录
   campaign-engine/         跨关状态机、战斗桥和存档
   content-common/          跨题材内容定义
   content-ancient-empires/ 通用战术内容与演示关卡
@@ -136,6 +137,7 @@ battle-engine
 
 引擎内没有任何函数可以隐式读取环境内容目录：
 
+0. 内容目录按组合创建并注入；引擎内不存在环境目录，两个题材可复用同一套地形字符
 1. 依赖参数一律必填，从不给全局默认值——漏传是编译错误
 2. 单一 `content: ContentCatalog` 尾置；两个以上服务改为前置端口对象
 3. 端口由消费方声明，`BattleRuleServices` 结构化满足全部端口

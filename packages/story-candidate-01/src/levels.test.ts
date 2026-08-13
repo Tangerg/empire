@@ -3,10 +3,13 @@ import { GameSession, validateLevel } from '@empire/battle-engine';
 import { CANDIDATE_01_LEVELS, CANDIDATE_01_ROSTER_BINDINGS } from './levels';
 import { auditBattlefield } from './battlefield-audit';
 
-import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+import { createTestCatalog } from '@empire/test-content';
+import { createBattleEngine } from '@empire/battle-engine';
+import { CANDIDATE_01_CONTENT_PACK } from './index';
 
 /** Composed per suite, exactly like an application composition root. */
-const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
+const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
 
 describe('candidate-01 first three chapters', () => {
   it('ships sixteen ordered, structurally valid battles', () => {
@@ -18,7 +21,7 @@ describe('candidate-01 first three chapters', () => {
         .map((issue) => `${level.id}: ${issue.message}`),
     );
     expect(errors).toEqual([]);
-    for (const level of CANDIDATE_01_LEVELS) expect(() => new GameSession(level)).not.toThrow();
+    for (const level of CANDIDATE_01_LEVELS) expect(() => new GameSession(level, TEST_ENGINE)).not.toThrow();
   });
 
   it('keeps every declared campaign binding attached to a stable level key', () => {

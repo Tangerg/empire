@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { createBattleEngine } from '../engine';
 import { DeterministicOnlyRandom, SplitMixRandom, createRandomState } from '../random';
 import { BattleRecorder, hashState, replayBattle } from '../replay';
-import { makeLevel, TEST_CONTENT, u } from './fixtures';
+import { TEST_CONTENT, makeLevel, u } from './fixtures';
 import type { Action, GameState, LevelData } from '../types';
 
 const engine = () => createBattleEngine({ content: TEST_CONTENT });

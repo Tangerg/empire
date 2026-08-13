@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
 import { moveCostOf } from '../movement';
-import { makeLevel, testForecastStructure, testMoveField, testState, u } from './fixtures';
+import { TEST_RULES, makeLevel, testForecastStructure, testMoveField, testState, u } from './fixtures';
 
 describe('cross-theme engine contracts', () => {
   it('fantasy: a commanded siege unit breaks a gate and completes the assault objective', () => {
@@ -30,7 +30,7 @@ describe('cross-theme engine contracts', () => {
       unit: state.units[1].id,
       path: [{ x: 1, y: 0 }],
       command: { ability: 'attack', weapon: 'ballista_bolt', target: { x: 3, y: 0 } },
-    });
+    }, TEST_RULES);
     expect(state.players[0].objectiveStates.breach.status).toBe('completed');
   });
 
@@ -72,7 +72,7 @@ describe('cross-theme engine contracts', () => {
       unit: state.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', weapon: 'mage_overcharge', target: { x: 2, y: 0 } },
-    });
+    }, TEST_RULES);
     expect(state.scenario.overlays[0].type).toBe('vacuum');
     expect(events).toContainEqual({ type: 'scenarioSignal', signal: 'network.offline' });
     expect(state.players[0].objectiveStates['disable-network'].status).toBe('completed');
@@ -110,7 +110,7 @@ describe('cross-theme engine contracts', () => {
       unit: state.units[0].id,
       path: [{ x: 0, y: 0 }, { x: 1, y: 0 }],
       command: { ability: 'wait' },
-    });
+    }, TEST_RULES);
     expect(state.players[0].objectiveStates['secure-supplies'].status).toBe('completed');
     expect(state.winnerTeam).toBe(1);
   });

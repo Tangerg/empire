@@ -7,7 +7,6 @@ import {
   StructureEntity,
   UnitEntity,
 } from '../domain/index';
-import { structureDef } from '../data/structures';
 import { TEST_CONTENT, TEST_RULES, makeLevel, testState, u } from './fixtures';
 import {
   COMMAND_POINTS_RESOURCE,
@@ -83,7 +82,7 @@ describe('rich domain model', () => {
       }),
     );
     const structure = state.structures[0];
-    const entity = new StructureEntity(structure, structureDef('gate'));
+    const entity = new StructureEntity(structure, TEST_CONTENT.structures.get('gate'));
     expect(entity.takeRawDamage(50)).toMatchObject({ amount: 40, hpAfter: 60, destroyed: false });
     expect(entity.repair(20)).toBe(20);
     expect(structure.hp).toBe(80);

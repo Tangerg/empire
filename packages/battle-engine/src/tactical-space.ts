@@ -8,7 +8,7 @@ import {
 } from './movement';
 import { isUnitVisible, visibleTiles, visibleUnits } from './vision';
 import type { Coord, GameState, PlayerId, Unit, WeaponDef } from './types';
-import { GlobalContentCatalog, type ContentCatalog } from './content-pack';
+import { type ContentCatalog } from './content-pack';
 
 /**
  * Cohesive port for rules that project units onto the battlefield.
@@ -66,4 +66,3 @@ export class DefaultTacticalSpace implements TacticalSpace {
   }
 }
 
-export const CoreTacticalSpace: TacticalSpace = new DefaultTacticalSpace(GlobalContentCatalog);

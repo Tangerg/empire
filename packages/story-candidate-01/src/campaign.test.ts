@@ -9,10 +9,13 @@ import {
 import { candidate01Level } from './levels';
 import { CANDIDATE_01_CHOICES, CANDIDATE_01_STORY } from './story';
 
-import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+import { createTestCatalog } from '@empire/test-content';
+import { createBattleEngine } from '@empire/battle-engine';
+import { CANDIDATE_01_CONTENT_PACK } from './index';
 
 /** Composed per suite, exactly like an application composition root. */
-const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
+const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
 
 describe('candidate-01 campaign', () => {
   it('binds every presentation and all sixteen battles into one valid graph', () => {
@@ -38,7 +41,7 @@ describe('candidate-01 campaign', () => {
         runtime.choose(runtime.choices()[0].id);
       } else if (node.type === 'battle') {
         const request = applyCandidate01BattleContext(runtime.beginBattle(bridge), runtime.state);
-        const session = new GameSession(request.level);
+        const session = new GameSession(request.level, TEST_ENGINE);
         runtime.completeBattle(bridge.result(request, session.state, [], 'victory'));
         battles++;
       } else {
@@ -72,7 +75,7 @@ describe('candidate-01 campaign', () => {
     runtime.advance();
     runtime.choose('steady-advance');
     const request = runtime.beginBattle(bridge);
-    const session = new GameSession(request.level);
+    const session = new GameSession(request.level, TEST_ENGINE);
     const result = bridge.result(request, session.state, [], 'victory');
     const laiya = result.units.find((unit) => unit.campaignUnit === 'laiya')!;
     const torren = result.units.find((unit) => unit.campaignUnit === 'torren')!;

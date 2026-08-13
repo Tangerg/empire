@@ -40,6 +40,8 @@ import type {
   RuleSet,
 } from '../types';
 import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from '../resources';
+import { createTestCatalog } from '@empire/test-content';
+import type { ContentCatalog } from '../content-pack';
 
 /** Build a level from an ASCII sketch — keeps the tests readable. */
 export function makeLevel(
@@ -123,8 +125,8 @@ export const u = (x: number, y: number, unit: string, owner: PlayerId, hp?: numb
  * Tests exercise the same injection path production uses: nothing here reaches
  * for ambient state, so a signature that forgets a dependency cannot compile.
  */
-export const TEST_RULES: BattleRuleServices = createDefaultBattleRuleServices();
-export const TEST_CONTENT = TEST_RULES.content;
+export const TEST_CONTENT: ContentCatalog = createTestCatalog();
+export const TEST_RULES: BattleRuleServices = createDefaultBattleRuleServices({ content: TEST_CONTENT });
 
 export const testState = (level: LevelData): GameState => createState(level, TEST_CONTENT);
 

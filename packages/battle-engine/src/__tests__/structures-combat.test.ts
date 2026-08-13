@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
-import { makeLevel, testCommands, testForecastStructure, testState, u } from './fixtures';
+import { TEST_RULES, makeLevel, testCommands, testForecastStructure, testState, u } from './fixtures';
 
 describe('structure combat', () => {
   it('targets, forecasts and destroys a hostile structure through a normal attack action', () => {
@@ -26,7 +26,7 @@ describe('structure combat', () => {
       unit: ballista.id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', weapon: 'ballista_bolt', target: { x: 2, y: 0 } },
-    });
+    }, TEST_RULES);
     const attack = events.findIndex((event) => event.type === 'attackStructure');
     const damage = events.findIndex((event) => event.type === 'structureDamaged');
     const destroyed = events.findIndex((event) => event.type === 'structureDestroyed');

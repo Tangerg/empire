@@ -291,7 +291,7 @@ export class EditorDocument {
       description: this.description,
       width: this.map.width,
       height: this.map.height,
-      terrain: terrainRows(this.map),
+      terrain: terrainRows(this.map, this.content),
       elevation: this.map.elevation.slice(),
       cliffs: this.map.cliffs.map((edge) => ({ from: { ...edge.from }, to: { ...edge.to } })),
       directionalCover: this.map.directionalCover.map((cover) => ({

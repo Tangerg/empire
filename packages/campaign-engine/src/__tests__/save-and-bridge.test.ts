@@ -1,8 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
-  cloneContentCatalog,
   createBattleEngine,
-  GlobalContentCatalog,
   normaliseLevel,
   type LevelData,
 } from '@empire/battle-engine';
@@ -14,9 +12,10 @@ import {
   createCampaignSave,
 } from '../save';
 import type { CampaignDefinition } from '../types';
+import { createTestCatalog } from '@empire/test-content';
 
 /** Composed per suite, exactly like an application composition root. */
-const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+const TEST_CATALOG = createTestCatalog();
 const engine = () => createBattleEngine({ content: TEST_CATALOG });
 
 const level = (): LevelData =>

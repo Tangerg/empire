@@ -96,6 +96,25 @@ flowchart TD
 
 ## 内容目录
 
+内容目录是**按组合创建**的，没有环境单例。应用（或测试）声明自己使用哪些内容包，插件把它们装进只属于这个引擎的目录：
+
+```ts
+const content = createContentCatalog();
+new ContentPackInstaller(content).install(COMMON_PACK, THEME_PACK);
+const engine = createBattleEngine({ content });
+// 或者交给微内核
+const engine2 = createDefaultMicrokernel(content).buildBattleEngine();
+// 直接从内容包组装
+kernel.use(createContentPlugin([COMMON_PACK, THEME_PACK]));
+```
+
+两条随之成立的性质：
+
+1. **地形字符命名空间是按目录的**。两个题材可以同时使用 `.` 和 `C`——同一份关卡行在不同目录下会被读成不同地形。这曾是全局单赋值的硬上限。
+2. **定义在安装时深拷贝**。内容包是*声明*，目录才*拥有*定义；一个引擎里的平衡覆写不会串到另一个引擎，也不会污染内容包常量本身。
+
+`data/` 目录只剩两个专用注册表类（`DamageMatchupRegistry`、`TerrainEncodingRegistry`）和职业查询；它过去存在的理由——放全局注册表——已经不存在了。
+
 `ContentPack` 是纯数据包，当前可以提供：
 
 - 移动配置

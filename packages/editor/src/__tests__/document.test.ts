@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+import { createTestCatalog } from '@empire/test-content';
+import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
-const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 import { emptyLevel } from '@empire/battle-engine/mapio';
 import { EditorDocument } from '../document';
 import type { LevelData } from '@empire/battle-engine';

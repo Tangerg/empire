@@ -2,10 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { emptyLevel, mapFromLevel } from '@empire/battle-engine/mapio';
 import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../battlefield-layer';
 
-import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+import { createTestCatalog } from '@empire/test-content';
 
 /** Composed per suite, exactly like an application composition root. */
-const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+const TEST_CATALOG = createTestCatalog();
 
 describe('shared battlefield feature layer', () => {
   it('renders elevation, cliffs and directional cover through one adapter', () => {

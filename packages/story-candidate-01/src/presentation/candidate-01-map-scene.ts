@@ -1,6 +1,7 @@
-import { Terrains } from '@empire/battle-engine/data/terrain';
 import { tileHash } from '@empire/battle-engine/grid';
 import type { GameMap, TerrainId } from '@empire/battle-engine/types';
+import { ANCIENT_EMPIRES_TERRAINS } from '@empire/content-ancient-empires';
+import { CANDIDATE_01_TERRAINS } from '../terrain';
 import { candidate01Asset } from './candidate-01-assets';
 import {
   CANDIDATE_01_ENVIRONMENT,
@@ -25,11 +26,25 @@ const tileAt = (map: GameMap, x: number, y: number): TerrainId | null =>
 
 const isForest = (map: GameMap, x: number, y: number): boolean => tileAt(map, x, y) === 'forest';
 
+/**
+ * Terrain whose art should read as a connected route.
+ *
+ * Built from this theme's own definitions plus the generic pack it depends on,
+ * rather than queried from an ambient registry: a scene module must not be able
+ * to observe content that belongs to some other engine instance.
+ */
+const ROUTE_TERRAIN: ReadonlySet<string> = new Set(
+  [...ANCIENT_EMPIRES_TERRAINS, ...CANDIDATE_01_TERRAINS]
+    .filter((terrain) =>
+      terrain.tags.includes('road') ||
+      terrain.tags.includes('building') ||
+      terrain.tags.includes('outpost'))
+    .map((terrain) => terrain.id),
+);
+
 const isRoute = (map: GameMap, x: number, y: number): boolean => {
   const id = tileAt(map, x, y);
-  if (!id) return false;
-  const tags = Terrains.tryGet(id)?.tags ?? [];
-  return tags.includes('road') || tags.includes('building') || tags.includes('outpost');
+  return id !== null && id !== undefined && ROUTE_TERRAIN.has(id);
 };
 
 const usesTwinHillsComposition = (levelId: string): boolean =>

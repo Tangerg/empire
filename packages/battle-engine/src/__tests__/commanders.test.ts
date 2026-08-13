@@ -53,7 +53,7 @@ describe('commanders and formation resources', () => {
       commander: 'alpha',
       tactic: 'rally',
       target: { x: 1, y: 0 },
-    });
+    }, TEST_RULES);
     expect(state.players[0].resources[COMMAND_POINTS_RESOURCE].current).toBe(0);
     expect(state.units[1].statuses).toContainEqual(
       expect.objectContaining({ id: 'inspired', sourceUnitId: state.units[0].id }),
@@ -67,7 +67,7 @@ describe('commanders and formation resources', () => {
         commander: 'alpha',
         tactic: 'rally',
         target: { x: 1, y: 0 },
-      }),
+      }, TEST_RULES),
     ).toThrow(IllegalActionError);
   });
 
@@ -80,10 +80,10 @@ describe('commanders and formation resources', () => {
       commander: 'alpha',
       tactic: 'steady',
       target: { x: 1, y: 0 },
-    });
+    }, TEST_RULES);
     expect(state.players[0].resources[COMMAND_POINTS_RESOURCE].current).toBe(1);
-    applyAction(state, { kind: 'endTurn' });
-    const events = applyAction(state, { kind: 'endTurn' });
+    applyAction(state, { kind: 'endTurn' }, TEST_RULES);
+    const events = applyAction(state, { kind: 'endTurn' }, TEST_RULES);
     expect(state.players[0].resources[COMMAND_POINTS_RESOURCE].current).toBe(2);
     expect(state.commanders[0].usedTactics).toEqual([]);
     expect(events).toContainEqual(
@@ -137,7 +137,7 @@ describe('commanders and formation resources', () => {
       unit: state.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
-    });
+    }, TEST_RULES);
     expect(state.units.some((unit) => unit.id === leader.id)).toBe(false);
     expect(commanderAuraFor(state, linked).attackMultiplier).toBe(1);
     expect(linked.statuses).toContainEqual(expect.objectContaining({ id: 'shaken' }));

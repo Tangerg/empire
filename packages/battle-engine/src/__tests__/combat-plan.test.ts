@@ -1,15 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
 import { weaponAreaCells } from '../combat-plan';
-import { weaponDef } from '../data/weapons';
-import { makeLevel, testCombatPlan, testState, u } from './fixtures';
+import { TEST_CONTENT, TEST_RULES, makeLevel, testCombatPlan, testState, u } from './fixtures';
 
 describe('combat plans and area weapons', () => {
   it('expands cross, square-ring, and line templates deterministically', () => {
     const state = testState(
       makeLevel(['...', '...', '...'], { units: [u(0, 0, 'mage', 1), u(2, 2, 'soldier', 2)] }),
     );
-    const base = weaponDef('mage_overcharge');
+    const base = TEST_CONTENT.weapons.get('mage_overcharge');
     const center = { x: 1, y: 1 };
     expect(weaponAreaCells(state, { x: 0, y: 1 }, center, { ...base, area: 'cross1' })).toHaveLength(5);
     expect(weaponAreaCells(state, { x: 0, y: 1 }, center, { ...base, area: 'ring1' })).toHaveLength(9);
@@ -54,7 +53,7 @@ describe('combat plans and area weapons', () => {
       unit: attacker.id,
       path: [{ x: 0, y: 1 }],
       command: { ability: 'attack', weapon: 'mage_overcharge', target: { x: 1, y: 1 } },
-    });
+    }, TEST_RULES);
 
     for (const [id, hp] of predictedHp) {
       expect(state.units.find((unit) => unit.id === id)?.hp ?? 0).toBe(hp);
@@ -94,7 +93,7 @@ describe('combat plans and area weapons', () => {
       unit: state.units[0].id,
       path: [{ x: 0, y: 1 }],
       command: { ability: 'attack', weapon: 'mage_overcharge', target: { x: 1, y: 1 } },
-    });
+    }, TEST_RULES);
 
     expect(state.units.some((unit) => unit.id === routedId)).toBe(false);
     expect(events).toContainEqual(expect.objectContaining({ type: 'unitRouted', unit: routedId }));

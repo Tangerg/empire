@@ -3,7 +3,6 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { TILE } from '../../art/terrain';
 import { portraitSvg } from '../../art/portraits';
 import { unitIcon } from '../../art/units';
-import { UnitTypes } from '@empire/battle-engine/data/units';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
 import { GameController } from '../game';
 import { BoardView, emptyOverlay } from '../board';
@@ -11,10 +10,12 @@ import { createState } from '@empire/battle-engine/state';
 import { candidate01Level } from '@empire/story-candidate-01/levels';
 import { registerCandidate01Presentation } from '@empire/story-candidate-01/presentation';
 
-import { cloneContentCatalog, createBattleEngine, GlobalContentCatalog } from '@empire/battle-engine';
+import { createBattleEngine } from '@empire/battle-engine';
+import { createTestCatalog } from '@empire/test-content';
+import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** Composed per suite, exactly like an application composition root. */
-const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
 
 registerCandidate01Presentation();
@@ -50,7 +51,7 @@ function hover(el: Element, tile: { x: number; y: number }): void {
 describe('svg art', () => {
   it('emits parseable markup for every unit sprite and portrait', () => {
     const parser = new window.DOMParser();
-    for (const def of UnitTypes.all()) {
+    for (const def of TEST_CATALOG.units.all()) {
       for (const svg of [unitIcon(def.id, '#3f7fd8'), portraitSvg(def.id, '#d8483f')]) {
         const doc = parser.parseFromString(svg, 'image/svg+xml');
         expect(doc.querySelector('parsererror'), `${def.id}: ${svg.slice(0, 80)}`).toBeNull();

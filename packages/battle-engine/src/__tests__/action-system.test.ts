@@ -3,14 +3,14 @@ import {
   ActionExecutionContext,
   ActionHandlerRegistry,
   createDefaultBattleRuleServices,
-  DefaultBattleRuleServices,
   IllegalActionError,
   type ActionHandler,
 } from '../action-system';
-import { GlobalContentCatalog } from '../content-pack';
+
 import { CoreActionHandlers } from '../actions';
 import type { ActionKindMap } from '../types';
 import { makeLevel, testApplyWith, testState, u } from './fixtures';
+import { createTestCatalog } from '@empire/test-content';
 
 class TestReactionHandler implements ActionHandler<'reaction'> {
   readonly kind = 'reaction' as const;
@@ -22,11 +22,17 @@ class TestReactionHandler implements ActionHandler<'reaction'> {
 }
 
 describe('action strategy registry', () => {
-  it('separates the live low-level defaults from isolated engine rule graphs', () => {
-    const isolated = createDefaultBattleRuleServices();
-    expect(DefaultBattleRuleServices.content).toBe(GlobalContentCatalog);
-    expect(isolated.content).not.toBe(GlobalContentCatalog);
-    expect(isolated.abilities).not.toBe(DefaultBattleRuleServices.abilities);
+  it('gives every ruleset its own registries, with no shared fallback', () => {
+    const first = createDefaultBattleRuleServices({ content: createTestCatalog() });
+    const second = createDefaultBattleRuleServices({ content: createTestCatalog() });
+
+    expect(first.content).not.toBe(second.content);
+    expect(first.abilities).not.toBe(second.abilities);
+    expect(first.scenarioConditions).not.toBe(second.scenarioConditions);
+
+    // Extending one ruleset must be invisible to the other.
+    first.content.units.override('soldier', { value: 999 });
+    expect(second.content.units.get('soldier').value).not.toBe(999);
   });
 
   it('registers one cohesive strategy for every built-in action kind', () => {

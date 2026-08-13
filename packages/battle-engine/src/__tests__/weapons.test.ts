@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction, IllegalActionError } from '../actions';
-import { makeLevel, testCommands, testForecast, testState, u } from './fixtures';
+import { TEST_RULES, makeLevel, testCommands, testForecast, testState, u } from './fixtures';
 import { WEAPON_USES_RESOURCE } from '../resources';
 
 describe('weapon actions', () => {
@@ -20,7 +20,7 @@ describe('weapon actions', () => {
       unit: attacker.id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', weapon: 'soldier_javelin', target: { x: 2, y: 0 } },
-    });
+    }, TEST_RULES);
 
     expect(events.find((event) => event.type === 'attack')).toMatchObject({
       weapon: 'soldier_javelin',
@@ -39,7 +39,7 @@ describe('weapon actions', () => {
         unit: state.units[0].id,
         path: [{ x: 0, y: 0 }],
         command: { ability: 'attack', weapon: 'soldier_sword', target: { x: 2, y: 0 } },
-      }),
+      }, TEST_RULES),
     ).toThrow(IllegalActionError);
   });
 
@@ -53,16 +53,16 @@ describe('weapon actions', () => {
       unit: mage.id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', weapon: 'mage_overcharge', target: { x: 2, y: 0 } },
-    });
+    }, TEST_RULES);
     expect(mage.weaponState.mage_overcharge.cooldownRemaining).toBe(2);
 
-    applyAction(state, { kind: 'endTurn' });
-    applyAction(state, { kind: 'endTurn' });
+    applyAction(state, { kind: 'endTurn' }, TEST_RULES);
+    applyAction(state, { kind: 'endTurn' }, TEST_RULES);
     expect(mage.weaponState.mage_overcharge.cooldownRemaining).toBe(1);
     expect(testCommands(state, mage, { x: 0, y: 0 }).some((entry) => entry.weapon === 'mage_overcharge')).toBe(false);
 
-    applyAction(state, { kind: 'endTurn' });
-    applyAction(state, { kind: 'endTurn' });
+    applyAction(state, { kind: 'endTurn' }, TEST_RULES);
+    applyAction(state, { kind: 'endTurn' }, TEST_RULES);
     expect(mage.weaponState.mage_overcharge.cooldownRemaining).toBe(0);
     expect(testCommands(state, mage, { x: 0, y: 0 }).some((entry) => entry.weapon === 'mage_overcharge')).toBe(true);
   });

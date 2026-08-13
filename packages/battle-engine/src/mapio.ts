@@ -1,4 +1,4 @@
-import { TerrainEncoding } from './data/terrain-encoding';
+
 import { idx } from './grid';
 import type {
   GameMap,
@@ -18,15 +18,22 @@ import { type ContentCatalog } from './content-pack';
  * readable in git and hand-editable in a pinch. The editor reads and writes
  * exactly this format.
  */
-export const terrainCharacter = (terrain: TerrainId): string | undefined => TerrainEncoding.character(terrain);
-export const terrainForCharacter = (character: string): TerrainId | undefined => TerrainEncoding.terrain(character);
+export const terrainCharacter = (
+  content: ContentCatalog,
+  terrain: TerrainId,
+): string | undefined => content.terrainEncoding.character(terrain);
+
+export const terrainForCharacter = (
+  content: ContentCatalog,
+  character: string,
+): TerrainId | undefined => content.terrainEncoding.terrain(character);
 
 export class LevelFormatError extends Error {}
 
-function serializedTerrainCharacter(terrain: TerrainId): string {
-  const exact = terrainCharacter(terrain);
+function serializedTerrainCharacter(content: ContentCatalog, terrain: TerrainId): string {
+  const exact = terrainCharacter(content, terrain);
   if (exact !== undefined) return exact;
-  const fallback = terrainCharacter(TerrainEncoding.defaultTerrain);
+  const fallback = terrainCharacter(content, content.terrainEncoding.defaultTerrain);
   if (fallback !== undefined) return fallback;
   throw new LevelFormatError(`terrain "${terrain}" has no serialized character`);
 }
@@ -110,12 +117,12 @@ export function mapFromLevel(level: LevelData, content: ContentCatalog): GameMap
 
 /* ----------------------------------------------------------------- serialize */
 
-export function terrainRows(map: GameMap): string[] {
+export function terrainRows(map: GameMap, content: ContentCatalog): string[] {
   const rows: string[] = [];
   for (let y = 0; y < map.height; y++) {
     let row = '';
     for (let x = 0; x < map.width; x++) {
-      row += serializedTerrainCharacter(map.tiles[y * map.width + x]);
+      row += serializedTerrainCharacter(content, map.tiles[y * map.width + x]);
     }
     rows.push(row);
   }

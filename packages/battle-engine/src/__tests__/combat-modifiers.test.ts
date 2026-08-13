@@ -5,7 +5,6 @@ import {
   CombatModifierProviderRegistry,
   type CombatModifierProvider,
 } from '../combat-modifiers';
-import { weaponDef } from '../data/weapons';
 import { createBattleEngine } from '../engine';
 import { GameSession } from '../session';
 import { TEST_CONTENT, makeLevel, testState, u } from './fixtures';
@@ -40,7 +39,7 @@ describe('combat modifier pipeline', () => {
       attackerAt: state.units[0],
       defender: state.units[1],
       defenderAt: state.units[1],
-      weapon: weaponDef('soldier_sword'),
+      weapon: TEST_CONTENT.weapons.get('soldier_sword'),
     });
     expect(result.damage).toBe(75);
     expect(result.modifiers.map((modifier) => modifier.id)).toEqual([
@@ -56,7 +55,7 @@ describe('combat modifier pipeline', () => {
         provider('mode.double-damage', 1, 'power', 'multiply', 2),
       ),
     );
-    const engine = createBattleEngine({ combatModifiers: pipeline });
+    const engine = createBattleEngine({ content: TEST_CONTENT, combatModifiers: pipeline });
     const session = new GameSession(
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)] }),
       engine,

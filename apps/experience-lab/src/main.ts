@@ -1,6 +1,10 @@
 import '@empire/game-ui/styles/app.css';
 import './experience.css';
-import { installContentPacks } from '@empire/battle-engine';
+import {
+  ContentPackInstaller,
+  createBattleEngine,
+  createContentCatalog,
+} from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
@@ -8,7 +12,14 @@ import { CANDIDATE_01_MENU_ART, registerCandidate01Presentation } from '@empire/
 import { experienceLevel } from '@empire/experience-lab';
 import { escapeHtml, GameController, icon } from '@empire/game-ui';
 
-installContentPacks(COMMON_CONTENT_PACK, ANCIENT_EMPIRES_CONTENT_PACK, CANDIDATE_01_CONTENT_PACK);
+/** Composition root: this app declares its own content and ruleset. */
+const content = createContentCatalog();
+new ContentPackInstaller(content).install(
+  COMMON_CONTENT_PACK,
+  ANCIENT_EMPIRES_CONTENT_PACK,
+  CANDIDATE_01_CONTENT_PACK,
+);
+const engine = createBattleEngine({ content });
 registerCandidate01Presentation();
 
 const appElement = document.getElementById('app');
@@ -43,6 +54,7 @@ function renderLanding(): void {
 
 function start(): void {
   const controller = new GameController(experienceLevel(), renderLanding, {
+    engine,
     exitLabel: '退出试炼',
     completionLabel: '返回体验首页',
   });

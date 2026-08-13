@@ -3,14 +3,13 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { TILE } from '@empire/game-ui/art/terrain';
 import { mapFromLevel, normaliseLevel, validateLevel } from '@empire/battle-engine/mapio';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
-import { Terrains } from '@empire/battle-engine/data/terrain';
-import { UnitTypes } from '@empire/battle-engine/data/units';
 import { EditorApp } from '../app';
 
-import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+import { createTestCatalog } from '@empire/test-content';
+import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** Composed per suite, exactly like an application composition root. */
-const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 
 function stubLayout(svg: SVGSVGElement, width: number, height: number): void {
   svg.getBoundingClientRect = () =>
@@ -58,8 +57,8 @@ describe('map editor', () => {
   });
 
   it('renders the palette, the board and the validation panel', () => {
-    expect(host.querySelectorAll('.swatch').length).toBe(Terrains.all().length);
-    expect(host.querySelectorAll('.unit-chip').length).toBe(UnitTypes.all().length);
+    expect(host.querySelectorAll('.swatch').length).toBe(TEST_CATALOG.terrains.all().length);
+    expect(host.querySelectorAll('.unit-chip').length).toBe(TEST_CATALOG.units.all().length);
     expect(host.querySelector('.swatch[data-arg="c01.scorched"]')).toBeTruthy();
     expect(host.querySelector('.unit-chip[data-arg="c01.laiya"]')).toBeTruthy();
     expect(board.querySelectorAll('.layer-terrain g[data-tile]').length).toBe(

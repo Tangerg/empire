@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { createBattleEngine } from '../engine';
 import { IllegalActionError } from '../action-system';
 import { INITIATIVE_THRESHOLD, InitiativeTurnOrder, SideTurnOrder, TurnOrders } from '../turn-order';
-import { makeLevel, TEST_CONTENT, u } from './fixtures';
+import { TEST_CONTENT, makeLevel, u } from './fixtures';
 import type { Action, GameState, LevelData } from '../types';
 
 const engine = () => createBattleEngine({ content: TEST_CONTENT });

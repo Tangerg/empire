@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
-import { makeLevel, testCombatPlan, testForecast, testState, u } from './fixtures';
+import { TEST_RULES, makeLevel, testCombatPlan, testForecast, testState, u } from './fixtures';
 
 describe('reaction stances', () => {
   it('guards one strike, consumes the reaction, and gives up counterattacks', () => {
@@ -19,7 +19,7 @@ describe('reaction stances', () => {
       unit: state.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
-    });
+    }, TEST_RULES);
     const second = testForecast(state, state.units[1], state.units[2]);
     expect(second.reaction).toBeNull();
     expect(second.strike.reactionMultiplier).toBe(1);
@@ -50,7 +50,7 @@ describe('reaction stances', () => {
       unit: attacker.id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
-    });
+    }, TEST_RULES);
     expect(protectedUnit.hp).toBe(100);
     expect(supporter.hp).toBe(exchange.recipientHpAfter);
     expect(supporter.reactionUsedRound).toBe(state.turn);
@@ -82,7 +82,7 @@ describe('reaction stances', () => {
     const state = testState(
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)] }),
     );
-    const events = applyAction(state, { kind: 'reaction', unit: state.units[0].id, stance: 'support' });
+    const events = applyAction(state, { kind: 'reaction', unit: state.units[0].id, stance: 'support' }, TEST_RULES);
     expect(state.units[0].reaction).toBe('support');
     expect(events[0]).toEqual({ type: 'reactionChanged', unit: state.units[0].id, stance: 'support' });
   });
@@ -117,7 +117,7 @@ describe('reaction stances', () => {
       unit: attacker.id,
       path: [{ x: attacker.x, y: attacker.y }],
       command: { ability: 'attack', target: { x: defender.x, y: defender.y } },
-    });
+    }, TEST_RULES);
     const counterIndex = events.findIndex((event) => event.type === 'counter');
     const supportIndex = events.findIndex((event) => event.type === 'supportAttack');
     expect(counterIndex).toBeGreaterThanOrEqual(0);

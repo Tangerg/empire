@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { createBattleEngine } from '../engine';
 import { careerOptions } from '../careers';
 import { GameSession } from '../session';
 import { TEST_CONTENT, TEST_RULES, makeLevel, testState, u } from './fixtures';
@@ -8,7 +9,7 @@ describe('career tree and free career changes', () => {
     const level = makeLevel(['..'], {
       units: [{ ...u(0, 0, 'soldier', 1, 50), rank: 1, rankProgress: 120 }, u(1, 0, 'soldier', 2)],
     });
-    const session = new GameSession(level);
+    const session = new GameSession(level, createBattleEngine({ content: TEST_CONTENT }));
     const before = session.state.units[0];
     const id = before.id;
     expect(careerOptions(session.state, before, TEST_RULES.resources, TEST_CONTENT).find((option) => option.career.id === 'ranger')).toMatchObject({ eligible: true });
@@ -24,7 +25,7 @@ describe('career tree and free career changes', () => {
     const level = makeLevel(['..'], {
       units: [{ ...u(0, 0, 'soldier', 1), rank: 1, rankProgress: 120 }, u(1, 0, 'soldier', 2)],
     });
-    const session = new GameSession(level);
+    const session = new GameSession(level, createBattleEngine({ content: TEST_CONTENT }));
     const id = session.state.units[0].id;
     session.dispatch({ kind: 'changeCareer', unit: id, career: 'ranger' });
     session.state.units[0].done = false;

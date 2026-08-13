@@ -1,20 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import { idx } from '../grid';
-import { MovementProfiles } from '../data/movement';
-import { Terrains } from '../data/terrain';
 import { pathTo } from '../movement';
-import { makeLevel, testMoveField, testState, testThreat, u } from './fixtures';
+import { TEST_CONTENT, makeLevel, testMoveField, testState, testThreat, u } from './fixtures';
 
 const at = (map: { width: number }, x: number, y: number) => idx(map, x, y);
 
 describe('movement field', () => {
   it('exposes extensible naval and amphibious profiles without changing core unions', () => {
-    expect(MovementProfiles.has('naval')).toBe(true);
-    expect(MovementProfiles.has('amphibious')).toBe(true);
-    expect(Terrains.get('water').cost.naval).toBe(1);
-    expect(Terrains.get('water').cost.amphibious).toBe(1);
-    expect(Terrains.get('plain').cost.naval).toBeNull();
-    expect(Terrains.get('plain').cost.amphibious).toBe(1);
+    expect(TEST_CONTENT.movementProfiles.has('naval')).toBe(true);
+    expect(TEST_CONTENT.movementProfiles.has('amphibious')).toBe(true);
+    expect(TEST_CONTENT.terrains.get('water').cost.naval).toBe(1);
+    expect(TEST_CONTENT.terrains.get('water').cost.amphibious).toBe(1);
+    expect(TEST_CONTENT.terrains.get('plain').cost.naval).toBeNull();
+    expect(TEST_CONTENT.terrains.get('plain').cost.amphibious).toBe(1);
   });
 
   it('spends the listed terrain cost and stops at the budget', () => {

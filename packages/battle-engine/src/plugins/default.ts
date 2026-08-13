@@ -13,14 +13,50 @@ import { Abilities } from '../abilities';
 import { DefaultTacticalSpace } from '../tactical-space';
 import { TurnOrders } from '../turn-order';
 import { SplitMixRandom } from '../random';
-import { cloneContentCatalog, GlobalContentCatalog } from '../content-pack';
+import {
+  ContentPackInstaller,
+  createContentCatalog,
+  type ContentCatalog,
+  type ContentPack,
+} from '../content-pack';
+
+/**
+ * Content is supplied by the composition root, not discovered.
+ *
+ * An application (or a test) declares which packs its engine plays on; the
+ * plugin installs them into a catalog owned by that engine alone. Two engines
+ * can therefore run different themes — including themes that reuse the same
+ * terrain legend characters — because the namespace is per catalog.
+ */
+export function createContentPlugin(packs: readonly ContentPack[]): EnginePlugin {
+  return {
+    id: 'engine.content',
+    version: 1,
+    provides: ['content'],
+    install: (context) => {
+      const catalog = createContentCatalog();
+      new ContentPackInstaller(catalog).install(...packs);
+      context.provide('content', catalog);
+    },
+  };
+}
+
+/** Supplies an already-composed catalog, e.g. one shared by a test suite. */
+export function contentPluginFor(catalog: ContentCatalog): EnginePlugin {
+  return {
+    id: 'engine.content',
+    version: 1,
+    provides: ['content'],
+    install: (context) => context.provide('content', catalog),
+  };
+}
 
 /** Cohesive tactical rules: resolution, effects, statuses and battle-local growth. */
 export const TacticalRulesPlugin: EnginePlugin = {
   id: 'engine.tactical-rules',
   version: 1,
+  requiresCapabilities: ['content'],
   provides: [
-    'content',
     'abilities',
     'space',
     'combatModifiers',
@@ -31,8 +67,7 @@ export const TacticalRulesPlugin: EnginePlugin = {
     'random',
   ],
   install: (context) => {
-    const content = cloneContentCatalog(GlobalContentCatalog);
-    context.provide('content', content);
+    const content = context.require('content');
     context.provide('abilities', Abilities.clone());
     context.provide('space', new DefaultTacticalSpace(content));
     context.provide('combatModifiers', new CombatModifierPipeline(CombatModifierProviders.clone()));
@@ -78,16 +113,18 @@ export const AiPlanningPlugin: EnginePlugin = {
   },
 };
 
-export const DEFAULT_ENGINE_PLUGINS: readonly EnginePlugin[] = [
+/** The rule plugins. Content is deliberately absent: the app declares it. */
+export const DEFAULT_RULE_PLUGINS: readonly EnginePlugin[] = [
   TacticalRulesPlugin,
   MissionRulesPlugin,
   ResourceEconomyPlugin,
   AiPlanningPlugin,
 ];
 
-export function createDefaultMicrokernel(): SrpgMicrokernel {
-  return new SrpgMicrokernel().useAll(DEFAULT_ENGINE_PLUGINS);
+export function createDefaultMicrokernel(content: ContentCatalog): SrpgMicrokernel {
+  return new SrpgMicrokernel().use(contentPluginFor(content)).useAll(DEFAULT_RULE_PLUGINS);
 }
 
 /** Fresh engine per session; plugin registries never leak mutations across games. */
-export const createDefaultBattleEngine = () => createDefaultMicrokernel().buildBattleEngine();
+export const createDefaultBattleEngine = (content: ContentCatalog) =>
+  createDefaultMicrokernel(content).buildBattleEngine();

@@ -25,8 +25,8 @@ export interface BattleCompletionSnapshot {
 }
 
 export interface GameControllerOptions {
-  /** Ruleset this battle runs on. Omitted only by throwaway harnesses. */
-  engine?: BattleEngine;
+  /** Ruleset this battle runs on. Required: there is no ambient fallback. */
+  engine: BattleEngine;
   exitLabel?: string;
   completionLabel?: string;
   onComplete?: (snapshot: BattleCompletionSnapshot) => void;
@@ -74,7 +74,7 @@ export class GameController {
   constructor(
     level: LevelData,
     private readonly onExit: () => void,
-    private readonly options: GameControllerOptions = {},
+    private readonly options: GameControllerOptions,
   ) {
     this.session = new GameSession(level, options.engine);
     this.root.className = 'game-root';

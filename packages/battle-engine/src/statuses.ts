@@ -4,8 +4,6 @@ import { type ContentCatalog } from './content-pack';
 import { resolveMoraleAfterDamage } from './morale';
 import { emitTransportLossEvents } from './transports';
 
-export { Statuses } from './data/statuses';
-
 export const statusDef = (id: StatusId, content: ContentCatalog): StatusDef =>
   content.statuses.get(id);
 
