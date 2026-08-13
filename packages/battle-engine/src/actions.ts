@@ -45,13 +45,13 @@ export interface CommandOption {
 /** Command menu for a unit that has moved to `at`. */
 export function commandOptions(
   rules: AbilityRules,
-  s: GameState,
+  state: GameState,
   unit: Unit,
   at: Coord,
 ): CommandOption[] {
   const content = rules.content;
   const moved = !(unit.x === at.x && unit.y === at.y);
-  const q: AbilityQuery = { state: s, unit, at, moved };
+  const q: AbilityQuery = { state: state, unit, at, moved };
   const out: CommandOption[] = [];
   for (const abilityId of unitAbilityIds(unit, content)) {
     if (abilityId === 'attack') continue;
@@ -408,6 +408,6 @@ export function applyAction(
 }
 
 /** Units still entitled to act under the battle's ordering policy. */
-export function idleUnits(rules: BattleRuleServices, s: GameState): Unit[] {
-  return activeTurnOrder(rules, s).actors(s);
+export function idleUnits(rules: BattleRuleServices, state: GameState): Unit[] {
+  return activeTurnOrder(rules, state).actors(state);
 }

@@ -34,20 +34,20 @@ export interface MoveField {
  * Dijkstra over entry costs. Allies can be passed through (configurable), enemy
  * units block entirely, and only empty tiles are valid stopping points.
  */
-export function computeMoveField(content: ContentCatalog, s: GameState, unit: Unit): MoveField {
+export function computeMoveField(content: ContentCatalog, state: GameState, unit: Unit): MoveField {
   const def = content.units.get(unit.type);
-  const map = s.map;
-  const battlefield = new Battlefield(s, content);
+  const map = state.map;
+  const battlefield = new Battlefield(state, content);
   const budget = Math.max(
     0,
     def.movement + combinedStatusModifiers(unit, content).movementDelta +
-      commanderAuraFor(s, unit).movementDelta + formationMovementDelta(s, unit, content),
+      commanderAuraFor(state, unit).movementDelta + formationMovementDelta(state, unit, content),
   );
   const start = idx(map, unit.x, unit.y);
   // Ground the enemy holds. A unit may step into it and may leave the tile it
   // started on, but it may not walk on through — which is what makes a battle
   // line a line instead of a suggestion.
-  const controlled = hostileControlZone(content, s, unit);
+  const controlled = hostileControlZone(content, state, unit);
 
   const tiles = new Map<number, ReachableTile>();
   tiles.set(start, { index: start, x: unit.x, y: unit.y, cost: 0, from: -1, free: true });
@@ -75,11 +75,11 @@ export function computeMoveField(content: ContentCatalog, s: GameState, unit: Un
         if (step == null) continue;
         if (cell.blocksMovement) continue;
 
-        const blocker = unitAt(s, nx, ny);
+        const blocker = unitAt(state, nx, ny);
         if (blocker && blocker.id !== unit.id) {
-          if (areEnemies(s, blocker.owner, unit.owner)) {
-            if (s.rules.enemiesBlockMovement) continue;
-          } else if (!s.rules.friendlyPassThrough) {
+          if (areEnemies(state, blocker.owner, unit.owner)) {
+            if (state.rules.enemiesBlockMovement) continue;
+          } else if (!state.rules.friendlyPassThrough) {
             continue;
           }
         }
@@ -173,23 +173,23 @@ export function hasDirectLineOfSight(
  */
 export function threatTiles(
   content: ContentCatalog,
-  s: GameState,
+  state: GameState,
   unit: Unit,
   field?: MoveField,
 ): Set<number> {
   const out = new Set<number>();
-  const add = (c: Coord) => out.add(idx(s.map, c.x, c.y));
+  const add = (c: Coord) => out.add(idx(state.map, c.x, c.y));
 
   const weapons = unitWeapons(unit, content);
   for (const weapon of weapons) {
-    for (const c of attackTilesFrom(content, s, unit, { x: unit.x, y: unit.y }, weapon)) add(c);
+    for (const c of attackTilesFrom(content, state, unit, { x: unit.x, y: unit.y }, weapon)) add(c);
   }
 
-  const f = field ?? computeMoveField(content, s, unit);
+  const f = field ?? computeMoveField(content, state, unit);
   for (const weapon of weapons.filter((candidate) => candidate.moveAndAttack)) {
     for (const i of f.stops) {
-      const from = { x: i % s.map.width, y: Math.floor(i / s.map.width) };
-      for (const c of attackTilesFrom(content, s, unit, from, weapon)) add(c);
+      const from = { x: i % state.map.width, y: Math.floor(i / state.map.width) };
+      for (const c of attackTilesFrom(content, state, unit, from, weapon)) add(c);
     }
   }
   return out;
@@ -234,12 +234,12 @@ export function attackTargetCoords(
 }
 
 /** Wounded allies adjacent to `from` (support-healing targeting). */
-export function healTargetsFrom(content: ContentCatalog, s: GameState, unit: Unit, from: Coord): Unit[] {
+export function healTargetsFrom(content: ContentCatalog, state: GameState, unit: Unit, from: Coord): Unit[] {
   const out: Unit[] = [];
-  for (const c of ring(s.map, from, 1, 1)) {
-    const other = unitAt(s, c.x, c.y);
+  for (const c of ring(state.map, from, 1, 1)) {
+    const other = unitAt(state, c.x, c.y);
     if (!other || other.id === unit.id) continue;
-    if (!areAllies(s, other.owner, unit.owner)) continue;
+    if (!areAllies(state, other.owner, unit.owner)) continue;
     if (other.hp >= content.units.get(other.type).maxHp) continue;
     out.push(other);
   }

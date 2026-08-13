@@ -536,12 +536,12 @@ export class GameController {
 
   private overlay(): BoardOverlay {
     const o = emptyOverlay();
-    const s = this.state;
-    const viewer = this.human?.id ?? s.currentPlayer;
+    const state = this.state;
+    const viewer = this.human?.id ?? state.currentPlayer;
 
-    if (s.rules.fog) {
+    if (state.rules.fog) {
       o.visible = this.session.visibleTiles(viewer);
-      for (const u of s.units) {
+      for (const u of state.units) {
         if (!this.session.isUnitVisible(viewer, u, o.visible)) o.hiddenUnits.add(u.id);
       }
     }
@@ -550,11 +550,11 @@ export class GameController {
 
     // Marked tiles are public the moment a cast begins, so they show whoever is
     // looking and whatever else the overlay is doing.
-    for (const cast of activeCasts(s)) {
+    for (const cast of activeCasts(state)) {
       const weapon = this.session.content.weapons.get(cast.weapon);
-      const remaining = new SpellCastEntity(cast).remainingAt(s.actorTurns);
-      for (const cell of weaponAreaCells(s, cast.origin, cast.target, weapon)) {
-        o.incoming.set(idx(s.map, cell.x, cell.y), remaining);
+      const remaining = new SpellCastEntity(cast).remainingAt(state.actorTurns);
+      for (const cell of weaponAreaCells(state, cast.origin, cast.target, weapon)) {
+        o.incoming.set(idx(state.map, cell.x, cell.y), remaining);
       }
     }
 
@@ -563,7 +563,7 @@ export class GameController {
 
     if (unit) {
       o.selected = { x: unit.x, y: unit.y };
-      if (this.isHumanTurn && this.session.engine.canAct(s, unit)) {
+      if (this.isHumanTurn && this.session.engine.canAct(state, unit)) {
         this.selection.paint(this.selectionContext(), o);
       }
       return o;
@@ -572,7 +572,7 @@ export class GameController {
     // A selection with no unit of its own still has something to show — a
     // tactic's reach — and it shows it whether or not an enemy is inspected.
     this.selection.paint(this.selectionContext(), o);
-    if (this.inspect && areEnemies(s, this.inspect.owner, viewer)) {
+    if (this.inspect && areEnemies(state, this.inspect.owner, viewer)) {
       // Hovering an enemy shows what it can hit next turn.
       for (const i of this.session.threatOf(this.inspect)) o.threat.add(i);
       o.selected = { x: this.inspect.x, y: this.inspect.y };
@@ -587,17 +587,17 @@ export class GameController {
   }
 
   private hudView(): HudView {
-    const s = this.state;
+    const state = this.state;
     let forecast: HudView['forecast'] = null;
 
     const unit = this.selectedUnit;
     const aiming = this.selection instanceof TargetSelection ? this.selection : null;
     if (unit && aiming && this.hoverTarget && aiming.ability === 'attack') {
-      const defender = unitAt(s, this.hoverTarget.x, this.hoverTarget.y);
+      const defender = unitAt(state, this.hoverTarget.x, this.hoverTarget.y);
       if (defender) {
         const plan = this.session.attackPlan(unit, this.hoverTarget, aiming.dest, aiming.weapon);
         const exchange = plan.primaryUnit!;
-        const recipient = s.units.find((candidate) => candidate.id === exchange.damageRecipient) ?? defender;
+        const recipient = state.units.find((candidate) => candidate.id === exchange.damageRecipient) ?? defender;
         forecast = { plan, exchange, attacker: unit, defender, recipient };
       }
     }
@@ -606,10 +606,10 @@ export class GameController {
     const commands = menuAt && unit && !this.busy ? this.session.commandsAt(unit, menuAt) : null;
     const tactics =
       this.isHumanTurn && !this.busy && this.selection === IDLE
-        ? s.commanders
-            .filter((commander) => commander.owner === s.currentPlayer)
+        ? state.commanders
+            .filter((commander) => commander.owner === state.currentPlayer)
             .flatMap((commander) =>
-              tacticOptions(this.session.rules, s, commander.id).map((option) => ({
+              tacticOptions(this.session.rules, state, commander.id).map((option) => ({
                 ...option,
                 key: `${commander.id}:${option.id}`,
                 commander: commander.id,
@@ -617,17 +617,17 @@ export class GameController {
             )
         : [];
 
-    const orderPreview = this.session.engine.turnOrderPreview(s, 6);
+    const orderPreview = this.session.engine.turnOrderPreview(state, 6);
     return {
-      state: s,
+      state: state,
       rules: this.session.rules,
       turnOrder: {
         // A side-turn policy previews a whole army, which is not an order: only
         // show the strip when the policy entitles one unit at a time.
-        units: s.turnOrder.activeUnit === null ? [] : orderPreview,
-        activeUnit: s.turnOrder.activeUnit,
+        units: state.turnOrder.activeUnit === null ? [] : orderPreview,
+        activeUnit: state.turnOrder.activeUnit,
       },
-      casts: activeCasts(s),
+      casts: activeCasts(state),
       resources: this.session.rules.resources,
       inspect: this.inspect,
       tile: this.cursor,
@@ -635,11 +635,11 @@ export class GameController {
       commands,
       tactics,
       reactionUnit:
-        unit && this.isHumanTurn && this.session.engine.canAct(s, unit) ? unit.id : null,
+        unit && this.isHumanTurn && this.session.engine.canAct(state, unit) ? unit.id : null,
       rankNextThreshold: this.inspect
         ? this.session.engine.rules.progression.nextThreshold(this.inspect.rank)
         : null,
-      careerOptions: unit && this.isHumanTurn && this.session.engine.canAct(s, unit)
+      careerOptions: unit && this.isHumanTurn && this.session.engine.canAct(state, unit)
         ? this.session.careerOptions(unit)
         : [],
       targeting: this.selection.targetingLabel,
@@ -676,12 +676,12 @@ export class GameController {
 
 /* --------------------------------------------------------------- event text */
 
-function describeEvent(content: ContentCatalog, s: GameState, e: GameEvent): string {
+function describeEvent(content: ContentCatalog, state: GameState, e: GameEvent): string {
   const name = (id: number) => {
-    const u = s.units.find((x) => x.id === id);
+    const u = state.units.find((x) => x.id === id);
     return u ? content.units.get(u.type).name : '单位';
   };
-  const pname = (id: number) => s.players.find((p) => p.id === id)?.name ?? '？';
+  const pname = (id: number) => state.players.find((p) => p.id === id)?.name ?? '？';
   switch (e.type) {
     case 'attack':
       return `${name(e.attacker)} 造成 ${e.damage} 点伤害${e.killed ? '，目标阵亡' : ''}`;
@@ -702,7 +702,7 @@ function describeEvent(content: ContentCatalog, s: GameState, e: GameEvent): str
     case 'capture':
       return e.captured ? `${pname(e.player)} 占领了 (${e.at.x}, ${e.at.y})` : '占领进度提升';
     case 'recruit':
-      return `${pname(s.currentPlayer)} 征募了 ${name(e.unit)}`;
+      return `${pname(state.currentPlayer)} 征募了 ${name(e.unit)}`;
     case 'resourceChanged': {
       const resource = e.resource === 'funds' ? '资金' : e.resource === 'command_points' ? '指挥点' : e.resource === 'momentum' ? '气势' : e.resource;
       const subject = e.subject.kind === 'player' ? pname(e.subject.id) : e.subject.kind === 'unit' ? name(e.subject.id) : name(e.subject.unit);

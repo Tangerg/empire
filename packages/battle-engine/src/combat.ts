@@ -208,8 +208,8 @@ export function consumeWeapon(
   new UnitEntity(unit).commitWeaponCooldown(weapon);
 }
 
-export function terrainDefenseAt(s: GameState, c: Coord, content: ContentCatalog): number {
-  return new Battlefield(s, content).cell(c).defense;
+export function terrainDefenseAt(state: GameState, c: Coord, content: ContentCatalog): number {
+  return new Battlefield(state, content).cell(c).defense;
 }
 
 function weaponTargetBonus(weapon: WeaponDef, tags: string[]): { multiplier: number; reasons: string[] } {
@@ -227,7 +227,7 @@ function weaponTargetBonus(weapon: WeaponDef, tags: string[]): { multiplier: num
  */
 export function computeDamage(
   rules: CombatRules,
-  s: GameState,
+  state: GameState,
   attacker: Unit,
   defender: Unit,
   geometry: StrikeGeometry = {},
@@ -236,11 +236,11 @@ export function computeDamage(
   const attackerAt = geometry.attackerAt ?? { x: attacker.x, y: attacker.y };
   const defenderAt = geometry.defenderAt ?? { x: defender.x, y: defender.y };
   const resolvedWeaponId = geometry.weapon ?? primaryWeapon(attacker, content).id;
-  const weapon = requireReadyWeapon(rules, attacker, resolvedWeaponId, player(s, attacker.owner));
+  const weapon = requireReadyWeapon(rules, attacker, resolvedWeaponId, player(state, attacker.owner));
   const base = weapon.power;
-  const battlefield = new Battlefield(s, content);
+  const battlefield = new Battlefield(state, content);
   const result = rules.combatModifiers.evaluate(base, {
-    state: s,
+    state: state,
     attacker,
     attackerAt,
     defender,
@@ -415,7 +415,7 @@ function applyReactionMultiplier(
  */
 export function forecast(
   rules: CombatRules,
-  s: GameState,
+  state: GameState,
   attacker: Unit,
   defender: Unit,
   options: ForecastOptions = {},
@@ -423,9 +423,9 @@ export function forecast(
   const attackFrom = options.attackFrom ?? { x: attacker.x, y: attacker.y };
   const resolvedWeaponId = options.weapon ?? primaryWeapon(attacker, rules.content).id;
   const defenderAt = { x: defender.x, y: defender.y };
-  const interceptor = interceptorFor(rules, s, defender);
+  const interceptor = interceptorFor(rules, state, defender);
   const recipient = interceptor ?? defender;
-  let strike = computeDamage(rules, s, attacker, recipient, {
+  let strike = computeDamage(rules, state, attacker, recipient, {
     attackerAt: attackFrom,
     defenderAt: recipient,
     weapon: resolvedWeaponId,
@@ -438,7 +438,7 @@ export function forecast(
       stance: interceptor.reaction,
       protectedUnit: defender.id,
     };
-  } else if (stance.incomingMultiplier !== 1 && new UnitEntity(defender).canReact(s.turn)) {
+  } else if (stance.incomingMultiplier !== 1 && new UnitEntity(defender).canReact(state.turn)) {
     strike = applyReactionMultiplier(strike, stance);
     reaction = { unit: defender.id, stance: stance.id };
   }
@@ -451,12 +451,12 @@ export function forecast(
   let counter: DamageBreakdown | null = null;
   let attackerHpAfter = attacker.hp;
 
-  if (!defenderDies && stance.retaliates && s.rules.counterAttack) {
+  if (!defenderDies && stance.retaliates && state.rules.counterAttack) {
     const counterSource: Unit = { ...defender, hp: defenderHpAfter };
     const counterTarget: Unit = { ...attacker, facing: directionToward(attackFrom, defenderAt) };
     const candidate = bestReactiveStrike(
       rules,
-      s,
+      state,
       { unit: counterSource, at: defenderAt },
       { unit: counterTarget, at: attackFrom },
       stance,

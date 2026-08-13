@@ -92,8 +92,8 @@ function ability(def: Partial<AbilityDef> & { id: string; name: string }): Abili
 
 /* ------------------------------------------------------------------- attack */
 
-export function clearCaptureAt(content: ContentCatalog, s: GameState, c: Coord): void {
-  new BattleAggregate(s, content).clearCaptureAt(c);
+export function clearCaptureAt(content: ContentCatalog, state: GameState, c: Coord): void {
+  new BattleAggregate(state, content).clearCaptureAt(c);
 }
 
 /**

@@ -24,6 +24,31 @@ import { cloneUnitState } from './unit-state';
 const cloneResources = (resources: ResourceAccounts = {}): ResourceAccounts =>
   Object.fromEntries(Object.entries(resources).map(([id, account]) => [id, { ...account }]));
 
+/**
+ * The career a placed unit starts in: the one it names, or the lowest tier its
+ * type has. Was written as an immediately-invoked function inside the unit
+ * literal, which is a function that has refused to be named.
+ */
+function initialCareer(source: LevelUnit, content: ContentCatalog): Unit['career'] {
+  const requested = source.career
+    ? content.careers.tryGet(source.career)
+    : content.careers.all()
+        .filter((career) => career.unitType === source.unit)
+        .sort((left, right) => left.tier - right.tier || left.id.localeCompare(right.id))[0];
+  if (requested && requested.unitType !== source.unit) {
+    throw new Error(`career ${requested.id} does not use unit type "${source.unit}"`);
+  }
+  const current = requested?.id ?? null;
+  return {
+    current,
+    unlocked: [...new Set([...(source.unlockedCareers ?? []), ...(current ? [current] : [])])],
+    mastery: {
+      ...(current ? { [current]: Math.max(0, Math.round(source.rankProgress ?? 0)) } : {}),
+      ...(source.careerMastery ?? {}),
+    },
+  };
+}
+
 function createUnitState(
   source: LevelUnit,
   id: number,
@@ -67,26 +92,7 @@ function createUnitState(
       waypoints: source.directive?.waypoints?.map((point) => ({ ...point })) ?? [],
       cursor: Math.max(0, Math.round(source.directive?.cursor ?? 0)),
     },
-    career: (() => {
-      const requested = source.career
-        ? content.careers.tryGet(source.career)
-        : content.careers.all()
-            .filter((career) => career.unitType === source.unit)
-            .sort((left, right) => left.tier - right.tier || left.id.localeCompare(right.id))[0];
-      if (requested && requested.unitType !== source.unit) {
-        throw new Error(`career ${requested.id} does not use unit type "${source.unit}"`);
-      }
-      const current = requested?.id ?? null;
-      const unlocked = [...new Set([...(source.unlockedCareers ?? []), ...(current ? [current] : [])])];
-      return {
-        current,
-        unlocked,
-        mastery: {
-          ...(current ? { [current]: Math.max(0, Math.round(source.rankProgress ?? 0)) } : {}),
-          ...(source.careerMastery ?? {}),
-        },
-      };
-    })(),
+    career: initialCareer(source, content),
     learnedAbilities: [...new Set(source.learnedAbilities ?? [])],
     meta: {},
   };
@@ -106,6 +112,57 @@ function defaultSeed(level: LevelData): number {
     hash = Math.imul(hash, 0x01000193);
   }
   return hash >>> 0;
+}
+
+/**
+ * The pre-battle deployment phase, resolved against the units that exist.
+ *
+ * Everything it throws is an invariant of the *level*, not of play: a zone that
+ * names nobody, a unit placed in two zones, a side with no zone at all. Better
+ * to refuse the level than to open a deployment phase nobody can finish.
+ */
+function createDeployment(
+  level: LevelData,
+  players: readonly PlayerState[],
+  units: readonly Unit[],
+  zones: Record<string, Coord[]>,
+): GameState['deployment'] {
+  if (!level.deployment) return null;
+  const order = [...new Set(level.deployment.order ?? level.deployment.zones.map((entry) => entry.player))];
+  if (order.length === 0) throw new Error('deployment must include at least one player');
+  for (const owner of order) {
+    if (!players.some((candidate) => candidate.id === owner)) {
+      throw new Error(`deployment references unknown player ${owner}`);
+    }
+  }
+
+  const assignments = level.deployment.zones.map((entry) => {
+    if (!zones[entry.zone]) throw new Error(`deployment references unknown zone "${entry.zone}"`);
+    if (!players.some((candidate) => candidate.id === entry.player)) {
+      throw new Error(`deployment references unknown player ${entry.player}`);
+    }
+    const unitIds = units
+      .filter((unit) => unit.owner === entry.player && (!entry.unitKeys || (unit.key && entry.unitKeys.includes(unit.key))))
+      .map((unit) => unit.id);
+    if (entry.unitKeys && unitIds.length !== entry.unitKeys.length) {
+      throw new Error(`deployment zone "${entry.zone}" references an unknown or wrong-owner unit key`);
+    }
+    return { player: entry.player, zone: entry.zone, unitIds };
+  });
+
+  const assigned = new Set<number>();
+  for (const assignment of assignments) {
+    for (const unitId of assignment.unitIds) {
+      if (assigned.has(unitId)) throw new Error(`unit ${unitId} belongs to multiple deployment zones`);
+      assigned.add(unitId);
+    }
+  }
+  for (const owner of order) {
+    if (!assignments.some((entry) => entry.player === owner)) {
+      throw new Error(`deployment player ${owner} has no deployment zone`);
+    }
+  }
+  return { order, currentIndex: 0, assignments };
 }
 
 export function createState(
@@ -201,40 +258,7 @@ export function createState(
     remainingRounds: overlay.remainingRounds ?? null,
   }));
 
-  const deployment = (() => {
-    if (!level.deployment) return null;
-    const order = [...new Set(level.deployment.order ?? level.deployment.zones.map((entry) => entry.player))];
-    if (order.length === 0) throw new Error('deployment must include at least one player');
-    for (const owner of order) {
-      if (!players.some((candidate) => candidate.id === owner)) throw new Error(`deployment references unknown player ${owner}`);
-    }
-    const assignments = level.deployment.zones.map((entry) => {
-      if (!zones[entry.zone]) throw new Error(`deployment references unknown zone "${entry.zone}"`);
-      if (!players.some((candidate) => candidate.id === entry.player)) {
-        throw new Error(`deployment references unknown player ${entry.player}`);
-      }
-      const unitIds = units
-        .filter((unit) => unit.owner === entry.player && (!entry.unitKeys || (unit.key && entry.unitKeys.includes(unit.key))))
-        .map((unit) => unit.id);
-      if (entry.unitKeys && unitIds.length !== entry.unitKeys.length) {
-        throw new Error(`deployment zone "${entry.zone}" references an unknown or wrong-owner unit key`);
-      }
-      return { player: entry.player, zone: entry.zone, unitIds };
-    });
-    const assigned = new Set<number>();
-    for (const assignment of assignments) {
-      for (const unitId of assignment.unitIds) {
-        if (assigned.has(unitId)) throw new Error(`unit ${unitId} belongs to multiple deployment zones`);
-        assigned.add(unitId);
-      }
-    }
-    for (const owner of order) {
-      if (!assignments.some((entry) => entry.player === owner)) {
-        throw new Error(`deployment player ${owner} has no deployment zone`);
-      }
-    }
-    return { order, currentIndex: 0, assignments };
-  })();
+  const deployment = createDeployment(level, players, units, zones);
 
   const state: GameState = {
     levelId: level.id,
@@ -283,54 +307,54 @@ export function createState(
 const clampHp = (hp: number, max: number) => Math.max(1, Math.min(max, Math.round(hp)));
 
 /** Structural clone. Used by undo and by the AI to simulate. */
-export function cloneState(s: GameState): GameState {
+export function cloneState(state: GameState): GameState {
   return {
-    ...s,
+    ...state,
     map: {
-      width: s.map.width,
-      height: s.map.height,
-      tiles: s.map.tiles.slice(),
-      owners: s.map.owners.slice(),
-      captureProgress: s.map.captureProgress.slice(),
-      elevation: s.map.elevation.slice(),
-      cliffs: s.map.cliffs.map((edge) => ({ from: { ...edge.from }, to: { ...edge.to } })),
-      directionalCover: s.map.directionalCover.map((cover) => ({ at: { ...cover.at }, sides: { ...cover.sides } })),
+      width: state.map.width,
+      height: state.map.height,
+      tiles: state.map.tiles.slice(),
+      owners: state.map.owners.slice(),
+      captureProgress: state.map.captureProgress.slice(),
+      elevation: state.map.elevation.slice(),
+      cliffs: state.map.cliffs.map((edge) => ({ from: { ...edge.from }, to: { ...edge.to } })),
+      directionalCover: state.map.directionalCover.map((cover) => ({ at: { ...cover.at }, sides: { ...cover.sides } })),
     },
-    units: s.units.map(cloneUnitState),
-    turnOrder: { ...s.turnOrder, data: { ...s.turnOrder.data } },
-    pendingCasts: s.pendingCasts.map((cast) => ({
+    units: state.units.map(cloneUnitState),
+    turnOrder: { ...state.turnOrder, data: { ...state.turnOrder.data } },
+    pendingCasts: state.pendingCasts.map((cast) => ({
       ...cast,
       target: { ...cast.target },
       origin: { ...cast.origin },
     })),
-    random: { seed: s.random.seed, counters: { ...s.random.counters } },
-    composites: s.composites.map((composite) => ({
+    random: { seed: state.random.seed, counters: { ...state.random.counters } },
+    composites: state.composites.map((composite) => ({
       ...composite,
       parts: composite.parts.slice(),
       tags: composite.tags.slice(),
     })),
-    embarkedUnits: s.embarkedUnits.map((entry) => ({
+    embarkedUnits: state.embarkedUnits.map((entry) => ({
       carrier: entry.carrier,
       unit: cloneUnitState(entry.unit),
     })),
-    structures: s.structures.map((structure) => ({
+    structures: state.structures.map((structure) => ({
       ...structure,
       statuses: structure.statuses.map((status) => ({ ...status })),
     })),
-    markers: s.markers.map((marker) => ({
+    markers: state.markers.map((marker) => ({
       ...marker,
       at: { ...marker.at },
       fallenUnit: marker.fallenUnit ? cloneUnitState(marker.fallenUnit) : undefined,
       meta: { ...marker.meta },
     })),
-    commanders: s.commanders.map((commander) => ({
+    commanders: state.commanders.map((commander) => ({
       ...commander,
       aura: { ...commander.aura },
       turnGrants: commander.turnGrants.map((grant) => ({ ...grant })),
       tactics: commander.tactics.slice(),
       usedTactics: commander.usedTactics.slice(),
     })),
-    players: s.players.map((p) => ({
+    players: state.players.map((p) => ({
       ...p,
       resources: cloneResources(p.resources),
       ai: { ...p.ai },
@@ -339,36 +363,36 @@ export function cloneState(s: GameState): GameState {
         Object.entries(p.objectiveStates).map(([id, runtime]) => [id, { ...runtime }]),
       ),
     })),
-    rules: { ...s.rules },
-    deployment: s.deployment
+    rules: { ...state.rules },
+    deployment: state.deployment
       ? {
-          order: s.deployment.order.slice(),
-          currentIndex: s.deployment.currentIndex,
-          assignments: s.deployment.assignments.map((entry) => ({ ...entry, unitIds: entry.unitIds.slice() })),
+          order: state.deployment.order.slice(),
+          currentIndex: state.deployment.currentIndex,
+          assignments: state.deployment.assignments.map((entry) => ({ ...entry, unitIds: entry.unitIds.slice() })),
         }
       : null,
     scenario: {
-      variables: { ...s.scenario.variables },
+      variables: { ...state.scenario.variables },
       zones: Object.fromEntries(
-        Object.entries(s.scenario.zones).map(([id, cells]) => [
+        Object.entries(state.scenario.zones).map(([id, cells]) => [
           id,
           cells.map((cell) => ({ ...cell })),
         ]),
       ),
-      overlays: s.scenario.overlays.map((overlay) => ({
+      overlays: state.scenario.overlays.map((overlay) => ({
         ...overlay,
         cells: overlay.cells.map((cell) => ({ ...cell })),
       })),
-      triggers: s.scenario.triggers,
-      firedTriggerIds: s.scenario.firedTriggerIds.slice(),
+      triggers: state.scenario.triggers,
+      firedTriggerIds: state.scenario.firedTriggerIds.slice(),
       triggerRuntime: Object.fromEntries(
-        Object.entries(s.scenario.triggerRuntime).map(([id, runtime]) => [id, { ...runtime }]),
+        Object.entries(state.scenario.triggerRuntime).map(([id, runtime]) => [id, { ...runtime }]),
       ),
-      eventCounts: { ...s.scenario.eventCounts },
+      eventCounts: { ...state.scenario.eventCounts },
       zoneTags: Object.fromEntries(
-        Object.entries(s.scenario.zoneTags).map(([id, tags]) => [id, tags.slice()]),
+        Object.entries(state.scenario.zoneTags).map(([id, tags]) => [id, tags.slice()]),
       ),
-      engagementRules: s.scenario.engagementRules.map((rule) => ({
+      engagementRules: state.scenario.engagementRules.map((rule) => ({
         ...rule,
         players: rule.players?.slice(),
       })),
@@ -383,59 +407,59 @@ export function restoreState(target: GameState, snapshot: GameState): void {
 
 /* ---------------------------------------------------------------- accessors */
 
-export function unitAt(s: GameState, x: number, y: number): Unit | undefined {
-  return s.units.find((u) => u.x === x && u.y === y);
+export function unitAt(state: GameState, x: number, y: number): Unit | undefined {
+  return state.units.find((u) => u.x === x && u.y === y);
 }
 
-export const unitAtCoord = (s: GameState, c: Coord): Unit | undefined => unitAt(s, c.x, c.y);
+export const unitAtCoord = (state: GameState, c: Coord): Unit | undefined => unitAt(state, c.x, c.y);
 
-export function unitById(s: GameState, id: number): Unit | undefined {
-  return s.units.find((u) => u.id === id);
+export function unitById(state: GameState, id: number): Unit | undefined {
+  return state.units.find((u) => u.id === id);
 }
 
-export function requireUnit(s: GameState, id: number): Unit {
-  const u = unitById(s, id);
+export function requireUnit(state: GameState, id: number): Unit {
+  const u = unitById(state, id);
   if (!u) throw new Error(`no unit with id ${id}`);
   return u;
 }
 
-export function player(s: GameState, id: PlayerId): PlayerState {
-  const p = s.players.find((x) => x.id === id);
+export function player(state: GameState, id: PlayerId): PlayerState {
+  const p = state.players.find((x) => x.id === id);
   if (!p) throw new Error(`no player with id ${id}`);
   return p;
 }
 
-export const teamOf = (s: GameState, id: PlayerId): number =>
-  s.players.find((p) => p.id === id)?.team ?? -id;
+export const teamOf = (state: GameState, id: PlayerId): number =>
+  state.players.find((p) => p.id === id)?.team ?? -id;
 
-export const areAllies = (s: GameState, a: PlayerId, b: PlayerId): boolean =>
-  a !== 0 && b !== 0 && teamOf(s, a) === teamOf(s, b);
+export const areAllies = (state: GameState, a: PlayerId, b: PlayerId): boolean =>
+  a !== 0 && b !== 0 && teamOf(state, a) === teamOf(state, b);
 
-export const areEnemies = (s: GameState, a: PlayerId, b: PlayerId): boolean =>
-  a !== 0 && b !== 0 && teamOf(s, a) !== teamOf(s, b);
+export const areEnemies = (state: GameState, a: PlayerId, b: PlayerId): boolean =>
+  a !== 0 && b !== 0 && teamOf(state, a) !== teamOf(state, b);
 
-export const unitsOf = (s: GameState, id: PlayerId): Unit[] => s.units.filter((u) => u.owner === id);
+export const unitsOf = (state: GameState, id: PlayerId): Unit[] => state.units.filter((u) => u.owner === id);
 
-export const enemyUnitsOf = (s: GameState, id: PlayerId): Unit[] =>
-  s.units.filter((u) => areEnemies(s, u.owner, id));
+export const enemyUnitsOf = (state: GameState, id: PlayerId): Unit[] =>
+  state.units.filter((u) => areEnemies(state, u.owner, id));
 
-export const currentPlayerState = (s: GameState): PlayerState => player(s, s.currentPlayer);
+export const currentPlayerState = (state: GameState): PlayerState => player(state, state.currentPlayer);
 
-export function tilesOwnedBy(s: GameState, id: PlayerId): Coord[] {
+export function tilesOwnedBy(state: GameState, id: PlayerId): Coord[] {
   const out: Coord[] = [];
-  for (let i = 0; i < s.map.owners.length; i++) {
-    if (s.map.owners[i] === id) out.push({ x: i % s.map.width, y: Math.floor(i / s.map.width) });
+  for (let i = 0; i < state.map.owners.length; i++) {
+    if (state.map.owners[i] === id) out.push({ x: i % state.map.width, y: Math.floor(i / state.map.width) });
   }
   return out;
 }
 
-export function hqTilesOf(s: GameState, id: PlayerId, content: ContentCatalog): Coord[] {
-  return tilesOwnedBy(s, id).filter((c) => content.terrains.get(s.map.tiles[idx(s.map, c.x, c.y)]).hq);
+export function hqTilesOf(state: GameState, id: PlayerId, content: ContentCatalog): Coord[] {
+  return tilesOwnedBy(state, id).filter((c) => content.terrains.get(state.map.tiles[idx(state.map, c.x, c.y)]).hq);
 }
 
-export function productionTilesOf(s: GameState, id: PlayerId, content: ContentCatalog): Coord[] {
-  return tilesOwnedBy(s, id).filter(
-    (c) => content.terrains.get(s.map.tiles[idx(s.map, c.x, c.y)]).produces.length > 0,
+export function productionTilesOf(state: GameState, id: PlayerId, content: ContentCatalog): Coord[] {
+  return tilesOwnedBy(state, id).filter(
+    (c) => content.terrains.get(state.map.tiles[idx(state.map, c.x, c.y)]).produces.length > 0,
   );
 }
 
@@ -448,16 +472,16 @@ export interface RecruitOption {
 }
 
 export function recruitOptions(
-  s: GameState,
+  state: GameState,
   at: Coord,
   resources: BattleResourceSystem,
   content: ContentCatalog,
 ): RecruitOption[] {
-  const tile = idx(s.map, at.x, at.y);
-  const terrain = content.terrains.get(s.map.tiles[tile]);
-  const owner = s.map.owners[tile];
-  if (owner !== s.currentPlayer) return [];
-  const account = playerResource(player(s, owner));
+  const tile = idx(state.map, at.x, at.y);
+  const terrain = content.terrains.get(state.map.tiles[tile]);
+  const owner = state.map.owners[tile];
+  if (owner !== state.currentPlayer) return [];
+  const account = playerResource(player(state, owner));
   return terrain.produces.map((id) => {
     const definition = content.units.get(id);
     return {
@@ -470,7 +494,7 @@ export function recruitOptions(
 
 export function spawnUnit(
   content: ContentCatalog,
-  s: GameState,
+  state: GameState,
   type: UnitTypeId,
   owner: PlayerId,
   at: Coord,
@@ -484,15 +508,15 @@ export function spawnUnit(
     ...opts.source,
     hp: opts.hp ?? opts.source?.hp,
   };
-  const u = createUnitState(source, s.nextUnitId++, opts.done ?? false, content);
-  s.units.push(u);
+  const u = createUnitState(source, state.nextUnitId++, opts.done ?? false, content);
+  state.units.push(u);
   return u;
 }
 
-export function removeUnit(s: GameState, id: number): void {
-  const i = s.units.findIndex((u) => u.id === id);
+export function removeUnit(state: GameState, id: number): void {
+  const i = state.units.findIndex((u) => u.id === id);
   if (i < 0) return;
-  const unit = s.units[i];
-  s.map.captureProgress[idx(s.map, unit.x, unit.y)] = 0;
-  s.units.splice(i, 1);
+  const unit = state.units[i];
+  state.map.captureProgress[idx(state.map, unit.x, unit.y)] = 0;
+  state.units.splice(i, 1);
 }
