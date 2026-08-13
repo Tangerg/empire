@@ -581,9 +581,14 @@ export class GameController {
     return o;
   }
 
+  /** The intents the HUD answers, so a test can compare them with the markup. */
+  get handledIntents(): string[] {
+    return this.hud.handledIntents;
+  }
+
   private hudView(): HudView {
     const s = this.state;
-    let fcView: HudView['forecast'] = null;
+    let forecast: HudView['forecast'] = null;
 
     const unit = this.selectedUnit;
     const aiming = this.selection instanceof TargetSelection ? this.selection : null;
@@ -591,15 +596,9 @@ export class GameController {
       const defender = unitAt(s, this.hoverTarget.x, this.hoverTarget.y);
       if (defender) {
         const plan = this.session.attackPlan(unit, this.hoverTarget, aiming.dest, aiming.weapon);
-        const fc = plan.primaryUnit!;
-        const recipient = s.units.find((candidate) => candidate.id === fc.damageRecipient) ?? defender;
-        fcView = {
-          plan,
-          fc,
-          attacker: unit,
-          defender,
-          recipient,
-        };
+        const exchange = plan.primaryUnit!;
+        const recipient = s.units.find((candidate) => candidate.id === exchange.damageRecipient) ?? defender;
+        forecast = { plan, exchange, attacker: unit, defender, recipient };
       }
     }
 
@@ -632,7 +631,7 @@ export class GameController {
       resources: this.session.rules.resources,
       inspect: this.inspect,
       tile: this.cursor,
-      forecast: fcView,
+      forecast,
       commands,
       tactics,
       reactionUnit:

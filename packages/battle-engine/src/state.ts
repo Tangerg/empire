@@ -440,23 +440,30 @@ export function productionTilesOf(s: GameState, id: PlayerId, content: ContentCa
 }
 
 /** Recruitable list for a tile, filtered by what the owner can afford. */
+/** One line of the recruitment menu: what it is, what it costs, can we pay. */
+export interface RecruitOption {
+  readonly unit: UnitTypeId;
+  readonly costs: ResourceAmount[];
+  readonly affordable: boolean;
+}
+
 export function recruitOptions(
   s: GameState,
-  c: Coord,
+  at: Coord,
   resources: BattleResourceSystem,
   content: ContentCatalog,
-): { unit: UnitTypeId; costs: ResourceAmount[]; affordable: boolean }[] {
-  const i = idx(s.map, c.x, c.y);
-  const terrain = content.terrains.get(s.map.tiles[i]);
-  const owner = s.map.owners[i];
+): RecruitOption[] {
+  const tile = idx(s.map, at.x, at.y);
+  const terrain = content.terrains.get(s.map.tiles[tile]);
+  const owner = s.map.owners[tile];
   if (owner !== s.currentPlayer) return [];
-  const subject = playerResource(player(s, owner));
+  const account = playerResource(player(s, owner));
   return terrain.produces.map((id) => {
-    const def = content.units.get(id);
+    const definition = content.units.get(id);
     return {
       unit: id,
-      costs: def.recruitCosts.map((cost) => ({ ...cost })),
-      affordable: def.recruitCosts.every((cost) => resources.canSpend(cost.resource, subject, cost.amount)),
+      costs: definition.recruitCosts.map((cost) => ({ ...cost })),
+      affordable: definition.recruitCosts.every((cost) => resources.canSpend(cost.resource, account, cost.amount)),
     };
   });
 }

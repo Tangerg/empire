@@ -90,6 +90,27 @@ describe('game controller', () => {
     c.dispose();
   });
 
+  /**
+   * A control declares an intent in `data-act`; the HUD holds the table that
+   * answers it. They used to be a template and a thirteen-case switch in
+   * different halves of the file, with nothing comparing them — and the
+   * disabled variants declared a fake `noop` intent to opt out, which meant the
+   * comparison could not have been made even if someone had tried.
+   */
+  it('answers every intent its own markup declares', () => {
+    const level = BUILTIN_LEVELS[0];
+    const controller = new GameController(level, () => {}, { engine: TEST_ENGINE });
+    host.append(controller.root);
+
+    const declared = [...controller.root.querySelectorAll('[data-act]')]
+      .map((control) => control.getAttribute('data-act')!);
+    const unanswered = [...new Set(declared)]
+      .filter((intent) => !controller.handledIntents.includes(intent));
+
+    expect(unanswered).toEqual([]);
+    controller.dispose();
+  });
+
   it('fits a large board into the available tactical viewport', () => {
     const level = BUILTIN_LEVELS[0];
     const board = new BoardView(createState(level, TEST_CATALOG), {
