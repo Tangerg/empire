@@ -130,7 +130,13 @@ describe('dependency injection invariants', () => {
       'DefaultAbilityAiEvaluators',
     ];
     const pattern = new RegExp(`[:,)]\\s*\\w+\\s*=\\s*(?:${globals.join('|')})\\b|=\\s*(?:${globals.join('|')})(?=\\s*[,)])`);
-    const offenders = runtimeTypeScriptFiles(coreRoot).filter((file) => {
+    const scanned = [
+      ...runtimeTypeScriptFiles(coreRoot),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'campaign-engine', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'editor', 'src')),
+    ];
+    const offenders = scanned.filter((file) => {
       const source = readFileSync(file, 'utf8');
       // Only parameter lists matter; a module-level const binding is fine.
       return source
@@ -138,7 +144,7 @@ describe('dependency injection invariants', () => {
         .some((line) => pattern.test(line) && !/^\s*(?:export\s+)?const\s/.test(line));
     });
 
-    expect(offenders.map((file) => relative(coreRoot, file))).toEqual([]);
+    expect(offenders.map((file) => relative(packagesRoot, file))).toEqual([]);
   });
 
   it('keeps presentation packages off the global content registries', () => {

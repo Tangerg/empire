@@ -82,7 +82,7 @@ export class StoryCampaignController {
     private readonly engine: BattleEngine,
   ) {
     this.content = engine.content;
-    this.bridge = new CampaignBattleBridge(adapter.level);
+    this.bridge = new CampaignBattleBridge(adapter.level, this.content);
     this.runtime = new CampaignRuntime(adapter.definition, state ?? undefined);
     this.root.className = 'campaign-root';
     this.root.addEventListener('click', this.onClick);

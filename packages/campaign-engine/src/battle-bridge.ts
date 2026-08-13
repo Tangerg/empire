@@ -1,5 +1,4 @@
 import {
-  GlobalContentCatalog,
   normaliseLevel,
   teamOf,
   type ContentCatalog,
@@ -55,7 +54,8 @@ function seedLevelUnit(
 export class CampaignBattleBridge {
   constructor(
     private readonly resolveLevel: CampaignLevelResolver,
-    private readonly content: ContentCatalog = GlobalContentCatalog,
+    /** Catalog the campaign is played against; never an ambient default. */
+    private readonly content: ContentCatalog,
   ) {}
 
   prepare(definition: CampaignDefinition, state: CampaignState): BattleRequest {

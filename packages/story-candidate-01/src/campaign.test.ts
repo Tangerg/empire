@@ -9,6 +9,11 @@ import {
 import { candidate01Level } from './levels';
 import { CANDIDATE_01_CHOICES, CANDIDATE_01_STORY } from './story';
 
+import { cloneContentCatalog, GlobalContentCatalog } from '@empire/battle-engine';
+
+/** Composed per suite, exactly like an application composition root. */
+const TEST_CATALOG = cloneContentCatalog(GlobalContentCatalog);
+
 describe('candidate-01 campaign', () => {
   it('binds every presentation and all sixteen battles into one valid graph', () => {
     expect(() => validateCampaignDefinition(CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN)).not.toThrow();
@@ -22,7 +27,7 @@ describe('candidate-01 campaign', () => {
   });
 
   it('can deterministically advance from the prologue through chapter three', () => {
-    const bridge = new CampaignBattleBridge(candidate01Level);
+    const bridge = new CampaignBattleBridge(candidate01Level, TEST_CATALOG);
     const runtime = new CampaignRuntime(CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN);
     let battles = 0;
     let guard = 0;
@@ -48,7 +53,7 @@ describe('candidate-01 campaign', () => {
   });
 
   it('projects pivotal choices into battle snapshots without story logic in the bridge', () => {
-    const bridge = new CampaignBattleBridge(candidate01Level);
+    const bridge = new CampaignBattleBridge(candidate01Level, TEST_CATALOG);
     const runtime = new CampaignRuntime(CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN);
     runtime.advance();
     runtime.advance();
@@ -61,7 +66,7 @@ describe('candidate-01 campaign', () => {
   });
 
   it('turns named-hero defeat into a persistent wound while retainers remain mortal', () => {
-    const bridge = new CampaignBattleBridge(candidate01Level);
+    const bridge = new CampaignBattleBridge(candidate01Level, TEST_CATALOG);
     const runtime = new CampaignRuntime(CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN);
     runtime.advance();
     runtime.advance();

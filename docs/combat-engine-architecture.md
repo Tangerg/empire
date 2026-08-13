@@ -59,10 +59,12 @@ flowchart TD
 
 | 插件 | 提供的能力 |
 | --- | --- |
-| `engine.tactical-rules` | 内容快照、能力、空间、伤害修正、命中效果、状态和成长 |
+| `engine.tactical-rules` | 内容快照、能力、空间、伤害修正、命中效果、状态、成长、行动序策略、随机源 |
 | `engine.mission-rules` | Action、场景条件、场景效果和目标 |
 | `engine.resource-economy` | 通用资源账户策略 |
 | `engine.ai-planning` | 目标顾问和能力估值 |
+
+能力表当前有 16 项：`content` `abilities` `space` `actionHandlers` `combatModifiers` `hitEffects` `statusBehaviors` `scenarioConditions` `scenarioEffects` `objectives` `progression` `resources` `turnOrders` `random` `aiObjectiveAdvisors` `abilityAiEvaluators`。
 
 插件按业务能力成块，不能为每个类建立一个插件。每个插件声明：
 
@@ -73,6 +75,24 @@ flowchart TD
 - `install(context)` 中的实际提供行为
 
 内核拒绝重复插件版本、竞争能力提供者、缺失依赖、依赖环和声明后未提供的能力。装配结果只暴露只读 `KernelCapabilities`。
+
+## 行动序策略
+
+回合顺序是一条可替换的策略，不是写死的循环。`rules.turnOrder` 按 id 选择：
+
+| 策略 | 语义 | 对应作品 |
+| --- | --- | --- |
+| `side` | 一方全体各行动一次，再交给下一位存活玩家 | 远古帝国 / AW / 火纹 |
+| `initiative` | 每个单位按速度累积充能，单独获得行动权 | 皇家骑士团2 / FFT |
+
+两套词汇必须分开，否则任何一族都做不对：
+
+- **回合（round）**：战斗时钟一圈。收入、地形覆盖层衰减、场景 `everyRounds` 触发器以此为准，`state.turn` 计的是它。
+- **行动轮（actor turn）**：一次行动权。状态跳动、建筑治疗、武器冷却、反应预算以此为准。
+
+在阵营回合下两者按玩家重合，这正是它们长期被混为一谈的原因。
+
+行动权由策略回答，命令处理器、AI 规划器和界面都问同一个策略，因此 AI 不可能规划出执行层必须拒绝的行动。策略自己维护可序列化的状态切片并自行清理离场单位——把它挂到单位生命周期上会让 `state` 依赖 `turn-order`，闭合一个依赖环，无环适应度测试会拒绝。
 
 ## 内容目录
 

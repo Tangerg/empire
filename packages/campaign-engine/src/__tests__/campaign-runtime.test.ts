@@ -62,7 +62,7 @@ describe('generic campaign framework', () => {
     expect(runtime.choices().map((choice) => choice.id)).toContain('advance');
     runtime.choose('advance');
 
-    const bridge = new CampaignBattleBridge(() => level());
+    const bridge = new CampaignBattleBridge(() => level(), TEST_CATALOG);
     const request = runtime.beginBattle(bridge);
     expect(request.level.units.find((unit) => unit.key === 'campaign-hero')).toMatchObject({ rank: 0, hp: 100 });
     const battle = createState(request.level, TEST_CATALOG);
