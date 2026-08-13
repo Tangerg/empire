@@ -1,6 +1,6 @@
 # 查询《断冠之誓》的当前素材
 
-当前唯一正式运行时包是 [`final-fantasy-v1`](../assets/final-fantasy-v1/README.md)。它覆盖全部 404 个题材，Manifest 是程序索引真值；游戏代码只维护领域 ID 到 `topicId` 的语义绑定，不保存素材文件路径。
+当前唯一正式运行时包是 [`final-fantasy-v1`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/README.md)。它覆盖全部 404 个题材，Manifest 是程序索引真值；游戏代码只维护领域 ID 到 `topicId` 的语义绑定，不保存素材文件路径。
 
 ## 当前覆盖
 
@@ -22,17 +22,17 @@
 
 ## 地图环境库存
 
-正式题材包之外，当前另有 [`environment-builder-v1`](../assets/final-fantasy-v1/environment-builder-v1/README.md)：36 套 1×/2× 图集、1188 个可拼装部件。它覆盖完整过渡、四变体道路与水体、正式路肩、高差、坡道、断崖、森林、地基、工事、地标、贴花和农村生活件，专门承担地图编辑与复用。
+正式题材包之外，当前另有 [`environment-builder-v1`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/README.md)：36 套 1×/2× 图集、1188 个可拼装部件。它覆盖完整过渡、四变体道路与水体、正式路肩、高差、坡道、断崖、森林、地基、工事、地标、贴花和农村生活件，专门承担地图编辑与复用。
 
 该环境包已通过机器素材 QA，但尚未完成真实关卡渲染替换，因此其 Manifest 保持 `runtimeReady=false`，不能把“文件齐全”写成“实机已接入”。
 
 ## 程序入口
 
-- 素材目录与 Manifest 校验：`src/art/candidate-01-assets.ts`
-- 领域 ID 到题材 ID 的映射：`src/art/candidate-01-bindings.ts`
-- 战场渲染适配：`src/art/candidate-01-runtime.ts`
-- 剧情图解析：`src/art/candidate-01-story.ts`
-- 正式清单：[`manifest-final-fantasy-v1.json`](../assets/final-fantasy-v1/manifest-final-fantasy-v1.json)
+- 素材目录与 Manifest 校验：`packages/story-candidate-01/src/presentation/candidate-01-assets.ts`
+- 领域 ID 到题材 ID 的映射：`packages/story-candidate-01/src/presentation/candidate-01-bindings.ts`
+- 战场渲染适配：`packages/story-candidate-01/src/presentation/candidate-01-runtime.ts`
+- 剧情图解析：`packages/story-candidate-01/src/presentation/candidate-01-story.ts`
+- 正式清单：[`manifest-final-fantasy-v1.json`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json)
 
 未被当前前三章使用的素材仍可通过 `topicId` 查询，不应为了“提前接线”把剧情名或文件路径写入战斗内核。
 

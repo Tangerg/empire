@@ -10,14 +10,14 @@
 
 ## 本地入口
 
-- 正式 QA：[`qa-final-fantasy-v1.json`](../assets/final-fantasy-v1/qa-final-fantasy-v1.json)
-- 单位预览：[`units-1x.png`](../assets/final-fantasy-v1/previews/units-1x.png)
-- 地图素材预览：[`map-assets-1x.png`](../assets/final-fantasy-v1/previews/map-assets-1x.png)
-- 图标与特效预览：[`icons-fx-1x.png`](../assets/final-fantasy-v1/previews/icons-fx-1x.png)
-- 剧情素材预览：[`narrative-1x.png`](../assets/final-fantasy-v1/previews/narrative-1x.png)
-- 通用环境包 QA：[`qa-environment-builder-v1.json`](../assets/final-fantasy-v1/environment-builder-v1/qa-environment-builder-v1.json)
-- 环境与现有资产混搭：[`compatibility-map-temperate-1x.png`](../assets/final-fantasy-v1/environment-builder-v1/previews/compatibility-map-temperate-1x.png)
-- 高差语义预览：[`elevation-system-1x.png`](../assets/final-fantasy-v1/environment-builder-v1/previews/elevation-system-1x.png)
+- 正式 QA：[`qa-final-fantasy-v1.json`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/qa-final-fantasy-v1.json)
+- 单位预览：[`units-1x.png`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/previews/units-1x.png)
+- 地图素材预览：[`map-assets-1x.png`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/previews/map-assets-1x.png)
+- 图标与特效预览：[`icons-fx-1x.png`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/previews/icons-fx-1x.png)
+- 剧情素材预览：[`narrative-1x.png`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/previews/narrative-1x.png)
+- 通用环境包 QA：[`qa-environment-builder-v1.json`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/qa-environment-builder-v1.json)
+- 环境与现有资产混搭：[`compatibility-map-temperate-1x.png`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/previews/compatibility-map-temperate-1x.png)
+- 高差语义预览：[`elevation-system-1x.png`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/previews/elevation-system-1x.png)
 
 运行素材包重建与 QA：
 

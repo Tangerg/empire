@@ -44,8 +44,8 @@
 
 | 清单 | 当前用途 |
 | --- | --- |
-| [`final-ancient-china-v1/README.md`](../assets/final-ancient-china-v1/README.md) | 新中国古代卡通包入口与运行时规格 |
-| [`final-ancient-china-v1/PROMPTS.md`](../assets/final-ancient-china-v1/PROMPTS.md) | 母图图集顺序和语义复现清单 |
-| [`final-ancient-china-v1/tools/build_final_ancient_china_v1.py`](../assets/final-ancient-china-v1/tools/build_final_ancient_china_v1.py) | 404 项确定性切片、manifest 与 QA 构建器 |
-| [`final-ancient-china-v1/manifest-final-ancient-china-v1.json`](../assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json) | 游戏运行时读取的 404 项正式清单 |
-| [`final-ancient-china-v1/qa-final-ancient-china-v1.json`](../assets/final-ancient-china-v1/qa-final-ancient-china-v1.json) | 完整覆盖、透明通道、帧差异、建筑状态与重复检查 |
+| [`final-ancient-china-v1/README.md`](../../../../packages/story-candidate-03/assets/final-ancient-china-v1/README.md) | 新中国古代卡通包入口与运行时规格 |
+| [`final-ancient-china-v1/PROMPTS.md`](../../../../packages/story-candidate-03/assets/final-ancient-china-v1/PROMPTS.md) | 母图图集顺序和语义复现清单 |
+| [`final-ancient-china-v1/tools/build_final_ancient_china_v1.py`](../../../../packages/story-candidate-03/assets/final-ancient-china-v1/tools/build_final_ancient_china_v1.py) | 404 项确定性切片、manifest 与 QA 构建器 |
+| [`final-ancient-china-v1/manifest-final-ancient-china-v1.json`](../../../../packages/story-candidate-03/assets/final-ancient-china-v1/manifest-final-ancient-china-v1.json) | 游戏运行时读取的 404 项正式清单 |
+| [`final-ancient-china-v1/qa-final-ancient-china-v1.json`](../../../../packages/story-candidate-03/assets/final-ancient-china-v1/qa-final-ancient-china-v1.json) | 完整覆盖、透明通道、帧差异、建筑状态与重复检查 |

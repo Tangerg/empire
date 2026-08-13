@@ -4,7 +4,7 @@
 
 ## 当前交付
 
-环境包位于 [`../assets/final-fantasy-v1/environment-builder-v1/`](../assets/final-fantasy-v1/environment-builder-v1/README.md)，V1.1 包含 36 套运行时图集和 1188 个部件：
+环境包位于 [`../../../../packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/README.md)，V1.1 包含 36 套运行时图集和 1188 个部件：
 
 - 8 类基础地表与四变体；
 - 草土、草林、草雪、土石四套八邻域 Blob47 过渡；
@@ -17,13 +17,13 @@
 
 环境母图以 [`reference/art-direction-map.png`](./reference/art-direction-map.png) 及正式包现有单位/建筑为双重参考。镜头固定为高斜俯视，轮廓使用深棕黑线，材质为哑光两段卡通明暗；地面保持中低对比度，让现有单位与交互目标仍然占最高识别层。
 
-混搭结果见 [`compatibility-map-temperate-1x.png`](../assets/final-fantasy-v1/environment-builder-v1/previews/compatibility-map-temperate-1x.png)。
+混搭结果见 [`compatibility-map-temperate-1x.png`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/previews/compatibility-map-temperate-1x.png)。
 
 ## 接入高低差
 
 环境包不创建第二套高度规则。渲染器直接读取现有 `GameMap.elevation`：相邻格每增加 1 层，绘制一层岩壁；合法坡道使用 `rampCells`；断崖和墙体的阻挡仍以地图边与现有战斗系统为真值。
 
-视觉示例见 [`elevation-system-1x.png`](../assets/final-fantasy-v1/environment-builder-v1/previews/elevation-system-1x.png)。
+视觉示例见 [`elevation-system-1x.png`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/previews/elevation-system-1x.png)。
 
 ## 晋级条件
 

@@ -99,7 +99,7 @@
 
 ### 4.1 已有架构
 
-当前规则引擎位于 `src/core`，不依赖 DOM，核心数据流为：
+当前规则引擎位于 `packages/battle-engine/src`，不依赖 DOM，核心数据流为：
 
 ```text
 输入 → Action → applyAction(state) → GameEvent[] → UI 动画 → 重绘
@@ -119,7 +119,7 @@
 
 ### 4.2 当前伤害模型
 
-当前公式位于 `src/core/combat.ts`：
+当前公式位于 `packages/battle-engine/src/combat.ts`：
 
 ```text
 damage = attack
@@ -1043,9 +1043,9 @@ interface Unit {
 
 ### 12.2 内容目录与注册表现状
 
-武器、状态、移动、地形、地貌覆盖、结构、战术、伤害类型、护甲类型和克制矩阵均已拥有正式注册入口，并通过 `ContentPackInstaller` 统一装配。核心目录只保留注册表与规则；当前奇幻单位、武器、地形、伤害矩阵和关卡位于 `src/content/ancient-empires/`，跨题材状态、移动、结构与环境原语位于 `src/content/common/`。
+武器、状态、移动、地形、地貌覆盖、结构、战术、伤害类型、护甲类型和克制矩阵均已拥有正式注册入口，并通过 `ContentPackInstaller` 统一装配。核心目录只保留注册表与规则；当前奇幻单位、武器、地形、伤害矩阵和关卡位于 `packages/content-ancient-empires/src/`，跨题材状态、移动、结构与环境原语位于 `packages/content-common/src/`。
 
-新增内容应提交一个版本化 `ContentPack`，由安装器在写入前检查依赖、重复 ID、交叉引用、地图字符和克制矩阵完整性。不要再从任意业务模块直接调用全局注册表写入，也不要让导入 `src/core` 产生默认内容副作用。
+新增内容应提交一个版本化 `ContentPack`，由安装器在写入前检查依赖、重复 ID、交叉引用、地图字符和克制矩阵完整性。不要再从任意业务模块直接调用全局注册表写入，也不要让导入 `packages/battle-engine/src` 产生默认内容副作用。
 
 每个 `BattleEngine` 现在持有自己的 `ContentCatalog` 快照。状态创建、移动、视线、伤害、状态、职业、场景、目标和 AI 都从同一实例目录读取；同一进程可同时运行 ID 相同但数值不同的题材沙箱，互不污染全局默认内容。
 

@@ -1,24 +1,32 @@
 {
-  "name": "empire-tactics",
+  "name": "empire-srpg-workspace",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "description": "Ancient Empires style turn-based tactics — headless TS core + SVG renderer + map editor",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "vite",
-    "demo": "vite --host 127.0.0.1 --open /demo.html",
-    "build": "tsc --noEmit && vite build",
-    "preview": "vite preview",
+    "dev": "npm run dev --workspace @empire/game-app",
+    "demo": "npm run dev --workspace @empire/engine-demo-app",
+    "experience": "npm run dev --workspace @empire/experience-lab-app",
+    "build": "npm run typecheck && npm run build:apps",
+    "build:apps": "npm run build --workspace @empire/game-app && npm run build --workspace @empire/editor-app && npm run build --workspace @empire/engine-demo-app && npm run build --workspace @empire/experience-lab-app",
+    "build:experience": "npm run build --workspace @empire/experience-lab-app",
+    "preview": "npm run preview --workspace @empire/game-app",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "bench:core": "vitest bench --run src/core/__bench__/engine.bench.ts"
+    "bench:core": "vitest bench --run packages/battle-engine/src/__bench__/engine.bench.ts"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",
     "jsdom": "^29.1.1",
     "typescript": "^5.6.3",
     "vite": "^5.4.11",
+    "vite-plugin-singlefile": "^2.3.0",
     "vitest": "^2.1.8"
   }
 }

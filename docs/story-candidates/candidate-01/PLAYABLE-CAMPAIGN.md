@@ -6,7 +6,7 @@
 
 本战役采用“剧情演出 → 战前抉择 → 作战准备 → 战斗 → 战果统计 → 战后演出”的连续 SRPG 流程。玩家从主菜单进入《断冠之誓》，在同一份版本化存档中推进前三章。
 
-- 通用战斗核心不知道莱娅、灰旗或任何剧情名词；题材规则全部位于 `src/content/candidate-01`。
+- 通用战斗核心不知道莱娅、灰旗或任何剧情名词；题材规则全部位于 `packages/story-candidate-01/src`。
 - 战役状态与战斗快照是两个聚合。`CampaignBattleBridge` 只负责把名册映射进关卡、再把战果投影回战役。
 - 存档只发生在关卡之间。离开正在进行的战斗后会回到该关战前状态，避免把“半套战斗状态”伪装成可靠存档。
 - 命名主角在胜利关卡中倒下会转化为跨关重伤，最低以 30% 生命、40% 士气回归；普通扈从仍可能永久阵亡。
@@ -132,14 +132,14 @@ CampaignRuntime（下一节点与跨关状态）
 
 | 层 | 入口 | 责任 |
 | --- | --- | --- |
-| 题材内容 | `src/content/candidate-01/index.ts` | 单位、武器、地形、战术和结构目录 |
-| 关卡 | `src/content/candidate-01/levels.ts` | 16 份可校验 `LevelData` |
-| 战场审计 | `src/content/candidate-01/battlefield-audit.ts` | 面积、兵力、展开、战区与接敌节奏指标 |
-| 战役编排 | `src/content/candidate-01/campaign.ts` | 节点图、选择效果、题材上下文与战果政策 |
-| 剧情表现 | `src/content/candidate-01/story.ts` | 小说式对白、场景、任务简报和抉择说明 |
-| 素材绑定 | `src/art/candidate-01-runtime.ts` | 运行时像素素材到领域 ID 的映射 |
-| 应用外壳 | `src/ui/campaign-game.ts` | 剧情、准备、战斗、结算和续关界面 |
-| 通用桥接 | `src/campaign` | 状态机、战斗请求/战果、防腐层与存档模型 |
-| 通用战斗 | `src/core` | 不依赖题材、DOM 或战役剧情的规则内核 |
+| 题材内容 | `packages/story-candidate-01/src/index.ts` | 单位、武器、地形、战术和结构目录 |
+| 关卡 | `packages/story-candidate-01/src/levels.ts` | 16 份可校验 `LevelData` |
+| 战场审计 | `packages/story-candidate-01/src/battlefield-audit.ts` | 面积、兵力、展开、战区与接敌节奏指标 |
+| 战役编排 | `packages/story-candidate-01/src/campaign.ts` | 节点图、选择效果、题材上下文与战果政策 |
+| 剧情表现 | `packages/story-candidate-01/src/story.ts` | 小说式对白、场景、任务简报和抉择说明 |
+| 素材绑定 | `packages/story-candidate-01/src/presentation/candidate-01-runtime.ts` | 运行时像素素材到领域 ID 的映射 |
+| 应用外壳 | `packages/game-ui/src/ui/campaign-game.ts` | 剧情、准备、战斗、结算和续关界面 |
+| 通用桥接 | `packages/campaign-engine/src` | 状态机、战斗请求/战果、防腐层与存档模型 |
+| 通用战斗 | `packages/battle-engine/src` | 不依赖题材、DOM 或战役剧情的规则内核 |
 
-第四章以后应继续添加新的题材关卡与演出节点，不应为剧情需要修改 `src/core`。只有三个题材都能复用的新规则原语，才有资格进入通用战斗层。
+第四章以后应继续添加新的题材关卡与演出节点，不应为剧情需要修改 `packages/battle-engine/src`。只有三个题材都能复用的新规则原语，才有资格进入通用战斗层。

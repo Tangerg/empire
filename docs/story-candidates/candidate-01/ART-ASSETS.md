@@ -17,7 +17,7 @@
 
 ## 已定调资源样例
 
-[卡通西幻完整素材包 V1](./assets/final-fantasy-v1/README.md) 是当前唯一正式运行时来源。旧像素风包已移动到 [`assets/archive/runtime-v2/`](./assets/archive/runtime-v2/)，只用于历史追溯。
+[卡通西幻完整素材包 V1](../../../packages/story-candidate-01/assets/final-fantasy-v1/README.md) 是当前唯一正式运行时来源。偏写实、旧像素与历史运行时素材已经按三个剧本打包到 Git 忽略的 `.local-asset-archive/legacy-assets.zip`，只用于云盘备份，不参与构建。
 
 ## 当前状态
 
@@ -41,10 +41,10 @@
 
 游戏接入按以下顺序读取本剧本文件：
 
-1. `assets/final-fantasy-v1/manifest-final-fantasy-v1.json`
-2. `assets/final-fantasy-v1/runtime/`
-3. `assets/final-fantasy-v1/qa-final-fantasy-v1.json`
-4. `assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json`
+1. `packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json`
+2. `packages/story-candidate-01/assets/final-fantasy-v1/runtime/`
+3. `packages/story-candidate-01/assets/final-fantasy-v1/qa-final-fantasy-v1.json`
+4. `packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json`
 5. `assets/manifest-complete.json`，仅作为早期题材规划的历史对照
 
 不要从 `assets/archive/`、`assets/complete/`、`assets/draft-v1/`、旧 HD 剧情样包或母图目录加载游戏资源。

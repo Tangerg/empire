@@ -1,0 +1,10 @@
+{
+  "name": "@empire/story-candidate-02",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@empire/campaign-engine": "0.1.0"
+  }
+}

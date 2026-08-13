@@ -52,4 +52,4 @@
 
 ## 区分题材预算与地图拼装部件
 
-上述 404 个数字是内容题材，不足以描述道路拐角、河岸内外角、坡道、悬崖边、地基和贴花等地图语法。此类可复用部件由 [`environment-builder-v1`](../assets/final-fantasy-v1/environment-builder-v1/README.md) 单独管理；当前 V1.1 为 36 套图集、1188 个连接变体与物理部件，不计入也不抵扣 404。
+上述 404 个数字是内容题材，不足以描述道路拐角、河岸内外角、坡道、悬崖边、地基和贴花等地图语法。此类可复用部件由 [`environment-builder-v1`](../../../../packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/README.md) 单独管理；当前 V1.1 为 36 套图集、1188 个连接变体与物理部件，不计入也不抵扣 404。

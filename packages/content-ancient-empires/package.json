@@ -1,0 +1,15 @@
+{
+  "name": "@empire/content-ancient-empires",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts",
+    "./levels": "./src/levels/index.ts"
+  },
+  "dependencies": {
+    "@empire/battle-engine": "0.1.0",
+    "@empire/content-common": "0.1.0"
+  }
+}

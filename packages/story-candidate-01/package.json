@@ -1,0 +1,19 @@
+{
+  "name": "@empire/story-candidate-01",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts",
+    "./presentation": "./src/presentation/index.ts",
+    "./presentation/*": "./src/presentation/*.ts"
+  },
+  "dependencies": {
+    "@empire/battle-engine": "0.1.0",
+    "@empire/campaign-engine": "0.1.0",
+    "@empire/content-common": "0.1.0",
+    "@empire/content-ancient-empires": "0.1.0",
+    "@empire/game-ui": "0.1.0"
+  }
+}

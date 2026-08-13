@@ -101,7 +101,11 @@ flowchart LR
 
 ## 6. 三套剧本如何共用
 
-`src/content/campaigns/candidate-contracts.ts` 提供三个七章结构契约：
+三个剧本包分别提供自己的七章结构契约：
+
+- `packages/story-candidate-01/src/`；
+- `packages/story-candidate-02/src/index.ts`；
+- `packages/story-candidate-03/src/index.ts`。
 
 - 候选 1：西幻灰旗成长史；
 - 候选 2：宏大星际旅程；

@@ -1082,7 +1082,7 @@ Web UI / Editor / Server / Tests
    Serializable GameState / Definitions
 ```
 
-允许上层依赖下层；禁止领域层反向导入 UI、剧情或编辑器。`src/core` 的无 DOM 搜索和构建测试会持续约束这一点。
+允许上层依赖下层；禁止领域层反向导入 UI、剧情或编辑器。`packages/battle-engine/src` 的无 DOM 搜索和构建测试会持续约束这一点。
 
 ### 18.7 设计模式使用边界
 
@@ -1164,7 +1164,7 @@ Web UI / Editor / Server / Tests
 
 | 层 | 负责内容 | 不允许的内容 |
 | --- | --- | --- |
-| 战斗机制层 `src/core` | 网格、移动、武器、修正、反应、援护、状态、目标、AI、成长和事件 | 人物名、章节名、台词、剧情分支、某题材兵种 ID 特判 |
+| 战斗机制层 `packages/battle-engine/src` | 网格、移动、武器、修正、反应、援护、状态、目标、AI、成长和事件 | 人物名、章节名、台词、剧情分支、某题材兵种 ID 特判 |
 | 题材内容层 `src/content/<pack>` | Unit/Weapon/Damage/Terrain/Status/Structure 定义、关卡、语义标签、美术键、名称和音效键 | 自己扣血、自己算反击、绕过 Action 的战斗脚本 |
 | 剧情/战役层 | 章节、对话、选择、关卡编排、跨关变量与 `scenarioSignal` 的演出映射 | 改写伤害公式或在对话回调中修改战斗真值 |
 
@@ -1184,14 +1184,14 @@ Web UI / Editor / Server / Tests
 当前源码按职责拆分为：
 
 ```text
-src/core/                         题材无关领域、算法、空内容注册表
-src/content/common/               跨题材通用定义
-src/content/ancient-empires/      当前奇幻包的数值、定义和关卡
-src/application/                  浏览器存储与应用工作流适配
-src/game/ + src/editor/ + src/ui/ 展示与交互
+packages/battle-engine/src/                         题材无关领域、算法、空内容注册表
+packages/content-common/src/               跨题材通用定义
+packages/content-ancient-empires/src/      当前奇幻包的数值、定义和关卡
+packages/game-ui/src/application/                  浏览器存储与应用工作流适配
+apps/game/src/ + packages/editor/src/ + packages/game-ui/src/ui/ 展示与交互
 ```
 
-`src/core` 不导入 `content`、`application`、`art`、`ui`、`editor` 或 `game`。默认内容的唯一副作用入口是 `content/bootstrap-default.ts`，只由游戏、编辑器和测试组合根加载。直接导入核心不会悄悄注册剑士、巨龙、城堡或地图字符。
+`packages/battle-engine/src` 不导入 `content`、`application`、`art`、`ui`、`editor` 或 `game`。默认内容的唯一副作用入口是 `content/bootstrap-default.ts`，只由游戏、编辑器和测试组合根加载。直接导入核心不会悄悄注册剑士、巨龙、城堡或地图字符。
 
 `architecture-boundaries.test.ts` 会扫描运行时代码的导入方向，并保证 `core/data` 不再出现内置定义批量注册。这个边界不依赖开发者记忆。
 
@@ -1571,7 +1571,7 @@ BattleEngine
 
 ### 25.7 仍在战斗核心之外
 
-`GameSave`、跨关等级、永久伤亡、人物关系、路线选择和章节变量仍不属于 `src/core`。第 27 节之后新增的 `src/campaign` 已以单向适配层实现这些边界中的通用部分；战斗核心没有为此导入战役包。Action 回放文件和战斗版本迁移仍是独立产品能力，不能与战役存档混成同一种格式。
+`GameSave`、跨关等级、永久伤亡、人物关系、路线选择和章节变量仍不属于 `packages/battle-engine/src`。第 27 节之后新增的 `packages/campaign-engine/src` 已以单向适配层实现这些边界中的通用部分；战斗核心没有为此导入战役包。Action 回放文件和战斗版本迁移仍是独立产品能力，不能与战役存档混成同一种格式。
 
 ## 26. 第十阶段：引擎级硬化与测量驱动优化
 
@@ -1681,7 +1681,7 @@ BattleEngine
 
 ## 28. 战斗与战役的单向边界
 
-通用战役框架位于 `src/campaign`，完整设计见 [战役引擎架构](./campaign-engine-architecture.md)。依赖方向固定为：
+通用战役框架位于 `packages/campaign-engine/src`，完整设计见 [战役引擎架构](./campaign-engine-architecture.md)。依赖方向固定为：
 
 ```text
 content/campaigns ──> campaign ──> core types
@@ -1690,4 +1690,4 @@ content/campaigns ──> campaign ──> core types
 core ──X──> campaign
 ```
 
-`CampaignBattleBridge` 生成一次性的 `BattleRequest`，战斗结束后把 `GameState + GameEvent[]` 投影为 `BattleResult`。战役只能播种和回收战斗数据，不能在战斗过程中持有旁路真值。架构测试明确禁止 `src/core` 导入 `campaign`。
+`CampaignBattleBridge` 生成一次性的 `BattleRequest`，战斗结束后把 `GameState + GameEvent[]` 投影为 `BattleResult`。战役只能播种和回收战斗数据，不能在战斗过程中持有旁路真值。架构测试明确禁止 `packages/battle-engine/src` 导入 `campaign`。

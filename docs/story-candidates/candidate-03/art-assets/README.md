@@ -4,10 +4,10 @@
 
 ## 当前正式生产包
 
-- [中国古代卡通完整游戏素材包](../assets/final-ancient-china-v1/README.md)
-- [本轮美术执行规范](../assets/final-ancient-china-v1/ART-DIRECTION.md)
-- [母图生产提示词与图集顺序](../assets/final-ancient-china-v1/PROMPTS.md)
-- [查看 404 项正式包预览](../assets/final-ancient-china-v1/previews/units-1x.png)
+- [中国古代卡通完整游戏素材包](../../../../packages/story-candidate-03/assets/final-ancient-china-v1/README.md)
+- [本轮美术执行规范](../../../../packages/story-candidate-03/assets/final-ancient-china-v1/ART-DIRECTION.md)
+- [母图生产提示词与图集顺序](../../../../packages/story-candidate-03/assets/final-ancient-china-v1/PROMPTS.md)
+- [查看 404 项正式包预览](../../../../packages/story-candidate-03/assets/final-ancient-china-v1/previews/units-1x.png)
 
 `final-ancient-china-v1/` 是本轮唯一正式生产入口；旧 `runtime-v2/`、`expanded/` 与 `draft-v1/` 不参与新包运行时引用。
 

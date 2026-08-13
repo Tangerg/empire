@@ -1,0 +1,11 @@
+{
+  "name": "@empire/experience-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@empire/battle-engine": "0.1.0",
+    "@empire/story-candidate-01": "0.1.0"
+  }
+}
