@@ -3,8 +3,7 @@ import { executeCombatPlan, forecastCombatPlan, type CombatPlanRules } from './c
 import { hostileActionAllowed } from './engagement';
 import { player, unitAtCoord } from './state';
 import { SpellCastEntity } from './domain/spell-cast';
-import { IllegalActionError } from './domain/errors';
-import { sameCoord } from './grid';
+import { DomainInvariantError, IllegalActionError } from './domain/errors';
 import type { CastRefusal, Coord, GameEvent, GameState, PendingCast, PlayerId, Unit, WeaponDef } from './types';
 
 /**
@@ -43,11 +42,6 @@ export function isCharging(state: GameState, unit: Unit): boolean {
   return castOf(state, unit.id) !== undefined;
 }
 
-/** Sustained casts aimed at a tile — used by the board overlay and the AI. */
-export function castsAimedAt(state: GameState, at: Coord): PendingCast[] {
-  return activeCasts(state).filter((cast) => sameCoord(cast.target, at));
-}
-
 /** Sustained casts a viewer should be warned about. */
 export function hostileCastsAgainst(state: GameState, viewer: PlayerId): PendingCast[] {
   return activeCasts(state).filter((cast) => cast.owner !== viewer);
@@ -66,8 +60,9 @@ export interface CastDeclaration {
 /** Commits a strike that will land later. */
 export function beginCast(state: GameState, declaration: CastDeclaration, emit: (event: GameEvent) => void): PendingCast {
   const { caster, weapon, target, origin } = declaration;
+  // Asking to charge an instant weapon is a caller defect, not a refused order.
   if (weapon.castTurns <= 0) {
-    throw new IllegalActionError(`weapon "${weapon.id}" resolves immediately and cannot be charged`);
+    throw new DomainInvariantError(`weapon "${weapon.id}" resolves immediately and cannot be charged`);
   }
   if (castOf(state, caster.id)) throw new IllegalActionError('该单位已经在咏唱中');
 

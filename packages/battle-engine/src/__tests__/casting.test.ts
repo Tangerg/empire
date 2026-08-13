@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createBattleEngine } from '../engine';
 import { cloneContentCatalog } from '../content-pack';
-import { activeCasts, castOf, castsAimedAt, isCharging } from '../casting';
+import { activeCasts, castOf, isCharging } from '../casting';
 import { SpellCastEntity } from '../domain/spell-cast';
 import { hashState } from '../replay';
 import { TEST_CONTENT, makeLevel, u } from './fixtures';
@@ -58,7 +58,7 @@ describe('a charged weapon commits now and lands later', () => {
     expect(events.map((event) => event.type)).toContain('castBegan');
     expect(events.some((event) => event.type === 'attack')).toBe(false);
     expect(victim.hp).toBe(hpBefore);
-    expect(castsAimedAt(state, { x: 4, y: 0 })).toHaveLength(1);
+    expect(activeCasts(state)[0].target).toEqual({ x: 4, y: 0 });
     expect(new SpellCastEntity(castOf(state, mage.id)!).remainingAt(state.actorTurns)).toBe(2);
   });
 

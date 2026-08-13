@@ -253,14 +253,29 @@ describe('no ambient content', () => {
 });
 
 describe('behaviour has an owner', () => {
-  it('lets only the lifecycle change a battle phase or advance the round', () => {
+  it('lets only the lifecycle change a battle phase or advance either clock', () => {
     // `state.phase` used to be assigned from three unrelated places and the
     // round counter from a free function, so "when does a round end" had no
-    // owner and a per-unit turn order had nowhere to plug in.
+    // owner and a per-unit turn order had nowhere to plug in. The actor-turn
+    // clock joined it: delays are measured in that unit, so a second writer
+    // would make one content pack mean two things.
     const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
       const source = readFileSync(file, 'utf8');
-      const writes = /\bphase\s*=\s*'(?:playing|over|deployment)'|\bturn\+\+|\bturn\s*\+=/.test(source);
+      const writes = /\bphase\s*=\s*'(?:playing|over|deployment)'|\bturn\+\+|\bturn\s*\+=|\bactorTurns\s*(?:\+\+|\+=|=[^=])/.test(source);
       return writes && relative(coreRoot, file) !== 'turn-cycle.ts' ? [relative(coreRoot, file)] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('lets only the casting rules mutate the charge queue', () => {
+    // Everything else reads it through `activeCasts()`, which is what keeps a
+    // dead caster's charge from being visible to some readers and not others.
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const source = readFileSync(file, 'utf8');
+      const writes = /pendingCasts\s*(?:=[^=]|\.push\(|\.splice\()/.test(source);
+      const owner = ['casting.ts', 'state.ts'].includes(relative(coreRoot, file));
+      return writes && !owner ? [relative(coreRoot, file)] : [];
     });
 
     expect(offenders).toEqual([]);
