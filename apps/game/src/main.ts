@@ -26,6 +26,7 @@ import {
   icon,
   loadCampaignState,
   loadCustomLevels,
+  readCustomLevels,
   portraitSvg,
   StoryCampaignController,
   takePlaytest,
@@ -123,7 +124,7 @@ function renderMenu(): void {
   active?.dispose();
   active = null;
 
-  const custom = loadCustomLevels();
+  const { levels: custom, rejected } = readCustomLevels();
   const campaignSave = loadCampaignState(CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN);
   const campaignBattles = campaignSave?.battleHistory.length ?? 0;
   const screen = document.createElement('div');
@@ -154,6 +155,13 @@ function renderMenu(): void {
     <div class="level-grid">${BUILTIN_LEVELS.map((l) => levelCard(l, false)).join('')}</div>
 
     <h2>我的关卡</h2>
+    ${
+      rejected.length === 0
+        ? ''
+        : `<div class="empty-note">有 ${rejected.length} 个存档无法读取，已跳过（未删除）：${
+            rejected.map((entry) => escapeHtml(entry.id)).join('、')
+          }</div>`
+    }
     ${
       custom.length === 0
         ? `<div class="empty-note">还没有自制关卡。用地图编辑器画一张，保存后就会出现在这里。</div>`

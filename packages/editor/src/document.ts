@@ -2,6 +2,11 @@ import { idx } from '@empire/battle-engine/grid';
 import { mapFromLevel, terrainRows } from '@empire/battle-engine/mapio';
 import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import type {
+  LevelCommander,
+  LevelComposite,
+  LevelDeployment,
+  LevelScenario,
+  LevelStructure,
   Coord,
   Direction,
   GameMap,
@@ -23,7 +28,24 @@ const clampMapSize = (value: number) =>
 
 const sameCoord = (left: Coord, right: Coord) => left.x === right.x && left.y === right.y;
 
-interface SerializedEditorDocument {
+/**
+ * Level sections the editor has no dedicated tooling for yet.
+ *
+ * They are carried verbatim rather than dropped: an author who opens a scripted
+ * campaign level, paints one tile and saves must not silently lose its
+ * triggers, structures, commanders or deployment zones. A round-trip test keeps
+ * this list honest whenever LevelData grows a field.
+ */
+export interface PreservedLevelSections {
+  commanders: LevelCommander[];
+  structures: LevelStructure[];
+  composites: LevelComposite[];
+  scenario?: LevelScenario;
+  deployment?: LevelDeployment;
+  extra?: Record<string, unknown>;
+}
+
+export interface EditorDocumentFields {
   id: string;
   name: string;
   author: string;
@@ -33,66 +55,106 @@ interface SerializedEditorDocument {
   players: PlayerConfig[];
   rules: Partial<RuleSet>;
   victory: Objective[];
+  preserved: PreservedLevelSections;
 }
+
+const clonePreserved = (source: PreservedLevelSections): PreservedLevelSections =>
+  structuredClone(source);
+
+const preservedFrom = (level: LevelData): PreservedLevelSections => ({
+  commanders: structuredClone(level.commanders ?? []),
+  structures: structuredClone(level.structures ?? []),
+  composites: structuredClone(level.composites ?? []),
+  ...(level.scenario === undefined ? {} : { scenario: structuredClone(level.scenario) }),
+  ...(level.deployment === undefined ? {} : { deployment: structuredClone(level.deployment) }),
+  ...(level.extra === undefined ? {} : { extra: structuredClone(level.extra) }),
+});
 
 /**
  * Rich editor aggregate. It keeps map invariants and serialisation out of the
  * DOM controller, while deliberately exposing form-oriented document fields.
  */
 export class EditorDocument {
+  id: string;
+  name: string;
+  author: string;
+  description: string;
+  map: GameMap;
+  units: LevelUnit[];
+  players: PlayerConfig[];
+  rules: Partial<RuleSet>;
+  victory: Objective[];
+  /** Sections the editor preserves but does not structurally edit yet. */
+  preserved: PreservedLevelSections;
+
   constructor(
     /** Catalog this document is authored against; never an ambient default. */
-    public readonly content: ContentCatalog,
-    public id: string,
-    public name: string,
-    public author: string,
-    public description: string,
-    public map: GameMap,
-    public units: LevelUnit[],
-    public players: PlayerConfig[],
-    public rules: Partial<RuleSet>,
-    public victory: Objective[],
-  ) {}
+    readonly content: ContentCatalog,
+    fields: EditorDocumentFields,
+  ) {
+    this.id = fields.id;
+    this.name = fields.name;
+    this.author = fields.author;
+    this.description = fields.description;
+    this.map = fields.map;
+    this.units = fields.units;
+    this.players = fields.players;
+    this.rules = fields.rules;
+    this.victory = fields.victory;
+    this.preserved = fields.preserved;
+  }
 
   static fromLevel(content: ContentCatalog, level: LevelData): EditorDocument {
-    return new EditorDocument(
-      content,
-      level.id,
-      level.name,
-      level.author ?? '',
-      level.description ?? '',
-      mapFromLevel(level, content),
-      level.units.map((unit) => ({ ...unit })),
-      level.players.map((player) => ({
+    return new EditorDocument(content, {
+      id: level.id,
+      name: level.name,
+      author: level.author ?? '',
+      description: level.description ?? '',
+      map: mapFromLevel(level, content),
+      units: level.units.map((unit) => ({ ...unit })),
+      players: level.players.map((player) => ({
         ...player,
         resources: Object.fromEntries(
           Object.entries(player.resources).map(([resource, account]) => [resource, { ...account }]),
         ),
         ai: { ...(player.ai ?? { aggression: 0.5 }) },
       })),
-      { ...level.rules },
-      level.victory.map((objective) => ({ ...objective })),
-    );
+      rules: { ...level.rules },
+      victory: level.victory.map((objective) => ({ ...objective })),
+      preserved: preservedFrom(level),
+    });
   }
 
   static deserialize(content: ContentCatalog, serialized: string): EditorDocument {
-    const value = JSON.parse(serialized) as SerializedEditorDocument;
-    return new EditorDocument(
-      content,
-      value.id,
-      value.name,
-      value.author,
-      value.description,
-      value.map,
-      value.units,
-      value.players,
-      value.rules,
-      value.victory,
-    );
+    const value = JSON.parse(serialized) as EditorDocumentFields;
+    return new EditorDocument(content, {
+      ...value,
+      preserved: clonePreserved(value.preserved ?? {
+        commanders: [],
+        structures: [],
+        composites: [],
+      }),
+    });
   }
 
+  /**
+   * Snapshot for the undo stack. Explicitly field-by-field: `JSON.stringify(this)`
+   * would drag the whole content catalog into every undo step.
+   */
   serialize(): string {
-    return JSON.stringify(this);
+    const fields: EditorDocumentFields = {
+      id: this.id,
+      name: this.name,
+      author: this.author,
+      description: this.description,
+      map: this.map,
+      units: this.units,
+      players: this.players,
+      rules: this.rules,
+      victory: this.victory,
+      preserved: this.preserved,
+    };
+    return JSON.stringify(fields);
   }
 
   inBounds(at: Coord): boolean {
@@ -246,6 +308,15 @@ export class EditorDocument {
       })),
       rules: { ...this.rules },
       victory: this.victory.map((objective) => ({ ...objective })),
+      commanders: structuredClone(this.preserved.commanders),
+      structures: structuredClone(this.preserved.structures),
+      composites: structuredClone(this.preserved.composites),
+      ...(this.preserved.scenario === undefined
+        ? {} : { scenario: structuredClone(this.preserved.scenario) }),
+      ...(this.preserved.deployment === undefined
+        ? {} : { deployment: structuredClone(this.preserved.deployment) }),
+      ...(this.preserved.extra === undefined
+        ? {} : { extra: structuredClone(this.preserved.extra) }),
     };
   }
 
