@@ -3,6 +3,7 @@ import {
   playerResource,
 } from './resources';
 import { idx } from './grid';
+import { createRandomState } from './random';
 import { DEFAULT_VICTORY, mapFromLevel, resolveRules } from './mapio';
 import { assignObjectiveIds, createObjectiveStates } from './objective-model';
 import type {
@@ -91,7 +92,27 @@ function createUnitState(
   };
 }
 
-export function createState(level: LevelData, content: ContentCatalog): GameState {
+/** Construction knobs that are not part of the level document. */
+export interface CreateStateOptions {
+  /** Seeds the battle's random stream; a stable default keeps runs repeatable. */
+  seed?: number;
+}
+
+/** Stable per-level default so an unseeded battle is still reproducible. */
+function defaultSeed(level: LevelData): number {
+  let hash = 0x811c9dc5;
+  for (const character of level.id) {
+    hash ^= character.charCodeAt(0);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  return hash >>> 0;
+}
+
+export function createState(
+  level: LevelData,
+  content: ContentCatalog,
+  options: CreateStateOptions = {},
+): GameState {
   const map = mapFromLevel(level, content);
   const rules = resolveRules(level);
 
@@ -236,6 +257,7 @@ export function createState(level: LevelData, content: ContentCatalog): GameStat
     nextMarkerId: 1,
     deployment,
     turnOrder: { policy: rules.turnOrder, activeUnit: null, data: {} },
+    random: createRandomState(options.seed ?? defaultSeed(level)),
     scenario: {
       variables: { ...(level.scenario?.variables ?? {}) },
       zones,
@@ -274,6 +296,7 @@ export function cloneState(s: GameState): GameState {
     },
     units: s.units.map(cloneUnitState),
     turnOrder: { ...s.turnOrder, data: { ...s.turnOrder.data } },
+    random: { seed: s.random.seed, counters: { ...s.random.counters } },
     composites: s.composites.map((composite) => ({
       ...composite,
       parts: composite.parts.slice(),

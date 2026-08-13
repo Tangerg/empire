@@ -673,6 +673,8 @@ export interface MarkerSelector {
 export interface ScenarioConditionKindMap {
   turnAtLeast: { type: 'turnAtLeast'; turn: number };
   turnCycle: { type: 'turnCycle'; every: number; offset?: number };
+  /** Seeded coin flip; reproducible because the stream lives on the state. */
+  chance: { type: 'chance'; percent: number; stream?: string };
   currentPlayer: { type: 'currentPlayer'; player: PlayerId };
   variable: { type: 'variable'; key: string; op: 'eq' | 'neq' | 'gte' | 'lte'; value: ScenarioValue };
   unitInZone: { type: 'unitInZone'; zone: string; owner?: PlayerId; anyTags?: string[] };
@@ -912,6 +914,15 @@ export interface DeploymentState {
  * `policy` is the only thing that interprets it, which keeps a save file from
  * being reinterpreted by a different ordering rule.
  */
+/**
+ * Serialisable random stream. Counter-based so streams stay independent: a new
+ * consumer cannot shift the numbers an existing one already receives.
+ */
+export interface RandomState {
+  seed: number;
+  counters: Record<string, number>;
+}
+
 export interface TurnOrderState {
   policy: string;
   /** Unit currently entitled to act; null when a whole side may act. */
@@ -945,6 +956,7 @@ export interface GameState {
   deployment: DeploymentState | null;
   scenario: ScenarioState;
   turnOrder: TurnOrderState;
+  random: RandomState;
 }
 
 /* ----------------------------------------------------------------- events */

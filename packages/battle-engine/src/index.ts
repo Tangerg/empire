@@ -50,6 +50,8 @@ export * from './abilities';
 export * from './actions';
 export * from './victory';
 export * from './vision';
+export * from './random';
+export * from './replay';
 export * from './turn-order';
 export * from './session';
 export * from './ai';

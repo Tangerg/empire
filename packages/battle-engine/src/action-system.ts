@@ -19,6 +19,7 @@ import { Abilities, type AbilityDef } from './abilities';
 import { type Registry } from './registry';
 import { CoreTacticalSpace, DefaultTacticalSpace, type TacticalSpace } from './tactical-space';
 import { TurnOrders, type TurnOrderPolicy } from './turn-order';
+import { SplitMixRandom, type RandomSource } from './random';
 import { cloneContentCatalog, GlobalContentCatalog, type ContentCatalog } from './content-pack';
 import type { Action, ActionKindMap, GameEvent, GameState } from './types';
 
@@ -46,6 +47,8 @@ export interface BattleRuleServices {
   readonly resources: BattleResourceSystem;
   /** Registered turn-order policies; the level's ruleset selects one by id. */
   readonly turnOrders: Registry<TurnOrderPolicy>;
+  /** Seeded randomness. Swap for DeterministicOnlyRandom to forbid variance. */
+  readonly random: RandomSource;
 }
 
 /**
@@ -56,7 +59,9 @@ export function createDefaultBattleRuleServices(
   overrides: Partial<BattleRuleServices> = {},
 ): BattleRuleServices {
   const content = overrides.content ?? cloneContentCatalog(GlobalContentCatalog);
+  const random = overrides.random ?? SplitMixRandom;
   return {
+    random,
     content,
     abilities: overrides.abilities ?? Abilities.clone(),
     space: overrides.space ?? new DefaultTacticalSpace(content),
@@ -64,7 +69,7 @@ export function createDefaultBattleRuleServices(
       overrides.combatModifiers ?? new CombatModifierPipeline(CombatModifierProviders.clone()),
     hitEffects: overrides.hitEffects ?? WeaponHitEffectHandlers.clone(),
     statusBehaviors: overrides.statusBehaviors ?? StatusBehaviors.clone(),
-    scenarioConditions: overrides.scenarioConditions ?? ScenarioConditionHandlers.clone(),
+    scenarioConditions: overrides.scenarioConditions ?? ScenarioConditionHandlers.clone(random),
     scenarioEffects: overrides.scenarioEffects ?? ScenarioEffectHandlers.clone(),
     objectives: overrides.objectives ?? ObjectiveHandlers.clone(),
     progression: overrides.progression ?? DefaultRankProgression,
@@ -93,6 +98,7 @@ export const DefaultBattleRuleServices: BattleRuleServices = {
   progression: DefaultRankProgression,
   resources: DefaultBattleResources,
   turnOrders: TurnOrders,
+  random: SplitMixRandom,
 };
 
 export class ActionExecutionContext {

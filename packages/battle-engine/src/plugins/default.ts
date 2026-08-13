@@ -12,6 +12,7 @@ import { StatusBehaviors } from '../statuses';
 import { Abilities } from '../abilities';
 import { DefaultTacticalSpace } from '../tactical-space';
 import { TurnOrders } from '../turn-order';
+import { SplitMixRandom } from '../random';
 import { cloneContentCatalog, GlobalContentCatalog } from '../content-pack';
 
 /** Cohesive tactical rules: resolution, effects, statuses and battle-local growth. */
@@ -27,6 +28,7 @@ export const TacticalRulesPlugin: EnginePlugin = {
     'statusBehaviors',
     'progression',
     'turnOrders',
+    'random',
   ],
   install: (context) => {
     const content = cloneContentCatalog(GlobalContentCatalog);
@@ -37,6 +39,7 @@ export const TacticalRulesPlugin: EnginePlugin = {
     context.provide('hitEffects', WeaponHitEffectHandlers.clone());
     context.provide('statusBehaviors', StatusBehaviors.clone());
     context.provide('progression', DefaultRankProgression);
+    context.provide('random', SplitMixRandom);
     context.provide('turnOrders', TurnOrders.clone());
   },
 };
@@ -46,9 +49,10 @@ export const MissionRulesPlugin: EnginePlugin = {
   id: 'engine.mission-rules',
   version: 1,
   provides: ['actionHandlers', 'scenarioConditions', 'scenarioEffects', 'objectives'],
+  requiresCapabilities: ['random'],
   install: (context) => {
     context.provide('actionHandlers', CoreActionHandlers.clone());
-    context.provide('scenarioConditions', ScenarioConditionHandlers.clone());
+    context.provide('scenarioConditions', ScenarioConditionHandlers.clone(context.require('random')));
     context.provide('scenarioEffects', ScenarioEffectHandlers.clone());
     context.provide('objectives', ObjectiveHandlers.clone());
   },

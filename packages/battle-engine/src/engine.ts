@@ -24,7 +24,7 @@ import {
 import { forecastCombatPlan } from './combat-plan';
 import { validateLevel } from './mapio';
 import type { MoveField } from './movement';
-import { cloneState, createState, restoreState } from './state';
+import { cloneState, createState, restoreState, type CreateStateOptions } from './state';
 import { careerOptions } from './careers';
 import type { TurnOrderPolicy } from './turn-order';
 import type { Action, Coord, GameEvent, GameState, LevelData, PlayerId, Unit, WeaponId } from './types';
@@ -88,6 +88,7 @@ export class BattleEngine {
       progression: dependencies.progression,
       resources: dependencies.resources,
       turnOrders: dependencies.turnOrders,
+      random: dependencies.random,
     };
     this.assertConfiguration();
   }
@@ -97,13 +98,13 @@ export class BattleEngine {
     return this.rules.content;
   }
 
-  createState(level: LevelData): GameState {
+  createState(level: LevelData, options: CreateStateOptions = {}): GameState {
     const issues = validateLevel(level, this.rules.content)
       .filter((issue) => issue.severity === 'error')
       .map((issue) => issue.message);
     issues.push(...this.levelStrategyIssues(level));
     if (issues.length > 0) throw new BattleLevelError(level.id, [...new Set(issues)]);
-    const state = createState(level, this.rules.content);
+    const state = createState(level, this.rules.content, options);
     // A level without a deployment phase is already playing, so it needs its
     // first actor turn now; deployment levels get theirs on finishDeployment.
     if (state.phase === 'playing') startTurnOrder(state, this.rules);

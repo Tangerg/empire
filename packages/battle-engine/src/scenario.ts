@@ -30,6 +30,7 @@ import type {
   MarkerSelector,
 } from './types';
 import { type ContentCatalog } from './content-pack';
+import { SplitMixRandom, type RandomSource } from './random';
 import { cloneUnitState } from './unit-state';
 import { changeMorale, surrenderUnit } from './morale';
 import { addEngagementRule, removeEngagementRule } from './engagement';
@@ -105,6 +106,8 @@ export class ScenarioConditionContext {
     readonly state: GameState,
     private readonly registry: ScenarioConditionHandlerRegistry,
     readonly content: ContentCatalog,
+    /** Seeded stream owned by the ruleset; reproducible across replays. */
+    readonly random: RandomSource,
   ) {}
 
   evaluate(condition: ScenarioCondition): boolean {
@@ -120,6 +123,13 @@ export interface ScenarioConditionHandler<K extends ConditionKind = ConditionKin
 export class ScenarioConditionHandlerRegistry {
   private readonly handlers = new Map<string, ScenarioConditionHandler>();
 
+  /**
+   * The random source is injected once per ruleset instead of threaded through
+   * every `evaluate` call: the registry is already per-engine and cloneable, so
+   * this keeps randomness swappable without widening the condition signature.
+   */
+  constructor(readonly random: RandomSource) {}
+
   register<K extends ConditionKind>(handler: ScenarioConditionHandler<K>): this {
     if (this.handlers.has(handler.kind)) throw new Error(`duplicate scenario condition handler "${handler.kind}"`);
     this.handlers.set(handler.kind, handler as ScenarioConditionHandler);
@@ -134,11 +144,11 @@ export class ScenarioConditionHandlerRegistry {
   evaluate(state: GameState, condition: ScenarioCondition, content: ContentCatalog): boolean {
     const handler = this.handlers.get(condition.type);
     if (!handler) throw new Error(`no scenario condition handler for "${condition.type}"`);
-    return handler.evaluate(new ScenarioConditionContext(state, this, content), condition as never);
+    return handler.evaluate(new ScenarioConditionContext(state, this, content, this.random), condition as never);
   }
 
-  clone(): ScenarioConditionHandlerRegistry {
-    const copy = new ScenarioConditionHandlerRegistry();
+  clone(random: RandomSource = this.random): ScenarioConditionHandlerRegistry {
+    const copy = new ScenarioConditionHandlerRegistry(random);
     for (const handler of this.handlers.values()) copy.register(handler);
     return copy;
   }
@@ -153,13 +163,15 @@ const conditionHandler = <K extends ConditionKind>(
   evaluate: ScenarioConditionHandler<K>['evaluate'],
 ): ScenarioConditionHandler<K> => ({ kind, evaluate });
 
-export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry()
+export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry(SplitMixRandom)
   .register(conditionHandler('turnAtLeast', ({ state }, condition) => state.turn >= condition.turn))
   .register(conditionHandler('turnCycle', ({ state }, condition) => {
     if (!Number.isInteger(condition.every) || condition.every < 1) return false;
     const offset = Math.round(condition.offset ?? 1);
     return state.turn >= offset && (state.turn - offset) % condition.every === 0;
   }))
+  .register(conditionHandler('chance', ({ state, random }, condition) =>
+    random.chance(state, condition.stream ?? 'scenario.chance', condition.percent)))
   .register(conditionHandler('currentPlayer', ({ state }, condition) => state.currentPlayer === condition.player))
   .register(
     conditionHandler('variable', ({ state }, condition) =>

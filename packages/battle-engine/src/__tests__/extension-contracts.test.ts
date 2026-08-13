@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { ActionExecutionContext, ActionHandlerRegistry, type ActionHandler } from '../action-system';
 import { CoreActionHandlers } from '../actions';
 import { applyScenarioEffect, conditionMet } from '../scenario';
+import { SplitMixRandom } from '../random';
 import { buildAiMissionIntent } from '../ai-objectives';
 import {
   AiObjectiveAdvisorRegistry,
@@ -85,7 +86,7 @@ describe('open extension contracts', () => {
 
   it('adds scenario conditions and effects without changing the DSL interpreter', () => {
     const state = extensionState();
-    const conditions = new ScenarioConditionHandlerRegistry().register({
+    const conditions = new ScenarioConditionHandlerRegistry(SplitMixRandom).register({
       kind: 'testFlag',
       evaluate: ({ state: current }, condition) => current.scenario.variables[condition.key] === true,
     });
@@ -143,7 +144,7 @@ describe('open extension contracts', () => {
 
   it('composes all custom strategies in one isolated BattleEngine', () => {
     const actionHandlers = new ActionHandlerRegistry().register(new TestSignalAction());
-    const conditions = new ScenarioConditionHandlerRegistry().register({
+    const conditions = new ScenarioConditionHandlerRegistry(SplitMixRandom).register({
       kind: 'testFlag',
       evaluate: ({ state }, condition) => state.scenario.variables[condition.key] === true,
     });
