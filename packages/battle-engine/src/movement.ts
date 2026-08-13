@@ -6,6 +6,7 @@ import { structureAt } from './structures';
 import { primaryWeapon, unitWeapons } from './combat';
 import { commanderAuraFor } from './commanders';
 import { formationMovementDelta } from './formations';
+import { hostileControlZone } from './zone-of-control';
 import type { WeaponDef } from './types';
 import type { Coord, GameState, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
@@ -33,7 +34,7 @@ export interface MoveField {
  * Dijkstra over entry costs. Allies can be passed through (configurable), enemy
  * units block entirely, and only empty tiles are valid stopping points.
  */
-export function computeMoveField(s: GameState, unit: Unit, content: ContentCatalog): MoveField {
+export function computeMoveField(content: ContentCatalog, s: GameState, unit: Unit): MoveField {
   const def = content.units.get(unit.type);
   const map = s.map;
   const battlefield = new Battlefield(s, content);
@@ -43,6 +44,10 @@ export function computeMoveField(s: GameState, unit: Unit, content: ContentCatal
       commanderAuraFor(s, unit).movementDelta + formationMovementDelta(s, unit, content),
   );
   const start = idx(map, unit.x, unit.y);
+  // Ground the enemy holds. A unit may step into it and may leave the tile it
+  // started on, but it may not walk on through — which is what makes a battle
+  // line a line instead of a suggestion.
+  const controlled = hostileControlZone(content, s, unit);
 
   const tiles = new Map<number, ReachableTile>();
   tiles.set(start, { index: start, x: unit.x, y: unit.y, cost: 0, from: -1, free: true });
@@ -91,7 +96,7 @@ export function computeMoveField(s: GameState, unit: Unit, content: ContentCatal
           from: cur,
           free: !blocker || blocker.id === unit.id,
         });
-        buckets[nc].push(ni);
+        if (!controlled.has(ni)) buckets[nc].push(ni);
       }
     }
   }
@@ -128,20 +133,25 @@ export function moveCostOf(field: MoveField, map: { width: number }, to: Coord):
 
 /** Tiles this unit could attack if it stood on `from`. */
 export function attackTilesFrom(
-  s: GameState,
+  content: ContentCatalog,
+  state: GameState,
   unit: Unit,
   from: Coord,
-  weapon: WeaponDef | undefined = undefined,
-  content: ContentCatalog,
+  weapon?: WeaponDef,
 ): Coord[] {
   const resolved = weapon ?? primaryWeapon(unit, content);
   if (resolved.maxRange <= 0) return [];
-  return ring(s.map, from, resolved.minRange, resolved.maxRange).filter(
-    (target) => resolved.lineOfSight !== 'direct' || hasDirectLineOfSight(s, from, target, content),
+  return ring(state.map, from, resolved.minRange, resolved.maxRange).filter(
+    (target) => resolved.lineOfSight !== 'direct' || hasDirectLineOfSight(content, state, from, target),
   );
 }
 
-export function hasDirectLineOfSight(state: GameState, from: Coord, target: Coord, content: ContentCatalog): boolean {
+export function hasDirectLineOfSight(
+  content: ContentCatalog,
+  state: GameState,
+  from: Coord,
+  target: Coord,
+): boolean {
   const trace = lineBetween(from, target);
   const battlefield = new Battlefield(state, content);
   const fromEye = battlefield.cell(from).elevation + 1;
@@ -162,9 +172,9 @@ export function hasDirectLineOfSight(state: GameState, from: Coord, target: Coor
  * Drives the "enemy threat range" overlay.
  */
 export function threatTiles(
+  content: ContentCatalog,
   s: GameState,
   unit: Unit,
-  content: ContentCatalog,
   field?: MoveField,
 ): Set<number> {
   const out = new Set<number>();
@@ -172,14 +182,14 @@ export function threatTiles(
 
   const weapons = unitWeapons(unit, content);
   for (const weapon of weapons) {
-    for (const c of attackTilesFrom(s, unit, { x: unit.x, y: unit.y }, weapon, content)) add(c);
+    for (const c of attackTilesFrom(content, s, unit, { x: unit.x, y: unit.y }, weapon)) add(c);
   }
 
-  const f = field ?? computeMoveField(s, unit, content);
+  const f = field ?? computeMoveField(content, s, unit);
   for (const weapon of weapons.filter((candidate) => candidate.moveAndAttack)) {
     for (const i of f.stops) {
       const from = { x: i % s.map.width, y: Math.floor(i / s.map.width) };
-      for (const c of attackTilesFrom(s, unit, from, weapon, content)) add(c);
+      for (const c of attackTilesFrom(content, s, unit, from, weapon)) add(c);
     }
   }
   return out;
@@ -187,30 +197,30 @@ export function threatTiles(
 
 /** Enemy units in range if `unit` stood on `from`. */
 export function targetsFrom(
-  s: GameState,
+  content: ContentCatalog,
+  state: GameState,
   unit: Unit,
   from: Coord,
-  weapon: WeaponDef | undefined = undefined,
-  content: ContentCatalog,
+  weapon?: WeaponDef,
 ): Unit[] {
   const out: Unit[] = [];
-  for (const c of attackTilesFrom(s, unit, from, weapon, content)) {
-    const other = unitAt(s, c.x, c.y);
-    if (other && areEnemies(s, other.owner, unit.owner)) out.push(other);
+  for (const c of attackTilesFrom(content, state, unit, from, weapon)) {
+    const other = unitAt(state, c.x, c.y);
+    if (other && areEnemies(state, other.owner, unit.owner)) out.push(other);
   }
   return out;
 }
 
 /** Unit and destructible-structure targets share the same range query. */
 export function attackTargetCoords(
+  content: ContentCatalog,
   state: GameState,
   unit: Unit,
   from: Coord,
-  weapon: WeaponDef | undefined = undefined,
-  content: ContentCatalog,
+  weapon?: WeaponDef,
 ): Coord[] {
   const out: Coord[] = [];
-  for (const cell of attackTilesFrom(state, unit, from, weapon, content)) {
+  for (const cell of attackTilesFrom(content, state, unit, from, weapon)) {
     const other = unitAt(state, cell.x, cell.y);
     if (other && areEnemies(state, other.owner, unit.owner)) {
       out.push(cell);
@@ -224,7 +234,7 @@ export function attackTargetCoords(
 }
 
 /** Wounded allies adjacent to `from` (support-healing targeting). */
-export function healTargetsFrom(s: GameState, unit: Unit, from: Coord, content: ContentCatalog): Unit[] {
+export function healTargetsFrom(content: ContentCatalog, s: GameState, unit: Unit, from: Coord): Unit[] {
   const out: Unit[] = [];
   for (const c of ring(s.map, from, 1, 1)) {
     const other = unitAt(s, c.x, c.y);

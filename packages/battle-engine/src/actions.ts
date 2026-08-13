@@ -18,6 +18,7 @@ import { validateFormationChange } from './formations';
 import { disembarkUnit, embarkUnit } from './transports';
 import { playerResource } from './resources';
 import { activeTurnOrder } from './turn-order';
+import { resolvePartingShots } from './zone-of-control';
 import {
   ActionExecutionContext,
   ActionHandlerRegistry,
@@ -126,10 +127,13 @@ function moveUnit(
 ): void {
   const { destination, path } = movement;
   if (sameCoord(unit.position, destination)) return;
+  const from = unit.position;
   context.battle.moveUnit(unit.id, destination);
   advancePatrol(unit.state, destination);
   if (path.length > 1) context.turnToFace(unit, directionToward(path[path.length - 2], destination));
   context.emit({ type: 'move', unit: unit.id, path });
+  // Only a chosen move provokes. A unit thrown out of a zone did not disengage.
+  resolvePartingShots(context.rules, context.state, unit.state, from, destination, context.emit);
 }
 
 /** A patrolling unit that reaches its waypoint aims at the next one. */
@@ -234,6 +238,8 @@ class CommandActionHandler implements ActionHandler<'command'> {
     }
 
     moveUnit(context, actor, movement);
+    // The march may not have survived contact: a parting shot resolves mid-order.
+    if (!context.battle.findUnit(actor.id)) return;
     if (target) context.turnToFace(actor, directionToward(destination, target));
     ability.execute(context.rules, query, target, context.emit);
     // The ability may have killed its own user (a sacrifice, a counter-kill).

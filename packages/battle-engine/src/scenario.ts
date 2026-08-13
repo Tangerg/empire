@@ -498,15 +498,14 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   .register(effectHandler('changeMorale', (context, effect) => {
     for (const unit of [...context.select(effect.selector)]) {
       if (context.state.units.some((candidate) => candidate.id === unit.id)) {
-        changeMorale(context.content, context.state, unit.id, effect.amount, effect.reason ?? 'scenario', context.emit);
+        changeMorale(context.rules, context.state, unit.id, effect.amount, effect.reason ?? 'scenario', context.emit);
       }
     }
   }))
   .register(effectHandler('surrenderUnits', (context, effect) => {
     for (const unit of [...context.select(effect.selector)]) {
       if (context.state.units.some((candidate) => candidate.id === unit.id)) {
-        surrenderUnit(context.content, context.state, unit.id, effect.to, context.emit);
-        announceUnitDeparture(context.rules, context.state, unit, context.emit);
+        surrenderUnit(context.rules, context.state, unit.id, effect.to, context.emit);
       }
     }
   }))

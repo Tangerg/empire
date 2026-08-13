@@ -32,11 +32,11 @@ export function visibleTiles(s: GameState, viewer: PlayerId, content: ContentCat
 }
 
 export function isUnitVisible(
+  content: ContentCatalog,
   s: GameState,
   viewer: PlayerId,
   u: Unit,
-  seen: Set<number> | undefined = undefined,
-  content: ContentCatalog,
+  seen?: Set<number>,
 ): boolean {
   if (!s.rules.fog) return true;
   if (u.owner === viewer || areAllies(s, u.owner, viewer)) return true;
@@ -54,5 +54,5 @@ export function isUnitVisible(
 
 export function visibleUnits(s: GameState, viewer: PlayerId, content: ContentCatalog): Unit[] {
   const seen = visibleTiles(s, viewer, content);
-  return s.units.filter((u) => isUnitVisible(s, viewer, u, seen, content));
+  return s.units.filter((u) => isUnitVisible(content, s, viewer, u, seen));
 }

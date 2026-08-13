@@ -134,11 +134,11 @@ export const testMap = (level: LevelData) => mapFromLevel(level, TEST_CONTENT);
 export const testValidate = (level: LevelData) => validateLevel(level, TEST_CONTENT);
 
 export const testMoveField = (state: GameState, unit: Unit) =>
-  computeMoveField(state, unit, TEST_CONTENT);
+  computeMoveField(TEST_CONTENT, state, unit);
 export const testThreat = (state: GameState, unit: Unit, field?: MoveField) =>
-  threatTiles(state, unit, TEST_CONTENT, field);
+  threatTiles(TEST_CONTENT, state, unit, field);
 export const testLineOfSight = (state: GameState, from: Coord, target: Coord) =>
-  hasDirectLineOfSight(state, from, target, TEST_CONTENT);
+  hasDirectLineOfSight(TEST_CONTENT, state, from, target);
 
 export const testDamage = (
   state: GameState,

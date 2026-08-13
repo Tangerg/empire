@@ -544,6 +544,13 @@ export class GameController {
           if (at) await this.board.animateHit(at, e.damage, e.killed, e.weapon);
           break;
         }
+        case 'partingShot': {
+          // The defender has already moved on; the blow lands on the tile it left.
+          const attacker = this.session.unit(e.attacker);
+          if (attacker) await this.board.animateStrike(attacker, e.at);
+          await this.board.animateHit(e.at, e.damage, e.killed, e.weapon);
+          break;
+        }
         case 'supportAttack': {
           const supporter = this.session.unit(e.attacker);
           const defender = this.session.unit(e.defender);
@@ -696,6 +703,7 @@ export class GameController {
       o.selected = { x: unit.x, y: unit.y };
       if (this.isHumanTurn && this.session.engine.canAct(s, unit)) {
         if (this.mode.kind === 'unit') {
+          for (const i of this.session.controlZoneAgainst(unit)) o.controlled.add(i);
           for (const i of this.session.moveField(unit).stops) o.move.add(i);
           for (const i of this.session.threatOf(unit)) {
             if (!o.move.has(i)) o.attack.add(i);
@@ -861,6 +869,8 @@ function describeEvent(content: ContentCatalog, s: GameState, e: GameEvent): str
       return `反击造成 ${e.damage} 点伤害${e.killed ? '，我方阵亡' : ''}`;
     case 'supportAttack':
       return `${name(e.attacker)} 援护攻击造成 ${e.damage} 点伤害${e.killed ? '，目标阵亡' : ''}`;
+    case 'partingShot':
+      return `${name(e.attacker)} 借机攻击造成 ${e.damage} 点伤害${e.killed ? '，目标阵亡' : ''}`;
     case 'attackStructure':
       return `对结构造成 ${e.damage} 点伤害${e.destroyed ? '，结构被摧毁' : ''}`;
     case 'areaAttackStructure':

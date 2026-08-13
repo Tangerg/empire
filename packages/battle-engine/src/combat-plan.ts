@@ -13,7 +13,7 @@ import {
   type StructureCombatForecast,
 } from './combat';
 
-import { BattleAggregate, UnitEntity } from './domain/index';
+import { UnitEntity } from './domain/index';
 import { dist, idx, inBounds, lineBetween, ring, sameCoord } from './grid';
 import {
   awardCombatProgress,
@@ -36,8 +36,7 @@ import type {
   WeaponHitEffect,
 } from './types';
 import { type ContentCatalog } from './content-pack';
-import { resolveMoraleAfterDamage } from './morale';
-import { announceUnitDeparture, announceUnitFall, type UnitDepartureRules } from './unit-departure';
+import { resolveDamage, type DamageRules } from './damage';
 import { hostileActionAllowed } from './engagement';
 
 export interface PlannedUnitHit {
@@ -94,7 +93,7 @@ export interface CombatPlan {
  * Execution needs everything forecasting needs, plus the effect and growth
  * policies. Declared as a consumer port; `BattleRuleServices` satisfies it.
  */
-export interface CombatPlanRules extends CombatRules, UnitDepartureRules {
+export interface CombatPlanRules extends CombatRules, DamageRules {
   readonly hitEffects: WeaponHitEffectHandlerRegistry;
   readonly progression: RankProgressionPolicy;
 }
@@ -132,7 +131,7 @@ function planSupportAttack(
       candidate.id !== attacker.id &&
       areAllies(state, candidate.owner, attacker.owner) &&
       candidate.reaction === 'support' &&
-      candidate.reactionUsedRound !== state.turn &&
+      new UnitEntity(candidate).canReact(state.turn) &&
       dist(candidate, attackerAt) === 1)
     .flatMap((supporter) => unitWeapons(supporter, content)
       .filter((weapon) =>
@@ -335,34 +334,34 @@ function applyUnitHit(
   hit: PlannedUnitHit,
   emit: (event: GameEvent) => void,
 ): boolean {
-  const { content, resources, hitEffects } = rules;
-  // A prior hit in the same area plan can rout a later recipient through
-  // morale shock. The immutable plan still describes the aimed area, but a
-  // unit that has already left the battlefield is no longer a legal mutation
-  // target and must not make the remaining resolution fail.
-  const target = state.units.find((unit) => unit.id === hit.target);
-  if (!target) return false;
-  const result = new BattleAggregate(state, content).damageUnit(hit.target, hit.damage.damage);
-  emit({
-    type: hit.primary ? 'attack' : 'areaAttack',
-    attacker: attacker.id,
-    defender: hit.target,
-    protectedUnit: hit.protectedUnit,
-    weapon: hit.damage.weapon,
-    damage: result.amount,
-    killed: result.killed,
-  });
-  if (result.fall) announceUnitFall(rules, state, result.fall, emit);
-  awardCombatProgress(rules, attacker, result.amount, result.killed, emit);
-  if (!result.killed && hit.effects.length > 0) {
-    hitEffects.apply(rules, state, attacker, requireUnit(state, hit.target), hit.effects, emit);
+  const { resources, hitEffects } = rules;
+  // A prior hit in the same volley can rout a later recipient through morale
+  // shock. The immutable plan still describes the aimed area; `resolveDamage`
+  // treats a recipient who has already left as a blow that did not land.
+  const outcome = resolveDamage(rules, state, {
+    unit: hit.target,
+    amount: hit.damage.damage,
+    report: (blow) => ({
+      type: hit.primary ? 'attack' : 'areaAttack',
+      attacker: attacker.id,
+      defender: hit.target,
+      protectedUnit: hit.protectedUnit,
+      weapon: hit.damage.weapon,
+      damage: blow.amount,
+      killed: blow.killed,
+    }),
+  }, emit);
+  if (!outcome.landed) return false;
+  awardCombatProgress(rules, attacker, outcome.amount, outcome.killed, emit);
+  if (!outcome.leftField) {
+    if (hit.effects.length > 0) {
+      hitEffects.apply(rules, state, attacker, requireUnit(state, hit.target), hit.effects, emit);
+    }
+    // A hit effect can finish what the blow started — a shove into a cliff.
+    const survivor = state.units.find((unit) => unit.id === hit.target);
+    if (survivor) awardDamageTakenMomentum(resources, survivor, emit);
   }
-  if (!result.killed && resolveMoraleAfterDamage(content, state, target, result.amount, false, result.at, emit)) {
-    announceUnitDeparture(rules, state, target, emit);
-  }
-  if (result.killed) resolveMoraleAfterDamage(content, state, target, result.amount, true, result.at, emit);
-  if (!result.killed) awardDamageTakenMomentum(resources, target, emit);
-  return result.killed;
+  return outcome.killed;
 }
 
 function applyStructureHit(
@@ -428,26 +427,24 @@ export function executeCombatPlan(
   if (counter && defenderId !== undefined && state.units.some((unit) => unit.id === defenderId)) {
     const defender = requireUnit(state, defenderId);
     consumeWeapon(rules, state, defender, counter.weapon, emit);
-    const result = new BattleAggregate(state, content).damageUnit(attacker.id, counter.damage);
-    emit({
-      type: 'counter',
-      attacker: defender.id,
-      defender: attacker.id,
-      weapon: counter.weapon,
-      damage: result.amount,
-      killed: result.killed,
-    });
-    if (result.fall) announceUnitFall(rules, state, result.fall, emit);
-    else {
+    const outcome = resolveDamage(rules, state, {
+      unit: attacker.id,
+      amount: counter.damage,
+      report: (blow) => ({
+        type: 'counter',
+        attacker: defender.id,
+        defender: attacker.id,
+        weapon: counter.weapon,
+        damage: blow.amount,
+        killed: blow.killed,
+      }),
+    }, emit);
+    if (!outcome.leftField) {
       hitEffects.apply(rules, state, defender, requireUnit(state, attacker.id), content.weapons.get(counter.weapon).hitEffects, emit);
       awardDamageTakenMomentum(resources, attacker, emit);
     }
-    if (!result.killed && resolveMoraleAfterDamage(content, state, attacker, result.amount, false, result.at, emit)) {
-      announceUnitDeparture(rules, state, attacker, emit);
-    }
-    if (result.killed) resolveMoraleAfterDamage(content, state, attacker, result.amount, true, result.at, emit);
-    awardCombatProgress(rules, defender, result.amount, result.killed, emit);
-    changeMomentum(resources, defender, result.killed ? 10 : 5, emit);
+    awardCombatProgress(rules, defender, outcome.amount, outcome.killed, emit);
+    changeMomentum(resources, defender, outcome.killed ? 10 : 5, emit);
   }
 
   const support = plan.supportAttack;
@@ -457,24 +454,22 @@ export function executeCombatPlan(
   if (!supporter || !target) return;
   new UnitEntity(supporter).consumeReaction(state.turn);
   consumeWeapon(rules, state, supporter, support.weapon, emit);
-  const result = new BattleAggregate(state, content).damageUnit(target.id, support.damage.damage);
-  emit({
-    type: 'supportAttack',
-    attacker: supporter.id,
-    defender: target.id,
-    weapon: support.weapon,
-    damage: result.amount,
-    killed: result.killed,
-  });
-  if (result.fall) announceUnitFall(rules, state, result.fall, emit);
-  else {
+  const outcome = resolveDamage(rules, state, {
+    unit: target.id,
+    amount: support.damage.damage,
+    report: (blow) => ({
+      type: 'supportAttack',
+      attacker: supporter.id,
+      defender: target.id,
+      weapon: support.weapon,
+      damage: blow.amount,
+      killed: blow.killed,
+    }),
+  }, emit);
+  if (!outcome.leftField) {
     hitEffects.apply(rules, state, supporter, requireUnit(state, target.id), support.effects, emit);
     awardDamageTakenMomentum(resources, target, emit);
   }
-  if (!result.killed && resolveMoraleAfterDamage(content, state, target, result.amount, false, result.at, emit)) {
-    announceUnitDeparture(rules, state, target, emit);
-  }
-  if (result.killed) resolveMoraleAfterDamage(content, state, target, result.amount, true, result.at, emit);
-  awardCombatProgress(rules, supporter, result.amount, result.killed, emit);
-  changeMomentum(resources, supporter, result.killed ? 10 : 5, emit);
+  awardCombatProgress(rules, supporter, outcome.amount, outcome.killed, emit);
+  changeMomentum(resources, supporter, outcome.killed ? 10 : 5, emit);
 }

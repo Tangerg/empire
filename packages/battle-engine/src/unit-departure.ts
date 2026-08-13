@@ -19,10 +19,11 @@ import type { GameEvent, GameState, Unit } from './types';
  * to announce a death, and the reaction to that death may itself need combat.
  */
 export interface UnitDeparture {
+  /** The whole ruleset, so a consequence can reach anything the engine composed. */
+  readonly rules: UnitDepartureRules;
   readonly state: GameState;
   /** Snapshot of the unit as it left; it is no longer in `state.units`. */
   readonly unit: Unit;
-  readonly content: ContentCatalog;
   readonly emit: (event: GameEvent) => void;
 }
 
@@ -82,7 +83,7 @@ export function announceUnitDeparture(
   unit: Unit,
   emit: (event: GameEvent) => void,
 ): void {
-  rules.unitDepartures.announce({ state, unit, content: rules.content, emit });
+  rules.unitDepartures.announce({ rules, state, unit, emit });
 }
 
 /**

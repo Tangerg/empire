@@ -121,7 +121,8 @@ describe('campaign-grade battle primitives', () => {
     }));
     const id = state.units[0].id;
     const events: GameEvent[] = [];
-    changeMorale(TEST_CONTENT, state, id, -999, 'test-shock', (event: GameEvent) => events.push(event));
+    const rules = createDefaultBattleRuleServices({ content: TEST_CONTENT });
+    changeMorale(rules, state, id, -999, 'test-shock', (event: GameEvent) => events.push(event));
     expect(state.units.some((unit) => unit.id === id)).toBe(false);
     expect(state.markers[0]).toMatchObject({ kind: 'routed', fallenUnit: { id } });
     expect(events.some((event) => event.type === 'unitRouted')).toBe(true);

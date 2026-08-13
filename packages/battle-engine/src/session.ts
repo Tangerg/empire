@@ -78,6 +78,10 @@ export class GameSession {
     return this.engine.threatOf(this.state, unit, this.moveField(unit));
   }
 
+  controlZoneAgainst(unit: Unit): Set<number> {
+    return this.engine.controlZoneAgainst(this.state, unit);
+  }
+
   visibleTiles(viewer: PlayerId): Set<number> {
     return this.engine.visibleTiles(this.state, viewer);
   }

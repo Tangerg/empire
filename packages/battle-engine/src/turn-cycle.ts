@@ -138,7 +138,7 @@ export class BattleLifecycle {
       ? { type: 'turnStart', player: owner.id, turn: state.turn }
       : { type: 'turnStart', player: owner.id, turn: state.turn, activeUnit: active });
 
-    applyOverlayTurnStartEffects(state, owner.id, this.emit, this.rules.content, scope);
+    applyOverlayTurnStartEffects(this.rules.content, state, owner.id, this.emit, scope);
     resolveTurnStartStatuses(this.rules, state, this.emit, scope);
 
     if (active === null) {

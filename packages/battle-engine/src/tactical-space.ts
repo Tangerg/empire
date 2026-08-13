@@ -7,6 +7,7 @@ import {
   type MoveField,
 } from './movement';
 import { isUnitVisible, visibleTiles, visibleUnits } from './vision';
+import { hostileControlZone } from './zone-of-control';
 import type { Coord, GameState, PlayerId, Unit, WeaponDef } from './types';
 import { type ContentCatalog } from './content-pack';
 
@@ -23,6 +24,8 @@ export interface TacticalSpace {
   moveField(state: GameState, unit: Unit): MoveField;
   pathTo(field: MoveField, state: GameState, destination: Coord): Coord[] | null;
   threatOf(state: GameState, unit: Unit, field?: MoveField): Set<number>;
+  /** Tiles held by this unit's enemies; entering one ends its move. */
+  controlZoneAgainst(state: GameState, unit: Unit): Set<number>;
   attackTargets(state: GameState, unit: Unit, from: Coord, weapon: WeaponDef): Coord[];
   healTargets(state: GameState, unit: Unit, from: Coord): Unit[];
   visibleTiles(state: GameState, viewer: PlayerId): Set<number>;
@@ -34,7 +37,7 @@ export class DefaultTacticalSpace implements TacticalSpace {
   constructor(readonly content: ContentCatalog) {}
 
   moveField(state: GameState, unit: Unit): MoveField {
-    return computeMoveField(state, unit, this.content);
+    return computeMoveField(this.content, state, unit);
   }
 
   pathTo(field: MoveField, state: GameState, destination: Coord): Coord[] | null {
@@ -42,15 +45,19 @@ export class DefaultTacticalSpace implements TacticalSpace {
   }
 
   threatOf(state: GameState, unit: Unit, field?: MoveField): Set<number> {
-    return threatTiles(state, unit, this.content, field);
+    return threatTiles(this.content, state, unit, field);
+  }
+
+  controlZoneAgainst(state: GameState, unit: Unit): Set<number> {
+    return hostileControlZone(this.content, state, unit);
   }
 
   attackTargets(state: GameState, unit: Unit, from: Coord, weapon: WeaponDef): Coord[] {
-    return attackTargetCoords(state, unit, from, weapon, this.content);
+    return attackTargetCoords(this.content, state, unit, from, weapon);
   }
 
   healTargets(state: GameState, unit: Unit, from: Coord): Unit[] {
-    return healTargetsFrom(state, unit, from, this.content);
+    return healTargetsFrom(this.content, state, unit, from);
   }
 
   visibleTiles(state: GameState, viewer: PlayerId): Set<number> {
@@ -58,7 +65,7 @@ export class DefaultTacticalSpace implements TacticalSpace {
   }
 
   isUnitVisible(state: GameState, viewer: PlayerId, unit: Unit, seen?: Set<number>): boolean {
-    return isUnitVisible(state, viewer, unit, seen, this.content);
+    return isUnitVisible(this.content, state, viewer, unit, seen);
   }
 
   visibleUnits(state: GameState, viewer: PlayerId): Unit[] {

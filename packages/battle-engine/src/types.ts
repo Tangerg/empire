@@ -166,6 +166,11 @@ export interface UnitDef {
   };
   /** Formations this unit may adopt. Empty/omitted means none. */
   formations?: FormationId[];
+  /**
+   * Tiles of ground this type holds when `rules.zoneOfControl` is on.
+   * Defaults to 1; 0 is for the units whose business is not standing in the way.
+   */
+  zoneOfControl?: number;
   tags: string[];
   /** Short flavour line shown in the inspector. */
   blurb: string;
@@ -417,6 +422,12 @@ export interface RuleSet {
   friendlyPassThrough: boolean;
   /** Enemy units block movement. */
   enemiesBlockMovement: boolean;
+  /**
+   * Units hold the ground around them: entering an enemy's zone ends the move,
+   * and disengaging from one invites a parting shot. `UnitDef.zoneOfControl`
+   * sets how far each type reaches.
+   */
+  zoneOfControl: boolean;
   maxUnitsPerPlayer: number | null;
   /** Units recruited this turn cannot act. */
   recruitsActImmediately: boolean;
@@ -452,6 +463,7 @@ export const DEFAULT_RULES: RuleSet = {
   turnLimit: null,
   friendlyPassThrough: true,
   enemiesBlockMovement: true,
+  zoneOfControl: false,
   maxUnitsPerPlayer: null,
   recruitsActImmediately: false,
   turnOrder: 'side',
@@ -1071,6 +1083,8 @@ export interface GameEventKindMap {
   };
   counter: { type: 'counter'; attacker: number; defender: number; weapon: WeaponId; damage: number; killed: boolean };
   supportAttack: { type: 'supportAttack'; attacker: number; defender: number; weapon: WeaponId; damage: number; killed: boolean };
+  /** A free blow at a unit disengaging from a zone of control, aimed at the tile it left. */
+  partingShot: { type: 'partingShot'; attacker: number; defender: number; weapon: WeaponId; at: Coord; damage: number; killed: boolean };
   attackStructure: { type: 'attackStructure'; attacker: number; structure: StructureId; weapon: WeaponId; damage: number; destroyed: boolean };
   areaAttackStructure: { type: 'areaAttackStructure'; attacker: number; structure: StructureId; weapon: WeaponId; damage: number; destroyed: boolean };
   heal: { type: 'heal'; source: number; target: number; amount: number };

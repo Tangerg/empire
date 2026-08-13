@@ -307,6 +307,36 @@ describe('behaviour has an owner', () => {
 
     expect(offenders).toEqual([]);
   });
+
+  it('settles damage in exactly one place', () => {
+    // Applying damage means: report it, resolve the death, spill the transport,
+    // shake the survivors, tell whoever cares that a unit left. Five sites used
+    // to do that by hand, in three different orders. `resolveDamage` owns it;
+    // only the aggregate beneath it may take a unit's hit points away, and only
+    // the departure module may raise the fall it produces.
+    const allowed = ['damage.ts', 'unit-departure.ts', join('domain', 'battle-aggregate.ts')];
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (allowed.includes(name)) return [];
+      return /\.damageUnit\(|announceUnitFall\(/.test(readFileSync(file, 'utf8')) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('asks one question about the right to react', () => {
+    // The same lesson as `mayAct`: a budget compared by hand at each site is a
+    // budget that the next kind of reaction quietly gets a second copy of.
+    // `types.ts` declares the field; `state.ts` seeds it; nobody else looks.
+    const allowed = ['types.ts', 'state.ts', join('domain', 'unit-entity.ts')];
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (allowed.includes(name)) return [];
+      return readFileSync(file, 'utf8').includes('reactionUsedRound') ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
 });
 
 describe('one call shape', () => {
@@ -321,9 +351,13 @@ describe('one call shape', () => {
         const parts: string[] = [];
         let nesting = 0;
         let current = '';
+        let previous = '';
         for (const character of inner) {
+          // `=>` is not a closing angle bracket; counting it as one made
+          // `Record<string, number>` split down the middle.
           if ('([{<'.includes(character)) nesting++;
-          else if (')]}>'.includes(character)) nesting--;
+          else if (')]}>'.includes(character) && !(character === '>' && previous === '=')) nesting--;
+          previous = character;
           if (character === ',' && nesting === 0) {
             parts.push(current.trim());
             current = '';
@@ -363,6 +397,34 @@ describe('one call shape', () => {
         const afterEmit = names.slice(names.indexOf('emit') + 1);
         if (afterEmit.some((name) => dependencies.includes(name))) problems.push('dependency after emit');
         if (problems.length > 0) offenders.push(`${relative(coreRoot, file)}#${match[1]}: ${problems.join('; ')}`);
+      }
+    }
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('never puts a required parameter after an optional one', () => {
+    // `f(state, unit, from, weapon = undefined, content)` compiles, and then
+    // every caller in the codebase writes `undefined` to reach past it. If the
+    // argument is not optional at the call site it is not optional.
+    const declaration = (parameter: string) => parameter.replace(/\/\*[\s\S]*?\*\//g, '').trim();
+    const optional = (parameter: string) => {
+      const text = declaration(parameter);
+      const name = text.split(':')[0].trim();
+      return name.endsWith('?') || text.replace(/=>/g, '').includes('=');
+    };
+
+    const offenders: string[] = [];
+    for (const file of runtimeTypeScriptFiles(coreRoot)) {
+      const source = readFileSync(file, 'utf8');
+      for (const match of source.matchAll(/export function (\w+)/g)) {
+        const parameters = parametersOf(source, match.index + match[0].length);
+        const first = parameters.findIndex(optional);
+        if (first < 0) continue;
+        for (const parameter of parameters.slice(first + 1).filter((candidate) => !optional(candidate))) {
+          const name = declaration(parameter).split(':')[0].trim();
+          offenders.push(`${relative(coreRoot, file)}#${match[1]}: ${name} is required but follows an optional`);
+        }
       }
     }
 

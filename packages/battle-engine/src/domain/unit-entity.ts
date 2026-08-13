@@ -84,6 +84,15 @@ export class UnitEntity {
     return previous;
   }
 
+  /**
+   * One reaction per round, whatever it is spent on — a riposte, an intercept,
+   * a parting shot. Asked here rather than compared by hand at each site so a
+   * new kind of reaction cannot quietly get a budget of its own.
+   */
+  canReact(round: number): boolean {
+    return this.state.reactionUsedRound !== round;
+  }
+
   consumeReaction(round: number): void {
     this.state.reactionUsedRound = round;
   }

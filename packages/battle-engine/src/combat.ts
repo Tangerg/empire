@@ -298,28 +298,45 @@ export function canReachWithWeapon(weapon: WeaponDef, from: Coord, target: Coord
   return d >= weapon.minRange && d <= weapon.maxRange;
 }
 
-function bestCounterWeapon(
+/** A combatant and the tile it fights from, which are not always its own. */
+export interface Combatant {
+  readonly unit: Unit;
+  readonly at: Coord;
+}
+
+export interface ReactiveStrike {
+  readonly weapon: WeaponDef;
+  readonly damage: DamageBreakdown;
+}
+
+/**
+ * The strongest blow `reactor` can land on `target` without spending its turn.
+ *
+ * The riposte and the parting shot are the same question — what does this unit
+ * still have ready, and does it reach from where it stands — so they ask it
+ * once. The stance comes in whole rather than as the one flag this needs: a
+ * stance that hoards its resources hoards them for every kind of reaction.
+ */
+export function bestReactiveStrike(
   rules: CombatRules,
   state: GameState,
-  defender: Unit,
-  attacker: Unit,
-  defenderAt: Coord,
-  attackerAt: Coord,
-  conserve: boolean,
-): { weapon: WeaponDef; damage: DamageBreakdown } | null {
-  const owner = player(state, defender.owner);
-  const candidates = unitWeapons(defender, rules.content)
+  reactor: Combatant,
+  target: Combatant,
+  stance: ReactionBehavior,
+): ReactiveStrike | null {
+  const owner = player(state, reactor.unit.owner);
+  const candidates = unitWeapons(reactor.unit, rules.content)
     .filter((weapon) => {
-      if (conserve && (weapon.resourceCosts.length > 0 || weapon.cooldown > 0)) return false;
+      if (stance.conservesResources && (weapon.resourceCosts.length > 0 || weapon.cooldown > 0)) return false;
       return weapon.canCounter &&
-        isWeaponReady(rules, defender, weapon, owner) &&
-        canReachWithWeapon(weapon, defenderAt, attackerAt);
+        isWeaponReady(rules, reactor.unit, weapon, owner) &&
+        canReachWithWeapon(weapon, reactor.at, target.at);
     })
     .map((weapon) => ({
       weapon,
-      damage: computeDamage(rules, state, defender, attacker, {
-        attackerAt: defenderAt,
-        defenderAt: attackerAt,
+      damage: computeDamage(rules, state, reactor.unit, target.unit, {
+        attackerAt: reactor.at,
+        defenderAt: target.at,
         weapon: weapon.id,
       }),
     }))
@@ -336,7 +353,7 @@ function interceptorFor(rules: ReactionRules, state: GameState, defender: Unit):
           candidate.id !== defender.id &&
           areAllies(state, candidate.owner, defender.owner) &&
           reactionOf(rules, candidate.reaction).intercepts &&
-          candidate.reactionUsedRound !== state.turn &&
+          new UnitEntity(candidate).canReact(state.turn) &&
           dist(candidate, defender) === 1,
       )
       .sort((a, b) => b.hp - a.hp || a.id - b.id)[0] ?? null
@@ -395,7 +412,7 @@ export function forecast(
       stance: interceptor.reaction,
       protectedUnit: defender.id,
     };
-  } else if (stance.incomingMultiplier !== 1 && defender.reactionUsedRound !== s.turn) {
+  } else if (stance.incomingMultiplier !== 1 && new UnitEntity(defender).canReact(s.turn)) {
     strike = applyReactionMultiplier(strike, stance);
     reaction = { unit: defender.id, stance: stance.id };
   }
@@ -411,14 +428,12 @@ export function forecast(
   if (!defenderDies && stance.retaliates && s.rules.counterAttack) {
     const counterSource: Unit = { ...defender, hp: defenderHpAfter };
     const counterTarget: Unit = { ...attacker, facing: directionToward(attackFrom, defenderAt) };
-    const candidate = bestCounterWeapon(
+    const candidate = bestReactiveStrike(
       rules,
       s,
-      counterSource,
-      counterTarget,
-      defenderAt,
-      attackFrom,
-      stance.conservesResources,
+      { unit: counterSource, at: defenderAt },
+      { unit: counterTarget, at: attackFrom },
+      stance,
     );
     if (candidate) {
       counter = candidate.damage;

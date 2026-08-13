@@ -2,15 +2,14 @@ import { Battlefield } from './domain/battlefield';
 import { BattleAggregate } from './domain/battle-aggregate';
 import { UnitEntity } from './domain/unit-entity';
 import { inBounds, sameCoord } from './grid';
-import { announceUnitDeparture, announceUnitFall, type UnitDepartureRules } from './unit-departure';
-
-/** Port declared by this module; `BattleRuleServices` satisfies it. */
-export type ForcedMovementRules = UnitDepartureRules;
+import { resolveDamage, type DamageRules } from './damage';
 import { DIRECTION_VECTOR, directionToward } from './spatial';
 import { requireUnit, unitAtCoord } from './state';
 import type { Coord, GameEvent, GameState, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
-import { resolveMoraleAfterDamage } from './morale';
+
+/** Port declared by this module; `BattleRuleServices` satisfies it. */
+export type ForcedMovementRules = DamageRules;
 
 export type ForcedMovementMode = 'push' | 'pull';
 
@@ -83,20 +82,21 @@ export function forceMoveUnit(
   }
   emit({ type: 'forcedMove', unit: unit.id, mode: request.mode, from, to: { ...to }, path, collided });
 
-  let killed = false;
   const collisionDamage = Math.max(0, Math.round(request.collisionDamage ?? 0));
-  if (collided && collisionDamage > 0 && state.units.some((candidate) => candidate.id === unit.id)) {
-    const result = new BattleAggregate(state, content).damageUnit(unit.id, collisionDamage);
-    killed = result.killed;
-    emit({ type: 'collisionDamage', unit: unit.id, amount: result.amount, hpAfter: result.hpAfter, killed });
-    if (result.fall) {
-      announceUnitFall(rules, state, result.fall, emit);
-      resolveMoraleAfterDamage(content, state, unit, result.amount, true, result.at, emit);
-    } else if (resolveMoraleAfterDamage(content, state, unit, result.amount, false, result.at, emit)) {
-      announceUnitDeparture(rules, state, unit, emit);
-    }
-  }
-  return { from, to: { ...to }, path, collided, killed };
+  const impact = collided && collisionDamage > 0
+    ? resolveDamage(rules, state, {
+      unit: unit.id,
+      amount: collisionDamage,
+      report: (blow) => ({
+        type: 'collisionDamage',
+        unit: unit.id,
+        amount: blow.amount,
+        hpAfter: blow.hpAfter,
+        killed: blow.killed,
+      }),
+    }, emit)
+    : null;
+  return { from, to: { ...to }, path, collided, killed: impact?.killed ?? false };
 }
 
 /** Teleportation ignores intermediate edges, but never creates an invalid overlap. */

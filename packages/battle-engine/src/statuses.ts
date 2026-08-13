@@ -1,8 +1,6 @@
-import { BattleAggregate } from './domain/battle-aggregate';
 import type { GameEvent, GameState, StatusDef, StatusId, StatusModifiers, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
-import { resolveMoraleAfterDamage } from './morale';
-import { announceUnitDeparture, announceUnitFall, type UnitDepartureRules } from './unit-departure';
+import { resolveDamage, type DamageRules } from './damage';
 
 export const statusDef = (id: StatusId, content: ContentCatalog): StatusDef =>
   content.statuses.get(id);
@@ -22,25 +20,18 @@ export class StatusLifecycleContext {
   }
 
   damage(requested: number, nonlethal = false): number {
-    if (!this.state.units.some((candidate) => candidate.id === this.unit.id)) return 0;
-    const floor = nonlethal ? 1 : 0;
-    const amount = Math.min(Math.max(0, Math.round(requested)), Math.max(0, this.unit.hp - floor));
-    if (amount <= 0) return 0;
-    const result = new BattleAggregate(this.state, this.content).damageUnit(this.unit.id, amount);
-    this.emit({
-      type: 'statusTick',
+    return resolveDamage(this.rules, this.state, {
       unit: this.unit.id,
-      status: this.status.id,
-      amount: result.amount,
-      hpAfter: result.hpAfter,
-    });
-    if (result.fall) {
-      announceUnitFall(this.rules, this.state, result.fall, this.emit);
-      resolveMoraleAfterDamage(this.content, this.state, this.unit, result.amount, true, result.at, this.emit);
-    } else if (resolveMoraleAfterDamage(this.content, this.state, this.unit, result.amount, false, result.at, this.emit)) {
-      announceUnitDeparture(this.rules, this.state, this.unit, this.emit);
-    }
-    return result.amount;
+      amount: requested,
+      nonlethal,
+      report: (blow) => ({
+        type: 'statusTick',
+        unit: this.unit.id,
+        status: this.status.id,
+        amount: blow.amount,
+        hpAfter: blow.hpAfter,
+      }),
+    }, this.emit).amount;
   }
 }
 
@@ -171,7 +162,7 @@ export function removeStatus(
  * Port declared by this module. The composition-level `BattleRuleServices`
  * satisfies it structurally, so neither side needs to import the other.
  */
-export interface StatusRules extends UnitDepartureRules {
+export interface StatusRules extends DamageRules {
   readonly statusBehaviors: StatusBehaviorRegistry;
 }
 

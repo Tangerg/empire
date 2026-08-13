@@ -190,6 +190,11 @@ export class BattleEngine {
     return this.rules.space.threatOf(state, unit, field);
   }
 
+  /** Ground this unit's enemies hold; entering a tile of it ends the move. */
+  controlZoneAgainst(state: GameState, unit: Unit): Set<number> {
+    return this.rules.space.controlZoneAgainst(state, unit);
+  }
+
   visibleTiles(state: GameState, viewer: PlayerId): Set<number> {
     return this.rules.space.visibleTiles(state, viewer);
   }

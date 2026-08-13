@@ -61,10 +61,10 @@ export function removeTerrainOverlay(
 
 /** Applies environmental statuses before normal owner-turn status resolution. */
 export function applyOverlayTurnStartEffects(
+  content: ContentCatalog,
   state: GameState,
   owner: number,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog,
   /** Units whose actor turn is starting; defaults to the owner's whole army. */
   scope?: readonly Unit[],
 ): void {

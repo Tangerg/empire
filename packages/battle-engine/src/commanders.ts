@@ -1,5 +1,6 @@
 import { IllegalActionError } from './domain/errors';
 import { UnitDepartureHandlers } from './unit-departure';
+import type { MoraleRules } from './morale';
 import { dist } from './grid';
 import { addStatus, removeStatus } from './statuses';
 import { areAllies, player } from './state';
@@ -175,21 +176,22 @@ export function refreshCommanderTurn(
 }
 
 /** Linked troops lose the aura immediately and receive a short morale shock. */
-export function handleCommanderDefeat(
-  content: ContentCatalog,
+function handleCommanderDefeat(
+  rules: MoraleRules,
   state: GameState,
   unitId: number,
   emit: (event: GameEvent) => void,
 ): void {
   const commander = state.commanders.find((candidate) => candidate.unitId === unitId);
   if (!commander) return;
+  const content = rules.content;
   emit({ type: 'commanderDefeated', commander: commander.id, unit: unitId });
   for (const unit of state.units.filter(
     (candidate) => candidate.commanderId === commander.id && candidate.owner === commander.owner,
   )) {
     if (content.statuses.has('shaken')) addStatus(content, unit, 'shaken', 2, emit, unitId);
     if (state.rules.moraleEnabled && state.units.some((candidate) => candidate.id === unit.id)) {
-      changeMorale(content, state, unit.id, -state.rules.moraleCommanderDefeatLoss, 'commander-defeated', emit);
+      changeMorale(rules, state, unit.id, -state.rules.moraleCommanderDefeatLoss, 'commander-defeated', emit);
     }
   }
 }
@@ -197,8 +199,10 @@ export function handleCommanderDefeat(
 /**
  * Losing the commander is a consequence of departure, not of *how* it departed,
  * so it is registered once here instead of being called from every death site.
+ * Nothing else may call it: a consequence with a second entry point is a
+ * consequence that will eventually fire twice, or not at all.
  */
 UnitDepartureHandlers.register({
   id: 'commander.defeat',
-  handle: ({ state, unit, emit, content }) => handleCommanderDefeat(content, state, unit.id, emit),
+  handle: ({ rules, state, unit, emit }) => handleCommanderDefeat(rules, state, unit.id, emit),
 });

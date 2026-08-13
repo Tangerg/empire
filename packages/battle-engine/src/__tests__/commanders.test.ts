@@ -35,7 +35,7 @@ describe('commanders and formation resources', () => {
       movementDelta: 1,
     });
     const commanded = testDamage(state, troop, enemy).damage;
-    expect(Math.max(...[...computeMoveField(state, troop, TEST_CONTENT).tiles.values()].map((tile) => tile.cost))).toBe(4);
+    expect(Math.max(...[...computeMoveField(TEST_CONTENT, state, troop).tiles.values()].map((tile) => tile.cost))).toBe(4);
 
     troop.x = 2;
     expect(commanderAuraFor(state, troop).attackMultiplier).toBe(1);

@@ -15,6 +15,8 @@ export interface BoardOverlay {
   attack: Set<number>;
   heal: Set<number>;
   threat: Set<number>;
+  /** Ground the enemy holds: a move that enters one of these tiles stops there. */
+  controlled: Set<number>;
   path: Coord[];
   selected: Coord | null;
   cursor: Coord | null;
@@ -30,6 +32,7 @@ export const emptyOverlay = (): BoardOverlay => ({
   attack: new Set(),
   heal: new Set(),
   threat: new Set(),
+  controlled: new Set(),
   incoming: new Map(),
   path: [],
   selected: null,
@@ -315,6 +318,9 @@ export class BoardView {
         : `<ellipse class="candidate-action-spot" cx="${x + TILE / 2}" cy="${y + TILE * 0.68}" rx="12.5" ry="7.5" fill="${fill}" fill-opacity="${Math.min(0.5, opacity * 1.35)}"${outline}/>`);
     };
     for (const i of o.threat) cell(i, '#ff3b30', 0.1);
+    // Held ground is drawn under the move range: the player needs to see why a
+    // path stops short, not merely that it does.
+    for (const i of o.controlled) cell(i, '#8c6bd8', 0.18, '#b9a3f0');
     // A marked tile is committed damage, so it reads stronger than mere threat
     // and carries its own countdown.
     for (const [i, remaining] of o.incoming) {
