@@ -93,8 +93,8 @@ describe('the analysis a decision shares', () => {
     const state = aiTurn(skirmish());
     const context = new AiTurnContext(testAiDependencies(), state, 2, { aggression: 0.5 });
 
-    expect(context.objectives).toBe(context.objectives);
-    expect(context.danger).toBe(context.danger);
+    expect(context.agenda).toBe(context.agenda);
+    expect(context.threat).toBe(context.threat);
     expect(context.battlefield).toBe(context.battlefield);
     expect(context.actors().every((unit) => unit.owner === 2 && !unit.done)).toBe(true);
   });
