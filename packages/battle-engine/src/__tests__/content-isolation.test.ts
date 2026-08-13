@@ -203,6 +203,6 @@ describe('per-composition content catalogs', () => {
 
   it('refuses to build a state from a level the catalog cannot read', () => {
     const steel = catalogFor(themePack('steel', 30));
-    expect(() => createState(duel('bronze'), steel)).toThrow(/unknown id "bronze.trooper"/);
+    expect(() => createState(duel('bronze'), steel)).toThrow(/unknown unit "bronze.trooper"/);
   });
 });

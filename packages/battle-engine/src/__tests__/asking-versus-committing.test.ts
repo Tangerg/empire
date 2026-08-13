@@ -42,7 +42,7 @@ describe('asking about a weapon', () => {
     const rules = createDefaultBattleRuleServices({ content });
     const state = testState(makeLevel(['....'], { units: [u(0, 0, 'mage', 1), u(1, 0, 'soldier', 2)] }));
 
-    expect(() => readyWeapon(rules, state.units[0], 'mage_bolth')).toThrow(/unknown id/);
+    expect(() => readyWeapon(rules, state.units[0], 'mage_bolth')).toThrow(/unknown weapon "mage_bolth"/);
     // A weapon the unit does not claim at all is still an ordinary "no".
     expect(readyWeapon(rules, state.units[0], 'nothing_at_all')).toBeNull();
   });

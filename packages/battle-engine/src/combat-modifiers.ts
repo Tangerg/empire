@@ -6,6 +6,7 @@ import { hasOpposedFlanker, relativeAttackSide } from './spatial';
 import type { Coord, GameState, Unit, WeaponDef } from './types';
 import { type ContentCatalog } from './content-pack';
 import { activeFormation } from './formations';
+import { PriorityRegistry } from './registry';
 
 export const MAX_MITIGATION = 0.6;
 
@@ -42,38 +43,13 @@ export interface CombatModifierProvider {
 }
 
 /** Extensible Strategy collection for combat-rule contributions. */
-export class CombatModifierProviderRegistry {
-  private readonly providers = new Map<string, CombatModifierProvider>();
-  private orderedCache: readonly CombatModifierProvider[] | null = null;
-
-  register(provider: CombatModifierProvider): this {
-    if (this.providers.has(provider.id)) {
-      throw new Error(`combat modifier provider already registered: "${provider.id}"`);
-    }
-    this.providers.set(provider.id, provider);
-    this.orderedCache = null;
-    return this;
-  }
-
-  replace(provider: CombatModifierProvider): this {
-    this.providers.set(provider.id, provider);
-    this.orderedCache = null;
-    return this;
-  }
-
-  ordered(): readonly CombatModifierProvider[] {
-    if (!this.orderedCache) {
-      this.orderedCache = Object.freeze([...this.providers.values()].sort(
-        (left, right) => left.priority - right.priority || left.id.localeCompare(right.id),
-      ));
-    }
-    return this.orderedCache;
+export class CombatModifierProviderRegistry extends PriorityRegistry<CombatModifierProvider> {
+  constructor() {
+    super('combat modifier provider');
   }
 
   clone(): CombatModifierProviderRegistry {
-    const copy = new CombatModifierProviderRegistry();
-    for (const provider of this.providers.values()) copy.register(provider);
-    return copy;
+    return this.copyInto(new CombatModifierProviderRegistry());
   }
 }
 

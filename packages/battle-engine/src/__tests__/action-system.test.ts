@@ -36,7 +36,7 @@ describe('action strategy registry', () => {
   });
 
   it('registers one cohesive strategy for every built-in action kind', () => {
-    expect(CoreActionHandlers.kinds().sort()).toEqual(
+    expect(CoreActionHandlers.keys().sort()).toEqual(
       [
         'changeCareer', 'changeFormation', 'command', 'deployUnit', 'disembark', 'embark',
         'endTurn', 'face', 'finishDeployment', 'reaction', 'recruit', 'tactic',

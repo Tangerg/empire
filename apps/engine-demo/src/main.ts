@@ -109,7 +109,7 @@ function resourceName(id: string): string {
 }
 
 function accountRows(subject: ResourceSubject): string {
-  const rows = engine.rules.resources.adapters.ids().flatMap((id) => {
+  const rows = engine.rules.resources.adapters.keys().flatMap((id) => {
     if (!engine.rules.resources.hasAccount(id, subject)) return [];
     const account = engine.rules.resources.inspect(id, subject);
     const current = account.current === null ? '∞' : account.current;

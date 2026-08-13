@@ -8,6 +8,7 @@ import type {
   WeaponHitEffectKindMap,
 } from './types';
 import { type ContentCatalog } from './content-pack';
+import { KeyedRegistry } from './registry';
 import { type UnitDepartureRules } from './unit-departure';
 
 type HitEffectKind = Extract<keyof WeaponHitEffectKindMap, string>;
@@ -37,18 +38,21 @@ export interface WeaponHitEffectHandler<K extends HitEffectKind = HitEffectKind>
 }
 
 /** Open effect algebra used by weapons, combat plans, UI and content packs. */
-export class WeaponHitEffectHandlerRegistry {
-  private readonly handlers = new Map<string, WeaponHitEffectHandler>();
-
-  register<K extends HitEffectKind>(handler: WeaponHitEffectHandler<K>): this {
-    if (this.handlers.has(handler.kind)) throw new Error(`weapon hit effect already registered: "${handler.kind}"`);
-    this.handlers.set(handler.kind, handler as WeaponHitEffectHandler);
-    return this;
+export class WeaponHitEffectHandlerRegistry extends KeyedRegistry<string, WeaponHitEffectHandler> {
+  constructor() {
+    super('weapon hit effect');
   }
 
-  replace<K extends HitEffectKind>(handler: WeaponHitEffectHandler<K>): this {
-    this.handlers.set(handler.kind, handler as WeaponHitEffectHandler);
-    return this;
+  protected keyOf(handler: WeaponHitEffectHandler): string {
+    return handler.kind;
+  }
+
+  override register<K extends HitEffectKind>(handler: WeaponHitEffectHandler<K>): this {
+    return super.register(handler as WeaponHitEffectHandler);
+  }
+
+  override replace<K extends HitEffectKind>(handler: WeaponHitEffectHandler<K>): this {
+    return super.replace(handler as WeaponHitEffectHandler);
   }
 
   apply(
@@ -61,26 +65,16 @@ export class WeaponHitEffectHandlerRegistry {
   ): void {
     const context = new WeaponHitEffectContext(rules, state, attacker, target, emit);
     for (const effect of effects) {
-      const handler = this.handlers.get(effect.type);
-      if (!handler) throw new Error(`no weapon hit effect handler for "${effect.type}"`);
-      handler.apply(context, effect as never);
+      this.get(effect.type).apply(context, effect as never);
     }
   }
 
   describe(effect: WeaponHitEffect): string {
-    const handler = this.handlers.get(effect.type);
-    if (!handler) throw new Error(`no weapon hit effect handler for "${effect.type}"`);
-    return handler.describe(effect as never);
+    return this.get(effect.type).describe(effect as never);
   }
 
   clone(): WeaponHitEffectHandlerRegistry {
-    const copy = new WeaponHitEffectHandlerRegistry();
-    for (const handler of this.handlers.values()) copy.register(handler);
-    return copy;
-  }
-
-  kinds(): string[] {
-    return [...this.handlers.keys()];
+    return this.copyInto(new WeaponHitEffectHandlerRegistry());
   }
 }
 

@@ -1,7 +1,5 @@
 import { idx } from './grid';
-import {
-  type ObjectiveHandlerRegistry,
-} from './objective-system';
+import { type ObjectiveHandlerRegistry, type ObjectiveKind } from './objective-system';
 import { selectUnits } from './scenario';
 import { areEnemies, player, unitsOf } from './state';
 import type {
@@ -14,8 +12,8 @@ import type {
   StructureId,
 } from './types';
 import { type ContentCatalog } from './content-pack';
+import { KeyedRegistry } from './registry';
 
-type ObjectiveKind = Extract<keyof ObjectiveKindMap, string>;
 type ObjectiveOf<K extends ObjectiveKind> = ObjectiveMeta & ObjectiveKindMap[K];
 
 export interface AiDestination {
@@ -86,34 +84,25 @@ export interface AiObjectiveAdvisor<K extends ObjectiveKind = ObjectiveKind> {
 }
 
 /** Open strategy registry: content-defined objective kinds can teach the AI their intent. */
-export class AiObjectiveAdvisorRegistry {
-  private readonly advisors = new Map<ObjectiveKind, AiObjectiveAdvisor>();
-
-  register<K extends ObjectiveKind>(advisor: AiObjectiveAdvisor<K>): this {
-    if (this.advisors.has(advisor.kind)) {
-      throw new Error(`AI objective advisor already registered: "${advisor.kind}"`);
-    }
-    this.advisors.set(advisor.kind, advisor as AiObjectiveAdvisor);
-    return this;
+export class AiObjectiveAdvisorRegistry extends KeyedRegistry<ObjectiveKind, AiObjectiveAdvisor> {
+  constructor() {
+    super('AI objective advisor');
   }
 
-  replace<K extends ObjectiveKind>(advisor: AiObjectiveAdvisor<K>): this {
-    this.advisors.set(advisor.kind, advisor as AiObjectiveAdvisor);
-    return this;
+  protected keyOf(advisor: AiObjectiveAdvisor): ObjectiveKind {
+    return advisor.kind;
   }
 
-  advisor(kind: ObjectiveKind): AiObjectiveAdvisor | undefined {
-    return this.advisors.get(kind);
+  override register<K extends ObjectiveKind>(advisor: AiObjectiveAdvisor<K>): this {
+    return super.register(advisor as AiObjectiveAdvisor);
   }
 
-  kinds(): ObjectiveKind[] {
-    return [...this.advisors.keys()];
+  override replace<K extends ObjectiveKind>(advisor: AiObjectiveAdvisor<K>): this {
+    return super.replace(advisor as AiObjectiveAdvisor);
   }
 
   clone(): AiObjectiveAdvisorRegistry {
-    const copy = new AiObjectiveAdvisorRegistry();
-    for (const advisor of this.advisors.values()) copy.register(advisor);
-    return copy;
+    return this.copyInto(new AiObjectiveAdvisorRegistry());
   }
 }
 
@@ -267,7 +256,7 @@ export function buildAiMissionIntent(
       for (const child of children) visit(child, weight);
       return;
     }
-    const strategy = advisors.advisor(objective.type);
+    const strategy = advisors.tryGet(objective.type);
     if (!strategy) return;
     const context = new AiObjectiveAdviceContext(state, owner, weight, content);
     strategy.advise(context, objective as never);

@@ -205,17 +205,17 @@ describe('open extension contracts', () => {
       advise: () => {},
     });
 
-    expect(actionCopy.kinds()).toContain('testSignal');
-    expect(CoreActionHandlers.kinds()).not.toContain('testSignal');
+    expect(actionCopy.keys()).toContain('testSignal');
+    expect(CoreActionHandlers.keys()).not.toContain('testSignal');
     expect(conditionMet({ ...TEST_RULES, scenarioConditions: conditionCopy }, extensionState(), { type: 'testFlag', key: 'x' })).toBe(true);
     expect(() => conditionMet({ ...TEST_RULES, scenarioConditions: ScenarioConditionHandlers }, extensionState(), { type: 'testFlag', key: 'x' })).toThrow();
-    expect(effectCopy.kinds()).toContain('testRecord');
-    expect(ScenarioEffectHandlers.kinds()).not.toContain('testRecord');
-    expect(objectiveCopy.handler('testVariable')).toBe(testObjective);
-    expect(() => ObjectiveHandlers.handler('testVariable')).toThrow();
+    expect(effectCopy.keys()).toContain('testRecord');
+    expect(ScenarioEffectHandlers.keys()).not.toContain('testRecord');
+    expect(objectiveCopy.get('testVariable')).toBe(testObjective);
+    expect(() => ObjectiveHandlers.get('testVariable')).toThrow();
     expect(modifierCopy.ordered().some((provider) => provider.id === 'test.extension')).toBe(true);
     expect(CombatModifierProviders.ordered().some((provider) => provider.id === 'test.extension')).toBe(false);
-    expect(aiCopy.advisor('testVariable')).toBeDefined();
-    expect(DefaultAiObjectiveAdvisors.advisor('testVariable')).toBeUndefined();
+    expect(aiCopy.tryGet('testVariable')).toBeDefined();
+    expect(DefaultAiObjectiveAdvisors.tryGet('testVariable')).toBeUndefined();
   });
 });

@@ -1,6 +1,7 @@
 import type { GameEvent, GameState, StatusDef, StatusId, StatusModifiers, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
 import { resolveDamage, type DamageRules } from './damage';
+import { KeyedRegistry } from './registry';
 
 export const statusDef = (id: StatusId, content: ContentCatalog): StatusDef =>
   content.statuses.get(id);
@@ -41,28 +42,22 @@ export interface StatusBehavior {
 }
 
 /** Optional imperative hooks for statuses whose behavior exceeds data modifiers. */
-export class StatusBehaviorRegistry {
-  private readonly behaviors = new Map<StatusId, StatusBehavior>();
-
-  register(behavior: StatusBehavior): this {
-    if (this.behaviors.has(behavior.id)) throw new Error(`status behavior already registered: "${behavior.id}"`);
-    this.behaviors.set(behavior.id, behavior);
-    return this;
+export class StatusBehaviorRegistry extends KeyedRegistry<StatusId, StatusBehavior> {
+  constructor() {
+    super('status behavior');
   }
 
-  replace(behavior: StatusBehavior): this {
-    this.behaviors.set(behavior.id, behavior);
-    return this;
+  protected keyOf(behavior: StatusBehavior): StatusId {
+    return behavior.id;
   }
 
+  /** Most statuses are pure data, so having no behaviour is the normal case. */
   ownerTurnStart(context: StatusLifecycleContext): void {
-    this.behaviors.get(context.status.id)?.onOwnerTurnStart?.(context);
+    this.tryGet(context.status.id)?.onOwnerTurnStart?.(context);
   }
 
   clone(): StatusBehaviorRegistry {
-    const copy = new StatusBehaviorRegistry();
-    for (const behavior of this.behaviors.values()) copy.register(behavior);
-    return copy;
+    return this.copyInto(new StatusBehaviorRegistry());
   }
 }
 

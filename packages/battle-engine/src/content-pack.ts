@@ -1,6 +1,6 @@
 import { DamageMatchupRegistry } from './data/damage';
 import { TerrainEncodingRegistry } from './data/terrain-encoding';
-import { Registry } from './registry';
+import { ContentRegistry } from './registry';
 import { orderByDependencies } from './dependency-order';
 import type {
   CareerDef,
@@ -44,42 +44,42 @@ export interface ContentPack {
 }
 
 export interface ContentCatalog {
-  movementProfiles: Registry<MovementProfileDef>;
-  damageTypes: Registry<DamageTypeDef>;
-  armorClasses: Registry<ArmorClassDef>;
+  movementProfiles: ContentRegistry<MovementProfileDef>;
+  damageTypes: ContentRegistry<DamageTypeDef>;
+  armorClasses: ContentRegistry<ArmorClassDef>;
   damageMatchups: DamageMatchupRegistry;
-  terrains: Registry<TerrainDef>;
+  terrains: ContentRegistry<TerrainDef>;
   terrainEncoding: TerrainEncodingRegistry;
-  weapons: Registry<WeaponDef>;
-  units: Registry<UnitDef>;
-  statuses: Registry<StatusDef>;
-  structures: Registry<StructureDef>;
-  terrainOverlays: Registry<TerrainOverlayDef>;
-  tactics: Registry<TacticDef>;
-  careers: Registry<CareerDef>;
-  formations: Registry<FormationDef>;
+  weapons: ContentRegistry<WeaponDef>;
+  units: ContentRegistry<UnitDef>;
+  statuses: ContentRegistry<StatusDef>;
+  structures: ContentRegistry<StructureDef>;
+  terrainOverlays: ContentRegistry<TerrainOverlayDef>;
+  tactics: ContentRegistry<TacticDef>;
+  careers: ContentRegistry<CareerDef>;
+  formations: ContentRegistry<FormationDef>;
 }
 
 export function createContentCatalog(): ContentCatalog {
   return {
-    movementProfiles: new Registry('movement profile'),
-    damageTypes: new Registry('damage type'),
-    armorClasses: new Registry('armor class'),
+    movementProfiles: new ContentRegistry('movement profile'),
+    damageTypes: new ContentRegistry('damage type'),
+    armorClasses: new ContentRegistry('armor class'),
     damageMatchups: new DamageMatchupRegistry(),
-    terrains: new Registry('terrain'),
+    terrains: new ContentRegistry('terrain'),
     terrainEncoding: new TerrainEncodingRegistry(),
-    weapons: new Registry('weapon'),
-    units: new Registry('unit'),
-    statuses: new Registry('status'),
-    structures: new Registry('structure'),
-    terrainOverlays: new Registry('terrain overlay'),
-    tactics: new Registry('tactic'),
-    careers: new Registry('career'),
-    formations: new Registry('formation'),
+    weapons: new ContentRegistry('weapon'),
+    units: new ContentRegistry('unit'),
+    statuses: new ContentRegistry('status'),
+    structures: new ContentRegistry('structure'),
+    terrainOverlays: new ContentRegistry('terrain overlay'),
+    tactics: new ContentRegistry('tactic'),
+    careers: new ContentRegistry('career'),
+    formations: new ContentRegistry('formation'),
   };
 }
 
-function cloneDataRegistry<T extends { id: string }>(source: Registry<T>): Registry<T> {
+function cloneDataRegistry<T extends { id: string }>(source: ContentRegistry<T>): ContentRegistry<T> {
   const copy = source.clone();
   for (const definition of source.all()) copy.override(definition.id, structuredClone(definition));
   return copy;
@@ -125,7 +125,7 @@ const PACK_FIELDS: ReadonlyArray<{
   { pack: 'formations', catalog: 'formations' },
 ];
 
-function idsIn<T extends { id: string }>(registry: Registry<T>, incoming: readonly T[]): Set<string> {
+function idsIn<T extends { id: string }>(registry: ContentRegistry<T>, incoming: readonly T[]): Set<string> {
   return new Set([...registry.ids(), ...incoming.map((entry) => entry.id)]);
 }
 
@@ -180,7 +180,7 @@ export class ContentPackInstaller {
         // definitions. Sharing the objects would let one catalog's balance
         // override leak into another catalog built from the same pack.
         if (entries) {
-          (this.catalog[field.catalog] as Registry<{ id: string }>)
+          (this.catalog[field.catalog] as ContentRegistry<{ id: string }>)
             .defineAll(entries.map((entry) => structuredClone(entry)));
         }
       }
@@ -203,7 +203,7 @@ export class ContentPackInstaller {
 
   private validateUniqueDefinitions(packs: readonly ContentPack[]): void {
     for (const field of PACK_FIELDS) {
-      const registry = this.catalog[field.catalog] as Registry<{ id: string }>;
+      const registry = this.catalog[field.catalog] as ContentRegistry<{ id: string }>;
       const seen = new Set<string>();
       for (const pack of packs) {
         const entries = pack[field.pack] as readonly { id: string }[] | undefined;

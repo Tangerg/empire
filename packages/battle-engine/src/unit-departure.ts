@@ -1,5 +1,6 @@
 import type { ContentCatalog } from './content-pack';
 import type { UnitFall } from './domain/unit-fall';
+import { KeyedRegistry } from './registry';
 import { emitTransportLossEvents } from './transports';
 import type { GameEvent, GameState, Unit } from './types';
 
@@ -32,35 +33,22 @@ export interface UnitDepartureHandler {
   handle(departure: UnitDeparture): void;
 }
 
-export class UnitDepartureHandlerRegistry {
-  private readonly handlers = new Map<string, UnitDepartureHandler>();
-
-  register(handler: UnitDepartureHandler): this {
-    if (this.handlers.has(handler.id)) {
-      throw new Error(`departure handler already registered for "${handler.id}"`);
-    }
-    this.handlers.set(handler.id, handler);
-    return this;
+export class UnitDepartureHandlerRegistry extends KeyedRegistry<string, UnitDepartureHandler> {
+  constructor() {
+    super('departure handler');
   }
 
-  replace(handler: UnitDepartureHandler): this {
-    this.handlers.set(handler.id, handler);
-    return this;
-  }
-
-  ids(): string[] {
-    return [...this.handlers.keys()];
+  protected keyOf(handler: UnitDepartureHandler): string {
+    return handler.id;
   }
 
   /** Announces the departure to every listener, in registration order. */
   announce(departure: UnitDeparture): void {
-    for (const handler of this.handlers.values()) handler.handle(departure);
+    for (const handler of this.all()) handler.handle(departure);
   }
 
   clone(): UnitDepartureHandlerRegistry {
-    const copy = new UnitDepartureHandlerRegistry();
-    for (const handler of this.handlers.values()) copy.register(handler);
-    return copy;
+    return this.copyInto(new UnitDepartureHandlerRegistry());
   }
 }
 

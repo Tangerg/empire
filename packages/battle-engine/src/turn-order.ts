@@ -1,4 +1,4 @@
-import { Registry } from './registry';
+import { ContentRegistry } from './registry';
 import { player, unitsOf } from './state';
 import type { ContentCatalog } from './content-pack';
 import type { GameEvent, GameState, PlayerId, TurnOrderState, Unit } from './types';
@@ -54,7 +54,7 @@ export interface TurnOrderPolicy {
   preview(state: GameState, content: ContentCatalog, count: number): number[];
 }
 
-export const TurnOrders = new Registry<TurnOrderPolicy>('turn order');
+export const TurnOrders = new ContentRegistry<TurnOrderPolicy>('turn order');
 
 /**
  * Port declared by this module. The composition-level `BattleRuleServices`
@@ -62,7 +62,7 @@ export const TurnOrders = new Registry<TurnOrderPolicy>('turn order');
  */
 export interface TurnOrderRules {
   readonly content: ContentCatalog;
-  readonly turnOrders: Registry<TurnOrderPolicy>;
+  readonly turnOrders: ContentRegistry<TurnOrderPolicy>;
 }
 
 /** The policy this battle is running under, as recorded in its own state. */

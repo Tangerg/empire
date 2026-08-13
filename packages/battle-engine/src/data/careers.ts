@@ -1,15 +1,15 @@
 import type { CareerDef, UnitTypeId } from '../types';
-import type { Registry } from '../registry';
+import type { ContentRegistry } from '../registry';
 
 export function careersForUnitType(
-  careers: Registry<CareerDef>,
+  careers: ContentRegistry<CareerDef>,
   unitType: UnitTypeId,
 ): CareerDef[] {
   return careers.all().filter((career) => career.unitType === unitType);
 }
 
 export function defaultCareerForUnitType(
-  careers: Registry<CareerDef>,
+  careers: ContentRegistry<CareerDef>,
   unitType: UnitTypeId,
 ): CareerDef | undefined {
   return careersForUnitType(careers, unitType)

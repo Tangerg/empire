@@ -7,6 +7,7 @@ import type {
   WeaponId,
 } from './types';
 import { DomainInvariantError } from './domain/errors';
+import { KeyedRegistry } from './registry';
 
 /** Open subject family; plugins may declaration-merge additional holder kinds. */
 export interface ResourceSubjectKindMap {
@@ -41,44 +42,26 @@ export interface ResourceAdapter<S extends ResourceSubject = ResourceSubject> {
 }
 
 /** Registry of independent resource ports. Storage layout remains an adapter concern. */
-export class ResourceAdapterRegistry {
-  private readonly adapters = new Map<ResourceId, ResourceAdapter>();
+export class ResourceAdapterRegistry extends KeyedRegistry<ResourceId, ResourceAdapter> {
+  constructor() {
+    super('resource adapter');
+  }
 
-  register<S extends ResourceSubject>(adapter: ResourceAdapter<S>): this {
+  protected keyOf(adapter: ResourceAdapter): ResourceId {
+    return adapter.id;
+  }
+
+  override register<S extends ResourceSubject>(adapter: ResourceAdapter<S>): this {
     if (!adapter.id.trim()) throw new Error('resource id cannot be empty');
-    if (this.adapters.has(adapter.id)) throw new Error(`resource adapter already registered: "${adapter.id}"`);
-    this.adapters.set(adapter.id, adapter as ResourceAdapter);
-    return this;
+    return super.register(adapter as ResourceAdapter);
   }
 
-  replace<S extends ResourceSubject>(adapter: ResourceAdapter<S>): this {
-    this.adapters.set(adapter.id, adapter as ResourceAdapter);
-    return this;
-  }
-
-  get(id: ResourceId): ResourceAdapter {
-    const adapter = this.adapters.get(id);
-    if (!adapter) throw new Error(`unknown resource: "${id}"`);
-    return adapter;
-  }
-
-  /**
-   * The adapter, if there is one. A registry that can say "no" should be
-   * askable: without this the HUD reached for the throwing form and caught the
-   * exception to print a fallback label, which is a query written as a crash.
-   */
-  tryGet(id: ResourceId): ResourceAdapter | undefined {
-    return this.adapters.get(id);
-  }
-
-  ids(): ResourceId[] {
-    return [...this.adapters.keys()];
+  override replace<S extends ResourceSubject>(adapter: ResourceAdapter<S>): this {
+    return super.replace(adapter as ResourceAdapter);
   }
 
   clone(): ResourceAdapterRegistry {
-    const copy = new ResourceAdapterRegistry();
-    for (const adapter of this.adapters.values()) copy.register(adapter);
-    return copy;
+    return this.copyInto(new ResourceAdapterRegistry());
   }
 }
 

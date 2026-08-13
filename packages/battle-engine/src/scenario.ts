@@ -32,6 +32,7 @@ import type {
 } from './types';
 import { type ContentCatalog } from './content-pack';
 import { SplitMixRandom, type RandomSource } from './random';
+import { KeyedRegistry } from './registry';
 import { changeMorale, surrenderUnit } from './morale';
 import { addEngagementRule, removeEngagementRule } from './engagement';
 import { compositeStatus, moveComposite } from './composites';
@@ -120,41 +121,35 @@ export interface ScenarioConditionHandler<K extends ConditionKind = ConditionKin
   evaluate(context: ScenarioConditionContext, condition: ScenarioConditionKindMap[K]): boolean;
 }
 
-export class ScenarioConditionHandlerRegistry {
-  private readonly handlers = new Map<string, ScenarioConditionHandler>();
-
+export class ScenarioConditionHandlerRegistry extends KeyedRegistry<ConditionKind, ScenarioConditionHandler> {
   /**
    * The random source is injected once per ruleset instead of threaded through
    * every `evaluate` call: the registry is already per-engine and cloneable, so
    * this keeps randomness swappable without widening the condition signature.
    */
-  constructor(readonly random: RandomSource) {}
-
-  register<K extends ConditionKind>(handler: ScenarioConditionHandler<K>): this {
-    if (this.handlers.has(handler.kind)) throw new Error(`duplicate scenario condition handler "${handler.kind}"`);
-    this.handlers.set(handler.kind, handler as ScenarioConditionHandler);
-    return this;
+  constructor(readonly random: RandomSource) {
+    super('scenario condition handler');
   }
 
-  replace<K extends ConditionKind>(handler: ScenarioConditionHandler<K>): this {
-    this.handlers.set(handler.kind, handler as ScenarioConditionHandler);
-    return this;
+  protected keyOf(handler: ScenarioConditionHandler): ConditionKind {
+    return handler.kind;
+  }
+
+  override register<K extends ConditionKind>(handler: ScenarioConditionHandler<K>): this {
+    return super.register(handler as ScenarioConditionHandler);
+  }
+
+  override replace<K extends ConditionKind>(handler: ScenarioConditionHandler<K>): this {
+    return super.replace(handler as ScenarioConditionHandler);
   }
 
   evaluate(state: GameState, condition: ScenarioCondition, content: ContentCatalog): boolean {
-    const handler = this.handlers.get(condition.type);
-    if (!handler) throw new Error(`no scenario condition handler for "${condition.type}"`);
-    return handler.evaluate(new ScenarioConditionContext(state, this, content, this.random), condition as never);
+    return this.get(condition.type)
+      .evaluate(new ScenarioConditionContext(state, this, content, this.random), condition as never);
   }
 
   clone(random: RandomSource = this.random): ScenarioConditionHandlerRegistry {
-    const copy = new ScenarioConditionHandlerRegistry(random);
-    for (const handler of this.handlers.values()) copy.register(handler);
-    return copy;
-  }
-
-  kinds(): string[] {
-    return [...this.handlers.keys()];
+    return this.copyInto(new ScenarioConditionHandlerRegistry(random));
   }
 }
 
@@ -296,34 +291,29 @@ export interface ScenarioEffectHandler<K extends EffectKind = EffectKind> {
   apply(context: ScenarioEffectContext, effect: ScenarioEffectKindMap[K]): void;
 }
 
-export class ScenarioEffectHandlerRegistry {
-  private readonly handlers = new Map<string, ScenarioEffectHandler>();
-
-  register<K extends EffectKind>(handler: ScenarioEffectHandler<K>): this {
-    if (this.handlers.has(handler.kind)) throw new Error(`duplicate scenario effect handler "${handler.kind}"`);
-    this.handlers.set(handler.kind, handler as ScenarioEffectHandler);
-    return this;
+export class ScenarioEffectHandlerRegistry extends KeyedRegistry<EffectKind, ScenarioEffectHandler> {
+  constructor() {
+    super('scenario effect handler');
   }
 
-  replace<K extends EffectKind>(handler: ScenarioEffectHandler<K>): this {
-    this.handlers.set(handler.kind, handler as ScenarioEffectHandler);
-    return this;
+  protected keyOf(handler: ScenarioEffectHandler): EffectKind {
+    return handler.kind;
+  }
+
+  override register<K extends EffectKind>(handler: ScenarioEffectHandler<K>): this {
+    return super.register(handler as ScenarioEffectHandler);
+  }
+
+  override replace<K extends EffectKind>(handler: ScenarioEffectHandler<K>): this {
+    return super.replace(handler as ScenarioEffectHandler);
   }
 
   apply(rules: ScenarioRules, state: GameState, effect: ScenarioEffect, emit: (event: GameEvent) => void): void {
-    const handler = this.handlers.get(effect.type);
-    if (!handler) throw new Error(`no scenario effect handler for "${effect.type}"`);
-    handler.apply(new ScenarioEffectContext(rules, state, emit), effect as never);
+    this.get(effect.type).apply(new ScenarioEffectContext(rules, state, emit), effect as never);
   }
 
   clone(): ScenarioEffectHandlerRegistry {
-    const copy = new ScenarioEffectHandlerRegistry();
-    for (const handler of this.handlers.values()) copy.register(handler);
-    return copy;
-  }
-
-  kinds(): string[] {
-    return [...this.handlers.keys()];
+    return this.copyInto(new ScenarioEffectHandlerRegistry());
   }
 }
 

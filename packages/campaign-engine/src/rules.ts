@@ -1,3 +1,4 @@
+import { KeyedRegistry } from '@empire/battle-engine';
 import type {
   CampaignCondition,
   CampaignConditionKindMap,
@@ -21,34 +22,29 @@ export interface CampaignConditionHandler<K extends ConditionKind = ConditionKin
   evaluate(state: CampaignState, condition: CampaignConditionKindMap[K], rules: CampaignConditionRegistry): boolean;
 }
 
-export class CampaignConditionRegistry {
-  private readonly handlers = new Map<string, CampaignConditionHandler>();
-
-  register<K extends ConditionKind>(handler: CampaignConditionHandler<K>): this {
-    if (this.handlers.has(handler.kind)) throw new Error(`campaign condition handler already registered: "${handler.kind}"`);
-    this.handlers.set(handler.kind, handler as CampaignConditionHandler);
-    return this;
+export class CampaignConditionRegistry extends KeyedRegistry<ConditionKind, CampaignConditionHandler> {
+  constructor() {
+    super('campaign condition handler');
   }
 
-  replace<K extends ConditionKind>(handler: CampaignConditionHandler<K>): this {
-    this.handlers.set(handler.kind, handler as CampaignConditionHandler);
-    return this;
+  protected keyOf(handler: CampaignConditionHandler): ConditionKind {
+    return handler.kind;
   }
 
-  kinds(): string[] {
-    return [...this.handlers.keys()];
+  override register<K extends ConditionKind>(handler: CampaignConditionHandler<K>): this {
+    return super.register(handler as CampaignConditionHandler);
+  }
+
+  override replace<K extends ConditionKind>(handler: CampaignConditionHandler<K>): this {
+    return super.replace(handler as CampaignConditionHandler);
   }
 
   evaluate(state: CampaignState, condition: CampaignCondition): boolean {
-    const handler = this.handlers.get(condition.type);
-    if (!handler) throw new Error(`no campaign condition handler for "${condition.type}"`);
-    return handler.evaluate(state, condition as never, this);
+    return this.get(condition.type).evaluate(state, condition as never, this);
   }
 
   clone(): CampaignConditionRegistry {
-    const copy = new CampaignConditionRegistry();
-    for (const handler of this.handlers.values()) copy.register(handler);
-    return copy;
+    return this.copyInto(new CampaignConditionRegistry());
   }
 }
 
@@ -75,34 +71,29 @@ export interface CampaignEffectHandler<K extends EffectKind = EffectKind> {
   apply(state: CampaignState, effect: CampaignEffectKindMap[K]): void;
 }
 
-export class CampaignEffectRegistry {
-  private readonly handlers = new Map<string, CampaignEffectHandler>();
-
-  register<K extends EffectKind>(handler: CampaignEffectHandler<K>): this {
-    if (this.handlers.has(handler.kind)) throw new Error(`campaign effect handler already registered: "${handler.kind}"`);
-    this.handlers.set(handler.kind, handler as CampaignEffectHandler);
-    return this;
+export class CampaignEffectRegistry extends KeyedRegistry<EffectKind, CampaignEffectHandler> {
+  constructor() {
+    super('campaign effect handler');
   }
 
-  replace<K extends EffectKind>(handler: CampaignEffectHandler<K>): this {
-    this.handlers.set(handler.kind, handler as CampaignEffectHandler);
-    return this;
+  protected keyOf(handler: CampaignEffectHandler): EffectKind {
+    return handler.kind;
   }
 
-  kinds(): string[] {
-    return [...this.handlers.keys()];
+  override register<K extends EffectKind>(handler: CampaignEffectHandler<K>): this {
+    return super.register(handler as CampaignEffectHandler);
+  }
+
+  override replace<K extends EffectKind>(handler: CampaignEffectHandler<K>): this {
+    return super.replace(handler as CampaignEffectHandler);
   }
 
   apply(state: CampaignState, effect: CampaignEffect): void {
-    const handler = this.handlers.get(effect.type);
-    if (!handler) throw new Error(`no campaign effect handler for "${effect.type}"`);
-    handler.apply(state, effect as never);
+    this.get(effect.type).apply(state, effect as never);
   }
 
   clone(): CampaignEffectRegistry {
-    const copy = new CampaignEffectRegistry();
-    for (const handler of this.handlers.values()) copy.register(handler);
-    return copy;
+    return this.copyInto(new CampaignEffectRegistry());
   }
 }
 

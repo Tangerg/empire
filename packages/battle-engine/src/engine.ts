@@ -247,7 +247,7 @@ export class BattleEngine {
         if (!this.rules.abilities.has(ability)) issues.push(`career "${career.id}" requires missing ability "${ability}"`);
       }
     }
-    const hitEffects = new Set(this.rules.hitEffects.kinds());
+    const hitEffects = new Set(this.rules.hitEffects.keys());
     for (const weapon of this.rules.content.weapons.all()) {
       for (const effect of weapon.hitEffects) {
         if (!hitEffects.has(effect.type)) issues.push(`weapon "${weapon.id}" requires missing hit-effect handler "${effect.type}"`);
@@ -258,7 +258,7 @@ export class BattleEngine {
 
   private levelStrategyIssues(level: LevelData): string[] {
     const issues: string[] = [];
-    const objectiveKinds = new Set(this.rules.objectives.kinds());
+    const objectiveKinds = new Set(this.rules.objectives.keys());
     const visitObjective = (objective: Objective): void => {
       if (!objectiveKinds.has(objective.type)) {
         issues.push(`objective "${objective.type}" has no registered handler`);
@@ -272,7 +272,7 @@ export class BattleEngine {
       }
     }
 
-    const conditionKinds = new Set(this.rules.scenarioConditions.kinds());
+    const conditionKinds = new Set(this.rules.scenarioConditions.keys());
     const visitCondition = (condition: ScenarioCondition): void => {
       if (!conditionKinds.has(condition.type)) {
         issues.push(`scenario condition "${condition.type}" has no registered handler`);
@@ -281,7 +281,7 @@ export class BattleEngine {
       if (condition.type === 'all' || condition.type === 'any') condition.conditions.forEach(visitCondition);
       else if (condition.type === 'not') visitCondition(condition.condition);
     };
-    const effectKinds = new Set(this.rules.scenarioEffects.kinds());
+    const effectKinds = new Set(this.rules.scenarioEffects.keys());
     for (const trigger of level.scenario?.triggers ?? []) {
       visitCondition(trigger.condition);
       for (const effect of trigger.effects) {

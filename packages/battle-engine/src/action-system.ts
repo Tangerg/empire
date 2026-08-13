@@ -15,7 +15,7 @@ import {
 import { StatusBehaviors, type StatusBehaviorRegistry } from './statuses';
 import { DefaultBattleResources, type BattleResourceSystem } from './resources';
 import { Abilities, type AbilityDef } from './abilities';
-import { type Registry } from './registry';
+import { type ContentRegistry, KeyedRegistry } from './registry';
 import { DefaultTacticalSpace, type TacticalSpace } from './tactical-space';
 import { activeTurnOrder, mayAct, TurnOrders, type TurnOrderPolicy } from './turn-order';
 import { Reactions, type ReactionBehavior } from './reactions';
@@ -31,7 +31,7 @@ export type ActionKind = Extract<keyof ActionKindMap, string>;
 /** Runtime rule dependencies shared by action, turn, scenario, and victory phases. */
 export interface BattleRuleServices {
   readonly content: ContentCatalog;
-  readonly abilities: Registry<AbilityDef>;
+  readonly abilities: ContentRegistry<AbilityDef>;
   readonly space: TacticalSpace;
   readonly combatModifiers: CombatModifierPipeline;
   readonly hitEffects: WeaponHitEffectHandlerRegistry;
@@ -42,9 +42,9 @@ export interface BattleRuleServices {
   readonly progression: RankProgressionPolicy;
   readonly resources: BattleResourceSystem;
   /** Registered turn-order policies; the level's ruleset selects one by id. */
-  readonly turnOrders: Registry<TurnOrderPolicy>;
+  readonly turnOrders: ContentRegistry<TurnOrderPolicy>;
   /** Registered reaction stances; a unit's `reaction` selects one by id. */
-  readonly reactions: Registry<ReactionBehavior>;
+  readonly reactions: ContentRegistry<ReactionBehavior>;
   /** Consequences of a unit leaving the field, in registration order. */
   readonly unitDepartures: UnitDepartureHandlerRegistry;
   /** Seeded randomness. Swap for DeterministicOnlyRandom to forbid variance. */
@@ -168,41 +168,34 @@ export interface ActionHandler<K extends ActionKind = ActionKind> {
 }
 
 /** Strategy registry: one cohesive handler per action kind. */
-export class ActionHandlerRegistry {
-  private readonly handlers = new Map<string, ActionHandler>();
-
-  register<K extends ActionKind>(handler: ActionHandler<K>): this {
-    if (this.handlers.has(handler.kind)) {
-      throw new Error(`action handler already registered for "${handler.kind}"`);
-    }
-    this.handlers.set(handler.kind, handler as ActionHandler);
-    return this;
+export class ActionHandlerRegistry extends KeyedRegistry<ActionKind, ActionHandler> {
+  constructor() {
+    super('action handler');
   }
 
-  replace<K extends ActionKind>(handler: ActionHandler<K>): this {
-    this.handlers.set(handler.kind, handler as ActionHandler);
-    return this;
+  protected keyOf(handler: ActionHandler): ActionKind {
+    return handler.kind;
   }
 
-  handler(kind: ActionKind): ActionHandler {
-    const handler = this.handlers.get(kind);
-    if (!handler) throw new IllegalActionError(`没有处理行动类型「${kind}」的规则策略`);
-    return handler;
+  override register<K extends ActionKind>(handler: ActionHandler<K>): this {
+    return super.register(handler as ActionHandler);
+  }
+
+  override replace<K extends ActionKind>(handler: ActionHandler<K>): this {
+    return super.replace(handler as ActionHandler);
   }
 
   dispatch(context: ActionExecutionContext, action: Action): void {
+    const handler = this.tryGet(action.kind);
+    // An unknown kind reaches here from a save file or a mod, so it is a refused
+    // order rather than a defect: the taxonomy answer differs from the base's.
+    if (!handler) throw new IllegalActionError(`没有处理行动类型「${action.kind}」的规则策略`);
     // The kind lookup proves the runtime pair. The erased call is isolated here
     // so individual handlers remain fully typed.
-    this.handler(action.kind).execute(context, action as never);
-  }
-
-  kinds(): string[] {
-    return [...this.handlers.keys()];
+    handler.execute(context, action as never);
   }
 
   clone(): ActionHandlerRegistry {
-    const copy = new ActionHandlerRegistry();
-    for (const handler of this.handlers.values()) copy.register(handler);
-    return copy;
+    return this.copyInto(new ActionHandlerRegistry());
   }
 }

@@ -15,7 +15,7 @@ import { type ObjectiveHandlerRegistry } from './objective-system';
 import { type BattleResourceSystem, playerResource } from './resources';
 import { hasStatus } from './statuses';
 import type { AbilityRules } from './abilities';
-import type { Registry } from './registry';
+import { KeyedRegistry, PriorityRegistry, type ContentRegistry } from './registry';
 import type { TurnOrderPolicy } from './turn-order';
 import type { TacticalSpace } from './tactical-space';
 import type { VictoryRules } from './victory';
@@ -252,7 +252,7 @@ interface Candidate {
  */
 export interface AiRules extends AbilityRules, VictoryRules {
   /** Planning must ask the same policy execution will enforce. */
-  readonly turnOrders: Registry<TurnOrderPolicy>;
+  readonly turnOrders: ContentRegistry<TurnOrderPolicy>;
 }
 
 export interface AbilityAiEvaluationContext {
@@ -273,34 +273,17 @@ export interface AbilityAiEvaluator {
 }
 
 /** Ability plugins register tactical utility here alongside legality/execution. */
-export class AbilityAiEvaluatorRegistry {
-  private readonly evaluators = new Map<string, AbilityAiEvaluator>();
-
-  register(evaluator: AbilityAiEvaluator): this {
-    if (this.evaluators.has(evaluator.ability)) {
-      throw new Error(`AI evaluator already registered for ability "${evaluator.ability}"`);
-    }
-    this.evaluators.set(evaluator.ability, evaluator);
-    return this;
+export class AbilityAiEvaluatorRegistry extends KeyedRegistry<string, AbilityAiEvaluator> {
+  constructor() {
+    super('AI ability evaluator');
   }
 
-  replace(evaluator: AbilityAiEvaluator): this {
-    this.evaluators.set(evaluator.ability, evaluator);
-    return this;
-  }
-
-  evaluator(ability: string): AbilityAiEvaluator | undefined {
-    return this.evaluators.get(ability);
-  }
-
-  kinds(): string[] {
-    return [...this.evaluators.keys()];
+  protected keyOf(evaluator: AbilityAiEvaluator): string {
+    return evaluator.ability;
   }
 
   clone(): AbilityAiEvaluatorRegistry {
-    const copy = new AbilityAiEvaluatorRegistry();
-    for (const evaluator of this.evaluators.values()) copy.register(evaluator);
-    return copy;
+    return this.copyInto(new AbilityAiEvaluatorRegistry());
   }
 }
 
@@ -453,7 +436,7 @@ function evaluateUnit(
     if (!path) continue;
 
     for (const opt of commandOptions(rules, s, unit, at)) {
-      const aiEvaluator = abilityEvaluators.evaluator(opt.ability);
+      const aiEvaluator = abilityEvaluators.tryGet(opt.ability);
       if (!aiEvaluator) continue;
       const targets: Array<Coord | null> = opt.selfTargeted ? [null] : opt.targets;
       for (const target of targets) {
@@ -680,26 +663,12 @@ export interface AiIntent {
   propose(context: AiTurnContext): Action | null;
 }
 
-export class AiIntentRegistry {
-  private readonly intents = new Map<string, AiIntent>();
-
-  register(intent: AiIntent): this {
-    if (this.intents.has(intent.id)) throw new Error(`ai intent already registered: "${intent.id}"`);
-    this.intents.set(intent.id, intent);
-    return this;
+export class AiIntentRegistry extends PriorityRegistry<AiIntent> {
+  constructor() {
+    super('AI intent');
   }
 
-  replace(intent: AiIntent): this {
-    this.intents.set(intent.id, intent);
-    return this;
-  }
-
-  /** Priority order, ties broken by id so registration order never decides. */
-  ordered(): AiIntent[] {
-    return [...this.intents.values()]
-      .sort((left, right) => left.priority - right.priority || left.id.localeCompare(right.id));
-  }
-
+  /** The order intents are consulted in, which is the order that decides turns. */
   ids(): string[] {
     return this.ordered().map((intent) => intent.id);
   }
@@ -714,9 +683,7 @@ export class AiIntentRegistry {
   }
 
   clone(): AiIntentRegistry {
-    const copy = new AiIntentRegistry();
-    for (const intent of this.intents.values()) copy.register(intent);
-    return copy;
+    return this.copyInto(new AiIntentRegistry());
   }
 }
 

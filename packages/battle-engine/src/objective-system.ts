@@ -13,12 +13,16 @@ import type {
 import { type ContentCatalog } from './content-pack';
 import type { ScenarioConditionHandlerRegistry } from './scenario';
 import { compositeStatus, requireComposite } from './composites';
+import { KeyedRegistry } from './registry';
 
 export type { ObjectiveOutcome } from './types';
 export type ObjectiveRole = 'primary' | 'optional' | 'critical';
 export type ObjectiveRefreshMode = 'self' | 'children' | 'sequence';
 
-type ObjectiveOf<K extends keyof ObjectiveKindMap> = ObjectiveMeta & ObjectiveKindMap[K];
+/** The discriminant every objective is keyed by, named once for every consumer. */
+export type ObjectiveKind = Extract<keyof ObjectiveKindMap, string>;
+
+type ObjectiveOf<K extends ObjectiveKind> = ObjectiveMeta & ObjectiveKindMap[K];
 
 /**
  * Port declared by this module: `failOn` embeds a scenario condition, so
@@ -40,7 +44,7 @@ export interface ObjectiveEvaluationContext {
 }
 
 /** One cohesive strategy owns calculation, presentation, and traversal metadata. */
-export interface ObjectiveHandler<K extends keyof ObjectiveKindMap = keyof ObjectiveKindMap> {
+export interface ObjectiveHandler<K extends ObjectiveKind = ObjectiveKind> {
   readonly kind: K;
   readonly role?: ObjectiveRole;
   readonly refresh?: ObjectiveRefreshMode;
@@ -65,47 +69,37 @@ function terminalProgress(status: ObjectiveStatus): string | null {
   return null;
 }
 
-export class ObjectiveHandlerRegistry {
-  private readonly handlers = new Map<keyof ObjectiveKindMap, ObjectiveHandler>();
-
-  register<K extends keyof ObjectiveKindMap>(handler: ObjectiveHandler<K>): this {
-    if (this.handlers.has(handler.kind)) throw new Error(`目标处理器已注册：${String(handler.kind)}`);
-    this.handlers.set(handler.kind, handler as ObjectiveHandler);
-    return this;
+export class ObjectiveHandlerRegistry extends KeyedRegistry<ObjectiveKind, ObjectiveHandler> {
+  constructor() {
+    super('objective handler');
   }
 
-  replace<K extends keyof ObjectiveKindMap>(handler: ObjectiveHandler<K>): this {
-    this.handlers.set(handler.kind, handler as ObjectiveHandler);
-    return this;
+  protected keyOf(handler: ObjectiveHandler): ObjectiveKind {
+    return handler.kind;
   }
 
-  handler<K extends keyof ObjectiveKindMap>(kind: K): ObjectiveHandler<K> {
-    const handler = this.handlers.get(kind);
-    if (!handler) throw new Error(`未注册目标处理器：${String(kind)}`);
-    return handler as ObjectiveHandler<K>;
+  override register<K extends ObjectiveKind>(handler: ObjectiveHandler<K>): this {
+    return super.register(handler as ObjectiveHandler);
   }
 
-  kinds(): Array<keyof ObjectiveKindMap> {
-    return [...this.handlers.keys()];
+  override replace<K extends ObjectiveKind>(handler: ObjectiveHandler<K>): this {
+    return super.replace(handler as ObjectiveHandler);
   }
 
   clone(): ObjectiveHandlerRegistry {
-    const copy = new ObjectiveHandlerRegistry();
-    for (const handler of this.handlers.values()) copy.register(handler);
-    return copy;
+    return this.copyInto(new ObjectiveHandlerRegistry());
   }
 
   role(objective: Objective): ObjectiveRole {
-    return this.handler(objective.type).role ?? 'primary';
+    return this.get(objective.type).role ?? 'primary';
   }
 
   refreshMode(objective: Objective): ObjectiveRefreshMode {
-    return this.handler(objective.type).refresh ?? 'self';
+    return this.get(objective.type).refresh ?? 'self';
   }
 
   children(objective: Objective): Objective[] {
-    const handler = this.handler(objective.type);
-    return handler.children?.(objective as never) ?? [];
+    return this.get(objective.type).children?.(objective as never) ?? [];
   }
 
   evaluate(
@@ -118,19 +112,19 @@ export class ObjectiveHandlerRegistry {
     const terminal = terminalOutcome(status);
     if (terminal) return terminal;
     const context = this.context(rules, state, owner);
-    return this.handler(objective.type).outcome(context, objective as never);
+    return this.get(objective.type).outcome(context, objective as never);
   }
 
   describe(objective: Objective): string {
     if (objective.label) return objective.label;
-    return this.handler(objective.type).describe(objective as never, this);
+    return this.get(objective.type).describe(objective as never, this);
   }
 
   progress(rules: ObjectiveRules, state: GameState, owner: PlayerId, objective: Objective): string {
     const context = this.context(rules, state, owner);
     const terminal = terminalProgress(context.status(objective));
     if (terminal) return terminal;
-    return this.handler(objective.type).progress(context, objective as never);
+    return this.get(objective.type).progress(context, objective as never);
   }
 
   private context(

@@ -111,7 +111,7 @@ describe('a unit leaving the field is one announcement', () => {
 
     expect(bounty).toEqual([2]);
     // The built-in consequences are registered the same way, not hard-wired.
-    expect(battle.rules.unitDepartures.ids()).toEqual(
+    expect(battle.rules.unitDepartures.keys()).toEqual(
       expect.arrayContaining(['commander.defeat', 'casting.cancel', 'test.bounty']),
     );
   });

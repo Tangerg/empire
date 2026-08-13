@@ -11,7 +11,7 @@ import type { WeaponHitEffectHandlerRegistry } from './hit-effects';
 import { awardRankProgress, type RankProgressionPolicy } from './progression';
 import { unitAbilityIds } from './careers';
 import { idx } from './grid';
-import { Registry } from './registry';
+import { ContentRegistry } from './registry';
 import { type ReactionBehavior } from './reactions';
 import { type UnitDepartureHandlerRegistry } from './unit-departure';
 import { unitAtCoord } from './state';
@@ -53,8 +53,8 @@ export interface AbilityRules {
   readonly progression: RankProgressionPolicy;
   /** Shared spatial legality used by menus, AI and action execution. */
   readonly space: TacticalSpace;
-  readonly abilities: Registry<AbilityDef>;
-  readonly reactions: Registry<ReactionBehavior>;
+  readonly abilities: ContentRegistry<AbilityDef>;
+  readonly reactions: ContentRegistry<ReactionBehavior>;
   readonly unitDepartures: UnitDepartureHandlerRegistry;
 }
 
@@ -75,7 +75,7 @@ export interface AbilityDef {
   execute(rules: AbilityRules, q: AbilityQuery, target: Coord | null, emit: Emit): void;
 }
 
-export const Abilities = new Registry<AbilityDef>('ability');
+export const Abilities = new ContentRegistry<AbilityDef>('ability');
 
 function ability(def: Partial<AbilityDef> & { id: string; name: string }): AbilityDef {
   return {

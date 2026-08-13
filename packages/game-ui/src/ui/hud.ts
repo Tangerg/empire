@@ -85,7 +85,7 @@ function formatAmounts(resources: BattleResourceSystem, amounts: readonly Resour
 }
 
 function accountSummary(resources: BattleResourceSystem, subject: ResourceSubject): string[] {
-  return resources.adapters.ids().flatMap((id) => {
+  return resources.adapters.keys().flatMap((id) => {
     if (!resources.hasAccount(id, subject)) return [];
     const account = resources.inspect(id, subject);
     const value = account.current === null

@@ -387,6 +387,28 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('builds every extension point on the shared registry', () => {
+    // Twelve registries had each hand-written the same table, and they had
+    // drifted where it mattered: some could be *asked* for an entry, some could
+    // only be told and would throw, which is why the HUD once wrapped a lookup
+    // in `try/catch` to print a fallback label. A registry that owns its own
+    // Map is a registry free to be missing half its interface again.
+    //
+    // The two exceptions are not keyed tables at all: terrain encoding is a
+    // bijection between characters and terrain, and the damage matchup is a
+    // matrix keyed by a pair.
+    const notKeyedByOneId = [join('data', 'terrain-encoding.ts'), join('data', 'damage.ts')];
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (name === 'registry.ts' || notKeyedByOneId.includes(name)) return [];
+      return [...readFileSync(file, 'utf8').matchAll(/export class (\w*Registry)\b([^{]*)\{/g)]
+        .filter((match) => !/extends\s+(?:Keyed|Priority|Content)Registry/.test(match[2]))
+        .map((match) => `${name}: ${match[1]}`);
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('asks one question about the right to react', () => {
     // The same lesson as `mayAct`: a budget compared by hand at each site is a
     // budget that the next kind of reaction quietly gets a second copy of.

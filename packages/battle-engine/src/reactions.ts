@@ -1,4 +1,4 @@
-import { Registry } from './registry';
+import { ContentRegistry } from './registry';
 import type { ReactionStance } from './types';
 
 /**
@@ -29,11 +29,11 @@ export interface ReactionBehavior {
   readonly conservesResources: boolean;
 }
 
-export const Reactions = new Registry<ReactionBehavior>('reaction stance');
+export const Reactions = new ContentRegistry<ReactionBehavior>('reaction stance');
 
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
 export interface ReactionRules {
-  readonly reactions: Registry<ReactionBehavior>;
+  readonly reactions: ContentRegistry<ReactionBehavior>;
 }
 
 export function reactionOf(rules: ReactionRules, stance: ReactionStance): ReactionBehavior {
