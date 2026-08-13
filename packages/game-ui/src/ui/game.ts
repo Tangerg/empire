@@ -7,7 +7,7 @@ import { tacticOptions } from '@empire/battle-engine/commanders';
 import { idx } from '@empire/battle-engine/grid';
 import type { BattleEngine } from '@empire/battle-engine/engine';
 import { GameSession } from '@empire/battle-engine/session';
-import { areEnemies, recruitOptions, unitAt } from '@empire/battle-engine/state';
+import { areEnemies, unitAt } from '@empire/battle-engine/state';
 import type {
   Action,
   Coord,
@@ -17,10 +17,18 @@ import type {
   LevelData,
   ReactionStance,
   Unit,
-  WeaponId,
 } from '@empire/battle-engine/types';
 import { BoardView, emptyOverlay, type BoardOverlay } from './board';
 import { Hud, type HudView } from './hud';
+import {
+  DestinationSelection,
+  IDLE,
+  TacticTargetSelection,
+  TargetSelection,
+  UnitSelection,
+  type Selection,
+  type SelectionContext,
+} from './selection';
 
 export interface BattleCompletionSnapshot {
   state: GameState;
@@ -35,22 +43,6 @@ export interface GameControllerOptions {
   onComplete?: (snapshot: BattleCompletionSnapshot) => void;
 }
 
-type Mode =
-  | { kind: 'idle' }
-  | { kind: 'unit'; unit: number }
-  | { kind: 'dest'; unit: number; dest: Coord; path: Coord[] }
-  | {
-      kind: 'target';
-      unit: number;
-      dest: Coord;
-      path: Coord[];
-      ability: string;
-      weapon?: WeaponId;
-      targets: Coord[];
-    }
-  | { kind: 'tacticTarget'; commander: string; tactic: string; targets: Coord[] }
-  | { kind: 'recruit'; at: Coord };
-
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
 /**
@@ -64,10 +56,9 @@ export class GameController {
   private readonly hud: Hud;
   private readonly scroller = document.createElement('div');
 
-  private mode: Mode = { kind: 'idle' };
+  private selection: Selection = IDLE;
   private cursor: Coord | null = null;
   private inspect: Unit | null = null;
-  private hoverTarget: Coord | null = null;
   private busy = false;
   private messages: string[] = [];
   private aiRunning = false;
@@ -87,7 +78,6 @@ export class GameController {
       onTileEnter: (c) => this.handleHover(c),
       onLeave: () => {
         this.cursor = null;
-        this.hoverTarget = null;
         this.refresh();
       },
       onSecondary: () => this.cancel(),
@@ -179,7 +169,7 @@ export class GameController {
       return this.cycleIdleUnit();
     }
     const map: Record<string, string> = { a: 'attack', c: 'capture', h: 'heal', w: 'wait' };
-    if (map[k] && this.mode.kind === 'dest') void this.chooseCommand(map[k]);
+    if (map[k] && this.selection instanceof DestinationSelection) void this.chooseCommand(map[k]);
   };
 
   /* ------------------------------------------------------------------ input */
@@ -189,176 +179,58 @@ export class GameController {
     const u = unitAt(this.state, c.x, c.y);
     if (u && this.isVisible(u)) this.inspect = u;
     else if (!this.selectedUnit) this.inspect = null;
-
-    if (this.mode.kind === 'target' || this.mode.kind === 'tacticTarget') {
-      this.hoverTarget = this.mode.targets.some((t) => t.x === c.x && t.y === c.y) ? c : null;
-    } else {
-      this.hoverTarget = null;
-    }
     this.refresh();
   }
 
   private get selectedUnit(): Unit | null {
-    if (
-      this.mode.kind === 'idle' ||
-      this.mode.kind === 'recruit' ||
-      this.mode.kind === 'tacticTarget'
-    ) return null;
-    return this.session.unit(this.mode.unit) ?? null;
+    return this.selection.unitIn(this.selectionContext());
+  }
+
+  /**
+   * The cursor, but only when it is one of the current selection's targets.
+   *
+   * Derived rather than stored: it used to be a field that three unrelated
+   * methods had to remember to clear, and forgetting left a forecast on screen
+   * for an order that no longer existed.
+   */
+  private get hoverTarget(): Coord | null {
+    const cursor = this.cursor;
+    if (!cursor) return null;
+    return this.selection.targets.some((t) => t.x === cursor.x && t.y === cursor.y) ? cursor : null;
+  }
+
+  private selectionContext(): SelectionContext {
+    return {
+      session: this.session,
+      state: this.state,
+      isHumanTurn: this.isHumanTurn,
+      cursor: this.cursor,
+      hoverTarget: this.hoverTarget,
+      canAct: (unit) => this.session.engine.canAct(this.state, unit),
+      isVisible: (unit) => this.isVisible(unit),
+    };
   }
 
   private async handleClick(c: Coord): Promise<void> {
     if (this.busy || this.state.phase !== 'playing') return;
-    const s = this.state;
-
-    if (this.mode.kind === 'tacticTarget') {
-      if (this.mode.targets.some((target) => target.x === c.x && target.y === c.y)) {
-        await this.dispatch({
-          kind: 'tactic',
-          commander: this.mode.commander,
-          tactic: this.mode.tactic,
-          target: c,
-        });
-      } else {
-        this.cancel();
-      }
+    const outcome = this.selection.click(this.selectionContext(), c);
+    if (outcome.action) {
+      await this.dispatch(outcome.action);
       return;
     }
-
-    if (this.mode.kind === 'target') {
-      if (this.mode.targets.some((t) => t.x === c.x && t.y === c.y)) {
-        const { unit, path, ability, weapon } = this.mode;
-        await this.dispatch({ kind: 'command', unit, path, command: { ability, weapon, target: c } });
-      } else {
-        this.cancel();
-      }
-      return;
-    }
-
-    const clicked = unitAt(s, c.x, c.y);
-
-    if (this.mode.kind === 'unit' || this.mode.kind === 'dest') {
-      const unit = this.selectedUnit;
-      if (unit && this.isHumanTurn && this.session.engine.canAct(s, unit)) {
-        const field = this.session.moveField(unit);
-        const i = idx(s.map, c.x, c.y);
-
-        // Clicking an enemy picks a firing position and arms the attack; the
-        // forecast appears first, and a second click on the target confirms.
-        if (clicked && areEnemies(s, clicked.owner, unit.owner) && this.isVisible(clicked)) {
-          const choice = this.bestAttackSpot(unit, clicked);
-          if (choice) {
-            const path = this.session.pathTo(unit, choice.at) ?? [{ x: unit.x, y: unit.y }];
-            const target = { x: clicked.x, y: clicked.y };
-            this.mode = {
-              kind: 'target',
-              unit: unit.id,
-              dest: choice.at,
-              path,
-              ability: 'attack',
-              weapon: choice.weapon,
-              targets: choice.targets,
-            };
-            this.hoverTarget = target;
-            this.refresh();
-            return;
-          }
-        }
-
-        if (field.stops.has(i)) {
-          const path = this.session.pathTo(unit, c);
-          if (path) {
-            const commands = this.session.commandsAt(unit, c);
-            // A lone "wait" needs no menu round-trip.
-            if (commands.length === 1 && commands[0].ability === 'wait') {
-              await this.dispatch({
-                kind: 'command',
-                unit: unit.id,
-                path,
-                command: { ability: 'wait' },
-              });
-              return;
-            }
-            this.mode = { kind: 'dest', unit: unit.id, dest: c, path };
-            this.refresh();
-            return;
-          }
-        }
-      }
-    }
-
-    // Fresh selection.
-    if (clicked && this.isHumanTurn && this.session.engine.canAct(s, clicked)) {
-      this.mode = { kind: 'unit', unit: clicked.id };
-      this.inspect = clicked;
-      this.refresh();
-      return;
-    }
-
-    if (clicked) {
-      this.mode = { kind: 'idle' };
-      this.inspect = this.isVisible(clicked) ? clicked : null;
-      this.refresh();
-      return;
-    }
-
-    // Empty production building we own: recruit.
-    const i = idx(s.map, c.x, c.y);
-    const terrain = this.session.content.terrains.get(s.map.tiles[i]);
-    if (
-      this.isHumanTurn &&
-      terrain.produces.length > 0 &&
-      s.map.owners[i] === s.currentPlayer &&
-      recruitOptions(s, c, this.session.rules.resources, this.session.content).length > 0
-    ) {
-      this.mode = { kind: 'recruit', at: c };
-      this.refresh();
-      return;
-    }
-
-    this.mode = { kind: 'idle' };
-    this.inspect = null;
+    this.selection = outcome.selection;
+    // One rule where there were five: the inspector shows what you just
+    // clicked, if you are allowed to see it, and nothing otherwise.
+    const clicked = unitAt(this.state, c.x, c.y);
+    this.inspect = clicked && this.isVisible(clicked) ? clicked : null;
     this.refresh();
   }
 
-  /** Reachable tile from which `target` can be hit, preferring safe cover. */
-  private bestAttackSpot(
-    unit: Unit,
-    target: Unit,
-  ): { at: Coord; weapon: WeaponId; targets: Coord[]; score: number } | null {
-    const s = this.state;
-    const field = this.session.moveField(unit);
-    let best: { at: Coord; weapon: WeaponId; targets: Coord[]; score: number } | null = null;
-    for (const i of field.stops) {
-      const at = { x: i % s.map.width, y: Math.floor(i / s.map.width) };
-      const moved = at.x !== unit.x || at.y !== unit.y;
-      for (const option of this.session.commandsAt(unit, at).filter((entry) => entry.ability === 'attack')) {
-        if (!option.weapon) continue;
-        if (!option.targets.some((cell) => cell.x === target.x && cell.y === target.y)) continue;
-        const plan = this.session.attackPlan(unit, target, at, option.weapon);
-        const fc = plan.primaryUnit!;
-        const splash = plan.unitHits
-          .filter((hit) => !hit.primary)
-          .reduce((sum, hit) => sum + hit.damage.damage, 0) +
-          plan.structureHits.filter((hit) => !hit.primary).reduce((sum, hit) => sum + hit.forecast.damage, 0);
-        const terrain = this.session.content.terrains.get(s.map.tiles[i]);
-        const score =
-          fc.strike.damage * 2 +
-          splash * 1.25 +
-          terrain.defense * 60 -
-          (fc.counter?.damage ?? 0) * 1.5 -
-          (moved ? 1 : 0);
-        if (!best || score > best.score) {
-          best = { at, weapon: option.weapon, targets: option.targets, score };
-        }
-      }
-    }
-    return best;
-  }
-
   private async chooseCommand(optionKeyOrAbility: string): Promise<void> {
-    if (this.mode.kind !== 'dest' || this.busy) return;
-    const { unit, dest, path } = this.mode;
+    const selection = this.selection;
+    if (!(selection instanceof DestinationSelection) || this.busy) return;
+    const { dest, path } = selection;
+    const unit = selection.unitId;
     const u = this.session.unit(unit);
     if (!u) return;
     const options = this.session.commandsAt(u, dest);
@@ -380,7 +252,7 @@ export class GameController {
       });
       return;
     }
-    this.mode = { kind: 'target', unit, dest, path, ability, weapon, targets: option.targets };
+    this.selection = new TargetSelection(unit, dest, path, ability, weapon, option.targets);
     this.refresh();
   }
 
@@ -396,7 +268,7 @@ export class GameController {
       await this.dispatch({ kind: 'tactic', commander, tactic, target: option.targets[0] });
       return;
     }
-    this.mode = { kind: 'tacticTarget', commander, tactic, targets: option.targets };
+    this.selection = new TacticTargetSelection(commander, tactic, option.targets);
     this.refresh();
   }
 
@@ -419,37 +291,26 @@ export class GameController {
   }
 
   private async recruit(unitType: string): Promise<void> {
-    if (this.mode.kind !== 'recruit') return;
-    await this.dispatch({ kind: 'recruit', at: this.mode.at, unit: unitType });
+    const at = this.selection.recruitAt;
+    if (!at) return;
+    await this.dispatch({ kind: 'recruit', at, unit: unitType });
   }
 
   private cancel(): void {
     if (this.busy) return;
-    switch (this.mode.kind) {
-      case 'target':
-        this.mode = { kind: 'dest', unit: this.mode.unit, dest: this.mode.dest, path: this.mode.path };
-        break;
-      case 'tacticTarget':
-        this.mode = { kind: 'idle' };
-        break;
-      case 'dest':
-        this.mode = { kind: 'unit', unit: this.mode.unit };
-        break;
-      default:
-        this.mode = { kind: 'idle' };
-        this.inspect = null;
-    }
-    this.hoverTarget = null;
+    const previous = this.selection.back();
+    if (previous === IDLE) this.inspect = null;
+    this.selection = previous;
     this.refresh();
   }
 
   private cycleIdleUnit(): void {
     const idle = this.session.engine.actors(this.state);
     if (idle.length === 0) return;
-    const current = this.mode.kind === 'unit' ? this.mode.unit : -1;
+    const current = this.selection instanceof UnitSelection ? this.selection.unitId : -1;
     const at = idle.findIndex((u) => u.id === current);
     const next = idle[(at + 1) % idle.length];
-    this.mode = { kind: 'unit', unit: next.id };
+    this.selection = new UnitSelection(next.id);
     this.inspect = next;
     this.board.centerOn({ x: next.x, y: next.y }, this.scroller);
     this.refresh();
@@ -459,7 +320,7 @@ export class GameController {
     if (this.busy || !this.session.canUndo) return;
     this.session.undo();
     this.board.setState(this.state);
-    this.mode = { kind: 'idle' };
+    this.selection = IDLE;
     this.inspect = null;
     this.pushMessage('已撤销上一步');
     this.refresh();
@@ -468,7 +329,7 @@ export class GameController {
   private restart(): void {
     this.session.restart();
     this.board.setState(this.state);
-    this.mode = { kind: 'idle' };
+    this.selection = IDLE;
     this.inspect = null;
     this.messages = [];
     this.refresh();
@@ -495,8 +356,7 @@ export class GameController {
   private async dispatch(action: Action): Promise<void> {
     if (this.busy) return;
     this.busy = true;
-    this.mode = { kind: 'idle' };
-    this.hoverTarget = null;
+    this.selection = IDLE;
     this.refresh();
 
     try {
@@ -698,48 +558,24 @@ export class GameController {
       }
     }
 
+    if (this.busy) return o;
     const unit = this.selectedUnit;
-    if (unit && !this.busy) {
+
+    if (unit) {
       o.selected = { x: unit.x, y: unit.y };
       if (this.isHumanTurn && this.session.engine.canAct(s, unit)) {
-        if (this.mode.kind === 'unit') {
-          for (const i of this.session.controlZoneAgainst(unit)) o.controlled.add(i);
-          for (const i of this.session.moveField(unit).stops) o.move.add(i);
-          for (const i of this.session.threatOf(unit)) {
-            if (!o.move.has(i)) o.attack.add(i);
-          }
-          if (this.cursor) {
-            const path = this.session.pathTo(unit, this.cursor);
-            if (path && this.session.moveField(unit).stops.has(idx(s.map, this.cursor.x, this.cursor.y))) {
-              o.path = path;
-            }
-          }
-        } else if (this.mode.kind === 'dest' || this.mode.kind === 'target') {
-          o.selected = this.mode.dest;
-          o.path = this.mode.path;
-          if (this.mode.kind === 'target') {
-            const set = this.mode.ability === 'heal' ? o.heal : o.attack;
-            for (const t of this.mode.targets) set.add(idx(s.map, t.x, t.y));
-            if (this.mode.ability === 'attack' && this.hoverTarget) {
-              try {
-                const plan = this.session.attackPlan(unit, this.hoverTarget, this.mode.dest, this.mode.weapon);
-                for (const cell of plan.affectedCells) o.attack.add(idx(s.map, cell.x, cell.y));
-              } catch {
-                // Hover may move between valid targets while the overlay refreshes.
-              }
-            }
-          }
-        }
+        this.selection.paint(this.selectionContext(), o);
       }
-    } else if (this.inspect && !this.busy) {
-      // Hovering an enemy shows what it can hit next turn.
-      if (areEnemies(s, this.inspect.owner, viewer)) {
-        for (const i of this.session.threatOf(this.inspect)) o.threat.add(i);
-        o.selected = { x: this.inspect.x, y: this.inspect.y };
-      }
+      return o;
     }
-    if (this.mode.kind === 'tacticTarget') {
-      for (const target of this.mode.targets) o.heal.add(idx(s.map, target.x, target.y));
+
+    // A selection with no unit of its own still has something to show — a
+    // tactic's reach — and it shows it whether or not an enemy is inspected.
+    this.selection.paint(this.selectionContext(), o);
+    if (this.inspect && areEnemies(s, this.inspect.owner, viewer)) {
+      // Hovering an enemy shows what it can hit next turn.
+      for (const i of this.session.threatOf(this.inspect)) o.threat.add(i);
+      o.selected = { x: this.inspect.x, y: this.inspect.y };
     }
 
     return o;
@@ -750,10 +586,11 @@ export class GameController {
     let fcView: HudView['forecast'] = null;
 
     const unit = this.selectedUnit;
-    if (unit && this.mode.kind === 'target' && this.hoverTarget && this.mode.ability === 'attack') {
+    const aiming = this.selection instanceof TargetSelection ? this.selection : null;
+    if (unit && aiming && this.hoverTarget && aiming.ability === 'attack') {
       const defender = unitAt(s, this.hoverTarget.x, this.hoverTarget.y);
       if (defender) {
-        const plan = this.session.attackPlan(unit, this.hoverTarget, this.mode.dest, this.mode.weapon);
+        const plan = this.session.attackPlan(unit, this.hoverTarget, aiming.dest, aiming.weapon);
         const fc = plan.primaryUnit!;
         const recipient = s.units.find((candidate) => candidate.id === fc.damageRecipient) ?? defender;
         fcView = {
@@ -766,12 +603,10 @@ export class GameController {
       }
     }
 
-    const commands =
-      this.mode.kind === 'dest' && unit && !this.busy
-        ? this.session.commandsAt(unit, this.mode.dest)
-        : null;
+    const menuAt = this.selection instanceof DestinationSelection ? this.selection.dest : null;
+    const commands = menuAt && unit && !this.busy ? this.session.commandsAt(unit, menuAt) : null;
     const tactics =
-      this.isHumanTurn && !this.busy && this.mode.kind === 'idle'
+      this.isHumanTurn && !this.busy && this.selection === IDLE
         ? s.commanders
             .filter((commander) => commander.owner === s.currentPlayer)
             .flatMap((commander) =>
@@ -808,13 +643,8 @@ export class GameController {
       careerOptions: unit && this.isHumanTurn && this.session.engine.canAct(s, unit)
         ? this.session.careerOptions(unit)
         : [],
-      targeting:
-        this.mode.kind === 'target'
-          ? this.mode.ability
-          : this.mode.kind === 'tacticTarget'
-            ? this.mode.tactic
-            : null,
-      recruitAt: this.mode.kind === 'recruit' ? this.mode.at : null,
+      targeting: this.selection.targetingLabel,
+      recruitAt: this.selection.recruitAt,
       hint: this.hint(),
       busy: this.busy,
       canUndo: this.session.canUndo,
@@ -827,14 +657,7 @@ export class GameController {
   private hint(): string {
     if (this.state.phase === 'over') return '对局结束。';
     if (!this.isHumanTurn) return 'AI 正在思考…';
-    switch (this.mode.kind) {
-      case 'unit':
-        return '点击蓝色格移动，点击敌人直接发起攻击。';
-      case 'idle':
-        return '点击你的单位开始行动；点击自己的城堡/兵营可以征募（空格切换待命单位）。';
-      default:
-        return '';
-    }
+    return this.selection.hint;
   }
 
   private pushMessage(m: string): void {
