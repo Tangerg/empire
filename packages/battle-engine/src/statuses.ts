@@ -181,12 +181,13 @@ export interface StatusRules {
 export function resolveTurnStartStatuses(
   rules: StatusRules,
   state: GameState,
-  owner: number,
   emit: (event: GameEvent) => void,
+  /** Units whose actor turn is starting. The caller decides the scope. */
+  scope: readonly Unit[],
   onDeath?: (unitId: number) => void,
 ): void {
   const content = rules.content;
-  for (const unit of state.units.filter((candidate) => candidate.owner === owner)) {
+  for (const unit of scope) {
     for (const instance of [...unit.statuses]) {
       const def = statusDef(instance.id, content);
       const context = new StatusLifecycleContext(state, unit, instance, emit, content, onDeath);

@@ -655,6 +655,12 @@ export class EditorApp {
         <label class="check"><input type="checkbox" data-field="r.fog" ${rules.fog ? 'checked' : ''}/> 战争迷雾</label>
         <label class="check"><input type="checkbox" data-field="r.counterAttack" ${rules.counterAttack ?? true ? 'checked' : ''}/> 允许反击</label>
         <label class="check"><input type="checkbox" data-field="r.recruitsActImmediately" ${rules.recruitsActImmediately ? 'checked' : ''}/> 新单位当回合可行动</label>
+        <label class="stack">行动序
+          <select data-field="r.turnOrder">
+            <option value="side" ${(rules.turnOrder ?? 'side') === 'side' ? 'selected' : ''}>阵营回合（远古帝国 / AW）</option>
+            <option value="initiative" ${rules.turnOrder === 'initiative' ? 'selected' : ''}>个体行动序（皇家骑士团 / FFT）</option>
+          </select>
+        </label>
         <label class="stack">占领方式
           <select data-field="r.captureMode">
             <option value="instant" ${(rules.captureMode ?? 'instant') === 'instant' ? 'selected' : ''}>踏入即占领（远古帝国）</option>
@@ -886,7 +892,7 @@ export class EditorApp {
       const key = fieldName as keyof RuleSet;
       const rules = this.doc.rules as Record<string, unknown>;
       if (typeof value === 'boolean') rules[key] = value;
-      else if (key === 'captureMode') rules[key] = value;
+      else if (key === 'captureMode' || key === 'turnOrder') rules[key] = value;
       else rules[key] = num(value);
       this.renderRight();
       this.autosave();

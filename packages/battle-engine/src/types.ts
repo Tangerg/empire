@@ -408,6 +408,11 @@ export interface RuleSet {
   maxUnitsPerPlayer: number | null;
   /** Units recruited this turn cannot act. */
   recruitsActImmediately: boolean;
+  /**
+   * Registered turn-order policy id. 'side' gives Advance Wars / Ancient
+   * Empires side turns; 'initiative' gives Tactics Ogre / FFT per-unit ordering.
+   */
+  turnOrder: string;
   highGroundThreshold: number;
   highGroundDamageMultiplier: number;
   sideAttackMultiplier: number;
@@ -437,6 +442,7 @@ export const DEFAULT_RULES: RuleSet = {
   enemiesBlockMovement: true,
   maxUnitsPerPlayer: null,
   recruitsActImmediately: false,
+  turnOrder: 'side',
   highGroundThreshold: 1,
   highGroundDamageMultiplier: 1.1,
   sideAttackMultiplier: 1.1,
@@ -901,6 +907,18 @@ export interface DeploymentState {
   assignments: DeploymentAssignment[];
 }
 
+/**
+ * Turn-order state. `data` is opaque to the engine: the policy named by
+ * `policy` is the only thing that interprets it, which keeps a save file from
+ * being reinterpreted by a different ordering rule.
+ */
+export interface TurnOrderState {
+  policy: string;
+  /** Unit currently entitled to act; null when a whole side may act. */
+  activeUnit: number | null;
+  data: Record<string, number>;
+}
+
 export type GamePhase = 'deployment' | 'playing' | 'over';
 
 export interface GameState {
@@ -926,6 +944,7 @@ export interface GameState {
   nextMarkerId: number;
   deployment: DeploymentState | null;
   scenario: ScenarioState;
+  turnOrder: TurnOrderState;
 }
 
 /* ----------------------------------------------------------------- events */
@@ -936,7 +955,8 @@ export interface GameState {
  * unstructured message bus.
  */
 export interface GameEventKindMap {
-  turnStart: { type: 'turnStart'; player: PlayerId; turn: number };
+  turnStart: { type: 'turnStart'; player: PlayerId; turn: number; activeUnit?: number };
+  roundStart: { type: 'roundStart'; turn: number };
   turnEnd: { type: 'turnEnd'; player: PlayerId };
   resourceChanged: {
     type: 'resourceChanged';

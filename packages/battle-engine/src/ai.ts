@@ -14,6 +14,8 @@ import { type ObjectiveHandlerRegistry } from './objective-system';
 import { type BattleResourceSystem, playerResource } from './resources';
 import { hasStatus } from './statuses';
 import type { AbilityRules } from './abilities';
+import type { Registry } from './registry';
+import type { TurnOrderPolicy } from './turn-order';
 import type { TacticalSpace } from './tactical-space';
 import type { VictoryRules } from './victory';
 import { structureAt } from './structures';
@@ -238,7 +240,10 @@ interface Candidate {
  * Everything AI planning needs: it must reason with the *same* ruleset that
  * will execute the action, otherwise its predictions are fiction.
  */
-export interface AiRules extends AbilityRules, VictoryRules {}
+export interface AiRules extends AbilityRules, VictoryRules {
+  /** Planning must ask the same policy execution will enforce. */
+  readonly turnOrders: Registry<TurnOrderPolicy>;
+}
 
 export interface AbilityAiEvaluationContext {
   state: GameState;
@@ -612,7 +617,10 @@ export function chooseAction(
 
   let best: Candidate | null = null;
   const battlefield = new Battlefield(s, content);
-  for (const u of unitsOf(s, me)) {
+  // Only units the ordering policy entitles to act; under per-unit orders that
+  // is exactly one unit, and planning for any other would produce an action
+  // execution is obliged to reject.
+  for (const u of rules.turnOrders.get(s.turnOrder.policy).actors(s)) {
     if (u.done) continue;
     const c = evaluateUnit(dependencies, s, u, obj, danger, options, battlefield);
     if (c && (!best || c.score > best.score)) best = c;

@@ -11,6 +11,7 @@ import { ScenarioConditionHandlers, ScenarioEffectHandlers } from '../scenario';
 import { StatusBehaviors } from '../statuses';
 import { Abilities } from '../abilities';
 import { DefaultTacticalSpace } from '../tactical-space';
+import { TurnOrders } from '../turn-order';
 import { cloneContentCatalog, GlobalContentCatalog } from '../content-pack';
 
 /** Cohesive tactical rules: resolution, effects, statuses and battle-local growth. */
@@ -25,6 +26,7 @@ export const TacticalRulesPlugin: EnginePlugin = {
     'hitEffects',
     'statusBehaviors',
     'progression',
+    'turnOrders',
   ],
   install: (context) => {
     const content = cloneContentCatalog(GlobalContentCatalog);
@@ -35,6 +37,7 @@ export const TacticalRulesPlugin: EnginePlugin = {
     context.provide('hitEffects', WeaponHitEffectHandlers.clone());
     context.provide('statusBehaviors', StatusBehaviors.clone());
     context.provide('progression', DefaultRankProgression);
+    context.provide('turnOrders', TurnOrders.clone());
   },
 };
 

@@ -1,4 +1,4 @@
-import { CoreActionHandlers, applyActionWith, commandOptions } from './actions';
+import { CoreActionHandlers, applyActionWith, commandOptions, startTurnOrder } from './actions';
 import {
   chooseAction,
   DefaultAbilityAiEvaluators,
@@ -26,6 +26,7 @@ import { validateLevel } from './mapio';
 import type { MoveField } from './movement';
 import { cloneState, createState, restoreState } from './state';
 import { careerOptions } from './careers';
+import type { TurnOrderPolicy } from './turn-order';
 import type { Action, Coord, GameEvent, GameState, LevelData, PlayerId, Unit, WeaponId } from './types';
 import type { Objective, ScenarioCondition } from './types';
 
@@ -86,6 +87,7 @@ export class BattleEngine {
       objectives: dependencies.objectives,
       progression: dependencies.progression,
       resources: dependencies.resources,
+      turnOrders: dependencies.turnOrders,
     };
     this.assertConfiguration();
   }
@@ -101,7 +103,35 @@ export class BattleEngine {
       .map((issue) => issue.message);
     issues.push(...this.levelStrategyIssues(level));
     if (issues.length > 0) throw new BattleLevelError(level.id, [...new Set(issues)]);
-    return createState(level, this.rules.content);
+    const state = createState(level, this.rules.content);
+    // A level without a deployment phase is already playing, so it needs its
+    // first actor turn now; deployment levels get theirs on finishDeployment.
+    if (state.phase === 'playing') startTurnOrder(state, this.rules);
+    return state;
+  }
+
+  /** Turn-order policy this battle runs under. */
+  turnOrder(state: GameState): TurnOrderPolicy {
+    return this.rules.turnOrders.get(state.turnOrder.policy);
+  }
+
+  /** May this unit act right now, under the battle's ordering policy? */
+  canAct(state: GameState, unit: Unit): boolean {
+    return state.phase === 'playing' && this.turnOrder(state).canAct(state, unit);
+  }
+
+  /** Units entitled to act in the current actor turn. */
+  actors(state: GameState): Unit[] {
+    return state.phase === 'playing' ? this.turnOrder(state).actors(state) : [];
+  }
+
+  /** Deterministic look-ahead for an initiative strip; empty for side turns. */
+  turnOrderPreview(state: GameState, count = 8): Unit[] {
+    const ids = this.turnOrder(state).preview(state, this.rules.content, count);
+    return ids.flatMap((id) => {
+      const unit = state.units.find((candidate) => candidate.id === id);
+      return unit ? [unit] : [];
+    });
   }
 
   cloneState(state: GameState): GameState {

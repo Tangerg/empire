@@ -1,6 +1,6 @@
 import { Battlefield } from './domain/battlefield';
 import { addStatus } from './statuses';
-import type { Coord, GameEvent, GameState, MovementClass, TerrainOverlayState } from './types';
+import type { Coord, GameEvent, GameState, MovementClass, TerrainOverlayState, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
 
 export function overlaysAt(state: GameState, at: Coord, content: ContentCatalog): TerrainOverlayState[] {
@@ -65,8 +65,10 @@ export function applyOverlayTurnStartEffects(
   owner: number,
   emit: (event: GameEvent) => void,
   content: ContentCatalog,
+  /** Units whose actor turn is starting; defaults to the owner's whole army. */
+  scope?: readonly Unit[],
 ): void {
-  for (const unit of state.units.filter((candidate) => candidate.owner === owner)) {
+  for (const unit of scope ?? state.units.filter((candidate) => candidate.owner === owner)) {
     for (const instance of overlaysAt(state, unit, content)) {
       const effect = content.terrainOverlays.get(instance.type).turnStartStatus;
       if (effect) addStatus(unit, effect.id, effect.duration, content, emit);

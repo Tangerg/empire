@@ -18,6 +18,7 @@ import { DefaultBattleResources, type BattleResourceSystem } from './resources';
 import { Abilities, type AbilityDef } from './abilities';
 import { type Registry } from './registry';
 import { CoreTacticalSpace, DefaultTacticalSpace, type TacticalSpace } from './tactical-space';
+import { TurnOrders, type TurnOrderPolicy } from './turn-order';
 import { cloneContentCatalog, GlobalContentCatalog, type ContentCatalog } from './content-pack';
 import type { Action, ActionKindMap, GameEvent, GameState } from './types';
 
@@ -43,6 +44,8 @@ export interface BattleRuleServices {
   readonly objectives: ObjectiveHandlerRegistry;
   readonly progression: RankProgressionPolicy;
   readonly resources: BattleResourceSystem;
+  /** Registered turn-order policies; the level's ruleset selects one by id. */
+  readonly turnOrders: Registry<TurnOrderPolicy>;
 }
 
 /**
@@ -66,6 +69,7 @@ export function createDefaultBattleRuleServices(
     objectives: overrides.objectives ?? ObjectiveHandlers.clone(),
     progression: overrides.progression ?? DefaultRankProgression,
     resources: overrides.resources ?? DefaultBattleResources.clone(),
+    turnOrders: overrides.turnOrders ?? TurnOrders.clone(),
   };
 }
 
@@ -88,6 +92,7 @@ export const DefaultBattleRuleServices: BattleRuleServices = {
   objectives: ObjectiveHandlers,
   progression: DefaultRankProgression,
   resources: DefaultBattleResources,
+  turnOrders: TurnOrders,
 };
 
 export class ActionExecutionContext {

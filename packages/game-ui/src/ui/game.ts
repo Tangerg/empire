@@ -4,7 +4,7 @@ import { tacticOptions } from '@empire/battle-engine/commanders';
 import { idx } from '@empire/battle-engine/grid';
 import type { BattleEngine } from '@empire/battle-engine/engine';
 import { GameSession } from '@empire/battle-engine/session';
-import { areEnemies, recruitOptions, unitAt, unitsOf } from '@empire/battle-engine/state';
+import { areEnemies, recruitOptions, unitAt } from '@empire/battle-engine/state';
 import type {
   Action,
   Coord,
@@ -236,7 +236,7 @@ export class GameController {
 
     if (this.mode.kind === 'unit' || this.mode.kind === 'dest') {
       const unit = this.selectedUnit;
-      if (unit && this.isHumanTurn && unit.owner === s.currentPlayer && !unit.done) {
+      if (unit && this.isHumanTurn && this.session.engine.canAct(s, unit)) {
         const field = this.session.moveField(unit);
         const i = idx(s.map, c.x, c.y);
 
@@ -285,7 +285,7 @@ export class GameController {
     }
 
     // Fresh selection.
-    if (clicked && clicked.owner === s.currentPlayer && !clicked.done && this.isHumanTurn) {
+    if (clicked && this.isHumanTurn && this.session.engine.canAct(s, clicked)) {
       this.mode = { kind: 'unit', unit: clicked.id };
       this.inspect = clicked;
       this.refresh();
@@ -441,7 +441,7 @@ export class GameController {
   }
 
   private cycleIdleUnit(): void {
-    const idle = unitsOf(this.state, this.state.currentPlayer).filter((u) => !u.done);
+    const idle = this.session.engine.actors(this.state);
     if (idle.length === 0) return;
     const current = this.mode.kind === 'unit' ? this.mode.unit : -1;
     const at = idle.findIndex((u) => u.id === current);
@@ -681,7 +681,7 @@ export class GameController {
     const unit = this.selectedUnit;
     if (unit && !this.busy) {
       o.selected = { x: unit.x, y: unit.y };
-      if (unit.owner === s.currentPlayer && !unit.done && this.isHumanTurn) {
+      if (this.isHumanTurn && this.session.engine.canAct(s, unit)) {
         if (this.mode.kind === 'unit') {
           for (const i of this.session.moveField(unit).stops) o.move.add(i);
           for (const i of this.session.threatOf(unit)) {
@@ -772,11 +772,11 @@ export class GameController {
       commands,
       tactics,
       reactionUnit:
-        unit && unit.owner === s.currentPlayer && !unit.done && this.isHumanTurn ? unit.id : null,
+        unit && this.isHumanTurn && this.session.engine.canAct(s, unit) ? unit.id : null,
       rankNextThreshold: this.inspect
         ? this.session.engine.rules.progression.nextThreshold(this.inspect.rank)
         : null,
-      careerOptions: unit && unit.owner === s.currentPlayer && !unit.done && this.isHumanTurn
+      careerOptions: unit && this.isHumanTurn && this.session.engine.canAct(s, unit)
         ? this.session.careerOptions(unit)
         : [],
       targeting:

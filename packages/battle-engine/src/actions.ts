@@ -30,7 +30,7 @@ import {
   type ActionHandler,
   type BattleRuleServices,
 } from './action-system';
-import type { Action, ActionKindMap, Coord, GameEvent, GameState, Unit, WeaponId } from './types';
+import type { Action, ActionKindMap, Coord, GameEvent, GameState, PlayerId, Unit, WeaponId } from './types';
 
 export { IllegalActionError } from './action-system';
 
@@ -102,8 +102,8 @@ export function commandOptions(
   });
 }
 
-export const canAct = (s: GameState, u: Unit): boolean =>
-  s.phase === 'playing' && u.owner === s.currentPlayer && !u.done;
+export const canAct = (rules: BattleRuleServices, s: GameState, u: Unit): boolean =>
+  s.phase === 'playing' && rules.turnOrders.get(s.turnOrder.policy).canAct(s, u);
 
 /* ------------------------------------------------------------------- helpers */
 
@@ -213,8 +213,8 @@ class FinishDeploymentActionHandler implements ActionHandler<'finishDeployment'>
     }
     state.deployment = null;
     state.phase = 'playing';
-    state.currentPlayer = state.players.find((candidate) => candidate.alive)?.id ?? state.players[0]?.id ?? 1;
     for (const unit of state.units) unit.done = false;
+    startTurnOrder(state, context.rules, context.emit);
     context.emit({ type: 'battleStarted', player: state.currentPlayer, turn: state.turn });
   }
 }
@@ -227,6 +227,9 @@ class CommandActionHandler implements ActionHandler<'command'> {
     const unit = requireUnit(state, action.unit);
     if (unit.owner !== state.currentPlayer) context.fail('不是你的单位');
     if (unit.done) context.fail('该单位本回合已行动');
+    if (!context.rules.turnOrders.get(state.turnOrder.policy).canAct(state, unit)) {
+      context.fail('该单位当前没有行动权');
+    }
 
     const movement = validatePath(state, unit, action.path, context.rules.space);
     const destination = movement.destination;
@@ -470,40 +473,57 @@ export function applyAction(state: GameState, action: Action): GameEvent[] {
 
 /* ---------------------------------------------------------------- turn cycle */
 
+/**
+ * Seeds the ordering policy and claims the first actor turn. Called once the
+ * battle actually starts, i.e. after deployment or straight from construction.
+ */
+export function startTurnOrder(
+  state: GameState,
+  rules: BattleRuleServices,
+  emit: (event: GameEvent) => void = () => {},
+): void {
+  const policy = rules.turnOrders.get(state.rules.turnOrder);
+  state.turnOrder = policy.initialState(state, rules.content);
+  const handoff = policy.begin(state, { content: rules.content, emit });
+  state.currentPlayer = handoff.player;
+  state.turnOrder.activeUnit = handoff.activeUnit;
+}
+
+/**
+ * Hands the actor turn over through the battle's ordering policy.
+ *
+ * The engine no longer knows whether a turn belongs to a side or to a single
+ * unit; it only knows the difference between a *round* (battle clock: income,
+ * overlay decay, `everyRounds` triggers) and an *actor turn* (statuses, healing,
+ * cooldowns, reaction budget).
+ */
 function advanceTurn(s: GameState, emit: (e: GameEvent) => void, rules: BattleRuleServices): void {
   emit({ type: 'turnEnd', player: s.currentPlayer });
   runScenarioTriggers(s, 'turnEnd', emit, rules.scenarioConditions, rules.scenarioEffects, rules.resources, rules.content);
 
-  const order = s.players.map((p) => p.id);
-  let cursor = order.indexOf(s.currentPlayer);
-
-  // At most one full lap, so `turn` can only advance once per call.
-  for (let step = 0; step < order.length; step++) {
-    cursor++;
-    if (cursor >= order.length) {
-      cursor = 0;
-      s.turn++;
-      advanceTerrainOverlayRound(s, emit);
-    }
-    const p = player(s, order[cursor]);
-    if (!p.alive) continue;
-    s.currentPlayer = p.id;
-    beginTurn(s, emit, rules);
+  const policy = rules.turnOrders.get(s.turnOrder.policy);
+  const handoff = policy.advance(s, { content: rules.content, emit });
+  if (handoff.exhausted) {
+    s.phase = 'over';
     return;
   }
-  // Nobody left alive.
-  s.phase = 'over';
+  if (handoff.roundAdvanced) {
+    s.turn++;
+    advanceTerrainOverlayRound(s, emit);
+    emit({ type: 'roundStart', turn: s.turn });
+  }
+  s.currentPlayer = handoff.player;
+  s.turnOrder.activeUnit = handoff.activeUnit;
+  beginTurn(s, emit, rules, handoff.roundAdvanced);
 }
 
-function beginTurn(s: GameState, emit: (e: GameEvent) => void, rules: BattleRuleServices): void {
-  const p = player(s, s.currentPlayer);
-  emit({ type: 'turnStart', player: p.id, turn: s.turn });
-
-  applyOverlayTurnStartEffects(s, p.id, emit, rules.content);
-  resolveTurnStartStatuses(rules, s, p.id, emit, (unitId) =>
-    handleCommanderDefeat(s, unitId, emit, rules.content));
-  refreshCommanderTurn(s, p.id, emit, rules.resources);
-
+function grantTurnResources(
+  s: GameState,
+  owner: PlayerId,
+  emit: (e: GameEvent) => void,
+  rules: BattleRuleServices,
+): void {
+  const p = player(s, owner);
   const resourceOwner = playerResource(p);
   for (const grant of turnResourceGrantsFor(s, p.id, rules.content)) {
     if (!rules.resources.hasAccount(grant.resource, resourceOwner)) continue;
@@ -519,8 +539,42 @@ function beginTurn(s: GameState, emit: (e: GameEvent) => void, rules: BattleRule
       });
     }
   }
+}
 
-  for (const u of unitsOf(s, p.id)) {
+function beginTurn(
+  s: GameState,
+  emit: (e: GameEvent) => void,
+  rules: BattleRuleServices,
+  roundAdvanced: boolean,
+): void {
+  const p = player(s, s.currentPlayer);
+  const active = s.turnOrder.activeUnit;
+  // Side turns refresh a whole army; per-unit orders refresh only the actor.
+  const scope = active === null
+    ? unitsOf(s, p.id)
+    : s.units.filter((candidate) => candidate.id === active);
+
+  emit(active === null
+    ? { type: 'turnStart', player: p.id, turn: s.turn }
+    : { type: 'turnStart', player: p.id, turn: s.turn, activeUnit: active });
+
+  applyOverlayTurnStartEffects(s, p.id, emit, rules.content, scope);
+  resolveTurnStartStatuses(rules, s, emit, scope, (unitId) =>
+    handleCommanderDefeat(s, unitId, emit, rules.content));
+
+  if (active === null) {
+    // One income grant per player per round; side turns already give each
+    // player exactly one actor turn per round.
+    refreshCommanderTurn(s, p.id, emit, rules.resources);
+    grantTurnResources(s, p.id, emit, rules);
+  } else if (roundAdvanced) {
+    for (const candidate of s.players.filter((entry) => entry.alive)) {
+      refreshCommanderTurn(s, candidate.id, emit, rules.resources);
+      grantTurnResources(s, candidate.id, emit, rules);
+    }
+  }
+
+  for (const u of scope) {
     advanceWeaponCooldowns(u);
     const entity = new UnitEntity(u);
     entity.readyForTurn();
@@ -554,8 +608,9 @@ function checkGameOver(s: GameState, emit: (e: GameEvent) => void, rules: Battle
 }
 
 /** Marks every remaining unit done — used by "end turn" confirmation UI. */
-export function idleUnits(s: GameState, id = s.currentPlayer): Unit[] {
-  return unitsOf(s, id).filter((u) => !u.done);
+/** Units still entitled to act under the battle's ordering policy. */
+export function idleUnits(rules: BattleRuleServices, s: GameState): Unit[] {
+  return rules.turnOrders.get(s.turnOrder.policy).actors(s);
 }
 
 /** Removes a unit outright (used by editor previews and scripted effects). */

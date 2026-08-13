@@ -235,6 +235,7 @@ export function createState(level: LevelData, content: ContentCatalog): GameStat
     nextUnitId,
     nextMarkerId: 1,
     deployment,
+    turnOrder: { policy: rules.turnOrder, activeUnit: null, data: {} },
     scenario: {
       variables: { ...(level.scenario?.variables ?? {}) },
       zones,
@@ -272,6 +273,7 @@ export function cloneState(s: GameState): GameState {
       directionalCover: s.map.directionalCover.map((cover) => ({ at: { ...cover.at }, sides: { ...cover.sides } })),
     },
     units: s.units.map(cloneUnitState),
+    turnOrder: { ...s.turnOrder, data: { ...s.turnOrder.data } },
     composites: s.composites.map((composite) => ({
       ...composite,
       parts: composite.parts.slice(),
