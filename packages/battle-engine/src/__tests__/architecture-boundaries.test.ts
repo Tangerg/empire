@@ -367,6 +367,26 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('puts a unit back on the field in exactly one place', () => {
+    // Reviving a corpse and recalling a withdrawal were two hand-written
+    // blocks, and they had drifted: one floored morale on the way back and the
+    // other did not, so a unit revived from a rout returned at zero and broke
+    // again on the next shock. `state.units.push` is the tell — anything that
+    // adds a unit to the battlefield goes through a named lifecycle step.
+    // `transports.ts` is deliberately not one of them: a passenger stepping
+    // out of a carrier never left the world, so it keeps its statuses and its
+    // morale. Curing a poison by taking a taxi is not a lifecycle rule anyone
+    // wants unified into this one.
+    const allowed = ['unit-return.ts', 'state.ts', 'transports.ts'];
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (allowed.includes(name)) return [];
+      return /\bunits\.push\(/.test(readFileSync(file, 'utf8')) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('asks one question about the right to react', () => {
     // The same lesson as `mayAct`: a budget compared by hand at each site is a
     // budget that the next kind of reaction quietly gets a second copy of.

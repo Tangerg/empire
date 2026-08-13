@@ -47,6 +47,7 @@ export * from './replay';
 export * from './turn-order';
 export * from './reactions';
 export * from './unit-departure';
+export * from './unit-return';
 export * from './damage';
 export * from './zone-of-control';
 export * from './turn-cycle';

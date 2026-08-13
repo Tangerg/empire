@@ -10,6 +10,7 @@ import { changeUnitResource } from './progression';
 import { BattleAggregate } from './domain/battle-aggregate';
 import { Battlefield } from './domain/battlefield';
 import { announceUnitDeparture, type UnitDepartureRules } from './unit-departure';
+import { returnUnitToField } from './unit-return';
 import { edgeKey } from './spatial';
 import { forceMoveUnit, teleportUnit } from './forced-movement';
 import {
@@ -31,7 +32,6 @@ import type {
 } from './types';
 import { type ContentCatalog } from './content-pack';
 import { SplitMixRandom, type RandomSource } from './random';
-import { cloneUnitState } from './unit-state';
 import { changeMorale, surrenderUnit } from './morale';
 import { addEngagementRule, removeEngagementRule } from './engagement';
 import { compositeStatus, moveComposite } from './composites';
@@ -405,25 +405,12 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     const ratio = Math.max(0.01, Math.min(1, effect.hpPercent ?? 0.5));
     for (const marker of [...context.selectMarkers(effect.selector)]) {
       const fallen = marker.fallenUnit;
-      if (!fallen || unitAtCoord(context.state, marker.at)) continue;
-      if (context.state.units.some((unit) => unit.id === fallen.id || (fallen.key && unit.key === fallen.key))) continue;
-      const restored: Unit = {
-        ...cloneUnitState(fallen),
-        owner: effect.owner ?? fallen.owner,
-        x: marker.at.x,
-        y: marker.at.y,
+      if (!fallen) continue;
+      returnUnitToField(context.state, marker, {
+        at: marker.at,
+        owner: effect.owner,
         hp: Math.max(1, Math.round(context.content.units.get(fallen.type).maxHp * ratio)),
-        done: true,
-        capture: 0,
-        statuses: [],
-      };
-      context.state.units.push(restored);
-      const commander = context.state.commanders.find((candidate) => candidate.unitId === restored.id);
-      if (commander) commander.owner = restored.owner;
-      context.state.nextUnitId = Math.max(context.state.nextUnitId, restored.id + 1);
-      context.state.markers.splice(context.state.markers.indexOf(marker), 1);
-      context.emit({ type: 'markerRemoved', marker: marker.id, kind: marker.kind, at: marker.at });
-      context.emit({ type: 'unitRevived', unit: restored.id, marker: marker.id, at: marker.at, hp: restored.hp });
+      }, context.emit);
     }
   }))
   .register(effectHandler('removeMarkers', (context, effect) => {
@@ -514,7 +501,6 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     for (const marker of [...context.selectMarkers(effect.selector)]) {
       const fallen = marker.fallenUnit;
       if (!fallen) continue;
-      if (context.state.units.some((unit) => unit.id === fallen.id || (fallen.key && unit.key === fallen.key))) continue;
       const destination = destinations.find((cell) => {
         if (unitAtCoord(context.state, cell)) return false;
         const battlefieldCell = new Battlefield(context.state, context.content).cell(cell);
@@ -522,20 +508,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
         return !battlefieldCell.blocksMovement && battlefieldCell.movementCost(movement) !== null;
       });
       if (!destination) break;
-      const restored = cloneUnitState(fallen);
-      restored.owner = effect.owner ?? restored.owner;
-      restored.x = destination.x;
-      restored.y = destination.y;
-      restored.done = true;
-      restored.capture = 0;
-      restored.morale.current = Math.max(1, restored.morale.current);
-      context.state.units.push(restored);
-      context.state.markers.splice(context.state.markers.indexOf(marker), 1);
-      context.state.nextUnitId = Math.max(context.state.nextUnitId, restored.id + 1);
-      const commander = context.state.commanders.find((candidate) => candidate.unitId === restored.id);
-      if (commander) commander.owner = restored.owner;
-      context.emit({ type: 'markerRemoved', marker: marker.id, kind: marker.kind, at: marker.at });
-      context.emit({ type: 'unitRevived', unit: restored.id, marker: marker.id, at: { ...destination }, hp: restored.hp });
+      returnUnitToField(context.state, marker, { at: destination, owner: effect.owner }, context.emit);
     }
   }))
   .register(effectHandler('setUnitDirective', (context, effect) => {

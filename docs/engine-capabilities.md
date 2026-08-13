@@ -276,6 +276,7 @@
 | 问题 | 唯一归属 |
 | --- | --- |
 | 单位离场之后要发生什么 | `UnitDepartureHandlers`（开放注册表） |
+| 单位回到战场时带回什么 | `returnUnitToField()` |
 | AI 这一回合考虑做什么 | `AiIntents`（开放有序注册表） |
 | 当前选中了什么、点击意味着什么 | `Selection`（通用 UI，每种选择自己回答） |
 | 一次伤害之后要发生什么 | `resolveDamage()` |

@@ -97,6 +97,11 @@ export class UnitEntity {
     this.state.reactionUsedRound = round;
   }
 
+  /** A unit that has just arrived has not reacted to anything yet. */
+  restoreReaction(): void {
+    this.state.reactionUsedRound = -1;
+  }
+
   takeDamage(requested: number): { amount: number; hpAfter: number; killed: boolean } {
     if (!Number.isFinite(requested) || requested < 0) {
       throw new DomainInvariantError(`damage must be a finite non-negative number, got ${requested}`);
