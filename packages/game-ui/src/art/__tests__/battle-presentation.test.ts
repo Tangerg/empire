@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { candidate01Level } from '@empire/story-candidate-01/levels';
-import { mapFromLevel } from '@empire/battle-engine/mapio';
+import { mapFromLevel } from '@empire/battle-engine/level';
 import { battlePresentation } from '../battle-presentation';
 import { createSceneViewport } from '../scene-viewport';
 import { registerCandidate01Presentation } from '@empire/story-candidate-01/presentation';

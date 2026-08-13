@@ -15,7 +15,7 @@ import {
   refreshObjectiveStates,
 } from '../victory';
 import type { AbilityQuery } from '../abilities';
-import { mapFromLevel, normaliseLevel, validateLevel } from '../mapio';
+import { mapFromLevel, normaliseLevel, validateLevel } from '../level/index';
 import type {
   Action,
   Coord,

@@ -1,5 +1,5 @@
 import { idx } from '@empire/battle-engine/grid';
-import { mapFromLevel, terrainRows } from '@empire/battle-engine/mapio';
+import { mapFromLevel, terrainRows } from '@empire/battle-engine/level';
 import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import type {
   LevelCommander,

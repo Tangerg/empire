@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { applyAction } from '../actions';
-import { normaliseLevel, terrainRows } from '../mapio';
+import { normaliseLevel, terrainRows } from '../level/index';
 import type { LevelData } from '../types';
 
 const dir = join(import.meta.dirname, '../../../content-ancient-empires/src/levels');

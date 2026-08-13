@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createBattleEngine } from '@empire/battle-engine';
-import { normaliseLevel } from '@empire/battle-engine/mapio';
+import { normaliseLevel } from '@empire/battle-engine/level';
 import { GameSession } from '@empire/battle-engine/session';
 import { createTestCatalog } from '@empire/test-content';
 import type { Coord, LevelData, Unit } from '@empire/battle-engine/types';

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it } from 'vitest';
-import { migrateLevel, normaliseLevel } from '@empire/battle-engine/mapio';
+import { migrateLevel, normaliseLevel } from '@empire/battle-engine/level';
 import {
   CUSTOM_LEVELS_KEY,
   loadCustomLevels,

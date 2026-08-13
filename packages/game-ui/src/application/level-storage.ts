@@ -1,4 +1,4 @@
-import { normaliseLevel } from '@empire/battle-engine/mapio';
+import { normaliseLevel } from '@empire/battle-engine/level';
 import type { LevelData } from '@empire/battle-engine/types';
 
 export const CUSTOM_LEVELS_KEY = 'empire.customLevels';

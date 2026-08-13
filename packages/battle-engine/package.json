@@ -5,6 +5,10 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./ai": "./src/ai/index.ts",
+    "./domain": "./src/domain/index.ts",
+    "./level": "./src/level/index.ts",
+    "./plugins": "./src/plugins/index.ts",
     "./*": "./src/*.ts"
   }
 }

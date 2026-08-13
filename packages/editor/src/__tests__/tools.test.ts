@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it } from 'vitest';
 import { TILE } from '@empire/game-ui/art/terrain';
-import { normaliseLevel } from '@empire/battle-engine/mapio';
+import { normaliseLevel } from '@empire/battle-engine/level';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
 import { EditorApp } from '../app';
 import { BrushSettings, EDITOR_TOOLS, EditorToolbox, rectTiles, type EditorTool } from '../tools';

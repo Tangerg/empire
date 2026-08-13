@@ -25,7 +25,7 @@ import {
   type CombatModifierPipeline,
 } from './combat-modifiers';
 import { forecastCombatPlan } from './combat-plan';
-import { validateLevel } from './mapio';
+import { validateLevel } from './level/index';
 import type { MoveField } from './movement';
 import { cloneState, createState, restoreState, type CreateStateOptions } from './state';
 import type { ContentCatalog } from './content-pack';

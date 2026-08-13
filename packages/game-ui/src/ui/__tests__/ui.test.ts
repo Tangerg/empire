@@ -7,7 +7,7 @@ import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancien
 import { GameController } from '../game';
 import { BoardView, emptyOverlay } from '../board';
 import { createState } from '@empire/battle-engine/state';
-import { normaliseLevel } from '@empire/battle-engine/mapio';
+import { normaliseLevel } from '@empire/battle-engine/level';
 import { candidate01Level } from '@empire/story-candidate-01/levels';
 import { registerCandidate01Presentation } from '@empire/story-candidate-01/presentation';
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { candidate01Level } from '../levels';
-import { mapFromLevel } from '@empire/battle-engine/mapio';
+import { mapFromLevel } from '@empire/battle-engine/level';
 import {
   candidate01MapSceneryMarkup,
   candidate01SceneFrameMarkup,

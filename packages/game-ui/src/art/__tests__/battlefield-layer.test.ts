@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { emptyLevel, mapFromLevel } from '@empire/battle-engine/mapio';
+import { emptyLevel, mapFromLevel } from '@empire/battle-engine/level';
 import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../battlefield-layer';
 
 import { createTestCatalog } from '@empire/test-content';

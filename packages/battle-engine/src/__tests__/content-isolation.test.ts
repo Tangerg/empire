@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { ContentPackInstaller, createContentCatalog } from '../content-pack';
 import { createBattleEngine } from '../engine';
 import { createState } from '../state';
-import { mapFromLevel, normaliseLevel, terrainRows } from '../mapio';
+import { mapFromLevel, normaliseLevel, terrainRows } from '../level/index';
 import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from '../resources';
 import type { ContentCatalog, ContentPack } from '../content-pack';
 import type { LevelData, TerrainDef, UnitDef, WeaponDef } from '../types';

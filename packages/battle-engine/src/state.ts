@@ -4,7 +4,7 @@ import {
 } from './resources';
 import { idx } from './grid';
 import { createRandomState } from './random';
-import { DEFAULT_VICTORY, mapFromLevel, resolveRules } from './mapio';
+import { DEFAULT_VICTORY, mapFromLevel, resolveRules } from './level/index';
 import { assignObjectiveIds, createObjectiveStates } from './objective-model';
 import type {
   Coord,

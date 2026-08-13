@@ -11,8 +11,8 @@ import {
   terrainCharacter,
   validateLevel,
   type LevelIssue,
-} from '@empire/battle-engine/mapio';
-import { mapFromLevel } from '@empire/battle-engine/mapio';
+} from '@empire/battle-engine/level';
+import { mapFromLevel } from '@empire/battle-engine/level';
 import type {
   Coord,
   CoverLevel,
