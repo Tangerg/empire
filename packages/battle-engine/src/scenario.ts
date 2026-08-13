@@ -9,7 +9,7 @@ import { damageStructure, repairStructure } from './structures';
 import { changeUnitResource } from './progression';
 import { BattleAggregate } from './domain/battle-aggregate';
 import { Battlefield } from './domain/battlefield';
-import { handleCommanderDefeat } from './commanders';
+import { announceUnitDeparture, type UnitDepartureRules } from './unit-departure';
 import { edgeKey } from './spatial';
 import { forceMoveUnit, teleportUnit } from './forced-movement';
 import {
@@ -230,7 +230,7 @@ export interface ScenarioConditionRules {
   readonly scenarioConditions: ScenarioConditionHandlerRegistry;
 }
 
-export interface ScenarioRules extends ScenarioConditionRules {
+export interface ScenarioRules extends ScenarioConditionRules, UnitDepartureRules {
   readonly resources: BattleResourceSystem;
   readonly scenarioEffects: ScenarioEffectHandlerRegistry;
 }
@@ -247,11 +247,19 @@ export function conditionMet(
 
 export class ScenarioEffectContext {
   constructor(
+    /** The whole ruleset: an effect may reach any rule the engine composes. */
+    readonly rules: ScenarioRules,
     readonly state: GameState,
     readonly emit: (event: GameEvent) => void,
-    readonly resources: BattleResourceSystem,
-    readonly content: ContentCatalog,
   ) {}
+
+  get content(): ContentCatalog {
+    return this.rules.content;
+  }
+
+  get resources(): BattleResourceSystem {
+    return this.rules.resources;
+  }
 
   zone(id: string) {
     return zone(this.state, id);
@@ -302,16 +310,10 @@ export class ScenarioEffectHandlerRegistry {
     return this;
   }
 
-  apply(
-    state: GameState,
-    effect: ScenarioEffect,
-    emit: (event: GameEvent) => void,
-    resources: BattleResourceSystem,
-    content: ContentCatalog,
-  ): void {
+  apply(rules: ScenarioRules, state: GameState, effect: ScenarioEffect, emit: (event: GameEvent) => void): void {
     const handler = this.handlers.get(effect.type);
     if (!handler) throw new Error(`no scenario effect handler for "${effect.type}"`);
-    handler.apply(new ScenarioEffectContext(state, emit, resources, content), effect as never);
+    handler.apply(new ScenarioEffectContext(rules, state, emit), effect as never);
   }
 
   clone(): ScenarioEffectHandlerRegistry {
@@ -395,7 +397,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       context.emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
       removeUnit(context.state, unit.id);
       withdrawTransportPassengers(context.state, unit.id, at, 'withdrawn', context.emit);
-      handleCommanderDefeat(context.state, unit.id, context.emit, context.content);
+      announceUnitDeparture(context.rules, context.state, unit, context.emit);
       context.emit({ type: 'unitWithdrawn', unit: unit.id, at });
     }
   }))
@@ -440,13 +442,13 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   .register(effectHandler('forceMove', (context, effect) => {
     for (const unit of [...context.select(effect.selector)]) {
       if (!context.state.units.some((candidate) => candidate.id === unit.id)) continue;
-      forceMoveUnit(context.state, {
+      forceMoveUnit(context.rules, context.state, {
         unit: unit.id,
         source: effect.source,
         mode: effect.mode,
         distance: effect.distance,
         collisionDamage: effect.collisionDamage,
-      }, context.emit, context.content);
+      }, context.emit);
     }
   }))
   .register(effectHandler('teleportUnits', (context, effect) => {
@@ -504,7 +506,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     for (const unit of [...context.select(effect.selector)]) {
       if (context.state.units.some((candidate) => candidate.id === unit.id)) {
         surrenderUnit(context.state, unit.id, effect.to, context.emit, context.content);
-        handleCommanderDefeat(context.state, unit.id, context.emit, context.content);
+        announceUnitDeparture(context.rules, context.state, unit, context.emit);
       }
     }
   }))
@@ -631,7 +633,7 @@ export function applyScenarioEffect(
   effect: ScenarioEffect,
   emit: (event: GameEvent) => void,
 ): void {
-  rules.scenarioEffects.apply(state, effect, emit, rules.resources, rules.content);
+  rules.scenarioEffects.apply(rules, state, effect, emit);
 }
 
 /** Runs one-shot or bounded repeating data triggers until no newly-enabled trigger remains. */

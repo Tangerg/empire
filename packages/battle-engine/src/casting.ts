@@ -2,6 +2,7 @@ import { isWeaponReady } from './combat';
 import { executeCombatPlan, forecastCombatPlan, type CombatPlanRules } from './combat-plan';
 import { hostileActionAllowed } from './engagement';
 import { player, unitAtCoord } from './state';
+import { UnitDepartureHandlers } from './unit-departure';
 import { SpellCastEntity } from './domain/spell-cast';
 import { DomainInvariantError, IllegalActionError } from './domain/errors';
 import type { CastRefusal, Coord, GameEvent, GameState, PendingCast, PlayerId, Unit, WeaponDef } from './types';
@@ -26,7 +27,14 @@ import type { CastRefusal, Coord, GameEvent, GameState, PendingCast, PlayerId, U
 /** Everything resolving a due cast needs; `BattleRuleServices` satisfies it. */
 export type CastingRules = CombatPlanRules;
 
-/** Casts still being sustained, i.e. whose caster is still on the field. */
+/**
+ * Casts still being sustained, i.e. whose caster is still on the field.
+ *
+ * A departing caster drops its charge immediately, so this filter is a safety
+ * net rather than the mechanism: it keeps state that arrived from elsewhere —
+ * a save, a fixture, a mid-refactor bug — from showing one reader a charge that
+ * another reader has already discounted.
+ */
 export function activeCasts(state: GameState): PendingCast[] {
   return state.pendingCasts.filter((cast) =>
     state.units.some((unit) => unit.id === cast.caster));
@@ -87,35 +95,38 @@ export function beginCast(state: GameState, declaration: CastDeclaration, emit: 
   return cast;
 }
 
-/**
- * Resolves every cast that has come due and drops those whose caster is gone.
- *
- * Orphans are swept here rather than pushed from each of the eleven places a
- * unit can die, for the same reason turn order prunes departed units itself: a
- * cast nobody sustains is inert, `activeCasts()` already hides it, and a push
- * would need every death path to know about charge time.
- */
+/** Drops the cast a departing unit was sustaining. */
+export function cancelCastOf(
+  state: GameState,
+  unitId: number,
+  emit: (event: GameEvent) => void,
+): void {
+  const cast = castOf(state, unitId);
+  if (!cast) return;
+  state.pendingCasts = state.pendingCasts.filter((candidate) => candidate !== cast);
+  emit({
+    type: 'castCancelled',
+    unit: cast.caster,
+    weapon: cast.weapon,
+    at: { ...cast.target },
+    reason: 'casterLost',
+  });
+}
+
+/** A departing caster drops its charge the moment it leaves, not a turn later. */
+UnitDepartureHandlers.register({
+  id: 'casting.cancel',
+  handle: ({ state, unit, emit }) => cancelCastOf(state, unit.id, emit),
+});
+
+/** Resolves every cast that has come due. */
 export function resolveDueCasts(
   rules: CastingRules,
   state: GameState,
   emit: (event: GameEvent) => void,
 ): void {
-  const sustained: PendingCast[] = [];
-  for (const cast of state.pendingCasts) {
-    if (state.units.some((unit) => unit.id === cast.caster)) sustained.push(cast);
-    else {
-      emit({
-        type: 'castCancelled',
-        unit: cast.caster,
-        weapon: cast.weapon,
-        at: { ...cast.target },
-        reason: 'casterLost',
-      });
-    }
-  }
-
-  const due = sustained.filter((cast) => new SpellCastEntity(cast).isDueAt(state.actorTurns));
-  state.pendingCasts = sustained.filter((cast) => !due.includes(cast));
+  const due = state.pendingCasts.filter((cast) => new SpellCastEntity(cast).isDueAt(state.actorTurns));
+  state.pendingCasts = state.pendingCasts.filter((cast) => !due.includes(cast));
   // Oldest first, so simultaneous casts resolve in commit order rather than in
   // whatever order the array happens to hold.
   for (const cast of [...due].sort((left, right) => left.declaredAt - right.declaredAt)) {

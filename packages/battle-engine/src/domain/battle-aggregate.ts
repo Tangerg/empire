@@ -1,5 +1,6 @@
 import { idx } from '../grid';
 import type { BattlefieldMarker, Coord, GameState, PlayerId, StructureId, Unit } from '../types';
+import type { UnitFall } from './unit-fall';
 import { DomainInvariantError } from './errors';
 import { PlayerEntity } from './player-entity';
 import { StructureEntity } from './structure-entity';
@@ -7,6 +8,15 @@ import { UnitEntity } from './unit-entity';
 import { type ContentCatalog } from '../content-pack';
 import { cloneUnitState } from '../unit-state';
 import { extractLostTransportPassengers } from '../transports';
+
+export interface UnitDamageResult {
+  amount: number;
+  hpAfter: number;
+  killed: boolean;
+  at: Coord;
+  /** Present exactly when the damage was lethal. */
+  fall: UnitFall | null;
+}
 
 /** Aggregate root for every mutation that changes battle ownership or life. */
 export class BattleAggregate {
@@ -50,26 +60,25 @@ export class BattleAggregate {
     return unit;
   }
 
-  damageUnit(id: number, requested: number): {
-    amount: number;
-    hpAfter: number;
-    killed: boolean;
-    at: Coord;
-    marker: BattlefieldMarker | null;
-    passengerMarkers: BattlefieldMarker[];
-  } {
+  /**
+   * Applies damage and, when it is lethal, completes the removal in one step.
+   *
+   * `fall` is non-null exactly when `killed` — it is everything a caller needs
+   * to report and resolve the death, so no caller has to reassemble it from
+   * the battlefield the unit has already left.
+   */
+  damageUnit(id: number, requested: number): UnitDamageResult {
     const unit = this.unit(id);
     const at = unit.position;
     const result = unit.takeDamage(requested);
-    let marker: BattlefieldMarker | null = null;
-    let passengerMarkers: BattlefieldMarker[] = [];
-    if (result.killed) {
-      this.clearCaptureAt(at);
-      marker = this.createCorpse(unit.state);
-      this.removeUnit(id);
-      passengerMarkers = extractLostTransportPassengers(this.state, id, at);
-    }
-    return { ...result, at, marker, passengerMarkers };
+    if (!result.killed) return { ...result, at, fall: null };
+
+    const casualty = cloneUnitState(unit.state);
+    this.clearCaptureAt(at);
+    const marker = this.createCorpse(unit.state);
+    this.removeUnit(id);
+    const passengerMarkers = extractLostTransportPassengers(this.state, id, at);
+    return { ...result, at, fall: { unit: casualty, at, marker, passengerMarkers } };
   }
 
   createCorpse(unit: Unit): BattlefieldMarker {

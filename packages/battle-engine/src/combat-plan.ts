@@ -12,7 +12,7 @@ import {
   type DamageBreakdown,
   type StructureCombatForecast,
 } from './combat';
-import { handleCommanderDefeat } from './commanders';
+
 import { BattleAggregate, UnitEntity } from './domain/index';
 import { dist, idx, inBounds, lineBetween, ring, sameCoord } from './grid';
 import {
@@ -37,7 +37,7 @@ import type {
 } from './types';
 import { type ContentCatalog } from './content-pack';
 import { resolveMoraleAfterDamage } from './morale';
-import { emitTransportLossEvents } from './transports';
+import { announceUnitDeparture, announceUnitFall, type UnitDepartureRules } from './unit-departure';
 import { hostileActionAllowed } from './engagement';
 
 export interface PlannedUnitHit {
@@ -94,7 +94,7 @@ export interface CombatPlan {
  * Execution needs everything forecasting needs, plus the effect and growth
  * policies. Declared as a consumer port; `BattleRuleServices` satisfies it.
  */
-export interface CombatPlanRules extends CombatRules {
+export interface CombatPlanRules extends CombatRules, UnitDepartureRules {
   readonly hitEffects: WeaponHitEffectHandlerRegistry;
   readonly progression: RankProgressionPolicy;
 }
@@ -352,18 +352,13 @@ function applyUnitHit(
     damage: result.amount,
     killed: result.killed,
   });
-  if (result.killed) {
-    emit({ type: 'death', unit: hit.target, at: result.at });
-    if (result.marker) emit({ type: 'markerAdded', marker: result.marker.id, kind: result.marker.kind, at: result.marker.at });
-    handleCommanderDefeat(state, hit.target, emit, content);
-    emitTransportLossEvents(hit.target, result.at, result.passengerMarkers, emit);
-  }
+  if (result.fall) announceUnitFall(rules, state, result.fall, emit);
   awardCombatProgress(attacker, result.amount, result.killed, emit, progression, content);
   if (!result.killed && hit.effects.length > 0) {
-    hitEffects.apply(state, attacker, requireUnit(state, hit.target), hit.effects, emit, content);
+    hitEffects.apply(rules, state, attacker, requireUnit(state, hit.target), hit.effects, emit);
   }
   if (!result.killed && resolveMoraleAfterDamage(state, target, result.amount, false, result.at, emit, content)) {
-    handleCommanderDefeat(state, target.id, emit, content);
+    announceUnitDeparture(rules, state, target, emit);
   }
   if (result.killed) resolveMoraleAfterDamage(state, target, result.amount, true, result.at, emit, content);
   if (!result.killed) awardDamageTakenMomentum(target, emit, resources);
@@ -442,17 +437,13 @@ export function executeCombatPlan(
       damage: result.amount,
       killed: result.killed,
     });
-    if (result.killed) {
-      emit({ type: 'death', unit: attacker.id, at: result.at });
-      if (result.marker) emit({ type: 'markerAdded', marker: result.marker.id, kind: result.marker.kind, at: result.marker.at });
-      handleCommanderDefeat(state, attacker.id, emit, content);
-      emitTransportLossEvents(attacker.id, result.at, result.passengerMarkers, emit);
-    } else {
-      hitEffects.apply(state, defender, requireUnit(state, attacker.id), content.weapons.get(counter.weapon).hitEffects, emit, content);
+    if (result.fall) announceUnitFall(rules, state, result.fall, emit);
+    else {
+      hitEffects.apply(rules, state, defender, requireUnit(state, attacker.id), content.weapons.get(counter.weapon).hitEffects, emit);
       awardDamageTakenMomentum(attacker, emit, resources);
     }
     if (!result.killed && resolveMoraleAfterDamage(state, attacker, result.amount, false, result.at, emit, content)) {
-      handleCommanderDefeat(state, attacker.id, emit, content);
+      announceUnitDeparture(rules, state, attacker, emit);
     }
     if (result.killed) resolveMoraleAfterDamage(state, attacker, result.amount, true, result.at, emit, content);
     awardCombatProgress(defender, result.amount, result.killed, emit, progression, content);
@@ -475,17 +466,13 @@ export function executeCombatPlan(
     damage: result.amount,
     killed: result.killed,
   });
-  if (result.killed) {
-    emit({ type: 'death', unit: target.id, at: result.at });
-    if (result.marker) emit({ type: 'markerAdded', marker: result.marker.id, kind: result.marker.kind, at: result.marker.at });
-    handleCommanderDefeat(state, target.id, emit, content);
-    emitTransportLossEvents(target.id, result.at, result.passengerMarkers, emit);
-  } else {
-    hitEffects.apply(state, supporter, requireUnit(state, target.id), support.effects, emit, content);
+  if (result.fall) announceUnitFall(rules, state, result.fall, emit);
+  else {
+    hitEffects.apply(rules, state, supporter, requireUnit(state, target.id), support.effects, emit);
     awardDamageTakenMomentum(target, emit, resources);
   }
   if (!result.killed && resolveMoraleAfterDamage(state, target, result.amount, false, result.at, emit, content)) {
-    handleCommanderDefeat(state, target.id, emit, content);
+    announceUnitDeparture(rules, state, target, emit);
   }
   if (result.killed) resolveMoraleAfterDamage(state, target, result.amount, true, result.at, emit, content);
   awardCombatProgress(supporter, result.amount, result.killed, emit, progression, content);

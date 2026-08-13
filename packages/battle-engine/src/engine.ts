@@ -90,6 +90,8 @@ export class BattleEngine {
       progression: dependencies.progression,
       resources: dependencies.resources,
       turnOrders: dependencies.turnOrders,
+      reactions: dependencies.reactions,
+      unitDepartures: dependencies.unitDepartures,
       random: dependencies.random,
     };
     this.assertConfiguration();

@@ -2,20 +2,24 @@ import { BattleAggregate } from './domain/battle-aggregate';
 import type { GameEvent, GameState, StatusDef, StatusId, StatusModifiers, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
 import { resolveMoraleAfterDamage } from './morale';
-import { emitTransportLossEvents } from './transports';
+import { announceUnitDeparture, announceUnitFall, type UnitDepartureRules } from './unit-departure';
 
 export const statusDef = (id: StatusId, content: ContentCatalog): StatusDef =>
   content.statuses.get(id);
 
 export class StatusLifecycleContext {
   constructor(
+    readonly rules: StatusRules,
     readonly state: GameState,
     readonly unit: Unit,
     readonly status: Unit['statuses'][number],
     readonly emit: (event: GameEvent) => void,
-    readonly content: ContentCatalog,
-    private readonly onDeath?: (unitId: number) => void,
   ) {}
+
+  /** Convenience for behaviours; the catalog always comes from the ruleset. */
+  get content(): ContentCatalog {
+    return this.rules.content;
+  }
 
   damage(requested: number, nonlethal = false): number {
     if (!this.state.units.some((candidate) => candidate.id === this.unit.id)) return 0;
@@ -30,14 +34,11 @@ export class StatusLifecycleContext {
       amount: result.amount,
       hpAfter: result.hpAfter,
     });
-    if (result.killed) {
-      this.emit({ type: 'death', unit: this.unit.id, at: result.at });
-      if (result.marker) this.emit({ type: 'markerAdded', marker: result.marker.id, kind: result.marker.kind, at: result.marker.at });
-      this.onDeath?.(this.unit.id);
-      emitTransportLossEvents(this.unit.id, result.at, result.passengerMarkers, this.emit);
+    if (result.fall) {
+      announceUnitFall(this.rules, this.state, result.fall, this.emit);
       resolveMoraleAfterDamage(this.state, this.unit, result.amount, true, result.at, this.emit, this.content);
     } else if (resolveMoraleAfterDamage(this.state, this.unit, result.amount, false, result.at, this.emit, this.content)) {
-      this.onDeath?.(this.unit.id);
+      announceUnitDeparture(this.rules, this.state, this.unit, this.emit);
     }
     return result.amount;
   }
@@ -170,8 +171,7 @@ export function removeStatus(
  * Port declared by this module. The composition-level `BattleRuleServices`
  * satisfies it structurally, so neither side needs to import the other.
  */
-export interface StatusRules {
-  readonly content: ContentCatalog;
+export interface StatusRules extends UnitDepartureRules {
   readonly statusBehaviors: StatusBehaviorRegistry;
 }
 
@@ -182,13 +182,12 @@ export function resolveTurnStartStatuses(
   emit: (event: GameEvent) => void,
   /** Units whose actor turn is starting. The caller decides the scope. */
   scope: readonly Unit[],
-  onDeath?: (unitId: number) => void,
 ): void {
   const content = rules.content;
   for (const unit of scope) {
     for (const instance of [...unit.statuses]) {
       const def = statusDef(instance.id, content);
-      const context = new StatusLifecycleContext(state, unit, instance, emit, content, onDeath);
+      const context = new StatusLifecycleContext(rules, state, unit, instance, emit);
       if (def.periodic?.timing === 'ownerTurnStart') {
         const maxHp = content.units.get(unit.type).maxHp;
         const requested = Math.max(1, Math.round(maxHp * def.periodic.maxHpFraction * instance.stacks));

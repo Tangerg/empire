@@ -1,7 +1,7 @@
 import { isCharging, resolveDueCasts, type CastingRules } from './casting';
 import { UnitEntity } from './domain/unit-entity';
 import { advanceTerrainOverlayRound, applyOverlayTurnStartEffects } from './overlays';
-import { handleCommanderDefeat, refreshCommanderTurn } from './commanders';
+import { refreshCommanderTurn } from './commanders';
 import { playerResource, type BattleResourceSystem } from './resources';
 import { runScenarioTriggers, type ScenarioRules } from './scenario';
 import { player, unitsOf } from './state';
@@ -139,8 +139,7 @@ export class BattleLifecycle {
       : { type: 'turnStart', player: owner.id, turn: state.turn, activeUnit: active });
 
     applyOverlayTurnStartEffects(state, owner.id, this.emit, this.rules.content, scope);
-    resolveTurnStartStatuses(this.rules, state, this.emit, scope, (unitId) =>
-      handleCommanderDefeat(state, unitId, this.emit, this.rules.content));
+    resolveTurnStartStatuses(this.rules, state, this.emit, scope);
 
     if (active === null) {
       // One income grant per player per round; side turns already give each

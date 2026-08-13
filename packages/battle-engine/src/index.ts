@@ -45,6 +45,8 @@ export * from './vision';
 export * from './random';
 export * from './replay';
 export * from './turn-order';
+export * from './reactions';
+export * from './unit-departure';
 export * from './turn-cycle';
 export * from './casting';
 export * from './session';

@@ -12,6 +12,8 @@ import { StatusBehaviors } from '../statuses';
 import { Abilities } from '../abilities';
 import { DefaultTacticalSpace } from '../tactical-space';
 import { TurnOrders } from '../turn-order';
+import { Reactions } from '../reactions';
+import { UnitDepartureHandlers } from '../unit-departure';
 import { SplitMixRandom } from '../random';
 import {
   ContentPackInstaller,
@@ -64,6 +66,8 @@ export const TacticalRulesPlugin: EnginePlugin = {
     'statusBehaviors',
     'progression',
     'turnOrders',
+    'reactions',
+    'unitDepartures',
     'random',
   ],
   install: (context) => {
@@ -76,6 +80,8 @@ export const TacticalRulesPlugin: EnginePlugin = {
     context.provide('progression', DefaultRankProgression);
     context.provide('random', SplitMixRandom);
     context.provide('turnOrders', TurnOrders.clone());
+    context.provide('reactions', Reactions.clone());
+    context.provide('unitDepartures', UnitDepartureHandlers.clone());
   },
 };
 

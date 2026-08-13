@@ -11,6 +11,8 @@ import { awardRankProgress, type RankProgressionPolicy } from './progression';
 import { unitAbilityIds } from './careers';
 import { idx } from './grid';
 import { Registry } from './registry';
+import { type ReactionBehavior } from './reactions';
+import { type UnitDepartureHandlerRegistry } from './unit-departure';
 import { unitAtCoord } from './state';
 import { player } from './state';
 import { blockedAbilityStatus, combinedStatusModifiers } from './statuses';
@@ -51,6 +53,8 @@ export interface AbilityRules {
   /** Shared spatial legality used by menus, AI and action execution. */
   readonly space: TacticalSpace;
   readonly abilities: Registry<AbilityDef>;
+  readonly reactions: Registry<ReactionBehavior>;
+  readonly unitDepartures: UnitDepartureHandlerRegistry;
 }
 
 export type Emit = (e: GameEvent) => void;

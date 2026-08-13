@@ -2,13 +2,15 @@ import { Battlefield } from './domain/battlefield';
 import { BattleAggregate } from './domain/battle-aggregate';
 import { UnitEntity } from './domain/unit-entity';
 import { inBounds, sameCoord } from './grid';
-import { handleCommanderDefeat } from './commanders';
+import { announceUnitDeparture, announceUnitFall, type UnitDepartureRules } from './unit-departure';
+
+/** Port declared by this module; `BattleRuleServices` satisfies it. */
+export type ForcedMovementRules = UnitDepartureRules;
 import { DIRECTION_VECTOR, directionToward } from './spatial';
 import { requireUnit, unitAtCoord } from './state';
 import type { Coord, GameEvent, GameState, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
 import { resolveMoraleAfterDamage } from './morale';
-import { emitTransportLossEvents } from './transports';
 
 export type ForcedMovementMode = 'push' | 'pull';
 
@@ -42,11 +44,12 @@ function canOccupy(state: GameState, unit: Unit, at: Coord, content: ContentCata
  * impassable terrain, elevation limits and cliffs.
  */
 export function forceMoveUnit(
+  rules: ForcedMovementRules,
   state: GameState,
   request: ForcedMovementRequest,
   emit: (event: GameEvent) => void,
-  content: ContentCatalog,
 ): ForcedMovementResult {
+  const content = rules.content;
   const unit = requireUnit(state, request.unit);
   const from = { x: unit.x, y: unit.y };
   const distance = Math.max(0, Math.round(request.distance));
@@ -86,14 +89,11 @@ export function forceMoveUnit(
     const result = new BattleAggregate(state, content).damageUnit(unit.id, collisionDamage);
     killed = result.killed;
     emit({ type: 'collisionDamage', unit: unit.id, amount: result.amount, hpAfter: result.hpAfter, killed });
-    if (killed) {
-      emit({ type: 'death', unit: unit.id, at: result.at });
-      if (result.marker) emit({ type: 'markerAdded', marker: result.marker.id, kind: result.marker.kind, at: result.marker.at });
-      handleCommanderDefeat(state, unit.id, emit, content);
-      emitTransportLossEvents(unit.id, result.at, result.passengerMarkers, emit);
+    if (result.fall) {
+      announceUnitFall(rules, state, result.fall, emit);
       resolveMoraleAfterDamage(state, unit, result.amount, true, result.at, emit, content);
     } else if (resolveMoraleAfterDamage(state, unit, result.amount, false, result.at, emit, content)) {
-      handleCommanderDefeat(state, unit.id, emit, content);
+      announceUnitDeparture(rules, state, unit, emit);
     }
   }
   return { from, to: { ...to }, path, collided, killed };

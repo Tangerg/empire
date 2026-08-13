@@ -23,6 +23,8 @@ export interface KernelCapabilityMap {
   progression: BattleRuleServices['progression'];
   resources: BattleRuleServices['resources'];
   turnOrders: BattleRuleServices['turnOrders'];
+  reactions: BattleRuleServices['reactions'];
+  unitDepartures: BattleRuleServices['unitDepartures'];
   random: BattleRuleServices['random'];
   aiObjectiveAdvisors: AiObjectiveAdvisorRegistry;
   abilityAiEvaluators: AbilityAiEvaluatorRegistry;
@@ -127,6 +129,8 @@ const ENGINE_CAPABILITIES = [
   'progression',
   'resources',
   'turnOrders',
+  'reactions',
+  'unitDepartures',
   'random',
   'aiObjectiveAdvisors',
   'abilityAiEvaluators',
@@ -191,6 +195,8 @@ export class SrpgMicrokernel {
       progression: context.require('progression'),
       resources: context.require('resources'),
       turnOrders: context.require('turnOrders'),
+      reactions: context.require('reactions'),
+      unitDepartures: context.require('unitDepartures'),
       random: context.require('random'),
       aiObjectiveAdvisors: context.require('aiObjectiveAdvisors'),
       abilityAiEvaluators: context.require('abilityAiEvaluators'),

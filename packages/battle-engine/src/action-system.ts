@@ -18,6 +18,8 @@ import { Abilities, type AbilityDef } from './abilities';
 import { type Registry } from './registry';
 import { DefaultTacticalSpace, type TacticalSpace } from './tactical-space';
 import { activeTurnOrder, mayAct, TurnOrders, type TurnOrderPolicy } from './turn-order';
+import { Reactions, type ReactionBehavior } from './reactions';
+import { UnitDepartureHandlers, type UnitDepartureHandlerRegistry } from './unit-departure';
 import { SplitMixRandom, type RandomSource } from './random';
 import { type ContentCatalog } from './content-pack';
 import type { Action, ActionKindMap, Direction, GameEvent, GameState } from './types';
@@ -41,6 +43,10 @@ export interface BattleRuleServices {
   readonly resources: BattleResourceSystem;
   /** Registered turn-order policies; the level's ruleset selects one by id. */
   readonly turnOrders: Registry<TurnOrderPolicy>;
+  /** Registered reaction stances; a unit's `reaction` selects one by id. */
+  readonly reactions: Registry<ReactionBehavior>;
+  /** Consequences of a unit leaving the field, in registration order. */
+  readonly unitDepartures: UnitDepartureHandlerRegistry;
   /** Seeded randomness. Swap for DeterministicOnlyRandom to forbid variance. */
   readonly random: RandomSource;
 }
@@ -76,6 +82,8 @@ export function createDefaultBattleRuleServices(
     progression: overrides.progression ?? DefaultRankProgression,
     resources: overrides.resources ?? DefaultBattleResources.clone(),
     turnOrders: overrides.turnOrders ?? TurnOrders.clone(),
+    reactions: overrides.reactions ?? Reactions.clone(),
+    unitDepartures: overrides.unitDepartures ?? UnitDepartureHandlers.clone(),
   };
 }
 

@@ -7,13 +7,14 @@ import { areAllies } from './state';
 import { player } from './state';
 import { UnitEntity } from './domain/unit-entity';
 import { type CombatModifier, type CombatModifierPipeline } from './combat-modifiers';
-import type { Coord, GameEvent, GameState, PlayerState, StructureState, Unit, WeaponDef, WeaponId } from './types';
+import type { Coord, GameEvent, GameState, PlayerState, ReactionStance, StructureState, Unit, WeaponDef, WeaponId } from './types';
 import {
   type BattleResourceSystem,
   canAffordTransactions,
   transactionSubject,
 } from './resources';
 import type { ContentCatalog } from './content-pack';
+import { reactionOf, type ReactionBehavior, type ReactionRules } from './reactions';
 
 export { MAX_MITIGATION } from './combat-modifiers';
 
@@ -29,7 +30,7 @@ export interface WeaponRules {
   readonly resources: BattleResourceSystem;
 }
 
-export interface CombatRules extends WeaponRules {
+export interface CombatRules extends WeaponRules, ReactionRules {
   readonly combatModifiers: CombatModifierPipeline;
 }
 
@@ -63,7 +64,8 @@ export interface CombatForecast {
   /** Unit that actually receives the strike; differs when support intercepts. */
   damageRecipient: number;
   interceptor: number | null;
-  reaction: { unit: number; stance: 'guard' | 'support'; protectedUnit?: number } | null;
+  /** Stance that changed the exchange, if any. Open: stances are content. */
+  reaction: { unit: number; stance: ReactionStance; protectedUnit?: number } | null;
   recipientHpAfter: number;
   recipientDies: boolean;
   defenderHpAfter: number;
@@ -325,14 +327,15 @@ function bestCounterWeapon(
   return candidates[0] ?? null;
 }
 
-function supportInterceptor(state: GameState, defender: Unit): Unit | null {
+/** The ally that steps in front of this defender, if any stance offers to. */
+function interceptorFor(rules: ReactionRules, state: GameState, defender: Unit): Unit | null {
   return (
     state.units
       .filter(
         (candidate) =>
           candidate.id !== defender.id &&
           areAllies(state, candidate.owner, defender.owner) &&
-          candidate.reaction === 'support' &&
+          reactionOf(rules, candidate.reaction).intercepts &&
           candidate.reactionUsedRound !== state.turn &&
           dist(candidate, defender) === 1,
       )
@@ -340,10 +343,14 @@ function supportInterceptor(state: GameState, defender: Unit): Unit | null {
   );
 }
 
-function applyReactionMultiplier(damage: DamageBreakdown, multiplier: number): DamageBreakdown {
+function applyReactionMultiplier(
+  damage: DamageBreakdown,
+  behavior: ReactionBehavior,
+): DamageBreakdown {
+  const multiplier = behavior.incomingMultiplier;
   const reactionModifier: CombatModifier = {
-    id: 'reaction.guard',
-    label: '防御姿态',
+    id: `reaction.${behavior.id}`,
+    label: behavior.name,
     source: 'reaction',
     stage: 'final',
     operation: 'multiply',
@@ -373,19 +380,24 @@ export function forecast(
   const attackFrom = options.attackFrom ?? { x: attacker.x, y: attacker.y };
   const resolvedWeaponId = options.weapon ?? primaryWeapon(attacker, rules.content).id;
   const defenderAt = { x: defender.x, y: defender.y };
-  const interceptor = supportInterceptor(s, defender);
+  const interceptor = interceptorFor(rules, s, defender);
   const recipient = interceptor ?? defender;
   let strike = computeDamage(rules, s, attacker, recipient, {
     attackerAt: attackFrom,
     defenderAt: recipient,
     weapon: resolvedWeaponId,
   });
+  const stance = reactionOf(rules, defender.reaction);
   let reaction: CombatForecast['reaction'] = null;
   if (interceptor) {
-    reaction = { unit: interceptor.id, stance: 'support', protectedUnit: defender.id };
-  } else if (defender.reaction === 'guard' && defender.reactionUsedRound !== s.turn) {
-    strike = applyReactionMultiplier(strike, 0.7);
-    reaction = { unit: defender.id, stance: 'guard' };
+    reaction = {
+      unit: interceptor.id,
+      stance: interceptor.reaction,
+      protectedUnit: defender.id,
+    };
+  } else if (stance.incomingMultiplier !== 1 && defender.reactionUsedRound !== s.turn) {
+    strike = applyReactionMultiplier(strike, stance);
+    reaction = { unit: defender.id, stance: stance.id };
   }
 
   const recipientHpAfter = Math.max(0, recipient.hp - strike.damage);
@@ -396,7 +408,7 @@ export function forecast(
   let counter: DamageBreakdown | null = null;
   let attackerHpAfter = attacker.hp;
 
-  if (!defenderDies && defender.reaction !== 'guard' && s.rules.counterAttack) {
+  if (!defenderDies && stance.retaliates && s.rules.counterAttack) {
     const counterSource: Unit = { ...defender, hp: defenderHpAfter };
     const counterTarget: Unit = { ...attacker, facing: directionToward(attackFrom, defenderAt) };
     const candidate = bestCounterWeapon(
@@ -406,7 +418,7 @@ export function forecast(
       counterTarget,
       defenderAt,
       attackFrom,
-      defender.reaction === 'conserve',
+      stance.conservesResources,
     );
     if (candidate) {
       counter = candidate.damage;

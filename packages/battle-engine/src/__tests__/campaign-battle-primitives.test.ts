@@ -108,7 +108,7 @@ describe('campaign-grade battle primitives', () => {
     const carrier = state.units[1];
     embarkUnit(state, passenger.id, carrier.id, () => {}, rules.content);
     const result = new BattleAggregate(state, rules.content).damageUnit(carrier.id, 999);
-    expect(result.passengerMarkers).toHaveLength(1);
+    expect(result.fall?.passengerMarkers).toHaveLength(1);
     expect(state.embarkedUnits).toHaveLength(0);
     expect(state.markers.some((marker) =>
       marker.kind === 'transport-loss' && marker.fallenUnit?.id === passenger.id)).toBe(true);

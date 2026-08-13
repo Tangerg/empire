@@ -114,13 +114,6 @@ const MODIFIER_SOURCE_LABEL: Record<CombatModifier['source'], string> = {
   extension: '扩展',
 };
 
-const REACTION_LABEL: Record<ReactionStance, string> = {
-  counter: '反击',
-  guard: '防御',
-  support: '援护',
-  conserve: '节制',
-};
-
 const RANK_LABEL = ['新兵', '老兵', '精英'] as const;
 const FACING_LABEL: Record<Direction, string> = { north: '北 ↑', east: '东 →', south: '南 ↓', west: '西 ←' };
 
@@ -387,7 +380,9 @@ export class Hud {
         <span class="fc-name">${escapeHtml(content.units.get(defender.type).name)}</span>
       </div>
       ${fc.interceptor ? `<div class="hint">${escapeHtml(dDef.name)} 将进行援护并承受伤害</div>` : ''}
-      ${fc.reaction?.stance === 'guard' ? '<div class="hint">目标将触发防御姿态</div>' : ''}
+      ${fc.reaction && !fc.interceptor
+        ? `<div class="hint">目标将触发「${escapeHtml(v.rules.reactions.get(fc.reaction.stance).name)}」姿态</div>`
+        : ''}
       ${plan.unitHits.length + plan.structureHits.length > 1
         ? `<div class="hint">范围攻击还将波及 ${plan.unitHits.length - 1} 个单位、${plan.structureHits.length} 个结构</div>`
         : ''}
@@ -461,7 +456,7 @@ export class Hud {
         ${weapons.some((weapon) => weapon.moveAndAttack) ? '' : '<span class="tag warn">移动后无法攻击</span>'}
         ${def.abilities.includes('capture') ? '<span class="tag">可占领</span>' : '<span class="tag dim">不可占领</span>'}
         ${def.abilities.includes('heal') ? '<span class="tag good">可治疗</span>' : ''}
-        <span class="tag">反应：${REACTION_LABEL[u.reaction]}</span>
+        <span class="tag" title="${escapeHtml(v.rules.reactions.get(u.reaction).hint)}">反应：${escapeHtml(v.rules.reactions.get(u.reaction).name)}</span>
         ${u.done ? '<span class="tag dim">已行动</span>' : ''}
       </div>
       <div class="unit-section">
@@ -502,13 +497,9 @@ export class Hud {
           : ''}
       </div>
       ${v.reactionUnit === u.id ? `<div class="cmd-list">
-        ${([
-          ['counter', '反击'],
-          ['guard', '防御'],
-          ['support', '援护'],
-          ['conserve', '节制'],
-        ] as const)
-          .map(([stance, label]) => `<button class="btn ${u.reaction === stance ? 'primary' : 'ghost'}" data-act="reaction" data-arg="${stance}">${label}</button>`)
+        ${v.rules.reactions.all()
+          .map((stance) => `<button class="btn ${u.reaction === stance.id ? 'primary' : 'ghost'}"
+            data-act="reaction" data-arg="${escapeHtml(stance.id)}" title="${escapeHtml(stance.hint)}">${escapeHtml(stance.name)}</button>`)
           .join('')}
         ${(['north', 'east', 'south', 'west'] as const)
           .map((facing) => `<button class="btn ${u.facing === facing ? 'primary' : 'ghost'}" data-act="facing" data-arg="${facing}">${FACING_LABEL[facing]}</button>`)

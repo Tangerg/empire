@@ -1,4 +1,5 @@
 import { IllegalActionError } from './domain/errors';
+import { UnitDepartureHandlers } from './unit-departure';
 import { dist } from './grid';
 import { addStatus, removeStatus } from './statuses';
 import { areAllies, player } from './state';
@@ -192,3 +193,12 @@ export function handleCommanderDefeat(
     }
   }
 }
+
+/**
+ * Losing the commander is a consequence of departure, not of *how* it departed,
+ * so it is registered once here instead of being called from every death site.
+ */
+UnitDepartureHandlers.register({
+  id: 'commander.defeat',
+  handle: ({ state, unit, emit, content }) => handleCommanderDefeat(state, unit.id, emit, content),
+});

@@ -8,18 +8,27 @@ import type {
   WeaponHitEffectKindMap,
 } from './types';
 import { type ContentCatalog } from './content-pack';
+import { type UnitDepartureRules } from './unit-departure';
 
 type HitEffectKind = Extract<keyof WeaponHitEffectKindMap, string>;
 
 export class WeaponHitEffectContext {
   constructor(
+    /** The whole ruleset: an effect may reach any rule the engine composes. */
+    readonly rules: WeaponHitEffectRules,
     readonly state: GameState,
     readonly attacker: Unit,
     readonly target: Unit,
     readonly emit: (event: GameEvent) => void,
-    readonly content: ContentCatalog,
   ) {}
+
+  get content(): ContentCatalog {
+    return this.rules.content;
+  }
 }
+
+/** Port declared by this module; `BattleRuleServices` satisfies it. */
+export type WeaponHitEffectRules = UnitDepartureRules;
 
 export interface WeaponHitEffectHandler<K extends HitEffectKind = HitEffectKind> {
   readonly kind: K;
@@ -43,14 +52,14 @@ export class WeaponHitEffectHandlerRegistry {
   }
 
   apply(
+    rules: WeaponHitEffectRules,
     state: GameState,
     attacker: Unit,
     target: Unit,
     effects: WeaponHitEffect[],
     emit: (event: GameEvent) => void,
-    content: ContentCatalog,
   ): void {
-    const context = new WeaponHitEffectContext(state, attacker, target, emit, content);
+    const context = new WeaponHitEffectContext(rules, state, attacker, target, emit);
     for (const effect of effects) {
       const handler = this.handlers.get(effect.type);
       if (!handler) throw new Error(`no weapon hit effect handler for "${effect.type}"`);
@@ -92,14 +101,14 @@ export const WeaponHitEffectHandlers = new WeaponHitEffectHandlerRegistry()
   })
   .register({
     kind: 'forcedMove',
-    apply: ({ state, attacker, target, emit, content }, effect) => {
-      forceMoveUnit(state, {
+    apply: ({ rules, state, attacker, target, emit }, effect) => {
+      forceMoveUnit(rules, state, {
         unit: target.id,
         source: attacker,
         mode: effect.mode,
         distance: effect.distance,
         collisionDamage: effect.collisionDamage,
-      }, emit, content);
+      }, emit);
     },
     describe: (effect) => `${effect.mode === 'push' ? '击退' : '拉拽'} ${effect.distance} 格`,
   });
