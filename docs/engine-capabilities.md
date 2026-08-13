@@ -58,6 +58,7 @@
 | 四方向加权寻路 | 已实现 | 已实现 | 已实现 | Dijkstra，按进入成本结算 |
 | 多移动类型 | 已实现 | 已实现 | 内容包定义 | 步行、骑乘、重装、飞行、水军等均为数据 |
 | 友军穿越与敌军阻挡 | 已实现 | 已实现 | 规则仅数据可配 | 由 `RuleSet` 控制 |
+| 控制区（ZOC） | 已实现 | 已实现 | 规则仅数据可配 | `rules.zoneOfControl` 开关，`UnitDef.zoneOfControl` 定半径；进入即停步，棋盘高亮敌方控制格 |
 | 海拔 | 已实现 | 已实现 | 已实现 | 每格整数高度 |
 | 爬升与下落限制 | 已实现 | 已实现 | 间接配置 | 由移动和空间规则解释 |
 | 显式悬崖边 | 已实现 | 已实现 | 已实现 | 正交相邻边 |
@@ -98,6 +99,7 @@
 | 侧击、背刺和夹击 | 已实现 | 已实现 | 初始朝向仅数据可配 | 只对合格近战生效 |
 | 自动反击 | 已实现 | 已实现 | 已实现开关 | 从可用武器选择最佳反击 |
 | 防御姿态 | 已实现 | 已实现 | 初始姿态仅数据可配 | 降低一次伤害并消耗反应 |
+| 借机攻击 | 已实现 | 已实现 | 规则仅数据可配 | 脱离控制区时触发，消耗该单位本回合唯一的反应；放弃还击的姿态也放弃它 |
 | 援护防御 | 已实现 | 已实现 | 初始姿态仅数据可配 | 邻接友军代替目标承伤 |
 | 援护攻击 | 已实现 | 已实现 | 初始姿态仅数据可配 | 邻接友军追加一次降低伤害的攻击 |
 | 指挥官链接和光环 | 已实现 | 已实现 | 仅数据可配 | 半径外失效 |
@@ -259,7 +261,8 @@
 在此之上：
 
 - 依赖参数一律必填，从不使用全局默认值；漏传是编译错误
-- **一条调用形状**：`f(依赖, 作用对象…, emit)`。依赖永远在前，事件通道永远在最后；两个以上服务合成一个前置端口对象（`CombatRules`、`AbilityRules`、`StatusRules`、`ObjectiveRules`、`VictoryRules`、`ScenarioRules`、`CommanderRules`、`CareerRules`、`TurnOrderRules`、`TurnCycleRules`、`ProgressionRules`、`UnitDepartureRules`、`AiRules`…）
+- **一条调用形状**：`f(依赖, 作用对象…, emit)`。依赖永远在前，事件通道永远在最后；两个以上服务合成一个前置端口对象（`CombatRules`、`AbilityRules`、`StatusRules`、`DamageRules`、`ZoneOfControlRules`、`ObjectiveRules`、`VictoryRules`、`ScenarioRules`、`CommanderRules`、`CareerRules`、`TurnOrderRules`、`TurnCycleRules`、`ProgressionRules`、`UnitDepartureRules`、`AiRules`…）
+- **必填参数不排在可选参数后面**：`f(state, unit, from, weapon = undefined, content)` 能编译，代价是每个调用点都要写一个 `undefined` 去够到后面那个参数。调用点上不可省的东西就不是可选的
 - 端口由**消费方**声明，`BattleRuleServices` 结构化满足全部端口，因此不引入新的模块依赖边
 - 表现层从会话拿到的规则集读取内容，不 import `battle-engine/data/*`
 - 应用组合根负责建 catalog 和 engine，库不做环境安装
@@ -271,6 +274,8 @@
 | 问题 | 唯一归属 |
 | --- | --- |
 | 单位离场之后要发生什么 | `UnitDepartureHandlers`（开放注册表） |
+| 一次伤害之后要发生什么 | `resolveDamage()` |
+| 此刻这个单位还能不能反应 | `UnitEntity.canReact()` |
 | 一种反应姿态是什么意思 | `Reactions`（内容注册表） |
 | 此刻这个单位能不能行动 | `mayAct()` |
 | 能不能给它下这条指令 | `ActionExecutionContext.commandableUnit()` |
