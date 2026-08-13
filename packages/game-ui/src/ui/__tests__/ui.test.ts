@@ -166,3 +166,37 @@ describe('game controller', () => {
     }
   });
 });
+
+describe('initiative presentation', () => {
+  let host: HTMLElement;
+
+  beforeEach(() => {
+    document.body.innerHTML = '<div id="app"></div>';
+    host = document.getElementById('app')!;
+  });
+
+  const initiativeLevel = () => ({
+    ...BUILTIN_LEVELS[0],
+    rules: { ...BUILTIN_LEVELS[0].rules, turnOrder: 'initiative' },
+  });
+
+  it('shows no order strip under side turns', () => {
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE });
+    host.append(c.root);
+    expect(c.root.querySelector('.order-strip')).toBeNull();
+    c.dispose();
+  });
+
+  it('shows the upcoming order, active unit first, under per-unit turns', () => {
+    const c = new GameController(initiativeLevel(), () => {}, { engine: TEST_ENGINE });
+    host.append(c.root);
+
+    const strip = c.root.querySelector('.order-strip');
+    expect(strip).toBeTruthy();
+    const slots = strip!.querySelectorAll('.order-slot');
+    expect(slots.length).toBeGreaterThan(1);
+    expect(slots[0].classList.contains('is-active')).toBe(true);
+    expect([...slots].slice(1).some((slot) => slot.classList.contains('is-active'))).toBe(false);
+    c.dispose();
+  });
+});

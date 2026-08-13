@@ -762,9 +762,16 @@ export class GameController {
             )
         : [];
 
+    const orderPreview = this.session.engine.turnOrderPreview(s, 6);
     return {
       state: s,
       rules: this.session.rules,
+      turnOrder: {
+        // A side-turn policy previews a whole army, which is not an order: only
+        // show the strip when the policy entitles one unit at a time.
+        units: s.turnOrder.activeUnit === null ? [] : orderPreview,
+        activeUnit: s.turnOrder.activeUnit,
+      },
       resources: this.session.rules.resources,
       inspect: this.inspect,
       tile: this.cursor,

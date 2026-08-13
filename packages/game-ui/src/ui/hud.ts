@@ -36,6 +36,8 @@ export interface HudView {
   commands: CommandOption[] | null;
   tactics: Array<TacticOption & { key: string; commander: string }>;
   reactionUnit: number | null;
+  /** Upcoming actor turns for per-unit orders; empty for side turns. */
+  turnOrder: { units: Unit[]; activeUnit: number | null };
   rankNextThreshold: number | null;
   careerOptions: CareerOption[];
   /** Ability whose target we are picking, if any. */
@@ -226,6 +228,29 @@ export class Hud {
 
   /* -------------------------------------------------------------------- top */
 
+  /**
+   * Initiative strip. Deliberately absent under side turns, where "who acts
+   * next" is the whole army and a strip would say nothing.
+   */
+  private renderTurnOrder(v: HudView): string {
+    const upcoming = v.turnOrder.units;
+    if (upcoming.length === 0) return '';
+    const content = v.rules.content;
+    return `<div class="order-strip" title="行动序">
+      ${upcoming
+        .map((unit, index) => {
+          const owner = v.state.players.find((entry) => entry.id === unit.owner);
+          const definition = content.units.get(unit.type);
+          const active = unit.id === v.turnOrder.activeUnit && index === 0;
+          return `<span class="order-slot ${active ? 'is-active' : ''}" style="--team:${owner?.color ?? PAL.neutral}"
+            title="${escapeHtml(definition.name)} · ${escapeHtml(owner?.name ?? '')}">
+            ${unitIcon(unit.type, owner?.color ?? PAL.neutral, active ? 26 : 20)}
+          </span>`;
+        })
+        .join('')}
+    </div>`;
+  }
+
   private renderTop(v: HudView): string {
     const s = v.state;
     const p = s.players.find((x) => x.id === s.currentPlayer)!;
@@ -238,6 +263,7 @@ export class Hud {
         <div class="turn-chip">第 <b>${s.turn}</b>${turnLimit} 回合</div>
       </div>
       <div class="topbar-center">
+        ${this.renderTurnOrder(v)}
         <div class="player-chip" style="--team:${p.color}">
           <span class="dot"></span>
           <b>${escapeHtml(p.name)}</b>
