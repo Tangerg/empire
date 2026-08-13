@@ -79,13 +79,21 @@ export function stashPlaytest(level: LevelData): void {
   sessionStorage.setItem(PLAYTEST_KEY, JSON.stringify(level));
 }
 
-export function takePlaytest(): LevelData | null {
+export interface LoadedPlaytest {
+  readonly level: LevelData | null;
+  /** Why the hand-off from the editor was refused; null when there was none. */
+  readonly rejected: string | null;
+}
+
+export function takePlaytest(): LoadedPlaytest {
   const raw = sessionStorage.getItem(PLAYTEST_KEY);
-  if (!raw) return null;
+  if (!raw) return { level: null, rejected: null };
   sessionStorage.removeItem(PLAYTEST_KEY);
   try {
-    return normaliseLevel(JSON.parse(raw));
-  } catch {
-    return null;
+    return { level: normaliseLevel(JSON.parse(raw)), rejected: null };
+  } catch (error) {
+    // Silently dropping the player back to the menu made a level the editor
+    // considered valid look like a click that did nothing.
+    return { level: null, rejected: (error as Error).message };
   }
 }

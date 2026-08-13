@@ -13,7 +13,7 @@ import {
   type StructureCombatForecast,
 } from './combat';
 
-import { UnitEntity } from './domain/index';
+import { DomainInvariantError, UnitEntity } from './domain/index';
 import { dist, idx, inBounds, lineBetween, ring, sameCoord } from './grid';
 import {
   awardCombatProgress,
@@ -214,6 +214,13 @@ export interface CombatPlanOptions {
   weapon?: WeaponId;
 }
 
+/**
+ * Forecasts the strike aimed at `aimedAt`.
+ *
+ * The three preconditions below are the caller's to establish — every caller
+ * reaches this through `abilityTargets`, which already applied them — so
+ * failing one is a defect rather than a refusal, and says so with the type.
+ */
 export function forecastCombatPlan(
   rules: CombatRules,
   state: GameState,
@@ -225,7 +232,7 @@ export function forecastCombatPlan(
   const from = options.from ?? { x: attacker.x, y: attacker.y };
   const resolvedWeaponId = options.weapon ?? primaryWeapon(attacker, content).id;
   if (!hostileActionAllowed(state, attacker.owner, from, aimedAt, 'attack')) {
-    throw new Error('combat plan target is protected by an engagement rule');
+    throw new DomainInvariantError('combat plan target is protected by an engagement rule');
   }
   const weapon = content.weapons.get(resolvedWeaponId);
   const primaryTarget = unitAtCoord(state, aimedAt);
@@ -234,10 +241,10 @@ export function forecastCombatPlan(
   // point of charge time, and every step below already copes with a null
   // primary. A single-target weapon aimed at nothing has nothing to resolve.
   if (!primaryTarget && !primaryStructureTarget && weapon.area === 'single') {
-    throw new Error('combat plan requires a hostile primary target');
+    throw new DomainInvariantError('combat plan requires a hostile primary target');
   }
   if (primaryTarget && !areEnemies(state, primaryTarget.owner, attacker.owner)) {
-    throw new Error('combat plan cannot target an allied unit');
+    throw new DomainInvariantError('combat plan cannot target an allied unit');
   }
 
   const primaryUnit = primaryTarget

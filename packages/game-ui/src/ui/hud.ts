@@ -74,11 +74,8 @@ export interface HudHandlers {
 const pct = (n: number) => `${Math.round(n * 100)}%`;
 
 function resourceName(resources: BattleResourceSystem, id: string): string {
-  try {
-    return resources.adapters.get(id).name;
-  } catch {
-    return id;
-  }
+  // The registry has answered this without an exception all along.
+  return resources.adapters.tryGet(id)?.name ?? id;
 }
 
 function formatAmounts(resources: BattleResourceSystem, amounts: readonly ResourceAmount[]): string {

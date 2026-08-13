@@ -156,5 +156,6 @@ battle-engine
 5. 领域缺陷用 `DomainInvariantError`，永远不呈现为「这步不允许」
 6. 一次伤害的全部后续（阵亡、尸体、乘员、离场后果、士气）只由 `resolveDamage()` 结算
 7. 「这个单位还有没有反应」只由 `UnitEntity.canReact()` 回答
+8. 问和做是两件函数：查询返回 `null`，命令抛 `DomainInvariantError`，裸 `catch` 不许决定规则
 
 以上都由 `architecture-boundaries.test.ts` 中的架构适应度测试守卫。

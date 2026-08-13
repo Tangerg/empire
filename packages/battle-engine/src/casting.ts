@@ -1,4 +1,4 @@
-import { isWeaponReady } from './combat';
+import { readyWeapon } from './combat';
 import { executeCombatPlan, forecastCombatPlan, type CombatPlanRules } from './combat-plan';
 import { hostileActionAllowed } from './engagement';
 import { player, unitAtCoord } from './state';
@@ -144,11 +144,11 @@ function refusal(rules: CastingRules, state: GameState, cast: PendingCast): Cast
   const caster = state.units.find((unit) => unit.id === cast.caster);
   // The caster may have fallen to a strike resolved earlier in this same sweep.
   if (!caster) return 'casterLost';
-  if (!isWeaponReady(rules, caster, cast.weapon, player(state, caster.owner))) return 'weaponUnavailable';
+  const weapon = readyWeapon(rules, caster, cast.weapon, player(state, caster.owner));
+  if (!weapon) return 'weaponUnavailable';
   if (!hostileActionAllowed(state, caster.owner, cast.origin, cast.target, 'attack')) return 'targetProtected';
   // A single-target strike needs something on the tile; an area strike still
   // falls on it and splashes whoever stayed nearby.
-  const weapon = rules.content.weapons.get(cast.weapon);
   if (weapon.area === 'single' && !unitAtCoord(state, cast.target)) return 'targetVacated';
   return null;
 }

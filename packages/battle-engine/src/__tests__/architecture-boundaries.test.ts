@@ -292,6 +292,49 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('never lets a caught error decide a rule', () => {
+    // Sibling of the guard above. `catch { return false }` answers a question
+    // with an exception it never looked at: a weapon on cooldown and a weapon
+    // the content never defined come back as the same quiet "no", and the
+    // second one stops being findable. Asking and committing are different
+    // acts — the query returns null, the command throws.
+    //
+    // A catch that reports (binds the error, sets a status, rethrows) is fine;
+    // one that silently produces a value is not.
+    const offenders: string[] = [];
+    const sources = [
+      ...runtimeTypeScriptFiles(coreRoot),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'campaign-engine', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'editor', 'src')),
+    ];
+    for (const file of sources) {
+      // Comments are stripped first: a doc comment that *quotes* the mistake it
+      // is warning about is not the mistake, and the guard flagged this very
+      // file's explanation of itself before the strip went in.
+      const source = readFileSync(file, 'utf8')
+        .replace(/\/\*[\s\S]*?\*\//g, '')
+        .replace(/(^|[^:])\/\/[^\n]*/g, '$1');
+      for (const match of source.matchAll(/catch\s*\{/g)) {
+        let depth = 0;
+        let end = match.index;
+        for (let index = match.index; index < source.length; index++) {
+          if (source[index] === '{') depth++;
+          else if (source[index] === '}' && --depth === 0) {
+            end = index;
+            break;
+          }
+        }
+        const body = source.slice(match.index, end);
+        if (/\breturn\b/.test(body)) {
+          offenders.push(`${relative(packagesRoot, file)}: unbound catch returns a value`);
+        }
+      }
+    }
+
+    expect(offenders).toEqual([]);
+  });
+
   it('asks one question about the right to act', () => {
     // Every caller must go through `mayAct`/`commandableUnit`. Re-deriving
     // "mine and not yet done" inline is what silently ignored the ordering

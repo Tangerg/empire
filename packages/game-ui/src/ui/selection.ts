@@ -210,12 +210,13 @@ export class TargetSelection extends Selection {
 
     const unit = this.unitIn(context);
     if (this.ability !== 'attack' || !context.hoverTarget || !unit) return;
-    try {
-      const plan = context.session.attackPlan(unit, context.hoverTarget, this.dest, this.weapon);
-      for (const cell of plan.affectedCells) overlay.attack.add(idx(context.state.map, cell.x, cell.y));
-    } catch {
-      // Hover may move between valid targets while the overlay refreshes.
-    }
+    // No `try` here any more. The hovered tile is one of *this* selection's
+    // own targets — the cursor is matched against them rather than remembered
+    // in a field that outlived the selection that filled it — and nothing can
+    // act between choosing the target and drawing it. The old catch guarded a
+    // race that no longer exists, and hid every other reason a plan can fail.
+    const plan = context.session.attackPlan(unit, context.hoverTarget, this.dest, this.weapon);
+    for (const cell of plan.affectedCells) overlay.attack.add(idx(context.state.map, cell.x, cell.y));
   }
 }
 

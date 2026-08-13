@@ -14,6 +14,7 @@ import {
   CANDIDATE_01_CONTENT_PACK,
   CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN,
 } from '@empire/story-candidate-01';
+import type { CampaignState } from '@empire/campaign-engine';
 import {
   CANDIDATE_01_MENU_ART,
   candidate01CampaignAdapter,
@@ -125,7 +126,8 @@ function renderMenu(): void {
   active = null;
 
   const { levels: custom, rejected } = readCustomLevels();
-  const campaignSave = loadCampaignState(CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN);
+  const campaign = loadCampaignState(CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN);
+  const campaignSave = campaign.state;
   const campaignBattles = campaignSave?.battleHistory.length ?? 0;
   const screen = document.createElement('div');
   screen.style.height = '100%';
@@ -153,6 +155,12 @@ function renderMenu(): void {
 
     <h2>内置关卡</h2>
     <div class="level-grid">${BUILTIN_LEVELS.map((l) => levelCard(l, false)).join('')}</div>
+
+    ${
+      campaign.rejected === null
+        ? ''
+        : `<div class="empty-note">战役存档无法读取，进度已保留但未载入：${escapeHtml(campaign.rejected)}</div>`
+    }
 
     <h2>我的关卡</h2>
     ${
@@ -212,7 +220,7 @@ function renderMenu(): void {
   });
 }
 
-function startCampaign(state: ReturnType<typeof loadCampaignState>): void {
+function startCampaign(state: CampaignState | null): void {
   active?.dispose();
   const controller = new StoryCampaignController(campaignAdapter, state, () => renderMenu(), engine);
   active = controller;
@@ -235,6 +243,11 @@ function startGame(level: LevelData): void {
 }
 
 /* The editor hands a level over through sessionStorage when you hit 试玩. */
-const pending = takePlaytest();
-if (pending) startGame(pending);
-else renderMenu();
+const playtest = takePlaytest();
+if (playtest.level) startGame(playtest.level);
+else {
+  renderMenu();
+  // A level the editor considered valid but the engine refused used to look
+  // like a 试玩 button that did nothing.
+  if (playtest.rejected !== null) alert(`试玩关卡无法载入：${playtest.rejected}`);
+}

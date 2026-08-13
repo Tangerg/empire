@@ -1,5 +1,6 @@
 import {
-  availableWeapon,
+  readyWeapon,
+  requireReadyWeapon,
   healAmount,
   primaryWeapon,
 } from './combat';
@@ -95,13 +96,14 @@ export function clearCaptureAt(content: ContentCatalog, s: GameState, c: Coord):
   new BattleAggregate(s, content).clearCaptureAt(c);
 }
 
-function selectedWeapon(rules: AbilityRules, q: AbilityQuery): WeaponDef {
-  return availableWeapon(
-    rules,
-    q.unit,
-    q.weaponId ?? primaryWeapon(q.unit, rules.content).id,
-    player(q.state, q.unit.owner),
-  );
+/**
+ * The weapon this query is about, or null when there is none to speak of —
+ * the unit no longer carries it, cannot fire it yet, or has no weapons at all.
+ */
+function selectedWeapon(rules: AbilityRules, q: AbilityQuery): WeaponDef | null {
+  const id = q.weaponId ?? rules.content.units.get(q.unit.type).weapons[0];
+  if (!id) return null;
+  return readyWeapon(rules, q.unit, id, player(q.state, q.unit.owner));
 }
 
 Abilities.defineAll([
@@ -114,23 +116,25 @@ Abilities.defineAll([
     tags: ['attack'],
     targets: (rules, q) => {
       const weapon = selectedWeapon(rules, q);
+      if (!weapon) return [];
       return rules.space.attackTargets(q.state, q.unit, q.at, weapon)
         .filter((target) => hostileActionAllowed(q.state, q.unit.owner, q.at, target, 'attack'));
     },
     usable: (rules, q) => {
-      let weapon: WeaponDef;
-      try {
-        weapon = selectedWeapon(rules, q);
-      } catch {
-        return false;
-      }
-      if (q.moved && !weapon.moveAndAttack) return false;
-      return true;
+      const weapon = selectedWeapon(rules, q);
+      return weapon !== null && (!q.moved || weapon.moveAndAttack);
     },
     execute: (rules, q, target, emit) => {
       if (!target) throw new Error('attack requires a target');
       const { state, unit, at } = q;
-      const weapon = selectedWeapon(rules, q);
+      // Execution: legality was settled before the order was accepted, so a
+      // missing weapon here is a defect, not a refusal.
+      const weapon = requireReadyWeapon(
+        rules,
+        unit,
+        q.weaponId ?? primaryWeapon(unit, rules.content).id,
+        player(state, unit.owner),
+      );
       // A charged weapon locks the tile now and strikes it later; everything
       // else about the strike is identical, which is why charge time is a
       // weapon property rather than a separate ability.
@@ -230,11 +234,9 @@ export const abilityDef = (rules: AbilityRules, id: string): AbilityDef => rules
 export function canUseAbility(rules: AbilityRules, ability: AbilityDef, query: AbilityQuery): boolean {
   const tags = [...ability.tags];
   if (ability.id === 'attack') {
-    try {
-      tags.push(...selectedWeapon(rules, query).tags);
-    } catch {
-      return false;
-    }
+    const weapon = selectedWeapon(rules, query);
+    if (!weapon) return false;
+    tags.push(...weapon.tags);
   }
   return blockedAbilityStatus(query.unit, tags, rules.content) === null && ability.usable(rules, query);
 }

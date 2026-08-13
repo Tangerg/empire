@@ -263,6 +263,7 @@
 
 - 依赖参数一律必填，从不使用全局默认值；漏传是编译错误
 - **一条调用形状**：`f(依赖, 作用对象…, emit)`。依赖永远在前，事件通道永远在最后；两个以上服务合成一个前置端口对象（`CombatRules`、`AbilityRules`、`StatusRules`、`DamageRules`、`ZoneOfControlRules`、`ObjectiveRules`、`VictoryRules`、`ScenarioRules`、`CommanderRules`、`CareerRules`、`TurnOrderRules`、`TurnCycleRules`、`ProgressionRules`、`UnitDepartureRules`、`AiRules`…）
+- **问和做是两件函数**：查询答不上来返回 `null`，命令答不上来抛 `DomainInvariantError`；不绑定错误对象的 `catch` 不许产生返回值
 - **必填参数不排在可选参数后面**：`f(state, unit, from, weapon = undefined, content)` 能编译，代价是每个调用点都要写一个 `undefined` 去够到后面那个参数。调用点上不可省的东西就不是可选的
 - 端口由**消费方**声明，`BattleRuleServices` 结构化满足全部端口，因此不引入新的模块依赖边
 - 表现层从会话拿到的规则集读取内容，不 import `battle-engine/data/*`
@@ -278,6 +279,7 @@
 | AI 这一回合考虑做什么 | `AiIntents`（开放有序注册表） |
 | 当前选中了什么、点击意味着什么 | `Selection`（通用 UI，每种选择自己回答） |
 | 一次伤害之后要发生什么 | `resolveDamage()` |
+| 这件武器现在能不能用 | 问 `readyWeapon()`，做 `requireReadyWeapon()` |
 | 此刻这个单位还能不能反应 | `UnitEntity.canReact()` |
 | 一种反应姿态是什么意思 | `Reactions`（内容注册表） |
 | 此刻这个单位能不能行动 | `mayAct()` |

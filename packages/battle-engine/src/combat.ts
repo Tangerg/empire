@@ -6,6 +6,7 @@ import { commanderAuraFor } from './commanders';
 import { areAllies } from './state';
 import { player } from './state';
 import { UnitEntity } from './domain/unit-entity';
+import { DomainInvariantError } from './domain/errors';
 import { type CombatModifier, type CombatModifierPipeline } from './combat-modifiers';
 import type { Coord, GameEvent, GameState, PlayerState, ReactionStance, StructureState, Unit, WeaponDef, WeaponId } from './types';
 import {
@@ -116,19 +117,18 @@ export function unitWeapons(unit: Unit, content: ContentCatalog): WeaponDef[] {
   return content.units.get(unit.type).weapons.map((id) => content.weapons.get(id));
 }
 
+/** Can this unit fire a weapon it is already holding? Ammunition, cooldown, upkeep. */
 export function isWeaponReady(
   rules: WeaponRules,
   unit: Unit,
-  weapon: WeaponDef | WeaponId,
+  weapon: WeaponDef,
   owner?: PlayerState,
 ): boolean {
-  const id = typeof weapon === 'string' ? weapon : weapon.id;
-  if (!rules.content.units.get(unit.type).weapons.includes(id)) return false;
-  const definition = typeof weapon === 'string' ? rules.content.weapons.get(weapon) : weapon;
-  const context = { player: owner, unit, weapon: definition.id };
-  return new UnitEntity(unit).canUseWeapon(definition) &&
-    canAffordTransactions(rules.resources, definition.resourceRequirements, context) &&
-    canAffordTransactions(rules.resources, definition.resourceCosts, context);
+  if (!rules.content.units.get(unit.type).weapons.includes(weapon.id)) return false;
+  const context = { player: owner, unit, weapon: weapon.id };
+  return new UnitEntity(unit).canUseWeapon(weapon) &&
+    canAffordTransactions(rules.resources, weapon.resourceRequirements, context) &&
+    canAffordTransactions(rules.resources, weapon.resourceCosts, context);
 }
 
 export function primaryWeapon(unit: Unit, content: ContentCatalog): WeaponDef {
@@ -137,17 +137,43 @@ export function primaryWeapon(unit: Unit, content: ContentCatalog): WeaponDef {
   return weapon;
 }
 
-export function availableWeapon(
+/**
+ * The weapon, if this unit both carries it and can fire it right now.
+ *
+ * Asking and committing are different acts, so they are different functions.
+ * One function that answered "no" by throwing forced every menu, every AI
+ * enumeration and every legality check to wrap it in `try/catch` and return
+ * false — which also swallowed a unit whose weapon list names a weapon the
+ * content never defined, turning a typo in a pack into "this unit can never
+ * attack" instead of an error anyone could find.
+ */
+export function readyWeapon(
+  rules: WeaponRules,
+  unit: Unit,
+  id: WeaponId,
+  owner?: PlayerState,
+): WeaponDef | null {
+  if (!rules.content.units.get(unit.type).weapons.includes(id)) return null;
+  // Past this point the unit claims the weapon, so an unknown id is a content
+  // defect and the registry is right to say so out loud.
+  const definition = rules.content.weapons.get(id);
+  return isWeaponReady(rules, unit, definition, owner) ? definition : null;
+}
+
+/** The same question, asked by a caller that has already established the answer. */
+export function requireReadyWeapon(
   rules: WeaponRules,
   unit: Unit,
   id: WeaponId,
   owner?: PlayerState,
 ): WeaponDef {
-  const unitDef = rules.content.units.get(unit.type);
-  if (!unitDef.weapons.includes(id)) throw new Error(`${unitDef.name} cannot use weapon "${id}"`);
-  const definition = rules.content.weapons.get(id);
-  if (!isWeaponReady(rules, unit, definition, owner)) throw new Error(`weapon "${id}" is not ready`);
-  return definition;
+  const weapon = readyWeapon(rules, unit, id, owner);
+  if (!weapon) {
+    throw new DomainInvariantError(
+      `${rules.content.units.get(unit.type).name} cannot fire weapon "${id}" right now`,
+    );
+  }
+  return weapon;
 }
 
 /** Commits one successful strike. Forecasting never mutates this state. */
@@ -159,7 +185,7 @@ export function consumeWeapon(
   emit: (event: GameEvent) => void = () => {},
 ): void {
   const owner = player(state, unit.owner);
-  const weapon = availableWeapon(rules, unit, id, owner);
+  const weapon = requireReadyWeapon(rules, unit, id, owner);
   const transactionContext = { player: owner, unit, weapon: weapon.id };
   for (const cost of weapon.resourceCosts) {
     const subject = transactionSubject(cost, transactionContext);
@@ -210,7 +236,7 @@ export function computeDamage(
   const attackerAt = geometry.attackerAt ?? { x: attacker.x, y: attacker.y };
   const defenderAt = geometry.defenderAt ?? { x: defender.x, y: defender.y };
   const resolvedWeaponId = geometry.weapon ?? primaryWeapon(attacker, content).id;
-  const weapon = availableWeapon(rules, attacker, resolvedWeaponId, player(s, attacker.owner));
+  const weapon = requireReadyWeapon(rules, attacker, resolvedWeaponId, player(s, attacker.owner));
   const base = weapon.power;
   const battlefield = new Battlefield(s, content);
   const result = rules.combatModifiers.evaluate(base, {
@@ -256,7 +282,7 @@ export function forecastStructure(
 ): StructureCombatForecast {
   const content = rules.content;
   const resolvedWeaponId = options.weapon ?? primaryWeapon(attacker, content).id;
-  const weapon = availableWeapon(rules, attacker, resolvedWeaponId, player(state, attacker.owner));
+  const weapon = requireReadyWeapon(rules, attacker, resolvedWeaponId, player(state, attacker.owner));
   const def = content.structures.get(structure.type);
   const statusAttackMultiplier = combinedStatusModifiers(attacker, content).attackMultiplier;
   const commanderAttackMultiplier = commanderAuraFor(state, attacker).attackMultiplier;

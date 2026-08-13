@@ -62,6 +62,15 @@ export class ResourceAdapterRegistry {
     return adapter;
   }
 
+  /**
+   * The adapter, if there is one. A registry that can say "no" should be
+   * askable: without this the HUD reached for the throwing form and caught the
+   * exception to print a fallback label, which is a query written as a crash.
+   */
+  tryGet(id: ResourceId): ResourceAdapter | undefined {
+    return this.adapters.get(id);
+  }
+
   ids(): ResourceId[] {
     return [...this.adapters.keys()];
   }
