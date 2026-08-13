@@ -6,13 +6,16 @@ import { unitIcon } from '../../art/units';
 import { UnitTypes } from '../../core/data/units';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '../../content/ancient-empires/levels';
 import { GameController } from '../game';
-import { BoardView } from '../board';
+import { BoardView, emptyOverlay } from '../board';
 import { createState } from '../../core/state';
+import { candidate01Level } from '../../content/candidate-01/levels';
 
 /** jsdom has no layout, so give the board a deterministic box for hit-testing. */
 function stubLayout(svg: SVGSVGElement, width: number): void {
+  const viewBox = svg.viewBox.baseVal;
+  const height = width * (viewBox.height / viewBox.width);
   svg.getBoundingClientRect = () =>
-    ({ left: 0, top: 0, width, height: width, right: width, bottom: width, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
+    ({ left: 0, top: 0, width, height, right: width, bottom: height, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
 }
 
 function click(el: Element, tile: { x: number; y: number }, button = 0): void {
@@ -88,6 +91,29 @@ describe('game controller', () => {
     expect(Number.parseFloat(board.el.style.width)).toBeLessThanOrEqual(508);
     expect(Number.parseFloat(board.el.style.height)).toBeLessThanOrEqual(348);
     expect(board.zoomLevel).toBeGreaterThanOrEqual(0.5);
+  });
+
+  it('keeps authored roads below every tactical actor', () => {
+    const level = candidate01Level('c01-01');
+    const board = new BoardView(createState(level), {
+      onTileClick: () => {},
+      onTileEnter: () => {},
+      onLeave: () => {},
+      onSecondary: () => {},
+    });
+    board.render(emptyOverlay());
+
+    const world = board.el.querySelector('.board-world')!;
+    const ground = world.querySelector('.layer-ground')!;
+    const units = world.querySelector('.layer-units')!;
+    const foreground = world.querySelector('.layer-foreground')!;
+    const children = [...world.children];
+    expect(children.indexOf(ground)).toBeLessThan(children.indexOf(units));
+    expect(children.indexOf(units)).toBeLessThan(children.indexOf(foreground));
+    expect(ground.querySelector('.candidate-ground-route')).toBeTruthy();
+    expect(world.querySelector('.layer-grid line')).toBeFalsy();
+    expect(world.querySelectorAll('.candidate-stand-node')).toHaveLength(level.width * level.height);
+    board.dispose();
   });
 
   it('selects a unit, previews the path, and shows a move range', () => {

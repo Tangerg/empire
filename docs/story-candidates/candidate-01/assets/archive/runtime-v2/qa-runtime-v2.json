@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-01",
+  "qualityTier": "runtime-v2-partial",
+  "runtimeReady": false,
+  "scope": "first-playable-batch-not-404-complete",
+  "gameIntegration": {
+    "renderer": "BoardView",
+    "levelId": "twin-hills",
+    "screenshot": "runtime-v2/qa/candidate-01-first-level-in-game-final.png",
+    "runtimeUnits": 6,
+    "runtimeTerrainTiles": 176,
+    "runtimeStructures": 8,
+    "fallbackUnits": 0,
+    "fallbackTerrainTiles": 0,
+    "brokenImages": 0,
+    "movementAnimationVerified": true
+  },
+  "checks": {
+    "assets": 30,
+    "pngFiles": 30,
+    "svgFiles": 30,
+    "unitFramesChecked": 16,
+    "terrainTilesChecked": 56,
+    "terrainEdgeComparisons": 1096,
+    "terrainMeanLuma": {
+      "plain": 62.35,
+      "road": 63.65,
+      "bridge": 65.6,
+      "forest": 58.57,
+      "hill": 66.1,
+      "mountain": 67.94,
+      "water": 59.5,
+      "wall": 61.66
+    },
+    "buildingStatesChecked": 15,
+    "iconCellsChecked": 8,
+    "fxFramesChecked": 16,
+    "sceneSafeZoneHeight": 112
+  },
+  "visualReview": {
+    "oneX": "runtime-v2/previews/runtime-v2-overview-1x.png",
+    "twoX": "runtime-v2/previews/runtime-v2-overview-2x.png",
+    "unitsOneX": "runtime-v2/previews/units-1x.png",
+    "unitsTwoX": "runtime-v2/previews/units-2x.png",
+    "terrainRandomOneX": "runtime-v2/previews/terrain-random-12x8-1x.png",
+    "terrainRandomTwoX": "runtime-v2/previews/terrain-random-12x8-2x.png",
+    "terrainConnectionsOneX": "runtime-v2/previews/terrain-connections-1x.png",
+    "terrainConnectionsTwoX": "runtime-v2/previews/terrain-connections-2x.png",
+    "mapStructuresOneX": "runtime-v2/previews/map-structures-1x.png",
+    "mapStructuresTwoX": "runtime-v2/previews/map-structures-2x.png",
+    "gameScreenshot": "runtime-v2/qa/candidate-01-first-level-in-game-final.png"
+  },
+  "errors": [],
+  "warnings": [],
+  "passed": true
+}

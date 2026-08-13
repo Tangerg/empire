@@ -1,9 +1,13 @@
 import { unitDef } from '../core/data/units';
+import { structureDef } from '../core/data/structures';
 import { idx } from '../core/grid';
-import type { Coord, GameState, Unit } from '../core/types';
+import type { Coord, GameState, Unit, WeaponId } from '../core/types';
 import { PAL } from '../art/palette';
+import { FrameAnimationSystem, registerSvgStrip } from '../art/frame-animation';
+import { battlePresentation, type BattlePresentation } from '../art/battle-presentation';
 import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../art/battlefield-layer';
 import { TILE, terrainLayerMarkup } from '../art/terrain';
+import { createSceneViewport, scenePointToCell, type SceneViewport } from '../art/scene-viewport';
 import { unitSpriteMarkup } from '../art/units';
 import { clear, fromMarkup, setAttrs, svg } from '../art/svg';
 
@@ -61,31 +65,68 @@ const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - 2 * (1 - t) ** 2);
 export class BoardView {
   readonly el: SVGSVGElement;
   private readonly layers: Record<string, SVGGElement>;
+  private readonly viewport: SceneViewport;
+  private readonly presentation: BattlePresentation;
   private readonly unitEls = new Map<number, SVGGElement>();
+  private readonly frameAnimations = new FrameAnimationSystem();
+  private sceneryAnimationIds: string[] = [];
   private zoom = 1;
   private mapSignature = '';
+  private objectSignature = '';
   private hovered: string | null = null;
+  private effectSerial = 0;
 
   constructor(
     private state: GameState,
     private readonly handlers: BoardHandlers,
   ) {
-    const w = state.map.width * TILE;
-    const h = state.map.height * TILE;
+    this.presentation = battlePresentation(state.levelId);
+    this.viewport = createSceneViewport(
+      state.map.width,
+      state.map.height,
+      TILE,
+      this.presentation.sceneProfile(state.levelId),
+    );
+    const presentationClass = this.presentation.boardClass ? ` ${this.presentation.boardClass}` : '';
     this.el = svg('svg', {
-      viewBox: `0 0 ${w} ${h}`,
-      class: 'board',
-      'shape-rendering': 'crispEdges',
+      viewBox: `0 0 ${this.viewport.sceneWidth} ${this.viewport.sceneHeight}`,
+      class: `board${presentationClass}`,
+      'shape-rendering': this.presentation.id === 'generic' ? 'crispEdges' : 'geometricPrecision',
       'text-rendering': 'optimizeLegibility',
+      'data-scene-layout': this.viewport.originX || this.viewport.originY ? 'authored' : 'grid',
     });
 
-    const names = ['terrain', 'spatial', 'grid', 'range', 'path', 'units', 'effects', 'cursor'];
+    const sceneFrame = this.presentation.sceneFrame(state.levelId, state.map, this.viewport);
+    if (sceneFrame.backdrop) this.el.append(fromMarkup(sceneFrame.backdrop));
+    const world = svg('g', {
+      class: 'board-world',
+      transform: `translate(${this.viewport.originX} ${this.viewport.originY})`,
+    });
+    // DOM order is the depth contract. In particular, ground/roads must stay
+    // below every actor even when a campaign replaces all tactical artwork.
+    const names = [
+      'ground',
+      'terrain',
+      'scenery',
+      'spatial',
+      'grid',
+      'range',
+      'path',
+      'structures',
+      'markers',
+      'units',
+      'foreground',
+      'effects',
+      'cursor',
+    ];
     this.layers = {};
     for (const n of names) {
       const g = svg('g', { class: `layer layer-${n}` });
       this.layers[n] = g;
-      this.el.append(g);
+      world.append(g);
     }
+    this.el.append(world);
+    if (sceneFrame.foreground) this.el.append(fromMarkup(sceneFrame.foreground));
     this.buildGrid();
     this.bindPointer();
     this.setZoom(1.25);
@@ -96,15 +137,26 @@ export class BoardView {
   private buildGrid(): void {
     const { width, height } = this.state.map;
     const parts: string[] = [];
-    for (let x = 1; x < width; x++) {
-      parts.push(
-        `<line x1="${x * TILE}" y1="0" x2="${x * TILE}" y2="${height * TILE}" stroke="${PAL.ink}" stroke-width="0.4" opacity="0.12"/>`,
-      );
-    }
-    for (let y = 1; y < height; y++) {
-      parts.push(
-        `<line x1="0" y1="${y * TILE}" x2="${width * TILE}" y2="${y * TILE}" stroke="${PAL.ink}" stroke-width="0.4" opacity="0.12"/>`,
-      );
+    if (this.presentation.id === 'generic') {
+      for (let x = 1; x < width; x++) {
+        parts.push(
+          `<line x1="${x * TILE}" y1="0" x2="${x * TILE}" y2="${height * TILE}" stroke="${PAL.ink}" stroke-width="0.4" opacity="0.12"/>`,
+        );
+      }
+      for (let y = 1; y < height; y++) {
+        parts.push(
+          `<line x1="0" y1="${y * TILE}" x2="${width * TILE}" y2="${y * TILE}" stroke="${PAL.ink}" stroke-width="0.4" opacity="0.12"/>`,
+        );
+      }
+    } else {
+      // Authored maps reveal legal standing positions only during tactical
+      // interaction. Circles communicate discrete decisions without turning
+      // the landscape back into a visible spreadsheet.
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          parts.push(`<circle class="candidate-stand-node" cx="${x * TILE + TILE / 2}" cy="${y * TILE + TILE / 2}" r="2.2" fill="#fff4dc" opacity="0.32"/>`);
+        }
+      }
     }
     this.layers.grid.append(fromMarkup(parts.join('')));
   }
@@ -112,11 +164,13 @@ export class BoardView {
   private bindPointer(): void {
     const toCoord = (ev: PointerEvent | MouseEvent): Coord | null => {
       const rect = this.el.getBoundingClientRect();
-      const scale = rect.width / (this.state.map.width * TILE);
-      const x = Math.floor((ev.clientX - rect.left) / scale / TILE);
-      const y = Math.floor((ev.clientY - rect.top) / scale / TILE);
-      if (x < 0 || y < 0 || x >= this.state.map.width || y >= this.state.map.height) return null;
-      return { x, y };
+      if (rect.width <= 0 || rect.height <= 0) return null;
+      const scale = Math.min(rect.width / this.viewport.sceneWidth, rect.height / this.viewport.sceneHeight);
+      const contentWidth = this.viewport.sceneWidth * scale;
+      const contentHeight = this.viewport.sceneHeight * scale;
+      const sceneX = (ev.clientX - rect.left - (rect.width - contentWidth) / 2) / scale;
+      const sceneY = (ev.clientY - rect.top - (rect.height - contentHeight) / 2) / scale;
+      return scenePointToCell(this.viewport, sceneX, sceneY);
     };
 
     this.el.addEventListener('pointerdown', (ev) => {
@@ -151,8 +205,8 @@ export class BoardView {
 
   setZoom(z: number): void {
     this.zoom = Math.max(0.5, Math.min(2.2, z));
-    this.el.style.width = `${this.state.map.width * TILE * this.zoom}px`;
-    this.el.style.height = `${this.state.map.height * TILE * this.zoom}px`;
+    this.el.style.width = `${this.viewport.sceneWidth * this.zoom}px`;
+    this.el.style.height = `${this.viewport.sceneHeight * this.zoom}px`;
   }
 
   /** Fits the whole tactical field into a viewport while preserving pixel scale. */
@@ -160,8 +214,8 @@ export class BoardView {
     const availableWidth = width - padding;
     const availableHeight = height - padding;
     if (availableWidth <= 0 || availableHeight <= 0) return;
-    const horizontal = availableWidth / (this.state.map.width * TILE);
-    const vertical = availableHeight / (this.state.map.height * TILE);
+    const horizontal = availableWidth / this.viewport.sceneWidth;
+    const vertical = availableHeight / this.viewport.sceneHeight;
     this.setZoom(Math.min(1.25, horizontal, vertical));
   }
 
@@ -175,6 +229,10 @@ export class BoardView {
     this.state = state;
   }
 
+  dispose(): void {
+    this.frameAnimations.dispose();
+  }
+
   /** Terrain only changes when ownership does, so it is cheap to diff by hash. */
   syncTerrain(): void {
     const s = this.state;
@@ -183,18 +241,63 @@ export class BoardView {
     this.mapSignature = signature;
     clear(this.layers.terrain);
     const colorOf = (id: number) => s.players.find((p) => p.id === id)?.color;
-    this.layers.terrain.append(fromMarkup(terrainLayerMarkup(s.map, colorOf)));
+    this.layers.terrain.append(fromMarkup(terrainLayerMarkup(s.map, colorOf, s.levelId)));
+    for (const id of this.sceneryAnimationIds) this.frameAnimations.unregister(id);
+    this.sceneryAnimationIds = [];
+    clear(this.layers.ground);
+    clear(this.layers.scenery);
+    clear(this.layers.foreground);
+    const sceneLayers = this.presentation.sceneLayers(s.levelId, s.map);
+    if (sceneLayers.ground) this.layers.ground.append(fromMarkup(sceneLayers.ground));
+    if (sceneLayers.underUnits) this.layers.scenery.append(fromMarkup(sceneLayers.underUnits));
+    if (sceneLayers.overUnits) this.layers.foreground.append(fromMarkup(sceneLayers.overUnits));
+    this.sceneryAnimationIds = [
+      ...this.playEmbeddedAnimations(this.layers.ground),
+      ...this.playEmbeddedAnimations(this.layers.scenery),
+      ...this.playEmbeddedAnimations(this.layers.foreground),
+    ];
     clear(this.layers.spatial);
     const spatial = battlefieldFeatureMarkup(s.map);
     if (spatial) this.layers.spatial.append(fromMarkup(spatial));
   }
 
   render(overlay: BoardOverlay): void {
+    this.el.classList.toggle(
+      'is-tactical',
+      !!overlay.selected || overlay.move.size > 0 || overlay.attack.size > 0 || overlay.heal.size > 0 || overlay.path.length > 0,
+    );
     this.syncTerrain();
+    this.syncBattlefieldObjects();
     this.renderRanges(overlay);
     this.renderPath(overlay.path);
     this.renderUnits(overlay);
     this.renderCursor(overlay);
+  }
+
+  private syncBattlefieldObjects(): void {
+    const s = this.state;
+    const signature = [
+      ...s.structures.map((item) => `${item.id}:${item.type}:${item.owner}:${item.x},${item.y}:${item.hp}:${item.disabled}`),
+      ...s.markers.map((item) => `${item.id}:${item.kind}:${item.owner}:${item.at.x},${item.at.y}`),
+    ].join('|');
+    if (signature === this.objectSignature) return;
+    this.objectSignature = signature;
+
+    clear(this.layers.structures);
+    const structures = s.structures.flatMap((state) => {
+      const ownerColor = s.players.find((player) => player.id === state.owner)?.color;
+      const markup = this.presentation.structure(state, structureDef(state.type), ownerColor);
+      return markup
+        ? [`<g transform="translate(${state.x * TILE} ${state.y * TILE})" data-structure="${state.id}">${markup}</g>`]
+        : [];
+    });
+    if (structures.length) this.layers.structures.append(fromMarkup(structures.join('')));
+
+    clear(this.layers.markers);
+    const markers = s.markers.map((marker) =>
+      `<g transform="translate(${marker.at.x * TILE} ${marker.at.y * TILE})" data-marker="${marker.id}">${this.presentation.marker(marker)}</g>`,
+    );
+    if (markers.length) this.layers.markers.append(fromMarkup(markers.join('')));
   }
 
   private renderRanges(o: BoardOverlay): void {
@@ -203,16 +306,15 @@ export class BoardView {
     const cell = (i: number, fill: string, opacity: number, stroke?: string) => {
       const x = (i % s.map.width) * TILE;
       const y = Math.floor(i / s.map.width) * TILE;
-      parts.push(
-        `<rect x="${x}" y="${y}" width="${TILE}" height="${TILE}" fill="${fill}" opacity="${opacity}"${
-          stroke ? ` stroke="${stroke}" stroke-width="1"` : ''
-        }/>`,
-      );
+      const outline = stroke ? ` stroke="${stroke}" stroke-width="1" stroke-opacity="0.78"` : '';
+      parts.push(this.presentation.id === 'generic'
+        ? `<rect x="${x + 2}" y="${y + 2}" width="${TILE - 4}" height="${TILE - 4}" rx="7" fill="${fill}" fill-opacity="${opacity}"${outline}/>`
+        : `<ellipse class="candidate-action-spot" cx="${x + TILE / 2}" cy="${y + TILE * 0.68}" rx="12.5" ry="7.5" fill="${fill}" fill-opacity="${Math.min(0.5, opacity * 1.35)}"${outline}/>`);
     };
-    for (const i of o.threat) cell(i, '#ff3b30', 0.16);
-    for (const i of o.move) if (!o.attack.has(i)) cell(i, '#3f9fff', 0.3);
-    for (const i of o.heal) cell(i, '#5fd07a', 0.4);
-    for (const i of o.attack) cell(i, '#ff4436', 0.42);
+    for (const i of o.threat) cell(i, '#ff3b30', 0.1);
+    for (const i of o.move) if (!o.attack.has(i)) cell(i, '#3f9fff', 0.22);
+    for (const i of o.heal) cell(i, '#5fd07a', 0.28, '#8ef7a5');
+    for (const i of o.attack) cell(i, '#ff4436', 0.16, '#ff7468');
 
     if (o.visible) {
       for (let i = 0; i < s.map.tiles.length; i++) {
@@ -226,9 +328,15 @@ export class BoardView {
   private renderPath(path: Coord[]): void {
     clear(this.layers.path);
     if (path.length < 2) return;
-    const d = path
-      .map((c, i) => `${i === 0 ? 'M' : 'L'}${c.x * TILE + TILE / 2} ${c.y * TILE + TILE / 2}`)
-      .join(' ');
+    const points = path.map((c) => ({ x: c.x * TILE + TILE / 2, y: c.y * TILE + TILE / 2 }));
+    const d = this.presentation.id === 'generic'
+      ? points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x} ${p.y}`).join(' ')
+      : points.slice(0, -1).reduce((value, p1, i) => {
+          const p0 = points[Math.max(0, i - 1)];
+          const p2 = points[i + 1];
+          const p3 = points[Math.min(points.length - 1, i + 2)];
+          return `${value} C${(p1.x + (p2.x - p0.x) / 6).toFixed(1)} ${(p1.y + (p2.y - p0.y) / 6).toFixed(1)} ${(p2.x - (p3.x - p1.x) / 6).toFixed(1)} ${(p2.y - (p3.y - p1.y) / 6).toFixed(1)} ${p2.x} ${p2.y}`;
+        }, `M${points[0].x} ${points[0].y}`);
     const last = path[path.length - 1];
     const prev = path[path.length - 2];
     const angle = (Math.atan2(last.y - prev.y, last.x - prev.x) * 180) / Math.PI;
@@ -253,6 +361,12 @@ export class BoardView {
     el.append(badges);
     this.layers.units.append(el);
     this.unitEls.set(u.id, el);
+    const strip = el.querySelector('.runtime-frame-strip') as SVGImageElement | null;
+    if (strip) {
+      const animationId = this.unitAnimationId(u.id);
+      registerSvgStrip(this.frameAnimations, animationId, strip);
+      this.frameAnimations.play(animationId, 'idle');
+    }
     return el;
   }
 
@@ -261,6 +375,7 @@ export class BoardView {
     const alive = new Set(s.units.map((u) => u.id));
     for (const [id, el] of this.unitEls) {
       if (!alive.has(id)) {
+        this.frameAnimations.unregister(this.unitAnimationId(id));
         el.remove();
         this.unitEls.delete(id);
       }
@@ -310,16 +425,14 @@ export class BoardView {
     clear(this.layers.cursor);
     const parts: string[] = [];
     if (o.selected) {
-      parts.push(
-        `<rect x="${o.selected.x * TILE + 1}" y="${o.selected.y * TILE + 1}" width="${TILE - 2}" height="${TILE - 2}"
-          fill="none" stroke="#ffffff" stroke-width="2" rx="3" opacity="0.95"/>`,
-      );
+      parts.push(this.presentation.id === 'generic'
+        ? `<rect x="${o.selected.x * TILE + 1}" y="${o.selected.y * TILE + 1}" width="${TILE - 2}" height="${TILE - 2}" fill="none" stroke="#ffffff" stroke-width="2" rx="3" opacity="0.95"/>`
+        : `<ellipse class="candidate-selection-ring" cx="${o.selected.x * TILE + TILE / 2}" cy="${o.selected.y * TILE + 27}" rx="13" ry="5.5" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.96"/>`);
     }
     if (o.cursor) {
-      parts.push(
-        `<rect x="${o.cursor.x * TILE + 0.5}" y="${o.cursor.y * TILE + 0.5}" width="${TILE - 1}" height="${TILE - 1}"
-          fill="none" stroke="${PAL.gold}" stroke-width="1.6" rx="2"/>`,
-      );
+      parts.push(this.presentation.id === 'generic'
+        ? `<rect x="${o.cursor.x * TILE + 0.5}" y="${o.cursor.y * TILE + 0.5}" width="${TILE - 1}" height="${TILE - 1}" fill="none" stroke="${PAL.gold}" stroke-width="1.6" rx="2"/>`
+        : `<ellipse class="candidate-cursor-ring" cx="${o.cursor.x * TILE + TILE / 2}" cy="${o.cursor.y * TILE + 26}" rx="13.5" ry="6" fill="none" stroke="${PAL.gold}" stroke-width="1.8"/>`);
     }
     if (parts.length) this.layers.cursor.append(fromMarkup(parts.join('')));
   }
@@ -329,6 +442,8 @@ export class BoardView {
   async animateMove(unit: Unit, path: Coord[], msPerTile = 85): Promise<void> {
     const el = this.unitEls.get(unit.id);
     if (!el || path.length < 2) return;
+    const animationId = this.unitAnimationId(unit.id);
+    if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'walk');
     el.classList.add('is-moving');
     for (let i = 1; i < path.length; i++) {
       const a = path[i - 1];
@@ -343,6 +458,7 @@ export class BoardView {
       });
     }
     el.classList.remove('is-moving');
+    if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'idle');
   }
 
   async animateStrike(attacker: Unit, target: Coord): Promise<void> {
@@ -353,32 +469,40 @@ export class BoardView {
     if (dx > 0) el.classList.remove('face-left');
     if (dx < 0) el.classList.add('face-left');
     const base = `translate(${attacker.x * TILE},${attacker.y * TILE})`;
+    const animationId = this.unitAnimationId(attacker.id);
+    if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'attack');
+    el.classList.add('is-attacking');
     await tween(150, (t) => {
       const push = Math.sin(Math.PI * t) * 7;
       setAttrs(el, {
         transform: `translate(${attacker.x * TILE + dx * push},${attacker.y * TILE + dy * push})`,
       });
     });
+    el.classList.remove('is-attacking');
+    if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'idle');
     setAttrs(el, { transform: base });
   }
 
-  async animateHit(at: Coord, damage: number, killed: boolean): Promise<void> {
+  async animateHit(at: Coord, damage: number, killed: boolean, weapon?: WeaponId): Promise<void> {
     const cx = at.x * TILE + TILE / 2;
     const cy = at.y * TILE + TILE / 2;
     const g = svg('g', { class: 'fx' });
     g.append(
       fromMarkup(
-        `<circle cx="${cx}" cy="${cy}" r="12" fill="#ffffff" opacity="0.85"/>
+        `${weapon && this.presentation.weaponFx(weapon) ? this.presentation.effect(this.presentation.weaponFx(weapon)!, cx, cy) : ''}
+         <circle cx="${cx}" cy="${cy}" r="12" fill="#ffffff" opacity="0.65"/>
          <text x="${cx}" y="${cy - 8}" text-anchor="middle" class="fx-damage">-${damage}</text>`,
       ),
     );
     this.layers.effects.append(g);
+    const animationIds = this.playEmbeddedAnimations(g);
     const text = g.querySelector('text') as SVGTextElement;
     const circle = g.querySelector('circle') as SVGCircleElement;
     await tween(420, (t) => {
       setAttrs(circle, { r: `${(12 + t * 10).toFixed(1)}`, opacity: `${(0.8 * (1 - t)).toFixed(2)}` });
       setAttrs(text, { transform: `translate(0,${(-14 * t).toFixed(1)})`, opacity: `${(1 - t ** 2).toFixed(2)}` });
     });
+    for (const id of animationIds) this.frameAnimations.unregister(id);
     g.remove();
     if (killed) await wait(40);
   }
@@ -391,6 +515,7 @@ export class BoardView {
       el.style.opacity = String(1 - t);
       setAttrs(el, { transform: `${transform} translate(16,16) scale(${1 - 0.35 * t}) translate(-16,-16)` });
     });
+    this.frameAnimations.unregister(this.unitAnimationId(unitId));
     el.remove();
     this.unitEls.delete(unitId);
   }
@@ -401,14 +526,17 @@ export class BoardView {
     const g = svg('g', { class: 'fx' });
     g.append(
       fromMarkup(
-        `<text x="${cx}" y="${cy - 6}" text-anchor="middle" class="fx-heal">+${amount}</text>`,
+        `${this.presentation.healFx ? this.presentation.effect(this.presentation.healFx, cx, cy) : ''}
+         <text x="${cx}" y="${cy - 6}" text-anchor="middle" class="fx-heal">+${amount}</text>`,
       ),
     );
     this.layers.effects.append(g);
+    const animationIds = this.playEmbeddedAnimations(g);
     const text = g.querySelector('text') as SVGTextElement;
     await tween(500, (t) => {
       setAttrs(text, { transform: `translate(0,${(-16 * t).toFixed(1)})`, opacity: `${(1 - t ** 2).toFixed(2)}` });
     });
+    for (const id of animationIds) this.frameAnimations.unregister(id);
     g.remove();
   }
 
@@ -448,12 +576,29 @@ export class BoardView {
   }
 
   centerOn(c: Coord, container: HTMLElement): void {
-    const px = (c.x + 0.5) * TILE * this.zoom;
-    const py = (c.y + 0.5) * TILE * this.zoom;
+    const px = (this.viewport.originX + (c.x + 0.5) * TILE) * this.zoom;
+    const py = (this.viewport.originY + (c.y + 0.5) * TILE) * this.zoom;
     container.scrollTo({
       left: px - container.clientWidth / 2,
       top: py - container.clientHeight / 2,
       behavior: 'smooth',
     });
+  }
+
+  private unitAnimationId(unitId: number): string {
+    return `unit:${unitId}`;
+  }
+
+  private playEmbeddedAnimations(root: Element): string[] {
+    const ids: string[] = [];
+    for (const strip of root.querySelectorAll<SVGImageElement>('.runtime-frame-strip')) {
+      const id = `effect:${this.effectSerial++}`;
+      registerSvgStrip(this.frameAnimations, id, strip);
+      const clips = JSON.parse(strip.getAttribute('data-frame-clips') ?? '[]') as Array<{ id?: string }>;
+      const clip = clips[0]?.id;
+      if (clip) this.frameAnimations.play(id, clip);
+      ids.push(id);
+    }
+    return ids;
   }
 }

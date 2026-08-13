@@ -37,49 +37,23 @@ export interface StoryChoicePresentation {
   options: StoryChoiceOption[];
 }
 
-const assetFiles = import.meta.glob<string>([
-  '../../../docs/story-candidates/candidate-01/assets/scenes/*.png',
-  '../../../docs/story-candidates/candidate-01/assets/architecture/*.png',
-  '../../../docs/story-candidates/candidate-01/assets/characters/*.png',
-  '../../../docs/story-candidates/candidate-01/assets/runtime-v2/scenes/*.png',
-  '../../../docs/story-candidates/candidate-01/assets/runtime-v2/batch-02/scenes/*.png',
-], { eager: true, import: 'default', query: '?url' });
-
-function asset(path: string): string {
-  const key = `../../../docs/story-candidates/candidate-01/${path}`;
-  const href = assetFiles[key];
-  if (!href) throw new Error(`missing candidate-01 story asset: ${path}`);
-  return href;
-}
-
-export const CANDIDATE_01_PORTRAITS: Readonly<Partial<Record<Candidate01Speaker, string>>> = {
-  laiya: asset('assets/characters/laiya-18-portrait-hd.png'),
-  roderick: asset('assets/characters/roderick-portrait-hd.png'),
-  cain: asset('assets/characters/kain-portrait-hd.png'),
-  mirelle: asset('assets/characters/mirelle-portrait-hd.png'),
-  bran: asset('assets/characters/bran-portrait-hd.png'),
-  tasha: asset('assets/characters/tasha-portrait-hd.png'),
-};
-
 export const CANDIDATE_01_SPEAKER_NAMES: Readonly<Record<Candidate01Speaker, string>> = {
   narrator: '断冠纪事', laiya: '莱娅', roderick: '罗德里克', cain: '凯恩', mirelle: '米蕾尔', bran: '布兰', tasha: '塔莎', ivra: '伊芙拉',
 };
 
 const SCENES = {
-  hills: asset('assets/scenes/twin-hills-first-command-hd.png'),
-  bridges: asset('assets/runtime-v2/batch-02/scenes/three-bridge-ceasefire.png'),
-  redstone: asset('assets/architecture/redstone-oath-tower-hd.png'),
-  burned: asset('assets/scenes/gray-flag-over-burned-village-hd.png'),
-  river: asset('assets/scenes/white-river-night-crossing-hd.png'),
-  council: asset('assets/runtime-v2/scenes/gray-banner-dawn-council.png'),
-  rations: asset('assets/runtime-v2/batch-02/scenes/public-rations.png'),
-  ivra: asset('assets/runtime-v2/batch-02/scenes/ivra-breaks-reins.png'),
-  forge: asset('assets/runtime-v2/batch-02/scenes/forge-repair.png'),
-  silverwood: asset('assets/architecture/silverwood-tree-city-hd.png'),
-  valley: asset('assets/architecture/three-bridges-river-valley-hd.png'),
+  hills: 'C01-CH01-S01',
+  bridges: 'C01-CH01-S02',
+  redstone: 'C01-ARCH-REDSTONE',
+  burned: 'C01-CH01-S05',
+  river: 'C01-CH02-S06',
+  council: 'C01-CH05-S26',
+  rations: 'C01-SCENE-PUBLIC-RATIONS',
+  ivra: 'C01-CH02-S09',
+  forge: 'C01-CH03-S14',
+  silverwood: 'C01-ARCH-SILVERWOOD',
+  valley: 'C01-ARCH-THREE-BRIDGES',
 } as const;
-
-export const CANDIDATE_01_MENU_ART = SCENES.burned;
 
 const p = (
   id: string,

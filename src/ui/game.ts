@@ -144,6 +144,7 @@ export class GameController {
   dispose(): void {
     this.disposed = true;
     this.resizeObserver?.disconnect();
+    this.board.dispose();
     document.removeEventListener('keydown', this.onKey);
   }
 
@@ -536,7 +537,7 @@ export class GameController {
             ? { x: defender.x, y: defender.y }
             : this.lastKnownPosition(e.defender);
           if (attacker) await this.board.animateStrike(attacker, at ?? { x: attacker.x, y: attacker.y });
-          if (at) await this.board.animateHit(at, e.damage, e.killed);
+          if (at) await this.board.animateHit(at, e.damage, e.killed, e.weapon);
           break;
         }
         case 'supportAttack': {
@@ -546,7 +547,7 @@ export class GameController {
             ? { x: defender.x, y: defender.y }
             : this.lastKnownPosition(e.defender);
           if (supporter && at) await this.board.animateStrike(supporter, at);
-          if (at) await this.board.animateHit(at, e.damage, e.killed);
+          if (at) await this.board.animateHit(at, e.damage, e.killed, e.weapon);
           break;
         }
         case 'areaAttack': {
@@ -554,7 +555,7 @@ export class GameController {
           const at = defender
             ? { x: defender.x, y: defender.y }
             : this.lastKnownPosition(e.defender);
-          if (at) await this.board.animateHit(at, e.damage, e.killed);
+          if (at) await this.board.animateHit(at, e.damage, e.killed, e.weapon);
           break;
         }
         case 'attackStructure': {
@@ -562,12 +563,12 @@ export class GameController {
           const structure = this.state.structures.find((candidate) => candidate.id === e.structure);
           const at = structure ? { x: structure.x, y: structure.y } : null;
           if (attacker && at) await this.board.animateStrike(attacker, at);
-          if (at) await this.board.animateHit(at, e.damage, e.destroyed);
+          if (at) await this.board.animateHit(at, e.damage, e.destroyed, e.weapon);
           break;
         }
         case 'areaAttackStructure': {
           const structure = this.state.structures.find((candidate) => candidate.id === e.structure);
-          if (structure) await this.board.animateHit({ x: structure.x, y: structure.y }, e.damage, e.destroyed);
+          if (structure) await this.board.animateHit({ x: structure.x, y: structure.y }, e.damage, e.destroyed, e.weapon);
           break;
         }
         case 'death':

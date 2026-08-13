@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "atlasCount": 36,
+  "componentCount": 1188,
+  "categoryCoverage": {
+    "base-surface": 32,
+    "transition": 188,
+    "route": 256,
+    "route-edge": 256,
+    "water": 256,
+    "elevation-edge": 32,
+    "elevation-module": 32,
+    "forest-scenery": 32,
+    "regional-scenery": 16,
+    "structure-kit": 16,
+    "foundation": 16,
+    "large-landmark": 16,
+    "ground-decal": 24,
+    "rural-life": 16
+  },
+  "blob47MaskCount": 47,
+  "opaqueMagentaPixels": 0,
+  "duplicateCells": [],
+  "connectionPortErrors": [],
+  "edgeSeamErrors": [],
+  "edgeSeamComparisons": 256,
+  "visualMetrics": {
+    "meadowMeanLuma": 84.63,
+    "dirtRoadMeanLuma": 102.7,
+    "dirtRoadLumaDelta": 18.07,
+    "regionalSurfaceDistribution21x13": [
+      66,
+      76,
+      64,
+      67
+    ],
+    "scenePreviewSizes": {
+      "twin-hills-v1.1-scene-1x.png": [
+        672,
+        416
+      ],
+      "twin-hills-v1.1-scene-2x.png": [
+        1344,
+        832
+      ]
+    },
+    "scenePreviewErrors": []
+  },
+  "semanticCellCount": 152,
+  "semanticErrors": [],
+  "sceneErrors": [],
+  "warnings": [],
+  "errors": []
+}

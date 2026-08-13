@@ -1,0 +1,7313 @@
+{
+  "schemaVersion": "final-scifi-v1.0",
+  "campaignId": "candidate-02",
+  "title": "候选剧本二 · 卡通科幻完整游戏素材包",
+  "artDirection": {
+    "genre": "original five-world grounded science fiction",
+    "style": "cartoon tactical game; oversized heads; compact bodies; thick ink; matte restrained palette; two-step cel shading",
+    "reference": "../../art-assets/reference/art-direction-map.png",
+    "prohibitions": [
+      "generic armor recolors",
+      "medieval fantasy",
+      "photorealism",
+      "glossy 3D",
+      "named-franchise copying"
+    ]
+  },
+  "runtimeReady": true,
+  "qualityTier": "final-cartoon-scifi-v1",
+  "targetTopics": 404,
+  "categoryTargets": {
+    "narrative-static": 80,
+    "combat-unit": 40,
+    "mission-unit": 24,
+    "faction-kit": 12,
+    "terrain": 32,
+    "interactive-structure": 24,
+    "battle-prop": 32,
+    "equipment": 48,
+    "skill": 48,
+    "status": 24,
+    "fx": 24,
+    "hud": 16
+  },
+  "assetCount": 404,
+  "assets": [
+    {
+      "assetId": "C02-SFV1-arch-farlight-01",
+      "topicId": "c02-arch-farlight-01",
+      "label": "远灯号初始货船态",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-farlight-01.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-farlight-02",
+      "topicId": "c02-arch-farlight-02",
+      "label": "远灯号中期难民生活态",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-farlight-02.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-farlight-03",
+      "topicId": "c02-arch-farlight-03",
+      "label": "远灯号终章物理系统态",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-farlight-03.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-hesha-water-guild",
+      "topicId": "c02-arch-hesha-water-guild",
+      "label": "赫沙水务公会",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-hesha-water-guild.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-inverted-city",
+      "topicId": "c02-arch-inverted-city",
+      "label": "弥光倒悬城",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-inverted-city.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-kairon-outer-repair",
+      "topicId": "c02-arch-kairon-outer-repair",
+      "label": "凯隆外环维修站",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-kairon-outer-repair.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-nereia-float",
+      "topicId": "c02-arch-nereia-float",
+      "label": "涅瑞亚浮城",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-nereia-float.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-nereia-tide-anchor",
+      "topicId": "c02-arch-nereia-tide-anchor",
+      "label": "涅瑞亚潮锚站",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-nereia-tide-anchor.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-rain-tower",
+      "topicId": "c02-arch-rain-tower",
+      "label": "零号雨塔",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-rain-tower.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-ring-city",
+      "topicId": "c02-arch-ring-city",
+      "label": "凯隆环都节点",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-ring-city.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-soler-archive",
+      "topicId": "c02-arch-soler-archive",
+      "label": "索勒档案修院",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-soler-archive.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-soler-heat-chain",
+      "topicId": "c02-arch-soler-heat-chain",
+      "label": "索勒热灯链",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-soler-heat-chain.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-uker-city",
+      "topicId": "c02-arch-uker-city",
+      "label": "厄客前世城",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-uker-city.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-verdant-fungus-clinic",
+      "topicId": "c02-arch-verdant-fungus-clinic",
+      "label": "维尔达菌床诊所",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-verdant-fungus-clinic.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-arch-verdant-living-city",
+      "topicId": "c02-arch-verdant-living-city",
+      "label": "维尔达活体城市",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-verdant-living-city.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-char-firefly",
+      "topicId": "c02-char-firefly",
+      "label": "萤火维修单位设定",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-firefly.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-helo",
+      "topicId": "c02-char-helo",
+      "label": "赫洛船长",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-helo.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-ishan",
+      "topicId": "c02-char-ishan",
+      "label": "伊珊模型分析员",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-ishan.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-iya",
+      "topicId": "c02-char-iya",
+      "label": "伊娅投影",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-iya.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-kota",
+      "topicId": "c02-char-kota",
+      "label": "珂塔共生者",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-kota.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-lanko",
+      "topicId": "c02-char-lanko",
+      "label": "岚柯见习维护员",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-lanko.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-mira-01",
+      "topicId": "c02-char-mira-01",
+      "label": "米拉·见习巡猎士",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-mira-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-mira-02",
+      "topicId": "c02-char-mira-02",
+      "label": "米拉·远灯号领队",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-mira-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-mira-03",
+      "topicId": "c02-char-mira-03",
+      "label": "米拉·星约巡行员",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-mira-03.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-misa-family",
+      "topicId": "c02-char-misa-family",
+      "label": "米萨外环家庭",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-misa-family.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-naim-01",
+      "topicId": "c02-char-naim-01",
+      "label": "奈姆·返星会指挥",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-naim-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-naim-02",
+      "topicId": "c02-char-naim-02",
+      "label": "奈姆·受审后行动员",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-naim-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-olo",
+      "topicId": "c02-char-olo",
+      "label": "奥洛潮汐祭司",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-olo.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-roan-01",
+      "topicId": "c02-char-roan-01",
+      "label": "罗安·巡猎导师",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-roan-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-roan-02",
+      "topicId": "c02-char-roan-02",
+      "label": "罗安·归零代行者",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-roan-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-sadi",
+      "topicId": "c02-char-sadi",
+      "label": "萨迪赫沙医师",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-sadi.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-char-talos-7",
+      "topicId": "c02-char-talos-7",
+      "label": "塔洛斯七号",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-talos-7.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-creature-rain-shepherd",
+      "topicId": "c02-creature-rain-shepherd",
+      "label": "雨牧者结构设定",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/creature-rain-shepherd.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C02-SFV1-prop-covenant-table",
+      "topicId": "c02-prop-covenant-table",
+      "label": "五界星约折叠桌",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-covenant-table.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-firefly-drone",
+      "topicId": "c02-prop-firefly-drone",
+      "label": "萤火维修无人机",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-firefly-drone.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-five-world-roster",
+      "topicId": "c02-prop-five-world-roster",
+      "label": "五界维护班表",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-five-world-roster.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-hesha-cup",
+      "topicId": "c02-prop-hesha-cup",
+      "label": "赫沙金属杯",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-hesha-cup.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-iya-door",
+      "topicId": "c02-prop-iya-door",
+      "label": "伊娅可关闭门控件",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-iya-door.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-living-isolation",
+      "topicId": "c02-prop-living-isolation",
+      "label": "维尔达活体隔离网",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-living-isolation.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-maintenance-key",
+      "topicId": "c02-prop-maintenance-key",
+      "label": "星脉低权限密钥",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-maintenance-key.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-memory-echo-container",
+      "topicId": "c02-prop-memory-echo-container",
+      "label": "记忆回声容器",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-memory-echo-container.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-mira-license",
+      "topicId": "c02-prop-mira-license",
+      "label": "米拉巡猎执照",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-mira-license.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-physical-route-box",
+      "topicId": "c02-prop-physical-route-box",
+      "label": "离线物理航路盒",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-physical-route-box.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-public-cargo-rotation",
+      "topicId": "c02-prop-public-cargo-rotation",
+      "label": "公开货舱与撤离轮换板",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-public-cargo-rotation.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-rain-filter-core",
+      "topicId": "c02-prop-rain-filter-core",
+      "label": "净水芯",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-rain-filter-core.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-roan-risk-list",
+      "topicId": "c02-prop-roan-risk-list",
+      "label": "罗安风险清单",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-roan-risk-list.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-talos-wills",
+      "topicId": "c02-prop-talos-wills",
+      "label": "塔洛斯三份冲突遗书",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-talos-wills.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-prop-two-tickets",
+      "topicId": "c02-prop-two-tickets",
+      "label": "两张撤离票",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-two-tickets.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C02-SFV1-scene-falling-ring-team",
+      "topicId": "c02-scene-falling-ring-team",
+      "label": "坠环分队",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-falling-ring-team.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-farlight-departure",
+      "topicId": "c02-scene-farlight-departure",
+      "label": "远灯号起飞",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-farlight-departure.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-five-world-broadcast",
+      "topicId": "c02-scene-five-world-broadcast",
+      "label": "五界责任广播",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-five-world-broadcast.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-folding-table-covenant",
+      "topicId": "c02-scene-folding-table-covenant",
+      "label": "折叠桌星约",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-folding-table-covenant.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-growing-wall",
+      "topicId": "c02-scene-growing-wall",
+      "label": "维尔达生长城墙",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-growing-wall.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-inverted-city-maintenance",
+      "topicId": "c02-scene-inverted-city-maintenance",
+      "label": "倒悬城低权限维护",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-inverted-city-maintenance.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-iya-gets-door",
+      "topicId": "c02-scene-iya-gets-door",
+      "label": "伊娅获得门",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-iya-gets-door.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-kairon-train-evacuation",
+      "topicId": "c02-scene-kairon-train-evacuation",
+      "label": "凯隆列车撤离",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-kairon-train-evacuation.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-last-natural-rain",
+      "topicId": "c02-scene-last-natural-rain",
+      "label": "最后一场自然雨",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-last-natural-rain.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-nereia-platform-vote",
+      "topicId": "c02-scene-nereia-platform-vote",
+      "label": "涅瑞亚浮台表决",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-nereia-platform-vote.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-quarantine-ship-rotation",
+      "topicId": "c02-scene-quarantine-ship-rotation",
+      "label": "隔离舰公开轮换",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-quarantine-ship-rotation.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-return-hesha",
+      "topicId": "c02-scene-return-hesha",
+      "label": "返回赫沙与共管雨塔",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-return-hesha.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-sandstorm-water-repair",
+      "topicId": "c02-scene-sandstorm-water-repair",
+      "label": "沙暴中维修水塔",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-sandstorm-water-repair.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-season-without-rain",
+      "topicId": "c02-scene-season-without-rain",
+      "label": "没有下雨的季节",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-season-without-rain.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-seven-minute-rain",
+      "topicId": "c02-scene-seven-minute-rain",
+      "label": "七分钟的雨",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-seven-minute-rain.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-soler-heat-shift",
+      "topicId": "c02-scene-soler-heat-shift",
+      "label": "索勒热灯轮值",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-soler-heat-shift.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-soler-ice-beacon",
+      "topicId": "c02-scene-soler-ice-beacon",
+      "label": "索勒冰海信标",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-soler-ice-beacon.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-two-percent-dock",
+      "topicId": "c02-scene-two-percent-dock",
+      "label": "百分之二船坞",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-two-percent-dock.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-uker-festival",
+      "topicId": "c02-scene-uker-festival",
+      "label": "厄客前世城市节日",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-uker-festival.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-scene-verdant-bridge-pruning",
+      "topicId": "c02-scene-verdant-bridge-pruning",
+      "label": "维尔达居民修剪活桥",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-verdant-bridge-pruning.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-style-dark-stars",
+      "topicId": "c02-style-dark-stars",
+      "label": "弥光熄灭应急照明",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-dark-stars.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-style-echo-tide",
+      "topicId": "c02-style-echo-tide",
+      "label": "寂潮生活记忆视觉语言",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-echo-tide.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-style-farlight-life",
+      "topicId": "c02-style-farlight-life",
+      "label": "远灯号拥挤生活层",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-farlight-life.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-style-five-world-materials",
+      "topicId": "c02-style-five-world-materials",
+      "label": "五界材料语言",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-five-world-materials.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-style-hesha",
+      "topicId": "c02-style-hesha",
+      "label": "赫沙赤砂与水循环",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-hesha.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-style-kairon",
+      "topicId": "c02-style-kairon",
+      "label": "凯隆权限层环城",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-kairon.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-style-keyart",
+      "topicId": "c02-style-keyart",
+      "label": "远灯号驶向熄灭弥光",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-keyart.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-style-nereia",
+      "topicId": "c02-style-nereia",
+      "label": "涅瑞亚多层潮城",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-nereia.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-style-post-milight",
+      "topicId": "c02-style-post-milight",
+      "label": "熄星后物理生存",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-post-milight.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-style-ring-maintenance",
+      "topicId": "c02-style-ring-maintenance",
+      "label": "环庭维护界面",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-ring-maintenance.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-style-soler",
+      "topicId": "c02-style-soler",
+      "label": "索勒蓝冰与热灯",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-soler.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-style-verdant",
+      "topicId": "c02-style-verdant",
+      "label": "维尔达活体城市",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-verdant.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C02-SFV1-unit-antler-knight",
+      "topicId": "c02-unit-antler-knight",
+      "label": "角枝骑士",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-antler-knight.png",
+      "width": 256,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-boarding-team",
+      "topicId": "c02-unit-boarding-team",
+      "label": "接舷队",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-boarding-team.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-defoliator-pilot",
+      "topicId": "c02-unit-defoliator-pilot",
+      "label": "除生机驾驶员",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-defoliator-pilot.png",
+      "width": 256,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-echo-tracker",
+      "topicId": "c02-unit-echo-tracker",
+      "label": "回声追迹者",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-echo-tracker.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-eco-maintainer",
+      "topicId": "c02-unit-eco-maintainer",
+      "label": "生态维护体",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-eco-maintainer.png",
+      "width": 256,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-field-medic",
+      "topicId": "c02-unit-field-medic",
+      "label": "战地医师",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-field-medic.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-floating-city-guard",
+      "topicId": "c02-unit-floating-city-guard",
+      "label": "浮城枪卫",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-floating-city-guard.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-forest-beast-handler",
+      "topicId": "c02-unit-forest-beast-handler",
+      "label": "林兽驭手",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-forest-beast-handler.png",
+      "width": 256,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-fungus-bed-medic",
+      "topicId": "c02-unit-fungus-bed-medic",
+      "label": "菌床医师",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-fungus-bed-medic.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-gravity-rescuer",
+      "topicId": "c02-unit-gravity-rescuer",
+      "label": "重力救援员",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-gravity-rescuer.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-guard-robot",
+      "topicId": "c02-unit-guard-robot",
+      "label": "守卫机器人",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-guard-robot.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-heat-lamp-shield",
+      "topicId": "c02-unit-heat-lamp-shield",
+      "label": "热灯盾修",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-heat-lamp-shield.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-hover-lancer",
+      "topicId": "c02-unit-hover-lancer",
+      "label": "悬浮枪骑",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-hover-lancer.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-ice-hook-hunter",
+      "topicId": "c02-unit-ice-hook-hunter",
+      "label": "冰钩猎手",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-ice-hook-hunter.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-light-mech",
+      "topicId": "c02-unit-light-mech",
+      "label": "轻型机甲",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-light-mech.png",
+      "width": 256,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-long-beam-sniper",
+      "topicId": "c02-unit-long-beam-sniper",
+      "label": "长束狙击手",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-long-beam-sniper.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-memory-monk",
+      "topicId": "c02-unit-memory-monk",
+      "label": "记忆修士",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-memory-monk.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-physical-archive-keeper",
+      "topicId": "c02-unit-physical-archive-keeper",
+      "label": "物理档案守护员",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-physical-archive-keeper.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-power-swordsman",
+      "topicId": "c02-unit-power-swordsman",
+      "label": "动力剑士",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-power-swordsman.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-protocol-adjudicator",
+      "topicId": "c02-unit-protocol-adjudicator",
+      "label": "协议裁定员",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-protocol-adjudicator.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-protocol-analyst",
+      "topicId": "c02-unit-protocol-analyst",
+      "label": "协议分析员",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-protocol-analyst.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-rail-rifleman",
+      "topicId": "c02-unit-rail-rifleman",
+      "label": "轨道步枪手",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-rail-rifleman.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-rain-shepherd",
+      "topicId": "c02-unit-rain-shepherd",
+      "label": "雨牧者战斗体",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-rain-shepherd.png",
+      "width": 256,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-rain-tower-engineer",
+      "topicId": "c02-unit-rain-tower-engineer",
+      "label": "雨塔工程员",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-rain-tower-engineer.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-repair-engineer",
+      "topicId": "c02-unit-repair-engineer",
+      "label": "维修师",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-repair-engineer.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-reset-guard",
+      "topicId": "c02-unit-reset-guard",
+      "label": "归零守卫",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-reset-guard.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-ring-rail-guard",
+      "topicId": "c02-unit-ring-rail-guard",
+      "label": "环城轨卫",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-ring-rail-guard.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-sand-rider",
+      "topicId": "c02-unit-sand-rider",
+      "label": "沙地游骑",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-sand-rider.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-spore-shooter",
+      "topicId": "c02-unit-spore-shooter",
+      "label": "孢子射手",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-spore-shooter.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-star-shield",
+      "topicId": "c02-unit-star-shield",
+      "label": "星盾兵",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-star-shield.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-star-vein-mage",
+      "topicId": "c02-unit-star-vein-mage",
+      "label": "星脉术士",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-star-vein-mage.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-starbreaker-sapper",
+      "topicId": "c02-unit-starbreaker-sapper",
+      "label": "断星工兵",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-starbreaker-sapper.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-stargate-guard",
+      "topicId": "c02-unit-stargate-guard",
+      "label": "星门守卫",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-stargate-guard.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-symbiotic-guard",
+      "topicId": "c02-unit-symbiotic-guard",
+      "label": "共生卫士",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-symbiotic-guard.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-tide-anchor-engineer",
+      "topicId": "c02-unit-tide-anchor-engineer",
+      "label": "潮锚工程员",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-tide-anchor-engineer.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-tide-fin-scout",
+      "topicId": "c02-unit-tide-fin-scout",
+      "label": "潮鳍斥候",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-tide-fin-scout.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-tide-priest",
+      "topicId": "c02-unit-tide-priest",
+      "label": "潮汐祭司",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-tide-priest.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-turret-vehicle",
+      "topicId": "c02-unit-turret-vehicle",
+      "label": "炮台工程车",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-turret-vehicle.png",
+      "width": 384,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        48,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-vacuum-trooper",
+      "topicId": "c02-unit-vacuum-trooper",
+      "label": "真空兵",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-vacuum-trooper.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-unit-wind-sail-skirmisher",
+      "topicId": "c02-unit-wind-sail-skirmisher",
+      "label": "风帆散兵",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-wind-sail-skirmisher.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-cargo-crew",
+      "topicId": "c02-mission-cargo-crew",
+      "label": "远灯号货运船员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-cargo-crew.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-climate-observer",
+      "topicId": "c02-mission-climate-observer",
+      "label": "气候观测员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-climate-observer.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-dock-builder",
+      "topicId": "c02-mission-dock-builder",
+      "label": "船坞造船工",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-dock-builder.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-eco-cultivator",
+      "topicId": "c02-mission-eco-cultivator",
+      "label": "维尔达生态培育员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-eco-cultivator.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-evacuation-registrar",
+      "topicId": "c02-mission-evacuation-registrar",
+      "label": "撤离登记员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-evacuation-registrar.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-five-world-medic",
+      "topicId": "c02-mission-five-world-medic",
+      "label": "五界战地医护",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-five-world-medic.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-floating-city-civilian",
+      "topicId": "c02-mission-floating-city-civilian",
+      "label": "涅瑞亚浮城船民",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-floating-city-civilian.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-food-cultivator",
+      "topicId": "c02-mission-food-cultivator",
+      "label": "远灯号食物培育员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-food-cultivator.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-heat-lamp-monk",
+      "topicId": "c02-mission-heat-lamp-monk",
+      "label": "索勒热灯维护修士",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-heat-lamp-monk.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-maintenance-union-rep",
+      "topicId": "c02-mission-maintenance-union-rep",
+      "label": "维护工会代表",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-maintenance-union-rep.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-named-echo-civilian",
+      "topicId": "c02-mission-named-echo-civilian",
+      "label": "厄客留名者生活投影",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-named-echo-civilian.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-offline-courier",
+      "topicId": "c02-mission-offline-courier",
+      "label": "离线物理信使",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-offline-courier.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-outer-ring-worker",
+      "topicId": "c02-mission-outer-ring-worker",
+      "label": "凯隆外环维修工",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-outer-ring-worker.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-patient",
+      "topicId": "c02-mission-patient",
+      "label": "病患",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-patient.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-physical-archivist",
+      "topicId": "c02-mission-physical-archivist",
+      "label": "物理档案员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-physical-archivist.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-quarantine-resident",
+      "topicId": "c02-mission-quarantine-resident",
+      "label": "隔离舰普通居民",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-quarantine-resident.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-rain-dispatcher",
+      "topicId": "c02-mission-rain-dispatcher",
+      "label": "雨塔调度员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-rain-dispatcher.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-red-sand-child",
+      "topicId": "c02-mission-red-sand-child",
+      "label": "赤砂镇儿童",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-red-sand-child.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-refugee",
+      "topicId": "c02-mission-refugee",
+      "label": "难民",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-refugee.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-ring-train-conductor",
+      "topicId": "c02-mission-ring-train-conductor",
+      "label": "环城列车员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-ring-train-conductor.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-seed-bank-carer",
+      "topicId": "c02-mission-seed-bank-carer",
+      "label": "胚胎库种子库照护员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-seed-bank-carer.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-vacuum-rescuer",
+      "topicId": "c02-mission-vacuum-rescuer",
+      "label": "真空事故救援员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-vacuum-rescuer.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-water-collector",
+      "topicId": "c02-mission-water-collector",
+      "label": "接水居民",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-water-collector.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-mission-water-maintainer",
+      "topicId": "c02-mission-water-maintainer",
+      "label": "赫沙水务维护员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-water-maintainer.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-faction-echo-tide-corruption",
+      "topicId": "c02-faction-echo-tide-corruption",
+      "label": "寂潮侵蚀状态基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-echo-tide-corruption.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-faction-hesha",
+      "topicId": "c02-faction-hesha",
+      "label": "赫沙装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-hesha.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-faction-kairon",
+      "topicId": "c02-faction-kairon",
+      "label": "凯隆装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-kairon.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-faction-light-chaser-fleet",
+      "topicId": "c02-faction-light-chaser-fleet",
+      "label": "逐光舰队基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-light-chaser-fleet.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-faction-milight-emergency",
+      "topicId": "c02-faction-milight-emergency",
+      "label": "弥光熄灭应急基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-milight-emergency.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-faction-nereia",
+      "topicId": "c02-faction-nereia",
+      "label": "涅瑞亚装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-nereia.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-faction-reset-state",
+      "topicId": "c02-faction-reset-state",
+      "label": "归零状态基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-reset-state.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-faction-returners-farlight",
+      "topicId": "c02-faction-returners-farlight",
+      "label": "返星会与远灯号基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-returners-farlight.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-faction-ring-court",
+      "topicId": "c02-faction-ring-court",
+      "label": "环庭装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-ring-court.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-faction-soler",
+      "topicId": "c02-faction-soler",
+      "label": "索勒装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-soler.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-faction-uker",
+      "topicId": "c02-faction-uker",
+      "label": "厄客装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-uker.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-faction-verdant",
+      "topicId": "c02-faction-verdant",
+      "label": "维尔达装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-verdant.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-terrain-farlight-cargo-hold",
+      "topicId": "c02-terrain-farlight-cargo-hold",
+      "label": "远灯号货舱",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-farlight-cargo-hold.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-farlight-living-deck",
+      "topicId": "c02-terrain-farlight-living-deck",
+      "label": "远灯号生活舱",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-farlight-living-deck.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-farlight-projection-garden",
+      "topicId": "c02-terrain-farlight-projection-garden",
+      "label": "远灯号投影培育舱",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-farlight-projection-garden.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-farlight-service-pipes",
+      "topicId": "c02-terrain-farlight-service-pipes",
+      "label": "远灯号管道维修层",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-farlight-service-pipes.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-hesha-glass-sea",
+      "topicId": "c02-terrain-hesha-glass-sea",
+      "label": "赫沙玻璃海",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-hesha-glass-sea.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-hesha-red-sand",
+      "topicId": "c02-terrain-hesha-red-sand",
+      "label": "赫沙赤砂沙丘",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-hesha-red-sand.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-hesha-sandstorm-quicksand",
+      "topicId": "c02-terrain-hesha-sandstorm-quicksand",
+      "label": "赫沙沙暴流沙",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-hesha-sandstorm-quicksand.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-hesha-sealed-waterway",
+      "topicId": "c02-terrain-hesha-sealed-waterway",
+      "label": "赫沙密封水路",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-hesha-sealed-waterway.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-kairon-separation-ring",
+      "topicId": "c02-terrain-kairon-separation-ring",
+      "label": "凯隆分离环",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-kairon-separation-ring.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-kairon-train-platform",
+      "topicId": "c02-terrain-kairon-train-platform",
+      "label": "凯隆列车站台",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-kairon-train-platform.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-kairon-vacuum-breach",
+      "topicId": "c02-terrain-kairon-vacuum-breach",
+      "label": "凯隆真空破口",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-kairon-vacuum-breach.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-kairon-vertical-city",
+      "topicId": "c02-terrain-kairon-vertical-city",
+      "label": "凯隆垂直城区",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-kairon-vertical-city.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-milight-corona-service",
+      "topicId": "c02-terrain-milight-corona-service",
+      "label": "弥光日冕维护面",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-milight-corona-service.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-milight-inverted-city",
+      "topicId": "c02-terrain-milight-inverted-city",
+      "label": "弥光倒悬城",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-milight-inverted-city.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-milight-rotating-blackout",
+      "topicId": "c02-terrain-milight-rotating-blackout",
+      "label": "弥光旋转重力熄灯态",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-milight-rotating-blackout.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-milight-vein-ring",
+      "topicId": "c02-terrain-milight-vein-ring",
+      "label": "弥光星脉环",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-milight-vein-ring.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-nereia-deep-water",
+      "topicId": "c02-terrain-nereia-deep-water",
+      "label": "涅瑞亚深水",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-nereia-deep-water.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-nereia-floating-platform",
+      "topicId": "c02-terrain-nereia-floating-platform",
+      "label": "涅瑞亚浮台",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-nereia-floating-platform.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-nereia-reverse-current",
+      "topicId": "c02-terrain-nereia-reverse-current",
+      "label": "涅瑞亚逆向洋流",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-nereia-reverse-current.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-nereia-shallow-tide",
+      "topicId": "c02-terrain-nereia-shallow-tide",
+      "label": "涅瑞亚浅潮",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-nereia-shallow-tide.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-soler-blue-ice",
+      "topicId": "c02-terrain-soler-blue-ice",
+      "label": "索勒蓝冰",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-soler-blue-ice.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-soler-brittle-ice",
+      "topicId": "c02-terrain-soler-brittle-ice",
+      "label": "索勒脆冰",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-soler-brittle-ice.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-soler-deep-factory",
+      "topicId": "c02-terrain-soler-deep-factory",
+      "label": "索勒深层工厂",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-soler-deep-factory.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-soler-heated-walkway",
+      "topicId": "c02-terrain-soler-heated-walkway",
+      "label": "索勒热灯步道",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-soler-heated-walkway.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-uker-grave-fragments",
+      "topicId": "c02-terrain-uker-grave-fragments",
+      "label": "厄客墓星碎片",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-uker-grave-fragments.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-uker-memory-overlay",
+      "topicId": "c02-terrain-uker-memory-overlay",
+      "label": "厄客记忆覆盖",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-uker-memory-overlay.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-uker-physical-ruin",
+      "topicId": "c02-terrain-uker-physical-ruin",
+      "label": "厄客物理废墟",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-uker-physical-ruin.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-uker-reality-rebuild",
+      "topicId": "c02-terrain-uker-reality-rebuild",
+      "label": "厄客现实重构",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-uker-reality-rebuild.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-verdant-fungus-bed",
+      "topicId": "c02-terrain-verdant-fungus-bed",
+      "label": "维尔达菌床",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-verdant-fungus-bed.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-verdant-living-bridge",
+      "topicId": "c02-terrain-verdant-living-bridge",
+      "label": "维尔达活桥",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-verdant-living-bridge.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-verdant-root-nest",
+      "topicId": "c02-terrain-verdant-root-nest",
+      "label": "维尔达根巢",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-verdant-root-nest.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C02-SFV1-terrain-verdant-spore-fog",
+      "topicId": "c02-terrain-verdant-spore-fog",
+      "label": "维尔达孢子雾",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-verdant-spore-fog.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C02-SFV1-structure-cargo-terminal",
+      "topicId": "c02-structure-cargo-terminal",
+      "label": "货舱终端",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-cargo-terminal.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-civil-shelter",
+      "topicId": "c02-structure-civil-shelter",
+      "label": "民用避难所",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-civil-shelter.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-emergency-life-support",
+      "topicId": "c02-structure-emergency-life-support",
+      "label": "应急维生站",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-emergency-life-support.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-evacuation-point",
+      "topicId": "c02-structure-evacuation-point",
+      "label": "撤离集合点",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-evacuation-point.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-five-world-broadcast-node",
+      "topicId": "c02-structure-five-world-broadcast-node",
+      "label": "五界广播节点",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-five-world-broadcast-node.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-folding-turret",
+      "topicId": "c02-structure-folding-turret",
+      "label": "折叠炮台",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-folding-turret.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-fungus-seed-bank",
+      "topicId": "c02-structure-fungus-seed-bank",
+      "label": "菌床种子库",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-fungus-seed-bank.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-gravity-switch",
+      "topicId": "c02-structure-gravity-switch",
+      "label": "重力切换台",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-gravity-switch.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-heat-lamp-hub",
+      "topicId": "c02-structure-heat-lamp-hub",
+      "label": "热灯枢纽",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-heat-lamp-hub.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-living-isolation-grid",
+      "topicId": "c02-structure-living-isolation-grid",
+      "label": "活体隔离网",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-living-isolation-grid.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-medical-isolation",
+      "topicId": "c02-structure-medical-isolation",
+      "label": "医疗隔离站",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-medical-isolation.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-movable-platform",
+      "topicId": "c02-structure-movable-platform",
+      "label": "可移动浮台",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-movable-platform.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-orbital-gun-console",
+      "topicId": "c02-structure-orbital-gun-console",
+      "label": "轨道炮控台",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-orbital-gun-console.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-permission-log",
+      "topicId": "c02-structure-permission-log",
+      "label": "权限日志台",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-permission-log.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-physical-archive-cabinet",
+      "topicId": "c02-structure-physical-archive-cabinet",
+      "label": "物理档案柜",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-physical-archive-cabinet.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-pressure-door",
+      "topicId": "c02-structure-pressure-door",
+      "label": "压力舱门",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-pressure-door.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-public-cargo-board",
+      "topicId": "c02-structure-public-cargo-board",
+      "label": "公开货舱板",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-public-cargo-board.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-rail-switch",
+      "topicId": "c02-structure-rail-switch",
+      "label": "列车道岔",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-rail-switch.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-rain-tower-console",
+      "topicId": "c02-structure-rain-tower-console",
+      "label": "雨塔控台",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-rain-tower-console.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-sky-elevator",
+      "topicId": "c02-structure-sky-elevator",
+      "label": "天梯港升降机",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-sky-elevator.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-star-vein-node",
+      "topicId": "c02-structure-star-vein-node",
+      "label": "星脉权限节点",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-star-vein-node.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-tide-anchor-console",
+      "topicId": "c02-structure-tide-anchor-console",
+      "label": "潮锚控制台",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-tide-anchor-console.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-vacuum-bulkhead",
+      "topicId": "c02-structure-vacuum-bulkhead",
+      "label": "真空隔断门",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-vacuum-bulkhead.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-structure-water-filter-station",
+      "topicId": "c02-structure-water-filter-station",
+      "label": "水封过滤站",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-water-filter-station.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-anchor-winches",
+      "topicId": "c02-battle-prop-anchor-winches",
+      "label": "潮锚绞盘工程组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-anchor-winches.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-broken-rails",
+      "topicId": "c02-battle-prop-broken-rails",
+      "label": "断轨战后组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-broken-rails.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-bunks",
+      "topicId": "c02-battle-prop-bunks",
+      "label": "床铺生活组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-bunks.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-cable-reels",
+      "topicId": "c02-battle-prop-cable-reels",
+      "label": "线缆卷工程组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-cable-reels.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-cargo-crates",
+      "topicId": "c02-battle-prop-cargo-crates",
+      "label": "货箱掩体组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-cargo-crates.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-ceramic-water-tanks",
+      "topicId": "c02-battle-prop-ceramic-water-tanks",
+      "label": "陶瓷水罐掩体组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-ceramic-water-tanks.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-community-repairs",
+      "topicId": "c02-battle-prop-community-repairs",
+      "label": "社区修复痕迹组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-community-repairs.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-cups-cookware",
+      "topicId": "c02-battle-prop-cups-cookware",
+      "label": "金属杯炊具生活组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-cups-cookware.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-dead-fungus-beds",
+      "topicId": "c02-battle-prop-dead-fungus-beds",
+      "label": "枯死菌床战后组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-dead-fungus-beds.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-discarded-arms",
+      "topicId": "c02-battle-prop-discarded-arms",
+      "label": "弃械战后组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-discarded-arms.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-drying-racks",
+      "topicId": "c02-battle-prop-drying-racks",
+      "label": "晾衣架生活组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-drying-racks.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-five-world-flags",
+      "topicId": "c02-battle-prop-five-world-flags",
+      "label": "五界材料旗组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-five-world-flags.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-folding-tables",
+      "topicId": "c02-battle-prop-folding-tables",
+      "label": "折叠桌生活组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-folding-tables.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-fuel-oxygen-tanks",
+      "topicId": "c02-battle-prop-fuel-oxygen-tanks",
+      "label": "燃料氧气罐危险组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-fuel-oxygen-tanks.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-giant-roots",
+      "topicId": "c02-battle-prop-giant-roots",
+      "label": "巨根掩体组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-giant-roots.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-hesha-water-signs",
+      "topicId": "c02-battle-prop-hesha-water-signs",
+      "label": "赫沙水务标识组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-hesha-water-signs.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-hull-patches",
+      "topicId": "c02-battle-prop-hull-patches",
+      "label": "舱壁补片工程组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-hull-patches.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-ice-cracks",
+      "topicId": "c02-battle-prop-ice-cracks",
+      "label": "冰裂危险组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-ice-cracks.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-overload-nodes",
+      "topicId": "c02-battle-prop-overload-nodes",
+      "label": "过载节点危险组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-overload-nodes.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-permission-badges",
+      "topicId": "c02-battle-prop-permission-badges",
+      "label": "权限牌证据组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-permission-badges.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-permission-lights",
+      "topicId": "c02-battle-prop-permission-lights",
+      "label": "权限状态灯组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-permission-lights.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-physical-film",
+      "topicId": "c02-battle-prop-physical-film",
+      "label": "实体胶片证据组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-physical-film.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-platform-shields",
+      "topicId": "c02-battle-prop-platform-shields",
+      "label": "站台盾掩体组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-platform-shields.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-repair-arms",
+      "topicId": "c02-battle-prop-repair-arms",
+      "label": "维修臂工程组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-repair-arms.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-risk-list-evidence",
+      "topicId": "c02-battle-prop-risk-list-evidence",
+      "label": "风险清单证据组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-risk-list-evidence.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-seed-coolers",
+      "topicId": "c02-battle-prop-seed-coolers",
+      "label": "种子冷柜后勤组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-seed-coolers.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-soler-heat-emblems",
+      "topicId": "c02-battle-prop-soler-heat-emblems",
+      "label": "索勒热灯标识组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-soler-heat-emblems.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-spare-part-racks",
+      "topicId": "c02-battle-prop-spare-part-racks",
+      "label": "备件架后勤组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-spare-part-racks.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-spore-sacs",
+      "topicId": "c02-battle-prop-spore-sacs",
+      "label": "孢子囊危险组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-spore-sacs.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-stretcher-medkits",
+      "topicId": "c02-battle-prop-stretcher-medkits",
+      "label": "担架药箱后勤组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-stretcher-medkits.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-tickets-manifests",
+      "topicId": "c02-battle-prop-tickets-manifests",
+      "label": "票与货单证据组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-tickets-manifests.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-battle-prop-water-barrels",
+      "topicId": "c02-battle-prop-water-barrels",
+      "label": "水桶后勤组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-water-barrels.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-anti-large-charge",
+      "topicId": "c02-equipment-anti-large-charge",
+      "label": "反大型定向爆破包",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-anti-large-charge.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-antler-knight",
+      "topicId": "c02-equipment-antler-knight",
+      "label": "角枝骑士主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-antler-knight.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-boarding-team",
+      "topicId": "c02-equipment-boarding-team",
+      "label": "接舷队主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-boarding-team.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-defoliator-pilot",
+      "topicId": "c02-equipment-defoliator-pilot",
+      "label": "除生机驾驶员主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-defoliator-pilot.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-echo-tracker",
+      "topicId": "c02-equipment-echo-tracker",
+      "label": "回声追迹者主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-echo-tracker.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-eco-maintainer",
+      "topicId": "c02-equipment-eco-maintainer",
+      "label": "生态维护体主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-eco-maintainer.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-field-medic",
+      "topicId": "c02-equipment-field-medic",
+      "label": "战地医师主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-field-medic.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-floating-city-guard",
+      "topicId": "c02-equipment-floating-city-guard",
+      "label": "浮城枪卫主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-floating-city-guard.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-forest-beast-handler",
+      "topicId": "c02-equipment-forest-beast-handler",
+      "label": "林兽驭手主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-forest-beast-handler.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-fungus-bed-medic",
+      "topicId": "c02-equipment-fungus-bed-medic",
+      "label": "菌床医师主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-fungus-bed-medic.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-gravity-rescuer",
+      "topicId": "c02-equipment-gravity-rescuer",
+      "label": "重力救援员主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-gravity-rescuer.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-guard-robot",
+      "topicId": "c02-equipment-guard-robot",
+      "label": "守卫机器人主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-guard-robot.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-heat-lamp-shield",
+      "topicId": "c02-equipment-heat-lamp-shield",
+      "label": "热灯盾修主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-heat-lamp-shield.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-hover-lancer",
+      "topicId": "c02-equipment-hover-lancer",
+      "label": "悬浮枪骑主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-hover-lancer.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-ice-hook-hunter",
+      "topicId": "c02-equipment-ice-hook-hunter",
+      "label": "冰钩猎手主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-ice-hook-hunter.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-light-mech",
+      "topicId": "c02-equipment-light-mech",
+      "label": "轻型机甲主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-light-mech.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-long-beam-sniper",
+      "topicId": "c02-equipment-long-beam-sniper",
+      "label": "长束狙击手主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-long-beam-sniper.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-magboot-tractor-set",
+      "topicId": "c02-equipment-magboot-tractor-set",
+      "label": "磁靴牵引组",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-magboot-tractor-set.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-memory-monk",
+      "topicId": "c02-equipment-memory-monk",
+      "label": "记忆修士主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-memory-monk.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-memory-spore-isolator",
+      "topicId": "c02-equipment-memory-spore-isolator",
+      "label": "记忆孢子隔离装",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-memory-spore-isolator.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-mission-evidence-box",
+      "topicId": "c02-equipment-mission-evidence-box",
+      "label": "任务权限证据箱",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-mission-evidence-box.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-multi-standard-repair-pack",
+      "topicId": "c02-equipment-multi-standard-repair-pack",
+      "label": "多规格维修背架",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-multi-standard-repair-pack.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-offline-scout-instrument",
+      "topicId": "c02-equipment-offline-scout-instrument",
+      "label": "离线侦察仪",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-offline-scout-instrument.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-physical-archive-keeper",
+      "topicId": "c02-equipment-physical-archive-keeper",
+      "label": "物理档案守护员主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-physical-archive-keeper.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-power-swordsman",
+      "topicId": "c02-equipment-power-swordsman",
+      "label": "动力剑士主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-power-swordsman.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-protocol-adjudicator",
+      "topicId": "c02-equipment-protocol-adjudicator",
+      "label": "协议裁定员主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-protocol-adjudicator.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-protocol-analyst",
+      "topicId": "c02-equipment-protocol-analyst",
+      "label": "协议分析员主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-protocol-analyst.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-public-supply-crate",
+      "topicId": "c02-equipment-public-supply-crate",
+      "label": "公共补给箱",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-public-supply-crate.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-rail-rifleman",
+      "topicId": "c02-equipment-rail-rifleman",
+      "label": "轨道步枪手主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-rail-rifleman.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-rain-shepherd",
+      "topicId": "c02-equipment-rain-shepherd",
+      "label": "雨牧者战斗体主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-rain-shepherd.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-rain-tower-engineer",
+      "topicId": "c02-equipment-rain-tower-engineer",
+      "label": "雨塔工程员主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-rain-tower-engineer.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-repair-engineer",
+      "topicId": "c02-equipment-repair-engineer",
+      "label": "维修师主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-repair-engineer.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-reset-guard",
+      "topicId": "c02-equipment-reset-guard",
+      "label": "归零守卫主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-reset-guard.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-ring-rail-guard",
+      "topicId": "c02-equipment-ring-rail-guard",
+      "label": "环城轨卫主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-ring-rail-guard.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-sand-rider",
+      "topicId": "c02-equipment-sand-rider",
+      "label": "沙地游骑主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-sand-rider.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-sealed-medical-kit",
+      "topicId": "c02-equipment-sealed-medical-kit",
+      "label": "密封担架医疗包",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-sealed-medical-kit.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-spore-shooter",
+      "topicId": "c02-equipment-spore-shooter",
+      "label": "孢子射手主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-spore-shooter.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-star-shield",
+      "topicId": "c02-equipment-star-shield",
+      "label": "星盾兵主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-star-shield.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-star-vein-mage",
+      "topicId": "c02-equipment-star-vein-mage",
+      "label": "星脉术士主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-star-vein-mage.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-starbreaker-sapper",
+      "topicId": "c02-equipment-starbreaker-sapper",
+      "label": "断星工兵主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-starbreaker-sapper.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-stargate-guard",
+      "topicId": "c02-equipment-stargate-guard",
+      "label": "星门守卫主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-stargate-guard.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-symbiotic-guard",
+      "topicId": "c02-equipment-symbiotic-guard",
+      "label": "共生卫士主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-symbiotic-guard.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-tide-anchor-engineer",
+      "topicId": "c02-equipment-tide-anchor-engineer",
+      "label": "潮锚工程员主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-tide-anchor-engineer.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-tide-fin-scout",
+      "topicId": "c02-equipment-tide-fin-scout",
+      "label": "潮鳍斥候主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-tide-fin-scout.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-tide-priest",
+      "topicId": "c02-equipment-tide-priest",
+      "label": "潮汐祭司主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-tide-priest.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-turret-vehicle",
+      "topicId": "c02-equipment-turret-vehicle",
+      "label": "炮台工程车主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-turret-vehicle.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-vacuum-trooper",
+      "topicId": "c02-equipment-vacuum-trooper",
+      "label": "真空兵主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-vacuum-trooper.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-equipment-wind-sail-skirmisher",
+      "topicId": "c02-equipment-wind-sail-skirmisher",
+      "label": "风帆散兵主装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equipment-wind-sail-skirmisher.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-assault",
+      "topicId": "c02-skill-assault",
+      "label": "动力突击",
+      "category": "skill",
+      "png": "runtime/skill/skill-assault.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-boarding",
+      "topicId": "c02-skill-boarding",
+      "label": "接舷突入",
+      "category": "skill",
+      "png": "runtime/skill/skill-boarding.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-brace-platform",
+      "topicId": "c02-skill-brace-platform",
+      "label": "加固浮台",
+      "category": "skill",
+      "png": "runtime/skill/skill-brace-platform.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-climate-correction",
+      "topicId": "c02-skill-climate-correction",
+      "label": "气候校正",
+      "category": "skill",
+      "png": "runtime/skill/skill-climate-correction.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-confirm-permission",
+      "topicId": "c02-skill-confirm-permission",
+      "label": "权限确认",
+      "category": "skill",
+      "png": "runtime/skill/skill-confirm-permission.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-deploy-tide-anchor",
+      "topicId": "c02-skill-deploy-tide-anchor",
+      "label": "部署潮锚",
+      "category": "skill",
+      "png": "runtime/skill/skill-deploy-tide-anchor.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-deploy-turret",
+      "topicId": "c02-skill-deploy-turret",
+      "label": "部署炮台",
+      "category": "skill",
+      "png": "runtime/skill/skill-deploy-turret.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-echo-isolation",
+      "topicId": "c02-skill-echo-isolation",
+      "label": "回声隔离",
+      "category": "skill",
+      "png": "runtime/skill/skill-echo-isolation.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-emergency-heat",
+      "topicId": "c02-skill-emergency-heat",
+      "label": "应急供热",
+      "category": "skill",
+      "png": "runtime/skill/skill-emergency-heat.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-emergency-water",
+      "topicId": "c02-skill-emergency-water",
+      "label": "应急供水",
+      "category": "skill",
+      "png": "runtime/skill/skill-emergency-water.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-field-heal",
+      "topicId": "c02-skill-field-heal",
+      "label": "战地治疗",
+      "category": "skill",
+      "png": "runtime/skill/skill-field-heal.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-five-world-combo",
+      "topicId": "c02-skill-five-world-combo",
+      "label": "五界协同",
+      "category": "skill",
+      "png": "runtime/skill/skill-five-world-combo.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-fungus-purify",
+      "topicId": "c02-skill-fungus-purify",
+      "label": "菌床净化",
+      "category": "skill",
+      "png": "runtime/skill/skill-fungus-purify.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-gravity-rescue",
+      "topicId": "c02-skill-gravity-rescue",
+      "label": "重力救援",
+      "category": "skill",
+      "png": "runtime/skill/skill-gravity-rescue.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-guard",
+      "topicId": "c02-skill-guard",
+      "label": "援护",
+      "category": "skill",
+      "png": "runtime/skill/skill-guard.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-heat-zone",
+      "topicId": "c02-skill-heat-zone",
+      "label": "热灯区",
+      "category": "skill",
+      "png": "runtime/skill/skill-heat-zone.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-ice-hook",
+      "topicId": "c02-skill-ice-hook",
+      "label": "冰钩拉拽",
+      "category": "skill",
+      "png": "runtime/skill/skill-ice-hook.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-maintainer-rebuild",
+      "topicId": "c02-skill-maintainer-rebuild",
+      "label": "维护体重构",
+      "category": "skill",
+      "png": "runtime/skill/skill-maintainer-rebuild.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-mark-evacuation",
+      "topicId": "c02-skill-mark-evacuation",
+      "label": "撤离标记",
+      "category": "skill",
+      "png": "runtime/skill/skill-mark-evacuation.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-medical-transfer",
+      "topicId": "c02-skill-medical-transfer",
+      "label": "医疗转运",
+      "category": "skill",
+      "png": "runtime/skill/skill-medical-transfer.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-memory-reality-overlap",
+      "topicId": "c02-skill-memory-reality-overlap",
+      "label": "记忆现实重叠",
+      "category": "skill",
+      "png": "runtime/skill/skill-memory-reality-overlap.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-memory-reveal",
+      "topicId": "c02-skill-memory-reveal",
+      "label": "记忆显影",
+      "category": "skill",
+      "png": "runtime/skill/skill-memory-reveal.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-physical-backup",
+      "topicId": "c02-skill-physical-backup",
+      "label": "物理备份",
+      "category": "skill",
+      "png": "runtime/skill/skill-physical-backup.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-prune-bridge",
+      "topicId": "c02-skill-prune-bridge",
+      "label": "修剪活桥",
+      "category": "skill",
+      "png": "runtime/skill/skill-prune-bridge.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-publish-cargo",
+      "topicId": "c02-skill-publish-cargo",
+      "label": "公开货舱",
+      "category": "skill",
+      "png": "runtime/skill/skill-publish-cargo.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-quick-repair",
+      "topicId": "c02-skill-quick-repair",
+      "label": "快速维修",
+      "category": "skill",
+      "png": "runtime/skill/skill-quick-repair.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-rail-calibration",
+      "topicId": "c02-skill-rail-calibration",
+      "label": "轨道校准",
+      "category": "skill",
+      "png": "runtime/skill/skill-rail-calibration.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-rail-permission",
+      "topicId": "c02-skill-rail-permission",
+      "label": "列车权限",
+      "category": "skill",
+      "png": "runtime/skill/skill-rail-permission.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-redirect-wind",
+      "topicId": "c02-skill-redirect-wind",
+      "label": "改风向",
+      "category": "skill",
+      "png": "runtime/skill/skill-redirect-wind.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-repair-node",
+      "topicId": "c02-skill-repair-node",
+      "label": "修复节点",
+      "category": "skill",
+      "png": "runtime/skill/skill-repair-node.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-reroute-water",
+      "topicId": "c02-skill-reroute-water",
+      "label": "改接水路",
+      "category": "skill",
+      "png": "runtime/skill/skill-reroute-water.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-rescue-dash",
+      "topicId": "c02-skill-rescue-dash",
+      "label": "救援冲刺",
+      "category": "skill",
+      "png": "runtime/skill/skill-rescue-dash.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-resupply-ammo",
+      "topicId": "c02-skill-resupply-ammo",
+      "label": "补给弹药",
+      "category": "skill",
+      "png": "runtime/skill/skill-resupply-ammo.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-rider-rescue-chain",
+      "topicId": "c02-skill-rider-rescue-chain",
+      "label": "游骑连救",
+      "category": "skill",
+      "png": "runtime/skill/skill-rider-rescue-chain.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-rotate-gravity",
+      "topicId": "c02-skill-rotate-gravity",
+      "label": "旋转重力",
+      "category": "skill",
+      "png": "runtime/skill/skill-rotate-gravity.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-sand-sail",
+      "topicId": "c02-skill-sand-sail",
+      "label": "沙帆机动",
+      "category": "skill",
+      "png": "runtime/skill/skill-sand-sail.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-scan",
+      "topicId": "c02-skill-scan",
+      "label": "协议扫描",
+      "category": "skill",
+      "png": "runtime/skill/skill-scan.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-shield-chain",
+      "topicId": "c02-skill-shield-chain",
+      "label": "星盾联防",
+      "category": "skill",
+      "png": "runtime/skill/skill-shield-chain.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-shift-tide",
+      "topicId": "c02-skill-shift-tide",
+      "label": "潮线移动",
+      "category": "skill",
+      "png": "runtime/skill/skill-shift-tide.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-snipe",
+      "topicId": "c02-skill-snipe",
+      "label": "长束狙击",
+      "category": "skill",
+      "png": "runtime/skill/skill-snipe.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-spore-shot",
+      "topicId": "c02-skill-spore-shot",
+      "label": "孢子射击",
+      "category": "skill",
+      "png": "runtime/skill/skill-spore-shot.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-suppress",
+      "topicId": "c02-skill-suppress",
+      "label": "轨道压制",
+      "category": "skill",
+      "png": "runtime/skill/skill-suppress.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-switch-rail",
+      "topicId": "c02-skill-switch-rail",
+      "label": "切换道岔",
+      "category": "skill",
+      "png": "runtime/skill/skill-switch-rail.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-symbiotic-regen",
+      "topicId": "c02-skill-symbiotic-regen",
+      "label": "共生再生",
+      "category": "skill",
+      "png": "runtime/skill/skill-symbiotic-regen.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-toggle-bulkhead",
+      "topicId": "c02-skill-toggle-bulkhead",
+      "label": "开闭舱门",
+      "category": "skill",
+      "png": "runtime/skill/skill-toggle-bulkhead.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-vacuum-traction",
+      "topicId": "c02-skill-vacuum-traction",
+      "label": "真空牵引",
+      "category": "skill",
+      "png": "runtime/skill/skill-vacuum-traction.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-vein-downgrade",
+      "topicId": "c02-skill-vein-downgrade",
+      "label": "星脉降权",
+      "category": "skill",
+      "png": "runtime/skill/skill-vein-downgrade.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-skill-zero-permission-breach",
+      "topicId": "c02-skill-zero-permission-breach",
+      "label": "零权限突入",
+      "category": "skill",
+      "png": "runtime/skill/skill-zero-permission-breach.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-ammo",
+      "topicId": "c02-status-ammo",
+      "label": "弹药资源",
+      "category": "status",
+      "png": "runtime/status/status-ammo.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-capture",
+      "topicId": "c02-status-capture",
+      "label": "占领目标",
+      "category": "status",
+      "png": "runtime/status/status-capture.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-cargo-capacity",
+      "topicId": "c02-status-cargo-capacity",
+      "label": "舱容资源",
+      "category": "status",
+      "png": "runtime/status/status-cargo-capacity.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-controlled",
+      "topicId": "c02-status-controlled",
+      "label": "受控",
+      "category": "status",
+      "png": "runtime/status/status-controlled.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-deliver-evidence",
+      "topicId": "c02-status-deliver-evidence",
+      "label": "证据送达目标",
+      "category": "status",
+      "png": "runtime/status/status-deliver-evidence.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-destroy",
+      "topicId": "c02-status-destroy",
+      "label": "破坏目标",
+      "category": "status",
+      "png": "runtime/status/status-destroy.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-escort",
+      "topicId": "c02-status-escort",
+      "label": "护送目标",
+      "category": "status",
+      "png": "runtime/status/status-escort.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-evacuate",
+      "topicId": "c02-status-evacuate",
+      "label": "撤离目标",
+      "category": "status",
+      "png": "runtime/status/status-evacuate.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-heat",
+      "topicId": "c02-status-heat",
+      "label": "热量资源",
+      "category": "status",
+      "png": "runtime/status/status-heat.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-hidden",
+      "topicId": "c02-status-hidden",
+      "label": "隐蔽",
+      "category": "status",
+      "png": "runtime/status/status-hidden.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-hold-timer",
+      "topicId": "c02-status-hold-timer",
+      "label": "守时目标",
+      "category": "status",
+      "png": "runtime/status/status-hold-timer.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-hypothermia",
+      "topicId": "c02-status-hypothermia",
+      "label": "失温",
+      "category": "status",
+      "png": "runtime/status/status-hypothermia.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-local-support",
+      "topicId": "c02-status-local-support",
+      "label": "地方支持",
+      "category": "status",
+      "png": "runtime/status/status-local-support.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-low-oxygen",
+      "topicId": "c02-status-low-oxygen",
+      "label": "低氧",
+      "category": "status",
+      "png": "runtime/status/status-low-oxygen.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-memory-corrosion",
+      "topicId": "c02-status-memory-corrosion",
+      "label": "记忆侵蚀",
+      "category": "status",
+      "png": "runtime/status/status-memory-corrosion.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-overheated",
+      "topicId": "c02-status-overheated",
+      "label": "过热",
+      "category": "status",
+      "png": "runtime/status/status-overheated.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-permission",
+      "topicId": "c02-status-permission",
+      "label": "权限资源",
+      "category": "status",
+      "png": "runtime/status/status-permission.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-repair",
+      "topicId": "c02-status-repair",
+      "label": "维修目标",
+      "category": "status",
+      "png": "runtime/status/status-repair.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-rescue",
+      "topicId": "c02-status-rescue",
+      "label": "救援目标",
+      "category": "status",
+      "png": "runtime/status/status-rescue.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-shielded",
+      "topicId": "c02-status-shielded",
+      "label": "护盾",
+      "category": "status",
+      "png": "runtime/status/status-shielded.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-spare-parts",
+      "topicId": "c02-status-spare-parts",
+      "label": "备件资源",
+      "category": "status",
+      "png": "runtime/status/status-spare-parts.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-spore-contamination",
+      "topicId": "c02-status-spore-contamination",
+      "label": "孢子污染",
+      "category": "status",
+      "png": "runtime/status/status-spore-contamination.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-star-vein-energy",
+      "topicId": "c02-status-star-vein-energy",
+      "label": "星脉能",
+      "category": "status",
+      "png": "runtime/status/status-star-vein-energy.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-status-water",
+      "topicId": "c02-status-water",
+      "label": "水资源",
+      "category": "status",
+      "png": "runtime/status/status-water.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-bio-hit",
+      "topicId": "c02-fx-bio-hit",
+      "label": "生化命中 FX",
+      "category": "fx",
+      "png": "runtime/fx/fx-bio-hit.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-blade-hit",
+      "topicId": "c02-fx-blade-hit",
+      "label": "刃击 FX",
+      "category": "fx",
+      "png": "runtime/fx/fx-blade-hit.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-blunt-hit",
+      "topicId": "c02-fx-blunt-hit",
+      "label": "钝击 FX",
+      "category": "fx",
+      "png": "runtime/fx/fx-blunt-hit.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-capture-light",
+      "topicId": "c02-fx-capture-light",
+      "label": "占领权限灯层",
+      "category": "fx",
+      "png": "runtime/fx/fx-capture-light.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-control",
+      "topicId": "c02-fx-control",
+      "label": "受控状态层",
+      "category": "fx",
+      "png": "runtime/fx/fx-control.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-crush",
+      "topicId": "c02-fx-crush",
+      "label": "碾压 FX",
+      "category": "fx",
+      "png": "runtime/fx/fx-crush.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-energy-pulse",
+      "topicId": "c02-fx-energy-pulse",
+      "label": "能量脉冲 FX",
+      "category": "fx",
+      "png": "runtime/fx/fx-energy-pulse.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-explosion",
+      "topicId": "c02-fx-explosion",
+      "label": "爆破 FX",
+      "category": "fx",
+      "png": "runtime/fx/fx-explosion.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-healing",
+      "topicId": "c02-fx-healing",
+      "label": "治疗状态层",
+      "category": "fx",
+      "png": "runtime/fx/fx-healing.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-heat-zone",
+      "topicId": "c02-fx-heat-zone",
+      "label": "热区层",
+      "category": "fx",
+      "png": "runtime/fx/fx-heat-zone.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-ice-cold",
+      "topicId": "c02-fx-ice-cold",
+      "label": "冰寒区域层",
+      "category": "fx",
+      "png": "runtime/fx/fx-ice-cold.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-memory-overlay",
+      "topicId": "c02-fx-memory-overlay",
+      "label": "记忆覆盖层",
+      "category": "fx",
+      "png": "runtime/fx/fx-memory-overlay.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-offline",
+      "topicId": "c02-fx-offline",
+      "label": "失联状态层",
+      "category": "fx",
+      "png": "runtime/fx/fx-offline.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-rail-penetration",
+      "topicId": "c02-fx-rail-penetration",
+      "label": "轨道穿透 FX",
+      "category": "fx",
+      "png": "runtime/fx/fx-rail-penetration.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-rain-black-rain",
+      "topicId": "c02-fx-rain-black-rain",
+      "label": "雨与黑雨层",
+      "category": "fx",
+      "png": "runtime/fx/fx-rain-black-rain.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-repair-sparks",
+      "topicId": "c02-fx-repair-sparks",
+      "label": "修复火花层",
+      "category": "fx",
+      "png": "runtime/fx/fx-repair-sparks.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-sandstorm",
+      "topicId": "c02-fx-sandstorm",
+      "label": "沙暴区域层",
+      "category": "fx",
+      "png": "runtime/fx/fx-sandstorm.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-shield",
+      "topicId": "c02-fx-shield",
+      "label": "护盾状态层",
+      "category": "fx",
+      "png": "runtime/fx/fx-shield.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-spore-fog",
+      "topicId": "c02-fx-spore-fog",
+      "label": "孢子雾层",
+      "category": "fx",
+      "png": "runtime/fx/fx-spore-fog.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-stealth",
+      "topicId": "c02-fx-stealth",
+      "label": "隐蔽状态层",
+      "category": "fx",
+      "png": "runtime/fx/fx-stealth.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-structure-damage",
+      "topicId": "c02-fx-structure-damage",
+      "label": "结构受损层",
+      "category": "fx",
+      "png": "runtime/fx/fx-structure-damage.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-tide-water",
+      "topicId": "c02-fx-tide-water",
+      "label": "潮水区域层",
+      "category": "fx",
+      "png": "runtime/fx/fx-tide-water.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-vacuum-rupture",
+      "topicId": "c02-fx-vacuum-rupture",
+      "label": "真空破裂 FX",
+      "category": "fx",
+      "png": "runtime/fx/fx-vacuum-rupture.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-fx-vacuum-zone",
+      "topicId": "c02-fx-vacuum-zone",
+      "label": "真空区域层",
+      "category": "fx",
+      "png": "runtime/fx/fx-vacuum-zone.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-ally",
+      "topicId": "c02-hud-ally",
+      "label": "友军标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-ally.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-breakable",
+      "topicId": "c02-hud-breakable",
+      "label": "可破坏结构标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-breakable.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-danger",
+      "topicId": "c02-hud-danger",
+      "label": "危险区域标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-danger.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-enemy",
+      "topicId": "c02-hud-enemy",
+      "label": "敌军标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-enemy.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-engineering",
+      "topicId": "c02-hud-engineering",
+      "label": "工程交互标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-engineering.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-escort",
+      "topicId": "c02-hud-escort",
+      "label": "护送目标标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-escort.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-evacuation",
+      "topicId": "c02-hud-evacuation",
+      "label": "撤离出口标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-evacuation.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-healing",
+      "topicId": "c02-hud-healing",
+      "label": "治疗点标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-healing.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-main-objective",
+      "topicId": "c02-hud-main-objective",
+      "label": "主目标标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-main-objective.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-neutral",
+      "topicId": "c02-hud-neutral",
+      "label": "中立标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-neutral.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-permission-dispute",
+      "topicId": "c02-hud-permission-dispute",
+      "label": "多阵营权限争议点",
+      "category": "hud",
+      "png": "runtime/hud/hud-permission-dispute.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-recruitable",
+      "topicId": "c02-hud-recruitable",
+      "label": "可招降标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-recruitable.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-reinforcement",
+      "topicId": "c02-hud-reinforcement",
+      "label": "增援入口标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-reinforcement.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-repairable",
+      "topicId": "c02-hud-repairable",
+      "label": "可修复结构标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-repairable.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-side-objective",
+      "topicId": "c02-hud-side-objective",
+      "label": "次要目标标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-side-objective.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C02-SFV1-hud-supply",
+      "topicId": "c02-hud-supply",
+      "label": "补给点标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-supply.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-scifi-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    }
+  ]
+}

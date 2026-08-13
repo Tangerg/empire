@@ -27,4 +27,12 @@ describe('shared battlefield feature layer', () => {
 
     expect(new Set([initial, ownership, elevation, battlefieldRenderKey(map)]).size).toBe(4);
   });
+
+  it('labels a continuous plateau once instead of covering every elevated cell', () => {
+    const map = mapFromLevel(emptyLevel(3, 2));
+    map.elevation = [2, 2, 0, 2, 2, 1];
+
+    const markup = battlefieldFeatureMarkup(map);
+    expect(markup.match(/class="elevation-badge"/g)).toHaveLength(2);
+  });
 });

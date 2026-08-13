@@ -11,6 +11,8 @@ export const TILE = 32;
 interface TileContext {
   x: number;
   y: number;
+  /** Presentation theme; ignored by mechanics and generic painters. */
+  theme?: string;
   /** Owner colour for buildings; undefined = neutral. */
   ownerColor?: string;
   /** Same-terrain neighbours, used to knit roads/water together. */
@@ -294,6 +296,7 @@ function links(map: GameMap, id: TerrainId, x: number, y: number): boolean {
 export function terrainLayerMarkup(
   map: GameMap,
   colorOfPlayer: (id: number) => string | undefined,
+  theme?: string,
 ): string {
   const parts: string[] = [];
   for (let y = 0; y < map.height; y++) {
@@ -303,6 +306,7 @@ export function terrainLayerMarkup(
       const ctx: TileContext = {
         x,
         y,
+        theme,
         ownerColor: colorOfPlayer(map.owners[i]),
         linked: {
           n: links(map, id, x, y - 1),

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { runtimeAtlasCellMarkup, runtimeUnitMarkup } from '../runtime-raster';
+import { runtimeAtlasCellMarkup, runtimeGridAtlasCellMarkup, runtimeUnitMarkup } from '../runtime-raster';
 
 describe('runtime raster adapter', () => {
   it('grounds a 32x48 four-frame unit strip in a 32x32 board cell', () => {
@@ -18,6 +18,13 @@ describe('runtime raster adapter', () => {
     expect(markup).toContain('width="128" height="48"');
     expect(markup).toContain('href="/assets/unit.png?a=1&amp;b=2"');
     expect(markup).toContain('stroke="#3f7fd8"');
+    expect(markup).toContain('runtime-unit-contact-shadow');
+    expect(markup).toContain('runtime-unit-figure');
+    expect(markup).toContain('id="runtime-unit-frame-32-48"');
+    expect(markup).toContain('clip-path="url(#runtime-unit-frame-32-48)"');
+    expect(markup).toContain('data-frame-width="32"');
+    expect(markup).toContain('&quot;id&quot;:&quot;walk&quot;');
+    expect(markup).toContain('&quot;frames&quot;:[1,3]');
   });
 
   it('selects a fixed atlas cell without scaling it', () => {
@@ -28,6 +35,21 @@ describe('runtime raster adapter', () => {
 
     expect(markup).toContain('x="-64" y="-32" width="128" height="64"');
     expect(markup).toContain('viewBox="0 0 32 32"');
+  });
+
+  it('crops fractional cells from a generated grid atlas', () => {
+    const markup = runtimeGridAtlasCellMarkup(
+      { href: '/assets/forest.png?a=1&b=2', width: 1254, height: 1254, columns: 4, rows: 4 },
+      6,
+      72,
+      72,
+      'forest sprite',
+    );
+
+    expect(markup).toContain('viewBox="627 313.5 313.5 313.5"');
+    expect(markup).toContain('width="72" height="72"');
+    expect(markup).toContain('href="/assets/forest.png?a=1&amp;b=2"');
+    expect(markup).toContain('class="forest sprite"');
   });
 
   it('rejects cells and frames outside their declared sheet', () => {

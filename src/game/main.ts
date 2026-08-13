@@ -4,6 +4,7 @@ import { deleteCustomLevel, loadCustomLevels, takePlaytest } from '../applicatio
 import { deleteCampaignState, loadCampaignState } from '../application/campaign-storage';
 import { icon } from '../art/icons';
 import { portraitSvg } from '../art/portraits';
+import { CANDIDATE_01_MENU_ART } from '../art/candidate-01-story';
 import { TILE, terrainLayerMarkup } from '../art/terrain';
 import { armorClassDef, damageTypeDef } from '../core/data/damage';
 import { UnitTypes, movementLabel } from '../core/data/units';
@@ -13,7 +14,6 @@ import type { LevelData } from '../core/types';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '../content/ancient-empires/levels';
 import {
   CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN,
-  CANDIDATE_01_MENU_ART,
 } from '../content/candidate-01';
 import { Candidate01CampaignController } from '../ui/campaign-game';
 import { GameController } from '../ui/game';

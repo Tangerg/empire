@@ -1,209 +1,67 @@
-import type { TerrainId, UnitTypeId } from '../core/types';
-import { tileHash } from '../core/grid';
+import type {
+  BattlefieldMarker,
+  StructureDef,
+  StructureState,
+  TerrainId,
+  UnitTypeId,
+  WeaponId,
+} from '../core/types';
+import { candidate01Asset, candidate01AssetUrl, type Candidate01RuntimeAsset } from './candidate-01-assets';
+import {
+  CANDIDATE_01_MAP_STRUCTURE_ART,
+  CANDIDATE_01_STRUCTURE_ART,
+  CANDIDATE_01_TERRAIN_ART,
+  CANDIDATE_01_UNIT_ART,
+  CANDIDATE_01_WEAPON_FX,
+} from './candidate-01-bindings';
 import {
   runtimeAtlasCellMarkup,
+  runtimeFrameStripMarkup,
   runtimeUnitMarkup,
   type RuntimeCellAtlas,
   type RuntimeUnitSheet,
 } from './runtime-raster';
 
-const unitSheet = (href: string, frameWidth = 32, frameHeight = 48): RuntimeUnitSheet => ({
-  href,
-  frameWidth,
-  frameHeight,
-  frameCount: 4,
-  anchor: { x: frameWidth / 2, y: frameHeight - 1 },
-});
+const attr = (value: string): string =>
+  value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
 
-const runtimeAssets = import.meta.glob<string>([
-  '../../docs/story-candidates/candidate-01/assets/runtime-v2/batch-02/units/*.png',
-  '../../docs/story-candidates/candidate-01/assets/runtime-v2/units/*.png',
-  '../../docs/story-candidates/candidate-01/assets/runtime-v2/batch-02/mission-units/*.png',
-  '../../docs/story-candidates/candidate-01/assets/runtime-v2/batch-03/units/*.png',
-  '../../docs/story-candidates/candidate-01/assets/runtime-v2/batch-02/terrain/*.png',
-], { eager: true, import: 'default', query: '?url' });
+function unitSheet(record: Candidate01RuntimeAsset): RuntimeUnitSheet {
+  const frameWidth = record.frameWidth;
+  const frameHeight = record.frameHeight;
+  const frameCount = record.frames;
+  if (!frameWidth || !frameHeight || !frameCount || !record.anchor) {
+    throw new Error(`candidate-01 unit metadata is incomplete: ${record.topicId}`);
+  }
+  const frameIndex = (role: string, fallback: number): number => {
+    const index = record.frameOrder?.indexOf(role) ?? -1;
+    return index >= 0 ? index : fallback;
+  };
+  return {
+    href: record.url,
+    frameWidth,
+    frameHeight,
+    frameCount,
+    anchor: { x: record.anchor[0], y: record.anchor[1] },
+    idleFrame: frameIndex('idle', 0),
+    walkFrames: [frameIndex('walk-a', Math.min(1, frameCount - 1)), frameIndex('walk-b', frameCount - 1)],
+    attackFrame: frameIndex('attack', Math.min(2, frameCount - 1)),
+  };
+}
 
-const runtimeAsset = (path: string): string => {
-  const key = `../../docs/story-candidates/candidate-01/assets/runtime-v2/${path}`;
-  const href = runtimeAssets[key];
-  if (!href) throw new Error(`missing candidate-01 runtime asset: ${path}`);
-  return href;
-};
-
-const unitSheets: Readonly<Record<string, RuntimeUnitSheet>> = {
-  soldier: unitSheet(
-    new URL(
-      '../../docs/story-candidates/candidate-01/assets/runtime-v2/units/gray-banner-soldier-walk.png',
-      import.meta.url,
-    ).href,
-  ),
-  archer: unitSheet(
-    new URL(
-      '../../docs/story-candidates/candidate-01/assets/runtime-v2/units/silverwood-archer-walk.png',
-      import.meta.url,
-    ).href,
-  ),
-  knight: unitSheet(
-    new URL(
-      '../../docs/story-candidates/candidate-01/assets/runtime-v2/units/burgundy-knight-walk.png',
-      import.meta.url,
-    ).href,
-  ),
-  cleric: unitSheet(
-    new URL(
-      '../../docs/story-candidates/candidate-01/assets/runtime-v2/units/forge-cleric-walk.png',
-      import.meta.url,
-    ).href,
-  ),
-  'c01.laiya': unitSheet(runtimeAsset('batch-02/units/banner-guard.png')),
-  'c01.roderick': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-heavy-knight.png'), 64, 64),
-  'c01.cain': unitSheet(runtimeAsset('batch-02/units/legion-shield.png')),
-  'c01.bran': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-ranger.png')),
-  'c01.mirelle': unitSheet(runtimeAsset('batch-02/units/gravekeeper.png')),
-  'c01.tasha': unitSheet(runtimeAsset('batch-02/units/engineer.png')),
-  'c01.ivra': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-ivra-growth.png')),
-  'c01.swordsman': unitSheet(runtimeAsset('batch-02/units/swordsman.png')),
-  'c01.banner-guard': unitSheet(runtimeAsset('batch-02/units/banner-guard.png')),
-  'c01.archer': unitSheet(runtimeAsset('units/silverwood-archer-walk.png')),
-  'c01.knight': unitSheet(runtimeAsset('units/burgundy-knight-walk.png')),
-  'c01.legion-shield': unitSheet(runtimeAsset('batch-02/units/legion-shield.png')),
-  'c01.gravekeeper': unitSheet(runtimeAsset('batch-02/units/gravekeeper.png')),
-  'c01.engineer': unitSheet(runtimeAsset('batch-02/units/engineer.png')),
-  'c01.wolf-rider': unitSheet(runtimeAsset('batch-02/units/wolf-rider.png'), 64, 64),
-  'c01.skeleton-guard': unitSheet(runtimeAsset('batch-02/units/skeleton-guard.png')),
-  'c01.ghost': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-ghost.png')),
-  'c01.inquisitor': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-inquisitor.png')),
-  'c01.templar': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-templar.png')),
-  'c01.ballista': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-ballista.png'), 96, 64),
-  'c01.battle-mage': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-battle-mage.png')),
-  'c01.rune-shield': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-rune-shield.png')),
-  'c01.rune-artificer': unitSheet(runtimeAsset('batch-02/units/rune-artificer.png')),
-  'c01.stone-golem': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-stone-golem.png'), 64, 64),
-  'c01.silver-longbow': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-silver-longbow.png')),
-  'c01.woodland-walker': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-woodland-walker.png')),
-  'c01.druid': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-druid.png')),
-  'c01.cemetery-colossus': unitSheet(runtimeAsset('batch-03/units/c01-v2-b03-unit-cemetery-colossus.png'), 96, 64),
-  'c01.refugee': unitSheet(runtimeAsset('batch-02/mission-units/refugee-adult.png')),
-  'c01.laborer': unitSheet(runtimeAsset('batch-02/mission-units/bridge-laborer.png')),
-};
-
-const terrainAtlas = (href: string, columns: number): RuntimeCellAtlas => ({
-  href,
-  cellWidth: 32,
-  cellHeight: 32,
-  columns,
-  rows: 1,
-});
-
-const terrainAtlases: Readonly<Record<string, RuntimeCellAtlas>> = {
-  plain: terrainAtlas(
-    new URL('../../docs/story-candidates/candidate-01/assets/runtime-v2/terrain/plain.png', import.meta.url).href,
-    4,
-  ),
-  road: terrainAtlas(
-    new URL('../../docs/story-candidates/candidate-01/assets/runtime-v2/terrain/road.png', import.meta.url).href,
-    16,
-  ),
-  bridge: terrainAtlas(
-    new URL('../../docs/story-candidates/candidate-01/assets/runtime-v2/terrain/bridge.png', import.meta.url).href,
-    4,
-  ),
-  forest: terrainAtlas(
-    new URL('../../docs/story-candidates/candidate-01/assets/runtime-v2/terrain/forest.png', import.meta.url).href,
-    4,
-  ),
-  hill: terrainAtlas(
-    new URL('../../docs/story-candidates/candidate-01/assets/runtime-v2/terrain/hill.png', import.meta.url).href,
-    4,
-  ),
-  mountain: terrainAtlas(
-    new URL('../../docs/story-candidates/candidate-01/assets/runtime-v2/terrain/mountain.png', import.meta.url).href,
-    4,
-  ),
-  water: terrainAtlas(
-    new URL('../../docs/story-candidates/candidate-01/assets/runtime-v2/terrain/water.png', import.meta.url).href,
-    16,
-  ),
-  wall: terrainAtlas(
-    new URL('../../docs/story-candidates/candidate-01/assets/runtime-v2/terrain/wall.png', import.meta.url).href,
-    4,
-  ),
-  'c01.scorched': terrainAtlas(runtimeAsset('batch-02/terrain/scorched-farmland.png'), 4),
-  'c01.riverbank': terrainAtlas(runtimeAsset('batch-02/terrain/riverbank.png'), 4),
-  'c01.street': terrainAtlas(runtimeAsset('batch-02/terrain/capital-street.png'), 4),
-  'c01.oathway': terrainAtlas(runtimeAsset('batch-02/terrain/controlled-oath.png'), 16),
-  'c01.forge': terrainAtlas(runtimeAsset('batch-02/terrain/forge-stone.png'), 4),
-  'c01.graveyard': terrainAtlas(runtimeAsset('batch-02/terrain/graveyard.png'), 4),
-  'c01.molten': terrainAtlas(runtimeAsset('batch-02/terrain/molten-channel.png'), 16),
-  'c01.mother-root': terrainAtlas(runtimeAsset('batch-02/terrain/mother-root.png'), 4),
-};
-
-const mapStructureAtlases: Readonly<Record<string, RuntimeCellAtlas>> = {
-  village: {
-    href: new URL(
-      '../../docs/story-candidates/candidate-01/assets/runtime-v2/structures/village-states.png',
-      import.meta.url,
-    ).href,
-    cellWidth: 32,
-    cellHeight: 64,
-    columns: 1,
-    rows: 3,
-  },
-  barracks: {
-    href: new URL(
-      '../../docs/story-candidates/candidate-01/assets/runtime-v2/structures/barracks-states.png',
-      import.meta.url,
-    ).href,
-    cellWidth: 32,
-    cellHeight: 64,
-    columns: 1,
-    rows: 3,
-  },
-  castle: {
-    href: new URL(
-      '../../docs/story-candidates/candidate-01/assets/runtime-v2/structures/castle-states.png',
-      import.meta.url,
-    ).href,
-    cellWidth: 32,
-    cellHeight: 64,
-    columns: 1,
-    rows: 3,
-  },
-  'c01.outpost': {
-    href: new URL(
-      '../../docs/story-candidates/candidate-01/assets/runtime-v2/structures/castle-states.png',
-      import.meta.url,
-    ).href,
-    cellWidth: 32,
-    cellHeight: 64,
-    columns: 1,
-    rows: 3,
-  },
-  'c01.field-post': {
-    href: new URL(
-      '../../docs/story-candidates/candidate-01/assets/runtime-v2/structures/barracks-states.png',
-      import.meta.url,
-    ).href,
-    cellWidth: 32,
-    cellHeight: 64,
-    columns: 1,
-    rows: 3,
-  },
-  'c01.keep': {
-    href: new URL(
-      '../../docs/story-candidates/candidate-01/assets/runtime-v2/structures/castle-states.png',
-      import.meta.url,
-    ).href,
-    cellWidth: 32,
-    cellHeight: 64,
-    columns: 1,
-    rows: 3,
-  },
-};
+function cellAtlas(record: Candidate01RuntimeAsset): RuntimeCellAtlas {
+  const cellWidth = record.tileWidth ?? record.frameWidth;
+  const cellHeight = record.tileHeight ?? record.frameHeight;
+  const cells = record.variants ?? record.connectionMasks ?? record.frames;
+  if (!cellWidth || !cellHeight || !cells) {
+    throw new Error(`candidate-01 atlas metadata is incomplete: ${record.topicId}`);
+  }
+  return { href: record.url, cellWidth, cellHeight, columns: cells, rows: 1 };
+}
 
 interface RuntimeTerrainContext {
   x: number;
   y: number;
+  theme?: string;
   ownerColor?: string;
   linked: { n: boolean; e: boolean; s: boolean; w: boolean };
 }
@@ -211,34 +69,128 @@ interface RuntimeTerrainContext {
 const connectionMask = (linked: RuntimeTerrainContext['linked']): number =>
   (linked.n ? 1 : 0) | (linked.e ? 2 : 0) | (linked.s ? 4 : 0) | (linked.w ? 8 : 0);
 
+const baseTerrain = (theme?: string): RuntimeCellAtlas => cellAtlas(candidate01Asset(
+  theme === 'c01-01' ? 'C01-TERRAIN-SILVERWOOD-1' : 'C01-TERRAIN-BORDER-1',
+));
+
+function structureFrame(record: Candidate01RuntimeAsset, state: 'normal' | 'damaged' | 'captured'): number {
+  const index = record.stateOrder?.indexOf(state) ?? -1;
+  return index >= 0 ? index : 0;
+}
+
+function structureAssetMarkup(record: Candidate01RuntimeAsset, frame: number, ownerColor?: string): string {
+  const atlas = cellAtlas(record);
+  const anchor = record.anchor ?? [atlas.cellWidth / 2, atlas.cellHeight - 1];
+  const x = 16 - anchor[0];
+  const y = 31 - anchor[1];
+  const owner = ownerColor
+    ? `<ellipse cx="16" cy="29" rx="13" ry="2.5" fill="none" stroke="${attr(ownerColor)}" stroke-width="1.5" opacity="0.95"/>`
+    : '';
+  return `<g data-candidate-art="structure" transform="translate(${x} ${y})">${runtimeAtlasCellMarkup(atlas, frame)}</g>${owner}`;
+}
+
 export function candidate01UnitMarkup(type: UnitTypeId, team: string): string | null {
-  const sheet = unitSheets[type];
-  return sheet ? runtimeUnitMarkup(sheet, team) : null;
+  const topic = CANDIDATE_01_UNIT_ART[type];
+  return topic ? runtimeUnitMarkup(unitSheet(candidate01Asset(topic)), team) : null;
 }
 
 export function candidate01UnitIcon(type: UnitTypeId, team: string, size: number): string | null {
   const markup = candidate01UnitMarkup(type, team);
   if (!markup) return null;
-  return `<svg viewBox="0 -16 32 48" width="${size}" height="${size}" shape-rendering="crispEdges">${markup}</svg>`;
+  return `<svg viewBox="0 -16 32 48" width="${size}" height="${size}" class="candidate-unit-icon">${markup}</svg>`;
 }
 
 export function candidate01TerrainMarkup(id: TerrainId, ctx: RuntimeTerrainContext): string | null {
-  const structure = mapStructureAtlases[id];
-  if (structure) {
+  const structureTopic = CANDIDATE_01_MAP_STRUCTURE_ART[id];
+  if (structureTopic) {
+    const record = candidate01Asset(structureTopic);
     const captured = ctx.ownerColor !== undefined;
-    const cell = captured ? 2 : 0;
-    const groundCell = Math.min(3, Math.floor(tileHash(ctx.x, ctx.y, 701) * 4));
-    const ground = runtimeAtlasCellMarkup(terrainAtlases.plain, groundCell);
-    const ownerMarker = captured
-      ? `<rect x="1" y="1" width="30" height="30" rx="2" fill="none" stroke="${ctx.ownerColor}" stroke-width="1.5" opacity="0.95"/>`
-      : '';
-    return `${ground}<g transform="translate(0,-32)" data-runtime-raster="structure">${runtimeAtlasCellMarkup(structure, cell)}</g>${ownerMarker}`;
+    const frame = structureFrame(record, captured ? 'captured' : 'normal');
+    if (ctx.theme === 'c01-01') return structureAssetMarkup(record, frame, ctx.ownerColor);
+    const groundCell = Math.min(3, Math.floor(((ctx.x * 31 + ctx.y * 17) >>> 0) % 4));
+    return `${runtimeAtlasCellMarkup(baseTerrain(ctx.theme), groundCell)}${structureAssetMarkup(record, frame, ctx.ownerColor)}`;
   }
-  const atlas = terrainAtlases[id];
-  if (!atlas) return null;
-  const connected = id === 'road' || id === 'water' || id === 'c01.oathway' || id === 'c01.molten';
-  const cell = connected
+
+  // Twin Hills owns its complete terrain surface in the scene ground pass.
+  // The non-empty marker intentionally suppresses the generic terrain fallback
+  // while remaining visually transparent. Roads therefore cannot cover units.
+  if (ctx.theme === 'c01-01') {
+    return '<g data-candidate-terrain="scene-owned" pointer-events="none"/>';
+  }
+
+  const topic = CANDIDATE_01_TERRAIN_ART[id];
+  if (!topic) return null;
+  const record = candidate01Asset(topic);
+  const atlas = cellAtlas(record);
+  const cell = record.tileMode === 'nesw-16'
     ? connectionMask(ctx.linked)
-    : Math.min(3, Math.floor(tileHash(ctx.x, ctx.y, 701) * 4));
-  return runtimeAtlasCellMarkup(atlas, cell);
+    : Math.min(atlas.columns - 1, Math.floor((((ctx.x * 31 + ctx.y * 17) >>> 0) % 997) / 997 * atlas.columns));
+  const ground = record.tileMode === 'nesw-16'
+    ? runtimeAtlasCellMarkup(baseTerrain(ctx.theme), Math.floor((((ctx.x * 31 + ctx.y * 17) >>> 0) % 4)))
+    : '';
+  return `${ground}${runtimeAtlasCellMarkup(atlas, cell)}`;
+}
+
+/** Render a destructible battle structure without leaking campaign art into the engine model. */
+export function candidate01StructureMarkup(
+  state: StructureState,
+  def: StructureDef,
+  ownerColor?: string,
+): string | null {
+  const topic = CANDIDATE_01_STRUCTURE_ART[state.type];
+  if (!topic) return null;
+  const record = candidate01Asset(topic);
+  const visualState = state.hp <= def.maxHp * 0.5 || state.disabled ? 'damaged' : ownerColor ? 'captured' : 'normal';
+  const frame = structureFrame(record, visualState);
+  const ratio = Math.max(0, Math.min(1, state.hp / def.maxHp));
+  return `${structureAssetMarkup(record, frame, ownerColor)}
+    <rect x="5" y="27" width="22" height="3" rx="1.5" fill="#201914" opacity="0.72"/>
+    <rect x="5.5" y="27.5" width="${(21 * ratio).toFixed(2)}" height="2" rx="1" fill="${ratio > 0.5 ? '#66b873' : '#d85c4c'}"/>`;
+}
+
+/** Illustrated cover art complements, but never replaces, the directional rules overlay. */
+export function candidate01CoverPropMarkup(level: 'half' | 'full'): string {
+  const topic = level === 'full' ? 'C01-BPROP-COVER-2' : 'C01-BPROP-COVER-1';
+  return `<image href="${attr(candidate01AssetUrl(topic))}" x="-16" y="-20" width="64" height="64" class="candidate-battle-prop" preserveAspectRatio="xMidYMid meet"/>`;
+}
+
+export function candidate01MarkerMarkup(marker: BattlefieldMarker): string {
+  const topic = marker.kind.includes('corpse') || marker.fallenUnit
+    ? 'C01-BPROP-AFTERMATH-2'
+    : marker.kind.includes('transport')
+      ? 'C01-BPROP-AFTERMATH-3'
+      : 'C01-BPROP-EVIDENCE-1';
+  return `<image href="${attr(candidate01AssetUrl(topic))}" x="-8" y="-8" width="48" height="48" class="candidate-battle-marker" preserveAspectRatio="xMidYMid meet"/>`;
+}
+
+export function candidate01WeaponFxTopic(weapon: WeaponId): string | null {
+  return CANDIDATE_01_WEAPON_FX[weapon] ?? null;
+}
+
+/** A self-describing effect strip consumed by the shared frame animation system. */
+export function candidate01FxMarkup(topic: string, cx = 0, cy = 0): string {
+  const record = candidate01Asset(topic);
+  const frameWidth = record.frameWidth ?? 32;
+  const frameHeight = record.frameHeight ?? 32;
+  const frames = record.frames ?? 1;
+  return `<svg x="${cx - frameWidth / 2}" y="${cy - frameHeight / 2}" width="${frameWidth}" height="${frameHeight}" viewBox="0 0 ${frameWidth} ${frameHeight}" overflow="hidden" class="candidate-fx" aria-hidden="true">
+    ${runtimeFrameStripMarkup({
+      href: record.url,
+      frameWidth,
+      frameHeight,
+      frameCount: frames,
+      clips: [{
+        id: 'effect',
+        frames: Array.from({ length: frames }, (_, frame) => frame),
+        fps: record.fps ?? 12,
+        loop: record.loop ?? false,
+      }],
+    }, 0, 'candidate-fx-strip')}
+  </svg>`;
+}
+
+/** HTML icon for HUD commands, equipment and state chips. */
+export function candidate01IconMarkup(topic: string, size = 28, className = 'candidate-art-icon'): string {
+  const record = candidate01Asset(topic);
+  return `<img src="${attr(record.url)}" width="${size}" height="${size}" class="${attr(className)}" alt="" aria-hidden="true"/>`;
 }

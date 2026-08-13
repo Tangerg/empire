@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "campaignId": "candidate-01",
+  "sampleId": "reference-v1",
+  "styleReference": "../../reference/art-direction-map.png",
+  "runtimeReady": false,
+  "assets": [
+    {
+      "id": "c01.sample.gray-banner-spearman.walk",
+      "type": "combat-unit",
+      "path": "runtime/gray-banner-spearman-walk.png",
+      "size": [128, 48],
+      "frameSize": [32, 48],
+      "frames": 4,
+      "anchor": [16, 47]
+    },
+    {
+      "id": "c01.sample.frontier-village.states",
+      "type": "interactive-structure",
+      "path": "runtime/frontier-village-states.png",
+      "size": [64, 192],
+      "frameSize": [64, 64],
+      "states": ["normal", "damaged", "captured"],
+      "anchor": [32, 63]
+    },
+    {
+      "id": "c01.sample.gray-banner-watchtower.states",
+      "type": "interactive-structure",
+      "path": "runtime/gray-banner-watchtower-states.png",
+      "size": [64, 192],
+      "frameSize": [64, 64],
+      "states": ["normal", "damaged", "captured"],
+      "anchor": [32, 63]
+    },
+    {
+      "id": "c01.sample.terrain.swatches",
+      "type": "terrain",
+      "path": "runtime/terrain-swatches.png",
+      "size": [128, 64],
+      "frameSize": [32, 32],
+      "frames": 8
+    },
+    {
+      "id": "c01.sample.equipment-skills",
+      "type": "icon",
+      "path": "runtime/equipment-skills.png",
+      "size": [128, 64],
+      "frameSize": [32, 32],
+      "frames": 8
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "environment-scene-v1.1",
+  "sceneId": "c01-01",
+  "levelId": "c01-01",
+  "title": "双子丘陵",
+  "runtimeReady": false,
+  "mapSize": [27, 17],
+  "selection": {
+    "allowAtlases": [
+      "surface-meadow",
+      "surface-forest-floor",
+      "transition-meadow-forest",
+      "route-dirt-road",
+      "route-edge-dirt-road",
+      "cliff-modules-temperate",
+      "forest-temperate",
+      "camps-foundations",
+      "decals-small",
+      "rural-life"
+    ],
+    "denyAtlases": [
+      "surface-snow",
+      "surface-wasteland",
+      "surface-graveyard",
+      "surface-forge-stone",
+      "water-slow-river",
+      "water-shallow-stream",
+      "water-marsh-channel",
+      "water-icy-water",
+      "cliff-modules-highland",
+      "landmarks-large",
+      "crossings-fortifications",
+      "forest-existing"
+    ]
+  },
+  "zones": [
+    { "id": "gray-camp", "bounds": [1, 7, 6, 14], "role": "player-camp" },
+    { "id": "north-hill", "bounds": [6, 2, 11, 6], "role": "elevation-2" },
+    { "id": "central-village", "bounds": [11, 6, 16, 11], "role": "neutral-village" },
+    { "id": "east-hill", "bounds": [16, 10, 21, 15], "role": "elevation-2" },
+    { "id": "vilsa-camp", "bounds": [21, 5, 25, 13], "role": "enemy-vanguard" }
+  ],
+  "elevationBindings": [
+    { "source": "GameMap.elevation", "value": 0, "visual": "ground" },
+    { "source": "GameMap.elevation", "value": 1, "visual": "temperate-low-ledge" },
+    { "source": "GameMap.elevation", "value": 2, "visual": "temperate-cliff-straight-south" }
+  ],
+  "placements": [
+    { "id": "gray-camp-ground", "x": 3.2, "y": 11.3, "layer": "foundation", "variant": 0, "scale": 0.9 },
+    { "id": "village-square-foundation", "x": 13.5, "y": 9.2, "layer": "foundation", "scale": 0.82 },
+    { "id": "vilsa-camp-ground", "x": 23.5, "y": 10.2, "layer": "foundation", "variant": 1, "scale": 0.9 },
+    { "id": "grain-drying-mat-linen", "x": 11.3, "y": 10.3, "layer": "foundation", "scale": 0.68 },
+    { "id": "grain-drying-mat-earth", "x": 16.0, "y": 10.3, "layer": "foundation", "scale": 0.68 },
+
+    { "id": "temperate-hill-cap", "x": 8.1, "y": 5.0, "layer": "under-units" },
+    { "id": "temperate-cliff-straight-south", "x": 9.8, "y": 5.8, "layer": "under-units" },
+    { "id": "temperate-cliff-convex-corner", "x": 7.0, "y": 5.8, "layer": "under-units" },
+    { "id": "temperate-ramp-level-2", "x": 10.8, "y": 6.3, "layer": "under-units" },
+    { "id": "temperate-hill-cap", "x": 18.3, "y": 13.1, "layer": "under-units", "flip": true },
+    { "id": "temperate-cliff-straight-south", "x": 19.7, "y": 14.0, "layer": "under-units" },
+    { "id": "temperate-cliff-convex-corner", "x": 17.1, "y": 14.1, "layer": "under-units", "flip": true },
+    { "id": "temperate-ramp-level-2", "x": 21.0, "y": 13.2, "layer": "under-units", "flip": true },
+
+    { "id": "field-tent-cluster", "x": 4.4, "y": 12.0, "layer": "under-units", "scale": 0.72 },
+    { "topicId": "C01-STRUCT-WOUNDED-SHELTER", "x": 4.9, "y": 10.0, "layer": "under-units", "scale": 0.7 },
+    { "topicId": "C01-BPROP-LOGISTICS-1", "x": 1.8, "y": 11.7, "layer": "under-units", "scale": 0.58 },
+    { "topicId": "C01-BPROP-FACTION-2", "x": 2.0, "y": 9.1, "layer": "under-units", "scale": 0.62 },
+    { "id": "wheat-sheaves", "x": 10.9, "y": 8.0, "layer": "under-units", "scale": 0.68 },
+    { "id": "grain-sacks-baskets", "x": 15.8, "y": 7.8, "layer": "under-units", "scale": 0.66 },
+    { "id": "frontier-granary", "x": 15.7, "y": 9.3, "layer": "under-units", "scale": 0.68 },
+    { "id": "frontier-farmhouse", "x": 12.5, "y": 7.1, "layer": "under-units", "scale": 0.7 },
+    { "id": "stone-well", "x": 13.1, "y": 10.9, "layer": "under-units", "scale": 0.58 },
+    { "id": "wheat-drying-rack", "x": 16.2, "y": 7.2, "layer": "under-units", "scale": 0.6 },
+    { "id": "farm-fence-straight", "x": 10.8, "y": 10.8, "layer": "under-units", "scale": 0.58 },
+    { "id": "farm-fence-corner", "x": 16.3, "y": 10.9, "layer": "under-units", "scale": 0.58 },
+    { "id": "supply-tent-workyard", "x": 22.5, "y": 10.9, "layer": "under-units", "scale": 0.7, "flip": true },
+    { "topicId": "C01-BPROP-COVER-2", "x": 22.0, "y": 11.8, "layer": "under-units", "scale": 0.56 },
+    { "topicId": "C01-BPROP-LOGISTICS-3", "x": 24.8, "y": 11.5, "layer": "under-units", "scale": 0.56 },
+    { "topicId": "C01-BPROP-FACTION-3", "x": 24.7, "y": 8.7, "layer": "under-units", "scale": 0.62 },
+
+    { "id": "bootprints", "x": 19.5, "y": 8.6, "layer": "ground-decal", "scale": 0.72 },
+    { "id": "cart-ruts", "x": 9.7, "y": 8.7, "layer": "ground-decal", "scale": 0.82 },
+    { "id": "stone-cluster-b", "x": 6.2, "y": 6.1, "layer": "ground-decal", "scale": 0.72 },
+    { "id": "fallen-leaves", "x": 16.2, "y": 6.4, "layer": "ground-decal", "scale": 0.62 }
+  ],
+  "populationBindings": [
+    { "topicId": "C01-MISSION-BORDER-FARMER", "role": "village-ambient", "maximum": 2 }
+  ],
+  "notes": [
+    "第二个中立村庄规则格在表现层作为晒麦场或边境驿站，不再画成第二座同名村庄。",
+    "所有道路、地面、地基和贴花低于单位；只有树冠、墙体和高构件允许进入前景层。",
+    "大型地标在本关明确禁用，留给赤石围城及后续视觉升级。"
+  ]
+}

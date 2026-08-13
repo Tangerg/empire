@@ -1,4 +1,5 @@
 import type { Direction, GameMap } from '../core/types';
+import { candidate01CoverPropMarkup } from './candidate-01-runtime';
 import { TILE } from './terrain';
 
 const DIRECTIONS = ['north', 'east', 'south', 'west'] as const satisfies readonly Direction[];
@@ -58,17 +59,31 @@ export function battlefieldFeatureMarkup(map: GameMap): string {
   for (let i = 0; i < map.elevation.length; i++) {
     const value = map.elevation[i];
     if (value === 0) continue;
-    const x = (i % map.width) * TILE;
-    const y = Math.floor(i / map.width) * TILE;
+    const cellX = i % map.width;
+    const cellY = Math.floor(i / map.width);
+    const sameToWest = cellX > 0 && map.elevation[i - 1] === value;
+    const sameToNorth = cellY > 0 && map.elevation[i - map.width] === value;
+    // One label identifies a continuous plateau; repeating it in every cell
+    // obscures both the authored terrain and the units standing on it.
+    if (sameToWest || sameToNorth) continue;
+    const x = cellX * TILE;
+    const y = cellY * TILE;
     parts.push(
-      `<circle cx="${x + 26}" cy="${y + 7}" r="5" fill="${featureColor.elevationBackground}" opacity="0.86"/>` +
-      `<text x="${x + 26}" y="${y + 9.5}" text-anchor="middle" font-size="7" fill="${featureColor.elevationText}">${value}</text>`,
+      `<g class="elevation-badge">` +
+      `<circle cx="${x + 26}" cy="${y + 7}" r="5" fill="${featureColor.elevationBackground}" opacity="0.8"/>` +
+      `<text x="${x + 26}" y="${y + 9.5}" text-anchor="middle" font-size="7" fill="${featureColor.elevationText}">${value}</text>` +
+      `</g>`,
     );
   }
   parts.push(...cliffMarkup(map));
   for (const cover of map.directionalCover) {
     const x = cover.at.x * TILE;
     const y = cover.at.y * TILE;
+    const levels = DIRECTIONS.flatMap((side) => cover.sides[side] ? [cover.sides[side]] : []);
+    if (levels.length > 0) {
+      const strongest = levels.includes('full') ? 'full' : 'half';
+      parts.push(`<g transform="translate(${x} ${y})">${candidate01CoverPropMarkup(strongest)}</g>`);
+    }
     for (const side of DIRECTIONS) {
       const level = cover.sides[side];
       if (!level) continue;

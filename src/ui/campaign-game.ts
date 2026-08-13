@@ -1,4 +1,5 @@
 import '../styles/campaign.css';
+import { CANDIDATE_01_PORTRAITS, candidate01StoryArt } from '../art/candidate-01-story';
 import { saveCampaignState } from '../application/campaign-storage';
 import { CampaignBattleBridge, CampaignRuntime, type BattleRequest, type CampaignState } from '../campaign';
 import { unitDef } from '../core/data/units';
@@ -6,7 +7,6 @@ import type { GameEvent, GameState } from '../core/types';
 import {
   CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN,
   CANDIDATE_01_LEVELS,
-  CANDIDATE_01_PORTRAITS,
   CANDIDATE_01_SPEAKER_NAMES,
   applyCandidate01BattleContext,
   applyCandidate01BattleResultPolicy,
@@ -202,6 +202,7 @@ export class Candidate01CampaignController {
 
   private renderStory(presentationId: string, ending: boolean): void {
     const story = candidate01Story(presentationId);
+    const scene = candidate01StoryArt(story.scene);
     const beat = story.beats[Math.min(this.beat, story.beats.length - 1)];
     const portrait = CANDIDATE_01_PORTRAITS[beat.speaker];
     const done = this.runtime.state.status !== 'active';
@@ -210,7 +211,10 @@ export class Candidate01CampaignController {
       ? `<button class="campaign-primary" data-campaign-act="finish">${done ? '返回主菜单' : '完成前三章'}</button>`
       : `<button class="campaign-primary" data-campaign-act="nextBeat">${lastBeat ? '继续' : '下一段'} <span>→</span></button>`;
     this.shell(`<main class="story-screen">
-      <div class="story-backdrop"><img src="${story.scene}" alt=""/></div>
+      <div class="story-backdrop">
+        <img class="story-backdrop-wash" src="${scene}" alt=""/>
+        <img class="story-backdrop-art" src="${scene}" alt=""/>
+      </div>
       <section class="story-card" style="--beat:${this.beat}">
         <div class="story-meta"><span>${escapeHtml(story.kicker)}</span><span>${escapeHtml(story.date)}</span><span>${escapeHtml(story.location)}</span></div>
         <h1>${escapeHtml(story.title)}</h1>
@@ -248,10 +252,11 @@ export class Candidate01CampaignController {
     const chapter = Number(level.extra?.chapter);
     const order = levelOrder(levelId);
     const story = candidate01Story(`c01/brief-${String(order).padStart(2, '0')}`);
+    const scene = candidate01StoryArt(story.scene);
     const completed = this.runtime.state.battleHistory.length;
     const roster = Object.values(this.runtime.state.roster).filter((unit) => (JOIN_AFTER[unit.id] ?? 0) <= completed);
     this.shell(`<main class="staging-screen">
-      <section class="staging-hero"><img src="${story.scene}" alt=""/><div><span class="campaign-eyebrow">作战准备 · ${String(order).padStart(2, '0')}/16</span><h1>${escapeHtml(level.name)}</h1><p>${escapeHtml(level.description ?? '')}</p></div></section>
+      <section class="staging-hero"><img src="${scene}" alt=""/><div><span class="campaign-eyebrow">作战准备 · ${String(order).padStart(2, '0')}/16</span><h1>${escapeHtml(level.name)}</h1><p>${escapeHtml(level.description ?? '')}</p></div></section>
       <div class="staging-grid">
         <section class="campaign-panel"><h2>出战名册</h2><div class="roster-list">${roster.map((unit) => {
           const portrait = CANDIDATE_01_PORTRAITS[unit.id as keyof typeof CANDIDATE_01_PORTRAITS];

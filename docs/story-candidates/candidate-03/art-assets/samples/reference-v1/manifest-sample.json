@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "campaignId": "candidate-03",
+  "sampleId": "reference-v1",
+  "styleReference": "../../reference/art-direction-map.png",
+  "runtimeReady": false,
+  "assets": [
+    {
+      "id": "c03.sample.sword-shield-infantry.walk",
+      "topicId": "c03-unit-4c02a584",
+      "type": "combat-unit",
+      "path": "runtime/sword-shield-infantry-walk.png",
+      "size": [128, 48],
+      "frameSize": [32, 48],
+      "frames": 4,
+      "anchor": [16, 47]
+    },
+    {
+      "id": "c03.sample.river-sluice-bridge.states",
+      "topicId": "c03-structure-47186f13",
+      "type": "interactive-structure",
+      "path": "runtime/river-sluice-bridge-states.png",
+      "size": [96, 192],
+      "frameSize": [96, 64],
+      "states": ["normal", "damaged", "captured"],
+      "anchor": [48, 63],
+      "footprint": [3, 2]
+    },
+    {
+      "id": "c03.sample.public-grain-depot.states",
+      "topicId": "c03-structure-da2f5b93",
+      "type": "interactive-structure",
+      "path": "runtime/public-grain-depot-states.png",
+      "size": [64, 192],
+      "frameSize": [64, 64],
+      "states": ["normal", "damaged", "captured"],
+      "anchor": [32, 63],
+      "footprint": [2, 2]
+    },
+    {
+      "id": "c03.sample.terrain.swatches",
+      "type": "terrain",
+      "path": "runtime/terrain-swatches.png",
+      "size": [128, 64],
+      "frameSize": [32, 32],
+      "frames": 8
+    },
+    {
+      "id": "c03.sample.equipment-command",
+      "type": "icon",
+      "path": "runtime/equipment-command.png",
+      "size": [128, 64],
+      "frameSize": [32, 32],
+      "frames": 8
+    }
+  ]
+}

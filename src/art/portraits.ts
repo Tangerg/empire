@@ -1,4 +1,6 @@
 import type { UnitTypeId } from '../core/types';
+import { candidate01Asset, candidate01AssetUrl } from './candidate-01-assets';
+import { CANDIDATE_01_CHARACTER_ART, CANDIDATE_01_UNIT_ART } from './candidate-01-bindings';
 import { PAL, shade } from './palette';
 import { spriteColors, type SpriteColors } from './units';
 
@@ -194,6 +196,44 @@ const portraits: Record<UnitTypeId, Portrait> = {
 let uid = 0;
 
 export function portraitMarkup(type: UnitTypeId, team: string): string {
+  const candidateTopic = CANDIDATE_01_CHARACTER_ART[type];
+  if (candidateTopic) {
+    const key = `${type}-${++uid}`;
+    const href = candidate01AssetUrl(candidateTopic)
+      .replaceAll('&', '&amp;')
+      .replaceAll('"', '&quot;')
+      .replaceAll('<', '&lt;');
+    return `
+      <defs><clipPath id="pc-${key}"><rect x="0" y="0" width="${FRAME_W}" height="${FRAME_H}" rx="8"/></clipPath></defs>
+      <g clip-path="url(#pc-${key})">
+        <rect width="${FRAME_W}" height="${FRAME_H}" fill="${shade(team, -0.35)}"/>
+        <image href="${href}" x="-8" y="0" width="112" height="112" preserveAspectRatio="xMidYMid slice" class="candidate-portrait-image"/>
+        <path d="M0 96h96v16H0z" fill="${team}" opacity="0.72"/>
+      </g>
+      <rect x="0.75" y="0.75" width="${FRAME_W - 1.5}" height="${FRAME_H - 1.5}" rx="8" fill="none" stroke="${shade(team, -0.4)}" stroke-width="1.5"/>`;
+  }
+  const unitTopic = CANDIDATE_01_UNIT_ART[type];
+  if (unitTopic) {
+    const record = candidate01Asset(unitTopic);
+    const frameWidth = record.frameWidth ?? 32;
+    const frameHeight = record.frameHeight ?? 48;
+    const key = `${type}-${++uid}`;
+    const href = record.url
+      .replaceAll('&', '&amp;')
+      .replaceAll('"', '&quot;')
+      .replaceAll('<', '&lt;');
+    return `
+      <defs><clipPath id="pc-${key}"><rect x="0" y="0" width="${FRAME_W}" height="${FRAME_H}" rx="8"/></clipPath></defs>
+      <g clip-path="url(#pc-${key})">
+        <rect width="${FRAME_W}" height="${FRAME_H}" fill="${shade(team, -0.42)}"/>
+        <circle cx="48" cy="46" r="41" fill="${shade(team, 0.38)}" opacity="0.48"/>
+        <svg x="4" y="4" width="88" height="100" viewBox="0 0 ${frameWidth} ${frameHeight}" preserveAspectRatio="xMidYMid meet" overflow="hidden">
+          <image href="${href}" x="0" y="0" width="${record.width}" height="${record.height}" preserveAspectRatio="none" class="candidate-portrait-image"/>
+        </svg>
+        <path d="M0 96h96v16H0z" fill="${team}" opacity="0.72"/>
+      </g>
+      <rect x="0.75" y="0.75" width="${FRAME_W - 1.5}" height="${FRAME_H - 1.5}" rx="8" fill="none" stroke="${shade(team, -0.4)}" stroke-width="1.5"/>`;
+  }
   const c = spriteColors(team);
   const art = (portraits[type] ?? portraits.soldier)(c);
   const key = `${type}-${++uid}`;

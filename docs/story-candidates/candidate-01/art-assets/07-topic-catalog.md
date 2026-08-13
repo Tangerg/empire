@@ -1,0 +1,471 @@
+# 查询《断冠之誓》的完整资源题材
+
+本页列出《断冠之誓》全部 404 个资源题材及其稳定 ID。它是策划与美术的完整内容目录，不表示题材已经完成运行时生产或实机验收。
+
+## 使用题材目录
+
+策划使用 `topicId` 绑定关卡与剧情需求。美术在生产前锁定题材，程序使用运行时清单中的同名 `topicId` 接线。当前完成状态请查询 [当前库存](./03-runtime-inventory.md)。
+
+## 叙事静态图，共 80 项
+
+本节列出《断冠之誓》的全部叙事静态图题材：
+
+- `C01-CHAR-LEIA-01`：莱娅 18 岁见习旗官
+- `C01-CHAR-RODERICK-01`：罗德里克教程导师
+- `C01-CHAR-CAIN-01`：凯恩帝国敌将
+- `C01-CHAR-MIREL-01`：米蕾尔教廷守墓人
+- `C01-CHAR-BRAN-01`：布兰苇草村猎人
+- `C01-CHAR-TASHA-01`：塔莎佣兵首领
+- `C01-ARCH-REDSTONE`：赤石誓约烽塔
+- `C01-ARCH-GRAY-CAMP`：灰旗野战营
+- `C01-ARCH-THREE-BRIDGES`：三桥河谷
+- `C01-ARCH-SILVERWOOD`：银林树城
+- `C01-CH01-S05`：焚村后的第一面灰旗
+- `C01-CH01-S01`：双子丘陵初次指挥
+- `C01-CH02-S06`：白河夜渡
+- `C01-CH07-S33-EST`：七塔王城终局远景
+- `C01-PROP-FIRST-GREY-FLAG`：第一面灰旗
+- `C01-PROP-FREE-OATH-STONE`：自由誓石
+- `C01-PROP-CROWN-FRAGMENT`：誓约王冠碎片
+- `C01-PROP-DRAGON-ALLIANCE-CLASP`：巨龙盟约扣
+- `C01-PROP-LEFT-GLOVE`：莱娅左手护腕
+- `C01-PROP-EXILE-HARDTACK`：逃亡硬饼
+- `C01-PROP-CONTROL-FRAGMENT`：控制誓文残片
+- `C01-PROP-THREE-PEOPLES-CLASP`：三族盟约扣件
+- `C01-STYLE-KEYART`：莱娅面对王冠与多面军旗
+- `C01-STYLE-BORDER-AUTUMN`：灰境边境秋季视觉基准
+- `C01-STYLE-OATH-LIGHT`：誓火视觉语言
+- `C01-STYLE-LONG-NIGHT`：七塔长夜灰光
+- `C01-STYLE-ELDER-PEOPLES`：古老诸族文化并置
+- `C01-STYLE-CAPITAL-ORDER`：阿斯塔里亚王都秩序
+- `C01-CHAR-LEIA-02`：莱娅 22 岁灰旗女王
+- `C01-CHAR-LEIA-03`：莱娅 27 岁联盟统帅
+- `C01-CHAR-RODERICK-02`：罗德里克王冠军统帅
+- `C01-CHAR-IVRA-01`：伊芙拉幼龙
+- `C01-CHAR-IVRA-02`：伊芙拉青年龙
+- `C01-CHAR-IVRA-03`：伊芙拉成年指挥官
+- `C01-CHAR-CAIN-02`：凯恩独立改革军统帅
+- `C01-CHAR-BRAN-02`：布兰自由斥候指挥官
+- `C01-CHAR-MIREL-02`：米蕾尔最后誓约建立者
+- `C01-CHAR-NOBANNER-01`：无旗者不稳定聚忆体
+- `C01-CHAR-NOBANNER-02`：无旗者协调者
+- `C01-CHAR-SEVERIN`：摄政王塞维恩
+- `C01-CHAR-ADA-01`：艾达 8 岁桥上孩子
+- `C01-CHAR-ADA-02`：艾达 17 岁王都医师
+- `C01-CHAR-TORREN-01`：托伦北丘士兵
+- `C01-CHAR-TORREN-02`：托伦旧旗军官
+- `C01-CH01-S00`：罗德里克系护腕
+- `C01-CH01-S02`：三桥停火
+- `C01-CH02-S09`：伊芙拉断缰
+- `C01-CH03-S16`：无旗者形成
+- `C01-CH04-S19`：龙眠共同逃生
+- `C01-CH05-S24`：第一次命令后的安静
+- `C01-CH05-S26`：灰誓议会与灰夜
+- `C01-CH06-S32`：联盟失联后自行行动
+- `C01-CH07-S34`：万人跪拜之城
+- `C01-CH07-S36E`：最后议会与无骑龙影
+- `C01-CH03-S11`：墓园姓名木片
+- `C01-CH03-S14`：山炉共同修炉
+- `C01-CH05-S22`：安瑟尔秩序街道
+- `C01-CH06-S29`：最后誓约逐一确认
+- `C01-SCENE-PUBLIC-RATIONS`：灰旗营地公开分粮
+- `C01-SCENE-REFUGEE-BRIDGEWORK`：难民与工程师共同修桥
+- `C01-SCENE-NURSERY-DEBATE`：银林育儿屋争议
+- `C01-SCENE-ARCHIVE-FORGE-OPEN`：山炉档案炉开封
+- `C01-SCENE-OLD-FLAG-HOMECOMING`：旧旗士兵归乡
+- `C01-ARCH-TWIN-HILLS`：双子丘陵战斗地点
+- `C01-ARCH-VEINPORT`：维恩港三阶段治理区
+- `C01-ARCH-CAPITAL`：阿斯塔里亚王都
+- `C01-ARCH-LOAK-BAKERY`：洛岬玛尔塔面包房
+- `C01-ARCH-FORGE-CITY`：山炉炉城
+- `C01-ARCH-ANSEL-TOWER`：安瑟尔控制治疗塔
+- `C01-ARCH-BONE-TOWER`：白骨军塔
+- `C01-ARCH-FIELD-HOSPITAL`：圣辉野战医院
+- `C01-ARCH-MERCENARY-MARKET`：佣兵补给市集
+- `C01-ARCH-DRAGON-COVENANT-RUIN`：古龙盟约遗址
+- `C01-PROP-ADA-MEDICINE`：艾达双文字药瓶
+- `C01-PROP-IVRA-BROKEN-BRIDLE`：伊芙拉断裂缰具
+- `C01-PROP-EXPIRING-MANDATE`：可拆战时统帅期限扣
+- `C01-PROP-NAME-TAGS`：墓园活人木片与亡者姓名牌
+- `C01-PROP-CASUALTY-REGISTER`：普通士兵伤亡册
+- `C01-PROP-GRANARY-KEY`：三方共管粮仓钥匙
+- `C01-PROP-EVACUATION-MAP`：多语言撤离路线图
+
+## 战斗单位，共 40 项
+
+本节列出《断冠之誓》的全部战斗单位题材：
+
+- `C01-UNIT-SWORDSMAN`：剑士
+- `C01-UNIT-SPEARMAN`：枪兵
+- `C01-UNIT-ARCHER`：弓箭手
+- `C01-UNIT-CLERIC`：牧师
+- `C01-UNIT-ENGINEER`：工程师
+- `C01-UNIT-BANNER-GUARD`：旗卫
+- `C01-UNIT-LEGION-SHIELD`：军团盾卫
+- `C01-UNIT-SILVER-LONGBOW`：长弓守卫
+- `C01-UNIT-RUNE-ARTIFICER`：符文工匠
+- `C01-UNIT-WOLF-RIDER`：狼骑兵
+- `C01-UNIT-GRAVEKEEPER`：守墓人
+- `C01-UNIT-SKELETON-GUARD`：骸骨卫士
+- `C01-UNIT-RANGER`：游侠
+- `C01-UNIT-ASSASSIN`：刺客
+- `C01-UNIT-MAGE`：法师
+- `C01-UNIT-KNIGHT`：骑士
+- `C01-UNIT-BALLISTA`：弩车
+- `C01-UNIT-LANCE-CAVALRY`：长枪骑兵
+- `C01-UNIT-BATTLE-MAGE`：战斗法师
+- `C01-UNIT-EAGLE-SCOUT`：鹰骑斥候
+- `C01-UNIT-WOODLAND-WALKER`：林地行者
+- `C01-UNIT-DRUID`：德鲁伊
+- `C01-UNIT-WHITE-STAG-RIDER`：白鹿骑手
+- `C01-UNIT-RUNE-SHIELD`：符文盾卫
+- `C01-UNIT-AXE-BREAKER`：战斧兵
+- `C01-UNIT-STONE-GOLEM`：石魔像
+- `C01-UNIT-SHAMAN`：萨满
+- `C01-UNIT-JAVELIN-HUNTER`：投矛猎手
+- `C01-UNIT-HEAVY-KNIGHT`：重装骑士
+- `C01-UNIT-SPIRIT-FIRE`：灵火精怪
+- `C01-UNIT-CANNON-WAGON`：火炮车
+- `C01-UNIT-TROLL`：巨魔
+- `C01-UNIT-BERSERKER`：狂战士
+- `C01-UNIT-TEMPLAR`：圣殿骑士
+- `C01-UNIT-INQUISITOR`：审判官
+- `C01-UNIT-GHOST`：幽魂
+- `C01-UNIT-CEMETERY-COLOSSUS`：墓地巨像
+- `C01-UNIT-IVRA-GROWTH`：伊芙拉成长单位
+- `C01-UNIT-WYVERN-RIDER`：飞龙骑手
+- `C01-UNIT-ANCIENT-DRAGON`：古龙
+
+## 任务单位，共 24 项
+
+本节列出《断冠之誓》的全部任务单位题材：
+
+- `C01-MISSION-BORDER-FARMER`：边境农户
+- `C01-MISSION-REFUGEE-ADULT`：难民成人
+- `C01-MISSION-REFUGEE-CHILD`：难民儿童
+- `C01-MISSION-EVACUATION-DRIVER`：撤离车夫
+- `C01-MISSION-BAKER`：面包师
+- `C01-MISSION-MINER`：采矿工
+- `C01-MISSION-FORGE-ARTISAN`：炉城工匠
+- `C01-MISSION-BRIDGE-LABORER`：桥梁劳工
+- `C01-MISSION-RELIEF-COOK`：救济厨工
+- `C01-MISSION-CITY-DOCTOR`：城市医师
+- `C01-MISSION-WOUNDED`：伤员
+- `C01-MISSION-WALL-LABORER`：城墙劳工
+- `C01-MISSION-SCRIBE`：抄写员
+- `C01-MISSION-NAME-REGISTRAR`：姓名登记员
+- `C01-MISSION-COUNCIL-DELEGATE`：地方议会代表
+- `C01-MISSION-FIELD-MESSENGER`：战地传令员
+- `C01-MISSION-CARAVAN-ESCORT`：商团护运员
+- `C01-MISSION-CEMETERY-CARETAKER`：墓园看守
+- `C01-MISSION-TOWN-MILITIA`：城镇民兵
+- `C01-MISSION-MERCENARY-QUARTERMASTER`：佣兵军需员
+- `C01-MISSION-CONTROLLED-SOLDIER`：被控制的普通士兵
+- `C01-MISSION-RELEASED-VETERAN`：解除控制的退伍兵
+- `C01-MISSION-NURSERY-CARETAKER`：森林育儿屋照护者
+- `C01-MISSION-DETAINED-WITNESS`：被押证人
+
+## 阵营套件，共 12 项
+
+本节列出《断冠之誓》的全部阵营套件题材：
+
+- `C01-FACTION-LORNE`：洛恩王国装备基准
+- `C01-FACTION-VILSA`：维尔萨帝国装备基准
+- `C01-FACTION-HOLY-LIGHT`：圣辉教廷装备基准
+- `C01-FACTION-GRAY-BANNER`：灰旗自由领装备基准
+- `C01-FACTION-SILVERWOOD`：银林装备基准
+- `C01-FACTION-MOUNTAIN-FORGE`：山炉装备基准
+- `C01-FACTION-WASTELAND`：荒原诸部装备基准
+- `C01-FACTION-MILITIA-MERCENARY`：城市民兵与佣兵装备基准
+- `C01-FACTION-DRAGON-COVENANT`：巨龙盟约装备基准
+- `C01-FACTION-OATH-CONTROLLED`：誓文受控态基准
+- `C01-FACTION-NAMED-DEAD`：归名亡者态基准
+- `C01-FACTION-LATE-ALLIANCE`：后期联盟态基准
+
+## 地形，共 32 项
+
+本节列出《断冠之誓》的全部地形题材：
+
+- `C01-TERRAIN-BORDER-1`：晒麦农田
+- `C01-TERRAIN-BORDER-2`：雨泥道路
+- `C01-TERRAIN-BORDER-3`：焦土农田
+- `C01-TERRAIN-BORDER-4`：难民车辙
+- `C01-TERRAIN-RIVER-1`：河岸
+- `C01-TERRAIN-RIVER-2`：浅水
+- `C01-TERRAIN-RIVER-3`：桥头地面
+- `C01-TERRAIN-RIVER-4`：断桥边缘
+- `C01-TERRAIN-CAPITAL-1`：城墙步道
+- `C01-TERRAIN-CAPITAL-2`：王都街道
+- `C01-TERRAIN-CAPITAL-3`：医院区地面
+- `C01-TERRAIN-CAPITAL-4`：宫城地面
+- `C01-TERRAIN-SILVERWOOD-1`：普通林地
+- `C01-TERRAIN-SILVERWOOD-2`：母树根区
+- `C01-TERRAIN-SILVERWOOD-3`：育儿屋边缘
+- `C01-TERRAIN-SILVERWOOD-4`：隐蔽草丛
+- `C01-TERRAIN-FORGE-1`：炉城石地
+- `C01-TERRAIN-FORGE-2`：熔沟
+- `C01-TERRAIN-FORGE-3`：符文地面
+- `C01-TERRAIN-FORGE-4`：档案炉区
+- `C01-TERRAIN-WASTELAND-1`：风蚀土
+- `C01-TERRAIN-WASTELAND-2`：岩坡
+- `C01-TERRAIN-WASTELAND-3`：部族营地
+- `C01-TERRAIN-WASTELAND-4`：风暴危险区
+- `C01-TERRAIN-GRAVEYARD-1`：普通墓碑地
+- `C01-TERRAIN-GRAVEYARD-2`：记名区
+- `C01-TERRAIN-GRAVEYARD-3`：污染地
+- `C01-TERRAIN-GRAVEYARD-4`：归名净化区
+- `C01-TERRAIN-OATHLIGHT-1`：普通节点地
+- `C01-TERRAIN-OATHLIGHT-2`：誓文受控区
+- `C01-TERRAIN-OATHLIGHT-3`：失联区
+- `C01-TERRAIN-OATHLIGHT-4`：自由誓石区
+
+## 交互建筑，共 24 项
+
+本节列出《断冠之誓》的全部交互建筑题材：
+
+- `C01-STRUCT-GRAY-FLAG-POINT`：灰旗旗点
+- `C01-STRUCT-LORNE-KEEP`：洛恩堡垒据点
+- `C01-STRUCT-OATH-TOWER-CONSOLE`：誓约塔控制台
+- `C01-STRUCT-CAPITAL-GATE`：王都宫门
+- `C01-STRUCT-JOINT-GRANARY`：三方共管粮仓
+- `C01-STRUCT-FORGE-WORKSHOP`：山炉工坊
+- `C01-STRUCT-HOLY-MEDICINE-SHED`：圣辉药棚
+- `C01-STRUCT-MERCENARY-DEPOT`：佣兵补给仓
+- `C01-STRUCT-THREE-BRIDGE-SPAN`：三桥桥段
+- `C01-STRUCT-SUNKEN-BELL-SLUICE`：沉钟水闸
+- `C01-STRUCT-WALL-LIFT-GATE`：城墙升降门
+- `C01-STRUCT-OLD-CITY-TUNNEL`：旧城地道口
+- `C01-STRUCT-REPAIRABLE-GATE`：可修城门
+- `C01-STRUCT-BALLISTA-EMPLACEMENT`：弩车部署位
+- `C01-STRUCT-FORGE-GUN-POSITION`：山炉炮位
+- `C01-STRUCT-WASTELAND-CHEVAUX`：荒原拒马
+- `C01-STRUCT-FIELD-HOSPITAL`：圣辉野战医院
+- `C01-STRUCT-REFUGEE-SHELTER`：难民避难棚
+- `C01-STRUCT-PUBLIC-RATION-POINT`：公开分粮点
+- `C01-STRUCT-WOUNDED-SHELTER`：伤兵棚
+- `C01-STRUCT-ARCHIVE-FURNACE`：山炉档案炉
+- `C01-STRUCT-NAME-MEMORIAL`：墓园姓名碑
+- `C01-STRUCT-GRAY-OATH-NOTICE`：灰誓公开告示
+- `C01-STRUCT-MILITARY-REGISTRY`：军籍登记点
+
+## 战场物件，共 32 项
+
+本节列出《断冠之誓》的全部战场物件题材：
+
+- `C01-BPROP-COVER-1`：木箱堆
+- `C01-BPROP-COVER-2`：临时盾墙
+- `C01-BPROP-COVER-3`：风蚀岩
+- `C01-BPROP-COVER-4`：翻倒粮车
+- `C01-BPROP-HAZARD-1`：油桶与火盆
+- `C01-BPROP-HAZARD-2`：攻城火药
+- `C01-BPROP-HAZARD-3`：失控誓石
+- `C01-BPROP-HAZARD-4`：亡者污染残片
+- `C01-BPROP-LOGISTICS-1`：粮袋车
+- `C01-BPROP-LOGISTICS-2`：水桶架
+- `C01-BPROP-LOGISTICS-3`：备件架
+- `C01-BPROP-LOGISTICS-4`：战地药箱
+- `C01-BPROP-ENGINEERING-1`：木桩
+- `C01-BPROP-ENGINEERING-2`：量绳
+- `C01-BPROP-ENGINEERING-3`：桥板
+- `C01-BPROP-ENGINEERING-4`：修塔脚手架
+- `C01-BPROP-LIFE-1`：营地炊具
+- `C01-BPROP-LIFE-2`：难民床铺
+- `C01-BPROP-LIFE-3`：议会折叠桌
+- `C01-BPROP-LIFE-4`：晾晒衣物
+- `C01-BPROP-EVIDENCE-1`：伤亡名册
+- `C01-BPROP-EVIDENCE-2`：公开告示
+- `C01-BPROP-EVIDENCE-3`：军籍牌
+- `C01-BPROP-EVIDENCE-4`：商团货单
+- `C01-BPROP-FACTION-1`：灰旗组
+- `C01-BPROP-FACTION-2`：洛恩盾标
+- `C01-BPROP-FACTION-3`：维尔萨道路牌
+- `C01-BPROP-FACTION-4`：圣辉状态灯
+- `C01-BPROP-AFTERMATH-1`：焦木废墟
+- `C01-BPROP-AFTERMATH-2`：弃械堆
+- `C01-BPROP-AFTERMATH-3`：伤员分区
+- `C01-BPROP-AFTERMATH-4`：共同修复痕迹
+
+## 装备，共 48 项
+
+本节列出《断冠之誓》的全部装备题材：
+
+- `C01-EQUIP-SWORDSMAN`：剑士主装备
+- `C01-EQUIP-SPEARMAN`：枪兵主装备
+- `C01-EQUIP-ARCHER`：弓箭手主装备
+- `C01-EQUIP-CLERIC`：牧师主装备
+- `C01-EQUIP-ENGINEER`：工程师主装备
+- `C01-EQUIP-BANNER-GUARD`：旗卫主装备
+- `C01-EQUIP-LEGION-SHIELD`：军团盾卫主装备
+- `C01-EQUIP-SILVER-LONGBOW`：长弓守卫主装备
+- `C01-EQUIP-RUNE-ARTIFICER`：符文工匠主装备
+- `C01-EQUIP-WOLF-RIDER`：狼骑兵主装备
+- `C01-EQUIP-GRAVEKEEPER`：守墓人主装备
+- `C01-EQUIP-SKELETON-GUARD`：骸骨卫士主装备
+- `C01-EQUIP-RANGER`：游侠主装备
+- `C01-EQUIP-ASSASSIN`：刺客主装备
+- `C01-EQUIP-MAGE`：法师主装备
+- `C01-EQUIP-KNIGHT`：骑士主装备
+- `C01-EQUIP-BALLISTA`：弩车主装备
+- `C01-EQUIP-LANCE-CAVALRY`：长枪骑兵主装备
+- `C01-EQUIP-BATTLE-MAGE`：战斗法师主装备
+- `C01-EQUIP-EAGLE-SCOUT`：鹰骑斥候主装备
+- `C01-EQUIP-WOODLAND-WALKER`：林地行者主装备
+- `C01-EQUIP-DRUID`：德鲁伊主装备
+- `C01-EQUIP-WHITE-STAG-RIDER`：白鹿骑手主装备
+- `C01-EQUIP-RUNE-SHIELD`：符文盾卫主装备
+- `C01-EQUIP-AXE-BREAKER`：战斧兵主装备
+- `C01-EQUIP-STONE-GOLEM`：石魔像主装备
+- `C01-EQUIP-SHAMAN`：萨满主装备
+- `C01-EQUIP-JAVELIN-HUNTER`：投矛猎手主装备
+- `C01-EQUIP-HEAVY-KNIGHT`：重装骑士主装备
+- `C01-EQUIP-SPIRIT-FIRE`：灵火精怪主装备
+- `C01-EQUIP-CANNON-WAGON`：火炮车主装备
+- `C01-EQUIP-TROLL`：巨魔主装备
+- `C01-EQUIP-BERSERKER`：狂战士主装备
+- `C01-EQUIP-TEMPLAR`：圣殿骑士主装备
+- `C01-EQUIP-INQUISITOR`：审判官主装备
+- `C01-EQUIP-GHOST`：幽魂主装备
+- `C01-EQUIP-CEMETERY-COLOSSUS`：墓地巨像主装备
+- `C01-EQUIP-IVRA-GROWTH`：伊芙拉成长单位主装备
+- `C01-EQUIP-WYVERN-RIDER`：飞龙骑手主装备
+- `C01-EQUIP-ANCIENT-DRAGON`：古龙主装备
+- `C01-EQUIP-FIELD-MEDICAL-KIT`：战地治疗包
+- `C01-EQUIP-BRIDGE-TOWER-TOOLS`：桥塔工程包
+- `C01-EQUIP-LONG-RANGE-SCOUT-KIT`：长距侦察包
+- `C01-EQUIP-QUARTERMASTER-SUPPLY-KIT`：军需补给包
+- `C01-EQUIP-ANTI-LARGE-KIT`：反大型破甲包
+- `C01-EQUIP-ANTI-OATH-GEAR`：抗誓文护具
+- `C01-EQUIP-MOBILITY-GEAR`：涉水攀岩机动具
+- `C01-EQUIP-EVIDENCE-SEAL-KIT`：证据封存交互包
+
+## 技能，共 48 项
+
+本节列出《断冠之誓》的全部技能题材：
+
+- `C01-SKILL-01`：占领
+- `C01-SKILL-02`：护卫
+- `C01-SKILL-03`：反骑
+- `C01-SKILL-04`：射击
+- `C01-SKILL-05`：侦察
+- `C01-SKILL-06`：背刺
+- `C01-SKILL-07`：治疗
+- `C01-SKILL-08`：净化
+- `C01-SKILL-09`：破甲术
+- `C01-SKILL-10`：冲锋
+- `C01-SKILL-11`：修复
+- `C01-SKILL-12`：指挥延伸
+- `C01-SKILL-13`：灰旗共誓
+- `C01-SKILL-14`：洛恩封地援护
+- `C01-SKILL-15`：维尔萨盾墙
+- `C01-SKILL-16`：道路急行
+- `C01-SKILL-17`：银林隐蔽
+- `C01-SKILL-18`：林地再生
+- `C01-SKILL-19`：山炉符文加固
+- `C01-SKILL-20`：荒原风暴鼓舞
+- `C01-SKILL-21`：圣辉照明盾
+- `C01-SKILL-22`：归名唤醒
+- `C01-SKILL-23`：自由之翼
+- `C01-SKILL-24`：誓文拒绝
+- `C01-SKILL-25`：架桥
+- `C01-SKILL-26`：拆桥
+- `C01-SKILL-27`：修塔
+- `C01-SKILL-28`：切断控制
+- `C01-SKILL-29`：部署弩车
+- `C01-SKILL-30`：架设炮位
+- `C01-SKILL-31`：清理污染
+- `C01-SKILL-32`：开启地道
+- `C01-SKILL-33`：战地补给
+- `C01-SKILL-34`：分粮
+- `C01-SKILL-35`：急救
+- `C01-SKILL-36`：抬运伤员
+- `C01-SKILL-37`：公开伤亡
+- `C01-SKILL-38`：权限确认
+- `C01-SKILL-39`：地方动员
+- `C01-SKILL-40`：撤离引导
+- `C01-SKILL-41`：双旗推进
+- `C01-SKILL-42`：右侧交给你
+- `C01-SKILL-43`：最后誓约
+- `C01-SKILL-44`：旧誓新答
+- `C01-SKILL-45`：白鹿穿林
+- `C01-SKILL-46`：符文过载
+- `C01-SKILL-47`：亡者归名
+- `C01-SKILL-48`：古龙盟约
+
+## 状态，共 24 项
+
+本节列出《断冠之誓》的全部状态题材：
+
+- `C01-STATUS-01`：中毒
+- `C01-STATUS-02`：沉默
+- `C01-STATUS-03`：护卫
+- `C01-STATUS-04`：誓文受控
+- `C01-STATUS-05`：溃退
+- `C01-STATUS-06`：隐蔽
+- `C01-STATUS-07`：风暴暴露
+- `C01-STATUS-08`：受伤
+- `C01-STATUS-09`：资金
+- `C01-STATUS-10`：粮秣
+- `C01-STATUS-11`：弹药
+- `C01-STATUS-12`：士气
+- `C01-STATUS-13`：誓约权限
+- `C01-STATUS-14`：工程材料
+- `C01-STATUS-15`：补给
+- `C01-STATUS-16`：地方支持
+- `C01-STATUS-17`：占领目标
+- `C01-STATUS-18`：护送目标
+- `C01-STATUS-19`：撤离目标
+- `C01-STATUS-20`：救援目标
+- `C01-STATUS-21`：维修目标
+- `C01-STATUS-22`：破坏目标
+- `C01-STATUS-23`：守时目标
+- `C01-STATUS-24`：证据送达
+
+## 特效，共 24 项
+
+本节列出《断冠之誓》的全部特效题材：
+
+- `C01-FX-01`：斩击
+- `C01-FX-02`：穿刺
+- `C01-FX-03`：箭矢命中
+- `C01-FX-04`：钝击
+- `C01-FX-05`：普通火焰
+- `C01-FX-06`：琥珀誓火
+- `C01-FX-07`：攻城碎屑
+- `C01-FX-08`：亡者记忆冲击
+- `C01-FX-09`：秋雨
+- `C01-FX-10`：河流浅水
+- `C01-FX-11`：荒原强风
+- `C01-FX-12`：山炉热浪
+- `C01-FX-13`：焦土余火
+- `C01-FX-14`：墓园污染
+- `C01-FX-15`：银林灵火
+- `C01-FX-16`：七塔灰光
+- `C01-FX-17`：治疗
+- `C01-FX-18`：受控
+- `C01-FX-19`：隐蔽
+- `C01-FX-20`：援护盾
+- `C01-FX-21`：结构受损
+- `C01-FX-22`：工程修复
+- `C01-FX-23`：塔网失联
+- `C01-FX-24`：据点占领
+
+## 界面标记，共 16 项
+
+本节列出《断冠之誓》的全部界面标记题材：
+
+- `C01-HUD-01`：友军
+- `C01-HUD-02`：敌军
+- `C01-HUD-03`：中立
+- `C01-HUD-04`：可招降
+- `C01-HUD-05`：主目标
+- `C01-HUD-06`：次要目标
+- `C01-HUD-07`：护送目标
+- `C01-HUD-08`：危险区域
+- `C01-HUD-09`：补给点
+- `C01-HUD-10`：治疗点
+- `C01-HUD-11`：工程交互
+- `C01-HUD-12`：可破坏结构
+- `C01-HUD-13`：可修复结构
+- `C01-HUD-14`：增援入口
+- `C01-HUD-15`：撤离出口
+- `C01-HUD-16`：多阵营权限争议点

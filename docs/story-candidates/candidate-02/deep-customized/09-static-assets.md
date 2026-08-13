@@ -4,7 +4,7 @@
 
 ## 0. 已同步素材对接
 
-现有文件继续保留美术侧命名，剧本使用稳定编号。完整规格见[素材包说明](../assets/README.md)，正式成品总览见[高清画廊](../assets/gallery-hd.html)，机器接入以 [`manifest-hd.json`](../assets/manifest-hd.json) 为准。`draft-v1/` 只保留被否决的早期构图草案，不进入正式构建。
+现有文件继续保留美术侧命名，剧本使用稳定编号。当前范围、规格和验收见[美术与素材入口](../ART-ASSETS.md)，原始 HD 映射保留在 [`manifest-hd.json`](../assets/manifest-hd.json)。`draft-v1/` 不进入游戏构建。
 
 | 已同步文件 | 深化编号 | 使用状态 |
 | --- | --- | --- |

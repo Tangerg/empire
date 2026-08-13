@@ -47,19 +47,23 @@ interface BattleSpec {
 }
 
 const TWIN_HILLS = [
-  '...T....h....T.......',
-  '..T...^^^^....h..T...',
-  '.q..--^^^^--.........',
-  '....h.^^^^..T....h...',
-  '.T.....hh......T.....',
-  '...v....---....v.....',
-  '......T.....h........',
-  '..h.....T.......T....',
-  '.T...---....h.....q..',
-  '....T......^^^^......',
-  '..v.....T..^^^^..T...',
-  '......h....^^^^......',
-  '..T.....---....h.....',
+  'TTTTTTTTTTTTTTTTTTTTTTTTTTT',
+  'TTT...T......TT......T..TTT',
+  'TT...T.^^^^...T........T.TT',
+  'Tq-----^^^^h..............T',
+  'TT..T.-^^^^h.T..hhh...T..TT',
+  'T.....-^^^^.......hh......T',
+  'TT..T.-------..T........T.T',
+  'T.....-.....-.............T',
+  'T-----------v-v-----------T',
+  'T..-..........-..........-T',
+  'TT.-.hTh......--------...-T',
+  'T..-......-.....h^^^^----qT',
+  'TT.-...T..-hh.T.h^^^^h.T.TT',
+  'T..--------h....h^^^^h....T',
+  'TT...T........T..hhhh..T.TT',
+  'TTT.....T......T.....T..TTT',
+  'TTTTTTTTTTTTTTTTTTTTTTTTTTT',
 ];
 
 const THREE_BRIDGES = [
@@ -402,23 +406,38 @@ const baseParty = (...extra: UnitSeed[]): UnitSeed[] => [
 const BATTLES: readonly BattleSpec[] = [
   {
     order: 1, chapter: 1, title: '双子丘陵', subtitle: '第一次指挥：夺取高地，也承担冒进的后果。', map: TWIN_HILLS,
-    player: baseParty(ally('field-cleric', 'c01.gravekeeper'), ally('roderick-reserve', 'c01.roderick'), ally('ridge-scout', 'c01.archer'), ally('ridge-guard', 'c01.banner-guard')),
+    player: baseParty(
+      ally('field-cleric', 'c01.gravekeeper'), ally('roderick-reserve', 'c01.roderick'),
+      ally('ridge-scout', 'c01.archer'), ally('ridge-guard', 'c01.banner-guard'),
+      ally('west-spear', 'c01.banner-guard'), ally('village-runner', 'c01.archer'),
+      ally('camp-guard', 'c01.legion-shield'), ally('field-knight', 'c01.knight'),
+    ),
     enemy: [
       foe('vanguard-1', 'c01.legion-shield'), foe('vanguard-2', 'c01.swordsman'), foe('vanguard-archer', 'c01.archer'), foe('vanguard-cain', 'c01.cain'),
       foe('north-shield', 'c01.legion-shield'), foe('south-sword', 'c01.swordsman'), foe('south-bow', 'c01.archer'),
+      foe('camp-bow', 'c01.archer'),
     ],
-    deployment: deployment('2,7 3,6 3,8 2,6 3,9 6,11 1,7', '12,3 14,4 15,2 17,3 16,8 18,9 12,10'),
+    deployment: deployment(
+      '2,9 3,8 3,10 2,8 3,11 6,14 1,9 6,12 5,6 4,12 7,11',
+      '15,4 19,5 22,3 24,5 20,9 24,12 18,13 23,8',
+    ),
     objective: protectLaiya(route('击退维尔萨前锋'), '莱娅存活并击退维尔萨前锋'),
-    owners: [{ x: 1, y: 2, owner: 1 }, { x: 18, y: 8, owner: 2 }, { x: 3, y: 5, owner: 0 }, { x: 15, y: 5, owner: 0 }],
+    owners: [{ x: 1, y: 3, owner: 1 }, { x: 25, y: 11, owner: 2 }, { x: 12, y: 8, owner: 0 }, { x: 14, y: 8, owner: 0 }],
     scenario: {
-      zones: [zone('north-hill', { x: 7, y: 1 }, { x: 8, y: 1 }, { x: 7, y: 2 }, { x: 8, y: 2 })],
+      zones: [zone(
+        'north-hill',
+        { x: 7, y: 2 }, { x: 8, y: 2 }, { x: 9, y: 2 }, { x: 10, y: 2 },
+        { x: 7, y: 3 }, { x: 8, y: 3 }, { x: 9, y: 3 }, { x: 10, y: 3 },
+        { x: 7, y: 4 }, { x: 8, y: 4 }, { x: 9, y: 4 }, { x: 10, y: 4 },
+        { x: 7, y: 5 }, { x: 8, y: 5 }, { x: 9, y: 5 }, { x: 10, y: 5 },
+      )],
       triggers: [{
         id: 'matching-orders', timing: 'afterAction',
         condition: { type: 'eventCount', event: 'death', op: 'gte', value: 1 },
         effects: [{ type: 'emitSignal', signal: 'found_matching_orders' }],
       }],
     },
-    extra: { tacticalTheme: '双高地、分离侦察组与侧翼预备队', recommendedTurns: 9, battleScale: 'company', fronts: 2 },
+    extra: { tacticalTheme: '双高地、中央村落、三线推进与分离侦察组', recommendedTurns: 11, battleScale: 'company', fronts: 3 },
   },
   {
     order: 2, chapter: 1, title: '三桥河谷', subtitle: '短暂停火，把六军之争让给过桥的平民。', map: THREE_BRIDGES,

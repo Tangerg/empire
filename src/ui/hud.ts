@@ -1,4 +1,10 @@
 import { icon } from '../art/icons';
+import { candidate01IconMarkup } from '../art/candidate-01-runtime';
+import {
+  CANDIDATE_01_ABILITY_ART,
+  CANDIDATE_01_STATUS_ART,
+  CANDIDATE_01_WEAPON_ART,
+} from '../art/candidate-01-bindings';
 import { portraitSvg } from '../art/portraits';
 import { unitIcon } from '../art/units';
 import { PAL } from '../art/palette';
@@ -285,13 +291,19 @@ export class Hud {
       heal: 'cross',
       wait: 'hourglass',
     };
+    const commandIcon = (command: CommandOption): string => {
+      const topic = command.weapon
+        ? CANDIDATE_01_WEAPON_ART[command.weapon]
+        : CANDIDATE_01_ABILITY_ART[command.ability];
+      return topic ? candidate01IconMarkup(topic) : icon(iconOf[command.ability] ?? 'crosshair');
+    };
     return `<section class="card accent">
       <h3>指令</h3>
       <div class="cmd-list">
         ${v.commands
           .map(
             (c) => `<button class="btn cmd" data-act="command" data-arg="${escapeHtml(c.key)}" title="${escapeHtml(c.hint)}">
-              ${icon(iconOf[c.ability] ?? 'crosshair')}<span>${escapeHtml(c.name)}</span>
+              ${commandIcon(c)}<span>${escapeHtml(c.name)}</span>
               ${keyOf[c.ability] ? `<kbd>${keyOf[c.ability]}</kbd>` : ''}
             </button>`,
           )
@@ -309,7 +321,7 @@ export class Hud {
         ${v.tactics
           .map(
             (tactic) => `<button class="btn cmd" data-act="tactic" data-arg="${escapeHtml(tactic.key)}">
-              ${icon('flag')}<span>${escapeHtml(tactic.name)}</span><em>${escapeHtml(formatAmounts(v.resources, tactic.costs))}</em>
+              ${CANDIDATE_01_ABILITY_ART[tactic.id] ? candidate01IconMarkup(CANDIDATE_01_ABILITY_ART[tactic.id]) : icon('flag')}<span>${escapeHtml(tactic.name)}</span><em>${escapeHtml(formatAmounts(v.resources, tactic.costs))}</em>
             </button>`,
           )
           .join('')}
@@ -425,13 +437,17 @@ export class Hud {
             ? ` · 消耗 ${formatAmounts(v.resources, weapon.resourceCosts)}`
             : '';
           const state = accounts.length > 0 ? accounts.join(' · ') : '无限制';
-          return `<div class="kv wrap"><span>${escapeHtml(weapon.name)} · ${damageTypeDef(weapon.damageType).name} ${weapon.power} · 射程 ${range}</span><b>${escapeHtml(state)}${cooldown}${escapeHtml(requirements)}${escapeHtml(costs)}</b></div>`;
+          const art = CANDIDATE_01_WEAPON_ART[id];
+          return `<div class="kv wrap art-kv"><span>${art ? candidate01IconMarkup(art) : ''}<i>${escapeHtml(weapon.name)} · ${damageTypeDef(weapon.damageType).name} ${weapon.power} · 射程 ${range}</i></span><b>${escapeHtml(state)}${cooldown}${escapeHtml(requirements)}${escapeHtml(costs)}</b></div>`;
         }).join('')}
       </div>
       <div class="unit-section">
         <h4>战场状态</h4>
         ${u.statuses.length > 0
-          ? u.statuses.map((status) => `<div class="kv"><span>${escapeHtml(statusDef(status.id).name)}</span><b>${status.remaining} 回合${status.stacks > 1 ? ` · ${status.stacks} 层` : ''}</b></div>`).join('')
+          ? u.statuses.map((status) => {
+            const art = CANDIDATE_01_STATUS_ART[status.id];
+            return `<div class="kv art-kv"><span>${art ? candidate01IconMarkup(art) : ''}<i>${escapeHtml(statusDef(status.id).name)}</i></span><b>${status.remaining} 回合${status.stacks > 1 ? ` · ${status.stacks} 层` : ''}</b></div>`;
+          }).join('')
           : '<div class="hint">无状态效果</div>'}
         <div class="kv"><span>军衔</span><b>${RANK_LABEL[u.rank]}${v.rankNextThreshold === null ? '' : ` · ${u.rankProgress}/${v.rankNextThreshold}`}</b></div>
         <div class="kv"><span>朝向</span><b>${FACING_LABEL[u.facing]}</b></div>
@@ -497,7 +513,7 @@ export class Hud {
     const s = v.state;
     const me = s.players.find((p) => p.controller === 'human') ?? s.players[0];
     return `<section class="card">
-      <h3>作战目标</h3>
+      <h3 class="art-heading">${candidate01IconMarkup('C01-HUD-05')}<span>作战目标</span></h3>
       <ul class="obj-list">
         ${me.objectives
           .filter((objective) => !me.objectiveStates[objective.id!]?.hidden)

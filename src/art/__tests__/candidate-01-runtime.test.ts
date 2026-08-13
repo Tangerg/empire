@@ -4,11 +4,14 @@ import { unitSpriteMarkup } from '../units';
 
 describe('candidate-01 runtime art bindings', () => {
   it('uses the authored four-frame sheet for covered game units', () => {
-    const soldier = unitSpriteMarkup('soldier', '#3f7fd8');
+    const soldier = unitSpriteMarkup('c01.swordsman', '#3f7fd8');
 
     expect(soldier).toContain('data-runtime-raster="unit"');
-    expect(soldier).toContain('gray-banner-soldier-walk');
+    expect(soldier).toContain('unit-swordsman');
     expect(soldier).toContain('width="128" height="48"');
+    expect(soldier).toContain('runtime-hd/combat-unit');
+    expect(soldier).toContain('&quot;id&quot;:&quot;attack&quot;');
+    expect(soldier).toContain('&quot;frames&quot;:[2]');
   });
 
   it('keeps the programmatic fallback for uncovered units', () => {
@@ -26,7 +29,7 @@ describe('candidate-01 runtime art bindings', () => {
     });
 
     expect(road).toContain('data-runtime-raster="atlas-cell"');
-    expect(road).toContain('/road.png');
+    expect(road).toContain('/terrain-border-2.png');
     expect(road).toContain('x="-96"');
   });
 
@@ -38,9 +41,9 @@ describe('candidate-01 runtime art bindings', () => {
       linked: { n: false, e: false, s: false, w: false },
     });
 
-    expect(castle).toContain('data-runtime-raster="structure"');
-    expect(castle).toContain('/castle-states.png');
-    expect(castle).toContain('y="-128"');
+    expect(castle).toContain('data-candidate-art="structure"');
+    expect(castle).toContain('/struct-lorne-keep.png');
+    expect(castle).toContain('x="-128"');
     expect(castle).toContain('stroke="#d8483f"');
   });
 });

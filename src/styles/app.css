@@ -163,7 +163,7 @@ kbd {
   height: 100%;
   object-fit: cover;
   object-position: center 58%;
-  image-rendering: pixelated;
+  image-rendering: auto;
   filter: saturate(0.92) contrast(1.05);
 }
 
@@ -248,6 +248,15 @@ kbd {
     0 12px 32px rgb(0 0 0 / 52%);
   cursor: pointer;
   touch-action: none;
+}
+
+.board.candidate-map[data-scene-layout='authored'] {
+  border-radius: 22px;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 10%),
+    0 0 0 7px #2b2119,
+    0 0 0 10px #15100d,
+    0 18px 42px rgb(0 0 0 / 58%);
 }
 
 /* ------------------------------------------------------------------ top bar */
@@ -676,11 +685,149 @@ kbd {
 
 /* -------------------------------------------------------------------- board */
 
+.candidate-map-scenery {
+  isolation: isolate;
+}
+
+.candidate-scene-ground,
+.candidate-ground-route,
+.candidate-map-foreground {
+  pointer-events: none;
+}
+
+.candidate-ground-route,
+.candidate-ground-route-edge {
+  filter: drop-shadow(0 1px 0 rgb(255 230 176 / 10%));
+}
+
+.candidate-scene-backdrop,
+.candidate-scene-foreground {
+  isolation: isolate;
+}
+
+.candidate-scene-foreground .candidate-environment-prop {
+  filter:
+    drop-shadow(0 2px 1px rgb(3 9 6 / 78%))
+    drop-shadow(0 6px 5px rgb(3 9 6 / 46%));
+}
+
+.candidate-scene-foreground .is-frame-bottom,
+.candidate-scene-foreground .is-frame-left,
+.candidate-scene-foreground .is-frame-right {
+  filter:
+    drop-shadow(0 3px 1px rgb(3 9 6 / 82%))
+    drop-shadow(0 8px 7px rgb(3 9 6 / 52%));
+}
+
+.candidate-map .layer-terrain {
+  filter: saturate(1.08) contrast(1.02) brightness(1.04);
+}
+
+.candidate-map .layer-ground {
+  filter: saturate(1.06) contrast(1.025) brightness(1.035);
+}
+
+.candidate-map .layer-grid {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 140ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.candidate-map.is-tactical .layer-grid {
+  opacity: 0.66;
+}
+
+.candidate-map .candidate-stand-node {
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 70%));
+}
+
+.candidate-map .candidate-action-spot,
+.candidate-map .candidate-selection-ring,
+.candidate-map .candidate-cursor-ring {
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 72%));
+}
+
+.candidate-map-ambient {
+  opacity: 0.52;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.candidate-map .elevation-badge {
+  opacity: 0.82;
+}
+
+.candidate-scenery-tree,
+.candidate-scenery-topic,
+.candidate-scenery-prop,
+.candidate-scenery-building,
+.candidate-environment-prop {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.candidate-scenery-prop image,
+.candidate-scenery-topic image,
+.candidate-scenery-building image,
+.candidate-environment-sprite image {
+  image-rendering: auto;
+}
+
+.candidate-scenery-prop,
+.candidate-scenery-topic,
+.candidate-scenery-building {
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 42%));
+}
+
+.candidate-environment-prop {
+  filter:
+    drop-shadow(0 1px 0 rgb(5 12 9 / 62%))
+    drop-shadow(0 2px 2px rgb(5 12 9 / 34%));
+}
+
+.candidate-environment-prop.is-boundary-tree {
+  filter:
+    drop-shadow(0 1px 0 rgb(4 10 7 / 74%))
+    drop-shadow(0 3px 3px rgb(4 10 7 / 42%));
+}
+
+.layer-ground,
+.layer-scenery,
+.layer-spatial,
+.layer-foreground {
+  pointer-events: none;
+}
+
+.candidate-map .layer-foreground .candidate-environment-prop {
+  filter:
+    drop-shadow(0 2px 1px rgb(3 9 6 / 68%))
+    drop-shadow(0 5px 4px rgb(3 9 6 / 34%));
+}
+
 .layer-units .unit {
-  filter: drop-shadow(0 1px 0 rgb(0 0 0 / 72%)) drop-shadow(1px 0 0 rgb(0 0 0 / 34%));
+  filter:
+    drop-shadow(0 1px 0 rgb(0 0 0 / 80%))
+    drop-shadow(1px 0 0 rgb(0 0 0 / 42%))
+    drop-shadow(0 2px 2px rgb(0 0 0 / 36%));
   transition:
     opacity 120ms ease,
     filter 120ms ease;
+}
+
+.candidate-map .runtime-unit-contact-shadow {
+  opacity: 0.62;
+  filter: blur(0.55px);
+}
+
+.candidate-map .runtime-unit-team-ring {
+  stroke-width: 2.15px;
+}
+
+.candidate-map .runtime-unit-figure {
+  filter:
+    drop-shadow(0 0 0.65px rgb(255 246 222 / 45%))
+    drop-shadow(0 2px 1.2px rgb(0 0 0 / 75%));
 }
 
 .layer-units .unit.face-left {
@@ -691,41 +838,57 @@ kbd {
   transform: translate(32px, 0) scale(-1, 1);
 }
 
-.runtime-unit-strip {
-  image-rendering: pixelated;
-  transform-box: fill-box;
-  transform-origin: 0 0;
+.runtime-frame-strip {
+  image-rendering: auto;
 }
 
-.layer-units .unit.is-moving .runtime-unit-strip {
-  animation: runtime-unit-walk 320ms linear infinite;
+.candidate-battle-prop,
+.candidate-battle-marker,
+.candidate-portrait-image,
+.candidate-fx image {
+  image-rendering: auto;
 }
 
-@keyframes runtime-unit-walk {
-  0%,
-  24.99% {
-    transform: translateX(0);
-  }
+.candidate-battle-prop {
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 42%));
+}
 
-  25%,
-  49.99% {
-    transform: translateX(-32px);
-  }
+.candidate-battle-marker {
+  opacity: 0.78;
+}
 
-  50%,
-  74.99% {
-    transform: translateX(-64px);
-  }
+.candidate-art-icon {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 5px;
+  outline: 1px solid rgb(255 255 255 / 10%);
+  outline-offset: -1px;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 45%));
+  image-rendering: auto;
+}
 
-  75%,
-  100% {
-    transform: translateX(-96px);
-  }
+.art-heading,
+.art-kv > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.art-heading .candidate-art-icon,
+.art-kv .candidate-art-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.art-kv i {
+  font-style: normal;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .layer-units .unit.is-moving .runtime-unit-strip {
-    animation: none;
+  .candidate-map .layer-grid {
+    transition-duration: 0ms;
   }
 }
 

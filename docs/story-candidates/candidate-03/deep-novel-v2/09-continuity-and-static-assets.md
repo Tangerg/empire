@@ -1,6 +1,6 @@
 # 连续性与静态素材接口
 
-正式素材位于 [`../assets`](../assets/)，规格见[素材包说明](../assets/README.md)，现有成品见[高清画廊](../assets/gallery-hd.html)，机器接入以 [`manifest-hd.json`](../assets/manifest-hd.json) 为准。本表沿用既有稳定编号，不改动用户正在同步的静态文件。
+素材位于 [`../assets`](../assets/)，当前制作规范见[美术与素材入口](../ART-ASSETS.md)。本表沿用既有稳定编号，不改动正文使用的静态文件。
 
 ## 七章接缝与主画面
 

@@ -1,0 +1,7315 @@
+{
+  "schemaVersion": "final-ancient-china-v1.0",
+  "campaignId": "candidate-03",
+  "packId": "final-ancient-china-v1",
+  "title": "候选剧本三 · 中国古代卡通完整游戏素材包",
+  "artDirection": {
+    "genre": "grounded fictional ancient China; river war, grain transport, civil administration and dynastic founding",
+    "style": "high-oblique Chinese historical tactical cartoon; oversized heads; compact bodies; thick ink; matte restrained palette; two-step cel shading",
+    "reference": "../../art-assets/reference/art-direction-map.png",
+    "prohibitions": [
+      "Japanese samurai or ninja motifs",
+      "wuxia magic",
+      "modern objects",
+      "photorealism",
+      "glossy 3D",
+      "named-franchise copying"
+    ]
+  },
+  "runtimeReady": true,
+  "qualityTier": "final-cartoon-ancient-china-v1",
+  "targetTopics": 404,
+  "categoryTargets": {
+    "narrative-static": 80,
+    "combat-unit": 40,
+    "mission-unit": 24,
+    "faction-kit": 12,
+    "terrain": 32,
+    "interactive-structure": 24,
+    "battle-prop": 32,
+    "equipment": 48,
+    "skill": 48,
+    "status": 24,
+    "fx": 24,
+    "hud": 16
+  },
+  "assetCount": 404,
+  "assets": [
+    {
+      "assetId": "C03-ACV1-arch-floating-bridge",
+      "topicId": "c03-arch-floating-bridge",
+      "label": "模块化浮桥",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-floating-bridge.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-arch-granary",
+      "topicId": "c03-arch-granary",
+      "label": "淮右县仓",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-granary.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-arch-great-lake-fleet",
+      "topicId": "c03-arch-great-lake-fleet",
+      "label": "大泽军民混合连营",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-great-lake-fleet.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-arch-hezhou-gate",
+      "topicId": "c03-arch-hezhou-gate",
+      "label": "和州城门",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-hezhou-gate.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-arch-huai-dike-01",
+      "topicId": "c03-arch-huai-dike-01",
+      "label": "淮右河堤",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-huai-dike-01.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-arch-huai-dike-final",
+      "topicId": "c03-arch-huai-dike-final",
+      "label": "终章加固河堤",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-huai-dike-final.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-arch-jiangdong-salt-port",
+      "topicId": "c03-arch-jiangdong-salt-port",
+      "label": "江东盐港税卡与民船混合区",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-jiangdong-salt-port.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-arch-linchuan-hub",
+      "topicId": "c03-arch-linchuan-hub",
+      "label": "临川行台五功能治理区",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-linchuan-hub.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-arch-old-capital",
+      "topicId": "c03-arch-old-capital",
+      "label": "旧都与登基城",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-old-capital.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-arch-palace-gate",
+      "topicId": "c03-arch-palace-gate",
+      "label": "宫门、市坊、军营与史馆组合区",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-palace-gate.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-arch-wuyue-gate",
+      "topicId": "c03-arch-wuyue-gate",
+      "label": "吴越富城水闸与盐仓",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-wuyue-gate.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-arch-yanyun-post",
+      "topicId": "c03-arch-yanyun-post",
+      "label": "燕云雪原驿站",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-yanyun-post.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-char-aletan-01",
+      "topicId": "c03-char-aletan-01",
+      "label": "阿勒坦·大朔边将",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-aletan-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-han-01",
+      "topicId": "c03-char-han-01",
+      "label": "韩岳·铁匠义军",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-han-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-han-02",
+      "topicId": "c03-char-han-02",
+      "label": "韩岳·大泽前锋",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-han-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-han-03",
+      "topicId": "c03-char-han-03",
+      "label": "韩岳·开国功臣",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-han-03.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-jiang-01",
+      "topicId": "c03-char-jiang-01",
+      "label": "江照夜·水盟船主",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-jiang-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-jiang-02",
+      "topicId": "c03-char-jiang-02",
+      "label": "江照夜·大泽水师统帅",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-jiang-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-lu-01",
+      "topicId": "c03-char-lu-01",
+      "label": "陆青禾·淮上账房",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-lu-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-lu-02",
+      "topicId": "c03-char-lu-02",
+      "label": "陆青禾·临川户曹",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-lu-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-lu-03",
+      "topicId": "c03-char-lu-03",
+      "label": "陆青禾·开国法制主事",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-lu-03.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-pei-01",
+      "topicId": "c03-char-pei-01",
+      "label": "裴昭·朝廷追粮将领",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-pei-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-pei-02",
+      "topicId": "c03-char-pei-02",
+      "label": "裴昭·新军统帅",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-pei-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-peng-01",
+      "topicId": "c03-char-peng-01",
+      "label": "彭三篙·水盟船工",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-peng-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-peng-02",
+      "topicId": "c03-char-peng-02",
+      "label": "彭三篙·伤残渡口主人",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-peng-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-shen-01",
+      "topicId": "c03-char-shen-01",
+      "label": "沈砺·22岁河工",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-shen-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-shen-02",
+      "topicId": "c03-char-shen-02",
+      "label": "沈砺·28岁江东统帅",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-shen-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-shen-03",
+      "topicId": "c03-char-shen-03",
+      "label": "沈砺·36岁北伐吴王",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-shen-03.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-shen-04",
+      "topicId": "c03-char-shen-04",
+      "label": "沈砺·40岁开国皇帝",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-shen-04.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-wen-01",
+      "topicId": "c03-char-wen-01",
+      "label": "闻素·随军史官",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-wen-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-xiao-01",
+      "topicId": "c03-char-xiao-01",
+      "label": "萧慎·落第县吏",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-xiao-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-xiao-02",
+      "topicId": "c03-char-xiao-02",
+      "label": "萧慎·密察司主事",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-xiao-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-xiaoman-01",
+      "topicId": "c03-char-xiaoman-01",
+      "label": "赵小满·11岁灾民",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-xiaoman-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-xiaoman-02",
+      "topicId": "c03-char-xiaoman-02",
+      "label": "赵小满·学馆书吏",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-xiaoman-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-char-xiaoman-03",
+      "topicId": "c03-char-xiaoman-03",
+      "label": "赵小满·开国户曹书吏",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-xiaoman-03.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "character-card"
+    },
+    {
+      "assetId": "C03-ACV1-prop-aletan-covenant",
+      "topicId": "c03-prop-aletan-covenant",
+      "label": "阿勒坦互市军法自治盟约",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-aletan-covenant.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-broken-official-seal",
+      "topicId": "c03-prop-broken-official-seal",
+      "label": "破官印",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-broken-official-seal.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-field-markers",
+      "topicId": "c03-prop-field-markers",
+      "label": "田契丈量标记",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-field-markers.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-first-banner",
+      "topicId": "c03-prop-first-banner",
+      "label": "第一面未染色军旗",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-first-banner.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-grain-seal",
+      "topicId": "c03-prop-grain-seal",
+      "label": "官粮封条强化版",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-grain-seal.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-pei-campaign-map",
+      "topicId": "c03-prop-pei-campaign-map",
+      "label": "裴昭战役叠图",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-pei-campaign-map.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-pei-clan-roll",
+      "topicId": "c03-prop-pei-clan-roll",
+      "label": "裴氏部曲军籍卷",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-pei-clan-roll.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-register-evidence-set",
+      "topicId": "c03-prop-register-evidence-set",
+      "label": "书吏第一页账册与两册并置证据组",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-register-evidence-set.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-shoe-ledger",
+      "topicId": "c03-prop-shoe-ledger",
+      "label": "沈砺鞋底私账",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-shoe-ledger.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-sunken-roll",
+      "topicId": "c03-prop-sunken-roll",
+      "label": "大泽沉船名册",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-sunken-roll.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-temp-roll",
+      "topicId": "c03-prop-temp-roll",
+      "label": "无籍灾民临时册强化版",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-temp-roll.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-unstable-list",
+      "topicId": "c03-prop-unstable-list",
+      "label": "开国不安定者名册",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-unstable-list.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-white-lantern-gilded",
+      "topicId": "c03-prop-white-lantern-gilded",
+      "label": "镀金白灯",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-white-lantern-gilded.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-white-lantern-patched",
+      "topicId": "c03-prop-white-lantern-patched",
+      "label": "三次缝补的白灯",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-white-lantern-patched.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-prop-white-lantern-plain",
+      "topicId": "c03-prop-white-lantern-plain",
+      "label": "素白互助灯",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-white-lantern-plain.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "key-prop"
+    },
+    {
+      "assetId": "C03-ACV1-scene-01690aa0",
+      "topicId": "c03-scene-01690aa0",
+      "label": "梁震旗舰",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-01690aa0.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-016bc02a",
+      "topicId": "c03-scene-016bc02a",
+      "label": "芦苇滩白灯赠粮",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-016bc02a.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-10cdb51a",
+      "topicId": "c03-scene-10cdb51a",
+      "label": "和州借城",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-10cdb51a.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-1330acd2",
+      "topicId": "c03-scene-1330acd2",
+      "label": "白灯赠别与八十九日粮",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-1330acd2.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-32b53c29",
+      "topicId": "c03-scene-32b53c29",
+      "label": "新朝田册之乱",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-32b53c29.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-3a40b552",
+      "topicId": "c03-scene-3a40b552",
+      "label": "吴王之台",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-3a40b552.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-3b834342",
+      "topicId": "c03-scene-3b834342",
+      "label": "登基与讨饷并置",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-3b834342.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-61b2f412",
+      "topicId": "c03-scene-61b2f412",
+      "label": "田契之争后的播种",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-61b2f412.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-6f493710",
+      "topicId": "c03-scene-6f493710",
+      "label": "湖口破船",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-6f493710.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-737e345e",
+      "topicId": "c03-scene-737e345e",
+      "label": "决口后的界碑争议",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-737e345e.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-77b27d08",
+      "topicId": "c03-scene-77b27d08",
+      "label": "三路出师",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-77b27d08.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-85b49a10",
+      "topicId": "c03-scene-85b49a10",
+      "label": "老兵交兵、登记退伍与家属接人",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-85b49a10.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-8be502ba",
+      "topicId": "c03-scene-8be502ba",
+      "label": "天未亮的押粮车",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-8be502ba.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-ab61a45c",
+      "topicId": "c03-scene-ab61a45c",
+      "label": "富城两条队伍",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-ab61a45c.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-adb9cf25",
+      "topicId": "c03-scene-adb9cf25",
+      "label": "燕云盟约",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-adb9cf25.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-bb81dbfe",
+      "topicId": "c03-scene-bb81dbfe",
+      "label": "白灯夜后",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-bb81dbfe.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-c16fafcf",
+      "topicId": "c03-scene-c16fafcf",
+      "label": "临川新政告示",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-c16fafcf.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-ch01-s03",
+      "topicId": "c03-scene-ch01-s03",
+      "label": "官仓开门",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-ch01-s03.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-ch02-s08",
+      "topicId": "c03-scene-ch02-s08",
+      "label": "雨夜渡淮",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-ch02-s08.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-ch04-s18",
+      "topicId": "c03-scene-ch04-s18",
+      "label": "大泽精准火攻",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-ch04-s18.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-ch07-s35e",
+      "topicId": "c03-scene-ch07-s35e",
+      "label": "一碗新粮",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-ch07-s35e.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-df2a730d",
+      "topicId": "c03-scene-df2a730d",
+      "label": "公开审理",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-df2a730d.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-scene-f40c6e2b",
+      "topicId": "c03-scene-f40c6e2b",
+      "label": "第一面军旗与军法宣读",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-f40c6e2b.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-style-164bde4a",
+      "topicId": "c03-style-164bde4a",
+      "label": "淮右灾年雨色与湿麻",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-164bde4a.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-style-1ff31937",
+      "topicId": "c03-style-1ff31937",
+      "label": "燕云雪原与多族营具",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-1ff31937.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-style-33bd8704",
+      "topicId": "c03-style-33bd8704",
+      "label": "江东建设期春景",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-33bd8704.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-style-4f44ef3f",
+      "topicId": "c03-style-4f44ef3f",
+      "label": "主视觉：官仓与宫门之间",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-4f44ef3f.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-style-6a81a91d",
+      "topicId": "c03-style-6a81a91d",
+      "label": "大泽风火与民船",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-6a81a91d.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-style-87d29bfe",
+      "topicId": "c03-style-87d29bfe",
+      "label": "开国冬季宫城",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-87d29bfe.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-style-cd7cb289",
+      "topicId": "c03-style-cd7cb289",
+      "label": "军中反复改写的水陆墨图",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-cd7cb289.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "kind": "scene"
+    },
+    {
+      "assetId": "C03-ACV1-unit-0137a889",
+      "topicId": "c03-unit-0137a889",
+      "label": "游骑",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-0137a889.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-0609e6e6",
+      "topicId": "c03-unit-0609e6e6",
+      "label": "炮石营",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-0609e6e6.png",
+      "width": 384,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        48,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-0c42f6d3",
+      "topicId": "c03-unit-0c42f6d3",
+      "label": "地道营",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-0c42f6d3.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-118c7423",
+      "topicId": "c03-unit-118c7423",
+      "label": "互市护卫",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-118c7423.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-15c058cc",
+      "topicId": "c03-unit-15c058cc",
+      "label": "神臂弩",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-15c058cc.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-222078e0",
+      "topicId": "c03-unit-222078e0",
+      "label": "艨艟",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-222078e0.png",
+      "width": 384,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        48,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-25f91749",
+      "topicId": "c03-unit-25f91749",
+      "label": "楼船兵",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-25f91749.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-2bc4ddf7",
+      "topicId": "c03-unit-2bc4ddf7",
+      "label": "火油防备队",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-2bc4ddf7.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-2be16bd2",
+      "topicId": "c03-unit-2be16bd2",
+      "label": "架桥营",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-2be16bd2.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-3d86046f",
+      "topicId": "c03-unit-3d86046f",
+      "label": "火铳手",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-3d86046f.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-3f4a6e1d",
+      "topicId": "c03-unit-3f4a6e1d",
+      "label": "密察司缉事",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-3f4a6e1d.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-3f6fea2f",
+      "topicId": "c03-unit-3f6fea2f",
+      "label": "潜渡凿船手",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-3f6fea2f.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-4377f3e4",
+      "topicId": "c03-unit-4377f3e4",
+      "label": "筑城守备",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-4377f3e4.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-4566788b",
+      "topicId": "c03-unit-4566788b",
+      "label": "军医",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-4566788b.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-4619e546",
+      "topicId": "c03-unit-4619e546",
+      "label": "宁朝禁军",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-4619e546.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-4c02a584",
+      "topicId": "c03-unit-4c02a584",
+      "label": "刀盾卒",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-4c02a584.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-4dad36ef",
+      "topicId": "c03-unit-4dad36ef",
+      "label": "云梯队",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-4dad36ef.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-58b98436",
+      "topicId": "c03-unit-58b98436",
+      "label": "边军斥候",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-58b98436.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-5e64c3a6",
+      "topicId": "c03-unit-5e64c3a6",
+      "label": "火箭营",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-5e64c3a6.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-6a62b51e",
+      "topicId": "c03-unit-6a62b51e",
+      "label": "铁锤破阵手",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-6a62b51e.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-6d03b909",
+      "topicId": "c03-unit-6d03b909",
+      "label": "漕运护军",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-6d03b909.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-6fa9292e",
+      "topicId": "c03-unit-6fa9292e",
+      "label": "强弩营",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-6fa9292e.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-73d2bcb4",
+      "topicId": "c03-unit-73d2bcb4",
+      "label": "将领亲兵",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-73d2bcb4.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-747800db",
+      "topicId": "c03-unit-747800db",
+      "label": "雪原骑射",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-747800db.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-75ee37ba",
+      "topicId": "c03-unit-75ee37ba",
+      "label": "说客",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-75ee37ba.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-76cd6822",
+      "topicId": "c03-unit-76cd6822",
+      "label": "城门盾兵",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-76cd6822.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-79f06a6f",
+      "topicId": "c03-unit-79f06a6f",
+      "label": "河工",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-79f06a6f.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-8842d111",
+      "topicId": "c03-unit-8842d111",
+      "label": "斥候司",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-8842d111.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-8f49e6ef",
+      "topicId": "c03-unit-8f49e6ef",
+      "label": "军师",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-8f49e6ef.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-915fc486",
+      "topicId": "c03-unit-915fc486",
+      "label": "乡弓手",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-915fc486.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-9881f2a3",
+      "topicId": "c03-unit-9881f2a3",
+      "label": "震天雷队",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-9881f2a3.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-9ad7ca0f",
+      "topicId": "c03-unit-9ad7ca0f",
+      "label": "长枪阵",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-9ad7ca0f.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-a53b725f",
+      "topicId": "c03-unit-a53b725f",
+      "label": "粮秣官",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-a53b725f.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-b59c3f96",
+      "topicId": "c03-unit-b59c3f96",
+      "label": "旗鼓手",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-b59c3f96.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-c11ad030",
+      "topicId": "c03-unit-c11ad030",
+      "label": "甲骑",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-c11ad030.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-c30bf360",
+      "topicId": "c03-unit-c30bf360",
+      "label": "盐仓护卫",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-c30bf360.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-cecc448d",
+      "topicId": "c03-unit-cecc448d",
+      "label": "降兵整编队",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-cecc448d.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-f0a4ddaa",
+      "topicId": "c03-unit-f0a4ddaa",
+      "label": "乡勇",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-f0a4ddaa.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-fd4c21da",
+      "topicId": "c03-unit-fd4c21da",
+      "label": "火船队",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-fd4c21da.png",
+      "width": 384,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        48,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-unit-ff5e54ed",
+      "topicId": "c03-unit-ff5e54ed",
+      "label": "陌刀队",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-ff5e54ed.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-06ca7225",
+      "topicId": "c03-mission-06ca7225",
+      "label": "史馆抄录员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-06ca7225.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-0d1763ad",
+      "topicId": "c03-mission-0d1763ad",
+      "label": "播种队",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-0d1763ad.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-1ba1c2b5",
+      "topicId": "c03-mission-1ba1c2b5",
+      "label": "河工学徒",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-1ba1c2b5.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-236dc958",
+      "topicId": "c03-mission-236dc958",
+      "label": "学馆学生",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-236dc958.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-281d4f68",
+      "topicId": "c03-mission-281d4f68",
+      "label": "书吏与登记员",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-281d4f68.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-2edb8e76",
+      "topicId": "c03-mission-2edb8e76",
+      "label": "仓库工",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-2edb8e76.png",
+      "width": 384,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        48,
+        63
+      ],
+      "footprint": [
+        2,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-3278b1cd",
+      "topicId": "c03-mission-3278b1cd",
+      "label": "逃兵",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-3278b1cd.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-500e07b9",
+      "topicId": "c03-mission-500e07b9",
+      "label": "地方向导",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-500e07b9.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-57df34e0",
+      "topicId": "c03-mission-57df34e0",
+      "label": "饥民与灾民",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-57df34e0.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-74ec4633",
+      "topicId": "c03-mission-74ec4633",
+      "label": "水盟船工",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-74ec4633.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-7d65d7f6",
+      "topicId": "c03-mission-7d65d7f6",
+      "label": "挑夫",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-7d65d7f6.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-80d52653",
+      "topicId": "c03-mission-80d52653",
+      "label": "县吏",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-80d52653.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-81ca03bd",
+      "topicId": "c03-mission-81ca03bd",
+      "label": "军户家属",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-81ca03bd.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-8e6e6bf3",
+      "topicId": "c03-mission-8e6e6bf3",
+      "label": "农户",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-8e6e6bf3.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-8fd93354",
+      "topicId": "c03-mission-8fd93354",
+      "label": "救济厨工",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-8fd93354.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-9f089520",
+      "topicId": "c03-mission-9f089520",
+      "label": "渡口主人",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-9f089520.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-b283af47",
+      "topicId": "c03-mission-b283af47",
+      "label": "粮车夫",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-b283af47.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-c1a88dc7",
+      "topicId": "c03-mission-c1a88dc7",
+      "label": "退伍老兵",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-c1a88dc7.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-c2e2ed84",
+      "topicId": "c03-mission-c2e2ed84",
+      "label": "城市工匠",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-c2e2ed84.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-cb07fe5d",
+      "topicId": "c03-mission-cb07fe5d",
+      "label": "被押俘虏与证人",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-cb07fe5d.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-cdee8e3c",
+      "topicId": "c03-mission-cdee8e3c",
+      "label": "伤兵",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-cdee8e3c.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-d647c582",
+      "topicId": "c03-mission-d647c582",
+      "label": "盐工",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-d647c582.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-d658ba41",
+      "topicId": "c03-mission-d658ba41",
+      "label": "商旅",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-d658ba41.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-mission-f8a23f60",
+      "topicId": "c03-mission-f8a23f60",
+      "label": "漕渠民夫",
+      "category": "mission-unit",
+      "png": "runtime/mission-unit/mission-f8a23f60.png",
+      "width": 128,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "anchor": [
+        16,
+        47
+      ],
+      "footprint": [
+        1,
+        1
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-faction-18a38531",
+      "topicId": "c03-faction-18a38531",
+      "label": "梁震大泽军装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-18a38531.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-faction-26acaef4",
+      "topicId": "c03-faction-26acaef4",
+      "label": "地方乡勇装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-26acaef4.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-faction-48d391ea",
+      "topicId": "c03-faction-48d391ea",
+      "label": "宫城禁军装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-48d391ea.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-faction-53ed52e7",
+      "topicId": "c03-faction-53ed52e7",
+      "label": "宁朝新军装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-53ed52e7.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-faction-5eb3995f",
+      "topicId": "c03-faction-5eb3995f",
+      "label": "降兵整编态基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-5eb3995f.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-faction-98861b36",
+      "topicId": "c03-faction-98861b36",
+      "label": "大朔与燕云装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-98861b36.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-faction-a61b76f9",
+      "topicId": "c03-faction-a61b76f9",
+      "label": "水盟装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-a61b76f9.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-faction-abad59fa",
+      "topicId": "c03-faction-abad59fa",
+      "label": "水军与舰队装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-abad59fa.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-faction-bf730961",
+      "topicId": "c03-faction-bf730961",
+      "label": "白炬义军装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-bf730961.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-faction-d149da6f",
+      "topicId": "c03-faction-d149da6f",
+      "label": "旧朝官军装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-d149da6f.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-faction-e58fb49d",
+      "topicId": "c03-faction-e58fb49d",
+      "label": "河工与工程营装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-e58fb49d.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-faction-fb407e16",
+      "topicId": "c03-faction-fb407e16",
+      "label": "吴越富城装备基准",
+      "category": "faction-kit",
+      "png": "runtime/faction-kit/faction-fb407e16.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        64,
+        64
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-terrain-06ce5a60",
+      "topicId": "c03-terrain-06ce5a60",
+      "label": "漕渠码头",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-06ce5a60.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-144e2a2b",
+      "topicId": "c03-terrain-144e2a2b",
+      "label": "灌水稻田",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-144e2a2b.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-237c17a6",
+      "topicId": "c03-terrain-237c17a6",
+      "label": "深水急流",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-237c17a6.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-23ed43fa",
+      "topicId": "c03-terrain-23ed43fa",
+      "label": "宫城石阶",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-23ed43fa.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-3422fba2",
+      "topicId": "c03-terrain-3422fba2",
+      "label": "门洞地面",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-3422fba2.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-44bffd59",
+      "topicId": "c03-terrain-44bffd59",
+      "label": "石脚渗沟",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-44bffd59.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-4bc2c8ba",
+      "topicId": "c03-terrain-4bc2c8ba",
+      "label": "燕云积雪原",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-4bc2c8ba.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-5540f619",
+      "topicId": "c03-terrain-5540f619",
+      "label": "盐仓水巷",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-5540f619.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-603bcbff",
+      "topicId": "c03-terrain-603bcbff",
+      "label": "成熟田埂",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-603bcbff.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-62e36a0f",
+      "topicId": "c03-terrain-62e36a0f",
+      "label": "浅滩",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-62e36a0f.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-6d3d030c",
+      "topicId": "c03-terrain-6d3d030c",
+      "label": "云梯地道作业面",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-6d3d030c.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-70b193fa",
+      "topicId": "c03-terrain-70b193fa",
+      "label": "夯土堤顶",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-70b193fa.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-769e91a5",
+      "topicId": "c03-terrain-769e91a5",
+      "label": "分洪渠",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-769e91a5.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-7e8540ac",
+      "topicId": "c03-terrain-7e8540ac",
+      "label": "大泽平湖",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-7e8540ac.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-87e77f14",
+      "topicId": "c03-terrain-87e77f14",
+      "label": "风蚀骑迹",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-87e77f14.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-980abbed",
+      "topicId": "c03-terrain-980abbed",
+      "label": "退水烂泥",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-980abbed.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-98a758f5",
+      "topicId": "c03-terrain-98a758f5",
+      "label": "浮桥板与桥缘",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-98a758f5.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-99390ac8",
+      "topicId": "c03-terrain-99390ac8",
+      "label": "龟裂灾田",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-99390ac8.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-9af6eb7b",
+      "topicId": "c03-terrain-9af6eb7b",
+      "label": "冻土驿路",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-9af6eb7b.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-b499c3bf",
+      "topicId": "c03-terrain-b499c3bf",
+      "label": "复耕田垄",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-b499c3bf.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-b7e36bf1",
+      "topicId": "c03-terrain-b7e36bf1",
+      "label": "水冲决口",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-b7e36bf1.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-c053bd0c",
+      "topicId": "c03-terrain-c053bd0c",
+      "label": "粮车与难民车辙路",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-c053bd0c.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-c644d0f1",
+      "topicId": "c03-terrain-c644d0f1",
+      "label": "芦苇隐蔽区",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-c644d0f1.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-c84c1d67",
+      "topicId": "c03-terrain-c84c1d67",
+      "label": "青石市街",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-c84c1d67.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-cf372208",
+      "topicId": "c03-terrain-cf372208",
+      "label": "壕沟瓦砾",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-cf372208.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-e1b682d1",
+      "topicId": "c03-terrain-e1b682d1",
+      "label": "芦苇岸",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-e1b682d1.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-e8301db7",
+      "topicId": "c03-terrain-e8301db7",
+      "label": "大泽风浪流向",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-e8301db7.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-efd25ffa",
+      "topicId": "c03-terrain-efd25ffa",
+      "label": "湿船板与栈桥",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-efd25ffa.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-f059779e",
+      "topicId": "c03-terrain-f059779e",
+      "label": "朱门门槛",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-f059779e.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-f38c3861",
+      "topicId": "c03-terrain-f38c3861",
+      "label": "旧都坊市地面",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-f38c3861.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-f3c866de",
+      "topicId": "c03-terrain-f3c866de",
+      "label": "城墙顶面",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-f3c866de.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "variants": 4,
+      "variantOrder": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "tileMode": "variants"
+    },
+    {
+      "assetId": "C03-ACV1-terrain-fb94afb0",
+      "topicId": "c03-terrain-fb94afb0",
+      "label": "互市水源点",
+      "category": "terrain",
+      "png": "runtime/terrain/terrain-fb94afb0.png",
+      "width": 512,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "connectionMasks": 16,
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "tileMode": "nesw-16"
+    },
+    {
+      "assetId": "C03-ACV1-structure-109b2230",
+      "topicId": "c03-structure-109b2230",
+      "label": "渡口绞盘",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-109b2230.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-14b4ae0d",
+      "topicId": "c03-structure-14b4ae0d",
+      "label": "城门控制位",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-14b4ae0d.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-1fbf8e8c",
+      "topicId": "c03-structure-1fbf8e8c",
+      "label": "火油防备站",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-1fbf8e8c.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-45b46002",
+      "topicId": "c03-structure-45b46002",
+      "label": "公开税额告示",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-45b46002.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-47186f13",
+      "topicId": "c03-structure-47186f13",
+      "label": "河堤闸门",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-47186f13.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-59225afb",
+      "topicId": "c03-structure-59225afb",
+      "label": "航道信号台",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-59225afb.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-731f5440",
+      "topicId": "c03-structure-731f5440",
+      "label": "户籍登记案",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-731f5440.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-733300be",
+      "topicId": "c03-structure-733300be",
+      "label": "伤兵棚",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-733300be.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-80221641",
+      "topicId": "c03-structure-80221641",
+      "label": "拒马营门",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-80221641.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-81e32d79",
+      "topicId": "c03-structure-81e32d79",
+      "label": "弩车位",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-81e32d79.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-84e7f122",
+      "topicId": "c03-structure-84e7f122",
+      "label": "军籍交接点",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-84e7f122.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-8c1f5eac",
+      "topicId": "c03-structure-8c1f5eac",
+      "label": "中军旗点",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-8c1f5eac.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-945da1f8",
+      "topicId": "c03-structure-945da1f8",
+      "label": "浮桥桥头",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-945da1f8.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-94c75092",
+      "topicId": "c03-structure-94c75092",
+      "label": "药棚",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-94c75092.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-b854f5d8",
+      "topicId": "c03-structure-b854f5d8",
+      "label": "炮石阵地",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-b854f5d8.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-c3e2e8d7",
+      "topicId": "c03-structure-c3e2e8d7",
+      "label": "盐仓税卡",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-c3e2e8d7.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-c627d407",
+      "topicId": "c03-structure-c627d407",
+      "label": "白灯避难所",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-c627d407.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-d577aa95",
+      "topicId": "c03-structure-d577aa95",
+      "label": "地道入口",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-d577aa95.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-da2f5b93",
+      "topicId": "c03-structure-da2f5b93",
+      "label": "县仓交互体",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-da2f5b93.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-dfc98ebc",
+      "topicId": "c03-structure-dfc98ebc",
+      "label": "史馆证据柜",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-dfc98ebc.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-edac22ef",
+      "topicId": "c03-structure-edac22ef",
+      "label": "分粮点",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-edac22ef.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-f793619a",
+      "topicId": "c03-structure-f793619a",
+      "label": "野战粮站",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-f793619a.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-f93c3796",
+      "topicId": "c03-structure-f93c3796",
+      "label": "宫门门禁",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-f93c3796.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-structure-f9b43d6b",
+      "topicId": "c03-structure-f9b43d6b",
+      "label": "火头营",
+      "category": "interactive-structure",
+      "png": "runtime/interactive-structure/structure-f9b43d6b.png",
+      "width": 192,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32,
+        63
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-0fb580c9",
+      "topicId": "c03-battle-prop-0fb580c9",
+      "label": "木盾墙组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-0fb580c9.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-10c026c1",
+      "topicId": "c03-battle-prop-10c026c1",
+      "label": "沙袋湿毡工程组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-10c026c1.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-16fa4a1f",
+      "topicId": "c03-battle-prop-16fa4a1f",
+      "label": "晾衣绳生活组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-16fa4a1f.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-1f1ab459",
+      "topicId": "c03-battle-prop-1f1ab459",
+      "label": "燃烧箭束危险组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-1f1ab459.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-27872fa1",
+      "topicId": "c03-battle-prop-27872fa1",
+      "label": "军籍牌证据组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-27872fa1.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-2e0af0f2",
+      "topicId": "c03-battle-prop-2e0af0f2",
+      "label": "药箱后勤组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-2e0af0f2.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-2e7df413",
+      "topicId": "c03-battle-prop-2e7df413",
+      "label": "水盟航旗标识组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-2e7df413.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-2f038eea",
+      "topicId": "c03-battle-prop-2f038eea",
+      "label": "行军锅生活组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-2f038eea.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-30a92ab8",
+      "topicId": "c03-battle-prop-30a92ab8",
+      "label": "桥板工程组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-30a92ab8.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-5cc33643",
+      "topicId": "c03-battle-prop-5cc33643",
+      "label": "户册证据组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-5cc33643.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-6a51fb07",
+      "topicId": "c03-battle-prop-6a51fb07",
+      "label": "官军门牌标识组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-6a51fb07.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-6ecfadac",
+      "topicId": "c03-battle-prop-6ecfadac",
+      "label": "折叠案生活组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-6ecfadac.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-6fff5dc5",
+      "topicId": "c03-battle-prop-6fff5dc5",
+      "label": "修补墙",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-6fff5dc5.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-7a878eb8",
+      "topicId": "c03-battle-prop-7a878eb8",
+      "label": "火油罐危险组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-7a878eb8.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-7d42603a",
+      "topicId": "c03-battle-prop-7d42603a",
+      "label": "沉船名牌证据组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-7d42603a.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-809c152b",
+      "topicId": "c03-battle-prop-809c152b",
+      "label": "火药桶危险组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-809c152b.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-8ec886d2",
+      "topicId": "c03-battle-prop-8ec886d2",
+      "label": "铺盖生活组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-8ec886d2.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-a4886438",
+      "topicId": "c03-battle-prop-a4886438",
+      "label": "宁朝门禁牌标识组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-a4886438.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-a7b85246",
+      "topicId": "c03-battle-prop-a7b85246",
+      "label": "翻倒粮车组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-a7b85246.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-a7c96f59",
+      "topicId": "c03-battle-prop-a7c96f59",
+      "label": "税卡证据组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-a7c96f59.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-b31edea6",
+      "topicId": "c03-battle-prop-b31edea6",
+      "label": "退伍交兵台",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-b31edea6.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-b6bd8efb",
+      "topicId": "c03-battle-prop-b6bd8efb",
+      "label": "粮箱掩体组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-b6bd8efb.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-ba469b15",
+      "topicId": "c03-battle-prop-ba469b15",
+      "label": "伤员区",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-ba469b15.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-c7e05f1c",
+      "topicId": "c03-battle-prop-c7e05f1c",
+      "label": "粮袋量斗后勤组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-c7e05f1c.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-caa5ebba",
+      "topicId": "c03-battle-prop-caa5ebba",
+      "label": "未染旗标识组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-caa5ebba.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-cb065f97",
+      "topicId": "c03-battle-prop-cb065f97",
+      "label": "绳盘工程组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-cb065f97.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-cd97a638",
+      "topicId": "c03-battle-prop-cd97a638",
+      "label": "备箭架后勤组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-cd97a638.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-cfb13cec",
+      "topicId": "c03-battle-prop-cfb13cec",
+      "label": "木桩工程组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-cfb13cec.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-d983ce23",
+      "topicId": "c03-battle-prop-d983ce23",
+      "label": "弃械堆",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-d983ce23.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-ede52a71",
+      "topicId": "c03-battle-prop-ede52a71",
+      "label": "松动堤土危险组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-ede52a71.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-f7033df9",
+      "topicId": "c03-battle-prop-f7033df9",
+      "label": "水桶后勤组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-f7033df9.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-battle-prop-ff4a64b9",
+      "topicId": "c03-battle-prop-ff4a64b9",
+      "label": "盐袋掩体组",
+      "category": "battle-prop",
+      "png": "runtime/battle-prop/battle-prop-ff4a64b9.png",
+      "width": 64,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        32,
+        32
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-0137a889",
+      "topicId": "c03-equip-0137a889",
+      "label": "游骑主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-0137a889.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-0609e6e6",
+      "topicId": "c03-equip-0609e6e6",
+      "label": "炮石营主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-0609e6e6.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-0c42f6d3",
+      "topicId": "c03-equip-0c42f6d3",
+      "label": "地道营主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-0c42f6d3.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-118c7423",
+      "topicId": "c03-equip-118c7423",
+      "label": "互市护卫主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-118c7423.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-15c058cc",
+      "topicId": "c03-equip-15c058cc",
+      "label": "神臂弩主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-15c058cc.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-222078e0",
+      "topicId": "c03-equip-222078e0",
+      "label": "艨艟主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-222078e0.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-25f91749",
+      "topicId": "c03-equip-25f91749",
+      "label": "楼船兵主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-25f91749.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-2bc4ddf7",
+      "topicId": "c03-equip-2bc4ddf7",
+      "label": "火油防备队主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-2bc4ddf7.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-2be16bd2",
+      "topicId": "c03-equip-2be16bd2",
+      "label": "架桥营主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-2be16bd2.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-3d86046f",
+      "topicId": "c03-equip-3d86046f",
+      "label": "火铳手主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-3d86046f.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-3f4a6e1d",
+      "topicId": "c03-equip-3f4a6e1d",
+      "label": "密察司缉事主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-3f4a6e1d.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-3f6fea2f",
+      "topicId": "c03-equip-3f6fea2f",
+      "label": "潜渡凿船手主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-3f6fea2f.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-4377f3e4",
+      "topicId": "c03-equip-4377f3e4",
+      "label": "筑城守备主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-4377f3e4.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-4566788b",
+      "topicId": "c03-equip-4566788b",
+      "label": "军医主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-4566788b.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-4619e546",
+      "topicId": "c03-equip-4619e546",
+      "label": "宁朝禁军主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-4619e546.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-4c02a584",
+      "topicId": "c03-equip-4c02a584",
+      "label": "刀盾卒主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-4c02a584.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-4dad36ef",
+      "topicId": "c03-equip-4dad36ef",
+      "label": "云梯队主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-4dad36ef.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-58b98436",
+      "topicId": "c03-equip-58b98436",
+      "label": "边军斥候主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-58b98436.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-5e64c3a6",
+      "topicId": "c03-equip-5e64c3a6",
+      "label": "火箭营主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-5e64c3a6.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-6a62b51e",
+      "topicId": "c03-equip-6a62b51e",
+      "label": "铁锤破阵手主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-6a62b51e.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-6d03b909",
+      "topicId": "c03-equip-6d03b909",
+      "label": "漕运护军主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-6d03b909.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-6fa9292e",
+      "topicId": "c03-equip-6fa9292e",
+      "label": "强弩营主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-6fa9292e.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-73d2bcb4",
+      "topicId": "c03-equip-73d2bcb4",
+      "label": "将领亲兵主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-73d2bcb4.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-747800db",
+      "topicId": "c03-equip-747800db",
+      "label": "雪原骑射主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-747800db.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-75ee37ba",
+      "topicId": "c03-equip-75ee37ba",
+      "label": "说客主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-75ee37ba.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-76cd6822",
+      "topicId": "c03-equip-76cd6822",
+      "label": "城门盾兵主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-76cd6822.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-79f06a6f",
+      "topicId": "c03-equip-79f06a6f",
+      "label": "河工主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-79f06a6f.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-8842d111",
+      "topicId": "c03-equip-8842d111",
+      "label": "斥候司主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-8842d111.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-8f49e6ef",
+      "topicId": "c03-equip-8f49e6ef",
+      "label": "军师主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-8f49e6ef.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-915fc486",
+      "topicId": "c03-equip-915fc486",
+      "label": "乡弓手主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-915fc486.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-9881f2a3",
+      "topicId": "c03-equip-9881f2a3",
+      "label": "震天雷队主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-9881f2a3.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-9ad7ca0f",
+      "topicId": "c03-equip-9ad7ca0f",
+      "label": "长枪阵主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-9ad7ca0f.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-a53b725f",
+      "topicId": "c03-equip-a53b725f",
+      "label": "粮秣官主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-a53b725f.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-b59c3f96",
+      "topicId": "c03-equip-b59c3f96",
+      "label": "旗鼓手主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-b59c3f96.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-c11ad030",
+      "topicId": "c03-equip-c11ad030",
+      "label": "甲骑主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-c11ad030.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-c30bf360",
+      "topicId": "c03-equip-c30bf360",
+      "label": "盐仓护卫主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-c30bf360.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-cecc448d",
+      "topicId": "c03-equip-cecc448d",
+      "label": "降兵整编队主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-cecc448d.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-f0a4ddaa",
+      "topicId": "c03-equip-f0a4ddaa",
+      "label": "乡勇主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-f0a4ddaa.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-fd4c21da",
+      "topicId": "c03-equip-fd4c21da",
+      "label": "火船队主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-fd4c21da.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-ff5e54ed",
+      "topicId": "c03-equip-ff5e54ed",
+      "label": "陌刀队主装备组",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-ff5e54ed.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-shared-0adf8733",
+      "topicId": "c03-equip-shared-0adf8733",
+      "label": "反甲爆破共享装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-shared-0adf8733.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-shared-4193591d",
+      "topicId": "c03-equip-shared-4193591d",
+      "label": "粮秣分发共享装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-shared-4193591d.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-shared-5d494e47",
+      "topicId": "c03-equip-shared-5d494e47",
+      "label": "军籍证据交互共享装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-shared-5d494e47.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-shared-6233dfe4",
+      "topicId": "c03-equip-shared-6233dfe4",
+      "label": "战地救护共享装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-shared-6233dfe4.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-shared-8cbab9a4",
+      "topicId": "c03-equip-shared-8cbab9a4",
+      "label": "绳索机动共享装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-shared-8cbab9a4.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-shared-b4ba078c",
+      "topicId": "c03-equip-shared-b4ba078c",
+      "label": "工程修复共享装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-shared-b4ba078c.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-shared-d36a6ab2",
+      "topicId": "c03-equip-shared-d36a6ab2",
+      "label": "防火防水共享装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-shared-d36a6ab2.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-equip-shared-eff22900",
+      "topicId": "c03-equip-shared-eff22900",
+      "label": "侦察标路共享装备",
+      "category": "equipment",
+      "png": "runtime/equipment/equip-shared-eff22900.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-07289cb2",
+      "topicId": "c03-skill-07289cb2",
+      "label": "筑堤",
+      "category": "skill",
+      "png": "runtime/skill/skill-07289cb2.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-140c5ddd",
+      "topicId": "c03-skill-140c5ddd",
+      "label": "瞄射",
+      "category": "skill",
+      "png": "runtime/skill/skill-140c5ddd.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-150f6cb7",
+      "topicId": "c03-skill-150f6cb7",
+      "label": "拆桥",
+      "category": "skill",
+      "png": "runtime/skill/skill-150f6cb7.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-1c47f1ad",
+      "topicId": "c03-skill-1c47f1ad",
+      "label": "枪拒",
+      "category": "skill",
+      "png": "runtime/skill/skill-1c47f1ad.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-1d2f003b",
+      "topicId": "c03-skill-1d2f003b",
+      "label": "白灯集结",
+      "category": "skill",
+      "png": "runtime/skill/skill-1d2f003b.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-1d9ed8c4",
+      "topicId": "c03-skill-1d9ed8c4",
+      "label": "劝降",
+      "category": "skill",
+      "png": "runtime/skill/skill-1d9ed8c4.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-1e43d47b",
+      "topicId": "c03-skill-1e43d47b",
+      "label": "开闸分洪",
+      "category": "skill",
+      "png": "runtime/skill/skill-1e43d47b.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-1f8a786a",
+      "topicId": "c03-skill-1f8a786a",
+      "label": "路线标识",
+      "category": "skill",
+      "png": "runtime/skill/skill-1f8a786a.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-21b44a84",
+      "topicId": "c03-skill-21b44a84",
+      "label": "盾枪协同",
+      "category": "skill",
+      "png": "runtime/skill/skill-21b44a84.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-234774fc",
+      "topicId": "c03-skill-234774fc",
+      "label": "官军轮换",
+      "category": "skill",
+      "png": "runtime/skill/skill-234774fc.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-323f8c16",
+      "topicId": "c03-skill-323f8c16",
+      "label": "湿毡灭火",
+      "category": "skill",
+      "png": "runtime/skill/skill-323f8c16.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-344cc154",
+      "topicId": "c03-skill-344cc154",
+      "label": "压制",
+      "category": "skill",
+      "png": "runtime/skill/skill-344cc154.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-365f19b0",
+      "topicId": "c03-skill-365f19b0",
+      "label": "乡勇守土",
+      "category": "skill",
+      "png": "runtime/skill/skill-365f19b0.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-3abf88f6",
+      "topicId": "c03-skill-3abf88f6",
+      "label": "吴越闭闸",
+      "category": "skill",
+      "png": "runtime/skill/skill-3abf88f6.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-3fef707a",
+      "topicId": "c03-skill-3fef707a",
+      "label": "掘地道",
+      "category": "skill",
+      "png": "runtime/skill/skill-3fef707a.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-4181fbc8",
+      "topicId": "c03-skill-4181fbc8",
+      "label": "接舷",
+      "category": "skill",
+      "png": "runtime/skill/skill-4181fbc8.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-4389724e",
+      "topicId": "c03-skill-4389724e",
+      "label": "分粮",
+      "category": "skill",
+      "png": "runtime/skill/skill-4389724e.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-44305486",
+      "topicId": "c03-skill-44305486",
+      "label": "水盟识流",
+      "category": "skill",
+      "png": "runtime/skill/skill-44305486.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-5298b5cb",
+      "topicId": "c03-skill-5298b5cb",
+      "label": "架桥",
+      "category": "skill",
+      "png": "runtime/skill/skill-5298b5cb.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-55ec4964",
+      "topicId": "c03-skill-55ec4964",
+      "label": "火船释放",
+      "category": "skill",
+      "png": "runtime/skill/skill-55ec4964.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-59e0edce",
+      "topicId": "c03-skill-59e0edce",
+      "label": "追击",
+      "category": "skill",
+      "png": "runtime/skill/skill-59e0edce.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-6765b63a",
+      "topicId": "c03-skill-6765b63a",
+      "label": "未染旗鼓舞",
+      "category": "skill",
+      "png": "runtime/skill/skill-6765b63a.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-67a1d71b",
+      "topicId": "c03-skill-67a1d71b",
+      "label": "护卫",
+      "category": "skill",
+      "png": "runtime/skill/skill-67a1d71b.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-747800db",
+      "topicId": "c03-skill-747800db",
+      "label": "雪原骑射",
+      "category": "skill",
+      "png": "runtime/skill/skill-747800db.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-77348937",
+      "topicId": "c03-skill-77348937",
+      "label": "盾阵",
+      "category": "skill",
+      "png": "runtime/skill/skill-77348937.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-7c407c64",
+      "topicId": "c03-skill-7c407c64",
+      "label": "新军入籍",
+      "category": "skill",
+      "png": "runtime/skill/skill-7c407c64.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-7d81885c",
+      "topicId": "c03-skill-7d81885c",
+      "label": "治疗",
+      "category": "skill",
+      "png": "runtime/skill/skill-7d81885c.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-7f769954",
+      "topicId": "c03-skill-7f769954",
+      "label": "弩手轮射",
+      "category": "skill",
+      "png": "runtime/skill/skill-7f769954.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-8156df8c",
+      "topicId": "c03-skill-8156df8c",
+      "label": "炮石校射",
+      "category": "skill",
+      "png": "runtime/skill/skill-8156df8c.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-8ac12991",
+      "topicId": "c03-skill-8ac12991",
+      "label": "架梯",
+      "category": "skill",
+      "png": "runtime/skill/skill-8ac12991.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-8e16d375",
+      "topicId": "c03-skill-8e16d375",
+      "label": "地道破门",
+      "category": "skill",
+      "png": "runtime/skill/skill-8e16d375.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-9238e301",
+      "topicId": "c03-skill-9238e301",
+      "label": "破甲",
+      "category": "skill",
+      "png": "runtime/skill/skill-9238e301.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-95324d93",
+      "topicId": "c03-skill-95324d93",
+      "label": "钩索接舷",
+      "category": "skill",
+      "png": "runtime/skill/skill-95324d93.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-96f19d01",
+      "topicId": "c03-skill-96f19d01",
+      "label": "紧急补给",
+      "category": "skill",
+      "png": "runtime/skill/skill-96f19d01.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-96ff26d1",
+      "topicId": "c03-skill-96ff26d1",
+      "label": "骑军侧击",
+      "category": "skill",
+      "png": "runtime/skill/skill-96ff26d1.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-98f13147",
+      "topicId": "c03-skill-98f13147",
+      "label": "精准火道",
+      "category": "skill",
+      "png": "runtime/skill/skill-98f13147.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-9d34d1f6",
+      "topicId": "c03-skill-9d34d1f6",
+      "label": "测风控火",
+      "category": "skill",
+      "png": "runtime/skill/skill-9d34d1f6.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-9f597d11",
+      "topicId": "c03-skill-9f597d11",
+      "label": "证据送达",
+      "category": "skill",
+      "png": "runtime/skill/skill-9f597d11.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-a8710e0b",
+      "topicId": "c03-skill-a8710e0b",
+      "label": "骑射诱敌",
+      "category": "skill",
+      "png": "runtime/skill/skill-a8710e0b.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-a938b019",
+      "topicId": "c03-skill-a938b019",
+      "label": "公开军法",
+      "category": "skill",
+      "png": "runtime/skill/skill-a938b019.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-b1de2bea",
+      "topicId": "c03-skill-b1de2bea",
+      "label": "亲兵援护",
+      "category": "skill",
+      "png": "runtime/skill/skill-b1de2bea.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-be079d47",
+      "topicId": "c03-skill-be079d47",
+      "label": "伤员分诊",
+      "category": "skill",
+      "png": "runtime/skill/skill-be079d47.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-ca79981a",
+      "topicId": "c03-skill-ca79981a",
+      "label": "补箭补药",
+      "category": "skill",
+      "png": "runtime/skill/skill-ca79981a.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-cf3faa1b",
+      "topicId": "c03-skill-cf3faa1b",
+      "label": "降兵整编",
+      "category": "skill",
+      "png": "runtime/skill/skill-cf3faa1b.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-d8f6782c",
+      "topicId": "c03-skill-d8f6782c",
+      "label": "退伍交兵",
+      "category": "skill",
+      "png": "runtime/skill/skill-d8f6782c.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-ee087273",
+      "topicId": "c03-skill-ee087273",
+      "label": "旗鼓振奋",
+      "category": "skill",
+      "png": "runtime/skill/skill-ee087273.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-f739d46e",
+      "topicId": "c03-skill-f739d46e",
+      "label": "互市停战",
+      "category": "skill",
+      "png": "runtime/skill/skill-f739d46e.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-skill-fb3f53d1",
+      "topicId": "c03-skill-fb3f53d1",
+      "label": "侦察标记",
+      "category": "skill",
+      "png": "runtime/skill/skill-fb3f53d1.png",
+      "width": 48,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        24,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-05257b52",
+      "topicId": "c03-status-05257b52",
+      "label": "护送目标",
+      "category": "status",
+      "png": "runtime/status/status-05257b52.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-09f44016",
+      "topicId": "c03-status-09f44016",
+      "label": "弹药资源",
+      "category": "status",
+      "png": "runtime/status/status-09f44016.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-12899841",
+      "topicId": "c03-status-12899841",
+      "label": "被拘受控",
+      "category": "status",
+      "png": "runtime/status/status-12899841.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-1fecbd7e",
+      "topicId": "c03-status-1fecbd7e",
+      "label": "护卫状态",
+      "category": "status",
+      "png": "runtime/status/status-1fecbd7e.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-201997b4",
+      "topicId": "c03-status-201997b4",
+      "label": "破坏目标",
+      "category": "status",
+      "png": "runtime/status/status-201997b4.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-355f61aa",
+      "topicId": "c03-status-355f61aa",
+      "label": "着火",
+      "category": "status",
+      "png": "runtime/status/status-355f61aa.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-360f3511",
+      "topicId": "c03-status-360f3511",
+      "label": "船运力",
+      "category": "status",
+      "png": "runtime/status/status-360f3511.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-396c70f2",
+      "topicId": "c03-status-396c70f2",
+      "label": "湿透",
+      "category": "status",
+      "png": "runtime/status/status-396c70f2.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-444f7804",
+      "topicId": "c03-status-444f7804",
+      "label": "负伤",
+      "category": "status",
+      "png": "runtime/status/status-444f7804.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-55c056d4",
+      "topicId": "c03-status-55c056d4",
+      "label": "粮秣资源",
+      "category": "status",
+      "png": "runtime/status/status-55c056d4.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-56a19fe9",
+      "topicId": "c03-status-56a19fe9",
+      "label": "救援目标",
+      "category": "status",
+      "png": "runtime/status/status-56a19fe9.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-5bdbd94c",
+      "topicId": "c03-status-5bdbd94c",
+      "label": "证据可信度",
+      "category": "status",
+      "png": "runtime/status/status-5bdbd94c.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-6dd467a1",
+      "topicId": "c03-status-6dd467a1",
+      "label": "降兵待编",
+      "category": "status",
+      "png": "runtime/status/status-6dd467a1.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-856740bc",
+      "topicId": "c03-status-856740bc",
+      "label": "药材资源",
+      "category": "status",
+      "png": "runtime/status/status-856740bc.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-93ea9434",
+      "topicId": "c03-status-93ea9434",
+      "label": "守时目标",
+      "category": "status",
+      "png": "runtime/status/status-93ea9434.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-a32c64c0",
+      "topicId": "c03-status-a32c64c0",
+      "label": "芦苇隐蔽",
+      "category": "status",
+      "png": "runtime/status/status-a32c64c0.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-a59da10d",
+      "topicId": "c03-status-a59da10d",
+      "label": "地方支持",
+      "category": "status",
+      "png": "runtime/status/status-a59da10d.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-a9b5519b",
+      "topicId": "c03-status-a9b5519b",
+      "label": "溃退",
+      "category": "status",
+      "png": "runtime/status/status-a9b5519b.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-aac93b06",
+      "topicId": "c03-status-aac93b06",
+      "label": "撤离目标",
+      "category": "status",
+      "png": "runtime/status/status-aac93b06.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-bdc136db",
+      "topicId": "c03-status-bdc136db",
+      "label": "维修目标",
+      "category": "status",
+      "png": "runtime/status/status-bdc136db.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-c70d591b",
+      "topicId": "c03-status-c70d591b",
+      "label": "士气资源",
+      "category": "status",
+      "png": "runtime/status/status-c70d591b.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-d40c7a28",
+      "topicId": "c03-status-d40c7a28",
+      "label": "证据送达目标",
+      "category": "status",
+      "png": "runtime/status/status-d40c7a28.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-f13c9402",
+      "topicId": "c03-status-f13c9402",
+      "label": "工程材料",
+      "category": "status",
+      "png": "runtime/status/status-f13c9402.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-status-fd77fd05",
+      "topicId": "c03-status-fd77fd05",
+      "label": "占领目标",
+      "category": "status",
+      "png": "runtime/status/status-fd77fd05.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-0d47f747",
+      "topicId": "c03-fx-0d47f747",
+      "label": "水流区域",
+      "category": "fx",
+      "png": "runtime/fx/fx-0d47f747.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-28309fac",
+      "topicId": "c03-fx-28309fac",
+      "label": "拘捕受控状态",
+      "category": "fx",
+      "png": "runtime/fx/fx-28309fac.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-2e92cff9",
+      "topicId": "c03-fx-2e92cff9",
+      "label": "泥泞区域",
+      "category": "fx",
+      "png": "runtime/fx/fx-2e92cff9.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-38a88bd8",
+      "topicId": "c03-fx-38a88bd8",
+      "label": "芦苇隐蔽区域",
+      "category": "fx",
+      "png": "runtime/fx/fx-38a88bd8.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-409f272d",
+      "topicId": "c03-fx-409f272d",
+      "label": "占领换旗状态",
+      "category": "fx",
+      "png": "runtime/fx/fx-409f272d.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-606c54e3",
+      "topicId": "c03-fx-606c54e3",
+      "label": "侦察标记状态",
+      "category": "fx",
+      "png": "runtime/fx/fx-606c54e3.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-65554e05",
+      "topicId": "c03-fx-65554e05",
+      "label": "箭弩命中",
+      "category": "fx",
+      "png": "runtime/fx/fx-65554e05.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-78d874c1",
+      "topicId": "c03-fx-78d874c1",
+      "label": "风雪区域",
+      "category": "fx",
+      "png": "runtime/fx/fx-78d874c1.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-7a8b685c",
+      "topicId": "c03-fx-7a8b685c",
+      "label": "斩击命中",
+      "category": "fx",
+      "png": "runtime/fx/fx-7a8b685c.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-7b06f9cf",
+      "topicId": "c03-fx-7b06f9cf",
+      "label": "修复状态",
+      "category": "fx",
+      "png": "runtime/fx/fx-7b06f9cf.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-7f7b464c",
+      "topicId": "c03-fx-7f7b464c",
+      "label": "隐蔽状态",
+      "category": "fx",
+      "png": "runtime/fx/fx-7f7b464c.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-840b63e6",
+      "topicId": "c03-fx-840b63e6",
+      "label": "穿刺命中",
+      "category": "fx",
+      "png": "runtime/fx/fx-840b63e6.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-979062e9",
+      "topicId": "c03-fx-979062e9",
+      "label": "钝击命中",
+      "category": "fx",
+      "png": "runtime/fx/fx-979062e9.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-9b4246b5",
+      "topicId": "c03-fx-9b4246b5",
+      "label": "烟火区域",
+      "category": "fx",
+      "png": "runtime/fx/fx-9b4246b5.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-aab458ba",
+      "topicId": "c03-fx-aab458ba",
+      "label": "暴雨区域",
+      "category": "fx",
+      "png": "runtime/fx/fx-aab458ba.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-bdc68cab",
+      "topicId": "c03-fx-bdc68cab",
+      "label": "火铳命中",
+      "category": "fx",
+      "png": "runtime/fx/fx-bdc68cab.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-c2f22b7a",
+      "topicId": "c03-fx-c2f22b7a",
+      "label": "浅水区域",
+      "category": "fx",
+      "png": "runtime/fx/fx-c2f22b7a.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-ccb081fb",
+      "topicId": "c03-fx-ccb081fb",
+      "label": "尘土瓦砾区域",
+      "category": "fx",
+      "png": "runtime/fx/fx-ccb081fb.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-d7178f8f",
+      "topicId": "c03-fx-d7178f8f",
+      "label": "结构受损状态",
+      "category": "fx",
+      "png": "runtime/fx/fx-d7178f8f.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-da112311",
+      "topicId": "c03-fx-da112311",
+      "label": "燃烧伤害",
+      "category": "fx",
+      "png": "runtime/fx/fx-da112311.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-e590996f",
+      "topicId": "c03-fx-e590996f",
+      "label": "爆破命中",
+      "category": "fx",
+      "png": "runtime/fx/fx-e590996f.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-e835ecd4",
+      "topicId": "c03-fx-e835ecd4",
+      "label": "攻城冲击",
+      "category": "fx",
+      "png": "runtime/fx/fx-e835ecd4.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": false,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-fb2a2599",
+      "topicId": "c03-fx-fb2a2599",
+      "label": "治疗状态",
+      "category": "fx",
+      "png": "runtime/fx/fx-fb2a2599.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-fx-fcfbdba1",
+      "topicId": "c03-fx-fcfbdba1",
+      "label": "鼓舞状态",
+      "category": "fx",
+      "png": "runtime/fx/fx-fcfbdba1.png",
+      "width": 128,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "fps": 12,
+      "loop": true,
+      "blendMode": "normal",
+      "anchor": [
+        16,
+        24
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-04abec3b",
+      "topicId": "c03-hud-04abec3b",
+      "label": "补给点标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-04abec3b.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-1024fd1a",
+      "topicId": "c03-hud-1024fd1a",
+      "label": "撤离出口标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-1024fd1a.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-27d02a24",
+      "topicId": "c03-hud-27d02a24",
+      "label": "次要目标标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-27d02a24.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-358588ad",
+      "topicId": "c03-hud-358588ad",
+      "label": "友军标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-358588ad.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-55f762c1",
+      "topicId": "c03-hud-55f762c1",
+      "label": "护送目标标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-55f762c1.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-6bf4f047",
+      "topicId": "c03-hud-6bf4f047",
+      "label": "危险区域标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-6bf4f047.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-930f0f89",
+      "topicId": "c03-hud-930f0f89",
+      "label": "多阵营军令争议点",
+      "category": "hud",
+      "png": "runtime/hud/hud-930f0f89.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-a6a1a227",
+      "topicId": "c03-hud-a6a1a227",
+      "label": "治疗点标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-a6a1a227.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-abe1e247",
+      "topicId": "c03-hud-abe1e247",
+      "label": "敌军标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-abe1e247.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-c7c36f93",
+      "topicId": "c03-hud-c7c36f93",
+      "label": "可修复结构标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-c7c36f93.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-cb1f5cc3",
+      "topicId": "c03-hud-cb1f5cc3",
+      "label": "主目标标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-cb1f5cc3.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-cc6af821",
+      "topicId": "c03-hud-cc6af821",
+      "label": "增援入口标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-cc6af821.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-e4f24d33",
+      "topicId": "c03-hud-e4f24d33",
+      "label": "可破坏结构标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-e4f24d33.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-ed346324",
+      "topicId": "c03-hud-ed346324",
+      "label": "可招降标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-ed346324.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-ed62237e",
+      "topicId": "c03-hud-ed62237e",
+      "label": "工程交互标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-ed62237e.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    },
+    {
+      "assetId": "C03-ACV1-hud-f870305b",
+      "topicId": "c03-hud-f870305b",
+      "label": "中立标记",
+      "category": "hud",
+      "png": "runtime/hud/hud-f870305b.png",
+      "width": 32,
+      "height": 32,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-ancient-china-v1",
+      "anchor": [
+        16,
+        16
+      ]
+    }
+  ]
+}

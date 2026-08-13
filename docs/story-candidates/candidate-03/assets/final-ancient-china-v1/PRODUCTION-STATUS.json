@@ -1,0 +1,35 @@
+{
+  "campaignId": "candidate-03",
+  "packId": "final-ancient-china-v1",
+  "targetAssets": 404,
+  "runtimeAssetsGenerated": 404,
+  "machineQaPassedForGeneratedAssets": true,
+  "runtimeReady": true,
+  "coverage": {
+    "combat-unit": { "target": 40, "generated": 40 },
+    "mission-unit": { "target": 24, "generated": 24 },
+    "faction-kit": { "target": 12, "generated": 12 },
+    "terrain": { "target": 32, "generated": 32 },
+    "interactive-structure": { "target": 24, "generated": 24 },
+    "battle-prop": { "target": 32, "generated": 32 },
+    "equipment": { "target": 48, "generated": 48 },
+    "skill": { "target": 48, "generated": 48 },
+    "status": { "target": 24, "generated": 24 },
+    "fx": { "target": 24, "generated": 24 },
+    "hud": { "target": 16, "generated": 16 },
+    "narrative-static": { "target": 80, "generated": 80 }
+  },
+  "generatedAssetChecks": {
+    "topicMappingIsExact": true,
+    "unitFourFrameSheets": 64,
+    "unitStaticFrameFailures": 0,
+    "opaqueMagentaFailures": 0,
+    "emptyAlphaFailures": 0,
+    "exactDuplicateRuntimeAssetGroups": 0,
+    "interactiveStructureStateFailures": 0,
+    "machineQaErrors": 0
+  },
+  "remainingAssets": 0,
+  "remainingCategories": [],
+  "note": "The complete 404-item ancient-China cartoon runtime pack has been generated. runtimeReady indicates that the file, mapping, dimension, alpha, animation-frame, structure-state, and exact-duplicate machine checks passed; real-level visual acceptance remains a separate integration step."
+}

@@ -1,0 +1,785 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaignId": "candidate-01",
+  "title": "断冠之誓·游戏运行时 V2 首批",
+  "qualityTier": "runtime-v2-partial",
+  "runtimeReady": false,
+  "scope": "first-playable-batch-not-404-complete",
+  "tileSize": 32,
+  "assetCount": 30,
+  "prompts": "runtime-v2/PROMPTS.md",
+  "gameIntegration": {
+    "renderer": "BoardView",
+    "levelId": "twin-hills",
+    "screenshot": "runtime-v2/qa/candidate-01-first-level-in-game-final.png",
+    "runtimeUnits": 6,
+    "runtimeTerrainTiles": 176,
+    "runtimeStructures": 8,
+    "fallbackUnits": 0,
+    "fallbackTerrainTiles": 0,
+    "brokenImages": 0,
+    "movementAnimationVerified": true,
+    "runtimeReadyAssetIds": [
+      "c01-v2-unit-soldier",
+      "c01-v2-unit-archer",
+      "c01-v2-unit-knight",
+      "c01-v2-unit-cleric",
+      "c01-v2-terrain-plain",
+      "c01-v2-terrain-road",
+      "c01-v2-terrain-bridge",
+      "c01-v2-terrain-forest",
+      "c01-v2-terrain-hill",
+      "c01-v2-terrain-mountain",
+      "c01-v2-terrain-water",
+      "c01-v2-terrain-wall",
+      "c01-v2-structure-village",
+      "c01-v2-structure-barracks",
+      "c01-v2-structure-castle"
+    ]
+  },
+  "assets": [
+    {
+      "id": "c01-v2-unit-soldier",
+      "contentId": "soldier",
+      "type": "combat-unit",
+      "png": "runtime-v2/units/gray-banner-soldier-walk.png",
+      "svg": "runtime-v2/units/gray-banner-soldier-walk.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "facing": "right",
+      "zOrder": 10,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/units/gray-banner-soldier-master.png"
+    },
+    {
+      "id": "c01-v2-unit-archer",
+      "contentId": "archer",
+      "type": "combat-unit",
+      "png": "runtime-v2/units/silverwood-archer-walk.png",
+      "svg": "runtime-v2/units/silverwood-archer-walk.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "facing": "right",
+      "zOrder": 10,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/units/silverwood-archer-master.png"
+    },
+    {
+      "id": "c01-v2-unit-knight",
+      "contentId": "knight",
+      "type": "combat-unit",
+      "png": "runtime-v2/units/burgundy-knight-walk.png",
+      "svg": "runtime-v2/units/burgundy-knight-walk.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "facing": "right",
+      "zOrder": 10,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/units/burgundy-knight-master.png"
+    },
+    {
+      "id": "c01-v2-unit-cleric",
+      "contentId": "cleric",
+      "type": "combat-unit",
+      "png": "runtime-v2/units/forge-cleric-walk.png",
+      "svg": "runtime-v2/units/forge-cleric-walk.svg",
+      "width": 128,
+      "height": 48,
+      "frameWidth": 32,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle-a",
+        "step-a",
+        "idle-b",
+        "step-b"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 47
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "facing": "right",
+      "zOrder": 10,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/units/forge-cleric-master.png"
+    },
+    {
+      "id": "c01-v2-terrain-plain",
+      "contentId": "plain",
+      "type": "terrain",
+      "png": "runtime-v2/terrain/plain.png",
+      "svg": "runtime-v2/terrain/plain.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "coordinate-hash-variants",
+      "alphaMode": "opaque",
+      "sourceMaster": "runtime-v2/masters/terrain/c01-terrain-material-board-master.png",
+      "variantOrder": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c01-v2-terrain-road",
+      "contentId": "road",
+      "type": "terrain",
+      "png": "runtime-v2/terrain/road.png",
+      "svg": "runtime-v2/terrain/road.svg",
+      "width": 512,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-mask",
+      "alphaMode": "opaque",
+      "sourceMaster": "runtime-v2/masters/terrain/c01-terrain-material-board-master.png",
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "id": "c01-v2-terrain-bridge",
+      "contentId": "bridge",
+      "type": "terrain",
+      "png": "runtime-v2/terrain/bridge.png",
+      "svg": "runtime-v2/terrain/bridge.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "coordinate-hash-variants",
+      "alphaMode": "opaque",
+      "sourceMaster": "runtime-v2/masters/terrain/c01-terrain-material-board-master.png",
+      "variantOrder": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c01-v2-terrain-forest",
+      "contentId": "forest",
+      "type": "terrain",
+      "png": "runtime-v2/terrain/forest.png",
+      "svg": "runtime-v2/terrain/forest.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "coordinate-hash-variants",
+      "alphaMode": "opaque",
+      "sourceMaster": "runtime-v2/masters/terrain/c01-terrain-material-board-master.png",
+      "variantOrder": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c01-v2-terrain-hill",
+      "contentId": "hill",
+      "type": "terrain",
+      "png": "runtime-v2/terrain/hill.png",
+      "svg": "runtime-v2/terrain/hill.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "coordinate-hash-variants",
+      "alphaMode": "opaque",
+      "sourceMaster": "runtime-v2/masters/terrain/c01-terrain-material-board-master.png",
+      "variantOrder": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c01-v2-terrain-mountain",
+      "contentId": "mountain",
+      "type": "terrain",
+      "png": "runtime-v2/terrain/mountain.png",
+      "svg": "runtime-v2/terrain/mountain.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "coordinate-hash-variants",
+      "alphaMode": "opaque",
+      "sourceMaster": "runtime-v2/masters/terrain/c01-terrain-material-board-master.png",
+      "variantOrder": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c01-v2-terrain-water",
+      "contentId": "water",
+      "type": "terrain",
+      "png": "runtime-v2/terrain/water.png",
+      "svg": "runtime-v2/terrain/water.svg",
+      "width": 512,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 16,
+      "tileMode": "nesw-mask",
+      "alphaMode": "opaque",
+      "sourceMaster": "runtime-v2/masters/terrain/c01-terrain-material-board-master.png",
+      "maskBits": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "maskOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "id": "c01-v2-terrain-wall",
+      "contentId": "wall",
+      "type": "terrain",
+      "png": "runtime-v2/terrain/wall.png",
+      "svg": "runtime-v2/terrain/wall.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "tileMode": "coordinate-hash-variants",
+      "alphaMode": "opaque",
+      "sourceMaster": "runtime-v2/masters/terrain/c01-terrain-material-board-master.png",
+      "variantOrder": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "c01-v2-structure-redstone-oath-tower",
+      "contentId": "redstone-oath-tower",
+      "type": "interactive-structure",
+      "png": "runtime-v2/structures/redstone-oath-tower-states.png",
+      "svg": "runtime-v2/structures/redstone-oath-tower-states.svg",
+      "width": 128,
+      "height": 384,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 3,
+      "stateRows": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": {
+        "x": 64,
+        "y": 127
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "collision": {
+        "x": 32,
+        "y": 64,
+        "width": 64,
+        "height": 64
+      },
+      "interactionHotspot": {
+        "x": 48,
+        "y": 76,
+        "width": 32,
+        "height": 48
+      },
+      "zOrder": 20,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/structures/redstone-oath-tower-states-master.png"
+    },
+    {
+      "id": "c01-v2-structure-gray-banner-supply-depot",
+      "contentId": "gray-banner-supply-depot",
+      "type": "interactive-structure",
+      "png": "runtime-v2/structures/gray-banner-supply-depot-states.png",
+      "svg": "runtime-v2/structures/gray-banner-supply-depot-states.svg",
+      "width": 128,
+      "height": 384,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 3,
+      "stateRows": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": {
+        "x": 64,
+        "y": 127
+      },
+      "footprint": {
+        "width": 3,
+        "height": 2
+      },
+      "collision": {
+        "x": 32,
+        "y": 64,
+        "width": 64,
+        "height": 64
+      },
+      "interactionHotspot": {
+        "x": 48,
+        "y": 76,
+        "width": 32,
+        "height": 48
+      },
+      "zOrder": 20,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/structures/gray-banner-depot-states-master.png"
+    },
+    {
+      "id": "c01-v2-structure-village",
+      "contentId": "village",
+      "type": "interactive-structure",
+      "png": "runtime-v2/structures/village-states.png",
+      "svg": "runtime-v2/structures/village-states.svg",
+      "width": 32,
+      "height": 192,
+      "frameWidth": 32,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateRows": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 63
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "collision": {
+        "x": 0,
+        "y": 32,
+        "width": 32,
+        "height": 32
+      },
+      "interactionHotspot": {
+        "x": 4,
+        "y": 28,
+        "width": 24,
+        "height": 36
+      },
+      "zOrder": 18,
+      "alphaMode": "binary",
+      "neutralBody": true,
+      "capturedBannerState": "captured",
+      "sourceMaster": "runtime-v2/masters/structures/village-states-master.png"
+    },
+    {
+      "id": "c01-v2-structure-barracks",
+      "contentId": "barracks",
+      "type": "interactive-structure",
+      "png": "runtime-v2/structures/barracks-states.png",
+      "svg": "runtime-v2/structures/barracks-states.svg",
+      "width": 32,
+      "height": 192,
+      "frameWidth": 32,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateRows": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 63
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "collision": {
+        "x": 0,
+        "y": 32,
+        "width": 32,
+        "height": 32
+      },
+      "interactionHotspot": {
+        "x": 4,
+        "y": 28,
+        "width": 24,
+        "height": 36
+      },
+      "zOrder": 18,
+      "alphaMode": "binary",
+      "neutralBody": true,
+      "capturedBannerState": "captured",
+      "sourceMaster": "runtime-v2/masters/structures/barracks-states-master.png"
+    },
+    {
+      "id": "c01-v2-structure-castle",
+      "contentId": "castle",
+      "type": "interactive-structure",
+      "png": "runtime-v2/structures/castle-states.png",
+      "svg": "runtime-v2/structures/castle-states.svg",
+      "width": 32,
+      "height": 192,
+      "frameWidth": 32,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateRows": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": {
+        "x": 16,
+        "y": 63
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "collision": {
+        "x": 0,
+        "y": 32,
+        "width": 32,
+        "height": 32
+      },
+      "interactionHotspot": {
+        "x": 4,
+        "y": 28,
+        "width": 24,
+        "height": 36
+      },
+      "zOrder": 18,
+      "alphaMode": "binary",
+      "neutralBody": true,
+      "capturedBannerState": "captured",
+      "sourceMaster": "runtime-v2/masters/structures/castle-states-master.png"
+    },
+    {
+      "id": "c01-v2-equipment-ash-spear",
+      "contentId": "ash-spear",
+      "type": "equipment",
+      "png": "runtime-v2/icons/ash-spear.png",
+      "svg": "runtime-v2/icons/ash-spear.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/icons/runtime-icons-master.png"
+    },
+    {
+      "id": "c01-v2-equipment-burgundy-shield",
+      "contentId": "burgundy-shield",
+      "type": "equipment",
+      "png": "runtime-v2/icons/burgundy-shield.png",
+      "svg": "runtime-v2/icons/burgundy-shield.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/icons/runtime-icons-master.png"
+    },
+    {
+      "id": "c01-v2-equipment-silverwood-longbow",
+      "contentId": "silverwood-longbow",
+      "type": "equipment",
+      "png": "runtime-v2/icons/silverwood-longbow.png",
+      "svg": "runtime-v2/icons/silverwood-longbow.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/icons/runtime-icons-master.png"
+    },
+    {
+      "id": "c01-v2-equipment-forge-oath-hammer",
+      "contentId": "forge-oath-hammer",
+      "type": "equipment",
+      "png": "runtime-v2/icons/forge-oath-hammer.png",
+      "svg": "runtime-v2/icons/forge-oath-hammer.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/icons/runtime-icons-master.png"
+    },
+    {
+      "id": "c01-v2-skill-healing-lantern",
+      "contentId": "healing-lantern",
+      "type": "skill",
+      "png": "runtime-v2/icons/healing-lantern.png",
+      "svg": "runtime-v2/icons/healing-lantern.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/icons/runtime-icons-master.png"
+    },
+    {
+      "id": "c01-v2-skill-gray-banner-rally",
+      "contentId": "gray-banner-rally",
+      "type": "skill",
+      "png": "runtime-v2/icons/gray-banner-rally.png",
+      "svg": "runtime-v2/icons/gray-banner-rally.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/icons/runtime-icons-master.png"
+    },
+    {
+      "id": "c01-v2-skill-bridge-field-repair",
+      "contentId": "bridge-field-repair",
+      "type": "skill",
+      "png": "runtime-v2/icons/bridge-field-repair.png",
+      "svg": "runtime-v2/icons/bridge-field-repair.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/icons/runtime-icons-master.png"
+    },
+    {
+      "id": "c01-v2-skill-broken-oath-dispel",
+      "contentId": "broken-oath-dispel",
+      "type": "skill",
+      "png": "runtime-v2/icons/broken-oath-dispel.png",
+      "svg": "runtime-v2/icons/broken-oath-dispel.svg",
+      "width": 32,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 1,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/icons/runtime-icons-master.png"
+    },
+    {
+      "id": "c01-v2-fx-blade-hit",
+      "contentId": "blade-hit",
+      "type": "fx",
+      "png": "runtime-v2/fx/blade-hit.png",
+      "svg": "runtime-v2/fx/blade-hit.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "fps": 14,
+      "blendMode": "additive",
+      "loop": false,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/fx/runtime-fx-master.png"
+    },
+    {
+      "id": "c01-v2-fx-oath-flame",
+      "contentId": "oath-flame",
+      "type": "fx",
+      "png": "runtime-v2/fx/oath-flame.png",
+      "svg": "runtime-v2/fx/oath-flame.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "fps": 10,
+      "blendMode": "additive",
+      "loop": true,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/fx/runtime-fx-master.png"
+    },
+    {
+      "id": "c01-v2-fx-lantern-heal",
+      "contentId": "lantern-heal",
+      "type": "fx",
+      "png": "runtime-v2/fx/lantern-heal.png",
+      "svg": "runtime-v2/fx/lantern-heal.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "fps": 12,
+      "blendMode": "additive",
+      "loop": false,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/fx/runtime-fx-master.png"
+    },
+    {
+      "id": "c01-v2-fx-masonry-impact",
+      "contentId": "masonry-impact",
+      "type": "fx",
+      "png": "runtime-v2/fx/masonry-impact.png",
+      "svg": "runtime-v2/fx/masonry-impact.svg",
+      "width": 128,
+      "height": 32,
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 4,
+      "anchor": {
+        "x": 16,
+        "y": 16
+      },
+      "fps": 12,
+      "blendMode": "normal",
+      "loop": false,
+      "alphaMode": "binary",
+      "sourceMaster": "runtime-v2/masters/fx/runtime-fx-master.png"
+    },
+    {
+      "id": "c01-v2-scene-gray-banner-dawn-council",
+      "contentId": "gray-banner-dawn-council",
+      "type": "narrative-scene",
+      "png": "runtime-v2/scenes/gray-banner-dawn-council.png",
+      "svg": "runtime-v2/scenes/gray-banner-dawn-council.svg",
+      "width": 256,
+      "height": 144,
+      "alphaMode": "opaque",
+      "dialogueSafeZone": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 112
+      },
+      "sourceMaster": "runtime-v2/masters/gray-banner-dawn-council-master.png"
+    }
+  ]
+}
