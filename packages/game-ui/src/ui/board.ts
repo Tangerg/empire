@@ -3,7 +3,8 @@ import type { ContentCatalog } from '@empire/battle-engine';
 import type { Coord, GameState, Unit, WeaponId } from '@empire/battle-engine/types';
 import { PAL } from '../art/palette';
 import { FrameAnimationSystem, registerSvgStrip } from '../art/frame-animation';
-import { battlePresentation, type BattlePresentation } from '../art/battle-presentation';
+import { battlePresentation, decorationsFor, type BattlePresentation } from '../art/battle-presentation';
+import type { BoardDecorations } from '../art/board-decorations';
 import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../art/battlefield-layer';
 import { TILE, terrainLayerMarkup } from '../art/terrain';
 import { createSceneViewport, scenePointToCell, type SceneViewport } from '../art/scene-viewport';
@@ -72,6 +73,7 @@ export class BoardView {
   private readonly layers: Record<string, SVGGElement>;
   private readonly viewport: SceneViewport;
   private readonly presentation: BattlePresentation;
+  private readonly decor: BoardDecorations;
   private readonly unitEls = new Map<number, SVGGElement>();
   private readonly frameAnimations = new FrameAnimationSystem();
   private sceneryAnimationIds: string[] = [];
@@ -87,6 +89,7 @@ export class BoardView {
     private readonly content: ContentCatalog,
   ) {
     this.presentation = battlePresentation(state.levelId);
+    this.decor = decorationsFor(this.presentation);
     this.viewport = createSceneViewport(
       state.map.width,
       state.map.height,
@@ -97,7 +100,7 @@ export class BoardView {
     this.el = svg('svg', {
       viewBox: `0 0 ${this.viewport.sceneWidth} ${this.viewport.sceneHeight}`,
       class: `board${presentationClass}`,
-      'shape-rendering': this.presentation.id === 'generic' ? 'crispEdges' : 'geometricPrecision',
+      'shape-rendering': this.decor.shapeRendering,
       'text-rendering': 'optimizeLegibility',
       'data-scene-layout': this.viewport.originX || this.viewport.originY ? 'authored' : 'grid',
     });
@@ -141,30 +144,8 @@ export class BoardView {
   /* ------------------------------------------------------------------ setup */
 
   private buildGrid(): void {
-    const { width, height } = this.state.map;
-    const parts: string[] = [];
-    if (this.presentation.id === 'generic') {
-      for (let x = 1; x < width; x++) {
-        parts.push(
-          `<line x1="${x * TILE}" y1="0" x2="${x * TILE}" y2="${height * TILE}" stroke="${PAL.ink}" stroke-width="0.4" opacity="0.12"/>`,
-        );
-      }
-      for (let y = 1; y < height; y++) {
-        parts.push(
-          `<line x1="0" y1="${y * TILE}" x2="${width * TILE}" y2="${y * TILE}" stroke="${PAL.ink}" stroke-width="0.4" opacity="0.12"/>`,
-        );
-      }
-    } else {
-      // Authored maps reveal legal standing positions only during tactical
-      // interaction. Circles communicate discrete decisions without turning
-      // the landscape back into a visible spreadsheet.
-      for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-          parts.push(`<circle class="candidate-stand-node" cx="${x * TILE + TILE / 2}" cy="${y * TILE + TILE / 2}" r="2.2" fill="#fff4dc" opacity="0.32"/>`);
-        }
-      }
-    }
-    this.layers.grid.append(fromMarkup(parts.join('')));
+    const markup = this.decor.gridLines(this.state.map);
+    if (markup) this.layers.grid.append(fromMarkup(markup));
   }
 
   private bindPointer(): void {
@@ -310,12 +291,13 @@ export class BoardView {
     const s = this.state;
     const parts: string[] = [];
     const cell = (i: number, fill: string, opacity: number, stroke?: string) => {
-      const x = (i % s.map.width) * TILE;
-      const y = Math.floor(i / s.map.width) * TILE;
-      const outline = stroke ? ` stroke="${stroke}" stroke-width="1" stroke-opacity="0.78"` : '';
-      parts.push(this.presentation.id === 'generic'
-        ? `<rect x="${x + 2}" y="${y + 2}" width="${TILE - 4}" height="${TILE - 4}" rx="7" fill="${fill}" fill-opacity="${opacity}"${outline}/>`
-        : `<ellipse class="candidate-action-spot" cx="${x + TILE / 2}" cy="${y + TILE * 0.68}" rx="12.5" ry="7.5" fill="${fill}" fill-opacity="${Math.min(0.5, opacity * 1.35)}"${outline}/>`);
+      parts.push(this.decor.actionSpot({
+        x: i % s.map.width,
+        y: Math.floor(i / s.map.width),
+        fill,
+        opacity,
+        stroke,
+      }));
     };
     for (const i of o.threat) cell(i, '#ff3b30', 0.1);
     // Held ground is drawn under the move range: the player needs to see why a
@@ -346,15 +328,7 @@ export class BoardView {
   private renderPath(path: Coord[]): void {
     clear(this.layers.path);
     if (path.length < 2) return;
-    const points = path.map((c) => ({ x: c.x * TILE + TILE / 2, y: c.y * TILE + TILE / 2 }));
-    const d = this.presentation.id === 'generic'
-      ? points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x} ${p.y}`).join(' ')
-      : points.slice(0, -1).reduce((value, p1, i) => {
-          const p0 = points[Math.max(0, i - 1)];
-          const p2 = points[i + 1];
-          const p3 = points[Math.min(points.length - 1, i + 2)];
-          return `${value} C${(p1.x + (p2.x - p0.x) / 6).toFixed(1)} ${(p1.y + (p2.y - p0.y) / 6).toFixed(1)} ${(p2.x - (p3.x - p1.x) / 6).toFixed(1)} ${(p2.y - (p3.y - p1.y) / 6).toFixed(1)} ${p2.x} ${p2.y}`;
-        }, `M${points[0].x} ${points[0].y}`);
+    const d = this.decor.movePath(path);
     const last = path[path.length - 1];
     const prev = path[path.length - 2];
     const angle = (Math.atan2(last.y - prev.y, last.x - prev.x) * 180) / Math.PI;
@@ -442,16 +416,8 @@ export class BoardView {
   private renderCursor(o: BoardOverlay): void {
     clear(this.layers.cursor);
     const parts: string[] = [];
-    if (o.selected) {
-      parts.push(this.presentation.id === 'generic'
-        ? `<rect x="${o.selected.x * TILE + 1}" y="${o.selected.y * TILE + 1}" width="${TILE - 2}" height="${TILE - 2}" fill="none" stroke="#ffffff" stroke-width="2" rx="3" opacity="0.95"/>`
-        : `<ellipse class="candidate-selection-ring" cx="${o.selected.x * TILE + TILE / 2}" cy="${o.selected.y * TILE + 27}" rx="13" ry="5.5" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.96"/>`);
-    }
-    if (o.cursor) {
-      parts.push(this.presentation.id === 'generic'
-        ? `<rect x="${o.cursor.x * TILE + 0.5}" y="${o.cursor.y * TILE + 0.5}" width="${TILE - 1}" height="${TILE - 1}" fill="none" stroke="${PAL.gold}" stroke-width="1.6" rx="2"/>`
-        : `<ellipse class="candidate-cursor-ring" cx="${o.cursor.x * TILE + TILE / 2}" cy="${o.cursor.y * TILE + 26}" rx="13.5" ry="6" fill="none" stroke="${PAL.gold}" stroke-width="1.8"/>`);
-    }
+    if (o.selected) parts.push(this.decor.ring(o.selected, 'selection'));
+    if (o.cursor) parts.push(this.decor.ring(o.cursor, 'cursor'));
     if (parts.length) this.layers.cursor.append(fromMarkup(parts.join('')));
   }
 

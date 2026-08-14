@@ -1,6 +1,7 @@
 import type { UnitTypeId } from '@empire/battle-engine';
 import {
   registerArtProvider,
+  GroundBoardDecorations,
   registerBattlePresentation,
   type BattlePresentation,
   type StoryCampaignAdapter,
@@ -60,6 +61,8 @@ function portraitMarkup(type: UnitTypeId, team: string): string | null {
 export const CANDIDATE_01_BATTLE_PRESENTATION: BattlePresentation = Object.freeze({
   id: 'candidate-01',
   boardClass: 'candidate-map',
+  // Painted scenes want the tactical layer on the ground, not ruled over it.
+  decorations: GroundBoardDecorations,
   matches: (levelId: string) => levelId.startsWith('c01-') || levelId.startsWith('experience-lab'),
   sceneProfile: candidate01SceneProfile,
   sceneFrame: candidate01SceneFrameMarkup,

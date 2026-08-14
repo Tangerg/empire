@@ -4,7 +4,7 @@ import {
   normaliseLevel,
   type LevelData,
 } from '@empire/battle-engine';
-import { CampaignBattleBridge } from '../battle-bridge';
+import { CampaignBattleBridge, DEFAULT_MARKER_DISPOSITIONS } from '../battle-bridge';
 import { CampaignRuntime } from '../runtime';
 import {
   CAMPAIGN_SAVE_SCHEMA,
@@ -230,5 +230,18 @@ describe('campaign battle bridge', () => {
     };
     const runtime = new CampaignRuntime(broken);
     expect(() => runtime.beginBattle(bridge())).toThrow(/no unit key "ghost"/);
+  });
+});
+
+describe('how leaving the field reads to a roster', () => {
+  it('calls an unrecognised departure missing, not dead', () => {
+    // The translation was a ternary whose fallthrough answered `fallen` —
+    // permanently dead — for every marker kind it did not know, and marker kinds
+    // are an open string. A story pack's own way off the field would have
+    // silently killed the unit.
+    expect(DEFAULT_MARKER_DISPOSITIONS['corpse']).toBe('fallen');
+    expect(DEFAULT_MARKER_DISPOSITIONS['transport-loss']).toBe('fallen');
+    expect(DEFAULT_MARKER_DISPOSITIONS['withdrawn']).toBe('missing');
+    expect(DEFAULT_MARKER_DISPOSITIONS['test.captured']).toBeUndefined();
   });
 });

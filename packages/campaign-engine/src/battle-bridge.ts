@@ -50,12 +50,33 @@ function seedLevelUnit(
   unit.learnedAbilities = campaign.learnedAbilities?.slice();
 }
 
+/**
+ * What one way of leaving the battlefield means to a roster.
+ *
+ * A marker kind is an open string in the battle engine, and this translation
+ * was a four-arm ternary whose fallthrough reported every kind it did not
+ * recognise as `fallen` — permanently dead. That is the most destructive answer
+ * available, handed out by default to `transport-loss` and to any marker kind a
+ * story pack invents. An unrecognised departure is `missing`: something happened
+ * to that unit and the campaign does not know what.
+ */
+export const DEFAULT_MARKER_DISPOSITIONS: Readonly<Record<string, RosterDisposition>> = {
+  corpse: 'fallen',
+  'transport-loss': 'fallen',
+  routed: 'routed',
+  surrendered: 'surrendered',
+  withdrawn: 'missing',
+};
+
 /** Anti-corruption layer from persistent campaign state to a battle snapshot. */
 export class CampaignBattleBridge {
   constructor(
     private readonly resolveLevel: CampaignLevelResolver,
     /** Catalog the campaign is played against; never an ambient default. */
     private readonly content: ContentCatalog,
+    /** How this campaign reads each way off the field; extend for a pack's own. */
+    private readonly dispositions: Readonly<Record<string, RosterDisposition>> =
+      DEFAULT_MARKER_DISPOSITIONS,
   ) {}
 
   prepare(definition: CampaignDefinition, state: CampaignState): BattleRequest {
@@ -118,11 +139,9 @@ export class CampaignBattleBridge {
     const marker = state.markers.find((candidate) => candidate.fallenUnit?.key === levelUnitKey);
     const snapshot = active ?? marker?.fallenUnit;
     if (!snapshot) throw new Error(`battle result cannot resolve roster unit key "${levelUnitKey}"`);
-    const disposition: RosterDisposition = active ? 'available'
-      : marker?.kind === 'routed' ? 'routed'
-        : marker?.kind === 'surrendered' ? 'surrendered'
-          : marker?.kind === 'withdrawn' ? 'missing'
-          : marker ? 'fallen' : 'missing';
+    const disposition: RosterDisposition = active
+      ? 'available'
+      : (marker && this.dispositions[marker.kind]) ?? 'missing';
     return this.unitResult(campaignUnit, disposition, snapshot);
   }
 
