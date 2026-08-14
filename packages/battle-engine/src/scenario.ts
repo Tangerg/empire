@@ -120,6 +120,14 @@ export class ScenarioConditionContext {
 
 export interface ScenarioConditionHandler<K extends ConditionKind = ConditionKind> {
   kind: K;
+  /**
+   * Conditions this one is composed of, for anything that has to walk the tree.
+   *
+   * Declared like an objective's children rather than inferred: two traversals
+   * used to hardcode `all | any | not`, so a rule pack's own compound condition
+   * had its children silently unvisited by both.
+   */
+  children?(condition: ScenarioConditionKindMap[K]): ScenarioCondition[];
   evaluate(context: ScenarioConditionContext, condition: ScenarioConditionKindMap[K]): boolean;
 }
 
@@ -150,6 +158,10 @@ export class ScenarioConditionHandlerRegistry extends KeyedRegistry<ConditionKin
       .evaluate(new ScenarioConditionContext(state, this, content, this.random), condition as never);
   }
 
+  children(condition: ScenarioCondition): ScenarioCondition[] {
+    return this.get(condition.type).children?.(condition as never) ?? [];
+  }
+
   clone(random: RandomSource = this.random): ScenarioConditionHandlerRegistry {
     return this.copyInto(new ScenarioConditionHandlerRegistry(random));
   }
@@ -158,7 +170,8 @@ export class ScenarioConditionHandlerRegistry extends KeyedRegistry<ConditionKin
 const conditionHandler = <K extends ConditionKind>(
   kind: K,
   evaluate: ScenarioConditionHandler<K>['evaluate'],
-): ScenarioConditionHandler<K> => ({ kind, evaluate });
+  children?: ScenarioConditionHandler<K>['children'],
+): ScenarioConditionHandler<K> => ({ kind, evaluate, children });
 
 export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry(SplitMixRandom)
   .register(conditionHandler('turnAtLeast', ({ state }, condition) => state.turn >= condition.turn))
@@ -214,9 +227,21 @@ export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry(Sp
       player(state, condition.player).objectiveStates[condition.id]?.status === condition.status,
     ),
   )
-  .register(conditionHandler('all', (context, condition) => condition.conditions.every((child) => context.evaluate(child))))
-  .register(conditionHandler('any', (context, condition) => condition.conditions.some((child) => context.evaluate(child))))
-  .register(conditionHandler('not', (context, condition) => !context.evaluate(condition.condition)));
+  .register(conditionHandler(
+    'all',
+    (context, condition) => condition.conditions.every((child) => context.evaluate(child)),
+    (condition) => condition.conditions,
+  ))
+  .register(conditionHandler(
+    'any',
+    (context, condition) => condition.conditions.some((child) => context.evaluate(child)),
+    (condition) => condition.conditions,
+  ))
+  .register(conditionHandler(
+    'not',
+    (context, condition) => !context.evaluate(condition.condition),
+    (condition) => [condition.condition],
+  ));
 
 /**
  * Ports declared by this module. The composition-level `BattleRuleServices`

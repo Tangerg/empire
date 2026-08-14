@@ -22,7 +22,6 @@ import type { ContentCatalog } from './content-pack';
 import { careerOptions } from './careers';
 import { activeTurnOrder, mayAct, type TurnOrderPolicy } from './turn-order';
 import type { Action, Coord, GameEvent, GameState, LevelData, Unit, WeaponId } from './types';
-import type { Objective, ScenarioCondition } from './types';
 
 export interface BattleEngineDependencies extends BattleRuleServices {
   readonly actionHandlers: ActionHandlerRegistry;
@@ -85,6 +84,7 @@ export class BattleEngine {
       progression: dependencies.progression,
       areaShapes: dependencies.areaShapes,
       directives: dependencies.directives,
+      referenceChecks: dependencies.referenceChecks,
       resources: dependencies.resources,
       turnOrders: dependencies.turnOrders,
       reactions: dependencies.reactions,
@@ -100,10 +100,12 @@ export class BattleEngine {
   }
 
   createState(level: LevelData, options: CreateStateOptions = {}): GameState {
+    // Two questions, two answers: does the document hold together against the
+    // catalog, and does this ruleset implement every rule the document names.
     const issues = validateLevel(level, this.rules.content)
       .filter((issue) => issue.severity === 'error')
       .map((issue) => issue.message);
-    issues.push(...this.levelStrategyIssues(level));
+    issues.push(...this.rules.referenceChecks.levelIssues(this.rules, level));
     if (issues.length > 0) throw new BattleLevelError(level.id, [...new Set(issues)]);
     const state = createState(level, this.rules.content, options);
     // A level without a deployment phase is already playing, so it needs its
@@ -211,59 +213,8 @@ export class BattleEngine {
   }
 
   private assertConfiguration(): void {
-    const issues: string[] = [];
-    for (const unit of this.rules.content.units.all()) {
-      for (const ability of unit.abilities) {
-        if (!this.rules.abilities.has(ability)) issues.push(`unit "${unit.id}" requires missing ability "${ability}"`);
-      }
-    }
-    for (const career of this.rules.content.careers.all()) {
-      for (const ability of career.masteryAbilities) {
-        if (!this.rules.abilities.has(ability)) issues.push(`career "${career.id}" requires missing ability "${ability}"`);
-      }
-    }
-    const hitEffects = new Set(this.rules.hitEffects.keys());
-    for (const weapon of this.rules.content.weapons.all()) {
-      for (const effect of weapon.hitEffects) {
-        if (!hitEffects.has(effect.type)) issues.push(`weapon "${weapon.id}" requires missing hit-effect handler "${effect.type}"`);
-      }
-    }
-    if (issues.length > 0) throw new BattleEngineConfigurationError([...new Set(issues)]);
-  }
-
-  private levelStrategyIssues(level: LevelData): string[] {
-    const issues: string[] = [];
-    const objectiveKinds = new Set(this.rules.objectives.keys());
-    const visitObjective = (objective: Objective): void => {
-      if (!objectiveKinds.has(objective.type)) {
-        issues.push(`objective "${objective.type}" has no registered handler`);
-        return;
-      }
-      for (const child of this.rules.objectives.children(objective)) visitObjective(child);
-    };
-    for (const player of level.players) {
-      for (const objective of player.objectives?.length ? player.objectives : (level.victory ?? [])) {
-        visitObjective(objective);
-      }
-    }
-
-    const conditionKinds = new Set(this.rules.scenarioConditions.keys());
-    const visitCondition = (condition: ScenarioCondition): void => {
-      if (!conditionKinds.has(condition.type)) {
-        issues.push(`scenario condition "${condition.type}" has no registered handler`);
-        return;
-      }
-      if (condition.type === 'all' || condition.type === 'any') condition.conditions.forEach(visitCondition);
-      else if (condition.type === 'not') visitCondition(condition.condition);
-    };
-    const effectKinds = new Set(this.rules.scenarioEffects.keys());
-    for (const trigger of level.scenario?.triggers ?? []) {
-      visitCondition(trigger.condition);
-      for (const effect of trigger.effects) {
-        if (!effectKinds.has(effect.type)) issues.push(`scenario effect "${effect.type}" has no registered handler`);
-      }
-    }
-    return issues;
+    const issues = this.rules.referenceChecks.contentIssues(this.rules);
+    if (issues.length > 0) throw new BattleEngineConfigurationError(issues);
   }
 }
 

@@ -290,6 +290,29 @@ describe('one composition root', () => {
   });
 });
 
+describe('referential integrity has an owner', () => {
+  it('never cross-checks a registry against content by hand', () => {
+    // "Does this ruleset implement the name that content wrote down" was three
+    // hand-written loops in the engine's constructor plus three more in a
+    // traversal beside it — and every extension point added since was checked by
+    // nobody. Asking a rule registry `.has(...)` or `.keys()` outside the checks
+    // is how the seventh unowned cross-check starts.
+    const allowed = ['rule-references.ts', 'engine.ts'];
+    const registries = [
+      'abilities', 'hitEffects', 'objectives', 'scenarioConditions', 'scenarioEffects',
+      'reactions', 'turnOrders', 'areaShapes', 'directives',
+    ];
+    const pattern = new RegExp(`\\brules\\.(?:${registries.join('|')})\\.(?:has|keys|ids)\\(`);
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (allowed.includes(name)) return [];
+      return pattern.test(readFileSync(file, 'utf8')) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+});
+
 describe('behaviour has an owner', () => {
   it('lets only the lifecycle change a battle phase or advance either clock', () => {
     // `state.phase` used to be assigned from three unrelated places and the
