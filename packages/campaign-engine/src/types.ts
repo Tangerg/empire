@@ -57,19 +57,39 @@ interface CampaignNodeBase {
   tags?: string[];
 }
 
-export type CampaignNode =
-  | (CampaignNodeBase & { type: 'story' | 'hub' | 'travel'; next: CampaignNodeId })
-  | (CampaignNodeBase & { type: 'choice'; choices: CampaignChoice[] })
-  | (CampaignNodeBase & {
-      type: 'battle';
-      level: string;
-      /** Player whose team defines campaign victory/defeat. Defaults to 1. */
-      perspectivePlayer?: PlayerId;
-      rosterBindings?: Array<{ campaignUnit: CampaignUnitId; levelUnitKey: string }>;
-      next: Partial<Record<CampaignOutcome, CampaignNodeId>>;
-      outcomeEffects?: Partial<Record<CampaignOutcome, CampaignEffect[]>>;
-    })
-  | (CampaignNodeBase & { type: 'ending'; outcome: 'completed' | 'failed' });
+/** A node that simply leads somewhere once its effects have landed. */
+interface CampaignPassage extends CampaignNodeBase {
+  next: CampaignNodeId;
+}
+
+/**
+ * Open node algebra, like the campaign's predicates and effects already were.
+ *
+ * Node kinds were the one closed vocabulary left in this layer, and their
+ * behaviour was spread over the definition validator and four runtime methods —
+ * so a story pack could add a predicate and an effect, but not a shop, a
+ * barracks, or a dialogue with a skill check. A pack declaration-merges its kind
+ * here and registers the handler that runs it.
+ */
+export interface CampaignNodeKindMap {
+  story: CampaignPassage & { type: 'story' };
+  hub: CampaignPassage & { type: 'hub' };
+  travel: CampaignPassage & { type: 'travel' };
+  choice: CampaignNodeBase & { type: 'choice'; choices: CampaignChoice[] };
+  battle: CampaignNodeBase & {
+    type: 'battle';
+    level: string;
+    /** Player whose team defines campaign victory/defeat. Defaults to 1. */
+    perspectivePlayer?: PlayerId;
+    rosterBindings?: Array<{ campaignUnit: CampaignUnitId; levelUnitKey: string }>;
+    next: Partial<Record<CampaignOutcome, CampaignNodeId>>;
+    outcomeEffects?: Partial<Record<CampaignOutcome, CampaignEffect[]>>;
+  };
+  ending: CampaignNodeBase & { type: 'ending'; outcome: 'completed' | 'failed' };
+}
+
+export type CampaignNodeKind = Extract<keyof CampaignNodeKindMap, string>;
+export type CampaignNode = CampaignNodeKindMap[CampaignNodeKind];
 
 export interface CampaignRosterSeed {
   id: CampaignUnitId;

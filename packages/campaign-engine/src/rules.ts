@@ -1,4 +1,5 @@
 import { KeyedRegistry } from '@empire/battle-engine';
+import { DefaultCampaignNodes, type CampaignNodeRegistry } from './nodes';
 import type {
   CampaignCondition,
   CampaignConditionKindMap,
@@ -135,11 +136,14 @@ export const DefaultCampaignEffects = new CampaignEffectRegistry()
 export interface CampaignRuleServices {
   conditions: CampaignConditionRegistry;
   effects: CampaignEffectRegistry;
+  /** What each kind of node means: how it is left, and what it must declare. */
+  nodes: CampaignNodeRegistry;
 }
 
 export function createCampaignRuleServices(overrides: Partial<CampaignRuleServices> = {}): CampaignRuleServices {
   return {
     conditions: overrides.conditions ?? DefaultCampaignConditions.clone(),
     effects: overrides.effects ?? DefaultCampaignEffects.clone(),
+    nodes: overrides.nodes ?? DefaultCampaignNodes.clone(),
   };
 }

@@ -1,6 +1,7 @@
 import { CampaignAggregate, createCampaignState } from './aggregate';
 import { CampaignBattleBridge } from './battle-bridge';
 import { createCampaignRuleServices, type CampaignRuleServices } from './rules';
+import type { CampaignNodeAdvance } from './nodes';
 import type {
   BattleRequest,
   BattleResult,
@@ -29,29 +30,34 @@ export class CampaignRuntime {
     return this.aggregate.node();
   }
 
-  /** Advances non-interactive nodes; choice and battle nodes have explicit APIs. */
+  /** Advances non-interactive nodes; a kind that needs input says which API. */
   advance(): CampaignNode {
     return this.transaction(() => {
       this.requireActive();
       const node = this.node();
-      if (node.type === 'choice') throw new Error('choice node requires choose()');
-      if (node.type === 'battle') throw new Error('battle node requires beginBattle()');
-      this.aggregate.apply(node.effects);
-      if (node.type === 'ending') {
-        this.completeNode(node.id);
-        this.state.status = node.outcome === 'completed' ? 'completed' : 'failed';
-        return node;
-      }
-      this.aggregate.moveTo(node.next);
+      this.campaignRules.nodes.advance(this.leaving(node), node);
       return this.node();
     });
+  }
+
+  /** What leaving one node is allowed to do, handed to that node's handler. */
+  private leaving(node: CampaignNode): CampaignNodeAdvance {
+    return {
+      apply: (effects) => this.aggregate.apply(effects),
+      moveTo: (next) => this.aggregate.moveTo(next),
+      settle: (status) => {
+        this.completeNode(node.id);
+        this.state.status = status;
+      },
+      needs: (api) => { throw new Error(`${node.type} node requires ${api}`); },
+    };
   }
 
   choices(): Array<{ id: string; next: string }> {
     const node = this.node();
     if (node.type !== 'choice') return [];
     return node.choices
-      .filter((choice) => !choice.condition || this.rules().conditions.evaluate(this.state, choice.condition))
+      .filter((choice) => !choice.condition || this.campaignRules.conditions.evaluate(this.state, choice.condition))
       .map((choice) => ({ id: choice.id, next: choice.next }));
   }
 
@@ -62,7 +68,7 @@ export class CampaignRuntime {
       if (node.type !== 'choice') throw new Error('current campaign node is not a choice');
       const selected = node.choices.find((choice) => choice.id === id);
       if (!selected) throw new Error(`unknown choice "${id}"`);
-      if (selected.condition && !this.rules().conditions.evaluate(this.state, selected.condition)) {
+      if (selected.condition && !this.campaignRules.conditions.evaluate(this.state, selected.condition)) {
         throw new Error(`choice "${id}" is not currently available`);
       }
       this.aggregate.apply(node.effects);
@@ -116,10 +122,6 @@ export class CampaignRuntime {
 
   snapshot(): CampaignState {
     return structuredClone(this.state);
-  }
-
-  private rules(): CampaignRuleServices {
-    return this.campaignRules;
   }
 
   private requireActive(): void {

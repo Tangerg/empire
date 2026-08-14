@@ -8,6 +8,7 @@ import { createState } from '@empire/battle-engine';
 import { makeLevel, u } from '@empire/battle-engine/__tests__/fixtures';
 import { CampaignBattleBridge } from '../battle-bridge';
 import { CampaignRuntime } from '../runtime';
+import { createCampaignRuleServices } from '../rules';
 import { CampaignSaveMigrator, createCampaignSave } from '../save';
 import type { CampaignDefinition } from '../types';
 
@@ -95,4 +96,71 @@ describe('generic campaign framework', () => {
     }, definition)).toThrow(/content pack mismatch/);
   });
 
+});
+
+describe('a node kind a story pack brings with it', () => {
+  interface Smithy {
+    type: 'test.smithy';
+    id: string;
+    next: string;
+    upgrade: string;
+    effects?: never;
+  }
+
+  const withSmithy = (): CampaignDefinition => {
+    const definition = campaign();
+    definition.start = 'forge';
+    definition.nodes.push({
+      id: 'forge',
+      type: 'test.smithy',
+      next: 'prologue',
+      upgrade: 'steel',
+    } as never);
+    return definition;
+  };
+
+  const smithyRules = () => {
+    const rules = createCampaignRuleServices();
+    rules.nodes.register<never>({
+      kind: 'test.smithy' as never,
+      advance: (context, node) => {
+        const smithy = node as unknown as Smithy;
+        context.apply([{ type: 'setFlag', flag: `forged:${smithy.upgrade}` }]);
+        context.moveTo(smithy.next);
+      },
+      validate: (inspection, node) => {
+        const smithy = node as unknown as Smithy;
+        if (!inspection.hasNode(smithy.next)) inspection.reject(`smithy ${smithy.id} leads nowhere`);
+      },
+    });
+    return rules;
+  };
+
+  it('runs and validates without the runtime knowing anything about it', () => {
+    const runtime = new CampaignRuntime(withSmithy(), undefined, smithyRules());
+
+    expect(runtime.node().type).toBe('test.smithy');
+    expect(runtime.advance().id).toBe('prologue');
+    expect(runtime.state.flags).toContain('forged:steel');
+  });
+
+  it('refuses the same document under a ruleset that never heard of it', () => {
+    expect(() => new CampaignRuntime(withSmithy()))
+      .toThrow(/unknown type "test\.smithy"/);
+  });
+
+  it('holds a pack node to its own declared rules', () => {
+    const broken = withSmithy();
+    (broken.nodes.find((node) => node.id === 'forge') as unknown as Smithy).next = 'nowhere';
+
+    expect(() => new CampaignRuntime(broken, undefined, smithyRules()))
+      .toThrow(/smithy forge leads nowhere/);
+  });
+
+  it('still names the API an interactive node needs', () => {
+    const runtime = new CampaignRuntime(campaign());
+    runtime.advance();
+
+    expect(() => runtime.advance()).toThrow(/choice node requires choose\(\)/);
+  });
 });

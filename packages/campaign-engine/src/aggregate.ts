@@ -7,60 +7,48 @@ import type {
   CampaignUnitState,
 } from './types';
 import type { CampaignRuleServices } from './rules';
+import type { CampaignNodeInspection } from './nodes';
 
 function unique(values: readonly string[] = []): string[] {
   return [...new Set(values)];
 }
 
+/**
+ * What a campaign document has to be, before anyone asks what its nodes mean.
+ *
+ * Identity, node ids, the start node and the roster: the facts every kind of
+ * node is written against. What one *kind* of node must declare is the node
+ * handler's business, and `CampaignAggregate` asks it — that half used to be a
+ * four-armed ladder here, which is why a pack could not add a node kind.
+ */
 export function validateCampaignDefinition(definition: CampaignDefinition): void {
   if (definition.schema !== 1) throw new Error(`unsupported campaign schema ${definition.schema}`);
   if (!definition.id.trim()) throw new Error('campaign id cannot be empty');
   if (!Number.isInteger(definition.version) || definition.version < 1) throw new Error('campaign version must be positive');
-  const nodes = new Map<string, CampaignNode>();
+  const nodes = new Set<string>();
   for (const node of definition.nodes) {
     if (!node.id.trim()) throw new Error('campaign node id cannot be empty');
     if (nodes.has(node.id)) throw new Error(`duplicate campaign node "${node.id}"`);
-    nodes.set(node.id, node);
+    nodes.add(node.id);
   }
   if (!nodes.has(definition.start)) throw new Error(`unknown campaign start node "${definition.start}"`);
-  const requireNode = (id: string, owner: string) => {
-    if (!nodes.has(id)) throw new Error(`${owner} references unknown campaign node "${id}"`);
-  };
-  for (const node of definition.nodes) {
-    if (node.type === 'story' || node.type === 'hub' || node.type === 'travel') requireNode(node.next, node.id);
-    if (node.type === 'choice') {
-      if (node.choices.length === 0) throw new Error(`choice node "${node.id}" has no choices`);
-      const ids = new Set<string>();
-      for (const choice of node.choices) {
-        if (ids.has(choice.id)) throw new Error(`duplicate choice "${node.id}:${choice.id}"`);
-        ids.add(choice.id);
-        requireNode(choice.next, `${node.id}:${choice.id}`);
-      }
-    }
-    if (node.type === 'battle') {
-      if (!node.level.trim()) throw new Error(`battle node "${node.id}" has no level`);
-      for (const next of Object.values(node.next)) if (next) requireNode(next, node.id);
-      const rosterIds = new Set<string>();
-      const keys = new Set<string>();
-      for (const binding of node.rosterBindings ?? []) {
-        if (rosterIds.has(binding.campaignUnit) || keys.has(binding.levelUnitKey)) {
-          throw new Error(`battle node "${node.id}" has duplicate roster binding`);
-        }
-        rosterIds.add(binding.campaignUnit);
-        keys.add(binding.levelUnitKey);
-      }
-    }
-  }
   const roster = new Set<string>();
   for (const unit of definition.initial?.roster ?? []) {
     if (!unit.id.trim() || roster.has(unit.id)) throw new Error(`duplicate or empty roster unit "${unit.id}"`);
     roster.add(unit.id);
   }
-  for (const node of definition.nodes) if (node.type === 'battle') {
-    for (const binding of node.rosterBindings ?? []) if (!roster.has(binding.campaignUnit)) {
-      throw new Error(`battle node "${node.id}" binds unknown roster unit "${binding.campaignUnit}"`);
-    }
-  }
+}
+
+/** The document's own names, for the node kinds to check their references against. */
+function inspectionOf(definition: CampaignDefinition): CampaignNodeInspection {
+  const nodes = new Set(definition.nodes.map((node) => node.id));
+  const roster = new Set((definition.initial?.roster ?? []).map((unit) => unit.id));
+  return {
+    definition,
+    hasNode: (id) => nodes.has(id),
+    hasRosterUnit: (id) => roster.has(id),
+    reject: (message) => { throw new Error(message); },
+  };
 }
 
 export function createCampaignState(definition: CampaignDefinition): CampaignState {
@@ -127,6 +115,8 @@ export class CampaignAggregate {
     private readonly rules: CampaignRuleServices,
   ) {
     validateCampaignDefinition(definition);
+    const inspection = inspectionOf(definition);
+    for (const node of definition.nodes) rules.nodes.validate(inspection, node);
     validateCampaignState(definition, state);
     this.nodes = new Map(definition.nodes.map((node) => [node.id, node]));
   }
