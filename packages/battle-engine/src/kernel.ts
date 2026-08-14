@@ -25,6 +25,7 @@ export interface KernelCapabilityMap {
   turnOrders: BattleRuleServices['turnOrders'];
   reactions: BattleRuleServices['reactions'];
   unitDepartures: BattleRuleServices['unitDepartures'];
+  areaShapes: BattleRuleServices['areaShapes'];
   random: BattleRuleServices['random'];
   aiObjectiveAdvisors: AiObjectiveAdvisorRegistry;
   abilityAiEvaluators: AbilityAiEvaluatorRegistry;
@@ -116,28 +117,6 @@ class ScopedKernelPluginContext extends ReadonlyKernelCapabilities implements Ke
   }
 }
 
-const ENGINE_CAPABILITIES = [
-  'content',
-  'abilities',
-  'space',
-  'actionHandlers',
-  'combatModifiers',
-  'hitEffects',
-  'statusBehaviors',
-  'scenarioConditions',
-  'scenarioEffects',
-  'objectives',
-  'progression',
-  'resources',
-  'turnOrders',
-  'reactions',
-  'unitDepartures',
-  'random',
-  'aiObjectiveAdvisors',
-  'abilityAiEvaluators',
-  'aiIntents',
-] as const satisfies readonly KernelCapabilityId[];
-
 /** Tiny plugin host: dependency graph, deterministic install order, capability wiring. */
 export class SrpgMicrokernel {
   private readonly plugins = new Map<string, EnginePlugin>();
@@ -182,7 +161,9 @@ export class SrpgMicrokernel {
 
   buildBattleEngine(): BattleEngine {
     const context = this.compose();
-    for (const capability of ENGINE_CAPABILITIES) context.require(capability);
+    // Each field below demands its own capability by name, and `require` names
+    // the missing one. A second hand-kept list of "what the engine needs" only
+    // ever drifted: the newest capability was already absent from it.
     return new BattleEngine({
       content: context.require('content'),
       abilities: context.require('abilities'),
@@ -191,6 +172,7 @@ export class SrpgMicrokernel {
       combatModifiers: context.require('combatModifiers'),
       hitEffects: context.require('hitEffects'),
       statusBehaviors: context.require('statusBehaviors'),
+      areaShapes: context.require('areaShapes'),
       scenarioConditions: context.require('scenarioConditions'),
       scenarioEffects: context.require('scenarioEffects'),
       objectives: context.require('objectives'),

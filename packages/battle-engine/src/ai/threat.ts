@@ -1,10 +1,10 @@
 import { hostileCastsAgainst } from '../casting';
-import { weaponAreaCells } from '../combat-plan';
 import { idx } from '../grid';
 import { enemyUnitsOf } from '../state';
 import type { ContentCatalog } from '../content-pack';
 import type { GameState, PlayerId } from '../types';
 import type { TacticalSpace } from '../tactical-space';
+import type { WeaponAreaRules } from '../weapon-area';
 import { hpRatio, maximumWeaponPower } from './measures';
 
 /**
@@ -14,6 +14,7 @@ import { hpRatio, maximumWeaponPower } from './measures';
  * projection per hostile unit and the answer cannot change until someone moves.
  */
 export function threatMap(
+  rules: WeaponAreaRules,
   state: GameState,
   viewer: PlayerId,
   space: TacticalSpace,
@@ -30,7 +31,7 @@ export function threatMap(
   // danger, so it weighs more than a tile someone merely could reach.
   for (const cast of hostileCastsAgainst(state, viewer)) {
     const weapon = content.weapons.get(cast.weapon);
-    for (const cell of weaponAreaCells(state, cast.origin, cast.target, weapon)) {
+    for (const cell of rules.areaShapes.coverage(state.map, cast.origin, cast.target, weapon.area)) {
       const tile = idx(state.map, cell.x, cell.y);
       threat.set(tile, (threat.get(tile) ?? 0) + weapon.power * 1.5);
     }

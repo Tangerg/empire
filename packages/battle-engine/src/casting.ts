@@ -149,7 +149,7 @@ function refusal(rules: CastingRules, state: GameState, cast: PendingCast): Cast
   if (!hostileActionAllowed(state, caster.owner, cast.origin, cast.target, 'attack')) return 'targetProtected';
   // A single-target strike needs something on the tile; an area strike still
   // falls on it and splashes whoever stayed nearby.
-  if (weapon.area === 'single' && !unitAtCoord(state, cast.target)) return 'targetVacated';
+  if (rules.areaShapes.get(weapon.area).needsOccupant && !unitAtCoord(state, cast.target)) return 'targetVacated';
   return null;
 }
 

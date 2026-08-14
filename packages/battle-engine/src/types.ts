@@ -44,6 +44,7 @@ export type TacticId = string;
 export type ResourceId = string;
 export type CareerId = string;
 export type FormationId = string;
+export type WeaponArea = string;
 export type UnitRank = 0 | 1 | 2;
 /**
  * Open content id backed by the reaction registry, like every other content id
@@ -229,7 +230,8 @@ export interface WeaponDef {
   maxRange: number;
   moveAndAttack: boolean;
   lineOfSight: 'none' | 'direct' | 'arc';
-  area: 'single' | 'cross1' | 'line' | 'ring1';
+  /** Blast shape; open, resolved through the weapon-area registry. */
+  area: WeaponArea;
   canCounter: boolean;
   cooldown: number;
   /** Per-weapon accounts created for every wielder, e.g. limited ammunition. */

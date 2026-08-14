@@ -65,7 +65,7 @@ export class AiTurnContext {
 
   /** Threat weight per tile, including tiles a charging strike already marked. */
   get threat(): Map<number, number> {
-    return this.threatCache ??= threatMap(this.state, this.player, this.rules.space, this.content);
+    return this.threatCache ??= threatMap(this.rules, this.state, this.player, this.rules.space, this.content);
   }
 
   get battlefield(): Battlefield {

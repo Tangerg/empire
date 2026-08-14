@@ -1,21 +1,24 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
-import { weaponAreaCells } from '../combat-plan';
-import { TEST_CONTENT, TEST_RULES, makeLevel, testCombatPlan, testState, u } from './fixtures';
+import { WeaponAreaShapes } from '../weapon-area';
+import { TEST_RULES, makeLevel, testCombatPlan, testState, u } from './fixtures';
 
 describe('combat plans and area weapons', () => {
   it('expands cross, square-ring, and line templates deterministically', () => {
     const state = testState(
       makeLevel(['...', '...', '...'], { units: [u(0, 0, 'mage', 1), u(2, 2, 'soldier', 2)] }),
     );
-    const base = TEST_CONTENT.weapons.get('mage_overcharge');
+    const from = { x: 0, y: 1 };
     const center = { x: 1, y: 1 };
-    expect(weaponAreaCells(state, { x: 0, y: 1 }, center, { ...base, area: 'cross1' })).toHaveLength(5);
-    expect(weaponAreaCells(state, { x: 0, y: 1 }, center, { ...base, area: 'ring1' })).toHaveLength(9);
-    expect(weaponAreaCells(state, { x: 0, y: 1 }, { x: 2, y: 1 }, { ...base, area: 'line' })).toEqual([
+    expect(WeaponAreaShapes.coverage(state.map, from, center, 'cross1')).toHaveLength(5);
+    expect(WeaponAreaShapes.coverage(state.map, from, center, 'ring1')).toHaveLength(9);
+    expect(WeaponAreaShapes.coverage(state.map, from, { x: 2, y: 1 }, 'line')).toEqual([
       { x: 1, y: 1 },
       { x: 2, y: 1 },
     ]);
+    // A blast only its aim point covers is the one that needs something there.
+    expect(WeaponAreaShapes.get('single').needsOccupant).toBe(true);
+    expect(WeaponAreaShapes.all().filter((shape) => shape.needsOccupant)).toHaveLength(1);
   });
 
   it('forecasts and commits every hostile unit and structure from one immutable plan', () => {

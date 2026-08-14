@@ -20,6 +20,7 @@ import { DefaultTacticalSpace, type TacticalSpace } from './tactical-space';
 import { activeTurnOrder, mayAct, TurnOrders, type TurnOrderPolicy } from './turn-order';
 import { Reactions, type ReactionBehavior } from './reactions';
 import { UnitDepartureHandlers, type UnitDepartureHandlerRegistry } from './unit-departure';
+import { WeaponAreaShapes, type WeaponAreaShapeRegistry } from './weapon-area';
 import { SplitMixRandom, type RandomSource } from './random';
 import { type ContentCatalog } from './content-pack';
 import type { Action, ActionKindMap, Direction, GameEvent, GameState } from './types';
@@ -49,6 +50,8 @@ export interface BattleRuleServices {
   readonly unitDepartures: UnitDepartureHandlerRegistry;
   /** Seeded randomness. Swap for DeterministicOnlyRandom to forbid variance. */
   readonly random: RandomSource;
+  /** Blast shapes a weapon's `area` may name. */
+  readonly areaShapes: WeaponAreaShapeRegistry;
 }
 
 /**
@@ -84,6 +87,7 @@ export function createDefaultBattleRuleServices(
     turnOrders: overrides.turnOrders ?? TurnOrders.clone(),
     reactions: overrides.reactions ?? Reactions.clone(),
     unitDepartures: overrides.unitDepartures ?? UnitDepartureHandlers.clone(),
+    areaShapes: overrides.areaShapes ?? WeaponAreaShapes.clone(),
   };
 }
 

@@ -1,7 +1,6 @@
 import { IllegalActionError } from '@empire/battle-engine/actions';
 import { activeCasts } from '@empire/battle-engine/casting';
 import { SpellCastEntity } from '@empire/battle-engine/domain/spell-cast';
-import { weaponAreaCells } from '@empire/battle-engine/combat-plan';
 import { tacticOptions } from '@empire/battle-engine/commanders';
 import { idx } from '@empire/battle-engine/grid';
 import type { BattleEngine } from '@empire/battle-engine/engine';
@@ -500,7 +499,7 @@ export class GameController {
     for (const cast of activeCasts(state)) {
       const weapon = this.session.content.weapons.get(cast.weapon);
       const remaining = new SpellCastEntity(cast).remainingAt(state.actorTurns);
-      for (const cell of weaponAreaCells(state, cast.origin, cast.target, weapon)) {
+      for (const cell of this.session.rules.areaShapes.coverage(state.map, cast.origin, cast.target, weapon.area)) {
         o.incoming.set(idx(state.map, cell.x, cell.y), remaining);
       }
     }

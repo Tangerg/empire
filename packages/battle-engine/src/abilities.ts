@@ -22,6 +22,7 @@ import type { Coord, GameEvent, GameState, Unit, WeaponDef, WeaponId } from './t
 import { type BattleResourceSystem } from './resources';
 import { type TacticalSpace } from './tactical-space';
 import { type ContentCatalog } from './content-pack';
+import { type WeaponAreaRules } from './weapon-area';
 import { hostileActionAllowed } from './engagement';
 
 /**
@@ -45,7 +46,7 @@ export interface AbilityQuery {
  * The ruleset that answers the question. Declared here as a consumer port; the
  * composition-level `BattleRuleServices` satisfies it structurally.
  */
-export interface AbilityRules {
+export interface AbilityRules extends WeaponAreaRules {
   readonly content: ContentCatalog;
   readonly resources: BattleResourceSystem;
   readonly combatModifiers: CombatModifierPipeline;

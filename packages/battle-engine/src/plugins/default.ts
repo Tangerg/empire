@@ -14,6 +14,7 @@ import { DefaultTacticalSpace } from '../tactical-space';
 import { TurnOrders } from '../turn-order';
 import { Reactions } from '../reactions';
 import { UnitDepartureHandlers } from '../unit-departure';
+import { WeaponAreaShapes } from '../weapon-area';
 import { SplitMixRandom } from '../random';
 import {
   ContentPackInstaller,
@@ -82,6 +83,7 @@ export const TacticalRulesPlugin: EnginePlugin = {
     context.provide('turnOrders', TurnOrders.clone());
     context.provide('reactions', Reactions.clone());
     context.provide('unitDepartures', UnitDepartureHandlers.clone());
+    context.provide('areaShapes', WeaponAreaShapes.clone());
   },
 };
 

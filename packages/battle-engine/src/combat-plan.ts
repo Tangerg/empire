@@ -14,7 +14,8 @@ import {
 } from './combat';
 
 import { DomainInvariantError, UnitEntity } from './domain/index';
-import { dist, idx, inBounds, lineBetween, ring, sameCoord } from './grid';
+import { dist, sameCoord } from './grid';
+import { type WeaponAreaRules } from './weapon-area';
 import {
   awardCombatProgress,
   awardDamageTakenMomentum,
@@ -93,7 +94,7 @@ export interface CombatPlan {
  * Execution needs everything forecasting needs, plus the effect and growth
  * policies. Declared as a consumer port; `BattleRuleServices` satisfies it.
  */
-export interface CombatPlanRules extends CombatRules, DamageRules {
+export interface CombatPlanRules extends CombatRules, DamageRules, WeaponAreaRules {
   readonly hitEffects: WeaponHitEffectHandlerRegistry;
   readonly progression: RankProgressionPolicy;
 }
@@ -160,41 +161,6 @@ function planSupportAttack(
   };
 }
 
-/** Deterministic cells affected after a legal primary target has been chosen. */
-export function weaponAreaCells(
-  state: GameState,
-  from: Coord,
-  aimedAt: Coord,
-  weapon: WeaponDef,
-): Coord[] {
-  let cells: Coord[];
-  switch (weapon.area) {
-    case 'single':
-      cells = [{ ...aimedAt }];
-      break;
-    case 'cross1':
-      cells = ring(state.map, aimedAt, 0, 1);
-      break;
-    case 'ring1': {
-      cells = [];
-      for (let dy = -1; dy <= 1; dy++) {
-        for (let dx = -1; dx <= 1; dx++) {
-          const x = aimedAt.x + dx;
-          const y = aimedAt.y + dy;
-          if (inBounds(state.map, x, y)) cells.push({ x, y });
-        }
-      }
-      break;
-    }
-    case 'line':
-      cells = lineBetween(from, aimedAt).slice(1);
-      break;
-  }
-  const unique = new Map<number, Coord>();
-  for (const cell of cells) unique.set(idx(state.map, cell.x, cell.y), cell);
-  return [...unique.values()];
-}
-
 function hostileStructure(state: GameState, attacker: Unit, at: Coord, content: ContentCatalog): StructureState | null {
   const structure = structureAt(state, at.x, at.y);
   if (!structure || !content.structures.get(structure.type).targetable) return null;
@@ -216,7 +182,7 @@ export interface CombatPlanOptions {
  * failing one is a defect rather than a refusal, and says so with the type.
  */
 export function forecastCombatPlan(
-  rules: CombatRules,
+  rules: CombatRules & WeaponAreaRules,
   state: GameState,
   attacker: Unit,
   aimedAt: Coord,
@@ -234,7 +200,7 @@ export function forecastCombatPlan(
   // An area weapon may land on a tile whose occupant left — that is the whole
   // point of charge time, and every step below already copes with a null
   // primary. A single-target weapon aimed at nothing has nothing to resolve.
-  if (!primaryTarget && !primaryStructureTarget && weapon.area === 'single') {
+  if (!primaryTarget && !primaryStructureTarget && rules.areaShapes.get(weapon.area).needsOccupant) {
     throw new DomainInvariantError('combat plan requires a hostile primary target');
   }
   if (primaryTarget && !areEnemies(state, primaryTarget.owner, attacker.owner)) {
@@ -247,7 +213,7 @@ export function forecastCombatPlan(
   const primaryStructure = primaryStructureTarget
     ? forecastStructure(rules, state, attacker, primaryStructureTarget, { weapon: resolvedWeaponId })
     : null;
-  const affectedCells = weaponAreaCells(state, from, aimedAt, weapon);
+  const affectedCells = rules.areaShapes.coverage(state.map, from, aimedAt, weapon.area);
   const unitHits: PlannedUnitHit[] = [];
   const structureHits: PlannedStructureHit[] = [];
   const excludedUnits = new Set<number>();
