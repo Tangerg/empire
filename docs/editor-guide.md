@@ -127,7 +127,7 @@ Vite 会输出本地地址。通过该地址打开编辑器，不要直接双击
 3. `mapFromLevel()` 地形网格检查
 4. 替换当前 `EditorDocument`
 
-导入成功不代表关卡可以运行。右侧检查器会继续执行 `validateLevel()` 并列出错误和警告。
+导入成功不代表关卡可以运行。右侧检查器会继续执行 `validateLevel(rules, level)` 并列出错误和警告——它一次问完文档自洽与规则集实现两件事。
 
 ## 校验和试玩
 
@@ -201,7 +201,7 @@ Vite 会输出本地地址。通过该地址打开编辑器，不要直接双击
 6. 添加 DOM 交互测试和应用启动测试
 7. 更新[引擎能力目录](./engine-capabilities.md)
 
-不要直接从 DOM 修改 `LevelData`，也不要在 `EditorBoard` 中复制战斗合法性。编辑器的最终关卡合法性始终由 `validateLevel()` 判定。
+不要直接从 DOM 修改 `LevelData`，也不要在 `EditorBoard` 中复制战斗合法性。编辑器的最终关卡合法性始终由 `validateLevel(rules, level)` 判定，和引擎建状态时问的是同一个函数。
 
 ## 相关文档
 

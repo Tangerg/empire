@@ -389,22 +389,21 @@ deployment: {
 加载外部 JSON 时使用以下顺序：
 
 ```typescript
-import {
-  createDefaultBattleEngine,
-  normaliseLevel,
-  validateLevel,
-} from '@empire/battle-engine';
+import { createBattleEngine, normaliseLevel, validateLevel } from '@empire/battle-engine';
 
+const engine = createBattleEngine({ content });
 const level = normaliseLevel(JSON.parse(source));
-const issues = validateLevel(level);
-const errors = issues.filter((issue) => issue.severity === 'error');
 
+// 校验要对着规则集问：内容 id 归目录，铺法与目标／场景／常驻命令归组装好的规则。
+const errors = validateLevel(engine.rules, level).filter((issue) => issue.severity === 'error');
 if (errors.length > 0) {
   throw new Error(errors.map((issue) => issue.message).join('\n'));
 }
 
-const state = createDefaultBattleEngine().createState(level);
+const state = engine.createState(level);
 ```
+
+`engine.createState()` 自己也会跑同一次校验并在有 error 时抛 `BattleLevelError`；上面这段只是为了在建状态之前把问题列给使用者看。
 
 `normaliseLevel()` 只补齐允许缺省的字段并拒绝旧 schema。它不会修复非法引用、越界坐标或冲突定义。
 

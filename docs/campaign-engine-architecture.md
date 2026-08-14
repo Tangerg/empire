@@ -54,6 +54,10 @@ flowchart LR
 | `battle` | 关卡请求与战果出口 | `beginBattle()`、`completeBattle()` |
 | `ending` | 完成或失败终点 | `advance()` |
 
+有没有演出文案，是**某一种节点**的性质，不是所有节点共有的性质。`presentation` 曾经在每种节点上都可选，于是要渲染它的外壳只能用 `!` 断言绕过类型，而战斗节点——它从关卡简报里取演出，自己没有文案——照样带着这个字段。现在 `story`、`hub`、`travel`、`choice`、`ending` 都是**场景**（`presentation: string` 必填），`battle` 不是。
+
+同样地，外壳只在一处读节点的 kind：`StoryCampaignController.screen()` 回答「此刻在哪个画面」，翻页、开打、收尾、渲染都读它。此前四个方法各问一次节点是什么种类，等于把引擎刻意留开放的词表在界面层抄了四份。
+
 一个 `CampaignNodeHandler` 回答引擎对某种节点仅有的两个问题：**离开它会发生什么**（落效果、走向下一节点、或者结算战役），以及**它的声明必须满足什么**。`advance()` 不再知道「choice 需要 choose()、battle 需要 beginBattle()」——需要输入的种类自己拒绝，并说出该调哪个 API。
 
 校验也按同一条缝切开，与战斗侧一致：文档自身的事实（schema、节点 id、起点、名册）留在 `validateCampaignDefinition`，某一*种*节点必须声明什么则归它的 handler，由 `CampaignAggregate` 对着一份文档名字的 inspection 逐个执行。`story`、`hub`、`travel` 原本共用一条分支，现在共用一个 handler 工厂——这正是让它们可以被逐个替换的原因。

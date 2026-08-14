@@ -611,6 +611,8 @@ AI 需要理解的新目标还要提供 `AiObjectiveAdvisor`，不能让 AI 根�
 
 效果只能修改战斗聚合内的事实。跨关关系、长期奖励和章节选择应通过 `scenarioSignal` 交给战役桥处理。
 
+新 handler 只要指向了关卡里的名字（区域、结构、复合目标、玩家、目标、内容 id、格子、边），就顺手声明 `references`——校验器据此检查它，不需要认识这个 kind。载荷自己才能判断的事（距离必须非负、海拔必须是整数）用 `references(...).fault('...')` 说出来，报错文案归载荷所有，上下文前缀由调用方拼。
+
 ### 新增资源主体
 
 资源状态保存在实体上，规则通过 `ResourceAdapter` 访问。扩展主体需要 declaration merge `types.ts` 里的 `ResourceSubjectKindMap`，提供账户适配器（容量规则、AI 权重），再注册一个 `ResourceSubjectResolver`——它回答「从调用者手里的东西怎么构建这个持有者」和「它在事件里长什么样」。缺了后者，新持有者就没有任何消耗能扣它、没有任何战报能提到它。
@@ -626,6 +628,29 @@ AI 需要理解的新目标还要提供 `AiObjectiveAdvisor`，不能让 AI 根�
 ### 新增事件表现
 
 一种新事件要让人看见，就注册一个 `BattleEventPresenter`：`animate` 和 `describe` 各自可选，登记在同一条目下。引擎能发出而没人登记的事件，会安静地过去——这是刻意的默认。
+
+## 载荷指向了什么，只有跑它的那个 handler 知道
+
+一条场景效果、一个触发条件、一个目标，都是会点名的声明：一个区域、一个结构、一个内容目录里的状态、一个必须在地图上的格子。
+
+谁知道它点了哪些名字？**想解析它们的人**知道——于是关卡校验器里长出了两百行 `effect.type === '…'`，一个不拥有这些载荷的模块，把二十来种效果、十来种条件、十来种目标的字段挨个写了一遍；`rule-references.ts` 为了找出「哪些效果会下常驻命令」，把同一份清单又推导了第三遍。题材包 declaration merge 出来的 kind 不在任何一份清单里，于是它的引用**没有人检查**——开放注册表里长回了一个闭合联合。
+
+现在跑载荷的 handler 自己说：
+
+```ts
+effectHandler('replaceTerrain', apply, {
+  references: (effect) => points().zone(effect.zone).terrain(effect.terrain),
+})
+```
+
+`PayloadReferences` 既是建造器也是它建出来的记录：`zones` / `players` / `structures` / `composites` / `objectives` / `statuses` / `terrains` / `overlays` / `unitTypes` / `directives` / `cells` / `edges` / `conditions` / `faults`。「未知」是什么意思由调用方决定——关卡校验器拿一份关卡文档和它的内容目录去解析，`RuleReferenceChecks` 拿「这套规则集实现了什么」去解析。常驻命令是刻意留给后者的那一格。
+
+顺着这条线掉下来的几件事：
+
+- `validateLevel(rules, level)` 一次问完「文档自洽吗」和「这套规则实现了它点名的每条规则吗」。这两半此前由引擎和编辑器各自手工拼一次——两个地方可以忘掉第二半。
+- 校验器搬出了 `level/`。关卡文档层是**创建状态**的下层，而校验一张关卡需要组装好的规则集，所以它属于规则层，和 `rule-references.ts` 并列。这也是无环守卫当场报出来的事。
+- `failOn` 里嵌的那条失败条件终于有人走了：目标树在 children 处停下，条件树从触发器开始，它此前落在两者之间。
+- 单位朝向问铺法要，而不是硬写四个名字——六边形和八向棋盘上的每一个方向都会被那四个名字拒绝；方向掩体的受保护边同理。
 
 ## 场景 DSL 与目标
 
