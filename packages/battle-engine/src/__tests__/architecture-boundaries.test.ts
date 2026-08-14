@@ -134,6 +134,7 @@ describe('dependency injection invariants', () => {
       'ScenarioEffectHandlers',
       'DefaultAiObjectiveAdvisors',
       'DefaultAbilityAiEvaluators',
+      'DefaultBattleEventPresenters',
     ];
     const pattern = new RegExp(`[:,)]\\s*\\w+\\s*=\\s*(?:${globals.join('|')})\\b|=\\s*(?:${globals.join('|')})(?=\\s*[,)])`);
     const scanned = [

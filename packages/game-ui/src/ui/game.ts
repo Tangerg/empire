@@ -1,4 +1,3 @@
-import type { ContentCatalog } from '@empire/battle-engine';
 import { IllegalActionError } from '@empire/battle-engine/actions';
 import { activeCasts } from '@empire/battle-engine/casting';
 import { SpellCastEntity } from '@empire/battle-engine/domain/spell-cast';
@@ -19,6 +18,12 @@ import type {
   Unit,
 } from '@empire/battle-engine/types';
 import { BoardView, emptyOverlay, type BoardOverlay } from './board';
+import {
+  DefaultBattleEventPresenters,
+  SessionBattleStage,
+  type BattleEventPresenterRegistry,
+  type BattleLogContext,
+} from './event-presentation';
 import { Hud, type HudView } from './hud';
 import {
   DestinationSelection,
@@ -38,6 +43,8 @@ export interface BattleCompletionSnapshot {
 export interface GameControllerOptions {
   /** Ruleset this battle runs on. Required: there is no ambient fallback. */
   engine: BattleEngine;
+  /** How each battle event looks and reads; a content pack may replace entries. */
+  eventPresenters?: BattleEventPresenterRegistry;
   exitLabel?: string;
   completionLabel?: string;
   onComplete?: (snapshot: BattleCompletionSnapshot) => void;
@@ -55,6 +62,10 @@ export class GameController {
   private readonly board: BoardView;
   private readonly hud: Hud;
   private readonly scroller = document.createElement('div');
+  private readonly presenters: BattleEventPresenterRegistry;
+  private readonly stage: SessionBattleStage;
+  /** Positions remembered one frame back, so a killed unit's number still lands. */
+  private readonly lastSeenPositions = new Map<number, Coord>();
 
   private selection: Selection = IDLE;
   private cursor: Coord | null = null;
@@ -100,6 +111,14 @@ export class GameController {
         this.board.setZoom(this.board.zoomLevel + d);
       },
     });
+
+    this.presenters = options.eventPresenters ?? DefaultBattleEventPresenters.clone();
+    this.stage = new SessionBattleStage(
+      this.board,
+      this.session,
+      this.lastSeenPositions,
+      () => this.board.render(this.overlay()),
+    );
 
     this.scroller.className = 'board-scroll';
     this.scroller.append(this.board.el);
@@ -389,97 +408,27 @@ export class GameController {
     if (!this.isHumanTurn && this.state.phase === 'playing') void this.runAiTurns();
   }
 
+  /** One batch of events comes from one order, so one log context serves it. */
   private async playEvents(events: GameEvent[]): Promise<void> {
-    for (const e of events) {
+    const log = this.logContext();
+    for (const event of events) {
       if (this.disposed) return;
-      switch (e.type) {
-        case 'attack':
-        case 'counter': {
-          const attacker = this.session.unit(e.attacker);
-          const defender = this.session.unit(e.defender);
-          const at = defender
-            ? { x: defender.x, y: defender.y }
-            : this.lastKnownPosition(e.defender);
-          if (attacker) await this.board.animateStrike(attacker, at ?? { x: attacker.x, y: attacker.y });
-          if (at) await this.board.animateHit(at, e.damage, e.killed, e.weapon);
-          break;
-        }
-        case 'partingShot': {
-          // The defender has already moved on; the blow lands on the tile it left.
-          const attacker = this.session.unit(e.attacker);
-          if (attacker) await this.board.animateStrike(attacker, e.at);
-          await this.board.animateHit(e.at, e.damage, e.killed, e.weapon);
-          break;
-        }
-        case 'supportAttack': {
-          const supporter = this.session.unit(e.attacker);
-          const defender = this.session.unit(e.defender);
-          const at = defender
-            ? { x: defender.x, y: defender.y }
-            : this.lastKnownPosition(e.defender);
-          if (supporter && at) await this.board.animateStrike(supporter, at);
-          if (at) await this.board.animateHit(at, e.damage, e.killed, e.weapon);
-          break;
-        }
-        case 'areaAttack': {
-          const defender = this.session.unit(e.defender);
-          const at = defender
-            ? { x: defender.x, y: defender.y }
-            : this.lastKnownPosition(e.defender);
-          if (at) await this.board.animateHit(at, e.damage, e.killed, e.weapon);
-          break;
-        }
-        case 'attackStructure': {
-          const attacker = this.session.unit(e.attacker);
-          const structure = this.state.structures.find((candidate) => candidate.id === e.structure);
-          const at = structure ? { x: structure.x, y: structure.y } : null;
-          if (attacker && at) await this.board.animateStrike(attacker, at);
-          if (at) await this.board.animateHit(at, e.damage, e.destroyed, e.weapon);
-          break;
-        }
-        case 'areaAttackStructure': {
-          const structure = this.state.structures.find((candidate) => candidate.id === e.structure);
-          if (structure) await this.board.animateHit({ x: structure.x, y: structure.y }, e.damage, e.destroyed, e.weapon);
-          break;
-        }
-        case 'death':
-          await this.board.animateDeath(e.unit);
-          break;
-        case 'heal': {
-          const target = this.session.unit(e.target);
-          if (target) await this.board.animateHeal({ x: target.x, y: target.y }, e.amount);
-          break;
-        }
-        case 'recruit':
-          this.board.render(this.overlay());
-          await this.board.animateSpawn(e.unit);
-          break;
-        case 'capture':
-          if (e.captured) this.board.syncTerrain();
-          break;
-        case 'turnStart': {
-          const p = this.state.players.find((x) => x.id === e.player)!;
-          this.board.render(this.overlay());
-          await this.board.announce(
-            `${p.name} · 第 ${e.turn} 回合`,
-            p.color,
-          );
-          break;
-        }
-        case 'gameOver':
-          await sleep(220);
-          break;
-        default:
-          break;
-      }
-      this.pushMessage(describeEvent(this.session.content, this.state, e));
+      await this.presenters.animate(this.stage, event);
+      this.pushMessage(this.presenters.describe(log, event));
     }
   }
 
-  private deathPositions = new Map<number, Coord>();
-
-  private lastKnownPosition(unitId: number): Coord | null {
-    return this.deathPositions.get(unitId) ?? null;
+  private logContext(): BattleLogContext {
+    const state = this.state;
+    return {
+      state,
+      content: this.session.content,
+      unitName: (id) => {
+        const unit = state.units.find((candidate) => candidate.id === id);
+        return unit ? this.session.content.units.get(unit.type).name : '单位';
+      },
+      playerName: (id) => state.players.find((player) => player.id === id)?.name ?? '？',
+    };
   }
 
   /* ----------------------------------------------------------------- ai loop */
@@ -667,60 +616,9 @@ export class GameController {
 
   private refresh(): void {
     if (this.disposed) return;
-    // Remember positions so a killed unit's damage number can still be placed.
-    for (const u of this.state.units) this.deathPositions.set(u.id, { x: u.x, y: u.y });
+    for (const unit of this.state.units) this.lastSeenPositions.set(unit.id, { x: unit.x, y: unit.y });
     this.board.render(this.overlay());
     this.hud.render(this.hudView());
   }
 }
 
-/* --------------------------------------------------------------- event text */
-
-function describeEvent(content: ContentCatalog, state: GameState, e: GameEvent): string {
-  const name = (id: number) => {
-    const u = state.units.find((x) => x.id === id);
-    return u ? content.units.get(u.type).name : '单位';
-  };
-  const pname = (id: number) => state.players.find((p) => p.id === id)?.name ?? '？';
-  switch (e.type) {
-    case 'attack':
-      return `${name(e.attacker)} 造成 ${e.damage} 点伤害${e.killed ? '，目标阵亡' : ''}`;
-    case 'areaAttack':
-      return `范围攻击对 ${name(e.defender)} 造成 ${e.damage} 点伤害${e.killed ? '，目标阵亡' : ''}`;
-    case 'counter':
-      return `反击造成 ${e.damage} 点伤害${e.killed ? '，我方阵亡' : ''}`;
-    case 'supportAttack':
-      return `${name(e.attacker)} 援护攻击造成 ${e.damage} 点伤害${e.killed ? '，目标阵亡' : ''}`;
-    case 'partingShot':
-      return `${name(e.attacker)} 借机攻击造成 ${e.damage} 点伤害${e.killed ? '，目标阵亡' : ''}`;
-    case 'attackStructure':
-      return `对结构造成 ${e.damage} 点伤害${e.destroyed ? '，结构被摧毁' : ''}`;
-    case 'areaAttackStructure':
-      return `范围攻击对结构造成 ${e.damage} 点伤害${e.destroyed ? '，结构被摧毁' : ''}`;
-    case 'heal':
-      return `${name(e.source)} 治疗了 ${e.amount} 点生命`;
-    case 'capture':
-      return e.captured ? `${pname(e.player)} 占领了 (${e.at.x}, ${e.at.y})` : '占领进度提升';
-    case 'recruit':
-      return `${pname(state.currentPlayer)} 征募了 ${name(e.unit)}`;
-    case 'resourceChanged': {
-      const resource = e.resource === 'funds' ? '资金' : e.resource === 'command_points' ? '指挥点' : e.resource === 'momentum' ? '气势' : e.resource;
-      const subject = e.subject.kind === 'player' ? pname(e.subject.id) : e.subject.kind === 'unit' ? name(e.subject.id) : name(e.subject.unit);
-      return `${subject} ${resource} ${e.amount >= 0 ? '+' : ''}${e.amount}（${e.current}）`;
-    }
-    case 'rankChanged':
-      return `${name(e.unit)} 晋升为 ${(['新兵', '老兵', '精英'] as const)[e.to]}`;
-    case 'careerChanged':
-      return `${name(e.unit)} 转职为 ${content.careers.get(e.to).name}`;
-    case 'facingChanged':
-      return `${name(e.unit)} 调整了朝向`;
-    case 'turnStart':
-      return `第 ${e.turn} 回合 · ${pname(e.player)}`;
-    case 'defeat':
-      return `${pname(e.player)} 已被击败`;
-    case 'gameOver':
-      return e.reason;
-    default:
-      return '';
-  }
-}
