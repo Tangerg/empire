@@ -5,7 +5,6 @@ import {
   type AbilityQuery,
   type AbilityRules,
 } from './abilities';
-import { unitWeapons } from './combat';
 import { idx, sameCoord } from './grid';
 import { player, spawnUnit, unitAt, unitsOf } from './state';
 import { runScenarioTriggers } from './scenario';
@@ -53,35 +52,24 @@ export function commandOptions(
   const q: AbilityQuery = { state: state, unit, at, moved };
   const out: CommandOption[] = [];
   for (const abilityId of unitAbilityIds(content, unit)) {
-    if (abilityId === 'attack') continue;
     const ability = abilityDef(rules, abilityId);
-    if (!canUseAbility(rules, ability, q)) continue;
-    const targets = abilityTargets(rules, ability, q);
-    if (!ability.selfTargeted && targets.length === 0) continue;
-    out.push({
-      key: ability.id,
-      ability: ability.id,
-      name: ability.name,
-      hint: ability.hint,
-      selfTargeted: ability.selfTargeted,
-      targets,
-    });
-  }
-
-  if (content.units.get(unit.type).abilities.includes('attack')) {
-    const attack = abilityDef(rules, 'attack');
-    for (const weapon of unitWeapons(content, unit)) {
-      const weaponQuery: AbilityQuery = { ...q, weaponId: weapon.id };
-      if (!canUseAbility(rules, attack, weaponQuery)) continue;
-      const targets = abilityTargets(rules, attack, weaponQuery);
-      if (targets.length === 0) continue;
+    // An ability that fires nothing is one order; an ability that fires a
+    // weapon is one order per weapon, and it says which weapons those are.
+    const choices = ability.weaponChoices(rules, q);
+    const orders = choices.length > 0
+      ? choices.map((weapon) => ({ weapon, query: { ...q, weaponId: weapon.id } }))
+      : [{ weapon: null, query: q }];
+    for (const { weapon, query } of orders) {
+      if (!canUseAbility(rules, ability, query)) continue;
+      const targets = abilityTargets(rules, ability, query);
+      if (!ability.selfTargeted && targets.length === 0) continue;
       out.push({
-        key: `attack:${weapon.id}`,
-        ability: 'attack',
-        weapon: weapon.id,
-        name: `攻击 · ${weapon.name}`,
-        hint: `${attack.hint} 射程 ${weapon.minRange}-${weapon.maxRange}`,
-        selfTargeted: false,
+        key: weapon ? `${ability.id}:${weapon.id}` : ability.id,
+        ability: ability.id,
+        weapon: weapon?.id,
+        name: weapon ? `${ability.name} · ${weapon.name}` : ability.name,
+        hint: weapon ? `${ability.hint} 射程 ${weapon.minRange}-${weapon.maxRange}` : ability.hint,
+        selfTargeted: ability.selfTargeted,
         targets,
       });
     }
@@ -209,20 +197,27 @@ class CommandActionHandler implements ActionHandler<'command'> {
     const destination = movement.destination;
     const content = context.rules.content;
     const ability = abilityDef(context.rules, action.command.ability);
-    const weaponId = action.command.ability === 'attack' ? action.command.weapon : undefined;
     const query: AbilityQuery = {
       state: context.state,
       unit,
       at: destination,
       moved: !sameCoord(actor.position, destination),
-      weaponId,
+      weaponId: action.command.weapon,
     };
     if (!unitAbilityIds(content, unit).includes(ability.id)) {
       context.fail(`${content.units.get(unit.type).name} 没有「${ability.name}」`);
     }
+    // The weapon on an order is one the ability offered. It used to be kept only
+    // for the ability literally named `attack` and dropped everywhere else, so a
+    // pack's second weapon-using ability fired the first weapon in the rack and
+    // said nothing about it.
+    const chosen = action.command.weapon;
+    if (chosen && !ability.weaponChoices(context.rules, query).some((weapon) => weapon.id === chosen)) {
+      context.fail(`「${ability.name}」无法使用「${chosen}」`);
+    }
     if (!canUseAbility(context.rules, ability, query)) context.fail(`此处无法使用「${ability.name}」`);
 
-    const target = 'target' in action.command ? action.command.target ?? null : null;
+    const target = action.command.target ?? null;
     if (!ability.selfTargeted) {
       if (!target) context.fail(`「${ability.name}」需要指定目标`);
       if (!abilityTargets(context.rules, ability, query).some((candidate) => sameCoord(candidate, target))) {

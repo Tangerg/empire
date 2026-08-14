@@ -205,11 +205,17 @@ export class TargetSelection extends Selection {
   override paint(context: SelectionContext, overlay: BoardOverlay): void {
     overlay.selected = this.dest;
     overlay.path = this.path;
-    const set = this.ability === 'heal' ? overlay.heal : overlay.attack;
+    // Red for a hostile order, green for a helpful one — asked of the ability,
+    // which already declares its engagement, rather than read off its id. The
+    // board used to tint everything that was not literally `heal` as an attack,
+    // so a pack's 鼓舞 or 修理 painted its own allies in the enemy's colour.
+    const hostile = context.session.rules.abilities.get(this.ability).engagement !== null;
+    const set = hostile ? overlay.attack : overlay.heal;
     for (const target of this.candidates) set.add(idx(context.state.map, target.x, target.y));
 
     const unit = this.unitIn(context);
-    if (this.ability !== 'attack' || !context.hoverTarget || !unit) return;
+    // An order carrying a weapon is one whose blast the board can preview.
+    if (!this.weapon || !context.hoverTarget || !unit) return;
     const plan = context.session.attackPlan(unit, context.hoverTarget, this.dest, this.weapon);
     for (const cell of plan.affectedCells) overlay.attack.add(idx(context.state.map, cell.x, cell.y));
   }
@@ -303,7 +309,10 @@ function commandClick(selection: Selection, context: SelectionContext, at: Coord
     if (choice) {
       const path = session.pathTo(unit, choice.at) ?? [{ x: unit.x, y: unit.y }];
       return {
-        selection: new TargetSelection(unit.id, choice.at, path, 'attack', choice.weapon, choice.targets),
+        // The order that was chosen, not the one this shortcut is named after:
+        // arming a pack's 齐射 as `attack` would send an ability its unit does
+        // not have, and the dispatcher would refuse the click.
+        selection: new TargetSelection(unit.id, choice.at, path, choice.ability, choice.weapon, choice.targets),
       };
     }
   }
@@ -312,11 +321,20 @@ function commandClick(selection: Selection, context: SelectionContext, at: Coord
     const path = session.pathTo(unit, at);
     if (path) {
       const commands = session.commandsAt(unit, at);
-      // A lone "wait" needs no menu round-trip.
-      if (commands.length === 1 && commands[0].ability === 'wait') {
+      // One order, and it needs no target: there is nothing to decide, so the
+      // menu round-trip is skipped. Named by what the order is like rather than
+      // by `ability === 'wait'`, which was only ever true because every unit in
+      // this catalog happens to carry 待机.
+      if (commands.length === 1 && commands[0].selfTargeted) {
+        const only = commands[0];
         return {
           selection: IDLE,
-          action: { kind: 'command', unit: unit.id, path, command: { ability: 'wait' } },
+          action: {
+            kind: 'command',
+            unit: unit.id,
+            path,
+            command: { ability: only.ability, weapon: only.weapon },
+          },
         };
       }
       return { selection: new DestinationSelection(unit.id, at, path) };
@@ -328,6 +346,7 @@ function commandClick(selection: Selection, context: SelectionContext, at: Coord
 
 interface AttackSpot {
   at: Coord;
+  ability: string;
   weapon: WeaponId;
   targets: Coord[];
   score: number;
@@ -340,7 +359,9 @@ function bestAttackSpot(context: SelectionContext, unit: Unit, target: Unit): At
   for (const index of session.moveField(unit).stops) {
     const at = { x: index % state.map.width, y: Math.floor(index / state.map.width) };
     const moved = at.x !== unit.x || at.y !== unit.y;
-    for (const option of session.commandsAt(unit, at).filter((entry) => entry.ability === 'attack')) {
+    // Any order that fires a weapon at this enemy will do; `abilityTargets`
+    // has already ruled out the ones this enemy is not a legal target for.
+    for (const option of session.commandsAt(unit, at)) {
       if (!option.weapon) continue;
       if (!option.targets.some((cell) => sameCoord(cell, target))) continue;
       const plan = session.attackPlan(unit, target, at, option.weapon);
@@ -357,7 +378,9 @@ function bestAttackSpot(context: SelectionContext, unit: Unit, target: Unit): At
         terrain.defense * 60 -
         (forecast.counter?.damage ?? 0) * 1.5 -
         (moved ? 1 : 0);
-      if (!best || score > best.score) best = { at, weapon: option.weapon, targets: option.targets, score };
+      if (!best || score > best.score) {
+        best = { at, ability: option.ability, weapon: option.weapon, targets: option.targets, score };
+      }
     }
   }
   return best;

@@ -386,6 +386,30 @@ describe('a strategy is asked for its behaviour, not its name', () => {
     expect(offenders.map((file) => relative(packagesRoot, file))).toEqual([]);
   });
 
+  it('never guesses what an order does from the ability id on it', () => {
+    // `AbilityDef` has said which weapon an order fires since the round that
+    // added `weaponFor`, and six sites across three packages still decided
+    // whether it fires one at all by testing the id against `'attack'`: the
+    // command menu skipped that ability and expanded it by hand beside its own
+    // loop, the dispatcher silently dropped a weapon named on any other order,
+    // the board tinted a helpful order's targets in the enemy's colour, and the
+    // AI's withdrawal penalty stopped applying to every other way of striking.
+    // Both orders, and the reader may be reached through a path: the first
+    // draft anchored the right-hand side at the operator and so read
+    // `ability === 'wait'` but not `'wait' === command.ability`.
+    const read = String.raw`[\w.$\[\]]*\b\w*[Aa]bilit(?:y|ies)\w*\b`;
+    const text = String.raw`'[^']*'|"[^"]*"`;
+    const compared = new RegExp(
+      String.raw`${read}\s*[!=]==?\s*(?:${text})|(?:${text})\s*[!=]==?\s*${read}`,
+    );
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
+      const code = stripComments(readFileSync(file, 'utf8'));
+      return compared.test(code) ? [relative(packagesRoot, file)] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('validates a campaign node kind through its handler', () => {
     // The definition validator held a four-armed ladder over node kinds, which
     // is why a story pack could add a condition and an effect but not a shop.

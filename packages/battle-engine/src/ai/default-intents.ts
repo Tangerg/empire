@@ -1,3 +1,4 @@
+import { abilityDef } from '../abilities';
 import { commandOptions } from '../actions';
 import { tacticOptions, type CommanderRules } from '../commanders';
 import { unitWeapons } from '../combat';
@@ -92,8 +93,10 @@ function bestCommandFor(context: AiTurnContext, unit: Unit): ScoredAction | null
           mission: context.agenda.mission,
         });
         if (score === null || !Number.isFinite(score)) continue;
-        // A unit under orders to withdraw does not stop to trade blows.
-        const withdrawing = option.ability === 'attack' ? directiveOf(rules, unit).fightPenalty : 0;
+        // A unit under orders to withdraw does not stop to trade blows — any
+        // blows, not only the ones an ability named `attack` deals.
+        const hostile = abilityDef(rules, option.ability).engagement !== null;
+        const withdrawing = hostile ? directiveOf(rules, unit).fightPenalty : 0;
         consider({
           action: {
             kind: 'command',

@@ -629,7 +629,9 @@ export class GameController {
     const unit = this.selectedUnit;
     const commandable = this.commandableUnit;
     const aiming = this.selection instanceof TargetSelection ? this.selection : null;
-    if (unit && aiming && this.hoverTarget && aiming.ability === 'attack') {
+    // A forecast is an exchange of blows, so it belongs to an order that fires
+    // a weapon — not to the one ability whose id happens to be `attack`.
+    if (unit && aiming && this.hoverTarget && aiming.weapon) {
       const defender = unitAt(state, { x: this.hoverTarget.x, y: this.hoverTarget.y });
       if (defender) {
         const plan = this.session.attackPlan(unit, this.hoverTarget, aiming.dest, aiming.weapon);

@@ -3,6 +3,7 @@ import {
   requireReadyWeapon,
   healAmount,
   primaryWeapon,
+  unitWeapons,
 } from './combat';
 import { beginCast } from './casting';
 import { executeCombatPlan, forecastCombatPlan } from './combat-plan';
@@ -89,6 +90,19 @@ export interface AbilityDef {
    * entirely, and a status that seals arcane weapons would not have sealed it.
    */
   weaponFor(rules: AbilityRules, q: AbilityQuery): WeaponDef | null;
+  /**
+   * The weapons this ability offers as separate orders. Empty when the ability
+   * fires nothing, or picks its weapon without asking.
+   *
+   * The other half of `weaponFor`: that one says which weapon an order fires,
+   * this one says which orders there are to give. The command menu used to
+   * answer it by skipping the ability whose id is `attack` and then writing
+   * that ability's per-weapon expansion out beside the loop — so the second
+   * weapon-using ability this contract already anticipates got exactly one
+   * entry, carrying no weapon, and fired whatever its owner happened to hold
+   * first.
+   */
+  weaponChoices(rules: AbilityRules, q: AbilityQuery): WeaponDef[];
   targets(rules: AbilityRules, q: AbilityQuery): Coord[];
   usable(rules: AbilityRules, q: AbilityQuery): boolean;
   execute(rules: AbilityRules, q: AbilityQuery, target: Coord | null, emit: Emit): void;
@@ -111,6 +125,7 @@ export function defineAbility(def: Partial<AbilityDef> & Pick<AbilityDef, 'id' |
     tags: [],
     engagement: null,
     weaponFor: () => null,
+    weaponChoices: () => [],
     targets: () => [],
     usable: () => true,
     execute: () => {},
@@ -144,6 +159,7 @@ Abilities.defineAll([
     tags: ['attack'],
     engagement: 'attack',
     weaponFor: selectedWeapon,
+    weaponChoices: (rules, q) => unitWeapons(rules.content, q.unit),
     targets: (rules, q) => {
       const weapon = selectedWeapon(rules, q);
       return weapon ? rules.space.attackTargets(q.state, q.unit, q.at, weapon) : [];

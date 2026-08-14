@@ -1199,11 +1199,17 @@ export type GameEvent = GameEventKindMap[keyof GameEventKindMap];
 
 /* ---------------------------------------------------------------- actions */
 
-export type UnitCommand =
-  | { ability: 'wait' }
-  | { ability: 'attack'; weapon?: WeaponId; target: Coord }
-  | { ability: 'capture' }
-  | { ability: string; weapon?: WeaponId; target?: Coord };
+/**
+ * An order: which ability, fired with which weapon, aimed where.
+ *
+ * It was written as a union of the three core ids plus an open member — which
+ * constrained nothing, since the open member already admitted all three, and
+ * read like a closed set to anyone deciding where a new ability belongs.
+ * Whether a weapon or a target is required is the ability's answer, given in
+ * `weaponChoices` and `selfTargeted`, and the dispatcher refuses an order that
+ * disagrees with it.
+ */
+export type UnitCommand = { ability: string; weapon?: WeaponId; target?: Coord };
 
 /**
  * Open action family. Content packages may declaration-merge new entries and

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { Abilities, defineAbility } from '../abilities';
+import { unitWeapons } from '../combat';
 import { ActionHandlerRegistry, type ActionHandler } from '../action-system';
 import { CoreActionHandlers } from '../actions';
 import { BattleEngineConfigurationError, BattleLevelError } from '../engine';
@@ -26,6 +27,24 @@ const pulse = defineAbility({
   execute: (_rules, { state, unit }, _target, emit) => {
     state.scenario.variables.pulses = Number(state.scenario.variables.pulses ?? 0) + 1;
     emit({ type: 'testPulse', unit: unit.id, strength: 3 });
+  },
+});
+
+/**
+ * The second weapon-using ability — the volley, the channelled beam that
+ * `AbilityDef.weaponFor` was written for. It offers one order per weapon and
+ * says so, instead of being expanded by a menu that recognises `attack`.
+ */
+const charge = defineAbility({
+  id: 'test-charge',
+  name: '蓄能',
+  hint: '把一件武器充能到下一击。',
+  priority: 12,
+  weaponFor: (rules, q) => (q.weaponId ? rules.content.weapons.get(q.weaponId) : null),
+  weaponChoices: (rules, q) => unitWeapons(rules.content, q.unit),
+  execute: (_rules, { state, unit, weaponId }, _target, emit) => {
+    state.scenario.variables.charged = weaponId ?? '';
+    emit({ type: 'testPulse', unit: unit.id, strength: 1 });
   },
 });
 
@@ -74,6 +93,66 @@ describe('balanced engine extension seams', () => {
     );
     expect(emitted).toEqual({ type: 'testPulse', unit: actor.id, strength: 3 });
     expect(session.state.scenario.variables.pulses).toBe(1);
+  });
+
+  it('offers one order per weapon for any ability that fires one', () => {
+    const abilities = Abilities.clone();
+    abilities.define(charge);
+    const session = new GameSession(
+      makeLevel(['..'], { units: [u(0, 0, 'mage', 1), u(1, 0, 'soldier', 2)] }),
+      createBattleEngine({ content: TEST_CONTENT, abilities }),
+    );
+    const mage = session.state.units[0];
+    mage.learnedAbilities.push(charge.id);
+
+    // Three weapons, three orders — the expansion the menu used to perform only
+    // for the ability whose id is `attack`.
+    const offered = session.commandsAt(mage, mage).filter((option) => option.ability === charge.id);
+    expect(offered.map((option) => option.key)).toEqual([
+      'test-charge:mage_bolt',
+      'test-charge:mage_meteor',
+      'test-charge:mage_overcharge',
+    ]);
+    expect(offered.map((option) => option.name)).toEqual([
+      '蓄能 · 魔法弹', '蓄能 · 陨石术', '蓄能 · 奥术过载',
+    ]);
+  });
+
+  it('carries the chosen weapon all the way to the ability that fires it', () => {
+    const abilities = Abilities.clone();
+    abilities.define(charge);
+    const session = new GameSession(
+      makeLevel(['..'], { units: [u(0, 0, 'mage', 1), u(1, 0, 'soldier', 2)] }),
+      createBattleEngine({ content: TEST_CONTENT, abilities }),
+    );
+    const mage = session.state.units[0];
+    mage.learnedAbilities.push(charge.id);
+
+    session.dispatch({
+      kind: 'command',
+      unit: mage.id,
+      path: [{ x: 0, y: 0 }],
+      command: { ability: charge.id, weapon: 'mage_meteor' },
+    });
+
+    // The dispatcher used to keep the weapon only for `attack` and drop it
+    // everywhere else, so this fired the first weapon in the rack in silence.
+    expect(session.state.scenario.variables.charged).toBe('mage_meteor');
+  });
+
+  it('refuses an order naming a weapon its ability never offered', () => {
+    const session = new GameSession(
+      makeLevel(['..'], { units: [u(0, 0, 'mage', 1), u(1, 0, 'soldier', 2)] }),
+      createBattleEngine({ content: TEST_CONTENT }),
+    );
+    const mage = session.state.units[0];
+
+    expect(() => session.dispatch({
+      kind: 'command',
+      unit: mage.id,
+      path: [{ x: 0, y: 0 }],
+      command: { ability: 'wait', weapon: 'mage_meteor' },
+    })).toThrow(/「待机」无法使用「mage_meteor」/);
   });
 
   it('uses one spatial policy for menus and authoritative validation', () => {

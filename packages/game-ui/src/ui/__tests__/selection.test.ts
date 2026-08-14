@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createBattleEngine } from '@empire/battle-engine';
+import { Abilities, createBattleEngine, defineAbility, unitWeapons } from '@empire/battle-engine';
 import { normaliseLevel } from '@empire/battle-engine/level';
 import { GameSession } from '@empire/battle-engine/session';
 import { createTestCatalog } from '@empire/test-content';
@@ -24,6 +24,44 @@ import {
 
 const CONTENT = createTestCatalog();
 const ENGINE = createBattleEngine({ content: CONTENT });
+
+/**
+ * A content pack's own pair of orders: one that strikes, one that helps.
+ *
+ * Neither is called `attack` or `heal`, which is the point — the board used to
+ * read the ability id and had exactly two answers written into it.
+ */
+const VOLLEY = defineAbility({
+  id: 'volley',
+  name: '齐射',
+  hint: '',
+  selfTargeted: false,
+  engagement: 'attack',
+  weaponFor: (rules, q) => (q.weaponId ? rules.content.weapons.get(q.weaponId) : null),
+  weaponChoices: (rules, q) => unitWeapons(rules.content, q.unit),
+  targets: (rules, q) => {
+    const weapon = q.weaponId ? rules.content.weapons.get(q.weaponId) : null;
+    return weapon ? rules.space.attackTargets(q.state, q.unit, q.at, weapon) : [];
+  },
+});
+
+const BLESS = defineAbility({
+  id: 'bless',
+  name: '祝福',
+  hint: '',
+  selfTargeted: false,
+  targets: (rules, q) => rules.space.healTargets(q.state, q.unit, q.at).map((ally) => ({ x: ally.x, y: ally.y })),
+});
+
+/** A ruleset where the only way to strike is a pack's, not the core's. */
+function packEngine() {
+  const content = createTestCatalog();
+  content.units.override('soldier', { abilities: ['volley', 'bless', 'wait'] });
+  const abilities = Abilities.clone();
+  abilities.define(VOLLEY);
+  abilities.define(BLESS);
+  return createBattleEngine({ content, abilities });
+}
 
 const level = (): LevelData => normaliseLevel({
   schema: 2,
@@ -107,7 +145,6 @@ describe('composing an order', () => {
     const s = session();
     const unit = new UnitSelection(s.state.units[0].id);
     const outcome = unit.click(context(s), { x: 3, y: 0 });
-
     const armed = outcome.selection as TargetSelection;
     expect(armed).toBeInstanceOf(TargetSelection);
     expect(armed.ability).toBe('attack');
@@ -161,6 +198,39 @@ describe('what each selection puts on the board', () => {
     expect(tactic.unitId).toBeNull();
     tactic.paint(context(s), overlay);
     expect(overlay.heal.size).toBe(1);
+  });
+
+  it('tints an order by what it does, not by the id it was given', () => {
+    const s = new GameSession(level(), packEngine());
+    const id = s.state.units[0].id;
+    const path = [{ x: 0, y: 0 }, { x: 2, y: 0 }];
+    const cell = { x: 3, y: 0 };
+
+    const hostile = emptyOverlay();
+    new TargetSelection(id, { x: 2, y: 0 }, path, 'volley', 'sword', [cell]).paint(context(s), hostile);
+    const helpful = emptyOverlay();
+    new TargetSelection(id, { x: 2, y: 0 }, path, 'bless', undefined, [cell]).paint(context(s), helpful);
+
+    // 齐射 is neither `attack` nor `heal`; the board used to call everything
+    // that was not literally `heal` an attack, so 祝福 pointed the enemy's
+    // colour at its own allies.
+    expect(hostile.attack.size).toBe(1);
+    expect(hostile.heal.size).toBe(0);
+    expect(helpful.heal.size).toBe(1);
+    expect(helpful.attack.size).toBe(0);
+  });
+
+  it('arms a pack\'s own way of shooting when an enemy is clicked', () => {
+    const s = new GameSession(level(), packEngine());
+    const outcome = new UnitSelection(s.state.units[0].id).click(context(s), { x: 3, y: 0 });
+
+    // The search for a firing position used to keep only the options whose
+    // ability is `attack`, so a ruleset without that id armed nothing at all.
+    const armed = outcome.selection as TargetSelection;
+    expect(armed).toBeInstanceOf(TargetSelection);
+    expect(armed.ability).toBe('volley');
+    expect(armed.weapon).toBeDefined();
+    expect(armed.targets).toContainEqual({ x: 3, y: 0 });
   });
 
   it('adds nothing for a selection that means nothing', () => {
