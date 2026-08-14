@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { ContentPackInstaller, createContentCatalog } from '../content-pack';
-import { createBattleEngine } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 import { createState } from '../state';
 import { mapFromLevel, normaliseLevel, terrainRows } from '../level/index';
 import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from '../resources';

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createBattleEngine } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 import { DeterministicOnlyRandom, SplitMixRandom, createRandomState } from '../random';
 import { BattleRecorder, hashState, replayBattle } from '../replay';
 import { TEST_CONTENT, makeLevel, u } from './fixtures';

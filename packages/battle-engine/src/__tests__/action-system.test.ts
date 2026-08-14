@@ -1,11 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import {
-  ActionExecutionContext,
-  ActionHandlerRegistry,
-  createDefaultBattleRuleServices,
-  IllegalActionError,
-  type ActionHandler,
-} from '../action-system';
+import { ActionExecutionContext, ActionHandlerRegistry, IllegalActionError, type ActionHandler } from '../action-system';
+import { createBattleRules } from '../plugins/default';
 
 import { CoreActionHandlers } from '../actions';
 import type { ActionKindMap } from '../types';
@@ -23,8 +18,8 @@ class TestReactionHandler implements ActionHandler<'reaction'> {
 
 describe('action strategy registry', () => {
   it('gives every ruleset its own registries, with no shared fallback', () => {
-    const first = createDefaultBattleRuleServices({ content: createTestCatalog() });
-    const second = createDefaultBattleRuleServices({ content: createTestCatalog() });
+    const first = createBattleRules({ content: createTestCatalog() });
+    const second = createBattleRules({ content: createTestCatalog() });
 
     expect(first.content).not.toBe(second.content);
     expect(first.abilities).not.toBe(second.abilities);

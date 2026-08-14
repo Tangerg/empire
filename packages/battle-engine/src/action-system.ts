@@ -2,27 +2,25 @@ import { BattleAggregate } from './domain/battle-aggregate';
 import { IllegalActionError } from './domain/errors';
 import { UnitEntity } from './domain/unit-entity';
 import { BattleLifecycle } from './turn-cycle';
-import { CombatModifierPipeline, CombatModifierProviders } from './combat-modifiers';
-import { WeaponHitEffectHandlers, type WeaponHitEffectHandlerRegistry } from './hit-effects';
-import { ObjectiveHandlers, type ObjectiveHandlerRegistry } from './objective-system';
-import { DefaultRankProgression, type RankProgressionPolicy } from './progression';
-import {
-  ScenarioConditionHandlers,
-  ScenarioEffectHandlers,
-  type ScenarioConditionHandlerRegistry,
-  type ScenarioEffectHandlerRegistry,
+import type { CombatModifierPipeline } from './combat-modifiers';
+import type { WeaponHitEffectHandlerRegistry } from './hit-effects';
+import type { ObjectiveHandlerRegistry } from './objective-system';
+import type { RankProgressionPolicy } from './progression';
+import type {
+  ScenarioConditionHandlerRegistry,
+  ScenarioEffectHandlerRegistry,
 } from './scenario';
-import { StatusBehaviors, type StatusBehaviorRegistry } from './statuses';
-import { DefaultBattleResources, type BattleResourceSystem } from './resources';
-import { Abilities, type AbilityDef } from './abilities';
+import type { StatusBehaviorRegistry } from './statuses';
+import type { BattleResourceSystem } from './resources';
+import type { AbilityDef } from './abilities';
 import { type ContentRegistry, KeyedRegistry } from './registry';
-import { DefaultTacticalSpace, type TacticalSpace } from './tactical-space';
-import { activeTurnOrder, mayAct, TurnOrders, type TurnOrderPolicy } from './turn-order';
-import { Reactions, type ReactionBehavior } from './reactions';
-import { UnitDepartureHandlers, type UnitDepartureHandlerRegistry } from './unit-departure';
-import { WeaponAreaShapes, type WeaponAreaShapeRegistry } from './weapon-area';
-import { UnitDirectives, type UnitDirectiveBehavior } from './unit-directive';
-import { SplitMixRandom, type RandomSource } from './random';
+import type { TacticalSpace } from './tactical-space';
+import { activeTurnOrder, mayAct, type TurnOrderPolicy } from './turn-order';
+import type { ReactionBehavior } from './reactions';
+import type { UnitDepartureHandlerRegistry } from './unit-departure';
+import type { WeaponAreaShapeRegistry } from './weapon-area';
+import type { UnitDirectiveBehavior } from './unit-directive';
+import type { RandomSource } from './random';
 import { type ContentCatalog } from './content-pack';
 import type { Action, ActionKindMap, Direction, GameEvent, GameState } from './types';
 
@@ -56,45 +54,6 @@ export interface BattleRuleServices {
   /** Standing orders a unit's `directive.mode` may name. */
   readonly directives: ContentRegistry<UnitDirectiveBehavior>;
 }
-
-/**
- * Prototype factory for an isolated ruleset. Mutable registries are cloned so
- * extending one engine cannot leak into another session.
- *
- * `content` is required: a ruleset without a declared catalog used to fall back
- * to ambient state, which made engine instances silently share content.
- */
-export interface BattleRuleServiceOverrides extends Partial<BattleRuleServices> {
-  readonly content: ContentCatalog;
-}
-
-export function createDefaultBattleRuleServices(
-  overrides: BattleRuleServiceOverrides,
-): BattleRuleServices {
-  const content = overrides.content;
-  const random = overrides.random ?? SplitMixRandom;
-  return {
-    random,
-    content,
-    abilities: overrides.abilities ?? Abilities.clone(),
-    space: overrides.space ?? new DefaultTacticalSpace(content),
-    combatModifiers:
-      overrides.combatModifiers ?? new CombatModifierPipeline(CombatModifierProviders.clone()),
-    hitEffects: overrides.hitEffects ?? WeaponHitEffectHandlers.clone(),
-    statusBehaviors: overrides.statusBehaviors ?? StatusBehaviors.clone(),
-    scenarioConditions: overrides.scenarioConditions ?? ScenarioConditionHandlers.clone(random),
-    scenarioEffects: overrides.scenarioEffects ?? ScenarioEffectHandlers.clone(),
-    objectives: overrides.objectives ?? ObjectiveHandlers.clone(),
-    progression: overrides.progression ?? DefaultRankProgression,
-    resources: overrides.resources ?? DefaultBattleResources.clone(),
-    turnOrders: overrides.turnOrders ?? TurnOrders.clone(),
-    reactions: overrides.reactions ?? Reactions.clone(),
-    unitDepartures: overrides.unitDepartures ?? UnitDepartureHandlers.clone(),
-    areaShapes: overrides.areaShapes ?? WeaponAreaShapes.clone(),
-    directives: overrides.directives ?? UnitDirectives.clone(),
-  };
-}
-
 
 export class ActionExecutionContext {
   readonly battle: BattleAggregate;

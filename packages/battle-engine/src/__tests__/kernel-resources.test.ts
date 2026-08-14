@@ -3,7 +3,10 @@ import { SrpgMicrokernel, type EnginePlugin } from '../kernel';
 import {
   AiPlanningPlugin,
   contentPluginFor,
+  buildBattleEngine,
+  createBattleEngine,
   createDefaultMicrokernel,
+  overridePlugin,
   DEFAULT_RULE_PLUGINS,
   MissionRulesPlugin,
   ResourceEconomyPlugin,
@@ -15,6 +18,9 @@ import {
   FUNDS_RESOURCE,
   playerResource,
 } from '../resources';
+import { Reactions } from '../reactions';
+import { DeterministicOnlyRandom, SplitMixRandom } from '../random';
+import { ScenarioConditionHandlers } from '../scenario';
 import { TEST_CONTENT, makeLevel, testState, u } from './fixtures';
 
 describe('cohesive microkernel modules', () => {
@@ -84,6 +90,81 @@ describe('cohesive microkernel modules', () => {
   });
 });
 
+describe('capability substitution', () => {
+  const loudReactions = () => Reactions.clone().register({
+    id: 'test.parry',
+    name: '格挡',
+    hint: '',
+    intercepts: false,
+    retaliates: true,
+    conservesResources: false,
+    incomingMultiplier: 0.5,
+  });
+
+  it('lets a later plugin replace a rule an earlier plugin introduced', () => {
+    const reactions = loudReactions();
+    const context = createDefaultMicrokernel(TEST_CONTENT)
+      .use(overridePlugin('reactions', reactions))
+      .compose();
+
+    expect(context.require('reactions')).toBe(reactions);
+    // The introducer still owns the slot; the override is a separate claim.
+    expect(context.providerOf('reactions')).toBe(TacticalRulesPlugin.id);
+  });
+
+  it('refuses to replace a capability nobody introduced', () => {
+    expect(() => new SrpgMicrokernel()
+      .use(contentPluginFor(TEST_CONTENT))
+      .use(overridePlugin('reactions', loudReactions()))
+      .compose()).toThrow(/requires missing capability "reactions"/);
+  });
+
+  it('holds an override to its manifest, in both directions', () => {
+    const sneaky: EnginePlugin = {
+      id: 'test.sneaky',
+      version: 1,
+      requiresCapabilities: ['reactions'],
+      install: (context) => context.replace('reactions', loudReactions()),
+    };
+    expect(() => createDefaultMicrokernel(TEST_CONTENT).use(sneaky).compose())
+      .toThrow(/did override undeclared capability "reactions"/);
+
+    const idle: EnginePlugin = {
+      id: 'test.idle',
+      version: 1,
+      overrides: ['reactions'],
+      install: () => {},
+    };
+    expect(() => createDefaultMicrokernel(TEST_CONTENT).use(idle).compose())
+      .toThrow(/declared but did not override capability "reactions"/);
+  });
+
+  it('lands an override before everyone who reads the capability', () => {
+    // The mission rules read `random` at install time to seed the scenario
+    // condition registry. An override that arrived after them would leave the
+    // seeded copy holding the source it was supposed to replace.
+    const random = DeterministicOnlyRandom;
+    const engine = buildBattleEngine(
+      createDefaultMicrokernel(TEST_CONTENT).use(overridePlugin('random', random)).compose(),
+    );
+
+    expect(engine.rules.random).toBe(random);
+    expect(engine.rules.scenarioConditions.random).toBe(random);
+  });
+
+  it('splits one factory override per capability so the order stays acyclic', () => {
+    // `scenarioConditions` is introduced by the mission rules and consumes
+    // `random` from the tactical rules. One plugin overriding both would have to
+    // run before and after the mission rules at once.
+    const random = DeterministicOnlyRandom;
+    const scenarioConditions = ScenarioConditionHandlers.clone(SplitMixRandom);
+    const engine = createBattleEngine({ content: TEST_CONTENT, random, scenarioConditions });
+
+    expect(engine.rules.random).toBe(random);
+    expect(engine.rules.scenarioConditions).toBe(scenarioConditions);
+  });
+});
+
 describe('entity-owned resource accounts', () => {
   it('stores state on the aggregate and keeps cloned engines policy-isolated', () => {
     const state = testState(makeLevel(['..'], {
@@ -91,8 +172,8 @@ describe('entity-owned resource accounts', () => {
       funds: [100, 0],
     }));
     const subject = playerResource(state.players[0]);
-    const engineA = createDefaultMicrokernel(TEST_CONTENT).buildBattleEngine();
-    const engineB = createDefaultMicrokernel(TEST_CONTENT).buildBattleEngine();
+    const engineA = buildBattleEngine(createDefaultMicrokernel(TEST_CONTENT).compose());
+    const engineB = buildBattleEngine(createDefaultMicrokernel(TEST_CONTENT).compose());
 
     engineA.rules.resources.spend(FUNDS_RESOURCE, subject, 30);
 

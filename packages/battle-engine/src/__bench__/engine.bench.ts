@@ -71,7 +71,7 @@ describe('SRPG core hot paths', () => {
   });
 
   bench('compute one movement field', () => {
-    const field = engine.moveField(state, mover);
+    const field = engine.space.moveField(state, mover);
     sink = field.stops.size;
   });
 

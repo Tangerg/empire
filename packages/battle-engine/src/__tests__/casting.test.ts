@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createBattleEngine } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 import { cloneContentCatalog } from '../content-pack';
 import { activeCasts, castOf, isCharging } from '../casting';
 import { SpellCastEntity } from '../domain/spell-cast';

@@ -9,7 +9,7 @@ import {
   DefaultAiObjectiveAdvisors,
 } from '../ai-objectives';
 import { CombatModifierProviders } from '../combat-modifiers';
-import { createBattleEngine } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 import {
   ObjectiveHandlerRegistry,
   ObjectiveHandlers,

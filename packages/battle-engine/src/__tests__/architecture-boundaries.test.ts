@@ -124,7 +124,6 @@ describe('dependency injection invariants', () => {
       'TEST_CONTENT',
       'DefaultBattleResources',
       'DefaultCombatModifierPipeline',
-      'DefaultBattleRuleServices',
       'CoreTacticalSpace',
       'StatusBehaviors',
       'ObjectiveHandlers',
@@ -210,7 +209,7 @@ describe('no ambient content', () => {
       'GlobalContentCatalog',
       'GlobalContentPacks',
       'installContentPacks',
-      'DefaultBattleRuleServices',
+      'createDefaultBattleRuleServices',
       'CoreTacticalSpace',
     ];
     const pattern = new RegExp(`\\b(?:${forbidden.join('|')})\\b`);
@@ -250,6 +249,44 @@ describe('no ambient content', () => {
 
     // Apps and @empire/test-content compose; libraries never do.
     expect(installers).toEqual([]);
+  });
+});
+
+describe('one composition root', () => {
+  it('builds an engine in exactly one place, through the plugins', () => {
+    // There used to be two composition roots, and only one of them ran the
+    // plugins: every app and every test but one called a factory that assembled
+    // the same twenty-one defaults by hand, so the plugin architecture was real
+    // code the product never executed — and the defaults had to be kept in step
+    // with the plugins that shadowed them.
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (name === join('plugins', 'default.ts')) return [];
+      return /new BattleEngine\(/.test(readFileSync(file, 'utf8')) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('installs a default rule registry only from a plugin', () => {
+    // A registry cloned outside the plugins is a default that the kernel does
+    // not know about, which is how the second root came to exist in the first
+    // place. `data/` holds the shipped content tables, which packs install.
+    const prototypes = [
+      'Abilities', 'Reactions', 'TurnOrders', 'StatusBehaviors', 'ObjectiveHandlers',
+      'UnitDepartureHandlers', 'WeaponAreaShapes', 'UnitDirectives', 'WeaponHitEffectHandlers',
+      'ScenarioConditionHandlers', 'ScenarioEffectHandlers', 'CoreActionHandlers',
+      'DefaultBattleResources', 'CombatModifierProviders', 'DefaultAiIntents',
+      'DefaultAbilityAiEvaluators', 'DefaultAiObjectiveAdvisors',
+    ];
+    const pattern = new RegExp(`\\b(?:${prototypes.join('|')})\\.clone\\(`);
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (name.startsWith('plugins')) return [];
+      return pattern.test(readFileSync(file, 'utf8')) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
   });
 });
 

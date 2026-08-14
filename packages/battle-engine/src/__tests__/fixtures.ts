@@ -1,4 +1,5 @@
-import { createDefaultBattleRuleServices, type ActionHandlerRegistry, type BattleRuleServices } from '../action-system';
+import { type ActionHandlerRegistry, type BattleRuleServices } from '../action-system';
+import { createBattleRules } from '../plugins/default';
 import { applyActionWith, commandOptions } from '../actions';
 import { addStatus } from '../statuses';
 import { chooseAction, type AiPlanningDependencies, DefaultAbilityAiEvaluators, DefaultAiIntents } from '../ai';
@@ -126,7 +127,7 @@ export const u = (x: number, y: number, unit: string, owner: PlayerId, hp?: numb
  * for ambient state, so a signature that forgets a dependency cannot compile.
  */
 export const TEST_CONTENT: ContentCatalog = createTestCatalog();
-export const TEST_RULES: BattleRuleServices = createDefaultBattleRuleServices({ content: TEST_CONTENT });
+export const TEST_RULES: BattleRuleServices = createBattleRules({ content: TEST_CONTENT });
 
 export const testState = (level: LevelData): GameState => createState(level, TEST_CONTENT);
 

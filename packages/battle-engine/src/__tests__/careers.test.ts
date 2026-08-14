@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createBattleEngine } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 import { careerOptions } from '../careers';
 import { GameSession } from '../session';
 import { TEST_CONTENT, TEST_RULES, makeLevel, testState, u } from './fixtures';

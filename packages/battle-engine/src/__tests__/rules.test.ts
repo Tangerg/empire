@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createBattleEngine } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 import { applyAction, IllegalActionError } from '../actions';
 import { idx } from '../grid';
 import { GameSession } from '../session';

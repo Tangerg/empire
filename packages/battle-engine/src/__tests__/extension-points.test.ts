@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { createBattleEngine } from '../engine';
-import { createDefaultBattleRuleServices } from '../action-system';
+import { createBattleEngine } from '../plugins/default';
+import { createBattleRules } from '../plugins/default';
 import { applyAction } from '../actions';
 import { cloneContentCatalog } from '../content-pack';
 import { Reactions } from '../reactions';
@@ -36,7 +36,7 @@ describe('reaction stances are content', () => {
       retaliates: false,
       conservesResources: false,
     });
-    const rules = createDefaultBattleRuleServices({ content: TEST_CONTENT, reactions });
+    const rules = createBattleRules({ content: TEST_CONTENT, reactions });
 
     const state = testState(duel());
     const [attacker, defender] = state.units;
@@ -75,7 +75,7 @@ describe('a unit leaving the field is one announcement', () => {
         onBoard: state.units.some((candidate) => candidate.id === unit.id),
       }),
     });
-    const rules = createDefaultBattleRuleServices({ content: TEST_CONTENT, unitDepartures });
+    const rules = createBattleRules({ content: TEST_CONTENT, unitDepartures });
     const state = testState(makeLevel(['..'], {
       units: [u(0, 0, 'knight', 1), u(1, 0, 'mage', 2, 5)],
     }));
@@ -159,7 +159,7 @@ describe('a unit leaving the field is one announcement', () => {
       id: 'test.witness',
       handle: ({ unit }) => seen.push(unit.id),
     });
-    const rules = createDefaultBattleRuleServices({ content: TEST_CONTENT, unitDepartures });
+    const rules = createBattleRules({ content: TEST_CONTENT, unitDepartures });
     const state: GameState = testState(duel());
     announceUnitDeparture(rules, state, state.units[0], () => {});
     expect(seen).toEqual([state.units[0].id]);

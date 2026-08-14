@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { createDefaultBattleRuleServices, type BattleRuleServices } from '../action-system';
+import { type BattleRuleServices } from '../action-system';
+import { createBattleRules } from '../plugins/default';
 import { applyAction } from '../actions';
 import { resolveDamage } from '../damage';
 import { WeaponHitEffectHandlers } from '../hit-effects';
@@ -107,7 +108,7 @@ describe('every blow in combat is the same act', () => {
       },
       describe: () => 'test.vanish',
     });
-    return createDefaultBattleRuleServices({ content: TEST_CONTENT, hitEffects });
+    return createBattleRules({ content: TEST_CONTENT, hitEffects });
   };
 
   const brawl = (): GameState => testState(makeLevel(['..'], {
@@ -169,7 +170,7 @@ describe('every way off the field is a departure', () => {
       id: 'test.witness',
       handle: ({ unit }) => seen.push(unit.id),
     });
-    return { seen, rules: createDefaultBattleRuleServices({ content: TEST_CONTENT, unitDepartures }) };
+    return { seen, rules: createBattleRules({ content: TEST_CONTENT, unitDepartures }) };
   };
 
   it('announces a rout caused by nothing but morale', () => {

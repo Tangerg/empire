@@ -1,45 +1,37 @@
-import type { ActionHandlerRegistry, BattleRuleServices } from './action-system';
-import type { AiObjectiveAdvisorRegistry } from './ai-objectives';
-import type { AbilityAiEvaluatorRegistry, AiIntentRegistry } from './ai';
-import type { CombatModifierPipeline } from './combat-modifiers';
 import { orderByDependencies } from './dependency-order';
-import { BattleEngine } from './engine';
+import type { BattleEngineDependencies } from './engine';
 
 /**
- * Open capability map. Third-party plugins may declaration-merge capabilities
- * used by their own plugins even when BattleEngine itself does not consume them.
+ * What a composed ruleset can be asked for.
+ *
+ * The engine's own dependencies *are* the base capability set, so they are
+ * stated once, where their documentation already lives. This used to restate
+ * all twenty-one names as `BattleRuleServices['x']` — a second list whose only
+ * job was to agree with the first.
+ *
+ * Still open: a third-party plugin may declaration-merge capabilities its own
+ * plugins consume, which the engine itself never asks for.
  */
-export interface KernelCapabilityMap {
-  content: BattleRuleServices['content'];
-  abilities: BattleRuleServices['abilities'];
-  space: BattleRuleServices['space'];
-  actionHandlers: ActionHandlerRegistry;
-  combatModifiers: CombatModifierPipeline;
-  hitEffects: BattleRuleServices['hitEffects'];
-  statusBehaviors: BattleRuleServices['statusBehaviors'];
-  scenarioConditions: BattleRuleServices['scenarioConditions'];
-  scenarioEffects: BattleRuleServices['scenarioEffects'];
-  objectives: BattleRuleServices['objectives'];
-  progression: BattleRuleServices['progression'];
-  resources: BattleRuleServices['resources'];
-  turnOrders: BattleRuleServices['turnOrders'];
-  reactions: BattleRuleServices['reactions'];
-  unitDepartures: BattleRuleServices['unitDepartures'];
-  areaShapes: BattleRuleServices['areaShapes'];
-  directives: BattleRuleServices['directives'];
-  random: BattleRuleServices['random'];
-  aiObjectiveAdvisors: AiObjectiveAdvisorRegistry;
-  abilityAiEvaluators: AbilityAiEvaluatorRegistry;
-  aiIntents: AiIntentRegistry;
-}
+export interface KernelCapabilityMap extends BattleEngineDependencies {}
 
 export type KernelCapabilityId = Extract<keyof KernelCapabilityMap, string>;
 
 export interface EnginePlugin {
   readonly id: string;
   readonly version: number;
-  /** Capability manifest enables substitution without depending on provider ids. */
+  /** Capabilities this plugin introduces. Two plugins cannot introduce the same one. */
   readonly provides?: readonly KernelCapabilityId[];
+  /**
+   * Capabilities this plugin *replaces* rather than introduces.
+   *
+   * Substitution was advertised and impossible: two plugins naming the same
+   * capability in `provides` was an error, and the store refused a second
+   * `provide`, so the only way to swap a rule was to bypass the kernel entirely
+   * — which is exactly what the engine factory did. An overriding plugin is
+   * ordered after the capability's introducer and before everyone who consumes
+   * it, so a consumer never captures the value that was replaced.
+   */
+  readonly overrides?: readonly KernelCapabilityId[];
   readonly requiresCapabilities?: readonly KernelCapabilityId[];
   /** Explicit ordering/dependency edge for non-capability relationships. */
   readonly requires?: readonly string[];
@@ -55,12 +47,16 @@ export interface KernelCapabilities {
 
 /** Capability-segregated port handed to one plugin during installation. */
 export interface KernelPluginContext extends KernelCapabilities {
+  /** Introduces a capability nobody has provided yet. */
   provide<K extends KernelCapabilityId>(id: K, capability: KernelCapabilityMap[K]): void;
+  /** Replaces one somebody already provided. Declare it in `overrides`. */
+  replace<K extends KernelCapabilityId>(id: K, capability: KernelCapabilityMap[K]): void;
 }
 
 class KernelCapabilityStore {
   private readonly capabilities = new Map<string, unknown>();
   private readonly providers = new Map<string, string>();
+  private readonly overriders = new Map<string, string>();
 
   provide<K extends KernelCapabilityId>(
     providerId: string,
@@ -73,6 +69,18 @@ class KernelCapabilityStore {
     }
     this.capabilities.set(id, capability);
     this.providers.set(id, providerId);
+  }
+
+  replace<K extends KernelCapabilityId>(
+    providerId: string,
+    id: K,
+    capability: KernelCapabilityMap[K],
+  ): void {
+    if (!this.providers.has(id)) {
+      throw new Error(`kernel capability "${id}" cannot be replaced before it is provided`);
+    }
+    this.capabilities.set(id, capability);
+    this.overriders.set(id, providerId);
   }
 
   has(id: KernelCapabilityId): boolean {
@@ -89,7 +97,15 @@ class KernelCapabilityStore {
   }
 
   providedBy(providerId: string): KernelCapabilityId[] {
-    return [...this.providers]
+    return this.attributedTo(this.providers, providerId);
+  }
+
+  overriddenBy(providerId: string): KernelCapabilityId[] {
+    return this.attributedTo(this.overriders, providerId);
+  }
+
+  private attributedTo(attribution: ReadonlyMap<string, string>, providerId: string): KernelCapabilityId[] {
+    return [...attribution]
       .filter(([, provider]) => provider === providerId)
       .map(([capability]) => capability as KernelCapabilityId);
   }
@@ -121,6 +137,10 @@ class ScopedKernelPluginContext extends ReadonlyKernelCapabilities implements Ke
 
   provide<K extends KernelCapabilityId>(id: K, capability: KernelCapabilityMap[K]): void {
     this.store.provide(this.providerId, id, capability);
+  }
+
+  replace<K extends KernelCapabilityId>(id: K, capability: KernelCapabilityMap[K]): void {
+    this.store.replace(this.providerId, id, capability);
   }
 }
 
@@ -164,75 +184,75 @@ export class SrpgMicrokernel {
   compose(): KernelCapabilities {
     const store = new KernelCapabilityStore();
     for (const plugin of this.orderedPlugins()) {
-      const declared = new Set(plugin.provides ?? []);
       plugin.install(new ScopedKernelPluginContext(store, plugin.id));
-      for (const capability of declared) {
-        if (store.providerOf(capability) !== plugin.id) {
-          throw new Error(`engine plugin "${plugin.id}" declared but did not provide capability "${capability}"`);
-        }
-      }
-      for (const capability of store.providedBy(plugin.id)) {
-        if (!declared.has(capability)) {
-          throw new Error(`engine plugin "${plugin.id}" provided undeclared capability "${capability}"`);
-        }
-      }
+      this.assertManifest(plugin, 'provide', plugin.provides, store.providedBy(plugin.id));
+      this.assertManifest(plugin, 'override', plugin.overrides, store.overriddenBy(plugin.id));
     }
     return new ReadonlyKernelCapabilities(store);
   }
 
-  buildBattleEngine(): BattleEngine {
-    const context = this.compose();
-    // Each field below demands its own capability by name, and `require` names
-    // the missing one. A second hand-kept list of "what the engine needs" only
-    // ever drifted: the newest capability was already absent from it.
-    return new BattleEngine({
-      content: context.require('content'),
-      abilities: context.require('abilities'),
-      space: context.require('space'),
-      actionHandlers: context.require('actionHandlers'),
-      combatModifiers: context.require('combatModifiers'),
-      hitEffects: context.require('hitEffects'),
-      statusBehaviors: context.require('statusBehaviors'),
-      areaShapes: context.require('areaShapes'),
-      directives: context.require('directives'),
-      scenarioConditions: context.require('scenarioConditions'),
-      scenarioEffects: context.require('scenarioEffects'),
-      objectives: context.require('objectives'),
-      progression: context.require('progression'),
-      resources: context.require('resources'),
-      turnOrders: context.require('turnOrders'),
-      reactions: context.require('reactions'),
-      unitDepartures: context.require('unitDepartures'),
-      random: context.require('random'),
-      aiObjectiveAdvisors: context.require('aiObjectiveAdvisors'),
-      abilityAiEvaluators: context.require('abilityAiEvaluators'),
-      aiIntents: context.require('aiIntents'),
-    });
+  private assertManifest(
+    plugin: EnginePlugin,
+    verb: 'provide' | 'override',
+    declared: readonly KernelCapabilityId[] = [],
+    installed: readonly KernelCapabilityId[] = [],
+  ): void {
+    const done = new Set(installed);
+    for (const capability of declared) {
+      if (!done.has(capability)) {
+        throw new Error(`engine plugin "${plugin.id}" declared but did not ${verb} capability "${capability}"`);
+      }
+    }
+    const promised = new Set(declared);
+    for (const capability of installed) {
+      if (!promised.has(capability)) {
+        throw new Error(`engine plugin "${plugin.id}" did ${verb} undeclared capability "${capability}"`);
+      }
+    }
   }
 
+  /**
+   * Install order, derived entirely from the manifests.
+   *
+   * Three kinds of edge, and the third is what makes substitution safe: an
+   * overriding plugin runs after whoever introduced the capability, and every
+   * consumer of that capability runs after the override — otherwise a consumer
+   * that reads a capability at install time keeps the value that was replaced.
+   */
   private orderedPlugins(): EnginePlugin[] {
     const plugins = [...this.plugins.values()];
-    const capabilityProviders = new Map<KernelCapabilityId, string>();
+    const introducers = new Map<KernelCapabilityId, string>();
+    const overriders = new Map<KernelCapabilityId, string[]>();
     for (const plugin of plugins) {
       for (const capability of plugin.provides ?? []) {
-        const provider = capabilityProviders.get(capability);
+        const provider = introducers.get(capability);
         if (provider && provider !== plugin.id) {
           throw new Error(`kernel capability "${capability}" declared by both "${provider}" and "${plugin.id}"`);
         }
-        capabilityProviders.set(capability, plugin.id);
+        introducers.set(capability, plugin.id);
+      }
+      for (const capability of plugin.overrides ?? []) {
+        overriders.set(capability, [...(overriders.get(capability) ?? []), plugin.id]);
       }
     }
+    const introducerOf = (plugin: EnginePlugin, capability: KernelCapabilityId): string => {
+      const provider = introducers.get(capability);
+      if (!provider) {
+        throw new Error(`engine plugin "${plugin.id}" requires missing capability "${capability}"`);
+      }
+      return provider;
+    };
     return orderByDependencies(plugins, {
       idOf: (plugin) => plugin.id,
       dependenciesOf: (plugin) => [
         ...(plugin.requires ?? []),
-        ...(plugin.requiresCapabilities ?? []).map((capability) => {
-          const provider = capabilityProviders.get(capability);
-          if (!provider) {
-            throw new Error(`engine plugin "${plugin.id}" requires missing capability "${capability}"`);
-          }
-          return provider;
-        }),
+        // An override waits for the capability to exist.
+        ...(plugin.overrides ?? []).map((capability) => introducerOf(plugin, capability)),
+        // A consumer waits for the capability *and* for anyone replacing it.
+        ...(plugin.requiresCapabilities ?? []).flatMap((capability) => [
+          introducerOf(plugin, capability),
+          ...(overriders.get(capability) ?? []),
+        ]),
       ].filter((dependency) => dependency !== plugin.id),
       missing: (plugin, dependency) =>
         new Error(`engine plugin "${plugin.id}" requires "${dependency}"`),

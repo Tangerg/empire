@@ -4,7 +4,7 @@ import { applyAction } from '../actions';
 import { DefaultAbilityAiEvaluators } from '../ai';
 
 import { defineCareer } from '../content-builders';
-import { createBattleEngine } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 import { idx } from '../grid';
 import { areAllies, cloneState } from '../state';
 import { DefaultTacticalSpace } from '../tactical-space';

@@ -5,7 +5,7 @@ import {
   CombatModifierProviderRegistry,
   type CombatModifierProvider,
 } from '../combat-modifiers';
-import { createBattleEngine } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 import { GameSession } from '../session';
 import { TEST_CONTENT, makeLevel, testState, u } from './fixtures';
 

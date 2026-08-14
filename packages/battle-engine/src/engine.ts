@@ -1,22 +1,13 @@
-import { CoreActionHandlers, applyActionWith, commandOptions } from './actions';
+import { applyActionWith, commandOptions } from './actions';
 import { BattleLifecycle } from './turn-cycle';
 import {
   chooseAction,
-  DefaultAbilityAiEvaluators,
-  DefaultAiIntents,
   type AbilityAiEvaluatorRegistry,
   type AiIntentRegistry,
   type AiOptions,
 } from './ai';
-import {
-  DefaultAiObjectiveAdvisors,
-  type AiObjectiveAdvisorRegistry,
-} from './ai-objectives';
-import {
-  ActionHandlerRegistry,
-  createDefaultBattleRuleServices,
-  type BattleRuleServices,
-} from './action-system';
+import { type AiObjectiveAdvisorRegistry } from './ai-objectives';
+import { ActionHandlerRegistry, type BattleRuleServices } from './action-system';
 import {
   forecast,
   type CombatForecast,
@@ -26,12 +17,11 @@ import {
 } from './combat-modifiers';
 import { forecastCombatPlan } from './combat-plan';
 import { validateLevel } from './level/index';
-import type { MoveField } from './movement';
 import { cloneState, createState, restoreState, type CreateStateOptions } from './state';
 import type { ContentCatalog } from './content-pack';
 import { careerOptions } from './careers';
 import { activeTurnOrder, mayAct, type TurnOrderPolicy } from './turn-order';
-import type { Action, Coord, GameEvent, GameState, LevelData, PlayerId, Unit, WeaponId } from './types';
+import type { Action, Coord, GameEvent, GameState, LevelData, Unit, WeaponId } from './types';
 import type { Objective, ScenarioCondition } from './types';
 
 export interface BattleEngineDependencies extends BattleRuleServices {
@@ -181,37 +171,20 @@ export class BattleEngine {
     return commandOptions(this.rules, state, unit, at);
   }
 
-  moveField(state: GameState, unit: Unit): MoveField {
-    return this.rules.space.moveField(state, unit);
-  }
-
   careerOptions(state: GameState, unit: Unit) {
     return careerOptions(this.rules, state, unit);
   }
 
-  pathTo(field: MoveField, state: GameState, destination: Coord): Coord[] | null {
-    return this.rules.space.pathTo(field, state, destination);
-  }
-
-  threatOf(state: GameState, unit: Unit, field?: MoveField): Set<number> {
-    return this.rules.space.threatOf(state, unit, field);
-  }
-
-  /** Ground this unit's enemies hold; entering a tile of it ends the move. */
-  controlZoneAgainst(state: GameState, unit: Unit): Set<number> {
-    return this.rules.space.controlZoneAgainst(state, unit);
-  }
-
-  visibleTiles(state: GameState, viewer: PlayerId): Set<number> {
-    return this.rules.space.visibleTiles(state, viewer);
-  }
-
-  isUnitVisible(state: GameState, viewer: PlayerId, unit: Unit, seen?: Set<number>): boolean {
-    return this.rules.space.isUnitVisible(state, viewer, unit, seen);
-  }
-
-  visibleUnits(state: GameState, viewer: PlayerId): Unit[] {
-    return this.rules.space.visibleUnits(state, viewer);
+  /**
+   * Spatial questions are asked of `rules.space` directly.
+   *
+   * Seven methods here forwarded to it verbatim, binding neither the state nor
+   * the ruleset — so a new spatial query meant editing the port, this façade and
+   * the session shell above it. The port is public; a façade in front of a
+   * public port is a third place to keep in step, not an abstraction.
+   */
+  get space() {
+    return this.rules.space;
   }
 
   forecast(
@@ -295,21 +268,13 @@ export class BattleEngine {
 }
 
 /**
- * Convenience factory for focused rule overrides. Unlike the old optional
- * constructor, every omitted mutable strategy is cloned for this engine.
+ * Focused rule overrides for one engine.
+ *
+ * `content` is required and is never defaulted to ambient state. Every other
+ * capability, if given, replaces the default the rule plugins install — see
+ * `createBattleEngine` in the composition root.
  */
 export interface BattleEngineOverrides extends Partial<BattleEngineDependencies> {
   /** The catalog this engine plays on; never defaulted to ambient state. */
   readonly content: ContentCatalog;
-}
-
-export function createBattleEngine(overrides: BattleEngineOverrides): BattleEngine {
-  const rules = createDefaultBattleRuleServices(overrides);
-  return new BattleEngine({
-    ...rules,
-    actionHandlers: overrides.actionHandlers ?? CoreActionHandlers.clone(),
-    aiObjectiveAdvisors: overrides.aiObjectiveAdvisors ?? DefaultAiObjectiveAdvisors.clone(),
-    abilityAiEvaluators: overrides.abilityAiEvaluators ?? DefaultAbilityAiEvaluators.clone(),
-    aiIntents: overrides.aiIntents ?? DefaultAiIntents.clone(),
-  });
 }

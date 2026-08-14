@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createBattleEngine } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 import { cloneContentCatalog } from '../content-pack';
 import { controlRadius, disengagedControllers, hostileControlZone } from '../zone-of-control';
 import { UnitEntity } from '../domain/unit-entity';

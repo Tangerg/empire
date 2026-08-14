@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction, IllegalActionError } from '../actions';
-import { createBattleEngine } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 import { GameSession } from '../session';
 import { cloneState } from '../state';
 import { StatusBehaviorRegistry } from '../statuses';

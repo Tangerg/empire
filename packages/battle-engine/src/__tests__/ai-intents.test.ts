@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createBattleEngine } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 import { AiTurnContext, DefaultAiIntents, chooseAction } from '../ai';
 import { TEST_CONTENT, makeLevel, testAiDependencies, testState, u } from './fixtures';
 import type { Action, GameState } from '../types';

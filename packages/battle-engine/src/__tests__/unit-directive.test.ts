@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createDefaultBattleRuleServices } from '../action-system';
+import { createBattleRules } from '../plugins/default';
 import { applyAction } from '../actions';
 import { UnitDirectives, directiveOf, directivePull } from '../unit-directive';
 import { TEST_CONTENT, TEST_RULES, makeLevel, testState, u } from './fixtures';
@@ -66,7 +66,7 @@ describe('standing orders', () => {
       engagement: 0.5,
       fightPenalty: -20,
     });
-    const rules = createDefaultBattleRuleServices({ content: TEST_CONTENT, directives });
+    const rules = createBattleRules({ content: TEST_CONTENT, directives });
     const state = field({ mode: 'test.forage', waypoints: [], cursor: 0 });
 
     expect(directivePull(rules, state, state.units[0], { x: 0, y: 1 })).toBe(40);

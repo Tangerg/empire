@@ -4,7 +4,7 @@ import { ContentPackInstaller, createContentCatalog } from '@empire/battle-engin
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
 import { icon, terrainSwatch, unitIcon } from '@empire/game-ui';
-import { createDefaultMicrokernel } from '@empire/battle-engine/plugins/default';
+import { buildBattleEngine, createDefaultMicrokernel } from '@empire/battle-engine/plugins/default';
 import {
   type ResourceSubject,
   playerResource,
@@ -82,7 +82,7 @@ if (!appElement) throw new Error('missing #app');
 const app: HTMLElement = appElement;
 
 const kernel = createDefaultMicrokernel(content);
-const engine = kernel.buildBattleEngine();
+const engine = buildBattleEngine(kernel.compose());
 let session = new GameSession(DEMO_LEVEL, engine);
 let preview: CombatPlan | null = null;
 let events: GameEvent[] = [];

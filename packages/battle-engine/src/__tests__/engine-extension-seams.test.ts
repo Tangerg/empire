@@ -2,11 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { Abilities, defineAbility } from '../abilities';
 import { ActionHandlerRegistry, type ActionHandler } from '../action-system';
 import { CoreActionHandlers } from '../actions';
-import {
-  BattleEngineConfigurationError,
-  BattleLevelError,
-  createBattleEngine,
-} from '../engine';
+import { BattleEngineConfigurationError, BattleLevelError } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 
 import { GameSession } from '../session';
 import { DefaultTacticalSpace } from '../tactical-space';

@@ -57,13 +57,13 @@ export class GameSession {
   moveField(unit: Unit): MoveField {
     const hit = this.fieldCache.get(unit.id);
     if (hit && hit.stamp === this.stamp) return hit.field;
-    const field = this.engine.moveField(this.state, unit);
+    const field = this.engine.space.moveField(this.state, unit);
     this.fieldCache.set(unit.id, { field, stamp: this.stamp });
     return field;
   }
 
   pathTo(unit: Unit, to: Coord): Coord[] | null {
-    return this.engine.pathTo(this.moveField(unit), this.state, to);
+    return this.engine.space.pathTo(this.moveField(unit), this.state, to);
   }
 
   commandsAt(unit: Unit, at: Coord) {
@@ -75,23 +75,23 @@ export class GameSession {
   }
 
   threatOf(unit: Unit): Set<number> {
-    return this.engine.threatOf(this.state, unit, this.moveField(unit));
+    return this.engine.space.threatOf(this.state, unit, this.moveField(unit));
   }
 
   controlZoneAgainst(unit: Unit): Set<number> {
-    return this.engine.controlZoneAgainst(this.state, unit);
+    return this.engine.space.controlZoneAgainst(this.state, unit);
   }
 
   visibleTiles(viewer: PlayerId): Set<number> {
-    return this.engine.visibleTiles(this.state, viewer);
+    return this.engine.space.visibleTiles(this.state, viewer);
   }
 
   isUnitVisible(viewer: PlayerId, unit: Unit, seen?: Set<number>): boolean {
-    return this.engine.isUnitVisible(this.state, viewer, unit, seen);
+    return this.engine.space.isUnitVisible(this.state, viewer, unit, seen);
   }
 
   visibleUnits(viewer: PlayerId): Unit[] {
-    return this.engine.visibleUnits(this.state, viewer);
+    return this.engine.space.visibleUnits(this.state, viewer);
   }
 
   forecast(attacker: Unit, defender: Unit, at?: Coord, weapon?: WeaponId) {

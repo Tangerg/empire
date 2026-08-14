@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createBattleEngine } from '../engine';
+import { createBattleEngine } from '../plugins/default';
 import { cloneContentCatalog } from '../content-pack';
 import { DomainInvariantError, IllegalActionError, UnitEntity } from '../domain/index';
 import { TEST_CONTENT, makeLevel, u } from './fixtures';
