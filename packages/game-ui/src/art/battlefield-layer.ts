@@ -1,8 +1,6 @@
 import type { ArtDirection } from './direction';
-import type { Direction, GameMap } from '@empire/battle-engine/types';
-import { TILE } from './terrain';
-
-const DIRECTIONS = ['north', 'east', 'south', 'west'] as const satisfies readonly Direction[];
+import type { GameMap } from '@empire/battle-engine/types';
+import { edgeLine, type BoardLayout } from './board-decorations';
 
 const featureColor = {
   elevationBackground: '#2a211a',
@@ -17,10 +15,17 @@ export function battlefieldRenderKey(map: GameMap): string {
   const cliffs = map.cliffs
     .map(({ from, to }) => `${from.x},${from.y}>${to.x},${to.y}`)
     .join(';');
+  // Whatever sides are actually written, sorted — not four fixed names, which
+  // hashed nothing at all for a board whose facings have other names, so moving
+  // a hex cover left the cached picture on screen.
   const cover = map.directionalCover
-    .map(({ at, sides }) =>
-      `${at.x},${at.y}:${DIRECTIONS.map((side) => sides[side]?.[0] ?? '-').join('')}`,
-    )
+    .map(({ at, sides }) => {
+      const written = Object.entries(sides)
+        .filter(([, level]) => level)
+        .map(([side, level]) => `${side}=${String(level)}`)
+        .sort();
+      return `${at.x},${at.y}:${written.join(',')}`;
+    })
     .join(';');
   return [
     `${map.width}x${map.height}`,
@@ -32,29 +37,21 @@ export function battlefieldRenderKey(map: GameMap): string {
   ].join('|');
 }
 
-function cliffMarkup(map: GameMap): string[] {
-  return map.cliffs.map((cliff) => {
-    const ax = cliff.from.x * TILE + TILE / 2;
-    const ay = cliff.from.y * TILE + TILE / 2;
-    const bx = cliff.to.x * TILE + TILE / 2;
-    const by = cliff.to.y * TILE + TILE / 2;
-    const mx = (ax + bx) / 2;
-    const my = (ay + by) / 2;
-    return cliff.from.x !== cliff.to.x
-      ? `<line x1="${mx}" y1="${my - TILE / 2}" x2="${mx}" y2="${my + TILE / 2}" stroke="${featureColor.cliff}" stroke-width="3"/>`
-      : `<line x1="${mx - TILE / 2}" y1="${my}" x2="${mx + TILE / 2}" y2="${my}" stroke="${featureColor.cliff}" stroke-width="3"/>`;
-  });
+function cliffMarkup(layout: BoardLayout, map: GameMap): string[] {
+  return map.cliffs.map((cliff) =>
+    edgeLine(layout, cliff.from, layout.center(cliff.to), featureColor.cliff));
 }
 
-function coverEdge(x: number, y: number, side: Direction, color: string): string {
-  if (side === 'north') return `<line x1="${x + 3}" y1="${y + 3}" x2="${x + TILE - 3}" y2="${y + 3}" stroke="${color}" stroke-width="3"/>`;
-  if (side === 'south') return `<line x1="${x + 3}" y1="${y + TILE - 3}" x2="${x + TILE - 3}" y2="${y + TILE - 3}" stroke="${color}" stroke-width="3"/>`;
-  if (side === 'west') return `<line x1="${x + 3}" y1="${y + 3}" x2="${x + 3}" y2="${y + TILE - 3}" stroke="${color}" stroke-width="3"/>`;
-  return `<line x1="${x + TILE - 3}" y1="${y + 3}" x2="${x + TILE - 3}" y2="${y + TILE - 3}" stroke="${color}" stroke-width="3"/>`;
-}
-
-/** Shared renderer for elevation badges, cliffs and directional cover. */
-export function battlefieldFeatureMarkup(art: ArtDirection, map: GameMap): string {
+/**
+ * Shared renderer for elevation badges, cliffs and directional cover.
+ *
+ * Takes the layout for the same reason every other decoration does: this was the
+ * third tactical layer and the one that stayed square. On a hex board the
+ * terrain, the units, the grid lines and the move range all moved to where the
+ * cells are, while the height badges, cliff marks and cover edges kept drawing
+ * at `x * TILE` — the right pictures in the wrong places.
+ */
+export function battlefieldFeatureMarkup(art: ArtDirection, layout: BoardLayout, map: GameMap): string {
   const parts: string[] = [];
   for (let i = 0; i < map.elevation.length; i++) {
     const value = map.elevation[i];
@@ -66,29 +63,32 @@ export function battlefieldFeatureMarkup(art: ArtDirection, map: GameMap): strin
     // One label identifies a continuous plateau; repeating it in every cell
     // obscures both the authored terrain and the units standing on it.
     if (sameToWest || sameToNorth) continue;
-    const x = cellX * TILE;
-    const y = cellY * TILE;
+    const { x, y } = layout.origin({ x: cellX, y: cellY });
+    const badge = layout.tileSize * 0.81;
     parts.push(
       `<g class="elevation-badge">` +
-      `<circle cx="${x + 26}" cy="${y + 7}" r="5" fill="${featureColor.elevationBackground}" opacity="0.8"/>` +
-      `<text x="${x + 26}" y="${y + 9.5}" text-anchor="middle" font-size="7" fill="${featureColor.elevationText}">${value}</text>` +
+      `<circle cx="${x + badge}" cy="${y + 7}" r="5" fill="${featureColor.elevationBackground}" opacity="0.8"/>` +
+      `<text x="${x + badge}" y="${y + 9.5}" text-anchor="middle" font-size="7" fill="${featureColor.elevationText}">${value}</text>` +
       `</g>`,
     );
   }
-  parts.push(...cliffMarkup(map));
+  parts.push(...cliffMarkup(layout, map));
   for (const cover of map.directionalCover) {
-    const x = cover.at.x * TILE;
-    const y = cover.at.y * TILE;
-    const levels = DIRECTIONS.flatMap((side) => cover.sides[side] ? [cover.sides[side]] : []);
-    if (levels.length > 0) {
-      const strongest = levels.includes('full') ? 'full' : 'half';
+    const written = Object.entries(cover.sides).filter(([, level]) => level);
+    if (written.length > 0) {
+      const strongest = written.some(([, level]) => level === 'full') ? 'full' : 'half';
       const prop = art.resolve((provider) => provider.coverMarkup?.(strongest));
+      const { x, y } = layout.origin(cover.at);
       if (prop) parts.push(`<g transform="translate(${x} ${y})">${prop}</g>`);
     }
-    for (const side of DIRECTIONS) {
-      const level = cover.sides[side];
-      if (!level) continue;
-      parts.push(coverEdge(x, y, side, level === 'full' ? featureColor.fullCover : featureColor.halfCover));
+    for (const [side, level] of written) {
+      parts.push(edgeLine(
+        layout,
+        cover.at,
+        layout.neighbour(cover.at, side),
+        level === 'full' ? featureColor.fullCover : featureColor.halfCover,
+        0.42,
+      ));
     }
   }
   return parts.join('');

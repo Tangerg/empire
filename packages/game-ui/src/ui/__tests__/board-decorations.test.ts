@@ -87,6 +87,7 @@ describe('how a board draws its tactical layer', () => {
       origin: (at) => ({ x: at.x * 32, y: at.y * 28 }),
       center: (at) => ({ x: at.x * 32 + 16, y: at.y * 28 + 18 }),
       outline: () => '0,0 10,0 15,9 10,18 0,18 -5,9',
+      neighbour: (at) => ({ x: at.x * 32 + 48, y: at.y * 28 + 18 }),
     };
 
     expect(SquareBoardDecorations.gridLines(hex, map as never)).toContain('<polygon');

@@ -598,6 +598,23 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('never writes out the facings of a board', () => {
+    // Three times now a module has kept its own list of `north | east | south |
+    // west`: the level linter refused every hex facing, the map builder threw on
+    // one before a state could be built, the sprite badge drew an empty circle,
+    // the render key hashed nothing, and the editor could not author cover on
+    // those boards at all. The tiling declares its facings; ask it.
+    const owners = ['battle-engine/src/tactical-grid.ts', 'game-ui/src/art/board-decorations.ts'];
+    const offenders = everyPackageSource().flatMap((file) => {
+      const name = relative(packagesRoot, file);
+      if (owners.includes(name)) return [];
+      const code = stripComments(readFileSync(file, 'utf8'));
+      return /'north'[\s\S]{0,80}'(?:east|south|west)'/.test(code) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('asks a payload what it points at, never what kind it is', () => {
     // Which names a scenario effect, a trigger condition or an objective writes
     // down was enumerated by whoever wanted to resolve them: two hundred lines

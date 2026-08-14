@@ -176,7 +176,7 @@ export class EditorBoard {
         }
       }
     }
-    const features = battlefieldFeatureMarkup(GENERIC_ART, map);
+    const features = battlefieldFeatureMarkup(GENERIC_ART, squareLayout, map);
     if (features) marks.push(features);
     if (marks.length) this.layers.marks.append(fromMarkup(marks.join('')));
 

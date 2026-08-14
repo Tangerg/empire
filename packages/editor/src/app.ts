@@ -4,6 +4,8 @@ import type { BattleRuleServices } from '@empire/battle-engine/action-system';
 import { TEAM_COLORS } from '@empire/game-ui/art/palette';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
 import { validateLevel } from '@empire/battle-engine/level-validation';
+import { DEFAULT_RULES } from '@empire/battle-engine/types';
+import type { DirectionDef } from '@empire/battle-engine/tactical-grid';
 import {
   emptyLevel,
   mapFromLevel,
@@ -111,6 +113,7 @@ export class EditorApp {
     this.content = content;
     this.doc = EditorDocument.fromLevel(content, level);
     this.ensureOwnerSelection();
+    this.ensureCoverSide();
     this.root.className = 'editor-root';
     this.scroller.className = 'board-scroll';
 
@@ -179,12 +182,27 @@ export class EditorApp {
   private replaceDocument(document: EditorDocument): void {
     this.doc = document;
     this.ensureOwnerSelection();
+    this.ensureCoverSide();
     this.board.resize(document.map);
   }
 
   private ensureOwnerSelection(): void {
     if (!this.doc.players.some((player) => player.id === this.brush.owner)) {
       this.brush.owner = this.doc.players[0]?.id ?? 0;
+    }
+  }
+
+  /**
+   * The cover brush starts on a facing the board actually has.
+   *
+   * `north` is the square board's first facing, not every board's, and a brush
+   * pointing at a name the tiling does not know paints cover that protects
+   * against nothing.
+   */
+  private ensureCoverSide(): void {
+    const facings = this.facings;
+    if (facings.length > 0 && !facings.some((facing) => facing.id === this.brush.coverSide)) {
+      this.brush.coverSide = facings[0].id;
     }
   }
 
@@ -385,6 +403,16 @@ export class EditorApp {
 
   /* --------------------------------------------------------------- rendering */
 
+  /**
+   * Facings the board being authored admits.
+   *
+   * Empty when the level names a tiling this ruleset does not implement, which
+   * the lint reports as its own finding rather than this panel guessing one.
+   */
+  private get facings(): readonly DirectionDef[] {
+    return this.rules.grids.tryGet(this.doc.rules.grid ?? DEFAULT_RULES.grid)?.directions ?? [];
+  }
+
   private panelView(issues: readonly LevelIssue[] = []): EditorPanelView {
     return {
       document: this.doc,
@@ -397,6 +425,7 @@ export class EditorApp {
       canUndo: this.history.canUndo,
       canRedo: this.history.canRedo,
       issues,
+      facings: this.facings,
       presets: [
         ...BUILTIN_LEVELS.map((level) => ({ value: `b:${level.id}`, label: `内置 · ${level.name}` })),
         ...loadCustomLevels().map((saved) => ({

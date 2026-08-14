@@ -6,6 +6,7 @@ import { escapeHtml } from '@empire/game-ui/ui/html';
 import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import { terrainCharacter, type LevelIssue } from '@empire/battle-engine/level';
 import { FUNDS_RESOURCE } from '@empire/battle-engine/resources';
+import type { DirectionDef } from '@empire/battle-engine/tactical-grid';
 import type { Objective, PlayerConfig, RuleSet } from '@empire/battle-engine/types';
 import type { EditorDocument } from './document';
 import { EDITOR_TOOLS, type BrushSettings, type EditorTool } from './tools';
@@ -33,6 +34,14 @@ export interface EditorPanelView {
   readonly issues: readonly LevelIssue[];
   /** Levels offered by the load-a-preset picker, already labelled. */
   readonly presets: readonly { value: string; label: string }[];
+  /**
+   * Facings the board this level plays on admits, named by the tiling.
+   *
+   * This panel used to offer four buttons off its own list, with its own copy of
+   * their names — so directional cover could not be authored at all on a hex or
+   * eight-way board, and the two lists of names could drift apart.
+   */
+  readonly facings: readonly DirectionDef[];
 }
 
 const OBJECTIVE_TYPES: { type: Objective['type']; label: string }[] = [
@@ -41,8 +50,6 @@ const OBJECTIVE_TYPES: { type: Objective['type']; label: string }[] = [
   { type: 'holdAllVillages', label: '控制全部据点' },
   { type: 'surviveTurns', label: '坚守回合' },
 ];
-
-const SIDE_LABEL = { north: '北', east: '东', south: '南', west: '西' } as const;
 
 const playerFunds = (player: PlayerConfig) => player.resources[FUNDS_RESOURCE]?.current ?? 0;
 
@@ -133,8 +140,8 @@ export class EditorPanels {
         <h3>空间规则</h3>
         <div class="row"><label>海拔<input type="number" min="-9" max="20" data-field="elevation" value="${brush.elevation}"/></label></div>
         <div class="owner-row">
-          ${(['north', 'east', 'south', 'west'] as const)
-            .map((side) => `<button class="owner-chip ${brush.coverSide === side ? 'active' : ''}" data-act="cover-side" data-arg="${side}">${SIDE_LABEL[side]}</button>`)
+          ${view.facings
+            .map((facing) => `<button class="owner-chip ${brush.coverSide === facing.id ? 'active' : ''}" data-act="cover-side" data-arg="${facing.id}">${escapeHtml(facing.name)}</button>`)
             .join('')}
         </div>
         <div class="owner-row">

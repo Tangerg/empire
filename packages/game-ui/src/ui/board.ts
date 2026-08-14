@@ -171,6 +171,7 @@ export class BoardView {
       origin: (at) => cellOrigin(this.viewport, at),
       center: (at) => cellCenter(this.viewport, at),
       outline: (at) => cellOutline(this.viewport, at),
+      neighbour: (at, direction) => cellCenter(this.viewport, this.viewport.grid.step(at, direction)),
     };
   }
 
@@ -311,7 +312,7 @@ export class BoardView {
       ...this.playEmbeddedAnimations(this.layers.foreground),
     ];
     clear(this.layers.spatial);
-    const spatial = battlefieldFeatureMarkup(this.art, s.map);
+    const spatial = battlefieldFeatureMarkup(this.art, this.layout, s.map);
     if (spatial) this.layers.spatial.append(fromMarkup(spatial));
   }
 

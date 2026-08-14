@@ -1,4 +1,4 @@
-import type { Coord, GameMap } from '@empire/battle-engine/types';
+import type { Coord, Direction, GameMap } from '@empire/battle-engine/types';
 import { PAL } from './palette';
 import { TILE } from './terrain';
 
@@ -28,6 +28,42 @@ export interface BoardLayout {
   center(at: Coord): { x: number; y: number };
   /** The cell's own outline as an SVG points list. */
   outline(at: Coord): string;
+  /**
+   * Centre of the cell one step away, so an edge between the two can be drawn
+   * without knowing which tiling this is or what its facings are called.
+   */
+  neighbour(at: Coord, direction: Direction): { x: number; y: number };
+}
+
+/**
+ * The line between two cells, as the tactical layer draws a cliff or a cover edge.
+ *
+ * `reach` is how far along from the cell's own centre the line sits: a cliff
+ * belongs to both cells and sits on the boundary, while a cover edge belongs to
+ * the cell that put it up and sits just inside, so two facing walls stay two
+ * lines instead of one.
+ */
+export function edgeLine(
+  layout: BoardLayout,
+  at: Coord,
+  toward: { x: number; y: number },
+  color: string,
+  reach = 0.5,
+): string {
+  const from = layout.center(at);
+  const dx = toward.x - from.x;
+  const dy = toward.y - from.y;
+  const span = Math.hypot(dx, dy);
+  if (span === 0) return '';
+  const cx = from.x + dx * reach;
+  const cy = from.y + dy * reach;
+  // Perpendicular to the line joining the two centres, and a little shorter than
+  // the gap between them, so neighbouring edges do not run into one another.
+  const half = span * 0.42;
+  const nx = -dy / span * half;
+  const ny = dx / span * half;
+  return `<line x1="${(cx - nx).toFixed(2)}" y1="${(cy - ny).toFixed(2)}" ` +
+    `x2="${(cx + nx).toFixed(2)}" y2="${(cy + ny).toFixed(2)}" stroke="${color}" stroke-width="3"/>`;
 }
 
 /**
@@ -148,11 +184,22 @@ export const GroundBoardDecorations: BoardDecorations = {
 };
 
 /** The layout a square board has always had, for a caller without a viewport. */
+const SQUARE_STEPS: Record<string, Coord> = {
+  north: { x: 0, y: -1 },
+  east: { x: 1, y: 0 },
+  south: { x: 0, y: 1 },
+  west: { x: -1, y: 0 },
+};
+
 export const squareLayout: BoardLayout = {
   tileSize: TILE,
   corners: 4,
   origin: (at) => ({ x: at.x * TILE, y: at.y * TILE }),
   center: (at) => ({ x: at.x * TILE + TILE / 2, y: at.y * TILE + TILE / 2 }),
+  neighbour: (at, direction) => {
+    const step = SQUARE_STEPS[direction] ?? { x: 0, y: 0 };
+    return { x: (at.x + step.x) * TILE + TILE / 2, y: (at.y + step.y) * TILE + TILE / 2 };
+  },
   outline: (at) => [
     `${at.x * TILE},${at.y * TILE}`,
     `${at.x * TILE + TILE},${at.y * TILE}`,
