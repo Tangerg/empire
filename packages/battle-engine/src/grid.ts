@@ -55,6 +55,17 @@ export function ring(
 export const terrainAt = (map: GameMap, c: Coord): TerrainId => map.tiles[idx(map, c.x, c.y)];
 export const ownerAt = (map: GameMap, c: Coord): PlayerId => map.owners[idx(map, c.x, c.y)];
 
+/**
+ * Identity of the boundary between two cells, from either side.
+ *
+ * Pure coordinate geometry, so it lives with the rest of it: while it sat in the
+ * module that also answers flanking and facing — which need units and teams —
+ * the map's layer writer could not use it without importing the battle state.
+ */
+export function edgeKey(a: Coord, b: Coord): string {
+  return [`${a.x},${a.y}`, `${b.x},${b.y}`].sort().join('|');
+}
+
 /** Integer Bresenham trace including both endpoints. */
 export function lineBetween(from: Coord, to: Coord): Coord[] {
   const out: Coord[] = [];

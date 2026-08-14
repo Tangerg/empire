@@ -10,7 +10,7 @@ import type { CombatModifierPipeline } from './combat-modifiers';
 import type { WeaponHitEffectHandlerRegistry } from './hit-effects';
 import { awardRankProgress, type RankProgressionPolicy } from './progression';
 import { unitAbilityIds } from './careers';
-import { idx } from './grid';
+import { MapLayers } from './domain/map-layers';
 import { ContentRegistry } from './registry';
 import { type ReactionBehavior } from './reactions';
 import { type UnitDepartureHandlerRegistry } from './unit-departure';
@@ -208,44 +208,39 @@ Abilities.defineAll([
     usable: (rules, { state, unit, at }) => {
       const content = rules.content;
       if (combinedStatusModifiers(unit, content).cannotCapture) return false;
-      const i = idx(state.map, at.x, at.y);
-      const terrain = content.terrains.get(state.map.tiles[i]);
-      if (!terrain.capturable) return false;
-      return state.map.owners[i] !== unit.owner;
+      const layers = new MapLayers(state.map);
+      if (!content.terrains.get(layers.terrainAt(at)).capturable) return false;
+      return layers.owner(at) !== unit.owner;
     },
     execute: (rules, { state, unit, at }, _t, emit) => {
-      const content = rules.content;
-      const i = idx(state.map, at.x, at.y);
+      const layers = new MapLayers(state.map);
       const battleRules = state.rules;
-      if (battleRules.captureMode === 'instant') {
-        state.map.owners[i] = unit.owner;
-        state.map.captureProgress[i] = 0;
+      // The tile falling to this unit was written out twice, once for each way
+      // of getting there, and the two copies had to agree on four lines.
+      const claim = (): void => {
+        layers.changeOwner(at, unit.owner);
+        layers.changeCaptureProgress(at, 0);
         emit({ type: 'capture', at, player: unit.owner, progress: 1, captured: true });
         awardRankProgress(rules, unit, 60, emit);
-        return;
-      }
-      const def = content.units.get(unit.type);
+      };
+      if (battleRules.captureMode === 'instant') return claim();
+
+      const def = rules.content.units.get(unit.type);
       const contribution = Math.max(
         1,
         Math.round(battleRules.captureThreshold * (unit.hp / def.maxHp)),
       );
-      const next = state.map.captureProgress[i] + contribution;
-      if (next >= battleRules.captureThreshold) {
-        state.map.owners[i] = unit.owner;
-        state.map.captureProgress[i] = 0;
-        emit({ type: 'capture', at, player: unit.owner, progress: 1, captured: true });
-        awardRankProgress(rules, unit, 60, emit);
-      } else {
-        state.map.captureProgress[i] = next;
-        emit({
-          type: 'capture',
-          at,
-          player: unit.owner,
-          progress: next / battleRules.captureThreshold,
-          captured: false,
-        });
-        awardRankProgress(rules, unit, 20, emit);
-      }
+      const next = layers.captureProgressAt(at) + contribution;
+      if (next >= battleRules.captureThreshold) return claim();
+      layers.changeCaptureProgress(at, next);
+      emit({
+        type: 'capture',
+        at,
+        player: unit.owner,
+        progress: next / battleRules.captureThreshold,
+        captured: false,
+      });
+      awardRankProgress(rules, unit, 20, emit);
     },
   }),
 

@@ -557,6 +557,64 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('writes the map\'s spatial layers in exactly one place', () => {
+    // Ground, height, ownership, capture progress, blocked edges and directional
+    // cover are six layers of one map, and everything that changed them reached
+    // into the arrays: four scenario effects, the capture ability, two unit
+    // lifecycle steps, the editor document and — past the document entirely —
+    // the editor controller. The copies had already drifted. One matched a cliff
+    // edge by `edgeKey`, another by comparing both orientations by hand; one
+    // dropped an emptied cover entry, another left it behind; the capture
+    // ability wrote the same claim twice, once per way of arriving at it.
+    // `MapLayers` owns the writes and reports what changed. `level/map.ts` is
+    // exempt: it *builds* a map from a document rather than changing a live one.
+    const writes = [
+      /\bmap\.(?:tiles|elevation|owners|captureProgress)\[[^\]]*\]\s*=[^=]/,
+      /\bmap\.cliffs\.(?:push|splice)\(/,
+      /\bmap\.directionalCover(?:\s*=[^=]|\.push\()/,
+    ];
+    const allowed = [
+      join('battle-engine', 'src', 'domain', 'map-layers.ts'),
+      join('battle-engine', 'src', 'level', 'map.ts'),
+    ];
+    const offenders = [
+      ...runtimeTypeScriptFiles(coreRoot),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'editor', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src')),
+    ].flatMap((file) => {
+      const name = relative(packagesRoot, file);
+      if (allowed.includes(name)) return [];
+      const source = readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+      return writes.some((pattern) => pattern.test(source)) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('asks a trigger whether it is due, never its repeat block', () => {
+    // Six inline conditions decided whether a repeating trigger could fire, and
+    // the ledger behind them was read twice with the same defaulted literal —
+    // once to test, once to update. A second caller (a debug panel, an editor
+    // preview, a campaign that pre-fires a trigger) would have had to reproduce
+    // all of it. The trigger answers for itself.
+    const allowed = [join('domain', 'scenario-trigger.ts'), 'types.ts'];
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (allowed.includes(name)) return [];
+      const source = readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+      // Seeding the ledgers and hashing them are fine; *deciding* with them is not.
+      const tells = [
+        /\btriggerRuntime\[/,
+        /\btrigger\.repeat\b/,
+        /\brepeat\.(?:everyRounds|startTurn|endTurn|maxFirings)\b/,
+        /\bfiredTriggerIds\.(?:includes|indexOf|some)\(/,
+      ];
+      return tells.some((tell) => tell.test(source)) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('asks one question about the right to react', () => {
     // The same lesson as `mayAct`: a budget compared by hand at each site is a
     // budget that the next kind of reaction quietly gets a second copy of.

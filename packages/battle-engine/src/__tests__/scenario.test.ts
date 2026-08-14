@@ -3,7 +3,8 @@ import { applyAction } from '../actions';
 import { idx } from '../grid';
 import { cloneState } from '../state';
 import { damageStructure } from '../structures';
-import type { Action } from '../types';
+import { ScenarioTriggerEntity, TriggerOccurrence } from '../domain/scenario-trigger';
+import type { Action, ScenarioTrigger } from '../types';
 import { TEST_CONTENT, TEST_RULES, makeLevel, testState, u } from './fixtures';
 
 const wait = (unit: number, x: number, y: number): Action => ({
@@ -114,5 +115,69 @@ describe('headless scenario primitives', () => {
     expect(s.structures[0].hp).toBeGreaterThan(1);
     expect(s.scenario.variables.supply).toBe(3);
     expect(s.scenario.firedTriggerIds).toEqual([]);
+  });
+});
+
+/**
+ * A trigger's own bookkeeping.
+ *
+ * The sweep used to hold six inline conditions and two copies of the same
+ * defaulted ledger read; asking the trigger instead means these are answerable
+ * without running a battle.
+ */
+describe('when a trigger is due', () => {
+  const scenario = () => ({
+    variables: {}, zones: {}, overlays: [], triggers: [],
+    firedTriggerIds: [] as string[],
+    triggerRuntime: {} as Record<string, { count: number; lastOccurrence: string }>,
+    eventCounts: {}, zoneTags: {}, engagementRules: [],
+  });
+  const at = (turn: number) => new TriggerOccurrence(turn, 1, 'turnStart');
+  const declare = (repeat?: ScenarioTrigger['repeat']): ScenarioTrigger => ({
+    id: 'tick',
+    timing: 'turnStart',
+    condition: { type: 'turnAtLeast', turn: 1 },
+    effects: [],
+    ...(repeat ? { repeat } : {}),
+  });
+
+  it('fires a one-shot trigger once for the whole battle', () => {
+    const state = scenario();
+    const trigger = () => new ScenarioTriggerEntity(state, declare());
+    expect(trigger().dueAt(at(1))).toBe(true);
+    trigger().recordFiring(at(1));
+    expect(state.firedTriggerIds).toEqual(['tick']);
+    expect(trigger().dueAt(at(2))).toBe(false);
+  });
+
+  it('ignores an occurrence of another timing', () => {
+    const trigger = new ScenarioTriggerEntity(scenario(), declare());
+    expect(trigger.dueAt(new TriggerOccurrence(1, 1, 'turnEnd'))).toBe(false);
+  });
+
+  it('honours cadence, window and firing limit together', () => {
+    const state = scenario();
+    const trigger = () =>
+      new ScenarioTriggerEntity(state, declare({ everyRounds: 2, startTurn: 3, endTurn: 7, maxFirings: 2 }));
+    expect([1, 2, 3, 4, 5, 6, 7, 8, 9].map((turn) => trigger().dueAt(at(turn))))
+      .toEqual([false, false, true, false, true, false, true, false, false]);
+
+    trigger().recordFiring(at(3));
+    trigger().recordFiring(at(5));
+    expect(state.triggerRuntime.tick.count).toBe(2);
+    expect(trigger().dueAt(at(7))).toBe(false);
+  });
+
+  it('fires a repeating trigger at most once per occurrence', () => {
+    const state = scenario();
+    const trigger = () => new ScenarioTriggerEntity(state, declare({ everyRounds: 1 }));
+    trigger().recordFiring(at(4));
+    expect(trigger().dueAt(at(4))).toBe(false);
+    expect(trigger().dueAt(new TriggerOccurrence(4, 2, 'turnStart'))).toBe(true);
+  });
+
+  it('never fires a cadence that is not a whole number of rounds', () => {
+    const trigger = new ScenarioTriggerEntity(scenario(), declare({ everyRounds: 0 }));
+    expect([1, 2, 3].every((turn) => !trigger.dueAt(at(turn)))).toBe(true);
   });
 });

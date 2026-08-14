@@ -1,4 +1,5 @@
 import { idx } from '@empire/battle-engine/grid';
+import { MapLayers, type DirectionalCoverLevel } from '@empire/battle-engine/domain/map-layers';
 import { mapFromLevel, terrainRows } from '@empire/battle-engine/level';
 import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import type {
@@ -16,7 +17,6 @@ import type {
   PlayerConfig,
   RuleSet,
   TerrainId,
-  CoverLevel,
   UnitTypeId,
 } from '@empire/battle-engine/types';
 
@@ -25,8 +25,6 @@ const MAX_MAP_SIZE = 64;
 
 const clampMapSize = (value: number) =>
   Math.max(MIN_MAP_SIZE, Math.min(MAX_MAP_SIZE, Math.round(value)));
-
-const sameCoord = (left: Coord, right: Coord) => left.x === right.x && left.y === right.y;
 
 /**
  * Level sections the editor has no dedicated tooling for yet.
@@ -86,6 +84,7 @@ export class EditorDocument {
   victory: Objective[];
   /** Sections the editor preserves but does not structurally edit yet. */
   preserved: PreservedLevelSections;
+  private layerCache: MapLayers | null = null;
 
   constructor(
     /** Catalog this document is authored against; never an ambient default. */
@@ -158,18 +157,22 @@ export class EditorDocument {
   }
 
   inBounds(at: Coord): boolean {
-    return at.x >= 0 && at.y >= 0 && at.x < this.map.width && at.y < this.map.height;
+    return this.layers.contains(at);
+  }
+
+  /** The one writer of the map's spatial layers; the editor adds no second one. */
+  private get layers(): MapLayers {
+    if (!this.layerCache || this.layerCache.map !== this.map) this.layerCache = new MapLayers(this.map);
+    return this.layerCache;
   }
 
   setTerrain(at: Coord, terrain: TerrainId): void {
-    const index = this.indexAt(at);
-    if (this.map.tiles[index] === terrain) return;
-    this.map.tiles[index] = terrain;
-    if (!this.content.terrains.get(terrain).capturable) this.map.owners[index] = 0;
+    if (this.layers.changeTerrain(at, terrain) === null) return;
+    if (!this.content.terrains.get(terrain).capturable) this.layers.changeOwner(at, 0);
   }
 
   floodFill(from: Coord, terrain: TerrainId): void {
-    const target = this.map.tiles[this.indexAt(from)];
+    const target = this.layers.terrainAt(from);
     if (target === terrain) return;
     const queue: Coord[] = [from];
     const seen = new Set<number>([idx(this.map, from.x, from.y)]);
@@ -187,7 +190,7 @@ export class EditorDocument {
         const next = { x: current.x + delta.x, y: current.y + delta.y };
         if (!this.inBounds(next)) continue;
         const index = idx(this.map, next.x, next.y);
-        if (seen.has(index) || this.map.tiles[index] !== target) continue;
+        if (seen.has(index) || this.layers.terrainAt(next) !== target) continue;
         seen.add(index);
         queue.push(next);
       }
@@ -196,15 +199,31 @@ export class EditorDocument {
 
   setElevation(at: Coord, elevation: number): void {
     if (!Number.isFinite(elevation)) throw new Error('elevation must be finite');
-    this.map.elevation[this.indexAt(at)] = Math.round(elevation);
+    this.layers.changeElevation(at, elevation);
   }
 
   placeUnit(at: Coord, unit: UnitTypeId, owner: number): void {
-    this.indexAt(at);
+    this.requireInBounds(at);
     this.content.units.get(unit);
     this.requireOwner(owner);
     this.removeUnitAt(at);
     this.units.push({ x: at.x, y: at.y, unit, owner });
+  }
+
+  /**
+   * Forgets a side completely: its roster and everything it held.
+   *
+   * The controller used to walk the ownership layer itself, which is the one
+   * thing the document exists to keep consistent.
+   */
+  removePlayer(id: number): void {
+    this.players = this.players.filter((player) => player.id !== id);
+    this.units = this.units.filter((unit) => unit.owner !== id);
+    for (let y = 0; y < this.map.height; y++) {
+      for (let x = 0; x < this.map.width; x++) {
+        if (this.layers.owner({ x, y }) === id) this.layers.changeOwner({ x, y }, 0);
+      }
+    }
   }
 
   removeUnitAt(at: Coord): void {
@@ -212,42 +231,22 @@ export class EditorDocument {
   }
 
   setOwner(at: Coord, owner: number): void {
-    const index = this.indexAt(at);
     this.requireOwner(owner);
-    if (this.content.terrains.get(this.map.tiles[index]).capturable) this.map.owners[index] = owner;
+    if (this.content.terrains.get(this.layers.terrainAt(at)).capturable) {
+      this.layers.changeOwner(at, owner);
+    }
   }
 
+  /** An author cuts and heals the same edge with the same gesture. */
   toggleCliff(from: Coord, to: Coord): void {
-    this.indexAt(from);
-    this.indexAt(to);
-    if (Math.abs(from.x - to.x) + Math.abs(from.y - to.y) !== 1) {
+    if (!this.layers.isEdge(from, to)) {
       throw new Error('a cliff must connect orthogonally adjacent cells');
     }
-    const index = this.map.cliffs.findIndex((edge) =>
-      (sameCoord(edge.from, from) && sameCoord(edge.to, to)) ||
-      (sameCoord(edge.from, to) && sameCoord(edge.to, from)),
-    );
-    if (index >= 0) this.map.cliffs.splice(index, 1);
-    else this.map.cliffs.push({ from: { ...from }, to: { ...to } });
+    this.layers.blockEdge(from, to, !this.layers.isBlockedEdge(from, to));
   }
 
-  setDirectionalCover(
-    at: Coord,
-    side: Direction,
-    level: Exclude<CoverLevel, 'none'> | null,
-  ): void {
-    this.indexAt(at);
-    let entry = this.map.directionalCover.find((cover) => sameCoord(cover.at, at));
-    if (!entry && level) {
-      entry = { at: { ...at }, sides: {} };
-      this.map.directionalCover.push(entry);
-    }
-    if (!entry) return;
-    if (level) entry.sides[side] = level;
-    else delete entry.sides[side];
-    if (Object.keys(entry.sides).length === 0) {
-      this.map.directionalCover = this.map.directionalCover.filter((cover) => cover !== entry);
-    }
+  setDirectionalCover(at: Coord, side: Direction, level: DirectionalCoverLevel | null): void {
+    this.layers.changeCoverSide(at, side, level);
   }
 
   resize(requestedWidth: number, requestedHeight: number): boolean {
@@ -328,9 +327,8 @@ export class EditorDocument {
     );
   }
 
-  private indexAt(at: Coord): number {
+  private requireInBounds(at: Coord): void {
     if (!this.inBounds(at)) throw new RangeError(`cell (${at.x}, ${at.y}) is outside the map`);
-    return idx(this.map, at.x, at.y);
   }
 
   private requireOwner(owner: number): void {

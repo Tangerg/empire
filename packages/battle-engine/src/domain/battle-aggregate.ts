@@ -1,4 +1,4 @@
-import { idx } from '../grid';
+import { MapLayers } from './map-layers';
 import type { BattlefieldMarker, Coord, GameState, PlayerId, StructureId, Unit } from '../types';
 import type { UnitFall } from './unit-fall';
 import { DomainInvariantError } from './errors';
@@ -49,8 +49,7 @@ export class BattleAggregate {
   }
 
   clearCaptureAt(at: Coord): void {
-    const index = idx(this.state.map, at.x, at.y);
-    this.state.map.captureProgress[index] = 0;
+    new MapLayers(this.state.map).changeCaptureProgress(at, 0);
   }
 
   moveUnit(id: number, destination: Coord): UnitEntity {

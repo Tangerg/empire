@@ -541,11 +541,7 @@ export class EditorApp {
 
   /** Removing a side also removes what belonged to it; a level cannot half-forget one. */
   private removePlayer(id: number): void {
-    this.doc.players = this.doc.players.filter((player) => player.id !== id);
-    this.doc.units = this.doc.units.filter((unit) => unit.owner !== id);
-    for (let tile = 0; tile < this.doc.map.owners.length; tile++) {
-      if (this.doc.map.owners[tile] === id) this.doc.map.owners[tile] = 0;
-    }
+    this.doc.removePlayer(id);
     if (this.brush.owner === id) this.brush.owner = this.doc.players[0]?.id ?? 0;
   }
 

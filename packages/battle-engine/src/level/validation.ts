@@ -12,6 +12,7 @@ import type {
   UnitSelector,
 } from '../types';
 import { LevelDeclarations, objectivesOf } from './declarations';
+import { scheduleOf } from '../domain/scenario-trigger';
 import { declaredChildObjectives, isCompositeObjective } from '../objective-model';
 import { LevelIssueLog, type LevelIssue } from './issues';
 import { mapFromLevel } from './map';
@@ -416,19 +417,8 @@ const checkTriggers: LevelCheck = (inspection) => {
 };
 
 function checkRepeat(inspection: LevelInspection, trigger: ScenarioTrigger): void {
-  const repeat = trigger.repeat;
-  if (!repeat) return;
-  if (!Number.isInteger(repeat.everyRounds) || repeat.everyRounds < 1) {
-    inspection.error(`触发器 ${trigger.id} 的循环间隔必须是正整数`);
-  }
-  if (repeat.startTurn !== undefined && repeat.startTurn < 1) {
-    inspection.error(`触发器 ${trigger.id} 的起始回合必须 >= 1`);
-  }
-  if (repeat.endTurn !== undefined && repeat.startTurn !== undefined && repeat.endTurn < repeat.startTurn) {
-    inspection.error(`触发器 ${trigger.id} 的结束回合早于起始回合`);
-  }
-  if (repeat.maxFirings !== undefined && (!Number.isInteger(repeat.maxFirings) || repeat.maxFirings < 1)) {
-    inspection.error(`触发器 ${trigger.id} 的最大触发次数必须是正整数`);
+  for (const fault of scheduleOf(trigger)?.faults ?? []) {
+    inspection.error(`触发器 ${trigger.id} 的${fault}`);
   }
 }
 

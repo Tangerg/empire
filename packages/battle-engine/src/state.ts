@@ -3,6 +3,7 @@ import {
   playerResource,
 } from './resources';
 import { idx } from './grid';
+import { MapLayers } from './domain/map-layers';
 import { createRandomState } from './random';
 import { DEFAULT_VICTORY, mapFromLevel, resolveRules } from './level/index';
 import { assignObjectiveIds, createObjectiveStates } from './objective-model';
@@ -516,6 +517,6 @@ export function removeUnit(state: GameState, id: number): void {
   const i = state.units.findIndex((u) => u.id === id);
   if (i < 0) return;
   const unit = state.units[i];
-  state.map.captureProgress[idx(state.map, unit.x, unit.y)] = 0;
+  new MapLayers(state.map).changeCaptureProgress(unit, 0);
   state.units.splice(i, 1);
 }

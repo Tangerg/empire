@@ -1,5 +1,6 @@
 import type { Coord, Direction, GameState, Unit } from './types';
 import { dist } from './grid';
+export { edgeKey } from './grid';
 import { areAllies, unitAt } from './state';
 
 export const DIRECTIONS: readonly Direction[] = ['north', 'east', 'south', 'west'];
@@ -44,7 +45,3 @@ export function hasOpposedFlanker(state: GameState, attacker: Unit, defender: Un
   );
 }
 
-export function edgeKey(a: Coord, b: Coord): string {
-  const ends = [`${a.x},${a.y}`, `${b.x},${b.y}`].sort();
-  return ends.join('|');
-}

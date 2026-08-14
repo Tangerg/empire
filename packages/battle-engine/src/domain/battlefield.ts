@@ -1,10 +1,10 @@
 import { type ContentCatalog } from '../content-pack';
-import { idx, inBounds } from '../grid';
-import { directionToward, edgeKey } from '../spatial';
+import { edgeKey, idx, inBounds } from '../grid';
+import { directionToward } from '../spatial';
+import type { DirectionalCoverSides } from './map-layers';
 import type {
   CoverLevel,
   Coord,
-  Direction,
   GameState,
   MovementClass,
   StructureState,
@@ -154,10 +154,7 @@ export class Battlefield {
   private readonly cells: Array<BattlefieldCell | undefined>;
   private overlayStatesByCell: Map<number, TerrainOverlayState[]> | null = null;
   private structuresByCell: Map<number, StructureState> | null = null;
-  private directionalCoverByCell: Map<
-    number,
-    Partial<Record<Direction, Exclude<CoverLevel, 'none'>>>
-  > | null = null;
+  private directionalCoverByCell: Map<number, DirectionalCoverSides> | null = null;
   private cliffEdges: Set<string> | null = null;
   private overlayLookups = 0;
   private structureLookups = 0;
@@ -251,9 +248,7 @@ export class Battlefield {
     return this.structuresByCell.get(index);
   }
 
-  directionalCoverAt(
-    index: number,
-  ): Partial<Record<Direction, Exclude<CoverLevel, 'none'>>> {
+  directionalCoverAt(index: number): DirectionalCoverSides {
     if (!this.directionalCoverByCell) {
       if (++this.directionalCoverLookups < 3) {
         const x = index % this.state.map.width;

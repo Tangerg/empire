@@ -1,6 +1,5 @@
 import { UnitEntity } from './domain/unit-entity';
 import { PlayerEntity } from './domain/player-entity';
-import { idx } from './grid';
 import { inBounds } from './grid';
 import { addTerrainOverlay, removeTerrainOverlay } from './overlays';
 import { player, removeUnit, spawnUnit, unitAtCoord } from './state';
@@ -9,9 +8,10 @@ import { damageStructure, repairStructure } from './structures';
 import { changeUnitResource } from './progression';
 import { BattleAggregate } from './domain/battle-aggregate';
 import { Battlefield } from './domain/battlefield';
+import { MapLayers } from './domain/map-layers';
+import { ScenarioTriggerEntity, TriggerOccurrence, type ScenarioTiming } from './domain/scenario-trigger';
 import { announceUnitDeparture, type UnitDepartureRules } from './unit-departure';
 import { returnUnitToField } from './unit-return';
-import { edgeKey } from './spatial';
 import { forceMoveUnit, teleportUnit } from './forced-movement';
 import {
   type BattleResourceSystem,
@@ -25,7 +25,6 @@ import type {
   ScenarioConditionKindMap,
   ScenarioEffect,
   ScenarioEffectKindMap,
-  ScenarioTrigger,
   ScenarioValue,
   Unit,
   UnitSelector,
@@ -40,7 +39,7 @@ import { addEngagementRule, removeEngagementRule } from './engagement';
 import { compositeStatus, moveComposite } from './composites';
 import { withdrawTransportPassengers } from './transports';
 
-export type ScenarioTiming = ScenarioTrigger['timing'];
+export type { ScenarioTiming } from './domain/scenario-trigger';
 type ConditionKind = Extract<keyof ScenarioConditionKindMap, string>;
 type EffectKind = Extract<keyof ScenarioEffectKindMap, string>;
 
@@ -269,6 +268,7 @@ export function conditionMet(
 
 export class ScenarioEffectContext {
   private battlefieldCache: Battlefield | null = null;
+  private layerCache: MapLayers | null = null;
 
   constructor(
     /** The whole ruleset: an effect may reach any rule the engine composes. */
@@ -294,6 +294,11 @@ export class ScenarioEffectContext {
    */
   get battlefield(): Battlefield {
     return this.battlefieldCache ??= new Battlefield(this.state, this.content);
+  }
+
+  /** The writable side of the same map: ground, height, edges and cover. */
+  get layers(): MapLayers {
+    return this.layerCache ??= new MapLayers(this.state.map);
   }
 
   zone(id: string) {
@@ -571,59 +576,39 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   .register(effectHandler('replaceTerrain', (context, effect) => {
     if (!context.content.terrains.has(effect.terrain)) throw new Error(`unknown terrain "${effect.terrain}"`);
     for (const cell of context.zone(effect.zone)) {
-      const index = idx(context.state.map, cell.x, cell.y);
-      const from = context.state.map.tiles[index];
-      if (from === effect.terrain) continue;
-      context.state.map.tiles[index] = effect.terrain;
+      const from = context.layers.changeTerrain(cell, effect.terrain);
+      if (from === null) continue;
       context.emit({ type: 'terrainChanged', at: { ...cell }, from, to: effect.terrain });
     }
   }))
   .register(effectHandler('setElevation', (context, effect) => {
-    const value = Math.round(effect.value);
     for (const cell of context.zone(effect.zone)) {
-      const index = idx(context.state.map, cell.x, cell.y);
-      const from = context.state.map.elevation[index] ?? 0;
-      if (from === value) continue;
-      context.state.map.elevation[index] = value;
-      context.emit({ type: 'elevationChanged', at: { ...cell }, from, to: value });
+      const step = context.layers.changeElevation(cell, effect.value);
+      if (step) context.emit({ type: 'elevationChanged', at: { ...cell }, ...step });
     }
   }))
   .register(effectHandler('addElevation', (context, effect) => {
-    const amount = Math.round(effect.amount);
     for (const cell of context.zone(effect.zone)) {
-      const index = idx(context.state.map, cell.x, cell.y);
-      const from = context.state.map.elevation[index] ?? 0;
-      const to = from + amount;
-      if (from === to) continue;
-      context.state.map.elevation[index] = to;
-      context.emit({ type: 'elevationChanged', at: { ...cell }, from, to });
+      const step = context.layers.raiseElevation(cell, effect.amount);
+      if (step) context.emit({ type: 'elevationChanged', at: { ...cell }, ...step });
     }
   }))
   .register(effectHandler('setCliffs', (context, effect) => {
     for (const edge of effect.edges) {
-      if (!inBounds(context.state.map, edge.from.x, edge.from.y) ||
-        !inBounds(context.state.map, edge.to.x, edge.to.y) ||
-        Math.abs(edge.from.x - edge.to.x) + Math.abs(edge.from.y - edge.to.y) !== 1) {
+      if (!context.layers.isEdge(edge.from, edge.to)) {
         throw new Error(`invalid cliff edge ${edge.from.x},${edge.from.y} -> ${edge.to.x},${edge.to.y}`);
       }
-      const key = edgeKey(edge.from, edge.to);
-      const index = context.state.map.cliffs.findIndex((candidate) => edgeKey(candidate.from, candidate.to) === key);
-      if (effect.blocked && index < 0) context.state.map.cliffs.push({ from: { ...edge.from }, to: { ...edge.to } });
-      if (!effect.blocked && index >= 0) context.state.map.cliffs.splice(index, 1);
-      if ((effect.blocked && index < 0) || (!effect.blocked && index >= 0)) {
+      if (context.layers.blockEdge(edge.from, edge.to, effect.blocked)) {
         context.emit({ type: 'cliffChanged', from: { ...edge.from }, to: { ...edge.to }, blocked: effect.blocked });
       }
     }
   }))
   .register(effectHandler('setDirectionalCover', (context, effect) => {
     for (const cover of effect.covers) {
-      if (!inBounds(context.state.map, cover.at.x, cover.at.y)) {
+      if (!context.layers.contains(cover.at)) {
         throw new Error(`directional cover out of bounds: ${cover.at.x},${cover.at.y}`);
       }
-      const existing = context.state.map.directionalCover.find((entry) =>
-        entry.at.x === cover.at.x && entry.at.y === cover.at.y);
-      if (existing) existing.sides = { ...cover.sides };
-      else context.state.map.directionalCover.push({ at: { ...cover.at }, sides: { ...cover.sides } });
+      context.layers.changeCover(cover.at, cover.sides);
       context.emit({ type: 'directionalCoverChanged', at: { ...cover.at }, sides: { ...cover.sides } });
     }
   }))
@@ -649,42 +634,32 @@ export function applyScenarioEffect(
   rules.scenarioEffects.apply(rules, state, effect, emit);
 }
 
-/** Runs one-shot or bounded repeating data triggers until no newly-enabled trigger remains. */
+/**
+ * Runs the triggers of one occurrence until no newly-enabled trigger remains.
+ *
+ * The sweep repeats because one trigger's effects can satisfy another's
+ * condition, and an author expects the chain to land in the same occurrence
+ * rather than a round later. Each trigger answers for itself whether it is due;
+ * this loop only decides how many times to ask.
+ */
 export function runScenarioTriggers(
   rules: ScenarioRules,
   state: GameState,
   timing: ScenarioTiming,
   emit: (event: GameEvent) => void,
 ): void {
-  const fired = new Set(state.scenario.firedTriggerIds);
+  const occurrence = TriggerOccurrence.of(state, timing);
   const firedThisOccurrence = new Set<string>();
-  const occurrence = `${state.turn}:${state.currentPlayer}:${timing}`;
   const limit = state.scenario.triggers.length + 1;
   for (let pass = 0; pass < limit; pass++) {
     let changed = false;
-    for (const trigger of state.scenario.triggers) {
-      if (trigger.timing !== timing || firedThisOccurrence.has(trigger.id)) continue;
-      const repeat = trigger.repeat;
-      if (!repeat && fired.has(trigger.id)) continue;
-      if (repeat) {
-        const runtime = state.scenario.triggerRuntime[trigger.id] ?? { count: 0, lastOccurrence: '' };
-        const start = repeat.startTurn ?? 1;
-        if (!Number.isInteger(repeat.everyRounds) || repeat.everyRounds < 1 || state.turn < start) continue;
-        if (repeat.endTurn !== undefined && state.turn > repeat.endTurn) continue;
-        if ((state.turn - start) % repeat.everyRounds !== 0) continue;
-        if (repeat.maxFirings !== undefined && runtime.count >= repeat.maxFirings) continue;
-        if (runtime.lastOccurrence === occurrence) continue;
-      }
-      if (!conditionMet(rules, state, trigger.condition)) continue;
+    for (const declaration of state.scenario.triggers) {
+      const trigger = new ScenarioTriggerEntity(state.scenario, declaration);
+      if (firedThisOccurrence.has(trigger.id) || !trigger.dueAt(occurrence)) continue;
+      if (!conditionMet(rules, state, declaration.condition)) continue;
       firedThisOccurrence.add(trigger.id);
-      if (repeat) {
-        const runtime = state.scenario.triggerRuntime[trigger.id] ?? { count: 0, lastOccurrence: '' };
-        state.scenario.triggerRuntime[trigger.id] = { count: runtime.count + 1, lastOccurrence: occurrence };
-      } else {
-        fired.add(trigger.id);
-        state.scenario.firedTriggerIds.push(trigger.id);
-      }
-      for (const effect of trigger.effects) applyScenarioEffect(rules, state, effect, emit);
+      trigger.recordFiring(occurrence);
+      for (const effect of declaration.effects) applyScenarioEffect(rules, state, effect, emit);
       changed = true;
     }
     if (!changed) return;
