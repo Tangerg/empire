@@ -10,6 +10,16 @@ import { PriorityRegistry } from './registry';
 
 export const MAX_MITIGATION = 0.6;
 
+/**
+ * How hard a wounded attacker still hits: 0.5 at death's door, 1.0 fresh.
+ *
+ * Stated once because two callers need the same number — the provider that
+ * explains it in a unit strike's modifier chain, and siege damage, which does
+ * not run that chain.
+ */
+export const attackerStrength = (content: ContentCatalog, attacker: Unit): number =>
+  0.5 + 0.5 * (attacker.hp / content.units.get(attacker.type).maxHp);
+
 export type ModifierStage = 'power' | 'mitigation' | 'final';
 export type ModifierOperation = 'add' | 'multiply';
 
@@ -162,7 +172,7 @@ const strengthProvider: CombatModifierProvider = {
       source: 'unit',
       stage: 'power',
       operation: 'multiply',
-      value: 0.5 + 0.5 * (attacker.hp / content.units.get(attacker.type).maxHp),
+      value: attackerStrength(content, attacker),
     },
   ],
 };

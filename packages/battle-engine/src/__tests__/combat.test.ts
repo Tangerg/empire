@@ -28,7 +28,7 @@ describe('damage model', () => {
     );
     const onMountain = testDamage(s, s.units[0], s.units[1]);
     const onPlain = testDamage(flat, flat.units[0], flat.units[1]);
-    expect(onMountain.terrainDefense).toBeCloseTo(0.4);
+    expect(onMountain.factorOf('defense.terrain', 0)).toBeCloseTo(0.4);
     expect(onMountain.damage).toBeLessThan(onPlain.damage);
   });
 
@@ -49,14 +49,14 @@ describe('damage model', () => {
       makeLevel(['..'], { units: [u(0, 0, 'archer', 1), u(1, 0, 'dragon', 2)] }),
     );
     const antiAir = testDamage(vsDragon, vsDragon.units[0], vsDragon.units[1]);
-    expect(antiAir.effectiveness).toBeCloseTo(1.1);
-    expect(antiAir.targetBonusMultiplier).toBeCloseTo(1.4);
-    expect(antiAir.targetBonusReasons).toEqual(['弓箭对空']);
+    expect(antiAir.factorOf('matchup.effectiveness')).toBeCloseTo(1.1);
+    expect(antiAir.familyFactor('weapon.target-tag.')).toBeCloseTo(1.4);
+    expect(antiAir.familyLabels('weapon.target-tag.')).toEqual(['弓箭对空']);
 
     const vsOgre = testState(
       makeLevel(['..'], { units: [u(0, 0, 'cleric', 1), u(1, 0, 'ogre', 2)] }),
     );
-    expect(testDamage(vsOgre, vsOgre.units[0], vsOgre.units[1]).effectiveness).toBeCloseTo(1.3);
+    expect(testDamage(vsOgre, vsOgre.units[0], vsOgre.units[1]).factorOf('matchup.effectiveness')).toBeCloseTo(1.3);
   });
 
   it('emits an attack before the death it causes', () => {

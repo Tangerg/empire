@@ -11,7 +11,7 @@ describe('reaction stances', () => {
     );
     const first = testForecast(state, state.units[0], state.units[2]);
     expect(first.reaction).toMatchObject({ stance: 'guard', unit: state.units[2].id });
-    expect(first.strike.reactionMultiplier).toBe(0.7);
+    expect(first.strike.factorOf('reaction.guard')).toBe(0.7);
     expect(first.counter).toBeNull();
 
     applyAction(state, {
@@ -22,7 +22,7 @@ describe('reaction stances', () => {
     }, TEST_RULES);
     const second = testForecast(state, state.units[1], state.units[2]);
     expect(second.reaction).toBeNull();
-    expect(second.strike.reactionMultiplier).toBe(1);
+    expect(second.strike.familyFactor('reaction.')).toBe(1);
     expect(second.counter).toBeNull();
   });
 
@@ -107,7 +107,7 @@ describe('reaction stances', () => {
       target: defender.id,
       weapon: 'archer_bow',
     });
-    expect(plan.supportAttack!.damage.reactionMultiplier).toBe(0.6);
+    expect(plan.supportAttack!.damage.factorOf('reaction.support-attack')).toBe(0.6);
     expect(plan.supportAttack!.damage.modifiers).toContainEqual(
       expect.objectContaining({ id: 'reaction.support-attack', value: 0.6 }),
     );

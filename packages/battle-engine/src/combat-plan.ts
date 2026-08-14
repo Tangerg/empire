@@ -101,20 +101,14 @@ export interface CombatPlanRules extends CombatRules, DamageRules {
 const SUPPORT_ATTACK_MULTIPLIER = 0.6;
 
 function supportDamage(damage: DamageBreakdown): DamageBreakdown {
-  const modifier = {
+  return damage.and({
     id: 'reaction.support-attack',
     label: '援护攻击',
-    source: 'reaction' as const,
-    stage: 'final' as const,
-    operation: 'multiply' as const,
+    source: 'reaction',
+    stage: 'final',
+    operation: 'multiply',
     value: SUPPORT_ATTACK_MULTIPLIER,
-  };
-  return {
-    ...damage,
-    reactionMultiplier: SUPPORT_ATTACK_MULTIPLIER,
-    modifiers: [...damage.modifiers, modifier],
-    damage: Math.max(1, Math.round(damage.damage * SUPPORT_ATTACK_MULTIPLIER)),
-  };
+  });
 }
 
 function planSupportAttack(

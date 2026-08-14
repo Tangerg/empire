@@ -7,7 +7,7 @@ import { areAllies } from './state';
 import { player } from './state';
 import { UnitEntity } from './domain/unit-entity';
 import { DomainInvariantError } from './domain/errors';
-import { type CombatModifier, type CombatModifierPipeline } from './combat-modifiers';
+import { attackerStrength, type CombatModifier, type CombatModifierPipeline } from './combat-modifiers';
 import type { Coord, GameEvent, GameState, PlayerState, ReactionStance, StructureState, Unit, WeaponDef, WeaponId } from './types';
 import {
   type BattleResourceSystem,
@@ -35,26 +35,64 @@ export interface CombatRules extends WeaponRules, ReactionRules {
   readonly combatModifiers: CombatModifierPipeline;
 }
 
-export interface DamageBreakdown {
-  weapon: WeaponId;
-  damageType: WeaponDef['damageType'];
-  base: number;
-  /** Damage-type vs armour multiplier. */
-  effectiveness: number;
-  targetBonusMultiplier: number;
-  targetBonusReasons: string[];
-  /** Attacker's strength scaled by its remaining HP (0.5 .. 1.0). */
-  strength: number;
-  terrainDefense: number
-  unitDefense: number;
-  statusAttackMultiplier: number;
-  commanderAttackMultiplier: number;
-  commanderDefenseDelta: number;
-  reactionMultiplier: number;
-  mitigation: number;
-  /** Ordered explanation used by HUDs, logs, balance tools and mods. */
-  modifiers: CombatModifier[];
-  damage: number;
+/**
+ * One strike, and why it came out at that number.
+ *
+ * The explanation is the modifier chain — ordered, labelled, and open to any
+ * provider a rule plugin registers. It used to be stated twice: nine further
+ * fields carried `effectiveness`, `strength`, `terrainDefense` and the rest,
+ * each re-derived from that same chain by matching a modifier id string. Two
+ * representations of one fact, and the second could only ever describe the
+ * contributions the core happened to know the names of.
+ */
+export class DamageBreakdown {
+  constructor(
+    readonly weapon: WeaponId,
+    readonly damageType: WeaponDef['damageType'],
+    readonly base: number,
+    /** Fraction of the raw number absorbed before it landed, 0..1. */
+    readonly mitigation: number,
+    /** Ordered explanation used by HUDs, logs, balance tools and mods. */
+    readonly modifiers: readonly CombatModifier[],
+    readonly damage: number,
+  ) {}
+
+  /**
+   * What one named contribution was worth. A contribution nobody made is the
+   * neutral value for its stage, so a caller never has to know whether the
+   * modifier was registered.
+   */
+  factorOf(id: string, absent = 1): number {
+    return this.modifiers.find((modifier) => modifier.id === id)?.value ?? absent;
+  }
+
+  /** A number a modifier recorded about itself, e.g. a commander's own delta. */
+  detailOf(id: string, key: string, absent = 0): number {
+    return Number(this.modifiers.find((modifier) => modifier.id === id)?.details?.[key] ?? absent);
+  }
+
+  /** Product of every contribution whose id shares a prefix, e.g. one family. */
+  familyFactor(idPrefix: string): number {
+    return this.modifiers
+      .filter((modifier) => modifier.id.startsWith(idPrefix))
+      .reduce((product, modifier) => product * modifier.value, 1);
+  }
+
+  familyLabels(idPrefix: string): string[] {
+    return this.modifiers.filter((modifier) => modifier.id.startsWith(idPrefix)).map((modifier) => modifier.label);
+  }
+
+  /** The same strike, with one more contribution folded in at the end. */
+  and(modifier: CombatModifier): DamageBreakdown {
+    return new DamageBreakdown(
+      this.weapon,
+      this.damageType,
+      this.base,
+      this.mitigation,
+      [...this.modifiers, modifier],
+      Math.max(1, Math.round(this.damage * modifier.value)),
+    );
+  }
 }
 
 export interface CombatForecast {
@@ -111,7 +149,7 @@ export interface StructureAttackOptions {
   weapon?: WeaponId;
 }
 
-const hpRatio = (content: ContentCatalog, u: Unit) => u.hp / content.units.get(u.type).maxHp;
+
 
 export function unitWeapons(unit: Unit, content: ContentCatalog): WeaponDef[] {
   return content.units.get(unit.type).weapons.map((id) => content.weapons.get(id));
@@ -240,7 +278,7 @@ export function computeDamage(
   const base = weapon.power;
   const battlefield = new Battlefield(state, content);
   const result = rules.combatModifiers.evaluate(base, {
-    state: state,
+    state,
     attacker,
     attackerAt,
     defender,
@@ -249,28 +287,15 @@ export function computeDamage(
     content,
     battlefield,
   });
-  const modifier = (id: string) => result.modifiers.find((candidate) => candidate.id === id);
-  const tagModifiers = result.modifiers.filter((candidate) => candidate.id.startsWith('weapon.target-tag.'));
-  const unitDefenseModifier = modifier('defense.unit');
 
-  return {
-    weapon: weapon.id,
-    damageType: weapon.damageType,
+  return new DamageBreakdown(
+    weapon.id,
+    weapon.damageType,
     base,
-    effectiveness: modifier('matchup.effectiveness')?.value ?? 1,
-    targetBonusMultiplier: tagModifiers.reduce((value, entry) => value * entry.value, 1),
-    targetBonusReasons: tagModifiers.map((entry) => entry.label),
-    strength: modifier('unit.hp-strength')?.value ?? 1,
-    terrainDefense: modifier('defense.terrain')?.value ?? 0,
-    unitDefense: unitDefenseModifier?.value ?? 0,
-    statusAttackMultiplier: modifier('status.attack')?.value ?? 1,
-    commanderAttackMultiplier: modifier('commander.attack')?.value ?? 1,
-    commanderDefenseDelta: Number(unitDefenseModifier?.details?.commanderDelta ?? 0),
-    reactionMultiplier: 1,
-    mitigation: result.mitigation,
-    modifiers: result.modifiers,
-    damage: result.damage,
-  };
+    result.mitigation,
+    result.modifiers,
+    result.damage,
+  );
 }
 
 export function forecastStructure(
@@ -286,7 +311,7 @@ export function forecastStructure(
   const def = content.structures.get(structure.type);
   const statusAttackMultiplier = combinedStatusModifiers(attacker, content).attackMultiplier;
   const commanderAttackMultiplier = commanderAuraFor(state, attacker).attackMultiplier;
-  const strength = 0.5 + 0.5 * hpRatio(content, attacker);
+  const strength = attackerStrength(content, attacker);
   const targetBonus = weaponTargetBonus(weapon, def.tags);
   const rawDamage = Math.max(
     1,
@@ -390,21 +415,14 @@ function applyReactionMultiplier(
   damage: DamageBreakdown,
   behavior: ReactionBehavior,
 ): DamageBreakdown {
-  const multiplier = behavior.incomingMultiplier;
-  const reactionModifier: CombatModifier = {
+  return damage.and({
     id: `reaction.${behavior.id}`,
     label: behavior.name,
     source: 'reaction',
     stage: 'final',
     operation: 'multiply',
-    value: multiplier,
-  };
-  return {
-    ...damage,
-    reactionMultiplier: multiplier,
-    modifiers: [...damage.modifiers, reactionModifier],
-    damage: Math.max(1, Math.round(damage.damage * multiplier)),
-  };
+    value: behavior.incomingMultiplier,
+  });
 }
 
 /**

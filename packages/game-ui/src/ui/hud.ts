@@ -137,7 +137,7 @@ function modifierValue(modifier: CombatModifier): string {
   return `${modifier.value >= 0 ? '+' : ''}${modifier.value.toFixed(2)}`;
 }
 
-function modifierList(modifiers: CombatModifier[]): string {
+function modifierList(modifiers: readonly CombatModifier[]): string {
   return modifiers.map((modifier) =>
     `<li class="${modifierClass(modifier)}"><span class="modifier-source">${MODIFIER_SOURCE_LABEL[modifier.source]}</span> ${escapeHtml(modifier.label)} <b>${modifierValue(modifier)}</b></li>`,
   ).join('');
