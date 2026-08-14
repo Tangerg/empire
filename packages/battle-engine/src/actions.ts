@@ -167,9 +167,8 @@ class DeployUnitActionHandler implements ActionHandler<'deployUnit'> {
         entry.player === state.currentPlayer && entry.unitIds.includes(occupant.id));
       if (!swappable) context.fail('目标格已被其他单位占据');
     }
-    const destination = new Battlefield(state, context.rules.content).cell(action.at);
     const movementClass = context.rules.content.units.get(unit.type).movementClass;
-    if (destination.blocksMovement || destination.movementCost(movementClass) === null) {
+    if (!new Battlefield(state, context.rules.content).cell(action.at).admits(movementClass)) {
       context.fail('该单位无法部署到目标格');
     }
     const from = { x: unit.x, y: unit.y };

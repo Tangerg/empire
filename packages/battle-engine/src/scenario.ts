@@ -17,8 +17,10 @@ import {
   type BattleResourceSystem,
   } from './resources';
 import type {
+  Coord,
   GameEvent,
   GameState,
+  MovementClass,
   ScenarioCondition,
   ScenarioConditionKindMap,
   ScenarioEffect,
@@ -241,6 +243,8 @@ export function conditionMet(
 /* ----------------------------------------------------------- effect strategies */
 
 export class ScenarioEffectContext {
+  private battlefieldCache: Battlefield | null = null;
+
   constructor(
     /** The whole ruleset: an effect may reach any rule the engine composes. */
     readonly rules: ScenarioRules,
@@ -256,12 +260,50 @@ export class ScenarioEffectContext {
     return this.rules.resources;
   }
 
+  /**
+   * Map projection shared by everything this one effect does.
+   *
+   * Two effects built a fresh one inside a `find` predicate — twice per
+   * candidate tile — which rebuilt every spatial index of the battlefield to
+   * answer one question about one cell.
+   */
+  get battlefield(): Battlefield {
+    return this.battlefieldCache ??= new Battlefield(this.state, this.content);
+  }
+
   zone(id: string) {
     return zone(this.state, id);
   }
 
   select(selector: UnitSelector): Unit[] {
     return selectUnits(this.state, selector, this.content);
+  }
+
+  /**
+   * The selected units, each still on the field when its turn to be acted on
+   * comes round.
+   *
+   * An effect that displaces, demoralises or breaks units changes the very
+   * selection it is walking: one unit's rout can take another with it. Three
+   * effects copied the same re-check by hand, and any effect that forgot it
+   * would act on a unit that had already left.
+   */
+  *standing(selector: UnitSelector): Generator<Unit> {
+    for (const unit of this.select(selector)) {
+      if (this.state.units.some((candidate) => candidate.id === unit.id)) yield unit;
+    }
+  }
+
+  /**
+   * A tile in this zone that a unit of `movementClass` can be dropped onto, or
+   * null when the zone is full. Deterministic: the same zone always fills in
+   * reading order, so reinforcements arrive in a replayable place.
+   */
+  openCellIn(zoneId: string, movementClass: MovementClass): Coord | null {
+    return this.zone(zoneId)
+      .slice()
+      .sort((left, right) => left.y - right.y || left.x - right.x)
+      .find((cell) => this.battlefield.cell(cell).canReceive(movementClass)) ?? null;
   }
 
   selectMarkers(selector: MarkerSelector): BattlefieldMarker[] {
@@ -359,10 +401,8 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       if (source.key && context.state.markers.some((marker) => marker.fallenUnit?.key === source.key)) {
         throw new Error(`unit key is reserved by a fallen unit: "${source.key}"`);
       }
-      const battlefield = new Battlefield(context.state, context.content);
       const definition = context.content.units.get(source.unit);
-      const cell = battlefield.cell(source);
-      if (cell.blocksMovement || cell.movementCost(definition.movementClass) === null) {
+      if (!context.battlefield.cell(source).admits(definition.movementClass)) {
         throw new Error(`unit "${source.unit}" cannot spawn at ${source.x},${source.y}`);
       }
       const unit = spawnUnit(context.content, context.state, source.unit, source.owner, source, {
@@ -417,8 +457,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     context.emit({ type: 'playerTeamChanged', player: target.id, from, to: effect.team });
   }))
   .register(effectHandler('forceMove', (context, effect) => {
-    for (const unit of [...context.select(effect.selector)]) {
-      if (!context.state.units.some((candidate) => candidate.id === unit.id)) continue;
+    for (const unit of context.standing(effect.selector)) {
       forceMoveUnit(context.rules, context.state, {
         unit: unit.id,
         source: effect.source,
@@ -429,13 +468,8 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     }
   }))
   .register(effectHandler('teleportUnits', (context, effect) => {
-    const destinations = context.zone(effect.zone)
-      .slice()
-      .sort((a, b) => a.y - b.y || a.x - b.x);
     for (const unit of context.select(effect.selector)) {
-      const destination = destinations.find((cell) => unitAtCoord(context.state, cell) === undefined &&
-        new Battlefield(context.state, context.content).cell(cell).movementCost(context.content.units.get(unit.type).movementClass) !== null &&
-        !new Battlefield(context.state, context.content).cell(cell).blocksMovement);
+      const destination = context.openCellIn(effect.zone, context.content.units.get(unit.type).movementClass);
       if (destination) teleportUnit(context.content, context.state, unit.id, destination, context.emit);
     }
   }))
@@ -473,30 +507,22 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     }
   }))
   .register(effectHandler('changeMorale', (context, effect) => {
-    for (const unit of [...context.select(effect.selector)]) {
-      if (context.state.units.some((candidate) => candidate.id === unit.id)) {
-        changeMorale(context.rules, context.state, unit.id, effect.amount, effect.reason ?? 'scenario', context.emit);
-      }
+    for (const unit of context.standing(effect.selector)) {
+      changeMorale(context.rules, context.state, unit.id, effect.amount, effect.reason ?? 'scenario', context.emit);
     }
   }))
   .register(effectHandler('surrenderUnits', (context, effect) => {
-    for (const unit of [...context.select(effect.selector)]) {
-      if (context.state.units.some((candidate) => candidate.id === unit.id)) {
-        surrenderUnit(context.rules, context.state, unit.id, effect.to, context.emit);
-      }
+    for (const unit of context.standing(effect.selector)) {
+      surrenderUnit(context.rules, context.state, unit.id, effect.to, context.emit);
     }
   }))
   .register(effectHandler('restoreWithdrawnUnits', (context, effect) => {
-    const destinations = context.zone(effect.zone).slice().sort((left, right) => left.y - right.y || left.x - right.x);
     for (const marker of [...context.selectMarkers(effect.selector)]) {
       const fallen = marker.fallenUnit;
       if (!fallen) continue;
-      const destination = destinations.find((cell) => {
-        if (unitAtCoord(context.state, cell)) return false;
-        const battlefieldCell = new Battlefield(context.state, context.content).cell(cell);
-        const movement = context.content.units.get(fallen.type).movementClass;
-        return !battlefieldCell.blocksMovement && battlefieldCell.movementCost(movement) !== null;
-      });
+      const destination = context.openCellIn(effect.zone, context.content.units.get(fallen.type).movementClass);
+      // A full zone stops the rescue rather than skipping past it: the ones
+      // still in the ground stay there until there is room.
       if (!destination) break;
       returnUnitToField(context.state, marker, { at: destination, owner: effect.owner }, context.emit);
     }

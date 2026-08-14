@@ -98,6 +98,27 @@ describe('every return, whichever way it came', () => {
     expect(state.units.filter((unit) => unit.id === marker.fallenUnit!.id)).toHaveLength(1);
   });
 
+  it('fills a rally zone in reading order and stops when it is full', () => {
+    // Where a scenario may drop a unit is one search — passable ground, nobody
+    // standing on it, always the same tile first — and it was written twice,
+    // once for a teleport and once for a rescue. The zone here is declared out
+    // of order on purpose: reading order, not declaration order, decides.
+    const state = testState(makeLevel(['....', '....'], {
+      units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 1), u(2, 0, 'soldier', 1), u(3, 1, 'soldier', 2)],
+      scenario: { zones: [{ id: 'rally', cells: [{ x: 2, y: 1 }, { x: 1, y: 1 }] }] },
+    }));
+    const engine = rules();
+    applyScenarioEffect(engine, state, { type: 'withdrawUnits', selector: { owner: 1 } }, () => {});
+    expect(state.markers).toHaveLength(3);
+
+    applyScenarioEffect(engine, state, { type: 'restoreWithdrawnUnits', selector: {}, zone: 'rally' }, () => {});
+
+    expect(state.units.filter((unit) => unit.owner === 1).map((unit) => ({ x: unit.x, y: unit.y })))
+      .toEqual([{ x: 1, y: 1 }, { x: 2, y: 1 }]);
+    // The third stays in the ground until there is room for it.
+    expect(state.markers).toHaveLength(1);
+  });
+
   it('reports the marker it consumed', () => {
     const state = skirmish();
     const engine = rules();

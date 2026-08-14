@@ -60,9 +60,10 @@ export function disembarkUnit(
   if (!inBounds(state.map, at.x, at.y) || dist(carrier, at) !== 1) throw new IllegalActionError('disembark cell must be adjacent');
   if (unitAtCoord(state, at)) throw new IllegalActionError('disembark cell is occupied');
   const unit = state.embarkedUnits[index].unit;
-  const cell = new Battlefield(state, content).cell(at);
   const movement = content.units.get(unit.type).movementClass;
-  if (cell.blocksMovement || cell.movementCost(movement) === null) throw new IllegalActionError('passenger cannot enter disembark cell');
+  if (!new Battlefield(state, content).cell(at).admits(movement)) {
+    throw new IllegalActionError('passenger cannot enter disembark cell');
+  }
   unit.x = at.x;
   unit.y = at.y;
   unit.done = true;

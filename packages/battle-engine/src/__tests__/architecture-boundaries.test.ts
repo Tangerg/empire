@@ -388,6 +388,23 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('asks one question about where a unit may stand', () => {
+    // Impassable ground and a structure that fills the tile are two layers, and
+    // both have to say yes. Deployment, disembarking, a shove, a teleport, a
+    // scenario spawn and a rescue from a corpse marker each asked the two
+    // layers by hand — six copies of one rule, each free to remember only half
+    // of it. The cell answers it now; `blocksMovement` outside the cell means
+    // somebody is assembling the rule again.
+    const allowed = ['types.ts', 'content-builders.ts', join('domain', 'battlefield.ts')];
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (allowed.includes(name)) return [];
+      return /\bblocksMovement\b/.test(readFileSync(file, 'utf8')) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('builds every extension point on the shared registry', () => {
     // Twelve registries had each hand-written the same table, and they had
     // drifted where it mattered: some could be *asked* for an entry, some could

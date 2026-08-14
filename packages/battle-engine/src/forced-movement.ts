@@ -1,10 +1,10 @@
 import { Battlefield } from './domain/battlefield';
 import { BattleAggregate } from './domain/battle-aggregate';
 import { UnitEntity } from './domain/unit-entity';
-import { inBounds, sameCoord } from './grid';
+import { sameCoord } from './grid';
 import { resolveDamage, type DamageRules } from './damage';
 import { DIRECTION_VECTOR, directionToward } from './spatial';
-import { requireUnit, unitAtCoord } from './state';
+import { requireUnit } from './state';
 import type { Coord, GameEvent, GameState, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
 
@@ -29,12 +29,9 @@ export interface ForcedMovementResult {
   killed: boolean;
 }
 
-function canOccupy(state: GameState, unit: Unit, at: Coord, content: ContentCatalog): boolean {
-  if (!inBounds(state.map, at.x, at.y)) return false;
-  if (unitAtCoord(state, at)) return false;
-  const battlefield = new Battlefield(state, content);
-  const cell = battlefield.cell(at);
-  return !cell.blocksMovement && cell.movementCost(content.units.get(unit.type).movementClass) !== null;
+function canOccupy(battlefield: Battlefield, unit: Unit, at: Coord): boolean {
+  return battlefield.contains(at) &&
+    battlefield.cell(at).canReceive(battlefield.content.units.get(unit.type).movementClass);
 }
 
 /**
@@ -64,11 +61,9 @@ export function forceMoveUnit(
   for (let step = 0; step < distance && !collided; step++) {
     const current = path[path.length - 1];
     const next = { x: current.x + vector.x, y: current.y + vector.y };
-    if (!canOccupy(state, unit, next, content)) {
-      collided = true;
-      break;
-    }
-    if (battlefield.traversalCost(current, next, content.units.get(unit.type).movementClass) === null) {
+    // Nothing to be shoved into, and an edge the shove can cross.
+    if (!canOccupy(battlefield, unit, next) ||
+      battlefield.traversalCost(current, next, content.units.get(unit.type).movementClass) === null) {
       collided = true;
       break;
     }
@@ -110,7 +105,7 @@ export function teleportUnit(
   const unit = requireUnit(state, unitId);
   const from = { x: unit.x, y: unit.y };
   if (sameCoord(from, destination)) return true;
-  if (!canOccupy(state, unit, destination, content)) return false;
+  if (!canOccupy(new Battlefield(state, content), unit, destination)) return false;
   new BattleAggregate(state, content).moveUnit(unit.id, destination);
   emit({
     type: 'forcedMove',

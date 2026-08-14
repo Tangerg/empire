@@ -70,10 +70,8 @@ export function computeMoveField(content: ContentCatalog, state: GameState, unit
         if (!inBounds(map, nx, ny)) continue;
         const ni = idx(map, nx, ny);
 
-        const cell = battlefield.cellAt(nx, ny);
         const step = battlefield.traversalCost({ x: cx, y: cy }, { x: nx, y: ny }, def.movementClass);
         if (step == null) continue;
-        if (cell.blocksMovement) continue;
 
         const blocker = unitAt(state, nx, ny);
         if (blocker && blocker.id !== unit.id) {

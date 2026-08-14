@@ -11,6 +11,7 @@ import type {
   TerrainDef,
   TerrainOverlayDef,
   TerrainOverlayState,
+  Unit,
 } from '../types';
 
 /**
@@ -112,6 +113,29 @@ export class BattlefieldCell {
     return this.structure ? this.battlefield.content.structures.get(this.structure.type).blocksMovement : false;
   }
 
+  /** The unit standing here, if any. */
+  get occupant(): Unit | undefined {
+    return this.battlefield.occupantAt(this.at);
+  }
+
+  /**
+   * May a unit of this movement class stand on this tile?
+   *
+   * Ground it cannot cross and a structure that fills the tile are two separate
+   * layers, and both have to say yes. Every rule that puts a unit somewhere —
+   * deployment, disembarking, a shove, a teleport, a scenario spawn, a rescue
+   * from a corpse marker — asked the two layers by hand, so the rule existed in
+   * six copies, each of them one edit away from remembering only half of it.
+   */
+  admits(movementClass: MovementClass): boolean {
+    return !this.blocksMovement && this.movementCost(movementClass) !== null;
+  }
+
+  /** Admits such a unit *and* has nobody standing on it: a placeable tile. */
+  canReceive(movementClass: MovementClass): boolean {
+    return !this.occupant && this.admits(movementClass);
+  }
+
   get blocksVision(): boolean {
     return this.terrain.opaque || Boolean(
       this.structure && this.battlefield.content.structures.get(this.structure.type).blocksVision,
@@ -199,6 +223,15 @@ export class Battlefield {
     return this.overlayStatesByCell.get(index) ?? [];
   }
 
+  /**
+   * Deliberately not indexed like the layers above: rules move, spawn and
+   * remove units while they hold a battlefield, so a cached answer would be
+   * wrong by the next line.
+   */
+  occupantAt(at: Coord): Unit | undefined {
+    return this.state.units.find((unit) => unit.x === at.x && unit.y === at.y);
+  }
+
   structureAt(index: number): StructureState | undefined {
     if (!this.structuresByCell) {
       if (++this.structureLookups < 3) {
@@ -239,12 +272,19 @@ export class Battlefield {
     return this.directionalCoverByCell.get(index) ?? {};
   }
 
-  /** Terrain + elevation + explicit edge policy for one orthogonal movement step. */
+  /**
+   * Terrain, structure, elevation and explicit edge policy for one orthogonal
+   * movement step.
+   *
+   * A tile a structure fills is not a tile with an expensive step — it is a
+   * step that does not exist. This used to answer only for the ground, so both
+   * callers had to remember the other half by hand, right next to the call.
+   */
   traversalCost(from: Coord, to: Coord, movementClass: MovementClass): number | null {
     const profile = this.content.movementProfiles.get(movementClass);
     const destination = this.cell(to);
     const base = destination.movementCost(movementClass);
-    if (base === null) return null;
+    if (base === null || destination.blocksMovement) return null;
     if (this.isCliff(from, to) && !profile.ignoresCliffs) return null;
     const delta = destination.elevation - this.cell(from).elevation;
     if (profile.maxClimb !== null && delta > profile.maxClimb) return null;
