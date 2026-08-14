@@ -89,6 +89,8 @@
 | 弹药与资源门槛 | 已实现 | 已实现 | 内容包定义 | 玩家、单位和武器账户统一处理 |
 | 单体、十字、直线、九宫范围 | 已实现 | 已实现 | 内容包定义 | 使用不可变 `CombatPlan` |
 | 自定义爆炸形状 | 已实现扩展点 | 自动 | 数据引用 | `WeaponAreaShapes` 开放注册表；形状自述是否需要目标格有人 |
+| 自定义常驻命令 | 已实现扩展点 | 已实现 | 数据引用 | `UnitDirectives` 开放注册表：想要哪块地、还想不想打、巡逻怎么推进 |
+| 自定义资源持有者 | 已实现扩展点 | 不适用 | 声明合并 + 注册 | `ResourceSubjectKindMap` 合并类型，`ResourceSubjectResolvers` 提供构建与投影 |
 | 结构攻击与攻城 | 已实现 | 已实现 | 仅数据可配 | 目标结构有耐久、防御和失效状态 |
 | 推拉与碰撞伤害 | 已实现 | 已实现 | 仅数据可配 | 武器效果和场景效果共用解释器 |
 | 随机命中和暴击 | 明确不做 | 未实现 | 未实现 | 当前产品依赖可信预览 |
@@ -292,6 +294,12 @@
 | 一张开放扩展表怎么存、怎么问、怎么复制 | `KeyedRegistry` / `PriorityRegistry`（基类） |
 | 一次攻击为什么是这个数 | `DamageBreakdown.modifiers`（唯一解释，其余是对它的提问） |
 | 一发爆炸覆盖哪些格 | `WeaponAreaShapes` |
+| 一次攻击落地之后要发生什么 | `land()`（战报、成长、附带效果、承受者气势，只此一处） |
+| 这一格能不能站人 | `BattlefieldCell.admits()` / `canReceive()` |
+| 一条常驻命令让单位想要什么 | `UnitDirectives`（开放内容注册表） |
+| 谁可以持有资源账户 | `ResourceSubjectResolvers`（构建持有者，并投影成事件里的引用） |
+| 一次资源变动怎么播报 | `BattleResourceSystem.announce()` |
+| 一个能力是不是攻击、用的哪把武器 | 能力自述 `engagement` 与 `weaponFor`，核心不按 id 猜 |
 | 一种事件长什么样、战报怎么写 | `BattleEventPresenters` |
 | 目录有哪些内容族 | `DEFINITION_FAMILIES`（穷尽 Record，编译器守着） |
 | 一个关卡文件声明了哪些名字 | `LevelDeclarations` |
@@ -308,7 +316,7 @@
 | TypeScript 整仓类型检查 | 已实现 | `npm run typecheck` |
 | 战斗规则单元和契约测试 | 已实现 | 覆盖领域、扩展、三题材契约和 AI |
 | 应用 DOM 挂载测试 | 已实现 | 游戏、编辑器、Demo 和体验入口 |
-| 架构依赖测试 | 已实现 | 无环、包边界、行为归属、调用形状，共 24 条 |
+| 架构依赖测试 | 已实现 | 无环、包边界、行为归属、调用形状，共 28 条 |
 | 界面意图完整性测试 | 已实现 | HUD 与编辑器渲染出的每个 `data-act` / `data-field` 都有人接 |
 | 关卡校验与 AI 冒烟 | 已实现 | 内置关卡自动推演 |
 | 战斗热路径 benchmark | 已实现 | `npm run bench:core` |
