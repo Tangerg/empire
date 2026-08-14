@@ -43,7 +43,7 @@ flowchart LR
 
 ## 节点代数
 
-`CampaignNode` 使用封闭的流程节点类型。内容通过数据组合节点，不向运行时注入剧本名称判断。
+`CampaignNodeKindMap` 是**开放**的，和条件、效果两套代数一样。节点种类曾是唯一一个封闭词表，而它的行为散在定义校验器和四个运行时方法里——于是剧本包能加一个条件、一个效果，却加不了一间商店、一座兵营、一段带检定的对话。
 
 | 节点 | 用途 | 离开方式 |
 | --- | --- | --- |
@@ -53,6 +53,10 @@ flowchart LR
 | `choice` | 条件化分支 | `choose(id)` |
 | `battle` | 关卡请求与战果出口 | `beginBattle()`、`completeBattle()` |
 | `ending` | 完成或失败终点 | `advance()` |
+
+一个 `CampaignNodeHandler` 回答引擎对某种节点仅有的两个问题：**离开它会发生什么**（落效果、走向下一节点、或者结算战役），以及**它的声明必须满足什么**。`advance()` 不再知道「choice 需要 choose()、battle 需要 beginBattle()」——需要输入的种类自己拒绝，并说出该调哪个 API。
+
+校验也按同一条缝切开，与战斗侧一致：文档自身的事实（schema、节点 id、起点、名册）留在 `validateCampaignDefinition`，某一*种*节点必须声明什么则归它的 handler，由 `CampaignAggregate` 对着一份文档名字的 inspection 逐个执行。`story`、`hub`、`travel` 原本共用一条分支，现在共用一个 handler 工厂——这正是让它们可以被逐个替换的原因。
 
 节点效果和选项效果都通过 `CampaignEffectRegistry` 解释。条件由 `CampaignConditionRegistry` 解释。两个代数都支持 TypeScript declaration merging 和策略注册，但默认运行时会克隆注册表，避免实例间污染。
 
@@ -77,6 +81,8 @@ flowchart LR
 ## 战斗防腐层
 
 `CampaignBattleBridge` 是唯一同时理解 `CampaignState` 与 `GameState` 的通用模块。战斗内核始终只接收普通 `LevelData`。
+
+它的翻译表也是数据。「一种离场标记对名册意味着什么」曾是一串四臂三元表达式，兜底答案是 `fallen`——永久阵亡——而标记种类在战斗引擎里是开放字符串：`transport-loss` 和任何剧本包自造的标记都会拿到这个最具破坏性的答案。现在是 `DEFAULT_MARKER_DISPOSITIONS`，可注入，未知离场方式读作 `missing`：这个单位出了事，而战役不知道是什么事。
 
 ### 进入战斗
 

@@ -290,6 +290,31 @@ describe('one composition root', () => {
   });
 });
 
+describe('a strategy is asked for its behaviour, not its name', () => {
+  it('never branches on a registered presentation id', () => {
+    // Six places in the board asked `presentation.id === 'generic'` to pick
+    // between ruled squares and ground-level ellipses, so a third look was
+    // unreachable and no presentation could mix. Art states what it wants.
+    const scanned = [
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'story-candidate-01', 'src')),
+    ];
+    const offenders = scanned.filter((file) =>
+      /\b(?:presentation|decorations|decor)\.id\s*[!=]==?\s*['"]/.test(readFileSync(file, 'utf8')));
+
+    expect(offenders.map((file) => relative(packagesRoot, file))).toEqual([]);
+  });
+
+  it('validates a campaign node kind through its handler', () => {
+    // The definition validator held a four-armed ladder over node kinds, which
+    // is why a story pack could add a condition and an effect but not a shop.
+    // What one kind must declare belongs to that kind.
+    const aggregate = readFileSync(join(packagesRoot, 'campaign-engine', 'src', 'aggregate.ts'), 'utf8');
+
+    expect(aggregate).not.toMatch(/node\.type\s*[!=]==?\s*['"]/);
+  });
+});
+
 describe('referential integrity has an owner', () => {
   it('never cross-checks a registry against content by hand', () => {
     // "Does this ruleset implement the name that content wrote down" was three

@@ -14,7 +14,7 @@ export interface DecoratedCell {
 /**
  * How a board draws the tactical layer over whatever art is underneath it.
  *
- * The board used to ask `presentation.id === 'generic'` in six places to choose
+ * The board used to ask the presentation for its own id in six places to choose
  * between squares and ground-level ellipses. That is a strategy object being
  * asked for its name instead of its behaviour: a third presentation got the
  * authored look whether it wanted it or not, and could not mix — authored
