@@ -587,6 +587,30 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('lets only the deployment rules read the deployment roster', () => {
+    // The pre-battle arrangement is one aggregate, and it used to have two
+    // owners: the action handler knew about zones, swaps and terrain, while
+    // anything wanting to *offer* those placements would have had to work them
+    // out again. It did — that is why the phase shipped with no interface. The
+    // menu and the order now ask the same module, so a spot the board draws and
+    // a placement the engine takes cannot drift apart.
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const source = stripStrings(stripComments(readFileSync(file, 'utf8')))
+        // Retiring the aggregate is the lifecycle's job — it owns the phase
+        // change that ends deployment — and is not reasoning about the roster.
+        .replace(/\bstate\.deployment\s*=\s*null/g, '');
+      // The runtime aggregate, not the level document: `LevelDeployment` also
+      // has an `order`, and flagging a validator for reading the file it
+      // validates would be a false positive that the guard gets deleted over.
+      const reads = /\bstate\.deployment\b|\bdeployment[?]?\.(?:assignments|currentIndex)\b/.test(source);
+      // `state.ts` builds it and copies it; `deployment.ts` is the rule.
+      const owner = ['deployment.ts', 'state.ts'].includes(relative(coreRoot, file));
+      return reads && !owner ? [relative(coreRoot, file)] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('lets only the casting rules mutate the charge queue', () => {
     // Everything else reads it through `activeCasts()`, which is what keeps a
     // dead caster's charge from being visible to some readers and not others.

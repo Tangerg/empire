@@ -22,6 +22,7 @@ import { createBattleSave, type BattleSave } from './battle-save';
 import type { ContentCatalog } from './content-pack';
 import { careerOptions } from './careers';
 import { formationOptions } from './formations';
+import { deploymentRoster, deploymentSpots } from './deployment';
 import { activeTurnOrder, mayAct, type TurnOrderPolicy } from './turn-order';
 import type { Action, Coord, GameEvent, GameState, LevelData, Unit, WeaponId } from './types';
 
@@ -196,6 +197,15 @@ export class BattleEngine {
 
   formationOptions(state: GameState, unit: Unit) {
     return formationOptions(this.rules, state, unit);
+  }
+
+  /** The pre-battle arrangement now open, or `null` if the battle is playing. */
+  deploymentRoster(state: GameState) {
+    return deploymentRoster(state);
+  }
+
+  deploymentSpots(state: GameState, unit: Unit) {
+    return deploymentSpots(this.rules, state, unit);
   }
 
   /**

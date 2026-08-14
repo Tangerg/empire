@@ -55,6 +55,14 @@ export interface HudView {
   rankNextThreshold: number | null;
   careerOptions: CareerOption[];
   formationOptions: FormationOption[];
+  /**
+   * The pre-battle arrangement this side is making, or null once playing.
+   *
+   * Deployment replaces the command panel rather than adding a screen: the
+   * player is still picking a unit and clicking a cell, so the same panel says
+   * so with a different list.
+   */
+  deployment: { units: Unit[]; selected: number | null } | null;
   /** Ability whose target we are picking, if any. */
   targeting: string | null;
   recruitAt: Coord | null;
@@ -82,6 +90,10 @@ export interface HudHandlers {
   onCareer(career: string): void;
   /** An empty id means "stand in no formation at all". */
   onFormation(formation: string | null): void;
+  /** Take up one of the units being arranged before the battle. */
+  onDeployPick(unit: number): void;
+  /** Confirm the arrangement; the battle begins when every side has. */
+  onConfirmDeployment(): void;
   onCancel(): void;
   onEndTurn(): void;
   onUndo(): void;
@@ -208,6 +220,8 @@ export class Hud {
     facing: (arg) => this.handlers.onFacing(arg as Direction),
     career: (arg) => this.handlers.onCareer(arg),
     formation: (arg) => this.handlers.onFormation(arg || null),
+    'deploy-pick': (arg) => this.handlers.onDeployPick(Number(arg)),
+    'deploy-done': () => this.handlers.onConfirmDeployment(),
     recruit: (arg) => this.handlers.onRecruit(arg),
     zoom: (arg) => this.handlers.onZoom(Number(arg)),
     cancel: () => this.handlers.onCancel(),
@@ -332,9 +346,13 @@ export class Hud {
         <button class="btn ghost" data-act="undo" ${view.canUndo && !view.busy ? '' : 'disabled'} title="撤销 (U)">${icon('undo')}</button>
         ${this.renderSaveSlot(view)}
         <button class="btn ghost" data-act="restart" title="重新开始">${icon('play')}</button>
-        <button class="btn primary" data-act="end" ${view.busy || active.controller !== 'human' ? 'disabled' : ''}>
+        ${view.deployment
+          ? `<button class="btn primary" data-act="deploy-done" ${view.busy ? 'disabled' : ''}>
+          ${icon('flag')} 确认部署
+        </button>`
+          : `<button class="btn primary" data-act="end" ${view.busy || active.controller !== 'human' ? 'disabled' : ''}>
           ${icon('hourglass')} 结束回合 <kbd>E</kbd>
-        </button>
+        </button>`}
       </div>`;
   }
 
@@ -348,7 +366,22 @@ export class Hud {
 
   /* --------------------------------------------------------------- commands */
 
+  /** The line waiting to be arranged; clicking a name takes that unit up. */
+  private renderDeployment(view: HudView): string {
+    const deployment = view.deployment;
+    if (!deployment) return '';
+    return `<section class="card accent">
+      <h3>战前部署</h3>
+      <p class="hint">${escapeHtml(view.hint)}</p>
+      <div class="cmd-list">${deployment.units.map((unit) => `<button
+        class="btn ${unit.id === deployment.selected ? 'primary' : 'ghost'}"
+        data-act="deploy-pick" data-arg="${unit.id}" ${view.busy ? 'disabled' : ''}
+        >${escapeHtml(view.rules.content.units.get(unit.type).name)} <span class="sub">${unit.x},${unit.y}</span></button>`).join('')}</div>
+    </section>`;
+  }
+
   private renderCommands(view: HudView): string {
+    if (view.deployment) return this.renderDeployment(view);
     if (view.targeting) {
       return `<section class="card accent">
         <h3>选择目标</h3>

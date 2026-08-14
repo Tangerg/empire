@@ -79,6 +79,14 @@ export class GameSession {
     return this.engine.formationOptions(this.state, unit);
   }
 
+  deploymentRoster() {
+    return this.engine.deploymentRoster(this.state);
+  }
+
+  deploymentSpots(unit: Unit) {
+    return this.engine.deploymentSpots(this.state, unit);
+  }
+
   threatOf(unit: Unit): Set<number> {
     return this.engine.space.threatOf(this.state, unit, this.moveField(unit));
   }

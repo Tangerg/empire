@@ -28,6 +28,8 @@ import {
 } from './event-presentation';
 import { Hud, type HudView } from './hud';
 import {
+  DEPLOYING,
+  DeploymentSelection,
   DestinationSelection,
   IDLE,
   TacticTargetSelection,
@@ -130,6 +132,8 @@ export class GameController {
       onFacing: (facing) => void this.chooseFacing(facing),
       onCareer: (career) => void this.chooseCareer(career),
       onFormation: (formation) => void this.chooseFormation(formation),
+      onDeployPick: (unit) => this.pickDeployUnit(unit),
+      onConfirmDeployment: () => void this.confirmDeployment(),
       onCancel: () => this.cancel(),
       onEndTurn: () => void this.endTurn(),
       onUndo: () => this.undo(),
@@ -179,11 +183,14 @@ export class GameController {
     );
 
     document.addEventListener('keydown', this.onKey);
-    this.pushMessage(`第 1 回合 · ${this.human?.name ?? ''} 开始行动`);
+    this.selection = this.restingSelection;
+    this.pushMessage(this.state.phase === 'deployment'
+      ? '战前部署 · 调整站位后确认部署'
+      : `第 1 回合 · ${this.human?.name ?? ''} 开始行动`);
     this.refresh();
 
     // A level may open on an AI player (or have no human at all).
-    if (!this.isHumanTurn && this.state.phase === 'playing') void this.runAiTurns();
+    this.maybeRunAi();
   }
 
   dispose(): void {
@@ -203,9 +210,32 @@ export class GameController {
     return this.state.players.find((p) => p.controller === 'human');
   }
 
+  /** The human may issue orders: their side is up and the battle is under way. */
   private get isHumanTurn(): boolean {
     const p = this.state.players.find((x) => x.id === this.state.currentPlayer);
     return !!p && p.controller === 'human' && this.state.phase === 'playing';
+  }
+
+  /**
+   * The board belongs to the human right now — including before the first turn.
+   *
+   * Separate from `isHumanTurn` because arranging a line and ordering it about
+   * are different rights: deployment accepts clicks from a player who has no
+   * turn yet, and every ability gate must keep saying no until the battle opens.
+   */
+  private get isHumanInput(): boolean {
+    const p = this.state.players.find((x) => x.id === this.state.currentPlayer);
+    return !!p && p.controller === 'human' && this.state.phase !== 'over';
+  }
+
+  /** The resting selection for the phase the battle is in. */
+  private get restingSelection(): Selection {
+    return this.state.phase === 'deployment' ? DEPLOYING : IDLE;
+  }
+
+  /** Hand the board to the AI driver whenever the side to act is not human. */
+  private maybeRunAi(): void {
+    if (this.state.phase !== 'over' && !this.isHumanInput) void this.runAiTurns();
   }
 
   private onKey = (ev: KeyboardEvent): void => {
@@ -274,7 +304,7 @@ export class GameController {
   }
 
   private async handleClick(at: Coord): Promise<void> {
-    if (this.busy || this.state.phase !== 'playing') return;
+    if (this.busy || !this.isHumanInput) return;
     const outcome = this.selection.click(this.selectionContext(), at);
     if (outcome.action) {
       await this.dispatch(outcome.action);
@@ -365,7 +395,7 @@ export class GameController {
   private cancel(): void {
     if (this.busy) return;
     const previous = this.selection.back();
-    if (previous === IDLE) this.inspect = null;
+    if (previous === this.restingSelection) this.inspect = null;
     this.selection = previous;
     this.refresh();
   }
@@ -386,7 +416,7 @@ export class GameController {
     if (this.busy || !this.session.canUndo) return;
     this.session.undo();
     this.board.setState(this.state);
-    this.selection = IDLE;
+    this.selection = this.restingSelection;
     this.inspect = null;
     this.pushMessage('已撤销上一步');
     this.refresh();
@@ -430,13 +460,13 @@ export class GameController {
       return;
     }
     this.reopen(`已读取第 ${this.state.turn} 回合的存档`);
-    if (!this.isHumanTurn && this.state.phase === 'playing') void this.runAiTurns();
+    this.maybeRunAi();
   }
 
   /** Whatever the session now holds, shown from a clean slate. */
   private reopen(message: string): void {
     this.board.setState(this.state);
-    this.selection = IDLE;
+    this.selection = this.restingSelection;
     this.inspect = null;
     this.messages = [];
     this.pushMessage(message);
@@ -491,7 +521,7 @@ export class GameController {
   private async dispatch(action: Action): Promise<void> {
     if (this.busy) return;
     this.busy = true;
-    this.selection = IDLE;
+    this.selection = this.restingSelection;
     this.refresh();
 
     try {
@@ -508,10 +538,14 @@ export class GameController {
       await this.settle(events);
     } finally {
       this.busy = false;
+      // Re-read the resting selection: `finishDeployment` opens the battle, and
+      // leaving the deployment selection in place would go on offering an
+      // arrangement that is over.
+      this.selection = this.restingSelection;
       this.refresh();
     }
 
-    if (!this.isHumanTurn && this.state.phase === 'playing') void this.runAiTurns();
+    this.maybeRunAi();
   }
 
   /** One batch of events comes from one order, so one log context serves it. */
@@ -544,6 +578,23 @@ export class GameController {
     await this.dispatch({ kind: 'endTurn' });
   }
 
+  /** Hand the arranged line over and let the battle begin. */
+  private async confirmDeployment(): Promise<void> {
+    if (this.busy || this.state.phase !== 'deployment' || !this.isHumanInput) return;
+    await this.dispatch({ kind: 'finishDeployment' });
+  }
+
+  /** Take up one of the units being arranged, named from the roster. */
+  private pickDeployUnit(id: number): void {
+    if (this.busy || this.state.phase !== 'deployment' || !this.isHumanInput) return;
+    const unit = this.session.unit(id);
+    if (!unit) return;
+    this.selection = new DeploymentSelection(unit.id);
+    this.inspect = unit;
+    this.board.centerOn({ x: unit.x, y: unit.y }, this.scroller);
+    this.refresh();
+  }
+
   private async runAiTurns(): Promise<void> {
     if (this.aiRunning) return;
     this.aiRunning = true;
@@ -551,7 +602,7 @@ export class GameController {
     this.refresh();
     try {
       let guard = 0;
-      while (!this.disposed && this.state.phase === 'playing' && !this.isHumanTurn) {
+      while (!this.disposed && this.state.phase !== 'over' && !this.isHumanInput) {
         if (++guard > 2000) break;
         const action = this.session.chooseAiAction();
         await this.march(action, true, 65);
@@ -673,6 +724,9 @@ export class GameController {
             )
         : [];
 
+    // Null once the battle is under way, which is what turns the panel and the
+    // primary button back into the ordinary ones.
+    const roster = this.isHumanInput ? this.session.deploymentRoster() : null;
     const orderPreview = this.session.engine.turnOrderPreview(state, 6);
     return {
       state: state,
@@ -696,6 +750,7 @@ export class GameController {
         : null,
       careerOptions: commandable ? this.session.careerOptions(commandable) : [],
       formationOptions: commandable ? this.session.formationOptions(commandable) : [],
+      deployment: roster && { units: [...roster.units], selected: this.selection.unitId },
       targeting: this.selection.targetingLabel,
       recruitAt: this.selection.recruitAt,
       hint: this.hint(),
@@ -712,7 +767,7 @@ export class GameController {
 
   private hint(): string {
     if (this.state.phase === 'over') return '对局结束。';
-    if (!this.isHumanTurn) return 'AI 正在思考…';
+    if (!this.isHumanInput) return 'AI 正在思考…';
     return this.selection.hint;
   }
 

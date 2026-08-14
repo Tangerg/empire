@@ -221,6 +221,80 @@ export class TargetSelection extends Selection {
   }
 }
 
+/**
+ * Pre-battle: the zone is shown and nobody is picked yet.
+ *
+ * Deployment is a selection like any other rather than a screen of its own,
+ * because it is the same three acts — pick a unit, see where it may stand, click
+ * a cell. Giving it a parallel controller would be a second way to say `click`.
+ */
+class DeployingSelection extends Selection {
+  override get hint(): string {
+    return '战前部署：点击你的单位，再点高亮格调整站位；确认部署后开始战斗。';
+  }
+
+  click(context: SelectionContext, at: Coord): ClickOutcome {
+    return { selection: deploymentSelection(context, at) };
+  }
+
+  override paint(context: SelectionContext, overlay: BoardOverlay): void {
+    const roster = context.session.deploymentRoster();
+    if (!roster) return;
+    for (const cell of roster.zone) overlay.move.add(idx(context.state.map, cell.x, cell.y));
+  }
+}
+
+export const DEPLOYING: Selection = new DeployingSelection();
+
+/** Pre-battle: a unit is picked, and the board shows where it may stand. */
+export class DeploymentSelection extends Selection {
+  constructor(private readonly unit: number) {
+    super();
+  }
+
+  override get unitId(): number {
+    return this.unit;
+  }
+
+  override get hint(): string {
+    return '点击高亮格摆放；落在同伴身上就与它换位。';
+  }
+
+  override back(): Selection {
+    return DEPLOYING;
+  }
+
+  click(context: SelectionContext, at: Coord): ClickOutcome {
+    const unit = this.unitIn(context);
+    if (!unit) return { selection: DEPLOYING };
+    if (context.session.deploymentSpots(unit).some((spot) => sameCoord(spot.at, at))) {
+      return { selection: DEPLOYING, action: { kind: 'deployUnit', unit: this.unit, at } };
+    }
+    return { selection: deploymentSelection(context, at) };
+  }
+
+  override paint(context: SelectionContext, overlay: BoardOverlay): void {
+    const unit = this.unitIn(context);
+    if (!unit) return;
+    overlay.selected = { x: unit.x, y: unit.y };
+    // Only this unit's own cells, which is narrower than the roster's zone when
+    // the level gave the player more than one, or when terrain refuses it.
+    for (const spot of context.session.deploymentSpots(unit)) {
+      overlay.move.add(idx(context.state.map, spot.at.x, spot.at.y));
+    }
+  }
+}
+
+/** Clicking a tile during deployment: take up a unit of ours, or drop back. */
+function deploymentSelection(context: SelectionContext, at: Coord): Selection {
+  const clicked = unitAt(context.state, { x: at.x, y: at.y });
+  const roster = context.session.deploymentRoster();
+  if (clicked && roster?.units.some((candidate) => candidate.id === clicked.id)) {
+    return new DeploymentSelection(clicked.id);
+  }
+  return DEPLOYING;
+}
+
 /** A commander's tactic is waiting for the tile it applies to. */
 export class TacticTargetSelection extends Selection {
   constructor(

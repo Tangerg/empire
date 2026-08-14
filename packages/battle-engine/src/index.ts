@@ -29,6 +29,7 @@ export * from './scenario';
 export * from './objective-model';
 export * from './careers';
 export * from './formations';
+export * from './deployment';
 export * from './morale';
 export * from './transports';
 export * from './engagement';

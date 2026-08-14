@@ -216,6 +216,20 @@ const ally  = context.ownUnit(action.carrier);                    // 只要求�
 
 通用 UI 里那个 `catch {}` 被删掉了：它防的竞态是「`hoverTarget` 是个存下来的字段、活得比填它的那次选择还久」造成的，而上一轮把它改成从当前选择的目标列表派生之后，那个竞态已经不存在了。渲染路径上的裸 catch 会把其他所有失败原因一起藏起来。
 
+### 拒绝的理由只写一遍，问和做各取一半
+
+问与做分开之后还剩一个陷阱：**同一条规则被写两遍，一遍拒绝、一遍列举**。战前部署就是这么废掉的——Action 处理器里逐条写着区域归属、占位交换、地形能否承载，而任何想*提供*这些落点的界面都得把它们再推一遍。没人推，于是这个阶段带着完整的规则、校验、编辑器表单和存档覆盖上线，却没有一个界面进得去。
+
+现在只有一个函数说「不行」：
+
+```ts
+deploymentRefusal(rules, state, unit, at): string | null
+```
+
+菜单留下它答 `null` 的格（`deploymentSpots`），指令抛出它答的那句话（`deployUnit`）。棋盘画出来的落点和引擎收下的落点因此不可能对不上，而每条拒绝仍然带着自己的理由，不会塌成一句「非法」。
+
+顺手补上的是它揭出来的一个洞：交换位置只检查了**移动方**能不能站过去，没检查**被挤走的那个**能落在哪。骑兵和步兵同区，步兵站在山地上和骑兵换位，骑兵就被放到了一个它永远走不出来的格子里。
+
 **一条适应度测试守着这一类**：不绑定错误对象的 `catch` 不许产生返回值。它上线后立刻抓到一处我没在找的——HUD 用 `try/catch` 取资源显示名，而注册表一直就有 `tryGet`。资源适配器注册表当时缺这个查询形态，补上了。
 
 ## 一次伤害就是一次结算
@@ -537,7 +551,7 @@ kernel.use(createContentPlugin([COMMON_PACK, THEME_PACK]));
 | `DomainInvariantError` | 调用方问了不可能的事 | 缺陷，必须修 |
 | `StoredDocumentError` | 这份存档／关卡文档这套规则读不了 | 玩家可见，但要怪的是文件 |
 
-三者都定义在 `domain/errors.ts`：拒绝指令是领域判断，**发现问题的协作者自己说**，不是由处理器代言。协作者（运输、转职、阵形、战术）直接抛 `IllegalActionError`。`LevelFormatError` 是 `StoredDocumentError` 的一种。
+三者都定义在 `domain/errors.ts`：拒绝指令是领域判断，**发现问题的协作者自己说**，不是由处理器代言。协作者（运输、转职、阵形、部署、战术）直接抛 `IllegalActionError`。`LevelFormatError` 是 `StoredDocumentError` 的一种。
 
 处理器原先把它们包在 `try/catch` 里、把 `error.message` 转成非法行动。代价是真实缺陷被伪装成「这步不允许」，而 `GameSession.tryDispatch()` 恰好只吞 `IllegalActionError`——于是协作者里的任何 bug 都被**静默吞掉**。适应度测试禁止这种改标签写法。
 
@@ -557,6 +571,7 @@ UI 和 AI 不拥有规则副本。应用只调用以下引擎查询：
 - `attackPlan()`：范围、结构和援护的完整计划
 - `careerOptions()`：合法转职选项
 - `formationOptions()`：该兵种声明的阵形，以及每一条此刻站不站得住
+- `deploymentRoster()` 与 `deploymentSpots()`：战前部署要摆的编成，以及某个单位此刻可以站的格（含落上去会跟谁换位）
 - `chooseAiAction()`：下一项正式 AI Action
 
 `TacticalSpace` 把移动、攻击目标和可见性放在同一个端口。替换潜行、区域控制或寻路策略时，必须整体保持菜单、AI 和提交一致。

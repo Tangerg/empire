@@ -10,9 +10,9 @@ import { player, spawnUnit, unitAt, unitsOf } from './state';
 import { runScenarioTriggers } from './scenario';
 import { executeTactic } from './commanders';
 import { UnitEntity } from './domain/index';
-import { Battlefield } from './domain/battlefield';
 import { changeCareer, unitAbilityIds } from './careers';
 import { validateFormationChange } from './formations';
+import { confirmDeployment, deployUnit } from './deployment';
 import { disembarkUnit, embarkUnit } from './transports';
 import { playerResource } from './resources';
 import { resolvePartingShots } from './zone-of-control';
@@ -131,37 +131,10 @@ class DeployUnitActionHandler implements ActionHandler<'deployUnit'> {
   readonly kind = 'deployUnit' as const;
 
   execute(context: ActionExecutionContext, action: ActionKindMap['deployUnit']): void {
-    const state = context.state;
-    const deployment = state.deployment;
-    if (state.phase !== 'deployment' || !deployment) context.fail('当前不在战前部署阶段');
-    // Deployment predates any actor turn, so ownership is the whole rule here.
+    // Deployment predates any actor turn, so ownership is the whole rule here;
+    // everything else is `deployment.ts`, which the board asks the same way.
     const unit = context.ownUnit(action.unit).state;
-    const assignment = deployment.assignments.find((entry) =>
-      entry.player === state.currentPlayer && entry.unitIds.includes(unit.id));
-    if (!assignment) context.fail('该单位不在当前部署编组中');
-    const cells = state.scenario.zones[assignment.zone];
-    if (!cells?.some((cell) => sameCoord(cell, action.at))) context.fail('目标格不在该单位的部署区域内');
-
-    const occupant = unitAt(state, { x: action.at.x, y: action.at.y });
-    if (occupant && occupant.id !== unit.id) {
-      const swappable = deployment.assignments.some((entry) =>
-        entry.player === state.currentPlayer && entry.unitIds.includes(occupant.id));
-      if (!swappable) context.fail('目标格已被其他单位占据');
-    }
-    const movementClass = context.rules.content.units.get(unit.type).movementClass;
-    if (!new Battlefield(state, context.rules.content).cell(action.at).admits(movementClass)) {
-      context.fail('该单位无法部署到目标格');
-    }
-    const from = { x: unit.x, y: unit.y };
-    if (sameCoord(from, action.at)) return;
-    if (occupant) {
-      const occupantAssignment = deployment.assignments.find((entry) => entry.unitIds.includes(occupant.id));
-      const occupantCells = occupantAssignment && state.scenario.zones[occupantAssignment.zone];
-      if (!occupantCells?.some((cell) => sameCoord(cell, from))) context.fail('交换后会使另一单位离开部署区域');
-      new UnitEntity(occupant).moveTo(from);
-    }
-    new UnitEntity(unit).moveTo(action.at);
-    context.emit({ type: 'unitDeployed', unit: unit.id, from, to: { ...action.at } });
+    deployUnit(context.rules, context.state, unit, action.at, context.emit);
   }
 }
 
@@ -170,16 +143,7 @@ class FinishDeploymentActionHandler implements ActionHandler<'finishDeployment'>
   readonly handsOffTurn = true;
 
   execute(context: ActionExecutionContext): void {
-    const state = context.state;
-    const deployment = state.deployment;
-    if (state.phase !== 'deployment' || !deployment) context.fail('当前不在战前部署阶段');
-    context.emit({ type: 'deploymentConfirmed', player: state.currentPlayer });
-    deployment.currentIndex++;
-    if (deployment.currentIndex < deployment.order.length) {
-      state.currentPlayer = deployment.order[deployment.currentIndex];
-      return;
-    }
-    context.lifecycle.beginPlaying();
+    confirmDeployment(context.lifecycle, context.state, context.emit);
   }
 }
 

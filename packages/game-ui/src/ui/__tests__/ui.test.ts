@@ -546,3 +546,102 @@ describe('ordering a formation', () => {
     alone.dispose();
   });
 });
+
+/**
+ * A level that opens in the deployment phase.
+ *
+ * The rules have had `deployUnit` and `finishDeployment` since the phase was
+ * introduced, and every interface refused every click until the battle was
+ * `playing` — so the one shipped consumer was a lab fixture, and the capability
+ * table said 「未实现」 for the interface column and meant it.
+ */
+const deploymentLevel = () => normaliseLevel({
+  schema: 2,
+  id: 'deployment-test',
+  name: '部署',
+  width: 4,
+  height: 2,
+  terrain: ['..^.', '....'],
+  units: [
+    { x: 0, y: 0, unit: 'c01.swordsman', owner: 1, key: 'foot' },
+    { x: 1, y: 0, unit: 'c01.archer', owner: 1, key: 'bow' },
+    { x: 3, y: 1, unit: 'c01.swordsman', owner: 2 },
+  ],
+  players: [
+    { id: 1, name: 'P1', team: 1, color: '#3f7fd8', controller: 'human', resources: {} },
+    { id: 2, name: 'P2', team: 2, color: '#d8483f', controller: 'human', resources: {} },
+  ],
+  scenario: { zones: [{ id: 'blue', cells: [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 0, y: 1 }] }] },
+  deployment: { order: [1], zones: [{ player: 1, zone: 'blue' }] },
+  rules: {},
+  victory: [{ type: 'routEnemies' }],
+});
+
+describe('arranging the line before the battle', () => {
+  let host: HTMLElement;
+
+  beforeEach(() => {
+    vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) =>
+      setTimeout(() => cb(performance.now()), 0) as unknown as number,
+    );
+    // jsdom has no scrolling, and picking from the roster centres the board.
+    Element.prototype.scrollTo = () => {};
+    document.body.innerHTML = '<div id="app"></div>';
+    host = document.getElementById('app')!;
+  });
+
+  const settle = async () => {
+    for (let frame = 0; frame < 12; frame++) await new Promise((resolve) => setTimeout(resolve, 0));
+  };
+
+  it('opens on the deployment panel, moves a unit, and starts the battle', async () => {
+    const c = new GameController(deploymentLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board, 4 * TILE);
+
+    // The panel is the roster, and the primary control confirms rather than ends.
+    expect(c.root.querySelector('.panel')!.textContent).toContain('战前部署');
+    const roster = [...c.root.querySelectorAll('[data-act="deploy-pick"]')] as HTMLButtonElement[];
+    expect(roster).toHaveLength(2);
+    expect(c.root.querySelector('[data-act="deploy-done"]')).not.toBeNull();
+    expect(c.root.querySelector('[data-act="end"]')).toBeNull();
+
+    // Picking from the roster is the same act as clicking the unit on the board.
+    expect(roster[0].textContent).toContain('0,0');
+    roster[0].click();
+    await settle();
+    click(board, { x: 0, y: 1 });
+    await settle();
+
+    const moved = [...c.root.querySelectorAll('[data-act="deploy-pick"]')] as HTMLButtonElement[];
+    expect(moved[0].textContent).toContain('0,1');
+    // Still deploying: placing a unit is not confirming the arrangement.
+    expect(c.root.querySelector('[data-act="deploy-done"]')).not.toBeNull();
+
+    c.dispose();
+  });
+
+  it('will not put a unit outside its zone, and hands over on confirm', async () => {
+    const c = new GameController(deploymentLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board, 4 * TILE);
+
+    click(board, { x: 0, y: 0 });
+    await settle();
+    // (1,1) is on the board and empty, but outside the deployment zone.
+    click(board, { x: 1, y: 1 });
+    await settle();
+    const roster = [...c.root.querySelectorAll('[data-act="deploy-pick"]')] as HTMLButtonElement[];
+    expect(roster[0].textContent).toContain('0,0');
+
+    (c.root.querySelector('[data-act="deploy-done"]') as HTMLButtonElement).click();
+    await settle();
+
+    // The battle is under way: the ordinary turn control is back.
+    expect(c.root.querySelector('[data-act="end"]')).not.toBeNull();
+    expect(c.root.querySelector('[data-act="deploy-done"]')).toBeNull();
+    c.dispose();
+  });
+});

@@ -7,7 +7,7 @@ import { createBattleEngine } from '../plugins/default';
 import { idx } from '../grid';
 import { areAllies, cloneState } from '../state';
 import type { GameEvent } from '../types';
-import { makeLevel, testApply, testScenarioEffect, testState, TEST_CONTENT, TEST_RULES, u } from './fixtures';
+import { makeLevel, testApply, testScenarioEffect, testState, TEST_CONTENT, TEST_ENGINE, TEST_RULES, u } from './fixtures';
 import { createTestCatalog } from '@empire/test-content';
 
 const collect = () => {
@@ -130,6 +130,80 @@ describe('advanced battle-local primitives', () => {
     expect(state.phase).toBe('playing');
     expect(state.turn).toBe(1);
     expect(started.some((event) => event.type === 'battleStarted')).toBe(true);
+  });
+
+  it('offers the deploying side exactly the placements the deploy action accepts', () => {
+    // `^` is mountain: a foot soldier holds it, a mounted knight cannot.
+    const state = testState(makeLevel(['..^.'], {
+      units: [
+        { ...u(0, 0, 'soldier', 1), key: 'foot' },
+        { ...u(1, 0, 'knight', 1), key: 'horse' },
+        u(3, 0, 'soldier', 2),
+      ],
+      scenario: {
+        zones: [{ id: 'blue-left', cells: [{ x: 0, y: 0 }, { x: 1, y: 0 }] },
+          { id: 'blue-ridge', cells: [{ x: 2, y: 0 }] }],
+      },
+      deployment: {
+        order: [1],
+        zones: [
+          { player: 1, zone: 'blue-left', unitKeys: ['horse'] },
+          { player: 1, zone: 'blue-ridge', unitKeys: ['foot'] },
+        ],
+      },
+    }));
+    const foot = state.units.find((unit) => unit.key === 'foot')!;
+    const horse = state.units.find((unit) => unit.key === 'horse')!;
+
+    const roster = TEST_ENGINE.deploymentRoster(state)!;
+    expect(roster.player).toBe(1);
+    // Both zones this player was given, and both units across them.
+    expect(roster.units.map((unit) => unit.key).sort()).toEqual(['foot', 'horse']);
+    expect(roster.zone).toHaveLength(3);
+
+    // A unit is confined to its own zone, not to the roster's union.
+    expect(TEST_ENGINE.deploymentSpots(state, foot).map((spot) => spot.at))
+      .toEqual([{ x: 2, y: 0 }]);
+    // The knight's zone is the flat pair, but taking x=0 would swap the soldier
+    // into a cell the ridge assignment does not contain — so only its own is left.
+    expect(TEST_ENGINE.deploymentSpots(state, horse).map((spot) => spot.at.x)).toEqual([1]);
+
+    // Every cell of the board is either offered or refused, and the action must
+    // agree with the menu on all of them — that is what one rule owner buys.
+    for (const unit of [foot, horse]) {
+      const offered = TEST_ENGINE.deploymentSpots(state, unit);
+      for (let x = 0; x < 4; x++) {
+        const at = { x, y: 0 };
+        const listed = offered.some((spot) => spot.at.x === x);
+        const probe = cloneState(state);
+        const mine = probe.units.find((candidate) => candidate.key === unit.key)!;
+        const attempt = () => testApply(probe, { kind: 'deployUnit', unit: mine.id, at });
+        if (listed) expect(attempt).not.toThrow();
+        else expect(attempt).toThrow();
+      }
+    }
+  });
+
+  it('refuses a deployment swap that would strand the other unit on ground it cannot hold', () => {
+    const state = testState(makeLevel(['^..'], {
+      units: [
+        { ...u(0, 0, 'soldier', 1), key: 'foot' },
+        { ...u(1, 0, 'knight', 1), key: 'horse' },
+        u(2, 0, 'soldier', 2),
+      ],
+      scenario: { zones: [{ id: 'blue', cells: [{ x: 0, y: 0 }, { x: 1, y: 0 }] }] },
+      deployment: { order: [1], zones: [{ player: 1, zone: 'blue' }] },
+    }));
+    const foot = state.units.find((unit) => unit.key === 'foot')!;
+
+    // The soldier holds the mountain and wants the knight's cell. Placement was
+    // always checked for the unit moving; the unit displaced by the swap was not,
+    // so this used to put a horse on a mountain it can never leave.
+    expect(TEST_ENGINE.deploymentSpots(state, foot).map((spot) => spot.at))
+      .toEqual([{ x: 0, y: 0 }]);
+    expect(() => testApply(state, { kind: 'deployUnit', unit: foot.id, at: { x: 1, y: 0 } }))
+      .toThrow(/腾出的格子/);
+    expect(foot.x).toBe(0);
   });
 });
 

@@ -33,7 +33,7 @@
 | 单位移动后行动 | 已实现 | 已实现 | 已实现 | 菜单与提交共用合法性 |
 | 行动撤销 | 已实现 | 已实现 | 不适用 | 不能跨回合或部署确认 |
 | 重新开始 | 已实现 | 已实现 | 不适用 | 从原始 `LevelData` 重建状态 |
-| 战前部署 | 已实现 | 未实现 | 仅数据可配 | Action 和阶段完整，通用游戏控制器尚无部署交互 |
+| 战前部署 | 已实现 | 已实现 | 仅数据可配 | 开局即部署面板：编成列表、按单位高亮所属区域、落在同伴身上即换位、确认部署开战 |
 | 朝向调整 | 已实现 | 已实现 | 单位初始朝向仅数据可配 | 四方向 `face` Action |
 | 反应姿态 | 已实现 | 已实现 | 初始姿态仅数据可配 | 反击、防御、援护 |
 | 阵形切换 | 已实现 | 已实现 | 仅数据可配 | 单位面板列出该兵种声明的阵形，站不住的那条禁用并说明原因；再点当前阵形即解除 |
@@ -291,7 +291,7 @@
 | 单位离场之后要发生什么 | `UnitDepartureHandlers`（开放注册表） |
 | 单位回到战场时带回什么 | `returnUnitToField()` |
 | AI 这一回合考虑做什么 | `DefaultAiIntents`（开放有序注册表） |
-| 当前选中了什么、点击意味着什么 | `Selection`（通用 UI，每种选择自己回答） |
+| 当前选中了什么、点击意味着什么 | `Selection`（通用 UI，每种选择自己回答；战前部署也是其中一种，不另开一套控制器） |
 | 一次伤害之后要发生什么 | `resolveDamage()` |
 | 这件武器现在能不能用 | 问 `readyWeapon()`，做 `requireReadyWeapon()` |
 | 此刻这个单位还能不能反应 | `UnitEntity.canReact()` |
@@ -331,6 +331,7 @@
 | 一个指挥官记录的生命周期归谁 | `CommanderEntity`（每回合归还战术、跟随所属单位改边） |
 | 某个阵形站在这里成不成立 | `formationInEffect(rules, state, unit, formation)`（问句不写状态；`activeFormation` 是它的便利式） |
 | 一个单位可以下哪几条阵形命令 | `formationOptions(rules, state, unit)`（菜单、禁用理由和当前阵形的唯一来源） |
+| 战前部署这一格能不能放、放下去会挤走谁 | `deploymentRefusal()`：菜单留它答 `null` 的格，指令抛它答的话；`deploymentRoster` / `deploymentSpots` / `confirmDeployment` 是同一个所有者的其余三面 |
 | 一次失败是谁的错 | `IllegalActionError` / `DomainInvariantError` / `StoredDocumentError`（引擎里没有第四种，也不许抛裸 `Error`） |
 | 增援落点上站着人怎么办 | `spawnUnits`：这一条不到场，后面的照常（明写的边界，不是异常） |
 | 一种事件长什么样、战报怎么写 | `DefaultBattleEventPresenters` |
