@@ -4,12 +4,11 @@ import { idx } from './grid';
 import { areAllies } from './state';
 import type { GameState, PlayerId, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
-import type { GridRegistry } from './tactical-grid';
+import type { GridRules } from './tactical-grid';
 
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
-export interface VisionRules {
+export interface VisionRules extends GridRules {
   readonly content: ContentCatalog;
-  readonly grids: GridRegistry;
 }
 
 /**

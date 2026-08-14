@@ -3,6 +3,7 @@ import { Board } from '../domain/board';
 import { TacticalGrids, type TacticalGrid } from '../tactical-grid';
 import { createBattleEngine } from '../plugins/default';
 import { hashState } from '../replay';
+import { weaponCoverage } from '../weapon-area';
 import { TEST_CONTENT, makeLevel, testState, u } from './fixtures';
 import type { Coord, LevelData } from '../types';
 
@@ -172,6 +173,19 @@ describe('a battle fought on another tiling', () => {
 
     expect(reach('square4')).toBe(false);
     expect(reach('square8')).toBe(true);
+  });
+
+  it('draws a blast on the board the level is tiled with, for everyone who asks', () => {
+    const covered = (grid: string): number => {
+      const battle = createBattleEngine({ content: TEST_CONTENT });
+      const state = battle.createState(duel(grid));
+      return weaponCoverage(battle.rules, state, { x: 1, y: 2 }, { x: 2, y: 2 }, 'cross1').length;
+    };
+
+    // A cross is the aim point and its neighbours, and how many of those there
+    // are is the tiling's answer, not the shape's.
+    expect(covered('square4')).toBe(5);
+    expect(covered('hex')).toBe(7);
   });
 
   it('plays out to a finish on every registered tiling', () => {

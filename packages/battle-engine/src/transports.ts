@@ -1,7 +1,7 @@
 import { IllegalActionError } from './domain/errors';
 import { Battlefield } from './domain/battlefield';
 import { boardOf } from './domain/board';
-import type { GridRegistry } from './tactical-grid';
+import type { GridRules } from './tactical-grid';
 import { inBounds } from './grid';
 import { areAllies, removeUnit, requireUnit, unitAt } from './state';
 import type { ContentCatalog } from './content-pack';
@@ -20,9 +20,8 @@ export function passengersOf(state: GameState, carrier: number): Unit[] {
 }
 
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
-export interface TransportRules {
+export interface TransportRules extends GridRules {
   readonly content: ContentCatalog;
-  readonly grids: GridRegistry;
 }
 
 export function embarkUnit(

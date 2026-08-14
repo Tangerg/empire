@@ -1,6 +1,6 @@
-import type { Board } from './domain/board';
+import { boardOf, type Board } from './domain/board';
 import { KeyedRegistry } from './registry';
-import type { Coord, WeaponArea } from './types';
+import type { Coord, GameState, WeaponArea } from './types';
 import type { GridRules } from './tactical-grid';
 
 /**
@@ -91,4 +91,31 @@ export const WeaponAreaShapes = new WeaponAreaShapeRegistry()
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
 export interface WeaponAreaRules extends GridRules {
   readonly areaShapes: WeaponAreaShapeRegistry;
+}
+
+/**
+ * The tiles this weapon covers, fired from `from` at `aimedAt`.
+ *
+ * This module declared the port and then answered nothing with it: combat
+ * planning and the AI's threat map each wrote `areaShapes.coverage(boardOf(…))`
+ * out for themselves, which is two copies of "a blast is drawn on the board
+ * this battle is tiled with" — the half of the rule a shape is not allowed to
+ * decide for itself.
+ */
+export function weaponCoverage(
+  rules: WeaponAreaRules,
+  state: GameState,
+  from: Coord,
+  aimedAt: Coord,
+  area: WeaponArea,
+): Coord[] {
+  return rules.areaShapes.coverage(boardOf(rules, state), from, aimedAt, area);
+}
+
+/**
+ * Does a strike with this shape need something standing on the tile it is
+ * aimed at? Asked by the planner and by the charge queue, which had to agree.
+ */
+export function needsOccupant(rules: WeaponAreaRules, area: WeaponArea): boolean {
+  return rules.areaShapes.get(area).needsOccupant;
 }

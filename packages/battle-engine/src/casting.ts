@@ -1,6 +1,7 @@
 import { readyWeapon } from './combat';
 import { executeCombatPlan, forecastCombatPlan, type CombatPlanRules } from './combat-plan';
 import { hostileActionAllowed } from './engagement';
+import { needsOccupant } from './weapon-area';
 import { player, unitAt } from './state';
 import { UnitDepartureHandlers } from './unit-departure';
 import { SpellCastEntity } from './domain/spell-cast';
@@ -146,7 +147,7 @@ function refusal(rules: CastingRules, state: GameState, cast: PendingCast, caste
   if (!hostileActionAllowed(state, caster.owner, cast.origin, cast.target, 'attack')) return 'targetProtected';
   // A single-target strike needs something on the tile; an area strike still
   // falls on it and splashes whoever stayed nearby.
-  if (rules.areaShapes.get(weapon.area).needsOccupant && !unitAt(state, cast.target)) return 'targetVacated';
+  if (needsOccupant(rules, weapon.area) && !unitAt(state, cast.target)) return 'targetVacated';
   return null;
 }
 

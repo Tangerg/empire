@@ -75,6 +75,34 @@ function stripStrings(source: string): string {
     .replace(/"(?:[^"\\\n]|\\.)*"/g, '""');
 }
 
+/**
+ * Every `export interface` in a source, with its body brace-matched.
+ *
+ * Brace-matched rather than lazy-to-`\n}`: a member whose type is itself an
+ * object literal ends the body early, and the guard then reads the next
+ * interface's fields as this one's.
+ */
+function exportedInterfaces(source: string): { name: string; body: string; whole: string }[] {
+  const out: { name: string; body: string; whole: string }[] = [];
+  const head = /export interface (\w+)[^{]*\{/g;
+  let match: RegExpExecArray | null;
+  while ((match = head.exec(source))) {
+    let depth = 1;
+    let index = match.index + match[0].length;
+    while (index < source.length && depth > 0) {
+      if (source[index] === '{') depth++;
+      if (source[index] === '}') depth--;
+      index++;
+    }
+    out.push({
+      name: match[1],
+      body: source.slice(match.index + match[0].length, index - 1),
+      whole: source.slice(match.index, index),
+    });
+  }
+  return out;
+}
+
 function localCoreImports(file: string, files: ReadonlySet<string>): string[] {
   const source = readFileSync(file, 'utf8');
   return [...source.matchAll(/from\s+['"](\.\.?\/[^'"]+)['"]|import\s+['"](\.\.?\/[^'"]+)['"]/g)]
@@ -171,6 +199,40 @@ describe('source dependency boundaries', () => {
 });
 
 describe('dependency injection invariants', () => {
+  it('declares no port field its own module never reads', () => {
+    // A port says what one module needs. Copying a collaborator's field into it
+    // makes it that collaborator's port under a second name: `AbilityRules`
+    // listed seven services abilities.ts never touches, because `execute` hands
+    // the ruleset to combat planning, and five ports wrote out `GridRules`'s
+    // single field rather than extending it. Both fail the same way — the day
+    // the real port grows a service, the module that merely passes the ruleset
+    // along is the one that stops compiling — and both hid a second copy of the
+    // question: `activeTurnOrder` and `areaShapes.coverage(boardOf(…))` were
+    // each written out again beside the port that had copied their field.
+    //
+    // A field that is passed on rather than read has one legitimate form, and it
+    // is stated by reason rather than by file: a port published to registered
+    // handlers carries what a handler may read.
+    const published = new Map([['battle-engine/src/unit-departure.ts', ['content']]]);
+    const offenders = everyPackageSource().flatMap((file) => {
+      const path = relative(packagesRoot, file);
+      const source = stripComments(readFileSync(file, 'utf8'));
+      return exportedInterfaces(source)
+        .filter(({ name }) => /(?:Rules|Dependencies|Ports)$/.test(name))
+        .flatMap(({ name, body, whole }) => {
+          const rest = source.replace(whole, '');
+          return [...body.matchAll(/^ {2}(?:readonly )?(\w+)\s*[?:]/gm)]
+            .map((member) => member[1])
+            .filter((field) => !published.get(path)?.includes(field))
+            // Read as `rules.field`, or destructured out of one.
+            .filter((field) => !new RegExp(String.raw`[.{,]\s*${field}\b`).test(rest))
+            .map((field) => `${path} ${name}.${field}`);
+        });
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('never defaults a dependency parameter to a global singleton', () => {
     const globals = [
       'TEST_CONTENT',

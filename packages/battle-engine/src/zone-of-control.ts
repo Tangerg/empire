@@ -5,7 +5,7 @@ import { boardOf } from './domain/board';
 import { reactionOf } from './reactions';
 import { areEnemies } from './state';
 import type { ContentCatalog } from './content-pack';
-import type { GridRegistry } from './tactical-grid';
+import type { GridRules } from './tactical-grid';
 import type { Coord, GameEvent, GameState, Unit } from './types';
 
 /**
@@ -26,9 +26,8 @@ import type { Coord, GameEvent, GameState, Unit } from './types';
 const DEFAULT_CONTROL_RADIUS = 1;
 
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
-export interface ControlZoneRules {
+export interface ControlZoneRules extends GridRules {
   readonly content: ContentCatalog;
-  readonly grids: GridRegistry;
 }
 
 /**

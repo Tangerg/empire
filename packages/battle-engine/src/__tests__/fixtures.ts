@@ -2,7 +2,7 @@ import { type ActionHandlerRegistry, type BattleRuleServices } from '../action-s
 import { createBattleEngine } from '../plugins/default';
 import { applyAction, commandOptions } from '../actions';
 import { addStatus } from '../statuses';
-import { chooseAction, type AiPlanningDependencies, DefaultAbilityAiEvaluators, DefaultAiIntents } from '../ai';
+import { chooseAction, type AiDriverDependencies, DefaultAbilityAiEvaluators, DefaultAiIntents } from '../ai';
 import { buildAiMissionIntent, DefaultAiObjectiveAdvisors } from '../ai-objectives';
 import { computeDamage, forecast, forecastStructure } from '../combat';
 import { forecastCombatPlan } from '../combat-plan';
@@ -231,7 +231,7 @@ export const testScenarioTriggers = (
   emit: (event: GameEvent) => void = () => {},
 ) => runScenarioTriggers(TEST_RULES, state, timing, emit);
 
-export const testAiDependencies = (): AiPlanningDependencies => ({
+export const testAiDependencies = (): AiDriverDependencies => ({
   rules: TEST_RULES,
   objectiveAdvisors: DefaultAiObjectiveAdvisors,
   abilityEvaluators: DefaultAbilityAiEvaluators,

@@ -11,7 +11,7 @@ import { hostileControlZone } from './zone-of-control';
 import type { WeaponDef } from './types';
 import type { Coord, GameState, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
-import type { GridRegistry } from './tactical-grid';
+import type { GridRules } from './tactical-grid';
 
 export interface ReachableTile {
   index: number;
@@ -28,9 +28,8 @@ export interface ReachableTile {
  * Ports declared by this module. `BattleRuleServices` satisfies them
  * structurally, so every caller that already holds the ruleset is unchanged.
  */
-export interface MovementRules {
+export interface MovementRules extends GridRules {
   readonly content: ContentCatalog;
-  readonly grids: GridRegistry;
 }
 
 export interface MoveField {

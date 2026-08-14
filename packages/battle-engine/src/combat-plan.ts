@@ -16,13 +16,13 @@ import {
 import { DomainInvariantError, UnitEntity } from './domain/index';
 import { sameCoord } from './grid';
 import { boardOf } from './domain/board';
-import { type WeaponAreaRules } from './weapon-area';
+import { needsOccupant, weaponCoverage, type WeaponAreaRules } from './weapon-area';
 import {
   awardCombatProgress,
   awardDamageTakenMomentum,
   awardRankProgress,
   changeMomentum,
-  type RankProgressionPolicy,
+  type ProgressionRules,
 } from './progression';
 import { type WeaponHitEffectHandlerRegistry } from './hit-effects';
 import { areAllies, areEnemies, requireUnit, unitAt } from './state';
@@ -95,9 +95,8 @@ export interface CombatPlan {
  * Execution needs everything forecasting needs, plus the effect and growth
  * policies. Declared as a consumer port; `BattleRuleServices` satisfies it.
  */
-export interface CombatPlanRules extends CombatRules, DamageRules, WeaponAreaRules {
+export interface CombatPlanRules extends CombatRules, DamageRules, WeaponAreaRules, ProgressionRules {
   readonly hitEffects: WeaponHitEffectHandlerRegistry;
-  readonly progression: RankProgressionPolicy;
 }
 
 const SUPPORT_ATTACK_MULTIPLIER = 0.6;
@@ -202,7 +201,7 @@ export function forecastCombatPlan(
   // An area weapon may land on a tile whose occupant left — that is the whole
   // point of charge time, and every step below already copes with a null
   // primary. A single-target weapon aimed at nothing has nothing to resolve.
-  if (!primaryTarget && !primaryStructureTarget && rules.areaShapes.get(weapon.area).needsOccupant) {
+  if (!primaryTarget && !primaryStructureTarget && needsOccupant(rules, weapon.area)) {
     throw new DomainInvariantError('combat plan requires a hostile primary target');
   }
   if (primaryTarget && !areEnemies(state, primaryTarget.owner, attacker.owner)) {
@@ -215,7 +214,7 @@ export function forecastCombatPlan(
   const primaryStructure = primaryStructureTarget
     ? forecastStructure(rules, state, attacker, primaryStructureTarget, { weapon: resolvedWeaponId })
     : null;
-  const affectedCells = rules.areaShapes.coverage(boardOf(rules, state), from, aimedAt, weapon.area);
+  const affectedCells = weaponCoverage(rules, state, from, aimedAt, weapon.area);
   const unitHits: PlannedUnitHit[] = [];
   const structureHits: PlannedStructureHit[] = [];
   const excludedUnits = new Set<number>();

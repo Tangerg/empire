@@ -6,24 +6,17 @@ import {
   unitWeapons,
 } from './combat';
 import { beginCast } from './casting';
-import { executeCombatPlan, forecastCombatPlan } from './combat-plan';
-import type { CombatModifierPipeline } from './combat-modifiers';
-import type { WeaponHitEffectHandlerRegistry } from './hit-effects';
-import { awardRankProgress, type RankProgressionPolicy } from './progression';
+import { executeCombatPlan, forecastCombatPlan, type CombatPlanRules } from './combat-plan';
+import { awardRankProgress } from './progression';
 import { MapLayers } from './domain/map-layers';
-import type { GridRules } from './tactical-grid';
 import { ContentRegistry } from './registry';
-import { type ReactionBehavior } from './reactions';
-import { type UnitDepartureHandlerRegistry } from './unit-departure';
 import { unitAt } from './state';
 import { player } from './state';
 import { blockedAbilityStatus, combinedStatusModifiers } from './statuses';
 import { BattleAggregate, UnitEntity } from './domain/index';
 import type { Coord, GameEvent, GameState, Unit, WeaponDef, WeaponId } from './types';
-import { type BattleResourceSystem } from './resources';
 import { type TacticalSpace } from './tactical-space';
 import { type ContentCatalog } from './content-pack';
-import { type WeaponAreaRules } from './weapon-area';
 import { hostileActionAllowed, type EngagementKind } from './engagement';
 
 /**
@@ -46,18 +39,18 @@ export interface AbilityQuery {
 /**
  * The ruleset that answers the question. Declared here as a consumer port; the
  * composition-level `BattleRuleServices` satisfies it structurally.
+ *
+ * An ability reads three things for itself. The other seven were written out
+ * here because `execute` hands the whole ruleset to combat planning, and a port
+ * that copies out a collaborator's fields is that collaborator's port under a
+ * second name: the day `CombatPlanRules` gains a service, this module — which
+ * has no opinion about how a blow is resolved — is the one that stops
+ * compiling.
  */
-export interface AbilityRules extends WeaponAreaRules, GridRules {
-  readonly content: ContentCatalog;
-  readonly resources: BattleResourceSystem;
-  readonly combatModifiers: CombatModifierPipeline;
-  readonly hitEffects: WeaponHitEffectHandlerRegistry;
-  readonly progression: RankProgressionPolicy;
+export interface AbilityRules extends CombatPlanRules {
   /** Shared spatial legality used by menus, AI and action execution. */
   readonly space: TacticalSpace;
   readonly abilities: ContentRegistry<AbilityDef>;
-  readonly reactions: ContentRegistry<ReactionBehavior>;
-  readonly unitDepartures: UnitDepartureHandlerRegistry;
 }
 
 export type Emit = (e: GameEvent) => void;

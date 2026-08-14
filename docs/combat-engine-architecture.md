@@ -549,6 +549,15 @@ UI 和 AI 不拥有规则副本。应用只调用以下引擎查询：
 
 `TacticalSpace` 把移动、攻击目标和可见性放在同一个端口。替换潜行、区域控制或寻路策略时，必须整体保持菜单、AI 和提交一致。
 
+### 端口只写自己读的那几项
+
+`XxxRules` 由需要它的模块声明，`BattleRuleServices` 结构上满足它。写一个端口时：
+
+- **只列本模块自己读的字段。** 架构守卫「declares no port field its own module never reads」会扫描所有工作区包，逐字段检查。
+- **把服务交给协作者时，`extends` 协作者的端口，不要把它的字段抄过来。** `AbilityRules extends CombatPlanRules`，因为 `execute` 把整份规则集交给了战斗结算；抄字段等于给同一个端口起了第二个名字，`CombatPlanRules` 以后多一项服务，第一个编译不过的会是根本不关心伤害怎么算的 `abilities.ts`。
+- **抄字段几乎总是伴随抄问题。** 五个端口各自写了一遍 `GridRules` 的 `grids`；`AiRules` 抄了 `turnOrders`，紧接着 `AiTurnContext` 把 `activeTurnOrder` 的函数体又写了一遍；`WeaponAreaRules` 声明了本模块一次也没用过的 `areaShapes`，于是「一次打击覆盖哪些格」在战斗结算和 AI 威胁图里各写了一份。
+- 唯一被豁免的形态：**端口是发布给注册处理器的契约**（`UnitDeparture.rules`），它带的是处理器要读的东西，不是发布者要读的东西。豁免写在守卫里，并注明理由。
+
 ## GameSession 外壳
 
 `GameSession` 为有状态应用提供窄接口：

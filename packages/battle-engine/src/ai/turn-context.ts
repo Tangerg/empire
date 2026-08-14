@@ -1,7 +1,8 @@
 import { Battlefield } from '../domain/battlefield';
 import { boardOf, type Board } from '../domain/board';
-import type { AiObjectiveAdvisorRegistry } from '../ai-objectives';
+import type { AiMissionRules } from '../ai-objectives';
 import { PriorityRegistry } from '../registry';
+import { activeTurnOrder } from '../turn-order';
 import type { Action, GameState, PlayerId, Unit } from '../types';
 import type { ContentCatalog } from '../content-pack';
 import type { AbilityAiEvaluatorRegistry } from './ability-evaluators';
@@ -9,11 +10,17 @@ import { readAgenda, type AiAgenda } from './agenda';
 import type { AiOptions, AiRules } from './rules';
 import { threatMap } from './threat';
 
-export interface AiPlanningDependencies {
+/**
+ * What one AI turn is planned with.
+ *
+ * `AiMissionRules` says it is "shaped so that `AiPlanningDependencies` satisfies
+ * it structurally" — a relationship worth having the compiler hold rather than a
+ * comment, which is also where `objectiveAdvisors` comes from. It is not read
+ * here; it is read by the mission builder this aggregate is handed to.
+ */
+export interface AiPlanningDependencies extends AiMissionRules {
   readonly rules: AiRules;
-  readonly objectiveAdvisors: AiObjectiveAdvisorRegistry;
   readonly abilityEvaluators: AbilityAiEvaluatorRegistry;
-  readonly intents: AiIntentRegistry;
 }
 
 /**
@@ -79,8 +86,7 @@ export class AiTurnContext {
    * action execution is obliged to reject.
    */
   actors(): Unit[] {
-    return this.rules.turnOrders.get(this.state.turnOrder.policy).actors(this.state)
-      .filter((unit) => !unit.done);
+    return activeTurnOrder(this.rules, this.state).actors(this.state).filter((unit) => !unit.done);
   }
 }
 

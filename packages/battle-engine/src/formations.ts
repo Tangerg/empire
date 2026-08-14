@@ -3,12 +3,11 @@ import { boardOf } from './domain/board';
 import { areAllies } from './state';
 import type { ContentCatalog } from './content-pack';
 import type { FormationDef, FormationId, GameState, Unit } from './types';
-import type { GridRegistry } from './tactical-grid';
+import type { GridRules } from './tactical-grid';
 
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
-export interface FormationRules {
+export interface FormationRules extends GridRules {
   readonly content: ContentCatalog;
-  readonly grids: GridRegistry;
 }
 
 /** A formation only contributes while its spatial invariant is satisfied. */

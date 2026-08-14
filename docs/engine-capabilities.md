@@ -326,6 +326,7 @@
 | 一次资源变动怎么播报 | `BattleResourceSystem.announce()` |
 | 一个能力是不是攻击、用的哪把武器 | 能力自述 `engagement` 与 `weaponFor`，核心不按 id 猜 |
 | 一个能力能拆出几条「换武器」的命令 | `AbilityDef.weaponChoices`（命令菜单按它展开；派发只收它给过的武器） |
+| 一次打击覆盖哪些格、要不要有人站在瞄点上 | `weaponCoverage()` / `needsOccupant()`（形状是内容，画在哪块棋盘上由铺法决定） |
 | 一种事件长什么样、战报怎么写 | `BattleEventPresenters` |
 | 一个外壳用哪套美术、某关用哪套演出 | `ArtDirection`（应用组合根装配，provider 顺序由它决定） |
 | 站在这一格的是谁 | `unitAt`（唯一问法；棋盘读模型转交给它） |
