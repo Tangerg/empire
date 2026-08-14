@@ -233,6 +233,8 @@ composites: [{
 
 | 分组 | 字段 |
 | --- | --- |
+| 棋盘几何 | `grid`：`square4`（默认四方格）、`square8`（对角也算一步）、`hex`（六邻格） |
+| 行动顺序 | `turnOrder`：`side`（阵营轮流）、`initiative`（个体行动序） |
 | 占领 | `captureMode`、`captureThreshold` |
 | 资源 | `baseResourceGrants`、`siteResourceOverrides` |
 | 据点 | `healOnOwnedBuilding` |
@@ -245,6 +247,10 @@ composites: [{
 | 士气 | `moraleEnabled` 和各类士气损失字段 |
 
 不要复制完整默认规则到每张关卡。只写关卡真正改变的值，减少默认值升级时的漂移。
+
+**棋盘几何只改「谁挨着谁」，不改文件格式。** 三种铺法都用同一套矩形行列存储（六边格采用 odd-r 偏移），所以地形行、海拔数组、悬崖边、编辑器笔刷完全不变；改变的是距离、邻接、朝向集合与画面。`square8` 连美术都不用改——铺法与四方格相同，只有邻接不同。`hex` 会把方形地形贴图按格子形状裁切，并按格描边。
+
+朝向随铺法而变：四方格四向、八方格八向、六边格六向（`hexEast`、`hexNortheast`…）。关卡里写 `facing` 时必须用当前铺法认识的名字，否则 `validateLevel()` 与引用校验会拒绝。
 
 ## 目标
 
