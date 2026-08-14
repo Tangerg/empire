@@ -127,12 +127,52 @@ describe('state hashing', () => {
     expect(hashState(state)).not.toBe(before);
   });
 
-  it('ignores unit array order, which is not part of the outcome', () => {
+  it('covers state the old projection had grown past', () => {
+    // The digest used to be a hand-written list of about twenty fields, and it
+    // had drifted: these six changes each left the hash untouched.
+    const battle = engine();
+    const state = battle.createState(skirmish(), { seed: 3 });
+    const changes: Array<[string, () => void]> = [
+      ['a passenger', () => state.embarkedUnits.push({ carrier: 1, unit: { ...state.units[0] } })],
+      ['a spent tactic', () => state.commanders.push({
+        id: 'c', unitId: 1, owner: 1, radius: 2,
+        aura: { attackMultiplier: 1, defenseDelta: 0, movementDelta: 0 },
+        turnGrants: [], tactics: [], usedTactics: ['rally'],
+      })],
+      ['a no-fight zone', () => state.scenario.engagementRules.push({ id: 'truce', zone: 'z', mode: 'no-attacks' })],
+      ['a blocked edge', () => state.map.cliffs.push({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } })],
+      ['directional cover', () => state.map.directionalCover.push({ at: { x: 0, y: 0 }, sides: { north: 'full' } })],
+      ['a patrol route', () => { state.units[0].directive.waypoints.push({ x: 2, y: 2 }); }],
+    ];
+    const unnoticed = changes.filter(([, change]) => {
+      const before = hashState(state);
+      change();
+      return hashState(state) === before;
+    });
+
+    expect(unnoticed.map(([name]) => name)).toEqual([]);
+  });
+
+  it('reads the unit list as an order, because a side turn does', () => {
+    // The digest used to sort the unit list on the grounds that order was
+    // bookkeeping. It is not: a side turn's actor list *is* the unit list, and
+    // the AI keeps the first of two equally-scored candidates — so the same
+    // board with two units swapped can be ordered around differently from the
+    // next action on. A deterministic engine reproduces the order too.
     const battle = engine();
     const state = battle.createState(skirmish(), { seed: 3 });
     const before = hashState(state);
     state.units.reverse();
-    expect(hashState(state)).toBe(before);
+    expect(hashState(state)).not.toBe(before);
+  });
+
+  it('reads an absent field and an undefined one alike, so a save round-trips', () => {
+    // JSON drops `key: undefined`; `structuredClone` keeps it. A digest that
+    // told the two apart would report every reloaded battle as diverged.
+    const battle = engine();
+    const state = battle.createState(skirmish(), { seed: 3 });
+    const before = hashState(state);
+    expect(hashState(JSON.parse(JSON.stringify(state)) as GameState)).toBe(before);
   });
 });
 

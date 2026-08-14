@@ -1,5 +1,5 @@
 import type { BattleEngine } from './engine';
-import type { Action, GameState, LevelData } from './types';
+import type { Action, GameState, LevelData, PlayerState } from './types';
 
 /**
  * Replay and determinism verification.
@@ -19,76 +19,52 @@ export interface BattleReplay {
   readonly actions: readonly Action[];
 }
 
-/** Fields that define battle outcome. Presentation-only state is excluded. */
-function canonical(state: GameState): unknown {
-  return {
-    turn: state.turn,
-    currentPlayer: state.currentPlayer,
-    phase: state.phase,
-    winnerTeam: state.winnerTeam,
-    endReason: state.endReason,
-    turnOrder: state.turnOrder,
-    actorTurns: state.actorTurns,
-    // Sorted by caster so the projection stays order-insensitive.
-    pendingCasts: [...state.pendingCasts]
-      .sort((left, right) => left.caster - right.caster)
-      .map((cast) => [cast.caster, cast.weapon, cast.target.x, cast.target.y, cast.resolveAt]),
-    random: state.random,
-    map: {
-      owners: state.map.owners,
-      tiles: state.map.tiles,
-      captureProgress: state.map.captureProgress,
-      elevation: state.map.elevation,
-    },
-    units: [...state.units]
-      .sort((left, right) => left.id - right.id)
-      .map((unit) => ({
-        id: unit.id,
-        type: unit.type,
-        owner: unit.owner,
-        x: unit.x,
-        y: unit.y,
-        hp: unit.hp,
-        done: unit.done,
-        rank: unit.rank,
-        rankProgress: unit.rankProgress,
-        facing: unit.facing,
-        morale: unit.morale.current,
-        statuses: [...unit.statuses]
-          .sort((left, right) => left.id.localeCompare(right.id))
-          .map((status) => [status.id, status.remaining, status.stacks]),
-        resources: sortedEntries(unit.resources, (account) => account.current),
-      })),
-    structures: [...state.structures]
-      .sort((left, right) => left.id.localeCompare(right.id))
-      .map((structure) => [structure.id, structure.owner, structure.hp, structure.disabled]),
-    players: [...state.players]
-      .sort((left, right) => left.id - right.id)
-      .map((entry) => ({
-        id: entry.id,
-        alive: entry.alive,
-        team: entry.team,
-        resources: sortedEntries(entry.resources, (account) => account.current),
-        objectives: sortedEntries(entry.objectiveStates, (runtime) => runtime.status),
-      })),
-    scenario: {
-      variables: sortedEntries(state.scenario.variables, (value) => value),
-      firedTriggerIds: [...state.scenario.firedTriggerIds].sort(),
-      overlays: [...state.scenario.overlays]
-        .sort((left, right) => left.id.localeCompare(right.id))
-        .map((overlay) => [overlay.id, overlay.type, overlay.remainingRounds]),
-    },
-    markers: [...state.markers]
-      .sort((left, right) => left.id - right.id)
-      .map((marker) => [marker.id, marker.kind, marker.at.x, marker.at.y, marker.owner]),
-  };
+/**
+ * State that cannot decide anything, and so is left out of the digest.
+ *
+ * Everything else is in, which is the point of writing the exclusions instead of
+ * the inclusions. The digest used to be a hand-written projection of about twenty
+ * fields, and the state had grown past it: embarked passengers, a commander's
+ * spent tactics, dynamic no-fight zones, blocked edges, directional cover, a
+ * repeating trigger's ledger, zone contents, event counts and a unit's patrol
+ * route were all invisible to it. Two battles differing in any of them hashed
+ * the same, and a replay that diverged in one of them was reported as
+ * reproducing exactly. Naming what is *out* fails closed: a new field is hashed
+ * until someone argues otherwise, and an unhashable one — a timestamp, a cache —
+ * announces itself as a determinism failure the first time it is added.
+ */
+const ignored = <T>(...keys: (keyof T & string)[]): string[] => keys;
+
+const IGNORED_FIELDS: ReadonlySet<string> = new Set([
+  // Matched by name at any depth, and checked against the type that owns it.
+  ...ignored<GameState>('levelName'),
+  // Who is driving a side cannot change what that side's orders do: a battle
+  // handed to the AI mid-game must still hash equal to its own replay.
+  ...ignored<PlayerState>('controller'),
+]);
+
+/**
+ * Structural normal form: object keys sorted, absent and undefined alike, array
+ * order preserved.
+ *
+ * Order is kept deliberately. A deterministic engine replays a battle into the
+ * same order, so sorting buys nothing — and it cannot be applied generically
+ * without lying: `map.tiles` and a unit's patrol waypoints are sequences whose
+ * order *is* their meaning, and a digest that sorted them would call two
+ * different battlefields identical.
+ */
+function canonicalize(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(canonicalize);
+  if (value && typeof value === 'object') {
+    return Object.entries(value as Record<string, unknown>)
+      .filter(([key, entry]) => entry !== undefined && !IGNORED_FIELDS.has(key))
+      .sort(([left], [right]) => (left < right ? -1 : left > right ? 1 : 0))
+      .map(([key, entry]) => [key, canonicalize(entry)]);
+  }
+  return value;
 }
 
-function sortedEntries<T, R>(record: Record<string, T>, project: (value: T) => R): [string, R][] {
-  return Object.keys(record)
-    .sort()
-    .map((key) => [key, project(record[key])]);
-}
+const canonical = (state: GameState): unknown => canonicalize(state);
 
 /** Stable 32-bit structural digest of everything that defines the outcome. */
 export function hashState(state: GameState): string {
