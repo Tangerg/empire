@@ -205,6 +205,17 @@ export class GameController {
   }
 
   /**
+   * The selected unit, but only while the player may actually order it about.
+   *
+   * Three panels and the overlay each spelled the three conditions out; the
+   * fourth thing to ask would have been the fourth place to get it wrong.
+   */
+  private get commandableUnit(): Unit | null {
+    const unit = this.selectedUnit;
+    return unit && this.isHumanTurn && this.session.engine.canAct(this.state, unit) ? unit : null;
+  }
+
+  /**
    * The cursor, but only when it is one of the current selection's targets.
    *
    * Derived rather than stored: it used to be a field that three unrelated
@@ -368,6 +379,33 @@ export class GameController {
 
   /* -------------------------------------------------------------- dispatching */
 
+  /**
+   * Walks a unit along the path its order carries, if it carries one.
+   *
+   * `follow` is the difference between watching your own order and being shown
+   * someone else's: the camera chases the AI, never the player.
+   */
+  private async march(action: Action, follow: boolean, pace?: number): Promise<void> {
+    if (action.kind !== 'command' || action.path.length < 2) return;
+    const unit = this.session.unit(action.unit);
+    if (!unit) return;
+    if (follow) this.board.centerOn(action.path[action.path.length - 1], this.scroller);
+    await this.board.animateMove(unit, action.path, pace);
+  }
+
+  /**
+   * Plays what an order caused and leaves the board on the settled state.
+   *
+   * The player's path and the AI loop each wrote this out, and had drifted onto
+   * different sides of the animation — inert only because a dispatch mutates
+   * the state in place, which is not something a caller should have to know.
+   */
+  private async settle(events: GameEvent[]): Promise<void> {
+    await this.playEvents(events);
+    this.board.setState(this.state);
+    this.refresh();
+  }
+
   /** Runs an action with animation: move first, then resolve, then effects. */
   private async dispatch(action: Action): Promise<void> {
     if (this.busy) return;
@@ -376,27 +414,17 @@ export class GameController {
     this.refresh();
 
     try {
-      if (action.kind === 'command' && action.path.length > 1) {
-        const unit = this.session.unit(action.unit);
-        if (unit) await this.board.animateMove(unit, action.path);
-      }
-
+      await this.march(action, false);
       let events: GameEvent[];
       try {
         events = this.session.dispatch(action);
       } catch (e) {
-        if (e instanceof IllegalActionError) {
-          this.pushMessage(`无法执行：${e.message}`);
-          this.board.setState(this.state);
-          this.refresh();
-          return;
-        }
-        throw e;
+        // The player is told why an order was refused; anything else is a bug.
+        if (!(e instanceof IllegalActionError)) throw e;
+        this.pushMessage(`无法执行：${e.message}`);
+        events = [];
       }
-
-      await this.playEvents(events);
-      this.board.setState(this.state);
-      this.refresh();
+      await this.settle(events);
     } finally {
       this.busy = false;
       this.refresh();
@@ -445,14 +473,7 @@ export class GameController {
       while (!this.disposed && this.state.phase === 'playing' && !this.isHumanTurn) {
         if (++guard > 2000) break;
         const action = this.session.chooseAiAction();
-
-        if (action.kind === 'command' && action.path.length > 1) {
-          const unit = this.session.unit(action.unit);
-          if (unit) {
-            this.board.centerOn(action.path[action.path.length - 1], this.scroller);
-            await this.board.animateMove(unit, action.path, 65);
-          }
-        }
+        await this.march(action, true, 65);
         let events: GameEvent[];
         try {
           events = this.session.dispatch(action);
@@ -460,9 +481,7 @@ export class GameController {
           // A desynced AI suggestion should never stall the game.
           events = this.session.tryDispatch({ kind: 'endTurn' }) ?? [];
         }
-        this.board.setState(this.state);
-        await this.playEvents(events);
-        this.refresh();
+        await this.settle(events);
         await sleep(action.kind === 'endTurn' ? 120 : 90);
       }
     } finally {
@@ -509,9 +528,7 @@ export class GameController {
 
     if (unit) {
       o.selected = { x: unit.x, y: unit.y };
-      if (this.isHumanTurn && this.session.engine.canAct(state, unit)) {
-        this.selection.paint(this.selectionContext(), o);
-      }
+      if (this.commandableUnit) this.selection.paint(this.selectionContext(), o);
       return o;
     }
 
@@ -537,6 +554,7 @@ export class GameController {
     let forecast: HudView['forecast'] = null;
 
     const unit = this.selectedUnit;
+    const commandable = this.commandableUnit;
     const aiming = this.selection instanceof TargetSelection ? this.selection : null;
     if (unit && aiming && this.hoverTarget && aiming.ability === 'attack') {
       const defender = unitAt(state, this.hoverTarget.x, this.hoverTarget.y);
@@ -580,14 +598,11 @@ export class GameController {
       forecast,
       commands,
       tactics,
-      reactionUnit:
-        unit && this.isHumanTurn && this.session.engine.canAct(state, unit) ? unit.id : null,
+      reactionUnit: commandable?.id ?? null,
       rankNextThreshold: this.inspect
         ? this.session.engine.rules.progression.nextThreshold(this.inspect.rank)
         : null,
-      careerOptions: unit && this.isHumanTurn && this.session.engine.canAct(state, unit)
-        ? this.session.careerOptions(unit)
-        : [],
+      careerOptions: commandable ? this.session.careerOptions(commandable) : [],
       targeting: this.selection.targetingLabel,
       recruitAt: this.selection.recruitAt,
       hint: this.hint(),
