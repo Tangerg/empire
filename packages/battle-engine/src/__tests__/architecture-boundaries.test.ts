@@ -30,6 +30,16 @@ function storyPackageSources(): string[] {
     .flatMap((entry) => runtimeTypeScriptFiles(join(packagesRoot, entry, 'src')));
 }
 
+/** Every workspace package, for the guards that are about the whole repository. */
+function everyPackageSource(): string[] {
+  return readdirSync(packagesRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .flatMap((entry) => {
+      const sources = join(packagesRoot, entry.name, 'src');
+      return statSync(sources, { throwIfNoEntry: false })?.isDirectory() ? runtimeTypeScriptFiles(sources) : [];
+    });
+}
+
 /**
  * Source with its comments removed.
  *
@@ -38,6 +48,20 @@ function storyPackageSources(): string[] {
  */
 function stripComments(source: string): string {
   return source.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/[^\n]*/g, '');
+}
+
+/**
+ * Source with its string and template literals blanked out.
+ *
+ * Markup and prose are data here — the UI packages are mostly template literals
+ * — and a guard about *code* that reads what the code prints is guarding the
+ * wrong text.
+ */
+function stripStrings(source: string): string {
+  return source
+    .replace(/`(?:[^`\\]|\\.)*`/g, '``')
+    .replace(/'(?:[^'\\\n]|\\.)*'/g, "''")
+    .replace(/"(?:[^"\\\n]|\\.)*"/g, '""');
 }
 
 function localCoreImports(file: string, files: ReadonlySet<string>): string[] {
@@ -556,13 +580,19 @@ describe('behaviour has an owner', () => {
 
   it('never asserts that a value is there', () => {
     // `x!` is a guess the type checker disagreed with, written where a refusal
-    // belongs. Every one of them here was load-bearing on something the reader
-    // could not see: that the caller had already null-checked the map, that a
-    // filter earlier in the chain had narrowed the element, that a `find` over a
-    // list built elsewhere could not miss. Ask, refuse, or pass the value in.
-    const offenders = [...runtimeTypeScriptFiles(coreRoot), ...storyPackageSources()].flatMap((file) => {
-      const code = stripComments(readFileSync(file, 'utf8'));
-      return /[A-Za-z_)\]]!\s*[.[]/.test(code) ? [relative(packagesRoot, file)] : [];
+    // belongs. Every one of them was load-bearing on something the reader could
+    // not see: that the caller had already null-checked the map, that a `find`
+    // over a list built elsewhere could not miss, that a push two lines above
+    // had worked. Ask, refuse, hold what you found, or pass it in.
+    //
+    // The first version of this guard matched only `x!.field` and `x![i]`, so
+    // it passed while sixteen assertions of the other shapes — `f()!`, `id!`,
+    // `g(x!)` — sat in the same files. It is written against the assertion
+    // operator itself now: a `!` right after something that can produce a
+    // value, and not the start of `!=`.
+    const offenders = everyPackageSource().flatMap((file) => {
+      const code = stripStrings(stripComments(readFileSync(file, 'utf8')));
+      return /[A-Za-z0-9_$)\]]!(?!=)/.test(code) ? [relative(packagesRoot, file)] : [];
     });
 
     expect(offenders).toEqual([]);

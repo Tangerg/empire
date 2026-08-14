@@ -1,4 +1,4 @@
-import type { Objective, ObjectiveRuntime } from './types';
+import type { Objective, ObjectiveRuntime, RunningObjective } from './types';
 
 /**
  * The shape of an objective document, stated once.
@@ -43,41 +43,57 @@ function withDeclaredChildren(
   return { ...objective };
 }
 
-function withChildren(objective: Objective, id: string): Objective {
+function withChildren(objective: Objective, id: string): RunningObjective {
   const copy = withDeclaredChildren(objective, (child, index) =>
     withChildren(child, child.id ?? `${id}.${index + 1}`));
   return { ...copy, id };
 }
 
-/** Copies definitions and supplies deterministic ids for save/replay references. */
-export function assignObjectiveIds(objectives: Objective[], prefix: string): Objective[] {
+/**
+ * Copies definitions and supplies deterministic ids for save/replay references.
+ *
+ * This is the line between a declared objective and a running one, so it is also
+ * where the type stops being optional about the id.
+ */
+export function assignObjectiveIds(objectives: Objective[], prefix: string): RunningObjective[] {
   return objectives.map((objective, index) =>
     withChildren(objective, objective.id ?? `${prefix}.${index + 1}`),
   );
 }
 
-function walkObjectives(objectives: Objective[]): Objective[] {
-  const out: Objective[] = [];
-  const visit = (objective: Objective): void => {
+/**
+ * The same objectives, seen as objectives in play.
+ *
+ * `assignObjectiveIds` names a whole tree, so every child of a running objective
+ * is running too — but the two ways of asking for children, the document's shape
+ * and the handler's declaration, both answer about documents, because that is
+ * what an author writes. This is the one place that states the invariant, and the
+ * only place that needs to.
+ */
+export const inPlay = (objectives: readonly Objective[]): RunningObjective[] =>
+  objectives as RunningObjective[];
+
+function walkObjectives(objectives: readonly RunningObjective[]): RunningObjective[] {
+  const out: RunningObjective[] = [];
+  const visit = (objective: RunningObjective): void => {
     out.push(objective);
-    declaredChildObjectives(objective).forEach(visit);
+    inPlay(declaredChildObjectives(objective)).forEach(visit);
   };
   objectives.forEach(visit);
   return out;
 }
 
-export function createObjectiveStates(objectives: Objective[]): Record<string, ObjectiveRuntime> {
+export function createObjectiveStates(
+  objectives: readonly RunningObjective[],
+): Record<string, ObjectiveRuntime> {
   return Object.fromEntries(
-    walkObjectives(objectives).map((objective) => {
-      const id = objective.id!;
-      return [
-        id,
-        {
-          id,
-          status: objective.active === false ? 'inactive' : 'active',
-          hidden: objective.hidden ?? false,
-        },
-      ];
-    }),
+    walkObjectives(objectives).map((objective) => [
+      objective.id,
+      {
+        id: objective.id,
+        status: objective.active === false ? 'inactive' : 'active',
+        hidden: objective.hidden ?? false,
+      },
+    ]),
   );
 }

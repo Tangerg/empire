@@ -1,13 +1,15 @@
 import { PlayerEntity } from './domain/player-entity';
+import { inPlay } from './objective-model';
 import { idx } from './grid';
 import {
+  objectiveStatusOf,
   type ObjectiveHandlerRegistry,
   type ObjectiveOutcome,
   type ObjectiveRules,
 } from './objective-system';
 import { Battlefield } from './domain/battlefield';
 import { player, productionTilesOf, unitsOf } from './state';
-import type { GameEvent, GameState, Objective, PlayerId, ResourceAmount } from './types';
+import type { GameEvent, GameState, Objective, PlayerId, ResourceAmount, RunningObjective } from './types';
 import { type ContentCatalog } from './content-pack';
 
 export type { ObjectiveOutcome } from './objective-system';
@@ -21,10 +23,6 @@ export interface VictoryResult {
 /** A player is out when they have neither units nor any way to make more. */
 function isDefeated(state: GameState, id: PlayerId, content: ContentCatalog): boolean {
   return unitsOf(state, id).length === 0 && productionTilesOf(state, id, content).length === 0;
-}
-
-function objectiveStatus(state: GameState, owner: PlayerId, objective: Objective) {
-  return player(state, owner).objectiveStates[objective.id!]?.status ?? 'active';
 }
 
 /** Port used by every objective query in this module. */
@@ -44,12 +42,12 @@ export function objectiveOutcome(
 function transitionObjective(
   state: GameState,
   owner: PlayerId,
-  objective: Objective,
+  objective: RunningObjective,
   outcome: ObjectiveOutcome,
   emit: (event: GameEvent) => void,
 ): void {
   if (outcome === 'pending') return;
-  const runtime = new PlayerEntity(player(state, owner)).objective(objective.id!);
+  const runtime = new PlayerEntity(player(state, owner)).objective(objective.id);
   if (!runtime.resolve(outcome)) return;
   emit({
     type: 'objectiveChanged',
@@ -64,20 +62,20 @@ function refreshOne(
   rules: VictoryRules,
   state: GameState,
   owner: PlayerId,
-  objective: Objective,
+  objective: RunningObjective,
   emit: (event: GameEvent) => void,
 ): void {
-  if (objectiveStatus(state, owner, objective) !== 'active') return;
+  if (objectiveStatusOf(state, owner, objective) !== 'active') return;
   const handlers = rules.objectives;
-  const children = handlers.children(objective);
+  const children = inPlay(handlers.children(objective));
   if (handlers.refreshMode(objective) === 'children') {
     for (const child of children) refreshOne(rules, state, owner, child, emit);
   } else if (handlers.refreshMode(objective) === 'sequence') {
     for (const child of children) {
-      const status = objectiveStatus(state, owner, child);
+      const status = objectiveStatusOf(state, owner, child);
       if (status === 'completed' || status === 'cancelled') continue;
       refreshOne(rules, state, owner, child, emit);
-      if (objectiveStatus(state, owner, child) !== 'completed') break;
+      if (objectiveStatusOf(state, owner, child) !== 'completed') break;
     }
   }
   transitionObjective(state, owner, objective, handlers.evaluate(rules, state, owner, objective), emit);
@@ -121,7 +119,7 @@ export function evaluateVictory(
     if (!owner.alive) continue;
     if (isDefeated(state, owner.id, rules.content)) new PlayerEntity(owner).defeat();
     const criticalFailure = owner.objectives.some(
-      (objective) => handlers.role(objective) === 'critical' && objectiveStatus(state, owner.id, objective) === 'failed',
+      (objective) => handlers.role(objective) === 'critical' && objectiveStatusOf(state, owner.id, objective) === 'failed',
     );
     if (criticalFailure) new PlayerEntity(owner).defeat();
   }
@@ -133,7 +131,7 @@ export function evaluateVictory(
 
   for (const owner of living) {
     const completed = owner.objectives.find(
-      (objective) => handlers.role(objective) !== 'optional' && objectiveStatus(state, owner.id, objective) === 'completed',
+      (objective) => handlers.role(objective) !== 'optional' && objectiveStatusOf(state, owner.id, objective) === 'completed',
     );
     if (completed) {
       return { team: owner.team, reason: `${owner.name} 完成目标：${handlers.describe(completed)}` };

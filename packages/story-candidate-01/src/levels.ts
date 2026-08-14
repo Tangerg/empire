@@ -850,7 +850,10 @@ function buildLevel(spec: BattleSpec): LevelData {
     ...place(spec.neutral ?? [], [], 3),
   ];
   const laiya = units.find((unit) => unit.key === 'campaign-laiya');
-  const enemyCommander = units.find((unit) => unit.unit === 'c01.cain' || unit.unit === 'c01.roderick' || unit.unit === 'c01.inquisitor');
+  // Only a keyed unit can be commanded: the commander entry names its unit by
+  // key, and a nameless placement cannot be referred to at all.
+  const enemyCommander = units.find((unit) => Boolean(unit.key) &&
+    (unit.unit === 'c01.cain' || unit.unit === 'c01.roderick' || unit.unit === 'c01.inquisitor'));
   return {
     schema: 2,
     id: `c01-${String(spec.order).padStart(2, '0')}`,
@@ -865,7 +868,7 @@ function buildLevel(spec: BattleSpec): LevelData {
     units,
     commanders: [
       ...(laiya ? [{ id: 'laiya-command', unitKey: 'campaign-laiya', radius: spec.chapter === 1 ? 1 : spec.chapter === 2 ? 2 : 3, turnGrants: [{ resource: COMMAND_POINTS_RESOURCE, amount: 1 }], tactics: ['c01.gray-rally', 'c01.hold-the-line'] }] : []),
-      ...(enemyCommander ? [{ id: 'enemy-command', unitKey: enemyCommander.key!, radius: 2, turnGrants: [{ resource: COMMAND_POINTS_RESOURCE, amount: 1 }], tactics: ['rally'] }] : []),
+      ...(enemyCommander?.key ? [{ id: 'enemy-command', unitKey: enemyCommander.key, radius: 2, turnGrants: [{ resource: COMMAND_POINTS_RESOURCE, amount: 1 }], tactics: ['rally'] }] : []),
     ],
     structures: spec.structures?.map((structure) => ({ ...structure })),
     composites: spec.composites?.map((composite) => ({ ...composite, parts: composite.parts.slice() })),

@@ -71,9 +71,11 @@ export function computeMoveField(rules: MovementRules, state: GameState, unit: U
 
   for (let c = 0; c <= budget; c++) {
     for (let qi = 0; qi < buckets[c].length; qi++) {
-      const cur = buckets[c][qi];
-      const node = tiles.get(cur)!;
-      if (node.cost !== c) continue; // stale entry
+      const node = tiles.get(buckets[c][qi]);
+      // A tile only enters a bucket once it has a node, and a cheaper route
+      // found later leaves the older entry behind at its old cost.
+      if (!node || node.cost !== c) continue;
+      const cur = node.index;
 
       const from = board.coordOf(cur);
       for (const next of board.neighbours(from)) {

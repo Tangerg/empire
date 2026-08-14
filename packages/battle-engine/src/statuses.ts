@@ -113,31 +113,34 @@ export function addStatus(
 ): void {
   if (!Number.isInteger(remaining) || remaining < 1) throw new Error('status duration must be >= 1');
   const def = statusDef(id, content);
-  const current = unit.statuses.find((instance) => instance.id === id);
-  if (!current) {
-    unit.statuses.push({ id, remaining, stacks: 1, sourceUnitId });
+  // The instance the unit ends up carrying, held rather than searched for: the
+  // report used to look it up a second time and assert that the push two lines
+  // above had worked.
+  const existing = unit.statuses.find((instance) => instance.id === id);
+  const carried = existing ?? { id, remaining, stacks: 1, sourceUnitId };
+  if (!existing) {
+    unit.statuses.push(carried);
   } else {
     switch (def.stackMode) {
       case 'refresh':
-        current.remaining = Math.max(current.remaining, remaining);
+        carried.remaining = Math.max(carried.remaining, remaining);
         break;
       case 'extend':
-        current.remaining += remaining;
+        carried.remaining += remaining;
         break;
       case 'stack':
-        current.stacks = Math.min(def.maxStacks, current.stacks + 1);
-        current.remaining = Math.max(current.remaining, remaining);
+        carried.stacks = Math.min(def.maxStacks, carried.stacks + 1);
+        carried.remaining = Math.max(carried.remaining, remaining);
         break;
     }
-    if (sourceUnitId !== undefined) current.sourceUnitId = sourceUnitId;
+    if (sourceUnitId !== undefined) carried.sourceUnitId = sourceUnitId;
   }
-  const applied = unit.statuses.find((instance) => instance.id === id)!;
   emit?.({
     type: 'statusApplied',
     unit: unit.id,
     status: id,
-    remaining: applied.remaining,
-    stacks: applied.stacks,
+    remaining: carried.remaining,
+    stacks: carried.stacks,
   });
 }
 

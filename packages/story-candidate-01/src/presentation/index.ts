@@ -48,9 +48,13 @@ const attr = (value: string): string =>
 function portraitMarkup(type: UnitTypeId, team: string): string | null {
   const characterTopic = CANDIDATE_01_CHARACTER_ART[type];
   const unitTopic = CANDIDATE_01_UNIT_ART[type];
-  if (!characterTopic && !unitTopic) return null;
+  // A character portrait wins over the generic unit plate; without either there
+  // is no portrait to draw. Stated as one lookup so the type follows the prose.
+  const href = characterTopic
+    ? candidate01AssetUrl(characterTopic)
+    : unitTopic && candidate01Asset(unitTopic).url;
+  if (!href) return null;
   const key = `candidate-${++portraitSerial}`;
-  const href = characterTopic ? candidate01AssetUrl(characterTopic) : candidate01Asset(unitTopic!).url;
   return `<defs><clipPath id="${key}"><rect width="96" height="112" rx="8"/></clipPath></defs>
     <g clip-path="url(#${key})"><rect width="96" height="112" fill="${attr(team)}" opacity="0.42"/>
     <image href="${attr(href)}" x="-8" y="0" width="112" height="112" preserveAspectRatio="xMidYMid slice" class="candidate-portrait-image"/>
@@ -92,8 +96,10 @@ export const CANDIDATE_01_ART_PROVIDER: ArtProvider = {
   iconMarkup: candidate01TryIconMarkup,
   abilityIcon: (ability) => CANDIDATE_01_ABILITY_ART[ability]
     ? candidate01IconMarkup(CANDIDATE_01_ABILITY_ART[ability]) : null,
-  weaponIcon: (weapon) => CANDIDATE_01_WEAPON_ART[weapon]
-    ? candidate01IconMarkup(CANDIDATE_01_WEAPON_ART[weapon]!) : null,
+  weaponIcon: (weapon) => {
+    const art = CANDIDATE_01_WEAPON_ART[weapon];
+    return art ? candidate01IconMarkup(art) : null;
+  },
   statusIcon: (status) => CANDIDATE_01_STATUS_ART[status]
     ? candidate01IconMarkup(CANDIDATE_01_STATUS_ART[status]) : null,
   coverMarkup: candidate01CoverPropMarkup,

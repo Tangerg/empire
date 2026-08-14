@@ -183,8 +183,7 @@ export class EditorDocument {
       { x: 0, y: -1 },
     ] as const;
 
-    while (queue.length > 0) {
-      const current = queue.pop()!;
+    for (let current = queue.pop(); current; current = queue.pop()) {
       this.setTerrain(current, terrain);
       for (const delta of neighbours) {
         const next = { x: current.x + delta.x, y: current.y + delta.y };

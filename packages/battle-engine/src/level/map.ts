@@ -77,8 +77,11 @@ export function mapFromLevel(level: LevelData, content: ContentCatalog): GameMap
     if (cover.at.x < 0 || cover.at.y < 0 || cover.at.x >= width || cover.at.y >= height) {
       throw new LevelFormatError(`directional cover out of bounds at ${cover.at.x},${cover.at.y}`);
     }
+    // Which side names exist belongs to the tiling, and the linter asks it —
+    // this list of four refused every facing a hex or eight-way board has, from
+    // inside the map builder, where there is no ruleset to ask.
     for (const [side, strength] of Object.entries(cover.sides)) {
-      if (!['north', 'east', 'south', 'west'].includes(side) || !['half', 'full'].includes(strength!)) {
+      if (strength !== 'half' && strength !== 'full') {
         throw new LevelFormatError(`invalid directional cover ${side}:${String(strength)}`);
       }
     }

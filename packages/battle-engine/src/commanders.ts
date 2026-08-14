@@ -106,7 +106,8 @@ export function executeTactic(
   if (commander.owner !== state.currentPlayer) throw new IllegalActionError('commander does not belong to current player');
   const option = tacticOptions(rules, state, commanderId).find((candidate) => candidate.id === tacticId);
   if (!option) throw new IllegalActionError(`tactic "${tacticId}" is not available`);
-  const leader = commanderUnit(state, commander)!;
+  const leader = commanderUnit(state, commander);
+  if (!leader) throw new IllegalActionError(`commander "${commanderId}" has no unit on the field`);
   const tactic = content.tactics.get(tacticId);
   const target = tactic.target === 'self' ? { x: leader.x, y: leader.y } : requestedTarget;
   if (!target || !option.targets.some((cell) => cell.x === target.x && cell.y === target.y)) {

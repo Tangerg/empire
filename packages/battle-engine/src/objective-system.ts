@@ -57,6 +57,23 @@ export interface ObjectiveHandler<K extends ObjectiveKind = ObjectiveKind> {
   progress(context: ObjectiveEvaluationContext, objective: ObjectiveOf<K>): string;
 }
 
+/**
+ * The status a player's record gives one objective, defaulting to active.
+ *
+ * Written out three times — twice here and once in `victory.ts` — each time as
+ * `objectiveStates[objective.id!]?.status ?? 'active'`, where the assertion was
+ * covering for the one case the `?.` already handled: an objective with no id is
+ * one nobody assigned an id to, so there is no record of it to consult.
+ */
+export function objectiveStatusOf(
+  state: GameState,
+  owner: PlayerId,
+  objective: Objective,
+): ObjectiveStatus {
+  const records = player(state, owner).objectiveStates;
+  return (objective.id === undefined ? undefined : records[objective.id])?.status ?? 'active';
+}
+
 function terminalOutcome(status: ObjectiveStatus): ObjectiveOutcome | null {
   if (status === 'completed') return 'success';
   if (status === 'failed') return 'failure';
@@ -116,7 +133,7 @@ export class ObjectiveHandlerRegistry extends KeyedRegistry<ObjectiveKind, Objec
     owner: PlayerId,
     objective: Objective,
   ): ObjectiveOutcome {
-    const status = player(state, owner).objectiveStates[objective.id!]?.status ?? 'active';
+    const status = objectiveStatusOf(state, owner, objective);
     const terminal = terminalOutcome(status);
     if (terminal) return terminal;
     const context = this.context(rules, state, owner);
@@ -146,7 +163,7 @@ export class ObjectiveHandlerRegistry extends KeyedRegistry<ObjectiveKind, Objec
       handlers: this,
       content: rules.content,
       scenarioConditions: rules.scenarioConditions,
-      status: (objective) => player(state, owner).objectiveStates[objective.id!]?.status ?? 'active',
+      status: (objective) => objectiveStatusOf(state, owner, objective),
       outcome: (objective) => this.evaluate(rules, state, owner, objective),
     };
   }

@@ -140,10 +140,7 @@ export function resolveDueCasts(
  * that held at commit time still hold — an unmet precondition must fizzle the
  * cast, never abort the turn that happened to trigger the sweep.
  */
-function refusal(rules: CastingRules, state: GameState, cast: PendingCast): CastRefusal | null {
-  const caster = state.units.find((unit) => unit.id === cast.caster);
-  // The caster may have fallen to a strike resolved earlier in this same sweep.
-  if (!caster) return 'casterLost';
+function refusal(rules: CastingRules, state: GameState, cast: PendingCast, caster: Unit): CastRefusal | null {
   const weapon = readyWeapon(rules, caster, cast.weapon, player(state, caster.owner));
   if (!weapon) return 'weaponUnavailable';
   if (!hostileActionAllowed(state, caster.owner, cast.origin, cast.target, 'attack')) return 'targetProtected';
@@ -159,18 +156,20 @@ function resolveOne(
   cast: PendingCast,
   emit: (event: GameEvent) => void,
 ): void {
-  const refused = refusal(rules, state, cast);
-  if (refused) {
-    emit({
-      type: 'castCancelled',
-      unit: cast.caster,
-      weapon: cast.weapon,
-      at: { ...cast.target },
-      reason: refused,
-    });
-    return;
-  }
-  const caster = state.units.find((unit) => unit.id === cast.caster)!;
+  const cancel = (reason: CastRefusal): void => emit({
+    type: 'castCancelled',
+    unit: cast.caster,
+    weapon: cast.weapon,
+    at: { ...cast.target },
+    reason,
+  });
+  // The caster may have fallen to a strike resolved earlier in this same sweep.
+  // Found once and held: this used to be looked up here, again inside the
+  // refusal, and a third time as an assertion that the refusal had looked.
+  const caster = state.units.find((unit) => unit.id === cast.caster);
+  if (!caster) return cancel('casterLost');
+  const refused = refusal(rules, state, cast, caster);
+  if (refused) return cancel(refused);
   emit({ type: 'castResolved', unit: caster.id, weapon: cast.weapon, at: { ...cast.target } });
   const plan = forecastCombatPlan(rules, state, caster, cast.target, {
     from: cast.origin,

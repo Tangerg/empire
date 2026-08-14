@@ -247,9 +247,12 @@ function advanceInitiative(
       state.turnOrder.activeUnit = null;
       return { player: state.currentPlayer, activeUnit: null, roundAdvanced, exhausted: true };
     }
-    const ready = readyOrder(ticker);
-    if (ready.length > 0) {
-      const actor = state.units.find((unit) => unit.id === ready[0])!;
+    // The ticker only charges units that are on the field, so the first ready id
+    // names one. Said as a lookup rather than an assertion: a ticker that ever
+    // disagreed would keep charging instead of crashing the turn.
+    const first = readyOrder(ticker)[0];
+    const actor = first === undefined ? undefined : state.units.find((unit) => unit.id === first);
+    if (actor) {
       state.turnOrder.activeUnit = actor.id;
       return { player: actor.owner, activeUnit: actor.id, roundAdvanced };
     }

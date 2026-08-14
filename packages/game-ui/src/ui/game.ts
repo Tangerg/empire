@@ -629,9 +629,13 @@ export class GameController {
       const defender = unitAt(state, { x: this.hoverTarget.x, y: this.hoverTarget.y });
       if (defender) {
         const plan = this.session.attackPlan(unit, this.hoverTarget, aiming.dest, aiming.weapon);
-        const exchange = plan.primaryUnit!;
-        const recipient = state.units.find((candidate) => candidate.id === exchange.damageRecipient) ?? defender;
-        forecast = { plan, exchange, attacker: unit, defender, recipient };
+        // No primary hit means the aimed tile is not the one this shot lands
+        // on, and there is no exchange to preview.
+        const exchange = plan.primaryUnit;
+        if (exchange) {
+          const recipient = state.units.find((candidate) => candidate.id === exchange.damageRecipient) ?? defender;
+          forecast = { plan, exchange, attacker: unit, defender, recipient };
+        }
       }
     }
 

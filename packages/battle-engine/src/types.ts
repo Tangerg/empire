@@ -531,6 +531,7 @@ export const DEFAULT_RULES: RuleSet = {
 /* ------------------------------------------------------------- objectives */
 
 export interface ObjectiveMeta {
+  /** Optional in a document; assigned before the battle starts. */
   id?: string;
   /** Presentation key/fallback label; story text remains outside the engine. */
   label?: string;
@@ -563,6 +564,16 @@ export interface ObjectiveKindMap {
 }
 
 export type Objective = ObjectiveMeta & ObjectiveKindMap[keyof ObjectiveKindMap];
+
+/**
+ * An objective in play, whose id has been assigned.
+ *
+ * A document may leave `id` out and let the engine name the objective; a running
+ * battle refers to one by id in its runtime states, its events and its saves, so
+ * by then every objective has one. Two places used to assert past the optional
+ * field instead of the type saying which side of that line it was on.
+ */
+export type RunningObjective = Objective & { id: string };
 
 export type ObjectiveStatus = 'inactive' | 'active' | 'completed' | 'failed' | 'cancelled';
 export type ObjectiveOutcome = 'pending' | 'success' | 'failure';
@@ -953,7 +964,7 @@ export interface PlayerState {
   alive: boolean;
   /** Did this player control a keep at level start? Gates the captureHQ goal. */
   startedWithHQ: boolean;
-  objectives: Objective[];
+  objectives: RunningObjective[];
   objectiveStates: Record<string, ObjectiveRuntime>;
   ai: { aggression: number };
 }

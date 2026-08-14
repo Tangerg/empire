@@ -12,7 +12,7 @@ import type { CombatModifier } from '@empire/battle-engine/combat-modifiers';
 import type { CombatPlan } from '@empire/battle-engine/combat-plan';
 import { activeCommanderFor, commanderUnit } from '@empire/battle-engine/commanders';
 import { idx } from '@empire/battle-engine/grid';
-import { recruitOptions, type RecruitOption } from '@empire/battle-engine/state';
+import { player, recruitOptions, type RecruitOption } from '@empire/battle-engine/state';
 import { describeObjective, objectiveProgress } from '@empire/battle-engine/victory';
 import type { Coord, Direction, GameState, PendingCast, ReactionStance, ResourceAmount, Unit, UnitDef } from '@empire/battle-engine/types';
 import { SpellCastEntity } from '@empire/battle-engine/domain/spell-cast';
@@ -302,7 +302,7 @@ export class Hud {
 
   private renderTop(view: HudView): string {
     const state = view.state;
-    const active = state.players.find((player) => player.id === state.currentPlayer)!;
+    const active = player(state, state.currentPlayer);
     const accounts = accountSummary(view.resources, playerResource(active));
     const turnLimit = state.rules.turnLimit ? ` / ${state.rules.turnLimit}` : '';
     return `
@@ -365,8 +365,9 @@ export class Hud {
       wait: 'hourglass',
     };
     const commandIcon = (command: CommandOption): string => {
-      return (command.weapon
-        ? this.art.resolve((provider) => provider.weaponIcon?.(command.weapon!))
+      const weapon = command.weapon;
+      return (weapon
+        ? this.art.resolve((provider) => provider.weaponIcon?.(weapon))
         : this.art.resolve((provider) => provider.abilityIcon?.(command.ability)))
         ?? icon(iconOf[command.ability] ?? 'crosshair');
     };
@@ -657,7 +658,7 @@ export class Hud {
   private renderRecruit(view: HudView): string {
     if (!view.recruitAt) return '';
     const state = view.state;
-    const buyer = state.players.find((player) => player.id === state.currentPlayer)!;
+    const buyer = player(state, state.currentPlayer);
     const options = recruitOptions(state, view.recruitAt, view.resources, view.rules.content);
     const accounts = accountSummary(view.resources, playerResource(buyer));
     return `<div class="modal">

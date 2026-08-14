@@ -3,6 +3,7 @@ import { CampaignBattleBridge, CampaignRuntime, type BattleRequest, type Campaig
 import type { GameEvent, GameState } from '@empire/battle-engine/types';
 import type { BattleResult, CampaignDefinition } from '@empire/campaign-engine';
 import type { BattleEngine, ContentCatalog, LevelData } from '@empire/battle-engine';
+import { player } from '@empire/battle-engine/state';
 import { GameController, type BattleCompletionSnapshot } from './game';
 import { escapeHtml } from './html';
 
@@ -185,7 +186,7 @@ export class StoryCampaignController {
       this.runtime.state,
     );
     if (result.outcome !== 'victory') return;
-    this.lastBattle = this.summarizeBattle(this.adapter.level(request.levelId), snapshot.state, snapshot.events);
+    this.lastBattle = this.summarizeBattle(request, snapshot.state, snapshot.events);
     this.runtime.completeBattle(result);
     this.pendingRequest = null;
     this.game = null;
@@ -194,9 +195,17 @@ export class StoryCampaignController {
     this.render();
   }
 
-  private summarizeBattle(level: LevelData, state: GameState, events: GameEvent[]): CampaignBattleSummary {
-    const human = state.players.find((player) => player.controller === 'human')!;
-    const fallen = state.markers.flatMap((marker) => marker.fallenUnit?.owner === human.id
+  /**
+   * Whose battle it was is the campaign's fact, carried on the request.
+   *
+   * This used to look for the side with a human controller and assert that it
+   * found one — which is a different question with a coincidentally equal
+   * answer, and no answer at all for a battle watched rather than played.
+   */
+  private summarizeBattle(request: BattleRequest, state: GameState, events: GameEvent[]): CampaignBattleSummary {
+    const level = this.adapter.level(request.levelId);
+    const ours = player(state, request.perspectivePlayer);
+    const fallen = state.markers.flatMap((marker) => marker.fallenUnit?.owner === ours.id
       ? [this.content.units.get(marker.fallenUnit.type).name]
       : []);
     return {
@@ -204,8 +213,8 @@ export class StoryCampaignController {
       chapter: chapterOf(level),
       outcome: state.endReason,
       turns: state.turn,
-      alliesRemaining: state.units.filter((unit) => unit.owner === human.id).length,
-      enemiesRemaining: state.units.filter((unit) => state.players.find((player) => player.id === unit.owner)?.team !== human.team).length,
+      alliesRemaining: state.units.filter((unit) => unit.owner === ours.id).length,
+      enemiesRemaining: state.units.filter((unit) => state.players.find((side) => side.id === unit.owner)?.team !== ours.team).length,
       fallen,
       signals: events.filter((event) => event.type === 'scenarioSignal').map((event) => event.signal),
       events,

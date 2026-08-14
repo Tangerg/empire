@@ -174,6 +174,25 @@ export class BoardView {
     };
   }
 
+  /**
+   * Which way a unit is looking, as one arrow turned to point at the cell it
+   * would step into.
+   *
+   * This used to be a four-entry table of glyphs — `north: '↑'` — which is the
+   * square board's facing set written into the sprite badge: on a hex or
+   * eight-way board every unit wore an empty badge. The tiling knows where its
+   * neighbour sits, and that is the whole answer.
+   */
+  private facingBadge(unit: Unit): string {
+    const grid = this.viewport.grid;
+    const dot = `<circle cx="5" cy="6" r="4.8" fill="${PAL.ink}" opacity="0.78"/>`;
+    if (!grid.directions.some((facing) => facing.id === unit.facing)) return dot;
+    const from = cellCenter(this.viewport, unit);
+    const to = cellCenter(this.viewport, grid.step(unit, unit.facing));
+    const turn = Math.atan2(to.y - from.y, to.x - from.x) * 180 / Math.PI + 90;
+    return `${dot}<text x="5" y="8.8" text-anchor="middle" font-size="7.5" fill="#fff" transform="rotate(${turn.toFixed(1)} 5 6)">↑</text>`;
+  }
+
   /** Top-left of a cell, for a group that draws a tile-sized picture. */
   private origin(at: Coord): { x: number; y: number } {
     return cellOrigin(this.viewport, at);
@@ -430,13 +449,12 @@ export class BoardView {
       el.classList.toggle('is-done', u.done);
       el.classList.toggle('is-selected', !!o.selected && o.selected.x === u.x && o.selected.y === u.y);
 
-      const badges = el.querySelector('.badges')!;
+      const badges = el.querySelector('.badges');
+      if (!badges) continue;
       clear(badges);
       const def = this.content.units.get(u.type);
       const ratio = u.hp / def.maxHp;
-      const parts: string[] = [];
-      const arrow = ({ north: '↑', east: '→', south: '↓', west: '←' } as const)[u.facing];
-      parts.push(`<circle cx="5" cy="6" r="4.8" fill="${PAL.ink}" opacity="0.78"/><text x="5" y="8.8" text-anchor="middle" font-size="7.5" fill="#fff">${arrow}</text>`);
+      const parts: string[] = [this.facingBadge(u)];
       if (ratio < 1) {
         const color = ratio > 0.6 ? PAL.hpGood : ratio > 0.3 ? PAL.hpMid : PAL.hpLow;
         parts.push(
@@ -520,9 +538,10 @@ export class BoardView {
   async animateHit(at: Coord, damage: number, killed: boolean, weapon?: WeaponId): Promise<void> {
     const { x: cx, y: cy } = this.centre(at);
     const g = svg('g', { class: 'fx' });
+    const fx = weapon ? this.presentation.weaponFx(weapon) : null;
     g.append(
       fromMarkup(
-        `${weapon && this.presentation.weaponFx(weapon) ? this.presentation.effect(this.presentation.weaponFx(weapon)!, cx, cy) : ''}
+        `${fx ? this.presentation.effect(fx, cx, cy) : ''}
          <circle cx="${cx}" cy="${cy}" r="12" fill="#ffffff" opacity="0.65"/>
          <text x="${cx}" y="${cy - 8}" text-anchor="middle" class="fx-damage">-${damage}</text>`,
       ),
