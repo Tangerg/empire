@@ -169,6 +169,43 @@ function activeChildren(context: ObjectiveEvaluationContext, objective: Objectiv
 
 const pendingProgress = () => '进行中';
 
+/**
+ * How the three compound objectives fold their children.
+ *
+ * `all` and `sequence` are the same fold under different refresh rules, and
+ * were written out twice, character for character; all three shared one line of
+ * progress text in three copies. A compound objective differs from its siblings
+ * in exactly one thing — whether one success is enough — so that is the only
+ * thing stated per kind.
+ */
+interface CompoundObjective {
+  readonly objectives: Objective[];
+}
+
+const foldChildren = (settle: (outcomes: ObjectiveOutcome[]) => ObjectiveOutcome) =>
+  (context: ObjectiveEvaluationContext, objective: CompoundObjective & Objective): ObjectiveOutcome => {
+    const children = activeChildren(context, objective);
+    if (children.length === 0) return 'pending';
+    return settle(children.map(context.outcome));
+  };
+
+/** Every child must succeed, and one failure decides the whole immediately. */
+const everyChildSucceeds = foldChildren((outcomes) => {
+  if (outcomes.includes('failure')) return 'failure';
+  return outcomes.every((outcome) => outcome === 'success') ? 'success' : 'pending';
+});
+
+/** One success is enough; only a clean sweep of failures loses. */
+const someChildSucceeds = foldChildren((outcomes) => {
+  if (outcomes.includes('success')) return 'success';
+  return outcomes.every((outcome) => outcome === 'failure') ? 'failure' : 'pending';
+});
+
+const stageProgress = (context: ObjectiveEvaluationContext, objective: CompoundObjective): string => {
+  const done = objective.objectives.filter((child) => context.status(child) === 'completed').length;
+  return `${done}/${objective.objectives.length} 阶段`;
+};
+
 export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
   .register(objectiveHandler('routEnemies', {
     outcome: ({ state, owner }) => state.players
@@ -308,50 +345,25 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
   .register(objectiveHandler('all', {
     refresh: 'children',
     children: (objective) => objective.objectives,
-    outcome: (context, objective) => {
-      const children = activeChildren(context, objective);
-      if (children.length === 0) return 'pending';
-      const outcomes = children.map(context.outcome);
-      if (outcomes.includes('failure')) return 'failure';
-      return outcomes.every((outcome) => outcome === 'success') ? 'success' : 'pending';
-    },
+    outcome: everyChildSucceeds,
     describe: () => '完成全部目标',
-    progress: (context, objective) => {
-      const done = objective.objectives.filter((child) => context.status(child) === 'completed').length;
-      return `${done}/${objective.objectives.length} 阶段`;
-    },
+    progress: stageProgress,
   }))
   .register(objectiveHandler('any', {
     refresh: 'children',
     children: (objective) => objective.objectives,
-    outcome: (context, objective) => {
-      const children = activeChildren(context, objective);
-      if (children.length === 0) return 'pending';
-      const outcomes = children.map(context.outcome);
-      if (outcomes.includes('success')) return 'success';
-      return outcomes.every((outcome) => outcome === 'failure') ? 'failure' : 'pending';
-    },
+    outcome: someChildSucceeds,
     describe: () => '完成任一目标',
-    progress: (context, objective) => {
-      const done = objective.objectives.filter((child) => context.status(child) === 'completed').length;
-      return `${done}/${objective.objectives.length} 阶段`;
-    },
+    progress: stageProgress,
   }))
+  // The same fold as `all`; the difference is that a sequence reopens its
+  // stages one at a time, which is `refresh`, not arithmetic.
   .register(objectiveHandler('sequence', {
     refresh: 'sequence',
     children: (objective) => objective.objectives,
-    outcome: (context, objective) => {
-      const children = activeChildren(context, objective);
-      if (children.length === 0) return 'pending';
-      const outcomes = children.map(context.outcome);
-      if (outcomes.includes('failure')) return 'failure';
-      return outcomes.every((outcome) => outcome === 'success') ? 'success' : 'pending';
-    },
+    outcome: everyChildSucceeds,
     describe: () => '完成阶段目标',
-    progress: (context, objective) => {
-      const done = objective.objectives.filter((child) => context.status(child) === 'completed').length;
-      return `${done}/${objective.objectives.length} 阶段`;
-    },
+    progress: stageProgress,
   }))
   .register(objectiveHandler('optional', {
     role: 'optional',
