@@ -1,11 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { createDefaultBattleRuleServices } from '../action-system';
+import { createDefaultBattleRuleServices, type BattleRuleServices } from '../action-system';
+import { applyAction } from '../actions';
 import { resolveDamage } from '../damage';
+import { WeaponHitEffectHandlers } from '../hit-effects';
+import { MOMENTUM_RESOURCE } from '../resources';
+import { removeUnit } from '../state';
 import { UnitDepartureHandlers } from '../unit-departure';
 import { changeMorale } from '../morale';
 import { applyScenarioEffect } from '../scenario';
 import { TEST_CONTENT, TEST_RULES, makeLevel, testState, u } from './fixtures';
-import type { GameEvent, GameState } from '../types';
+import type { GameEvent, GameState, Unit } from '../types';
 
 /**
  * One blow, one settlement.
@@ -85,6 +89,76 @@ describe('a blow and what follows from it', () => {
     expect(outcome.killed).toBe(false);
     expect(outcome.leftField).toBe(true);
     expect(state.units).toHaveLength(1);
+  });
+});
+
+/**
+ * The volley, the riposte and the ally's covering shot are one act. These are
+ * the two things the copies had each stopped agreeing about.
+ */
+describe('every blow in combat is the same act', () => {
+  /** A ruleset whose only weapon rider removes whoever the test points it at. */
+  const vanishing = (pick: (context: { attacker: Unit; target: Unit }) => Unit | null) => {
+    const hitEffects = WeaponHitEffectHandlers.clone().replace({
+      kind: 'addStatus' as const,
+      apply: (context) => {
+        const doomed = pick(context);
+        if (doomed) removeUnit(context.state, doomed.id);
+      },
+      describe: () => 'test.vanish',
+    });
+    return createDefaultBattleRuleServices({ content: TEST_CONTENT, hitEffects });
+  };
+
+  const brawl = (): GameState => testState(makeLevel(['..'], {
+    units: [
+      { ...u(0, 0, 'rogue', 1), resources: { [MOMENTUM_RESOURCE]: { current: 0, capacity: 50 } } },
+      { ...u(1, 0, 'rogue', 2), resources: { [MOMENTUM_RESOURCE]: { current: 0, capacity: 50 } } },
+    ],
+  }));
+
+  const strike = (state: GameState, rules: BattleRuleServices): GameEvent[] => applyAction(state, {
+    kind: 'command',
+    unit: state.units[0].id,
+    path: [{ x: 0, y: 0 }],
+    command: { ability: 'attack', weapon: 'rogue_blades', target: { x: 1, y: 0 } },
+  }, rules);
+
+  it('gives no survivor\'s momentum to a unit its own rider just removed', () => {
+    // The riposte lands, poisons — and the poison kills. Only the volley used
+    // to look again before crediting the target with the dash of momentum a
+    // survivor earns; the riposte announced it for a unit already gone.
+    const state = brawl();
+    const attacker = state.units[0].id;
+    const events = strike(state, vanishing(({ attacker: striker, target }) =>
+      striker.owner === 2 ? target : null));
+
+    const riposte = events.findIndex((event) => event.type === 'counter');
+    expect(riposte).toBeGreaterThan(-1);
+    expect(state.units.some((unit) => unit.id === attacker)).toBe(false);
+    // Its own momentum for striking is earned before the riposte; nothing is
+    // credited to it afterwards.
+    expect(events.slice(riposte).some((event) =>
+      event.type === 'resourceChanged' &&
+      event.resource === MOMENTUM_RESOURCE &&
+      event.subject.kind === 'unit' &&
+      event.subject.id === attacker)).toBe(false);
+  });
+
+  it('teaches nobody anything with a blow that found nobody', () => {
+    // The volley's rider takes the attacker off the field, so the riposte that
+    // follows hits empty ground. It used to award its owner rank progress all
+    // the same, because only the volley checked whether the blow landed.
+    const state = brawl();
+    const defender = state.units[1].id;
+    const events = strike(state, vanishing(({ attacker }) => attacker.owner === 1 ? attacker : null));
+
+    expect(state.units.map((unit) => unit.id)).toEqual([defender]);
+    expect(events.some((event) => event.type === 'counter')).toBe(false);
+    expect(events).not.toContainEqual(expect.objectContaining({
+      type: 'rankProgressChanged',
+      unit: defender,
+    }));
   });
 });
 

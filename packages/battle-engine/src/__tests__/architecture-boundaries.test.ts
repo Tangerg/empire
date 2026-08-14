@@ -405,6 +405,20 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('strikes one blow between two units in exactly one place', () => {
+    // The volley, the riposte and the ally's covering shot are one act, and
+    // they were written out three times: report the blow, teach the striker,
+    // apply the weapon's rider, credit whoever survived it. The copies had
+    // drifted — only one re-checked that the target was still standing after
+    // the rider resolved, and only one noticed a blow that never landed. Two
+    // calls in this file means a fourth copy is growing.
+    const source = readFileSync(join(coreRoot, 'combat-plan.ts'), 'utf8');
+    const twice = ['resolveDamage(', 'awardDamageTakenMomentum(', 'hitEffects.apply(']
+      .filter((call) => source.split(call).length - 1 !== 1);
+
+    expect(twice).toEqual([]);
+  });
+
   it('builds every extension point on the shared registry', () => {
     // Twelve registries had each hand-written the same table, and they had
     // drifted where it mattered: some could be *asked* for an entry, some could

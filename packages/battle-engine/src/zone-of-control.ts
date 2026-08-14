@@ -123,6 +123,12 @@ export function resolvePartingShots(
     new UnitEntity(controller).consumeReaction(state.turn);
     consumeWeapon(rules, state, controller, strike.weapon.id, emit);
     const damage = Math.max(1, Math.round(strike.damage.damage * PARTING_SHOT_MULTIPLIER));
+    // Damage and nothing else, on purpose. A parting shot is a punishment for
+    // disengaging, not an engagement: it does not carry the weapon's rider, so
+    // walking past a poisoner is not a way to poison an army, and it teaches
+    // its owner nothing, so a chokepoint is not a rank farm. That is why this
+    // is a bare `resolveDamage` and not the `land` that combat proper uses —
+    // the difference is a rule, not an omission.
     resolveDamage(rules, state, {
       unit: unit.id,
       amount: damage,

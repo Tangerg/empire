@@ -37,7 +37,7 @@ import type {
   WeaponHitEffect,
 } from './types';
 import { type ContentCatalog } from './content-pack';
-import { resolveDamage, type DamageRules } from './damage';
+import { resolveDamage, type DamageOutcome, type DamageRequest, type DamageRules } from './damage';
 import { hostileActionAllowed } from './engagement';
 
 export interface PlannedUnitHit {
@@ -294,41 +294,53 @@ export function forecastCombatPlan(
   };
 }
 
-function applyUnitHit(
+/** One unit striking another: the blow itself, and the rider it carries. */
+interface Blow {
+  readonly striker: Unit;
+  readonly target: number;
+  readonly amount: number;
+  /** What the weapon does beyond damage. Never applied to a corpse. */
+  readonly effects: readonly WeaponHitEffect[];
+  readonly report: DamageRequest['report'];
+}
+
+/**
+ * A blow between two units, and everything combat makes of it.
+ *
+ * The volley, the riposte and the ally's covering shot are one act performed by
+ * different people, and they were written out three times. The copies had
+ * drifted: only one of them re-checked that the target was still standing after
+ * a hit effect resolved, so a shove into a cliff credited the corpse with the
+ * dash of momentum a survivor earns for taking a hit, and announced it — a
+ * `resourceChanged` for a unit that had already left the field. Only one of
+ * them noticed a blow that never landed, so a counter aimed at an attacker who
+ * had already gone still taught its owner something.
+ */
+function land(
   rules: CombatPlanRules,
   state: GameState,
-  attacker: Unit,
-  hit: PlannedUnitHit,
+  blow: Blow,
   emit: (event: GameEvent) => void,
-): boolean {
-  const { resources, hitEffects } = rules;
+): DamageOutcome {
   // A prior hit in the same volley can rout a later recipient through morale
   // shock. The immutable plan still describes the aimed area; `resolveDamage`
   // treats a recipient who has already left as a blow that did not land.
   const outcome = resolveDamage(rules, state, {
-    unit: hit.target,
-    amount: hit.damage.damage,
-    report: (blow) => ({
-      type: hit.primary ? 'attack' : 'areaAttack',
-      attacker: attacker.id,
-      defender: hit.target,
-      protectedUnit: hit.protectedUnit,
-      weapon: hit.damage.weapon,
-      damage: blow.amount,
-      killed: blow.killed,
-    }),
+    unit: blow.target,
+    amount: blow.amount,
+    report: blow.report,
   }, emit);
-  if (!outcome.landed) return false;
-  awardCombatProgress(rules, attacker, outcome.amount, outcome.killed, emit);
-  if (!outcome.leftField) {
-    if (hit.effects.length > 0) {
-      hitEffects.apply(rules, state, attacker, requireUnit(state, hit.target), hit.effects, emit);
-    }
-    // A hit effect can finish what the blow started — a shove into a cliff.
-    const survivor = state.units.find((unit) => unit.id === hit.target);
-    if (survivor) awardDamageTakenMomentum(resources, survivor, emit);
+  if (!outcome.landed) return outcome;
+  awardCombatProgress(rules, blow.striker, outcome.amount, outcome.killed, emit);
+  if (outcome.leftField) return outcome;
+
+  if (blow.effects.length > 0) {
+    rules.hitEffects.apply(rules, state, blow.striker, requireUnit(state, blow.target), [...blow.effects], emit);
   }
-  return outcome.killed;
+  // A hit effect can finish what the blow started — a shove into a cliff.
+  const survivor = state.units.find((unit) => unit.id === blow.target);
+  if (survivor) awardDamageTakenMomentum(rules.resources, survivor, emit);
+  return outcome;
 }
 
 function applyStructureHit(
@@ -358,7 +370,7 @@ export function executeCombatPlan(
   plan: CombatPlan,
   emit: (event: GameEvent) => void,
 ): void {
-  const { content, resources, hitEffects } = rules;
+  const { content, resources } = rules;
   const attacker = requireUnit(state, plan.attacker);
   consumeWeapon(rules, state, attacker, plan.weapon, emit);
 
@@ -379,7 +391,22 @@ export function executeCombatPlan(
 
   let unitKilled = false;
   for (const hit of plan.unitHits) {
-    unitKilled = applyUnitHit(rules, state, attacker, hit, emit) || unitKilled;
+    const outcome = land(rules, state, {
+      striker: attacker,
+      target: hit.target,
+      amount: hit.damage.damage,
+      effects: hit.effects,
+      report: (blow) => ({
+        type: hit.primary ? 'attack' : 'areaAttack',
+        attacker: attacker.id,
+        defender: hit.target,
+        protectedUnit: hit.protectedUnit,
+        weapon: hit.damage.weapon,
+        damage: blow.amount,
+        killed: blow.killed,
+      }),
+    }, emit);
+    unitKilled = outcome.killed || unitKilled;
   }
   for (const hit of plan.structureHits) applyStructureHit(rules, state, attacker, hit, emit);
   changeMomentum(
@@ -394,9 +421,11 @@ export function executeCombatPlan(
   if (counter && defenderId !== undefined && state.units.some((unit) => unit.id === defenderId)) {
     const defender = requireUnit(state, defenderId);
     consumeWeapon(rules, state, defender, counter.weapon, emit);
-    const outcome = resolveDamage(rules, state, {
-      unit: attacker.id,
+    const outcome = land(rules, state, {
+      striker: defender,
+      target: attacker.id,
       amount: counter.damage,
+      effects: content.weapons.get(counter.weapon).hitEffects,
       report: (blow) => ({
         type: 'counter',
         attacker: defender.id,
@@ -406,11 +435,6 @@ export function executeCombatPlan(
         killed: blow.killed,
       }),
     }, emit);
-    if (!outcome.leftField) {
-      hitEffects.apply(rules, state, defender, requireUnit(state, attacker.id), content.weapons.get(counter.weapon).hitEffects, emit);
-      awardDamageTakenMomentum(resources, attacker, emit);
-    }
-    awardCombatProgress(rules, defender, outcome.amount, outcome.killed, emit);
     changeMomentum(resources, defender, outcome.killed ? 10 : 5, emit);
   }
 
@@ -421,9 +445,11 @@ export function executeCombatPlan(
   if (!supporter || !target) return;
   new UnitEntity(supporter).consumeReaction(state.turn);
   consumeWeapon(rules, state, supporter, support.weapon, emit);
-  const outcome = resolveDamage(rules, state, {
-    unit: target.id,
+  const outcome = land(rules, state, {
+    striker: supporter,
+    target: target.id,
     amount: support.damage.damage,
+    effects: support.effects,
     report: (blow) => ({
       type: 'supportAttack',
       attacker: supporter.id,
@@ -433,10 +459,5 @@ export function executeCombatPlan(
       killed: blow.killed,
     }),
   }, emit);
-  if (!outcome.leftField) {
-    hitEffects.apply(rules, state, supporter, requireUnit(state, target.id), support.effects, emit);
-    awardDamageTakenMomentum(resources, target, emit);
-  }
-  awardCombatProgress(rules, supporter, outcome.amount, outcome.killed, emit);
   changeMomentum(resources, supporter, outcome.killed ? 10 : 5, emit);
 }
