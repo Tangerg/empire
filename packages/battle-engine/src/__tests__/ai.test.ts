@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction } from '../actions';
 import { player, unitsOf } from '../state';
-import { TEST_RULES, makeLevel, testChooseAction, testState, u } from './fixtures';
+import { makeLevel, testApply, testChooseAction, testState, u } from './fixtures';
 import { FUNDS_RESOURCE } from '../resources';
 
 /** A compact but non-trivial arena: two keeps, villages, mixed terrain. */
@@ -42,7 +41,7 @@ describe('ai driver', () => {
       for (;;) {
         const action = testChooseAction(s);
         // applyAction throws IllegalActionError on anything invalid.
-        applyAction(s, action, TEST_RULES);
+        testApply(s, action);
         actions++;
         if (action.kind === 'endTurn' || s.phase !== 'playing') break;
         expect(++guard).toBeLessThan(200); // must converge on endTurn
@@ -56,7 +55,7 @@ describe('ai driver', () => {
     const before = player(s, 1).resources[FUNDS_RESOURCE].current;
     const action = testChooseAction(s);
     expect(action.kind).toBe('recruit');
-    applyAction(s, action, TEST_RULES);
+    testApply(s, action);
     expect(player(s, 1).resources[FUNDS_RESOURCE].current).toBeLessThan(before);
     expect(unitsOf(s, 1).length).toBe(3);
   });
@@ -94,7 +93,7 @@ describe('ai driver', () => {
     );
     let action = testChooseAction(s);
     if (action.kind === 'reaction') {
-      applyAction(s, action, TEST_RULES);
+      testApply(s, action);
       action = testChooseAction(s);
     }
     expect(action.kind).toBe('command');

@@ -63,11 +63,7 @@ export class StatusBehaviorRegistry extends KeyedRegistry<StatusId, StatusBehavi
 
 export const StatusBehaviors = new StatusBehaviorRegistry();
 
-export function blockedAbilityStatus(
-  unit: Unit,
-  tags: string[],
-  content: ContentCatalog,
-): StatusId | null {
+export function blockedAbilityStatus(content: ContentCatalog, unit: Unit, tags: string[]): StatusId | null {
   if (tags.length === 0) return null;
   for (const instance of unit.statuses) {
     const blocked = statusDef(instance.id, content).blockedAbilityTags;
@@ -76,10 +72,7 @@ export function blockedAbilityStatus(
   return null;
 }
 
-export function combinedStatusModifiers(
-  unit: Unit,
-  content: ContentCatalog,
-): Required<Omit<StatusModifiers, 'cannotCapture'>> & {
+export function combinedStatusModifiers(content: ContentCatalog, unit: Unit): Required<Omit<StatusModifiers, 'cannotCapture'>> & {
   cannotCapture: boolean;
 } {
   let attackMultiplier = 1;

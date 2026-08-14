@@ -153,7 +153,7 @@ export const DefaultAiObjectiveAdvisors = new AiObjectiveAdvisorRegistry()
     for (const unit of unitsOf(context.state, context.owner)) context.protect(unit.id, 1);
   }))
   .register(advisor('eliminate', (context, objective) => {
-    for (const target of selectUnits(context.state, objective.selector, context.content)) {
+    for (const target of selectUnits(context.content, context.state, objective.selector)) {
       if (!areEnemies(context.state, target.owner, context.owner)) continue;
       context.priorityUnit(target.id, 5);
       context.destination(target, 3, '追击指定目标');
@@ -179,7 +179,7 @@ export const DefaultAiObjectiveAdvisors = new AiObjectiveAdvisorRegistry()
     }
   }))
   .register(advisor('protect', (context, objective) => {
-    for (const target of selectUnits(context.state, objective.selector, context.content)) {
+    for (const target of selectUnits(context.content, context.state, objective.selector)) {
       if (target.owner !== context.owner) continue;
       context.protect(target.id, 5);
       context.destination(target, 2.5, '护卫关键单位', { unitIds: unitsOf(context.state, context.owner)
@@ -189,7 +189,7 @@ export const DefaultAiObjectiveAdvisors = new AiObjectiveAdvisorRegistry()
   }))
   .register(advisor('escort', (context, objective) => {
     const cells = zoneCells(context.state, objective.zone);
-    const escorted = selectUnits(context.state, objective.selector, context.content)
+    const escorted = selectUnits(context.content, context.state, objective.selector)
       .filter((unit) => unit.owner === context.owner);
     const unarrived = escorted.filter((unit) =>
       !cells.some((cell) => cell.x === unit.x && cell.y === unit.y));
@@ -235,14 +235,30 @@ function activeChildren(
   return handlers.refreshMode(objective) === 'sequence' ? pending.slice(0, 1) : pending;
 }
 
+/**
+ * Port declared by mission planning: the objectives a side is playing for, the
+ * catalog their names resolve in, and how each kind advises a planner.
+ *
+ * Shaped so that `AiPlanningDependencies` — the aggregate every AI entry point
+ * is already handed — satisfies it structurally. It used to be three separate
+ * parameters *after* the subjects, which is a second call shape for the same
+ * three services.
+ */
+export interface AiMissionRules {
+  readonly rules: {
+    readonly content: ContentCatalog;
+    readonly objectives: ObjectiveHandlerRegistry;
+  };
+  readonly objectiveAdvisors: AiObjectiveAdvisorRegistry;
+}
+
 /** Converts the active objective tree into deterministic, scoreable tactical hints. */
 export function buildAiMissionIntent(
+  planning: AiMissionRules,
   state: GameState,
   owner: PlayerId,
-  advisors: AiObjectiveAdvisorRegistry,
-  handlers: ObjectiveHandlerRegistry,
-  content: ContentCatalog,
 ): AiMissionIntent {
+  const { objectiveAdvisors: advisors, rules: { content, objectives: handlers } } = planning;
   const destinations: AiDestination[] = [];
   const priorityUnits = new Map<number, number>();
   const priorityStructures = new Map<StructureId, number>();

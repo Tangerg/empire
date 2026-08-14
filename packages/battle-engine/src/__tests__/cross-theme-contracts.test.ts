@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction } from '../actions';
 import { moveCostOf } from '../movement';
-import { TEST_RULES, makeLevel, testForecastStructure, testMoveField, testState, u } from './fixtures';
+import { makeLevel, testApply, testForecastStructure, testMoveField, testState, u } from './fixtures';
 
 describe('cross-theme engine contracts', () => {
   it('fantasy: a commanded siege unit breaks a gate and completes the assault objective', () => {
@@ -25,12 +24,12 @@ describe('cross-theme engine contracts', () => {
     level.players[1].objectives = [{ type: 'routEnemies' }];
     const state = testState(level);
     expect(testForecastStructure(state, state.units[1], state.structures[0]).commanderAttackMultiplier).toBe(1.2);
-    applyAction(state, {
+    testApply(state, {
       kind: 'command',
       unit: state.units[1].id,
       path: [{ x: 1, y: 0 }],
       command: { ability: 'attack', weapon: 'ballista_bolt', target: { x: 3, y: 0 } },
-    }, TEST_RULES);
+    });
     expect(state.players[0].objectiveStates.breach.status).toBe('completed');
   });
 
@@ -67,12 +66,12 @@ describe('cross-theme engine contracts', () => {
     });
     level.players[1].objectives = [{ type: 'routEnemies' }];
     const state = testState(level);
-    const events = applyAction(state, {
+    const events = testApply(state, {
       kind: 'command',
       unit: state.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', weapon: 'mage_overcharge', target: { x: 2, y: 0 } },
-    }, TEST_RULES);
+    });
     expect(state.scenario.overlays[0].type).toBe('vacuum');
     expect(events).toContainEqual({ type: 'scenarioSignal', signal: 'network.offline' });
     expect(state.players[0].objectiveStates['disable-network'].status).toBe('completed');
@@ -105,12 +104,12 @@ describe('cross-theme engine contracts', () => {
     const state = testState(level);
     const field = testMoveField(state, state.units[0]);
     expect(moveCostOf(field, state.map, { x: 1, y: 0 })).toBe(2);
-    applyAction(state, {
+    testApply(state, {
       kind: 'command',
       unit: state.units[0].id,
       path: [{ x: 0, y: 0 }, { x: 1, y: 0 }],
       command: { ability: 'wait' },
-    }, TEST_RULES);
+    });
     expect(state.players[0].objectiveStates['secure-supplies'].status).toBe('completed');
     expect(state.winnerTeam).toBe(1);
   });

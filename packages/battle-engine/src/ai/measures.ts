@@ -22,7 +22,7 @@ export const maximumWeaponRange = (type: UnitTypeId, content: ContentCatalog): n
 
 /** Melee wants contact; a pure shooter wants the far edge of its reach. */
 export const preferredEngagementRange = (unit: Unit, content: ContentCatalog): number => {
-  const weapons = unitWeapons(unit, content);
+  const weapons = unitWeapons(content, unit);
   if (weapons.some((weapon) => weapon.minRange <= 1)) return 1;
   return Math.max(1, ...weapons.map((weapon) => weapon.maxRange));
 };

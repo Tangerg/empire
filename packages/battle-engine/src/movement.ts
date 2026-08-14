@@ -53,7 +53,7 @@ export function computeMoveField(rules: MovementRules, state: GameState, unit: U
   const battlefield = new Battlefield(state, content);
   const budget = Math.max(
     0,
-    def.movement + combinedStatusModifiers(unit, content).movementDelta +
+    def.movement + combinedStatusModifiers(content, unit).movementDelta +
       commanderAuraFor(rules, state, unit).movementDelta + formationMovementDelta(rules, state, unit),
   );
   const start = idx(map, unit.x, unit.y);
@@ -150,7 +150,7 @@ export function attackTilesFrom(
   from: Coord,
   weapon?: WeaponDef,
 ): Coord[] {
-  const resolved = weapon ?? primaryWeapon(unit, rules.content);
+  const resolved = weapon ?? primaryWeapon(rules.content, unit);
   if (resolved.maxRange <= 0) return [];
   return boardOf(rules, state).ring(from, resolved.minRange, resolved.maxRange).filter(
     (target) => resolved.lineOfSight !== 'direct' || hasDirectLineOfSight(rules, state, from, target),
@@ -192,7 +192,7 @@ export function threatTiles(
   const out = new Set<number>();
   const add = (at: Coord) => out.add(idx(state.map, at.x, at.y));
 
-  const weapons = unitWeapons(unit, rules.content);
+  const weapons = unitWeapons(rules.content, unit);
   for (const weapon of weapons) {
     for (const at of attackTilesFrom(rules, state, unit, { x: unit.x, y: unit.y }, weapon)) add(at);
   }

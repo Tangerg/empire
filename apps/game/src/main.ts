@@ -59,7 +59,7 @@ let active: GameController | StoryCampaignController | null = null;
 
 /** Static minimap for a level card. */
 function thumbnail(level: LevelData): string {
-  const map = mapFromLevel(level, content);
+  const map = mapFromLevel(content, level);
   const colorOf = (id: number) => level.players.find((p) => p.id === id)?.color;
   const units = level.units
     .map((u) => {

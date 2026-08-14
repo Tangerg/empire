@@ -840,21 +840,43 @@ describe('one call shape', () => {
     return [];
   }
 
-  it('takes dependencies first and the event channel last', () => {
+  it('takes dependencies first, as one named port, and the event channel last', () => {
     // One rule, not two: what it needs, what it acts on, where it reports.
     // "single content trailing, several services leading" was two rules, and
     // seventeen of the forty-two emitting functions had drifted between them.
     //
-    // Scoped to functions that emit: that is the family that mutates a battle
-    // and the family the drift happened in. Pure queries are left alone.
-    const dependencies = ['content', 'rules', 'resources', 'progression', 'policy', 'space', 'handlers'];
+    // This guard used to be scoped to functions that emit — "pure queries are
+    // left alone" — and that carve-out was hiding fifteen queries still written
+    // the old way, plus five taking two or three services as separate
+    // parameters. A query is not a different call shape from a command, so the
+    // scope is every exported function in every package that names a service.
+    const dependencies = [
+      'content', 'rules', 'resources', 'progression', 'policy', 'space', 'handlers', 'random',
+      'grids', 'objectives', 'scenarioEffects', 'scenarioConditions', 'saves', 'turnOrders',
+      'reactions', 'directives', 'areaShapes', 'abilities', 'hitEffects', 'statusBehaviors',
+      'combatModifiers', 'referenceChecks', 'unitDepartures', 'advisors', 'dispatch', 'planning',
+      'engine', 'art', 'presentation', 'layout', 'canvas', 'session',
+    ];
     const offenders: string[] = [];
-    for (const file of runtimeTypeScriptFiles(coreRoot)) {
+    for (const file of everyPackageSource()) {
       const source = readFileSync(file, 'utf8');
       for (const match of source.matchAll(/export function (\w+)/g)) {
         const names = parametersOf(source, match.index + match[0].length)
           .map((parameter) => parameter.split(':')[0].trim().replace(/[?=].*$/, '').trim());
-        if (!names.includes('emit')) continue;
+        const services = names.filter((name) => dependencies.includes(name));
+        if (services.length === 0) continue;
+        if (services.length > 1) {
+          offenders.push(`${relative(packagesRoot, file)}#${match[1]}: ${services.join(' + ')} should be one port`);
+          continue;
+        }
+        if (!names.includes('emit')) {
+          const dependencyAt = names.findIndex((name) => dependencies.includes(name));
+          const subjectAt = names.findIndex((name) => !dependencies.includes(name));
+          if (subjectAt !== -1 && dependencyAt > subjectAt) {
+            offenders.push(`${relative(packagesRoot, file)}#${match[1]}: ${names[dependencyAt]} follows ${names[subjectAt]}`);
+          }
+          continue;
+        }
         const lastDependency = names.reduce(
           (last, name, index) => (dependencies.includes(name) ? index : last), -1);
         const firstSubject = names.findIndex((name) => !dependencies.includes(name));
@@ -866,7 +888,7 @@ describe('one call shape', () => {
         // another dependency may not.
         const afterEmit = names.slice(names.indexOf('emit') + 1);
         if (afterEmit.some((name) => dependencies.includes(name))) problems.push('dependency after emit');
-        if (problems.length > 0) offenders.push(`${relative(coreRoot, file)}#${match[1]}: ${problems.join('; ')}`);
+        if (problems.length > 0) offenders.push(`${relative(packagesRoot, file)}#${match[1]}: ${problems.join('; ')}`);
       }
     }
 

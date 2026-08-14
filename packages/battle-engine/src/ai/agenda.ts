@@ -1,7 +1,5 @@
-import { buildAiMissionIntent, type AiMissionIntent, type AiObjectiveAdvisorRegistry } from '../ai-objectives';
-import { type ObjectiveHandlerRegistry } from '../objective-system';
+import { buildAiMissionIntent, type AiMissionIntent, type AiMissionRules } from '../ai-objectives';
 import { areEnemies } from '../state';
-import type { ContentCatalog } from '../content-pack';
 import type { Coord, GameState, PlayerId } from '../types';
 
 /**
@@ -22,12 +20,11 @@ export interface AiAgenda {
 }
 
 export function readAgenda(
+  planning: AiMissionRules,
   state: GameState,
   side: PlayerId,
-  advisors: AiObjectiveAdvisorRegistry,
-  objectives: ObjectiveHandlerRegistry,
-  content: ContentCatalog,
 ): AiAgenda {
+  const content = planning.rules.content;
   const captureTargets: { at: Coord; weight: number }[] = [];
   const enemyHqs: Coord[] = [];
   const myHqs: Coord[] = [];
@@ -49,6 +46,6 @@ export function readAgenda(
     captureTargets,
     enemyHqs,
     myHqs,
-    mission: buildAiMissionIntent(state, side, advisors, objectives, content),
+    mission: buildAiMissionIntent(planning, state, side),
   };
 }

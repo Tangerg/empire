@@ -159,7 +159,7 @@ describe('map editor', () => {
     stroke(board, { x: 4, y: 6 }, { x: 4, y: 8 });
     const exported = app.exportLevel();
     const reloaded = normaliseLevel(JSON.parse(JSON.stringify(exported)));
-    const map = mapFromLevel(reloaded, TEST_CATALOG);
+    const map = mapFromLevel(TEST_CATALOG, reloaded);
     expect(map.tiles[6 * map.width + 4]).toBe('forest');
     expect(validateLevel(TEST_RULES, reloaded).filter((i) => i.severity === 'error')).toEqual([]);
   });

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction, IllegalActionError } from '../actions';
-import { TEST_RULES, makeLevel, testCommands, testForecast, testState, u } from './fixtures';
+import { IllegalActionError } from '../actions';
+import { makeLevel, testApply, testCommands, testForecast, testState, u } from './fixtures';
 import { WEAPON_USES_RESOURCE } from '../resources';
 
 describe('weapon actions', () => {
@@ -15,12 +15,12 @@ describe('weapon actions', () => {
     expect(option?.targets).toContainEqual({ x: 2, y: 0 });
 
     const expected = testForecast(state, attacker, state.units[1], { x: 0, y: 0 }, 'soldier_javelin');
-    const events = applyAction(state, {
+    const events = testApply(state, {
       kind: 'command',
       unit: attacker.id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', weapon: 'soldier_javelin', target: { x: 2, y: 0 } },
-    }, TEST_RULES);
+    });
 
     expect(events.find((event) => event.type === 'attack')).toMatchObject({
       weapon: 'soldier_javelin',
@@ -34,12 +34,12 @@ describe('weapon actions', () => {
       makeLevel(['...'], { units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)] }),
     );
     expect(() =>
-      applyAction(state, {
+      testApply(state, {
         kind: 'command',
         unit: state.units[0].id,
         path: [{ x: 0, y: 0 }],
         command: { ability: 'attack', weapon: 'soldier_sword', target: { x: 2, y: 0 } },
-      }, TEST_RULES),
+      }),
     ).toThrow(IllegalActionError);
   });
 
@@ -48,21 +48,21 @@ describe('weapon actions', () => {
       makeLevel(['...'], { units: [u(0, 0, 'mage', 1), u(2, 0, 'ogre', 2)] }),
     );
     const mage = state.units[0];
-    applyAction(state, {
+    testApply(state, {
       kind: 'command',
       unit: mage.id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', weapon: 'mage_overcharge', target: { x: 2, y: 0 } },
-    }, TEST_RULES);
+    });
     expect(mage.weaponState.mage_overcharge.cooldownRemaining).toBe(2);
 
-    applyAction(state, { kind: 'endTurn' }, TEST_RULES);
-    applyAction(state, { kind: 'endTurn' }, TEST_RULES);
+    testApply(state, { kind: 'endTurn' });
+    testApply(state, { kind: 'endTurn' });
     expect(mage.weaponState.mage_overcharge.cooldownRemaining).toBe(1);
     expect(testCommands(state, mage, { x: 0, y: 0 }).some((entry) => entry.weapon === 'mage_overcharge')).toBe(false);
 
-    applyAction(state, { kind: 'endTurn' }, TEST_RULES);
-    applyAction(state, { kind: 'endTurn' }, TEST_RULES);
+    testApply(state, { kind: 'endTurn' });
+    testApply(state, { kind: 'endTurn' });
     expect(mage.weaponState.mage_overcharge.cooldownRemaining).toBe(0);
     expect(testCommands(state, mage, { x: 0, y: 0 }).some((entry) => entry.weapon === 'mage_overcharge')).toBe(true);
   });

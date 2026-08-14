@@ -166,12 +166,8 @@ function createDeployment(
   return { order, currentIndex: 0, assignments };
 }
 
-export function createState(
-  level: LevelData,
-  content: ContentCatalog,
-  options: CreateStateOptions = {},
-): GameState {
-  const map = mapFromLevel(level, content);
+export function createState(content: ContentCatalog, level: LevelData, options: CreateStateOptions = {}): GameState {
+  const map = mapFromLevel(content, level);
   const rules = resolveRules(level);
 
   const ownsHQ = (id: PlayerId) =>
@@ -457,11 +453,11 @@ export function tilesOwnedBy(state: GameState, id: PlayerId): Coord[] {
   return out;
 }
 
-export function hqTilesOf(state: GameState, id: PlayerId, content: ContentCatalog): Coord[] {
+export function hqTilesOf(content: ContentCatalog, state: GameState, id: PlayerId): Coord[] {
   return tilesOwnedBy(state, id).filter((c) => content.terrains.get(state.map.tiles[idx(state.map, c.x, c.y)]).hq);
 }
 
-export function productionTilesOf(state: GameState, id: PlayerId, content: ContentCatalog): Coord[] {
+export function productionTilesOf(content: ContentCatalog, state: GameState, id: PlayerId): Coord[] {
   return tilesOwnedBy(state, id).filter(
     (c) => content.terrains.get(state.map.tiles[idx(state.map, c.x, c.y)]).produces.length > 0,
   );
@@ -474,12 +470,23 @@ export interface RecruitOption {
   readonly affordable: boolean;
 }
 
+/**
+ * Port declared by the recruitment menu: what a site produces, and who can pay.
+ *
+ * Two services, so they travel as one named thing and they travel first — a
+ * query is not a different call shape from a command.
+ */
+export interface RecruitmentRules {
+  readonly content: ContentCatalog;
+  readonly resources: BattleResourceSystem;
+}
+
 export function recruitOptions(
+  rules: RecruitmentRules,
   state: GameState,
   at: Coord,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): RecruitOption[] {
+  const { content, resources } = rules;
   const tile = idx(state.map, at.x, at.y);
   const terrain = content.terrains.get(state.map.tiles[tile]);
   const owner = state.map.owners[tile];

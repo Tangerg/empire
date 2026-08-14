@@ -1,6 +1,6 @@
 import { type ActionHandlerRegistry, type BattleRuleServices } from '../action-system';
-import { createBattleRules } from '../plugins/default';
-import { applyActionWith, commandOptions } from '../actions';
+import { createBattleEngine } from '../plugins/default';
+import { applyAction, commandOptions } from '../actions';
 import { addStatus } from '../statuses';
 import { chooseAction, type AiPlanningDependencies, DefaultAbilityAiEvaluators, DefaultAiIntents } from '../ai';
 import { buildAiMissionIntent, DefaultAiObjectiveAdvisors } from '../ai-objectives';
@@ -129,11 +129,20 @@ export const u = (x: number, y: number, unit: string, owner: PlayerId, hp?: numb
  * for ambient state, so a signature that forgets a dependency cannot compile.
  */
 export const TEST_CONTENT: ContentCatalog = createTestCatalog();
-export const TEST_RULES: BattleRuleServices = createBattleRules({ content: TEST_CONTENT });
+/**
+ * One engine for the suite, composed the way an application composes one.
+ *
+ * `TEST_RULES` is its ruleset rather than a second composition: dispatching an
+ * action needs both halves of the engine — the strategies and the rules — and a
+ * helper that paired one instance's rules with the module-global registry was a
+ * path production never takes.
+ */
+export const TEST_ENGINE = createBattleEngine({ content: TEST_CONTENT });
+export const TEST_RULES: BattleRuleServices = TEST_ENGINE.rules;
 
-export const testState = (level: LevelData): GameState => createState(level, TEST_CONTENT);
+export const testState = (level: LevelData): GameState => createState(TEST_CONTENT, level);
 
-export const testMap = (level: LevelData) => mapFromLevel(level, TEST_CONTENT);
+export const testMap = (level: LevelData) => mapFromLevel(TEST_CONTENT, level);
 export const testValidate = (level: LevelData) => validateLevel(TEST_RULES, level);
 
 export const testMoveField = (state: GameState, unit: Unit) =>
@@ -180,12 +189,17 @@ export const testCombatPlan = (
 export const testCommands = (state: GameState, unit: Unit, at: Coord) =>
   commandOptions(TEST_RULES, state, unit, at);
 
+/** One action through the shared ruleset's own strategies. */
+export const testApply = (state: GameState, action: Action) =>
+  applyAction(TEST_ENGINE, state, action);
+
+/** One action through a registry a test composed itself. */
 export const testApplyWith = (
   state: GameState,
   action: Action,
-  handlers: ActionHandlerRegistry,
+  actionHandlers: ActionHandlerRegistry,
   rules: BattleRuleServices = TEST_RULES,
-) => applyActionWith(state, action, handlers, rules);
+) => applyAction({ actionHandlers, rules }, state, action);
 
 export const testAddStatus = (
   unit: Unit,
@@ -226,7 +240,7 @@ export const testAiDependencies = (): AiPlanningDependencies => ({
 export const testChooseAction = (state: GameState, options?: { aggression: number }) =>
   chooseAction(testAiDependencies(), state, options);
 export const testMissionIntent = (state: GameState, owner: PlayerId) =>
-  buildAiMissionIntent(state, owner, DefaultAiObjectiveAdvisors, TEST_RULES.objectives, TEST_CONTENT);
+  buildAiMissionIntent(testAiDependencies(), state, owner);
 
 export const testAbilityQuery = (state: GameState, unit: Unit, at: Coord, moved = false): AbilityQuery => ({
   state,

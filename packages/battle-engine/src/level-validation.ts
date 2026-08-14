@@ -105,7 +105,7 @@ export class LevelInspection {
 
   private buildMap(): GameMap | null {
     try {
-      return mapFromLevel(this.level, this.content);
+      return mapFromLevel(this.content, this.level);
     } catch (error) {
       this.log.error((error as Error).message);
       return null;

@@ -75,18 +75,18 @@ describe('a unit leaving the field is one announcement', () => {
         onBoard: state.units.some((candidate) => candidate.id === unit.id),
       }),
     });
-    const rules = createBattleRules({ content: TEST_CONTENT, unitDepartures });
+    const engine = createBattleEngine({ content: TEST_CONTENT, unitDepartures });
     const state = testState(makeLevel(['..'], {
       units: [u(0, 0, 'knight', 1), u(1, 0, 'mage', 2, 5)],
     }));
     const victim = state.units[1].id;
 
-    applyAction(state, {
+    applyAction(engine, state, {
       kind: 'command',
       unit: state.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
-    }, rules);
+    });
 
     expect(seen).toEqual([{ id: victim, onBoard: false }]);
   });

@@ -182,7 +182,7 @@ function zoneCells(state: GameState, id: string) {
 
 function lostHQ(state: GameState, id: PlayerId, content: ContentCatalog): boolean {
   const owner = state.players.find((candidate) => candidate.id === id);
-  return Boolean(owner?.startedWithHQ) && hqTilesOf(state, id, content).length === 0;
+  return Boolean(owner?.startedWithHQ) && hqTilesOf(content, state, id).length === 0;
 }
 
 function activeChildren(context: ObjectiveEvaluationContext, objective: Objective): Objective[] {
@@ -259,7 +259,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     progress: ({ state, owner, content }) => {
       const left = state.players
         .filter((candidate) => areEnemies(state, candidate.id, owner))
-        .reduce((sum, candidate) => sum + hqTilesOf(state, candidate.id, content).length, 0);
+        .reduce((sum, candidate) => sum + hqTilesOf(content, state, candidate.id).length, 0);
       return `敌方城堡 ${left}`;
     },
   }))
@@ -286,9 +286,9 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
   }))
   .register(objectiveHandler('eliminate', {
     references: (objective) => points().selector(objective.selector),
-    outcome: ({ state, content }, objective) => selectUnits(state, objective.selector, content).length === 0 ? 'success' : 'pending',
+    outcome: ({ state, content }, objective) => selectUnits(content, state, objective.selector).length === 0 ? 'success' : 'pending',
     describe: () => '消灭指定目标',
-    progress: ({ state, content }, objective) => `剩余 ${selectUnits(state, objective.selector, content).length}`,
+    progress: ({ state, content }, objective) => `剩余 ${selectUnits(content, state, objective.selector).length}`,
   }))
   .register(objectiveHandler('destroy', {
     references: (objective) => objective.structures.reduce(
@@ -336,12 +336,12 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
         : cited.fault('保护目标的人数和截止回合必须 >= 1');
     },
     outcome: ({ state, content }, objective) => {
-      if (selectUnits(state, objective.selector, content).length < objective.minimumAlive) return 'failure';
+      if (selectUnits(content, state, objective.selector).length < objective.minimumAlive) return 'failure';
       return state.turn > objective.untilTurn ? 'success' : 'pending';
     },
     describe: (objective) => `保护目标至第 ${objective.untilTurn} 回合`,
     progress: ({ state, content }, objective) =>
-      `${selectUnits(state, objective.selector, content).length}/${objective.minimumAlive} 存活`,
+      `${selectUnits(content, state, objective.selector).length}/${objective.minimumAlive} 存活`,
   }))
   .register(objectiveHandler('escort', {
     references: (objective) => {
@@ -350,13 +350,13 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     },
     outcome: ({ state, content }, objective) => {
       const cells = zoneCells(state, objective.zone);
-      const arrived = selectUnits(state, objective.selector, content).filter((unit) =>
+      const arrived = selectUnits(content, state, objective.selector).filter((unit) =>
         cells.some((cell) => cell.x === unit.x && cell.y === unit.y)).length;
       return arrived >= objective.count ? 'success' : 'pending';
     },
     describe: () => '护送目标抵达区域',
     progress: ({ state, content }, objective) => {
-      const arrived = selectUnits(state, objective.selector, content).filter((unit) =>
+      const arrived = selectUnits(content, state, objective.selector).filter((unit) =>
         zoneCells(state, objective.zone).some((cell) => cell.x === unit.x && cell.y === unit.y)).length;
       return `${arrived}/${objective.count} 抵达`;
     },

@@ -68,7 +68,7 @@ describe('generic campaign framework', () => {
     const bridge = new CampaignBattleBridge(() => level(), TEST_CATALOG);
     const request = runtime.beginBattle(bridge);
     expect(request.level.units.find((unit) => unit.key === 'campaign-hero')).toMatchObject({ rank: 0, hp: 100 });
-    const battle = createState(request.level, TEST_CATALOG);
+    const battle = createState(TEST_CATALOG, request.level);
     const hero = battle.units.find((unit) => unit.key === 'campaign-hero')!;
     hero.rank = 1;
     hero.rankProgress = 42;

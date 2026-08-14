@@ -215,7 +215,7 @@ const statusProvider: CombatModifierProvider = {
       source: 'status',
       stage: 'power',
       operation: 'multiply',
-      value: combinedStatusModifiers(attacker, content).attackMultiplier,
+      value: combinedStatusModifiers(content, attacker).attackMultiplier,
     },
   ],
 };
@@ -349,7 +349,7 @@ const defenseProvider: CombatModifierProvider = {
   priority: 600,
   provide: ({ rules, state, defender, defenderAt, content, battlefield = new Battlefield(state, content) }) => {
     const definition = content.units.get(defender.type);
-    const status = combinedStatusModifiers(defender, content);
+    const status = combinedStatusModifiers(content, defender);
     const command = commanderAuraFor(rules, state, defender);
     const formation = activeFormation(rules, state, defender);
     const terrain = battlefield.cell(defenderAt).defense;

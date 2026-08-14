@@ -57,11 +57,7 @@ function inZone(state: GameState, unit: Unit, zoneId: string): boolean {
   return zone(state, zoneId).some((cell) => cell.x === unit.x && cell.y === unit.y);
 }
 
-export function selectUnits(
-  state: GameState,
-  selector: UnitSelector,
-  content: ContentCatalog,
-): Unit[] {
+export function selectUnits(content: ContentCatalog, state: GameState, selector: UnitSelector): Unit[] {
   return state.units.filter((unit) => {
     if (selector.ids && !selector.ids.includes(unit.id)) return false;
     if (selector.keys && (!unit.key || !selector.keys.includes(unit.key))) return false;
@@ -210,20 +206,20 @@ export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry(Sp
   )
   .register(
     conditionHandler('unitInZone', ({ state, content }, condition) =>
-      selectUnits(state, {
+      selectUnits(content, state, {
         owner: condition.owner,
         zone: condition.zone,
         anyTags: condition.anyTags,
-      }, content).length > 0,
+      }).length > 0,
       { references: (condition) => points().zone(condition.zone) },
     ),
   )
   .register(conditionHandler('unitCount', ({ state, content }, condition) =>
-    compare(selectUnits(state, condition.selector, content).length, condition.op, condition.value), {
+    compare(selectUnits(content, state, condition.selector).length, condition.op, condition.value), {
     references: (condition) => points().selector(condition.selector),
   }))
   .register(conditionHandler('unitHealth', ({ state, content }, condition) => {
-    const ratios = selectUnits(state, condition.selector, content)
+    const ratios = selectUnits(content, state, condition.selector)
       .map((unit) => unit.hp / content.units.get(unit.type).maxHp);
     if (ratios.length === 0) return false;
     if (condition.aggregate === 'any') return ratios.some((value) => compare(value, condition.op, condition.value));
@@ -341,7 +337,7 @@ export class ScenarioEffectContext {
   }
 
   select(selector: UnitSelector): Unit[] {
-    return selectUnits(this.state, selector, this.content);
+    return selectUnits(this.content, this.state, selector);
   }
 
   /**

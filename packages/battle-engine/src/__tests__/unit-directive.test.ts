@@ -1,8 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createBattleRules } from '../plugins/default';
-import { applyAction } from '../actions';
 import { UnitDirectives, directiveOf, directivePull } from '../unit-directive';
-import { TEST_CONTENT, TEST_RULES, makeLevel, testState, u } from './fixtures';
+import { makeLevel, testApply, testState, TEST_CONTENT, TEST_RULES, u } from './fixtures';
 import type { GameState } from '../types';
 
 /**
@@ -48,12 +47,12 @@ describe('standing orders', () => {
     });
     const unit = state.units[0];
 
-    applyAction(state, {
+    testApply(state, {
       kind: 'command',
       unit: unit.id,
       path: [{ x: 0, y: 0 }, { x: 1, y: 0 }],
       command: { ability: 'wait' },
-    }, TEST_RULES);
+    });
 
     expect(unit.directive.cursor).toBe(1);
   });

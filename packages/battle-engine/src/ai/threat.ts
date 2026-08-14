@@ -14,13 +14,24 @@ import { hpRatio, maximumWeaponPower } from './measures';
  * Read once per turn and shared by every decision, because it costs a threat
  * projection per hostile unit and the answer cannot change until someone moves.
  */
+/**
+ * Port declared by this module: where a weapon reaches, and what a unit is worth.
+ *
+ * The caller used to pass the ruleset *and* pull `space` and `content` back out
+ * of it as two more parameters — three services for one question, two of them
+ * behind the subjects.
+ */
+export interface ThreatRules extends WeaponAreaRules {
+  readonly space: TacticalSpace;
+  readonly content: ContentCatalog;
+}
+
 export function threatMap(
-  rules: WeaponAreaRules,
+  rules: ThreatRules,
   state: GameState,
   viewer: PlayerId,
-  space: TacticalSpace,
-  content: ContentCatalog,
 ): Map<number, number> {
+  const { space, content } = rules;
   const threat = new Map<number, number>();
   for (const foe of enemyUnitsOf(state, viewer)) {
     const weight = maximumWeaponPower(foe.type, content) * (0.5 + 0.5 * hpRatio(foe, content));

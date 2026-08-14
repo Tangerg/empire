@@ -312,7 +312,7 @@ export class BoardView {
       ...this.playEmbeddedAnimations(this.layers.foreground),
     ];
     clear(this.layers.spatial);
-    const spatial = battlefieldFeatureMarkup(this.art, this.layout, s.map);
+    const spatial = battlefieldFeatureMarkup({ art: this.art, layout: this.layout }, s.map);
     if (spatial) this.layers.spatial.append(fromMarkup(spatial));
   }
 

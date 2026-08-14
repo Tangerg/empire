@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { type BattleRuleServices } from '../action-system';
-import { createBattleRules } from '../plugins/default';
+import { createBattleEngine } from '../plugins/default';
+import type { BattleEngine } from '../engine';
 import { applyAction } from '../actions';
 import { resolveDamage } from '../damage';
 import { WeaponHitEffectHandlers } from '../hit-effects';
@@ -108,7 +108,7 @@ describe('every blow in combat is the same act', () => {
       },
       describe: () => 'test.vanish',
     });
-    return createBattleRules({ content: TEST_CONTENT, hitEffects });
+    return createBattleEngine({ content: TEST_CONTENT, hitEffects });
   };
 
   const brawl = (): GameState => testState(makeLevel(['..'], {
@@ -118,12 +118,12 @@ describe('every blow in combat is the same act', () => {
     ],
   }));
 
-  const strike = (state: GameState, rules: BattleRuleServices): GameEvent[] => applyAction(state, {
+  const strike = (state: GameState, engine: BattleEngine): GameEvent[] => applyAction(engine, state, {
     kind: 'command',
     unit: state.units[0].id,
     path: [{ x: 0, y: 0 }],
     command: { ability: 'attack', weapon: 'rogue_blades', target: { x: 1, y: 0 } },
-  }, rules);
+  });
 
   it('gives no survivor\'s momentum to a unit its own rider just removed', () => {
     // The riposte lands, poisons — and the poison kills. Only the volley used
@@ -170,7 +170,7 @@ describe('every way off the field is a departure', () => {
       id: 'test.witness',
       handle: ({ unit }) => seen.push(unit.id),
     });
-    return { seen, rules: createBattleRules({ content: TEST_CONTENT, unitDepartures }) };
+    return { seen, rules: createBattleEngine({ content: TEST_CONTENT, unitDepartures }).rules };
   };
 
   it('announces a rout caused by nothing but morale', () => {

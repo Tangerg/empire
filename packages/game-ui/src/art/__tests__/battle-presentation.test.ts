@@ -17,7 +17,7 @@ const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 describe('battle presentation', () => {
   it('resolves story art at the composition edge', () => {
     const presentation = CANDIDATE_01_ART.presentationFor('c01-01');
-    const map = mapFromLevel(candidate01Level('c01-01'), TEST_CATALOG);
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
     const viewport = createSceneViewport(
       SQUARE,
       map.width,
@@ -37,7 +37,7 @@ describe('battle presentation', () => {
 
     expect(presentation.id).toBe('generic');
     expect(presentation.sceneProfile('sandbox-01')).toEqual({});
-    expect(presentation.sceneLayers('sandbox-01', mapFromLevel(candidate01Level('c01-01'), TEST_CATALOG))).toEqual({
+    expect(presentation.sceneLayers('sandbox-01', mapFromLevel(TEST_CATALOG, candidate01Level('c01-01')))).toEqual({
       ground: '',
       underUnits: '',
       overUnits: '',

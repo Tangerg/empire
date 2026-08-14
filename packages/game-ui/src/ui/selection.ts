@@ -279,7 +279,7 @@ function freshSelection(context: SelectionContext, at: Coord): Selection {
   const canRecruit = context.isHumanTurn &&
     terrain.produces.length > 0 &&
     state.map.owners[index] === state.currentPlayer &&
-    recruitOptions(state, at, session.rules.resources, session.content).length > 0;
+    recruitOptions(session.rules, state, at).length > 0;
   return canRecruit ? new RecruitSelection(at) : IDLE;
 }
 

@@ -22,7 +22,7 @@ export interface CareerOption {
   reasons: string[];
 }
 
-export function unitAbilityIds(unit: Unit, content: ContentCatalog): AbilityId[] {
+export function unitAbilityIds(content: ContentCatalog, unit: Unit): AbilityId[] {
   return [...new Set([...content.units.get(unit.type).abilities, ...unit.learnedAbilities])];
 }
 

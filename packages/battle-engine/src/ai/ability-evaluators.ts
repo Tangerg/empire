@@ -130,7 +130,7 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
       score -= taken * unitDefinition.value;
       if (forecast.attackerDies) score -= unitWorth(context.unit, context.rules.content) * 0.9;
     }
-    if (foeDef.tags.includes('support') || unitWeapons(foe, context.rules.content).every((weapon) => weapon.minRange > 1)) score *= 1.1;
+    if (foeDef.tags.includes('support') || unitWeapons(context.rules.content, foe).every((weapon) => weapon.minRange > 1)) score *= 1.1;
     score += (context.mission.priorityUnits.get(foe.id) ?? 0) * 260;
     for (const [protectedId, weight] of context.mission.protectedUnits) {
       const protectedUnit = context.state.units.find((candidate) => candidate.id === protectedId);

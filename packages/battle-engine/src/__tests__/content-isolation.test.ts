@@ -149,14 +149,14 @@ describe('per-composition content catalogs', () => {
     const steel = catalogFor(themePack('steel', 30));
     const bronze = catalogFor(themePack('bronze', 70));
 
-    const steelMap = mapFromLevel(duel('steel'), steel);
-    const bronzeMap = mapFromLevel(duel('bronze'), bronze);
+    const steelMap = mapFromLevel(steel, duel('steel'));
+    const bronzeMap = mapFromLevel(bronze, duel('bronze'));
 
     expect(steelMap.tiles[0]).toBe('steel.keep');
     expect(bronzeMap.tiles[0]).toBe('bronze.keep');
     // And each serialises back to the identical rows through its own encoding.
-    expect(terrainRows(steelMap, steel)).toEqual(['C..']);
-    expect(terrainRows(bronzeMap, bronze)).toEqual(['C..']);
+    expect(terrainRows(steel, steelMap)).toEqual(['C..']);
+    expect(terrainRows(bronze, bronzeMap)).toEqual(['C..']);
   });
 
   it('runs two engines on different themes at the same time', () => {
@@ -203,6 +203,6 @@ describe('per-composition content catalogs', () => {
 
   it('refuses to build a state from a level the catalog cannot read', () => {
     const steel = catalogFor(themePack('steel', 30));
-    expect(() => createState(duel('bronze'), steel)).toThrow(/unknown unit "bronze.trooper"/);
+    expect(() => createState(steel, duel('bronze'))).toThrow(/unknown unit "bronze.trooper"/);
   });
 });

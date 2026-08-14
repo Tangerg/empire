@@ -372,7 +372,7 @@ export class EditorApp {
       if (!file) return;
       try {
         const level = normaliseLevel(JSON.parse(await file.text()));
-        mapFromLevel(level, this.content); // fail fast on a broken terrain grid
+        mapFromLevel(this.content, level); // fail fast on a broken terrain grid
         this.loadLevel(level, `已载入 ${level.name}`);
       } catch (error) {
         this.status = `载入失败：${(error as Error).message}`;
@@ -738,7 +738,7 @@ export function initialLevel(content: ContentCatalog): LevelData {
   if (draft) {
     try {
       const level = normaliseLevel(JSON.parse(draft));
-      mapFromLevel(level, content);
+      mapFromLevel(content, level);
       return level;
     } catch {
       /* fall through to a blank map */

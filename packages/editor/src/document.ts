@@ -109,7 +109,7 @@ export class EditorDocument {
       name: level.name,
       author: level.author ?? '',
       description: level.description ?? '',
-      map: mapFromLevel(level, content),
+      map: mapFromLevel(content, level),
       units: level.units.map((unit) => ({ ...unit })),
       players: level.players.map((player) => ({
         ...player,
@@ -289,7 +289,7 @@ export class EditorDocument {
       description: this.description,
       width: this.map.width,
       height: this.map.height,
-      terrain: terrainRows(this.map, this.content),
+      terrain: terrainRows(this.content, this.map),
       elevation: this.map.elevation.slice(),
       cliffs: this.map.cliffs.map((edge) => ({ from: { ...edge.from }, to: { ...edge.to } })),
       directionalCover: this.map.directionalCover.map((cover) => ({

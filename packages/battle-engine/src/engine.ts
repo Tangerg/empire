@@ -1,4 +1,4 @@
-import { applyActionWith, commandOptions } from './actions';
+import { applyAction, commandOptions } from './actions';
 import { BattleLifecycle } from './turn-cycle';
 import {
   chooseAction,
@@ -107,7 +107,7 @@ export class BattleEngine {
       .filter((issue) => issue.severity === 'error')
       .map((issue) => issue.message);
     if (issues.length > 0) throw new BattleLevelError(level.id, issues);
-    const state = createState(level, this.rules.content, options);
+    const state = createState(this.rules.content, level, options);
     // A level without a deployment phase is already playing, so it needs its
     // first actor turn now; deployment levels get theirs on finishDeployment.
     if (state.phase === 'playing') this.lifecycle(state).start();
@@ -177,7 +177,7 @@ export class BattleEngine {
   dispatchWithReceipt(state: GameState, action: Action): BattleDispatchReceipt {
     const before = cloneState(state);
     try {
-      const events = applyActionWith(state, action, this.actionHandlers, this.rules);
+      const events = applyAction(this, state, action);
       return { events, before };
     } catch (error) {
       restoreState(state, before);

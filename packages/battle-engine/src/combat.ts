@@ -145,7 +145,7 @@ export interface StructureAttackOptions {
 
 
 
-export function unitWeapons(unit: Unit, content: ContentCatalog): WeaponDef[] {
+export function unitWeapons(content: ContentCatalog, unit: Unit): WeaponDef[] {
   return content.units.get(unit.type).weapons.map((id) => content.weapons.get(id));
 }
 
@@ -163,8 +163,8 @@ export function isWeaponReady(
     canAffordTransactions(rules.resources, weapon.resourceCosts, context);
 }
 
-export function primaryWeapon(unit: Unit, content: ContentCatalog): WeaponDef {
-  const weapon = unitWeapons(unit, content)[0];
+export function primaryWeapon(content: ContentCatalog, unit: Unit): WeaponDef {
+  const weapon = unitWeapons(content, unit)[0];
   if (!weapon) throw new Error(`${content.units.get(unit.type).name} has no weapon`);
   return weapon;
 }
@@ -250,7 +250,7 @@ export function computeDamage(
   const content = rules.content;
   const attackerAt = geometry.attackerAt ?? { x: attacker.x, y: attacker.y };
   const defenderAt = geometry.defenderAt ?? { x: defender.x, y: defender.y };
-  const resolvedWeaponId = geometry.weapon ?? primaryWeapon(attacker, content).id;
+  const resolvedWeaponId = geometry.weapon ?? primaryWeapon(content, attacker).id;
   const weapon = requireReadyWeapon(rules, attacker, resolvedWeaponId, player(state, attacker.owner));
   const base = weapon.power;
   const battlefield = new Battlefield(state, content);
@@ -285,10 +285,10 @@ export function forecastStructure(
   options: StructureAttackOptions = {},
 ): StructureCombatForecast {
   const content = rules.content;
-  const resolvedWeaponId = options.weapon ?? primaryWeapon(attacker, content).id;
+  const resolvedWeaponId = options.weapon ?? primaryWeapon(content, attacker).id;
   const weapon = requireReadyWeapon(rules, attacker, resolvedWeaponId, player(state, attacker.owner));
   const def = content.structures.get(structure.type);
-  const statusAttackMultiplier = combinedStatusModifiers(attacker, content).attackMultiplier;
+  const statusAttackMultiplier = combinedStatusModifiers(content, attacker).attackMultiplier;
   const commanderAttackMultiplier = commanderAuraFor(rules, state, attacker).attackMultiplier;
   const strength = attackerStrength(content, attacker);
   const targetBonus = weaponTargetBonus(weapon, def.tags);
@@ -350,7 +350,7 @@ export function bestReactiveStrike(
   stance: ReactionBehavior,
 ): ReactiveStrike | null {
   const owner = player(state, reactor.unit.owner);
-  const candidates = unitWeapons(reactor.unit, rules.content)
+  const candidates = unitWeapons(rules.content, reactor.unit)
     .filter((weapon) => {
       if (stance.conservesResources && (weapon.resourceCosts.length > 0 || weapon.cooldown > 0)) return false;
       return weapon.canCounter &&
@@ -414,7 +414,7 @@ export function forecast(
   options: ForecastOptions = {},
 ): CombatForecast {
   const attackFrom = options.attackFrom ?? { x: attacker.x, y: attacker.y };
-  const resolvedWeaponId = options.weapon ?? primaryWeapon(attacker, rules.content).id;
+  const resolvedWeaponId = options.weapon ?? primaryWeapon(rules.content, attacker).id;
   const defenderAt = { x: defender.x, y: defender.y };
   const interceptor = interceptorFor(rules, state, defender);
   const recipient = interceptor ?? defender;
@@ -481,7 +481,7 @@ export function forecast(
 }
 
 /** Default amount restored by a support-healing ability. */
-export function healAmount(source: Unit, target: Unit, content: ContentCatalog): number {
+export function healAmount(content: ContentCatalog, source: Unit, target: Unit): number {
   const def = content.units.get(target.type);
   const power = Number(source.meta.healPower ?? 30);
   return Math.min(power, def.maxHp - target.hp);

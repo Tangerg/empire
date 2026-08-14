@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction, IllegalActionError } from '../actions';
+import { IllegalActionError } from '../actions';
 import { createBattleEngine } from '../plugins/default';
 import {
   awardRankProgress,
   ThresholdRankProgressionPolicy,
 } from '../progression';
 import type { GameEvent } from '../types';
-import { TEST_CONTENT, TEST_RULES, makeLevel, testCommands, testDamage, testState, u } from './fixtures';
+import { makeLevel, testApply, testCommands, testDamage, testState, TEST_CONTENT, TEST_RULES, u } from './fixtures';
 import { MOMENTUM_RESOURCE } from '../resources';
 
 describe('battle-local rank and hero momentum', () => {
@@ -64,21 +64,21 @@ describe('battle-local rank and hero momentum', () => {
     const hero = state.units[0];
     const target = state.units[1];
     expect(testCommands(state, hero, hero).some((option) => option.weapon === 'heroic_breakthrough')).toBe(false);
-    expect(() => applyAction(state, {
+    expect(() => testApply(state, {
       kind: 'command',
       unit: hero.id,
       path: [{ x: hero.x, y: hero.y }],
       command: { ability: 'attack', weapon: 'heroic_breakthrough', target },
-    }, TEST_RULES)).toThrow(IllegalActionError);
+    })).toThrow(IllegalActionError);
 
     hero.resources[MOMENTUM_RESOURCE].current = 120;
     expect(testCommands(state, hero, hero).some((option) => option.weapon === 'heroic_breakthrough')).toBe(true);
-    const events = applyAction(state, {
+    const events = testApply(state, {
       kind: 'command',
       unit: hero.id,
       path: [{ x: hero.x, y: hero.y }],
       command: { ability: 'attack', weapon: 'heroic_breakthrough', target },
-    }, TEST_RULES);
+    });
     expect(hero.weaponState.heroic_breakthrough.cooldownRemaining).toBe(3);
     expect(events).toContainEqual({
       type: 'resourceChanged',

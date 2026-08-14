@@ -134,7 +134,11 @@ describe('open extension contracts', () => {
       advise: (context) => context.destination({ x: 1, y: 0 }, 9, 'extension target'),
     });
 
-    const intent = buildAiMissionIntent(state, 1, advisors, handlers, TEST_CONTENT);
+    const intent = buildAiMissionIntent(
+      { rules: { content: TEST_CONTENT, objectives: handlers }, objectiveAdvisors: advisors },
+      state,
+      1,
+    );
     expect(intent.destinations).toContainEqual(expect.objectContaining({
       at: { x: 1, y: 0 },
       weight: 9,

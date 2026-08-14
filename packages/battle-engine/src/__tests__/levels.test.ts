@@ -1,8 +1,7 @@
-import { TEST_CONTENT, TEST_RULES, testChooseAction, testMap, testState, testValidate } from './fixtures';
+import { testApply, testChooseAction, testMap, testState, testValidate, TEST_CONTENT } from './fixtures';
 import { describe, expect, it } from 'vitest';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { applyAction } from '../actions';
 import { normaliseLevel, terrainRows } from '../level/index';
 import type { LevelData } from '../types';
 
@@ -33,7 +32,7 @@ describe('built-in levels', () => {
       });
 
       it('round-trips through the terrain serialiser', () => {
-        expect(terrainRows(testMap(level), TEST_CONTENT)).toEqual(level.terrain);
+        expect(terrainRows(TEST_CONTENT, testMap(level))).toEqual(level.terrain);
       });
 
       it('is playable: 12 AI-driven turns without an illegal action', () => {
@@ -42,7 +41,7 @@ describe('built-in levels', () => {
         for (let turn = 0; turn < 12 && s.phase === 'playing'; turn++) {
           for (let guard = 0; guard < 300; guard++) {
             const action = testChooseAction(s);
-            applyAction(s, action, TEST_RULES);
+            testApply(s, action);
             if (action.kind === 'endTurn' || s.phase !== 'playing') break;
           }
         }

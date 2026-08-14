@@ -160,7 +160,7 @@ Abilities.defineAll([
       const weapon = requireReadyWeapon(
         rules,
         unit,
-        q.weaponId ?? primaryWeapon(unit, rules.content).id,
+        q.weaponId ?? primaryWeapon(rules.content, unit).id,
         player(state, unit.owner),
       );
       // A charged weapon locks the tile now and strikes it later; everything
@@ -193,7 +193,7 @@ Abilities.defineAll([
       const content = rules.content;
       const ally = unitAt(state, target);
       if (!ally) throw new Error('no unit to heal');
-      const amount = healAmount(unit, ally, content);
+      const amount = healAmount(content, unit, ally);
       const healed = new UnitEntity(ally).heal(amount, content.units.get(ally.type).maxHp);
       emit({ type: 'heal', source: unit.id, target: ally.id, amount: healed });
       awardRankProgress(rules, unit, Math.max(5, healed), emit);
@@ -207,7 +207,7 @@ Abilities.defineAll([
     priority: 5,
     usable: (rules, { state, unit, at }) => {
       const content = rules.content;
-      if (combinedStatusModifiers(unit, content).cannotCapture) return false;
+      if (combinedStatusModifiers(content, unit).cannotCapture) return false;
       const layers = new MapLayers(state.map);
       if (!content.terrains.get(layers.terrainAt(at)).capturable) return false;
       return layers.owner(at) !== unit.owner;
@@ -257,7 +257,7 @@ export const abilityDef = (rules: AbilityRules, id: string): AbilityDef => rules
 export function canUseAbility(rules: AbilityRules, ability: AbilityDef, query: AbilityQuery): boolean {
   const weapon = ability.weaponFor(rules, query);
   const tags = weapon ? [...ability.tags, ...weapon.tags] : ability.tags;
-  return blockedAbilityStatus(query.unit, tags, rules.content) === null && ability.usable(rules, query);
+  return blockedAbilityStatus(rules.content, query.unit, tags) === null && ability.usable(rules, query);
 }
 
 /** Shared target-policy projection used by menus, AI and authoritative actions. */

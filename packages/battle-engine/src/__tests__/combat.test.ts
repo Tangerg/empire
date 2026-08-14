@@ -1,18 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction } from '../actions';
-import { TEST_RULES, makeLevel, testDamage, testForecast, testState, u } from './fixtures';
+import { makeLevel, testApply, testDamage, testForecast, testState, u } from './fixtures';
 
 describe('damage model', () => {
   it('is deterministic and matches the forecast exactly', () => {
     const s = testState(makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)] }));
     const [a, b] = s.units;
     const fc = testForecast(s, a, b);
-    const events = applyAction(s, {
+    const events = testApply(s, {
       kind: 'command',
       unit: a.id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
-    }, TEST_RULES);
+    });
     const attack = events.find((e) => e.type === 'attack');
     expect(attack).toMatchObject({ damage: fc.strike.damage });
     expect(b.hp).toBe(fc.defenderHpAfter);
@@ -63,12 +62,12 @@ describe('damage model', () => {
     const s = testState(
       makeLevel(['..'], { units: [u(0, 0, 'knight', 1), u(1, 0, 'mage', 2, 5)] }),
     );
-    const events = applyAction(s, {
+    const events = testApply(s, {
       kind: 'command',
       unit: s.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
-    }, TEST_RULES);
+    });
     const attackIndex = events.findIndex((event) => event.type === 'attack');
     const deathIndex = events.findIndex((event) => event.type === 'death');
     expect(attackIndex).toBeGreaterThanOrEqual(0);
@@ -79,12 +78,12 @@ describe('damage model', () => {
     const s = testState(
       makeLevel(['..'], { units: [u(0, 0, 'mage', 1, 5), u(1, 0, 'knight', 2)] }),
     );
-    const events = applyAction(s, {
+    const events = testApply(s, {
       kind: 'command',
       unit: s.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
-    }, TEST_RULES);
+    });
     const counterIndex = events.findIndex((event) => event.type === 'counter');
     const deathIndex = events.findIndex((event) => event.type === 'death' && event.unit === 1);
     expect(counterIndex).toBeGreaterThanOrEqual(0);

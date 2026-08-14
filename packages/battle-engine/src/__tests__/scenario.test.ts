@@ -1,11 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction } from '../actions';
 import { idx } from '../grid';
 import { cloneState } from '../state';
 import { damageStructure } from '../structures';
 import { ScenarioTriggerEntity, TriggerOccurrence } from '../domain/scenario-trigger';
 import type { Action, ScenarioTrigger } from '../types';
-import { TEST_CONTENT, TEST_RULES, makeLevel, testState, u } from './fixtures';
+import { makeLevel, testApply, testState, TEST_CONTENT, u } from './fixtures';
 
 const wait = (unit: number, x: number, y: number): Action => ({
     kind: 'command',
@@ -37,7 +36,7 @@ describe('headless scenario primitives', () => {
       }),
     );
     damageStructure(TEST_CONTENT, s, 'story-node', 1000);
-    const events = applyAction(s, wait(s.units[0].id, 0, 0), TEST_RULES);
+    const events = testApply(s, wait(s.units[0].id, 0, 0));
     expect(s.scenario.variables.nodeDown).toBe(true);
     expect(events).toContainEqual({ type: 'scenarioSignal', signal: 'node.destroyed' });
     expect(s.scenario.firedTriggerIds).toEqual(['node-destroyed']);
@@ -63,12 +62,12 @@ describe('headless scenario primitives', () => {
         },
       }),
     );
-    const events = applyAction(s, {
+    const events = testApply(s, {
       kind: 'command',
       unit: s.units[0].id,
       path: [{ x: 0, y: 0 }, { x: 1, y: 0 }],
       command: { ability: 'wait' },
-    }, TEST_RULES);
+    });
     expect(s.units[0].statuses[0]).toMatchObject({ id: 'shaken', remaining: 2 });
     expect(events.some((event) => event.type === 'statusApplied')).toBe(true);
   });
@@ -93,8 +92,8 @@ describe('headless scenario primitives', () => {
         },
       }),
     );
-    applyAction(s, { kind: 'endTurn' }, TEST_RULES);
-    const events = applyAction(s, { kind: 'endTurn' }, TEST_RULES);
+    testApply(s, { kind: 'endTurn' });
+    const events = testApply(s, { kind: 'endTurn' });
     expect(s.map.tiles[idx(s.map, 1, 0)]).toBe('water');
     expect(s.map.tiles[idx(s.map, 2, 0)]).toBe('water');
     expect(events.filter((event) => event.type === 'terrainChanged')).toHaveLength(2);

@@ -16,7 +16,7 @@ describe('super experience level', () => {
     expect(level.width).toBeGreaterThanOrEqual(27);
     expect(level.units.length).toBeGreaterThanOrEqual(20);
     expect(level.scenario?.triggers?.length).toBeGreaterThanOrEqual(4);
-    const state = createState(level, TEST_CATALOG);
+    const state = createState(TEST_CATALOG, level);
     expect(state.deployment).not.toBeNull();
     expect(state.structures.length).toBe(4);
   });

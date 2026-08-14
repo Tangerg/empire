@@ -625,7 +625,7 @@ export class Hud {
           .filter((objective) => !viewer.objectiveStates[objective.id!]?.hidden)
           .map(
             (objective) =>
-              `<li>${icon('flag')}<span>${escapeHtml(objective.label ?? describeObjective(objective, view.rules.objectives))}</span><em>${escapeHtml(
+              `<li>${icon('flag')}<span>${escapeHtml(objective.label ?? describeObjective(view.rules.objectives, objective))}</span><em>${escapeHtml(
                 objectiveProgress(view.rules, state, viewer.id, objective),
               )}</em></li>`,
           )
@@ -659,7 +659,7 @@ export class Hud {
     if (!view.recruitAt) return '';
     const state = view.state;
     const buyer = player(state, state.currentPlayer);
-    const options = recruitOptions(state, view.recruitAt, view.resources, view.rules.content);
+    const options = recruitOptions(view.rules, state, view.recruitAt);
     const accounts = accountSummary(view.resources, playerResource(buyer));
     return `<div class="modal">
       <div class="modal-box">

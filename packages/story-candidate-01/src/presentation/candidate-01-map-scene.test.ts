@@ -19,7 +19,7 @@ const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 
 describe('candidate-01 authored map scenery', () => {
   it('composes high-resolution surfaces, connected roads and authored regions for Twin Hills', () => {
-    const map = mapFromLevel(candidate01Level('c01-01'), TEST_CATALOG);
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
     expect(candidate01EnvironmentScene('c01-01')?.mapSize).toEqual([map.width, map.height]);
     const layers = candidate01MapSceneryMarkup('c01-01', map);
     const markup = `${layers.ground}${layers.underUnits}${layers.overUnits}`;
@@ -41,7 +41,7 @@ describe('candidate-01 authored map scenery', () => {
   });
 
   it('authors a non-playable forest frame outside the logical cells', () => {
-    const map = mapFromLevel(candidate01Level('c01-01'), TEST_CATALOG);
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
     const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile('c01-01'));
     const frame = candidate01SceneFrameMarkup('c01-01', map, viewport);
 
@@ -52,7 +52,7 @@ describe('candidate-01 authored map scenery', () => {
   });
 
   it('does not leak authored Twin Hills dressing into other maps', () => {
-    const map = mapFromLevel(candidate01Level('c01-02'), TEST_CATALOG);
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-02'));
     expect(candidate01MapSceneryMarkup('c01-02', map)).toEqual({
       ground: '',
       underUnits: '',

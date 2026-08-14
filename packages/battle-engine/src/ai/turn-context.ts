@@ -56,18 +56,12 @@ export class AiTurnContext {
 
   /** What this side is playing for, read once from the board. */
   get agenda(): AiAgenda {
-    return this.agendaCache ??= readAgenda(
-      this.state,
-      this.player,
-      this.planning.objectiveAdvisors,
-      this.rules.objectives,
-      this.content,
-    );
+    return this.agendaCache ??= readAgenda(this.planning, this.state, this.player);
   }
 
   /** Threat weight per tile, including tiles a charging strike already marked. */
   get threat(): Map<number, number> {
-    return this.threatCache ??= threatMap(this.rules, this.state, this.player, this.rules.space, this.content);
+    return this.threatCache ??= threatMap(this.rules, this.state, this.player);
   }
 
   get battlefield(): Battlefield {

@@ -52,7 +52,7 @@ export function commandOptions(
   const moved = !(unit.x === at.x && unit.y === at.y);
   const q: AbilityQuery = { state: state, unit, at, moved };
   const out: CommandOption[] = [];
-  for (const abilityId of unitAbilityIds(unit, content)) {
+  for (const abilityId of unitAbilityIds(content, unit)) {
     if (abilityId === 'attack') continue;
     const ability = abilityDef(rules, abilityId);
     if (!canUseAbility(rules, ability, q)) continue;
@@ -70,7 +70,7 @@ export function commandOptions(
 
   if (content.units.get(unit.type).abilities.includes('attack')) {
     const attack = abilityDef(rules, 'attack');
-    for (const weapon of unitWeapons(unit, content)) {
+    for (const weapon of unitWeapons(content, unit)) {
       const weaponQuery: AbilityQuery = { ...q, weaponId: weapon.id };
       if (!canUseAbility(rules, attack, weaponQuery)) continue;
       const targets = abilityTargets(rules, attack, weaponQuery);
@@ -217,7 +217,7 @@ class CommandActionHandler implements ActionHandler<'command'> {
       moved: !sameCoord(actor.position, destination),
       weaponId,
     };
-    if (!unitAbilityIds(unit, content).includes(ability.id)) {
+    if (!unitAbilityIds(content, unit).includes(ability.id)) {
       context.fail(`${content.units.get(unit.type).name} 没有「${ability.name}」`);
     }
     if (!canUseAbility(context.rules, ability, query)) context.fail(`此处无法使用「${ability.name}」`);
@@ -363,13 +363,19 @@ export const CoreActionHandlers = new ActionHandlerRegistry()
   .register(new RecruitActionHandler())
   .register(new EndTurnActionHandler());
 
-/** Mutates `state` using an injectable action-strategy registry. */
-export function applyActionWith(
-  state: GameState,
-  action: Action,
-  handlers: ActionHandlerRegistry,
-  rules: BattleRuleServices,
-): GameEvent[] {
+/**
+ * Port declared here: the strategies that execute an action, and the rules they
+ * run under. `BattleEngine` satisfies it structurally, because those are exactly
+ * the two things it composes.
+ */
+export interface ActionDispatch {
+  readonly actionHandlers: ActionHandlerRegistry;
+  readonly rules: BattleRuleServices;
+}
+
+/** Mutates `state` by dispatching one action through the composed strategies. */
+export function applyAction(dispatch: ActionDispatch, state: GameState, action: Action): GameEvent[] {
+  const { actionHandlers: handlers, rules } = dispatch;
   const context = new ActionExecutionContext(state, rules);
   if (state.phase === 'over') context.fail('对局已结束');
   const deploymentAction = action.kind === 'deployUnit' || action.kind === 'finishDeployment';
@@ -381,13 +387,3 @@ export function applyActionWith(
   context.lifecycle.concludeIfDecided();
   return context.events;
 }
-
-/** Convenience reducer for callers that already hold a ruleset. */
-export function applyAction(
-  state: GameState,
-  action: Action,
-  rules: BattleRuleServices,
-): GameEvent[] {
-  return applyActionWith(state, action, CoreActionHandlers, rules);
-}
-

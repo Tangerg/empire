@@ -116,7 +116,7 @@ describe('game controller', () => {
 
   it('fits a large board into the available tactical viewport', () => {
     const level = BUILTIN_LEVELS[0];
-    const board = new BoardView(createState(level, TEST_CATALOG), {
+    const board = new BoardView(createState(TEST_CATALOG, level), {
       onTileClick: () => {},
       onTileEnter: () => {},
       onLeave: () => {},
@@ -130,7 +130,7 @@ describe('game controller', () => {
 
   it('keeps authored roads below every tactical actor', () => {
     const level = candidate01Level('c01-01');
-    const board = new BoardView(createState(level, TEST_CATALOG), {
+    const board = new BoardView(createState(TEST_CATALOG, level), {
       onTileClick: () => {},
       onTileEnter: () => {},
       onLeave: () => {},

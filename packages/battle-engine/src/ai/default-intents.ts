@@ -168,7 +168,7 @@ function preferredStance(
     board.distance(candidate, unit) === 1);
   if (adjacentAlly && (definition.tags.includes('support') || definition.tags.includes('monster'))) return 'support';
 
-  const hasScarceRangedWeapon = definition.tags.includes('ranged') && unitWeapons(unit, content).some((weapon) =>
+  const hasScarceRangedWeapon = definition.tags.includes('ranged') && unitWeapons(content, unit).some((weapon) =>
     weapon.tags.includes('ranged') && (weapon.cooldown > 0 || weapon.resourceCosts.length > 0));
   if (hasScarceRangedWeapon) return 'conserve';
   return definition.defaultReaction;
@@ -235,7 +235,7 @@ function proposeRecruit(
   const cap = state.rules.maxUnitsPerPlayer;
   if (cap !== null && unitsOf(state, side).length >= cap) return null;
 
-  for (const at of productionTilesOf(state, side, content)) {
+  for (const at of productionTilesOf(content, state, side)) {
     if (unitAt(state, { x: at.x, y: at.y })) continue;
     const terrain = content.terrains.get(state.map.tiles[idx(state.map, at.x, at.y)]);
     const affordable = terrain.produces.filter((id) =>

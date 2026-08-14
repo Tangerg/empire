@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction, IllegalActionError } from '../actions';
+import { IllegalActionError } from '../actions';
 import { createBattleEngine } from '../plugins/default';
 import { GameSession } from '../session';
 import { cloneState } from '../state';
 import { StatusBehaviorRegistry } from '../statuses';
-import { TEST_CONTENT, TEST_RULES, makeLevel, testAddStatus, testCommands, testDamage, testMoveField, testState, u } from './fixtures';
+import { makeLevel, testAddStatus, testApply, testCommands, testDamage, testMoveField, testState, TEST_CONTENT, u } from './fixtures';
 
 describe('formal tactical statuses', () => {
   it('applies typed combat modifiers outside Unit.meta', () => {
@@ -40,8 +40,8 @@ describe('formal tactical statuses', () => {
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1, 3), u(1, 0, 'soldier', 2)] }),
     );
     testAddStatus(s.units[0], 'poisoned', 1);
-    applyAction(s, { kind: 'endTurn' }, TEST_RULES);
-    const events = applyAction(s, { kind: 'endTurn' }, TEST_RULES);
+    testApply(s, { kind: 'endTurn' });
+    const events = testApply(s, { kind: 'endTurn' });
     expect(s.units[0].hp).toBe(1);
     expect(s.units[0].statuses).toEqual([]);
     expect(events.some((event) => event.type === 'statusTick')).toBe(true);
@@ -65,12 +65,12 @@ describe('formal tactical statuses', () => {
     testAddStatus(state.units[0], 'silenced', 2);
     const options = testCommands(state, state.units[0], { x: 0, y: 0 });
     expect(options.some((option) => option.ability === 'attack')).toBe(false);
-    expect(() => applyAction(state, {
+    expect(() => testApply(state, {
       kind: 'command',
       unit: state.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', weapon: 'mage_bolt', target: { x: 1, y: 0 } },
-    }, TEST_RULES)).toThrow(IllegalActionError);
+    })).toThrow(IllegalActionError);
   });
 
   it('injects a custom lifecycle behavior through BattleEngine', () => {

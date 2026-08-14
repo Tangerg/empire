@@ -22,7 +22,7 @@ export interface VictoryResult {
 
 /** A player is out when they have neither units nor any way to make more. */
 function isDefeated(state: GameState, id: PlayerId, content: ContentCatalog): boolean {
-  return unitsOf(state, id).length === 0 && productionTilesOf(state, id, content).length === 0;
+  return unitsOf(state, id).length === 0 && productionTilesOf(content, state, id).length === 0;
 }
 
 /** Port used by every objective query in this module. */
@@ -91,10 +91,7 @@ export function refreshObjectiveStates(
   }
 }
 
-export function describeObjective(
-  objective: Objective,
-  handlers: ObjectiveHandlerRegistry,
-): string {
+export function describeObjective(handlers: ObjectiveHandlerRegistry, objective: Objective): string {
   return handlers.describe(objective);
 }
 
@@ -144,11 +141,7 @@ export function evaluateVictory(
 }
 
 /** Resource grants a player collects at the start of their turn. */
-export function turnResourceGrantsFor(
-  state: GameState,
-  owner: PlayerId,
-  content: ContentCatalog,
-): ResourceAmount[] {
+export function turnResourceGrantsFor(content: ContentCatalog, state: GameState, owner: PlayerId): ResourceAmount[] {
   const totals = new Map<string, number>();
   const add = (grant: ResourceAmount): void => {
     totals.set(grant.resource, (totals.get(grant.resource) ?? 0) + grant.amount);
@@ -167,13 +160,7 @@ export function turnResourceGrantsFor(
   return [...totals].map(([resource, amount]) => ({ resource, amount }));
 }
 
-export function healRateAt(
-  state: GameState,
-  x: number,
-  y: number,
-  owner: PlayerId,
-  content: ContentCatalog,
-): number {
+export function healRateAt(content: ContentCatalog, state: GameState, x: number, y: number, owner: PlayerId): number {
   const index = idx(state.map, x, y);
   if (!state.rules.healOnOwnedBuilding) return 0;
   if (state.map.owners[index] !== owner) return 0;

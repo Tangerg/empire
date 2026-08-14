@@ -130,7 +130,7 @@ function planSupportAttack(
       candidate.reaction === 'support' &&
       new UnitEntity(candidate).canReact(state.turn) &&
       board.distance(candidate, attackerAt) === 1)
-    .flatMap((supporter) => unitWeapons(supporter, content)
+    .flatMap((supporter) => unitWeapons(content, supporter)
       .filter((weapon) =>
         weapon.canCounter &&
         isWeaponReady(rules, supporter, weapon, state.players.find((p) => p.id === supporter.owner)) &&
@@ -192,7 +192,7 @@ export function forecastCombatPlan(
 ): CombatPlan {
   const content = rules.content;
   const from = options.from ?? { x: attacker.x, y: attacker.y };
-  const resolvedWeaponId = options.weapon ?? primaryWeapon(attacker, content).id;
+  const resolvedWeaponId = options.weapon ?? primaryWeapon(content, attacker).id;
   if (!hostileActionAllowed(state, attacker.owner, from, aimedAt, 'attack')) {
     throw new DomainInvariantError('combat plan target is protected by an engagement rule');
   }

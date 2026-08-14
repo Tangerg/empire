@@ -23,7 +23,7 @@ function serializedTerrainCharacter(content: ContentCatalog, terrain: TerrainId)
 
 /* --------------------------------------------------------------- deserialize */
 
-export function mapFromLevel(level: LevelData, content: ContentCatalog): GameMap {
+export function mapFromLevel(content: ContentCatalog, level: LevelData): GameMap {
   const { width, height } = level;
   if (!Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1) {
     throw new LevelFormatError(`bad map size ${width}x${height}`);
@@ -103,7 +103,7 @@ export function mapFromLevel(level: LevelData, content: ContentCatalog): GameMap
 
 /* ----------------------------------------------------------------- serialize */
 
-export function terrainRows(map: GameMap, content: ContentCatalog): string[] {
+export function terrainRows(content: ContentCatalog, map: GameMap): string[] {
   const rows: string[] = [];
   for (let y = 0; y < map.height; y++) {
     let row = '';

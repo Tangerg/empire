@@ -45,13 +45,20 @@ function cliffMarkup(layout: BoardLayout, map: GameMap): string[] {
 /**
  * Shared renderer for elevation badges, cliffs and directional cover.
  *
- * Takes the layout for the same reason every other decoration does: this was the
- * third tactical layer and the one that stayed square. On a hex board the
+ * Takes its canvas — the art it was handed and where the cells are — for the
+ * same reason every other decoration does: this was the third tactical layer and
+ * the one that stayed square. On a hex board the
  * terrain, the units, the grid lines and the move range all moved to where the
  * cells are, while the height badges, cliff marks and cover edges kept drawing
  * at `x * TILE` — the right pictures in the wrong places.
  */
-export function battlefieldFeatureMarkup(art: ArtDirection, layout: BoardLayout, map: GameMap): string {
+export interface BattlefieldCanvas {
+  readonly art: ArtDirection;
+  readonly layout: BoardLayout;
+}
+
+export function battlefieldFeatureMarkup(canvas: BattlefieldCanvas, map: GameMap): string {
+  const { art, layout } = canvas;
   const parts: string[] = [];
   for (let i = 0; i < map.elevation.length; i++) {
     const value = map.elevation[i];

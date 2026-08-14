@@ -11,12 +11,12 @@ const TEST_CATALOG = createTestCatalog();
 
 describe('shared battlefield feature layer', () => {
   it('renders elevation, cliffs and directional cover through one adapter', () => {
-    const map = mapFromLevel(emptyLevel(4, 4), TEST_CATALOG);
+    const map = mapFromLevel(TEST_CATALOG, emptyLevel(4, 4));
     map.elevation[0] = 2;
     map.cliffs.push({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } });
     map.directionalCover.push({ at: { x: 1, y: 1 }, sides: { north: 'half', east: 'full' } });
 
-    const markup = battlefieldFeatureMarkup(GENERIC_ART, squareLayout, map);
+    const markup = battlefieldFeatureMarkup({ art: GENERIC_ART, layout: squareLayout }, map);
     expect(markup).toContain('>2</text>');
     expect(markup).toContain('#f0b24f');
     expect(markup).toContain('#4f9bc7');
@@ -24,7 +24,7 @@ describe('shared battlefield feature layer', () => {
   });
 
   it('changes its cache key for every visual map feature', () => {
-    const map = mapFromLevel(emptyLevel(4, 4), TEST_CATALOG);
+    const map = mapFromLevel(TEST_CATALOG, emptyLevel(4, 4));
     const initial = battlefieldRenderKey(map);
     map.owners[0] = 1;
     const ownership = battlefieldRenderKey(map);
@@ -44,7 +44,7 @@ describe('shared battlefield feature layer', () => {
    * the wrong places, and its cover was cached under a key that ignored it.
    */
   it('draws its furniture wherever the tiling puts the cells', () => {
-    const map = mapFromLevel(emptyLevel(4, 4), TEST_CATALOG);
+    const map = mapFromLevel(TEST_CATALOG, emptyLevel(4, 4));
     map.elevation[5] = 3;
     map.directionalCover.push({ at: { x: 1, y: 1 }, sides: { hexEast: 'full' } });
     // A tiling whose cells sit nowhere near `x * TILE`, and whose facings are
@@ -58,8 +58,8 @@ describe('shared battlefield feature layer', () => {
       neighbour: (at) => ({ x: at.x * 40 + 600, y: at.y * 28 + 14 }),
     };
 
-    const square = battlefieldFeatureMarkup(GENERIC_ART, squareLayout, map);
-    const hex = battlefieldFeatureMarkup(GENERIC_ART, elsewhere, map);
+    const square = battlefieldFeatureMarkup({ art: GENERIC_ART, layout: squareLayout }, map);
+    const hex = battlefieldFeatureMarkup({ art: GENERIC_ART, layout: elsewhere }, map);
 
     // The square layout has no `hexEast`, so its own neighbour lookup lands on
     // the cell itself and there is no edge to draw; the six-sided one draws it.
@@ -70,10 +70,10 @@ describe('shared battlefield feature layer', () => {
   });
 
   it('labels a continuous plateau once instead of covering every elevated cell', () => {
-    const map = mapFromLevel(emptyLevel(3, 2), TEST_CATALOG);
+    const map = mapFromLevel(TEST_CATALOG, emptyLevel(3, 2));
     map.elevation = [2, 2, 0, 2, 2, 1];
 
-    const markup = battlefieldFeatureMarkup(GENERIC_ART, squareLayout, map);
+    const markup = battlefieldFeatureMarkup({ art: GENERIC_ART, layout: squareLayout }, map);
     expect(markup.match(/class="elevation-badge"/g)).toHaveLength(2);
   });
 });

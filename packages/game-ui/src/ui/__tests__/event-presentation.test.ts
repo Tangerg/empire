@@ -19,7 +19,7 @@ import type { GameEvent, GameState } from '@empire/battle-engine/types';
  */
 
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
-const state = (): GameState => createState(BUILTIN_LEVELS[0], TEST_CATALOG);
+const state = (): GameState => createState(TEST_CATALOG, BUILTIN_LEVELS[0]);
 
 function logContext(current: GameState): BattleLogContext {
   return {

@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction, IllegalActionError } from '../actions';
+import { IllegalActionError } from '../actions';
 import { commanderAuraFor, tacticOptions } from '../commanders';
 import { computeMoveField } from '../movement';
 import { cloneState } from '../state';
-import { TEST_RULES, makeLevel, testDamage, testState, u } from './fixtures';
+import { makeLevel, testApply, testDamage, testState, TEST_RULES, u } from './fixtures';
 import { COMMAND_POINTS_RESOURCE, MOMENTUM_RESOURCE } from '../resources';
 
 function commandLevel() {
@@ -48,12 +48,12 @@ describe('commanders and formation resources', () => {
     const state = testState(level);
     expect(tacticOptions(TEST_RULES, state, 'alpha').map((option) => option.id)).toContain('rally');
 
-    const events = applyAction(state, {
+    const events = testApply(state, {
       kind: 'tactic',
       commander: 'alpha',
       tactic: 'rally',
       target: { x: 1, y: 0 },
-    }, TEST_RULES);
+    });
     expect(state.players[0].resources[COMMAND_POINTS_RESOURCE].current).toBe(0);
     expect(state.units[1].statuses).toContainEqual(
       expect.objectContaining({ id: 'inspired', sourceUnitId: state.units[0].id }),
@@ -62,12 +62,12 @@ describe('commanders and formation resources', () => {
       expect.objectContaining({ type: 'tacticUsed', commander: 'alpha', tactic: 'rally' }),
     );
     expect(() =>
-      applyAction(state, {
+      testApply(state, {
         kind: 'tactic',
         commander: 'alpha',
         tactic: 'rally',
         target: { x: 1, y: 0 },
-      }, TEST_RULES),
+      }),
     ).toThrow(IllegalActionError);
   });
 
@@ -75,15 +75,15 @@ describe('commanders and formation resources', () => {
     const level = commandLevel();
     level.players[0].resources[COMMAND_POINTS_RESOURCE] = { current: 2, capacity: 4 };
     const state = testState(level);
-    applyAction(state, {
+    testApply(state, {
       kind: 'tactic',
       commander: 'alpha',
       tactic: 'steady',
       target: { x: 1, y: 0 },
-    }, TEST_RULES);
+    });
     expect(state.players[0].resources[COMMAND_POINTS_RESOURCE].current).toBe(1);
-    applyAction(state, { kind: 'endTurn' }, TEST_RULES);
-    const events = applyAction(state, { kind: 'endTurn' }, TEST_RULES);
+    testApply(state, { kind: 'endTurn' });
+    const events = testApply(state, { kind: 'endTurn' });
     expect(state.players[0].resources[COMMAND_POINTS_RESOURCE].current).toBe(2);
     expect(state.commanders[0].usedTactics).toEqual([]);
     expect(events).toContainEqual(
@@ -132,12 +132,12 @@ describe('commanders and formation resources', () => {
     const leader = state.units[1];
     const linked = state.units[2];
     expect(commanderAuraFor(TEST_RULES, state, linked).attackMultiplier).toBe(1.2);
-    const events = applyAction(state, {
+    const events = testApply(state, {
       kind: 'command',
       unit: state.units[0].id,
       path: [{ x: 0, y: 0 }],
       command: { ability: 'attack', target: { x: 1, y: 0 } },
-    }, TEST_RULES);
+    });
     expect(state.units.some((unit) => unit.id === leader.id)).toBe(false);
     expect(commanderAuraFor(TEST_RULES, state, linked).attackMultiplier).toBe(1);
     expect(linked.statuses).toContainEqual(expect.objectContaining({ id: 'shaken' }));

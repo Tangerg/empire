@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction } from '../actions';
 import { moveCostOf } from '../movement';
-import { TEST_RULES, makeLevel, testForecast, testMoveField, testScenarioEffect, testState, u } from './fixtures';
+import type { GameEvent } from '../types';
+import { makeLevel, testApply, testForecast, testMoveField, testScenarioEffect, testState, u } from './fixtures';
 
 describe('terrain overlays', () => {
   it('changes movement without replacing the base terrain', () => {
@@ -44,7 +44,7 @@ describe('terrain overlays', () => {
         scenario: { zones: [{ id: 'chamber', cells: [{ x: 1, y: 0 }] }] },
       }),
     );
-    const events: ReturnType<typeof applyAction> = [];
+    const events: GameEvent[] = [];
     testScenarioEffect(
       state,
       { type: 'addOverlay', id: 'breach', overlay: 'vacuum', zone: 'chamber', rounds: 2 },
@@ -68,8 +68,8 @@ describe('terrain overlays', () => {
         },
       }),
     );
-    applyAction(state, { kind: 'endTurn' }, TEST_RULES);
-    const events = applyAction(state, { kind: 'endTurn' }, TEST_RULES);
+    testApply(state, { kind: 'endTurn' });
+    const events = testApply(state, { kind: 'endTurn' });
     expect(events.some((event) => event.type === 'statusApplied' && event.unit === 1)).toBe(true);
     expect(events.some((event) => event.type === 'statusTick' && event.unit === 1)).toBe(true);
     expect(state.units[0].hp).toBeLessThan(100);

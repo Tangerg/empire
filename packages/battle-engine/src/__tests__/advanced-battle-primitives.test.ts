@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import { Abilities, defineAbility } from '../abilities';
-import { applyAction } from '../actions';
 import { DefaultAbilityAiEvaluators } from '../ai';
 
 import { defineCareer } from '../content-builders';
@@ -8,7 +7,7 @@ import { createBattleEngine } from '../plugins/default';
 import { idx } from '../grid';
 import { areAllies, cloneState } from '../state';
 import type { GameEvent } from '../types';
-import { TEST_CONTENT, TEST_RULES, makeLevel, testScenarioEffect, testState, u } from './fixtures';
+import { makeLevel, testApply, testScenarioEffect, testState, TEST_CONTENT, TEST_RULES, u } from './fixtures';
 import { createTestCatalog } from '@empire/test-content';
 
 const collect = () => {
@@ -120,14 +119,14 @@ describe('advanced battle-local primitives', () => {
       deployment: { order: [1], zones: [{ player: 1, zone: 'blue-front' }] },
     }));
     expect(state.phase).toBe('deployment');
-    expect(() => applyAction(state, { kind: 'endTurn' }, TEST_RULES)).toThrow(/部署/);
+    expect(() => testApply(state, { kind: 'endTurn' })).toThrow(/部署/);
 
-    const events = applyAction(state, { kind: 'deployUnit', unit: state.units[0].id, at: { x: 1, y: 0 } }, TEST_RULES);
+    const events = testApply(state, { kind: 'deployUnit', unit: state.units[0].id, at: { x: 1, y: 0 } });
     expect(state.units.find((unit) => unit.key === 'left')?.x).toBe(1);
     expect(state.units.find((unit) => unit.key === 'right')?.x).toBe(0);
     expect(events[0]?.type).toBe('unitDeployed');
 
-    const started = applyAction(state, { kind: 'finishDeployment' }, TEST_RULES);
+    const started = testApply(state, { kind: 'finishDeployment' });
     expect(state.phase).toBe('playing');
     expect(state.turn).toBe(1);
     expect(started.some((event) => event.type === 'battleStarted')).toBe(true);

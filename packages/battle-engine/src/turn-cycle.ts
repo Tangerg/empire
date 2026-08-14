@@ -163,7 +163,7 @@ export class BattleLifecycle {
 
   private grantIncome(owner: PlayerId): void {
     const subject = playerResource(player(this.state, owner));
-    for (const grant of turnResourceGrantsFor(this.state, owner, this.rules.content)) {
+    for (const grant of turnResourceGrantsFor(this.rules.content, this.state, owner)) {
       if (!this.rules.resources.hasAccount(grant.resource, subject)) continue;
       const amount = this.rules.resources.credit(grant.resource, subject, grant.amount);
       this.rules.resources.announce(subject, grant.resource, amount, this.emit);
@@ -176,7 +176,7 @@ export class BattleLifecycle {
     // A charging unit keeps its spent action: that lock is what makes charge
     // time a cost instead of a free delay.
     if (!isCharging(this.state, unit)) entity.readyForTurn();
-    const rate = healRateAt(this.state, unit.x, unit.y, owner, this.rules.content);
+    const rate = healRateAt(this.rules.content, this.state, unit.x, unit.y, owner);
     if (rate <= 0) return;
     const healed = entity.heal(rate, this.rules.content.units.get(unit.type).maxHp);
     if (healed > 0) this.emit({ type: 'regen', unit: unit.id, amount: healed });
