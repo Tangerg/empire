@@ -129,6 +129,7 @@ export class GameController {
       onReaction: (stance) => void this.chooseReaction(stance),
       onFacing: (facing) => void this.chooseFacing(facing),
       onCareer: (career) => void this.chooseCareer(career),
+      onFormation: (formation) => void this.chooseFormation(formation),
       onCancel: () => this.cancel(),
       onEndTurn: () => void this.endTurn(),
       onUndo: () => this.undo(),
@@ -341,6 +342,12 @@ export class GameController {
     const unit = this.selectedUnit;
     if (!unit || this.busy || !this.isHumanTurn) return;
     await this.dispatch({ kind: 'face', unit: unit.id, facing });
+  }
+
+  private async chooseFormation(formation: string | null): Promise<void> {
+    const unit = this.selectedUnit;
+    if (!unit || this.busy || !this.isHumanTurn) return;
+    await this.dispatch({ kind: 'changeFormation', unit: unit.id, formation });
   }
 
   private async chooseCareer(career: string): Promise<void> {
@@ -688,6 +695,7 @@ export class GameController {
         ? this.session.engine.rules.progression.nextThreshold(this.inspect.rank)
         : null,
       careerOptions: commandable ? this.session.careerOptions(commandable) : [],
+      formationOptions: commandable ? this.session.formationOptions(commandable) : [],
       targeting: this.selection.targetingLabel,
       recruitAt: this.selection.recruitAt,
       hint: this.hint(),

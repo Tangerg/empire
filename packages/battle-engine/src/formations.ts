@@ -44,6 +44,43 @@ export const activeFormation = (
   unit: Unit,
 ): FormationDef | null => formationInEffect(rules, state, unit, unit.formation);
 
+/** One shape this unit may take, and whether it would hold where it stands. */
+export interface FormationOption {
+  formation: FormationDef;
+  /** The shape it is in right now. */
+  current: boolean;
+  /** Its spatial invariant holds here, so ordering it would take effect. */
+  eligible: boolean;
+  reasons: string[];
+}
+
+/**
+ * The formations a unit may be ordered into, in the order its type declares.
+ *
+ * The menu counterpart of `validateFormationChange`, and the reason it can
+ * exist: asking whether a shape would hold no longer requires putting it on.
+ * Without this the rules had formations, a dozen shipped unit types declared
+ * them, and no interface could reach one.
+ */
+export function formationOptions(
+  rules: FormationRules,
+  state: GameState,
+  unit: Unit,
+): FormationOption[] {
+  return (rules.content.units.get(unit.type).formations ?? [])
+    .flatMap((id) => {
+      const formation = rules.content.formations.tryGet(id);
+      if (!formation) return [];
+      const eligible = formationInEffect(rules, state, unit, id) !== null;
+      return [{
+        formation,
+        current: unit.formation === id,
+        eligible,
+        reasons: eligible ? [] : [`需要 ${formation.minimumAdjacentAllies} 名相邻友军`],
+      }];
+    });
+}
+
 export function validateFormationChange(
   rules: FormationRules,
   state: GameState,

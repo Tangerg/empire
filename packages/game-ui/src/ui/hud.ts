@@ -6,6 +6,7 @@ import { PAL } from '../art/palette';
 import type { BattleRuleServices } from '@empire/battle-engine/action-system';
 import type { CommandOption } from '@empire/battle-engine/actions';
 import type { CareerOption } from '@empire/battle-engine/careers';
+import type { FormationOption } from '@empire/battle-engine/formations';
 import type { TacticOption } from '@empire/battle-engine/commanders';
 import type { CombatForecast } from '@empire/battle-engine/combat';
 import type { CombatModifier } from '@empire/battle-engine/combat-modifiers';
@@ -53,6 +54,7 @@ export interface HudView {
   casts: PendingCast[];
   rankNextThreshold: number | null;
   careerOptions: CareerOption[];
+  formationOptions: FormationOption[];
   /** Ability whose target we are picking, if any. */
   targeting: string | null;
   recruitAt: Coord | null;
@@ -78,6 +80,8 @@ export interface HudHandlers {
   onReaction(stance: ReactionStance): void;
   onFacing(facing: Direction): void;
   onCareer(career: string): void;
+  /** An empty id means "stand in no formation at all". */
+  onFormation(formation: string | null): void;
   onCancel(): void;
   onEndTurn(): void;
   onUndo(): void;
@@ -203,6 +207,7 @@ export class Hud {
     reaction: (arg) => this.handlers.onReaction(arg as ReactionStance),
     facing: (arg) => this.handlers.onFacing(arg as Direction),
     career: (arg) => this.handlers.onCareer(arg),
+    formation: (arg) => this.handlers.onFormation(arg || null),
     recruit: (arg) => this.handlers.onRecruit(arg),
     zoom: (arg) => this.handlers.onZoom(Number(arg)),
     cancel: () => this.handlers.onCancel(),
@@ -545,6 +550,11 @@ export class Hud {
     const leader = commander ? commanderUnit(view.state, commander) : null;
     const inCommand = Boolean(activeCommanderFor(view.rules, view.state, unit));
     const career = unit.career.current ? content.careers.get(unit.career.current) : null;
+    // The shape a unit is in, and whether it is holding: a formation that has
+    // lost its neighbours contributes nothing, and the player has no other way
+    // to find that out.
+    const formation = unit.formation ? content.formations.tryGet(unit.formation) ?? null : null;
+    const formationHolds = view.formationOptions.some((option) => option.current && option.eligible);
     return `<div class="unit-section">
       <h4>战场状态</h4>
       ${unit.statuses.length > 0
@@ -556,6 +566,9 @@ export class Hud {
       <div class="kv"><span>军衔</span><b>${RANK_LABEL[unit.rank]}${view.rankNextThreshold === null ? '' : ` · ${unit.rankProgress}/${view.rankNextThreshold}`}</b></div>
       <div class="kv"><span>朝向</span><b>${escapeHtml(facingLabel(view, unit.facing))}</b></div>
       ${career ? `<div class="kv"><span>职业</span><b>${escapeHtml(career.name)} · 熟练度 ${unit.career.mastery[career.id] ?? 0}/${career.masteryThreshold}</b></div>` : ''}
+      ${formation
+        ? `<div class="kv"><span>阵形</span><b class="${formationHolds ? 'good' : 'bad'}">${escapeHtml(formation.name)}${formationHolds ? '' : ' · 缺少相邻友军'}</b></div>`
+        : ''}
       ${accountSummary(view.resources, unitResource(unit)).map((account) => `<div class="kv"><span>单位资源</span><b>${escapeHtml(account)}</b></div>`).join('')}
       ${commander
         ? `<div class="kv"><span>编队 ${escapeHtml(commander.id)}</span><b class="${inCommand ? 'good' : 'bad'}">${leader ? (inCommand ? '光环生效' : '超出指挥范围') : '指挥官已离场'}</b></div>`
@@ -575,8 +588,17 @@ export class Hud {
         .map(({ id }) => `<button class="btn ${unit.facing === id ? 'primary' : 'ghost'}" data-act="facing" data-arg="${escapeHtml(id)}">${escapeHtml(facingLabel(view, id))}</button>`)
         .join('')}
     </div>`;
-    if (view.careerOptions.length === 0) return stances;
-    return `${stances}
+    const formations = view.formationOptions.length === 0 ? '' : `
+      <div class="unit-section">
+        <h4>阵形</h4>
+        <div class="cmd-list">${view.formationOptions.map((option) => `<button class="btn ${option.current ? 'primary' : option.eligible ? 'ghost' : 'disabled'}" ${option.eligible || option.current ? '' : 'disabled'}
+          ${option.eligible || option.current ? `data-act="formation"` : ''} data-arg="${escapeHtml(option.current ? '' : option.formation.id)}"
+          title="${escapeHtml(option.reasons.join('；') || `攻击 ×${option.formation.attackMultiplier} · 防御 ${option.formation.defenseDelta >= 0 ? '+' : ''}${option.formation.defenseDelta} · 移动 ${option.formation.movementDelta >= 0 ? '+' : ''}${option.formation.movementDelta}`)}">
+          ${escapeHtml(option.formation.name)}${option.current ? ' · 解除' : ''}
+        </button>`).join('')}</div>
+      </div>`;
+    if (view.careerOptions.length === 0) return `${stances}${formations}`;
+    return `${stances}${formations}
       <div class="unit-section">
         <h4>职业树与转职</h4>
         <div class="cmd-list">${view.careerOptions.map((option) => `<button class="btn ${option.eligible ? 'ghost' : 'disabled'}" ${option.eligible ? '' : 'disabled'}

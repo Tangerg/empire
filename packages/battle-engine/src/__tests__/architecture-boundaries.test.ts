@@ -506,6 +506,35 @@ describe('referential integrity has an owner', () => {
 });
 
 describe('behaviour has an owner', () => {
+  it('names an owner that exists', () => {
+    // "Every rule has exactly one owner, and the owner is named in
+    // `docs/engine-capabilities.md`" is only true while the names resolve. Five
+    // rows named registries that had grown a `Default` prefix, so a reader
+    // following the table to `AiIntents` or `ResourceSubjectResolvers` found
+    // nothing at all.
+    //
+    // Table rows only, and that is the point rather than a convenience: a row
+    // is a claim about the code as it stands, while the prose around it is
+    // allowed — required — to name what was renamed or deleted and why.
+    const docsRoot = join(packagesRoot, '..', 'docs');
+    const sources = [...everyPackageSource(), ...appSources()]
+      .map((file) => readFileSync(file, 'utf8'))
+      .join('\n');
+    const offenders = readdirSync(docsRoot)
+      .filter((entry) => entry.endsWith('.md'))
+      .flatMap((entry) => readFileSync(join(docsRoot, entry), 'utf8')
+        .split('\n')
+        .filter((line) => line.startsWith('|'))
+        .flatMap((line) => [...line.matchAll(/`([^`\n]+)`/g)]
+          // An identifier a reader would grep for: a type or a called function.
+          .map(([, code]) => /^([A-Z][A-Za-z0-9]{2,}|[a-z][A-Za-z0-9]{2,}\(\))$/.exec(code.trim()))
+          .flatMap((match) => (match ? [match[1].replace('()', '')] : []))
+          .filter((name) => !new RegExp(String.raw`\b${name}\b`).test(sources))
+          .map((name) => `docs/${entry}: ${name}`)));
+
+    expect([...new Set(offenders)]).toEqual([]);
+  });
+
   it('lets only an entity write its own fields', () => {
     // `UnitEntity` says all state-changing rules should go through it "so
     // callers cannot forget clamping, resource consumption, or lifecycle

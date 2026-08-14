@@ -75,6 +75,10 @@ export class GameSession {
     return this.engine.careerOptions(this.state, unit);
   }
 
+  formationOptions(unit: Unit) {
+    return this.engine.formationOptions(this.state, unit);
+  }
+
   threatOf(unit: Unit): Set<number> {
     return this.engine.space.threatOf(this.state, unit, this.moveField(unit));
   }

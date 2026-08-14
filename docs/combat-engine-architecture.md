@@ -97,7 +97,7 @@ flowchart TD
 - 紧挨着它的一段手写遍历里另外三个（目标、条件、效果种类），其中条件遍历把 `all | any | not` 写死；
 - 以及此后新增的每一个扩展点——爆炸形状、常驻命令、反应姿态、行动序策略——**没有任何人检查**。一个引用了未注册爆炸形状的关卡不会作为「坏关卡」失败，它会在战斗中途、以一次注册表查找的形式、从恰好跑到那条规则的地方失败。
 
-`RuleReferenceChecks` 是一张开放注册表，每条检查说明「我这个扩展点认识哪些名字」以及「名字会出现在哪些位置」。位置有三种，因为文档有三种：目录（组合引擎时查一次）、关卡（载入那张图时查）、以及**运行中的战斗**（读存档时查）。第三种不是前两种的子集：开打之后才出现的名字——场景效果发下的一条常驻命令、单位改过的姿态、职业授予的能力——只存在于状态里，而状态会被写到磁盘上，几个月后回到一台插件已经变过的引擎里。九条默认检查覆盖了六个原本无人检查的扩展点；规则包新增扩展点时，顺手注册守它的那条检查——这正是它是一项能力而不是一个函数的原因。
+`RuleReferenceCheckRegistry` 是一张开放注册表，每条检查说明「我这个扩展点认识哪些名字」以及「名字会出现在哪些位置」。位置有三种，因为文档有三种：目录（组合引擎时查一次）、关卡（载入那张图时查）、以及**运行中的战斗**（读存档时查）。第三种不是前两种的子集：开打之后才出现的名字——场景效果发下的一条常驻命令、单位改过的姿态、职业授予的能力——只存在于状态里，而状态会被写到磁盘上，几个月后回到一台插件已经变过的引擎里。九条默认检查覆盖了六个原本无人检查的扩展点；规则包新增扩展点时，顺手注册守它的那条检查——这正是它是一项能力而不是一个函数的原因。
 
 `ScenarioConditionHandler.children` 与 `ObjectiveHandler.children` 并列：两处遍历都写死了三种复合条件，规则包自己的复合条件的子节点在两边都被静默跳过。
 
@@ -556,6 +556,7 @@ UI 和 AI 不拥有规则副本。应用只调用以下引擎查询：
 - `forecast()`：单目标交战预览
 - `attackPlan()`：范围、结构和援护的完整计划
 - `careerOptions()`：合法转职选项
+- `formationOptions()`：该兵种声明的阵形，以及每一条此刻站不站得住
 - `chooseAiAction()`：下一项正式 AI Action
 
 `TacticalSpace` 把移动、攻击目标和可见性放在同一个端口。替换潜行、区域控制或寻路策略时，必须整体保持菜单、AI 和提交一致。
@@ -668,7 +669,7 @@ effectHandler('replaceTerrain', apply, {
 })
 ```
 
-`PayloadReferences` 既是建造器也是它建出来的记录：`zones` / `players` / `structures` / `composites` / `objectives` / `statuses` / `terrains` / `overlays` / `unitTypes` / `directives` / `cells` / `edges` / `conditions` / `faults`。「未知」是什么意思由调用方决定——关卡校验器拿一份关卡文档和它的内容目录去解析，`RuleReferenceChecks` 拿「这套规则集实现了什么」去解析。常驻命令是刻意留给后者的那一格。
+`PayloadReferences` 既是建造器也是它建出来的记录：`zones` / `players` / `structures` / `composites` / `objectives` / `statuses` / `terrains` / `overlays` / `unitTypes` / `directives` / `cells` / `edges` / `conditions` / `faults`。「未知」是什么意思由调用方决定——关卡校验器拿一份关卡文档和它的内容目录去解析，`DefaultRuleReferenceChecks` 拿「这套规则集实现了什么」去解析。常驻命令是刻意留给后者的那一格。
 
 顺着这条线掉下来的几件事：
 

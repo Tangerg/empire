@@ -36,7 +36,7 @@
 | 战前部署 | 已实现 | 未实现 | 仅数据可配 | Action 和阶段完整，通用游戏控制器尚无部署交互 |
 | 朝向调整 | 已实现 | 已实现 | 单位初始朝向仅数据可配 | 四方向 `face` Action |
 | 反应姿态 | 已实现 | 已实现 | 初始姿态仅数据可配 | 反击、防御、援护 |
-| 阵形切换 | 已实现 | 未实现 | 仅数据可配 | 规则和 Action 完整，通用 HUD 尚无入口 |
+| 阵形切换 | 已实现 | 已实现 | 仅数据可配 | 单位面板列出该兵种声明的阵形，站不住的那条禁用并说明原因；再点当前阵形即解除 |
 | 登载与卸载 | 已实现 | 未实现 | 仅数据可配 | 保留乘员身份，通用游戏控制器尚无入口 |
 
 ### 随机与可复现
@@ -93,11 +93,11 @@
 | 单体、十字、直线、九宫范围 | 已实现 | 已实现 | 内容包定义 | 使用不可变 `CombatPlan` |
 | 自定义爆炸形状 | 已实现扩展点 | 自动 | 数据引用 | `WeaponAreaShapes` 开放注册表；形状自述是否需要目标格有人 |
 | 自定义常驻命令 | 已实现扩展点 | 已实现 | 数据引用 | `UnitDirectives` 开放注册表：想要哪块地、还想不想打、巡逻怎么推进 |
-| 自定义资源持有者 | 已实现扩展点 | 不适用 | 声明合并 + 注册 | `ResourceSubjectKindMap` 合并类型，`ResourceSubjectResolvers` 提供构建与投影 |
+| 自定义资源持有者 | 已实现扩展点 | 不适用 | 声明合并 + 注册 | `ResourceSubjectKindMap` 合并类型，`DefaultResourceSubjects` 提供构建与投影 |
 | 替换任一条既有规则 | 已实现扩展点 | 不适用 | 不适用 | 插件 `overrides` + `context.replace`；顺序保证消费者读到的是替换后的值 |
-| 扩展点引用校验 | 已实现扩展点 | 已实现（编辑器 lint） | 已实现 | `RuleReferenceChecks`：规则包为自己的扩展点注册守卫，分别回答目录、关卡与**存档**三种文档 |
+| 扩展点引用校验 | 已实现扩展点 | 已实现（编辑器 lint） | 已实现 | `DefaultRuleReferenceChecks`：规则包为自己的扩展点注册守卫，分别回答目录、关卡与**存档**三种文档 |
 | 自定义存档迁移 | 已实现扩展点 | 不适用 | 不适用 | `saves` 能力：`BattleSaveMigrator.register(schema, migrate)`，按引擎实例注册，不共享全局阶梯 |
-| 自定义战役节点 | 已实现扩展点 | 不适用 | 未实现（无战役编辑器） | `CampaignNodeKindMap` 合并类型 + `CampaignNodes` 注册表：商店、兵营、带检定的对话 |
+| 自定义战役节点 | 已实现扩展点 | 不适用 | 未实现（无战役编辑器） | `CampaignNodeKindMap` 合并类型 + `DefaultCampaignNodes` 注册表：商店、兵营、带检定的对话 |
 | 自定义棋盘战术层画法 | 已实现扩展点 | 已实现 | 不适用 | `BoardDecorations`：格线、动作点、行军线、选中与光标环 |
 | 结构攻击与攻城 | 已实现 | 已实现 | 仅数据可配 | 目标结构有耐久、防御和失效状态 |
 | 推拉与碰撞伤害 | 已实现 | 已实现 | 仅数据可配 | 武器效果和场景效果共用解释器 |
@@ -116,7 +116,7 @@
 | 指挥官链接和光环 | 已实现 | 已实现 | 仅数据可配 | 半径外失效 |
 | 指挥点与范围战术 | 已实现 | 已实现 | 仅数据可配 | 数据定义消耗、射程、半径和状态效果 |
 | 指挥官阵亡冲击 | 已实现 | 已实现 | 仅数据可配 | 移除光环并影响链接单位 |
-| 数据定义阵形 | 已实现 | 未实现 | 仅数据可配 | 需要邻接友军维持，当前无通用 HUD 入口 |
+| 数据定义阵形 | 已实现 | 已实现 | 仅数据可配 | 需要邻接友军维持；面板显示当前阵形是否还成立 |
 | 带兵容量 | 未实现 | 未实现 | 未实现 | 运输容量不等于梦幻模拟战式佣兵容量 |
 | 复杂队形占位模板 | 未实现 | 未实现 | 未实现 | 当前阵形不重排单位格位 |
 
@@ -203,7 +203,7 @@
 | `assault`、`guard`、`patrol`、`retreat` 指令 | 已实现 | 关卡或场景可动态修改 |
 | 自定义能力估值 | 已实现扩展点 | 每个能力注册 `AbilityAiEvaluator` |
 | 自定义目标顾问 | 已实现扩展点 | 每个目标注册 `AiObjectiveAdvisor` |
-| 自定义决策项 | 已实现扩展点 | `AiIntents` 有序注册表，内置四项在 10/20/30/40，插件可插入或替换 |
+| 自定义决策项 | 已实现扩展点 | `DefaultAiIntents` 有序注册表，内置四项在 10/20/30/40，插件可插入或替换 |
 | 全局多回合搜索 | 未实现 | 当前是受控候选枚举和启发式评分 |
 | 联机对手或机器学习策略 | 未实现 | 不属于当前运行时 |
 
@@ -220,7 +220,7 @@
 | 场景内外边距 | 已实现 | 视觉画布可大于战术矩形 |
 | 帧动画系统 | 已实现 | 一个 RAF 时间线管理精灵条 |
 | 减少动态效果适配 | 已实现 | 尊重 `prefers-reduced-motion` |
-| 战斗事件表现 | 已实现扩展点 | `BattleEventPresenters`：一种事件的动画与战报文案登记在一起，两半都可省略 |
+| 战斗事件表现 | 已实现扩展点 | `DefaultBattleEventPresenters`：一种事件的动画与战报文案登记在一起，两半都可省略 |
 | 音频系统 | 未实现 | 当前没有稳定音效或音乐端口 |
 | 粒子编辑器和时间线编辑器 | 未实现 | 现有效果由代码和素材配置 |
 
@@ -290,7 +290,7 @@
 | --- | --- |
 | 单位离场之后要发生什么 | `UnitDepartureHandlers`（开放注册表） |
 | 单位回到战场时带回什么 | `returnUnitToField()` |
-| AI 这一回合考虑做什么 | `AiIntents`（开放有序注册表） |
+| AI 这一回合考虑做什么 | `DefaultAiIntents`（开放有序注册表） |
 | 当前选中了什么、点击意味着什么 | `Selection`（通用 UI，每种选择自己回答） |
 | 一次伤害之后要发生什么 | `resolveDamage()` |
 | 这件武器现在能不能用 | 问 `readyWeapon()`，做 `requireReadyWeapon()` |
@@ -308,11 +308,11 @@
 | 一条常驻命令让单位想要什么 | `UnitDirectives`（开放内容注册表） |
 | 一台引擎是怎么组装出来的 | `createBattleEngine`（唯一组装根，全程走插件） |
 | 一条规则怎么被替换掉 | 插件声明 `overrides` + `context.replace`（排在引入者之后、消费者之前） |
-| 内容和关卡引用的名字是否都实现了 | `RuleReferenceChecks`（开放注册表，每个扩展点自带守卫） |
+| 内容和关卡引用的名字是否都实现了 | `DefaultRuleReferenceChecks`（开放注册表，每个扩展点自带守卫） |
 | 一条指令会不会交出回合 | `ActionHandler.handsOffTurn`（由指令自述，撤销栈据此清空） |
 | 一个内容包装得进来吗 | `CONTENT_CHECKS`（十三条具名检查 + 一个 `ContentInstallation`） |
 | 一个组合目标由哪些目标构成 | `declaredChildObjectives`（按文档形状读，不认名字） |
-| 一种战役节点是什么意思 | `CampaignNodes`（开放注册表：怎么离开、要声明什么） |
+| 一种战役节点是什么意思 | `DefaultCampaignNodes`（开放注册表：怎么离开、要声明什么） |
 | 离场方式对名册意味着什么 | `DEFAULT_MARKER_DISPOSITIONS`（可注入表，未知按 `missing`） |
 | 棋盘的战术层怎么画 | `BoardDecorations`（表现自述，而不是被问 id；从 `BoardLayout` 取格子位置） |
 | 两格之间有多远、谁挨着谁、能朝哪些方向、格子画在哪 | `TacticalGrid`（铺法自答；`Board` = 地图 + 铺法） |
@@ -322,7 +322,7 @@
 | 一场战斗怎么存下来、又怎么被拒绝 | `BattleSave` + `SAVE_CHECKS`（五条具名检查） |
 | 一份带版本的存档怎么升到当前 schema | `SchemaMigrator`（战役与战斗共用） |
 | 状态摘要该覆盖什么 | `hashState` 的 `IGNORED_FIELDS`（写「不算」的那几项，默认全算） |
-| 谁可以持有资源账户 | `ResourceSubjectResolvers`（构建持有者，并投影成事件里的引用） |
+| 谁可以持有资源账户 | `DefaultResourceSubjects`（构建持有者，并投影成事件里的引用） |
 | 一次资源变动怎么播报 | `BattleResourceSystem.announce()` |
 | 一个能力是不是攻击、用的哪把武器 | 能力自述 `engagement` 与 `weaponFor`，核心不按 id 猜 |
 | 一个能力能拆出几条「换武器」的命令 | `AbilityDef.weaponChoices`（命令菜单按它展开；派发只收它给过的武器） |
@@ -330,9 +330,10 @@
 | 一个单位的字段谁能写 | `UnitEntity`（站位、士气、状态、朝向、职业……规则模块一律经它） |
 | 一个指挥官记录的生命周期归谁 | `CommanderEntity`（每回合归还战术、跟随所属单位改边） |
 | 某个阵形站在这里成不成立 | `formationInEffect(rules, state, unit, formation)`（问句不写状态；`activeFormation` 是它的便利式） |
+| 一个单位可以下哪几条阵形命令 | `formationOptions(rules, state, unit)`（菜单、禁用理由和当前阵形的唯一来源） |
 | 一次失败是谁的错 | `IllegalActionError` / `DomainInvariantError` / `StoredDocumentError`（引擎里没有第四种，也不许抛裸 `Error`） |
 | 增援落点上站着人怎么办 | `spawnUnits`：这一条不到场，后面的照常（明写的边界，不是异常） |
-| 一种事件长什么样、战报怎么写 | `BattleEventPresenters` |
+| 一种事件长什么样、战报怎么写 | `DefaultBattleEventPresenters` |
 | 一个外壳用哪套美术、某关用哪套演出 | `ArtDirection`（应用组合根装配，provider 顺序由它决定） |
 | 站在这一格的是谁 | `unitAt`（唯一问法；棋盘读模型转交给它） |
 | 一条规则载荷指向了哪些名字 | `references()` → `PayloadReferences`（效果／条件／目标自述，校验器不认 kind） |

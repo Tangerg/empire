@@ -458,3 +458,91 @@ describe('a hex board', () => {
     controller.dispose();
   });
 });
+
+/**
+ * A capability the rules have but no interface can reach is unfinished.
+ *
+ * A dozen shipped unit types declare formations, the action and its validation
+ * have been complete for rounds, and the shared HUD offered no way in — so the
+ * capability table said 「未实现」 for the interface column and meant it.
+ */
+const formationLevel = () => normaliseLevel({
+  schema: 2,
+  id: 'formation-test',
+  name: '阵形',
+  width: 4,
+  height: 2,
+  terrain: ['....', '....'],
+  units: [
+    { x: 0, y: 0, unit: 'c01.swordsman', owner: 1 },
+    { x: 1, y: 0, unit: 'c01.swordsman', owner: 1 },
+    { x: 3, y: 1, unit: 'c01.swordsman', owner: 2 },
+  ],
+  players: [
+    { id: 1, name: 'P1', team: 1, color: '#3f7fd8', controller: 'human', resources: {} },
+    { id: 2, name: 'P2', team: 2, color: '#d8483f', controller: 'human', resources: {} },
+  ],
+  rules: {},
+  victory: [{ type: 'routEnemies' }],
+});
+
+describe('ordering a formation', () => {
+  let host: HTMLElement;
+
+  beforeEach(() => {
+    vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) =>
+      setTimeout(() => cb(performance.now()), 0) as unknown as number,
+    );
+    document.body.innerHTML = '<div id="app"></div>';
+    host = document.getElementById('app')!;
+  });
+
+  const formationButtons = (root: Element) =>
+    [...root.querySelectorAll('[data-act="formation"]')] as HTMLButtonElement[];
+
+  it('offers the shapes this unit type declares, and takes one', async () => {
+    const c = new GameController(formationLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board, 4 * TILE);
+    click(board, { x: 0, y: 0 });
+
+    const offered = formationButtons(c.root);
+    expect(offered.map((button) => button.dataset.arg))
+      .toEqual(['formation-line', 'formation-loose']);
+
+    offered[0].click();
+    for (let frame = 0; frame < 12; frame++) await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(c.root.querySelector('.panel')!.textContent).toContain('线列');
+    // And the same button now offers the way back out.
+    click(board, { x: 0, y: 0 });
+    const current = formationButtons(c.root).find((button) => button.textContent?.includes('解除'));
+    expect(current?.dataset.arg).toBe('');
+    c.dispose();
+  });
+
+  it('shows a shape it cannot hold as unavailable rather than hiding it', () => {
+    const level = formationLevel();
+    // The lone swordsman on the far side has nobody to line up with.
+    const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board, 4 * TILE);
+    click(board, { x: 1, y: 0 });
+    expect(formationButtons(c.root).length).toBeGreaterThan(0);
+
+    const alone = new GameController(normaliseLevel({
+      ...level, id: 'alone', units: [level.units[0], level.units[2]],
+    }), () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(alone.root);
+    const board2 = alone.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board2, 4 * TILE);
+    click(board2, { x: 0, y: 0 });
+
+    const disabled = [...alone.root.querySelectorAll('.unit-section button.disabled')] as HTMLButtonElement[];
+    expect(disabled.some((button) => button.title.includes('相邻友军'))).toBe(true);
+    c.dispose();
+    alone.dispose();
+  });
+});

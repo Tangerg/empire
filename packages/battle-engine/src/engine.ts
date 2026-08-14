@@ -21,6 +21,7 @@ import { cloneState, createState, restoreState, type CreateStateOptions } from '
 import { createBattleSave, type BattleSave } from './battle-save';
 import type { ContentCatalog } from './content-pack';
 import { careerOptions } from './careers';
+import { formationOptions } from './formations';
 import { activeTurnOrder, mayAct, type TurnOrderPolicy } from './turn-order';
 import type { Action, Coord, GameEvent, GameState, LevelData, Unit, WeaponId } from './types';
 
@@ -191,6 +192,10 @@ export class BattleEngine {
 
   careerOptions(state: GameState, unit: Unit) {
     return careerOptions(this.rules, state, unit);
+  }
+
+  formationOptions(state: GameState, unit: Unit) {
+    return formationOptions(this.rules, state, unit);
   }
 
   /**
