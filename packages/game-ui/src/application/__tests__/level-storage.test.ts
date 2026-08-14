@@ -5,6 +5,7 @@ import {
   CUSTOM_LEVELS_KEY,
   loadCustomLevels,
   readCustomLevels,
+  deleteCustomLevel,
   saveCustomLevel,
 } from '../level-storage';
 import type { LevelData } from '@empire/battle-engine';
@@ -71,6 +72,33 @@ describe('custom level storage', () => {
     const result = readCustomLevels();
     expect(result.levels).toEqual([]);
     expect(result.rejected).toHaveLength(1);
+  });
+
+  /**
+   * Reading a broken slot reports it; *writing* one has no safe move at all.
+   *
+   * The writer used to answer "there was nothing there" and then write, so one
+   * corrupt byte plus one save erased every level the author had — underneath a
+   * comment promising unreadable entries are kept verbatim.
+   */
+  it('refuses to overwrite a slot it could not read', () => {
+    localStorage.setItem(CUSTOM_LEVELS_KEY, '{not json');
+
+    expect(() => saveCustomLevel(level('new'))).toThrow(/无法解析/);
+    expect(() => deleteCustomLevel('new')).toThrow(/无法解析/);
+    expect(localStorage.getItem(CUSTOM_LEVELS_KEY)).toBe('{not json');
+  });
+
+  it('keeps an unreadable entry when another level is deleted', () => {
+    localStorage.setItem(CUSTOM_LEVELS_KEY, JSON.stringify([
+      { savedAt: 2, level: { schema: 99, id: 'from-the-future' } },
+      { savedAt: 1, level: level('doomed') },
+    ]));
+
+    deleteCustomLevel('doomed');
+
+    const stored = JSON.parse(localStorage.getItem(CUSTOM_LEVELS_KEY) ?? '[]');
+    expect(stored.map((entry: { level: { id: string } }) => entry.level.id)).toEqual(['from-the-future']);
   });
 });
 

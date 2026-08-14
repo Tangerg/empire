@@ -201,7 +201,11 @@ function renderMenu(): void {
         break;
       case 'delete':
         if (confirm('删除这个自制关卡？')) {
-          deleteCustomLevel(id);
+          try {
+            deleteCustomLevel(id);
+          } catch (error) {
+            alert(`删除失败：${(error as Error).message}`);
+          }
           renderMenu();
         }
         break;

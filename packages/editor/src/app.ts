@@ -333,7 +333,15 @@ export class EditorApp {
 
   private save(): void {
     const errors = this.errorsInDocument();
-    saveCustomLevel(this.exportLevel());
+    try {
+      saveCustomLevel(this.exportLevel());
+    } catch (error) {
+      // A refused save is reported, never silent: the alternative is telling the
+      // author their level is saved when the slot could not be written.
+      this.status = `保存失败：${(error as Error).message}`;
+      this.renderAll();
+      return;
+    }
     this.autosave();
     this.status = errors.length
       ? `已保存（仍有 ${errors.length} 个错误，游戏中可能无法开始）`
@@ -354,11 +362,15 @@ export class EditorApp {
   }
 
   private async copyJson(): Promise<void> {
+    const json = JSON.stringify(this.exportLevel(), null, 2);
     try {
-      await navigator.clipboard.writeText(JSON.stringify(this.exportLevel(), null, 2));
+      await navigator.clipboard.writeText(json);
       this.status = 'JSON 已复制到剪贴板';
-    } catch {
-      this.status = '复制失败（浏览器拒绝了剪贴板权限）';
+    } catch (error) {
+      // The reason comes from the error, not from a guess about it: this used to
+      // report a refused clipboard permission for anything at all, including a
+      // document that failed to serialise.
+      this.status = `复制失败：${(error as Error).message}`;
     }
     this.renderTop();
   }

@@ -545,8 +545,12 @@ export class GameController {
         let events: GameEvent[];
         try {
           events = this.session.dispatch(action);
-        } catch {
-          // A desynced AI suggestion should never stall the game.
+        } catch (error) {
+          // A desynced AI suggestion should never stall the game — but only a
+          // refused *order* is a desync. This used to catch everything, so any
+          // defect thrown from anywhere in the rules became an invisible pass.
+          if (!(error instanceof IllegalActionError)) throw error;
+          this.pushMessage(`AI 的行动被拒绝：${error.message}`);
           events = this.session.tryDispatch({ kind: 'endTurn' }) ?? [];
         }
         await this.settle(events);

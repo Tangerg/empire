@@ -15,6 +15,46 @@ export interface LoadedCustomLevels {
   rejected: { id: string; reason: string }[];
 }
 
+/** What the slot holds, before anybody tries to read a level out of it. */
+type StoredSlot =
+  | { readonly entries: readonly unknown[] }
+  | { readonly unreadable: string };
+
+const idOf = (stored: unknown): unknown => (stored as { level?: { id?: unknown } })?.level?.id;
+
+/**
+ * The slot's entries exactly as stored, read in one place.
+ *
+ * Three functions used to parse this blob with three different failure
+ * policies. The reader reported a bad blob per entry; the writer answered
+ * `existing = []` and then wrote — so one corrupt byte plus one save erased
+ * every level the author had, directly under a comment promising that unreadable
+ * entries are kept verbatim. Deleting one level did the same thing by going
+ * through the *parsed* list, which is the readable subset by construction.
+ *
+ * An unreadable slot has no safe rewrite, so it is reported as such and the
+ * writers refuse rather than replacing what they could not read.
+ */
+function storedSlot(): StoredSlot {
+  const raw = localStorage.getItem(CUSTOM_LEVELS_KEY);
+  if (!raw) return { entries: [] };
+  try {
+    const value: unknown = JSON.parse(raw);
+    return { entries: Array.isArray(value) ? value : [] };
+  } catch (error) {
+    return { unreadable: (error as Error).message };
+  }
+}
+
+/** Refuses rather than overwriting a slot whose contents could not be read. */
+function writableEntries(): readonly unknown[] {
+  const slot = storedSlot();
+  if ('unreadable' in slot) {
+    throw new Error(`自定义关卡存储无法解析，未覆盖：${slot.unreadable}`);
+  }
+  return slot.entries;
+}
+
 /**
  * Browser persistence adapter. The battle engine never imports Web Storage.
  *
@@ -23,20 +63,13 @@ export interface LoadedCustomLevels {
  * innocent-looking empty state.
  */
 export function readCustomLevels(): LoadedCustomLevels {
+  const slot = storedSlot();
+  if ('unreadable' in slot) return { levels: [], rejected: [{ id: '*', reason: slot.unreadable }] };
+
   const levels: StoredLevel[] = [];
   const rejected: { id: string; reason: string }[] = [];
-  let parsed: StoredLevel[];
-  try {
-    const raw = localStorage.getItem(CUSTOM_LEVELS_KEY);
-    if (!raw) return { levels, rejected };
-    const value = JSON.parse(raw);
-    parsed = Array.isArray(value) ? (value as StoredLevel[]) : [];
-  } catch (error) {
-    return { levels, rejected: [{ id: '*', reason: (error as Error).message }] };
-  }
-
-  for (const stored of parsed) {
-    const id = String((stored?.level as { id?: unknown } | undefined)?.id ?? '未命名');
+  for (const stored of slot.entries as StoredLevel[]) {
+    const id = String(idOf(stored) ?? '未命名');
     try {
       levels.push({ savedAt: stored.savedAt ?? 0, level: normaliseLevel(stored.level) });
     } catch (error) {
@@ -51,18 +84,15 @@ export function loadCustomLevels(): StoredLevel[] {
   return readCustomLevels().levels;
 }
 
+/**
+ * Writes one level, keeping every other entry exactly as it was stored.
+ *
+ * Verbatim on purpose: an entry this schema cannot read may still be recoverable
+ * by a later migration, and rewriting the slot from the *parsed* levels is how
+ * one would be thrown away.
+ */
 export function saveCustomLevel(level: LevelData): void {
-  // Unreadable entries are kept verbatim rather than dropped on the next save:
-  // a future migration may still recover them.
-  const raw = localStorage.getItem(CUSTOM_LEVELS_KEY);
-  let existing: StoredLevel[] = [];
-  try {
-    const value = raw ? JSON.parse(raw) : [];
-    existing = Array.isArray(value) ? value : [];
-  } catch {
-    existing = [];
-  }
-  const kept = existing.filter((stored) => (stored?.level as { id?: unknown })?.id !== level.id);
+  const kept = writableEntries().filter((stored) => idOf(stored) !== level.id);
   localStorage.setItem(
     CUSTOM_LEVELS_KEY,
     JSON.stringify([{ level, savedAt: Date.now() }, ...kept].slice(0, 40)),
@@ -70,8 +100,8 @@ export function saveCustomLevel(level: LevelData): void {
 }
 
 export function deleteCustomLevel(id: string): void {
-  const all = loadCustomLevels().filter((stored) => stored.level.id !== id);
-  localStorage.setItem(CUSTOM_LEVELS_KEY, JSON.stringify(all));
+  const kept = writableEntries().filter((stored) => idOf(stored) !== id);
+  localStorage.setItem(CUSTOM_LEVELS_KEY, JSON.stringify(kept));
 }
 
 /** Hand-off slot used by the editor's playtest command. */

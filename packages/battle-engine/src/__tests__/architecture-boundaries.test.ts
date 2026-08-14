@@ -30,6 +30,17 @@ function storyPackageSources(): string[] {
     .flatMap((entry) => runtimeTypeScriptFiles(join(packagesRoot, entry, 'src')));
 }
 
+/** Every application entry point, which is runtime code too. */
+function appSources(): string[] {
+  const appsRoot = join(packagesRoot, '..', 'apps');
+  return readdirSync(appsRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .flatMap((entry) => {
+      const sources = join(appsRoot, entry.name, 'src');
+      return statSync(sources, { throwIfNoEntry: false })?.isDirectory() ? runtimeTypeScriptFiles(sources) : [];
+    });
+}
+
 /** Every workspace package, for the guards that are about the whole repository. */
 function everyPackageSource(): string[] {
   return readdirSync(packagesRoot, { withFileTypes: true })
@@ -448,33 +459,29 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('never lets a caught error decide a rule', () => {
+  it('never lets a caught error decide anything', () => {
     // Sibling of the guard above. `catch { return false }` answers a question
     // with an exception it never looked at: a weapon on cooldown and a weapon
     // the content never defined come back as the same quiet "no", and the
     // second one stops being findable. Asking and committing are different
     // acts — the query returns null, the command throws.
     //
-    // A catch that reports (binds the error, sets a status, rethrows) is fine;
-    // one that silently produces a value is not.
+    // The rule is the axiom's, letter for letter: an unbound `catch` may not
+    // produce a value, so its body must be empty and say why in a comment.
+    // Anything else — a fallback, a status message, a rethrow of something new
+    // — has to bind the error and look at it.
+    //
+    // This guard used to look only for `return` inside an unbound catch, and
+    // that is not the only way to produce a value. It missed `catch { events =
+    // this.session.tryDispatch(...) }` in the AI loop, which turned every defect
+    // thrown anywhere in the rules into an invisible turn pass, and `catch {
+    // existing = [] }` in level storage, which then wrote the empty list back.
     const offenders: string[] = [];
-    const sources = [
-      ...runtimeTypeScriptFiles(coreRoot),
-      ...runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src')),
-      ...runtimeTypeScriptFiles(join(packagesRoot, 'campaign-engine', 'src')),
-      ...runtimeTypeScriptFiles(join(packagesRoot, 'editor', 'src')),
-      // Story packages were outside every guard, and one of them held exactly
-      // this: an art lookup wrapped in `catch { return null }`, so "this pack
-      // draws no such icon" and "asset resolution is broken" were one answer.
-      ...storyPackageSources(),
-    ];
-    for (const file of sources) {
+    for (const file of [...everyPackageSource(), ...appSources()]) {
       // Comments are stripped first: a doc comment that *quotes* the mistake it
       // is warning about is not the mistake, and the guard flagged this very
       // file's explanation of itself before the strip went in.
-      const source = readFileSync(file, 'utf8')
-        .replace(/\/\*[\s\S]*?\*\//g, '')
-        .replace(/(^|[^:])\/\/[^\n]*/g, '$1');
+      const source = stripComments(readFileSync(file, 'utf8'));
       for (const match of source.matchAll(/catch\s*\{/g)) {
         let depth = 0;
         let end = match.index;
@@ -485,9 +492,9 @@ describe('behaviour has an owner', () => {
             break;
           }
         }
-        const body = source.slice(match.index, end);
-        if (/\breturn\b/.test(body)) {
-          offenders.push(`${relative(packagesRoot, file)}: unbound catch returns a value`);
+        const body = source.slice(source.indexOf('{', match.index) + 1, end).trim();
+        if (body.length > 0) {
+          offenders.push(`${relative(packagesRoot, file)}: unbound catch does something (${body.slice(0, 40)})`);
         }
       }
     }

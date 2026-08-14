@@ -101,11 +101,10 @@ function byKey(key: string): Unit | undefined {
 }
 
 function resourceName(id: string): string {
-  try {
-    return engine.rules.resources.adapters.get(id).name;
-  } catch {
-    return id;
-  }
+  // Asked, not attempted: a registry answers `tryGet` for a name it does not
+  // know, and wrapping the *committing* lookup in a catch answered "there is no
+  // such resource" and "the registry threw for some other reason" alike.
+  return engine.rules.resources.adapters.tryGet(id)?.name ?? id;
 }
 
 function accountRows(subject: ResourceSubject): string {
