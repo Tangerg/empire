@@ -1,6 +1,7 @@
 import '@empire/game-ui/styles/app.css';
 import '@empire/editor/styles/editor.css';
 import { createContentCatalog, ContentPackInstaller } from '@empire/battle-engine';
+import { createBattleEngine } from '@empire/battle-engine/plugins/default';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
@@ -16,4 +17,4 @@ new ContentPackInstaller(content).install(
 );
 registerCandidate01Presentation();
 
-new EditorApp(content, initialLevel(content)).mount(document.getElementById('app')!);
+new EditorApp(createBattleEngine({ content }).rules, initialLevel(content)).mount(document.getElementById('app')!);

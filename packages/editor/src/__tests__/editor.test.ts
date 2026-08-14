@@ -6,10 +6,12 @@ import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancien
 import { EditorApp } from '../app';
 
 import { createTestCatalog } from '@empire/test-content';
+import { createBattleEngine } from '@empire/battle-engine/plugins/default';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
+const TEST_RULES = createBattleEngine({ content: TEST_CATALOG }).rules;
 
 function stubLayout(svg: SVGSVGElement, width: number, height: number): void {
   svg.getBoundingClientRect = () =>
@@ -50,7 +52,7 @@ describe('map editor', () => {
     localStorage.clear();
     // jsdom lacks pointer capture.
     Element.prototype.setPointerCapture = () => {};
-    app = new EditorApp(TEST_CATALOG, level());
+    app = new EditorApp(TEST_RULES, level());
     app.mount(host);
     board = host.querySelector('svg.editor-board') as SVGSVGElement;
     stubLayout(board, BUILTIN_LEVELS[0].width * TILE, BUILTIN_LEVELS[0].height * TILE);
@@ -168,5 +170,20 @@ describe('map editor', () => {
     expect(draft).toBeTruthy();
     const restored = normaliseLevel(JSON.parse(draft!));
     expect(restored.terrain[9][9]).toBe('#');
+  });
+});
+
+describe('linting against the ruleset, not just the catalog', () => {
+  it('reports a level naming a rule nobody registered', () => {
+    // The editor used to hold a content catalog alone, so it could tell you a
+    // unit type did not exist but not that a standing order was one the composed
+    // rules had never heard of — that only surfaced when the battle started.
+    const clean = normaliseLevel(JSON.parse(JSON.stringify(BUILTIN_LEVELS[0])));
+    expect(TEST_RULES.referenceChecks.levelIssues(TEST_RULES, clean)).toEqual([]);
+
+    const broken = normaliseLevel(JSON.parse(JSON.stringify(BUILTIN_LEVELS[0])));
+    broken.units[0].directive = { mode: 'nonesuch', waypoints: [], cursor: 0 };
+    expect(TEST_RULES.referenceChecks.levelIssues(TEST_RULES, broken))
+      .toContainEqual(expect.stringContaining('未注册的常驻命令「nonesuch」'));
   });
 });

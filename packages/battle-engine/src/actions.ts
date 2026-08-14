@@ -183,6 +183,7 @@ class DeployUnitActionHandler implements ActionHandler<'deployUnit'> {
 
 class FinishDeploymentActionHandler implements ActionHandler<'finishDeployment'> {
   readonly kind = 'finishDeployment' as const;
+  readonly handsOffTurn = true;
 
   execute(context: ActionExecutionContext): void {
     const state = context.state;
@@ -341,6 +342,7 @@ class RecruitActionHandler implements ActionHandler<'recruit'> {
 
 class EndTurnActionHandler implements ActionHandler<'endTurn'> {
   readonly kind = 'endTurn' as const;
+  readonly handsOffTurn = true;
 
   execute(context: ActionExecutionContext): void {
     context.lifecycle.advanceTurn();

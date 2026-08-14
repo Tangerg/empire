@@ -7,9 +7,10 @@ import { EditorApp } from '../app';
 import { BrushSettings, EDITOR_TOOLS, EditorToolbox, rectTiles, type EditorTool } from '../tools';
 
 import { createTestCatalog } from '@empire/test-content';
+import { createBattleEngine } from '@empire/battle-engine/plugins/default';
 
 /** Composed per suite, exactly like an application composition root. */
-const TEST_CATALOG = createTestCatalog();
+const TEST_RULES = createBattleEngine({ content: createTestCatalog() }).rules;
 
 /**
  * A tool is a strategy, not a `switch` arm.
@@ -93,7 +94,7 @@ describe('tools drive the editor', () => {
     host = document.getElementById('app')!;
     localStorage.clear();
     Element.prototype.setPointerCapture = () => {};
-    app = new EditorApp(TEST_CATALOG, normaliseLevel(JSON.parse(JSON.stringify(source))));
+    app = new EditorApp(TEST_RULES, normaliseLevel(JSON.parse(JSON.stringify(source))));
     app.mount(host);
     board = host.querySelector('svg.editor-board') as SVGSVGElement;
     stubLayout(board, source.width * TILE, source.height * TILE);

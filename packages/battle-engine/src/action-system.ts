@@ -134,6 +134,16 @@ export class ActionExecutionContext {
 
 export interface ActionHandler<K extends ActionKind = ActionKind> {
   readonly kind: K;
+  /**
+   * This order hands the turn to somebody else, so nothing before it can be
+   * taken back.
+   *
+   * Declared by the handler because it is a fact about the order. The session
+   * shell used to compare the action kind against a closed pair of names, so a
+   * rule pack's own "sound the retreat" action would have been offered an undo
+   * that rewound past a turn boundary.
+   */
+  readonly handsOffTurn?: boolean;
   execute(context: ActionExecutionContext, action: ActionKindMap[K]): void;
 }
 
@@ -153,6 +163,11 @@ export class ActionHandlerRegistry extends KeyedRegistry<ActionKind, ActionHandl
 
   override replace<K extends ActionKind>(handler: ActionHandler<K>): this {
     return super.replace(handler as ActionHandler);
+  }
+
+  /** Whether this order ends the current turn's scope. Unknown kinds do not. */
+  handsOffTurn(action: Action): boolean {
+    return this.tryGet(action.kind)?.handsOffTurn ?? false;
   }
 
   dispatch(context: ActionExecutionContext, action: Action): void {

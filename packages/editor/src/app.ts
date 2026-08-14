@@ -1,5 +1,6 @@
 import { loadCustomLevels, saveCustomLevel, stashPlaytest } from '@empire/game-ui/application/level-storage';
 import type { ContentCatalog } from '@empire/battle-engine/content-pack';
+import type { BattleRuleServices } from '@empire/battle-engine/action-system';
 import { TEAM_COLORS } from '@empire/game-ui/art/palette';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
 import {
@@ -91,10 +92,23 @@ export class EditorApp {
   private readonly root = document.createElement('div');
   private readonly scroller = document.createElement('div');
 
+  private readonly content: ContentCatalog;
+
   constructor(
-    private readonly content: ContentCatalog,
+    /**
+     * The ruleset this level is being written for.
+     *
+     * It used to be the content catalog alone, which is why the editor could
+     * tell you that a unit type did not exist but not that an objective kind,
+     * a standing order or a turn-order policy was one nobody had registered:
+     * those live in the composed rules, and the editor could not see them. A
+     * level is authored *against a ruleset*; that is the dependency.
+     */
+    private readonly rules: BattleRuleServices,
     level: LevelData,
   ) {
+    const content = rules.content;
+    this.content = content;
     this.doc = EditorDocument.fromLevel(content, level);
     this.ensureOwnerSelection();
     this.root.className = 'editor-root';
@@ -296,7 +310,14 @@ export class EditorApp {
   }
 
   private lint(): LevelIssue[] {
-    return validateLevel(this.exportLevel(), this.content);
+    const level = this.exportLevel();
+    return [
+      ...validateLevel(level, this.content),
+      // Names only the composed ruleset can confirm: objective kinds, scenario
+      // primitives, standing orders, blast shapes, turn-order policies.
+      ...this.rules.referenceChecks.levelIssues(this.rules, level)
+        .map((message) => ({ severity: 'error' as const, message })),
+    ];
   }
 
   private save(): void {

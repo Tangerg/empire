@@ -114,11 +114,12 @@ export class GameSession {
 
   /** Applies an action. Returns the event list, or throws IllegalActionError. */
   dispatch(action: Action): GameEvent[] {
-    const undoable = action.kind !== 'endTurn' && action.kind !== 'finishDeployment';
+    const handsOff = this.engine.actionHandlers.handsOffTurn(action);
     const { events, before } = this.engine.dispatchWithReceipt(this.state, action);
 
-    if (undoable) this.undoStack.push({ state: before, logLength: this.log.length });
-    else this.undoStack = []; // no rewinding across a turn boundary
+    // No rewinding across a turn boundary; the order itself says whether it is one.
+    if (handsOff) this.undoStack = [];
+    else this.undoStack.push({ state: before, logLength: this.log.length });
 
     this.stamp++;
     this.fieldCache.clear();
