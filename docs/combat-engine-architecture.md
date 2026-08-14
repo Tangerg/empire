@@ -59,22 +59,47 @@ flowchart TD
 
 | 插件 | 提供的能力 |
 | --- | --- |
-| `engine.tactical-rules` | 内容快照、能力、空间、伤害修正、命中效果、状态、成长、行动序策略、随机源 |
+| `engine.tactical-rules` | 能力、空间、伤害修正、命中效果、状态、成长、行动序策略、反应姿态、离场后果、爆炸形状、常驻命令、引用校验、随机源 |
 | `engine.mission-rules` | Action、场景条件、场景效果和目标 |
 | `engine.resource-economy` | 通用资源账户策略 |
 | `engine.ai-planning` | 目标顾问和能力估值 |
 
-能力表当前有 18 项：`content` `abilities` `space` `actionHandlers` `combatModifiers` `hitEffects` `statusBehaviors` `scenarioConditions` `scenarioEffects` `objectives` `progression` `resources` `turnOrders` `reactions` `unitDepartures` `random` `aiObjectiveAdvisors` `abilityAiEvaluators`。
+能力表当前有 22 项，且**只声明一次**：`KernelCapabilityMap extends BattleEngineDependencies`。它曾把这 22 个名字以 `BattleRuleServices['x']` 的形式重抄一遍——一份第二清单，唯一的职责是和第一份保持一致。仍然对声明合并开放：插件可以加只有它自己的插件消费的能力。
 
 插件按业务能力成块，不能为每个类建立一个插件。每个插件声明：
 
 - `id` 和正整数 `version`
-- `provides` 能力清单
+- `provides` —— 它**引入**的能力（同一个能力不能被两个插件引入）
+- `overrides` —— 它**替换**的能力
 - `requiresCapabilities` 能力依赖
 - 必要时使用 `requires` 声明非能力顺序
 - `install(context)` 中的实际提供行为
 
-内核拒绝重复插件版本、竞争能力提供者、缺失依赖、依赖环和声明后未提供的能力。装配结果只暴露只读 `KernelCapabilities`。
+内核拒绝重复插件版本、竞争能力提供者、缺失依赖、依赖环，以及清单与实际安装行为在**任一方向**上的不一致。装配结果只暴露只读 `KernelCapabilities`。
+
+## 只有一个组装根，替换是真的能用
+
+有两件事，插件架构宣称做到了，实际没有。
+
+**它不是组装根。** `createBattleEngine` 手工拼出同样的二十一项默认值，而除了 demo 之外的每个应用、除了一个之外的每个测试，用的都是它——于是微内核成了产品从不执行的真代码，而那份默认值还必须和遮蔽它的插件保持同步。上一轮 `areaShapes` 的清单漂移就是从这里来的。现在只有一个根：`createBattleEngine` 组合默认插件，把结果交给 `buildBattleEngine`。
+
+**替换被写在文档里，却是不可能的。** `provides` 的注释说清单「让替换不必依赖提供者 id」，但两个插件声明同一个能力是错误，store 也拒绝第二次 `provide`。现在插件可以声明 `overrides` 并调用 `context.replace`。让它安全的是顺序：一次替换落在**引入者之后、每一个消费者之前**——因为在 `install` 时就读取某个能力的消费者，否则会一直握着被替换掉的那个值。任务规则插件正是在安装时用 `random` 播种条件注册表，缺了这条边，替换 `random` 就会静默失效。
+
+所以工厂给**每个被替换的能力各建一个插件**，而不是一个插件替换全部：一个同时替换 `random` 和 `scenarioConditions` 的插件，必须同时排在任务规则之前和之后。
+
+`buildBattleEngine` 也从 `SrpgMicrokernel` 上移走了。一个知道如何构造某个具体应用的通用插件宿主，就是一个组装不了别的东西的宿主。
+
+## 内容和规则之间的引用完整性有主人
+
+「这套规则是不是实现了内容和关卡写下的每一个名字」这个问题，过去有三个答案，而对大多数扩展点没有答案：
+
+- 引擎构造函数里三个手写循环（兵种能力、职业能力、武器命中效果）；
+- 紧挨着它的一段手写遍历里另外三个（目标、条件、效果种类），其中条件遍历把 `all | any | not` 写死；
+- 以及此后新增的每一个扩展点——爆炸形状、常驻命令、反应姿态、行动序策略——**没有任何人检查**。一个引用了未注册爆炸形状的关卡不会作为「坏关卡」失败，它会在战斗中途、以一次注册表查找的形式、从恰好跑到那条规则的地方失败。
+
+`RuleReferenceChecks` 是一张开放注册表，每条检查说明「我这个扩展点认识哪些名字」以及「名字会出现在目录或关卡文档的哪些位置」。九条默认检查覆盖了六个原本无人检查的扩展点；规则包新增扩展点时，顺手注册守它的那条检查——这正是它是一项能力而不是一个函数的原因。
+
+`ScenarioConditionHandler.children` 与 `ObjectiveHandler.children` 并列：两处遍历都写死了三种复合条件，规则包自己的复合条件的子节点在两边都被静默跳过。
 
 ## 行动序策略
 
@@ -341,8 +366,10 @@ const ally  = context.ownUnit(action.carrier);                    // 只要求�
 const content = createContentCatalog();
 new ContentPackInstaller(content).install(COMMON_PACK, THEME_PACK);
 const engine = createBattleEngine({ content });
-// 或者交给微内核
-const engine2 = createDefaultMicrokernel(content).buildBattleEngine();
+// 或者显式走微内核
+const engine2 = buildBattleEngine(createDefaultMicrokernel(content).compose());
+// 换掉一条规则，仍然经过插件
+const engine3 = createBattleEngine({ content, reactions: myStances });
 // 直接从内容包组装
 kernel.use(createContentPlugin([COMMON_PACK, THEME_PACK]));
 ```
@@ -622,11 +649,12 @@ AI 需要理解的新目标还要提供 `AiObjectiveAdvisor`，不能让 AI 根�
 3. UI、AI 和提交是否读取同一合法性与预测？
 4. 失败是否恢复完整状态和事件语义？
 5. 自定义类型是否有对应注册处理器？
-6. 内容目录是否在写入前完成交叉引用校验？
-7. 新策略是否按引擎实例隔离？
-8. 是否提供单元测试、契约测试和至少一个集成测试？
-9. 是否更新[引擎能力目录](./engine-capabilities.md)？
-10. 如果改变 `LevelData`，是否更新 schema、正规化、校验与[关卡数据格式](./level-format.md)？
+6. 新扩展点是否注册了守它的 `RuleReferenceCheck`？没有这条，引用错误会推迟到战斗中途才炸。
+7. 默认值是否由插件安装，而不是由某个工厂另抄一份？
+8. 新策略是否按引擎实例隔离？
+9. 是否提供单元测试、契约测试和至少一个集成测试？
+10. 是否更新[引擎能力目录](./engine-capabilities.md)？
+11. 如果改变 `LevelData`，是否更新 schema、正规化、校验与[关卡数据格式](./level-format.md)？
 
 ## 相关文档
 

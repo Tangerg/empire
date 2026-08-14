@@ -91,6 +91,8 @@
 | 自定义爆炸形状 | 已实现扩展点 | 自动 | 数据引用 | `WeaponAreaShapes` 开放注册表；形状自述是否需要目标格有人 |
 | 自定义常驻命令 | 已实现扩展点 | 已实现 | 数据引用 | `UnitDirectives` 开放注册表：想要哪块地、还想不想打、巡逻怎么推进 |
 | 自定义资源持有者 | 已实现扩展点 | 不适用 | 声明合并 + 注册 | `ResourceSubjectKindMap` 合并类型，`ResourceSubjectResolvers` 提供构建与投影 |
+| 替换任一条既有规则 | 已实现扩展点 | 不适用 | 不适用 | 插件 `overrides` + `context.replace`；顺序保证消费者读到的是替换后的值 |
+| 扩展点引用校验 | 已实现扩展点 | 已实现（编辑器 lint） | 已实现 | `RuleReferenceChecks`：规则包为自己的扩展点注册守卫 |
 | 结构攻击与攻城 | 已实现 | 已实现 | 仅数据可配 | 目标结构有耐久、防御和失效状态 |
 | 推拉与碰撞伤害 | 已实现 | 已实现 | 仅数据可配 | 武器效果和场景效果共用解释器 |
 | 随机命中和暴击 | 明确不做 | 未实现 | 未实现 | 当前产品依赖可信预览 |
@@ -297,6 +299,10 @@
 | 一次攻击落地之后要发生什么 | `land()`（战报、成长、附带效果、承受者气势，只此一处） |
 | 这一格能不能站人 | `BattlefieldCell.admits()` / `canReceive()` |
 | 一条常驻命令让单位想要什么 | `UnitDirectives`（开放内容注册表） |
+| 一台引擎是怎么组装出来的 | `createBattleEngine`（唯一组装根，全程走插件） |
+| 一条规则怎么被替换掉 | 插件声明 `overrides` + `context.replace`（排在引入者之后、消费者之前） |
+| 内容和关卡引用的名字是否都实现了 | `RuleReferenceChecks`（开放注册表，每个扩展点自带守卫） |
+| 一条指令会不会交出回合 | `ActionHandler.handsOffTurn`（由指令自述，撤销栈据此清空） |
 | 谁可以持有资源账户 | `ResourceSubjectResolvers`（构建持有者，并投影成事件里的引用） |
 | 一次资源变动怎么播报 | `BattleResourceSystem.announce()` |
 | 一个能力是不是攻击、用的哪把武器 | 能力自述 `engagement` 与 `weaponFor`，核心不按 id 猜 |
@@ -316,7 +322,7 @@
 | TypeScript 整仓类型检查 | 已实现 | `npm run typecheck` |
 | 战斗规则单元和契约测试 | 已实现 | 覆盖领域、扩展、三题材契约和 AI |
 | 应用 DOM 挂载测试 | 已实现 | 游戏、编辑器、Demo 和体验入口 |
-| 架构依赖测试 | 已实现 | 无环、包边界、行为归属、调用形状，共 28 条 |
+| 架构依赖测试 | 已实现 | 无环、包边界、组装根唯一性、行为归属、调用形状，共 32 条 |
 | 界面意图完整性测试 | 已实现 | HUD 与编辑器渲染出的每个 `data-act` / `data-field` 都有人接 |
 | 关卡校验与 AI 冒烟 | 已实现 | 内置关卡自动推演 |
 | 战斗热路径 benchmark | 已实现 | `npm run bench:core` |
