@@ -587,28 +587,6 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('lets only the geometry layer measure the board from coordinates', () => {
-    // "Distance, adjacency, facings, and where a cell sits are one strategy's
-    // answers." A hand-written `Math.abs(a.x - b.x) + Math.abs(a.y - b.y)` is
-    // the square-grid answer wearing no label, and it is right until a hex
-    // chapter ships. The campaign's level-review metrics measured that way, and
-    // the number fed a pacing assertion — the worst place for a silent wrong
-    // answer. The cause was that `tactical-grid.ts` was not exported from the
-    // package root at all: there was nothing else to call.
-    const geometry = ['grid.ts', 'tactical-grid.ts'];
-    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
-      // Screen space is not board space: pixels are the renderer's own units.
-      if (file.includes(`${sep}art${sep}`) || file.endsWith('board.ts')) return [];
-      if (geometry.includes(relative(coreRoot, file))) return [];
-      const source = stripStrings(stripComments(readFileSync(file, 'utf8')));
-      return /Math\.abs\([A-Za-z_$][\w.$\[\]]*\.(?:x|y)\s*-/.test(source)
-        ? [relative(packagesRoot, file)]
-        : [];
-    });
-
-    expect(offenders).toEqual([]);
-  });
-
   it('lets only the transport rules read who is aboard', () => {
     // Same shape as the deployment roster below: `embarkedUnits` is the
     // transport aggregate, and a second reader is how "can this unit board" and
@@ -1044,8 +1022,18 @@ describe('behaviour has an owner', () => {
     // eight-way or hex board was an engine rewrite rather than a level's choice.
     // A hardcoded metric or direction vector outside the tilings is that
     // assumption growing back.
+    //
+    // It did, twice over, and both escapes were in this guard's own shape. It
+    // only scanned three packages, and the campaign package — which reviews its
+    // own levels — hand-wrote a Manhattan sum that fed a pacing assertion. And
+    // the first tell demanded the *whole* two-term expression, so a Chebyshev
+    // max or a single-axis comparison walked past it. The root cause under both:
+    // `tactical-grid.ts` was not exported from the package root, so a module
+    // outside the engine that wanted a distance had nothing to call.
     const tells = [
-      /Math\.abs\([^)]*\.x - [^)]*\.x\) \+ Math\.abs\([^)]*\.y - [^)]*\.y\)/,
+      // Half an expression is enough: Chebyshev, a single-axis test and a
+      // partially-written Manhattan sum all start here.
+      /Math\.abs\([A-Za-z_$][\w.$\[\]]*\.(?:x|y)\s*-/,
       /\bNEIGHBOURS\b/,
       /\{ x: 0, y: -1 \},\s*\{ x: 1, y: 0 \}/,
       /'north'\s*\|\s*'east'/,
@@ -1058,14 +1046,14 @@ describe('behaviour has an owner', () => {
       // The editor draws the storage rectangle on purpose: a brush paints cells.
       join('editor', 'src', 'board.ts'),
     ];
-    const offenders = [
-      ...runtimeTypeScriptFiles(coreRoot),
-      ...runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src')),
-      ...runtimeTypeScriptFiles(join(packagesRoot, 'editor', 'src')),
-    ].flatMap((file) => {
+    // Every workspace package and every application entry point, because the
+    // module that measures is exactly the one nobody thinks to scan.
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
+      // Screen space is not board space: pixels are the renderer's own units.
+      if (file.includes(`${sep}art${sep}`)) return [];
       const name = relative(packagesRoot, file);
       if (allowed.includes(name)) return [];
-      const source = readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+      const source = stripStrings(stripComments(readFileSync(file, 'utf8')));
       return tells.some((tell) => tell.test(source)) ? [name] : [];
     });
 

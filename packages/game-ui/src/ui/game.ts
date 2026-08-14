@@ -638,7 +638,10 @@ export class GameController {
           events = this.session.tryDispatch({ kind: 'endTurn' }) ?? [];
         }
         await this.settle(events);
-        await sleep(action.kind === 'endTurn' ? 120 : 90);
+        // A longer beat after an order that hands the turn over, asked of the
+        // handler rather than matched against `'endTurn'`: a pack's own "sound
+        // the retreat" ends a turn too, and deserves the same pause.
+        await sleep(this.session.engine.actionHandlers.handsOffTurn(action) ? 120 : 90);
       }
     } finally {
       this.aiRunning = false;

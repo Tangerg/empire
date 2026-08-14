@@ -129,6 +129,7 @@ function moveUnit(
 
 class DeployUnitActionHandler implements ActionHandler<'deployUnit'> {
   readonly kind = 'deployUnit' as const;
+  readonly duringDeployment = true;
 
   execute(context: ActionExecutionContext, action: ActionKindMap['deployUnit']): void {
     // Deployment predates any actor turn, so ownership is the whole rule here;
@@ -141,6 +142,7 @@ class DeployUnitActionHandler implements ActionHandler<'deployUnit'> {
 class FinishDeploymentActionHandler implements ActionHandler<'finishDeployment'> {
   readonly kind = 'finishDeployment' as const;
   readonly handsOffTurn = true;
+  readonly duringDeployment = true;
 
   execute(context: ActionExecutionContext): void {
     confirmDeployment(context.lifecycle, context.state, context.emit);
@@ -333,7 +335,7 @@ export function applyAction(dispatch: ActionDispatch, state: GameState, action: 
   const { actionHandlers: handlers, rules } = dispatch;
   const context = new ActionExecutionContext(state, rules);
   if (state.phase === 'over') context.fail('对局已结束');
-  const deploymentAction = action.kind === 'deployUnit' || action.kind === 'finishDeployment';
+  const deploymentAction = handlers.duringDeployment(action);
   if (state.phase === 'deployment' && !deploymentAction) context.fail('请先完成战前部署');
   if (state.phase === 'playing' && deploymentAction) context.fail('战斗开始后不能重新部署');
   handlers.dispatch(context, action);

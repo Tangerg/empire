@@ -154,6 +154,17 @@ export interface ActionHandler<K extends ActionKind = ActionKind> {
    * that rewound past a turn boundary.
    */
   readonly handsOffTurn?: boolean;
+  /**
+   * This order belongs to the pre-battle arrangement, not to the battle.
+   *
+   * Declared by the handler for the same reason `handsOffTurn` is: the
+   * dispatcher used to name `deployUnit` and `finishDeployment` in a literal
+   * pair, three lines below the comment explaining why that was wrong. A rule
+   * pack adding its own deployment-phase order — swapping a unit out of the
+   * reserve, buying a position — would have been refused as "finish deploying
+   * first", which is an order it *was*.
+   */
+  readonly duringDeployment?: boolean;
   execute(context: ActionExecutionContext, action: ActionKindMap[K]): void;
 }
 
@@ -176,6 +187,10 @@ export class ActionHandlerRegistry extends KeyedRegistry<ActionKind, ActionHandl
   }
 
   /** Whether this order ends the current turn's scope. Unknown kinds do not. */
+  duringDeployment(action: Action): boolean {
+    return this.tryGet(action.kind)?.duringDeployment ?? false;
+  }
+
   handsOffTurn(action: Action): boolean {
     return this.tryGet(action.kind)?.handsOffTurn ?? false;
   }

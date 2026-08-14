@@ -55,6 +55,30 @@ describe('a battle interrupted mid-play', () => {
     expect(hashState(resumed)).toBe(hashState(state));
   });
 
+  it('can be put down before the first turn and picked up still deploying', () => {
+    // A phase that no interface could reach was a phase nothing ever saved. Now
+    // that the board opens on it, a save taken there has to come back as a
+    // deployment — not as a battle that has quietly already started.
+    const battle = engine();
+    const state = battle.createState(makeLevel(['....'], {
+      units: [{ ...u(0, 0, 'soldier', 1), key: 'left' }, u(3, 0, 'soldier', 2)],
+      scenario: { zones: [{ id: 'front', cells: [{ x: 0, y: 0 }, { x: 1, y: 0 }] }] },
+      deployment: { order: [1], zones: [{ player: 1, zone: 'front' }] },
+    }));
+    expect(state.phase).toBe('deployment');
+
+    const resumed = battle.loadBattle(throughDisk(battle.saveBattle(state)));
+    expect(hashState(resumed)).toBe(hashState(state));
+    expect(resumed.phase).toBe('deployment');
+
+    // And it is still an arrangement in progress, not a picture of one.
+    const unit = resumed.units.find((candidate) => candidate.key === 'left')!;
+    battle.dispatch(resumed, { kind: 'deployUnit', unit: unit.id, at: { x: 1, y: 0 } });
+    battle.dispatch(resumed, { kind: 'finishDeployment' });
+    expect(resumed.phase).toBe('playing');
+    expect(resumed.turn).toBe(1);
+  });
+
   it('carries a header a slot list can read without loading the battle', () => {
     const battle = engine();
     const save = battle.saveBattle(battleInProgress(battle), '2026-01-01T00:00:00.000Z');

@@ -30,6 +30,15 @@ function span(units: readonly LevelUnit[]): DeploymentSpan {
   return { width, height, area: width * height };
 }
 
+/**
+ * Units this level brings in through core `spawnUnits` reinforcement triggers.
+ *
+ * Deliberately one effect kind, not a registry question. Scenario effects are an
+ * open kind map, so a pack that invented its own arrival effect would not be
+ * counted — and that pack does not exist. Adding a `spawns()` accessor to the
+ * effect contract to serve one level-review metric would be an abstraction paid
+ * for by every effect author, so this stays literal and says so.
+ */
 function reinforcementCount(level: LevelData): number {
   return (level.scenario?.triggers ?? []).reduce((total, trigger) => total + trigger.effects.reduce((subtotal, effect) => (
     subtotal + (effect.type === 'spawnUnits' && effect.reason === 'reinforcement' ? effect.units.length : 0)
