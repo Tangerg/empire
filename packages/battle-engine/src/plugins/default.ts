@@ -15,6 +15,7 @@ import { TurnOrders } from '../turn-order';
 import { Reactions } from '../reactions';
 import { UnitDepartureHandlers } from '../unit-departure';
 import { WeaponAreaShapes } from '../weapon-area';
+import { UnitDirectives } from '../unit-directive';
 import { SplitMixRandom } from '../random';
 import {
   ContentPackInstaller,
@@ -70,6 +71,8 @@ export const TacticalRulesPlugin: EnginePlugin = {
     'reactions',
     'unitDepartures',
     'random',
+    'areaShapes',
+    'directives',
   ],
   install: (context) => {
     const content = context.require('content');
@@ -84,6 +87,7 @@ export const TacticalRulesPlugin: EnginePlugin = {
     context.provide('reactions', Reactions.clone());
     context.provide('unitDepartures', UnitDepartureHandlers.clone());
     context.provide('areaShapes', WeaponAreaShapes.clone());
+    context.provide('directives', UnitDirectives.clone());
   },
 };
 

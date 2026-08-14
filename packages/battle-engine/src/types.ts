@@ -423,7 +423,13 @@ export interface Unit {
   meta: Record<string, number | string | boolean>;
 }
 
-export type UnitDirectiveMode = 'assault' | 'guard' | 'patrol' | 'retreat';
+/**
+ * Open content id backed by the directive registry, like every other content
+ * id here. It shipped as a closed union of four, read by four scattered
+ * branches, so a raid, a forage order or a convoy escort was a change to the
+ * core rather than to a content pack.
+ */
+export type UnitDirectiveMode = string;
 
 /** Story-neutral tactical intent consumed by AI but serialised with the unit. */
 export interface UnitDirectiveState {

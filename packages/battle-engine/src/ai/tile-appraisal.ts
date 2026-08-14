@@ -5,11 +5,14 @@ import type { ContentCatalog } from '../content-pack';
 import type { Coord, GameState, TerrainDef, Unit, UnitDef } from '../types';
 import type { AiAgenda } from './agenda';
 import { hpRatio, nearestDistance, preferredEngagementRange } from './measures';
+import { directiveOf, directivePull, type UnitDirectiveRules } from '../unit-directive';
 import type { AiOptions } from './rules';
 
 /** What appraising a tile needs. `AiTurnContext` satisfies it structurally. */
 export interface TileAppraisalContext {
   readonly state: GameState;
+  /** The ruleset this appraisal is made under; standing orders are content. */
+  readonly rules: UnitDirectiveRules;
   readonly agenda: AiAgenda;
   /** Damage the enemy could land per tile, read once for the whole turn. */
   readonly threat: Map<number, number>;
@@ -94,17 +97,7 @@ export class TileAppraisal {
 
   /** A standing order outranks tactics: a guard that wanders is not guarding. */
   private directivePull(): number {
-    const directive = this.unit.directive;
-    if (directive.mode === 'assault') return 0;
-    if (directive.mode === 'patrol' && directive.waypoints.length > 0) {
-      const destination = directive.waypoints[directive.cursor % directive.waypoints.length];
-      return 320 / (1 + dist(this.at, destination));
-    }
-    const cells = directive.zone ? this.context.state.scenario.zones[directive.zone] ?? [] : [];
-    if (cells.length === 0) return directive.mode === 'retreat' ? -100 : 0;
-    const distance = nearestDistance(this.at, cells);
-    if (directive.mode === 'guard') return distance === 0 ? 260 : -distance * 55;
-    return distance === 0 ? 1_200 : -distance * 180;
+    return directivePull(this.context.rules, this.context.state, this.unit, this.at);
   }
 
   private defensibleGround(): number {
@@ -154,8 +147,8 @@ export class TileAppraisal {
     if (this.foes.length === 0) return 0;
     const toNearestFoe = nearestDistance(this.at, this.foes.map((foe) => ({ x: foe.x, y: foe.y })));
     const ideal = preferredEngagementRange(this.unit, this.context.content);
-    const withdrawing = this.unit.directive.mode === 'retreat' ? 0.15 : 1;
-    return -Math.abs(toNearestFoe - ideal) * 16 * (0.5 + this.aggression) * withdrawing;
+    const wants = directiveOf(this.context.rules, this.unit).engagement;
+    return -Math.abs(toNearestFoe - ideal) * 16 * (0.5 + this.aggression) * wants;
   }
 
   /** Cover only counts against the shooter it is actually between you and. */

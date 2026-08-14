@@ -26,6 +26,7 @@ export interface KernelCapabilityMap {
   reactions: BattleRuleServices['reactions'];
   unitDepartures: BattleRuleServices['unitDepartures'];
   areaShapes: BattleRuleServices['areaShapes'];
+  directives: BattleRuleServices['directives'];
   random: BattleRuleServices['random'];
   aiObjectiveAdvisors: AiObjectiveAdvisorRegistry;
   abilityAiEvaluators: AbilityAiEvaluatorRegistry;
@@ -85,6 +86,12 @@ class KernelCapabilityStore {
 
   providerOf(id: KernelCapabilityId): string | undefined {
     return this.providers.get(id);
+  }
+
+  providedBy(providerId: string): KernelCapabilityId[] {
+    return [...this.providers]
+      .filter(([, provider]) => provider === providerId)
+      .map(([capability]) => capability as KernelCapabilityId);
   }
 }
 
@@ -146,13 +153,27 @@ export class SrpgMicrokernel {
     return new Map([...this.plugins.values()].map((plugin) => [plugin.id, plugin.version]));
   }
 
+  /**
+   * The manifest must match what installation actually did, in both directions.
+   *
+   * Only the first half was checked, and the second half had already drifted:
+   * a capability provided but not declared has no provider as far as ordering
+   * is concerned, so any plugin depending on it is told the capability is
+   * missing — while the composed engine holds it the whole time.
+   */
   compose(): KernelCapabilities {
     const store = new KernelCapabilityStore();
     for (const plugin of this.orderedPlugins()) {
+      const declared = new Set(plugin.provides ?? []);
       plugin.install(new ScopedKernelPluginContext(store, plugin.id));
-      for (const capability of plugin.provides ?? []) {
+      for (const capability of declared) {
         if (store.providerOf(capability) !== plugin.id) {
           throw new Error(`engine plugin "${plugin.id}" declared but did not provide capability "${capability}"`);
+        }
+      }
+      for (const capability of store.providedBy(plugin.id)) {
+        if (!declared.has(capability)) {
+          throw new Error(`engine plugin "${plugin.id}" provided undeclared capability "${capability}"`);
         }
       }
     }
@@ -173,6 +194,7 @@ export class SrpgMicrokernel {
       hitEffects: context.require('hitEffects'),
       statusBehaviors: context.require('statusBehaviors'),
       areaShapes: context.require('areaShapes'),
+      directives: context.require('directives'),
       scenarioConditions: context.require('scenarioConditions'),
       scenarioEffects: context.require('scenarioEffects'),
       objectives: context.require('objectives'),

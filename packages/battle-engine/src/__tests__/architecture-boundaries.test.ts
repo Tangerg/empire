@@ -405,6 +405,20 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('reads a standing order through the registry, never by name', () => {
+    // The four orders were compared to string literals in four places — what
+    // ground to want, how close to stand to the enemy, whether to stop and
+    // fight, when a patrol advances — so a fifth order meant finding all four,
+    // and one of them had already grown a fall-through nobody wrote on purpose.
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (name === 'unit-directive.ts') return [];
+      return /directive\.mode\s*[!=]==?\s*'/.test(readFileSync(file, 'utf8')) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('names a resource holder in exactly one place', () => {
     // Who can hold an account was stated six times: an open kind map, a closed
     // union on the transaction, a three-way `switch` that built one, a closed

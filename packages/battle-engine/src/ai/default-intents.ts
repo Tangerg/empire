@@ -13,6 +13,7 @@ import {
   unitsOf,
 } from '../state';
 import { hasStatus } from '../statuses';
+import { directiveOf } from '../unit-directive';
 import type { ContentCatalog } from '../content-pack';
 import type { Action, Coord, GameState, PlayerId, Unit, UnitTypeId } from '../types';
 import type { AiAgenda } from './agenda';
@@ -90,7 +91,7 @@ function bestCommandFor(context: AiTurnContext, unit: Unit): ScoredAction | null
         });
         if (score === null || !Number.isFinite(score)) continue;
         // A unit under orders to withdraw does not stop to trade blows.
-        const withdrawing = unit.directive.mode === 'retreat' && option.ability === 'attack' ? -5_000 : 0;
+        const withdrawing = option.ability === 'attack' ? directiveOf(rules, unit).fightPenalty : 0;
         consider({
           action: {
             kind: 'command',

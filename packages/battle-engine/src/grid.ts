@@ -87,3 +87,10 @@ export function tileHash(x: number, y: number, salt = 0): number {
   h = h ^ (h >>> 16);
   return ((h >>> 0) % 100000) / 100000;
 }
+
+/** Distance to the closest of several places — not the place itself. */
+export function nearestDistance(from: Coord, places: readonly Coord[]): number {
+  let best = Infinity;
+  for (const place of places) best = Math.min(best, dist(from, place));
+  return best;
+}

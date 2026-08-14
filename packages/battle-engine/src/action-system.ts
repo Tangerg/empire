@@ -21,6 +21,7 @@ import { activeTurnOrder, mayAct, TurnOrders, type TurnOrderPolicy } from './tur
 import { Reactions, type ReactionBehavior } from './reactions';
 import { UnitDepartureHandlers, type UnitDepartureHandlerRegistry } from './unit-departure';
 import { WeaponAreaShapes, type WeaponAreaShapeRegistry } from './weapon-area';
+import { UnitDirectives, type UnitDirectiveBehavior } from './unit-directive';
 import { SplitMixRandom, type RandomSource } from './random';
 import { type ContentCatalog } from './content-pack';
 import type { Action, ActionKindMap, Direction, GameEvent, GameState } from './types';
@@ -52,6 +53,8 @@ export interface BattleRuleServices {
   readonly random: RandomSource;
   /** Blast shapes a weapon's `area` may name. */
   readonly areaShapes: WeaponAreaShapeRegistry;
+  /** Standing orders a unit's `directive.mode` may name. */
+  readonly directives: ContentRegistry<UnitDirectiveBehavior>;
 }
 
 /**
@@ -88,6 +91,7 @@ export function createDefaultBattleRuleServices(
     reactions: overrides.reactions ?? Reactions.clone(),
     unitDepartures: overrides.unitDepartures ?? UnitDepartureHandlers.clone(),
     areaShapes: overrides.areaShapes ?? WeaponAreaShapes.clone(),
+    directives: overrides.directives ?? UnitDirectives.clone(),
   };
 }
 

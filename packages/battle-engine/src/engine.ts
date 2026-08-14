@@ -94,6 +94,7 @@ export class BattleEngine {
       objectives: dependencies.objectives,
       progression: dependencies.progression,
       areaShapes: dependencies.areaShapes,
+      directives: dependencies.directives,
       resources: dependencies.resources,
       turnOrders: dependencies.turnOrders,
       reactions: dependencies.reactions,

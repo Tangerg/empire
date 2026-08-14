@@ -1,7 +1,7 @@
 import { unitWeapons } from '../combat';
-import { dist } from '../grid';
+export { nearestDistance } from '../grid';
 import type { ContentCatalog } from '../content-pack';
-import type { Coord, Unit, UnitTypeId, WeaponDef } from '../types';
+import type { Unit, UnitTypeId, WeaponDef } from '../types';
 
 /**
  * The scalar vocabulary the planner reasons in.
@@ -39,10 +39,3 @@ export const hpRatio = (unit: Unit, content: ContentCatalog): number =>
  */
 export const unitWorth = (unit: Unit, content: ContentCatalog): number =>
   content.units.get(unit.type).value * (0.4 + 0.6 * hpRatio(unit, content)) * (1 + unit.rank * 0.08);
-
-/** Distance to the closest of several places — not the place itself. */
-export function nearestDistance(from: Coord, places: readonly Coord[]): number {
-  let best = Infinity;
-  for (const place of places) best = Math.min(best, dist(from, place));
-  return best;
-}

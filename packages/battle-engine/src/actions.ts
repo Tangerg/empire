@@ -19,6 +19,7 @@ import { disembarkUnit, embarkUnit } from './transports';
 import { playerResource } from './resources';
 import { activeTurnOrder } from './turn-order';
 import { resolvePartingShots } from './zone-of-control';
+import { directiveOf } from './unit-directive';
 import {
   ActionExecutionContext,
   ActionHandlerRegistry,
@@ -129,19 +130,11 @@ function moveUnit(
   if (sameCoord(unit.position, destination)) return;
   const from = unit.position;
   context.battle.moveUnit(unit.id, destination);
-  advancePatrol(unit.state, destination);
+  directiveOf(context.rules, unit.state).arriveAt?.(unit.state, destination);
   if (path.length > 1) context.turnToFace(unit, directionToward(path[path.length - 2], destination));
   context.emit({ type: 'move', unit: unit.id, path });
   // Only a chosen move provokes. A unit thrown out of a zone did not disengage.
   resolvePartingShots(context.rules, context.state, unit.state, from, destination, context.emit);
-}
-
-/** A patrolling unit that reaches its waypoint aims at the next one. */
-function advancePatrol(unit: Unit, destination: Coord): void {
-  const directive = unit.directive;
-  if (directive.mode !== 'patrol' || directive.waypoints.length === 0) return;
-  const waypoint = directive.waypoints[directive.cursor % directive.waypoints.length];
-  if (sameCoord(destination, waypoint)) directive.cursor = (directive.cursor + 1) % directive.waypoints.length;
 }
 
 /* ---------------------------------------------------------- action strategies */
