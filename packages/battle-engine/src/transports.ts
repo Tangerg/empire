@@ -1,4 +1,5 @@
 import { IllegalActionError } from './domain/errors';
+import { UnitEntity } from './domain/unit-entity';
 import { Battlefield } from './domain/battlefield';
 import { boardOf } from './domain/board';
 import type { GridRules } from './tactical-grid';
@@ -49,8 +50,9 @@ export function embarkUnit(
     throw new IllegalActionError('passenger type is forbidden by transport');
   }
   const snapshot = cloneUnitState(unit);
-  snapshot.done = true;
-  snapshot.capture = 0;
+  const boarding = new UnitEntity(snapshot);
+  boarding.finishAction();
+  boarding.clearCapture();
   state.embarkedUnits.push({ carrier: carrierId, unit: snapshot });
   removeUnit(state, unitId);
   emit({ type: 'unitEmbarked', unit: unitId, carrier: carrierId });
@@ -77,10 +79,9 @@ export function disembarkUnit(
   if (!new Battlefield(state, content).cell(at).admits(movement)) {
     throw new IllegalActionError('passenger cannot enter disembark cell');
   }
-  unit.x = at.x;
-  unit.y = at.y;
-  unit.done = true;
-  unit.capture = 0;
+  const landing = new UnitEntity(unit);
+  landing.moveTo(at);
+  landing.finishAction();
   state.embarkedUnits.splice(index, 1);
   state.units.push(unit);
   emit({ type: 'unitDisembarked', unit: unitId, carrier: carrierId, at: { ...at } });

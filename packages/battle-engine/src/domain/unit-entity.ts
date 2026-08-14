@@ -1,4 +1,4 @@
-import type { CareerId, Coord, Direction, FormationId, PlayerId, ReactionStance, Unit, UnitTypeId, UnitWeaponState, WeaponDef, WeaponId } from '../types';
+import type { CareerId, CommanderId, Coord, Direction, FormationId, PlayerId, ReactionStance, Unit, UnitDirectiveState, UnitTypeId, UnitWeaponState, WeaponDef, WeaponId } from '../types';
 import { DomainInvariantError } from './errors';
 
 /**
@@ -42,7 +42,64 @@ export class UnitEntity {
   moveTo(destination: Coord): void {
     this.state.x = destination.x;
     this.state.y = destination.y;
+    this.clearCapture();
+  }
+
+  /**
+   * Capture progress belongs to the tile you are standing on, so stopping
+   * standing on it voids the progress — whether you walked, were deployed
+   * elsewhere, or boarded a transport.
+   */
+  clearCapture(): void {
     this.state.capture = 0;
+  }
+
+  /**
+   * Health, in a change that is neither a wound nor a cure: a career that
+   * raises the maximum, a scenario that puts a unit back at a stated strength.
+   * The upper bound is the caller's, because a unit's maximum lives in the
+   * catalog and an entity cannot see it.
+   */
+  restoreHealth(hp: number): void {
+    this.state.hp = Math.max(1, Math.round(hp));
+  }
+
+  /** Keeps the same fraction of health across a change of maximum. */
+  rescaleHealth(fromMaximum: number, toMaximum: number): void {
+    if (fromMaximum < 1 || toMaximum < 1) {
+      throw new DomainInvariantError('health maxima must be positive');
+    }
+    const scaled = Math.round(toMaximum * (this.state.hp / fromMaximum));
+    this.state.hp = Math.max(1, Math.min(toMaximum, scaled));
+  }
+
+  /** Morale, clamped to this unit's own band. Returns what actually changed. */
+  changeMorale(delta: number): number {
+    const before = this.state.morale.current;
+    this.state.morale.current = Math.max(0, Math.min(this.state.morale.maximum, before + delta));
+    return this.state.morale.current - before;
+  }
+
+  /** Back in the fight — leaving the field ended the panic, not just the poison. */
+  restoreMorale(): void {
+    this.state.morale.current = this.state.morale.maximum;
+  }
+
+  /** Whatever was clinging to this unit stopped when it left the field. */
+  clearStatuses(): void {
+    this.state.statuses = [];
+  }
+
+  changeCommander(commander: CommanderId | null): CommanderId | null {
+    const previous = this.state.commanderId;
+    this.state.commanderId = commander;
+    return previous;
+  }
+
+  changeDirective(directive: UnitDirectiveState): UnitDirectiveState {
+    const previous = this.state.directive;
+    this.state.directive = directive;
+    return previous;
   }
 
   finishAction(): void {

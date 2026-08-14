@@ -1,5 +1,7 @@
+import { BattleAggregate } from './domain/battle-aggregate';
 import { inBounds } from './grid';
 import { structureAt } from './structures';
+import type { ContentCatalog } from './content-pack';
 import type { CompositeState, Coord, GameEvent, GameState } from './types';
 
 export interface CompositeStatus {
@@ -31,6 +33,7 @@ export function compositeStatus(state: GameState, id: string): CompositeStatus {
 
 /** Atomically translates every surviving part of a composite battlefield entity. */
 export function moveComposite(
+  content: ContentCatalog,
   state: GameState,
   id: string,
   delta: Coord,
@@ -57,8 +60,7 @@ export function moveComposite(
   const unique = new Set(destinations.map(({ to }) => `${to.x},${to.y}`));
   if (unique.size !== destinations.length) throw new Error(`composite "${id}" has overlapping destination parts`);
   for (const destination of destinations) {
-    destination.structure.x = destination.to.x;
-    destination.structure.y = destination.to.y;
+    new BattleAggregate(state, content).structure(destination.structure.id).moveTo(destination.to);
     emit({ type: 'structureMoved', structure: destination.structure.id, from: destination.from, to: destination.to });
   }
 }

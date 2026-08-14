@@ -1,3 +1,4 @@
+import { CommanderEntity } from './domain/commander-entity';
 import { UnitEntity } from './domain/unit-entity';
 import { unitAt } from './state';
 import { cloneUnitState } from './unit-state';
@@ -44,27 +45,26 @@ export function returnUnitToField(
   if (state.units.some((unit) => unit.id === fallen.id || (fallen.key && unit.key === fallen.key))) return null;
 
   const unit = cloneUnitState(fallen);
-  unit.owner = request.owner ?? unit.owner;
-  unit.x = request.at.x;
-  unit.y = request.at.y;
-  if (request.hp !== undefined) unit.hp = request.hp;
+  const entity = new UnitEntity(unit);
+  if (request.owner !== undefined) entity.changeOwner(request.owner);
+  entity.moveTo(request.at);
+  if (request.hp !== undefined) entity.restoreHealth(request.hp);
   // Arriving is not acting: whatever brought it back, it waits a turn.
-  unit.done = true;
-  unit.capture = 0;
+  entity.finishAction();
   // Leaving the field ends what was clinging to you, and a status that stopped
   // ticking while you were gone would come back with a stale duration.
-  unit.statuses = [];
+  entity.clearStatuses();
   // Back on the field means back in the fight, for the same reason the
   // statuses go: leaving ended the panic as well as the poison. Flooring at 1
   // — which is what the withdrawal path did — is arithmetically non-zero and
   // practically still doomed: the next shock of any size breaks it again.
-  unit.morale.current = unit.morale.maximum;
-  new UnitEntity(unit).restoreReaction();
+  entity.restoreMorale();
+  entity.restoreReaction();
 
   state.units.push(unit);
   state.nextUnitId = Math.max(state.nextUnitId, unit.id + 1);
   const commander = state.commanders.find((candidate) => candidate.unitId === unit.id);
-  if (commander) commander.owner = unit.owner;
+  if (commander) new CommanderEntity(commander).changeOwner(unit.owner);
 
   const index = state.markers.indexOf(marker);
   if (index >= 0) state.markers.splice(index, 1);

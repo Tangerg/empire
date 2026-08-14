@@ -4,6 +4,7 @@ import {
 } from './resources';
 import { idx } from './grid';
 import { MapLayers } from './domain/map-layers';
+import { UnitEntity } from './domain/unit-entity';
 import { createRandomState } from './random';
 import { DEFAULT_VICTORY, mapFromLevel, resolveRules } from './level/index';
 import { assignObjectiveIds, createObjectiveStates } from './objective-model';
@@ -200,7 +201,7 @@ export function createState(content: ContentCatalog, level: LevelData, options: 
   const commanders = (level.commanders ?? []).map((entry) => {
     const leader = units.find((unit) => unit.key === entry.unitKey);
     if (!leader) throw new Error(`commander ${entry.id} references unknown unit key "${entry.unitKey}"`);
-    if (leader.commanderId === null) leader.commanderId = entry.id;
+    if (leader.commanderId === null) new UnitEntity(leader).changeCommander(entry.id);
     return {
       id: entry.id,
       unitId: leader.id,

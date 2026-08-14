@@ -3,7 +3,8 @@ import { BattleAggregate } from '../domain/battle-aggregate';
 import { CoreActionHandlers } from '../actions';
 import { createBattleRules } from '../plugins/default';
 import { compositeStatus, moveComposite } from '../composites';
-import { activeFormation } from '../formations';
+import { activeFormation, formationInEffect, validateFormationChange } from '../formations';
+import { IllegalActionError } from '../domain/errors';
 import { changeMorale } from '../morale';
 import { embarkUnit } from '../transports';
 import type { GameEvent } from '../types';
@@ -77,6 +78,26 @@ describe('campaign-grade battle primitives', () => {
     });
   });
 
+  it('answers whether a formation would hold without putting it on', () => {
+    const rules = createBattleRules({ content: TEST_CONTENT });
+    rules.content.units.override('soldier', { formations: ['formation-defensive'] });
+    const state = testState(makeLevel(['...'], {
+      units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 1), u(2, 0, 'soldier', 2)],
+    }));
+    const unit = state.units[0];
+    const before = JSON.stringify(unit);
+
+    // Validation used to answer by committing: it wrote the requested formation
+    // onto the live unit, asked whether it was active, and wrote the old one
+    // back — so one throw in between would have left a refused order applied.
+    expect(formationInEffect(rules, state, unit, 'formation-defensive')?.id).toBe('formation-defensive');
+    validateFormationChange(rules, state, unit, 'formation-defensive');
+    expect(() => validateFormationChange(rules, state, unit, 'formation-loose')).toThrow(IllegalActionError);
+
+    expect(JSON.stringify(unit)).toBe(before);
+    expect(unit.formation).toBeNull();
+  });
+
   it('embarks and disembarks identity-preserving units through formal actions', () => {
     const rules = createBattleRules({ content: TEST_CONTENT });
     rules.content.units.override('knight', { transport: { capacity: 2, allowedTags: ['infantry'] } });
@@ -142,7 +163,7 @@ describe('campaign-grade battle primitives', () => {
     expect(compositeStatus(state, 'moving-fortress').state).toBe('neutralized');
     expect(testObjectiveOutcome(state, 1, state.players[0].objectives[0])).toBe('success');
     const events: GameEvent[] = [];
-    moveComposite(state, 'moving-fortress', { x: 1, y: 0 }, (event) => events.push(event));
+    moveComposite(TEST_CONTENT, state, 'moving-fortress', { x: 1, y: 0 }, (event: GameEvent) => events.push(event));
     expect(state.structures.map((structure) => structure.x)).toEqual([2, 3]);
     expect(events.filter((event) => event.type === 'structureMoved')).toHaveLength(2);
   });

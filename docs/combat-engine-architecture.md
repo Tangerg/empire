@@ -46,7 +46,7 @@ flowchart TD
 | --- | --- | --- |
 | 内容定义 | `ContentPack`、`ContentCatalog`、各类 `*Def` | 不保存对局状态，不含流程副作用 |
 | 对局数据 | `GameState`、`GameMap`、`LevelData` | 可结构化克隆，可序列化，不含 DOM 和函数 |
-| 领域模型 | `BattleAggregate`、`UnitEntity`、`PlayerEntity`、`StructureEntity`、`Battlefield` | 维护实体和聚合不变量 |
+| 领域模型 | `BattleAggregate`、`UnitEntity`、`PlayerEntity`、`StructureEntity`、`CommanderEntity`、`Battlefield` | 维护实体和聚合不变量 |
 | 规则策略 | Action、目标、场景、伤害、状态、资源和 AI 注册表 | 开放扩展，实例隔离 |
 | 应用门面 | `BattleEngine`、`GameSession` | 统一查询、提交、回滚、撤销和订阅 |
 | 上层适配 | `game-ui`、`editor`、`campaign-engine` | 只消费引擎，不反向注入题材判断 |
@@ -494,6 +494,12 @@ kernel.use(createContentPlugin([COMMON_PACK, THEME_PACK]));
 ### UnitEntity
 
 `UnitEntity` 管理单元级不变量，例如生命、反应、武器冷却、资源状态、军衔和职业。单位数据仍完整保存在一个 `Unit` 中，策略不会把身份拆成组件袋。
+
+**字段只由它自己的实体写。** 规则模块不许写 `unit.x`、`unit.hp`、`unit.done` 这类字段，架构守卫「lets only an entity write its own fields」会扫描全部工作区包（引擎内按 `Unit` 全部字段，引擎外按只有运行时单位才有的那几个，因为 `LevelUnit` 与编辑器文档共用了同样的名字）。缺哪个动词就给实体加哪个动词，而不是在规则里就地写字段——「一个单位站到某一格」曾经被四处各拼一遍，士气有两个写入者，而**校验换阵形的查询**会把请求的阵形写到活单位上问一句再写回去。
+
+### CommanderEntity
+
+`CommanderEntity` 管理指挥官记录的生命周期：每回合归还战术次数，以及跟随所属单位改边。这两条规则此前分别住在回合资源发放循环和「把阵亡单位放回场上」的模块里，都不属于它们所在的地方。
 
 ### PlayerEntity 和 ObjectiveRuntimeEntity
 

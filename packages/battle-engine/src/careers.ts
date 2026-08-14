@@ -122,12 +122,12 @@ export function changeCareer(
   for (const cost of spent) resources.announce(subject, cost.resource, -cost.amount, emit);
 
   const from = unit.career.current;
-  const hpRatio = unit.hp / content.units.get(unit.type).maxHp;
+  const fromMaxHp = content.units.get(unit.type).maxHp;
   const nextDef = content.units.get(career.unitType);
   const weaponState = initialWeaponState(unit, career, content);
   const entity = new UnitEntity(unit);
   entity.changeCareer(career.id, career.unitType, weaponState);
-  unit.hp = Math.max(1, Math.min(nextDef.maxHp, Math.round(nextDef.maxHp * hpRatio)));
+  entity.rescaleHealth(fromMaxHp, nextDef.maxHp);
   for (const [resource, account] of Object.entries(nextDef.resources)) {
     if (!unit.resources[resource]) unit.resources[resource] = { ...account };
   }

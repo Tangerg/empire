@@ -4,6 +4,7 @@ import type { ContentCatalog } from './content-pack';
 import type { BattlefieldMarker, Coord, GameEvent, GameState, PlayerId, Unit } from './types';
 import { withdrawTransportPassengers } from './transports';
 import { BattleAggregate } from './domain/battle-aggregate';
+import { UnitEntity } from './domain/unit-entity';
 import { announceUnitDeparture, type UnitDepartureRules } from './unit-departure';
 
 /**
@@ -68,9 +69,7 @@ export function changeMorale(
 ): number {
   const unit = requireUnit(state, unitId);
   const adjusted = requested < 0 ? Math.round(requested * (1 - unit.morale.resilience)) : Math.round(requested);
-  const before = unit.morale.current;
-  unit.morale.current = Math.max(0, Math.min(unit.morale.maximum, before + adjusted));
-  const applied = unit.morale.current - before;
+  const applied = new UnitEntity(unit).changeMorale(adjusted);
   if (applied !== 0) emit({ type: 'moraleChanged', unit: unit.id, amount: applied, current: unit.morale.current, reason });
   if (state.rules.moraleEnabled && unit.morale.current <= 0 && state.units.some((candidate) => candidate.id === unit.id)) {
     routeUnit(rules, state, unit.id, emit);

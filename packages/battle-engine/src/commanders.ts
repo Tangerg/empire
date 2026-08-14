@@ -1,4 +1,5 @@
 import { IllegalActionError } from './domain/errors';
+import { CommanderEntity } from './domain/commander-entity';
 import { UnitDepartureHandlers } from './unit-departure';
 import type { MoraleRules } from './morale';
 import { boardOf } from './domain/board';
@@ -143,7 +144,7 @@ export function refreshCommanderTurn(
   const commanders = state.commanders.filter(
     (commander) => commander.owner === ownerId && commanderUnit(state, commander),
   );
-  for (const commander of commanders) commander.usedTactics = [];
+  for (const commander of commanders) new CommanderEntity(commander).refreshTactics();
   const grants = new Map<string, number>();
   for (const commander of commanders) {
     for (const grant of commander.turnGrants) {

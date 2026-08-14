@@ -3,6 +3,7 @@ export * from './objective-runtime-entity';
 export * from './unit-entity';
 export * from './player-entity';
 export * from './structure-entity';
+export * from './commander-entity';
 export * from './unit-fall';
 export * from './battle-aggregate';
 export * from './battlefield';

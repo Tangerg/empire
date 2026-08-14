@@ -158,13 +158,9 @@ class DeployUnitActionHandler implements ActionHandler<'deployUnit'> {
       const occupantAssignment = deployment.assignments.find((entry) => entry.unitIds.includes(occupant.id));
       const occupantCells = occupantAssignment && state.scenario.zones[occupantAssignment.zone];
       if (!occupantCells?.some((cell) => sameCoord(cell, from))) context.fail('交换后会使另一单位离开部署区域');
-      occupant.x = from.x;
-      occupant.y = from.y;
-      occupant.capture = 0;
+      new UnitEntity(occupant).moveTo(from);
     }
-    unit.x = action.at.x;
-    unit.y = action.at.y;
-    unit.capture = 0;
+    new UnitEntity(unit).moveTo(action.at);
     context.emit({ type: 'unitDeployed', unit: unit.id, from, to: { ...action.at } });
   }
 }

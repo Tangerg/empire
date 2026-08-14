@@ -653,12 +653,12 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       throw new Error(`unknown scenario zone "${effect.directive.zone}"`);
     }
     for (const unit of context.select(effect.selector)) {
-      unit.directive = {
+      new UnitEntity(unit).changeDirective({
         mode: effect.directive.mode,
         zone: effect.directive.zone,
         waypoints: effect.directive.waypoints?.map((point) => ({ ...point })) ?? [],
         cursor: Math.max(0, Math.round(effect.directive.cursor ?? 0)),
-      };
+      });
       context.emit({ type: 'directiveChanged', unit: unit.id, mode: unit.directive.mode });
     }
   }, {
@@ -736,7 +736,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     references: (effect) => points().structure(effect.id),
   }))
   .register(effectHandler('moveComposite', (context, effect) => {
-    moveComposite(context.state, effect.id, { x: effect.dx, y: effect.dy }, context.emit);
+    moveComposite(context.content, context.state, effect.id, { x: effect.dx, y: effect.dy }, context.emit);
   }, {
     references: (effect) => points().composite(effect.id),
   }))

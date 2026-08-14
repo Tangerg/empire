@@ -10,14 +10,24 @@ export interface FormationRules extends GridRules {
   readonly content: ContentCatalog;
 }
 
-/** A formation only contributes while its spatial invariant is satisfied. */
-export function activeFormation(
+/**
+ * Would this formation contribute, standing where this unit stands?
+ *
+ * Asked of a formation rather than of the unit's current one, because the
+ * question the change action needs is hypothetical. It used to be answered by
+ * committing: `validateFormationChange` wrote the requested formation onto the
+ * live unit, asked `activeFormation`, and wrote the old one back — a query that
+ * mutated the battle, and one thrown error away from leaving a rejected order
+ * applied.
+ */
+export function formationInEffect(
   rules: FormationRules,
   state: GameState,
   unit: Unit,
+  formation: FormationId | null,
 ): FormationDef | null {
-  if (!unit.formation) return null;
-  const definition = rules.content.formations.tryGet(unit.formation);
+  if (!formation) return null;
+  const definition = rules.content.formations.tryGet(formation);
   if (!definition) return null;
   const board = boardOf(rules, state);
   const adjacentAllies = state.units.filter((candidate) =>
@@ -26,6 +36,13 @@ export function activeFormation(
     board.distance(candidate, unit) === 1).length;
   return adjacentAllies >= definition.minimumAdjacentAllies ? definition : null;
 }
+
+/** The formation actually in effect for this unit. */
+export const activeFormation = (
+  rules: FormationRules,
+  state: GameState,
+  unit: Unit,
+): FormationDef | null => formationInEffect(rules, state, unit, unit.formation);
 
 export function validateFormationChange(
   rules: FormationRules,
@@ -36,11 +53,9 @@ export function validateFormationChange(
   if (formation === null) return;
   const allowed = rules.content.units.get(unit.type).formations ?? [];
   if (!allowed.includes(formation)) throw new IllegalActionError(`unit ${unit.id} cannot use formation "${formation}"`);
-  const previous = unit.formation;
-  unit.formation = formation;
-  const active = activeFormation(rules, state, unit);
-  unit.formation = previous;
-  if (!active) throw new IllegalActionError(`formation "${formation}" lacks adjacent allied units`);
+  if (!formationInEffect(rules, state, unit, formation)) {
+    throw new IllegalActionError(`formation "${formation}" lacks adjacent allied units`);
+  }
 }
 
 export function formationMovementDelta(

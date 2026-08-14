@@ -1,4 +1,4 @@
-import type { StructureDef, StructureState } from '../types';
+import type { Coord, StructureDef, StructureState } from '../types';
 import { DomainInvariantError } from './errors';
 
 export class StructureEntity {
@@ -6,6 +6,11 @@ export class StructureEntity {
     readonly state: StructureState,
     readonly definition: StructureDef,
   ) {}
+
+  moveTo(destination: Coord): void {
+    this.state.x = destination.x;
+    this.state.y = destination.y;
+  }
 
   takeRawDamage(requested: number): { amount: number; hpAfter: number; destroyed: boolean } {
     if (!Number.isFinite(requested) || requested < 0) {

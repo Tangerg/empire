@@ -506,6 +506,43 @@ describe('referential integrity has an owner', () => {
 });
 
 describe('behaviour has an owner', () => {
+  it('lets only an entity write its own fields', () => {
+    // `UnitEntity` says all state-changing rules should go through it "so
+    // callers cannot forget clamping, resource consumption, or lifecycle
+    // invariants" — and eight modules wrote the fields anyway, two of them with
+    // the entity already constructed on the line above. Where a unit stands was
+    // reassembled at four sites, morale had two writers, and a *query* wrote the
+    // requested formation onto the live unit to ask whether it would hold.
+    //
+    // Two field lists, because the scope is a real distinction rather than a
+    // convenience: inside the battle engine a `Unit` is a live entity, so all of
+    // its fields are the entity's to write. Everywhere else the same names
+    // belong to `LevelUnit` (level data being authored) or to editor document
+    // state, so only the fields a runtime unit alone has are forbidden.
+    const runtimeOnly = ['done', 'capture', 'statuses', 'weaponState', 'reactionUsedRound', 'commanderId'];
+    const entityOwned = [
+      ...runtimeOnly, 'id', 'type', 'owner', 'x', 'y', 'hp', 'rank', 'rankProgress',
+      'resources', 'reaction', 'facing', 'morale', 'formation', 'directive', 'career',
+      'learnedAbilities', 'meta',
+    ];
+    // Not anchored to the start of a line, and compound assignment counts: the
+    // first draft was `^\s*…\s*=`, which read `unit.done = true` on its own line
+    // but not `if (spent) unit.done = true` or `unit.capture += 1`.
+    const assignment = (fields: string[]) =>
+      new RegExp(String.raw`[A-Za-z_$][\w.$\[\]]*\.(?:${fields.join('|')})\s*(?:[+\-*/]=|=(?!=))`);
+    const domainRoot = join(coreRoot, 'domain');
+    const offenders = everyPackageSource().flatMap((file) => {
+      if (file.startsWith(domainRoot)) return [];
+      const inEngine = file.startsWith(coreRoot);
+      const source = stripStrings(stripComments(readFileSync(file, 'utf8')));
+      return assignment(inEngine ? entityOwned : runtimeOnly).test(source)
+        ? [relative(packagesRoot, file)]
+        : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('lets only the lifecycle change a battle phase or advance either clock', () => {
     // `state.phase` used to be assigned from three unrelated places and the
     // round counter from a free function, so "when does a round end" had no

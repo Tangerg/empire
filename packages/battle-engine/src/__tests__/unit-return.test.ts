@@ -75,6 +75,20 @@ describe('every return, whichever way it came', () => {
     expect(new UnitEntity(back).canReact(state.turn)).toBe(true);
   });
 
+  it('never arrives dead, whatever strength it was asked for', () => {
+    const state = skirmish();
+    const engine = rules();
+    applyScenarioEffect(engine, state, { type: 'withdrawUnits', selector: { owner: 1 } }, () => {});
+    const marker = state.markers[0];
+
+    // Intended delta: the health a return asks for is now the entity's to
+    // accept, and it floors at 1. A scenario that recalled a unit at 0 used to
+    // put a corpse on the board — alive to every rule that counts units, dead
+    // to every rule that reads hit points, and removed by neither.
+    const back = returnUnitToField(state, marker, { at: { x: 1, y: 1 }, hp: 0 }, () => {});
+    expect(back?.hp).toBe(1);
+  });
+
   it('refuses a tile someone is standing on', () => {
     const state = skirmish();
     const engine = rules();
