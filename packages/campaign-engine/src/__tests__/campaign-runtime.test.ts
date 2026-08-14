@@ -25,10 +25,11 @@ function campaign(): CampaignDefinition {
       roster: [{ id: 'hero', unitType: 'soldier', owner: 1 }],
     },
     nodes: [
-      { id: 'prologue', type: 'story', next: 'decision', effects: [{ type: 'addVariable', key: 'trust', amount: 1 }] },
+      { id: 'prologue', type: 'story', presentation: 'test/prologue', next: 'decision', effects: [{ type: 'addVariable', key: 'trust', amount: 1 }] },
       {
         id: 'decision',
         type: 'choice',
+        presentation: 'test/decision',
         choices: [
           { id: 'advance', next: 'battle', condition: { type: 'flag', flag: 'rescued-scout' } },
           { id: 'withdraw', next: 'failure' },
@@ -43,8 +44,8 @@ function campaign(): CampaignDefinition {
         next: { victory: 'ending', defeat: 'failure', retreat: 'decision' },
         outcomeEffects: { victory: [{ type: 'setFlag', flag: 'first-victory' }] },
       },
-      { id: 'ending', type: 'ending', outcome: 'completed' },
-      { id: 'failure', type: 'ending', outcome: 'failed' },
+      { id: 'ending', type: 'ending', outcome: 'completed', presentation: 'test/ending' },
+      { id: 'failure', type: 'ending', outcome: 'failed', presentation: 'test/failure' },
     ],
   };
 }

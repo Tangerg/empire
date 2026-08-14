@@ -23,7 +23,9 @@ describe('candidate-01 campaign', () => {
     const nodes = CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN.nodes;
     expect(nodes.filter((node) => node.type === 'battle')).toHaveLength(16);
     for (const node of nodes) {
-      if (!node.presentation) continue;
+      // A battle is staged from its level's briefing and declares no prose of
+      // its own; every other kind is a scene, and the type says so.
+      if (node.type === 'battle') continue;
       if (node.type === 'choice') expect(CANDIDATE_01_CHOICES.has(node.presentation)).toBe(true);
       else expect(CANDIDATE_01_STORY.has(node.presentation)).toBe(true);
     }

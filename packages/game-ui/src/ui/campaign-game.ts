@@ -8,6 +8,7 @@ import { escapeHtml } from './html';
 
 interface CampaignBattleSummary {
   title: string;
+  chapter: number;
   outcome: string;
   turns: number;
   alliesRemaining: number;
@@ -16,6 +17,21 @@ interface CampaignBattleSummary {
   signals: string[];
   events: GameEvent[];
 }
+
+/**
+ * Which chapter a battle belongs to, asked of the level that was fought.
+ *
+ * The result screen used to derive it from how many battles were behind you —
+ * `completed <= 5 ? 1 : completed <= 10 ? 2 : 3` — which is one campaign's
+ * chapter lengths written into the generic shell.
+ */
+const chapterOf = (level: LevelData): number => Number(level.extra?.chapter) || 1;
+
+/** What the shell is showing: prose to page, a decision, or a battle to stage. */
+type CampaignScreen =
+  | { readonly kind: 'story'; readonly presentation: string; readonly ending: boolean }
+  | { readonly kind: 'choice'; readonly presentation: string }
+  | { readonly kind: 'battle'; readonly level: string };
 
 export interface StoryBeatView {
   speaker: string;
@@ -118,9 +134,9 @@ export class StoryCampaignController {
   }
 
   private nextBeat(): void {
-    const node = this.runtime.node();
-    if (!node.presentation || node.type === 'choice' || node.type === 'battle' || node.type === 'ending') return;
-    const story = this.adapter.story(node.presentation);
+    const screen = this.screen();
+    if (screen.kind !== 'story' || screen.ending) return;
+    const story = this.adapter.story(screen.presentation);
     if (this.beat < story.beats.length - 1) {
       this.beat++;
       this.render();
@@ -141,8 +157,7 @@ export class StoryCampaignController {
   }
 
   private startBattle(): void {
-    const node = this.runtime.node();
-    if (node.type !== 'battle') return;
+    if (this.screen().kind !== 'battle') return;
     if (!this.pendingRequest) {
       // Save the clean battle node. Action-level mid-battle saves are outside
       // this campaign shell and never pretend to be resumable.
@@ -170,8 +185,7 @@ export class StoryCampaignController {
       this.runtime.state,
     );
     if (result.outcome !== 'victory') return;
-    const level = this.adapter.levels.find((entry) => entry.id === request.levelId)!;
-    this.lastBattle = this.summarizeBattle(level.name, snapshot.state, snapshot.events);
+    this.lastBattle = this.summarizeBattle(this.adapter.level(request.levelId), snapshot.state, snapshot.events);
     this.runtime.completeBattle(result);
     this.pendingRequest = null;
     this.game = null;
@@ -180,13 +194,14 @@ export class StoryCampaignController {
     this.render();
   }
 
-  private summarizeBattle(title: string, state: GameState, events: GameEvent[]): CampaignBattleSummary {
+  private summarizeBattle(level: LevelData, state: GameState, events: GameEvent[]): CampaignBattleSummary {
     const human = state.players.find((player) => player.controller === 'human')!;
-    const fallen = state.markers
-      .filter((marker) => marker.fallenUnit?.owner === human.id)
-      .map((marker) => this.content.units.get(marker.fallenUnit!.type).name);
+    const fallen = state.markers.flatMap((marker) => marker.fallenUnit?.owner === human.id
+      ? [this.content.units.get(marker.fallenUnit.type).name]
+      : []);
     return {
-      title,
+      title: level.name,
+      chapter: chapterOf(level),
       outcome: state.endReason,
       turns: state.turn,
       alliesRemaining: state.units.filter((unit) => unit.owner === human.id).length,
@@ -198,7 +213,8 @@ export class StoryCampaignController {
   }
 
   private finishCampaign(): void {
-    if (this.runtime.node().type === 'ending' && this.runtime.state.status === 'active') {
+    const screen = this.screen();
+    if (screen.kind === 'story' && screen.ending && this.runtime.state.status === 'active') {
       this.runtime.advance();
       this.persist();
       this.render();
@@ -211,14 +227,29 @@ export class StoryCampaignController {
     saveCampaignState(this.adapter.definition, this.runtime.snapshot());
   }
 
+  /**
+   * Which screen the campaign is on, and the one place that reads a node's kind.
+   *
+   * Four methods used to ask the node what kind it was — to page prose, to stage
+   * a battle, to finish, and to render — so the shell held four copies of a
+   * vocabulary the engine deliberately left open, and two of them guessed that a
+   * node with prose to show had prose to show.
+   */
+  private screen(): CampaignScreen {
+    const node = this.runtime.node();
+    if (node.type === 'battle') return { kind: 'battle', level: node.level };
+    if (node.type === 'choice') return { kind: 'choice', presentation: node.presentation };
+    if (node.type === 'ending') return { kind: 'story', presentation: node.presentation, ending: true };
+    return { kind: 'story', presentation: node.presentation, ending: false };
+  }
+
   private render(): void {
     if (this.disposed || this.game) return;
     if (this.lastBattle) return this.renderBattleResult(this.lastBattle);
-    const node = this.runtime.node();
-    if (node.type === 'battle') return this.renderBattleStaging(node.level);
-    if (node.type === 'choice') return this.renderChoice(node.presentation!);
-    if (!node.presentation) throw new Error(`campaign node ${node.id} has no presentation`);
-    this.renderStory(node.presentation, node.type === 'ending');
+    const screen = this.screen();
+    if (screen.kind === 'battle') return this.renderBattleStaging(screen.level);
+    if (screen.kind === 'choice') return this.renderChoice(screen.presentation);
+    this.renderStory(screen.presentation, screen.ending);
   }
 
   private shell(content: string, chapter: number): void {
@@ -278,8 +309,8 @@ export class StoryCampaignController {
   }
 
   private renderBattleStaging(levelId: string): void {
-    const level = this.adapter.levels.find((entry) => entry.id === levelId)!;
-    const chapter = Number(level.extra?.chapter);
+    const level = this.adapter.level(levelId);
+    const chapter = chapterOf(level);
     const order = this.adapter.levelOrder(level);
     const story = this.adapter.story(this.adapter.briefingId(level));
     const scene = this.adapter.storyArt(story.scene);
@@ -301,14 +332,12 @@ export class StoryCampaignController {
   }
 
   private renderBattleResult(result: CampaignBattleSummary): void {
-    const completed = this.runtime.state.battleHistory.length;
-    const chapter = completed <= 5 ? 1 : completed <= 10 ? 2 : 3;
     const attackEvents = result.events.filter((event) => event.type === 'attack' || event.type === 'areaAttack' || event.type === 'counter').length;
     this.shell(`<main class="result-screen"><section class="result-card">
       <span class="campaign-eyebrow">战斗胜利</span><h1>${escapeHtml(result.title)}</h1><p>${escapeHtml(result.outcome)}</p>
       <div class="result-metrics"><div><b>${result.turns}</b><span>回合</span></div><div><b>${result.alliesRemaining}</b><span>我方存续</span></div><div><b>${result.enemiesRemaining}</b><span>敌方存续</span></div><div><b>${attackEvents}</b><span>交战次数</span></div></div>
       <div class="result-detail"><div><small>本关倒下</small><p>${result.fallen.length ? escapeHtml(result.fallen.join('、')) : '无人倒下'}</p></div><div><small>关键战场记录</small><p>${result.signals.length ? escapeHtml(result.signals.join(' · ')) : '目标按计划完成'}</p></div></div>
       <button class="campaign-primary" data-campaign-act="aftermath">查看战后剧情 →</button>
-    </section></main>`, chapter);
+    </section></main>`, result.chapter);
   }
 }

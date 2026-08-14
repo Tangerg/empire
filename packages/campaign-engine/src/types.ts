@@ -52,13 +52,25 @@ export interface CampaignChoice {
 interface CampaignNodeBase {
   id: CampaignNodeId;
   effects?: CampaignEffect[];
-  /** Opaque presentation locator. The campaign engine never parses prose. */
-  presentation?: string;
   tags?: string[];
 }
 
+/**
+ * A node the player is shown something at.
+ *
+ * Whether a kind has prose is a fact about the kind, and stating it once for all
+ * of them made `presentation` optional everywhere: a shell that had to render one
+ * could only assert its way past the type, and a battle — which is staged from
+ * its level's briefing and has no prose of its own — carried the field anyway.
+ *
+ * The locator stays opaque: the campaign engine never parses prose.
+ */
+interface CampaignScene extends CampaignNodeBase {
+  presentation: string;
+}
+
 /** A node that simply leads somewhere once its effects have landed. */
-interface CampaignPassage extends CampaignNodeBase {
+interface CampaignPassage extends CampaignScene {
   next: CampaignNodeId;
 }
 
@@ -75,7 +87,7 @@ export interface CampaignNodeKindMap {
   story: CampaignPassage & { type: 'story' };
   hub: CampaignPassage & { type: 'hub' };
   travel: CampaignPassage & { type: 'travel' };
-  choice: CampaignNodeBase & { type: 'choice'; choices: CampaignChoice[] };
+  choice: CampaignScene & { type: 'choice'; choices: CampaignChoice[] };
   battle: CampaignNodeBase & {
     type: 'battle';
     level: string;
@@ -85,7 +97,7 @@ export interface CampaignNodeKindMap {
     next: Partial<Record<CampaignOutcome, CampaignNodeId>>;
     outcomeEffects?: Partial<Record<CampaignOutcome, CampaignEffect[]>>;
   };
-  ending: CampaignNodeBase & { type: 'ending'; outcome: 'completed' | 'failed' };
+  ending: CampaignScene & { type: 'ending'; outcome: 'completed' | 'failed' };
 }
 
 export type CampaignNodeKind = Extract<keyof CampaignNodeKindMap, string>;

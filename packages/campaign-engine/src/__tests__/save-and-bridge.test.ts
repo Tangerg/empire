@@ -63,8 +63,8 @@ const definition = (): CampaignDefinition => ({
       ],
       next: { victory: 'won', defeat: 'lost', retreat: 'lost' },
     },
-    { id: 'won', type: 'ending', outcome: 'completed' },
-    { id: 'lost', type: 'ending', outcome: 'failed' },
+    { id: 'won', type: 'ending', outcome: 'completed', presentation: 'test/won' },
+    { id: 'lost', type: 'ending', outcome: 'failed', presentation: 'test/lost' },
   ],
   initial: {
     roster: [
