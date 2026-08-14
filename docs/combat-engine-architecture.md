@@ -425,6 +425,28 @@ const ally  = context.ownUnit(action.carrier);                    // 只要求�
 
 摘要现在**顺序敏感**，这翻掉了文档里的一句旧话。旧话本身自相矛盾——它排序单位列表，却按位置对待 `map.tiles`——而且不成立：阵营回合的行动者列表**就是**单位列表，AI 在两个同分候选之间保留先出现的那个，所以同一个局面把两个单位换个位置，从下一步起就可能被指挥得不一样。缺失字段和值为 `undefined` 的字段仍然读作同一件事，否则每一份从 JSON 读回来的战斗都会被报成分叉。
 
+## 一次接口瘦身
+
+按 `AGENTS.md` 的三条——「每个公开概念都要挣得它的位置」「同一语义只有一条正典路径」「未被证明需要的东西不要先实现」——机械扫了一遍无人消费的导出：119 个值导出，逐个按**职责**而不是按仓库内用量判断（这是引擎，下游可用性才是重点）。
+
+删掉的分三类：
+
+- **无人读取**：`availableAbilities`、`idleUnits`、`terrainDefenseAt`、`defineFormation`、`ownerAt`、`terrainForCharacter`、`currentPlayerState`、`loseTransportPassengers`、`NEUTRAL`、`hpBarMarkup` 等等——它们是没有任何代码支撑的能力声明。`data/careers.ts` 整个模块只剩一个没人用的助手，也一起走了。
+- **第二条语义路径**，比死代码更糟，因为两个答案看起来都对：`overlays.ts` 有五个访问器在回答 `BattlefieldCell` 已经拥有的问题；`canReach` 重述 `canReachWithWeapon`；`planTurn` 是一个自带第二套 AI 循环的「便利函数」；`createDefaultBattleEngine` 是唯一组装根的别名；`DefaultCombatModifierPipeline` 是一条**共享全局注册表**的第二构造路径——正是插件里 `clone()` 存在的理由，而它就躺在禁止此事的守卫同一个文件里。
+- **一个问题三个名字**：「站在这一格的是谁」曾是 `unitAt(state, x, y)`、`unitAtCoord(state, at)` 和棋盘读模型的 `occupantAt`。现在只有按坐标问的 `unitAt`，读模型转交给它。
+
+关卡文档是第三份手写的 schema 阶梯，现在改走共用的 `SchemaMigrator`——它会拒绝断档、拒绝没有推进版本的迁移，旧循环两样都不做；拒绝理由用作者的语言重述，并且返回的是阶梯自己拥有的文档，迁移改不到调用者手里那份。
+
+铺法被问一个它没有的朝向的「反向」时，现在抛错而不是把原朝向答回去：夹击与方向掩体这两个调用者都会把「没有反向」读成「正面来袭」。
+
+## 表现层的美术也要被组合
+
+`Battlefield` 是读模型、内容目录按组合创建、规则集由插件装配——而表现层直到这一轮还留着引擎早就治好的病：两个模块级可变数组，题材包在导入时把自己 push 进去，外面用一个 `registered` 布尔量兜着。于是**哪套美术画这个单位，取决于谁先被 import**，而 `registerCandidate01Presentation()` 是四个应用和三个测试文件都得记着执行的副作用。它能工作只因为现在恰好只有一个题材包：两个包都为同一个单位 id 作答时，胜者由注册顺序决定，而代码里没有任何一句说明这件事。
+
+`ArtDirection` 把这份组合变成一个值：provider 按被询问的顺序排列、presentation 供关卡挑选、重复 id 直接拒绝而不是静默忽略。外壳拿着它（`GameController` 走 options，`BoardView` 与 `Hud` 走构造参数），美术函数把它作为第一个依赖。应用组合根在内容目录和引擎旁边装配它；编辑器和 demo 传 `GENERIC_ART`，那是「我不画题材美术」的老实说法。
+
+顺带掉出两件事：题材包的 `iconMarkup` 是 `try { … } catch { return null }`，把「这个包没有这张图标」和「素材解析坏了」答成同一个 null——问改成问（`candidate01TryIconMarkup`），做仍然抛错；以及**题材包此前不在任何架构守卫的扫描范围内**，那个 catch 就是把它们纳入扫描后当场被点出来的。
+
 ## 内容目录
 
 内容目录是**按组合创建**的，没有环境单例。应用（或测试）声明自己使用哪些内容包，插件把它们装进只属于这个引擎的目录：
