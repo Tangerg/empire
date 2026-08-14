@@ -11,7 +11,8 @@ import type {
   TerrainDef,
   UnitSelector,
 } from '../types';
-import { LevelDeclarations, declaredChildObjectives, objectivesOf } from './declarations';
+import { LevelDeclarations, objectivesOf } from './declarations';
+import { declaredChildObjectives, isCompositeObjective } from '../objective-model';
 import { LevelIssueLog, type LevelIssue } from './issues';
 import { mapFromLevel } from './map';
 
@@ -398,8 +399,8 @@ function checkObjective(inspection: LevelInspection, objective: Objective): void
   if (objective.type === 'escort' && objective.count < 1) {
     inspection.error(`护送目标 ${objective.id ?? ''} 的抵达人数必须 >= 1`);
   }
-  if (objective.type === 'all' || objective.type === 'any' || objective.type === 'sequence') {
-    if (objective.objectives.length === 0) inspection.error(`组合目标 ${named} 不能为空`);
+  if (isCompositeObjective(objective) && declaredChildObjectives(objective).length === 0) {
+    inspection.error(`组合目标 ${named} 不能为空`);
   }
   for (const child of declaredChildObjectives(objective)) checkObjective(inspection, child);
 }

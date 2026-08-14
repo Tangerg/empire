@@ -1,22 +1,13 @@
+import { declaredChildObjectives } from '../objective-model';
 import type { LevelData, Objective } from '../types';
 import type { LevelIssueLog } from './issues';
 
 /**
- * Every child a composite objective declares.
- *
  * A structural walk over the document, deliberately not the objective handler
  * registry's `children`: this lints a level *file*, and the editor that shows
- * the result has a content catalog but no composed ruleset. The cost is that a
- * content-defined composite kind is not traversed here — its own children go
- * unchecked until the battle composes the rules that know about them.
+ * the result once had a content catalog but no composed ruleset.
  */
-export function declaredChildObjectives(objective: Objective): Objective[] {
-  if (objective.type === 'all' || objective.type === 'any' || objective.type === 'sequence') {
-    return objective.objectives;
-  }
-  if (objective.type === 'optional' || objective.type === 'failOn') return [objective.objective];
-  return [];
-}
+export { declaredChildObjectives };
 
 /** The objectives a player actually plays under: their own, or the shared ones. */
 export function objectivesOf(level: LevelData, player: LevelData['players'][number]): Objective[] {

@@ -146,3 +146,62 @@ describe('ContentPackInstaller', () => {
     expect(catalog.damageMatchups.effectiveness('energy', 'unknown_future_armor')).toBe(1);
   });
 });
+
+describe('what a catalog can and cannot judge on its own', () => {
+  const base = (): ContentPack => ({
+    id: 'test.base',
+    version: 1,
+    movementProfiles: [{ id: 'walker', name: 'Walker', tags: ['ground'], maxClimb: 1, maxDrop: 1, uphillCostPerLevel: 1, ignoresCliffs: false }],
+    damageTypes: [{ id: 'slash', name: 'Slash', tags: [] }],
+    armorClasses: [{ id: 'light', name: 'Light', tags: [] }],
+    damageMatchups: [{ damageType: 'slash', armorClass: 'light', multiplier: 1 }],
+  });
+
+  const withRider = (rider: unknown): ContentPack => {
+    const blade = defineWeapon({
+      id: 'test_blade',
+      name: 'Blade',
+      power: 10,
+      damageType: 'slash',
+      hitEffects: [rider as never],
+    });
+    return {
+      id: 'test.rider',
+      version: 1,
+      dependencies: ['test.base'],
+      weapons: [blade],
+      units: [defineUnit({
+        id: 'test_soldier',
+        name: 'Soldier',
+        movementClass: 'walker',
+        armorClass: 'light',
+        value: 10,
+        recruitCosts: [],
+        weapons: ['test_blade'],
+      }, new Map([['test_blade', blade]]))],
+    };
+  };
+
+  it('accepts a weapon rider only a rule plugin defines', () => {
+    // The installer used to treat every kind it did not recognise as a forced
+    // move and validate `distance` on it, so a pack that used a rule pack's own
+    // rider could not be installed at all. Whether the handler exists is the
+    // ruleset's question, and the reference checks ask it.
+    const catalog = createContentCatalog();
+    const installer = new ContentPackInstaller(catalog);
+
+    expect(() => installer.install(base(), withRider({ type: 'test.ignite', heat: 3 })))
+      .not.toThrow();
+    expect(catalog.weapons.get('test_blade').hitEffects[0].type).toBe('test.ignite');
+  });
+
+  it('still judges the payloads it does understand', () => {
+    const shoves = new ContentPackInstaller(createContentCatalog());
+    expect(() => shoves.install(base(), withRider({ type: 'forcedMove', mode: 'push', distance: -1 })))
+      .toThrow(/invalid forced-movement effect/);
+
+    const seals = new ContentPackInstaller(createContentCatalog());
+    expect(() => seals.install(base(), withRider({ type: 'addStatus', status: 'nonesuch', duration: 1 })))
+      .toThrow(/references missing content id "nonesuch"/);
+  });
+});
