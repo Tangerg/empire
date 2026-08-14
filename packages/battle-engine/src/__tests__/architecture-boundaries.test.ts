@@ -30,6 +30,16 @@ function storyPackageSources(): string[] {
     .flatMap((entry) => runtimeTypeScriptFiles(join(packagesRoot, entry, 'src')));
 }
 
+/**
+ * Source with its comments removed.
+ *
+ * A guard whose pattern also matches the paragraph explaining what it forbids
+ * reports the explanation as the violation, and is impossible to satisfy.
+ */
+function stripComments(source: string): string {
+  return source.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/[^\n]*/g, '');
+}
+
 function localCoreImports(file: string, files: ReadonlySet<string>): string[] {
   const source = readFileSync(file, 'utf8');
   return [...source.matchAll(/from\s+['"](\.\.?\/[^'"]+)['"]|import\s+['"](\.\.?\/[^'"]+)['"]/g)]
@@ -539,6 +549,37 @@ describe('behaviour has an owner', () => {
       const name = relative(coreRoot, file);
       if (name === 'unit-directive.ts') return [];
       return /directive\.mode\s*[!=]==?\s*'/.test(readFileSync(file, 'utf8')) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('asks a payload what it points at, never what kind it is', () => {
+    // Which names a scenario effect, a trigger condition or an objective writes
+    // down was enumerated by whoever wanted to resolve them: two hundred lines
+    // of `effect.type === '…'` in the level linter, and the same list a third
+    // time to find which effects hand out a standing order. A rule pack's own
+    // kind was in none of those lists, so it was linted by nobody — a closed
+    // union grown back inside an open registry. The kinds answer for themselves
+    // through `references` now, and only their own modules may name them.
+    const owners = [
+      'scenario.ts',
+      'objective-system.ts',
+      'types.ts',
+      // A catalog judges the payloads it can judge alone, and says so in place.
+      'content-pack.ts',
+      // Both read `TacticEffect`: a deliberately closed two-case union — grant a
+      // status or strip one — and not an open registry at all.
+      'commanders.ts',
+      'ai/default-intents.ts',
+    ];
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (owners.includes(name)) return [];
+      // Comments talk about the old shape on purpose; a guard that matches its
+      // own explanation guards nothing.
+      const code = stripComments(readFileSync(file, 'utf8'));
+      return /(?:effect|condition|objective)\.type\s*[!=]==?\s*'/.test(code) ? [name] : [];
     });
 
     expect(offenders).toEqual([]);

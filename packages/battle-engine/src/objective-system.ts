@@ -13,6 +13,7 @@ import type {
 import { type ContentCatalog } from './content-pack';
 import type { ScenarioConditionHandlerRegistry } from './scenario';
 import { compositeStatus, requireComposite } from './composites';
+import { PayloadReferences } from './payload-references';
 import { KeyedRegistry } from './registry';
 
 export type { ObjectiveOutcome } from './types';
@@ -49,6 +50,8 @@ export interface ObjectiveHandler<K extends ObjectiveKind = ObjectiveKind> {
   readonly role?: ObjectiveRole;
   readonly refresh?: ObjectiveRefreshMode;
   children?(objective: ObjectiveOf<K>): Objective[];
+  /** The names this objective writes down, for whoever has to resolve them. */
+  references?(objective: ObjectiveOf<K>): PayloadReferences;
   outcome(context: ObjectiveEvaluationContext, objective: ObjectiveOf<K>): ObjectiveOutcome;
   describe(objective: ObjectiveOf<K>, handlers: ObjectiveHandlerRegistry): string;
   progress(context: ObjectiveEvaluationContext, objective: ObjectiveOf<K>): string;
@@ -100,6 +103,11 @@ export class ObjectiveHandlerRegistry extends KeyedRegistry<ObjectiveKind, Objec
 
   children(objective: Objective): Objective[] {
     return this.get(objective.type).children?.(objective as never) ?? [];
+  }
+
+  /** What this objective points at, or nothing for a kind nobody registered. */
+  references(objective: Objective): PayloadReferences {
+    return this.tryGet(objective.type)?.references?.(objective as never) ?? new PayloadReferences();
   }
 
   evaluate(
@@ -168,6 +176,9 @@ function activeChildren(context: ObjectiveEvaluationContext, objective: Objectiv
 }
 
 const pendingProgress = () => '进行中';
+
+/** What a payload points at, built by the handler that scores it. */
+const points = () => new PayloadReferences();
 
 /**
  * How the three compound objectives fold their children.
@@ -257,11 +268,16 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     progress: ({ state }, objective) => `${Math.min(state.turn, objective.turns)}/${objective.turns} 回合`,
   }))
   .register(objectiveHandler('eliminate', {
+    references: (objective) => points().selector(objective.selector),
     outcome: ({ state, content }, objective) => selectUnits(state, objective.selector, content).length === 0 ? 'success' : 'pending',
     describe: () => '消灭指定目标',
     progress: ({ state, content }, objective) => `剩余 ${selectUnits(state, objective.selector, content).length}`,
   }))
   .register(objectiveHandler('destroy', {
+    references: (objective) => objective.structures.reduce(
+      (cited, id) => cited.structure(id),
+      points(),
+    ),
     outcome: ({ state }, objective) => objective.structures.every((id) => {
       const structure = state.structures.find((candidate) => candidate.id === id);
       return !structure || structure.hp <= 0;
@@ -276,6 +292,13 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     },
   }))
   .register(objectiveHandler('neutralizeComposite', {
+    references: (objective) => {
+      const cited = points().composite(objective.composite);
+      const threshold = objective.minimumNeutralized;
+      return threshold === undefined || (Number.isInteger(threshold) && threshold >= 1)
+        ? cited
+        : cited.fault('瘫痪数量必须 >= 1');
+    },
     outcome: ({ state }, objective) => {
       const composite = requireComposite(state, objective.composite);
       const threshold = objective.minimumNeutralized ?? composite.minimumNeutralized;
@@ -289,6 +312,12 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     },
   }))
   .register(objectiveHandler('protect', {
+    references: (objective) => {
+      const cited = points().selector(objective.selector);
+      return objective.minimumAlive >= 1 && objective.untilTurn >= 1
+        ? cited
+        : cited.fault('保护目标的人数和截止回合必须 >= 1');
+    },
     outcome: ({ state, content }, objective) => {
       if (selectUnits(state, objective.selector, content).length < objective.minimumAlive) return 'failure';
       return state.turn > objective.untilTurn ? 'success' : 'pending';
@@ -298,6 +327,10 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
       `${selectUnits(state, objective.selector, content).length}/${objective.minimumAlive} 存活`,
   }))
   .register(objectiveHandler('escort', {
+    references: (objective) => {
+      const cited = points().zone(objective.zone).selector(objective.selector);
+      return objective.count >= 1 ? cited : cited.fault('护送目标的抵达人数必须 >= 1');
+    },
     outcome: ({ state, content }, objective) => {
       const cells = zoneCells(state, objective.zone);
       const arrived = selectUnits(state, objective.selector, content).filter((unit) =>
@@ -312,6 +345,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     },
   }))
   .register(objectiveHandler('control', {
+    references: (objective) => points().zone(objective.zone),
     outcome: ({ state, owner }, objective) => {
       const cells = zoneCells(state, objective.zone);
       return cells.length > 0 && cells.every(
@@ -377,6 +411,10 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     role: 'critical',
     refresh: 'children',
     children: (objective) => [objective.objective],
+    // The embedded condition was invisible to every walker in the engine: the
+    // objective tree stops at children, and the condition tree starts at
+    // triggers, so a losing condition naming an unknown zone reached the battle.
+    references: (objective) => points().condition(objective.condition),
     outcome: (context, objective) =>
       conditionMet(context, context.state, objective.condition)
         ? 'failure' : context.outcome(objective.objective),

@@ -10,13 +10,14 @@ import { CANDIDATE_01_CONTENT_PACK } from './index';
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
+const TEST_RULES = TEST_ENGINE.rules;
 
 describe('candidate-01 first three chapters', () => {
   it('ships sixteen ordered, structurally valid battles', () => {
     expect(CANDIDATE_01_LEVELS).toHaveLength(16);
     expect(new Set(CANDIDATE_01_LEVELS.map((level) => level.id)).size).toBe(16);
     const errors = CANDIDATE_01_LEVELS.flatMap((level) =>
-      validateLevel(level, TEST_CATALOG)
+      validateLevel(TEST_RULES, level)
         .filter((issue) => issue.severity === 'error')
         .map((issue) => `${level.id}: ${issue.message}`),
     );

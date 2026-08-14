@@ -32,6 +32,7 @@ import type {
   MarkerSelector,
 } from './types';
 import { type ContentCatalog } from './content-pack';
+import { PayloadReferences } from './payload-references';
 import { SplitMixRandom, type RandomSource } from './random';
 import { KeyedRegistry } from './registry';
 import { changeMorale, surrenderUnit } from './morale';
@@ -42,6 +43,9 @@ import { withdrawTransportPassengers } from './transports';
 export type { ScenarioTiming } from './domain/scenario-trigger';
 type ConditionKind = Extract<keyof ScenarioConditionKindMap, string>;
 type EffectKind = Extract<keyof ScenarioEffectKindMap, string>;
+
+/** What a payload points at, built by the handler that runs it. */
+const points = () => new PayloadReferences();
 
 function zone(state: GameState, id: string) {
   const cells = state.scenario.zones[id];
@@ -127,6 +131,8 @@ export interface ScenarioConditionHandler<K extends ConditionKind = ConditionKin
    * had its children silently unvisited by both.
    */
   children?(condition: ScenarioConditionKindMap[K]): ScenarioCondition[];
+  /** The names this condition writes down, for whoever has to resolve them. */
+  references?(condition: ScenarioConditionKindMap[K]): PayloadReferences;
   evaluate(context: ScenarioConditionContext, condition: ScenarioConditionKindMap[K]): boolean;
 }
 
@@ -161,6 +167,15 @@ export class ScenarioConditionHandlerRegistry extends KeyedRegistry<ConditionKin
     return this.get(condition.type).children?.(condition as never) ?? [];
   }
 
+  /**
+   * What this condition points at, or nothing for a kind nobody registered: an
+   * unknown shape has no knowable references, and the missing kind is the
+   * finding worth reporting.
+   */
+  references(condition: ScenarioCondition): PayloadReferences {
+    return this.tryGet(condition.type)?.references?.(condition as never) ?? points();
+  }
+
   clone(random: RandomSource = this.random): ScenarioConditionHandlerRegistry {
     return this.copyInto(new ScenarioConditionHandlerRegistry(random));
   }
@@ -169,8 +184,8 @@ export class ScenarioConditionHandlerRegistry extends KeyedRegistry<ConditionKin
 const conditionHandler = <K extends ConditionKind>(
   kind: K,
   evaluate: ScenarioConditionHandler<K>['evaluate'],
-  children?: ScenarioConditionHandler<K>['children'],
-): ScenarioConditionHandler<K> => ({ kind, evaluate, children });
+  declares: Omit<ScenarioConditionHandler<K>, 'kind' | 'evaluate'> = {},
+): ScenarioConditionHandler<K> => ({ kind, evaluate, ...declares });
 
 export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry(SplitMixRandom)
   .register(conditionHandler('turnAtLeast', ({ state }, condition) => state.turn >= condition.turn))
@@ -178,10 +193,16 @@ export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry(Sp
     if (!Number.isInteger(condition.every) || condition.every < 1) return false;
     const offset = Math.round(condition.offset ?? 1);
     return state.turn >= offset && (state.turn - offset) % condition.every === 0;
+  }, {
+    references: (condition) => Number.isInteger(condition.every) && condition.every >= 1
+      ? points()
+      : points().fault('循环回合条件的间隔必须是正整数'),
   }))
   .register(conditionHandler('chance', ({ state, random }, condition) =>
     random.chance(state, condition.stream ?? 'scenario.chance', condition.percent)))
-  .register(conditionHandler('currentPlayer', ({ state }, condition) => state.currentPlayer === condition.player))
+  .register(conditionHandler('currentPlayer', ({ state }, condition) => state.currentPlayer === condition.player, {
+    references: (condition) => points().player(condition.player),
+  }))
   .register(
     conditionHandler('variable', ({ state }, condition) =>
       compare(state.scenario.variables[condition.key], condition.op, condition.value),
@@ -194,10 +215,13 @@ export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry(Sp
         zone: condition.zone,
         anyTags: condition.anyTags,
       }, content).length > 0,
+      { references: (condition) => points().zone(condition.zone) },
     ),
   )
   .register(conditionHandler('unitCount', ({ state, content }, condition) =>
-    compare(selectUnits(state, condition.selector, content).length, condition.op, condition.value)))
+    compare(selectUnits(state, condition.selector, content).length, condition.op, condition.value), {
+    references: (condition) => points().selector(condition.selector),
+  }))
   .register(conditionHandler('unitHealth', ({ state, content }, condition) => {
     const ratios = selectUnits(state, condition.selector, content)
       .map((unit) => unit.hp / content.units.get(unit.type).maxHp);
@@ -205,9 +229,13 @@ export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry(Sp
     if (condition.aggregate === 'any') return ratios.some((value) => compare(value, condition.op, condition.value));
     if (condition.aggregate === 'all') return ratios.every((value) => compare(value, condition.op, condition.value));
     return compare(ratios.reduce((sum, value) => sum + value, 0) / ratios.length, condition.op, condition.value);
+  }, {
+    references: (condition) => points().selector(condition.selector),
   }))
   .register(conditionHandler('markerCount', ({ state }, condition) =>
-    compare(selectMarkers(state, condition.selector).length, condition.op, condition.value)))
+    compare(selectMarkers(state, condition.selector).length, condition.op, condition.value), {
+    references: (condition) => points().selector(condition.selector),
+  }))
   .register(conditionHandler('eventCount', ({ state }, condition) =>
     compare(state.scenario.eventCounts[condition.event] ?? 0, condition.op, condition.value)))
   .register(
@@ -217,29 +245,36 @@ export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry(Sp
       if (condition.state === 'destroyed') return structure.hp <= 0;
       if (condition.state === 'disabled') return structure.hp > 0 && structure.disabled;
       return structure.hp > 0 && !structure.disabled;
-    }),
+    }, { references: (condition) => points().structure(condition.id) }),
   )
   .register(conditionHandler('composite', ({ state }, condition) =>
-    compositeStatus(state, condition.id).state === condition.state))
+    compositeStatus(state, condition.id).state === condition.state, {
+    references: (condition) => points().composite(condition.id),
+  }))
   .register(
     conditionHandler('objective', ({ state }, condition) =>
       player(state, condition.player).objectiveStates[condition.id]?.status === condition.status,
+      {
+        references: (condition) => points()
+          .player(condition.player)
+          .objective(condition.player, condition.id),
+      },
     ),
   )
   .register(conditionHandler(
     'all',
     (context, condition) => condition.conditions.every((child) => context.evaluate(child)),
-    (condition) => condition.conditions,
+    { children: (condition) => condition.conditions },
   ))
   .register(conditionHandler(
     'any',
     (context, condition) => condition.conditions.some((child) => context.evaluate(child)),
-    (condition) => condition.conditions,
+    { children: (condition) => condition.conditions },
   ))
   .register(conditionHandler(
     'not',
     (context, condition) => !context.evaluate(condition.condition),
-    (condition) => [condition.condition],
+    { children: (condition) => [condition.condition] },
   ));
 
 /**
@@ -360,6 +395,14 @@ export class ScenarioEffectContext {
 
 export interface ScenarioEffectHandler<K extends EffectKind = EffectKind> {
   kind: K;
+  /**
+   * The names this effect writes down, for whoever has to resolve them.
+   *
+   * Applying the effect refuses an unknown name at the moment of commitment;
+   * this is the same knowledge stated where it can be *asked* instead, so a
+   * level document can be linted before anybody plays it.
+   */
+  references?(effect: ScenarioEffectKindMap[K]): PayloadReferences;
   apply(context: ScenarioEffectContext, effect: ScenarioEffectKindMap[K]): void;
 }
 
@@ -384,6 +427,11 @@ export class ScenarioEffectHandlerRegistry extends KeyedRegistry<EffectKind, Sce
     this.get(effect.type).apply(new ScenarioEffectContext(rules, state, emit), effect as never);
   }
 
+  /** What this effect points at, or nothing for a kind nobody registered. */
+  references(effect: ScenarioEffect): PayloadReferences {
+    return this.tryGet(effect.type)?.references?.(effect as never) ?? points();
+  }
+
   clone(): ScenarioEffectHandlerRegistry {
     return this.copyInto(new ScenarioEffectHandlerRegistry());
   }
@@ -392,7 +440,16 @@ export class ScenarioEffectHandlerRegistry extends KeyedRegistry<EffectKind, Sce
 const effectHandler = <K extends EffectKind>(
   kind: K,
   apply: ScenarioEffectHandler<K>['apply'],
-): ScenarioEffectHandler<K> => ({ kind, apply });
+  declares: Omit<ScenarioEffectHandler<K>, 'kind' | 'apply'> = {},
+): ScenarioEffectHandler<K> => ({ kind, apply, ...declares });
+
+/** The four effects that steer an objective differ only in the change they make. */
+const steersObjective = (effect: { player: number; id: string }): PayloadReferences =>
+  points().objective(effect.player, effect.id);
+
+/** Height is a whole number of steps, whether an effect sets it or shifts it. */
+const wholeElevation = (cited: PayloadReferences, height: number): PayloadReferences =>
+  Number.isInteger(height) ? cited : cited.fault('动态海拔必须使用整数');
 
 export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   .register(effectHandler('setVariable', ({ state }, effect) => {
@@ -405,9 +462,13 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     for (const unit of context.select(effect.selector)) {
       addStatus(context.content, unit, effect.status, effect.duration, context.emit);
     }
+  }, {
+    references: (effect) => points().status(effect.status).selector(effect.selector),
   }))
   .register(effectHandler('removeStatus', (context, effect) => {
     for (const unit of context.select(effect.selector)) removeStatus(unit, effect.status, context.emit);
+  }, {
+    references: (effect) => points().status(effect.status).selector(effect.selector),
   }))
   .register(effectHandler('changeUnitOwner', (context, effect) => {
     for (const unit of context.select(effect.selector)) {
@@ -417,6 +478,8 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       entity.changeOwner(effect.owner);
       context.emit({ type: 'unitOwnerChanged', unit: unit.id, from, to: effect.owner });
     }
+  }, {
+    references: (effect) => points().selector(effect.selector),
   }))
   .register(effectHandler('spawnUnits', (context, effect) => {
     for (const source of effect.units) {
@@ -446,6 +509,11 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
         reason: effect.reason ?? 'reinforcement',
       });
     }
+  }, {
+    references: (effect) => effect.units.reduce(
+      (cited, source) => cited.unitType(source.unit).player(source.owner).cell(source),
+      points(),
+    ),
   }))
   .register(effectHandler('withdrawUnits', (context, effect) => {
     for (const unit of [...context.select(effect.selector)]) {
@@ -460,6 +528,8 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       announceUnitDeparture(context.rules, context.state, unit, context.emit);
       context.emit({ type: 'unitWithdrawn', unit: unit.id, at });
     }
+  }, {
+    references: (effect) => points().selector(effect.selector),
   }))
   .register(effectHandler('reviveMarkers', (context, effect) => {
     const ratio = Math.max(0.01, Math.min(1, effect.hpPercent ?? 0.5));
@@ -472,12 +542,16 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
         hp: Math.max(1, Math.round(context.content.units.get(fallen.type).maxHp * ratio)),
       }, context.emit);
     }
+  }, {
+    references: (effect) => points().selector(effect.selector),
   }))
   .register(effectHandler('removeMarkers', (context, effect) => {
     for (const marker of [...context.selectMarkers(effect.selector)]) {
       context.state.markers.splice(context.state.markers.indexOf(marker), 1);
       context.emit({ type: 'markerRemoved', marker: marker.id, kind: marker.kind, at: marker.at });
     }
+  }, {
+    references: (effect) => points().selector(effect.selector),
   }))
   .register(effectHandler('setPlayerTeam', (context, effect) => {
     const target = player(context.state, effect.player);
@@ -485,6 +559,8 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     if (from === effect.team) return;
     target.team = effect.team;
     context.emit({ type: 'playerTeamChanged', player: target.id, from, to: effect.team });
+  }, {
+    references: (effect) => points().player(effect.player),
   }))
   .register(effectHandler('forceMove', (context, effect) => {
     for (const unit of context.standing(effect.selector)) {
@@ -496,12 +572,21 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
         collisionDamage: effect.collisionDamage,
       }, context.emit);
     }
+  }, {
+    references: (effect) => {
+      const cited = points().selector(effect.selector).cell(effect.source);
+      return Number.isInteger(effect.distance) && effect.distance >= 0
+        ? cited
+        : cited.fault('强制位移距离必须是非负整数');
+    },
   }))
   .register(effectHandler('teleportUnits', (context, effect) => {
     for (const unit of context.select(effect.selector)) {
       const destination = context.openCellIn(effect.zone, context.content.units.get(unit.type).movementClass);
       if (destination) teleportUnit(context.content, context.state, unit.id, destination, context.emit);
     }
+  }, {
+    references: (effect) => points().zone(effect.zone).selector(effect.selector),
   }))
   .register(effectHandler('addOverlay', (context, effect) => {
     addTerrainOverlay(
@@ -515,36 +600,44 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       },
       context.emit,
     );
+  }, {
+    references: (effect) => points().overlay(effect.overlay).zone(effect.zone),
   }))
   .register(effectHandler('removeOverlay', ({ state, emit }, effect) => {
     removeTerrainOverlay(state, effect.id, emit);
   }))
   .register(effectHandler('activateObjective', (context, effect) => {
     context.changeObjective(effect.player, effect.id, { status: 'active' });
-  }))
+  }, { references: steersObjective }))
   .register(effectHandler('cancelObjective', (context, effect) => {
     context.changeObjective(effect.player, effect.id, { status: 'cancelled' });
-  }))
+  }, { references: steersObjective }))
   .register(effectHandler('completeObjective', (context, effect) => {
     context.changeObjective(effect.player, effect.id, { status: 'completed' });
-  }))
+  }, { references: steersObjective }))
   .register(effectHandler('revealObjective', (context, effect) => {
     context.changeObjective(effect.player, effect.id, { hidden: false });
-  }))
+  }, { references: steersObjective }))
   .register(effectHandler('changeUnitResource', (context, effect) => {
     for (const unit of context.select(effect.selector)) {
       changeUnitResource(context.resources, unit, effect.resource, effect.amount, context.emit);
     }
+  }, {
+    references: (effect) => points().selector(effect.selector),
   }))
   .register(effectHandler('changeMorale', (context, effect) => {
     for (const unit of context.standing(effect.selector)) {
       changeMorale(context.rules, context.state, unit.id, effect.amount, effect.reason ?? 'scenario', context.emit);
     }
+  }, {
+    references: (effect) => points().selector(effect.selector),
   }))
   .register(effectHandler('surrenderUnits', (context, effect) => {
     for (const unit of context.standing(effect.selector)) {
       surrenderUnit(context.rules, context.state, unit.id, effect.to, context.emit);
     }
+  }, {
+    references: (effect) => points().selector(effect.selector),
   }))
   .register(effectHandler('restoreWithdrawnUnits', (context, effect) => {
     for (const marker of [...context.selectMarkers(effect.selector)]) {
@@ -556,6 +649,8 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       if (!destination) break;
       returnUnitToField(context.state, marker, { at: destination, owner: effect.owner }, context.emit);
     }
+  }, {
+    references: (effect) => points().zone(effect.zone).selector(effect.selector),
   }))
   .register(effectHandler('setUnitDirective', (context, effect) => {
     if (effect.directive.zone && !context.state.scenario.zones[effect.directive.zone]) {
@@ -570,8 +665,20 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       };
       context.emit({ type: 'directiveChanged', unit: unit.id, mode: unit.directive.mode });
     }
+  }, {
+    references: (effect) => (effect.directive.waypoints ?? []).reduce(
+      (cited, waypoint) => cited.cell(waypoint),
+      points().selector(effect.selector).zone(effect.directive.zone).directive(effect.directive.mode),
+    ),
   }))
-  .register(effectHandler('addEngagementRule', ({ state }, effect) => addEngagementRule(state, effect.rule)))
+  .register(effectHandler('addEngagementRule', ({ state }, effect) => addEngagementRule(state, effect.rule), {
+    references: (effect) => (effect.rule.players ?? []).reduce(
+      (cited, owner) => cited.player(owner),
+      effect.rule.id.trim()
+        ? points().zone(effect.rule.zone)
+        : points().zone(effect.rule.zone).fault('交战规则缺少 id'),
+    ),
+  }))
   .register(effectHandler('removeEngagementRule', ({ state }, effect) => removeEngagementRule(state, effect.id)))
   .register(effectHandler('replaceTerrain', (context, effect) => {
     if (!context.content.terrains.has(effect.terrain)) throw new Error(`unknown terrain "${effect.terrain}"`);
@@ -580,18 +687,24 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       if (from === null) continue;
       context.emit({ type: 'terrainChanged', at: { ...cell }, from, to: effect.terrain });
     }
+  }, {
+    references: (effect) => points().zone(effect.zone).terrain(effect.terrain),
   }))
   .register(effectHandler('setElevation', (context, effect) => {
     for (const cell of context.zone(effect.zone)) {
       const step = context.layers.changeElevation(cell, effect.value);
       if (step) context.emit({ type: 'elevationChanged', at: { ...cell }, ...step });
     }
+  }, {
+    references: (effect) => wholeElevation(points().zone(effect.zone), effect.value),
   }))
   .register(effectHandler('addElevation', (context, effect) => {
     for (const cell of context.zone(effect.zone)) {
       const step = context.layers.raiseElevation(cell, effect.amount);
       if (step) context.emit({ type: 'elevationChanged', at: { ...cell }, ...step });
     }
+  }, {
+    references: (effect) => wholeElevation(points().zone(effect.zone), effect.amount),
   }))
   .register(effectHandler('setCliffs', (context, effect) => {
     for (const edge of effect.edges) {
@@ -602,6 +715,8 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
         context.emit({ type: 'cliffChanged', from: { ...edge.from }, to: { ...edge.to }, blocked: effect.blocked });
       }
     }
+  }, {
+    references: (effect) => effect.edges.reduce((cited, edge) => cited.edge(edge), points()),
   }))
   .register(effectHandler('setDirectionalCover', (context, effect) => {
     for (const cover of effect.covers) {
@@ -611,15 +726,23 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       context.layers.changeCover(cover.at, cover.sides);
       context.emit({ type: 'directionalCoverChanged', at: { ...cover.at }, sides: { ...cover.sides } });
     }
+  }, {
+    references: (effect) => effect.covers.reduce((cited, cover) => cited.cell(cover.at), points()),
   }))
   .register(effectHandler('damageStructure', (context, effect) => {
     damageStructure(context.content, context.state, effect.id, effect.amount, context.emit);
+  }, {
+    references: (effect) => points().structure(effect.id),
   }))
   .register(effectHandler('repairStructure', (context, effect) => {
     repairStructure(context.content, context.state, effect.id, effect.amount, context.emit);
+  }, {
+    references: (effect) => points().structure(effect.id),
   }))
   .register(effectHandler('moveComposite', (context, effect) => {
     moveComposite(context.state, effect.id, { x: effect.dx, y: effect.dy }, context.emit);
+  }, {
+    references: (effect) => points().composite(effect.id),
   }))
   .register(effectHandler('emitSignal', ({ emit }, effect) => {
     emit({ type: 'scenarioSignal', signal: effect.signal });

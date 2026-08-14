@@ -212,13 +212,17 @@ export const DefaultRuleReferenceChecks = new RuleReferenceCheckRegistry()
     id: 'directives',
     subject: '常驻命令',
     known: (rules) => rules.directives.ids(),
-    inLevel: (level) => [
+    inLevel: (level, rules) => [
       ...levelUnits(level).flatMap(({ unit, by }) =>
         unit.directive ? [{ by, name: unit.directive.mode }] : []),
+      // Asked of the effect rather than matched by name: which effects hand out
+      // a standing order is the effect handler's own business, and a rule pack's
+      // effect that hands one out was checked by nobody while this said
+      // `effect.type === 'setUnitDirective'`.
       ...(level.scenario?.triggers ?? []).flatMap((trigger) =>
-        trigger.effects.flatMap((effect) => effect.type === 'setUnitDirective'
-          ? [{ by: `触发器 ${trigger.id}`, name: effect.directive.mode }]
-          : [])),
+        trigger.effects.flatMap((effect) =>
+          rules.scenarioEffects.references(effect).directives
+            .map((name) => ({ by: `触发器 ${trigger.id}`, name })))),
     ],
     inState: (state) => stateUnits(state).map(({ unit, by }) => ({ by, name: unit.directive.mode })),
   })

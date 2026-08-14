@@ -17,7 +17,8 @@ import {
   refreshObjectiveStates,
 } from '../victory';
 import type { AbilityQuery } from '../abilities';
-import { mapFromLevel, normaliseLevel, validateLevel } from '../level/index';
+import { mapFromLevel, normaliseLevel } from '../level/index';
+import { validateLevel } from '../level-validation';
 import type {
   Action,
   Coord,
@@ -133,7 +134,7 @@ export const TEST_RULES: BattleRuleServices = createBattleRules({ content: TEST_
 export const testState = (level: LevelData): GameState => createState(level, TEST_CONTENT);
 
 export const testMap = (level: LevelData) => mapFromLevel(level, TEST_CONTENT);
-export const testValidate = (level: LevelData) => validateLevel(level, TEST_CONTENT);
+export const testValidate = (level: LevelData) => validateLevel(TEST_RULES, level);
 
 export const testMoveField = (state: GameState, unit: Unit) =>
   computeMoveField(TEST_RULES, state, unit);

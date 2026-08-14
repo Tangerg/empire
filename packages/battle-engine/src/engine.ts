@@ -16,7 +16,7 @@ import {
   type CombatModifierPipeline,
 } from './combat-modifiers';
 import { forecastCombatPlan } from './combat-plan';
-import { validateLevel } from './level/index';
+import { validateLevel } from './level-validation';
 import { cloneState, createState, restoreState, type CreateStateOptions } from './state';
 import { createBattleSave, type BattleSave } from './battle-save';
 import type { ContentCatalog } from './content-pack';
@@ -103,13 +103,10 @@ export class BattleEngine {
   }
 
   createState(level: LevelData, options: CreateStateOptions = {}): GameState {
-    // Two questions, two answers: does the document hold together against the
-    // catalog, and does this ruleset implement every rule the document names.
-    const issues = validateLevel(level, this.rules.content)
+    const issues = validateLevel(this.rules, level)
       .filter((issue) => issue.severity === 'error')
       .map((issue) => issue.message);
-    issues.push(...this.rules.referenceChecks.levelIssues(this.rules, level));
-    if (issues.length > 0) throw new BattleLevelError(level.id, [...new Set(issues)]);
+    if (issues.length > 0) throw new BattleLevelError(level.id, issues);
     const state = createState(level, this.rules.content, options);
     // A level without a deployment phase is already playing, so it needs its
     // first actor turn now; deployment levels get theirs on finishDeployment.

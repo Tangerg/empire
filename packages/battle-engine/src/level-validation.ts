@@ -1,5 +1,8 @@
-import { sharesEdge } from '../grid';
-import { type ContentCatalog } from '../content-pack';
+import { sharesEdge } from './grid';
+import { type ContentCatalog } from './content-pack';
+import type { RuleReferenceCheckRegistry, RuleReferenceRules } from './rule-references';
+import type { PayloadReferences } from './payload-references';
+import type { TacticalGrid } from './tactical-grid';
 import type {
   Coord,
   GameMap,
@@ -7,21 +10,31 @@ import type {
   Objective,
   PlayerConfig,
   ScenarioCondition,
-  ScenarioEffect,
-  ScenarioTrigger,
   TerrainDef,
-  UnitSelector,
-} from '../types';
-import { LevelDeclarations, objectivesOf } from './declarations';
-import { scheduleOf } from '../domain/scenario-trigger';
-import { declaredChildObjectives, isCompositeObjective } from '../objective-model';
-import { LevelIssueLog, type LevelIssue } from './issues';
-import { mapFromLevel } from './map';
+} from './types';
+import { LevelDeclarations, objectivesOf } from './level/declarations';
+import { resolveRules } from './level/defaults';
+import { scheduleOf } from './domain/scenario-trigger';
+import { declaredChildObjectives, isCompositeObjective } from './objective-model';
+import { LevelIssueLog, type LevelIssue } from './level/issues';
+import { mapFromLevel } from './level/map';
 
 export type { LevelIssue };
 
 /**
- * One level under inspection: the document, the catalog it is written against,
+ * Port declared by the linter.
+ *
+ * A level is only playable *under a ruleset*: the catalog defines the content
+ * ids it names, the tiling defines the facings it may use, and the handler
+ * registries are the only things that can say what one of its payloads points
+ * at. `BattleRuleServices` satisfies this structurally.
+ */
+export interface LevelValidationRules extends RuleReferenceRules {
+  readonly referenceChecks: RuleReferenceCheckRegistry;
+}
+
+/**
+ * One level under inspection: the document, the ruleset it is written against,
  * the runtime map it produces, and the names it declares.
  *
  * Every check reads this and writes findings to it, which is what replaced
@@ -33,12 +46,35 @@ export class LevelInspection {
   readonly map: GameMap | null;
 
   constructor(
+    readonly rules: LevelValidationRules,
     readonly level: LevelData,
-    readonly content: ContentCatalog,
     private readonly log: LevelIssueLog,
   ) {
     this.map = this.buildMap();
     this.declarations = new LevelDeclarations(level, log);
+  }
+
+  get content(): ContentCatalog {
+    return this.rules.content;
+  }
+
+  /**
+   * The tiling this level plays on, or null when it names one the ruleset does
+   * not implement — which the ruleset's own reference checks report.
+   */
+  get grid(): TacticalGrid | null {
+    return this.rules.grids.tryGet(resolveRules(this.level).grid) ?? null;
+  }
+
+  /**
+   * Whether the board this level plays on has a facing by that name.
+   *
+   * Abstains when the level names a tiling the ruleset does not implement: one
+   * finding about the board is enough, and it is already reported.
+   */
+  admitsFacing(direction: string): boolean {
+    const grid = this.grid;
+    return !grid || grid.directions.some((facing) => facing.id === direction);
   }
 
   error(message: string): void {
@@ -100,9 +136,15 @@ const checkCliffs: LevelCheck = (inspection) => {
 
 const checkDirectionalCover: LevelCheck = (inspection) => {
   for (const cover of inspection.level.directionalCover ?? []) {
-    if (!inspection.inBounds(cover.at)) inspection.error(`方向掩体越界：${cover.at.x},${cover.at.y}`);
+    const at = `${cover.at.x},${cover.at.y}`;
+    if (!inspection.inBounds(cover.at)) inspection.error(`方向掩体越界：${at}`);
     if (Object.keys(cover.sides).length === 0) {
-      inspection.warn(`方向掩体 ${cover.at.x},${cover.at.y} 没有任何受保护边`);
+      inspection.warn(`方向掩体 ${at} 没有任何受保护边`);
+    }
+    // A side the board has no name for protects against nothing: an attack can
+    // never arrive from a facing the tiling does not admit.
+    for (const side of Object.keys(cover.sides)) {
+      if (!inspection.admitsFacing(side)) inspection.error(`方向掩体 ${at} 的受保护边无效：${side}`);
     }
   }
 };
@@ -163,7 +205,9 @@ function checkUnitContent(inspection: LevelInspection, unit: UnitPlacement): voi
     inspection.error(`单位 ${unit.unit} 的军衔经验必须 >= 0`);
   }
   checkResourceAccounts(inspection, unit.resources ?? {}, `单位 ${unit.unit}`);
-  if (unit.facing !== undefined && !['north', 'east', 'south', 'west'].includes(unit.facing)) {
+  // Facings belong to the tiling, not to this list: four names hardcoded here
+  // refused every direction a hex or eight-way board has.
+  if (unit.facing !== undefined && !inspection.admitsFacing(unit.facing)) {
     inspection.error(`单位 ${unit.unit} 的朝向无效：${unit.facing}`);
   }
   if (unit.morale !== undefined && (!Number.isFinite(unit.morale) || unit.morale < 0)) {
@@ -365,6 +409,49 @@ const checkOverlays: LevelCheck = (inspection) => {
   }
 };
 
+/* ---------------------------------------------------------------- references */
+
+/**
+ * Resolves what a payload said it points at against this document.
+ *
+ * The linter knows nothing about which kinds of effect, condition or objective
+ * exist — it asks the handler that runs one what it points at, and only decides
+ * whether those names are declared here. That is what replaced two hundred lines
+ * of `effect.type === '…'` in this module, and it is why a rule pack's own kind
+ * is linted as thoroughly as a built-in one.
+ *
+ * Standing orders are the one namespace deliberately left alone: whether a
+ * ruleset *implements* a rule id is `RuleReferenceCheck`'s question, and it is
+ * asked of the same declaration.
+ */
+function checkReferences(inspection: LevelInspection, by: string, cited: PayloadReferences): void {
+  const { content, declarations } = inspection;
+  const unknown = (subject: string, name: string | number): void =>
+    inspection.error(`${by} 引用了未知${subject} ${name}`);
+
+  for (const id of cited.zones) if (!declarations.zones.has(id)) unknown('区域', id);
+  for (const id of cited.players) if (!declarations.players.has(id)) unknown('玩家', id);
+  for (const id of cited.structures) if (!declarations.structures.has(id)) unknown('结构', id);
+  for (const id of cited.composites) if (!declarations.composites.has(id)) unknown('复合目标', id);
+  for (const aim of cited.objectives) {
+    if (!declarations.objectivesOfPlayer(aim.player).has(aim.id)) unknown('目标', `${aim.player}:${aim.id}`);
+  }
+  for (const id of cited.statuses) if (!content.statuses.has(id)) unknown('状态', id);
+  for (const id of cited.terrains) if (!content.terrains.has(id)) unknown('地形', id);
+  for (const id of cited.overlays) if (!content.terrainOverlays.has(id)) unknown('地形覆盖', id);
+  for (const id of cited.unitTypes) if (!content.units.has(id)) unknown('兵种', id);
+  for (const at of cited.cells) {
+    if (!inspection.inBounds(at)) inspection.error(`${by} 的位置越界：${at.x},${at.y}`);
+  }
+  for (const edge of cited.edges) {
+    if (!inspection.inBounds(edge.from) || !inspection.inBounds(edge.to) || !sharesEdge(edge.from, edge.to)) {
+      inspection.error(`${by} 的边无效：${edge.from.x},${edge.from.y} -> ${edge.to.x},${edge.to.y}`);
+    }
+  }
+  for (const fault of cited.faults) inspection.error(`${by}：${fault}`);
+  for (const condition of cited.conditions) checkCondition(inspection, by, condition);
+}
+
 /* ---------------------------------------------------------------- objectives */
 
 const checkObjectives: LevelCheck = (inspection) => {
@@ -376,33 +463,10 @@ const checkObjectives: LevelCheck = (inspection) => {
 };
 
 function checkObjective(inspection: LevelInspection, objective: Objective): void {
-  const { declarations } = inspection;
-  const named = objective.id ?? objective.type;
-  if (objective.type === 'destroy') {
-    for (const id of objective.structures) {
-      if (!declarations.structures.has(id)) inspection.error(`目标 ${named} 引用了未知结构 ${id}`);
-    }
-  }
-  if (objective.type === 'neutralizeComposite') {
-    if (!declarations.composites.has(objective.composite)) {
-      inspection.error(`目标 ${named} 引用了未知复合目标 ${objective.composite}`);
-    }
-    if (objective.minimumNeutralized !== undefined &&
-      (!Number.isInteger(objective.minimumNeutralized) || objective.minimumNeutralized < 1)) {
-      inspection.error(`复合目标 ${named} 的瘫痪数量必须 >= 1`);
-    }
-  }
-  if ((objective.type === 'escort' || objective.type === 'control') && !declarations.zones.has(objective.zone)) {
-    inspection.error(`目标 ${named} 引用了未知区域 ${objective.zone}`);
-  }
-  if (objective.type === 'protect' && (objective.minimumAlive < 1 || objective.untilTurn < 1)) {
-    inspection.error(`保护目标 ${objective.id ?? ''} 的人数和截止回合必须 >= 1`);
-  }
-  if (objective.type === 'escort' && objective.count < 1) {
-    inspection.error(`护送目标 ${objective.id ?? ''} 的抵达人数必须 >= 1`);
-  }
+  const named = `目标 ${objective.id ?? objective.type}`;
+  checkReferences(inspection, named, inspection.rules.objectives.references(objective));
   if (isCompositeObjective(objective) && declaredChildObjectives(objective).length === 0) {
-    inspection.error(`组合目标 ${named} 不能为空`);
+    inspection.error(`组合目标 ${objective.id ?? objective.type} 不能为空`);
   }
   for (const child of declaredChildObjectives(objective)) checkObjective(inspection, child);
 }
@@ -411,175 +475,22 @@ function checkObjective(inspection: LevelInspection, objective: Objective): void
 
 const checkTriggers: LevelCheck = (inspection) => {
   for (const trigger of inspection.level.scenario?.triggers ?? []) {
-    checkCondition(inspection, trigger.condition);
-    for (const effect of trigger.effects) checkEffect(inspection, effect);
-    checkRepeat(inspection, trigger);
+    const by = `触发器 ${trigger.id}`;
+    checkCondition(inspection, by, trigger.condition);
+    for (const effect of trigger.effects) {
+      checkReferences(inspection, `${by} 的效果 ${effect.type}`, inspection.rules.scenarioEffects.references(effect));
+    }
+    for (const fault of scheduleOf(trigger)?.faults ?? []) inspection.error(`${by} 的${fault}`);
   }
 };
 
-function checkRepeat(inspection: LevelInspection, trigger: ScenarioTrigger): void {
-  for (const fault of scheduleOf(trigger)?.faults ?? []) {
-    inspection.error(`触发器 ${trigger.id} 的${fault}`);
-  }
-}
-
-function checkCondition(inspection: LevelInspection, condition: ScenarioCondition): void {
-  const { declarations } = inspection;
-  const zone = (id: string) => {
-    if (!declarations.zones.has(id)) inspection.error(`触发条件引用了未知区域 ${id}`);
-  };
-  if (condition.type === 'unitInZone') zone(condition.zone);
-  else if (condition.type === 'unitCount' || condition.type === 'unitHealth' || condition.type === 'markerCount') {
-    if (condition.selector.zone) zone(condition.selector.zone);
-  } else if (condition.type === 'structure' && !declarations.structures.has(condition.id)) {
-    inspection.error(`触发条件引用了未知结构 ${condition.id}`);
-  } else if (condition.type === 'composite' && !declarations.composites.has(condition.id)) {
-    inspection.error(`触发条件引用了未知复合目标 ${condition.id}`);
-  } else if (condition.type === 'currentPlayer' && !declarations.players.has(condition.player)) {
-    inspection.error(`触发条件引用了未知玩家 ${condition.player}`);
-  } else if (condition.type === 'turnCycle' && (!Number.isInteger(condition.every) || condition.every < 1)) {
-    inspection.error('循环回合条件的间隔必须是正整数');
-  } else if (condition.type === 'objective') {
-    if (!declarations.players.has(condition.player)) {
-      inspection.error(`触发条件引用了未知玩家 ${condition.player}`);
-    }
-    if (!declarations.objectivesOfPlayer(condition.player).has(condition.id)) {
-      inspection.error(`触发条件引用了未知目标 ${condition.player}:${condition.id}`);
-    }
-  } else if (condition.type === 'all' || condition.type === 'any') {
-    for (const child of condition.conditions) checkCondition(inspection, child);
-  } else if (condition.type === 'not') checkCondition(inspection, condition.condition);
-}
-
-/** The units an effect aims at, for the effects that aim at units. */
-function unitSelectorOf(effect: ScenarioEffect): UnitSelector | null {
-  switch (effect.type) {
-    case 'addStatus':
-    case 'removeStatus':
-    case 'changeUnitOwner':
-    case 'changeUnitResource':
-    case 'withdrawUnits':
-    case 'forceMove':
-    case 'teleportUnits':
-    case 'changeMorale':
-    case 'surrenderUnits':
-    case 'setUnitDirective':
-      return effect.selector;
-    default:
-      return null;
-  }
-}
-
-/** The objective an effect steers, for the effects that steer one. */
-function steeredObjective(effect: ScenarioEffect): { player: number; id: string } | null {
-  switch (effect.type) {
-    case 'activateObjective':
-    case 'cancelObjective':
-    case 'completeObjective':
-    case 'revealObjective':
-      return { player: effect.player, id: effect.id };
-    default:
-      return null;
-  }
-}
-
-function checkEffect(inspection: LevelInspection, effect: ScenarioEffect): void {
-  const { content, declarations } = inspection;
-  const zone = (id: string, subject = '场景效果') => {
-    if (!declarations.zones.has(id)) inspection.error(`${subject}引用了未知区域 ${id}`);
-  };
-
-  if ((effect.type === 'addStatus' || effect.type === 'removeStatus') && !content.statuses.has(effect.status)) {
-    inspection.error(`场景效果引用了未知状态 ${effect.status}`);
-  }
-  const aimedAt = unitSelectorOf(effect);
-  if (aimedAt?.zone) zone(aimedAt.zone);
-  if ((effect.type === 'reviveMarkers' || effect.type === 'removeMarkers') && effect.selector.zone) {
-    zone(effect.selector.zone, '场景标记效果');
-  }
-  if (effect.type === 'restoreWithdrawnUnits') {
-    zone(effect.zone, '恢复撤退单位');
-    if (effect.selector.zone) zone(effect.selector.zone, '恢复撤退单位的选择器');
-  }
-  if (effect.type === 'setUnitDirective') {
-    if (effect.directive.zone) zone(effect.directive.zone, '战术指令');
-    for (const waypoint of effect.directive.waypoints ?? []) {
-      if (!inspection.inBounds(waypoint)) {
-        inspection.error(`战术指令的巡逻点越界：${waypoint.x},${waypoint.y}`);
-      }
-    }
-  }
-  if (effect.type === 'addEngagementRule') {
-    if (!effect.rule.id.trim()) inspection.error('交战规则缺少 id');
-    zone(effect.rule.zone, '交战规则');
-    for (const owner of effect.rule.players ?? []) {
-      if (!declarations.players.has(owner)) inspection.error(`交战规则引用了未知玩家 ${owner}`);
-    }
-  }
-  if (effect.type === 'spawnUnits') {
-    for (const unit of effect.units) {
-      if (!content.units.has(unit.unit)) inspection.error(`增援引用了未知兵种 ${unit.unit}`);
-      if (!declarations.players.has(unit.owner)) inspection.error(`增援引用了未知玩家 ${unit.owner}`);
-      if (!inspection.inBounds(unit)) inspection.error(`增援位置越界：${unit.x},${unit.y}`);
-    }
-  }
-  if (effect.type === 'setPlayerTeam' && !declarations.players.has(effect.player)) {
-    inspection.error(`阵营变更引用了未知玩家 ${effect.player}`);
-  }
-  if (effect.type === 'forceMove') {
-    if (!inspection.inBounds(effect.source)) {
-      inspection.error(`强制位移来源越界：${effect.source.x},${effect.source.y}`);
-    }
-    if (!Number.isInteger(effect.distance) || effect.distance < 0) {
-      inspection.error('强制位移距离必须是非负整数');
-    }
-  }
-  if (effect.type === 'teleportUnits') {
-    zone(effect.zone, '传送效果');
-    if (effect.selector.zone) zone(effect.selector.zone, '传送选择器');
-  }
-  if (effect.type === 'addOverlay') {
-    if (!content.terrainOverlays.has(effect.overlay)) {
-      inspection.error(`场景效果引用了未知覆盖 ${effect.overlay}`);
-    }
-    zone(effect.zone);
-  }
-  if (effect.type === 'replaceTerrain' || effect.type === 'setElevation' || effect.type === 'addElevation') {
-    zone(effect.zone);
-  }
-  if (effect.type === 'replaceTerrain' && !content.terrains.has(effect.terrain)) {
-    inspection.error(`场景效果引用了未知地形 ${effect.terrain}`);
-  }
-  if ((effect.type === 'setElevation' && !Number.isInteger(effect.value)) ||
-    (effect.type === 'addElevation' && !Number.isInteger(effect.amount))) {
-    inspection.error('动态海拔必须使用整数');
-  }
-  if (effect.type === 'setCliffs') {
-    for (const edge of effect.edges) {
-      if (!inspection.inBounds(edge.from) || !inspection.inBounds(edge.to) ||
-        !sharesEdge(edge.from, edge.to)) {
-        inspection.error(`动态悬崖边无效：${edge.from.x},${edge.from.y} -> ${edge.to.x},${edge.to.y}`);
-      }
-    }
-  }
-  if (effect.type === 'setDirectionalCover') {
-    for (const cover of effect.covers) {
-      if (!inspection.inBounds(cover.at)) {
-        inspection.error(`动态方向掩体越界：${cover.at.x},${cover.at.y}`);
-      }
-    }
-  }
-  if ((effect.type === 'damageStructure' || effect.type === 'repairStructure') &&
-    !declarations.structures.has(effect.id)) {
-    inspection.error(`场景效果引用了未知结构 ${effect.id}`);
-  }
-  if (effect.type === 'moveComposite' && !declarations.composites.has(effect.id)) {
-    inspection.error(`场景效果引用了未知复合目标 ${effect.id}`);
-  }
-  const steered = steeredObjective(effect);
-  if (steered && !declarations.objectivesOfPlayer(steered.player).has(steered.id)) {
-    inspection.error(`场景效果引用了未知目标 ${steered.player}:${steered.id}`);
-  }
+function checkCondition(inspection: LevelInspection, by: string, condition: ScenarioCondition): void {
+  const { scenarioConditions } = inspection.rules;
+  checkReferences(inspection, `${by} 的条件 ${condition.type}`, scenarioConditions.references(condition));
+  // A kind nobody registered has no knowable children, and the missing kind is
+  // what the ruleset's own reference checks report.
+  if (!scenarioConditions.has(condition.type)) return;
+  for (const child of scenarioConditions.children(condition)) checkCondition(inspection, by, child);
 }
 
 /* --------------------------------------------------------------- playability */
@@ -643,10 +554,19 @@ const LEVEL_CHECKS: readonly LevelCheck[] = [
   checkVictoryConditions,
 ];
 
-/** Structural + playability lint. The editor surfaces this live. */
-export function validateLevel(level: LevelData, content: ContentCatalog): LevelIssue[] {
+/**
+ * Everything wrong with one level under one ruleset. The editor surfaces this
+ * live, and the engine refuses to build a state from a level with any error.
+ *
+ * Two questions, one answer: does the document hold together against its
+ * catalog, and does this ruleset implement every rule the document names. Both
+ * callers used to combine the two halves by hand, which is two places to forget
+ * the second one.
+ */
+export function validateLevel(rules: LevelValidationRules, level: LevelData): LevelIssue[] {
   const log = new LevelIssueLog();
-  const inspection = new LevelInspection(level, content, log);
+  const inspection = new LevelInspection(rules, level, log);
   for (const check of LEVEL_CHECKS) check(inspection);
+  for (const missing of rules.referenceChecks.levelIssues(rules, level)) log.error(missing);
   return log.issues;
 }

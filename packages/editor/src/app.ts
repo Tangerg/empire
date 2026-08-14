@@ -3,11 +3,11 @@ import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import type { BattleRuleServices } from '@empire/battle-engine/action-system';
 import { TEAM_COLORS } from '@empire/game-ui/art/palette';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
+import { validateLevel } from '@empire/battle-engine/level-validation';
 import {
   emptyLevel,
   mapFromLevel,
   normaliseLevel,
-  validateLevel,
   type LevelIssue,
 } from '@empire/battle-engine/level';
 import type {
@@ -310,14 +310,7 @@ export class EditorApp {
   }
 
   private lint(): LevelIssue[] {
-    const level = this.exportLevel();
-    return [
-      ...validateLevel(level, this.content),
-      // Names only the composed ruleset can confirm: objective kinds, scenario
-      // primitives, standing orders, blast shapes, turn-order policies.
-      ...this.rules.referenceChecks.levelIssues(this.rules, level)
-        .map((message) => ({ severity: 'error' as const, message })),
-    ];
+    return validateLevel(this.rules, this.exportLevel());
   }
 
   private save(): void {

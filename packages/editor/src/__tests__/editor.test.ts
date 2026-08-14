@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it } from 'vitest';
 import { TILE } from '@empire/game-ui/art/terrain';
-import { mapFromLevel, normaliseLevel, validateLevel } from '@empire/battle-engine/level';
+import { validateLevel } from '@empire/battle-engine';
+import { mapFromLevel, normaliseLevel } from '@empire/battle-engine/level';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
 import { EditorApp } from '../app';
 
@@ -94,7 +95,7 @@ describe('map editor', () => {
     stroke(board, { x: 5, y: 4 });
     const exported = app.exportLevel();
     expect(exported.terrain[4][5]).toBe('^');
-    expect(validateLevel(exported, TEST_CATALOG).filter((i) => i.severity === 'error')).toEqual([]);
+    expect(validateLevel(TEST_RULES, exported).filter((i) => i.severity === 'error')).toEqual([]);
   });
 
   it('drag-paints a whole run of tiles in one undo step', () => {
@@ -139,7 +140,7 @@ describe('map editor', () => {
   it('flags a unit standing on impassable terrain', () => {
     (host.querySelector('.unit-chip[data-arg="soldier"]') as HTMLElement).click();
     stroke(board, { x: 8, y: 5 }); // river tile
-    const issues = validateLevel(app.exportLevel(), TEST_CATALOG);
+    const issues = validateLevel(TEST_RULES, app.exportLevel());
     expect(issues.some((i) => i.severity === 'error' && i.message.includes('无法站在'))).toBe(true);
   });
 
@@ -160,7 +161,7 @@ describe('map editor', () => {
     const reloaded = normaliseLevel(JSON.parse(JSON.stringify(exported)));
     const map = mapFromLevel(reloaded, TEST_CATALOG);
     expect(map.tiles[6 * map.width + 4]).toBe('forest');
-    expect(validateLevel(reloaded, TEST_CATALOG).filter((i) => i.severity === 'error')).toEqual([]);
+    expect(validateLevel(TEST_RULES, reloaded).filter((i) => i.severity === 'error')).toEqual([]);
   });
 
   it('autosaves a draft that survives a reload', () => {
