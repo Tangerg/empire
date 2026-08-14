@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 import type {
   CareerDef,
   MoveCosts,
@@ -54,7 +55,7 @@ export function defineUnit(
   weapons: ReadonlyMap<string, WeaponDef>,
 ): UnitDef {
   const primary = weapons.get(def.weapons[0]);
-  if (!primary) throw new Error(`unit "${def.id}" references missing primary weapon "${def.weapons[0]}"`);
+  if (!primary) throw new DomainInvariantError(`unit "${def.id}" references missing primary weapon "${def.weapons[0]}"`);
   return {
     maxHp: 100,
     defense: 0,

@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 /**
  * The mechanics every open extension point shares.
  *
@@ -30,7 +31,7 @@ export abstract class KeyedRegistry<K extends string, V> {
   register(entry: V): this {
     const key = this.keyOf(entry);
     if (this.entries.has(key)) {
-      throw new Error(`${this.subject} already registered: "${key}"`);
+      throw new DomainInvariantError(`${this.subject} already registered: "${key}"`);
     }
     this.entries.set(key, entry);
     return this;
@@ -45,7 +46,7 @@ export abstract class KeyedRegistry<K extends string, V> {
   /** Demand an entry: absence is a defect in whoever composed the ruleset. */
   get(key: K): V {
     const entry = this.entries.get(key);
-    if (!entry) throw new Error(`unknown ${this.subject} "${key}"`);
+    if (!entry) throw new DomainInvariantError(`unknown ${this.subject} "${key}"`);
     return entry;
   }
 

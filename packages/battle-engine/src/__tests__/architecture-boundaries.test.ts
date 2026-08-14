@@ -571,6 +571,27 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('never throws the one error class that says nothing', () => {
+    // The engine declares what a failure means — `IllegalActionError` (the order
+    // was wrong, show it), `DomainInvariantError` (the caller was wrong, a
+    // defect), `StoredDocumentError` (the file cannot be read) — and eighty-four
+    // throws opted out by raising the base class. Only three sites in the whole
+    // repository branch on error type, so an unclassified throw is not merely
+    // untidy: it is indistinguishable from every other kind at the one place
+    // that has to tell them apart. A reinforcement landing on an occupied tile —
+    // ordinary play — reached the shell as a bare `Error` and ended the battle.
+    //
+    // Scoped to the battle engine by reason, not by importance: this is where
+    // the contract is declared and where `tryDispatch` and the two shell catches
+    // consume it. `RangeError` stays allowed; it names a category of its own.
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) =>
+      /throw new Error\(/.test(stripComments(readFileSync(file, 'utf8')))
+        ? [relative(coreRoot, file)]
+        : []);
+
+    expect(offenders).toEqual([]);
+  });
+
   it('never relabels a caught error as a refused order', () => {
     // Wrapping a collaborator in `try/catch` and calling `fail(error.message)`
     // presents genuine defects to the player as "that move is not allowed".

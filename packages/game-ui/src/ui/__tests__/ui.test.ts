@@ -7,6 +7,7 @@ import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancien
 import { GameController } from '../game';
 import { BoardView, emptyOverlay } from '../board';
 import { createState } from '@empire/battle-engine/state';
+import { DomainInvariantError } from '@empire/battle-engine/domain';
 import { normaliseLevel } from '@empire/battle-engine/level';
 import { candidate01Level } from '@empire/story-candidate-01/levels';
 import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
@@ -358,6 +359,32 @@ describe('a battle you can come back to', () => {
     expect(c.root.querySelector('.panel')!.textContent).toContain('无法读取存档');
     // The battle on screen is still the one being played.
     expect(c.root.querySelectorAll('.layer-units > .unit').length).toBe(BUILTIN_LEVELS[0].units.length);
+    c.dispose();
+  });
+
+  it('does not blame the save for a defect underneath it', () => {
+    const saves = slot();
+    const broken = createBattleEngine({ content: TEST_CATALOG });
+    broken.loadBattle = () => { throw new DomainInvariantError('a rule under the loader is wrong'); };
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: broken, art: ART, saves });
+    host.append(c.root);
+    press(c.root, 'save').click();
+
+    // This catch used to swallow everything, so a defect anywhere under
+    // `loadBattle` was reported as "your save is unreadable" — and the save,
+    // which was fine, looked like the thing to delete. The defect now leaves
+    // the handler, which jsdom reports as an uncaught error on the window.
+    const escaped: unknown[] = [];
+    const record = (event: ErrorEvent) => {
+      escaped.push(event.error);
+      event.preventDefault();
+    };
+    window.addEventListener('error', record);
+    press(c.root, 'resume').click();
+    window.removeEventListener('error', record);
+
+    expect(escaped[0]).toBeInstanceOf(DomainInvariantError);
+    expect(c.root.querySelector('.panel')!.textContent).not.toContain('无法读取存档');
     c.dispose();
   });
 });

@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 import type { GameEvent, Unit, UnitRank } from './types';
 import { UnitEntity } from './domain/unit-entity';
 import { awardCareerProgress } from './careers';
@@ -17,7 +18,7 @@ export interface RankProgressionPolicy {
 export class ThresholdRankProgressionPolicy implements RankProgressionPolicy {
   constructor(readonly veteranThreshold = 120, readonly eliteThreshold = 320) {
     if (veteranThreshold <= 0 || eliteThreshold <= veteranThreshold) {
-      throw new Error('rank thresholds must be positive and strictly increasing');
+      throw new DomainInvariantError('rank thresholds must be positive and strictly increasing');
     }
   }
 

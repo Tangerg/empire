@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 import type { GameEvent, GameState, StatusDef, StatusId, StatusModifiers, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
 import { resolveDamage, type DamageRules } from './damage';
@@ -104,7 +105,7 @@ export function addStatus(
   emit?: (event: GameEvent) => void,
   sourceUnitId?: number,
 ): void {
-  if (!Number.isInteger(remaining) || remaining < 1) throw new Error('status duration must be >= 1');
+  if (!Number.isInteger(remaining) || remaining < 1) throw new DomainInvariantError('status duration must be >= 1');
   const def = statusDef(id, content);
   // The instance the unit ends up carrying, held rather than searched for: the
   // report used to look it up a second time and assert that the push two lines

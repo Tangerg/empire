@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 import { Battlefield } from './domain/battlefield';
 import { addStatus } from './statuses';
 import type { Coord, GameEvent, GameState, TerrainOverlayState, Unit } from './types';
@@ -14,7 +15,7 @@ export function addTerrainOverlay(
   emit: (event: GameEvent) => void,
 ): void {
   if (state.scenario.overlays.some((candidate) => candidate.id === overlay.id)) {
-    throw new Error(`duplicate terrain overlay id "${overlay.id}"`);
+    throw new DomainInvariantError(`duplicate terrain overlay id "${overlay.id}"`);
   }
   content.terrainOverlays.get(overlay.type);
   state.scenario.overlays.push({ ...overlay, cells: overlay.cells.map((cell) => ({ ...cell })) });

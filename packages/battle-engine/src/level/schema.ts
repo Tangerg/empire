@@ -1,9 +1,11 @@
+import { StoredDocumentError } from '../domain/errors';
 import { SchemaMigrator } from '../save-schema';
 import type { LevelData } from '../types';
 import { DEFAULT_VICTORY, emptyLevel } from './defaults';
 
 /** The level document is malformed — not merely questionable, unreadable. */
-export class LevelFormatError extends Error {}
+/** A level document this build cannot read; one kind of `StoredDocumentError`. */
+export class LevelFormatError extends StoredDocumentError {}
 
 export const CURRENT_LEVEL_SCHEMA = 2;
 

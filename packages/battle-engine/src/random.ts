@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 import type { GameState, RandomState } from './types';
 
 /**
@@ -75,7 +76,7 @@ export const SplitMixRandom: RandomSource = {
   },
 
   int(state, stream, bound) {
-    if (!Number.isInteger(bound) || bound < 1) throw new Error('random bound must be a positive integer');
+    if (!Number.isInteger(bound) || bound < 1) throw new DomainInvariantError('random bound must be a positive integer');
     return Math.floor(this.next(state, stream) * bound);
   },
 
@@ -86,7 +87,7 @@ export const SplitMixRandom: RandomSource = {
   },
 
   pick(state, stream, items) {
-    if (items.length === 0) throw new Error('cannot pick from an empty list');
+    if (items.length === 0) throw new DomainInvariantError('cannot pick from an empty list');
     return items[this.int(state, stream, items.length)];
   },
 };
@@ -108,7 +109,7 @@ export const DeterministicOnlyRandom: RandomSource = {
 };
 
 function refuse(): never {
-  throw new Error(
+  throw new DomainInvariantError(
     'this ruleset is configured for exact forecasts; install a seeded RandomSource to use variance',
   );
 }

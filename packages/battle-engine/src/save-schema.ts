@@ -1,3 +1,5 @@
+import { StoredDocumentError } from './domain/errors';
+
 /** A persisted document that carries the version of the shape it was written in. */
 export interface VersionedDocument {
   schema: number;
@@ -30,10 +32,10 @@ export class SchemaMigrator<T extends VersionedDocument> {
 
   register(fromSchema: number, migrate: SchemaMigration): this {
     if (!Number.isInteger(fromSchema) || fromSchema < 0) {
-      throw new Error('migration schema must be non-negative');
+      throw new StoredDocumentError('migration schema must be non-negative');
     }
     if (this.migrations.has(fromSchema)) {
-      throw new Error(`${this.subject} migration ${fromSchema} already registered`);
+      throw new StoredDocumentError(`${this.subject} migration ${fromSchema} already registered`);
     }
     this.migrations.set(fromSchema, migrate);
     return this;
@@ -47,23 +49,23 @@ export class SchemaMigrator<T extends VersionedDocument> {
   /** Raw document in, current-schema document out. The copy is the caller's. */
   load(raw: unknown): T {
     if (!raw || typeof raw !== 'object' || Array.isArray(raw)) {
-      throw new Error(`${this.subject} must be an object`);
+      throw new StoredDocumentError(`${this.subject} must be an object`);
     }
     let value = structuredClone(raw) as Record<string, unknown>;
     let schema = Number(value.schema);
-    if (!Number.isInteger(schema) || schema < 0) throw new Error(`${this.subject} has invalid schema`);
+    if (!Number.isInteger(schema) || schema < 0) throw new StoredDocumentError(`${this.subject} has invalid schema`);
     while (schema < this.currentSchema) {
       const migrate = this.migrations.get(schema);
-      if (!migrate) throw new Error(`no ${this.subject} migration from schema ${schema}`);
+      if (!migrate) throw new StoredDocumentError(`no ${this.subject} migration from schema ${schema}`);
       value = migrate(value);
       const next = Number(value.schema);
       if (!Number.isInteger(next) || next <= schema) {
-        throw new Error(`${this.subject} migration ${schema} did not advance schema`);
+        throw new StoredDocumentError(`${this.subject} migration ${schema} did not advance schema`);
       }
       schema = next;
     }
     if (schema !== this.currentSchema) {
-      throw new Error(`unsupported ${this.subject} schema ${schema}`);
+      throw new StoredDocumentError(`unsupported ${this.subject} schema ${schema}`);
     }
     return value as unknown as T;
   }

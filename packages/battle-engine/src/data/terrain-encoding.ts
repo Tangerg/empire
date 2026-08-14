@@ -1,3 +1,4 @@
+import { DomainInvariantError } from '../domain/errors';
 import type { TerrainId } from '../types';
 
 /** Mutable only through ContentPackInstaller during application composition. */
@@ -10,18 +11,18 @@ export class TerrainEncodingRegistry {
     const incomingCharacters = new Set<string>();
     const incomingTerrains = new Set<TerrainId>();
     for (const [character, terrain] of Object.entries(entries)) {
-      if ([...character].length !== 1) throw new Error(`terrain character must contain exactly one code point: "${character}"`);
+      if ([...character].length !== 1) throw new DomainInvariantError(`terrain character must contain exactly one code point: "${character}"`);
       if (this.byCharacter.has(character) || incomingCharacters.has(character)) {
-        throw new Error(`terrain character already registered: "${character}"`);
+        throw new DomainInvariantError(`terrain character already registered: "${character}"`);
       }
       if (this.byTerrain.has(terrain) || incomingTerrains.has(terrain)) {
-        throw new Error(`terrain already has a character: "${terrain}"`);
+        throw new DomainInvariantError(`terrain already has a character: "${terrain}"`);
       }
       incomingCharacters.add(character);
       incomingTerrains.add(terrain);
     }
     if (defaultTerrain !== undefined && this.fallback !== null && this.fallback !== defaultTerrain) {
-      throw new Error(`default terrain already registered: "${this.fallback}"`);
+      throw new DomainInvariantError(`default terrain already registered: "${this.fallback}"`);
     }
     for (const [character, terrain] of Object.entries(entries)) {
       this.byCharacter.set(character, terrain);
@@ -39,7 +40,7 @@ export class TerrainEncodingRegistry {
   }
 
   get defaultTerrain(): TerrainId {
-    if (this.fallback === null) throw new Error('no default terrain installed; install a content pack first');
+    if (this.fallback === null) throw new DomainInvariantError('no default terrain installed; install a content pack first');
     return this.fallback;
   }
 

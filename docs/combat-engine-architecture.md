@@ -535,10 +535,15 @@ kernel.use(createContentPlugin([COMMON_PACK, THEME_PACK]));
 | --- | --- | --- |
 | `IllegalActionError` | 规则拒绝这条指令 | 玩家可见、可恢复 |
 | `DomainInvariantError` | 调用方问了不可能的事 | 缺陷，必须修 |
+| `StoredDocumentError` | 这份存档／关卡文档这套规则读不了 | 玩家可见，但要怪的是文件 |
 
-两者都定义在 `domain/errors.ts`：拒绝指令是领域判断，**发现问题的协作者自己说**，不是由处理器代言。协作者（运输、转职、阵形、战术）直接抛 `IllegalActionError`。
+三者都定义在 `domain/errors.ts`：拒绝指令是领域判断，**发现问题的协作者自己说**，不是由处理器代言。协作者（运输、转职、阵形、战术）直接抛 `IllegalActionError`。`LevelFormatError` 是 `StoredDocumentError` 的一种。
 
 处理器原先把它们包在 `try/catch` 里、把 `error.message` 转成非法行动。代价是真实缺陷被伪装成「这步不允许」，而 `GameSession.tryDispatch()` 恰好只吞 `IllegalActionError`——于是协作者里的任何 bug 都被**静默吞掉**。适应度测试禁止这种改标签写法。
+
+**引擎里不许抛 `new Error`。** 全仓只有三处按异常类型分支（`tryDispatch` 一处、外壳两处），所以一个没有分类的抛出不是「不整洁」，而是在唯一需要区分的地方跟其他所有失败长得一模一样。适应度测试「never throws the one error class that says nothing」扫 `packages/battle-engine/src`；`RangeError` 例外，它自己就是一类。
+
+**还有第三种答案：什么都不抛。** 增援落点上站着人，不是缺陷也不是被拒的指令，是**普通对局**——这一条增援不到场，后面的照常到，边界写在注释里并有测试。它的两个兄弟本来就是这么答的：救援在集结区满时停下，复活遇到有人占的格子返回 null。
 
 ## 查询与提交共用规则
 

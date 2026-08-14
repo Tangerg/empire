@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 import { BattleAggregate } from './domain/battle-aggregate';
 import { inBounds } from './grid';
 import { structureAt } from './structures';
@@ -12,7 +13,7 @@ export interface CompositeStatus {
 
 export function requireComposite(state: GameState, id: string): CompositeState {
   const composite = state.composites.find((candidate) => candidate.id === id);
-  if (!composite) throw new Error(`unknown composite "${id}"`);
+  if (!composite) throw new DomainInvariantError(`unknown composite "${id}"`);
   return composite;
 }
 
@@ -49,16 +50,16 @@ export function moveComposite(
   }));
   for (const destination of destinations) {
     if (!inBounds(state.map, destination.to.x, destination.to.y)) {
-      throw new Error(`composite "${id}" would move out of bounds`);
+      throw new DomainInvariantError(`composite "${id}" would move out of bounds`);
     }
     if (state.units.some((unit) => unit.x === destination.to.x && unit.y === destination.to.y)) {
-      throw new Error(`composite "${id}" would collide with a unit`);
+      throw new DomainInvariantError(`composite "${id}" would collide with a unit`);
     }
     const occupied = structureAt(state, destination.to.x, destination.to.y);
-    if (occupied && !movingIds.has(occupied.id)) throw new Error(`composite "${id}" would collide with structure "${occupied.id}"`);
+    if (occupied && !movingIds.has(occupied.id)) throw new DomainInvariantError(`composite "${id}" would collide with structure "${occupied.id}"`);
   }
   const unique = new Set(destinations.map(({ to }) => `${to.x},${to.y}`));
-  if (unique.size !== destinations.length) throw new Error(`composite "${id}" has overlapping destination parts`);
+  if (unique.size !== destinations.length) throw new DomainInvariantError(`composite "${id}" has overlapping destination parts`);
   for (const destination of destinations) {
     new BattleAggregate(state, content).structure(destination.structure.id).moveTo(destination.to);
     emit({ type: 'structureMoved', structure: destination.structure.id, from: destination.from, to: destination.to });

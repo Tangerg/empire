@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 import {
   readyWeapon,
   requireReadyWeapon,
@@ -162,7 +163,7 @@ Abilities.defineAll([
       return weapon !== null && (!q.moved || weapon.moveAndAttack);
     },
     execute: (rules, q, target, emit) => {
-      if (!target) throw new Error('attack requires a target');
+      if (!target) throw new DomainInvariantError('attack requires a target');
       const { state, unit, at } = q;
       // Execution: legality was settled before the order was accepted, so a
       // missing weapon here is a defect, not a refusal.
@@ -198,10 +199,10 @@ Abilities.defineAll([
       .map((u) => ({ x: u.x, y: u.y })),
     usable: () => true,
     execute: (rules, { state, unit }, target, emit) => {
-      if (!target) throw new Error('heal requires a target');
+      if (!target) throw new DomainInvariantError('heal requires a target');
       const content = rules.content;
       const ally = unitAt(state, target);
-      if (!ally) throw new Error('no unit to heal');
+      if (!ally) throw new DomainInvariantError('no unit to heal');
       const amount = healAmount(content, unit, ally);
       const healed = new UnitEntity(ally).heal(amount, content.units.get(ally.type).maxHp);
       emit({ type: 'heal', source: unit.id, target: ally.id, amount: healed });

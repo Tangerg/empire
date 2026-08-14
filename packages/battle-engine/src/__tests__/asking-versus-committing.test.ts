@@ -4,7 +4,8 @@ import { canUseAbility, abilityDef } from '../abilities';
 import { forecastCombatPlan } from '../combat-plan';
 import { DomainInvariantError } from '../domain/errors';
 import { cloneContentCatalog } from '../content-pack';
-import { createBattleRules } from '../plugins/default';
+import { createBattleEngine, createBattleRules } from '../plugins/default';
+import { applyScenarioEffect } from '../scenario';
 import { TEST_CONTENT, TEST_RULES, makeLevel, testAbilityQuery, testState, u } from './fixtures';
 import type { GameState } from '../types';
 
@@ -75,5 +76,48 @@ describe('aiming a strike', () => {
       .toThrow(DomainInvariantError);
     expect(() => forecastCombatPlan(TEST_RULES, state, state.units[0], { x: 0, y: 0 }))
       .toThrow(DomainInvariantError);
+  });
+});
+
+describe('a scenario that cannot do what it was told', () => {
+  const reinforced = () => createBattleEngine({ content: TEST_CONTENT }).createState(makeLevel(['...', '...'], {
+    units: [u(0, 0, 'soldier', 1), u(2, 1, 'soldier', 2), u(1, 1, 'soldier', 1)],
+    scenario: {
+      triggers: [{
+        id: 'reinforce',
+        timing: 'turnStart',
+        condition: { type: 'turnAtLeast', turn: 1 },
+        effects: [{ type: 'spawnUnits', units: [
+          { x: 1, y: 1, unit: 'soldier', owner: 1 },
+          { x: 0, y: 1, unit: 'soldier', owner: 1 },
+        ] }],
+      }],
+    },
+  }));
+
+  it('lets a reinforcement it cannot land skip its turn, and lands the rest', () => {
+    const battle = createBattleEngine({ content: TEST_CONTENT });
+    const state = reinforced();
+    const before = state.units.length;
+
+    // Someone parked on the arrival tile is ordinary play, and it used to end
+    // the battle: an unclassified throw that the shell could only rethrow.
+    const events = battle.dispatch(state, { kind: 'endTurn' });
+
+    expect(state.units).toHaveLength(before + 1);
+    expect(events.filter((event) => event.type === 'unitSpawned')).toHaveLength(1);
+    expect(state.units.some((unit) => unit.x === 0 && unit.y === 1)).toBe(true);
+  });
+
+  it('still calls ground its unit could never stand on a defect', () => {
+    const battle = createBattleEngine({ content: TEST_CONTENT });
+    const state = battle.createState(makeLevel(['.~.'], {
+      units: [u(0, 0, 'soldier', 1), u(2, 0, 'soldier', 2)],
+    }));
+
+    expect(() => applyScenarioEffect(battle.rules, state, {
+      type: 'spawnUnits',
+      units: [{ x: 1, y: 0, unit: 'soldier', owner: 1 }],
+    }, () => {})).toThrow(DomainInvariantError);
   });
 });

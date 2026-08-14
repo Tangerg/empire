@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 import { sameCoord } from './grid';
 import type { Coord, GameState, PlayerId, ZoneEngagementRule } from './types';
 
@@ -28,9 +29,9 @@ export function hostileActionAllowed(
 }
 
 export function addEngagementRule(state: GameState, rule: ZoneEngagementRule): void {
-  if (!state.scenario.zones[rule.zone]) throw new Error(`unknown scenario zone "${rule.zone}"`);
+  if (!state.scenario.zones[rule.zone]) throw new DomainInvariantError(`unknown scenario zone "${rule.zone}"`);
   if (state.scenario.engagementRules.some((candidate) => candidate.id === rule.id)) {
-    throw new Error(`engagement rule already exists: "${rule.id}"`);
+    throw new DomainInvariantError(`engagement rule already exists: "${rule.id}"`);
   }
   state.scenario.engagementRules.push({ ...rule, players: rule.players?.slice() });
 }

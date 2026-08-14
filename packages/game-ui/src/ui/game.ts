@@ -1,4 +1,5 @@
 import { IllegalActionError } from '@empire/battle-engine/actions';
+import { StoredDocumentError } from '@empire/battle-engine/domain';
 import { activeCasts } from '@empire/battle-engine/casting';
 import { SpellCastEntity } from '@empire/battle-engine/domain/spell-cast';
 import { tacticOptions } from '@empire/battle-engine/commanders';
@@ -412,7 +413,12 @@ export class GameController {
     try {
       this.session.load(raw);
     } catch (error) {
-      this.pushMessage(`无法读取存档：${(error as Error).message}`);
+      // Only the document is allowed to be at fault here. This used to catch
+      // everything, so any defect thrown anywhere under `loadBattle` was
+      // reported to the player as "your save is unreadable" — and the save,
+      // which was fine, looked like the thing to delete.
+      if (!(error instanceof StoredDocumentError)) throw error;
+      this.pushMessage(`无法读取存档：${error.message}`);
       this.refresh();
       return;
     }

@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 import { orderByDependencies } from './dependency-order';
 import type { BattleEngineDependencies } from './engine';
 
@@ -65,7 +66,7 @@ class KernelCapabilityStore {
   ): void {
     const provider = this.providers.get(id);
     if (provider) {
-      throw new Error(`kernel capability "${id}" already provided by "${provider}"`);
+      throw new DomainInvariantError(`kernel capability "${id}" already provided by "${provider}"`);
     }
     this.capabilities.set(id, capability);
     this.providers.set(id, providerId);
@@ -77,7 +78,7 @@ class KernelCapabilityStore {
     capability: KernelCapabilityMap[K],
   ): void {
     if (!this.providers.has(id)) {
-      throw new Error(`kernel capability "${id}" cannot be replaced before it is provided`);
+      throw new DomainInvariantError(`kernel capability "${id}" cannot be replaced before it is provided`);
     }
     this.capabilities.set(id, capability);
     this.overriders.set(id, providerId);
@@ -88,7 +89,7 @@ class KernelCapabilityStore {
   }
 
   require<K extends KernelCapabilityId>(id: K): KernelCapabilityMap[K] {
-    if (!this.capabilities.has(id)) throw new Error(`missing kernel capability: "${id}"`);
+    if (!this.capabilities.has(id)) throw new DomainInvariantError(`missing kernel capability: "${id}"`);
     return this.capabilities.get(id) as KernelCapabilityMap[K];
   }
 
@@ -149,14 +150,14 @@ export class SrpgMicrokernel {
   private readonly plugins = new Map<string, EnginePlugin>();
 
   use(plugin: EnginePlugin): this {
-    if (!plugin.id.trim()) throw new Error('engine plugin id cannot be empty');
+    if (!plugin.id.trim()) throw new DomainInvariantError('engine plugin id cannot be empty');
     if (!Number.isInteger(plugin.version) || plugin.version < 1) {
-      throw new Error(`engine plugin "${plugin.id}" version must be a positive integer`);
+      throw new DomainInvariantError(`engine plugin "${plugin.id}" version must be a positive integer`);
     }
     const installed = this.plugins.get(plugin.id);
     if (installed) {
       if (installed.version === plugin.version) return this;
-      throw new Error(
+      throw new DomainInvariantError(
         `engine plugin "${plugin.id}" already registered at version ${installed.version}, requested ${plugin.version}`,
       );
     }
@@ -200,13 +201,13 @@ export class SrpgMicrokernel {
     const done = new Set(installed);
     for (const capability of declared) {
       if (!done.has(capability)) {
-        throw new Error(`engine plugin "${plugin.id}" declared but did not ${verb} capability "${capability}"`);
+        throw new DomainInvariantError(`engine plugin "${plugin.id}" declared but did not ${verb} capability "${capability}"`);
       }
     }
     const promised = new Set(declared);
     for (const capability of installed) {
       if (!promised.has(capability)) {
-        throw new Error(`engine plugin "${plugin.id}" did ${verb} undeclared capability "${capability}"`);
+        throw new DomainInvariantError(`engine plugin "${plugin.id}" did ${verb} undeclared capability "${capability}"`);
       }
     }
   }
@@ -227,7 +228,7 @@ export class SrpgMicrokernel {
       for (const capability of plugin.provides ?? []) {
         const provider = introducers.get(capability);
         if (provider && provider !== plugin.id) {
-          throw new Error(`kernel capability "${capability}" declared by both "${provider}" and "${plugin.id}"`);
+          throw new DomainInvariantError(`kernel capability "${capability}" declared by both "${provider}" and "${plugin.id}"`);
         }
         introducers.set(capability, plugin.id);
       }
@@ -238,7 +239,7 @@ export class SrpgMicrokernel {
     const introducerOf = (plugin: EnginePlugin, capability: KernelCapabilityId): string => {
       const provider = introducers.get(capability);
       if (!provider) {
-        throw new Error(`engine plugin "${plugin.id}" requires missing capability "${capability}"`);
+        throw new DomainInvariantError(`engine plugin "${plugin.id}" requires missing capability "${capability}"`);
       }
       return provider;
     };

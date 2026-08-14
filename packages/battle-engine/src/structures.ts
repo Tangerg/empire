@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 import { StructureEntity } from './domain/structure-entity';
 import type { GameEvent, GameState, StructureId, StructureState } from './types';
 import { type ContentCatalog } from './content-pack';
@@ -8,7 +9,7 @@ function structureById(state: GameState, id: StructureId): StructureState | unde
 
 function requireStructure(state: GameState, id: StructureId): StructureState {
   const structure = structureById(state, id);
-  if (!structure) throw new Error(`unknown structure "${id}"`);
+  if (!structure) throw new DomainInvariantError(`unknown structure "${id}"`);
   return structure;
 }
 

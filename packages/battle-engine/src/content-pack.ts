@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 import { DamageMatchupRegistry } from './data/damage';
 import { TerrainEncodingRegistry } from './data/terrain-encoding';
 import { ContentRegistry } from './registry';
@@ -176,13 +177,13 @@ class ContentInstallation {
 
   requireId(family: DefinitionFamily, id: string, owner: string): void {
     if (!this.ids(family).has(id)) {
-      throw new Error(`${owner} references missing content id "${id}"`);
+      throw new DomainInvariantError(`${owner} references missing content id "${id}"`);
     }
   }
 
   /** An installation is transactional, so the first broken rule refuses it. */
   reject(message: string): never {
-    throw new Error(message);
+    throw new DomainInvariantError(message);
   }
 }
 
@@ -478,7 +479,7 @@ export class ContentPackInstaller {
       const version = this.installed.get(pack.id);
       if (version === undefined) return true;
       if (version !== pack.version) {
-        throw new Error(`content pack "${pack.id}" already installed at version ${version}, requested ${pack.version}`);
+        throw new DomainInvariantError(`content pack "${pack.id}" already installed at version ${version}, requested ${pack.version}`);
       }
       return false;
     });
@@ -504,11 +505,11 @@ export class ContentPackInstaller {
   private orderPending(pending: readonly ContentPack[]): ContentPack[] {
     const ids = new Set<string>();
     for (const pack of pending) {
-      if (!pack.id.trim()) throw new Error('content pack id cannot be empty');
+      if (!pack.id.trim()) throw new DomainInvariantError('content pack id cannot be empty');
       if (!Number.isInteger(pack.version) || pack.version < 1) {
-        throw new Error(`content pack "${pack.id}" version must be a positive integer`);
+        throw new DomainInvariantError(`content pack "${pack.id}" version must be a positive integer`);
       }
-      if (ids.has(pack.id)) throw new Error(`duplicate content pack request: "${pack.id}"`);
+      if (ids.has(pack.id)) throw new DomainInvariantError(`duplicate content pack request: "${pack.id}"`);
       ids.add(pack.id);
     }
     return orderByDependencies(pending, {

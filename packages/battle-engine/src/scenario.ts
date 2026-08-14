@@ -1,8 +1,9 @@
+import { DomainInvariantError } from './domain/errors';
 import { UnitEntity } from './domain/unit-entity';
 import { PlayerEntity } from './domain/player-entity';
 import { inBounds } from './grid';
 import { addTerrainOverlay, removeTerrainOverlay } from './overlays';
-import { player, removeUnit, spawnUnit, unitAt } from './state';
+import { player, removeUnit, spawnUnit } from './state';
 import { addStatus, removeStatus } from './statuses';
 import { damageStructure, repairStructure } from './structures';
 import { changeUnitResource } from './progression';
@@ -49,7 +50,7 @@ const points = () => new PayloadReferences();
 
 function zone(state: GameState, id: string) {
   const cells = state.scenario.zones[id];
-  if (!cells) throw new Error(`unknown scenario zone "${id}"`);
+  if (!cells) throw new DomainInvariantError(`unknown scenario zone "${id}"`);
   return cells;
 }
 
@@ -97,7 +98,7 @@ function compare(
 
 function numberVariable(state: GameState, key: string): number {
   const value = state.scenario.variables[key] ?? 0;
-  if (typeof value !== 'number') throw new Error(`scenario variable "${key}" is not numeric`);
+  if (typeof value !== 'number') throw new DomainInvariantError(`scenario variable "${key}" is not numeric`);
   return value;
 }
 
@@ -481,19 +482,28 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     for (const source of effect.units) {
       player(context.state, source.owner);
       if (!inBounds(context.state.map, source.x, source.y)) {
-        throw new Error(`spawn cell out of bounds: ${source.x},${source.y}`);
+        throw new DomainInvariantError(`spawn cell out of bounds: ${source.x},${source.y}`);
       }
-      if (unitAt(context.state, source)) throw new Error(`spawn cell is occupied: ${source.x},${source.y}`);
       if (source.key && context.state.units.some((unit) => unit.key === source.key)) {
-        throw new Error(`unit key already exists: "${source.key}"`);
+        throw new DomainInvariantError(`unit key already exists: "${source.key}"`);
       }
       if (source.key && context.state.markers.some((marker) => marker.fallenUnit?.key === source.key)) {
-        throw new Error(`unit key is reserved by a fallen unit: "${source.key}"`);
+        throw new DomainInvariantError(`unit key is reserved by a fallen unit: "${source.key}"`);
       }
       const definition = context.content.units.get(source.unit);
-      if (!context.battlefield.cell(source).admits(definition.movementClass)) {
-        throw new Error(`unit "${source.unit}" cannot spawn at ${source.x},${source.y}`);
+      const cell = context.battlefield.cell(source);
+      // Ground this unit could never stand on is the level's mistake, and it is
+      // the same on turn one as on turn twenty.
+      if (!cell.admits(definition.movementClass)) {
+        throw new DomainInvariantError(`unit "${source.unit}" cannot spawn at ${source.x},${source.y}`);
       }
+      // Someone standing on the arrival tile is not a mistake at all — it is
+      // ordinary play, and a player parked on a reinforcement cell used to end
+      // the battle with an unclassified throw that the shell could only rethrow.
+      // Deliberate boundary: that reinforcement does not arrive, and the ones
+      // behind it still do. Its siblings already answer this way — a rescue
+      // stops at a full rally zone, a revival returns null for a taken tile.
+      if (cell.occupant) continue;
       const unit = spawnUnit(context.content, context.state, source.unit, source.owner, source, {
         done: !(effect.ready ?? false),
         source,
@@ -650,7 +660,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   }))
   .register(effectHandler('setUnitDirective', (context, effect) => {
     if (effect.directive.zone && !context.state.scenario.zones[effect.directive.zone]) {
-      throw new Error(`unknown scenario zone "${effect.directive.zone}"`);
+      throw new DomainInvariantError(`unknown scenario zone "${effect.directive.zone}"`);
     }
     for (const unit of context.select(effect.selector)) {
       new UnitEntity(unit).changeDirective({
@@ -677,7 +687,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   }))
   .register(effectHandler('removeEngagementRule', ({ state }, effect) => removeEngagementRule(state, effect.id)))
   .register(effectHandler('replaceTerrain', (context, effect) => {
-    if (!context.content.terrains.has(effect.terrain)) throw new Error(`unknown terrain "${effect.terrain}"`);
+    if (!context.content.terrains.has(effect.terrain)) throw new DomainInvariantError(`unknown terrain "${effect.terrain}"`);
     for (const cell of context.zone(effect.zone)) {
       const from = context.layers.changeTerrain(cell, effect.terrain);
       if (from === null) continue;
@@ -705,7 +715,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   .register(effectHandler('setCliffs', (context, effect) => {
     for (const edge of effect.edges) {
       if (!context.layers.isEdge(edge.from, edge.to)) {
-        throw new Error(`invalid cliff edge ${edge.from.x},${edge.from.y} -> ${edge.to.x},${edge.to.y}`);
+        throw new DomainInvariantError(`invalid cliff edge ${edge.from.x},${edge.from.y} -> ${edge.to.x},${edge.to.y}`);
       }
       if (context.layers.blockEdge(edge.from, edge.to, effect.blocked)) {
         context.emit({ type: 'cliffChanged', from: { ...edge.from }, to: { ...edge.to }, blocked: effect.blocked });
@@ -717,7 +727,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   .register(effectHandler('setDirectionalCover', (context, effect) => {
     for (const cover of effect.covers) {
       if (!context.layers.contains(cover.at)) {
-        throw new Error(`directional cover out of bounds: ${cover.at.x},${cover.at.y}`);
+        throw new DomainInvariantError(`directional cover out of bounds: ${cover.at.x},${cover.at.y}`);
       }
       context.layers.changeCover(cover.at, cover.sides);
       context.emit({ type: 'directionalCoverChanged', at: { ...cover.at }, sides: { ...cover.sides } });
@@ -783,5 +793,5 @@ export function runScenarioTriggers(
     }
     if (!changed) return;
   }
-  throw new Error(`scenario trigger loop did not stabilise at ${timing}`);
+  throw new DomainInvariantError(`scenario trigger loop did not stabilise at ${timing}`);
 }

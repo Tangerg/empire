@@ -49,7 +49,7 @@ export class ResourceAdapterRegistry extends KeyedRegistry<ResourceId, ResourceA
   }
 
   override register<S extends ResourceSubject>(adapter: ResourceAdapter<S>): this {
-    if (!adapter.id.trim()) throw new Error('resource id cannot be empty');
+    if (!adapter.id.trim()) throw new DomainInvariantError('resource id cannot be empty');
     return super.register(adapter as ResourceAdapter);
   }
 
@@ -112,7 +112,7 @@ export const DefaultResourceSubjects = new ResourceSubjectResolverRegistry()
   .register<'player'>({
     kind: 'player',
     subjectFor: (context, transaction) => {
-      if (!context.player) throw new Error(`resource "${transaction.resource}" requires a player context`);
+      if (!context.player) throw new DomainInvariantError(`resource "${transaction.resource}" requires a player context`);
       return playerResource(context.player);
     },
     ref: ({ player }) => ({ kind: 'player', id: player.id }),
@@ -242,15 +242,15 @@ export class BattleResourceSystem {
   ): { adapter: ResourceAdapter; account: ResourceAccount } {
     const adapter = this.adapters.get(id);
     if (adapter.subjectKind !== subject.kind) {
-      throw new Error(`resource "${id}" requires ${adapter.subjectKind} subject, received ${subject.kind}`);
+      throw new DomainInvariantError(`resource "${id}" requires ${adapter.subjectKind} subject, received ${subject.kind}`);
     }
     const account = adapter.account(subject as never);
-    if (!account) throw new Error(`resource "${id}" is not available for this ${subject.kind}`);
+    if (!account) throw new DomainInvariantError(`resource "${id}" is not available for this ${subject.kind}`);
     return { adapter, account };
   }
 
   private normalize(adapter: ResourceAdapter, requested: number): number {
-    if (!Number.isFinite(requested)) throw new Error(`resource "${adapter.id}" amount must be finite`);
+    if (!Number.isFinite(requested)) throw new DomainInvariantError(`resource "${adapter.id}" amount must be finite`);
     const nonnegative = Math.max(0, requested);
     return adapter.integer ? Math.round(nonnegative) : nonnegative;
   }

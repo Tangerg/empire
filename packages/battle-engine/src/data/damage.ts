@@ -1,3 +1,4 @@
+import { DomainInvariantError } from '../domain/errors';
 import type { ArmorClass, DamageMatchupDef, DamageType } from '../types';
 
 
@@ -10,7 +11,7 @@ export class DamageMatchupRegistry {
 
   constructor(readonly neutralMultiplier = 1) {
     if (!Number.isFinite(neutralMultiplier) || neutralMultiplier <= 0) {
-      throw new Error('neutral damage multiplier must be > 0');
+      throw new DomainInvariantError('neutral damage multiplier must be > 0');
     }
   }
 
@@ -18,13 +19,13 @@ export class DamageMatchupRegistry {
     const seen = new Set<string>();
     for (const definition of definitions) {
       if (!Number.isFinite(definition.multiplier) || definition.multiplier <= 0) {
-        throw new Error(
+        throw new DomainInvariantError(
           `damage matchup "${definition.damageType}" -> "${definition.armorClass}" must be > 0`,
         );
       }
       const key = matchupKey(definition.damageType, definition.armorClass);
       if (this.entries.has(key) || seen.has(key)) {
-        throw new Error(
+        throw new DomainInvariantError(
           `damage matchup already registered: "${definition.damageType}" -> "${definition.armorClass}"`,
         );
       }

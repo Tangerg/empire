@@ -1,3 +1,4 @@
+import { DomainInvariantError } from './domain/errors';
 import {
   type BattleResourceSystem,
   playerResource,
@@ -38,7 +39,7 @@ function initialCareer(source: LevelUnit, content: ContentCatalog): Unit['career
         .filter((career) => career.unitType === source.unit)
         .sort((left, right) => left.tier - right.tier || left.id.localeCompare(right.id))[0];
   if (requested && requested.unitType !== source.unit) {
-    throw new Error(`career ${requested.id} does not use unit type "${source.unit}"`);
+    throw new DomainInvariantError(`career ${requested.id} does not use unit type "${source.unit}"`);
   }
   const current = requested?.id ?? null;
   return {
@@ -131,23 +132,23 @@ function createDeployment(
 ): GameState['deployment'] {
   if (!level.deployment) return null;
   const order = [...new Set(level.deployment.order ?? level.deployment.zones.map((entry) => entry.player))];
-  if (order.length === 0) throw new Error('deployment must include at least one player');
+  if (order.length === 0) throw new DomainInvariantError('deployment must include at least one player');
   for (const owner of order) {
     if (!players.some((candidate) => candidate.id === owner)) {
-      throw new Error(`deployment references unknown player ${owner}`);
+      throw new DomainInvariantError(`deployment references unknown player ${owner}`);
     }
   }
 
   const assignments = level.deployment.zones.map((entry) => {
-    if (!zones[entry.zone]) throw new Error(`deployment references unknown zone "${entry.zone}"`);
+    if (!zones[entry.zone]) throw new DomainInvariantError(`deployment references unknown zone "${entry.zone}"`);
     if (!players.some((candidate) => candidate.id === entry.player)) {
-      throw new Error(`deployment references unknown player ${entry.player}`);
+      throw new DomainInvariantError(`deployment references unknown player ${entry.player}`);
     }
     const unitIds = units
       .filter((unit) => unit.owner === entry.player && (!entry.unitKeys || (unit.key && entry.unitKeys.includes(unit.key))))
       .map((unit) => unit.id);
     if (entry.unitKeys && unitIds.length !== entry.unitKeys.length) {
-      throw new Error(`deployment zone "${entry.zone}" references an unknown or wrong-owner unit key`);
+      throw new DomainInvariantError(`deployment zone "${entry.zone}" references an unknown or wrong-owner unit key`);
     }
     return { player: entry.player, zone: entry.zone, unitIds };
   });
@@ -155,13 +156,13 @@ function createDeployment(
   const assigned = new Set<number>();
   for (const assignment of assignments) {
     for (const unitId of assignment.unitIds) {
-      if (assigned.has(unitId)) throw new Error(`unit ${unitId} belongs to multiple deployment zones`);
+      if (assigned.has(unitId)) throw new DomainInvariantError(`unit ${unitId} belongs to multiple deployment zones`);
       assigned.add(unitId);
     }
   }
   for (const owner of order) {
     if (!assignments.some((entry) => entry.player === owner)) {
-      throw new Error(`deployment player ${owner} has no deployment zone`);
+      throw new DomainInvariantError(`deployment player ${owner} has no deployment zone`);
     }
   }
   return { order, currentIndex: 0, assignments };
@@ -200,7 +201,7 @@ export function createState(content: ContentCatalog, level: LevelData, options: 
 
   const commanders = (level.commanders ?? []).map((entry) => {
     const leader = units.find((unit) => unit.key === entry.unitKey);
-    if (!leader) throw new Error(`commander ${entry.id} references unknown unit key "${entry.unitKey}"`);
+    if (!leader) throw new DomainInvariantError(`commander ${entry.id} references unknown unit key "${entry.unitKey}"`);
     if (leader.commanderId === null) new UnitEntity(leader).changeCommander(entry.id);
     return {
       id: entry.id,
@@ -235,9 +236,9 @@ export function createState(content: ContentCatalog, level: LevelData, options: 
   const composites = (level.composites ?? []).map((entry) => {
     const parts = [...new Set(entry.parts)];
     for (const part of parts) {
-      if (!structureIds.has(part)) throw new Error(`composite ${entry.id} references unknown structure "${part}"`);
+      if (!structureIds.has(part)) throw new DomainInvariantError(`composite ${entry.id} references unknown structure "${part}"`);
     }
-    if (parts.length === 0) throw new Error(`composite ${entry.id} must include at least one structure`);
+    if (parts.length === 0) throw new DomainInvariantError(`composite ${entry.id} must include at least one structure`);
     return {
       id: entry.id,
       parts,
@@ -422,13 +423,13 @@ export function unitById(state: GameState, id: number): Unit | undefined {
 
 export function requireUnit(state: GameState, id: number): Unit {
   const u = unitById(state, id);
-  if (!u) throw new Error(`no unit with id ${id}`);
+  if (!u) throw new DomainInvariantError(`no unit with id ${id}`);
   return u;
 }
 
 export function player(state: GameState, id: PlayerId): PlayerState {
   const p = state.players.find((x) => x.id === id);
-  if (!p) throw new Error(`no player with id ${id}`);
+  if (!p) throw new DomainInvariantError(`no player with id ${id}`);
   return p;
 }
 

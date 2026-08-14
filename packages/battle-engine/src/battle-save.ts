@@ -1,3 +1,4 @@
+import { StoredDocumentError } from './domain/errors';
 import { SchemaMigrator, type SchemaMigration } from './save-schema';
 import type { RuleReferenceRules } from './rule-references';
 import type { RuleReferenceCheckRegistry } from './rule-references';
@@ -84,7 +85,7 @@ class SaveInspection {
 
   /** A save is loaded or refused; there is no half-loaded battle to play. */
   reject(message: string): never {
-    throw new Error(`战斗存档无法读取：${message}`);
+    throw new StoredDocumentError(`战斗存档无法读取：${message}`);
   }
 }
 
@@ -179,7 +180,7 @@ export class BattleSaveMigrator {
   header(raw: unknown): BattleSaveHeader {
     const save = this.ladder.load(raw);
     if (!save.battle || typeof save.battle.levelId !== 'string') {
-      throw new Error('battle save has no battle header');
+      throw new StoredDocumentError('battle save has no battle header');
     }
     return { ...save.battle };
   }

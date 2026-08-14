@@ -165,7 +165,7 @@ export function isWeaponReady(
 
 export function primaryWeapon(content: ContentCatalog, unit: Unit): WeaponDef {
   const weapon = unitWeapons(content, unit)[0];
-  if (!weapon) throw new Error(`${content.units.get(unit.type).name} has no weapon`);
+  if (!weapon) throw new DomainInvariantError(`${content.units.get(unit.type).name} has no weapon`);
   return weapon;
 }
 
