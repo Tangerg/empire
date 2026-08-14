@@ -490,7 +490,7 @@ export class EditorApp {
    */
   private readonly commands: Record<string, (arg: string) => void> = {
     tool: (arg) => {
-      this.selectTool(EDITOR_TOOLS.get(arg) ?? this.tool);
+      this.selectTool(EDITOR_TOOLS.tryGet(arg) ?? this.tool);
       this.renderAll();
     },
     brush: (arg) => {
@@ -514,7 +514,7 @@ export class EditorApp {
     },
     unit: (arg) => {
       this.brush.unitType = arg;
-      this.selectTool(EDITOR_TOOLS.get('unit') ?? this.tool);
+      this.selectTool(EDITOR_TOOLS.get('unit'));
       this.renderAll();
     },
     owner: (arg) => {

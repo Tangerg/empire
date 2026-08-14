@@ -694,13 +694,46 @@ describe('behaviour has an owner', () => {
     // The two exceptions are not keyed tables at all: terrain encoding is a
     // bijection between characters and terrain, and the damage matchup is a
     // matrix keyed by a pair.
-    const notKeyedByOneId = [join('data', 'terrain-encoding.ts'), join('data', 'damage.ts')];
-    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
-      const name = relative(coreRoot, file);
-      if (name === 'registry.ts' || notKeyedByOneId.includes(name)) return [];
-      return [...readFileSync(file, 'utf8').matchAll(/export class (\w*Registry)\b([^{]*)\{/g)]
-        .filter((match) => !/extends\s+(?:Keyed|Priority|Content)Registry/.test(match[2]))
-        .map((match) => `${name}: ${match[1]}`);
+    //
+    // Two holes this had to grow out of. It matched classes *named* `…Registry`,
+    // and the editor's tool set was called `EditorToolbox` — a `Map` with a
+    // `get` and none of the rest, under a comment promising that a tool set is
+    // meant to grow. And it scanned the engine only, while the packages around
+    // it hold extension points of their own. It looks for the shape now: a class
+    // that owns a keyed table and answers lookups from it.
+    const allowed = [
+      // Not keyed tables at all: terrain encoding is a bijection between
+      // characters and terrain, and a damage matchup is keyed by a pair.
+      'battle-engine/src/data/terrain-encoding.ts',
+      'battle-engine/src/data/damage.ts',
+      // The base itself.
+      'battle-engine/src/registry.ts',
+      // A ladder, not a bag: the key is the version a step migrates *from*, the
+      // entry is a bare function that cannot answer for its own key, and `load`
+      // walks the rungs refusing gaps. Wrapping each step in an object purely to
+      // satisfy `keyOf` would buy the shape and lose the meaning.
+      'battle-engine/src/save-schema.ts',
+      // A scheduler, not a contribution set: what its `register` admits is one
+      // *running* animation track, and `unregister` ends it. The entries are the
+      // work in flight, not the strategies that do the work.
+      'game-ui/src/art/frame-animation.ts',
+    ];
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
+      const name = relative(packagesRoot, file);
+      if (allowed.includes(name)) return [];
+      const source = stripComments(readFileSync(file, 'utf8'));
+      return [...source.matchAll(/(?:export )?(?:abstract )?class (\w+)\b([^{]*)\{([\s\S]*?)\n\}/g)]
+        // A contribution set, not a cache: something outside may put entries in.
+        // A `Map` of DOM nodes, of running animations or of per-call findings is
+        // state, and none of those is an extension point.
+        .filter(([, , heritage, body]) =>
+          !/extends\s+(?:Keyed|Priority|Content)Registry/.test(heritage) &&
+          /(?:private |protected )?readonly \w+ = new Map</.test(body) &&
+          // A declaration, not a call: `registerSvgStrip(this.animations, …)`
+          // inside a method body says nothing about the class it sits in.
+          /\n[ \t]+(?:override )?(?:public |private |protected )?(?:register|define|add)\w*\([^)]*\)\s*[:{]/.test(body) &&
+          /\b(?:get|tryGet|forHotkey|lookup)\w*\(/.test(body))
+        .map(([, className]) => `${name}: ${className}`);
     });
 
     expect(offenders).toEqual([]);

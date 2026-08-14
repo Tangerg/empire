@@ -336,6 +336,7 @@
 | 一条格子边画在哪 | `edgeLine(layout, …)`（悬崖在边界上，掩体在自己那格里） |
 | 一条指令怎么被派发 | `applyAction(dispatch, state, action)`（`BattleEngine` 结构上就是那个 `dispatch`） |
 | 浏览器里存了哪些自制关卡 | `storedSlot()`（唯一读取处；读不出来的槽位不允许被覆写） |
+| 编辑器有哪些工具、快捷键归谁 | `EditorToolRegistry`（共用注册表基类，可 clone 后增改） |
 | 一份带版本的文档怎么升到当前 schema | `SchemaMigrator`（战役存档、战斗存档与**关卡**共用） |
 | 目录有哪些内容族 | `DEFINITION_FAMILIES`（穷尽 Record，编译器守着） |
 | 一个关卡文件声明了哪些名字 | `LevelDeclarations` |

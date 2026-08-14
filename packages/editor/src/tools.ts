@@ -1,4 +1,5 @@
 import { idx, sharesEdge } from '@empire/battle-engine/grid';
+import { KeyedRegistry } from '@empire/battle-engine/registry';
 import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import type { Coord, CoverLevel, Direction, TerrainId, UnitTypeId } from '@empire/battle-engine/types';
 import type { EditorDocument } from './document';
@@ -218,41 +219,67 @@ const EyedropperTool: EditorTool = {
   paint: ({ document, brush, content }, at) => brush.sampleFrom(document, at, content),
 };
 
-/** Palette order is display order. */
-export class EditorToolbox {
-  private readonly byId = new Map<string, EditorTool>();
+/**
+ * The tool set, on the same registry base as every other extension point.
+ *
+ * It was a hand-written `Map` with a `get` and nothing else: no `register`, no
+ * `replace`, no `keys`, no `clone` — so the "tool set is meant to grow" above
+ * was true of the *contract* and false of the code, and an editor add-on could
+ * not contribute a tool or swap one. Registration order is palette order, which
+ * the shared base keeps.
+ */
+export class EditorToolRegistry extends KeyedRegistry<string, EditorTool> {
+  constructor() {
+    super('editor tool');
+  }
 
-  constructor(readonly tools: readonly EditorTool[]) {
-    for (const tool of tools) {
-      if (this.byId.has(tool.id)) throw new Error(`duplicate editor tool "${tool.id}"`);
-      const clash = tools.filter((candidate) => candidate.hotkey === tool.hotkey);
-      if (clash.length > 1) throw new Error(`editor tools ${clash.map((t) => t.id).join(', ')} share hotkey "${tool.hotkey}"`);
-      this.byId.set(tool.id, tool);
-    }
+  protected keyOf(tool: EditorTool): string {
+    return tool.id;
+  }
+
+  /** Refuses a second claim on a shortcut, which no lookup could resolve. */
+  override register(tool: EditorTool): this {
+    this.refuseHotkeyClash(tool);
+    return super.register(tool);
+  }
+
+  override replace(tool: EditorTool): this {
+    this.refuseHotkeyClash(tool);
+    return super.replace(tool);
+  }
+
+  clone(): EditorToolRegistry {
+    return this.copyInto(new EditorToolRegistry());
+  }
+
+  /** Every tool in palette order, which is the order they were registered in. */
+  get tools(): readonly EditorTool[] {
+    return this.all();
   }
 
   get default(): EditorTool {
-    return this.tools[0];
-  }
-
-  get(id: string): EditorTool | undefined {
-    return this.byId.get(id);
+    return this.all()[0];
   }
 
   forHotkey(key: string): EditorTool | undefined {
-    return this.tools.find((tool) => tool.hotkey === key.toLowerCase());
+    return this.all().find((tool) => tool.hotkey === key.toLowerCase());
+  }
+
+  private refuseHotkeyClash(tool: EditorTool): void {
+    const clash = this.all().find((candidate) =>
+      candidate.hotkey === tool.hotkey && candidate.id !== tool.id);
+    if (clash) throw new Error(`editor tools ${clash.id}, ${tool.id} share hotkey "${tool.hotkey}"`);
   }
 }
 
-export const EDITOR_TOOLS = new EditorToolbox([
-  TerrainBrushTool,
-  TerrainRectTool,
-  TerrainFillTool,
-  ElevationTool,
-  CliffEdgeTool,
-  DirectionalCoverTool,
-  PlaceUnitTool,
-  OwnerTool,
-  EraseUnitTool,
-  EyedropperTool,
-]);
+export const EDITOR_TOOLS = new EditorToolRegistry()
+  .register(TerrainBrushTool)
+  .register(TerrainRectTool)
+  .register(TerrainFillTool)
+  .register(ElevationTool)
+  .register(CliffEdgeTool)
+  .register(DirectionalCoverTool)
+  .register(PlaceUnitTool)
+  .register(OwnerTool)
+  .register(EraseUnitTool)
+  .register(EyedropperTool);

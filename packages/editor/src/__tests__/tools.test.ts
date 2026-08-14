@@ -4,7 +4,7 @@ import { TILE } from '@empire/game-ui/art/terrain';
 import { normaliseLevel } from '@empire/battle-engine/level';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
 import { EditorApp } from '../app';
-import { BrushSettings, EDITOR_TOOLS, EditorToolbox, rectTiles, type EditorTool } from '../tools';
+import { BrushSettings, EDITOR_TOOLS, EditorToolRegistry, rectTiles, type EditorTool } from '../tools';
 
 import { createTestCatalog } from '@empire/test-content';
 import { createBattleEngine } from '@empire/battle-engine/plugins/default';
@@ -56,8 +56,31 @@ describe('editor toolbox', () => {
     const twin = (id: string, hotkey: string): EditorTool => ({
       id, name: id, hotkey, icon: 'grid', highlight: (_c, cursor) => [cursor],
     });
-    expect(() => new EditorToolbox([twin('a', 'x'), twin('b', 'x')])).toThrow(/share hotkey/);
-    expect(() => new EditorToolbox([twin('a', 'x'), twin('a', 'y')])).toThrow(/duplicate/);
+    const set = () => new EditorToolRegistry().register(twin('a', 'x'));
+
+    expect(() => set().register(twin('b', 'x'))).toThrow(/share hotkey/);
+    expect(() => set().register(twin('a', 'y'))).toThrow(/already registered/);
+  });
+
+  /**
+   * The tool set is an extension point, and it now has all of one.
+   *
+   * It used to be a hand-written `Map` with a `get`: an add-on could neither
+   * contribute a tool nor swap one, under a comment saying a tool set is meant
+   * to grow.
+   */
+  it('takes a contributed tool and lets one be replaced', () => {
+    const probe = (name: string): EditorTool => ({
+      id: 'probe', name, hotkey: 'z', icon: 'grid', highlight: (_c, cursor) => [cursor],
+    });
+    const tools = EDITOR_TOOLS.clone().register(probe('探针'));
+
+    expect(tools.get('probe').name).toBe('探针');
+    expect(tools.forHotkey('Z')?.id).toBe('probe');
+    expect(tools.replace({ ...probe('改过的探针'), hotkey: 'z' }).get('probe').name).toBe('改过的探针');
+    // The shared set is untouched: a clone is what a host composes with.
+    expect(EDITOR_TOOLS.tryGet('probe')).toBeUndefined();
+    expect(tools.default).toBe(EDITOR_TOOLS.default);
   });
 
   it('gives every tool exactly one way to act', () => {
