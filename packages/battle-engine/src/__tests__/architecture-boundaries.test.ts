@@ -554,6 +554,20 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('never asserts that a value is there', () => {
+    // `x!` is a guess the type checker disagreed with, written where a refusal
+    // belongs. Every one of them here was load-bearing on something the reader
+    // could not see: that the caller had already null-checked the map, that a
+    // filter earlier in the chain had narrowed the element, that a `find` over a
+    // list built elsewhere could not miss. Ask, refuse, or pass the value in.
+    const offenders = [...runtimeTypeScriptFiles(coreRoot), ...storyPackageSources()].flatMap((file) => {
+      const code = stripComments(readFileSync(file, 'utf8'));
+      return /[A-Za-z_)\]]!\s*[.[]/.test(code) ? [relative(packagesRoot, file)] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('asks a payload what it points at, never what kind it is', () => {
     // Which names a scenario effect, a trigger condition or an objective writes
     // down was enumerated by whoever wanted to resolve them: two hundred lines

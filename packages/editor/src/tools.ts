@@ -81,6 +81,15 @@ export interface EditorTool {
    * paint on every pointer sample. A tool is one or the other.
    */
   readonly twoPhase?: boolean;
+  /**
+   * Whether this tool writes the palette rather than the map.
+   *
+   * Declared rather than recognised: the shell used to repaint the palette when
+   * the selected tool's *id* was `'pick'`, so a second sampling tool — a "copy
+   * this unit's whole loadout" pick, say — would have left the palette showing
+   * the previous brush.
+   */
+  readonly samples?: boolean;
   /** Tiles this tool would affect, for the board's brush overlay. */
   highlight(context: EditorToolContext, cursor: Coord, anchor: Coord | null): Coord[];
   /** Continuous tools do their work here; `erasing` is the secondary button. */
@@ -204,6 +213,7 @@ const EyedropperTool: EditorTool = {
   name: '吸取',
   hotkey: 'i',
   icon: 'crosshair',
+  samples: true,
   highlight: (_context, cursor) => single(cursor),
   paint: ({ document, brush, content }, at) => brush.sampleFrom(document, at, content),
 };

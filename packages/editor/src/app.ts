@@ -231,8 +231,8 @@ export class EditorApp {
     this.tool.paint?.(this.toolContext(), at, erasing);
     this.paintBoard();
     this.renderProperties();
-    // The eyedropper changes the palette rather than the map.
-    if (this.tool.id === 'pick') this.renderPalette();
+    // A sampling tool changes the palette rather than the map.
+    if (this.tool.samples) this.renderPalette();
   }
 
   private finishStroke(): void {

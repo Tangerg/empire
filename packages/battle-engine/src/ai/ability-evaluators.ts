@@ -60,12 +60,13 @@ function collateralValue(state: GameState, plan: CombatPlan, content: ContentCat
   for (const hit of plan.structureHits.filter((candidate) => !candidate.primary)) {
     score += hit.forecast.damage * 7 + (hit.forecast.destroyed ? 700 : 0);
   }
-  if (plan.supportAttack) {
-    const target = state.units.find((unit) => unit.id === plan.supportAttack!.target);
+  const support = plan.supportAttack;
+  if (support) {
+    const target = state.units.find((unit) => unit.id === support.target);
     if (target) {
-      score += Math.min(plan.supportAttack.damage.damage, plan.supportAttack.hpBefore) /
+      score += Math.min(support.damage.damage, support.hpBefore) /
         content.units.get(target.type).maxHp * content.units.get(target.type).value;
-      if (plan.supportAttack.killed) score += unitWorth(target, content) * 0.5;
+      if (support.killed) score += unitWorth(target, content) * 0.5;
     }
   }
   return score;

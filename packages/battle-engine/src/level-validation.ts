@@ -91,8 +91,16 @@ export class LevelInspection {
       cell.x >= 0 && cell.y >= 0 && cell.x < this.level.width && cell.y < this.level.height;
   }
 
-  terrainAt(tile: number): TerrainDef {
-    return this.content.terrains.get(this.map!.tiles[tile]);
+  /**
+   * The ground on one tile of a map a caller has already read.
+   *
+   * Takes the map rather than reaching for `this.map`: that field is null when
+   * the terrain block itself is unreadable, and every caller has to abstain in
+   * that case anyway. Passing it is the difference between the type saying so
+   * and a `!` claiming the caller remembered.
+   */
+  terrainOn(map: GameMap, tile: number): TerrainDef {
+    return this.content.terrains.get(map.tiles[tile]);
   }
 
   private buildMap(): GameMap | null {
@@ -259,7 +267,7 @@ function checkUnitPlacement(
   const tile = unit.y * map.width + unit.x;
   if (occupied.has(tile)) inspection.error(`格子 ${unit.x},${unit.y} 上有多个单位`);
   occupied.add(tile);
-  const terrain = inspection.terrainAt(tile);
+  const terrain = inspection.terrainOn(map, tile);
   const definition = inspection.content.units.tryGet(unit.unit);
   if (definition && terrain.cost[definition.movementClass] == null) {
     inspection.error(`${definition.name} 无法站在 ${terrain.name} 上（${unit.x},${unit.y}）`);
@@ -510,7 +518,7 @@ const checkOpeningPosition: LevelCheck = (inspection) => {
   for (const player of level.players) {
     const hasUnits = level.units.some((unit) => unit.owner === player.id);
     const hasProduction = map.owners.some(
-      (owner, tile) => owner === player.id && inspection.terrainAt(tile).produces.length > 0,
+      (owner, tile) => owner === player.id && inspection.terrainOn(map, tile).produces.length > 0,
     );
     if (!hasUnits && !hasProduction) {
       inspection.error(`玩家 ${player.id}（${player.name}）既没有单位也没有生产建筑，开局即败`);

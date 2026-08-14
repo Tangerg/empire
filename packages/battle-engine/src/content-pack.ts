@@ -410,10 +410,11 @@ const checkCareerTree: ContentCheck = (installation) => {
   const visiting = new Set<string>();
   const visited = new Set<string>();
   const visit = (id: string): void => {
-    if (visited.has(id) || !declared.has(id)) return;
+    const career = declared.get(id);
+    if (visited.has(id) || !career) return;
     if (visiting.has(id)) installation.reject(`cyclic career dependency involving "${id}"`);
     visiting.add(id);
-    for (const predecessor of declared.get(id)!.from) visit(predecessor);
+    for (const predecessor of career.from) visit(predecessor);
     visiting.delete(id);
     visited.add(id);
   };

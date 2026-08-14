@@ -900,8 +900,8 @@ export function candidate01Level(id: string): LevelData {
 export const CANDIDATE_01_ROSTER_BINDINGS: Readonly<Record<string, Array<{ campaignUnit: CampaignHero; levelUnitKey: string }>>> = Object.fromEntries(
   CANDIDATE_01_LEVELS.map((level) => [
     level.id,
-    level.units
-      .filter((unit) => unit.key?.startsWith('campaign-'))
-      .map((unit) => ({ campaignUnit: unit.key!.slice('campaign-'.length) as CampaignHero, levelUnitKey: unit.key! })),
+    level.units.flatMap((unit) => unit.key?.startsWith('campaign-')
+      ? [{ campaignUnit: unit.key.slice('campaign-'.length) as CampaignHero, levelUnitKey: unit.key }]
+      : []),
   ]),
 );
