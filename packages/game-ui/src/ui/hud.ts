@@ -106,7 +106,12 @@ function accountSummary(resources: BattleResourceSystem, subject: ResourceSubjec
   });
 }
 
-const MODIFIER_SOURCE_LABEL: Record<CombatModifier['source'], string> = {
+/**
+ * Chip wording for the categories this game ships. A rule plugin may contribute
+ * a category nobody translated, which reads as its own id rather than as a
+ * blank chip — the chain stays honest about where a number came from.
+ */
+const MODIFIER_SOURCE_LABEL: Record<string, string> = {
   weapon: '武器',
   matchup: '克制',
   unit: '单位',
@@ -117,6 +122,7 @@ const MODIFIER_SOURCE_LABEL: Record<CombatModifier['source'], string> = {
   elevation: '高低差',
   position: '方位',
   cover: '掩体',
+  formation: '阵形',
   extension: '扩展',
 };
 
@@ -139,7 +145,7 @@ function modifierValue(modifier: CombatModifier): string {
 
 function modifierList(modifiers: readonly CombatModifier[]): string {
   return modifiers.map((modifier) =>
-    `<li class="${modifierClass(modifier)}"><span class="modifier-source">${MODIFIER_SOURCE_LABEL[modifier.source]}</span> ${escapeHtml(modifier.label)} <b>${modifierValue(modifier)}</b></li>`,
+    `<li class="${modifierClass(modifier)}"><span class="modifier-source">${escapeHtml(MODIFIER_SOURCE_LABEL[modifier.source] ?? modifier.source)}</span> ${escapeHtml(modifier.label)} <b>${modifierValue(modifier)}</b></li>`,
   ).join('');
 }
 

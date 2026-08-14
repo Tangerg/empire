@@ -23,11 +23,22 @@ export const attackerStrength = (content: ContentCatalog, attacker: Unit): numbe
 export type ModifierStage = 'power' | 'mitigation' | 'final';
 export type ModifierOperation = 'add' | 'multiply';
 
+/**
+ * Which rule a contribution came from — the chip in front of it in the forecast.
+ *
+ * Open, like every other extension key in the engine. As a closed union of
+ * eleven names it left a rule plugin no way to name its own category, and the
+ * core's own formation provider was already filing itself under `extension`:
+ * a shipped mechanic labelled 「扩展」 to the player because the list of names
+ * had no room for 「阵形」.
+ */
+export type CombatModifierSource = string;
+
 /** One explainable contribution to a numeric combat result. */
 export interface CombatModifier {
   id: string;
   label: string;
-  source: 'weapon' | 'matchup' | 'unit' | 'status' | 'commander' | 'terrain' | 'reaction' | 'elevation' | 'position' | 'cover' | 'extension';
+  source: CombatModifierSource;
   stage: ModifierStage;
   operation: ModifierOperation;
   value: number;
@@ -232,7 +243,7 @@ const formationProvider: CombatModifierProvider = {
     return [{
       id: `formation.attack.${formation.id}`,
       label: formation.name,
-      source: 'extension',
+      source: 'formation',
       stage: 'power',
       operation: 'multiply',
       value: formation.attackMultiplier,

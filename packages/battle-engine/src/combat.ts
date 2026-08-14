@@ -66,11 +66,6 @@ export class DamageBreakdown {
     return this.modifiers.find((modifier) => modifier.id === id)?.value ?? absent;
   }
 
-  /** A number a modifier recorded about itself, e.g. a commander's own delta. */
-  detailOf(id: string, key: string, absent = 0): number {
-    return Number(this.modifiers.find((modifier) => modifier.id === id)?.details?.[key] ?? absent);
-  }
-
   /** Product of every contribution whose id shares a prefix, e.g. one family. */
   familyFactor(idPrefix: string): number {
     return this.modifiers
