@@ -60,70 +60,84 @@ export interface ContentCatalog {
   formations: ContentRegistry<FormationDef>;
 }
 
+/**
+ * A family of definitions the catalog holds, keyed by the field it lives under
+ * in both a pack and a catalog — they are deliberately the same name — and
+ * valued by how it introduces itself in an error message.
+ *
+ * The twelve families used to be written out five times: two interfaces, a
+ * factory, a cloner, and a pack-to-catalog mapping. Adding a thirteenth meant
+ * finding all five, and the one that mattered was the cloner: a family missed
+ * there is a registry silently *shared* between two engines, which is the one
+ * isolation bug the architecture exists to prevent. Typing this table as an
+ * exhaustive `Record` makes the compiler find the other places for you.
+ */
+const DEFINITION_FAMILIES: Record<DefinitionFamily, string> = {
+  movementProfiles: 'movement profile',
+  damageTypes: 'damage type',
+  armorClasses: 'armor class',
+  terrains: 'terrain',
+  weapons: 'weapon',
+  units: 'unit',
+  statuses: 'status',
+  structures: 'structure',
+  terrainOverlays: 'terrain overlay',
+  tactics: 'tactic',
+  careers: 'career',
+  formations: 'formation',
+};
+
+/** Every catalog field that is a plain registry of `{ id }` definitions. */
+type DefinitionFamily = Exclude<keyof ContentCatalog, 'terrainEncoding' | 'damageMatchups'>;
+
+const definitionFamilies = (): DefinitionFamily[] =>
+  Object.keys(DEFINITION_FAMILIES) as DefinitionFamily[];
+
+/** The two families that are not id-keyed tables keep their own constructors. */
+function catalogOf(
+  registries: Record<DefinitionFamily, ContentRegistry<{ id: string }>>,
+  damageMatchups: DamageMatchupRegistry,
+  terrainEncoding: TerrainEncodingRegistry,
+): ContentCatalog {
+  return { ...registries, damageMatchups, terrainEncoding } as unknown as ContentCatalog;
+}
+
+function eachFamily(
+  build: (family: DefinitionFamily) => ContentRegistry<{ id: string }>,
+): Record<DefinitionFamily, ContentRegistry<{ id: string }>> {
+  return Object.fromEntries(definitionFamilies().map((family) => [family, build(family)])) as
+    Record<DefinitionFamily, ContentRegistry<{ id: string }>>;
+}
+
+const familyRegistry = (catalog: ContentCatalog, family: DefinitionFamily) =>
+  catalog[family] as ContentRegistry<{ id: string }>;
+
 export function createContentCatalog(): ContentCatalog {
-  return {
-    movementProfiles: new ContentRegistry('movement profile'),
-    damageTypes: new ContentRegistry('damage type'),
-    armorClasses: new ContentRegistry('armor class'),
-    damageMatchups: new DamageMatchupRegistry(),
-    terrains: new ContentRegistry('terrain'),
-    terrainEncoding: new TerrainEncodingRegistry(),
-    weapons: new ContentRegistry('weapon'),
-    units: new ContentRegistry('unit'),
-    statuses: new ContentRegistry('status'),
-    structures: new ContentRegistry('structure'),
-    terrainOverlays: new ContentRegistry('terrain overlay'),
-    tactics: new ContentRegistry('tactic'),
-    careers: new ContentRegistry('career'),
-    formations: new ContentRegistry('formation'),
-  };
+  return catalogOf(
+    eachFamily((family) => new ContentRegistry(DEFINITION_FAMILIES[family])),
+    new DamageMatchupRegistry(),
+    new TerrainEncodingRegistry(),
+  );
 }
 
-function cloneDataRegistry<T extends { id: string }>(source: ContentRegistry<T>): ContentRegistry<T> {
-  const copy = source.clone();
-  for (const definition of source.all()) copy.override(definition.id, structuredClone(definition));
-  return copy;
-}
-
-/** Snapshot of definition registries for one engine/sandbox instance. */
+/**
+ * Snapshot of definition registries for one engine/sandbox instance.
+ *
+ * Deep, not structural: a catalog owns its definitions, so one engine's balance
+ * override cannot reach another engine built from the same packs.
+ */
 export function cloneContentCatalog(source: ContentCatalog): ContentCatalog {
-  return {
-    movementProfiles: cloneDataRegistry(source.movementProfiles),
-    damageTypes: cloneDataRegistry(source.damageTypes),
-    armorClasses: cloneDataRegistry(source.armorClasses),
-    damageMatchups: source.damageMatchups.clone(),
-    terrains: cloneDataRegistry(source.terrains),
-    terrainEncoding: source.terrainEncoding.clone(),
-    weapons: cloneDataRegistry(source.weapons),
-    units: cloneDataRegistry(source.units),
-    statuses: cloneDataRegistry(source.statuses),
-    structures: cloneDataRegistry(source.structures),
-    terrainOverlays: cloneDataRegistry(source.terrainOverlays),
-    tactics: cloneDataRegistry(source.tactics),
-    careers: cloneDataRegistry(source.careers),
-    formations: cloneDataRegistry(source.formations),
-  };
+  return catalogOf(
+    eachFamily((family) => {
+      const original = familyRegistry(source, family);
+      const copy = original.clone();
+      for (const definition of original.all()) copy.override(definition.id, structuredClone(definition));
+      return copy;
+    }),
+    source.damageMatchups.clone(),
+    source.terrainEncoding.clone(),
+  );
 }
-
-type RegistryField = Exclude<keyof ContentCatalog, 'terrainEncoding' | 'damageMatchups'>;
-
-const PACK_FIELDS: ReadonlyArray<{
-  pack: keyof ContentPack;
-  catalog: RegistryField;
-}> = [
-  { pack: 'movementProfiles', catalog: 'movementProfiles' },
-  { pack: 'damageTypes', catalog: 'damageTypes' },
-  { pack: 'armorClasses', catalog: 'armorClasses' },
-  { pack: 'terrains', catalog: 'terrains' },
-  { pack: 'weapons', catalog: 'weapons' },
-  { pack: 'units', catalog: 'units' },
-  { pack: 'statuses', catalog: 'statuses' },
-  { pack: 'structures', catalog: 'structures' },
-  { pack: 'terrainOverlays', catalog: 'terrainOverlays' },
-  { pack: 'tactics', catalog: 'tactics' },
-  { pack: 'careers', catalog: 'careers' },
-  { pack: 'formations', catalog: 'formations' },
-];
 
 function idsIn<T extends { id: string }>(registry: ContentRegistry<T>, incoming: readonly T[]): Set<string> {
   return new Set([...registry.ids(), ...incoming.map((entry) => entry.id)]);
@@ -174,14 +188,13 @@ export class ContentPackInstaller {
     this.validateReferences(ordered);
 
     for (const pack of ordered) {
-      for (const field of PACK_FIELDS) {
-        const entries = pack[field.pack] as readonly { id: string }[] | undefined;
+      for (const family of definitionFamilies()) {
+        const entries = pack[family] as readonly { id: string }[] | undefined;
         // Deep-copy on install: a pack is a *declaration*, a catalog *owns* its
         // definitions. Sharing the objects would let one catalog's balance
         // override leak into another catalog built from the same pack.
         if (entries) {
-          (this.catalog[field.catalog] as ContentRegistry<{ id: string }>)
-            .defineAll(entries.map((entry) => structuredClone(entry)));
+          familyRegistry(this.catalog, family).defineAll(entries.map((entry) => structuredClone(entry)));
         }
       }
       if (pack.terrainCharacters !== undefined || pack.defaultTerrain !== undefined) {
@@ -202,14 +215,14 @@ export class ContentPackInstaller {
   }
 
   private validateUniqueDefinitions(packs: readonly ContentPack[]): void {
-    for (const field of PACK_FIELDS) {
-      const registry = this.catalog[field.catalog] as ContentRegistry<{ id: string }>;
+    for (const family of definitionFamilies()) {
+      const registry = familyRegistry(this.catalog, family);
       const seen = new Set<string>();
       for (const pack of packs) {
-        const entries = pack[field.pack] as readonly { id: string }[] | undefined;
+        const entries = pack[family] as readonly { id: string }[] | undefined;
         for (const entry of entries ?? []) {
           if (registry.has(entry.id) || seen.has(entry.id)) {
-            throw new Error(`content ${String(field.pack)} id already registered: "${entry.id}"`);
+            throw new Error(`content ${family} id already registered: "${entry.id}"`);
           }
           seen.add(entry.id);
         }
