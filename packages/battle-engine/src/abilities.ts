@@ -23,7 +23,7 @@ import { type BattleResourceSystem } from './resources';
 import { type TacticalSpace } from './tactical-space';
 import { type ContentCatalog } from './content-pack';
 import { type WeaponAreaRules } from './weapon-area';
-import { hostileActionAllowed } from './engagement';
+import { hostileActionAllowed, type EngagementKind } from './engagement';
 
 /**
  * The question: which unit is trying to act, from where, with what.
@@ -71,6 +71,24 @@ export interface AbilityDef {
   priority: number;
   /** Semantic tags used by statuses and content rules. */
   tags: string[];
+  /**
+   * Whether a zone truce may forbid this ability, and how harshly.
+   *
+   * The core used to sniff it out of the tag list with a three-branch ladder
+   * whose last two branches nothing in the world ever matched, and the attack
+   * applied the policy a second time inside its own target list. An ability
+   * says what it is; the policy is applied once, centrally.
+   */
+  engagement: EngagementKind | null;
+  /**
+   * The weapon this ability fires under this query, if it fires one.
+   *
+   * Declared rather than guessed: `canUseAbility` branched on `id === 'attack'`
+   * to fold the weapon's tags into the status check, so a content pack's second
+   * weapon-using ability — a volley, a channelled beam — skipped that check
+   * entirely, and a status that seals arcane weapons would not have sealed it.
+   */
+  weaponFor(rules: AbilityRules, q: AbilityQuery): WeaponDef | null;
   targets(rules: AbilityRules, q: AbilityQuery): Coord[];
   usable(rules: AbilityRules, q: AbilityQuery): boolean;
   execute(rules: AbilityRules, q: AbilityQuery, target: Coord | null, emit: Emit): void;
@@ -78,12 +96,21 @@ export interface AbilityDef {
 
 export const Abilities = new ContentRegistry<AbilityDef>('ability');
 
-function ability(def: Partial<AbilityDef> & { id: string; name: string }): AbilityDef {
+/**
+ * Authoring helper, alongside the eight in `content-builders`.
+ *
+ * It was private, so the core's four abilities had defaults and everyone
+ * else's had to spell out all nine fields — which is also why adding one
+ * broke every ability declared outside this file.
+ */
+export function defineAbility(def: Partial<AbilityDef> & Pick<AbilityDef, 'id' | 'name'>): AbilityDef {
   return {
     hint: '',
     selfTargeted: true,
     priority: 50,
     tags: [],
+    engagement: null,
+    weaponFor: () => null,
     targets: () => [],
     usable: () => true,
     execute: () => {},
@@ -108,18 +135,18 @@ function selectedWeapon(rules: AbilityRules, q: AbilityQuery): WeaponDef | null 
 }
 
 Abilities.defineAll([
-  ability({
+  defineAbility({
     id: 'attack',
     name: '攻击',
     hint: '对射程内的敌人造成伤害；若对方也能打到你，会遭到反击。',
     selfTargeted: false,
     priority: 10,
     tags: ['attack'],
+    engagement: 'attack',
+    weaponFor: selectedWeapon,
     targets: (rules, q) => {
       const weapon = selectedWeapon(rules, q);
-      if (!weapon) return [];
-      return rules.space.attackTargets(q.state, q.unit, q.at, weapon)
-        .filter((target) => hostileActionAllowed(q.state, q.unit.owner, q.at, target, 'attack'));
+      return weapon ? rules.space.attackTargets(q.state, q.unit, q.at, weapon) : [];
     },
     usable: (rules, q) => {
       const weapon = selectedWeapon(rules, q);
@@ -150,7 +177,7 @@ Abilities.defineAll([
     },
   }),
 
-  ability({
+  defineAbility({
     id: 'heal',
     name: '治疗',
     hint: '恢复相邻友军的生命值。',
@@ -173,7 +200,7 @@ Abilities.defineAll([
     },
   }),
 
-  ability({
+  defineAbility({
     id: 'capture',
     name: '占领',
     hint: '占下城镇、兵营或城堡；只有人类步兵可以占领。',
@@ -222,7 +249,7 @@ Abilities.defineAll([
     },
   }),
 
-  ability({
+  defineAbility({
     id: 'wait',
     name: '待机',
     hint: '结束该单位的行动。',
@@ -233,12 +260,8 @@ Abilities.defineAll([
 export const abilityDef = (rules: AbilityRules, id: string): AbilityDef => rules.abilities.get(id);
 
 export function canUseAbility(rules: AbilityRules, ability: AbilityDef, query: AbilityQuery): boolean {
-  const tags = [...ability.tags];
-  if (ability.id === 'attack') {
-    const weapon = selectedWeapon(rules, query);
-    if (!weapon) return false;
-    tags.push(...weapon.tags);
-  }
+  const weapon = ability.weaponFor(rules, query);
+  const tags = weapon ? [...ability.tags, ...weapon.tags] : ability.tags;
   return blockedAbilityStatus(query.unit, tags, rules.content) === null && ability.usable(rules, query);
 }
 
@@ -249,13 +272,10 @@ export function abilityTargets(
   query: AbilityQuery,
 ): Coord[] {
   const targets = ability.targets(rules, query);
-  const engagementKind = ability.tags.includes('attack')
-    ? 'attack'
-    : ability.tags.includes('hostile') || ability.tags.includes('hostile-action')
-      ? 'hostile-action' : null;
-  if (!engagementKind) return targets;
+  const kind = ability.engagement;
+  if (!kind) return targets;
   return targets.filter((target) =>
-    hostileActionAllowed(query.state, query.unit.owner, query.at, target, engagementKind));
+    hostileActionAllowed(query.state, query.unit.owner, query.at, target, kind));
 }
 
 /** Abilities this unit can use right now, in menu order. */
@@ -263,6 +283,6 @@ export function availableAbilities(rules: AbilityRules, q: AbilityQuery): Abilit
   return unitAbilityIds(q.unit, rules.content)
     .map((id) => abilityDef(rules, id))
     .filter((a) => canUseAbility(rules, a, q))
-    .filter((a) => a.selfTargeted || a.targets(rules, q).length > 0)
+    .filter((a) => a.selfTargeted || abilityTargets(rules, a, q).length > 0)
     .sort((a, b) => a.priority - b.priority);
 }

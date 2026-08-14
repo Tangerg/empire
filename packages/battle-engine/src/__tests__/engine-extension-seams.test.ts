@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { Abilities, type AbilityDef } from '../abilities';
+import { Abilities, defineAbility } from '../abilities';
 import { ActionHandlerRegistry, type ActionHandler } from '../action-system';
 import { CoreActionHandlers } from '../actions';
 import {
@@ -20,20 +20,17 @@ declare module '../types' {
   }
 }
 
-const pulse: AbilityDef = {
+const pulse = defineAbility({
   id: 'test-pulse',
   name: '测试脉冲',
   hint: '由隔离能力目录提供',
-  selfTargeted: true,
   priority: 15,
   tags: ['extension'],
-  targets: () => [],
-  usable: () => true,
   execute: (_rules, { state, unit }, _target, emit) => {
     state.scenario.variables.pulses = Number(state.scenario.variables.pulses ?? 0) + 1;
     emit({ type: 'testPulse', unit: unit.id, strength: 3 });
   },
-};
+});
 
 class PacifistSpace extends DefaultTacticalSpace {
   override attackTargets(): [] {

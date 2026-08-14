@@ -5,6 +5,9 @@ function appliesTo(rule: ZoneEngagementRule, player: PlayerId): boolean {
   return !rule.players?.length || rule.players.includes(player);
 }
 
+/** How harshly a zone's truce judges an act: only blows, or any hostility. */
+export type EngagementKind = 'attack' | 'hostile-action';
+
 /**
  * Central hostile-action policy. Abilities use this instead of knowing why a
  * tile is protected (truce, hospital, sanctuary, boarding corridor, ...).
@@ -14,7 +17,7 @@ export function hostileActionAllowed(
   actor: PlayerId,
   from: Coord,
   target: Coord,
-  kind: 'attack' | 'hostile-action' = 'attack',
+  kind: EngagementKind = 'attack',
 ): boolean {
   return !state.scenario.engagementRules.some((rule) => {
     if (!appliesTo(rule, actor)) return false;

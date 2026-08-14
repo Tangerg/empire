@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { Abilities, type AbilityDef } from '../abilities';
+import { Abilities, defineAbility } from '../abilities';
 import { applyAction } from '../actions';
 import { DefaultAbilityAiEvaluators } from '../ai';
 
@@ -209,20 +209,16 @@ describe('instance-isolated content and ability-aware AI', () => {
   });
 
   it('requires an explicit AI evaluator for a custom ability and then uses it', () => {
-    const rally: AbilityDef = {
+    const rally = defineAbility({
       id: 'test-rally',
       name: 'Rally',
-      hint: '',
-      selfTargeted: true,
       priority: 1,
       tags: ['support'],
-      targets: () => [],
-      usable: () => true,
       execute: (_rules, { state }, _target, emit) => {
         state.scenario.variables.rallied = true;
         emit({ type: 'scenarioSignal', signal: 'rallied' });
       },
-    };
+    });
     const abilities = Abilities.clone();
     abilities.define(rally);
     const evaluators = DefaultAbilityAiEvaluators.clone().register({
