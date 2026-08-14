@@ -216,7 +216,7 @@ export class GameController {
 
   private handleHover(at: Coord): void {
     this.cursor = at;
-    const u = unitAt(this.state, at.x, at.y);
+    const u = unitAt(this.state, { x: at.x, y: at.y });
     if (u && this.isVisible(u)) this.inspect = u;
     else if (!this.selectedUnit) this.inspect = null;
     this.refresh();
@@ -270,7 +270,7 @@ export class GameController {
       return;
     }
     this.selection = outcome.selection;
-    const clicked = unitAt(this.state, at.x, at.y);
+    const clicked = unitAt(this.state, { x: at.x, y: at.y });
     this.inspect = clicked && this.isVisible(clicked) ? clicked : null;
     this.refresh();
   }
@@ -617,7 +617,7 @@ export class GameController {
     const commandable = this.commandableUnit;
     const aiming = this.selection instanceof TargetSelection ? this.selection : null;
     if (unit && aiming && this.hoverTarget && aiming.ability === 'attack') {
-      const defender = unitAt(state, this.hoverTarget.x, this.hoverTarget.y);
+      const defender = unitAt(state, { x: this.hoverTarget.x, y: this.hoverTarget.y });
       if (defender) {
         const plan = this.session.attackPlan(unit, this.hoverTarget, aiming.dest, aiming.weapon);
         const exchange = plan.primaryUnit!;

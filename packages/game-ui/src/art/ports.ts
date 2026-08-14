@@ -61,6 +61,3 @@ export function resolveArt<T>(select: (provider: ArtProvider) => T | null | unde
   return null;
 }
 
-export function resetArtProviders(): void {
-  providers.splice(0);
-}

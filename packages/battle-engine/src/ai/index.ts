@@ -47,17 +47,3 @@ export function chooseAction(
     ?? { kind: 'endTurn' };
 }
 
-/** Convenience: drives one whole AI turn. */
-export function planTurn(
-  dependencies: AiPlanningDependencies,
-  state: GameState,
-  apply: (action: Action) => void,
-  maxActions = 200,
-): void {
-  for (let taken = 0; taken < maxActions; taken++) {
-    const action = chooseAction(dependencies, state);
-    apply(action);
-    if (action.kind === 'endTurn') return;
-    if (state.phase !== 'playing') return;
-  }
-}

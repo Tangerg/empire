@@ -85,7 +85,7 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
   }))
   .register(evaluator('heal', (context) => {
     if (!context.target) return null;
-    const ally = unitAt(context.state, context.target.x, context.target.y);
+    const ally = unitAt(context.state, { x: context.target.x, y: context.target.y });
     if (!ally) return null;
     const def = context.rules.content.units.get(ally.type);
     const healed = Math.min(30, def.maxHp - ally.hp);
@@ -98,7 +98,7 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
     // its target can simply walk out of. Declining to have an opinion is the
     // honest answer — the option stays available to a human.
     if (context.rules.content.weapons.get(context.option.weapon).castTurns > 0) return null;
-    const foe = unitAt(context.state, context.target.x, context.target.y);
+    const foe = unitAt(context.state, { x: context.target.x, y: context.target.y });
     // Scenario effects and morale resolution may change ownership between
     // option enumeration and scoring.  Treat that option as stale instead of
     // asking combat prediction to plan an illegal friendly-fire strike.

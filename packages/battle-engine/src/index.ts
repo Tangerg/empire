@@ -27,7 +27,6 @@ export * from './structures';
 export * from './overlays';
 export * from './scenario';
 export * from './objective-model';
-export * from './data/careers';
 export * from './careers';
 export * from './formations';
 export * from './morale';

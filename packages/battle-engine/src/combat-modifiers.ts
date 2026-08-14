@@ -396,5 +396,3 @@ export const CombatModifierProviders = new CombatModifierProviderRegistry()
   .register(positionProvider)
   .register(coverProvider)
   .register(defenseProvider);
-
-export const DefaultCombatModifierPipeline = new CombatModifierPipeline(CombatModifierProviders);

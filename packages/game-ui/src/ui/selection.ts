@@ -269,7 +269,7 @@ export class RecruitSelection extends Selection {
  */
 function freshSelection(context: SelectionContext, at: Coord): Selection {
   const { state, session } = context;
-  const clicked = unitAt(state, at.x, at.y);
+  const clicked = unitAt(state, { x: at.x, y: at.y });
   if (clicked) {
     return context.isHumanTurn && context.canAct(clicked) ? new UnitSelection(clicked.id) : IDLE;
   }
@@ -297,7 +297,7 @@ function commandClick(selection: Selection, context: SelectionContext, at: Coord
     return { selection: freshSelection(context, at) };
   }
 
-  const clicked = unitAt(state, at.x, at.y);
+  const clicked = unitAt(state, { x: at.x, y: at.y });
   if (clicked && areEnemies(state, clicked.owner, unit.owner) && context.isVisible(clicked)) {
     const choice = bestAttackSpot(context, unit, clicked);
     if (choice) {
@@ -334,7 +334,7 @@ interface AttackSpot {
 }
 
 /** Reachable tile from which `target` can be hit, preferring safe cover. */
-export function bestAttackSpot(context: SelectionContext, unit: Unit, target: Unit): AttackSpot | null {
+function bestAttackSpot(context: SelectionContext, unit: Unit, target: Unit): AttackSpot | null {
   const { state, session } = context;
   let best: AttackSpot | null = null;
   for (const index of session.moveField(unit).stops) {

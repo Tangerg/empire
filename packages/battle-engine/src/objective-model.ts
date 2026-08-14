@@ -56,7 +56,7 @@ export function assignObjectiveIds(objectives: Objective[], prefix: string): Obj
   );
 }
 
-export function walkObjectives(objectives: Objective[]): Objective[] {
+function walkObjectives(objectives: Objective[]): Objective[] {
   const out: Objective[] = [];
   const visit = (objective: Objective): void => {
     out.push(objective);

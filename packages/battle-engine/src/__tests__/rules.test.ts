@@ -107,8 +107,8 @@ describe('economy and turn cycle', () => {
       amount: -350,
       current: 50,
     }));
-    expect(unitAt(s, 0, 0)!.type).toBe('knight');
-    expect(unitAt(s, 0, 0)!.done).toBe(true); // recruits wait a turn by default
+    expect(unitAt(s, { x: 0, y: 0 })!.type).toBe('knight');
+    expect(unitAt(s, { x: 0, y: 0 })!.done).toBe(true); // recruits wait a turn by default
   });
 
   it('rejects unaffordable or misplaced recruitment', () => {

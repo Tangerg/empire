@@ -22,7 +22,7 @@ import type {
 import { type ContentCatalog } from './content-pack';
 import { changeMorale } from './morale';
 
-export const NO_COMMAND_AURA: CommanderAura = {
+const NO_COMMAND_AURA: CommanderAura = {
   attackMultiplier: 1,
   defenseDelta: 0,
   movementDelta: 0,

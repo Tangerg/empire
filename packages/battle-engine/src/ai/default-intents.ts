@@ -236,7 +236,7 @@ function proposeRecruit(
   if (cap !== null && unitsOf(state, side).length >= cap) return null;
 
   for (const at of productionTilesOf(state, side, content)) {
-    if (unitAt(state, at.x, at.y)) continue;
+    if (unitAt(state, { x: at.x, y: at.y })) continue;
     const terrain = content.terrains.get(state.map.tiles[idx(state.map, at.x, at.y)]);
     const affordable = terrain.produces.filter((id) =>
       resources.canAfford(content.units.get(id).recruitCosts, account));

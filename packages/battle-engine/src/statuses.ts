@@ -3,7 +3,7 @@ import { type ContentCatalog } from './content-pack';
 import { resolveDamage, type DamageRules } from './damage';
 import { KeyedRegistry } from './registry';
 
-export const statusDef = (id: StatusId, content: ContentCatalog): StatusDef =>
+const statusDef = (id: StatusId, content: ContentCatalog): StatusDef =>
   content.statuses.get(id);
 
 export class StatusLifecycleContext {

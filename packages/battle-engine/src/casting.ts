@@ -1,7 +1,7 @@
 import { readyWeapon } from './combat';
 import { executeCombatPlan, forecastCombatPlan, type CombatPlanRules } from './combat-plan';
 import { hostileActionAllowed } from './engagement';
-import { player, unitAtCoord } from './state';
+import { player, unitAt } from './state';
 import { UnitDepartureHandlers } from './unit-departure';
 import { SpellCastEntity } from './domain/spell-cast';
 import { DomainInvariantError, IllegalActionError } from './domain/errors';
@@ -96,7 +96,7 @@ export function beginCast(state: GameState, declaration: CastDeclaration, emit: 
 }
 
 /** Drops the cast a departing unit was sustaining. */
-export function cancelCastOf(
+function cancelCastOf(
   state: GameState,
   unitId: number,
   emit: (event: GameEvent) => void,
@@ -149,7 +149,7 @@ function refusal(rules: CastingRules, state: GameState, cast: PendingCast): Cast
   if (!hostileActionAllowed(state, caster.owner, cast.origin, cast.target, 'attack')) return 'targetProtected';
   // A single-target strike needs something on the tile; an area strike still
   // falls on it and splashes whoever stayed nearby.
-  if (rules.areaShapes.get(weapon.area).needsOccupant && !unitAtCoord(state, cast.target)) return 'targetVacated';
+  if (rules.areaShapes.get(weapon.area).needsOccupant && !unitAt(state, cast.target)) return 'targetVacated';
   return null;
 }
 

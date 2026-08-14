@@ -138,7 +138,7 @@ export class EnvironmentCatalog {
 }
 
 /** Keep diagonal links only when both adjacent cardinal links exist. */
-export function canonicalBlobMask(mask: number): number {
+function canonicalBlobMask(mask: number): number {
   let canonical = mask & 0xff;
   if ((canonical & 0x05) !== 0x05) canonical &= ~0x02; // NE requires N + E
   if ((canonical & 0x14) !== 0x14) canonical &= ~0x08; // SE requires E + S

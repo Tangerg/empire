@@ -79,6 +79,10 @@ describe.each(grids().map((grid) => [grid.id, grid] as const))('%s', (_id, grid)
       expect(direction.name.length).toBeGreaterThan(0);
     }
     expect(() => grid.step(middle, 'nonesuch')).toThrow(RangeError);
+    // And it refuses to invent the other half of a facing it does not have: both
+    // callers — flanking and directional cover — would have read a missing
+    // opposite as "attacked from the front".
+    expect(() => grid.opposite('nonesuch')).toThrow(RangeError);
   });
 
   it('places a cell where it can be picked up again', () => {

@@ -23,8 +23,6 @@ export type ArmorClass = string;
 
 /** 1..N are real players. 0 means "nobody owns this". */
 export type PlayerId = number;
-export const NEUTRAL: PlayerId = 0;
-
 export interface Coord {
   x: number;
   y: number;

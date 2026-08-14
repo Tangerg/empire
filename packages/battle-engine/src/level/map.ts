@@ -13,11 +13,6 @@ export const terrainCharacter = (
   terrain: TerrainId,
 ): string | undefined => content.terrainEncoding.character(terrain);
 
-export const terrainForCharacter = (
-  content: ContentCatalog,
-  character: string,
-): TerrainId | undefined => content.terrainEncoding.terrain(character);
-
 function serializedTerrainCharacter(content: ContentCatalog, terrain: TerrainId): string {
   const exact = terrainCharacter(content, terrain);
   if (exact !== undefined) return exact;

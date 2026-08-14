@@ -123,7 +123,6 @@ describe('dependency injection invariants', () => {
     const globals = [
       'TEST_CONTENT',
       'DefaultBattleResources',
-      'DefaultCombatModifierPipeline',
       'CoreTacticalSpace',
       'StatusBehaviors',
       'ObjectiveHandlers',

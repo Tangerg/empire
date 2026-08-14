@@ -25,7 +25,7 @@ import {
   type RankProgressionPolicy,
 } from './progression';
 import { type WeaponHitEffectHandlerRegistry } from './hit-effects';
-import { areAllies, areEnemies, requireUnit, unitAtCoord } from './state';
+import { areAllies, areEnemies, requireUnit, unitAt } from './state';
 import { damageStructure, structureAt } from './structures';
 import type {
   Coord,
@@ -197,7 +197,7 @@ export function forecastCombatPlan(
     throw new DomainInvariantError('combat plan target is protected by an engagement rule');
   }
   const weapon = content.weapons.get(resolvedWeaponId);
-  const primaryTarget = unitAtCoord(state, aimedAt);
+  const primaryTarget = unitAt(state, aimedAt);
   const primaryStructureTarget = hostileStructure(state, attacker, aimedAt, content);
   // An area weapon may land on a tile whose occupant left — that is the whole
   // point of charge time, and every step below already copes with a null
@@ -247,7 +247,7 @@ export function forecastCombatPlan(
 
   for (const cell of affectedCells) {
     if (sameCoord(cell, aimedAt)) continue;
-    const unit = unitAtCoord(state, cell);
+    const unit = unitAt(state, cell);
     if (unit && areEnemies(state, unit.owner, attacker.owner) && !excludedUnits.has(unit.id)) {
       const damage = computeDamage(rules, state, attacker, unit, {
         attackerAt: from,

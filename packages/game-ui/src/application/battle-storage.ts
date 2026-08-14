@@ -27,6 +27,3 @@ export function browserBattleSaves(levelId: string): BattleSaveStore {
   };
 }
 
-export function deleteBattleSave(levelId: string): void {
-  localStorage.removeItem(keyFor(levelId));
-}

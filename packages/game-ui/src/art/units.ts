@@ -196,4 +196,3 @@ export function unitIcon(type: UnitTypeId, team: string, size = 32): string {
   return `<svg viewBox="0 0 32 32" width="${size}" height="${size}" shape-rendering="crispEdges">${unitSpriteMarkup(type, team)}</svg>`;
 }
 
-export const hasSprite = (type: UnitTypeId): boolean => type in sprites;

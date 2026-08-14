@@ -104,6 +104,13 @@ const SQUARE_VECTORS: Readonly<Record<string, Coord>> = {
   northwest: { x: -1, y: -1 },
 };
 
+/**
+ * Facings come in pairs, and a tiling is asked for the other half of one.
+ *
+ * A miss throws rather than answering with the direction it was given: the two
+ * callers are flanking and directional cover, and both would have quietly
+ * treated "no opposite" as "attacked from the front".
+ */
 const OPPOSITE: Readonly<Record<string, Direction>> = {
   north: 'south', south: 'north', east: 'west', west: 'east',
   northeast: 'southwest', southwest: 'northeast',
@@ -112,6 +119,12 @@ const OPPOSITE: Readonly<Record<string, Direction>> = {
   hexNortheast: 'hexSouthwest', hexSouthwest: 'hexNortheast',
   hexNorthwest: 'hexSoutheast', hexSoutheast: 'hexNorthwest',
 };
+
+function oppositeOf(grid: string, direction: Direction): Direction {
+  const opposite = OPPOSITE[direction];
+  if (!opposite) throw new RangeError(`grid "${grid}" has no direction "${direction}"`);
+  return opposite;
+}
 
 /** Square cells, whether four-way or eight-way: the tiling and art are shared. */
 abstract class SquareTiling implements TacticalGrid {
@@ -128,7 +141,7 @@ abstract class SquareTiling implements TacticalGrid {
   }
 
   opposite(direction: Direction): Direction {
-    return OPPOSITE[direction] ?? direction;
+    return oppositeOf(this.id, direction);
   }
 
   adjacent(at: Coord): Coord[] {
@@ -328,7 +341,7 @@ class HexGrid implements TacticalGrid {
   }
 
   opposite(direction: Direction): Direction {
-    return OPPOSITE[direction] ?? direction;
+    return oppositeOf(this.id, direction);
   }
 
   toward(from: Coord, to: Coord): Direction {
@@ -414,9 +427,6 @@ class HexGrid implements TacticalGrid {
 
 export const TacticalGrids = new ContentRegistry<TacticalGrid>('tactical grid');
 TacticalGrids.defineAll([new OrthogonalSquareGrid(), new OctileSquareGrid(), new HexGrid()]);
-
-/** The tiling every level plays on unless it names another. */
-export const DEFAULT_GRID_ID = 'square4';
 
 /** The registered tilings of one engine. */
 export type GridRegistry = ContentRegistry<TacticalGrid>;

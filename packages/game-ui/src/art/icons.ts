@@ -1,4 +1,3 @@
-import { PAL } from './palette';
 
 /** 16x16 line icons for the HUD. `currentColor` so CSS drives the colour. */
 const paths: Record<string, string> = {
@@ -28,12 +27,3 @@ export function icon(name: keyof typeof paths | string, size = 16): string {
     aria-hidden="true"><path d="${d}"/></svg>`;
 }
 
-/** Small filled HP bar used on the board and in lists. */
-export function hpBarMarkup(ratio: number, width = 24, height = 4): string {
-  const clamped = Math.max(0, Math.min(1, ratio));
-  const color = clamped > 0.6 ? PAL.hpGood : clamped > 0.3 ? PAL.hpMid : PAL.hpLow;
-  return `<svg viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">
-    <rect width="${width}" height="${height}" rx="${height / 2}" fill="${PAL.ink}" opacity="0.5"/>
-    <rect x="0.5" y="0.5" width="${Math.max(0, clamped * (width - 1))}" height="${height - 1}" rx="${(height - 1) / 2}" fill="${color}"/>
-  </svg>`;
-}

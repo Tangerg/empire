@@ -1,31 +1,10 @@
 import { Battlefield } from './domain/battlefield';
 import { addStatus } from './statuses';
-import type { Coord, GameEvent, GameState, MovementClass, TerrainOverlayState, Unit } from './types';
+import type { Coord, GameEvent, GameState, TerrainOverlayState, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
 
-export function overlaysAt(state: GameState, at: Coord, content: ContentCatalog): TerrainOverlayState[] {
+function overlaysAt(state: GameState, at: Coord, content: ContentCatalog): TerrainOverlayState[] {
   return new Battlefield(state, content).cell(at).overlayStates;
-}
-
-export function movementCostAt(
-  state: GameState,
-  movementClass: MovementClass,
-  at: Coord,
-  content: ContentCatalog,
-): number | null {
-  return new Battlefield(state, content).cell(at).movementCost(movementClass);
-}
-
-export function overlayDefenseAt(state: GameState, at: Coord, content: ContentCatalog): number {
-  return new Battlefield(state, content).cell(at).overlayDefense;
-}
-
-export function overlayVisionAt(state: GameState, at: Coord, content: ContentCatalog): number {
-  return new Battlefield(state, content).cell(at).overlayVision;
-}
-
-export function overlayHealAt(state: GameState, at: Coord, content: ContentCatalog): number {
-  return new Battlefield(state, content).cell(at).overlayHeal;
 }
 
 export function addTerrainOverlay(

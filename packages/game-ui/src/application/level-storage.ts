@@ -2,7 +2,7 @@ import { normaliseLevel } from '@empire/battle-engine/level';
 import type { LevelData } from '@empire/battle-engine/types';
 
 export const CUSTOM_LEVELS_KEY = 'empire.customLevels';
-export const PLAYTEST_KEY = 'empire.playtest';
+const PLAYTEST_KEY = 'empire.playtest';
 
 export interface StoredLevel {
   level: LevelData;

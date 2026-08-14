@@ -1,5 +1,6 @@
 import { type ContentCatalog } from '../content-pack';
 import { edgeKey, idx, inBounds } from '../grid';
+import { unitAt } from '../state';
 import type { TacticalGrid } from '../tactical-grid';
 import type { DirectionalCoverSides } from './map-layers';
 import type {
@@ -223,10 +224,11 @@ export class Battlefield {
   /**
    * Deliberately not indexed like the layers above: rules move, spawn and
    * remove units while they hold a battlefield, so a cached answer would be
-   * wrong by the next line.
+   * wrong by the next line — which is also why it is the plain state query
+   * rather than a third way of asking.
    */
   occupantAt(at: Coord): Unit | undefined {
-    return this.state.units.find((unit) => unit.x === at.x && unit.y === at.y);
+    return unitAt(this.state, at);
   }
 
   structureAt(index: number): StructureState | undefined {

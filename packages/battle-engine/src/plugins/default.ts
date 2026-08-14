@@ -192,10 +192,6 @@ export function buildBattleEngine(capabilities: KernelCapabilities): BattleEngin
   });
 }
 
-/** Fresh engine per session; plugin registries never leak mutations across games. */
-export const createDefaultBattleEngine = (content: ContentCatalog): BattleEngine =>
-  buildBattleEngine(createDefaultMicrokernel(content).compose());
-
 /**
  * A plugin whose whole job is to swap one rule for the ruleset it is added to.
  *

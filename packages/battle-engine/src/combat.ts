@@ -227,10 +227,6 @@ export function consumeWeapon(
   new UnitEntity(unit).commitWeaponCooldown(weapon);
 }
 
-export function terrainDefenseAt(state: GameState, c: Coord, content: ContentCatalog): number {
-  return new Battlefield(state, content).cell(c).defense;
-}
-
 function weaponTargetBonus(weapon: WeaponDef, tags: string[]): { multiplier: number; reasons: string[] } {
   const matches = weapon.bonuses.filter((bonus) => tags.includes(bonus.targetTag));
   return {
@@ -320,11 +316,6 @@ export function forecastStructure(
     hpAfter,
     destroyed: hpAfter <= 0,
   };
-}
-
-/** Can `unit`, standing at `from`, reach `target` with its weapon? */
-export function canReach(rules: CombatRules, state: GameState, unit: Unit, from: Coord, target: Coord): boolean {
-  return canReachWithWeapon(boardOf(rules, state), primaryWeapon(unit, rules.content), from, target);
 }
 
 export function canReachWithWeapon(board: Board, weapon: WeaponDef, from: Coord, target: Coord): boolean {

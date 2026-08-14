@@ -187,7 +187,7 @@ function numberAttribute(element: Element, name: string, min: number): number {
   return value;
 }
 
-export function stripMetadata(element: SVGImageElement): StripMetadata {
+function stripMetadata(element: SVGImageElement): StripMetadata {
   const frameWidth = numberAttribute(element, 'data-frame-width', 0.001);
   const frameCount = numberAttribute(element, 'data-frame-count', 1);
   const initialFrame = numberAttribute(element, 'data-frame-initial', 0);

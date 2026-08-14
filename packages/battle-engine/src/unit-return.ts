@@ -1,5 +1,5 @@
 import { UnitEntity } from './domain/unit-entity';
-import { unitAtCoord } from './state';
+import { unitAt } from './state';
 import { cloneUnitState } from './unit-state';
 import type { BattlefieldMarker, Coord, GameEvent, GameState, PlayerId, Unit } from './types';
 
@@ -40,7 +40,7 @@ export function returnUnitToField(
 ): Unit | null {
   const fallen = marker.fallenUnit;
   if (!fallen) return null;
-  if (unitAtCoord(state, request.at)) return null;
+  if (unitAt(state, request.at)) return null;
   if (state.units.some((unit) => unit.id === fallen.id || (fallen.key && unit.key === fallen.key))) return null;
 
   const unit = cloneUnitState(fallen);

@@ -35,7 +35,7 @@ export function hasOpposedFlanker(
 ): boolean {
   if (board.distance(attackerAt, defender) !== 1) return false;
   const behind = board.grid.step(defender, board.grid.opposite(board.grid.toward(defender, attackerAt)));
-  const ally = unitAt(state, behind.x, behind.y);
+  const ally = unitAt(state, { x: behind.x, y: behind.y });
   return Boolean(
     ally &&
     ally.id !== attacker.id &&

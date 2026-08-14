@@ -84,7 +84,7 @@ export function computeMoveField(rules: MovementRules, state: GameState, unit: U
         const step = battlefield.traversalCost(from, next, def.movementClass);
         if (step == null) continue;
 
-        const blocker = unitAt(state, nx, ny);
+        const blocker = unitAt(state, { x: nx, y: ny });
         if (blocker && blocker.id !== unit.id) {
           if (areEnemies(state, blocker.owner, unit.owner)) {
             if (state.rules.enemiesBlockMovement) continue;
@@ -215,7 +215,7 @@ export function targetsFrom(
 ): Unit[] {
   const out: Unit[] = [];
   for (const c of attackTilesFrom(rules, state, unit, from, weapon)) {
-    const other = unitAt(state, c.x, c.y);
+    const other = unitAt(state, { x: c.x, y: c.y });
     if (other && areEnemies(state, other.owner, unit.owner)) out.push(other);
   }
   return out;
@@ -232,7 +232,7 @@ export function attackTargetCoords(
   const content = rules.content;
   const out: Coord[] = [];
   for (const cell of attackTilesFrom(rules, state, unit, from, weapon)) {
-    const other = unitAt(state, cell.x, cell.y);
+    const other = unitAt(state, { x: cell.x, y: cell.y });
     if (other && areEnemies(state, other.owner, unit.owner)) {
       out.push(cell);
       continue;
@@ -249,7 +249,7 @@ export function healTargetsFrom(rules: MovementRules, state: GameState, unit: Un
   const content = rules.content;
   const found: Unit[] = [];
   for (const c of boardOf(rules, state).ring(from, 1, 1)) {
-    const other = unitAt(state, c.x, c.y);
+    const other = unitAt(state, { x: c.x, y: c.y });
     if (!other || other.id === unit.id) continue;
     if (!areAllies(state, other.owner, unit.owner)) continue;
     if (other.hp >= content.units.get(other.type).maxHp) continue;

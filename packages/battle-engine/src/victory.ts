@@ -19,7 +19,7 @@ export interface VictoryResult {
 }
 
 /** A player is out when they have neither units nor any way to make more. */
-export function isDefeated(state: GameState, id: PlayerId, content: ContentCatalog): boolean {
+function isDefeated(state: GameState, id: PlayerId, content: ContentCatalog): boolean {
   return unitsOf(state, id).length === 0 && productionTilesOf(state, id, content).length === 0;
 }
 

@@ -3,7 +3,7 @@ import { Battlefield } from './domain/battlefield';
 import { boardOf } from './domain/board';
 import type { GridRegistry } from './tactical-grid';
 import { inBounds } from './grid';
-import { areAllies, removeUnit, requireUnit, unitAtCoord } from './state';
+import { areAllies, removeUnit, requireUnit, unitAt } from './state';
 import type { ContentCatalog } from './content-pack';
 import type { BattlefieldMarker, Coord, GameEvent, GameState, Unit } from './types';
 import { cloneUnitState } from './unit-state';
@@ -72,7 +72,7 @@ export function disembarkUnit(
   if (!inBounds(state.map, at.x, at.y) || boardOf(rules, state).distance(carrier, at) !== 1) {
     throw new IllegalActionError('disembark cell must be adjacent');
   }
-  if (unitAtCoord(state, at)) throw new IllegalActionError('disembark cell is occupied');
+  if (unitAt(state, at)) throw new IllegalActionError('disembark cell is occupied');
   const unit = state.embarkedUnits[index].unit;
   const movement = content.units.get(unit.type).movementClass;
   if (!new Battlefield(state, content).cell(at).admits(movement)) {
@@ -85,18 +85,6 @@ export function disembarkUnit(
   state.embarkedUnits.splice(index, 1);
   state.units.push(unit);
   emit({ type: 'unitDisembarked', unit: unitId, carrier: carrierId, at: { ...at } });
-}
-
-/** Converts all passengers into persistent casualty markers when a carrier is lost. */
-export function loseTransportPassengers(
-  state: GameState,
-  carrierId: number,
-  at: Coord,
-  emit: (event: GameEvent) => void,
-): number[] {
-  const markers = extractLostTransportPassengers(state, carrierId, at);
-  emitTransportLossEvents(carrierId, at, markers, emit);
-  return markers.map((marker) => marker.fallenUnit!.id);
 }
 
 /** State-only half of fatal transport cleanup, owned by the battle aggregate. */

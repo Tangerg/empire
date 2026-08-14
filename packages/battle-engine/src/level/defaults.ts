@@ -5,7 +5,7 @@ import type { LevelData, Objective, PlayerConfig, RuleSet } from '../types';
 /** Falls back to "rout them or take their keep" when a level states no goal. */
 export const DEFAULT_VICTORY: Objective[] = [{ type: 'routEnemies' }, { type: 'captureHQ' }];
 
-export function defaultPlayer(
+function defaultPlayer(
   id: number,
   name: string,
   color: string,

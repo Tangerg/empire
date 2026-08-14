@@ -2,7 +2,7 @@ import { UnitEntity } from './domain/unit-entity';
 import { PlayerEntity } from './domain/player-entity';
 import { inBounds } from './grid';
 import { addTerrainOverlay, removeTerrainOverlay } from './overlays';
-import { player, removeUnit, spawnUnit, unitAtCoord } from './state';
+import { player, removeUnit, spawnUnit, unitAt } from './state';
 import { addStatus, removeStatus } from './statuses';
 import { damageStructure, repairStructure } from './structures';
 import { changeUnitResource } from './progression';
@@ -424,7 +424,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       if (!inBounds(context.state.map, source.x, source.y)) {
         throw new Error(`spawn cell out of bounds: ${source.x},${source.y}`);
       }
-      if (unitAtCoord(context.state, source)) throw new Error(`spawn cell is occupied: ${source.x},${source.y}`);
+      if (unitAt(context.state, source)) throw new Error(`spawn cell is occupied: ${source.x},${source.y}`);
       if (source.key && context.state.units.some((unit) => unit.key === source.key)) {
         throw new Error(`unit key already exists: "${source.key}"`);
       }

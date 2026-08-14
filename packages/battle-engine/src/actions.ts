@@ -16,7 +16,6 @@ import { changeCareer, unitAbilityIds } from './careers';
 import { validateFormationChange } from './formations';
 import { disembarkUnit, embarkUnit } from './transports';
 import { playerResource } from './resources';
-import { activeTurnOrder } from './turn-order';
 import { resolvePartingShots } from './zone-of-control';
 import { directiveOf } from './unit-directive';
 import {
@@ -155,7 +154,7 @@ class DeployUnitActionHandler implements ActionHandler<'deployUnit'> {
     const cells = state.scenario.zones[assignment.zone];
     if (!cells?.some((cell) => sameCoord(cell, action.at))) context.fail('目标格不在该单位的部署区域内');
 
-    const occupant = unitAt(state, action.at.x, action.at.y);
+    const occupant = unitAt(state, { x: action.at.x, y: action.at.y });
     if (occupant && occupant.id !== unit.id) {
       const swappable = deployment.assignments.some((entry) =>
         entry.player === state.currentPlayer && entry.unitIds.includes(occupant.id));
@@ -318,7 +317,7 @@ class RecruitActionHandler implements ActionHandler<'recruit'> {
     const terrain = context.rules.content.terrains.get(state.map.tiles[index]);
     if (!terrain.produces.includes(action.unit)) context.fail(`${terrain.name} 无法生产该兵种`);
     if (state.map.owners[index] !== state.currentPlayer) context.fail('该建筑不属于你');
-    if (unitAt(state, action.at.x, action.at.y)) context.fail('建筑上已有单位');
+    if (unitAt(state, { x: action.at.x, y: action.at.y })) context.fail('建筑上已有单位');
 
     const owner = player(state, state.currentPlayer);
     const definition = context.rules.content.units.get(action.unit);
@@ -392,7 +391,3 @@ export function applyAction(
   return applyActionWith(state, action, CoreActionHandlers, rules);
 }
 
-/** Units still entitled to act under the battle's ordering policy. */
-export function idleUnits(rules: BattleRuleServices, state: GameState): Unit[] {
-  return activeTurnOrder(rules, state).actors(state);
-}

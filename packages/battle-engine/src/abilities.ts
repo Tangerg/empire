@@ -9,13 +9,12 @@ import { executeCombatPlan, forecastCombatPlan } from './combat-plan';
 import type { CombatModifierPipeline } from './combat-modifiers';
 import type { WeaponHitEffectHandlerRegistry } from './hit-effects';
 import { awardRankProgress, type RankProgressionPolicy } from './progression';
-import { unitAbilityIds } from './careers';
 import { MapLayers } from './domain/map-layers';
 import type { GridRules } from './tactical-grid';
 import { ContentRegistry } from './registry';
 import { type ReactionBehavior } from './reactions';
 import { type UnitDepartureHandlerRegistry } from './unit-departure';
-import { unitAtCoord } from './state';
+import { unitAt } from './state';
 import { player } from './state';
 import { blockedAbilityStatus, combinedStatusModifiers } from './statuses';
 import { BattleAggregate, UnitEntity } from './domain/index';
@@ -192,7 +191,7 @@ Abilities.defineAll([
     execute: (rules, { state, unit }, target, emit) => {
       if (!target) throw new Error('heal requires a target');
       const content = rules.content;
-      const ally = unitAtCoord(state, target);
+      const ally = unitAt(state, target);
       if (!ally) throw new Error('no unit to heal');
       const amount = healAmount(unit, ally, content);
       const healed = new UnitEntity(ally).heal(amount, content.units.get(ally.type).maxHp);
@@ -274,11 +273,3 @@ export function abilityTargets(
     hostileActionAllowed(query.state, query.unit.owner, query.at, target, kind));
 }
 
-/** Abilities this unit can use right now, in menu order. */
-export function availableAbilities(rules: AbilityRules, q: AbilityQuery): AbilityDef[] {
-  return unitAbilityIds(q.unit, rules.content)
-    .map((id) => abilityDef(rules, id))
-    .filter((a) => canUseAbility(rules, a, q))
-    .filter((a) => a.selfTargeted || abilityTargets(rules, a, q).length > 0)
-    .sort((a, b) => a.priority - b.priority);
-}

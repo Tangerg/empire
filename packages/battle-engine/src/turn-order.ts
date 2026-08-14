@@ -139,7 +139,7 @@ export const INITIATIVE_THRESHOLD = 100;
  * one tempo-ish stat every pack already declares, so an unconverted pack still
  * produces a sensible order instead of a flat tie.
  */
-export function initiativeSpeed(unit: Unit, content: ContentCatalog): number {
+function initiativeSpeed(unit: Unit, content: ContentCatalog): number {
   const declared = Number(unit.meta.speed ?? 0);
   if (declared > 0) return Math.round(declared);
   // Fallback for packs that have not declared a tempo stat yet: movement is the

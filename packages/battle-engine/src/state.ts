@@ -408,11 +408,16 @@ export function restoreState(target: GameState, snapshot: GameState): void {
 
 /* ---------------------------------------------------------------- accessors */
 
-export function unitAt(state: GameState, x: number, y: number): Unit | undefined {
-  return state.units.find((u) => u.x === x && u.y === y);
+/**
+ * The unit standing on a cell.
+ *
+ * One question, one name. It used to have three: `unitAt(state, { x: x, y: y })`,
+ * `unitAt(state, at)` and the battlefield's own `occupantAt`, so a reader
+ * had to know which of them a module happened to import.
+ */
+export function unitAt(state: GameState, at: Coord): Unit | undefined {
+  return state.units.find((unit) => unit.x === at.x && unit.y === at.y);
 }
-
-export const unitAtCoord = (state: GameState, c: Coord): Unit | undefined => unitAt(state, c.x, c.y);
 
 export function unitById(state: GameState, id: number): Unit | undefined {
   return state.units.find((u) => u.id === id);
@@ -443,8 +448,6 @@ export const unitsOf = (state: GameState, id: PlayerId): Unit[] => state.units.f
 
 export const enemyUnitsOf = (state: GameState, id: PlayerId): Unit[] =>
   state.units.filter((u) => areEnemies(state, u.owner, id));
-
-export const currentPlayerState = (state: GameState): PlayerState => player(state, state.currentPlayer);
 
 export function tilesOwnedBy(state: GameState, id: PlayerId): Coord[] {
   const out: Coord[] = [];

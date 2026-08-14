@@ -1,6 +1,5 @@
 import type {
   CareerDef,
-  FormationDef,
   MoveCosts,
   StatusDef,
   StructureDef,
@@ -10,19 +9,6 @@ import type {
   UnitDef,
   WeaponDef,
 } from './types';
-
-export function defineFormation(
-  def: Partial<FormationDef> & Pick<FormationDef, 'id' | 'name'>,
-): FormationDef {
-  return {
-    attackMultiplier: 1,
-    defenseDelta: 0,
-    movementDelta: 0,
-    minimumAdjacentAllies: 0,
-    tags: [],
-    ...def,
-  };
-}
 
 export function defineCareer(
   def: Partial<CareerDef> & Pick<CareerDef, 'id' | 'name' | 'unitType'>,

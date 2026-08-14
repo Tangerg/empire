@@ -108,8 +108,18 @@ describe('level schema migration', () => {
     expect(() => normaliseLevel({ schema: 99, terrain: ['..'] })).toThrow(/schema/);
   });
 
-  it('leaves a current-schema level untouched', () => {
+  it('leaves a current-schema level unchanged', () => {
+    // A copy rather than the same object: the ladder hands back a document it
+    // owns, so a migration cannot edit the caller's.
     const current = level('unchanged');
-    expect(migrateLevel(current)).toBe(current);
+    expect(migrateLevel(current)).toEqual(current);
+    expect(migrateLevel(current)).not.toBe(current);
+  });
+
+  it('refuses a schema it has no step for, in the author terms', () => {
+    expect(() => migrateLevel({ ...level('future'), schema: 9 }))
+      .toThrow(/关卡 schema 无法升级到 2/);
+    expect(() => migrateLevel({ ...level('ancient'), schema: 0 }))
+      .toThrow(/no 关卡 migration from schema 0/);
   });
 });

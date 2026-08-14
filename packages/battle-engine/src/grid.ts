@@ -1,4 +1,4 @@
-import type { Coord, GameMap, TerrainId, PlayerId } from './types';
+import type { Coord, GameMap, TerrainId } from './types';
 
 export const idx = (map: { width: number }, x: number, y: number): number => y * map.width + x;
 export const coordOf = (map: { width: number }, i: number): Coord => ({
@@ -12,8 +12,6 @@ export const inBounds = (map: { width: number; height: number }, x: number, y: n
 export const sameCoord = (a: Coord, b: Coord): boolean => a.x === b.x && a.y === b.y;
 
 export const terrainAt = (map: GameMap, c: Coord): TerrainId => map.tiles[idx(map, c.x, c.y)];
-export const ownerAt = (map: GameMap, c: Coord): PlayerId => map.owners[idx(map, c.x, c.y)];
-
 /**
  * Row-major storage helpers.
  *
