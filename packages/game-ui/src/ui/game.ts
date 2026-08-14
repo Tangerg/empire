@@ -238,8 +238,6 @@ export class GameController {
       return;
     }
     this.selection = outcome.selection;
-    // One rule where there were five: the inspector shows what you just
-    // clicked, if you are allowed to see it, and nothing otherwise.
     const clicked = unitAt(this.state, at.x, at.y);
     this.inspect = clicked && this.isVisible(clicked) ? clicked : null;
     this.refresh();

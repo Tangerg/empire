@@ -261,9 +261,8 @@ export class EditorApp {
       this.save();
       return;
     }
-    // Every tool declares its own hotkey, so the palette tooltip and the key
-    // handler can no longer disagree — three tools used to advertise a shortcut
-    // that nothing listened for.
+    // Each tool declares its own hotkey, so the palette tooltip and the key
+    // handler cannot disagree about what a key does.
     const pressed = EDITOR_TOOLS.forHotkey(event.key);
     if (pressed) {
       this.selectTool(pressed);

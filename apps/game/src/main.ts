@@ -247,7 +247,6 @@ const playtest = takePlaytest();
 if (playtest.level) startGame(playtest.level);
 else {
   renderMenu();
-  // A level the editor considered valid but the engine refused used to look
-  // like a 试玩 button that did nothing.
+  // Say so: a rejected playtest is otherwise a 试玩 button that does nothing.
   if (playtest.rejected !== null) alert(`试玩关卡无法载入：${playtest.rejected}`);
 }

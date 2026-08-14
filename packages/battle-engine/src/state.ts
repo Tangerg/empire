@@ -463,7 +463,6 @@ export function productionTilesOf(state: GameState, id: PlayerId, content: Conte
   );
 }
 
-/** Recruitable list for a tile, filtered by what the owner can afford. */
 /** One line of the recruitment menu: what it is, what it costs, can we pay. */
 export interface RecruitOption {
   readonly unit: UnitTypeId;

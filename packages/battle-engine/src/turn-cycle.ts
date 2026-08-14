@@ -71,9 +71,9 @@ export class BattleLifecycle {
 
     const handoff = activeTurnOrder(this.rules, state).advance(state, this.context());
     if (handoff.exhausted) {
-      // Nobody is left to act. This used to set the phase and return, leaving a
-      // battle "over" with no winner, no reason and no `gameOver` event, so any
-      // shell waiting on that event simply hung.
+      // Nobody left to act still has to end as a *conclusion*: a battle set to
+      // "over" with no winner, no reason and no `gameOver` event hangs any shell
+      // waiting on that event.
       this.concludeIfDecided();
       if (state.phase !== 'over') this.conclude(null, '无人可行动');
       return;

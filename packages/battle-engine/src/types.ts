@@ -418,9 +418,7 @@ export interface RuleSet {
   counterAttack: boolean;
   fog: boolean;
   turnLimit: number | null;
-  /** Units may walk through allies. */
   friendlyPassThrough: boolean;
-  /** Enemy units block movement. */
   enemiesBlockMovement: boolean;
   /**
    * Units hold the ground around them: entering an enemy's zone ends the move,
@@ -429,7 +427,7 @@ export interface RuleSet {
    */
   zoneOfControl: boolean;
   maxUnitsPerPlayer: number | null;
-  /** Units recruited this turn cannot act. */
+  /** True lets a unit act on the turn it was bought; false is the classic rule. */
   recruitsActImmediately: boolean;
   /**
    * Registered turn-order policy id. 'side' gives Advance Wars / Ancient
