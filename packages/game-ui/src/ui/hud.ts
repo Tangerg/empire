@@ -58,6 +58,13 @@ export interface HudView {
   recruitAt: Coord | null;
   hint: string;
   busy: boolean;
+  /**
+   * Whether this sitting can be put down and picked up again.
+   *
+   * Null when the shell keeps no slot — a campaign battle is resumed through the
+   * campaign's own save, not through this one — and the entry stays off screen.
+   */
+  saves: { canSave: boolean; canResume: boolean } | null;
   canUndo: boolean;
   messages: string[];
   /** Application-owned labels keep campaign/navigation wording out of battle rules. */
@@ -75,6 +82,8 @@ export interface HudHandlers {
   onEndTurn(): void;
   onUndo(): void;
   onRestart(): void;
+  onSave(): void;
+  onResume(): void;
   onRecruit(unit: string): void;
   onExit(): void;
   onContinue(): void;
@@ -182,6 +191,8 @@ export class Hud {
     end: () => this.handlers.onEndTurn(),
     undo: () => this.handlers.onUndo(),
     restart: () => this.handlers.onRestart(),
+    save: () => this.handlers.onSave(),
+    resume: () => this.handlers.onResume(),
     exit: () => this.handlers.onExit(),
     continue: () => this.handlers.onContinue(),
   };
@@ -292,11 +303,20 @@ export class Hud {
         <button class="btn ghost" data-act="zoom" data-arg="-0.15" title="缩小">−</button>
         <button class="btn ghost" data-act="zoom" data-arg="0.15" title="放大">+</button>
         <button class="btn ghost" data-act="undo" ${view.canUndo && !view.busy ? '' : 'disabled'} title="撤销 (U)">${icon('undo')}</button>
+        ${this.renderSaveSlot(view)}
         <button class="btn ghost" data-act="restart" title="重新开始">${icon('play')}</button>
         <button class="btn primary" data-act="end" ${view.busy || active.controller !== 'human' ? 'disabled' : ''}>
           ${icon('hourglass')} 结束回合 <kbd>E</kbd>
         </button>
       </div>`;
+  }
+
+  /** Put the battle down, or pick it up where it was left. */
+  private renderSaveSlot(view: HudView): string {
+    if (!view.saves) return '';
+    return `
+      <button class="btn ghost" data-act="save" ${view.saves.canSave ? '' : 'disabled'} title="保存战斗进度">${icon('save')}</button>
+      <button class="btn ghost" data-act="resume" ${view.saves.canResume ? '' : 'disabled'} title="读取战斗进度">${icon('flag')}</button>`;
   }
 
   /* --------------------------------------------------------------- commands */

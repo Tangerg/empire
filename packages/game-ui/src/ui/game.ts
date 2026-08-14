@@ -5,6 +5,7 @@ import { tacticOptions } from '@empire/battle-engine/commanders';
 import { idx } from '@empire/battle-engine/grid';
 import type { BattleEngine } from '@empire/battle-engine/engine';
 import { GameSession } from '@empire/battle-engine/session';
+import type { BattleSave } from '@empire/battle-engine/battle-save';
 import { areEnemies, unitAt } from '@empire/battle-engine/state';
 import type {
   Action,
@@ -39,6 +40,23 @@ export interface BattleCompletionSnapshot {
   events: GameEvent[];
 }
 
+/**
+ * Where an interrupted battle is kept.
+ *
+ * A port, not a dependency: whether a battle can be put down is the shell's
+ * business — a browser slot, a file, a server — and the controller only needs to
+ * know whether one exists. The campaign shell deliberately passes none, because
+ * a campaign battle is resumed through the campaign's own save.
+ */
+export interface BattleSaveStore {
+  /** Records the battle, replacing whatever this store keeps. */
+  write(save: BattleSave): void;
+  /** The saved battle as it was written down, or null when there is none. */
+  read(): unknown | null;
+  /** Whether anything is stored, without parsing it. */
+  has(): boolean;
+}
+
 export interface GameControllerOptions {
   /** Ruleset this battle runs on. Required: there is no ambient fallback. */
   engine: BattleEngine;
@@ -46,6 +64,8 @@ export interface GameControllerOptions {
   eventPresenters?: BattleEventPresenterRegistry;
   exitLabel?: string;
   completionLabel?: string;
+  /** Absent means this shell offers no save slot, and the entry stays hidden. */
+  saves?: BattleSaveStore;
   onComplete?: (snapshot: BattleCompletionSnapshot) => void;
 }
 
@@ -103,6 +123,8 @@ export class GameController {
       onEndTurn: () => void this.endTurn(),
       onUndo: () => this.undo(),
       onRestart: () => this.restart(),
+      onSave: () => this.saveBattle(),
+      onResume: () => this.resumeBattle(),
       onRecruit: (u) => void this.recruit(u),
       onExit: () => this.exit(),
       onContinue: () => this.continueAfterBattle(),
@@ -355,10 +377,47 @@ export class GameController {
 
   private restart(): void {
     this.session.restart();
+    this.reopen('');
+  }
+
+  private saveBattle(): void {
+    const store = this.options.saves;
+    if (!store || this.busy || this.state.phase !== 'playing') return;
+    store.write(this.session.save());
+    this.pushMessage(`已保存第 ${this.state.turn} 回合的进度`);
+    this.refresh();
+  }
+
+  /**
+   * Picks the battle up where it was left.
+   *
+   * A save the composed ruleset cannot honour is a message, not a crash: the
+   * session refuses it before replacing anything, so the battle on screen is
+   * still the one the player was playing.
+   */
+  private resumeBattle(): void {
+    const store = this.options.saves;
+    if (!store || this.busy) return;
+    const raw = store.read();
+    if (raw === null) return;
+    try {
+      this.session.load(raw);
+    } catch (error) {
+      this.pushMessage(`无法读取存档：${(error as Error).message}`);
+      this.refresh();
+      return;
+    }
+    this.reopen(`已读取第 ${this.state.turn} 回合的存档`);
+    if (!this.isHumanTurn && this.state.phase === 'playing') void this.runAiTurns();
+  }
+
+  /** Whatever the session now holds, shown from a clean slate. */
+  private reopen(message: string): void {
     this.board.setState(this.state);
     this.selection = IDLE;
     this.inspect = null;
     this.messages = [];
+    this.pushMessage(message);
     this.refresh();
   }
 
@@ -608,6 +667,9 @@ export class GameController {
       hint: this.hint(),
       busy: this.busy,
       canUndo: this.session.canUndo,
+      saves: this.options.saves
+        ? { canSave: !this.busy && state.phase === 'playing', canResume: !this.busy && this.options.saves.has() }
+        : null,
       messages: this.messages,
       exitLabel: this.options.exitLabel,
       completionLabel: this.options.completionLabel,

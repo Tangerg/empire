@@ -21,6 +21,7 @@ import {
   registerCandidate01Presentation,
 } from '@empire/story-candidate-01/presentation';
 import {
+  browserBattleSaves,
   deleteCampaignState,
   deleteCustomLevel,
   GameController,
@@ -237,7 +238,11 @@ function findLevel(id: string): LevelData | null {
 
 function startGame(level: LevelData): void {
   active?.dispose();
-  const controller = new GameController(level, () => renderMenu(), { engine });
+  // One browser slot per level, so a battle can be put down and picked up.
+  const controller = new GameController(level, () => renderMenu(), {
+    engine,
+    saves: browserBattleSaves(level.id),
+  });
   active = controller;
   app.replaceChildren(controller.root);
 }

@@ -18,6 +18,7 @@ import {
 import { forecastCombatPlan } from './combat-plan';
 import { validateLevel } from './level/index';
 import { cloneState, createState, restoreState, type CreateStateOptions } from './state';
+import { createBattleSave, type BattleSave } from './battle-save';
 import type { ContentCatalog } from './content-pack';
 import { careerOptions } from './careers';
 import { activeTurnOrder, mayAct, type TurnOrderPolicy } from './turn-order';
@@ -85,6 +86,7 @@ export class BattleEngine {
       areaShapes: dependencies.areaShapes,
       directives: dependencies.directives,
       referenceChecks: dependencies.referenceChecks,
+      saves: dependencies.saves,
       resources: dependencies.resources,
       turnOrders: dependencies.turnOrders,
       reactions: dependencies.reactions,
@@ -145,6 +147,22 @@ export class BattleEngine {
 
   cloneState(state: GameState): GameState {
     return cloneState(state);
+  }
+
+  /** Everything needed to resume this battle later, as a plain document. */
+  saveBattle(state: GameState, savedAt?: string): BattleSave {
+    return createBattleSave(state, savedAt);
+  }
+
+  /**
+   * Rehydrates a battle onto this ruleset, or refuses it.
+   *
+   * The mirror of `createState`: a level is checked against the catalog and the
+   * composition before play, and so is a save — against the same reference
+   * checks, plus the content ids the battle has been played with since.
+   */
+  loadBattle(raw: unknown): GameState {
+    return this.rules.saves.load(raw, this.rules).state;
   }
 
   dispatch(state: GameState, action: Action): GameEvent[] {

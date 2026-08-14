@@ -107,3 +107,39 @@ describe('references a ruleset has to honour', () => {
     expect(() => engine().createState(heroic)).not.toThrow();
   });
 });
+
+/**
+ * The third document a ruleset is asked about.
+ *
+ * A level is linted before play and a catalog when the engine is composed, but a
+ * battle in progress names things neither of them did: a scenario effect hands
+ * out a standing order the document never mentioned, a unit changes stance, a
+ * career grants an ability. That state goes to disk and comes back months later
+ * against an engine whose plugins have moved on.
+ */
+describe('references a battle in progress makes', () => {
+  it('finds a name that only play created', () => {
+    const battle = engine();
+    const state = battle.createState(level());
+    expect(battle.rules.referenceChecks.stateIssues(battle.rules, state)).toEqual([]);
+
+    // Exactly how `setUnitDirective` would leave it, with a mode this ruleset
+    // has no handler for.
+    state.units[0].directive = { mode: 'test.forage', waypoints: [], cursor: 0 };
+    state.units[1].reaction = 'test.parry';
+    expect(battle.rules.referenceChecks.stateIssues(battle.rules, state)).toEqual([
+      expect.stringContaining('未注册的反应姿态「test.parry」'),
+      expect.stringContaining('未注册的常驻命令「test.forage」'),
+    ]);
+  });
+
+  it('looks wherever a unit can be standing', () => {
+    const battle = engine();
+    const state = battle.createState(level());
+    const passenger = { ...state.units[1], directive: { mode: 'test.hold', waypoints: [], cursor: 0 } };
+    state.embarkedUnits.push({ carrier: state.units[0].id, unit: passenger });
+
+    expect(battle.rules.referenceChecks.stateIssues(battle.rules, state))
+      .toContainEqual(expect.stringContaining('未注册的常驻命令「test.hold」'));
+  });
+});

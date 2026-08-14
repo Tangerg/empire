@@ -24,6 +24,7 @@ import { UnitDepartureHandlers } from '../unit-departure';
 import { WeaponAreaShapes } from '../weapon-area';
 import { UnitDirectives } from '../unit-directive';
 import { DefaultRuleReferenceChecks } from '../rule-references';
+import { DefaultBattleSaves } from '../battle-save';
 import { SplitMixRandom } from '../random';
 import {
   ContentPackInstaller,
@@ -82,6 +83,7 @@ export const TacticalRulesPlugin: EnginePlugin = {
     'areaShapes',
     'directives',
     'referenceChecks',
+    'saves',
   ],
   install: (context) => {
     const content = context.require('content');
@@ -98,6 +100,7 @@ export const TacticalRulesPlugin: EnginePlugin = {
     context.provide('areaShapes', WeaponAreaShapes.clone());
     context.provide('directives', UnitDirectives.clone());
     context.provide('referenceChecks', DefaultRuleReferenceChecks.clone());
+    context.provide('saves', DefaultBattleSaves.clone());
   },
 };
 
@@ -168,6 +171,7 @@ export function buildBattleEngine(capabilities: KernelCapabilities): BattleEngin
     areaShapes: capabilities.require('areaShapes'),
     directives: capabilities.require('directives'),
     referenceChecks: capabilities.require('referenceChecks'),
+    saves: capabilities.require('saves'),
     scenarioConditions: capabilities.require('scenarioConditions'),
     scenarioEffects: capabilities.require('scenarioEffects'),
     objectives: capabilities.require('objectives'),

@@ -1,6 +1,7 @@
 import { IllegalActionError } from './action-system';
 import type { AiOptions } from './ai';
 import type { BattleEngine } from './engine';
+import type { BattleSave } from './battle-save';
 import type { MoveField } from './movement';
 import { unitById } from './state';
 import type { Action, Coord, GameEvent, GameState, LevelData, PlayerId, Unit, WeaponId } from './types';
@@ -150,6 +151,29 @@ export class GameSession {
     this.fieldCache.clear();
     this.notify([]);
     return true;
+  }
+
+  /** The battle as a document, for a save slot. */
+  save(savedAt?: string): BattleSave {
+    return this.engine.saveBattle(this.state, savedAt);
+  }
+
+  /**
+   * Resumes a saved battle in place.
+   *
+   * The undo stack and the message log stay behind on purpose: they are what
+   * happened in *this* sitting, and a resumed battle has not had one yet. The
+   * refusal comes from the engine, so a save this ruleset cannot honour is
+   * reported before anything is replaced.
+   */
+  load(raw: unknown): void {
+    const resumed = this.engine.loadBattle(raw);
+    this.state = resumed;
+    this.undoStack = [];
+    this.log.length = 0;
+    this.stamp++;
+    this.fieldCache.clear();
+    this.notify([]);
   }
 
   restart(): void {

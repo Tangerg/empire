@@ -21,6 +21,7 @@ import type { UnitDepartureHandlerRegistry } from './unit-departure';
 import type { WeaponAreaShapeRegistry } from './weapon-area';
 import type { UnitDirectiveBehavior } from './unit-directive';
 import type { RuleReferenceCheckRegistry } from './rule-references';
+import type { BattleSaveMigrator } from './battle-save';
 import type { RandomSource } from './random';
 import { type ContentCatalog } from './content-pack';
 import type { Action, ActionKindMap, Direction, GameEvent, GameState } from './types';
@@ -54,8 +55,10 @@ export interface BattleRuleServices {
   readonly areaShapes: WeaponAreaShapeRegistry;
   /** Standing orders a unit's `directive.mode` may name. */
   readonly directives: ContentRegistry<UnitDirectiveBehavior>;
-  /** Which names in a catalog or a level this ruleset has to implement. */
+  /** Which names in a catalog, a level or a save this ruleset has to implement. */
   readonly referenceChecks: RuleReferenceCheckRegistry;
+  /** How a battle written to disk is read back: schema ladder plus refusals. */
+  readonly saves: BattleSaveMigrator;
 }
 
 export class ActionExecutionContext {

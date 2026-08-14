@@ -17,3 +17,4 @@ export * from './ui/html';
 export * from './ui/hud';
 export * from './application/level-storage';
 export * from './application/campaign-storage';
+export * from './application/battle-storage';

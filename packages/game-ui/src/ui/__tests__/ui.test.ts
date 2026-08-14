@@ -286,3 +286,75 @@ describe('initiative presentation', () => {
     c.dispose();
   });
 });
+
+/**
+ * Putting a battle down and picking it up.
+ *
+ * The slot is a port the shell supplies, so the controller shows the entry only
+ * when there is somewhere to keep a battle — the campaign shell passes none,
+ * because a campaign battle resumes through the campaign's own save.
+ */
+describe('a battle you can come back to', () => {
+  let host: HTMLElement;
+
+  const slot = () => {
+    let stored: string | null = null;
+    return {
+      write: (save: unknown) => { stored = JSON.stringify(save); },
+      read: () => (stored === null ? null : JSON.parse(stored) as unknown),
+      has: () => stored !== null,
+      forget: () => { stored = null; },
+      poison: () => { stored = JSON.stringify({ schema: 1, battle: { levelId: 'x' }, savedAt: '', state: { units: [] } }); },
+    };
+  };
+
+  const press = (root: Element, act: string) =>
+    (root.querySelector(`[data-act="${act}"]`) as HTMLButtonElement);
+
+  beforeEach(() => {
+    vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) =>
+      setTimeout(() => cb(performance.now()), 0) as unknown as number,
+    );
+    document.body.innerHTML = '<div id="app"></div>';
+    host = document.getElementById('app')!;
+  });
+
+  it('offers no slot when the shell keeps none', () => {
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE });
+    host.append(c.root);
+    expect(press(c.root, 'save')).toBeNull();
+    expect(press(c.root, 'resume')).toBeNull();
+    c.dispose();
+  });
+
+  it('saves the turn it is on and resumes into it', () => {
+    const saves = slot();
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE, saves });
+    host.append(c.root);
+
+    expect(press(c.root, 'resume').disabled).toBe(true);
+    press(c.root, 'save').click();
+    expect(saves.has()).toBe(true);
+    expect(c.root.querySelector('.panel')!.textContent).toContain('已保存第 1 回合的进度');
+
+    press(c.root, 'resume').click();
+    expect(c.root.querySelector('.panel')!.textContent).toContain('已读取第 1 回合的存档');
+    c.dispose();
+  });
+
+  it('reports a save this ruleset cannot honour instead of dying on it', () => {
+    const saves = slot();
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE, saves });
+    host.append(c.root);
+    // Save first, so the slot is offered, then replace what it holds with a
+    // battle this ruleset cannot run.
+    press(c.root, 'save').click();
+    saves.poison();
+
+    press(c.root, 'resume').click();
+    expect(c.root.querySelector('.panel')!.textContent).toContain('无法读取存档');
+    // The battle on screen is still the one being played.
+    expect(c.root.querySelectorAll('.layer-units > .unit').length).toBe(BUILTIN_LEVELS[0].units.length);
+    c.dispose();
+  });
+});

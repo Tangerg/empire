@@ -1,3 +1,4 @@
+import { SchemaMigrator, type SchemaMigration } from '@empire/battle-engine/save-schema';
 import { validateCampaignDefinition, validateCampaignState } from './aggregate';
 import type { CampaignDefinition, CampaignState } from './types';
 
@@ -29,34 +30,21 @@ export function createCampaignSave(
   };
 }
 
-type SaveMigration = (raw: Record<string, unknown>) => Record<string, unknown>;
-
-/** Explicit, sequential schema migration; no permissive best-effort loading. */
+/**
+ * Explicit, sequential schema migration, then the checks only a campaign can
+ * make: same story, same version, same content packs, and a state its own
+ * definition still recognises.
+ */
 export class CampaignSaveMigrator {
-  private readonly migrations = new Map<number, SaveMigration>();
+  private readonly ladder = new SchemaMigrator<CampaignSave>('campaign save', CAMPAIGN_SAVE_SCHEMA);
 
-  register(fromSchema: number, migrate: SaveMigration): this {
-    if (!Number.isInteger(fromSchema) || fromSchema < 0) throw new Error('migration schema must be non-negative');
-    if (this.migrations.has(fromSchema)) throw new Error(`save migration ${fromSchema} already registered`);
-    this.migrations.set(fromSchema, migrate);
+  register(fromSchema: number, migrate: SchemaMigration): this {
+    this.ladder.register(fromSchema, migrate);
     return this;
   }
 
   load(raw: unknown, definition: CampaignDefinition): CampaignSave {
-    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('campaign save must be an object');
-    let value = structuredClone(raw) as Record<string, unknown>;
-    let schema = Number(value.schema);
-    if (!Number.isInteger(schema) || schema < 0) throw new Error('campaign save has invalid schema');
-    while (schema < CAMPAIGN_SAVE_SCHEMA) {
-      const migrate = this.migrations.get(schema);
-      if (!migrate) throw new Error(`no campaign save migration from schema ${schema}`);
-      value = migrate(value);
-      const next = Number(value.schema);
-      if (!Number.isInteger(next) || next <= schema) throw new Error(`campaign save migration ${schema} did not advance schema`);
-      schema = next;
-    }
-    if (schema !== CAMPAIGN_SAVE_SCHEMA) throw new Error(`unsupported campaign save schema ${schema}`);
-    const save = value as unknown as CampaignSave;
+    const save = this.ladder.load(raw);
     this.validate(save, definition);
     return structuredClone(save);
   }

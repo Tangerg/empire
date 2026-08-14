@@ -44,6 +44,8 @@ export * from './victory';
 export * from './vision';
 export * from './random';
 export * from './replay';
+export * from './save-schema';
+export * from './battle-save';
 export * from './turn-order';
 export * from './reactions';
 export * from './unit-departure';

@@ -9,7 +9,7 @@ import type { WeaponAreaShapeRegistry } from './weapon-area';
 import type { UnitDirectiveBehavior } from './unit-directive';
 import type { ContentCatalog } from './content-pack';
 import { objectivesOf } from './level/declarations';
-import type { LevelData, Objective, ScenarioCondition } from './types';
+import type { GameState, LevelData, Objective, ScenarioCondition, ScenarioTrigger } from './types';
 
 /**
  * Everything a reference check may consult.
@@ -62,6 +62,17 @@ export interface RuleReferenceCheck {
   inContent?(content: ContentCatalog): Iterable<RuleReference>;
   /** References one level document makes. Checked when that level is loaded. */
   inLevel?(level: LevelData, rules: RuleReferenceRules): Iterable<RuleReference>;
+  /**
+   * References a battle *in progress* makes. Checked when a save is loaded.
+   *
+   * Not the same set as the level's: play changes these names. A scenario effect
+   * hands a unit a standing order the document never mentioned, a unit changes
+   * stance, a career grants an ability, a trigger fires a condition the level
+   * only declared. A save carries all of it into an engine whose plugins may
+   * have moved on since, and until this existed such a save failed as a registry
+   * lookup, mid-battle, from wherever the rule happened to run.
+   */
+  inState?(state: GameState, rules: RuleReferenceRules): Iterable<RuleReference>;
 }
 
 export class RuleReferenceCheckRegistry extends KeyedRegistry<string, RuleReferenceCheck> {
@@ -81,6 +92,11 @@ export class RuleReferenceCheckRegistry extends KeyedRegistry<string, RuleRefere
   /** What it fails to implement for one level written against it. */
   levelIssues(rules: RuleReferenceRules, level: LevelData): string[] {
     return this.issues(rules, (check) => check.inLevel?.(level, rules));
+  }
+
+  /** What it fails to implement for one battle already under way. */
+  stateIssues(rules: RuleReferenceRules, state: GameState): string[] {
+    return this.issues(rules, (check) => check.inState?.(state, rules));
   }
 
   clone(): RuleReferenceCheckRegistry {
@@ -106,8 +122,8 @@ export class RuleReferenceCheckRegistry extends KeyedRegistry<string, RuleRefere
   }
 }
 
-/** Every objective a level puts a player under, composites included. */
-function objectiveTree(level: LevelData, rules: RuleReferenceRules): Objective[] {
+/** Every objective in a tree, composites included. */
+function objectiveTree(roots: readonly Objective[], rules: RuleReferenceRules): Objective[] {
   const all: Objective[] = [];
   const visit = (objective: Objective): void => {
     all.push(objective);
@@ -116,24 +132,39 @@ function objectiveTree(level: LevelData, rules: RuleReferenceRules): Objective[]
     if (!rules.objectives.has(objective.type)) return;
     for (const child of rules.objectives.children(objective)) visit(child);
   };
-  for (const player of level.players) objectivesOf(level, player).forEach(visit);
+  roots.forEach(visit);
   return all;
 }
 
-/** Every condition a level's triggers evaluate, nested ones included. */
-function conditionTree(level: LevelData, rules: RuleReferenceRules): ScenarioCondition[] {
+/** Every condition a trigger list evaluates, nested ones included. */
+function conditionTree(
+  triggers: readonly ScenarioTrigger[],
+  rules: RuleReferenceRules,
+): ScenarioCondition[] {
   const all: ScenarioCondition[] = [];
   const visit = (condition: ScenarioCondition): void => {
     all.push(condition);
     if (!rules.scenarioConditions.has(condition.type)) return;
     for (const child of rules.scenarioConditions.children(condition)) visit(child);
   };
-  for (const trigger of level.scenario?.triggers ?? []) visit(trigger.condition);
+  for (const trigger of triggers) visit(trigger.condition);
   return all;
 }
 
 const levelUnits = (level: LevelData) =>
   level.units.map((unit) => ({ unit, by: `单位 ${unit.key ?? unit.unit}` }));
+
+/**
+ * Units a battle holds, wherever they are standing — on the field, inside a
+ * carrier, or lying under a marker waiting to be raised.
+ */
+const stateUnits = (state: GameState) => [
+  ...state.units.map((unit) => ({ unit, by: `单位 ${unit.key ?? unit.id}` })),
+  ...state.embarkedUnits.map((entry) => ({ unit: entry.unit, by: `载具乘员 ${entry.unit.key ?? entry.unit.id}` })),
+  ...state.markers.flatMap((marker) => marker.fallenUnit
+    ? [{ unit: marker.fallenUnit, by: `离场单位 ${marker.fallenUnit.key ?? marker.id}` }]
+    : []),
+];
 
 export const DefaultRuleReferenceChecks = new RuleReferenceCheckRegistry()
   .register({
@@ -148,6 +179,8 @@ export const DefaultRuleReferenceChecks = new RuleReferenceCheckRegistry()
     ],
     inLevel: (level) => levelUnits(level).flatMap(({ unit, by }) =>
       (unit.learnedAbilities ?? []).map((name) => ({ by, name }))),
+    inState: (state) => stateUnits(state).flatMap(({ unit, by }) =>
+      unit.learnedAbilities.map((name) => ({ by, name }))),
   })
   .register({
     id: 'hitEffects',
@@ -171,6 +204,7 @@ export const DefaultRuleReferenceChecks = new RuleReferenceCheckRegistry()
       ({ by: `兵种 ${unit.id}`, name: unit.defaultReaction })),
     inLevel: (level) => levelUnits(level).flatMap(({ unit, by }) =>
       unit.reaction ? [{ by, name: unit.reaction }] : []),
+    inState: (state) => stateUnits(state).map(({ unit, by }) => ({ by, name: unit.reaction })),
   })
   .register({
     id: 'directives',
@@ -184,6 +218,7 @@ export const DefaultRuleReferenceChecks = new RuleReferenceCheckRegistry()
           ? [{ by: `触发器 ${trigger.id}`, name: effect.directive.mode }]
           : [])),
     ],
+    inState: (state) => stateUnits(state).map(({ unit, by }) => ({ by, name: unit.directive.mode })),
   })
   .register({
     id: 'turnOrders',
@@ -192,25 +227,34 @@ export const DefaultRuleReferenceChecks = new RuleReferenceCheckRegistry()
     inLevel: (level) => level.rules?.turnOrder
       ? [{ by: '关卡规则', name: level.rules.turnOrder }]
       : [],
+    inState: (state) => [{ by: '行动顺序', name: state.turnOrder.policy }],
   })
   .register({
     id: 'objectives',
     subject: '目标类型',
     known: (rules) => rules.objectives.keys(),
-    inLevel: (level, rules) => objectiveTree(level, rules).map((objective) =>
-      ({ by: `作战目标`, name: objective.type })),
+    inLevel: (level, rules) => objectiveTree(
+      level.players.flatMap((player) => objectivesOf(level, player)), rules,
+    ).map((objective) => ({ by: `作战目标`, name: objective.type })),
+    inState: (state, rules) => objectiveTree(
+      state.players.flatMap((player) => player.objectives), rules,
+    ).map((objective) => ({ by: `作战目标`, name: objective.type })),
   })
   .register({
     id: 'scenarioConditions',
     subject: '场景条件',
     known: (rules) => rules.scenarioConditions.keys(),
-    inLevel: (level, rules) => conditionTree(level, rules).map((condition) =>
-      ({ by: '触发条件', name: condition.type })),
+    inLevel: (level, rules) => conditionTree(level.scenario?.triggers ?? [], rules)
+      .map((condition) => ({ by: '触发条件', name: condition.type })),
+    inState: (state, rules) => conditionTree(state.scenario.triggers, rules)
+      .map((condition) => ({ by: '触发条件', name: condition.type })),
   })
   .register({
     id: 'scenarioEffects',
     subject: '场景效果',
     known: (rules) => rules.scenarioEffects.keys(),
     inLevel: (level) => (level.scenario?.triggers ?? []).flatMap((trigger) =>
+      trigger.effects.map((effect) => ({ by: `触发器 ${trigger.id}`, name: effect.type }))),
+    inState: (state) => state.scenario.triggers.flatMap((trigger) =>
       trigger.effects.map((effect) => ({ by: `触发器 ${trigger.id}`, name: effect.type }))),
   });
