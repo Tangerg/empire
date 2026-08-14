@@ -119,13 +119,7 @@ export function changeCareer(
   const owner = player(state, unit.owner);
   const subject = playerResource(owner);
   const spent = resources.spendAll(career.costs, subject);
-  for (const cost of spent) {
-    const current = resources.balance(cost.resource, subject);
-    if (current !== null) {
-      emit({ type: 'resourceChanged', resource: cost.resource,
-        subject: { kind: 'player', id: owner.id }, amount: -cost.amount, current });
-    }
-  }
+  for (const cost of spent) resources.announce(subject, cost.resource, -cost.amount, emit);
 
   const from = unit.career.current;
   const hpRatio = unit.hp / content.units.get(unit.type).maxHp;

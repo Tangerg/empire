@@ -83,16 +83,7 @@ export function changeUnitResource(
   const amount = requested > 0
     ? resources.credit(resource, subject, requested)
     : -resources.spend(resource, subject, Math.min(-requested, balance ?? 0));
-  const current = resources.balance(resource, subject);
-  if (amount !== 0 && current !== null) {
-    emit({
-      type: 'resourceChanged',
-      resource,
-      subject: { kind: 'unit', id: unit.id },
-      amount,
-      current,
-    });
-  }
+  resources.announce(subject, resource, amount, emit);
 }
 
 /**

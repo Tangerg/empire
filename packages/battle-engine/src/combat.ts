@@ -12,7 +12,6 @@ import type { Coord, GameEvent, GameState, PlayerState, ReactionStance, Structur
 import {
   type BattleResourceSystem,
   canAffordTransactions,
-  transactionSubject,
 } from './resources';
 import type { ContentCatalog } from './content-pack';
 import { reactionOf, type ReactionBehavior, type ReactionRules } from './reactions';
@@ -221,22 +220,9 @@ export function consumeWeapon(
   const weapon = requireReadyWeapon(rules, unit, id, owner);
   const transactionContext = { player: owner, unit, weapon: weapon.id };
   for (const cost of weapon.resourceCosts) {
-    const subject = transactionSubject(cost, transactionContext);
+    const subject = rules.resources.subjectFor(transactionContext, cost);
     const amount = rules.resources.spend(cost.resource, subject, cost.amount);
-    const current = rules.resources.balance(cost.resource, subject);
-    if (current === null) continue;
-    const eventSubject = subject.kind === 'player'
-      ? { kind: 'player' as const, id: subject.player.id }
-      : subject.kind === 'unit'
-        ? { kind: 'unit' as const, id: subject.unit.id }
-        : { kind: 'weapon' as const, unit: subject.unit.id, weapon: subject.weapon };
-    emit({
-      type: 'resourceChanged',
-      resource: cost.resource,
-      subject: eventSubject,
-      amount: -amount,
-      current,
-    });
+    rules.resources.announce(subject, cost.resource, -amount, emit);
   }
   new UnitEntity(unit).commitWeaponCooldown(weapon);
 }

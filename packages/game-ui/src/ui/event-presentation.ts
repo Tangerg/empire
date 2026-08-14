@@ -1,6 +1,6 @@
 import { KeyedRegistry } from '@empire/battle-engine';
 import type { ContentCatalog } from '@empire/battle-engine/content-pack';
-import type { Coord, GameEvent, GameEventKindMap, GameState, StructureState, Unit } from '@empire/battle-engine/types';
+import type { Coord, GameEvent, GameEventKindMap, GameState, ResourceSubjectRef, StructureState, Unit } from '@empire/battle-engine/types';
 import type { GameSession } from '@empire/battle-engine/session';
 import type { BoardView } from './board';
 
@@ -144,6 +144,24 @@ const RESOURCE_NAMES: Record<string, string> = {
   momentum: '气势',
 };
 
+/**
+ * Who a resource line is about. Open, like the holder family it reads: a
+ * plugin's own holder reads as its id rather than crashing the line.
+ */
+const RESOURCE_HOLDER_NAME: Record<
+  string,
+  (context: Pick<BattleLogContext, 'unitName' | 'playerName'>, ref: ResourceSubjectRef) => string
+> = {
+  player: ({ playerName }, ref) => playerName(Number(ref.id)),
+  unit: ({ unitName }, ref) => unitName(Number(ref.id)),
+  weapon: ({ unitName }, ref) => unitName(Number(ref.id)),
+};
+
+const holderName = (
+  context: Pick<BattleLogContext, 'unitName' | 'playerName'>,
+  ref: ResourceSubjectRef,
+): string => RESOURCE_HOLDER_NAME[ref.kind]?.(context, ref) ?? String(ref.id);
+
 export const DefaultBattleEventPresenters = new BattleEventPresenterRegistry()
   .register(presenter({
     type: 'attack',
@@ -277,12 +295,7 @@ export const DefaultBattleEventPresenters = new BattleEventPresenterRegistry()
     type: 'resourceChanged',
     describe: ({ unitName, playerName }, event) => {
       const resource = RESOURCE_NAMES[event.resource] ?? event.resource;
-      const subject = event.subject.kind === 'player'
-        ? playerName(event.subject.id)
-        : event.subject.kind === 'unit'
-          ? unitName(event.subject.id)
-          : unitName(event.subject.unit);
-      return `${subject} ${resource} ${event.amount >= 0 ? '+' : ''}${event.amount}（${event.current}）`;
+      return `${holderName({ playerName, unitName }, event.subject)} ${resource} ${event.amount >= 0 ? '+' : ''}${event.amount}（${event.current}）`;
     },
   }))
   .register(presenter({

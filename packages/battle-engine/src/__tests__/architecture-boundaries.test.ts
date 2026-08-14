@@ -405,6 +405,23 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('names a resource holder in exactly one place', () => {
+    // Who can hold an account was stated six times: an open kind map, a closed
+    // union on the transaction, a three-way `switch` that built one, a closed
+    // union on the event, a ternary that filled that union in, and a third
+    // ternary in the battle log. Only the first was open, so a plugin could
+    // declare a holder no cost could charge and no line could mention. Writing
+    // `kind: 'player'` outside the resolvers is how the sixth copy starts.
+    const allowed = ['resources.ts', 'types.ts'];
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const name = relative(coreRoot, file);
+      if (allowed.includes(name)) return [];
+      return /kind:\s*'(?:player|unit|weapon)'/.test(readFileSync(file, 'utf8')) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('strikes one blow between two units in exactly one place', () => {
     // The volley, the riposte and the ally's covering shot are one act, and
     // they were written out three times: report the blow, teach the striker,

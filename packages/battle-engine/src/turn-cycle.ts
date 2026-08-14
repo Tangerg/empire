@@ -166,16 +166,7 @@ export class BattleLifecycle {
     for (const grant of turnResourceGrantsFor(this.state, owner, this.rules.content)) {
       if (!this.rules.resources.hasAccount(grant.resource, subject)) continue;
       const amount = this.rules.resources.credit(grant.resource, subject, grant.amount);
-      const current = this.rules.resources.balance(grant.resource, subject);
-      if (amount > 0 && current !== null) {
-        this.emit({
-          type: 'resourceChanged',
-          resource: grant.resource,
-          subject: { kind: 'player', id: owner },
-          amount,
-          current,
-        });
-      }
+      this.rules.resources.announce(subject, grant.resource, amount, this.emit);
     }
   }
 

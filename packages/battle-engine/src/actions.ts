@@ -336,18 +336,8 @@ class RecruitActionHandler implements ActionHandler<'recruit'> {
       context.fail(`单位数量已达上限 ${cap}`);
     }
 
-    const spent = context.rules.resources.spendAll(definition.recruitCosts, resourceOwner);
-    for (const cost of spent) {
-      const current = context.rules.resources.balance(cost.resource, resourceOwner);
-      if (current !== null) {
-        context.emit({
-          type: 'resourceChanged',
-          resource: cost.resource,
-          subject: { kind: 'player', id: owner.id },
-          amount: -cost.amount,
-          current,
-        });
-      }
+    for (const cost of context.rules.resources.spendAll(definition.recruitCosts, resourceOwner)) {
+      context.rules.resources.announce(resourceOwner, cost.resource, -cost.amount, context.emit);
     }
     const unit = spawnUnit(context.rules.content, state, action.unit, owner.id, action.at, {
       done: !state.rules.recruitsActImmediately,

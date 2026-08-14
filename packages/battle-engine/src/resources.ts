@@ -1,7 +1,12 @@
 import type {
+  GameEvent,
   PlayerState,
   ResourceAmount,
   ResourceId,
+  ResourceSubject,
+  ResourceSubjectKind,
+  ResourceSubjectKindMap,
+  ResourceSubjectRef,
   ResourceTransaction,
   Unit,
   WeaponId,
@@ -9,15 +14,7 @@ import type {
 import { DomainInvariantError } from './domain/errors';
 import { KeyedRegistry } from './registry';
 
-/** Open subject family; plugins may declaration-merge additional holder kinds. */
-export interface ResourceSubjectKindMap {
-  player: { kind: 'player'; player: PlayerState };
-  unit: { kind: 'unit'; unit: Unit };
-  weapon: { kind: 'weapon'; unit: Unit; weapon: WeaponId };
-}
-
-export type ResourceSubject = ResourceSubjectKindMap[keyof ResourceSubjectKindMap];
-export type ResourceSubjectKind = ResourceSubject['kind'];
+export type { ResourceSubject, ResourceSubjectKind, ResourceSubjectKindMap, ResourceSubjectRef };
 
 export interface ResourceSnapshot {
   /** null means the account is unlimited. */
@@ -65,12 +62,110 @@ export class ResourceAdapterRegistry extends KeyedRegistry<ResourceId, ResourceA
   }
 }
 
+/** What a caller has to hand when a transaction has to name its holder. */
+export interface ResourceTransactionContext {
+  player?: PlayerState;
+  unit: Unit;
+  weapon: WeaponId;
+}
+
+/**
+ * One holder kind, and the two things every part of the engine asks about it:
+ * build one from what the caller has, and name one in a log line.
+ *
+ * The family is open, but both questions used to be answered by closed lists —
+ * a three-way `switch` here, a three-branch ternary in the weapon-cost path,
+ * another in the battle log — so a plugin could declare a holder that no cost
+ * could charge and no line could mention.
+ */
+export interface ResourceSubjectResolver<K extends ResourceSubjectKind = ResourceSubjectKind> {
+  readonly kind: K;
+  /** Builds the holder, or refuses when the context does not carry it. */
+  subjectFor(context: ResourceTransactionContext, transaction: ResourceTransaction): ResourceSubjectKindMap[K];
+  /** Projects it to ids, for events that outlive the objects they mention. */
+  ref(subject: ResourceSubjectKindMap[K]): ResourceSubjectRef;
+}
+
+export class ResourceSubjectResolverRegistry extends KeyedRegistry<ResourceSubjectKind, ResourceSubjectResolver> {
+  constructor() {
+    super('resource subject');
+  }
+
+  protected keyOf(resolver: ResourceSubjectResolver): ResourceSubjectKind {
+    return resolver.kind;
+  }
+
+  override register<K extends ResourceSubjectKind>(resolver: ResourceSubjectResolver<K>): this {
+    return super.register(resolver as ResourceSubjectResolver);
+  }
+
+  override replace<K extends ResourceSubjectKind>(resolver: ResourceSubjectResolver<K>): this {
+    return super.replace(resolver as ResourceSubjectResolver);
+  }
+
+  clone(): ResourceSubjectResolverRegistry {
+    return this.copyInto(new ResourceSubjectResolverRegistry());
+  }
+}
+
+export const DefaultResourceSubjects = new ResourceSubjectResolverRegistry()
+  .register<'player'>({
+    kind: 'player',
+    subjectFor: (context, transaction) => {
+      if (!context.player) throw new Error(`resource "${transaction.resource}" requires a player context`);
+      return playerResource(context.player);
+    },
+    ref: ({ player }) => ({ kind: 'player', id: player.id }),
+  })
+  .register<'unit'>({
+    kind: 'unit',
+    subjectFor: (context) => unitResource(context.unit),
+    ref: ({ unit }) => ({ kind: 'unit', id: unit.id }),
+  })
+  .register<'weapon'>({
+    kind: 'weapon',
+    subjectFor: (context) => weaponResource(context.unit, context.weapon),
+    ref: ({ unit, weapon }) => ({ kind: 'weapon', id: unit.id, slot: weapon }),
+  });
+
 /**
  * Generic resource application service. It owns clamping and spending rules;
  * individual adapters only expose where one resource account is stored.
  */
 export class BattleResourceSystem {
-  constructor(readonly adapters: ResourceAdapterRegistry) {}
+  constructor(
+    readonly adapters: ResourceAdapterRegistry,
+    readonly subjects: ResourceSubjectResolverRegistry,
+  ) {}
+
+  /** The holder a transaction is charged to, given what the caller has. */
+  subjectFor(context: ResourceTransactionContext, transaction: ResourceTransaction): ResourceSubject {
+    return this.subjects.get(transaction.subject).subjectFor(context, transaction as never) as ResourceSubject;
+  }
+
+  /** The same holder as a log line carries it. */
+  refOf(subject: ResourceSubject): ResourceSubjectRef {
+    return this.subjects.get(subject.kind).ref(subject as never);
+  }
+
+  /**
+   * Announces a movement that has already happened.
+   *
+   * Six call sites read the new balance, decided whether it was worth saying,
+   * and assembled the same event by hand — including the holder, which each of
+   * them wrote out as a literal. Silent when nothing moved, or when the account
+   * is unlimited and has no number to report.
+   */
+  announce(
+    subject: ResourceSubject,
+    id: ResourceId,
+    amount: number,
+    emit: (event: GameEvent) => void,
+  ): void {
+    const current = this.balance(id, subject);
+    if (amount === 0 || current === null) return;
+    emit({ type: 'resourceChanged', resource: id, subject: this.refOf(subject), amount, current });
+  }
 
   hasAccount(id: ResourceId, subject: ResourceSubject): boolean {
     const adapter = this.adapters.get(id);
@@ -138,7 +233,7 @@ export class BattleResourceSystem {
   }
 
   clone(): BattleResourceSystem {
-    return new BattleResourceSystem(this.adapters.clone());
+    return new BattleResourceSystem(this.adapters.clone(), this.subjects.clone());
   }
 
   private requireAccount(
@@ -178,27 +273,6 @@ export const weaponResource = (
   weapon: WeaponId,
 ): ResourceSubjectKindMap['weapon'] => ({ kind: 'weapon', unit, weapon });
 
-export interface ResourceTransactionContext {
-  player?: PlayerState;
-  unit: Unit;
-  weapon: WeaponId;
-}
-
-export function transactionSubject(
-  transaction: ResourceTransaction,
-  context: ResourceTransactionContext,
-): ResourceSubject {
-  switch (transaction.subject) {
-    case 'player':
-      if (!context.player) throw new Error(`resource "${transaction.resource}" requires a player context`);
-      return playerResource(context.player);
-    case 'unit':
-      return unitResource(context.unit);
-    case 'weapon':
-      return weaponResource(context.unit, context.weapon);
-  }
-}
-
 export function canAffordTransactions(
   resources: BattleResourceSystem,
   transactions: readonly ResourceTransaction[],
@@ -212,7 +286,7 @@ export function canAffordTransactions(
     else totals.set(key, { transaction, amount: transaction.amount });
   }
   return [...totals.values()].every(({ transaction, amount }) => {
-    const subject = transactionSubject(transaction, context);
+    const subject = resources.subjectFor(context, transaction);
     return resources.hasAccount(transaction.resource, subject) &&
       resources.canSpend(transaction.resource, subject, amount);
   });
@@ -281,4 +355,4 @@ export const DefaultResourceAdapters = new ResourceAdapterRegistry()
   .register(momentumAdapter)
   .register(weaponUsesAdapter);
 
-export const DefaultBattleResources = new BattleResourceSystem(DefaultResourceAdapters);
+export const DefaultBattleResources = new BattleResourceSystem(DefaultResourceAdapters, DefaultResourceSubjects);

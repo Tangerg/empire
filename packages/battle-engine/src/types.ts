@@ -71,8 +71,37 @@ export interface ResourceAmount {
   amount: number;
 }
 
+/**
+ * Open family of resource holders: who can own an account.
+ *
+ * It lives here beside every other extension map, and for the same reason —
+ * so a plugin can declaration-merge a squad chest, a fleet's fuel or a city's
+ * stores, and have every part of the engine that names a holder name it too.
+ * The family used to be stated in six places, five of them closed lists.
+ */
+export interface ResourceSubjectKindMap {
+  player: { kind: 'player'; player: PlayerState };
+  unit: { kind: 'unit'; unit: Unit };
+  weapon: { kind: 'weapon'; unit: Unit; weapon: WeaponId };
+}
+
+export type ResourceSubjectKind = Extract<keyof ResourceSubjectKindMap, string>;
+export type ResourceSubject = ResourceSubjectKindMap[ResourceSubjectKind];
+
+/**
+ * A holder as a log line can carry it: ids, never object references.
+ *
+ * `slot` names the part of a holder that owns the account, when a holder has
+ * parts — which magazine of which unit.
+ */
+export interface ResourceSubjectRef {
+  kind: ResourceSubjectKind;
+  id: string | number;
+  slot?: string;
+}
+
 export interface ResourceTransaction extends ResourceAmount {
-  subject: 'player' | 'unit' | 'weapon';
+  subject: ResourceSubjectKind;
 }
 
 export interface MovementProfileDef {
@@ -1046,9 +1075,7 @@ export interface GameEventKindMap {
   resourceChanged: {
     type: 'resourceChanged';
     resource: ResourceId;
-    subject: { kind: 'player'; id: PlayerId } | { kind: 'unit'; id: number } | {
-      kind: 'weapon'; unit: number; weapon: WeaponId;
-    };
+    subject: ResourceSubjectRef;
     amount: number;
     current: number;
   };

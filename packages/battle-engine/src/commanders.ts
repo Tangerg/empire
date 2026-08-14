@@ -116,18 +116,7 @@ export function executeTactic(
   const resourceOwner = playerResource(owner);
   const spent = resources.spendAll(tactic.costs, resourceOwner);
   commander.usedTactics.push(tactic.id);
-  for (const cost of spent) {
-    const current = resources.balance(cost.resource, resourceOwner);
-    if (current !== null) {
-      emit({
-        type: 'resourceChanged',
-        resource: cost.resource,
-        subject: { kind: 'player', id: owner.id },
-        amount: -cost.amount,
-        current,
-      });
-    }
-  }
+  for (const cost of spent) resources.announce(resourceOwner, cost.resource, -cost.amount, emit);
   emit({ type: 'tacticUsed', commander: commander.id, tactic: tactic.id, target });
 
   const affected = state.units.filter(
@@ -161,17 +150,7 @@ export function refreshCommanderTurn(
   const resourceOwner = playerResource(owner);
   for (const [resource, requested] of grants) {
     if (!resources.hasAccount(resource, resourceOwner)) continue;
-    const amount = resources.credit(resource, resourceOwner, requested);
-    const current = resources.balance(resource, resourceOwner);
-    if (amount > 0 && current !== null) {
-      emit({
-        type: 'resourceChanged',
-        resource,
-        subject: { kind: 'player', id: owner.id },
-        amount,
-        current,
-      });
-    }
+    resources.announce(resourceOwner, resource, resources.credit(resource, resourceOwner, requested), emit);
   }
 }
 
