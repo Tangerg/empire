@@ -1,3 +1,5 @@
+import { TacticalGrids } from '@empire/battle-engine/tactical-grid';
+const SQUARE = TacticalGrids.get('square4');
 import { describe, expect, it } from 'vitest';
 import { candidate01Level } from '@empire/story-candidate-01/levels';
 import { mapFromLevel } from '@empire/battle-engine/level';
@@ -18,6 +20,7 @@ describe('battle presentation', () => {
     const presentation = battlePresentation('c01-01');
     const map = mapFromLevel(candidate01Level('c01-01'), TEST_CATALOG);
     const viewport = createSceneViewport(
+      SQUARE,
       map.width,
       map.height,
       32,

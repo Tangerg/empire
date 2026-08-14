@@ -1,5 +1,4 @@
-import { dist } from './grid';
-import { directionToward } from './spatial';
+import { boardOf, type Board } from './domain/board';
 import { combinedStatusModifiers } from './statuses';
 import { Battlefield } from './domain/battlefield';
 import { commanderAuraFor } from './commanders';
@@ -15,6 +14,7 @@ import {
 } from './resources';
 import type { ContentCatalog } from './content-pack';
 import { reactionOf, type ReactionBehavior, type ReactionRules } from './reactions';
+import type { GridRules } from './tactical-grid';
 
 export { MAX_MITIGATION } from './combat-modifiers';
 
@@ -25,12 +25,12 @@ export { MAX_MITIGATION } from './combat-modifiers';
  * capability set it needs, and the composition-level `BattleRuleServices`
  * satisfies it structurally without either side importing the other.
  */
-export interface WeaponRules {
+export interface WeaponRules extends GridRules {
   readonly content: ContentCatalog;
   readonly resources: BattleResourceSystem;
 }
 
-export interface CombatRules extends WeaponRules, ReactionRules {
+export interface CombatRules extends WeaponRules, ReactionRules, GridRules {
   readonly combatModifiers: CombatModifierPipeline;
 }
 
@@ -259,6 +259,8 @@ export function computeDamage(
   const base = weapon.power;
   const battlefield = new Battlefield(state, content);
   const result = rules.combatModifiers.evaluate(base, {
+    rules,
+    board: boardOf(rules, state),
     state,
     attacker,
     attackerAt,
@@ -291,7 +293,7 @@ export function forecastStructure(
   const weapon = requireReadyWeapon(rules, attacker, resolvedWeaponId, player(state, attacker.owner));
   const def = content.structures.get(structure.type);
   const statusAttackMultiplier = combinedStatusModifiers(attacker, content).attackMultiplier;
-  const commanderAttackMultiplier = commanderAuraFor(state, attacker).attackMultiplier;
+  const commanderAttackMultiplier = commanderAuraFor(rules, state, attacker).attackMultiplier;
   const strength = attackerStrength(content, attacker);
   const targetBonus = weaponTargetBonus(weapon, def.tags);
   const rawDamage = Math.max(
@@ -321,12 +323,12 @@ export function forecastStructure(
 }
 
 /** Can `unit`, standing at `from`, reach `target` with its weapon? */
-export function canReach(unit: Unit, from: Coord, target: Coord, content: ContentCatalog): boolean {
-  return canReachWithWeapon(primaryWeapon(unit, content), from, target);
+export function canReach(rules: CombatRules, state: GameState, unit: Unit, from: Coord, target: Coord): boolean {
+  return canReachWithWeapon(boardOf(rules, state), primaryWeapon(unit, rules.content), from, target);
 }
 
-export function canReachWithWeapon(weapon: WeaponDef, from: Coord, target: Coord): boolean {
-  const d = dist(from, target);
+export function canReachWithWeapon(board: Board, weapon: WeaponDef, from: Coord, target: Coord): boolean {
+  const d = board.distance(from, target);
   return d >= weapon.minRange && d <= weapon.maxRange;
 }
 
@@ -362,7 +364,7 @@ export function bestReactiveStrike(
       if (stance.conservesResources && (weapon.resourceCosts.length > 0 || weapon.cooldown > 0)) return false;
       return weapon.canCounter &&
         isWeaponReady(rules, reactor.unit, weapon, owner) &&
-        canReachWithWeapon(weapon, reactor.at, target.at);
+        canReachWithWeapon(boardOf(rules, state), weapon, reactor.at, target.at);
     })
     .map((weapon) => ({
       weapon,
@@ -377,7 +379,8 @@ export function bestReactiveStrike(
 }
 
 /** The ally that steps in front of this defender, if any stance offers to. */
-function interceptorFor(rules: ReactionRules, state: GameState, defender: Unit): Unit | null {
+function interceptorFor(rules: CombatRules, state: GameState, defender: Unit): Unit | null {
+  const board = boardOf(rules, state);
   return (
     state.units
       .filter(
@@ -386,7 +389,7 @@ function interceptorFor(rules: ReactionRules, state: GameState, defender: Unit):
           areAllies(state, candidate.owner, defender.owner) &&
           reactionOf(rules, candidate.reaction).intercepts &&
           new UnitEntity(candidate).canReact(state.turn) &&
-          dist(candidate, defender) === 1,
+          board.distance(candidate, defender) === 1,
       )
       .sort((a, b) => b.hp - a.hp || a.id - b.id)[0] ?? null
   );
@@ -452,7 +455,10 @@ export function forecast(
 
   if (!defenderDies && stance.retaliates && state.rules.counterAttack) {
     const counterSource: Unit = { ...defender, hp: defenderHpAfter };
-    const counterTarget: Unit = { ...attacker, facing: directionToward(attackFrom, defenderAt) };
+    const counterTarget: Unit = {
+      ...attacker,
+      facing: boardOf(rules, state).grid.toward(attackFrom, defenderAt),
+    };
     const candidate = bestReactiveStrike(
       rules,
       state,

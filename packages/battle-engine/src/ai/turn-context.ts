@@ -1,4 +1,5 @@
 import { Battlefield } from '../domain/battlefield';
+import { boardOf, type Board } from '../domain/board';
 import type { AiObjectiveAdvisorRegistry } from '../ai-objectives';
 import { PriorityRegistry } from '../registry';
 import type { Action, GameState, PlayerId, Unit } from '../types';
@@ -32,6 +33,7 @@ export class AiTurnContext {
   private agendaCache: AiAgenda | null = null;
   private threatCache: Map<number, number> | null = null;
   private battlefieldCache: Battlefield | null = null;
+  private boardCache: Board | null = null;
 
   constructor(
     readonly planning: AiPlanningDependencies,
@@ -70,6 +72,11 @@ export class AiTurnContext {
 
   get battlefield(): Battlefield {
     return this.battlefieldCache ??= new Battlefield(this.state, this.content);
+  }
+
+  /** The board under its tiling; every distance a plan measures uses it. */
+  get board(): Board {
+    return this.boardCache ??= boardOf(this.rules, this.state);
   }
 
   /**

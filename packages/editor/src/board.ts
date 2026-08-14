@@ -2,6 +2,7 @@ import { clear, fromMarkup, setAttrs, svg } from '@empire/game-ui/art/svg';
 import { PAL } from '@empire/game-ui/art/palette';
 import { battlefieldFeatureMarkup, battlefieldRenderKey } from '@empire/game-ui/art/battlefield-layer';
 import { TILE, terrainLayerMarkup } from '@empire/game-ui/art/terrain';
+import { squareLayout } from '@empire/game-ui/art/board-decorations';
 import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import { unitSpriteMarkup } from '@empire/game-ui/art/units';
 import { idx } from '@empire/battle-engine/grid';
@@ -133,7 +134,7 @@ export class EditorBoard {
       this.signature = sig;
       clear(this.layers.terrain);
       const colorOf = (id: number) => players.find((p) => p.id === id)?.color;
-      this.layers.terrain.append(fromMarkup(terrainLayerMarkup(this.content, map, colorOf)));
+      this.layers.terrain.append(fromMarkup(terrainLayerMarkup(squareLayout, this.content, map, colorOf)));
     }
 
     clear(this.layers.units);

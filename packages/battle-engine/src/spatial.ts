@@ -1,43 +1,41 @@
-import type { Coord, Direction, GameState, Unit } from './types';
-import { dist } from './grid';
+import type { Coord, GameState, Unit } from './types';
 export { edgeKey } from './grid';
 import { areAllies, unitAt } from './state';
+import type { Board } from './domain/board';
+import type { TacticalGrid } from './tactical-grid';
 
-export const DIRECTIONS: readonly Direction[] = ['north', 'east', 'south', 'west'];
-
-export const DIRECTION_VECTOR: Readonly<Record<Direction, Coord>> = {
-  north: { x: 0, y: -1 },
-  east: { x: 1, y: 0 },
-  south: { x: 0, y: 1 },
-  west: { x: -1, y: 0 },
-};
-
-export const oppositeDirection = (direction: Direction): Direction =>
-  ({ north: 'south', east: 'west', south: 'north', west: 'east' })[direction] as Direction;
-
-/** Cardinal direction from one coordinate toward another; dominant axis wins. */
-export function directionToward(from: Coord, to: Coord): Direction {
-  const dx = to.x - from.x;
-  const dy = to.y - from.y;
-  if (Math.abs(dx) > Math.abs(dy)) return dx >= 0 ? 'east' : 'west';
-  return dy >= 0 ? 'south' : 'north';
-}
-
+/**
+ * Which face of a unit an attack lands on.
+ *
+ * The direction set, the opposite of a direction and which way one cell lies
+ * from another all moved to the tiling: this module used to hold four names,
+ * four vectors and a dominant-axis rule, which is a four-directional board
+ * written into the flanking rules.
+ */
 export type RelativeAttackSide = 'front' | 'side' | 'back';
 
-export function relativeAttackSide(defender: Unit, attackerAt: Coord): RelativeAttackSide {
-  const incoming = directionToward(defender, attackerAt);
+export function relativeAttackSide(
+  grid: TacticalGrid,
+  defender: Unit,
+  attackerAt: Coord,
+): RelativeAttackSide {
+  const incoming = grid.toward(defender, attackerAt);
   if (incoming === defender.facing) return 'front';
-  if (incoming === oppositeDirection(defender.facing)) return 'back';
+  if (incoming === grid.opposite(defender.facing)) return 'back';
   return 'side';
 }
 
 /** A melee attacker flanks when an ally occupies the exact opposite adjacent cell. */
-export function hasOpposedFlanker(state: GameState, attacker: Unit, defender: Unit, attackerAt: Coord): boolean {
-  if (dist(attackerAt, defender) !== 1) return false;
-  const attackDirection = directionToward(defender, attackerAt);
-  const opposite = DIRECTION_VECTOR[oppositeDirection(attackDirection)];
-  const ally = unitAt(state, defender.x + opposite.x, defender.y + opposite.y);
+export function hasOpposedFlanker(
+  board: Board,
+  state: GameState,
+  attacker: Unit,
+  defender: Unit,
+  attackerAt: Coord,
+): boolean {
+  if (board.distance(attackerAt, defender) !== 1) return false;
+  const behind = board.grid.step(defender, board.grid.opposite(board.grid.toward(defender, attackerAt)));
+  const ally = unitAt(state, behind.x, behind.y);
   return Boolean(
     ally &&
     ally.id !== attacker.id &&

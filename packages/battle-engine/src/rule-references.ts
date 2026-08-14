@@ -7,6 +7,7 @@ import type { ReactionBehavior } from './reactions';
 import type { TurnOrderPolicy } from './turn-order';
 import type { WeaponAreaShapeRegistry } from './weapon-area';
 import type { UnitDirectiveBehavior } from './unit-directive';
+import type { GridRegistry } from './tactical-grid';
 import type { ContentCatalog } from './content-pack';
 import { objectivesOf } from './level/declarations';
 import type { GameState, LevelData, Objective, ScenarioCondition, ScenarioTrigger } from './types';
@@ -20,6 +21,7 @@ import type { GameState, LevelData, Objective, ScenarioCondition, ScenarioTrigge
  */
 export interface RuleReferenceRules {
   readonly content: ContentCatalog;
+  readonly grids: GridRegistry;
   readonly abilities: ContentRegistry<AbilityDef>;
   readonly hitEffects: WeaponHitEffectHandlerRegistry;
   readonly objectives: ObjectiveHandlerRegistry;
@@ -228,6 +230,13 @@ export const DefaultRuleReferenceChecks = new RuleReferenceCheckRegistry()
       ? [{ by: '关卡规则', name: level.rules.turnOrder }]
       : [],
     inState: (state) => [{ by: '行动顺序', name: state.turnOrder.policy }],
+  })
+  .register({
+    id: 'grids',
+    subject: '棋盘几何',
+    known: (rules) => rules.grids.ids(),
+    inLevel: (level) => level.rules?.grid ? [{ by: '关卡规则', name: level.rules.grid }] : [],
+    inState: (state) => [{ by: '棋盘', name: state.rules.grid }],
   })
   .register({
     id: 'objectives',

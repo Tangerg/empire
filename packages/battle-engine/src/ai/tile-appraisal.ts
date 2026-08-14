@@ -1,10 +1,11 @@
 import { Battlefield, type BattlefieldCell } from '../domain/battlefield';
-import { dist, idx } from '../grid';
+import type { Board } from '../domain/board';
+import { idx } from '../grid';
 import { enemyUnitsOf } from '../state';
 import type { ContentCatalog } from '../content-pack';
 import type { Coord, GameState, TerrainDef, Unit, UnitDef } from '../types';
 import type { AiAgenda } from './agenda';
-import { hpRatio, nearestDistance, preferredEngagementRange } from './measures';
+import { hpRatio, preferredEngagementRange } from './measures';
 import { directiveOf, directivePull, type UnitDirectiveRules } from '../unit-directive';
 import type { AiOptions } from './rules';
 
@@ -18,6 +19,8 @@ export interface TileAppraisalContext {
   readonly threat: Map<number, number>;
   readonly options: AiOptions;
   readonly battlefield: Battlefield;
+  /** The board under its tiling; every distance below is measured on it. */
+  readonly board: Board;
   readonly content: ContentCatalog;
 }
 
@@ -48,6 +51,10 @@ export class TileAppraisal {
     this.definition = content.units.get(unit.type);
     this.terrain = content.terrains.get(state.map.tiles[this.tile]);
     this.cell = context.battlefield.cell(at);
+  }
+
+  private get board(): Board {
+    return this.context.board;
   }
 
   get value(): number {
@@ -113,7 +120,7 @@ export class TileAppraisal {
     if (!this.canCapture || this.agenda.captureTargets.length === 0) return 0;
     let best = 0;
     for (const target of this.agenda.captureTargets) {
-      best = Math.max(best, (target.weight * 120) / (1 + dist(this.at, target.at)));
+      best = Math.max(best, (target.weight * 120) / (1 + this.board.distance(this.at, target.at)));
     }
     return best * (0.6 + 0.4 * this.aggression);
   }
@@ -124,7 +131,10 @@ export class TileAppraisal {
     for (const destination of this.agenda.mission.destinations) {
       if (destination.unitIds && !destination.unitIds.has(this.unit.id)) continue;
       if (destination.captureOnly && !this.canCapture) continue;
-      strongest = Math.max(strongest, destination.weight * 180 / (1 + dist(this.at, destination.at)));
+      strongest = Math.max(
+        strongest,
+        destination.weight * 180 / (1 + this.board.distance(this.at, destination.at)),
+      );
     }
     return strongest;
   }
@@ -137,7 +147,7 @@ export class TileAppraisal {
     for (const [protectedId, weight] of protectedUnits) {
       const charge = this.context.state.units.find((candidate) => candidate.id === protectedId);
       if (!charge) continue;
-      strongest = Math.max(strongest, weight * 100 / (1 + dist(this.at, charge)));
+      strongest = Math.max(strongest, weight * 100 / (1 + this.board.distance(this.at, charge)));
     }
     return strongest;
   }
@@ -145,7 +155,7 @@ export class TileAppraisal {
   /** Ranged units want to be near-but-not-adjacent; melee wants contact. */
   private engagementRange(): number {
     if (this.foes.length === 0) return 0;
-    const toNearestFoe = nearestDistance(this.at, this.foes.map((foe) => ({ x: foe.x, y: foe.y })));
+    const toNearestFoe = this.board.nearestDistance(this.at, this.foes.map((foe) => ({ x: foe.x, y: foe.y })));
     const ideal = preferredEngagementRange(this.unit, this.context.content);
     const wants = directiveOf(this.context.rules, this.unit).engagement;
     return -Math.abs(toNearestFoe - ideal) * 16 * (0.5 + this.aggression) * wants;
@@ -155,8 +165,8 @@ export class TileAppraisal {
   private coverFromNearestFoe(): number {
     if (this.foes.length === 0) return 0;
     const nearestFoe = this.foes.slice()
-      .sort((left, right) => dist(this.at, left) - dist(this.at, right))[0];
-    const facing = this.cell.directionalCoverFrom(nearestFoe);
+      .sort((left, right) => this.board.distance(this.at, left) - this.board.distance(this.at, right))[0];
+    const facing = this.cell.directionalCoverFrom(this.board.grid, nearestFoe);
     if (facing === 'full') return 36;
     if (facing === 'half') return 18;
     if (this.cell.cover === 'full') return 28;
@@ -166,16 +176,17 @@ export class TileAppraisal {
 
   private enemyKeepPull(): number {
     if (this.agenda.enemyHqs.length === 0) return 0;
-    return -nearestDistance(this.at, this.agenda.enemyHqs) * 8 * this.aggression;
+    return -this.board.nearestDistance(this.at, this.agenda.enemyHqs) * 8 * this.aggression;
   }
 
   /** Stay useful to our own keep, but only while it is actually threatened. */
   private homeDefencePull(): number {
     const myHqs = this.agenda.myHqs;
     if (myHqs.length === 0) return 0;
-    const threatened = myHqs.some((keep) => this.foes.some((foe) => dist(foe, keep) <= 5));
+    const threatened = myHqs.some((keep) =>
+      this.foes.some((foe) => this.board.distance(foe, keep) <= 5));
     if (!threatened) return 0;
-    return -nearestDistance(this.at, myHqs) * 14 * (1 - this.aggression * 0.5);
+    return -this.board.nearestDistance(this.at, myHqs) * 14 * (1 - this.aggression * 0.5);
   }
 
   /** Fear of the tile itself, discounted by armour and by how needed we are. */
@@ -201,7 +212,7 @@ export class TileAppraisal {
     if (!commander) return 0;
     const leader = state.units.find((candidate) => candidate.id === commander.unitId);
     if (!leader) return 0;
-    const distance = dist(this.at, leader);
+    const distance = this.board.distance(this.at, leader);
     return distance <= commander.radius ? 45 : -Math.max(0, distance - commander.radius) * 18;
   }
 }

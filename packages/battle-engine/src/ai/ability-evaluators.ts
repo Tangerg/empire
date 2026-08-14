@@ -1,7 +1,8 @@
 import { type CommandOption } from '../actions';
 import { forecastCombatPlan, type CombatPlan } from '../combat-plan';
 import { unitWeapons } from '../combat';
-import { dist, idx } from '../grid';
+import { idx } from '../grid';
+import type { Board } from '../domain/board';
 import { KeyedRegistry } from '../registry';
 import { areEnemies, unitAt } from '../state';
 import { structureAt } from '../structures';
@@ -22,6 +23,8 @@ export interface AbilityAiEvaluationContext {
   mission: AiMissionIntent;
   /** Ruleset used for legality and prediction; identical to execution's. */
   readonly rules: AiRules;
+  /** The board under its tiling, so an evaluator measures what the rules measure. */
+  readonly board: Board;
 }
 
 export interface AbilityAiEvaluator {
@@ -130,7 +133,7 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
     score += (context.mission.priorityUnits.get(foe.id) ?? 0) * 260;
     for (const [protectedId, weight] of context.mission.protectedUnits) {
       const protectedUnit = context.state.units.find((candidate) => candidate.id === protectedId);
-      if (protectedUnit) score += weight * 80 / (1 + dist(foe, protectedUnit));
+      if (protectedUnit) score += weight * 80 / (1 + context.board.distance(foe, protectedUnit));
     }
     return context.tileValue * 0.25 + score + collateralValue(context.state, plan, context.rules.content);
   }));

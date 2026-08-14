@@ -71,7 +71,7 @@ describe('campaign-grade battle primitives', () => {
       CoreActionHandlers,
       rules,
     );
-    expect(activeFormation(state, unit, rules.content)?.id).toBe('formation-defensive');
+    expect(activeFormation(rules, state, unit)?.id).toBe('formation-defensive');
     expect(events).toContainEqual({
       type: 'formationChanged', unit: unit.id, from: null, to: 'formation-defensive',
     });
@@ -106,7 +106,7 @@ describe('campaign-grade battle primitives', () => {
     }));
     const passenger = state.units[0];
     const carrier = state.units[1];
-    embarkUnit(rules.content, state, passenger.id, carrier.id, () => {});
+    embarkUnit(rules, state, passenger.id, carrier.id, () => {});
     const result = new BattleAggregate(state, rules.content).damageUnit(carrier.id, 999);
     expect(result.fall?.passengerMarkers).toHaveLength(1);
     expect(state.embarkedUnits).toHaveLength(0);

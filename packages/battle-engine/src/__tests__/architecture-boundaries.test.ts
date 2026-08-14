@@ -615,6 +615,43 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('measures the board through its tiling, never with a fixed metric', () => {
+    // Four-directional geometry used to be *assumed* in a dozen modules:
+    // Manhattan `dist` in fifteen files, four `NEIGHBOURS` vectors in the
+    // pathfinder, a diamond `ring` in five callers, four direction names and
+    // four vectors in the flanking rules, and `x * TILE` in the board and every
+    // decoration. None of it was wrong; all of it was unstated, which is why an
+    // eight-way or hex board was an engine rewrite rather than a level's choice.
+    // A hardcoded metric or direction vector outside the tilings is that
+    // assumption growing back.
+    const tells = [
+      /Math\.abs\([^)]*\.x - [^)]*\.x\) \+ Math\.abs\([^)]*\.y - [^)]*\.y\)/,
+      /\bNEIGHBOURS\b/,
+      /\{ x: 0, y: -1 \},\s*\{ x: 1, y: 0 \}/,
+      /'north'\s*\|\s*'east'/,
+    ];
+    const allowed = [
+      join('battle-engine', 'src', 'tactical-grid.ts'),
+      // Storage geometry, which is not the tiling's: `sharesEdge` answers whether
+      // two cells of the *file* touch, which is what defines a cliff edge.
+      join('battle-engine', 'src', 'grid.ts'),
+      // The editor draws the storage rectangle on purpose: a brush paints cells.
+      join('editor', 'src', 'board.ts'),
+    ];
+    const offenders = [
+      ...runtimeTypeScriptFiles(coreRoot),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'editor', 'src')),
+    ].flatMap((file) => {
+      const name = relative(packagesRoot, file);
+      if (allowed.includes(name)) return [];
+      const source = readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+      return tells.some((tell) => tell.test(source)) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('asks one question about the right to react', () => {
     // The same lesson as `mayAct`: a budget compared by hand at each site is a
     // budget that the next kind of reaction quietly gets a second copy of.

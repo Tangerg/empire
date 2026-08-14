@@ -118,7 +118,7 @@ describe('game controller', () => {
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
-    }, TEST_CATALOG);
+    }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'));
     board.fitWithin(540, 380);
     expect(Number.parseFloat(board.el.style.width)).toBeLessThanOrEqual(508);
     expect(Number.parseFloat(board.el.style.height)).toBeLessThanOrEqual(348);
@@ -132,7 +132,7 @@ describe('game controller', () => {
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
-    }, TEST_CATALOG);
+    }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'));
     board.render(emptyOverlay());
 
     const world = board.el.querySelector('.board-world')!;
@@ -356,5 +356,75 @@ describe('a battle you can come back to', () => {
     // The battle on screen is still the one being played.
     expect(c.root.querySelectorAll('.layer-units > .unit').length).toBe(BUILTIN_LEVELS[0].units.length);
     c.dispose();
+  });
+});
+
+/**
+ * A board drawn under another tiling.
+ *
+ * The picture has to follow the rules: if the engine says two cells are
+ * neighbours, the player has to be able to see it. Placement, hit-testing, the
+ * grid lines and the facing menu all come from the tiling now, so this checks
+ * the four of them on a hex board.
+ */
+describe('a hex board', () => {
+  let host: HTMLElement;
+
+  const hexLevel = () => ({
+    ...BUILTIN_LEVELS[0],
+    id: 'hex-test',
+    rules: { ...BUILTIN_LEVELS[0].rules, grid: 'hex' },
+  });
+
+  beforeEach(() => {
+    vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) =>
+      setTimeout(() => cb(performance.now()), 0) as unknown as number,
+    );
+    document.body.innerHTML = '<div id="app"></div>';
+    host = document.getElementById('app')!;
+  });
+
+  it('staggers its rows, clips its tiles and rules its own edges', () => {
+    const controller = new GameController(hexLevel(), () => {}, { engine: TEST_ENGINE });
+    host.append(controller.root);
+    const board = controller.root.querySelector('svg.board') as SVGSVGElement;
+
+    const tile = (x: number, y: number) =>
+      board.querySelector(`[data-tile="${x},${y}"]`)!.getAttribute('transform')!;
+    const xOf = (transform: string) => Number.parseFloat(transform.replace(/[^\d.,-]/g, '').split(',')[0]);
+
+    // An odd row sits half a cell to the right of the even row above it.
+    expect(xOf(tile(1, 1)) - xOf(tile(1, 0))).toBeCloseTo(TILE / 2, 1);
+    // And rows overlap vertically, or the hexes would not touch.
+    const yOf = (transform: string) => Number.parseFloat(transform.replace(/[^\d.,-]/g, '').split(',')[1]);
+    expect(yOf(tile(0, 1)) - yOf(tile(0, 0))).toBeLessThan(TILE);
+
+    // Square tile art clipped to the cell's own shape, and edges drawn per cell.
+    expect(board.querySelector('clipPath polygon')).toBeTruthy();
+    expect(board.querySelector('.layer-grid polygon')).toBeTruthy();
+    expect(board.querySelector('.layer-grid line')).toBeNull();
+    controller.dispose();
+  });
+
+  it('offers the six facings the tiling has, not four', () => {
+    const level = hexLevel();
+    const controller = new GameController(level, () => {}, { engine: TEST_ENGINE });
+    host.append(controller.root);
+    const board = controller.root.querySelector('svg.board') as SVGSVGElement;
+    // Scale 1, so a scene coordinate is a client coordinate.
+    stubLayout(board, board.viewBox.baseVal.width);
+
+    const mine = level.units.find((unit) => unit.owner === 1)!;
+    const centre = TEST_ENGINE.rules.grids.get('hex').center(mine);
+    board.dispatchEvent(new window.MouseEvent('pointerdown', {
+      bubbles: true, button: 0, clientX: centre.x * TILE, clientY: centre.y * TILE,
+    }));
+
+    const facings = [...controller.root.querySelectorAll('[data-act="facing"]')]
+      .map((button) => button.getAttribute('data-arg'));
+    expect(facings).toHaveLength(6);
+    expect(facings).toContain('hexNortheast');
+    expect(facings).not.toContain('north');
+    controller.dispose();
   });
 });

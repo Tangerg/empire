@@ -26,7 +26,7 @@ describe('holding ground', () => {
   it('is off unless the battle asks for it', () => {
     const state = battlefield([u(0, 0, 'knight', 1), u(3, 0, 'soldier', 2)], {});
     expect(controlRadius(TEST_CONTENT, state, state.units[1])).toBe(0);
-    expect(hostileControlZone(TEST_CONTENT, state, state.units[0]).size).toBe(0);
+    expect(hostileControlZone(TEST_RULES, state, state.units[0]).size).toBe(0);
     // Six movement and an open flank: the enemy is an obstacle to walk around.
     expect(stops(state).some((cell) => cell.x === 5)).toBe(true);
   });
@@ -52,9 +52,9 @@ describe('holding ground', () => {
     const state = battlefield([u(0, 0, 'knight', 1), u(4, 0, 'archer', 2)]);
 
     expect(controlRadius(content, state, state.units[1])).toBe(0);
-    expect(hostileControlZone(content, state, state.units[0]).size).toBe(0);
+    expect(hostileControlZone({ ...TEST_RULES, content }, state, state.units[0]).size).toBe(0);
 
-    const held = hostileControlZone(content, battlefield([u(0, 0, 'knight', 1), u(4, 0, 'soldier', 2)]), state.units[0]);
+    const held = hostileControlZone({ ...TEST_RULES, content }, battlefield([u(0, 0, 'knight', 1), u(4, 0, 'soldier', 2)]), state.units[0]);
     expect(held.has(idx(state.map, 2, 0))).toBe(true);
     expect(held.has(idx(state.map, 1, 0))).toBe(false);
   });

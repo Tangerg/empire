@@ -53,7 +53,14 @@ export type UnitRank = 0 | 1 | 2;
  * for.
  */
 export type ReactionStance = string;
-export type Direction = 'north' | 'east' | 'south' | 'west';
+/**
+ * Open for the same reason a reaction stance is: the tiling owns the set.
+ *
+ * A four-way board faces north/east/south/west, an eight-way board also faces
+ * the corners, and a hex board has no north at all. `TacticalGrid.directions`
+ * is the list; nothing else may assume its length or its members.
+ */
+export type Direction = string;
 export type CoverLevel = 'none' | 'half' | 'full';
 
 export type MoveCosts = Record<MovementClass, number | null>;
@@ -471,6 +478,12 @@ export interface RuleSet {
    * Empires side turns; 'initiative' gives Tactics Ogre / FFT per-unit ordering.
    */
   turnOrder: string;
+  /**
+   * Registered tiling id: 'square4' for the classic orthogonal board, 'square8'
+   * to let diagonals count as one step, 'hex' for six-neighbour cells. Storage
+   * stays rectangular either way — only adjacency, distance and the picture move.
+   */
+  grid: string;
   highGroundThreshold: number;
   highGroundDamageMultiplier: number;
   sideAttackMultiplier: number;
@@ -502,6 +515,7 @@ export const DEFAULT_RULES: RuleSet = {
   maxUnitsPerPlayer: null,
   recruitsActImmediately: false,
   turnOrder: 'side',
+  grid: 'square4',
   highGroundThreshold: 1,
   highGroundDamageMultiplier: 1.1,
   sideAttackMultiplier: 1.1,

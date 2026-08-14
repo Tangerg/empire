@@ -111,7 +111,7 @@ export class GameController {
         this.refresh();
       },
       onSecondary: () => this.cancel(),
-    }, this.session.content);
+    }, this.session.content, this.session.rules.space.board(this.session.state).grid);
 
     this.hud = new Hud({
       onCommand: (a) => void this.chooseCommand(a),
@@ -577,7 +577,8 @@ export class GameController {
     for (const cast of activeCasts(state)) {
       const weapon = this.session.content.weapons.get(cast.weapon);
       const remaining = new SpellCastEntity(cast).remainingAt(state.actorTurns);
-      for (const cell of this.session.rules.areaShapes.coverage(state.map, cast.origin, cast.target, weapon.area)) {
+      const board = this.session.rules.space.board(state);
+      for (const cell of this.session.rules.areaShapes.coverage(board, cast.origin, cast.target, weapon.area)) {
         o.incoming.set(idx(state.map, cell.x, cell.y), remaining);
       }
     }

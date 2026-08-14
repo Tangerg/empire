@@ -14,7 +14,8 @@ import {
 } from './combat';
 
 import { DomainInvariantError, UnitEntity } from './domain/index';
-import { dist, sameCoord } from './grid';
+import { sameCoord } from './grid';
+import { boardOf } from './domain/board';
 import { type WeaponAreaRules } from './weapon-area';
 import {
   awardCombatProgress,
@@ -121,18 +122,19 @@ function planSupportAttack(
   defenderHp: number,
 ): PlannedSupportAttack | null {
   const content = rules.content;
+  const board = boardOf(rules, state);
   const candidates = state.units
     .filter((candidate) =>
       candidate.id !== attacker.id &&
       areAllies(state, candidate.owner, attacker.owner) &&
       candidate.reaction === 'support' &&
       new UnitEntity(candidate).canReact(state.turn) &&
-      dist(candidate, attackerAt) === 1)
+      board.distance(candidate, attackerAt) === 1)
     .flatMap((supporter) => unitWeapons(supporter, content)
       .filter((weapon) =>
         weapon.canCounter &&
         isWeaponReady(rules, supporter, weapon, state.players.find((p) => p.id === supporter.owner)) &&
-        canReachWithWeapon(weapon, supporter, defender))
+        canReachWithWeapon(board, weapon, supporter, defender))
       .map((weapon) => ({
         supporter,
         weapon,
@@ -213,7 +215,7 @@ export function forecastCombatPlan(
   const primaryStructure = primaryStructureTarget
     ? forecastStructure(rules, state, attacker, primaryStructureTarget, { weapon: resolvedWeaponId })
     : null;
-  const affectedCells = rules.areaShapes.coverage(state.map, from, aimedAt, weapon.area);
+  const affectedCells = rules.areaShapes.coverage(boardOf(rules, state), from, aimedAt, weapon.area);
   const unitHits: PlannedUnitHit[] = [];
   const structureHits: PlannedStructureHit[] = [];
   const excludedUnits = new Set<number>();

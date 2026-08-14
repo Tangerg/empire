@@ -1,6 +1,8 @@
 import { IllegalActionError } from './domain/errors';
 import { Battlefield } from './domain/battlefield';
-import { dist, inBounds } from './grid';
+import { boardOf } from './domain/board';
+import type { GridRegistry } from './tactical-grid';
+import { inBounds } from './grid';
 import { areAllies, removeUnit, requireUnit, unitAtCoord } from './state';
 import type { ContentCatalog } from './content-pack';
 import type { BattlefieldMarker, Coord, GameEvent, GameState, Unit } from './types';
@@ -17,18 +19,27 @@ export function passengersOf(state: GameState, carrier: number): Unit[] {
   return state.embarkedUnits.filter((entry) => entry.carrier === carrier).map((entry) => entry.unit);
 }
 
+/** Port declared by this module; `BattleRuleServices` satisfies it. */
+export interface TransportRules {
+  readonly content: ContentCatalog;
+  readonly grids: GridRegistry;
+}
+
 export function embarkUnit(
-  content: ContentCatalog,
+  rules: TransportRules,
   state: GameState,
   unitId: number,
   carrierId: number,
   emit: (event: GameEvent) => void,
 ): void {
+  const content = rules.content;
   if (unitId === carrierId) throw new IllegalActionError('a transport cannot embark itself');
   const unit = requireUnit(state, unitId);
   const { carrier, profile } = transportProfile(state, carrierId, content);
   if (!areAllies(state, unit.owner, carrier.owner)) throw new IllegalActionError('transport and passenger are not allied');
-  if (dist(unit, carrier) !== 1) throw new IllegalActionError('passenger must be adjacent to transport');
+  if (boardOf(rules, state).distance(unit, carrier) !== 1) {
+    throw new IllegalActionError('passenger must be adjacent to transport');
+  }
   if (passengersOf(state, carrierId).length >= profile.capacity) throw new IllegalActionError('transport is full');
   if (content.units.get(unit.type).transport) throw new IllegalActionError('nested transports are not supported');
   const tags = content.units.get(unit.type).tags;
@@ -47,17 +58,20 @@ export function embarkUnit(
 }
 
 export function disembarkUnit(
-  content: ContentCatalog,
+  rules: TransportRules,
   state: GameState,
   carrierId: number,
   unitId: number,
   at: Coord,
   emit: (event: GameEvent) => void,
 ): void {
+  const content = rules.content;
   const { carrier } = transportProfile(state, carrierId, content);
   const index = state.embarkedUnits.findIndex((entry) => entry.carrier === carrierId && entry.unit.id === unitId);
   if (index < 0) throw new IllegalActionError(`unit ${unitId} is not aboard transport ${carrierId}`);
-  if (!inBounds(state.map, at.x, at.y) || dist(carrier, at) !== 1) throw new IllegalActionError('disembark cell must be adjacent');
+  if (!inBounds(state.map, at.x, at.y) || boardOf(rules, state).distance(carrier, at) !== 1) {
+    throw new IllegalActionError('disembark cell must be adjacent');
+  }
   if (unitAtCoord(state, at)) throw new IllegalActionError('disembark cell is occupied');
   const unit = state.embarkedUnits[index].unit;
   const movement = content.units.get(unit.type).movementClass;

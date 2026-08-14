@@ -1,6 +1,7 @@
-import { idx, inBounds, lineBetween, ring } from './grid';
+import type { Board } from './domain/board';
 import { KeyedRegistry } from './registry';
-import type { Coord, GameMap, WeaponArea } from './types';
+import type { Coord, WeaponArea } from './types';
+import type { GridRules } from './tactical-grid';
 
 /**
  * The tiles one strike covers, once its aim point is fixed.
@@ -19,8 +20,13 @@ export interface WeaponAreaShape {
    * which is the whole point of charge time.
    */
   readonly needsOccupant: boolean;
-  /** `from` matters to shapes that extend away from the attacker, like a line. */
-  cells(map: GameMap, from: Coord, aimedAt: Coord): Coord[];
+  /**
+   * `from` matters to shapes that extend away from the attacker, like a line.
+   *
+   * The board comes first because a shape is drawn *on* one: a cross on a hex
+   * board is six cells, not four, and the shape does not get to decide that.
+   */
+  cells(board: Board, from: Coord, aimedAt: Coord): Coord[];
 }
 
 export class WeaponAreaShapeRegistry extends KeyedRegistry<WeaponArea, WeaponAreaShape> {
@@ -33,10 +39,11 @@ export class WeaponAreaShapeRegistry extends KeyedRegistry<WeaponArea, WeaponAre
   }
 
   /** Deterministic cells affected, each tile once, in shape order. */
-  coverage(map: GameMap, from: Coord, aimedAt: Coord, area: WeaponArea): Coord[] {
+  coverage(board: Board, from: Coord, aimedAt: Coord, area: WeaponArea): Coord[] {
     const unique = new Map<number, Coord>();
-    for (const cell of this.get(area).cells(map, from, aimedAt)) {
-      unique.set(idx(map, cell.x, cell.y), cell);
+    for (const cell of this.get(area).cells(board, from, aimedAt)) {
+      if (!board.contains(cell)) continue;
+      unique.set(board.indexOf(cell), cell);
     }
     return [...unique.values()];
   }
@@ -50,23 +57,25 @@ export const WeaponAreaShapes = new WeaponAreaShapeRegistry()
   .register({
     id: 'single',
     needsOccupant: true,
-    cells: (_map, _from, aimedAt) => [{ ...aimedAt }],
+    cells: (_board, _from, aimedAt) => [{ ...aimedAt }],
   })
   .register({
     id: 'cross1',
     needsOccupant: false,
-    cells: (map, _from, aimedAt) => ring(map, aimedAt, 0, 1),
+    // Whatever "next to" means on this board: four cells, eight, or six.
+    cells: (board, _from, aimedAt) => board.ring(aimedAt, 0, 1),
   })
   .register({
     id: 'ring1',
     needsOccupant: false,
-    cells: (map, _from, aimedAt) => {
+    // Deliberately the storage square, not the tiling's ring: a nine-cell blast
+    // is a shape an author draws on the map, and it stays nine cells everywhere.
+    cells: (board, _from, aimedAt) => {
       const cells: Coord[] = [];
       for (let dy = -1; dy <= 1; dy++) {
         for (let dx = -1; dx <= 1; dx++) {
-          const x = aimedAt.x + dx;
-          const y = aimedAt.y + dy;
-          if (inBounds(map, x, y)) cells.push({ x, y });
+          const cell = { x: aimedAt.x + dx, y: aimedAt.y + dy };
+          if (board.contains(cell)) cells.push(cell);
         }
       }
       return cells;
@@ -76,10 +85,10 @@ export const WeaponAreaShapes = new WeaponAreaShapeRegistry()
     id: 'line',
     needsOccupant: false,
     // The attacker's own tile is not in its own blast.
-    cells: (_map, from, aimedAt) => lineBetween(from, aimedAt).slice(1),
+    cells: (board, from, aimedAt) => board.line(from, aimedAt).slice(1),
   });
 
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
-export interface WeaponAreaRules {
+export interface WeaponAreaRules extends GridRules {
   readonly areaShapes: WeaponAreaShapeRegistry;
 }

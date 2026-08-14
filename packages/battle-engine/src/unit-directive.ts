@@ -1,6 +1,8 @@
-import { dist, nearestDistance } from './grid';
+import type { Board } from './domain/board';
+import { boardOf, } from './domain/board';
 import { ContentRegistry } from './registry';
 import type { Coord, GameState, Unit, UnitDirectiveMode } from './types';
+import type { GridRules } from './tactical-grid';
 
 /**
  * A standing order, and what a unit under it wants.
@@ -23,6 +25,8 @@ export interface DirectiveSurvey {
   readonly at: Coord;
   /** Cells of the order's zone; empty when it names none, or names an empty one. */
   readonly zone: readonly Coord[];
+  /** The board under its tiling: how far the order's ground is, is a board question. */
+  readonly board: Board;
 }
 
 export interface UnitDirectiveBehavior {
@@ -38,7 +42,7 @@ export interface UnitDirectiveBehavior {
 }
 
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
-export interface UnitDirectiveRules {
+export interface UnitDirectiveRules extends GridRules {
   readonly directives: ContentRegistry<UnitDirectiveBehavior>;
 }
 
@@ -58,12 +62,12 @@ export function directivePull(
   at: Coord,
 ): number {
   const zone = unit.directive.zone ? state.scenario.zones[unit.directive.zone] ?? [] : [];
-  return directiveOf(rules, unit).pull({ state, unit, at, zone });
+  return directiveOf(rules, unit).pull({ state, unit, at, zone, board: boardOf(rules, state) });
 }
 
 /** Stand on the zone, or close on it hard. Extraction and patrol-by-area share this. */
-const holdZone = ({ at, zone }: DirectiveSurvey): number => {
-  const distance = nearestDistance(at, zone);
+const holdZone = ({ at, zone, board }: DirectiveSurvey): number => {
+  const distance = board.nearestDistance(at, zone);
   return distance === 0 ? 1_200 : -distance * 180;
 };
 
@@ -81,7 +85,7 @@ UnitDirectives.defineAll([
     id: 'guard',
     pull: (survey) => {
       if (survey.zone.length === 0) return 0;
-      const distance = nearestDistance(survey.at, survey.zone);
+      const distance = survey.board.nearestDistance(survey.at, survey.zone);
       return distance === 0 ? 260 : -distance * 55;
     },
     engagement: 1,
@@ -92,7 +96,7 @@ UnitDirectives.defineAll([
     pull: (survey) => {
       const { waypoints, cursor } = survey.unit.directive;
       if (waypoints.length > 0) {
-        return 320 / (1 + dist(survey.at, waypoints[cursor % waypoints.length]));
+        return 320 / (1 + survey.board.distance(survey.at, waypoints[cursor % waypoints.length]));
       }
       // A patrol with a zone and no waypoints paces the zone. Inherited from
       // the ladder's fall-through and kept deliberately: it is the only

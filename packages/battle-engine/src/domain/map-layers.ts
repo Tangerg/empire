@@ -1,4 +1,4 @@
-import { edgeKey, idx, inBounds } from '../grid';
+import { edgeKey, idx, inBounds, sharesEdge } from '../grid';
 import type {
   Coord,
   CoverLevel,
@@ -92,8 +92,7 @@ export class MapLayers {
 
   /** Only orthogonal neighbours share an edge, so only they can be cut. */
   isEdge(from: Coord, to: Coord): boolean {
-    return this.contains(from) && this.contains(to) &&
-      Math.abs(from.x - to.x) + Math.abs(from.y - to.y) === 1;
+    return this.contains(from) && this.contains(to) && sharesEdge(from, to);
   }
 
   isBlockedEdge(from: Coord, to: Coord): boolean {

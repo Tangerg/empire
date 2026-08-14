@@ -1,7 +1,9 @@
 import { commanderAuraFor } from './commanders';
 import { Battlefield } from './domain/battlefield';
+import type { Board } from './domain/board';
+import type { FormationRules } from './formations';
+import type { GridRules } from './tactical-grid';
 import { combinedStatusModifiers } from './statuses';
-import { dist } from './grid';
 import { hasOpposedFlanker, relativeAttackSide } from './spatial';
 import type { Coord, GameState, Unit, WeaponDef } from './types';
 import { type ContentCatalog } from './content-pack';
@@ -46,6 +48,8 @@ export interface CombatModifier {
 }
 
 export interface UnitDamageContext {
+  /** The ruleset this strike is resolved under, for whatever a provider needs. */
+  readonly rules: CombatModifierRules;
   state: GameState;
   attacker: Unit;
   attackerAt: Coord;
@@ -55,7 +59,20 @@ export interface UnitDamageContext {
   readonly content: ContentCatalog;
   /** Shared spatial projection for every provider in one damage evaluation. */
   readonly battlefield: Battlefield;
+  /**
+   * The board under its tiling, shared for the same reason.
+   *
+   * Six providers asked "are these two adjacent" and "which side is this attack
+   * coming from" through free functions that assumed a four-way board.
+   */
+  readonly board: Board;
 }
+
+/**
+ * What a provider may consult. Open by intent: a rule pack's own provider reads
+ * whatever the ruleset offers, and `BattleRuleServices` satisfies this.
+ */
+export interface CombatModifierRules extends FormationRules, GridRules {}
 
 export interface CombatModifierProvider {
   id: string;
@@ -222,14 +239,14 @@ const rankProvider: CombatModifierProvider = {
 const commanderProvider: CombatModifierProvider = {
   id: 'core.commander',
   priority: 500,
-  provide: ({ state, attacker }) => [
+  provide: ({ rules, state, attacker }) => [
     {
       id: 'commander.attack',
       label: '攻击方指挥光环',
       source: 'commander',
       stage: 'power',
       operation: 'multiply',
-      value: commanderAuraFor(state, attacker).attackMultiplier,
+      value: commanderAuraFor(rules, state, attacker).attackMultiplier,
     },
   ],
 };
@@ -237,8 +254,8 @@ const commanderProvider: CombatModifierProvider = {
 const formationProvider: CombatModifierProvider = {
   id: 'core.formation-attack',
   priority: 510,
-  provide: ({ state, attacker, content }) => {
-    const formation = activeFormation(state, attacker, content);
+  provide: ({ rules, state, attacker }) => {
+    const formation = activeFormation(rules, state, attacker);
     if (!formation || formation.attackMultiplier === 1) return [];
     return [{
       id: `formation.attack.${formation.id}`,
@@ -273,9 +290,10 @@ const elevationProvider: CombatModifierProvider = {
 const positionProvider: CombatModifierProvider = {
   id: 'core.position',
   priority: 530,
-  provide: ({ state, attacker, attackerAt, defender, weapon }) => {
-    if (dist(attackerAt, defender) !== 1 || (!weapon.tags.includes('melee') && weapon.maxRange > 1)) return [];
-    const side = relativeAttackSide(defender, attackerAt);
+  provide: ({ board, state, attacker, attackerAt, defender, weapon }) => {
+    if (board.distance(attackerAt, defender) !== 1 ||
+      (!weapon.tags.includes('melee') && weapon.maxRange > 1)) return [];
+    const side = relativeAttackSide(board.grid, defender, attackerAt);
     const modifiers: CombatModifier[] = [];
     if (side === 'back') {
       modifiers.push({
@@ -288,7 +306,7 @@ const positionProvider: CombatModifierProvider = {
         value: state.rules.sideAttackMultiplier,
       });
     }
-    if (hasOpposedFlanker(state, attacker, defender, attackerAt)) {
+    if (hasOpposedFlanker(board, state, attacker, defender, attackerAt)) {
       modifiers.push({
         id: 'position.flank', label: '夹击', source: 'position', stage: 'power', operation: 'multiply',
         value: state.rules.flankAttackMultiplier,
@@ -301,13 +319,13 @@ const positionProvider: CombatModifierProvider = {
 const coverProvider: CombatModifierProvider = {
   id: 'core.cover',
   priority: 590,
-  provide: ({ state, attackerAt, defenderAt, weapon, content, battlefield = new Battlefield(state, content) }) => {
-    if (dist(attackerAt, defenderAt) <= 1 || weapon.lineOfSight === 'arc' || weapon.tags.includes('ignores-cover')) return [];
+  provide: ({ board, state, attackerAt, defenderAt, weapon, content, battlefield = new Battlefield(state, content) }) => {
+    if (board.distance(attackerAt, defenderAt) <= 1 || weapon.lineOfSight === 'arc' ||
+      weapon.tags.includes('ignores-cover')) return [];
     const cell = battlefield.cell(defenderAt);
     const score = (level: 'none' | 'half' | 'full') => level === 'full' ? 2 : level === 'half' ? 1 : 0;
-    let level = score(cell.directionalCoverFrom(attackerAt)) > score(cell.cover)
-      ? cell.directionalCoverFrom(attackerAt)
-      : cell.cover;
+    const facing = cell.directionalCoverFrom(board.grid, attackerAt);
+    let level = score(facing) > score(cell.cover) ? facing : cell.cover;
     const elevationDelta = battlefield.cell(attackerAt).elevation - cell.elevation;
     if (elevationDelta >= state.rules.highGroundThreshold) {
       level = level === 'full' ? 'half' : 'none';
@@ -329,11 +347,11 @@ const coverProvider: CombatModifierProvider = {
 const defenseProvider: CombatModifierProvider = {
   id: 'core.defense',
   priority: 600,
-  provide: ({ state, defender, defenderAt, content, battlefield = new Battlefield(state, content) }) => {
+  provide: ({ rules, state, defender, defenderAt, content, battlefield = new Battlefield(state, content) }) => {
     const definition = content.units.get(defender.type);
     const status = combinedStatusModifiers(defender, content);
-    const command = commanderAuraFor(state, defender);
-    const formation = activeFormation(state, defender, content);
+    const command = commanderAuraFor(rules, state, defender);
+    const formation = activeFormation(rules, state, defender);
     const terrain = battlefield.cell(defenderAt).defense;
     const rankDefense = defender.rank * 0.02;
     const formationDefense = formation?.defenseDelta ?? 0;

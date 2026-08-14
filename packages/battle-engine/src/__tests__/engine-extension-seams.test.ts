@@ -8,7 +8,7 @@ import { createBattleEngine } from '../plugins/default';
 import { GameSession } from '../session';
 import { DefaultTacticalSpace } from '../tactical-space';
 import type { GameEventKindMap } from '../types';
-import { TEST_CONTENT, makeLevel, u } from './fixtures';
+import { TEST_CONTENT, TEST_RULES, makeLevel, u } from './fixtures';
 import { createTestCatalog } from '@empire/test-content';
 
 declare module '../types' {
@@ -77,7 +77,7 @@ describe('balanced engine extension seams', () => {
   });
 
   it('uses one spatial policy for menus and authoritative validation', () => {
-    const session = new GameSession(duel(), createBattleEngine({ content: TEST_CONTENT, space: new PacifistSpace(TEST_CONTENT) }));
+    const session = new GameSession(duel(), createBattleEngine({ content: TEST_CONTENT, space: new PacifistSpace(TEST_CONTENT, TEST_RULES.grids) }));
     const actor = session.state.units[0];
 
     expect(session.commandsAt(actor, actor).some((option) => option.ability === 'attack')).toBe(false);

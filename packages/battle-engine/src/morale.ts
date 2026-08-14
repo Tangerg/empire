@@ -1,4 +1,4 @@
-import { dist } from './grid';
+import { boardOf } from './domain/board';
 import { areAllies, removeUnit, requireUnit } from './state';
 import type { ContentCatalog } from './content-pack';
 import type { BattlefieldMarker, Coord, GameEvent, GameState, PlayerId, Unit } from './types';
@@ -106,7 +106,8 @@ export function mournFallen(
 ): void {
   if (!state.rules.moraleEnabled) return;
   const mourners = state.units.filter((unit) =>
-    areAllies(state, unit.owner, fallen.owner) && dist(unit, at) <= state.rules.moraleDefeatShockRadius);
+    areAllies(state, unit.owner, fallen.owner) &&
+    boardOf(rules, state).distance(unit, at) <= state.rules.moraleDefeatShockRadius);
   for (const mourner of mourners) {
     changeMorale(rules, state, mourner.id, -state.rules.moraleAllyDefeatLoss, 'ally-defeated', emit);
   }

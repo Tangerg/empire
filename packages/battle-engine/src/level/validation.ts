@@ -1,3 +1,4 @@
+import { sharesEdge } from '../grid';
 import { type ContentCatalog } from '../content-pack';
 import type {
   Coord,
@@ -88,7 +89,7 @@ const checkCliffs: LevelCheck = (inspection) => {
       inspection.error(`悬崖边越界：${edge}`);
       continue;
     }
-    if (Math.abs(cliff.from.x - cliff.to.x) + Math.abs(cliff.from.y - cliff.to.y) !== 1) {
+    if (!sharesEdge(cliff.from, cliff.to)) {
       inspection.error(`悬崖边必须连接相邻格：${edge}`);
     }
     const key = [`${cliff.from.x},${cliff.from.y}`, `${cliff.to.x},${cliff.to.y}`].sort().join('|');
@@ -556,7 +557,7 @@ function checkEffect(inspection: LevelInspection, effect: ScenarioEffect): void 
   if (effect.type === 'setCliffs') {
     for (const edge of effect.edges) {
       if (!inspection.inBounds(edge.from) || !inspection.inBounds(edge.to) ||
-        Math.abs(edge.from.x - edge.to.x) + Math.abs(edge.from.y - edge.to.y) !== 1) {
+        !sharesEdge(edge.from, edge.to)) {
         inspection.error(`动态悬崖边无效：${edge.from.x},${edge.from.y} -> ${edge.to.x},${edge.to.y}`);
       }
     }

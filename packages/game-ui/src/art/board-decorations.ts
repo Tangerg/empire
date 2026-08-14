@@ -12,6 +12,25 @@ export interface DecoratedCell {
 }
 
 /**
+ * Where the cells of this board are, in scene units.
+ *
+ * Decorations used to compute `x * TILE` themselves, which is a four-way square
+ * board written into the tactical overlay: on a hex board every one of them
+ * would have drawn in the wrong place. The layout comes from the tiling, so the
+ * grid lines, the move range and the cursor land wherever the cells actually are.
+ */
+export interface BoardLayout {
+  readonly tileSize: number;
+  /** Corners a cell has: four for squares, six for hexes. */
+  readonly corners: number;
+  /** Top-left of a cell's bounding box. */
+  origin(at: Coord): { x: number; y: number };
+  center(at: Coord): { x: number; y: number };
+  /** The cell's own outline as an SVG points list. */
+  outline(at: Coord): string;
+}
+
+/**
  * How a board draws the tactical layer over whatever art is underneath it.
  *
  * The board used to ask the presentation for its own id in six places to choose
@@ -25,44 +44,73 @@ export interface BoardDecorations {
   /** Crisp pixels suit a grid; painted scenes do not want them. */
   readonly shapeRendering: string;
   /** Drawn once with the map. Empty for art that already shows its own ground. */
-  gridLines(map: GameMap): string;
+  gridLines(layout: BoardLayout, map: GameMap): string;
   /** One tile of move range, threat, healing or a marked blast. */
-  actionSpot(cell: DecoratedCell): string;
+  actionSpot(layout: BoardLayout, cell: DecoratedCell): string;
   /** The march order, from tile centre to tile centre. */
-  movePath(points: readonly Coord[]): string;
-  ring(at: Coord, kind: 'selection' | 'cursor'): string;
+  movePath(layout: BoardLayout, points: readonly Coord[]): string;
+  ring(layout: BoardLayout, at: Coord, kind: 'selection' | 'cursor'): string;
 }
 
 const outlineOf = (stroke?: string): string =>
   stroke ? ` stroke="${stroke}" stroke-width="1" stroke-opacity="0.78"` : '';
 
-const centres = (points: readonly Coord[]): Coord[] =>
-  points.map((cell) => ({ x: cell.x * TILE + TILE / 2, y: cell.y * TILE + TILE / 2 }));
+const centres = (layout: BoardLayout, points: readonly Coord[]): Array<{ x: number; y: number }> =>
+  points.map((cell) => layout.center(cell));
+
+/** Every cell of the board, for a decoration that covers the whole field. */
+function* everyCell(map: GameMap): Generator<Coord> {
+  for (let y = 0; y < map.height; y++) {
+    for (let x = 0; x < map.width; x++) yield { x, y };
+  }
+}
 
 /** The default look: a legible grid of squares over flat terrain tiles. */
 export const SquareBoardDecorations: BoardDecorations = {
   id: 'square',
   shapeRendering: 'crispEdges',
-  gridLines: ({ width, height }) => {
+  gridLines: (layout, map) => {
+    // A four-cornered cell tiles into a lattice, which is two families of lines
+    // rather than one outline per cell. Anything else draws its own edges.
+    if (layout.corners !== 4) {
+      return [...everyCell(map)].map((cell) =>
+        `<polygon points="${layout.outline(cell)}" fill="none" stroke="${PAL.ink}" stroke-width="0.4" opacity="0.14"/>`,
+      ).join('');
+    }
     const parts: string[] = [];
-    for (let x = 1; x < width; x++) {
+    const size = layout.tileSize;
+    for (let x = 1; x < map.width; x++) {
       parts.push(
-        `<line x1="${x * TILE}" y1="0" x2="${x * TILE}" y2="${height * TILE}" stroke="${PAL.ink}" stroke-width="0.4" opacity="0.12"/>`,
+        `<line x1="${x * size}" y1="0" x2="${x * size}" y2="${map.height * size}" stroke="${PAL.ink}" stroke-width="0.4" opacity="0.12"/>`,
       );
     }
-    for (let y = 1; y < height; y++) {
+    for (let y = 1; y < map.height; y++) {
       parts.push(
-        `<line x1="0" y1="${y * TILE}" x2="${width * TILE}" y2="${y * TILE}" stroke="${PAL.ink}" stroke-width="0.4" opacity="0.12"/>`,
+        `<line x1="0" y1="${y * size}" x2="${map.width * size}" y2="${y * size}" stroke="${PAL.ink}" stroke-width="0.4" opacity="0.12"/>`,
       );
     }
     return parts.join('');
   },
-  actionSpot: ({ x, y, fill, opacity, stroke }) =>
-    `<rect x="${x * TILE + 2}" y="${y * TILE + 2}" width="${TILE - 4}" height="${TILE - 4}" rx="7" fill="${fill}" fill-opacity="${opacity}"${outlineOf(stroke)}/>`,
-  movePath: (points) => centres(points).map((point, index) => `${index === 0 ? 'M' : 'L'}${point.x} ${point.y}`).join(' '),
-  ring: (at, kind) => kind === 'selection'
-    ? `<rect x="${at.x * TILE + 1}" y="${at.y * TILE + 1}" width="${TILE - 2}" height="${TILE - 2}" fill="none" stroke="#ffffff" stroke-width="2" rx="3" opacity="0.95"/>`
-    : `<rect x="${at.x * TILE + 0.5}" y="${at.y * TILE + 0.5}" width="${TILE - 1}" height="${TILE - 1}" fill="none" stroke="${PAL.gold}" stroke-width="1.6" rx="2"/>`,
+  actionSpot: (layout, { x, y, fill, opacity, stroke }) => {
+    const origin = layout.origin({ x, y });
+    if (layout.corners !== 4) {
+      return `<polygon points="${layout.outline({ x, y })}" fill="${fill}" fill-opacity="${opacity}"${outlineOf(stroke)}/>`;
+    }
+    return `<rect x="${origin.x + 2}" y="${origin.y + 2}" width="${layout.tileSize - 4}" height="${layout.tileSize - 4}" rx="7" fill="${fill}" fill-opacity="${opacity}"${outlineOf(stroke)}/>`;
+  },
+  movePath: (layout, points) => centres(layout, points)
+    .map((point, index) => `${index === 0 ? 'M' : 'L'}${point.x} ${point.y}`).join(' '),
+  ring: (layout, at, kind) => {
+    if (layout.corners !== 4) {
+      const stroke = kind === 'selection' ? '#ffffff' : PAL.gold;
+      return `<polygon points="${layout.outline(at)}" fill="none" stroke="${stroke}" stroke-width="${kind === 'selection' ? 2 : 1.6}" opacity="0.95"/>`;
+    }
+    const origin = layout.origin(at);
+    const size = layout.tileSize;
+    return kind === 'selection'
+      ? `<rect x="${origin.x + 1}" y="${origin.y + 1}" width="${size - 2}" height="${size - 2}" fill="none" stroke="#ffffff" stroke-width="2" rx="3" opacity="0.95"/>`
+      : `<rect x="${origin.x + 0.5}" y="${origin.y + 0.5}" width="${size - 1}" height="${size - 1}" fill="none" stroke="${PAL.gold}" stroke-width="1.6" rx="2"/>`;
+  },
 };
 
 /**
@@ -74,19 +122,16 @@ export const SquareBoardDecorations: BoardDecorations = {
 export const GroundBoardDecorations: BoardDecorations = {
   id: 'ground',
   shapeRendering: 'geometricPrecision',
-  gridLines: ({ width, height }) => {
-    const parts: string[] = [];
-    for (let y = 0; y < height; y++) {
-      for (let x = 0; x < width; x++) {
-        parts.push(`<circle class="candidate-stand-node" cx="${x * TILE + TILE / 2}" cy="${y * TILE + TILE / 2}" r="2.2" fill="#fff4dc" opacity="0.32"/>`);
-      }
-    }
-    return parts.join('');
+  gridLines: (layout, map) => [...everyCell(map)].map((cell) => {
+    const centre = layout.center(cell);
+    return `<circle class="candidate-stand-node" cx="${centre.x}" cy="${centre.y}" r="2.2" fill="#fff4dc" opacity="0.32"/>`;
+  }).join(''),
+  actionSpot: (layout, { x, y, fill, opacity, stroke }) => {
+    const centre = layout.center({ x, y });
+    return `<ellipse class="candidate-action-spot" cx="${centre.x}" cy="${centre.y + layout.tileSize * 0.18}" rx="12.5" ry="7.5" fill="${fill}" fill-opacity="${Math.min(0.5, opacity * 1.35)}"${outlineOf(stroke)}/>`;
   },
-  actionSpot: ({ x, y, fill, opacity, stroke }) =>
-    `<ellipse class="candidate-action-spot" cx="${x * TILE + TILE / 2}" cy="${y * TILE + TILE * 0.68}" rx="12.5" ry="7.5" fill="${fill}" fill-opacity="${Math.min(0.5, opacity * 1.35)}"${outlineOf(stroke)}/>`,
-  movePath: (points) => {
-    const spots = centres(points);
+  movePath: (layout, points) => {
+    const spots = centres(layout, points);
     return spots.slice(0, -1).reduce((value, p1, index) => {
       const p0 = spots[Math.max(0, index - 1)];
       const p2 = spots[index + 1];
@@ -94,7 +139,24 @@ export const GroundBoardDecorations: BoardDecorations = {
       return `${value} C${(p1.x + (p2.x - p0.x) / 6).toFixed(1)} ${(p1.y + (p2.y - p0.y) / 6).toFixed(1)} ${(p2.x - (p3.x - p1.x) / 6).toFixed(1)} ${(p2.y - (p3.y - p1.y) / 6).toFixed(1)} ${p2.x} ${p2.y}`;
     }, `M${spots[0].x} ${spots[0].y}`);
   },
-  ring: (at, kind) => kind === 'selection'
-    ? `<ellipse class="candidate-selection-ring" cx="${at.x * TILE + TILE / 2}" cy="${at.y * TILE + 27}" rx="13" ry="5.5" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.96"/>`
-    : `<ellipse class="candidate-cursor-ring" cx="${at.x * TILE + TILE / 2}" cy="${at.y * TILE + 26}" rx="13.5" ry="6" fill="none" stroke="${PAL.gold}" stroke-width="1.8"/>`,
+  ring: (layout, at, kind) => {
+    const centre = layout.center(at);
+    return kind === 'selection'
+      ? `<ellipse class="candidate-selection-ring" cx="${centre.x}" cy="${centre.y + 11}" rx="13" ry="5.5" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.96"/>`
+      : `<ellipse class="candidate-cursor-ring" cx="${centre.x}" cy="${centre.y + 10}" rx="13.5" ry="6" fill="none" stroke="${PAL.gold}" stroke-width="1.8"/>`;
+  },
+};
+
+/** The layout a square board has always had, for a caller without a viewport. */
+export const squareLayout: BoardLayout = {
+  tileSize: TILE,
+  corners: 4,
+  origin: (at) => ({ x: at.x * TILE, y: at.y * TILE }),
+  center: (at) => ({ x: at.x * TILE + TILE / 2, y: at.y * TILE + TILE / 2 }),
+  outline: (at) => [
+    `${at.x * TILE},${at.y * TILE}`,
+    `${at.x * TILE + TILE},${at.y * TILE}`,
+    `${at.x * TILE + TILE},${at.y * TILE + TILE}`,
+    `${at.x * TILE},${at.y * TILE + TILE}`,
+  ].join(' '),
 };

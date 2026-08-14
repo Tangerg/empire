@@ -11,6 +11,7 @@ import type { WeaponHitEffectHandlerRegistry } from './hit-effects';
 import { awardRankProgress, type RankProgressionPolicy } from './progression';
 import { unitAbilityIds } from './careers';
 import { MapLayers } from './domain/map-layers';
+import type { GridRules } from './tactical-grid';
 import { ContentRegistry } from './registry';
 import { type ReactionBehavior } from './reactions';
 import { type UnitDepartureHandlerRegistry } from './unit-departure';
@@ -46,7 +47,7 @@ export interface AbilityQuery {
  * The ruleset that answers the question. Declared here as a consumer port; the
  * composition-level `BattleRuleServices` satisfies it structurally.
  */
-export interface AbilityRules extends WeaponAreaRules {
+export interface AbilityRules extends WeaponAreaRules, GridRules {
   readonly content: ContentCatalog;
   readonly resources: BattleResourceSystem;
   readonly combatModifiers: CombatModifierPipeline;

@@ -1,7 +1,8 @@
 import { IllegalActionError } from './domain/errors';
 import { UnitDepartureHandlers } from './unit-departure';
 import type { MoraleRules } from './morale';
-import { dist } from './grid';
+import { boardOf } from './domain/board';
+import type { GridRules } from './tactical-grid';
 import { addStatus, removeStatus } from './statuses';
 import { areAllies, player } from './state';
 import {
@@ -31,17 +32,17 @@ export function commanderUnit(state: GameState, commander: CommanderState): Unit
   return state.units.find((unit) => unit.id === commander.unitId);
 }
 
-export function activeCommanderFor(state: GameState, unit: Unit): CommanderState | null {
+export function activeCommanderFor(rules: GridRules, state: GameState, unit: Unit): CommanderState | null {
   if (!unit.commanderId) return null;
   const commander = state.commanders.find((candidate) => candidate.id === unit.commanderId);
   if (!commander || commander.owner !== unit.owner) return null;
   const leader = commanderUnit(state, commander);
   if (!leader || leader.owner !== unit.owner) return null;
-  return dist(unit, leader) <= commander.radius ? commander : null;
+  return boardOf(rules, state).distance(unit, leader) <= commander.radius ? commander : null;
 }
 
-export function commanderAuraFor(state: GameState, unit: Unit): CommanderAura {
-  return activeCommanderFor(state, unit)?.aura ?? NO_COMMAND_AURA;
+export function commanderAuraFor(rules: GridRules, state: GameState, unit: Unit): CommanderAura {
+  return activeCommanderFor(rules, state, unit)?.aura ?? NO_COMMAND_AURA;
 }
 
 export interface TacticOption {
@@ -55,7 +56,7 @@ export interface TacticOption {
  * Port declared by this module. The composition-level `BattleRuleServices`
  * satisfies it structurally, so neither side needs to import the other.
  */
-export interface CommanderRules {
+export interface CommanderRules extends GridRules {
   readonly content: ContentCatalog;
   readonly resources: BattleResourceSystem;
 }
@@ -82,7 +83,7 @@ export function tacticOptions(
     } else {
       for (let y = 0; y < state.map.height; y++) {
         for (let x = 0; x < state.map.width; x++) {
-          if (dist(leader, { x, y }) <= tactic.range) targets.push({ x, y });
+          if (boardOf(rules, state).distance(leader, { x, y }) <= tactic.range) targets.push({ x, y });
         }
       }
     }
@@ -120,7 +121,8 @@ export function executeTactic(
   emit({ type: 'tacticUsed', commander: commander.id, tactic: tactic.id, target });
 
   const affected = state.units.filter(
-    (unit) => areAllies(state, unit.owner, commander.owner) && dist(unit, target) <= tactic.radius,
+    (unit) => areAllies(state, unit.owner, commander.owner) &&
+      boardOf(rules, state).distance(unit, target) <= tactic.radius,
   );
   for (const effect of tactic.effects) {
     for (const unit of affected) {

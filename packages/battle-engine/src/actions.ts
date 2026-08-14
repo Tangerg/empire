@@ -13,7 +13,6 @@ import { executeTactic } from './commanders';
 import { UnitEntity } from './domain/index';
 import { Battlefield } from './domain/battlefield';
 import { changeCareer, unitAbilityIds } from './careers';
-import { directionToward } from './spatial';
 import { validateFormationChange } from './formations';
 import { disembarkUnit, embarkUnit } from './transports';
 import { playerResource } from './resources';
@@ -131,7 +130,9 @@ function moveUnit(
   const from = unit.position;
   context.battle.moveUnit(unit.id, destination);
   directiveOf(context.rules, unit.state).arriveAt?.(unit.state, destination);
-  if (path.length > 1) context.turnToFace(unit, directionToward(path[path.length - 2], destination));
+  if (path.length > 1) {
+    context.turnToFace(unit, context.board.grid.toward(path[path.length - 2], destination));
+  }
   context.emit({ type: 'move', unit: unit.id, path });
   // Only a chosen move provokes. A unit thrown out of a zone did not disengage.
   resolvePartingShots(context.rules, context.state, unit.state, from, destination, context.emit);
@@ -233,7 +234,7 @@ class CommandActionHandler implements ActionHandler<'command'> {
     moveUnit(context, actor, movement);
     // The march may not have survived contact: a parting shot resolves mid-order.
     if (!context.battle.findUnit(actor.id)) return;
-    if (target) context.turnToFace(actor, directionToward(destination, target));
+    if (target) context.turnToFace(actor, context.board.grid.toward(destination, target));
     ability.execute(context.rules, query, target, context.emit);
     // The ability may have killed its own user (a sacrifice, a counter-kill).
     if (context.battle.findUnit(actor.id)) actor.finishAction();
@@ -280,7 +281,7 @@ class ChangeFormationActionHandler implements ActionHandler<'changeFormation'> {
 
   execute(context: ActionExecutionContext, action: ActionKindMap['changeFormation']): void {
     const unit = context.commandableUnit(action.unit, '调整阵形');
-    validateFormationChange(context.state, unit.state, action.formation, context.rules.content);
+    validateFormationChange(context.rules, context.state, unit.state, action.formation);
     if (unit.state.formation === action.formation) return;
     const from = unit.changeFormation(action.formation);
     context.emit({ type: 'formationChanged', unit: unit.id, from, to: action.formation });
@@ -294,7 +295,7 @@ class EmbarkActionHandler implements ActionHandler<'embark'> {
     // The passenger spends the action; the carrier only has to be yours.
     const passenger = context.commandableUnit(action.unit, '登载');
     const carrier = context.ownUnit(action.carrier);
-    embarkUnit(context.rules.content, context.state, passenger.id, carrier.id, context.emit);
+    embarkUnit(context.rules, context.state, passenger.id, carrier.id, context.emit);
   }
 }
 
@@ -303,7 +304,7 @@ class DisembarkActionHandler implements ActionHandler<'disembark'> {
 
   execute(context: ActionExecutionContext, action: ActionKindMap['disembark']): void {
     const carrier = context.commandableUnit(action.carrier, '卸载');
-    disembarkUnit(context.rules.content, context.state, carrier.id, action.unit, action.at, context.emit);
+    disembarkUnit(context.rules, context.state, carrier.id, action.unit, action.at, context.emit);
     carrier.finishAction();
   }
 }

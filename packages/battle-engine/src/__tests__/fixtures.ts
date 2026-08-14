@@ -8,6 +8,7 @@ import { computeDamage, forecast, forecastStructure } from '../combat';
 import { forecastCombatPlan } from '../combat-plan';
 import { computeMoveField, hasDirectLineOfSight, threatTiles, type MoveField } from '../movement';
 import { applyScenarioEffect, conditionMet, runScenarioTriggers } from '../scenario';
+import { boardOf } from '../domain/board';
 import { createState } from '../state';
 import {
   evaluateVictory,
@@ -135,11 +136,13 @@ export const testMap = (level: LevelData) => mapFromLevel(level, TEST_CONTENT);
 export const testValidate = (level: LevelData) => validateLevel(level, TEST_CONTENT);
 
 export const testMoveField = (state: GameState, unit: Unit) =>
-  computeMoveField(TEST_CONTENT, state, unit);
+  computeMoveField(TEST_RULES, state, unit);
 export const testThreat = (state: GameState, unit: Unit, field?: MoveField) =>
-  threatTiles(TEST_CONTENT, state, unit, field);
+  threatTiles(TEST_RULES, state, unit, field);
 export const testLineOfSight = (state: GameState, from: Coord, target: Coord) =>
-  hasDirectLineOfSight(TEST_CONTENT, state, from, target);
+  hasDirectLineOfSight(TEST_RULES, state, from, target);
+/** The default four-way board, for a test that needs the geometry directly. */
+export const testBoard = (state: GameState) => boardOf(TEST_RULES, state);
 
 export const testDamage = (
   state: GameState,

@@ -1,4 +1,4 @@
-import { idx } from '@empire/battle-engine/grid';
+import { idx, sharesEdge } from '@empire/battle-engine/grid';
 import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import type { Coord, CoverLevel, Direction, TerrainId, UnitTypeId } from '@empire/battle-engine/types';
 import type { EditorDocument } from './document';
@@ -155,7 +155,7 @@ const CliffEdgeTool: EditorTool = {
   commit: ({ document }, anchor, at) => {
     // A cliff sits on the edge between two neighbours, so only an orthogonal
     // drag of exactly one tile describes one.
-    if (Math.abs(anchor.x - at.x) + Math.abs(anchor.y - at.y) === 1) document.toggleCliff(anchor, at);
+    if (sharesEdge(anchor, at)) document.toggleCliff(anchor, at);
   },
 };
 

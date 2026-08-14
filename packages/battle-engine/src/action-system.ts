@@ -1,4 +1,5 @@
 import { BattleAggregate } from './domain/battle-aggregate';
+import { boardOf, type Board } from './domain/board';
 import { IllegalActionError } from './domain/errors';
 import { UnitEntity } from './domain/unit-entity';
 import { BattleLifecycle } from './turn-cycle';
@@ -21,6 +22,7 @@ import type { UnitDepartureHandlerRegistry } from './unit-departure';
 import type { WeaponAreaShapeRegistry } from './weapon-area';
 import type { UnitDirectiveBehavior } from './unit-directive';
 import type { RuleReferenceCheckRegistry } from './rule-references';
+import type { GridRegistry } from './tactical-grid';
 import type { BattleSaveMigrator } from './battle-save';
 import type { RandomSource } from './random';
 import { type ContentCatalog } from './content-pack';
@@ -55,6 +57,8 @@ export interface BattleRuleServices {
   readonly areaShapes: WeaponAreaShapeRegistry;
   /** Standing orders a unit's `directive.mode` may name. */
   readonly directives: ContentRegistry<UnitDirectiveBehavior>;
+  /** Registered tilings; the level's ruleset selects one by id. */
+  readonly grids: GridRegistry;
   /** Which names in a catalog, a level or a save this ruleset has to implement. */
   readonly referenceChecks: RuleReferenceCheckRegistry;
   /** How a battle written to disk is read back: schema ladder plus refusals. */
@@ -65,6 +69,8 @@ export class ActionExecutionContext {
   readonly battle: BattleAggregate;
   /** Phase and round transitions this order may trigger. */
   readonly lifecycle: BattleLifecycle;
+  /** The board this order is given on, under the tiling the level named. */
+  readonly board: Board;
   readonly events: GameEvent[] = [];
 
   constructor(
@@ -72,6 +78,7 @@ export class ActionExecutionContext {
     readonly rules: BattleRuleServices,
   ) {
     this.battle = new BattleAggregate(state, rules.content);
+    this.board = boardOf(rules, state);
     this.lifecycle = new BattleLifecycle(state, rules, this.emit);
   }
 

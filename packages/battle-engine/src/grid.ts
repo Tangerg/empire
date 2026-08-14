@@ -11,49 +11,30 @@ export const inBounds = (map: { width: number; height: number }, x: number, y: n
 
 export const sameCoord = (a: Coord, b: Coord): boolean => a.x === b.x && a.y === b.y;
 
-/** Manhattan distance — the grid is 4-connected, like Ancient Empires. */
-export const dist = (a: Coord, b: Coord): number => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
-
-export const NEIGHBOURS: readonly Coord[] = [
-  { x: 0, y: -1 },
-  { x: 1, y: 0 },
-  { x: 0, y: 1 },
-  { x: -1, y: 0 },
-];
-
-export function neighbours(map: { width: number; height: number }, c: Coord): Coord[] {
-  const out: Coord[] = [];
-  for (const d of NEIGHBOURS) {
-    const x = c.x + d.x;
-    const y = c.y + d.y;
-    if (inBounds(map, x, y)) out.push({ x, y });
-  }
-  return out;
-}
-
-/** Every tile whose Manhattan distance from `c` is within [min, max]. */
-export function ring(
-  map: { width: number; height: number },
-  c: Coord,
-  min: number,
-  max: number,
-): Coord[] {
-  const out: Coord[] = [];
-  for (let dy = -max; dy <= max; dy++) {
-    const room = max - Math.abs(dy);
-    for (let dx = -room; dx <= room; dx++) {
-      const d = Math.abs(dx) + Math.abs(dy);
-      if (d < min || d > max) continue;
-      const x = c.x + dx;
-      const y = c.y + dy;
-      if (inBounds(map, x, y)) out.push({ x, y });
-    }
-  }
-  return out;
-}
-
 export const terrainAt = (map: GameMap, c: Coord): TerrainId => map.tiles[idx(map, c.x, c.y)];
 export const ownerAt = (map: GameMap, c: Coord): PlayerId => map.owners[idx(map, c.x, c.y)];
+
+/**
+ * Row-major storage helpers.
+ *
+ * What is left here is about *storage*: where a cell sits in a flat array and
+ * whether it is on the board at all. How far apart two cells are, what counts as
+ * next to what and which way a unit can face moved to `TacticalGrid`, because
+ * those are the answers a tiling gives — and this module had four-directional
+ * ones baked in as free functions fifteen modules imported.
+ */
+
+/**
+ * Do these two cells share a boundary in storage?
+ *
+ * The question a cliff edge is defined by, and it was asked in four places with
+ * the same hand-written Manhattan expression: the layer writer, the map builder
+ * and the level linter twice over. Storage adjacency, deliberately not the
+ * tiling's: a cliff is cut between rows and columns of the file, whatever the
+ * tiling then makes of them.
+ */
+export const sharesEdge = (a: Coord, b: Coord): boolean =>
+  Math.abs(a.x - b.x) + Math.abs(a.y - b.y) === 1;
 
 /**
  * Identity of the boundary between two cells, from either side.
@@ -99,9 +80,3 @@ export function tileHash(x: number, y: number, salt = 0): number {
   return ((h >>> 0) % 100000) / 100000;
 }
 
-/** Distance to the closest of several places — not the place itself. */
-export function nearestDistance(from: Coord, places: readonly Coord[]): number {
-  let best = Infinity;
-  for (const place of places) best = Math.min(best, dist(from, place));
-  return best;
-}

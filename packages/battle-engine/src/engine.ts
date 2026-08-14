@@ -86,6 +86,7 @@ export class BattleEngine {
       areaShapes: dependencies.areaShapes,
       directives: dependencies.directives,
       referenceChecks: dependencies.referenceChecks,
+      grids: dependencies.grids,
       saves: dependencies.saves,
       resources: dependencies.resources,
       turnOrders: dependencies.turnOrders,

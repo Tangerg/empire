@@ -64,7 +64,7 @@ describe('SRPG core hot paths', () => {
       for (let x = 0; x < width; x++) {
         const cell = battlefield.cellAt(x, y);
         checksum += (cell.movementCost('foot') ?? 0) + cell.defense + cell.elevation;
-        checksum += cell.directionalCoverFrom(attacker) === 'full' ? 1 : 0;
+        checksum += cell.directionalCoverFrom(engine.rules.grids.get('square4'), attacker) === 'full' ? 1 : 0;
       }
     }
     sink = checksum;

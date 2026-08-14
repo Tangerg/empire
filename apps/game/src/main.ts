@@ -28,6 +28,7 @@ import {
   icon,
   loadCampaignState,
   loadCustomLevels,
+  squareLayout,
   readCustomLevels,
   portraitSvg,
   StoryCampaignController,
@@ -66,7 +67,7 @@ function thumbnail(level: LevelData): string {
     })
     .join('');
   return `<svg viewBox="0 0 ${map.width * TILE} ${map.height * TILE}" preserveAspectRatio="xMidYMid slice">
-    ${terrainLayerMarkup(content, map, colorOf)}${units}
+    ${terrainLayerMarkup(squareLayout, content, map, colorOf)}${units}
   </svg>`;
 }
 

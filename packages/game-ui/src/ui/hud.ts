@@ -136,7 +136,25 @@ const MODIFIER_SOURCE_LABEL: Record<string, string> = {
 };
 
 const RANK_LABEL = ['新兵', '老兵', '精英'] as const;
-const FACING_LABEL: Record<Direction, string> = { north: '北 ↑', east: '东 →', south: '南 ↓', west: '西 ←' };
+/**
+ * The arrow beside a facing's name.
+ *
+ * Names come from the tiling — it owns which facings exist — so this table only
+ * decorates the ones it recognises. A tiling with facings nobody drew an arrow
+ * for still gets a working row of buttons.
+ */
+const FACING_ARROW: Readonly<Record<string, string>> = {
+  north: '↑', east: '→', south: '↓', west: '←',
+  northeast: '↗', southeast: '↘', southwest: '↙', northwest: '↖',
+  hexEast: '→', hexWest: '←',
+  hexNortheast: '↗', hexNorthwest: '↖', hexSoutheast: '↘', hexSouthwest: '↙',
+};
+
+const facingLabel = (view: HudView, facing: Direction): string => {
+  const named = view.rules.grids.get(view.state.rules.grid).directions
+    .find((direction) => direction.id === facing);
+  return `${named?.name ?? facing}${FACING_ARROW[facing] ? ` ${FACING_ARROW[facing]}` : ''}`;
+};
 
 function modifierClass(modifier: CombatModifier): string {
   if (modifier.stage === 'mitigation') return modifier.value > 0 ? 'bad' : modifier.value < 0 ? 'good' : '';
@@ -520,7 +538,7 @@ export class Hud {
       ? view.state.commanders.find((candidate) => candidate.id === unit.commanderId)
       : null;
     const leader = commander ? commanderUnit(view.state, commander) : null;
-    const inCommand = Boolean(activeCommanderFor(view.state, unit));
+    const inCommand = Boolean(activeCommanderFor(view.rules, view.state, unit));
     const career = unit.career.current ? content.careers.get(unit.career.current) : null;
     return `<div class="unit-section">
       <h4>战场状态</h4>
@@ -531,7 +549,7 @@ export class Hud {
         }).join('')
         : '<div class="hint">无状态效果</div>'}
       <div class="kv"><span>军衔</span><b>${RANK_LABEL[unit.rank]}${view.rankNextThreshold === null ? '' : ` · ${unit.rankProgress}/${view.rankNextThreshold}`}</b></div>
-      <div class="kv"><span>朝向</span><b>${FACING_LABEL[unit.facing]}</b></div>
+      <div class="kv"><span>朝向</span><b>${escapeHtml(facingLabel(view, unit.facing))}</b></div>
       ${career ? `<div class="kv"><span>职业</span><b>${escapeHtml(career.name)} · 熟练度 ${unit.career.mastery[career.id] ?? 0}/${career.masteryThreshold}</b></div>` : ''}
       ${accountSummary(view.resources, unitResource(unit)).map((account) => `<div class="kv"><span>单位资源</span><b>${escapeHtml(account)}</b></div>`).join('')}
       ${commander
@@ -548,8 +566,8 @@ export class Hud {
         .map((stance) => `<button class="btn ${unit.reaction === stance.id ? 'primary' : 'ghost'}"
           data-act="reaction" data-arg="${escapeHtml(stance.id)}" title="${escapeHtml(stance.hint)}">${escapeHtml(stance.name)}</button>`)
         .join('')}
-      ${(['north', 'east', 'south', 'west'] as const)
-        .map((facing) => `<button class="btn ${unit.facing === facing ? 'primary' : 'ghost'}" data-act="facing" data-arg="${facing}">${FACING_LABEL[facing]}</button>`)
+      ${view.rules.grids.get(view.state.rules.grid).directions
+        .map(({ id }) => `<button class="btn ${unit.facing === id ? 'primary' : 'ghost'}" data-act="facing" data-arg="${escapeHtml(id)}">${escapeHtml(facingLabel(view, id))}</button>`)
         .join('')}
     </div>`;
     if (view.careerOptions.length === 0) return stances;

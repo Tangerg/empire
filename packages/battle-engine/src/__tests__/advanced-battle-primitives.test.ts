@@ -7,7 +7,6 @@ import { defineCareer } from '../content-builders';
 import { createBattleEngine } from '../plugins/default';
 import { idx } from '../grid';
 import { areAllies, cloneState } from '../state';
-import { DefaultTacticalSpace } from '../tactical-space';
 import type { GameEvent } from '../types';
 import { TEST_CONTENT, TEST_RULES, makeLevel, testScenarioEffect, testState, u } from './fixtures';
 import { createTestCatalog } from '@empire/test-content';
@@ -76,7 +75,7 @@ describe('advanced battle-local primitives', () => {
     expect(state.map.elevation[idx(state.map, 1, 0)]).toBe(2);
     expect(state.map.cliffs).toHaveLength(1);
     expect(state.map.directionalCover[0].sides.west).toBe('full');
-    expect(new DefaultTacticalSpace(TEST_CONTENT).moveField(state, state.units[0]).stops.has(idx(state.map, 1, 0))).toBe(false);
+    expect(TEST_RULES.space.moveField(state, state.units[0]).stops.has(idx(state.map, 1, 0))).toBe(false);
     expect(log.events.some((event) => event.type === 'elevationChanged')).toBe(true);
     expect(log.events.some((event) => event.type === 'cliffChanged')).toBe(true);
   });

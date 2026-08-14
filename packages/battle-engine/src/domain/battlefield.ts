@@ -1,6 +1,6 @@
 import { type ContentCatalog } from '../content-pack';
 import { edgeKey, idx, inBounds } from '../grid';
-import { directionToward } from '../spatial';
+import type { TacticalGrid } from '../tactical-grid';
 import type { DirectionalCoverSides } from './map-layers';
 import type {
   CoverLevel,
@@ -80,9 +80,9 @@ export class BattlefieldCell {
     return score(structureCover) > score(this.terrain.cover) ? structureCover : this.terrain.cover;
   }
 
-  directionalCoverFrom(attackerAt: Coord): CoverLevel {
-    const incoming = directionToward(this.at, attackerAt);
-    return this.battlefield.directionalCoverAt(this.index)[incoming] ?? 'none';
+  /** Cover facing an attacker; which way that is depends on the tiling. */
+  directionalCoverFrom(grid: TacticalGrid, attackerAt: Coord): CoverLevel {
+    return this.battlefield.directionalCoverAt(this.index)[grid.toward(this.at, attackerAt)] ?? 'none';
   }
 
   get defense(): number {

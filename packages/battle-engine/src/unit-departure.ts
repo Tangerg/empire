@@ -1,4 +1,5 @@
 import type { ContentCatalog } from './content-pack';
+import type { GridRules } from './tactical-grid';
 import type { UnitFall } from './domain/unit-fall';
 import { KeyedRegistry } from './registry';
 import { emitTransportLossEvents } from './transports';
@@ -55,7 +56,7 @@ export class UnitDepartureHandlerRegistry extends KeyedRegistry<string, UnitDepa
 export const UnitDepartureHandlers = new UnitDepartureHandlerRegistry();
 
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
-export interface UnitDepartureRules {
+export interface UnitDepartureRules extends GridRules {
   readonly content: ContentCatalog;
   readonly unitDepartures: UnitDepartureHandlerRegistry;
 }

@@ -18,6 +18,7 @@ import { ScenarioConditionHandlers, ScenarioEffectHandlers } from '../scenario';
 import { StatusBehaviors } from '../statuses';
 import { Abilities } from '../abilities';
 import { DefaultTacticalSpace } from '../tactical-space';
+import { TacticalGrids } from '../tactical-grid';
 import { TurnOrders } from '../turn-order';
 import { Reactions } from '../reactions';
 import { UnitDepartureHandlers } from '../unit-departure';
@@ -84,11 +85,14 @@ export const TacticalRulesPlugin: EnginePlugin = {
     'directives',
     'referenceChecks',
     'saves',
+    'grids',
   ],
   install: (context) => {
     const content = context.require('content');
+    const grids = TacticalGrids.clone();
+    context.provide('grids', grids);
     context.provide('abilities', Abilities.clone());
-    context.provide('space', new DefaultTacticalSpace(content));
+    context.provide('space', new DefaultTacticalSpace(content, grids));
     context.provide('combatModifiers', new CombatModifierPipeline(CombatModifierProviders.clone()));
     context.provide('hitEffects', WeaponHitEffectHandlers.clone());
     context.provide('statusBehaviors', StatusBehaviors.clone());
@@ -171,6 +175,7 @@ export function buildBattleEngine(capabilities: KernelCapabilities): BattleEngin
     areaShapes: capabilities.require('areaShapes'),
     directives: capabilities.require('directives'),
     referenceChecks: capabilities.require('referenceChecks'),
+    grids: capabilities.require('grids'),
     saves: capabilities.require('saves'),
     scenarioConditions: capabilities.require('scenarioConditions'),
     scenarioEffects: capabilities.require('scenarioEffects'),

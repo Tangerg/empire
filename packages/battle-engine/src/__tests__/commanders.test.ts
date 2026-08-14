@@ -3,7 +3,7 @@ import { applyAction, IllegalActionError } from '../actions';
 import { commanderAuraFor, tacticOptions } from '../commanders';
 import { computeMoveField } from '../movement';
 import { cloneState } from '../state';
-import { TEST_CONTENT, TEST_RULES, makeLevel, testDamage, testState, u } from './fixtures';
+import { TEST_RULES, makeLevel, testDamage, testState, u } from './fixtures';
 import { COMMAND_POINTS_RESOURCE, MOMENTUM_RESOURCE } from '../resources';
 
 function commandLevel() {
@@ -29,16 +29,16 @@ describe('commanders and formation resources', () => {
     const state = testState(commandLevel());
     const troop = state.units[1];
     const enemy = state.units[2];
-    expect(commanderAuraFor(state, troop)).toMatchObject({
+    expect(commanderAuraFor(TEST_RULES, state, troop)).toMatchObject({
       attackMultiplier: 1.2,
       defenseDelta: 0.1,
       movementDelta: 1,
     });
     const commanded = testDamage(state, troop, enemy).damage;
-    expect(Math.max(...[...computeMoveField(TEST_CONTENT, state, troop).tiles.values()].map((tile) => tile.cost))).toBe(4);
+    expect(Math.max(...[...computeMoveField(TEST_RULES, state, troop).tiles.values()].map((tile) => tile.cost))).toBe(4);
 
     troop.x = 2;
-    expect(commanderAuraFor(state, troop).attackMultiplier).toBe(1);
+    expect(commanderAuraFor(TEST_RULES, state, troop).attackMultiplier).toBe(1);
     expect(testDamage(state, troop, enemy).damage).toBeLessThan(commanded);
   });
 
@@ -131,7 +131,7 @@ describe('commanders and formation resources', () => {
     );
     const leader = state.units[1];
     const linked = state.units[2];
-    expect(commanderAuraFor(state, linked).attackMultiplier).toBe(1.2);
+    expect(commanderAuraFor(TEST_RULES, state, linked).attackMultiplier).toBe(1.2);
     const events = applyAction(state, {
       kind: 'command',
       unit: state.units[0].id,
@@ -139,7 +139,7 @@ describe('commanders and formation resources', () => {
       command: { ability: 'attack', target: { x: 1, y: 0 } },
     }, TEST_RULES);
     expect(state.units.some((unit) => unit.id === leader.id)).toBe(false);
-    expect(commanderAuraFor(state, linked).attackMultiplier).toBe(1);
+    expect(commanderAuraFor(TEST_RULES, state, linked).attackMultiplier).toBe(1);
     expect(linked.statuses).toContainEqual(expect.objectContaining({ id: 'shaken' }));
     expect(events).toContainEqual(
       expect.objectContaining({ type: 'commanderDefeated', commander: 'enemy-command' }),

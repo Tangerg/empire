@@ -1,4 +1,4 @@
-import { idx } from '../grid';
+import { idx, sharesEdge } from '../grid';
 import type { GameMap, LevelData, TerrainId } from '../types';
 import { type ContentCatalog } from '../content-pack';
 import { LevelFormatError } from './schema';
@@ -74,7 +74,7 @@ export function mapFromLevel(level: LevelData, content: ContentCatalog): GameMap
     const valid = [cliff.from, cliff.to].every((cell) =>
       Number.isInteger(cell.x) && Number.isInteger(cell.y) &&
       cell.x >= 0 && cell.y >= 0 && cell.x < width && cell.y < height);
-    if (!valid || Math.abs(cliff.from.x - cliff.to.x) + Math.abs(cliff.from.y - cliff.to.y) !== 1) {
+    if (!valid || !sharesEdge(cliff.from, cliff.to)) {
       throw new LevelFormatError(`invalid cliff edge ${cliff.from.x},${cliff.from.y} -> ${cliff.to.x},${cliff.to.y}`);
     }
   }

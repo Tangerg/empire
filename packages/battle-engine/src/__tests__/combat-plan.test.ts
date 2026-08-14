@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../actions';
 import { WeaponAreaShapes } from '../weapon-area';
-import { TEST_RULES, makeLevel, testCombatPlan, testState, u } from './fixtures';
+import { TEST_RULES, makeLevel, testBoard, testCombatPlan, testState, u } from './fixtures';
 
 describe('combat plans and area weapons', () => {
   it('expands cross, square-ring, and line templates deterministically', () => {
@@ -10,9 +10,9 @@ describe('combat plans and area weapons', () => {
     );
     const from = { x: 0, y: 1 };
     const center = { x: 1, y: 1 };
-    expect(WeaponAreaShapes.coverage(state.map, from, center, 'cross1')).toHaveLength(5);
-    expect(WeaponAreaShapes.coverage(state.map, from, center, 'ring1')).toHaveLength(9);
-    expect(WeaponAreaShapes.coverage(state.map, from, { x: 2, y: 1 }, 'line')).toEqual([
+    expect(WeaponAreaShapes.coverage(testBoard(state), from, center, 'cross1')).toHaveLength(5);
+    expect(WeaponAreaShapes.coverage(testBoard(state), from, center, 'ring1')).toHaveLength(9);
+    expect(WeaponAreaShapes.coverage(testBoard(state), from, { x: 2, y: 1 }, 'line')).toEqual([
       { x: 1, y: 1 },
       { x: 2, y: 1 },
     ]);

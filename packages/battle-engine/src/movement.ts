@@ -1,5 +1,6 @@
 import { Battlefield } from './domain/battlefield';
-import { idx, inBounds, lineBetween, NEIGHBOURS, ring } from './grid';
+import { boardOf } from './domain/board';
+import { idx } from './grid';
 import { areAllies, areEnemies, unitAt } from './state';
 import { combinedStatusModifiers } from './statuses';
 import { structureAt } from './structures';
@@ -10,6 +11,7 @@ import { hostileControlZone } from './zone-of-control';
 import type { WeaponDef } from './types';
 import type { Coord, GameState, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
+import type { GridRegistry } from './tactical-grid';
 
 export interface ReachableTile {
   index: number;
@@ -20,6 +22,15 @@ export interface ReachableTile {
   from: number;
   /** False when another unit is standing there (can pass, cannot stop). */
   free: boolean;
+}
+
+/**
+ * Ports declared by this module. `BattleRuleServices` satisfies them
+ * structurally, so every caller that already holds the ruleset is unchanged.
+ */
+export interface MovementRules {
+  readonly content: ContentCatalog;
+  readonly grids: GridRegistry;
 }
 
 export interface MoveField {
@@ -34,20 +45,22 @@ export interface MoveField {
  * Dijkstra over entry costs. Allies can be passed through (configurable), enemy
  * units block entirely, and only empty tiles are valid stopping points.
  */
-export function computeMoveField(content: ContentCatalog, state: GameState, unit: Unit): MoveField {
+export function computeMoveField(rules: MovementRules, state: GameState, unit: Unit): MoveField {
+  const content = rules.content;
   const def = content.units.get(unit.type);
   const map = state.map;
+  const board = boardOf(rules, state);
   const battlefield = new Battlefield(state, content);
   const budget = Math.max(
     0,
     def.movement + combinedStatusModifiers(unit, content).movementDelta +
-      commanderAuraFor(state, unit).movementDelta + formationMovementDelta(state, unit, content),
+      commanderAuraFor(rules, state, unit).movementDelta + formationMovementDelta(rules, state, unit),
   );
   const start = idx(map, unit.x, unit.y);
   // Ground the enemy holds. A unit may step into it and may leave the tile it
   // started on, but it may not walk on through — which is what makes a battle
   // line a line instead of a suggestion.
-  const controlled = hostileControlZone(content, state, unit);
+  const controlled = hostileControlZone(rules, state, unit);
 
   const tiles = new Map<number, ReachableTile>();
   tiles.set(start, { index: start, x: unit.x, y: unit.y, cost: 0, from: -1, free: true });
@@ -62,15 +75,13 @@ export function computeMoveField(content: ContentCatalog, state: GameState, unit
       const node = tiles.get(cur)!;
       if (node.cost !== c) continue; // stale entry
 
-      const cx = cur % map.width;
-      const cy = Math.floor(cur / map.width);
-      for (const d of NEIGHBOURS) {
-        const nx = cx + d.x;
-        const ny = cy + d.y;
-        if (!inBounds(map, nx, ny)) continue;
-        const ni = idx(map, nx, ny);
+      const from = board.coordOf(cur);
+      for (const next of board.neighbours(from)) {
+        const nx = next.x;
+        const ny = next.y;
+        const ni = board.indexOf(next);
 
-        const step = battlefield.traversalCost({ x: cx, y: cy }, { x: nx, y: ny }, def.movementClass);
+        const step = battlefield.traversalCost(from, next, def.movementClass);
         if (step == null) continue;
 
         const blocker = unitAt(state, nx, ny);
@@ -131,26 +142,27 @@ export function moveCostOf(field: MoveField, map: { width: number }, to: Coord):
 
 /** Tiles this unit could attack if it stood on `from`. */
 export function attackTilesFrom(
-  content: ContentCatalog,
+  rules: MovementRules,
   state: GameState,
   unit: Unit,
   from: Coord,
   weapon?: WeaponDef,
 ): Coord[] {
-  const resolved = weapon ?? primaryWeapon(unit, content);
+  const resolved = weapon ?? primaryWeapon(unit, rules.content);
   if (resolved.maxRange <= 0) return [];
-  return ring(state.map, from, resolved.minRange, resolved.maxRange).filter(
-    (target) => resolved.lineOfSight !== 'direct' || hasDirectLineOfSight(content, state, from, target),
+  return boardOf(rules, state).ring(from, resolved.minRange, resolved.maxRange).filter(
+    (target) => resolved.lineOfSight !== 'direct' || hasDirectLineOfSight(rules, state, from, target),
   );
 }
 
 export function hasDirectLineOfSight(
-  content: ContentCatalog,
+  rules: MovementRules,
   state: GameState,
   from: Coord,
   target: Coord,
 ): boolean {
-  const trace = lineBetween(from, target);
+  const content = rules.content;
+  const trace = boardOf(rules, state).line(from, target);
   const battlefield = new Battlefield(state, content);
   const fromEye = battlefield.cell(from).elevation + 1;
   const targetEye = battlefield.cell(target).elevation + 1;
@@ -170,7 +182,7 @@ export function hasDirectLineOfSight(
  * Drives the "enemy threat range" overlay.
  */
 export function threatTiles(
-  content: ContentCatalog,
+  rules: MovementRules,
   state: GameState,
   unit: Unit,
   field?: MoveField,
@@ -178,16 +190,16 @@ export function threatTiles(
   const out = new Set<number>();
   const add = (at: Coord) => out.add(idx(state.map, at.x, at.y));
 
-  const weapons = unitWeapons(unit, content);
+  const weapons = unitWeapons(unit, rules.content);
   for (const weapon of weapons) {
-    for (const at of attackTilesFrom(content, state, unit, { x: unit.x, y: unit.y }, weapon)) add(at);
+    for (const at of attackTilesFrom(rules, state, unit, { x: unit.x, y: unit.y }, weapon)) add(at);
   }
 
-  const f = field ?? computeMoveField(content, state, unit);
+  const f = field ?? computeMoveField(rules, state, unit);
   for (const weapon of weapons.filter((candidate) => candidate.moveAndAttack)) {
     for (const i of f.stops) {
       const from = { x: i % state.map.width, y: Math.floor(i / state.map.width) };
-      for (const c of attackTilesFrom(content, state, unit, from, weapon)) add(c);
+      for (const c of attackTilesFrom(rules, state, unit, from, weapon)) add(c);
     }
   }
   return out;
@@ -195,14 +207,14 @@ export function threatTiles(
 
 /** Enemy units in range if `unit` stood on `from`. */
 export function targetsFrom(
-  content: ContentCatalog,
+  rules: MovementRules,
   state: GameState,
   unit: Unit,
   from: Coord,
   weapon?: WeaponDef,
 ): Unit[] {
   const out: Unit[] = [];
-  for (const c of attackTilesFrom(content, state, unit, from, weapon)) {
+  for (const c of attackTilesFrom(rules, state, unit, from, weapon)) {
     const other = unitAt(state, c.x, c.y);
     if (other && areEnemies(state, other.owner, unit.owner)) out.push(other);
   }
@@ -211,14 +223,15 @@ export function targetsFrom(
 
 /** Unit and destructible-structure targets share the same range query. */
 export function attackTargetCoords(
-  content: ContentCatalog,
+  rules: MovementRules,
   state: GameState,
   unit: Unit,
   from: Coord,
   weapon?: WeaponDef,
 ): Coord[] {
+  const content = rules.content;
   const out: Coord[] = [];
-  for (const cell of attackTilesFrom(content, state, unit, from, weapon)) {
+  for (const cell of attackTilesFrom(rules, state, unit, from, weapon)) {
     const other = unitAt(state, cell.x, cell.y);
     if (other && areEnemies(state, other.owner, unit.owner)) {
       out.push(cell);
@@ -232,14 +245,15 @@ export function attackTargetCoords(
 }
 
 /** Wounded allies adjacent to `from` (support-healing targeting). */
-export function healTargetsFrom(content: ContentCatalog, state: GameState, unit: Unit, from: Coord): Unit[] {
-  const out: Unit[] = [];
-  for (const c of ring(state.map, from, 1, 1)) {
+export function healTargetsFrom(rules: MovementRules, state: GameState, unit: Unit, from: Coord): Unit[] {
+  const content = rules.content;
+  const found: Unit[] = [];
+  for (const c of boardOf(rules, state).ring(from, 1, 1)) {
     const other = unitAt(state, c.x, c.y);
     if (!other || other.id === unit.id) continue;
     if (!areAllies(state, other.owner, unit.owner)) continue;
     if (other.hp >= content.units.get(other.type).maxHp) continue;
-    out.push(other);
+    found.push(other);
   }
-  return out;
+  return found;
 }

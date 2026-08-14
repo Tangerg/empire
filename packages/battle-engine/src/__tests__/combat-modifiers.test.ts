@@ -7,7 +7,7 @@ import {
 } from '../combat-modifiers';
 import { createBattleEngine } from '../plugins/default';
 import { GameSession } from '../session';
-import { TEST_CONTENT, makeLevel, testState, u } from './fixtures';
+import { TEST_CONTENT, TEST_RULES, makeLevel, testBoard, testState, u } from './fixtures';
 
 const provider = (
   id: string,
@@ -32,6 +32,8 @@ describe('combat modifier pipeline', () => {
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)] }),
     );
     const result = pipeline.evaluate(100, {
+      rules: TEST_RULES,
+      board: testBoard(state),
       content: TEST_CONTENT,
       battlefield: new Battlefield(state, TEST_CONTENT),
       state,

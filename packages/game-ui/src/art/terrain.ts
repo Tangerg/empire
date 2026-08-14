@@ -267,6 +267,41 @@ const painters: Record<TerrainId, Painter> = {
   },
 };
 
+/**
+ * Where a tile is drawn, and what shape it is.
+ *
+ * A port, satisfied by the board's layout: this module paints tiles and has no
+ * business knowing how the battlefield is tiled.
+ */
+export interface TerrainLayout {
+  readonly corners: number;
+  origin(at: { x: number; y: number }): { x: number; y: number };
+  center(at: { x: number; y: number }): { x: number; y: number };
+  outline(at: { x: number; y: number }): string;
+}
+
+const CELL_CLIP_ID = 'cell-clip';
+
+/**
+ * One clip path, in tile-local coordinates, reused by every tile group.
+ *
+ * The outline is taken from cell (0,0) and shifted to the group's own origin, so
+ * a single definition works for all of them — including the staggered rows of a
+ * hex board, whose cells all have the same shape.
+ */
+function cellClipDefinition(layout: TerrainLayout, map: GameMap): string {
+  void map;
+  const origin = layout.origin({ x: 0, y: 0 });
+  const points = layout.outline({ x: 0, y: 0 })
+    .split(' ')
+    .map((pair) => {
+      const [x, y] = pair.split(',').map(Number);
+      return `${(x - origin.x).toFixed(2)},${(y - origin.y).toFixed(2)}`;
+    })
+    .join(' ');
+  return `<defs><clipPath id="${CELL_CLIP_ID}" clipPathUnits="userSpaceOnUse"><polygon points="${points}"/></clipPath></defs>`;
+}
+
 /* -------------------------------------------------------------- public API */
 
 export function terrainMarkup(id: TerrainId, ctx: TileContext): string {
@@ -294,12 +329,18 @@ function links(content: ContentCatalog, map: GameMap, id: TerrainId, x: number, 
  * take the owner colour so flags flip the instant a town changes hands.
  */
 export function terrainLayerMarkup(
+  layout: TerrainLayout,
   content: ContentCatalog,
   map: GameMap,
   colorOfPlayer: (id: number) => string | undefined,
   theme?: string,
 ): string {
   const parts: string[] = [];
+  // Painted tiles are square pictures. On a tiling whose cells are not, each one
+  // is placed at its cell and clipped to that cell's shape, so the same artwork
+  // serves a hex board without a second set of tile painters.
+  const clip = layout.corners === 4 ? '' : ` clip-path="url(#${CELL_CLIP_ID})"`;
+  if (clip) parts.push(cellClipDefinition(layout, map));
   for (let y = 0; y < map.height; y++) {
     for (let x = 0; x < map.width; x++) {
       const i = idx(map, x, y);
@@ -316,8 +357,9 @@ export function terrainLayerMarkup(
           w: links(content, map, id, x - 1, y),
         },
       };
+      const origin = layout.origin({ x, y });
       parts.push(
-        `<g transform="translate(${x * TILE},${y * TILE})" data-tile="${x},${y}">${terrainMarkup(id, ctx)}</g>`,
+        `<g transform="translate(${origin.x.toFixed(2)},${origin.y.toFixed(2)})"${clip} data-tile="${x},${y}">${terrainMarkup(id, ctx)}</g>`,
       );
     }
   }

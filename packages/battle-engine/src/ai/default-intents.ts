@@ -1,7 +1,8 @@
 import { commandOptions } from '../actions';
 import { tacticOptions, type CommanderRules } from '../commanders';
 import { unitWeapons } from '../combat';
-import { dist, idx } from '../grid';
+import { idx } from '../grid';
+import { boardOf, type Board } from '../domain/board';
 import type { MoveField } from '../movement';
 import { type BattleResourceSystem, playerResource } from '../resources';
 import {
@@ -81,6 +82,7 @@ function bestCommandFor(context: AiTurnContext, unit: Unit): ScoredAction | null
       for (const target of targets) {
         const score = evaluator.score({
           rules,
+          board: context.board,
           state,
           unit,
           at,
@@ -114,12 +116,14 @@ function bestCommandFor(context: AiTurnContext, unit: Unit): ScoredAction | null
 
 function proposeTactic(rules: CommanderRules, state: GameState, side: PlayerId): Action | null {
   const { content, resources } = rules;
+  const board = boardOf(rules, state);
   let best: ScoredAction | null = null;
   for (const commander of state.commanders.filter((entry) => entry.owner === side)) {
     for (const option of tacticOptions(rules, state, commander.id)) {
       const tactic = content.tactics.get(option.id);
       for (const target of option.targets) {
-        const affected = unitsOf(state, side).filter((unit) => dist(unit, target) <= tactic.radius);
+        const affected = unitsOf(state, side).filter((unit) =>
+          board.distance(unit, target) <= tactic.radius);
         let score = 0;
         for (const effect of tactic.effects) {
           if (effect.type === 'addStatus') {
@@ -145,6 +149,7 @@ function proposeTactic(rules: CommanderRules, state: GameState, side: PlayerId):
 
 /** The stance this unit's situation calls for, whatever it is standing in now. */
 function preferredStance(
+  board: Board,
   state: GameState,
   unit: Unit,
   agenda: AiAgenda,
@@ -153,13 +158,14 @@ function preferredStance(
   const definition = content.units.get(unit.type);
   const protectedWeight = agenda.mission.protectedUnits.get(unit.id) ?? 0;
   const enemyNear = enemyUnitsOf(state, unit.owner).some((enemy) =>
-    dist(unit, enemy) <= content.units.get(enemy.type).movement + maximumWeaponRange(enemy.type, content));
+    board.distance(unit, enemy) <=
+      content.units.get(enemy.type).movement + maximumWeaponRange(enemy.type, content));
   if (hpRatio(unit, content) < 0.35 || (protectedWeight >= 4 && enemyNear)) return 'guard';
 
   const adjacentAlly = state.units.some((candidate) =>
     candidate.id !== unit.id &&
     areAllies(state, candidate.owner, unit.owner) &&
-    dist(candidate, unit) === 1);
+    board.distance(candidate, unit) === 1);
   if (adjacentAlly && (definition.tags.includes('support') || definition.tags.includes('monster'))) return 'support';
 
   const hasScarceRangedWeapon = definition.tags.includes('ranged') && unitWeapons(unit, content).some((weapon) =>
@@ -169,13 +175,14 @@ function preferredStance(
 }
 
 function proposeStanceChange(
+  board: Board,
   state: GameState,
   side: PlayerId,
   agenda: AiAgenda,
   content: ContentCatalog,
 ): Action | null {
   for (const unit of unitsOf(state, side).filter((candidate) => !candidate.done)) {
-    const stance = preferredStance(state, unit, agenda, content);
+    const stance = preferredStance(board, state, unit, agenda, content);
     if (stance !== unit.reaction) return { kind: 'reaction', unit: unit.id, stance };
   }
   return null;
@@ -262,7 +269,7 @@ export const DefaultAiIntents = new AiIntentRegistry()
     id: 'reaction',
     priority: 30,
     propose: (context) =>
-      proposeStanceChange(context.state, context.player, context.agenda, context.content),
+      proposeStanceChange(context.board, context.state, context.player, context.agenda, context.content),
   })
   .register({
     id: 'command',

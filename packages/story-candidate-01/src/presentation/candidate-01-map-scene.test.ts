@@ -1,3 +1,5 @@
+import { TacticalGrids } from '@empire/battle-engine/tactical-grid';
+const SQUARE = TacticalGrids.get('square4');
 import { describe, expect, it } from 'vitest';
 import { candidate01Level } from '../levels';
 import { mapFromLevel } from '@empire/battle-engine/level';
@@ -40,7 +42,7 @@ describe('candidate-01 authored map scenery', () => {
 
   it('authors a non-playable forest frame outside the logical cells', () => {
     const map = mapFromLevel(candidate01Level('c01-01'), TEST_CATALOG);
-    const viewport = createSceneViewport(map.width, map.height, 32, candidate01SceneProfile('c01-01'));
+    const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile('c01-01'));
     const frame = candidate01SceneFrameMarkup('c01-01', map, viewport);
 
     expect(viewport.sceneWidth).toBeGreaterThan(map.width * 32);

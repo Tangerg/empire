@@ -3,13 +3,14 @@ import { BattleAggregate } from './domain/battle-aggregate';
 import { UnitEntity } from './domain/unit-entity';
 import { sameCoord } from './grid';
 import { resolveDamage, type DamageRules } from './damage';
-import { DIRECTION_VECTOR, directionToward } from './spatial';
+import { boardOf } from './domain/board';
 import { requireUnit } from './state';
 import type { Coord, GameEvent, GameState, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
+import type { GridRules } from './tactical-grid';
 
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
-export type ForcedMovementRules = DamageRules;
+export type ForcedMovementRules = DamageRules & GridRules;
 
 export type ForcedMovementMode = 'push' | 'pull';
 
@@ -49,10 +50,10 @@ export function forceMoveUnit(
   const unit = requireUnit(state, request.unit);
   const from = { x: unit.x, y: unit.y };
   const distance = Math.max(0, Math.round(request.distance));
+  const board = boardOf(rules, state);
   const facing = request.mode === 'push'
-    ? directionToward(request.source, from)
-    : directionToward(from, request.source);
-  const vector = DIRECTION_VECTOR[facing];
+    ? board.grid.toward(request.source, from)
+    : board.grid.toward(from, request.source);
   const path: Coord[] = [{ ...from }];
   const battlefield = new Battlefield(state, content);
   let collided = false;
@@ -60,7 +61,7 @@ export function forceMoveUnit(
   if (sameCoord(from, request.source) && distance > 0) collided = true;
   for (let step = 0; step < distance && !collided; step++) {
     const current = path[path.length - 1];
-    const next = { x: current.x + vector.x, y: current.y + vector.y };
+    const next = board.grid.step(current, facing);
     // Nothing to be shoved into, and an edge the shove can cross.
     if (!canOccupy(battlefield, unit, next) ||
       battlefield.traversalCost(current, next, content.units.get(unit.type).movementClass) === null) {

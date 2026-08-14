@@ -1,10 +1,11 @@
 import { bestReactiveStrike, consumeWeapon, type CombatRules } from './combat';
 import { resolveDamage, type DamageRules } from './damage';
 import { UnitEntity } from './domain/unit-entity';
-import { dist, idx, ring } from './grid';
+import { boardOf } from './domain/board';
 import { reactionOf } from './reactions';
 import { areEnemies } from './state';
 import type { ContentCatalog } from './content-pack';
+import type { GridRegistry } from './tactical-grid';
 import type { Coord, GameEvent, GameState, Unit } from './types';
 
 /**
@@ -24,6 +25,12 @@ import type { Coord, GameEvent, GameState, Unit } from './types';
 
 const DEFAULT_CONTROL_RADIUS = 1;
 
+/** Port declared by this module; `BattleRuleServices` satisfies it. */
+export interface ControlZoneRules {
+  readonly content: ContentCatalog;
+  readonly grids: GridRegistry;
+}
+
 /**
  * Radius a unit projects, already accounting for the battle's rules.
  *
@@ -36,9 +43,9 @@ export function controlRadius(content: ContentCatalog, state: GameState, unit: U
   return Math.max(0, Math.round(content.units.get(unit.type).zoneOfControl ?? DEFAULT_CONTROL_RADIUS));
 }
 
-function controls(content: ContentCatalog, state: GameState, unit: Unit, at: Coord): boolean {
-  const radius = controlRadius(content, state, unit);
-  return radius > 0 && dist(unit, at) <= radius;
+function controls(rules: ControlZoneRules, state: GameState, unit: Unit, at: Coord): boolean {
+  const radius = controlRadius(rules.content, state, unit);
+  return radius > 0 && boardOf(rules, state).distance(unit, at) <= radius;
 }
 
 /**
@@ -49,17 +56,18 @@ function controls(content: ContentCatalog, state: GameState, unit: Unit, at: Coo
  * should not re-scan the army for every tile.
  */
 export function hostileControlZone(
-  content: ContentCatalog,
+  rules: ControlZoneRules,
   state: GameState,
   unit: Unit,
 ): Set<number> {
   const zone = new Set<number>();
   if (!state.rules.zoneOfControl) return zone;
+  const board = boardOf(rules, state);
   for (const other of state.units) {
     if (!areEnemies(state, other.owner, unit.owner)) continue;
-    const radius = controlRadius(content, state, other);
+    const radius = controlRadius(rules.content, state, other);
     if (radius <= 0) continue;
-    for (const cell of ring(state.map, other, 1, radius)) zone.add(idx(state.map, cell.x, cell.y));
+    for (const index of board.ringIndices(other, 1, radius)) zone.add(index);
   }
   return zone;
 }
@@ -79,20 +87,19 @@ export function disengagedControllers(
   to: Coord,
 ): Unit[] {
   if (!state.rules.zoneOfControl) return [];
-  const content = rules.content;
   return state.units.filter((other) =>
     areEnemies(state, other.owner, unit.owner) &&
     reactionOf(rules, other.reaction).retaliates &&
     new UnitEntity(other).canReact(state.turn) &&
-    controls(content, state, other, from) &&
-    !controls(content, state, other, to));
+    controls(rules, state, other, from) &&
+    !controls(rules, state, other, to));
 }
 
 /** A parting shot is free, so it is not a full attack. */
 const PARTING_SHOT_MULTIPLIER = 0.7;
 
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
-export interface ZoneOfControlRules extends CombatRules, DamageRules {}
+export interface ZoneOfControlRules extends CombatRules, DamageRules, ControlZoneRules {}
 
 /**
  * Resolves every parting shot provoked by a voluntary move.

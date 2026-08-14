@@ -4,10 +4,18 @@ import type { Coord, GameState, Unit, WeaponId } from '@empire/battle-engine/typ
 import { PAL } from '../art/palette';
 import { FrameAnimationSystem, registerSvgStrip } from '../art/frame-animation';
 import { battlePresentation, decorationsFor, type BattlePresentation } from '../art/battle-presentation';
-import type { BoardDecorations } from '../art/board-decorations';
+import type { BoardDecorations, BoardLayout } from '../art/board-decorations';
 import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../art/battlefield-layer';
 import { TILE, terrainLayerMarkup } from '../art/terrain';
-import { createSceneViewport, scenePointToCell, type SceneViewport } from '../art/scene-viewport';
+import {
+  cellCenter,
+  cellOrigin,
+  cellOutline,
+  createSceneViewport,
+  scenePointToCell,
+  type SceneViewport,
+} from '../art/scene-viewport';
+import type { TacticalGrid } from '@empire/battle-engine/tactical-grid';
 import { unitSpriteMarkup } from '../art/units';
 import { clear, fromMarkup, setAttrs, svg } from '../art/svg';
 
@@ -82,15 +90,24 @@ export class BoardView {
   private objectSignature = '';
   private hovered: string | null = null;
   private effectSerial = 0;
+  private layoutCache: BoardLayout | null = null;
 
   constructor(
     private state: GameState,
     private readonly handlers: BoardHandlers,
     private readonly content: ContentCatalog,
+    /**
+     * The tiling this battle is fought on; it decides where every cell sits.
+     *
+     * Handed in rather than looked up: the picture has to be drawn under the
+     * same tiling the rules are measured with, including a replaced one.
+     */
+    grid: TacticalGrid,
   ) {
     this.presentation = battlePresentation(state.levelId);
     this.decor = decorationsFor(this.presentation);
     this.viewport = createSceneViewport(
+      grid,
       state.map.width,
       state.map.height,
       TILE,
@@ -141,10 +158,38 @@ export class BoardView {
     this.setZoom(1.25);
   }
 
+  /* -------------------------------------------------------------- placement */
+
+  /** Where this board's cells are, for whoever draws on top of them. */
+  private get layout(): BoardLayout {
+    return this.layoutCache ??= {
+      tileSize: TILE,
+      corners: this.viewport.grid.outline().length,
+      origin: (at) => cellOrigin(this.viewport, at),
+      center: (at) => cellCenter(this.viewport, at),
+      outline: (at) => cellOutline(this.viewport, at),
+    };
+  }
+
+  /** Top-left of a cell, for a group that draws a tile-sized picture. */
+  private origin(at: Coord): { x: number; y: number } {
+    return cellOrigin(this.viewport, at);
+  }
+
+  /** Centre of a cell, for anything drawn around a point. */
+  private centre(at: Coord): { x: number; y: number } {
+    return cellCenter(this.viewport, at);
+  }
+
+  private place(at: Coord): string {
+    const origin = this.origin(at);
+    return `translate(${origin.x.toFixed(2)} ${origin.y.toFixed(2)})`;
+  }
+
   /* ------------------------------------------------------------------ setup */
 
   private buildGrid(): void {
-    const markup = this.decor.gridLines(this.state.map);
+    const markup = this.decor.gridLines(this.layout, this.state.map);
     if (markup) this.layers.grid.append(fromMarkup(markup));
   }
 
@@ -228,7 +273,7 @@ export class BoardView {
     this.mapSignature = signature;
     clear(this.layers.terrain);
     const colorOf = (id: number) => s.players.find((p) => p.id === id)?.color;
-    this.layers.terrain.append(fromMarkup(terrainLayerMarkup(this.content, s.map, colorOf, s.levelId)));
+    this.layers.terrain.append(fromMarkup(terrainLayerMarkup(this.layout, this.content, s.map, colorOf, s.levelId)));
     for (const id of this.sceneryAnimationIds) this.frameAnimations.unregister(id);
     this.sceneryAnimationIds = [];
     clear(this.layers.ground);
@@ -275,14 +320,14 @@ export class BoardView {
       const ownerColor = s.players.find((player) => player.id === state.owner)?.color;
       const markup = this.presentation.structure(state, this.content.structures.get(state.type), ownerColor);
       return markup
-        ? [`<g transform="translate(${state.x * TILE} ${state.y * TILE})" data-structure="${state.id}">${markup}</g>`]
+        ? [`<g transform="${this.place(state)}" data-structure="${state.id}">${markup}</g>`]
         : [];
     });
     if (structures.length) this.layers.structures.append(fromMarkup(structures.join('')));
 
     clear(this.layers.markers);
     const markers = s.markers.map((marker) =>
-      `<g transform="translate(${marker.at.x * TILE} ${marker.at.y * TILE})" data-marker="${marker.id}">${this.presentation.marker(marker)}</g>`,
+      `<g transform="${this.place(marker.at)}" data-marker="${marker.id}">${this.presentation.marker(marker)}</g>`,
     );
     if (markers.length) this.layers.markers.append(fromMarkup(markers.join('')));
   }
@@ -291,7 +336,7 @@ export class BoardView {
     const s = this.state;
     const parts: string[] = [];
     const cell = (i: number, fill: string, opacity: number, stroke?: string) => {
-      parts.push(this.decor.actionSpot({
+      parts.push(this.decor.actionSpot(this.layout, {
         x: i % s.map.width,
         y: Math.floor(i / s.map.width),
         fill,
@@ -307,9 +352,8 @@ export class BoardView {
     // and carries its own countdown.
     for (const [i, remaining] of o.incoming) {
       cell(i, '#ffb020', 0.3, '#ffd479');
-      const x = (i % s.map.width) * TILE;
-      const y = Math.floor(i / s.map.width) * TILE;
-      parts.push(`<text class="incoming-count" x="${x + TILE / 2}" y="${y + TILE / 2 + 4}"
+      const centre = this.centre({ x: i % s.map.width, y: Math.floor(i / s.map.width) });
+      parts.push(`<text class="incoming-count" x="${centre.x}" y="${centre.y + 4}"
         text-anchor="middle" font-size="11" font-weight="700" fill="#2a1a00">${remaining}</text>`);
     }
     for (const i of o.move) if (!o.attack.has(i)) cell(i, '#3f9fff', 0.22);
@@ -328,7 +372,7 @@ export class BoardView {
   private renderPath(path: Coord[]): void {
     clear(this.layers.path);
     if (path.length < 2) return;
-    const d = this.decor.movePath(path);
+    const d = this.decor.movePath(this.layout, path);
     const last = path[path.length - 1];
     const prev = path[path.length - 2];
     const angle = (Math.atan2(last.y - prev.y, last.x - prev.x) * 180) / Math.PI;
@@ -336,7 +380,7 @@ export class BoardView {
       fromMarkup(
         `<path d="${d}" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/>
          <path d="${d}" fill="none" stroke="#2f6fd0" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
-         <g transform="translate(${last.x * TILE + TILE / 2} ${last.y * TILE + TILE / 2}) rotate(${angle})">
+         <g transform="translate(${this.centre(last).x} ${this.centre(last).y}) rotate(${angle})">
            <path d="M-4 -5 4 0 -4 5z" fill="#2f6fd0" stroke="#ffffff" stroke-width="1.2"/>
          </g>`,
       ),
@@ -379,7 +423,7 @@ export class BoardView {
       const hidden = o.hiddenUnits.has(u.id);
       el.style.display = hidden ? 'none' : '';
       if (hidden) continue;
-      setAttrs(el, { transform: `translate(${u.x * TILE},${u.y * TILE})` });
+      setAttrs(el, { transform: this.place(u) });
       el.classList.toggle('is-done', u.done);
       el.classList.toggle('is-selected', !!o.selected && o.selected.x === u.x && o.selected.y === u.y);
 
@@ -416,8 +460,8 @@ export class BoardView {
   private renderCursor(o: BoardOverlay): void {
     clear(this.layers.cursor);
     const parts: string[] = [];
-    if (o.selected) parts.push(this.decor.ring(o.selected, 'selection'));
-    if (o.cursor) parts.push(this.decor.ring(o.cursor, 'cursor'));
+    if (o.selected) parts.push(this.decor.ring(this.layout, o.selected, 'selection'));
+    if (o.cursor) parts.push(this.decor.ring(this.layout, o.cursor, 'cursor'));
     if (parts.length) this.layers.cursor.append(fromMarkup(parts.join('')));
   }
 
@@ -436,8 +480,10 @@ export class BoardView {
       if (b.x < a.x) el.classList.add('face-left');
       await tween(msPerTile, (t) => {
         const e = easeInOut(t);
-        const x = (a.x + (b.x - a.x) * e) * TILE;
-        const y = (a.y + (b.y - a.y) * e) * TILE - Math.sin(Math.PI * t) * 2.5;
+        const from = this.origin(a);
+        const to = this.origin(b);
+        const x = from.x + (to.x - from.x) * e;
+        const y = from.y + (to.y - from.y) * e - Math.sin(Math.PI * t) * 2.5;
         setAttrs(el, { transform: `translate(${x.toFixed(2)},${y.toFixed(2)})` });
       });
     }
@@ -452,14 +498,15 @@ export class BoardView {
     const dy = Math.sign(target.y - attacker.y);
     if (dx > 0) el.classList.remove('face-left');
     if (dx < 0) el.classList.add('face-left');
-    const base = `translate(${attacker.x * TILE},${attacker.y * TILE})`;
+    const base = this.place(attacker);
+    const anchor = this.origin(attacker);
     const animationId = this.unitAnimationId(attacker.id);
     if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'attack');
     el.classList.add('is-attacking');
     await tween(150, (t) => {
       const push = Math.sin(Math.PI * t) * 7;
       setAttrs(el, {
-        transform: `translate(${attacker.x * TILE + dx * push},${attacker.y * TILE + dy * push})`,
+        transform: `translate(${anchor.x + dx * push},${anchor.y + dy * push})`,
       });
     });
     el.classList.remove('is-attacking');
@@ -468,8 +515,7 @@ export class BoardView {
   }
 
   async animateHit(at: Coord, damage: number, killed: boolean, weapon?: WeaponId): Promise<void> {
-    const cx = at.x * TILE + TILE / 2;
-    const cy = at.y * TILE + TILE / 2;
+    const { x: cx, y: cy } = this.centre(at);
     const g = svg('g', { class: 'fx' });
     g.append(
       fromMarkup(
@@ -505,8 +551,7 @@ export class BoardView {
   }
 
   async animateHeal(at: Coord, amount: number): Promise<void> {
-    const cx = at.x * TILE + TILE / 2;
-    const cy = at.y * TILE + TILE / 2;
+    const { x: cx, y: cy } = this.centre(at);
     const g = svg('g', { class: 'fx' });
     g.append(
       fromMarkup(
@@ -540,8 +585,8 @@ export class BoardView {
 
   /** Banner that sweeps across the board on turn change. */
   async announce(text: string, color: string): Promise<void> {
-    const w = this.state.map.width * TILE;
-    const h = this.state.map.height * TILE;
+    const w = this.viewport.fieldWidth;
+    const h = this.viewport.fieldHeight;
     const g = svg('g', { class: 'fx' });
     g.append(
       fromMarkup(
@@ -560,8 +605,9 @@ export class BoardView {
   }
 
   centerOn(at: Coord, container: HTMLElement): void {
-    const px = (this.viewport.originX + (at.x + 0.5) * TILE) * this.zoom;
-    const py = (this.viewport.originY + (at.y + 0.5) * TILE) * this.zoom;
+    const centre = this.centre(at);
+    const px = (this.viewport.originX + centre.x) * this.zoom;
+    const py = (this.viewport.originY + centre.y) * this.zoom;
     container.scrollTo({
       left: px - container.clientWidth / 2,
       top: py - container.clientHeight / 2,

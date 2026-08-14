@@ -1,5 +1,4 @@
 import { unitWeapons } from '../combat';
-export { nearestDistance } from '../grid';
 import type { ContentCatalog } from '../content-pack';
 import type { Unit, UnitTypeId, WeaponDef } from '../types';
 

@@ -1,9 +1,11 @@
+import { TacticalGrids } from '@empire/battle-engine/tactical-grid';
+const SQUARE = TacticalGrids.get('square4');
 import { describe, expect, it } from 'vitest';
 import { createSceneViewport, scenePointToCell } from '../scene-viewport';
 
 describe('scene viewport', () => {
   it('keeps the tactical lattice inside a larger non-interactive art canvas', () => {
-    const viewport = createSceneViewport(21, 13, 32, {
+    const viewport = createSceneViewport(SQUARE, 21, 13, 32, {
       insets: { top: 58, right: 66, bottom: 68, left: 66 },
     });
 
@@ -15,7 +17,7 @@ describe('scene viewport', () => {
   });
 
   it('rejects decorative margins instead of leaking them into edge cells', () => {
-    const viewport = createSceneViewport(4, 3, 32, { insets: { top: 20, left: 30 } });
+    const viewport = createSceneViewport(SQUARE, 4, 3, 32, { insets: { top: 20, left: 30 } });
 
     expect(scenePointToCell(viewport, 29.9, 40)).toBeNull();
     expect(scenePointToCell(viewport, 45, 19.9)).toBeNull();

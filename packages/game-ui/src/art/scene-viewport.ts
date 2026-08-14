@@ -1,3 +1,4 @@
+import type { TacticalGrid } from '@empire/battle-engine/tactical-grid';
 export interface SceneInsets {
   top: number;
   right: number;
@@ -27,6 +28,8 @@ export interface SceneLayerMarkup {
 }
 
 export interface SceneViewport {
+  /** The tiling this scene is laid out under; the board asks it where cells go. */
+  grid: TacticalGrid;
   tileSize: number;
   fieldWidth: number;
   fieldHeight: number;
@@ -46,8 +49,13 @@ const finiteNonNegative = (value: number, name: string): number => {
  * Decouples the playable lattice from the authored scene canvas. Insets are
  * non-interactive art space, so a battlefield can have an organic silhouette
  * without changing pathfinding, ranges, saves or deterministic replays.
+ *
+ * The tiling comes first because the field's size is its answer: a hex board of
+ * the same rows and columns is shorter and half a cell wider than a square one,
+ * and this module used to multiply both out itself.
  */
 export function createSceneViewport(
+  grid: TacticalGrid,
   columns: number,
   rows: number,
   tileSize: number,
@@ -63,9 +71,11 @@ export function createSceneViewport(
     bottom: finiteNonNegative(profile.insets?.bottom ?? 0, 'insets.bottom'),
     left: finiteNonNegative(profile.insets?.left ?? 0, 'insets.left'),
   };
-  const fieldWidth = columns * tileSize;
-  const fieldHeight = rows * tileSize;
+  const extent = grid.extent({ width: columns, height: rows });
+  const fieldWidth = extent.x * tileSize;
+  const fieldHeight = extent.y * tileSize;
   return Object.freeze({
+    grid,
     tileSize,
     fieldWidth,
     fieldHeight,
@@ -87,8 +97,27 @@ export function scenePointToCell(
   if (localX < 0 || localY < 0 || localX >= viewport.fieldWidth || localY >= viewport.fieldHeight) {
     return null;
   }
-  return {
-    x: Math.floor(localX / viewport.tileSize),
-    y: Math.floor(localY / viewport.tileSize),
-  };
+  // Which cell a point falls in is the tiling's own question, and its answer is
+  // the inverse of where the tiling puts that cell.
+  return viewport.grid.cellAt({ x: localX / viewport.tileSize, y: localY / viewport.tileSize });
+}
+
+/** Top-left of a cell's bounding box, in scene units. */
+export function cellOrigin(viewport: SceneViewport, at: { x: number; y: number }): { x: number; y: number } {
+  const centre = viewport.grid.center(at);
+  return { x: (centre.x - 0.5) * viewport.tileSize, y: (centre.y - 0.5) * viewport.tileSize };
+}
+
+/** Centre of a cell, in scene units. */
+export function cellCenter(viewport: SceneViewport, at: { x: number; y: number }): { x: number; y: number } {
+  const centre = viewport.grid.center(at);
+  return { x: centre.x * viewport.tileSize, y: centre.y * viewport.tileSize };
+}
+
+/** Outline of one cell as an SVG points list, centred on that cell. */
+export function cellOutline(viewport: SceneViewport, at: { x: number; y: number }): string {
+  const centre = cellCenter(viewport, at);
+  return viewport.grid.outline()
+    .map((corner) => `${(centre.x + corner.x * viewport.tileSize).toFixed(2)},${(centre.y + corner.y * viewport.tileSize).toFixed(2)}`)
+    .join(' ');
 }
