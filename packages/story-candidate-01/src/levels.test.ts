@@ -48,7 +48,7 @@ describe('candidate-01 first three chapters', () => {
   });
 
   it('maintains production-scale battlefields instead of compact demo formations', () => {
-    const audits = CANDIDATE_01_LEVELS.map(auditBattlefield);
+    const audits = CANDIDATE_01_LEVELS.map((level) => auditBattlefield(TEST_RULES, level));
     expect(audits.every((audit) => audit.width >= 20 && audit.height >= 13 && audit.cells >= 260)).toBe(true);
     expect(audits.every((audit) => audit.playerUnits >= 6 && audit.enemyUnits >= 7)).toBe(true);
     expect(audits.every((audit) => audit.playerSpan.width >= 4 && audit.playerSpan.height >= 5)).toBe(true);

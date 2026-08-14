@@ -15,6 +15,7 @@ export * from './plugins/index';
 export * from './content-builders';
 export * from './content-pack';
 export * from './grid';
+export * from './tactical-grid';
 export * from './spatial';
 export * from './forced-movement';
 export * from './tactical-space';

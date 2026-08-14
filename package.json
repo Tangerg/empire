@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Ancient Empires style turn-based tactics \u2014 headless TS core + SVG renderer + map editor",
+  "description": "Ancient Empires style turn-based tactics — headless TS core + SVG renderer + map editor",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -19,7 +19,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "bench:core": "vitest bench --run packages/battle-engine/src/__bench__/engine.bench.ts"
+    "bench:core": "vitest bench --run packages/battle-engine/src/__bench__/engine.bench.ts",
+    "sweep": "vite-node tools/replay-sweep.ts"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",

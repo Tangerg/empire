@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
-import { dirname, join, relative } from 'node:path';
+import { dirname, join, relative, sep } from 'node:path';
 
 const coreRoot = join(import.meta.dirname, '..');
 const packagesRoot = join(coreRoot, '..', '..');
@@ -582,6 +582,28 @@ describe('behaviour has an owner', () => {
       const source = readFileSync(file, 'utf8');
       const writes = /\bphase\s*=\s*'(?:playing|over|deployment)'|\bturn\+\+|\bturn\s*\+=|\bactorTurns\s*(?:\+\+|\+=|=[^=])/.test(source);
       return writes && relative(coreRoot, file) !== 'turn-cycle.ts' ? [relative(coreRoot, file)] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('lets only the geometry layer measure the board from coordinates', () => {
+    // "Distance, adjacency, facings, and where a cell sits are one strategy's
+    // answers." A hand-written `Math.abs(a.x - b.x) + Math.abs(a.y - b.y)` is
+    // the square-grid answer wearing no label, and it is right until a hex
+    // chapter ships. The campaign's level-review metrics measured that way, and
+    // the number fed a pacing assertion — the worst place for a silent wrong
+    // answer. The cause was that `tactical-grid.ts` was not exported from the
+    // package root at all: there was nothing else to call.
+    const geometry = ['grid.ts', 'tactical-grid.ts'];
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
+      // Screen space is not board space: pixels are the renderer's own units.
+      if (file.includes(`${sep}art${sep}`) || file.endsWith('board.ts')) return [];
+      if (geometry.includes(relative(coreRoot, file))) return [];
+      const source = stripStrings(stripComments(readFileSync(file, 'utf8')));
+      return /Math\.abs\([A-Za-z_$][\w.$\[\]]*\.(?:x|y)\s*-/.test(source)
+        ? [relative(packagesRoot, file)]
+        : [];
     });
 
     expect(offenders).toEqual([]);

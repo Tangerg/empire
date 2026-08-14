@@ -1,4 +1,4 @@
-import type { LevelData, LevelUnit } from '@empire/battle-engine';
+import { resolveRules, type GridRules, type LevelData, type LevelUnit, type TacticalGrid } from '@empire/battle-engine';
 
 export interface DeploymentSpan {
   width: number;
@@ -46,10 +46,22 @@ function occupiedSectors(level: LevelData, units: readonly LevelUnit[]): number 
   return sectors.size;
 }
 
-function closestContact(player: readonly LevelUnit[], enemy: readonly LevelUnit[]): number {
+/**
+ * Steps between the nearest pair of opposing units.
+ *
+ * Asked of the tiling rather than measured here. It used to be a hand-written
+ * Manhattan sum, which is the square-grid answer — the number this metric feeds
+ * (how long before the armies touch) would have been quietly wrong for a hex
+ * chapter, and wrong inside a pacing assertion, which is the worst place for it.
+ */
+function closestContact(
+  grid: TacticalGrid,
+  player: readonly LevelUnit[],
+  enemy: readonly LevelUnit[],
+): number {
   let closest = Number.POSITIVE_INFINITY;
   for (const ally of player) {
-    for (const foe of enemy) closest = Math.min(closest, Math.abs(ally.x - foe.x) + Math.abs(ally.y - foe.y));
+    for (const foe of enemy) closest = Math.min(closest, grid.distance(ally, foe));
   }
   return Number.isFinite(closest) ? closest : 0;
 }
@@ -58,8 +70,12 @@ function closestContact(player: readonly LevelUnit[], enemy: readonly LevelUnit[
  * Produces stable spatial metrics for campaign level review. These are design
  * diagnostics, not combat rules, so the battle kernel remains unaware of map
  * pacing conventions used by this campaign.
+ *
+ * It takes a `GridRules` port because a distance is the tiling's answer: the
+ * level names its tiling, the composition supplies the implementations, and a
+ * module that measures does not get to decide what a step is.
  */
-export function auditBattlefield(level: LevelData): BattlefieldAudit {
+export function auditBattlefield(rules: GridRules, level: LevelData): BattlefieldAudit {
   const player = level.units.filter((unit) => unit.owner === 1);
   const enemy = level.units.filter((unit) => unit.owner === 2);
   const combatants = [...player, ...enemy];
@@ -74,7 +90,7 @@ export function auditBattlefield(level: LevelData): BattlefieldAudit {
     playerSpan: span(player),
     enemySpan: span(enemy),
     occupiedSectors: occupiedSectors(level, combatants),
-    closestContact: closestContact(player, enemy),
+    closestContact: closestContact(rules.grids.get(resolveRules(level).grid), player, enemy),
     initialDensity: combatants.length / (level.width * level.height),
   };
 }
