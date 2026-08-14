@@ -37,7 +37,7 @@
 | 朝向调整 | 已实现 | 已实现 | 单位初始朝向仅数据可配 | 四方向 `face` Action |
 | 反应姿态 | 已实现 | 已实现 | 初始姿态仅数据可配 | 反击、防御、援护 |
 | 阵形切换 | 已实现 | 已实现 | 仅数据可配 | 单位面板列出该兵种声明的阵形，站不住的那条禁用并说明原因；再点当前阵形即解除 |
-| 登载与卸载 | 已实现 | 未实现 | 仅数据可配 | 保留乘员身份，通用游戏控制器尚无入口 |
+| 登载与卸载 | 已实现 | 已实现 | 仅数据可配 | 保留乘员身份；单位面板列出相邻载具（拒载的那条禁用并说明原因）与在载乘员，卸载在棋盘上选落点。战役已有 `c01.supply-wagon`，但尚无章节实际投入 |
 
 ### 随机与可复现
 
@@ -332,6 +332,7 @@
 | 某个阵形站在这里成不成立 | `formationInEffect(rules, state, unit, formation)`（问句不写状态；`activeFormation` 是它的便利式） |
 | 一个单位可以下哪几条阵形命令 | `formationOptions(rules, state, unit)`（菜单、禁用理由和当前阵形的唯一来源） |
 | 战前部署这一格能不能放、放下去会挤走谁 | `deploymentRefusal()`：菜单留它答 `null` 的格，指令抛它答的话；`deploymentRoster` / `deploymentSpots` / `confirmDeployment` 是同一个所有者的其余三面 |
+| 能不能上这辆车、乘员能在哪下车 | `embarkRefusal()` / `disembarkRefusal()`：同样一句话，菜单当禁用理由、指令当拒绝消息；`carrierOptions` / `passengerOptions` 是它们的菜单面 |
 | 一次失败是谁的错 | `IllegalActionError` / `DomainInvariantError` / `StoredDocumentError`（引擎里没有第四种，也不许抛裸 `Error`） |
 | 增援落点上站着人怎么办 | `spawnUnits`：这一条不到场，后面的照常（明写的边界，不是异常） |
 | 一种事件长什么样、战报怎么写 | `DefaultBattleEventPresenters` |

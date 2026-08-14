@@ -645,3 +645,97 @@ describe('arranging the line before the battle', () => {
     c.dispose();
   });
 });
+
+/**
+ * A level with a carrier standing beside two units.
+ *
+ * `transports.ts` has had embark, disembark, passenger loss and save coverage
+ * since transports were introduced, and not one shipped unit type declared
+ * `transport` — so outside unit tests, nothing in the repository had ever run
+ * it. The rules existed only in their committing form, so no menu could be
+ * built from them.
+ */
+const transportLevel = () => normaliseLevel({
+  schema: 2,
+  id: 'transport-test',
+  name: '登载',
+  width: 4,
+  height: 2,
+  terrain: ['....', '....'],
+  units: [
+    { x: 0, y: 0, unit: 'c01.supply-wagon', owner: 1, key: 'cart' },
+    { x: 1, y: 0, unit: 'c01.swordsman', owner: 1, key: 'foot' },
+    { x: 0, y: 1, unit: 'c01.knight', owner: 1, key: 'horse' },
+    { x: 3, y: 1, unit: 'c01.swordsman', owner: 2 },
+  ],
+  players: [
+    { id: 1, name: 'P1', team: 1, color: '#3f7fd8', controller: 'human', resources: {} },
+    { id: 2, name: 'P2', team: 2, color: '#d8483f', controller: 'human', resources: {} },
+  ],
+  rules: {},
+  victory: [{ type: 'routEnemies' }],
+});
+
+describe('loading and unloading a transport', () => {
+  let host: HTMLElement;
+
+  beforeEach(() => {
+    vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) =>
+      setTimeout(() => cb(performance.now()), 0) as unknown as number,
+    );
+    document.body.innerHTML = '<div id="app"></div>';
+    host = document.getElementById('app')!;
+  });
+
+  const settle = async () => {
+    for (let frame = 0; frame < 12; frame++) await new Promise((resolve) => setTimeout(resolve, 0));
+  };
+  const buttons = (root: Element, act: string) =>
+    [...root.querySelectorAll(`[data-act="${act}"]`)] as HTMLButtonElement[];
+
+  it('offers the carrier beside a unit, takes it aboard, and puts it down again', async () => {
+    const c = new GameController(transportLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board, 4 * TILE);
+
+    click(board, { x: 1, y: 0 });
+    const carriers = buttons(c.root, 'embark');
+    expect(carriers).toHaveLength(1);
+
+    carriers[0].click();
+    await settle();
+
+    // Aboard: selecting the carrier now offers putting the passenger down, and
+    // the cell the swordsman stood on has nobody to select.
+    click(board, { x: 0, y: 0 });
+    const passengers = buttons(c.root, 'disembark');
+    expect(passengers).toHaveLength(1);
+    expect(passengers[0].textContent).toContain('边境剑士');
+
+    passengers[0].click();
+    await settle();
+    expect(c.root.querySelector('.panel')!.textContent).toContain('选择目标');
+
+    click(board, { x: 1, y: 0 });
+    await settle();
+    // Back on the board: the carrier has no passenger left to put down.
+    click(board, { x: 0, y: 0 });
+    expect(buttons(c.root, 'disembark')).toHaveLength(0);
+    c.dispose();
+  });
+
+  it('shows a carrier that will not take this unit as unavailable, with the reason', () => {
+    const c = new GameController(transportLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board, 4 * TILE);
+
+    // The knight is beside the wagon too, and the wagon takes only infantry.
+    click(board, { x: 0, y: 1 });
+    expect(buttons(c.root, 'embark')).toHaveLength(0);
+    const refused = [...c.root.querySelectorAll('.unit-section button.disabled')] as HTMLButtonElement[];
+    expect(refused.some((button) => button.title.includes('不接受这个兵种'))).toBe(true);
+    c.dispose();
+  });
+});

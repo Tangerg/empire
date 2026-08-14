@@ -107,7 +107,9 @@ describe('refusals are typed, not stringly relabelled', () => {
     battle.content.units.override('knight', { transport: { capacity: 2 } });
     // A transport and a passenger two tiles apart: embarking is illegal, and the
     // refusal now comes from the transport rules themselves, instead of a plain
-    // Error that the handler caught and relabelled.
+    // Error that the handler caught and relabelled. It is in the player's
+    // language because it is shown to the player: the same sentence is the
+    // title on the disabled 登载 button.
     const state = battle.createState(makeLevel(['....'], {
       units: [u(0, 0, 'knight', 1), u(2, 0, 'soldier', 1), u(3, 0, 'soldier', 2)],
     }));
@@ -115,7 +117,7 @@ describe('refusals are typed, not stringly relabelled', () => {
     expect(() => battle.dispatch(state, { kind: 'embark', unit: passenger.id, carrier: carrier.id }))
       .toThrow(IllegalActionError);
     expect(() => battle.dispatch(state, { kind: 'embark', unit: passenger.id, carrier: carrier.id }))
-      .toThrow(/adjacent/);
+      .toThrow(/相邻/);
   });
 
   it('keeps an engine fault distinguishable from an illegal order', () => {

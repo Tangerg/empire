@@ -9,13 +9,6 @@ import type { ContentCatalog } from './content-pack';
 import type { BattlefieldMarker, Coord, GameEvent, GameState, Unit } from './types';
 import { cloneUnitState } from './unit-state';
 
-function transportProfile(state: GameState, carrierId: number, content: ContentCatalog) {
-  const carrier = requireUnit(state, carrierId);
-  const profile = content.units.get(carrier.type).transport;
-  if (!profile) throw new IllegalActionError(`unit ${carrierId} is not a transport`);
-  return { carrier, profile };
-}
-
 export function passengersOf(state: GameState, carrier: number): Unit[] {
   return state.embarkedUnits.filter((entry) => entry.carrier === carrier).map((entry) => entry.unit);
 }
@@ -25,6 +18,69 @@ export interface TransportRules extends GridRules {
   readonly content: ContentCatalog;
 }
 
+/** One carrier a unit could board, and whether it may right now. */
+export interface CarrierOption {
+  carrier: Unit;
+  /** Boarding would be accepted; otherwise `reasons` says what stops it. */
+  eligible: boolean;
+  reasons: string[];
+}
+
+/** One passenger aboard a carrier, and where it may step off. */
+export interface PassengerOption {
+  unit: Unit;
+  /** Adjacent cells this passenger may land on; empty means it is stuck. */
+  spots: Coord[];
+}
+
+/**
+ * Why this unit may not board this carrier, or `null` when it may.
+ *
+ * The one place the rule lives. `embarkUnit` throws what it answers and
+ * `carrierOptions` reports it beside a disabled entry — the same arrangement
+ * deployment uses, and for the same reason: a rule that only exists in its
+ * committing form cannot be offered by any interface, which is how transports
+ * shipped with rules, events, save coverage and nothing able to reach them.
+ */
+export function embarkRefusal(
+  rules: TransportRules,
+  state: GameState,
+  unit: Unit,
+  carrier: Unit,
+): string | null {
+  const content = rules.content;
+  if (unit.id === carrier.id) return '载具不能登载自己';
+  const profile = content.units.get(carrier.type).transport;
+  if (!profile) return `${content.units.get(carrier.type).name} 不是载具`;
+  if (!areAllies(state, unit.owner, carrier.owner)) return '载具与乘员不是友军';
+  if (boardOf(rules, state).distance(unit, carrier) !== 1) return '乘员必须与载具相邻';
+  if (passengersOf(state, carrier.id).length >= profile.capacity) return '载具已满';
+  if (content.units.get(unit.type).transport) return '载具不能登载载具';
+  const tags = content.units.get(unit.type).tags;
+  if (profile.allowedTags?.length && !profile.allowedTags.some((tag) => tags.includes(tag))) {
+    return '该载具不接受这个兵种';
+  }
+  if (profile.forbiddenTags?.some((tag) => tags.includes(tag))) return '该载具拒载这个兵种';
+  return null;
+}
+
+/** The carriers standing beside this unit, in board order, eligible or not. */
+export function carrierOptions(
+  rules: TransportRules,
+  state: GameState,
+  unit: Unit,
+): CarrierOption[] {
+  const board = boardOf(rules, state);
+  return state.units.flatMap((candidate) => {
+    if (candidate.id === unit.id) return [];
+    if (!rules.content.units.get(candidate.type).transport) return [];
+    if (!areAllies(state, unit.owner, candidate.owner)) return [];
+    if (board.distance(unit, candidate) !== 1) return [];
+    const refusal = embarkRefusal(rules, state, unit, candidate);
+    return [{ carrier: candidate, eligible: refusal === null, reasons: refusal ? [refusal] : [] }];
+  });
+}
+
 export function embarkUnit(
   rules: TransportRules,
   state: GameState,
@@ -32,23 +88,10 @@ export function embarkUnit(
   carrierId: number,
   emit: (event: GameEvent) => void,
 ): void {
-  const content = rules.content;
-  if (unitId === carrierId) throw new IllegalActionError('a transport cannot embark itself');
   const unit = requireUnit(state, unitId);
-  const { carrier, profile } = transportProfile(state, carrierId, content);
-  if (!areAllies(state, unit.owner, carrier.owner)) throw new IllegalActionError('transport and passenger are not allied');
-  if (boardOf(rules, state).distance(unit, carrier) !== 1) {
-    throw new IllegalActionError('passenger must be adjacent to transport');
-  }
-  if (passengersOf(state, carrierId).length >= profile.capacity) throw new IllegalActionError('transport is full');
-  if (content.units.get(unit.type).transport) throw new IllegalActionError('nested transports are not supported');
-  const tags = content.units.get(unit.type).tags;
-  if (profile.allowedTags?.length && !profile.allowedTags.some((tag) => tags.includes(tag))) {
-    throw new IllegalActionError('passenger type is not allowed by transport');
-  }
-  if (profile.forbiddenTags?.some((tag) => tags.includes(tag))) {
-    throw new IllegalActionError('passenger type is forbidden by transport');
-  }
+  const carrier = requireUnit(state, carrierId);
+  const refusal = embarkRefusal(rules, state, unit, carrier);
+  if (refusal) throw new IllegalActionError(refusal);
   const snapshot = cloneUnitState(unit);
   const boarding = new UnitEntity(snapshot);
   boarding.finishAction();
@@ -56,6 +99,45 @@ export function embarkUnit(
   state.embarkedUnits.push({ carrier: carrierId, unit: snapshot });
   removeUnit(state, unitId);
   emit({ type: 'unitEmbarked', unit: unitId, carrier: carrierId });
+}
+
+/** Why this passenger may not step off here, or `null` when it may. */
+export function disembarkRefusal(
+  rules: TransportRules,
+  state: GameState,
+  carrierId: number,
+  unitId: number,
+  at: Coord,
+): string | null {
+  const content = rules.content;
+  const carrier = state.units.find((candidate) => candidate.id === carrierId);
+  if (!carrier) return `载具 ${carrierId} 不在场上`;
+  if (!content.units.get(carrier.type).transport) return `${content.units.get(carrier.type).name} 不是载具`;
+  const entry = state.embarkedUnits.find((candidate) =>
+    candidate.carrier === carrierId && candidate.unit.id === unitId);
+  if (!entry) return '该单位不在这辆载具上';
+  if (!inBounds(state.map, at.x, at.y) || boardOf(rules, state).distance(carrier, at) !== 1) {
+    return '卸载格必须与载具相邻';
+  }
+  if (unitAt(state, at)) return '卸载格已被占据';
+  if (!new Battlefield(state, content).cell(at).admits(content.units.get(entry.unit.type).movementClass)) {
+    return '该乘员无法进入卸载格';
+  }
+  return null;
+}
+
+/** Who is aboard this carrier, and where each of them may step off. */
+export function passengerOptions(
+  rules: TransportRules,
+  state: GameState,
+  carrier: Unit,
+): PassengerOption[] {
+  const board = boardOf(rules, state);
+  return passengersOf(state, carrier.id).map((unit) => ({
+    unit,
+    spots: board.neighbours(carrier)
+      .filter((at) => disembarkRefusal(rules, state, carrier.id, unit.id, at) === null),
+  }));
 }
 
 export function disembarkUnit(
@@ -66,19 +148,10 @@ export function disembarkUnit(
   at: Coord,
   emit: (event: GameEvent) => void,
 ): void {
-  const content = rules.content;
-  const { carrier } = transportProfile(state, carrierId, content);
+  const refusal = disembarkRefusal(rules, state, carrierId, unitId, at);
+  if (refusal) throw new IllegalActionError(refusal);
   const index = state.embarkedUnits.findIndex((entry) => entry.carrier === carrierId && entry.unit.id === unitId);
-  if (index < 0) throw new IllegalActionError(`unit ${unitId} is not aboard transport ${carrierId}`);
-  if (!inBounds(state.map, at.x, at.y) || boardOf(rules, state).distance(carrier, at) !== 1) {
-    throw new IllegalActionError('disembark cell must be adjacent');
-  }
-  if (unitAt(state, at)) throw new IllegalActionError('disembark cell is occupied');
   const unit = state.embarkedUnits[index].unit;
-  const movement = content.units.get(unit.type).movementClass;
-  if (!new Battlefield(state, content).cell(at).admits(movement)) {
-    throw new IllegalActionError('passenger cannot enter disembark cell');
-  }
   const landing = new UnitEntity(unit);
   landing.moveTo(at);
   landing.finishAction();

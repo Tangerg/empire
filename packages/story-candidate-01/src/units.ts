@@ -67,6 +67,12 @@ export const CANDIDATE_01_UNITS: readonly UnitDef[] = [
   unit({ id: 'c01.knight', name: '王国骑士', weapons: ['c01.knight-lance', 'c01.knight-charge'], value: 340, maxHp: 116, defense: 0.17, movement: 6, movementClass: 'mounted', armorClass: 'heavy', abilities: ['attack', 'wait'], tags: ['cavalry'], blurb: '长距离冲锋的重装骑兵。' }),
   unit({ id: 'c01.legion-shield', name: '军团盾卫', weapons: ['c01.legion-spear'], value: 230, maxHp: 120, defense: 0.2, movement: 3, armorClass: 'heavy', defaultReaction: 'guard', formations: ['formation-defensive', 'formation-line'], tags: ['infantry', 'guard'], blurb: '帝国军团的稳固盾墙。' }),
   unit({ id: 'c01.gravekeeper', name: '守墓人', weapons: ['c01.lantern-staff', 'c01.oath-dispel'], value: 260, maxHp: 72, movement: 3, armorClass: 'unarmored', abilities: ['heal', 'attack', 'capture', 'wait'], tags: ['infantry', 'support', 'arcane', 'gravekeeper'], blurb: '治疗盟友并压制誓文亡灵。' }),
+  unit({
+    id: 'c01.supply-wagon', name: '灰旗辎重车', weapons: ['c01.border-blade'], value: 210,
+    maxHp: 96, defense: 0.1, movement: 5, movementClass: 'heavy', abilities: ['wait'],
+    transport: { capacity: 2, allowedTags: ['infantry'] },
+    tags: ['support', 'transport'], blurb: '把步兵送过开阔地的灰旗补给车，不载骑手与器械。',
+  }),
   unit({ id: 'c01.engineer', name: '工兵', weapons: ['c01.engineer-hammer', 'c01.satchel-charge'], value: 250, maxHp: 86, movement: 4, tags: ['infantry', 'engineer'], blurb: '擅长拆除结构与打开战场缺口。' }),
   unit({ id: 'c01.wolf-rider', name: '荒原狼骑', weapons: ['c01.wolf-spear'], value: 300, maxHp: 102, movement: 7, movementClass: 'mounted', tags: ['cavalry', 'wasteland'], blurb: '高机动侧击单位，不适合正面硬拼。' }),
   unit({ id: 'c01.skeleton-guard', name: '骸骨守卫', weapons: ['c01.undead-blade'], value: 140, maxHp: 82, defense: 0.12, movement: 3, morale: { maximum: 70, resilience: 0.5 }, tags: ['undead', 'oathbound', 'infantry'], blurb: '被誓文反复拉回战场的亡者回声。' }),

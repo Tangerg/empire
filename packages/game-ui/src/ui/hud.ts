@@ -7,6 +7,7 @@ import type { BattleRuleServices } from '@empire/battle-engine/action-system';
 import type { CommandOption } from '@empire/battle-engine/actions';
 import type { CareerOption } from '@empire/battle-engine/careers';
 import type { FormationOption } from '@empire/battle-engine/formations';
+import type { CarrierOption, PassengerOption } from '@empire/battle-engine/transports';
 import type { TacticOption } from '@empire/battle-engine/commanders';
 import type { CombatForecast } from '@empire/battle-engine/combat';
 import type { CombatModifier } from '@empire/battle-engine/combat-modifiers';
@@ -55,6 +56,10 @@ export interface HudView {
   rankNextThreshold: number | null;
   careerOptions: CareerOption[];
   formationOptions: FormationOption[];
+  /** Carriers this unit is standing beside, eligible or with a reason. */
+  carrierOptions: CarrierOption[];
+  /** Who is aboard this unit when it is a carrier, and where each may land. */
+  passengerOptions: PassengerOption[];
   /**
    * The pre-battle arrangement this side is making, or null once playing.
    *
@@ -90,6 +95,10 @@ export interface HudHandlers {
   onCareer(career: string): void;
   /** An empty id means "stand in no formation at all". */
   onFormation(formation: string | null): void;
+  /** Board the named carrier with the unit now under command. */
+  onEmbark(carrier: number): void;
+  /** Start choosing where the named passenger steps off. */
+  onDisembark(passenger: number): void;
   /** Take up one of the units being arranged before the battle. */
   onDeployPick(unit: number): void;
   /** Confirm the arrangement; the battle begins when every side has. */
@@ -220,6 +229,8 @@ export class Hud {
     facing: (arg) => this.handlers.onFacing(arg as Direction),
     career: (arg) => this.handlers.onCareer(arg),
     formation: (arg) => this.handlers.onFormation(arg || null),
+    embark: (arg) => this.handlers.onEmbark(Number(arg)),
+    disembark: (arg) => this.handlers.onDisembark(Number(arg)),
     'deploy-pick': (arg) => this.handlers.onDeployPick(Number(arg)),
     'deploy-done': () => this.handlers.onConfirmDeployment(),
     recruit: (arg) => this.handlers.onRecruit(arg),
@@ -609,6 +620,36 @@ export class Hud {
     </div>`;
   }
 
+  /**
+   * Boarding and stepping off, for the unit under command.
+   *
+   * Both lists show what is refused as well as what is offered, with the reason
+   * on the button: "载具已满" and "该载具拒载这个兵种" are decisions the player
+   * makes plans around, and hiding them makes a full transport look like a
+   * transport that does not exist.
+   */
+  private renderTransport(view: HudView): string {
+    const carriers = view.carrierOptions.length === 0 ? '' : `
+      <div class="unit-section">
+        <h4>登载</h4>
+        <div class="cmd-list">${view.carrierOptions.map((option) => `<button
+          class="btn ${option.eligible ? 'ghost' : 'disabled'}" ${option.eligible ? '' : 'disabled'}
+          ${option.eligible ? `data-act="embark"` : ''} data-arg="${option.carrier.id}"
+          title="${escapeHtml(option.reasons.join('；') || '登上这辆载具')}"
+          >${escapeHtml(view.rules.content.units.get(option.carrier.type).name)}</button>`).join('')}</div>
+      </div>`;
+    const passengers = view.passengerOptions.length === 0 ? '' : `
+      <div class="unit-section">
+        <h4>卸载</h4>
+        <div class="cmd-list">${view.passengerOptions.map((option) => `<button
+          class="btn ${option.spots.length > 0 ? 'ghost' : 'disabled'}" ${option.spots.length > 0 ? '' : 'disabled'}
+          ${option.spots.length > 0 ? `data-act="disembark"` : ''} data-arg="${option.unit.id}"
+          title="${escapeHtml(option.spots.length > 0 ? `可在 ${option.spots.length} 格卸载` : '周围没有可以卸载的格子')}"
+          >${escapeHtml(view.rules.content.units.get(option.unit.type).name)}</button>`).join('')}</div>
+      </div>`;
+    return `${carriers}${passengers}`;
+  }
+
   /** Only offered for a unit the player may still give orders to. */
   private unitControls(view: HudView, unit: Unit): string {
     if (view.reactionUnit !== unit.id) return '';
@@ -630,8 +671,9 @@ export class Hud {
           ${escapeHtml(option.formation.name)}${option.current ? ' · 解除' : ''}
         </button>`).join('')}</div>
       </div>`;
-    if (view.careerOptions.length === 0) return `${stances}${formations}`;
-    return `${stances}${formations}
+    const transport = this.renderTransport(view);
+    if (view.careerOptions.length === 0) return `${stances}${formations}${transport}`;
+    return `${stances}${formations}${transport}
       <div class="unit-section">
         <h4>职业树与转职</h4>
         <div class="cmd-list">${view.careerOptions.map((option) => `<button class="btn ${option.eligible ? 'ghost' : 'disabled'}" ${option.eligible ? '' : 'disabled'}

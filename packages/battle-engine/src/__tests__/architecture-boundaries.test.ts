@@ -587,6 +587,25 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('lets only the transport rules read who is aboard', () => {
+    // Same shape as the deployment roster below: `embarkedUnits` is the
+    // transport aggregate, and a second reader is how "can this unit board" and
+    // "may this unit board" end up as two different answers. The save writer and
+    // the reference checker read it as *data* — every passenger is still a unit
+    // whose content ids must be checked and written down — which is why they are
+    // named here rather than the rule being copied into them. `types.ts`
+    // declares the field; declaring is not reading.
+    const owners = ['transports.ts', 'state.ts', 'battle-save.ts', 'rule-references.ts', 'types.ts'];
+    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
+      const source = stripStrings(stripComments(readFileSync(file, 'utf8')));
+      return /\bembarkedUnits\b/.test(source) && !owners.includes(relative(coreRoot, file))
+        ? [relative(coreRoot, file)]
+        : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('lets only the deployment rules read the deployment roster', () => {
     // The pre-battle arrangement is one aggregate, and it used to have two
     // owners: the action handler knew about zones, swaps and terrain, while

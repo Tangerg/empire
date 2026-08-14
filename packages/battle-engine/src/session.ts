@@ -79,6 +79,14 @@ export class GameSession {
     return this.engine.formationOptions(this.state, unit);
   }
 
+  carrierOptions(unit: Unit) {
+    return this.engine.carrierOptions(this.state, unit);
+  }
+
+  passengerOptions(carrier: Unit) {
+    return this.engine.passengerOptions(this.state, carrier);
+  }
+
   deploymentRoster() {
     return this.engine.deploymentRoster(this.state);
   }

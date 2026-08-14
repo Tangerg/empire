@@ -23,6 +23,7 @@ import type { ContentCatalog } from './content-pack';
 import { careerOptions } from './careers';
 import { formationOptions } from './formations';
 import { deploymentRoster, deploymentSpots } from './deployment';
+import { carrierOptions, passengerOptions } from './transports';
 import { activeTurnOrder, mayAct, type TurnOrderPolicy } from './turn-order';
 import type { Action, Coord, GameEvent, GameState, LevelData, Unit, WeaponId } from './types';
 
@@ -197,6 +198,16 @@ export class BattleEngine {
 
   formationOptions(state: GameState, unit: Unit) {
     return formationOptions(this.rules, state, unit);
+  }
+
+  /** Carriers standing beside this unit, with a reason on each it may not board. */
+  carrierOptions(state: GameState, unit: Unit) {
+    return carrierOptions(this.rules, state, unit);
+  }
+
+  /** Who is aboard this carrier, and where each of them may step off. */
+  passengerOptions(state: GameState, carrier: Unit) {
+    return passengerOptions(this.rules, state, carrier);
   }
 
   /** The pre-battle arrangement now open, or `null` if the battle is playing. */

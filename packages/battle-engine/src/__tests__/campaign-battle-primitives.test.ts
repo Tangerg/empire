@@ -6,7 +6,8 @@ import { compositeStatus, moveComposite } from '../composites';
 import { activeFormation, formationInEffect, validateFormationChange } from '../formations';
 import { IllegalActionError } from '../domain/errors';
 import { changeMorale } from '../morale';
-import { embarkUnit } from '../transports';
+import { cloneState } from '../state';
+import { carrierOptions, disembarkUnit, embarkUnit, passengerOptions } from '../transports';
 import type { GameEvent } from '../types';
 import { TEST_CONTENT, makeLevel, testApplyWith, testChooseAction, testCommands, testCondition, testObjectiveOutcome, testScenarioTriggers, testState, u } from './fixtures';
 
@@ -117,6 +118,57 @@ describe('campaign-grade battle primitives', () => {
     );
     expect(state.units.find((unit) => unit.id === passenger.id)).toMatchObject({ x: 2, y: 0, done: true });
     expect(events.some((event) => event.type === 'unitDisembarked')).toBe(true);
+  });
+
+  it('offers the carriers and landing cells the transport actions accept', () => {
+    const rules = createBattleRules({ content: TEST_CONTENT });
+    // `^` is mountain: a foot soldier holds it, so it is a landing cell; the
+    // archer is refused by tag, and the full carrier is refused by capacity.
+    rules.content.units.override('knight', {
+      transport: { capacity: 1, allowedTags: ['infantry'], forbiddenTags: ['ranged'] },
+    });
+    const state = testState(makeLevel(['..^.', '....'], {
+      units: [
+        { ...u(0, 0, 'soldier', 1), key: 'foot' },
+        { ...u(1, 0, 'knight', 1), key: 'cart' },
+        { ...u(1, 1, 'archer', 1), key: 'bow' },
+        u(3, 1, 'soldier', 2),
+      ],
+    }));
+    const foot = state.units.find((unit) => unit.key === 'foot')!;
+    const cart = state.units.find((unit) => unit.key === 'cart')!;
+    const bow = state.units.find((unit) => unit.key === 'bow')!;
+
+    expect(carrierOptions(rules, state, foot))
+      .toEqual([expect.objectContaining({ carrier: cart, eligible: true, reasons: [] })]);
+    // The archer stands beside the same carrier and is listed with its reason,
+    // rather than hidden: "this transport will not take you" is a plan the
+    // player makes, and a missing button looks like a missing transport.
+    expect(carrierOptions(rules, state, bow))
+      .toEqual([expect.objectContaining({ eligible: false, reasons: ['该载具拒载这个兵种'] })]);
+
+    embarkUnit(rules, state, foot.id, cart.id, () => {});
+    // Capacity is checked before the tag rules, so a full carrier says so.
+    rules.content.units.override('knight', { transport: { capacity: 1, allowedTags: ['infantry'] } });
+    expect(carrierOptions(rules, state, bow)[0]).toMatchObject({ eligible: false, reasons: ['载具已满'] });
+
+    const aboard = passengerOptions(rules, state, cart);
+    expect(aboard).toHaveLength(1);
+    // The cell the soldier vacated and the mountain it can hold; not the
+    // archer's cell, and not the row below the board.
+    expect(aboard[0].spots.map((at) => `${at.x},${at.y}`).sort()).toEqual(['0,0', '2,0']);
+
+    // Menu and order agree on every cell of the board.
+    for (let y = 0; y < 2; y++) {
+      for (let x = 0; x < 4; x++) {
+        const at = { x, y };
+        const listed = aboard[0].spots.some((spot) => spot.x === x && spot.y === y);
+        const probe = cloneState(state);
+        const attempt = () => disembarkUnit(rules, probe, cart.id, foot.id, at, () => {});
+        if (listed) expect(attempt).not.toThrow();
+        else expect(attempt).toThrow(IllegalActionError);
+      }
+    }
   });
 
   it('keeps transport-loss invariants inside the battle aggregate', () => {

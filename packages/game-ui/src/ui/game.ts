@@ -31,6 +31,7 @@ import {
   DEPLOYING,
   DeploymentSelection,
   DestinationSelection,
+  DisembarkSelection,
   IDLE,
   TacticTargetSelection,
   TargetSelection,
@@ -132,6 +133,8 @@ export class GameController {
       onFacing: (facing) => void this.chooseFacing(facing),
       onCareer: (career) => void this.chooseCareer(career),
       onFormation: (formation) => void this.chooseFormation(formation),
+      onEmbark: (carrier) => void this.embark(carrier),
+      onDisembark: (passenger) => this.chooseDisembark(passenger),
       onDeployPick: (unit) => this.pickDeployUnit(unit),
       onConfirmDeployment: () => void this.confirmDeployment(),
       onCancel: () => this.cancel(),
@@ -578,6 +581,23 @@ export class GameController {
     await this.dispatch({ kind: 'endTurn' });
   }
 
+  /** Put the unit under command aboard an adjacent carrier. */
+  private async embark(carrier: number): Promise<void> {
+    const unit = this.commandableUnit;
+    if (!unit || this.busy || !this.isHumanTurn) return;
+    await this.dispatch({ kind: 'embark', unit: unit.id, carrier });
+  }
+
+  /** Arm the landing cells for one passenger of the carrier under command. */
+  private chooseDisembark(passenger: number): void {
+    const carrier = this.commandableUnit;
+    if (!carrier || this.busy || !this.isHumanTurn) return;
+    const option = this.session.passengerOptions(carrier).find((entry) => entry.unit.id === passenger);
+    if (!option || option.spots.length === 0) return;
+    this.selection = new DisembarkSelection(carrier.id, passenger, option.spots);
+    this.refresh();
+  }
+
   /** Hand the arranged line over and let the battle begin. */
   private async confirmDeployment(): Promise<void> {
     if (this.busy || this.state.phase !== 'deployment' || !this.isHumanInput) return;
@@ -750,6 +770,10 @@ export class GameController {
         : null,
       careerOptions: commandable ? this.session.careerOptions(commandable) : [],
       formationOptions: commandable ? this.session.formationOptions(commandable) : [],
+      carrierOptions: commandable ? this.session.carrierOptions(commandable) : [],
+      // Passengers belong to the carrier whether or not it may still act, but
+      // only a commandable carrier can be told to put them down.
+      passengerOptions: commandable ? this.session.passengerOptions(commandable) : [],
       deployment: roster && { units: [...roster.units], selected: this.selection.unitId },
       targeting: this.selection.targetingLabel,
       recruitAt: this.selection.recruitAt,

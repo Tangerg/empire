@@ -295,6 +295,44 @@ function deploymentSelection(context: SelectionContext, at: Coord): Selection {
   return DEPLOYING;
 }
 
+/** A passenger is stepping off, and the board is waiting for the cell. */
+export class DisembarkSelection extends Selection {
+  constructor(
+    private readonly carrier: number,
+    readonly passenger: number,
+    private readonly candidates: readonly Coord[],
+  ) {
+    super();
+  }
+
+  override get unitId(): number {
+    return this.carrier;
+  }
+
+  override get targets(): readonly Coord[] {
+    return this.candidates;
+  }
+
+  override get targetingLabel(): string {
+    return '卸载';
+  }
+
+  click(_context: SelectionContext, at: Coord): ClickOutcome {
+    if (!this.candidates.some((candidate) => sameCoord(candidate, at))) return { selection: IDLE };
+    return {
+      selection: this,
+      action: { kind: 'disembark', carrier: this.carrier, unit: this.passenger, at },
+    };
+  }
+
+  override paint(context: SelectionContext, overlay: BoardOverlay): void {
+    const carrier = this.unitIn(context);
+    if (carrier) overlay.selected = { x: carrier.x, y: carrier.y };
+    // Stepping off is not an attack: the landing cells take the helpful tint.
+    for (const at of this.candidates) overlay.heal.add(idx(context.state.map, at.x, at.y));
+  }
+}
+
 /** A commander's tactic is waiting for the tile it applies to. */
 export class TacticTargetSelection extends Selection {
   constructor(
