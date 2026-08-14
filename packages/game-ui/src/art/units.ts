@@ -1,5 +1,5 @@
+import type { ArtDirection } from './direction';
 import type { UnitTypeId } from '@empire/battle-engine/types';
-import { resolveArt } from './ports';
 import { PAL, shade } from './palette';
 
 /**
@@ -182,17 +182,17 @@ const sprites: Record<UnitTypeId, Sprite> = {
     <path d="M8.6 18.4h6v2.2h-6z" fill="${c.dark}"/>`,
 };
 
-export function unitSpriteMarkup(type: UnitTypeId, team: string): string {
-  const runtime = resolveArt((provider) => provider.unitMarkup?.(type, team));
+export function unitSpriteMarkup(art: ArtDirection, type: UnitTypeId, team: string): string {
+  const runtime = art.resolve((provider) => provider.unitMarkup?.(type, team));
   if (runtime) return runtime;
   const sprite = sprites[type] ?? sprites.soldier;
   return `<g class="sprite-pixel" shape-rendering="crispEdges">${sprite(spriteColors(team))}</g>`;
 }
 
 /** Standalone svg string, for palettes, menus and the recruit dialog. */
-export function unitIcon(type: UnitTypeId, team: string, size = 32): string {
-  const runtime = resolveArt((provider) => provider.unitIcon?.(type, team, size));
+export function unitIcon(art: ArtDirection, type: UnitTypeId, team: string, size = 32): string {
+  const runtime = art.resolve((provider) => provider.unitIcon?.(type, team, size));
   if (runtime) return runtime;
-  return `<svg viewBox="0 0 32 32" width="${size}" height="${size}" shape-rendering="crispEdges">${unitSpriteMarkup(type, team)}</svg>`;
+  return `<svg viewBox="0 0 32 32" width="${size}" height="${size}" shape-rendering="crispEdges">${unitSpriteMarkup(art, type, team)}</svg>`;
 }
 

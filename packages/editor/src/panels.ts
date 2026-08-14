@@ -1,4 +1,5 @@
 import { icon } from '@empire/game-ui/art/icons';
+import { GENERIC_ART } from '@empire/game-ui/art/direction';
 import { terrainSwatch } from '@empire/game-ui/art/terrain';
 import { unitIcon } from '@empire/game-ui/art/units';
 import { escapeHtml } from '@empire/game-ui/ui/html';
@@ -120,7 +121,7 @@ export class EditorPanels {
             .map(
               (terrain, index) => `<button class="swatch ${brush.terrain === terrain.id ? 'active' : ''}"
                 data-act="terrain" data-arg="${terrain.id}" title="${escapeHtml(terrain.name)} · 字符 ${terrainCharacter(content, terrain.id) ?? '?'}${index < 9 ? ` · 快捷键 ${index + 1}` : ''}">
-                ${terrainSwatch(terrain.id, terrain.capturable ? ownerColor : undefined)}
+                ${terrainSwatch(GENERIC_ART, terrain.id, terrain.capturable ? ownerColor : undefined)}
                 <span>${escapeHtml(terrain.name)}</span>
               </button>`,
             )
@@ -164,7 +165,7 @@ export class EditorPanels {
             .map(
               (definition) => `<button class="unit-chip ${brush.unitType === definition.id ? 'active' : ''}"
                 data-act="unit" data-arg="${definition.id}" title="${escapeHtml(definition.name)} · ${escapeHtml(unitRecruitCost(content, definition.id))}">
-                ${unitIcon(definition.id, ownerColor, 30)}
+                ${unitIcon(GENERIC_ART, definition.id, ownerColor, 30)}
                 <span>${escapeHtml(definition.name)}</span>
               </button>`,
             )

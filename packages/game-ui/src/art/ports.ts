@@ -42,22 +42,4 @@ export interface ArtProvider {
   effectMarkup?(topic: string, cx?: number, cy?: number): string | null;
 }
 
-const providers: ArtProvider[] = [];
-
-export function registerArtProvider(provider: ArtProvider): () => void {
-  if (providers.some((entry) => entry.id === provider.id)) return () => {};
-  providers.unshift(provider);
-  return () => {
-    const index = providers.indexOf(provider);
-    if (index >= 0) providers.splice(index, 1);
-  };
-}
-
-export function resolveArt<T>(select: (provider: ArtProvider) => T | null | undefined): T | null {
-  for (const provider of providers) {
-    const result = select(provider);
-    if (result != null) return result;
-  }
-  return null;
-}
 

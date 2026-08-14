@@ -6,7 +6,12 @@ import type {
   UnitTypeId,
   WeaponId,
 } from '@empire/battle-engine/types';
-import { candidate01Asset, candidate01AssetUrl, type Candidate01RuntimeAsset } from './candidate-01-assets';
+import {
+  candidate01Asset,
+  candidate01AssetUrl,
+  candidate01TryAsset,
+  type Candidate01RuntimeAsset,
+} from './candidate-01-assets';
 import {
   CANDIDATE_01_MAP_STRUCTURE_ART,
   CANDIDATE_01_STRUCTURE_ART,
@@ -191,6 +196,20 @@ export function candidate01FxMarkup(topic: string, cx = 0, cy = 0): string {
 
 /** HTML icon for HUD commands, equipment and state chips. */
 export function candidate01IconMarkup(topic: string, size = 28, className = 'candidate-art-icon'): string {
-  const record = candidate01Asset(topic);
-  return `<img src="${attr(record.url)}" width="${size}" height="${size}" class="${attr(className)}" alt="" aria-hidden="true"/>`;
+  return iconMarkupFor(candidate01Asset(topic), size, className);
 }
+
+/**
+ * The icon for a topic this pack may not draw.
+ *
+ * The provider used to call the throwing version inside `try { } catch { return
+ * null }`, so a topic the pack simply has no art for and a defect in asset
+ * resolution came back as the same quiet null.
+ */
+export function candidate01TryIconMarkup(topic: string, size = 28, className = 'candidate-art-icon'): string | null {
+  const record = candidate01TryAsset(topic);
+  return record ? iconMarkupFor(record, size, className) : null;
+}
+
+const iconMarkupFor = (record: Candidate01RuntimeAsset, size: number, className: string): string =>
+  `<img src="${attr(record.url)}" width="${size}" height="${size}" class="${attr(className)}" alt="" aria-hidden="true"/>`;

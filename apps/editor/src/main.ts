@@ -5,7 +5,6 @@ import { createBattleEngine } from '@empire/battle-engine/plugins/default';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
-import { registerCandidate01Presentation } from '@empire/story-candidate-01/presentation';
 import { EditorApp, initialLevel } from '@empire/editor';
 
 /** Composition root: this app declares its own content, nothing ambient. */
@@ -15,6 +14,5 @@ new ContentPackInstaller(content).install(
   ANCIENT_EMPIRES_CONTENT_PACK,
   CANDIDATE_01_CONTENT_PACK,
 );
-registerCandidate01Presentation();
 
 new EditorApp(createBattleEngine({ content }).rules, initialLevel(content)).mount(document.getElementById('app')!);

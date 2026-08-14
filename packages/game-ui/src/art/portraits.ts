@@ -1,5 +1,5 @@
+import type { ArtDirection } from './direction';
 import type { UnitTypeId } from '@empire/battle-engine/types';
-import { resolveArt } from './ports';
 import { PAL, shade } from './palette';
 import { spriteColors, type SpriteColors } from './units';
 
@@ -194,11 +194,11 @@ const portraits: Record<UnitTypeId, Portrait> = {
 /** Gradient/clip ids must be unique per instance: two teams can be on screen. */
 let uid = 0;
 
-export function portraitMarkup(type: UnitTypeId, team: string): string {
-  const provided = resolveArt((provider) => provider.portraitMarkup?.(type, team));
+export function portraitMarkup(art: ArtDirection, type: UnitTypeId, team: string): string {
+  const provided = art.resolve((provider) => provider.portraitMarkup?.(type, team));
   if (provided) return provided;
   const c = spriteColors(team);
-  const art = (portraits[type] ?? portraits.soldier)(c);
+  const face = (portraits[type] ?? portraits.soldier)(c);
   const key = `${type}-${++uid}`;
   return `
     <defs>
@@ -211,14 +211,15 @@ export function portraitMarkup(type: UnitTypeId, team: string): string {
     <g clip-path="url(#pc-${key})">
       <rect width="${FRAME_W}" height="${FRAME_H}" fill="url(#pg-${key})"/>
       <circle cx="48" cy="46" r="40" fill="#ffffff" opacity="0.14"/>
-      ${art}
+      ${face}
     </g>
     <rect x="0.75" y="0.75" width="${FRAME_W - 1.5}" height="${FRAME_H - 1.5}" rx="8" fill="none" stroke="${shade(team, -0.4)}" stroke-width="1.5"/>`;
 }
 
-export function portraitSvg(type: UnitTypeId, team: string, width = 96): string {
+export function portraitSvg(art: ArtDirection, type: UnitTypeId, team: string, width = 96): string {
   const height = Math.round((width / FRAME_W) * FRAME_H);
   return `<svg viewBox="0 0 ${FRAME_W} ${FRAME_H}" width="${width}" height="${height}" class="portrait">${portraitMarkup(
+    art,
     type,
     team,
   )}</svg>`;

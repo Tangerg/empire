@@ -1,5 +1,6 @@
 export * from './art/battle-presentation';
 export * from './art/board-decorations';
+export * from './art/direction';
 export * from './art/ports';
 export * from './art/runtime-raster';
 export * from './art/environment-catalog';

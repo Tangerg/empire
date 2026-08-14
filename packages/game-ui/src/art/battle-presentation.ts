@@ -40,7 +40,8 @@ const EMPTY_SCENE_LAYERS: SceneLayerMarkup = Object.freeze({
   overUnits: '',
 });
 
-const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
+/** The look a level gets when no painted scene claims it. */
+export const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
   id: 'generic',
   decorations: SquareBoardDecorations,
   matches: () => true,
@@ -53,17 +54,6 @@ const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
   effect: () => '',
 });
 
-const presentations: BattlePresentation[] = [];
-
-export function registerBattlePresentation(presentation: BattlePresentation): () => void {
-  if (presentations.some((entry) => entry.id === presentation.id)) return () => {};
-  presentations.unshift(presentation);
-  return () => {
-    const index = presentations.indexOf(presentation);
-    if (index >= 0) presentations.splice(index, 1);
-  };
-}
-
 /**
  * How the board draws its tactical layer for this art. Painted scenes without a
  * stated preference keep the grid, which is the look that works over anything.
@@ -71,7 +61,3 @@ export function registerBattlePresentation(presentation: BattlePresentation): ()
 export const decorationsFor = (presentation: BattlePresentation): BoardDecorations =>
   presentation.decorations ?? SquareBoardDecorations;
 
-/** Resolve art policy at the composition edge; the board stays story-agnostic. */
-export function battlePresentation(levelId: string): BattlePresentation {
-  return presentations.find((presentation) => presentation.matches(levelId)) ?? GENERIC_PRESENTATION;
-}

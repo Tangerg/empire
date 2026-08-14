@@ -1,5 +1,5 @@
 import { icon } from '../art/icons';
-import { resolveArt } from '../art/ports';
+import type { ArtDirection } from '../art/direction';
 import { portraitSvg } from '../art/portraits';
 import { unitIcon } from '../art/units';
 import { PAL } from '../art/palette';
@@ -215,7 +215,11 @@ export class Hud {
     continue: () => this.handlers.onContinue(),
   };
 
-  constructor(private readonly handlers: HudHandlers) {
+  constructor(
+    /** The art this panel draws with; composed by the application root. */
+    private readonly art: ArtDirection,
+    private readonly handlers: HudHandlers,
+  ) {
     this.topEl.className = 'topbar';
     this.panelEl.className = 'panel';
     this.modalEl.className = 'modal-root';
@@ -265,7 +269,7 @@ export class Hud {
           const active = unit.id === view.turnOrder.activeUnit && index === 0;
           return `<span class="order-slot ${active ? 'is-active' : ''}" style="--team:${owner?.color ?? PAL.neutral}"
             title="${escapeHtml(definition.name)} · ${escapeHtml(owner?.name ?? '')}">
-            ${unitIcon(unit.type, owner?.color ?? PAL.neutral, active ? 26 : 20)}
+            ${unitIcon(this.art, unit.type, owner?.color ?? PAL.neutral, active ? 26 : 20)}
           </span>`;
         })
         .join('')}
@@ -362,8 +366,8 @@ export class Hud {
     };
     const commandIcon = (command: CommandOption): string => {
       return (command.weapon
-        ? resolveArt((provider) => provider.weaponIcon?.(command.weapon!))
-        : resolveArt((provider) => provider.abilityIcon?.(command.ability)))
+        ? this.art.resolve((provider) => provider.weaponIcon?.(command.weapon!))
+        : this.art.resolve((provider) => provider.abilityIcon?.(command.ability)))
         ?? icon(iconOf[command.ability] ?? 'crosshair');
     };
     return `<section class="card accent">
@@ -390,7 +394,7 @@ export class Hud {
         ${view.tactics
           .map(
             (tactic) => `<button class="btn cmd" data-act="tactic" data-arg="${escapeHtml(tactic.key)}">
-              ${resolveArt((provider) => provider.abilityIcon?.(tactic.id)) ?? icon('flag')}<span>${escapeHtml(tactic.name)}</span><em>${escapeHtml(formatAmounts(view.resources, tactic.costs))}</em>
+              ${this.art.resolve((provider) => provider.abilityIcon?.(tactic.id)) ?? icon('flag')}<span>${escapeHtml(tactic.name)}</span><em>${escapeHtml(formatAmounts(view.resources, tactic.costs))}</em>
             </button>`,
           )
           .join('')}
@@ -465,7 +469,7 @@ export class Hud {
   private unitHeader(view: HudView, unit: Unit, definition: UnitDef): string {
     const owner = view.state.players.find((player) => player.id === unit.owner);
     return `<div class="unit-head">
-      ${portraitSvg(unit.type, owner?.color ?? PAL.neutral, 84)}
+      ${portraitSvg(this.art, unit.type, owner?.color ?? PAL.neutral, 84)}
       <div class="unit-meta">
         <div class="unit-name">${escapeHtml(definition.name)}
           <span class="team-tag" style="--team:${owner?.color}">${escapeHtml(owner?.name ?? '中立')}</span>
@@ -525,7 +529,7 @@ export class Hud {
           ? ` · 消耗 ${formatAmounts(view.resources, weapon.resourceCosts)}`
           : '';
         const stock = accounts.length > 0 ? accounts.join(' · ') : '无限制';
-        const art = resolveArt((provider) => provider.weaponIcon?.(id)) ?? '';
+        const art = this.art.resolve((provider) => provider.weaponIcon?.(id)) ?? '';
         return `<div class="kv wrap art-kv"><span>${art}<i>${escapeHtml(weapon.name)} · ${content.damageTypes.get(weapon.damageType).name} ${weapon.power} · 射程 ${range}</i></span><b>${escapeHtml(stock)}${cooldown}${escapeHtml(requirements)}${escapeHtml(costs)}</b></div>`;
       }).join('')}
     </div>`;
@@ -544,7 +548,7 @@ export class Hud {
       <h4>战场状态</h4>
       ${unit.statuses.length > 0
         ? unit.statuses.map((status) => {
-          const art = resolveArt((provider) => provider.statusIcon?.(status.id)) ?? '';
+          const art = this.art.resolve((provider) => provider.statusIcon?.(status.id)) ?? '';
           return `<div class="kv art-kv"><span>${art}<i>${escapeHtml(content.statuses.get(status.id).name)}</i></span><b>${status.remaining} 回合${status.stacks > 1 ? ` · ${status.stacks} 层` : ''}</b></div>`;
         }).join('')
         : '<div class="hint">无状态效果</div>'}
@@ -614,7 +618,7 @@ export class Hud {
     const state = view.state;
     const viewer = state.players.find((player) => player.controller === 'human') ?? state.players[0];
     return `<section class="card">
-      <h3 class="art-heading">${resolveArt((provider) => provider.iconMarkup?.('C01-HUD-05')) ?? icon('flag')}<span>作战目标</span></h3>
+      <h3 class="art-heading">${this.art.resolve((provider) => provider.iconMarkup?.('C01-HUD-05')) ?? icon('flag')}<span>作战目标</span></h3>
       <ul class="obj-list">
         ${viewer.objectives
           .filter((objective) => !viewer.objectiveStates[objective.id!]?.hidden)
@@ -678,7 +682,7 @@ export class Hud {
     const maximumRange = Math.max(...weapons.map((weapon) => weapon.maxRange));
     return `<button class="recruit-card ${option.affordable ? '' : 'disabled'}"
       ${option.affordable ? `data-act="recruit"` : ''} data-arg="${option.unit}">
-      <div class="rc-art">${unitIcon(option.unit, teamColor, 46)}</div>
+      <div class="rc-art">${unitIcon(this.art, option.unit, teamColor, 46)}</div>
       <div class="rc-body">
         <div class="rc-name">${escapeHtml(definition.name)}<span class="rc-cost">${icon('coin')}${escapeHtml(formatAmounts(view.resources, option.costs))}</span></div>
         <div class="rc-stats">

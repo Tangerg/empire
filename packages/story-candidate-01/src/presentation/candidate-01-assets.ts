@@ -125,6 +125,11 @@ export function candidate01Asset(topicId: string): Candidate01RuntimeAsset {
   return record;
 }
 
+/** Does this pack draw that topic at all? A question, so it answers null. */
+export function candidate01TryAsset(topicId: string): Candidate01RuntimeAsset | null {
+  return catalog.get(topicId) ?? null;
+}
+
 export function candidate01AssetUrl(topicId: string): string {
   return candidate01Asset(topicId).url;
 }

@@ -1,3 +1,4 @@
+import { GENERIC_ART } from '../direction';
 import { describe, expect, it } from 'vitest';
 import { emptyLevel, mapFromLevel } from '@empire/battle-engine/level';
 import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../battlefield-layer';
@@ -14,7 +15,7 @@ describe('shared battlefield feature layer', () => {
     map.cliffs.push({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } });
     map.directionalCover.push({ at: { x: 1, y: 1 }, sides: { north: 'half', east: 'full' } });
 
-    const markup = battlefieldFeatureMarkup(map);
+    const markup = battlefieldFeatureMarkup(GENERIC_ART, map);
     expect(markup).toContain('>2</text>');
     expect(markup).toContain('#f0b24f');
     expect(markup).toContain('#4f9bc7');
@@ -37,7 +38,7 @@ describe('shared battlefield feature layer', () => {
     const map = mapFromLevel(emptyLevel(3, 2), TEST_CATALOG);
     map.elevation = [2, 2, 0, 2, 2, 1];
 
-    const markup = battlefieldFeatureMarkup(map);
+    const markup = battlefieldFeatureMarkup(GENERIC_ART, map);
     expect(markup.match(/class="elevation-badge"/g)).toHaveLength(2);
   });
 });

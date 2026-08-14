@@ -1,8 +1,8 @@
 import type { UnitTypeId } from '@empire/battle-engine';
 import {
-  registerArtProvider,
+  ArtDirection,
   GroundBoardDecorations,
-  registerBattlePresentation,
+  type ArtProvider,
   type BattlePresentation,
   type StoryCampaignAdapter,
 } from '@empire/game-ui';
@@ -22,6 +22,7 @@ import {
   candidate01CoverPropMarkup,
   candidate01FxMarkup,
   candidate01IconMarkup,
+  candidate01TryIconMarkup,
   candidate01MarkerMarkup,
   candidate01StructureMarkup,
   candidate01TerrainMarkup,
@@ -39,7 +40,6 @@ import {
   CANDIDATE_01_WEAPON_ART,
 } from './candidate-01-bindings';
 
-let registered = false;
 let portraitSerial = 0;
 
 const attr = (value: string): string =>
@@ -74,33 +74,39 @@ export const CANDIDATE_01_BATTLE_PRESENTATION: BattlePresentation = Object.freez
   healFx: 'C01-FX-17',
 });
 
-/** Application composition root: the shared renderer never imports this story package. */
-export function registerCandidate01Presentation(): void {
-  if (registered) return;
-  registered = true;
-  registerBattlePresentation(CANDIDATE_01_BATTLE_PRESENTATION);
-  registerArtProvider({
-    id: 'candidate-01',
-    unitMarkup: candidate01UnitMarkup,
-    unitIcon: candidate01UnitIcon,
-    terrainMarkup: candidate01TerrainMarkup,
-    portraitMarkup,
-    structureMarkup: () => null,
-    iconMarkup: (topic, size, className) => {
-      try { return candidate01IconMarkup(topic, size, className); } catch { return null; }
-    },
-    abilityIcon: (ability) => CANDIDATE_01_ABILITY_ART[ability]
-      ? candidate01IconMarkup(CANDIDATE_01_ABILITY_ART[ability]) : null,
-    weaponIcon: (weapon) => CANDIDATE_01_WEAPON_ART[weapon]
-      ? candidate01IconMarkup(CANDIDATE_01_WEAPON_ART[weapon]!) : null,
-    statusIcon: (status) => CANDIDATE_01_STATUS_ART[status]
-      ? candidate01IconMarkup(CANDIDATE_01_STATUS_ART[status]) : null,
-    coverMarkup: candidate01CoverPropMarkup,
-    markerMarkup: () => null,
-    weaponFx: candidate01WeaponFxTopic,
-    effectMarkup: candidate01FxMarkup,
-  });
-}
+/**
+ * Every drawing this pack answers for, as one provider.
+ *
+ * Composed rather than registered: it used to push itself into two module-level
+ * arrays behind an idempotence flag, so the theme depended on which app had
+ * imported which package first, and two packs answering for the same unit would
+ * have resolved by installation order.
+ */
+export const CANDIDATE_01_ART_PROVIDER: ArtProvider = {
+  id: 'candidate-01',
+  unitMarkup: candidate01UnitMarkup,
+  unitIcon: candidate01UnitIcon,
+  terrainMarkup: candidate01TerrainMarkup,
+  portraitMarkup,
+  structureMarkup: () => null,
+  iconMarkup: candidate01TryIconMarkup,
+  abilityIcon: (ability) => CANDIDATE_01_ABILITY_ART[ability]
+    ? candidate01IconMarkup(CANDIDATE_01_ABILITY_ART[ability]) : null,
+  weaponIcon: (weapon) => CANDIDATE_01_WEAPON_ART[weapon]
+    ? candidate01IconMarkup(CANDIDATE_01_WEAPON_ART[weapon]!) : null,
+  statusIcon: (status) => CANDIDATE_01_STATUS_ART[status]
+    ? candidate01IconMarkup(CANDIDATE_01_STATUS_ART[status]) : null,
+  coverMarkup: candidate01CoverPropMarkup,
+  markerMarkup: () => null,
+  weaponFx: candidate01WeaponFxTopic,
+  effectMarkup: candidate01FxMarkup,
+};
+
+/** This pack's art, ready for an application root to hand to a shell. */
+export const CANDIDATE_01_ART = new ArtDirection(
+  [CANDIDATE_01_ART_PROVIDER],
+  [CANDIDATE_01_BATTLE_PRESENTATION],
+);
 
 const JOIN_AFTER: Readonly<Record<string, number>> = { mirelle: 3, bran: 4, tasha: 7, ivra: 9 };
 const RELATION_LABELS: Readonly<Record<string, string>> = {

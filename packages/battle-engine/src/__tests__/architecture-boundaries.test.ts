@@ -23,6 +23,13 @@ function runtimeTypeScriptFiles(directory: string): string[] {
   });
 }
 
+/** Every shipped story package, which the older guards never looked at. */
+function storyPackageSources(): string[] {
+  return readdirSync(packagesRoot)
+    .filter((entry) => entry.startsWith('story-'))
+    .flatMap((entry) => runtimeTypeScriptFiles(join(packagesRoot, entry, 'src')));
+}
+
 function localCoreImports(file: string, files: ReadonlySet<string>): string[] {
   const source = readFileSync(file, 'utf8');
   return [...source.matchAll(/from\s+['"](\.\.?\/[^'"]+)['"]|import\s+['"](\.\.?\/[^'"]+)['"]/g)]
@@ -199,6 +206,36 @@ describe('no ambient content', () => {
     const pattern = new RegExp(`^export const \\w+ = new Registry<(?:${contentDefinitions.join('|')})>`, 'm');
     const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) =>
       pattern.test(readFileSync(file, 'utf8')) ? [relative(coreRoot, file)] : []);
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('composes the art a shell draws with, never registering it globally', () => {
+    // The presentation layer kept the disease the engine was cured of: two
+    // module-level mutable arrays that story packages pushed themselves into, so
+    // which theme won was a function of import order behind an idempotence flag.
+    // It worked only because exactly one pack exists. `ArtDirection` is composed
+    // by the application root, like the catalog and the ruleset beside it.
+    const forbidden = [
+      'registerArtProvider',
+      'registerBattlePresentation',
+      'resolveArt',
+      'resetArtProviders',
+      'registerCandidate01Presentation',
+    ];
+    const pattern = new RegExp(`\\b(?:${forbidden.join('|')})\\b`);
+    // Story packages are scanned too: the swallowing `catch` and the install
+    // flag both lived in one, outside every guard's reach.
+    const scanned = [
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src')),
+      ...runtimeTypeScriptFiles(join(packagesRoot, 'editor', 'src')),
+      ...storyPackageSources(),
+      ...runtimeTypeScriptFiles(join(packagesRoot, '..', 'apps')),
+    ];
+    const offenders = scanned.flatMap((file) => {
+      const source = readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+      return pattern.test(source) ? [relative(packagesRoot, file)] : [];
+    });
 
     expect(offenders).toEqual([]);
   });
@@ -392,6 +429,10 @@ describe('behaviour has an owner', () => {
       ...runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src')),
       ...runtimeTypeScriptFiles(join(packagesRoot, 'campaign-engine', 'src')),
       ...runtimeTypeScriptFiles(join(packagesRoot, 'editor', 'src')),
+      // Story packages were outside every guard, and one of them held exactly
+      // this: an art lookup wrapped in `catch { return null }`, so "this pack
+      // draws no such icon" and "asset resolution is broken" were one answer.
+      ...storyPackageSources(),
     ];
     for (const file of sources) {
       // Comments are stripped first: a doc comment that *quotes* the mistake it

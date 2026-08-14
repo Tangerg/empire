@@ -3,7 +3,8 @@ import type { ContentCatalog } from '@empire/battle-engine';
 import type { Coord, GameState, Unit, WeaponId } from '@empire/battle-engine/types';
 import { PAL } from '../art/palette';
 import { FrameAnimationSystem, registerSvgStrip } from '../art/frame-animation';
-import { battlePresentation, decorationsFor, type BattlePresentation } from '../art/battle-presentation';
+import { decorationsFor, type BattlePresentation } from '../art/battle-presentation';
+import type { ArtDirection } from '../art/direction';
 import type { BoardDecorations, BoardLayout } from '../art/board-decorations';
 import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../art/battlefield-layer';
 import { TILE, terrainLayerMarkup } from '../art/terrain';
@@ -103,8 +104,10 @@ export class BoardView {
      * same tiling the rules are measured with, including a replaced one.
      */
     grid: TacticalGrid,
+    /** The art this board draws with; composed by the application root. */
+    private readonly art: ArtDirection,
   ) {
-    this.presentation = battlePresentation(state.levelId);
+    this.presentation = art.presentationFor(state.levelId);
     this.decor = decorationsFor(this.presentation);
     this.viewport = createSceneViewport(
       grid,
@@ -273,7 +276,7 @@ export class BoardView {
     this.mapSignature = signature;
     clear(this.layers.terrain);
     const colorOf = (id: number) => s.players.find((p) => p.id === id)?.color;
-    this.layers.terrain.append(fromMarkup(terrainLayerMarkup(this.layout, this.content, s.map, colorOf, s.levelId)));
+    this.layers.terrain.append(fromMarkup(terrainLayerMarkup({ art: this.art, layout: this.layout, content: this.content }, s.map, colorOf, s.levelId)));
     for (const id of this.sceneryAnimationIds) this.frameAnimations.unregister(id);
     this.sceneryAnimationIds = [];
     clear(this.layers.ground);
@@ -289,7 +292,7 @@ export class BoardView {
       ...this.playEmbeddedAnimations(this.layers.foreground),
     ];
     clear(this.layers.spatial);
-    const spatial = battlefieldFeatureMarkup(s.map);
+    const spatial = battlefieldFeatureMarkup(this.art, s.map);
     if (spatial) this.layers.spatial.append(fromMarkup(spatial));
   }
 
@@ -392,7 +395,7 @@ export class BoardView {
     if (el) return el;
     const color = this.state.players.find((p) => p.id === unit.owner)?.color ?? PAL.neutral;
     el = svg('g', { class: 'unit', 'data-unit': unit.id });
-    el.append(fromMarkup(unitSpriteMarkup(unit.type, color)));
+    el.append(fromMarkup(unitSpriteMarkup(this.art, unit.type, color)));
     const badges = svg('g', { class: 'badges' });
     el.append(badges);
     this.layers.units.append(el);

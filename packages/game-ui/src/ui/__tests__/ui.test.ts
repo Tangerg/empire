@@ -9,7 +9,10 @@ import { BoardView, emptyOverlay } from '../board';
 import { createState } from '@empire/battle-engine/state';
 import { normaliseLevel } from '@empire/battle-engine/level';
 import { candidate01Level } from '@empire/story-candidate-01/levels';
-import { registerCandidate01Presentation } from '@empire/story-candidate-01/presentation';
+import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
+
+/** Composed per suite, exactly like an application composition root. */
+const ART = CANDIDATE_01_ART;
 
 import { createBattleEngine } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
@@ -19,7 +22,7 @@ import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
 
-registerCandidate01Presentation();
+
 
 /** jsdom has no layout, so give the board a deterministic box for hit-testing. */
 function stubLayout(svg: SVGSVGElement, width: number): void {
@@ -53,7 +56,7 @@ describe('svg art', () => {
   it('emits parseable markup for every unit sprite and portrait', () => {
     const parser = new window.DOMParser();
     for (const def of TEST_CATALOG.units.all()) {
-      for (const svg of [unitIcon(def.id, '#3f7fd8'), portraitSvg(def.id, '#d8483f')]) {
+      for (const svg of [unitIcon(ART, def.id, '#3f7fd8'), portraitSvg(ART, def.id, '#d8483f')]) {
         const doc = parser.parseFromString(svg, 'image/svg+xml');
         expect(doc.querySelector('parsererror'), `${def.id}: ${svg.slice(0, 80)}`).toBeNull();
         expect(doc.documentElement.childElementCount).toBeGreaterThan(0);
@@ -75,7 +78,7 @@ describe('game controller', () => {
 
   it('mounts a level, draws the board and fills the HUD', () => {
     const level = BUILTIN_LEVELS[0];
-    const c = new GameController(level, () => {}, { engine: TEST_ENGINE });
+    const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
 
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
@@ -99,7 +102,7 @@ describe('game controller', () => {
    */
   it('answers every intent its own markup declares', () => {
     const level = BUILTIN_LEVELS[0];
-    const controller = new GameController(level, () => {}, { engine: TEST_ENGINE });
+    const controller = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(controller.root);
 
     const declared = [...controller.root.querySelectorAll('[data-act]')]
@@ -118,7 +121,7 @@ describe('game controller', () => {
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
-    }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'));
+    }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), ART);
     board.fitWithin(540, 380);
     expect(Number.parseFloat(board.el.style.width)).toBeLessThanOrEqual(508);
     expect(Number.parseFloat(board.el.style.height)).toBeLessThanOrEqual(348);
@@ -132,7 +135,7 @@ describe('game controller', () => {
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
-    }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'));
+    }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), ART);
     board.render(emptyOverlay());
 
     const world = board.el.querySelector('.board-world')!;
@@ -150,7 +153,7 @@ describe('game controller', () => {
 
   it('selects a unit, previews the path, and shows a move range', () => {
     const level = BUILTIN_LEVELS[0];
-    const c = new GameController(level, () => {}, { engine: TEST_ENGINE });
+    const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
     stubLayout(board, level.width * TILE);
@@ -166,7 +169,7 @@ describe('game controller', () => {
 
   it('opens the recruit modal on an owned castle and lists affordable units', () => {
     const level = BUILTIN_LEVELS[0];
-    const c = new GameController(level, () => {}, { engine: TEST_ENGINE });
+    const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
     stubLayout(board, level.width * TILE);
@@ -180,7 +183,7 @@ describe('game controller', () => {
 
   it('renders every built-in level without throwing', () => {
     for (const level of BUILTIN_LEVELS) {
-      const c = new GameController(level, () => {}, { engine: TEST_ENGINE });
+      const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
       host.append(c.root);
       expect(c.root.querySelector('svg.board')).toBeTruthy();
       c.dispose();
@@ -226,14 +229,14 @@ describe('charge time presentation', () => {
   };
 
   it('shows nothing while no strike is charging', () => {
-    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE });
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     expect(c.root.querySelector('.cast-strip')).toBeNull();
     c.dispose();
   });
 
   it('marks the aimed tiles and counts the charge down', async () => {
-    const c = new GameController(castingLevel(), () => {}, { engine: TEST_ENGINE });
+    const c = new GameController(castingLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
     stubLayout(board, 6 * TILE);
@@ -267,14 +270,14 @@ describe('initiative presentation', () => {
   });
 
   it('shows no order strip under side turns', () => {
-    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE });
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     expect(c.root.querySelector('.order-strip')).toBeNull();
     c.dispose();
   });
 
   it('shows the upcoming order, active unit first, under per-unit turns', () => {
-    const c = new GameController(initiativeLevel(), () => {}, { engine: TEST_ENGINE });
+    const c = new GameController(initiativeLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
 
     const strip = c.root.querySelector('.order-strip');
@@ -320,7 +323,7 @@ describe('a battle you can come back to', () => {
   });
 
   it('offers no slot when the shell keeps none', () => {
-    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE });
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     expect(press(c.root, 'save')).toBeNull();
     expect(press(c.root, 'resume')).toBeNull();
@@ -329,7 +332,7 @@ describe('a battle you can come back to', () => {
 
   it('saves the turn it is on and resumes into it', () => {
     const saves = slot();
-    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE, saves });
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE, art: ART, saves });
     host.append(c.root);
 
     expect(press(c.root, 'resume').disabled).toBe(true);
@@ -344,7 +347,7 @@ describe('a battle you can come back to', () => {
 
   it('reports a save this ruleset cannot honour instead of dying on it', () => {
     const saves = slot();
-    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE, saves });
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE, art: ART, saves });
     host.append(c.root);
     // Save first, so the slot is offered, then replace what it holds with a
     // battle this ruleset cannot run.
@@ -385,7 +388,7 @@ describe('a hex board', () => {
   });
 
   it('staggers its rows, clips its tiles and rules its own edges', () => {
-    const controller = new GameController(hexLevel(), () => {}, { engine: TEST_ENGINE });
+    const controller = new GameController(hexLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(controller.root);
     const board = controller.root.querySelector('svg.board') as SVGSVGElement;
 
@@ -408,7 +411,7 @@ describe('a hex board', () => {
 
   it('offers the six facings the tiling has, not four', () => {
     const level = hexLevel();
-    const controller = new GameController(level, () => {}, { engine: TEST_ENGINE });
+    const controller = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(controller.root);
     const board = controller.root.querySelector('svg.board') as SVGSVGElement;
     // Scale 1, so a scene coordinate is a client coordinate.

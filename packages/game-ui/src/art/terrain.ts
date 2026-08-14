@@ -1,8 +1,8 @@
+import type { ArtDirection } from './direction';
 import { tileHash } from '@empire/battle-engine/grid';
 import type { GameMap, TerrainId } from '@empire/battle-engine/types';
 import type { ContentCatalog } from '@empire/battle-engine';
 import { idx } from '@empire/battle-engine/grid';
-import { resolveArt } from './ports';
 import { PAL } from './palette';
 
 /** Tile edge length in SVG user units. The board scales via viewBox. */
@@ -273,6 +273,13 @@ const painters: Record<TerrainId, Painter> = {
  * A port, satisfied by the board's layout: this module paints tiles and has no
  * business knowing how the battlefield is tiled.
  */
+/** Everything drawing the terrain layer depends on, grouped as one port. */
+export interface TerrainSurface {
+  readonly art: ArtDirection;
+  readonly layout: TerrainLayout;
+  readonly content: ContentCatalog;
+}
+
 export interface TerrainLayout {
   readonly corners: number;
   origin(at: { x: number; y: number }): { x: number; y: number };
@@ -304,8 +311,8 @@ function cellClipDefinition(layout: TerrainLayout, map: GameMap): string {
 
 /* -------------------------------------------------------------- public API */
 
-export function terrainMarkup(id: TerrainId, ctx: TileContext): string {
-  const runtime = resolveArt((provider) => provider.terrainMarkup?.(id, ctx));
+export function terrainMarkup(art: ArtDirection, id: TerrainId, ctx: TileContext): string {
+  const runtime = art.resolve((provider) => provider.terrainMarkup?.(id, ctx));
   if (runtime) return runtime;
   const painter = painters[id] ?? painters.plain;
   return painter(ctx);
@@ -329,12 +336,12 @@ function links(content: ContentCatalog, map: GameMap, id: TerrainId, x: number, 
  * take the owner colour so flags flip the instant a town changes hands.
  */
 export function terrainLayerMarkup(
-  layout: TerrainLayout,
-  content: ContentCatalog,
+  surface: TerrainSurface,
   map: GameMap,
   colorOfPlayer: (id: number) => string | undefined,
   theme?: string,
 ): string {
+  const { art, layout, content } = surface;
   const parts: string[] = [];
   // Painted tiles are square pictures. On a tiling whose cells are not, each one
   // is placed at its cell and clipped to that cell's shape, so the same artwork
@@ -359,7 +366,7 @@ export function terrainLayerMarkup(
       };
       const origin = layout.origin({ x, y });
       parts.push(
-        `<g transform="translate(${origin.x.toFixed(2)},${origin.y.toFixed(2)})"${clip} data-tile="${x},${y}">${terrainMarkup(id, ctx)}</g>`,
+        `<g transform="translate(${origin.x.toFixed(2)},${origin.y.toFixed(2)})"${clip} data-tile="${x},${y}">${terrainMarkup(art, id, ctx)}</g>`,
       );
     }
   }
@@ -367,8 +374,9 @@ export function terrainLayerMarkup(
 }
 
 /** Single tile preview, e.g. for the editor palette. */
-export function terrainSwatch(id: TerrainId, ownerColor?: string): string {
+export function terrainSwatch(art: ArtDirection, id: TerrainId, ownerColor?: string): string {
   return `<svg viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">${terrainMarkup(
+    art,
     id,
     { x: 3, y: 5, ownerColor, linked: { n: false, e: false, s: false, w: false } },
   )}</svg>`;

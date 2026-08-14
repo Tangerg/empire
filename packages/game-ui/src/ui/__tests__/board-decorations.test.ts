@@ -6,7 +6,6 @@ import {
   decorationsFor,
   squareLayout,
   type BoardLayout,
-  registerBattlePresentation,
   type BattlePresentation,
 } from '../../index';
 
@@ -52,11 +51,8 @@ describe('how a board draws its tactical layer', () => {
       weaponFx: () => null,
       effect: () => '',
     };
-    const release = registerBattlePresentation(mixed);
-
     expect(decorationsFor(mixed).id).toBe('test.hex');
     expect(decorationsFor(mixed).shapeRendering).toBe('auto');
-    release();
   });
 
   it('draws each decoration where the tiling puts the cell', () => {

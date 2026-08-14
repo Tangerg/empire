@@ -17,6 +17,7 @@ import type {
   ReactionStance,
   Unit,
 } from '@empire/battle-engine/types';
+import { GENERIC_ART, type ArtDirection } from '../art/direction';
 import { BoardView, emptyOverlay, type BoardOverlay } from './board';
 import {
   DefaultBattleEventPresenters,
@@ -66,6 +67,11 @@ export interface GameControllerOptions {
   completionLabel?: string;
   /** Absent means this shell offers no save slot, and the entry stays hidden. */
   saves?: BattleSaveStore;
+  /**
+   * The art to draw with. Absent means plain shapes and a ruled board — the
+   * theme is composed by the application root, never registered globally.
+   */
+  art?: ArtDirection;
   onComplete?: (snapshot: BattleCompletionSnapshot) => void;
 }
 
@@ -95,12 +101,15 @@ export class GameController {
   private disposed = false;
   private resizeObserver: ResizeObserver | null = null;
 
+  private readonly art: ArtDirection;
+
   constructor(
     level: LevelData,
     private readonly onExit: () => void,
     private readonly options: GameControllerOptions,
   ) {
     this.session = new GameSession(level, options.engine);
+    this.art = options.art ?? GENERIC_ART;
     this.root.className = 'game-root';
 
     this.board = new BoardView(this.session.state, {
@@ -111,9 +120,9 @@ export class GameController {
         this.refresh();
       },
       onSecondary: () => this.cancel(),
-    }, this.session.content, this.session.rules.space.board(this.session.state).grid);
+    }, this.session.content, this.session.rules.space.board(this.session.state).grid, this.art);
 
-    this.hud = new Hud({
+    this.hud = new Hud(this.art, {
       onCommand: (a) => void this.chooseCommand(a),
       onTactic: (key) => void this.chooseTactic(key),
       onReaction: (stance) => void this.chooseReaction(stance),

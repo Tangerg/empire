@@ -1,5 +1,5 @@
+import type { ArtDirection } from './direction';
 import type { Direction, GameMap } from '@empire/battle-engine/types';
-import { resolveArt } from './ports';
 import { TILE } from './terrain';
 
 const DIRECTIONS = ['north', 'east', 'south', 'west'] as const satisfies readonly Direction[];
@@ -54,7 +54,7 @@ function coverEdge(x: number, y: number, side: Direction, color: string): string
 }
 
 /** Shared renderer for elevation badges, cliffs and directional cover. */
-export function battlefieldFeatureMarkup(map: GameMap): string {
+export function battlefieldFeatureMarkup(art: ArtDirection, map: GameMap): string {
   const parts: string[] = [];
   for (let i = 0; i < map.elevation.length; i++) {
     const value = map.elevation[i];
@@ -82,8 +82,8 @@ export function battlefieldFeatureMarkup(map: GameMap): string {
     const levels = DIRECTIONS.flatMap((side) => cover.sides[side] ? [cover.sides[side]] : []);
     if (levels.length > 0) {
       const strongest = levels.includes('full') ? 'full' : 'half';
-      const art = resolveArt((provider) => provider.coverMarkup?.(strongest));
-      if (art) parts.push(`<g transform="translate(${x} ${y})">${art}</g>`);
+      const prop = art.resolve((provider) => provider.coverMarkup?.(strongest));
+      if (prop) parts.push(`<g transform="translate(${x} ${y})">${prop}</g>`);
     }
     for (const side of DIRECTIONS) {
       const level = cover.sides[side];

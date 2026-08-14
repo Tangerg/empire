@@ -18,7 +18,7 @@ import type { CampaignState } from '@empire/campaign-engine';
 import {
   CANDIDATE_01_MENU_ART,
   candidate01CampaignAdapter,
-  registerCandidate01Presentation,
+  CANDIDATE_01_ART,
 } from '@empire/story-candidate-01/presentation';
 import {
   browserBattleSaves,
@@ -46,7 +46,9 @@ new ContentPackInstaller(content).install(
   CANDIDATE_01_CONTENT_PACK,
 );
 const engine = createBattleEngine({ content });
-registerCandidate01Presentation();
+// Composition root: art is composed here beside the catalog and the engine, so a
+// second story pack would be another entry rather than another import side effect.
+const art = CANDIDATE_01_ART;
 const campaignAdapter = candidate01CampaignAdapter();
 
 const recruitCost = (unit: { recruitCosts: { resource: string; amount: number }[] }) =>
@@ -67,7 +69,7 @@ function thumbnail(level: LevelData): string {
     })
     .join('');
   return `<svg viewBox="0 0 ${map.width * TILE} ${map.height * TILE}" preserveAspectRatio="xMidYMid slice">
-    ${terrainLayerMarkup(squareLayout, content, map, colorOf)}${units}
+    ${terrainLayerMarkup({ art, layout: squareLayout, content }, map, colorOf)}${units}
   </svg>`;
 }
 
@@ -105,7 +107,7 @@ function codexMarkup(): string {
               const maxRange = Math.max(...weapons.map((weapon) => weapon.maxRange));
               const damageTypes = [...new Set(weapons.map((weapon) => content.damageTypes.get(weapon.damageType).name))].join(' / ');
               return `<div class="recruit-card">
-              <div class="rc-art" style="width:64px;height:auto;background:none">${portraitSvg(d.id, team, 64)}</div>
+              <div class="rc-art" style="width:64px;height:auto;background:none">${portraitSvg(art, d.id, team, 64)}</div>
               <div class="rc-body">
                 <div class="rc-name">${escapeHtml(d.name)}<span class="rc-cost">${icon('coin')}${escapeHtml(recruitCost(d))}</span></div>
                 <div class="rc-stats">${icon('sword')}${power} · ${icon('heart')}${d.maxHp} · ${icon('boot')}${d.movement} · 射程 ${
@@ -242,6 +244,7 @@ function startGame(level: LevelData): void {
   // One browser slot per level, so a battle can be put down and picked up.
   const controller = new GameController(level, () => renderMenu(), {
     engine,
+    art,
     saves: browserBattleSaves(level.id),
   });
   active = controller;

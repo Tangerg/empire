@@ -3,7 +3,7 @@ import '@empire/game-ui/styles/demo.css';
 import { ContentPackInstaller, createContentCatalog } from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
-import { icon, terrainSwatch, unitIcon } from '@empire/game-ui';
+import { GENERIC_ART, icon, terrainSwatch, unitIcon } from '@empire/game-ui';
 import { buildBattleEngine, createDefaultMicrokernel } from '@empire/battle-engine/plugins/default';
 import {
   type ResourceSubject,
@@ -137,9 +137,9 @@ function boardMarkup(): string {
     const key = `${x},${y}`;
     return `<div class="demo-tile ${affected.has(key) ? 'affected' : ''} ${aimed === key ? 'aimed' : ''}"
       data-cell="${key}" title="(${key})">
-      <div class="tile-art">${terrainSwatch(terrain, owner?.color)}</div>
+      <div class="tile-art">${terrainSwatch(GENERIC_ART, terrain, owner?.color)}</div>
       ${unit ? `<div class="demo-unit" data-unit="${html(unit.key ?? String(unit.id))}">
-        ${unitIcon(unit.type, unitOwner?.color ?? '#9aa3ad', 46)}
+        ${unitIcon(GENERIC_ART, unit.type, unitOwner?.color ?? '#9aa3ad', 46)}
         <span class="unit-label">${html(content.units.get(unit.type).name)}</span>
         <span class="hp-chip">${unit.hp}</span>
       </div>` : ''}
