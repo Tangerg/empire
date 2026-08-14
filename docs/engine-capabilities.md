@@ -275,7 +275,7 @@
 在此之上：
 
 - 依赖参数一律必填，从不使用全局默认值；漏传是编译错误
-- **一条调用形状**：`f(依赖, 作用对象…, emit)`。依赖永远在前，事件通道永远在最后；两个以上服务合成一个前置端口对象（`CombatRules`、`AbilityRules`、`StatusRules`、`DamageRules`、`ZoneOfControlRules`、`ObjectiveRules`、`VictoryRules`、`ScenarioRules`、`CommanderRules`、`CareerRules`、`TurnOrderRules`、`TurnCycleRules`、`ProgressionRules`、`UnitDepartureRules`、`AiRules`…）
+- **一条调用形状**：`f(依赖, 作用对象…, emit)`。依赖永远在前，事件通道永远在最后；两个以上服务合成一个前置端口对象（`CombatRules`、`AbilityRules`、`StatusRules`、`DamageRules`、`ZoneOfControlRules`、`ObjectiveRules`、`VictoryRules`、`ScenarioRules`、`CommanderRules`、`CareerRules`、`TurnOrderRules`、`TurnCycleRules`、`ProgressionRules`、`UnitDepartureRules`、`AiRules`、`ThreatRules`、`AiMissionRules`、`RecruitmentRules`、`ActionDispatch`、`LevelValidationRules`…）。查询不是另一种形状：`unitWeapons(content, unit)`、`createState(content, level)`、`selectUnits(content, state, selector)` 与命令同形，守卫扫描全部工作区包的每一个导出函数
 - **问和做是两件函数**：查询答不上来返回 `null`，命令答不上来抛 `DomainInvariantError`；不绑定错误对象的 `catch` 不许产生返回值
 - **必填参数不排在可选参数后面**：`f(state, unit, from, weapon = undefined, content)` 能编译，代价是每个调用点都要写一个 `undefined` 去够到后面那个参数。调用点上不可省的东西就不是可选的
 - 端口由**消费方**声明，`BattleRuleServices` 结构化满足全部端口，因此不引入新的模块依赖边
@@ -334,6 +334,7 @@
 | 一个目标此刻是什么状态 | `objectiveStatusOf()`（原本三处同款表达式） |
 | 目标的 id 什么时候开始一定存在 | `assignObjectiveIds` → `RunningObjective`；`inPlay()` 是唯一说明处 |
 | 一条格子边画在哪 | `edgeLine(layout, …)`（悬崖在边界上，掩体在自己那格里） |
+| 一条指令怎么被派发 | `applyAction(dispatch, state, action)`（`BattleEngine` 结构上就是那个 `dispatch`） |
 | 一份带版本的文档怎么升到当前 schema | `SchemaMigrator`（战役存档、战斗存档与**关卡**共用） |
 | 目录有哪些内容族 | `DEFINITION_FAMILIES`（穷尽 Record，编译器守着） |
 | 一个关卡文件声明了哪些名字 | `LevelDeclarations` |
@@ -350,7 +351,7 @@
 | TypeScript 整仓类型检查 | 已实现 | `npm run typecheck` |
 | 战斗规则单元和契约测试 | 已实现 | 覆盖领域、扩展、三题材契约和 AI |
 | 应用 DOM 挂载测试 | 已实现 | 游戏、编辑器、Demo 和体验入口 |
-| 架构依赖测试 | 已实现 | 无环、包边界、组装根唯一性、行为归属、调用形状，共 41 条；断言与朝向两条扫描全部工作区包 |
+| 架构依赖测试 | 已实现 | 无环、包边界、组装根唯一性、行为归属、调用形状，共 41 条；断言、朝向、调用形状三条扫描全部工作区包 |
 | 全关卡不变量巡检 | 已实现 | 十六章 × 三档 AI，每条指令后校验整份状态，并抽查存档往返与撤销重演 |
 | 界面意图完整性测试 | 已实现 | HUD 与编辑器渲染出的每个 `data-act` / `data-field` 都有人接 |
 | 关卡校验与 AI 冒烟 | 已实现 | 内置关卡自动推演 |
