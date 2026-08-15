@@ -4,7 +4,7 @@ import type { BattleRuleServices } from '@empire/battle-engine/action-system';
 import { TEAM_COLORS } from '@empire/game-ui/art/palette';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
 import { validateLevel } from '@empire/battle-engine/level-validation';
-import { DEFAULT_RULES } from '@empire/battle-engine/types';
+import { DEFAULT_RULES } from '@empire/battle-engine/level';
 import type { DirectionDef } from '@empire/battle-engine/tactical-grid';
 import {
   emptyLevel,

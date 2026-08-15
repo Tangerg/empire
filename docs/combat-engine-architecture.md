@@ -535,6 +535,10 @@ kernel.use(createContentPlugin([COMMON_PACK, THEME_PACK]));
 
 ## Action 与事务
 
+`types.ts` 1200 行、110 个导出，直觉是按大小拆开。**那是错的轴**：其中七个是内容包要 `declare module '../types'` 合并进去的 kind map，一个模块正是让这条增补语句有唯一、明显的目标。这里的内聚是「一个包要扩展的词汇表」，不是行数。
+
+它真正的问题只有一个：`DEFAULT_RULES`——一个运行时值，待在一个**契约就是会被擦除**的模块里。它现在和「一张关卡默认是什么」的另外三个答案住在一起（空关卡、兜底胜利条件、以及把默认与关卡自述合并的那次 patch）。一条守卫扫全部工作区包里所有 `types.ts`，禁止任何 `const` / `function` / `class` / `enum` 导出。
+
 `ActionKindMap` 是开放 Action 代数。内置 Action 覆盖部署、单位命令、战术、反应、朝向、转职、阵形、运输、招募和结束回合。
 
 **一个指令带来的坐标，只有一条路变成格子。** `context.cell(at)` 越界即拒绝，理由和它下面那个 `context.unit(id)` 一模一样——「客户端点了一个已经死掉的单位，那是指令错了，不是引擎不变量塌了」。这条以前只写了单位那一半：招募处理器直接拿 Action 里的坐标去索引地图，越界读出 `undefined`，再从地形注册表里冒出来一句 `unknown terrain "undefined"`——那是 `DomainInvariantError`，外壳一律往上抛。**点错一格，游戏崩掉。**

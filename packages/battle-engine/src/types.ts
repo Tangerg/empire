@@ -498,36 +498,6 @@ export interface RuleSet {
   moraleCommanderDefeatLoss: number;
 }
 
-export const DEFAULT_RULES: RuleSet = {
-  captureMode: 'instant',
-  captureThreshold: 100,
-  baseResourceGrants: [],
-  siteResourceOverrides: {},
-  healOnOwnedBuilding: true,
-  counterAttack: true,
-  fog: false,
-  turnLimit: null,
-  friendlyPassThrough: true,
-  enemiesBlockMovement: true,
-  zoneOfControl: false,
-  maxUnitsPerPlayer: null,
-  recruitsActImmediately: false,
-  turnOrder: 'side',
-  grid: 'square4',
-  highGroundThreshold: 1,
-  highGroundDamageMultiplier: 1.1,
-  sideAttackMultiplier: 1.1,
-  backAttackMultiplier: 1.25,
-  flankAttackMultiplier: 1.15,
-  halfCoverDefense: 0.15,
-  fullCoverDefense: 0.3,
-  moraleEnabled: false,
-  moraleDamageFactor: 0.6,
-  moraleAllyDefeatLoss: 12,
-  moraleDefeatShockRadius: 3,
-  moraleCommanderDefeatLoss: 25,
-};
-
 /* ------------------------------------------------------------- objectives */
 
 export interface ObjectiveMeta {

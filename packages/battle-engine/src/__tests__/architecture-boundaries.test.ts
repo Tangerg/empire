@@ -900,6 +900,29 @@ describe('behaviour has an owner', () => {
     expect(twice).toEqual([]);
   });
 
+  it('keeps a types module to types, so a pack can safely merge into it', () => {
+    // `types.ts` is 1200 lines and 110 exports, and the instinct is to split it
+    // by size. That is the wrong axis: seven of those exports are the
+    // declaration-merged kind maps a content pack augments, and one module is
+    // exactly what makes `declare module '../types'` a single, obvious target.
+    // Cohesion here is "the vocabulary a pack extends", not line count.
+    //
+    // What was wrong with it was one runtime value — `DEFAULT_RULES` — sitting
+    // in a module whose whole contract is that it is erased. It now lives with
+    // the other three answers to "what does a level default to". This keeps that
+    // from creeping back, which is the only part a reader cannot check at a
+    // glance.
+    const offenders = everyPackageSource()
+      .filter((file) => /(^|[\\/])types\.ts$/.test(file))
+      .flatMap((file) => {
+        const source = stripStrings(stripComments(readFileSync(file, 'utf8')));
+        const values = source.match(/^export\s+(?:const|let|var|function|class|enum)\b.*/gm) ?? [];
+        return values.map((line) => `${relative(packagesRoot, file)}: ${line.trim().slice(0, 60)}`);
+      });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('builds every extension point on the shared registry', () => {
     // Twelve registries had each hand-written the same table, and they had
     // drifted where it mattered: some could be *asked* for an entry, some could
