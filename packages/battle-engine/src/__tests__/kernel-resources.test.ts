@@ -152,6 +152,36 @@ describe('capability substitution', () => {
     expect(engine.rules.scenarioConditions.random).toBe(random);
   });
 
+  it('holds a consumer to its manifest too, so an override cannot be outrun', () => {
+    // The third direction, and the one that was missing: `provides` and
+    // `overrides` were both checked against what installation actually did, and
+    // consumption was not checked at all. A plugin that takes a capability it
+    // never declared is not ordered after anyone replacing that capability, so
+    // it keeps the value that was replaced — which is the whole failure mode
+    // `overrides` exists to prevent.
+    const greedy: EnginePlugin = {
+      id: 'test.greedy',
+      version: 1,
+      install: (context) => {
+        context.require('random');
+      },
+    };
+    expect(() => createDefaultMicrokernel(TEST_CONTENT).use(greedy).compose())
+      .toThrow(/required undeclared capability "random"/);
+
+    // Probing is not consuming: asking whether a capability exists captures no
+    // value, so it creates no ordering obligation and needs no declaration.
+    const polite: EnginePlugin = {
+      id: 'test.polite',
+      version: 1,
+      install: (context) => {
+        expect(context.has('random')).toBe(true);
+        expect(context.providerOf('random')).toBeTruthy();
+      },
+    };
+    expect(() => createDefaultMicrokernel(TEST_CONTENT).use(polite).compose()).not.toThrow();
+  });
+
   it('splits one factory override per capability so the order stays acyclic', () => {
     // `scenarioConditions` is introduced by the mission rules and consumes
     // `random` from the tactical rules. One plugin overriding both would have to

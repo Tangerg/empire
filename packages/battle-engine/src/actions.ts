@@ -6,7 +6,7 @@ import {
   type AbilityRules,
 } from './abilities';
 import { idx, sameCoord } from './grid';
-import { player, spawnUnit, unitAt, unitsOf } from './state';
+import { player, spawnUnit, unitsOf } from './state';
 import { runScenarioTriggers } from './scenario';
 import { executeTactic } from './commanders';
 import { UnitEntity } from './domain/index';
@@ -270,11 +270,13 @@ class RecruitActionHandler implements ActionHandler<'recruit'> {
 
   execute(context: ActionExecutionContext, action: ActionKindMap['recruit']): void {
     const state = context.state;
-    const index = idx(state.map, action.at.x, action.at.y);
-    const terrain = context.rules.content.terrains.get(state.map.tiles[index]);
+    // Through the context, so a coordinate off the board is refused rather than
+    // read out of the tile array as `undefined`.
+    const cell = context.cell(action.at);
+    const terrain = cell.terrain;
     if (!terrain.produces.includes(action.unit)) context.fail(`${terrain.name} 无法生产该兵种`);
-    if (state.map.owners[index] !== state.currentPlayer) context.fail('该建筑不属于你');
-    if (unitAt(state, { x: action.at.x, y: action.at.y })) context.fail('建筑上已有单位');
+    if (state.map.owners[cell.index] !== state.currentPlayer) context.fail('该建筑不属于你');
+    if (cell.occupant) context.fail('建筑上已有单位');
 
     const owner = player(state, state.currentPlayer);
     const definition = context.rules.content.units.get(action.unit);

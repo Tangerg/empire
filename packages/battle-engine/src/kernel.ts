@@ -129,11 +129,26 @@ class ReadonlyKernelCapabilities implements KernelCapabilities {
 }
 
 class ScopedKernelPluginContext extends ReadonlyKernelCapabilities implements KernelPluginContext {
+  /** Capabilities this plugin actually took a value out of, in call order. */
+  readonly consumed = new Set<KernelCapabilityId>();
+
   constructor(
     store: KernelCapabilityStore,
     private readonly providerId: string,
   ) {
     super(store);
+  }
+
+  /**
+   * Recorded, because taking the value is what creates the ordering obligation.
+   *
+   * `has` and `providerOf` are deliberately not: asking whether a capability
+   * exists captures nothing, so a plugin that probes for an optional one has no
+   * dependency on whoever might replace it.
+   */
+  override require<K extends KernelCapabilityId>(id: K): KernelCapabilityMap[K] {
+    this.consumed.add(id);
+    return super.require(id);
   }
 
   provide<K extends KernelCapabilityId>(id: K, capability: KernelCapabilityMap[K]): void {
@@ -185,11 +200,41 @@ export class SrpgMicrokernel {
   compose(): KernelCapabilities {
     const store = new KernelCapabilityStore();
     for (const plugin of this.orderedPlugins()) {
-      plugin.install(new ScopedKernelPluginContext(store, plugin.id));
+      const context = new ScopedKernelPluginContext(store, plugin.id);
+      plugin.install(context);
       this.assertManifest(plugin, 'provide', plugin.provides, store.providedBy(plugin.id));
       this.assertManifest(plugin, 'override', plugin.overrides, store.overriddenBy(plugin.id));
+      this.assertConsumption(plugin, context.consumed);
     }
     return new ReadonlyKernelCapabilities(store);
+  }
+
+  /**
+   * A plugin may only take a capability it said it consumes.
+   *
+   * The third direction the manifest has to agree in, and the one that was
+   * missing. `provides` and `overrides` were checked both ways; consumption was
+   * not checked at all — so a plugin could `require('space')` without declaring
+   * it, and ordering would place it *before* a plugin that replaces `space`.
+   * It would then hold the value that was replaced for the life of the engine,
+   * which is the exact failure `overrides` exists to prevent: "substitution that
+   * only works when nobody captured the value at install time is not
+   * substitution."
+   *
+   * Only this direction is enforced. Declaring a capability and not reading it
+   * on this particular composition is a legitimate ordering statement — a
+   * plugin may consume it down one content branch and not another — and failing
+   * a build over an untaken branch would be a worse rule than the one it guards.
+   */
+  private assertConsumption(plugin: EnginePlugin, consumed: ReadonlySet<KernelCapabilityId>): void {
+    const declared = new Set(plugin.requiresCapabilities ?? []);
+    for (const capability of consumed) {
+      if (!declared.has(capability)) {
+        throw new DomainInvariantError(
+          `engine plugin "${plugin.id}" required undeclared capability "${capability}"`,
+        );
+      }
+    }
   }
 
   private assertManifest(

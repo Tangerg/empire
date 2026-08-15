@@ -537,7 +537,13 @@ kernel.use(createContentPlugin([COMMON_PACK, THEME_PACK]));
 
 `ActionKindMap` 是开放 Action 代数。内置 Action 覆盖部署、单位命令、战术、反应、朝向、转职、阵形、运输、招募和结束回合。
 
+**一个指令带来的坐标，只有一条路变成格子。** `context.cell(at)` 越界即拒绝，理由和它下面那个 `context.unit(id)` 一模一样——「客户端点了一个已经死掉的单位，那是指令错了，不是引擎不变量塌了」。这条以前只写了单位那一半：招募处理器直接拿 Action 里的坐标去索引地图，越界读出 `undefined`，再从地形注册表里冒出来一句 `unknown terrain "undefined"`——那是 `DomainInvariantError`，外壳一律往上抛。**点错一格，游戏崩掉。**
+
+拿整套 Action 代数灌畸形指令扫一遍才找出来的，那一遍现在是 `command-authority.test.ts` 里的测试：一百多条乱七八糟的指令，每一条的失败都必须是 `IllegalActionError`。
+
 **开放代数的两个附加事实由处理器自己声明，不由派发器点名。** `handsOffTurn` 说「这条命令把回合交出去了，之前的不能撤销」——它被加出来，正是因为会话外壳曾经拿 Action kind 去比一对写死的名字。而三行之下，派发器自己在拿 `deployUnit` 和 `finishDeployment` 比一对写死的名字，用来判断哪些命令属于战前阶段。现在是 `duringDeployment`：一个规则包可以加自己的战前命令（把某人换下预备队、买一个位置），而不会被回一句「请先完成战前部署」——它做的正是部署。行为测试注册了一条 `rally` 命令来证明这一点。
+
+**清单要在三个方向上都和实际发生的事相符，而消费那一向以前根本没查。** `provides` 和 `overrides` 双向核对过：声明了没装、装了没声明，都报错。但一个插件可以 `context.require('space')` 而不在 `requiresCapabilities` 里声明——于是排序不会把它排在任何替换 `space` 的插件之后，它就会终身持有那个**已经被替换掉的值**。这正是 `overrides` 存在要防的那件事：「只有在没人于安装期捕获旧值时才成立的替换，不叫替换。」`compose()` 现在记录每个插件真正 `require` 过什么，并要求它是声明的子集。只查这一向：声明了却在这次组合里没读到，是合法的排序声明（一个插件可能在某条内容分支上才消费它），为一条没走到的分支让构建失败，比它守的规则更糟。`has` / `providerOf` 不算消费——问一句存不存在并不捕获任何值。
 
 每种 Action 由一个 `ActionHandler` 执行。`ActionHandlerRegistry` 负责类型到策略的映射，核心分发器不包含不断增长的 `switch`。
 

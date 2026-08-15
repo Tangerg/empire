@@ -102,6 +102,48 @@ describe('refusals are typed, not stringly relabelled', () => {
       .toThrow(IllegalActionError);
   });
 
+  it('refuses every malformed order instead of raising a defect at the shell', () => {
+    // The one boundary where the distinction is load-bearing: a shell shows an
+    // `IllegalActionError` and rethrows everything else, so a misclassified
+    // failure here is a crash. Sweeping the whole order algebra with nonsense
+    // found one: `recruit` took the coordinate straight out of the action, read
+    // `undefined` from the tile array, and surfaced it from the terrain registry
+    // as `unknown terrain "undefined"`. A mis-clicked cell ended the game.
+    const battle = engine();
+    const coords = [{ x: -1, y: 0 }, { x: 0, y: 0 }, { x: 999, y: 999 }, { x: 1, y: 1 }];
+    const ids = [-1, 0, 9999];
+    const malformed: Action[] = coords.flatMap((at) => [
+      { kind: 'recruit', at, unit: 'soldier' },
+      { kind: 'recruit', at, unit: 'soldier' },
+      ...ids.flatMap((unit): Action[] => [
+        { kind: 'deployUnit', unit, at },
+        { kind: 'embark', unit, carrier: unit + 1 },
+        { kind: 'disembark', carrier: unit, unit: unit + 1, at },
+        { kind: 'command', unit, path: [at], command: { ability: 'attack', target: at } },
+        { kind: 'command', unit, path: [], command: { ability: 'attack' } },
+        { kind: 'changeFormation', unit, formation: 'nope' },
+        { kind: 'changeCareer', unit, career: 'nope' },
+        { kind: 'tactic', commander: 'nope', tactic: 'nope', target: at },
+      ]),
+    ]);
+
+    const misclassified = malformed.flatMap((action) => {
+      const state = battle.createState(squad());
+      try {
+        battle.dispatch(state, action);
+        return [];
+      } catch (error) {
+        if (error instanceof IllegalActionError) return [];
+        return [`${action.kind}: ${(error as Error).name}: ${(error as Error).message}`];
+      }
+    });
+
+    expect(misclassified).toEqual([]);
+    // And the sweep is worth having: these orders really were refused, not
+    // quietly accepted into a battle where nothing happened.
+    expect(malformed.length).toBeGreaterThan(100);
+  });
+
   it('lets a collaborator refuse an order in its own voice', () => {
     const battle = createBattleEngine({ content: cloneContentCatalog(TEST_CONTENT) });
     battle.content.units.override('knight', { transport: { capacity: 2 } });

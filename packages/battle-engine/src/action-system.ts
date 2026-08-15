@@ -1,4 +1,5 @@
 import { BattleAggregate } from './domain/battle-aggregate';
+import { Battlefield, type BattlefieldCell } from './domain/battlefield';
 import { boardOf, type Board } from './domain/board';
 import { IllegalActionError } from './domain/errors';
 import { UnitEntity } from './domain/unit-entity';
@@ -26,7 +27,7 @@ import type { GridRegistry } from './tactical-grid';
 import type { BattleSaveMigrator } from './battle-save';
 import type { RandomSource } from './random';
 import { type ContentCatalog } from './content-pack';
-import type { Action, ActionKindMap, Direction, GameEvent, GameState } from './types';
+import type { Action, ActionKindMap, Coord, Direction, GameEvent, GameState } from './types';
 
 export { IllegalActionError };
 
@@ -67,6 +68,8 @@ export interface BattleRuleServices {
 
 export class ActionExecutionContext {
   readonly battle: BattleAggregate;
+  /** Read model of the ground this order is given on. */
+  readonly battlefield: Battlefield;
   /** Phase and round transitions this order may trigger. */
   readonly lifecycle: BattleLifecycle;
   /** The board this order is given on, under the tiling the level named. */
@@ -78,6 +81,7 @@ export class ActionExecutionContext {
     readonly rules: BattleRuleServices,
   ) {
     this.battle = new BattleAggregate(state, rules.content);
+    this.battlefield = new Battlefield(state, rules.content);
     this.board = boardOf(rules, state);
     this.lifecycle = new BattleLifecycle(state, rules, this.emit);
   }
@@ -94,6 +98,20 @@ export class ActionExecutionContext {
   /** The ordering policy this battle is running under. */
   get turnOrder(): TurnOrderPolicy {
     return activeTurnOrder(this.rules, this.state);
+  }
+
+  /**
+   * Resolves a cell an order names, refusing an order aimed off the board.
+   *
+   * Same reasoning as `unit` below, and it was missing: a handler that took a
+   * coordinate straight from the action and indexed the map read `undefined`
+   * out of the tile array, which surfaced from the terrain registry as
+   * `unknown terrain "undefined"` — a `DomainInvariantError`, which the shells
+   * rethrow. A mis-clicked coordinate crashed the game instead of being refused.
+   */
+  cell(at: Coord): BattlefieldCell {
+    if (!this.battlefield.contains(at)) this.fail(`目标格 ${at.x},${at.y} 不在战场内`);
+    return this.battlefield.cell(at);
   }
 
   /**
