@@ -1,10 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { GameSession, validateLevel } from '@empire/battle-engine';
+import { GameSession, validateLevel, createBattleEngine } from '@empire/battle-engine';
 import { CANDIDATE_01_LEVELS, CANDIDATE_01_ROSTER_BINDINGS } from './levels';
 import { auditBattlefield } from './battlefield-audit';
 
 import { createTestCatalog } from '@empire/test-content';
-import { createBattleEngine } from '@empire/battle-engine';
 import { CANDIDATE_01_CONTENT_PACK } from './index';
 
 /** Composed per suite, exactly like an application composition root. */

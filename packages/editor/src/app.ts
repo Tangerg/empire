@@ -1,16 +1,19 @@
-import { loadCustomLevels, saveCustomLevel, stashPlaytest } from '@empire/game-ui/application/level-storage';
-import type { ContentCatalog } from '@empire/battle-engine/content-pack';
-import type { BattleRuleServices } from '@empire/battle-engine/action-system';
-import { TEAM_COLORS } from '@empire/game-ui/art/palette';
-import { validateLevel } from '@empire/battle-engine/level-validation';
-import { DEFAULT_RULES } from '@empire/battle-engine/level';
-import type { DirectionDef } from '@empire/battle-engine/tactical-grid';
+import { loadCustomLevels, saveCustomLevel, stashPlaytest, TEAM_COLORS } from '@empire/game-ui';
+import {
+  type ContentCatalog,
+  type BattleRuleServices,
+  validateLevel,
+  DEFAULT_RULES,
+  type DirectionDef,
+  COMMAND_POINTS_RESOURCE,
+  FUNDS_RESOURCE,
+} from '@empire/battle-engine';
 import {
   emptyLevel,
   mapFromLevel,
   normaliseLevel,
   type LevelIssue,
-} from '@empire/battle-engine/level';
+} from '@empire/battle-engine';
 import type {
   Coord,
   CoverLevel,
@@ -19,8 +22,7 @@ import type {
   Objective,
   PlayerConfig,
   RuleSet,
-} from '@empire/battle-engine/types';
-import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from '@empire/battle-engine/resources';
+} from '@empire/battle-engine';
 import { EditorBoard } from './board';
 import { EditorDocument } from './document';
 import { EditorHistory } from './history';

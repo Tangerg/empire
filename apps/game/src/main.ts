@@ -8,8 +8,10 @@ import {
   type LevelData,
 } from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
-import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
-import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
+import {
+  ANCIENT_EMPIRES_CONTENT_PACK,
+  ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS,
+} from '@empire/content-ancient-empires';
 import {
   CANDIDATE_01_CONTENT_PACK,
   CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN,

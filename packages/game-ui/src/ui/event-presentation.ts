@@ -1,7 +1,15 @@
-import { KeyedRegistry } from '@empire/battle-engine';
-import type { ContentCatalog } from '@empire/battle-engine/content-pack';
-import type { Coord, GameEvent, GameEventKindMap, GameState, ResourceSubjectRef, StructureState, Unit } from '@empire/battle-engine/types';
-import type { GameSession } from '@empire/battle-engine/session';
+import {
+  KeyedRegistry,
+  type ContentCatalog,
+  type Coord,
+  type GameEvent,
+  type GameEventKindMap,
+  type GameState,
+  type ResourceSubjectRef,
+  type StructureState,
+  type Unit,
+  type GameSession,
+} from '@empire/battle-engine';
 import type { BoardView } from './board';
 
 export type GameEventKind = Extract<keyof GameEventKindMap, string>;

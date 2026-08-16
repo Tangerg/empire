@@ -3,28 +3,42 @@ import type { ArtDirection } from '../art/direction';
 import { portraitSvg } from '../art/portraits';
 import { unitIcon } from '../art/units';
 import { PAL } from '../art/palette';
-import type { BattleRuleServices } from '@empire/battle-engine/action-system';
-import type { CommandOption } from '@empire/battle-engine/actions';
-import type { CareerOption } from '@empire/battle-engine/careers';
-import type { FormationOption } from '@empire/battle-engine/formations';
-import type { CarrierOption, PassengerOption } from '@empire/battle-engine/transports';
-import type { TacticOption } from '@empire/battle-engine/commanders';
-import type { CombatForecast } from '@empire/battle-engine/combat';
-import type { CombatModifier } from '@empire/battle-engine/combat-modifiers';
-import type { CombatPlan } from '@empire/battle-engine/combat-plan';
-import { activeCommanderFor, commanderUnit } from '@empire/battle-engine/commanders';
-import { idx } from '@empire/battle-engine/grid';
-import { player, recruitOptions, type RecruitOption } from '@empire/battle-engine/state';
-import { describeObjective, objectiveProgress } from '@empire/battle-engine/victory';
-import type { Coord, Direction, GameState, PendingCast, ReactionStance, ResourceAmount, Unit, UnitDef } from '@empire/battle-engine/types';
-import { SpellCastEntity } from '@empire/battle-engine/domain/spell-cast';
+import {
+  type BattleRuleServices,
+  type CommandOption,
+  type CareerOption,
+  type FormationOption,
+  type CarrierOption,
+  type PassengerOption,
+  type TacticOption,
+  type CombatForecast,
+  type CombatModifier,
+  type CombatPlan,
+  activeCommanderFor,
+  commanderUnit,
+  idx,
+  player,
+  recruitOptions,
+  type RecruitOption,
+  describeObjective,
+  objectiveProgress,
+  type Coord,
+  type Direction,
+  type GameState,
+  type PendingCast,
+  type ReactionStance,
+  type ResourceAmount,
+  type Unit,
+  type UnitDef,
+  SpellCastEntity,
+} from '@empire/battle-engine';
 import {
   type BattleResourceSystem,
   type ResourceSubject,
   playerResource,
   unitResource,
   weaponResource,
-} from '@empire/battle-engine/resources';
+} from '@empire/battle-engine';
 import { escapeHtml } from './html';
 
 export interface HudView {

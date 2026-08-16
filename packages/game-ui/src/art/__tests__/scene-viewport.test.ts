@@ -1,4 +1,4 @@
-import { TacticalGrids } from '@empire/battle-engine/tactical-grid';
+import { TacticalGrids } from '@empire/battle-engine';
 const SQUARE = TacticalGrids.get('square4');
 import { describe, expect, it } from 'vitest';
 import { createSceneViewport, scenePointToCell } from '../scene-viewport';

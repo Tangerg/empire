@@ -1,6 +1,6 @@
 import { GENERIC_ART } from '../direction';
 import { describe, expect, it } from 'vitest';
-import { emptyLevel, mapFromLevel } from '@empire/battle-engine/level';
+import { emptyLevel, mapFromLevel } from '@empire/battle-engine';
 import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../battlefield-layer';
 import { squareLayout, type BoardLayout } from '../board-decorations';
 

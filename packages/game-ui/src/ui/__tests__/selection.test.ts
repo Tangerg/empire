@@ -1,9 +1,16 @@
 import { describe, expect, it } from 'vitest';
-import { Abilities, createBattleEngine, defineAbility, unitWeapons } from '@empire/battle-engine';
-import { normaliseLevel } from '@empire/battle-engine/level';
-import { GameSession } from '@empire/battle-engine/session';
+import {
+  Abilities,
+  createBattleEngine,
+  defineAbility,
+  unitWeapons,
+  normaliseLevel,
+  GameSession,
+  type Coord,
+  type LevelData,
+  type Unit,
+} from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
-import type { Coord, LevelData, Unit } from '@empire/battle-engine/types';
 import { emptyOverlay } from '../board';
 import {
   DestinationSelection,

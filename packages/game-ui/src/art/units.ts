@@ -1,5 +1,5 @@
 import type { ArtDirection } from './direction';
-import type { UnitTypeId } from '@empire/battle-engine/types';
+import type { UnitTypeId } from '@empire/battle-engine';
 import { PAL, shade } from './palette';
 
 /**

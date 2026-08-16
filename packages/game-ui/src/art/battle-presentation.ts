@@ -4,7 +4,7 @@ import type {
   StructureDef,
   StructureState,
   WeaponId,
-} from '@empire/battle-engine/types';
+} from '@empire/battle-engine';
 import { SquareBoardDecorations, type BoardDecorations } from './board-decorations';
 import type {
   SceneFrameMarkup,

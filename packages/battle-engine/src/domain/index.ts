@@ -7,3 +7,5 @@ export * from './commander-entity';
 export * from './unit-fall';
 export * from './battle-aggregate';
 export * from './battlefield';
+export * from './map-layers';
+export * from './spell-cast';

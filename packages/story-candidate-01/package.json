@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": "./src/index.ts",
-    "./*": "./src/*.ts",
-    "./presentation": "./src/presentation/index.ts",
-    "./presentation/*": "./src/presentation/*.ts"
+    "./presentation": "./src/presentation/index.ts"
   },
   "dependencies": {
     "@empire/battle-engine": "0.1.0",

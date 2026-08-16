@@ -1,5 +1,5 @@
 import type { ArtDirection } from './direction';
-import type { GameMap } from '@empire/battle-engine/types';
+import type { GameMap } from '@empire/battle-engine';
 import { edgeLine, type BoardLayout } from './board-decorations';
 
 const featureColor = {

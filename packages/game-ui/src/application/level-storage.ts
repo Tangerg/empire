@@ -1,5 +1,4 @@
-import { normaliseLevel } from '@empire/battle-engine/level';
-import type { LevelData } from '@empire/battle-engine/types';
+import { normaliseLevel, type LevelData } from '@empire/battle-engine';
 
 export const CUSTOM_LEVELS_KEY = 'empire.customLevels';
 const PLAYTEST_KEY = 'empire.playtest';

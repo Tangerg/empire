@@ -1,7 +1,14 @@
-import { idx, sharesEdge } from '@empire/battle-engine/grid';
-import { KeyedRegistry } from '@empire/battle-engine/registry';
-import type { ContentCatalog } from '@empire/battle-engine/content-pack';
-import type { Coord, CoverLevel, Direction, TerrainId, UnitTypeId } from '@empire/battle-engine/types';
+import {
+  idx,
+  sharesEdge,
+  KeyedRegistry,
+  type ContentCatalog,
+  type Coord,
+  type CoverLevel,
+  type Direction,
+  type TerrainId,
+  type UnitTypeId,
+} from '@empire/battle-engine';
 import type { EditorDocument } from './document';
 
 /**

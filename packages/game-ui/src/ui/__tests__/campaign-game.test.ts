@@ -1,12 +1,14 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it } from 'vitest';
-import { CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN } from '@empire/story-candidate-01';
+import {
+  CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN,
+  CANDIDATE_01_CONTENT_PACK,
+} from '@empire/story-candidate-01';
 import { candidate01CampaignAdapter } from '@empire/story-candidate-01/presentation';
 import { StoryCampaignController } from '../campaign-game';
 
 import { createBattleEngine } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
-import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);

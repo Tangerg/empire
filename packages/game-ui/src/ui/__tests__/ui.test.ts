@@ -3,21 +3,22 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { TILE } from '../../art/terrain';
 import { portraitSvg } from '../../art/portraits';
 import { unitIcon } from '../../art/units';
-import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
+import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
 import { GameController } from '../game';
 import { BoardView, emptyOverlay } from '../board';
-import { createState } from '@empire/battle-engine/state';
-import { DomainInvariantError } from '@empire/battle-engine/domain';
-import { normaliseLevel } from '@empire/battle-engine/level';
-import { candidate01Level } from '@empire/story-candidate-01/levels';
+import {
+  createState,
+  DomainInvariantError,
+  normaliseLevel,
+  createBattleEngine,
+} from '@empire/battle-engine';
+import { candidate01Level, CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
 
 /** Composed per suite, exactly like an application composition root. */
 const ART = CANDIDATE_01_ART;
 
-import { createBattleEngine } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
-import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);

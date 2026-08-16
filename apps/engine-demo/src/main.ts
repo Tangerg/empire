@@ -1,6 +1,15 @@
 import '@empire/game-ui/styles/app.css';
 import '@empire/game-ui/styles/demo.css';
-import { ContentPackInstaller, createBattleEngine, createContentCatalog } from '@empire/battle-engine';
+import {
+  ContentPackInstaller,
+  createBattleEngine,
+  createContentCatalog,
+  GameSession,
+  type CombatPlan,
+  type GameEvent,
+  type LevelData,
+  type Unit,
+} from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
 import { GENERIC_ART, icon, terrainSwatch, unitIcon } from '@empire/game-ui';
@@ -9,10 +18,7 @@ import {
   playerResource,
   unitResource,
   weaponResource,
-} from '@empire/battle-engine/resources';
-import { GameSession } from '@empire/battle-engine/session';
-import type { CombatPlan } from '@empire/battle-engine/combat-plan';
-import type { GameEvent, LevelData, Unit } from '@empire/battle-engine/types';
+} from '@empire/battle-engine';
 
 const content = createContentCatalog();
 new ContentPackInstaller(content).install(COMMON_CONTENT_PACK, ANCIENT_EMPIRES_CONTENT_PACK);

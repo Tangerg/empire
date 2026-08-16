@@ -1,10 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { GameSession, type GameEvent, type GameState, type LevelData } from '@empire/battle-engine';
-import { hashState } from '@empire/battle-engine/replay';
+import {
+  GameSession,
+  type GameEvent,
+  type GameState,
+  type LevelData,
+  hashState,
+  createBattleEngine,
+} from '@empire/battle-engine';
 import { CANDIDATE_01_LEVELS } from './levels';
-import { ANCIENT_EMPIRES_LEVELS } from '@empire/content-ancient-empires/levels';
+import { ANCIENT_EMPIRES_LEVELS } from '@empire/content-ancient-empires';
 import { createTestCatalog } from '@empire/test-content';
-import { createBattleEngine } from '@empire/battle-engine';
 import { CANDIDATE_01_CONTENT_PACK } from './index';
 
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);

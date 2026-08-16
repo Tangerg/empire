@@ -2,15 +2,14 @@
 import { describe, expect, it } from 'vitest';
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
-import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
-import { createState } from '@empire/battle-engine/state';
+import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
+import { createState, type GameEvent, type GameState } from '@empire/battle-engine';
 import {
   DefaultBattleEventPresenters,
   type BattleLogContext,
   type BattleStage,
 } from '../event-presentation';
 import type { BoardView } from '../board';
-import type { GameEvent, GameState } from '@empire/battle-engine/types';
 
 /**
  * How an event looks and how it reads used to be two `switch` statements a

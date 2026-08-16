@@ -1,9 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { GameSession, type GameEvent, type LevelData } from '@empire/battle-engine';
+import {
+  GameSession,
+  type GameEvent,
+  type LevelData,
+  createBattleEngine,
+} from '@empire/battle-engine';
 import { CANDIDATE_01_LEVELS } from './levels';
 
 import { createTestCatalog } from '@empire/test-content';
-import { createBattleEngine } from '@empire/battle-engine';
 import { CANDIDATE_01_CONTENT_PACK } from './index';
 
 /** Composed per suite, exactly like an application composition root. */

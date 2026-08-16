@@ -1,7 +1,11 @@
-import { idx } from '@empire/battle-engine/grid';
-import { MapLayers, type DirectionalCoverLevel } from '@empire/battle-engine/domain/map-layers';
-import { mapFromLevel, terrainRows } from '@empire/battle-engine/level';
-import type { ContentCatalog } from '@empire/battle-engine/content-pack';
+import {
+  idx,
+  MapLayers,
+  type DirectionalCoverLevel,
+  mapFromLevel,
+  terrainRows,
+  type ContentCatalog,
+} from '@empire/battle-engine';
 import type {
   LevelCommander,
   LevelComposite,
@@ -18,7 +22,7 @@ import type {
   RuleSet,
   TerrainId,
   UnitTypeId,
-} from '@empire/battle-engine/types';
+} from '@empire/battle-engine';
 
 const MIN_MAP_SIZE = 4;
 const MAX_MAP_SIZE = 64;

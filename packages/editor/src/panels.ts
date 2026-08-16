@@ -1,13 +1,14 @@
-import { icon } from '@empire/game-ui/art/icons';
-import { GENERIC_ART } from '@empire/game-ui/art/direction';
-import { terrainSwatch } from '@empire/game-ui/art/terrain';
-import { unitIcon } from '@empire/game-ui/art/units';
-import { escapeHtml } from '@empire/game-ui/ui/html';
-import type { ContentCatalog } from '@empire/battle-engine/content-pack';
-import { terrainCharacter, type LevelIssue } from '@empire/battle-engine/level';
-import { FUNDS_RESOURCE } from '@empire/battle-engine/resources';
-import type { DirectionDef } from '@empire/battle-engine/tactical-grid';
-import type { Objective, PlayerConfig, RuleSet } from '@empire/battle-engine/types';
+import { icon, GENERIC_ART, terrainSwatch, unitIcon, escapeHtml } from '@empire/game-ui';
+import {
+  type ContentCatalog,
+  terrainCharacter,
+  type LevelIssue,
+  FUNDS_RESOURCE,
+  type DirectionDef,
+  type Objective,
+  type PlayerConfig,
+  type RuleSet,
+} from '@empire/battle-engine';
 import type { EditorDocument } from './document';
 import { EDITOR_TOOLS, type BrushSettings, type EditorTool } from './tools';
 

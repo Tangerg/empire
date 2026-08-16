@@ -32,3 +32,5 @@ export function createTestCatalog(...extraPacks: readonly ContentPack[]): Conten
  * wants to override balance should call `createTestCatalog()` for its own copy.
  */
 export const TEST_CATALOG: ContentCatalog = createTestCatalog();
+
+export * from './levels';

@@ -1,4 +1,4 @@
-import type { TacticalGrid } from '@empire/battle-engine/tactical-grid';
+import type { TacticalGrid } from '@empire/battle-engine';
 export interface SceneInsets {
   top: number;
   right: number;

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { CampaignBattleBridge, CampaignRuntime, validateCampaignDefinition } from '@empire/campaign-engine';
-import { GameSession } from '@empire/battle-engine';
+import { GameSession, createBattleEngine } from '@empire/battle-engine';
 import {
   CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN,
   applyCandidate01BattleContext,
@@ -10,7 +10,6 @@ import { candidate01Level } from './levels';
 import { CANDIDATE_01_CHOICES, CANDIDATE_01_STORY } from './story';
 
 import { createTestCatalog } from '@empire/test-content';
-import { createBattleEngine } from '@empire/battle-engine';
 import { CANDIDATE_01_CONTENT_PACK } from './index';
 
 /** Composed per suite, exactly like an application composition root. */

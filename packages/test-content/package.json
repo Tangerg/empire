@@ -1,9 +1,11 @@
 {
   "name": "@empire/test-content",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "type": "module",
-  "description": "Test-only composition root: builds isolated content catalogs for suites",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": "./src/index.ts"
   },
@@ -11,5 +13,6 @@
     "@empire/battle-engine": "*",
     "@empire/content-ancient-empires": "*",
     "@empire/content-common": "*"
-  }
+  },
+  "description": "Test-only composition root: builds isolated content catalogs for suites"
 }

@@ -1,4 +1,4 @@
-import type { StructureTypeId, TerrainId, UnitTypeId, WeaponId } from '@empire/battle-engine/types';
+import type { StructureTypeId, TerrainId, UnitTypeId, WeaponId } from '@empire/battle-engine';
 
 /** Engine ids stay story-agnostic; this table is the only unit-to-art translation. */
 export const CANDIDATE_01_UNIT_ART: Readonly<Partial<Record<UnitTypeId, string>>> = {

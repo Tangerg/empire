@@ -5,7 +5,7 @@ import type {
   TerrainId,
   UnitTypeId,
   WeaponId,
-} from '@empire/battle-engine/types';
+} from '@empire/battle-engine';
 import {
   candidate01Asset,
   candidate01AssetUrl,

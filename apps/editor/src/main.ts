@@ -1,10 +1,15 @@
 import '@empire/game-ui/styles/app.css';
 import '@empire/editor/styles/editor.css';
-import { createContentCatalog, ContentPackInstaller } from '@empire/battle-engine';
-import { createBattleEngine } from '@empire/battle-engine/plugins/default';
+import {
+  createContentCatalog,
+  ContentPackInstaller,
+  createBattleEngine,
+} from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
-import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
-import { ANCIENT_EMPIRES_LEVELS } from '@empire/content-ancient-empires/levels';
+import {
+  ANCIENT_EMPIRES_CONTENT_PACK,
+  ANCIENT_EMPIRES_LEVELS,
+} from '@empire/content-ancient-empires';
 import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS } from '@empire/story-candidate-01';
 import { EditorApp, initialLevel, type EditorSetup } from '@empire/editor';
 

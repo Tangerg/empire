@@ -2,7 +2,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { TILE } from '@empire/game-ui/art/terrain';
+import { TILE } from '@empire/game-ui';
 import {
   ContentPackInstaller,
   createContentCatalog,
@@ -13,14 +13,18 @@ import {
   type ContentCatalog,
 } from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
-import { emptyLevel, mapFromLevel, normaliseLevel } from '@empire/battle-engine/level';
-import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
+import {
+  emptyLevel,
+  mapFromLevel,
+  normaliseLevel,
+  createBattleEngine,
+} from '@empire/battle-engine';
+import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
 import { EditorApp } from '../app';
 import { EditorDocument } from '../document';
 import { BrushSettings } from '../tools';
 
 import { createTestCatalog } from '@empire/test-content';
-import { createBattleEngine } from '@empire/battle-engine/plugins/default';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** Composed per suite, exactly like an application composition root. */

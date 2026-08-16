@@ -1,13 +1,11 @@
-import { TacticalGrids } from '@empire/battle-engine/tactical-grid';
+import { TacticalGrids, mapFromLevel } from '@empire/battle-engine';
 const SQUARE = TacticalGrids.get('square4');
 import { describe, expect, it } from 'vitest';
-import { candidate01Level } from '@empire/story-candidate-01/levels';
-import { mapFromLevel } from '@empire/battle-engine/level';
+import { candidate01Level, CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 import { createSceneViewport } from '../scene-viewport';
 import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
 
 import { createTestCatalog } from '@empire/test-content';
-import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);

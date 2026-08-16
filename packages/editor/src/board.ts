@@ -1,13 +1,25 @@
-import { clear, fromMarkup, setAttrs, svg } from '@empire/game-ui/art/svg';
-import { PAL } from '@empire/game-ui/art/palette';
-import { battlefieldFeatureMarkup, battlefieldRenderKey } from '@empire/game-ui/art/battlefield-layer';
-import { TILE, terrainLayerMarkup } from '@empire/game-ui/art/terrain';
-import { squareLayout } from '@empire/game-ui/art/board-decorations';
-import { GENERIC_ART } from '@empire/game-ui/art/direction';
-import type { ContentCatalog } from '@empire/battle-engine/content-pack';
-import { unitSpriteMarkup } from '@empire/game-ui/art/units';
-import { idx } from '@empire/battle-engine/grid';
-import type { Coord, GameMap, LevelUnit, PlayerConfig } from '@empire/battle-engine/types';
+import {
+  clear,
+  fromMarkup,
+  setAttrs,
+  svg,
+  PAL,
+  battlefieldFeatureMarkup,
+  battlefieldRenderKey,
+  TILE,
+  terrainLayerMarkup,
+  squareLayout,
+  GENERIC_ART,
+  unitSpriteMarkup,
+} from '@empire/game-ui';
+import {
+  type ContentCatalog,
+  idx,
+  type Coord,
+  type GameMap,
+  type LevelUnit,
+  type PlayerConfig,
+} from '@empire/battle-engine';
 
 export interface EditorBoardHandlers {
   onStroke(at: Coord, phase: 'start' | 'move' | 'end', button: number): void;

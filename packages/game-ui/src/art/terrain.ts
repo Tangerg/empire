@@ -1,8 +1,11 @@
 import type { ArtDirection } from './direction';
-import { tileHash } from '@empire/battle-engine/grid';
-import type { GameMap, TerrainId } from '@empire/battle-engine/types';
-import type { ContentCatalog } from '@empire/battle-engine';
-import { idx } from '@empire/battle-engine/grid';
+import {
+  tileHash,
+  type GameMap,
+  type TerrainId,
+  type ContentCatalog,
+  idx,
+} from '@empire/battle-engine';
 import { PAL } from './palette';
 
 /** Tile edge length in SVG user units. The board scales via viewBox. */

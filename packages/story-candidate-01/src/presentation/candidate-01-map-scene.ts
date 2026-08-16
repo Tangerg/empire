@@ -1,5 +1,4 @@
-import { tileHash } from '@empire/battle-engine/grid';
-import type { GameMap, TerrainId } from '@empire/battle-engine/types';
+import { tileHash, type GameMap, type TerrainId } from '@empire/battle-engine';
 import { ANCIENT_EMPIRES_TERRAINS } from '@empire/content-ancient-empires';
 import { CANDIDATE_01_TERRAINS } from '../terrain';
 import { candidate01Asset } from './candidate-01-assets';

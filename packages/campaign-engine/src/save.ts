@@ -1,4 +1,4 @@
-import { SchemaMigrator, type SchemaMigration } from '@empire/battle-engine/save-schema';
+import { SchemaMigrator, type SchemaMigration } from '@empire/battle-engine';
 import { validateCampaignDefinition, validateCampaignState } from './aggregate';
 import type { CampaignDefinition, CampaignState } from './types';
 

@@ -1,4 +1,4 @@
-import type { BattleSave } from '@empire/battle-engine/battle-save';
+import type { BattleSave } from '@empire/battle-engine';
 import type { BattleSaveStore } from '../ui/game';
 
 const keyFor = (levelId: string): string => `empire:battle:${levelId}`;

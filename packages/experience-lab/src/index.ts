@@ -1,5 +1,12 @@
-import type { Coord, LevelData, LevelUnit, Objective, PlayerConfig } from '@empire/battle-engine';
-import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from '@empire/battle-engine';
+import {
+  type Coord,
+  type LevelData,
+  type LevelUnit,
+  type Objective,
+  type PlayerConfig,
+  COMMAND_POINTS_RESOURCE,
+  FUNDS_RESOURCE,
+} from '@empire/battle-engine';
 
 const TERRAIN = [
   'TTTTTTTTTTTTTTTTTTTTTTTTTTTTT',

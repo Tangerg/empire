@@ -57,6 +57,8 @@ function everyPackageSource(): string[] {
  * A guard whose pattern also matches the paragraph explaining what it forbids
  * reports the explanation as the violation, and is impossible to satisfy.
  */
+const escapeForRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 function stripComments(source: string): string {
   return source.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/[^\n]*/g, '');
 }
@@ -392,6 +394,70 @@ describe('no ambient content', () => {
 
     // Apps and @empire/test-content compose; libraries never do.
     expect(installers).toEqual([]);
+  });
+});
+
+describe('a package publishes one way in', () => {
+  const manifests = (): [string, { exports?: unknown; sideEffects?: unknown }][] =>
+    readdirSync(packagesRoot, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .flatMap((entry) => {
+        const path = join(packagesRoot, entry.name, 'package.json');
+        return statSync(path, { throwIfNoEntry: false })
+          ? [[entry.name, JSON.parse(readFileSync(path, 'utf8'))] as [string, { exports?: unknown }]]
+          : [];
+      });
+
+  it('exports no wildcard subpath of its own source', () => {
+    // Every package published `"./*": "./src/*.ts"`, which is not an API but the
+    // absence of one: every top-level module was public under a second name it
+    // already had through the barrel, and `__tests__/fixtures` was public too —
+    // one suite in another package was importing it.
+    //
+    // Assets are different. A stylesheet is not re-exported by any barrel, so
+    // `./styles/*` is the only way to reach one and duplicates nothing.
+    const offenders = manifests().flatMap(([name, manifest]) => {
+      const map = (manifest.exports ?? {}) as Record<string, string>;
+      return Object.entries(map)
+        .filter(([subpath, target]) => subpath.includes('*') && target.endsWith('.ts'))
+        .map(([subpath]) => `${name}: ${subpath}`);
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('gives a second entry point only to what the first does not reach', () => {
+    // A subpath earns its place by exporting something the root does not — the
+    // browser-only presentation layer of a story pack, say. A subpath whose
+    // module the index already re-exports is a second name for one thing.
+    const offenders = manifests().flatMap(([name, manifest]) => {
+      const map = (manifest.exports ?? {}) as Record<string, string>;
+      const index = join(packagesRoot, name, 'src', 'index.ts');
+      if (!statSync(index, { throwIfNoEntry: false })) return [];
+      const barrel = readFileSync(index, 'utf8');
+      return Object.entries(map).flatMap(([subpath, target]) => {
+        if (subpath === '.' || !target.endsWith('.ts')) return [];
+        // `./src/presentation/index.ts` is re-exported as `'./presentation'`.
+        const module = target.replace(/^\.\/src\//, './').replace(/(?:\/index)?\.ts$/, '');
+        const reExported = new RegExp(`export \\* from '${escapeForRegExp(module)}(?:/index)?';`);
+        return reExported.test(barrel) ? [`${name}: ${subpath} is already in the barrel`] : [];
+      });
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('declares itself free of side effects apart from stylesheets', () => {
+    // Without this a bundler must assume importing the barrel runs code, so it
+    // keeps every module the barrel names. Collapsing the deep imports onto the
+    // roots cost the editor 8% of its bundle until these were declared — and
+    // then returned more than it took, because the deep imports had been
+    // pulling in whole modules for one symbol.
+    const offenders = manifests()
+      .filter(([, manifest]) => JSON.stringify(manifest.sideEffects) !== '["**/*.css"]')
+      .map(([name]) => name);
+
+    expect(offenders).toEqual([]);
   });
 });
 

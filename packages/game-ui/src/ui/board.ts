@@ -1,6 +1,12 @@
-import { idx } from '@empire/battle-engine/grid';
-import type { ContentCatalog } from '@empire/battle-engine';
-import type { Coord, GameState, Unit, WeaponId } from '@empire/battle-engine/types';
+import {
+  idx,
+  type ContentCatalog,
+  type Coord,
+  type GameState,
+  type Unit,
+  type WeaponId,
+  type TacticalGrid,
+} from '@empire/battle-engine';
 import { PAL } from '../art/palette';
 import { FrameAnimationSystem, registerSvgStrip } from '../art/frame-animation';
 import { decorationsFor, type BattlePresentation } from '../art/battle-presentation';
@@ -16,7 +22,6 @@ import {
   scenePointToCell,
   type SceneViewport,
 } from '../art/scene-viewport';
-import type { TacticalGrid } from '@empire/battle-engine/tactical-grid';
 import { unitSpriteMarkup } from '../art/units';
 import { clear, fromMarkup, setAttrs, svg } from '../art/svg';
 

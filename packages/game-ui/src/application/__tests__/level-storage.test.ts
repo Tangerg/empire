@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it } from 'vitest';
-import { migrateLevel, normaliseLevel } from '@empire/battle-engine/level';
+import { migrateLevel, normaliseLevel, type LevelData } from '@empire/battle-engine';
 import {
   CUSTOM_LEVELS_KEY,
   loadCustomLevels,
@@ -8,7 +8,6 @@ import {
   deleteCustomLevel,
   saveCustomLevel,
 } from '../level-storage';
-import type { LevelData } from '@empire/battle-engine';
 
 const level = (id: string): LevelData =>
   normaliseLevel({

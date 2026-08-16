@@ -1,11 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { createTestCatalog } from '@empire/test-content';
+import { createTestCatalog, makeLevel, u } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** This suite composes its own catalog instead of relying on ambient state. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 import { createState } from '@empire/battle-engine';
-import { makeLevel, u } from '@empire/battle-engine/__tests__/fixtures';
 import { CampaignBattleBridge } from '../battle-bridge';
 import { CampaignRuntime } from '../runtime';
 import { createCampaignRuleServices } from '../rules';

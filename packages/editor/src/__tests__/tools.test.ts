@@ -1,13 +1,12 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it } from 'vitest';
-import { TILE } from '@empire/game-ui/art/terrain';
-import { normaliseLevel } from '@empire/battle-engine/level';
-import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
+import { TILE } from '@empire/game-ui';
+import { normaliseLevel, createBattleEngine } from '@empire/battle-engine';
+import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
 import { EditorApp } from '../app';
 import { BrushSettings, EDITOR_TOOLS, EditorToolRegistry, rectTiles, type EditorTool } from '../tools';
 
 import { createTestCatalog } from '@empire/test-content';
-import { createBattleEngine } from '@empire/battle-engine/plugins/default';
 
 /** Composed per suite, exactly like an application composition root. */
 const TEST_SETUP = {

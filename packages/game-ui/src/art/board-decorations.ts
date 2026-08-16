@@ -1,4 +1,4 @@
-import type { Coord, Direction, GameMap } from '@empire/battle-engine/types';
+import type { Coord, Direction, GameMap } from '@empire/battle-engine';
 import { PAL } from './palette';
 import { TILE } from './terrain';
 

@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { terrainMarkup } from '@empire/game-ui/art/terrain';
-import { unitSpriteMarkup } from '@empire/game-ui/art/units';
+import { terrainMarkup, unitSpriteMarkup } from '@empire/game-ui';
 import { CANDIDATE_01_ART } from './index';
 
 /** The pack's own art, composed rather than registered into a global. */

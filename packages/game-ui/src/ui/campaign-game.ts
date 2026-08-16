@@ -1,9 +1,20 @@
 import { saveCampaignState } from '../application/campaign-storage';
-import { CampaignBattleBridge, CampaignRuntime, type BattleRequest, type CampaignState } from '@empire/campaign-engine';
-import type { GameEvent, GameState } from '@empire/battle-engine/types';
-import type { BattleResult, CampaignDefinition } from '@empire/campaign-engine';
-import type { BattleEngine, ContentCatalog, LevelData } from '@empire/battle-engine';
-import { player } from '@empire/battle-engine/state';
+import {
+  CampaignBattleBridge,
+  CampaignRuntime,
+  type BattleRequest,
+  type CampaignState,
+  type BattleResult,
+  type CampaignDefinition,
+} from '@empire/campaign-engine';
+import {
+  type GameEvent,
+  type GameState,
+  type BattleEngine,
+  type ContentCatalog,
+  type LevelData,
+  player,
+} from '@empire/battle-engine';
 import { GameController, type BattleCompletionSnapshot } from './game';
 import { escapeHtml } from './html';
 
