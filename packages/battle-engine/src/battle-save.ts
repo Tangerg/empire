@@ -3,7 +3,14 @@ import { SchemaMigrator, type SchemaMigration } from './save-schema';
 import type { RuleReferenceRules } from './rule-references';
 import type { RuleReferenceCheckRegistry } from './rule-references';
 import type { ContentRegistry } from './registry';
-import type { GameState } from './types';
+import type {
+  DeploymentState,
+  GameMap,
+  GameState,
+  RandomState,
+  ScenarioState,
+  TurnOrderState,
+} from './types';
 
 export const BATTLE_SAVE_SCHEMA = 1;
 
@@ -83,6 +90,14 @@ class SaveInspection {
     if (!registry.has(id)) this.reject(`${owner} 引用了目录里没有的「${id}」`);
   }
 
+  /** Every field of one aggregate, named in the refusal when it is wrong. */
+  requireShape<T>(value: unknown, shape: Shape<T>, owner: string): void {
+    const fields = value as Record<string, unknown>;
+    for (const [field, check] of Object.entries(shape) as [string, ShapeCheck][]) {
+      if (!check(fields[field])) this.reject(`${owner}的「${field}」缺失或损坏，存档内容不是一场战斗`);
+    }
+  }
+
   /** A save is loaded or refused; there is no half-loaded battle to play. */
   reject(message: string): never {
     throw new StoredDocumentError(`战斗存档无法读取：${message}`);
@@ -91,14 +106,110 @@ class SaveInspection {
 
 type SaveCheck = (inspection: SaveInspection) => void;
 
+/* --------------------------------------------------------------- shape */
+
+/** What one raw field has to be before anything is allowed to walk it. */
+type ShapeCheck = (value: unknown) => boolean;
+
+const anArray: ShapeCheck = (value) => Array.isArray(value);
+const anObject: ShapeCheck = (value) =>
+  typeof value === 'object' && value !== null && !Array.isArray(value);
+const aNumber: ShapeCheck = (value) => typeof value === 'number' && Number.isFinite(value);
+const aString: ShapeCheck = (value) => typeof value === 'string';
+const orNull = (check: ShapeCheck): ShapeCheck => (value) => value === null || check(value);
+
+/**
+ * The shape of one aggregate a save is made of.
+ *
+ * `Record<keyof T, ShapeCheck>` is the whole point: the compiler refuses a
+ * table that has not been taught a field the state grew. The condition this
+ * replaces was hand-written and listed six of `GameState`'s twenty-three, so a
+ * save with no `embarkedUnits` walked straight past it and died four checks
+ * later with a `TypeError` — a defect's error raised for a document's problem,
+ * which is exactly the distinction the error contract exists to keep.
+ *
+ * Depth stops where the per-field checks below take over: those know what a
+ * unit or an overlay means, and this only knows that there is something there
+ * to ask about.
+ */
+type Shape<T> = Record<keyof T, ShapeCheck>;
+
+const STATE_SHAPE: Shape<GameState> = {
+  levelId: aString,
+  levelName: aString,
+  map: anObject,
+  units: anArray,
+  structures: anArray,
+  composites: anArray,
+  embarkedUnits: anArray,
+  markers: anArray,
+  commanders: anArray,
+  players: anArray,
+  rules: anObject,
+  turn: aNumber,
+  currentPlayer: aNumber,
+  phase: aString,
+  winnerTeam: orNull(aNumber),
+  endReason: aString,
+  nextUnitId: aNumber,
+  nextMarkerId: aNumber,
+  deployment: orNull(anObject),
+  scenario: anObject,
+  turnOrder: anObject,
+  actorTurns: aNumber,
+  pendingCasts: anArray,
+  random: anObject,
+};
+
+const MAP_SHAPE: Shape<GameMap> = {
+  width: aNumber,
+  height: aNumber,
+  tiles: anArray,
+  owners: anArray,
+  captureProgress: anArray,
+  elevation: anArray,
+  cliffs: anArray,
+  directionalCover: anArray,
+};
+
+const SCENARIO_SHAPE: Shape<ScenarioState> = {
+  variables: anObject,
+  zones: anObject,
+  overlays: anArray,
+  triggers: anArray,
+  firedTriggerIds: anArray,
+  triggerRuntime: anObject,
+  eventCounts: anObject,
+  zoneTags: anObject,
+  engagementRules: anArray,
+};
+
+const TURN_ORDER_SHAPE: Shape<TurnOrderState> = {
+  policy: aString,
+  activeUnit: orNull(aNumber),
+  data: anObject,
+};
+
+const RANDOM_SHAPE: Shape<RandomState> = { seed: aNumber, counters: anObject };
+
+const DEPLOYMENT_SHAPE: Shape<DeploymentState> = {
+  order: anArray,
+  currentIndex: aNumber,
+  assignments: anArray,
+};
+
 /** Enough shape to walk at all. Everything after this may assume the fields exist. */
 const checkShape: SaveCheck = (inspection) => {
-  const state = inspection.state as Partial<GameState> | undefined;
-  const missing = !state || typeof state !== 'object' ||
-    !Array.isArray(state.units) || !Array.isArray(state.players) ||
-    !Array.isArray(state.structures) || !Array.isArray(state.markers) ||
-    !state.map || !Array.isArray(state.map.tiles) || !state.scenario;
-  if (missing) inspection.reject('存档内容不是一场战斗');
+  const state = inspection.state as unknown;
+  if (!anObject(state)) inspection.reject('存档内容不是一场战斗');
+  inspection.requireShape(state, STATE_SHAPE, '战斗');
+  const battle = state as GameState;
+  inspection.requireShape(battle.map, MAP_SHAPE, '地图');
+  inspection.requireShape(battle.scenario, SCENARIO_SHAPE, '剧本');
+  inspection.requireShape(battle.turnOrder, TURN_ORDER_SHAPE, '行动顺序');
+  inspection.requireShape(battle.random, RANDOM_SHAPE, '随机流');
+  // Absent is a legal deployment: most battles never had one.
+  if (battle.deployment) inspection.requireShape(battle.deployment, DEPLOYMENT_SHAPE, '部署');
 };
 
 const checkMap: SaveCheck = (inspection) => {

@@ -121,6 +121,41 @@ describe('a battle interrupted mid-play', () => {
     expect(hashState(session.state)).toBe(digest);
   });
 
+  it('names the field a damaged save is missing, whichever field it is', () => {
+    // The shape check used to list six of the state's fields by hand, so a save
+    // missing any of the other seventeen got past it and blew up in whatever
+    // check reached the field first — a `TypeError`, which by the error contract
+    // means "the caller is a defect", for a document that is merely corrupt.
+    const battle = engine();
+    const good = battle.saveBattle(battleInProgress(battle));
+
+    const withoutField = (field: string): unknown => {
+      const raw = throughDisk(good) as { state: Record<string, unknown> };
+      delete raw.state[field];
+      return raw;
+    };
+
+    for (const field of Object.keys(good.state)) {
+      expect(() => battle.loadBattle(withoutField(field)))
+        .toThrow(new RegExp(`战斗的「${field}」缺失或损坏`));
+    }
+
+    // And the nested aggregates the checks walk straight into answer for
+    // themselves too, rather than being taken on trust because the parent existed.
+    const noTiles = throughDisk(good) as { state: GameState };
+    delete (noTiles.state.map as Partial<GameState['map']>).tiles;
+    expect(() => battle.loadBattle(noTiles)).toThrow(/地图的「tiles」缺失或损坏/);
+
+    const noSeed = throughDisk(good) as { state: GameState };
+    (noSeed.state.random as Partial<GameState['random']>).seed = undefined;
+    expect(() => battle.loadBattle(noSeed)).toThrow(/随机流的「seed」缺失或损坏/);
+
+    // A battle that never had a deployment is not a damaged one.
+    const noDeployment = throughDisk(good) as { state: GameState };
+    noDeployment.state.deployment = null;
+    expect(() => battle.loadBattle(noDeployment)).not.toThrow();
+  });
+
   it('walks a save up its schema ladder, and refuses a gap', () => {
     const battle = engine();
     const current = battle.saveBattle(battleInProgress(battle));
