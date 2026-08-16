@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "@empire/battle-engine": "0.1.0",
-    "@empire/content-ancient-empires": "0.1.0",
     "@empire/game-ui": "0.1.0"
+  },
+  "devDependencies": {
+    "@empire/content-ancient-empires": "0.1.0",
+    "@empire/story-candidate-01": "0.1.0",
+    "@empire/test-content": "0.1.0"
   }
 }

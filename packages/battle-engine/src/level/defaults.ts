@@ -1,4 +1,5 @@
 import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from '../resources';
+import type { ContentCatalog } from '../content-pack';
 import type { LevelData, Objective, PlayerConfig, RuleSet } from '../types';
 
 /**
@@ -65,9 +66,22 @@ function defaultPlayer(
   };
 }
 
-/** A blank, valid level: two sides, flat ground, the default win conditions. */
-export function emptyLevel(width = 20, height = 14): LevelData {
-  const row = '.'.repeat(width);
+/** The two sides a level has when it names none. */
+export const defaultPlayers = (): PlayerConfig[] => [
+  defaultPlayer(1, '蓝军', '#3f7fd8', 'human'),
+  defaultPlayer(2, '红军', '#d8483f', 'ai'),
+];
+
+/**
+ * A blank, valid level: two sides, the catalog's blank ground, the default
+ * win conditions.
+ *
+ * The catalog is a parameter because the ground is its answer, not this
+ * module's. `'.'` was hard-coded here, which quietly meant "every game's blank
+ * terrain is whatever the ancient-empires pack registered under a full stop".
+ */
+export function emptyLevel(content: ContentCatalog, width = 20, height = 14): LevelData {
+  const row = content.terrainEncoding.defaultCharacter.repeat(width);
   return {
     schema: 2,
     id: 'untitled',
@@ -81,14 +95,12 @@ export function emptyLevel(width = 20, height = 14): LevelData {
     directionalCover: [],
     owners: [],
     units: [],
-    players: [
-      defaultPlayer(1, '蓝军', '#3f7fd8', 'human'),
-      defaultPlayer(2, '红军', '#d8483f', 'ai'),
-    ],
+    players: defaultPlayers(),
     rules: {},
     victory: [{ type: 'routEnemies' }, { type: 'captureHQ' }],
   };
 }
+
 
 /** The ruleset a level plays under: the engine defaults, patched by the level. */
 export const resolveRules = (level: LevelData): RuleSet => ({ ...DEFAULT_RULES, ...(level.rules ?? {}) });

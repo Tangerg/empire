@@ -21,6 +21,15 @@ import type { EditorDocument } from './document';
 
 /** What the palette holds: the settings a tool paints *with*. */
 export class BrushSettings {
+  /**
+   * The ground erasing paints back, declared by the catalog.
+   *
+   * It used to be the literal `'plain'`, written into three separate tools, so
+   * the "general" editor could only erase in a game that happens to ship a
+   * terrain by that name. Which terrain is blank ground is the content pack's
+   * answer and it already states it, as the terrain-encoding default.
+   */
+  readonly blank: TerrainId;
   terrain: TerrainId;
   unitType: UnitTypeId;
   owner = 1;
@@ -30,9 +39,21 @@ export class BrushSettings {
   coverSide: Direction = 'north';
   coverLevel: Exclude<CoverLevel, 'none'> = 'half';
 
-  constructor(terrain: TerrainId, unitType: UnitTypeId) {
-    this.terrain = terrain;
-    this.unitType = unitType;
+  /**
+   * The palette opens on the catalog's blank ground and its first unit.
+   *
+   * "First registered" is the palette's own order, the same answer the tool
+   * registry gives for its default tool and the panel gives for its facing —
+   * not a guess about which unit a game considers basic.
+   */
+  constructor(content: ContentCatalog) {
+    this.blank = content.terrainEncoding.defaultTerrain;
+    this.terrain = this.blank;
+    const [firstUnit] = content.units.ids();
+    if (firstUnit === undefined) {
+      throw new Error('cannot author a level against a catalog with no unit types');
+    }
+    this.unitType = firstUnit;
   }
 
   /** Adopts whatever is already on a tile — the eyedropper's whole behaviour. */
@@ -118,7 +139,7 @@ const TerrainBrushTool: EditorTool = {
   highlight: ({ document, brush }, cursor) => brush.square(document, cursor),
   paint: ({ document, brush }, at, erasing) => {
     for (const tile of brush.square(document, at)) {
-      document.setTerrain(tile, erasing ? 'plain' : brush.terrain);
+      document.setTerrain(tile, erasing ? brush.blank : brush.terrain);
     }
   },
 };
@@ -131,7 +152,7 @@ const TerrainRectTool: EditorTool = {
   twoPhase: true,
   highlight: (_context, cursor, anchor) => (anchor ? rectTiles(anchor, cursor) : [cursor]),
   commit: ({ document, brush }, anchor, at, erasing) => {
-    for (const tile of rectTiles(anchor, at)) document.setTerrain(tile, erasing ? 'plain' : brush.terrain);
+    for (const tile of rectTiles(anchor, at)) document.setTerrain(tile, erasing ? brush.blank : brush.terrain);
   },
 };
 
@@ -141,7 +162,7 @@ const TerrainFillTool: EditorTool = {
   hotkey: 'f',
   icon: 'flag',
   highlight: (_context, cursor) => single(cursor),
-  paint: ({ document, brush }, at, erasing) => document.floodFill(at, erasing ? 'plain' : brush.terrain),
+  paint: ({ document, brush }, at, erasing) => document.floodFill(at, erasing ? brush.blank : brush.terrain),
 };
 
 const ElevationTool: EditorTool = {

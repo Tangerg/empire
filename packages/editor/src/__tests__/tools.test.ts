@@ -10,7 +10,10 @@ import { createTestCatalog } from '@empire/test-content';
 import { createBattleEngine } from '@empire/battle-engine/plugins/default';
 
 /** Composed per suite, exactly like an application composition root. */
-const TEST_RULES = createBattleEngine({ content: createTestCatalog() }).rules;
+const TEST_SETUP = {
+  rules: createBattleEngine({ content: createTestCatalog() }).rules,
+  presets: BUILTIN_LEVELS,
+};
 
 /**
  * A tool is a strategy, not a `switch` arm.
@@ -98,7 +101,7 @@ describe('editor toolbox', () => {
 
 describe('brush settings', () => {
   it('clips a square brush to the map', () => {
-    const brush = new BrushSettings('plain', 'soldier');
+    const brush = new BrushSettings(TEST_SETUP.rules.content);
     brush.size = 3;
     const document = { inBounds: (at: { x: number; y: number }) => at.x >= 0 && at.y >= 0 } as never;
     expect(brush.square(document, { x: 0, y: 0 })).toHaveLength(4);
@@ -117,7 +120,7 @@ describe('tools drive the editor', () => {
     host = document.getElementById('app')!;
     localStorage.clear();
     Element.prototype.setPointerCapture = () => {};
-    app = new EditorApp(TEST_RULES, normaliseLevel(JSON.parse(JSON.stringify(source))));
+    app = new EditorApp(TEST_SETUP, normaliseLevel(JSON.parse(JSON.stringify(source))));
     app.mount(host);
     board = host.querySelector('svg.editor-board') as SVGSVGElement;
     stubLayout(board, source.width * TILE, source.height * TILE);

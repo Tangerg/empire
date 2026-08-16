@@ -2,7 +2,6 @@ import { loadCustomLevels, saveCustomLevel, stashPlaytest } from '@empire/game-u
 import type { ContentCatalog } from '@empire/battle-engine/content-pack';
 import type { BattleRuleServices } from '@empire/battle-engine/action-system';
 import { TEAM_COLORS } from '@empire/game-ui/art/palette';
-import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
 import { validateLevel } from '@empire/battle-engine/level-validation';
 import { DEFAULT_RULES } from '@empire/battle-engine/level';
 import type { DirectionDef } from '@empire/battle-engine/tactical-grid';
@@ -76,6 +75,30 @@ const NAMED_RULE_FIELDS: ReadonlySet<string> = new Set(['captureMode', 'turnOrde
 
 const numberOrNull = (value: string | boolean) => (value === '' ? null : Number(value));
 
+/**
+ * The game this editor was opened for.
+ *
+ * A level editor is generic; the level it edits is not. This package used to
+ * import one campaign's levels directly, so the "general" editor could only
+ * ever offer ancient-empires maps to open — a second story with its own catalog
+ * had no way in. The ruleset already carries the catalog, and the levels come
+ * from whoever composed the ruleset, which is the application root.
+ */
+export interface EditorSetup {
+  /**
+   * The ruleset this level is being written for.
+   *
+   * It used to be the content catalog alone, which is why the editor could tell
+   * you that a unit type did not exist but not that an objective kind, a
+   * standing order or a turn-order policy was one nobody had registered: those
+   * live in the composed rules, and the editor could not see them. A level is
+   * authored *against a ruleset*; that is the dependency.
+   */
+  readonly rules: BattleRuleServices;
+  /** Levels offered in the open menu, beside the author's own saves. */
+  readonly presets: readonly LevelData[];
+}
+
 export class EditorApp {
   private doc: EditorDocument;
   private board: EditorBoard;
@@ -83,7 +106,7 @@ export class EditorApp {
   private readonly history = new EditorHistory();
 
   private tool: EditorTool = EDITOR_TOOLS.default;
-  private readonly brush = new BrushSettings('plain', 'soldier');
+  private readonly brush: BrushSettings;
   private strokeAnchor: Coord | null = null;
   private cursor: Coord | null = null;
   private showCoords = false;
@@ -97,20 +120,12 @@ export class EditorApp {
   private readonly content: ContentCatalog;
 
   constructor(
-    /**
-     * The ruleset this level is being written for.
-     *
-     * It used to be the content catalog alone, which is why the editor could
-     * tell you that a unit type did not exist but not that an objective kind,
-     * a standing order or a turn-order policy was one nobody had registered:
-     * those live in the composed rules, and the editor could not see them. A
-     * level is authored *against a ruleset*; that is the dependency.
-     */
-    private readonly rules: BattleRuleServices,
+    private readonly setup: EditorSetup,
     level: LevelData,
   ) {
-    const content = rules.content;
+    const content = setup.rules.content;
     this.content = content;
+    this.brush = new BrushSettings(content);
     this.doc = EditorDocument.fromLevel(content, level);
     this.ensureOwnerSelection();
     this.ensureCoverSide();
@@ -328,7 +343,7 @@ export class EditorApp {
   }
 
   private lint(): LevelIssue[] {
-    return validateLevel(this.rules, this.exportLevel());
+    return validateLevel(this.setup.rules, this.exportLevel());
   }
 
   private save(): void {
@@ -422,7 +437,7 @@ export class EditorApp {
    * the lint reports as its own finding rather than this panel guessing one.
    */
   private get facings(): readonly DirectionDef[] {
-    return this.rules.grids.tryGet(this.doc.rules.grid ?? DEFAULT_RULES.grid)?.directions ?? [];
+    return this.setup.rules.grids.tryGet(this.doc.rules.grid ?? DEFAULT_RULES.grid)?.directions ?? [];
   }
 
   private panelView(issues: readonly LevelIssue[] = []): EditorPanelView {
@@ -439,7 +454,7 @@ export class EditorApp {
       issues,
       facings: this.facings,
       presets: [
-        ...BUILTIN_LEVELS.map((level) => ({ value: `b:${level.id}`, label: `内置 · ${level.name}` })),
+        ...this.setup.presets.map((level) => ({ value: `b:${level.id}`, label: `内置 · ${level.name}` })),
         ...loadCustomLevels().map((saved) => ({
           value: `c:${saved.level.id}`,
           label: `我的 · ${saved.level.name}`,
@@ -532,7 +547,7 @@ export class EditorApp {
     import: () => this.importFile(),
     clear: () => {
       if (!confirm('清空当前地图？')) return;
-      this.loadLevel(emptyLevel(this.doc.map.width, this.doc.map.height), this.status);
+      this.loadLevel(emptyLevel(this.content, this.doc.map.width, this.doc.map.height), this.status);
     },
     addPlayer: () => {
       this.snapshot();
@@ -634,7 +649,7 @@ export class EditorApp {
   private presetLevel(chosen: string): LevelData | undefined {
     const [kind, levelId] = [chosen.slice(0, 1), chosen.slice(2)];
     return kind === 'b'
-      ? BUILTIN_LEVELS.find((level) => level.id === levelId)
+      ? this.setup.presets.find((level) => level.id === levelId)
       : loadCustomLevels().find((saved) => saved.level.id === levelId)?.level;
   }
 
@@ -737,12 +752,13 @@ function toggleObjective(
 
 /* ------------------------------------------------------------ level loading */
 
-export function initialLevel(content: ContentCatalog): LevelData {
+export function initialLevel(setup: EditorSetup): LevelData {
+  const content = setup.rules.content;
   const params = new URLSearchParams(location.search);
   const wanted = params.get('level');
   if (wanted) {
     const found =
-      BUILTIN_LEVELS.find((level) => level.id === wanted) ??
+      setup.presets.find((level) => level.id === wanted) ??
       loadCustomLevels().find((saved) => saved.level.id === wanted)?.level;
     if (found) return found;
   }
@@ -756,5 +772,5 @@ export function initialLevel(content: ContentCatalog): LevelData {
       /* fall through to a blank map */
     }
   }
-  return emptyLevel(20, 14);
+  return emptyLevel(content);
 }

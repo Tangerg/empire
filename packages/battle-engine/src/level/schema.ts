@@ -1,7 +1,7 @@
 import { StoredDocumentError } from '../domain/errors';
 import { SchemaMigrator } from '../save-schema';
 import type { LevelData } from '../types';
-import { DEFAULT_VICTORY, emptyLevel } from './defaults';
+import { DEFAULT_VICTORY, defaultPlayers } from './defaults';
 
 /** The level document is malformed — not merely questionable, unreadable. */
 /** A level document this build cannot read; one kind of `StoredDocumentError`. */
@@ -70,7 +70,7 @@ export function normaliseLevel(raw: unknown): LevelData {
   if (!Array.isArray(loaded.terrain)) throw new LevelFormatError('缺少 terrain');
   const height = loaded.height ?? loaded.terrain.length;
   const width = loaded.width ?? (loaded.terrain[0]?.length ?? 0);
-  const players = loaded.players ?? emptyLevel().players;
+  const players = loaded.players ?? defaultPlayers();
   for (const candidate of players) {
     if (!candidate.resources || typeof candidate.resources !== 'object') {
       throw new LevelFormatError(

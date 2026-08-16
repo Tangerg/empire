@@ -1,10 +1,23 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it } from 'vitest';
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
 import { TILE } from '@empire/game-ui/art/terrain';
-import { validateLevel } from '@empire/battle-engine';
-import { mapFromLevel, normaliseLevel } from '@empire/battle-engine/level';
+import {
+  ContentPackInstaller,
+  createContentCatalog,
+  defineTerrain,
+  defineUnit,
+  defineWeapon,
+  validateLevel,
+  type ContentCatalog,
+} from '@empire/battle-engine';
+import { COMMON_CONTENT_PACK } from '@empire/content-common';
+import { emptyLevel, mapFromLevel, normaliseLevel } from '@empire/battle-engine/level';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires/levels';
 import { EditorApp } from '../app';
+import { EditorDocument } from '../document';
+import { BrushSettings } from '../tools';
 
 import { createTestCatalog } from '@empire/test-content';
 import { createBattleEngine } from '@empire/battle-engine/plugins/default';
@@ -12,7 +25,59 @@ import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
-const TEST_RULES = createBattleEngine({ content: TEST_CATALOG }).rules;
+const TEST_SETUP = {
+  rules: createBattleEngine({ content: TEST_CATALOG }).rules,
+  presets: BUILTIN_LEVELS,
+};
+const TEST_RULES = TEST_SETUP.rules;
+
+/** Every runtime source of the editor package, by name and text. */
+function editorSources(directory = join(import.meta.dirname, '..')): [string, string][] {
+  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    if (entry.name === '__tests__' || entry.name === 'styles') return [];
+    const path = join(directory, entry.name);
+    if (entry.isDirectory()) return editorSources(path);
+    return entry.name.endsWith('.ts') ? [[entry.name, readFileSync(path, 'utf8')] as [string, string]] : [];
+  });
+}
+
+const escapeForRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/**
+ * A game the editor has never heard of: no `plain`, no `soldier`.
+ *
+ * Composed from the common layer only, so it declares its own ground and its
+ * own blank terrain — which is exactly the situation the editor's hard-coded
+ * ids made unauthorable.
+ */
+const OTHER_GAME: ContentCatalog = (() => {
+  const catalog = createContentCatalog();
+  const spear = defineWeapon({ id: 'spear', name: '矛', power: 40, damageType: 'cut' });
+  new ContentPackInstaller(catalog).install(COMMON_CONTENT_PACK, {
+    id: 'test.other-game',
+    version: 1,
+    damageTypes: [{ id: 'cut', name: '割', tags: [] }],
+    armorClasses: [{ id: 'hide', name: '皮甲', tags: [] }],
+    damageMatchups: [{ damageType: 'cut', armorClass: 'hide', multiplier: 1 }],
+    terrains: [
+      defineTerrain({ id: 'sand', name: '沙地', cost: { foot: 1, cavalry: 1, heavy: 1, flying: 1 } }),
+      defineTerrain({ id: 'dune', name: '沙丘', cost: { foot: 2, cavalry: 3, heavy: 3, flying: 1 } }),
+    ],
+    terrainCharacters: { '_': 'sand', 'n': 'dune' },
+    defaultTerrain: 'sand',
+    weapons: [spear],
+    units: [defineUnit({
+      id: 'nomad',
+      name: '游牧兵',
+      weapons: ['spear'],
+      movementClass: 'foot',
+      armorClass: 'hide',
+      value: 100,
+      recruitCosts: [],
+    }, new Map([['spear', spear]]))],
+  });
+  return catalog;
+})();
 
 function stubLayout(svg: SVGSVGElement, width: number, height: number): void {
   svg.getBoundingClientRect = () =>
@@ -53,7 +118,7 @@ describe('map editor', () => {
     localStorage.clear();
     // jsdom lacks pointer capture.
     Element.prototype.setPointerCapture = () => {};
-    app = new EditorApp(TEST_RULES, level());
+    app = new EditorApp(TEST_SETUP, level());
     app.mount(host);
     board = host.querySelector('svg.editor-board') as SVGSVGElement;
     stubLayout(board, BUILTIN_LEVELS[0].width * TILE, BUILTIN_LEVELS[0].height * TILE);
@@ -171,6 +236,50 @@ describe('map editor', () => {
     expect(draft).toBeTruthy();
     const restored = normaliseLevel(JSON.parse(draft!));
     expect(restored.terrain[9][9]).toBe('#');
+  });
+});
+
+describe('a general editor knows no particular game', () => {
+  it('names no content id and imports no story, in any of its sources', () => {
+    // It used to import one campaign's levels directly and paint with the
+    // literals `plain` and `soldier`, so the "general" editor could only really
+    // author ancient-empires maps: a story whose ground is sand had nothing to
+    // erase back to, and its chapters never appeared in the open menu — which
+    // was already wrong for the shipped editor, whose catalog holds candidate-01.
+    //
+    // Everything it needs is now asked for: blank ground from the catalog's
+    // terrain encoding, the starting brush from the palette's own first entry,
+    // and the level list from whoever composed the ruleset.
+    const catalog = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
+    const ids = [...catalog.terrains.ids(), ...catalog.units.ids(), ...catalog.weapons.ids()];
+    const named = new RegExp(`['"\`](?:${ids.map(escapeForRegExp).join('|')})['"\`]`);
+
+    const offenders = editorSources().flatMap(([name, source]) => {
+      const code = source.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/[^\n]*/g, '');
+      const named_ = named.exec(code)?.[0];
+      if (named_) return [`${name} names ${named_}`];
+      const imported = /from '@empire\/(?:content|story)-[^']*'/.exec(code)?.[0];
+      return imported ? [`${name} imports ${imported}`] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('erases to the ground the catalog calls blank, whatever that is', () => {
+    // Deliberately a catalog with no `plain` and no `soldier` in it. Asserting
+    // this against the shipped test catalog proves nothing: its blank ground is
+    // `plain`, so hard-coding `plain` back into the document would pass. This is
+    // the second story the editor was supposed to be able to author.
+    const other = OTHER_GAME;
+    const brush = new BrushSettings(other);
+    expect(brush.blank).toBe('sand');
+    expect(brush.terrain).toBe('sand');
+    expect(brush.unitType).toBe('nomad');
+
+    const document = EditorDocument.fromLevel(other, emptyLevel(other, 4, 4));
+    expect(new Set(document.map.tiles)).toEqual(new Set(['sand']));
+    document.resize(6, 6);
+    expect(new Set(document.map.tiles)).toEqual(new Set(['sand']));
   });
 });
 

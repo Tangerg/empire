@@ -9,7 +9,7 @@ import type { LevelData } from '@empire/battle-engine';
 
 describe('editor document aggregate', () => {
   it('owns terrain, ownership and flood-fill invariants', () => {
-    const document = EditorDocument.fromLevel(TEST_CATALOG, emptyLevel(4, 4));
+    const document = EditorDocument.fromLevel(TEST_CATALOG, emptyLevel(TEST_CATALOG, 4, 4));
     document.setTerrain({ x: 1, y: 1 }, 'village');
     document.setOwner({ x: 1, y: 1 }, 1);
     expect(document.map.owners[5]).toBe(1);
@@ -22,7 +22,7 @@ describe('editor document aggregate', () => {
   });
 
   it('keeps spatial features and units valid when resized', () => {
-    const document = EditorDocument.fromLevel(TEST_CATALOG, emptyLevel(6, 6));
+    const document = EditorDocument.fromLevel(TEST_CATALOG, emptyLevel(TEST_CATALOG, 6, 6));
     document.placeUnit({ x: 5, y: 5 }, 'soldier', 1);
     document.toggleCliff({ x: 4, y: 5 }, { x: 5, y: 5 });
     document.setDirectionalCover({ x: 5, y: 5 }, 'north', 'full');
@@ -35,7 +35,7 @@ describe('editor document aggregate', () => {
   });
 
   it('restores behavior after history serialization and exports defensive copies', () => {
-    const original = EditorDocument.fromLevel(TEST_CATALOG, emptyLevel(4, 4));
+    const original = EditorDocument.fromLevel(TEST_CATALOG, emptyLevel(TEST_CATALOG, 4, 4));
     const restored = EditorDocument.deserialize(TEST_CATALOG, original.serialize());
     restored.setTerrain({ x: 0, y: 0 }, 'forest');
     const level = restored.toLevel();
@@ -47,7 +47,7 @@ describe('editor document aggregate', () => {
   });
 
   it('rejects mutations that would create an invalid editor document', () => {
-    const document = EditorDocument.fromLevel(TEST_CATALOG, emptyLevel(4, 4));
+    const document = EditorDocument.fromLevel(TEST_CATALOG, emptyLevel(TEST_CATALOG, 4, 4));
 
     expect(() => document.placeUnit({ x: 4, y: 0 }, 'soldier', 1)).toThrow(/outside/);
     expect(() => document.placeUnit({ x: 0, y: 0 }, 'soldier', 99)).toThrow(/unknown player/);

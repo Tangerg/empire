@@ -44,6 +44,21 @@ export class TerrainEncodingRegistry {
     return this.fallback;
   }
 
+  /**
+   * The legend character a blank terrain row is written with.
+   *
+   * The catalog's answer to "what is this game's blank ground", which used to
+   * be the literal `'.'` in the blank-level factory and the literal `'plain'`
+   * in three editor tools — so a story paved with sand had no way to say so.
+   */
+  get defaultCharacter(): string {
+    const character = this.character(this.defaultTerrain);
+    if (character === undefined) {
+      throw new DomainInvariantError(`default terrain "${this.defaultTerrain}" was registered without a character`);
+    }
+    return character;
+  }
+
   characters(): Record<string, TerrainId> {
     return Object.fromEntries(this.byCharacter);
   }

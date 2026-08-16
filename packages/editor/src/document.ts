@@ -254,7 +254,9 @@ export class EditorDocument {
     const old = this.map;
     if (width === old.width && height === old.height) return false;
 
-    const tiles: TerrainId[] = new Array(width * height).fill('plain');
+    // Ground a grown map is paved with: the catalog's blank terrain, not the
+    // literal `'plain'`, which only existed in one game's pack.
+    const tiles: TerrainId[] = new Array(width * height).fill(this.content.terrainEncoding.defaultTerrain);
     const owners: number[] = new Array(width * height).fill(0);
     const elevation: number[] = new Array(width * height).fill(0);
     for (let y = 0; y < Math.min(height, old.height); y++) {
