@@ -1,10 +1,9 @@
 import '@empire/game-ui/styles/app.css';
 import '@empire/game-ui/styles/demo.css';
-import { ContentPackInstaller, createContentCatalog } from '@empire/battle-engine';
+import { ContentPackInstaller, createBattleEngine, createContentCatalog } from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
 import { GENERIC_ART, icon, terrainSwatch, unitIcon } from '@empire/game-ui';
-import { buildBattleEngine, createDefaultMicrokernel } from '@empire/battle-engine/plugins/default';
 import {
   type ResourceSubject,
   playerResource,
@@ -81,8 +80,10 @@ const appElement = document.getElementById('app');
 if (!appElement) throw new Error('missing #app');
 const app: HTMLElement = appElement;
 
-const kernel = createDefaultMicrokernel(content);
-const engine = buildBattleEngine(kernel.compose());
+// The same call every other app makes. This page used to run the kernel by hand
+// because it wanted the plugin manifest to draw; the manifest is now on the
+// engine, so a demo about composition no longer demonstrates a second way to do it.
+const engine = createBattleEngine({ content });
 let session = new GameSession(DEMO_LEVEL, engine);
 let preview: CombatPlan | null = null;
 let events: GameEvent[] = [];
@@ -205,7 +206,7 @@ function render(): void {
   const hero = byKey('hero');
   const javelin = byKey('javelin');
   const castleOccupied = Boolean(unitAt(6, 4));
-  const pluginCards = [...kernel.pluginManifest()].map(([id, version], index) =>
+  const pluginCards = [...engine.pluginManifest].map(([id, version], index) =>
     `<div class="plugin-card"><span>0${index + 1}</span><b>${html(id.replace('engine.', ''))}</b><em>v${version}</em></div>`,
   ).join('');
 

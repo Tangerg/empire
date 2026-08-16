@@ -3,7 +3,6 @@ import { SrpgMicrokernel, type EnginePlugin } from '../kernel';
 import {
   AiPlanningPlugin,
   contentPluginFor,
-  buildBattleEngine,
   createBattleEngine,
   createDefaultMicrokernel,
   overridePlugin,
@@ -144,9 +143,7 @@ describe('capability substitution', () => {
     // condition registry. An override that arrived after them would leave the
     // seeded copy holding the source it was supposed to replace.
     const random = DeterministicOnlyRandom;
-    const engine = buildBattleEngine(
-      createDefaultMicrokernel(TEST_CONTENT).use(overridePlugin('random', random)).compose(),
-    );
+    const engine = createBattleEngine({ content: TEST_CONTENT, random });
 
     expect(engine.rules.random).toBe(random);
     expect(engine.rules.scenarioConditions.random).toBe(random);
@@ -182,6 +179,38 @@ describe('capability substitution', () => {
     expect(() => createDefaultMicrokernel(TEST_CONTENT).use(polite).compose()).not.toThrow();
   });
 
+  it('installs an added plugin through the same root, and says what composed it', () => {
+    // The two reasons anyone ran the kernel by hand, now both parameters of the
+    // one composition root: adding a plugin, and reading the manifest back. A
+    // plugin — unlike the capability fields — can *consume* what it replaces,
+    // which is why a ready-made value could not express this one.
+    const shout: EnginePlugin = {
+      id: 'test.shout',
+      version: 3,
+      overrides: ['reactions'],
+      requiresCapabilities: ['reactions'],
+      install: (context) => {
+        context.replace('reactions', context.require('reactions').clone().register({
+          id: 'test.parry',
+          name: '格挡',
+          hint: '',
+          intercepts: false,
+          retaliates: true,
+          conservesResources: false,
+          incomingMultiplier: 0.5,
+        }));
+      },
+    };
+    const engine = createBattleEngine({ content: TEST_CONTENT, plugins: [shout] });
+
+    expect(engine.rules.reactions.has('test.parry')).toBe(true);
+    expect(engine.pluginManifest.get('test.shout')).toBe(3);
+    // And the defaults are in the manifest too: it is what composed this engine,
+    // not a list of what was added to it.
+    expect(engine.pluginManifest.get(TacticalRulesPlugin.id)).toBe(TacticalRulesPlugin.version);
+    expect(createBattleEngine({ content: TEST_CONTENT }).pluginManifest.has('test.shout')).toBe(false);
+  });
+
   it('splits one factory override per capability so the order stays acyclic', () => {
     // `scenarioConditions` is introduced by the mission rules and consumes
     // `random` from the tactical rules. One plugin overriding both would have to
@@ -202,8 +231,8 @@ describe('entity-owned resource accounts', () => {
       funds: [100, 0],
     }));
     const subject = playerResource(state.players[0]);
-    const engineA = buildBattleEngine(createDefaultMicrokernel(TEST_CONTENT).compose());
-    const engineB = buildBattleEngine(createDefaultMicrokernel(TEST_CONTENT).compose());
+    const engineA = createBattleEngine({ content: TEST_CONTENT });
+    const engineB = createBattleEngine({ content: TEST_CONTENT });
 
     engineA.rules.resources.spend(FUNDS_RESOURCE, subject, 30);
 

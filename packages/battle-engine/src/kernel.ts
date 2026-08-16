@@ -44,6 +44,16 @@ export interface KernelCapabilities {
   has(id: KernelCapabilityId): boolean;
   require<K extends KernelCapabilityId>(id: K): KernelCapabilityMap[K];
   providerOf(id: KernelCapabilityId): string | undefined;
+  /**
+   * What composed this, as plugin id → version.
+   *
+   * Carried by the composition rather than left on the kernel that ran it, so
+   * anything holding the result can say what it is made of without keeping the
+   * builder alive beside it. That was the whole reason the demo held a kernel:
+   * it wanted the manifest, and the only way to have one was to run composition
+   * itself — which is how a second way to build an engine appeared.
+   */
+  readonly pluginManifest: ReadonlyMap<string, number>;
 }
 
 /** Capability-segregated port handed to one plugin during installation. */
@@ -113,7 +123,10 @@ class KernelCapabilityStore {
 }
 
 class ReadonlyKernelCapabilities implements KernelCapabilities {
-  constructor(protected readonly store: KernelCapabilityStore) {}
+  constructor(
+    protected readonly store: KernelCapabilityStore,
+    readonly pluginManifest: ReadonlyMap<string, number> = new Map(),
+  ) {}
 
   has(id: KernelCapabilityId): boolean {
     return this.store.has(id);
@@ -185,7 +198,7 @@ export class SrpgMicrokernel {
     return this;
   }
 
-  pluginManifest(): ReadonlyMap<string, number> {
+  get pluginManifest(): ReadonlyMap<string, number> {
     return new Map([...this.plugins.values()].map((plugin) => [plugin.id, plugin.version]));
   }
 
@@ -206,7 +219,7 @@ export class SrpgMicrokernel {
       this.assertManifest(plugin, 'override', plugin.overrides, store.overriddenBy(plugin.id));
       this.assertConsumption(plugin, context.consumed);
     }
-    return new ReadonlyKernelCapabilities(store);
+    return new ReadonlyKernelCapabilities(store, this.pluginManifest);
   }
 
   /**

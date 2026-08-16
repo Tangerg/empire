@@ -19,7 +19,6 @@ import { forecastCombatPlan } from './combat-plan';
 import { validateLevel } from './level-validation';
 import { cloneState, createState, restoreState, type CreateStateOptions } from './state';
 import { createBattleSave, type BattleSave } from './battle-save';
-import type { ContentCatalog } from './content-pack';
 import { careerOptions } from './careers';
 import { formationOptions } from './formations';
 import { deploymentRoster, deploymentSpots } from './deployment';
@@ -69,7 +68,11 @@ export class BattleEngine {
   readonly aiIntents: AiIntentRegistry;
   readonly rules: BattleRuleServices;
 
-  constructor(dependencies: BattleEngineDependencies) {
+  constructor(
+    dependencies: BattleEngineDependencies,
+    /** What composed this engine, id → version; empty when nothing said. */
+    readonly pluginManifest: ReadonlyMap<string, number> = new Map(),
+  ) {
     this.actionHandlers = dependencies.actionHandlers;
     this.combatModifiers = dependencies.combatModifiers;
     this.aiObjectiveAdvisors = dependencies.aiObjectiveAdvisors;
@@ -260,14 +263,3 @@ export class BattleEngine {
   }
 }
 
-/**
- * Focused rule overrides for one engine.
- *
- * `content` is required and is never defaulted to ambient state. Every other
- * capability, if given, replaces the default the rule plugins install — see
- * `createBattleEngine` in the composition root.
- */
-export interface BattleEngineOverrides extends Partial<BattleEngineDependencies> {
-  /** The catalog this engine plays on; never defaulted to ambient state. */
-  readonly content: ContentCatalog;
-}

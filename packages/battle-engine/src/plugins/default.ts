@@ -10,7 +10,7 @@ import {
   type KernelCapabilityId,
   type KernelCapabilityMap,
 } from '../kernel';
-import { BattleEngine, type BattleEngineOverrides } from '../engine';
+import { BattleEngine, type BattleEngineDependencies } from '../engine';
 import { ObjectiveHandlers } from '../objective-system';
 import { DefaultRankProgression } from '../progression';
 import { DefaultBattleResources } from '../resources';
@@ -162,8 +162,12 @@ export function createDefaultMicrokernel(content: ContentCatalog): SrpgMicrokern
  * knows how to construct one concrete engine is a host that cannot compose
  * anything else. Each field demands its own capability by name, so `require`
  * names whichever one a plugin set forgot.
+ *
+ * Module-private, because a second exported function that returns a
+ * `BattleEngine` is a second way to build one however carefully it is
+ * documented — and the demo had already taken it.
  */
-export function buildBattleEngine(capabilities: KernelCapabilities): BattleEngine {
+function assembleBattleEngine(capabilities: KernelCapabilities): BattleEngine {
   return new BattleEngine({
     content: capabilities.require('content'),
     abilities: capabilities.require('abilities'),
@@ -189,7 +193,7 @@ export function buildBattleEngine(capabilities: KernelCapabilities): BattleEngin
     aiObjectiveAdvisors: capabilities.require('aiObjectiveAdvisors'),
     abilityAiEvaluators: capabilities.require('abilityAiEvaluators'),
     aiIntents: capabilities.require('aiIntents'),
-  });
+  }, capabilities.pluginManifest);
 }
 
 /**
@@ -214,6 +218,31 @@ export function overridePlugin<K extends KernelCapabilityId>(
 }
 
 /**
+ * What one engine is composed from.
+ *
+ * Here rather than beside `BattleEngine`, because this is the composition
+ * root's parameter object and not part of the engine's own vocabulary: an
+ * engine does not know what a plugin is, and saying otherwise made `engine.ts`
+ * and `kernel.ts` import each other. `content` is required and is never
+ * defaulted to ambient state; every capability field, if given, replaces the
+ * default the rule plugins install.
+ */
+export interface BattleEngineOverrides extends Partial<BattleEngineDependencies> {
+  /** The catalog this engine plays on; never defaulted to ambient state. */
+  readonly content: ContentCatalog;
+  /**
+   * Plugins installed alongside the defaults, ordered like any other.
+   *
+   * The reason this exists rather than a second builder: swapping one capability
+   * for a ready-made value is what the fields above are for, but a plugin that
+   * *provides* something new, or that needs the value it replaces, has to take
+   * part in composition. Without this the only way to install one was to run the
+   * kernel by hand — which is a second way to build an engine, and there is one.
+   */
+  readonly plugins?: readonly EnginePlugin[];
+}
+
+/**
  * The one composition root.
  *
  * There used to be two, and only one of them ran the plugins: every app and
@@ -221,15 +250,20 @@ export function overridePlugin<K extends KernelCapabilityId>(
  * twenty-one defaults by hand, so the plugin architecture was real code the
  * product never executed — and the defaults had to be kept in step with the
  * plugins that shadowed them.
+ *
+ * Then a third appeared for a smaller reason: composing by hand was the only
+ * way to add a plugin or to read the manifest afterwards. Both are ordinary
+ * requests, so both are parameters — `plugins` goes in, `pluginManifest` comes
+ * out on the engine, and the kernel stays behind this function.
  */
 export function createBattleEngine(overrides: BattleEngineOverrides): BattleEngine {
-  const { content, ...swapped } = overrides;
-  const kernel = createDefaultMicrokernel(content);
+  const { content, plugins = [], ...swapped } = overrides;
+  const kernel = createDefaultMicrokernel(content).useAll(plugins);
   for (const [capability, value] of Object.entries(swapped)) {
     if (value === undefined) continue;
     kernel.use(overridePlugin(capability as KernelCapabilityId, value as never));
   }
-  return buildBattleEngine(kernel.compose());
+  return assembleBattleEngine(kernel.compose());
 }
 
 /** The ruleset alone, for a rule under test that needs no engine around it. */

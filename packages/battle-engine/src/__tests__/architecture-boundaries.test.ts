@@ -402,10 +402,22 @@ describe('one composition root', () => {
     // the same twenty-one defaults by hand, so the plugin architecture was real
     // code the product never executed — and the defaults had to be kept in step
     // with the plugins that shadowed them.
-    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
-      const name = relative(coreRoot, file);
-      if (name === join('plugins', 'default.ts')) return [];
-      return /new BattleEngine\(/.test(readFileSync(file, 'utf8')) ? [name] : [];
+    //
+    // A third one then grew where the first guard could not see it: this used to
+    // read the engine package alone, and the demo — an app — was running the
+    // kernel itself, because composing by hand was the only way to add a plugin
+    // or to read the manifest afterwards. Both are parameters of the root now,
+    // so the whole repository is held to it, and running a kernel counts as
+    // building an engine even when the constructor is out of sight.
+    const root = join(coreRoot, 'plugins', 'default.ts');
+    const assembly = /new BattleEngine\(|new SrpgMicrokernel\(|createDefaultMicrokernel\(/;
+    const offenders = [
+      ...runtimeTypeScriptFiles(coreRoot),
+      ...everyPackageSource(),
+      ...appSources(),
+    ].flatMap((file) => {
+      if (file === root) return [];
+      return assembly.test(stripComments(readFileSync(file, 'utf8'))) ? [relative(packagesRoot, file)] : [];
     });
 
     expect(offenders).toEqual([]);
