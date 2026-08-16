@@ -1,0 +1,49 @@
+name: CI
+
+# Everything that decides whether the repository is in a good state, run
+# somewhere that is not one laptop. The architecture guards in particular only
+# constrain what actually runs them: 52 fitness tests that never leave a working
+# copy protect that working copy and nothing else.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Ordered cheapest-first so a broken type shows up before a 20s suite.
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build every app
+        run: npm run build:apps
+
+      # The sweep is a diff tool, not an assertion, so CI cannot say "unchanged"
+      # — it has no before. What it can say is that every shipped level still
+      # plays to a conclusion under all three AI profiles without throwing, and
+      # that the digests are reproducible on a machine that is not this one.
+      - name: Replay every shipped level
+        run: |
+          npm run --silent sweep > /tmp/first.txt
+          npm run --silent sweep > /tmp/second.txt
+          diff /tmp/first.txt /tmp/second.txt
+          grep -c '^END ' /tmp/first.txt

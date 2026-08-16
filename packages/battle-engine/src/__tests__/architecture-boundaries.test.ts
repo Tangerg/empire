@@ -397,6 +397,30 @@ describe('no ambient content', () => {
   });
 });
 
+describe('documentation is held to the code', () => {
+  it('counts these guards for every document that states a number', () => {
+    // Three documents claimed a guard count. Two of them said 41 and one said
+    // 48, while there were 48 — so the docs disagreed with the code *and* with
+    // each other, which is what a fact restated in prose does. A stated number
+    // is only worth stating if something checks it.
+    const guards = readFileSync(join(coreRoot, '__tests__', 'architecture-boundaries.test.ts'), 'utf8')
+      .split('\n')
+      .filter((line) => line.startsWith('  it(')).length;
+
+    const docsRoot = join(packagesRoot, '..', 'docs');
+    const claims = readdirSync(docsRoot)
+      .filter((entry) => entry.endsWith('.md'))
+      .flatMap((entry) => readFileSync(join(docsRoot, entry), 'utf8').split('\n').flatMap((line) => {
+        const stated = /架构(?:依赖)?测试[^\n]*?共 (\d+) 条|当前共 (\d+) 条/.exec(line);
+        return stated ? [{ doc: entry, count: Number(stated[1] ?? stated[2]) }] : [];
+      }));
+
+    // A guard that finds nothing to check passes for the wrong reason.
+    expect(claims.length).toBeGreaterThanOrEqual(3);
+    expect(claims.filter((claim) => claim.count !== guards)).toEqual([]);
+  });
+});
+
 describe('a package publishes one way in', () => {
   const manifests = (): [string, { exports?: unknown; sideEffects?: unknown }][] =>
     readdirSync(packagesRoot, { withFileTypes: true })

@@ -1,6 +1,8 @@
 # 扩展通用 SRPG 战斗引擎
 
-本页定义战斗引擎的现行架构、依赖方向、事务边界和扩展契约。它用于开发和审查规则代码，不记录历次重构过程。
+本页定义战斗引擎的现行架构、依赖方向、事务边界和扩展契约。它用于开发和审查规则代码。
+
+每条契约后面通常跟一段“为什么不是另一种做法”。那不是重构日志，而是契约的一部分：不写下被否决的方案，下一次改动会把它重新引入。历次改动的过程本身在 git 历史和代码注释里，不在这里。
 
 > 文档类型：Conceptual · 状态：已实现并受架构测试保护 · 代码真值：`packages/battle-engine/src/`
 
@@ -323,7 +325,7 @@ deploymentRefusal(rules, state, unit, at): string | null
 
 现在名字由 `LevelDeclarations` 收集一次——**重名也在那里发现**，因为那是关于声明本身的事实，与任何一次引用无关。`LevelInspection` 携带文档、内容目录、地图和声明表，每一条检查是写在它上面的一个有名字的问题。
 
-`mapio.ts` 随之消失。那个名字没有描述它五个主题中的任何一个——它既不只关于地图，也和 IO 无关——关卡文档现在一个主题一个模块：`defaults`、`schema`、`map`、`declarations`、`validation`、`issues`，统一在 `@empire/battle-engine/level` 之下。
+`mapio.ts` 随之消失。那个名字没有描述它五个主题中的任何一个——它既不只关于地图，也和 IO 无关——关卡文档现在一个主题一个模块：`defaults`、`schema`、`map`、`declarations`、`validation`、`issues`，统一在 `src/level/` 之下，随包根一起导出。
 
 重构后逐条比对：每个内置关卡加上各自的「全面破坏」变体，共 501 条发现，消息完全一致。
 

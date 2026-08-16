@@ -63,20 +63,29 @@ flowchart TD
 
 ## 组合根规则
 
-内容注册只能出现在 `apps/*/src/main.ts` 或测试组合根 `tooling/test/setup-content.ts`。导入包本身不能隐式安装内容，否则测试顺序、热更新和多引擎实例会互相污染。
+内容注册只能出现在 `apps/*/src/main.ts`，或测试里的 `@empire/test-content`。导入一个包不会安装任何内容：没有环境目录，同一个进程里的两个引擎可以跑不同题材。
 
 标准装配顺序如下：
 
-1. 调用 `installContentPacks` 安装内容定义
-2. 注册 `ArtProvider` 或 `BattlePresentation`
-3. 创建 `BattleEngine`、`GameSession` 或 `CampaignRuntime`
-4. 将控制器挂载到应用 DOM
+1. `createContentCatalog()` 建一个空目录
+2. `new ContentPackInstaller(catalog).install(...packs)` 装入内容定义
+3. `createBattleEngine({ content })` —— 唯一的建引擎入口，需要额外插件时传 `plugins`
+4. 把 `GameSession` / `CampaignRuntime` 和控制器挂到应用 DOM
 
-引擎创建时会克隆内容目录和规则注册表。已创建引擎不会读取之后写入的全局注册表。
+表现由会话手里的规则集提供，不存在全局表现注册表。
 
 ## 导出策略
 
-包根导出稳定公共面。子路径导出用于边界清晰的高级能力，例如 `@empire/battle-engine/plugins/default` 和 `@empire/game-ui/art/frame-animation`。
+每个包只有一个代码入口：包根。没有 `"./*"` 通配子路径——它会把每个顶层模块变成桶文件之外的第二个名字，连 `__tests__` 都一起公开。
+
+例外只有两类：
+
+- 资源子路径（`@empire/game-ui/styles/*`），桶文件不导出样式表
+- 桶文件**刻意不收**的入口，目前只有 `@empire/story-candidate-01/presentation`
+
+所有包都声明 `"sideEffects": ["**/*.css"]`，否则打包器必须假设 import 桶文件会执行代码，把桶里点到的模块全部保留。
+
+三条架构测试守着这一节。
 
 新增导出时遵守以下规则：
 
