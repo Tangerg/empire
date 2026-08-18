@@ -69,15 +69,27 @@ function atlasCellAt(
   </g>`;
 }
 
+/**
+ * How one environment cell is placed, beyond where it stands.
+ *
+ * Named because the call sites could not be read: four positional trailers meant
+ * `environmentCellAt(detail, x, y, 0.58, tileHash(x, y, 1105) > 0.5, 0.72, '…')`,
+ * where the two numbers are a scale and an opacity and the boolean is a mirror.
+ */
+interface EnvironmentCellPlacing {
+  readonly scale?: number;
+  readonly flip?: boolean;
+  readonly opacity?: number;
+  readonly className?: string;
+}
+
 function environmentCellAt(
   id: string,
   cx: number,
   baseY: number,
-  scale = 1,
-  flip = false,
-  opacity = 1,
-  className = '',
+  placing: EnvironmentCellPlacing = {},
 ): string {
+  const { scale = 1, flip = false, opacity = 1, className = '' } = placing;
   const record = CANDIDATE_01_ENVIRONMENT.cell(id);
   const anchor = record.cell.anchor ?? record.atlas.anchor ?? [record.atlas.cellWidth / 2, record.atlas.cellHeight];
   const x = cx - anchor[0] * scale;
@@ -114,15 +126,12 @@ function topicPlacementMarkup(placement: CandidateEnvironmentPlacement): string 
 function placementMarkup(placement: CandidateEnvironmentPlacement): string {
   if (placement.topicId) return topicPlacementMarkup(placement);
   if (!placement.id) return '';
-  return environmentCellAt(
-    placement.id,
-    placement.x * TILE,
-    (placement.y + 1) * TILE,
-    placement.scale ?? 1,
-    placement.flip ?? false,
-    placement.opacity ?? 1,
-    `is-authored-placement is-${placement.layer ?? 'under-units'}`,
-  );
+  return environmentCellAt(placement.id, placement.x * TILE, (placement.y + 1) * TILE, {
+    scale: placement.scale ?? 1,
+    flip: placement.flip ?? false,
+    opacity: placement.opacity ?? 1,
+    className: `is-authored-placement is-${placement.layer ?? 'under-units'}`,
+  });
 }
 
 function blobMask(map: GameMap, x: number, y: number): number {
@@ -172,7 +181,12 @@ function terrainGroundMarkup(map: GameMap): string {
         routes.push(atlasCellAt('route-edge-dirt-road', cell, x * TILE, y * TILE, 'candidate-ground-route-edge'));
       } else if (tileAt(map, x, y) === 'plain' && tileHash(x, y, 1103) > 0.9) {
         const detail = tileHash(x, y, 1104) > 0.5 ? 'grass-tuft-a' : 'fallen-leaves';
-        decals.push(environmentCellAt(detail, (x + 0.5) * TILE, (y + 1) * TILE, 0.58, tileHash(x, y, 1105) > 0.5, 0.72, 'is-procedural-decal'));
+        decals.push(environmentCellAt(detail, (x + 0.5) * TILE, (y + 1) * TILE, {
+          scale: 0.58,
+          flip: tileHash(x, y, 1105) > 0.5,
+          opacity: 0.72,
+          className: 'is-procedural-decal',
+        }));
       }
     }
   }
@@ -200,10 +214,12 @@ function forestSceneryMarkup(map: GameMap): string {
         id,
         (x + 0.5) * TILE + (tileHash(x, y, 1122) - 0.5) * 10,
         (y + 1.18) * TILE,
-        scale,
-        tileHash(x, y, 1123) > 0.52,
-        boundary ? 1 : 0.9,
-        boundary ? 'is-boundary-tree' : 'is-interior-forest',
+        {
+          scale,
+          flip: tileHash(x, y, 1123) > 0.52,
+          opacity: boundary ? 1 : 0.9,
+          className: boundary ? 'is-boundary-tree' : 'is-interior-forest',
+        },
       ));
     }
   }
@@ -243,18 +259,30 @@ function sceneFrameForestMarkup(viewport: SceneViewport): string {
     const x = -18 + i * (viewport.sceneWidth + 36) / Math.max(1, horizontalCount - 1);
     for (const [edge, baseY, seed] of [['top', viewport.originY + 20, 1200], ['bottom', viewport.sceneHeight + 20, 1300]] as const) {
       const id = trees[Math.floor(tileHash(i, seed, 1) * trees.length)];
-      parts.push(environmentCellAt(id, x + (tileHash(i, seed, 2) - 0.5) * 18, baseY, 0.86 + tileHash(i, seed, 3) * 0.2, tileHash(i, seed, 4) > 0.5, 1, `is-scene-frame is-frame-${edge}`));
+      parts.push(environmentCellAt(id, x + (tileHash(i, seed, 2) - 0.5) * 18, baseY, {
+        scale: 0.86 + tileHash(i, seed, 3) * 0.2,
+        flip: tileHash(i, seed, 4) > 0.5,
+        className: `is-scene-frame is-frame-${edge}`,
+      }));
     }
   }
   for (let i = 1; i < verticalCount - 1; i++) {
     const y = i * viewport.sceneHeight / Math.max(1, verticalCount - 1);
     for (const [edge, x, seed] of [['left', viewport.originX - 26, 1400], ['right', viewport.originX + viewport.fieldWidth + 28, 1500]] as const) {
       const id = trees[Math.floor(tileHash(i, seed, 1) * trees.length)];
-      parts.push(environmentCellAt(id, x, y + 32, 0.86 + tileHash(i, seed, 3) * 0.18, tileHash(i, seed, 4) > 0.5, 1, `is-scene-frame is-frame-${edge}`));
+      parts.push(environmentCellAt(id, x, y + 32, {
+        scale: 0.86 + tileHash(i, seed, 3) * 0.18,
+        flip: tileHash(i, seed, 4) > 0.5,
+        className: `is-scene-frame is-frame-${edge}`,
+      }));
     }
   }
-  parts.push(environmentCellAt('boulder-large', viewport.originX - 5, viewport.originY + 82, 1.05, false, 0.96, 'is-scene-frame'));
-  parts.push(environmentCellAt('fallen-hollow-log', viewport.originX + 92, viewport.sceneHeight + 4, 0.9, true, 0.96, 'is-scene-frame'));
+  parts.push(environmentCellAt('boulder-large', viewport.originX - 5, viewport.originY + 82, {
+    scale: 1.05, opacity: 0.96, className: 'is-scene-frame',
+  }));
+  parts.push(environmentCellAt('fallen-hollow-log', viewport.originX + 92, viewport.sceneHeight + 4, {
+    scale: 0.9, flip: true, opacity: 0.96, className: 'is-scene-frame',
+  }));
   return parts.join('');
 }
 
