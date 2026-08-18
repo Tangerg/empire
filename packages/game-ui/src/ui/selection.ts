@@ -68,6 +68,14 @@ export abstract class Selection {
     return null;
   }
 
+  /**
+   * What to do next, in the player's words.
+   *
+   * The one owner of that sentence: the HUD shows this and writes none of its
+   * own. It used to print the target-picking instruction itself, in a panel that
+   * only appeared while aiming, so two places described the same act and the
+   * selections that had nothing to say fell back to a blank foot of the screen.
+   */
   get hint(): string {
     return '';
   }
@@ -154,6 +162,10 @@ export class DestinationSelection extends Selection {
     return this.unit;
   }
 
+  override get hint(): string {
+    return '选择要下的指令；右键或 Esc 退回上一步。';
+  }
+
   override back(): Selection {
     return new UnitSelection(this.unit);
   }
@@ -191,6 +203,10 @@ export class TargetSelection extends Selection {
 
   override get targetingLabel(): string {
     return this.ability;
+  }
+
+  override get hint(): string {
+    return '点击高亮格中的目标；右键或 Esc 取消。';
   }
 
   override back(): Selection {
@@ -325,6 +341,10 @@ export class DisembarkSelection extends Selection {
     return '卸载';
   }
 
+  override get hint(): string {
+    return '点击高亮格让这名乘员下车；右键或 Esc 取消。';
+  }
+
   click(_context: SelectionContext, at: Coord): ClickOutcome {
     if (!this.candidates.some((candidate) => sameCoord(candidate, at))) return { selection: IDLE };
     return {
@@ -359,6 +379,10 @@ export class TacticTargetSelection extends Selection {
     return this.tactic;
   }
 
+  override get hint(): string {
+    return '点击高亮格施用这条战术；右键或 Esc 取消。';
+  }
+
   click(_context: SelectionContext, at: Coord): ClickOutcome {
     if (!this.candidates.some((candidate) => sameCoord(candidate, at))) return { selection: IDLE };
     return {
@@ -380,6 +404,10 @@ export class RecruitSelection extends Selection {
 
   override get recruitAt(): Coord {
     return this.at;
+  }
+
+  override get hint(): string {
+    return '在名册里挑一个兵种，或关掉名册回到战场。';
   }
 
   click(context: SelectionContext, at: Coord): ClickOutcome {

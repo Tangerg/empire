@@ -1315,6 +1315,80 @@ describe('a rendered control is answered', () => {
   });
 });
 
+describe('the battle screen is its own screen', () => {
+  /** Every stylesheet the workspace ships, by package-relative path. */
+  function stylesheets(): string[] {
+    return readdirSync(packagesRoot, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .flatMap((entry) => {
+        const styles = join(packagesRoot, entry.name, 'src', 'styles');
+        if (!statSync(styles, { throwIfNoEntry: false })?.isDirectory()) return [];
+        return readdirSync(styles).filter((file) => file.endsWith('.css')).map((file) => join(styles, file));
+      });
+  }
+
+  /**
+   * The battle screen wore the map editor's chrome for as long as they shared it.
+   *
+   * `topbar`, `panel`, `stage` and `board-scroll` are a title bar above the
+   * content and panels beside it — the shape of a tool, and the reason a battle
+   * read as a document with a picture in the middle. The editor is a tool and
+   * keeps them; nothing else may pick them up, in markup or in a stylesheet,
+   * because sharing them is exactly how the game inherited them the first time.
+   */
+  it('leaves the tool its page furniture', () => {
+    const furniture = ['topbar', 'panel', 'stage', 'board-scroll'];
+    const owner = `editor${sep}src`;
+    const offenders: string[] = [];
+
+    for (const sheet of stylesheets()) {
+      const declared = stripComments(readFileSync(sheet, 'utf8'));
+      for (const name of furniture) {
+        if (!new RegExp(`\\.${escapeForRegExp(name)}(?![\\w-])`).test(declared)) continue;
+        if (sheet.includes(owner)) continue;
+        offenders.push(`${relative(packagesRoot, sheet)} styles .${name}`);
+      }
+    }
+
+    for (const file of [...everyPackageSource(), ...appSources()]) {
+      if (file.includes(owner)) continue;
+      const markup = readFileSync(file, 'utf8');
+      for (const name of furniture) {
+        // Only a rendered class counts: prose about the old layout is history,
+        // and the point of the guard is that nothing wears it. The token has to
+        // match whole — `campaign-topbar` is the campaign's own name for its own
+        // thing, and `\b` treats the hyphen as the start of a word.
+        const token = `(?<![\\w-])${escapeForRegExp(name)}(?![\\w-])`;
+        if (new RegExp(`class(?:Name)?\\s*=\\s*['"\`][^'"\`]*${token}`).test(markup)) {
+          offenders.push(`${relative(packagesRoot, file)} renders .${name}`);
+        }
+      }
+    }
+
+    expect(offenders).toEqual([]);
+  });
+
+  /**
+   * A shell that stages a battle dresses it.
+   *
+   * The HUD's stylesheet is its own file so the editor cannot inherit it, which
+   * means an application root now has to ask for it — and a root that mounts a
+   * battle without it renders an unstyled pile of panels down the left edge, a
+   * failure no type and no test would otherwise notice.
+   */
+  it('imports the battle stylesheet wherever a battle is mounted', () => {
+    const shells = appSources().filter((file) => /new GameController\(|StoryCampaignController\(/.test(
+      stripComments(readFileSync(file, 'utf8')),
+    ));
+
+    expect(shells.length).toBeGreaterThan(1);
+    const undressed = shells.filter((file) =>
+      !readFileSync(file, 'utf8').includes("@empire/game-ui/styles/battle.css"));
+
+    expect(undressed.map((file) => relative(packagesRoot, file))).toEqual([]);
+  });
+});
+
 describe('one call shape', () => {
   /** Balanced-paren parameter list, so `(event: GameEvent) => void` survives. */
   function parametersOf(source: string, from: number): string[] {

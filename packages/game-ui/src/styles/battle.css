@@ -1,0 +1,599 @@
+/*
+ * The battle screen.
+ *
+ * The field is the screen; the HUD lies over it. Nothing here is page furniture
+ * — no header band above the content, no sidebar beside it — because the battle
+ * used to wear the map editor's chrome (`.topbar`, `.panel`, `.stage`) and read
+ * as a document with a picture in it. Those classes now belong to the editor,
+ * which is a tool and should look like one.
+ *
+ * Whoever mounts a `GameController` imports this file; an architecture guard
+ * says so, because a battle without it is an unstyled pile.
+ */
+
+.game-root {
+  /*
+   * The two bands the HUD always occupies. They are padding on the field, so the
+   * world reaches the screen edges while the board itself stays clear of the
+   * crown and the dock. The side columns deliberately have no band: they float
+   * over the world, which is what keeps selecting a unit from resizing the map.
+   */
+  --hud-crown: 68px;
+  --hud-dock: 96px;
+  --hud-gutter: 14px;
+  --hud-aside: 274px;
+  --hud-flank: 232px;
+  --plaque-face: linear-gradient(rgb(42 30 22 / 86%), rgb(23 17 13 / 90%));
+  --plaque-lip: rgb(255 231 186 / 16%);
+  --plaque-shade: 0 12px 30px rgb(0 0 0 / 46%);
+
+  position: relative;
+  /*
+   * The battle takes the viewport, and says so rather than inheriting it. Every
+   * child of this element is absolutely positioned, so `height: 100%` would
+   * collapse it to nothing in any host that does not hand down an unbroken chain
+   * of definite heights — which the campaign shell and the demo lab do today by
+   * coincidence of import order, and would stop doing without a word.
+   */
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------------- field */
+
+.battlefield {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  padding: var(--hud-crown) var(--hud-gutter) var(--hud-dock);
+  background: radial-gradient(128% 96% at 50% 6%, #2b2219 0%, #140e0a 58%, #090605 100%);
+  /* A game does not show scrollbars; wheel and the camera do the panning. */
+  scrollbar-width: none;
+}
+
+.battlefield::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+ * The board sits in the world rather than on top of it: no carved frame, no
+ * outline. What separates field from surround is the vignette below, which is
+ * light falling off, not a border.
+ */
+.battlefield .board {
+  border-radius: 0;
+  outline: 0;
+  box-shadow: 0 24px 60px rgb(0 0 0 / 52%);
+}
+
+.battlefield .board.candidate-map[data-scene-layout='authored'] {
+  border-radius: 0;
+  box-shadow: 0 24px 60px rgb(0 0 0 / 52%);
+}
+
+/* --------------------------------------------------------------------- hud */
+
+.battle-hud {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  /*
+   * The columns are the declared band widths, not the width of whatever happens
+   * to be in them. Content-sized columns would let a wide terrain readout in the
+   * bottom-left drag the centred line of guidance off the middle of the field.
+   */
+  grid-template-columns: var(--hud-flank) minmax(0, 1fr) var(--hud-aside);
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  grid-template-areas:
+    'crown    crown crown'
+    'flank    .     aside'
+    'dispatch .     .'
+    'ledger   hint  dock';
+  gap: 10px;
+  pointer-events: none;
+}
+
+/*
+ * Light falling off at the edges, and the mood of whatever the player is being
+ * asked for. One element carries both, above the field and below every control,
+ * so the whole screen changes together instead of one panel changing colour.
+ */
+.battle-hud::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 84px 26px rgb(7 5 4 / 58%),
+    inset 0 0 250px 96px rgb(7 5 4 / 30%);
+  transition:
+    box-shadow 260ms ease,
+    background 260ms ease;
+}
+
+.battle-hud[data-mode='waiting']::before {
+  background: rgb(10 14 26 / 24%);
+}
+
+.battle-hud[data-mode='targeting']::before {
+  box-shadow:
+    inset 0 0 84px 22px rgb(74 10 5 / 58%),
+    inset 0 0 250px 96px rgb(44 6 4 / 32%);
+}
+
+.battle-hud[data-mode='deploying']::before {
+  box-shadow:
+    inset 0 0 84px 22px rgb(7 24 40 / 58%),
+    inset 0 0 250px 96px rgb(6 18 32 / 32%);
+}
+
+.battle-hud[data-mode='over']::before {
+  background: rgb(6 4 3 / 34%);
+}
+
+.hud-region {
+  min-width: 0;
+}
+
+/* A region with nothing to say gives its space back to the world. */
+.battle-hud > .hud-region:empty {
+  display: none;
+}
+
+.hud-crown {
+  grid-area: crown;
+  /* Three columns so the initiative strip is centred on the field, not merely
+     placed between two groups whose widths happen to differ. */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  padding: 9px var(--hud-gutter) 22px;
+  /* A veil, not a bar: the field keeps showing through the top of the screen. */
+  background: linear-gradient(rgb(11 8 6 / 82%) 0%, rgb(11 8 6 / 44%) 58%, transparent 100%);
+}
+
+.hud-flank {
+  grid-area: flank;
+  align-self: start;
+  justify-self: start;
+  width: var(--hud-flank);
+  margin-left: var(--hud-gutter);
+}
+
+.hud-aside {
+  grid-area: aside;
+  align-self: start;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: var(--hud-aside);
+  max-height: 100%;
+  margin-right: var(--hud-gutter);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* Both bottom-left regions may be wider than their column; they grow rightwards
+   over the field rather than widening the column and moving everything else. */
+.hud-dispatch {
+  grid-area: dispatch;
+  align-self: end;
+  justify-self: start;
+  width: max-content;
+  max-width: 340px;
+  margin-left: var(--hud-gutter);
+}
+
+.hud-ledger {
+  grid-area: ledger;
+  align-self: end;
+  justify-self: start;
+  width: max-content;
+  max-width: 340px;
+  margin: 0 0 12px var(--hud-gutter);
+}
+
+.hud-hint {
+  grid-area: hint;
+  align-self: end;
+  justify-self: center;
+  margin-bottom: 14px;
+}
+
+.hud-dock {
+  grid-area: dock;
+  align-self: end;
+  justify-self: end;
+  margin: 0 var(--hud-gutter) 12px 0;
+}
+
+.hud-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+}
+
+/* The overlay assembles itself when the battle opens, once, region by region. */
+@media (prefers-reduced-motion: no-preference) {
+  .battle-hud > .hud-region {
+    animation: hud-settle 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .hud-crown { animation-delay: 40ms; }
+  .hud-flank { animation-delay: 120ms; }
+  .hud-aside { animation-delay: 160ms; }
+  .hud-dock { animation-delay: 200ms; }
+  .hud-hint { animation-delay: 240ms; }
+}
+
+@keyframes hud-settle {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ plaque */
+
+/*
+ * An in-world plate: translucent so the field reads through it, bevelled at the
+ * top edge, seated with a shadow. Deliberately not `.card` — that is the shared
+ * opaque rounded panel the editor, the menu and the demo are built from, and
+ * dressing the battle in it is how the game came to look like a settings dialog.
+ */
+.plaque {
+  pointer-events: auto;
+  padding: 10px 12px;
+  border-radius: 5px;
+  background:
+    var(--plaque-face),
+    repeating-linear-gradient(135deg, transparent 0 5px, rgb(255 255 255 / 2%) 5px 6px);
+  backdrop-filter: blur(7px) saturate(1.06);
+  box-shadow:
+    inset 0 1px 0 var(--plaque-lip),
+    inset 0 0 0 1px rgb(0 0 0 / 62%),
+    var(--plaque-shade);
+}
+
+.plaque.is-live {
+  box-shadow:
+    inset 0 1px 0 rgb(255 226 160 / 26%),
+    inset 0 0 0 1px color-mix(in srgb, var(--accent) 46%, rgb(0 0 0 / 62%)),
+    0 0 22px rgb(215 140 63 / 14%),
+    var(--plaque-shade);
+}
+
+.plaque > h3 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: -1px 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgb(255 226 176 / 12%);
+  color: var(--accent-2);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.plaque > h3 .coord {
+  letter-spacing: 0;
+}
+
+.plaque > h3 em {
+  margin-left: auto;
+  font-size: 11px;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+/* ------------------------------------------------------------------ crown */
+
+.crown-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  pointer-events: auto;
+}
+
+.crown-group.is-trailing {
+  justify-content: flex-end;
+}
+
+.standard b {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 0 rgb(0 0 0 / 70%);
+}
+
+.standard span {
+  display: block;
+  color: var(--text-dim);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.standard em {
+  color: var(--accent-2);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.standard i {
+  font-style: normal;
+  opacity: 0.62;
+}
+
+.glyph-cluster {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px;
+  border-radius: 8px;
+  background: rgb(14 10 8 / 58%);
+  box-shadow: inset 0 0 0 1px rgb(255 226 176 / 10%);
+  backdrop-filter: blur(6px);
+}
+
+/* --------------------------------------------------------------- controls */
+
+/*
+ * In the HUD a button is an in-world control: darker, tighter, seated in the
+ * plate rather than raised off a page.
+ */
+.battle-hud .btn {
+  min-height: 32px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: rgb(60 43 31 / 72%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 226 176 / 12%),
+    inset 0 0 0 1px rgb(0 0 0 / 55%);
+}
+
+.battle-hud .btn:hover:not(:disabled) {
+  background: rgb(88 62 42 / 82%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 226 176 / 22%),
+    inset 0 0 0 1px rgb(0 0 0 / 55%);
+}
+
+.battle-hud .btn.ghost {
+  background: rgb(24 17 13 / 46%);
+}
+
+.battle-hud .btn.primary {
+  background: linear-gradient(var(--accent), #b96f2c);
+  color: #2a1809;
+  box-shadow:
+    inset 0 1px 0 rgb(255 240 210 / 45%),
+    inset 0 0 0 1px rgb(0 0 0 / 45%);
+}
+
+.battle-hud .btn.glyph {
+  width: 32px;
+  min-height: 30px;
+  padding: 0;
+  justify-content: center;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-dim);
+}
+
+.battle-hud .btn.glyph:hover:not(:disabled) {
+  background: rgb(255 226 176 / 12%);
+  box-shadow: none;
+  color: var(--text);
+}
+
+/* The one irreversible control on screen, and it is sized like it. */
+.battle-hud .btn.commit {
+  min-height: 46px;
+  padding: 0 20px;
+  border-radius: 7px;
+  background: linear-gradient(rgb(228 156 74 / 96%), rgb(172 100 36 / 96%));
+  color: #2a1809;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow:
+    inset 0 1px 0 rgb(255 244 216 / 52%),
+    inset 0 0 0 1px rgb(0 0 0 / 42%),
+    0 0 26px rgb(214 138 60 / 26%),
+    0 10px 24px rgb(0 0 0 / 46%);
+}
+
+.battle-hud .btn.commit:hover:not(:disabled) {
+  background: linear-gradient(rgb(240 175 96 / 98%), rgb(190 116 44 / 98%));
+}
+
+.battle-hud .btn.commit:disabled {
+  background: rgb(38 28 21 / 78%);
+  color: var(--text-dim);
+  box-shadow:
+    inset 0 0 0 1px rgb(0 0 0 / 55%),
+    0 8px 20px rgb(0 0 0 / 34%);
+  opacity: 1;
+}
+
+.battle-hud .btn.commit kbd {
+  border-color: rgb(0 0 0 / 32%);
+  background: rgb(0 0 0 / 16%);
+  color: #47290f;
+}
+
+/* --------------------------------------------------------------- the crier */
+
+/* The field talking: one line, no plate, centred under the action. */
+.crier {
+  margin: 0;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgb(11 8 6 / 62%);
+  box-shadow: inset 0 0 0 1px rgb(255 226 176 / 10%);
+  backdrop-filter: blur(6px);
+  color: var(--text-dim);
+  font-size: 12px;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* ------------------------------------------------------------- the ledger */
+
+.tile-plaque .fact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  font-size: 12px;
+}
+
+.tile-plaque .fact-row > span {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 6%);
+}
+
+.tile-plaque .fact-row.is-quiet {
+  margin-top: 5px;
+  color: var(--text-dim);
+  font-size: 11px;
+}
+
+.tile-plaque .fact-row.is-quiet > span {
+  padding: 0;
+  background: none;
+}
+
+/* -------------------------------------------------------------- dispatches */
+
+.dispatch {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 90%);
+}
+
+.dispatch li {
+  padding: 2px 9px;
+  border-left: 2px solid rgb(255 226 176 / 18%);
+  color: var(--text-dim);
+  opacity: 0.5;
+}
+
+.dispatch li:nth-last-child(2) {
+  opacity: 0.72;
+}
+
+.dispatch li:last-child {
+  border-left-color: var(--accent);
+  color: var(--text);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dispatch li:last-child {
+    animation: dispatch-in 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+}
+
+@keyframes dispatch-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------- asking in the field */
+
+/*
+ * A roster to buy from and the outcome of the battle are still modal — they stop
+ * the field, and should — but they are asked *in* the field rather than in a
+ * dialog dropped on top of it. The wash stays light enough to see what is being
+ * decided about, and the box is the same plate as every other panel.
+ */
+.battle-hud .modal {
+  background: rgb(9 6 5 / 56%);
+  backdrop-filter: blur(2px);
+}
+
+.battle-hud .modal-box {
+  border: 0;
+  border-radius: 6px;
+  background:
+    var(--plaque-face),
+    repeating-linear-gradient(135deg, transparent 0 5px, rgb(255 255 255 / 2%) 5px 6px);
+  backdrop-filter: blur(9px) saturate(1.06);
+  box-shadow:
+    inset 0 1px 0 var(--plaque-lip),
+    inset 0 0 0 1px rgb(0 0 0 / 62%),
+    0 26px 64px rgb(0 0 0 / 58%);
+}
+
+/* The outcome reads as a title card: the one moment the field has stopped. */
+.battle-hud .modal-box.narrow {
+  padding: 26px 30px 24px;
+}
+
+.battle-hud .modal-box.narrow h2 {
+  font-family: 'Songti SC', 'STSong', serif;
+  font-size: 34px;
+  letter-spacing: 0.14em;
+  text-shadow: 0 2px 0 rgb(0 0 0 / 60%);
+}
+
+.battle-hud .modal-box.narrow > p {
+  color: var(--text-dim);
+}
+
+.battle-hud .recruit-card {
+  border: 0;
+  background: rgb(255 255 255 / 5%);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 45%);
+}
+
+.battle-hud .recruit-card:hover:not(.disabled) {
+  background: rgb(255 226 176 / 10%);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 62%, transparent);
+}
+
+/* ---------------------------------------------------------- narrow screens */
+
+@media (width <= 1180px) {
+  .game-root {
+    --hud-aside: 244px;
+    --hud-flank: 204px;
+  }
+}
+
+@media (width <= 900px) {
+  .game-root {
+    --hud-flank: 0;
+    --hud-dock: 76px;
+  }
+
+  /* The mission board yields first: it is reference, not an order being given. */
+  .hud-flank {
+    display: none;
+  }
+}

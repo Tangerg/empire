@@ -1,5 +1,73 @@
 /* Map editor chrome. Shares the base tokens from app.css. */
 
+/*
+ * The tool's page furniture: a title bar above the content and panels beside it.
+ *
+ * This used to live in app.css, where the battle screen wore it too — which is
+ * why a battle looked like an editor with a picture in the middle. A tool
+ * *should* look like a tool, so the layout stayed and moved in here, to its one
+ * remaining user. The battle screen has its own overlay in battle.css.
+ */
+.editor-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.stage {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.board-scroll {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  padding: 16px;
+  background: radial-gradient(circle at 50% 10%, #342a1f 0%, #17120f 72%);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(rgb(46 31 23 / 96%), rgb(33 24 19 / 98%)),
+    repeating-linear-gradient(90deg, transparent 0 16px, rgb(255 255 255 / 3%) 16px 17px);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 34%);
+}
+
+.topbar-left,
+.topbar-center,
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar-center {
+  margin: 0 auto;
+}
+
+.panel {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 302px;
+  padding: 10px;
+  overflow-y: auto;
+  border-left: 1px solid var(--line);
+  background:
+    linear-gradient(rgb(34 25 20 / 97%), rgb(27 20 16 / 99%)),
+    repeating-linear-gradient(0deg, transparent 0 13px, rgb(255 255 255 / 2%) 13px 14px);
+}
+
 .editor-top {
   position: relative;
   flex-wrap: wrap;
@@ -302,6 +370,9 @@ label.stack {
 
 .editor-board {
   cursor: crosshair;
+  border-radius: 4px;
+  outline: 1px solid rgb(255 255 255 / 10%);
+  outline-offset: -1px;
   box-shadow: 0 0 0 1px var(--line), var(--shadow);
 }
 

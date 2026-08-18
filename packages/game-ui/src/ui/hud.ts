@@ -222,11 +222,65 @@ function hpBar(ratio: number, width = 96): string {
   </span>`;
 }
 
-/** Right-hand panel + top bar. Pure presentation, driven by HudView. */
+/**
+ * Where the HUD lays a thing over the battlefield, and the question it answers.
+ *
+ * The HUD used to be a `<header>` and an `<aside>` that the controller arranged
+ * into a page: a title bar above the content and a sidebar beside it. Those are
+ * the shapes of a document, and they read as one — the battlefield became a
+ * picture embedded in an editor rather than the thing being played. The regions
+ * below sit *over* the field instead, and each is named for what it tells the
+ * player, so a new panel has to say which of these questions it answers before
+ * it can be placed at all.
+ *
+ * The strings are the accessible names, and they are the same sentences the
+ * layout is explained with.
+ */
+const HUD_REGIONS = {
+  crown: '谁在行动',
+  flank: '这一战要打成什么',
+  aside: '眼下能下什么令',
+  dispatch: '刚刚发生了什么',
+  ledger: '光标底下是什么地方',
+  hint: '下一步该怎么做',
+  dock: '这一手到此为止',
+  veil: '需要先回答的事',
+} as const;
+
+type HudRegion = keyof typeof HUD_REGIONS;
+
+/**
+ * What the player is being asked for, as one word the whole screen reacts to.
+ *
+ * Declared rather than sniffed: the battlefield's wash, the HUD's tint and the
+ * accent on the committing control are one mood, and four stylesheets each
+ * guessing at it from a different class is how they drift apart.
+ */
+function battleMode(view: HudView): string {
+  if (view.state.phase === 'over') return 'over';
+  if (view.recruitAt) return 'recruiting';
+  if (view.targeting) return 'targeting';
+  if (view.deployment) return 'deploying';
+  if (view.busy) return 'waiting';
+  return 'commanding';
+}
+
+/** The HUD: one overlay of named regions laid over the battlefield. */
 export class Hud {
-  readonly topEl = document.createElement('header');
-  readonly panelEl = document.createElement('aside');
-  readonly modalEl = document.createElement('div');
+  /** The overlay itself. The battle shell lays it over the field and nothing else. */
+  readonly el = document.createElement('div');
+
+  private readonly regions: Record<HudRegion, HTMLElement>;
+  /**
+   * What each region currently holds, so a region is only rewritten when it has
+   * something different to say.
+   *
+   * One `innerHTML` for the whole panel meant every pointer move rebuilt the
+   * objectives, the roster and the battle log — so nothing in the HUD could
+   * animate, hold a scroll position, or keep an image from reloading, and the
+   * whole overlay had the stillness of a re-rendered page.
+   */
+  private readonly written = new Map<HudRegion, string>();
 
   /**
    * Every intent a rendered control can declare, and who answers it.
@@ -260,20 +314,37 @@ export class Hud {
   };
 
   constructor(
-    /** The art this panel draws with; composed by the application root. */
+    /** The art this overlay draws with; composed by the application root. */
     private readonly art: ArtDirection,
     private readonly handlers: HudHandlers,
   ) {
-    this.topEl.className = 'topbar';
-    this.panelEl.className = 'panel';
-    this.modalEl.className = 'modal-root';
-    for (const root of [this.topEl, this.panelEl, this.modalEl]) {
-      root.addEventListener('click', (event) => {
-        const control = (event.target as HTMLElement).closest('[data-act]') as HTMLElement | null;
-        if (!control) return;
-        this.intents[control.dataset.act ?? '']?.(control.dataset.arg ?? '');
-      });
-    }
+    this.el.className = 'battle-hud';
+    const host = (region: HudRegion): HTMLElement => {
+      const element = document.createElement('div');
+      element.className = `hud-region hud-${region}`;
+      element.setAttribute('aria-label', HUD_REGIONS[region]);
+      return element;
+    };
+    // Written out rather than mapped over the table, so `Record<HudRegion, …>`
+    // refuses a region that has no host and a host that names no region. The
+    // order is the reading order, which is also the tab order.
+    this.regions = {
+      crown: host('crown'),
+      flank: host('flank'),
+      aside: host('aside'),
+      dispatch: host('dispatch'),
+      ledger: host('ledger'),
+      hint: host('hint'),
+      dock: host('dock'),
+      veil: host('veil'),
+    };
+    this.el.append(...Object.values(this.regions));
+
+    this.el.addEventListener('click', (event) => {
+      const control = (event.target as HTMLElement).closest('[data-act]') as HTMLElement | null;
+      if (!control) return;
+      this.intents[control.dataset.act ?? '']?.(control.dataset.arg ?? '');
+    });
   }
 
   /** The intents this HUD answers, so a test can compare them with the markup. */
@@ -282,20 +353,25 @@ export class Hud {
   }
 
   render(view: HudView): void {
-    this.topEl.innerHTML = this.renderTop(view);
-    this.panelEl.innerHTML = [
-      this.renderCommands(view),
-      this.renderTactics(view),
-      this.renderForecast(view),
-      this.renderUnit(view),
-      this.renderTile(view),
-      this.renderObjectives(view),
-      this.renderLog(view),
-    ].join('');
-    this.modalEl.innerHTML = this.renderRecruit(view) + this.renderGameOver(view);
+    this.el.dataset.mode = battleMode(view);
+    this.write('crown', this.renderCrown(view));
+    this.write('flank', this.renderObjectives(view));
+    this.write('aside', this.renderOrders(view));
+    this.write('dispatch', this.renderLog(view));
+    this.write('ledger', this.renderTile(view));
+    this.write('hint', this.renderHint(view));
+    this.write('dock', this.renderDock(view));
+    this.write('veil', this.renderRecruit(view) + this.renderGameOver(view));
   }
 
-  /* -------------------------------------------------------------------- top */
+  /** Rewrites a region only when it has something different to say. */
+  private write(region: HudRegion, markup: string): void {
+    if (this.written.get(region) === markup) return;
+    this.written.set(region, markup);
+    this.regions[region].innerHTML = markup;
+  }
+
+  /* ------------------------------------------------------------------ crown */
 
   /**
    * Initiative strip. Deliberately absent under side turns, where "who acts
@@ -344,40 +420,38 @@ export class Hud {
     </div>`;
   }
 
-  private renderTop(view: HudView): string {
+  /** Whose turn it is, how far in, and the controls that are always to hand. */
+  private renderCrown(view: HudView): string {
     const state = view.state;
     const active = player(state, state.currentPlayer);
     const accounts = accountSummary(view.resources, playerResource(active));
-    const turnLimit = state.rules.turnLimit ? ` / ${state.rules.turnLimit}` : '';
+    const turnLimit = state.rules.turnLimit ? `<i>/ ${state.rules.turnLimit}</i>` : '';
     return `
-      <div class="topbar-left">
-        <button class="btn ghost" data-act="exit" title="${escapeHtml(view.exitLabel ?? '返回关卡列表')}">${icon('grid')}</button>
-        <div class="level-name">${escapeHtml(state.levelName)}</div>
-        <div class="turn-chip">第 <b>${state.turn}</b>${turnLimit} 回合</div>
+      <div class="crown-group is-leading">
+        <button class="btn glyph" data-act="exit" title="${escapeHtml(view.exitLabel ?? '返回关卡列表')}">${icon('grid')}</button>
+        <div class="standard">
+          <b>${escapeHtml(state.levelName)}</b>
+          <span>第 <em>${state.turn}</em> ${turnLimit} 回合</span>
+        </div>
       </div>
-      <div class="topbar-center">
+      <div class="crown-group is-centre">
         ${this.renderTurnOrder(view)}
         ${this.renderCasts(view)}
+      </div>
+      <div class="crown-group is-trailing">
         <div class="player-chip" style="--team:${active.color}">
           <span class="dot"></span>
           <b>${escapeHtml(active.name)}</b>
           <span class="sub">${active.controller === 'human' ? '你的回合' : 'AI 行动中'}</span>
         </div>
         ${accounts.map((account) => `<div class="funds">${icon('coin')}<b>${escapeHtml(account)}</b></div>`).join('')}
-      </div>
-      <div class="topbar-right">
-        <button class="btn ghost" data-act="zoom" data-arg="-0.15" title="缩小">−</button>
-        <button class="btn ghost" data-act="zoom" data-arg="0.15" title="放大">+</button>
-        <button class="btn ghost" data-act="undo" ${view.canUndo && !view.busy ? '' : 'disabled'} title="撤销 (U)">${icon('undo')}</button>
-        ${this.renderSaveSlot(view)}
-        <button class="btn ghost" data-act="restart" title="重新开始">${icon('play')}</button>
-        ${view.deployment
-          ? `<button class="btn primary" data-act="deploy-done" ${view.busy ? 'disabled' : ''}>
-          ${icon('flag')} 确认部署
-        </button>`
-          : `<button class="btn primary" data-act="end" ${view.busy || active.controller !== 'human' ? 'disabled' : ''}>
-          ${icon('hourglass')} 结束回合 <kbd>E</kbd>
-        </button>`}
+        <div class="glyph-cluster">
+          <button class="btn glyph" data-act="zoom" data-arg="-0.15" title="缩小">−</button>
+          <button class="btn glyph" data-act="zoom" data-arg="0.15" title="放大">+</button>
+          <button class="btn glyph" data-act="undo" ${view.canUndo && !view.busy ? '' : 'disabled'} title="撤销 (U)">${icon('undo')}</button>
+          ${this.renderSaveSlot(view)}
+          <button class="btn glyph" data-act="restart" title="重新开始">${icon('play')}</button>
+        </div>
       </div>`;
   }
 
@@ -385,19 +459,66 @@ export class Hud {
   private renderSaveSlot(view: HudView): string {
     if (!view.saves) return '';
     return `
-      <button class="btn ghost" data-act="save" ${view.saves.canSave ? '' : 'disabled'} title="保存战斗进度">${icon('save')}</button>
-      <button class="btn ghost" data-act="resume" ${view.saves.canResume ? '' : 'disabled'} title="读取战斗进度">${icon('flag')}</button>`;
+      <button class="btn glyph" data-act="save" ${view.saves.canSave ? '' : 'disabled'} title="保存战斗进度">${icon('save')}</button>
+      <button class="btn glyph" data-act="resume" ${view.saves.canResume ? '' : 'disabled'} title="读取战斗进度">${icon('flag')}</button>`;
   }
 
-  /* --------------------------------------------------------------- commands */
+  /* ------------------------------------------------------------------- dock */
+
+  /**
+   * The one control that ends the player's turn in this phase.
+   *
+   * It sits apart from the rest because it is the only irreversible thing on
+   * screen: it used to be the last button in a row of six system glyphs, where
+   * "confirm the whole arrangement" looked exactly like "zoom out".
+   */
+  private renderDock(view: HudView): string {
+    if (view.deployment) {
+      return `<button class="btn commit" data-act="deploy-done" ${view.busy ? 'disabled' : ''}>
+        ${icon('flag')} 确认部署
+      </button>`;
+    }
+    const active = player(view.state, view.state.currentPlayer);
+    return `<button class="btn commit" data-act="end" ${view.busy || active.controller !== 'human' ? 'disabled' : ''}>
+      ${icon('hourglass')} 结束回合 <kbd>E</kbd>
+    </button>`;
+  }
+
+  /**
+   * What to do next, in one line at the foot of the field.
+   *
+   * The selection owns this sentence — it is the state machine the player is
+   * standing in — and this is the only place it is shown. It used to be printed
+   * inside whichever panel happened to be up, with the target-picking sentence
+   * written a second time here in the HUD, so the two could and did disagree.
+   */
+  private renderHint(view: HudView): string {
+    if (!view.hint) return '';
+    return `<p class="crier">${escapeHtml(view.hint)}</p>`;
+  }
+
+  /* ----------------------------------------------------------------- orders */
+
+  /**
+   * The orders column: what may be commanded, and what it would cost.
+   *
+   * Assembled here rather than by the shell so the column is one region with one
+   * reading order — the order being composed, then the exchange it would cause,
+   * then whoever is under the cursor.
+   */
+  private renderOrders(view: HudView): string {
+    return this.renderCommands(view)
+      + this.renderTactics(view)
+      + this.renderForecast(view)
+      + this.renderUnit(view);
+  }
 
   /** The line waiting to be arranged; clicking a name takes that unit up. */
   private renderDeployment(view: HudView): string {
     const deployment = view.deployment;
     if (!deployment) return '';
-    return `<section class="card accent">
+    return `<section class="plaque is-live">
       <h3>战前部署</h3>
-      <p class="hint">${escapeHtml(view.hint)}</p>
       <div class="cmd-list">${deployment.units.map((unit) => `<button
         class="btn ${unit.id === deployment.selected ? 'primary' : 'ghost'}"
         data-act="deploy-pick" data-arg="${unit.id}" ${view.busy ? 'disabled' : ''}
@@ -408,18 +529,12 @@ export class Hud {
   private renderCommands(view: HudView): string {
     if (view.deployment) return this.renderDeployment(view);
     if (view.targeting) {
-      return `<section class="card accent">
+      return `<section class="plaque is-live">
         <h3>选择目标</h3>
-        <p class="hint">点击高亮格中的目标，或右键 / Esc 取消。</p>
-        <button class="btn wide" data-act="cancel">取消</button>
+        <button class="btn wide" data-act="cancel">取消 <kbd>Esc</kbd></button>
       </section>`;
     }
-    if (!view.commands || view.commands.length === 0) {
-      return `<section class="card">
-        <h3>指令</h3>
-        <p class="hint">${escapeHtml(view.hint)}</p>
-      </section>`;
-    }
+    if (!view.commands || view.commands.length === 0) return '';
     const keyOf: Record<string, string> = { attack: 'A', capture: 'C', heal: 'H', wait: 'W' };
     const iconOf: Record<string, string> = {
       attack: 'sword',
@@ -434,7 +549,7 @@ export class Hud {
         : this.art.resolve((provider) => provider.abilityIcon?.(command.ability)))
         ?? icon(iconOf[command.ability] ?? 'crosshair');
     };
-    return `<section class="card accent">
+    return `<section class="plaque is-live">
       <h3>指令</h3>
       <div class="cmd-list">
         ${view.commands
@@ -452,7 +567,7 @@ export class Hud {
 
   private renderTactics(view: HudView): string {
     if (view.targeting || view.commands || view.tactics.length === 0) return '';
-    return `<section class="card accent">
+    return `<section class="plaque is-live">
       <h3>指挥战术</h3>
       <div class="cmd-list">
         ${view.tactics
@@ -474,7 +589,7 @@ export class Hud {
     const content = view.rules.content;
     const attackerDef = content.units.get(attacker.type);
     const recipientDef = content.units.get(recipient.type);
-    return `<section class="card forecast">
+    return `<section class="plaque forecast">
       <h3>战斗预测</h3>
       <div class="fc-row">
         <span class="fc-name">${escapeHtml(attackerDef.name)}</span>
@@ -520,7 +635,7 @@ export class Hud {
     const unit = view.inspect;
     if (!unit) return '';
     const definition = view.rules.content.units.get(unit.type);
-    return `<section class="card unit-card">
+    return `<section class="plaque unit-card">
       ${this.unitHeader(view, unit, definition)}
       ${this.unitStats(view, definition)}
       ${this.unitTags(view, unit, definition)}
@@ -712,15 +827,25 @@ export class Hud {
         return `${profile.name} ${cost == null ? '—' : cost}`;
       })
       .join(' · ');
-    return `<section class="card tile-card">
-      <h3>${escapeHtml(terrain.name)} <span class="coord">(${view.tile.x}, ${view.tile.y})</span></h3>
-      <div class="kv"><span>防御加成</span><b>${pct(terrain.defense)}</b></div>
-      <div class="kv"><span>海拔</span><b>${state.map.elevation[tile]}</b></div>
-      <div class="kv"><span>基础掩体</span><b>${terrain.cover === 'full' ? '全掩体' : terrain.cover === 'half' ? '半掩体' : '无'}</b></div>
-      ${terrain.capturable ? `<div class="kv"><span>归属</span><b style="color:${owner?.color ?? PAL.neutral}">${escapeHtml(owner?.name ?? '中立')}</b></div>` : ''}
-      ${terrain.ownerTurnGrants.length > 0 ? `<div class="kv"><span>回合产出</span><b>${escapeHtml(formatAmounts(view.resources, terrain.ownerTurnGrants))}</b></div>` : ''}
-      ${terrain.heal ? `<div class="kv"><span>治疗</span><b>${terrain.heal}/回合</b></div>` : ''}
-      <div class="kv wrap"><span>移动消耗</span><b>${costs}</b></div>
+    // A row of facts rather than a column of labelled rows: this reads while the
+    // cursor is moving, and a seven-row table at the foot of the field covered
+    // the ground the player was pointing at.
+    const facts = [
+      `防御 ${pct(terrain.defense)}`,
+      `海拔 ${state.map.elevation[tile]}`,
+      terrain.cover === 'full' ? '全掩体' : terrain.cover === 'half' ? '半掩体' : '无掩体',
+      terrain.heal ? `治疗 ${terrain.heal}/回合` : '',
+      terrain.ownerTurnGrants.length > 0
+        ? `产出 ${formatAmounts(view.resources, terrain.ownerTurnGrants)}`
+        : '',
+    ].filter(Boolean);
+    return `<section class="plaque tile-plaque">
+      <h3>${escapeHtml(terrain.name)} <span class="coord">${view.tile.x}, ${view.tile.y}</span>
+        ${terrain.capturable
+          ? `<em style="color:${owner?.color ?? PAL.neutral}">${escapeHtml(owner?.name ?? '中立')}</em>`
+          : ''}</h3>
+      <div class="fact-row">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join('')}</div>
+      <div class="fact-row is-quiet"><span>${escapeHtml(costs)}</span></div>
     </section>`;
   }
 
@@ -729,7 +854,7 @@ export class Hud {
   private renderObjectives(view: HudView): string {
     const state = view.state;
     const viewer = state.players.find((player) => player.controller === 'human') ?? state.players[0];
-    return `<section class="card">
+    return `<section class="plaque objectives">
       <h3 class="art-heading">${this.art.resolve((provider) => provider.iconMarkup?.('C01-HUD-05')) ?? icon('flag')}<span>作战目标</span></h3>
       <ul class="obj-list">
         ${viewer.objectives
@@ -756,12 +881,20 @@ export class Hud {
     </section>`;
   }
 
+  /**
+   * What just happened, as lines that arrive and settle back.
+   *
+   * Four rather than seven, and no heading: this is the field talking, not a
+   * report to be read. It is its own region so that a pointer moving over the
+   * ground does not rewrite it — which is what let the newest line animate in at
+   * all, since the old panel rebuilt every message on every hover.
+   */
   private renderLog(view: HudView): string {
     if (view.messages.length === 0) return '';
-    return `<section class="card log">
-      <h3>战报</h3>
-      <ul>${view.messages.slice(-7).map((m) => `<li>${escapeHtml(m)}</li>`).join('')}</ul>
-    </section>`;
+    return `<ul class="dispatch">${view.messages
+      .slice(-4)
+      .map((message) => `<li>${escapeHtml(message)}</li>`)
+      .join('')}</ul>`;
   }
 
   /* ---------------------------------------------------------------- modals */

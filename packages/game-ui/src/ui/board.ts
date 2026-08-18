@@ -24,6 +24,7 @@ import {
 } from '../art/scene-viewport';
 import { unitSpriteMarkup } from '../art/units';
 import { clear, fromMarkup, setAttrs, svg } from '../art/svg';
+import { escapeHtml } from './html';
 
 export interface BoardOverlay {
   move: Set<number>;
@@ -269,14 +270,18 @@ export class BoardView {
     this.el.style.height = `${this.viewport.sceneHeight * this.zoom}px`;
   }
 
-  /** Fits the whole tactical field into a viewport while preserving pixel scale. */
-  fitWithin(width: number, height: number, padding = 32): void {
-    const availableWidth = width - padding;
-    const availableHeight = height - padding;
-    if (availableWidth <= 0 || availableHeight <= 0) return;
-    const horizontal = availableWidth / this.viewport.sceneWidth;
-    const vertical = availableHeight / this.viewport.sceneHeight;
-    this.setZoom(Math.min(1.25, horizontal, vertical));
+  /**
+   * Fills the given box with the whole tactical field, without cropping it.
+   *
+   * "Fills", not "fits inside": this used to cap the scale at 1.25, so a 20×14
+   * field on any ordinary screen was a 800×560 rectangle floating in the middle
+   * of a much larger gradient — the single clearest reason the battle read as a
+   * figure on a page rather than the thing being played. The zoom clamp still
+   * bounds how large a tile may get; a tiny field simply stops growing there.
+   */
+  fitWithin(width: number, height: number): void {
+    if (width <= 0 || height <= 0) return;
+    this.setZoom(Math.min(width / this.viewport.sceneWidth, height / this.viewport.sceneHeight));
   }
 
   get zoomLevel(): number {
@@ -611,22 +616,50 @@ export class BoardView {
     setAttrs(el, { transform });
   }
 
-  /** Banner that sweeps across the board on turn change. */
+  /**
+   * The turn changing, said on the field itself.
+   *
+   * The one piece of interface that has always been inside the picture, and it
+   * looked like the only one that was not thought about: a flat rectangle of team
+   * colour at full width and 90% opacity, sliding in from the left. It is a band
+   * of light now — feathered at both ends so it belongs to the scene rather than
+   * covering it, with the field still readable through the middle.
+   */
   async announce(text: string, color: string): Promise<void> {
     const w = this.viewport.fieldWidth;
     const h = this.viewport.fieldHeight;
+    const top = h / 2 - 17;
+    const band = `turn-band-${this.effectSerial++}`;
     const g = svg('g', { class: 'fx' });
     g.append(
       fromMarkup(
-        `<rect x="0" y="${h / 2 - 16}" width="${w}" height="32" fill="${color}" opacity="0.9"/>
-         <text x="${w / 2}" y="${h / 2 + 7}" text-anchor="middle" class="fx-banner">${text}</text>`,
+        `<defs>
+           <linearGradient id="${band}" x1="0" y1="0" x2="1" y2="0">
+             <stop offset="0" stop-color="${color}" stop-opacity="0"/>
+             <stop offset="0.22" stop-color="${color}" stop-opacity="0.88"/>
+             <stop offset="0.78" stop-color="${color}" stop-opacity="0.88"/>
+             <stop offset="1" stop-color="${color}" stop-opacity="0"/>
+           </linearGradient>
+         </defs>
+         <g class="fx-turn-band">
+           <rect x="0" y="${top}" width="${w}" height="34" fill="url(#${band})"/>
+           <rect x="0" y="${top}" width="${w}" height="1" fill="#fff" opacity="0.4"/>
+           <rect x="0" y="${top + 33}" width="${w}" height="1" fill="#000" opacity="0.32"/>
+           <text x="${w / 2}" y="${h / 2 + 7}" text-anchor="middle" class="fx-banner">${escapeHtml(text)}</text>
+         </g>`,
       ),
     );
     this.layers.effects.append(g);
-    const rect = g.querySelector('rect') as SVGRectElement;
-    await tween(180, (t) => setAttrs(rect, { x: `${(-w * (1 - t)).toFixed(0)}` }));
+    const sweep = g.querySelector('.fx-turn-band') as SVGGElement;
+    await tween(220, (t) => {
+      const eased = easeInOut(t);
+      setAttrs(sweep, {
+        transform: `translate(${(-w * 0.3 * (1 - eased)).toFixed(1)} 0)`,
+        opacity: eased.toFixed(2),
+      });
+    });
     await wait(420);
-    await tween(200, (t) => {
+    await tween(220, (t) => {
       g.style.opacity = String(1 - t);
     });
     g.remove();

@@ -26,6 +26,15 @@ const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
 
 
 
+/**
+ * What the HUD is telling the player, wherever on the overlay it says it.
+ *
+ * These assertions used to read `.panel`, which was the sidebar the HUD happened
+ * to be laid out as — so a layout change broke eight tests that had no opinion
+ * about layout. The question is whether the battle says a thing at all.
+ */
+const hudSays = (root: Element): string => root.querySelector('.battle-hud')!.textContent ?? '';
+
 /** jsdom has no layout, so give the board a deterministic box for hit-testing. */
 function stubLayout(svg: SVGSVGElement, width: number): void {
   const viewBox = svg.viewBox.baseVal;
@@ -90,9 +99,93 @@ describe('game controller', () => {
       level.width * level.height,
     );
     expect(board.querySelectorAll('.layer-units > .unit').length).toBe(level.units.length);
-    expect(c.root.querySelector('.topbar')!.textContent).toContain(level.name);
-    expect(c.root.querySelector('.panel')!.textContent).toContain('作战目标');
+    expect(hudSays(c.root)).toContain(level.name);
+    expect(hudSays(c.root)).toContain('作战目标');
     c.dispose();
+  });
+
+  /**
+   * The battle is a field with an overlay on it, and nothing in between.
+   *
+   * It used to be a `<header>`, a row holding the board and an `<aside>`, and a
+   * modal root — a page, in other words, which is what it looked like. Two
+   * children is the whole claim: put the HUD back inside the field, or a strip
+   * back above it, and this says so.
+   */
+  it('lays the overlay over the field and nothing between them', () => {
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+
+    expect([...c.root.children].map((child) => child.className)).toEqual(['battlefield', 'battle-hud']);
+    expect(c.root.querySelector('.battlefield > svg.board')).not.toBeNull();
+    expect(c.root.querySelector('.battle-hud svg.board')).toBeNull();
+    c.dispose();
+  });
+
+  /**
+   * Committing is one control, it stands alone, and it says which act it is.
+   *
+   * Confirming a whole battle line used to be the last button in a row of six
+   * system glyphs, beside "zoom out" and looking just like it.
+   */
+  it('keeps the committing control alone in the dock', () => {
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+
+    const committing = [...c.root.querySelectorAll('[data-act="end"], [data-act="deploy-done"]')];
+    expect(committing).toHaveLength(1);
+    expect(committing[0].closest('.hud-dock')).not.toBeNull();
+    // And guidance is the field talking, never a menu: no control lives in it.
+    const hint = c.root.querySelector('.hud-hint')!;
+    expect(hint.textContent).not.toBe('');
+    expect(hint.querySelectorAll('[data-act]')).toHaveLength(0);
+    c.dispose();
+  });
+
+  /**
+   * A region is rewritten only when it has something different to say.
+   *
+   * One `innerHTML` for the whole panel meant every pointer move rebuilt the
+   * objectives, the roster and the log, so nothing in the overlay could animate,
+   * hold a scroll position, or keep an image from reloading. Same element after
+   * a sweep of the cursor is the property that buys all three back.
+   */
+  it('leaves a region alone while it has nothing new to say', () => {
+    const level = BUILTIN_LEVELS[0];
+    const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board, level.width * TILE);
+
+    const objectives = c.root.querySelector('.hud-flank > *')!;
+    const commit = c.root.querySelector('[data-act="end"]')!;
+    for (let x = 0; x < 6; x++) hover(board, { x, y: 3 });
+
+    expect(c.root.querySelector('.hud-flank > *')).toBe(objectives);
+    expect(c.root.querySelector('[data-act="end"]')).toBe(commit);
+    // The terrain readout, which is what the cursor actually changed, did move.
+    expect(c.root.querySelector('.hud-ledger')!.textContent).not.toBe('');
+    c.dispose();
+  });
+
+  /**
+   * What the player is being asked for, as one word on one element.
+   *
+   * The battlefield's wash, the overlay's tint and the accent on the committing
+   * control are one mood; four stylesheets guessing at it from four different
+   * classes is how they come apart.
+   */
+  it('names the mode the whole screen reacts to', () => {
+    const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const hud = c.root.querySelector('.battle-hud') as HTMLElement;
+    expect(hud.dataset.mode).toBe('commanding');
+    c.dispose();
+
+    const deploying = new GameController(deploymentLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(deploying.root);
+    expect((deploying.root.querySelector('.battle-hud') as HTMLElement).dataset.mode).toBe('deploying');
+    deploying.dispose();
   });
 
   /**
@@ -116,7 +209,14 @@ describe('game controller', () => {
     controller.dispose();
   });
 
-  it('fits a large board into the available tactical viewport', () => {
+  /**
+   * The field fills the screen it was given, and is never cropped by it.
+   *
+   * It used to stop growing at 1.25×, so an ordinary 20×14 field on an ordinary
+   * screen was a rectangle floating in the middle of a gradient — a picture on a
+   * page rather than the thing being played.
+   */
+  it('fills the tactical viewport with the whole field, uncropped', () => {
     const level = BUILTIN_LEVELS[0];
     const board = new BoardView(createState(TEST_CATALOG, level), {
       onTileClick: () => {},
@@ -125,8 +225,13 @@ describe('game controller', () => {
       onSecondary: () => {},
     }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), ART);
     board.fitWithin(540, 380);
-    expect(Number.parseFloat(board.el.style.width)).toBeLessThanOrEqual(508);
-    expect(Number.parseFloat(board.el.style.height)).toBeLessThanOrEqual(348);
+
+    const width = Number.parseFloat(board.el.style.width);
+    const height = Number.parseFloat(board.el.style.height);
+    expect(width).toBeLessThanOrEqual(540);
+    expect(height).toBeLessThanOrEqual(380);
+    // Touching one of the two edges is the difference between filling and fitting.
+    expect(Math.max(width / 540, height / 380)).toBeCloseTo(1, 2);
     expect(board.zoomLevel).toBeGreaterThanOrEqual(0.5);
   });
 
@@ -177,7 +282,7 @@ describe('game controller', () => {
     stubLayout(board, level.width * TILE);
 
     click(board, { x: 1, y: 1 }); // player 1's castle, empty at start
-    const modal = c.root.querySelector('.modal-root')!;
+    const modal = c.root.querySelector('.hud-veil')!;
     expect(modal.textContent).toContain('征募单位');
     expect(modal.querySelectorAll('.recruit-card').length).toBeGreaterThan(4);
     c.dispose();
@@ -340,10 +445,10 @@ describe('a battle you can come back to', () => {
     expect(press(c.root, 'resume').disabled).toBe(true);
     press(c.root, 'save').click();
     expect(saves.has()).toBe(true);
-    expect(c.root.querySelector('.panel')!.textContent).toContain('已保存第 1 回合的进度');
+    expect(hudSays(c.root)).toContain('已保存第 1 回合的进度');
 
     press(c.root, 'resume').click();
-    expect(c.root.querySelector('.panel')!.textContent).toContain('已读取第 1 回合的存档');
+    expect(hudSays(c.root)).toContain('已读取第 1 回合的存档');
     c.dispose();
   });
 
@@ -357,7 +462,7 @@ describe('a battle you can come back to', () => {
     saves.poison();
 
     press(c.root, 'resume').click();
-    expect(c.root.querySelector('.panel')!.textContent).toContain('无法读取存档');
+    expect(hudSays(c.root)).toContain('无法读取存档');
     // The battle on screen is still the one being played.
     expect(c.root.querySelectorAll('.layer-units > .unit').length).toBe(BUILTIN_LEVELS[0].units.length);
     c.dispose();
@@ -385,7 +490,7 @@ describe('a battle you can come back to', () => {
     window.removeEventListener('error', record);
 
     expect(escaped[0]).toBeInstanceOf(DomainInvariantError);
-    expect(c.root.querySelector('.panel')!.textContent).not.toContain('无法读取存档');
+    expect(hudSays(c.root)).not.toContain('无法读取存档');
     c.dispose();
   });
 });
@@ -515,7 +620,7 @@ describe('ordering a formation', () => {
     offered[0].click();
     for (let frame = 0; frame < 12; frame++) await new Promise((resolve) => setTimeout(resolve, 0));
 
-    expect(c.root.querySelector('.panel')!.textContent).toContain('线列');
+    expect(hudSays(c.root)).toContain('线列');
     // And the same button now offers the way back out.
     click(board, { x: 0, y: 0 });
     const current = formationButtons(c.root).find((button) => button.textContent?.includes('解除'));
@@ -602,7 +707,7 @@ describe('arranging the line before the battle', () => {
     stubLayout(board, 4 * TILE);
 
     // The panel is the roster, and the primary control confirms rather than ends.
-    expect(c.root.querySelector('.panel')!.textContent).toContain('战前部署');
+    expect(hudSays(c.root)).toContain('战前部署');
     const roster = [...c.root.querySelectorAll('[data-act="deploy-pick"]')] as HTMLButtonElement[];
     expect(roster).toHaveLength(2);
     expect(c.root.querySelector('[data-act="deploy-done"]')).not.toBeNull();
@@ -716,7 +821,7 @@ describe('loading and unloading a transport', () => {
 
     passengers[0].click();
     await settle();
-    expect(c.root.querySelector('.panel')!.textContent).toContain('选择目标');
+    expect(hudSays(c.root)).toContain('选择目标');
 
     click(board, { x: 1, y: 0 });
     await settle();

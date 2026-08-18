@@ -162,19 +162,23 @@ export class GameController {
       () => this.board.render(this.overlay()),
     );
 
-    this.scroller.className = 'board-scroll';
+    // The field is the screen and the HUD lies over it. There is no third
+    // element between them: a scroller with padding and a matte around it is
+    // what made a battle look like a picture pasted into a document.
+    this.scroller.className = 'battlefield';
     this.scroller.append(this.board.el);
+    this.root.append(this.scroller, this.hud.el);
 
-    const stage = document.createElement('div');
-    stage.className = 'stage';
-    stage.append(this.scroller, this.hud.panelEl);
-
-    this.root.append(this.hud.topEl, stage, this.hud.modalEl);
-
-    const fitBoard = () => this.board.fitWithin(this.scroller.clientWidth, this.scroller.clientHeight);
-    requestAnimationFrame(fitBoard);
+    // The field's content box is what the board has to fit into — the HUD's
+    // standing bands are padding on it — and a `ResizeObserver` reports exactly
+    // that box, including once when it starts observing. That first callback is
+    // the initial fit, so there is one writer of the zoom instead of a
+    // requestAnimationFrame racing the observer for the last word.
     if (typeof ResizeObserver !== 'undefined') {
-      this.resizeObserver = new ResizeObserver(fitBoard);
+      this.resizeObserver = new ResizeObserver(([entry]) => {
+        const [box] = entry.contentBoxSize;
+        this.board.fitWithin(box.inlineSize, box.blockSize);
+      });
       this.resizeObserver.observe(this.scroller);
     }
 

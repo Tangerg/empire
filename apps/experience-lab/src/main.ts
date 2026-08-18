@@ -1,4 +1,5 @@
 import '@empire/game-ui/styles/app.css';
+import '@empire/game-ui/styles/battle.css';
 import './experience.css';
 import {
   ContentPackInstaller,
