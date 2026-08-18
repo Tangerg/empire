@@ -535,6 +535,31 @@ describe('one composition root', () => {
   });
 });
 
+describe('a content pack does not re-declare the common layer', () => {
+  it('builds movement costs with the shared builder, not a local copy', () => {
+    // Two packs carried a verbatim copy of a six-argument positional `costs()`
+    // helper, and a third story would have copied it again. Worse, the call
+    // sites read `costs(2, 3, 3, 1)` — six numbers whose only meaning was their
+    // order, in a list whose order lives in another package.
+    //
+    // The builder now sits beside the movement profiles it names, in
+    // `content-common`: the engine's `MovementClass` is an open string and must
+    // not learn that `mounted` exists, and the packs must not each decide what
+    // order the classes come in.
+    const owner = join(packagesRoot, 'content-common', 'src', 'movement.ts');
+    const offenders = everyPackageSource().flatMap((file) => {
+      if (file === owner) return [];
+      const code = stripComments(readFileSync(file, 'utf8'));
+      // A local builder returning `MoveCosts`, or a bare positional `costs(…)`.
+      return /:\s*MoveCosts\s*=>|\bconst costs = \(/.test(code)
+        ? [relative(packagesRoot, file)]
+        : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+});
+
 describe('an event stream is asked one question in one place', () => {
   it('lets only the emitting module recognise a semantic event by name', () => {
     // Two questions about a battle's events had drifted into several answers.
