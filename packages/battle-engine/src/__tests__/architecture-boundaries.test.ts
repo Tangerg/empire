@@ -685,11 +685,24 @@ describe('behaviour has an owner', () => {
     // Table rows only, and that is the point rather than a convenience: a row
     // is a claim about the code as it stands, while the prose around it is
     // allowed — required — to name what was renamed or deleted and why.
+    //
+    // Which is exactly why the sources have their comments stripped. Those
+    // paragraphs are dense with names that no longer exist, so "mentioned
+    // anywhere" was satisfied by the very explanation of a rename: rename a rule
+    // everywhere in code, leave the old name in the note above it, and a stale
+    // table row went on looking correct.
+    //
+    // Comment-stripped presence is also all that is worth checking. A stricter
+    // "is it *declared*" version was written and thrown away: it matched call
+    // sites too, so it was no stronger than this while appearing to be — and
+    // with `tsc -b` clean, any mention in code already proves the name resolves.
     const docsRoot = join(packagesRoot, '..', 'docs');
     const sources = [...everyPackageSource(), ...appSources()]
-      .map((file) => readFileSync(file, 'utf8'))
+      .map((file) => stripComments(readFileSync(file, 'utf8')))
       .join('\n');
-    const offenders = readdirSync(docsRoot)
+    /** Language built-ins the prose names in passing; no source declares them. */
+    const BUILT_INS = new Set(['Error', 'Map', 'Set', 'Promise', 'JSON', 'Object', 'Array']);
+    const named = readdirSync(docsRoot)
       .filter((entry) => entry.endsWith('.md'))
       .flatMap((entry) => readFileSync(join(docsRoot, entry), 'utf8')
         .split('\n')
@@ -698,8 +711,15 @@ describe('behaviour has an owner', () => {
           // An identifier a reader would grep for: a type or a called function.
           .map(([, code]) => /^([A-Z][A-Za-z0-9]{2,}|[a-z][A-Za-z0-9]{2,}\(\))$/.exec(code.trim()))
           .flatMap((match) => (match ? [match[1].replace('()', '')] : []))
-          .filter((name) => !new RegExp(String.raw`\b${name}\b`).test(sources))
-          .map((name) => `docs/${entry}: ${name}`)));
+          .filter((name) => !BUILT_INS.has(name))
+          .map((name) => ({ doc: `docs/${entry}`, name }))));
+
+    // A guard that finds no table passes by having nothing to check, and the
+    // ownership table alone is over ninety rows.
+    expect(named.length).toBeGreaterThan(90);
+    const offenders = named
+      .filter(({ name }) => !new RegExp(String.raw`\b${escapeForRegExp(name)}\b`).test(sources))
+      .map(({ doc, name }) => `${doc}: ${name}`);
 
     expect([...new Set(offenders)]).toEqual([]);
   });
