@@ -325,6 +325,9 @@ export class Hud {
     const host = (region: HudRegion): HTMLElement => {
       const element = document.createElement('div');
       element.className = `hud-region hud-${region}`;
+      // A landmark, so the label is an accessible name a reader can jump to
+      // rather than an attribute on an anonymous box.
+      element.setAttribute('role', 'region');
       element.setAttribute('aria-label', HUD_REGIONS[region]);
       return element;
     };

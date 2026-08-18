@@ -170,14 +170,13 @@ export class GameController {
     this.root.append(this.scroller, this.hud.el);
 
     // The field's content box is what the board has to fit into — the HUD's
-    // standing bands are padding on it — and a `ResizeObserver` reports exactly
-    // that box, including once when it starts observing. That first callback is
-    // the initial fit, so there is one writer of the zoom instead of a
+    // standing bands are padding on it — and `contentRect` is exactly that box.
+    // A ResizeObserver also reports once when it starts observing, so that first
+    // callback is the initial fit: one writer of the zoom, instead of a
     // requestAnimationFrame racing the observer for the last word.
     if (typeof ResizeObserver !== 'undefined') {
       this.resizeObserver = new ResizeObserver(([entry]) => {
-        const [box] = entry.contentBoxSize;
-        this.board.fitWithin(box.inlineSize, box.blockSize);
+        this.board.fitWithin(entry.contentRect.width, entry.contentRect.height);
       });
       this.resizeObserver.observe(this.scroller);
     }
