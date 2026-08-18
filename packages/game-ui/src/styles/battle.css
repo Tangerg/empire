@@ -85,7 +85,10 @@
    * to be in them. Content-sized columns would let a wide terrain readout in the
    * bottom-left drag the centred line of guidance off the middle of the field.
    */
-  grid-template-columns: var(--hud-flank) minmax(0, 1fr) var(--hud-aside);
+  grid-template-columns:
+    calc(var(--hud-flank) + var(--hud-gutter))
+    minmax(0, 1fr)
+    calc(var(--hud-aside) + var(--hud-gutter));
   grid-template-rows: auto minmax(0, 1fr) auto auto;
   grid-template-areas:
     'crown    crown crown'
@@ -307,7 +310,20 @@
   pointer-events: auto;
 }
 
+/* Each group says which of the crown's three columns it belongs to, so the
+   arrangement survives a change in the order the markup is assembled. */
+.crown-group.is-leading {
+  grid-column: 1;
+  justify-content: flex-start;
+}
+
+.crown-group.is-centre {
+  grid-column: 2;
+  justify-content: center;
+}
+
 .crown-group.is-trailing {
+  grid-column: 3;
   justify-content: flex-end;
 }
 
@@ -399,6 +415,14 @@
   color: var(--text);
 }
 
+/* A roster row's coordinates: secondary, and aligned down the column. */
+.battle-hud .cmd-list .sub {
+  margin-left: auto;
+  color: var(--text-dim);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
 /* The one irreversible control on screen, and it is sized like it. */
 .battle-hud .btn.commit {
   min-height: 46px;
@@ -449,6 +473,18 @@
   font-size: 12px;
   text-align: center;
   text-wrap: balance;
+}
+
+/*
+ * A forecast row is two names and an arrow, in a column narrower than the old
+ * sidebar. A long name used to have nothing stopping it from shoving the arrow
+ * out of the middle, or out of the plate.
+ */
+.forecast .fc-name {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* ------------------------------------------------------------- the ledger */

@@ -77,9 +77,9 @@ export interface HudView {
   /**
    * The pre-battle arrangement this side is making, or null once playing.
    *
-   * Deployment replaces the command panel rather than adding a screen: the
-   * player is still picking a unit and clicking a cell, so the same panel says
-   * so with a different list.
+   * Deployment replaces the orders column rather than adding a screen: the
+   * player is still picking a unit and clicking a cell, so the same region says
+   * so with a different list, and the dock confirms instead of ending a turn.
    */
   deployment: { units: Unit[]; selected: number | null } | null;
   /** Ability whose target we are picking, if any. */
@@ -249,6 +249,9 @@ const HUD_REGIONS = {
 
 type HudRegion = keyof typeof HUD_REGIONS;
 
+/** Everything the screen can be asking for, in the order the answers are read. */
+type BattleMode = 'over' | 'recruiting' | 'targeting' | 'deploying' | 'waiting' | 'commanding';
+
 /**
  * What the player is being asked for, as one word the whole screen reacts to.
  *
@@ -256,7 +259,7 @@ type HudRegion = keyof typeof HUD_REGIONS;
  * accent on the committing control are one mood, and four stylesheets each
  * guessing at it from a different class is how they drift apart.
  */
-function battleMode(view: HudView): string {
+function battleMode(view: HudView): BattleMode {
   if (view.state.phase === 'over') return 'over';
   if (view.recruitAt) return 'recruiting';
   if (view.targeting) return 'targeting';
@@ -854,7 +857,7 @@ export class Hud {
   private renderObjectives(view: HudView): string {
     const state = view.state;
     const viewer = state.players.find((player) => player.controller === 'human') ?? state.players[0];
-    return `<section class="plaque objectives">
+    return `<section class="plaque">
       <h3 class="art-heading">${this.art.resolve((provider) => provider.iconMarkup?.('C01-HUD-05')) ?? icon('flag')}<span>作战目标</span></h3>
       <ul class="obj-list">
         ${viewer.objectives

@@ -762,8 +762,8 @@ export class GameController {
             )
         : [];
 
-    // Null once the battle is under way, which is what turns the panel and the
-    // primary button back into the ordinary ones.
+    // Null once the battle is under way, which is what turns the orders column
+    // and the dock back into the ordinary ones.
     const roster = this.isHumanInput ? this.session.deploymentRoster() : null;
     const orderPreview = this.session.engine.turnOrderPreview(state, 6);
     return {
