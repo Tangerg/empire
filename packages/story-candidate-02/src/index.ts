@@ -35,5 +35,3 @@ export const CANDIDATE_02_CAMPAIGN_CONTRACT: CampaignDefinition = {
   },
   nodes: nodes(),
 };
-
-export const CANDIDATE_02_ASSET_PACK = 'final-scifi-v1';

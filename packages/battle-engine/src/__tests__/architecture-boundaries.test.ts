@@ -1389,6 +1389,36 @@ describe('one call shape', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('never passes a bare boolean at a call site', () => {
+    // `advanceInitiative(state, context, true)`, `march(action, false)`,
+    // `levelCard(level, true)`, `createUnitState(source, id, false, content)`:
+    // in every one of them the reader has to open the callee to learn what the
+    // argument means, and in the last one it was sitting in front of the
+    // dependency as well.
+    //
+    // A boolean that changes what a function *does* is part of the subject, so
+    // it gets a name: `{ spendActive: true }`, `{ follow: false }`. Same rule as
+    // the trailing-optional one it replaced — a parameter list is read at the
+    // call site or it is not read at all.
+    //
+    // Only our own calls: undotted, or on `this`. A DOM method that takes a
+    // positional flag is not ours to redesign.
+    const offenders: string[] = [];
+    for (const file of [...everyPackageSource(), ...appSources()]) {
+      const source = stripStrings(stripComments(readFileSync(file, 'utf8')));
+      source.split('\n').forEach((line, index) => {
+        for (const call of line.matchAll(/(?<![.\w])((?:this\.)?[a-z][A-Za-z0-9]*)\(([^()]*)\)/g)) {
+          const args = call[2].split(',').map((argument) => argument.trim());
+          if (args.some((argument) => argument === 'true' || argument === 'false')) {
+            offenders.push(`${relative(packagesRoot, file)}:${index + 1} ${call[1]}(${call[2].trim()})`);
+          }
+        }
+      });
+    }
+
+    expect(offenders).toEqual([]);
+  });
+
   it('never puts a required parameter after an optional one', () => {
     // `f(state, unit, from, weapon = undefined, content)` compiles, and then
     // every caller in the codebase writes `undefined` to reach past it. If the

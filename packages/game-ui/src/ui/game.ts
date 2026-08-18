@@ -502,7 +502,15 @@ export class GameController {
    * `follow` is the difference between watching your own order and being shown
    * someone else's: the camera chases the AI, never the player.
    */
-  private async march(action: Action, follow: boolean, pace?: number): Promise<void> {
+  /**
+   * Walks a unit along the path an order took.
+   *
+   * `follow` and `pace` are named together because the two call sites read
+   * `march(action, false)` and `march(action, true, 65)` — a bare boolean that is
+   * really "does the camera chase it", and a bare number that is really a speed.
+   */
+  private async march(action: Action, camera: { follow: boolean; pace?: number }): Promise<void> {
+    const { follow, pace } = camera;
     if (action.kind !== 'command' || action.path.length < 2) return;
     const unit = this.session.unit(action.unit);
     if (!unit) return;
@@ -531,7 +539,7 @@ export class GameController {
     this.refresh();
 
     try {
-      await this.march(action, false);
+      await this.march(action, { follow: false });
       let events: GameEvent[];
       try {
         events = this.session.dispatch(action);
@@ -628,7 +636,7 @@ export class GameController {
       while (!this.disposed && this.state.phase !== 'over' && !this.isHumanInput) {
         if (++guard > 2000) break;
         const action = this.session.chooseAiAction();
-        await this.march(action, true, 65);
+        await this.march(action, { follow: true, pace: 65 });
         let events: GameEvent[];
         try {
           events = this.session.dispatch(action);

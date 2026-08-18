@@ -75,7 +75,8 @@ function thumbnail(level: LevelData): string {
   </svg>`;
 }
 
-function levelCard(level: LevelData, custom: boolean): string {
+/** `custom` says whose level this is: one the player saved, or a built-in. */
+function levelCard(level: LevelData, { custom }: { custom: boolean }): string {
   const size = `${level.width}×${level.height}`;
   return `<div class="level-card" data-level="${escapeHtml(level.id)}" data-custom="${custom}">
     <div class="level-thumb" data-act="play" data-arg="${escapeHtml(level.id)}">${thumbnail(level)}</div>
@@ -160,7 +161,7 @@ function renderMenu(): void {
     </div>
 
     <h2>内置关卡</h2>
-    <div class="level-grid">${BUILTIN_LEVELS.map((l) => levelCard(l, false)).join('')}</div>
+    <div class="level-grid">${BUILTIN_LEVELS.map((l) => levelCard(l, { custom: false })).join('')}</div>
 
     ${
       campaign.rejected === null
@@ -179,7 +180,7 @@ function renderMenu(): void {
     ${
       custom.length === 0
         ? `<div class="empty-note">还没有自制关卡。用地图编辑器画一张，保存后就会出现在这里。</div>`
-        : `<div class="level-grid">${custom.map((s) => levelCard(s.level, true)).join('')}</div>`
+        : `<div class="level-grid">${custom.map((s) => levelCard(s.level, { custom: true })).join('')}</div>`
     }
   </div>
   <div class="modal-root" id="menu-modal"></div>

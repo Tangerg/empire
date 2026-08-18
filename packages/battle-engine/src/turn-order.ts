@@ -197,9 +197,9 @@ export const InitiativeTurnOrder: TurnOrderPolicy = {
     return { policy: 'initiative', activeUnit: null, data };
   },
 
-  begin: (state, context) => advanceInitiative(state, context, false),
+  begin: (state, context) => advanceInitiative(state, context, { spendActive: false }),
 
-  advance: (state, context) => advanceInitiative(state, context, true),
+  advance: (state, context) => advanceInitiative(state, context, { spendActive: true }),
 
   canAct: (state, unit) => state.turnOrder.activeUnit === unit.id && !unit.done,
 
@@ -227,10 +227,17 @@ export const InitiativeTurnOrder: TurnOrderPolicy = {
   },
 };
 
+/**
+ * Hands the initiative to whoever is next.
+ *
+ * `spendActive` is named because the call sites are `begin` and `advance`, and
+ * `advanceInitiative(state, context, true)` said nothing about which of them was
+ * which: opening a round does not charge anybody for a turn they have not taken.
+ */
 function advanceInitiative(
   state: GameState,
   context: TurnOrderContext,
-  spendActive: boolean,
+  { spendActive }: { spendActive: boolean },
 ): TurnHandoff {
   pruneDepartedUnits(state);
   const active = state.turnOrder.activeUnit;

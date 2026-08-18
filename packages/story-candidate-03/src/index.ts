@@ -35,5 +35,3 @@ export const CANDIDATE_03_CAMPAIGN_CONTRACT: CampaignDefinition = {
   },
   nodes: nodes(),
 };
-
-export const CANDIDATE_03_ASSET_PACK = 'final-ancient-china-v1';
