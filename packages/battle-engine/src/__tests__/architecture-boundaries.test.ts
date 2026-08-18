@@ -1287,6 +1287,34 @@ describe('behaviour has an owner', () => {
   });
 });
 
+describe('a rendered control is answered', () => {
+  it('answers every intent an application shell declares', () => {
+    // The HUD and the editor each have a runtime test for this: render, collect
+    // every `data-act`, and require the controller to handle it. Both exist
+    // because a typo in `data-act` produces a button that looks alive and does
+    // nothing — the editor's comment says its switch had grown to a hundred
+    // lines with the two halves in different parts of the file.
+    //
+    // The two application shells had the same click-listener switch and no such
+    // check. They happen to agree today; nothing was keeping them that way, and
+    // a fenced bug in two of four shells is the asymmetry worth closing. Static
+    // rather than rendered, because an app entry point mounts on import.
+    const offenders = appSources().flatMap((file) => {
+      const source = readFileSync(file, 'utf8');
+      const declared = new Set([...source.matchAll(/data-act="([^"$]+)"/g)].map(([, act]) => act));
+      if (declared.size === 0) return [];
+      const handled = new Set([...source.matchAll(/case '([^']+)':/g)].map(([, value]) => value));
+      // A `switch` on an intent and a table of them are both fine; unanswered is not.
+      const table = new Set([...source.matchAll(/^\s{2}'?([\w-]+)'?:\s*\(/gm)].map(([, key]) => key));
+      return [...declared]
+        .filter((act) => !handled.has(act) && !table.has(act))
+        .map((act) => `${relative(packagesRoot, file)}: nothing answers "${act}"`);
+    });
+
+    expect(offenders).toEqual([]);
+  });
+});
+
 describe('one call shape', () => {
   /** Balanced-paren parameter list, so `(event: GameEvent) => void` survives. */
   function parametersOf(source: string, from: number): string[] {
