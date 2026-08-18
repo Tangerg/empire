@@ -8,6 +8,8 @@ import {
   type CampaignDefinition,
 } from '@empire/campaign-engine';
 import {
+  scenarioSignalsOf,
+  strikeCount,
   type GameEvent,
   type GameState,
   type BattleEngine,
@@ -227,7 +229,7 @@ export class StoryCampaignController {
       alliesRemaining: state.units.filter((unit) => unit.owner === ours.id).length,
       enemiesRemaining: state.units.filter((unit) => state.players.find((side) => side.id === unit.owner)?.team !== ours.team).length,
       fallen,
-      signals: events.filter((event) => event.type === 'scenarioSignal').map((event) => event.signal),
+      signals: scenarioSignalsOf(events),
       events,
     };
   }
@@ -352,7 +354,7 @@ export class StoryCampaignController {
   }
 
   private renderBattleResult(result: CampaignBattleSummary): void {
-    const attackEvents = result.events.filter((event) => event.type === 'attack' || event.type === 'areaAttack' || event.type === 'counter').length;
+    const attackEvents = strikeCount(result.events);
     this.shell(`<main class="result-screen"><section class="result-card">
       <span class="campaign-eyebrow">战斗胜利</span><h1>${escapeHtml(result.title)}</h1><p>${escapeHtml(result.outcome)}</p>
       <div class="result-metrics"><div><b>${result.turns}</b><span>回合</span></div><div><b>${result.alliesRemaining}</b><span>我方存续</span></div><div><b>${result.enemiesRemaining}</b><span>敌方存续</span></div><div><b>${attackEvents}</b><span>交战次数</span></div></div>

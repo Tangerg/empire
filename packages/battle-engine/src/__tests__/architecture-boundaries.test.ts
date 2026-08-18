@@ -535,6 +535,48 @@ describe('one composition root', () => {
   });
 });
 
+describe('an event stream is asked one question in one place', () => {
+  it('lets only the emitting module recognise a semantic event by name', () => {
+    // Two questions about a battle's events had drifted into several answers.
+    //
+    // "Which signals did it raise" was written out three times — the campaign
+    // bridge, the campaign shell, a balance probe — as the same filter over the
+    // same event name, in modules that do not emit it.
+    //
+    // "How much fighting happened" was worse than duplicated: the shell counted
+    // `attack`, `areaAttack` and `counter`, and the engine emits seven strikes.
+    // A support attack, a parting shot and both structure strikes were not
+    // counted, so a battle decided by reaction fire reported almost no combat.
+    //
+    // Both now have one owner: `scenarioSignalsOf` beside the effect that emits
+    // the signal, and `isStrike` beside combat — the latter recognising a strike
+    // by its payload rather than by a list of names, so the seven stay open.
+    const owners: Record<string, string> = {
+      scenarioSignal: join('battle-engine', 'src', 'scenario.ts'),
+      attack: join('battle-engine', 'src', 'combat.ts'),
+      areaAttack: join('battle-engine', 'src', 'combat.ts'),
+      counter: join('battle-engine', 'src', 'combat.ts'),
+      supportAttack: join('battle-engine', 'src', 'combat.ts'),
+      partingShot: join('battle-engine', 'src', 'combat.ts'),
+      attackStructure: join('battle-engine', 'src', 'combat.ts'),
+      areaAttackStructure: join('battle-engine', 'src', 'combat.ts'),
+    };
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
+      const name = relative(packagesRoot, file);
+      const code = stripComments(readFileSync(file, 'utf8'));
+      return Object.entries(owners).flatMap(([event, owner]) =>
+        // Comparison only. Emitting `{ type: 'attack', … }` is how the event
+        // gets raised, and the presenter registry is keyed by the name, so both
+        // are declarations of the kind rather than reasoning about it.
+        new RegExp(`\\.type === '${event}'`).test(code) && !name.endsWith(owner)
+          ? [`${name} recognises '${event}' itself`]
+          : []);
+    });
+
+    expect(offenders).toEqual([]);
+  });
+});
+
 describe('a strategy is asked for its behaviour, not its name', () => {
   it('never branches on a registered presentation id', () => {
     // Six places in the board asked `presentation.id === 'generic'` to pick

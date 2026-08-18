@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   GameSession,
+  scenarioSignalsOf,
   type GameEvent,
   type LevelData,
   createBattleEngine,
@@ -74,7 +75,7 @@ export function simulateCandidate01(level: LevelData, aggression = 0.58, actionL
     allyHp: allies.length === 0 ? 0 : Math.round(allies.reduce((sum, unit) => sum + unit.hp / TEST_CATALOG.units.get(unit.type).maxHp, 0) / allies.length * 100),
     attacks: attackEvents.length,
     skills: skills.length,
-    signals: events.filter((event) => event.type === 'scenarioSignal').length,
+    signals: scenarioSignalsOf(events).length,
     reason: session.state.endReason,
     fallen: session.state.markers.map((marker) => marker.fallenUnit?.key ?? marker.kind).join(','),
   };

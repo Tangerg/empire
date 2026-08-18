@@ -486,3 +486,28 @@ export function healAmount(content: ContentCatalog, source: Unit, target: Unit):
   const power = Number(source.meta.healPower ?? 30);
   return Math.min(power, def.maxHp - target.hp);
 }
+
+/**
+ * Did this event describe a blow landing?
+ *
+ * Asked structurally, not by name, and that is the point. The campaign shell
+ * counted `attack`, `areaAttack` and `counter` to show "交战次数", while the
+ * engine emits seven such events: a support attack, a parting shot and both
+ * structure strikes were simply not counted, so a battle decided by reaction
+ * fire reported almost no fighting.
+ *
+ * A list of seven names here would be the same defect with one owner instead of
+ * two. What every strike actually shares is its payload: somebody attacked, and
+ * damage came out. Across all sixty-seven event kinds, `attacker` and `damage`
+ * occur together in exactly those seven and nowhere else — so a content pack
+ * that emits its own strike is counted without editing this module, which is
+ * what an open event map is for.
+ */
+export function isStrike(event: GameEvent): boolean {
+  return 'attacker' in event && 'damage' in event;
+}
+
+/** How many blows landed in this event stream. */
+export function strikeCount(events: readonly GameEvent[]): number {
+  return events.filter(isStrike).length;
+}

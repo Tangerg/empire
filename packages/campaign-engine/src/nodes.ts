@@ -72,24 +72,30 @@ export class CampaignNodeRegistry extends KeyedRegistry<CampaignNodeKind, Campai
   }
 }
 
-/** Effects land, then the campaign moves on. Three kinds differ only in name. */
-const passage = <K extends 'story' | 'hub' | 'travel'>(kind: K): CampaignNodeHandler<K> => ({
-  kind,
-  advance: (context, node) => {
-    context.apply(node.effects);
-    context.moveTo(node.next);
-  },
-  validate: (inspection, node) => {
-    if (!inspection.hasNode(node.next)) {
-      inspection.reject(`${node.id} references unknown campaign node "${node.next}"`);
-    }
-  },
-});
-
+/**
+ * Effects land, then the campaign moves on.
+ *
+ * There used to be three of these — `story`, `hub` and `travel` — behind a
+ * helper whose own comment said they "differ only in name". Nothing shipped
+ * used the other two, no rule distinguished them, and no shell could: all three
+ * are passages with prose, so the generic UI rendered them identically. Two
+ * public concepts that mean nothing to any layer are two concepts to delete;
+ * the kind map is open, so a game that wants a camp with its own behaviour
+ * registers a kind whose behaviour is its own.
+ */
 export const DefaultCampaignNodes = new CampaignNodeRegistry()
-  .register(passage('story'))
-  .register(passage('hub'))
-  .register(passage('travel'))
+  .register<'story'>({
+    kind: 'story',
+    advance: (context, node) => {
+      context.apply(node.effects);
+      context.moveTo(node.next);
+    },
+    validate: (inspection, node) => {
+      if (!inspection.hasNode(node.next)) {
+        inspection.reject(`${node.id} references unknown campaign node "${node.next}"`);
+      }
+    },
+  })
   .register<'choice'>({
     kind: 'choice',
     advance: (context) => context.needs('choose()'),

@@ -85,8 +85,6 @@ interface CampaignPassage extends CampaignScene {
  */
 export interface CampaignNodeKindMap {
   story: CampaignPassage & { type: 'story' };
-  hub: CampaignPassage & { type: 'hub' };
-  travel: CampaignPassage & { type: 'travel' };
   choice: CampaignScene & { type: 'choice'; choices: CampaignChoice[] };
   battle: CampaignNodeBase & {
     type: 'battle';

@@ -754,6 +754,18 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
     emit({ type: 'scenarioSignal', signal: effect.signal });
   }));
 
+/**
+ * Signals a battle raised, in the order it raised them.
+ *
+ * Here because this module emits them. The campaign bridge, the campaign shell
+ * and a balance probe each wrote this filter out by hand — three copies of one
+ * question, and the shell's copy was the one that would silently keep answering
+ * the old way if the event were ever renamed.
+ */
+export function scenarioSignalsOf(events: readonly GameEvent[]): string[] {
+  return events.flatMap((event) => (event.type === 'scenarioSignal' ? [event.signal] : []));
+}
+
 export function applyScenarioEffect(
   rules: ScenarioRules,
   state: GameState,

@@ -1,5 +1,6 @@
 import {
   normaliseLevel,
+  scenarioSignalsOf,
   teamOf,
   type ContentCatalog,
   type GameEvent,
@@ -124,7 +125,7 @@ export class CampaignBattleBridge {
       reason: state.endReason,
       turns: state.turn,
       units: request.rosterBindings.map((binding) => this.projectUnit(state, binding.campaignUnit, binding.levelUnitKey)),
-      signals: events.filter((event) => event.type === 'scenarioSignal').map((event) => event.signal),
+      signals: scenarioSignalsOf(events),
       eventCounts: { ...state.scenario.eventCounts },
     };
   }

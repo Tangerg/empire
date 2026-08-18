@@ -1,4 +1,8 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { isStrike, strikeCount } from '../combat';
+import type { GameEvent } from '../types';
 import { makeLevel, testApply, testDamage, testForecast, testState, u } from './fixtures';
 
 describe('damage model', () => {
@@ -125,5 +129,48 @@ describe('retaliation', () => {
     const fc = testForecast(s, s.units[0], s.units[1]);
     expect(fc.defenderDies).toBe(true);
     expect(fc.counter).toBeNull();
+  });
+});
+
+describe('how much fighting happened', () => {
+  it('counts every event where a blow landed, not a list of three names', () => {
+    // The campaign shell counted `attack`, `areaAttack` and `counter`, so a
+    // battle decided by reaction fire or by knocking a gate down reported almost
+    // no combat. Recognising a strike by its payload closes that permanently:
+    // `attacker` and `damage` occur together in exactly the strike events, and
+    // in nothing else the engine emits.
+    const strikes: GameEvent[] = [
+      { type: 'attack', attacker: 1, defender: 2, weapon: 'w', damage: 10, killed: false },
+      { type: 'counter', attacker: 2, defender: 1, weapon: 'w', damage: 4, killed: false },
+      { type: 'supportAttack', attacker: 3, defender: 2, weapon: 'w', damage: 6, killed: false },
+      { type: 'partingShot', attacker: 4, defender: 1, weapon: 'w', at: { x: 0, y: 0 }, damage: 3, killed: false },
+      { type: 'attackStructure', attacker: 1, structure: 'gate', weapon: 'w', damage: 20, destroyed: false },
+    ];
+    const quiet: GameEvent[] = [
+      { type: 'turnEnd', player: 1 },
+      { type: 'heal', source: 1, target: 2, amount: 10 },
+      { type: 'scenarioSignal', signal: 'gate.open' },
+    ];
+
+    expect(strikes.every(isStrike)).toBe(true);
+    expect(quiet.some(isStrike)).toBe(false);
+    expect(strikeCount([...strikes, ...quiet])).toBe(strikes.length);
+
+    // And the claim the predicate rests on, read off the event map itself: out
+    // of sixty-seven kinds, `attacker` and `damage` occur together in exactly
+    // these seven. If a kind ever carries both without being a strike, this
+    // fails and the predicate needs rethinking rather than a quiet exception.
+    const map = readFileSync(join(import.meta.dirname, '..', 'types.ts'), 'utf8');
+    const body = /export interface GameEventKindMap \{([\s\S]*?)\n\}/.exec(map)![1];
+    const kinds = [...body.matchAll(/^ {2}(\w+): \{([^}]*)\}/gm)];
+    expect(kinds.length).toBeGreaterThan(60);
+    const both = kinds
+      .filter(([, , fields]) => /\battacker\b/.test(fields) && /\bdamage\b/.test(fields))
+      .map(([, kind]) => kind)
+      .sort();
+    expect(both).toEqual([
+      'areaAttack', 'areaAttackStructure', 'attack', 'attackStructure',
+      'counter', 'partingShot', 'supportAttack',
+    ]);
   });
 });
