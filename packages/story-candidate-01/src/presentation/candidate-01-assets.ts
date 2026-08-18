@@ -110,15 +110,6 @@ if (!manifest.runtimeReady || manifest.assetCount !== catalog.size) {
   throw new Error(`candidate-01 asset manifest is not runtime ready (${catalog.size}/${manifest.assetCount})`);
 }
 
-/** The versioned art catalog is presentation-only; combat content keeps stable engine ids. */
-export const CANDIDATE_01_ASSET_PACK = Object.freeze({
-  id: 'candidate-01-cartoon-fantasy-v1',
-  schemaVersion: manifest.schemaVersion,
-  assetCount: manifest.assetCount,
-  tacticalHdAssetCount: tacticalHdManifest.assetCount,
-  tacticalPixelDensity: tacticalHdManifest.pixelDensity,
-});
-
 export function candidate01Asset(topicId: string): Candidate01RuntimeAsset {
   const record = catalog.get(topicId);
   if (!record) throw new Error(`unknown candidate-01 art topic: ${topicId}`);
@@ -134,6 +125,3 @@ export function candidate01AssetUrl(topicId: string): string {
   return candidate01Asset(topicId).url;
 }
 
-export function candidate01Assets(category: Candidate01AssetCategory): readonly Candidate01RuntimeAsset[] {
-  return [...catalog.values()].filter((record) => record.category === category);
-}

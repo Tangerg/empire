@@ -206,22 +206,6 @@ export function threatTiles(
   return out;
 }
 
-/** Enemy units in range if `unit` stood on `from`. */
-export function targetsFrom(
-  rules: MovementRules,
-  state: GameState,
-  unit: Unit,
-  from: Coord,
-  weapon?: WeaponDef,
-): Unit[] {
-  const out: Unit[] = [];
-  for (const c of attackTilesFrom(rules, state, unit, from, weapon)) {
-    const other = unitAt(state, { x: c.x, y: c.y });
-    if (other && areEnemies(state, other.owner, unit.owner)) out.push(other);
-  }
-  return out;
-}
-
 /** Unit and destructible-structure targets share the same range query. */
 export function attackTargetCoords(
   rules: MovementRules,

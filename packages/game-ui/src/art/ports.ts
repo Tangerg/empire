@@ -12,19 +12,6 @@ export interface RuntimeTerrainContext {
   linked: { n: boolean; e: boolean; s: boolean; w: boolean };
 }
 
-export interface RuntimeArtAsset {
-  url: string;
-  width: number;
-  height: number;
-  frameWidth?: number;
-  frameHeight?: number;
-  frames?: number;
-  anchor?: [number, number];
-  footprint?: [number, number];
-  fps?: number;
-  loop?: boolean;
-}
-
 export interface ArtProvider {
   id: string;
   unitMarkup?(type: UnitTypeId, team: string): string | null;

@@ -27,35 +27,21 @@ import { UnitDirectives } from '../unit-directive';
 import { DefaultRuleReferenceChecks } from '../rule-references';
 import { DefaultBattleSaves } from '../battle-save';
 import { SplitMixRandom } from '../random';
-import {
-  ContentPackInstaller,
-  createContentCatalog,
-  type ContentCatalog,
-  type ContentPack,
-} from '../content-pack';
+import type { ContentCatalog } from '../content-pack';
 
 /**
- * Content is supplied by the composition root, not discovered.
+ * Supplies the catalog this engine plays on. Content is never discovered.
  *
- * An application (or a test) declares which packs its engine plays on; the
- * plugin installs them into a catalog owned by that engine alone. Two engines
- * can therefore run different themes — including themes that reuse the same
- * terrain legend characters — because the namespace is per catalog.
+ * The catalog belongs to this engine alone, so two engines in one process can
+ * run different themes — including themes reusing the same terrain legend
+ * characters, because the namespace is per catalog.
+ *
+ * There used to be a second function claiming the same plugin id and the same
+ * capability, differing only in that it built the catalog from packs itself. No
+ * caller wanted it: every root composes its catalog explicitly, which is what
+ * "there is no ambient content" asks for, and two ways to provide one capability
+ * is one way too many.
  */
-export function createContentPlugin(packs: readonly ContentPack[]): EnginePlugin {
-  return {
-    id: 'engine.content',
-    version: 1,
-    provides: ['content'],
-    install: (context) => {
-      const catalog = createContentCatalog();
-      new ContentPackInstaller(catalog).install(...packs);
-      context.provide('content', catalog);
-    },
-  };
-}
-
-/** Supplies an already-composed catalog, e.g. one shared by a test suite. */
 export function contentPluginFor(catalog: ContentCatalog): EnginePlugin {
   return {
     id: 'engine.content',
