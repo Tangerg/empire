@@ -419,6 +419,34 @@ describe('documentation is held to the code', () => {
     expect(claims.length).toBeGreaterThanOrEqual(3);
     expect(claims.filter((claim) => claim.count !== guards)).toEqual([]);
   });
+
+  /**
+   * The battle overlay's regions, as the code declares them and as the doc lists.
+   *
+   * The doc's table is the only statement of what each region is *for*, which is
+   * what stops the overlay from silently becoming a place to put panels. A region
+   * added in code and not in the table has no declared question; one in the table
+   * and not in code is a promise about a place that does not exist.
+   */
+  it('lists exactly the battle overlay regions the code declares', () => {
+    const hud = readFileSync(join(packagesRoot, 'game-ui', 'src', 'ui', 'hud.ts'), 'utf8');
+    const table = /const HUD_REGIONS = \{([\s\S]*?)\n\} as const;/.exec(hud);
+    const declared = [...(table?.[1] ?? '').matchAll(/^\s{2}(\w+):/gm)].map(([, name]) => name);
+
+    const doc = readFileSync(join(packagesRoot, '..', 'docs', 'presentation-system.md'), 'utf8');
+    // Anchored on the table's own heading row, not on "a row whose first cell is
+    // in backticks" — the document is mostly tables, and the loose pattern read
+    // every art port and atlas name in the file as a region.
+    const rows = /\| 区域 \| 它回答的问题 \|[^\n]*\n\|[-| ]+\|\n([\s\S]*?)\n\n/.exec(doc);
+    const documented = [...(rows?.[1] ?? '').matchAll(/^\| `(\w+)` \|/gm)].map(([, name]) => name);
+
+    // The count the prose states, read rather than repeated here: pinning it in
+    // the test would fail a legitimate ninth region with a message about a
+    // number instead of about the table it is missing from.
+    const stated = /覆盖层是 (\d+) 个区域/.exec(doc);
+    expect(Number(stated?.[1])).toBe(declared.length);
+    expect(documented.sort()).toEqual([...declared].sort());
+  });
 });
 
 describe('a package publishes one way in', () => {
