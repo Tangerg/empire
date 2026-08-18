@@ -32,7 +32,7 @@ const cloneResources = (resources: ResourceAccounts = {}): ResourceAccounts =>
  * type has. Was written as an immediately-invoked function inside the unit
  * literal, which is a function that has refused to be named.
  */
-function initialCareer(source: LevelUnit, content: ContentCatalog): Unit['career'] {
+function initialCareer(content: ContentCatalog, source: LevelUnit): Unit['career'] {
   const requested = source.career
     ? content.careers.tryGet(source.career)
     : content.careers.all()
@@ -52,11 +52,19 @@ function initialCareer(source: LevelUnit, content: ContentCatalog): Unit['career
   };
 }
 
+/**
+ * One unit's battle-local state.
+ *
+ * `done` is named rather than positional: the two call sites read
+ * `createUnitState(content, source, id, false)` and `(…, opts.done ?? false)`,
+ * and at the first one there was no way to tell from the call what the boolean
+ * meant. The catalog leads, like every other dependency.
+ */
 function createUnitState(
+  content: ContentCatalog,
   source: LevelUnit,
   id: number,
-  done: boolean,
-  content: ContentCatalog,
+  { done }: { done: boolean },
 ): Unit {
   const def = content.units.get(source.unit);
   return {
@@ -95,7 +103,7 @@ function createUnitState(
       waypoints: source.directive?.waypoints?.map((point) => ({ ...point })) ?? [],
       cursor: Math.max(0, Math.round(source.directive?.cursor ?? 0)),
     },
-    career: initialCareer(source, content),
+    career: initialCareer(content, source),
     learnedAbilities: [...new Set(source.learnedAbilities ?? [])],
     meta: {},
   };
@@ -197,7 +205,7 @@ export function createState(content: ContentCatalog, level: LevelData, options: 
   players.sort((a, b) => a.id - b.id);
 
   let nextUnitId = 1;
-  const units: Unit[] = level.units.map((unit) => createUnitState(unit, nextUnitId++, false, content));
+  const units: Unit[] = level.units.map((unit) => createUnitState(content, unit, nextUnitId++, { done: false }));
 
   const commanders = (level.commanders ?? []).map((entry) => {
     const leader = units.find((unit) => unit.key === entry.unitKey);
@@ -520,7 +528,7 @@ export function spawnUnit(
     ...opts.source,
     hp: opts.hp ?? opts.source?.hp,
   };
-  const u = createUnitState(source, state.nextUnitId++, opts.done ?? false, content);
+  const u = createUnitState(content, source, state.nextUnitId++, { done: opts.done ?? false });
   state.units.push(u);
   return u;
 }

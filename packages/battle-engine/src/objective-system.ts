@@ -180,7 +180,7 @@ function zoneCells(state: GameState, id: string) {
   return state.scenario.zones[id] ?? [];
 }
 
-function lostHQ(state: GameState, id: PlayerId, content: ContentCatalog): boolean {
+function lostHQ(content: ContentCatalog, state: GameState, id: PlayerId): boolean {
   const owner = state.players.find((candidate) => candidate.id === id);
   return Boolean(owner?.startedWithHQ) && hqTilesOf(content, state, id).length === 0;
 }
@@ -252,7 +252,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
       const contenders = state.players.filter(
         (candidate) => areEnemies(state, candidate.id, owner) && candidate.startedWithHQ,
       );
-      return contenders.length > 0 && contenders.every((candidate) => lostHQ(state, candidate.id, content))
+      return contenders.length > 0 && contenders.every((candidate) => lostHQ(content, state, candidate.id))
         ? 'success' : 'pending';
     },
     describe: () => '攻占敌方城堡',

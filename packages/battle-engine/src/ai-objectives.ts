@@ -222,10 +222,10 @@ function objectiveWeight(handlers: ObjectiveHandlerRegistry, objective: Objectiv
 }
 
 function activeChildren(
+  handlers: ObjectiveHandlerRegistry,
   state: GameState,
   owner: PlayerId,
   objective: Objective,
-  handlers: ObjectiveHandlerRegistry,
 ): Objective[] {
   const children = handlers.children(objective);
   const pending = children.filter((child) => {
@@ -267,7 +267,7 @@ export function buildAiMissionIntent(
   const visit = (objective: Objective, inheritedWeight: number): void => {
     if (runtimeStatus(state, owner, objective) !== 'active') return;
     const weight = inheritedWeight * objectiveWeight(handlers, objective);
-    const children = activeChildren(state, owner, objective, handlers);
+    const children = activeChildren(handlers, state, owner, objective);
     if (children.length > 0) {
       for (const child of children) visit(child, weight);
       return;

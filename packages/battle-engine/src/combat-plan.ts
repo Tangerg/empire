@@ -162,7 +162,7 @@ function planSupportAttack(
   };
 }
 
-function hostileStructure(state: GameState, attacker: Unit, at: Coord, content: ContentCatalog): StructureState | null {
+function hostileStructure(content: ContentCatalog, state: GameState, attacker: Unit, at: Coord): StructureState | null {
   const structure = structureAt(state, at.x, at.y);
   if (!structure || !content.structures.get(structure.type).targetable) return null;
   return structure.owner === 0 || areEnemies(state, structure.owner, attacker.owner) ? structure : null;
@@ -197,7 +197,7 @@ export function forecastCombatPlan(
   }
   const weapon = content.weapons.get(resolvedWeaponId);
   const primaryTarget = unitAt(state, aimedAt);
-  const primaryStructureTarget = hostileStructure(state, attacker, aimedAt, content);
+  const primaryStructureTarget = hostileStructure(content, state, attacker, aimedAt);
   // An area weapon may land on a tile whose occupant left — that is the whole
   // point of charge time, and every step below already copes with a null
   // primary. A single-target weapon aimed at nothing has nothing to resolve.
@@ -265,7 +265,7 @@ export function forecastCombatPlan(
       });
       excludedUnits.add(unit.id);
     }
-    const structure = hostileStructure(state, attacker, cell, content);
+    const structure = hostileStructure(content, state, attacker, cell);
     if (structure && structure.id !== primaryStructureTarget?.id) {
       structureHits.push({
         target: structure.id,

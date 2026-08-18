@@ -139,7 +139,7 @@ export const INITIATIVE_THRESHOLD = 100;
  * one tempo-ish stat every pack already declares, so an unconverted pack still
  * produces a sensible order instead of a flat tie.
  */
-function initiativeSpeed(unit: Unit, content: ContentCatalog): number {
+function initiativeSpeed(content: ContentCatalog, unit: Unit): number {
   const declared = Number(unit.meta.speed ?? 0);
   if (declared > 0) return Math.round(declared);
   // Fallback for packs that have not declared a tempo stat yet: movement is the
@@ -167,13 +167,13 @@ function readyOrder(ticker: Ticker): number[] {
     .map(([id]) => id);
 }
 
-function tickerFor(state: GameState, content: ContentCatalog): Ticker {
+function tickerFor(content: ContentCatalog, state: GameState): Ticker {
   const charge = new Map<number, number>();
   const speed = new Map<number, number>();
   for (const unit of state.units) {
     if (!player(state, unit.owner).alive) continue;
     charge.set(unit.id, chargeOf(state, unit.id));
-    speed.set(unit.id, initiativeSpeed(unit, content));
+    speed.set(unit.id, initiativeSpeed(content, unit));
   }
   return { charge, speed };
 }
@@ -192,7 +192,7 @@ export const InitiativeTurnOrder: TurnOrderPolicy = {
     // A deterministic fraction of speed so the opening round is not a flat tie,
     // without consuming any randomness.
     for (const unit of state.units) {
-      data[chargeKey(unit.id)] = initiativeSpeed(unit, content) % 37;
+      data[chargeKey(unit.id)] = initiativeSpeed(content, unit) % 37;
     }
     return { policy: 'initiative', activeUnit: null, data };
   },
@@ -209,7 +209,7 @@ export const InitiativeTurnOrder: TurnOrderPolicy = {
   },
 
   preview: (state, content, count) => {
-    const ticker = tickerFor(state, content);
+    const ticker = tickerFor(content, state);
     const out: number[] = [];
     let guard = 0;
     while (out.length < count && guard++ < 10_000) {
@@ -242,7 +242,7 @@ function advanceInitiative(
   // Threshold is finite and every speed is >= 1, so this terminates; the guard
   // only protects against a pathological content pack.
   for (let guard = 0; guard <= INITIATIVE_THRESHOLD * 4; guard++) {
-    const ticker = tickerFor(state, context.content);
+    const ticker = tickerFor(context.content, state);
     if (ticker.charge.size === 0) {
       state.turnOrder.activeUnit = null;
       return { player: state.currentPlayer, activeUnit: null, roundAdvanced, exhausted: true };

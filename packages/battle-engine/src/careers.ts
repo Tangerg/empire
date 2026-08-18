@@ -93,7 +93,7 @@ export function careerOptions(
 const cloneAccounts = (accounts: ResourceAccounts): ResourceAccounts =>
   Object.fromEntries(Object.entries(accounts).map(([id, account]) => [id, { ...account }]));
 
-function initialWeaponState(unit: Unit, career: CareerDef, content: ContentCatalog): Record<string, UnitWeaponState> {
+function initialWeaponState(content: ContentCatalog, unit: Unit, career: CareerDef): Record<string, UnitWeaponState> {
   const next = content.units.get(career.unitType);
   return Object.fromEntries(next.weapons.map((weaponId) => {
     const existing = unit.weaponState[weaponId];
@@ -124,7 +124,7 @@ export function changeCareer(
   const from = unit.career.current;
   const fromMaxHp = content.units.get(unit.type).maxHp;
   const nextDef = content.units.get(career.unitType);
-  const weaponState = initialWeaponState(unit, career, content);
+  const weaponState = initialWeaponState(content, unit, career);
   const entity = new UnitEntity(unit);
   entity.changeCareer(career.id, career.unitType, weaponState);
   entity.rescaleHealth(fromMaxHp, nextDef.maxHp);

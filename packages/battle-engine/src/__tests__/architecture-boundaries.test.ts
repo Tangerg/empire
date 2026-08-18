@@ -1240,7 +1240,13 @@ describe('one call shape', () => {
     // left alone" — and that carve-out was hiding fifteen queries still written
     // the old way, plus five taking two or three services as separate
     // parameters. A query is not a different call shape from a command, so the
-    // scope is every exported function in every package that names a service.
+    // scope is every function in every package that names a service.
+    //
+    // "Exported" was the next carve-out to go, and it was hiding nineteen: the
+    // module-private helpers were consistently written the *other* way round,
+    // including one taking `(source, id, done, content)` — a bare boolean with
+    // the catalog behind it. A reader has the same problem either way, and the
+    // axiom says nothing about visibility.
     const dependencies = [
       'content', 'rules', 'resources', 'progression', 'policy', 'space', 'handlers', 'random',
       'grids', 'objectives', 'scenarioEffects', 'scenarioConditions', 'saves', 'turnOrders',
@@ -1250,8 +1256,10 @@ describe('one call shape', () => {
     ];
     const offenders: string[] = [];
     for (const file of everyPackageSource()) {
-      const source = readFileSync(file, 'utf8');
-      for (const match of source.matchAll(/export function (\w+)/g)) {
+      // Comments go first: this reads private helpers now, and a paragraph
+      // containing "a function that has refused to be named" is prose.
+      const source = stripComments(readFileSync(file, 'utf8'));
+      for (const match of source.matchAll(/(?:export )?function (\w+)/g)) {
         const names = parametersOf(source, match.index + match[0].length)
           .map((parameter) => parameter.split(':')[0].trim().replace(/[?=].*$/, '').trim());
         const services = names.filter((name) => dependencies.includes(name));
@@ -1299,8 +1307,8 @@ describe('one call shape', () => {
 
     const offenders: string[] = [];
     for (const file of runtimeTypeScriptFiles(coreRoot)) {
-      const source = readFileSync(file, 'utf8');
-      for (const match of source.matchAll(/export function (\w+)/g)) {
+      const source = stripComments(readFileSync(file, 'utf8'));
+      for (const match of source.matchAll(/(?:export )?function (\w+)/g)) {
         const parameters = parametersOf(source, match.index + match[0].length);
         const first = parameters.findIndex(optional);
         if (first < 0) continue;

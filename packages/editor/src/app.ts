@@ -743,12 +743,12 @@ export class EditorApp {
 function toggleObjective(
   list: Objective[],
   type: Objective['type'],
-  rules: Partial<RuleSet>,
+  ruleSet: Partial<RuleSet>,
 ): Objective[] {
   const has = list.some((objective) => objective.type === type);
   if (has) return list.filter((objective) => objective.type !== type);
   const next: Objective =
-    type === 'surviveTurns' ? { type, turns: rules.turnLimit ?? 12 } : ({ type } as Objective);
+    type === 'surviveTurns' ? { type, turns: ruleSet.turnLimit ?? 12 } : ({ type } as Objective);
   return [...list, next];
 }
 

@@ -21,7 +21,7 @@ export interface VictoryResult {
 }
 
 /** A player is out when they have neither units nor any way to make more. */
-function isDefeated(state: GameState, id: PlayerId, content: ContentCatalog): boolean {
+function isDefeated(content: ContentCatalog, state: GameState, id: PlayerId): boolean {
   return unitsOf(state, id).length === 0 && productionTilesOf(content, state, id).length === 0;
 }
 
@@ -114,7 +114,7 @@ export function evaluateVictory(
 
   for (const owner of state.players) {
     if (!owner.alive) continue;
-    if (isDefeated(state, owner.id, rules.content)) new PlayerEntity(owner).defeat();
+    if (isDefeated(rules.content, state, owner.id)) new PlayerEntity(owner).defeat();
     const criticalFailure = owner.objectives.some(
       (objective) => handlers.role(objective) === 'critical' && objectiveStatusOf(state, owner.id, objective) === 'failed',
     );

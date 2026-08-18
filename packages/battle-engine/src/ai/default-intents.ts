@@ -5,7 +5,7 @@ import { unitWeapons } from '../combat';
 import { idx } from '../grid';
 import { boardOf, type Board } from '../domain/board';
 import type { MoveField } from '../movement';
-import { type BattleResourceSystem, playerResource } from '../resources';
+import { playerResource } from '../resources';
 import {
   areAllies,
   enemyUnitsOf,
@@ -13,6 +13,7 @@ import {
   productionTilesOf,
   unitAt,
   unitsOf,
+  type RecruitmentRules,
 } from '../state';
 import { hasStatus } from '../statuses';
 import { directiveOf } from '../unit-directive';
@@ -152,11 +153,11 @@ function proposeTactic(rules: CommanderRules, state: GameState, side: PlayerId):
 
 /** The stance this unit's situation calls for, whatever it is standing in now. */
 function preferredStance(
+  content: ContentCatalog,
   board: Board,
   state: GameState,
   unit: Unit,
   agenda: AiAgenda,
-  content: ContentCatalog,
 ): Unit['reaction'] {
   const definition = content.units.get(unit.type);
   const protectedWeight = agenda.mission.protectedUnits.get(unit.id) ?? 0;
@@ -178,14 +179,14 @@ function preferredStance(
 }
 
 function proposeStanceChange(
+  content: ContentCatalog,
   board: Board,
   state: GameState,
   side: PlayerId,
   agenda: AiAgenda,
-  content: ContentCatalog,
 ): Action | null {
   for (const unit of unitsOf(state, side).filter((candidate) => !candidate.done)) {
-    const stance = preferredStance(board, state, unit, agenda, content);
+    const stance = preferredStance(content, board, state, unit, agenda);
     if (stance !== unit.reaction) return { kind: 'reaction', unit: unit.id, stance };
   }
   return null;
@@ -194,12 +195,12 @@ function proposeStanceChange(
 /* ---------------------------------------------------------------- recruitment */
 
 function scoreRecruit(
+  rules: RecruitmentRules,
   state: GameState,
   side: PlayerId,
   type: UnitTypeId,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): number {
+  const { content, resources } = rules;
   const definition = content.units.get(type);
   const foes = enemyUnitsOf(state, side);
   const mine = unitsOf(state, side);
@@ -229,11 +230,11 @@ function scoreRecruit(
 }
 
 function proposeRecruit(
+  rules: RecruitmentRules,
   state: GameState,
   side: PlayerId,
-  resources: BattleResourceSystem,
-  content: ContentCatalog,
 ): Action | null {
+  const { content, resources } = rules;
   const account = playerResource(player(state, side));
   const cap = state.rules.maxUnitsPerPlayer;
   if (cap !== null && unitsOf(state, side).length >= cap) return null;
@@ -246,7 +247,8 @@ function proposeRecruit(
     if (affordable.length === 0) continue;
 
     const ranked = affordable
-      .map((id) => ({ id, score: scoreRecruit(state, side, id, resources, content) }))
+      .map((id): { id: UnitTypeId; score: number } =>
+        ({ id, score: scoreRecruit(rules, state, side, id) }))
       .sort((left, right) => right.score - left.score);
 
     return { kind: 'recruit', at, unit: ranked[0].id };
@@ -266,13 +268,13 @@ export const DefaultAiIntents = new AiIntentRegistry()
     id: 'recruit',
     priority: 20,
     propose: (context) =>
-      proposeRecruit(context.state, context.player, context.rules.resources, context.content),
+      proposeRecruit(context.rules, context.state, context.player),
   })
   .register({
     id: 'reaction',
     priority: 30,
     propose: (context) =>
-      proposeStanceChange(context.board, context.state, context.player, context.agenda, context.content),
+      proposeStanceChange(context.content, context.board, context.state, context.player, context.agenda),
   })
   .register({
     id: 'command',

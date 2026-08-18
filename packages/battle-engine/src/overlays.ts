@@ -4,7 +4,7 @@ import { addStatus } from './statuses';
 import type { Coord, GameEvent, GameState, TerrainOverlayState, Unit } from './types';
 import { type ContentCatalog } from './content-pack';
 
-function overlaysAt(state: GameState, at: Coord, content: ContentCatalog): TerrainOverlayState[] {
+function overlaysAt(content: ContentCatalog, state: GameState, at: Coord): TerrainOverlayState[] {
   return new Battlefield(state, content).cell(at).overlayStates;
 }
 
@@ -49,7 +49,7 @@ export function applyOverlayTurnStartEffects(
   scope?: readonly Unit[],
 ): void {
   for (const unit of scope ?? state.units.filter((candidate) => candidate.owner === owner)) {
-    for (const instance of overlaysAt(state, unit, content)) {
+    for (const instance of overlaysAt(content, state, unit)) {
       const effect = content.terrainOverlays.get(instance.type).turnStartStatus;
       if (effect) addStatus(content, unit, effect.id, effect.duration, emit);
     }

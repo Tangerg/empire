@@ -125,7 +125,7 @@ export class RuleReferenceCheckRegistry extends KeyedRegistry<string, RuleRefere
 }
 
 /** Every objective in a tree, composites included. */
-function objectiveTree(roots: readonly Objective[], rules: RuleReferenceRules): Objective[] {
+function objectiveTree(rules: RuleReferenceRules, roots: readonly Objective[]): Objective[] {
   const all: Objective[] = [];
   const visit = (objective: Objective): void => {
     all.push(objective);
@@ -140,8 +140,8 @@ function objectiveTree(roots: readonly Objective[], rules: RuleReferenceRules): 
 
 /** Every condition a trigger list evaluates, nested ones included. */
 function conditionTree(
-  triggers: readonly ScenarioTrigger[],
   rules: RuleReferenceRules,
+  triggers: readonly ScenarioTrigger[],
 ): ScenarioCondition[] {
   const all: ScenarioCondition[] = [];
   const visit = (condition: ScenarioCondition): void => {
@@ -247,19 +247,19 @@ export const DefaultRuleReferenceChecks = new RuleReferenceCheckRegistry()
     subject: '目标类型',
     known: (rules) => rules.objectives.keys(),
     inLevel: (level, rules) => objectiveTree(
-      level.players.flatMap((player) => objectivesOf(level, player)), rules,
+      rules, level.players.flatMap((player) => objectivesOf(level, player)),
     ).map((objective) => ({ by: `作战目标`, name: objective.type })),
     inState: (state, rules) => objectiveTree(
-      state.players.flatMap((player) => player.objectives), rules,
+      rules, state.players.flatMap((player) => player.objectives),
     ).map((objective) => ({ by: `作战目标`, name: objective.type })),
   })
   .register({
     id: 'scenarioConditions',
     subject: '场景条件',
     known: (rules) => rules.scenarioConditions.keys(),
-    inLevel: (level, rules) => conditionTree(level.scenario?.triggers ?? [], rules)
+    inLevel: (level, rules) => conditionTree(rules, level.scenario?.triggers ?? [])
       .map((condition) => ({ by: '触发条件', name: condition.type })),
-    inState: (state, rules) => conditionTree(state.scenario.triggers, rules)
+    inState: (state, rules) => conditionTree(rules, state.scenario.triggers)
       .map((condition) => ({ by: '触发条件', name: condition.type })),
   })
   .register({

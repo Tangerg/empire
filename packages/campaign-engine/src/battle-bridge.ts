@@ -25,10 +25,10 @@ function requireBattleNode(definition: CampaignDefinition, id: string): Extract<
 }
 
 function seedLevelUnit(
+  content: ContentCatalog,
   level: ReturnType<typeof normaliseLevel>,
   levelUnitKey: string,
   campaign: CampaignUnitState,
-  content: ContentCatalog,
 ): void {
   const index = level.units.findIndex((unit) => unit.key === levelUnitKey);
   if (index < 0) throw new Error(`level "${level.id}" has no unit key "${levelUnitKey}"`);
@@ -87,7 +87,7 @@ export class CampaignBattleBridge {
     for (const binding of declaredBindings) {
       const campaign = state.roster[binding.campaignUnit];
       if (!campaign) throw new Error(`unknown campaign roster unit "${binding.campaignUnit}"`);
-      seedLevelUnit(level, binding.levelUnitKey, campaign, this.content);
+      seedLevelUnit(this.content, level, binding.levelUnitKey, campaign);
     }
     const bindings = declaredBindings.filter((binding) => state.roster[binding.campaignUnit].disposition === 'available');
     const id = `${definition.id}:${node.id}:${state.battleSequence + 1}`;

@@ -48,7 +48,7 @@ export class AbilityAiEvaluatorRegistry extends KeyedRegistry<string, AbilityAiE
 }
 
 /** What an area strike is worth beyond its primary target. */
-function collateralValue(state: GameState, plan: CombatPlan, content: ContentCatalog): number {
+function collateralValue(content: ContentCatalog, state: GameState, plan: CombatPlan): number {
   let score = 0;
   for (const hit of plan.unitHits.filter((candidate) => !candidate.primary)) {
     const target = state.units.find((unit) => unit.id === hit.target);
@@ -116,7 +116,7 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
         forecast.damage * 8 +
         (forecast.destroyed ? 900 : 0) +
         (context.mission.priorityStructures.get(structure.id) ?? 0) * 300 +
-        collateralValue(context.state, plan, context.rules.content);
+        collateralValue(context.rules.content, context.state, plan);
     }
     const forecast = plan.primaryUnit;
     if (!forecast) return null;
@@ -136,5 +136,5 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
       const protectedUnit = context.state.units.find((candidate) => candidate.id === protectedId);
       if (protectedUnit) score += weight * 80 / (1 + context.board.distance(foe, protectedUnit));
     }
-    return context.tileValue * 0.25 + score + collateralValue(context.state, plan, context.rules.content);
+    return context.tileValue * 0.25 + score + collateralValue(context.rules.content, context.state, plan);
   }));
