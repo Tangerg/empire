@@ -97,14 +97,29 @@ export function hasStatus(unit: Unit, id: StatusId): boolean {
   return unit.statuses.some((instance) => instance.id === id);
 }
 
+/**
+ * The status being applied: which one, for how long, and on whose account.
+ *
+ * One subject rather than three trailing positionals. `addStatus` used to read
+ * `(content, unit, id, remaining, emit?, sourceUnitId?)`, so the event channel
+ * was not last and reaching `sourceUnitId` meant passing `emit` whether or not
+ * you had one — and at the call site `2` and `unitId` were two bare numbers in a
+ * row.
+ */
+export interface AppliedStatus {
+  readonly id: StatusId;
+  readonly remaining: number;
+  /** The unit that caused it, when something did. */
+  readonly sourceUnitId?: number;
+}
+
 export function addStatus(
   content: ContentCatalog,
   unit: Unit,
-  id: StatusId,
-  remaining: number,
+  applied: AppliedStatus,
   emit?: (event: GameEvent) => void,
-  sourceUnitId?: number,
 ): void {
+  const { id, remaining, sourceUnitId } = applied;
   if (!Number.isInteger(remaining) || remaining < 1) throw new DomainInvariantError('status duration must be >= 1');
   const def = statusDef(id, content);
   // The instance the unit ends up carrying, held rather than searched for: the
@@ -162,9 +177,9 @@ export interface StatusRules extends DamageRules {
 export function resolveTurnStartStatuses(
   rules: StatusRules,
   state: GameState,
-  emit: (event: GameEvent) => void,
   /** Units whose actor turn is starting. The caller decides the scope. */
   scope: readonly Unit[],
+  emit: (event: GameEvent) => void,
 ): void {
   const content = rules.content;
   for (const unit of scope) {

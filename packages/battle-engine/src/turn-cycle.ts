@@ -138,8 +138,8 @@ export class BattleLifecycle {
       ? { type: 'turnStart', player: owner.id, turn: state.turn }
       : { type: 'turnStart', player: owner.id, turn: state.turn, activeUnit: active });
 
-    applyOverlayTurnStartEffects(this.rules.content, state, owner.id, this.emit, scope);
-    resolveTurnStartStatuses(this.rules, state, this.emit, scope);
+    applyOverlayTurnStartEffects(this.rules.content, state, scope, this.emit);
+    resolveTurnStartStatuses(this.rules, state, scope, this.emit);
 
     if (active === null) {
       // One income grant per player per round; side turns already give each

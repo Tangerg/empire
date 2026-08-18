@@ -43,15 +43,22 @@ export function removeTerrainOverlay(
 export function applyOverlayTurnStartEffects(
   content: ContentCatalog,
   state: GameState,
-  owner: number,
+  /**
+   * Units whose actor turn is starting.
+   *
+   * Required, and it used to default to "the owner's whole army" — a second way
+   * to decide scope that the one caller never took, and one that would have been
+   * wrong under unit-by-unit turn order. Removing the default also removed the
+   * only reason this function knew whose turn it was: it needs the units, not
+   * the side they belong to.
+   */
+  scope: readonly Unit[],
   emit: (event: GameEvent) => void,
-  /** Units whose actor turn is starting; defaults to the owner's whole army. */
-  scope?: readonly Unit[],
 ): void {
-  for (const unit of scope ?? state.units.filter((candidate) => candidate.owner === owner)) {
+  for (const unit of scope) {
     for (const instance of overlaysAt(content, state, unit)) {
       const effect = content.terrainOverlays.get(instance.type).turnStartStatus;
-      if (effect) addStatus(content, unit, effect.id, effect.duration, emit);
+      if (effect) addStatus(content, unit, { id: effect.id, remaining: effect.duration }, emit);
     }
   }
 }

@@ -457,7 +457,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   }))
   .register(effectHandler('addStatus', (context, effect) => {
     for (const unit of context.select(effect.selector)) {
-      addStatus(context.content, unit, effect.status, effect.duration, context.emit);
+      addStatus(context.content, unit, { id: effect.status, remaining: effect.duration }, context.emit);
     }
   }, {
     references: (effect) => points().status(effect.status).selector(effect.selector),
@@ -530,7 +530,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
         : aggregate.createUnitMarker(unit, 'withdrawn');
       context.emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
       removeUnit(context.state, unit.id);
-      withdrawTransportPassengers(context.state, unit.id, at, 'withdrawn', context.emit);
+      withdrawTransportPassengers(context.state, unit.id, { at, kind: 'withdrawn' }, context.emit);
       announceUnitDeparture(context.rules, context.state, unit, context.emit);
       context.emit({ type: 'unitWithdrawn', unit: unit.id, at });
     }

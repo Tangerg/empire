@@ -128,7 +128,7 @@ export function executeTactic(
   );
   for (const effect of tactic.effects) {
     for (const unit of affected) {
-      if (effect.type === 'addStatus') addStatus(content, unit, effect.status, effect.duration, emit, leader.id);
+      if (effect.type === 'addStatus') addStatus(content, unit, { id: effect.status, remaining: effect.duration, sourceUnitId: leader.id }, emit);
       else removeStatus(unit, effect.status, emit);
     }
   }
@@ -172,7 +172,7 @@ function handleCommanderDefeat(
   for (const unit of state.units.filter(
     (candidate) => candidate.commanderId === commander.id && candidate.owner === commander.owner,
   )) {
-    if (content.statuses.has('shaken')) addStatus(content, unit, 'shaken', 2, emit, unitId);
+    if (content.statuses.has('shaken')) addStatus(content, unit, { id: 'shaken', remaining: 2, sourceUnitId: unitId }, emit);
     if (state.rules.moraleEnabled && state.units.some((candidate) => candidate.id === unit.id)) {
       changeMorale(rules, state, unit.id, -state.rules.moraleCommanderDefeatLoss, 'commander-defeated', emit);
     }

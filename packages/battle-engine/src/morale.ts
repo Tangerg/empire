@@ -35,7 +35,7 @@ export function routeUnit(
 ): BattlefieldMarker {
   const unit = requireUnit(state, unitId);
   const marker = withdrawalMarker(rules.content, state, unit, 'routed', {});
-  withdrawTransportPassengers(state, unitId, marker.at, 'routed', emit);
+  withdrawTransportPassengers(state, unitId, { at: marker.at, kind: 'routed' }, emit);
   emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
   emit({ type: 'unitRouted', unit: unitId, marker: marker.id, at: marker.at });
   announceUnitDeparture(rules, state, unit, emit);
@@ -52,7 +52,7 @@ export function surrenderUnit(
   const unit = requireUnit(state, unitId);
   const meta: BattlefieldMarker['meta'] = to === undefined ? {} : { surrenderedTo: to };
   const marker = withdrawalMarker(rules.content, state, unit, 'surrendered', meta);
-  withdrawTransportPassengers(state, unitId, marker.at, 'surrendered', emit, meta);
+  withdrawTransportPassengers(state, unitId, { at: marker.at, kind: 'surrendered', meta }, emit);
   emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
   emit({ type: 'unitSurrendered', unit: unitId, marker: marker.id, at: marker.at, to });
   announceUnitDeparture(rules, state, unit, emit);

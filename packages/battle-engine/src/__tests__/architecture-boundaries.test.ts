@@ -1370,10 +1370,18 @@ describe('one call shape', () => {
 
         const problems: string[] = [];
         if (lastDependency > firstSubject) problems.push(`${names[lastDependency]} follows ${names[firstSubject]}`);
-        // A trailing optional (a source id, a metadata bag) may follow `emit`;
-        // another dependency may not.
+        // Nothing may follow `emit`. This used to allow "a trailing optional (a
+        // source id, a metadata bag)", and by the time anyone looked the
+        // allowance was carrying four functions, two of them a *required*
+        // `scope` — so the exception had stopped describing what it permitted.
+        //
+        // The axiom is unconditional and the fix is small: a scope is a subject
+        // and goes before the channel, and where the trailer really was part of
+        // the description it became one named subject. `addStatus(content, unit,
+        // { id, remaining, sourceUnitId }, emit)` also stopped putting two bare
+        // numbers next to each other at the call site.
         const afterEmit = names.slice(names.indexOf('emit') + 1);
-        if (afterEmit.some((name) => dependencies.includes(name))) problems.push('dependency after emit');
+        if (afterEmit.length > 0) problems.push(`${afterEmit.join(', ')} follows emit`);
         if (problems.length > 0) offenders.push(`${relative(packagesRoot, file)}#${match[1]}: ${problems.join('; ')}`);
       }
     }

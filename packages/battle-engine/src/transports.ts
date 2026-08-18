@@ -200,14 +200,20 @@ export function emitTransportLossEvents(
 }
 
 /** Removes passengers together with a non-fatal carrier withdrawal. */
+/** How a carrier left the field, and anything the departure wants recorded. */
+export interface TransportWithdrawal {
+  readonly at: Coord;
+  readonly kind: 'routed' | 'surrendered' | 'withdrawn';
+  readonly meta?: Record<string, number | string | boolean>;
+}
+
 export function withdrawTransportPassengers(
   state: GameState,
   carrierId: number,
-  at: Coord,
-  kind: 'routed' | 'surrendered' | 'withdrawn',
+  withdrawal: TransportWithdrawal,
   emit: (event: GameEvent) => void,
-  meta: Record<string, number | string | boolean> = {},
 ): number[] {
+  const { at, kind, meta = {} } = withdrawal;
   const entries = state.embarkedUnits.filter((entry) => entry.carrier === carrierId);
   const ids: number[] = [];
   for (const entry of entries) {
