@@ -395,7 +395,7 @@ export class Hud {
           const active = unit.id === view.turnOrder.activeUnit && index === 0;
           return `<span class="order-slot ${active ? 'is-active' : ''}" style="--team:${owner?.color ?? PAL.neutral}"
             title="${escapeHtml(definition.name)} · ${escapeHtml(owner?.name ?? '')}">
-            ${unitIcon(this.art, unit.type, owner?.color ?? PAL.neutral, active ? 26 : 20)}
+            ${unitIcon(this.art, definition, owner?.color ?? PAL.neutral, active ? 26 : 20)}
           </span>`;
         })
         .join('')}
@@ -654,7 +654,7 @@ export class Hud {
   private unitHeader(view: HudView, unit: Unit, definition: UnitDef): string {
     const owner = view.state.players.find((player) => player.id === unit.owner);
     return `<div class="unit-head">
-      ${portraitSvg(this.art, unit.type, owner?.color ?? PAL.neutral, 84)}
+      ${portraitSvg(this.art, definition, owner?.color ?? PAL.neutral, 84)}
       <div class="unit-meta">
         <div class="unit-name">${escapeHtml(definition.name)}
           <span class="team-tag" style="--team:${owner?.color}">${escapeHtml(owner?.name ?? '中立')}</span>
@@ -963,7 +963,7 @@ export class Hud {
     const maximumRange = Math.max(...weapons.map((weapon) => weapon.maxRange));
     return `<button class="recruit-card ${option.affordable ? '' : 'disabled'}"
       ${option.affordable ? `data-act="recruit"` : ''} data-arg="${option.unit}">
-      <div class="rc-art">${unitIcon(this.art, option.unit, teamColor, 46)}</div>
+      <div class="rc-art">${unitIcon(this.art, definition, teamColor, 46)}</div>
       <div class="rc-body">
         <div class="rc-name">${escapeHtml(definition.name)}<span class="rc-cost">${icon('coin')}${escapeHtml(formatAmounts(view.resources, option.costs))}</span></div>
         <div class="rc-stats">

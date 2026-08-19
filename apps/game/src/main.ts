@@ -111,7 +111,7 @@ function codexMarkup(): string {
               const maxRange = Math.max(...weapons.map((weapon) => weapon.maxRange));
               const damageTypes = [...new Set(weapons.map((weapon) => content.damageTypes.get(weapon.damageType).name))].join(' / ');
               return `<div class="recruit-card">
-              <div class="rc-art" style="width:64px;height:auto;background:none">${portraitSvg(art, d.id, team, 64)}</div>
+              <div class="rc-art" style="width:64px;height:auto;background:none">${portraitSvg(art, d, team, 64)}</div>
               <div class="rc-body">
                 <div class="rc-name">${escapeHtml(d.name)}<span class="rc-cost">${icon('coin')}${escapeHtml(recruitCost(d))}</span></div>
                 <div class="rc-stats">${icon('sword')}${power} · ${icon('heart')}${d.maxHp} · ${icon('boot')}${d.movement} · 射程 ${

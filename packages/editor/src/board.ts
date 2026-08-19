@@ -158,7 +158,7 @@ export class EditorBoard {
         const color = players.find((p) => p.id === u.owner)?.color ?? PAL.neutral;
         const bad = this.isBadPlacement(u);
         return `<g class="unit${u.facing === 'west' ? ' face-left' : ''}" transform="translate(${u.x * TILE},${u.y * TILE})">
-          ${unitSpriteMarkup(this.art, u.unit, color)}
+          ${unitSpriteMarkup(this.art, this.content.units.get(u.unit), color)}
           ${bad ? `<rect width="32" height="32" fill="#ff2d1f" opacity="0.35"/>` : ''}
         </g>`;
       })

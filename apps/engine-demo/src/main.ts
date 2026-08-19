@@ -145,7 +145,7 @@ function boardMarkup(): string {
       data-cell="${key}" title="(${key})">
       <div class="tile-art">${terrainSwatch(GENERIC_ART, content.terrains.get(terrain), owner?.color)}</div>
       ${unit ? `<div class="demo-unit" data-unit="${html(unit.key ?? String(unit.id))}">
-        ${unitIcon(GENERIC_ART, unit.type, unitOwner?.color ?? '#9aa3ad', 46)}
+        ${unitIcon(GENERIC_ART, content.units.get(unit.type), unitOwner?.color ?? '#9aa3ad', 46)}
         <span class="unit-label">${html(content.units.get(unit.type).name)}</span>
         <span class="hp-chip">${unit.hp}</span>
       </div>` : ''}

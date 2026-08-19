@@ -1,7 +1,6 @@
 import type { ArtDirection } from './direction';
-import type { UnitTypeId } from '@empire/battle-engine';
-import { PAL, shade } from './palette';
-import { spriteColors, type SpriteColors } from './units';
+import type { UnitDef, UnitTypeId } from '@empire/battle-engine';
+import { PAL, shade, spriteColors, type SpriteColors } from './palette';
 
 /**
  * Unit portraits (立绘) — 96x112 busts for the inspector panel. They share one
@@ -191,15 +190,88 @@ const portraits: Record<UnitTypeId, Portrait> = {
     <path d="M66 70q12 6 14 22l-10-2q-1-12-8-16z" fill="${c.dark}"/>`,
 };
 
+/**
+ * A bust from what the rules can see: the shared template, with the collar and
+ * headgear a whole armour class shares, a haft per weapon, and one mark for what
+ * the unit is for.
+ *
+ * Same families as the board sprite, so a derived unit's portrait and its figure
+ * are recognisably the same soldier.
+ */
+function portraitFromRules(unit: UnitDef, c: SpriteColors): string {
+  const hash = (name: string, salt: number) => {
+    let value = 0x811c9dc5 ^ salt;
+    for (let index = 0; index < name.length; index++) {
+      value = Math.imul(value ^ name.charCodeAt(index), 0x01000193) >>> 0;
+    }
+    return (value >>> 8) / 0x01000000;
+  };
+  const pick = <T>(choices: readonly T[], at: number): T =>
+    choices[Math.floor(at * choices.length) % choices.length];
+  const plate = pick([PAL.steel, PAL.steelDark, PAL.stoneLight, PAL.rock, PAL.cloth], hash(unit.armorClass, 3));
+  const bystander = unit.zoneOfControl === 0;
+  const cloth = bystander ? PAL.cloth : c.team;
+  const crest = hash(unit.armorClass, 2);
+
+  const headgear = crest < 0.2
+    ? `<path d="M29 56a19 19 0 0 1 38 0v4H29z" fill="${plate}"/>
+       <path d="M29 54h38v5H29z" fill="${shade(plate, -0.3)}"/>`
+    : crest < 0.4
+      ? `<path d="M27 58q0-26 21-26t21 24l-5 4q0-19-16-19t-16 19z" fill="${plate}"/>`
+      : crest < 0.6
+        ? `<path d="M28 54q0-20 20-20t20 20z" fill="${plate}"/>
+           <path d="M20 53h56l-3 6H23z" fill="${shade(plate, -0.3)}"/>`
+        : crest < 0.8
+          ? `<path d="M31 50h34v6H31z" fill="${shade(plate, -0.25)}"/>
+             <path d="M44 34h8l3 14H41z" fill="${plate}"/>`
+          : `<ellipse cx="48" cy="46" rx="20" ry="19" fill="none" stroke="${plate}" stroke-width="4"/>`;
+
+  // A haft over each shoulder, up to two, in the same idiom the drawn set uses.
+  const hafts = (unit.weapons.length > 0
+    ? `<path d="M74 112 66 58l6-2 10 56z" fill="${plate}"/>
+       <path d="M74 112 70 86l4-1 8 27z" fill="${shade(plate, -0.3)}"/>`
+    : '')
+    + (unit.weapons.length > 1 ? `<path d="M18 112 26 76l5 2-7 34z" fill="${shade(plate, -0.15)}"/>` : '');
+
+  const mark = unit.abilities.includes('heal')
+    ? `<path d="M43 92h10v4H43zM46 89h4v10h-4z" fill="${PAL.plaster}"/>`
+    : unit.abilities.includes('capture')
+      ? `<path d="M56 88h14l-4 5 4 5H56z" fill="${c.light}" stroke="${PAL.ink}" stroke-width="1"/>`
+      : (unit.transport?.capacity ?? 0) > 0
+        ? `<path d="M30 90q18 10 36 0" stroke="${PAL.woodDark}" stroke-width="5" fill="none"/>`
+        : unit.vision > 1
+          ? `<circle cx="66" cy="52" r="5" fill="none" stroke="${PAL.gold}" stroke-width="2"/>`
+          : '';
+
+  // The name decides one accent, because two types can be alike in every rule
+  // this reads and still need telling apart in the inspector.
+  const trim = pick([PAL.gold, PAL.stoneLight, PAL.leaf, PAL.roof, PAL.waterLight, PAL.plaster], hash(unit.id, 5));
+  return `${shoulders(c, cloth)}
+    ${collar(shade(plate, -0.15))}
+    <rect x="41" y="${Math.round(88 + hash(unit.id, 6) * 12)}" width="14" height="4" rx="1.5" fill="${trim}"/>
+    ${face(48, 54, 17, { brow: shade(PAL.skinDark, -0.3) })}
+    ${headgear}
+    ${hafts}
+    ${mark}`;
+}
+
 /** Gradient/clip ids must be unique per instance: two teams can be on screen. */
 let uid = 0;
 
-export function portraitMarkup(art: ArtDirection, type: UnitTypeId, team: string): string {
-  const provided = art.resolve((provider) => provider.portraitMarkup?.(type, team));
+/**
+ * The bust for a unit, drawn by the best answer available for it.
+ *
+ * `portraits[type] ?? portraits.soldier` was the same lie as the board sprite one
+ * layer up: every type nobody drew wore the same face in the inspector. The
+ * fallback is built from the shared template and what the rules can see.
+ */
+export function portraitMarkup(art: ArtDirection, unit: UnitDef, team: string): string {
+  const provided = art.resolve((provider) => provider.portraitMarkup?.(unit.id, team));
   if (provided) return provided;
   const c = spriteColors(team);
-  const face = (portraits[type] ?? portraits.soldier)(c);
-  const key = `${type}-${++uid}`;
+  const drawn = portraits[unit.id];
+  const face = drawn ? drawn(c) : portraitFromRules(unit, c);
+  const key = `${unit.id}-${++uid}`;
   return `
     <defs>
       <linearGradient id="pg-${key}" x1="0" y1="0" x2="0" y2="1">
@@ -216,11 +288,11 @@ export function portraitMarkup(art: ArtDirection, type: UnitTypeId, team: string
     <rect x="0.75" y="0.75" width="${FRAME_W - 1.5}" height="${FRAME_H - 1.5}" rx="8" fill="none" stroke="${shade(team, -0.4)}" stroke-width="1.5"/>`;
 }
 
-export function portraitSvg(art: ArtDirection, type: UnitTypeId, team: string, width = 96): string {
+export function portraitSvg(art: ArtDirection, unit: UnitDef, team: string, width = 96): string {
   const height = Math.round((width / FRAME_W) * FRAME_H);
   return `<svg viewBox="0 0 ${FRAME_W} ${FRAME_H}" width="${width}" height="${height}" class="portrait">${portraitMarkup(
     art,
-    type,
+    unit,
     team,
   )}</svg>`;
 }

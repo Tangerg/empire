@@ -69,7 +69,7 @@ describe('svg art', () => {
   it('emits parseable markup for every unit sprite and portrait', () => {
     const parser = new window.DOMParser();
     for (const def of TEST_CATALOG.units.all()) {
-      for (const svg of [unitIcon(ART, def.id, '#3f7fd8'), portraitSvg(ART, def.id, '#d8483f')]) {
+      for (const svg of [unitIcon(ART, def, '#3f7fd8'), portraitSvg(ART, def, '#d8483f')]) {
         const doc = parser.parseFromString(svg, 'image/svg+xml');
         expect(doc.querySelector('parsererror'), `${def.id}: ${svg.slice(0, 80)}`).toBeNull();
         expect(doc.documentElement.childElementCount).toBeGreaterThan(0);

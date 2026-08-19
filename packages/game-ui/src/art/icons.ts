@@ -20,8 +20,20 @@ const paths: Record<string, string> = {
   trash: 'M3 4.5h10M6 4.5V3h4v1.5M4.5 4.5 5 13.5h6l.5-9M7 7v4M9 7v4',
 };
 
+/**
+ * A glyph nobody drew, so a name nobody drew is visible rather than plausible.
+ *
+ * This used to fall back to `paths.crosshair`, which meant a misspelled name got
+ * a real icon and looked deliberate — the same "answer one thing with another
+ * thing's picture" that drew every unfamiliar terrain as grass. These names are
+ * the interface's own vocabulary, not content, so an unknown one is a typo and
+ * should look like one. Callers that mean "no particular icon" already say
+ * `icon('crosshair')` themselves.
+ */
+const MISSING = 'M3 3h10v10H3zM3 3l10 10M13 3 3 13';
+
 export function icon(name: keyof typeof paths | string, size = 16): string {
-  const d = paths[name] ?? paths.crosshair;
+  const d = paths[name] ?? MISSING;
   return `<svg class="icon" viewBox="0 0 16 16" width="${size}" height="${size}" fill="none"
     stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
     aria-hidden="true"><path d="${d}"/></svg>`;

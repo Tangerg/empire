@@ -11,7 +11,7 @@ const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 
 describe('candidate-01 runtime art bindings', () => {
   it('uses the authored four-frame sheet for covered game units', () => {
-    const soldier = unitSpriteMarkup(art, 'c01.swordsman', '#3f7fd8');
+    const soldier = unitSpriteMarkup(art, TEST_CATALOG.units.get('c01.swordsman'), '#3f7fd8');
 
     expect(soldier).toContain('data-runtime-raster="unit"');
     expect(soldier).toContain('unit-swordsman');
@@ -22,7 +22,7 @@ describe('candidate-01 runtime art bindings', () => {
   });
 
   it('keeps the programmatic fallback for uncovered units', () => {
-    const rogue = unitSpriteMarkup(art, 'rogue', '#3f7fd8');
+    const rogue = unitSpriteMarkup(art, TEST_CATALOG.units.get('rogue'), '#3f7fd8');
 
     expect(rogue).toContain('sprite-pixel');
     expect(rogue).not.toContain('data-runtime-raster="unit"');

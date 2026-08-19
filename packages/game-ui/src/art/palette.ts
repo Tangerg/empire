@@ -60,6 +60,19 @@ export const GROUND_TONES = {
   liquid: ['#447f96', '#3a6f8b', '#4f8aa0', '#356b7a', '#568fa2'],
 } as const;
 
+/** The three tones a side's colour gives a figure. */
+export interface SpriteColors {
+  team: string;
+  dark: string;
+  light: string;
+}
+
+export const spriteColors = (team: string): SpriteColors => ({
+  team,
+  dark: shade(team, -0.35),
+  light: shade(team, 0.28),
+});
+
 export function shade(hex: string, amount: number): string {
   const n = parseInt(hex.slice(1), 16);
   const r = (n >> 16) & 255;

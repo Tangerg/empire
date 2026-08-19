@@ -1,23 +1,17 @@
 import type { ArtDirection } from './direction';
-import type { UnitTypeId } from '@empire/battle-engine';
-import { PAL, shade } from './palette';
+import type { UnitDef, UnitTypeId } from '@empire/battle-engine';
+import { PAL, shade, spriteColors, type SpriteColors } from './palette';
+import { unitFromRules } from './unit-from-rules';
 
 /**
  * Unit sprites, hand-drawn in a 32x32 box with the ground line at y=29 and the
  * figure facing right. Faction colour drives cloth/caparison/wings so both
  * armies read at a glance; class identity comes from silhouette and weapon.
+ *
+ * This is one game's roster. A type nobody drew is drawn from what the rules can
+ * see about it — see `unit-from-rules.ts`.
  */
-export interface SpriteColors {
-  team: string;
-  dark: string;
-  light: string;
-}
-
-export const spriteColors = (team: string): SpriteColors => ({
-  team,
-  dark: shade(team, -0.35),
-  light: shade(team, 0.28),
-});
+export { spriteColors, type SpriteColors } from './palette';
 
 type Sprite = (c: SpriteColors) => string;
 
@@ -182,17 +176,28 @@ const sprites: Record<UnitTypeId, Sprite> = {
     <path d="M8.6 18.4h6v2.2h-6z" fill="${c.dark}"/>`,
 };
 
-export function unitSpriteMarkup(art: ArtDirection, type: UnitTypeId, team: string): string {
-  const runtime = art.resolve((provider) => provider.unitMarkup?.(type, team));
+/**
+ * One unit, drawn by the best answer available for it.
+ *
+ * The definition rather than the id, because the last of the three answers needs
+ * it. `sprites[type] ?? sprites.soldier` used to be that line, and it drew every
+ * type nobody hand-drew as the same swordsman — including the campaign's supply
+ * cart, which carries units in it.
+ */
+export function unitSpriteMarkup(art: ArtDirection, unit: UnitDef, team: string): string {
+  const runtime = art.resolve((provider) => provider.unitMarkup?.(unit.id, team));
   if (runtime) return runtime;
-  const sprite = sprites[type] ?? sprites.soldier;
-  return `<g class="sprite-pixel" shape-rendering="crispEdges">${sprite(spriteColors(team))}</g>`;
+  const colors = spriteColors(team);
+  const sprite = sprites[unit.id];
+  return sprite
+    ? `<g class="sprite-pixel" shape-rendering="crispEdges">${sprite(colors)}</g>`
+    : unitFromRules(unit, colors);
 }
 
 /** Standalone svg string, for palettes, menus and the recruit dialog. */
-export function unitIcon(art: ArtDirection, type: UnitTypeId, team: string, size = 32): string {
-  const runtime = art.resolve((provider) => provider.unitIcon?.(type, team, size));
+export function unitIcon(art: ArtDirection, unit: UnitDef, team: string, size = 32): string {
+  const runtime = art.resolve((provider) => provider.unitIcon?.(unit.id, team, size));
   if (runtime) return runtime;
-  return `<svg viewBox="0 0 32 32" width="${size}" height="${size}" shape-rendering="crispEdges">${unitSpriteMarkup(art, type, team)}</svg>`;
+  return `<svg viewBox="0 0 32 32" width="${size}" height="${size}" shape-rendering="crispEdges">${unitSpriteMarkup(art, unit, team)}</svg>`;
 }
 

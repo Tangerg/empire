@@ -434,7 +434,7 @@ export class BoardView {
     if (el) return el;
     const color = this.state.players.find((p) => p.id === unit.owner)?.color ?? PAL.neutral;
     el = svg('g', { class: 'unit', 'data-unit': unit.id });
-    el.append(fromMarkup(unitSpriteMarkup(this.art, unit.type, color)));
+    el.append(fromMarkup(unitSpriteMarkup(this.art, this.content.units.get(unit.type), color)));
     const badges = svg('g', { class: 'badges' });
     el.append(badges);
     this.layers.units.append(el);

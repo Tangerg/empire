@@ -1343,6 +1343,57 @@ describe('a rendered control is answered', () => {
   });
 });
 
+describe('a picture is not optional', () => {
+  /**
+   * No generic art table may answer an id it does not hold with another entry of
+   * itself.
+   *
+   * The same defect stood in three places for as long as the art layer existed:
+   * `painters[id] ?? painters.plain` drew every unfamiliar terrain as grass,
+   * `sprites[type] ?? sprites.soldier` drew every unfamiliar unit as a swordsman,
+   * and `portraits[type] ?? portraits.soldier` did it again in the inspector.
+   * Eleven of twenty-two shipped terrains and thirty-one of forty shipped unit
+   * types hit those lines, and the map editor — which draws with the generic art —
+   * showed the whole campaign that way.
+   *
+   * The answer for an id nobody drew is a drawing derived from what the rules can
+   * see, never another id's picture. This forbids the shape that keeps coming
+   * back: an index into a table, defaulted to a fixed key of the same table.
+   */
+  it('never answers an unknown id with another entry of the same table', () => {
+    const artRoot = join(packagesRoot, 'game-ui', 'src', 'art');
+    const offenders = runtimeTypeScriptFiles(artRoot).flatMap((file) => {
+      const code = stripComments(readFileSync(file, 'utf8'));
+      // `table[key] ?? table.fixed` and `table[key] ?? table['fixed']`.
+      const borrowed = new RegExp(
+        String.raw`(\w+)\[[^\]]+\]\s*\?\?\s*\1(?:\.\w+|\[['"\`]\w+['"\`]\])`,
+        'g',
+      );
+      return [...code.matchAll(borrowed)]
+        .map(([match]) => `${relative(packagesRoot, file)}: ${match.trim()}`);
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
+  /**
+   * And declining to draw is not the same as drawing nothing.
+   *
+   * `BattlePresentation.structure` and `.marker` return `null` for "no opinion",
+   * the convention every `ArtProvider` method already uses — and the board read it
+   * as "draw nothing". Six structure types and five marker kinds shipped here were
+   * invisible on any board with no painted scene, including the 500 HP structure
+   * that is `c01-15`'s victory condition.
+   */
+  it('draws a field object the presentation declined', () => {
+    const board = readFileSync(join(packagesRoot, 'game-ui', 'src', 'ui', 'board.ts'), 'utf8');
+    for (const declined of ['structure', 'marker']) {
+      const asked = new RegExp(String.raw`presentation\.${declined}\([^)]*\)\s*\n?\s*\?\?\s*\w+FromRules\(`);
+      expect(asked.test(stripComments(board)), declined).toBe(true);
+    }
+  });
+});
+
 describe('the battle screen is its own screen', () => {
   /** Every stylesheet the workspace ships, by package-relative path. */
   function stylesheets(): string[] {

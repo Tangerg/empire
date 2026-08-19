@@ -175,7 +175,7 @@ export class EditorPanels {
             .map(
               (definition) => `<button class="unit-chip ${brush.unitType === definition.id ? 'active' : ''}"
                 data-act="unit" data-arg="${definition.id}" title="${escapeHtml(definition.name)} · ${escapeHtml(unitRecruitCost(content, definition.id))}">
-                ${unitIcon(view.art, definition.id, ownerColor, 30)}
+                ${unitIcon(view.art, definition, ownerColor, 30)}
                 <span>${escapeHtml(definition.name)}</span>
               </button>`,
             )
