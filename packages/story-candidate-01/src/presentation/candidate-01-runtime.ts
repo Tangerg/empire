@@ -173,12 +173,13 @@ export function candidate01WeaponFxTopic(weapon: WeaponId): string | null {
 }
 
 /** A self-describing effect strip consumed by the shared frame animation system. */
-export function candidate01FxMarkup(topic: string, cx = 0, cy = 0): string {
+/** Drawn about its own origin; whoever plays it places it. */
+export function candidate01FxMarkup(topic: string): string {
   const record = candidate01Asset(topic);
   const frameWidth = record.frameWidth ?? 32;
   const frameHeight = record.frameHeight ?? 32;
   const frames = record.frames ?? 1;
-  return `<svg x="${cx - frameWidth / 2}" y="${cy - frameHeight / 2}" width="${frameWidth}" height="${frameHeight}" viewBox="0 0 ${frameWidth} ${frameHeight}" overflow="hidden" class="candidate-fx" aria-hidden="true">
+  return `<svg x="${-frameWidth / 2}" y="${-frameHeight / 2}" width="${frameWidth}" height="${frameHeight}" viewBox="0 0 ${frameWidth} ${frameHeight}" overflow="hidden" class="candidate-fx" aria-hidden="true">
     ${runtimeFrameStripMarkup({
       href: record.url,
       frameWidth,

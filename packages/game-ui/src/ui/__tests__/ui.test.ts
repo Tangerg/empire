@@ -388,6 +388,44 @@ describe('game controller', () => {
     board.dispose();
   });
 
+  /**
+   * An effect is a drawing at a place, not a drawing with a place baked into it.
+   *
+   * These used to write the cell's scene coordinates into their own markup — the one
+   * thing left on the board that a renderer could not treat as a picture positioned
+   * somewhere, because it would have had to rasterise a field-sized image to hold a
+   * damage number. Moving the position out is also the change most able to put the
+   * number in the wrong place, so this pins where it lands.
+   */
+  it('places an effect at the cell rather than drawing it there', async () => {
+    const level = BUILTIN_LEVELS[0];
+    const board = new BoardView(createState(TEST_CATALOG, level), {
+      onTileClick: () => {},
+      onTileEnter: () => {},
+      onLeave: () => {},
+      onSecondary: () => {},
+      onScale: () => {},
+    }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), ART);
+
+    const played = board.animateHit({ x: 3, y: 2 }, 12, false);
+    const fx = board.el.querySelector('.fx')!;
+    // The middle of cell (3,2) on a 32px lattice.
+    expect(fx.getAttribute('transform')).toBe('translate(112.00,80.00)');
+    // And nothing inside it names an absolute position any more.
+    expect(fx.querySelector('[data-part="number"] text')!.getAttribute('x')).toBeNull();
+    expect(fx.querySelector('[data-part="burst"] circle')!.getAttribute('cx')).toBeNull();
+    await played;
+
+    const announced = board.announce('第 2 回合', '#3f7fd8');
+    const banner = board.el.querySelector('.fx')!;
+    // Half the field, less half the band's height — stated as the relationship
+    // rather than as a number, so it reads as the rule it is.
+    const bandTop = (level.height * TILE) / 2 - 17;
+    expect(banner.getAttribute('transform')).toBe(`translate(0.00,${bandTop.toFixed(2)})`);
+    await announced;
+    board.dispose();
+  });
+
   it('renders every built-in level without throwing', () => {
     for (const level of BUILTIN_LEVELS) {
       const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });

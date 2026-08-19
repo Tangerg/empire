@@ -44,6 +44,6 @@ describe('battle presentation', () => {
     expect(layers).toMatchObject({ ground: '', overUnits: '' });
     expect(layers.underUnits).toContain('field-light');
     expect(layers.underUnits).toContain(`width="${map.width * 32}"`);
-    expect(presentation.effect('unknown', 16, 16)).toBe('');
+    expect(presentation.effect('unknown')).toBe('');
   });
 });

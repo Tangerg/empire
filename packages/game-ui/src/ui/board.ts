@@ -527,14 +527,18 @@ export class BoardView {
   }
 
   async animateHit(at: Coord, damage: number, killed: boolean, weapon?: WeaponId): Promise<void> {
-    const { x: cx, y: cy } = this.centre(at);
     const fx = weapon ? this.presentation.weaponFx(weapon) : null;
-    // Each moving part declares which one it is, so nothing is found by tag name.
+    // Drawn about its own origin and then placed, like everything else on the board.
+    // These used to bake the cell's scene coordinates into the markup, which is the
+    // one thing left that a renderer could not treat as a picture at a position: it
+    // would have had to rasterise a field-sized image to hold a damage number.
     const { drawing, animationIds } = this.surface.effect(
-      `${fx ? this.presentation.effect(fx, cx, cy) : ''}
-         <g data-part="burst"><circle cx="${cx}" cy="${cy}" r="12" fill="#ffffff" opacity="0.65"/></g>
-         <g data-part="number"><text x="${cx}" y="${cy - 8}" text-anchor="middle" class="fx-damage">-${damage}</text></g>`,
+      `${fx ? this.presentation.effect(fx) : ''}
+         <g data-part="burst"><circle r="12" fill="#ffffff" opacity="0.65"/></g>
+         <g data-part="number"><text y="-8" text-anchor="middle" class="fx-damage">-${damage}</text></g>`,
     );
+    const { x: cx, y: cy } = this.centre(at);
+    drawing.place(cx, cy);
     const burst = drawing.part('burst');
     const number = drawing.part('number');
     await tween(420, (t) => {
@@ -563,11 +567,12 @@ export class BoardView {
   }
 
   async animateHeal(at: Coord, amount: number): Promise<void> {
-    const { x: cx, y: cy } = this.centre(at);
     const { drawing, animationIds } = this.surface.effect(
-      `${this.presentation.healFx ? this.presentation.effect(this.presentation.healFx, cx, cy) : ''}
-         <g data-part="number"><text x="${cx}" y="${cy - 6}" text-anchor="middle" class="fx-heal">+${amount}</text></g>`,
+      `${this.presentation.healFx ? this.presentation.effect(this.presentation.healFx) : ''}
+         <g data-part="number"><text y="-6" text-anchor="middle" class="fx-heal">+${amount}</text></g>`,
     );
+    const { x: cx, y: cy } = this.centre(at);
+    drawing.place(cx, cy);
     const number = drawing.part('number');
     await tween(500, (t) => {
       number?.nudge(0, -16 * t);
@@ -600,7 +605,6 @@ export class BoardView {
   async announce(text: string, color: string): Promise<void> {
     const w = this.viewport.fieldWidth;
     const h = this.viewport.fieldHeight;
-    const top = h / 2 - 17;
     const band = `turn-band-${this.banners++}`;
     const { drawing } = this.surface.effect(
       `<defs>
@@ -612,12 +616,13 @@ export class BoardView {
            </linearGradient>
          </defs>
          <g class="fx-turn-band" data-part="band">
-           <rect x="0" y="${top}" width="${w}" height="34" fill="url(#${band})"/>
-           <rect x="0" y="${top}" width="${w}" height="1" fill="#fff" opacity="0.4"/>
-           <rect x="0" y="${top + 33}" width="${w}" height="1" fill="#000" opacity="0.32"/>
-           <text x="${w / 2}" y="${h / 2 + 7}" text-anchor="middle" class="fx-banner">${escapeHtml(text)}</text>
+           <rect x="0" y="0" width="${w}" height="34" fill="url(#${band})"/>
+           <rect x="0" y="0" width="${w}" height="1" fill="#fff" opacity="0.4"/>
+           <rect x="0" y="33" width="${w}" height="1" fill="#000" opacity="0.32"/>
+           <text x="${w / 2}" y="24" text-anchor="middle" class="fx-banner">${escapeHtml(text)}</text>
          </g>`,
     );
+    drawing.place(0, h / 2 - 17);
     const sweep = drawing.part('band');
     await tween(220, (t) => {
       const eased = easeInOut(t);

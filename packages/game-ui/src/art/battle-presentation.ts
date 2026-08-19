@@ -46,7 +46,14 @@ export interface BattlePresentation {
   /** A mark left on the ground, or `null` for no opinion. */
   marker(marker: BattlefieldMarker, ownerColor?: string): string | null;
   weaponFx(weapon: WeaponId): string | null;
-  effect(topic: string, cx: number, cy: number): string;
+  /**
+   * A named effect, drawn about its own origin.
+   *
+   * It used to take the scene coordinates to draw at, so an effect's position was
+   * baked into its picture — the one thing left on the board that a renderer could
+   * not treat as a drawing at a place. Whoever plays it places it.
+   */
+  effect(topic: string): string;
   healFx?: string;
 }
 
