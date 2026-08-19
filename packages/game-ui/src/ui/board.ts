@@ -10,6 +10,7 @@ import {
 import { PAL } from '../art/palette';
 import { FrameAnimationSystem, registerSvgStrip } from '../art/frame-animation';
 import { decorationsFor, type BattlePresentation } from '../art/battle-presentation';
+import { markerFromRules, structureFromRules } from '../art/field-objects-from-rules';
 import type { ArtDirection } from '../art/direction';
 import type { BoardDecorations, BoardLayout } from '../art/board-decorations';
 import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../art/battlefield-layer';
@@ -348,20 +349,28 @@ export class BoardView {
     if (signature === this.objectSignature) return;
     this.objectSignature = signature;
 
+    // The presentation answers first and the generic look is the floor beneath
+    // it, so declining to draw a structure is no longer the same as hiding one.
+    // Every one of the six structure types and five marker kinds this repository
+    // ships was invisible on a board with no painted scene — and one of them is a
+    // shipped chapter's victory condition.
     clear(this.layers.structures);
-    const structures = s.structures.flatMap((state) => {
+    const structures = s.structures.map((state) => {
       const ownerColor = s.players.find((player) => player.id === state.owner)?.color;
-      const markup = this.presentation.structure(state, this.content.structures.get(state.type), ownerColor);
-      return markup
-        ? [`<g transform="${this.place(state)}" data-structure="${state.id}">${markup}</g>`]
-        : [];
+      const definition = this.content.structures.get(state.type);
+      const markup = this.presentation.structure(state, definition, ownerColor)
+        ?? structureFromRules(state, definition, ownerColor);
+      return `<g transform="${this.place(state)}" data-structure="${state.id}">${markup}</g>`;
     });
     if (structures.length) this.layers.structures.append(fromMarkup(structures.join('')));
 
     clear(this.layers.markers);
-    const markers = s.markers.map((marker) =>
-      `<g transform="${this.place(marker.at)}" data-marker="${marker.id}">${this.presentation.marker(marker)}</g>`,
-    );
+    const markers = s.markers.map((marker) => {
+      const ownerColor = s.players.find((player) => player.id === marker.owner)?.color;
+      const markup = this.presentation.marker(marker, ownerColor)
+        ?? markerFromRules(marker, ownerColor);
+      return `<g transform="${this.place(marker.at)}" data-marker="${marker.id}">${markup}</g>`;
+    });
     if (markers.length) this.layers.markers.append(fromMarkup(markers.join('')));
   }
 

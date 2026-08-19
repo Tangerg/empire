@@ -852,7 +852,37 @@ export class Hud {
           : ''}</h3>
       <div class="fact-row">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join('')}</div>
       <div class="fact-row is-quiet"><span>${escapeHtml(costs)}</span></div>
+      ${this.tileStructure(view, view.tile)}
     </section>`;
+  }
+
+  /**
+   * The structure standing on this cell, if one does.
+   *
+   * A structure has hit points, an owner, cover and a reach, the rules let a
+   * player shoot it, and a shipped chapter is won by destroying one — and the
+   * interface said nothing about it anywhere. This is the only readout it has.
+   */
+  private tileStructure(view: HudView, at: Coord): string {
+    const state = view.state.structures.find((entry) => entry.x === at.x && entry.y === at.y);
+    if (!state) return '';
+    const definition = view.rules.content.structures.get(state.type);
+    const holder = view.state.players.find((player) => player.id === state.owner);
+    const facts = [
+      definition.blocksMovement ? '阻挡通行' : '',
+      definition.blocksVision ? '阻挡视线' : '',
+      definition.cover === 'full' ? '全掩体' : definition.cover === 'half' ? '半掩体' : '',
+      definition.repairable ? '可修复' : '',
+      definition.targetable ? '' : '不可被攻击',
+      state.disabled ? '已失效' : '',
+    ].filter(Boolean);
+    return `<div class="tile-structure">
+      <span class="ts-name">${escapeHtml(definition.name)}</span>
+      ${holder ? `<em style="color:${holder.color}">${escapeHtml(holder.name)}</em>` : ''}
+      <b>${state.hp} / ${definition.maxHp}</b>
+      ${hpBar(definition.maxHp > 0 ? state.hp / definition.maxHp : 1, 60)}
+      ${facts.length > 0 ? `<div class="fact-row">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join('')}</div>` : ''}
+    </div>`;
   }
 
   /* ------------------------------------------------------------- objectives */

@@ -6,13 +6,15 @@ import { unitIcon } from '../../art/units';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
 import { GameController } from '../game';
 import { BoardView, emptyOverlay } from '../board';
+import { ArtDirection } from '../../art/direction';
+import { GENERIC_PRESENTATION } from '../../art/battle-presentation';
 import {
   createState,
   DomainInvariantError,
   normaliseLevel,
   createBattleEngine,
 } from '@empire/battle-engine';
-import { candidate01Level, CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
+import { candidate01Level, CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS } from '@empire/story-candidate-01';
 import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
 
 /** Composed per suite, exactly like an application composition root. */
@@ -302,6 +304,85 @@ describe('game controller', () => {
     expect(modal.textContent).toContain('征募单位');
     expect(modal.querySelectorAll('.recruit-card').length).toBeGreaterThan(4);
     c.dispose();
+  });
+
+  /**
+   * Every structure a shipped level places is drawn, and can be read.
+   *
+   * `c01-15` places a 500 HP `c01.mother-root` and makes destroying it the
+   * victory condition. The campaign's art has no topic for that type, the board
+   * took `null` for "draw nothing", and the player was asked to break something
+   * invisible — with a *terrain* of the same name drawn underneath it, so the
+   * cell looked like ordinary silverwood ground.
+   */
+  it('draws and reports every structure a shipped level places', () => {
+    const withStructures = CANDIDATE_01_LEVELS.filter((level) => (level.structures ?? []).length > 0);
+    expect(withStructures.length).toBeGreaterThan(2);
+
+    for (const level of withStructures) {
+      const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
+      host.append(c.root);
+      const drawn = [...c.root.querySelectorAll('[data-structure]')];
+      expect(drawn, level.id).toHaveLength(level.structures!.length);
+      for (const group of drawn) expect(group.innerHTML.length, level.id).toBeGreaterThan(40);
+      c.dispose();
+      host.innerHTML = '';
+    }
+  });
+
+  it('reports the structure under the cursor, with its condition', () => {
+    const level = candidate01Level('c01-15');
+    const structure = level.structures![0];
+    const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board, level.width * TILE);
+
+    hover(board, structure);
+    const ledger = c.root.querySelector('.hud-ledger')!.textContent ?? '';
+    expect(ledger).toContain(TEST_CATALOG.structures.get(structure.type).name);
+    expect(ledger).toContain(`${structure.hp}`);
+    c.dispose();
+  });
+
+  /**
+   * A presentation cannot hide a field object by declining to draw one.
+   *
+   * `null` means "no opinion, ask the floor" — the convention every `ArtProvider`
+   * method already uses — and the board used to read it as "draw nothing". Tested
+   * against art that declines *everything*, because the shipped campaign happens
+   * to answer for every marker kind, so its levels cannot exercise the floor and
+   * a test written against them passes with the floor taken away.
+   */
+  it('draws a structure and a mark even when the art declines both', () => {
+    const level = BUILTIN_LEVELS[0];
+    const state = createState(TEST_CATALOG, level);
+    state.markers.push({ id: 1, kind: 'routed', at: { x: 2, y: 2 }, owner: 1, meta: {} });
+    state.structures.push({
+      id: 'probe', type: TEST_CATALOG.structures.ids()[0], owner: 1,
+      x: 3, y: 3, hp: 40, disabled: false, statuses: [],
+    });
+
+    const silent = new ArtDirection([], [{
+      ...GENERIC_PRESENTATION,
+      id: 'declines-everything',
+      structure: () => null,
+      marker: () => null,
+    }]);
+    const board = new BoardView(state, {
+      onTileClick: () => {},
+      onTileEnter: () => {},
+      onLeave: () => {},
+      onSecondary: () => {},
+    }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), silent);
+    board.render(emptyOverlay());
+
+    for (const attribute of ['data-marker', 'data-structure']) {
+      const drawn = board.el.querySelectorAll(`[${attribute}]`);
+      expect(drawn, attribute).toHaveLength(1);
+      expect(drawn[0].innerHTML.length, attribute).toBeGreaterThan(40);
+    }
+    board.dispose();
   });
 
   it('renders every built-in level without throwing', () => {

@@ -6,6 +6,7 @@ import type {
   WeaponId,
 } from '@empire/battle-engine';
 import { SquareBoardDecorations, type BoardDecorations } from './board-decorations';
+import { markerFromRules, structureFromRules } from './field-objects-from-rules';
 import type {
   SceneFrameMarkup,
   SceneLayerMarkup,
@@ -33,8 +34,17 @@ export interface BattlePresentation {
    * into the port — a hex board of the same columns is half a cell wider.
    */
   sceneLayers(levelId: string, map: GameMap, viewport: SceneViewport): SceneLayerMarkup;
+  /**
+   * How this art draws a destructible structure, or `null` for no opinion.
+   *
+   * `null` means "ask the floor", not "draw nothing" — the same convention every
+   * `ArtProvider` method already uses. A thing the rules track may not be
+   * invisible: `c01-15` asks the player to destroy a 500 HP structure whose type
+   * the campaign's art has no topic for, and it was drawn as nothing at all.
+   */
   structure(state: StructureState, def: StructureDef, ownerColor?: string): string | null;
-  marker(marker: BattlefieldMarker): string;
+  /** A mark left on the ground, or `null` for no opinion. */
+  marker(marker: BattlefieldMarker, ownerColor?: string): string | null;
   weaponFx(weapon: WeaponId): string | null;
   effect(topic: string, cx: number, cy: number): string;
   healFx?: string;
@@ -89,8 +99,10 @@ export const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
     underUnits: genericFieldLight(viewport),
     overUnits: '',
   }),
-  structure: () => null,
-  marker: () => '',
+  // The floor under every presentation, and therefore total: whatever a painted
+  // scene declines is still drawn, from what the rules can see about it.
+  structure: structureFromRules,
+  marker: markerFromRules,
   weaponFx: () => null,
   effect: () => '',
 });

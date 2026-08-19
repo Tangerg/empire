@@ -536,6 +536,37 @@
   background: none;
 }
 
+/* The structure standing here: the only readout it has anywhere. */
+.tile-structure {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 7px;
+  margin-top: 7px;
+  padding-top: 6px;
+  border-top: 1px solid rgb(255 226 176 / 12%);
+  font-size: 12px;
+}
+
+.tile-structure .ts-name {
+  font-weight: 600;
+}
+
+.tile-structure em {
+  font-style: normal;
+}
+
+.tile-structure b {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+.tile-structure .fact-row {
+  flex-basis: 100%;
+  color: var(--text-dim);
+  font-size: 11px;
+}
+
 /* -------------------------------------------------------------- dispatches */
 
 .dispatch {
