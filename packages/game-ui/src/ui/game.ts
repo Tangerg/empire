@@ -108,6 +108,8 @@ export class GameController {
   private aiRunning = false;
   private disposed = false;
   private resizeObserver: ResizeObserver | null = null;
+  private pendingZoom = 0;
+  private zoomFrame: number | null = null;
 
   private readonly art: ArtDirection;
 
@@ -150,9 +152,7 @@ export class GameController {
       onRecruit: (u) => void this.recruit(u),
       onExit: () => this.exit(),
       onContinue: () => this.continueAfterBattle(),
-      onZoom: (d) => {
-        this.board.setZoom(this.board.zoomLevel + d);
-      },
+      onZoom: (delta) => this.zoomBy(delta),
     });
 
     this.presenters = options.eventPresenters ?? DefaultBattleEventPresenters.clone();
@@ -187,7 +187,7 @@ export class GameController {
       (ev) => {
         if (!ev.ctrlKey && !ev.metaKey) return;
         ev.preventDefault();
-        this.board.setZoom(this.board.zoomLevel - Math.sign(ev.deltaY) * 0.1);
+        this.zoomBy(-Math.sign(ev.deltaY) * 0.1);
       },
       { passive: false },
     );
@@ -210,8 +210,31 @@ export class GameController {
   dispose(): void {
     this.disposed = true;
     this.resizeObserver?.disconnect();
+    if (this.zoomFrame !== null) cancelAnimationFrame(this.zoomFrame);
     this.board.dispose();
     document.removeEventListener('keydown', this.onKey);
+  }
+
+  /**
+   * Changes the scale at most once per frame.
+   *
+   * A trackpad sends wheel events far faster than the screen refreshes, and each
+   * one used to resize the board on the spot — so one flick of two fingers asked
+   * the browser to re-render a 4,657-node field a dozen times to show one result.
+   * Deltas accumulate and are applied on the next frame instead.
+   *
+   * The buttons go through here too, delayed by a frame nobody can perceive,
+   * because there is no reason for two ways to change the same number.
+   */
+  private zoomBy(delta: number): void {
+    this.pendingZoom += delta;
+    if (this.zoomFrame !== null) return;
+    this.zoomFrame = requestAnimationFrame(() => {
+      this.zoomFrame = null;
+      const step = this.pendingZoom;
+      this.pendingZoom = 0;
+      if (!this.disposed) this.board.setZoom(this.board.zoomLevel + step);
+    });
   }
 
   /* --------------------------------------------------------------- shortcuts */

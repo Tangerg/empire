@@ -613,10 +613,6 @@ kbd {
   filter: saturate(1.06) contrast(1.025) brightness(1.035);
 }
 
-.candidate-map .candidate-stand-node {
-  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 70%));
-}
-
 .candidate-map .candidate-action-spot,
 .candidate-map .candidate-selection-ring,
 .candidate-map .candidate-cursor-ring {

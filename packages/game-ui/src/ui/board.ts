@@ -81,6 +81,14 @@ async function tween(ms: number, step: (t: number) => void): Promise<void> {
 const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - 2 * (1 - t) ** 2);
 
 /**
+ * How long after the last scale change the board considers itself settled.
+ *
+ * Long enough to cover the gap between two wheel notches on a mouse, short enough
+ * that letting go feels like an immediate return of the shadows.
+ */
+const SETTLE_MS = 140;
+
+/**
  * The board. Owns the SVG tree and all animation; knows nothing about rules or
  * selection state beyond the overlay it is handed.
  */
@@ -99,6 +107,7 @@ export class BoardView {
   private hovered: string | null = null;
   private effectSerial = 0;
   private layoutCache: BoardLayout | null = null;
+  private settleTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor(
     private state: GameState,
@@ -265,10 +274,35 @@ export class BoardView {
     });
   }
 
+  /**
+   * Sets the scale, and says so while the scale is moving.
+   *
+   * `is-rescaling` is the point of this. One `c01-01` board is 5,575 SVG nodes, 993
+   * raster cells, hundreds of drop-shadow passes and a colour grade over the whole
+   * terrain and ground layers, and re-scaling recomputes every one of them at the
+   * new size. While the scale is still moving those are drawn once and thrown away,
+   * so the board stops drawing them until it settles.
+   *
+   * The early return is what keeps that honest. Holding the wheel against the clamp
+   * kept retriggering the settle timer, so the board stayed flattened for as long as
+   * the wheel turned and only came back when the player gave up — the flatten is
+   * supposed to last a gesture, not a grudge. (Rewriting the size to the value it
+   * already had costs nothing: browsers compare before invalidating. That was a
+   * claim this comment made until a sabotage run refused to confirm it.)
+   */
   setZoom(z: number): void {
-    this.zoom = Math.max(0.5, Math.min(2.2, z));
-    this.el.style.width = `${this.viewport.sceneWidth * this.zoom}px`;
-    this.el.style.height = `${this.viewport.sceneHeight * this.zoom}px`;
+    const zoom = Math.max(0.5, Math.min(2.2, z));
+    if (zoom === this.zoom) return;
+    this.zoom = zoom;
+    this.el.style.width = `${this.viewport.sceneWidth * zoom}px`;
+    this.el.style.height = `${this.viewport.sceneHeight * zoom}px`;
+
+    this.el.classList.add('is-rescaling');
+    if (this.settleTimer !== null) clearTimeout(this.settleTimer);
+    this.settleTimer = setTimeout(() => {
+      this.settleTimer = null;
+      this.el.classList.remove('is-rescaling');
+    }, SETTLE_MS);
   }
 
   /**
@@ -297,6 +331,7 @@ export class BoardView {
 
   dispose(): void {
     this.frameAnimations.dispose();
+    if (this.settleTimer !== null) clearTimeout(this.settleTimer);
   }
 
   /** Terrain only changes when ownership does, so it is cheap to diff by hash. */

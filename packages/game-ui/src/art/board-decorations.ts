@@ -158,9 +158,20 @@ export const SquareBoardDecorations: BoardDecorations = {
 export const GroundBoardDecorations: BoardDecorations = {
   id: 'ground',
   shapeRendering: 'geometricPrecision',
+  /**
+   * One stand node per cell, seated by a shape rather than by a filter.
+   *
+   * These carried `filter: drop-shadow(0 1px 1px …)` in the stylesheet, which on a
+   * shipped map is 459 separate blur passes for a 2.2px dot — recomputed every
+   * time the board is rescaled. The shadow it was imitating is one more circle,
+   * which costs nothing to raster and looks the same.
+   */
   gridLines: (layout, map) => [...everyCell(map)].map((cell) => {
     const centre = layout.center(cell);
-    return `<circle class="candidate-stand-node" cx="${centre.x}" cy="${centre.y}" r="2.2" fill="#fff4dc" opacity="0.32"/>`;
+    return `<g class="candidate-stand-node">
+      <circle cx="${centre.x}" cy="${(centre.y + 1).toFixed(2)}" r="2.2" fill="#000000" opacity="0.22"/>
+      <circle cx="${centre.x}" cy="${centre.y}" r="2.2" fill="#fff4dc" opacity="0.32"/>
+    </g>`;
   }).join(''),
   actionSpot: (layout, { x, y, fill, opacity, stroke }) => {
     const centre = layout.center({ x, y });
