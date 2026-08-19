@@ -73,6 +73,29 @@
   box-shadow: 0 24px 60px rgb(0 0 0 / 52%);
 }
 
+/*
+ * The lattice recedes when nobody is measuring with it.
+ *
+ * This rule existed, and was written `.candidate-map .layer-grid` — one
+ * campaign's art asking for it, so every other level kept a permanent ruled
+ * grid over its ground and read as a spreadsheet at rest. Whether the grid is
+ * showing is a question about what the player is doing, not about which pack
+ * drew the tiles.
+ */
+.battlefield .layer-grid {
+  opacity: 0.3;
+  transition: opacity 140ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.battlefield .board.is-tactical .layer-grid {
+  opacity: 0.72;
+}
+
+/* Painted scenes carry their own ground; theirs goes all the way out of sight. */
+.battlefield .board.candidate-map .layer-grid {
+  opacity: 0;
+}
+
 /* --------------------------------------------------------------------- hud */
 
 .battle-hud {

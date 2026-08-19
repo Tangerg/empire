@@ -22,6 +22,7 @@ import type {
   Unit,
 } from '@empire/battle-engine';
 import { GENERIC_ART, type ArtDirection } from '../art/direction';
+import { PAL } from '../art/palette';
 import { BoardView, emptyOverlay, type BoardOverlay } from './board';
 import {
   DefaultBattleEventPresenters,
@@ -197,6 +198,10 @@ export class GameController {
       ? '战前部署 · 调整站位后确认部署'
       : `第 1 回合 · ${this.human?.name ?? ''} 开始行动`);
     this.refresh();
+    // The battle names itself on the field it is fought on. Turn changes have
+    // always been announced there; the opening was the one moment the picture
+    // said nothing and the whole introduction happened in the chrome around it.
+    void this.board.announce(this.state.levelName, this.human?.color ?? PAL.neutral);
 
     // A level may open on an AI player (or have no human at all).
     this.maybeRunAi();

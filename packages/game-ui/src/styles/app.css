@@ -613,17 +613,6 @@ kbd {
   filter: saturate(1.06) contrast(1.025) brightness(1.035);
 }
 
-.candidate-map .layer-grid {
-  opacity: 0;
-  transition-property: opacity;
-  transition-duration: 140ms;
-  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
-}
-
-.candidate-map.is-tactical .layer-grid {
-  opacity: 0.66;
-}
-
 .candidate-map .candidate-stand-node {
   filter: drop-shadow(0 1px 1px rgb(0 0 0 / 70%));
 }
@@ -773,7 +762,7 @@ kbd {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .candidate-map .layer-grid {
+  .board .layer-grid {
     transition-duration: 0ms;
   }
 }

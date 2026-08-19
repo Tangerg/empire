@@ -123,6 +123,22 @@ describe('game controller', () => {
   });
 
   /**
+   * The battle names itself on the field it is fought on.
+   *
+   * Turn changes have always been announced there; the opening was the one
+   * moment the picture said nothing at all and the entire introduction happened
+   * in the chrome around it.
+   */
+  it('announces the battle on the field when it opens', () => {
+    const level = BUILTIN_LEVELS[0];
+    const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+
+    expect(c.root.querySelector('.layer-effects')!.textContent).toContain(level.name);
+    c.dispose();
+  });
+
+  /**
    * Committing is one control, it stands alone, and it says which act it is.
    *
    * Confirming a whole battle line used to be the last button in a row of six
