@@ -130,6 +130,7 @@ export class GameController {
         this.refresh();
       },
       onSecondary: () => this.cancel(),
+      onScale: (notches) => this.zoomBy(notches * 0.1),
     }, this.session.content, this.session.rules.space.board(this.session.state).grid, this.art);
 
     this.hud = new Hud(this.art, {
@@ -181,16 +182,6 @@ export class GameController {
       });
       this.resizeObserver.observe(this.scroller);
     }
-
-    this.board.el.addEventListener(
-      'wheel',
-      (ev) => {
-        if (!ev.ctrlKey && !ev.metaKey) return;
-        ev.preventDefault();
-        this.zoomBy(-Math.sign(ev.deltaY) * 0.1);
-      },
-      { passive: false },
-    );
 
     document.addEventListener('keydown', this.onKey);
     this.selection = this.restingSelection;

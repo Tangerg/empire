@@ -1343,6 +1343,45 @@ describe('a rendered control is answered', () => {
   });
 });
 
+describe('the board decides, a surface draws', () => {
+  /**
+   * `BoardView` does not touch the DOM.
+   *
+   * It used to be two jobs fused together: deciding what a battlefield looks like —
+   * layers, placement, animation — and putting SVG elements in a tree. The first is
+   * all of the game knowledge; the second is a backend, and a field of 5,575 nodes
+   * under a colour matrix is the wrong shape for the DOM. There was no seam to put
+   * another renderer behind, and this is what says the seam is still there: every
+   * element, class, attribute and query lives below `BoardSurface`.
+   */
+  it('keeps every element, class and query below the surface port', () => {
+    const board = stripComments(
+      readFileSync(join(packagesRoot, 'game-ui', 'src', 'ui', 'board.ts'), 'utf8'),
+    );
+    const reachedFor = [
+      'document.',
+      'querySelector',
+      'classList',
+      'getBoundingClientRect',
+      'addEventListener',
+      'fromMarkup',
+      'setAttrs',
+      'appendChild',
+      '.innerHTML',
+    ].filter((token) => board.includes(token));
+
+    expect(reachedFor).toEqual([]);
+    // And it reaches the renderer only through the port's own vocabulary.
+    expect(board).toMatch(/import type \{[^}]*BoardSurface[^}]*\} from '\.\.\/art\/board-surface'/);
+    // Nothing here checks that animations use only the port's four continuous
+    // properties, because with the DOM out of reach `tsc` already does: the only
+    // thing the board can animate is a `BoardDrawing`, and `place`, `nudge`,
+    // `swell` and `opacity` are all it declares. A test for it would look stronger
+    // than the type and be weaker.
+  });
+
+});
+
 describe('a picture is not optional', () => {
   /**
    * No generic art table may answer an id it does not hold with another entry of

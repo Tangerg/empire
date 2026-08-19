@@ -8,7 +8,7 @@ import {
   type TacticalGrid,
 } from '@empire/battle-engine';
 import { PAL } from '../art/palette';
-import { FrameAnimationSystem, registerSvgStrip } from '../art/frame-animation';
+import { FrameAnimationSystem } from '../art/frame-animation';
 import { decorationsFor, type BattlePresentation } from '../art/battle-presentation';
 import { markerFromRules, structureFromRules } from '../art/field-objects-from-rules';
 import type { ArtDirection } from '../art/direction';
@@ -24,8 +24,9 @@ import {
   type SceneViewport,
 } from '../art/scene-viewport';
 import { unitSpriteMarkup } from '../art/units';
-import { clear, fromMarkup, setAttrs, svg } from '../art/svg';
 import { escapeHtml } from './html';
+import type { BoardDrawing, BoardSurface } from '../art/board-surface';
+import { SvgBoardSurface } from '../art/svg-board-surface';
 
 export interface BoardOverlay {
   move: Set<number>;
@@ -59,7 +60,9 @@ export const emptyOverlay = (): BoardOverlay => ({
 });
 
 export interface BoardHandlers {
-  onTileClick(at: Coord, event: PointerEvent): void;
+  onTileClick(at: Coord): void;
+  /** The player asked for a different scale, in notches. */
+  onScale(notches: number): void;
   onTileEnter(at: Coord): void;
   onLeave(): void;
   onSecondary(at: Coord): void;
@@ -93,20 +96,25 @@ const SETTLE_MS = 140;
  * selection state beyond the overlay it is handed.
  */
 export class BoardView {
-  readonly el: SVGSVGElement;
-  private readonly layers: Record<string, SVGGElement>;
+  /**
+   * Where this battle is drawn.
+   *
+   * A port. The board decides what the field looks like and the surface puts it
+   * somewhere — an SVG tree today, and the seam exists so that it need not be.
+   */
+  private readonly surface: BoardSurface;
   private readonly viewport: SceneViewport;
   private readonly presentation: BattlePresentation;
   private readonly decor: BoardDecorations;
-  private readonly unitEls = new Map<number, SVGGElement>();
   private readonly frameAnimations = new FrameAnimationSystem();
   private sceneryAnimationIds: string[] = [];
   private zoom = 1;
   private mapSignature = '';
   private objectSignature = '';
   private hovered: string | null = null;
-  private effectSerial = 0;
   private layoutCache: BoardLayout | null = null;
+  /** Only for making a turn banner's gradient id unique. */
+  private banners = 0;
   private settleTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor(
@@ -132,49 +140,25 @@ export class BoardView {
       TILE,
       this.presentation.sceneProfile(state.levelId),
     );
-    const presentationClass = this.presentation.boardClass ? ` ${this.presentation.boardClass}` : '';
-    this.el = svg('svg', {
-      viewBox: `0 0 ${this.viewport.sceneWidth} ${this.viewport.sceneHeight}`,
-      class: `board${presentationClass}`,
-      'shape-rendering': this.decor.shapeRendering,
-      'text-rendering': 'optimizeLegibility',
-      'data-scene-layout': this.viewport.originX || this.viewport.originY ? 'authored' : 'grid',
-    });
-
     const sceneFrame = this.presentation.sceneFrame(state.levelId, state.map, this.viewport);
-    if (sceneFrame.backdrop) this.el.append(fromMarkup(sceneFrame.backdrop));
-    const world = svg('g', {
-      class: 'board-world',
-      transform: `translate(${this.viewport.originX} ${this.viewport.originY})`,
-    });
-    // DOM order is the depth contract. In particular, ground/roads must stay
-    // below every actor even when a campaign replaces all tactical artwork.
-    const names = [
-      'ground',
-      'terrain',
-      'scenery',
-      'spatial',
-      'grid',
-      'range',
-      'path',
-      'structures',
-      'markers',
-      'units',
-      'foreground',
-      'effects',
-      'cursor',
-    ];
-    this.layers = {};
-    for (const n of names) {
-      const g = svg('g', { class: `layer layer-${n}` });
-      this.layers[n] = g;
-      world.append(g);
-    }
-    this.el.append(world);
-    if (sceneFrame.foreground) this.el.append(fromMarkup(sceneFrame.foreground));
+    this.surface = new SvgBoardSurface({
+      width: this.viewport.sceneWidth,
+      height: this.viewport.sceneHeight,
+      originX: this.viewport.originX,
+      originY: this.viewport.originY,
+      themeClass: this.presentation.boardClass,
+      shapeRendering: this.decor.shapeRendering,
+      backdrop: sceneFrame.backdrop,
+      foreground: sceneFrame.foreground,
+    }, this.frameAnimations);
     this.buildGrid();
     this.bindPointer();
     this.setZoom(1.25);
+  }
+
+  /** What gets mounted, and what a pointer position is measured against. */
+  get el(): SVGElement | HTMLElement {
+    return this.surface.element;
   }
 
   /* -------------------------------------------------------------- placement */
@@ -228,80 +212,57 @@ export class BoardView {
   /* ------------------------------------------------------------------ setup */
 
   private buildGrid(): void {
-    const markup = this.decor.gridLines(this.layout, this.state.map);
-    if (markup) this.layers.grid.append(fromMarkup(markup));
-  }
-
-  private bindPointer(): void {
-    const toCoord = (ev: PointerEvent | MouseEvent): Coord | null => {
-      const rect = this.el.getBoundingClientRect();
-      if (rect.width <= 0 || rect.height <= 0) return null;
-      const scale = Math.min(rect.width / this.viewport.sceneWidth, rect.height / this.viewport.sceneHeight);
-      const contentWidth = this.viewport.sceneWidth * scale;
-      const contentHeight = this.viewport.sceneHeight * scale;
-      const sceneX = (ev.clientX - rect.left - (rect.width - contentWidth) / 2) / scale;
-      const sceneY = (ev.clientY - rect.top - (rect.height - contentHeight) / 2) / scale;
-      return scenePointToCell(this.viewport, sceneX, sceneY);
-    };
-
-    this.el.addEventListener('pointerdown', (ev) => {
-      const c = toCoord(ev);
-      if (!c) return;
-      if (ev.button === 2) {
-        this.handlers.onSecondary(c);
-        return;
-      }
-      if (ev.button === 0) this.handlers.onTileClick(c, ev);
-    });
-    this.el.addEventListener('contextmenu', (ev) => ev.preventDefault());
-    this.el.addEventListener('pointermove', (ev) => {
-      const c = toCoord(ev);
-      if (!c) {
-        if (this.hovered) {
-          this.hovered = null;
-          this.handlers.onLeave();
-        }
-        return;
-      }
-      const key = `${c.x},${c.y}`;
-      if (key === this.hovered) return;
-      this.hovered = key;
-      this.handlers.onTileEnter(c);
-    });
-    this.el.addEventListener('pointerleave', () => {
-      this.hovered = null;
-      this.handlers.onLeave();
-    });
+    this.surface.setLayer('grid', this.decor.gridLines(this.layout, this.state.map));
   }
 
   /**
-   * Sets the scale, and says so while the scale is moving.
+   * Which cell the pointer is over, which is the tiling's answer.
    *
-   * `is-rescaling` is the point of this. One `c01-01` board is 5,575 SVG nodes, 993
-   * raster cells, hundreds of drop-shadow passes and a colour grade over the whole
-   * terrain and ground layers, and re-scaling recomputes every one of them at the
-   * new size. While the scale is still moving those are drawn once and thrown away,
-   * so the board stops drawing them until it settles.
-   *
-   * The early return is what keeps that honest. Holding the wheel against the clamp
-   * kept retriggering the settle timer, so the board stayed flattened for as long as
-   * the wheel turned and only came back when the player gave up — the flatten is
-   * supposed to last a gesture, not a grudge. (Rewriting the size to the value it
-   * already had costs nothing: browsers compare before invalidating. That was a
-   * claim this comment made until a sabotage run refused to confirm it.)
+   * The surface reports scene coordinates; turning those into a cell is the only
+   * half of this the board owns. It used to own both, and therefore held a
+   * `getBoundingClientRect` and a letterbox calculation.
    */
+  private bindPointer(): void {
+    const cellAt = (at: { x: number; y: number }) => scenePointToCell(this.viewport, at.x, at.y);
+    this.surface.listen({
+      press: (at, button) => {
+        const cell = cellAt(at);
+        if (!cell) return;
+        if (button === 2) this.handlers.onSecondary(cell);
+        else if (button === 0) this.handlers.onTileClick(cell);
+      },
+      move: (at) => {
+        const cell = at ? cellAt(at) : null;
+        if (!cell) {
+          if (!this.hovered) return;
+          this.hovered = null;
+          this.handlers.onLeave();
+          return;
+        }
+        const key = `${cell.x},${cell.y}`;
+        if (key === this.hovered) return;
+        this.hovered = key;
+        this.handlers.onTileEnter(cell);
+      },
+      leave: () => {
+        this.hovered = null;
+        this.handlers.onLeave();
+      },
+      scale: (notches) => this.handlers.onScale(notches),
+    });
+  }
+
   setZoom(z: number): void {
     const zoom = Math.max(0.5, Math.min(2.2, z));
     if (zoom === this.zoom) return;
     this.zoom = zoom;
-    this.el.style.width = `${this.viewport.sceneWidth * zoom}px`;
-    this.el.style.height = `${this.viewport.sceneHeight * zoom}px`;
+    this.surface.resize(this.viewport.sceneWidth * zoom, this.viewport.sceneHeight * zoom);
 
-    this.el.classList.add('is-rescaling');
+    this.surface.rescaling(true);
     if (this.settleTimer !== null) clearTimeout(this.settleTimer);
     this.settleTimer = setTimeout(() => {
       this.settleTimer = null;
-      this.el.classList.remove('is-rescaling');
+      this.surface.rescaling(false);
     }, SETTLE_MS);
   }
 
@@ -340,32 +301,24 @@ export class BoardView {
     const signature = battlefieldRenderKey(s.map);
     if (signature === this.mapSignature) return;
     this.mapSignature = signature;
-    clear(this.layers.terrain);
     const colorOf = (id: number) => s.players.find((p) => p.id === id)?.color;
-    this.layers.terrain.append(fromMarkup(terrainLayerMarkup({ art: this.art, layout: this.layout, content: this.content }, s.map, colorOf, s.levelId)));
+    this.surface.setLayer('terrain', terrainLayerMarkup(
+      { art: this.art, layout: this.layout, content: this.content }, s.map, colorOf, s.levelId,
+    ));
     for (const id of this.sceneryAnimationIds) this.frameAnimations.unregister(id);
-    this.sceneryAnimationIds = [];
-    clear(this.layers.ground);
-    clear(this.layers.scenery);
-    clear(this.layers.foreground);
     const sceneLayers = this.presentation.sceneLayers(s.levelId, s.map, this.viewport);
-    if (sceneLayers.ground) this.layers.ground.append(fromMarkup(sceneLayers.ground));
-    if (sceneLayers.underUnits) this.layers.scenery.append(fromMarkup(sceneLayers.underUnits));
-    if (sceneLayers.overUnits) this.layers.foreground.append(fromMarkup(sceneLayers.overUnits));
     this.sceneryAnimationIds = [
-      ...this.playEmbeddedAnimations(this.layers.ground),
-      ...this.playEmbeddedAnimations(this.layers.scenery),
-      ...this.playEmbeddedAnimations(this.layers.foreground),
+      ...this.surface.setLayer('ground', sceneLayers.ground),
+      ...this.surface.setLayer('scenery', sceneLayers.underUnits),
+      ...this.surface.setLayer('foreground', sceneLayers.overUnits),
     ];
-    clear(this.layers.spatial);
-    const spatial = battlefieldFeatureMarkup({ art: this.art, layout: this.layout }, s.map);
-    if (spatial) this.layers.spatial.append(fromMarkup(spatial));
+    this.surface.setLayer('spatial', battlefieldFeatureMarkup({ art: this.art, layout: this.layout }, s.map));
   }
 
   render(overlay: BoardOverlay): void {
-    this.el.classList.toggle(
-      'is-tactical',
-      !!overlay.selected || overlay.move.size > 0 || overlay.attack.size > 0 || overlay.heal.size > 0 || overlay.path.length > 0,
+    this.surface.tactical(
+      !!overlay.selected || overlay.move.size > 0 || overlay.attack.size > 0
+      || overlay.heal.size > 0 || overlay.path.length > 0,
     );
     this.syncTerrain();
     this.syncBattlefieldObjects();
@@ -389,7 +342,6 @@ export class BoardView {
     // Every one of the six structure types and five marker kinds this repository
     // ships was invisible on a board with no painted scene — and one of them is a
     // shipped chapter's victory condition.
-    clear(this.layers.structures);
     const structures = s.structures.map((state) => {
       const ownerColor = s.players.find((player) => player.id === state.owner)?.color;
       const definition = this.content.structures.get(state.type);
@@ -397,16 +349,15 @@ export class BoardView {
         ?? structureFromRules(state, definition, ownerColor);
       return `<g transform="${this.place(state)}" data-structure="${state.id}">${markup}</g>`;
     });
-    if (structures.length) this.layers.structures.append(fromMarkup(structures.join('')));
+    this.surface.setLayer('structures', structures.join(''));
 
-    clear(this.layers.markers);
     const markers = s.markers.map((marker) => {
       const ownerColor = s.players.find((player) => player.id === marker.owner)?.color;
       const markup = this.presentation.marker(marker, ownerColor)
         ?? markerFromRules(marker, ownerColor);
       return `<g transform="${this.place(marker.at)}" data-marker="${marker.id}">${markup}</g>`;
     });
-    if (markers.length) this.layers.markers.append(fromMarkup(markers.join('')));
+    this.surface.setLayer('markers', markers.join(''));
   }
 
   private renderRanges(o: BoardOverlay): void {
@@ -442,71 +393,60 @@ export class BoardView {
         if (!o.visible.has(i)) cell(i, '#0b1020', 0.55);
       }
     }
-    clear(this.layers.range);
-    if (parts.length) this.layers.range.append(fromMarkup(parts.join('')));
+    this.surface.setLayer('range', parts.join(''));
   }
 
   private renderPath(path: Coord[]): void {
-    clear(this.layers.path);
-    if (path.length < 2) return;
+    if (path.length < 2) {
+      this.surface.setLayer('path', '');
+      return;
+    }
     const d = this.decor.movePath(this.layout, path);
     const last = path[path.length - 1];
     const prev = path[path.length - 2];
     const angle = (Math.atan2(last.y - prev.y, last.x - prev.x) * 180) / Math.PI;
-    this.layers.path.append(
-      fromMarkup(
-        `<path d="${d}" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/>
+    this.surface.setLayer(
+      'path',
+      `<path d="${d}" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/>
          <path d="${d}" fill="none" stroke="#2f6fd0" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
          <g transform="translate(${this.centre(last).x} ${this.centre(last).y}) rotate(${angle})">
            <path d="M-4 -5 4 0 -4 5z" fill="#2f6fd0" stroke="#ffffff" stroke-width="1.2"/>
          </g>`,
-      ),
     );
   }
 
-  private unitElement(unit: Unit): SVGGElement {
-    let el = this.unitEls.get(unit.id);
-    if (el) return el;
-    const color = this.state.players.find((p) => p.id === unit.owner)?.color ?? PAL.neutral;
-    el = svg('g', { class: 'unit', 'data-unit': unit.id });
-    el.append(fromMarkup(unitSpriteMarkup(this.art, this.content.units.get(unit.type), color)));
-    const badges = svg('g', { class: 'badges' });
-    el.append(badges);
-    this.layers.units.append(el);
-    this.unitEls.set(unit.id, el);
-    const strip = el.querySelector('.runtime-frame-strip') as SVGImageElement | null;
-    if (strip) {
-      const animationId = this.unitAnimationId(unit.id);
-      registerSvgStrip(this.frameAnimations, animationId, strip);
-      this.frameAnimations.play(animationId, 'idle');
-    }
-    return el;
+  /** The drawing for a unit, made on first sight and kept until it leaves. */
+  private drawingFor(unit: Unit): BoardDrawing {
+    const fresh = !this.surface.hasUnit(unit.id);
+    const { drawing, animationId } = this.surface.unit(unit.id, () => {
+      const color = this.state.players.find((p) => p.id === unit.owner)?.color ?? PAL.neutral;
+      return unitSpriteMarkup(this.art, this.content.units.get(unit.type), color);
+    });
+    if (fresh && animationId) this.frameAnimations.play(animationId, 'idle');
+    return drawing;
   }
 
   private renderUnits(o: BoardOverlay): void {
     const s = this.state;
     const alive = new Set(s.units.map((u) => u.id));
-    for (const [id, el] of this.unitEls) {
-      if (!alive.has(id)) {
-        this.frameAnimations.unregister(this.unitAnimationId(id));
-        el.remove();
-        this.unitEls.delete(id);
-      }
+    for (const id of this.surface.drawnUnits()) {
+      if (alive.has(id)) continue;
+      this.frameAnimations.unregister(this.unitAnimationId(id));
+      this.surface.unit(id, () => '').drawing.remove();
+      this.surface.dropUnit(id);
     }
 
     for (const u of s.units) {
-      const el = this.unitElement(u);
-      if (!el.classList.contains('is-moving')) el.classList.toggle('face-left', u.facing === 'west');
+      const drawing = this.drawingFor(u);
+      if (!drawing.inState('moving')) drawing.say('facingLeft', u.facing === 'west');
       const hidden = o.hiddenUnits.has(u.id);
-      el.style.display = hidden ? 'none' : '';
+      drawing.say('hidden', hidden);
       if (hidden) continue;
-      setAttrs(el, { transform: this.place(u) });
-      el.classList.toggle('is-done', u.done);
-      el.classList.toggle('is-selected', !!o.selected && o.selected.x === u.x && o.selected.y === u.y);
+      const origin = this.origin(u);
+      drawing.place(origin.x, origin.y);
+      drawing.say('done', u.done);
+      drawing.say('selected', !!o.selected && o.selected.x === u.x && o.selected.y === u.y);
 
-      const badges = el.querySelector('.badges');
-      if (!badges) continue;
-      clear(badges);
       const def = this.content.units.get(u.type);
       const ratio = u.hp / def.maxHp;
       const parts: string[] = [this.facingBadge(u)];
@@ -529,135 +469,123 @@ export class BoardView {
       if (u.done) {
         parts.push(`<rect width="32" height="32" fill="${PAL.ink}" opacity="0.35"/>`);
       }
-      if (parts.length) badges.append(fromMarkup(parts.join('')));
+      drawing.fill('badges', parts.join(''));
     }
   }
 
   private renderCursor(o: BoardOverlay): void {
-    clear(this.layers.cursor);
     const parts: string[] = [];
     if (o.selected) parts.push(this.decor.ring(this.layout, o.selected, 'selection'));
     if (o.cursor) parts.push(this.decor.ring(this.layout, o.cursor, 'cursor'));
-    if (parts.length) this.layers.cursor.append(fromMarkup(parts.join('')));
+    this.surface.setLayer('cursor', parts.join(''));
   }
 
   /* -------------------------------------------------------------- animation */
 
   async animateMove(unit: Unit, path: Coord[], msPerTile = 85): Promise<void> {
-    const el = this.unitEls.get(unit.id);
-    if (!el || path.length < 2) return;
+    if (!this.surface.hasUnit(unit.id) || path.length < 2) return;
+    const drawing = this.surface.unit(unit.id, () => '').drawing;
     const animationId = this.unitAnimationId(unit.id);
     if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'walk');
-    el.classList.add('is-moving');
+    drawing.say('moving', true);
     for (let i = 1; i < path.length; i++) {
       const a = path[i - 1];
       const b = path[i];
-      if (b.x > a.x) el.classList.remove('face-left');
-      if (b.x < a.x) el.classList.add('face-left');
+      if (b.x !== a.x) drawing.say('facingLeft', b.x < a.x);
       await tween(msPerTile, (t) => {
         const e = easeInOut(t);
         const from = this.origin(a);
         const to = this.origin(b);
-        const x = from.x + (to.x - from.x) * e;
-        const y = from.y + (to.y - from.y) * e - Math.sin(Math.PI * t) * 2.5;
-        setAttrs(el, { transform: `translate(${x.toFixed(2)},${y.toFixed(2)})` });
+        drawing.place(
+          from.x + (to.x - from.x) * e,
+          from.y + (to.y - from.y) * e - Math.sin(Math.PI * t) * 2.5,
+        );
       });
     }
-    el.classList.remove('is-moving');
+    drawing.say('moving', false);
     if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'idle');
   }
 
   async animateStrike(attacker: Unit, target: Coord): Promise<void> {
-    const el = this.unitEls.get(attacker.id);
-    if (!el) return;
+    if (!this.surface.hasUnit(attacker.id)) return;
+    const drawing = this.surface.unit(attacker.id, () => '').drawing;
     const dx = Math.sign(target.x - attacker.x);
     const dy = Math.sign(target.y - attacker.y);
-    if (dx > 0) el.classList.remove('face-left');
-    if (dx < 0) el.classList.add('face-left');
-    const base = this.place(attacker);
+    if (dx !== 0) drawing.say('facingLeft', dx < 0);
     const anchor = this.origin(attacker);
+    drawing.place(anchor.x, anchor.y);
     const animationId = this.unitAnimationId(attacker.id);
     if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'attack');
-    el.classList.add('is-attacking');
+    drawing.say('attacking', true);
     await tween(150, (t) => {
       const push = Math.sin(Math.PI * t) * 7;
-      setAttrs(el, {
-        transform: `translate(${anchor.x + dx * push},${anchor.y + dy * push})`,
-      });
+      drawing.nudge(dx * push, dy * push);
     });
-    el.classList.remove('is-attacking');
+    drawing.say('attacking', false);
     if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'idle');
-    setAttrs(el, { transform: base });
+    drawing.nudge(0, 0);
   }
 
   async animateHit(at: Coord, damage: number, killed: boolean, weapon?: WeaponId): Promise<void> {
     const { x: cx, y: cy } = this.centre(at);
-    const g = svg('g', { class: 'fx' });
     const fx = weapon ? this.presentation.weaponFx(weapon) : null;
-    g.append(
-      fromMarkup(
-        `${fx ? this.presentation.effect(fx, cx, cy) : ''}
-         <circle cx="${cx}" cy="${cy}" r="12" fill="#ffffff" opacity="0.65"/>
-         <text x="${cx}" y="${cy - 8}" text-anchor="middle" class="fx-damage">-${damage}</text>`,
-      ),
+    // Each moving part declares which one it is, so nothing is found by tag name.
+    const { drawing, animationIds } = this.surface.effect(
+      `${fx ? this.presentation.effect(fx, cx, cy) : ''}
+         <g data-part="burst"><circle cx="${cx}" cy="${cy}" r="12" fill="#ffffff" opacity="0.65"/></g>
+         <g data-part="number"><text x="${cx}" y="${cy - 8}" text-anchor="middle" class="fx-damage">-${damage}</text></g>`,
     );
-    this.layers.effects.append(g);
-    const animationIds = this.playEmbeddedAnimations(g);
-    const text = g.querySelector('text') as SVGTextElement;
-    const circle = g.querySelector('circle') as SVGCircleElement;
+    const burst = drawing.part('burst');
+    const number = drawing.part('number');
     await tween(420, (t) => {
-      setAttrs(circle, { r: `${(12 + t * 10).toFixed(1)}`, opacity: `${(0.8 * (1 - t)).toFixed(2)}` });
-      setAttrs(text, { transform: `translate(0,${(-14 * t).toFixed(1)})`, opacity: `${(1 - t ** 2).toFixed(2)}` });
+      // 12 → 22 was written as a radius; as a swell it is the same picture and the
+      // one property a backend without shapes can also honour.
+      burst?.swell(1 + t * 0.83);
+      burst?.opacity(0.8 * (1 - t));
+      number?.nudge(0, -14 * t);
+      number?.opacity(1 - t ** 2);
     });
     for (const id of animationIds) this.frameAnimations.unregister(id);
-    g.remove();
+    drawing.remove();
     if (killed) await wait(40);
   }
 
   async animateDeath(unitId: number): Promise<void> {
-    const el = this.unitEls.get(unitId);
-    if (!el) return;
-    const transform = el.getAttribute('transform') ?? '';
+    if (!this.surface.hasUnit(unitId)) return;
+    const drawing = this.surface.unit(unitId, () => '').drawing;
     await tween(220, (t) => {
-      el.style.opacity = String(1 - t);
-      setAttrs(el, { transform: `${transform} translate(16,16) scale(${1 - 0.35 * t}) translate(-16,-16)` });
+      drawing.opacity(1 - t);
+      drawing.swell(1 - 0.35 * t);
     });
     this.frameAnimations.unregister(this.unitAnimationId(unitId));
-    el.remove();
-    this.unitEls.delete(unitId);
+    drawing.remove();
+    this.surface.dropUnit(unitId);
   }
 
   async animateHeal(at: Coord, amount: number): Promise<void> {
     const { x: cx, y: cy } = this.centre(at);
-    const g = svg('g', { class: 'fx' });
-    g.append(
-      fromMarkup(
-        `${this.presentation.healFx ? this.presentation.effect(this.presentation.healFx, cx, cy) : ''}
-         <text x="${cx}" y="${cy - 6}" text-anchor="middle" class="fx-heal">+${amount}</text>`,
-      ),
+    const { drawing, animationIds } = this.surface.effect(
+      `${this.presentation.healFx ? this.presentation.effect(this.presentation.healFx, cx, cy) : ''}
+         <g data-part="number"><text x="${cx}" y="${cy - 6}" text-anchor="middle" class="fx-heal">+${amount}</text></g>`,
     );
-    this.layers.effects.append(g);
-    const animationIds = this.playEmbeddedAnimations(g);
-    const text = g.querySelector('text') as SVGTextElement;
+    const number = drawing.part('number');
     await tween(500, (t) => {
-      setAttrs(text, { transform: `translate(0,${(-16 * t).toFixed(1)})`, opacity: `${(1 - t ** 2).toFixed(2)}` });
+      number?.nudge(0, -16 * t);
+      number?.opacity(1 - t ** 2);
     });
     for (const id of animationIds) this.frameAnimations.unregister(id);
-    g.remove();
+    drawing.remove();
   }
 
   async animateSpawn(unitId: number): Promise<void> {
-    const el = this.unitEls.get(unitId);
-    if (!el) return;
-    const transform = el.getAttribute('transform') ?? '';
+    if (!this.surface.hasUnit(unitId)) return;
+    const drawing = this.surface.unit(unitId, () => '').drawing;
     await tween(240, (t) => {
-      el.style.opacity = String(t);
-      setAttrs(el, {
-        transform: `${transform} translate(16,16) scale(${0.6 + 0.4 * t}) translate(-16,-16)`,
-      });
+      drawing.opacity(t);
+      drawing.swell(0.6 + 0.4 * t);
     });
-    el.style.opacity = '1';
-    setAttrs(el, { transform });
+    drawing.opacity(1);
+    drawing.swell(1);
   }
 
   /**
@@ -673,11 +601,9 @@ export class BoardView {
     const w = this.viewport.fieldWidth;
     const h = this.viewport.fieldHeight;
     const top = h / 2 - 17;
-    const band = `turn-band-${this.effectSerial++}`;
-    const g = svg('g', { class: 'fx' });
-    g.append(
-      fromMarkup(
-        `<defs>
+    const band = `turn-band-${this.banners++}`;
+    const { drawing } = this.surface.effect(
+      `<defs>
            <linearGradient id="${band}" x1="0" y1="0" x2="1" y2="0">
              <stop offset="0" stop-color="${color}" stop-opacity="0"/>
              <stop offset="0.22" stop-color="${color}" stop-opacity="0.88"/>
@@ -685,28 +611,22 @@ export class BoardView {
              <stop offset="1" stop-color="${color}" stop-opacity="0"/>
            </linearGradient>
          </defs>
-         <g class="fx-turn-band">
+         <g class="fx-turn-band" data-part="band">
            <rect x="0" y="${top}" width="${w}" height="34" fill="url(#${band})"/>
            <rect x="0" y="${top}" width="${w}" height="1" fill="#fff" opacity="0.4"/>
            <rect x="0" y="${top + 33}" width="${w}" height="1" fill="#000" opacity="0.32"/>
            <text x="${w / 2}" y="${h / 2 + 7}" text-anchor="middle" class="fx-banner">${escapeHtml(text)}</text>
          </g>`,
-      ),
     );
-    this.layers.effects.append(g);
-    const sweep = g.querySelector('.fx-turn-band') as SVGGElement;
+    const sweep = drawing.part('band');
     await tween(220, (t) => {
       const eased = easeInOut(t);
-      setAttrs(sweep, {
-        transform: `translate(${(-w * 0.3 * (1 - eased)).toFixed(1)} 0)`,
-        opacity: eased.toFixed(2),
-      });
+      sweep?.nudge(-w * 0.3 * (1 - eased), 0);
+      sweep?.opacity(eased);
     });
     await wait(420);
-    await tween(220, (t) => {
-      g.style.opacity = String(1 - t);
-    });
-    g.remove();
+    await tween(220, (t) => drawing.opacity(1 - t));
+    drawing.remove();
   }
 
   centerOn(at: Coord, container: HTMLElement): void {
@@ -724,16 +644,4 @@ export class BoardView {
     return `unit:${unitId}`;
   }
 
-  private playEmbeddedAnimations(root: Element): string[] {
-    const ids: string[] = [];
-    for (const strip of root.querySelectorAll<SVGImageElement>('.runtime-frame-strip')) {
-      const id = `effect:${this.effectSerial++}`;
-      registerSvgStrip(this.frameAnimations, id, strip);
-      const clips = JSON.parse(strip.getAttribute('data-frame-clips') ?? '[]') as Array<{ id?: string }>;
-      const clip = clips[0]?.id;
-      if (clip) this.frameAnimations.play(id, clip);
-      ids.push(id);
-    }
-    return ids;
-  }
 }

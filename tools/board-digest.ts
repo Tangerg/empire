@@ -83,6 +83,7 @@ for (const [label, level] of levels) {
     onTileEnter: () => {},
     onLeave: () => {},
     onSecondary: () => {},
+      onScale: () => {},
   }, content, grid, art);
   board.render(busyOverlay(level));
   board.setZoom(1.75);

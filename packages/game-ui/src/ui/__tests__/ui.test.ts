@@ -241,6 +241,7 @@ describe('game controller', () => {
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
+      onScale: () => {},
     }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), ART);
     board.fitWithin(540, 380);
 
@@ -260,6 +261,7 @@ describe('game controller', () => {
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
+      onScale: () => {},
     }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), ART);
     board.render(emptyOverlay());
 
@@ -374,6 +376,7 @@ describe('game controller', () => {
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
+      onScale: () => {},
     }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), silent);
     board.render(emptyOverlay());
 
