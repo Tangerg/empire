@@ -4,10 +4,11 @@ import {
   setAttrs,
   svg,
   PAL,
-  battlefieldFeatureMarkup,
+  battlefieldFeaturePieces,
   battlefieldRenderKey,
+  boardPiecesMarkup,
   TILE,
-  terrainLayerMarkup,
+  terrainLayerPieces,
   squareLayout,
   unitSpriteMarkup,
   type ArtDirection,
@@ -149,7 +150,9 @@ export class EditorBoard {
       this.signature = sig;
       clear(this.layers.terrain);
       const colorOf = (id: number) => players.find((p) => p.id === id)?.color;
-      this.layers.terrain.append(fromMarkup(terrainLayerMarkup({ art: this.art, layout: squareLayout, content: this.content }, map, colorOf)));
+      this.layers.terrain.append(fromMarkup(boardPiecesMarkup(
+        terrainLayerPieces({ art: this.art, layout: squareLayout, content: this.content }, map, colorOf),
+      )));
     }
 
     clear(this.layers.units);
@@ -190,7 +193,7 @@ export class EditorBoard {
         }
       }
     }
-    const features = battlefieldFeatureMarkup({ art: this.art, layout: squareLayout }, map);
+    const features = boardPiecesMarkup(battlefieldFeaturePieces({ art: this.art, layout: squareLayout }, map));
     if (features) marks.push(features);
     if (marks.length) this.layers.marks.append(fromMarkup(marks.join('')));
 

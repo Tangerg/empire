@@ -1372,7 +1372,12 @@ describe('the board decides, a surface draws', () => {
 
     expect(reachedFor).toEqual([]);
     // And it reaches the renderer only through the port's own vocabulary.
-    expect(board).toMatch(/import type \{[^}]*BoardSurface[^}]*\} from '\.\.\/art\/board-surface'/);
+    expect(board).toMatch(/import \{[^}]*type BoardSurface[^}]*\} from '\.\.\/art\/board-surface'/);
+    // Nothing here checks that a per-cell layer crosses the seam as one piece per
+    // cell. A regex cannot: `wholeField(parts.join(''))` is the correct way to hand
+    // over line work, and is indistinguishable from collapsing four thousand tiles
+    // into one string. `ui.test.ts` counts the pieces on a rendered board instead,
+    // which is the same claim made where it can actually be observed.
     // Nothing here checks that animations use only the port's four continuous
     // properties, because with the DOM out of reach `tsc` already does: the only
     // thing the board can animate is a `BoardDrawing`, and `place`, `nudge`,

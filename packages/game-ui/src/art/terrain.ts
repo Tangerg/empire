@@ -7,6 +7,7 @@ import {
   type ContentCatalog,
   idx,
 } from '@empire/battle-engine';
+import type { BoardPiece } from './board-surface';
 import { PAL } from './palette';
 import { terrainFromRules } from './terrain-from-rules';
 
@@ -289,30 +290,14 @@ export interface TerrainLayout {
   readonly corners: number;
   origin(at: { x: number; y: number }): { x: number; y: number };
   center(at: { x: number; y: number }): { x: number; y: number };
-  outline(at: { x: number; y: number }): string;
+  shape(): string;
 }
 
 const CELL_CLIP_ID = 'cell-clip';
 
-/**
- * One clip path, in tile-local coordinates, reused by every tile group.
- *
- * The outline is taken from cell (0,0) and shifted to the group's own origin, so
- * a single definition works for all of them — including the staggered rows of a
- * hex board, whose cells all have the same shape.
- */
-function cellClipDefinition(layout: TerrainLayout, map: GameMap): string {
-  void map;
-  const origin = layout.origin({ x: 0, y: 0 });
-  const points = layout.outline({ x: 0, y: 0 })
-    .split(' ')
-    .map((pair) => {
-      const [x, y] = pair.split(',').map(Number);
-      return `${(x - origin.x).toFixed(2)},${(y - origin.y).toFixed(2)}`;
-    })
-    .join(' ');
-  return `<defs><clipPath id="${CELL_CLIP_ID}" clipPathUnits="userSpaceOnUse"><polygon points="${points}"/></clipPath></defs>`;
-}
+/** One clip path, in tile-local coordinates, reused by every tile group. */
+const cellClipDefinition = (layout: TerrainLayout): string =>
+  `<defs><clipPath id="${CELL_CLIP_ID}" clipPathUnits="userSpaceOnUse"><polygon points="${layout.shape()}"/></clipPath></defs>`;
 
 /* -------------------------------------------------------------- public API */
 
@@ -347,22 +332,25 @@ function links(content: ContentCatalog, map: GameMap, id: TerrainId, x: number, 
 }
 
 /**
- * Renders the whole static terrain layer as one markup string. Building tiles
- * take the owner colour so flags flip the instant a town changes hands.
+ * The whole static terrain layer, as one picture per cell.
+ *
+ * Building tiles take the owner colour so flags flip the instant a town changes
+ * hands. Each tile used to arrive wrapped in its own `<g transform data-tile>`,
+ * which made two identical tiles two different strings — see `BoardPiece`.
  */
-export function terrainLayerMarkup(
+export function terrainLayerPieces(
   surface: TerrainSurface,
   map: GameMap,
   colorOfPlayer: (id: number) => string | undefined,
   theme?: string,
-): string {
+): BoardPiece[] {
   const { art, layout, content } = surface;
-  const parts: string[] = [];
+  const pieces: BoardPiece[] = [];
   // Painted tiles are square pictures. On a tiling whose cells are not, each one
   // is placed at its cell and clipped to that cell's shape, so the same artwork
   // serves a hex board without a second set of tile painters.
-  const clip = layout.corners === 4 ? '' : ` clip-path="url(#${CELL_CLIP_ID})"`;
-  if (clip) parts.push(cellClipDefinition(layout, map));
+  const clipped = layout.corners !== 4;
+  if (clipped) pieces.push({ markup: cellClipDefinition(layout), x: 0, y: 0 });
   for (let y = 0; y < map.height; y++) {
     for (let x = 0; x < map.width; x++) {
       const i = idx(map, x, y);
@@ -379,13 +367,14 @@ export function terrainLayerMarkup(
           w: links(content, map, id, x - 1, y),
         },
       };
-      const origin = layout.origin({ x, y });
-      parts.push(
-        `<g transform="translate(${origin.x.toFixed(2)},${origin.y.toFixed(2)})"${clip} data-tile="${x},${y}">${terrainMarkup(art, content.terrains.get(id), ctx)}</g>`,
-      );
+      const tile = terrainMarkup(art, content.terrains.get(id), ctx);
+      pieces.push({
+        markup: clipped ? `<g clip-path="url(#${CELL_CLIP_ID})">${tile}</g>` : tile,
+        ...layout.origin({ x, y }),
+      });
     }
   }
-  return parts.join('');
+  return pieces;
 }
 
 /** Single tile preview, e.g. for the editor palette. */

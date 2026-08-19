@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   GroundBoardDecorations,
   SquareBoardDecorations,
+  boardPiecesMarkup,
   decorationsFor,
   squareLayout,
   type BoardLayout,
@@ -56,22 +57,44 @@ describe('how a board draws its tactical layer', () => {
   });
 
   it('draws each decoration where the tiling puts the cell', () => {
-    const cell = { x: 1, y: 2, fill: '#abc', opacity: 0.25, stroke: '#def' };
+    const tint = { fill: '#abc', opacity: 0.25, stroke: '#def' };
 
-    expect(SquareBoardDecorations.actionSpot(squareLayout, cell)).toContain('<rect');
-    expect(SquareBoardDecorations.actionSpot(squareLayout, cell)).toContain('stroke-opacity="0.78"');
-    expect(GroundBoardDecorations.actionSpot(squareLayout, cell)).toContain('candidate-action-spot');
-    expect(SquareBoardDecorations.ring(squareLayout, { x: 0, y: 0 }, 'cursor')).toContain('<rect');
-    expect(GroundBoardDecorations.ring(squareLayout, { x: 0, y: 0 }, 'cursor'))
-      .toContain('candidate-cursor-ring');
+    expect(SquareBoardDecorations.actionSpot(squareLayout, tint)).toContain('<rect');
+    expect(SquareBoardDecorations.actionSpot(squareLayout, tint)).toContain('stroke-opacity="0.78"');
+    expect(GroundBoardDecorations.actionSpot(squareLayout, tint)).toContain('candidate-action-spot');
+    expect(SquareBoardDecorations.ring(squareLayout, 'cursor')).toContain('<rect');
+    expect(GroundBoardDecorations.ring(squareLayout, 'cursor')).toContain('candidate-cursor-ring');
 
-    expect(SquareBoardDecorations.gridLines(squareLayout, map as never)).toContain('<line');
-    expect(GroundBoardDecorations.gridLines(squareLayout, map as never))
-      .toContain('candidate-stand-node');
+    expect(boardPiecesMarkup(SquareBoardDecorations.gridLines(squareLayout, map as never)))
+      .toContain('<line');
+    expect(boardPiecesMarkup(GroundBoardDecorations.gridLines(squareLayout, map as never)))
+      .toContain('<circle');
 
     const path = [{ x: 0, y: 0 }, { x: 1, y: 0 }];
     expect(SquareBoardDecorations.movePath(squareLayout, path)).toMatch(/^M\d/);
     expect(GroundBoardDecorations.movePath(squareLayout, path)).toMatch(/^M\d/);
+  });
+
+  /**
+   * The point of `BoardPiece`: a decoration is a picture, and the cell is where it
+   * goes.
+   *
+   * Every one of these used to bake the cell's scene coordinates into its own
+   * markup, so a field of N identical stand nodes was N different strings and a
+   * fog of war over a large map was thousands of them. `tools/board-scale.ts`
+   * measures what that costs a renderer that wants to cache anything.
+   */
+  it('draws one picture at many places rather than many pictures', () => {
+    const nodes = GroundBoardDecorations.gridLines(squareLayout, map as never);
+    expect(nodes).toHaveLength(map.width * map.height);
+    expect(new Set(nodes.map((piece) => piece.markup)).size).toBe(1);
+    expect(nodes.map((piece) => `${piece.x},${piece.y}`)).toEqual(['0,0', '32,0', '0,32', '32,32']);
+
+    // And the same for a tint: one shape, whatever it is spread over.
+    const tint = { fill: '#0b1020', opacity: 0.55 };
+    expect(SquareBoardDecorations.actionSpot(squareLayout, tint))
+      .toBe(SquareBoardDecorations.actionSpot(squareLayout, tint));
+    expect(SquareBoardDecorations.actionSpot(squareLayout, tint)).not.toContain('translate');
   });
 
   /**
@@ -86,17 +109,20 @@ describe('how a board draws its tactical layer', () => {
       corners: 6,
       origin: (at) => ({ x: at.x * 32, y: at.y * 28 }),
       center: (at) => ({ x: at.x * 32 + 16, y: at.y * 28 + 18 }),
-      outline: () => '0,0 10,0 15,9 10,18 0,18 -5,9',
+      shape: () => '0,0 10,0 15,9 10,18 0,18 -5,9',
       neighbour: (at) => ({ x: at.x * 32 + 48, y: at.y * 28 + 18 }),
     };
+    const tint = { fill: '#abc', opacity: 0.2 };
 
-    expect(SquareBoardDecorations.gridLines(hex, map as never)).toContain('<polygon');
-    expect(SquareBoardDecorations.gridLines(hex, map as never)).not.toContain('<line');
-    expect(SquareBoardDecorations.actionSpot(hex, { x: 1, y: 1, fill: '#abc', opacity: 0.2 }))
-      .toContain('<polygon');
-    expect(SquareBoardDecorations.ring(hex, { x: 1, y: 1 }, 'selection')).toContain('<polygon');
-    // The painted look is centre-based already, so it needs no second version.
-    expect(GroundBoardDecorations.actionSpot(hex, { x: 1, y: 1, fill: '#abc', opacity: 0.2 }))
-      .toContain('cx="48"');
+    const lattice = boardPiecesMarkup(SquareBoardDecorations.gridLines(hex, map as never));
+    expect(lattice).toContain('<polygon');
+    expect(lattice).not.toContain('<line');
+    expect(SquareBoardDecorations.actionSpot(hex, tint)).toContain('<polygon');
+    expect(SquareBoardDecorations.ring(hex, 'selection')).toContain('<polygon');
+    // The painted look needs no second version because it never looked at the
+    // cell's shape — and now that it does not look at the cell's place either,
+    // the two tilings get the same picture.
+    expect(GroundBoardDecorations.actionSpot(hex, tint))
+      .toBe(GroundBoardDecorations.actionSpot(squareLayout, tint));
   });
 });

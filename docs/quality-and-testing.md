@@ -70,6 +70,9 @@ npm run build:experience
 | 性能基准 | `packages/battle-engine/src/__bench__/` | 核心热路径基线（只报数，不判定） |
 | 性能预算 | `performance-budget.test.ts` | 最重一章 60 步 AI 的空间查询**次数**上限；计数而非计时，所以处处一致 |
 | 重放扫描 | `tools/replay-sweep.ts`（`npm run --silent sweep`） | 全部已发布关卡 × 三档 AI，逐条事件加终局摘要；这是工具不是测试，答案靠 `diff` 读 |
+| 棋盘 markup | `tools/board-digest.ts`（`npm run board:digest`） | 全部已发布关卡 × 两套美术的挂载后 markup，逐字节 |
+| 棋盘几何 | `tools/board-flat.ts`（`npm run board:flat`） | 同上，但位置解析成绝对坐标；包装组隐形，移动一像素不隐形 |
+| 棋盘规模 | `tools/board-scale.ts`（`npm run board:scale`） | 把关卡平铺放大后，每层的节点数与「不同的图 / 图的张数」复用比 |
 
 ## 战斗规则测试
 
@@ -235,6 +238,8 @@ diff /tmp/before.txt /tmp/after.txt
 ```
 
 十六章 + 四张内置图，各跑 0.35 / 0.58 / 0.8 三档 AI，输出五万两千行。空 diff 才算行为保持；非空的必须逐条说清楚是什么、为什么，而不是接受它。它和 `invariant-sweep.test.ts` 是两件事：后者断言「状态不许长成什么样」，前者只回答「有没有任何东西变了」——那是个用 `diff` 读的问题，写成断言反而说不清。
+
+**画面也要证明，而且需要两把尺子。** `board:digest` 逐字节钉住 markup，`board:flat` 把位置解析成绝对坐标。两者的敏感度是刻意不同的：把一个 translate 从图里搬到它的包装组上，画面完全没动而 digest 每一行都不同——那时候只有 `board:flat` 能回答问题；反过来，改一个颜色字面量 digest 立刻看得见。渲染器改动同时跑两把，各自的差异都要能逐条归因。
 
 **加一条守卫，就先破坏一次。** 归属类守卫是靠正则扫源码的，一条永远为真的正则和一条正确的正则看起来一模一样。把被禁的写法手工写回去一次，确认它真的红了，再改回来——每一轮的新守卫都这么验过。当前共 63 条。
 

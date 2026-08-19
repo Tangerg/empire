@@ -21,7 +21,9 @@
     "test:watch": "vitest",
     "bench:core": "vitest bench --run packages/battle-engine/src/__bench__/engine.bench.ts",
     "sweep": "vite-node tools/replay-sweep.ts",
-    "board:digest": "vite-node tools/board-digest.ts"
+    "board:digest": "vite-node tools/board-digest.ts",
+    "board:flat": "vite-node tools/board-flat.ts",
+    "board:scale": "vite-node tools/board-scale.ts"
   },
   "devDependencies": {
     "@types/jsdom": "^30.0.0",

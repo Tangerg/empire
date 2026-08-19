@@ -37,7 +37,8 @@ import {
   portraitSvg,
   StoryCampaignController,
   takePlaytest,
-  terrainLayerMarkup,
+  boardPiecesMarkup,
+  terrainLayerPieces,
   TILE,
   escapeHtml,
 } from '@empire/game-ui';
@@ -73,7 +74,7 @@ function thumbnail(level: LevelData): string {
     })
     .join('');
   return `<svg viewBox="0 0 ${map.width * TILE} ${map.height * TILE}" preserveAspectRatio="xMidYMid slice">
-    ${terrainLayerMarkup({ art, layout: squareLayout, content }, map, colorOf)}${units}
+    ${boardPiecesMarkup(terrainLayerPieces({ art, layout: squareLayout, content }, map, colorOf))}${units}
   </svg>`;
 }
 

@@ -155,7 +155,7 @@ describe('map editor', () => {
     expect(host.querySelectorAll('.unit-chip').length).toBe(TEST_CATALOG.units.all().length);
     expect(host.querySelector('.swatch[data-arg="c01.scorched"]')).toBeTruthy();
     expect(host.querySelector('.unit-chip[data-arg="c01.laiya"]')).toBeTruthy();
-    expect(board.querySelectorAll('.layer-terrain g[data-tile]').length).toBe(
+    expect(board.querySelectorAll('.layer-terrain > g > g').length).toBe(
       BUILTIN_LEVELS[0].width * BUILTIN_LEVELS[0].height,
     );
     expect(host.querySelector('.props')!.textContent).toContain('检查');

@@ -1,5 +1,6 @@
 import type { ArtDirection } from './direction';
 import type { GameMap } from '@empire/battle-engine';
+import { wholeField, type BoardPiece } from './board-surface';
 import { edgeLine, type BoardLayout } from './board-decorations';
 
 const featureColor = {
@@ -57,9 +58,17 @@ export interface BattlefieldCanvas {
   readonly layout: BoardLayout;
 }
 
-export function battlefieldFeatureMarkup(canvas: BattlefieldCanvas, map: GameMap): string {
+/**
+ * Height badges, cliff marks and cover props, as pictures at places.
+ *
+ * A badge and a cover prop belong to one cell, so each is a piece there. An edge
+ * line does not: it sits on the boundary between two cells and is drawn from both
+ * their centres, so the lines are one piece of field-wide line work.
+ */
+export function battlefieldFeaturePieces(canvas: BattlefieldCanvas, map: GameMap): BoardPiece[] {
   const { art, layout } = canvas;
-  const parts: string[] = [];
+  const pieces: BoardPiece[] = [];
+  const badge = layout.tileSize * 0.81;
   for (let i = 0; i < map.elevation.length; i++) {
     const value = map.elevation[i];
     if (value === 0) continue;
@@ -70,26 +79,26 @@ export function battlefieldFeatureMarkup(canvas: BattlefieldCanvas, map: GameMap
     // One label identifies a continuous plateau; repeating it in every cell
     // obscures both the authored terrain and the units standing on it.
     if (sameToWest || sameToNorth) continue;
-    const { x, y } = layout.origin({ x: cellX, y: cellY });
-    const badge = layout.tileSize * 0.81;
-    parts.push(
-      `<g class="elevation-badge">` +
-      `<circle cx="${x + badge}" cy="${y + 7}" r="5" fill="${featureColor.elevationBackground}" opacity="0.8"/>` +
-      `<text x="${x + badge}" y="${y + 9.5}" text-anchor="middle" font-size="7" fill="${featureColor.elevationText}">${value}</text>` +
-      `</g>`,
-    );
+    pieces.push({
+      markup:
+        `<g class="elevation-badge">` +
+        `<circle cx="${badge}" cy="7" r="5" fill="${featureColor.elevationBackground}" opacity="0.8"/>` +
+        `<text x="${badge}" y="9.5" text-anchor="middle" font-size="7" fill="${featureColor.elevationText}">${value}</text>` +
+        `</g>`,
+      ...layout.origin({ x: cellX, y: cellY }),
+    });
   }
-  parts.push(...cliffMarkup(layout, map));
+
+  const lines: string[] = [...cliffMarkup(layout, map)];
   for (const cover of map.directionalCover) {
     const written = Object.entries(cover.sides).filter(([, level]) => level);
     if (written.length > 0) {
       const strongest = written.some(([, level]) => level === 'full') ? 'full' : 'half';
       const prop = art.resolve((provider) => provider.coverMarkup?.(strongest));
-      const { x, y } = layout.origin(cover.at);
-      if (prop) parts.push(`<g transform="translate(${x} ${y})">${prop}</g>`);
+      if (prop) pieces.push({ markup: prop, ...layout.origin(cover.at) });
     }
     for (const [side, level] of written) {
-      parts.push(edgeLine(
+      lines.push(edgeLine(
         layout,
         cover.at,
         layout.neighbour(cover.at, side),
@@ -98,5 +107,6 @@ export function battlefieldFeatureMarkup(canvas: BattlefieldCanvas, map: GameMap
       ));
     }
   }
-  return parts.join('');
+  pieces.push(...wholeField(lines.join('')));
+  return pieces;
 }

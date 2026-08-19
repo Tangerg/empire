@@ -12,6 +12,6 @@ describe('game entry point', () => {
     expect(menu!.textContent).toContain('内置关卡');
     expect(document.querySelectorAll('.level-card').length).toBe(4);
     // Each card paints a real minimap.
-    expect(document.querySelectorAll('.level-thumb svg g[data-tile]').length).toBeGreaterThan(100);
+    expect(document.querySelectorAll('.level-thumb svg > g').length).toBeGreaterThan(100);
   });
 });

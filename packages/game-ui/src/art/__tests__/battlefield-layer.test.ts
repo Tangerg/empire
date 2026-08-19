@@ -1,7 +1,8 @@
 import { GENERIC_ART } from '../direction';
 import { describe, expect, it } from 'vitest';
 import { emptyLevel, mapFromLevel } from '@empire/battle-engine';
-import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../battlefield-layer';
+import { battlefieldFeaturePieces, battlefieldRenderKey } from '../battlefield-layer';
+import { boardPiecesMarkup } from '../board-surface';
 import { squareLayout, type BoardLayout } from '../board-decorations';
 
 import { createTestCatalog } from '@empire/test-content';
@@ -16,7 +17,7 @@ describe('shared battlefield feature layer', () => {
     map.cliffs.push({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } });
     map.directionalCover.push({ at: { x: 1, y: 1 }, sides: { north: 'half', east: 'full' } });
 
-    const markup = battlefieldFeatureMarkup({ art: GENERIC_ART, layout: squareLayout }, map);
+    const markup = boardPiecesMarkup(battlefieldFeaturePieces({ art: GENERIC_ART, layout: squareLayout }, map));
     expect(markup).toContain('>2</text>');
     expect(markup).toContain('#f0b24f');
     expect(markup).toContain('#4f9bc7');
@@ -54,18 +55,21 @@ describe('shared battlefield feature layer', () => {
       corners: 6,
       origin: (at) => ({ x: at.x * 40 + 500, y: at.y * 28 }),
       center: (at) => ({ x: at.x * 40 + 520, y: at.y * 28 + 14 }),
-      outline: () => '',
+      shape: () => '',
       neighbour: (at) => ({ x: at.x * 40 + 600, y: at.y * 28 + 14 }),
     };
 
-    const square = battlefieldFeatureMarkup({ art: GENERIC_ART, layout: squareLayout }, map);
-    const hex = battlefieldFeatureMarkup({ art: GENERIC_ART, layout: elsewhere }, map);
+    const square = battlefieldFeaturePieces({ art: GENERIC_ART, layout: squareLayout }, map);
+    const hex = battlefieldFeaturePieces({ art: GENERIC_ART, layout: elsewhere }, map);
 
     // The square layout has no `hexEast`, so its own neighbour lookup lands on
     // the cell itself and there is no edge to draw; the six-sided one draws it.
-    expect(square).not.toContain('#d85c4c');
-    expect(hex).toContain('#d85c4c');
-    expect(hex).toContain('cx="565.92"');
+    expect(boardPiecesMarkup(square)).not.toContain('#d85c4c');
+    expect(boardPiecesMarkup(hex)).toContain('#d85c4c');
+    // The badge is a picture at a cell, so where it lands is the tiling's answer
+    // and not something written into the badge.
+    const badge = hex.find((piece) => piece.markup.includes('elevation-badge'))!;
+    expect({ x: badge.x, y: badge.y }).toEqual(elsewhere.origin({ x: 1, y: 1 }));
     expect(battlefieldRenderKey(map)).toContain('hexEast=full');
   });
 
@@ -73,7 +77,7 @@ describe('shared battlefield feature layer', () => {
     const map = mapFromLevel(TEST_CATALOG, emptyLevel(TEST_CATALOG, 3, 2));
     map.elevation = [2, 2, 0, 2, 2, 1];
 
-    const markup = battlefieldFeatureMarkup({ art: GENERIC_ART, layout: squareLayout }, map);
-    expect(markup.match(/class="elevation-badge"/g)).toHaveLength(2);
+    const pieces = battlefieldFeaturePieces({ art: GENERIC_ART, layout: squareLayout }, map);
+    expect(pieces.filter((piece) => piece.markup.includes('elevation-badge'))).toHaveLength(2);
   });
 });

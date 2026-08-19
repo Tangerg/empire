@@ -114,10 +114,17 @@ export function cellCenter(viewport: SceneViewport, at: { x: number; y: number }
   return { x: centre.x * viewport.tileSize, y: centre.y * viewport.tileSize };
 }
 
-/** Outline of one cell as an SVG points list, centred on that cell. */
-export function cellOutline(viewport: SceneViewport, at: { x: number; y: number }): string {
-  const centre = cellCenter(viewport, at);
+/**
+ * The shape of a cell as an SVG points list, about the cell's own origin.
+ *
+ * The tiling is not asked which cell, because it does not have a per-cell answer:
+ * `TacticalGrid.outline()` takes no argument. This used to translate that shape to
+ * a given cell before returning it, and every caller then had a picture that could
+ * only ever be drawn at that one cell.
+ */
+export function cellShape(viewport: SceneViewport): string {
+  const middle = viewport.tileSize / 2;
   return viewport.grid.outline()
-    .map((corner) => `${(centre.x + corner.x * viewport.tileSize).toFixed(2)},${(centre.y + corner.y * viewport.tileSize).toFixed(2)}`)
+    .map((corner) => `${(middle + corner.x * viewport.tileSize).toFixed(2)},${(middle + corner.y * viewport.tileSize).toFixed(2)}`)
     .join(' ');
 }

@@ -1,9 +1,11 @@
 import { FrameAnimationSystem, registerSvgStrip } from './frame-animation';
 import {
   BOARD_LAYERS,
+  boardPiecesMarkup,
   type BoardDrawing,
   type BoardPointer,
   type BoardLayer,
+  type BoardPiece,
   type BoardRole,
   type BoardState,
   type BoardSurface,
@@ -15,9 +17,11 @@ import { clear, fromMarkup, setAttrs, svg } from './svg';
  * A battlefield drawn as one SVG tree.
  *
  * The renderer this project was built on, now behind the port instead of fused
- * into the board. It emits the same tree it always did — the layer classes, the
- * `data-unit` handles and the state classes are all load-bearing, because the
- * stylesheet and forty-five test assertions read them.
+ * into the board. The layer classes and the state classes are load-bearing — the
+ * stylesheet and forty-five test assertions read them. `data-unit` is not: it
+ * names a unit in `tools/board-digest.ts` output so a human can read a renderer
+ * diff, and it sits on the wrapper this surface makes rather than inside the
+ * picture, so it costs a texture cache nothing.
  */
 
 /** What a `BoardState` is called in the stylesheet. */
@@ -180,11 +184,14 @@ export class SvgBoardSurface implements BoardSurface {
     }, { passive: false });
   }
 
-  setLayer(layer: BoardLayer, markup: string): string[] {
+  setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): string[] {
     const host = this.layers[layer];
     clear(host);
-    if (!markup) return [];
-    host.append(fromMarkup(markup));
+    if (!pieces.length) return [];
+    // One parse for the whole layer: building four thousand groups by hand is
+    // slower than letting the parser do it, and the string is the same one
+    // `boardPiecesMarkup` hands to a thumbnail or to the editor's own canvas.
+    host.append(fromMarkup(boardPiecesMarkup(pieces)));
     return this.playStrips(host);
   }
 

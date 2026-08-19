@@ -2,6 +2,7 @@ export * from './art/battle-presentation';
 export * from './art/battlefield-layer';
 export * from './art/svg';
 export * from './art/board-decorations';
+export * from './art/board-surface';
 export * from './art/direction';
 export * from './art/ports';
 export * from './art/runtime-raster';

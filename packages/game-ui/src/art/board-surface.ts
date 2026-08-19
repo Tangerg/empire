@@ -10,7 +10,7 @@
  *
  * This is the seam. What crosses it is deliberately small:
  *
- * - a layer's whole content, as markup, in a declared depth order
+ * - a layer's whole content, as pictures at places, in a declared depth order
  * - a persistent drawing per unit, and transient ones for effects
  * - four continuous properties every animation is expressed in
  * - named visual states, instead of CSS classes poked from outside
@@ -46,6 +46,48 @@ export const BOARD_LAYERS = [
 ] as const;
 
 export type BoardLayer = (typeof BOARD_LAYERS)[number];
+
+/**
+ * One picture, and where its origin sits in scene units.
+ *
+ * A layer used to cross this seam as a single string, and the producers built it
+ * by wrapping each picture in `<g transform="translate(…)">` before joining. That
+ * threw away the structure they already had: the renderer received a document and
+ * had to parse the places back out of it to learn anything.
+ *
+ * What it cost is measurable, and `tools/board-scale.ts` measures it. A picture's
+ * *identity* is what makes a texture cache work — the same tile drawn four
+ * thousand times is one texture — and identity was fused with placement and with
+ * a `data-tile="x,y"` handle that nothing but four tests ever read. On a painted
+ * 81×51 field the terrain layer draws four distinct pictures across 4,131 cells,
+ * and a renderer looking at the string saw 4,131 different ones.
+ *
+ * So placement is the renderer's, exactly as it is for an effect and for a unit.
+ * Markup that has no place — line work across the whole field, a clip definition —
+ * is a piece at the origin. That is the same rule, not a second one.
+ */
+export interface BoardPiece {
+  readonly markup: string;
+  readonly x: number;
+  readonly y: number;
+}
+
+/** Markup with no place of its own, as the one piece a layer is made of. */
+export const wholeField = (markup: string): readonly BoardPiece[] =>
+  markup ? [{ markup, x: 0, y: 0 }] : [];
+
+/**
+ * The pieces as one SVG string.
+ *
+ * The canonical spelling of "a picture at a place", used by the SVG surface and
+ * by everyone who draws a board without one — a level thumbnail, the editor's own
+ * canvas. Two call sites used to spell the same translate differently, one with a
+ * comma and one with a space.
+ */
+export const boardPiecesMarkup = (pieces: readonly BoardPiece[]): string =>
+  pieces
+    .map((piece) => `<g transform="translate(${piece.x.toFixed(2)},${piece.y.toFixed(2)})">${piece.markup}</g>`)
+    .join('');
 
 /**
  * A visual state a drawing is in.
@@ -139,7 +181,7 @@ export interface BoardSurface {
   /** Reports where the pointer is, in scene units. */
   listen(pointer: BoardPointer): void;
   /** Replaces a layer's whole content. Returns the animation ids it registered. */
-  setLayer(layer: BoardLayer, markup: string): string[];
+  setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): string[];
   /** A persistent drawing for one unit, created on first ask. */
   unit(id: number, draw: () => string): { drawing: BoardDrawing; animationId: string | null };
   /** Whether a unit already has a drawing, without making one. */

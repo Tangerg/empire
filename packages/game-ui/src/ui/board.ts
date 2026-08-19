@@ -12,20 +12,20 @@ import { FrameAnimationSystem } from '../art/frame-animation';
 import { decorationsFor, type BattlePresentation } from '../art/battle-presentation';
 import { markerFromRules, structureFromRules } from '../art/field-objects-from-rules';
 import type { ArtDirection } from '../art/direction';
-import type { BoardDecorations, BoardLayout } from '../art/board-decorations';
-import { battlefieldFeatureMarkup, battlefieldRenderKey } from '../art/battlefield-layer';
-import { TILE, terrainLayerMarkup } from '../art/terrain';
+import type { BoardDecorations, BoardLayout, DecorationTint } from '../art/board-decorations';
+import { battlefieldFeaturePieces, battlefieldRenderKey } from '../art/battlefield-layer';
+import { TILE, terrainLayerPieces } from '../art/terrain';
 import {
   cellCenter,
   cellOrigin,
-  cellOutline,
+  cellShape,
   createSceneViewport,
   scenePointToCell,
   type SceneViewport,
 } from '../art/scene-viewport';
 import { unitSpriteMarkup } from '../art/units';
 import { escapeHtml } from './html';
-import type { BoardDrawing, BoardSurface } from '../art/board-surface';
+import { wholeField, type BoardDrawing, type BoardPiece, type BoardSurface } from '../art/board-surface';
 import { SvgBoardSurface } from '../art/svg-board-surface';
 
 export interface BoardOverlay {
@@ -170,7 +170,7 @@ export class BoardView {
       corners: this.viewport.grid.outline().length,
       origin: (at) => cellOrigin(this.viewport, at),
       center: (at) => cellCenter(this.viewport, at),
-      outline: (at) => cellOutline(this.viewport, at),
+      shape: () => cellShape(this.viewport),
       neighbour: (at, direction) => cellCenter(this.viewport, this.viewport.grid.step(at, direction)),
     };
   }
@@ -204,9 +204,14 @@ export class BoardView {
     return cellCenter(this.viewport, at);
   }
 
-  private place(at: Coord): string {
-    const origin = this.origin(at);
-    return `translate(${origin.x.toFixed(2)} ${origin.y.toFixed(2)})`;
+  /** A picture, at the origin of the cell it belongs to. */
+  private at(cell: Coord, markup: string): BoardPiece {
+    return { markup, ...this.origin(cell) };
+  }
+
+  /** The cell a flat map index refers to. */
+  private cellOf(index: number): Coord {
+    return { x: index % this.state.map.width, y: Math.floor(index / this.state.map.width) };
   }
 
   /* ------------------------------------------------------------------ setup */
@@ -302,17 +307,20 @@ export class BoardView {
     if (signature === this.mapSignature) return;
     this.mapSignature = signature;
     const colorOf = (id: number) => s.players.find((p) => p.id === id)?.color;
-    this.surface.setLayer('terrain', terrainLayerMarkup(
+    this.surface.setLayer('terrain', terrainLayerPieces(
       { art: this.art, layout: this.layout, content: this.content }, s.map, colorOf, s.levelId,
     ));
     for (const id of this.sceneryAnimationIds) this.frameAnimations.unregister(id);
+    // An authored scene is one painting, not a picture per cell, so it crosses
+    // the seam as the whole field. Which is why the layer it lands in is the
+    // second-largest on a big board and the one still worth breaking up.
     const sceneLayers = this.presentation.sceneLayers(s.levelId, s.map, this.viewport);
     this.sceneryAnimationIds = [
-      ...this.surface.setLayer('ground', sceneLayers.ground),
-      ...this.surface.setLayer('scenery', sceneLayers.underUnits),
-      ...this.surface.setLayer('foreground', sceneLayers.overUnits),
+      ...this.surface.setLayer('ground', wholeField(sceneLayers.ground)),
+      ...this.surface.setLayer('scenery', wholeField(sceneLayers.underUnits)),
+      ...this.surface.setLayer('foreground', wholeField(sceneLayers.overUnits)),
     ];
-    this.surface.setLayer('spatial', battlefieldFeatureMarkup({ art: this.art, layout: this.layout }, s.map));
+    this.surface.setLayer('spatial', battlefieldFeaturePieces({ art: this.art, layout: this.layout }, s.map));
   }
 
   render(overlay: BoardOverlay): void {
@@ -342,77 +350,78 @@ export class BoardView {
     // Every one of the six structure types and five marker kinds this repository
     // ships was invisible on a board with no painted scene — and one of them is a
     // shipped chapter's victory condition.
-    const structures = s.structures.map((state) => {
+    this.surface.setLayer('structures', s.structures.map((state) => {
       const ownerColor = s.players.find((player) => player.id === state.owner)?.color;
       const definition = this.content.structures.get(state.type);
-      const markup = this.presentation.structure(state, definition, ownerColor)
-        ?? structureFromRules(state, definition, ownerColor);
-      return `<g transform="${this.place(state)}" data-structure="${state.id}">${markup}</g>`;
-    });
-    this.surface.setLayer('structures', structures.join(''));
+      return this.at(state, this.presentation.structure(state, definition, ownerColor)
+        ?? structureFromRules(state, definition, ownerColor));
+    }));
 
-    const markers = s.markers.map((marker) => {
+    this.surface.setLayer('markers', s.markers.map((marker) => {
       const ownerColor = s.players.find((player) => player.id === marker.owner)?.color;
-      const markup = this.presentation.marker(marker, ownerColor)
-        ?? markerFromRules(marker, ownerColor);
-      return `<g transform="${this.place(marker.at)}" data-marker="${marker.id}">${markup}</g>`;
-    });
-    this.surface.setLayer('markers', markers.join(''));
+      return this.at(marker.at, this.presentation.marker(marker, ownerColor)
+        ?? markerFromRules(marker, ownerColor));
+    }));
   }
 
+  /**
+   * The tactical overlay: one tinted spot per tile, at every tile that wants it.
+   *
+   * `actionSpot` used to be handed the cell and return a picture already at it, so
+   * a fog of war over a large field was four thousand differently-worded copies of
+   * the same dark shape. It is one shape now, placed four thousand times.
+   */
   private renderRanges(o: BoardOverlay): void {
     const s = this.state;
-    const parts: string[] = [];
-    const cell = (i: number, fill: string, opacity: number, stroke?: string) => {
-      parts.push(this.decor.actionSpot(this.layout, {
-        x: i % s.map.width,
-        y: Math.floor(i / s.map.width),
-        fill,
-        opacity,
-        stroke,
-      }));
+    const pieces: BoardPiece[] = [];
+    const spread = (cells: Iterable<number>, tint: DecorationTint) => {
+      const spot = this.decor.actionSpot(this.layout, tint);
+      for (const i of cells) pieces.push(this.at(this.cellOf(i), spot));
     };
-    for (const i of o.threat) cell(i, '#ff3b30', 0.1);
+    spread(o.threat, { fill: '#ff3b30', opacity: 0.1 });
     // Held ground is drawn under the move range: the player needs to see why a
     // path stops short, not merely that it does.
-    for (const i of o.controlled) cell(i, '#8c6bd8', 0.18, '#b9a3f0');
+    spread(o.controlled, { fill: '#8c6bd8', opacity: 0.18, stroke: '#b9a3f0' });
     // A marked tile is committed damage, so it reads stronger than mere threat
     // and carries its own countdown.
+    const marked = this.decor.actionSpot(this.layout, { fill: '#ffb020', opacity: 0.3, stroke: '#ffd479' });
+    const middle = TILE / 2;
     for (const [i, remaining] of o.incoming) {
-      cell(i, '#ffb020', 0.3, '#ffd479');
-      const centre = this.centre({ x: i % s.map.width, y: Math.floor(i / s.map.width) });
-      parts.push(`<text class="incoming-count" x="${centre.x}" y="${centre.y + 4}"
-        text-anchor="middle" font-size="11" font-weight="700" fill="#2a1a00">${remaining}</text>`);
+      pieces.push(this.at(this.cellOf(i), `${marked}<text class="incoming-count" x="${middle}" y="${middle + 4}"
+        text-anchor="middle" font-size="11" font-weight="700" fill="#2a1a00">${remaining}</text>`));
     }
-    for (const i of o.move) if (!o.attack.has(i)) cell(i, '#3f9fff', 0.22);
-    for (const i of o.heal) cell(i, '#5fd07a', 0.28, '#8ef7a5');
-    for (const i of o.attack) cell(i, '#ff4436', 0.16, '#ff7468');
+    spread([...o.move].filter((i) => !o.attack.has(i)), { fill: '#3f9fff', opacity: 0.22 });
+    spread(o.heal, { fill: '#5fd07a', opacity: 0.28, stroke: '#8ef7a5' });
+    spread(o.attack, { fill: '#ff4436', opacity: 0.16, stroke: '#ff7468' });
 
     if (o.visible) {
-      for (let i = 0; i < s.map.tiles.length; i++) {
-        if (!o.visible.has(i)) cell(i, '#0b1020', 0.55);
-      }
+      const unseen: number[] = [];
+      for (let i = 0; i < s.map.tiles.length; i++) if (!o.visible.has(i)) unseen.push(i);
+      spread(unseen, { fill: '#0b1020', opacity: 0.55 });
     }
-    this.surface.setLayer('range', parts.join(''));
+    this.surface.setLayer('range', pieces);
   }
 
   private renderPath(path: Coord[]): void {
     if (path.length < 2) {
-      this.surface.setLayer('path', '');
+      this.surface.setLayer('path', []);
       return;
     }
     const d = this.decor.movePath(this.layout, path);
     const last = path[path.length - 1];
     const prev = path[path.length - 2];
     const angle = (Math.atan2(last.y - prev.y, last.x - prev.x) * 180) / Math.PI;
-    this.surface.setLayer(
-      'path',
-      `<path d="${d}" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/>
-         <path d="${d}" fill="none" stroke="#2f6fd0" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
-         <g transform="translate(${this.centre(last).x} ${this.centre(last).y}) rotate(${angle})">
+    // The line runs through many cells, so it is field-wide; the arrowhead is a
+    // picture at the cell the march ends on.
+    this.surface.setLayer('path', [
+      ...wholeField(
+        `<path d="${d}" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/>
+         <path d="${d}" fill="none" stroke="#2f6fd0" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>`,
+      ),
+      this.at(last, `<g transform="translate(${TILE / 2} ${TILE / 2}) rotate(${angle})">
            <path d="M-4 -5 4 0 -4 5z" fill="#2f6fd0" stroke="#ffffff" stroke-width="1.2"/>
-         </g>`,
-    );
+         </g>`),
+    ]);
   }
 
   /** The drawing for a unit, made on first sight and kept until it leaves. */
@@ -474,10 +483,10 @@ export class BoardView {
   }
 
   private renderCursor(o: BoardOverlay): void {
-    const parts: string[] = [];
-    if (o.selected) parts.push(this.decor.ring(this.layout, o.selected, 'selection'));
-    if (o.cursor) parts.push(this.decor.ring(this.layout, o.cursor, 'cursor'));
-    this.surface.setLayer('cursor', parts.join(''));
+    const pieces: BoardPiece[] = [];
+    if (o.selected) pieces.push(this.at(o.selected, this.decor.ring(this.layout, 'selection')));
+    if (o.cursor) pieces.push(this.at(o.cursor, this.decor.ring(this.layout, 'cursor')));
+    this.surface.setLayer('cursor', pieces);
   }
 
   /* -------------------------------------------------------------- animation */

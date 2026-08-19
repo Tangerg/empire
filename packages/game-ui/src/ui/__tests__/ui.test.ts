@@ -96,8 +96,8 @@ describe('game controller', () => {
 
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
     expect(board).toBeTruthy();
-    // One group per tile in the terrain layer.
-    expect(board.querySelectorAll('.layer-terrain > g > g[data-tile]').length).toBe(
+    // One picture per tile in the terrain layer.
+    expect(board.querySelectorAll('.layer-terrain > g > g').length).toBe(
       level.width * level.height,
     );
     expect(board.querySelectorAll('.layer-units > .unit').length).toBe(level.units.length);
@@ -274,7 +274,7 @@ describe('game controller', () => {
     expect(children.indexOf(units)).toBeLessThan(children.indexOf(foreground));
     expect(ground.querySelector('.candidate-ground-route')).toBeTruthy();
     expect(world.querySelector('.layer-grid line')).toBeFalsy();
-    expect(world.querySelectorAll('.candidate-stand-node')).toHaveLength(level.width * level.height);
+    expect(world.querySelectorAll('.layer-grid > g > g')).toHaveLength(level.width * level.height);
     board.dispose();
   });
 
@@ -324,7 +324,7 @@ describe('game controller', () => {
     for (const level of withStructures) {
       const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
       host.append(c.root);
-      const drawn = [...c.root.querySelectorAll('[data-structure]')];
+      const drawn = [...c.root.querySelectorAll('.layer-structures > g > g')];
       expect(drawn, level.id).toHaveLength(level.structures!.length);
       for (const group of drawn) expect(group.innerHTML.length, level.id).toBeGreaterThan(40);
       c.dispose();
@@ -380,10 +380,10 @@ describe('game controller', () => {
     }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), silent);
     board.render(emptyOverlay());
 
-    for (const attribute of ['data-marker', 'data-structure']) {
-      const drawn = board.el.querySelectorAll(`[${attribute}]`);
-      expect(drawn, attribute).toHaveLength(1);
-      expect(drawn[0].innerHTML.length, attribute).toBeGreaterThan(40);
+    for (const layer of ['markers', 'structures']) {
+      const drawn = board.el.querySelectorAll(`.layer-${layer} > g > g`);
+      expect(drawn, layer).toHaveLength(1);
+      expect(drawn[0].innerHTML.length, layer).toBeGreaterThan(40);
     }
     board.dispose();
   });
@@ -663,8 +663,12 @@ describe('a hex board', () => {
     host.append(controller.root);
     const board = controller.root.querySelector('svg.board') as SVGSVGElement;
 
+    // Tiles in the order the layer emits them, row-major. The clip definition is
+    // the layer's one unplaced piece, and it is not a tile.
+    const tiles = [...board.querySelectorAll('.layer-terrain > g > g')]
+      .filter((piece) => !piece.querySelector('defs'));
     const tile = (x: number, y: number) =>
-      board.querySelector(`[data-tile="${x},${y}"]`)!.getAttribute('transform')!;
+      tiles[y * hexLevel().width + x].getAttribute('transform')!;
     const xOf = (transform: string) => Number.parseFloat(transform.replace(/[^\d.,-]/g, '').split(',')[0]);
 
     // An odd row sits half a cell to the right of the even row above it.
