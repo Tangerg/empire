@@ -140,41 +140,23 @@ describe('rescaling the field', () => {
   });
 
   /**
-   * Every filter the board carries is suspended while the scale is moving.
+   * Nothing draws a filter while the scale is moving.
    *
-   * The suspension list was written by hand and was already incomplete: it had the
-   * prop and figure shadows but not the `saturate/contrast/brightness` grade on
-   * `.layer-terrain` and `.layer-ground`, which are the two most expensive of the
-   * lot — a colour matrix over the whole field, 993 raster cells included, on every
-   * repaint. A hand-written list of expensive things is a list that goes stale, so
-   * this derives it: whatever a stylesheet applies a filter to and a real board
-   * carries has to be in the rule.
+   * This was a hand-written list of expensive classes, then a test that derived the
+   * list from the stylesheets because the hand-written one had missed both colour
+   * grades — the two most expensive things on the board. Both are gone: the rule is
+   * universal, so it cannot go stale, and it cannot fail to know about a filter a
+   * content pack invented in its own stylesheet.
    */
-  it('suspends every filter a real board carries', () => {
+  it('suspends filters universally rather than by a list that can go stale', () => {
     const css = stylesheets();
+    expect(css).toMatch(/\.board\.is-rescaling \*\s*\{[^}]*filter:\s*none\s*!important/);
+
+    // And no shared stylesheet names a filter it would have had to list.
     const rules = [...css.matchAll(/([^{}]+)\{([^}]*)\}/g)];
-    const suspended = new Set(
-      rules
-        .filter(([, selector]) => /\.board\.is-rescaling/.test(selector))
-        .flatMap(([, selector]) => [...selector.matchAll(/is-rescaling\s+\.([\w-]+)/g)].map(([, name]) => name)),
-    );
-    const filtering = new Set(
-      rules
-        .filter(([, selector, body]) =>
-          /(^|[\s;])filter:\s*(?!none)/.test(body) && !/is-rescaling/.test(selector))
-        .flatMap(([, selector]) => [...selector.matchAll(/\.([a-zA-Z][\w-]*)/g)].map(([, name]) => name)),
-    );
-
-    const { controller, board } = open();
-    // Only what this board actually carries: the menu's hero image and the HUD's
-    // icons wear filters too, and neither is re-rendered by a zoom. This sees a
-    // resting board, so a class that only appears mid-interaction is not proven
-    // here — `is-selected` is in the rule because it belongs there, not because
-    // this found it.
-    const carried = [...filtering].filter((name) => board.querySelectorAll(`.${name}`).length > 0);
-    controller.dispose();
-
-    expect(carried.length).toBeGreaterThan(8);
-    expect(carried.filter((name) => !suspended.has(name))).toEqual([]);
+    const named = rules
+      .filter(([, selector]) => /is-rescaling/.test(selector))
+      .flatMap(([, selector]) => [...selector.matchAll(/is-rescaling\s+\.([\w-]+)/g)].map(([, name]) => name));
+    expect(named).toEqual([]);
   });
 });

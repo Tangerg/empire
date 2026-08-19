@@ -1,5 +1,6 @@
 import '@empire/game-ui/styles/app.css';
 import '@empire/game-ui/styles/battle.css';
+import '@empire/story-candidate-01/styles/candidate-01.css';
 import '@empire/game-ui/styles/campaign.css';
 import {
   ContentPackInstaller,

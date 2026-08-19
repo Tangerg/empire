@@ -1487,6 +1487,64 @@ describe('the battle screen is its own screen', () => {
   });
 
   /**
+   * A shared stylesheet knows no content pack.
+   *
+   * `app.css` — the base sheet the map editor, the engine demo and the menu all load
+   * — held twenty-five rules about one campaign's art: its shadows, its colour
+   * grades, its image smoothing. Three applications that never draw a single one of
+   * them were shipping all of them, and the general layer held the specifics of a
+   * game it is not supposed to know. The same defect as the editor drawing with a
+   * hard-coded fallback, and as the grid-at-rest rule being written
+   * `.candidate-map .layer-grid`.
+   *
+   * A pack owns its appearance and ships it beside its art. Which pack it is comes
+   * from the packages that exist, not from a list here, so a second story cannot be
+   * forgotten.
+   */
+  it('keeps every content pack out of the shared stylesheets', () => {
+    const packs = readdirSync(packagesRoot, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory() && (entry.name.startsWith('story-') || entry.name.startsWith('content-')))
+      .map((entry) => entry.name);
+    expect(packs.length).toBeGreaterThan(2);
+
+    // What a pack's own classes are called: whatever its art actually emits.
+    // Interpolations are blanked rather than skipping the whole attribute — the
+    // first version of this required a class list with no `${}` in it, which is
+    // almost none of them, so it collected nothing and passed for that reason.
+    const classNames = (source: string): string[] =>
+      [...source.matchAll(/class="([^"]*)"/g)]
+        .flatMap(([, list]) => list.replace(/\$\{[^}]*\}/g, ' ').split(/\s+/))
+        .filter((name) => /^[a-zA-Z][\w-]*$/.test(name));
+
+    const emitted = new Set<string>();
+    for (const pack of packs) {
+      for (const file of runtimeTypeScriptFiles(join(packagesRoot, pack, 'src'))) {
+        for (const name of classNames(readFileSync(file, 'utf8'))) emitted.add(name);
+      }
+    }
+    // Names the general layer emits too are general, whoever else uses them.
+    for (const file of runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src'))) {
+      for (const name of classNames(readFileSync(file, 'utf8'))) emitted.delete(name);
+    }
+    expect(emitted.size).toBeGreaterThan(10);
+
+    const shared = ['game-ui', 'editor'].flatMap((owner) => {
+      const styles = join(packagesRoot, owner, 'src', 'styles');
+      if (!statSync(styles, { throwIfNoEntry: false })?.isDirectory()) return [];
+      return readdirSync(styles)
+        .filter((file) => file.endsWith('.css'))
+        .map((file) => [join(styles, file), readFileSync(join(styles, file), 'utf8')] as [string, string]);
+    });
+
+    const offenders = shared.flatMap(([file, css]) =>
+      [...emitted]
+        .filter((name) => new RegExp(`\\.${escapeForRegExp(name)}(?![\\w-])`).test(stripComments(css)))
+        .map((name) => `${relative(packagesRoot, file)} styles .${name}`));
+
+    expect(offenders).toEqual([]);
+  });
+
+  /**
    * A shell that stages a battle dresses it.
    *
    * The HUD's stylesheet is its own file so the editor cannot inherit it, which

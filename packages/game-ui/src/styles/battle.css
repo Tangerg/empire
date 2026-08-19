@@ -97,45 +97,24 @@
 }
 
 /*
- * While the scale is moving, the field stops drawing shadows.
+ * While the scale is moving, the field draws no filters at all.
  *
  * A `c01-01` board carries hundreds of drop-shadow passes between props, roads and
- * figures, and — worse — a `saturate/contrast/brightness` grade over the whole of
- * `.layer-terrain` and `.layer-ground`, which forces a colour matrix across the
- * entire field including its 993 raster cells. Every one is recomputed at the new
- * size on every step of a zoom, drawn once and thrown away. So they are not drawn:
- * the board flattens for the length of the gesture and is itself again 140ms after
- * it ends.
+ * figures, and a colour grade over the whole terrain and ground layers — a matrix
+ * across the entire field including its 993 raster cells. Every one is recomputed at
+ * the new size on every step of a zoom, drawn once and thrown away.
  *
- * The list is not hand-maintained. A test derives it from the stylesheets and a
- * real board, and this rule has to cover whatever that finds — the first version
- * of it, written by hand, had the prop shadows and missed both colour grades.
+ * One universal rule, not a list. The list was hand-written, missed both colour
+ * grades, and then needed a test to derive it from the stylesheets — and it named a
+ * content pack's classes from the shared layer, which is the coupling this round was
+ * removing. `*` cannot go stale and cannot know what a pack invented.
+ *
+ * `!important` on purpose: a pack's own stylesheet loads after this one and would
+ * otherwise win on equal specificity. "Nothing draws a filter right now" is exactly
+ * the kind of statement that should not lose an argument.
  */
-.board.is-rescaling .layer-terrain,
-.board.is-rescaling .layer-ground,
-.board.is-rescaling .layer-units,
-.board.is-rescaling .layer-foreground,
-.board.is-rescaling .candidate-scene-foreground,
-.board.is-rescaling .unit,
-.board.is-rescaling .is-selected,
-.board.is-rescaling .runtime-unit-figure,
-.board.is-rescaling .runtime-unit-contact-shadow,
-.board.is-rescaling .candidate-environment-prop,
-.board.is-rescaling .is-boundary-tree,
-.board.is-rescaling .is-frame-bottom,
-.board.is-rescaling .is-frame-left,
-.board.is-rescaling .is-frame-right,
-.board.is-rescaling .candidate-scenery-prop,
-.board.is-rescaling .candidate-scenery-topic,
-.board.is-rescaling .candidate-scenery-building,
-.board.is-rescaling .candidate-ground-route,
-.board.is-rescaling .candidate-ground-route-edge,
-.board.is-rescaling .candidate-action-spot,
-.board.is-rescaling .candidate-selection-ring,
-.board.is-rescaling .candidate-cursor-ring,
-.board.is-rescaling .candidate-battle-prop,
-.board.is-rescaling .elevation-badge {
-  filter: none;
+.board.is-rescaling * {
+  filter: none !important;
 }
 
 /* --------------------------------------------------------------------- hud */
