@@ -127,7 +127,46 @@ export interface BoardDrawing {
   part(role: BoardRole): BoardDrawing | null;
   /** Replaces everything the drawing holds under `role`. */
   fill(role: BoardRole, markup: string): void;
+}
+
+/**
+ * A drawing whose life the caller owns: made to play once, then taken away.
+ *
+ * Only an effect is one of these. A unit's drawing is not, and that is stated in
+ * the type rather than in a comment: `remove` used to be on every drawing, so
+ * taking a unit off the board was `drawing.remove()` *and* `dropUnit(id)` — two
+ * calls in an order nobody enforced, either of which alone left a ghost element or
+ * a leaked entry. `removeUnit` is the one act, and a unit's drawing cannot be
+ * removed behind the surface's back because it has no way to be.
+ *
+ * `remove` also stops whatever sprite timelines this drawing started. The board
+ * used to be handed a list of animation ids with every effect and every layer, for
+ * no purpose but to unregister them later — cleaning up after the thing that
+ * registered them.
+ */
+export interface BoardEffect extends BoardDrawing {
   remove(): void;
+}
+
+/**
+ * A unit's drawing, and the sprite timeline it moves on.
+ *
+ * `play` rather than an animation id, because the id was minted by the surface and
+ * then *reconstructed* by the board — `` `unit:${id}` `` was written in both files,
+ * so the board knew a key it was never given. Now it knows none.
+ */
+export interface BoardUnit {
+  readonly drawing: BoardDrawing;
+  /** True only on the ask that made it. */
+  readonly fresh: boolean;
+  /**
+   * Plays a named clip on this unit's sprite.
+   *
+   * A sprite with no frame strip has nothing to play, and this does nothing — the
+   * deliberate silence the board used to spell as `if (animations.has(id))`. An
+   * unknown clip on a sprite that *does* have a strip still throws.
+   */
+  play(clip: string): void;
 }
 
 /**
@@ -180,18 +219,25 @@ export interface BoardSurface {
   readonly element: SVGElement | HTMLElement;
   /** Reports where the pointer is, in scene units. */
   listen(pointer: BoardPointer): void;
-  /** Replaces a layer's whole content. Returns the animation ids it registered. */
-  setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): string[];
-  /** A persistent drawing for one unit, created on first ask. */
-  unit(id: number, draw: () => string): { drawing: BoardDrawing; animationId: string | null };
-  /** Whether a unit already has a drawing, without making one. */
-  hasUnit(id: number): boolean;
-  /** Forgets a unit's drawing. */
-  dropUnit(id: number): void;
+  /** Replaces a layer's whole content, and whatever the old content was playing. */
+  setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): void;
+  /** A persistent drawing for one unit, made on first ask. */
+  unit(id: number, draw: () => string): BoardUnit;
+  /**
+   * The drawing this unit already has, or `null`.
+   *
+   * Asking and committing are different acts. This was five call sites of
+   * `unit(id, () => '')` — a call that *makes* a drawing, used to fetch one, with a
+   * factory that would have drawn an empty unit had the id not been there. Each was
+   * kept honest by a preceding `hasUnit`, which is a query written twice.
+   */
+  drawnUnit(id: number): BoardUnit | null;
+  /** Takes a unit off the board, stops its sprite, and forgets it. */
+  removeUnit(id: number): void;
   /** Every unit that currently has a drawing. */
   drawnUnits(): number[];
-  /** A transient drawing in the effects layer. Returns the animation ids too. */
-  effect(markup: string): { drawing: BoardDrawing; animationIds: string[] };
+  /** A transient drawing in the effects layer, removed by whoever played it. */
+  effect(markup: string): BoardEffect;
   /** The pixel size the picture is presented at. */
   resize(width: number, height: number): void;
   /** Whether the player is measuring with the board right now. */

@@ -347,6 +347,7 @@ marker 只有两个诚实的事实可读：**是谁的**，以及**是不是有�
 | --- | --- |
 | 一层的全部内容（一串「图 + 位置」），按声明好的深度顺序 | 元素、类名、选择器 |
 | 每个单位一份常驻 drawing，特效用临时的 | `getBoundingClientRect`、事件监听 |
+| 「在这个单位身上播 `idle`」 | 帧动画系统、动画 id、注销时机 |
 | `place` / `nudge` / `swell` / `opacity` 四个连续属性 | transform 字符串拼接 |
 | 具名视觉状态（`facingLeft` / `selected` / …） | CSS 类名 |
 | 屏幕坐标 → 场景坐标 | 场景坐标 → 格（那是铺法的答案，留在 board） |
@@ -421,6 +422,34 @@ digest 证明：42,509 行里**每一处差异都可归因**——16 张题材�
 证明方式换了工具。`board:digest` 逐字节钉住 markup，对这种改动**每一行都会不同而画面完全没动**，它没法回答问题。`tools/board-flat.ts` 把位置**解析成绝对坐标**再列出来：只带 transform 的组是结构、不报告；其余每样东西报告它真正落在哪。于是包装组的出现与消失是隐形的，而任何东西移动一个像素都不是。
 
 36 张关卡 × 两套美术，**唯一的差异是 12,001 行删除**（6,372 个 `data-tile`、5,620 个 `.candidate-stand-node` 包装、9 个 `data-structure`）。**没有新增一行，没有一个坐标改变。**
+
+### 画出来的东西，活多久由画它的人决定
+
+端口原本让 board 替 surface 收尾，四个地方：
+
+- `effect(markup)` 返回 `{ drawing, animationIds }`，那串 id 唯一的用途是稍后注销——**注销由 surface 注册的东西**。
+- `setLayer(...)` 同样返回一串 id，board 存成一个字段，在下一次 `setLayer` **之前**注销。而 `setLayer` 本来就要清掉那一层。
+- 拿走一个单位要三步：`unregister(unitAnimationId(id))`、`drawing.remove()`、`dropUnit(id)`。顺序没人约束，任一步单独执行就留下幽灵元素或者泄漏的表项。
+- `` `unit:${id}` `` **在两个文件里各写了一遍**：surface 铸造这个 key，board 又把它重新拼出来。
+
+还有一条更直接的：取一个单位已有的 drawing 写作 `unit(id, () => '')`——一个**创建**的调用被用来**查询**，工厂函数在 id 不存在时会画出一个空单位。五处，每处都靠前面一句 `hasUnit` 兜着，也就是同一个查询写了两遍。这正是 `AGENTS.md` 那条「**问和做是两件不同的事，问不出来就返回 `null`**」。
+
+现在：
+
+| 之前 | 现在 |
+| --- | --- |
+| `hasUnit(id)` + `unit(id, () => '')` | `drawnUnit(id): BoardUnit \| null` |
+| `unregister` + `remove` + `dropUnit` | `removeUnit(id)` |
+| `effect() → { drawing, animationIds }` | `effect() → BoardEffect`，`remove()` 自己停掉时间线 |
+| `setLayer() → string[]` | `setLayer() → void` |
+| `frameAnimations.play(unitAnimationId(id), 'walk')` | `drawn.play('walk')` |
+| board 持有 `FrameAnimationSystem` | surface 持有；board 不再知道任何动画 id |
+
+`remove()` 从 `BoardDrawing` 上**移到了 `BoardEffect`**：只有特效的生命归调用方，单位的归 surface。这不是注释里的约定，是类型说的——单位的 drawing **没有** `remove` 可调，所以不可能绕过 surface 被摘掉。
+
+**一个活过自己元素的 drawing 不是看得见的 bug，是一个永不停止的帧循环**，在一个已经不在树里的节点上转。所以四条守卫观察的正是这件事：起一个循环剪辑，摘掉它的宿主，然后数还有没有人在要下一帧。四条都用精准破坏验过（`removeUnit` 只忘表项 / `setLayer` 只清 DOM / `remove()` 只 detach / 查询顺手创建），各自变红。
+
+markup 与几何都与上一轮**逐字节相同**——这一轮没有动画面，只动了「谁负责收尾」。
 
 ### Pixi 后端还缺什么
 

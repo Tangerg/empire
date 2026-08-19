@@ -61,7 +61,7 @@ npm run build:experience
 | 战役测试 | `packages/campaign-engine/src/__tests__/` | 节点、事务、战斗桥和存档 |
 | 存档往返 | `battle-save.test.ts` | 战斗存档经 JSON 往返后摘要一致，且拒绝这套规则跑不了的存档 |
 | 编辑器测试 | `packages/editor/src/__tests__/` | 文档往返、工具、历史和校验 |
-| 表现测试 | `packages/game-ui/src/art/__tests__/` | 图层、场景映射、帧动画和栅格素材 |
+| 表现测试 | `packages/game-ui/src/art/__tests__/` | 图层、场景映射、帧动画、栅格素材，以及渲染器端口的生命周期（摘掉宿主之后还有没有人在要下一帧） |
 | UI 集成 | `packages/game-ui/src/ui/__tests__/` | 控制器和战役界面 |
 | 应用冒烟 | `apps/*/src/main.test.ts` | 真实入口安装内容并挂载页面 |
 | 架构测试 | `architecture-boundaries.test.ts` | 无环、包边界、入口面、端口依赖和行为归属，共 63 条（断言、朝向、调用形状、端口字段、实体字段扫描全部工作区包；错误静默扫描还包含四个应用入口） |

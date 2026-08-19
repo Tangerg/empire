@@ -3,6 +3,7 @@ import {
   BOARD_LAYERS,
   boardPiecesMarkup,
   type BoardDrawing,
+  type BoardEffect,
   type BoardPointer,
   type BoardLayer,
   type BoardPiece,
@@ -10,6 +11,7 @@ import {
   type BoardState,
   type BoardSurface,
   type BoardSurfaceScene,
+  type BoardUnit,
 } from './board-surface';
 import { clear, fromMarkup, setAttrs, svg } from './svg';
 
@@ -101,7 +103,14 @@ class SvgDrawing implements BoardDrawing {
     if (markup) host.append(fromMarkup(markup));
   }
 
-  remove(): void {
+  /**
+   * Takes the element out of the tree.
+   *
+   * Not `remove`, and not on `BoardDrawing`. The surface decides when a unit's
+   * drawing goes, because it also has a sprite timeline to stop and an entry to
+   * forget; an effect gets the public `remove` that does all three.
+   */
+  detach(): void {
     this.el.remove();
   }
 
@@ -114,17 +123,53 @@ class SvgDrawing implements BoardDrawing {
   }
 }
 
+/** One transient drawing, and the sprite timelines it started. */
+class SvgEffect extends SvgDrawing implements BoardEffect {
+  constructor(
+    el: SVGGElement,
+    private readonly animations: FrameAnimationSystem,
+    private readonly strips: readonly string[],
+  ) {
+    super(el);
+  }
+
+  remove(): void {
+    for (const id of this.strips) this.animations.unregister(id);
+    this.detach();
+  }
+}
+
+/** Which ask produced a `BoardUnit`: the one that made it, or a later one. */
+type Ask = 'made' | 'found';
+
+/** What the surface keeps for a unit: its drawing, and its place in the timeline. */
+interface UnitRecord {
+  readonly drawing: SvgDrawing;
+  readonly animationId: string | null;
+}
+
 export class SvgBoardSurface implements BoardSurface {
   readonly element: SVGSVGElement;
   private readonly layers: Record<BoardLayer, SVGGElement>;
-  private readonly units = new Map<number, SvgDrawing>();
+  private readonly units = new Map<number, UnitRecord>();
+  /**
+   * What each layer's current content is playing.
+   *
+   * Replacing a layer discards its strips, so the surface unregisters them. The
+   * board used to hold this list itself and unregister before every `setLayer` —
+   * cleaning up after the call it was about to make.
+   */
+  private readonly layerStrips = new Map<BoardLayer, string[]>();
+  /**
+   * The sprite timeline for everything this surface draws.
+   *
+   * Owned rather than handed in. It was constructed by the board and passed down,
+   * which is what let the board register nothing and unregister everything.
+   */
+  private readonly animations = new FrameAnimationSystem();
   private effectSerial = 0;
 
-  constructor(
-    private readonly scene: BoardSurfaceScene,
-    /** Shared with the board, so a strip registered here is played from there. */
-    private readonly animations: FrameAnimationSystem,
-  ) {
+  constructor(private readonly scene: BoardSurfaceScene) {
     this.element = svg('svg', {
       viewBox: `0 0 ${scene.width} ${scene.height}`,
       class: `board${scene.themeClass ? ` ${scene.themeClass}` : ''}`,
@@ -184,53 +229,60 @@ export class SvgBoardSurface implements BoardSurface {
     }, { passive: false });
   }
 
-  setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): string[] {
+  setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): void {
     const host = this.layers[layer];
+    for (const id of this.layerStrips.get(layer) ?? []) this.animations.unregister(id);
+    this.layerStrips.delete(layer);
     clear(host);
-    if (!pieces.length) return [];
+    if (!pieces.length) return;
     // One parse for the whole layer: building four thousand groups by hand is
     // slower than letting the parser do it, and the string is the same one
     // `boardPiecesMarkup` hands to a thumbnail or to the editor's own canvas.
     host.append(fromMarkup(boardPiecesMarkup(pieces)));
-    return this.playStrips(host);
-  }
-
-  hasUnit(id: number): boolean {
-    return this.units.has(id);
+    const strips = this.playStrips(host);
+    if (strips.length) this.layerStrips.set(layer, strips);
   }
 
   drawnUnits(): number[] {
     return [...this.units.keys()];
   }
 
-  dropUnit(id: number): void {
-    this.units.delete(id);
-  }
-
-  unit(id: number, draw: () => string): { drawing: BoardDrawing; animationId: string | null } {
+  unit(id: number, draw: () => string): BoardUnit {
     const existing = this.units.get(id);
-    if (existing) return { drawing: existing, animationId: null };
+    if (existing) return this.asUnit(existing, 'found');
 
     const el = svg('g', { class: 'unit', 'data-unit': id });
     el.append(fromMarkup(draw()));
     // The badges group declares its role, so nothing has to find it by position.
     el.append(svg('g', { class: 'badges', 'data-part': 'badges' }));
     this.layers.units.append(el);
-    const drawing = new SvgDrawing(el);
-    this.units.set(id, drawing);
 
     const strip = el.querySelector('.runtime-frame-strip') as SVGImageElement | null;
-    if (!strip) return { drawing, animationId: null };
-    const animationId = `unit:${id}`;
-    registerSvgStrip(this.animations, animationId, strip);
-    return { drawing, animationId };
+    const animationId = strip ? `unit:${id}` : null;
+    if (strip && animationId) registerSvgStrip(this.animations, animationId, strip);
+    const record: UnitRecord = { drawing: new SvgDrawing(el), animationId };
+    this.units.set(id, record);
+    return this.asUnit(record, 'made');
   }
 
-  effect(markup: string): { drawing: BoardDrawing; animationIds: string[] } {
+  drawnUnit(id: number): BoardUnit | null {
+    const record = this.units.get(id);
+    return record ? this.asUnit(record, 'found') : null;
+  }
+
+  removeUnit(id: number): void {
+    const record = this.units.get(id);
+    if (!record) return;
+    if (record.animationId) this.animations.unregister(record.animationId);
+    record.drawing.detach();
+    this.units.delete(id);
+  }
+
+  effect(markup: string): BoardEffect {
     const group = svg('g', { class: 'fx' });
     group.append(fromMarkup(markup));
     this.layers.effects.append(group);
-    return { drawing: new SvgDrawing(group), animationIds: this.playStrips(group) };
+    return new SvgEffect(group, this.animations, this.playStrips(group));
   }
 
   resize(width: number, height: number): void {
@@ -247,7 +299,20 @@ export class SvgBoardSurface implements BoardSurface {
   }
 
   dispose(): void {
+    this.animations.dispose();
+    this.layerStrips.clear();
     this.units.clear();
+  }
+
+  /** A unit as the port describes one: what to change, and what to play on it. */
+  private asUnit(record: UnitRecord, ask: Ask): BoardUnit {
+    return {
+      drawing: record.drawing,
+      fresh: ask === 'made',
+      play: (clip) => {
+        if (record.animationId) this.animations.play(record.animationId, clip);
+      },
+    };
   }
 
   /** Registers and starts every self-describing frame strip inside a subtree. */

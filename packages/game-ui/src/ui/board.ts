@@ -8,7 +8,6 @@ import {
   type TacticalGrid,
 } from '@empire/battle-engine';
 import { PAL } from '../art/palette';
-import { FrameAnimationSystem } from '../art/frame-animation';
 import { decorationsFor, type BattlePresentation } from '../art/battle-presentation';
 import { markerFromRules, structureFromRules } from '../art/field-objects-from-rules';
 import type { ArtDirection } from '../art/direction';
@@ -106,8 +105,6 @@ export class BoardView {
   private readonly viewport: SceneViewport;
   private readonly presentation: BattlePresentation;
   private readonly decor: BoardDecorations;
-  private readonly frameAnimations = new FrameAnimationSystem();
-  private sceneryAnimationIds: string[] = [];
   private zoom = 1;
   private mapSignature = '';
   private objectSignature = '';
@@ -150,7 +147,7 @@ export class BoardView {
       shapeRendering: this.decor.shapeRendering,
       backdrop: sceneFrame.backdrop,
       foreground: sceneFrame.foreground,
-    }, this.frameAnimations);
+    });
     this.buildGrid();
     this.bindPointer();
     this.setZoom(1.25);
@@ -296,7 +293,7 @@ export class BoardView {
   }
 
   dispose(): void {
-    this.frameAnimations.dispose();
+    this.surface.dispose();
     if (this.settleTimer !== null) clearTimeout(this.settleTimer);
   }
 
@@ -310,16 +307,13 @@ export class BoardView {
     this.surface.setLayer('terrain', terrainLayerPieces(
       { art: this.art, layout: this.layout, content: this.content }, s.map, colorOf, s.levelId,
     ));
-    for (const id of this.sceneryAnimationIds) this.frameAnimations.unregister(id);
     // An authored scene is one painting, not a picture per cell, so it crosses
     // the seam as the whole field. Which is why the layer it lands in is the
     // second-largest on a big board and the one still worth breaking up.
     const sceneLayers = this.presentation.sceneLayers(s.levelId, s.map, this.viewport);
-    this.sceneryAnimationIds = [
-      ...this.surface.setLayer('ground', wholeField(sceneLayers.ground)),
-      ...this.surface.setLayer('scenery', wholeField(sceneLayers.underUnits)),
-      ...this.surface.setLayer('foreground', wholeField(sceneLayers.overUnits)),
-    ];
+    this.surface.setLayer('ground', wholeField(sceneLayers.ground));
+    this.surface.setLayer('scenery', wholeField(sceneLayers.underUnits));
+    this.surface.setLayer('foreground', wholeField(sceneLayers.overUnits));
     this.surface.setLayer('spatial', battlefieldFeaturePieces({ art: this.art, layout: this.layout }, s.map));
   }
 
@@ -426,13 +420,12 @@ export class BoardView {
 
   /** The drawing for a unit, made on first sight and kept until it leaves. */
   private drawingFor(unit: Unit): BoardDrawing {
-    const fresh = !this.surface.hasUnit(unit.id);
-    const { drawing, animationId } = this.surface.unit(unit.id, () => {
+    const drawn = this.surface.unit(unit.id, () => {
       const color = this.state.players.find((p) => p.id === unit.owner)?.color ?? PAL.neutral;
       return unitSpriteMarkup(this.art, this.content.units.get(unit.type), color);
     });
-    if (fresh && animationId) this.frameAnimations.play(animationId, 'idle');
-    return drawing;
+    if (drawn.fresh) drawn.play('idle');
+    return drawn.drawing;
   }
 
   private renderUnits(o: BoardOverlay): void {
@@ -440,9 +433,7 @@ export class BoardView {
     const alive = new Set(s.units.map((u) => u.id));
     for (const id of this.surface.drawnUnits()) {
       if (alive.has(id)) continue;
-      this.frameAnimations.unregister(this.unitAnimationId(id));
-      this.surface.unit(id, () => '').drawing.remove();
-      this.surface.dropUnit(id);
+      this.surface.removeUnit(id);
     }
 
     for (const u of s.units) {
@@ -492,10 +483,10 @@ export class BoardView {
   /* -------------------------------------------------------------- animation */
 
   async animateMove(unit: Unit, path: Coord[], msPerTile = 85): Promise<void> {
-    if (!this.surface.hasUnit(unit.id) || path.length < 2) return;
-    const drawing = this.surface.unit(unit.id, () => '').drawing;
-    const animationId = this.unitAnimationId(unit.id);
-    if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'walk');
+    const drawn = this.surface.drawnUnit(unit.id);
+    if (!drawn || path.length < 2) return;
+    const { drawing } = drawn;
+    drawn.play('walk');
     drawing.say('moving', true);
     for (let i = 1; i < path.length; i++) {
       const a = path[i - 1];
@@ -512,26 +503,26 @@ export class BoardView {
       });
     }
     drawing.say('moving', false);
-    if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'idle');
+    drawn.play('idle');
   }
 
   async animateStrike(attacker: Unit, target: Coord): Promise<void> {
-    if (!this.surface.hasUnit(attacker.id)) return;
-    const drawing = this.surface.unit(attacker.id, () => '').drawing;
+    const drawn = this.surface.drawnUnit(attacker.id);
+    if (!drawn) return;
+    const { drawing } = drawn;
     const dx = Math.sign(target.x - attacker.x);
     const dy = Math.sign(target.y - attacker.y);
     if (dx !== 0) drawing.say('facingLeft', dx < 0);
     const anchor = this.origin(attacker);
     drawing.place(anchor.x, anchor.y);
-    const animationId = this.unitAnimationId(attacker.id);
-    if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'attack');
+    drawn.play('attack');
     drawing.say('attacking', true);
     await tween(150, (t) => {
       const push = Math.sin(Math.PI * t) * 7;
       drawing.nudge(dx * push, dy * push);
     });
     drawing.say('attacking', false);
-    if (this.frameAnimations.has(animationId)) this.frameAnimations.play(animationId, 'idle');
+    drawn.play('idle');
     drawing.nudge(0, 0);
   }
 
@@ -541,7 +532,7 @@ export class BoardView {
     // These used to bake the cell's scene coordinates into the markup, which is the
     // one thing left that a renderer could not treat as a picture at a position: it
     // would have had to rasterise a field-sized image to hold a damage number.
-    const { drawing, animationIds } = this.surface.effect(
+    const drawing = this.surface.effect(
       `${fx ? this.presentation.effect(fx) : ''}
          <g data-part="burst"><circle r="12" fill="#ffffff" opacity="0.65"/></g>
          <g data-part="number"><text y="-8" text-anchor="middle" class="fx-damage">-${damage}</text></g>`,
@@ -558,25 +549,22 @@ export class BoardView {
       number?.nudge(0, -14 * t);
       number?.opacity(1 - t ** 2);
     });
-    for (const id of animationIds) this.frameAnimations.unregister(id);
     drawing.remove();
     if (killed) await wait(40);
   }
 
   async animateDeath(unitId: number): Promise<void> {
-    if (!this.surface.hasUnit(unitId)) return;
-    const drawing = this.surface.unit(unitId, () => '').drawing;
+    const drawn = this.surface.drawnUnit(unitId);
+    if (!drawn) return;
     await tween(220, (t) => {
-      drawing.opacity(1 - t);
-      drawing.swell(1 - 0.35 * t);
+      drawn.drawing.opacity(1 - t);
+      drawn.drawing.swell(1 - 0.35 * t);
     });
-    this.frameAnimations.unregister(this.unitAnimationId(unitId));
-    drawing.remove();
-    this.surface.dropUnit(unitId);
+    this.surface.removeUnit(unitId);
   }
 
   async animateHeal(at: Coord, amount: number): Promise<void> {
-    const { drawing, animationIds } = this.surface.effect(
+    const drawing = this.surface.effect(
       `${this.presentation.healFx ? this.presentation.effect(this.presentation.healFx) : ''}
          <g data-part="number"><text y="-6" text-anchor="middle" class="fx-heal">+${amount}</text></g>`,
     );
@@ -587,13 +575,13 @@ export class BoardView {
       number?.nudge(0, -16 * t);
       number?.opacity(1 - t ** 2);
     });
-    for (const id of animationIds) this.frameAnimations.unregister(id);
     drawing.remove();
   }
 
   async animateSpawn(unitId: number): Promise<void> {
-    if (!this.surface.hasUnit(unitId)) return;
-    const drawing = this.surface.unit(unitId, () => '').drawing;
+    const drawn = this.surface.drawnUnit(unitId);
+    if (!drawn) return;
+    const { drawing } = drawn;
     await tween(240, (t) => {
       drawing.opacity(t);
       drawing.swell(0.6 + 0.4 * t);
@@ -615,7 +603,7 @@ export class BoardView {
     const w = this.viewport.fieldWidth;
     const h = this.viewport.fieldHeight;
     const band = `turn-band-${this.banners++}`;
-    const { drawing } = this.surface.effect(
+    const drawing = this.surface.effect(
       `<defs>
            <linearGradient id="${band}" x1="0" y1="0" x2="1" y2="0">
              <stop offset="0" stop-color="${color}" stop-opacity="0"/>
@@ -652,10 +640,6 @@ export class BoardView {
       top: py - container.clientHeight / 2,
       behavior: 'smooth',
     });
-  }
-
-  private unitAnimationId(unitId: number): string {
-    return `unit:${unitId}`;
   }
 
 }
