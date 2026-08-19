@@ -9,8 +9,8 @@ import {
   TILE,
   terrainLayerMarkup,
   squareLayout,
-  GENERIC_ART,
   unitSpriteMarkup,
+  type ArtDirection,
 } from '@empire/game-ui';
 import {
   type ContentCatalog,
@@ -45,6 +45,8 @@ export class EditorBoard {
     private players: PlayerConfig[],
     private readonly handlers: EditorBoardHandlers,
     private readonly content: ContentCatalog,
+    /** The art this canvas draws with; composed by the application root. */
+    private readonly art: ArtDirection,
   ) {
     this.el = svg('svg', {
       class: 'board editor-board',
@@ -147,7 +149,7 @@ export class EditorBoard {
       this.signature = sig;
       clear(this.layers.terrain);
       const colorOf = (id: number) => players.find((p) => p.id === id)?.color;
-      this.layers.terrain.append(fromMarkup(terrainLayerMarkup({ art: GENERIC_ART, layout: squareLayout, content: this.content }, map, colorOf)));
+      this.layers.terrain.append(fromMarkup(terrainLayerMarkup({ art: this.art, layout: squareLayout, content: this.content }, map, colorOf)));
     }
 
     clear(this.layers.units);
@@ -156,7 +158,7 @@ export class EditorBoard {
         const color = players.find((p) => p.id === u.owner)?.color ?? PAL.neutral;
         const bad = this.isBadPlacement(u);
         return `<g class="unit${u.facing === 'west' ? ' face-left' : ''}" transform="translate(${u.x * TILE},${u.y * TILE})">
-          ${unitSpriteMarkup(GENERIC_ART, u.unit, color)}
+          ${unitSpriteMarkup(this.art, u.unit, color)}
           ${bad ? `<rect width="32" height="32" fill="#ff2d1f" opacity="0.35"/>` : ''}
         </g>`;
       })
@@ -188,7 +190,7 @@ export class EditorBoard {
         }
       }
     }
-    const features = battlefieldFeatureMarkup({ art: GENERIC_ART, layout: squareLayout }, map);
+    const features = battlefieldFeatureMarkup({ art: this.art, layout: squareLayout }, map);
     if (features) marks.push(features);
     if (marks.length) this.layers.marks.append(fromMarkup(marks.join('')));
 

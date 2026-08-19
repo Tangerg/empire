@@ -1,4 +1,4 @@
-import { loadCustomLevels, saveCustomLevel, stashPlaytest, TEAM_COLORS } from '@empire/game-ui';
+import { loadCustomLevels, saveCustomLevel, stashPlaytest, TEAM_COLORS, type ArtDirection } from '@empire/game-ui';
 import {
   type ContentCatalog,
   type BattleRuleServices,
@@ -97,6 +97,16 @@ export interface EditorSetup {
    * authored *against a ruleset*; that is the dependency.
    */
   readonly rules: BattleRuleServices;
+  /**
+   * The art this level is drawn with, composed beside the ruleset.
+   *
+   * The editor used to draw with `GENERIC_ART` no matter what it had been
+   * opened for, so an author working on the shipped campaign saw thirty-one of
+   * its forty unit types as the same soldier and eleven of its terrains as the
+   * same meadow — the pack's own art was installed in the application and the
+   * editor never asked for it.
+   */
+  readonly art: ArtDirection;
   /** Levels offered in the open menu, beside the author's own saves. */
   readonly presets: readonly LevelData[];
 }
@@ -140,7 +150,7 @@ export class EditorApp {
         this.cursor = at;
         this.paintBoard();
       },
-    }, content);
+    }, content, setup.art);
     this.scroller.append(this.board.el);
 
     const stage = document.createElement('div');
@@ -446,6 +456,7 @@ export class EditorApp {
     return {
       document: this.doc,
       content: this.content,
+      art: this.setup.art,
       tool: this.tool,
       brush: this.brush,
       status: this.status,

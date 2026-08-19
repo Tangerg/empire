@@ -27,19 +27,23 @@ describe('battle presentation', () => {
     expect(presentation.id).toBe('candidate-01');
     expect(presentation.boardClass).toBe('candidate-map');
     expect(presentation.sceneFrame('c01-01', map, viewport).backdrop).toContain('authored-wide');
-    expect(presentation.sceneLayers('c01-01', map).ground).toContain('candidate-ground-route');
+    expect(presentation.sceneLayers('c01-01', map, viewport).ground).toContain('candidate-ground-route');
   });
 
   it('keeps unknown campaigns on the story-neutral fallback', () => {
     const presentation = CANDIDATE_01_ART.presentationFor('sandbox-01');
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
+    const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, presentation.sceneProfile('sandbox-01'));
 
     expect(presentation.id).toBe('generic');
     expect(presentation.sceneProfile('sandbox-01')).toEqual({});
-    expect(presentation.sceneLayers('sandbox-01', mapFromLevel(TEST_CATALOG, candidate01Level('c01-01')))).toEqual({
-      ground: '',
-      underUnits: '',
-      overUnits: '',
-    });
+    // No authored scenery — but not an unlit rectangle either: an unclaimed
+    // level still gets a fall of light and ground that darkens at the edge,
+    // which is the difference between a field and a spreadsheet.
+    const layers = presentation.sceneLayers('sandbox-01', map, viewport);
+    expect(layers).toMatchObject({ ground: '', overUnits: '' });
+    expect(layers.underUnits).toContain('field-light');
+    expect(layers.underUnits).toContain(`width="${map.width * 32}"`);
     expect(presentation.effect('unknown', 16, 16)).toBe('');
   });
 });

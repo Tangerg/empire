@@ -25,7 +25,14 @@ export interface BattlePresentation {
   matches(levelId: string): boolean;
   sceneProfile(levelId: string): SceneViewportProfile;
   sceneFrame(levelId: string, map: GameMap, viewport: SceneViewport): SceneFrameMarkup;
-  sceneLayers(levelId: string, map: GameMap): SceneLayerMarkup;
+  /**
+   * Art drawn inside the tactical rectangle.
+   *
+   * The viewport comes along because a layer that spans the field has to know
+   * how wide the field is, and `map.width * TILE` is the square tiling written
+   * into the port — a hex board of the same columns is half a cell wider.
+   */
+  sceneLayers(levelId: string, map: GameMap, viewport: SceneViewport): SceneLayerMarkup;
   structure(state: StructureState, def: StructureDef, ownerColor?: string): string | null;
   marker(marker: BattlefieldMarker): string;
   weaponFx(weapon: WeaponId): string | null;
@@ -34,11 +41,41 @@ export interface BattlePresentation {
 }
 
 const EMPTY_FRAME: SceneFrameMarkup = Object.freeze({ backdrop: '', foreground: '' });
-const EMPTY_SCENE_LAYERS: SceneLayerMarkup = Object.freeze({
-  ground: '',
-  underUnits: '',
-  overUnits: '',
-});
+
+/**
+ * Light on an unpainted field.
+ *
+ * A level nobody painted a scene for was a rectangle of tiles that stopped dead
+ * at its own edge — every tile lit exactly like every other, and the border a cut
+ * rather than a horizon. This is the smallest thing that makes it a place: a
+ * warm fall of light from above and the ground darkening as it runs away from
+ * you. It costs no tactical area, which the alternative — an authored margin
+ * around the field — would have, at about a tenth of the board.
+ *
+ * The gradient ids are fixed rather than serialised: the definitions are
+ * identical wherever they appear, so two boards in one document sharing them is
+ * the desired outcome rather than a collision.
+ */
+function genericFieldLight(viewport: SceneViewport): string {
+  const width = viewport.fieldWidth;
+  const height = viewport.fieldHeight;
+  return `<defs>
+      <radialGradient id="field-sun" cx="0.5" cy="0.02" r="0.92">
+        <stop offset="0" stop-color="#fff4d8" stop-opacity="0.17"/>
+        <stop offset="0.5" stop-color="#fff4d8" stop-opacity="0.05"/>
+        <stop offset="1" stop-color="#fff4d8" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="field-rim" cx="0.5" cy="0.48" r="0.66">
+        <stop offset="0.5" stop-color="#0b0806" stop-opacity="0"/>
+        <stop offset="0.84" stop-color="#0b0806" stop-opacity="0.2"/>
+        <stop offset="1" stop-color="#0b0806" stop-opacity="0.5"/>
+      </radialGradient>
+    </defs>
+    <g class="field-light" pointer-events="none">
+      <rect width="${width}" height="${height}" fill="url(#field-sun)"/>
+      <rect width="${width}" height="${height}" fill="url(#field-rim)"/>
+    </g>`;
+}
 
 /** The look a level gets when no painted scene claims it. */
 export const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
@@ -47,7 +84,11 @@ export const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
   matches: () => true,
   sceneProfile: () => ({}),
   sceneFrame: () => EMPTY_FRAME,
-  sceneLayers: () => EMPTY_SCENE_LAYERS,
+  sceneLayers: (_levelId: string, _map: GameMap, viewport: SceneViewport) => ({
+    ground: '',
+    underUnits: genericFieldLight(viewport),
+    overUnits: '',
+  }),
   structure: () => null,
   marker: () => '',
   weaponFx: () => null,

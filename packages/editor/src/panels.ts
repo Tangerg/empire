@@ -1,4 +1,4 @@
-import { icon, GENERIC_ART, terrainSwatch, unitIcon, escapeHtml } from '@empire/game-ui';
+import { icon, terrainSwatch, unitIcon, escapeHtml, type ArtDirection } from '@empire/game-ui';
 import {
   type ContentCatalog,
   terrainCharacter,
@@ -24,6 +24,8 @@ import { EDITOR_TOOLS, type BrushSettings, type EditorTool } from './tools';
 export interface EditorPanelView {
   readonly document: EditorDocument;
   readonly content: ContentCatalog;
+  /** The art the palette draws with, composed by the application root. */
+  readonly art: ArtDirection;
   readonly tool: EditorTool;
   readonly brush: BrushSettings;
   readonly status: string;
@@ -129,7 +131,7 @@ export class EditorPanels {
             .map(
               (terrain, index) => `<button class="swatch ${brush.terrain === terrain.id ? 'active' : ''}"
                 data-act="terrain" data-arg="${terrain.id}" title="${escapeHtml(terrain.name)} · 字符 ${terrainCharacter(content, terrain.id) ?? '?'}${index < 9 ? ` · 快捷键 ${index + 1}` : ''}">
-                ${terrainSwatch(GENERIC_ART, terrain.id, terrain.capturable ? ownerColor : undefined)}
+                ${terrainSwatch(view.art, terrain, terrain.capturable ? ownerColor : undefined)}
                 <span>${escapeHtml(terrain.name)}</span>
               </button>`,
             )
@@ -173,7 +175,7 @@ export class EditorPanels {
             .map(
               (definition) => `<button class="unit-chip ${brush.unitType === definition.id ? 'active' : ''}"
                 data-act="unit" data-arg="${definition.id}" title="${escapeHtml(definition.name)} · ${escapeHtml(unitRecruitCost(content, definition.id))}">
-                ${unitIcon(GENERIC_ART, definition.id, ownerColor, 30)}
+                ${unitIcon(view.art, definition.id, ownerColor, 30)}
                 <span>${escapeHtml(definition.name)}</span>
               </button>`,
             )

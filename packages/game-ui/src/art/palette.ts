@@ -40,6 +40,26 @@ export const PAL = {
 /** Faction colours, deliberately readable against grass. */
 export const TEAM_COLORS = ['#3f7fd8', '#d8483f', '#54a860', '#a45fc0'];
 
+/**
+ * Ground tones a tile is drawn in when nobody drew it.
+ *
+ * Four families, one per thing the rules can say about standing on a tile, and
+ * five well-separated tones inside each so two terrains a content pack invented
+ * on the same afternoon do not come out the same colour. They are muted on
+ * purpose: these sit under hand-painted tiles in the same field, and a tile that
+ * shouts is worse than a tile that is merely unfamiliar.
+ */
+export const GROUND_TONES = {
+  /** Anything may walk it. */
+  open: ['#739d45', '#84964a', '#5f8f56', '#8fa052', '#6b8f3e'],
+  /** Passable but slow. */
+  broken: ['#a08a56', '#8a7c50', '#b09468', '#94804e', '#7d7350'],
+  /** Nothing may enter. */
+  stone: ['#85837d', '#77786f', '#948d80', '#6f7370', '#9c948a'],
+  /** Only some ways of moving may cross it. */
+  liquid: ['#447f96', '#3a6f8b', '#4f8aa0', '#356b7a', '#568fa2'],
+} as const;
+
 export function shade(hex: string, amount: number): string {
   const n = parseInt(hex.slice(1), 16);
   const r = (n >> 16) & 255;

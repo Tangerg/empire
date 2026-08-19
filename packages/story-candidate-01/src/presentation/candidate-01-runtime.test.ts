@@ -1,9 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { terrainMarkup, unitSpriteMarkup } from '@empire/game-ui';
+import { createTestCatalog } from '@empire/test-content';
+import { CANDIDATE_01_CONTENT_PACK } from '../index';
 import { CANDIDATE_01_ART } from './index';
 
 /** The pack's own art, composed rather than registered into a global. */
 const art = CANDIDATE_01_ART;
+/** Composed per suite, exactly like an application composition root. */
+const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 
 describe('candidate-01 runtime art bindings', () => {
   it('uses the authored four-frame sheet for covered game units', () => {
@@ -25,7 +29,7 @@ describe('candidate-01 runtime art bindings', () => {
   });
 
   it('selects connected terrain by the engine N/E/S/W mask', () => {
-    const road = terrainMarkup(art, 'road', {
+    const road = terrainMarkup(art, TEST_CATALOG.terrains.get('road'), {
       x: 2,
       y: 3,
       linked: { n: true, e: true, s: false, w: false },
@@ -37,7 +41,7 @@ describe('candidate-01 runtime art bindings', () => {
   });
 
   it('uses the captured building state and a dynamic owner marker', () => {
-    const castle = terrainMarkup(art, 'castle', {
+    const castle = terrainMarkup(art, TEST_CATALOG.terrains.get('castle'), {
       x: 1,
       y: 1,
       ownerColor: '#d8483f',

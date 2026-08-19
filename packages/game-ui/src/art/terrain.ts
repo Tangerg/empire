@@ -2,11 +2,13 @@ import type { ArtDirection } from './direction';
 import {
   tileHash,
   type GameMap,
+  type TerrainDef,
   type TerrainId,
   type ContentCatalog,
   idx,
 } from '@empire/battle-engine';
 import { PAL } from './palette';
+import { terrainFromRules } from './terrain-from-rules';
 
 /** Tile edge length in SVG user units. The board scales via viewBox. */
 export const TILE = 32;
@@ -314,11 +316,21 @@ function cellClipDefinition(layout: TerrainLayout, map: GameMap): string {
 
 /* -------------------------------------------------------------- public API */
 
-export function terrainMarkup(art: ArtDirection, id: TerrainId, ctx: TileContext): string {
-  const runtime = art.resolve((provider) => provider.terrainMarkup?.(id, ctx));
+/**
+ * One tile, drawn by the best answer available for it.
+ *
+ * The definition rather than the id, because the last of the three answers needs
+ * it: an art provider claims the terrain by name, the hand-drawn set below holds
+ * the look this repository's own first game was built in, and anything else is
+ * drawn from what the rules can see. That last line used to read
+ * `painters[id] ?? painters.plain`, which answered every unfamiliar terrain with
+ * a meadow.
+ */
+export function terrainMarkup(art: ArtDirection, terrain: TerrainDef, ctx: TileContext): string {
+  const runtime = art.resolve((provider) => provider.terrainMarkup?.(terrain.id, ctx));
   if (runtime) return runtime;
-  const painter = painters[id] ?? painters.plain;
-  return painter(ctx);
+  const painter = painters[terrain.id];
+  return painter ? painter(ctx) : terrainFromRules(terrain, ctx);
 }
 
 /** True when the neighbour should visually connect to this tile. */
@@ -369,7 +381,7 @@ export function terrainLayerMarkup(
       };
       const origin = layout.origin({ x, y });
       parts.push(
-        `<g transform="translate(${origin.x.toFixed(2)},${origin.y.toFixed(2)})"${clip} data-tile="${x},${y}">${terrainMarkup(art, id, ctx)}</g>`,
+        `<g transform="translate(${origin.x.toFixed(2)},${origin.y.toFixed(2)})"${clip} data-tile="${x},${y}">${terrainMarkup(art, content.terrains.get(id), ctx)}</g>`,
       );
     }
   }
@@ -377,10 +389,10 @@ export function terrainLayerMarkup(
 }
 
 /** Single tile preview, e.g. for the editor palette. */
-export function terrainSwatch(art: ArtDirection, id: TerrainId, ownerColor?: string): string {
+export function terrainSwatch(art: ArtDirection, terrain: TerrainDef, ownerColor?: string): string {
   return `<svg viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">${terrainMarkup(
     art,
-    id,
+    terrain,
     { x: 3, y: 5, ownerColor, linked: { n: false, e: false, s: false, w: false } },
   )}</svg>`;
 }

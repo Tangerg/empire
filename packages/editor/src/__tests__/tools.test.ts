@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it } from 'vitest';
-import { TILE } from '@empire/game-ui';
+import { GENERIC_ART, TILE } from '@empire/game-ui';
 import { normaliseLevel, createBattleEngine } from '@empire/battle-engine';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
 import { EditorApp } from '../app';
@@ -11,6 +11,7 @@ import { createTestCatalog } from '@empire/test-content';
 /** Composed per suite, exactly like an application composition root. */
 const TEST_SETUP = {
   rules: createBattleEngine({ content: createTestCatalog() }).rules,
+  art: GENERIC_ART,
   presets: BUILTIN_LEVELS,
 };
 

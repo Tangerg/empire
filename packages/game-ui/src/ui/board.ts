@@ -312,7 +312,7 @@ export class BoardView {
     clear(this.layers.ground);
     clear(this.layers.scenery);
     clear(this.layers.foreground);
-    const sceneLayers = this.presentation.sceneLayers(s.levelId, s.map);
+    const sceneLayers = this.presentation.sceneLayers(s.levelId, s.map, this.viewport);
     if (sceneLayers.ground) this.layers.ground.append(fromMarkup(sceneLayers.ground));
     if (sceneLayers.underUnits) this.layers.scenery.append(fromMarkup(sceneLayers.underUnits));
     if (sceneLayers.overUnits) this.layers.foreground.append(fromMarkup(sceneLayers.overUnits));

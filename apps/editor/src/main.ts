@@ -11,6 +11,7 @@ import {
   ANCIENT_EMPIRES_LEVELS,
 } from '@empire/content-ancient-empires';
 import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS } from '@empire/story-candidate-01';
+import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
 import { EditorApp, initialLevel, type EditorSetup } from '@empire/editor';
 
 /** Composition root: this app declares its own content, nothing ambient. */
@@ -31,6 +32,10 @@ new ContentPackInstaller(content).install(
  */
 const setup: EditorSetup = {
   rules: createBattleEngine({ content }).rules,
+  // Art is composed here beside the catalog, exactly as the game shell does it.
+  // The editor drew with the generic fallback whatever it was opened for, so a
+  // chapter of the campaign it lists could not be seen as it actually plays.
+  art: CANDIDATE_01_ART,
   presets: [...ANCIENT_EMPIRES_LEVELS, ...CANDIDATE_01_LEVELS],
 };
 

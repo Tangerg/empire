@@ -2,7 +2,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { TILE } from '@empire/game-ui';
+import { GENERIC_ART, TILE } from '@empire/game-ui';
 import {
   ContentPackInstaller,
   createContentCatalog,
@@ -26,11 +26,13 @@ import { BrushSettings } from '../tools';
 
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
+import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
 
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const TEST_SETUP = {
   rules: createBattleEngine({ content: TEST_CATALOG }).rules,
+  art: CANDIDATE_01_ART,
   presets: BUILTIN_LEVELS,
 };
 const TEST_RULES = TEST_SETUP.rules;
@@ -284,6 +286,34 @@ describe('a general editor knows no particular game', () => {
     expect(new Set(document.map.tiles)).toEqual(new Set(['sand']));
     document.resize(6, 6);
     expect(new Set(document.map.tiles)).toEqual(new Set(['sand']));
+  });
+
+  /**
+   * The editor draws with the art it was opened with.
+   *
+   * It hard-coded `GENERIC_ART` in the board and in the palette, so an author
+   * working on the shipped campaign saw thirty-one of its forty unit types as
+   * the same soldier — the pack's art was installed in the very application
+   * running the editor, and the editor never asked for it. The setup carries the
+   * art now, beside the ruleset it is authored against.
+   */
+  it('draws with the art it was opened with, on the board and in the palette', () => {
+    const opened = () => normaliseLevel(JSON.parse(JSON.stringify(BUILTIN_LEVELS[0])));
+    const host = document.createElement('div');
+    document.body.append(host);
+    new EditorApp(TEST_SETUP, opened()).mount(host);
+
+    // A marker only the composed pack's provider can produce.
+    expect(host.querySelector('.layer-terrain')!.innerHTML).toContain('data-runtime-raster');
+    expect(host.querySelector('.palette')!.innerHTML).toContain('data-runtime-raster');
+
+    const generic = document.createElement('div');
+    document.body.append(generic);
+    new EditorApp({ ...TEST_SETUP, art: GENERIC_ART }, opened()).mount(generic);
+    expect(generic.querySelector('.layer-terrain')!.innerHTML).not.toContain('data-runtime-raster');
+
+    host.remove();
+    generic.remove();
   });
 });
 

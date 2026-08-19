@@ -143,7 +143,7 @@ function boardMarkup(): string {
     const key = `${x},${y}`;
     return `<div class="demo-tile ${affected.has(key) ? 'affected' : ''} ${aimed === key ? 'aimed' : ''}"
       data-cell="${key}" title="(${key})">
-      <div class="tile-art">${terrainSwatch(GENERIC_ART, terrain, owner?.color)}</div>
+      <div class="tile-art">${terrainSwatch(GENERIC_ART, content.terrains.get(terrain), owner?.color)}</div>
       ${unit ? `<div class="demo-unit" data-unit="${html(unit.key ?? String(unit.id))}">
         ${unitIcon(GENERIC_ART, unit.type, unitOwner?.color ?? '#9aa3ad', 46)}
         <span class="unit-label">${html(content.units.get(unit.type).name)}</span>
