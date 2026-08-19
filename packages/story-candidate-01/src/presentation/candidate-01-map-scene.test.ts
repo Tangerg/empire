@@ -1,6 +1,8 @@
 import { TacticalGrids, mapFromLevel } from '@empire/battle-engine';
 const SQUARE = TacticalGrids.get('square4');
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { candidate01Level } from '../levels';
 import {
   candidate01MapSceneryMarkup,
@@ -57,5 +59,46 @@ describe('candidate-01 authored map scenery', () => {
       underUnits: '',
       overUnits: '',
     });
+  });
+});
+
+/**
+ * This campaign's board art travels inside its picture.
+ *
+ * Its shadows and colour grades were in a stylesheet — first the shared one, then
+ * this pack's own — and a stylesheet is not in the room when markup is rasterised
+ * into a texture, which is how a GPU backend would have drawn the whole campaign
+ * with no shadows and no grade at all. Every level carries it, painted scene or not:
+ * an atlas tile and a unit figure wear these shadows even where no scenery was
+ * authored.
+ */
+describe('the board carries its own look', () => {
+  it('ships the pack style with every level, painted or not', () => {
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
+    const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile('c01-01'));
+    const painted = candidate01SceneFrameMarkup('c01-01', map, viewport);
+    const plain = candidate01SceneFrameMarkup('c01-09', map, viewport);
+
+    for (const [label, frame] of [['painted', painted], ['plain', plain]] as const) {
+      expect(frame.backdrop, label).toContain('<style>');
+      // The two most expensive rules, and the ones a hand-written list forgot.
+      expect(frame.backdrop, label).toContain('.candidate-map .layer-terrain');
+      expect(frame.backdrop, label).toContain('.candidate-map .layer-ground');
+      expect(frame.backdrop, label).toContain('.candidate-environment-prop');
+    }
+    // The painted scene still has its scenery, not only the style.
+    expect(painted.backdrop).toContain('candidate-scene-backdrop');
+  });
+
+  /** What is left in the stylesheet has no picture to travel inside. */
+  it('leaves only page-side rules in the pack stylesheet', () => {
+    const css = readFileSync(
+      join(import.meta.dirname, '..', 'styles', 'candidate-01.css'),
+      'utf8',
+    ).replace(/\/\*[\s\S]*?\*\//g, '');
+    const selectors = [...css.matchAll(/([^{}]+)\{/g)].map(([, selector]) => selector.trim());
+
+    expect(selectors.length).toBeGreaterThan(0);
+    expect(selectors.filter((selector) => !/candidate-art-icon/.test(selector))).toEqual([]);
   });
 });

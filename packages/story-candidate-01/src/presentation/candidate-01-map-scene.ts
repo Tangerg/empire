@@ -8,6 +8,7 @@ import {
   type CandidateEnvironmentPlacement,
 } from './candidate-01-environment';
 import { runtimeAtlasCellMarkup } from '@empire/game-ui';
+import { CANDIDATE_01_BOARD_STYLE } from './candidate-01-board-style';
 import type {
   SceneFrameMarkup,
   SceneLayerMarkup,
@@ -292,11 +293,16 @@ export function candidate01SceneFrameMarkup(
   map: GameMap,
   viewport: SceneViewport,
 ): SceneFrameMarkup {
-  if (!usesTwinHillsComposition(levelId)) return { backdrop: '', foreground: '' };
+  // Every level of this campaign carries the pack's board style, painted scene or
+  // not: an atlas tile and a unit figure wear its shadows even where no scenery was
+  // authored, and a stylesheet is not in the room when markup becomes a texture.
+  if (!usesTwinHillsComposition(levelId)) {
+    return { backdrop: CANDIDATE_01_BOARD_STYLE, foreground: '' };
+  }
   const fieldX = viewport.originX - 24;
   const fieldY = viewport.originY - 18;
   return {
-    backdrop: `<g class="candidate-scene-backdrop" pointer-events="none" data-scene-viewport="authored-wide">
+    backdrop: `${CANDIDATE_01_BOARD_STYLE}<g class="candidate-scene-backdrop" pointer-events="none" data-scene-viewport="authored-wide">
       <defs>
         <radialGradient id="c01-scene-ground" cx="48%" cy="42%" r="78%">
           <stop offset="0" stop-color="#536c47"/>
