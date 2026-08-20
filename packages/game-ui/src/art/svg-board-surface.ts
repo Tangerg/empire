@@ -11,6 +11,7 @@ import {
   type BoardState,
   type BoardSurface,
   type BoardSurfaceScene,
+  type BoardSurfaceFactory,
   type BoardUnit,
 } from './board-surface';
 import { clear, fromMarkup, setAttrs, svg } from './svg';
@@ -329,3 +330,6 @@ export class SvgBoardSurface implements BoardSurface {
     return ids;
   }
 }
+
+/** This renderer, as the application root selects one. */
+export const svgBoardSurface: BoardSurfaceFactory = (scene) => new SvgBoardSurface(scene);

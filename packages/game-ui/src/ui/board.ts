@@ -24,8 +24,13 @@ import {
 } from '../art/scene-viewport';
 import { unitSpriteMarkup } from '../art/units';
 import { escapeHtml } from './html';
-import { wholeField, type BoardDrawing, type BoardPiece, type BoardSurface } from '../art/board-surface';
-import { SvgBoardSurface } from '../art/svg-board-surface';
+import {
+  wholeField,
+  type BoardDrawing,
+  type BoardPiece,
+  type BoardSurface,
+  type BoardSurfaceFactory,
+} from '../art/board-surface';
 
 export interface BoardOverlay {
   move: Set<number>;
@@ -57,6 +62,35 @@ export const emptyOverlay = (): BoardOverlay => ({
   visible: null,
   hiddenUnits: new Set(),
 });
+
+/**
+ * What a battle is drawn with, composed by the application root.
+ *
+ * Declared here because this is the consumer that needs it, and gathered into one
+ * named port because the call was `f(state, handlers, content, grid, art)` — three
+ * dependencies threaded behind the two subjects, which is the reverse of the shape
+ * `AGENTS.md` asks for. The renderer joined them rather than becoming a sixth
+ * positional parameter: it is a choice, and it belongs with the other three.
+ */
+export interface BoardComposition {
+  readonly content: ContentCatalog;
+  /**
+   * The tiling this battle is fought on; it decides where every cell sits.
+   *
+   * Handed in rather than looked up: the picture has to be drawn under the same
+   * tiling the rules are measured with, including a replaced one.
+   */
+  readonly grid: TacticalGrid;
+  readonly art: ArtDirection;
+  /**
+   * Which renderer draws it.
+   *
+   * The board used to write `new SvgBoardSurface(…)` here, which made the port a
+   * seam with only one possible other side — and made the board the thing that
+   * chose, rather than the application root that composes everything else.
+   */
+  readonly renderer: BoardSurfaceFactory;
+}
 
 export interface BoardHandlers {
   onTileClick(at: Coord): void;
@@ -114,31 +148,27 @@ export class BoardView {
   private banners = 0;
   private settleTimer: ReturnType<typeof setTimeout> | null = null;
 
+  private readonly content: ContentCatalog;
+  private readonly art: ArtDirection;
+
   constructor(
+    composition: BoardComposition,
     private state: GameState,
     private readonly handlers: BoardHandlers,
-    private readonly content: ContentCatalog,
-    /**
-     * The tiling this battle is fought on; it decides where every cell sits.
-     *
-     * Handed in rather than looked up: the picture has to be drawn under the
-     * same tiling the rules are measured with, including a replaced one.
-     */
-    grid: TacticalGrid,
-    /** The art this board draws with; composed by the application root. */
-    private readonly art: ArtDirection,
   ) {
-    this.presentation = art.presentationFor(state.levelId);
+    this.content = composition.content;
+    this.art = composition.art;
+    this.presentation = this.art.presentationFor(state.levelId);
     this.decor = decorationsFor(this.presentation);
     this.viewport = createSceneViewport(
-      grid,
+      composition.grid,
       state.map.width,
       state.map.height,
       TILE,
       this.presentation.sceneProfile(state.levelId),
     );
     const sceneFrame = this.presentation.sceneFrame(state.levelId, state.map, this.viewport);
-    this.surface = new SvgBoardSurface({
+    this.surface = composition.renderer({
       width: this.viewport.sceneWidth,
       height: this.viewport.sceneHeight,
       originX: this.viewport.originX,

@@ -1378,6 +1378,26 @@ describe('the board decides, a surface draws', () => {
     // over line work, and is indistinguishable from collapsing four thousand tiles
     // into one string. `ui.test.ts` counts the pieces on a rendered board instead,
     // which is the same claim made where it can actually be observed.
+  });
+
+  /**
+   * The board does not choose the renderer.
+   *
+   * It used to write `new SvgBoardSurface(…)` in its constructor, which makes the
+   * port a seam with only one possible other side — the same defect as an engine
+   * that rebuilds its own defaults instead of being composed. The renderer arrives
+   * in `BoardComposition` with the content, the tiling and the art, from whoever
+   * composes a battle.
+   */
+  it('leaves the choice of renderer to whoever composes a battle', () => {
+    const board = stripComments(
+      readFileSync(join(packagesRoot, 'game-ui', 'src', 'ui', 'board.ts'), 'utf8'),
+    );
+    const named = [...board.matchAll(/new\s+(\w*(?:Board)?Surface)\s*\(/g)].map(([, name]) => name);
+    expect(named).toEqual([]);
+    expect(board).not.toMatch(/from '\.\.\/art\/\w*-board-surface'/);
+    // And what it does hold is a factory it was handed.
+    expect(board).toMatch(/composition\.renderer\(/);
     // Nothing here checks that animations use only the port's four continuous
     // properties, because with the DOM out of reach `tsc` already does: the only
     // thing the board can animate is a `BoardDrawing`, and `place`, `nudge`,

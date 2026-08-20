@@ -21,6 +21,8 @@ import type {
   ReactionStance,
   Unit,
 } from '@empire/battle-engine';
+import type { BoardSurfaceFactory } from '../art/board-surface';
+import { svgBoardSurface } from '../art/svg-board-surface';
 import { GENERIC_ART, type ArtDirection } from '../art/direction';
 import { PAL } from '../art/palette';
 import { BoardView, emptyOverlay, type BoardOverlay } from './board';
@@ -80,6 +82,13 @@ export interface GameControllerOptions {
    * theme is composed by the application root, never registered globally.
    */
   art?: ArtDirection;
+  /**
+   * Which renderer draws the battlefield. Absent means the SVG one.
+   *
+   * A default rather than a requirement, exactly like `art`: one shipped answer
+   * that every shell wants, named at the one place that composes a battle.
+   */
+  renderer?: BoardSurfaceFactory;
   onComplete?: (snapshot: BattleCompletionSnapshot) => void;
 }
 
@@ -122,7 +131,12 @@ export class GameController {
     this.art = options.art ?? GENERIC_ART;
     this.root.className = 'game-root';
 
-    this.board = new BoardView(this.session.state, {
+    this.board = new BoardView({
+      content: this.session.content,
+      grid: this.session.rules.space.board(this.session.state).grid,
+      art: this.art,
+      renderer: options.renderer ?? svgBoardSurface,
+    }, this.session.state, {
       onTileClick: (c) => void this.handleClick(c),
       onTileEnter: (c) => this.handleHover(c),
       onLeave: () => {
@@ -131,7 +145,7 @@ export class GameController {
       },
       onSecondary: () => this.cancel(),
       onScale: (notches) => this.zoomBy(notches * 0.1),
-    }, this.session.content, this.session.rules.space.board(this.session.state).grid, this.art);
+    });
 
     this.hud = new Hud(this.art, {
       onCommand: (a) => void this.chooseCommand(a),

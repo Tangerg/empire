@@ -41,7 +41,7 @@ globals.Element = dom.window.Element;
 globals.requestAnimationFrame = (callback: (time: number) => void) => setTimeout(() => callback(0), 0);
 globals.cancelAnimationFrame = (handle: number) => clearTimeout(handle as unknown as NodeJS.Timeout);
 
-const { BoardView, emptyOverlay, GENERIC_ART } = await import('@empire/game-ui');
+const { BoardView, emptyOverlay, svgBoardSurface, GENERIC_ART } = await import('@empire/game-ui');
 
 const content = createContentCatalog();
 new ContentPackInstaller(content).install(
@@ -183,13 +183,13 @@ const levels: [string, LevelData][] = [
 const lines: string[] = [];
 for (const [label, level] of levels) {
   const art = label.startsWith('themed') ? CANDIDATE_01_ART : GENERIC_ART;
-  const board = new BoardView(createState(content, level), {
+  const board = new BoardView({ content, grid, art, renderer: svgBoardSurface }, createState(content, level), {
     onTileClick: () => {},
     onTileEnter: () => {},
     onLeave: () => {},
     onSecondary: () => {},
     onScale: () => {},
-  }, content, grid, art);
+  });
   board.render(busyOverlay(level));
   board.setZoom(1.75);
   lines.push(`### ${label}`);

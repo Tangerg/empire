@@ -209,6 +209,16 @@ export interface BoardSurfaceScene {
 }
 
 /**
+ * How a battle gets a renderer.
+ *
+ * A factory rather than a class, because the choice belongs to the application
+ * root. `BoardView` used to write `new SvgBoardSurface(…)` in its constructor,
+ * which is the same defect as an engine assembling its own defaults: a seam that
+ * only one thing can ever be on the other side of is not a seam.
+ */
+export type BoardSurfaceFactory = (scene: BoardSurfaceScene) => BoardSurface;
+
+/**
  * A drawn battlefield, with a way to change every part of it.
  *
  * Implementations own their own idea of what a drawing *is*: an SVG group, a Pixi

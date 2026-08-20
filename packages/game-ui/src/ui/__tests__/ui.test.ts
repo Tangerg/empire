@@ -5,7 +5,8 @@ import { portraitSvg } from '../../art/portraits';
 import { unitIcon } from '../../art/units';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
 import { GameController } from '../game';
-import { BoardView, emptyOverlay } from '../board';
+import { BoardView, emptyOverlay, type BoardComposition } from '../board';
+import { svgBoardSurface } from '../../art/svg-board-surface';
 import { ArtDirection } from '../../art/direction';
 import { GENERIC_PRESENTATION } from '../../art/battle-presentation';
 import {
@@ -64,6 +65,19 @@ function hover(el: Element, tile: { x: number; y: number }): void {
     }),
   );
 }
+
+/**
+ * A board composed the way an application root composes one.
+ *
+ * Four call sites used to thread `content, grid, art` behind the two subjects, and
+ * each would have had to grow a fourth for the renderer.
+ */
+const composition = (art: ArtDirection): BoardComposition => ({
+  content: TEST_CATALOG,
+  grid: TEST_ENGINE.rules.grids.get('square4'),
+  art,
+  renderer: svgBoardSurface,
+});
 
 describe('svg art', () => {
   it('emits parseable markup for every unit sprite and portrait', () => {
@@ -236,13 +250,13 @@ describe('game controller', () => {
    */
   it('fills the tactical viewport with the whole field, uncropped', () => {
     const level = BUILTIN_LEVELS[0];
-    const board = new BoardView(createState(TEST_CATALOG, level), {
+    const board = new BoardView(composition(ART), createState(TEST_CATALOG, level), {
       onTileClick: () => {},
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
       onScale: () => {},
-    }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), ART);
+    });
     board.fitWithin(540, 380);
 
     const width = Number.parseFloat(board.el.style.width);
@@ -256,13 +270,13 @@ describe('game controller', () => {
 
   it('keeps authored roads below every tactical actor', () => {
     const level = candidate01Level('c01-01');
-    const board = new BoardView(createState(TEST_CATALOG, level), {
+    const board = new BoardView(composition(ART), createState(TEST_CATALOG, level), {
       onTileClick: () => {},
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
       onScale: () => {},
-    }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), ART);
+    });
     board.render(emptyOverlay());
 
     const world = board.el.querySelector('.board-world')!;
@@ -371,13 +385,13 @@ describe('game controller', () => {
       structure: () => null,
       marker: () => null,
     }]);
-    const board = new BoardView(state, {
+    const board = new BoardView(composition(silent), state, {
       onTileClick: () => {},
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
       onScale: () => {},
-    }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), silent);
+    });
     board.render(emptyOverlay());
 
     for (const layer of ['markers', 'structures']) {
@@ -399,13 +413,13 @@ describe('game controller', () => {
    */
   it('places an effect at the cell rather than drawing it there', async () => {
     const level = BUILTIN_LEVELS[0];
-    const board = new BoardView(createState(TEST_CATALOG, level), {
+    const board = new BoardView(composition(ART), createState(TEST_CATALOG, level), {
       onTileClick: () => {},
       onTileEnter: () => {},
       onLeave: () => {},
       onSecondary: () => {},
       onScale: () => {},
-    }, TEST_CATALOG, TEST_ENGINE.rules.grids.get('square4'), ART);
+    });
 
     const played = board.animateHit({ x: 3, y: 2 }, 12, false);
     const fx = board.el.querySelector('.fx')!;

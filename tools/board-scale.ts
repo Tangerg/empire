@@ -47,7 +47,7 @@ globals.Element = dom.window.Element;
 globals.requestAnimationFrame = (callback: (time: number) => void) => setTimeout(() => callback(0), 0);
 globals.cancelAnimationFrame = (handle: number) => clearTimeout(handle as unknown as NodeJS.Timeout);
 
-const { BoardView, emptyOverlay, GENERIC_ART, BOARD_LAYERS } = await import('@empire/game-ui');
+const { BoardView, emptyOverlay, svgBoardSurface, GENERIC_ART, BOARD_LAYERS } = await import('@empire/game-ui');
 
 const content = createContentCatalog();
 new ContentPackInstaller(content).install(
@@ -158,13 +158,13 @@ function measure(label: string, base: LevelData, art: unknown, nx: number, ny: n
   const level = tiled(base, nx, ny);
   const state = createState(content, level);
   const started = performance.now();
-  const board = new BoardView(state, {
+  const board = new BoardView({ content, grid, art: art as never, renderer: svgBoardSurface }, state, {
     onTileClick: () => {},
     onTileEnter: () => {},
     onLeave: () => {},
     onSecondary: () => {},
     onScale: () => {},
-  }, content, grid, art as never);
+  });
   board.render(emptyOverlay());
   const built = performance.now() - started;
 
