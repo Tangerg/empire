@@ -243,7 +243,11 @@ export class SvgBoardSurface implements BoardSurface {
     // One parse for the whole layer: building four thousand groups by hand is
     // slower than letting the parser do it, and the string is the same one
     // `boardPiecesMarkup` hands to a thumbnail or to the editor's own canvas.
-    host.append(fromMarkup(boardPiecesMarkup(pieces)));
+    // The parsed pieces, not the group the parser wrapped them in. That wrapper made
+    // a layer filled by `setLayer` a different shape from the units layer, whose
+    // drawings are direct children — two spellings of "the pictures in a layer",
+    // which is one more than a second backend can be held to.
+    host.append(...[...fromMarkup(boardPiecesMarkup(pieces)).childNodes]);
     const strips = this.playStrips(host);
     if (strips.length) this.layerStrips.set(layer, strips);
   }

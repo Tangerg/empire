@@ -1186,9 +1186,11 @@ describe('behaviour has an owner', () => {
           !/extends\s+(?:Keyed|Priority|Content)Registry/.test(heritage) &&
           /(?:private |protected )?readonly \w+ = new Map</.test(body) &&
           // A declaration, not a call: `registerSvgStrip(this.animations, …)`
-          // inside a method body says nothing about the class it sits in.
+          // inside a method body says nothing about the class it sits in — and nor
+          // does `this.parts.get(role)`, which is how a drawing reaches its own
+          // declared parts. Both halves ask for a method the class defines.
           /\n[ \t]+(?:override )?(?:public |private |protected )?(?:register|define|add)\w*\([^)]*\)\s*[:{]/.test(body) &&
-          /\b(?:get|tryGet|forHotkey|lookup)\w*\(/.test(body))
+          /\n[ \t]+(?:override )?(?:public |private |protected )?(?:get|tryGet|forHotkey|lookup)\w*\([^)]*\)\s*[:{]/.test(body))
         .map(([, className]) => `${name}: ${className}`);
     });
 
@@ -1469,6 +1471,38 @@ describe('the battle screen is its own screen', () => {
         return readdirSync(styles).filter((file) => file.endsWith('.css')).map((file) => join(styles, file));
       });
   }
+
+  /**
+   * A renderer nobody asked for is not in the bundle.
+   *
+   * `pixi.js` is 492 KB. Re-exported from the main barrel it landed in the game's
+   * bundle whether or not a session ever chose that backend — the other three apps
+   * were unaffected, because they never name it and the barrel tree-shakes, but the
+   * one app that offers the choice paid for it up front. So it has its own entry
+   * point, `@empire/game-ui/pixi`, and the app imports it when the choice is made.
+   *
+   * This is what keeps that true: nothing reachable from the main entry may name it.
+   */
+  it('keeps the GPU backend out of everything that does not ask for it', () => {
+    const root = join(packagesRoot, 'game-ui', 'src');
+    const files = new Set(runtimeTypeScriptFiles(root));
+    const reachable = new Set<string>();
+    const walk = (file: string): void => {
+      if (reachable.has(file)) return;
+      reachable.add(file);
+      for (const next of localCoreImports(file, files)) walk(next);
+    };
+    walk(join(root, 'index.ts'));
+    // A traversal that reached almost nothing would pass for the wrong reason.
+    expect(reachable.size).toBeGreaterThan(15);
+
+    const named = [...reachable]
+      .filter((file) => /from\s+['"]pixi\.js['"]/.test(readFileSync(file, 'utf8')))
+      .map((file) => relative(packagesRoot, file));
+    expect(named).toEqual([]);
+    // And the entry that does own it exists and says so.
+    expect(readFileSync(join(root, 'pixi.ts'), 'utf8')).toMatch(/pixi-board-surface/);
+  });
 
   /**
    * A named board state must be something a renderer actually draws.

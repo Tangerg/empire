@@ -38,6 +38,7 @@ import {
   StoryCampaignController,
   takePlaytest,
   boardPiecesMarkup,
+  type BoardSurfaceFactory,
   terrainLayerPieces,
   TILE,
   escapeHtml,
@@ -199,7 +200,7 @@ function renderMenu(): void {
     switch (el.dataset.act) {
       case 'play': {
         const level = findLevel(id);
-        if (level) startGame(level);
+        if (level) play(level);
         break;
       }
       case 'edit':
@@ -249,21 +250,52 @@ function findLevel(id: string): LevelData | null {
   );
 }
 
-function startGame(level: LevelData): void {
+/**
+ * Which renderer this session draws battles with.
+ *
+ * `?renderer=pixi` picks the GPU backend. A choice made here rather than a default,
+ * because the SVG one is what every shipped level has been drawn and reviewed with
+ * — and because choosing is the application root's job, not the board's.
+ *
+ * Prepared once and kept: a Pixi renderer decides between WebGPU and WebGL and
+ * builds a context, which is worth doing per session rather than per battle.
+ */
+const wantsPixi = new URLSearchParams(location.search).get('renderer') === 'pixi';
+let pixi: BoardSurfaceFactory | null = null;
+
+async function chosenRenderer(): Promise<BoardSurfaceFactory | undefined> {
+  if (!wantsPixi) return undefined;
+  if (!pixi) {
+    // Imported here, not at the top: `pixi.js` is 492 KB, and a session that never
+    // asks for it should not download it.
+    const { preparePixiPainter, pixiBoardSurface, SvgMarkupTextures } = await import('@empire/game-ui/pixi');
+    pixi = pixiBoardSurface(await preparePixiPainter(), new SvgMarkupTextures());
+  }
+  return pixi;
+}
+
+async function startGame(level: LevelData): Promise<void> {
+  const renderer = await chosenRenderer();
   active?.dispose();
   // One browser slot per level, so a battle can be put down and picked up.
   const controller = new GameController(level, () => renderMenu(), {
     engine,
     art,
+    renderer,
     saves: browserBattleSaves(level.id),
   });
   active = controller;
   app.replaceChildren(controller.root);
 }
 
+/** A GPU that will not come up is worth saying out loud, not swallowing. */
+const play = (level: LevelData): void => {
+  startGame(level).catch((cause) => alert(`无法开始战斗：${String(cause)}`));
+};
+
 /* The editor hands a level over through sessionStorage when you hit 试玩. */
 const playtest = takePlaytest();
-if (playtest.level) startGame(playtest.level);
+if (playtest.level) play(playtest.level);
 else {
   renderMenu();
   // Say so: a rejected playtest is otherwise a 试玩 button that does nothing.

@@ -4,6 +4,7 @@ export * from './art/svg';
 export * from './art/board-decorations';
 export * from './art/board-surface';
 export * from './art/svg-board-surface';
+export * from './art/letterbox';
 export * from './art/direction';
 export * from './art/ports';
 export * from './art/runtime-raster';

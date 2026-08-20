@@ -111,7 +111,7 @@ describe('game controller', () => {
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
     expect(board).toBeTruthy();
     // One picture per tile in the terrain layer.
-    expect(board.querySelectorAll('.layer-terrain > g > g').length).toBe(
+    expect(board.querySelectorAll('.layer-terrain > g').length).toBe(
       level.width * level.height,
     );
     expect(board.querySelectorAll('.layer-units > .unit').length).toBe(level.units.length);
@@ -288,7 +288,7 @@ describe('game controller', () => {
     expect(children.indexOf(units)).toBeLessThan(children.indexOf(foreground));
     expect(ground.querySelector('.candidate-ground-route')).toBeTruthy();
     expect(world.querySelector('.layer-grid line')).toBeFalsy();
-    expect(world.querySelectorAll('.layer-grid > g > g')).toHaveLength(level.width * level.height);
+    expect(world.querySelectorAll('.layer-grid > g')).toHaveLength(level.width * level.height);
     board.dispose();
   });
 
@@ -338,7 +338,7 @@ describe('game controller', () => {
     for (const level of withStructures) {
       const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
       host.append(c.root);
-      const drawn = [...c.root.querySelectorAll('.layer-structures > g > g')];
+      const drawn = [...c.root.querySelectorAll('.layer-structures > g')];
       expect(drawn, level.id).toHaveLength(level.structures!.length);
       for (const group of drawn) expect(group.innerHTML.length, level.id).toBeGreaterThan(40);
       c.dispose();
@@ -395,7 +395,7 @@ describe('game controller', () => {
     board.render(emptyOverlay());
 
     for (const layer of ['markers', 'structures']) {
-      const drawn = board.el.querySelectorAll(`.layer-${layer} > g > g`);
+      const drawn = board.el.querySelectorAll(`.layer-${layer} > g`);
       expect(drawn, layer).toHaveLength(1);
       expect(drawn[0].innerHTML.length, layer).toBeGreaterThan(40);
     }
@@ -679,7 +679,7 @@ describe('a hex board', () => {
 
     // Tiles in the order the layer emits them, row-major. The clip definition is
     // the layer's one unplaced piece, and it is not a tile.
-    const tiles = [...board.querySelectorAll('.layer-terrain > g > g')]
+    const tiles = [...board.querySelectorAll('.layer-terrain > g')]
       .filter((piece) => !piece.querySelector('defs'));
     const tile = (x: number, y: number) =>
       tiles[y * hexLevel().width + x].getAttribute('transform')!;

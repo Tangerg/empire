@@ -472,9 +472,35 @@ markup 与几何都与上一轮**逐字节相同**——这一轮没有动画面
 
 守卫：SVG 后端拼成 class 的每一个状态，都必须有某张样式表（包括内容包塞在自己图里的 `<style>`）为它写了规则。破坏验证——把 `facingLeft` 指向没人读的 `is-attacking`，红。
 
-### Pixi 后端还缺什么
+### Pixi 后端
 
-**不缺了。** 三个已知障碍都拆掉了：题材的样子随图走，特效有了自己的原点，一层是一串放在位置上的图。剩下的是纯实现：
+`PixiBoardSurface` 在 `@empire/game-ui/pixi`，游戏应用用 `?renderer=pixi` 选它。
+
+**能测的和不能测的，是刻意分开的。** Pixi 的 `Container` / `Sprite` / `Texture` 都是普通对象，不需要 GPU；只有 `Renderer` 需要。所以画面被拆成两半：
+
+| | 谁 | 能不能在 jsdom 里断言 |
+| --- | --- | --- |
+| 画什么、画在哪、谁盖谁 | `PixiBoardSurface` 的场景图 | **能**，而且断言了 |
+| 变成像素 | `ScenePainter` | 不能 |
+
+`ScenePainter` 还拿着 canvas——不是 surface 的。Pixi 的 renderer 是异步创建的并且自带 canvas，如果 surface 自己造一个再交出去，构造函数里就有一个异步的洞、而且没有地方报告失败。现在组合一场战斗的人先 `await preparePixiPainter()`，之后既没有要等的东西、也没有会被吞掉的错误。
+
+**两个后端必须给出同一个答案**：同一个 `BoardView` 跑两遍，逐层比对「几张图、在哪、什么顺序」。它是通过 board 跑的，这正是重点——断言的是 Pixi 后端**兑现了 board 发出的调用**，一个把单位画到地形底下、或者忽略 `place`、或者漏掉一层的后端，仍然满足 `BoardSurface` 的每一个类型。
+
+顺带发现一处不对称并修掉了：`setLayer` 把图包在 `fromMarkup` 返回的那个组里，而单位的 drawing 是图层的直接子节点——「一层里的图」有两种拼法，比第二个后端能被约束的数量多了一种。现在只有一种。**这个改动 digest 变了 90 行而 `board:flat` 逐字节不变**，正好是两把尺子存在的理由。
+
+`markup → 纹理` 有两件不显然的事，都是必须的：
+
+1. **被当作图片栅格化的 SVG 是沙箱里的，什么都不许 fetch。** 这个战役的地砖是 `<image href="…terrain-graveyard-1.png">`，所以每张图指向的资源都得先搬进它里面——整个战役 62 个，各取一次。
+2. **一张图不说自己多大。** `BoardPiece` 只有 markup 和位置，那是矢量渲染器需要的全部。与其让每个生产方（包括内容包的场景层）都声明一个盒子，尺寸是**从图自己量出来的**——每份不同的 markup 量一次，用浏览器排版时会用的那个 `getBBox`。
+
+**三件它做不到的，都在 `app.css` 里，也就是不在图里**：每个单位的投影（没有）、选中的高光（换成了提亮滤镜，是个高光但不是同一个高光）、以及帧条的推进（题材的 idle 本来就是单帧，走路的两帧循环丢了）。画好的场景的「格线永不显示」那条规则也在样式表里，Pixi 后端没被告知。
+
+**打包**：`pixi.js` 是 492 KB。从主 barrel 里 re-export 会让它进游戏的 bundle，不管这次会不会用——另外三个应用没事（它们从不点名它，barrel 会 tree-shake），但唯一提供这个选择的应用要先付钱。所以它有自己的入口，主 chunk 回到 938 KB，pixi 是按需加载的 490 KB。一条守卫盯着这件事：主入口可达的任何模块都不许点名 `pixi.js`。
+
+### 之前缺的那些
+
+三个已知障碍都拆掉了：题材的样子随图走，特效有了自己的原点，一层是一串放在位置上的图。剩下的是纯实现：
 
 1. `PixiBoardSurface implements BoardSurface` —— 四个连续属性 + 具名状态 + `BoardPiece` 分层，都是 Pixi 能直接兑现的。
 2. **markup → 纹理缓存**：键就是 `BoardPiece.markup`，比例见上表。帧条是自描述的（`data-frame-*` 已经在那里），做个 Pixi 版的 `registerSvgStrip` 就行。

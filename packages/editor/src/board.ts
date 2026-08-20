@@ -150,9 +150,9 @@ export class EditorBoard {
       this.signature = sig;
       clear(this.layers.terrain);
       const colorOf = (id: number) => players.find((p) => p.id === id)?.color;
-      this.layers.terrain.append(fromMarkup(boardPiecesMarkup(
+      this.layers.terrain.append(...[...fromMarkup(boardPiecesMarkup(
         terrainLayerPieces({ art: this.art, layout: squareLayout, content: this.content }, map, colorOf),
-      )));
+      )).childNodes]);
     }
 
     clear(this.layers.units);
