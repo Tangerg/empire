@@ -7,6 +7,7 @@ import {
   type BoardPointer,
   type BoardLayer,
   type BoardPiece,
+  type BoardPicture,
   type BoardRole,
   type BoardState,
   type BoardSurface,
@@ -39,7 +40,7 @@ const STATE_CLASS: Readonly<Record<Exclude<BoardState, 'hidden'>, string>> = {
   selected: 'is-selected',
 };
 
-/** Half a tile, which is what a drawing swells about. */
+/** Half a tile: the middle of a unit's drawing, which fills one. */
 const TILE_MIDDLE = 16;
 
 /**
@@ -57,7 +58,10 @@ class SvgDrawing implements BoardDrawing {
   private dy = 0;
   private factor = 1;
 
-  constructor(readonly el: SVGGElement) {}
+  /**
+   * @param pivot the drawing's own middle, which is what `swell` scales about.
+   */
+  constructor(readonly el: SVGGElement, private readonly pivot: number) {}
 
   place(x: number, y: number): void {
     this.x = x;
@@ -90,7 +94,8 @@ class SvgDrawing implements BoardDrawing {
 
   part(role: BoardRole): BoardDrawing | null {
     const found = this.el.querySelector<SVGGElement>(`[data-part="${role}"]`);
-    return found ? new SvgDrawing(found) : null;
+    // A part is drawn in its parent's coordinates, so it has the same middle.
+    return found ? new SvgDrawing(found, this.pivot) : null;
   }
 
   fill(role: BoardRole, markup: string): void {
@@ -115,7 +120,9 @@ class SvgDrawing implements BoardDrawing {
     const moved = `translate(${(this.x + this.dx).toFixed(2)},${(this.y + this.dy).toFixed(2)})`;
     const scaled = this.factor === 1
       ? ''
-      : ` translate(${TILE_MIDDLE},${TILE_MIDDLE}) scale(${this.factor.toFixed(4)}) translate(${-TILE_MIDDLE},${-TILE_MIDDLE})`;
+      : this.pivot === 0
+        ? ` scale(${this.factor.toFixed(4)})`
+        : ` translate(${this.pivot},${this.pivot}) scale(${this.factor.toFixed(4)}) translate(${-this.pivot},${-this.pivot})`;
     setAttrs(this.el, { transform: `${moved}${scaled}` });
   }
 }
@@ -127,7 +134,8 @@ class SvgEffect extends SvgDrawing implements BoardEffect {
     private readonly animations: FrameAnimationSystem,
     private readonly strips: readonly string[],
   ) {
-    super(el);
+    // An effect is placed at a cell's centre, so its origin is already its middle.
+    super(el, 0);
   }
 
   remove(): void {
@@ -257,7 +265,7 @@ export class SvgBoardSurface implements BoardSurface {
     const strip = el.querySelector('.runtime-frame-strip') as SVGImageElement | null;
     const animationId = strip ? `unit:${id}` : null;
     if (strip && animationId) registerSvgStrip(this.animations, animationId, strip);
-    const record: UnitRecord = { drawing: new SvgDrawing(el), animationId };
+    const record: UnitRecord = { drawing: new SvgDrawing(el, TILE_MIDDLE), animationId };
     this.units.set(id, record);
     return this.asUnit(record, 'made');
   }
@@ -275,9 +283,16 @@ export class SvgBoardSurface implements BoardSurface {
     this.units.delete(id);
   }
 
-  effect(markup: string): BoardEffect {
+  effect(picture: BoardPicture): BoardEffect {
     const group = svg('g', { class: 'fx' });
-    group.append(fromMarkup(markup));
+    if (picture.body) group.append(fromMarkup(picture.body));
+    for (const part of picture.parts ?? []) {
+      const host = svg('g', { 'data-part': part.role });
+      // The parsed children rather than the group holding them: a part is already a
+      // group, and nesting a second one inside it buys nothing.
+      host.append(...[...fromMarkup(part.markup).childNodes]);
+      group.append(host);
+    }
     this.layers.effects.append(group);
     return new SvgEffect(group, this.animations, this.playStrips(group));
   }

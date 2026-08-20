@@ -119,9 +119,63 @@ describe('the surface owns what it draws', () => {
     surface.dispose();
   });
 
+  /**
+   * A drawing swells about its own middle, and the two kinds have different ones.
+   *
+   * `swell` was specified as "about the middle of a tile", which is a unit-shaped
+   * assumption: a unit fills a tile and is placed at the cell's origin, but an
+   * effect is placed at the cell's *centre*, so its origin already is its middle.
+   * With one pivot for both, the white burst of a hit drifted 13.3px up and left
+   * over the 420ms it took to grow.
+   */
+  it('swells an effect about its origin and a unit about the tile middle', () => {
+    const surface = new SvgBoardSurface(SCENE);
+
+    const effect = surface.effect({ body: '', parts: [{ role: 'burst', markup: '<circle r="12"/>' }] });
+    effect.place(112, 80);
+    effect.part('burst')!.swell(1.8);
+    expect(surface.element.querySelector('[data-part="burst"]')!.getAttribute('transform'))
+      .toBe('translate(0.00,0.00) scale(1.8000)');
+
+    const unit = surface.unit(1, () => '<rect width="32" height="32"/>');
+    unit.drawing.place(64, 32);
+    unit.drawing.swell(0.6);
+    expect(surface.element.querySelector('.unit')!.getAttribute('transform'))
+      .toBe('translate(64.00,32.00) translate(16,16) scale(0.6000) translate(-16,-16)');
+
+    surface.dispose();
+  });
+
+  /**
+   * A part is declared, not embedded in a string for the renderer to find again.
+   *
+   * The board wrote `<g data-part="burst">…</g>` into one markup string and the
+   * surface pulled it back out with `querySelector`. A backend that bakes markup
+   * into a texture cannot look inside one.
+   */
+  it('keeps a picture\'s parts addressable and in the order they were given', () => {
+    const surface = new SvgBoardSurface(SCENE);
+    const effect = surface.effect({
+      body: '<rect class="flash" width="8" height="8"/>',
+      parts: [
+        { role: 'burst', markup: '<circle r="12"/>' },
+        { role: 'number', markup: '<text>-7</text>' },
+      ],
+    });
+
+    expect(effect.part('burst')).not.toBeNull();
+    expect(effect.part('number')).not.toBeNull();
+    expect(effect.part('band')).toBeNull();
+    // Body first, then the parts in the order given: that is the depth order.
+    const fx = surface.element.querySelector('.fx')!;
+    expect([...fx.children].map((child) => child.getAttribute('data-part') ?? 'body'))
+      .toEqual(['body', 'burst', 'number']);
+    surface.dispose();
+  });
+
   it('stops what an effect was playing when the effect is removed', () => {
     const surface = new SvgBoardSurface(SCENE);
-    const effect = surface.effect(WALKING);
+    const effect = surface.effect({ body: WALKING });
     expect(pump(2)).toBeGreaterThan(0);
 
     effect.remove();

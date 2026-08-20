@@ -120,13 +120,48 @@ export type BoardState = 'facingLeft' | 'selected' | 'hidden';
  */
 export type BoardRole = 'badges' | 'burst' | 'number' | 'band';
 
+/**
+ * One part of a picture, by the role that says what it is for.
+ *
+ * Depth is the array's order, after the body — the same rule `BoardPiece` uses.
+ */
+export interface BoardPart {
+  readonly role: BoardRole;
+  readonly markup: string;
+}
+
+/**
+ * A picture, and the parts of it that move on their own.
+ *
+ * `effect(markup)` used to take one string with `<g data-part="burst">` groups
+ * inside it, and the renderer found them again with `querySelector`. But a hit is
+ * three pictures that animate separately — the weapon's flash, a burst that swells,
+ * a number that rises — and the board knew that when it wrote them out. It threw
+ * the structure into a string and the renderer parsed it back: the same defect as a
+ * layer crossing the seam as a document, one level down.
+ *
+ * A backend that bakes markup into a texture cannot `querySelector` inside one.
+ */
+export interface BoardPicture {
+  readonly body: string;
+  readonly parts?: readonly BoardPart[];
+}
+
 /** A drawing that is on the board and can still be changed. */
 export interface BoardDrawing {
   /** Where the drawing's origin sits, in scene units. Replaces any previous place. */
   place(x: number, y: number): void;
   /** An offset from wherever it was placed, in scene units. */
   nudge(dx: number, dy: number): void;
-  /** Scale about the middle of a tile, without moving the placement. */
+  /**
+   * Scale about this drawing's own middle, without moving the placement.
+   *
+   * Which point that is belongs to whoever made the drawing, not to the caller. A
+   * unit fills a tile and is placed at the cell's *origin*, so it swells about the
+   * tile's middle; an effect is placed at a cell's *centre*, so its origin already
+   * is its middle. One pivot served both for a while, and the burst of a hit drifted
+   * 13px up and left while it grew.
+   */
   swell(factor: number): void;
   /** 0 is invisible, 1 is as drawn. */
   opacity(value: number): void;
@@ -256,7 +291,7 @@ export interface BoardSurface {
   /** Every unit that currently has a drawing. */
   drawnUnits(): number[];
   /** A transient drawing in the effects layer, removed by whoever played it. */
-  effect(markup: string): BoardEffect;
+  effect(picture: BoardPicture): BoardEffect;
   /** The pixel size the picture is presented at. */
   resize(width: number, height: number): void;
   /** Whether the player is measuring with the board right now. */

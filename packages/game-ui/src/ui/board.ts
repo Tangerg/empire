@@ -573,11 +573,13 @@ export class BoardView {
     // These used to bake the cell's scene coordinates into the markup, which is the
     // one thing left that a renderer could not treat as a picture at a position: it
     // would have had to rasterise a field-sized image to hold a damage number.
-    const drawing = this.surface.effect(
-      `${fx ? this.presentation.effect(fx) : ''}
-         <g data-part="burst"><circle r="12" fill="#ffffff" opacity="0.65"/></g>
-         <g data-part="number"><text y="-8" text-anchor="middle" class="fx-damage">-${damage}</text></g>`,
-    );
+    const drawing = this.surface.effect({
+      body: fx ? this.presentation.effect(fx) : '',
+      parts: [
+        { role: 'burst', markup: '<circle r="12" fill="#ffffff" opacity="0.65"/>' },
+        { role: 'number', markup: `<text y="-8" text-anchor="middle" class="fx-damage">-${damage}</text>` },
+      ],
+    });
     const { x: cx, y: cy } = this.centre(at);
     drawing.place(cx, cy);
     const burst = drawing.part('burst');
@@ -605,10 +607,10 @@ export class BoardView {
   }
 
   async animateHeal(at: Coord, amount: number): Promise<void> {
-    const drawing = this.surface.effect(
-      `${this.presentation.healFx ? this.presentation.effect(this.presentation.healFx) : ''}
-         <g data-part="number"><text y="-6" text-anchor="middle" class="fx-heal">+${amount}</text></g>`,
-    );
+    const drawing = this.surface.effect({
+      body: this.presentation.healFx ? this.presentation.effect(this.presentation.healFx) : '',
+      parts: [{ role: 'number', markup: `<text y="-6" text-anchor="middle" class="fx-heal">+${amount}</text>` }],
+    });
     const { x: cx, y: cy } = this.centre(at);
     drawing.place(cx, cy);
     const number = drawing.part('number');
@@ -644,22 +646,27 @@ export class BoardView {
     const w = this.viewport.fieldWidth;
     const h = this.viewport.fieldHeight;
     const band = `turn-band-${this.banners++}`;
-    const drawing = this.surface.effect(
-      `<defs>
-           <linearGradient id="${band}" x1="0" y1="0" x2="1" y2="0">
-             <stop offset="0" stop-color="${color}" stop-opacity="0"/>
-             <stop offset="0.22" stop-color="${color}" stop-opacity="0.88"/>
-             <stop offset="0.78" stop-color="${color}" stop-opacity="0.88"/>
-             <stop offset="1" stop-color="${color}" stop-opacity="0"/>
-           </linearGradient>
-         </defs>
-         <g class="fx-turn-band" data-part="band">
+    // The gradient travels inside the part that paints with it. A definition in one
+    // picture and a `url(#…)` in another only resolves while both are in the same
+    // document, which is exactly what a texture is not.
+    const drawing = this.surface.effect({
+      body: '',
+      parts: [{
+        role: 'band',
+        markup: `<defs>
+             <linearGradient id="${band}" x1="0" y1="0" x2="1" y2="0">
+               <stop offset="0" stop-color="${color}" stop-opacity="0"/>
+               <stop offset="0.22" stop-color="${color}" stop-opacity="0.88"/>
+               <stop offset="0.78" stop-color="${color}" stop-opacity="0.88"/>
+               <stop offset="1" stop-color="${color}" stop-opacity="0"/>
+             </linearGradient>
+           </defs>
            <rect x="0" y="0" width="${w}" height="34" fill="url(#${band})"/>
            <rect x="0" y="0" width="${w}" height="1" fill="#fff" opacity="0.4"/>
            <rect x="0" y="33" width="${w}" height="1" fill="#000" opacity="0.32"/>
-           <text x="${w / 2}" y="24" text-anchor="middle" class="fx-banner">${escapeHtml(text)}</text>
-         </g>`,
-    );
+           <text x="${w / 2}" y="24" text-anchor="middle" class="fx-banner">${escapeHtml(text)}</text>`,
+      }],
+    });
     drawing.place(0, h / 2 - 17);
     const sweep = drawing.part('band');
     await tween(220, (t) => {
