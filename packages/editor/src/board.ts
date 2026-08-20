@@ -10,7 +10,8 @@ import {
   TILE,
   terrainLayerPieces,
   squareLayout,
-  unitSpriteMarkup,
+  boardPictureMarkup,
+  unitPicture,
   type ArtDirection,
 } from '@empire/game-ui';
 import {
@@ -160,8 +161,10 @@ export class EditorBoard {
       .map((u) => {
         const color = players.find((p) => p.id === u.owner)?.color ?? PAL.neutral;
         const bad = this.isBadPlacement(u);
+        // The figure is what a mirror flips, and the bad-placement wash is not part
+        // of it — the same shape the board's own surface builds.
         return `<g class="unit${u.facing === 'west' ? ' face-left' : ''}" transform="translate(${u.x * TILE},${u.y * TILE})">
-          ${unitSpriteMarkup(this.art, this.content.units.get(u.unit), color)}
+          <g class="figure">${boardPictureMarkup(unitPicture(this.art, this.content.units.get(u.unit), color))}</g>
           ${bad ? `<rect width="32" height="32" fill="#ff2d1f" opacity="0.35"/>` : ''}
         </g>`;
       })

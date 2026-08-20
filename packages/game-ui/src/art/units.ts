@@ -1,3 +1,4 @@
+import { boardPictureMarkup, type BoardPicture } from './board-surface';
 import type { ArtDirection } from './direction';
 import type { UnitDef, UnitTypeId } from '@empire/battle-engine';
 import { PAL, shade, spriteColors, type SpriteColors } from './palette';
@@ -183,21 +184,29 @@ const sprites: Record<UnitTypeId, Sprite> = {
  * it. `sprites[type] ?? sprites.soldier` used to be that line, and it drew every
  * type nobody hand-drew as the same swordsman — including the campaign's supply
  * cart, which carries units in it.
+ *
+ * A picture rather than markup, because a generated unit is a spritesheet and a
+ * drawn one is not, and that difference is the renderer's to act on.
  */
-export function unitSpriteMarkup(art: ArtDirection, unit: UnitDef, team: string): string {
-  const runtime = art.resolve((provider) => provider.unitMarkup?.(unit.id, team));
+export function unitPicture(art: ArtDirection, unit: UnitDef, team: string): BoardPicture {
+  const runtime = art.resolve((provider) => provider.unitPicture?.(unit.id, team));
   if (runtime) return runtime;
   const colors = spriteColors(team);
   const sprite = sprites[unit.id];
-  return sprite
-    ? `<g class="sprite-pixel" shape-rendering="crispEdges">${sprite(colors)}</g>`
-    : unitFromRules(unit, colors);
+  // Drawn rather than generated: a hand-drawn sprite has no frames, so nothing here
+  // declares a strip and `play` on its drawing is silent.
+  return {
+    body: sprite
+      ? `<g class="sprite-pixel" shape-rendering="crispEdges">${sprite(colors)}</g>`
+      : unitFromRules(unit, colors),
+  };
 }
 
 /** Standalone svg string, for palettes, menus and the recruit dialog. */
 export function unitIcon(art: ArtDirection, unit: UnitDef, team: string, size = 32): string {
   const runtime = art.resolve((provider) => provider.unitIcon?.(unit.id, team, size));
   if (runtime) return runtime;
-  return `<svg viewBox="0 0 32 32" width="${size}" height="${size}" shape-rendering="crispEdges">${unitSpriteMarkup(art, unit, team)}</svg>`;
+  const picture = boardPictureMarkup(unitPicture(art, unit, team));
+  return `<svg viewBox="0 0 32 32" width="${size}" height="${size}" shape-rendering="crispEdges">${picture}</svg>`;
 }
 

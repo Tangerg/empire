@@ -6,6 +6,7 @@ import type {
   WeaponId,
 } from '@empire/battle-engine';
 import { SquareBoardDecorations, type BoardDecorations } from './board-decorations';
+import type { BoardPicture } from './board-surface';
 import { markerFromRules, structureFromRules } from './field-objects-from-rules';
 import type {
   SceneFrameMarkup,
@@ -52,12 +53,17 @@ export interface BattlePresentation {
    * It used to take the scene coordinates to draw at, so an effect's position was
    * baked into its picture — the one thing left on the board that a renderer could
    * not treat as a drawing at a place. Whoever plays it places it.
+   *
+   * A picture rather than markup, because an explosion is a strip that starts
+   * playing when it appears, and that is the declaration a renderer acts on.
    */
-  effect(topic: string): string;
+  effect(topic: string): BoardPicture;
   healFx?: string;
 }
 
 const EMPTY_FRAME: SceneFrameMarkup = Object.freeze({ backdrop: '', foreground: '' });
+/** No art of its own: the board still draws its own burst and its own number. */
+const NO_PICTURE: BoardPicture = Object.freeze({ body: '' });
 
 /**
  * Light on an unpainted field.
@@ -111,7 +117,7 @@ export const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
   structure: structureFromRules,
   marker: markerFromRules,
   weaponFx: () => null,
-  effect: () => '',
+  effect: () => NO_PICTURE,
 });
 
 /**

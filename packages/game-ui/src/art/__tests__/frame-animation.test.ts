@@ -2,7 +2,6 @@
 import { describe, expect, it } from 'vitest';
 import {
   FrameAnimationSystem,
-  registerSvgStrip,
   type FrameAnimationDriver,
 } from '../frame-animation';
 
@@ -56,19 +55,11 @@ describe('frame animation system', () => {
     expect(driver.callback).toBeNull();
   });
 
-  it('drives a self-describing SVG strip without knowing its asset topic', () => {
-    const driver = new ManualDriver();
-    const system = new FrameAnimationSystem(driver);
-    const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
-    image.setAttribute('data-frame-width', '32');
-    image.setAttribute('data-frame-count', '4');
-    image.setAttribute('data-frame-initial', '0');
-    image.setAttribute('data-frame-clips', JSON.stringify([{ id: 'work', frames: [0, 2, 3], fps: 10 }]));
-
-    registerSvgStrip(system, 'worker', image);
-    system.play('worker', 'work');
-    driver.advance(200);
-
-    expect(image.getAttribute('x')).toBe('-96');
-  });
+  /*
+   * There was a test here for `registerSvgStrip`, which read a strip's description
+   * out of `data-frame-*` attributes on an `<image>` and shifted the element's `x`.
+   * Both the reader and the attributes are gone: a strip is declared, and each
+   * backend registers a target that advances the frame however it draws one. The
+   * two of them are held to the same frame in `two-backends-agree.test.ts`.
+   */
 });

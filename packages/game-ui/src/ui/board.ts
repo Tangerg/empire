@@ -22,7 +22,7 @@ import {
   scenePointToCell,
   type SceneViewport,
 } from '../art/scene-viewport';
-import { unitSpriteMarkup } from '../art/units';
+import { unitPicture } from '../art/units';
 import { escapeHtml } from './html';
 import {
   wholeField,
@@ -459,12 +459,10 @@ export class BoardView {
 
   /** The drawing for a unit, made on first sight and kept until it leaves. */
   private drawingFor(unit: Unit): BoardDrawing {
-    const drawn = this.surface.unit(unit.id, () => {
+    return this.surface.unit(unit.id, () => {
       const color = this.state.players.find((p) => p.id === unit.owner)?.color ?? PAL.neutral;
-      return unitSpriteMarkup(this.art, this.content.units.get(unit.type), color);
+      return unitPicture(this.art, this.content.units.get(unit.type), color);
     });
-    if (drawn.fresh) drawn.play('idle');
-    return drawn.drawing;
   }
 
   private renderUnits(o: BoardOverlay): void {
@@ -521,10 +519,9 @@ export class BoardView {
   /* -------------------------------------------------------------- animation */
 
   async animateMove(unit: Unit, path: Coord[], msPerTile = 85): Promise<void> {
-    const drawn = this.surface.drawnUnit(unit.id);
-    if (!drawn || path.length < 2) return;
-    const { drawing } = drawn;
-    drawn.play('walk');
+    const drawing = this.surface.drawnUnit(unit.id);
+    if (!drawing || path.length < 2) return;
+    drawing.play('walk');
     // Cleared however this ends. It used to be set and unset around the loop, so a
     // tween that threw left the unit's facing frozen for the rest of the battle.
     this.walking.add(unit.id);
@@ -546,24 +543,23 @@ export class BoardView {
     } finally {
       this.walking.delete(unit.id);
     }
-    drawn.play('idle');
+    drawing.play('idle');
   }
 
   async animateStrike(attacker: Unit, target: Coord): Promise<void> {
-    const drawn = this.surface.drawnUnit(attacker.id);
-    if (!drawn) return;
-    const { drawing } = drawn;
+    const drawing = this.surface.drawnUnit(attacker.id);
+    if (!drawing) return;
     const dx = Math.sign(target.x - attacker.x);
     const dy = Math.sign(target.y - attacker.y);
     if (dx !== 0) drawing.say('facingLeft', dx < 0);
     const anchor = this.origin(attacker);
     drawing.place(anchor.x, anchor.y);
-    drawn.play('attack');
+    drawing.play('attack');
     await tween(150, (t) => {
       const push = Math.sin(Math.PI * t) * 7;
       drawing.nudge(dx * push, dy * push);
     });
-    drawn.play('idle');
+    drawing.play('idle');
     drawing.nudge(0, 0);
   }
 
@@ -573,8 +569,11 @@ export class BoardView {
     // These used to bake the cell's scene coordinates into the markup, which is the
     // one thing left that a renderer could not treat as a picture at a position: it
     // would have had to rasterise a field-sized image to hold a damage number.
+    // The pack's picture, with the board's own parts drawn over it.
+    const art = fx ? this.presentation.effect(fx) : null;
     const drawing = this.surface.effect({
-      body: fx ? this.presentation.effect(fx) : '',
+      body: art?.body ?? '',
+      strip: art?.strip,
       parts: [
         { role: 'burst', markup: '<circle r="12" fill="#ffffff" opacity="0.65"/>' },
         { role: 'number', markup: `<text y="-8" text-anchor="middle" class="fx-damage">-${damage}</text>` },
@@ -597,18 +596,20 @@ export class BoardView {
   }
 
   async animateDeath(unitId: number): Promise<void> {
-    const drawn = this.surface.drawnUnit(unitId);
-    if (!drawn) return;
+    const drawing = this.surface.drawnUnit(unitId);
+    if (!drawing) return;
     await tween(220, (t) => {
-      drawn.drawing.opacity(1 - t);
-      drawn.drawing.swell(1 - 0.35 * t);
+      drawing.opacity(1 - t);
+      drawing.swell(1 - 0.35 * t);
     });
     this.surface.removeUnit(unitId);
   }
 
   async animateHeal(at: Coord, amount: number): Promise<void> {
+    const art = this.presentation.healFx ? this.presentation.effect(this.presentation.healFx) : null;
     const drawing = this.surface.effect({
-      body: this.presentation.healFx ? this.presentation.effect(this.presentation.healFx) : '',
+      body: art?.body ?? '',
+      strip: art?.strip,
       parts: [{ role: 'number', markup: `<text y="-6" text-anchor="middle" class="fx-heal">+${amount}</text>` }],
     });
     const { x: cx, y: cy } = this.centre(at);
@@ -622,9 +623,8 @@ export class BoardView {
   }
 
   async animateSpawn(unitId: number): Promise<void> {
-    const drawn = this.surface.drawnUnit(unitId);
-    if (!drawn) return;
-    const { drawing } = drawn;
+    const drawing = this.surface.drawnUnit(unitId);
+    if (!drawing) return;
     await tween(240, (t) => {
       drawing.opacity(t);
       drawing.swell(0.6 + 0.4 * t);

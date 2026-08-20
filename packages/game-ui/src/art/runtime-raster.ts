@@ -1,17 +1,20 @@
-import type { FrameAnimationClip } from './frame-animation';
+import type { BoardPicture } from './board-surface';
+import { escapeAttr as attr } from './svg';
 
 const BOARD_TILE = 32;
 
-export interface RuntimeFrameSheet {
+/**
+ * A generated unit spritesheet: one row of frames, and what they are for.
+ *
+ * There was a `RuntimeFrameSheet` above this that added an optional `clips` array,
+ * for a caller that would have had to know the three names `BoardView` plays a unit
+ * through — and no producer ever set it. A unit's clips are these three.
+ */
+export interface RuntimeUnitSheet {
   href: string;
   frameWidth: number;
   frameHeight: number;
   frameCount: number;
-  clips?: readonly FrameAnimationClip[];
-}
-
-/** Metadata shared by generated runtime sprite sheets and their renderer. */
-export interface RuntimeUnitSheet extends RuntimeFrameSheet {
   anchor: { x: number; y: number };
   idleFrame?: number;
   walkFrames?: readonly [number, number];
@@ -36,9 +39,6 @@ export interface RuntimeGridAtlas {
   rows: number;
 }
 
-const attr = (value: string): string =>
-  value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
-
 const finiteInt = (value: number, name: string, min = 0): number => {
   if (!Number.isInteger(value) || value < min) throw new Error(`${name} must be an integer >= ${min}`);
   return value;
@@ -51,48 +51,28 @@ function validateAtlas(atlas: RuntimeCellAtlas): void {
   finiteInt(atlas.rows, 'rows', 1);
 }
 
-function validateFrameSheet(sheet: RuntimeFrameSheet): void {
+/**
+ * One generated unit in a 32x32 board cell: its ground marks, and its strip.
+ *
+ * This used to be one markup string with the strip nested three elements deep
+ * inside it — a `<g>` for the mirror, a nested `<svg>` for the viewport, a
+ * `clipPath` for the same clipping a second time, and the strip's own description
+ * serialised into `data-frame-*` attributes for the renderer to read back. The
+ * clip path's id was fixed per frame size, so every unit of a given size put the
+ * *same* `id` in the document and every reference resolved to whichever came first.
+ * It worked because they were identical.
+ *
+ * Two declared halves instead. The body is what belongs to the board — a contact
+ * shadow and a team ring, in board coordinates. The strip is the sheet, where it
+ * sits, and what may be played on it: the three clips `BoardView` names.
+ */
+export function runtimeUnitPicture(sheet: RuntimeUnitSheet, team: string): BoardPicture {
   finiteInt(sheet.frameWidth, 'frameWidth', 1);
   finiteInt(sheet.frameHeight, 'frameHeight', 1);
   finiteInt(sheet.frameCount, 'frameCount', 1);
-}
-
-/**
- * Emit a self-describing horizontal strip. Animation policy lives in metadata;
- * the shared frame system owns timing and the consumer only chooses clip ids.
- */
-export function runtimeFrameStripMarkup(
-  sheet: RuntimeFrameSheet,
-  initialFrame = 0,
-  className = 'runtime-frame-strip',
-): string {
-  validateFrameSheet(sheet);
-  finiteInt(initialFrame, 'initialFrame');
-  if (initialFrame >= sheet.frameCount) throw new Error(`initialFrame ${initialFrame} exceeds ${sheet.frameCount - 1}`);
-  const clips = sheet.clips ?? [];
-  const stripWidth = sheet.frameWidth * sheet.frameCount;
-  return `<image class="${attr(className)} runtime-frame-strip" href="${attr(sheet.href)}" x="${-initialFrame * sheet.frameWidth}" y="0" width="${stripWidth}" height="${sheet.frameHeight}" preserveAspectRatio="none"
-    data-frame-width="${sheet.frameWidth}" data-frame-count="${sheet.frameCount}" data-frame-initial="${initialFrame}" data-frame-clips="${attr(JSON.stringify(clips))}"/>`;
-}
-
-/**
- * Render one 32x48 game unit frame inside a 32x32 board cell.
- *
- * The outer <g> deliberately remains the first child of a board unit so the
- * existing face-left transform can mirror the whole sprite. The image itself
- * keeps the complete strip available for CSS-driven walk animation.
- */
-export function runtimeUnitMarkup(sheet: RuntimeUnitSheet, team: string, frame = 0): string {
-  validateFrameSheet(sheet);
   finiteInt(sheet.anchor.x, 'anchor.x');
   finiteInt(sheet.anchor.y, 'anchor.y');
-  finiteInt(frame, 'frame');
-  if (frame >= sheet.frameCount) throw new Error(`frame ${frame} exceeds ${sheet.frameCount - 1}`);
 
-  const x = BOARD_TILE / 2 - sheet.anchor.x;
-  const y = BOARD_TILE - 1 - sheet.anchor.y;
-  const color = attr(team);
-  const clipId = `runtime-unit-frame-${sheet.frameWidth}-${sheet.frameHeight}`;
   const idleFrame = sheet.idleFrame ?? 0;
   const walkFrames = sheet.walkFrames ?? [1, 3];
   const attackFrame = sheet.attackFrame ?? Math.min(2, sheet.frameCount - 1);
@@ -106,21 +86,29 @@ export function runtimeUnitMarkup(sheet: RuntimeUnitSheet, team: string, frame =
     if (value >= sheet.frameCount) throw new Error(`${name} ${value} exceeds ${sheet.frameCount - 1}`);
   }
 
-  const clips = sheet.clips ?? [
-    { id: 'idle', frames: [idleFrame], fps: 1, loop: true },
-    { id: 'walk', frames: [...walkFrames], fps: 6.25, loop: true },
-    { id: 'attack', frames: [attackFrame], fps: 1, loop: false },
-  ];
-  return `<g class="sprite-pixel sprite-raster" data-runtime-raster="unit">
+  const color = attr(team);
+  return {
+    body: `<g class="sprite-pixel sprite-raster" data-runtime-raster="unit">
     <ellipse class="runtime-unit-contact-shadow" cx="16" cy="29.2" rx="12.5" ry="4.2" fill="#0b100d" opacity="0.48"/>
     <ellipse class="runtime-unit-team-ring" cx="16" cy="29.5" rx="11" ry="2.25" fill="none" stroke="${color}" stroke-width="1.8" opacity="1"/>
-    <svg class="runtime-unit-figure" x="${x}" y="${y}" width="${sheet.frameWidth}" height="${sheet.frameHeight}" viewBox="0 0 ${sheet.frameWidth} ${sheet.frameHeight}" overflow="hidden">
-      <defs><clipPath id="${clipId}" clipPathUnits="userSpaceOnUse"><rect width="${sheet.frameWidth}" height="${sheet.frameHeight}"/></clipPath></defs>
-      <g class="runtime-unit-frame-window" clip-path="url(#${clipId})">
-        ${runtimeFrameStripMarkup({ ...sheet, clips }, frame, 'runtime-unit-strip')}
-      </g>
-    </svg>
-  </g>`;
+  </g>`,
+    strip: {
+      href: sheet.href,
+      frameWidth: sheet.frameWidth,
+      frameHeight: sheet.frameHeight,
+      frameCount: sheet.frameCount,
+      // The sheet's anchor is where the figure's feet are; the board's is the
+      // middle of the cell, one pixel off its floor.
+      x: BOARD_TILE / 2 - sheet.anchor.x,
+      y: BOARD_TILE - 1 - sheet.anchor.y,
+      clips: [
+        { id: 'idle', frames: [idleFrame], fps: 1, loop: true },
+        { id: 'walk', frames: [...walkFrames], fps: 6.25, loop: true },
+        { id: 'attack', frames: [attackFrame], fps: 1, loop: false },
+      ],
+      playing: 'idle',
+    },
+  };
 }
 
 /** Render one atlas cell without resampling, clipped to the requested viewport. */

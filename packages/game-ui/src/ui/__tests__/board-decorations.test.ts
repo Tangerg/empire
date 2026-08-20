@@ -29,7 +29,7 @@ describe('how a board draws its tactical layer', () => {
       structure: () => null,
       marker: () => '',
       weaponFx: () => null,
-      effect: () => '',
+      effect: () => ({ body: '' }),
     };
 
     // The safe default is the look that works over anything, which is also what
@@ -50,7 +50,7 @@ describe('how a board draws its tactical layer', () => {
       structure: () => null,
       marker: () => '',
       weaponFx: () => null,
-      effect: () => '',
+      effect: () => ({ body: '' }),
     };
     expect(decorationsFor(mixed).id).toBe('test.hex');
     expect(decorationsFor(mixed).shapeRendering).toBe('auto');

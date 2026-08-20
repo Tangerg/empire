@@ -20,14 +20,14 @@ import {
 } from './candidate-01-map-scene';
 import {
   candidate01CoverPropMarkup,
-  candidate01FxMarkup,
+  candidate01FxPicture,
   candidate01IconMarkup,
   candidate01TryIconMarkup,
   candidate01MarkerMarkup,
   candidate01StructureMarkup,
   candidate01TerrainMarkup,
   candidate01UnitIcon,
-  candidate01UnitMarkup,
+  candidate01UnitPicture,
   candidate01WeaponFxTopic,
 } from './candidate-01-runtime';
 import { candidate01Asset, candidate01AssetUrl } from './candidate-01-assets';
@@ -74,7 +74,7 @@ export const CANDIDATE_01_BATTLE_PRESENTATION: BattlePresentation = Object.freez
   structure: candidate01StructureMarkup,
   marker: candidate01MarkerMarkup,
   weaponFx: candidate01WeaponFxTopic,
-  effect: candidate01FxMarkup,
+  effect: candidate01FxPicture,
   healFx: 'C01-FX-17',
 });
 
@@ -88,7 +88,7 @@ export const CANDIDATE_01_BATTLE_PRESENTATION: BattlePresentation = Object.freez
  */
 export const CANDIDATE_01_ART_PROVIDER: ArtProvider = {
   id: 'candidate-01',
-  unitMarkup: candidate01UnitMarkup,
+  unitPicture: candidate01UnitPicture,
   unitIcon: candidate01UnitIcon,
   terrainMarkup: candidate01TerrainMarkup,
   portraitMarkup,
@@ -105,7 +105,6 @@ export const CANDIDATE_01_ART_PROVIDER: ArtProvider = {
   coverMarkup: candidate01CoverPropMarkup,
   markerMarkup: () => null,
   weaponFx: candidate01WeaponFxTopic,
-  effectMarkup: candidate01FxMarkup,
 };
 
 /** This pack's art, ready for an application root to hand to a shell. */

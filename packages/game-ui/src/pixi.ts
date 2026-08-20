@@ -10,5 +10,5 @@
  * So whoever wants it imports it dynamically, and the bundler gives it a chunk of
  * its own that loads when the choice is made.
  */
-export * from './art/markup-textures';
+export * from './art/picture-textures';
 export * from './art/pixi-board-surface';

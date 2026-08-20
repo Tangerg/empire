@@ -1,22 +1,31 @@
-import { Texture } from 'pixi.js';
+import { Rectangle, Texture } from 'pixi.js';
+import type { BoardStrip } from './board-surface';
 
 /**
- * Turning a picture's markup into a texture.
+ * Turning a picture into textures.
  *
- * The board hands every renderer the same thing: markup. A DOM backend appends it
- * and is done; a GPU backend has to bake it, once per distinct picture, and that is
- * the whole reason a texture cache is worth anything here — `tools/board-scale.ts`
+ * A picture reaches a renderer as two different things, and a GPU backend needs
+ * both as textures.
+ *
+ * Its body is markup, which has to be baked — once per distinct picture, which is
+ * the whole reason a texture cache is worth anything here: `tools/board-scale.ts`
  * measures 4,131 terrain tiles across four distinct pictures on a painted field.
  *
- * A port because the baking is browser-only and the display list is not. A test can
+ * Its strip is an image of frames, which needs no baking at all. Cutting it into
+ * one texture per frame is what a spritesheet is for, and it is why the frames of a
+ * walk cycle cost nothing beyond the image every unit of that type already shares.
+ *
+ * A port because both are browser-only and the display list is not. A test can
  * assert what is drawn, where and in what order with a rasteriser that answers
  * instantly; nothing can assert that a texture came out looking right.
  */
-export interface MarkupTextures {
+export interface PictureTextures {
   /** How many texture pixels one scene unit is baked at. */
   readonly resolution: number;
   /** The same markup is baked once. */
   bake(markup: string): Promise<BakedPicture>;
+  /** One texture per frame of a strip, in order, cut without resampling. */
+  frames(strip: BoardStrip): Promise<readonly Texture[]>;
   dispose(): void;
 }
 
@@ -30,6 +39,8 @@ export interface BakedPicture {
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
 /**
+ * Both answers, from the browser this is running in.
+ *
  * Bakes markup by asking the browser to rasterise it as an SVG image.
  *
  * Two things about that route are not obvious, and both are load-bearing.
@@ -45,8 +56,9 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
  * control — the extent is measured from the picture itself, once per distinct
  * markup, with the same `getBBox` the browser would use to lay it out.
  */
-export class SvgMarkupTextures implements MarkupTextures {
+export class BrowserPictureTextures implements PictureTextures {
   private readonly baked = new Map<string, Promise<BakedPicture>>();
+  private readonly cut = new Map<string, Promise<readonly Texture[]>>();
   private readonly assets = new Map<string, Promise<string>>();
   /** One hidden document to measure in, rather than one per measurement. */
   private ruler: SVGSVGElement | null = null;
@@ -65,11 +77,43 @@ export class SvgMarkupTextures implements MarkupTextures {
     return pending;
   }
 
+  frames(strip: BoardStrip): Promise<readonly Texture[]> {
+    // The image and how it is divided, because one sheet may be read as either.
+    const key = `${strip.href}|${strip.frameCount}`;
+    const found = this.cut.get(key);
+    if (found) return found;
+    const pending = this.slice(strip);
+    this.cut.set(key, pending);
+    return pending;
+  }
+
   dispose(): void {
     this.ruler?.remove();
     this.ruler = null;
     this.baked.clear();
+    this.cut.clear();
     this.assets.clear();
+  }
+
+  /**
+   * The frames of one strip, sharing the image's single texture.
+   *
+   * Cut in the image's own pixels rather than in scene units: a sheet is drawn into
+   * a frame-sized box with `preserveAspectRatio="none"`, so nothing guarantees that
+   * one source pixel is one scene unit, and the sprite is sized by whoever draws it.
+   */
+  private async slice(strip: BoardStrip): Promise<readonly Texture[]> {
+    const image = new Image();
+    image.src = strip.href;
+    await image.decode();
+    const source = Texture.from(image).source;
+    // Pixel art, presented at whatever size the board is: no smoothing between frames.
+    source.scaleMode = 'nearest';
+    const width = image.naturalWidth / strip.frameCount;
+    return Array.from({ length: strip.frameCount }, (_, frame) => new Texture({
+      source,
+      frame: new Rectangle(frame * width, 0, width, image.naturalHeight),
+    }));
   }
 
   private async raster(markup: string): Promise<BakedPicture> {

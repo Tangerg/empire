@@ -4,7 +4,7 @@ import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 import { GENERIC_ART } from '../direction';
-import { unitSpriteMarkup } from '../units';
+import { unitPicture } from '../units';
 import { portraitMarkup } from '../portraits';
 
 /** Composed per suite, exactly like an application composition root. */
@@ -18,7 +18,7 @@ function everyShippedUnit(): UnitDef[] {
   return [...content.units.all()];
 }
 
-const sprite = (unit: UnitDef) => unitSpriteMarkup(GENERIC_ART, unit, '#3f7fd8');
+const sprite = (unit: UnitDef) => unitPicture(GENERIC_ART, unit, '#3f7fd8').body;
 /** Portraits mint a fresh gradient id per call; the drawing is what is compared. */
 const portrait = (unit: UnitDef) => portraitMarkup(GENERIC_ART, unit, '#3f7fd8').replace(/-\d+/g, '');
 

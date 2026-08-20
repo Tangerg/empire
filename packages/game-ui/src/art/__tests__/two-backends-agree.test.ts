@@ -1,14 +1,19 @@
 // @vitest-environment jsdom
-import { describe, expect, it } from 'vitest';
-import { Texture } from 'pixi.js';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { Sprite, Texture, type Container } from 'pixi.js';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
 import { createBattleEngine, createState, type LevelData } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
-import { BOARD_LAYERS, type BoardLayer, type BoardSurfaceScene } from '../board-surface';
+import {
+  BOARD_LAYERS,
+  type BoardLayer,
+  type BoardStrip,
+  type BoardSurfaceScene,
+} from '../board-surface';
 import { GENERIC_ART } from '../direction';
 import { SvgBoardSurface } from '../svg-board-surface';
 import { PixiBoardSurface, type ScenePainter } from '../pixi-board-surface';
-import type { BakedPicture, MarkupTextures } from '../markup-textures';
+import type { BakedPicture, PictureTextures } from '../picture-textures';
 import { BoardView, emptyOverlay, type BoardComposition } from '../../ui/board';
 
 /**
@@ -28,17 +33,56 @@ import { BoardView, emptyOverlay, type BoardComposition } from '../../ui/board';
  * Visual acceptance is a person looking at a screen.
  */
 
+/**
+ * The frame loop, held still.
+ *
+ * Both backends drive their own `FrameAnimationSystem`, and both take frames from
+ * whatever `requestAnimationFrame` is when they ask — so a test can be the clock.
+ */
+let pending: Array<(time: number) => void> = [];
+let realRequest: typeof requestAnimationFrame;
+let realCancel: typeof cancelAnimationFrame;
+
+beforeEach(() => {
+  realRequest = globalThis.requestAnimationFrame;
+  realCancel = globalThis.cancelAnimationFrame;
+  pending = [];
+  globalThis.requestAnimationFrame = ((callback: (time: number) => void) => {
+    pending.push(callback);
+    return pending.length;
+  }) as typeof requestAnimationFrame;
+  globalThis.cancelAnimationFrame = (() => {}) as typeof cancelAnimationFrame;
+});
+
+afterEach(() => {
+  globalThis.requestAnimationFrame = realRequest;
+  globalThis.cancelAnimationFrame = realCancel;
+});
+
 const CATALOG = createTestCatalog();
 const ENGINE = createBattleEngine({ content: CATALOG });
 
 /** A rasteriser that answers instantly, so a display list needs no GPU and no wait. */
-class InstantTextures implements MarkupTextures {
+class InstantTextures implements PictureTextures {
   readonly resolution = 2;
   readonly asked: string[] = [];
+  /** The frames handed out per strip, so a test can say which one is showing. */
+  readonly cut = new Map<string, Texture[]>();
 
   bake(markup: string): Promise<BakedPicture> {
     this.asked.push(markup);
     return Promise.resolve({ texture: Texture.EMPTY, left: 0, top: 0 });
+  }
+
+  frames(strip: BoardStrip): Promise<readonly Texture[]> {
+    // Distinct objects rather than distinct pixels: which frame is showing is the
+    // question, and `Texture.EMPTY` four times over could not answer it.
+    const made = Array.from(
+      { length: strip.frameCount },
+      () => new Texture({ source: Texture.EMPTY.source }),
+    );
+    this.cut.set(strip.href, made);
+    return Promise.resolve(made);
   }
 
   dispose(): void {}
@@ -187,8 +231,8 @@ describe('two backends draw the same board', () => {
       foreground: '',
     }, { textures: new InstantTextures(), painter: new IdlePainter() });
 
-    const unit = surface.unit(4, () => '<rect width="32" height="32"/>');
-    unit.drawing.say('facingLeft', true);
+    const unit = surface.unit(4, () => ({ body: '<rect width="32" height="32"/>' }));
+    unit.say('facingLeft', true);
 
     const root = surface.displayList().find((entry) => entry.layer === 'units')!;
     expect(root.drawn).toHaveLength(1);
@@ -198,5 +242,64 @@ describe('two backends draw the same board', () => {
     expect(figure.scale.x).toBe(-1);
     expect(badges.scale.x).toBe(1);
     surface.dispose();
+  });
+
+  /**
+   * The same clips, the same frame, on both backends.
+   *
+   * This is what the round was for. A strip used to cross the port as an `<image>`
+   * with `data-frame-*` attributes on it, which is a DOM trick described in a place
+   * only a DOM reader could look — so `play` on the GPU backend was a documented
+   * no-op and a unit stood on its idle frame forever.
+   *
+   * Declared, the DOM backend moves a window over one image and the GPU backend
+   * swaps which of four textures a sprite holds. Nothing above the port knows which
+   * of those is happening, and one timeline drives both.
+   */
+  it('advances a walk cycle to the same frame on both backends', async () => {
+    const strip: BoardStrip = {
+      href: 'walk.png',
+      frameWidth: 32,
+      frameHeight: 32,
+      frameCount: 4,
+      x: 0,
+      y: 0,
+      clips: [{ id: 'walk', frames: [0, 2], fps: 8, loop: true }],
+    };
+    const scene: BoardSurfaceScene = {
+      width: 320, height: 320, originX: 0, originY: 0,
+      shapeRendering: 'crispEdges', backdrop: '', foreground: '',
+    };
+
+    const dom = new SvgBoardSurface(scene);
+    const domUnit = dom.unit(1, () => ({ body: '', strip }));
+
+    const textures = new InstantTextures();
+    const gpu = new PixiBoardSurface(scene, { textures, painter: new IdlePainter() });
+    const gpuUnit = gpu.unit(1, () => ({ body: '', strip }));
+    // The frames are cut asynchronously; the display list never waited for them.
+    await Promise.resolve();
+
+    const gpuSprite = ((gpu.scene.children.at(-1) as Container)
+      .children.find((child) => child.label === 'layer-units') as Container)
+      .children[0].children[0].children[0] as Sprite;
+    const frames = textures.cut.get('walk.png')!;
+    const domFrame = () => dom.element.querySelector('.board-strip')!.getAttribute('viewBox');
+    const gpuFrame = () => frames.indexOf(gpuSprite.texture);
+
+    expect(domFrame()).toBe('0 0 32 32');
+    expect(gpuFrame()).toBe(0);
+
+    const base = performance.now();
+    domUnit.play('walk');
+    gpuUnit.play('walk');
+    // 8fps: 200ms in is the second entry of the cycle, which is frame 2.
+    for (const callback of pending.splice(0)) callback(base + 200);
+
+    expect(domFrame()).toBe('64 0 32 32');
+    expect(gpuFrame()).toBe(2);
+
+    dom.dispose();
+    gpu.dispose();
   });
 });

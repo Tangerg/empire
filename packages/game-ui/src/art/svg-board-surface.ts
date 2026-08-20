@@ -1,7 +1,9 @@
-import { FrameAnimationSystem, registerSvgStrip } from './frame-animation';
+import { FrameAnimationSystem } from './frame-animation';
 import {
   BOARD_LAYERS,
   boardPiecesMarkup,
+  boardStripMarkup,
+  boardStripWindow,
   type BoardDrawing,
   type BoardEffect,
   type BoardPointer,
@@ -10,10 +12,10 @@ import {
   type BoardPicture,
   type BoardRole,
   type BoardState,
+  type BoardStrip,
   type BoardSurface,
   type BoardSurfaceScene,
   type BoardSurfaceFactory,
-  type BoardUnit,
 } from './board-surface';
 import { clear, fromMarkup, setAttrs, svg } from './svg';
 
@@ -22,10 +24,15 @@ import { clear, fromMarkup, setAttrs, svg } from './svg';
  *
  * The renderer this project was built on, now behind the port instead of fused
  * into the board. The layer classes and the state classes are load-bearing — the
- * stylesheet and forty-five test assertions read them. `data-unit` is not: it
- * names a unit in `tools/board-digest.ts` output so a human can read a renderer
- * diff, and it sits on the wrapper this surface makes rather than inside the
- * picture, so it costs a texture cache nothing.
+ * stylesheet and forty-five test assertions read them. `data-unit` and `data-part`
+ * are not: they name things in `tools/board-digest.ts` output so a human can read a
+ * renderer diff. Nothing reads them back, and they sit on wrappers this surface
+ * makes rather than inside a picture, so they cost a texture cache nothing.
+ *
+ * Layers hold still pictures. A `BoardPiece` is markup at a place and carries no
+ * strip, so replacing a layer cannot orphan a running clip — which is what the
+ * `layerStrips` map here, and the identical one the board kept before it, existed
+ * to prevent. Only units and effects animate, because only they declare a strip.
  */
 
 /**
@@ -57,11 +64,36 @@ class SvgDrawing implements BoardDrawing {
   private dx = 0;
   private dy = 0;
   private factor = 1;
+  /**
+   * What a mirror flips, so a unit's badges do not flip with its sprite.
+   *
+   * The stylesheet used to reach for `.unit.face-left > g:first-child` — whichever
+   * element the picture's markup happened to start with. For a hand-drawn sprite
+   * that is the whole figure; for one drawn from the rules it is the first of
+   * several groups, and only that one would have mirrored. Both backends name the
+   * thing that flips now.
+   */
+  private readonly figure = svg('g', { class: 'figure' });
+  private readonly parts = new Map<BoardRole, SvgDrawing>();
+  /** The strip this drawing registered on the timeline, if it drew one. */
+  private playing = false;
 
   /**
    * @param pivot the drawing's own middle, which is what `swell` scales about.
+   * @param id this drawing's place on the shared timeline.
    */
-  constructor(readonly el: SVGGElement, private readonly pivot: number) {}
+  constructor(
+    private readonly animations: FrameAnimationSystem,
+    readonly el: SVGGElement,
+    private readonly pivot: number,
+    private readonly id: string,
+    picture: BoardPicture,
+  ) {
+    el.append(this.figure);
+    this.body(picture.body);
+    if (picture.strip) this.draw(picture.strip);
+    for (const part of picture.parts ?? []) this.addPart(part.role, part.markup);
+  }
 
   place(x: number, y: number): void {
     this.x = x;
@@ -93,27 +125,69 @@ class SvgDrawing implements BoardDrawing {
   }
 
   part(role: BoardRole): BoardDrawing | null {
-    const found = this.el.querySelector<SVGGElement>(`[data-part="${role}"]`);
-    // A part is drawn in its parent's coordinates, so it has the same middle.
-    return found ? new SvgDrawing(found, this.pivot) : null;
+    return this.parts.get(role) ?? null;
   }
 
   fill(role: BoardRole, markup: string): void {
-    const host = this.el.querySelector<SVGGElement>(`[data-part="${role}"]`);
-    if (!host) return;
-    clear(host);
-    if (markup) host.append(fromMarkup(markup));
+    this.parts.get(role)?.body(markup);
+  }
+
+  play(clip: string): void {
+    if (this.playing) this.animations.play(this.id, clip);
+  }
+
+  /** Declares a part of this drawing, drawn over whatever came before it. */
+  addPart(role: BoardRole, markup: string): SvgDrawing {
+    // A part is drawn in its parent's coordinates, so it has the same middle, and it
+    // cannot itself hold a strip — nothing declares one, so nothing plays here.
+    const part = new SvgDrawing(
+      this.animations,
+      svg('g', { 'data-part': role }),
+      this.pivot,
+      `${this.id}/${role}`,
+      { body: markup },
+    );
+    this.el.append(part.el);
+    this.parts.set(role, part);
+    return part;
+  }
+
+  /** Replaces the picture under this drawing, leaving its parts alone. */
+  body(markup: string): void {
+    clear(this.figure);
+    if (markup) this.figure.append(fromMarkup(markup));
   }
 
   /**
-   * Takes the element out of the tree.
+   * Takes the element out of the tree, and off the timeline.
    *
    * Not `remove`, and not on `BoardDrawing`. The surface decides when a unit's
-   * drawing goes, because it also has a sprite timeline to stop and an entry to
-   * forget; an effect gets the public `remove` that does all three.
+   * drawing goes, because it also has an entry to forget; an effect gets the public
+   * `remove` that does both.
    */
   detach(): void {
+    if (this.playing) this.animations.unregister(this.id);
+    this.playing = false;
     this.el.remove();
+  }
+
+  /**
+   * Draws the strip, and puts it on the timeline.
+   *
+   * The window is the element that moves, so this holds the one node it needs and
+   * looks nothing up. What it used to do was append markup, find the `<image>` in
+   * it again by class name, and read the frame geometry back out of the attributes
+   * the markup had just serialised.
+   */
+  private draw(strip: BoardStrip): void {
+    const window = fromMarkup(boardStripMarkup(strip)).firstElementChild as SVGSVGElement;
+    this.figure.append(window);
+    this.animations.register(this.id, {
+      frameCount: strip.frameCount,
+      setFrame: (frame) => setAttrs(window, { viewBox: boardStripWindow(strip, frame) }),
+    }, strip.clips);
+    this.playing = true;
+    if (strip.playing) this.animations.play(this.id, strip.playing);
   }
 
   private write(): void {
@@ -127,44 +201,17 @@ class SvgDrawing implements BoardDrawing {
   }
 }
 
-/** One transient drawing, and the sprite timelines it started. */
+/** One transient drawing, whose life belongs to whoever played it. */
 class SvgEffect extends SvgDrawing implements BoardEffect {
-  constructor(
-    el: SVGGElement,
-    private readonly animations: FrameAnimationSystem,
-    private readonly strips: readonly string[],
-  ) {
-    // An effect is placed at a cell's centre, so its origin is already its middle.
-    super(el, 0);
-  }
-
   remove(): void {
-    for (const id of this.strips) this.animations.unregister(id);
     this.detach();
   }
-}
-
-/** Which ask produced a `BoardUnit`: the one that made it, or a later one. */
-type Ask = 'made' | 'found';
-
-/** What the surface keeps for a unit: its drawing, and its place in the timeline. */
-interface UnitRecord {
-  readonly drawing: SvgDrawing;
-  readonly animationId: string | null;
 }
 
 export class SvgBoardSurface implements BoardSurface {
   readonly element: SVGSVGElement;
   private readonly layers: Record<BoardLayer, SVGGElement>;
-  private readonly units = new Map<number, UnitRecord>();
-  /**
-   * What each layer's current content is playing.
-   *
-   * Replacing a layer discards its strips, so the surface unregisters them. The
-   * board used to hold this list itself and unregister before every `setLayer` —
-   * cleaning up after the call it was about to make.
-   */
-  private readonly layerStrips = new Map<BoardLayer, string[]>();
+  private readonly units = new Map<number, SvgDrawing>();
   /**
    * The sprite timeline for everything this surface draws.
    *
@@ -172,7 +219,7 @@ export class SvgBoardSurface implements BoardSurface {
    * which is what let the board register nothing and unregister everything.
    */
   private readonly animations = new FrameAnimationSystem();
-  private effectSerial = 0;
+  private serial = 0;
 
   constructor(private readonly scene: BoardSurfaceScene) {
     this.element = svg('svg', {
@@ -236,8 +283,6 @@ export class SvgBoardSurface implements BoardSurface {
 
   setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): void {
     const host = this.layers[layer];
-    for (const id of this.layerStrips.get(layer) ?? []) this.animations.unregister(id);
-    this.layerStrips.delete(layer);
     clear(host);
     if (!pieces.length) return;
     // One parse for the whole layer: building four thousand groups by hand is
@@ -248,57 +293,55 @@ export class SvgBoardSurface implements BoardSurface {
     // drawings are direct children — two spellings of "the pictures in a layer",
     // which is one more than a second backend can be held to.
     host.append(...[...fromMarkup(boardPiecesMarkup(pieces)).childNodes]);
-    const strips = this.playStrips(host);
-    if (strips.length) this.layerStrips.set(layer, strips);
   }
 
   drawnUnits(): number[] {
     return [...this.units.keys()];
   }
 
-  unit(id: number, draw: () => string): BoardUnit {
+  unit(id: number, draw: () => BoardPicture): BoardDrawing {
     const existing = this.units.get(id);
-    if (existing) return this.asUnit(existing, 'found');
+    if (existing) return existing;
 
-    const el = svg('g', { class: 'unit', 'data-unit': id });
-    el.append(fromMarkup(draw()));
-    // The badges group declares its role, so nothing has to find it by position.
-    el.append(svg('g', { class: 'badges', 'data-part': 'badges' }));
-    this.layers.units.append(el);
-
-    const strip = el.querySelector('.runtime-frame-strip') as SVGImageElement | null;
-    const animationId = strip ? `unit:${id}` : null;
-    if (strip && animationId) registerSvgStrip(this.animations, animationId, strip);
-    const record: UnitRecord = { drawing: new SvgDrawing(el, TILE_MIDDLE), animationId };
-    this.units.set(id, record);
-    return this.asUnit(record, 'made');
+    const picture = draw();
+    const drawing = new SvgDrawing(
+      this.animations,
+      svg('g', { class: 'unit', 'data-unit': id }),
+      TILE_MIDDLE,
+      `strip:${this.serial++}`,
+      picture,
+    );
+    // The badges group is the surface's own, not the picture's: it is what
+    // `fill('badges', …)` replaces every render, and it must not mirror with the
+    // sprite when the unit faces west.
+    drawing.addPart('badges', '');
+    this.layers.units.append(drawing.el);
+    this.units.set(id, drawing);
+    return drawing;
   }
 
-  drawnUnit(id: number): BoardUnit | null {
-    const record = this.units.get(id);
-    return record ? this.asUnit(record, 'found') : null;
+  drawnUnit(id: number): BoardDrawing | null {
+    return this.units.get(id) ?? null;
   }
 
   removeUnit(id: number): void {
-    const record = this.units.get(id);
-    if (!record) return;
-    if (record.animationId) this.animations.unregister(record.animationId);
-    record.drawing.detach();
+    const drawing = this.units.get(id);
+    if (!drawing) return;
+    drawing.detach();
     this.units.delete(id);
   }
 
   effect(picture: BoardPicture): BoardEffect {
-    const group = svg('g', { class: 'fx' });
-    if (picture.body) group.append(fromMarkup(picture.body));
-    for (const part of picture.parts ?? []) {
-      const host = svg('g', { 'data-part': part.role });
-      // The parsed children rather than the group holding them: a part is already a
-      // group, and nesting a second one inside it buys nothing.
-      host.append(...[...fromMarkup(part.markup).childNodes]);
-      group.append(host);
-    }
-    this.layers.effects.append(group);
-    return new SvgEffect(group, this.animations, this.playStrips(group));
+    // An effect is placed at a cell's centre, so its origin is already its middle.
+    const drawing = new SvgEffect(
+      this.animations,
+      svg('g', { class: 'fx' }),
+      0,
+      `strip:${this.serial++}`,
+      picture,
+    );
+    this.layers.effects.append(drawing.el);
+    return drawing;
   }
 
   resize(width: number, height: number): void {
@@ -316,33 +359,7 @@ export class SvgBoardSurface implements BoardSurface {
 
   dispose(): void {
     this.animations.dispose();
-    this.layerStrips.clear();
     this.units.clear();
-  }
-
-  /** A unit as the port describes one: what to change, and what to play on it. */
-  private asUnit(record: UnitRecord, ask: Ask): BoardUnit {
-    return {
-      drawing: record.drawing,
-      fresh: ask === 'made',
-      play: (clip) => {
-        if (record.animationId) this.animations.play(record.animationId, clip);
-      },
-    };
-  }
-
-  /** Registers and starts every self-describing frame strip inside a subtree. */
-  private playStrips(root: Element): string[] {
-    const ids: string[] = [];
-    for (const strip of root.querySelectorAll<SVGImageElement>('.runtime-frame-strip')) {
-      const id = `effect:${this.effectSerial++}`;
-      registerSvgStrip(this.animations, id, strip);
-      const clips = JSON.parse(strip.getAttribute('data-frame-clips') ?? '[]') as Array<{ id?: string }>;
-      const clip = clips[0]?.id;
-      if (clip) this.animations.play(id, clip);
-      ids.push(id);
-    }
-    return ids;
   }
 }
 

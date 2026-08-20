@@ -26,6 +26,15 @@ export function setAttrs(el: Element, attrs: Attrs): void {
   }
 }
 
+/**
+ * A value safe to put between the quotes of an attribute.
+ *
+ * Here rather than in each module that writes markup: there were three private
+ * copies of this four-line function, and a fourth call site that had none.
+ */
+export const escapeAttr = (value: string): string =>
+  value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
+
 /** Parse an SVG markup string into elements (used by the sprite library). */
 export function fromMarkup(markup: string): SVGGElement {
   const doc = new DOMParser().parseFromString(

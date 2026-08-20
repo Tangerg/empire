@@ -592,12 +592,9 @@ kbd {
   transform-box: fill-box;
 }
 
-.layer-units .unit.face-left > g:first-child {
+/* The named figure, not whichever element the picture happened to start with. */
+.layer-units .unit.face-left > .figure {
   transform: translate(32px, 0) scale(-1, 1);
-}
-
-.runtime-frame-strip {
-  image-rendering: auto;
 }
 
 .art-heading,

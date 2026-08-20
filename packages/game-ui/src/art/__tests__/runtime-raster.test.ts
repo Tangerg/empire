@@ -1,9 +1,18 @@
 import { describe, expect, it } from 'vitest';
-import { runtimeAtlasCellMarkup, runtimeGridAtlasCellMarkup, runtimeUnitMarkup } from '../runtime-raster';
+import { runtimeAtlasCellMarkup, runtimeGridAtlasCellMarkup, runtimeUnitPicture } from '../runtime-raster';
+import { boardPictureMarkup } from '../board-surface';
 
 describe('runtime raster adapter', () => {
+  /**
+   * A strip is data here, not a string with its own description written into it.
+   *
+   * What this used to assert is the giveaway: `data-frame-width="32"` and
+   * `&quot;frames&quot;:[1,3]` — a test reading JSON out of an HTML attribute that
+   * the function under test had just serialised, so that a renderer could parse it
+   * back. The frames and the clips are the return value now.
+   */
   it('grounds a 32x48 four-frame unit strip in a 32x32 board cell', () => {
-    const markup = runtimeUnitMarkup(
+    const picture = runtimeUnitPicture(
       {
         href: '/assets/unit.png?a=1&b=2',
         frameWidth: 32,
@@ -14,17 +23,27 @@ describe('runtime raster adapter', () => {
       '#3f7fd8',
     );
 
-    expect(markup).toContain('x="0" y="-16" width="32" height="48"');
-    expect(markup).toContain('width="128" height="48"');
-    expect(markup).toContain('href="/assets/unit.png?a=1&amp;b=2"');
-    expect(markup).toContain('stroke="#3f7fd8"');
-    expect(markup).toContain('runtime-unit-contact-shadow');
-    expect(markup).toContain('runtime-unit-figure');
-    expect(markup).toContain('id="runtime-unit-frame-32-48"');
-    expect(markup).toContain('clip-path="url(#runtime-unit-frame-32-48)"');
-    expect(markup).toContain('data-frame-width="32"');
-    expect(markup).toContain('&quot;id&quot;:&quot;walk&quot;');
-    expect(markup).toContain('&quot;frames&quot;:[1,3]');
+    expect(picture.body).toContain('stroke="#3f7fd8"');
+    expect(picture.body).toContain('runtime-unit-contact-shadow');
+    // The sheet's anchor is the figure's feet; the cell's floor is one pixel up.
+    expect(picture.strip).toMatchObject({
+      href: '/assets/unit.png?a=1&b=2',
+      frameWidth: 32,
+      frameHeight: 48,
+      frameCount: 4,
+      x: 0,
+      y: -16,
+      playing: 'idle',
+    });
+    // The three a battle has names for, and nothing else.
+    expect(picture.strip!.clips.map((clip) => clip.id)).toEqual(['idle', 'walk', 'attack']);
+    expect(picture.strip!.clips.find((clip) => clip.id === 'walk')!.frames).toEqual([1, 3]);
+
+    // A URL is data in the declaration and escaped where it becomes markup.
+    const still = boardPictureMarkup(picture);
+    expect(still).toContain('href="/assets/unit.png?a=1&amp;b=2"');
+    expect(still).toContain('x="0" y="-16" width="32" height="48"');
+    expect(still).toContain('width="128" height="48"');
   });
 
   it('selects a fixed atlas cell without scaling it', () => {
@@ -61,16 +80,16 @@ describe('runtime raster adapter', () => {
     ).toThrow(/capacity/);
 
     expect(() =>
-      runtimeUnitMarkup(
+      runtimeUnitPicture(
         {
           href: '/assets/unit.png',
           frameWidth: 32,
           frameHeight: 48,
           frameCount: 4,
           anchor: { x: 16, y: 47 },
+          attackFrame: 4,
         },
         '#fff',
-        4,
       ),
     ).toThrow(/exceeds/);
   });

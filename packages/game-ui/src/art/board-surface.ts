@@ -14,6 +14,7 @@
  * - a persistent drawing per unit, and transient ones for effects
  * - four continuous properties every animation is expressed in
  * - named visual states, instead of CSS classes poked from outside
+ * - a frame strip as the frames and clips it is, instead of as a sprite-sheet trick
  *
  * That last pair is what makes a non-DOM backend possible at all. Every animation
  * the board plays — walking, striking, dying, arriving, a damage number rising, a
@@ -22,6 +23,9 @@
  * and toggled is now a state the drawing is *told* it is in, which a DOM backend
  * spells as a class and a GPU backend spells as a transform or a tint.
  */
+
+import type { FrameAnimationClip } from './frame-animation';
+import { escapeAttr } from './svg';
 
 /**
  * The layers a board has, deepest first.
@@ -131,7 +135,70 @@ export interface BoardPart {
 }
 
 /**
- * A picture, and the parts of it that move on their own.
+ * A strip of frames, and the clips that play on it.
+ *
+ * The fifth time the same defect appeared, and the one that kept a GPU backend from
+ * animating anything. A strip used to cross this seam as markup carrying its own
+ * description — `data-frame-width`, `data-frame-count`, `data-frame-initial`,
+ * `data-frame-clips="[{…}]"` — which the renderer found with `querySelector`, read
+ * back with `Number(getAttribute(…))` and `JSON.parse`, and then *validated* as if
+ * it might be malformed. It was written by us, six lines earlier, from exactly this
+ * data.
+ *
+ * Declared, it is what a texture atlas already is: one image, a frame's worth at a
+ * time. A DOM backend shows a frame by moving a window over the image; a GPU
+ * backend cuts the image into frame-sized textures once and swaps which one a
+ * sprite holds. Both are driven by the same timeline, from the same clips.
+ */
+export interface BoardStrip {
+  /** The image the frames are cut from, laid out left to right. */
+  readonly href: string;
+  /** One frame's size, in scene units. */
+  readonly frameWidth: number;
+  readonly frameHeight: number;
+  readonly frameCount: number;
+  /** Where the frame window's top-left corner sits in the picture. */
+  readonly x: number;
+  readonly y: number;
+  /**
+   * Every clip that may be played on it, by name.
+   *
+   * A unit's strip is played by `BoardView` through the three names a battle has
+   * for what a body is doing — `idle`, `walk` and `attack` — so a strip drawn for a
+   * unit declares those. Playing a name that is not here is a defect and throws.
+   */
+  readonly clips: readonly FrameAnimationClip[];
+  /**
+   * A clip that is already playing when the picture is drawn.
+   *
+   * An explosion animates because it exists, not because anything told it to. The
+   * SVG backend used to spell that as "register every strip you can find in this
+   * subtree, then play whichever clip happens to come first in the JSON" — a guess,
+   * and not one a second backend could be held to.
+   */
+  readonly playing?: string;
+}
+
+/** The window a strip shows one frame through, in the image's own coordinates. */
+export const boardStripWindow = (strip: BoardStrip, frame: number): string =>
+  `${frame * strip.frameWidth} 0 ${strip.frameWidth} ${strip.frameHeight}`;
+
+/**
+ * A strip standing still on one frame, as SVG.
+ *
+ * The frame is chosen by moving the window rather than by shifting the image, so
+ * the one attribute an animation changes belongs to the element that holds it —
+ * which is the element whoever built it already has.
+ */
+export const boardStripMarkup = (strip: BoardStrip, frame = 0): string =>
+  `<svg class="board-strip" x="${strip.x}" y="${strip.y}"`
+  + ` width="${strip.frameWidth}" height="${strip.frameHeight}"`
+  + ` viewBox="${boardStripWindow(strip, frame)}" overflow="hidden">`
+  + `<image href="${escapeAttr(strip.href)}" width="${strip.frameWidth * strip.frameCount}"`
+  + ` height="${strip.frameHeight}" preserveAspectRatio="none"/></svg>`;
+
+/**
+ * A picture: a body, a strip that animates, and parts that move on their own.
  *
  * `effect(markup)` used to take one string with `<g data-part="burst">` groups
  * inside it, and the renderer found them again with `querySelector`. But a hit is
@@ -144,8 +211,21 @@ export interface BoardPart {
  */
 export interface BoardPicture {
   readonly body: string;
+  readonly strip?: BoardStrip;
   readonly parts?: readonly BoardPart[];
 }
+
+/**
+ * A picture as one SVG string: body, then strip, then parts.
+ *
+ * The still spelling, and the counterpart to `boardPiecesMarkup`. A HUD icon, a
+ * level thumbnail and the editor's palette all draw units with no surface to draw
+ * them on, so their strips stand on frame 0.
+ */
+export const boardPictureMarkup = (picture: BoardPicture): string =>
+  picture.body
+  + (picture.strip ? boardStripMarkup(picture.strip) : '')
+  + (picture.parts ?? []).map((part) => part.markup).join('');
 
 /** A drawing that is on the board and can still be changed. */
 export interface BoardDrawing {
@@ -171,6 +251,21 @@ export interface BoardDrawing {
   part(role: BoardRole): BoardDrawing | null;
   /** Replaces everything the drawing holds under `role`. */
   fill(role: BoardRole, markup: string): void;
+  /**
+   * Plays a named clip on this drawing's strip.
+   *
+   * A picture with no strip has nothing to play, and this does nothing — the
+   * deliberate silence the board used to spell as `if (animations.has(id))`. An
+   * unknown clip on a picture that *does* have one still throws.
+   *
+   * On the drawing rather than on a unit-shaped wrapper, because a strip belongs to
+   * a picture and both kinds of drawing can hold one. There was a `BoardUnit` whose
+   * whole reason to exist was carrying this method and a `fresh` flag saying whether
+   * this ask had made the drawing — bookkeeping about the call, kept so that the
+   * board could start the idle clip exactly once. A picture that says what it
+   * arrives playing needs neither.
+   */
+  play(clip: string): void;
 }
 
 /**
@@ -190,27 +285,6 @@ export interface BoardDrawing {
  */
 export interface BoardEffect extends BoardDrawing {
   remove(): void;
-}
-
-/**
- * A unit's drawing, and the sprite timeline it moves on.
- *
- * `play` rather than an animation id, because the id was minted by the surface and
- * then *reconstructed* by the board — `` `unit:${id}` `` was written in both files,
- * so the board knew a key it was never given. Now it knows none.
- */
-export interface BoardUnit {
-  readonly drawing: BoardDrawing;
-  /** True only on the ask that made it. */
-  readonly fresh: boolean;
-  /**
-   * Plays a named clip on this unit's sprite.
-   *
-   * A sprite with no frame strip has nothing to play, and this does nothing — the
-   * deliberate silence the board used to spell as `if (animations.has(id))`. An
-   * unknown clip on a sprite that *does* have a strip still throws.
-   */
-  play(clip: string): void;
 }
 
 /**
@@ -276,7 +350,7 @@ export interface BoardSurface {
   /** Replaces a layer's whole content, and whatever the old content was playing. */
   setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): void;
   /** A persistent drawing for one unit, made on first ask. */
-  unit(id: number, draw: () => string): BoardUnit;
+  unit(id: number, draw: () => BoardPicture): BoardDrawing;
   /**
    * The drawing this unit already has, or `null`.
    *
@@ -285,7 +359,7 @@ export interface BoardSurface {
    * factory that would have drawn an empty unit had the id not been there. Each was
    * kept honest by a preceding `hasUnit`, which is a query written twice.
    */
-  drawnUnit(id: number): BoardUnit | null;
+  drawnUnit(id: number): BoardDrawing | null;
   /** Takes a unit off the board, stops its sprite, and forgets it. */
   removeUnit(id: number): void;
   /** Every unit that currently has a drawing. */

@@ -1407,6 +1407,50 @@ describe('the board decides, a surface draws', () => {
     // than the type and be weaker.
   });
 
+  /**
+   * A frame strip is declared, never serialised into markup and read back.
+   *
+   * It used to cross the renderer seam as an `<image>` carrying its own
+   * description: `data-frame-width`, `data-frame-count`, `data-frame-initial` and
+   * `data-frame-clips="[{…}]"`. One producer wrote those from data of exactly this
+   * shape; one reader found the element by class name, parsed all four back, and
+   * validated them against the possibility of being malformed.
+   *
+   * The cost was not the parsing. It was that the animation had become a DOM trick
+   * described where only a DOM reader could look, so `play` on the GPU backend was
+   * a no-op and a unit stood on one frame — and the obvious fix, which the design
+   * note here actually recommended at the time, was a *second* parser of the same
+   * attributes.
+   *
+   * So: nowhere in any shipped package does a picture describe its own animation.
+   */
+  it('declares a frame strip instead of writing its description into a picture', () => {
+    const offenders = [...everyPackageSource(), ...appSources()]
+      .filter((path) => stripComments(readFileSync(path, 'utf8')).includes('data-frame-'))
+      .map((path) => relative(packagesRoot, path));
+
+    expect(offenders).toEqual([]);
+  });
+
+  /**
+   * The timeline has no idea what a frame looks like.
+   *
+   * `FrameAnimationTarget` is `{ frameCount, setFrame(frame) }` and always was, so
+   * this module claimed to be backend-agnostic while holding the one function that
+   * made it not: a reader that took an `SVGImageElement`. Both backends register a
+   * plain target now — one moves a `viewBox`, the other assigns `sprite.texture` —
+   * and a third would too.
+   */
+  it('keeps the frame timeline free of any idea what a frame is drawn with', () => {
+    const timeline = stripComments(
+      readFileSync(join(packagesRoot, 'game-ui', 'src', 'art', 'frame-animation.ts'), 'utf8'),
+    );
+    const reachedFor = ['SVG', 'Element', 'getAttribute', 'querySelector', 'document', 'Texture']
+      .filter((token) => timeline.includes(token));
+
+    expect(reachedFor).toEqual([]);
+  });
+
 });
 
 describe('a picture is not optional', () => {

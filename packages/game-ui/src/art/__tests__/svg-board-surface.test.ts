@@ -1,8 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { SvgBoardSurface } from '../svg-board-surface';
-import { runtimeFrameStripMarkup } from '../runtime-raster';
-import type { BoardSurfaceScene } from '../board-surface';
+import type { BoardPicture, BoardSurfaceScene } from '../board-surface';
 
 /**
  * What the surface owns: the lifetime and the motion of everything it draws.
@@ -25,13 +24,21 @@ const SCENE: BoardSurfaceScene = {
 };
 
 /** A sprite that never finishes: four frames, looping, so the timeline keeps asking. */
-const WALKING = runtimeFrameStripMarkup({
-  href: 'sprite.png',
-  frameWidth: 32,
-  frameHeight: 32,
-  frameCount: 4,
-  clips: [{ id: 'walk', frames: [0, 1, 2, 3], fps: 8, loop: true }],
-});
+const WALKING: BoardPicture = {
+  body: '',
+  strip: {
+    href: 'sprite.png',
+    frameWidth: 32,
+    frameHeight: 32,
+    frameCount: 4,
+    x: 0,
+    y: 0,
+    clips: [{ id: 'walk', frames: [0, 1, 2, 3], fps: 8, loop: true }],
+  },
+};
+
+/** The same sprite, running from the moment it is drawn. */
+const RUNNING: BoardPicture = { ...WALKING, strip: { ...WALKING.strip!, playing: 'walk' } };
 
 let pending: Array<(time: number) => void> = [];
 let requests = 0;
@@ -82,17 +89,25 @@ describe('the surface owns what it draws', () => {
     expect(surface.drawnUnits()).toEqual([]);
     expect(surface.element.querySelectorAll('.unit')).toHaveLength(0);
 
-    const made = surface.unit(7, () => '<rect width="32" height="32"/>');
-    expect(made.fresh).toBe(true);
-    expect(surface.drawnUnit(7)?.fresh).toBe(false);
+    let drawn = 0;
+    const draw = (): BoardPicture => {
+      drawn++;
+      return { body: '<rect width="32" height="32"/>' };
+    };
+    const made = surface.unit(7, draw);
+    // The same drawing, not a second one and not a wrapper around it: `BoardUnit`
+    // carried a `fresh` flag so the board could start a clip on the ask that made
+    // it, which a picture saying what it arrives playing no longer needs.
+    expect(surface.unit(7, draw)).toBe(made);
+    expect(surface.drawnUnit(7)).toBe(made);
+    expect(drawn).toBe(1);
     expect(surface.drawnUnits()).toEqual([7]);
     surface.dispose();
   });
 
   it('stops a unit\'s sprite when the unit leaves the board', () => {
     const surface = new SvgBoardSurface(SCENE);
-    const walker = surface.unit(3, () => WALKING);
-    walker.play('walk');
+    surface.unit(3, () => WALKING).play('walk');
     expect(pump(2)).toBeGreaterThan(0);
 
     surface.removeUnit(3);
@@ -106,16 +121,44 @@ describe('the surface owns what it draws', () => {
     surface.dispose();
   });
 
-  it('stops what a layer was playing when the layer is replaced', () => {
+  /**
+   * A strip that arrives playing plays, and stops when its drawing goes.
+   *
+   * There was a third leak guarded here, for a layer: `setLayer` used to search the
+   * markup it had just appended for strips, register each one, and play whichever
+   * clip came first in its JSON — so replacing a layer could orphan a running clip
+   * on a detached node. A `BoardPiece` is markup at a place and declares no strip,
+   * so a layer has nothing to orphan and the bookkeeping is gone rather than fixed.
+   */
+  it('starts a strip that says it is already playing', () => {
     const surface = new SvgBoardSurface(SCENE);
-    // A layer's own strips start themselves, so this is running from here.
-    surface.setLayer('scenery', [{ markup: WALKING, x: 0, y: 0 }]);
+    const effect = surface.effect(RUNNING);
+    // Nothing told it to play, and it is asking for frames.
     expect(pump(2)).toBeGreaterThan(0);
 
-    surface.setLayer('scenery', []);
-
-    expect(surface.element.querySelectorAll('.layer-scenery .runtime-frame-strip')).toHaveLength(0);
+    effect.remove();
     expect(pump(3)).toBe(0);
+    surface.dispose();
+  });
+
+  /**
+   * A frame is chosen by moving the window, not by shifting the image.
+   *
+   * The one attribute that changes belongs to the element the drawing already
+   * holds, which is why nothing here has to find an `<image>` again by class name.
+   */
+  it('shows the frame the timeline asks for', () => {
+    const surface = new SvgBoardSurface(SCENE);
+    const unit = surface.unit(5, () => WALKING);
+    const window = () => surface.element.querySelector('.board-strip')!.getAttribute('viewBox');
+
+    expect(window()).toBe('0 0 32 32');
+    const base = performance.now();
+    unit.play('walk');
+    // 8fps, so 200ms in is the second frame of the cycle.
+    for (const callback of pending.splice(0)) callback(base + 200);
+    expect(window()).toBe('32 0 32 32');
+
     surface.dispose();
   });
 
@@ -137,9 +180,9 @@ describe('the surface owns what it draws', () => {
     expect(surface.element.querySelector('[data-part="burst"]')!.getAttribute('transform'))
       .toBe('translate(0.00,0.00) scale(1.8000)');
 
-    const unit = surface.unit(1, () => '<rect width="32" height="32"/>');
-    unit.drawing.place(64, 32);
-    unit.drawing.swell(0.6);
+    const unit = surface.unit(1, () => ({ body: '<rect width="32" height="32"/>' }));
+    unit.place(64, 32);
+    unit.swell(0.6);
     expect(surface.element.querySelector('.unit')!.getAttribute('transform'))
       .toBe('translate(64.00,32.00) translate(16,16) scale(0.6000) translate(-16,-16)');
 
@@ -168,14 +211,14 @@ describe('the surface owns what it draws', () => {
     expect(effect.part('band')).toBeNull();
     // Body first, then the parts in the order given: that is the depth order.
     const fx = surface.element.querySelector('.fx')!;
-    expect([...fx.children].map((child) => child.getAttribute('data-part') ?? 'body'))
-      .toEqual(['body', 'burst', 'number']);
+    expect([...fx.children].map((child) => child.getAttribute('data-part') ?? child.getAttribute('class')))
+      .toEqual(['figure', 'burst', 'number']);
     surface.dispose();
   });
 
   it('stops what an effect was playing when the effect is removed', () => {
     const surface = new SvgBoardSurface(SCENE);
-    const effect = surface.effect({ body: WALKING });
+    const effect = surface.effect(RUNNING);
     expect(pump(2)).toBeGreaterThan(0);
 
     effect.remove();

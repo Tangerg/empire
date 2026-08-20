@@ -166,7 +166,7 @@ sceneFrame.foreground
 
 | 类型 | 用途 |
 | --- | --- |
-| `RuntimeFrameSheet` | 水平帧条动画 |
+| `RuntimeUnitSheet` | 一行帧的单位精灵图 |
 | `RuntimeCellAtlas` | 固定整数格的地形、结构、图标和效果图集 |
 | `RuntimeGridAtlas` | 源格可以是小数尺寸的规则大图 |
 
@@ -178,9 +178,10 @@ sceneFrame.foreground
 - `frameCount`
 - 脚底 `anchor`
 - 可选 idle、walk 和 attack 帧
-- 可选具名 clip 列表
 
-`runtimeUnitMarkup()` 把完整水平帧条放入一个裁剪窗口。当前帧通过修改内部 `<image>` 的 `x` 坐标选择，不会为每一帧创建新图片节点。
+`runtimeUnitPicture()` 返回一个 `BoardPicture`：`body` 是属于棋盘的那部分（接触阴影和阵营环，棋盘坐标），`strip` 是声明出来的帧条——图、它坐在哪、以及 `BoardView` 会点名的那三个 clip。
+
+它以前是一个 markup 字符串，帧条埋在三层元素里面：一个 `<g>` 给镜像、一个嵌套 `<svg>` 给视口、一个 `clipPath` 把同一件事再裁一遍，外加把帧条自己的描述序列化进 `data-frame-*` 属性给渲染器读回去。那个 clipPath 的 `id` 按帧尺寸固定，所以同尺寸的每个单位都往文档里放**同一个** `id`，每次引用都解析到最先出现的那个——它能工作是因为它们一模一样。
 
 ## 帧动画系统
 
@@ -195,16 +196,23 @@ sceneFrame.foreground
 
 动画目标只需要实现 `frameCount` 和 `setFrame(frame)`。因此时间线不依赖 SVG，也可以用于 Canvas 或 DOM 背景实现。
 
-### 自描述 SVG 帧条
+### 帧条是声明，不是自描述的 markup
 
-`runtimeFrameStripMarkup()` 把动画元数据写入 `data-frame-*` 属性。`registerSvgStrip()` 读取并校验元数据，再注册到共享系统。
+曾经有一个 `registerSvgStrip()`：接一个 `<image>` 元素，从上面读 `data-frame-width`、`data-frame-count`、`data-frame-initial` 和 `JSON.parse(data-frame-clips)`，把四者都按「可能是坏数据」校验一遍，再注册一个移动该元素 `x` 的 target。这四个属性全部由 `runtimeFrameStripMarkup()` 从**正是这个形状**的数据写出来，它们存在的唯一原因是帧条要以字符串穿过渲染器接缝。
 
-`BoardView` 自动处理：
+这也正是 GPU 后端上 `play` 曾经是空操作的原因：动画是一个 DOM 技巧，描述在只有 DOM 读者能找到的地方。
 
-- 单位 idle、walk 和 attack clip
-- 场景层中嵌入的帧条
-- 武器和治疗效果中嵌入的帧条
-- 单位死亡、移除和视图销毁时注销 track
+现在 `BoardStrip` 是声明的：图、一帧的尺寸、帧数、它坐在哪、可播的 clip，以及可选的 `playing`——「这张图被画出来时就已经在播的 clip」。爆炸动是因为它存在，不是因为有谁告诉它。SVG 后端以前把这件事拼成「注册这棵子树里能找到的每个帧条，然后播 JSON 里恰好排第一的那个 clip」，那是猜的。
+
+两个后端各自兑现：DOM 在一张图上移动窗口（改 `viewBox`，那个属性就在 drawing 已经持有的元素上），GPU 把图切成每帧一张纹理再换 `sprite.texture`。**帧条在 GPU 上本来就是精灵图**，所以一个走路循环除了那张每个同类型单位都共享的图之外不花任何额外代价。
+
+层只放静止的图。`BoardPiece` 是「markup + 位置」，不带帧条，所以换一层不可能遗留一个跑在已脱离节点上的 clip——`SvgBoardSurface` 里那张 `layerStrips` 表、以及 board 在它之前保存的同一张表，存在的意义就是防这件事，现在是删掉而不是修好。
+
+`BoardView` 点名的 clip：
+
+- 单位的 `idle`、`walk`、`attack`
+- 武器和治疗特效由内容包声明 `playing`，出现即播
+- 单位死亡、移除和视图销毁时，drawing 自己下线，连带它在时间线上的位置
 
 如果系统检测到 `prefers-reduced-motion: reduce`，`play()` 会停在 clip 首帧并停止时间线。不要用 CSS 无限动画绕过这一策略。
 
@@ -494,7 +502,9 @@ markup 与几何都与上一轮**逐字节相同**——这一轮没有动画面
 1. **被当作图片栅格化的 SVG 是沙箱里的，什么都不许 fetch。** 这个战役的地砖是 `<image href="…terrain-graveyard-1.png">`，所以每张图指向的资源都得先搬进它里面——整个战役 62 个，各取一次。
 2. **一张图不说自己多大。** `BoardPiece` 只有 markup 和位置，那是矢量渲染器需要的全部。与其让每个生产方（包括内容包的场景层）都声明一个盒子，尺寸是**从图自己量出来的**——每份不同的 markup 量一次，用浏览器排版时会用的那个 `getBBox`。
 
-**三件它做不到的，都在 `app.css` 里，也就是不在图里**：每个单位的投影（没有）、选中的高光（换成了提亮滤镜，是个高光但不是同一个高光）、以及帧条的推进（题材的 idle 本来就是单帧，走路的两帧循环丢了）。画好的场景的「格线永不显示」那条规则也在样式表里，Pixi 后端没被告知。
+**两件它做不到的，都在 `app.css` 里，也就是不在图里**：每个单位的投影（没有）、选中的高光（换成了提亮滤镜，是个高光但不是同一个高光）。画好的场景的「格线永不显示」那条规则也在样式表里，Pixi 后端没被告知。
+
+帧条的推进曾经也在这份清单上，而它不属于这里——那不是样式表的问题，是帧条以 markup 穿过接缝的问题。改成声明之后两个后端播的是同一份 clip，一条测试把它们钉在同一帧上。
 
 **打包**：`pixi.js` 是 492 KB。从主 barrel 里 re-export 会让它进游戏的 bundle，不管这次会不会用——另外三个应用没事（它们从不点名它，barrel 会 tree-shake），但唯一提供这个选择的应用要先付钱。所以它有自己的入口，主 chunk 回到 938 KB，pixi 是按需加载的 490 KB。一条守卫盯着这件事：主入口可达的任何模块都不许点名 `pixi.js`。
 
@@ -503,7 +513,7 @@ markup 与几何都与上一轮**逐字节相同**——这一轮没有动画面
 三个已知障碍都拆掉了：题材的样子随图走，特效有了自己的原点，一层是一串放在位置上的图。剩下的是纯实现：
 
 1. `PixiBoardSurface implements BoardSurface` —— 四个连续属性 + 具名状态 + `BoardPiece` 分层，都是 Pixi 能直接兑现的。
-2. **markup → 纹理缓存**：键就是 `BoardPiece.markup`，比例见上表。帧条是自描述的（`data-frame-*` 已经在那里），做个 Pixi 版的 `registerSvgStrip` 就行。
+2. **markup → 纹理缓存**：键就是 `BoardPiece.markup`，比例见上表。帧条**不要**再做一个 Pixi 版的 `registerSvgStrip`——那会是同一份序列化属性的第二个解析器。帧条改成声明的（`BoardStrip`），`data-frame-*` 和读它的那段代码一起删掉。
 3. **display-list 断言**：两个后端必须对「画什么、画在哪、谁盖谁」给出同一个答案。它证明不了纹理烘得对，所以**视觉验收仍然要人看一眼**。
 
 还剩一件量出来的事，和后端无关：**画好的场景（`ground` / `scenery` / `foreground`）整层只有一张图**——它是一幅画，不是每格一张。81×51 时那一层 20,340 个节点。要拆它得改 `BattlePresentation.sceneLayers` 这个面向美术的端口，是下一件独立的事。

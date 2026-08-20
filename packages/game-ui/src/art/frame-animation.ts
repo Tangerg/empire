@@ -60,18 +60,21 @@ export class FrameAnimationSystem {
     private readonly motionEnabled: () => boolean = browserMotionEnabled,
   ) {}
 
+  /**
+   * Puts a target on the timeline, standing on its first frame.
+   *
+   * There was an `initialFrame` parameter, validated against the frame count and
+   * passed by exactly one caller — the DOM strip reader, which read it out of an
+   * attribute it had itself written as `0` every time.
+   */
   register(
     id: string,
     target: FrameAnimationTarget,
     clips: readonly FrameAnimationClip[],
-    initialFrame = 0,
   ): void {
     if (!id) throw new Error('frame animation target id cannot be empty');
     if (!Number.isInteger(target.frameCount) || target.frameCount < 1) {
       throw new Error('frame animation target frameCount must be a positive integer');
-    }
-    if (!Number.isInteger(initialFrame) || initialFrame < 0 || initialFrame >= target.frameCount) {
-      throw new Error(`invalid initial frame ${initialFrame}`);
     }
     const catalog = new Map<string, FrameAnimationClip>();
     for (const clip of clips) {
@@ -79,8 +82,8 @@ export class FrameAnimationSystem {
       if (catalog.has(clip.id)) throw new Error(`duplicate frame animation clip: ${clip.id}`);
       catalog.set(clip.id, Object.freeze({ ...clip, frames: Object.freeze([...clip.frames]) }));
     }
-    this.tracks.set(id, { target, clips: catalog, clip: null, startedAt: 0, frame: initialFrame });
-    target.setFrame(initialFrame);
+    this.tracks.set(id, { target, clips: catalog, clip: null, startedAt: 0, frame: 0 });
+    target.setFrame(0);
   }
 
   unregister(id: string): void {
@@ -174,46 +177,18 @@ export class FrameAnimationSystem {
   }
 }
 
-interface StripMetadata {
-  frameWidth: number;
-  frameCount: number;
-  initialFrame: number;
-  clips: FrameAnimationClip[];
-}
-
-function numberAttribute(element: Element, name: string, min: number): number {
-  const value = Number(element.getAttribute(name));
-  if (!Number.isFinite(value) || value < min) throw new Error(`${name} must be a number >= ${min}`);
-  return value;
-}
-
-function stripMetadata(element: SVGImageElement): StripMetadata {
-  const frameWidth = numberAttribute(element, 'data-frame-width', 0.001);
-  const frameCount = numberAttribute(element, 'data-frame-count', 1);
-  const initialFrame = numberAttribute(element, 'data-frame-initial', 0);
-  if (!Number.isInteger(frameCount) || !Number.isInteger(initialFrame) || initialFrame >= frameCount) {
-    throw new Error('invalid sprite strip frame metadata');
-  }
-  const raw = element.getAttribute('data-frame-clips') ?? '[]';
-  const clips = JSON.parse(raw) as FrameAnimationClip[];
-  if (!Array.isArray(clips)) throw new Error('data-frame-clips must be an array');
-  return { frameWidth, frameCount, initialFrame, clips };
-}
-
-/** Register a self-describing SVG <image> emitted by runtime-raster. */
-export function registerSvgStrip(
-  system: FrameAnimationSystem,
-  id: string,
-  element: SVGImageElement,
-): void {
-  const metadata = stripMetadata(element);
-  system.register(
-    id,
-    {
-      frameCount: metadata.frameCount,
-      setFrame: (frame) => element.setAttribute('x', String(-frame * metadata.frameWidth)),
-    },
-    metadata.clips,
-    metadata.initialFrame,
-  );
-}
+/*
+ * There was a `registerSvgStrip` here, and it is why this module used to know what
+ * a DOM is.
+ *
+ * It took an `<image>` element, read `data-frame-width`, `data-frame-count`,
+ * `data-frame-initial` and `JSON.parse(data-frame-clips)` off it, validated all
+ * four against the possibility of being malformed, and registered a target that
+ * shifted the element's `x`. Every one of those attributes had been written by
+ * `runtimeFrameStripMarkup` from data of exactly this shape, and the only reason
+ * they existed was that a strip crossed the renderer seam as a string.
+ *
+ * A strip is declared now — `BoardStrip` — so a backend registers a target for the
+ * strip it drew, in whatever way it draws one. This module is what it always
+ * claimed to be: a timeline, with no opinion about what a frame looks like.
+ */

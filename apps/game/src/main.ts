@@ -268,8 +268,8 @@ async function chosenRenderer(): Promise<BoardSurfaceFactory | undefined> {
   if (!pixi) {
     // Imported here, not at the top: `pixi.js` is 492 KB, and a session that never
     // asks for it should not download it.
-    const { preparePixiPainter, pixiBoardSurface, SvgMarkupTextures } = await import('@empire/game-ui/pixi');
-    pixi = pixiBoardSurface(await preparePixiPainter(), new SvgMarkupTextures());
+    const { preparePixiPainter, pixiBoardSurface, BrowserPictureTextures } = await import('@empire/game-ui/pixi');
+    pixi = pixiBoardSurface(await preparePixiPainter(), new BrowserPictureTextures());
   }
   return pixi;
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { terrainMarkup, unitSpriteMarkup } from '@empire/game-ui';
+import { terrainMarkup, unitPicture } from '@empire/game-ui';
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '../index';
 import { CANDIDATE_01_ART } from './index';
@@ -11,21 +11,24 @@ const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 
 describe('candidate-01 runtime art bindings', () => {
   it('uses the authored four-frame sheet for covered game units', () => {
-    const soldier = unitSpriteMarkup(art, TEST_CATALOG.units.get('c01.swordsman'), '#3f7fd8');
+    const soldier = unitPicture(art, TEST_CATALOG.units.get('c01.swordsman'), '#3f7fd8');
 
-    expect(soldier).toContain('data-runtime-raster="unit"');
-    expect(soldier).toContain('unit-swordsman');
-    expect(soldier).toContain('width="128" height="48"');
-    expect(soldier).toContain('runtime-hd/combat-unit');
-    expect(soldier).toContain('&quot;id&quot;:&quot;attack&quot;');
-    expect(soldier).toContain('&quot;frames&quot;:[2]');
+    expect(soldier.body).toContain('data-runtime-raster="unit"');
+    expect(soldier.strip!.href).toContain('unit-swordsman');
+    expect(soldier.strip!.href).toContain('runtime-hd/combat-unit');
+    expect(soldier.strip).toMatchObject({ frameCount: 4, frameWidth: 32, frameHeight: 48 });
+    // The manifest's frame order is what names them: idle, walk-a, attack, walk-b.
+    expect(soldier.strip!.clips.find((clip) => clip.id === 'attack')!.frames).toEqual([2]);
+    expect(soldier.strip!.clips.find((clip) => clip.id === 'walk')!.frames).toEqual([1, 3]);
   });
 
+  /** Drawn rather than generated: no sheet, so nothing to play. */
   it('keeps the programmatic fallback for uncovered units', () => {
-    const rogue = unitSpriteMarkup(art, TEST_CATALOG.units.get('rogue'), '#3f7fd8');
+    const rogue = unitPicture(art, TEST_CATALOG.units.get('rogue'), '#3f7fd8');
 
-    expect(rogue).toContain('sprite-pixel');
-    expect(rogue).not.toContain('data-runtime-raster="unit"');
+    expect(rogue.body).toContain('sprite-pixel');
+    expect(rogue.body).not.toContain('data-runtime-raster="unit"');
+    expect(rogue.strip).toBeUndefined();
   });
 
   it('selects connected terrain by the engine N/E/S/W mask', () => {

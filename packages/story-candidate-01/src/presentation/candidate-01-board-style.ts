@@ -105,13 +105,13 @@ export const CANDIDATE_01_BOARD_STYLE = `<style>
   stroke-width: 2.15px;
 }
 
-.candidate-map .runtime-unit-figure {
+.candidate-map .unit .board-strip {
   filter:
     drop-shadow(0 0 0.65px rgb(255 246 222 / 45%))
     drop-shadow(0 2px 1.2px rgb(0 0 0 / 75%));
 }
 
-.candidate-battle-prop, .candidate-battle-marker, .candidate-portrait-image, .candidate-fx image {
+.candidate-battle-prop, .candidate-battle-marker, .candidate-portrait-image {
   image-rendering: auto;
 }
 

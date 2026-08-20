@@ -20,15 +20,14 @@ import {
   CANDIDATE_01_WEAPON_FX,
 } from './candidate-01-bindings';
 import {
+  boardPictureMarkup,
+  escapeAttr as attr,
   runtimeAtlasCellMarkup,
-  runtimeFrameStripMarkup,
-  runtimeUnitMarkup,
+  runtimeUnitPicture,
+  type BoardPicture,
   type RuntimeCellAtlas,
   type RuntimeUnitSheet,
 } from '@empire/game-ui';
-
-const attr = (value: string): string =>
-  value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
 
 function unitSheet(record: Candidate01RuntimeAsset): RuntimeUnitSheet {
   const frameWidth = record.frameWidth;
@@ -94,15 +93,16 @@ function structureAssetMarkup(record: Candidate01RuntimeAsset, frame: number, ow
   return `<g data-candidate-art="structure" transform="translate(${x} ${y})">${runtimeAtlasCellMarkup(atlas, frame)}</g>${owner}`;
 }
 
-export function candidate01UnitMarkup(type: UnitTypeId, team: string): string | null {
+export function candidate01UnitPicture(type: UnitTypeId, team: string): BoardPicture | null {
   const topic = CANDIDATE_01_UNIT_ART[type];
-  return topic ? runtimeUnitMarkup(unitSheet(candidate01Asset(topic)), team) : null;
+  return topic ? runtimeUnitPicture(unitSheet(candidate01Asset(topic)), team) : null;
 }
 
 export function candidate01UnitIcon(type: UnitTypeId, team: string, size: number): string | null {
-  const markup = candidate01UnitMarkup(type, team);
-  if (!markup) return null;
-  return `<svg viewBox="0 -16 32 48" width="${size}" height="${size}" class="candidate-unit-icon">${markup}</svg>`;
+  const picture = candidate01UnitPicture(type, team);
+  if (!picture) return null;
+  // An icon has no timeline, so its strip stands still on the first frame.
+  return `<svg viewBox="0 -16 32 48" width="${size}" height="${size}" class="candidate-unit-icon">${boardPictureMarkup(picture)}</svg>`;
 }
 
 export function candidate01TerrainMarkup(id: TerrainId, ctx: RuntimeTerrainContext): string | null {
@@ -172,27 +172,37 @@ export function candidate01WeaponFxTopic(weapon: WeaponId): string | null {
   return CANDIDATE_01_WEAPON_FX[weapon] ?? null;
 }
 
-/** A self-describing effect strip consumed by the shared frame animation system. */
-/** Drawn about its own origin; whoever plays it places it. */
-export function candidate01FxMarkup(topic: string): string {
+/**
+ * One effect: a strip, drawn about its own origin, already running.
+ *
+ * The board plays this the moment it appears and takes it away when it is done, so
+ * `playing` is the whole of its animation policy — there is nobody to tell it to
+ * start. It used to be a self-describing `<image>` whose clips the renderer found
+ * by class name and read out of a JSON attribute, then played whichever came first.
+ */
+export function candidate01FxPicture(topic: string): BoardPicture {
   const record = candidate01Asset(topic);
   const frameWidth = record.frameWidth ?? 32;
   const frameHeight = record.frameHeight ?? 32;
   const frames = record.frames ?? 1;
-  return `<svg x="${-frameWidth / 2}" y="${-frameHeight / 2}" width="${frameWidth}" height="${frameHeight}" viewBox="0 0 ${frameWidth} ${frameHeight}" overflow="hidden" class="candidate-fx" aria-hidden="true">
-    ${runtimeFrameStripMarkup({
+  return {
+    body: '',
+    strip: {
       href: record.url,
       frameWidth,
       frameHeight,
       frameCount: frames,
+      x: -frameWidth / 2,
+      y: -frameHeight / 2,
       clips: [{
         id: 'effect',
         frames: Array.from({ length: frames }, (_, frame) => frame),
         fps: record.fps ?? 12,
         loop: record.loop ?? false,
       }],
-    }, 0, 'candidate-fx-strip')}
-  </svg>`;
+      playing: 'effect',
+    },
+  };
 }
 
 /** HTML icon for HUD commands, equipment and state chips. */

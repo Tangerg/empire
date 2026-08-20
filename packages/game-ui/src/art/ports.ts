@@ -4,6 +4,8 @@ import type {
   UnitTypeId,
   WeaponId,
 } from '@empire/battle-engine';
+import type { BoardPicture } from './board-surface';
+
 export interface RuntimeTerrainContext {
   x: number;
   y: number;
@@ -14,7 +16,7 @@ export interface RuntimeTerrainContext {
 
 export interface ArtProvider {
   id: string;
-  unitMarkup?(type: UnitTypeId, team: string): string | null;
+  unitPicture?(type: UnitTypeId, team: string): BoardPicture | null;
   unitIcon?(type: UnitTypeId, team: string, size: number): string | null;
   terrainMarkup?(id: TerrainId, context: RuntimeTerrainContext): string | null;
   portraitMarkup?(type: UnitTypeId, team: string): string | null;
@@ -26,7 +28,15 @@ export interface ArtProvider {
   coverMarkup?(level: 'half' | 'full'): string | null;
   markerMarkup?(topic: string): string | null;
   weaponFx?(weapon: WeaponId): string | null;
-  effectMarkup?(topic: string, cx?: number, cy?: number): string | null;
+  /*
+   * There was an `effectMarkup?(topic, cx?, cy?)` here.
+   *
+   * The campaign assigned it, and nothing in any package ever called it — a port
+   * field its own module never read. An effect's picture reaches the board through
+   * `BattlePresentation.effect`, which is where a look that belongs to a painted
+   * scene belongs. The `cx`/`cy` parameters were the older mistake still visible:
+   * an effect used to be drawn at scene coordinates rather than about its origin.
+   */
 }
 
 

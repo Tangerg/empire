@@ -9,32 +9,42 @@ import {
   type BoardPointer,
   type BoardRole,
   type BoardState,
+  type BoardStrip,
   type BoardSurface,
   type BoardSurfaceFactory,
   type BoardSurfaceScene,
-  type BoardUnit,
 } from './board-surface';
+import { FrameAnimationSystem } from './frame-animation';
 import { scenePointOf, shownAt } from './letterbox';
-import type { BakedPicture, MarkupTextures } from './markup-textures';
+import type { BakedPicture, PictureTextures } from './picture-textures';
 
 /**
  * A battlefield drawn as one Pixi scene graph.
  *
  * The second backend the port was extracted for. What it draws is decided entirely
  * by `BoardView`, exactly as for the SVG one; what is different is that a picture
- * has to become a texture, and a texture is not a document — which is why the four
+ * has to become a texture, and a texture is not a document — which is why the
  * rounds before this one existed. A layer arrives as pictures at places rather than
  * a string to parse. An effect's separately-animated parts are declared rather than
- * marked up. A campaign's shadows and colour grades travel inside its art rather
- * than in a stylesheet that is not in the room when a picture is rasterised. And an
- * effect is drawn about its own origin instead of at scene coordinates, so a damage
- * number is a small texture rather than a field-sized one.
+ * marked up. A frame strip arrives as the frames and clips it is, so it can be a
+ * spritesheet here rather than an `<image>` shifted behind a clip. A campaign's
+ * shadows and colour grades travel inside its art rather than in a stylesheet that
+ * is not in the room when a picture is rasterised. And an effect is drawn about its
+ * own origin instead of at scene coordinates, so a damage number is a small texture
+ * rather than a field-sized one.
  *
  * Two things it deliberately does not reproduce, both of which live in `app.css`
  * and so are not in the picture: the drop-shadow every unit wears, and the glow of
  * a selected one. The first is absent; the second is a brightness filter, which is
  * a highlight but not the same highlight.
  */
+
+/** What a Pixi drawing needs to turn a picture into a scene graph. */
+export interface DrawingTools {
+  readonly textures: PictureTextures;
+  /** Shared by everything one surface draws, so one loop serves the board. */
+  readonly animations: FrameAnimationSystem;
+}
 
 /** Half a tile: the middle of a unit's drawing, which fills one. */
 const TILE_MIDDLE = 16;
@@ -70,7 +80,7 @@ export interface ScenePainter {
 
 /** What a Pixi surface needs from the machine it runs on. */
 export interface PixiBoardTools {
-  readonly textures: MarkupTextures;
+  readonly textures: PictureTextures;
   readonly painter: ScenePainter;
 }
 
@@ -95,17 +105,24 @@ class PixiDrawing implements BoardDrawing {
   readonly figure = new Container();
   private readonly parts = new Map<BoardRole, PixiDrawing>();
   private highlight: ColorMatrixFilter | null = null;
+  /** Whether this drawing has a strip on the timeline. */
+  private playing = false;
 
   constructor(
+    private readonly tools: DrawingTools,
     readonly root: Container,
     private readonly pivot: number,
-    private readonly textures: MarkupTextures,
+    private readonly id: string,
+    picture: BoardPicture,
   ) {
     root.pivot.set(pivot, pivot);
     this.figure.pivot.set(TILE_MIDDLE, TILE_MIDDLE);
     this.figure.position.set(TILE_MIDDLE, TILE_MIDDLE);
     root.addChild(this.figure);
     this.write();
+    this.body(picture.body);
+    if (picture.strip) this.draw(picture.strip);
+    for (const part of picture.parts ?? []) this.addPart(part.role, part.markup);
   }
 
   place(x: number, y: number): void {
@@ -154,39 +171,53 @@ class PixiDrawing implements BoardDrawing {
   }
 
   fill(role: BoardRole, markup: string): void {
-    const part = this.parts.get(role);
-    if (!part) return;
-    part.paint(markup);
+    this.parts.get(role)?.body(markup);
+  }
+
+  play(clip: string): void {
+    if (this.playing) this.tools.animations.play(this.id, clip);
   }
 
   /** Declares a part of this drawing, drawn over whatever came before it. */
   addPart(role: BoardRole, markup: string): PixiDrawing {
-    const part = new PixiDrawing(new Container(), this.pivot, this.textures);
+    const part = new PixiDrawing(
+      this.tools,
+      new Container(),
+      this.pivot,
+      `${this.id}/${role}`,
+      { body: markup },
+    );
     this.root.addChild(part.root);
     this.parts.set(role, part);
-    if (markup) part.paint(markup);
     return part;
   }
 
+  /** Takes this drawing, and whatever it was playing, off the board. */
+  destroy(): void {
+    if (this.playing) this.tools.animations.unregister(this.id);
+    this.playing = false;
+    this.root.destroy({ children: true });
+  }
+
   /**
-   * Replaces this drawing's picture.
+   * Replaces the picture under this drawing, leaving its parts and strip alone.
    *
    * A sprite goes in immediately and its texture arrives when the bake finishes, so
    * nothing waits on a decode to know where things are. `generation` is what makes
    * that safe: a picture replaced while its predecessor was still baking must not
    * be overwritten by it.
    */
-  paint(markup: string): void {
+  body(markup: string): void {
     const generation = ++this.generation;
     this.figure.removeChildren().forEach((child) => child.destroy());
     if (!markup) return;
     const sprite = new Sprite(Texture.EMPTY);
-    sprite.scale.set(1 / this.textures.resolution);
+    sprite.scale.set(1 / this.tools.textures.resolution);
     this.figure.addChild(sprite);
     // A bake that fails must not leave a silently blank sprite: the rejection is
     // re-thrown with the picture that caused it, so it reaches the console as
     // something a person can act on.
-    void this.textures.bake(markup).then(
+    void this.tools.textures.bake(markup).then(
       (picture) => {
         if (generation !== this.generation || sprite.destroyed) return;
         this.show(sprite, picture);
@@ -200,7 +231,53 @@ class PixiDrawing implements BoardDrawing {
   private show(sprite: Sprite, picture: BakedPicture): void {
     sprite.texture = picture.texture;
     sprite.position.set(picture.left, picture.top);
-    sprite.scale.set(1 / this.textures.resolution);
+    sprite.scale.set(1 / this.tools.textures.resolution);
+  }
+
+  /**
+   * Draws the strip, and puts it on the timeline.
+   *
+   * This is what a spritesheet is on a GPU, and why it was worth declaring: the
+   * frames are one texture cut into rectangles, so a walk cycle costs nothing beyond
+   * the image every unit of that type already shares, and advancing a frame is
+   * assigning `sprite.texture`.
+   *
+   * The frames arrive after the timeline has already started asking for them, so the
+   * wanted frame is remembered and shown when they land. Sizing waits for them too:
+   * a sprite holding `Texture.EMPTY` is one pixel wide, and giving *that* a width
+   * would scale it by the whole frame.
+   */
+  private draw(strip: BoardStrip): void {
+    const sprite = new Sprite(Texture.EMPTY);
+    sprite.position.set(strip.x, strip.y);
+    this.figure.addChild(sprite);
+
+    let frames: readonly Texture[] = [];
+    let wanted = 0;
+    const show = (frame: number): void => {
+      sprite.texture = frames[frame];
+      sprite.setSize(strip.frameWidth, strip.frameHeight);
+    };
+    void this.tools.textures.frames(strip).then(
+      (cut) => {
+        if (sprite.destroyed) return;
+        frames = cut;
+        show(wanted);
+      },
+      (cause: unknown) => {
+        throw new Error(`cannot cut the strip ${strip.href}`, { cause });
+      },
+    );
+
+    this.tools.animations.register(this.id, {
+      frameCount: strip.frameCount,
+      setFrame: (frame) => {
+        wanted = frame;
+        if (frames.length) show(frame);
+      },
+    }, strip.clips);
+    this.playing = true;
+    if (strip.playing) this.tools.animations.play(this.id, strip.playing);
   }
 
   private write(): void {
@@ -212,12 +289,9 @@ class PixiDrawing implements BoardDrawing {
 /** One transient drawing, whose life belongs to whoever played it. */
 class PixiEffect extends PixiDrawing implements BoardEffect {
   remove(): void {
-    this.root.destroy({ children: true });
+    this.destroy();
   }
 }
-
-/** Which ask produced a `BoardUnit`: the one that made it, or a later one. */
-type Ask = 'made' | 'found';
 
 export class PixiBoardSurface implements BoardSurface {
   readonly element: HTMLCanvasElement;
@@ -226,11 +300,15 @@ export class PixiBoardSurface implements BoardSurface {
   private readonly world = new Container();
   private readonly layers: Record<BoardLayer, Container>;
   private readonly units = new Map<number, PixiDrawing>();
+  /** The same timeline the DOM backend uses, driving textures instead of attributes. */
+  private readonly drawingTools: DrawingTools;
+  private serial = 0;
 
   constructor(
     private readonly scenery: BoardSurfaceScene,
     private readonly tools: PixiBoardTools,
   ) {
+    this.drawingTools = { textures: tools.textures, animations: new FrameAnimationSystem() };
     this.element = tools.painter.canvas;
     this.element.classList.add('board');
 
@@ -272,37 +350,35 @@ export class PixiBoardSurface implements BoardSurface {
     const host = this.layers[layer];
     host.removeChildren().forEach((child) => child.destroy({ children: true }));
     for (const piece of pieces) {
-      const drawing = new PixiDrawing(new Container(), 0, this.tools.textures);
+      // A layer's pictures are still, so none of them needs a place on the timeline.
+      const drawing = this.drawing(new Container(), 0, { body: piece.markup });
       drawing.place(piece.x, piece.y);
-      drawing.paint(piece.markup);
       host.addChild(drawing.root);
     }
   }
 
-  unit(id: number, draw: () => string): BoardUnit {
+  unit(id: number, draw: () => BoardPicture): BoardDrawing {
     const existing = this.units.get(id);
-    if (existing) return this.asUnit(existing, 'found');
+    if (existing) return existing;
 
-    const drawing = new PixiDrawing(new Container({ label: `unit-${id}` }), TILE_MIDDLE, this.tools.textures);
-    drawing.paint(draw());
+    const drawing = this.drawing(new Container({ label: `unit-${id}` }), TILE_MIDDLE, draw());
     // The badges part is the surface's own, exactly as in the SVG tree: it is what
     // `fill('badges', …)` replaces every render, and it must not mirror with the
     // sprite when the unit faces west.
     drawing.addPart('badges', '');
     this.layers.units.addChild(drawing.root);
     this.units.set(id, drawing);
-    return this.asUnit(drawing, 'made');
+    return drawing;
   }
 
-  drawnUnit(id: number): BoardUnit | null {
-    const drawing = this.units.get(id);
-    return drawing ? this.asUnit(drawing, 'found') : null;
+  drawnUnit(id: number): BoardDrawing | null {
+    return this.units.get(id) ?? null;
   }
 
   removeUnit(id: number): void {
     const drawing = this.units.get(id);
     if (!drawing) return;
-    drawing.root.destroy({ children: true });
+    drawing.destroy();
     this.units.delete(id);
   }
 
@@ -312,9 +388,13 @@ export class PixiBoardSurface implements BoardSurface {
 
   effect(picture: BoardPicture): BoardEffect {
     // An effect is placed at a cell's centre, so its origin is already its middle.
-    const drawing = new PixiEffect(new Container({ label: 'fx' }), 0, this.tools.textures);
-    if (picture.body) drawing.paint(picture.body);
-    for (const part of picture.parts ?? []) drawing.addPart(part.role, part.markup);
+    const drawing = new PixiEffect(
+      this.drawingTools,
+      new Container({ label: 'fx' }),
+      0,
+      `strip:${this.serial++}`,
+      picture,
+    );
     this.layers.effects.addChild(drawing.root);
     return drawing;
   }
@@ -354,6 +434,7 @@ export class PixiBoardSurface implements BoardSurface {
   rescaling(): void {}
 
   dispose(): void {
+    this.drawingTools.animations.dispose();
     this.tools.painter.dispose();
     this.tools.textures.dispose();
     this.units.clear();
@@ -362,20 +443,12 @@ export class PixiBoardSurface implements BoardSurface {
 
   /** Art outside the tactical field, as one baked picture at the scene's origin. */
   private picture(markup: string): Container {
-    const drawing = new PixiDrawing(new Container(), 0, this.tools.textures);
-    drawing.paint(markup);
-    return drawing.root;
+    return this.drawing(new Container(), 0, { body: markup }).root;
   }
 
-  private asUnit(drawing: PixiDrawing, ask: Ask): BoardUnit {
-    return {
-      drawing,
-      fresh: ask === 'made',
-      // Frame strips are a DOM sprite-sheet trick: the picture is one wide image
-      // shifted behind a clip. Baked into a texture the shift is already in it, so
-      // there is nothing here to advance yet, and a unit stands on its first frame.
-      play: () => {},
-    };
+  /** One drawing of this surface's, with its own place on the shared timeline. */
+  private drawing(root: Container, pivot: number, picture: BoardPicture): PixiDrawing {
+    return new PixiDrawing(this.drawingTools, root, pivot, `strip:${this.serial++}`, picture);
   }
 
   /**
@@ -450,5 +523,5 @@ export async function preparePixiPainter(options: {
  */
 export const pixiBoardSurface = (
   painter: ScenePainter,
-  textures: MarkupTextures,
+  textures: PictureTextures,
 ): BoardSurfaceFactory => (scene) => new PixiBoardSurface(scene, { painter, textures });
