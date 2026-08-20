@@ -146,6 +146,15 @@ export class BoardView {
   private layoutCache: BoardLayout | null = null;
   /** Only for making a turn banner's gradient id unique. */
   private banners = 0;
+  /**
+   * Units whose facing `animateMove` is currently driving, step by step.
+   *
+   * The board's own bookkeeping, not a look. It used to be a `moving` state told to
+   * the drawing and read back with `inState` — the board keeping a fact about its
+   * animations inside the renderer, where a second backend would have had to store
+   * something nothing ever draws.
+   */
+  private readonly walking = new Set<number>();
   private settleTimer: ReturnType<typeof setTimeout> | null = null;
 
   private readonly content: ContentCatalog;
@@ -468,13 +477,12 @@ export class BoardView {
 
     for (const u of s.units) {
       const drawing = this.drawingFor(u);
-      if (!drawing.inState('moving')) drawing.say('facingLeft', u.facing === 'west');
+      if (!this.walking.has(u.id)) drawing.say('facingLeft', u.facing === 'west');
       const hidden = o.hiddenUnits.has(u.id);
       drawing.say('hidden', hidden);
       if (hidden) continue;
       const origin = this.origin(u);
       drawing.place(origin.x, origin.y);
-      drawing.say('done', u.done);
       drawing.say('selected', !!o.selected && o.selected.x === u.x && o.selected.y === u.y);
 
       const def = this.content.units.get(u.type);
@@ -517,22 +525,27 @@ export class BoardView {
     if (!drawn || path.length < 2) return;
     const { drawing } = drawn;
     drawn.play('walk');
-    drawing.say('moving', true);
-    for (let i = 1; i < path.length; i++) {
-      const a = path[i - 1];
-      const b = path[i];
-      if (b.x !== a.x) drawing.say('facingLeft', b.x < a.x);
-      await tween(msPerTile, (t) => {
-        const e = easeInOut(t);
-        const from = this.origin(a);
-        const to = this.origin(b);
-        drawing.place(
-          from.x + (to.x - from.x) * e,
-          from.y + (to.y - from.y) * e - Math.sin(Math.PI * t) * 2.5,
-        );
-      });
+    // Cleared however this ends. It used to be set and unset around the loop, so a
+    // tween that threw left the unit's facing frozen for the rest of the battle.
+    this.walking.add(unit.id);
+    try {
+      for (let i = 1; i < path.length; i++) {
+        const a = path[i - 1];
+        const b = path[i];
+        if (b.x !== a.x) drawing.say('facingLeft', b.x < a.x);
+        await tween(msPerTile, (t) => {
+          const e = easeInOut(t);
+          const from = this.origin(a);
+          const to = this.origin(b);
+          drawing.place(
+            from.x + (to.x - from.x) * e,
+            from.y + (to.y - from.y) * e - Math.sin(Math.PI * t) * 2.5,
+          );
+        });
+      }
+    } finally {
+      this.walking.delete(unit.id);
     }
-    drawing.say('moving', false);
     drawn.play('idle');
   }
 
@@ -546,12 +559,10 @@ export class BoardView {
     const anchor = this.origin(attacker);
     drawing.place(anchor.x, anchor.y);
     drawn.play('attack');
-    drawing.say('attacking', true);
     await tween(150, (t) => {
       const push = Math.sin(Math.PI * t) * 7;
       drawing.nudge(dx * push, dy * push);
     });
-    drawing.say('attacking', false);
     drawn.play('idle');
     drawing.nudge(0, 0);
   }

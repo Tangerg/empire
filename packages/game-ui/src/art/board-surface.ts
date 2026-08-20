@@ -96,8 +96,19 @@ export const boardPiecesMarkup = (pieces: readonly BoardPiece[]): string =>
  * it had queried out of the tree, which meant the appearance of a unit lived in a
  * stylesheet the renderer could not see and a backend without stylesheets could not
  * reproduce.
+ *
+ * There were six, and three of them were not appearances. `done` and `attacking`
+ * were set on every render and every strike and read by nothing at all — no
+ * stylesheet, no code, in any package; a unit that has acted is dimmed by a badge
+ * the board draws, not by this. `moving` was read back by the board through
+ * `inState`, which is not a look but the board keeping its own animation
+ * bookkeeping inside the renderer. A GPU backend would have had to implement three
+ * states that mean nothing, and guess which three.
+ *
+ * What is left is what a second backend can be held to: a mirror, a highlight, and
+ * not drawn at all.
  */
-export type BoardState = 'facingLeft' | 'moving' | 'attacking' | 'done' | 'selected' | 'hidden';
+export type BoardState = 'facingLeft' | 'selected' | 'hidden';
 
 /**
  * A part of a drawing, by the role its own markup declares with `data-part`.
@@ -121,8 +132,6 @@ export interface BoardDrawing {
   opacity(value: number): void;
   /** Puts the drawing into, or out of, a named visual state. */
   say(state: BoardState, on: boolean): void;
-  /** Whether it is currently in that state. */
-  inState(state: BoardState): boolean;
   /** The part of this drawing that declared itself as `role`, if it has one. */
   part(role: BoardRole): BoardDrawing | null;
   /** Replaces everything the drawing holds under `role`. */

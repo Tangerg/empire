@@ -27,14 +27,16 @@ import { clear, fromMarkup, setAttrs, svg } from './svg';
  * picture, so it costs a texture cache nothing.
  */
 
-/** What a `BoardState` is called in the stylesheet. */
-const STATE_CLASS: Readonly<Record<BoardState, string>> = {
+/**
+ * What a `BoardState` is called in the stylesheet.
+ *
+ * `hidden` is not in here. It is `display: none`, and the entry that used to name
+ * `is-hidden` was unreachable — both `say` and `inState` branched on `hidden`
+ * before they ever reached this table.
+ */
+const STATE_CLASS: Readonly<Record<Exclude<BoardState, 'hidden'>, string>> = {
   facingLeft: 'face-left',
-  moving: 'is-moving',
-  attacking: 'is-attacking',
-  done: 'is-done',
   selected: 'is-selected',
-  hidden: 'is-hidden',
 };
 
 /** Half a tile, which is what a drawing swells about. */
@@ -84,12 +86,6 @@ class SvgDrawing implements BoardDrawing {
       return;
     }
     this.el.classList.toggle(STATE_CLASS[state], on);
-  }
-
-  inState(state: BoardState): boolean {
-    return state === 'hidden'
-      ? this.el.style.display === 'none'
-      : this.el.classList.contains(STATE_CLASS[state]);
   }
 
   part(role: BoardRole): BoardDrawing | null {

@@ -1471,6 +1471,49 @@ describe('the battle screen is its own screen', () => {
   }
 
   /**
+   * A named board state must be something a renderer actually draws.
+   *
+   * `BoardState` had six members and three of them drew nothing. `is-done` and
+   * `is-attacking` were toggled on every render and every strike, and no stylesheet
+   * in any package — shared, per-app, or carried inside a content pack's own art —
+   * had a rule for either. `is-hidden` was named in the table and unreachable,
+   * because `hidden` is `display: none` and both methods branched before they got
+   * there. A GPU backend would have had to implement all six and guess which three
+   * mattered.
+   *
+   * So: whatever the SVG backend spells as a class, some stylesheet must style.
+   */
+  it('gives every named board state something that draws it', () => {
+    const surface = stripComments(
+      readFileSync(join(packagesRoot, 'game-ui', 'src', 'art', 'svg-board-surface.ts'), 'utf8'),
+    );
+    const table = /STATE_CLASS[^=]*=\s*\{([^}]*)\}/.exec(surface);
+    expect(table).toBeTruthy();
+    const spelled = [...table![1].matchAll(/'([\w-]+)'/g)].map(([, name]) => name);
+    // A table this guard failed to read would pass for the wrong reason.
+    expect(spelled.length).toBeGreaterThan(1);
+
+    // Every rule this repository ships, wherever it lives: the stylesheets, and the
+    // `<style>` a content pack sends along inside its own pictures.
+    const packStyles = readdirSync(packagesRoot, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .flatMap((entry) => {
+        const presentation = join(packagesRoot, entry.name, 'src', 'presentation');
+        if (!statSync(presentation, { throwIfNoEntry: false })?.isDirectory()) return [];
+        return readdirSync(presentation)
+          .filter((file) => file.endsWith('.ts'))
+          .map((file) => readFileSync(join(presentation, file), 'utf8'));
+      });
+    const rules = [...stylesheets().map((file) => readFileSync(file, 'utf8')), ...packStyles]
+      .map(stripComments)
+      .join('\n');
+
+    const undrawn = spelled.filter((name) =>
+      !new RegExp(`\\.${escapeForRegExp(name)}(?![\\w-])`).test(rules));
+    expect(undrawn).toEqual([]);
+  });
+
+  /**
    * The battle screen wore the map editor's chrome for as long as they shared it.
    *
    * `topbar`, `panel`, `stage` and `board-scroll` are a title bar above the
