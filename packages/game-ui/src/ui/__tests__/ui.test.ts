@@ -287,8 +287,11 @@ describe('game controller', () => {
     expect(children.indexOf(ground)).toBeLessThan(children.indexOf(units));
     expect(children.indexOf(units)).toBeLessThan(children.indexOf(foreground));
     expect(ground.querySelector('.candidate-ground-route')).toBeTruthy();
-    expect(world.querySelector('.layer-grid line')).toBeFalsy();
-    expect(world.querySelectorAll('.layer-grid > g')).toHaveLength(level.width * level.height);
+    // A painted scene draws no lattice. This used to assert one stand node per
+    // cell — 12,393 nodes on the largest map — which a rule in `battle.css` then
+    // set to `opacity: 0`. The board and the stylesheet were both right and the
+    // player saw neither.
+    expect(world.querySelector('.layer-grid')!.children).toHaveLength(0);
     board.dispose();
   });
 

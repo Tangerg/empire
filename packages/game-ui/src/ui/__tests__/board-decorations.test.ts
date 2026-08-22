@@ -18,6 +18,16 @@ import {
 
 const map = { width: 2, height: 2, tiles: [], owners: [], captureProgress: [], elevation: [], cliffs: [], directionalCover: [] };
 
+/** A tiling whose cells do not lattice, so a decoration is drawn per cell. */
+const hex: BoardLayout = {
+  tileSize: 32,
+  corners: 6,
+  origin: (at) => ({ x: at.x * 32, y: at.y * 24 }),
+  center: (at) => ({ x: at.x * 32 + 16, y: at.y * 24 + 18 }),
+  shape: () => '0,0 10,0 15,9 10,18 0,18 -5,9',
+  neighbour: (at) => ({ x: at.x * 32 + 48, y: at.y * 24 + 18 }),
+};
+
 describe('how a board draws its tactical layer', () => {
   it('keeps the grid for art that states no preference', () => {
     const plain: BattlePresentation = {
@@ -67,8 +77,9 @@ describe('how a board draws its tactical layer', () => {
 
     expect(boardPiecesMarkup(SquareBoardDecorations.gridLines(squareLayout, map as never)))
       .toContain('<line');
-    expect(boardPiecesMarkup(GroundBoardDecorations.gridLines(squareLayout, map as never)))
-      .toContain('<circle');
+    // A painted scene shows its own ground and draws no lattice over it. It used to
+    // seat a stand node under every cell, which `battle.css` then made invisible.
+    expect(GroundBoardDecorations.gridLines(squareLayout, map as never)).toEqual([]);
 
     const path = [{ x: 0, y: 0 }, { x: 1, y: 0 }];
     expect(SquareBoardDecorations.movePath(squareLayout, path)).toMatch(/^M\d/);
@@ -85,10 +96,12 @@ describe('how a board draws its tactical layer', () => {
    * measures what that costs a renderer that wants to cache anything.
    */
   it('draws one picture at many places rather than many pictures', () => {
-    const nodes = GroundBoardDecorations.gridLines(squareLayout, map as never);
+    // A tiling whose cells do not lattice draws its own edge per cell, which is the
+    // same picture at every one of them.
+    const nodes = SquareBoardDecorations.gridLines(hex, map as never);
     expect(nodes).toHaveLength(map.width * map.height);
     expect(new Set(nodes.map((piece) => piece.markup)).size).toBe(1);
-    expect(nodes.map((piece) => `${piece.x},${piece.y}`)).toEqual(['0,0', '32,0', '0,32', '32,32']);
+    expect(nodes.map((piece) => `${piece.x},${piece.y}`)).toEqual(['0,0', '32,0', '0,24', '32,24']);
 
     // And the same for a tint: one shape, whatever it is spread over.
     const tint = { fill: '#0b1020', opacity: 0.55 };
@@ -104,14 +117,6 @@ describe('how a board draws its tactical layer', () => {
    * lattice for four-cornered cells; a six-cornered one draws its own edges.
    */
   it('draws a six-cornered cell as its own outline', () => {
-    const hex: BoardLayout = {
-      tileSize: 32,
-      corners: 6,
-      origin: (at) => ({ x: at.x * 32, y: at.y * 28 }),
-      center: (at) => ({ x: at.x * 32 + 16, y: at.y * 28 + 18 }),
-      shape: () => '0,0 10,0 15,9 10,18 0,18 -5,9',
-      neighbour: (at) => ({ x: at.x * 32 + 48, y: at.y * 28 + 18 }),
-    };
     const tint = { fill: '#abc', opacity: 0.2 };
 
     const lattice = boardPiecesMarkup(SquareBoardDecorations.gridLines(hex, map as never));

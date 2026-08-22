@@ -416,11 +416,16 @@ export class PixiBoardSurface implements BoardSurface {
     this.tools.painter.resize(width, height);
   }
 
-  /** Whether the player is measuring with the board right now. */
+  /**
+   * Whether the player is measuring with the board right now.
+   *
+   * The SVG backend spells this as a class and `battle.css` decides the two numbers.
+   * They used to be three: a painted scene's lattice was hidden outright by a rule
+   * naming one campaign's board class, which this backend was not told about and so
+   * did not do. A painted scene's decorations draw no lattice at all now, so there
+   * is nothing to hide and these two numbers are the whole rule.
+   */
   tactical(on: boolean): void {
-    // The SVG backend spells this as a class and a stylesheet decides the numbers,
-    // including a painted scene's "never show the grid" — which this backend is not
-    // told and therefore does not do.
     this.layers.grid.alpha = on ? 0.72 : 0.3;
   }
 

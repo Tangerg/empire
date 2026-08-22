@@ -1657,10 +1657,17 @@ describe('the battle screen is its own screen', () => {
     // Interpolations are blanked rather than skipping the whole attribute — the
     // first version of this required a class list with no `${}` in it, which is
     // almost none of them, so it collected nothing and passed for that reason.
+    // A pack's classes are whatever its art emits — plus the one it declares as
+    // data rather than as markup. `boardClass: 'candidate-map'` is never written
+    // inside a `class="…"`, so this guard could not see it, and
+    // `.battlefield .board.candidate-map .layer-grid { opacity: 0 }` sat in
+    // `battle.css` for exactly that reason.
     const classNames = (source: string): string[] =>
-      [...source.matchAll(/class="([^"]*)"/g)]
-        .flatMap(([, list]) => list.replace(/\$\{[^}]*\}/g, ' ').split(/\s+/))
-        .filter((name) => /^[a-zA-Z][\w-]*$/.test(name));
+      [
+        ...[...source.matchAll(/class="([^"]*)"/g)]
+          .flatMap(([, list]) => list.replace(/\$\{[^}]*\}/g, ' ').split(/\s+/)),
+        ...[...source.matchAll(/\bboardClass:\s*'([^']*)'/g)].map(([, name]) => name),
+      ].filter((name) => /^[a-zA-Z][\w-]*$/.test(name));
 
     const emitted = new Set<string>();
     for (const pack of packs) {

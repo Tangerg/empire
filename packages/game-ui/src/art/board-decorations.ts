@@ -175,25 +175,24 @@ export const GroundBoardDecorations: BoardDecorations = {
   id: 'ground',
   shapeRendering: 'geometricPrecision',
   /**
-   * One stand node per cell, seated by a shape rather than by a filter.
+   * No lattice at all: a painted scene shows its own ground.
    *
-   * These carried `filter: drop-shadow(0 1px 1px …)` in the stylesheet, which on a
-   * shipped map is 459 separate blur passes for a 2.2px dot — recomputed every
-   * time the board is rescaled. The shadow it was imitating is one more circle,
-   * which costs nothing to raster and looks the same.
+   * This drew one stand node per cell — two small circles seated at the middle of
+   * every tile — and a rule in `battle.css` then set the whole layer to
+   * `opacity: 0`. Both were true statements about the shipped picture, and the
+   * board built 4,131 pieces and 12,393 nodes on `c01-16` for nobody to see: a
+   * quarter of everything on the board.
+   *
+   * The rule was also written `.battlefield .board.candidate-map .layer-grid`, one
+   * campaign's class named in a shared stylesheet — exactly the shape the comment
+   * eight lines above it in that file complains about, having removed the previous
+   * instance of it. Whether a look has a lattice belongs to the look, and the port
+   * above already said so: "Empty for art that already shows its own ground."
+   *
+   * Nothing has to be told any more. The lattice is drawn or it is not, no
+   * stylesheet hides it, and a second backend cannot get it wrong.
    */
-  gridLines: (layout, map) => {
-    const middle = layout.tileSize / 2;
-    // One node, seated at every cell. It used to be one string of N nodes with N
-    // pairs of absolute coordinates baked in, which is the same picture written out
-    // four thousand times. The group that used to hold the two circles together is
-    // gone with them: a piece already has a group, nothing styled that class, and
-    // keeping it would have cost the DOM one node per cell for nothing.
-    const node =
-      `<circle cx="${middle}" cy="${middle + 1}" r="2.2" fill="#000000" opacity="0.22"/>`
-      + `<circle cx="${middle}" cy="${middle}" r="2.2" fill="#fff4dc" opacity="0.32"/>`;
-    return [...everyCell(map)].map((at) => ({ markup: node, ...layout.origin(at) }));
-  },
+  gridLines: () => [],
   actionSpot: (layout, { fill, opacity, stroke }) => {
     const middle = layout.tileSize / 2;
     return `<ellipse class="candidate-action-spot" cx="${middle}" cy="${middle + layout.tileSize * 0.18}" rx="12.5" ry="7.5" fill="${fill}" fill-opacity="${Math.min(0.5, opacity * 1.35)}"${outlineOf(stroke)}/>`;

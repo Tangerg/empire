@@ -68,10 +68,12 @@
   box-shadow: 0 24px 60px rgb(0 0 0 / 52%);
 }
 
-.battlefield .board.candidate-map[data-scene-layout='authored'] {
-  border-radius: 0;
-  box-shadow: 0 24px 60px rgb(0 0 0 / 52%);
-}
+/*
+ * There was a `.board.candidate-map[data-scene-layout='authored']` rule here, and
+ * it declared `border-radius: 0` and that same `box-shadow` — both of them, with
+ * those values, one rule above. A pack-specific override left behind by the change
+ * that generalised the rule it overrode, doing nothing but naming a campaign.
+ */
 
 /*
  * The lattice recedes when nobody is measuring with it.
@@ -91,10 +93,15 @@
   opacity: 0.72;
 }
 
-/* Painted scenes carry their own ground; theirs goes all the way out of sight. */
-.battlefield .board.candidate-map .layer-grid {
-  opacity: 0;
-}
+/*
+ * There was a `.battlefield .board.candidate-map .layer-grid { opacity: 0 }` here.
+ *
+ * Which is the same defect the paragraph above describes, written eight lines
+ * below it: one campaign's class in a shared stylesheet, deciding a look. And it
+ * hid a layer the board had just filled — 12,393 nodes on the largest shipped map,
+ * built to be invisible. A painted scene's decorations draw no lattice now, so
+ * there is nothing to hide and no backend to tell.
+ */
 
 /*
  * While the scale is moving, the field draws no filters at all.
