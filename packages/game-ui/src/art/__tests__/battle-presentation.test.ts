@@ -3,6 +3,7 @@ const SQUARE = TacticalGrids.get('square4');
 import { describe, expect, it } from 'vitest';
 import { candidate01Level, CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 import { createSceneViewport } from '../scene-viewport';
+import { boardPiecesMarkup } from '../board-surface';
 import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
 
 import { createTestCatalog } from '@empire/test-content';
@@ -27,7 +28,8 @@ describe('battle presentation', () => {
     expect(presentation.id).toBe('candidate-01');
     expect(presentation.boardClass).toBe('candidate-map');
     expect(presentation.sceneFrame('c01-01', map, viewport).backdrop).toContain('authored-wide');
-    expect(presentation.sceneLayers('c01-01', map, viewport).ground).toContain('candidate-ground-route');
+    expect(boardPiecesMarkup(presentation.sceneLayers('c01-01', map, viewport).ground))
+      .toContain('candidate-ground-route');
   });
 
   it('keeps unknown campaigns on the story-neutral fallback', () => {
@@ -41,9 +43,12 @@ describe('battle presentation', () => {
     // level still gets a fall of light and ground that darkens at the edge,
     // which is the difference between a field and a spreadsheet.
     const layers = presentation.sceneLayers('sandbox-01', map, viewport);
-    expect(layers).toMatchObject({ ground: '', overUnits: '' });
-    expect(layers.underUnits).toContain('field-light');
-    expect(layers.underUnits).toContain(`width="${map.width * 32}"`);
+    expect(layers).toMatchObject({ ground: [], overUnits: [] });
+    // The fall of light spans the whole field, so it is one piece at the origin.
+    expect(layers.underUnits).toHaveLength(1);
+    expect(layers.underUnits[0]).toMatchObject({ x: 0, y: 0 });
+    expect(layers.underUnits[0].markup).toContain('field-light');
+    expect(layers.underUnits[0].markup).toContain(`width="${map.width * 32}"`);
     expect(presentation.effect('unknown')).toEqual({ body: '' });
   });
 });

@@ -572,6 +572,9 @@ kbd {
 /* -------------------------------------------------------------------- board */
 
 .layer-ground,
+/* Every layer that is art rather than interaction. The painted scene's own
+   wrappers used to say this for three of them, one pack at a time. */
+.layer-ground,
 .layer-scenery,
 .layer-spatial,
 .layer-foreground {

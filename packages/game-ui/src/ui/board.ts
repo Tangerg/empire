@@ -350,9 +350,9 @@ export class BoardView {
     // the seam as the whole field. Which is why the layer it lands in is the
     // second-largest on a big board and the one still worth breaking up.
     const sceneLayers = this.presentation.sceneLayers(s.levelId, s.map, this.viewport);
-    this.surface.setLayer('ground', wholeField(sceneLayers.ground));
-    this.surface.setLayer('scenery', wholeField(sceneLayers.underUnits));
-    this.surface.setLayer('foreground', wholeField(sceneLayers.overUnits));
+    this.surface.setLayer('ground', sceneLayers.ground);
+    this.surface.setLayer('scenery', sceneLayers.underUnits);
+    this.surface.setLayer('foreground', sceneLayers.overUnits);
     this.surface.setLayer('spatial', battlefieldFeaturePieces({ art: this.art, layout: this.layout }, s.map));
   }
 

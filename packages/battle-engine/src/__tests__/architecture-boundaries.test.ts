@@ -1657,29 +1657,42 @@ describe('the battle screen is its own screen', () => {
     // Interpolations are blanked rather than skipping the whole attribute — the
     // first version of this required a class list with no `${}` in it, which is
     // almost none of them, so it collected nothing and passed for that reason.
-    // A pack's classes are whatever its art emits — plus the one it declares as
-    // data rather than as markup. `boardClass: 'candidate-map'` is never written
-    // inside a `class="…"`, so this guard could not see it, and
-    // `.battlefield .board.candidate-map .layer-grid { opacity: 0 }` sat in
-    // `battle.css` for exactly that reason.
-    const classNames = (source: string): string[] =>
-      [
-        ...[...source.matchAll(/class="([^"]*)"/g)]
-          .flatMap(([, list]) => list.replace(/\$\{[^}]*\}/g, ' ').split(/\s+/)),
-        ...[...source.matchAll(/\bboardClass:\s*'([^']*)'/g)].map(([, name]) => name),
-      ].filter((name) => /^[a-zA-Z][\w-]*$/.test(name));
+    const named = /^[a-zA-Z][\w-]*$/;
+    const inMarkup = (source: string): string[] =>
+      [...source.matchAll(/class="([^"]*)"/g)]
+        .flatMap(([, list]) => list.replace(/\$\{[^}]*\}/g, ' ').split(/\s+/))
+        .filter((name) => named.test(name));
+    /*
+     * A class a pack declares as data rather than writing into markup.
+     *
+     * `boardClass: 'candidate-map'` never appears inside a `class="…"`, so this
+     * guard could not see it — and `.battlefield .board.candidate-map .layer-grid`
+     * sat in `battle.css` for exactly that reason. Collected separately so the
+     * floor below can say that this half found something, rather than counting a
+     * total that changes whenever a wrapper is added or removed.
+     */
+    const asData = (source: string): string[] =>
+      [...source.matchAll(/\bboardClass:\s*'([^']*)'/g)]
+        .map(([, name]) => name)
+        .filter((name) => named.test(name));
 
     const emitted = new Set<string>();
+    const declared = new Set<string>();
     for (const pack of packs) {
       for (const file of runtimeTypeScriptFiles(join(packagesRoot, pack, 'src'))) {
-        for (const name of classNames(readFileSync(file, 'utf8'))) emitted.add(name);
+        const source = readFileSync(file, 'utf8');
+        for (const name of inMarkup(source)) emitted.add(name);
+        for (const name of asData(source)) declared.add(name);
       }
     }
     // Names the general layer emits too are general, whoever else uses them.
     for (const file of runtimeTypeScriptFiles(join(packagesRoot, 'game-ui', 'src'))) {
-      for (const name of classNames(readFileSync(file, 'utf8'))) emitted.delete(name);
+      for (const name of inMarkup(readFileSync(file, 'utf8'))) emitted.delete(name);
     }
-    expect(emitted.size).toBeGreaterThan(10);
+    // Both halves have to have found something, or half the guard is asleep.
+    expect(emitted.size).toBeGreaterThan(5);
+    expect(declared.size).toBeGreaterThan(0);
+    for (const name of declared) emitted.add(name);
 
     const shared = ['game-ui', 'editor'].flatMap((owner) => {
       const styles = join(packagesRoot, owner, 'src', 'styles');

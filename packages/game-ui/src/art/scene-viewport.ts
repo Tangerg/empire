@@ -1,4 +1,5 @@
 import type { TacticalGrid } from '@empire/battle-engine';
+import type { BoardPiece } from './board-surface';
 export interface SceneInsets {
   top: number;
   right: number;
@@ -20,11 +21,23 @@ export interface SceneFrameMarkup {
  * Explicit depth contract for art inside the interactive battlefield.
  * Ground can never cover a tactical actor; overUnits is reserved for authored
  * canopies and other silhouettes that intentionally cross the actor plane.
+ *
+ * Pieces, not strings — the last place a layer crossed the renderer seam as a
+ * document. A painted field's ground was one picture of 20,339 nodes at 81×51,
+ * which is 59% of everything on the board, and every one of its 4,131 surface
+ * tiles carried its own cell's coordinates inside its own markup. There are four
+ * distinct surface pictures on that map. A renderer reading the string saw 4,131,
+ * and a texture backend would have had to bake one field-sized image with 4,131
+ * PNGs inlined into it.
+ *
+ * Art that genuinely has no place of its own — a wash across the whole field, a
+ * gradient definition — is a piece at the origin. That is the rule `BoardPiece`
+ * already states, not a second one.
  */
-export interface SceneLayerMarkup {
-  ground: string;
-  underUnits: string;
-  overUnits: string;
+export interface SceneLayers {
+  readonly ground: readonly BoardPiece[];
+  readonly underUnits: readonly BoardPiece[];
+  readonly overUnits: readonly BoardPiece[];
 }
 
 export interface SceneViewport {

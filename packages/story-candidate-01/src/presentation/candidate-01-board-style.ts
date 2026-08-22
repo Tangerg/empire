@@ -15,20 +15,19 @@
  * rule needs its "important": this arrives later in the document than any stylesheet.
  */
 export const CANDIDATE_01_BOARD_STYLE = `<style>
-.candidate-map-scenery {
-  isolation: isolate;
-}
-
-.candidate-scene-ground, .candidate-ground-route, .candidate-map-foreground {
-  pointer-events: none;
-}
+/*
+ * Three rules stood here: an isolate on .candidate-map-scenery, a screen blend on
+ * .candidate-map-ambient, and pointer-events on the three scene wrappers.
+ *
+ * The isolate confined that blend to the scenery group. It was the only blend in
+ * the repository, and no module emits the class it was declared on. The group it
+ * isolated is gone as well: a scene layer is its pieces now, and the renderer's own
+ * layer is the group. pointer-events moved to app.css, where every layer that is
+ * art rather than interaction is named together.
+ */
 
 .candidate-ground-route, .candidate-ground-route-edge {
   filter: drop-shadow(0 1px 0 rgb(255 230 176 / 10%));
-}
-
-.candidate-scene-backdrop, .candidate-scene-foreground {
-  isolation: isolate;
 }
 
 .candidate-scene-foreground .candidate-environment-prop {
@@ -53,12 +52,6 @@ export const CANDIDATE_01_BOARD_STYLE = `<style>
 
 .candidate-map .candidate-action-spot, .candidate-map .candidate-selection-ring, .candidate-map .candidate-cursor-ring {
   filter: drop-shadow(0 1px 2px rgb(0 0 0 / 72%));
-}
-
-.candidate-map-ambient {
-  opacity: 0.52;
-  mix-blend-mode: screen;
-  pointer-events: none;
 }
 
 .candidate-map .elevation-badge {

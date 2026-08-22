@@ -7,19 +7,25 @@ import {
   candidate01EnvironmentScene,
   type CandidateEnvironmentPlacement,
 } from './candidate-01-environment';
-import { runtimeAtlasCellMarkup } from '@empire/game-ui';
+import {
+  boardPiecesMarkup,
+  escapeAttr as attr,
+  runtimeAtlasCellMarkup,
+  wholeField,
+  type BoardPiece,
+} from '@empire/game-ui';
 import { CANDIDATE_01_BOARD_STYLE } from './candidate-01-board-style';
 import type {
   SceneFrameMarkup,
-  SceneLayerMarkup,
+  SceneLayers,
   SceneViewport,
   SceneViewportProfile,
 } from '@empire/game-ui';
 
 const TILE = 32;
 
-const attr = (value: string): string =>
-  value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
+/** Where a cell's art goes: the cell's own origin. */
+const cellOrigin = (x: number, y: number): { x: number; y: number } => ({ x: x * TILE, y: y * TILE });
 
 const tileAt = (map: GameMap, x: number, y: number): TerrainId | null =>
   x < 0 || y < 0 || x >= map.width || y >= map.height ? null : map.tiles[y * map.width + x];
@@ -57,17 +63,20 @@ export function candidate01SceneProfile(levelId: string): SceneViewportProfile {
     : {};
 }
 
-function atlasCellAt(
-  atlasId: string,
-  cell: number,
-  x: number,
-  y: number,
-  className: string,
-): string {
+/**
+ * One atlas cell, drawn about its own origin.
+ *
+ * The class is optional because most of these had one that nothing styled. Four
+ * labels rode on every cell of the biggest layer on the board —
+ * `candidate-ground-surface`, `candidate-ground-transition`,
+ * `data-environment-atlas`, `data-environment-cell` — and no stylesheet, test or
+ * module in the repository read any of them. Two classes here are real, and both
+ * carry a filter: the road and its edge.
+ */
+function atlasCellMarkup(atlasId: string, cell: number, className?: string): string {
   const atlas = CANDIDATE_01_ENVIRONMENT.atlas(atlasId);
-  return `<g class="${className}" transform="translate(${x} ${y})" data-environment-atlas="${atlasId}" data-environment-cell="${cell}">
-    ${runtimeAtlasCellMarkup(atlas.raster, cell)}
-  </g>`;
+  const figure = runtimeAtlasCellMarkup(atlas.raster, cell);
+  return className ? `<g class="${className}">${figure}</g>` : figure;
 }
 
 /**
@@ -84,55 +93,87 @@ interface EnvironmentCellPlacing {
   readonly className?: string;
 }
 
-function environmentCellAt(
-  id: string,
-  cx: number,
-  baseY: number,
-  placing: EnvironmentCellPlacing = {},
-): string {
+/**
+ * One environment prop, drawn about the point it stands on.
+ *
+ * Its anchor is inside the picture and its place is outside it, which is what makes
+ * two ferns of the same kind and scale one picture instead of two strings.
+ *
+ * The offset is rounded to a thousandth rather than a tenth. A tenth was right when
+ * this was `standingPoint - anchor * scale`: a value with a cell's coordinates in
+ * it, of arbitrary precision, and rounding it kept the markup short. The offset
+ * alone depends only on the prop and its scale, so rounding buys no shorter strings
+ * and no extra sharing — it only moves the picture. Positions still differ from the
+ * old ones, because the old ones were the rounded sum.
+ */
+function environmentCellMarkup(id: string, placing: EnvironmentCellPlacing = {}): string {
   const { scale = 1, flip = false, opacity = 1, className = '' } = placing;
   const record = CANDIDATE_01_ENVIRONMENT.cell(id);
   const anchor = record.cell.anchor ?? record.atlas.anchor ?? [record.atlas.cellWidth / 2, record.atlas.cellHeight];
-  const x = cx - anchor[0] * scale;
-  const y = baseY - anchor[1] * scale;
+  const x = -anchor[0] * scale;
+  const y = -anchor[1] * scale;
   const transform = flip
-    ? `translate(${(x + record.atlas.cellWidth * scale).toFixed(1)} ${y.toFixed(1)}) scale(-${scale.toFixed(3)} ${scale.toFixed(3)})`
-    : `translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${scale.toFixed(3)})`;
-  return `<g class="candidate-environment-prop ${className}" transform="${transform}" opacity="${opacity}" data-environment-cell-id="${id}">
+    ? `translate(${(x + record.atlas.cellWidth * scale).toFixed(3)} ${y.toFixed(3)}) scale(-${scale.toFixed(3)} ${scale.toFixed(3)})`
+    : `translate(${x.toFixed(3)} ${y.toFixed(3)}) scale(${scale.toFixed(3)})`;
+  return `<g class="candidate-environment-prop ${className}" transform="${transform}" opacity="${opacity}">
     ${runtimeAtlasCellMarkup(record.atlas.raster, record.cell.index)}
   </g>`;
 }
 
-function topicPlacementMarkup(placement: CandidateEnvironmentPlacement): string {
-  if (!placement.topicId) return '';
+/**
+ * The same prop, at a place, as the one string the scene frame needs.
+ *
+ * The frame is art outside the tactical field and reaches a renderer as one
+ * picture, so it spells a placement the way every other stringly consumer does —
+ * through the port's own `boardPiecesMarkup`.
+ */
+const environmentCellAt = (
+  id: string,
+  cx: number,
+  baseY: number,
+  placing: EnvironmentCellPlacing = {},
+): string => boardPiecesMarkup([{ markup: environmentCellMarkup(id, placing), x: cx, y: baseY }]);
+
+function topicPlacementPiece(placement: CandidateEnvironmentPlacement): BoardPiece | null {
+  if (!placement.topicId) return null;
   const record = candidate01Asset(placement.topicId);
   const frameWidth = record.frameWidth ?? record.width;
   const frameHeight = record.frameHeight ?? record.height;
   const frames = record.frames ?? 1;
   const anchor = record.anchor ?? [frameWidth / 2, frameHeight - 1];
   const scale = placement.scale ?? 1;
-  const cx = placement.x * TILE;
-  const baseY = (placement.y + 1) * TILE;
-  const x = cx - anchor[0] * scale;
-  const y = baseY - anchor[1] * scale;
+  const x = -anchor[0] * scale;
+  const y = -anchor[1] * scale;
   const transform = placement.flip
-    ? `translate(${(x + frameWidth * scale).toFixed(1)} ${y.toFixed(1)}) scale(-${scale} ${scale})`
-    : `translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${scale})`;
+    ? `translate(${(x + frameWidth * scale).toFixed(3)} ${y.toFixed(3)}) scale(-${scale} ${scale})`
+    : `translate(${x.toFixed(3)} ${y.toFixed(3)}) scale(${scale})`;
   const figure = frames > 1
     ? runtimeAtlasCellMarkup({ href: record.url, cellWidth: frameWidth, cellHeight: frameHeight, columns: frames, rows: 1 }, 0)
     : `<image href="${attr(record.url)}" width="${record.width}" height="${record.height}" preserveAspectRatio="xMidYMid meet"/>`;
-  return `<g class="candidate-scenery-topic" transform="${transform}" opacity="${placement.opacity ?? 1}" data-scenery-topic="${placement.topicId}">${figure}</g>`;
+  return {
+    // Both kinds of authored placement name the depth they were declared at, which
+    // is what lets a test hold this module to the depth contract rather than to a
+    // string somewhere in the markup.
+    markup: `<g class="candidate-scenery-topic is-${placement.layer ?? 'under-units'}"`
+      + ` transform="${transform}" opacity="${placement.opacity ?? 1}">${figure}</g>`,
+    x: placement.x * TILE,
+    y: (placement.y + 1) * TILE,
+  };
 }
 
-function placementMarkup(placement: CandidateEnvironmentPlacement): string {
-  if (placement.topicId) return topicPlacementMarkup(placement);
-  if (!placement.id) return '';
-  return environmentCellAt(placement.id, placement.x * TILE, (placement.y + 1) * TILE, {
-    scale: placement.scale ?? 1,
-    flip: placement.flip ?? false,
-    opacity: placement.opacity ?? 1,
-    className: `is-authored-placement is-${placement.layer ?? 'under-units'}`,
-  });
+function placementPiece(placement: CandidateEnvironmentPlacement): BoardPiece | null {
+  if (placement.topicId) return topicPlacementPiece(placement);
+  if (!placement.id) return null;
+  return {
+    markup: environmentCellMarkup(placement.id, {
+      scale: placement.scale ?? 1,
+      flip: placement.flip ?? false,
+      opacity: placement.opacity ?? 1,
+      className: `is-${placement.layer ?? 'under-units'}`,
+    }),
+    x: placement.x * TILE,
+    y: (placement.y + 1) * TILE,
+  };
 }
 
 function blobMask(map: GameMap, x: number, y: number): number {
@@ -157,50 +198,63 @@ function routeMask(map: GameMap, x: number, y: number): number {
  * Asset-only terrain composition. It keeps the Ancient Empires virtues—clear
  * connected roads and readable occupied cells—without reverting to flat tiles.
  */
-function terrainGroundMarkup(map: GameMap): string {
-  const base: string[] = [];
-  const transitions: string[] = [];
-  const routes: string[] = [];
-  const decals: string[] = [];
+function terrainGroundPieces(map: GameMap): BoardPiece[] {
+  // Kept in four passes and concatenated at the end: the depth order within the
+  // layer is surface, then forest transitions, then roads, then loose detail.
+  const base: BoardPiece[] = [];
+  const transitions: BoardPiece[] = [];
+  const routes: BoardPiece[] = [];
+  const decals: BoardPiece[] = [];
   for (let y = 0; y < map.height; y++) {
     for (let x = 0; x < map.width; x++) {
+      const at = cellOrigin(x, y);
       // Broad material patches avoid the noisy checkerboard produced by a
       // per-cell random variant while still breaking up a flat tiled field.
       const patchX = Math.floor(x / 4);
       const patchY = Math.floor(y / 3);
       const variant = Math.floor(tileHash(patchX, patchY, 1101) * 4);
-      base.push(atlasCellAt('surface-meadow', variant, x * TILE, y * TILE, 'candidate-ground-surface'));
+      base.push({ markup: atlasCellMarkup('surface-meadow', variant), ...at });
       if (isForest(map, x, y)) {
         const cell = CANDIDATE_01_ENVIRONMENT.blobIndex('transition-meadow-forest', blobMask(map, x, y));
-        transitions.push(atlasCellAt('transition-meadow-forest', cell, x * TILE, y * TILE, 'candidate-ground-transition'));
+        transitions.push({ markup: atlasCellMarkup('transition-meadow-forest', cell), ...at });
       }
       if (isRoute(map, x, y)) {
         const mask = routeMask(map, x, y);
         const roadVariant = Math.floor(tileHash(x, y, 1102) * 4);
         const cell = CANDIDATE_01_ENVIRONMENT.connectedIndex('route-dirt-road', mask, roadVariant);
-        routes.push(atlasCellAt('route-dirt-road', cell, x * TILE, y * TILE, 'candidate-ground-route'));
-        routes.push(atlasCellAt('route-edge-dirt-road', cell, x * TILE, y * TILE, 'candidate-ground-route-edge'));
+        // These two classes are the only ones in this layer a stylesheet reads.
+        routes.push({ markup: atlasCellMarkup('route-dirt-road', cell, 'candidate-ground-route'), ...at });
+        routes.push({ markup: atlasCellMarkup('route-edge-dirt-road', cell, 'candidate-ground-route-edge'), ...at });
       } else if (tileAt(map, x, y) === 'plain' && tileHash(x, y, 1103) > 0.9) {
         const detail = tileHash(x, y, 1104) > 0.5 ? 'grass-tuft-a' : 'fallen-leaves';
-        decals.push(environmentCellAt(detail, (x + 0.5) * TILE, (y + 1) * TILE, {
-          scale: 0.58,
-          flip: tileHash(x, y, 1105) > 0.5,
-          opacity: 0.72,
-          className: 'is-procedural-decal',
-        }));
+        decals.push({
+          markup: environmentCellMarkup(detail, {
+            scale: 0.58,
+            flip: tileHash(x, y, 1105) > 0.5,
+            opacity: 0.72,
+          }),
+          x: (x + 0.5) * TILE,
+          y: (y + 1) * TILE,
+        });
       }
     }
   }
-  return `${base.join('')}${transitions.join('')}${routes.join('')}${decals.join('')}`;
+  return [...base, ...transitions, ...routes, ...decals];
 }
 
-function authoredPlacements(levelId: string, layer: CandidateEnvironmentPlacement['layer']): string {
+function authoredPlacementPieces(
+  levelId: string,
+  layer: CandidateEnvironmentPlacement['layer'],
+): BoardPiece[] {
   const scene = candidate01EnvironmentScene(levelId);
-  return scene?.placements.filter((placement) => placement.layer === layer).map(placementMarkup).join('') ?? '';
+  return (scene?.placements ?? [])
+    .filter((placement) => placement.layer === layer)
+    .map(placementPiece)
+    .filter((piece): piece is BoardPiece => piece !== null);
 }
 
-function forestSceneryMarkup(map: GameMap): string {
-  const parts: string[] = [];
+function forestSceneryPieces(map: GameMap): BoardPiece[] {
+  const parts: BoardPiece[] = [];
   const canopy = ['oak-ancient', 'mixed-forest-autumn', 'mixed-forest-dense', 'oak-grove-dense', 'mixed-forest-edge'] as const;
   const understory = ['sapling-rock-cluster', 'bramble-dark', 'fern-bed', 'bramble-berries', 'stump-low', 'stump-hollow', 'forest-floor-cluster'] as const;
   for (let y = 0; y < map.height; y++) {
@@ -211,44 +265,65 @@ function forestSceneryMarkup(map: GameMap): string {
       const choices = boundary ? canopy : understory;
       const id = choices[Math.floor(tileHash(x, y, 1120) * choices.length)];
       const scale = boundary ? 0.72 + tileHash(x, y, 1121) * 0.12 : 0.56 + tileHash(x, y, 1121) * 0.12;
-      parts.push(environmentCellAt(
-        id,
-        (x + 0.5) * TILE + (tileHash(x, y, 1122) - 0.5) * 10,
-        (y + 1.18) * TILE,
-        {
+      parts.push({
+        markup: environmentCellMarkup(id, {
           scale,
           flip: tileHash(x, y, 1123) > 0.52,
           opacity: boundary ? 1 : 0.9,
           className: boundary ? 'is-boundary-tree' : 'is-interior-forest',
-        },
-      ));
+        }),
+        x: (x + 0.5) * TILE + (tileHash(x, y, 1122) - 0.5) * 10,
+        y: (y + 1.18) * TILE,
+      });
     }
   }
-  return parts.join('');
+  return parts;
 }
 
-function ambientVillagers(): string {
+function ambientVillagerPieces(): BoardPiece[] {
   return [
     { topicId: 'C01-MISSION-BORDER-FARMER', x: 13.8, y: 9.15, layer: 'under-units', scale: 0.88, opacity: 0.86 },
     { topicId: 'C01-MISSION-BORDER-FARMER', x: 15.4, y: 7.25, layer: 'under-units', scale: 0.82, flip: true, opacity: 0.82 },
-  ].map((placement) => topicPlacementMarkup(placement as CandidateEnvironmentPlacement)).join('');
+  ]
+    .map((placement) => topicPlacementPiece(placement as CandidateEnvironmentPlacement))
+    .filter((piece): piece is BoardPiece => piece !== null);
 }
 
-function twinHillsGroundLayer(map: GameMap): string {
-  return `<g class="candidate-scene-ground" data-depth="ground" pointer-events="none">
-    ${terrainGroundMarkup(map)}
-    ${authoredPlacements('c01-01', 'foundation')}
-    ${authoredPlacements('c01-01', 'ground-decal')}
-  </g>`;
+/**
+ * Three wrapper groups used to hold these layers together, and none of them held
+ * anything.
+ *
+ * `candidate-scene-ground`, `candidate-map-scenery-under` and
+ * `candidate-map-foreground` carried `data-depth` — read by three assertions in
+ * this pack's own test and nothing else — and `pointer-events="none"`, which the
+ * general layer states for every layer that is art. The scenery wrapper also
+ * carried `isolation: isolate`, to confine a `mix-blend-mode: screen` declared on
+ * `.candidate-map-ambient`: a class no module in the repository emits.
+ *
+ * Eight more labels rode on the pieces themselves. Five were read by nothing at
+ * all. `data-environment-cell-id` was read by four assertions in this pack's test,
+ * which matched authored prop ids inside it to check that the scene had been
+ * composed — a debug attribute standing in for the depth contract those props
+ * actually have. They assert the contract now.
+ *
+ * A layer is its pieces. The renderer's own layer group is the group.
+ */
+function twinHillsGroundPieces(map: GameMap): BoardPiece[] {
+  return [
+    ...terrainGroundPieces(map),
+    ...authoredPlacementPieces('c01-01', 'foundation'),
+    ...authoredPlacementPieces('c01-01', 'ground-decal'),
+  ];
 }
 
-function twinHillsUnderUnits(map: GameMap): string {
-  return `<g class="candidate-map-scenery candidate-map-scenery-under" data-depth="under-units" pointer-events="none">
-    ${forestSceneryMarkup(map)}
-    ${authoredPlacements('c01-01', 'under-units')}
-    ${ambientVillagers()}
-    <rect width="${map.width * TILE}" height="${map.height * TILE}" fill="#f3d69a" opacity="0.035" pointer-events="none"/>
-  </g>`;
+function twinHillsUnderUnitPieces(map: GameMap): BoardPiece[] {
+  return [
+    ...forestSceneryPieces(map),
+    ...authoredPlacementPieces('c01-01', 'under-units'),
+    ...ambientVillagerPieces(),
+    // A warm wash over the whole field, which is art with no place of its own.
+    ...wholeField(`<rect width="${map.width * TILE}" height="${map.height * TILE}" fill="#f3d69a" opacity="0.035"/>`),
+  ];
 }
 
 function sceneFrameForestMarkup(viewport: SceneViewport): string {
@@ -323,11 +398,11 @@ export function candidate01SceneFrameMarkup(
 }
 
 /** Story art is pure presentation and cannot affect deterministic battle rules. */
-export function candidate01MapSceneryMarkup(levelId: string, map: GameMap): SceneLayerMarkup {
-  if (!usesTwinHillsComposition(levelId)) return { ground: '', underUnits: '', overUnits: '' };
+export function candidate01MapSceneryLayers(levelId: string, map: GameMap): SceneLayers {
+  if (!usesTwinHillsComposition(levelId)) return { ground: [], underUnits: [], overUnits: [] };
   return {
-    ground: twinHillsGroundLayer(map),
-    underUnits: twinHillsUnderUnits(map),
-    overUnits: `<g class="candidate-map-foreground" data-depth="over-units" pointer-events="none">${authoredPlacements('c01-01', 'over-units')}</g>`,
+    ground: twinHillsGroundPieces(map),
+    underUnits: twinHillsUnderUnitPieces(map),
+    overUnits: authoredPlacementPieces('c01-01', 'over-units'),
   };
 }

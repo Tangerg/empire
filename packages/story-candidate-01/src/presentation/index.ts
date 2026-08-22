@@ -14,7 +14,7 @@ import {
 import { CANDIDATE_01_LEVELS, candidate01Level } from '../levels';
 import { CANDIDATE_01_SPEAKER_NAMES, candidate01Choice, candidate01Story } from '../story';
 import {
-  candidate01MapSceneryMarkup,
+  candidate01MapSceneryLayers,
   candidate01SceneFrameMarkup,
   candidate01SceneProfile,
 } from './candidate-01-map-scene';
@@ -70,7 +70,7 @@ export const CANDIDATE_01_BATTLE_PRESENTATION: BattlePresentation = Object.freez
   matches: (levelId: string) => levelId.startsWith('c01-') || levelId.startsWith('experience-lab'),
   sceneProfile: candidate01SceneProfile,
   sceneFrame: candidate01SceneFrameMarkup,
-  sceneLayers: candidate01MapSceneryMarkup,
+  sceneLayers: candidate01MapSceneryLayers,
   structure: candidate01StructureMarkup,
   marker: candidate01MarkerMarkup,
   weaponFx: candidate01WeaponFxTopic,

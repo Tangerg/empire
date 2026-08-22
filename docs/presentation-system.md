@@ -57,7 +57,7 @@
 - `matches(levelId)`：声明适用关卡
 - `sceneProfile()`：声明场景画布留白
 - `sceneFrame()`：提供战术区域外的背景和前景
-- `sceneLayers()`：提供战术区域内的三层场景素材
+- `sceneLayers()`：提供战术区域内的三层场景素材，每层是一串放在位置上的图（`BoardPiece[]`）
 - `structure()` 和 `marker()`：覆盖题材实体表现
 - `weaponFx()` 和 `effect()`：将语义效果转为 SVG 标记
 
@@ -532,7 +532,24 @@ markup 与几何都与上一轮**逐字节相同**——这一轮没有动画面
 2. **markup → 纹理缓存**：键就是 `BoardPiece.markup`，比例见上表。帧条**不要**再做一个 Pixi 版的 `registerSvgStrip`——那会是同一份序列化属性的第二个解析器。帧条改成声明的（`BoardStrip`），`data-frame-*` 和读它的那段代码一起删掉。
 3. **display-list 断言**：两个后端必须对「画什么、画在哪、谁盖谁」给出同一个答案。它证明不了纹理烘得对，所以**视觉验收仍然要人看一眼**。
 
-还剩一件量出来的事，和后端无关：**画好的场景（`ground` / `scenery` / `foreground`）整层只有一张图**——它是一幅画，不是每格一张。81×51 时那一层 20,340 个节点。要拆它得改 `BattlePresentation.sceneLayers` 这个面向美术的端口，是下一件独立的事。
+~~还剩一件量出来的事：画好的场景整层只有一张图。~~ **做完了。**
+
+`BattlePresentation.sceneLayers` 现在返回 `BoardPiece[]`,不是字符串。这是最后一处「一层以文档的形式穿过渲染器接缝」——前面几轮在别处修掉的同一个缺陷。81×51 时 `ground` 层是 20,339 个节点的一张图,占整块棋盘的 59%,而它的 4,131 个地表格里**只有 4 张不同的图**,每一张都因为自己格子的坐标被写进了自己的 markup 而成了不同的字符串。
+
+| | 之前 | 之后 |
+| --- | --- | --- |
+| `ground` piece 数 | 1 | 6,779 |
+| `ground` 不同图数 | 1 | 129 |
+| `scenery` 不同图数 | 1 | 35 |
+| 棋盘总节点 | 34,539 | 37,136 |
+
+**代价说清楚:DOM 多了 2,597 个节点(+7.5%)**,来源是每条路格一个、每个道具一个额外的 `<g transform>`——piece 模型需要一个放位置的组,而那两类的 class 自己也需要一个组(路的滤镜、道具的 opacity)。地表格和林缘过渡格是净零:它们原来那个 `<g class data-* transform>` 本来就在,现在被 piece 的组替掉了。
+
+换来的是这一层第一次可以被缓存。烘一张场地大小的 SVG、里面内联 4,131 张 PNG,不是任何后端能做的事;烘 129 张小图是。
+
+顺带删掉的:三个包装组(`candidate-scene-ground`、`candidate-map-scenery-under`、`candidate-map-foreground`,只带 `data-depth` 和 `pointer-events`)、八个没人读的标签、以及 `.candidate-map-scenery { isolation: isolate }` 和它守着的 `.candidate-map-ambient { mix-blend-mode: screen }`——后者是全仓库唯一一处混合模式,而没有任何模块发出那个 class。
+
+**位置有一个可测的微小变化**:13,432 个有位置的节点里 224 个动了,最大 0.05 单位(一格是 32 单位)。原因是道具的锚点偏移原来是先加到落点上再四舍五入到 0.1,现在偏移单独保留到 0.001、位置由 piece 给出——也就是说**新的位置是精确值,旧的最多偏 0.05**。这一条是去掉了一个舍入误差,不是引入一个。
 
 ## 缩放时的代价
 

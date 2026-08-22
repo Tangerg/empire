@@ -6,11 +6,11 @@ import type {
   WeaponId,
 } from '@empire/battle-engine';
 import { SquareBoardDecorations, type BoardDecorations } from './board-decorations';
-import type { BoardPicture } from './board-surface';
+import { wholeField, type BoardPicture } from './board-surface';
 import { markerFromRules, structureFromRules } from './field-objects-from-rules';
 import type {
   SceneFrameMarkup,
-  SceneLayerMarkup,
+  SceneLayers,
   SceneViewport,
   SceneViewportProfile,
 } from './scene-viewport';
@@ -34,7 +34,7 @@ export interface BattlePresentation {
    * how wide the field is, and `map.width * TILE` is the square tiling written
    * into the port — a hex board of the same columns is half a cell wider.
    */
-  sceneLayers(levelId: string, map: GameMap, viewport: SceneViewport): SceneLayerMarkup;
+  sceneLayers(levelId: string, map: GameMap, viewport: SceneViewport): SceneLayers;
   /**
    * How this art draws a destructible structure, or `null` for no opinion.
    *
@@ -108,9 +108,10 @@ export const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
   sceneProfile: () => ({}),
   sceneFrame: () => EMPTY_FRAME,
   sceneLayers: (_levelId: string, _map: GameMap, viewport: SceneViewport) => ({
-    ground: '',
-    underUnits: genericFieldLight(viewport),
-    overUnits: '',
+    ground: [],
+    // A fall of light across the whole field: art with no place of its own.
+    underUnits: wholeField(genericFieldLight(viewport)),
+    overUnits: [],
   }),
   // The floor under every presentation, and therefore total: whatever a painted
   // scene declines is still drawn, from what the rules can see about it.
