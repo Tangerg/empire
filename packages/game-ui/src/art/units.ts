@@ -190,7 +190,7 @@ const sprites: Record<UnitTypeId, Sprite> = {
  */
 export function unitPicture(art: ArtDirection, unit: UnitDef, team: string): BoardPicture {
   const runtime = art.resolve((provider) => provider.unitPicture?.(unit.id, team));
-  if (runtime) return runtime;
+  if (runtime !== null) return runtime;
   const colors = spriteColors(team);
   const sprite = sprites[unit.id];
   // Drawn rather than generated: a hand-drawn sprite has no frames, so nothing here
@@ -205,7 +205,7 @@ export function unitPicture(art: ArtDirection, unit: UnitDef, team: string): Boa
 /** Standalone svg string, for palettes, menus and the recruit dialog. */
 export function unitIcon(art: ArtDirection, unit: UnitDef, team: string, size = 32): string {
   const runtime = art.resolve((provider) => provider.unitIcon?.(unit.id, team, size));
-  if (runtime) return runtime;
+  if (runtime !== null) return runtime;
   const picture = boardPictureMarkup(unitPicture(art, unit, team));
   return `<svg viewBox="0 0 32 32" width="${size}" height="${size}" shape-rendering="crispEdges">${picture}</svg>`;
 }

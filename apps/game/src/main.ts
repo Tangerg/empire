@@ -82,7 +82,7 @@ function thumbnail(level: LevelData): string {
 /** `custom` says whose level this is: one the player saved, or a built-in. */
 function levelCard(level: LevelData, { custom }: { custom: boolean }): string {
   const size = `${level.width}×${level.height}`;
-  return `<div class="level-card" data-level="${escapeHtml(level.id)}" data-custom="${custom}">
+  return `<div class="level-card">
     <div class="level-thumb" data-act="play" data-arg="${escapeHtml(level.id)}">${thumbnail(level)}</div>
     <div class="level-body">
       <div class="level-title">${escapeHtml(level.name)} <small>${size}</small></div>
@@ -115,7 +115,7 @@ function codexMarkup(): string {
               const damageTypes = [...new Set(weapons.map((weapon) => content.damageTypes.get(weapon.damageType).name))].join(' / ');
               return `<div class="recruit-card">
               <div class="rc-art" style="width:64px;height:auto;background:none">${portraitSvg(art, d, team, 64)}</div>
-              <div class="rc-body">
+              <div>
                 <div class="rc-name">${escapeHtml(d.name)}<span class="rc-cost">${icon('coin')}${escapeHtml(recruitCost(d))}</span></div>
                 <div class="rc-stats">${icon('sword')}${power} · ${icon('heart')}${d.maxHp} · ${icon('boot')}${d.movement} · 射程 ${
                   minRange === maxRange ? maxRange : `${minRange}-${maxRange}`

@@ -1502,6 +1502,49 @@ describe('a picture is not optional', () => {
       expect(asked.test(stripComments(board)), declined).toBe(true);
     }
   });
+
+  /**
+   * `null` is no opinion. Empty is an answer.
+   *
+   * `ArtDirection.resolve` returns `T | null` and stops at the first provider that
+   * answers, so a pack has two distinct things it can say: "I have no view on this
+   * terrain, draw it from the rules" and "my painted scene has already drawn this
+   * ground, draw nothing". Four consumers collapsed them by testing the answer for
+   * truthiness, which made the second one unreachable.
+   *
+   * The campaign worked around it the only way left: `candidate01TerrainMarkup`
+   * returned an invisible non-empty group so that the fallback would not fire. One
+   * per cell — 4,131 empty groups and 8,352 nodes on the largest shipped map, 22%
+   * of everything on the board, drawing nothing.
+   *
+   * What is forbidden is putting a *fallback* in place of an empty answer: `if (x)
+   * return x` before a floor, `x || floor`, `x ? x : floor`. `?? floor` is the
+   * comparison to `null` written the short way and is right.
+   *
+   * Discarding an empty answer is not the same mistake and is allowed — a cover
+   * prop's `if (prop) pieces.push(…)` loses nothing, because markup with nothing
+   * in it is not a piece however it came to be empty.
+   */
+  it('never substitutes a fallback for an empty answer from the art', () => {
+    const offenders: string[] = [];
+    for (const file of [...everyPackageSource(), ...appSources()]) {
+      const source = stripComments(readFileSync(file, 'utf8'));
+      for (const [, name] of source.matchAll(/const (\w+) = [\w.]*\bresolve\(/g)) {
+        const substituted = new RegExp(
+          String.raw`if\s*\(\s*${name}\s*\)\s*return|\b${name}\s*\|\||\b${name}\s*\?(?![.?])`,
+        );
+        if (substituted.test(source)) {
+          offenders.push(`${relative(packagesRoot, file)} falls back when ${name} is empty`);
+        }
+      }
+    }
+
+    // Every one of these consumers exists, or the guard is looking at nothing.
+    const consumers = [...everyPackageSource(), ...appSources()]
+      .filter((file) => /\bresolve\(/.test(stripComments(readFileSync(file, 'utf8'))));
+    expect(consumers.length).toBeGreaterThan(3);
+    expect(offenders).toEqual([]);
+  });
 });
 
 describe('the battle screen is its own screen', () => {
@@ -1708,6 +1751,110 @@ describe('the battle screen is its own screen', () => {
         .map((name) => `${relative(packagesRoot, file)} styles .${name}`));
 
     expect(offenders).toEqual([]);
+  });
+
+  /**
+   * Markup carries no label nobody reads.
+   *
+   * Three rounds in a row found these by hand: eight labels on every cell of the
+   * biggest layer on the board, a `data-tile="x,y"` handle that made 4,131
+   * identical tiles into 4,131 distinct pictures, wrapper classes on scene layers,
+   * `data-frame-*` attributes serialising a strip's own description. Each one looked
+   * like a contract and was not one, and each cost something: a texture cache's
+   * hit rate, a node per cell, or a reader's belief that removing it might break
+   * something.
+   *
+   * A class or a data attribute is a contract when a stylesheet selects on it, a
+   * query looks it up, or a test asserts it. Anything else is a comment that costs
+   * bytes — and a comment is cheaper and says more.
+   *
+   * The detection has to be careful about one thing: an emission must not count as
+   * a read of itself. So `class="…"` and `data-x="…"` are blanked out of the
+   * runtime sources before looking for readers, while tests and stylesheets are
+   * searched whole, because they only ever read.
+   */
+  it('emits no class or data attribute that nothing reads', () => {
+    const everyFile = (dir: string): string[] => readdirSync(dir, { withFileTypes: true })
+      .flatMap((entry) => {
+        if (['node_modules', 'dist', 'assets', '.git'].includes(entry.name)) return [];
+        const path = join(dir, entry.name);
+        if (entry.isDirectory()) return everyFile(path);
+        return /\.(ts|css|html)$/.test(entry.name) ? [path] : [];
+      });
+    const repoRoot = join(packagesRoot, '..');
+    const files = ['packages', 'apps', 'tools'].flatMap((base) => everyFile(join(repoRoot, base)));
+    const emitters = new Set([...everyPackageSource(), ...appSources()]);
+
+    /*
+     * A label is written two ways, and both count.
+     *
+     * `class="unit"` inside a markup string, and `svg('g', { class: 'unit' })`
+     * through the element helper. Collecting only the first left the renderer's own
+     * structural handles out of this guard entirely — and `data-scene-layout`, whose
+     * last reader was a stylesheet rule deleted the round before, went unnoticed
+     * because the object key that emits it looks exactly like a quoted read.
+     */
+    const CLASS_IN_MARKUP = /class="([^"]*)"/g;
+    const CLASS_AS_KEY = /\bclass:\s*'([^']*)'/g;
+    const DATA_IN_MARKUP = /(data-[a-z][\w-]*)\s*=/g;
+    const DATA_AS_KEY = /'(data-[a-z][\w-]*)'\s*:/g;
+
+    const classes = new Map<string, string[]>();
+    const attributes = new Map<string, string[]>();
+    for (const file of emitters) {
+      const source = stripComments(readFileSync(file, 'utf8'));
+      for (const pattern of [CLASS_IN_MARKUP, CLASS_AS_KEY]) {
+        for (const [, list] of source.matchAll(pattern)) {
+          // Interpolations are blanked, and a name left ending in `-` is half a name.
+          for (const name of list.replace(/\$\{[^}]*\}/g, ' ').split(/\s+/)) {
+            if (/^[a-zA-Z][\w-]*\w$/.test(name)) classes.set(name, [...classes.get(name) ?? [], file]);
+          }
+        }
+      }
+      for (const pattern of [DATA_IN_MARKUP, DATA_AS_KEY]) {
+        for (const [, name] of source.matchAll(pattern)) {
+          attributes.set(name, [...attributes.get(name) ?? [], file]);
+        }
+      }
+    }
+
+    // Comments come out of *every* file, not only the emitters. The paragraph above
+    // names `data-tile` and `.sprite-raster` as labels that were removed, and with
+    // this file's own prose in the haystack the guard read that as evidence they are
+    // still read — passing while both were emitted again.
+    const haystack = files.map((file) => {
+      const source = stripComments(readFileSync(file, 'utf8'));
+      if (!emitters.has(file)) return source;
+      const blank = (match: string) => ' '.repeat(match.length);
+      return source
+        .replace(CLASS_IN_MARKUP, blank)
+        .replace(CLASS_AS_KEY, blank)
+        .replace(DATA_AS_KEY, blank)
+        // An attribute *selector* keeps its brackets, and is a read.
+        .replace(/(?<!\[)\bdata-[a-z][\w-]*="[^"]*"/g, blank);
+    });
+
+    const camel = (name: string) => name.slice('data-'.length).replace(/-(\w)/g, (_, c) => c.toUpperCase());
+    const isRead = (name: string, kind: 'class' | 'data'): boolean => {
+      const quoted = `${escapeForRegExp(name)}(?![\\w-])`;
+      const patterns = kind === 'class'
+        ? [`\\.${quoted}`, `['"\`]${quoted}`]
+        : [`\\[${escapeForRegExp(name)}`, `['"\`]${quoted}`, `\\.${quoted}`, `dataset\\.${camel(name)}(?![\\w])`];
+      return haystack.some((source) => patterns.some((pattern) => new RegExp(pattern).test(source)));
+    };
+
+    // A guard that collected nothing would pass for the wrong reason.
+    expect(classes.size).toBeGreaterThan(100);
+    expect(attributes.size).toBeGreaterThan(5);
+
+    const unread = [
+      ...[...classes].filter(([name]) => !isRead(name, 'class'))
+        .map(([name, where]) => `.${name} (${relative(packagesRoot, where[0])})`),
+      ...[...attributes].filter(([name]) => !isRead(name, 'data'))
+        .map(([name, where]) => `${name} (${relative(packagesRoot, where[0])})`),
+    ];
+
+    expect(unread).toEqual([]);
   });
 
   /**

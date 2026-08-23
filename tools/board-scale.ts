@@ -116,13 +116,16 @@ const isPlaced = (element: Element): boolean =>
   (element.getAttribute('transform') ?? '').includes('translate(');
 
 /**
- * The same picture at a different place, or on a different unit, is one texture.
- * So neither the placement nor the handle is part of what a picture *is*.
+ * The same picture at a different place is one texture, so the placement is not
+ * part of what a picture *is*.
+ *
+ * A `data-unit="7"` handle used to be stripped here as well. It was the only
+ * mention of that attribute anywhere outside the two places that wrote it — a
+ * label kept for a human reading a renderer diff, which this probe had to undo to
+ * measure anything. It is gone from the markup instead.
  */
 const pictureIdentity = (element: Element): string =>
-  element.outerHTML
-    .replace(/ transform="[^"]*"/g, '')
-    .replace(/ data-unit="[^"]*"/g, '');
+  element.outerHTML.replace(/ transform="[^"]*"/g, '');
 
 function placedPictures(host: Element): string[] {
   const found: string[] = [];

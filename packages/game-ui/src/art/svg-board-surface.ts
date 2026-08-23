@@ -24,10 +24,12 @@ import { clear, fromMarkup, setAttrs, svg } from './svg';
  *
  * The renderer this project was built on, now behind the port instead of fused
  * into the board. The layer classes and the state classes are load-bearing — the
- * stylesheet and forty-five test assertions read them. `data-unit` and `data-part`
- * are not: they name things in `tools/board-digest.ts` output so a human can read a
- * renderer diff. Nothing reads them back, and they sit on wrappers this surface
- * makes rather than inside a picture, so they cost a texture cache nothing.
+ * stylesheet and forty-five test assertions read them. `data-part` names a role a
+ * test asserts. There was a `data-unit` here too, kept so that a human could tell
+ * which unit a block of `tools/board-digest.ts` output belonged to; the only code
+ * in the repository that mentioned it was `tools/board-scale.ts`, stripping it back
+ * out because it made every unit's wrapper a distinct picture. A label a tool has
+ * to work around is not a label anything reads.
  *
  * Layers hold still pictures. A `BoardPiece` is markup at a place and carries no
  * strip, so replacing a layer cannot orphan a running clip — which is what the
@@ -227,7 +229,6 @@ export class SvgBoardSurface implements BoardSurface {
       class: `board${scene.themeClass ? ` ${scene.themeClass}` : ''}`,
       'shape-rendering': scene.shapeRendering,
       'text-rendering': 'optimizeLegibility',
-      'data-scene-layout': scene.originX || scene.originY ? 'authored' : 'grid',
     });
 
     if (scene.backdrop) this.element.append(fromMarkup(scene.backdrop));
@@ -306,7 +307,7 @@ export class SvgBoardSurface implements BoardSurface {
     const picture = draw();
     const drawing = new SvgDrawing(
       this.animations,
-      svg('g', { class: 'unit', 'data-unit': id }),
+      svg('g', { class: 'unit' }),
       TILE_MIDDLE,
       `strip:${this.serial++}`,
       picture,

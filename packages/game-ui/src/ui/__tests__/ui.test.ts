@@ -292,6 +292,21 @@ describe('game controller', () => {
     // set to `opacity: 0`. The board and the stylesheet were both right and the
     // player saw neither.
     expect(world.querySelector('.layer-grid')!.children).toHaveLength(0);
+
+    /*
+     * And it draws no tile where its own ground already covers the cell.
+     *
+     * This scene answers `''` for every plain cell, which is a different answer
+     * from `null`: no tile, rather than no opinion. While the consumer tested that
+     * answer for truthiness the pack had to return an invisible non-empty group
+     * instead, so the layer held one empty element per cell — 8,352 nodes of
+     * nothing on `c01-16`, and 22% of the whole board.
+     */
+    const terrain = world.querySelector('.layer-terrain')!;
+    expect(terrain.children.length).toBeLessThan(level.width * level.height / 10);
+    // What is left is the cells this art does draw: its map structures.
+    expect(terrain.children.length).toBeGreaterThan(0);
+    expect([...terrain.children].every((piece) => piece.innerHTML.trim().length > 0)).toBe(true);
     board.dispose();
   });
 

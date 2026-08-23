@@ -88,7 +88,7 @@ export function runtimeUnitPicture(sheet: RuntimeUnitSheet, team: string): Board
 
   const color = attr(team);
   return {
-    body: `<g class="sprite-pixel sprite-raster" data-runtime-raster="unit">
+    body: `<g class="sprite-pixel" data-runtime-raster="unit">
     <ellipse class="runtime-unit-contact-shadow" cx="16" cy="29.2" rx="12.5" ry="4.2" fill="#0b100d" opacity="0.48"/>
     <ellipse class="runtime-unit-team-ring" cx="16" cy="29.5" rx="11" ry="2.25" fill="none" stroke="${color}" stroke-width="1.8" opacity="1"/>
   </g>`,

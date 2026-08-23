@@ -142,9 +142,9 @@ function boardMarkup(): string {
     const unitOwner = unit && state.players.find((player) => player.id === unit.owner);
     const key = `${x},${y}`;
     return `<div class="demo-tile ${affected.has(key) ? 'affected' : ''} ${aimed === key ? 'aimed' : ''}"
-      data-cell="${key}" title="(${key})">
+      title="(${key})">
       <div class="tile-art">${terrainSwatch(GENERIC_ART, content.terrains.get(terrain), owner?.color)}</div>
-      ${unit ? `<div class="demo-unit" data-unit="${html(unit.key ?? String(unit.id))}">
+      ${unit ? `<div class="demo-unit">
         ${unitIcon(GENERIC_ART, content.units.get(unit.type), unitOwner?.color ?? '#9aa3ad', 46)}
         <span class="unit-label">${html(content.units.get(unit.type).name)}</span>
         <span class="hp-chip">${unit.hp}</span>
@@ -230,7 +230,7 @@ function render(): void {
     <section class="plugin-strip" aria-label="已安装插件">${pluginCards}</section>
 
     <section class="demo-grid">
-      <div class="battle-column">
+      <div>
         <div class="section-heading">
           <div><span>01</span><h2>战场与正式行动</h2></div>
           <p>蓝色十字是预测产生的范围，不是 UI 自己推算。</p>

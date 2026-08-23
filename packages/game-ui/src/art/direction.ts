@@ -24,7 +24,15 @@ export class ArtDirection {
     }
   }
 
-  /** First provider with an answer wins, which is why the order is the caller's. */
+  /**
+   * First provider with an answer wins, which is why the order is the caller's.
+   *
+   * `null` is not an answer; empty is. A pack that has no opinion about a terrain
+   * returns `null` and the floor draws it, and a pack whose painted scene has
+   * already drawn the ground returns nothing at all — two different requests, and
+   * the difference is the whole reason this returns `T | null` rather than a
+   * falsy-or-not string. Callers must test for `null`, never for truthiness.
+   */
   resolve<T>(select: (provider: ArtProvider) => T | null | undefined): T | null {
     for (const provider of this.providers) {
       const found = select(provider);

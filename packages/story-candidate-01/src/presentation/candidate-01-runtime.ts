@@ -102,7 +102,7 @@ export function candidate01UnitIcon(type: UnitTypeId, team: string, size: number
   const picture = candidate01UnitPicture(type, team);
   if (!picture) return null;
   // An icon has no timeline, so its strip stands still on the first frame.
-  return `<svg viewBox="0 -16 32 48" width="${size}" height="${size}" class="candidate-unit-icon">${boardPictureMarkup(picture)}</svg>`;
+  return `<svg viewBox="0 -16 32 48" width="${size}" height="${size}">${boardPictureMarkup(picture)}</svg>`;
 }
 
 export function candidate01TerrainMarkup(id: TerrainId, ctx: RuntimeTerrainContext): string | null {
@@ -116,12 +116,11 @@ export function candidate01TerrainMarkup(id: TerrainId, ctx: RuntimeTerrainConte
     return `${runtimeAtlasCellMarkup(baseTerrain(ctx.theme), groundCell)}${structureAssetMarkup(record, frame, ctx.ownerColor)}`;
   }
 
-  // Twin Hills owns its complete terrain surface in the scene ground pass.
-  // The non-empty marker intentionally suppresses the generic terrain fallback
-  // while remaining visually transparent. Roads therefore cannot cover units.
-  if (ctx.theme === 'c01-01' || ctx.theme?.startsWith('experience-lab')) {
-    return '<g data-candidate-terrain="scene-owned" pointer-events="none"/>';
-  }
+  // Twin Hills owns its complete terrain surface in the scene ground pass, so it
+  // asks for no tile. That used to be an invisible non-empty group, because the
+  // consumer tested the answer for truthiness and an empty string meant "no
+  // opinion" — one empty element per cell, 8,352 nodes of nothing on `c01-16`.
+  if (ctx.theme === 'c01-01' || ctx.theme?.startsWith('experience-lab')) return '';
 
   const topic = CANDIDATE_01_TERRAIN_ART[id];
   if (!topic) return null;

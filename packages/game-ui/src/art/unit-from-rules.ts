@@ -162,7 +162,7 @@ export function unitFromRules(unit: UnitDef, colors: SpriteColors): string {
         ? `<circle cx="19.4" cy="10.2" r="1.5" fill="none" stroke="${PAL.gold}" stroke-width="1"/>`
         : '';
 
-  return `<g class="sprite-derived" shape-rendering="crispEdges">
+  return `<g shape-rendering="crispEdges">
     ${footing(shade(colors.dark, -0.15))}
     ${load}
     ${torso}

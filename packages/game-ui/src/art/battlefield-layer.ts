@@ -95,6 +95,9 @@ export function battlefieldFeaturePieces(canvas: BattlefieldCanvas, map: GameMap
     if (written.length > 0) {
       const strongest = written.some(([, level]) => level === 'full') ? 'full' : 'half';
       const prop = art.resolve((provider) => provider.coverMarkup?.(strongest));
+      // Markup with nothing in it is not a piece — the rule `wholeField` states —
+      // and that holds whether the pack had no opinion or asked for no prop. This
+      // discards an empty answer rather than replacing it, so nothing is lost.
       if (prop) pieces.push({ markup: prop, ...layout.origin(cover.at) });
     }
     for (const [side, level] of written) {

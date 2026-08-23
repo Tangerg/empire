@@ -267,7 +267,7 @@ let uid = 0;
  */
 export function portraitMarkup(art: ArtDirection, unit: UnitDef, team: string): string {
   const provided = art.resolve((provider) => provider.portraitMarkup?.(unit.id, team));
-  if (provided) return provided;
+  if (provided !== null) return provided;
   const c = spriteColors(team);
   const drawn = portraits[unit.id];
   const face = drawn ? drawn(c) : portraitFromRules(unit, c);

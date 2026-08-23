@@ -641,7 +641,7 @@ export class Hud {
     const unit = view.inspect;
     if (!unit) return '';
     const definition = view.rules.content.units.get(unit.type);
-    return `<section class="plaque unit-card">
+    return `<section class="plaque">
       ${this.unitHeader(view, unit, definition)}
       ${this.unitStats(view, definition)}
       ${this.unitTags(view, unit, definition)}
@@ -964,7 +964,7 @@ export class Hud {
     return `<button class="recruit-card ${option.affordable ? '' : 'disabled'}"
       ${option.affordable ? `data-act="recruit"` : ''} data-arg="${option.unit}">
       <div class="rc-art">${unitIcon(this.art, definition, teamColor, 46)}</div>
-      <div class="rc-body">
+      <div>
         <div class="rc-name">${escapeHtml(definition.name)}<span class="rc-cost">${icon('coin')}${escapeHtml(formatAmounts(view.resources, option.costs))}</span></div>
         <div class="rc-stats">
           ${icon('sword')}${Math.max(...weapons.map((weapon) => weapon.power))} · ${icon('heart')}${definition.maxHp} · ${icon('boot')}${definition.movement}

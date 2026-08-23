@@ -313,7 +313,11 @@ const cellClipDefinition = (layout: TerrainLayout): string =>
  */
 export function terrainMarkup(art: ArtDirection, terrain: TerrainDef, ctx: TileContext): string {
   const runtime = art.resolve((provider) => provider.terrainMarkup?.(terrain.id, ctx));
-  if (runtime) return runtime;
+  // Empty is an answer: a painted scene that has drawn its own ground asks for no
+  // tile here. This used to be `if (runtime)`, so the only way to say that was to
+  // return something non-empty and invisible — and the campaign did, one empty
+  // group per cell, 8,352 nodes of nothing on the largest map.
+  if (runtime !== null) return runtime;
   const painter = painters[terrain.id];
   return painter ? painter(ctx) : terrainFromRules(terrain, ctx);
 }
@@ -368,6 +372,8 @@ export function terrainLayerPieces(
         },
       };
       const tile = terrainMarkup(art, content.terrains.get(id), ctx);
+      // A cell nobody draws is not a piece, the same rule `wholeField` states.
+      if (!tile) continue;
       pieces.push({
         markup: clipped ? `<g clip-path="url(#${CELL_CLIP_ID})">${tile}</g>` : tile,
         ...layout.origin({ x, y }),
