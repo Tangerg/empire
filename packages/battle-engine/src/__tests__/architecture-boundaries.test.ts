@@ -2866,4 +2866,32 @@ describe('one answer per question', () => {
     expect(readFileSync(owner, 'utf8')).toContain('WEIGHT_ALPHA');
     expect(offenders).toEqual([]);
   });
+
+  it('touches a browser storage slot only in the layer that owns them', () => {
+    // Every slot this repository keeps — custom levels, the playtest hand-off, a
+    // battle save, a campaign save — is read and written in `game-ui/src/application`,
+    // where the refusals are spelled out and tested against a slot that will not
+    // write and a slot holding nonsense. The editor kept a third slot of its own
+    // instead, with a bare `catch {}` inside a render loop, next to its stroke
+    // handling. And its export, clipboard and import commands were a `Blob`, a
+    // synthetic click, a `navigator.clipboard` and an `<input type="file">` in the
+    // same controller.
+    //
+    // A slot is exactly where a boundary needs a name and a stated failure: the
+    // one deliberate silence in the whole layer — a draft that cannot be written
+    // must not stop somebody drawing a map — now says so where a reader will find
+    // it. Navigation is not storage and is left to the shells.
+    const layer = join(packagesRoot, 'game-ui', 'src', 'application');
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
+      if (file.startsWith(layer)) return [];
+      const code = stripStrings(stripComments(readFileSync(file, 'utf8')));
+      return /\b(?:localStorage|sessionStorage|navigator\.clipboard|new Blob\(|URL\.createObjectURL)\b/
+        .test(code)
+        ? [relative(packagesRoot, file)]
+        : [];
+    });
+
+    expect(readFileSync(join(layer, 'level-storage.ts'), 'utf8')).toContain('localStorage');
+    expect(offenders).toEqual([]);
+  });
 });

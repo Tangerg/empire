@@ -72,6 +72,29 @@ export class PresentationTimeline {
     return this.tween(duration, () => {});
   }
 
+  /**
+   * A step that runs at most once a frame, however often it is asked for.
+   *
+   * A wheel arrives once per notch and a pinch once per pixel, and setting the
+   * board's zoom is a relayout, so coalescing is the difference between one and
+   * forty. It lives here because a raw `requestAnimationFrame` comes with a
+   * cancellation obligation, and owning that obligation is what this class is
+   * for: the battle controller had its own `zoomFrame` field, its own
+   * `cancelAnimationFrame` in `dispose`, and its own `if (!disposed)` inside the
+   * callback — a second frame owner in a class that already held this one.
+   */
+  perFrame(step: () => void): () => void {
+    let asked = false;
+    return () => {
+      if (this.disposed || asked) return;
+      asked = true;
+      void this.nextFrame().then((time) => {
+        asked = false;
+        if (time !== null) step();
+      });
+    };
+  }
+
   dispose(): void {
     if (this.disposed) return;
     this.disposed = true;

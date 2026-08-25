@@ -25,7 +25,9 @@ import type { BoardSurfaceFactory } from '../art/board-surface';
 import { svgBoardSurface } from '../art/svg-board-surface';
 import { GENERIC_ART, type ArtDirection } from '../art/direction';
 import { PAL } from '../art/palette';
+import { PresentationTimeline } from '../art/frame-animation';
 import { BoardView, emptyOverlay, type BoardOverlay } from './board';
+import { BattleLog } from './battle-log';
 import {
   DefaultBattleEventPresenters,
   SessionBattleStage,
@@ -113,12 +115,25 @@ export class GameController {
   private cursor: Coord | null = null;
   private inspect: Unit | null = null;
   private busy = false;
-  private messages: string[] = [];
+  private readonly log = new BattleLog();
   private aiRunning = false;
   private disposed = false;
   private resizeObserver: ResizeObserver | null = null;
   private pendingZoom = 0;
-  private zoomFrame: number | null = null;
+  /**
+   * The frame a coalesced zoom lands on, and the cancellation that comes with it.
+   *
+   * This was a `zoomFrame` field, a `cancelAnimationFrame` in `dispose` and an
+   * `if (!disposed)` inside the callback — the three parts of an obligation that
+   * `PresentationTimeline` exists to own, hand-rolled a second time in a package
+   * that already had one.
+   */
+  private readonly frames = new PresentationTimeline();
+  private readonly applyZoom = this.frames.perFrame(() => {
+    const step = this.pendingZoom;
+    this.pendingZoom = 0;
+    this.board.setZoom(this.board.zoomLevel + step);
+  });
 
   private readonly art: ArtDirection;
 
@@ -215,7 +230,7 @@ export class GameController {
   dispose(): void {
     this.disposed = true;
     this.resizeObserver?.disconnect();
-    if (this.zoomFrame !== null) cancelAnimationFrame(this.zoomFrame);
+    this.frames.dispose();
     this.board.dispose();
     document.removeEventListener('keydown', this.onKey);
   }
@@ -233,13 +248,7 @@ export class GameController {
    */
   private zoomBy(delta: number): void {
     this.pendingZoom += delta;
-    if (this.zoomFrame !== null) return;
-    this.zoomFrame = requestAnimationFrame(() => {
-      this.zoomFrame = null;
-      const step = this.pendingZoom;
-      this.pendingZoom = 0;
-      if (!this.disposed) this.board.setZoom(this.board.zoomLevel + step);
-    });
+    this.applyZoom();
   }
 
   /* --------------------------------------------------------------- shortcuts */
@@ -510,7 +519,7 @@ export class GameController {
     this.board.setState(this.state);
     this.selection = this.restingSelection;
     this.inspect = null;
-    this.messages = [];
+    this.log.clear();
     this.pushMessage(message);
     this.refresh();
   }
@@ -833,7 +842,7 @@ export class GameController {
       saves: this.options.saves
         ? { canSave: !this.busy && state.phase === 'playing', canResume: !this.busy && this.options.saves.has() }
         : null,
-      messages: this.messages,
+      messages: this.log.recent(),
       exitLabel: this.options.exitLabel,
       completionLabel: this.options.completionLabel,
     };
@@ -845,10 +854,8 @@ export class GameController {
     return this.selection.hint;
   }
 
-  private pushMessage(m: string): void {
-    if (!m) return;
-    this.messages.push(m);
-    if (this.messages.length > 60) this.messages.splice(0, this.messages.length - 60);
+  private pushMessage(line: string): void {
+    this.log.add(line);
   }
 
   private refresh(): void {

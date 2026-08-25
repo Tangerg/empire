@@ -2,6 +2,7 @@ import { normaliseLevel, StoredDocumentError, type LevelData } from '@empire/bat
 
 export const CUSTOM_LEVELS_KEY = 'empire.customLevels';
 const PLAYTEST_KEY = 'empire.playtest';
+const EDITOR_DRAFT_KEY = 'empire.editorDraft';
 
 export interface StoredLevel {
   level: LevelData;
@@ -105,6 +106,27 @@ export function saveCustomLevel(level: LevelData): void {
 export function deleteCustomLevel(id: string): void {
   const kept = writableEntries().filter((stored) => idOf(stored) !== id);
   localStorage.setItem(CUSTOM_LEVELS_KEY, JSON.stringify(kept));
+}
+
+/**
+ * The editor's unsaved map, kept between visits.
+ *
+ * Deliberately silent when the slot cannot be written: a draft is a convenience
+ * and a full or unavailable storage must not stop somebody drawing a map. That is
+ * the one boundary in this module allowed to swallow, and it says so here rather
+ * than in a bare `catch {}` inside a render loop.
+ */
+export function saveEditorDraft(level: LevelData): void {
+  try {
+    localStorage.setItem(EDITOR_DRAFT_KEY, JSON.stringify(level));
+  } catch {
+    /* storage full or unavailable — a draft is a convenience, not a contract */
+  }
+}
+
+/** The stored draft as raw text, or null when there is none. */
+export function readEditorDraft(): string | null {
+  return localStorage.getItem(EDITOR_DRAFT_KEY);
 }
 
 /** Hand-off slot used by the editor's playtest command. */

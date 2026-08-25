@@ -1,4 +1,15 @@
-import { loadCustomLevels, saveCustomLevel, stashPlaytest, TEAM_COLORS, type ArtDirection } from '@empire/game-ui';
+import {
+  copyLevelJson,
+  downloadLevel,
+  loadCustomLevels,
+  pickJsonFile,
+  readEditorDraft,
+  saveEditorDraft,
+  saveCustomLevel,
+  stashPlaytest,
+  TEAM_COLORS,
+  type ArtDirection,
+} from '@empire/game-ui';
 import {
   type ContentCatalog,
   type BattleRuleServices,
@@ -38,7 +49,6 @@ import {
   type EditorToolRegistry,
 } from './tools';
 
-const DRAFT_KEY = 'empire.editorDraft';
 
 /**
  * Writing one player field. Pure: a player's own settings need nothing but the
@@ -225,11 +235,7 @@ export class EditorApp {
   }
 
   private autosave(): void {
-    try {
-      localStorage.setItem(DRAFT_KEY, JSON.stringify(this.exportLevel()));
-    } catch {
-      /* storage full or unavailable — drafts are a convenience, not a contract */
-    }
+    saveEditorDraft(this.exportLevel());
   }
 
   private replaceDocument(document: EditorDocument): void {
@@ -409,21 +415,14 @@ export class EditorApp {
   }
 
   private exportFile(): void {
-    const level = this.exportLevel();
-    const blob = new Blob([JSON.stringify(level, null, 2)], { type: 'application/json' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `${level.id || 'level'}.json`;
-    link.click();
-    URL.revokeObjectURL(link.href);
+    downloadLevel(this.exportLevel());
     this.status = '已导出 JSON';
     this.renderTop();
   }
 
   private async copyJson(): Promise<void> {
-    const json = JSON.stringify(this.exportLevel(), null, 2);
     try {
-      await navigator.clipboard.writeText(json);
+      await copyLevelJson(this.exportLevel());
       this.status = 'JSON 已复制到剪贴板';
     } catch (error) {
       // The reason comes from the error, not from a guess about it: this used to
@@ -435,22 +434,16 @@ export class EditorApp {
   }
 
   private importFile(): void {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = '.json,application/json';
-    input.onchange = async () => {
-      const file = input.files?.[0];
-      if (!file) return;
+    pickJsonFile((text) => {
       try {
-        const level = normaliseLevel(JSON.parse(await file.text()));
+        const level = normaliseLevel(JSON.parse(text));
         mapFromLevel(this.content, level); // fail fast on a broken terrain grid
         this.loadLevel(level, `已载入 ${level.name}`);
       } catch (error) {
         this.status = `载入失败：${errorMessage(error)}`;
         this.renderTop();
       }
-    };
-    input.click();
+    });
   }
 
   private playtest(): void {
@@ -827,7 +820,7 @@ export function initialLevel(setup: EditorSetup): LevelData {
       loadCustomLevels().find((saved) => saved.level.id === wanted)?.level;
     if (found) return found;
   }
-  const draft = localStorage.getItem(DRAFT_KEY);
+  const draft = readEditorDraft();
   if (draft) {
     try {
       const level = normaliseLevel(JSON.parse(draft));
