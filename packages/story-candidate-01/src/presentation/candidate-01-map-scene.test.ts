@@ -157,28 +157,35 @@ describe('candidate-01 authored map scenery', () => {
 });
 
 /**
- * This campaign's board art travels inside its picture.
+ * This campaign's board art travels with its picture.
  *
- * Its shadows and colour grades were in a stylesheet — first the shared one, then
- * this pack's own — and a stylesheet is not in the room when markup is rasterised
- * into a texture, which is how a GPU backend would have drawn the whole campaign
- * with no shadows and no grade at all. Every level carries it, painted scene or not:
- * an atlas tile and a unit figure wear these shadows even where no scenery was
- * authored.
+ * Its shadows were in a stylesheet — first the shared one, then this pack's own —
+ * and a stylesheet is not in the room when markup is rasterised into a texture,
+ * which is how a GPU backend drew this campaign with no prop shadows at all.
+ *
+ * It used to be pasted into `backdrop`, which put it in the *DOM tree*: obeyed by
+ * the DOM backend, invisible to every texture the other one bakes, because a
+ * picture is baked from its own markup. It is the scene's declared `style` now, so
+ * each backend can put it where its own pictures will see it.
  */
 describe('the board carries its own look', () => {
-  it('ships the pack style with every level, painted or not', () => {
+  it('declares the pack style with every level, painted or not', () => {
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
     const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile());
     const painted = candidate01SceneFrameMarkup({ content: TEST_CATALOG, levelId: 'c01-01', map, viewport });
     const plain = candidate01SceneFrameMarkup({ content: TEST_CATALOG, levelId: 'c01-09', map, viewport });
 
     for (const [label, frame] of [['painted', painted], ['plain', plain]] as const) {
-      expect(frame.backdrop, label).toContain('<style>');
-      // The two most expensive rules, and the ones a hand-written list forgot.
-      expect(frame.backdrop, label).toContain('.candidate-map .layer-terrain');
-      expect(frame.backdrop, label).toContain('.candidate-map .layer-ground');
-      expect(frame.backdrop, label).toContain('.candidate-environment-prop');
+      expect(frame.style, label).toContain('<style>');
+      // A prop's shadow and a sprite's rim light: the look, not a layer grade.
+      expect(frame.style, label).toContain('.candidate-environment-prop');
+      expect(frame.style, label).toContain('.candidate-map .unit .figure');
+      // Nothing that has to reach through a layer, because a baked picture has no
+      // layer above it and a container cannot be styled at all. Comments stripped:
+      // this file explains at length which three layer rules used to be here.
+      expect((frame.style ?? '').replace(/\/\*[\s\S]*?\*\//g, ''), label).not.toContain('.layer-');
+      // And the style is not smuggled through the backdrop any more.
+      expect(frame.backdrop, label).not.toContain('<style>');
     }
     // The painted scene still has its scenery, not only the style.
     expect(painted.backdrop).toContain('candidate-scene-backdrop');

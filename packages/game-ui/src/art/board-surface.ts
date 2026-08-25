@@ -408,6 +408,8 @@ export interface BoardSurfaceScene {
   /** Art outside the tactical field, behind and in front of everything. */
   readonly backdrop: string;
   readonly foreground: string;
+  /** The CSS this board's pictures are drawn under. See `SceneFrameMarkup`. */
+  readonly style?: string | undefined;
 }
 
 /**

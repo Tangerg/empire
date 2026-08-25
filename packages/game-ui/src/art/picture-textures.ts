@@ -22,6 +22,17 @@ import { hasRelief, RELIEF_SPILL, type BoardStrip } from './board-surface';
 export interface PictureTextures {
   /** How many texture pixels one scene unit is baked at. */
   readonly resolution: number;
+  /**
+   * The CSS every baked picture is drawn under, set once per board.
+   *
+   * A picture is baked from its own markup, so a stylesheet in the page — or a
+   * `<style>` somewhere else in the board's tree — is not in the room. Whatever the
+   * scene declares as its style is written into each baked document instead, which
+   * is what lets a prop's shadow and a sprite's rim light exist on this backend at
+   * all. Setting it clears what has already been baked, because the same markup
+   * under different CSS is a different picture.
+   */
+  style: string;
   /** The same markup is baked once. */
   bake(markup: string): Promise<BakedPicture>;
   /** One texture per frame of a strip, in order, cut without resampling. */
@@ -57,6 +68,7 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
  * markup, with the same `getBBox` the browser would use to lay it out.
  */
 export class BrowserPictureTextures implements PictureTextures {
+  private css = '';
   private readonly baked = new Map<string, Promise<BakedPicture>>();
   private readonly cut = new Map<string, Promise<readonly Texture[]>>();
   private readonly assets = new Map<string, Promise<string>>();
@@ -67,6 +79,17 @@ export class BrowserPictureTextures implements PictureTextures {
     if (!Number.isFinite(resolution) || resolution <= 0) {
       throw new Error(`texture resolution must be greater than zero, got ${resolution}`);
     }
+  }
+
+  get style(): string {
+    return this.css;
+  }
+
+  set style(css: string) {
+    if (css === this.css) return;
+    this.css = css;
+    // The same markup under different CSS is a different picture.
+    this.baked.clear();
   }
 
   bake(markup: string): Promise<BakedPicture> {
@@ -131,7 +154,7 @@ export class BrowserPictureTextures implements PictureTextures {
     const width = Math.max(1, Math.ceil(box.width));
     const height = Math.max(1, Math.ceil(box.height));
     const document = `<svg xmlns="${SVG_NS}" width="${width * this.resolution}" height="${height * this.resolution}"`
-      + ` viewBox="${box.left} ${box.top} ${width} ${height}">${await this.inlined(markup)}</svg>`;
+      + ` viewBox="${box.left} ${box.top} ${width} ${height}">${this.css}${await this.inlined(markup)}</svg>`;
 
     const image = new Image();
     image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(document)}`;

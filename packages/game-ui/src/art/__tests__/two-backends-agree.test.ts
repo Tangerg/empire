@@ -65,6 +65,8 @@ const ENGINE = createBattleEngine({ content: CATALOG });
 /** A rasteriser that answers instantly, so a display list needs no GPU and no wait. */
 class InstantTextures implements PictureTextures {
   readonly resolution = 2;
+  /** The CSS the board handed this baker, which a test can read back. */
+  style = '';
   readonly asked: string[] = [];
   /** The frames handed out per strip, so a test can say which one is showing. */
   readonly cut = new Map<string, Texture[]>();

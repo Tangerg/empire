@@ -36,18 +36,25 @@ export const CANDIDATE_01_BOARD_STYLE = `<style>
     drop-shadow(0 6px 5px rgb(3 9 6 / 46%));
 }
 
+/*
+ * Three rules stood below, and all three named a *layer*:
+ *
+ *   .candidate-map .layer-terrain { filter: saturate(1.08) contrast(1.02) brightness(1.04) }
+ *   .candidate-map .layer-ground  { filter: saturate(1.06) contrast(1.025) brightness(1.035) }
+ *   .candidate-map .layer-foreground .candidate-environment-prop { filter: … }
+ *
+ * A layer is the renderer's own, not a picture's: the GPU backend makes it as a
+ * container and bakes each picture from its own markup, so no selector that has to
+ * reach through a layer can apply there. The first two were a 4% grade on the whole
+ * ground that only one of the two backends applied; the third is already covered by
+ * the scene-foreground rule above, whose ancestor really is inside the picture it
+ * dresses.
+ */
+
 .candidate-scene-foreground .is-frame-bottom, .candidate-scene-foreground .is-frame-left, .candidate-scene-foreground .is-frame-right {
   filter:
     drop-shadow(0 3px 1px rgb(3 9 6 / 82%))
     drop-shadow(0 8px 7px rgb(3 9 6 / 52%));
-}
-
-.candidate-map .layer-terrain {
-  filter: saturate(1.08) contrast(1.02) brightness(1.04);
-}
-
-.candidate-map .layer-ground {
-  filter: saturate(1.06) contrast(1.025) brightness(1.035);
 }
 
 .candidate-map .candidate-action-spot, .candidate-map .candidate-selection-ring, .candidate-map .candidate-cursor-ring {
@@ -82,12 +89,6 @@ export const CANDIDATE_01_BOARD_STYLE = `<style>
   filter:
     drop-shadow(0 1px 0 rgb(4 10 7 / 74%))
     drop-shadow(0 3px 3px rgb(4 10 7 / 42%));
-}
-
-.candidate-map .layer-foreground .candidate-environment-prop {
-  filter:
-    drop-shadow(0 2px 1px rgb(3 9 6 / 68%))
-    drop-shadow(0 5px 4px rgb(3 9 6 / 34%));
 }
 
 .candidate-map .runtime-unit-contact-shadow {

@@ -2978,20 +2978,30 @@ describe('one answer per question', () => {
     expect(named.length).toBeGreaterThanOrEqual(2);
 
     const appearance = new Set(['filter', 'opacity', 'transform', 'mix-blend-mode', 'visibility', 'display']);
+    /*
+     * Stylesheets *and* in-picture styles.
+     *
+     * A painted scene declares a `style` the board draws its pictures under, so
+     * that a texture bake sees it — and that is where this campaign kept a 4% grade
+     * on `.layer-terrain` and `.layer-ground`. A layer is the renderer's own: the
+     * GPU backend makes it as a container and bakes each picture from its own
+     * markup, so nothing that has to reach through a layer applies there. Scanning
+     * only `src/styles/*.css` meant the guard could not see the one file in the
+     * repository that had the problem it exists for.
+     */
+    const sheets = [...everyPackageSource(), ...appSources()]
+      .filter((file) => file.endsWith('.css') || readFileSync(file, 'utf8').includes('<style>'));
     const offenders: string[] = [];
-    for (const pkg of ['game-ui', 'editor', 'story-candidate-01']) {
-      const root = join(packagesRoot, pkg, 'src', 'styles');
-      for (const entry of readdirSync(root).filter((name) => name.endsWith('.css'))) {
-        const css = readFileSync(join(root, entry), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
-        for (const [, selector, body] of css.matchAll(/([^{}]*)\{([^{}]*)\}/g)) {
-          if (!selector.includes('.layer-')) continue;
-          const set = body.split(';')
-            .map((line) => line.split(':')[0].trim())
-            .filter((name) => appearance.has(name));
-          if (set.length === 0) continue;
-          if (named.some((state) => selector.includes(state))) continue;
-          offenders.push(`${entry}: ${selector.replace(/\s+/g, ' ').trim()} sets ${set.join(', ')}`);
-        }
+    for (const file of sheets) {
+      const css = readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+      for (const [, selector, body] of css.matchAll(/([^{}]*)\{([^{}]*)\}/g)) {
+        if (!selector.includes('.layer-')) continue;
+        const set = body.split(';')
+          .map((line) => line.split(':')[0].trim())
+          .filter((name) => appearance.has(name));
+        if (set.length === 0) continue;
+        if (named.some((state) => selector.includes(state))) continue;
+        offenders.push(`${relative(packagesRoot, file)}: ${selector.replace(/\s+/g, ' ').trim()} sets ${set.join(', ')}`);
       }
     }
 

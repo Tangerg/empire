@@ -233,6 +233,8 @@ export class SvgBoardSurface implements BoardSurface {
       'text-rendering': 'optimizeLegibility',
     });
 
+    // The board's own CSS, in the tree, before anything it applies to.
+    if (scene.style) this.element.append(fromMarkup(scene.style));
     if (scene.backdrop) this.element.append(fromMarkup(scene.backdrop));
     const world = svg('g', {
       class: 'board-world',

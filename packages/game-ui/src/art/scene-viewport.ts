@@ -15,6 +15,19 @@ export interface SceneViewportProfile {
 export interface SceneFrameMarkup {
   backdrop: string;
   foreground: string;
+  /**
+   * The CSS every picture on this board is drawn under.
+   *
+   * Separate from `backdrop`, where this campaign used to smuggle it as a `<style>`
+   * element. That put it in the DOM tree, which is why the DOM backend obeyed it —
+   * and left it out of every texture the GPU backend bakes, because a picture is
+   * baked from its own markup and a document it never sees cannot reach it. So the
+   * prop shadows, the contact shadow, the team ring's width and the sprite's rim
+   * light were an appearance only one of the two backends produced.
+   *
+   * Declared, so a backend can put it wherever its pictures can see it.
+   */
+  style?: string;
 }
 
 /**

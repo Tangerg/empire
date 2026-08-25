@@ -184,6 +184,7 @@ export class BoardView {
       shapeRendering: this.decor.shapeRendering,
       backdrop: sceneFrame.backdrop,
       foreground: sceneFrame.foreground,
+      style: sceneFrame.style,
     });
     this.buildGrid();
     this.bindPointer();

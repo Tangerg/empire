@@ -491,13 +491,18 @@ export function candidate01SceneFrameMarkup(
   { map, viewport }: BattleSceneContext,
 ): SceneFrameMarkup {
   // Every level of this campaign carries the pack's board style: an atlas tile and
-  // a unit figure wear its shadows, and a stylesheet is not in the room when markup
-  // becomes a texture. Every level gets the woodland too — it used to be chapter
-  // one's, so fifteen chapters were a rectangle of tiles on a flat page.
+  // a unit figure wear its shadows. It is declared as the scene's `style` rather
+  // than pasted into `backdrop` — a `<style>` in the DOM tree is obeyed by the DOM
+  // backend and invisible to every texture the GPU backend bakes, so half of this
+  // pack's look existed on one backend only.
+  //
+  // Every level gets the woodland too — it used to be chapter one's, so fifteen
+  // chapters were a rectangle of tiles on a flat page.
   const fieldX = viewport.originX - 24;
   const fieldY = viewport.originY - 18;
   return {
-    backdrop: `${CANDIDATE_01_BOARD_STYLE}<g class="candidate-scene-backdrop" pointer-events="none" data-scene-viewport="authored-wide">
+    style: CANDIDATE_01_BOARD_STYLE,
+    backdrop: `<g class="candidate-scene-backdrop" pointer-events="none" data-scene-viewport="authored-wide">
       <defs>
         <radialGradient id="c01-scene-ground" cx="48%" cy="42%" r="78%">
           <stop offset="0" stop-color="#536c47"/>

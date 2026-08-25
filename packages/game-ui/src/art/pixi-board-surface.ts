@@ -316,6 +316,12 @@ export class PixiBoardSurface implements BoardSurface {
     this.element = tools.painter.canvas;
     this.element.classList.add('board');
 
+    // Every picture on this board is baked under the board's own CSS. The DOM
+    // backend puts it in the tree; here it goes into each baked document, because
+    // that is the only place a picture of this backend can see it. Before the first
+    // bake below, or the backdrop comes out of the oven undressed.
+    this.tools.textures.style = scenery.style ?? '';
+
     if (scenery.backdrop) this.scene.addChild(this.picture(scenery.backdrop));
     this.world.position.set(scenery.originX, scenery.originY);
     // Child order is the depth contract, and `BOARD_LAYERS` is where it is stated.
