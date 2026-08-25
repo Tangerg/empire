@@ -22,6 +22,8 @@ import {
   type GameControllerOptions,
 } from './game';
 import { escapeHtml } from './html';
+import { portraitSvg } from '../art/portraits';
+import { PAL } from '../art/palette';
 
 interface CampaignBattleSummary {
   title: string;
@@ -75,6 +77,16 @@ export interface StoryCampaignAdapter {
   relationLabels?: Readonly<Record<string, string>>;
   resourceLabels?: Readonly<Record<string, string>>;
   chapterTitle(chapter: number): string;
+  /**
+   * The place a chapter happens, for every screen in it that has no scene of
+   * its own.
+   *
+   * A story beat names its own scene; a choice, a staging brief and a result do
+   * not, and they used to be a card on a flat gradient — so the campaign
+   * alternated between a painted place and a bare dialog about it. Every screen
+   * knows its chapter, because `shell` is handed one.
+   */
+  chapterArt(chapter: number): string;
   chapterOf(level: LevelData): number;
   levelOrder(level: LevelData): number;
   briefingId(level: LevelData): string;
@@ -278,14 +290,28 @@ export class StoryCampaignController {
     this.renderStory(screen.presentation, screen.ending);
   }
 
-  private shell(content: string, chapter: number): void {
+  /**
+   * Every campaign screen: the bar, the place it happens in, and the card.
+   *
+   * The backdrop is here rather than in each screen because *every* screen is
+   * somewhere. It used to be drawn by the story screen alone, from the beat's own
+   * scene, and the choice, the staging brief and the result were a card on a flat
+   * gradient — so the campaign alternated between a painted place and a bare
+   * dialog about it. A screen with a more specific scene passes it; the rest get
+   * their chapter's.
+   */
+  private shell(content: string, chapter: number, scene = this.adapter.chapterArt(chapter)): void {
     const completed = this.runtime.state.battleHistory.length;
     const progress = this.battleTotal === 0 ? 0 : completed / this.battleTotal;
     this.root.innerHTML = `<header class="campaign-topbar">
       <button class="campaign-icon-button" data-campaign-act="exit" aria-label="返回主菜单">‹</button>
       <div><span>${escapeHtml(this.adapter.title)}</span><strong>第 ${chapter} 章 · ${escapeHtml(this.adapter.chapterTitle(chapter))}</strong></div>
       <div class="campaign-progress" aria-label="战役进度"><i style="--progress:${progress}"></i><b>${completed}/${this.battleTotal}</b></div>
-    </header>${content}`;
+    </header>
+    <div class="campaign-backdrop">
+      <img class="campaign-backdrop-wash" src="${scene}" alt=""/>
+      <img class="campaign-backdrop-art" src="${scene}" alt=""/>
+    </div>${content}`;
   }
 
   private renderStory(presentationId: string, ending: boolean): void {
@@ -299,10 +325,6 @@ export class StoryCampaignController {
       ? `<button class="campaign-primary" data-campaign-act="finish">${done ? '返回主菜单' : escapeHtml(this.adapter.completionLabel)}</button>`
       : `<button class="campaign-primary" data-campaign-act="nextBeat">${lastBeat ? '继续' : '下一段'} <span>→</span></button>`;
     this.shell(`<main class="story-screen">
-      <div class="story-backdrop">
-        <img class="story-backdrop-wash" src="${scene}" alt=""/>
-        <img class="story-backdrop-art" src="${scene}" alt=""/>
-      </div>
       <section class="story-card" style="--beat:${this.beat}">
         <div class="story-meta"><span>${escapeHtml(story.kicker)}</span><span>${escapeHtml(story.date)}</span><span>${escapeHtml(story.location)}</span></div>
         <h1>${escapeHtml(story.title)}</h1>
@@ -318,7 +340,7 @@ export class StoryCampaignController {
         </div>
         <div class="story-actions"><div class="beat-dots">${story.beats.map((_, index) => `<i class="${index <= this.beat ? 'active' : ''}"></i>`).join('')}</div>${button}</div>
       </section>
-    </main>`, story.chapter);
+    </main>`, story.chapter, scene);
   }
 
   private renderChoice(presentationId: string): void {
@@ -350,8 +372,18 @@ export class StoryCampaignController {
       <section class="staging-hero"><img src="${scene}" alt=""/><div><span class="campaign-eyebrow">作战准备 · ${String(order).padStart(2, '0')}/${this.battleTotal}</span><h1>${escapeHtml(level.name)}</h1><p>${escapeHtml(level.description ?? '')}</p></div></section>
       <div class="staging-grid">
         <section class="campaign-panel"><h2>出战名册</h2><div class="roster-list">${roster.map((unit) => {
+          /*
+           * A named character has an authored portrait; everybody else has a
+           * sprite, and the roster used to show them a lozenge. `◆` for two of
+           * every three names on the muster is a placeholder standing in for art
+           * this pack ships — the same picture the HUD draws them with.
+           */
+          const definition = this.content.units.get(unit.unitType);
           const portrait = this.adapter.portraits[unit.id];
-          return `<div class="campaign-unit">${portrait ? `<img src="${portrait}" alt=""/>` : '<span class="unit-fallback">◆</span>'}<div><b>${escapeHtml(this.content.units.get(unit.unitType).name)}</b><small>${unit.disposition === 'available' ? `生命 ${Math.round(unit.hpRatio * 100)}% · 军衔 ${unit.rank ?? 0}` : escapeHtml(unit.disposition)}</small></div></div>`;
+          const avatar = portrait
+            ? `<img src="${portrait}" alt=""/>`
+            : `<span class="unit-fallback">${portraitSvg(this.options.art, definition, PAL.neutral, 40)}</span>`;
+          return `<div class="campaign-unit">${avatar}<div><b>${escapeHtml(definition.name)}</b><small>${unit.disposition === 'available' ? `生命 ${Math.round(unit.hpRatio * 100)}% · 军衔 ${unit.rank ?? 0}` : escapeHtml(unit.disposition)}</small></div></div>`;
         }).join('')}</div></section>
         <section class="campaign-panel"><h2>战役状态</h2><div class="resource-row">${resources}</div>
           <div class="relation-list">${Object.entries(this.runtime.state.relations).filter(([, value]) => value !== 0).slice(0, 5).map(([id, value]) => `<div><span>${escapeHtml(this.adapter.relationLabels?.[id] ?? id)}</span><i style="--relation:${Math.max(0, Math.min(1, (value + 3) / 6))}"></i><b>${value > 0 ? '+' : ''}${value}</b></div>`).join('') || '<p>尚未形成明确阵营关系。</p>'}</div>

@@ -22,6 +22,7 @@ export * from './ui/game';
 export * from './ui/campaign-game';
 export * from './ui/html';
 export * from './ui/hud';
+export * from './ui/event-presentation';
 export * from './application/level-file';
 export * from './application/level-storage';
 export * from './application/campaign-storage';

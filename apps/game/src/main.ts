@@ -39,6 +39,7 @@ import {
   portraitSvg,
   readCustomLevels,
   requireMountPoint,
+  resourceName,
   mapScenePieces,
   terrainLayerPieces,
   escapeHtml,
@@ -64,7 +65,7 @@ const art = CANDIDATE_01_ART;
 const campaignAdapter = candidate01CampaignAdapter();
 
 const recruitCost = (unit: { recruitCosts: { resource: string; amount: number }[] }) =>
-  unit.recruitCosts.map((cost) => `${cost.resource} ${cost.amount}`).join(' · ') || '不可招募';
+  unit.recruitCosts.map((cost) => `${resourceName(cost.resource)} ${cost.amount}`).join(' · ') || '不可招募';
 
 const app = requireMountPoint('app');
 let active: GameController | StoryCampaignController | null = null;

@@ -144,6 +144,7 @@
 
 .story-screen {
   position: relative;
+  z-index: 1;
   display: grid;
   min-height: calc(100vh - 66px);
   place-items: end center;
@@ -151,12 +152,22 @@
   padding: clamp(28px, 5vw, 68px);
 }
 
-.story-backdrop {
-  position: absolute;
-  inset: 0;
+/*
+ * The place every campaign screen happens in.
+ *
+ * This was `.story-backdrop`, drawn by the story screen alone, so a choice and a
+ * result were a card on a flat gradient — the campaign alternated between a
+ * painted place and a bare dialog about it. `shell` draws it for every screen
+ * now, from the beat's own scene where there is one and the chapter's plate
+ * otherwise.
+ */
+.campaign-backdrop {
+  position: fixed;
+  z-index: 0;
+  inset: 66px 0 0;
 }
 
-.story-backdrop::after {
+.campaign-backdrop::after {
   position: absolute;
   inset: 0;
   content: '';
@@ -165,7 +176,7 @@
     radial-gradient(circle at 50% 30%, transparent 20%, rgb(9 7 5 / 30%) 100%);
 }
 
-.story-backdrop img {
+.campaign-backdrop img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -174,13 +185,13 @@
   image-rendering: auto;
 }
 
-.story-backdrop-wash {
+.campaign-backdrop-wash {
   opacity: 0.72;
   filter: blur(18px) saturate(0.7);
   transform: scale(1.08);
 }
 
-.story-backdrop-art {
+.campaign-backdrop-art {
   filter: saturate(0.92) contrast(1.04);
 }
 
@@ -348,13 +359,12 @@
 
 .choice-screen,
 .result-screen {
+  position: relative;
+  z-index: 1;
   display: grid;
   min-height: calc(100vh - 66px);
   place-items: center;
   padding: clamp(24px, 6vw, 72px);
-  background:
-    linear-gradient(rgb(16 13 11 / 92%), rgb(16 13 11 / 96%)),
-    radial-gradient(circle at 25% 20%, #405245, transparent 36%);
 }
 
 .choice-card,
@@ -439,6 +449,8 @@
 /* Staging and result */
 
 .staging-screen {
+  position: relative;
+  z-index: 1;
   width: min(1120px, calc(100% - 40px));
   margin: 0 auto;
   padding: 36px 0 52px;
@@ -534,8 +546,14 @@
 
 .unit-fallback {
   display: grid;
+  overflow: hidden;
   place-items: center;
-  color: #d5a950;
+}
+
+/* The sprite portrait fills its plate, the way an authored one does. */
+.unit-fallback svg {
+  width: 100%;
+  height: 100%;
 }
 
 .campaign-unit div {

@@ -153,6 +153,16 @@ const RESOURCE_NAMES: Record<string, string> = {
 };
 
 /**
+ * What a resource is called to a player.
+ *
+ * Exported because the battle log was not the only place that says it: the codex
+ * printed a recruit cost as "funds 100", showing the ruleset's own id to the
+ * person playing. A resource a plugin invented reads as its id rather than as
+ * nothing, which is the same rule the holder names below follow.
+ */
+export const resourceName = (id: string): string => RESOURCE_NAMES[id] ?? id;
+
+/**
  * Who a resource line is about. Open, like the holder family it reads: a
  * plugin's own holder reads as its id rather than crashing the line.
  */
@@ -302,7 +312,7 @@ export const DefaultBattleEventPresenters = new BattleEventPresenterRegistry()
   .register(presenter({
     type: 'resourceChanged',
     describe: ({ unitName, playerName }, event) => {
-      const resource = RESOURCE_NAMES[event.resource] ?? event.resource;
+      const resource = resourceName(event.resource);
       return `${holderName({ playerName, unitName }, event.subject)} ${resource} ${event.amount >= 0 ? '+' : ''}${event.amount}（${event.current}）`;
     },
   }))
