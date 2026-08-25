@@ -705,20 +705,35 @@ kbd {
   background: rgb(255 255 255 / 6%);
 }
 
+/*
+ * A name and a price, neither of them broken in half.
+ *
+ * The same defect as the roster row above, on the screen a player reads before
+ * choosing anything: both were bare items in a flex line, so 罗德里克 came out as
+ * 罗德里 / 克 and 资金 560 came out as 资金 / 560 to make room for each other. They
+ * hold their width and the line wraps between them instead.
+ */
 .rc-name {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 2px 8px;
   font-weight: 600;
+}
+
+.rc-title {
+  flex: none;
 }
 
 .rc-cost {
   display: flex;
+  flex: none;
   align-items: center;
   gap: 3px;
   margin-left: auto;
   color: var(--accent-2);
   font-size: 12px;
+  white-space: nowrap;
 }
 
 .rc-stats {

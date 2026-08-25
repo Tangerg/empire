@@ -987,7 +987,7 @@ export class Hud {
       ${option.affordable ? `data-act="recruit"` : ''} data-arg="${option.unit}">
       <div class="rc-art">${unitIcon(this.art, definition, teamColor, 46)}</div>
       <div>
-        <div class="rc-name">${escapeHtml(definition.name)}<span class="rc-cost">${icon('coin')}${escapeHtml(formatAmounts(view.resources, option.costs))}</span></div>
+        <div class="rc-name"><span class="rc-title">${escapeHtml(definition.name)}</span><span class="rc-cost">${icon('coin')}${escapeHtml(formatAmounts(view.resources, option.costs))}</span></div>
         <div class="rc-stats">
           ${icon('sword')}${Math.max(...weapons.map((weapon) => weapon.power))} · ${icon('heart')}${definition.maxHp} · ${icon('boot')}${definition.movement}
           · ${minimumRange === maximumRange ? `射程 ${maximumRange}` : `射程 ${minimumRange}-${maximumRange}`}

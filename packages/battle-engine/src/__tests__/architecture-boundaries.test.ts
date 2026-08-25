@@ -2089,6 +2089,51 @@ describe('the battle screen is its own screen', () => {
       });
   }
 
+  it('puts a name that must not break into an element that cannot shrink', () => {
+    /*
+     * A flex row cannot be told to leave a bare text node alone.
+     *
+     * Text written straight into a flex container becomes an anonymous flex item,
+     * and an anonymous item cannot be selected — so it shrinks like any other, and
+     * text shrinks by breaking. Three rows did this next to something with
+     * `margin-left: auto`, which takes the rest of the line: the objectives plaque
+     * came out as 蓝 / 军, and the codex and the recruit list both came out as
+     * 罗德里 / 克 with 资金 / 560 beside it. Two-character names, broken in half, on
+     * the screens a player reads before deciding anything.
+     *
+     * So: if a row is `display: flex` and something in it takes the remaining
+     * space, every other child is an element. Then `flex: none` is sayable.
+     */
+    const sheets = stylesheets().map((file) => stripComments(readFileSync(file, 'utf8'))).join('\n');
+    const rules = [...sheets.matchAll(/([^{}]+)\{([^{}]*)\}/g)];
+    const classesWhere = (test: (body: string) => boolean): Set<string> => {
+      const found = new Set<string>();
+      for (const [, selector, body] of rules) {
+        if (!test(body!)) continue;
+        for (const one of selector!.split(',')) {
+          const names = [...one.matchAll(/\.([\w-]+)/g)].map(([, name]) => name!);
+          const last = names[names.length - 1];
+          if (last) found.add(last);
+        }
+      }
+      return found;
+    };
+    const spreads = classesWhere((body) => /display:\s*flex/.test(body));
+    const takesTheRest = classesWhere((body) => /margin-left:\s*auto/.test(body));
+
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
+      const source = stripComments(readFileSync(file, 'utf8'));
+      return [...source.matchAll(/class="([\w-]+)"[^>]*>\s*\$\{[^}]*\}\s*<(?:span|em|b|i)\s+class="([\w-]+)"/g)]
+        .filter(([, parent, child]) => spreads.has(parent!) && takesTheRest.has(child!))
+        .map(([, parent, child]) => `${relative(packagesRoot, file)}: .${parent} > text + .${child}`);
+    });
+
+    // Both stylesheet families parsed, or every row reads as safe.
+    expect(spreads.size).toBeGreaterThan(20);
+    expect(takesTheRest.size).toBeGreaterThan(2);
+    expect(offenders).toEqual([]);
+  });
+
   /**
    * A renderer nobody asked for is not in the bundle.
    *

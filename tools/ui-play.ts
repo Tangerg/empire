@@ -225,7 +225,9 @@ async function inBrowser(run: (session: Session, tools: Tools) => Promise<void>)
     '--headless=new',
     '--disable-gpu',
     `--remote-debugging-port=${port}`,
-    `--user-data-dir=${join(OUT, `.play-profile-${browsers}`)}`,
+    // Keyed by this run as well as this phase: a browser left alive by an earlier
+    // run holds its directory, and Chrome would forward to that one instead.
+    `--user-data-dir=${join(OUT, `.play-${process.pid}-${browsers}`)}`,
     `--window-size=${VIEWPORT.width},${VIEWPORT.height}`,
     '--no-first-run',
     '--no-default-browser-check',

@@ -138,7 +138,7 @@ function codexMarkup(): string {
               return `<div class="recruit-card">
               <div class="rc-art" style="width:64px;height:auto;background:none">${portraitSvg(art, d, team, 64)}</div>
               <div>
-                <div class="rc-name">${escapeHtml(d.name)}<span class="rc-cost">${icon('coin')}${escapeHtml(recruitCost(d))}</span></div>
+                <div class="rc-name"><span class="rc-title">${escapeHtml(d.name)}</span><span class="rc-cost">${icon('coin')}${escapeHtml(recruitCost(d))}</span></div>
                 <div class="rc-stats">${icon('sword')}${power} · ${icon('heart')}${d.maxHp} · ${icon('boot')}${d.movement} · 射程 ${
                   minRange === maxRange ? maxRange : `${minRange}-${maxRange}`
                 }</div>
