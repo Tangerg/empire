@@ -1,6 +1,7 @@
 import { autoDetectRenderer, ColorMatrixFilter, Container, Sprite, Texture } from 'pixi.js';
 import {
   drawableBody,
+  DrawingPlacement,
   GRID_ALPHA,
   BOARD_LAYERS,
   type BoardDrawing,
@@ -96,11 +97,8 @@ export interface PixiBoardTools {
  * `translate(P) translate(m,m) scale(f) translate(-m,-m)` exactly.
  */
 class PixiDrawing implements BoardDrawing {
-  private x = 0;
-  private y = 0;
-  private dx = 0;
-  private dy = 0;
-  private factor = 1;
+  /** Placement, offset and scale, composed by the port so both backends agree. */
+  private readonly at = new DrawingPlacement();
   /** Which picture is current, so a slower bake cannot overwrite a newer one. */
   private generation = 0;
   /** What a mirror flips, so a unit's badges do not flip with its sprite. */
@@ -128,19 +126,17 @@ class PixiDrawing implements BoardDrawing {
   }
 
   place(x: number, y: number): void {
-    this.x = x;
-    this.y = y;
+    this.at.place(x, y);
     this.write();
   }
 
   nudge(dx: number, dy: number): void {
-    this.dx = dx;
-    this.dy = dy;
+    this.at.nudge(dx, dy);
     this.write();
   }
 
   swell(factor: number): void {
-    this.factor = factor;
+    this.at.swell(factor);
     this.write();
   }
 
@@ -283,8 +279,8 @@ class PixiDrawing implements BoardDrawing {
   }
 
   private write(): void {
-    this.root.position.set(this.x + this.dx + this.pivot, this.y + this.dy + this.pivot);
-    this.root.scale.set(this.factor);
+    this.root.position.set(this.at.x + this.pivot, this.at.y + this.pivot);
+    this.root.scale.set(this.at.scale);
   }
 }
 

@@ -44,6 +44,56 @@ export const TILE = 32;
 export const TILE_MIDDLE = TILE / 2;
 
 /**
+ * Where a drawing sits: a placement, an offset from it, and a scale about its own
+ * middle.
+ *
+ * Three independent facts, set by three separate calls, composed on write. Each
+ * backend kept its own five fields and its own three setters, so what `nudge`
+ * means *relative to* `place` was defined twice — and a caller that nudged a unit
+ * mid-animation and then placed it was relying on both definitions agreeing.
+ *
+ * Only the composing is here. How the numbers reach the screen is the backend's:
+ * one writes an SVG transform string with a pivot dance around the scale, the
+ * other sets a container's position and scale, and neither is the other's business.
+ */
+export class DrawingPlacement {
+  private placedX = 0;
+  private placedY = 0;
+  private offsetX = 0;
+  private offsetY = 0;
+  private factor = 1;
+
+  /** Replaces where the drawing's origin sits. */
+  place(x: number, y: number): void {
+    this.placedX = x;
+    this.placedY = y;
+  }
+
+  /** Replaces the offset from wherever it was placed. */
+  nudge(dx: number, dy: number): void {
+    this.offsetX = dx;
+    this.offsetY = dy;
+  }
+
+  /** Replaces the scale about the drawing's own middle. */
+  swell(factor: number): void {
+    this.factor = factor;
+  }
+
+  get x(): number {
+    return this.placedX + this.offsetX;
+  }
+
+  get y(): number {
+    return this.placedY + this.offsetY;
+  }
+
+  get scale(): number {
+    return this.factor;
+  }
+}
+
+/**
  * The layers a board has, deepest first.
  *
  * Order is the depth contract, and it is stated here rather than in a renderer so

@@ -1,6 +1,7 @@
 import { FrameAnimationSystem } from './frame-animation';
 import {
   drawableBody,
+  DrawingPlacement,
   GRID_ALPHA,
   BOARD_LAYERS,
   boardPiecesMarkup,
@@ -62,11 +63,8 @@ const STATE_CLASS: Readonly<Record<Exclude<BoardState, 'hidden'>, string>> = {
  * remember what the other had already put there.
  */
 class SvgDrawing implements BoardDrawing {
-  private x = 0;
-  private y = 0;
-  private dx = 0;
-  private dy = 0;
-  private factor = 1;
+  /** Placement, offset and scale, composed by the port so both backends agree. */
+  private readonly at = new DrawingPlacement();
   /**
    * What a mirror flips, so a unit's badges do not flip with its sprite.
    *
@@ -99,19 +97,17 @@ class SvgDrawing implements BoardDrawing {
   }
 
   place(x: number, y: number): void {
-    this.x = x;
-    this.y = y;
+    this.at.place(x, y);
     this.write();
   }
 
   nudge(dx: number, dy: number): void {
-    this.dx = dx;
-    this.dy = dy;
+    this.at.nudge(dx, dy);
     this.write();
   }
 
   swell(factor: number): void {
-    this.factor = factor;
+    this.at.swell(factor);
     this.write();
   }
 
@@ -194,12 +190,13 @@ class SvgDrawing implements BoardDrawing {
   }
 
   private write(): void {
-    const moved = `translate(${(this.x + this.dx).toFixed(2)},${(this.y + this.dy).toFixed(2)})`;
-    const scaled = this.factor === 1
+    const moved = `translate(${this.at.x.toFixed(2)},${this.at.y.toFixed(2)})`;
+    const scale = this.at.scale;
+    const scaled = scale === 1
       ? ''
       : this.pivot === 0
-        ? ` scale(${this.factor.toFixed(4)})`
-        : ` translate(${this.pivot},${this.pivot}) scale(${this.factor.toFixed(4)}) translate(${-this.pivot},${-this.pivot})`;
+        ? ` scale(${scale.toFixed(4)})`
+        : ` translate(${this.pivot},${this.pivot}) scale(${scale.toFixed(4)}) translate(${-this.pivot},${-this.pivot})`;
     setAttrs(this.el, { transform: `${moved}${scaled}` });
   }
 }
