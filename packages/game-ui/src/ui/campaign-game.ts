@@ -382,7 +382,7 @@ export class StoryCampaignController {
           const portrait = this.adapter.portraits[unit.id];
           const avatar = portrait
             ? `<img src="${portrait}" alt=""/>`
-            : `<span class="unit-fallback">${portraitSvg(this.options.art, definition, PAL.neutral, 40)}</span>`;
+            : `<span class="campaign-unit-plate">${portraitSvg(this.options.art, definition, PAL.neutral, 40)}</span>`;
           return `<div class="campaign-unit">${avatar}<div><b>${escapeHtml(definition.name)}</b><small>${unit.disposition === 'available' ? `生命 ${Math.round(unit.hpRatio * 100)}% · 军衔 ${unit.rank ?? 0}` : escapeHtml(unit.disposition)}</small></div></div>`;
         }).join('')}</div></section>
         <section class="campaign-panel"><h2>战役状态</h2><div class="resource-row">${resources}</div>

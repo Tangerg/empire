@@ -353,9 +353,14 @@ export class SvgBoardSurface implements BoardSurface {
   }
 
   tactical(on: boolean): void {
-    this.element.classList.toggle('is-tactical', on);
     // The number comes from the port, not from a stylesheet: `tactical` is a
     // method both backends implement, so both read the same two values.
+    //
+    // There was an `is-tactical` class on the board here too. It was how the
+    // stylesheet used to find the lattice to fade; the fade became `GRID_ALPHA`
+    // and the class stayed behind, read by no rule, no module and no test — and
+    // the GPU backend never had one, which is the tell that it was not part of
+    // the contract.
     this.layers.grid.style.opacity = String(on ? GRID_ALPHA.tactical : GRID_ALPHA.resting);
   }
 

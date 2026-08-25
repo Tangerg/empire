@@ -530,7 +530,7 @@
 }
 
 .campaign-unit img,
-.unit-fallback {
+.campaign-unit-plate {
   flex: none;
   width: 44px;
   height: 44px;
@@ -544,14 +544,21 @@
   image-rendering: auto;
 }
 
-.unit-fallback {
+/*
+ * The plate a unit without an authored card is shown on.
+ *
+ * It was `.unit-fallback`, which was true when what went in it was a `◆`. What
+ * goes in it is the unit's own portrait, drawn from the sheet the board stands it
+ * on — a name that says "fallback" invites the next reader to treat it as one.
+ */
+.campaign-unit-plate {
   display: grid;
   overflow: hidden;
   place-items: center;
 }
 
 /* The sprite portrait fills its plate, the way an authored one does. */
-.unit-fallback svg {
+.campaign-unit-plate svg {
   width: 100%;
   height: 100%;
 }

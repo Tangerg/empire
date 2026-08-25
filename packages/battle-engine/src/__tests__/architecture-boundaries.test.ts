@@ -2194,6 +2194,14 @@ describe('the battle screen is its own screen', () => {
      */
     const CLASS_IN_MARKUP = /class="([^"]*)"/g;
     const CLASS_AS_KEY = /\bclass:\s*'([^']*)'/g;
+    /*
+     * And a third way, which this guard could not see: `classList.toggle('x', on)`.
+     * `is-tactical` was put on the board by the DOM backend, read by no rule, no
+     * module and no test — the stylesheet rule that had been its only reader was
+     * deleted when the lattice's fade became `GRID_ALPHA`. The GPU backend never
+     * had an equivalent, which is the tell that it was never part of the contract.
+     */
+    const CLASS_VIA_LIST = /classList\.(?:add|toggle|remove)\('([\w-]+)'/g;
     const DATA_IN_MARKUP = /(data-[a-z][\w-]*)\s*=/g;
     const DATA_AS_KEY = /'(data-[a-z][\w-]*)'\s*:/g;
 
@@ -2201,7 +2209,7 @@ describe('the battle screen is its own screen', () => {
     const attributes = new Map<string, string[]>();
     for (const file of emitters) {
       const source = stripComments(readFileSync(file, 'utf8'));
-      for (const pattern of [CLASS_IN_MARKUP, CLASS_AS_KEY]) {
+      for (const pattern of [CLASS_IN_MARKUP, CLASS_AS_KEY, CLASS_VIA_LIST]) {
         for (const [, list] of source.matchAll(pattern)) {
           // Interpolations are blanked, and a name left ending in `-` is half a name.
           for (const name of list.replace(/\$\{[^}]*\}/g, ' ').split(/\s+/)) {
@@ -2227,6 +2235,11 @@ describe('the battle screen is its own screen', () => {
       return source
         .replace(CLASS_IN_MARKUP, blank)
         .replace(CLASS_AS_KEY, blank)
+        // Blanked for the same reason as the other two: a quoted name in a
+        // `classList.toggle` call reads exactly like somebody looking the class
+        // up, so leaving it in lets every such class vouch for itself. Planting
+        // `is-nothing-reads-me` passed until this line existed.
+        .replace(CLASS_VIA_LIST, blank)
         .replace(DATA_AS_KEY, blank)
         // An attribute *selector* keeps its brackets, and is a read.
         .replace(/(?<!\[)\bdata-[a-z][\w-]*="[^"]*"/g, blank);
