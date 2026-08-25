@@ -2895,6 +2895,46 @@ describe('one answer per question', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('puts no filter on an element whose whole job is to clip', () => {
+    /*
+     * Two things this renderer draws are a nested `<svg>` whose viewport shows one
+     * piece of a bigger image: a unit's frame out of its spritesheet
+     * (`.board-strip`) and one cell out of an atlas (`data-runtime-raster`). The
+     * clip *is* the picture.
+     *
+     * A CSS filter on such an element defeats that clip in Chrome — the filter
+     * applies to the element's rendered content and the viewport clip goes with it.
+     * This campaign's own board style had two `drop-shadow`s on `.board-strip`, so
+     * every unit in every battle painted its whole four-frame sheet: five soldiers
+     * came out as twenty, in rows, one team ring under each fourth of them.
+     *
+     * Nothing here saw it for as long as it shipped. The digest pins markup and the
+     * markup was right; the tests assert structure and the structure was right;
+     * jsdom has no layout, so no test in this repository *could* have caught it. A
+     * screenshot of the built app did. This is the guard that would have.
+     *
+     * Both stylesheets and in-picture styles: a painted scene carries its own
+     * `<style>` inside the SVG, precisely so a texture bake sees it, and that is
+     * where this one was.
+     */
+    const clipsAPicture = /\.board-strip|runtime-raster/;
+    const styled = [...everyPackageSource(), ...appSources()]
+      .filter((file) => file.endsWith('.css') || readFileSync(file, 'utf8').includes('<style>'));
+    const offenders = styled.flatMap((file) => {
+      const text = readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+      return [...text.matchAll(/([^{}]+)\{([^{}]*)\}/g)]
+        .filter(([, selector, body]) => clipsAPicture.test(selector) && /\bfilter\s*:/.test(body))
+        .map(([, selector]) => `${selector.trim()} (${relative(packagesRoot, file)})`);
+    });
+
+    // The rule that had it, moved to the group that holds the clipped result.
+    expect(readFileSync(
+      join(packagesRoot, 'story-candidate-01', 'src', 'presentation', 'candidate-01-board-style.ts'),
+      'utf8',
+    )).toMatch(/\.candidate-map \.unit \.figure \{\s*filter:/);
+    expect(offenders).toEqual([]);
+  });
+
   it('writes where a unit stands in its cell exactly once', () => {
     // Two marks are drawn at a figure's feet: the ring in its side's colour, and
     // the pip that says which way it is looking. Both are ellipse geometry in cell

@@ -99,7 +99,29 @@ export const CANDIDATE_01_BOARD_STYLE = `<style>
   stroke-width: 2.15px;
 }
 
-.candidate-map .unit .board-strip {
+/*
+ * The figure, not the strip.
+ *
+ * This said ".candidate-map .unit .board-strip", and a board-strip is a nested
+ * svg whose viewport is what shows one frame of a spritesheet. A filter on such
+ * an element defeats that clip in Chrome: the filter applies to the element's
+ * rendered content and the viewport clip goes with it. So every unit in every
+ * campaign battle painted its whole four-frame sheet — five soldiers came out as
+ * twenty, in rows, with one ring under each fourth of them.
+ *
+ * Nothing here could see it. The digest pins markup and the markup was right; the
+ * tests assert structure and the structure was right; jsdom has no layout, so no
+ * test in this repository could have caught it. It took a screenshot of the built
+ * app, which is why this is fixed rather than shipped.
+ *
+ * The figure group holds the body and the strip together — the same element a
+ * mirror flips — so the filter lands on the already-clipped result.
+ *
+ * (And no back-quotes in here. This whole stylesheet is one template literal, so a
+ * quoted class name in a comment closes the string and turns the CSS after it into
+ * expressions — "map is not defined", thrown when a battle mounts.)
+ */
+.candidate-map .unit .figure {
   filter:
     drop-shadow(0 0 0.65px rgb(255 246 222 / 45%))
     drop-shadow(0 2px 1.2px rgb(0 0 0 / 75%));
