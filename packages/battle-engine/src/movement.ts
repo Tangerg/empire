@@ -119,7 +119,7 @@ export function computeMoveField(rules: MovementRules, state: GameState, unit: U
 
 /** Cheapest path from the field's origin to `to`, inclusive of both ends. */
 export function pathTo(field: MoveField, map: { width: number }, to: Coord): Coord[] | null {
-  const target = to.y * map.width + to.x;
+  const target = idx(map, to.x, to.y);
   if (!field.tiles.has(target)) return null;
   const path: Coord[] = [];
   let cur = target;
@@ -138,7 +138,7 @@ export function pathTo(field: MoveField, map: { width: number }, to: Coord): Coo
 }
 
 export function moveCostOf(field: MoveField, map: { width: number }, to: Coord): number | null {
-  return field.tiles.get(to.y * map.width + to.x)?.cost ?? null;
+  return field.tiles.get(idx(map, to.x, to.y))?.cost ?? null;
 }
 
 /** Tiles this unit could attack if it stood on `from`. */

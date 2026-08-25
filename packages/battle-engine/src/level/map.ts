@@ -1,4 +1,4 @@
-import { idx, sharesEdge } from '../grid';
+import { idx, sharesEdge, inBounds} from '../grid';
 import type { GameMap, LevelData, TerrainId } from '../types';
 import { type ContentCatalog } from '../content-pack';
 import { LevelFormatError } from './schema';
@@ -39,7 +39,7 @@ export function mapFromLevel(content: ContentCatalog, level: LevelData): GameMap
       const character = row[x];
       const terrain = content.terrainEncoding.terrain(character);
       if (!terrain) throw new LevelFormatError(`unknown terrain char "${character}" at ${x},${y}`);
-      tiles[y * width + x] = terrain;
+      tiles[idx({ width }, x, y)] = terrain;
     }
   });
 
@@ -72,7 +72,7 @@ export function mapFromLevel(content: ContentCatalog, level: LevelData): GameMap
     }
   }
   for (const cover of map.directionalCover) {
-    if (cover.at.x < 0 || cover.at.y < 0 || cover.at.x >= width || cover.at.y >= height) {
+    if (!inBounds({ width, height }, cover.at.x, cover.at.y)) {
       throw new LevelFormatError(`directional cover out of bounds at ${cover.at.x},${cover.at.y}`);
     }
     // Which side names exist belongs to the tiling, and the linter asks it —
@@ -86,7 +86,7 @@ export function mapFromLevel(content: ContentCatalog, level: LevelData): GameMap
   }
 
   for (const owned of level.owners ?? []) {
-    if (owned.x < 0 || owned.y < 0 || owned.x >= width || owned.y >= height) {
+    if (!inBounds({ width, height }, owned.x, owned.y)) {
       throw new LevelFormatError(`owner entry out of bounds at ${owned.x},${owned.y}`);
     }
     const tile = idx(map, owned.x, owned.y);
@@ -106,7 +106,7 @@ export function terrainRows(content: ContentCatalog, map: GameMap): string[] {
   for (let y = 0; y < map.height; y++) {
     let row = '';
     for (let x = 0; x < map.width; x++) {
-      row += serializedTerrainCharacter(content, map.tiles[y * map.width + x]);
+      row += serializedTerrainCharacter(content, map.tiles[idx(map, x, y)]);
     }
     rows.push(row);
   }

@@ -1,4 +1,4 @@
-import { sharesEdge } from './grid';
+import { sharesEdge, inBounds, idx} from './grid';
 import { type ContentCatalog } from './content-pack';
 import type { RuleReferenceCheckRegistry, RuleReferenceRules } from './rule-references';
 import type { PayloadReferences } from './payload-references';
@@ -262,11 +262,11 @@ function checkUnitPlacement(
 ): void {
   const map = inspection.map;
   if (!map) return;
-  if (unit.x < 0 || unit.y < 0 || unit.x >= map.width || unit.y >= map.height) {
+  if (!inBounds(map, unit.x, unit.y)) {
     inspection.error(`单位越界：${unit.x},${unit.y}`);
     return;
   }
-  const tile = unit.y * map.width + unit.x;
+  const tile = idx(map, unit.x, unit.y);
   if (occupied.has(tile)) inspection.error(`格子 ${unit.x},${unit.y} 上有多个单位`);
   occupied.add(tile);
   const terrain = inspection.terrainOn(map, tile);
@@ -306,7 +306,7 @@ const checkStructures: LevelCheck = (inspection) => {
   const { level, content, declarations, map } = inspection;
   for (const structure of level.structures ?? []) {
     if (!content.structures.has(structure.type)) inspection.error(`未知结构 "${structure.type}"`);
-    if (map && (structure.x < 0 || structure.y < 0 || structure.x >= map.width || structure.y >= map.height)) {
+    if (map && !inBounds(map, structure.x, structure.y)) {
       inspection.error(`结构越界：${structure.id}@${structure.x},${structure.y}`);
     }
     if (structure.owner !== undefined && structure.owner !== 0 && !declarations.players.has(structure.owner)) {
@@ -337,7 +337,7 @@ const checkZones: LevelCheck = (inspection) => {
   const { level, declarations, map } = inspection;
   for (const zone of level.scenario?.zones ?? []) {
     for (const cell of zone.cells) {
-      if (map && (cell.x < 0 || cell.y < 0 || cell.x >= map.width || cell.y >= map.height)) {
+      if (map && !inBounds(map, cell.x, cell.y)) {
         inspection.error(`区域 ${zone.id} 包含越界格：${cell.x},${cell.y}`);
       }
     }

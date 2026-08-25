@@ -3035,6 +3035,31 @@ describe('one answer per question', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('asks whether a cell is on the board, and where it is, in one place', () => {
+    /*
+     * `grid.ts` has owned both since the beginning: `inBounds(map, x, y)` and
+     * `idx(map, x, y)`. Seven places wrote the four-clause bounds test out by hand
+     * — the level validator three times, the map reader twice, the generic terrain
+     * painter and the campaign's scene — and nine wrote `y * width + x`.
+     *
+     * The editor's resize is the one that shows why it matters: it copied three
+     * layers between two maps of *different widths*, with both indices spelled out,
+     * which is exactly where row-major arithmetic goes wrong and nothing tells you.
+     */
+    const owner = join(packagesRoot, 'battle-engine', 'src', 'grid.ts');
+    const byHand = /<\s*0\s*(?:\|\||&&)[^;\n]*(?:>=|<)\s*\w*\.?width|\b\w+\s*\*\s*(?:\w+\.)?width\s*\+\s*\w/;
+    const offenders = [...everyPackageSource(), ...appSources(), ...toolSources()].flatMap((file) => {
+      if (file === owner) return [];
+      const code = stripComments(readFileSync(file, 'utf8'));
+      return byHand.test(code) ? [relative(packagesRoot, file)] : [];
+    });
+
+    const source = readFileSync(owner, 'utf8');
+    expect(source).toMatch(/export const inBounds = /);
+    expect(source).toMatch(/export const idx = /);
+    expect(offenders).toEqual([]);
+  });
+
   it('asks whether two cells are the same in one place', () => {
     /*
      * `sameCoord` has been in `grid.ts` all along, and five modules imported it.

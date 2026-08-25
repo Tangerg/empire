@@ -266,9 +266,13 @@ export class EditorDocument {
     const elevation: number[] = new Array(width * height).fill(0);
     for (let y = 0; y < Math.min(height, old.height); y++) {
       for (let x = 0; x < Math.min(width, old.width); x++) {
-        tiles[y * width + x] = old.tiles[y * old.width + x];
-        owners[y * width + x] = old.owners[y * old.width + x];
-        elevation[y * width + x] = old.elevation[y * old.width + x];
+        // Both indices through `idx`: the same row-major arithmetic on two
+        // different widths is exactly where a resize gets it wrong.
+        const to = idx({ width }, x, y);
+        const from = idx(old, x, y);
+        tiles[to] = old.tiles[from];
+        owners[to] = old.owners[from];
+        elevation[to] = old.elevation[from];
       }
     }
     this.map = {

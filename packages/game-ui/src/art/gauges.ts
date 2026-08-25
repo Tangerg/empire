@@ -19,6 +19,16 @@ import { PAL } from './palette';
  * the unit bar and the HUD already used, because those were the two that agreed.
  */
 
+/**
+ * How much of a bar is filled, for a reading that may arrive out of range.
+ *
+ * `gaugeRatio` in the engine divides and clamps, and its own note warns against
+ * using it for anything but a gauge. This is the other half — a fraction that is
+ * already a fraction, made safe to draw — and it was written out at both places
+ * that draw a bar: `tileGaugeBar` below and the HUD's `hpBar`.
+ */
+export const gaugeFill = (ratio: number): number => Math.max(0, Math.min(1, ratio));
+
 /** The band a fraction falls in: healthy, hurt, or nearly gone. */
 export const gaugeColor = (ratio: number): string =>
   ratio > 0.6 ? PAL.hpGood : ratio > 0.3 ? PAL.hpMid : PAL.hpLow;
@@ -26,4 +36,4 @@ export const gaugeColor = (ratio: number): string =>
 /** A bar across the foot of one cell, in tile units. */
 export const tileGaugeBar = (ratio: number): string =>
   `<rect x="5" y="27.6" width="22" height="3.6" rx="1.8" fill="${PAL.ink}" opacity="0.65"/>
-           <rect x="5.6" y="28.2" width="${(20.8 * Math.max(0, Math.min(1, ratio))).toFixed(2)}" height="2.4" rx="1.2" fill="${gaugeColor(ratio)}"/>`;
+           <rect x="5.6" y="28.2" width="${(20.8 * gaugeFill(ratio)).toFixed(2)}" height="2.4" rx="1.2" fill="${gaugeColor(ratio)}"/>`;

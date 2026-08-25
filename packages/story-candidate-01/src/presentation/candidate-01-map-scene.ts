@@ -1,4 +1,4 @@
-import { tileHash, type ContentCatalog, type GameMap, type TerrainId } from '@empire/battle-engine';
+import { tileHash, type ContentCatalog, type GameMap, type TerrainId, inBounds, idx} from '@empire/battle-engine';
 import { candidate01Asset } from './candidate-01-assets';
 import {
   CANDIDATE_01_ENVIRONMENT,
@@ -48,7 +48,7 @@ const ORTHOGONAL = [[0, -1], [1, 0], [0, 1], [-1, 0]] as const;
 const cellOrigin = (x: number, y: number): { x: number; y: number } => ({ x: x * TILE, y: y * TILE });
 
 const tileAt = (map: GameMap, x: number, y: number): TerrainId | null =>
-  x < 0 || y < 0 || x >= map.width || y >= map.height ? null : map.tiles[y * map.width + x];
+  inBounds(map, x, y) ? map.tiles[idx(map, x, y)] : null;
 
 /** Somewhere a traveller could walk from here: a way, or a threshold it runs into. */
 const isRoute = (content: ContentCatalog, map: GameMap, x: number, y: number): boolean => {

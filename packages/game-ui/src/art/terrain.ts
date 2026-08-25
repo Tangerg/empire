@@ -6,6 +6,7 @@ import {
   type TerrainId,
   type ContentCatalog,
   idx,
+  inBounds,
 } from '@empire/battle-engine';
 import type { BoardPiece } from './board-surface';
 import { PAL } from './palette';
@@ -312,7 +313,7 @@ export function terrainMarkup(art: ArtDirection, terrain: TerrainDef, ctx: TileC
 
 /** True when the neighbour should visually connect to this tile. */
 function links(content: ContentCatalog, map: GameMap, id: TerrainId, x: number, y: number): boolean {
-  if (x < 0 || y < 0 || x >= map.width || y >= map.height) return false;
+  if (!inBounds(map, x, y)) return false;
   const other = map.tiles[idx(map, x, y)];
   if (other === id) return true;
   const a = content.terrains.get(id);
