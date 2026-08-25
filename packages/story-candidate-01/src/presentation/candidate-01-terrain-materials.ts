@@ -25,6 +25,21 @@ import type { ContentCatalog, TerrainId } from '@empire/battle-engine';
 /** The surface a field is painted on before anything is drawn over it. */
 export const CANDIDATE_FIELD_BASE = 'surface-meadow';
 
+/**
+ * How this kit's surface cells are fitted into the cells they are drawn in.
+ *
+ * The sheets declare `edgeLocked: true`, which reads as a promise that their four
+ * cells tile seamlessly. They do not: every cell carries a darkened border, and
+ * tiling one draws that border once per boundary — visible at exactly 1:1 with
+ * filtering turned off, so it is in the art and no renderer setting reaches it.
+ *
+ * Three units off each edge of a 32-unit cell, magnifying what is left by 1.23 to
+ * fill the box. Ground this soft can afford the magnification; a road cannot,
+ * which is why only the surface pass is fitted this way. The bleed on top of it is
+ * for the rasteriser rather than the art — see `RuntimeTileFit`.
+ */
+export const CANDIDATE_SURFACE_FIT = { inset: 3, bleed: 0.5 } as const;
+
 /** A connected sheet: a road or a watercourse, knitted to its own kind. */
 export interface CandidateConnected {
   readonly atlas: string;
@@ -61,6 +76,15 @@ export interface CandidateScenery {
 export interface CandidateMaterial {
   /** A surface tile drawn instead of the field base, for a hard-edged material. */
   readonly surface?: string;
+  /**
+   * Which cell of that surface sheet, defaulting to the first.
+   *
+   * A sheet's four cells are four materials, not four shades of one: the meadow's
+   * are flowering grass, bare dirt, grass over stones and a blue-flowered patch.
+   * So the choice belongs to the terrain, not to a per-cell hash — hashing it
+   * turns a field into a patchwork of squares whichever block size you use.
+   */
+  readonly tone?: number;
   /**
    * A blob sheet that paints this material over the field base with soft edges.
    *
@@ -114,7 +138,17 @@ const RIVER: CandidateConnected = { atlas: 'water-slow-river', mask: 'same' };
  */
 const MATERIALS: Readonly<Partial<Record<TerrainId, CandidateMaterial>>> = {
   plain: {
-    decals: { ids: ['grass-tuft-a', 'grass-tuft-b', 'grass-tuft-c', 'fallen-leaves'], chance: 0.12, scale: 0.58 },
+    // The ground's variation is these, not the surface sheet: an outline with no
+    // straight edge cannot line up with its neighbour into a lattice.
+    decals: {
+      ids: [
+        'grass-tuft-a', 'grass-tuft-b', 'grass-tuft-c', 'fallen-leaves',
+        'stone-cluster-a', 'stone-cluster-b', 'mud-patch', 'animal-tracks',
+        'exposed-roots', 'mossy-boulder',
+      ],
+      chance: 0.3,
+      scale: 0.58,
+    },
   },
   road: { connected: DIRT_ROAD, decals: { ids: ['cart-ruts', 'bootprints'], chance: 0.16, scale: 0.55 } },
   forest: {
@@ -122,11 +156,16 @@ const MATERIALS: Readonly<Partial<Record<TerrainId, CandidateMaterial>>> = {
     scenery: { ids: FOREST_CANOPY, scale: 0.74, jitter: 9 },
   },
   hill: {
+    // The meadow sheet's third cell is grass over broken stone: a slope, exactly.
+    tone: 2,
     decals: { ids: ['stone-cluster-a', 'grass-tuft-c'], chance: 0.3, scale: 0.6 },
     scenery: { ids: ['temperate-hill-cap', 'temperate-low-ledge', 'temperate-talus-foot'], scale: 0.46, jitter: 5 },
   },
   mountain: {
-    surface: 'surface-old-stone',
+    // Bare scree, not the cobbles of `surface-old-stone` — that sheet is paving,
+    // and a mountain paved with it read as a courtyard dropped in a meadow.
+    surface: 'surface-wasteland',
+    tone: 2,
     scenery: {
       ids: ['temperate-pillar-wide', 'temperate-plateau-cap', 'temperate-mountain-pass', 'temperate-cliff-convex-corner'],
       scale: 0.56,
@@ -177,6 +216,8 @@ const MATERIALS: Readonly<Partial<Record<TerrainId, CandidateMaterial>>> = {
   },
   'c01.molten': {
     surface: 'surface-wasteland',
+    // The one reddish cell of the four: burnt ground, not desert sand.
+    tone: 1,
     scenery: { ids: ['forge-ember-pile', 'wasteland-rock-spire'], scale: 0.42, chance: 0.6 },
   },
   'c01.mother-root': {
@@ -202,6 +243,7 @@ const BY_TAG: readonly (readonly [string, CandidateMaterial])[] = [
   ['road', { connected: DIRT_ROAD }],
   ['building', { connected: DIRT_ROAD }],
   ['blocking', { surface: 'surface-old-stone' }],
+  ['high', { surface: 'surface-wasteland', tone: 2 }],
   ['urban', { surface: 'surface-old-stone' }],
   ['graveyard', { surface: 'surface-graveyard' }],
   ['forge', { surface: 'surface-forge-stone' }],

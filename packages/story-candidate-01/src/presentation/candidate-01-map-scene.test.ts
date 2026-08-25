@@ -66,9 +66,16 @@ describe('candidate-01 authored map scenery', () => {
     const surfaces = layers.ground
       .slice(0, map.width * map.height)
       .map((piece) => piece.markup);
-    // Four patch variants per material, and this map is made of two: meadow and
-    // the old stone its mountains stand on. Seven of the eight appear.
-    expect(new Set(surfaces).size).toBe(7);
+    /*
+     * One picture per material on the map, not one per cell and not four.
+     *
+     * Twin Hills is made of three: the meadow, the hillsides drawn in the meadow
+     * sheet's stony cell, and the scree its mountains stand on. It used to be four
+     * — one per variant of the single surface — and every arrangement of those
+     * variants across the field, by cell or by block, read as a pattern laid over
+     * the map. A sheet's cells are materials; the material table picks one each.
+     */
+    expect(new Set(surfaces).size).toBe(3);
     // And every piece says where it goes, rather than carrying it inside.
     expect(layers.ground.every((piece) => !piece.markup.includes('translate') || piece.markup.includes('scale')))
       .toBe(true);

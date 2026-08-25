@@ -100,18 +100,72 @@ export function runtimeUnitPicture(sheet: RuntimeUnitSheet, team: string): Board
   };
 }
 
-/** Render one atlas cell without resampling, clipped to the requested viewport. */
-export function runtimeAtlasCellMarkup(atlas: RuntimeCellAtlas, cell: number): string {
+/** How a cell is fitted into the box it is drawn in. */
+export interface RuntimeTileFit {
+  /**
+   * How far the drawing spills past its box, in cell units.
+   *
+   * A cell drawn at exactly its own box leaves a hairline where it meets its
+   * neighbour: the board is presented at whatever scale the window allows, so a
+   * cell's edge lands on a fraction of a device pixel and the browser antialiases
+   * the clip. Two neighbours each covering 70% of the shared edge leave 30% of
+   * what is behind them showing through, once per boundary — a lattice over the
+   * whole field, which is the third way this field has grown one.
+   */
+  readonly bleed?: number;
+  /**
+   * How much of each edge of the *source* cell to leave out, in cell units.
+   *
+   * For a sheet whose cells carry a baked border. Tiling such a cell draws that
+   * border once per boundary whatever the renderer does — it is in the art, and it
+   * shows at exactly 1:1 with no filtering at all. Sampling the inside of the cell
+   * and stretching it over the box drops the border; the cost is that the cell is
+   * magnified by `cellWidth / (cellWidth - 2 * inset)`, which organic ground can
+   * afford and a road connecting to its neighbour cannot.
+   */
+  readonly inset?: number;
+}
+
+/** One atlas cell, fitted into a box of the cell's own size. */
+function atlasCell(atlas: RuntimeCellAtlas, cell: number, fit: RuntimeTileFit): string {
   validateAtlas(atlas);
   finiteInt(cell, 'cell');
   const capacity = atlas.columns * atlas.rows;
   if (cell >= capacity) throw new Error(`cell ${cell} exceeds atlas capacity ${capacity}`);
+  const { bleed = 0, inset = 0 } = fit;
+  if (inset * 2 >= Math.min(atlas.cellWidth, atlas.cellHeight)) {
+    throw new Error(`inset ${inset} leaves nothing of a ${atlas.cellWidth}x${atlas.cellHeight} cell`);
+  }
 
   const column = cell % atlas.columns;
   const row = Math.floor(cell / atlas.columns);
-  const width = atlas.cellWidth * atlas.columns;
-  const height = atlas.cellHeight * atlas.rows;
-  return `<svg width="${atlas.cellWidth}" height="${atlas.cellHeight}" viewBox="0 0 ${atlas.cellWidth} ${atlas.cellHeight}" overflow="hidden" shape-rendering="crispEdges" data-runtime-raster="atlas-cell">
-    <image href="${attr(atlas.href)}" x="${-column * atlas.cellWidth}" y="${-row * atlas.cellHeight}" width="${width}" height="${height}" preserveAspectRatio="none"/>
+  // The magnification that maps the cell's kept interior onto the whole box.
+  const zoomX = atlas.cellWidth / (atlas.cellWidth - inset * 2);
+  const zoomY = atlas.cellHeight / (atlas.cellHeight - inset * 2);
+  const width = atlas.cellWidth * atlas.columns * zoomX;
+  const height = atlas.cellHeight * atlas.rows * zoomY;
+  const x = -(column * atlas.cellWidth + inset) * zoomX;
+  const y = -(row * atlas.cellHeight + inset) * zoomY;
+  const box = bleed === 0
+    ? `width="${atlas.cellWidth}" height="${atlas.cellHeight}"`
+    : `x="${-bleed}" y="${-bleed}" width="${atlas.cellWidth + bleed * 2}" height="${atlas.cellHeight + bleed * 2}"`;
+  return `<svg ${box} viewBox="0 0 ${atlas.cellWidth} ${atlas.cellHeight}" overflow="hidden" shape-rendering="crispEdges" data-runtime-raster="atlas-cell">
+    <image href="${attr(atlas.href)}" x="${x}" y="${y}" width="${width}" height="${height}" preserveAspectRatio="none"/>
   </svg>`;
 }
+
+/** Render one atlas cell without resampling, clipped to the requested viewport. */
+export const runtimeAtlasCellMarkup = (atlas: RuntimeCellAtlas, cell: number): string =>
+  atlasCell(atlas, cell, {});
+
+/**
+ * One atlas cell drawn as a tile in a continuous field.
+ *
+ * Only the ground is drawn this way: a structure or an icon has no neighbour to
+ * meet, and both of `RuntimeTileFit`'s adjustments would move it.
+ */
+export const runtimeTileMarkup = (
+  atlas: RuntimeCellAtlas,
+  cell: number,
+  fit: RuntimeTileFit = { bleed: 0.5 },
+): string => atlasCell(atlas, cell, fit);

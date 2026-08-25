@@ -9,7 +9,9 @@ import {
   boardPiecesMarkup,
   escapeAttr as attr,
   runtimeAtlasCellMarkup,
+  runtimeTileMarkup,
   wholeField,
+  type RuntimeTileFit,
   type BoardPiece,
   type BattleSceneContext,
 } from '@empire/game-ui';
@@ -19,6 +21,7 @@ import {
   CANDIDATE_FOREST_FLOOR,
   CANDIDATE_FOUNDATIONS,
   CANDIDATE_FRAME_TREES,
+  CANDIDATE_SURFACE_FIT,
   candidateMaterial,
   type CandidateConnected,
   type CandidateMaterial,
@@ -69,9 +72,15 @@ export function candidate01SceneProfile(): SceneViewportProfile {
  * module in the repository read any of them. Two classes here are real, and both
  * carry a filter: the road and its edge.
  */
-function atlasCellMarkup(atlasId: string, cell: number, className?: string): string {
+function atlasCellMarkup(
+  atlasId: string,
+  cell: number,
+  { className, fit }: { className?: string; fit?: RuntimeTileFit } = {},
+): string {
   const atlas = CANDIDATE_01_ENVIRONMENT.atlas(atlasId);
-  const figure = runtimeAtlasCellMarkup(atlas.raster, cell);
+  // A tile, not a cell: the ground is continuous, so each one spills past its own
+  // box and the seam between two of them is covered twice.
+  const figure = runtimeTileMarkup(atlas.raster, cell, fit ?? { bleed: 0.5 });
   return className ? `<g class="${className}">${figure}</g>` : figure;
 }
 
@@ -172,6 +181,27 @@ function placementPiece(placement: CandidateEnvironmentPlacement): BoardPiece | 
   };
 }
 
+/**
+ * The ground of one cell: one tone of one material.
+ *
+ * *One* tone, chosen by the material. A surface sheet's four cells are not four
+ * shades of one ground — the meadow's are flowering grass, bare dirt, grass over
+ * stones and a blue-flowered patch. Choosing between them per cell reads as a
+ * checkerboard; choosing per 4×3 block, which is what this did, reads as a
+ * lattice, because the block boundaries continue across the whole field.
+ * Staggering the blocks only bends the lines. They are materials, so the material
+ * table picks one, and the variation on the ground comes from the decals — an
+ * outline with no straight edge cannot line up with its neighbour into anything.
+ *
+ * One orientation, too. Mirroring the tile per cell was an attempt to break the
+ * repeat for free, and it costs the same thing the four tones cost: the cell is
+ * not uniform, so its bright corner lands somewhere different in each of the four
+ * orientations and the field reads as a checker again. A plain repeat of soft
+ * ground is quieter than any arrangement of variety at cell resolution.
+ */
+const surfaceMarkup = (atlasId: string, tone: number): string =>
+  atlasCellMarkup(atlasId, tone, { fit: CANDIDATE_SURFACE_FIT });
+
 /** One field the whole map is read through: what each cell is made of. */
 type MaterialField = (x: number, y: number) => CandidateMaterial | null;
 
@@ -232,11 +262,8 @@ function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
       if (id === null) continue;
       const material = candidateMaterial(content, id);
 
-      // Broad material patches avoid the noisy checkerboard produced by a
-      // per-cell random variant while still breaking up a flat tiled field.
-      const patchVariant = Math.floor(tileHash(Math.floor(x / 4), Math.floor(y / 3), 1101) * 4);
       surfaces.push({
-        markup: atlasCellMarkup(material.surface ?? CANDIDATE_FIELD_BASE, patchVariant),
+        markup: surfaceMarkup(material.surface ?? CANDIDATE_FIELD_BASE, material.tone ?? 0),
         ...at,
       });
 
@@ -251,12 +278,12 @@ function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
         const cell = CANDIDATE_01_ENVIRONMENT.connectedIndex(material.connected.atlas, mask, variant);
         // These two classes are the only ones in this layer a stylesheet reads.
         connections.push({
-          markup: atlasCellMarkup(material.connected.atlas, cell, 'candidate-ground-route'),
+          markup: atlasCellMarkup(material.connected.atlas, cell, { className: 'candidate-ground-route' }),
           ...at,
         });
         if (material.connected.edge) {
           connections.push({
-            markup: atlasCellMarkup(material.connected.edge, cell, 'candidate-ground-route-edge'),
+            markup: atlasCellMarkup(material.connected.edge, cell, { className: 'candidate-ground-route-edge' }),
             ...at,
           });
         }
