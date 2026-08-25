@@ -173,9 +173,12 @@ const CLICK_CELL = (x: number, y: number) => `
   const box = svg.getBoundingClientRect();
   const view = svg.viewBox?.baseVal ?? { x: 0, y: 0, width: box.width, height: box.height };
   const scale = Math.min(box.width / view.width, box.height / view.height);
+  // The field's own cell (0,0) is at scene (0,0); a painted scene's margin is the
+  // *negative* part of the viewBox. Adding \`view.x\` put cell (0,0) in the margin
+  // and slid the whole sweep off the field's right and bottom edges.
   const point = {
-    clientX: box.left + (box.width - view.width * scale) / 2 + (view.x + (${x} + 0.5) * 32) * scale,
-    clientY: box.top + (box.height - view.height * scale) / 2 + (view.y + (${y} + 0.5) * 32) * scale,
+    clientX: box.left + (box.width - view.width * scale) / 2 + (-view.x + (${x} + 0.5) * 32) * scale,
+    clientY: box.top + (box.height - view.height * scale) / 2 + (-view.y + (${y} + 0.5) * 32) * scale,
   };
   svg.dispatchEvent(new PointerEvent('pointermove', { ...point, bubbles: true }));
   svg.dispatchEvent(new PointerEvent('pointerdown', { ...point, bubbles: true, button: 0 }));
@@ -203,11 +206,23 @@ const PLAYERS_TURN = `
   return Boolean(control && !control.disabled && hud.includes('你的回合'));
 `;
 
+/**
+ * How many cells there are to click, counted from the field's own origin.
+ *
+ * `view.width / 32` is the *scene* — the field plus the painted margin around it —
+ * so it over-counts by the margin on both sides. Counting from the field origin to
+ * the far edge of the viewBox covers every field cell and a little of the right
+ * and bottom margin, which is harmless: a click outside the field is a click on
+ * nothing.
+ */
 const BOARD_SIZE = `
   const svg = document.querySelector('svg.board');
   if (!svg) return null;
   const view = svg.viewBox.baseVal;
-  return { columns: Math.round(view.width / 32), rows: Math.round(view.height / 32) };
+  return {
+    columns: Math.ceil((view.width + view.x) / 32),
+    rows: Math.ceil((view.height + view.y) / 32),
+  };
 `;
 
 /**
