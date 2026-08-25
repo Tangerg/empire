@@ -53,8 +53,6 @@ export class UnitDepartureHandlerRegistry extends KeyedRegistry<string, UnitDepa
   }
 }
 
-export const UnitDepartureHandlers = new UnitDepartureHandlerRegistry();
-
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
 export interface UnitDepartureRules extends GridRules {
   readonly content: ContentCatalog;

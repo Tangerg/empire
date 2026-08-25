@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { GENERIC_ART, TILE } from '@empire/game-ui';
 import { normaliseLevel, createBattleEngine } from '@empire/battle-engine';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
@@ -63,6 +63,8 @@ describe('editor toolbox', () => {
 
     expect(() => set().register(twin('b', 'x'))).toThrow(/share hotkey/);
     expect(() => set().register(twin('a', 'y'))).toThrow(/already registered/);
+    expect(() => new EditorToolRegistry().register(twin('upper', 'X'))).toThrow(/lowercase character/);
+    expect(() => new EditorToolRegistry().default).toThrow(/cannot be empty/);
   });
 
   /**
@@ -84,6 +86,7 @@ describe('editor toolbox', () => {
     // The shared set is untouched: a clone is what a host composes with.
     expect(EDITOR_TOOLS.tryGet('probe')).toBeUndefined();
     expect(tools.default).toBe(EDITOR_TOOLS.default);
+    expect(() => EDITOR_TOOLS.register(probe('不应写入共享默认值'))).toThrow(/sealed after composition/);
   });
 
   it('gives every tool exactly one way to act', () => {
@@ -126,6 +129,17 @@ describe('tools drive the editor', () => {
     stubLayout(board, source.width * TILE, source.height * TILE);
   });
 
+  afterEach(() => app.dispose());
+
+  it('releases document shortcuts when the editor is disposed', () => {
+    expect(host.querySelector('.btn.tool.active')?.getAttribute('data-arg')).toBe('terrain');
+    app.dispose();
+    press('h');
+
+    expect(host.querySelector('.btn.tool.active')?.getAttribute('data-arg')).toBe('terrain');
+    expect(() => app.mount(host)).toThrow(/disposed editor/);
+  });
+
   it('selects every advertised tool by its shortcut', () => {
     // The elevation, cliff and cover tools advertised H/J/K in their tooltips
     // while the key handler only knew seven of the ten tools.
@@ -133,6 +147,33 @@ describe('tools drive the editor', () => {
       press(tool.hotkey);
       expect(host.querySelector('.btn.tool.active')!.getAttribute('data-arg'), tool.id).toBe(tool.id);
     }
+  });
+
+  it('renders the toolbox composed by its host and owns an isolated runtime copy', () => {
+    const probe: EditorTool = {
+      id: 'probe',
+      name: '探针',
+      hotkey: 'z',
+      icon: 'grid',
+      highlight: (_context, cursor) => [cursor],
+      paint: () => {},
+    };
+    const tools = EDITOR_TOOLS.clone().register(probe);
+    const custom = new EditorApp(
+      { ...TEST_SETUP, tools },
+      normaliseLevel(JSON.parse(JSON.stringify(source))),
+    );
+    custom.mount(host);
+
+    expect(host.querySelector('.btn.tool[data-arg="probe"]')).not.toBeNull();
+    press('z');
+    expect(host.querySelector('.btn.tool.active')?.getAttribute('data-arg')).toBe('probe');
+
+    tools.register({ ...probe, id: 'late', name: '迟到工具', hotkey: 'y' });
+    expect(host.querySelector('.btn.tool[data-arg="late"]')).toBeNull();
+    press('y');
+    expect(host.querySelector('.btn.tool.active')?.getAttribute('data-arg')).toBe('probe');
+    custom.dispose();
   });
 
   it('paints a whole rectangle on release, as one undo step', () => {

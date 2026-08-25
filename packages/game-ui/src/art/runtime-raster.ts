@@ -16,9 +16,9 @@ export interface RuntimeUnitSheet {
   frameHeight: number;
   frameCount: number;
   anchor: { x: number; y: number };
-  idleFrame?: number;
-  walkFrames?: readonly [number, number];
-  attackFrame?: number;
+  idleFrame: number;
+  walkFrames: readonly [number, number];
+  attackFrame: number;
 }
 
 /** A fixed-cell atlas used for terrain, structures, icons and effects. */
@@ -26,15 +26,6 @@ export interface RuntimeCellAtlas {
   href: string;
   cellWidth: number;
   cellHeight: number;
-  columns: number;
-  rows: number;
-}
-
-/** A regular grid atlas whose cells may have fractional source dimensions. */
-export interface RuntimeGridAtlas {
-  href: string;
-  width: number;
-  height: number;
   columns: number;
   rows: number;
 }
@@ -73,9 +64,7 @@ export function runtimeUnitPicture(sheet: RuntimeUnitSheet, team: string): Board
   finiteInt(sheet.anchor.x, 'anchor.x');
   finiteInt(sheet.anchor.y, 'anchor.y');
 
-  const idleFrame = sheet.idleFrame ?? 0;
-  const walkFrames = sheet.walkFrames ?? [1, 3];
-  const attackFrame = sheet.attackFrame ?? Math.min(2, sheet.frameCount - 1);
+  const { idleFrame, walkFrames, attackFrame } = sheet;
   for (const [name, value] of [
     ['idleFrame', idleFrame],
     ['walkFrameA', walkFrames[0]],
@@ -124,39 +113,5 @@ export function runtimeAtlasCellMarkup(atlas: RuntimeCellAtlas, cell: number): s
   const height = atlas.cellHeight * atlas.rows;
   return `<svg width="${atlas.cellWidth}" height="${atlas.cellHeight}" viewBox="0 0 ${atlas.cellWidth} ${atlas.cellHeight}" overflow="hidden" shape-rendering="crispEdges" data-runtime-raster="atlas-cell">
     <image href="${attr(atlas.href)}" x="${-column * atlas.cellWidth}" y="${-row * atlas.cellHeight}" width="${width}" height="${height}" preserveAspectRatio="none"/>
-  </svg>`;
-}
-
-/**
- * Crop one cell from an arbitrary regular grid and scale it to presentation
- * size. This is intentionally separate from fixed runtime atlases: generated
- * environment sheets are not guaranteed to divide into integer pixel cells.
- */
-export function runtimeGridAtlasCellMarkup(
-  atlas: RuntimeGridAtlas,
-  cell: number,
-  outputWidth: number,
-  outputHeight: number,
-  className = '',
-): string {
-  finiteInt(atlas.width, 'width', 1);
-  finiteInt(atlas.height, 'height', 1);
-  finiteInt(atlas.columns, 'columns', 1);
-  finiteInt(atlas.rows, 'rows', 1);
-  finiteInt(cell, 'cell');
-  finiteInt(outputWidth, 'outputWidth', 1);
-  finiteInt(outputHeight, 'outputHeight', 1);
-  const capacity = atlas.columns * atlas.rows;
-  if (cell >= capacity) throw new Error(`cell ${cell} exceeds grid atlas capacity ${capacity}`);
-
-  const cellWidth = atlas.width / atlas.columns;
-  const cellHeight = atlas.height / atlas.rows;
-  const column = cell % atlas.columns;
-  const row = Math.floor(cell / atlas.columns);
-  const viewX = column * cellWidth;
-  const viewY = row * cellHeight;
-  const classAttr = className ? ` class="${attr(className)}"` : '';
-  return `<svg width="${outputWidth}" height="${outputHeight}" viewBox="${viewX} ${viewY} ${cellWidth} ${cellHeight}" overflow="hidden"${classAttr} data-runtime-raster="grid-atlas-cell">
-    <image href="${attr(atlas.href)}" x="0" y="0" width="${atlas.width}" height="${atlas.height}" preserveAspectRatio="none"/>
   </svg>`;
 }

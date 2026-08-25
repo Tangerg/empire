@@ -17,12 +17,16 @@ import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
+const sceneContext = (levelId: string, map: ReturnType<typeof mapFromLevel>) => {
+  const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile(levelId));
+  return { content: TEST_CATALOG, levelId, map, viewport };
+};
 
 describe('candidate-01 authored map scenery', () => {
   it('composes high-resolution surfaces, connected roads and authored regions for Twin Hills', () => {
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
     expect(candidate01EnvironmentScene('c01-01')?.mapSize).toEqual([map.width, map.height]);
-    const layers = candidate01MapSceneryLayers('c01-01', map);
+    const layers = candidate01MapSceneryLayers(sceneContext('c01-01', map));
     const markup = boardPiecesMarkup([...layers.ground, ...layers.underUnits, ...layers.overUnits]);
 
     expect(markup).toContain('data-runtime-raster="atlas-cell"');
@@ -71,7 +75,7 @@ describe('candidate-01 authored map scenery', () => {
   it('authors a non-playable forest frame outside the logical cells', () => {
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
     const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile('c01-01'));
-    const frame = candidate01SceneFrameMarkup('c01-01', map, viewport);
+    const frame = candidate01SceneFrameMarkup({ content: TEST_CATALOG, levelId: 'c01-01', map, viewport });
 
     expect(viewport.sceneWidth).toBeGreaterThan(map.width * 32);
     expect(frame.backdrop).toContain('data-scene-viewport="authored-wide"');
@@ -81,7 +85,7 @@ describe('candidate-01 authored map scenery', () => {
 
   it('does not leak authored Twin Hills dressing into other maps', () => {
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-02'));
-    expect(candidate01MapSceneryLayers('c01-02', map)).toEqual({
+    expect(candidate01MapSceneryLayers(sceneContext('c01-02', map))).toEqual({
       ground: [],
       underUnits: [],
       overUnits: [],
@@ -103,8 +107,8 @@ describe('the board carries its own look', () => {
   it('ships the pack style with every level, painted or not', () => {
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
     const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile('c01-01'));
-    const painted = candidate01SceneFrameMarkup('c01-01', map, viewport);
-    const plain = candidate01SceneFrameMarkup('c01-09', map, viewport);
+    const painted = candidate01SceneFrameMarkup({ content: TEST_CATALOG, levelId: 'c01-01', map, viewport });
+    const plain = candidate01SceneFrameMarkup({ content: TEST_CATALOG, levelId: 'c01-09', map, viewport });
 
     for (const [label, frame] of [['painted', painted], ['plain', plain]] as const) {
       expect(frame.backdrop, label).toContain('<style>');

@@ -18,11 +18,5 @@ export const CANDIDATE_01_CONTENT_PACK: ContentPack = {
   structures: CANDIDATE_01_STRUCTURES,
 };
 
-export * from './weapons';
-export * from './units';
-export * from './tactics';
-export * from './terrain';
-export * from './levels';
-export * from './campaign';
-export * from './story';
-export * from './structures';
+export { CANDIDATE_01_LEVELS, candidate01Level } from './levels';
+export { CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN } from './campaign';

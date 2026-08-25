@@ -150,7 +150,7 @@ function sweep(level: LevelData, aggression: number): string[] {
     try {
       events = session.tryDispatch(session.chooseAiAction()) ?? session.tryDispatch({ kind: 'endTurn' }) ?? [];
     } catch (error) {
-      found.push(`${where} #${actions}: THREW ${(error as Error).message}`);
+      found.push(`${where} #${actions}: THREW ${error instanceof Error ? error.message : String(error)}`);
       break;
     }
     actions++;
@@ -168,7 +168,7 @@ function sweep(level: LevelData, aggression: number): string[] {
         const resumed = TEST_ENGINE.loadBattle(JSON.parse(JSON.stringify(session.save())));
         if (hashState(resumed) !== digest) found.push(`${where} #${actions}: save round-trip changed the battle`);
       } catch (error) {
-        found.push(`${where} #${actions}: own save refused: ${(error as Error).message}`);
+        found.push(`${where} #${actions}: own save refused: ${error instanceof Error ? error.message : String(error)}`);
       }
     }
 

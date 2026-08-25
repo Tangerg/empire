@@ -1,5 +1,6 @@
 import type {
   BattlefieldMarker,
+  ContentCatalog,
   GameMap,
   StructureDef,
   StructureState,
@@ -26,7 +27,7 @@ export interface BattlePresentation {
   decorations?: BoardDecorations;
   matches(levelId: string): boolean;
   sceneProfile(levelId: string): SceneViewportProfile;
-  sceneFrame(levelId: string, map: GameMap, viewport: SceneViewport): SceneFrameMarkup;
+  sceneFrame(scene: BattleSceneContext): SceneFrameMarkup;
   /**
    * Art drawn inside the tactical rectangle.
    *
@@ -34,7 +35,7 @@ export interface BattlePresentation {
    * how wide the field is, and `map.width * TILE` is the square tiling written
    * into the port — a hex board of the same columns is half a cell wider.
    */
-  sceneLayers(levelId: string, map: GameMap, viewport: SceneViewport): SceneLayers;
+  sceneLayers(scene: BattleSceneContext): SceneLayers;
   /**
    * How this art draws a destructible structure, or `null` for no opinion.
    *
@@ -59,6 +60,14 @@ export interface BattlePresentation {
    */
   effect(topic: string): BoardPicture;
   healFx?: string;
+}
+
+/** Everything a presentation may read about one scene, explicitly injected. */
+export interface BattleSceneContext {
+  readonly content: ContentCatalog;
+  readonly levelId: string;
+  readonly map: GameMap;
+  readonly viewport: SceneViewport;
 }
 
 const EMPTY_FRAME: SceneFrameMarkup = Object.freeze({ backdrop: '', foreground: '' });
@@ -107,7 +116,7 @@ export const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
   matches: () => true,
   sceneProfile: () => ({}),
   sceneFrame: () => EMPTY_FRAME,
-  sceneLayers: (_levelId: string, _map: GameMap, viewport: SceneViewport) => ({
+  sceneLayers: ({ viewport }: BattleSceneContext) => ({
     ground: [],
     // A fall of light across the whole field: art with no place of its own.
     underUnits: wholeField(genericFieldLight(viewport)),
@@ -127,4 +136,3 @@ export const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
  */
 export const decorationsFor = (presentation: BattlePresentation): BoardDecorations =>
   presentation.decorations ?? SquareBoardDecorations;
-

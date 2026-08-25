@@ -39,4 +39,6 @@ const setup: EditorSetup = {
   presets: [...ANCIENT_EMPIRES_LEVELS, ...CANDIDATE_01_LEVELS],
 };
 
-new EditorApp(setup, initialLevel(setup)).mount(document.getElementById('app')!);
+const editor = new EditorApp(setup, initialLevel(setup));
+editor.mount(document.getElementById('app')!);
+window.addEventListener('pagehide', () => editor.dispose(), { once: true });

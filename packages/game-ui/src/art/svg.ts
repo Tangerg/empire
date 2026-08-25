@@ -45,24 +45,6 @@ export function fromMarkup(markup: string): SVGGElement {
   return document.importNode(g, true);
 }
 
-export function html<K extends keyof HTMLElementTagNameMap>(
-  tag: K,
-  attrs: Record<string, string | number | boolean | null | undefined> = {},
-  children: (Node | string)[] = [],
-): HTMLElementTagNameMap[K] {
-  const el = document.createElement(tag);
-  for (const [k, v] of Object.entries(attrs)) {
-    if (v === null || v === undefined || v === false) continue;
-    if (k === 'class') el.className = String(v);
-    else if (k === 'text') el.textContent = String(v);
-    else if (k.startsWith('data-') || k === 'title' || k === 'type' || k === 'value')
-      el.setAttribute(k, String(v));
-    else el.setAttribute(k, String(v));
-  }
-  for (const c of children) el.append(typeof c === 'string' ? c : c);
-  return el;
-}
-
 export function clear(el: Element): void {
   while (el.firstChild) el.removeChild(el.firstChild);
 }

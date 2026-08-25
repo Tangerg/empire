@@ -3,7 +3,8 @@ import {
   type ContentCatalog,
   type BattleRuleServices,
   validateLevel,
-  DEFAULT_RULES,
+  DEFAULT_GRID,
+  DEFAULT_TURN_ORDER,
   type DirectionDef,
   COMMAND_POINTS_RESOURCE,
   FUNDS_RESOURCE,
@@ -27,7 +28,13 @@ import { EditorBoard } from './board';
 import { EditorDocument } from './document';
 import { EditorHistory } from './history';
 import { EditorPanels, type EditorPanelView } from './panels';
-import { BrushSettings, EDITOR_TOOLS, type EditorTool, type EditorToolContext } from './tools';
+import {
+  BrushSettings,
+  EDITOR_TOOLS,
+  type EditorTool,
+  type EditorToolContext,
+  type EditorToolRegistry,
+} from './tools';
 
 const DRAFT_KEY = 'empire.editorDraft';
 
@@ -77,6 +84,10 @@ const NAMED_RULE_FIELDS: ReadonlySet<string> = new Set(['captureMode', 'turnOrde
 
 const numberOrNull = (value: string | boolean) => (value === '' ? null : Number(value));
 
+/** Browser APIs may reject with any JavaScript value, not necessarily an Error. */
+const errorMessage = (error: unknown): string =>
+  error instanceof Error ? error.message : String(error);
+
 /**
  * The game this editor was opened for.
  *
@@ -107,6 +118,8 @@ export interface EditorSetup {
    * editor never asked for it.
    */
   readonly art: ArtDirection;
+  /** Toolbox selected by the host; cloned and sealed when the editor opens. */
+  readonly tools?: EditorToolRegistry;
   /** Levels offered in the open menu, beside the author's own saves. */
   readonly presets: readonly LevelData[];
 }
@@ -117,7 +130,8 @@ export class EditorApp {
   private readonly panels = new EditorPanels();
   private readonly history = new EditorHistory();
 
-  private tool: EditorTool = EDITOR_TOOLS.default;
+  private tool: EditorTool;
+  private readonly tools: EditorToolRegistry;
   private readonly brush: BrushSettings;
   private strokeAnchor: Coord | null = null;
   private cursor: Coord | null = null;
@@ -125,6 +139,7 @@ export class EditorApp {
   private showOwners = true;
   private strokeOpen = false;
   private status = '';
+  private disposed = false;
 
   private readonly root = document.createElement('div');
   private readonly scroller = document.createElement('div');
@@ -137,6 +152,8 @@ export class EditorApp {
   ) {
     const content = setup.rules.content;
     this.content = content;
+    this.tools = (setup.tools ?? EDITOR_TOOLS).clone().seal();
+    this.tool = this.tools.default;
     this.brush = new BrushSettings(content);
     this.doc = EditorDocument.fromLevel(content, level);
     this.ensureOwnerSelection();
@@ -159,14 +176,10 @@ export class EditorApp {
     this.root.append(this.panels.topEl, stage);
 
     this.bindDelegates();
-    document.addEventListener('keydown', (event) => this.onKey(event));
+    document.addEventListener('keydown', this.onKey);
     this.board.el.addEventListener(
       'wheel',
-      (event) => {
-        if (!event.ctrlKey && !event.metaKey) return;
-        event.preventDefault();
-        this.board.setZoom(this.board.zoomLevel - Math.sign(event.deltaY) * 0.1);
-      },
+      this.onBoardWheel,
       { passive: false },
     );
 
@@ -174,7 +187,20 @@ export class EditorApp {
   }
 
   mount(host: HTMLElement): void {
+    if (this.disposed) throw new Error('cannot mount a disposed editor');
     host.replaceChildren(this.root);
+  }
+
+  /** Releases every listener whose lifetime is wider than one DOM callback. */
+  dispose(): void {
+    if (this.disposed) return;
+    this.disposed = true;
+    document.removeEventListener('keydown', this.onKey);
+    this.board.el.removeEventListener('wheel', this.onBoardWheel);
+    for (const host of this.delegateHosts()) {
+      host.removeEventListener('click', this.onDelegateClick);
+      host.removeEventListener('change', this.onDelegateChange);
+    }
   }
 
   /* ------------------------------------------------------------- doc history */
@@ -305,7 +331,13 @@ export class EditorApp {
 
   /* ---------------------------------------------------------------- keyboard */
 
-  private onKey(event: KeyboardEvent): void {
+  private readonly onBoardWheel = (event: WheelEvent): void => {
+    if (!event.ctrlKey && !event.metaKey) return;
+    event.preventDefault();
+    this.board.setZoom(this.board.zoomLevel - Math.sign(event.deltaY) * 0.1);
+  };
+
+  private readonly onKey = (event: KeyboardEvent): void => {
     const target = event.target as HTMLElement;
     if (target && /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName)) return;
 
@@ -322,7 +354,7 @@ export class EditorApp {
     }
     // Each tool declares its own hotkey, so the palette tooltip and the key
     // handler cannot disagree about what a key does.
-    const pressed = EDITOR_TOOLS.forHotkey(event.key);
+    const pressed = this.tools.forHotkey(event.key);
     if (pressed) {
       this.selectTool(pressed);
       this.renderAll();
@@ -337,11 +369,11 @@ export class EditorApp {
       const ids = this.content.terrains.ids();
       if (ids[slot - 1]) {
         this.brush.terrain = ids[slot - 1];
-        this.selectTool(EDITOR_TOOLS.default);
+        this.selectTool(this.tools.default);
         this.renderAll();
       }
     }
-  }
+  };
 
   /* ------------------------------------------------------------------- io */
 
@@ -365,7 +397,7 @@ export class EditorApp {
     } catch (error) {
       // A refused save is reported, never silent: the alternative is telling the
       // author their level is saved when the slot could not be written.
-      this.status = `保存失败：${(error as Error).message}`;
+      this.status = `保存失败：${errorMessage(error)}`;
       this.renderAll();
       return;
     }
@@ -397,7 +429,7 @@ export class EditorApp {
       // The reason comes from the error, not from a guess about it: this used to
       // report a refused clipboard permission for anything at all, including a
       // document that failed to serialise.
-      this.status = `复制失败：${(error as Error).message}`;
+      this.status = `复制失败：${errorMessage(error)}`;
     }
     this.renderTop();
   }
@@ -414,7 +446,7 @@ export class EditorApp {
         mapFromLevel(this.content, level); // fail fast on a broken terrain grid
         this.loadLevel(level, `已载入 ${level.name}`);
       } catch (error) {
-        this.status = `载入失败：${(error as Error).message}`;
+        this.status = `载入失败：${errorMessage(error)}`;
         this.renderTop();
       }
     };
@@ -449,7 +481,7 @@ export class EditorApp {
    * the lint reports as its own finding rather than this panel guessing one.
    */
   private get facings(): readonly DirectionDef[] {
-    return this.setup.rules.grids.tryGet(this.doc.rules.grid ?? DEFAULT_RULES.grid)?.directions ?? [];
+    return this.setup.rules.grids.tryGet(this.doc.rules.grid ?? DEFAULT_GRID)?.directions ?? [];
   }
 
   private panelView(issues: readonly LevelIssue[] = []): EditorPanelView {
@@ -458,6 +490,7 @@ export class EditorApp {
       content: this.content,
       art: this.setup.art,
       tool: this.tool,
+      tools: this.tools.tools,
       brush: this.brush,
       status: this.status,
       showCoords: this.showCoords,
@@ -466,6 +499,8 @@ export class EditorApp {
       canRedo: this.history.canRedo,
       issues,
       facings: this.facings,
+      turnOrders: this.setup.rules.turnOrders.all().map(({ id, name }) => ({ id, name })),
+      defaultTurnOrder: DEFAULT_TURN_ORDER,
       presets: [
         ...this.setup.presets.map((level) => ({ value: `b:${level.id}`, label: `内置 · ${level.name}` })),
         ...loadCustomLevels().map((saved) => ({
@@ -518,7 +553,7 @@ export class EditorApp {
    */
   private readonly commands: Record<string, (arg: string) => void> = {
     tool: (arg) => {
-      this.selectTool(EDITOR_TOOLS.tryGet(arg) ?? this.tool);
+      this.selectTool(this.tools.tryGet(arg) ?? this.tool);
       this.renderAll();
     },
     brush: (arg) => {
@@ -529,7 +564,7 @@ export class EditorApp {
     terrain: (arg) => {
       this.brush.terrain = arg;
       // Picking a terrain means you want to paint it; the shape tools already do.
-      if (this.tool.id !== 'rect' && this.tool.id !== 'fill') this.selectTool(EDITOR_TOOLS.default);
+      if (this.tool.id !== 'rect' && this.tool.id !== 'fill') this.selectTool(this.tools.default);
       this.renderAll();
     },
     'cover-side': (arg) => {
@@ -542,7 +577,7 @@ export class EditorApp {
     },
     unit: (arg) => {
       this.brush.unitType = arg;
-      this.selectTool(EDITOR_TOOLS.get('unit'));
+      this.selectTool(this.tools.get('unit'));
       this.renderAll();
     },
     owner: (arg) => {
@@ -701,27 +736,31 @@ export class EditorApp {
 
   /* ------------------------------------------------------------- delegation */
 
+  private readonly onDelegateClick = (event: Event): void => {
+    const element = (event.target as HTMLElement).closest('[data-act]') as HTMLElement | null;
+    if (!element) return;
+    this.commands[element.dataset.act ?? '']?.(element.dataset.arg ?? '');
+    this.autosave();
+  };
+
+  private readonly onDelegateChange = (event: Event): void => {
+    const element = event.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+    const field = element.dataset.field;
+    if (!field) return;
+    const value = element instanceof HTMLInputElement && element.type === 'checkbox'
+      ? element.checked
+      : element.value;
+    this.applyField(field, value, element.dataset.id);
+  };
+
+  private delegateHosts(): HTMLElement[] {
+    return [this.panels.topEl, this.panels.paletteEl, this.panels.propertiesEl];
+  }
+
   private bindDelegates(): void {
-    const onClick = (event: Event) => {
-      const element = (event.target as HTMLElement).closest('[data-act]') as HTMLElement | null;
-      if (!element) return;
-      this.commands[element.dataset.act ?? '']?.(element.dataset.arg ?? '');
-      this.autosave();
-    };
-
-    const onChange = (event: Event) => {
-      const element = event.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
-      const field = element.dataset.field;
-      if (!field) return;
-      const value = element instanceof HTMLInputElement && element.type === 'checkbox'
-        ? element.checked
-        : element.value;
-      this.applyField(field, value, element.dataset.id);
-    };
-
-    for (const host of [this.panels.topEl, this.panels.paletteEl, this.panels.propertiesEl]) {
-      host.addEventListener('click', onClick);
-      host.addEventListener('change', onChange);
+    for (const host of this.delegateHosts()) {
+      host.addEventListener('click', this.onDelegateClick);
+      host.addEventListener('change', this.onDelegateChange);
     }
   }
 
@@ -781,8 +820,10 @@ export function initialLevel(setup: EditorSetup): LevelData {
       const level = normaliseLevel(JSON.parse(draft));
       mapFromLevel(content, level);
       return level;
-    } catch {
-      /* fall through to a blank map */
+    } catch (error) {
+      // A stale draft must not prevent the editor from opening, but its loss is
+      // still observable to the author and to diagnostics.
+      console.warn('Editor draft was rejected; opening a blank map instead.', error);
     }
   }
   return emptyLevel(content);

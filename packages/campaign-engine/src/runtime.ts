@@ -2,6 +2,7 @@ import { CampaignAggregate, createCampaignState } from './aggregate';
 import { CampaignBattleBridge } from './battle-bridge';
 import { createCampaignRuleServices, type CampaignRuleServices } from './rules';
 import type { CampaignNodeAdvance } from './nodes';
+import { CampaignActionError } from './errors';
 import type {
   BattleRequest,
   BattleResult,
@@ -13,17 +14,23 @@ import type {
 /** Application-facing deterministic campaign state machine. */
 export class CampaignRuntime {
   readonly state: CampaignState;
+  readonly definition: CampaignDefinition;
   private readonly aggregate: CampaignAggregate;
   private readonly campaignRules: CampaignRuleServices;
 
   constructor(
-    readonly definition: CampaignDefinition,
+    definition: CampaignDefinition,
     state: CampaignState = createCampaignState(definition),
     rules: CampaignRuleServices = createCampaignRuleServices(),
   ) {
+    this.definition = deepFreeze(structuredClone(definition));
     this.state = structuredClone(state);
-    this.campaignRules = rules;
-    this.aggregate = new CampaignAggregate(definition, this.state, this.campaignRules);
+    this.campaignRules = {
+      conditions: rules.conditions.clone().seal(),
+      effects: rules.effects.clone().seal(),
+      nodes: rules.nodes.clone().seal(),
+    };
+    this.aggregate = new CampaignAggregate(this.definition, this.state, this.campaignRules);
   }
 
   node(): CampaignNode {
@@ -49,7 +56,7 @@ export class CampaignRuntime {
         this.completeNode(node.id);
         this.state.status = status;
       },
-      needs: (api) => { throw new Error(`${node.type} node requires ${api}`); },
+      needs: (api) => { throw new CampaignActionError(`${node.type} node requires ${api}`); },
     };
   }
 
@@ -65,11 +72,11 @@ export class CampaignRuntime {
     return this.transaction(() => {
       this.requireActive();
       const node = this.node();
-      if (node.type !== 'choice') throw new Error('current campaign node is not a choice');
+      if (node.type !== 'choice') throw new CampaignActionError('current campaign node is not a choice');
       const selected = node.choices.find((choice) => choice.id === id);
-      if (!selected) throw new Error(`unknown choice "${id}"`);
+      if (!selected) throw new CampaignActionError(`unknown choice "${id}"`);
       if (selected.condition && !this.campaignRules.conditions.evaluate(this.state, selected.condition)) {
-        throw new Error(`choice "${id}" is not currently available`);
+        throw new CampaignActionError(`choice "${id}" is not currently available`);
       }
       this.aggregate.apply(node.effects);
       this.aggregate.apply(selected.effects);
@@ -82,7 +89,7 @@ export class CampaignRuntime {
     return this.transaction(() => {
       this.requireActive();
       const node = this.node();
-      if (node.type !== 'battle') throw new Error('current campaign node is not a battle');
+      if (node.type !== 'battle') throw new CampaignActionError('current campaign node is not a battle');
       this.aggregate.apply(node.effects);
       const request = bridge.prepare(this.definition, this.state);
       this.state.battleSequence++;
@@ -96,8 +103,8 @@ export class CampaignRuntime {
       this.requireActive();
       const pending = this.state.pendingBattle;
       const node = this.node();
-      if (!pending || node.type !== 'battle') throw new Error('campaign has no pending battle');
-      if (pending.requestId !== result.requestId || pending.node !== node.id) throw new Error('battle result does not match pending request');
+      if (!pending || node.type !== 'battle') throw new CampaignActionError('campaign has no pending battle');
+      if (pending.requestId !== result.requestId || pending.node !== node.id) throw new CampaignActionError('battle result does not match pending request');
       this.aggregate.projectBattleResult(result);
       this.aggregate.apply(node.outcomeEffects?.[result.outcome]);
       this.state.battleHistory.push({
@@ -125,7 +132,7 @@ export class CampaignRuntime {
   }
 
   private requireActive(): void {
-    if (this.state.status !== 'active') throw new Error(`campaign is ${this.state.status}`);
+    if (this.state.status !== 'active') throw new CampaignActionError(`campaign is ${this.state.status}`);
   }
 
   private completeNode(id: string): void {
@@ -142,4 +149,11 @@ export class CampaignRuntime {
       throw error;
     }
   }
+}
+
+function deepFreeze<T>(value: T, seen = new Set<object>()): T {
+  if (typeof value !== 'object' || value === null || seen.has(value)) return value;
+  seen.add(value);
+  for (const nested of Object.values(value)) deepFreeze(nested, seen);
+  return Object.freeze(value);
 }

@@ -5,6 +5,6 @@ import siege from './03-siege.json';
 import cliffTraining from './04-cliff-training.json';
 
 /** Campaign content only; persistence and editor workflows live in application adapters. */
-export const ANCIENT_EMPIRES_LEVELS: LevelData[] = [twinHills, threeBridges, siege, cliffTraining].map((raw) =>
+export const ANCIENT_EMPIRES_LEVELS: readonly LevelData[] = [twinHills, threeBridges, siege, cliffTraining].map((raw) =>
   normaliseLevel(raw),
 );

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { IllegalActionError } from '../actions';
+import { IllegalActionError } from '../domain/errors';
 import { createBattleEngine } from '../plugins/default';
 import { GameSession } from '../session';
 import { cloneState } from '../state';
@@ -7,7 +7,7 @@ import { StatusBehaviorRegistry } from '../statuses';
 import { makeLevel, testAddStatus, testApply, testCommands, testDamage, testMoveField, testState, TEST_CONTENT, u } from './fixtures';
 
 describe('formal tactical statuses', () => {
-  it('applies typed combat modifiers outside Unit.meta', () => {
+  it('applies combat modifiers through typed status state', () => {
     const baseline = testState(
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'knight', 2)] }),
     );
@@ -18,7 +18,9 @@ describe('formal tactical statuses', () => {
     expect(testDamage(affected, affected.units[0], affected.units[1]).damage).toBeGreaterThan(
       testDamage(baseline, baseline.units[0], baseline.units[1]).damage,
     );
-    expect(affected.units[1].meta).toEqual({});
+    expect(affected.units[1].statuses).toEqual([
+      expect.objectContaining({ id: 'armor_down', remaining: 2 }),
+    ]);
   });
 
   it('uses shaken for movement and capture restrictions', () => {

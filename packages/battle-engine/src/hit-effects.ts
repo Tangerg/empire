@@ -105,4 +105,5 @@ export const WeaponHitEffectHandlers = new WeaponHitEffectHandlerRegistry()
       }, emit);
     },
     describe: (effect) => `${effect.mode === 'push' ? '击退' : '拉拽'} ${effect.distance} 格`,
-  });
+  })
+  .seal();

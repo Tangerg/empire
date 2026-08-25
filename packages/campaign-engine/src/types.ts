@@ -113,7 +113,6 @@ export interface CampaignRosterSeed {
   careerMastery?: Record<CareerId, number>;
   learnedAbilities?: string[];
   tags?: string[];
-  meta?: Record<string, ScenarioValue>;
 }
 
 export interface CampaignDefinition {

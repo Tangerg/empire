@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
-import { createState, type GameEvent, type GameState } from '@empire/battle-engine';
+import { createBattleEngine, type GameEvent, type GameState } from '@empire/battle-engine';
 import {
   DefaultBattleEventPresenters,
   type BattleLogContext,
@@ -18,7 +18,8 @@ import type { BoardView } from '../board';
  */
 
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
-const state = (): GameState => createState(TEST_CATALOG, BUILTIN_LEVELS[0]);
+const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
+const state = (): GameState => TEST_ENGINE.createState(BUILTIN_LEVELS[0]);
 
 function logContext(current: GameState): BattleLogContext {
   return {
@@ -120,5 +121,9 @@ describe('battle event presentation', () => {
       .toBe('幕落');
     expect(DefaultBattleEventPresenters.describe(logContext(current), { type: 'gameOver', team: 1, reason: '敌军已被全歼' }))
       .toBe('敌军已被全歼');
+    expect(() => DefaultBattleEventPresenters.replace({
+      type: 'gameOver',
+      describe: () => '不应写入共享默认值',
+    })).toThrow(/sealed after composition/);
   });
 });

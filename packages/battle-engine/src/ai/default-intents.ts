@@ -288,3 +288,4 @@ export const DefaultAiIntents = new AiIntentRegistry()
       return best?.action ?? null;
     },
   });
+DefaultAiIntents.seal();

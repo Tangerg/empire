@@ -119,6 +119,11 @@ export class CombatModifierPipeline {
     return this;
   }
 
+  seal(): this {
+    this.providers.seal();
+    return this;
+  }
+
   collect(context: UnitDamageContext): CombatModifier[] {
     return this.providers.ordered().flatMap((provider) => provider.provide(context));
   }
@@ -396,3 +401,4 @@ export const CombatModifierProviders = new CombatModifierProviderRegistry()
   .register(positionProvider)
   .register(coverProvider)
   .register(defenseProvider);
+CombatModifierProviders.seal();

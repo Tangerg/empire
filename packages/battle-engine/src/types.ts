@@ -7,8 +7,8 @@
  *    so new content is *data*, not new code paths.
  *  - `RuleSet` carries every tunable rule, so a level (or a future game mode)
  *    can change behaviour without forking the engine.
- *  - `Unit.meta` / `LevelData.extra` remain prototype escape hatches only;
- *    established mechanics have explicit, serialisable fields below.
+ *  - `LevelData.extra` carries campaign/content metadata opaque to battle rules;
+ *    established battle mechanics have explicit, serialisable fields below.
  */
 
 /**
@@ -424,8 +424,6 @@ export interface Unit {
   career: UnitCareerState;
   /** Permanent-for-this-battle abilities earned by mastering careers. */
   learnedAbilities: AbilityId[];
-  /** Room for future mechanics without touching the engine. */
-  meta: Record<string, number | string | boolean>;
 }
 
 /**
@@ -946,7 +944,6 @@ export interface BattlefieldMarker {
   owner: PlayerId;
   /** Corpse markers own the complete battle-local unit snapshot needed to revive it. */
   fallenUnit?: Unit;
-  meta: Record<string, number | string | boolean>;
 }
 
 export interface DeploymentAssignment {

@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { GENERIC_ART, TILE } from '@empire/game-ui';
@@ -129,6 +129,8 @@ describe('map editor', () => {
     board = host.querySelector('svg.editor-board') as SVGSVGElement;
     stubLayout(board, BUILTIN_LEVELS[0].width * TILE, BUILTIN_LEVELS[0].height * TILE);
   });
+
+  afterEach(() => app.dispose());
 
   /**
    * A control declares an intent in `data-act` or `data-field`; the app holds the
@@ -314,6 +316,26 @@ describe('a general editor knows no particular game', () => {
 
     host.remove();
     generic.remove();
+  });
+
+  it('offers every turn-order policy installed in its engine', () => {
+    const side = TEST_RULES.turnOrders.get('side');
+    const turnOrders = TEST_RULES.turnOrders.clone().register({
+      ...side,
+      id: 'test.phased',
+      name: '测试交错阶段',
+    });
+    const rules = createBattleEngine({ content: TEST_CATALOG, turnOrders }).rules;
+    const host = document.createElement('div');
+    document.body.append(host);
+
+    new EditorApp({ rules, art: GENERIC_ART, presets: [] }, emptyLevel(TEST_CATALOG)).mount(host);
+
+    const offered = [...host.querySelectorAll<HTMLOptionElement>('[data-field="r.turnOrder"] option')]
+      .map((option) => option.value);
+    expect(offered).toEqual(rules.turnOrders.ids());
+    expect(host.textContent).toContain('测试交错阶段');
+    host.remove();
   });
 });
 

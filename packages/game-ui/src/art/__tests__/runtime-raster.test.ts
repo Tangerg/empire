@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { runtimeAtlasCellMarkup, runtimeGridAtlasCellMarkup, runtimeUnitPicture } from '../runtime-raster';
+import { runtimeAtlasCellMarkup, runtimeUnitPicture } from '../runtime-raster';
 import { boardPictureMarkup } from '../board-surface';
 
 describe('runtime raster adapter', () => {
@@ -19,6 +19,9 @@ describe('runtime raster adapter', () => {
         frameHeight: 48,
         frameCount: 4,
         anchor: { x: 16, y: 47 },
+        idleFrame: 0,
+        walkFrames: [1, 3],
+        attackFrame: 2,
       },
       '#3f7fd8',
     );
@@ -56,21 +59,6 @@ describe('runtime raster adapter', () => {
     expect(markup).toContain('viewBox="0 0 32 32"');
   });
 
-  it('crops fractional cells from a generated grid atlas', () => {
-    const markup = runtimeGridAtlasCellMarkup(
-      { href: '/assets/forest.png?a=1&b=2', width: 1254, height: 1254, columns: 4, rows: 4 },
-      6,
-      72,
-      72,
-      'forest sprite',
-    );
-
-    expect(markup).toContain('viewBox="627 313.5 313.5 313.5"');
-    expect(markup).toContain('width="72" height="72"');
-    expect(markup).toContain('href="/assets/forest.png?a=1&amp;b=2"');
-    expect(markup).toContain('class="forest sprite"');
-  });
-
   it('rejects cells and frames outside their declared sheet', () => {
     expect(() =>
       runtimeAtlasCellMarkup(
@@ -87,6 +75,8 @@ describe('runtime raster adapter', () => {
           frameHeight: 48,
           frameCount: 4,
           anchor: { x: 16, y: 47 },
+          idleFrame: 0,
+          walkFrames: [1, 3],
           attackFrame: 4,
         },
         '#fff',

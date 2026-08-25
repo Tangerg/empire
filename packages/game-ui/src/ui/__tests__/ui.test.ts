@@ -9,8 +9,8 @@ import { BoardView, emptyOverlay, type BoardComposition } from '../board';
 import { svgBoardSurface } from '../../art/svg-board-surface';
 import { ArtDirection } from '../../art/direction';
 import { GENERIC_PRESENTATION } from '../../art/battle-presentation';
+import { browserBattleSaves } from '../../application/battle-storage';
 import {
-  createState,
   DomainInvariantError,
   normaliseLevel,
   createBattleEngine,
@@ -250,7 +250,7 @@ describe('game controller', () => {
    */
   it('fills the tactical viewport with the whole field, uncropped', () => {
     const level = BUILTIN_LEVELS[0];
-    const board = new BoardView(composition(ART), createState(TEST_CATALOG, level), {
+    const board = new BoardView(composition(ART), TEST_ENGINE.createState(level), {
       onTileClick: () => {},
       onTileEnter: () => {},
       onLeave: () => {},
@@ -270,7 +270,7 @@ describe('game controller', () => {
 
   it('keeps authored roads below every tactical actor', () => {
     const level = candidate01Level('c01-01');
-    const board = new BoardView(composition(ART), createState(TEST_CATALOG, level), {
+    const board = new BoardView(composition(ART), TEST_ENGINE.createState(level), {
       onTileClick: () => {},
       onTileEnter: () => {},
       onLeave: () => {},
@@ -390,8 +390,8 @@ describe('game controller', () => {
    */
   it('draws a structure and a mark even when the art declines both', () => {
     const level = BUILTIN_LEVELS[0];
-    const state = createState(TEST_CATALOG, level);
-    state.markers.push({ id: 1, kind: 'routed', at: { x: 2, y: 2 }, owner: 1, meta: {} });
+    const state = TEST_ENGINE.createState(level);
+    state.markers.push({ id: 1, kind: 'routed', at: { x: 2, y: 2 }, owner: 1 });
     state.structures.push({
       id: 'probe', type: TEST_CATALOG.structures.ids()[0], owner: 1,
       x: 3, y: 3, hp: 40, disabled: false, statuses: [],
@@ -431,7 +431,7 @@ describe('game controller', () => {
    */
   it('places an effect at the cell rather than drawing it there', async () => {
     const level = BUILTIN_LEVELS[0];
-    const board = new BoardView(composition(ART), createState(TEST_CATALOG, level), {
+    const board = new BoardView(composition(ART), TEST_ENGINE.createState(level), {
       onTileClick: () => {},
       onTileEnter: () => {},
       onLeave: () => {},
@@ -638,10 +638,32 @@ describe('a battle you can come back to', () => {
     c.dispose();
   });
 
+  it('reports a browser slot whose JSON cannot be parsed', () => {
+    const level = BUILTIN_LEVELS[0];
+    const saves = browserBattleSaves(level.id);
+    localStorage.setItem(`empire:battle:${level.id}`, '{not json');
+    const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART, saves });
+    host.append(c.root);
+
+    press(c.root, 'resume').click();
+
+    expect(hudSays(c.root)).toContain('无法读取存档');
+    expect(hudSays(c.root)).toContain('无法解析');
+    c.dispose();
+  });
+
   it('does not blame the save for a defect underneath it', () => {
     const saves = slot();
-    const broken = createBattleEngine({ content: TEST_CATALOG });
-    broken.loadBattle = () => { throw new DomainInvariantError('a rule under the loader is wrong'); };
+    const intact = createBattleEngine({ content: TEST_CATALOG });
+    const broken = new Proxy(intact, {
+      get(target, property, receiver) {
+        if (property === 'loadBattle') {
+          return () => { throw new DomainInvariantError('a rule under the loader is wrong'); };
+        }
+        const value = Reflect.get(target, property, receiver);
+        return typeof value === 'function' ? value.bind(target) : value;
+      },
+    });
     const c = new GameController(BUILTIN_LEVELS[0], () => {}, { engine: broken, art: ART, saves });
     host.append(c.root);
     press(c.root, 'save').click();

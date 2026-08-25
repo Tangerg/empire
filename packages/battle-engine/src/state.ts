@@ -7,7 +7,7 @@ import { idx } from './grid';
 import { MapLayers } from './domain/map-layers';
 import { UnitEntity } from './domain/unit-entity';
 import { createRandomState } from './random';
-import { DEFAULT_VICTORY, mapFromLevel, resolveRules } from './level/index';
+import { defaultVictory, mapFromLevel, resolveRules } from './level/index';
 import { assignObjectiveIds, createObjectiveStates } from './objective-model';
 import type {
   Coord,
@@ -105,7 +105,6 @@ function createUnitState(
     },
     career: initialCareer(content, source),
     learnedAbilities: [...new Set(source.learnedAbilities ?? [])],
-    meta: {},
   };
 }
 
@@ -185,7 +184,7 @@ export function createState(content: ContentCatalog, level: LevelData, options: 
 
   const players: PlayerState[] = level.players.map((p) => {
     const objectives = assignObjectiveIds(
-      p.objectives?.length ? p.objectives : (level.victory ?? DEFAULT_VICTORY),
+      p.objectives?.length ? p.objectives : (level.victory ?? defaultVictory()),
       `player-${p.id}`,
     );
     return {
@@ -352,7 +351,6 @@ export function cloneState(state: GameState): GameState {
       ...marker,
       at: { ...marker.at },
       fallenUnit: marker.fallenUnit ? cloneUnitState(marker.fallenUnit) : undefined,
-      meta: { ...marker.meta },
     })),
     commanders: state.commanders.map((commander) => ({
       ...commander,

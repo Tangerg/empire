@@ -1,17 +1,11 @@
-import type { Coord, GameMap, TerrainId } from './types';
+import type { Coord } from './types';
 
 export const idx = (map: { width: number }, x: number, y: number): number => y * map.width + x;
-export const coordOf = (map: { width: number }, i: number): Coord => ({
-  x: i % map.width,
-  y: Math.floor(i / map.width),
-});
 
 export const inBounds = (map: { width: number; height: number }, x: number, y: number): boolean =>
   x >= 0 && y >= 0 && x < map.width && y < map.height;
 
 export const sameCoord = (a: Coord, b: Coord): boolean => a.x === b.x && a.y === b.y;
-
-export const terrainAt = (map: GameMap, c: Coord): TerrainId => map.tiles[idx(map, c.x, c.y)];
 /**
  * Row-major storage helpers.
  *
@@ -77,4 +71,3 @@ export function tileHash(x: number, y: number, salt = 0): number {
   h = h ^ (h >>> 16);
   return ((h >>> 0) % 100000) / 100000;
 }
-

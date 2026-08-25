@@ -7,7 +7,7 @@ import {
   applyCandidate01BattleResultPolicy,
 } from './campaign';
 import { candidate01Level } from './levels';
-import { CANDIDATE_01_CHOICES, CANDIDATE_01_STORY } from './story';
+import { candidate01Choice, candidate01Story } from './story';
 
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from './index';
@@ -25,8 +25,8 @@ describe('candidate-01 campaign', () => {
       // A battle is staged from its level's briefing and declares no prose of
       // its own; every other kind is a scene, and the type says so.
       if (node.type === 'battle') continue;
-      if (node.type === 'choice') expect(CANDIDATE_01_CHOICES.has(node.presentation)).toBe(true);
-      else expect(CANDIDATE_01_STORY.has(node.presentation)).toBe(true);
+      if (node.type === 'choice') expect(() => candidate01Choice(node.presentation)).not.toThrow();
+      else expect(() => candidate01Story(node.presentation)).not.toThrow();
     }
   });
 

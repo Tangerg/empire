@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { TEST_RULES, makeLevel, testValidate, u } from './fixtures';
 import { validateLevel } from '../level-validation';
 import { PayloadReferences } from '../payload-references';
+import { DomainInvariantError } from '../domain/errors';
 import type {
   LevelData,
   LevelScenario,
@@ -70,6 +71,26 @@ const withObjective = (objective: Objective): LevelData => baseLevel(KNOWN_SCENA
 describe('level lint', () => {
   it('passes a level whose only fault is nothing', () => {
     expect(errorsOf(baseLevel(KNOWN_SCENARIO))).toEqual([]);
+  });
+
+  it('reports an unreadable terrain document but never hides a catalog defect', () => {
+    const malformed = baseLevel(KNOWN_SCENARIO);
+    malformed.terrain[0] = '?...';
+    expect(errorsOf(malformed)).toEqual(['unknown terrain char "?" at 0,0']);
+
+    const brokenEncoding = new Proxy(TEST_RULES.content.terrainEncoding, {
+      get(encoding, member) {
+        if (member === 'terrain') {
+          return () => { throw new DomainInvariantError('catalog defect'); };
+        }
+        const value = Reflect.get(encoding, member, encoding);
+        return typeof value === 'function' ? value.bind(encoding) : value;
+      },
+    });
+    const brokenContent = { ...TEST_RULES.content, terrainEncoding: brokenEncoding };
+
+    expect(() => validateLevel({ ...TEST_RULES, content: brokenContent }, baseLevel(KNOWN_SCENARIO)))
+      .toThrow(DomainInvariantError);
   });
 
   /**

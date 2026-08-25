@@ -43,6 +43,7 @@ import {
   TILE,
   escapeHtml,
 } from '@empire/game-ui';
+import type { ManagedBoardSurfaceFactory } from '@empire/game-ui/pixi';
 
 /** Composition root: content and ruleset are built here, never reached for. */
 const content = createContentCatalog();
@@ -211,7 +212,7 @@ function renderMenu(): void {
           try {
             deleteCustomLevel(id);
           } catch (error) {
-            alert(`删除失败：${(error as Error).message}`);
+            alert(`删除失败：${error instanceof Error ? error.message : String(error)}`);
           }
           renderMenu();
         }
@@ -220,12 +221,12 @@ function renderMenu(): void {
         modal.innerHTML = codexMarkup();
         break;
       case 'campaignContinue':
-        startCampaign(campaignSave);
+        openCampaign(campaignSave);
         break;
       case 'campaignNew':
         if (!campaignSave || confirm('重新开始会覆盖当前《断冠之誓》战役进度。继续吗？')) {
           deleteCampaignState(CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN);
-          startCampaign(null);
+          openCampaign(null);
         }
         break;
       case 'closeCodex':
@@ -235,11 +236,20 @@ function renderMenu(): void {
   });
 }
 
-function startCampaign(state: CampaignState | null): void {
+async function startCampaign(state: CampaignState | null): Promise<void> {
+  const renderer = await chosenRenderer();
   active?.dispose();
-  const controller = new StoryCampaignController(campaignAdapter, state, () => renderMenu(), engine);
+  const controller = new StoryCampaignController(campaignAdapter, state, () => renderMenu(), {
+    engine,
+    art,
+    renderer,
+  });
   active = controller;
   app.replaceChildren(controller.root);
+}
+
+function openCampaign(state: CampaignState | null): void {
+  void startCampaign(state).catch((cause) => alert(`无法开始战役：${String(cause)}`));
 }
 
 function findLevel(id: string): LevelData | null {
@@ -261,18 +271,23 @@ function findLevel(id: string): LevelData | null {
  * builds a context, which is worth doing per session rather than per battle.
  */
 const wantsPixi = new URLSearchParams(location.search).get('renderer') === 'pixi';
-let pixi: BoardSurfaceFactory | null = null;
+let pixi: ManagedBoardSurfaceFactory | null = null;
 
 async function chosenRenderer(): Promise<BoardSurfaceFactory | undefined> {
   if (!wantsPixi) return undefined;
   if (!pixi) {
     // Imported here, not at the top: `pixi.js` is 492 KB, and a session that never
     // asks for it should not download it.
-    const { preparePixiPainter, pixiBoardSurface, BrowserPictureTextures } = await import('@empire/game-ui/pixi');
-    pixi = pixiBoardSurface(await preparePixiPainter(), new BrowserPictureTextures());
+    const { preparePixiBoardSurface } = await import('@empire/game-ui/pixi');
+    pixi = await preparePixiBoardSurface();
   }
   return pixi;
 }
+
+window.addEventListener('pagehide', () => {
+  active?.dispose();
+  pixi?.dispose();
+}, { once: true });
 
 async function startGame(level: LevelData): Promise<void> {
   const renderer = await chosenRenderer();

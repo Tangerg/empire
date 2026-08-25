@@ -142,3 +142,4 @@ export const DefaultCampaignNodes = new CampaignNodeRegistry()
       context.settle(node.outcome);
     },
   });
+DefaultCampaignNodes.seal();

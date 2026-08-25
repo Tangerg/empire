@@ -86,7 +86,8 @@ export const WeaponAreaShapes = new WeaponAreaShapeRegistry()
     needsOccupant: false,
     // The attacker's own tile is not in its own blast.
     cells: (board, from, aimedAt) => board.line(from, aimedAt).slice(1),
-  });
+  })
+  .seal();
 
 /** Port declared by this module; `BattleRuleServices` satisfies it. */
 export interface WeaponAreaRules extends GridRules {

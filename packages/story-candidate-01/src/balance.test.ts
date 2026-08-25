@@ -46,13 +46,15 @@ export function simulateCandidate01(level: LevelData, aggression = 0.58, actionL
     try {
       action = session.chooseAiAction();
     } catch (error) {
-      throw new Error(`${level.id} turn ${session.state.turn} player ${session.state.currentPlayer}: ${(error as Error).message}`, { cause: error });
+      const detail = error instanceof Error ? error.message : String(error);
+      throw new Error(`${level.id} turn ${session.state.turn} player ${session.state.currentPlayer}: ${detail}`, { cause: error });
     }
     let emitted: GameEvent[];
     try {
       emitted = session.tryDispatch(action) ?? session.tryDispatch({ kind: 'endTurn' }) ?? [];
     } catch (error) {
-      throw new Error(`${level.id} turn ${session.state.turn} player ${session.state.currentPlayer} action ${JSON.stringify(action)}: ${(error as Error).message}`, { cause: error });
+      const detail = error instanceof Error ? error.message : String(error);
+      throw new Error(`${level.id} turn ${session.state.turn} player ${session.state.currentPlayer} action ${JSON.stringify(action)}: ${detail}`, { cause: error });
     }
     events.push(...emitted);
     actions++;

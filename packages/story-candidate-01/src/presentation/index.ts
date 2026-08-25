@@ -11,7 +11,7 @@ import {
   applyCandidate01BattleResultPolicy,
   CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN,
 } from '../campaign';
-import { CANDIDATE_01_LEVELS, candidate01Level } from '../levels';
+import { candidate01Level } from '../levels';
 import { CANDIDATE_01_SPEAKER_NAMES, candidate01Choice, candidate01Story } from '../story';
 import {
   candidate01MapSceneryLayers,
@@ -40,10 +40,12 @@ import {
   CANDIDATE_01_WEAPON_ART,
 } from './candidate-01-bindings';
 
-let portraitSerial = 0;
-
 const attr = (value: string): string =>
   value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
+
+const definitionKey = (...parts: string[]): string => parts
+  .map((part) => encodeURIComponent(part).replaceAll('%', '_'))
+  .join('__');
 
 function portraitMarkup(type: UnitTypeId, team: string): string | null {
   const characterTopic = CANDIDATE_01_CHARACTER_ART[type];
@@ -54,7 +56,7 @@ function portraitMarkup(type: UnitTypeId, team: string): string | null {
     ? candidate01AssetUrl(characterTopic)
     : unitTopic && candidate01Asset(unitTopic).url;
   if (!href) return null;
-  const key = `candidate-${++portraitSerial}`;
+  const key = `candidate-${definitionKey(type, team)}`;
   return `<defs><clipPath id="${key}"><rect width="96" height="112" rx="8"/></clipPath></defs>
     <g clip-path="url(#${key})"><rect width="96" height="112" fill="${attr(team)}" opacity="0.42"/>
     <image href="${attr(href)}" x="-8" y="0" width="112" height="112" preserveAspectRatio="xMidYMid slice" class="candidate-portrait-image"/>
@@ -62,7 +64,7 @@ function portraitMarkup(type: UnitTypeId, team: string): string | null {
     <rect x="0.75" y="0.75" width="94.5" height="110.5" rx="8" fill="none" stroke="#201914" stroke-width="1.5"/>`;
 }
 
-export const CANDIDATE_01_BATTLE_PRESENTATION: BattlePresentation = Object.freeze({
+const CANDIDATE_01_BATTLE_PRESENTATION: BattlePresentation = Object.freeze({
   id: 'candidate-01',
   boardClass: 'candidate-map',
   // Painted scenes want the tactical layer on the ground, not ruled over it.
@@ -86,7 +88,7 @@ export const CANDIDATE_01_BATTLE_PRESENTATION: BattlePresentation = Object.freez
  * imported which package first, and two packs answering for the same unit would
  * have resolved by installation order.
  */
-export const CANDIDATE_01_ART_PROVIDER: ArtProvider = {
+const CANDIDATE_01_ART_PROVIDER: ArtProvider = {
   id: 'candidate-01',
   unitPicture: candidate01UnitPicture,
   unitIcon: candidate01UnitIcon,
@@ -123,13 +125,13 @@ export function candidate01CampaignAdapter(): StoryCampaignAdapter {
   return {
     title: '断冠之誓',
     definition: CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN,
-    levels: CANDIDATE_01_LEVELS,
-    progressTotal: CANDIDATE_01_LEVELS.length,
     completionLabel: '完成前三章',
     portraits: CANDIDATE_01_PORTRAITS,
     joinAfter: JOIN_AFTER,
     relationLabels: RELATION_LABELS,
+    resourceLabels: { supplies: '补给', treasury: '国库' },
     chapterTitle: (chapter) => chapter === 1 ? '边境之火' : chapter === 2 ? '灰旗流亡' : '古老诸族',
+    chapterOf: (level) => Number(level.extra?.chapter) || 1,
     levelOrder: (level) => Number(level.extra?.order ?? level.id.slice(-2)),
     briefingId: (level) => `c01/brief-${String(Number(level.extra?.order ?? level.id.slice(-2))).padStart(2, '0')}`,
     storyArt: candidate01StoryArt,
@@ -142,5 +144,4 @@ export function candidate01CampaignAdapter(): StoryCampaignAdapter {
   };
 }
 
-export * from './candidate-01-assets';
-export * from './candidate-01-story';
+export { CANDIDATE_01_MENU_ART } from './candidate-01-story';

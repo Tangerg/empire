@@ -44,21 +44,29 @@ export interface ContentPack {
   formations?: readonly FormationDef[];
 }
 
+/** Version identity of one pack installed into a catalog. */
+export interface ContentPackVersion {
+  readonly id: string;
+  readonly version: number;
+}
+
 export interface ContentCatalog {
-  movementProfiles: ContentRegistry<MovementProfileDef>;
-  damageTypes: ContentRegistry<DamageTypeDef>;
-  armorClasses: ContentRegistry<ArmorClassDef>;
-  damageMatchups: DamageMatchupRegistry;
-  terrains: ContentRegistry<TerrainDef>;
-  terrainEncoding: TerrainEncodingRegistry;
-  weapons: ContentRegistry<WeaponDef>;
-  units: ContentRegistry<UnitDef>;
-  statuses: ContentRegistry<StatusDef>;
-  structures: ContentRegistry<StructureDef>;
-  terrainOverlays: ContentRegistry<TerrainOverlayDef>;
-  tactics: ContentRegistry<TacticDef>;
-  careers: ContentRegistry<CareerDef>;
-  formations: ContentRegistry<FormationDef>;
+  /** The catalog's content identity; save/replay compatibility reads this. */
+  readonly packVersions: ContentRegistry<ContentPackVersion>;
+  readonly movementProfiles: ContentRegistry<MovementProfileDef>;
+  readonly damageTypes: ContentRegistry<DamageTypeDef>;
+  readonly armorClasses: ContentRegistry<ArmorClassDef>;
+  readonly damageMatchups: DamageMatchupRegistry;
+  readonly terrains: ContentRegistry<TerrainDef>;
+  readonly terrainEncoding: TerrainEncodingRegistry;
+  readonly weapons: ContentRegistry<WeaponDef>;
+  readonly units: ContentRegistry<UnitDef>;
+  readonly statuses: ContentRegistry<StatusDef>;
+  readonly structures: ContentRegistry<StructureDef>;
+  readonly terrainOverlays: ContentRegistry<TerrainOverlayDef>;
+  readonly tactics: ContentRegistry<TacticDef>;
+  readonly careers: ContentRegistry<CareerDef>;
+  readonly formations: ContentRegistry<FormationDef>;
 }
 
 /**
@@ -89,7 +97,7 @@ const DEFINITION_FAMILIES: Record<DefinitionFamily, string> = {
 };
 
 /** Every catalog field that is a plain registry of `{ id }` definitions. */
-type DefinitionFamily = Exclude<keyof ContentCatalog, 'terrainEncoding' | 'damageMatchups'>;
+type DefinitionFamily = Exclude<keyof ContentCatalog, 'packVersions' | 'terrainEncoding' | 'damageMatchups'>;
 
 const definitionFamilies = (): DefinitionFamily[] =>
   Object.keys(DEFINITION_FAMILIES) as DefinitionFamily[];
@@ -97,10 +105,11 @@ const definitionFamilies = (): DefinitionFamily[] =>
 /** The two families that are not id-keyed tables keep their own constructors. */
 function catalogOf(
   registries: Record<DefinitionFamily, ContentRegistry<{ id: string }>>,
+  packVersions: ContentRegistry<ContentPackVersion>,
   damageMatchups: DamageMatchupRegistry,
   terrainEncoding: TerrainEncodingRegistry,
 ): ContentCatalog {
-  return { ...registries, damageMatchups, terrainEncoding } as unknown as ContentCatalog;
+  return { ...registries, packVersions, damageMatchups, terrainEncoding } as unknown as ContentCatalog;
 }
 
 function eachFamily(
@@ -116,6 +125,7 @@ const familyRegistry = (catalog: ContentCatalog, family: DefinitionFamily) =>
 export function createContentCatalog(): ContentCatalog {
   return catalogOf(
     eachFamily((family) => new ContentRegistry(DEFINITION_FAMILIES[family])),
+    new ContentRegistry('content pack'),
     new DamageMatchupRegistry(),
     new TerrainEncodingRegistry(),
   );
@@ -135,9 +145,19 @@ export function cloneContentCatalog(source: ContentCatalog): ContentCatalog {
       for (const definition of original.all()) copy.override(definition.id, structuredClone(definition));
       return copy;
     }),
+    source.packVersions.clone(),
     source.damageMatchups.clone(),
     source.terrainEncoding.clone(),
   );
+}
+
+/** Transfers a fully installed catalog from the composition root to runtime. */
+export function sealContentCatalog(catalog: ContentCatalog): void {
+  for (const family of definitionFamilies()) familyRegistry(catalog, family).seal();
+  catalog.packVersions.seal();
+  catalog.damageMatchups.seal();
+  catalog.terrainEncoding.seal();
+  Object.freeze(catalog);
 }
 
 /**
@@ -234,6 +254,11 @@ const checkTerrainEncoding: ContentCheck = (installation) => {
   const installed = catalog.terrainEncoding.currentDefaultTerrain();
   if (defaultTerrain !== undefined && installed !== null && installed !== defaultTerrain) {
     installation.reject(`default terrain already registered: "${installed}"`);
+  }
+  if (defaultTerrain !== undefined &&
+    !catalog.terrainEncoding.hasTerrain(defaultTerrain) &&
+    !terrains.has(defaultTerrain)) {
+    installation.reject(`default terrain "${defaultTerrain}" has no character encoding`);
   }
 };
 
@@ -467,38 +492,23 @@ const CONTENT_CHECKS: readonly ContentCheck[] = [
 
 /**
  * Installs packs atomically after validating ids, dependencies and references.
- * Reinstalling the same id/version is intentionally idempotent for HMR/tests.
+ * A repeated id is refused even at the same version: version equality cannot
+ * prove that two declarations contain the same definitions.
  */
 export class ContentPackInstaller {
-  private readonly installed = new Map<string, number>();
-
   constructor(readonly catalog: ContentCatalog) {}
 
   install(...requested: readonly ContentPack[]): string[] {
-    const pending = requested.filter((pack) => {
-      const version = this.installed.get(pack.id);
-      if (version === undefined) return true;
-      if (version !== pack.version) {
-        throw new DomainInvariantError(`content pack "${pack.id}" already installed at version ${version}, requested ${pack.version}`);
-      }
-      return false;
-    });
-    if (pending.length === 0) return [];
-
-    const ordered = this.orderPending(pending);
+    if (this.catalog.packVersions.isSealed) {
+      throw new DomainInvariantError('content catalog is sealed after engine composition');
+    }
+    const ordered = this.orderPending(requested);
+    if (ordered.length === 0) return [];
     const installation = new ContentInstallation(this.catalog, ordered);
     for (const check of CONTENT_CHECKS) check(installation);
 
     for (const pack of ordered) this.apply(pack);
     return ordered.map((pack) => pack.id);
-  }
-
-  isInstalled(id: string): boolean {
-    return this.installed.has(id);
-  }
-
-  installedPacks(): ReadonlyMap<string, number> {
-    return new Map(this.installed);
   }
 
   /** Pack identity and dependency order, which decides what the checks even see. */
@@ -509,16 +519,24 @@ export class ContentPackInstaller {
       if (!Number.isInteger(pack.version) || pack.version < 1) {
         throw new DomainInvariantError(`content pack "${pack.id}" version must be a positive integer`);
       }
+      const installed = this.catalog.packVersions.tryGet(pack.id);
+      if (installed) {
+        throw new DomainInvariantError(
+          `content pack "${pack.id}" already installed at version ${installed.version}; ` +
+          `a second declaration at version ${pack.version} is ambiguous`,
+        );
+      }
       if (ids.has(pack.id)) throw new DomainInvariantError(`duplicate content pack request: "${pack.id}"`);
       ids.add(pack.id);
     }
     return orderByDependencies(pending, {
       idOf: (pack) => pack.id,
       dependenciesOf: (pack) => pack.dependencies ?? [],
-      isSatisfiedExternally: (id) => this.installed.has(id),
+      isSatisfiedExternally: (id) => this.catalog.packVersions.has(id),
+      duplicate: (id) => new DomainInvariantError(`duplicate content pack dependency node: "${id}"`),
       missing: (pack, dependency) =>
-        new Error(`content pack "${pack.id}" requires "${dependency}"`),
-      cycle: (path) => new Error(`cyclic content pack dependency: ${path.join(' -> ')}`),
+        new DomainInvariantError(`content pack "${pack.id}" requires "${dependency}"`),
+      cycle: (path) => new DomainInvariantError(`cyclic content pack dependency: ${path.join(' -> ')}`),
     });
   }
 
@@ -536,6 +554,6 @@ export class ContentPackInstaller {
       this.catalog.terrainEncoding.register(pack.terrainCharacters ?? {}, pack.defaultTerrain);
     }
     if (pack.damageMatchups) this.catalog.damageMatchups.register(pack.damageMatchups);
-    this.installed.set(pack.id, pack.version);
+    this.catalog.packVersions.define({ id: pack.id, version: pack.version });
   }
 }

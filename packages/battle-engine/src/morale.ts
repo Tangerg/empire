@@ -20,21 +20,20 @@ function withdrawalMarker(
   state: GameState,
   unit: Unit,
   kind: string,
-  meta: BattlefieldMarker['meta'],
 ): BattlefieldMarker {
-  const marker = new BattleAggregate(state, content).createUnitMarker(unit, kind, meta);
+  const marker = new BattleAggregate(state, content).createUnitMarker(unit, kind);
   removeUnit(state, unit.id);
   return marker;
 }
 
-export function routeUnit(
+function routeUnit(
   rules: MoraleRules,
   state: GameState,
   unitId: number,
   emit: (event: GameEvent) => void,
 ): BattlefieldMarker {
   const unit = requireUnit(state, unitId);
-  const marker = withdrawalMarker(rules.content, state, unit, 'routed', {});
+  const marker = withdrawalMarker(rules.content, state, unit, 'routed');
   withdrawTransportPassengers(state, unitId, { at: marker.at, kind: 'routed' }, emit);
   emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
   emit({ type: 'unitRouted', unit: unitId, marker: marker.id, at: marker.at });
@@ -50,9 +49,8 @@ export function surrenderUnit(
   emit: (event: GameEvent) => void,
 ): BattlefieldMarker {
   const unit = requireUnit(state, unitId);
-  const meta: BattlefieldMarker['meta'] = to === undefined ? {} : { surrenderedTo: to };
-  const marker = withdrawalMarker(rules.content, state, unit, 'surrendered', meta);
-  withdrawTransportPassengers(state, unitId, { at: marker.at, kind: 'surrendered', meta }, emit);
+  const marker = withdrawalMarker(rules.content, state, unit, 'surrendered');
+  withdrawTransportPassengers(state, unitId, { at: marker.at, kind: 'surrendered' }, emit);
   emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });
   emit({ type: 'unitSurrendered', unit: unitId, marker: marker.id, at: marker.at, to });
   announceUnitDeparture(rules, state, unit, emit);

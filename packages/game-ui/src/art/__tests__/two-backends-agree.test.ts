@@ -2,7 +2,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { Sprite, Texture, type Container } from 'pixi.js';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
-import { createBattleEngine, createState, type LevelData } from '@empire/battle-engine';
+import { createBattleEngine, type LevelData } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
 import {
   BOARD_LAYERS,
@@ -12,7 +12,7 @@ import {
 } from '../board-surface';
 import { GENERIC_ART } from '../direction';
 import { SvgBoardSurface } from '../svg-board-surface';
-import { PixiBoardSurface, type ScenePainter } from '../pixi-board-surface';
+import { PixiBoardSurface, pixiBoardSurface, type ScenePainter } from '../pixi-board-surface';
 import type { BakedPicture, PictureTextures } from '../picture-textures';
 import { BoardView, emptyOverlay, type BoardComposition } from '../../ui/board';
 
@@ -68,6 +68,7 @@ class InstantTextures implements PictureTextures {
   readonly asked: string[] = [];
   /** The frames handed out per strip, so a test can say which one is showing. */
   readonly cut = new Map<string, Texture[]>();
+  disposed = 0;
 
   bake(markup: string): Promise<BakedPicture> {
     this.asked.push(markup);
@@ -85,7 +86,7 @@ class InstantTextures implements PictureTextures {
     return Promise.resolve(made);
   }
 
-  dispose(): void {}
+  dispose(): void { this.disposed++; }
 }
 
 /** A painter that paints nothing, which is all a display list needs. */
@@ -93,16 +94,22 @@ class IdlePainter implements ScenePainter {
   readonly canvas = document.createElement('canvas');
   painted = 0;
   resized: Array<[number, number]> = [];
+  detached = 0;
+  disposed = 0;
 
   paint(): void {
     this.painted++;
+  }
+
+  detach(): void {
+    this.detached++;
   }
 
   resize(width: number, height: number): void {
     this.resized.push([width, height]);
   }
 
-  dispose(): void {}
+  dispose(): void { this.disposed++; }
 }
 
 type Drawn = { layer: BoardLayer; at: string[] };
@@ -138,7 +145,7 @@ function composition(renderer: BoardComposition['renderer']): BoardComposition {
 }
 
 function draw(level: LevelData, renderer: BoardComposition['renderer']): BoardView {
-  const board = new BoardView(composition(renderer), createState(CATALOG, level), {
+  const board = new BoardView(composition(renderer), ENGINE.createState(level), {
     onTileClick: () => {},
     onTileEnter: () => {},
     onLeave: () => {},
@@ -197,6 +204,34 @@ describe('two backends draw the same board', () => {
     expect(world.children.map((child) => child.label)).toEqual(BOARD_LAYERS.map((l) => `layer-${l}`));
     expect(painter.painted).toBe(1);
     surface.dispose();
+  });
+
+  it('keeps shared renderer resources alive between sequential battle surfaces', () => {
+    const painter = new IdlePainter();
+    const textures = new InstantTextures();
+    const renderer = pixiBoardSurface(painter, textures);
+    const scene: BoardSurfaceScene = {
+      width: 320,
+      height: 320,
+      originX: 0,
+      originY: 0,
+      shapeRendering: 'crispEdges',
+      backdrop: '',
+      foreground: '',
+    };
+
+    renderer(scene).dispose();
+    expect(painter.detached).toBe(1);
+    expect(painter.disposed).toBe(0);
+    expect(textures.disposed).toBe(0);
+
+    renderer(scene).dispose();
+    renderer.dispose();
+    renderer.dispose();
+    expect(painter.detached).toBe(2);
+    expect(painter.disposed).toBe(1);
+    expect(textures.disposed).toBe(1);
+    expect(() => renderer(scene)).toThrow(/disposed/);
   });
 
   /**

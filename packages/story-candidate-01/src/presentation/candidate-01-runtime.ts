@@ -36,9 +36,12 @@ function unitSheet(record: Candidate01RuntimeAsset): RuntimeUnitSheet {
   if (!frameWidth || !frameHeight || !frameCount || !record.anchor) {
     throw new Error(`candidate-01 unit metadata is incomplete: ${record.topicId}`);
   }
-  const frameIndex = (role: string, fallback: number): number => {
+  const frameIndex = (role: string): number => {
     const index = record.frameOrder?.indexOf(role) ?? -1;
-    return index >= 0 ? index : fallback;
+    if (index < 0 || index >= frameCount) {
+      throw new Error(`candidate-01 unit ${record.topicId} has no valid "${role}" frame`);
+    }
+    return index;
   };
   return {
     href: record.url,
@@ -46,9 +49,12 @@ function unitSheet(record: Candidate01RuntimeAsset): RuntimeUnitSheet {
     frameHeight,
     frameCount,
     anchor: { x: record.anchor[0], y: record.anchor[1] },
-    idleFrame: frameIndex('idle', 0),
-    walkFrames: [frameIndex('walk-a', Math.min(1, frameCount - 1)), frameIndex('walk-b', frameCount - 1)],
-    attackFrame: frameIndex('attack', Math.min(2, frameCount - 1)),
+    idleFrame: frameIndex('idle'),
+    walkFrames: [frameIndex('walk-a'), frameIndex('walk-b')],
+    // Mission sheets name their purposeful action rather than pretending a
+    // civilian has a combat attack. This adapter is the explicit translation
+    // into the board's three animation clips.
+    attackFrame: frameIndex(record.category === 'mission-unit' ? 'carry-or-work' : 'attack'),
   };
 }
 
@@ -79,7 +85,8 @@ const baseTerrain = (theme?: string): RuntimeCellAtlas => cellAtlas(candidate01A
 
 function structureFrame(record: Candidate01RuntimeAsset, state: 'normal' | 'damaged' | 'captured'): number {
   const index = record.stateOrder?.indexOf(state) ?? -1;
-  return index >= 0 ? index : 0;
+  if (index < 0) throw new Error(`candidate-01 structure ${record.topicId} has no "${state}" frame`);
+  return index;
 }
 
 function structureAssetMarkup(record: Candidate01RuntimeAsset, frame: number, ownerColor?: string): string {

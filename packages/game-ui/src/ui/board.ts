@@ -24,6 +24,7 @@ import {
 } from '../art/scene-viewport';
 import { unitPicture } from '../art/units';
 import { escapeHtml } from './html';
+import { PresentationTimeline } from '../art/frame-animation';
 import {
   wholeField,
   type BoardDrawing,
@@ -101,19 +102,6 @@ export interface BoardHandlers {
   onSecondary(at: Coord): void;
 }
 
-const frame = () => new Promise<number>((r) => requestAnimationFrame(r));
-const wait = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
-
-async function tween(ms: number, step: (t: number) => void): Promise<void> {
-  const start = performance.now();
-  for (;;) {
-    const now = await frame();
-    const t = Math.min(1, (now - start) / ms);
-    step(t);
-    if (t >= 1) return;
-  }
-}
-
 const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - 2 * (1 - t) ** 2);
 
 /**
@@ -155,6 +143,7 @@ export class BoardView {
    * something nothing ever draws.
    */
   private readonly walking = new Set<number>();
+  private readonly timeline = new PresentationTimeline();
   private settleTimer: ReturnType<typeof setTimeout> | null = null;
 
   private readonly content: ContentCatalog;
@@ -176,7 +165,12 @@ export class BoardView {
       TILE,
       this.presentation.sceneProfile(state.levelId),
     );
-    const sceneFrame = this.presentation.sceneFrame(state.levelId, state.map, this.viewport);
+    const sceneFrame = this.presentation.sceneFrame({
+      content: this.content,
+      levelId: state.levelId,
+      map: state.map,
+      viewport: this.viewport,
+    });
     this.surface = composition.renderer({
       width: this.viewport.sceneWidth,
       height: this.viewport.sceneHeight,
@@ -332,8 +326,9 @@ export class BoardView {
   }
 
   dispose(): void {
-    this.surface.dispose();
+    this.timeline.dispose();
     if (this.settleTimer !== null) clearTimeout(this.settleTimer);
+    this.surface.dispose();
   }
 
   /** Terrain only changes when ownership does, so it is cheap to diff by hash. */
@@ -349,7 +344,12 @@ export class BoardView {
     // An authored scene is one painting, not a picture per cell, so it crosses
     // the seam as the whole field. Which is why the layer it lands in is the
     // second-largest on a big board and the one still worth breaking up.
-    const sceneLayers = this.presentation.sceneLayers(s.levelId, s.map, this.viewport);
+    const sceneLayers = this.presentation.sceneLayers({
+      content: this.content,
+      levelId: s.levelId,
+      map: s.map,
+      viewport: this.viewport,
+    });
     this.surface.setLayer('ground', sceneLayers.ground);
     this.surface.setLayer('scenery', sceneLayers.underUnits);
     this.surface.setLayer('foreground', sceneLayers.overUnits);
@@ -530,7 +530,7 @@ export class BoardView {
         const a = path[i - 1];
         const b = path[i];
         if (b.x !== a.x) drawing.say('facingLeft', b.x < a.x);
-        await tween(msPerTile, (t) => {
+        if (!await this.timeline.tween(msPerTile, (t) => {
           const e = easeInOut(t);
           const from = this.origin(a);
           const to = this.origin(b);
@@ -538,7 +538,7 @@ export class BoardView {
             from.x + (to.x - from.x) * e,
             from.y + (to.y - from.y) * e - Math.sin(Math.PI * t) * 2.5,
           );
-        });
+        })) return;
       }
     } finally {
       this.walking.delete(unit.id);
@@ -555,10 +555,10 @@ export class BoardView {
     const anchor = this.origin(attacker);
     drawing.place(anchor.x, anchor.y);
     drawing.play('attack');
-    await tween(150, (t) => {
+    if (!await this.timeline.tween(150, (t) => {
       const push = Math.sin(Math.PI * t) * 7;
       drawing.nudge(dx * push, dy * push);
-    });
+    })) return;
     drawing.play('idle');
     drawing.nudge(0, 0);
   }
@@ -583,25 +583,25 @@ export class BoardView {
     drawing.place(cx, cy);
     const burst = drawing.part('burst');
     const number = drawing.part('number');
-    await tween(420, (t) => {
+    if (!await this.timeline.tween(420, (t) => {
       // 12 → 22 was written as a radius; as a swell it is the same picture and the
       // one property a backend without shapes can also honour.
       burst?.swell(1 + t * 0.83);
       burst?.opacity(0.8 * (1 - t));
       number?.nudge(0, -14 * t);
       number?.opacity(1 - t ** 2);
-    });
+    })) return;
     drawing.remove();
-    if (killed) await wait(40);
+    if (killed) await this.timeline.wait(40);
   }
 
   async animateDeath(unitId: number): Promise<void> {
     const drawing = this.surface.drawnUnit(unitId);
     if (!drawing) return;
-    await tween(220, (t) => {
+    if (!await this.timeline.tween(220, (t) => {
       drawing.opacity(1 - t);
       drawing.swell(1 - 0.35 * t);
-    });
+    })) return;
     this.surface.removeUnit(unitId);
   }
 
@@ -615,20 +615,20 @@ export class BoardView {
     const { x: cx, y: cy } = this.centre(at);
     drawing.place(cx, cy);
     const number = drawing.part('number');
-    await tween(500, (t) => {
+    if (!await this.timeline.tween(500, (t) => {
       number?.nudge(0, -16 * t);
       number?.opacity(1 - t ** 2);
-    });
+    })) return;
     drawing.remove();
   }
 
   async animateSpawn(unitId: number): Promise<void> {
     const drawing = this.surface.drawnUnit(unitId);
     if (!drawing) return;
-    await tween(240, (t) => {
+    if (!await this.timeline.tween(240, (t) => {
       drawing.opacity(t);
       drawing.swell(0.6 + 0.4 * t);
-    });
+    })) return;
     drawing.opacity(1);
     drawing.swell(1);
   }
@@ -669,13 +669,13 @@ export class BoardView {
     });
     drawing.place(0, h / 2 - 17);
     const sweep = drawing.part('band');
-    await tween(220, (t) => {
+    if (!await this.timeline.tween(220, (t) => {
       const eased = easeInOut(t);
       sweep?.nudge(-w * 0.3 * (1 - eased), 0);
       sweep?.opacity(eased);
-    });
-    await wait(420);
-    await tween(220, (t) => drawing.opacity(1 - t));
+    })) return;
+    if (!await this.timeline.wait(420)) return;
+    if (!await this.timeline.tween(220, (t) => drawing.opacity(1 - t))) return;
     drawing.remove();
   }
 

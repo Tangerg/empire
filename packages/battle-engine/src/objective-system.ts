@@ -437,4 +437,5 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
         ? 'failure' : context.outcome(objective.objective),
     describe: (objective, handlers) => handlers.describe(objective.objective),
     progress: (context, objective) => context.handlers.progress(context, context.state, context.owner, objective.objective),
-  }));
+  }))
+  .seal();

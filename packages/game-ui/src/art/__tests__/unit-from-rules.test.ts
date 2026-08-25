@@ -19,8 +19,7 @@ function everyShippedUnit(): UnitDef[] {
 }
 
 const sprite = (unit: UnitDef) => unitPicture(GENERIC_ART, unit, '#3f7fd8').body;
-/** Portraits mint a fresh gradient id per call; the drawing is what is compared. */
-const portrait = (unit: UnitDef) => portraitMarkup(GENERIC_ART, unit, '#3f7fd8').replace(/-\d+/g, '');
+const portrait = (unit: UnitDef) => portraitMarkup(GENERIC_ART, unit, '#3f7fd8');
 
 /** A plain foot soldier, to vary one rule at a time. */
 const plain = (over: Partial<UnitDef>): UnitDef => ({
@@ -44,6 +43,13 @@ const plain = (over: Partial<UnitDef>): UnitDef => ({
 });
 
 describe('a unit nobody drew is drawn from what the rules can see', () => {
+  it('draws the same portrait deterministically', () => {
+    const unit = plain({ id: 'stable-portrait' });
+    expect(portrait(unit)).toBe(portrait(unit));
+    expect(portraitMarkup(GENERIC_ART, unit, '#3f7fd8'))
+      .not.toBe(portraitMarkup(GENERIC_ART, unit, '#d8483f'));
+  });
+
   /**
    * The defect this replaces: `sprites[type] ?? sprites.soldier`.
    *

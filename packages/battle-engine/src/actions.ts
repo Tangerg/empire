@@ -25,8 +25,6 @@ import {
 } from './action-system';
 import type { Action, ActionKindMap, Coord, GameEvent, GameState, Unit, WeaponId } from './types';
 
-export { IllegalActionError } from './action-system';
-
 /* --------------------------------------------------------------- enumeration */
 
 export interface CommandOption {
@@ -320,7 +318,8 @@ export const CoreActionHandlers = new ActionHandlerRegistry()
   .register(new EmbarkActionHandler())
   .register(new DisembarkActionHandler())
   .register(new RecruitActionHandler())
-  .register(new EndTurnActionHandler());
+  .register(new EndTurnActionHandler())
+  .seal();
 
 /**
  * Port declared here: the strategies that execute an action, and the rules they

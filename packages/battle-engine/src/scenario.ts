@@ -273,6 +273,7 @@ export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry(Sp
     (context, condition) => !context.evaluate(condition.condition),
     { children: (condition) => [condition.condition] },
   ));
+ScenarioConditionHandlers.seal();
 
 /**
  * Ports declared by this module. The composition-level `BattleRuleServices`
@@ -753,6 +754,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
   .register(effectHandler('emitSignal', ({ emit }, effect) => {
     emit({ type: 'scenarioSignal', signal: effect.signal });
   }));
+ScenarioEffectHandlers.seal();
 
 /**
  * Signals a battle raised, in the order it raised them.

@@ -5,9 +5,11 @@ import type { TerrainId } from '../types';
 export class TerrainEncodingRegistry {
   private readonly byCharacter = new Map<string, TerrainId>();
   private readonly byTerrain = new Map<TerrainId, string>();
-  private fallback: TerrainId | null = null;
+  private defaultTerrainId: TerrainId | null = null;
+  private sealed = false;
 
   register(entries: Readonly<Record<string, TerrainId>>, defaultTerrain?: TerrainId): void {
+    if (this.sealed) throw new DomainInvariantError('terrain encoding registry is sealed after composition');
     const incomingCharacters = new Set<string>();
     const incomingTerrains = new Set<TerrainId>();
     for (const [character, terrain] of Object.entries(entries)) {
@@ -21,14 +23,14 @@ export class TerrainEncodingRegistry {
       incomingCharacters.add(character);
       incomingTerrains.add(terrain);
     }
-    if (defaultTerrain !== undefined && this.fallback !== null && this.fallback !== defaultTerrain) {
-      throw new DomainInvariantError(`default terrain already registered: "${this.fallback}"`);
+    if (defaultTerrain !== undefined && this.defaultTerrainId !== null && this.defaultTerrainId !== defaultTerrain) {
+      throw new DomainInvariantError(`default terrain already registered: "${this.defaultTerrainId}"`);
     }
     for (const [character, terrain] of Object.entries(entries)) {
       this.byCharacter.set(character, terrain);
       this.byTerrain.set(terrain, character);
     }
-    if (defaultTerrain !== undefined) this.fallback = defaultTerrain;
+    if (defaultTerrain !== undefined) this.defaultTerrainId = defaultTerrain;
   }
 
   terrain(character: string): TerrainId | undefined {
@@ -40,8 +42,8 @@ export class TerrainEncodingRegistry {
   }
 
   get defaultTerrain(): TerrainId {
-    if (this.fallback === null) throw new DomainInvariantError('no default terrain installed; install a content pack first');
-    return this.fallback;
+    if (this.defaultTerrainId === null) throw new DomainInvariantError('no default terrain installed; install a content pack first');
+    return this.defaultTerrainId;
   }
 
   /**
@@ -59,14 +61,6 @@ export class TerrainEncodingRegistry {
     return character;
   }
 
-  characters(): Record<string, TerrainId> {
-    return Object.fromEntries(this.byCharacter);
-  }
-
-  terrains(): Record<TerrainId, string> {
-    return Object.fromEntries(this.byTerrain);
-  }
-
   hasCharacter(character: string): boolean {
     return this.byCharacter.has(character);
   }
@@ -76,13 +70,17 @@ export class TerrainEncodingRegistry {
   }
 
   currentDefaultTerrain(): TerrainId | null {
-    return this.fallback;
+    return this.defaultTerrainId;
   }
 
   clone(): TerrainEncodingRegistry {
     const copy = new TerrainEncodingRegistry();
-    copy.register(this.characters(), this.fallback ?? undefined);
+    copy.register(Object.fromEntries(this.byCharacter), this.defaultTerrainId ?? undefined);
     return copy;
   }
-}
 
+  seal(): this {
+    this.sealed = true;
+    return this;
+  }
+}

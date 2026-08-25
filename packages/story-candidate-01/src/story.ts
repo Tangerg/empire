@@ -284,7 +284,7 @@ const STORY: StoryPresentation[] = [
     ]),
 ];
 
-export const CANDIDATE_01_STORY = new Map(STORY.map((entry) => [entry.id, entry]));
+const stories = new Map(STORY.map((entry) => [entry.id, entry]));
 
 const CHOICE_STORY: StoryChoicePresentation[] = [
   { id: 'c01/choice-first-command', chapter: 1, prompt: '莱娅如何开始第一次指挥？', context: '北丘提供高地优势，但先遣小队会脱离罗德里克的援护。', options: [
@@ -333,16 +333,16 @@ const CHOICE_STORY: StoryChoicePresentation[] = [
   ] },
 ];
 
-export const CANDIDATE_01_CHOICES = new Map(CHOICE_STORY.map((entry) => [entry.id, entry]));
+const choices = new Map(CHOICE_STORY.map((entry) => [entry.id, entry]));
 
 export function candidate01Story(id: string): StoryPresentation {
-  const story = CANDIDATE_01_STORY.get(id);
+  const story = stories.get(id);
   if (!story) throw new Error(`unknown candidate-01 presentation "${id}"`);
   return story;
 }
 
 export function candidate01Choice(id: string): StoryChoicePresentation {
-  const choice = CANDIDATE_01_CHOICES.get(id);
+  const choice = choices.get(id);
   if (!choice) throw new Error(`unknown candidate-01 choice presentation "${id}"`);
   return choice;
 }

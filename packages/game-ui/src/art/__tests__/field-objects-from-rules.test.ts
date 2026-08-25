@@ -41,7 +41,6 @@ const mark = (kind: string, over: Partial<BattlefieldMarker> = {}): BattlefieldM
   kind,
   at: { x: 0, y: 0 },
   owner: 1,
-  meta: {},
   ...over,
 });
 

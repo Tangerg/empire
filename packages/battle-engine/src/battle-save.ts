@@ -1,8 +1,9 @@
-import { StoredDocumentError } from './domain/errors';
-import { SchemaMigrator, type SchemaMigration } from './save-schema';
+import { DomainInvariantError, StoredDocumentError } from './domain/errors';
+import { readCurrentDocument } from './save-schema';
 import type { RuleReferenceRules } from './rule-references';
 import type { RuleReferenceCheckRegistry } from './rule-references';
 import type { ContentRegistry } from './registry';
+import { rulesetDifferences, type BattleRulesetManifest } from './ruleset-manifest';
 import type {
   DeploymentState,
   GameMap,
@@ -30,8 +31,9 @@ export interface BattleSaveHeader {
 
 /** A battle interrupted mid-play, and everything needed to resume it. */
 export interface BattleSave {
-  schema: number;
+  schema: 1;
   battle: BattleSaveHeader;
+  ruleset: BattleRulesetManifest;
   savedAt: string;
   state: GameState;
 }
@@ -47,10 +49,20 @@ export interface BattleSaveRules extends RuleReferenceRules {
   readonly referenceChecks: RuleReferenceCheckRegistry;
 }
 
+/** The two owners consulted when a battle document is accepted. */
+export interface BattleSaveEnvironment {
+  readonly rules: BattleSaveRules;
+  readonly rulesetManifest: BattleRulesetManifest;
+}
+
 export function createBattleSave(
+  ruleset: BattleRulesetManifest,
   state: GameState,
   savedAt = new Date().toISOString(),
 ): BattleSave {
+  if (!Number.isFinite(Date.parse(savedAt))) {
+    throw new DomainInvariantError('cannot save battle with an invalid timestamp');
+  }
   return {
     schema: BATTLE_SAVE_SCHEMA,
     battle: {
@@ -59,6 +71,7 @@ export function createBattleSave(
       turn: state.turn,
       phase: state.phase,
     },
+    ruleset: structuredClone(ruleset),
     savedAt,
     // A save is a document, not a view of a live battle: the next order must not
     // be able to edit what has already been written down.
@@ -78,8 +91,12 @@ export function createBattleSave(
 class SaveInspection {
   constructor(
     readonly save: BattleSave,
-    readonly rules: BattleSaveRules,
+    readonly environment: BattleSaveEnvironment,
   ) {}
+
+  get rules(): BattleSaveRules {
+    return this.environment.rules;
+  }
 
   get state(): GameState {
     return this.save.state;
@@ -92,6 +109,7 @@ class SaveInspection {
 
   /** Every field of one aggregate, named in the refusal when it is wrong. */
   requireShape<T>(value: unknown, shape: Shape<T>, owner: string): void {
+    if (!anObject(value)) this.reject(`${owner}缺失或损坏，存档内容不是一场战斗`);
     const fields = value as Record<string, unknown>;
     for (const [field, check] of Object.entries(shape) as [string, ShapeCheck][]) {
       if (!check(fields[field])) this.reject(`${owner}的「${field}」缺失或损坏，存档内容不是一场战斗`);
@@ -198,8 +216,24 @@ const DEPLOYMENT_SHAPE: Shape<DeploymentState> = {
   assignments: anArray,
 };
 
+const HEADER_SHAPE: Shape<BattleSaveHeader> = {
+  levelId: aString,
+  levelName: aString,
+  turn: aNumber,
+  phase: aString,
+};
+
+const SAVE_SHAPE: Shape<BattleSave> = {
+  schema: aNumber,
+  battle: anObject,
+  ruleset: anObject,
+  savedAt: aString,
+  state: anObject,
+};
+
 /** Enough shape to walk at all. Everything after this may assume the fields exist. */
 const checkShape: SaveCheck = (inspection) => {
+  inspection.requireShape(inspection.save, SAVE_SHAPE, '存档');
   const state = inspection.state as unknown;
   if (!anObject(state)) inspection.reject('存档内容不是一场战斗');
   inspection.requireShape(state, STATE_SHAPE, '战斗');
@@ -210,6 +244,40 @@ const checkShape: SaveCheck = (inspection) => {
   inspection.requireShape(battle.random, RANDOM_SHAPE, '随机流');
   // Absent is a legal deployment: most battles never had one.
   if (battle.deployment) inspection.requireShape(battle.deployment, DEPLOYMENT_SHAPE, '部署');
+};
+
+const checkRuleset: SaveCheck = (inspection) => {
+  if (!anObject(inspection.save.ruleset) ||
+    !anObject(inspection.save.ruleset.plugins) ||
+    !anObject(inspection.save.ruleset.contentPacks)) {
+    inspection.reject('规则集版本信息缺失或损坏');
+  }
+  const invalidVersion = [
+    ...Object.entries(inspection.save.ruleset.plugins),
+    ...Object.entries(inspection.save.ruleset.contentPacks),
+  ].find(([id, version]) => !id.trim() || !Number.isInteger(version) || version < 1);
+  if (invalidVersion) inspection.reject(`规则集版本「${invalidVersion[0]}」损坏`);
+  const differences = rulesetDifferences(
+    inspection.environment.rulesetManifest,
+    inspection.save.ruleset,
+  );
+  if (differences.length > 0) inspection.reject(differences.join('；'));
+};
+
+const checkMetadata: SaveCheck = (inspection) => {
+  if (!aString(inspection.save.savedAt) || Number.isNaN(Date.parse(inspection.save.savedAt))) {
+    inspection.reject('保存时间缺失或损坏');
+  }
+  inspection.requireShape(inspection.save.battle, HEADER_SHAPE, '摘要');
+  const { battle, state } = inspection.save;
+  if (!Number.isInteger(battle.turn) || battle.turn < 1 ||
+    !['deployment', 'playing', 'over'].includes(battle.phase)) {
+    inspection.reject('战斗摘要数值不合法');
+  }
+  if (battle.levelId !== state.levelId || battle.levelName !== state.levelName ||
+    battle.turn !== state.turn || battle.phase !== state.phase) {
+    inspection.reject('战斗摘要与战斗状态不一致');
+  }
 };
 
 const checkMap: SaveCheck = (inspection) => {
@@ -263,6 +331,8 @@ const checkRuleReferences: SaveCheck = (inspection) => {
 
 const SAVE_CHECKS: readonly SaveCheck[] = [
   checkShape,
+  checkRuleset,
+  checkMetadata,
   checkMap,
   checkUnits,
   checkBattlefield,
@@ -270,50 +340,48 @@ const SAVE_CHECKS: readonly SaveCheck[] = [
 ];
 
 /**
- * Explicit, sequential schema migration, then the checks only a ruleset can
- * make: does this catalog hold the content the battle is played with, and does
- * this composition implement the rules it names.
+ * Reads the one current schema, then runs the checks only a ruleset can make:
+ * does this catalog hold the content the battle is played with, and does this
+ * composition implement the rules it names.
  *
  * A save is the one document written by a *running* battle rather than authored
  * by hand, which is exactly why it needs this: a level is linted before play, a
- * save arrives from a browser's local storage months later, against an engine
- * whose plugins have moved on.
+ * save arrives from browser storage against an engine whose plugins may have
+ * moved on. A version mismatch is refused instead of guessed or translated by
+ * a speculative compatibility path.
  */
-export class BattleSaveMigrator {
-  private readonly ladder = new SchemaMigrator<BattleSave>('battle save', BATTLE_SAVE_SCHEMA);
-
-  register(fromSchema: number, migrate: SchemaMigration): this {
-    this.ladder.register(fromSchema, migrate);
-    return this;
-  }
-
+export class BattleSaveReader {
   /** Reads a header without accepting the battle; for a slot list. */
   header(raw: unknown): BattleSaveHeader {
-    const save = this.ladder.load(raw);
-    if (!save.battle || typeof save.battle.levelId !== 'string') {
+    const save = readCurrentDocument<BattleSave>('battle save', BATTLE_SAVE_SCHEMA, raw);
+    return this.requireHeader(save);
+  }
+
+  load(raw: unknown, environment: BattleSaveEnvironment): BattleSave {
+    const save = readCurrentDocument<BattleSave>('battle save', BATTLE_SAVE_SCHEMA, raw);
+    this.requireHeader(save);
+    const inspection = new SaveInspection(save, environment);
+    for (const check of SAVE_CHECKS) {
+      try {
+        check(inspection);
+      } catch (error) {
+        if (error instanceof StoredDocumentError) throw error;
+        throw new StoredDocumentError(
+          `战斗存档无法读取：校验「${check.name || 'anonymous'}」时遇到损坏数据`,
+          { cause: error },
+        );
+      }
+    }
+    return save;
+  }
+
+  private requireHeader(save: BattleSave): BattleSaveHeader {
+    if (!save.battle || typeof save.battle !== 'object' ||
+      typeof save.battle.levelId !== 'string' || typeof save.battle.levelName !== 'string' ||
+      !Number.isInteger(save.battle.turn) || save.battle.turn < 1 ||
+      !['deployment', 'playing', 'over'].includes(save.battle.phase)) {
       throw new StoredDocumentError('battle save has no battle header');
     }
     return { ...save.battle };
   }
-
-  load(raw: unknown, rules: BattleSaveRules): BattleSave {
-    const save = this.ladder.load(raw);
-    this.header(save);
-    const inspection = new SaveInspection(save, rules);
-    for (const check of SAVE_CHECKS) check(inspection);
-    return save;
-  }
-
-  clone(): BattleSaveMigrator {
-    const copy = new BattleSaveMigrator();
-    for (const [schema, migrate] of this.migrations()) copy.register(schema, migrate);
-    return copy;
-  }
-
-  private migrations(): ReadonlyMap<number, SchemaMigration> {
-    return this.ladder.registered();
-  }
 }
-
-/** The default ladder: schema 1 is the first, so it has no migrations yet. */
-export const DefaultBattleSaves = new BattleSaveMigrator();

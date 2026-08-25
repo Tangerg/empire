@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createBattleEngine } from '../plugins/default';
-import { IllegalActionError } from '../actions';
+import { IllegalActionError } from '../domain/errors';
 import { idx } from '../grid';
 import { GameSession } from '../session';
 import { player, unitAt } from '../state';

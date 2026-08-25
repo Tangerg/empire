@@ -16,8 +16,6 @@ export const terrainCharacter = (
 function serializedTerrainCharacter(content: ContentCatalog, terrain: TerrainId): string {
   const exact = terrainCharacter(content, terrain);
   if (exact !== undefined) return exact;
-  const fallback = terrainCharacter(content, content.terrainEncoding.defaultTerrain);
-  if (fallback !== undefined) return fallback;
   throw new LevelFormatError(`terrain "${terrain}" has no serialized character`);
 }
 

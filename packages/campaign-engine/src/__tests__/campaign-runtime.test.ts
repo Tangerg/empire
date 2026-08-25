@@ -4,12 +4,14 @@ import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 
 /** This suite composes its own catalog instead of relying on ambient state. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
-import { createState } from '@empire/battle-engine';
+import { createBattleEngine } from '@empire/battle-engine';
 import { CampaignBattleBridge } from '../battle-bridge';
 import { CampaignRuntime } from '../runtime';
 import { createCampaignRuleServices } from '../rules';
-import { CampaignSaveMigrator, createCampaignSave } from '../save';
+import { createCampaignSave, loadCampaignSave } from '../save';
 import type { CampaignDefinition } from '../types';
+
+const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
 
 function campaign(): CampaignDefinition {
   return {
@@ -57,6 +59,26 @@ const level = () => makeLevel(['...'], {
 });
 
 describe('generic campaign framework', () => {
+  it('owns an immutable definition and isolated sealed rule graph', () => {
+    const definition = campaign();
+    const rules = createCampaignRuleServices();
+    const runtime = new CampaignRuntime(definition, undefined, rules);
+
+    definition.nodes[0].id = 'mutated-outside';
+    definition.initial!.variables!.trust = 999;
+    rules.effects.replace({
+      kind: 'addVariable',
+      apply: (state) => { state.variables.trust = 999; },
+    });
+
+    expect(runtime.node().id).toBe('prologue');
+    expect(runtime.state.variables.trust).toBe(1);
+    expect(Object.isFrozen(runtime.definition)).toBe(true);
+    expect(Object.isFrozen(runtime.definition.nodes)).toBe(true);
+    runtime.advance();
+    expect(runtime.state.variables.trust).toBe(2);
+  });
+
   it('runs story, conditional choice, battle bridge and result projection end-to-end', () => {
     const runtime = new CampaignRuntime(campaign());
     expect(runtime.advance().id).toBe('decision');
@@ -67,7 +89,7 @@ describe('generic campaign framework', () => {
     const bridge = new CampaignBattleBridge(() => level(), TEST_CATALOG);
     const request = runtime.beginBattle(bridge);
     expect(request.level.units.find((unit) => unit.key === 'campaign-hero')).toMatchObject({ rank: 0, hp: 100 });
-    const battle = createState(TEST_CATALOG, request.level);
+    const battle = TEST_ENGINE.createState(request.level);
     const hero = battle.units.find((unit) => unit.key === 'campaign-hero')!;
     hero.rank = 1;
     hero.rankProgress = 42;
@@ -88,9 +110,9 @@ describe('generic campaign framework', () => {
     const definition = campaign();
     const runtime = new CampaignRuntime(definition);
     const save = createCampaignSave(definition, runtime.snapshot(), '2026-08-12T00:00:00.000Z');
-    const loaded = new CampaignSaveMigrator().load(save, definition);
+    const loaded = loadCampaignSave(save, definition);
     expect(loaded.state.currentNode).toBe('prologue');
-    expect(() => new CampaignSaveMigrator().load({
+    expect(() => loadCampaignSave({
       ...save,
       contentPacks: { ...save.contentPacks, 'empire.common': 2 },
     }, definition)).toThrow(/content pack mismatch/);

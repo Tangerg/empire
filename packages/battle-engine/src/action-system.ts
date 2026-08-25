@@ -24,12 +24,10 @@ import type { WeaponAreaShapeRegistry } from './weapon-area';
 import type { UnitDirectiveBehavior } from './unit-directive';
 import type { RuleReferenceCheckRegistry } from './rule-references';
 import type { GridRegistry } from './tactical-grid';
-import type { BattleSaveMigrator } from './battle-save';
+import type { BattleSaveReader } from './battle-save';
 import type { RandomSource } from './random';
 import { type ContentCatalog } from './content-pack';
 import type { Action, ActionKindMap, Coord, Direction, GameEvent, GameState } from './types';
-
-export { IllegalActionError };
 
 export type ActionKind = Extract<keyof ActionKindMap, string>;
 
@@ -62,8 +60,8 @@ export interface BattleRuleServices {
   readonly grids: GridRegistry;
   /** Which names in a catalog, a level or a save this ruleset has to implement. */
   readonly referenceChecks: RuleReferenceCheckRegistry;
-  /** How a battle written to disk is read back: schema ladder plus refusals. */
-  readonly saves: BattleSaveMigrator;
+  /** How a battle written to disk is read back under this ruleset. */
+  readonly saves: BattleSaveReader;
 }
 
 export class ActionExecutionContext {

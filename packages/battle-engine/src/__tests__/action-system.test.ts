@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { ActionExecutionContext, ActionHandlerRegistry, IllegalActionError, type ActionHandler } from '../action-system';
-import { createBattleRules } from '../plugins/default';
+import { ActionExecutionContext, ActionHandlerRegistry, type ActionHandler } from '../action-system';
+import { IllegalActionError } from '../domain/errors';
+import { createBattleEngine } from '../plugins/default';
 
 import { CoreActionHandlers } from '../actions';
 import type { ActionKindMap } from '../types';
@@ -35,16 +36,22 @@ class PreBattleRallyHandler implements ActionHandler<'rally'> {
 
 describe('action strategy registry', () => {
   it('gives every ruleset its own registries, with no shared fallback', () => {
-    const first = createBattleRules({ content: createTestCatalog() });
-    const second = createBattleRules({ content: createTestCatalog() });
+    const firstContent = createTestCatalog();
+    const secondContent = createTestCatalog();
+    firstContent.units.override('soldier', { value: 999 });
+    const first = createBattleEngine({ content: firstContent }).rules;
+    const second = createBattleEngine({ content: secondContent }).rules;
 
     expect(first.content).not.toBe(second.content);
     expect(first.abilities).not.toBe(second.abilities);
     expect(first.scenarioConditions).not.toBe(second.scenarioConditions);
 
-    // Extending one ruleset must be invisible to the other.
-    first.content.units.override('soldier', { value: 999 });
+    // Composing one ruleset differently must be invisible to the other.
     expect(second.content.units.get('soldier').value).not.toBe(999);
+    expect(() => first.content.units.override('soldier', { value: 1 })).toThrow(/sealed/);
+    expect(Object.isFrozen(first.content.units.get('soldier'))).toBe(true);
+    expect(Object.isFrozen(first.content)).toBe(true);
+    expect(Object.isFrozen(first)).toBe(true);
   });
 
   it('registers one cohesive strategy for every built-in action kind', () => {
@@ -76,7 +83,7 @@ describe('action strategy registry', () => {
     // introduced to remove, three lines under the comment saying so. A pack's
     // own pre-battle order was refused as "finish deploying first", which is
     // exactly what it was doing.
-    const rules = createBattleRules({ content: createTestCatalog() });
+    const rules = createBattleEngine({ content: createTestCatalog() }).rules;
     const handlers = CoreActionHandlers.clone().register(new PreBattleRallyHandler());
     const state = testState(makeLevel(['....'], {
       units: [u(0, 0, 'soldier', 1), u(3, 0, 'soldier', 2)],

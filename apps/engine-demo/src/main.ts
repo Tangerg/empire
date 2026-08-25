@@ -5,6 +5,7 @@ import {
   createBattleEngine,
   createContentCatalog,
   GameSession,
+  IllegalActionError,
   type CombatPlan,
   type GameEvent,
   type LevelData,
@@ -212,7 +213,7 @@ function render(): void {
   const hero = byKey('hero');
   const javelin = byKey('javelin');
   const castleOccupied = Boolean(unitAt(6, 4));
-  const pluginCards = [...engine.pluginManifest].map(([id, version], index) =>
+  const pluginCards = Object.entries(engine.rulesetManifest.plugins).map(([id, version], index) =>
     `<div class="plugin-card"><span>0${index + 1}</span><b>${html(id.replace('engine.', ''))}</b><em>v${version}</em></div>`,
   ).join('');
 
@@ -358,7 +359,8 @@ app.addEventListener('click', (click) => {
         break;
     }
   } catch (error) {
-    headline = `行动被拒绝：${(error as Error).message}`;
+    if (!(error instanceof IllegalActionError)) throw error;
+    headline = `行动被拒绝：${error.message}`;
   }
   render();
 });

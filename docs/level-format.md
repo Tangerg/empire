@@ -82,6 +82,8 @@ export const level: LevelData = {
 
 `terrain.length` 必须等于 `height`，每行的 Unicode code point 数量必须等于 `width`。不要用 UTF-16 字符串下标自行解析多字节字符，应复用 `mapFromLevel()`。
 
+序列化同样是精确契约：地图中每个地形 ID 都必须在当前引擎的 `TerrainEncoding` 中有字符。编码器不会把未知地形偷偷写成默认地形；内容包安装时也会拒绝一个没有字符的默认地形，避免保存成功却悄悄改图。
+
 关卡空间由独立层组成：
 
 | 层 | 表达内容 | 运行时解释 |
@@ -227,7 +229,7 @@ composites: [{
 
 ## 规则覆盖
 
-`rules` 只写需要覆盖的字段。`resolveRules()` 会与 `DEFAULT_RULES` 合并。
+`rules` 只写需要覆盖的字段。`resolveRules()` 会与 `defaultRules()` 产生的新默认值深合并，不共享嵌套对象。
 
 主要规则分组如下：
 
@@ -431,7 +433,7 @@ schema 2 不兼容旧的隐式资金字段。每个玩家必须显式提供 `res
 
 1. 只有无法用可选字段表达的破坏性变化才提高 schema
 2. 同步修改类型、正规化、校验、编辑器和所有内置关卡
-3. 为旧 schema 提供独立迁移函数，不在正规化中静默猜测
+3. 当前开发阶段直接升级所有内置关卡与开发存档，不保留旧 schema 读取路径
 4. 更新关卡往返、内置关卡和应用挂载测试
 5. 更新本页和[关卡编辑器](./editor-guide.md)
 

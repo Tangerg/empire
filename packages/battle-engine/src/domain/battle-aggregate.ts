@@ -87,7 +87,6 @@ export class BattleAggregate {
   createUnitMarker(
     unit: Unit,
     kind: string,
-    meta: BattlefieldMarker['meta'] = {},
   ): BattlefieldMarker {
     const marker: BattlefieldMarker = {
       id: this.state.nextMarkerId++,
@@ -95,7 +94,6 @@ export class BattleAggregate {
       at: { x: unit.x, y: unit.y },
       owner: unit.owner,
       fallenUnit: cloneUnitState(unit),
-      meta: { ...meta },
     };
     this.state.markers.push(marker);
     return marker;

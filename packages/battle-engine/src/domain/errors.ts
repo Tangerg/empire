@@ -9,16 +9,16 @@
  * defect underneath as "your save is unreadable".
  */
 export class StoredDocumentError extends Error {
-  constructor(message: string) {
-    super(message);
+  constructor(message: string, options?: ErrorOptions) {
+    super(message, options);
     this.name = 'StoredDocumentError';
   }
 }
 
 /** Raised when a domain entity is asked to violate a battle invariant. */
 export class DomainInvariantError extends Error {
-  constructor(message: string) {
-    super(message);
+  constructor(message: string, options?: ErrorOptions) {
+    super(message, options);
     this.name = 'DomainInvariantError';
   }
 }

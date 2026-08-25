@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it } from 'vitest';
-import { migrateLevel, normaliseLevel, type LevelData } from '@empire/battle-engine';
+import { normaliseLevel, type LevelData } from '@empire/battle-engine';
 import {
   CUSTOM_LEVELS_KEY,
   loadCustomLevels,
@@ -55,7 +55,7 @@ describe('custom level storage', () => {
     ]);
   });
 
-  it('keeps an unreadable entry on disk so a later migration can rescue it', () => {
+  it('keeps an unreadable entry on disk for manual recovery', () => {
     localStorage.setItem(CUSTOM_LEVELS_KEY, JSON.stringify([
       { savedAt: 1, level: { schema: 99, id: 'from-the-future' } },
     ]));
@@ -88,6 +88,17 @@ describe('custom level storage', () => {
     expect(localStorage.getItem(CUSTOM_LEVELS_KEY)).toBe('{not json');
   });
 
+  it('also refuses a valid JSON value with the wrong slot shape', () => {
+    localStorage.setItem(CUSTOM_LEVELS_KEY, JSON.stringify({ levels: [] }));
+
+    expect(readCustomLevels()).toEqual({
+      levels: [],
+      rejected: [{ id: '*', reason: '自定义关卡存储必须是数组' }],
+    });
+    expect(() => saveCustomLevel(level('new'))).toThrow(/必须是数组/);
+    expect(localStorage.getItem(CUSTOM_LEVELS_KEY)).toBe('{"levels":[]}');
+  });
+
   it('keeps an unreadable entry when another level is deleted', () => {
     localStorage.setItem(CUSTOM_LEVELS_KEY, JSON.stringify([
       { savedAt: 2, level: { schema: 99, id: 'from-the-future' } },
@@ -101,52 +112,15 @@ describe('custom level storage', () => {
   });
 });
 
-describe('level schema migration', () => {
-  it('upgrades a schema-1 level into the current resource model', () => {
-    const legacy = {
-      schema: 1,
-      id: 'legacy',
-      name: '旧关卡',
-      width: 2,
-      height: 1,
-      terrain: ['..'],
-      owners: [],
-      units: [{ x: 0, y: 0, unit: 'soldier', owner: 1 }],
-      players: [
-        { id: 1, name: 'P1', team: 1, color: '#3f7fd8', controller: 'human', funds: 300 },
-        { id: 2, name: 'P2', team: 2, color: '#d8483f', controller: 'ai', funds: 250 },
-      ],
-      rules: { baseIncome: 50, incomeOverride: 120 },
-      victory: [{ type: 'routEnemies' }],
-    };
-
-    const migrated = migrateLevel(legacy) as Record<string, unknown>;
-    expect(migrated.schema).toBe(2);
-
-    const level = normaliseLevel(migrated);
-    expect(level.players[0].resources.funds).toEqual({ current: 300, capacity: null });
-    expect(level.players[1].resources.funds).toEqual({ current: 250, capacity: null });
-    expect(level.rules.baseResourceGrants).toEqual([{ resource: 'funds', amount: 50 }]);
-    expect(level.rules.siteResourceOverrides).toEqual({ funds: 120 });
-    expect('baseIncome' in level.rules).toBe(false);
-  });
-
-  it('still refuses a schema with no upgrade path', () => {
+describe('level schema boundary', () => {
+  it('refuses any schema other than the current one', () => {
     expect(() => normaliseLevel({ schema: 99, terrain: ['..'] })).toThrow(/schema/);
   });
 
   it('leaves a current-schema level unchanged', () => {
-    // A copy rather than the same object: the ladder hands back a document it
-    // owns, so a migration cannot edit the caller's.
+    // A loaded document is owned by the normaliser, never by the caller.
     const current = level('unchanged');
-    expect(migrateLevel(current)).toEqual(current);
-    expect(migrateLevel(current)).not.toBe(current);
-  });
-
-  it('refuses a schema it has no step for, in the author terms', () => {
-    expect(() => migrateLevel({ ...level('future'), schema: 9 }))
-      .toThrow(/关卡 schema 无法升级到 2/);
-    expect(() => migrateLevel({ ...level('ancient'), schema: 0 }))
-      .toThrow(/no 关卡 migration from schema 0/);
+    expect(normaliseLevel(current)).toEqual(current);
+    expect(normaliseLevel(current)).not.toBe(current);
   });
 });

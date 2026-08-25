@@ -1,13 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { createBattleEngine } from '../plugins/default';
-import { BATTLE_SAVE_SCHEMA, BattleSaveMigrator, createBattleSave } from '../battle-save';
+import { BATTLE_SAVE_SCHEMA, BattleSaveReader, createBattleSave } from '../battle-save';
 import { hashState } from '../replay';
 import { GameSession } from '../session';
+import { DomainInvariantError, StoredDocumentError } from '../domain/errors';
+import type { EnginePlugin } from '../kernel';
 import { TEST_CONTENT, makeLevel, u } from './fixtures';
 import type { Action, GameState, LevelData } from '../types';
 
 const engine = () => createBattleEngine({ content: TEST_CONTENT });
-
 const skirmish = (): LevelData =>
   makeLevel(['C..v..', '.T..T.', '..h...', 'v....C'], {
     units: [
@@ -87,7 +88,7 @@ describe('a battle interrupted mid-play', () => {
       savedAt: '2026-01-01T00:00:00.000Z',
       battle: { levelId: 'test', phase: 'playing' },
     });
-    expect(new BattleSaveMigrator().header(throughDisk(save)).turn).toBe(save.battle.turn);
+    expect(new BattleSaveReader().header(throughDisk(save)).turn).toBe(save.battle.turn);
   });
 
   it('is a document, not a view of the live battle', () => {
@@ -97,6 +98,16 @@ describe('a battle interrupted mid-play', () => {
     const before = save.state.units[0].hp;
     state.units[0].hp = 1;
     expect(save.state.units[0].hp).toBe(before);
+  });
+
+  it('refuses to write a live state that its own ruleset could not load', () => {
+    const battle = engine();
+    const state = battleInProgress(battle);
+    state.units[0].type = 'missing-unit';
+
+    expect(() => battle.saveBattle(state)).toThrow(DomainInvariantError);
+    expect(() => battle.saveBattle(state)).toThrow(/cannot save invalid live battle/);
+    expect(() => battle.saveBattle(state, 'not-a-date')).toThrow(/invalid timestamp/);
   });
 
   it('refuses a save the ruleset cannot honour, before replacing anything', () => {
@@ -116,6 +127,10 @@ describe('a battle interrupted mid-play', () => {
     const truncated = throughDisk(good) as { state: unknown };
     truncated.state = { units: [] };
     expect(() => session.load(truncated)).toThrow(/不是一场战斗/);
+
+    const foreignRuleset = throughDisk(good) as { ruleset: { contentPacks: Record<string, number> } };
+    foreignRuleset.ruleset.contentPacks['empire.common'] = 999;
+    expect(() => session.load(foreignRuleset)).toThrow(/content pack "empire\.common" version/);
 
     // Every refusal happened before the session's own battle was touched.
     expect(hashState(session.state)).toBe(digest);
@@ -154,33 +169,49 @@ describe('a battle interrupted mid-play', () => {
     const noDeployment = throughDisk(good) as { state: GameState };
     noDeployment.state.deployment = null;
     expect(() => battle.loadBattle(noDeployment)).not.toThrow();
+
+    const nullUnit = throughDisk(good) as { state: GameState };
+    nullUnit.state.units[0] = null as never;
+    expect(() => battle.loadBattle(nullUnit)).toThrow(StoredDocumentError);
   });
 
-  it('walks a save up its schema ladder, and refuses a gap', () => {
+  it('refuses a header that disagrees with the state it summarizes', () => {
+    const battle = engine();
+    const save = throughDisk(battle.saveBattle(battleInProgress(battle))) as {
+      battle: { turn: number };
+    };
+    save.battle.turn += 1;
+    expect(() => battle.loadBattle(save)).toThrow(/摘要与战斗状态不一致/);
+  });
+
+  it('accepts only the current save schema', () => {
     const battle = engine();
     const current = battle.saveBattle(battleInProgress(battle));
     const older = { ...throughDisk(current) as object, schema: 0 };
 
-    expect(() => battle.loadBattle(older)).toThrow(/no battle save migration from schema 0/);
-
-    const ladder = new BattleSaveMigrator()
-      .register(0, (raw) => ({ ...raw, schema: 1 }));
-    expect(ladder.load(older, battle.rules).battle.levelId).toBe('test');
-    expect(() => new BattleSaveMigrator().register(0, (raw) => raw).load(older, battle.rules))
-      .toThrow(/did not advance schema/);
+    expect(() => battle.loadBattle(older)).toThrow(/unsupported battle save schema 0/);
     expect(() => battle.loadBattle({ ...throughDisk(current) as object, schema: 7 }))
       .toThrow(/unsupported battle save schema 7/);
   });
 
   it('is a rule like any other, and can be replaced', () => {
-    // A game that ships its own state shape registers its own migration on its
-    // own engine, without a global ladder every engine in the process shares.
-    const saves = new BattleSaveMigrator().register(0, (raw) => ({ ...raw, schema: 1 }));
-    const battle = createBattleEngine({ content: TEST_CONTENT, saves });
-    const older = { ...throughDisk(battle.saveBattle(battleInProgress(battle))) as object, schema: 0 };
+    class RefusingSaveReader extends BattleSaveReader {
+      override load(): never {
+        throw new StoredDocumentError('custom save reader refused the document');
+      }
+    }
+    const savePlugin: EnginePlugin = {
+      id: 'test.battle-save-reader',
+      version: 1,
+      overrides: ['saves'],
+      install: (context) => context.replace('saves', new RefusingSaveReader()),
+    };
+    const ordinary = engine();
+    const save = ordinary.saveBattle(battleInProgress(ordinary));
+    const battle = createBattleEngine({ content: TEST_CONTENT, plugins: [savePlugin] });
 
-    expect(battle.loadBattle(older).levelId).toBe('test');
-    expect(() => engine().loadBattle(older)).toThrow(/no battle save migration/);
+    expect(ordinary.loadBattle(save).levelId).toBe('test');
+    expect(() => battle.loadBattle(save)).toThrow(/custom save reader/);
   });
 
   it('keeps the sitting out of the save', () => {
@@ -198,8 +229,8 @@ describe('a battle interrupted mid-play', () => {
     session.load(throughDisk(session.save()));
     expect(session.canUndo).toBe(false);
     expect(session.log).toEqual([]);
-    expect(Object.keys(createBattleSave(session.state))).toEqual(
-      ['schema', 'battle', 'savedAt', 'state'],
+    expect(Object.keys(createBattleSave(session.engine.rulesetManifest, session.state))).toEqual(
+      ['schema', 'battle', 'ruleset', 'savedAt', 'state'],
     );
   });
 });

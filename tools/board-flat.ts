@@ -20,7 +20,6 @@ import {
   ContentPackInstaller,
   createBattleEngine,
   createContentCatalog,
-  createState,
   idx,
   type LevelData,
 } from '@empire/battle-engine';
@@ -183,7 +182,7 @@ const levels: [string, LevelData][] = [
 const lines: string[] = [];
 for (const [label, level] of levels) {
   const art = label.startsWith('themed') ? CANDIDATE_01_ART : GENERIC_ART;
-  const board = new BoardView({ content, grid, art, renderer: svgBoardSurface }, createState(content, level), {
+  const board = new BoardView({ content, grid, art, renderer: svgBoardSurface }, engine.createState(level), {
     onTileClick: () => {},
     onTileEnter: () => {},
     onLeave: () => {},

@@ -1,4 +1,4 @@
-import { IllegalActionError } from './action-system';
+import { IllegalActionError } from './domain/errors';
 import type { AiOptions } from './ai';
 import type { BattleEngine } from './engine';
 import type { BattleSave } from './battle-save';
@@ -6,12 +6,10 @@ import type { MoveField } from './movement';
 import { unitById } from './state';
 import type { Action, Coord, GameEvent, GameState, LevelData, PlayerId, Unit, WeaponId } from './types';
 
-export type SessionListener = (events: GameEvent[], state: GameState) => void;
-
 /**
- * Thin stateful shell around the pure reducer: undo snapshots, memoised move
- * fields, and a listener hook. The UI talks only to this; the engine below it
- * stays free of any notion of selection or presentation.
+ * Thin stateful shell around the pure reducer: undo snapshots, the semantic
+ * event log and memoised move fields. The UI talks only to this; the engine
+ * below it stays free of any notion of selection or presentation.
  */
 export class GameSession {
   state: GameState;
@@ -19,7 +17,6 @@ export class GameSession {
   readonly log: GameEvent[] = [];
 
   private undoStack: Array<{ state: GameState; logLength: number }> = [];
-  private listeners = new Set<SessionListener>();
   private fieldCache = new Map<number, { field: MoveField; stamp: number }>();
   private stamp = 0;
 
@@ -28,8 +25,8 @@ export class GameSession {
     /** The composed ruleset this battle runs on; never an ambient default. */
     readonly engine: BattleEngine,
   ) {
-    this.level = level;
-    this.state = engine.createState(level);
+    this.level = structuredClone(level);
+    this.state = engine.createState(this.level);
   }
 
   /** Ruleset of this battle; the UI renders from here, not from ambient state. */
@@ -39,18 +36,6 @@ export class GameSession {
 
   get rules() {
     return this.engine.rules;
-  }
-
-  /* --------------------------------------------------------- subscriptions */
-
-  subscribe(fn: SessionListener): () => void {
-    this.listeners.add(fn);
-    return () => this.listeners.delete(fn);
-  }
-
-  private notify(events: GameEvent[]): void {
-    this.log.push(...events);
-    for (const fn of this.listeners) fn(events, this.state);
   }
 
   /* ---------------------------------------------------------------- queries */
@@ -144,7 +129,7 @@ export class GameSession {
 
     this.stamp++;
     this.fieldCache.clear();
-    this.notify(events);
+    this.log.push(...events);
     return events;
   }
 
@@ -169,7 +154,6 @@ export class GameSession {
     this.log.length = checkpoint.logLength;
     this.stamp++;
     this.fieldCache.clear();
-    this.notify([]);
     return true;
   }
 
@@ -193,7 +177,6 @@ export class GameSession {
     this.log.length = 0;
     this.stamp++;
     this.fieldCache.clear();
-    this.notify([]);
   }
 
   restart(): void {
@@ -202,6 +185,5 @@ export class GameSession {
     this.log.length = 0;
     this.stamp++;
     this.fieldCache.clear();
-    this.notify([]);
   }
 }

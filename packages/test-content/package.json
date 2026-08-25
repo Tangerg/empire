@@ -10,9 +10,9 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@empire/battle-engine": "*",
-    "@empire/content-ancient-empires": "*",
-    "@empire/content-common": "*"
+    "@empire/battle-engine": "0.1.0",
+    "@empire/content-ancient-empires": "0.1.0",
+    "@empire/content-common": "0.1.0"
   },
   "description": "Test-only composition root: builds isolated content catalogs for suites"
 }

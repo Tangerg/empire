@@ -12,18 +12,21 @@ import {
   forecast,
   type CombatForecast,
 } from './combat';
-import {
-  type CombatModifierPipeline,
-} from './combat-modifiers';
 import { forecastCombatPlan } from './combat-plan';
 import { validateLevel } from './level-validation';
 import { cloneState, createState, restoreState, type CreateStateOptions } from './state';
 import { createBattleSave, type BattleSave } from './battle-save';
+import {
+  createBattleRulesetManifest,
+  requirePersistentRuleset,
+  type BattleRulesetManifest,
+} from './ruleset-manifest';
 import { careerOptions } from './careers';
 import { formationOptions } from './formations';
 import { deploymentRoster, deploymentSpots } from './deployment';
 import { carrierOptions, passengerOptions } from './transports';
 import { activeTurnOrder, mayAct, type TurnOrderPolicy } from './turn-order';
+import { DomainInvariantError, StoredDocumentError } from './domain/errors';
 import type { Action, Coord, GameEvent, GameState, LevelData, Unit, WeaponId } from './types';
 
 export interface BattleEngineDependencies extends BattleRuleServices {
@@ -39,14 +42,14 @@ export interface BattleDispatchReceipt {
   readonly before: GameState;
 }
 
-export class BattleEngineConfigurationError extends Error {
+export class BattleEngineConfigurationError extends DomainInvariantError {
   constructor(readonly issues: readonly string[]) {
     super(`invalid battle engine configuration:\n${issues.map((issue) => `- ${issue}`).join('\n')}`);
     this.name = 'BattleEngineConfigurationError';
   }
 }
 
-export class BattleLevelError extends Error {
+export class BattleLevelError extends StoredDocumentError {
   constructor(readonly levelId: string, readonly issues: readonly string[]) {
     super(`invalid battle level "${levelId}":\n${issues.map((issue) => `- ${issue}`).join('\n')}`);
     this.name = 'BattleLevelError';
@@ -62,19 +65,19 @@ export class BattleLevelError extends Error {
  */
 export class BattleEngine {
   readonly actionHandlers: ActionHandlerRegistry;
-  readonly combatModifiers: CombatModifierPipeline;
   readonly aiObjectiveAdvisors: AiObjectiveAdvisorRegistry;
   readonly abilityAiEvaluators: AbilityAiEvaluatorRegistry;
   readonly aiIntents: AiIntentRegistry;
   readonly rules: BattleRuleServices;
+  /** Versioned identity carried by saves and replays. */
+  readonly rulesetManifest: BattleRulesetManifest;
 
   constructor(
     dependencies: BattleEngineDependencies,
     /** What composed this engine, id → version; empty when nothing said. */
-    readonly pluginManifest: ReadonlyMap<string, number> = new Map(),
+    pluginManifest: ReadonlyMap<string, number> = new Map(),
   ) {
     this.actionHandlers = dependencies.actionHandlers;
-    this.combatModifiers = dependencies.combatModifiers;
     this.aiObjectiveAdvisors = dependencies.aiObjectiveAdvisors;
     this.abilityAiEvaluators = dependencies.abilityAiEvaluators;
     this.aiIntents = dependencies.aiIntents;
@@ -82,7 +85,7 @@ export class BattleEngine {
       content: dependencies.content,
       abilities: dependencies.abilities,
       space: dependencies.space,
-      combatModifiers: this.combatModifiers,
+      combatModifiers: dependencies.combatModifiers,
       hitEffects: dependencies.hitEffects,
       statusBehaviors: dependencies.statusBehaviors,
       scenarioConditions: dependencies.scenarioConditions,
@@ -100,7 +103,13 @@ export class BattleEngine {
       unitDepartures: dependencies.unitDepartures,
       random: dependencies.random,
     };
+    this.rulesetManifest = createBattleRulesetManifest({
+      content: dependencies.content,
+      plugins: pluginManifest,
+    });
     this.assertConfiguration();
+    Object.freeze(this.rules);
+    Object.freeze(this);
   }
 
   /** The ruleset's content catalog. Presentation must read from this, never a global. */
@@ -121,12 +130,12 @@ export class BattleEngine {
   }
 
   /** Phase and round transitions of one battle running under this ruleset. */
-  lifecycle(state: GameState, emit?: (event: GameEvent) => void): BattleLifecycle {
+  private lifecycle(state: GameState, emit?: (event: GameEvent) => void): BattleLifecycle {
     return new BattleLifecycle(state, this.rules, emit);
   }
 
   /** Turn-order policy this battle runs under. */
-  turnOrder(state: GameState): TurnOrderPolicy {
+  private turnOrder(state: GameState): TurnOrderPolicy {
     return activeTurnOrder(this.rules, state);
   }
 
@@ -155,7 +164,17 @@ export class BattleEngine {
 
   /** Everything needed to resume this battle later, as a plain document. */
   saveBattle(state: GameState, savedAt?: string): BattleSave {
-    return createBattleSave(state, savedAt);
+    requirePersistentRuleset(this.rulesetManifest);
+    const save = createBattleSave(this.rulesetManifest, state, savedAt);
+    try {
+      return this.rules.saves.load(save, {
+        rules: this.rules,
+        rulesetManifest: this.rulesetManifest,
+      });
+    } catch (error) {
+      if (!(error instanceof StoredDocumentError)) throw error;
+      throw new DomainInvariantError(`cannot save invalid live battle: ${error.message}`, { cause: error });
+    }
   }
 
   /**
@@ -166,7 +185,11 @@ export class BattleEngine {
    * checks, plus the content ids the battle has been played with since.
    */
   loadBattle(raw: unknown): GameState {
-    return this.rules.saves.load(raw, this.rules).state;
+    requirePersistentRuleset(this.rulesetManifest);
+    return this.rules.saves.load(raw, {
+      rules: this.rules,
+      rulesetManifest: this.rulesetManifest,
+    }).state;
   }
 
   dispatch(state: GameState, action: Action): GameEvent[] {
@@ -262,4 +285,3 @@ export class BattleEngine {
     if (issues.length > 0) throw new BattleEngineConfigurationError(issues);
   }
 }
-

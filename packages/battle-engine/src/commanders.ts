@@ -1,6 +1,6 @@
 import { IllegalActionError } from './domain/errors';
 import { CommanderEntity } from './domain/commander-entity';
-import { UnitDepartureHandlers } from './unit-departure';
+import type { UnitDepartureHandler } from './unit-departure';
 import type { MoraleRules } from './morale';
 import { boardOf } from './domain/board';
 import type { GridRules } from './tactical-grid';
@@ -185,7 +185,7 @@ function handleCommanderDefeat(
  * Nothing else may call it: a consequence with a second entry point is a
  * consequence that will eventually fire twice, or not at all.
  */
-UnitDepartureHandlers.register({
+export const CommanderDefeatDepartureHandler: UnitDepartureHandler = {
   id: 'commander.defeat',
   handle: ({ rules, state, unit, emit }) => handleCommanderDefeat(rules, state, unit.id, emit),
-});
+};

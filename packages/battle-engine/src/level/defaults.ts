@@ -11,11 +11,9 @@ import type { LevelData, Objective, PlayerConfig, RuleSet } from '../types';
  * "what does a level default to" — the empty level, the fallback victory, and
  * the patch that combines this with what the level actually said.
  */
-export const DEFAULT_RULES: RuleSet = {
+const BASE_RULES: Omit<RuleSet, 'baseResourceGrants' | 'siteResourceOverrides'> = {
   captureMode: 'instant',
   captureThreshold: 100,
-  baseResourceGrants: [],
-  siteResourceOverrides: {},
   healOnOwnedBuilding: true,
   counterAttack: true,
   fog: false,
@@ -41,10 +39,23 @@ export const DEFAULT_RULES: RuleSet = {
   moraleCommanderDefeatLoss: 25,
 };
 
+/** The default geometry is useful to editors without exposing mutable rule state. */
+export const DEFAULT_GRID: RuleSet['grid'] = BASE_RULES.grid;
+/** The default actor policy, named once for authoring tools and state creation. */
+export const DEFAULT_TURN_ORDER: RuleSet['turnOrder'] = BASE_RULES.turnOrder;
 
+/** A fresh rules aggregate: no battle can mutate another battle's defaults. */
+export const defaultRules = (): RuleSet => ({
+  ...BASE_RULES,
+  baseResourceGrants: [],
+  siteResourceOverrides: {},
+});
 
-/** Falls back to "rout them or take their keep" when a level states no goal. */
-export const DEFAULT_VICTORY: Objective[] = [{ type: 'routEnemies' }, { type: 'captureHQ' }];
+/** A fresh fallback objective tree for each level and player. */
+export const defaultVictory = (): Objective[] => [
+  { type: 'routEnemies' },
+  { type: 'captureHQ' },
+];
 
 function defaultPlayer(
   id: number,
@@ -97,10 +108,23 @@ export function emptyLevel(content: ContentCatalog, width = 20, height = 14): Le
     units: [],
     players: defaultPlayers(),
     rules: {},
-    victory: [{ type: 'routEnemies' }, { type: 'captureHQ' }],
+    victory: defaultVictory(),
   };
 }
 
 
 /** The ruleset a level plays under: the engine defaults, patched by the level. */
-export const resolveRules = (level: LevelData): RuleSet => ({ ...DEFAULT_RULES, ...(level.rules ?? {}) });
+export function resolveRules(level: LevelData): RuleSet {
+  const defaults = defaultRules();
+  const overrides = level.rules;
+  return {
+    ...defaults,
+    ...overrides,
+    baseResourceGrants: (overrides?.baseResourceGrants ?? defaults.baseResourceGrants)
+      .map((grant) => ({ ...grant })),
+    siteResourceOverrides: {
+      ...defaults.siteResourceOverrides,
+      ...overrides?.siteResourceOverrides,
+    },
+  };
+}

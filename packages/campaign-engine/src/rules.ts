@@ -1,5 +1,6 @@
 import { KeyedRegistry } from '@empire/battle-engine';
 import { DefaultCampaignNodes, type CampaignNodeRegistry } from './nodes';
+import { CampaignInvariantError } from './errors';
 import type {
   CampaignCondition,
   CampaignConditionKindMap,
@@ -66,6 +67,7 @@ export const DefaultCampaignConditions = new CampaignConditionRegistry()
   .register(condition('all', (state, value, rules) => value.conditions.every((child) => rules.evaluate(state, child))))
   .register(condition('any', (state, value, rules) => value.conditions.some((child) => rules.evaluate(state, child))))
   .register(condition('not', (state, value, rules) => !rules.evaluate(state, value.condition)));
+DefaultCampaignConditions.seal();
 
 export interface CampaignEffectHandler<K extends EffectKind = EffectKind> {
   kind: K;
@@ -107,7 +109,7 @@ export const DefaultCampaignEffects = new CampaignEffectRegistry()
   .register(effect('setVariable', (state, value) => { state.variables[value.key] = value.value; }))
   .register(effect('addVariable', (state, value) => {
     const current = state.variables[value.key] ?? 0;
-    if (typeof current !== 'number') throw new Error(`campaign variable "${value.key}" is not numeric`);
+    if (typeof current !== 'number') throw new CampaignInvariantError(`campaign variable "${value.key}" is not numeric`);
     state.variables[value.key] = current + value.amount;
   }))
   .register(effect('setFlag', (state, value) => {
@@ -129,15 +131,16 @@ export const DefaultCampaignEffects = new CampaignEffectRegistry()
   }))
   .register(effect('setRosterDisposition', (state, value) => {
     const unit = state.roster[value.unit];
-    if (!unit) throw new Error(`unknown campaign roster unit "${value.unit}"`);
+    if (!unit) throw new CampaignInvariantError(`unknown campaign roster unit "${value.unit}"`);
     unit.disposition = value.disposition;
   }));
+DefaultCampaignEffects.seal();
 
 export interface CampaignRuleServices {
-  conditions: CampaignConditionRegistry;
-  effects: CampaignEffectRegistry;
+  readonly conditions: CampaignConditionRegistry;
+  readonly effects: CampaignEffectRegistry;
   /** What each kind of node means: how it is left, and what it must declare. */
-  nodes: CampaignNodeRegistry;
+  readonly nodes: CampaignNodeRegistry;
 }
 
 export function createCampaignRuleServices(overrides: Partial<CampaignRuleServices> = {}): CampaignRuleServices {

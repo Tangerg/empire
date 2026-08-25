@@ -255,8 +255,10 @@ function portraitFromRules(unit: UnitDef, c: SpriteColors): string {
     ${mark}`;
 }
 
-/** Gradient/clip ids must be unique per instance: two teams can be on screen. */
-let uid = 0;
+/** Stable SVG definition id: same drawing in, same markup out. */
+const definitionKey = (...parts: string[]): string => parts
+  .map((part) => encodeURIComponent(part).replaceAll('%', '_'))
+  .join('__');
 
 /**
  * The bust for a unit, drawn by the best answer available for it.
@@ -271,7 +273,7 @@ export function portraitMarkup(art: ArtDirection, unit: UnitDef, team: string): 
   const c = spriteColors(team);
   const drawn = portraits[unit.id];
   const face = drawn ? drawn(c) : portraitFromRules(unit, c);
-  const key = `${unit.id}-${++uid}`;
+  const key = definitionKey(unit.id, team);
   return `
     <defs>
       <linearGradient id="pg-${key}" x1="0" y1="0" x2="0" y2="1">

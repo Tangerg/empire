@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { IllegalActionError } from '../actions';
+import { IllegalActionError } from '../domain/errors';
 import { createBattleEngine } from '../plugins/default';
 import {
   awardRankProgress,

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createBattleRules } from '../plugins/default';
+import { createBattleEngine } from '../plugins/default';
 import { changeMorale } from '../morale';
 import { applyScenarioEffect } from '../scenario';
 import { returnUnitToField } from '../unit-return';
@@ -21,7 +21,7 @@ const skirmish = (rules = {}): GameState => testState(makeLevel(['.....', '.....
   scenario: { zones: [{ id: 'rally', cells: [{ x: 2, y: 1 }, { x: 1, y: 1 }] }] },
 }));
 
-const rules = () => createBattleRules({ content: TEST_CONTENT });
+const rules = () => createBattleEngine({ content: TEST_CONTENT }).rules;
 
 describe('a unit revived from a rout', () => {
   it('comes back with the will to stay', () => {

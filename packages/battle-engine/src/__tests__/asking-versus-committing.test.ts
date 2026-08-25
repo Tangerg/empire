@@ -4,7 +4,7 @@ import { canUseAbility, abilityDef } from '../abilities';
 import { forecastCombatPlan } from '../combat-plan';
 import { DomainInvariantError } from '../domain/errors';
 import { cloneContentCatalog } from '../content-pack';
-import { createBattleEngine, createBattleRules } from '../plugins/default';
+import { createBattleEngine } from '../plugins/default';
 import { applyScenarioEffect } from '../scenario';
 import { TEST_CONTENT, TEST_RULES, makeLevel, testAbilityQuery, testState, u } from './fixtures';
 import type { GameState } from '../types';
@@ -40,7 +40,7 @@ describe('asking about a weapon', () => {
     // into "this unit can never attack" — findable only by bisecting content.
     const content = cloneContentCatalog(TEST_CONTENT);
     content.units.override('mage', { weapons: ['mage_bolt', 'mage_bolth'] });
-    const rules = createBattleRules({ content });
+    const rules = createBattleEngine({ content }).rules;
     const state = testState(makeLevel(['....'], { units: [u(0, 0, 'mage', 1), u(1, 0, 'soldier', 2)] }));
 
     expect(() => readyWeapon(rules, state.units[0], 'mage_bolth')).toThrow(/unknown weapon "mage_bolth"/);

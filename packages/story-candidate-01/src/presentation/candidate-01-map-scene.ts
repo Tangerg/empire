@@ -1,6 +1,4 @@
-import { tileHash, type GameMap, type TerrainId } from '@empire/battle-engine';
-import { ANCIENT_EMPIRES_TERRAINS } from '@empire/content-ancient-empires';
-import { CANDIDATE_01_TERRAINS } from '../terrain';
+import { tileHash, type ContentCatalog, type GameMap, type TerrainId } from '@empire/battle-engine';
 import { candidate01Asset } from './candidate-01-assets';
 import {
   CANDIDATE_01_ENVIRONMENT,
@@ -13,6 +11,7 @@ import {
   runtimeAtlasCellMarkup,
   wholeField,
   type BoardPiece,
+  type BattleSceneContext,
 } from '@empire/game-ui';
 import { CANDIDATE_01_BOARD_STYLE } from './candidate-01-board-style';
 import type {
@@ -32,25 +31,11 @@ const tileAt = (map: GameMap, x: number, y: number): TerrainId | null =>
 
 const isForest = (map: GameMap, x: number, y: number): boolean => tileAt(map, x, y) === 'forest';
 
-/**
- * Terrain whose art should read as a connected route.
- *
- * Built from this theme's own definitions plus the generic pack it depends on,
- * rather than queried from an ambient registry: a scene module must not be able
- * to observe content that belongs to some other engine instance.
- */
-const ROUTE_TERRAIN: ReadonlySet<string> = new Set(
-  [...ANCIENT_EMPIRES_TERRAINS, ...CANDIDATE_01_TERRAINS]
-    .filter((terrain) =>
-      terrain.tags.includes('road') ||
-      terrain.tags.includes('building') ||
-      terrain.tags.includes('outpost'))
-    .map((terrain) => terrain.id),
-);
-
-const isRoute = (map: GameMap, x: number, y: number): boolean => {
+const isRoute = (content: ContentCatalog, map: GameMap, x: number, y: number): boolean => {
   const id = tileAt(map, x, y);
-  return id !== null && id !== undefined && ROUTE_TERRAIN.has(id);
+  if (id === null) return false;
+  const tags = content.terrains.get(id).tags;
+  return tags.includes('road') || tags.includes('building') || tags.includes('outpost');
 };
 
 const usesTwinHillsComposition = (levelId: string): boolean =>
@@ -187,18 +172,18 @@ function blobMask(map: GameMap, x: number, y: number): number {
     | (isForest(map, x - 1, y - 1) ? 128 : 0);
 }
 
-function routeMask(map: GameMap, x: number, y: number): number {
-  return (isRoute(map, x, y - 1) ? 1 : 0)
-    | (isRoute(map, x + 1, y) ? 2 : 0)
-    | (isRoute(map, x, y + 1) ? 4 : 0)
-    | (isRoute(map, x - 1, y) ? 8 : 0);
+function routeMask(content: ContentCatalog, map: GameMap, x: number, y: number): number {
+  return (isRoute(content, map, x, y - 1) ? 1 : 0)
+    | (isRoute(content, map, x + 1, y) ? 2 : 0)
+    | (isRoute(content, map, x, y + 1) ? 4 : 0)
+    | (isRoute(content, map, x - 1, y) ? 8 : 0);
 }
 
 /**
  * Asset-only terrain composition. It keeps the Ancient Empires virtues—clear
  * connected roads and readable occupied cells—without reverting to flat tiles.
  */
-function terrainGroundPieces(map: GameMap): BoardPiece[] {
+function terrainGroundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
   // Kept in four passes and concatenated at the end: the depth order within the
   // layer is surface, then forest transitions, then roads, then loose detail.
   const base: BoardPiece[] = [];
@@ -218,8 +203,8 @@ function terrainGroundPieces(map: GameMap): BoardPiece[] {
         const cell = CANDIDATE_01_ENVIRONMENT.blobIndex('transition-meadow-forest', blobMask(map, x, y));
         transitions.push({ markup: atlasCellMarkup('transition-meadow-forest', cell), ...at });
       }
-      if (isRoute(map, x, y)) {
-        const mask = routeMask(map, x, y);
+      if (isRoute(content, map, x, y)) {
+        const mask = routeMask(content, map, x, y);
         const roadVariant = Math.floor(tileHash(x, y, 1102) * 4);
         const cell = CANDIDATE_01_ENVIRONMENT.connectedIndex('route-dirt-road', mask, roadVariant);
         // These two classes are the only ones in this layer a stylesheet reads.
@@ -308,9 +293,9 @@ function ambientVillagerPieces(): BoardPiece[] {
  *
  * A layer is its pieces. The renderer's own layer group is the group.
  */
-function twinHillsGroundPieces(map: GameMap): BoardPiece[] {
+function twinHillsGroundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
   return [
-    ...terrainGroundPieces(map),
+    ...terrainGroundPieces(content, map),
     ...authoredPlacementPieces('c01-01', 'foundation'),
     ...authoredPlacementPieces('c01-01', 'ground-decal'),
   ];
@@ -364,9 +349,7 @@ function sceneFrameForestMarkup(viewport: SceneViewport): string {
 
 /** Non-playable woodland surrounds, but never changes, the tactical field. */
 export function candidate01SceneFrameMarkup(
-  levelId: string,
-  map: GameMap,
-  viewport: SceneViewport,
+  { levelId, map, viewport }: BattleSceneContext,
 ): SceneFrameMarkup {
   // Every level of this campaign carries the pack's board style, painted scene or
   // not: an atlas tile and a unit figure wear its shadows even where no scenery was
@@ -398,10 +381,12 @@ export function candidate01SceneFrameMarkup(
 }
 
 /** Story art is pure presentation and cannot affect deterministic battle rules. */
-export function candidate01MapSceneryLayers(levelId: string, map: GameMap): SceneLayers {
+export function candidate01MapSceneryLayers(
+  { content, levelId, map }: BattleSceneContext,
+): SceneLayers {
   if (!usesTwinHillsComposition(levelId)) return { ground: [], underUnits: [], overUnits: [] };
   return {
-    ground: twinHillsGroundPieces(map),
+    ground: twinHillsGroundPieces(content, map),
     underUnits: twinHillsUnderUnitPieces(map),
     overUnits: authoredPlacementPieces('c01-01', 'over-units'),
   };

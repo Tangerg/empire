@@ -2,16 +2,18 @@ import { describe, expect, it } from 'vitest';
 import {
   createBattleEngine,
   normaliseLevel,
+  StoredDocumentError,
   type LevelData,
 } from '@empire/battle-engine';
 import { CampaignBattleBridge, DEFAULT_MARKER_DISPOSITIONS } from '../battle-bridge';
 import { CampaignRuntime } from '../runtime';
 import {
   CAMPAIGN_SAVE_SCHEMA,
-  CampaignSaveMigrator,
   createCampaignSave,
+  loadCampaignSave,
 } from '../save';
 import type { CampaignDefinition } from '../types';
+import { CampaignInvariantError } from '../errors';
 import { createTestCatalog } from '@empire/test-content';
 
 /** Composed per suite, exactly like an application composition root. */
@@ -75,10 +77,10 @@ const definition = (): CampaignDefinition => ({
 });
 
 describe('campaign save', () => {
-  it('round-trips through the migrator', () => {
+  it('round-trips through the current save reader', () => {
     const runtime = new CampaignRuntime(definition());
     const save = createCampaignSave(definition(), runtime.state, '2026-01-01T00:00:00.000Z');
-    const loaded = new CampaignSaveMigrator().load(JSON.parse(JSON.stringify(save)), definition());
+    const loaded = loadCampaignSave(JSON.parse(JSON.stringify(save)), definition());
 
     expect(loaded.schema).toBe(CAMPAIGN_SAVE_SCHEMA);
     expect(loaded.state).toEqual(runtime.state);
@@ -95,44 +97,67 @@ describe('campaign save', () => {
   it('refuses a save from a different campaign or version', () => {
     const runtime = new CampaignRuntime(definition());
     const save = createCampaignSave(definition(), runtime.state);
-    const migrator = new CampaignSaveMigrator();
-
-    expect(() => migrator.load(save, { ...definition(), version: 4 }))
+    expect(() => loadCampaignSave(save, { ...definition(), version: 4 }))
       .toThrow(/identity\/version mismatch/);
-    expect(() => migrator.load(save, { ...definition(), id: 'other' }))
+    expect(() => loadCampaignSave(save, { ...definition(), id: 'other' }))
       .toThrow(/identity\/version mismatch/);
   });
 
   it('refuses a save whose content packs no longer match', () => {
     const runtime = new CampaignRuntime(definition());
     const save = createCampaignSave(definition(), runtime.state);
-    expect(() => new CampaignSaveMigrator().load(save, {
+    expect(() => loadCampaignSave(save, {
       ...definition(),
       contentPacks: { 'empire.common': 2 },
     })).toThrow(/content pack mismatch/);
   });
 
-  it('demands a registered migration instead of guessing', () => {
+  it('refuses extra pack identities instead of checking only the expected subset', () => {
     const runtime = new CampaignRuntime(definition());
-    const save = { ...createCampaignSave(definition(), runtime.state), schema: 0 };
-    const migrator = new CampaignSaveMigrator();
-    expect(() => migrator.load(save, definition())).toThrow(/no campaign save migration from schema 0/);
-
-    migrator.register(0, (raw) => ({ ...raw, schema: 1 }));
-    expect(migrator.load(save, definition()).schema).toBe(1);
+    const save = createCampaignSave(definition(), runtime.state);
+    expect(() => loadCampaignSave({
+      ...save,
+      contentPacks: { ...save.contentPacks, 'foreign.rules': 1 },
+    }, definition())).toThrow(/content pack mismatch: "foreign\.rules"/);
   });
 
-  it('rejects a migration that fails to advance the schema', () => {
+  it('classifies a malformed raw state as a stored-document problem', () => {
+    const runtime = new CampaignRuntime(definition());
+    const save = createCampaignSave(definition(), runtime.state) as unknown as {
+      state: Record<string, unknown>;
+    };
+    delete save.state.flags;
+
+    expect(() => loadCampaignSave(save, definition()))
+      .toThrow(StoredDocumentError);
+    expect(() => loadCampaignSave(save, definition()))
+      .toThrow(/state\.flags is missing or invalid/);
+  });
+
+  it('refuses an invalid live aggregate before writing it', () => {
+    const runtime = new CampaignRuntime(definition());
+    runtime.state.roster.hero.hpRatio = 2;
+    expect(() => createCampaignSave(definition(), runtime.state)).toThrow(CampaignInvariantError);
+
+    const malformed = new CampaignRuntime(definition());
+    (malformed.state.variables as Record<string, unknown>).bad = {};
+    expect(() => createCampaignSave(definition(), malformed.state)).toThrow(CampaignInvariantError);
+
+    expect(() => createCampaignSave({
+      ...definition(),
+      contentPacks: { common: 0 },
+    }, new CampaignRuntime(definition()).state)).toThrow(CampaignInvariantError);
+  });
+
+  it('accepts only the current save schema', () => {
     const runtime = new CampaignRuntime(definition());
     const save = { ...createCampaignSave(definition(), runtime.state), schema: 0 };
-    const migrator = new CampaignSaveMigrator().register(0, (raw) => raw);
-    expect(() => migrator.load(save, definition())).toThrow(/did not advance schema/);
+    expect(() => loadCampaignSave(save, definition())).toThrow(/unsupported campaign save schema 0/);
   });
 
   it('rejects non-object payloads', () => {
-    const migrator = new CampaignSaveMigrator();
-    expect(() => migrator.load('nope', definition())).toThrow(/must be an object/);
-    expect(() => migrator.load([], definition())).toThrow(/must be an object/);
+    expect(() => loadCampaignSave('nope', definition())).toThrow(/must be an object/);
+    expect(() => loadCampaignSave([], definition())).toThrow(/must be an object/);
   });
 });
 

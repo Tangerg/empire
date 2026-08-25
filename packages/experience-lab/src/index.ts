@@ -62,7 +62,7 @@ const players: PlayerConfig[] = [
  * A deliberately broad, authored vertical slice. It combines mechanics rather
  * than introducing lab-only rules, so every result feeds back into production.
  */
-export const SUPER_EXPERIENCE_LEVEL: LevelData = {
+const SUPER_EXPERIENCE_LEVEL: LevelData = {
   schema: 2,
   id: 'experience-lab-gray-banner-trial',
   name: '灰旗试炼 · 三线合围',

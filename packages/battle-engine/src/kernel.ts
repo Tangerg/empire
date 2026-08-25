@@ -184,9 +184,9 @@ export class SrpgMicrokernel {
     }
     const installed = this.plugins.get(plugin.id);
     if (installed) {
-      if (installed.version === plugin.version) return this;
       throw new DomainInvariantError(
-        `engine plugin "${plugin.id}" already registered at version ${installed.version}, requested ${plugin.version}`,
+        `engine plugin "${plugin.id}" already registered at version ${installed.version}; ` +
+        `a second declaration at version ${plugin.version} is ambiguous`,
       );
     }
     this.plugins.set(plugin.id, plugin);
@@ -294,6 +294,13 @@ export class SrpgMicrokernel {
         overriders.set(capability, [...(overriders.get(capability) ?? []), plugin.id]);
       }
     }
+    for (const [capability, claimants] of overriders) {
+      if (claimants.length > 1) {
+        throw new DomainInvariantError(
+          `kernel capability "${capability}" overridden by multiple plugins: ${claimants.map((id) => `"${id}"`).join(', ')}`,
+        );
+      }
+    }
     const introducerOf = (plugin: EnginePlugin, capability: KernelCapabilityId): string => {
       const provider = introducers.get(capability);
       if (!provider) {
@@ -313,9 +320,10 @@ export class SrpgMicrokernel {
           ...(overriders.get(capability) ?? []),
         ]),
       ].filter((dependency) => dependency !== plugin.id),
+      duplicate: (id) => new DomainInvariantError(`duplicate engine plugin dependency node: "${id}"`),
       missing: (plugin, dependency) =>
-        new Error(`engine plugin "${plugin.id}" requires "${dependency}"`),
-      cycle: (path) => new Error(`cyclic engine plugin dependency: ${path.join(' -> ')}`),
+        new DomainInvariantError(`engine plugin "${plugin.id}" requires "${dependency}"`),
+      cycle: (path) => new DomainInvariantError(`cyclic engine plugin dependency: ${path.join(' -> ')}`),
     });
   }
 }

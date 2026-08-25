@@ -6,7 +6,7 @@ import { resolveDamage } from '../damage';
 import { WeaponHitEffectHandlers } from '../hit-effects';
 import { MOMENTUM_RESOURCE } from '../resources';
 import { removeUnit } from '../state';
-import { UnitDepartureHandlers } from '../unit-departure';
+import { UnitDepartureHandlerRegistry } from '../unit-departure';
 import { changeMorale } from '../morale';
 import { applyScenarioEffect } from '../scenario';
 import { TEST_CONTENT, TEST_RULES, makeLevel, testState, u } from './fixtures';
@@ -166,7 +166,7 @@ describe('every blow in combat is the same act', () => {
 describe('every way off the field is a departure', () => {
   const witnessed = () => {
     const seen: number[] = [];
-    const unitDepartures = UnitDepartureHandlers.clone().register({
+    const unitDepartures = new UnitDepartureHandlerRegistry().register({
       id: 'test.witness',
       handle: ({ unit }) => seen.push(unit.id),
     });

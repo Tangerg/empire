@@ -14,10 +14,9 @@ import { ContentRegistry } from './registry';
 import { unitAt } from './state';
 import { player } from './state';
 import { blockedAbilityStatus, combinedStatusModifiers } from './statuses';
-import { BattleAggregate, UnitEntity } from './domain/index';
+import { UnitEntity } from './domain/index';
 import type { Coord, GameEvent, GameState, Unit, WeaponDef, WeaponId } from './types';
 import { type TacticalSpace } from './tactical-space';
-import { type ContentCatalog } from './content-pack';
 import { hostileActionAllowed, type EngagementKind } from './engagement';
 
 /**
@@ -129,10 +128,6 @@ export function defineAbility(def: Partial<AbilityDef> & Pick<AbilityDef, 'id' |
 
 /* ------------------------------------------------------------------- attack */
 
-export function clearCaptureAt(content: ContentCatalog, state: GameState, c: Coord): void {
-  new BattleAggregate(state, content).clearCaptureAt(c);
-}
-
 /**
  * The weapon this query is about, or null when there is none to speak of —
  * the unit no longer carries it, cannot fire it yet, or has no weapons at all.
@@ -203,7 +198,7 @@ Abilities.defineAll([
       const content = rules.content;
       const ally = unitAt(state, target);
       if (!ally) throw new DomainInvariantError('no unit to heal');
-      const amount = healAmount(content, unit, ally);
+      const amount = healAmount(content, ally);
       const healed = new UnitEntity(ally).heal(amount, content.units.get(ally.type).maxHp);
       emit({ type: 'heal', source: unit.id, target: ally.id, amount: healed });
       awardRankProgress(rules, unit, Math.max(5, healed), emit);
@@ -261,6 +256,7 @@ Abilities.defineAll([
     priority: 90,
   }),
 ]);
+Abilities.seal();
 
 export const abilityDef = (rules: AbilityRules, id: string): AbilityDef => rules.abilities.get(id);
 
@@ -282,4 +278,3 @@ export function abilityTargets(
   return targets.filter((target) =>
     hostileActionAllowed(query.state, query.unit.owner, query.at, target, kind));
 }
-

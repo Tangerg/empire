@@ -1,4 +1,4 @@
-import { normaliseLevel, type LevelData } from '@empire/battle-engine';
+import { normaliseLevel, StoredDocumentError, type LevelData } from '@empire/battle-engine';
 
 export const CUSTOM_LEVELS_KEY = 'empire.customLevels';
 const PLAYTEST_KEY = 'empire.playtest';
@@ -39,9 +39,12 @@ function storedSlot(): StoredSlot {
   if (!raw) return { entries: [] };
   try {
     const value: unknown = JSON.parse(raw);
-    return { entries: Array.isArray(value) ? value : [] };
+    return Array.isArray(value)
+      ? { entries: value }
+      : { unreadable: '自定义关卡存储必须是数组' };
   } catch (error) {
-    return { unreadable: (error as Error).message };
+    if (!(error instanceof SyntaxError)) throw error;
+    return { unreadable: error.message };
   }
 }
 
@@ -49,7 +52,7 @@ function storedSlot(): StoredSlot {
 function writableEntries(): readonly unknown[] {
   const slot = storedSlot();
   if ('unreadable' in slot) {
-    throw new Error(`自定义关卡存储无法解析，未覆盖：${slot.unreadable}`);
+    throw new StoredDocumentError(`自定义关卡存储无法解析，未覆盖：${slot.unreadable}`);
   }
   return slot.entries;
 }
@@ -72,7 +75,8 @@ export function readCustomLevels(): LoadedCustomLevels {
     try {
       levels.push({ savedAt: stored.savedAt ?? 0, level: normaliseLevel(stored.level) });
     } catch (error) {
-      rejected.push({ id, reason: (error as Error).message });
+      if (!(error instanceof StoredDocumentError)) throw error;
+      rejected.push({ id, reason: error.message });
     }
   }
   levels.sort((left, right) => right.savedAt - left.savedAt);
@@ -86,9 +90,9 @@ export function loadCustomLevels(): StoredLevel[] {
 /**
  * Writes one level, keeping every other entry exactly as it was stored.
  *
- * Verbatim on purpose: an entry this schema cannot read may still be recoverable
- * by a later migration, and rewriting the slot from the *parsed* levels is how
- * one would be thrown away.
+ * Verbatim on purpose: an entry this schema cannot read may still be manually
+ * recoverable. Rewriting the slot from only the parsed levels would destroy
+ * unrelated stored bytes merely because this version refused to interpret them.
  */
 export function saveCustomLevel(level: LevelData): void {
   const kept = writableEntries().filter((stored) => idOf(stored) !== level.id);
@@ -118,11 +122,20 @@ export function takePlaytest(): LoadedPlaytest {
   const raw = sessionStorage.getItem(PLAYTEST_KEY);
   if (!raw) return { level: null, rejected: null };
   sessionStorage.removeItem(PLAYTEST_KEY);
+  let document: unknown;
   try {
-    return { level: normaliseLevel(JSON.parse(raw)), rejected: null };
+    document = JSON.parse(raw);
+  } catch (error) {
+    if (!(error instanceof SyntaxError)) throw error;
+    return { level: null, rejected: error.message };
+  }
+  try {
+    return { level: normaliseLevel(document), rejected: null };
   } catch (error) {
     // Silently dropping the player back to the menu made a level the editor
-    // considered valid look like a click that did nothing.
-    return { level: null, rejected: (error as Error).message };
+    // considered valid look like a click that did nothing. Only unreadable
+    // documents belong here; a normaliser defect must remain visible.
+    if (!(error instanceof StoredDocumentError)) throw error;
+    return { level: null, rejected: error.message };
   }
 }

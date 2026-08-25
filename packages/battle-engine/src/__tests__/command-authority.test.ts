@@ -134,7 +134,8 @@ describe('refusals are typed, not stringly relabelled', () => {
         return [];
       } catch (error) {
         if (error instanceof IllegalActionError) return [];
-        return [`${action.kind}: ${(error as Error).name}: ${(error as Error).message}`];
+        const detail = error instanceof Error ? `${error.name}: ${error.message}` : String(error);
+        return [`${action.kind}: ${detail}`];
       }
     });
 
@@ -145,8 +146,9 @@ describe('refusals are typed, not stringly relabelled', () => {
   });
 
   it('lets a collaborator refuse an order in its own voice', () => {
-    const battle = createBattleEngine({ content: cloneContentCatalog(TEST_CONTENT) });
-    battle.content.units.override('knight', { transport: { capacity: 2 } });
+    const content = cloneContentCatalog(TEST_CONTENT);
+    content.units.override('knight', { transport: { capacity: 2 } });
+    const battle = createBattleEngine({ content });
     // A transport and a passenger two tiles apart: embarking is illegal, and the
     // refusal now comes from the transport rules themselves, instead of a plain
     // Error that the handler caught and relabelled. It is in the player's

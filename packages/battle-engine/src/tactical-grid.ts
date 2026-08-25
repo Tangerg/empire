@@ -427,6 +427,7 @@ class HexGrid implements TacticalGrid {
 
 export const TacticalGrids = new ContentRegistry<TacticalGrid>('tactical grid');
 TacticalGrids.defineAll([new OrthogonalSquareGrid(), new OctileSquareGrid(), new HexGrid()]);
+TacticalGrids.seal();
 
 /** The registered tilings of one engine. */
 export type GridRegistry = ContentRegistry<TacticalGrid>;

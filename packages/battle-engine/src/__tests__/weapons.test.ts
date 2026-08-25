@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { IllegalActionError } from '../actions';
+import { IllegalActionError } from '../domain/errors';
 import { makeLevel, testApply, testCommands, testForecast, testState, u } from './fixtures';
 import { WEAPON_USES_RESOURCE } from '../resources';
 

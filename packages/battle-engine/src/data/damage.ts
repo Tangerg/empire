@@ -8,6 +8,7 @@ const matchupKey = (damageType: DamageType, armorClass: ArmorClass): string =>
 /** Content-owned matchup matrix. The combat pipeline only asks it for a multiplier. */
 export class DamageMatchupRegistry {
   private readonly entries = new Map<string, DamageMatchupDef>();
+  private sealed = false;
 
   constructor(readonly neutralMultiplier = 1) {
     if (!Number.isFinite(neutralMultiplier) || neutralMultiplier <= 0) {
@@ -16,6 +17,7 @@ export class DamageMatchupRegistry {
   }
 
   register(definitions: readonly DamageMatchupDef[]): void {
+    if (this.sealed) throw new DomainInvariantError('damage matchup registry is sealed after composition');
     const seen = new Set<string>();
     for (const definition of definitions) {
       if (!Number.isFinite(definition.multiplier) || definition.multiplier <= 0) {
@@ -53,5 +55,9 @@ export class DamageMatchupRegistry {
     copy.register(this.all());
     return copy;
   }
-}
 
+  seal(): this {
+    this.sealed = true;
+    return this;
+  }
+}

@@ -11,6 +11,7 @@ const order = (nodes: readonly Node[], external: ReadonlySet<string> = new Set()
     idOf: (node) => node.id,
     dependenciesOf: (node) => node.requires ?? [],
     isSatisfiedExternally: (id) => external.has(id),
+    duplicate: (id) => new Error(`duplicate dependency node: "${id}"`),
     missing: (node, dependency) => new Error(`${node.id} misses ${dependency}`),
     cycle: (path) => new Error(`cycle: ${path.join(' -> ')}`),
   });

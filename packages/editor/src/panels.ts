@@ -10,7 +10,7 @@ import {
   type RuleSet,
 } from '@empire/battle-engine';
 import type { EditorDocument } from './document';
-import { EDITOR_TOOLS, type BrushSettings, type EditorTool } from './tools';
+import type { BrushSettings, EditorTool } from './tools';
 
 /**
  * Everything the editor's three panels draw from.
@@ -27,6 +27,8 @@ export interface EditorPanelView {
   /** The art the palette draws with, composed by the application root. */
   readonly art: ArtDirection;
   readonly tool: EditorTool;
+  /** Explicitly composed toolbox in palette order. */
+  readonly tools: readonly EditorTool[];
   readonly brush: BrushSettings;
   readonly status: string;
   readonly showCoords: boolean;
@@ -45,6 +47,9 @@ export interface EditorPanelView {
    * eight-way board, and the two lists of names could drift apart.
    */
   readonly facings: readonly DirectionDef[];
+  /** Action-order policies installed in this exact engine instance. */
+  readonly turnOrders: readonly { id: string; name: string }[];
+  readonly defaultTurnOrder: string;
 }
 
 const OBJECTIVE_TYPES: { type: Objective['type']; label: string }[] = [
@@ -99,7 +104,7 @@ export class EditorPanels {
         <input class="id-input" data-field="id" value="${escapeHtml(doc.id)}" placeholder="id" />
       </div>
       <div class="topbar-center tool-row">
-        ${EDITOR_TOOLS.tools
+        ${view.tools
           .map(
             (candidate) => `<button class="btn tool ${tool === candidate ? 'active' : ''}" data-act="tool" data-arg="${candidate.id}"
               title="${candidate.name} (${candidate.hotkey.toUpperCase()})">${icon(candidate.icon)}<span>${candidate.name}</span></button>`,
@@ -233,8 +238,7 @@ export class EditorPanels {
         <label class="check"><input type="checkbox" data-field="r.recruitsActImmediately" ${rules.recruitsActImmediately ? 'checked' : ''}/> 新单位当回合可行动</label>
         <label class="stack">行动序
           <select data-field="r.turnOrder">
-            <option value="side" ${(rules.turnOrder ?? 'side') === 'side' ? 'selected' : ''}>阵营回合（远古帝国 / AW）</option>
-            <option value="initiative" ${rules.turnOrder === 'initiative' ? 'selected' : ''}>个体行动序（皇家骑士团 / FFT）</option>
+            ${view.turnOrders.map((policy) => `<option value="${escapeHtml(policy.id)}" ${(rules.turnOrder ?? view.defaultTurnOrder) === policy.id ? 'selected' : ''}>${escapeHtml(policy.name)}</option>`).join('')}
           </select>
         </label>
         <label class="stack">占领方式

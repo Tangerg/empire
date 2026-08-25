@@ -16,6 +16,7 @@ import { DomainInvariantError } from './domain/errors';
  */
 export abstract class KeyedRegistry<K extends string, V> {
   private readonly entries = new Map<K, V>();
+  private sealed = false;
 
   /** Names the registry in its own error messages, e.g. `'action handler'`. */
   protected constructor(protected readonly subject: string) {}
@@ -29,6 +30,7 @@ export abstract class KeyedRegistry<K extends string, V> {
    * would make behaviour depend on installation order.
    */
   register(entry: V): this {
+    this.requireMutable();
     const key = this.keyOf(entry);
     if (this.entries.has(key)) {
       throw new DomainInvariantError(`${this.subject} already registered: "${key}"`);
@@ -39,8 +41,19 @@ export abstract class KeyedRegistry<K extends string, V> {
 
   /** Publish over any incumbent. This is how a mod swaps a built-in rule. */
   replace(entry: V): this {
+    this.requireMutable();
     this.entries.set(this.keyOf(entry), entry);
     return this;
+  }
+
+  /** Composition is complete; runtime code may ask this registry, never edit it. */
+  seal(): this {
+    this.sealed = true;
+    return this;
+  }
+
+  get isSealed(): boolean {
+    return this.sealed;
   }
 
   /** Demand an entry: absence is a defect in whoever composed the ruleset. */
@@ -78,6 +91,12 @@ export abstract class KeyedRegistry<K extends string, V> {
   protected copyInto<R extends KeyedRegistry<K, V>>(target: R): R {
     for (const entry of this.entries.values()) target.register(entry);
     return target;
+  }
+
+  private requireMutable(): void {
+    if (this.sealed) {
+      throw new DomainInvariantError(`${this.subject} registry is sealed after composition`);
+    }
   }
 }
 
@@ -158,7 +177,19 @@ export class ContentRegistry<T extends { id: string }> extends KeyedRegistry<str
     return this.keys();
   }
 
+  override seal(): this {
+    for (const definition of this.all()) deepFreeze(definition);
+    return super.seal();
+  }
+
   clone(): ContentRegistry<T> {
     return this.copyInto(new ContentRegistry<T>(this.subject));
   }
+}
+
+function deepFreeze(value: unknown, seen = new Set<object>()): void {
+  if (typeof value !== 'object' || value === null || seen.has(value)) return;
+  seen.add(value);
+  for (const nested of Object.values(value)) deepFreeze(nested, seen);
+  Object.freeze(value);
 }

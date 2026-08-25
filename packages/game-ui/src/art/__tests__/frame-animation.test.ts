@@ -2,6 +2,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   FrameAnimationSystem,
+  PresentationTimeline,
   type FrameAnimationDriver,
 } from '../frame-animation';
 
@@ -53,6 +54,20 @@ describe('frame animation system', () => {
 
     expect(rendered).toEqual([0, 1, 3, 1, 0, 2]);
     expect(driver.callback).toBeNull();
+  });
+
+  it('resolves a finite transition as cancelled when its owner is disposed', async () => {
+    const driver = new ManualDriver();
+    const timeline = new PresentationTimeline(driver, () => true);
+    const progress: number[] = [];
+    const animation = timeline.tween(100, (value) => progress.push(value));
+
+    expect(driver.callback).not.toBeNull();
+    timeline.dispose();
+
+    await expect(animation).resolves.toBe(false);
+    expect(driver.callback).toBeNull();
+    expect(progress).toEqual([]);
   });
 
   /*

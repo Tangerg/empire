@@ -4,7 +4,10 @@ import {
   CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN,
   CANDIDATE_01_CONTENT_PACK,
 } from '@empire/story-candidate-01';
-import { candidate01CampaignAdapter } from '@empire/story-candidate-01/presentation';
+import {
+  candidate01CampaignAdapter,
+  CANDIDATE_01_ART,
+} from '@empire/story-candidate-01/presentation';
 import { StoryCampaignController } from '../campaign-game';
 
 import { createBattleEngine } from '@empire/battle-engine';
@@ -13,6 +16,7 @@ import { createTestCatalog } from '@empire/test-content';
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
+const TEST_OPTIONS = { engine: TEST_ENGINE, art: CANDIDATE_01_ART };
 
 function click(root: HTMLElement, selector: string): void {
   const element = root.querySelector<HTMLElement>(selector);
@@ -24,7 +28,7 @@ describe('candidate-01 campaign UI', () => {
   beforeEach(() => localStorage.clear());
 
   it('moves from novel presentation to a persistent choice and battle staging', () => {
-    const controller = new StoryCampaignController(candidate01CampaignAdapter(), null, () => {}, TEST_ENGINE);
+    const controller = new StoryCampaignController(candidate01CampaignAdapter(), null, () => {}, TEST_OPTIONS);
     expect(controller.root.textContent).toContain('一双没有补好的靴子');
     for (let index = 0; index < 4; index++) click(controller.root, '[data-campaign-act="nextBeat"]');
     expect(controller.root.textContent).toContain('双子丘陵');
@@ -40,12 +44,15 @@ describe('candidate-01 campaign UI', () => {
   });
 
   it('enters the real battle controller and can return to campaign staging', () => {
-    const controller = new StoryCampaignController(candidate01CampaignAdapter(), null, () => {}, TEST_ENGINE);
+    const controller = new StoryCampaignController(candidate01CampaignAdapter(), null, () => {}, TEST_OPTIONS);
     for (let index = 0; index < 4; index++) click(controller.root, '[data-campaign-act="nextBeat"]');
     for (let index = 0; index < 3; index++) click(controller.root, '[data-campaign-act="nextBeat"]');
     click(controller.root, '[data-choice="steady-advance"]');
+    expect(controller.root.textContent).toContain('补给');
+    expect(controller.root.textContent).toContain('国库');
     click(controller.root, '[data-campaign-act="battle"]');
     expect(controller.root.querySelector('.game-root')).not.toBeNull();
+    expect(controller.root.querySelector('.layer-units image')).not.toBeNull();
     expect(controller.root.textContent).toContain('01 · 双子丘陵');
     click(controller.root, '[data-act="exit"]');
     expect(controller.root.querySelector('.staging-screen')).not.toBeNull();

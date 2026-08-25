@@ -1,4 +1,4 @@
-import { ColorMatrixFilter, Container, Sprite, Texture } from 'pixi.js';
+import { autoDetectRenderer, ColorMatrixFilter, Container, Sprite, Texture } from 'pixi.js';
 import {
   BOARD_LAYERS,
   type BoardDrawing,
@@ -16,7 +16,7 @@ import {
 } from './board-surface';
 import { FrameAnimationSystem } from './frame-animation';
 import { scenePointOf, shownAt } from './letterbox';
-import type { BakedPicture, PictureTextures } from './picture-textures';
+import { BrowserPictureTextures, type BakedPicture, type PictureTextures } from './picture-textures';
 
 /**
  * A battlefield drawn as one Pixi scene graph.
@@ -73,6 +73,8 @@ export interface ScenePainter {
   readonly canvas: HTMLCanvasElement;
   /** Begins painting this scene, and keeps painting it. */
   paint(scene: Container): void;
+  /** Stops painting this scene if it is the one currently attached. */
+  detach(scene: Container): void;
   /** The pixel size of the drawing buffer. */
   resize(width: number, height: number): void;
   dispose(): void;
@@ -440,8 +442,7 @@ export class PixiBoardSurface implements BoardSurface {
 
   dispose(): void {
     this.drawingTools.animations.dispose();
-    this.tools.painter.dispose();
-    this.tools.textures.dispose();
+    this.tools.painter.detach(this.scene);
     this.units.clear();
     this.scene.destroy({ children: true });
   }
@@ -482,11 +483,10 @@ export class PixiBoardSurface implements BoardSurface {
  * keeps the failure reportable — a GPU that will not come up is something the
  * application root can answer for, and a promise nobody holds is not.
  */
-export async function preparePixiPainter(options: {
+async function preparePixiPainter(options: {
   /** Passed through to Pixi. Antialiasing off suits pixel art. */
   readonly antialias?: boolean;
 } = {}): Promise<ScenePainter> {
-  const { autoDetectRenderer } = await import('pixi.js');
   const renderer = await autoDetectRenderer({
     antialias: options.antialias ?? false,
     backgroundAlpha: 0,
@@ -510,6 +510,9 @@ export async function preparePixiPainter(options: {
       scene = root;
       if (frame === null) frame = requestAnimationFrame(draw);
     },
+    detach: (root) => {
+      if (scene === root) scene = null;
+    },
     resize: (width, height) => renderer.resize(width, height),
     dispose: () => {
       if (frame !== null) cancelAnimationFrame(frame);
@@ -521,12 +524,44 @@ export async function preparePixiPainter(options: {
 }
 
 /**
- * This renderer, as the application root selects one.
+ * A reusable Pixi renderer owned by the application root.
  *
- * A painter has to be awaited, so unlike `svgBoardSurface` this is a function of
- * one: `renderer: pixiBoardSurface(await preparePixiPainter())`.
+ * A surface owns its display list and animation loop registrations. The factory
+ * owns the shared GPU context and texture cache; destroying one battle must not
+ * invalidate the factory that the next battle will use.
  */
+export interface ManagedBoardSurfaceFactory extends BoardSurfaceFactory {
+  dispose(): void;
+}
+
 export const pixiBoardSurface = (
   painter: ScenePainter,
   textures: PictureTextures,
-): BoardSurfaceFactory => (scene) => new PixiBoardSurface(scene, { painter, textures });
+): ManagedBoardSurfaceFactory => {
+  let disposed = false;
+  const create = (scene: BoardSurfaceScene) => {
+    if (disposed) throw new Error('Pixi board renderer has been disposed');
+    return new PixiBoardSurface(scene, { painter, textures });
+  };
+  const dispose = () => {
+    if (disposed) return;
+    disposed = true;
+    painter.dispose();
+    textures.dispose();
+  };
+  return Object.assign(create, { dispose });
+};
+
+/**
+ * The canonical async composition path for the optional GPU renderer.
+ *
+ * The caller keeps the returned factory for as many sequential battles as it
+ * needs and disposes it once when the application session ends.
+ */
+export async function preparePixiBoardSurface(options: {
+  readonly antialias?: boolean;
+  readonly textureResolution?: number;
+} = {}): Promise<ManagedBoardSurfaceFactory> {
+  const painter = await preparePixiPainter({ antialias: options.antialias });
+  return pixiBoardSurface(painter, new BrowserPictureTextures(options.textureResolution));
+}

@@ -8,7 +8,9 @@
   ],
   "exports": "./src/index.ts",
   "dependencies": {
-    "@empire/battle-engine": "0.1.0",
+    "@empire/battle-engine": "0.1.0"
+  },
+  "devDependencies": {
     "@empire/story-candidate-01": "0.1.0"
   }
 }

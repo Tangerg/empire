@@ -174,7 +174,6 @@ export function extractLostTransportPassengers(
       at: { ...at },
       owner: entry.unit.owner,
       fallenUnit: cloneUnitState(entry.unit),
-      meta: { carrier: carrierId },
     };
     state.markers.push(marker);
     markers.push(marker);
@@ -204,7 +203,6 @@ export function emitTransportLossEvents(
 export interface TransportWithdrawal {
   readonly at: Coord;
   readonly kind: 'routed' | 'surrendered' | 'withdrawn';
-  readonly meta?: Record<string, number | string | boolean>;
 }
 
 export function withdrawTransportPassengers(
@@ -213,7 +211,7 @@ export function withdrawTransportPassengers(
   withdrawal: TransportWithdrawal,
   emit: (event: GameEvent) => void,
 ): number[] {
-  const { at, kind, meta = {} } = withdrawal;
+  const { at, kind } = withdrawal;
   const entries = state.embarkedUnits.filter((entry) => entry.carrier === carrierId);
   const ids: number[] = [];
   for (const entry of entries) {
@@ -224,7 +222,6 @@ export function withdrawTransportPassengers(
       at: { ...at },
       owner: entry.unit.owner,
       fallenUnit: cloneUnitState(entry.unit),
-      meta: { carrier: carrierId, ...meta },
     };
     state.markers.push(marker);
     emit({ type: 'markerAdded', marker: marker.id, kind: marker.kind, at: marker.at });

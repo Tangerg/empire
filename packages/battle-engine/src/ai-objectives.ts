@@ -209,6 +209,7 @@ export const DefaultAiObjectiveAdvisors = new AiObjectiveAdvisorRegistry()
       context.destination(cell, 8, '控制任务区域', { captureOnly: true });
     }
   }));
+DefaultAiObjectiveAdvisors.seal();
 
 function runtimeStatus(state: GameState, owner: PlayerId, objective: Objective) {
   return objective.id ? player(state, owner).objectiveStates[objective.id]?.status ?? 'active' : 'active';

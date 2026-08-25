@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { createBattleEngine } from '../plugins/default';
-import { createBattleRules } from '../plugins/default';
 import { applyAction } from '../actions';
 import { cloneContentCatalog } from '../content-pack';
 import { Reactions } from '../reactions';
-import { UnitDepartureHandlers, announceUnitDeparture } from '../unit-departure';
+import { UnitDepartureHandlerRegistry, announceUnitDeparture } from '../unit-departure';
 import { castOf } from '../casting';
 import { TEST_CONTENT, makeLevel, testForecast, testState, u } from './fixtures';
 import type { GameState, LevelData } from '../types';
+import type { EnginePlugin } from '../kernel';
 
 /**
  * Two extension points added this round, exercised the way a content pack or a
@@ -36,7 +36,7 @@ describe('reaction stances are content', () => {
       retaliates: false,
       conservesResources: false,
     });
-    const rules = createBattleRules({ content: TEST_CONTENT, reactions });
+    const rules = createBattleEngine({ content: TEST_CONTENT, reactions }).rules;
 
     const state = testState(duel());
     const [attacker, defender] = state.units;
@@ -68,7 +68,7 @@ describe('reaction stances are content', () => {
 describe('a unit leaving the field is one announcement', () => {
   it('carries the unit itself, because it is already off the board', () => {
     const seen: Array<{ id: number; onBoard: boolean }> = [];
-    const unitDepartures = UnitDepartureHandlers.clone().register({
+    const unitDepartures = new UnitDepartureHandlerRegistry().register({
       id: 'test.witness',
       handle: ({ state, unit }) => seen.push({
         id: unit.id,
@@ -93,11 +93,20 @@ describe('a unit leaving the field is one announcement', () => {
 
   it("runs a plugin's own consequence beside the built-in ones", () => {
     const bounty: number[] = [];
-    const unitDepartures = UnitDepartureHandlers.clone().register({
-      id: 'test.bounty',
-      handle: ({ unit }) => bounty.push(unit.owner),
-    });
-    const battle = createBattleEngine({ content: TEST_CONTENT, unitDepartures });
+    const bountyPlugin: EnginePlugin = {
+      id: 'test.departure-bounty',
+      version: 1,
+      requiresCapabilities: ['unitDepartures'],
+      overrides: ['unitDepartures'],
+      install: (context) => context.replace(
+        'unitDepartures',
+        context.require('unitDepartures').clone().register({
+          id: 'test.bounty',
+          handle: ({ unit }) => bounty.push(unit.owner),
+        }),
+      ),
+    };
+    const battle = createBattleEngine({ content: TEST_CONTENT, plugins: [bountyPlugin] });
     const state = battle.createState(makeLevel(['..'], {
       units: [u(0, 0, 'knight', 1), u(1, 0, 'mage', 2, 5)],
     }));
@@ -117,7 +126,7 @@ describe('a unit leaving the field is one announcement', () => {
   });
 
   it('refuses two consequences under one id', () => {
-    const registry = UnitDepartureHandlers.clone();
+    const registry = createBattleEngine({ content: TEST_CONTENT }).rules.unitDepartures.clone();
     expect(() => registry.register({ id: 'commander.defeat', handle: () => {} }))
       .toThrow(/already registered/);
   });
@@ -155,11 +164,11 @@ describe('a unit leaving the field is one announcement', () => {
 
   it('announces a departure that was not a death', () => {
     const seen: number[] = [];
-    const unitDepartures = UnitDepartureHandlers.clone().register({
+    const unitDepartures = new UnitDepartureHandlerRegistry().register({
       id: 'test.witness',
       handle: ({ unit }) => seen.push(unit.id),
     });
-    const rules = createBattleRules({ content: TEST_CONTENT, unitDepartures });
+    const rules = createBattleEngine({ content: TEST_CONTENT, unitDepartures }).rules;
     const state: GameState = testState(duel());
     announceUnitDeparture(rules, state, state.units[0], () => {});
     expect(seen).toEqual([state.units[0].id]);

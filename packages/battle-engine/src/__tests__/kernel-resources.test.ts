@@ -68,6 +68,28 @@ describe('cohesive microkernel modules', () => {
       .compose()).toThrow(/already provided/);
   });
 
+  it('refuses duplicate plugin identities and ambiguous override claims', () => {
+    const first: EnginePlugin = { id: 'test.same', version: 1, install: () => {} };
+    const second: EnginePlugin = { id: 'test.same', version: 1, install: () => {} };
+    expect(() => new SrpgMicrokernel().use(first).use(second))
+      .toThrow(/second declaration.*ambiguous/);
+
+    const left: EnginePlugin = {
+      id: 'test.left-override',
+      version: 1,
+      overrides: ['reactions'],
+      install: (context) => context.replace('reactions', Reactions.clone()),
+    };
+    const right: EnginePlugin = {
+      id: 'test.right-override',
+      version: 1,
+      overrides: ['reactions'],
+      install: (context) => context.replace('reactions', Reactions.clone()),
+    };
+    expect(() => createDefaultMicrokernel(TEST_CONTENT).useAll([left, right]).compose())
+      .toThrow(/overridden by multiple plugins/);
+  });
+
   it('orders and accepts substitute providers by capability instead of fixed plugin id', () => {
     const substituteTactical: EnginePlugin = {
       ...TacticalRulesPlugin,
@@ -204,11 +226,11 @@ describe('capability substitution', () => {
     const engine = createBattleEngine({ content: TEST_CONTENT, plugins: [shout] });
 
     expect(engine.rules.reactions.has('test.parry')).toBe(true);
-    expect(engine.pluginManifest.get('test.shout')).toBe(3);
+    expect(engine.rulesetManifest.plugins['test.shout']).toBe(3);
     // And the defaults are in the manifest too: it is what composed this engine,
     // not a list of what was added to it.
-    expect(engine.pluginManifest.get(TacticalRulesPlugin.id)).toBe(TacticalRulesPlugin.version);
-    expect(createBattleEngine({ content: TEST_CONTENT }).pluginManifest.has('test.shout')).toBe(false);
+    expect(engine.rulesetManifest.plugins[TacticalRulesPlugin.id]).toBe(TacticalRulesPlugin.version);
+    expect(createBattleEngine({ content: TEST_CONTENT }).rulesetManifest.plugins['test.shout']).toBeUndefined();
   });
 
   it('splits one factory override per capability so the order stays acyclic', () => {

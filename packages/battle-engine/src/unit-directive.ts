@@ -124,3 +124,4 @@ UnitDirectives.defineAll([
     fightPenalty: -5_000,
   },
 ]);
+UnitDirectives.seal();

@@ -12,12 +12,15 @@ import {
   strikeCount,
   type GameEvent,
   type GameState,
-  type BattleEngine,
   type ContentCatalog,
   type LevelData,
   player,
 } from '@empire/battle-engine';
-import { GameController, type BattleCompletionSnapshot } from './game';
+import {
+  GameController,
+  type BattleCompletionSnapshot,
+  type GameControllerOptions,
+} from './game';
 import { escapeHtml } from './html';
 
 interface CampaignBattleSummary {
@@ -31,15 +34,6 @@ interface CampaignBattleSummary {
   signals: string[];
   events: GameEvent[];
 }
-
-/**
- * Which chapter a battle belongs to, asked of the level that was fought.
- *
- * The result screen used to derive it from how many battles were behind you —
- * `completed <= 5 ? 1 : completed <= 10 ? 2 : 3` — which is one campaign's
- * chapter lengths written into the generic shell.
- */
-const chapterOf = (level: LevelData): number => Number(level.extra?.chapter) || 1;
 
 /** What the shell is showing: prose to page, a decision, or a battle to stage. */
 type CampaignScreen =
@@ -75,13 +69,13 @@ export interface StoryChoiceView {
 export interface StoryCampaignAdapter {
   title: string;
   definition: CampaignDefinition;
-  levels: readonly LevelData[];
-  progressTotal: number;
   completionLabel: string;
   portraits: Readonly<Record<string, string>>;
   joinAfter?: Readonly<Record<string, number>>;
   relationLabels?: Readonly<Record<string, string>>;
+  resourceLabels?: Readonly<Record<string, string>>;
   chapterTitle(chapter: number): string;
+  chapterOf(level: LevelData): number;
   levelOrder(level: LevelData): number;
   briefingId(level: LevelData): string;
   storyArt(topicId: string): string;
@@ -93,12 +87,18 @@ export interface StoryCampaignAdapter {
   applyBattleResultPolicy(result: BattleResult, state: CampaignState): BattleResult;
 }
 
+/** Battle presentation selected by the application root for this campaign. */
+export type StoryCampaignControllerOptions =
+  Pick<GameControllerOptions, 'engine' | 'renderer' | 'eventPresenters'> &
+  Required<Pick<GameControllerOptions, 'art'>>;
+
 export class StoryCampaignController {
   readonly root = document.createElement('div');
   /** Ruleset of the campaign; every roster label resolves through it. */
   private readonly content: ContentCatalog;
   private readonly runtime: CampaignRuntime;
   private readonly bridge: CampaignBattleBridge;
+  private readonly battleTotal: number;
   private game: GameController | null = null;
   private pendingRequest: BattleRequest | null = null;
   private beat = 0;
@@ -109,11 +109,12 @@ export class StoryCampaignController {
     private readonly adapter: StoryCampaignAdapter,
     state: CampaignState | null,
     private readonly onExit: () => void,
-    private readonly engine: BattleEngine,
+    private readonly options: StoryCampaignControllerOptions,
   ) {
-    this.content = engine.content;
+    this.content = options.engine.content;
     this.bridge = new CampaignBattleBridge(adapter.level, this.content);
     this.runtime = new CampaignRuntime(adapter.definition, state ?? undefined);
+    this.battleTotal = adapter.definition.nodes.filter((node) => node.type === 'battle').length;
     this.root.className = 'campaign-root';
     this.root.addEventListener('click', this.onClick);
     this.render();
@@ -184,7 +185,10 @@ export class StoryCampaignController {
       this.game = null;
       this.render();
     }, {
-      engine: this.engine,
+      engine: this.options.engine,
+      art: this.options.art,
+      renderer: this.options.renderer,
+      eventPresenters: this.options.eventPresenters,
       exitLabel: '战役营地',
       completionLabel: '结算战果',
       onComplete: (snapshot) => this.completeBattle(request, snapshot),
@@ -223,7 +227,7 @@ export class StoryCampaignController {
       : []);
     return {
       title: level.name,
-      chapter: chapterOf(level),
+      chapter: this.adapter.chapterOf(level),
       outcome: state.endReason,
       turns: state.turn,
       alliesRemaining: state.units.filter((unit) => unit.owner === ours.id).length,
@@ -276,10 +280,11 @@ export class StoryCampaignController {
 
   private shell(content: string, chapter: number): void {
     const completed = this.runtime.state.battleHistory.length;
+    const progress = this.battleTotal === 0 ? 0 : completed / this.battleTotal;
     this.root.innerHTML = `<header class="campaign-topbar">
       <button class="campaign-icon-button" data-campaign-act="exit" aria-label="返回主菜单">‹</button>
       <div><span>${escapeHtml(this.adapter.title)}</span><strong>第 ${chapter} 章 · ${escapeHtml(this.adapter.chapterTitle(chapter))}</strong></div>
-      <div class="campaign-progress" aria-label="战役进度"><i style="--progress:${completed / this.adapter.progressTotal}"></i><b>${completed}/${this.adapter.progressTotal}</b></div>
+      <div class="campaign-progress" aria-label="战役进度"><i style="--progress:${progress}"></i><b>${completed}/${this.battleTotal}</b></div>
     </header>${content}`;
   }
 
@@ -332,20 +337,23 @@ export class StoryCampaignController {
 
   private renderBattleStaging(levelId: string): void {
     const level = this.adapter.level(levelId);
-    const chapter = chapterOf(level);
+    const chapter = this.adapter.chapterOf(level);
     const order = this.adapter.levelOrder(level);
     const story = this.adapter.story(this.adapter.briefingId(level));
     const scene = this.adapter.storyArt(story.scene);
     const completed = this.runtime.state.battleHistory.length;
     const roster = Object.values(this.runtime.state.roster).filter((unit) => (this.adapter.joinAfter?.[unit.id] ?? 0) <= completed);
+    const resources = Object.entries(this.runtime.state.resources)
+      .map(([id, amount]) => `<span>${escapeHtml(this.adapter.resourceLabels?.[id] ?? id)}</span><b>${amount}</b>`)
+      .join('') || '<span>暂无战役资源</span>';
     this.shell(`<main class="staging-screen">
-      <section class="staging-hero"><img src="${scene}" alt=""/><div><span class="campaign-eyebrow">作战准备 · ${String(order).padStart(2, '0')}/16</span><h1>${escapeHtml(level.name)}</h1><p>${escapeHtml(level.description ?? '')}</p></div></section>
+      <section class="staging-hero"><img src="${scene}" alt=""/><div><span class="campaign-eyebrow">作战准备 · ${String(order).padStart(2, '0')}/${this.battleTotal}</span><h1>${escapeHtml(level.name)}</h1><p>${escapeHtml(level.description ?? '')}</p></div></section>
       <div class="staging-grid">
         <section class="campaign-panel"><h2>出战名册</h2><div class="roster-list">${roster.map((unit) => {
           const portrait = this.adapter.portraits[unit.id];
           return `<div class="campaign-unit">${portrait ? `<img src="${portrait}" alt=""/>` : '<span class="unit-fallback">◆</span>'}<div><b>${escapeHtml(this.content.units.get(unit.unitType).name)}</b><small>${unit.disposition === 'available' ? `生命 ${Math.round(unit.hpRatio * 100)}% · 军衔 ${unit.rank ?? 0}` : escapeHtml(unit.disposition)}</small></div></div>`;
         }).join('')}</div></section>
-        <section class="campaign-panel"><h2>战役状态</h2><div class="resource-row"><span>补给</span><b>${this.runtime.state.resources.supplies ?? 0}</b><span>国库</span><b>${this.runtime.state.resources.treasury ?? 0}</b></div>
+        <section class="campaign-panel"><h2>战役状态</h2><div class="resource-row">${resources}</div>
           <div class="relation-list">${Object.entries(this.runtime.state.relations).filter(([, value]) => value !== 0).slice(0, 5).map(([id, value]) => `<div><span>${escapeHtml(this.adapter.relationLabels?.[id] ?? id)}</span><i style="--relation:${Math.max(0, Math.min(1, (value + 3) / 6))}"></i><b>${value > 0 ? '+' : ''}${value}</b></div>`).join('') || '<p>尚未形成明确阵营关系。</p>'}</div>
         </section>
       </div>

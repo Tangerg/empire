@@ -2,8 +2,12 @@ import { describe, expect, it } from 'vitest';
 import { createBattleEngine } from '../plugins/default';
 import { DeterministicOnlyRandom, SplitMixRandom, createRandomState } from '../random';
 import { BattleRecorder, hashState, replayBattle } from '../replay';
+import { CoreActionHandlers } from '../actions';
+import { DomainInvariantError } from '../domain/errors';
 import { TEST_CONTENT, makeLevel, u } from './fixtures';
 import type { Action, GameState, LevelData } from '../types';
+import type { EnginePlugin } from '../kernel';
+import { requirePersistentRuleset } from '../ruleset-manifest';
 
 const engine = () => createBattleEngine({ content: TEST_CONTENT });
 
@@ -30,7 +34,7 @@ function playRecorded(seed: number): { state: GameState; recorder: BattleRecorde
   const level = skirmish();
   const state = battle.createState(level, { seed });
   for (const player of state.players) player.controller = 'ai';
-  const recorder = new BattleRecorder(level.id, seed);
+  const recorder = new BattleRecorder(battle, state);
 
   for (let guard = 0; guard < 1500 && state.phase === 'playing'; guard += 1) {
     const action: Action = battle.chooseAiAction(state);
@@ -174,12 +178,35 @@ describe('state hashing', () => {
     const before = hashState(state);
     expect(hashState(JSON.parse(JSON.stringify(state)) as GameState)).toBe(before);
   });
+
+  it('ignores session fields by domain path, not every same-named extension value', () => {
+    const battle = engine();
+    const state = battle.createState(skirmish(), { seed: 3 });
+    const before = hashState(state);
+    state.players[0].controller = 'human';
+    expect(hashState(state)).toBe(before);
+
+    state.scenario.variables.controller = 'mind-control-rule';
+    expect(hashState(state)).not.toBe(before);
+    const afterController = hashState(state);
+    state.scenario.variables.levelName = 'semantic-plugin-state';
+    expect(hashState(state)).not.toBe(afterController);
+  });
 });
 
 describe('replay', () => {
+  it('freezes the composed identity and refuses persistence without authored pack versions', () => {
+    const manifest = engine().rulesetManifest;
+    expect(Object.isFrozen(manifest)).toBe(true);
+    expect(Object.isFrozen(manifest.plugins)).toBe(true);
+    expect(Object.isFrozen(manifest.contentPacks)).toBe(true);
+    expect(() => requirePersistentRuleset({ plugins: { engine: 1 }, contentPacks: {} }))
+      .toThrow(/no versioned content pack/);
+  });
+
   it('reproduces a full AI battle exactly', () => {
     const { state, recorder } = playRecorded(2024);
-    const replay = recorder.replay();
+    const replay = recorder.replay(state);
     expect(replay.actions.length).toBeGreaterThan(10);
 
     const outcome = replayBattle(engine(), skirmish(), replay);
@@ -194,9 +221,9 @@ describe('replay', () => {
   });
 
   it('reports where a recording stops applying instead of failing silently', () => {
-    const { recorder } = playRecorded(2024);
+    const { state, recorder } = playRecorded(2024);
     const tampered = {
-      ...recorder.replay(),
+      ...recorder.replay(state),
       actions: [
         { kind: 'command', unit: 999, path: [{ x: 0, y: 0 }], command: { ability: 'wait' } } as Action,
       ],
@@ -204,5 +231,49 @@ describe('replay', () => {
     const outcome = replayBattle(engine(), skirmish(), tampered);
     expect(outcome.divergedAt).toBe(0);
     expect(outcome.reason).not.toBe('');
+  });
+
+  it('reports a refused recorded order but propagates an engine defect', () => {
+    const handlers = CoreActionHandlers.clone().replace({
+      kind: 'endTurn',
+      execute: () => { throw new DomainInvariantError('broken turn lifecycle'); },
+    });
+    const brokenRules: EnginePlugin = {
+      id: 'test.broken-turn',
+      version: 1,
+      overrides: ['actionHandlers'],
+      install: (context) => context.replace('actionHandlers', handlers),
+    };
+    const battle = createBattleEngine({ content: TEST_CONTENT, plugins: [brokenRules] });
+    const level = skirmish();
+    const state = battle.createState(level, { seed: 5 });
+    const recorder = new BattleRecorder(battle, state);
+    recorder.record({ kind: 'endTurn' });
+
+    expect(() => replayBattle(battle, level, recorder.replay(state)))
+      .toThrow(DomainInvariantError);
+  });
+
+  it('refuses a compatible-looking action stream when its ruleset or hashes differ', () => {
+    const { state, recorder } = playRecorded(2024);
+    const replay = recorder.replay(state);
+
+    expect(replayBattle(engine(), skirmish(), {
+      ...replay,
+      initialStateHash: '00000000',
+    }).reason).toMatch(/初始状态摘要/);
+
+    expect(replayBattle(engine(), skirmish(), {
+      ...replay,
+      finalStateHash: '00000000',
+    }).reason).toMatch(/最终状态摘要/);
+
+    expect(replayBattle(engine(), skirmish(), {
+      ...replay,
+      ruleset: {
+        ...replay.ruleset,
+        contentPacks: { ...replay.ruleset.contentPacks, 'empire.common': 999 },
+      },
+    }).reason).toMatch(/content pack "empire\.common" version/);
   });
 });

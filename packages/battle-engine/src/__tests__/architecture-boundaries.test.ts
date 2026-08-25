@@ -4,6 +4,7 @@ import { dirname, join, relative, sep } from 'node:path';
 
 const coreRoot = join(import.meta.dirname, '..');
 const packagesRoot = join(coreRoot, '..', '..');
+const campaignRoot = join(packagesRoot, 'campaign-engine', 'src');
 
 /**
  * Production sources only.
@@ -301,6 +302,20 @@ describe('dependency injection invariants', () => {
 });
 
 describe('no ambient content', () => {
+  it('keeps reusable packages free of top-level mutable state', () => {
+    // A module counter looks harmless until the same input renders differently
+    // after an unrelated call. Runtime ownership belongs to an instance or an
+    // ordinary parameter; immutable rule prototypes may remain top-level consts.
+    const offenders = everyPackageSource().flatMap((file) => {
+      const source = stripStrings(stripComments(readFileSync(file, 'utf8')));
+      return /^(?:(?:export\s+)?(?:let|var)\s+|export\s+const\s+\w+\s*=\s*new\s+(?:Map|Set)\b)/m.test(source)
+        ? [relative(packagesRoot, file)]
+        : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('exposes no module-level registry of content definitions', () => {
     // Code registries (abilities, turn-order policies) are engine behaviour
     // populated at module load and cloned per ruleset — they are prototypes, not
@@ -511,6 +526,77 @@ describe('a package publishes one way in', () => {
 
     expect(offenders).toEqual([]);
   });
+
+  it('keeps assembly machinery, aggregate writers and raw content behind package APIs', async () => {
+    // A consumer composes through `createBattleEngine`; it does not run the
+    // kernel, manufacture a naked state, or bypass the aggregate's writer.
+    // These names were all exported by `export *`, although no production
+    // package used them. That made the internal implementation look canonical.
+    const api = await import('../index');
+    const privateNames = [
+      'BattleEngine',
+      'SrpgMicrokernel',
+      'createDefaultMicrokernel',
+      'DEFAULT_RULE_PLUGINS',
+      'createBattleRules',
+      'applyAction',
+      'CoreActionHandlers',
+      'createState',
+      'cloneState',
+      'restoreState',
+      'spawnUnit',
+      'removeUnit',
+      'requireUnit',
+      'sealContentCatalog',
+      'createBattleSave',
+      'BattleSaveMigrator',
+      'SchemaMigrator',
+      'SchemaMigration',
+      'migrateLevel',
+      'RuntimeGridAtlas',
+      'routeUnit',
+      'cloneContentCatalog',
+      'clearCaptureAt',
+      'coordOf',
+      'terrainAt',
+    ];
+
+    expect(privateNames.filter((name) => name in api)).toEqual([]);
+    expect(api.createBattleEngine).toBeTypeOf('function');
+
+    const [common, ancient, candidate, presentation, experience, testContent, gameUi] = await Promise.all([
+      import('../../../content-common/src/index'),
+      import('../../../content-ancient-empires/src/index'),
+      import('../../../story-candidate-01/src/index'),
+      import('../../../story-candidate-01/src/presentation/index'),
+      import('../../../experience-lab/src/index'),
+      import('../../../test-content/src/index'),
+      import('../../../game-ui/src/index'),
+    ]);
+    expect(Object.keys(common).sort()).toEqual(['COMMON_CONTENT_PACK', 'IMPASSABLE', 'moveCosts']);
+    expect(Object.keys(ancient).sort()).toEqual(['ANCIENT_EMPIRES_CONTENT_PACK', 'ANCIENT_EMPIRES_LEVELS']);
+    expect(Object.keys(candidate).sort()).toEqual([
+      'CANDIDATE_01_CONTENT_PACK',
+      'CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN',
+      'CANDIDATE_01_LEVELS',
+      'candidate01Level',
+    ]);
+    expect(Object.keys(presentation).sort()).toEqual([
+      'CANDIDATE_01_ART',
+      'CANDIDATE_01_MENU_ART',
+      'candidate01CampaignAdapter',
+    ]);
+    expect(Object.keys(experience)).toEqual(['experienceLevel']);
+    expect(Object.keys(testContent).sort()).toEqual(['createTestCatalog', 'makeLevel', 'u']);
+    expect('html' in gameUi).toBe(false);
+  });
+
+  it('publishes one stateless campaign save reader, not a migration registry', async () => {
+    const api = await import('../../../campaign-engine/src/index');
+    expect('DefaultCampaignSaveMigrator' in api).toBe(false);
+    expect('CampaignSaveMigrator' in api).toBe(false);
+    expect(api.loadCampaignSave).toBeTypeOf('function');
+  });
 });
 
 describe('one composition root', () => {
@@ -539,6 +625,7 @@ describe('one composition root', () => {
     });
 
     expect(offenders).toEqual([]);
+
   });
 
   it('installs a default rule registry only from a plugin', () => {
@@ -547,7 +634,7 @@ describe('one composition root', () => {
     // place. `data/` holds the shipped content tables, which packs install.
     const prototypes = [
       'Abilities', 'Reactions', 'TurnOrders', 'StatusBehaviors', 'ObjectiveHandlers',
-      'UnitDepartureHandlers', 'WeaponAreaShapes', 'UnitDirectives', 'WeaponHitEffectHandlers',
+      'WeaponAreaShapes', 'UnitDirectives', 'WeaponHitEffectHandlers',
       'ScenarioConditionHandlers', 'ScenarioEffectHandlers', 'CoreActionHandlers',
       'DefaultBattleResources', 'CombatModifierProviders', 'DefaultAiIntents',
       'DefaultAbilityAiEvaluators', 'DefaultAiObjectiveAdvisors',
@@ -769,7 +856,7 @@ describe('behaviour has an owner', () => {
     const entityOwned = [
       ...runtimeOnly, 'id', 'type', 'owner', 'x', 'y', 'hp', 'rank', 'rankProgress',
       'resources', 'reaction', 'facing', 'morale', 'formation', 'directive', 'career',
-      'learnedAbilities', 'meta',
+      'learnedAbilities',
     ];
     // Not anchored to the start of a line, and compound assignment counts: the
     // first draft was `^\s*…\s*=`, which read `unit.done = true` on its own line
@@ -870,15 +957,39 @@ describe('behaviour has an owner', () => {
     // that has to tell them apart. A reinforcement landing on an occupied tile —
     // ordinary play — reached the shell as a bare `Error` and ended the battle.
     //
-    // Scoped to the battle engine by reason, not by importance: this is where
-    // the contract is declared and where `tryDispatch` and the two shell catches
-    // consume it. `RangeError` stays allowed; it names a category of its own.
-    const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) =>
-      /throw new Error\(/.test(stripComments(readFileSync(file, 'utf8')))
-        ? [relative(coreRoot, file)]
+    // Battle and campaign both expose this contract. Match construction rather
+    // than only `throw new Error`: dependency-order callbacks used to return a
+    // bare error and walked straight through the old guard.
+    // `RangeError` stays allowed; it names a category of its own.
+    const offenders = [
+      ...runtimeTypeScriptFiles(coreRoot),
+      ...runtimeTypeScriptFiles(campaignRoot),
+    ].flatMap((file) =>
+      /new Error\(/.test(stripComments(readFileSync(file, 'utf8')))
+        ? [relative(packagesRoot, file)]
         : []);
 
     expect(offenders).toEqual([]);
+
+    // Named subclasses may add context, but classification still terminates in
+    // one of the domain boundary modules. A new direct `extends Error` silently
+    // creates the fourth category the catch sites cannot classify.
+    const categoryOwners = new Set([
+      'battle-engine/src/domain/errors.ts',
+      'campaign-engine/src/errors.ts',
+    ]);
+    const unclassifiedClasses = [
+      ...runtimeTypeScriptFiles(coreRoot),
+      ...runtimeTypeScriptFiles(campaignRoot),
+    ].flatMap((file) => {
+      const name = relative(packagesRoot, file);
+      if (categoryOwners.has(name)) return [];
+      return /class\s+\w*Error\s+extends\s+Error\b/.test(stripComments(readFileSync(file, 'utf8')))
+        ? [name]
+        : [];
+    });
+
+    expect(unclassifiedClasses).toEqual([]);
   });
 
   it('never relabels a caught error as a refused order', () => {
@@ -1140,6 +1251,67 @@ describe('behaviour has an owner', () => {
     expect(offenders).toEqual([]);
   });
 
+  /**
+   * A registry a module publishes is sealed by that module.
+   *
+   * Composition and runtime are different phases. A plugin `register`s and
+   * `replace`s while an engine is being assembled; after that the ruleset is a
+   * fact, and a registry that can still be edited is ambient mutable state with a
+   * polite interface — one import with a side effect, or one stray `replace` from
+   * a shell, and two engines in one process disagree about the rules.
+   *
+   * `seal()` closes that, and nineteen modules call it. Nothing checked that the
+   * twentieth would: the guard next door forbids a top-level `new Map()`, and a
+   * registry is exactly a `Map` with better manners. So the rule is stated where
+   * it can be enforced — whoever declares a registry at module level seals it in
+   * the same module, in whichever of the three spellings reads best.
+   *
+   * A registry built *inside* something is not module-level state and is not
+   * covered: `new ContentCatalog()` per engine, `clone()` per composition.
+   */
+  it('seals every registry a package publishes at module level', () => {
+    const sources = [...everyPackageSource(), ...appSources()];
+    const code = new Map(sources.map((file) => [file, stripComments(readFileSync(file, 'utf8'))]));
+
+    // What counts as a registry: the shared bases, and anything deriving from one.
+    const registries = new Set(['KeyedRegistry', 'PriorityRegistry', 'ContentRegistry']);
+    for (let grew = true; grew;) {
+      grew = false;
+      for (const source of code.values()) {
+        for (const [, name, base] of source.matchAll(/class (\w+)(?:<[^>]*>)?\s+extends\s+(\w+)/g)) {
+          if (registries.has(base) && !registries.has(name)) {
+            registries.add(name);
+            grew = true;
+          }
+        }
+      }
+    }
+    // The bases plus the shipped subclasses; a run that found only the bases would
+    // check nothing at all.
+    expect(registries.size).toBeGreaterThan(10);
+
+    const offenders: string[] = [];
+    let sealed = 0;
+    for (const [file, source] of code) {
+      for (const declaration of source.matchAll(/^(?:export )?const (\w+)[^=\n]* = new (\w+)[<(]/gm)) {
+        const [, name, type] = declaration;
+        if (!registries.has(type)) continue;
+        // Either `Name.seal()` somewhere in the module, or `.seal()` chained onto
+        // the declaration itself — which is the same statement until the next one
+        // starts at the left margin.
+        const statement = source.slice(declaration.index).split(/\n(?=\S)/)[0];
+        if (new RegExp(String.raw`\b${name}\s*\.\s*seal\(`).test(source) || statement.includes('.seal()')) {
+          sealed++;
+          continue;
+        }
+        offenders.push(`${relative(packagesRoot, file)} publishes ${name} unsealed`);
+      }
+    }
+
+    expect(sealed).toBeGreaterThan(15);
+    expect(offenders).toEqual([]);
+  });
+
   it('builds every extension point on the shared registry', () => {
     // Twelve registries had each hand-written the same table, and they had
     // drifted where it mattered: some could be *asked* for an entry, some could
@@ -1164,11 +1336,6 @@ describe('behaviour has an owner', () => {
       'battle-engine/src/data/damage.ts',
       // The base itself.
       'battle-engine/src/registry.ts',
-      // A ladder, not a bag: the key is the version a step migrates *from*, the
-      // entry is a bare function that cannot answer for its own key, and `load`
-      // walks the rungs refusing gaps. Wrapping each step in an object purely to
-      // satisfy `keyOf` would buy the shape and lose the meaning.
-      'battle-engine/src/save-schema.ts',
       // A scheduler, not a contribution set: what its `register` admits is one
       // *running* animation track, and `unregister` ends it. The entries are the
       // work in flight, not the strategies that do the work.
@@ -1587,8 +1754,11 @@ describe('the battle screen is its own screen', () => {
       .filter((file) => /from\s+['"]pixi\.js['"]/.test(readFileSync(file, 'utf8')))
       .map((file) => relative(packagesRoot, file));
     expect(named).toEqual([]);
-    // And the entry that does own it exists and says so.
-    expect(readFileSync(join(root, 'pixi.ts'), 'utf8')).toMatch(/pixi-board-surface/);
+    // And the optional entry exposes one composition path, not the painter,
+    // texture cache and half-assembled factory as three competing public APIs.
+    const entry = stripComments(readFileSync(join(root, 'pixi.ts'), 'utf8'));
+    expect(entry).toMatch(/preparePixiBoardSurface/);
+    expect(entry).not.toMatch(/BrowserPictureTextures|pixiBoardSurface|preparePixiPainter|ScenePainter/);
   });
 
   /**

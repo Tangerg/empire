@@ -1,4 +1,4 @@
-import type { BattleSave } from '@empire/battle-engine';
+import { StoredDocumentError, type BattleSave } from '@empire/battle-engine';
 import type { BattleSaveStore } from '../ui/game';
 
 const keyFor = (levelId: string): string => `empire:battle:${levelId}`;
@@ -21,9 +21,13 @@ export function browserBattleSaves(levelId: string): BattleSaveStore {
       if (!raw) return null;
       // A slot holding unparseable text is reported as a refusal, not as an
       // empty slot: "you never saved" is the one thing it certainly is not.
-      return JSON.parse(raw) as unknown;
+      try {
+        return JSON.parse(raw) as unknown;
+      } catch (error) {
+        if (!(error instanceof SyntaxError)) throw error;
+        throw new StoredDocumentError(`战斗存档无法解析：${error.message}`, { cause: error });
+      }
     },
     has: () => localStorage.getItem(key) !== null,
   };
 }
-

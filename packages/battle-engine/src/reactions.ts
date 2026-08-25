@@ -78,3 +78,4 @@ Reactions.defineAll([
     conservesResources: true,
   },
 ]);
+Reactions.seal();

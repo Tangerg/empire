@@ -3,7 +3,7 @@ import { executeCombatPlan, forecastCombatPlan, type CombatPlanRules } from './c
 import { hostileActionAllowed } from './engagement';
 import { needsOccupant } from './weapon-area';
 import { player, unitAt } from './state';
-import { UnitDepartureHandlers } from './unit-departure';
+import type { UnitDepartureHandler } from './unit-departure';
 import { SpellCastEntity } from './domain/spell-cast';
 import { DomainInvariantError, IllegalActionError } from './domain/errors';
 import type { CastRefusal, Coord, GameEvent, GameState, PendingCast, PlayerId, Unit, WeaponDef } from './types';
@@ -115,10 +115,10 @@ function cancelCastOf(
 }
 
 /** A departing caster drops its charge the moment it leaves, not a turn later. */
-UnitDepartureHandlers.register({
+export const CastingCancellationDepartureHandler: UnitDepartureHandler = {
   id: 'casting.cancel',
   handle: ({ state, unit, emit }) => cancelCastOf(state, unit.id, emit),
-});
+};
 
 /** Resolves every cast that has come due. */
 export function resolveDueCasts(

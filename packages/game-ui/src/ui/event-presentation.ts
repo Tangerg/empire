@@ -329,3 +329,4 @@ export const DefaultBattleEventPresenters = new BattleEventPresenterRegistry()
     animate: () => pause(220),
     describe: (_context, event) => event.reason,
   }));
+DefaultBattleEventPresenters.seal();

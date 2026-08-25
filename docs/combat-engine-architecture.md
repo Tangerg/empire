@@ -83,13 +83,13 @@ flowchart TD
 
 有两件事，插件架构宣称做到了，实际没有。
 
-**它不是组装根。** `createBattleEngine` 手工拼出同样的二十一项默认值，而除了 demo 之外的每个应用、除了一个之外的每个测试，用的都是它——于是微内核成了产品从不执行的真代码，而那份默认值还必须和遮蔽它的插件保持同步。上一轮 `areaShapes` 的清单漂移就是从这里来的。现在只有一个根：`createBattleEngine` 组合默认插件，把结果交给 `buildBattleEngine`。
+**它不是组装根。** `createBattleEngine` 手工拼出同样的二十一项默认值，而除了 demo 之外的每个应用、除了一个之外的每个测试，用的都是它——于是微内核成了产品从不执行的真代码，而那份默认值还必须和遮蔽它的插件保持同步。上一轮 `areaShapes` 的清单漂移就是从这里来的。现在只有一个公开根：`createBattleEngine` 组合默认插件，再由同模块内的私有 `assembleBattleEngine` 把已经验证的能力装成引擎。
 
 **替换被写在文档里，却是不可能的。** `provides` 的注释说清单「让替换不必依赖提供者 id」，但两个插件声明同一个能力是错误，store 也拒绝第二次 `provide`。现在插件可以声明 `overrides` 并调用 `context.replace`。让它安全的是顺序：一次替换落在**引入者之后、每一个消费者之前**——因为在 `install` 时就读取某个能力的消费者，否则会一直握着被替换掉的那个值。任务规则插件正是在安装时用 `random` 播种条件注册表，缺了这条边，替换 `random` 就会静默失效。
 
 所以工厂给**每个被替换的能力各建一个插件**，而不是一个插件替换全部：一个同时替换 `random` 和 `scenarioConditions` 的插件，必须同时排在任务规则之前和之后。
 
-`buildBattleEngine` 也从 `SrpgMicrokernel` 上移走了。一个知道如何构造某个具体应用的通用插件宿主，就是一个组装不了别的东西的宿主。
+具体引擎装配也从 `SrpgMicrokernel` 上移走了，并且没有成为第二个公开工厂。一个知道如何构造某个具体应用的通用插件宿主，就是一个组装不了别的东西的宿主。
 
 ## 内容和规则之间的引用完整性有主人
 
@@ -437,9 +437,11 @@ deploymentRefusal(rules, state, unit, at): string | null
 
 ## 一场战斗也能被放下
 
-`BattleSave` 是带 schema 的文档：头部（关卡、回合、阶段）、时间戳、状态。它是唯一由**运行中的战斗**写出、而不是由人手写的文档，所以校验也最重：五条具名检查（形状、地图、单位、战场、规则），最后一条就是上面说的 `inState`。任何一条不过就整份拒绝——通用 UI 把拒绝理由写进战报，屏幕上那场战斗一个字节都没被替换。
+`BattleSave` 是带 schema 的文档：头部（关卡、回合、阶段）、规则集身份、时间戳、状态。它是唯一由**运行中的战斗**写出、而不是由人手写的文档，所以校验也最重：七条具名检查（根形状、规则集、摘要元数据、地图、单位、战场、规则引用），最后一条就是上面说的 `inState`。规则插件和内容包的集合必须双向完全一致，摘要也必须与状态一致。任何一条不过就整份拒绝——通用 UI 把拒绝理由写进战报，屏幕上那场战斗一个字节都没被替换。
 
-读存档是一条规则，所以阶梯是第 23 项能力 `saves`，而不是一个整个进程共享的全局对象：自带状态形状的游戏在自己的引擎上注册自己的迁移。`SchemaMigrator` 与战役存档共用——推进版本、拒绝断档、拒绝没有推进版本的迁移，这套阶梯和文档里装的是什么无关；而「装进来之后还得满足什么」留在知道答案的那一侧。
+读存档是一条规则，所以 `BattleSaveReader` 是第 23 项能力 `saves`：自带状态形状的规则包可以整体替换读取与校验策略。当前开发阶段只接受当前 schema，不维护没有真实旧格式消费者的迁移阶梯；格式专属的七条拒绝规则仍留在知道状态和规则身份的读取器里。
+
+浏览器槽位是文档边界，不是一个可以把坏输入答成「没有存档」的便利缓存。非法 JSON 会被适配器归类为 `StoredDocumentError`，合法 JSON 仍交给 `BattleSaveReader` 判断；UI 在同一个拒绝边界里捕获两者并报告。自定义关卡槽位还要求根为数组：根形状错误或 JSON 损坏时，写入和删除都会拒绝并保留原字节，不会用当前可读子集重写整槽。
 
 ## 状态摘要写「不算什么」，不写「算什么」
 
@@ -459,15 +461,19 @@ deploymentRefusal(rules, state, unit, at): string | null
 - **第二条语义路径**，比死代码更糟，因为两个答案看起来都对：`overlays.ts` 有五个访问器在回答 `BattlefieldCell` 已经拥有的问题；`canReach` 重述 `canReachWithWeapon`；`planTurn` 是一个自带第二套 AI 循环的「便利函数」；`createDefaultBattleEngine` 是唯一组装根的别名；`DefaultCombatModifierPipeline` 是一条**共享全局注册表**的第二构造路径——正是插件里 `clone()` 存在的理由，而它就躺在禁止此事的守卫同一个文件里。
 - **一个问题三个名字**：「站在这一格的是谁」曾是 `unitAt(state, x, y)`、`unitAtCoord(state, at)` 和棋盘读模型的 `occupantAt`。现在只有按坐标问的 `unitAt`，读模型转交给它。
 
-关卡文档是第三份手写的 schema 阶梯，现在改走共用的 `SchemaMigrator`——它会拒绝断档、拒绝没有推进版本的迁移，旧循环两样都不做；拒绝理由用作者的语言重述，并且返回的是阶梯自己拥有的文档，迁移改不到调用者手里那份。
+关卡文档不走存档迁移阶梯。项目仍在开发阶段，`normaliseLevel` 只接受当前 schema，并先深拷贝再补齐可选字段；格式变化时一次性升级所有内置关卡和开发存档，不维护第二条旧格式语义路径。
 
 铺法被问一个它没有的朝向的「反向」时，现在抛错而不是把原朝向答回去：夹击与方向掩体这两个调用者都会把「没有反向」读成「正面来袭」。
+
+第三轮又把审计从函数扩到**包入口和真实消费者**：逐个解析导出符号在其他生产包中的引用，并逐项核对状态字段、事件种类和注册表。`content-common`、`content-ancient-empires`、候选剧本与体验关卡的根入口现在只公开装配完成的内容包、关卡集合或应用组合值，原始定义数组留在所属包内；题材表现子入口同样只公开美术、菜单美术和战役适配器。`cloneContentCatalog` 仍是内容目录模块内部的装配工具，但不再占据引擎根入口。
+
+这次删除的确凿残留只有四处：没有调用者的 `coordOf`、`terrainAt`、`clearCaptureAt` 与 DOM `html` 助手；测试内容包的环境目录和体验关卡重复常量导出也被收回。反过来，`BattleRecorder` / `replayBattle`、`DeterministicOnlyRandom`、`moveCostOf` 与 `objectiveOutcome` 虽然生产仓库调用少，分别是回放协议、确定性随机边界和正式查询契约，有独立行为测试和文档消费者，因此刻意保留。公共概念的判断依据是职责与下游效用，不是简单的引用计数。
 
 ## 表现层的美术也要被组合
 
 `Battlefield` 是读模型、内容目录按组合创建、规则集由插件装配——而表现层直到这一轮还留着引擎早就治好的病：两个模块级可变数组，题材包在导入时把自己 push 进去，外面用一个 `registered` 布尔量兜着。于是**哪套美术画这个单位，取决于谁先被 import**，而 `registerCandidate01Presentation()` 是四个应用和三个测试文件都得记着执行的副作用。它能工作只因为现在恰好只有一个题材包：两个包都为同一个单位 id 作答时，胜者由注册顺序决定，而代码里没有任何一句说明这件事。
 
-`ArtDirection` 把这份组合变成一个值：provider 按被询问的顺序排列、presentation 供关卡挑选、重复 id 直接拒绝而不是静默忽略。外壳拿着它（`GameController` 走 options，`BoardView` 与 `Hud` 走构造参数），美术函数把它作为第一个依赖。应用组合根在内容目录和引擎旁边装配它；编辑器和 demo 传 `GENERIC_ART`，那是「我不画题材美术」的老实说法。
+`ArtDirection` 把这份组合变成一个值：provider 按被询问的顺序排列、presentation 供关卡挑选、重复 id 直接拒绝而不是静默忽略。单关外壳与战役外壳都从 options 接收同一份 art 和 renderer；`StoryCampaignController` 创建内部 `GameController` 时原样转交，不另走通用美术或 SVG 默认路径。`BoardView` 与 `Hud` 再从构造参数取得它，美术函数把它作为第一个依赖。应用组合根在内容目录和引擎旁边装配它；编辑器和 demo 显式选择题材美术或 `GENERIC_ART`。
 
 顺带掉出两件事：题材包的 `iconMarkup` 是 `try { … } catch { return null }`，把「这个包没有这张图标」和「素材解析坏了」答成同一个 null——问改成问（`candidate01TryIconMarkup`），做仍然抛错；以及**题材包此前不在任何架构守卫的扫描范围内**，那个 catch 就是把它们纳入扫描后当场被点出来的。
 
@@ -479,18 +485,17 @@ deploymentRefusal(rules, state, unit, at): string | null
 const content = createContentCatalog();
 new ContentPackInstaller(content).install(COMMON_PACK, THEME_PACK);
 const engine = createBattleEngine({ content });
-// 或者显式走微内核
-const engine2 = buildBattleEngine(createDefaultMicrokernel(content).compose());
 // 换掉一条规则，仍然经过插件
-const engine3 = createBattleEngine({ content, reactions: myStances });
-// 直接从内容包组装
-kernel.use(createContentPlugin([COMMON_PACK, THEME_PACK]));
+const engine2 = createBattleEngine({ content, reactions: myStances });
 ```
 
 两条随之成立的性质：
 
 1. **地形字符命名空间是按目录的**。两个题材可以同时使用 `.` 和 `C`——同一份关卡行在不同目录下会被读成不同地形。这曾是全局单赋值的硬上限。
 2. **定义在安装时深拷贝**。内容包是*声明*，目录才*拥有*定义；一个引擎里的平衡覆写不会串到另一个引擎，也不会污染内容包常量本身。
+3. **组合完成即封存**。内容定义与规则注册表在 `createBattleEngine` 返回前深度冻结并封存；运行时不能偷偷增改能力。扩展必须先 clone、显式组装，再创建另一个引擎。
+4. **身份进入持久化契约**。规则插件 id/版本与内容包 id/版本组成 `BattleRulesetManifest`；存档和回放要求两边集合完全一致，多一个、少一个或版本不同都拒绝。
+5. **表现也读同一份目录**。`BattlePresentation.sceneFrame` 与 `sceneLayers` 接收一份 `BattleSceneContext`，其中的 `content` 就是当前会话目录。题材场景根据地形标签判断道路等语义，不再 import 某套静态地形数组；同一表现交给另一份目录时，结果随显式输入改变。
 
 `data/` 目录只剩两个专用注册表类（`DamageMatchupRegistry`、`TerrainEncodingRegistry`）和职业查询；它过去存在的理由——放全局注册表——已经不存在了。
 
@@ -539,7 +544,7 @@ kernel.use(createContentPlugin([COMMON_PACK, THEME_PACK]));
 
 `types.ts` 1200 行、110 个导出，直觉是按大小拆开。**那是错的轴**：其中七个是内容包要 `declare module '../types'` 合并进去的 kind map，一个模块正是让这条增补语句有唯一、明显的目标。这里的内聚是「一个包要扩展的词汇表」，不是行数。
 
-它真正的问题只有一个：`DEFAULT_RULES`——一个运行时值，待在一个**契约就是会被擦除**的模块里。它现在和「一张关卡默认是什么」的另外三个答案住在一起（空关卡、兜底胜利条件、以及把默认与关卡自述合并的那次 patch）。一条守卫扫全部工作区包里所有 `types.ts`，禁止任何 `const` / `function` / `class` / `enum` 导出。
+它真正的问题只有一个：一份共享的可变默认规则曾待在一个**契约就是会被擦除**的模块里。现在 `defaultRules()` 与 `defaultVictory()` 每次产生独立值，并和「一张关卡默认是什么」的其它答案住在 `level/defaults.ts`；覆盖规则也会深拷贝嵌套对象。一条守卫扫全部工作区包里所有 `types.ts`，禁止任何 `const` / `function` / `class` / `enum` 导出。
 
 `ActionKindMap` 是开放 Action 代数。内置 Action 覆盖部署、单位命令、战术、反应、朝向、转职、阵形、运输、招募和结束回合。
 
@@ -735,23 +740,23 @@ effectHandler('replaceTerrain', apply, {
 
 默认战斗没有随机伤害、命中和暴击。相同内容版本、关卡快照和 Action 序列应产生相同事件和状态。
 
-当前具备回放的基础条件：
+当前引擎级回放已经具备：
 
-- 可序列化 `GameState`
-- 开放但结构化的 Action 和 Event
-- 确定性寻路、预测和 AI 排序
-- 内容包版本
-- 原子 Action 边界
+- `BattleReplay` 的关卡 id、种子与结构化 Action 序列
+- 规则插件和内容包的精确版本清单
+- 初始与最终状态摘要
+- 首条非法 Action 的分歧位置
+- 终局提前、初态漂移和终态漂移校验
+- 只把 `IllegalActionError` 分类为规则分歧；领域不变量错误继续暴露为引擎缺陷
 
-当前尚未提供正式回放产品：
+当前尚未提供的是产品层闭环：
 
-- 初始状态哈希
-- Action 日志格式
-- 引擎规则版本锁定
-- 重放校验器
-- 旧 Action 迁移
+- 回放文件的存储、导入和分享界面
+- 战役存档对一场进行中战斗及其 Action 流的编排
 
-在这些能力落地前，不能把 `GameSession.log` 宣称为产品级回放。
+当前开发数据不承担旧 Action 兼容义务。正式发布后若形成真实回放兼容需求，再针对已经存在的格式差异建立明确转换；在此之前不预留迁移注册表。
+
+`GameSession.log` 仍只是语义事件日志；正式回放必须由 `BattleRecorder` 记录提交过的 Action，并携带完整规则身份与边界摘要。
 
 ## 性能设计
 

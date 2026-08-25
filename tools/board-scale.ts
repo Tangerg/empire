@@ -25,7 +25,6 @@ import {
   ContentPackInstaller,
   createBattleEngine,
   createContentCatalog,
-  createState,
   type LevelData,
   type LevelTileOwner,
   type LevelUnit,
@@ -159,7 +158,7 @@ const pad = (value: string | number, width: number) => String(value).padStart(wi
 
 function measure(label: string, base: LevelData, art: unknown, nx: number, ny: number): void {
   const level = tiled(base, nx, ny);
-  const state = createState(content, level);
+  const state = engine.createState(level);
   const started = performance.now();
   const board = new BoardView({ content, grid, art: art as never, renderer: svgBoardSurface }, state, {
     onTileClick: () => {},

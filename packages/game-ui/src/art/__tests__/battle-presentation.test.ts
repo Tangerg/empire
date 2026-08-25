@@ -27,9 +27,38 @@ describe('battle presentation', () => {
 
     expect(presentation.id).toBe('candidate-01');
     expect(presentation.boardClass).toBe('candidate-map');
-    expect(presentation.sceneFrame('c01-01', map, viewport).backdrop).toContain('authored-wide');
-    expect(boardPiecesMarkup(presentation.sceneLayers('c01-01', map, viewport).ground))
+    const scene = { content: TEST_CATALOG, levelId: 'c01-01', map, viewport };
+    expect(presentation.sceneFrame(scene).backdrop).toContain('authored-wide');
+    expect(boardPiecesMarkup(presentation.sceneLayers(scene).ground))
       .toContain('candidate-ground-route');
+  });
+
+  it('derives scene semantics from the catalog it is handed', () => {
+    const presentation = CANDIDATE_01_ART.presentationFor('c01-01');
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
+    const viewport = createSceneViewport(
+      SQUARE,
+      map.width,
+      map.height,
+      32,
+      presentation.sceneProfile('c01-01'),
+    );
+    const withoutRoutes = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
+    for (const terrain of withoutRoutes.terrains.all()) {
+      withoutRoutes.terrains.override(terrain.id, {
+        tags: terrain.tags.filter((tag) => tag !== 'road' && tag !== 'building' && tag !== 'outpost'),
+      });
+    }
+
+    const original = boardPiecesMarkup(presentation.sceneLayers({
+      content: TEST_CATALOG, levelId: 'c01-01', map, viewport,
+    }).ground);
+    const changed = boardPiecesMarkup(presentation.sceneLayers({
+      content: withoutRoutes, levelId: 'c01-01', map, viewport,
+    }).ground);
+
+    expect(original).toContain('candidate-ground-route');
+    expect(changed).not.toContain('candidate-ground-route');
   });
 
   it('keeps unknown campaigns on the story-neutral fallback', () => {
@@ -42,7 +71,7 @@ describe('battle presentation', () => {
     // No authored scenery — but not an unlit rectangle either: an unclaimed
     // level still gets a fall of light and ground that darkens at the edge,
     // which is the difference between a field and a spreadsheet.
-    const layers = presentation.sceneLayers('sandbox-01', map, viewport);
+    const layers = presentation.sceneLayers({ content: TEST_CATALOG, levelId: 'sandbox-01', map, viewport });
     expect(layers).toMatchObject({ ground: [], overUnits: [] });
     // The fall of light spans the whole field, so it is one piece at the origin.
     expect(layers.underUnits).toHaveLength(1);

@@ -18,6 +18,7 @@ import { scheduleOf } from './domain/scenario-trigger';
 import { declaredChildObjectives, isCompositeObjective } from './objective-model';
 import { LevelIssueLog, type LevelIssue } from './level/issues';
 import { mapFromLevel } from './level/map';
+import { StoredDocumentError } from './domain/errors';
 
 export type { LevelIssue };
 
@@ -107,7 +108,8 @@ export class LevelInspection {
     try {
       return mapFromLevel(this.content, this.level);
     } catch (error) {
-      this.log.error((error as Error).message);
+      if (!(error instanceof StoredDocumentError)) throw error;
+      this.log.error(error.message);
       return null;
     }
   }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { IllegalActionError } from '../actions';
+import { IllegalActionError } from '../domain/errors';
 import { commanderAuraFor, tacticOptions } from '../commanders';
 import { computeMoveField } from '../movement';
 import { cloneState } from '../state';

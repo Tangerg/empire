@@ -34,6 +34,66 @@ const browserDriver: FrameAnimationDriver = {
 const browserMotionEnabled = (): boolean =>
   typeof matchMedia === 'undefined' || !matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/**
+ * One cancellable clock for finite presentation transitions.
+ *
+ * Cancelling a raw RAF leaves the promise waiting for it unresolved. That was
+ * exactly what the board did on disposal: sprite-strip loops stopped, while a
+ * move, hit or turn banner kept an async controller suspended forever. This
+ * owner cancels every requested frame and resolves each waiter as cancelled, so
+ * callers can leave without touching a renderer that has already been torn down.
+ */
+export class PresentationTimeline {
+  private readonly waiting = new Map<number, (time: number | null) => void>();
+  private disposed = false;
+
+  constructor(
+    private readonly driver: FrameAnimationDriver = browserDriver,
+    private readonly motionEnabled: () => boolean = browserMotionEnabled,
+  ) {}
+
+  async tween(duration: number, step: (progress: number) => void): Promise<boolean> {
+    if (this.disposed) return false;
+    if (!this.motionEnabled() || duration <= 0) {
+      step(1);
+      return true;
+    }
+    const startedAt = this.driver.now();
+    for (;;) {
+      const now = await this.nextFrame();
+      if (now === null) return false;
+      const progress = Math.min(1, (now - startedAt) / duration);
+      step(progress);
+      if (progress >= 1) return true;
+    }
+  }
+
+  wait(duration: number): Promise<boolean> {
+    return this.tween(duration, () => {});
+  }
+
+  dispose(): void {
+    if (this.disposed) return;
+    this.disposed = true;
+    for (const [handle, resolve] of this.waiting) {
+      this.driver.cancel(handle);
+      resolve(null);
+    }
+    this.waiting.clear();
+  }
+
+  private nextFrame(): Promise<number | null> {
+    if (this.disposed) return Promise.resolve(null);
+    return new Promise((resolve) => {
+      const handle = this.driver.request((time) => {
+        this.waiting.delete(handle);
+        resolve(time);
+      });
+      this.waiting.set(handle, resolve);
+    });
+  }
+}
+
 function validateClip(clip: FrameAnimationClip, frameCount: number): void {
   if (!clip.id) throw new Error('frame animation clip id cannot be empty');
   if (!Number.isFinite(clip.fps) || clip.fps <= 0) {

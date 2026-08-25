@@ -4,6 +4,7 @@ import { unitWeapons } from '../combat';
 import { ActionHandlerRegistry, type ActionHandler } from '../action-system';
 import { CoreActionHandlers } from '../actions';
 import { BattleEngineConfigurationError, BattleLevelError } from '../engine';
+import { DomainInvariantError, StoredDocumentError } from '../domain/errors';
 import { createBattleEngine } from '../plugins/default';
 
 import { GameSession } from '../session';
@@ -213,12 +214,20 @@ describe('balanced engine extension seams', () => {
   });
 
   it('builds isolated default strategy graphs for every session', () => {
-    const first = new GameSession(duel(), createBattleEngine({ content: TEST_CONTENT }));
+    const abilities = Abilities.clone();
+    abilities.define(pulse);
+    const actionHandlers = CoreActionHandlers.clone();
+    actionHandlers.replace(new FailingEndTurn());
+    const first = new GameSession(duel(), createBattleEngine({
+      content: TEST_CONTENT,
+      abilities,
+      actionHandlers,
+    }));
     const second = new GameSession(duel(), createBattleEngine({ content: TEST_CONTENT }));
-    first.engine.rules.abilities.define(pulse);
-    first.engine.actionHandlers.replace(new FailingEndTurn());
 
+    expect(first.engine.rules.abilities.has(pulse.id)).toBe(true);
     expect(second.engine.rules.abilities.has(pulse.id)).toBe(false);
+    expect(() => first.engine.rules.abilities.replace(pulse)).toThrow('sealed after composition');
     expect(() => first.dispatch({ kind: 'endTurn' })).toThrow('turn extension failed');
     expect(() => second.dispatch({ kind: 'endTurn' })).not.toThrow();
     expect(second.state.currentPlayer).toBe(2);
@@ -231,10 +240,12 @@ describe('balanced engine extension seams', () => {
       abilities: [...soldier.abilities, 'missing-engine-ability'],
     });
     expect(() => createBattleEngine({ content })).toThrow(BattleEngineConfigurationError);
+    expect(() => createBattleEngine({ content })).toThrow(DomainInvariantError);
 
     const engine = createBattleEngine({ content: TEST_CONTENT });
     const invalid = duel();
     invalid.units[1].x = invalid.units[0].x;
     expect(() => engine.createState(invalid)).toThrow(BattleLevelError);
+    expect(() => engine.createState(invalid)).toThrow(StoredDocumentError);
   });
 });

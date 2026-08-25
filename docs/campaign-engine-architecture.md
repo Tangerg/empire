@@ -16,9 +16,11 @@
 
 战役层不解释伤害、移动、射程、人工智能（AI）、地形和战斗动画。它也不排版对话；节点中的 `presentation` 只是上层界面解释的不透明定位符。
 
+通用战役外壳也不读取题材 `LevelData.extra` 的约定键。章节归属、关卡顺序、资源名称和故事素材由 `StoryCampaignAdapter` 明示；应用组合根另外注入 battle engine、`ArtDirection` 与可选 renderer，外壳创建每一场内部战斗时原样转交。
+
 ## 运行模型
 
-战役定义不可变，战役状态可序列化，`CampaignRuntime` 负责原子迁移。
+战役定义不可变，战役状态可序列化，`CampaignRuntime` 负责原子状态推进。
 
 ```mermaid
 flowchart LR
@@ -39,7 +41,7 @@ flowchart LR
 | `CampaignAggregate` | 定义与状态不变量、节点查询、效果应用和战果投影 |
 | `CampaignRuntime` | `advance`、`choose`、`beginBattle`、`completeBattle` 和事务回滚 |
 | `CampaignBattleBridge` | 战役 DTO 与战斗 DTO 之间的防腐层 |
-| `CampaignSaveMigrator` | 显式、逐版本向前的存档迁移 |
+| `loadCampaignSave` | 当前 schema、定义身份、内容版本和状态约束的读取边界 |
 
 ## 节点代数
 
@@ -62,7 +64,7 @@ flowchart LR
 
 校验也按同一条缝切开，与战斗侧一致：文档自身的事实（schema、节点 id、起点、名册）留在 `validateCampaignDefinition`，某一*种*节点必须声明什么则归它的 handler，由 `CampaignAggregate` 对着一份文档名字的 inspection 逐个执行。`story`、`hub`、`travel` 原本共用一条分支，现在共用一个 handler 工厂——这正是让它们可以被逐个替换的原因。
 
-节点效果和选项效果都通过 `CampaignEffectRegistry` 解释。条件由 `CampaignConditionRegistry` 解释。两个代数都支持 TypeScript declaration merging 和策略注册，但默认运行时会克隆注册表，避免实例间污染。
+节点效果和选项效果都通过 `CampaignEffectRegistry` 解释。条件由 `CampaignConditionRegistry` 解释。两个代数都支持 TypeScript declaration merging 和策略注册；运行时取得自己的 clone 后立即封存，既避免实例间污染，也拒绝开局后偷偷换规则。战役定义同样由运行时深拷贝并冻结。
 
 内置条件覆盖：
 
@@ -115,7 +117,7 @@ flowchart LR
 
 `BattleResult` 还包含胜负、回合数、场景信号和语义事件计数。`completeBattle()` 只接受与 pending request 完全匹配的结果，因此重复提交和串关结果都会失败并回滚。
 
-## 存档与迁移
+## 存档与版本
 
 `CampaignSave` 当前为 schema 1，包含：
 
@@ -124,18 +126,16 @@ flowchart LR
 - 保存时间
 - 完整 `CampaignState`
 
-`CampaignSaveMigrator` 只执行已注册的逐版本迁移。以下情况会拒绝载入：
+`loadCampaignSave` 只接受当前 schema。以下情况会拒绝载入：
 
-- schema 非法或高于当前版本
-- 缺失某一步迁移
-- 迁移没有提高 schema
+- 文档不是对象或 schema 不是当前版本
 - 定义 ID 或版本不匹配
 - 内容包版本不匹配
 - 状态不满足定义约束
 
-前三条不属于战役：推进版本、拒绝断档、拒绝没有推进版本的迁移，这套阶梯和文档里装的是什么无关，所以它是战斗引擎里的 `SchemaMigrator`，战役存档与战斗存档共用同一份。后三条留在这里，因为只有战役知道它们——「装进来之后还得满足什么」和「它是不是当前形状」是两个问题。
+项目仍在开发阶段，没有已经发布的旧存档兼容义务。格式变化时直接升级开发数据并提高当前 schema；等正式发布后出现真实旧格式，再按真实差异设计迁移，而不是提前维护没有生产消费者的可变迁移阶梯。
 
-该格式**不是**战斗存档。战斗存档现在存在（`BattleSave`，见战斗引擎文档），但两者还没有接上：`CampaignSave` 仍然只在关与关之间写入，`pendingBattle` 状态被视为不可恢复而丢弃。把一份 `BattleSave` 挂到 `pendingBattle` 上，就是「战役中途放下一场战斗」这条缺口收口的地方。战斗回放仍缺少正式的初始状态哈希、Action 序列、规则版本锁定和回放验证器。
+该格式**不是**战斗存档。`BattleSave` 与 `BattleReplay` 已分别提供中断恢复和确定性重放：回放带初始／最终状态摘要、Action 序列、规则插件与内容包版本，并能指出首个分歧。两者尚未由战役层编排：`CampaignSave` 仍然只在关与关之间写入，`pendingBattle` 不携带一份战斗存档或回放。把战斗文档挂到这一边界上，是「战役中途放下一场战斗」仍待完成的产品能力。
 
 ## 事务和失败语义
 
@@ -146,9 +146,9 @@ flowchart LR
 - 一个战役最多有一个 pending battle
 - 战斗结果只能提交一次
 - 当前节点始终存在于定义中
-- 结束状态不能继续迁移
+- 结束状态不能继续推进
 - 名单状态与定义版本始终匹配
-- 失败的迁移不会留下半次旗标或资源修改
+- 失败的推进不会留下半次旗标或资源修改
 
 ## 当前能力边界
 
@@ -159,7 +159,7 @@ flowchart LR
 - 持久名单及战斗状态投影
 - 关系、资源、旗标、变量和功能开关
 - 战斗请求与战果防腐层
-- 版本化存档和显式迁移
+- 版本化存档、当前 schema 严格读取和定义一致性校验
 - 失败原子性和定义校验
 
 以下能力尚未形成通用产品闭环：
@@ -168,7 +168,7 @@ flowchart LR
 - 装备、物品背包和商店领域
 - 战前编队与持久装备界面
 - 多存档槽、自动存档和云同步
-- 战役中途放下一场战斗（`BattleSave` 已就位，尚未挂到 `pendingBattle`）与 Action 回放
+- 战役中途放下一场战斗（`BattleSave` 已就位，尚未挂到 `pendingBattle`）与回放文件编排
 - 本地化资源管理和配音时间线
 
 这些缺口应继续留在战役或应用层，不能塞入战斗核心。
@@ -181,7 +181,7 @@ flowchart LR
 2. 它能否写成故事中立的状态、条件和效果？
 3. 新条件是否同时提供类型、处理器和测试？
 4. 新效果失败时是否保持事务原子性？
-5. 它是否改变存档 schema？如果是，是否提供显式迁移？
+5. 它是否改变存档 schema？如果是，是否同步升级全部开发数据并删除旧路径？
 6. 它是否需要战斗数据？如果是，是否通过 `CampaignBattleBridge`？
 
 ## 相关文档

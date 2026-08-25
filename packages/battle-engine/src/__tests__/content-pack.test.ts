@@ -21,12 +21,24 @@ describe('ContentPackInstaller', () => {
     expect(catalog.terrainEncoding.defaultTerrain).toBe('plain');
   });
 
-  it('is idempotent for the same version and rejects version drift', () => {
+  it('refuses every duplicate pack declaration instead of guessing from version equality', () => {
     const installer = new ContentPackInstaller(createContentCatalog());
     installer.install(COMMON_CONTENT_PACK);
 
-    expect(installer.install(COMMON_CONTENT_PACK)).toEqual([]);
+    expect(() => installer.install(COMMON_CONTENT_PACK)).toThrow(/second declaration.*ambiguous/);
     expect(() => installer.install({ ...COMMON_CONTENT_PACK, version: 2 })).toThrow(/already installed/);
+  });
+
+  it('refuses a default terrain that cannot be serialized', () => {
+    const pack: ContentPack = {
+      id: 'test.unencoded-default',
+      version: 1,
+      terrains: [defineTerrain({ id: 'blank', name: 'Blank', cost: {} })],
+      defaultTerrain: 'blank',
+    };
+
+    expect(() => new ContentPackInstaller(createContentCatalog()).install(pack))
+      .toThrow(/default terrain "blank" has no character encoding/);
   });
 
   it('orders dependencies and rejects dependency cycles', () => {
@@ -36,11 +48,12 @@ describe('ContentPackInstaller', () => {
       'empire.ancient-empires',
     ]);
 
-    const cyclicInstaller = new ContentPackInstaller(createContentCatalog());
+    const cyclicCatalog = createContentCatalog();
+    const cyclicInstaller = new ContentPackInstaller(cyclicCatalog);
     const left: ContentPack = { id: 'cycle.left', version: 1, dependencies: ['cycle.right'] };
     const right: ContentPack = { id: 'cycle.right', version: 1, dependencies: ['cycle.left'] };
     expect(() => cyclicInstaller.install(left, right)).toThrow(/cyclic content pack dependency/);
-    expect(cyclicInstaller.installedPacks().size).toBe(0);
+    expect(cyclicCatalog.packVersions.all()).toEqual([]);
   });
 
   it('rejects invalid cross references without partially mutating the catalog', () => {
@@ -79,7 +92,7 @@ describe('ContentPackInstaller', () => {
     expect(catalog.movementProfiles.all()).toEqual([]);
     expect(catalog.weapons.all()).toEqual([]);
     expect(catalog.units.all()).toEqual([]);
-    expect(installer.isInstalled(invalid.id)).toBe(false);
+    expect(catalog.packVersions.has(invalid.id)).toBe(false);
   });
 
   it('accepts story-neutral ids from unrelated genres through the same contract', () => {

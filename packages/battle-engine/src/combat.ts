@@ -480,11 +480,22 @@ export function forecast(
   };
 }
 
-/** Default amount restored by a support-healing ability. */
-export function healAmount(content: ContentCatalog, source: Unit, target: Unit): number {
+/**
+ * How much one support-healing order restores, before the target's missing HP
+ * caps it.
+ *
+ * One number for every healer. It used to be `Number(source.meta.healPower ?? 30)`
+ * — a value read off an untyped bag on the unit, which no shipped content ever
+ * set, so the fallback was the rule and the bag was the escape hatch. A healer
+ * that should mend harder is a different `heal` ability, registered over this one,
+ * not a key nobody declared.
+ */
+const HEAL_POWER = 30;
+
+/** Amount restored by a support-healing ability. */
+export function healAmount(content: ContentCatalog, target: Unit): number {
   const def = content.units.get(target.type);
-  const power = Number(source.meta.healPower ?? 30);
-  return Math.min(power, def.maxHp - target.hp);
+  return Math.min(HEAL_POWER, def.maxHp - target.hp);
 }
 
 /**

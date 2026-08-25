@@ -27,9 +27,4 @@ export const ANCIENT_EMPIRES_CONTENT_PACK: ContentPack = {
   careers: ANCIENT_EMPIRES_CAREERS,
 };
 
-export * from './terrain';
-export * from './damage';
-export * from './units';
-export * from './weapons';
-export * from './careers';
-export * from './levels';
+export { ANCIENT_EMPIRES_LEVELS } from './levels';

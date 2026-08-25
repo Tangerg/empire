@@ -25,12 +25,4 @@ export function createTestCatalog(...extraPacks: readonly ContentPack[]): Conten
   return catalog;
 }
 
-/**
- * Shared catalog for suites that only need the generic tactical content.
- *
- * Safe to share because a catalog is only mutated at install time; a suite that
- * wants to override balance should call `createTestCatalog()` for its own copy.
- */
-export const TEST_CATALOG: ContentCatalog = createTestCatalog();
-
 export * from './levels';

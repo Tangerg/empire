@@ -18,10 +18,11 @@ import type {
   CampaignUnitState,
   RosterDisposition,
 } from './types';
+import { CampaignActionError, CampaignInvariantError } from './errors';
 
 function requireBattleNode(definition: CampaignDefinition, id: string): Extract<CampaignNode, { type: 'battle' }> {
   const node = definition.nodes.find((candidate) => candidate.id === id);
-  if (!node || node.type !== 'battle') throw new Error(`campaign node "${id}" is not a battle`);
+  if (!node || node.type !== 'battle') throw new CampaignInvariantError(`campaign node "${id}" is not a battle`);
   return node;
 }
 
@@ -32,7 +33,7 @@ function seedLevelUnit(
   campaign: CampaignUnitState,
 ): void {
   const index = level.units.findIndex((unit) => unit.key === levelUnitKey);
-  if (index < 0) throw new Error(`level "${level.id}" has no unit key "${levelUnitKey}"`);
+  if (index < 0) throw new CampaignInvariantError(`level "${level.id}" has no unit key "${levelUnitKey}"`);
   if (campaign.disposition !== 'available') {
     level.units.splice(index, 1);
     return;
@@ -61,13 +62,13 @@ function seedLevelUnit(
  * story pack invents. An unrecognised departure is `missing`: something happened
  * to that unit and the campaign does not know what.
  */
-export const DEFAULT_MARKER_DISPOSITIONS: Readonly<Record<string, RosterDisposition>> = {
+export const DEFAULT_MARKER_DISPOSITIONS: Readonly<Record<string, RosterDisposition>> = Object.freeze({
   corpse: 'fallen',
   'transport-loss': 'fallen',
   routed: 'routed',
   surrendered: 'surrendered',
   withdrawn: 'missing',
-};
+});
 
 /** Anti-corruption layer from persistent campaign state to a battle snapshot. */
 export class CampaignBattleBridge {
@@ -82,12 +83,12 @@ export class CampaignBattleBridge {
 
   prepare(definition: CampaignDefinition, state: CampaignState): BattleRequest {
     const node = requireBattleNode(definition, state.currentNode);
-    if (state.pendingBattle) throw new Error(`campaign already has pending battle "${state.pendingBattle.requestId}"`);
+    if (state.pendingBattle) throw new CampaignActionError(`campaign already has pending battle "${state.pendingBattle.requestId}"`);
     const level = normaliseLevel(structuredClone(this.resolveLevel(node.level)));
     const declaredBindings = (node.rosterBindings ?? []).map((binding) => ({ ...binding }));
     for (const binding of declaredBindings) {
       const campaign = state.roster[binding.campaignUnit];
-      if (!campaign) throw new Error(`unknown campaign roster unit "${binding.campaignUnit}"`);
+      if (!campaign) throw new CampaignInvariantError(`unknown campaign roster unit "${binding.campaignUnit}"`);
       seedLevelUnit(this.content, level, binding.levelUnitKey, campaign);
     }
     const bindings = declaredBindings.filter((binding) => state.roster[binding.campaignUnit].disposition === 'available');
@@ -139,7 +140,7 @@ export class CampaignBattleBridge {
       state.embarkedUnits.find((entry) => entry.unit.key === levelUnitKey)?.unit;
     const marker = state.markers.find((candidate) => candidate.fallenUnit?.key === levelUnitKey);
     const snapshot = active ?? marker?.fallenUnit;
-    if (!snapshot) throw new Error(`battle result cannot resolve roster unit key "${levelUnitKey}"`);
+    if (!snapshot) throw new CampaignInvariantError(`battle result cannot resolve roster unit key "${levelUnitKey}"`);
     const disposition: RosterDisposition = active
       ? 'available'
       : (marker && this.dispositions[marker.kind]) ?? 'missing';

@@ -135,16 +135,11 @@ export const SideTurnOrder: TurnOrderPolicy = {
 export const INITIATIVE_THRESHOLD = 100;
 
 /**
- * Tempo stat. Content packs set `meta.speed` per unit; otherwise movement is the
- * one tempo-ish stat every pack already declares, so an unconverted pack still
- * produces a sensible order instead of a flat tie.
+ * Tempo stat derived from the one mobility value every unit declares. A separate
+ * initiative field should be added only when authored content needs that second
+ * balancing axis; an untyped runtime metadata key is not a rules contract.
  */
 function initiativeSpeed(content: ContentCatalog, unit: Unit): number {
-  const declared = Number(unit.meta.speed ?? 0);
-  if (declared > 0) return Math.round(declared);
-  // Fallback for packs that have not declared a tempo stat yet: movement is the
-  // only tempo-ish number every pack already has, scaled so the spread between
-  // a siege engine and a scout is legible rather than a rounding artefact.
   return Math.max(1, content.units.get(unit.type).movement * 10);
 }
 
@@ -274,6 +269,7 @@ function advanceInitiative(
 }
 
 TurnOrders.defineAll([SideTurnOrder, InitiativeTurnOrder]);
+TurnOrders.seal();
 
 /**
  * Prunes charge for units that left the battlefield.

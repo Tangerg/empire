@@ -1,4 +1,5 @@
 import {
+  DomainInvariantError,
   idx,
   MapLayers,
   type DirectionalCoverLevel,
@@ -201,7 +202,7 @@ export class EditorDocument {
   }
 
   setElevation(at: Coord, elevation: number): void {
-    if (!Number.isFinite(elevation)) throw new Error('elevation must be finite');
+    if (!Number.isFinite(elevation)) throw new DomainInvariantError('elevation must be finite');
     this.layers.changeElevation(at, elevation);
   }
 
@@ -243,7 +244,7 @@ export class EditorDocument {
   /** An author cuts and heals the same edge with the same gesture. */
   toggleCliff(from: Coord, to: Coord): void {
     if (!this.layers.isEdge(from, to)) {
-      throw new Error('a cliff must connect orthogonally adjacent cells');
+      throw new DomainInvariantError('a cliff must connect orthogonally adjacent cells');
     }
     this.layers.blockEdge(from, to, !this.layers.isBlockedEdge(from, to));
   }
@@ -338,7 +339,7 @@ export class EditorDocument {
 
   private requireOwner(owner: number): void {
     if (owner !== 0 && !this.players.some((player) => player.id === owner)) {
-      throw new Error(`unknown player ${owner}`);
+      throw new DomainInvariantError(`unknown player ${owner}`);
     }
   }
 }

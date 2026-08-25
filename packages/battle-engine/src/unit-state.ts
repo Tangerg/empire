@@ -26,6 +26,5 @@ export function cloneUnitState(unit: Unit): Unit {
       waypoints: unit.directive.waypoints.map((point) => ({ ...point })),
     },
     learnedAbilities: unit.learnedAbilities.slice(),
-    meta: { ...unit.meta },
   };
 }

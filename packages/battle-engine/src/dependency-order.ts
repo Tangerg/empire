@@ -4,7 +4,7 @@ export interface DependencyOrderOptions<T> {
   dependenciesOf(item: T): readonly string[];
   /** Dependencies already supplied outside the current batch. */
   isSatisfiedExternally?(id: string): boolean;
-  duplicate?(id: string): Error;
+  duplicate(id: string): Error;
   missing(item: T, dependency: string): Error;
   cycle(path: readonly string[]): Error;
 }
@@ -21,7 +21,7 @@ export function orderByDependencies<T>(
   for (const item of items) {
     const id = options.idOf(item);
     if (byId.has(id)) {
-      throw options.duplicate?.(id) ?? new Error(`duplicate dependency node: "${id}"`);
+      throw options.duplicate(id);
     }
     byId.set(id, item);
   }

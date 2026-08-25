@@ -46,7 +46,7 @@
 | `coverMarkup`、`markerMarkup` | 空间掩体和战场 marker |
 | `weaponFx`、`effectMarkup` | 武器与语义效果 |
 
-提供者按后注册优先的顺序查询。方法返回 `null` 表示不处理该 ID，解析器继续查询下一个提供者。注册函数返回注销回调，热更新和测试必须在结束时注销或重置。
+提供者由应用组合根放入一份 `ArtDirection`，按声明顺序查询，第一个非 `null` 答案获胜。方法返回 `null` 表示不处理该 ID，解析器继续查询下一个提供者；空字符串仍是明确答案。没有模块级注册表、导入副作用或测试后清理动作。
 
 题材提供者只能把领域 ID 映射到表现。不要在提供者中读取角色剧情状态或重新计算战斗规则。
 
@@ -56,10 +56,12 @@
 
 - `matches(levelId)`：声明适用关卡
 - `sceneProfile()`：声明场景画布留白
-- `sceneFrame()`：提供战术区域外的背景和前景
-- `sceneLayers()`：提供战术区域内的三层场景素材，每层是一串放在位置上的图（`BoardPiece[]`）
+- `sceneFrame(scene)`：提供战术区域外的背景和前景
+- `sceneLayers(scene)`：提供战术区域内的三层场景素材，每层是一串放在位置上的图（`BoardPiece[]`）
 - `structure()` 和 `marker()`：覆盖题材实体表现
 - `weaponFx()` 和 `effect()`：将语义效果转为 SVG 标记
+
+两个场景函数只接收一份 `BattleSceneContext`：当前会话的 `content`、`levelId`、`map` 和已经算好的 `viewport`。题材表现根据传入内容目录里的标签判断道路等语义，不 import 某个题材的原始定义数组，也不从表现 id 猜规则。测试会替换目录中的道路标签并要求场景随输入改变，防止静态题材依赖重新长回来。
 
 没有匹配项时，系统使用 `generic` 表现。通用表现显示完整格线并使用内置矢量素材；题材表现使用自然场景和按需落点提示。
 
@@ -184,7 +186,6 @@ sceneFrame.foreground
 | --- | --- |
 | `RuntimeUnitSheet` | 一行帧的单位精灵图 |
 | `RuntimeCellAtlas` | 固定整数格的地形、结构、图标和效果图集 |
-| `RuntimeGridAtlas` | 源格可以是小数尺寸的规则大图 |
 
 所有图集渲染器都会校验尺寸、行列和索引。关卡或题材代码应先构造带元数据的资产对象，再调用标记生成器；不要在 UI 控制器里手写裁剪坐标。
 
@@ -193,15 +194,22 @@ sceneFrame.foreground
 - `frameWidth` 和 `frameHeight`
 - `frameCount`
 - 脚底 `anchor`
-- 可选 idle、walk 和 attack 帧
+- 必填的 `idleFrame`、`walkFrames` 和 `attackFrame` 语义帧
 
 `runtimeUnitPicture()` 返回一个 `BoardPicture`：`body` 是属于棋盘的那部分（接触阴影和阵营环，棋盘坐标），`strip` 是声明出来的帧条——图、它坐在哪、以及 `BoardView` 会点名的那三个 clip。
+
+运行时不再从“第 0/1/2 帧”猜动作。素材 adapter 必须把题材素材的具名帧翻译成这三个语义；例如候选剧本素材里的 `carry-or-work` 在 adapter 中明确映射为棋盘攻击帧，而不是让通用帧系统认识题材命名。
 
 它以前是一个 markup 字符串，帧条埋在三层元素里面：一个 `<g>` 给镜像、一个嵌套 `<svg>` 给视口、一个 `clipPath` 把同一件事再裁一遍，外加把帧条自己的描述序列化进 `data-frame-*` 属性给渲染器读回去。那个 clipPath 的 `id` 按帧尺寸固定，所以同尺寸的每个单位都往文档里放**同一个** `id`，每次引用都解析到最先出现的那个——它能工作是因为它们一模一样。
 
 ## 帧动画系统
 
-`FrameAnimationSystem` 为所有已注册精灵共享一个 `requestAnimationFrame` 循环。没有多帧 clip 播放时，它会取消循环并休眠。
+表现层有两个职责不同、所有权明确的时钟：
+
+- `FrameAnimationSystem` 管理已注册精灵条的持续 clip，共享一个 `requestAnimationFrame` 循环；没有多帧 clip 播放时取消循环并休眠。
+- `PresentationTimeline` 管理移动、受击和回合横幅等有限过渡。它拥有每一个待执行 RAF；销毁时取消句柄并把等待者解析为「已取消」，不会留下永远 pending 的控制器 Promise。
+
+两者都由视图拥有并显式 `dispose()`。减少动态效果模式下，精灵条停在稳定帧，有限过渡直接提交终态；表现策略不允许绕过这两个所有者再创建无主 RAF。
 
 每个 `FrameAnimationClip` 定义：
 
@@ -255,13 +263,13 @@ sceneFrame.foreground
 1. 为稳定领域 ID 准备透明背景运行时素材
 2. 实现一个 `ArtProvider`
 3. 为需要自然场景的关卡实现 `BattlePresentation`
-4. 在题材包导出显式注册函数
-5. 在 `apps/*/src/main.ts` 组合根注册
+4. 从题材包导出 provider 与 presentation 值
+5. 在 `apps/*/src/main.ts` 组合根构造 `ArtDirection`
 6. 为每个图层写结构测试
 7. 挂载真实 `BoardView` 检查指针和遮挡
 8. 用至少一个运行时关卡做截图审查
 
-注册函数应可重复调用且返回注销能力。测试不能依赖前一个测试留下的全局提供者。
+测试直接构造自己的 `ArtDirection`。两个测试或两个引擎实例之间不存在可泄漏的全局提供者。
 
 ## 没人画过的地形，按规则能看到的东西画
 
@@ -307,6 +315,8 @@ sceneFrame.foreground
 `movementClass` / `armorClass` 是开放字符串，所以它们只作**族**用——同样移动方式的单位站同样的底座。**具体形状是任意的，分组不是**，而玩家读的是分组。底座而不是坐骑或翅膀：给一个本模块不许读名字的移动型编一匹马，是把猜测打扮成事实。
 
 id 的哈希是必须的：`c01.legion-shield` 和 `c01.rune-shield` 在本模块能读到的每一条规则上完全相同，`c01.stone-golem` 和 `c01.cemetery-colossus` 也一样。画成同一张图诚实但无用——玩家仍然要能分辨。加上饰色后 **40 个兵种的立绘与棋盘图各 40 张互不相同**（此前是 10 张）。
+
+立绘内部的 gradient / clipPath id 由 `unit id + team` 纯函数生成：同一输入永远得到同一 markup。这里没有模块级递增计数器，因此测试顺序、打开过多少界面或同进程渲染另一套题材都不会改变棋盘摘要。
 
 ### 一条守卫封住这一整类
 
@@ -498,7 +508,7 @@ markup 与几何都与上一轮**逐字节相同**——这一轮没有动画面
 
 ### Pixi 后端
 
-`PixiBoardSurface` 在 `@empire/game-ui/pixi`，游戏应用用 `?renderer=pixi` 选它。
+`@empire/game-ui/pixi` 只公开正典组合入口 `preparePixiBoardSurface()` 和其受管工厂类型，游戏应用用 `?renderer=pixi` 选择它。`PixiBoardSurface`、纹理缓存与 painter 都是该入口背后的实现细节。
 
 **能测的和不能测的，是刻意分开的。** Pixi 的 `Container` / `Sprite` / `Texture` 都是普通对象，不需要 GPU；只有 `Renderer` 需要。所以画面被拆成两半：
 
@@ -507,7 +517,7 @@ markup 与几何都与上一轮**逐字节相同**——这一轮没有动画面
 | 画什么、画在哪、谁盖谁 | `PixiBoardSurface` 的场景图 | **能**，而且断言了 |
 | 变成像素 | `ScenePainter` | 不能 |
 
-`ScenePainter` 还拿着 canvas——不是 surface 的。Pixi 的 renderer 是异步创建的并且自带 canvas，如果 surface 自己造一个再交出去，构造函数里就有一个异步的洞、而且没有地方报告失败。现在组合一场战斗的人先 `await preparePixiPainter()`，之后既没有要等的东西、也没有会被吞掉的错误。
+`ScenePainter` 还拿着 canvas——不是 surface 的。Pixi renderer 异步创建并自带 canvas，所以应用组合根先 `await preparePixiBoardSurface()`，失败会沿这条 Promise 明确上报。工厂拥有 GPU context 与跨关纹理缓存；每个 surface 只拥有自己的场景图和动画登记。surface 销毁会与 painter 脱离但不会摧毁共享资源，应用在页面生命周期结束时一次性、幂等地销毁工厂。连续战斗复用已销毁 renderer 的旧所有权错误由回归测试封住。
 
 **两个后端必须给出同一个答案**：同一个 `BoardView` 跑两遍，逐层比对「几张图、在哪、什么顺序」。它是通过 board 跑的，这正是重点——断言的是 Pixi 后端**兑现了 board 发出的调用**，一个把单位画到地形底下、或者忽略 `place`、或者漏掉一层的后端，仍然满足 `BoardSurface` 的每一个类型。
 

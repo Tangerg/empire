@@ -3,6 +3,7 @@ import { DefaultAiObjectiveAdvisors } from '../ai-objectives';
 import { DefaultAbilityAiEvaluators, DefaultAiIntents } from '../ai';
 import { CombatModifierPipeline, CombatModifierProviders } from '../combat-modifiers';
 import { WeaponHitEffectHandlers } from '../hit-effects';
+import { anonymousOverrideId } from '../ruleset-manifest';
 import {
   SrpgMicrokernel,
   type EnginePlugin,
@@ -21,13 +22,15 @@ import { DefaultTacticalSpace } from '../tactical-space';
 import { TacticalGrids } from '../tactical-grid';
 import { TurnOrders } from '../turn-order';
 import { Reactions } from '../reactions';
-import { UnitDepartureHandlers } from '../unit-departure';
+import { UnitDepartureHandlerRegistry } from '../unit-departure';
+import { CommanderDefeatDepartureHandler } from '../commanders';
+import { CastingCancellationDepartureHandler } from '../casting';
 import { WeaponAreaShapes } from '../weapon-area';
 import { UnitDirectives } from '../unit-directive';
 import { DefaultRuleReferenceChecks } from '../rule-references';
-import { DefaultBattleSaves } from '../battle-save';
+import { BattleSaveReader } from '../battle-save';
 import { SplitMixRandom } from '../random';
-import type { ContentCatalog } from '../content-pack';
+import { sealContentCatalog, type ContentCatalog } from '../content-pack';
 
 /**
  * Supplies the catalog this engine plays on. Content is never discovered.
@@ -86,11 +89,16 @@ export const TacticalRulesPlugin: EnginePlugin = {
     context.provide('random', SplitMixRandom);
     context.provide('turnOrders', TurnOrders.clone());
     context.provide('reactions', Reactions.clone());
-    context.provide('unitDepartures', UnitDepartureHandlers.clone());
+    context.provide(
+      'unitDepartures',
+      new UnitDepartureHandlerRegistry()
+        .register(CommanderDefeatDepartureHandler)
+        .register(CastingCancellationDepartureHandler),
+    );
     context.provide('areaShapes', WeaponAreaShapes.clone());
     context.provide('directives', UnitDirectives.clone());
     context.provide('referenceChecks', DefaultRuleReferenceChecks.clone());
-    context.provide('saves', DefaultBattleSaves.clone());
+    context.provide('saves', new BattleSaveReader());
   },
 };
 
@@ -196,7 +204,7 @@ export function overridePlugin<K extends KernelCapabilityId>(
   value: KernelCapabilityMap[K],
 ): EnginePlugin {
   return {
-    id: `engine.override.${capability}`,
+    id: anonymousOverrideId(capability),
     version: 1,
     overrides: [capability],
     install: (context) => context.replace(capability, value),
@@ -239,8 +247,8 @@ export interface BattleEngineOverrides extends Partial<BattleEngineDependencies>
  *
  * Then a third appeared for a smaller reason: composing by hand was the only
  * way to add a plugin or to read the manifest afterwards. Both are ordinary
- * requests, so both are parameters — `plugins` goes in, `pluginManifest` comes
- * out on the engine, and the kernel stays behind this function.
+ * requests, so both are parameters — `plugins` goes in, their versioned identity
+ * comes out as `rulesetManifest`, and the kernel stays behind this function.
  */
 export function createBattleEngine(overrides: BattleEngineOverrides): BattleEngine {
   const { content, plugins = [], ...swapped } = overrides;
@@ -249,9 +257,31 @@ export function createBattleEngine(overrides: BattleEngineOverrides): BattleEngi
     if (value === undefined) continue;
     kernel.use(overridePlugin(capability as KernelCapabilityId, value as never));
   }
-  return assembleBattleEngine(kernel.compose());
+  const capabilities = kernel.compose();
+  sealContentCatalog(capabilities.require('content'));
+  sealBattleCapabilities(capabilities);
+  return assembleBattleEngine(capabilities);
 }
 
-/** The ruleset alone, for a rule under test that needs no engine around it. */
-export const createBattleRules = (overrides: BattleEngineOverrides) =>
-  createBattleEngine(overrides).rules;
+/** No rule table remains ambient-mutable after the composition boundary. */
+function sealBattleCapabilities(capabilities: KernelCapabilities): void {
+  capabilities.require('abilities').seal();
+  capabilities.require('actionHandlers').seal();
+  capabilities.require('combatModifiers').seal();
+  capabilities.require('hitEffects').seal();
+  capabilities.require('statusBehaviors').seal();
+  capabilities.require('areaShapes').seal();
+  capabilities.require('directives').seal();
+  capabilities.require('referenceChecks').seal();
+  capabilities.require('grids').seal();
+  capabilities.require('scenarioConditions').seal();
+  capabilities.require('scenarioEffects').seal();
+  capabilities.require('objectives').seal();
+  capabilities.require('resources').seal();
+  capabilities.require('turnOrders').seal();
+  capabilities.require('reactions').seal();
+  capabilities.require('unitDepartures').seal();
+  capabilities.require('aiObjectiveAdvisors').seal();
+  capabilities.require('abilityAiEvaluators').seal();
+  capabilities.require('aiIntents').seal();
+}

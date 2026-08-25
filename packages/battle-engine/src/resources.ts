@@ -127,6 +127,7 @@ export const DefaultResourceSubjects = new ResourceSubjectResolverRegistry()
     subjectFor: (context) => weaponResource(context.unit, context.weapon),
     ref: ({ unit, weapon }) => ({ kind: 'weapon', id: unit.id, slot: weapon }),
   });
+DefaultResourceSubjects.seal();
 
 /**
  * Generic resource application service. It owns clamping and spending rules;
@@ -234,6 +235,12 @@ export class BattleResourceSystem {
 
   clone(): BattleResourceSystem {
     return new BattleResourceSystem(this.adapters.clone(), this.subjects.clone());
+  }
+
+  seal(): this {
+    this.adapters.seal();
+    this.subjects.seal();
+    return this;
   }
 
   private requireAccount(
@@ -354,5 +361,6 @@ export const DefaultResourceAdapters = new ResourceAdapterRegistry()
   .register(commandPointsAdapter)
   .register(momentumAdapter)
   .register(weaponUsesAdapter);
+DefaultResourceAdapters.seal();
 
 export const DefaultBattleResources = new BattleResourceSystem(DefaultResourceAdapters, DefaultResourceSubjects);

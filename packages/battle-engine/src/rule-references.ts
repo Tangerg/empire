@@ -271,3 +271,4 @@ export const DefaultRuleReferenceChecks = new RuleReferenceCheckRegistry()
     inState: (state) => state.scenario.triggers.flatMap((trigger) =>
       trigger.effects.map((effect) => ({ by: `触发器 ${trigger.id}`, name: effect.type }))),
   });
+DefaultRuleReferenceChecks.seal();

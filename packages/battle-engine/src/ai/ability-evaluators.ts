@@ -1,6 +1,6 @@
 import { type CommandOption } from '../actions';
 import { forecastCombatPlan, type CombatPlan } from '../combat-plan';
-import { unitWeapons } from '../combat';
+import { healAmount, unitWeapons } from '../combat';
 import { idx } from '../grid';
 import type { Board } from '../domain/board';
 import { KeyedRegistry } from '../registry';
@@ -89,7 +89,7 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
     const ally = unitAt(context.state, { x: context.target.x, y: context.target.y });
     if (!ally) return null;
     const def = context.rules.content.units.get(ally.type);
-    const healed = Math.min(30, def.maxHp - ally.hp);
+    const healed = healAmount(context.rules.content, ally);
     return context.tileValue * 0.3 + (healed / def.maxHp) * def.value * 0.9;
   }))
   .register(evaluator('attack', (context) => {
@@ -138,3 +138,4 @@ export const DefaultAbilityAiEvaluators = new AbilityAiEvaluatorRegistry()
     }
     return context.tileValue * 0.25 + score + collateralValue(context.rules.content, context.state, plan);
   }));
+DefaultAbilityAiEvaluators.seal();

@@ -1,6 +1,7 @@
 import {
   idx,
   sharesEdge,
+  DomainInvariantError,
   KeyedRegistry,
   type ContentCatalog,
   type Coord,
@@ -58,7 +59,7 @@ export class BrushSettings {
     this.terrain = this.blank;
     const [firstUnit] = content.units.ids();
     if (firstUnit === undefined) {
-      throw new Error('cannot author a level against a catalog with no unit types');
+      throw new DomainInvariantError('cannot author a level against a catalog with no unit types');
     }
     this.unitType = firstUnit;
   }
@@ -286,7 +287,9 @@ export class EditorToolRegistry extends KeyedRegistry<string, EditorTool> {
   }
 
   get default(): EditorTool {
-    return this.all()[0];
+    const [tool] = this.all();
+    if (!tool) throw new DomainInvariantError('editor tool registry cannot be empty');
+    return tool;
   }
 
   forHotkey(key: string): EditorTool | undefined {
@@ -294,9 +297,12 @@ export class EditorToolRegistry extends KeyedRegistry<string, EditorTool> {
   }
 
   private refuseHotkeyClash(tool: EditorTool): void {
+    if ([...tool.hotkey].length !== 1 || tool.hotkey !== tool.hotkey.toLowerCase()) {
+      throw new DomainInvariantError(`editor tool ${tool.id} hotkey must be one lowercase character`);
+    }
     const clash = this.all().find((candidate) =>
-      candidate.hotkey === tool.hotkey && candidate.id !== tool.id);
-    if (clash) throw new Error(`editor tools ${clash.id}, ${tool.id} share hotkey "${tool.hotkey}"`);
+      candidate.hotkey.toLowerCase() === tool.hotkey.toLowerCase() && candidate.id !== tool.id);
+    if (clash) throw new DomainInvariantError(`editor tools ${clash.id}, ${tool.id} share hotkey "${tool.hotkey}"`);
   }
 }
 
@@ -311,3 +317,4 @@ export const EDITOR_TOOLS = new EditorToolRegistry()
   .register(OwnerTool)
   .register(EraseUnitTool)
   .register(EyedropperTool);
+EDITOR_TOOLS.seal();

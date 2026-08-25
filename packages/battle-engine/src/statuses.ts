@@ -62,7 +62,7 @@ export class StatusBehaviorRegistry extends KeyedRegistry<StatusId, StatusBehavi
   }
 }
 
-export const StatusBehaviors = new StatusBehaviorRegistry();
+export const StatusBehaviors = new StatusBehaviorRegistry().seal();
 
 export function blockedAbilityStatus(content: ContentCatalog, unit: Unit, tags: string[]): StatusId | null {
   if (tags.length === 0) return null;

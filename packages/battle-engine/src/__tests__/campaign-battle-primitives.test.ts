@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { BattleAggregate } from '../domain/battle-aggregate';
 import { CoreActionHandlers } from '../actions';
-import { createBattleRules } from '../plugins/default';
+import { createBattleEngine } from '../plugins/default';
 import { compositeStatus, moveComposite } from '../composites';
 import { activeFormation, formationInEffect, validateFormationChange } from '../formations';
 import { IllegalActionError } from '../domain/errors';
@@ -10,6 +10,7 @@ import { cloneState } from '../state';
 import { carrierOptions, disembarkUnit, embarkUnit, passengerOptions } from '../transports';
 import type { GameEvent } from '../types';
 import { TEST_CONTENT, makeLevel, testApplyWith, testChooseAction, testCommands, testCondition, testObjectiveOutcome, testScenarioTriggers, testState, u } from './fixtures';
+import { createTestCatalog } from '@empire/test-content';
 
 describe('campaign-grade battle primitives', () => {
   it('runs bounded cyclic scenario triggers once per timing occurrence', () => {
@@ -41,7 +42,7 @@ describe('campaign-grade battle primitives', () => {
     const state = testState(makeLevel(['..'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)],
     }));
-    const rules = createBattleRules({ content: TEST_CONTENT });
+    const rules = createBattleEngine({ content: TEST_CONTENT }).rules;
     testApplyWith(state, { kind: 'endTurn' }, CoreActionHandlers, rules);
     expect(testCondition(state, { type: 'eventCount', event: 'turnEnd', op: 'gte', value: 1 })).toBe(true);
   });
@@ -59,11 +60,13 @@ describe('campaign-grade battle primitives', () => {
   });
 
   it('keeps formations data-defined and active only while spatially supported', () => {
-    const rules = createBattleRules({ content: TEST_CONTENT });
-    rules.content.units.override('soldier', {
+    const content = createTestCatalog();
+    content.units.override('soldier', {
       formations: ['formation-defensive', 'formation-loose'],
     });
-    const state = testState(makeLevel(['...'], {
+    const battle = createBattleEngine({ content });
+    const rules = battle.rules;
+    const state = battle.createState(makeLevel(['...'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 1), u(2, 0, 'soldier', 2)],
     }));
     const unit = state.units[0];
@@ -80,9 +83,11 @@ describe('campaign-grade battle primitives', () => {
   });
 
   it('answers whether a formation would hold without putting it on', () => {
-    const rules = createBattleRules({ content: TEST_CONTENT });
-    rules.content.units.override('soldier', { formations: ['formation-defensive'] });
-    const state = testState(makeLevel(['...'], {
+    const content = createTestCatalog();
+    content.units.override('soldier', { formations: ['formation-defensive'] });
+    const battle = createBattleEngine({ content });
+    const rules = battle.rules;
+    const state = battle.createState(makeLevel(['...'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 1), u(2, 0, 'soldier', 2)],
     }));
     const unit = state.units[0];
@@ -100,9 +105,11 @@ describe('campaign-grade battle primitives', () => {
   });
 
   it('embarks and disembarks identity-preserving units through formal actions', () => {
-    const rules = createBattleRules({ content: TEST_CONTENT });
-    rules.content.units.override('knight', { transport: { capacity: 2, allowedTags: ['infantry'] } });
-    const state = testState(makeLevel(['.....'], {
+    const content = createTestCatalog();
+    content.units.override('knight', { transport: { capacity: 2, allowedTags: ['infantry'] } });
+    const battle = createBattleEngine({ content });
+    const rules = battle.rules;
+    const state = battle.createState(makeLevel(['.....'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'knight', 1), u(4, 0, 'soldier', 2)],
     }));
     const passenger = state.units[0];
@@ -121,13 +128,15 @@ describe('campaign-grade battle primitives', () => {
   });
 
   it('offers the carriers and landing cells the transport actions accept', () => {
-    const rules = createBattleRules({ content: TEST_CONTENT });
+    const content = createTestCatalog();
     // `^` is mountain: a foot soldier holds it, so it is a landing cell; the
     // archer is refused by tag, and the full carrier is refused by capacity.
-    rules.content.units.override('knight', {
+    content.units.override('knight', {
       transport: { capacity: 1, allowedTags: ['infantry'], forbiddenTags: ['ranged'] },
     });
-    const state = testState(makeLevel(['..^.', '....'], {
+    const battle = createBattleEngine({ content });
+    const rules = battle.rules;
+    const state = battle.createState(makeLevel(['..^.', '....'], {
       units: [
         { ...u(0, 0, 'soldier', 1), key: 'foot' },
         { ...u(1, 0, 'knight', 1), key: 'cart' },
@@ -149,7 +158,6 @@ describe('campaign-grade battle primitives', () => {
 
     embarkUnit(rules, state, foot.id, cart.id, () => {});
     // Capacity is checked before the tag rules, so a full carrier says so.
-    rules.content.units.override('knight', { transport: { capacity: 1, allowedTags: ['infantry'] } });
     expect(carrierOptions(rules, state, bow)[0]).toMatchObject({ eligible: false, reasons: ['载具已满'] });
 
     const aboard = passengerOptions(rules, state, cart);
@@ -172,9 +180,11 @@ describe('campaign-grade battle primitives', () => {
   });
 
   it('keeps transport-loss invariants inside the battle aggregate', () => {
-    const rules = createBattleRules({ content: TEST_CONTENT });
-    rules.content.units.override('knight', { transport: { capacity: 1 } });
-    const state = testState(makeLevel(['....'], {
+    const content = createTestCatalog();
+    content.units.override('knight', { transport: { capacity: 1 } });
+    const battle = createBattleEngine({ content });
+    const rules = battle.rules;
+    const state = battle.createState(makeLevel(['....'], {
       units: [u(0, 0, 'soldier', 1), u(1, 0, 'knight', 1), u(3, 0, 'soldier', 2)],
     }));
     const passenger = state.units[0];
@@ -194,7 +204,7 @@ describe('campaign-grade battle primitives', () => {
     }));
     const id = state.units[0].id;
     const events: GameEvent[] = [];
-    const rules = createBattleRules({ content: TEST_CONTENT });
+    const rules = createBattleEngine({ content: TEST_CONTENT }).rules;
     changeMorale(rules, state, id, -999, 'test-shock', (event: GameEvent) => events.push(event));
     expect(state.units.some((unit) => unit.id === id)).toBe(false);
     expect(state.markers[0]).toMatchObject({ kind: 'routed', fallenUnit: { id } });

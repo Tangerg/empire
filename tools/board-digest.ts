@@ -19,7 +19,6 @@ import {
   ContentPackInstaller,
   createBattleEngine,
   createContentCatalog,
-  createState,
   idx,
   type LevelData,
 } from '@empire/battle-engine';
@@ -78,7 +77,7 @@ for (const [label, level] of levels) {
   // Both arts over every level: the generic look and the painted one are different
   // renderers' worth of markup, and both have to hold still.
   const art = label.startsWith('themed') ? CANDIDATE_01_ART : GENERIC_ART;
-  const board = new BoardView({ content, grid, art, renderer: svgBoardSurface }, createState(content, level), {
+  const board = new BoardView({ content, grid, art, renderer: svgBoardSurface }, engine.createState(level), {
     onTileClick: () => {},
     onTileEnter: () => {},
     onLeave: () => {},

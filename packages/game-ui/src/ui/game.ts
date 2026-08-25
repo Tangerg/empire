@@ -170,7 +170,7 @@ export class GameController {
       onZoom: (delta) => this.zoomBy(delta),
     });
 
-    this.presenters = options.eventPresenters ?? DefaultBattleEventPresenters.clone();
+    this.presenters = (options.eventPresenters ?? DefaultBattleEventPresenters).clone().seal();
     this.stage = new SessionBattleStage(
       this.board,
       this.session,
@@ -487,9 +487,9 @@ export class GameController {
   private resumeBattle(): void {
     const store = this.options.saves;
     if (!store || this.busy) return;
-    const raw = store.read();
-    if (raw === null) return;
     try {
+      const raw = store.read();
+      if (raw === null) return;
       this.session.load(raw);
     } catch (error) {
       // Only the document is allowed to be at fault here. This used to catch
@@ -858,4 +858,3 @@ export class GameController {
     this.hud.render(this.hudView());
   }
 }
-

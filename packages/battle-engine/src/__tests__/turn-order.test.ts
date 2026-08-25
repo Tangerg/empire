@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createBattleEngine } from '../plugins/default';
-import { IllegalActionError } from '../action-system';
+import { IllegalActionError } from '../domain/errors';
 import { INITIATIVE_THRESHOLD, InitiativeTurnOrder, SideTurnOrder, TurnOrders } from '../turn-order';
 import { TEST_CONTENT, makeLevel, u } from './fixtures';
 import type { Action, GameState, LevelData } from '../types';
