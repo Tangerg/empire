@@ -7,45 +7,181 @@
   "width": 18,
   "height": 12,
   "terrain": [
-    "..T....h.....T....",
-    ".T...T......v...h.",
-    ".....h.....#######",
-    "..T........#.v.b.#",
-    ".b-...T....#..-..#",
-    ".C------------C..#",
-    "....T...h..-....v#",
-    "..v......-.#.....#",
-    "......T....#.....#",
-    "...h.......#######",
-    "..T....^....T.....",
-    "....v.....T....h.."
+    "^TT...h..TT..TT..^",
+    "TT...T......v...hT",
+    "T....h.T...#######",
+    "T.TT.......#.v.b.#",
+    "Tb-...TT...#..-..#",
+    "TC------------C..#",
+    "T...T...h..-....v#",
+    "T.v..TT..-.#.....#",
+    "T...T.T....#.....#",
+    "T..h..T....#######",
+    "TTT...^..TT.TT....",
+    "^T..v.....TT...h.^"
   ],
   "owners": [
-    { "x": 1, "y": 5, "owner": 1 },
-    { "x": 1, "y": 4, "owner": 1 },
-    { "x": 2, "y": 7, "owner": 1 },
-    { "x": 14, "y": 5, "owner": 2 },
-    { "x": 15, "y": 3, "owner": 2 },
-    { "x": 13, "y": 3, "owner": 2 },
-    { "x": 16, "y": 6, "owner": 2 },
-    { "x": 12, "y": 1, "owner": 0 },
-    { "x": 4, "y": 11, "owner": 0 }
+    {
+      "x": 1,
+      "y": 5,
+      "owner": 1
+    },
+    {
+      "x": 1,
+      "y": 4,
+      "owner": 1
+    },
+    {
+      "x": 2,
+      "y": 7,
+      "owner": 1
+    },
+    {
+      "x": 14,
+      "y": 5,
+      "owner": 2
+    },
+    {
+      "x": 15,
+      "y": 3,
+      "owner": 2
+    },
+    {
+      "x": 13,
+      "y": 3,
+      "owner": 2
+    },
+    {
+      "x": 16,
+      "y": 6,
+      "owner": 2
+    },
+    {
+      "x": 12,
+      "y": 1,
+      "owner": 0
+    },
+    {
+      "x": 4,
+      "y": 11,
+      "owner": 0
+    }
   ],
   "units": [
-    { "x": 2, "y": 5, "unit": "archer", "owner": 1 },
-    { "x": 3, "y": 5, "unit": "knight", "owner": 1 },
-    { "x": 2, "y": 4, "unit": "soldier", "owner": 1 },
-    { "x": 2, "y": 6, "unit": "soldier", "owner": 1 },
-    { "x": 3, "y": 4, "unit": "ogre", "owner": 1 },
-    { "x": 1, "y": 3, "unit": "mage", "owner": 1 },
-    { "x": 1, "y": 6, "unit": "ballista", "owner": 1 },
-    { "x": 2, "y": 3, "unit": "cleric", "owner": 1 },
-    { "x": 12, "y": 5, "unit": "soldier", "owner": 2 },
-    { "x": 12, "y": 6, "unit": "soldier", "owner": 2 },
-    { "x": 13, "y": 5, "unit": "archer", "owner": 2 },
-    { "x": 13, "y": 6, "unit": "archer", "owner": 2 },
-    { "x": 13, "y": 4, "unit": "ballista", "owner": 2 },
-    { "x": 15, "y": 5, "unit": "ogre", "owner": 2 }
+    {
+      "x": 2,
+      "y": 5,
+      "unit": "archer",
+      "owner": 1
+    },
+    {
+      "x": 3,
+      "y": 5,
+      "unit": "knight",
+      "owner": 1
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "x": 2,
+      "y": 6,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "unit": "ogre",
+      "owner": 1
+    },
+    {
+      "x": 1,
+      "y": 3,
+      "unit": "mage",
+      "owner": 1
+    },
+    {
+      "x": 1,
+      "y": 6,
+      "unit": "ballista",
+      "owner": 1
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "unit": "cleric",
+      "owner": 1
+    },
+    {
+      "x": 12,
+      "y": 5,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "x": 12,
+      "y": 6,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "x": 13,
+      "y": 5,
+      "unit": "archer",
+      "owner": 2
+    },
+    {
+      "x": 13,
+      "y": 6,
+      "unit": "archer",
+      "owner": 2
+    },
+    {
+      "x": 13,
+      "y": 4,
+      "unit": "ballista",
+      "owner": 2
+    },
+    {
+      "x": 15,
+      "y": 5,
+      "unit": "ogre",
+      "owner": 2
+    },
+    {
+      "x": 1,
+      "y": 5,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "x": 1,
+      "y": 4,
+      "unit": "archer",
+      "owner": 1
+    },
+    {
+      "x": 3,
+      "y": 6,
+      "unit": "mage",
+      "owner": 1
+    },
+    {
+      "x": 13,
+      "y": 8,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "x": 16,
+      "y": 4,
+      "unit": "archer",
+      "owner": 2
+    }
   ],
   "players": [
     {
@@ -55,10 +191,20 @@
       "color": "#3f7fd8",
       "controller": "human",
       "resources": {
-        "funds": { "current": 600, "capacity": null },
-        "command_points": { "current": 0, "capacity": 5 }
+        "funds": {
+          "current": 600,
+          "capacity": null
+        },
+        "command_points": {
+          "current": 0,
+          "capacity": 5
+        }
       },
-      "objectives": [{ "type": "captureHQ" }]
+      "objectives": [
+        {
+          "type": "captureHQ"
+        }
+      ]
     },
     {
       "id": 2,
@@ -67,13 +213,38 @@
       "color": "#d8483f",
       "controller": "ai",
       "resources": {
-        "funds": { "current": 300, "capacity": null },
-        "command_points": { "current": 0, "capacity": 5 }
+        "funds": {
+          "current": 300,
+          "capacity": null
+        },
+        "command_points": {
+          "current": 0,
+          "capacity": 5
+        }
       },
-      "ai": { "aggression": 0.25 },
-      "objectives": [{ "type": "surviveTurns", "turns": 14 }, { "type": "routEnemies" }]
+      "ai": {
+        "aggression": 0.25
+      },
+      "objectives": [
+        {
+          "type": "surviveTurns",
+          "turns": 14
+        },
+        {
+          "type": "routEnemies"
+        }
+      ]
     }
   ],
-  "rules": { "turnLimit": 14 },
-  "victory": [{ "type": "routEnemies" }, { "type": "captureHQ" }]
+  "rules": {
+    "turnLimit": 14
+  },
+  "victory": [
+    {
+      "type": "routEnemies"
+    },
+    {
+      "type": "captureHQ"
+    }
+  ]
 }

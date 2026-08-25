@@ -347,7 +347,20 @@ describe('game controller', () => {
     // spot on the ground where the ruled board would put a square.
     expect(board.querySelectorAll('.layer-range > *').length).toBeGreaterThan(3);
 
-    hover(board, { x: mine.x, y: mine.y + 1 });
+    /*
+     * A reachable cell read off the overlay, not `mine.y + 1`.
+     *
+     * That guess held while the shipped level had three units a side and open
+     * ground below the first of them; the cell south of the first unit is now
+     * another unit, and you cannot walk onto your own soldier. The board just drew
+     * every cell this unit can reach — the test hovers one of those.
+     */
+    const reachable = [...board.querySelectorAll('.layer-range > *')]
+      .map((piece) => (piece.getAttribute('transform')?.match(/-?[\d.]+/g) ?? []).map(Number))
+      .map(([x = 0, y = 0]) => ({ x: Math.round(x / TILE), y: Math.round(y / TILE) }))
+      .find((cell) => cell.x !== mine.x || cell.y !== mine.y);
+    expect(reachable).toBeTruthy();
+    hover(board, reachable!);
     expect(board.querySelectorAll('.layer-path path').length).toBeGreaterThan(0);
     c.dispose();
   });

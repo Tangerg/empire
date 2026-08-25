@@ -220,8 +220,14 @@ describe('map editor', () => {
   });
 
   it('flags a unit standing on impassable terrain', () => {
+    // A water cell found in the document rather than assumed at (8,5): that cell
+    // is the shipped tutorial's bridge now, and a bridge is where you *can* stand.
+    const terrain = app.exportLevel().terrain;
+    const row = terrain.findIndex((line) => line.includes('~'));
+    const column = terrain[row].indexOf('~');
+
     (host.querySelector('.unit-chip[data-arg="soldier"]') as HTMLElement).click();
-    stroke(board, { x: 8, y: 5 }); // river tile
+    stroke(board, { x: column, y: row });
     const issues = validateLevel(TEST_RULES, app.exportLevel());
     expect(issues.some((i) => i.severity === 'error' && i.message.includes('无法站在'))).toBe(true);
   });
