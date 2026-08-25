@@ -4,13 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1 --open",
+    "dev": "vite --host 127.0.0.1",
     "build": "vite build"
   },
   "dependencies": {
+    "@empire/battle-engine": "0.1.0",
     "@empire/content-ancient-empires": "0.1.0",
     "@empire/content-common": "0.1.0",
-    "@empire/battle-engine": "0.1.0",
     "@empire/experience-lab": "0.1.0",
     "@empire/game-ui": "0.1.0",
     "@empire/story-candidate-01": "0.1.0"

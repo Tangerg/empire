@@ -1,13 +1,8 @@
-import { defineConfig } from 'vite';
 import { viteSingleFile } from 'vite-plugin-singlefile';
+import { appConfig } from '../../vite.shared';
 
-export default defineConfig({
-  base: './',
+/** One file, opened straight off disk: everything inlined, nothing split out. */
+export default appConfig('experience-lab', {
   plugins: [viteSingleFile()],
-  build: {
-    outDir: '../../dist/experience-lab',
-    emptyOutDir: true,
-    cssCodeSplit: false,
-    assetsInlineLimit: Number.MAX_SAFE_INTEGER,
-  },
+  build: { cssCodeSplit: false, assetsInlineLimit: Number.MAX_SAFE_INTEGER },
 });

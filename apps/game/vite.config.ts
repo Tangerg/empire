@@ -1,6 +1,3 @@
-import { defineConfig } from 'vite';
+import { appConfig } from '../../vite.shared';
 
-export default defineConfig({
-  base: './',
-  build: { outDir: '../../dist/game', emptyOutDir: true },
-});
+export default appConfig('game');

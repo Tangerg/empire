@@ -1,6 +1,3 @@
-import { defineConfig } from 'vite';
+import { appConfig } from '../../vite.shared';
 
-export default defineConfig({
-  base: './',
-  build: { outDir: '../../dist/editor', emptyOutDir: true },
-});
+export default appConfig('editor');

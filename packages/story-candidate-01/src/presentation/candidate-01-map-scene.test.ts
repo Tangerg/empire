@@ -13,7 +13,7 @@ import { candidate01EnvironmentScene } from './candidate-01-environment';
 import { boardPiecesMarkup, createSceneViewport, type BoardPiece } from '@empire/game-ui';
 
 import { createTestCatalog } from '@empire/test-content';
-import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
+import { CANDIDATE_01_CONTENT_PACK } from '../index';
 
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);

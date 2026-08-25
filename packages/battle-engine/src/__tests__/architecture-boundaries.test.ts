@@ -24,6 +24,15 @@ function runtimeTypeScriptFiles(directory: string): string[] {
   });
 }
 
+/** Sources including the tests and benchmarks, for guards about the manifest. */
+function allTypeScriptFiles(directory: string): string[] {
+  return readdirSync(directory).flatMap((entry) => {
+    const path = join(directory, entry);
+    if (statSync(path).isDirectory()) return allTypeScriptFiles(path);
+    return entry.endsWith('.ts') ? [path] : [];
+  });
+}
+
 /** Every shipped story package, which the older guards never looked at. */
 function storyPackageSources(): string[] {
   return readdirSync(packagesRoot)
@@ -2676,6 +2685,88 @@ describe('one answer per question', () => {
     }
 
     expect(classes.length).toBeGreaterThan(200);
+    expect(offenders).toEqual([]);
+  });
+
+  it('declares every workspace package it imports', () => {
+    // "Dependencies belong in declarations" — and a workspace is exactly where
+    // that stops being self-enforcing. npm links every package into one
+    // `node_modules`, so an import of a sibling resolves whether the manifest
+    // mentions it or not: `game-ui`'s tests reached for four packs and its
+    // manifest named none of them, and `battle-engine` had no dependency block at
+    // all while its tests and its benchmark composed three content packs.
+    //
+    // Only `@empire/*`, and that is the reason rather than a convenience: an
+    // undeclared third-party import is not installed and fails loudly, while the
+    // toolchain — vitest, jsdom, vite — is declared once at the root on purpose.
+    const manifests = [
+      ...readdirSync(packagesRoot, { withFileTypes: true })
+        .filter((entry) => entry.isDirectory())
+        .map((entry) => join(packagesRoot, entry.name)),
+      ...readdirSync(join(packagesRoot, '..', 'apps'), { withFileTypes: true })
+        .filter((entry) => entry.isDirectory())
+        .map((entry) => join(packagesRoot, '..', 'apps', entry.name)),
+    ].filter((root) => statSync(join(root, 'package.json'), { throwIfNoEntry: false })?.isFile());
+
+    const workspaceImports = (files: string[]): Set<string> => {
+      const found = new Set<string>();
+      for (const file of files) {
+        const source = stripComments(readFileSync(file, 'utf8'));
+        // `from '…'` rather than a whole import statement: a named import list
+        // spans lines, and this file quotes package names in arrays, so matching
+        // the specifier's own keyword is both simpler and narrower than matching
+        // the statement — a guard that counted bare quotes would report itself.
+        for (const pattern of [
+          /\bfrom\s+'(@empire\/[\w-]+)/g,
+          /^\s*import\s+'(@empire\/[\w-]+)/gm,
+          /\bimport\('(@empire\/[\w-]+)/g,
+        ]) {
+          for (const [, name] of source.matchAll(pattern)) found.add(name);
+        }
+      }
+      return found;
+    };
+
+    const offenders: string[] = [];
+    let checked = 0;
+    for (const root of manifests) {
+      const manifest = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')) as {
+        name: string;
+        dependencies?: Record<string, string>;
+        devDependencies?: Record<string, string>;
+      };
+      const sources = join(root, 'src');
+      if (!statSync(sources, { throwIfNoEntry: false })?.isDirectory()) continue;
+      const everything = allTypeScriptFiles(sources);
+      const runtime = new Set(runtimeTypeScriptFiles(sources));
+      const atRuntime = workspaceImports(everything.filter((file) => runtime.has(file)));
+      const anywhere = workspaceImports(everything);
+      const declared = new Set(Object.keys(manifest.dependencies ?? {}));
+      const forTests = new Set([...declared, ...Object.keys(manifest.devDependencies ?? {})]);
+      checked++;
+
+      if (anywhere.has(manifest.name)) {
+        offenders.push(`${manifest.name} imports itself by package name`);
+      }
+      for (const name of [...atRuntime].sort()) {
+        if (name !== manifest.name && !declared.has(name)) {
+          offenders.push(`${manifest.name}: runtime imports ${name}, which is not a dependency`);
+        }
+      }
+      for (const name of [...anywhere].sort()) {
+        if (name !== manifest.name && !forTests.has(name)) {
+          offenders.push(`${manifest.name}: tests import ${name}, which is declared nowhere`);
+        }
+      }
+      for (const name of [...forTests].sort()) {
+        if (name.startsWith('@empire/') && !anywhere.has(name)) {
+          offenders.push(`${manifest.name}: declares ${name}, which nothing imports`);
+        }
+      }
+    }
+
+    // Every workspace member with sources, or this passes by having read none.
+    expect(checked).toBeGreaterThanOrEqual(14);
     expect(offenders).toEqual([]);
   });
 });
