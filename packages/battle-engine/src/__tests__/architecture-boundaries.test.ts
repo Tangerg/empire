@@ -987,8 +987,19 @@ describe('behaviour has an owner', () => {
         .split('\n')
         .filter((line) => line.startsWith('|'))
         .flatMap((line) => [...line.matchAll(/`([^`\n]+)`/g)]
-          // An identifier a reader would grep for: a type or a called function.
-          .map(([, code]) => /^([A-Z][A-Za-z0-9]{2,}|[a-z][A-Za-z0-9]{2,}\(\))$/.exec(code.trim()))
+          /*
+           * An identifier a reader would grep for: a type, a constant, or a called
+           * function.
+           *
+           * Underscores used to be outside the character class, so every
+           * `SCREAMING_SNAKE` constant a row named went unchecked — which is how the
+           * digest's row went on citing an `IGNORED_FIELDS` that had become
+           * `ignoredPath`. A bare lower-case name is still not checked, and
+           * deliberately: two tables here are before-and-after, whose left column
+           * names what was *replaced* (`unregister` + `remove` + `dropUnit` became
+           * `removeUnit`), and one row names the Unix `diff`.
+           */
+          .map(([, code]) => /^([A-Z][A-Za-z0-9_]{2,}|[a-z][A-Za-z0-9]{2,}\(\))$/.exec(code.trim()))
           .flatMap((match) => (match ? [match[1].replace('()', '')] : []))
           .filter((name) => !BUILT_INS.has(name))
           .map((name) => ({ doc: `docs/${entry}`, name }))));

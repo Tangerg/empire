@@ -349,7 +349,7 @@
 | 没人指定朝向时朝哪 | `TacticalGrid.restingFacing`（铺法自答；方格是南，六边格没有南） |
 | 一个兵种没写士气时上限是多少 | `DEFAULT_MAX_MORALE`（`vitals.ts`；引擎与战役桥共用） |
 | 一份目标记录给出的状态 | `objectiveStatusOf`（没有 id 的目标就是没人给它建记录） |
-| 状态摘要该覆盖什么 | `hashState` 的 `IGNORED_FIELDS`（写「不算」的那几项，默认全算） |
+| 状态摘要该覆盖什么 | `hashState` 的 `ignoredPath`（写「不算」的那几条路径，默认全算） |
 | 谁可以持有资源账户 | `DefaultResourceSubjects`（构建持有者，并投影成事件里的引用） |
 | 一次资源变动怎么播报 | `BattleResourceSystem.announce()` |
 | 一个能力是不是攻击、用的哪把武器 | 能力自述 `engagement` 与 `weaponFor`，核心不按 id 猜 |
