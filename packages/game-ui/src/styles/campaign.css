@@ -108,14 +108,22 @@
   gap: 12px;
   min-height: 46px;
   padding: 10px 20px;
-  border: 1px solid #7fa5c3;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 58%, transparent);
   border-radius: 10px;
-  background: linear-gradient(#5b91ba, #3f7097);
-  color: #fff8e9;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 32%), 0 5px 13px rgb(0 0 0 / 34%), inset 0 1px rgb(255 255 255 / 20%);
+  /*
+   * The same warm accent every other primary action wears.
+   *
+   * This was `linear-gradient(#5b91ba, #3f7097)` — the one blue call-to-action in
+   * the game, and blue is a *side's* colour here (`TEAM_COLORS[0]`), so "advance
+   * the story" was painted in the player faction's identity. Bigger than a `.btn`
+   * on purpose: this is the only thing to press on a story screen, and it is a
+   * screen with no HUD around it.
+   */
+  background: linear-gradient(color-mix(in srgb, var(--accent) 88%, #fff 12%), var(--accent));
+  color: #2a1809;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 32%), 0 5px 13px rgb(0 0 0 / 34%), inset 0 1px rgb(255 255 255 / 26%);
   font: 600 14px/1 inherit;
   cursor: pointer;
-  text-shadow: 0 1px 2px rgb(0 0 0 / 48%);
   transition: filter 140ms ease, transform 90ms ease, box-shadow 140ms ease;
 }
 

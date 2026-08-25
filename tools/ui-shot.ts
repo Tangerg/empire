@@ -32,7 +32,8 @@ import {
   SHIPPED_BOARDS,
   shippedLevel,
 } from './board-harness';
-import { GameController } from '@empire/game-ui';
+import { GameController, StoryCampaignController } from '@empire/game-ui';
+import { candidate01CampaignAdapter } from '@empire/story-candidate-01/presentation';
 
 /** The browser that takes the picture. A shot tool needs a renderer, not a stub. */
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
@@ -49,6 +50,7 @@ const OUT = resolve('.shots');
 const STYLESHEETS = [
   'packages/game-ui/src/styles/app.css',
   'packages/game-ui/src/styles/battle.css',
+  'packages/game-ui/src/styles/campaign.css',
   'packages/story-candidate-01/src/styles/candidate-01.css',
 ];
 
@@ -96,6 +98,20 @@ const SUBJECTS: readonly { label: string; shoot: () => Screen }[] = [
       const html = battle.root.outerHTML;
       battle.dispose();
       return { label: 'screen/battle', html, wrapper: '' };
+    },
+  },
+  // A campaign shot is about the story between the battles: what the chapter says
+  // and what the player is asked to decide before the next field.
+  {
+    label: 'screen/campaign',
+    shoot: (): Screen => {
+      const campaign = new StoryCampaignController(candidate01CampaignAdapter(), null, () => {}, {
+        engine,
+        art: CANDIDATE_01_ART,
+      });
+      const html = campaign.root.outerHTML;
+      campaign.dispose();
+      return { label: 'screen/campaign', html, wrapper: '' };
     },
   },
 ];
