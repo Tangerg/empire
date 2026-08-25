@@ -2,6 +2,7 @@ import type { TerrainDef } from '@empire/battle-engine';
 import { tileHash } from '@empire/battle-engine';
 import { GROUND_TONES, PAL, shade } from './palette';
 import { nameHash, pick, r2 } from './variation';
+import { groundShadow } from './shading';
 
 /**
  * A tile drawn from what the rules can see about it.
@@ -129,7 +130,7 @@ function standing(terrain: TerrainDef, tone: string, reading: TerrainReading): s
   const shadowSide = shade(tone, -0.3);
   const peak = r2(28 - height);
   const crest = r2(16 + lean * 3);
-  return `<ellipse cx="16" cy="29" rx="13" ry="2.4" fill="${PAL.ink}" opacity="0.2"/>
+  return groundShadow({ cx: 16, cy: 29 }, { rx: 13, ry: 2.4 }) + `
     <path d="M3 29 ${r2(crest - 7)} ${r2(peak + 5)} ${crest} ${peak} ${r2(crest + 8)} ${r2(peak + 6)} 29 29z"
       fill="${shadowSide}" stroke="${PAL.ink}" stroke-width="0.7" stroke-linejoin="round"/>
     <path d="M${r2(crest - 7)} ${r2(peak + 5)} ${crest} ${peak} ${r2(crest + 2)} 29 ${r2(crest - 10)} 29z" fill="${face}"/>`;
@@ -140,7 +141,7 @@ function works(terrain: TerrainDef): string {
   const left = terrain.hq ? 4 : 7;
   const width = terrain.hq ? 24 : 18;
   const eaves = terrain.hq ? 12 : 15;
-  return `<ellipse cx="16" cy="29.5" rx="${terrain.hq ? 14 : 11}" ry="2.2" fill="${PAL.ink}" opacity="0.22"/>
+  return groundShadow({ cx: 16, cy: 29.5 }, { rx: terrain.hq ? 14 : 11, ry: 2.2 }) + `
     <path d="M${left} 29V${eaves + 3}h${width}V29z" fill="${PAL.plaster}" stroke="${PAL.woodDark}" stroke-width="0.8"/>
     <path d="M${left - 2} ${eaves + 4} 16 ${eaves - 4} ${left + width + 2} ${eaves + 4} ${left + width} ${eaves + 6} 16 ${eaves - 1} ${left} ${eaves + 6}z"
       fill="${PAL.roof}" stroke="${PAL.ink}" stroke-width="0.8" stroke-linejoin="round"/>

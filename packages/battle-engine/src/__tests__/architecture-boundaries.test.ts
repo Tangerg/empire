@@ -2841,4 +2841,29 @@ describe('one answer per question', () => {
 
     expect(offenders).toEqual([]);
   });
+
+  it('decides how dark the ground goes in one place', () => {
+    // Thirteen ground shadows were written out by hand across four art modules,
+    // every one an ellipse filled `PAL.ink`, at seven different opacities between
+    // 0.12 and 0.34. Nobody chose 0.22 over 0.24 for a reason — it is one idiom
+    // typed thirteen times with the strength jittered, and the jitter is what made
+    // it look like a decision. Three named weights now, and the *size* stays the
+    // caller's because that is real information: a keep's footing is not a
+    // soldier's.
+    //
+    // The tell is a shadow's two halves together — the ink and a transparency.
+    // A portrait's eye is also an ink ellipse and is opaque, so it is not caught
+    // by accident and needs no exemption.
+    const owner = join(packagesRoot, 'game-ui', 'src', 'art', 'shading.ts');
+    const offenders = everyPackageSource().flatMap((file) => {
+      if (file === owner) return [];
+      const code = stripComments(readFileSync(file, 'utf8'));
+      return /<ellipse[^>]*fill="\$\{PAL\.ink\}"[^>]*opacity=/.test(code)
+        ? [relative(packagesRoot, file)]
+        : [];
+    });
+
+    expect(readFileSync(owner, 'utf8')).toContain('WEIGHT_ALPHA');
+    expect(offenders).toEqual([]);
+  });
 });

@@ -2,6 +2,7 @@ import { boardPictureMarkup, type BoardPicture } from './board-surface';
 import type { ArtDirection } from './direction';
 import type { UnitDef, UnitTypeId } from '@empire/battle-engine';
 import { PAL, shade, spriteColors, type SpriteColors } from './palette';
+import { groundShadow } from './shading';
 import { unitFromRules } from './unit-from-rules';
 
 /**
@@ -16,7 +17,7 @@ export { spriteColors, type SpriteColors } from './palette';
 
 type Sprite = (c: SpriteColors) => string;
 
-const shadow = `<ellipse cx="16" cy="29" rx="8.8" ry="2.6" fill="${PAL.ink}" opacity="0.34"/>
+const shadow = groundShadow({ cx: 16, cy: 29 }, { rx: 8.8, ry: 2.6 }, 'heavy') + `
   <rect x="11" y="28" width="8" height="1" fill="#ffffff" opacity="0.08"/>`;
 const legs = (color: string) =>
   `<rect x="12" y="21" width="3.2" height="7" rx="1.2" fill="${color}"/>

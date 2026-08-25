@@ -12,6 +12,7 @@ import { PAL } from './palette';
 import type { TileContext } from './ports';
 import { terrainFromRules } from './terrain-from-rules';
 import { r2 } from './variation';
+import { groundShadow } from './shading';
 
 /** Tile edge length in SVG user units. The board scales via viewBox. */
 export const TILE = 32;
@@ -73,7 +74,7 @@ const pine = (cx: number, base: number, scale = 1, light = false): string => {
   const middle = light ? PAL.leafLight : PAL.leaf;
   const top = r2(base - 18 * scale);
   return `<g>
-    <ellipse cx="${cx}" cy="${r2(base + 0.8)}" rx="${r2(6 * scale)}" ry="${r2(2 * scale)}" fill="${PAL.ink}" opacity="0.18"/>
+    ${groundShadow({ cx, cy: r2(base + 0.8) }, { rx: r2(6 * scale), ry: r2(2 * scale) }, 'light')}
     <rect x="${trunkX}" y="${r2(base - 6 * scale)}" width="${trunkW}" height="${r2(7 * scale)}" fill="${PAL.trunk}"/>
     <path d="M${cx} ${top}l${r2(7 * scale)} ${r2(9 * scale)}h-${r2(3 * scale)}l${r2(5 * scale)} ${r2(7 * scale)}H${r2(cx - 9 * scale)}l${r2(5 * scale)}-${r2(7 * scale)}h-${r2(3 * scale)}z" fill="${crown}" stroke="${PAL.ink}" stroke-width="0.65" stroke-linejoin="round"/>
     <path d="M${cx} ${r2(top + 2 * scale)}v${r2(12 * scale)}l-${r2(5 * scale)} ${r2(3 * scale)}h${r2(3 * scale)}l-${r2(3 * scale)} ${r2(3 * scale)}h${r2(5 * scale)}z" fill="${middle}" opacity="0.92"/>
@@ -125,7 +126,7 @@ const painters: Record<TerrainId, Painter> = {
     const flip = tileHash(x, y, 5) > 0.5;
     return (
       grassBase(x, y) +
-      `<ellipse cx="16" cy="27" rx="14" ry="3" fill="${PAL.ink}" opacity="0.12"/>
+      groundShadow({ cx: 16, cy: 27 }, { rx: 14, ry: 3 }, 'light') + `
        <path d="M2 27 5 20l5-6 6-3 7 4 7 12z" fill="${PAL.grassDark}" stroke="${PAL.ink}" stroke-width="0.6"/>
        <path d="M4 25 7 19l5-4 6-1 5 3 4 8z" fill="${PAL.grassLight}"/>
        <path d="M${flip ? 18 : 7} 21h5v2h-5zM${flip ? 10 : 20} 17h3v1h-3z" fill="${PAL.grass}" opacity="0.9"/>
@@ -138,7 +139,7 @@ const painters: Record<TerrainId, Painter> = {
     const peak = tall ? 4 : 7;
     return (
       grassBase(x, y) +
-      `<ellipse cx="16" cy="29" rx="15" ry="2" fill="${PAL.ink}" opacity="0.2"/>
+      groundShadow({ cx: 16, cy: 29 }, { rx: 15, ry: 2 }) + `
        <path d="M1 29 12 ${peak + 3} 17 15 24 ${peak} 31 29z" fill="${PAL.rock}" stroke="${PAL.ink}" stroke-width="0.8" stroke-linejoin="round"/>
        <path d="M24 ${peak} 31 29 21 29 18 15z" fill="${PAL.rockDark}"/>
        <path d="M12 ${peak + 3} 17 15 12 27 5 29z" fill="#6f716d" opacity="0.85"/>
@@ -187,7 +188,7 @@ const painters: Record<TerrainId, Painter> = {
     const flag = ownerColor ?? PAL.neutral;
     const mirrored = tileHash(x, y, 13) > 0.5;
     const body = `
-      <ellipse cx="16" cy="29" rx="13" ry="2.4" fill="${PAL.ink}" opacity="0.2"/>
+      ${groundShadow({ cx: 16, cy: 29 }, { rx: 13, ry: 2.4 })}
       <path d="M6 28V16l10-7 10 7v12z" fill="${PAL.plaster}" stroke="${PAL.woodDark}" stroke-width="0.8"/>
       <path d="M4 17 16 8l12 9-1.6 2.2L16 11.2 5.6 19.2z" fill="${PAL.roof}" stroke="${PAL.ink}" stroke-width="0.8" stroke-linejoin="round"/>
       <path d="M16 8 28 17l-1.6 2.2L16 11.2z" fill="${PAL.roofDark}"/>
@@ -204,7 +205,7 @@ const painters: Record<TerrainId, Painter> = {
     const banner = `
       <rect x="25" y="6" width="1.4" height="14" fill="${PAL.woodDark}"/>
       <path d="M26.4 6.5h5l-1.6 2.4 1.6 2.4h-5z" fill="${flag}" stroke="${PAL.ink}" stroke-width="0.5"/>
-      <ellipse cx="28" cy="27" rx="3" ry="1" fill="${PAL.ink}" opacity="0.16"/>
+      ${groundShadow({ cx: 28, cy: 27 }, { rx: 3, ry: 1 }, 'light')}
       <rect x="27" y="23" width="3" height="4" rx="0.5" fill="${PAL.wood}" stroke="${PAL.woodDark}" stroke-width="0.6"/>
       <path d="M27 25h3" stroke="${PAL.woodDark}" stroke-width="0.6"/>`;
     return (
@@ -218,7 +219,7 @@ const painters: Record<TerrainId, Painter> = {
     const flag = ownerColor ?? PAL.neutral;
     return (
       grassBase(x, y) +
-      `<ellipse cx="16" cy="29" rx="15" ry="2.5" fill="${PAL.ink}" opacity="0.22"/>
+      groundShadow({ cx: 16, cy: 29 }, { rx: 15, ry: 2.5 }) + `
        <path d="M3 29V14h26v15z" fill="${PAL.stone}" stroke="${PAL.ink}" stroke-width="0.8"/>
        <path d="M1 15 16 6l15 9-1.5 2.4L16 9.2 2.5 17.4z" fill="${PAL.woodDark}" stroke="${PAL.ink}" stroke-width="0.8" stroke-linejoin="round"/>
        <path d="M5 14h22M8 12h16M12 9h8" stroke="${PAL.wood}" stroke-width="1" opacity="0.75"/>
@@ -243,7 +244,7 @@ const painters: Record<TerrainId, Painter> = {
       `<rect x="${bx}" y="${by}" width="3" height="3.4" fill="${PAL.stoneLight}"/>`;
     return (
       grassBase(x, y) +
-      `<ellipse cx="16" cy="30" rx="15" ry="2" fill="${PAL.ink}" opacity="0.24"/>
+      groundShadow({ cx: 16, cy: 30 }, { rx: 15, ry: 2 }) + `
        <path d="M4 30V12h24v18z" fill="${PAL.stone}" stroke="${PAL.ink}" stroke-width="0.8"/>
        <path d="M4 12h24v3H4z" fill="${PAL.stoneDark}" opacity="0.4"/>
        <path d="M2 30V9h6v21z" fill="${PAL.stoneLight}" stroke="${PAL.ink}" stroke-width="0.7"/>

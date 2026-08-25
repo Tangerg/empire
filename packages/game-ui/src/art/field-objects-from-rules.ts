@@ -2,6 +2,7 @@ import { gaugeRatio, type BattlefieldMarker, type StructureDef, type StructureSt
 import { GROUND_TONES, PAL, shade } from './palette';
 import { tileGaugeBar } from './gauges';
 import { nameHash, pick, r2 } from './variation';
+import { groundShadow } from './shading';
 
 /**
  * A structure and a battlefield marker drawn from what the rules can see.
@@ -80,7 +81,7 @@ export function structureFromRules(
          return `<path d="M3 ${y}h26" stroke="${side}" stroke-width="0.8" opacity="0.6"/>
            <path d="M${offset} ${y}v${r2((height - 4) / courses)}" stroke="${side}" stroke-width="0.8" opacity="0.5"/>`;
        }).join('')}`
-    : `<ellipse cx="16" cy="27" rx="${r2(footing + 2)}" ry="2.6" fill="${PAL.ink}" opacity="0.26"/>
+    : groundShadow({ cx: 16, cy: 27 }, { rx: r2(footing + 2), ry: 2.6 }, 'heavy') + `
        <path d="M${r2(16 - footing)} 27V${r2(crown + 4)}q0-4 ${footing}-4t${footing} 4V27z" fill="${face}" stroke="${PAL.ink}" stroke-width="0.8"/>
        <ellipse cx="16" cy="${r2(crown + 4)}" rx="${footing}" ry="3" fill="${top}"/>
        <path d="M${r2(16 + lean * 5)} ${r2(crown + 3)}v-${r2(Math.max(3, height - 8))}" stroke="${side}" stroke-width="2.4"/>
@@ -110,7 +111,7 @@ export function markerFromRules(marker: BattlefieldMarker, ownerColor?: string):
   if (marker.fallenUnit) {
     // A body: slumped, face down, with the side's colour still on it.
     return `<g transform="rotate(${turn} 16 22)" opacity="0.82">
-      <ellipse cx="16" cy="24" rx="9" ry="3" fill="${PAL.ink}" opacity="0.3"/>
+      ${groundShadow({ cx: 16, cy: 24 }, { rx: 9, ry: 3 }, 'heavy')}
       <path d="M9 23q3-4 8-3.6t6 3.6z" fill="${shade(tint, -0.28)}" stroke="${PAL.ink}" stroke-width="0.7"/>
       <circle cx="8.6" cy="21.4" r="2.6" fill="${PAL.skinDark}" stroke="${PAL.ink}" stroke-width="0.6"/>
       <path d="M21 20.6l5-3.4" stroke="${PAL.steelDark}" stroke-width="1.6" stroke-linecap="round"/>
@@ -118,7 +119,7 @@ export function markerFromRules(marker: BattlefieldMarker, ownerColor?: string):
   }
   // Otherwise: a stake driven in where it happened, in the side's colour.
   return `<g transform="rotate(${turn} 16 24)" opacity="0.9">
-    <ellipse cx="16" cy="25" rx="5.4" ry="1.8" fill="${PAL.ink}" opacity="0.28"/>
+    ${groundShadow({ cx: 16, cy: 25 }, { rx: 5.4, ry: 1.8 }, 'heavy')}
     <rect x="15.2" y="13" width="1.6" height="12" fill="${PAL.woodDark}"/>
     <path d="M16.8 13.4h6l-1.9 2.6 1.9 2.6h-6z" fill="${tint}" stroke="${PAL.ink}" stroke-width="0.5"/>
   </g>`;
