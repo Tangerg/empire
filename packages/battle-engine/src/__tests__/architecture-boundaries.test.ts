@@ -1674,29 +1674,45 @@ describe('behaviour has an owner', () => {
 });
 
 describe('a rendered control is answered', () => {
-  it('answers every intent an application shell declares', () => {
+  it('answers every intent it declares itself', () => {
     // The HUD and the editor each have a runtime test for this: render, collect
     // every `data-act`, and require the controller to handle it. Both exist
     // because a typo in `data-act` produces a button that looks alive and does
-    // nothing — the editor's comment says its switch had grown to a hundred
-    // lines with the two halves in different parts of the file.
+    // nothing — the editor's comment says its switch had grown to a hundred lines
+    // with the two halves in different parts of the file.
     //
-    // The two application shells had the same click-listener switch and no such
-    // check. They happen to agree today; nothing was keeping them that way, and
-    // a fenced bug in two of four shells is the asymmetry worth closing. Static
-    // rather than rendered, because an app entry point mounts on import.
-    const offenders = appSources().flatMap((file) => {
+    // The two application shells had the same click listener and no such check.
+    // And the campaign shell had a *third* attribute name, `data-campaign-act`,
+    // dispatched by an if-chain in the same file — outside this guard's scope, its
+    // attribute and its two accepted shapes at once. A button in the one screen
+    // that carries a whole campaign was the least fenced of the four.
+    //
+    // The rule needs no file list: a file that answers *some* of what it declares
+    // is dispatching its own intents and must answer all of them. A file that
+    // answers none of them is a view handing them to a controller elsewhere —
+    // `panels.ts` to `app.ts` — and that pair is what the runtime tests cover.
+    const checked: string[] = [];
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
       const source = readFileSync(file, 'utf8');
-      const declared = new Set([...source.matchAll(/data-act="([^"$]+)"/g)].map(([, act]) => act));
+      const declared = new Set([...source.matchAll(/data-(?:campaign-)?act="([^"$]+)"/g)].map(([, act]) => act));
       if (declared.size === 0) return [];
-      const handled = new Set([...source.matchAll(/case '([^']+)':/g)].map(([, value]) => value));
-      // A `switch` on an intent and a table of them are both fine; unanswered is not.
-      const table = new Set([...source.matchAll(/^\s{2}'?([\w-]+)'?:\s*\(/gm)].map(([, key]) => key));
+      // A switch, a table of them, or an if-chain: three shapes, all fine.
+      const answered = new Set([
+        ...[...source.matchAll(/case '([^']+)':/g)].map(([, value]) => value),
+        ...[...source.matchAll(/^\s+'?([\w-]+)'?:\s*(?:\(|async)/gm)].map(([, key]) => key),
+        ...[...source.matchAll(/=== '([^']+)'/g)].map(([, value]) => value),
+      ]);
+      const mine = [...declared].filter((act) => answered.has(act));
+      if (mine.length === 0) return [];
+      checked.push(relative(packagesRoot, file));
       return [...declared]
-        .filter((act) => !handled.has(act) && !table.has(act))
+        .filter((act) => !answered.has(act))
         .map((act) => `${relative(packagesRoot, file)}: nothing answers "${act}"`);
     });
 
+    // Four files dispatch their own intents. A run that found none of them would
+    // pass by having skipped everything as a delegator.
+    expect(checked.length).toBeGreaterThanOrEqual(4);
     expect(offenders).toEqual([]);
   });
 });
