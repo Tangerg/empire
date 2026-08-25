@@ -19,7 +19,7 @@ import {
   DEFAULT_TURN_ORDER,
   type DirectionDef,
   type TacticalGrid,
-  COMMAND_POINTS_RESOURCE,
+  defaultPlayer,
   FUNDS_RESOURCE,
 } from '@empire/battle-engine';
 import {
@@ -635,17 +635,10 @@ export class EditorApp {
 
   private nextPlayer(): PlayerConfig {
     const id = Math.max(0, ...this.doc.players.map((player) => player.id)) + 1;
+    // What a side starts as is the engine's answer, not this editor's: it was
+    // written out here, so the two accounts and the aggression were stated twice.
     return {
-      id,
-      name: `玩家 ${id}`,
-      team: id,
-      color: TEAM_COLORS[(id - 1) % TEAM_COLORS.length],
-      controller: 'ai',
-      resources: {
-        [FUNDS_RESOURCE]: { current: 0, capacity: null },
-        [COMMAND_POINTS_RESOURCE]: { current: 0, capacity: 5 },
-      },
-      ai: { aggression: 0.5 },
+      ...defaultPlayer(id, `玩家 ${id}`, TEAM_COLORS[(id - 1) % TEAM_COLORS.length], 'ai'),
     };
   }
 

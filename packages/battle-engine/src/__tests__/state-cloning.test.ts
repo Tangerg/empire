@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createBattleEngine } from '../plugins/default';
 import { cloneState } from '../state';
-import { TEST_CONTENT, makeLevel, u } from './fixtures';
+import { TEST_CONTENT, skirmishLevel } from './fixtures';
 import type { GameState } from '../types';
 
 const engine = () => createBattleEngine({ content: TEST_CONTENT });
@@ -10,15 +10,8 @@ const engine = () => createBattleEngine({ content: TEST_CONTENT });
 function playedOut(): GameState {
   const battle = engine();
   const state = battle.createState(
-    makeLevel(['C..v..', '.T..T.', '..h...', 'v....C'], {
-      units: [
-        u(1, 0, 'soldier', 1),
-        u(0, 2, 'archer', 1),
-        u(4, 3, 'soldier', 2),
-        u(5, 2, 'knight', 2),
-      ],
+    skirmishLevel({
       owners: [{ x: 0, y: 0, owner: 1 }, { x: 5, y: 3, owner: 2 }, { x: 3, y: 0, owner: 0 }],
-      funds: [200, 200],
       scenario: {
         zones: [{ id: 'ridge', cells: [{ x: 2, y: 1 }] }],
         triggers: [{

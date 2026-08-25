@@ -49,7 +49,7 @@ export { makeLevel, u };
  * state surviving something (a save, a replay), so both want the same battle: one
  * that has units of two sides, a capturable village per corner and money to spend.
  */
-export const skirmishLevel = (): LevelData =>
+export const skirmishLevel = (extra: Parameters<typeof makeLevel>[1] = {}): LevelData =>
   makeLevel(['C..v..', '.T..T.', '..h...', 'v....C'], {
     units: [
       u(1, 0, 'soldier', 1),
@@ -64,6 +64,9 @@ export const skirmishLevel = (): LevelData =>
       { x: 0, y: 3, owner: 0 },
     ],
     funds: [200, 200],
+    // A third suite wanted this battle with a scenario on it, so the dressing is
+    // the caller's and the battle is still one document.
+    ...extra,
   });
 
 /* ------------------------------------------------------------------ harness */

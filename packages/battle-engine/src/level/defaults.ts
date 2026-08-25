@@ -57,7 +57,15 @@ export const defaultVictory = (): Objective[] => [
   { type: 'captureHQ' },
 ];
 
-function defaultPlayer(
+/**
+ * What a side starts as: no money spent, a full command allowance, a middling AI.
+ *
+ * Exported because the editor was writing it out again when you add a player —
+ * the same two accounts and the same aggression, in a package that cannot see this
+ * one's defaults change. Its name and colour are the caller's: those are the only
+ * two things a new side actually differs by.
+ */
+export function defaultPlayer(
   id: number,
   name: string,
   color: string,
