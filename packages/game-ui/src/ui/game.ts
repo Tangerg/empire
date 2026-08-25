@@ -579,10 +579,10 @@ export class GameController {
       let events: GameEvent[];
       try {
         events = this.session.dispatch(action);
-      } catch (e) {
+      } catch (error) {
         // The player is told why an order was refused; anything else is a bug.
-        if (!(e instanceof IllegalActionError)) throw e;
-        this.pushMessage(`无法执行：${e.message}`);
+        if (!(error instanceof IllegalActionError)) throw error;
+        this.pushMessage(`无法执行：${error.message}`);
         events = [];
       }
       await this.settle(events);

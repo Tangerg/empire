@@ -15,6 +15,25 @@ export class StoredDocumentError extends Error {
   }
 }
 
+/**
+ * One line about something thrown, fit to show a person.
+ *
+ * A `throw` may carry any JavaScript value, and a rejected browser API often
+ * carries a `DOMException` or a bare string. Four shells answered this
+ * differently: the editor had a private `errorMessage`, two places wrote the
+ * `instanceof Error ? … : String(…)` ternary out by hand, and two more wrote
+ * `String(cause)` — which puts the class name in front, so the player was told
+ * 「无法开始战役：Error: …」 in two places and given a clean sentence everywhere
+ * else.
+ *
+ * Here rather than in a shell, because the distinction this renders is the one
+ * the three classes below draw: a message is worth showing when the throw was
+ * about the input, and the rest is a defect whose text is for whoever reads the
+ * console.
+ */
+export const errorMessage = (thrown: unknown): string =>
+  thrown instanceof Error ? thrown.message : String(thrown);
+
 /** Raised when a domain entity is asked to violate a battle invariant. */
 export class DomainInvariantError extends Error {
   constructor(message: string, options?: ErrorOptions) {

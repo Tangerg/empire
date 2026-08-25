@@ -6,6 +6,7 @@ import {
   type LevelData,
   hashState,
   createBattleEngine,
+  errorMessage,
 } from '@empire/battle-engine';
 import { CANDIDATE_01_LEVELS } from './levels';
 import { ANCIENT_EMPIRES_LEVELS } from '@empire/content-ancient-empires';
@@ -150,7 +151,7 @@ function sweep(level: LevelData, aggression: number): string[] {
     try {
       events = session.tryDispatch(session.chooseAiAction()) ?? session.tryDispatch({ kind: 'endTurn' }) ?? [];
     } catch (error) {
-      found.push(`${where} #${actions}: THREW ${error instanceof Error ? error.message : String(error)}`);
+      found.push(`${where} #${actions}: THREW ${errorMessage(error)}`);
       break;
     }
     actions++;
@@ -168,7 +169,7 @@ function sweep(level: LevelData, aggression: number): string[] {
         const resumed = TEST_ENGINE.loadBattle(JSON.parse(JSON.stringify(session.save())));
         if (hashState(resumed) !== digest) found.push(`${where} #${actions}: save round-trip changed the battle`);
       } catch (error) {
-        found.push(`${where} #${actions}: own save refused: ${error instanceof Error ? error.message : String(error)}`);
+        found.push(`${where} #${actions}: own save refused: ${errorMessage(error)}`);
       }
     }
 

@@ -5,7 +5,7 @@ import {
   type CampaignDefinition,
   type CampaignState,
 } from '@empire/campaign-engine';
-import { StoredDocumentError } from '@empire/battle-engine';
+import { errorMessage, StoredDocumentError } from '@empire/battle-engine';
 
 const keyFor = (definition: CampaignDefinition): string => `empire:campaign:${definition.id}:v${definition.version}`;
 
@@ -32,7 +32,7 @@ export function loadCampaignState(
   try {
     raw = localStorage.getItem(keyFor(definition));
   } catch (error) {
-    return { state: null, rejected: error instanceof Error ? error.message : String(error) };
+    return { state: null, rejected: errorMessage(error) };
   }
   if (!raw) return { state: null, rejected: null };
 

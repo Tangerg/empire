@@ -6,6 +6,7 @@ import {
   ContentPackInstaller,
   createBattleEngine,
   createContentCatalog,
+  errorMessage,
   mapFromLevel,
   type LevelData,
 } from '@empire/battle-engine';
@@ -213,7 +214,7 @@ function renderMenu(): void {
           try {
             deleteCustomLevel(id);
           } catch (error) {
-            alert(`删除失败：${error instanceof Error ? error.message : String(error)}`);
+            alert(`删除失败：${errorMessage(error)}`);
           }
           renderMenu();
         }
@@ -250,7 +251,7 @@ async function startCampaign(state: CampaignState | null): Promise<void> {
 }
 
 function openCampaign(state: CampaignState | null): void {
-  void startCampaign(state).catch((cause) => alert(`无法开始战役：${String(cause)}`));
+  void startCampaign(state).catch((cause) => alert(`无法开始战役：${errorMessage(cause)}`));
 }
 
 function findLevel(id: string): LevelData | null {
@@ -306,7 +307,7 @@ async function startGame(level: LevelData): Promise<void> {
 
 /** A GPU that will not come up is worth saying out loud, not swallowing. */
 const play = (level: LevelData): void => {
-  startGame(level).catch((cause) => alert(`无法开始战斗：${String(cause)}`));
+  startGame(level).catch((cause) => alert(`无法开始战斗：${errorMessage(cause)}`));
 };
 
 /* The editor hands a level over through sessionStorage when you hit 试玩. */

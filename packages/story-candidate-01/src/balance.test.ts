@@ -5,6 +5,7 @@ import {
   type GameEvent,
   type LevelData,
   createBattleEngine,
+  errorMessage,
 } from '@empire/battle-engine';
 import { CANDIDATE_01_LEVELS } from './levels';
 
@@ -46,14 +47,14 @@ export function simulateCandidate01(level: LevelData, aggression = 0.58, actionL
     try {
       action = session.chooseAiAction();
     } catch (error) {
-      const detail = error instanceof Error ? error.message : String(error);
+      const detail = errorMessage(error);
       throw new Error(`${level.id} turn ${session.state.turn} player ${session.state.currentPlayer}: ${detail}`, { cause: error });
     }
     let emitted: GameEvent[];
     try {
       emitted = session.tryDispatch(action) ?? session.tryDispatch({ kind: 'endTurn' }) ?? [];
     } catch (error) {
-      const detail = error instanceof Error ? error.message : String(error);
+      const detail = errorMessage(error);
       throw new Error(`${level.id} turn ${session.state.turn} player ${session.state.currentPlayer} action ${JSON.stringify(action)}: ${detail}`, { cause: error });
     }
     events.push(...emitted);

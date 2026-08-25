@@ -2,6 +2,7 @@ import { loadCustomLevels, saveCustomLevel, stashPlaytest, TEAM_COLORS, type Art
 import {
   type ContentCatalog,
   type BattleRuleServices,
+  errorMessage,
   validateLevel,
   DEFAULT_GRID,
   DEFAULT_TURN_ORDER,
@@ -83,10 +84,6 @@ const COMPOUND_RULE_FIELDS: Record<string, (rules: Partial<RuleSet>, value: stri
 const NAMED_RULE_FIELDS: ReadonlySet<string> = new Set(['captureMode', 'turnOrder']);
 
 const numberOrNull = (value: string | boolean) => (value === '' ? null : Number(value));
-
-/** Browser APIs may reject with any JavaScript value, not necessarily an Error. */
-const errorMessage = (error: unknown): string =>
-  error instanceof Error ? error.message : String(error);
 
 /**
  * The game this editor was opened for.

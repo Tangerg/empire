@@ -2566,4 +2566,26 @@ describe('one answer per question', () => {
     }
     expect(offenders).toEqual([]);
   });
+
+  it('turns something thrown into a line for a person in one place', () => {
+    // A `throw` may carry any value, and a rejected browser API often carries a
+    // `DOMException` or a bare string. Four shells answered this differently: the
+    // editor had a private `errorMessage`, two places wrote the ternary out, and
+    // two wrote `String(cause)` — which prefixes the class name, so the player
+    // was told 「无法开始战役：Error: …」 in two places and given a clean sentence
+    // everywhere else.
+    //
+    // The tell is the narrowing, not the helper's name: `instanceof Error` is
+    // what you write when you are about to decide this for yourself.
+    const owner = join(coreRoot, 'domain', 'errors.ts');
+    const offenders: string[] = [];
+    for (const file of [...everyPackageSource(), ...appSources(), ...toolSources()]) {
+      if (file === owner) continue;
+      const source = stripComments(readFileSync(file, 'utf8'));
+      if (/instanceof Error\b/.test(source)) offenders.push(relative(packagesRoot, file));
+    }
+
+    expect(stripComments(readFileSync(owner, 'utf8'))).toContain('instanceof Error');
+    expect(offenders).toEqual([]);
+  });
 });

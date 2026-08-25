@@ -137,9 +137,9 @@ export class GameSession {
   tryDispatch(action: Action): GameEvent[] | null {
     try {
       return this.dispatch(action);
-    } catch (e) {
-      if (e instanceof IllegalActionError) return null;
-      throw e;
+    } catch (error) {
+      if (error instanceof IllegalActionError) return null;
+      throw error;
     }
   }
 
