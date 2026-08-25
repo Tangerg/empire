@@ -17,7 +17,10 @@ describe('editor document aggregate', () => {
     expect(document.map.owners[5]).toBe(0);
 
     document.floodFill({ x: 0, y: 0 }, 'road');
-    expect(new Set(document.map.tiles)).toEqual(new Set(['road']));
+    // A blank document is two sides each with somewhere to build, so the fill has
+    // a boundary to respect — which is more than the old all-one-terrain map asked.
+    expect(new Set(document.map.tiles)).toEqual(new Set(['road', 'barracks']));
+    expect(document.map.tiles.filter((tile) => tile === 'barracks')).toHaveLength(2);
   });
 
   it('keeps spatial features and units valid when resized', () => {

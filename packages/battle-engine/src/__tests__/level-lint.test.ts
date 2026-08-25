@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { TEST_RULES, makeLevel, testValidate, u } from './fixtures';
 import { validateLevel } from '../level-validation';
+import { emptyLevel } from '../level/defaults';
 import { PayloadReferences } from '../payload-references';
 import { DomainInvariantError } from '../domain/errors';
 import type {
@@ -71,6 +72,28 @@ const withObjective = (objective: Objective): LevelData => baseLevel(KNOWN_SCENA
 describe('level lint', () => {
   it('passes a level whose only fault is nothing', () => {
     expect(errorsOf(baseLevel(KNOWN_SCENARIO))).toEqual([]);
+  });
+
+  /**
+   * A blank document opens clean.
+   *
+   * `emptyLevel`'s own comment said "blank, valid level" and it shipped two errors:
+   * both sides had nothing to move and nothing to build, which this lint calls
+   * 开局即败. So the editor opened on a red card against a document nobody had
+   * touched, and its default victory condition — rout the enemy — had no enemy.
+   * The blank document now gives each side the first terrain in the catalog that
+   * produces anything, which is the same kind of question the blank ground already
+   * asked of the catalog.
+   */
+  it('passes the blank document the editor starts from', () => {
+    const blank = emptyLevel(TEST_RULES.content);
+    expect(errorsOf(blank)).toEqual([]);
+    // Each side owns somewhere to build, and the two are not the same cell.
+    const homes = blank.owners.filter((entry) => entry.owner !== 0);
+    expect(homes).toHaveLength(2);
+    expect(new Set(homes.map((home) => `${home.x},${home.y}`)).size).toBe(2);
+    expect(new Set(blank.players.map((player) => player.id)))
+      .toEqual(new Set(homes.map((home) => home.owner)));
   });
 
   it('reports an unreadable terrain document but never hides a catalog defect', () => {

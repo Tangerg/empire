@@ -1,6 +1,6 @@
 import { COMMAND_POINTS_RESOURCE, FUNDS_RESOURCE } from '../resources';
 import type { ContentCatalog } from '../content-pack';
-import type { LevelData, Objective, PlayerConfig, RuleSet } from '../types';
+import type { LevelData, Objective, PlayerConfig, RuleSet, TerrainDef, LevelTileOwner } from '../types';
 
 /**
  * The ruleset a level plays under when it says nothing.
@@ -92,14 +92,6 @@ export const defaultPlayers = (): PlayerConfig[] => [
 ];
 
 /**
- * A blank, valid level: two sides, the catalog's blank ground, the default
- * win conditions.
- *
- * The catalog is a parameter because the ground is its answer, not this
- * module's. `'.'` was hard-coded here, which quietly meant "every game's blank
- * terrain is whatever the ancient-empires pack registered under a full stop".
- */
-/**
  * What a level is called before anyone names it.
  *
  * Written twice: here, and again in `schema.ts` as the fallback for a document
@@ -108,8 +100,56 @@ export const defaultPlayers = (): PlayerConfig[] => [
  */
 export const UNNAMED_LEVEL = Object.freeze({ id: 'untitled', name: '未命名关卡' });
 
+/**
+ * The terrain this ruleset builds units from, or `null` if it has none.
+ *
+ * Asked of the catalog rather than named here, for the same reason the blank
+ * ground is: which terrain is a barracks is the pack's answer. The first one in
+ * declaration order, because a pack lists its main one first and a blank document
+ * is not the place to weigh them.
+ */
+function productionTerrain(content: ContentCatalog): TerrainDef | null {
+  return content.terrains.all().find((terrain) => terrain.produces.length > 0) ?? null;
+}
+
+/**
+ * A blank, playable level: two sides, each with somewhere to build, the catalog's
+ * blank ground and the default win conditions.
+ *
+ * This said "blank, valid level" and shipped an invalid one. Both sides had
+ * nothing to move and nothing to build, which the engine's own lint calls
+ * `开局即败` — so the editor opened on a red card with two errors against a
+ * document nobody had touched yet, and the default victory condition (rout the
+ * enemy) had no enemy to rout.
+ *
+ * The catalog answers both questions: the ground is
+ * `terrainEncoding.defaultCharacter` (`'.'` was hard-coded here, which quietly
+ * meant "every game's blank terrain is whatever the ancient-empires pack
+ * registered under a full stop"), and the barracks is the first terrain that
+ * produces anything. A ruleset with no such terrain gets the empty field it used
+ * to get, and the lint says so — which is the honest answer for a pack where
+ * nothing can be built.
+ */
 export function emptyLevel(content: ContentCatalog, width = 20, height = 14): LevelData {
-  const row = content.terrainEncoding.defaultCharacter.repeat(width);
+  const blank = content.terrainEncoding.defaultCharacter;
+  const barracks = productionTerrain(content);
+  const character = barracks ? content.terrainEncoding.character(barracks.id) : null;
+  const terrain = new Array(height).fill(blank.repeat(width));
+  const players = defaultPlayers();
+  // Opposite ends of the middle row, so a new document reads as two sides facing
+  // each other rather than as a corner case.
+  const homes = [
+    { player: players[0].id, x: 1, y: Math.floor(height / 2) },
+    { player: players[1].id, x: width - 2, y: Math.floor(height / 2) },
+  ];
+  const owners: LevelTileOwner[] = [];
+  if (character) {
+    for (const home of homes) {
+      const row = terrain[home.y] as string;
+      terrain[home.y] = row.slice(0, home.x) + character + row.slice(home.x + 1);
+      owners.push({ x: home.x, y: home.y, owner: home.player });
+    }
+  }
   return {
     schema: 2,
     id: UNNAMED_LEVEL.id,
@@ -117,13 +157,13 @@ export function emptyLevel(content: ContentCatalog, width = 20, height = 14): Le
     description: '',
     width,
     height,
-    terrain: new Array(height).fill(row),
+    terrain,
     elevation: new Array(width * height).fill(0),
     cliffs: [],
     directionalCover: [],
-    owners: [],
+    owners,
     units: [],
-    players: defaultPlayers(),
+    players,
     rules: {},
     victory: defaultVictory(),
   };
