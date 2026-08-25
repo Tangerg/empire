@@ -1,3 +1,4 @@
+import { byId } from './id-order';
 import { sameCoord } from './grid';
 import { DomainInvariantError } from './domain/errors';
 import {
@@ -41,7 +42,7 @@ function initialCareer(content: ContentCatalog, source: LevelUnit): Unit['career
     ? content.careers.tryGet(source.career)
     : content.careers.all()
         .filter((career) => career.unitType === source.unit)
-        .sort((left, right) => left.tier - right.tier || left.id.localeCompare(right.id))[0];
+        .sort((left, right) => left.tier - right.tier || byId(left.id, right.id))[0];
   if (requested && requested.unitType !== source.unit) {
     throw new DomainInvariantError(`career ${requested.id} does not use unit type "${source.unit}"`);
   }

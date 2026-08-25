@@ -1,3 +1,4 @@
+import { byId } from './id-order';
 import { DomainInvariantError } from './domain/errors';
 /**
  * The mechanics every open extension point shares.
@@ -135,7 +136,7 @@ export abstract class PriorityRegistry<V extends PrioritizedEntry> extends Keyed
 
   ordered(): readonly V[] {
     return this.orderedCache ??= Object.freeze(
-      this.all().sort((left, right) => left.priority - right.priority || left.id.localeCompare(right.id)),
+      this.all().sort((left, right) => left.priority - right.priority || byId(left.id, right.id)),
     );
   }
 }

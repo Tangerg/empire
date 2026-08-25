@@ -1,3 +1,4 @@
+import { byId } from './id-order';
 import { IllegalActionError } from './domain/errors';
 import { UnitEntity } from './domain/unit-entity';
 import { player } from './state';
@@ -87,7 +88,7 @@ export function careerOptions(
         reasons,
       };
     })
-    .sort((left, right) => left.career.tier - right.career.tier || left.career.id.localeCompare(right.career.id));
+    .sort((left, right) => left.career.tier - right.career.tier || byId(left.career.id, right.career.id));
 }
 
 function initialWeaponState(content: ContentCatalog, unit: Unit, career: CareerDef): Record<string, UnitWeaponState> {

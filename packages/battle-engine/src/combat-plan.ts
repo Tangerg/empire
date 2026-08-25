@@ -1,3 +1,4 @@
+import { byId } from './id-order';
 import {
   computeDamage,
   canReachWithWeapon,
@@ -146,7 +147,7 @@ function planSupportAttack(
     .sort((left, right) =>
       right.damage.damage - left.damage.damage ||
       left.supporter.id - right.supporter.id ||
-      left.weapon.id.localeCompare(right.weapon.id));
+      byId(left.weapon.id, right.weapon.id));
   const selected = candidates[0];
   if (!selected) return null;
   const hpAfter = Math.max(0, defenderHp - selected.damage.damage);

@@ -1,3 +1,4 @@
+import { byId } from './id-order';
 import {
   abilityDef,
   abilityTargets,
@@ -74,7 +75,7 @@ export function commandOptions(
   }
   return out.sort((a, b) => {
     const priority = (id: string) => abilityDef(rules, id).priority;
-    return priority(a.ability) - priority(b.ability) || a.key.localeCompare(b.key);
+    return priority(a.ability) - priority(b.ability) || byId(a.key, b.key);
   });
 }
 

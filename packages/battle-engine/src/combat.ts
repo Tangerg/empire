@@ -1,3 +1,4 @@
+import { byId } from './id-order';
 import { boardOf, type Board } from './domain/board';
 import { combinedStatusModifiers } from './statuses';
 import { Battlefield } from './domain/battlefield';
@@ -369,7 +370,7 @@ export function bestReactiveStrike(
         weapon: weapon.id,
       }),
     }))
-    .sort((a, b) => b.damage.damage - a.damage.damage || a.weapon.id.localeCompare(b.weapon.id));
+    .sort((a, b) => b.damage.damage - a.damage.damage || byId(a.weapon.id, b.weapon.id));
   return candidates[0] ?? null;
 }
 

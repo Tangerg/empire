@@ -1,3 +1,4 @@
+import { byId } from './id-order';
 import type { ContentCatalog } from './content-pack';
 import { DomainInvariantError } from './domain/errors';
 
@@ -13,7 +14,7 @@ export interface BattleRulesetIdentity {
 }
 
 const versionRecord = (entries: Iterable<readonly [string, number]>): Record<string, number> =>
-  Object.freeze(Object.fromEntries([...entries].sort(([left], [right]) => left.localeCompare(right))));
+  Object.freeze(Object.fromEntries([...entries].sort(([left], [right]) => byId(left, right))));
 
 /** Captures the ruleset identity once, at the composition boundary. */
 export function createBattleRulesetManifest(identity: BattleRulesetIdentity): BattleRulesetManifest {

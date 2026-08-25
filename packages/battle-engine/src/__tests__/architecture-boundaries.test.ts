@@ -613,6 +613,40 @@ describe('the guards are held to themselves', () => {
    * below and counted: a new exemption list lands in one bucket or the other, and
    * neither can grow without this failing.
    */
+  it('lets no locale decide anything the rules do', () => {
+    /*
+     * The battle is deterministic, and `localeCompare` is not.
+     *
+     * It collates by the host's ICU data and default locale, and a Node built
+     * without ICU falls back to code-unit order — a third answer. Seven places in
+     * the rules used it to break a tie, and the ties are not cosmetic: which weapon
+     * a support attack picks and which one the best-damage search keeps are both
+     * this comparison, so *damage* depended on it. So did the order handlers run
+     * in, the career a unit starts with, and the content manifest a save is checked
+     * against. Two machines could replay the same battle differently and the sweep
+     * on either one would look fine.
+     *
+     * `byId` is code-unit order, which every engine agrees on. Anything a player
+     * *reads* is a different question and belongs to presentation, so this is
+     * asked of the rules only.
+     */
+    const ruleModules = [coreRoot, join(packagesRoot, 'campaign-engine', 'src')]
+      .flatMap((root) => runtimeTypeScriptFiles(root));
+    const offenders = ruleModules.flatMap((file) => {
+      const code = stripComments(readFileSync(file, 'utf8'));
+      return /\blocaleCompare\b|\btoLocale[A-Z]\w*\(|\bIntl\./.test(code)
+        ? [relative(packagesRoot, file)]
+        : [];
+    });
+
+    // A scan that found no rule modules would pass by having read nothing.
+    expect(ruleModules.length).toBeGreaterThan(40);
+    expect(offenders).toEqual([]);
+    // And the one answer exists, so the fix is a call rather than a rewrite.
+    expect(stripComments(readFileSync(join(coreRoot, 'id-order.ts'), 'utf8')))
+      .toMatch(/export const byId/);
+  });
+
   it('runs every test it ships', () => {
     /*
      * `it.only` left in a file does not fail anything — it silently disables every
