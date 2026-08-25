@@ -1,3 +1,4 @@
+import { requireMountPoint } from '@empire/game-ui';
 import '@empire/game-ui/styles/app.css';
 import '@empire/editor/styles/editor.css';
 import {
@@ -40,5 +41,5 @@ const setup: EditorSetup = {
 };
 
 const editor = new EditorApp(setup, initialLevel(setup));
-editor.mount(document.getElementById('app')!);
+editor.mount(requireMountPoint('app'));
 window.addEventListener('pagehide', () => editor.dispose(), { once: true });

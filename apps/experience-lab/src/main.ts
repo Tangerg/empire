@@ -12,7 +12,12 @@ import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 import { CANDIDATE_01_ART, CANDIDATE_01_MENU_ART } from '@empire/story-candidate-01/presentation';
 import { experienceLevel } from '@empire/experience-lab';
-import { escapeHtml, GameController, icon } from '@empire/game-ui';
+import {
+  GameController,
+  icon,
+  requireMountPoint,
+  escapeHtml,
+} from '@empire/game-ui';
 
 /** Composition root: this app declares its own content and ruleset. */
 const content = createContentCatalog();
@@ -25,9 +30,7 @@ const engine = createBattleEngine({ content });
 // Composition root: this lab draws with the candidate pack's art.
 const art = CANDIDATE_01_ART;
 
-const appElement = document.getElementById('app');
-if (!appElement) throw new Error('missing #app');
-const app: HTMLElement = appElement;
+const app = requireMountPoint('app');
 
 let game: GameController | null = null;
 

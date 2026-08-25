@@ -13,7 +13,14 @@ import {
 } from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
-import { GENERIC_ART, icon, terrainSwatch, unitIcon } from '@empire/game-ui';
+import {
+  GENERIC_ART,
+  icon,
+  requireMountPoint,
+  terrainSwatch,
+  escapeHtml,
+  unitIcon,
+} from '@empire/game-ui';
 import {
   type ResourceSubject,
   playerResource,
@@ -83,9 +90,7 @@ const DEMO_LEVEL: LevelData = {
   victory: [{ type: 'routEnemies' }],
 };
 
-const appElement = document.getElementById('app');
-if (!appElement) throw new Error('missing #app');
-const app: HTMLElement = appElement;
+const app = requireMountPoint('app');
 
 // The same call every other app makes. This page used to run the kernel by hand
 // because it wanted the plugin manifest to draw; the manifest is now on the
@@ -95,14 +100,6 @@ let session = new GameSession(DEMO_LEVEL, engine);
 let preview: CombatPlan | null = null;
 let events: GameEvent[] = [];
 let headline = '先点“预测”，确认资源与血量都不会变化。';
-
-const html = (value: string): string => value.replace(/[&<>"']/g, (character) => ({
-  '&': '&amp;',
-  '<': '&lt;',
-  '>': '&gt;',
-  '"': '&quot;',
-  "'": '&#39;',
-})[character]!);
 
 function byKey(key: string): Unit | undefined {
   return session.state.units.find((unit) => unit.key === key);
@@ -121,7 +118,7 @@ function accountRows(subject: ResourceSubject): string {
     const account = engine.rules.resources.inspect(id, subject);
     const current = account.current === null ? '∞' : account.current;
     const capacity = account.capacity === null ? '' : ` / ${account.capacity}`;
-    return [`<div class="account-row"><span>${html(resourceName(id))}</span><b>${current}${capacity}</b></div>`];
+    return [`<div class="account-row"><span>${escapeHtml(resourceName(id))}</span><b>${current}${capacity}</b></div>`];
   });
   return rows.join('') || '<div class="account-empty">无独立账户</div>';
 }
@@ -147,7 +144,7 @@ function boardMarkup(): string {
       <div class="tile-art">${terrainSwatch(GENERIC_ART, content.terrains.get(terrain), owner?.color)}</div>
       ${unit ? `<div class="demo-unit">
         ${unitIcon(GENERIC_ART, content.units.get(unit.type), unitOwner?.color ?? '#9aa3ad', 46)}
-        <span class="unit-label">${html(content.units.get(unit.type).name)}</span>
+        <span class="unit-label">${escapeHtml(content.units.get(unit.type).name)}</span>
         <span class="hp-chip">${unit.hp}</span>
       </div>` : ''}
       <span class="cell-coord">${x},${y}</span>
@@ -170,7 +167,7 @@ function forecastMarkup(): string {
   return `<div class="forecast-result">
     <div class="forecast-main"><span>主目标伤害</span><b>${primary?.strike.damage ?? 0}</b></div>
     <div class="forecast-main"><span>波及单位</span><b>${preview.unitHits.length}</b></div>
-    <div class="forecast-main"><span>提交消耗</span><b>${html(cost || '无')}</b></div>
+    <div class="forecast-main"><span>提交消耗</span><b>${escapeHtml(cost || '无')}</b></div>
     <div class="forecast-main"><span>反击</span><b>${primary?.counter ? primary.counter.damage : '无'}</b></div>
     <p>高亮格来自同一份 <code>CombatPlan</code>；执行阶段不会重新选择目标。</p>
   </div>`;
@@ -199,7 +196,7 @@ function describeEvent(event: GameEvent): string {
 
 function eventMarkup(): string {
   if (events.length === 0) return '<div class="event-empty">执行行动后，这里会出现引擎语义事件。</div>';
-  return events.map((event, index) => `<li><span>${String(index + 1).padStart(2, '0')}</span><code>${html(event.type)}</code><b>${html(describeEvent(event))}</b></li>`).join('');
+  return events.map((event, index) => `<li><span>${String(index + 1).padStart(2, '0')}</span><code>${escapeHtml(event.type)}</code><b>${escapeHtml(describeEvent(event))}</b></li>`).join('');
 }
 
 function canAttack(key: string, weapon: string): boolean {
@@ -214,7 +211,7 @@ function render(): void {
   const javelin = byKey('javelin');
   const castleOccupied = Boolean(unitAt(6, 4));
   const pluginCards = Object.entries(engine.rulesetManifest.plugins).map(([id, version], index) =>
-    `<div class="plugin-card"><span>0${index + 1}</span><b>${html(id.replace('engine.', ''))}</b><em>v${version}</em></div>`,
+    `<div class="plugin-card"><span>0${index + 1}</span><b>${escapeHtml(id.replace('engine.', ''))}</b><em>v${version}</em></div>`,
   ).join('');
 
   app.innerHTML = `<main class="demo-shell">
@@ -269,14 +266,14 @@ function render(): void {
       <aside class="inspector-column">
         <section class="inspector-card status-card">
           <div class="card-kicker">LIVE STATUS</div>
-          <h2>${html(headline)}</h2>
+          <h2>${escapeHtml(headline)}</h2>
           <div class="truth-pill"><i></i>所有数值来自当前 GameState</div>
         </section>
 
         <section class="inspector-card">
           <div class="card-title"><span>02</span><h3>实体自有账户</h3></div>
           <div class="entity-account">
-            <div><b>${html(player.name)}</b><em>PlayerState.resources</em></div>
+            <div><b>${escapeHtml(player.name)}</b><em>PlayerState.resources</em></div>
             ${accountRows(playerResource(player))}
           </div>
           ${hero ? `<div class="entity-account">

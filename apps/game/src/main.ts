@@ -25,6 +25,9 @@ import {
   CANDIDATE_01_ART,
 } from '@empire/story-candidate-01/presentation';
 import {
+  takePlaytest,
+  boardPiecesMarkup,
+  type BoardSurfaceFactory,
   browserBattleSaves,
   deleteCampaignState,
   deleteCustomLevel,
@@ -32,16 +35,14 @@ import {
   icon,
   loadCampaignState,
   loadCustomLevels,
-  squareLayout,
-  readCustomLevels,
   portraitSvg,
-  StoryCampaignController,
-  takePlaytest,
-  boardPiecesMarkup,
-  type BoardSurfaceFactory,
+  readCustomLevels,
+  requireMountPoint,
   terrainLayerPieces,
-  TILE,
   escapeHtml,
+  squareLayout,
+  StoryCampaignController,
+  TILE,
 } from '@empire/game-ui';
 import type { ManagedBoardSurfaceFactory } from '@empire/game-ui/pixi';
 
@@ -61,7 +62,7 @@ const campaignAdapter = candidate01CampaignAdapter();
 const recruitCost = (unit: { recruitCosts: { resource: string; amount: number }[] }) =>
   unit.recruitCosts.map((cost) => `${cost.resource} ${cost.amount}`).join(' · ') || '不可招募';
 
-const app = document.getElementById('app')!;
+const app = requireMountPoint('app');
 let active: GameController | StoryCampaignController | null = null;
 
 /** Static minimap for a level card. */

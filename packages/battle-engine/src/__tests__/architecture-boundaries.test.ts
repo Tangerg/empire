@@ -1218,7 +1218,13 @@ describe('behaviour has an owner', () => {
     // `g(x!)` — sat in the same files. It is written against the assertion
     // operator itself now: a `!` right after something that can produce a
     // value, and not the start of `!=`.
-    const offenders = everyPackageSource().flatMap((file) => {
+    //
+    // And the second version read the packages only. The last three assertions in
+    // the repository were in the shells: two of `document.getElementById('app')!`
+    // — while two sibling shells checked for the element and named it in a refusal
+    // — and one on a lookup whose key came from a regular expression written above
+    // it, in a hand-rolled copy of an escaper the same file already imported.
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
       const code = stripStrings(stripComments(readFileSync(file, 'utf8')));
       return /[A-Za-z0-9_$)\]]!(?!=)/.test(code) ? [relative(packagesRoot, file)] : [];
     });
