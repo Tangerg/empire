@@ -1,5 +1,6 @@
 import { gaugeRatio, type BattlefieldMarker, type StructureDef, type StructureState } from '@empire/battle-engine';
 import { GROUND_TONES, PAL, shade } from './palette';
+import { tileGaugeBar } from './gauges';
 import { nameHash, pick, r2 } from './variation';
 
 /**
@@ -23,12 +24,6 @@ import { nameHash, pick, r2 } from './variation';
 
 
 const RAISED_BY_COVER = { none: 0, half: 1.4, full: 2.8 } as const;
-
-/** The condition bar every structure wears, in the same idiom a painted one uses. */
-function conditionBar(ratio: number): string {
-  return `<rect x="5" y="27" width="22" height="3" rx="1.5" fill="#201914" opacity="0.72"/>
-    <rect x="5.5" y="27.5" width="${r2(21 * ratio)}" height="2" rx="1" fill="${ratio > 0.5 ? PAL.hpGood : PAL.hpLow}"/>`;
-}
 
 /** Cracks that open as a structure is broken down. */
 function cracks(id: string, wear: number): string {
@@ -98,7 +93,7 @@ export function structureFromRules(
 
   return `${body}${held}${cracks(state.type, wear)}
     ${state.disabled ? `<path d="M8 ${r2(crown + 3)}l16 16m0-16-16 16" stroke="${PAL.ink}" stroke-width="2" opacity="0.5"/>` : ''}
-    ${def.targetable ? conditionBar(ratio) : ''}`;
+    ${def.targetable ? tileGaugeBar(ratio) : ''}`;
 }
 
 /**

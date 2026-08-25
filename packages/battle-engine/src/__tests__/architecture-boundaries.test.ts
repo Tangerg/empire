@@ -2538,4 +2538,32 @@ describe('one answer per question', () => {
     expect(readFileSync(owner, 'utf8')).toContain('current / maximum');
     expect(offenders).toEqual([]);
   });
+
+  it('decides what colour a gauge is in one place', () => {
+    // Four bars showed how full something was, and they disagreed. The HUD's and
+    // the unit's coloured three bands at 0.6 and 0.3; the generic structure bar
+    // and the campaign's coloured two at 0.5, so a structure at four tenths was
+    // red while a unit beside it at four tenths was amber. The two structure bars
+    // also sat 0.6 units higher and 0.6 thinner than the unit bar, and the
+    // campaign's wrote three colours that appear nowhere in the palette.
+    //
+    // A bar over a cell is read as a measurement, not looked at as a drawing, so
+    // two of them on one board have to agree. The palette entries are the tell:
+    // whoever reads `hpGood` is deciding the band.
+    const artRoot = join(packagesRoot, 'game-ui', 'src', 'art');
+    const owner = join(artRoot, 'gauges.ts');
+    const palette = join(artRoot, 'palette.ts');
+    const offenders: string[] = [];
+    for (const file of [...everyPackageSource(), ...appSources()]) {
+      if (file === owner || file === palette) continue;
+      const source = stripComments(readFileSync(file, 'utf8'));
+      if (/\bhp(?:Good|Mid|Low)\b/.test(source)) offenders.push(relative(packagesRoot, file));
+    }
+
+    // The owner reads all three, or the tell has moved and this guards nothing.
+    for (const band of ['hpGood', 'hpMid', 'hpLow']) {
+      expect(readFileSync(owner, 'utf8')).toContain(band);
+    }
+    expect(offenders).toEqual([]);
+  });
 });

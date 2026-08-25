@@ -12,6 +12,7 @@ export * from './art/environment-catalog';
 export * from './art/scene-viewport';
 export * from './art/frame-animation';
 export * from './art/icons';
+export * from './art/gauges';
 export * from './art/palette';
 export * from './art/portraits';
 export * from './art/terrain';

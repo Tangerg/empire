@@ -8,6 +8,7 @@ import {
   type TacticalGrid,
   gaugeRatio,
 } from '@empire/battle-engine';
+import { tileGaugeBar } from '../art/gauges';
 import { PAL } from '../art/palette';
 import { decorationsFor, type BattlePresentation } from '../art/battle-presentation';
 import { markerFromRules, structureFromRules } from '../art/field-objects-from-rules';
@@ -487,13 +488,7 @@ export class BoardView {
       const def = this.content.units.get(u.type);
       const ratio = gaugeRatio(u.hp, def.maxHp);
       const parts: string[] = [this.facingBadge(u)];
-      if (ratio < 1) {
-        const color = ratio > 0.6 ? PAL.hpGood : ratio > 0.3 ? PAL.hpMid : PAL.hpLow;
-        parts.push(
-          `<rect x="5" y="27.6" width="22" height="3.6" rx="1.8" fill="${PAL.ink}" opacity="0.65"/>
-           <rect x="5.6" y="28.2" width="${(20.8 * ratio).toFixed(2)}" height="2.4" rx="1.2" fill="${color}"/>`,
-        );
-      }
+      if (ratio < 1) parts.push(tileGaugeBar(ratio));
       const capture = s.map.captureProgress[idx(s.map, u.x, u.y)];
       if (capture > 0) {
         const pct = Math.min(1, capture / s.rules.captureThreshold);

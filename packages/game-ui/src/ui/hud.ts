@@ -40,6 +40,7 @@ import {
   unitResource,
   weaponResource,
 } from '@empire/battle-engine';
+import { gaugeColor } from '../art/gauges';
 import { escapeHtml } from './html';
 
 export interface HudView {
@@ -217,7 +218,7 @@ function modifierList(modifiers: readonly CombatModifier[]): string {
 }
 
 function hpBar(ratio: number, width = 96): string {
-  const color = ratio > 0.6 ? PAL.hpGood : ratio > 0.3 ? PAL.hpMid : PAL.hpLow;
+  const color = gaugeColor(ratio);
   return `<span class="bar" style="--w:${width}px">
     <i style="width:${Math.max(0, Math.min(1, ratio)) * 100}%;background:${color}"></i>
   </span>`;
