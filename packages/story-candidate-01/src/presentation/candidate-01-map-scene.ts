@@ -21,8 +21,11 @@ import {
   CANDIDATE_FOREST_FLOOR,
   CANDIDATE_FOUNDATIONS,
   CANDIDATE_FRAME_TREES,
+  CANDIDATE_RIVER_STONES,
   CANDIDATE_SETTLEMENT_LIFE,
   CANDIDATE_SETTLEMENT_TAGS,
+  CANDIDATE_SHORE,
+  CANDIDATE_SHORE_DECALS,
   CANDIDATE_SURFACE_FIT,
   candidateMaterial,
   type CandidateConnected,
@@ -204,6 +207,36 @@ function placementPiece(placement: CandidateEnvironmentPlacement): BoardPiece | 
 const surfaceMarkup = (atlasId: string, tone: number): string =>
   atlasCellMarkup(atlasId, tone, { fit: CANDIDATE_SURFACE_FIT });
 
+/** Does this cell hold water? A crossing does: the river runs under its deck. */
+const isWater = (content: ContentCatalog, map: GameMap, x: number, y: number): boolean => {
+  const id = tileAt(map, x, y);
+  return id !== null && candidateMaterial(content, id).connected?.mask === 'same';
+};
+
+/**
+ * Is this dry ground that touches water?
+ *
+ * The band of mud a river leaves. Not a property of any terrain — 平原 next to a
+ * river is the same 平原 — so it is the scene's rule, like a wood's edge and the
+ * ground beside a settlement.
+ */
+const isShore = (content: ContentCatalog, map: GameMap, x: number, y: number): boolean =>
+  !isWater(content, map, x, y)
+  && ORTHOGONAL.some(([dx, dy]) => isWater(content, map, x + dx, y + dy));
+
+/** The eight-neighbour mask the shore band is indexed by. */
+function shoreMask(content: ContentCatalog, map: GameMap, x: number, y: number): number {
+  const bank = (dx: number, dy: number): boolean => isShore(content, map, x + dx, y + dy);
+  return (bank(0, -1) ? 1 : 0)
+    | (bank(1, -1) ? 2 : 0)
+    | (bank(1, 0) ? 4 : 0)
+    | (bank(1, 1) ? 8 : 0)
+    | (bank(0, 1) ? 16 : 0)
+    | (bank(-1, 1) ? 32 : 0)
+    | (bank(-1, 0) ? 64 : 0)
+    | (bank(-1, -1) ? 128 : 0);
+}
+
 /** One field the whole map is read through: what each cell is made of. */
 type MaterialField = (x: number, y: number) => CandidateMaterial | null;
 
@@ -274,6 +307,15 @@ function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
         blends.push({ markup: atlasCellMarkup(material.blend, cell), ...at });
       }
 
+      // The mud a river leaves, before the water is drawn over it.
+      if (material.blend === undefined && isShore(content, map, x, y)) {
+        const cell = CANDIDATE_01_ENVIRONMENT.blobIndex(
+          CANDIDATE_SHORE,
+          shoreMask(content, map, x, y),
+        );
+        blends.push({ markup: atlasCellMarkup(CANDIDATE_SHORE, cell), ...at });
+      }
+
       if (material.connected) {
         const mask = connectedMask(content, field, map, material.connected, x, y);
         const variant = Math.floor(tileHash(x, y, 1102) * 4);
@@ -300,7 +342,16 @@ function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
         });
       }
 
-      const decals = material.decals;
+      /*
+       * A bank is dressed as a bank, and a channel has rocks in it.
+       *
+       * The material's own decals lose to these on the cells where they apply: a
+       * river's edge is mud and roots whatever the terrain beside it is, and a
+       * river with nothing in it is a blue ribbon.
+       */
+      const decals = isWater(content, map, x, y)
+        ? CANDIDATE_RIVER_STONES
+        : isShore(content, map, x, y) ? CANDIDATE_SHORE_DECALS : material.decals;
       if (decals && tileHash(x, y, 1103) < decals.chance) {
         const pick = decals.ids[Math.floor(tileHash(x, y, 1104) * decals.ids.length)];
         detail.push({

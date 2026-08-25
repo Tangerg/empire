@@ -280,6 +280,36 @@ export const CANDIDATE_FOREST_FLOOR: CandidateScenery = {
 };
 
 /**
+ * The ground where the land meets the water.
+ *
+ * A river drawn only from the water sheet stops dead at a cell boundary: grass on
+ * one side, water on the other, no bank. The kit's earth transition is a blob
+ * sheet, so a band of it laid over every cell that touches water reads as the mud
+ * a river leaves — which is what the land does next to water on any map, and is
+ * therefore the scene's rule rather than a terrain's material.
+ */
+export const CANDIDATE_SHORE = 'transition-meadow-earth';
+
+/** What washes up on a bank, and what stands out of the shallows. */
+export const CANDIDATE_SHORE_DECALS: CandidateDecals = {
+  ids: ['mud-patch', 'exposed-roots', 'stone-cluster-a', 'grass-tuft-c'],
+  chance: 0.4,
+  scale: 0.56,
+};
+
+/**
+ * Rocks in the channel.
+ *
+ * A river with nothing in it is a blue ribbon. These are drawn on the water, in
+ * the ground layer, so nothing wades over them.
+ */
+export const CANDIDATE_RIVER_STONES: CandidateDecals = {
+  ids: ['stone-cluster-b', 'stone-cluster-c', 'mossy-boulder'],
+  chance: 0.22,
+  scale: 0.5,
+};
+
+/**
  * What stands in the cells *around* a settlement.
  *
  * A keep or a barracks has a painted building on its own cell, and the scenery
