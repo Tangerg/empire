@@ -18,7 +18,7 @@ import {
   type BoardSurfaceScene,
 } from './board-surface';
 import { FrameAnimationSystem } from './frame-animation';
-import { scenePointOf, shownAt } from './letterbox';
+import { listenForPointer, shownAt } from './letterbox';
 import { BrowserPictureTextures, type BakedPicture, type PictureTextures } from './picture-textures';
 
 /**
@@ -337,21 +337,7 @@ export class PixiBoardSurface implements BoardSurface {
   }
 
   listen(pointer: BoardPointer): void {
-    const at = (event: MouseEvent) =>
-      scenePointOf(this.element.getBoundingClientRect(), this.scenery, event);
-
-    this.element.addEventListener('pointerdown', (event) => {
-      const point = at(event);
-      if (point) pointer.press(point, event.button);
-    });
-    this.element.addEventListener('contextmenu', (event) => event.preventDefault());
-    this.element.addEventListener('pointermove', (event) => pointer.move(at(event)));
-    this.element.addEventListener('pointerleave', () => pointer.leave());
-    this.element.addEventListener('wheel', (event) => {
-      if (!event.ctrlKey && !event.metaKey) return;
-      event.preventDefault();
-      pointer.scale(-Math.sign(event.deltaY));
-    }, { passive: false });
+    listenForPointer(this.element, this.scenery, pointer);
   }
 
   setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): void {

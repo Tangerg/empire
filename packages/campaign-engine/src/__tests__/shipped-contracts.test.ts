@@ -58,6 +58,54 @@ describe('every shipped campaign contract', () => {
     expect(new Set(SHIPPED.map(([, d]) => d.nodes.length)).size).toBeGreaterThan(1);
   });
 
+  /**
+   * Different *shapes*, not different strings.
+   *
+   * The checks above compare ids, packs and node counts, and candidate-02 and
+   * candidate-03 passed all three while being the same generator with the names
+   * changed: one chain of `story → battle`, one shared failure ending, sixteen
+   * nodes each. What a graph algebra has to survive is a graph — a fork, a rejoin,
+   * more than one reachable ending — so that is what is asked for here.
+   */
+  it('ships a story that forks and rejoins, not only chains', () => {
+    const shapes = SHIPPED.map(([name, definition]) => {
+      const ways = new Map<string, number>();
+      const arrive = (id: string | undefined) => {
+        if (id) ways.set(id, (ways.get(id) ?? 0) + 1);
+      };
+      let forks = 0;
+      for (const node of definition.nodes) {
+        if (node.type === 'story') arrive(node.next);
+        if (node.type === 'choice') {
+          forks += node.choices.length > 1 ? 1 : 0;
+          for (const choice of node.choices) arrive(choice.next);
+        }
+        if (node.type === 'battle') {
+          forks += Object.keys(node.next).length > 1 ? 1 : 0;
+          for (const next of Object.values(node.next)) arrive(next);
+        }
+      }
+      return {
+        name,
+        forks,
+        rejoins: [...ways.values()].filter((count) => count > 1).length,
+        choices: definition.nodes.filter((node) => node.type === 'choice').length,
+        endings: definition.nodes.filter((node) => node.type === 'ending').length,
+      };
+    });
+
+    // Every one of them branches somewhere — a battle at least has victory and
+    // defeat — and every one can end more than one way.
+    for (const shape of shapes) {
+      expect(shape.forks, shape.name).toBeGreaterThan(0);
+      expect(shape.endings, shape.name).toBeGreaterThan(1);
+    }
+    // And at least two of the three put a decision in front of the player and then
+    // bring the branches back together, which is the part a chain cannot express.
+    expect(shapes.filter((shape) => shape.choices > 0).length).toBeGreaterThanOrEqual(2);
+    expect(shapes.filter((shape) => shape.rejoins > 0).length).toBeGreaterThanOrEqual(2);
+  });
+
   it('refuses a contract with a node kind nobody registered', () => {
     // The check above only means something if the registry really does refuse.
     const broken = structuredClone(CANDIDATE_02_CAMPAIGN_CONTRACT) as CampaignDefinition;

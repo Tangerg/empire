@@ -21,6 +21,7 @@ import {
   TILE_MIDDLE,
 } from './board-surface';
 import { clear, fromMarkup, setAttrs, svg } from './svg';
+import { listenForPointer } from './letterbox';
 
 /**
  * A battlefield drawn as one SVG tree.
@@ -250,38 +251,8 @@ export class SvgBoardSurface implements BoardSurface {
     if (scene.foreground) this.element.append(fromMarkup(scene.foreground));
   }
 
-  /**
-   * Screen to scene, which is the only geometry this renderer owns.
-   *
-   * The picture is letterboxed inside whatever box it is presented at, so the
-   * scale is the smaller ratio and the leftover is split evenly. That arithmetic
-   * lived in the board, where it was the one thing in it that knew about pixels.
-   */
   listen(pointer: BoardPointer): void {
-    const scenePoint = (event: MouseEvent): { x: number; y: number } | null => {
-      const rect = this.element.getBoundingClientRect();
-      if (rect.width <= 0 || rect.height <= 0) return null;
-      const scale = Math.min(rect.width / this.scene.width, rect.height / this.scene.height);
-      const shownWidth = this.scene.width * scale;
-      const shownHeight = this.scene.height * scale;
-      return {
-        x: (event.clientX - rect.left - (rect.width - shownWidth) / 2) / scale,
-        y: (event.clientY - rect.top - (rect.height - shownHeight) / 2) / scale,
-      };
-    };
-
-    this.element.addEventListener('pointerdown', (event) => {
-      const at = scenePoint(event);
-      if (at) pointer.press(at, event.button);
-    });
-    this.element.addEventListener('contextmenu', (event) => event.preventDefault());
-    this.element.addEventListener('pointermove', (event) => pointer.move(scenePoint(event)));
-    this.element.addEventListener('pointerleave', () => pointer.leave());
-    this.element.addEventListener('wheel', (event) => {
-      if (!event.ctrlKey && !event.metaKey) return;
-      event.preventDefault();
-      pointer.scale(-Math.sign(event.deltaY));
-    }, { passive: false });
+    listenForPointer(this.element, this.scene, pointer);
   }
 
   setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): void {
