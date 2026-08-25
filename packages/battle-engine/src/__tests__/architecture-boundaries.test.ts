@@ -2786,4 +2786,5 @@ describe('one answer per question', () => {
     expect(checked).toBeGreaterThanOrEqual(14);
     expect(offenders).toEqual([]);
   });
+
 });

@@ -10,11 +10,22 @@
     "noUnusedParameters": true,
     "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
+    /*
+     * Off, and measured rather than assumed: turning it on reports 242 errors,
+     * almost all of them `{ x: T | undefined }` handed to `{ x?: T }`, and the
+     * fix at each site is either to widen the target to `T | undefined` — which
+     * lets an explicit `undefined` through and so *weakens* the "absent means no
+     * opinion" reading this repository relies on — or to spread the property
+     * conditionally at the call site. Nothing here distinguishes an absent key
+     * from a present undefined one, which is the case the flag exists for.
+     *
+     * `noUncheckedIndexedAccess` was measured the same way and reports 915.
+     */
     "exactOptionalPropertyTypes": false,
     "isolatedModules": true,
     "skipLibCheck": true,
     "noEmit": true,
     "types": ["vite/client"]
   },
-  "include": ["apps", "packages", "tools", "vite.config.ts"]
+  "include": ["apps", "packages", "tools", "*.ts"]
 }

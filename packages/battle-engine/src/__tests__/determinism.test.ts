@@ -3,6 +3,7 @@ import { createBattleEngine } from '../plugins/default';
 import { DeterministicOnlyRandom, SplitMixRandom, createRandomState } from '../random';
 import { BattleRecorder, hashState, replayBattle } from '../replay';
 import { CoreActionHandlers } from '../actions';
+import { cloneState } from '../state';
 import { DomainInvariantError } from '../domain/errors';
 import { TEST_CONTENT, makeLevel, u } from './fixtures';
 import type { Action, GameState, LevelData } from '../types';
@@ -275,5 +276,62 @@ describe('replay', () => {
         contentPacks: { ...replay.ruleset.contentPacks, 'empire.common': 999 },
       },
     }).reason).toMatch(/content pack "empire\.common" version/);
+  });
+
+  /**
+   * Every object a clone shares with the state it was taken from.
+   *
+   * Walks both trees together and reports any place they are the same object.
+   * A count comes back too, because a walk that visited nothing would report
+   * nothing.
+   */
+  function sharedObjects(
+    original: unknown,
+    copy: unknown,
+    path = 'state',
+    seen: string[] = [],
+    visited = { count: 0 },
+  ): { shared: string[]; visited: number } {
+    if (original === null || typeof original !== 'object') return { shared: seen, visited: visited.count };
+    visited.count += 1;
+    if (original === copy) {
+      seen.push(path);
+      // No point walking inside: everything under it is shared as well.
+      return { shared: seen, visited: visited.count };
+    }
+    for (const [key, value] of Object.entries(original as Record<string, unknown>)) {
+      const mirror = (copy as Record<string, unknown> | null)?.[key];
+      sharedObjects(value, mirror, `${path}.${key}`, seen, visited);
+    }
+    return { shared: seen, visited: visited.count };
+  }
+
+  it('hands the simulator a state that shares nothing with the battle', () => {
+    // "Whatever the rules mutate, the clone must copy, the digest must cover, and
+    // the save must carry — each of those is fenced by a test rather than by
+    // memory." Two of the three were. The digest fails closed: a field is hashed
+    // unless `ignoredPath` argues otherwise. The save is fenced by the compiler,
+    // because `StoredShape<GameState>` refuses a table that has not been taught a
+    // field.
+    //
+    // The clone was fenced by memory. `cloneState` names what it deep-copies, and
+    // `{ ...state }` picks up anything new by reference — so a field added to
+    // `GameState` would be *shared* between the battle and the AI's simulation of
+    // it, and the simulation would write through into the live game. Nothing would
+    // fail; the sweep would quietly drift.
+    //
+    // Structural rather than field-by-field on purpose: a list of names is one
+    // more thing to keep up to date, and this needs nothing kept up to date.
+    const { state } = playRecorded(7);
+    // A finished battle, so the state carries what play puts in it: markers,
+    // capture progress, statuses, spent weapon accounts, objective records.
+    expect(state.units.length + state.markers.length).toBeGreaterThan(2);
+
+    const { shared, visited } = sharedObjects(state, cloneState(state));
+
+    // A clone of a played-out battle is thousands of objects; a walk that found a
+    // handful has gone wrong rather than proved anything.
+    expect(visited).toBeGreaterThan(200);
+    expect(shared).toEqual([]);
   });
 });

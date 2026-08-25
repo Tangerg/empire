@@ -396,12 +396,18 @@ export function cloneState(state: GameState): GameState {
       ...p,
       resources: cloneResources(p.resources),
       ai: { ...p.ai },
-      objectives: p.objectives.slice(),
+      // An objective document is a tree — a composite holds its children — and
+      // `slice()` copied the list while sharing every entry in it. Nothing writes
+      // to one today; a rule that hid an objective by writing to its document
+      // would have written into the battle from inside a simulation of it.
+      objectives: structuredClone(p.objectives),
       objectiveStates: Object.fromEntries(
         Object.entries(p.objectiveStates).map(([id, runtime]) => [id, { ...runtime }]),
       ),
     })),
-    rules: { ...state.rules },
+    // Two of its fields are records of their own, so the spread shared them.
+    // Read-only by convention is not the same as read-only.
+    rules: structuredClone(state.rules),
     deployment: state.deployment
       ? {
           order: state.deployment.order.slice(),
@@ -421,7 +427,7 @@ export function cloneState(state: GameState): GameState {
         ...overlay,
         cells: overlay.cells.map((cell) => ({ ...cell })),
       })),
-      triggers: state.scenario.triggers,
+      triggers: structuredClone(state.scenario.triggers),
       firedTriggerIds: state.scenario.firedTriggerIds.slice(),
       triggerRuntime: Object.fromEntries(
         Object.entries(state.scenario.triggerRuntime).map(([id, runtime]) => [id, { ...runtime }]),
