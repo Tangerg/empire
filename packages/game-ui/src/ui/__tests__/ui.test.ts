@@ -7,7 +7,7 @@ import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancien
 import { GameController } from '../game';
 import { BoardView, emptyOverlay, type BoardComposition } from '../board';
 import { svgBoardSurface } from '../../art/svg-board-surface';
-import { ArtDirection } from '../../art/direction';
+import { ArtDirection, GENERIC_ART } from '../../art/direction';
 import { GENERIC_PRESENTATION } from '../../art/battle-presentation';
 import { browserBattleSaves } from '../../application/battle-storage';
 import {
@@ -38,32 +38,48 @@ const TEST_ENGINE = createBattleEngine({ content: TEST_CATALOG });
  */
 const hudSays = (root: Element): string => root.querySelector('.battle-hud')!.textContent ?? '';
 
-/** jsdom has no layout, so give the board a deterministic box for hit-testing. */
-function stubLayout(svg: SVGSVGElement, width: number): void {
-  const viewBox = svg.viewBox.baseVal;
-  const height = width * (viewBox.height / viewBox.width);
+/**
+ * jsdom has no layout, so give the board its natural box for hit-testing.
+ *
+ * The board's own viewBox, so the screen-to-scene scale is exactly one. Callers
+ * used to pass a width — `level.width * TILE`, `4 * TILE`, `6 * TILE` and once
+ * `board.viewBox.baseVal.width` — four spellings of the same intention, three of
+ * which stopped being true the moment a scene claimed a margin around the field.
+ */
+function stubLayout(svg: SVGSVGElement): void {
+  const { width, height } = svg.viewBox.baseVal;
   svg.getBoundingClientRect = () =>
     ({ left: 0, top: 0, width, height, right: width, bottom: height, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
 }
 
+/**
+ * Where a cell's middle is on screen.
+ *
+ * A scene may hold the field away from the picture's edge — this campaign's
+ * woodland frame stands in that margin — so a cell is at the field's origin plus
+ * its own offset. The origin is read off the layout the renderer produced rather
+ * than recomputed here, because a test that recomputes it agrees with itself
+ * instead of with the board.
+ */
+function cellPoint(el: Element, tile: { x: number; y: number }): { clientX: number; clientY: number } {
+  const world = el.querySelector('.board-world')?.getAttribute('transform') ?? 'translate(0 0)';
+  const [originX = 0, originY = 0] = (world.match(/-?[\d.]+/g) ?? []).map(Number);
+  return {
+    clientX: originX + tile.x * TILE + TILE / 2,
+    clientY: originY + tile.y * TILE + TILE / 2,
+  };
+}
+
 function click(el: Element, tile: { x: number; y: number }, button = 0): void {
-  const ev = new window.MouseEvent('pointerdown', {
+  el.dispatchEvent(new window.MouseEvent('pointerdown', {
     bubbles: true,
-    clientX: tile.x * TILE + TILE / 2,
-    clientY: tile.y * TILE + TILE / 2,
+    ...cellPoint(el, tile),
     button,
-  });
-  el.dispatchEvent(ev);
+  }));
 }
 
 function hover(el: Element, tile: { x: number; y: number }): void {
-  el.dispatchEvent(
-    new window.MouseEvent('pointermove', {
-      bubbles: true,
-      clientX: tile.x * TILE + TILE / 2,
-      clientY: tile.y * TILE + TILE / 2,
-    }),
-  );
+  el.dispatchEvent(new window.MouseEvent('pointermove', { bubbles: true, ...cellPoint(el, tile) }));
 }
 
 /**
@@ -110,10 +126,18 @@ describe('game controller', () => {
 
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
     expect(board).toBeTruthy();
-    // One picture per tile in the terrain layer.
-    expect(board.querySelectorAll('.layer-terrain > g').length).toBe(
-      level.width * level.height,
-    );
+    /*
+     * One picture per tile — in the layer that draws the ground.
+     *
+     * This used to count `.layer-terrain`, because the campaign's art stamped one
+     * tile per cell there for every level except the one chapter whose scene
+     * painted its own ground. The scene paints every level now, so the surface is
+     * in `.layer-ground` and what is left in `.layer-terrain` is the buildings.
+     */
+    expect(board.querySelectorAll('.layer-ground > g').length)
+      .toBeGreaterThanOrEqual(level.width * level.height);
+    expect(board.querySelectorAll('.layer-terrain > g').length)
+      .toBeLessThan(level.width * level.height / 10);
     expect(board.querySelectorAll('.layer-units > .unit').length).toBe(level.units.length);
     expect(hudSays(c.root)).toContain(level.name);
     expect(hudSays(c.root)).toContain('作战目标');
@@ -187,7 +211,7 @@ describe('game controller', () => {
     const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
-    stubLayout(board, level.width * TILE);
+    stubLayout(board);
 
     const objectives = c.root.querySelector('.hud-flank > *')!;
     const commit = c.root.querySelector('[data-act="end"]')!;
@@ -315,11 +339,13 @@ describe('game controller', () => {
     const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
-    stubLayout(board, level.width * TILE);
+    stubLayout(board);
 
     const mine = level.units.find((u) => u.owner === 1)!;
     click(board, mine);
-    expect(board.querySelectorAll('.layer-range rect').length).toBeGreaterThan(3);
+    // However this art draws a reachable cell — the shipped campaign paints a
+    // spot on the ground where the ruled board would put a square.
+    expect(board.querySelectorAll('.layer-range > *').length).toBeGreaterThan(3);
 
     hover(board, { x: mine.x, y: mine.y + 1 });
     expect(board.querySelectorAll('.layer-path path').length).toBeGreaterThan(0);
@@ -331,7 +357,7 @@ describe('game controller', () => {
     const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
-    stubLayout(board, level.width * TILE);
+    stubLayout(board);
 
     click(board, { x: 1, y: 1 }); // player 1's castle, empty at start
     const modal = c.root.querySelector('.hud-veil')!;
@@ -370,7 +396,7 @@ describe('game controller', () => {
     const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
-    stubLayout(board, level.width * TILE);
+    stubLayout(board);
 
     hover(board, structure);
     const ledger = c.root.querySelector('.hud-ledger')!.textContent ?? '';
@@ -397,12 +423,12 @@ describe('game controller', () => {
       x: 3, y: 3, hp: 40, disabled: false, statuses: [],
     });
 
-    const silent = new ArtDirection([], [{
+    const silent = new ArtDirection([], {
       ...GENERIC_PRESENTATION,
       id: 'declines-everything',
       structure: () => null,
       marker: () => null,
-    }]);
+    });
     const board = new BoardView(composition(silent), state, {
       onTileClick: () => {},
       onTileEnter: () => {},
@@ -516,7 +542,7 @@ describe('charge time presentation', () => {
     const c = new GameController(castingLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
-    stubLayout(board, 6 * TILE);
+    stubLayout(board);
 
     click(board, { x: 0, y: 0 });                                   // the mage
     click(board, { x: 0, y: 0 });                                   // stay put
@@ -712,8 +738,16 @@ describe('a hex board', () => {
     host = document.getElementById('app')!;
   });
 
+  /*
+   * Composed with the ruled look, because that is what these two assert: a lattice
+   * of hexes, and one clipped tile per cell in the terrain layer. The shipped
+   * campaign's scene deliberately draws neither — it paints its own ground and
+   * leaves the lattice off — so running these under it was asserting the ruled
+   * board while composing the painted one, and it only passed because the pack
+   * used to decline any level whose id it did not recognise.
+   */
   it('staggers its rows, clips its tiles and rules its own edges', () => {
-    const controller = new GameController(hexLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
+    const controller = new GameController(hexLevel(), () => {}, { engine: TEST_ENGINE, art: GENERIC_ART });
     host.append(controller.root);
     const board = controller.root.querySelector('svg.board') as SVGSVGElement;
 
@@ -740,11 +774,11 @@ describe('a hex board', () => {
 
   it('offers the six facings the tiling has, not four', () => {
     const level = hexLevel();
-    const controller = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
+    const controller = new GameController(level, () => {}, { engine: TEST_ENGINE, art: GENERIC_ART });
     host.append(controller.root);
     const board = controller.root.querySelector('svg.board') as SVGSVGElement;
     // Scale 1, so a scene coordinate is a client coordinate.
-    stubLayout(board, board.viewBox.baseVal.width);
+    stubLayout(board);
 
     const mine = level.units.find((unit) => unit.owner === 1)!;
     const centre = TEST_ENGINE.rules.grids.get('hex').center(mine);
@@ -806,7 +840,7 @@ describe('ordering a formation', () => {
     const c = new GameController(formationLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
-    stubLayout(board, 4 * TILE);
+    stubLayout(board);
     click(board, { x: 0, y: 0 });
 
     const offered = formationButtons(c.root);
@@ -830,7 +864,7 @@ describe('ordering a formation', () => {
     const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
-    stubLayout(board, 4 * TILE);
+    stubLayout(board);
     click(board, { x: 1, y: 0 });
     expect(formationButtons(c.root).length).toBeGreaterThan(0);
 
@@ -839,7 +873,7 @@ describe('ordering a formation', () => {
     }), () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(alone.root);
     const board2 = alone.root.querySelector('svg.board') as SVGSVGElement;
-    stubLayout(board2, 4 * TILE);
+    stubLayout(board2);
     click(board2, { x: 0, y: 0 });
 
     const disabled = [...alone.root.querySelectorAll('.unit-section button.disabled')] as HTMLButtonElement[];
@@ -900,7 +934,7 @@ describe('arranging the line before the battle', () => {
     const c = new GameController(deploymentLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
-    stubLayout(board, 4 * TILE);
+    stubLayout(board);
 
     // The panel is the roster, and the primary control confirms rather than ends.
     expect(hudSays(c.root)).toContain('战前部署');
@@ -928,7 +962,7 @@ describe('arranging the line before the battle', () => {
     const c = new GameController(deploymentLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
-    stubLayout(board, 4 * TILE);
+    stubLayout(board);
 
     click(board, { x: 0, y: 0 });
     await settle();
@@ -999,7 +1033,7 @@ describe('loading and unloading a transport', () => {
     const c = new GameController(transportLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
-    stubLayout(board, 4 * TILE);
+    stubLayout(board);
 
     click(board, { x: 1, y: 0 });
     const carriers = buttons(c.root, 'embark');
@@ -1031,7 +1065,7 @@ describe('loading and unloading a transport', () => {
     const c = new GameController(transportLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
     host.append(c.root);
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
-    stubLayout(board, 4 * TILE);
+    stubLayout(board);
 
     // The knight is beside the wagon too, and the wagon takes only infantry.
     click(board, { x: 0, y: 1 });

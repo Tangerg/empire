@@ -324,6 +324,9 @@
 | 一份存档是不是当前版本 | `readCurrentDocument`（战役与战斗共用） |
 | 一个原始字段够不够格被读 | `storedField` + `requireStoredShape`（战役与战斗共用；两份格式各自只拥有拒绝的措辞） |
 | 一份美术在画什么格子 | `TileContext`（端口自己的词汇，一处声明；`terrainMarkup` 的参数） |
+| 一格地面是什么做的 | `candidateMaterial`（`candidate-01-terrain-materials.ts`；按地形 id 说材质，标签兜底） |
+| 一场战斗画在哪张场景里 | `ArtDirection.presentation`（一份美术一张场景，由组合根指定；没有 `matches` 让美术包挑关卡） |
+| 一张地图的地面画法，在不是战斗的画布上 | `mapGroundPieces`（编辑器画布和关卡缩略图共用；同一张场景，同一份材质表） |
 | 通用美术怎么在不随机的前提下变化 | `nameHash` / `pick` / `r2`（`art/variation.ts`；坐标那一支是引擎的 `tileHash`） |
 | 一份资源账户怎么被复制 | `cloneAccounts`（`unit-state.ts`；快照和转职共用一句） |
 | 一条量表还剩几成 | `gaugeRatio`（`vitals.ts`；上限为 0 读作完好，而不是没有数） |

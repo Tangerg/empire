@@ -24,7 +24,8 @@
     "sweep": "vite-node tools/replay-sweep.ts",
     "board:digest": "vite-node tools/board-digest.ts",
     "board:flat": "vite-node tools/board-flat.ts",
-    "board:scale": "vite-node tools/board-scale.ts"
+    "board:scale": "vite-node tools/board-scale.ts",
+    "ui:shot": "vite-node tools/ui-shot.ts"
   },
   "devDependencies": {
     "@types/jsdom": "^30.0.0",

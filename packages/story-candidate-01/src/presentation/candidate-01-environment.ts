@@ -36,36 +36,28 @@ export interface CandidateEnvironmentScene {
 }
 
 const ENVIRONMENT_ROOT = '../../assets/final-fantasy-v1/environment-builder-v1/';
+
+/**
+ * Every atlas the kit ships, at both densities.
+ *
+ * This was a list of ten atlases spelled out twice — once as glob patterns and
+ * once as `twinHillsSceneJson.selection.allowAtlases`, which is the asset
+ * allowlist inside *chapter one's authored scene document*. So the pack's catalog
+ * was one map's dressing list, and the other twenty-six atlases — the waters, the
+ * other three routes, the earth and stone and snow and graveyard surfaces, the
+ * crossings, the landmarks — could not be reached by any level at all.
+ *
+ * The manifest is the catalog. It costs 2 MB of atlas over the ten (17 MB against
+ * 15 MB), and it buys every terrain in the campaign a material.
+ */
 const environmentUrls = import.meta.glob<string>(
-  [
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forest-floor.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forest-floor@2x.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life.png',
-    '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png',
-  ],
+  '../../assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/*.png',
   { eager: true, import: 'default', query: '?url' },
 );
 
-const selectedAtlasIds = new Set(twinHillsSceneJson.selection.allowAtlases);
 const environmentManifest = environmentManifestJson as EnvironmentManifest;
 export const CANDIDATE_01_ENVIRONMENT = new EnvironmentCatalog(
-  { ...environmentManifest, atlases: environmentManifest.atlases.filter((atlas) => selectedAtlasIds.has(atlas.id)) },
+  environmentManifest,
   (relativePath) => environmentUrls[`${ENVIRONMENT_ROOT}${relativePath}`],
 );
 

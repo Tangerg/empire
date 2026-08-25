@@ -158,9 +158,17 @@ describe('map editor', () => {
     expect(host.querySelectorAll('.unit-chip').length).toBe(TEST_CATALOG.units.all().length);
     expect(host.querySelector('.swatch[data-arg="c01.scorched"]')).toBeTruthy();
     expect(host.querySelector('.unit-chip[data-arg="c01.laiya"]')).toBeTruthy();
-    expect(board.querySelectorAll('.layer-terrain > g').length).toBe(
-      BUILTIN_LEVELS[0].width * BUILTIN_LEVELS[0].height,
-    );
+    /*
+     * A picture of every cell — in the layer that draws the ground.
+     *
+     * This counted `.layer-terrain`, because the composed art used to stamp one
+     * tile per cell there. The ground of a map is the scene's now (a surface that
+     * knows its neighbours cannot be one cell's answer), so the canvas draws it
+     * from `mapGroundPieces` and the terrain layer keeps what stands on a cell.
+     */
+    const cells = BUILTIN_LEVELS[0].width * BUILTIN_LEVELS[0].height;
+    expect(board.querySelectorAll('.layer-ground > g').length).toBeGreaterThanOrEqual(cells);
+    expect(board.querySelectorAll('.layer-terrain > g').length).toBeLessThan(cells / 10);
     expect(host.querySelector('.props')!.textContent).toContain('检查');
   });
 
@@ -306,14 +314,17 @@ describe('a general editor knows no particular game', () => {
     document.body.append(host);
     new EditorApp(TEST_SETUP, opened()).mount(host);
 
-    // A marker only the composed pack's provider can produce.
+    // A marker only the composed pack's art can produce: its buildings in the
+    // terrain layer, its atlas surfaces under them, its sprites in the palette.
     expect(host.querySelector('.layer-terrain')!.innerHTML).toContain('data-runtime-raster');
+    expect(host.querySelector('.layer-ground')!.innerHTML).toContain('surface-meadow');
     expect(host.querySelector('.palette')!.innerHTML).toContain('data-runtime-raster');
 
     const generic = document.createElement('div');
     document.body.append(generic);
     new EditorApp({ ...TEST_SETUP, art: GENERIC_ART }, opened()).mount(generic);
     expect(generic.querySelector('.layer-terrain')!.innerHTML).not.toContain('data-runtime-raster');
+    expect(generic.querySelector('.layer-ground')!.innerHTML).toBe('');
 
     host.remove();
     generic.remove();

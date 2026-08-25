@@ -60,7 +60,7 @@ describe('nothing the rules track is invisible', () => {
     for (const definition of shippedStructures()) {
       const state = standing(definition);
       for (const art of [GENERIC_ART, CANDIDATE_01_ART]) {
-        const presentation = art.presentationFor('c01-15');
+        const presentation = art.presentation;
         const markup = presentation.structure(state, definition, '#d8483f')
           ?? structureFromRules(state, definition, '#d8483f');
         expect(markup.length, `${art === GENERIC_ART ? 'generic' : 'candidate-01'} / ${definition.id}`)

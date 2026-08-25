@@ -6,6 +6,7 @@ import {
   PAL,
   battlefieldFeaturePieces,
   battlefieldRenderKey,
+  mapGroundPieces,
   boardPiecesMarkup,
   TILE,
   terrainLayerPieces,
@@ -28,6 +29,22 @@ import {
 export interface EditorBoardHandlers {
   onStroke(at: Coord, phase: 'start' | 'move' | 'end', button: number): void;
   onHover(at: Coord | null): void;
+}
+
+/**
+ * The document this canvas is drawing, as one subject.
+ *
+ * Five positional arguments, of which four were the document, and the fifth — the
+ * level's id — had nowhere to go: the ground is painted by the scene, and a scene
+ * is asked for a level. Named, because `render(grid, map, units, players, opts)`
+ * could not be read at the call site and a sixth would have been worse.
+ */
+export interface EditorScene {
+  readonly levelId: string;
+  readonly grid: TacticalGrid;
+  readonly map: GameMap;
+  readonly units: LevelUnit[];
+  readonly players: PlayerConfig[];
 }
 
 /**
@@ -58,7 +75,7 @@ export class EditorBoard {
       'text-rendering': 'optimizeLegibility',
     });
     this.layers = {};
-    for (const n of ['terrain', 'grid', 'units', 'marks', 'cursor']) {
+    for (const n of ['ground', 'terrain', 'grid', 'units', 'marks', 'cursor']) {
       const g = svg('g', { class: `layer layer-${n}` });
       this.layers[n] = g;
       this.el.append(g);
@@ -139,21 +156,26 @@ export class EditorBoard {
   /* ----------------------------------------------------------------- render */
 
   render(
-    grid: TacticalGrid,
-    map: GameMap,
-    units: LevelUnit[],
-    players: PlayerConfig[],
+    scene: EditorScene,
     opts: { cursor: Coord | null; brush: Coord[]; showCoords: boolean; showOwners: boolean },
   ): void {
+    const { grid, levelId, map, units, players } = scene;
     this.map = map;
     this.units = units;
     this.players = players;
 
-    const sig = battlefieldRenderKey(map);
+    const sig = `${levelId}|${battlefieldRenderKey(map)}`;
     if (sig !== this.signature) {
       this.signature = sig;
+      // The ground the scene paints, then the tiles the per-cell painters draw on
+      // top of it. Two layers because they answer two questions: what this cell is
+      // made of, and what stands on it.
+      clear(this.layers.ground);
       clear(this.layers.terrain);
       const colorOf = (id: number) => players.find((p) => p.id === id)?.color;
+      this.layers.ground.append(...[...fromMarkup(boardPiecesMarkup(
+        mapGroundPieces({ art: this.art, content: this.content, grid }, levelId, map),
+      )).childNodes]);
       this.layers.terrain.append(...[...fromMarkup(boardPiecesMarkup(
         terrainLayerPieces({ art: this.art, layout: squareLayout, content: this.content }, map, colorOf),
       )).childNodes]);

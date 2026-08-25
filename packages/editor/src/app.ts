@@ -538,7 +538,13 @@ export class EditorApp {
   }
 
   private paintBoard(): void {
-    this.board.render(this.grid, this.doc.map, this.doc.units, this.doc.players, {
+    this.board.render({
+      levelId: this.doc.id,
+      grid: this.grid,
+      map: this.doc.map,
+      units: this.doc.units,
+      players: this.doc.players,
+    }, {
       cursor: this.cursor,
       brush: this.brushTiles(),
       showCoords: this.showCoords,

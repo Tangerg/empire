@@ -31,16 +31,26 @@ describe('candidate-01 runtime art bindings', () => {
     expect(rogue.strip).toBeUndefined();
   });
 
-  it('selects connected terrain by the engine N/E/S/W mask', () => {
-    const road = terrainMarkup(art, TEST_CATALOG.terrains.get('road'), {
-      x: 2,
-      y: 3,
-      linked: { n: true, e: true, s: false, w: false },
-    });
-
-    expect(road).toContain('data-runtime-raster="atlas-cell"');
-    expect(road).toContain('/terrain-border-2.png');
-    expect(road).toContain('x="-96"');
+  /**
+   * This used to assert the opposite: that a road cell came back as one cell of
+   * `terrain-border-2.png`, picked by the N/E/S/W mask.
+   *
+   * That was the second answer to "what is this cell's ground made of". It stamped
+   * one four-variant tile per cell with no transitions and — for everything but the
+   * roads — no connections either, and it ran on every level except chapter one.
+   * The scene's material table owns the question now, so this painter has nothing
+   * to say about the ground: empty, not `null`, because `null` would send the
+   * generic painter in to draw a tile underneath the painted one.
+   */
+  it('says nothing about ground the scene paints', () => {
+    for (const id of ['road', 'plain', 'water', 'forest', 'c01.street'] as const) {
+      const markup = terrainMarkup(art, TEST_CATALOG.terrains.get(id), {
+        x: 2,
+        y: 3,
+        linked: { n: true, e: true, s: false, w: false },
+      });
+      expect(markup, id).toBe('');
+    }
   });
 
   it('uses the captured building state and a dynamic owner marker', () => {

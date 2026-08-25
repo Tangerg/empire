@@ -2,12 +2,10 @@ import { GENERIC_PRESENTATION, type BattlePresentation } from './battle-presenta
 import type { ArtProvider } from './ports';
 
 /**
- * Two entries under one name are refused, because order would decide silently.
+ * Two providers under one name are refused, because order would decide silently.
  *
- * Both lists, for the same reason: `presentationFor` takes the first that
- * `matches`, so the same painted scene composed twice makes the second copy
- * unreachable and nothing says so. Only the provider list was checked, which made
- * the rule look like it was about providers rather than about composition.
+ * The presentation list was checked the same way, and is gone: an art direction
+ * carries one scene, so there is no second copy to be shadowed.
  */
 function requireDistinctIds(kind: string, entries: readonly { id: string }[]): void {
   const seen = new Set<string>();
@@ -19,7 +17,7 @@ function requireDistinctIds(kind: string, entries: readonly { id: string }[]): v
 
 /**
  * The art one shell was handed: providers in the order they are consulted, and
- * the battle presentations it may choose from.
+ * the one scene its battles are drawn in.
  *
  * This used to be two module-level mutable arrays that story packages pushed
  * themselves into, which made the theme a function of import order. It worked
@@ -27,14 +25,17 @@ function requireDistinctIds(kind: string, entries: readonly { id: string }[]): v
  * unit id would resolve by whoever registered last, and nothing in the code said
  * so. Art is composed by the application root now, the same way its content
  * catalog and its ruleset are.
+ *
+ * The scene became singular for the same reason it became explicit. It was a list
+ * searched by a `matches(levelId)` predicate, and the predicate was how a pack
+ * declined levels the root had already given it.
  */
 export class ArtDirection {
   constructor(
     readonly providers: readonly ArtProvider[] = [],
-    readonly presentations: readonly BattlePresentation[] = [],
+    readonly presentation: BattlePresentation = GENERIC_PRESENTATION,
   ) {
     requireDistinctIds('art provider', providers);
-    requireDistinctIds('battle presentation', presentations);
   }
 
   /**
@@ -52,16 +53,6 @@ export class ArtDirection {
       if (found != null) return found;
     }
     return null;
-  }
-
-  /**
-   * The presentation for one level.
-   *
-   * Painted scenes claim their own levels by `matches`; anything unclaimed gets
-   * the generic look, which is the one that works over any art.
-   */
-  presentationFor(levelId: string): BattlePresentation {
-    return this.presentations.find((presentation) => presentation.matches(levelId)) ?? GENERIC_PRESENTATION;
   }
 }
 

@@ -34,24 +34,16 @@ export const CANDIDATE_01_UNIT_ART: Readonly<Partial<Record<UnitTypeId, string>>
   'c01.laborer': 'C01-MISSION-BRIDGE-LABORER',
 };
 
-export const CANDIDATE_01_TERRAIN_ART: Readonly<Partial<Record<TerrainId, string>>> = {
-  plain: 'C01-TERRAIN-BORDER-1',
-  road: 'C01-TERRAIN-BORDER-2',
-  bridge: 'C01-TERRAIN-RIVER-3',
-  forest: 'C01-TERRAIN-SILVERWOOD-1',
-  hill: 'C01-TERRAIN-WASTELAND-2',
-  mountain: 'C01-TERRAIN-WASTELAND-2',
-  water: 'C01-TERRAIN-RIVER-2',
-  wall: 'C01-TERRAIN-CAPITAL-1',
-  'c01.scorched': 'C01-TERRAIN-BORDER-3',
-  'c01.riverbank': 'C01-TERRAIN-RIVER-1',
-  'c01.street': 'C01-TERRAIN-CAPITAL-2',
-  'c01.oathway': 'C01-TERRAIN-OATHLIGHT-2',
-  'c01.forge': 'C01-TERRAIN-FORGE-1',
-  'c01.graveyard': 'C01-TERRAIN-GRAVEYARD-1',
-  'c01.molten': 'C01-TERRAIN-FORGE-2',
-  'c01.mother-root': 'C01-TERRAIN-SILVERWOOD-2',
-};
+/*
+ * `CANDIDATE_01_TERRAIN_ART` stood here: sixteen terrains mapped to one
+ * four-variant high-density tile each, stamped one per cell with no transition and
+ * no connection. It was the second answer to "what does this cell's ground look
+ * like", chosen over the environment builder's composition by a level-id
+ * allowlist — so chapter one was painted and the other fifteen were stamped.
+ *
+ * `candidate-01-terrain-materials.ts` owns that question now, in the kit's own
+ * vocabulary, for every level.
+ */
 
 export const CANDIDATE_01_MAP_STRUCTURE_ART: Readonly<Partial<Record<TerrainId, string>>> = {
   village: 'C01-STRUCT-JOINT-GRANARY',

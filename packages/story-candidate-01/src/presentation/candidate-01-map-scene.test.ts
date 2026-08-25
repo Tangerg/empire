@@ -18,7 +18,7 @@ import { CANDIDATE_01_CONTENT_PACK } from '../index';
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const sceneContext = (levelId: string, map: ReturnType<typeof mapFromLevel>) => {
-  const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile(levelId));
+  const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile());
   return { content: TEST_CATALOG, levelId, map, viewport };
 };
 
@@ -66,7 +66,9 @@ describe('candidate-01 authored map scenery', () => {
     const surfaces = layers.ground
       .slice(0, map.width * map.height)
       .map((piece) => piece.markup);
-    expect(new Set(surfaces).size).toBe(4);
+    // Four patch variants per material, and this map is made of two: meadow and
+    // the old stone its mountains stand on. Seven of the eight appear.
+    expect(new Set(surfaces).size).toBe(7);
     // And every piece says where it goes, rather than carrying it inside.
     expect(layers.ground.every((piece) => !piece.markup.includes('translate') || piece.markup.includes('scale')))
       .toBe(true);
@@ -74,7 +76,7 @@ describe('candidate-01 authored map scenery', () => {
 
   it('authors a non-playable forest frame outside the logical cells', () => {
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
-    const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile('c01-01'));
+    const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile());
     const frame = candidate01SceneFrameMarkup({ content: TEST_CATALOG, levelId: 'c01-01', map, viewport });
 
     expect(viewport.sceneWidth).toBeGreaterThan(map.width * 32);
@@ -85,11 +87,65 @@ describe('candidate-01 authored map scenery', () => {
 
   it('does not leak authored Twin Hills dressing into other maps', () => {
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-02'));
-    expect(candidate01MapSceneryLayers(sceneContext('c01-02', map))).toEqual({
-      ground: [],
-      underUnits: [],
-      overUnits: [],
-    });
+    const layers = candidate01MapSceneryLayers(sceneContext('c01-02', map));
+    const markup = boardPiecesMarkup([...layers.ground, ...layers.underUnits, ...layers.overUnits]);
+
+    // Hand-placed props belong to the map somebody placed them on: chapter one's
+    // authored layers reach no other chapter, and neither do its two farmers.
+    expect(layers.overUnits).toEqual([]);
+    expect(markup).not.toContain('is-ground-decal');
+    expect(markup).not.toContain('MISSION-BORDER-FARMER');
+  });
+
+  /**
+   * The point of this round.
+   *
+   * `candidate01MapSceneryLayers` used to return three empty arrays for every
+   * level except `c01-01` and the experience lab, and `candidate01TerrainMarkup`
+   * stamped one four-variant tile per cell for the rest — no transitions, no
+   * connections. So fifteen chapters of sixteen, and every built-in level, were a
+   * visible grid of stamps beside high-density painted buildings.
+   *
+   * Every level is composed from the material table now. What each terrain is made
+   * of is a story decision the table states; what a *tag* can say is the fallback,
+   * so a map this pack has never seen is painted rather than left bare.
+   */
+  it('paints every shipped chapter from the material table', () => {
+    for (const levelId of ['c01-02', 'c01-09', 'c01-14', 'c01-16']) {
+      const map = mapFromLevel(TEST_CATALOG, candidate01Level(levelId));
+      const layers = candidate01MapSceneryLayers(sceneContext(levelId, map));
+      const ground = boardPiecesMarkup(layers.ground);
+
+      // A surface under every cell, and no cell drawn twice by the surface pass.
+      expect(layers.ground.length, levelId).toBeGreaterThanOrEqual(map.width * map.height);
+      expect(ground, levelId).toContain('surface-meadow');
+      expect(ground, levelId).toContain('candidate-ground-route');
+      expect(boardPiecesMarkup(layers.underUnits), levelId).toContain('candidate-environment-prop');
+    }
+  });
+
+  /**
+   * A river is a river, a wood shows its edge, and a crossing has a deck.
+   *
+   * These three were unreachable before, not merely unused: the catalog was
+   * filtered by the asset allowlist inside chapter one's scene document, so the
+   * four water sheets, the three other routes and the crossings atlas were not in
+   * the pack at all. `c01-02` is the first chapter with a river across it.
+   */
+  it('gives water, woodland and crossings the connected sheets they need', () => {
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-02'));
+    const layers = candidate01MapSceneryLayers(sceneContext('c01-02', map));
+    const ground = boardPiecesMarkup(layers.ground);
+    const standing = boardPiecesMarkup(layers.underUnits);
+
+    expect(map.tiles).toContain('water');
+    expect(map.tiles).toContain('bridge');
+    expect(ground).toContain('water-slow-river');
+    expect(ground).toContain('transition-meadow-forest');
+    expect(standing).toContain('crossings-fortifications');
+    // A wood's edge carries the tall-prop shadow; its inside carries undergrowth.
+    expect(standing).toContain('is-standing');
+    expect(standing).toContain('forest-temperate');
   });
 });
 
@@ -106,7 +162,7 @@ describe('candidate-01 authored map scenery', () => {
 describe('the board carries its own look', () => {
   it('ships the pack style with every level, painted or not', () => {
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
-    const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile('c01-01'));
+    const viewport = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile());
     const painted = candidate01SceneFrameMarkup({ content: TEST_CATALOG, levelId: 'c01-01', map, viewport });
     const plain = candidate01SceneFrameMarkup({ content: TEST_CATALOG, levelId: 'c01-09', map, viewport });
 

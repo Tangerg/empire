@@ -64,7 +64,6 @@ const CANDIDATE_01_BATTLE_PRESENTATION: BattlePresentation = Object.freeze({
   boardClass: 'candidate-map',
   // Painted scenes want the tactical layer on the ground, not ruled over it.
   decorations: GroundBoardDecorations,
-  matches: (levelId: string) => levelId.startsWith('c01-') || levelId.startsWith('experience-lab'),
   sceneProfile: candidate01SceneProfile,
   sceneFrame: candidate01SceneFrameMarkup,
   sceneLayers: candidate01MapSceneryLayers,
@@ -104,7 +103,7 @@ const CANDIDATE_01_ART_PROVIDER: ArtProvider = {
 /** This pack's art, ready for an application root to hand to a shell. */
 export const CANDIDATE_01_ART = new ArtDirection(
   [CANDIDATE_01_ART_PROVIDER],
-  [CANDIDATE_01_BATTLE_PRESENTATION],
+  CANDIDATE_01_BATTLE_PRESENTATION,
 );
 
 const JOIN_AFTER: Readonly<Record<string, number>> = { mirelle: 3, bran: 4, tasha: 7, ivra: 9 };

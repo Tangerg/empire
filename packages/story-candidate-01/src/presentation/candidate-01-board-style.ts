@@ -77,7 +77,8 @@ export const CANDIDATE_01_BOARD_STYLE = `<style>
     drop-shadow(0 2px 2px rgb(5 12 9 / 34%));
 }
 
-.candidate-environment-prop.is-boundary-tree {
+/* A thing that stands tall — a tree at a wood's edge, a cliff pillar, a granary. */
+.candidate-environment-prop.is-standing {
   filter:
     drop-shadow(0 1px 0 rgb(4 10 7 / 74%))
     drop-shadow(0 3px 3px rgb(4 10 7 / 42%));

@@ -14,6 +14,15 @@ import {
   type BattleSceneContext,
 } from '@empire/game-ui';
 import { CANDIDATE_01_BOARD_STYLE } from './candidate-01-board-style';
+import {
+  CANDIDATE_FIELD_BASE,
+  CANDIDATE_FOREST_FLOOR,
+  CANDIDATE_FOUNDATIONS,
+  CANDIDATE_FRAME_TREES,
+  candidateMaterial,
+  type CandidateConnected,
+  type CandidateMaterial,
+} from './candidate-01-terrain-materials';
 import type {
   SceneFrameMarkup,
   SceneLayers,
@@ -23,13 +32,14 @@ import type {
 
 const TILE = 32;
 
+/** The four cells a connection mask counts, in the order the kit numbers them. */
+const ORTHOGONAL = [[0, -1], [1, 0], [0, 1], [-1, 0]] as const;
+
 /** Where a cell's art goes: the cell's own origin. */
 const cellOrigin = (x: number, y: number): { x: number; y: number } => ({ x: x * TILE, y: y * TILE });
 
 const tileAt = (map: GameMap, x: number, y: number): TerrainId | null =>
   x < 0 || y < 0 || x >= map.width || y >= map.height ? null : map.tiles[y * map.width + x];
-
-const isForest = (map: GameMap, x: number, y: number): boolean => tileAt(map, x, y) === 'forest';
 
 const isRoute = (content: ContentCatalog, map: GameMap, x: number, y: number): boolean => {
   const id = tileAt(map, x, y);
@@ -38,14 +48,15 @@ const isRoute = (content: ContentCatalog, map: GameMap, x: number, y: number): b
   return tags.includes('road') || tags.includes('building') || tags.includes('outpost');
 };
 
-const usesTwinHillsComposition = (levelId: string): boolean =>
-  levelId === 'c01-01' || levelId.startsWith('experience-lab');
-
-/** The visual map is wide, while the deterministic board remains a square lattice. */
-export function candidate01SceneProfile(levelId: string): SceneViewportProfile {
-  return usesTwinHillsComposition(levelId)
-    ? { insets: { top: 62, right: 74, bottom: 74, left: 74 } }
-    : {};
+/**
+ * The visual map is wide, while the deterministic board remains a square lattice.
+ *
+ * Every level, not one. These insets are the band the woodland frame stands in, and
+ * the frame is what makes a battlefield a place rather than a rectangle of tiles.
+ * It used to be granted to chapter one and the experience lab by level id.
+ */
+export function candidate01SceneProfile(): SceneViewportProfile {
+  return { insets: { top: 62, right: 74, bottom: 74, left: 74 } };
 }
 
 /**
@@ -161,60 +172,111 @@ function placementPiece(placement: CandidateEnvironmentPlacement): BoardPiece | 
   };
 }
 
-function blobMask(map: GameMap, x: number, y: number): number {
-  return (isForest(map, x, y - 1) ? 1 : 0)
-    | (isForest(map, x + 1, y - 1) ? 2 : 0)
-    | (isForest(map, x + 1, y) ? 4 : 0)
-    | (isForest(map, x + 1, y + 1) ? 8 : 0)
-    | (isForest(map, x, y + 1) ? 16 : 0)
-    | (isForest(map, x - 1, y + 1) ? 32 : 0)
-    | (isForest(map, x - 1, y) ? 64 : 0)
-    | (isForest(map, x - 1, y - 1) ? 128 : 0);
+/** One field the whole map is read through: what each cell is made of. */
+type MaterialField = (x: number, y: number) => CandidateMaterial | null;
+
+const materialField = (content: ContentCatalog, map: GameMap): MaterialField => (x, y) => {
+  const id = tileAt(map, x, y);
+  return id === null ? null : candidateMaterial(content, id);
+};
+
+/** The eight-neighbour mask a blob transition sheet is indexed by. */
+function blendMask(field: MaterialField, sheet: string, x: number, y: number): number {
+  const same = (dx: number, dy: number): boolean => field(x + dx, y + dy)?.blend === sheet;
+  return (same(0, -1) ? 1 : 0)
+    | (same(1, -1) ? 2 : 0)
+    | (same(1, 0) ? 4 : 0)
+    | (same(1, 1) ? 8 : 0)
+    | (same(0, 1) ? 16 : 0)
+    | (same(-1, 1) ? 32 : 0)
+    | (same(-1, 0) ? 64 : 0)
+    | (same(-1, -1) ? 128 : 0);
 }
 
-function routeMask(content: ContentCatalog, map: GameMap, x: number, y: number): number {
-  return (isRoute(content, map, x, y - 1) ? 1 : 0)
-    | (isRoute(content, map, x + 1, y) ? 2 : 0)
-    | (isRoute(content, map, x, y + 1) ? 4 : 0)
-    | (isRoute(content, map, x - 1, y) ? 8 : 0);
+/** The four-neighbour mask a connected sheet is indexed by. */
+function connectedMask(
+  content: ContentCatalog,
+  field: MaterialField,
+  map: GameMap,
+  connected: CandidateConnected,
+  x: number,
+  y: number,
+): number {
+  const linked = connected.mask === 'route'
+    ? (dx: number, dy: number): boolean => isRoute(content, map, x + dx, y + dy)
+    : (dx: number, dy: number): boolean => field(x + dx, y + dy)?.connected?.atlas === connected.atlas;
+  return (linked(0, -1) ? 1 : 0) | (linked(1, 0) ? 2 : 0) | (linked(0, 1) ? 4 : 0) | (linked(-1, 0) ? 8 : 0);
 }
 
 /**
- * Asset-only terrain composition. It keeps the Ancient Empires virtues—clear
- * connected roads and readable occupied cells—without reverting to flat tiles.
+ * The ground of every cell, composed from the kit the campaign ships.
+ *
+ * Four passes concatenated at the end, because within one layer the order of the
+ * pieces *is* the depth: the surface, then the blob transitions that soften its
+ * seams, then the connected roads and waters, then the loose detail on top.
+ *
+ * It used to run on chapter one alone. Everything below reads the material table,
+ * so a level this pack has never seen — a built-in map, a level somebody drew in
+ * the editor — is painted by the same four passes.
  */
-function terrainGroundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
-  // Kept in four passes and concatenated at the end: the depth order within the
-  // layer is surface, then forest transitions, then roads, then loose detail.
-  const base: BoardPiece[] = [];
-  const transitions: BoardPiece[] = [];
-  const routes: BoardPiece[] = [];
-  const decals: BoardPiece[] = [];
+function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
+  const field = materialField(content, map);
+  const surfaces: BoardPiece[] = [];
+  const blends: BoardPiece[] = [];
+  const connections: BoardPiece[] = [];
+  const detail: BoardPiece[] = [];
   for (let y = 0; y < map.height; y++) {
     for (let x = 0; x < map.width; x++) {
       const at = cellOrigin(x, y);
+      const id = tileAt(map, x, y);
+      if (id === null) continue;
+      const material = candidateMaterial(content, id);
+
       // Broad material patches avoid the noisy checkerboard produced by a
       // per-cell random variant while still breaking up a flat tiled field.
-      const patchX = Math.floor(x / 4);
-      const patchY = Math.floor(y / 3);
-      const variant = Math.floor(tileHash(patchX, patchY, 1101) * 4);
-      base.push({ markup: atlasCellMarkup('surface-meadow', variant), ...at });
-      if (isForest(map, x, y)) {
-        const cell = CANDIDATE_01_ENVIRONMENT.blobIndex('transition-meadow-forest', blobMask(map, x, y));
-        transitions.push({ markup: atlasCellMarkup('transition-meadow-forest', cell), ...at });
+      const patchVariant = Math.floor(tileHash(Math.floor(x / 4), Math.floor(y / 3), 1101) * 4);
+      surfaces.push({
+        markup: atlasCellMarkup(material.surface ?? CANDIDATE_FIELD_BASE, patchVariant),
+        ...at,
+      });
+
+      if (material.blend) {
+        const cell = CANDIDATE_01_ENVIRONMENT.blobIndex(material.blend, blendMask(field, material.blend, x, y));
+        blends.push({ markup: atlasCellMarkup(material.blend, cell), ...at });
       }
-      if (isRoute(content, map, x, y)) {
-        const mask = routeMask(content, map, x, y);
-        const roadVariant = Math.floor(tileHash(x, y, 1102) * 4);
-        const cell = CANDIDATE_01_ENVIRONMENT.connectedIndex('route-dirt-road', mask, roadVariant);
+
+      if (material.connected) {
+        const mask = connectedMask(content, field, map, material.connected, x, y);
+        const variant = Math.floor(tileHash(x, y, 1102) * 4);
+        const cell = CANDIDATE_01_ENVIRONMENT.connectedIndex(material.connected.atlas, mask, variant);
         // These two classes are the only ones in this layer a stylesheet reads.
-        routes.push({ markup: atlasCellMarkup('route-dirt-road', cell, 'candidate-ground-route'), ...at });
-        routes.push({ markup: atlasCellMarkup('route-edge-dirt-road', cell, 'candidate-ground-route-edge'), ...at });
-      } else if (tileAt(map, x, y) === 'plain' && tileHash(x, y, 1103) > 0.9) {
-        const detail = tileHash(x, y, 1104) > 0.5 ? 'grass-tuft-a' : 'fallen-leaves';
-        decals.push({
-          markup: environmentCellMarkup(detail, {
-            scale: 0.58,
+        connections.push({
+          markup: atlasCellMarkup(material.connected.atlas, cell, 'candidate-ground-route'),
+          ...at,
+        });
+        if (material.connected.edge) {
+          connections.push({
+            markup: atlasCellMarkup(material.connected.edge, cell, 'candidate-ground-route-edge'),
+            ...at,
+          });
+        }
+      }
+
+      const foundation = CANDIDATE_FOUNDATIONS[id];
+      if (foundation) {
+        detail.push({
+          markup: environmentCellMarkup(foundation, { scale: 0.3 }),
+          x: (x + 0.5) * TILE,
+          y: (y + 1) * TILE,
+        });
+      }
+
+      const decals = material.decals;
+      if (decals && tileHash(x, y, 1103) < decals.chance) {
+        const pick = decals.ids[Math.floor(tileHash(x, y, 1104) * decals.ids.length)];
+        detail.push({
+          markup: environmentCellMarkup(pick, {
+            scale: decals.scale,
             flip: tileHash(x, y, 1105) > 0.5,
             opacity: 0.72,
           }),
@@ -224,7 +286,7 @@ function terrainGroundPieces(content: ContentCatalog, map: GameMap): BoardPiece[
       }
     }
   }
-  return [...base, ...transitions, ...routes, ...decals];
+  return [...surfaces, ...blends, ...connections, ...detail];
 }
 
 function authoredPlacementPieces(
@@ -238,34 +300,72 @@ function authoredPlacementPieces(
     .filter((piece): piece is BoardPiece => piece !== null);
 }
 
-function forestSceneryPieces(map: GameMap): BoardPiece[] {
+/**
+ * What stands on a cell: a tree, a rock, a wall, a haystack, a bridge deck.
+ *
+ * Two rules earn their place here beyond the material table.
+ *
+ * A wood shows its shape at its edge. A canopy on every forest cell hides the
+ * units standing in the wood, which is the one thing a tactical map may not do —
+ * so the trees go where the wood ends and the inside gets ferns and stumps. The
+ * old rule asked whether the cell was near the *map's* border, which is a
+ * different question with the same answer only on chapter one's map.
+ *
+ * A crossing is drawn along the way it carries. `wood-bridge-horizontal` and
+ * `-vertical` are two pictures, and which one a cell wants is decided by the
+ * neighbours a traveller could reach from it.
+ */
+function sceneryPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
+  const field = materialField(content, map);
   const parts: BoardPiece[] = [];
-  const canopy = ['oak-ancient', 'mixed-forest-autumn', 'mixed-forest-dense', 'oak-grove-dense', 'mixed-forest-edge'] as const;
-  const understory = ['sapling-rock-cluster', 'bramble-dark', 'fern-bed', 'bramble-berries', 'stump-low', 'stump-hollow', 'forest-floor-cluster'] as const;
+  const stand = (id: string, x: number, y: number, placing: EnvironmentCellPlacing, jitter = 0): void => {
+    parts.push({
+      markup: environmentCellMarkup(id, placing),
+      x: (x + 0.5) * TILE + (tileHash(x, y, 1122) - 0.5) * jitter,
+      y: (y + 1.18) * TILE,
+    });
+  };
+
   for (let y = 0; y < map.height; y++) {
     for (let x = 0; x < map.width; x++) {
-      if (!isForest(map, x, y)) continue;
-      const boundary = x <= 1 || y <= 1 || x >= map.width - 2 || y >= map.height - 2;
-      if (!boundary && tileHash(x, y, 1119) < 0.34) continue;
-      const choices = boundary ? canopy : understory;
-      const id = choices[Math.floor(tileHash(x, y, 1120) * choices.length)];
-      const scale = boundary ? 0.72 + tileHash(x, y, 1121) * 0.12 : 0.56 + tileHash(x, y, 1121) * 0.12;
-      parts.push({
-        markup: environmentCellMarkup(id, {
-          scale,
-          flip: tileHash(x, y, 1123) > 0.52,
-          opacity: boundary ? 1 : 0.9,
-          className: boundary ? 'is-boundary-tree' : 'is-interior-forest',
-        }),
-        x: (x + 0.5) * TILE + (tileHash(x, y, 1122) - 0.5) * 10,
-        y: (y + 1.18) * TILE,
-      });
+      const id = tileAt(map, x, y);
+      if (id === null) continue;
+      const material = candidateMaterial(content, id);
+
+      if (id === 'bridge') {
+        const alongX = isRoute(content, map, x - 1, y) || isRoute(content, map, x + 1, y);
+        stand(alongX ? 'wood-bridge-horizontal' : 'wood-bridge-vertical', x, y, { scale: TILE / 96 });
+        continue;
+      }
+
+      // Inside a wood, understory; at its edge, canopy. Same material on all four
+      // sides is what "inside" means.
+      const enclosed = material.blend !== undefined
+        && ORTHOGONAL.every(([dx, dy]) => field(x + dx, y + dy)?.blend === material.blend);
+      const scenery = enclosed ? CANDIDATE_FOREST_FLOOR : material.scenery;
+      if (!scenery) continue;
+      if (scenery.chance !== undefined && tileHash(x, y, 1119) > scenery.chance) continue;
+
+      const pick = scenery.ids[Math.floor(tileHash(x, y, 1120) * scenery.ids.length)];
+      stand(pick, x, y, {
+        scale: scenery.scale + tileHash(x, y, 1121) * 0.12,
+        flip: tileHash(x, y, 1123) > 0.52,
+        // Undergrowth sits back; anything that stands tall wears the heavier shadow.
+        ...(enclosed ? { opacity: 0.9 } : { className: 'is-standing' }),
+      }, scenery.jitter ?? 0);
     }
   }
   return parts;
 }
 
-function ambientVillagerPieces(): BoardPiece[] {
+/**
+ * Two farmers working chapter one's fields.
+ *
+ * Placed by coordinate, so they belong to the map those coordinates are on — the
+ * same thing an authored placement is, written in a different file.
+ */
+function ambientVillagerPieces(levelId: string): BoardPiece[] {
+  if (levelId !== 'c01-01') return [];
   return [
     { topicId: 'C01-MISSION-BORDER-FARMER', x: 13.8, y: 9.15, layer: 'under-units', scale: 0.88, opacity: 0.86 },
     { topicId: 'C01-MISSION-BORDER-FARMER', x: 15.4, y: 7.25, layer: 'under-units', scale: 0.82, flip: true, opacity: 0.82 },
@@ -293,27 +393,22 @@ function ambientVillagerPieces(): BoardPiece[] {
  *
  * A layer is its pieces. The renderer's own layer group is the group.
  */
-function twinHillsGroundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
-  return [
-    ...terrainGroundPieces(content, map),
-    ...authoredPlacementPieces('c01-01', 'foundation'),
-    ...authoredPlacementPieces('c01-01', 'ground-decal'),
-  ];
-}
-
-function twinHillsUnderUnitPieces(map: GameMap): BoardPiece[] {
-  return [
-    ...forestSceneryPieces(map),
-    ...authoredPlacementPieces('c01-01', 'under-units'),
-    ...ambientVillagerPieces(),
-    // A warm wash over the whole field, which is art with no place of its own.
-    ...wholeField(`<rect width="${map.width * TILE}" height="${map.height * TILE}" fill="#f3d69a" opacity="0.035"/>`),
-  ];
-}
+/**
+ * Chapter one's hand-placed dressing, on top of what the material table paints.
+ *
+ * Authored placements stay level-specific because that is what they are: somebody
+ * decided that a hill cap goes *there*. Everything procedural applies everywhere,
+ * so a level with no authored scene is dressed rather than bare — which is what
+ * fifteen chapters and every built-in level used to be.
+ */
+const authoredGroundPieces = (levelId: string): BoardPiece[] => [
+  ...authoredPlacementPieces(levelId, 'foundation'),
+  ...authoredPlacementPieces(levelId, 'ground-decal'),
+];
 
 function sceneFrameForestMarkup(viewport: SceneViewport): string {
   const parts: string[] = [];
-  const trees = ['oak-ancient', 'mixed-forest-autumn', 'mixed-forest-dense', 'oak-grove-dense'] as const;
+  const trees = CANDIDATE_FRAME_TREES;
   const horizontalCount = Math.ceil(viewport.sceneWidth / 54) + 2;
   const verticalCount = Math.ceil(viewport.sceneHeight / 58);
   for (let i = 0; i < horizontalCount; i++) {
@@ -349,14 +444,12 @@ function sceneFrameForestMarkup(viewport: SceneViewport): string {
 
 /** Non-playable woodland surrounds, but never changes, the tactical field. */
 export function candidate01SceneFrameMarkup(
-  { levelId, map, viewport }: BattleSceneContext,
+  { map, viewport }: BattleSceneContext,
 ): SceneFrameMarkup {
-  // Every level of this campaign carries the pack's board style, painted scene or
-  // not: an atlas tile and a unit figure wear its shadows even where no scenery was
-  // authored, and a stylesheet is not in the room when markup becomes a texture.
-  if (!usesTwinHillsComposition(levelId)) {
-    return { backdrop: CANDIDATE_01_BOARD_STYLE, foreground: '' };
-  }
+  // Every level of this campaign carries the pack's board style: an atlas tile and
+  // a unit figure wear its shadows, and a stylesheet is not in the room when markup
+  // becomes a texture. Every level gets the woodland too — it used to be chapter
+  // one's, so fifteen chapters were a rectangle of tiles on a flat page.
   const fieldX = viewport.originX - 24;
   const fieldY = viewport.originY - 18;
   return {
@@ -384,10 +477,15 @@ export function candidate01SceneFrameMarkup(
 export function candidate01MapSceneryLayers(
   { content, levelId, map }: BattleSceneContext,
 ): SceneLayers {
-  if (!usesTwinHillsComposition(levelId)) return { ground: [], underUnits: [], overUnits: [] };
   return {
-    ground: twinHillsGroundPieces(content, map),
-    underUnits: twinHillsUnderUnitPieces(map),
-    overUnits: authoredPlacementPieces('c01-01', 'over-units'),
+    ground: [...groundPieces(content, map), ...authoredGroundPieces(levelId)],
+    underUnits: [
+      ...sceneryPieces(content, map),
+      ...authoredPlacementPieces(levelId, 'under-units'),
+      ...ambientVillagerPieces(levelId),
+      // A warm wash over the whole field, which is art with no place of its own.
+      ...wholeField(`<rect width="${map.width * TILE}" height="${map.height * TILE}" fill="#f3d69a" opacity="0.035"/>`),
+    ],
+    overUnits: authoredPlacementPieces(levelId, 'over-units'),
   };
 }

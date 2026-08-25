@@ -16,7 +16,6 @@ import {
 import {
   CANDIDATE_01_MAP_STRUCTURE_ART,
   CANDIDATE_01_STRUCTURE_ART,
-  CANDIDATE_01_TERRAIN_ART,
   CANDIDATE_01_UNIT_ART,
   CANDIDATE_01_WEAPON_FX,
 } from './candidate-01-bindings';
@@ -71,13 +70,6 @@ function cellAtlas(record: Candidate01RuntimeAsset): RuntimeCellAtlas {
   return { href: record.url, cellWidth, cellHeight, columns: cells, rows: 1 };
 }
 
-const connectionMask = (linked: TileContext['linked']): number =>
-  (linked.n ? 1 : 0) | (linked.e ? 2 : 0) | (linked.s ? 4 : 0) | (linked.w ? 8 : 0);
-
-const baseTerrain = (theme?: string): RuntimeCellAtlas => cellAtlas(candidate01Asset(
-  theme === 'c01-01' ? 'C01-TERRAIN-SILVERWOOD-1' : 'C01-TERRAIN-BORDER-1',
-));
-
 function structureFrame(record: Candidate01RuntimeAsset, state: 'normal' | 'damaged' | 'captured'): number {
   const index = record.stateOrder?.indexOf(state) ?? -1;
   if (index < 0) throw new Error(`candidate-01 structure ${record.topicId} has no "${state}" frame`);
@@ -107,34 +99,26 @@ export function candidate01UnitIcon(type: UnitTypeId, team: string, size: number
   return `<svg viewBox="0 -16 32 48" width="${size}" height="${size}">${boardPictureMarkup(picture)}</svg>`;
 }
 
-export function candidate01TerrainMarkup(id: TerrainId, ctx: TileContext): string | null {
+/**
+ * A building on a cell — and nothing else, because the scene owns the ground.
+ *
+ * This used to answer two questions. It drew the structures, and it also drew the
+ * *surface* of every cell from `CANDIDATE_01_TERRAIN_ART`: one four-variant tile
+ * per terrain, no transitions and no connections, so a field of it came out as a
+ * visible grid of stamps. That path ran on every level except chapter one and the
+ * experience lab, which had the environment builder's composition instead.
+ *
+ * Two owners for one question, chosen by level id. The scene paints every level
+ * now, so what is left here is the building, and the empty string is this
+ * painter's way of saying the ground is somebody else's business. (Not `null`:
+ * that means "no opinion" and lets the generic painter draw a tile underneath.)
+ */
+export function candidate01TerrainMarkup(id: TerrainId, ctx: TileContext): string {
   const structureTopic = CANDIDATE_01_MAP_STRUCTURE_ART[id];
-  if (structureTopic) {
-    const record = candidate01Asset(structureTopic);
-    const captured = ctx.ownerColor !== undefined;
-    const frame = structureFrame(record, captured ? 'captured' : 'normal');
-    if (ctx.theme === 'c01-01') return structureAssetMarkup(record, frame, ctx.ownerColor);
-    const groundCell = Math.min(3, Math.floor(((ctx.x * 31 + ctx.y * 17) >>> 0) % 4));
-    return `${runtimeAtlasCellMarkup(baseTerrain(ctx.theme), groundCell)}${structureAssetMarkup(record, frame, ctx.ownerColor)}`;
-  }
-
-  // Twin Hills owns its complete terrain surface in the scene ground pass, so it
-  // asks for no tile. That used to be an invisible non-empty group, because the
-  // consumer tested the answer for truthiness and an empty string meant "no
-  // opinion" — one empty element per cell, 8,352 nodes of nothing on `c01-16`.
-  if (ctx.theme === 'c01-01' || ctx.theme?.startsWith('experience-lab')) return '';
-
-  const topic = CANDIDATE_01_TERRAIN_ART[id];
-  if (!topic) return null;
-  const record = candidate01Asset(topic);
-  const atlas = cellAtlas(record);
-  const cell = record.tileMode === 'nesw-16'
-    ? connectionMask(ctx.linked)
-    : Math.min(atlas.columns - 1, Math.floor((((ctx.x * 31 + ctx.y * 17) >>> 0) % 997) / 997 * atlas.columns));
-  const ground = record.tileMode === 'nesw-16'
-    ? runtimeAtlasCellMarkup(baseTerrain(ctx.theme), Math.floor((((ctx.x * 31 + ctx.y * 17) >>> 0) % 4)))
-    : '';
-  return `${ground}${runtimeAtlasCellMarkup(atlas, cell)}`;
+  if (!structureTopic) return '';
+  const record = candidate01Asset(structureTopic);
+  const frame = structureFrame(record, ctx.ownerColor !== undefined ? 'captured' : 'normal');
+  return structureAssetMarkup(record, frame, ctx.ownerColor);
 }
 
 /** Render a destructible battle structure without leaking campaign art into the engine model. */

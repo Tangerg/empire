@@ -39,6 +39,7 @@ import {
   portraitSvg,
   readCustomLevels,
   requireMountPoint,
+  mapGroundPieces,
   terrainLayerPieces,
   escapeHtml,
   squareLayout,
@@ -55,6 +56,8 @@ new ContentPackInstaller(content).install(
   CANDIDATE_01_CONTENT_PACK,
 );
 const engine = createBattleEngine({ content });
+/** The tiling a level card's picture is measured on. */
+const grid = engine.rules.grids.get('square4');
 // Composition root: art is composed here beside the catalog and the engine, so a
 // second story pack would be another entry rather than another import side effect.
 const art = CANDIDATE_01_ART;
@@ -70,6 +73,9 @@ let active: GameController | StoryCampaignController | null = null;
 function thumbnail(level: LevelData): string {
   const map = mapFromLevel(content, level);
   const colorOf = (id: number) => level.players.find((p) => p.id === id)?.color;
+  // The ground the scene paints, under the tiles the per-cell painters draw. A
+  // card that showed only the second one showed a level's buildings on nothing.
+  const ground = boardPiecesMarkup(mapGroundPieces({ art, content, grid }, level.id, map));
   const units = level.units
     .map((u) => {
       const color = level.players.find((p) => p.id === u.owner)?.color ?? '#aaa';
@@ -78,7 +84,7 @@ function thumbnail(level: LevelData): string {
     })
     .join('');
   return `<svg viewBox="0 0 ${map.width * TILE} ${map.height * TILE}" preserveAspectRatio="xMidYMid slice">
-    ${boardPiecesMarkup(terrainLayerPieces({ art, layout: squareLayout, content }, map, colorOf))}${units}
+    ${ground}${boardPiecesMarkup(terrainLayerPieces({ art, layout: squareLayout, content }, map, colorOf))}${units}
   </svg>`;
 }
 

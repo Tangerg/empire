@@ -1,7 +1,9 @@
 import type { ArtDirection } from './direction';
-import type { GameMap } from '@empire/battle-engine';
+import type { ContentCatalog, GameMap, TacticalGrid } from '@empire/battle-engine';
 import { wholeField, type BoardPiece } from './board-surface';
 import { edgeLine, type BoardLayout } from './board-decorations';
+import { createSceneViewport } from './scene-viewport';
+import { TILE } from './terrain';
 
 const featureColor = {
   elevationBackground: '#2a211a',
@@ -36,6 +38,36 @@ export function battlefieldRenderKey(map: GameMap): string {
     cliffs,
     cover,
   ].join('|');
+}
+
+/**
+ * The ground a map is painted on, for a canvas that is not a battle.
+ *
+ * The editor's canvas and a level card's thumbnail are pictures of a map, and they
+ * drew the ground by asking each terrain's painter for a tile. That worked while
+ * the shipped art answered with a tile; it stopped the moment the campaign's
+ * ground moved into the scene, where it belongs — a surface that knows its
+ * neighbours cannot be one cell's answer.
+ *
+ * Ground pieces are placed in field coordinates, so a canvas that draws the field
+ * at its own origin needs nothing from the viewport. It is built here because
+ * `sceneProfile` may claim a margin, and a scene asked for its layers under a
+ * viewport it did not choose is a scene being lied to.
+ */
+export function mapGroundPieces(
+  canvas: { readonly art: ArtDirection; readonly content: ContentCatalog; readonly grid: TacticalGrid },
+  levelId: string,
+  map: GameMap,
+): readonly BoardPiece[] {
+  const { presentation } = canvas.art;
+  const viewport = createSceneViewport(
+    canvas.grid,
+    map.width,
+    map.height,
+    TILE,
+    presentation.sceneProfile(levelId),
+  );
+  return presentation.sceneLayers({ content: canvas.content, levelId, map, viewport }).ground;
 }
 
 function cliffMarkup(layout: BoardLayout, map: GameMap): string[] {

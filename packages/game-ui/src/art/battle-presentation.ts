@@ -25,7 +25,20 @@ export interface BattlePresentation {
    * could have them.
    */
   decorations?: BoardDecorations;
-  matches(levelId: string): boolean;
+  /*
+   * There was a `matches(levelId)` here, and an `ArtDirection` held a *list* of
+   * presentations that it searched with it.
+   *
+   * It read like per-level selection between painted packs. What it actually did
+   * was let a pack decline a level the application root had already handed it:
+   * this campaign's predicate was `levelId.startsWith('c01-')`, and its painted
+   * composition was gated behind a second allowlist inside that, so one chapter
+   * of sixteen was painted and every built-in level fell through to flat tiles.
+   *
+   * A scene is not a chain. One thing draws the ground, the root says which, and a
+   * presentation that varies by level does it where the level id already arrives —
+   * in `sceneProfile`, `sceneFrame` and `sceneLayers` below.
+   */
   sceneProfile(levelId: string): SceneViewportProfile;
   sceneFrame(scene: BattleSceneContext): SceneFrameMarkup;
   /**
@@ -109,11 +122,10 @@ function genericFieldLight(viewport: SceneViewport): string {
     </g>`;
 }
 
-/** The look a level gets when no painted scene claims it. */
+/** The look a shell gets when its art composes no painted scene. */
 export const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
   id: 'generic',
   decorations: SquareBoardDecorations,
-  matches: () => true,
   sceneProfile: () => ({}),
   sceneFrame: () => EMPTY_FRAME,
   sceneLayers: ({ viewport }: BattleSceneContext) => ({

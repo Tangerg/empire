@@ -33,7 +33,6 @@ describe('how a board draws its tactical layer', () => {
   it('keeps the grid for art that states no preference', () => {
     const plain: BattlePresentation = {
       id: 'test.plain',
-      matches: () => false,
       sceneProfile: () => ({}),
       sceneFrame: () => ({ backdrop: '', foreground: '' }),
       sceneLayers: () => ({ ground: [], underUnits: [], overUnits: [] }),
@@ -54,7 +53,6 @@ describe('how a board draws its tactical layer', () => {
     const mixed: BattlePresentation = {
       id: 'test.mixed',
       decorations: { ...SquareBoardDecorations, id: 'test.hex', shapeRendering: 'auto' },
-      matches: () => false,
       sceneProfile: () => ({}),
       sceneFrame: () => ({ backdrop: '<rect/>', foreground: '' }),
       sceneLayers: () => ({ ground: wholeField('<g/>'), underUnits: [], overUnits: [] }),

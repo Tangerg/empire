@@ -159,7 +159,7 @@ export class BoardView {
   ) {
     this.content = composition.content;
     this.art = composition.art;
-    this.presentation = this.art.presentationFor(state.levelId);
+    this.presentation = this.art.presentation;
     this.decor = decorationsFor(this.presentation);
     this.viewport = createSceneViewport(
       composition.grid,
