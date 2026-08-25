@@ -111,7 +111,7 @@ function codexMarkup(): string {
     <div class="modal-box">
       <div class="modal-head">
         <h2>兵种图鉴</h2>
-        <button class="btn ghost" data-act="closeCodex">✕</button>
+        <button class="btn ghost" data-act="closeModal">✕</button>
       </div>
       <div class="recruit-grid">
         ${content.units.all()
@@ -141,6 +141,48 @@ function codexMarkup(): string {
   </div>`;
 }
 
+/**
+ * Every level this build can be played on, as one overlay over the title art.
+ *
+ * The picture is the screen and the interface lies over it — the same rule the
+ * battle already follows. These used to be two sections of a scrolling document
+ * below the fold, under headings, which is what made the entry to the game read
+ * as a page about the game.
+ */
+function skirmishMarkup(
+  custom: readonly { level: LevelData }[],
+  notes: readonly string[],
+): string {
+  return `<div class="modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>单场战斗</h2>
+        <button class="btn ghost" data-act="closeModal">✕</button>
+      </div>
+      ${notes.map((note) => `<div class="empty-note">${note}</div>`).join('')}
+      <div class="level-grid">${BUILTIN_LEVELS.map((l) => levelCard(l, { custom: false })).join('')}</div>
+      <h3 class="modal-section">我的关卡</h3>
+      ${
+        custom.length === 0
+          ? `<div class="empty-note">还没有自制关卡。用地图编辑器画一张，保存后就会出现在这里。</div>`
+          : `<div class="level-grid">${custom.map((s) => levelCard(s.level, { custom: true })).join('')}</div>`
+      }
+    </div>
+  </div>`;
+}
+
+/** One line of the title screen's menu. A link when it leaves, a button when it acts. */
+const titleItem = (
+  label: string,
+  { act, href, note, primary }: { act?: string; href?: string; note?: string; primary?: boolean },
+): string => {
+  const inner = `<span>${label}</span>${note ? `<small>${note}</small>` : ''}`;
+  const cls = `title-item${primary ? ' primary' : ''}`;
+  return href
+    ? `<a class="${cls}" href="${href}">${inner}</a>`
+    : `<button class="${cls}" data-act="${act ?? ''}">${inner}</button>`;
+};
+
 function renderMenu(): void {
   active?.dispose();
   active = null;
@@ -149,54 +191,38 @@ function renderMenu(): void {
   const campaign = loadCampaignState(CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN);
   const campaignSave = campaign.state;
   const campaignBattles = campaignSave?.battleHistory.length ?? 0;
+  // A save that cannot be read is the player's progress. Say so on the screen it
+  // belongs to rather than swallowing it — but not in the title's own plate.
+  const notes = [
+    ...(campaign.rejected === null
+      ? []
+      : [`战役存档无法读取，进度已保留但未载入：${escapeHtml(campaign.rejected)}`]),
+    ...(rejected.length === 0
+      ? []
+      : [`有 ${rejected.length} 个自制关卡存档无法读取，已跳过（未删除）：${
+          rejected.map((entry) => escapeHtml(entry.id)).join('、')
+        }`]),
+  ];
   const screen = document.createElement('div');
   screen.style.height = '100%';
-  screen.innerHTML = `<div class="menu"><div class="menu-inner">
-    <h1>远古帝国 · 战术复刻</h1>
-    <p class="tagline">剧情战役型 SRPG · 确定性战斗预测 · 卡通奇幻视觉</p>
-    <section class="campaign-feature">
-      <img src="${CANDIDATE_01_MENU_ART}" alt="灰旗立在烧毁的边境村庄"/>
-      <div class="campaign-feature-shade"></div>
-      <div class="campaign-feature-copy">
-        <span>完整战役 · 前三章现已可玩</span>
-        <h2>断冠之誓</h2>
-        <p>从十八岁的边境见习旗官开始，经历灰旗流亡与诸族远征。16 场连续战斗，选择、关系、补给与伤亡跨关保留。</p>
-        <div class="campaign-feature-actions">
-          ${campaignSave ? `<button class="btn primary" data-act="campaignContinue">${icon('flag')} 继续战役 · ${campaignBattles}/16</button>` : ''}
-          <button class="btn ${campaignSave ? '' : 'primary'}" data-act="campaignNew">${icon('play')} ${campaignSave ? '重新开始' : '开始战役'}</button>
-        </div>
-      </div>
-    </section>
-    <div class="menu-actions">
-      <a class="btn primary" href="../editor/index.html">${icon('grid')} 打开地图编辑器</a>
-      <a class="btn" href="../engine-demo/index.html">${icon('crosshair')} 引擎能力 Demo</a>
-      <button class="btn" data-act="codex">${icon('shield')} 兵种图鉴</button>
+  screen.innerHTML = `<div class="title">
+    <img class="title-art" src="${CANDIDATE_01_MENU_ART}" alt="灰旗立在烧毁的边境村庄"/>
+    <div class="title-shade"></div>
+    <div class="title-plate">
+      <span class="title-kicker">剧情战役型 SRPG · 确定性战斗预测</span>
+      <h1>远古帝国</h1>
+      <p class="title-sub">《断冠之誓》从十八岁的边境见习旗官开始，经历灰旗流亡与诸族远征。16 场连续战斗，选择、关系、补给与伤亡跨关保留。</p>
+      <nav class="title-menu">
+        ${campaignSave ? titleItem(`${icon('flag')} 继续战役`, { act: 'campaignContinue', note: `${campaignBattles}/16`, primary: true }) : ''}
+        ${titleItem(`${icon('play')} ${campaignSave ? '重新开始战役' : '开始战役'}`, { act: 'campaignNew', primary: !campaignSave })}
+        ${titleItem(`${icon('crosshair')} 单场战斗`, { act: 'skirmish', note: `${BUILTIN_LEVELS.length + custom.length} 关` })}
+        ${titleItem(`${icon('shield')} 兵种图鉴`, { act: 'codex' })}
+        ${titleItem(`${icon('grid')} 地图编辑器`, { href: '../editor/index.html' })}
+        ${titleItem(`${icon('crosshair')} 引擎能力 Demo`, { href: '../engine-demo/index.html' })}
+      </nav>
+      ${notes.length === 0 ? '' : `<div class="title-note">${notes.length} 条存档提示，见「单场战斗」</div>`}
     </div>
-
-    <h2>内置关卡</h2>
-    <div class="level-grid">${BUILTIN_LEVELS.map((l) => levelCard(l, { custom: false })).join('')}</div>
-
-    ${
-      campaign.rejected === null
-        ? ''
-        : `<div class="empty-note">战役存档无法读取，进度已保留但未载入：${escapeHtml(campaign.rejected)}</div>`
-    }
-
-    <h2>我的关卡</h2>
-    ${
-      rejected.length === 0
-        ? ''
-        : `<div class="empty-note">有 ${rejected.length} 个存档无法读取，已跳过（未删除）：${
-            rejected.map((entry) => escapeHtml(entry.id)).join('、')
-          }</div>`
-    }
-    ${
-      custom.length === 0
-        ? `<div class="empty-note">还没有自制关卡。用地图编辑器画一张，保存后就会出现在这里。</div>`
-        : `<div class="level-grid">${custom.map((s) => levelCard(s.level, { custom: true })).join('')}</div>`
-    }
-  </div>
-  <div class="modal-root" id="menu-modal"></div>
+    <div class="modal-root" id="menu-modal"></div>
   </div>`;
   app.replaceChildren(screen);
 
@@ -228,6 +254,9 @@ function renderMenu(): void {
       case 'codex':
         modal.innerHTML = codexMarkup();
         break;
+      case 'skirmish':
+        modal.innerHTML = skirmishMarkup(custom, notes);
+        break;
       case 'campaignContinue':
         openCampaign(campaignSave);
         break;
@@ -237,7 +266,7 @@ function renderMenu(): void {
           openCampaign(null);
         }
         break;
-      case 'closeCodex':
+      case 'closeModal':
         modal.innerHTML = '';
         break;
     }
