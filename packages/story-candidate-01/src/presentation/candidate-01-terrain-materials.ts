@@ -280,6 +280,26 @@ export const CANDIDATE_FOREST_FLOOR: CandidateScenery = {
 };
 
 /**
+ * The decks a crossing is spanned by, and how wide one module is.
+ *
+ * These are 96-unit modules — three cells — drawn to span a channel bank to bank.
+ * Drawing one per bridge *cell* at a third of its size, which is what this pack
+ * did, squashes a bridge into an unreadable sliver on the water: the crossings on
+ * the shipped valley map were invisible. One module per run of bridge cells,
+ * centred on the run, at its own size.
+ *
+ * Two materials, chosen by a hash of where the crossing is. A crossing's material
+ * is not something the rules say, and a valley with three identical planks across
+ * it looks built by one carpenter on one afternoon.
+ */
+export const CANDIDATE_CROSSING_SPAN = 96;
+
+export const CANDIDATE_CROSSINGS = {
+  alongX: ['wood-bridge-horizontal', 'stone-bridge-horizontal'],
+  alongY: ['wood-bridge-vertical', 'stone-bridge-vertical'],
+} as const;
+
+/**
  * The ground where the land meets the water.
  *
  * A river drawn only from the water sheet stops dead at a cell boundary: grass on

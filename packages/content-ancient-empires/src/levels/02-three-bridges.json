@@ -3,47 +3,234 @@
   "id": "three-bridges",
   "name": "三桥河谷",
   "author": "内置关卡",
-  "description": "宽阔的河谷上只有三座桥。弩车封锁桥面，弓箭手守住桥头；骑士要绕远路，巨龙则可以直接飞过去。",
-  "width": 20,
-  "height": 14,
+  "description": "河谷南北纵贯，三座桥是唯一的通路。两岸各有一座主堡、一座兵营和几处村庄，林线与崖壁圈住整片战场。弩车封锁桥面，弓箭手守住桥头，骑士要绕远路，巨龙可以直接飞过去。",
+  "width": 24,
+  "height": 16,
   "terrain": [
-    "..^^..T....T..h....^",
-    ".^.h....v.....T...^.",
-    "..T-.b....-...h.-...",
-    ".C--.......T...v..T.",
-    "..T-...h..-....T-...",
-    ".v.-....T.-...h.-...",
-    "~~~=~~~~~~=~~~~~=~~~",
-    "~~~=~~~~~~=~~~~~=~~~",
-    "..T-...h..-....T-...",
-    "...-..T...-..h..-.v.",
-    "...-.h....-.T...-...",
-    ".T.-v.....--------C.",
-    "..T.....h.....b..-..",
-    ".^...T....^...T...^."
+    "^^TTTTTTTTT~~T^TTTTTTTT^",
+    "T^^..TT....~~....TT...^T",
+    "T....T...--==------v...T",
+    "TTT......h.~~..h...-...T",
+    "TTv......-~~......b-.TTT",
+    "T.....v---~~.......-.T.T",
+    "T.....-.TT~~...-v..-...T",
+    "^..C-----..~~.h-...-...^",
+    "T....-..--h==-------C-.T",
+    "T.T.T-.v-...~~...T...-TT",
+    "TTT..-......~~TT.....-.T",
+    "T...-b......~~.T.----v.T",
+    "T...-...h...~h...-.....T",
+    "T...v-------==---v..TT.T",
+    "T......TT...~~.......^.T",
+    "^TTTTTTTT^TT~~TTTTTTTT^^"
   ],
   "owners": [
-    { "x": 1, "y": 3, "owner": 1 },
-    { "x": 5, "y": 2, "owner": 1 },
-    { "x": 1, "y": 5, "owner": 1 },
-    { "x": 18, "y": 11, "owner": 2 },
-    { "x": 14, "y": 12, "owner": 2 },
-    { "x": 18, "y": 9, "owner": 2 },
-    { "x": 8, "y": 1, "owner": 0 },
-    { "x": 15, "y": 3, "owner": 0 },
-    { "x": 4, "y": 11, "owner": 0 }
+    {
+      "x": 3,
+      "y": 7,
+      "owner": 1
+    },
+    {
+      "x": 5,
+      "y": 11,
+      "owner": 1
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "owner": 1
+    },
+    {
+      "x": 6,
+      "y": 5,
+      "owner": 1
+    },
+    {
+      "x": 20,
+      "y": 8,
+      "owner": 2
+    },
+    {
+      "x": 18,
+      "y": 4,
+      "owner": 2
+    },
+    {
+      "x": 21,
+      "y": 11,
+      "owner": 2
+    },
+    {
+      "x": 17,
+      "y": 13,
+      "owner": 2
+    },
+    {
+      "x": 4,
+      "y": 13,
+      "owner": 0
+    },
+    {
+      "x": 7,
+      "y": 9,
+      "owner": 0
+    },
+    {
+      "x": 16,
+      "y": 6,
+      "owner": 0
+    },
+    {
+      "x": 19,
+      "y": 2,
+      "owner": 0
+    }
   ],
   "units": [
-    { "x": 2, "y": 3, "unit": "soldier", "owner": 1 },
-    { "x": 2, "y": 4, "unit": "soldier", "owner": 1 },
-    { "x": 1, "y": 4, "unit": "archer", "owner": 1 },
-    { "x": 3, "y": 3, "unit": "knight", "owner": 1 },
-    { "x": 1, "y": 2, "unit": "cleric", "owner": 1 },
-    { "x": 17, "y": 11, "unit": "soldier", "owner": 2 },
-    { "x": 17, "y": 12, "unit": "soldier", "owner": 2 },
-    { "x": 18, "y": 12, "unit": "archer", "owner": 2 },
-    { "x": 16, "y": 11, "unit": "knight", "owner": 2 },
-    { "x": 18, "y": 10, "unit": "ballista", "owner": 2 }
+    {
+      "x": 4,
+      "y": 6,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "x": 4,
+      "y": 8,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "x": 2,
+      "y": 6,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "x": 2,
+      "y": 8,
+      "unit": "soldier",
+      "owner": 1
+    },
+    {
+      "x": 3,
+      "y": 6,
+      "unit": "archer",
+      "owner": 1
+    },
+    {
+      "x": 3,
+      "y": 8,
+      "unit": "archer",
+      "owner": 1
+    },
+    {
+      "x": 5,
+      "y": 7,
+      "unit": "knight",
+      "owner": 1
+    },
+    {
+      "x": 2,
+      "y": 7,
+      "unit": "cleric",
+      "owner": 1
+    },
+    {
+      "x": 1,
+      "y": 7,
+      "unit": "mage",
+      "owner": 1
+    },
+    {
+      "x": 5,
+      "y": 8,
+      "unit": "rogue",
+      "owner": 1
+    },
+    {
+      "x": 6,
+      "y": 7,
+      "unit": "ballista",
+      "owner": 1
+    },
+    {
+      "x": 5,
+      "y": 6,
+      "unit": "dragon",
+      "owner": 1
+    },
+    {
+      "x": 19,
+      "y": 7,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "x": 19,
+      "y": 9,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "x": 21,
+      "y": 7,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "x": 21,
+      "y": 9,
+      "unit": "soldier",
+      "owner": 2
+    },
+    {
+      "x": 20,
+      "y": 7,
+      "unit": "archer",
+      "owner": 2
+    },
+    {
+      "x": 20,
+      "y": 9,
+      "unit": "archer",
+      "owner": 2
+    },
+    {
+      "x": 18,
+      "y": 8,
+      "unit": "knight",
+      "owner": 2
+    },
+    {
+      "x": 21,
+      "y": 8,
+      "unit": "cleric",
+      "owner": 2
+    },
+    {
+      "x": 22,
+      "y": 8,
+      "unit": "mage",
+      "owner": 2
+    },
+    {
+      "x": 18,
+      "y": 9,
+      "unit": "rogue",
+      "owner": 2
+    },
+    {
+      "x": 17,
+      "y": 8,
+      "unit": "ballista",
+      "owner": 2
+    },
+    {
+      "x": 18,
+      "y": 7,
+      "unit": "dragon",
+      "owner": 2
+    }
   ],
   "players": [
     {
@@ -53,8 +240,14 @@
       "color": "#3f7fd8",
       "controller": "human",
       "resources": {
-        "funds": { "current": 400, "capacity": null },
-        "command_points": { "current": 0, "capacity": 5 }
+        "funds": {
+          "current": 400,
+          "capacity": null
+        },
+        "command_points": {
+          "current": 0,
+          "capacity": 5
+        }
       }
     },
     {
@@ -64,12 +257,27 @@
       "color": "#d8483f",
       "controller": "ai",
       "resources": {
-        "funds": { "current": 400, "capacity": null },
-        "command_points": { "current": 0, "capacity": 5 }
+        "funds": {
+          "current": 400,
+          "capacity": null
+        },
+        "command_points": {
+          "current": 0,
+          "capacity": 5
+        }
       },
-      "ai": { "aggression": 0.55 }
+      "ai": {
+        "aggression": 0.55
+      }
     }
   ],
   "rules": {},
-  "victory": [{ "type": "routEnemies" }, { "type": "captureHQ" }]
+  "victory": [
+    {
+      "type": "routEnemies"
+    },
+    {
+      "type": "captureHQ"
+    }
+  ]
 }

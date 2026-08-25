@@ -20,6 +20,7 @@ import {
   CANDIDATE_FIELD_BASE,
   CANDIDATE_FOREST_FLOOR,
   CANDIDATE_FOUNDATIONS,
+  CANDIDATE_CROSSINGS,
   CANDIDATE_FRAME_TREES,
   CANDIDATE_RIVER_STONES,
   CANDIDATE_SETTLEMENT_LIFE,
@@ -101,6 +102,16 @@ interface EnvironmentCellPlacing {
   readonly flip?: boolean;
   readonly opacity?: number;
   readonly className?: string;
+  /**
+   * This module lies across the ground rather than standing on it.
+   *
+   * A tree, a rock and a granary have a foot, and the kit declares where it is —
+   * place them by it and they stand where you put them. A bridge deck has no foot:
+   * it spans a channel, and its own middle is what has to land on the middle of the
+   * crossing. Placed by its declared anchor instead, a 96-unit deck hangs three
+   * rows up the map from the road it carries.
+   */
+  readonly lying?: boolean;
 }
 
 /**
@@ -117,9 +128,11 @@ interface EnvironmentCellPlacing {
  * old ones, because the old ones were the rounded sum.
  */
 function environmentCellMarkup(id: string, placing: EnvironmentCellPlacing = {}): string {
-  const { scale = 1, flip = false, opacity = 1, className = '' } = placing;
+  const { scale = 1, flip = false, opacity = 1, className = '', lying = false } = placing;
   const record = CANDIDATE_01_ENVIRONMENT.cell(id);
-  const anchor = record.cell.anchor ?? record.atlas.anchor ?? [record.atlas.cellWidth / 2, record.atlas.cellHeight];
+  const anchor = lying
+    ? [record.atlas.cellWidth / 2, record.atlas.cellHeight / 2]
+    : record.cell.anchor ?? record.atlas.anchor ?? [record.atlas.cellWidth / 2, record.atlas.cellHeight];
   const x = -anchor[0] * scale;
   const y = -anchor[1] * scale;
   const transform = flip
@@ -380,6 +393,42 @@ function authoredPlacementPieces(
     .filter((piece): piece is BoardPiece => piece !== null);
 }
 
+/**
+ * The deck spanning one crossing, drawn once at the run's near end.
+ *
+ * A crossing is as many cells as the channel is wide, and the kit's deck is one
+ * 96-unit module for the whole span. So the module is placed by the *run*: the
+ * cell that starts it draws it, centred across every cell it covers, and the rest
+ * of the run draws nothing.
+ */
+function crossing(
+  content: ContentCatalog,
+  map: GameMap,
+  parts: BoardPiece[],
+  x: number,
+  y: number,
+): void {
+  const deck = (dx: number, dy: number): boolean => tileAt(map, x + dx, y + dy) === 'bridge';
+  // Which way it carries: what a traveller could reach from it, then how the run lies.
+  const alongX = isRoute(content, map, x - 1, y) || isRoute(content, map, x + 1, y)
+    ? true
+    : !(isRoute(content, map, x, y - 1) || isRoute(content, map, x, y + 1)) && (deck(-1, 0) || deck(1, 0));
+  // Only the near end of the run draws, so a two-cell crossing is one bridge.
+  if (alongX ? deck(-1, 0) : deck(0, -1)) return;
+  let length = 1;
+  while (alongX ? deck(length, 0) : deck(0, length)) length += 1;
+
+  const decks = alongX ? CANDIDATE_CROSSINGS.alongX : CANDIDATE_CROSSINGS.alongY;
+  const pick = decks[Math.floor(tileHash(x, y, 1131) * decks.length)];
+  const middle = (span: number) => (span + length / 2) * TILE;
+  // The middle of the run, both ways: a deck lies across the channel.
+  parts.push({
+    markup: environmentCellMarkup(pick, { className: 'is-standing', lying: true }),
+    x: alongX ? middle(x) : (x + 0.5) * TILE,
+    y: alongX ? (y + 0.5) * TILE : middle(y),
+  });
+}
+
 /** Does open ground here sit next to somewhere people live? */
 function neighboursSettlement(content: ContentCatalog, map: GameMap, x: number, y: number): boolean {
   return ORTHOGONAL.some(([dx, dy]) => {
@@ -423,8 +472,7 @@ function sceneryPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
       const material = candidateMaterial(content, id);
 
       if (id === 'bridge') {
-        const alongX = isRoute(content, map, x - 1, y) || isRoute(content, map, x + 1, y);
-        stand(alongX ? 'wood-bridge-horizontal' : 'wood-bridge-vertical', x, y, { scale: TILE / 96 });
+        crossing(content, map, parts, x, y);
         continue;
       }
 
