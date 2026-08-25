@@ -36,14 +36,14 @@ export const taggedGround = (
 ): boolean => families.some((family) => family.some((tag) => terrain.tags.includes(tag)));
 
 export interface TileContext {
-  x: number;
-  y: number;
+  readonly x: number;
+  readonly y: number;
   /** Presentation theme; ignored by mechanics and generic painters. */
-  theme?: string | undefined;
+  readonly theme?: string | undefined;
   /** Owner colour for buildings; undefined = neutral. */
-  ownerColor?: string | undefined;
+  readonly ownerColor?: string | undefined;
   /** Same-terrain neighbours, used to knit roads and water together. */
-  linked: { n: boolean; e: boolean; s: boolean; w: boolean };
+  readonly linked: { n: boolean; e: boolean; s: boolean; w: boolean };
 }
 
 export interface ArtProvider {

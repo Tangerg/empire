@@ -13,14 +13,14 @@ import { unitWorth } from './measures';
 import type { AiRules } from './rules';
 
 export interface AbilityAiEvaluationContext {
-  state: GameState;
-  unit: Unit;
-  at: Coord;
-  option: CommandOption;
-  target: Coord | null;
+  readonly state: GameState;
+  readonly unit: Unit;
+  readonly at: Coord;
+  readonly option: CommandOption;
+  readonly target: Coord | null;
   /** What standing on `at` is worth before this ability is considered at all. */
-  tileValue: number;
-  mission: AiMissionIntent;
+  readonly tileValue: number;
+  readonly mission: AiMissionIntent;
   /** Ruleset used for legality and prediction; identical to execution's. */
   readonly rules: AiRules;
   /** The board under its tiling, so an evaluator measures what the rules measure. */

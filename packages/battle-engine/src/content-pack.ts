@@ -336,10 +336,21 @@ const checkWeapons: ContentCheck = (installation) => {
     requireAmounts(installation, weapon.resourceCosts, `${owner} cost`);
     installation.requireId('damageTypes', weapon.damageType, owner);
     for (const effect of weapon.hitEffects) {
-      // Only the payloads a catalog can judge on its own. A rider a rule plugin
-      // defines is checked by that plugin — this used to assume every kind it
-      // did not recognise was a forced move, which refused any pack that used
-      // one at all.
+      /*
+       * Only the payloads a catalog can judge on its own.
+       *
+       * This used to assume every kind it did not recognise was a forced move,
+       * which refused any pack that used one at all. Naming the three the core
+       * defines is not the registry leaking here: content installation sees a
+       * catalog and no ruleset, so it cannot ask a handler anything.
+       *
+       * A kind a plugin defines is covered where the ruleset *is* in the room:
+       * `DefaultRuleReferenceChecks` has a `hitEffects` entry that refuses a weapon
+       * naming a kind nobody registered, and a plugin registering a kind may
+       * register a check beside it. What no mechanism covers is a plugin kind's
+       * *payload* at install time, and no shipped plugin defines one — saying so
+       * beats implying a hook that does not exist.
+       */
       if (effect.type === 'addStatus' || effect.type === 'removeStatus') {
         installation.requireId('statuses', effect.status, owner);
       } else if (effect.type === 'forcedMove' && (!Number.isInteger(effect.distance) ||

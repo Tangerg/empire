@@ -3020,6 +3020,37 @@ describe('one answer per question', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('hands an extension point a context it cannot write to', () => {
+    /*
+     * A `…Context` is what an extension point is *told*: the state, the subject,
+     * the ruleset, the projections a provider should share rather than rebuild.
+     * Seven of the eleven marked every field `readonly` and four did not, and the
+     * split was archaeology rather than meaning — in both of the mixed ones it was
+     * the fields added *later* that carried the modifier, so a reader could not tell
+     * why `rules` was frozen and `state` was not.
+     *
+     * It is one word per field and it says the thing the name already implies: an
+     * evaluator reads its context and writes through the aggregates.
+     */
+    const contexts: string[] = [];
+    for (const file of everyPackageSource()) {
+      const text = stripComments(readFileSync(file, 'utf8'));
+      for (const [, name, body] of text.matchAll(
+        /export interface (\w*Context)\s*(?:extends [^{]+)?\{([\s\S]*?)\n\}/g,
+      )) {
+        const fields = body.split('\n')
+          .map((line) => line.trim())
+          .filter((line) => /^(readonly\s+)?\w+\??\s*:/.test(line));
+        const mutable = fields.filter((line) => !line.startsWith('readonly'));
+        contexts.push(name);
+        expect(mutable, `${relative(packagesRoot, file)}: ${name}`).toEqual([]);
+      }
+    }
+
+    // A guard that found no context would pass by having read nothing.
+    expect(contexts.length).toBeGreaterThanOrEqual(9);
+  });
+
   it('says how big a cell is exactly once', () => {
     /*
      * Every coordinate the renderer port carries — a piece's place, a strip's

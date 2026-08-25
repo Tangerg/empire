@@ -51,12 +51,12 @@ export interface CombatModifier {
 export interface UnitDamageContext {
   /** The ruleset this strike is resolved under, for whatever a provider needs. */
   readonly rules: CombatModifierRules;
-  state: GameState;
-  attacker: Unit;
-  attackerAt: Coord;
-  defender: Unit;
-  defenderAt: Coord;
-  weapon: WeaponDef;
+  readonly state: GameState;
+  readonly attacker: Unit;
+  readonly attackerAt: Coord;
+  readonly defender: Unit;
+  readonly defenderAt: Coord;
+  readonly weapon: WeaponDef;
   readonly content: ContentCatalog;
   /** Shared spatial projection for every provider in one damage evaluation. */
   readonly battlefield: Battlefield;
