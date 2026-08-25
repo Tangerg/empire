@@ -301,6 +301,8 @@ export class PixiBoardSurface implements BoardSurface {
   /** The same timeline the DOM backend uses, driving textures instead of attributes. */
   private readonly drawingTools: DrawingTools;
   private serial = 0;
+  /** Takes this surface's pointer listeners back off the shared canvas. */
+  private stopListening: (() => void) | null = null;
 
   constructor(
     private readonly scenery: BoardSurfaceScene,
@@ -333,7 +335,8 @@ export class PixiBoardSurface implements BoardSurface {
   }
 
   listen(pointer: BoardPointer): void {
-    listenForPointer(this.element, this.scenery, pointer);
+    this.stopListening?.();
+    this.stopListening = listenForPointer(this.element, this.scenery, pointer);
   }
 
   setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): void {
@@ -429,6 +432,8 @@ export class PixiBoardSurface implements BoardSurface {
   rescaling(): void {}
 
   dispose(): void {
+    this.stopListening?.();
+    this.stopListening = null;
     this.drawingTools.animations.dispose();
     this.tools.painter.detach(this.scene);
     this.units.clear();

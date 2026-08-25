@@ -220,6 +220,8 @@ export class SvgBoardSurface implements BoardSurface {
    */
   private readonly animations = new FrameAnimationSystem();
   private serial = 0;
+  /** Takes this surface's pointer listeners back off, whatever it listened on. */
+  private stopListening: (() => void) | null = null;
 
   constructor(private readonly scene: BoardSurfaceScene) {
     this.element = svg('svg', {
@@ -249,7 +251,8 @@ export class SvgBoardSurface implements BoardSurface {
   }
 
   listen(pointer: BoardPointer): void {
-    listenForPointer(this.element, this.scene, pointer);
+    this.stopListening?.();
+    this.stopListening = listenForPointer(this.element, this.scene, pointer);
   }
 
   setLayer(layer: BoardLayer, pieces: readonly BoardPiece[]): void {
@@ -337,6 +340,8 @@ export class SvgBoardSurface implements BoardSurface {
   }
 
   dispose(): void {
+    this.stopListening?.();
+    this.stopListening = null;
     this.animations.dispose();
     this.units.clear();
   }

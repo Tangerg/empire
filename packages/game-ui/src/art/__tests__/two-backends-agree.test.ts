@@ -223,6 +223,62 @@ describe('two backends draw the same board', () => {
   });
 
   /**
+   * A battle that has ended stops hearing the mouse.
+   *
+   * The GPU backend draws every battle of a session onto *one* canvas — that is the
+   * point of the shared painter above. Its surface put five pointer listeners on
+   * that canvas and `dispose` took none of them off, so the second battle's click
+   * also reached the first battle's board, and the third's reached two disposed
+   * ones. The DOM backend was safe by accident: its element is new each time.
+   */
+  it('stops listening on a shared canvas when the battle ends', () => {
+    const painter = new IdlePainter();
+    const renderer = pixiBoardSurface(painter, new InstantTextures());
+    const scene: BoardSurfaceScene = {
+      width: 320,
+      height: 320,
+      originX: 0,
+      originY: 0,
+      shapeRendering: 'crispEdges',
+      backdrop: '',
+      foreground: '',
+    };
+    const canvas = painter.canvas;
+    canvas.getBoundingClientRect = () =>
+      ({ left: 0, top: 0, width: 320, height: 320, right: 320, bottom: 320, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
+
+    const heard: string[] = [];
+    const board = (name: string) => ({
+      press: () => heard.push(name),
+      move: () => {},
+      leave: () => {},
+      scale: () => {},
+    });
+
+    const first = renderer(scene);
+    first.listen(board('first'));
+    const click = () => canvas.dispatchEvent(
+      new window.MouseEvent('pointerdown', { bubbles: true, clientX: 10, clientY: 10, button: 0 }),
+    );
+    click();
+    expect(heard).toEqual(['first']);
+
+    first.dispose();
+    const second = renderer(scene);
+    second.listen(board('second'));
+    heard.length = 0;
+    click();
+
+    // One board, not two: the ended battle is not still holding the canvas.
+    expect(heard).toEqual(['second']);
+    second.dispose();
+    heard.length = 0;
+    click();
+    expect(heard).toEqual([]);
+    renderer.dispose();
+  });
+
+  /**
    * The same picture drawn four thousand times is baked once.
    *
    * This is the whole argument for a texture backend, and `tools/board-scale.ts`

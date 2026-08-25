@@ -42,7 +42,10 @@ export function shownAt(box: { width: number; height: number }, scene: SceneBox)
  * different games.
  *
  * A backend still owns *what* it is listening on. This owns what the listening
- * means.
+ * means — and it hands back the way to stop, because one of the two backends draws
+ * every battle of a session onto *one* canvas. Five listeners went onto it per
+ * battle and none came off, so the third battle's click also reached the first
+ * two — boards that had been disposed.
  */
 export function listenForPointer(
   element: Element,
@@ -53,25 +56,32 @@ export function listenForPointer(
     leave(): void;
     scale(notches: number): void;
   },
-): void {
-  const at = (event: MouseEvent) =>
-    scenePointOf(element.getBoundingClientRect(), scene, event);
+): () => void {
+  const at = (event: Event) =>
+    scenePointOf(element.getBoundingClientRect(), scene, event as MouseEvent);
 
-  element.addEventListener('pointerdown', (event) => {
-    const point = at(event as MouseEvent);
-    if (point) pointer.press(point, (event as MouseEvent).button);
-  });
-  element.addEventListener('contextmenu', (event) => event.preventDefault());
-  element.addEventListener('pointermove', (event) => pointer.move(at(event as MouseEvent)));
-  element.addEventListener('pointerleave', () => pointer.leave());
-  element.addEventListener('wheel', (event) => {
-    const wheel = event as WheelEvent;
-    // Ctrl or meta held: the gesture every application uses for zoom, and the one
-    // a trackpad pinch arrives as. Anything else is the page scrolling.
-    if (!wheel.ctrlKey && !wheel.metaKey) return;
-    wheel.preventDefault();
-    pointer.scale(-Math.sign(wheel.deltaY));
-  }, { passive: false });
+  const listeners: [string, (event: Event) => void, AddEventListenerOptions?][] = [
+    ['pointerdown', (event) => {
+      const point = at(event);
+      if (point) pointer.press(point, (event as MouseEvent).button);
+    }],
+    ['contextmenu', (event) => event.preventDefault()],
+    ['pointermove', (event) => pointer.move(at(event))],
+    ['pointerleave', () => pointer.leave()],
+    ['wheel', (event) => {
+      const wheel = event as WheelEvent;
+      // Ctrl or meta held: the gesture every application uses for zoom, and the
+      // one a trackpad pinch arrives as. Anything else is the page scrolling.
+      if (!wheel.ctrlKey && !wheel.metaKey) return;
+      wheel.preventDefault();
+      pointer.scale(-Math.sign(wheel.deltaY));
+    }, { passive: false }],
+  ];
+
+  for (const [type, handler, options] of listeners) element.addEventListener(type, handler, options);
+  return () => {
+    for (const [type, handler, options] of listeners) element.removeEventListener(type, handler, options);
+  };
 }
 
 /**
