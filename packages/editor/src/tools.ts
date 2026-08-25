@@ -7,6 +7,7 @@ import {
   type Coord,
   type CoverLevel,
   type Direction,
+  type TacticalGrid,
   type TerrainId,
   type UnitTypeId,
 } from '@empire/battle-engine';
@@ -44,19 +45,24 @@ export class BrushSettings {
   /** Square brush width in tiles; only continuous terrain-like tools use it. */
   size = 1;
   elevation = 0;
-  coverSide: Direction = 'north';
+  coverSide: Direction;
   coverLevel: Exclude<CoverLevel, 'none'> = 'half';
 
   /**
-   * The palette opens on the catalog's blank ground and its first unit.
+   * The palette opens on the catalog's blank ground, its first unit and the
+   * tiling's first facing.
    *
    * "First registered" is the palette's own order, the same answer the tool
    * registry gives for its default tool and the panel gives for its facing —
-   * not a guess about which unit a game considers basic.
+   * not a guess about which unit a game considers basic. The cover side used to
+   * be the literal `'north'`, which is a square board's word: on a hex board the
+   * brush opened pointing at a direction the tiling does not know, and the app
+   * corrected it on the next render.
    */
-  constructor(content: ContentCatalog) {
+  constructor(content: ContentCatalog, grid: TacticalGrid) {
     this.blank = content.terrainEncoding.defaultTerrain;
     this.terrain = this.blank;
+    this.coverSide = grid.directions[0].id;
     const [firstUnit] = content.units.ids();
     if (firstUnit === undefined) {
       throw new DomainInvariantError('cannot author a level against a catalog with no unit types');

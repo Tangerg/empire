@@ -28,6 +28,7 @@ import { unitPicture } from '../art/units';
 import { escapeHtml } from './html';
 import { PresentationTimeline } from '../art/frame-animation';
 import {
+  facesLeft,
   wholeField,
   type BoardDrawing,
   type BoardPiece,
@@ -477,7 +478,7 @@ export class BoardView {
 
     for (const u of s.units) {
       const drawing = this.drawingFor(u);
-      if (!this.walking.has(u.id)) drawing.say('facingLeft', u.facing === 'west');
+      if (!this.walking.has(u.id)) drawing.say('facingLeft', facesLeft(this.viewport.grid, u.facing));
       const hidden = o.hiddenUnits.has(u.id);
       drawing.say('hidden', hidden);
       if (hidden) continue;

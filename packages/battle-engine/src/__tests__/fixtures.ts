@@ -59,7 +59,7 @@ export const TEST_CONTENT: ContentCatalog = createTestCatalog();
 export const TEST_ENGINE = createBattleEngine({ content: TEST_CONTENT });
 export const TEST_RULES: BattleRuleServices = TEST_ENGINE.rules;
 
-export const testState = (level: LevelData): GameState => createState(TEST_CONTENT, level);
+export const testState = (level: LevelData): GameState => createState(TEST_RULES, level);
 
 export const testMap = (level: LevelData) => mapFromLevel(TEST_CONTENT, level);
 export const testValidate = (level: LevelData) => validateLevel(TEST_RULES, level);

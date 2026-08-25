@@ -253,6 +253,12 @@ diff /tmp/before.txt /tmp/after.txt
 
 **画面也要证明，而且需要两把尺子。** `board:digest` 逐字节钉住 markup，`board:flat` 把位置解析成绝对坐标。两者的敏感度是刻意不同的：把一个 translate 从图里搬到它的包装组上，画面完全没动而 digest 每一行都不同——那时候只有 `board:flat` 能回答问题；反过来，改一个颜色字面量 digest 立刻看得见。渲染器改动同时跑两把，各自的差异都要能逐条归因。
 
+**一条清单的守卫抓不住一次比较。** 「不许自己写出一块棋盘的朝向清单」这条守卫的 tell 一直是**清单**：`'north'` 后面 80 个字符内出现 `'east'|'south'|'west'`。于是三处单独的朝向就在光天化日下待着：两块棋盘都按 `facing === 'west'` 决定要不要镜像，所以八方格上一个朝西北走的单位被画成朝右，而六边格上**每一个**单位都被画成朝右（它的西叫 `hexWest`）；`state.ts` 给没写朝向的单位塞 `'south'`，而六边格根本不认——偏偏 `validateLevel` 只检查**写出来的**那些，这个默认值是它看不到的；编辑器的笔刷开局指着 `'north'`。
+
+按文档里已有的那条教训，**加宽而不是并列**：一条公理一条守卫。tell 从「清单」扩到「朝向出现在一次*决定*里」——被比较，或者被当默认值。内容不豁免，因为内容不是违规方：一张为自己方格棋盘写 `facing: 'west'` 的关卡，说的是那块棋盘确实有的方向。模式写成**一个字面量**而不是三段拼起来的，这样元守卫还能继续验证那一条豁免（`tactical-grid.ts` 依然在写朝向名）。四种形状逐一破坏验证：镜像比较、默认朝向、笔刷默认、以及原来就该抓到的清单。
+
+修法都是问铺法：`facesLeft(grid, facing)` 走一步看 x 有没有变小，`TacticalGrid.restingFacing` 由铺法自己声明（方格是南，六边格是东南）。后者让 `createState` / `spawnUnit` 需要铺法，于是它们收一个 `StateRules extends GridRules` 端口——`BattleRuleServices` 结构化满足它。全部关卡的事件流、摘要和棋盘 markup 改动前后逐字节相同：已发布关卡只用方格四向，所以画面本来就没差别，差别在那些还没人踩到的棋盘上。
+
 **工作区是「依赖写在声明里」唯一不自我执行的地方。** npm 把每个包都软链进同一个 `node_modules`，所以 import 一个兄弟包，manifest 提不提它都能解析。于是 `game-ui` 的测试伸手拿了四个包而它的 manifest 一个都没写，`battle-engine` 干脆连 dependency 块都没有——而它的测试和基准装配了三个内容包。还有一处更直接的：`story-candidate-01` 的一个测试**用包名 import 自己**。
 
 现在有一条守卫查三件事：运行时 import 的必须在 `dependencies` 里，测试 import 的至少要在 `devDependencies` 里，声明了而没人 import 的算多余；再加上「不许用包名 import 自己」。只查 `@empire/*`——这是理由而不是省事：没声明的第三方 import 根本没装，会大声失败；而工具链（vitest、jsdom、vite）是**故意**只在根上声明一次的。三个分支各破坏验证一次。

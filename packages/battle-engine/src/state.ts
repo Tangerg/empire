@@ -23,6 +23,7 @@ import type {
   UnitDef,
 } from './types';
 import { type ContentCatalog } from './content-pack';
+import type { GridRules, TacticalGrid } from './tactical-grid';
 import { cloneUnitState } from './unit-state';
 import { DEFAULT_MAX_MORALE } from './vitals';
 
@@ -63,11 +64,13 @@ function initialCareer(content: ContentCatalog, source: LevelUnit): Unit['career
  * meant. The catalog leads, like every other dependency.
  */
 function createUnitState(
-  content: ContentCatalog,
+  rules: StateRules,
+  grid: TacticalGrid,
   source: LevelUnit,
   id: number,
   { done }: { done: boolean },
 ): Unit {
+  const content = rules.content;
   const def = content.units.get(source.unit);
   return {
     id,
@@ -92,7 +95,7 @@ function createUnitState(
     resources: cloneResources({ ...def.resources, ...(source.resources ?? {}) }),
     reaction: source.reaction ?? def.defaultReaction,
     reactionUsedRound: -1,
-    facing: source.facing ?? 'south',
+    facing: source.facing ?? grid.restingFacing,
     morale: {
       current: placedGauge(source.morale ?? maximumMorale(def), maximumMorale(def)),
       maximum: maximumMorale(def),
@@ -108,6 +111,17 @@ function createUnitState(
     career: initialCareer(content, source),
     learnedAbilities: [...new Set(source.learnedAbilities ?? [])],
   };
+}
+
+/**
+ * What building a battle's opening state needs.
+ *
+ * A port declared here, satisfied structurally by `BattleRuleServices`. The
+ * catalog alone was not enough once a unit's resting facing came from the tiling
+ * instead of from the word `'south'`.
+ */
+export interface StateRules extends GridRules {
+  readonly content: ContentCatalog;
 }
 
 /** Construction knobs that are not part of the level document. */
@@ -177,9 +191,11 @@ function createDeployment(
   return { order, currentIndex: 0, assignments };
 }
 
-export function createState(content: ContentCatalog, level: LevelData, options: CreateStateOptions = {}): GameState {
+export function createState(rules: StateRules, level: LevelData, options: CreateStateOptions = {}): GameState {
+  const content = rules.content;
   const map = mapFromLevel(content, level);
-  const rules = resolveRules(level);
+  const ruleSet = resolveRules(level);
+  const grid = rules.grids.get(ruleSet.grid);
 
   const ownsHQ = (id: PlayerId) =>
     map.owners.some((owner, i) => owner === id && content.terrains.get(map.tiles[i]).hq);
@@ -206,7 +222,7 @@ export function createState(content: ContentCatalog, level: LevelData, options: 
   players.sort((a, b) => a.id - b.id);
 
   let nextUnitId = 1;
-  const units: Unit[] = level.units.map((unit) => createUnitState(content, unit, nextUnitId++, { done: false }));
+  const units: Unit[] = level.units.map((unit) => createUnitState(rules, grid, unit, nextUnitId++, { done: false }));
 
   const commanders = (level.commanders ?? []).map((entry) => {
     const leader = units.find((unit) => unit.key === entry.unitKey);
@@ -279,7 +295,7 @@ export function createState(content: ContentCatalog, level: LevelData, options: 
     markers: [],
     commanders,
     players,
-    rules,
+    rules: ruleSet,
     turn: 1,
     currentPlayer: deployment?.order[0] ?? players[0]?.id ?? 1,
     phase: deployment ? 'deployment' : 'playing',
@@ -288,7 +304,7 @@ export function createState(content: ContentCatalog, level: LevelData, options: 
     nextUnitId,
     nextMarkerId: 1,
     deployment,
-    turnOrder: { policy: rules.turnOrder, activeUnit: null, data: {} },
+    turnOrder: { policy: ruleSet.turnOrder, activeUnit: null, data: {} },
     actorTurns: 0,
     pendingCasts: [],
     random: createRandomState(options.seed ?? defaultSeed(level)),
@@ -528,7 +544,7 @@ export function recruitOptions(
 }
 
 export function spawnUnit(
-  content: ContentCatalog,
+  rules: StateRules,
   state: GameState,
   type: UnitTypeId,
   owner: PlayerId,
@@ -543,7 +559,8 @@ export function spawnUnit(
     ...opts.source,
     hp: opts.hp ?? opts.source?.hp,
   };
-  const u = createUnitState(content, source, state.nextUnitId++, { done: opts.done ?? false });
+  const grid = rules.grids.get(state.rules.grid);
+  const u = createUnitState(rules, grid, source, state.nextUnitId++, { done: opts.done ?? false });
   state.units.push(u);
   return u;
 }

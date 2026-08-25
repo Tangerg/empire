@@ -11,6 +11,7 @@ import {
   terrainLayerPieces,
   squareLayout,
   boardPictureMarkup,
+  facesLeft,
   unitPicture,
   type ArtDirection,
 } from '@empire/game-ui';
@@ -19,6 +20,7 @@ import {
   idx,
   type Coord,
   type GameMap,
+  type TacticalGrid,
   type LevelUnit,
   type PlayerConfig,
 } from '@empire/battle-engine';
@@ -137,6 +139,7 @@ export class EditorBoard {
   /* ----------------------------------------------------------------- render */
 
   render(
+    grid: TacticalGrid,
     map: GameMap,
     units: LevelUnit[],
     players: PlayerConfig[],
@@ -163,7 +166,7 @@ export class EditorBoard {
         const bad = this.isBadPlacement(u);
         // The figure is what a mirror flips, and the bad-placement wash is not part
         // of it — the same shape the board's own surface builds.
-        return `<g class="unit${u.facing === 'west' ? ' face-left' : ''}" transform="translate(${u.x * TILE},${u.y * TILE})">
+        return `<g class="unit${facesLeft(grid, u.facing) ? ' face-left' : ''}" transform="translate(${u.x * TILE},${u.y * TILE})">
           <g class="figure">${boardPictureMarkup(unitPicture(this.art, this.content.units.get(u.unit), color))}</g>
           ${bad ? `<rect width="32" height="32" fill="#ff2d1f" opacity="0.35"/>` : ''}
         </g>`;

@@ -48,6 +48,16 @@ export interface TacticalGrid {
   readonly name: string;
   /** Facings this tiling admits, in presentation order. */
   readonly directions: readonly DirectionDef[];
+  /**
+   * The way a unit faces when nothing has told it where to look.
+   *
+   * Declared by the tiling because it is one of its facings, and `state.ts` used
+   * to write `'south'` — a four-way board's word. A hex board admits no `south`,
+   * so every unit a hex level placed without an authored facing was given a
+   * direction the tiling would have refused, after `validateLevel` had already
+   * checked the authored ones.
+   */
+  readonly restingFacing: Direction;
   /** Steps between two cells. Symmetric, and 1 exactly for neighbours. */
   distance(a: Coord, b: Coord): number;
   /** One step from `at`; may land outside the board, which callers clip. */
@@ -131,6 +141,8 @@ abstract class SquareTiling implements TacticalGrid {
   abstract readonly id: string;
   abstract readonly name: string;
   abstract readonly directions: readonly DirectionDef[];
+  /** Toward the viewer, which is how a figure at rest is drawn. */
+  readonly restingFacing: Direction = 'south';
   abstract distance(a: Coord, b: Coord): number;
 
 
@@ -314,6 +326,8 @@ const HEX_RADIUS = 1 / Math.sqrt(3);
  */
 class HexGrid implements TacticalGrid {
   readonly id = 'hex';
+  /** The hex nearest to "toward the viewer": there is no south to face. */
+  readonly restingFacing: Direction = 'hexSoutheast';
   readonly name = '六边格';
   readonly directions = HEX_DIRECTIONS;
 

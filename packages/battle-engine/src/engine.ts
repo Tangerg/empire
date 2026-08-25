@@ -122,7 +122,7 @@ export class BattleEngine {
       .filter((issue) => issue.severity === 'error')
       .map((issue) => issue.message);
     if (issues.length > 0) throw new BattleLevelError(level.id, issues);
-    const state = createState(this.rules.content, level, options);
+    const state = createState(this.rules, level, options);
     // A level without a deployment phase is already playing, so it needs its
     // first actor turn now; deployment levels get theirs on finishDeployment.
     if (state.phase === 'playing') this.lifecycle(state).start();

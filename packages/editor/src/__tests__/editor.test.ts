@@ -11,6 +11,7 @@ import {
   defineWeapon,
   validateLevel,
   type ContentCatalog,
+  DEFAULT_GRID,
 } from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import {
@@ -279,7 +280,7 @@ describe('a general editor knows no particular game', () => {
     // `plain`, so hard-coding `plain` back into the document would pass. This is
     // the second story the editor was supposed to be able to author.
     const other = OTHER_GAME;
-    const brush = new BrushSettings(other);
+    const brush = new BrushSettings(other, TEST_RULES.grids.get(DEFAULT_GRID));
     expect(brush.blank).toBe('sand');
     expect(brush.terrain).toBe('sand');
     expect(brush.unitType).toBe('nomad');

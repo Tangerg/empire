@@ -1,7 +1,9 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { GENERIC_ART, TILE } from '@empire/game-ui';
-import { normaliseLevel, createBattleEngine } from '@empire/battle-engine';
+import { normaliseLevel, createBattleEngine,
+  DEFAULT_GRID,
+} from '@empire/battle-engine';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
 import { EditorApp } from '../app';
 import { BrushSettings, EDITOR_TOOLS, EditorToolRegistry, rectTiles, type EditorTool } from '../tools';
@@ -104,7 +106,7 @@ describe('editor toolbox', () => {
 
 describe('brush settings', () => {
   it('clips a square brush to the map', () => {
-    const brush = new BrushSettings(TEST_SETUP.rules.content);
+    const brush = new BrushSettings(TEST_SETUP.rules.content, TEST_SETUP.rules.grids.get(DEFAULT_GRID));
     brush.size = 3;
     const document = { inBounds: (at: { x: number; y: number }) => at.x >= 0 && at.y >= 0 } as never;
     expect(brush.square(document, { x: 0, y: 0 })).toHaveLength(4);

@@ -506,7 +506,7 @@ export const ScenarioEffectHandlers = new ScenarioEffectHandlerRegistry()
       // behind it still do. Its siblings already answer this way — a rescue
       // stops at a full rally zone, a revival returns null for a taken tile.
       if (cell.occupant) continue;
-      const unit = spawnUnit(context.content, context.state, source.unit, source.owner, source, {
+      const unit = spawnUnit(context.rules, context.state, source.unit, source.owner, source, {
         done: !(effect.ready ?? false),
         source,
       });

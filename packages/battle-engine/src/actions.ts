@@ -290,7 +290,7 @@ class RecruitActionHandler implements ActionHandler<'recruit'> {
     for (const cost of context.rules.resources.spendAll(definition.recruitCosts, resourceOwner)) {
       context.rules.resources.announce(resourceOwner, cost.resource, -cost.amount, context.emit);
     }
-    const unit = spawnUnit(context.rules.content, state, action.unit, owner.id, action.at, {
+    const unit = spawnUnit(context.rules, state, action.unit, owner.id, action.at, {
       done: !state.rules.recruitsActImmediately,
     });
     context.emit({ type: 'recruit', unit: unit.id, at: action.at });

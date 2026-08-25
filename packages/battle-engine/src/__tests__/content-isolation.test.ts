@@ -203,6 +203,9 @@ describe('per-composition content catalogs', () => {
 
   it('refuses to build a state from a level the catalog cannot read', () => {
     const steel = catalogFor(themePack('steel', 30));
-    expect(() => createState(steel, duel('bronze'))).toThrow(/unknown unit "bronze.trooper"/);
+    // Composed here rather than borrowed from the shared fixtures: this suite is
+    // about one catalog not seeing another's content.
+    expect(() => createState(createBattleEngine({ content: steel }).rules, duel('bronze')))
+      .toThrow(/unknown unit "bronze.trooper"/);
   });
 });

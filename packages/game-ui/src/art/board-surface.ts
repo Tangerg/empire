@@ -24,6 +24,7 @@
  * spells as a class and a GPU backend spells as a transform or a tint.
  */
 
+import type { Direction, TacticalGrid } from '@empire/battle-engine';
 import type { FrameAnimationClip } from './frame-animation';
 import { escapeAttr } from './svg';
 
@@ -113,6 +114,29 @@ export const boardPiecesMarkup = (pieces: readonly BoardPiece[]): string =>
  * not drawn at all.
  */
 export type BoardState = 'facingLeft' | 'selected' | 'hidden';
+
+/**
+ * Whether a unit facing this way is drawn mirrored.
+ *
+ * Asked of the tiling, not compared to a name. Both boards wrote
+ * `facing === 'west'`, which is one board's vocabulary: `square8` also faces
+ * northwest and southwest, and a hex board has no west at all — it has
+ * `hexWest`. So on a diagonal board a unit facing away to the left was drawn
+ * looking right, and on a hex board every unit was.
+ *
+ * The same file already asked the tiling properly three lines away, for the
+ * facing badge, which is how the two ways of answering one question sat side by
+ * side without anybody noticing.
+ *
+ * A facing the tiling does not know — or a document that states none at all —
+ * mirrors nothing, rather than throwing: a level may name a direction from a
+ * board it is no longer played on, and that is the validator's complaint to
+ * make, not the renderer's.
+ */
+export function facesLeft(grid: TacticalGrid, facing: Direction | undefined): boolean {
+  const known = grid.directions.find((direction) => direction.id === facing);
+  return known !== undefined && grid.step({ x: 0, y: 0 }, known.id).x < 0;
+}
 
 /**
  * A part of a drawing, by the role its own markup declares with `data-part`.

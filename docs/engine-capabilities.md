@@ -329,6 +329,8 @@
 | 一条量表还剩几成 | `gaugeRatio`（`vitals.ts`；上限为 0 读作完好，而不是没有数） |
 | 一条量表画成什么样、什么颜色 | `tileGaugeBar` / `gaugeColor`（`art/gauges.ts`；单位条和结构条是同一条） |
 | 抛出来的东西怎么变成给人看的一句话 | `errorMessage`（`domain/errors.ts`，和它翻译的那三个错误类放在一起） |
+| 一个朝向要不要把图镜像 | `facesLeft`（问铺法走一步，看 x 有没有变小；铺法不认的朝向不镜像） |
+| 没人指定朝向时朝哪 | `TacticalGrid.restingFacing`（铺法自答；方格是南，六边格没有南） |
 | 一个兵种没写士气时上限是多少 | `DEFAULT_MAX_MORALE`（`vitals.ts`；引擎与战役桥共用） |
 | 一份目标记录给出的状态 | `objectiveStatusOf`（没有 id 的目标就是没人给它建记录） |
 | 状态摘要该覆盖什么 | `hashState` 的 `IGNORED_FIELDS`（写「不算」的那几项，默认全算） |

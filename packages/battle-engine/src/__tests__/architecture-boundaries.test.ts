@@ -1327,12 +1327,29 @@ describe('behaviour has an owner', () => {
     // the render key hashed nothing, and the editor could not author cover on
     // those boards at all. The tiling declares its facings; ask it.
     // The decorations module was exempt and now asks the tiling like everything else.
+    //
+    // Widened rather than joined by a second guard, because one axiom gets one
+    // guard. A *list* of facings was the only tell, and three single ones were
+    // sitting in plain sight: both boards mirrored a sprite on `facing ===
+    // 'west'`, so a diagonal board drew a unit facing away to the left looking
+    // right and a hex board drew every unit that way; `state.ts` gave a unit with
+    // no authored facing `'south'`, which a hex tiling would have refused had
+    // `validateLevel` been the one to see it; and the editor's brush opened
+    // pointing `'north'`.
+    //
+    // Content is not exempted, because content is not the offender: a level
+    // authoring `facing: 'west'` for its own square board is naming a direction
+    // that board has. The tell is a facing inside a *decision* — compared
+    // against, or defaulted to — which is what no module but the tiling may make.
     const owners = ['battle-engine/src/tactical-grid.ts'];
-    const offenders = everyPackageSource().flatMap((file) => {
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
       const name = relative(packagesRoot, file);
       if (owners.includes(name)) return [];
+      // Strings stay: a facing *is* one. Only the prose goes. And the pattern is
+      // one literal rather than three assembled ones so that the exemption above
+      // stays checkable — the meta-guard reads this line.
       const code = stripComments(readFileSync(file, 'utf8'));
-      return /'north'[\s\S]{0,80}'(?:east|south|west)'/.test(code) ? [name] : [];
+      return /'north'[\s\S]{0,80}'(?:east|south|west)'|(?:===|!==|\?\?)\s*'(?:north|east|south|west|north(?:east|west)|south(?:east|west)|hex[A-Za-z]+)'|: Direction = '(?:north|east|south|west)'/.test(code) ? [name] : [];
     });
 
     expect(offenders).toEqual([]);

@@ -7,6 +7,7 @@ import {
   DEFAULT_GRID,
   DEFAULT_TURN_ORDER,
   type DirectionDef,
+  type TacticalGrid,
   COMMAND_POINTS_RESOURCE,
   FUNDS_RESOURCE,
 } from '@empire/battle-engine';
@@ -151,8 +152,10 @@ export class EditorApp {
     this.content = content;
     this.tools = (setup.tools ?? EDITOR_TOOLS).clone().seal();
     this.tool = this.tools.default;
-    this.brush = new BrushSettings(content);
+    // The document comes first: the brush opens on the tiling this level is
+    // authored for, and the tiling is the document's to name.
     this.doc = EditorDocument.fromLevel(content, level);
+    this.brush = new BrushSettings(content, this.grid);
     this.ensureOwnerSelection();
     this.ensureCoverSide();
     this.root.className = 'editor-root';
@@ -251,7 +254,7 @@ export class EditorApp {
    */
   private ensureCoverSide(): void {
     const facings = this.facings;
-    if (facings.length > 0 && !facings.some((facing) => facing.id === this.brush.coverSide)) {
+    if (!facings.some((facing) => facing.id === this.brush.coverSide)) {
       this.brush.coverSide = facings[0].id;
     }
   }
@@ -477,8 +480,21 @@ export class EditorApp {
    * Empty when the level names a tiling this ruleset does not implement, which
    * the lint reports as its own finding rather than this panel guessing one.
    */
+  /**
+   * The tiling this document is authored for, or the default when it names one
+   * this ruleset has never heard of.
+   *
+   * Total, where the facings getter used to answer `[]` — a canvas with no
+   * facings at all offered no cover side to paint with, and the level validator
+   * is the one that should be complaining about an unknown grid.
+   */
+  private get grid(): TacticalGrid {
+    const named = this.doc.rules.grid ?? DEFAULT_GRID;
+    return this.setup.rules.grids.tryGet(named) ?? this.setup.rules.grids.get(DEFAULT_GRID);
+  }
+
   private get facings(): readonly DirectionDef[] {
-    return this.setup.rules.grids.tryGet(this.doc.rules.grid ?? DEFAULT_GRID)?.directions ?? [];
+    return this.grid.directions;
   }
 
   private panelView(issues: readonly LevelIssue[] = []): EditorPanelView {
@@ -529,7 +545,7 @@ export class EditorApp {
   }
 
   private paintBoard(): void {
-    this.board.render(this.doc.map, this.doc.units, this.doc.players, {
+    this.board.render(this.grid, this.doc.map, this.doc.units, this.doc.players, {
       cursor: this.cursor,
       brush: this.brushTiles(),
       showCoords: this.showCoords,
