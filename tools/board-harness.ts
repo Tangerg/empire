@@ -96,7 +96,7 @@ export function shippedLevel(id: string): LevelData {
 export function busyOverlay(level: LevelData): BoardOverlay {
   const overlay = emptyOverlay();
   const map = { width: level.width, height: level.height };
-  const cells = [0, 1, 2, 3, 4, 5].map((n) => idx(map as never, n % level.width, Math.floor(n / level.width)));
+  const cells = [0, 1, 2, 3, 4, 5].map((n) => idx(map, n % level.width, Math.floor(n / level.width)));
   overlay.move = new Set(cells.slice(0, 3));
   overlay.attack = new Set(cells.slice(3, 4));
   overlay.heal = new Set(cells.slice(4, 5));

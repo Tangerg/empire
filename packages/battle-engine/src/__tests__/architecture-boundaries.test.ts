@@ -2787,4 +2787,42 @@ describe('one answer per question', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('launders a type only where a keyed registry dispatches', () => {
+    // `x!` is forbidden everywhere in this repository and `x as never` was allowed
+    // everywhere, and the two are the same move: telling the compiler to stop
+    // asking. The difference is that one of them has a legitimate home.
+    //
+    // A registry stores `Handler<Kind>` and is registered with
+    // `Handler<'destroy'>`, which is not assignable to it — a handler is
+    // contravariant in its payload. The key correlation that makes the pair sound
+    // is the one thing TypeScript cannot express through a lookup, so the cast at
+    // the dispatch is paying for the cast at the registration. Saying it properly
+    // needs a mapped-type trick, which is the clever metaprogramming this
+    // repository would rather not read.
+    //
+    // So it stays, and it stays *here*: in the modules that own an extension
+    // point. Anywhere else it is silencing a real type error, and one of them was
+    // — a ruler handed `{ width, height }` to `idx` through `as never`, and `idx`
+    // takes `{ width: number }`, so the cast was paying for nothing at all.
+    const owners = [
+      'battle-engine/src/resources.ts',
+      'battle-engine/src/scenario.ts',
+      'battle-engine/src/action-system.ts',
+      'battle-engine/src/ai-objectives.ts',
+      'battle-engine/src/objective-system.ts',
+      'battle-engine/src/hit-effects.ts',
+      'battle-engine/src/plugins/default.ts',
+      'campaign-engine/src/nodes.ts',
+      'campaign-engine/src/rules.ts',
+      'game-ui/src/ui/event-presentation.ts',
+    ];
+    const offenders = [...everyPackageSource(), ...appSources(), ...toolSources()].flatMap((file) => {
+      const name = relative(packagesRoot, file);
+      if (owners.includes(name)) return [];
+      const code = stripComments(readFileSync(file, 'utf8'));
+      return / as never\b/.test(code) ? [name] : [];
+    });
+
+    expect(offenders).toEqual([]);
+  });
 });
