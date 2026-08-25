@@ -133,20 +133,20 @@ const portraits: Record<UnitTypeId, Portrait> = {
     <path d="M62 12q10-2 14 8-10 4-16-2z" fill="${c.light}"/>`,
 
   ogre: (c) => `
-    <path d="M8 112V92q0-22 40-22t40 22v20z" fill="#8fa06a"/>
-    <path d="M48 70q40 0 40 22v20H48z" fill="#7f9160"/>
+    <path d="M8 112V92q0-22 40-22t40 22v20z" fill="${PAL.hide}"/>
+    <path d="M48 70q40 0 40 22v20H48z" fill="${PAL.hideDark}"/>
     <path d="M28 88h40l4 24H24z" fill="${c.team}"/>
     <path d="M48 88h20l4 24H48z" fill="${c.dark}"/>
-    <ellipse cx="48" cy="46" rx="24" ry="22" fill="#9cae76"/>
-    <path d="M24 46a24 22 0 0 0 48 0z" fill="#7f9160"/>
+    <ellipse cx="48" cy="46" rx="24" ry="22" fill="${PAL.hideLight}"/>
+    <path d="M24 46a24 22 0 0 0 48 0z" fill="${PAL.hideDark}"/>
     <path d="M30 34q8-6 14 0" stroke="#5f6d44" stroke-width="3" fill="none" stroke-linecap="round"/>
     <path d="M52 34q8-6 14 0" stroke="#5f6d44" stroke-width="3" fill="none" stroke-linecap="round"/>
     <rect x="33" y="40" width="8" height="7" rx="2" fill="${PAL.ink}"/>
     <rect x="55" y="40" width="8" height="7" rx="2" fill="${PAL.ink}"/>
     <path d="M38 58q10 6 20 0-4 8-10 8t-10-8z" fill="#5f6d44"/>
     <path d="M40 60h5v7h-5zM52 60h5v7h-5z" fill="${PAL.plaster}"/>
-    <path d="M24 30q-8-8-4-18l6 2q-3 7 3 12z" fill="#7f9160"/>
-    <path d="M72 30q8-8 4-18l-6 2q3 7-3 12z" fill="#7f9160"/>
+    <path d="M24 30q-8-8-4-18l6 2q-3 7 3 12z" fill="${PAL.hideDark}"/>
+    <path d="M72 30q8-8 4-18l-6 2q3 7-3 12z" fill="${PAL.hideDark}"/>
     <path d="M4 96 30 62l8 6L14 104z" fill="${PAL.wood}"/>
     <path d="M22 60q12-14 22-2-8 12-22 2z" fill="${PAL.woodDark}"/>
     <circle cx="30" cy="58" r="3" fill="${PAL.stoneDark}"/>

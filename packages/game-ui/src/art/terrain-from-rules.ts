@@ -147,7 +147,7 @@ function works(terrain: TerrainDef): string {
       fill="${PAL.roof}" stroke="${PAL.ink}" stroke-width="0.8" stroke-linejoin="round"/>
     <path d="M16 ${eaves - 4} ${left + width + 2} ${eaves + 4} ${left + width} ${eaves + 6} 16 ${eaves - 1}z" fill="${PAL.roofDark}"/>
     <rect x="13" y="21" width="6" height="8" fill="${PAL.woodDark}"/>
-    <rect x="${left + 2}" y="${eaves + 6}" width="4" height="4" fill="#d5ad62" stroke="${PAL.woodDark}" stroke-width="0.7"/>`;
+    <rect x="${left + 2}" y="${eaves + 6}" width="4" height="4" fill="${PAL.lamp}" stroke="${PAL.woodDark}" stroke-width="0.7"/>`;
 }
 
 /**

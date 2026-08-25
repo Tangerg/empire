@@ -192,9 +192,9 @@ const painters: Record<TerrainId, Painter> = {
       <path d="M8 16h16M10 13h12M7 18h20" stroke="${PAL.roofDark}" stroke-width="0.7" opacity="0.55"/>
       <path d="M7 17v11m18-11v11M7 22h18M16 12v16" stroke="${PAL.woodDark}" stroke-width="1.2" opacity="0.82"/>
       <rect x="13" y="20" width="6" height="8" fill="${PAL.woodDark}"/>
-      <rect x="8.5" y="18" width="4" height="4" fill="#d5ad62" stroke="${PAL.woodDark}" stroke-width="0.8"/>
+      <rect x="8.5" y="18" width="4" height="4" fill="${PAL.lamp}" stroke="${PAL.woodDark}" stroke-width="0.8"/>
       <path d="M10.5 18v4M8.5 20h4" stroke="${PAL.woodDark}" stroke-width="0.6"/>
-      <rect x="19.5" y="18" width="4" height="4" fill="#d5ad62" stroke="${PAL.woodDark}" stroke-width="0.8"/>
+      <rect x="19.5" y="18" width="4" height="4" fill="${PAL.lamp}" stroke="${PAL.woodDark}" stroke-width="0.8"/>
       <path d="M21.5 18v4M19.5 20h4" stroke="${PAL.woodDark}" stroke-width="0.6"/>
       <path d="M6 27h20v2H6z" fill="${PAL.stoneDark}"/>
       <rect x="21" y="8" width="3" height="6" fill="${PAL.stoneDark}" stroke="${PAL.ink}" stroke-width="0.7"/>

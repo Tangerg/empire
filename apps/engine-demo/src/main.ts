@@ -20,6 +20,7 @@ import {
   terrainSwatch,
   escapeHtml,
   unitIcon,
+  PAL,
 } from '@empire/game-ui';
 import {
   type ResourceSubject,
@@ -145,7 +146,7 @@ function boardMarkup(): string {
       title="(${key})">
       <div class="tile-art">${terrainSwatch({ art: GENERIC_ART, content, grid }, content.terrains.get(terrain), owner?.color)}</div>
       ${unit ? `<div class="demo-unit">
-        ${unitIcon(GENERIC_ART, content.units.get(unit.type), unitOwner?.color ?? '#9aa3ad', 46)}
+        ${unitIcon(GENERIC_ART, content.units.get(unit.type), unitOwner?.color ?? PAL.unowned, 46)}
         <span class="unit-label">${escapeHtml(content.units.get(unit.type).name)}</span>
         <span class="hp-chip">${unit.hp}</span>
       </div>` : ''}

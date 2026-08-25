@@ -2918,6 +2918,48 @@ describe('one answer per question', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('writes a colour in one drawing module at most', () => {
+    /*
+     * `palette.ts` calls itself the single source of truth for every colour the art
+     * layer uses, and one-off colours are still everywhere: a gradient stop, a
+     * scene's backdrop, a wash. That is fine — a colour used once is a brush stroke.
+     * A colour used in *two* modules is a fact stated twice, and it drifts: three
+     * tones of a troll's hide lived in both its sprite and its portrait, and the
+     * lit window of a house was written in the hand-painted terrain and again in the
+     * one generated from the rules.
+     *
+     * Drawing modules only. A level's authored player colour and the engine's
+     * default are content, not art, and the engine cannot read a presentation
+     * palette anyway. Black and white are exempt: they are not colour choices.
+     */
+    const drawing = [
+      join('game-ui', 'src', 'art'),
+      join('game-ui', 'src', 'ui'),
+      join('editor', 'src'),
+      join('story-candidate-01', 'src', 'presentation'),
+    ];
+    const palette = join(packagesRoot, 'game-ui', 'src', 'art', 'palette.ts');
+    const seen = new Map<string, string[]>();
+    for (const file of [...everyPackageSource(), ...appSources()]) {
+      if (file === palette) continue;
+      const name = relative(packagesRoot, file);
+      if (!drawing.some((where) => name.startsWith(where)) && !file.includes(`apps${sep}`)) continue;
+      const code = stripComments(readFileSync(file, 'utf8'));
+      for (const [colour] of code.matchAll(/#[0-9a-fA-F]{6}\b/g)) {
+        const key = colour.toLowerCase();
+        if (key === '#ffffff' || key === '#000000') continue;
+        const files = seen.get(key) ?? [];
+        if (!files.includes(name)) files.push(name);
+        seen.set(key, files);
+      }
+    }
+    const offenders = [...seen].filter(([, files]) => files.length > 1)
+      .map(([colour, files]) => `${colour}: ${files.join(', ')}`);
+
+    expect(readFileSync(palette, 'utf8')).toContain('export const PAL');
+    expect(offenders).toEqual([]);
+  });
+
   it('says how big a cell is exactly once', () => {
     /*
      * Every coordinate the renderer port carries — a piece's place, a strip's

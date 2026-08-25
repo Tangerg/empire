@@ -46,6 +46,7 @@ import {
   squareLayout,
   StoryCampaignController,
   TILE,
+  TEAM_COLORS,
 } from '@empire/game-ui';
 import type { ManagedBoardSurfaceFactory } from '@empire/game-ui/pixi';
 
@@ -107,7 +108,7 @@ function levelCard(level: LevelData, { custom }: { custom: boolean }): string {
 }
 
 function codexMarkup(): string {
-  const team = '#3f7fd8';
+  const team = TEAM_COLORS[0];
   return `<div class="modal">
     <div class="modal-box">
       <div class="modal-head">

@@ -27,11 +27,25 @@ export const PAL = {
   inkSoft: '#3d342e',
   skin: '#e0aa7f',
   skinDark: '#b97d5b',
+  /*
+   * The green hide of the big ones, three tones of it.
+   *
+   * Written out in both `units.ts` (the sprite on the board) and `portraits.ts`
+   * (the same creature's plate), which is one creature painted twice from two
+   * copies of the same three numbers.
+   */
+  hide: '#8fa06a',
+  hideDark: '#7f9160',
+  hideLight: '#9cae76',
+  /** Light behind a window, which is what makes a house look lived in. */
+  lamp: '#d5ad62',
   cloth: '#d7cbb1',
   steel: '#bcc3bf',
   steelDark: '#737b79',
   gold: '#e4b84f',
   neutral: '#918b7d',
+  /** Nobody's colour, for a side that has none: a slate grey, not the earthy one. */
+  unowned: '#9aa3ad',
   hpGood: '#5fd07a',
   hpMid: '#e8c35a',
   hpLow: '#e0604f',

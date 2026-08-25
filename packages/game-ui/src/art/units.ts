@@ -127,20 +127,20 @@ const sprites: Record<UnitTypeId, Sprite> = {
   /* ------------------------------------------------------------- monsters */
   ogre: (c) => `
     ${shadow}
-    <path d="M9.6 18q0-7 6.8-7t6.8 7l1 10H8.6z" fill="${shade('#8fa06a', 0)}"/>
-    <path d="M16.4 11q6.8 0 6.8 7l1 10h-7.8z" fill="${shade('#8fa06a', -0.2)}"/>
+    <path d="M9.6 18q0-7 6.8-7t6.8 7l1 10H8.6z" fill="${shade(PAL.hide, 0)}"/>
+    <path d="M16.4 11q6.8 0 6.8 7l1 10h-7.8z" fill="${shade(PAL.hide, -0.2)}"/>
     <path d="M10 22h12.6l0.4 3H9.6z" fill="${c.team}"/>
     <path d="M16.4 22h6.2l0.4 3h-6.6z" fill="${c.dark}"/>
-    <path d="M8.6 28h5.4l-0.4-3.4H9z" fill="${shade('#8fa06a', -0.28)}"/>
-    <path d="M18.6 28h5.4l-0.6-3.4h-4.4z" fill="${shade('#8fa06a', -0.28)}"/>
-    <circle cx="16" cy="8.6" r="4.4" fill="#9cae76"/>
-    <path d="M11.6 8.6a4.4 4.4 0 0 0 8.8 0z" fill="#7f9160"/>
+    <path d="M8.6 28h5.4l-0.4-3.4H9z" fill="${shade(PAL.hide, -0.28)}"/>
+    <path d="M18.6 28h5.4l-0.6-3.4h-4.4z" fill="${shade(PAL.hide, -0.28)}"/>
+    <circle cx="16" cy="8.6" r="4.4" fill="${PAL.hideLight}"/>
+    <path d="M11.6 8.6a4.4 4.4 0 0 0 8.8 0z" fill="${PAL.hideDark}"/>
     <path d="M13.4 7.4h1.8v1.6h-1.8zM17 7.4h1.8v1.6H17z" fill="${PAL.ink}"/>
     <path d="M13.8 11.4h1.4v1.6h-1.4zM17 11.4h1.4v1.6H17z" fill="${PAL.plaster}"/>
     <path d="M4.2 8.6q3-3.4 6.4-1.6" stroke="${PAL.wood}" stroke-width="2.6" fill="none" stroke-linecap="round"/>
     <path d="M2 5.4q3.6-1.6 4.6 2.2Q4.2 9.4 2 5.4z" fill="${PAL.woodDark}"/>
     <circle cx="3.4" cy="6.2" r="0.9" fill="${PAL.stoneDark}"/>
-    <path d="M22.4 14q4.4 1.4 4.4 6" stroke="#8fa06a" stroke-width="3.2" fill="none" stroke-linecap="round"/>`,
+    <path d="M22.4 14q4.4 1.4 4.4 6" stroke="${PAL.hide}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`,
 
   dragon: (c) => `
     ${shadow}

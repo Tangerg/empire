@@ -1,4 +1,4 @@
-import { icon, terrainSwatch, unitIcon, escapeHtml, type ArtDirection } from '@empire/game-ui';
+import { icon, PAL, terrainSwatch, unitIcon, escapeHtml, type ArtDirection } from '@empire/game-ui';
 import {
   type TacticalGrid,
   type ContentCatalog,
@@ -166,7 +166,7 @@ export class EditorPanels {
         <h3>归属</h3>
         <div class="owner-row">
           <button class="owner-chip ${brush.owner === 0 ? 'active' : ''}" data-act="owner" data-arg="0"
-            style="--team:#9aa3ad">中立</button>
+            style="--team:${PAL.unowned}">中立</button>
           ${view.document.players
             .map(
               (player) => `<button class="owner-chip ${brush.owner === player.id ? 'active' : ''}" data-act="owner" data-arg="${player.id}"
@@ -315,6 +315,6 @@ export class EditorPanels {
   }
 
   private colorOf(view: EditorPanelView, owner: number): string {
-    return view.document.players.find((player) => player.id === owner)?.color ?? '#9aa3ad';
+    return view.document.players.find((player) => player.id === owner)?.color ?? PAL.unowned;
   }
 }
