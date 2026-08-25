@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
   createBattleEngine,
-  normaliseLevel,
   StoredDocumentError,
   type LevelData,
 } from '@empire/battle-engine';
@@ -14,37 +13,21 @@ import {
 } from '../save';
 import type { CampaignDefinition } from '../types';
 import { CampaignInvariantError } from '../errors';
-import { createTestCatalog } from '@empire/test-content';
+import { createTestCatalog, makeLevel, u } from '@empire/test-content';
 
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog();
 const engine = () => createBattleEngine({ content: TEST_CATALOG });
 
 const level = (): LevelData =>
-  normaliseLevel({
-    schema: 2,
+  makeLevel(['C...', '...C'], {
     id: 'save-arena',
-    name: 'save arena',
-    width: 4,
-    height: 2,
-    terrain: ['C...', '...C'],
     owners: [{ x: 0, y: 0, owner: 1 }, { x: 3, y: 1, owner: 2 }],
     units: [
-      { key: 'hero', x: 1, y: 0, unit: 'soldier', owner: 1 },
-      { key: 'ally', x: 2, y: 0, unit: 'archer', owner: 1 },
-      { key: 'foe', x: 3, y: 0, unit: 'soldier', owner: 2 },
+      { key: 'hero', ...u(1, 0, 'soldier', 1) },
+      { key: 'ally', ...u(2, 0, 'archer', 1) },
+      { key: 'foe', ...u(3, 0, 'soldier', 2) },
     ],
-    players: [
-      {
-        id: 1, name: 'P1', team: 1, color: '#3f7fd8', controller: 'human',
-        resources: { funds: { current: 0, capacity: null } },
-      },
-      {
-        id: 2, name: 'P2', team: 2, color: '#d8483f', controller: 'ai',
-        resources: { funds: { current: 0, capacity: null } },
-      },
-    ],
-    rules: {},
     victory: [{ type: 'routEnemies' }],
   });
 

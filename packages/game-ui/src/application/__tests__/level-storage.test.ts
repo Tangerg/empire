@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it } from 'vitest';
 import { normaliseLevel, type LevelData } from '@empire/battle-engine';
+import { makeLevel, u } from '@empire/test-content';
 import {
   CUSTOM_LEVELS_KEY,
   loadCustomLevels,
@@ -10,28 +11,7 @@ import {
 } from '../level-storage';
 
 const level = (id: string): LevelData =>
-  normaliseLevel({
-    schema: 2,
-    id,
-    name: id,
-    width: 2,
-    height: 1,
-    terrain: ['..'],
-    owners: [],
-    units: [{ x: 0, y: 0, unit: 'soldier', owner: 1 }],
-    players: [
-      {
-        id: 1, name: 'P1', team: 1, color: '#3f7fd8', controller: 'human',
-        resources: { funds: { current: 0, capacity: null } },
-      },
-      {
-        id: 2, name: 'P2', team: 2, color: '#d8483f', controller: 'ai',
-        resources: { funds: { current: 0, capacity: null } },
-      },
-    ],
-    rules: {},
-    victory: [{ type: 'routEnemies' }],
-  });
+  makeLevel(['..'], { id, units: [u(0, 0, 'soldier', 1)] });
 
 describe('custom level storage', () => {
   beforeEach(() => localStorage.clear());

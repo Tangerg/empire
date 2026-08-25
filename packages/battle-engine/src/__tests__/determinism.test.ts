@@ -5,34 +5,18 @@ import { BattleRecorder, hashState, replayBattle } from '../replay';
 import { CoreActionHandlers } from '../actions';
 import { cloneState } from '../state';
 import { DomainInvariantError } from '../domain/errors';
-import { TEST_CONTENT, makeLevel, u } from './fixtures';
-import type { Action, GameState, LevelData } from '../types';
+import { TEST_CONTENT, skirmishLevel } from './fixtures';
+import type { Action, GameState } from '../types';
 import type { EnginePlugin } from '../kernel';
 import { requirePersistentRuleset } from '../ruleset-manifest';
 
 const engine = () => createBattleEngine({ content: TEST_CONTENT });
 
-const skirmish = (): LevelData =>
-  makeLevel(['C..v..', '.T..T.', '..h...', 'v....C'], {
-    units: [
-      u(1, 0, 'soldier', 1),
-      u(0, 2, 'archer', 1),
-      u(4, 3, 'soldier', 2),
-      u(5, 2, 'knight', 2),
-    ],
-    owners: [
-      { x: 0, y: 0, owner: 1 },
-      { x: 5, y: 3, owner: 2 },
-      { x: 3, y: 0, owner: 0 },
-      { x: 0, y: 3, owner: 0 },
-    ],
-    funds: [200, 200],
-  });
 
 /** Plays a whole battle with the AI on both sides, recording every action. */
 function playRecorded(seed: number): { state: GameState; recorder: BattleRecorder } {
   const battle = engine();
-  const level = skirmish();
+  const level = skirmishLevel();
   const state = battle.createState(level, { seed });
   for (const player of state.players) player.controller = 'ai';
   const recorder = new BattleRecorder(battle, state);
@@ -94,7 +78,7 @@ describe('seeded randomness', () => {
 
   it('travels with the state, so a clone draws the same numbers', () => {
     const battle = engine();
-    const state = battle.createState(skirmish(), { seed: 5 });
+    const state = battle.createState(skirmishLevel(), { seed: 5 });
     SplitMixRandom.next(state, 'combat');
     const copy = battle.cloneState(state);
     expect(SplitMixRandom.next(copy, 'combat')).toBe(SplitMixRandom.next(state, 'combat'));
@@ -108,7 +92,7 @@ describe('seeded randomness', () => {
   it('exposes a seeded scenario condition that is reproducible', () => {
     const battle = engine();
     const roll = (seed: number) => {
-      const state = battle.createState(skirmish(), { seed });
+      const state = battle.createState(skirmishLevel(), { seed });
       return Array.from({ length: 6 }, () =>
         battle.rules.scenarioConditions.evaluate(
           state,
@@ -124,7 +108,7 @@ describe('seeded randomness', () => {
 describe('state hashing', () => {
   it('is stable across a clone and sensitive to a real change', () => {
     const battle = engine();
-    const state = battle.createState(skirmish(), { seed: 3 });
+    const state = battle.createState(skirmishLevel(), { seed: 3 });
     expect(hashState(battle.cloneState(state))).toBe(hashState(state));
 
     const before = hashState(state);
@@ -136,7 +120,7 @@ describe('state hashing', () => {
     // The digest used to be a hand-written list of about twenty fields, and it
     // had drifted: these six changes each left the hash untouched.
     const battle = engine();
-    const state = battle.createState(skirmish(), { seed: 3 });
+    const state = battle.createState(skirmishLevel(), { seed: 3 });
     const changes: Array<[string, () => void]> = [
       ['a passenger', () => state.embarkedUnits.push({ carrier: 1, unit: { ...state.units[0] } })],
       ['a spent tactic', () => state.commanders.push({
@@ -165,7 +149,7 @@ describe('state hashing', () => {
     // board with two units swapped can be ordered around differently from the
     // next action on. A deterministic engine reproduces the order too.
     const battle = engine();
-    const state = battle.createState(skirmish(), { seed: 3 });
+    const state = battle.createState(skirmishLevel(), { seed: 3 });
     const before = hashState(state);
     state.units.reverse();
     expect(hashState(state)).not.toBe(before);
@@ -175,14 +159,14 @@ describe('state hashing', () => {
     // JSON drops `key: undefined`; `structuredClone` keeps it. A digest that
     // told the two apart would report every reloaded battle as diverged.
     const battle = engine();
-    const state = battle.createState(skirmish(), { seed: 3 });
+    const state = battle.createState(skirmishLevel(), { seed: 3 });
     const before = hashState(state);
     expect(hashState(JSON.parse(JSON.stringify(state)) as GameState)).toBe(before);
   });
 
   it('ignores session fields by domain path, not every same-named extension value', () => {
     const battle = engine();
-    const state = battle.createState(skirmish(), { seed: 3 });
+    const state = battle.createState(skirmishLevel(), { seed: 3 });
     const before = hashState(state);
     state.players[0].controller = 'human';
     expect(hashState(state)).toBe(before);
@@ -210,7 +194,7 @@ describe('replay', () => {
     const replay = recorder.replay(state);
     expect(replay.actions.length).toBeGreaterThan(10);
 
-    const outcome = replayBattle(engine(), skirmish(), replay);
+    const outcome = replayBattle(engine(), skirmishLevel(), replay);
     expect(outcome.divergedAt).toBeNull();
     expect(hashState(outcome.state)).toBe(hashState(state));
     expect(outcome.state.turn).toBe(state.turn);
@@ -229,7 +213,7 @@ describe('replay', () => {
         { kind: 'command', unit: 999, path: [{ x: 0, y: 0 }], command: { ability: 'wait' } } as Action,
       ],
     };
-    const outcome = replayBattle(engine(), skirmish(), tampered);
+    const outcome = replayBattle(engine(), skirmishLevel(), tampered);
     expect(outcome.divergedAt).toBe(0);
     expect(outcome.reason).not.toBe('');
   });
@@ -246,7 +230,7 @@ describe('replay', () => {
       install: (context) => context.replace('actionHandlers', handlers),
     };
     const battle = createBattleEngine({ content: TEST_CONTENT, plugins: [brokenRules] });
-    const level = skirmish();
+    const level = skirmishLevel();
     const state = battle.createState(level, { seed: 5 });
     const recorder = new BattleRecorder(battle, state);
     recorder.record({ kind: 'endTurn' });
@@ -259,17 +243,17 @@ describe('replay', () => {
     const { state, recorder } = playRecorded(2024);
     const replay = recorder.replay(state);
 
-    expect(replayBattle(engine(), skirmish(), {
+    expect(replayBattle(engine(), skirmishLevel(), {
       ...replay,
       initialStateHash: '00000000',
     }).reason).toMatch(/初始状态摘要/);
 
-    expect(replayBattle(engine(), skirmish(), {
+    expect(replayBattle(engine(), skirmishLevel(), {
       ...replay,
       finalStateHash: '00000000',
     }).reason).toMatch(/最终状态摘要/);
 
-    expect(replayBattle(engine(), skirmish(), {
+    expect(replayBattle(engine(), skirmishLevel(), {
       ...replay,
       ruleset: {
         ...replay.ruleset,

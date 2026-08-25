@@ -36,7 +36,35 @@ import { createTestCatalog } from '@empire/test-content';
 import type { ContentCatalog } from '../content-pack';
 
 /** The level sketches live in the package two suites share them through. */
-export { makeLevel, u } from '@empire/test-content';
+import { makeLevel, u } from '@empire/test-content';
+
+export { makeLevel, u };
+
+/**
+ * A small two-sided battle with something to capture, for tests about the whole.
+ *
+ * Written out in `battle-save.test.ts` and again in `determinism.test.ts` — the
+ * same six-by-four map and the same four units, differing only in whether the
+ * south-west village started neutral. Both suites are about a battle's *whole*
+ * state surviving something (a save, a replay), so both want the same battle: one
+ * that has units of two sides, a capturable village per corner and money to spend.
+ */
+export const skirmishLevel = (): LevelData =>
+  makeLevel(['C..v..', '.T..T.', '..h...', 'v....C'], {
+    units: [
+      u(1, 0, 'soldier', 1),
+      u(0, 2, 'archer', 1),
+      u(4, 3, 'soldier', 2),
+      u(5, 2, 'knight', 2),
+    ],
+    owners: [
+      { x: 0, y: 0, owner: 1 },
+      { x: 5, y: 3, owner: 2 },
+      { x: 3, y: 0, owner: 0 },
+      { x: 0, y: 3, owner: 0 },
+    ],
+    funds: [200, 200],
+  });
 
 /* ------------------------------------------------------------------ harness */
 

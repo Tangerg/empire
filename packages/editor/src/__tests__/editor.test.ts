@@ -164,7 +164,7 @@ describe('map editor', () => {
      * This counted `.layer-terrain`, because the composed art used to stamp one
      * tile per cell there. The ground of a map is the scene's now (a surface that
      * knows its neighbours cannot be one cell's answer), so the canvas draws it
-     * from `mapGroundPieces` and the terrain layer keeps what stands on a cell.
+     * from `mapScenePieces` and the terrain layer keeps what stands on a cell.
      */
     const cells = BUILTIN_LEVELS[0].width * BUILTIN_LEVELS[0].height;
     expect(board.querySelectorAll('.layer-ground > g').length).toBeGreaterThanOrEqual(cells);

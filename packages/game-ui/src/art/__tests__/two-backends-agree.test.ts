@@ -4,6 +4,7 @@ import { Sprite, Texture, type Container } from 'pixi.js';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
 import { createBattleEngine, type LevelData } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
+import { FrameClock } from './frame-clock';
 import {
   BOARD_LAYERS,
   type BoardLayer,
@@ -39,25 +40,10 @@ import { BoardView, emptyOverlay, type BoardComposition } from '../../ui/board';
  * Both backends drive their own `FrameAnimationSystem`, and both take frames from
  * whatever `requestAnimationFrame` is when they ask — so a test can be the clock.
  */
-let pending: Array<(time: number) => void> = [];
-let realRequest: typeof requestAnimationFrame;
-let realCancel: typeof cancelAnimationFrame;
+const clock = new FrameClock();
 
-beforeEach(() => {
-  realRequest = globalThis.requestAnimationFrame;
-  realCancel = globalThis.cancelAnimationFrame;
-  pending = [];
-  globalThis.requestAnimationFrame = ((callback: (time: number) => void) => {
-    pending.push(callback);
-    return pending.length;
-  }) as typeof requestAnimationFrame;
-  globalThis.cancelAnimationFrame = (() => {}) as typeof cancelAnimationFrame;
-});
-
-afterEach(() => {
-  globalThis.requestAnimationFrame = realRequest;
-  globalThis.cancelAnimationFrame = realCancel;
-});
+beforeEach(() => clock.install());
+afterEach(() => clock.restore());
 
 const CATALOG = createTestCatalog();
 const ENGINE = createBattleEngine({ content: CATALOG });
@@ -327,11 +313,10 @@ describe('two backends draw the same board', () => {
     expect(domFrame()).toBe('0 0 32 32');
     expect(gpuFrame()).toBe(0);
 
-    const base = performance.now();
     domUnit.play('walk');
     gpuUnit.play('walk');
     // 8fps: 200ms in is the second entry of the cycle, which is frame 2.
-    for (const callback of pending.splice(0)) callback(base + 200);
+    clock.at(200);
 
     expect(domFrame()).toBe('64 0 32 32');
     expect(gpuFrame()).toBe(2);

@@ -5,29 +5,14 @@ import { hashState } from '../replay';
 import { GameSession } from '../session';
 import { DomainInvariantError, StoredDocumentError } from '../domain/errors';
 import type { EnginePlugin } from '../kernel';
-import { TEST_CONTENT, makeLevel, u } from './fixtures';
-import type { Action, GameState, LevelData } from '../types';
+import { TEST_CONTENT, makeLevel, skirmishLevel, u } from './fixtures';
+import type { Action, GameState } from '../types';
 
 const engine = () => createBattleEngine({ content: TEST_CONTENT });
-const skirmish = (): LevelData =>
-  makeLevel(['C..v..', '.T..T.', '..h...', 'v....C'], {
-    units: [
-      u(1, 0, 'soldier', 1),
-      u(0, 2, 'archer', 1),
-      u(4, 3, 'soldier', 2),
-      u(5, 2, 'knight', 2),
-    ],
-    owners: [
-      { x: 0, y: 0, owner: 1 },
-      { x: 5, y: 3, owner: 2 },
-      { x: 3, y: 0, owner: 0 },
-    ],
-    funds: [200, 200],
-  });
 
 /** Plays a while with both sides on the AI, so the state has some history. */
 function battleInProgress(battle = engine(), actions = 24): GameState {
-  const state = battle.createState(skirmish(), { seed: 99 });
+  const state = battle.createState(skirmishLevel(), { seed: 99 });
   for (const player of state.players) player.controller = 'ai';
   for (let index = 0; index < actions && state.phase === 'playing'; index++) {
     battle.dispatch(state, battle.chooseAiAction(state));
@@ -112,7 +97,7 @@ describe('a battle interrupted mid-play', () => {
 
   it('refuses a save the ruleset cannot honour, before replacing anything', () => {
     const battle = engine();
-    const session = new GameSession(skirmish(), battle);
+    const session = new GameSession(skirmishLevel(), battle);
     const good = session.save();
     const digest = hashState(session.state);
 
@@ -216,7 +201,7 @@ describe('a battle interrupted mid-play', () => {
 
   it('keeps the sitting out of the save', () => {
     // Undo history and the battle log belong to this sitting, not to the battle.
-    const session = new GameSession(skirmish(), engine());
+    const session = new GameSession(skirmishLevel(), engine());
     const wait: Action = {
       kind: 'command',
       unit: session.state.units[0].id,

@@ -2,6 +2,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { SvgBoardSurface } from '../svg-board-surface';
 import type { BoardPicture, BoardSurfaceScene } from '../board-surface';
+import { FrameClock } from './frame-clock';
 
 /**
  * What the surface owns: the lifetime and the motion of everything it draws.
@@ -40,39 +41,11 @@ const WALKING: BoardPicture = {
 /** The same sprite, running from the moment it is drawn. */
 const RUNNING: BoardPicture = { ...WALKING, strip: { ...WALKING.strip!, playing: 'walk' } };
 
-let pending: Array<(time: number) => void> = [];
-let requests = 0;
-let realRequest: typeof requestAnimationFrame;
-let realCancel: typeof cancelAnimationFrame;
+const clock = new FrameClock();
+const pump = (frames: number): number => clock.pump(frames);
 
-/** Runs whatever the timeline asked for, and counts what it asks for next. */
-function pump(frames: number): number {
-  requests = 0;
-  for (let i = 0; i < frames; i++) {
-    const due = pending;
-    pending = [];
-    for (const callback of due) callback(performance.now() + i * 16);
-  }
-  return requests;
-}
-
-beforeEach(() => {
-  realRequest = globalThis.requestAnimationFrame;
-  realCancel = globalThis.cancelAnimationFrame;
-  pending = [];
-  requests = 0;
-  globalThis.requestAnimationFrame = ((callback: (time: number) => void) => {
-    requests++;
-    pending.push(callback);
-    return requests;
-  }) as typeof requestAnimationFrame;
-  globalThis.cancelAnimationFrame = (() => {}) as typeof cancelAnimationFrame;
-});
-
-afterEach(() => {
-  globalThis.requestAnimationFrame = realRequest;
-  globalThis.cancelAnimationFrame = realCancel;
-});
+beforeEach(() => clock.install());
+afterEach(() => clock.restore());
 
 describe('the surface owns what it draws', () => {
   /**
@@ -153,10 +126,9 @@ describe('the surface owns what it draws', () => {
     const window = () => surface.element.querySelector('.board-strip')!.getAttribute('viewBox');
 
     expect(window()).toBe('0 0 32 32');
-    const base = performance.now();
     unit.play('walk');
     // 8fps, so 200ms in is the second frame of the cycle.
-    for (const callback of pending.splice(0)) callback(base + 200);
+    clock.at(200);
     expect(window()).toBe('32 0 32 32');
 
     surface.dispose();

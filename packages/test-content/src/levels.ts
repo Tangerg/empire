@@ -30,6 +30,15 @@ import {
 export function makeLevel(
   terrain: string[],
   opts: {
+    /**
+     * What this level is called, when a test cares.
+     *
+     * Two suites wrote a whole `normaliseLevel({…})` by hand — the two-player
+     * array, the resources, the victory list — because they needed a level whose
+     * id was theirs and this builder's was `test`. Everything else they wrote was
+     * what this builder already produces.
+     */
+    id?: string;
     units?: LevelUnit[];
     commanders?: LevelCommander[];
     owners?: { x: number; y: number; owner: PlayerId }[];
@@ -47,8 +56,8 @@ export function makeLevel(
 ): LevelData {
   return normaliseLevel({
     schema: 2,
-    id: 'test',
-    name: 'test',
+    id: opts.id ?? 'test',
+    name: opts.id ?? 'test',
     width: terrain[0].length,
     height: terrain.length,
     terrain,
