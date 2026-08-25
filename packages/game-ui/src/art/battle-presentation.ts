@@ -39,6 +39,22 @@ export interface BattlePresentation {
    * presentation that varies by level does it where the level id already arrives —
    * in `sceneProfile`, `sceneFrame` and `sceneLayers` below.
    */
+  /**
+   * Whether this art has sheets for cells of this shape, asked before it is
+   * handed a board.
+   *
+   * A painted scene is cut to a tiling: this campaign's atlases are 32-unit
+   * squares indexed by square neighbours, and there is no picture in them for a
+   * hexagon. Handed one anyway it drew the whole ground at square coordinates —
+   * cells in the wrong places, silently.
+   *
+   * A question rather than a refusal, because the two callers owe the player
+   * different things. A battle drawn wrong is worse than a battle refused, so the
+   * board throws. A *picture* of a map — a level card, the editor's canvas, a
+   * palette swatch — still owes the reader the map, so it leaves the scene out and
+   * shows the tiles. Absent means this art paints anything.
+   */
+  paintsCells?(corners: number): boolean;
   sceneProfile(levelId: string): SceneViewportProfile;
   sceneFrame(scene: BattleSceneContext): SceneFrameMarkup;
   /**
@@ -141,6 +157,15 @@ export const GENERIC_PRESENTATION: BattlePresentation = Object.freeze({
   weaponFx: () => null,
   effect: () => NO_PICTURE,
 });
+
+/**
+ * Whether this art has sheets for a board whose cells have this many corners.
+ *
+ * Stated here rather than at each caller, so the board's refusal and a level
+ * card's fallback are two readings of one answer.
+ */
+export const paintsCells = (presentation: BattlePresentation, corners: number): boolean =>
+  presentation.paintsCells?.(corners) ?? true;
 
 /**
  * How the board draws its tactical layer for this art. Painted scenes without a

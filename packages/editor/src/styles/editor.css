@@ -115,9 +115,25 @@
   resize: vertical;
 }
 
-.tool-row {
+/*
+ * The palette's two shapes, each stated once.
+ *
+ * A row of chips that wraps, and a three-across grid of swatches. Both were
+ * written twice — `.tool-row` and `.owner-row` were byte-identical, and so were
+ * `.swatch-grid` and `.unit-grid` — which is two chances to change the gap in one
+ * of them and wonder why the panel looks lopsided.
+ */
+.tool-row,
+.owner-row {
   display: flex;
   flex-wrap: wrap;
+  gap: 4px;
+}
+
+.swatch-grid,
+.unit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 4px;
 }
 
@@ -176,12 +192,6 @@
   width: 318px;
 }
 
-.swatch-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-}
-
 .swatch,
 .unit-chip {
   display: grid;
@@ -213,18 +223,6 @@
   border-color: var(--accent);
   background: color-mix(in srgb, var(--accent) 22%, transparent);
   color: #fff;
-}
-
-.unit-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-}
-
-.owner-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
 }
 
 .owner-chip {

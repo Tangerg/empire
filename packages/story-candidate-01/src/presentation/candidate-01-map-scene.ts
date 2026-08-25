@@ -250,13 +250,13 @@ const materialField = (content: ContentCatalog, map: GameMap): MaterialField => 
  *
  * `["N","NE","E","SE","S","SW","W","NW"]`, which every transition atlas in the
  * manifest declares as its `bitOrder`. These are the square tiling's neighbours,
- * written out rather than asked of the board — see `requireSquareTiling`, which is
- * where this pack says out loud that its sheets can only paint a square field.
+ * written out rather than asked of the board — see `candidate01PaintsCells`, which
+ * is where this pack says out loud that its sheets only fit a square field.
  */
 const NEIGHBOURS = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]] as const;
 
 /**
- * This kit paints square cells, and refuses anything else.
+ * This kit paints square cells and nothing else.
  *
  * Every sheet in it is a 32-unit square: the surfaces, the blob transitions
  * indexed by eight square neighbours, the routes and waters indexed by four. A hex
@@ -264,22 +264,10 @@ const NEIGHBOURS = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], 
  * — and the wrong answer is to draw one anyway at `x * 32`, which is what this
  * module did silently for any tiling the application root handed it.
  *
- * A refusal rather than an empty scene: composing this art for a board it cannot
- * paint is the caller's mistake, and a battle that comes up looking like the plain
- * ruleset would hide it.
+ * Stated as an answer rather than enforced here, because a battle and a picture of
+ * a map owe the reader different things — see `BattlePresentation.paintsCells`.
  */
-function requireSquareTiling(viewport: SceneViewport): void {
-  // Asked of the tiling, which owns the shape of its own cell — the same question
-  // the board asks to decide whether a tile needs clipping. Writing out four
-  // facings or eight offsets to answer it here would be this module deciding what
-  // shape somebody else's board is.
-  const corners = viewport.grid.outline().length;
-  if (corners === 4) return;
-  throw new Error(
-    `candidate-01's sheets are square; the tiling "${viewport.grid.id}" has cells with `
-    + `${corners} corners. Compose GENERIC_ART for this board, or author sheets for that tiling.`,
-  );
-}
+export const candidate01PaintsCells = (corners: number): boolean => corners === 4;
 
 /**
  * The eight-neighbour mask a blob transition sheet is indexed by.
@@ -616,7 +604,6 @@ function sceneFrameForestMarkup(viewport: SceneViewport): string {
 export function candidate01SceneFrameMarkup(
   { map, viewport }: BattleSceneContext,
 ): SceneFrameMarkup {
-  requireSquareTiling(viewport);
   // Every level of this campaign carries the pack's board style: an atlas tile and
   // a unit figure wear its shadows. It is declared as the scene's `style` rather
   // than pasted into `backdrop` — a `<style>` in the DOM tree is obeyed by the DOM
@@ -651,9 +638,8 @@ export function candidate01SceneFrameMarkup(
 
 /** Story art is pure presentation and cannot affect deterministic battle rules. */
 export function candidate01MapSceneryLayers(
-  { content, levelId, map, viewport }: BattleSceneContext,
+  { content, levelId, map }: BattleSceneContext,
 ): SceneLayers {
-  requireSquareTiling(viewport);
   return {
     ground: [...groundPieces(content, map), ...authoredGroundPieces(levelId)],
     underUnits: [

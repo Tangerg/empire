@@ -1619,14 +1619,20 @@ describe('behaviour has an owner', () => {
       return tells.some((tell) => tell.test(source)) ? [name] : [];
     });
 
-    // The painted scene's exemption is only honest while it refuses a tiling whose
-    // cells are not the squares its sheets are cut to.
+    /*
+     * The painted scene's exemption is only honest while it *says* which cells its
+     * sheets fit, so that a board it cannot draw is refused and a picture of a map
+     * falls back — see `BattlePresentation.paintsCells`. It used to enforce that
+     * itself, which put the refusal in the one place that owed the reader a
+     * fallback.
+     */
     const painted = readFileSync(
       join(packagesRoot, 'story-candidate-01', 'src', 'presentation', 'candidate-01-map-scene.ts'),
       'utf8',
     );
-    expect(painted).toMatch(/requireSquareTiling\(viewport\)/);
-    expect(painted).toMatch(/viewport\.grid\.outline\(\)\.length/);
+    expect(painted).toMatch(/candidate01PaintsCells = \(corners: number\)/);
+    const port = readFileSync(join(packagesRoot, 'game-ui', 'src', 'ui', 'board.ts'), 'utf8');
+    expect(port).toMatch(/paintsCells\(this\.presentation, corners\)/);
     expect(offenders).toEqual([]);
   });
 
@@ -1681,14 +1687,20 @@ describe('behaviour has an owner', () => {
       return tells.some((tell) => tell.test(source)) ? [name] : [];
     });
 
-    // The painted scene's exemption is only honest while it refuses a tiling whose
-    // cells are not the squares its sheets are cut to.
+    /*
+     * The painted scene's exemption is only honest while it *says* which cells its
+     * sheets fit, so that a board it cannot draw is refused and a picture of a map
+     * falls back — see `BattlePresentation.paintsCells`. It used to enforce that
+     * itself, which put the refusal in the one place that owed the reader a
+     * fallback.
+     */
     const painted = readFileSync(
       join(packagesRoot, 'story-candidate-01', 'src', 'presentation', 'candidate-01-map-scene.ts'),
       'utf8',
     );
-    expect(painted).toMatch(/requireSquareTiling\(viewport\)/);
-    expect(painted).toMatch(/viewport\.grid\.outline\(\)\.length/);
+    expect(painted).toMatch(/candidate01PaintsCells = \(corners: number\)/);
+    const port = readFileSync(join(packagesRoot, 'game-ui', 'src', 'ui', 'board.ts'), 'utf8');
+    expect(port).toMatch(/paintsCells\(this\.presentation, corners\)/);
     expect(offenders).toEqual([]);
   });
 

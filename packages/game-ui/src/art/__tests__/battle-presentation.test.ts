@@ -1,17 +1,21 @@
-import { TacticalGrids, mapFromLevel, type GameMap } from '@empire/battle-engine';
+import { createBattleEngine, TacticalGrids, mapFromLevel, type GameMap } from '@empire/battle-engine';
 const SQUARE = TacticalGrids.get('square4');
 import { describe, expect, it } from 'vitest';
 import { candidate01Level, CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
-import { GENERIC_PRESENTATION } from '../battle-presentation';
+import { GENERIC_PRESENTATION, paintsCells } from '../battle-presentation';
 import { ArtDirection } from '../direction';
 import { createSceneViewport } from '../scene-viewport';
 import { boardPiecesMarkup } from '../board-surface';
+import { mapScenePieces } from '../battlefield-layer';
+import { BoardView } from '../../ui/board';
+import { svgBoardSurface } from '../svg-board-surface';
 import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
 
 import { createTestCatalog } from '@empire/test-content';
 
 /** Composed per suite, exactly like an application composition root. */
 const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
+const ENGINE = createBattleEngine({ content: TEST_CATALOG });
 
 
 
@@ -148,6 +152,38 @@ describe('battle presentation', () => {
     expect(layers.underUnits[0].markup).toContain('field-light');
     expect(layers.underUnits[0].markup).toContain(`width="${map.width * 32}"`);
     expect(presentation.effect('unknown')).toEqual({ body: '' });
+  });
+
+  /**
+   * A board this art has no sheets for is refused; a picture of it is not.
+   *
+   * The campaign's atlases are 32-unit squares indexed by square neighbours, and
+   * there is no picture in them for a hexagon. Handed one, the scene drew the whole
+   * ground at `x * 32`. Both halves of the answer come from one statement on the
+   * port: the board throws, and a level card, the editor's canvas and a palette
+   * swatch leave the scene out and show the tiles — because a battle drawn wrong is
+   * worse than one refused, and a picture still owes the reader the map.
+   */
+  it('refuses a battle it cannot paint and still pictures the map', () => {
+    const hex = TacticalGrids.get('hex');
+    const level = candidate01Level('c01-02');
+    const map = mapFromLevel(TEST_CATALOG, level);
+    const canvas = { art: CANDIDATE_01_ART, content: TEST_CATALOG, grid: hex };
+
+    expect(paintsCells(CANDIDATE_01_ART.presentation, 4)).toBe(true);
+    expect(paintsCells(CANDIDATE_01_ART.presentation, hex.outline().length)).toBe(false);
+
+    // The picture: no scene, and the per-cell painters still carry the map.
+    expect(mapScenePieces(canvas, level.id, map)).toEqual({ ground: [], underUnits: [], overUnits: [] });
+    expect(mapScenePieces({ ...canvas, grid: SQUARE }, level.id, map).ground.length)
+      .toBeGreaterThan(map.width * map.height);
+
+    // The battle: refused, naming the art and the tiling.
+    expect(() => new BoardView(
+      { content: TEST_CATALOG, grid: hex, art: CANDIDATE_01_ART, renderer: svgBoardSurface },
+      ENGINE.createState(level),
+      { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} },
+    )).toThrow(/candidate-01.*6 corners.*hex/s);
   });
 
   /**

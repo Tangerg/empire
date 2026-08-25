@@ -332,6 +332,7 @@
 | 定居点周围放什么 | `CANDIDATE_SETTLEMENT_LIFE`（景物层在地形层之上，所以生活道具放在建筑旁边的空地） |
 | 岸边和水里画什么 | `CANDIDATE_SHORE` / `CANDIDATE_RIVER_STONES`（不是任何地形的材质，是地面挨着水时会发生的事） |
 | 一座桥怎么画 | `crossing`（一段桥格一份 96 单位模件，按 `lying` 以自身中心落位，不是按脚） |
+| 一份美术能画什么形状的格子 | `paintsCells`（端口一处声明：战斗拒绝，地图的图片退回按格贴图） |
 | 一场战斗画在哪张场景里 | `ArtDirection.presentation`（一份美术一张场景，由组合根指定；没有 `matches` 让美术包挑关卡） |
 | 一张地图长什么样，在不是战斗的画布上 | `mapScenePieces` / `terrainSwatch`（编辑器画布、关卡缩略图、地形色板三家共用；同一张场景，同一份材质表） |
 | 通用美术怎么在不随机的前提下变化 | `nameHash` / `pick` / `r2`（`art/variation.ts`；坐标那一支是引擎的 `tileHash`） |

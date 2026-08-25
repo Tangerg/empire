@@ -11,7 +11,7 @@ import {
 import { tileGaugeBar } from '../art/gauges';
 import { PAL } from '../art/palette';
 import { UNIT_FOOTING } from '../art/shading';
-import { decorationsFor, type BattlePresentation } from '../art/battle-presentation';
+import { decorationsFor, paintsCells, type BattlePresentation } from '../art/battle-presentation';
 import { markerFromRules, structureFromRules } from '../art/field-objects-from-rules';
 import type { ArtDirection } from '../art/direction';
 import type { BoardDecorations, BoardLayout, DecorationTint } from '../art/board-decorations';
@@ -162,6 +162,21 @@ export class BoardView {
     this.content = composition.content;
     this.art = composition.art;
     this.presentation = this.art.presentation;
+    /*
+     * Art with no sheets for this tiling cannot draw this battle.
+     *
+     * A refusal rather than a fallback: composing a painted campaign for a hex
+     * board is the application root's mistake, and a battle that came up looking
+     * like the plain ruleset would hide it. A picture of a map is the other way
+     * round — see `mapScenePieces`.
+     */
+    const corners = composition.grid.outline().length;
+    if (!paintsCells(this.presentation, corners)) {
+      throw new Error(
+        `art "${this.presentation.id}" has no sheets for cells with ${corners} corners`
+        + ` (tiling "${composition.grid.id}"). Compose GENERIC_ART for this board.`,
+      );
+    }
     this.decor = decorationsFor(this.presentation);
     this.viewport = createSceneViewport(
       composition.grid,

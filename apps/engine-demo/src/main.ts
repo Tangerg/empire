@@ -10,6 +10,7 @@ import {
   type GameEvent,
   type LevelData,
   type Unit,
+  DEFAULT_GRID,
 } from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
@@ -97,8 +98,14 @@ const app = requireMountPoint('app');
 // because it wanted the plugin manifest to draw; the manifest is now on the
 // engine, so a demo about composition no longer demonstrates a second way to do it.
 const engine = createBattleEngine({ content });
-/** The tiling the terrain gallery measures a swatch on. */
-const grid = engine.rules.grids.get('square4');
+/**
+ * The tiling the terrain gallery measures a swatch on.
+ *
+ * `DEFAULT_GRID` rather than the string `'square4'`: this gallery has no level, so
+ * the honest answer is "whatever a level gets when it names none", and that is
+ * something the engine says rather than something this page decides.
+ */
+const grid = engine.rules.grids.get(DEFAULT_GRID);
 let session = new GameSession(DEMO_LEVEL, engine);
 let preview: CombatPlan | null = null;
 let events: GameEvent[] = [];

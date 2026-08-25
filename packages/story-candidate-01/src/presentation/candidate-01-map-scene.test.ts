@@ -7,6 +7,7 @@ import { candidate01Level } from '../levels';
 import {
   candidate01MapSceneryLayers,
   candidate01SceneFrameMarkup,
+  candidate01PaintsCells,
   candidate01SceneProfile,
 } from './candidate-01-map-scene';
 import { candidate01EnvironmentScene } from './candidate-01-environment';
@@ -129,6 +130,31 @@ describe('candidate-01 authored map scenery', () => {
       expect(ground, levelId).toContain('candidate-ground-route');
       expect(boardPiecesMarkup(layers.underUnits), levelId).toContain('candidate-environment-prop');
     }
+  });
+
+  /**
+   * Which cells this kit's sheets fit, said rather than policed.
+   *
+   * Every sheet in it is a 32-unit square indexed by square neighbours. Handed a
+   * hex board the scene drew the whole ground at `x * 32` — cells in the wrong
+   * places, silently.
+   *
+   * It answers the question now instead of enforcing it, because the two callers
+   * owe the reader different things: a battle is refused (`BoardView` throws) and a
+   * picture of a map leaves the scene out and shows the tiles (`mapScenePieces`).
+   * Enforcing it inside the scene made the level menu crash on a hex level saved
+   * from the editor — the card could not be drawn at all.
+   */
+  it('says which cells its sheets fit, rather than policing it', () => {
+    expect(candidate01PaintsCells(4)).toBe(true);
+    expect(candidate01PaintsCells(6)).toBe(false);
+
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-02'));
+    const square = createSceneViewport(SQUARE, map.width, map.height, 32, candidate01SceneProfile());
+    const painted = candidate01MapSceneryLayers({
+      content: TEST_CATALOG, levelId: 'c01-02', map, viewport: square,
+    });
+    expect(painted.ground.length).toBeGreaterThan(map.width * map.height);
   });
 
   /**

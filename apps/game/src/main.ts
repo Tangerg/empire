@@ -8,6 +8,7 @@ import {
   createContentCatalog,
   errorMessage,
   mapFromLevel,
+  resolveRules,
   type LevelData,
 } from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
@@ -58,8 +59,16 @@ new ContentPackInstaller(content).install(
   CANDIDATE_01_CONTENT_PACK,
 );
 const engine = createBattleEngine({ content });
-/** The tiling a level card's picture is measured on. */
-const grid = engine.rules.grids.get('square4');
+
+/**
+ * The tiling one level is laid out on, which is the level's own answer.
+ *
+ * A card used to be measured on a hardcoded `square4`. Every shipped level happens
+ * to be square, so it looked right — and a hex level saved from the editor would
+ * have had its ground composed at square coordinates, or, since a painted scene
+ * refuses a tiling its sheets cannot paint, crashed the menu.
+ */
+const tilingOf = (level: LevelData) => engine.rules.grids.get(resolveRules(level).grid);
 // Composition root: art is composed here beside the catalog and the engine, so a
 // second story pack would be another entry rather than another import side effect.
 const art = CANDIDATE_01_ART;
@@ -77,7 +86,7 @@ function thumbnail(level: LevelData): string {
   const colorOf = (id: number) => level.players.find((p) => p.id === id)?.color;
   // The scene the board would paint, under and over the tiles the per-cell
   // painters draw. A card that showed only the tiles showed buildings on nothing.
-  const scene = mapScenePieces({ art, content, grid }, level.id, map);
+  const scene = mapScenePieces({ art, content, grid: tilingOf(level) }, level.id, map);
   const units = level.units
     .map((u) => {
       const color = level.players.find((p) => p.id === u.owner)?.color ?? '#aaa';

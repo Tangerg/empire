@@ -3,6 +3,7 @@ import type { ContentCatalog, GameMap, TacticalGrid, TerrainDef } from '@empire/
 import { boardPiecesMarkup, wholeField, type BoardPiece } from './board-surface';
 import { edgeLine, type BoardLayout } from './board-decorations';
 import { createSceneViewport, type SceneLayers } from './scene-viewport';
+import { paintsCells } from './battle-presentation';
 import { terrainMarkup } from './terrain';
 import { TILE } from './board-surface';
 
@@ -67,6 +68,13 @@ export interface MapCanvas {
  */
 export function mapScenePieces(canvas: MapCanvas, levelId: string, map: GameMap): SceneLayers {
   const { presentation } = canvas.art;
+  // A picture of a map still owes the reader the map. Art with no sheets for this
+  // tiling contributes nothing and the per-cell painters carry the picture — where
+  // a *battle* under the same art is refused outright, because a board drawn at the
+  // wrong coordinates is worse than one that says it cannot be drawn.
+  if (!paintsCells(presentation, canvas.grid.outline().length)) {
+    return { ground: [], underUnits: [], overUnits: [] };
+  }
   const viewport = createSceneViewport(
     canvas.grid,
     map.width,

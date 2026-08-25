@@ -18,6 +18,7 @@ import { CANDIDATE_01_SPEAKER_NAMES, candidate01Choice, candidate01Story } from 
 import {
   candidate01MapSceneryLayers,
   candidate01SceneFrameMarkup,
+  candidate01PaintsCells,
   candidate01SceneProfile,
 } from './candidate-01-map-scene';
 import {
@@ -82,6 +83,7 @@ const CANDIDATE_01_BATTLE_PRESENTATION: BattlePresentation = Object.freeze({
   boardClass: 'candidate-map',
   // Painted scenes want the tactical layer on the ground, not ruled over it.
   decorations: GroundBoardDecorations,
+  paintsCells: candidate01PaintsCells,
   sceneProfile: candidate01SceneProfile,
   sceneFrame: candidate01SceneFrameMarkup,
   sceneLayers: candidate01MapSceneryLayers,
