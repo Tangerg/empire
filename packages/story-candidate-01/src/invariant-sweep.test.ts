@@ -147,7 +147,7 @@ function sweep(level: LevelData, aggression: number): string[] {
   found.push(...invariants(session.state, `${where} start`, seen));
   let actions = 0;
   while (session.state.phase === 'playing' && actions < 400 && found.length === 0) {
-    let events: GameEvent[] = [];
+    let events: readonly GameEvent[] = [];
     try {
       events = session.tryDispatch(session.chooseAiAction()) ?? session.tryDispatch({ kind: 'endTurn' }) ?? [];
     } catch (error) {

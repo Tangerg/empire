@@ -119,7 +119,7 @@ export class GameSession {
   /* --------------------------------------------------------------- commands */
 
   /** Applies an action. Returns the event list, or throws IllegalActionError. */
-  dispatch(action: Action): GameEvent[] {
+  dispatch(action: Action): readonly GameEvent[] {
     const handsOff = this.engine.actionHandlers.handsOffTurn(action);
     const { events, before } = this.engine.dispatchWithReceipt(this.state, action);
 
@@ -134,7 +134,7 @@ export class GameSession {
   }
 
   /** Same as dispatch but swallows illegal actions, returning null. */
-  tryDispatch(action: Action): GameEvent[] | null {
+  tryDispatch(action: Action): readonly GameEvent[] | null {
     try {
       return this.dispatch(action);
     } catch (error) {

@@ -571,7 +571,7 @@ export class GameController {
    * different sides of the animation — inert only because a dispatch mutates
    * the state in place, which is not something a caller should have to know.
    */
-  private async settle(events: GameEvent[]): Promise<void> {
+  private async settle(events: readonly GameEvent[]): Promise<void> {
     await this.playEvents(events);
     this.board.setState(this.state);
     this.refresh();
@@ -586,7 +586,7 @@ export class GameController {
 
     try {
       await this.march(action, { follow: false });
-      let events: GameEvent[];
+      let events: readonly GameEvent[];
       try {
         events = this.session.dispatch(action);
       } catch (error) {
@@ -609,7 +609,7 @@ export class GameController {
   }
 
   /** One batch of events comes from one order, so one log context serves it. */
-  private async playEvents(events: GameEvent[]): Promise<void> {
+  private async playEvents(events: readonly GameEvent[]): Promise<void> {
     const log = this.logContext();
     for (const event of events) {
       if (this.disposed) return;
@@ -683,7 +683,7 @@ export class GameController {
         if (++guard > 2000) break;
         const action = this.session.chooseAiAction();
         await this.march(action, { follow: true, pace: 65 });
-        let events: GameEvent[];
+        let events: readonly GameEvent[];
         try {
           events = this.session.dispatch(action);
         } catch (error) {

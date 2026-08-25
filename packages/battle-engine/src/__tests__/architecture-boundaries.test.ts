@@ -3120,6 +3120,39 @@ describe('one answer per question', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('freezes what it hands out, contents and all', () => {
+    /*
+     * `readonly events: GameEvent[]` freezes the *reference* and not the array: a
+     * caller cannot swap the list, and can push into it all day. Four exported
+     * fields were declared that way — a dispatch receipt's events, a recruit
+     * option's costs, and the editor scene's units and players — so the word said
+     * one thing and the type allowed another.
+     *
+     * Following the events out found the rest of the path: `dispatch`,
+     * `tryDispatch`, `settle` and `playEvents` all took a mutable list they had no
+     * business changing. Where a caller *owns* the array — the sweep accumulating a
+     * whole battle's log — it stays mutable, which is the distinction the word was
+     * supposed to be making.
+     */
+    const offenders: string[] = [];
+    for (const file of everyPackageSource()) {
+      const text = stripComments(readFileSync(file, 'utf8'));
+      for (const [, name, body] of text.matchAll(
+        /export interface (\w+)\s*(?:extends [^{]+)?\{([\s\S]*?)\n\}/g,
+      )) {
+        for (const line of body.split('\n').map((entry) => entry.trim())) {
+          if (!line.startsWith('readonly ')) continue;
+          const value = line.slice(line.indexOf(':') + 1);
+          if (/\w+\[\]/.test(value) && !/readonly|ReadonlyArray/.test(value)) {
+            offenders.push(`${relative(packagesRoot, file)}: ${name}.${line}`);
+          }
+        }
+      }
+    }
+
+    expect(offenders).toEqual([]);
+  });
+
   it('hands an extension point a context it cannot write to', () => {
     /*
      * A `…Context` is what an extension point is *told*: the state, the subject,

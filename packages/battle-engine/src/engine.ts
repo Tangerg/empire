@@ -37,7 +37,7 @@ export interface BattleEngineDependencies extends BattleRuleServices {
 }
 
 export interface BattleDispatchReceipt {
-  readonly events: GameEvent[];
+  readonly events: readonly GameEvent[];
   /** Snapshot immediately before the action, suitable for an undo stack. */
   readonly before: GameState;
 }
@@ -192,7 +192,7 @@ export class BattleEngine {
     }).state;
   }
 
-  dispatch(state: GameState, action: Action): GameEvent[] {
+  dispatch(state: GameState, action: Action): readonly GameEvent[] {
     return this.dispatchWithReceipt(state, action).events;
   }
 

@@ -55,8 +55,8 @@ export interface EditorScene {
   readonly levelId: string;
   readonly grid: TacticalGrid;
   readonly map: GameMap;
-  readonly units: LevelUnit[];
-  readonly players: PlayerConfig[];
+  readonly units: readonly LevelUnit[];
+  readonly players: readonly PlayerConfig[];
 }
 
 /**
@@ -74,8 +74,8 @@ export class EditorBoard {
 
   constructor(
     private map: GameMap,
-    private units: LevelUnit[],
-    private players: PlayerConfig[],
+    private units: readonly LevelUnit[],
+    private players: readonly PlayerConfig[],
     private readonly handlers: EditorBoardHandlers,
     private readonly content: ContentCatalog,
     /** The art this canvas draws with; composed by the application root. */

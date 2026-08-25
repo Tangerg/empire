@@ -50,7 +50,7 @@ export function simulateCandidate01(level: LevelData, aggression = 0.58, actionL
       const detail = errorMessage(error);
       throw new Error(`${level.id} turn ${session.state.turn} player ${session.state.currentPlayer}: ${detail}`, { cause: error });
     }
-    let emitted: GameEvent[];
+    let emitted: readonly GameEvent[];
     try {
       emitted = session.tryDispatch(action) ?? session.tryDispatch({ kind: 'endTurn' }) ?? [];
     } catch (error) {

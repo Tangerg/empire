@@ -108,7 +108,7 @@ const engine = createBattleEngine({ content });
 const grid = engine.rules.grids.get(DEFAULT_GRID);
 let session = new GameSession(DEMO_LEVEL, engine);
 let preview: CombatPlan | null = null;
-let events: GameEvent[] = [];
+let events: readonly GameEvent[] = [];
 let headline = '先点“预测”，确认资源与血量都不会变化。';
 
 function byKey(key: string): Unit | undefined {

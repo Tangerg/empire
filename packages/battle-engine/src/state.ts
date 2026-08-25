@@ -514,7 +514,7 @@ export function productionTilesOf(content: ContentCatalog, state: GameState, id:
 /** One line of the recruitment menu: what it is, what it costs, can we pay. */
 export interface RecruitOption {
   readonly unit: UnitTypeId;
-  readonly costs: ResourceAmount[];
+  readonly costs: readonly ResourceAmount[];
   readonly affordable: boolean;
 }
 
