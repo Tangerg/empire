@@ -39,7 +39,7 @@ import {
   portraitSvg,
   readCustomLevels,
   requireMountPoint,
-  mapGroundPieces,
+  mapScenePieces,
   terrainLayerPieces,
   escapeHtml,
   squareLayout,
@@ -73,9 +73,9 @@ let active: GameController | StoryCampaignController | null = null;
 function thumbnail(level: LevelData): string {
   const map = mapFromLevel(content, level);
   const colorOf = (id: number) => level.players.find((p) => p.id === id)?.color;
-  // The ground the scene paints, under the tiles the per-cell painters draw. A
-  // card that showed only the second one showed a level's buildings on nothing.
-  const ground = boardPiecesMarkup(mapGroundPieces({ art, content, grid }, level.id, map));
+  // The scene the board would paint, under and over the tiles the per-cell
+  // painters draw. A card that showed only the tiles showed buildings on nothing.
+  const scene = mapScenePieces({ art, content, grid }, level.id, map);
   const units = level.units
     .map((u) => {
       const color = level.players.find((p) => p.id === u.owner)?.color ?? '#aaa';
@@ -84,7 +84,7 @@ function thumbnail(level: LevelData): string {
     })
     .join('');
   return `<svg viewBox="0 0 ${map.width * TILE} ${map.height * TILE}" preserveAspectRatio="xMidYMid slice">
-    ${ground}${boardPiecesMarkup(terrainLayerPieces({ art, layout: squareLayout, content }, map, colorOf))}${units}
+    ${boardPiecesMarkup(scene.ground)}${boardPiecesMarkup(terrainLayerPieces({ art, layout: squareLayout, content }, map, colorOf))}${boardPiecesMarkup([...scene.underUnits, ...scene.overUnits])}${units}
   </svg>`;
 }
 

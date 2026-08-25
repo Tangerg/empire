@@ -1,9 +1,9 @@
 import type { ArtDirection } from './direction';
-import type { ContentCatalog, GameMap, TacticalGrid } from '@empire/battle-engine';
-import { wholeField, type BoardPiece } from './board-surface';
+import type { ContentCatalog, GameMap, TacticalGrid, TerrainDef } from '@empire/battle-engine';
+import { boardPiecesMarkup, wholeField, type BoardPiece } from './board-surface';
 import { edgeLine, type BoardLayout } from './board-decorations';
-import { createSceneViewport } from './scene-viewport';
-import { TILE } from './terrain';
+import { createSceneViewport, type SceneLayers } from './scene-viewport';
+import { TILE, terrainMarkup } from './terrain';
 
 const featureColor = {
   elevationBackground: '#2a211a',
@@ -40,25 +40,31 @@ export function battlefieldRenderKey(map: GameMap): string {
   ].join('|');
 }
 
+/** Everything a picture of a map needs: the art, the catalog, and the tiling. */
+export interface MapCanvas {
+  readonly art: ArtDirection;
+  readonly content: ContentCatalog;
+  readonly grid: TacticalGrid;
+}
+
 /**
- * The ground a map is painted on, for a canvas that is not a battle.
+ * What a map looks like, for a canvas that is not a battle.
  *
- * The editor's canvas and a level card's thumbnail are pictures of a map, and they
- * drew the ground by asking each terrain's painter for a tile. That worked while
- * the shipped art answered with a tile; it stopped the moment the campaign's
- * ground moved into the scene, where it belongs — a surface that knows its
- * neighbours cannot be one cell's answer.
+ * Three of them: the editor's canvas, a level card's thumbnail, and a terrain
+ * swatch in the editor's palette. All three drew a map by asking each terrain's
+ * painter for one tile. That worked while the shipped art answered with a tile; it
+ * stopped the moment the campaign's ground moved into the scene, where it belongs
+ * — a surface that knows its neighbours cannot be one cell's answer — and the
+ * three of them went blank in three different ways.
  *
- * Ground pieces are placed in field coordinates, so a canvas that draws the field
- * at its own origin needs nothing from the viewport. It is built here because
- * `sceneProfile` may claim a margin, and a scene asked for its layers under a
- * viewport it did not choose is a scene being lied to.
+ * The scene's own three layers, because the ground alone is not what a map looks
+ * like: a wood is a transition patch *and* the trees standing on it, a city wall is
+ * paving *and* the wall. Pieces are placed in field coordinates, so a canvas that
+ * draws the field at its own origin needs nothing from the viewport. The viewport
+ * is built here because `sceneProfile` may claim a margin, and a scene asked for
+ * its layers under a viewport it did not choose is a scene being lied to.
  */
-export function mapGroundPieces(
-  canvas: { readonly art: ArtDirection; readonly content: ContentCatalog; readonly grid: TacticalGrid },
-  levelId: string,
-  map: GameMap,
-): readonly BoardPiece[] {
+export function mapScenePieces(canvas: MapCanvas, levelId: string, map: GameMap): SceneLayers {
   const { presentation } = canvas.art;
   const viewport = createSceneViewport(
     canvas.grid,
@@ -67,8 +73,53 @@ export function mapGroundPieces(
     TILE,
     presentation.sceneProfile(levelId),
   );
-  return presentation.sceneLayers({ content: canvas.content, levelId, map, viewport }).ground;
+  return presentation.sceneLayers({ content: canvas.content, levelId, map, viewport });
 }
+
+/**
+ * One cell of one terrain, as the palette shows it.
+ *
+ * A map of a single cell, put through the same scene as every other picture of a
+ * map. It used to be `terrainMarkup` alone, which is why after the ground moved
+ * into the scene the editor's palette showed nine empty squares: 平原, 道路, 森林,
+ * 丘陵, 山地, 水域, 城墙 and the rest are ground, and ground is not one cell's
+ * answer any more.
+ *
+ * The box is taller than a cell because what stands on a cell is taller than one:
+ * a tree, a cliff pillar, a length of city wall. Without the extra room above, 城墙
+ * and 王都石街 are both a square of paving.
+ */
+export function terrainSwatch(canvas: MapCanvas, terrain: TerrainDef, ownerColor?: string): string {
+  const map: GameMap = {
+    width: 1,
+    height: 1,
+    tiles: [terrain.id],
+    owners: [0],
+    captureProgress: [0],
+    elevation: [0],
+    cliffs: [],
+    directionalCover: [],
+  };
+  const scene = mapScenePieces(canvas, SWATCH_LEVEL, map);
+  const tile = terrainMarkup(canvas.art, terrain, {
+    x: 0,
+    y: 0,
+    ownerColor,
+    linked: { n: false, e: false, s: false, w: false },
+  });
+  return `<svg viewBox="0 -14 32 46" width="32" height="46" shape-rendering="crispEdges">`
+    + `${boardPiecesMarkup(scene.ground)}${tile}`
+    + `${boardPiecesMarkup([...scene.underUnits, ...scene.overUnits])}</svg>`;
+}
+
+/**
+ * The level id a swatch is drawn under.
+ *
+ * A swatch is not a level, and a scene may key authored dressing to a level id —
+ * so it gets a name no level has, rather than borrowing one and inheriting
+ * somebody's hand-placed props.
+ */
+const SWATCH_LEVEL = 'palette-swatch';
 
 function cliffMarkup(layout: BoardLayout, map: GameMap): string[] {
   return map.cliffs.map((cliff) =>

@@ -495,6 +495,7 @@ export class EditorApp {
       document: this.doc,
       content: this.content,
       art: this.setup.art,
+      grid: this.grid,
       tool: this.tool,
       tools: this.tools.tools,
       brush: this.brush,

@@ -329,7 +329,7 @@
 | 一个单位站在格子里的哪个位置 | `UNIT_FOOTING`（`art/shading.ts`；阵营环和朝向标记共用这一份几何） |
 | 定居点周围放什么 | `CANDIDATE_SETTLEMENT_LIFE`（景物层在地形层之上，所以生活道具放在建筑旁边的空地） |
 | 一场战斗画在哪张场景里 | `ArtDirection.presentation`（一份美术一张场景，由组合根指定；没有 `matches` 让美术包挑关卡） |
-| 一张地图的地面画法，在不是战斗的画布上 | `mapGroundPieces`（编辑器画布和关卡缩略图共用；同一张场景，同一份材质表） |
+| 一张地图长什么样，在不是战斗的画布上 | `mapScenePieces` / `terrainSwatch`（编辑器画布、关卡缩略图、地形色板三家共用；同一张场景，同一份材质表） |
 | 通用美术怎么在不随机的前提下变化 | `nameHash` / `pick` / `r2`（`art/variation.ts`；坐标那一支是引擎的 `tileHash`） |
 | 一份资源账户怎么被复制 | `cloneAccounts`（`unit-state.ts`；快照和转职共用一句） |
 | 一条量表还剩几成 | `gaugeRatio`（`vitals.ts`；上限为 0 读作完好，而不是没有数） |

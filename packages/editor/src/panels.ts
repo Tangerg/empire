@@ -1,5 +1,6 @@
 import { icon, terrainSwatch, unitIcon, escapeHtml, type ArtDirection } from '@empire/game-ui';
 import {
+  type TacticalGrid,
   type ContentCatalog,
   terrainCharacter,
   type LevelIssue,
@@ -26,6 +27,8 @@ export interface EditorPanelView {
   readonly content: ContentCatalog;
   /** The art the palette draws with, composed by the application root. */
   readonly art: ArtDirection;
+  /** The tiling this document plays on. A swatch is a map one cell wide. */
+  readonly grid: TacticalGrid;
   readonly tool: EditorTool;
   /** Explicitly composed toolbox in palette order. */
   readonly tools: readonly EditorTool[];
@@ -136,7 +139,7 @@ export class EditorPanels {
             .map(
               (terrain, index) => `<button class="swatch ${brush.terrain === terrain.id ? 'active' : ''}"
                 data-act="terrain" data-arg="${terrain.id}" title="${escapeHtml(terrain.name)} · 字符 ${terrainCharacter(content, terrain.id) ?? '?'}${index < 9 ? ` · 快捷键 ${index + 1}` : ''}">
-                ${terrainSwatch(view.art, terrain, terrain.capturable ? ownerColor : undefined)}
+                ${terrainSwatch(view, terrain, terrain.capturable ? ownerColor : undefined)}
                 <span>${escapeHtml(terrain.name)}</span>
               </button>`,
             )

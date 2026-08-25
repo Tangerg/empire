@@ -375,10 +375,11 @@ export function terrainLayerPieces(
 }
 
 /** Single tile preview, e.g. for the editor palette. */
-export function terrainSwatch(art: ArtDirection, terrain: TerrainDef, ownerColor?: string): string {
-  return `<svg viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">${terrainMarkup(
-    art,
-    terrain,
-    { x: 3, y: 5, ownerColor, linked: { n: false, e: false, s: false, w: false } },
-  )}</svg>`;
-}
+/*
+ * `terrainSwatch` stood here, asking `terrainMarkup` for one tile.
+ *
+ * A swatch is a picture of a map one cell wide, so it lives beside the other two
+ * pictures of a map in `battlefield-layer.ts` and goes through the same scene. As
+ * long as it asked a per-cell painter, the editor's palette showed an empty square
+ * for every terrain whose ground the scene paints — which is most of them.
+ */

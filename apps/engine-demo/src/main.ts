@@ -96,6 +96,8 @@ const app = requireMountPoint('app');
 // because it wanted the plugin manifest to draw; the manifest is now on the
 // engine, so a demo about composition no longer demonstrates a second way to do it.
 const engine = createBattleEngine({ content });
+/** The tiling the terrain gallery measures a swatch on. */
+const grid = engine.rules.grids.get('square4');
 let session = new GameSession(DEMO_LEVEL, engine);
 let preview: CombatPlan | null = null;
 let events: GameEvent[] = [];
@@ -141,7 +143,7 @@ function boardMarkup(): string {
     const key = `${x},${y}`;
     return `<div class="demo-tile ${affected.has(key) ? 'affected' : ''} ${aimed === key ? 'aimed' : ''}"
       title="(${key})">
-      <div class="tile-art">${terrainSwatch(GENERIC_ART, content.terrains.get(terrain), owner?.color)}</div>
+      <div class="tile-art">${terrainSwatch({ art: GENERIC_ART, content, grid }, content.terrains.get(terrain), owner?.color)}</div>
       ${unit ? `<div class="demo-unit">
         ${unitIcon(GENERIC_ART, content.units.get(unit.type), unitOwner?.color ?? '#9aa3ad', 46)}
         <span class="unit-label">${escapeHtml(content.units.get(unit.type).name)}</span>

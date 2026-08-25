@@ -6,8 +6,9 @@ import {
   PAL,
   battlefieldFeaturePieces,
   battlefieldRenderKey,
-  mapGroundPieces,
+  mapScenePieces,
   boardPiecesMarkup,
+  type BoardPiece,
   TILE,
   terrainLayerPieces,
   squareLayout,
@@ -25,6 +26,16 @@ import {
   type LevelUnit,
   type PlayerConfig,
 } from '@empire/battle-engine';
+
+/**
+ * How dark the editor's lattice is.
+ *
+ * It was 0.2, which was plenty over flat tiles and invisible the moment the canvas
+ * started drawing the campaign's painted ground. An editor without a visible
+ * lattice is an editor you cannot aim in — this is the one canvas in the
+ * repository where the grid is the point rather than a concession.
+ */
+const GRID_INK = 0.34;
 
 export interface EditorBoardHandlers {
   onStroke(at: Coord, phase: 'start' | 'move' | 'end', button: number): void;
@@ -75,7 +86,8 @@ export class EditorBoard {
       'text-rendering': 'optimizeLegibility',
     });
     this.layers = {};
-    for (const n of ['ground', 'terrain', 'grid', 'units', 'marks', 'cursor']) {
+    // Depth order, and the lattice sits above the art so it stays a lattice.
+    for (const n of ['ground', 'terrain', 'scenery', 'grid', 'units', 'marks', 'cursor']) {
       const g = svg('g', { class: `layer layer-${n}` });
       this.layers[n] = g;
       this.el.append(g);
@@ -92,12 +104,12 @@ export class EditorBoard {
     const parts: string[] = [];
     for (let x = 0; x <= map.width; x++) {
       parts.push(
-        `<line x1="${x * TILE}" y1="0" x2="${x * TILE}" y2="${map.height * TILE}" stroke="${PAL.ink}" stroke-width="0.5" opacity="0.2"/>`,
+        `<line x1="${x * TILE}" y1="0" x2="${x * TILE}" y2="${map.height * TILE}" stroke="${PAL.ink}" stroke-width="0.5" opacity="${GRID_INK}"/>`,
       );
     }
     for (let y = 0; y <= map.height; y++) {
       parts.push(
-        `<line x1="0" y1="${y * TILE}" x2="${map.width * TILE}" y2="${y * TILE}" stroke="${PAL.ink}" stroke-width="0.5" opacity="0.2"/>`,
+        `<line x1="0" y1="${y * TILE}" x2="${map.width * TILE}" y2="${y * TILE}" stroke="${PAL.ink}" stroke-width="0.5" opacity="${GRID_INK}"/>`,
       );
     }
     this.layers.grid.append(fromMarkup(parts.join('')));
@@ -172,13 +184,21 @@ export class EditorBoard {
       // made of, and what stands on it.
       clear(this.layers.ground);
       clear(this.layers.terrain);
+      clear(this.layers.scenery);
       const colorOf = (id: number) => players.find((p) => p.id === id)?.color;
-      this.layers.ground.append(...[...fromMarkup(boardPiecesMarkup(
-        mapGroundPieces({ art: this.art, content: this.content, grid }, levelId, map),
-      )).childNodes]);
-      this.layers.terrain.append(...[...fromMarkup(boardPiecesMarkup(
-        terrainLayerPieces({ art: this.art, layout: squareLayout, content: this.content }, map, colorOf),
-      )).childNodes]);
+      const scene = mapScenePieces({ art: this.art, content: this.content, grid }, levelId, map);
+      const fill = (layer: string, pieces: readonly BoardPiece[]): void => {
+        if (!pieces.length) return;
+        this.layers[layer].append(...[...fromMarkup(boardPiecesMarkup(pieces)).childNodes]);
+      };
+      fill('ground', scene.ground);
+      fill('terrain', terrainLayerPieces(
+        { art: this.art, layout: squareLayout, content: this.content },
+        map,
+        colorOf,
+      ));
+      // What stands on a cell, so editing a wood shows a wood.
+      fill('scenery', [...scene.underUnits, ...scene.overUnits]);
     }
 
     clear(this.layers.units);
