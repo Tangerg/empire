@@ -192,7 +192,7 @@ export class GameController {
       this.board,
       this.session,
       this.lastSeenPositions,
-      () => this.board.render(this.overlay()),
+      () => this.refresh(),
     );
 
     // The field is the screen and the HUD lies over it. There is no third

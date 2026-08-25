@@ -98,6 +98,36 @@ describe('battle event presentation', () => {
     expect(line('glory')).toContain('glory');
   });
 
+  /**
+   * A repaint shows the screen, not just the board.
+   *
+   * `repaint` was wired to `board.render` alone, so at a turn boundary the banner
+   * announced the new turn across a header still showing the old one, and a
+   * recruit appeared before its cost did.
+   */
+  it('shows the state as it is when a presenter asks for a repaint', async () => {
+    const current = state();
+    const painted: string[] = [];
+    const stage = {
+      board: { announce: async () => painted.push('announce') },
+      state: current,
+      unit: () => null,
+      structure: () => null,
+      lastSeen: () => null,
+      repaint: () => painted.push('repaint'),
+    };
+    const turnStart = DefaultBattleEventPresenters.get('turnStart');
+    await turnStart.animate?.(stage as never, {
+      type: 'turnStart',
+      player: current.players[0].id,
+      turn: 3,
+    } as never);
+
+    // The repaint lands *before* the announcement, or the banner is the only thing
+    // on screen telling the truth.
+    expect(painted).toEqual(['repaint', 'announce']);
+  });
+
   it('lets an event have a line without a picture, and a picture without a line', () => {
     const current = state();
     const rankUp: GameEvent = { type: 'rankChanged', unit: current.units[0].id, from: 0, to: 1 };

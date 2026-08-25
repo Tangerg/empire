@@ -25,7 +25,16 @@ export interface BattleStage {
    * animated, and its damage number still has to land somewhere.
    */
   lastSeen(unitId: number): Coord | null;
-  /** Redraw the board between animations — a spawn, a captured tile. */
+  /**
+   * Show the state as it now is, between animations.
+   *
+   * The board *and* the screen over it. This said "redraw the board" and did only
+   * that, so at a turn boundary the banner announced `蓝军 · 第 3 回合` across a
+   * header that still read `第 2 回合 · 红军 AI 行动中` — for as long as the
+   * announcement takes, which is the one second the player is looking straight at
+   * it. A spawn had the same gap: the new unit appeared while the funds it cost
+   * were still the old number.
+   */
   repaint(): void;
 }
 
