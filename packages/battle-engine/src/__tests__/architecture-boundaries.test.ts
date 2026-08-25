@@ -2867,7 +2867,14 @@ describe('one answer per question', () => {
     // point. Anywhere else it is silencing a real type error, and one of them was
     // — a ruler handed `{ width, height }` to `idx` through `as never`, and `idx`
     // takes `{ width: number }`, so the cast was paying for nothing at all.
+    /*
+     * And `as unknown as T`, which was invisible to this guard while being the
+     * same move a third way: two casts in a row so the compiler cannot object to
+     * either. Six of them existed and every one had a reason, which is exactly why
+     * they needed listing — the seventh would have arrived unremarked.
+     */
     const owners = [
+      // A registry stores `Handler<Kind>` and dispatches `Handler<'destroy'>`.
       'battle-engine/src/resources.ts',
       'battle-engine/src/scenario.ts',
       'battle-engine/src/action-system.ts',
@@ -2878,15 +2885,32 @@ describe('one answer per question', () => {
       'campaign-engine/src/nodes.ts',
       'campaign-engine/src/rules.ts',
       'game-ui/src/ui/event-presentation.ts',
+      // The same key correlation, one level up: a record of generic registries is
+      // the catalog whose families are each specific.
+      'battle-engine/src/content-pack.ts',
+      // The boundary where an unvalidated document becomes a typed one, next to the
+      // checks that earn it — that conversion is this module's whole job.
+      'battle-engine/src/save-schema.ts',
+      // A `.json` import narrowed to the interface it is authored against, with the
+      // manifest's own invariants asserted immediately after.
+      'story-candidate-01/src/presentation/candidate-01-assets.ts',
+      'story-candidate-01/src/presentation/candidate-01-environment.ts',
+      // A tool bridging Node's timer handle to the DOM signature it implements.
+      join('..', 'tools', 'board-harness.ts'),
     ];
     const offenders = [...everyPackageSource(), ...appSources(), ...toolSources()].flatMap((file) => {
       const name = relative(packagesRoot, file);
       if (owners.includes(name)) return [];
       const code = stripComments(readFileSync(file, 'utf8'));
-      return / as never\b/.test(code) ? [name] : [];
+      return / as never\b|\bas unknown as\b/.test(code) ? [name] : [];
     });
 
+    // The list is only honest while each entry still launders something.
     expect(offenders).toEqual([]);
+    for (const owner of owners) {
+      const source = stripComments(readFileSync(join(packagesRoot, owner), 'utf8'));
+      expect(source, owner).toMatch(/ as never\b|\bas unknown as\b/);
+    }
   });
 
   it('decides how dark the ground goes in one place', () => {
