@@ -3,7 +3,9 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { isStrike, strikeCount } from '../combat';
 import type { GameEvent } from '../types';
-import { makeLevel, testApply, testDamage, testForecast, testState, u } from './fixtures';
+import { makeLevel, testApply, testDamage, testForecast, testState, u,
+  killingBlow,
+} from './fixtures';
 
 describe('damage model', () => {
   it('is deterministic and matches the forecast exactly', () => {
@@ -63,15 +65,7 @@ describe('damage model', () => {
   });
 
   it('emits an attack before the death it causes', () => {
-    const s = testState(
-      makeLevel(['..'], { units: [u(0, 0, 'knight', 1), u(1, 0, 'mage', 2, 5)] }),
-    );
-    const events = testApply(s, {
-      kind: 'command',
-      unit: s.units[0].id,
-      path: [{ x: 0, y: 0 }],
-      command: { ability: 'attack', target: { x: 1, y: 0 } },
-    });
+    const { events } = killingBlow();
     const attackIndex = events.findIndex((event) => event.type === 'attack');
     const deathIndex = events.findIndex((event) => event.type === 'death');
     expect(attackIndex).toBeGreaterThanOrEqual(0);

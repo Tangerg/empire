@@ -49,6 +49,26 @@ export { makeLevel, u };
  * state surviving something (a save, a replay), so both want the same battle: one
  * that has units of two sides, a capturable village per corner and money to spend.
  */
+/**
+ * A knight kills a mage outright, and the events that came of it.
+ *
+ * Two suites set this up identically — the combat one to check that the attack is
+ * reported before the death it causes, the victory one to check that the side
+ * losing its last unit ends the battle — and both depend on the same unstated
+ * fact: that this blow *kills*. Named, so a rebalanced knight breaks one thing
+ * with a name instead of two tests with a mystery.
+ */
+export function killingBlow(): { state: GameState; events: GameEvent[] } {
+  const state = testState(makeLevel(['..'], { units: [u(0, 0, 'knight', 1), u(1, 0, 'mage', 2, 5)] }));
+  const events = testApply(state, {
+    kind: 'command',
+    unit: state.units[0].id,
+    path: [{ x: 0, y: 0 }],
+    command: { ability: 'attack', target: { x: 1, y: 0 } },
+  });
+  return { state, events };
+}
+
 export const skirmishLevel = (extra: Parameters<typeof makeLevel>[1] = {}): LevelData =>
   makeLevel(['C..v..', '.T..T.', '..h...', 'v....C'], {
     units: [

@@ -1,20 +1,16 @@
 import { describe, expect, it } from 'vitest';
-import { ContentPackInstaller, createContentCatalog, type UnitDef } from '@empire/battle-engine';
-import { COMMON_CONTENT_PACK } from '@empire/content-common';
-import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
+import type { UnitDef } from '@empire/battle-engine';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
+import { createTestCatalog } from '@empire/test-content';
 import { GENERIC_ART } from '../direction';
 import { unitPicture } from '../units';
 import { portraitMarkup } from '../portraits';
 
 /** Composed per suite, exactly like an application composition root. */
 function everyShippedUnit(): UnitDef[] {
-  const content = createContentCatalog();
-  new ContentPackInstaller(content).install(
-    COMMON_CONTENT_PACK,
-    ANCIENT_EMPIRES_CONTENT_PACK,
-    CANDIDATE_01_CONTENT_PACK,
-  );
+  // Common + Ancient Empires is what `createTestCatalog` installs; the story
+  // pack is the extra this suite wants.
+  const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
   return [...content.units.all()];
 }
 

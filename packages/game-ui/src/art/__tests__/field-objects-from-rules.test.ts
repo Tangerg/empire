@@ -1,26 +1,16 @@
 import { describe, expect, it } from 'vitest';
-import {
-  ContentPackInstaller,
-  createContentCatalog,
-  type BattlefieldMarker,
-  type StructureDef,
-  type StructureState,
-} from '@empire/battle-engine';
-import { COMMON_CONTENT_PACK } from '@empire/content-common';
-import { ANCIENT_EMPIRES_CONTENT_PACK } from '@empire/content-ancient-empires';
+import type { BattlefieldMarker, StructureDef, StructureState } from '@empire/battle-engine';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
+import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
 import { GENERIC_ART } from '../direction';
 import { markerFromRules, structureFromRules } from '../field-objects-from-rules';
 
 /** Composed per suite, exactly like an application composition root. */
 function shippedStructures(): StructureDef[] {
-  const content = createContentCatalog();
-  new ContentPackInstaller(content).install(
-    COMMON_CONTENT_PACK,
-    ANCIENT_EMPIRES_CONTENT_PACK,
-    CANDIDATE_01_CONTENT_PACK,
-  );
+  // Common + Ancient Empires is what `createTestCatalog` installs; the story
+  // pack is the extra this suite wants.
+  const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
   return [...content.structures.all()];
 }
 

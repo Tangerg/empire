@@ -4,7 +4,9 @@ import { IllegalActionError } from '../domain/errors';
 import { idx } from '../grid';
 import { GameSession } from '../session';
 import { player, unitAt } from '../state';
-import { makeLevel, testApply, testCommands, testState, TEST_CONTENT, u } from './fixtures';
+import { makeLevel, testApply, testCommands, testState, TEST_CONTENT, u,
+  killingBlow,
+} from './fixtures';
 import { FUNDS_RESOURCE } from '../resources';
 
 const wait = (unit: number, path: { x: number; y: number }[]) =>
@@ -164,15 +166,7 @@ describe('legality', () => {
 
 describe('victory', () => {
   it('ends the game when one side is wiped out', () => {
-    const s = testState(
-      makeLevel(['..'], { units: [u(0, 0, 'knight', 1), u(1, 0, 'mage', 2, 5)] }),
-    );
-    const events = testApply(s, {
-      kind: 'command',
-      unit: s.units[0].id,
-      path: [{ x: 0, y: 0 }],
-      command: { ability: 'attack', target: { x: 1, y: 0 } },
-    });
+    const { state: s, events } = killingBlow();
     expect(events.some((e) => e.type === 'gameOver')).toBe(true);
     expect(s.winnerTeam).toBe(1);
   });
