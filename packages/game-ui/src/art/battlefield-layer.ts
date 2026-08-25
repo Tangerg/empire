@@ -3,7 +3,8 @@ import type { ContentCatalog, GameMap, TacticalGrid, TerrainDef } from '@empire/
 import { boardPiecesMarkup, wholeField, type BoardPiece } from './board-surface';
 import { edgeLine, type BoardLayout } from './board-decorations';
 import { createSceneViewport, type SceneLayers } from './scene-viewport';
-import { TILE, terrainMarkup } from './terrain';
+import { terrainMarkup } from './terrain';
+import { TILE } from './board-surface';
 
 const featureColor = {
   elevationBackground: '#2a211a',

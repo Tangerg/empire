@@ -1608,6 +1608,14 @@ describe('behaviour has an owner', () => {
       return tells.some((tell) => tell.test(source)) ? [name] : [];
     });
 
+    // The painted scene's exemption is only honest while it refuses a tiling whose
+    // cells are not the squares its sheets are cut to.
+    const painted = readFileSync(
+      join(packagesRoot, 'story-candidate-01', 'src', 'presentation', 'candidate-01-map-scene.ts'),
+      'utf8',
+    );
+    expect(painted).toMatch(/requireSquareTiling\(viewport\)/);
+    expect(painted).toMatch(/viewport\.grid\.outline\(\)\.length/);
     expect(offenders).toEqual([]);
   });
 
@@ -1643,6 +1651,13 @@ describe('behaviour has an owner', () => {
       join('battle-engine', 'src', 'grid.ts'),
       // The editor draws the storage rectangle on purpose: a brush paints cells.
       join('editor', 'src', 'board.ts'),
+      // A painted scene composed of square sheets. Every atlas in that kit is a
+      // 32-unit square indexed by four or eight square neighbours, so the eight
+      // offsets are the *sheet's* bit order and there is no tiling to ask for them
+      // — a square4 board has no diagonal facings to hand back. What the module
+      // may not do is draw a board it cannot paint, and it refuses one instead,
+      // asking the tiling for the shape of its own cell.
+      join('story-candidate-01', 'src', 'presentation', 'candidate-01-map-scene.ts'),
     ];
     // Every workspace package and every application entry point, because the
     // module that measures is exactly the one nobody thinks to scan.
@@ -1655,6 +1670,14 @@ describe('behaviour has an owner', () => {
       return tells.some((tell) => tell.test(source)) ? [name] : [];
     });
 
+    // The painted scene's exemption is only honest while it refuses a tiling whose
+    // cells are not the squares its sheets are cut to.
+    const painted = readFileSync(
+      join(packagesRoot, 'story-candidate-01', 'src', 'presentation', 'candidate-01-map-scene.ts'),
+      'utf8',
+    );
+    expect(painted).toMatch(/requireSquareTiling\(viewport\)/);
+    expect(painted).toMatch(/viewport\.grid\.outline\(\)\.length/);
     expect(offenders).toEqual([]);
   });
 
@@ -2892,6 +2915,28 @@ describe('one answer per question', () => {
     });
 
     expect(readFileSync(join(layer, 'level-storage.ts'), 'utf8')).toContain('localStorage');
+    expect(offenders).toEqual([]);
+  });
+
+  it('says how big a cell is exactly once', () => {
+    /*
+     * Every coordinate the renderer port carries — a piece's place, a strip's
+     * offset, a drawing's pivot — is measured in cell units, so how long a cell's
+     * edge is belongs to the port. It was written four times under three names:
+     * `TILE` in `terrain.ts`, a private `BOARD_TILE` in the rasteriser, a second
+     * `TILE` in the campaign's scene, and `TILE_MIDDLE = 16` once in each of the
+     * two backends. Four chances to disagree about the size of a square.
+     */
+    const owner = join(packagesRoot, 'game-ui', 'src', 'art', 'board-surface.ts');
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
+      if (file === owner) return [];
+      const code = stripStrings(stripComments(readFileSync(file, 'utf8')));
+      const named = [...code.matchAll(/(?:const|let)\s+(\w*TILE\w*)\s*=/g)].map(([, name]) => name);
+      return named.map((name) => `${relative(packagesRoot, file)}: ${name}`);
+    });
+
+    expect(readFileSync(owner, 'utf8')).toMatch(/export const TILE = 32;/);
+    expect(readFileSync(owner, 'utf8')).toMatch(/export const TILE_MIDDLE = TILE \/ 2;/);
     expect(offenders).toEqual([]);
   });
 

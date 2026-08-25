@@ -291,9 +291,11 @@ export const CANDIDATE_FOREST_FLOOR: CandidateScenery = {
  * Two materials, chosen by a hash of where the crossing is. A crossing's material
  * is not something the rules say, and a valley with three identical planks across
  * it looks built by one carpenter on one afternoon.
+ *
+ * How wide a module is does not appear here: the scene places one by its own middle
+ * (`lying`), which needs no number from outside the atlas. A `CANDIDATE_CROSSING_SPAN
+ * = 96` stood here for exactly as long as it took to notice nothing read it.
  */
-export const CANDIDATE_CROSSING_SPAN = 96;
-
 export const CANDIDATE_CROSSINGS = {
   alongX: ['wood-bridge-horizontal', 'stone-bridge-horizontal'],
   alongY: ['wood-bridge-vertical', 'stone-bridge-vertical'],
@@ -357,9 +359,6 @@ export const CANDIDATE_SETTLEMENT_LIFE: CandidateScenery = {
   chance: 0.42,
   jitter: 7,
 };
-
-/** The tags that make a cell a settlement, so its neighbours get dressed. */
-export const CANDIDATE_SETTLEMENT_TAGS = ['building', 'outpost'] as const;
 
 /** The conifers that stand outside the field, framing it. */
 export const CANDIDATE_FRAME_TREES = [

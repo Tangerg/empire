@@ -16,7 +16,8 @@ import { markerFromRules, structureFromRules } from '../art/field-objects-from-r
 import type { ArtDirection } from '../art/direction';
 import type { BoardDecorations, BoardLayout, DecorationTint } from '../art/board-decorations';
 import { battlefieldFeaturePieces, battlefieldRenderKey } from '../art/battlefield-layer';
-import { TILE, terrainLayerPieces } from '../art/terrain';
+import { terrainLayerPieces } from '../art/terrain';
+import { TILE } from '../art/board-surface';
 import {
   cellCenter,
   cellOrigin,

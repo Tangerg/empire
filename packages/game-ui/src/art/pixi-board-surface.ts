@@ -14,6 +14,7 @@ import {
   type BoardStrip,
   type BoardSurface,
   type BoardSurfaceFactory,
+  TILE_MIDDLE,
   type BoardSurfaceScene,
 } from './board-surface';
 import { FrameAnimationSystem } from './frame-animation';
@@ -47,9 +48,6 @@ export interface DrawingTools {
   /** Shared by everything one surface draws, so one loop serves the board. */
   readonly animations: FrameAnimationSystem;
 }
-
-/** Half a tile: the middle of a unit's drawing, which fills one. */
-const TILE_MIDDLE = 16;
 
 /** How much brighter a selected unit is drawn, standing in for a glow. */
 const SELECTED_BRIGHTNESS = 1.32;

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { TILE } from '../../art/terrain';
+import { TILE } from '../../art/board-surface';
 import { portraitSvg } from '../../art/portraits';
 import { unitIcon } from '../../art/units';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';

@@ -3,7 +3,7 @@ import { createBattleEngine } from '../plugins/default';
 import { applyAction, commandOptions } from '../actions';
 import { addStatus } from '../statuses';
 import { chooseAction, type AiDriverDependencies, DefaultAbilityAiEvaluators, DefaultAiIntents } from '../ai';
-import { buildAiMissionIntent, DefaultAiObjectiveAdvisors } from '../ai-objectives';
+import { DefaultAiObjectiveAdvisors } from '../ai-objectives';
 import { computeDamage, forecast, forecastStructure } from '../combat';
 import { forecastCombatPlan } from '../combat-plan';
 import { computeMoveField, hasDirectLineOfSight, threatTiles, type MoveField } from '../movement';
@@ -13,7 +13,6 @@ import { createState } from '../state';
 import {
   evaluateVictory,
   objectiveOutcome,
-  objectiveProgress,
   refreshObjectiveStates,
 } from '../victory';
 import type { AbilityQuery } from '../abilities';
@@ -132,8 +131,6 @@ export const testVictory = (state: GameState, emit?: (event: GameEvent) => void)
   evaluateVictory(TEST_RULES, state, emit);
 export const testObjectiveOutcome = (state: GameState, owner: PlayerId, objective: Objective) =>
   objectiveOutcome(TEST_RULES, state, owner, objective);
-export const testObjectiveProgress = (state: GameState, owner: PlayerId, objective: Objective) =>
-  objectiveProgress(TEST_RULES, state, owner, objective);
 export const testRefreshObjectives = (state: GameState, emit?: (event: GameEvent) => void) =>
   refreshObjectiveStates(TEST_RULES, state, emit);
 
@@ -158,9 +155,6 @@ export const testAiDependencies = (): AiDriverDependencies => ({
 });
 export const testChooseAction = (state: GameState, options?: { aggression: number }) =>
   chooseAction(testAiDependencies(), state, options);
-export const testMissionIntent = (state: GameState, owner: PlayerId) =>
-  buildAiMissionIntent(testAiDependencies(), state, owner);
-
 export const testAbilityQuery = (state: GameState, unit: Unit, at: Coord, moved = false): AbilityQuery => ({
   state,
   unit,

@@ -29,6 +29,21 @@ import type { FrameAnimationClip } from './frame-animation';
 import { escapeAttr } from './svg';
 
 /**
+ * A cell's edge, in scene units. The board scales through its viewBox.
+ *
+ * Here because it is the port's own unit: every coordinate a `BoardPiece`, a
+ * `BoardStrip` or a `BoardDrawing` carries is measured in these. It was declared
+ * four times under three names — `TILE` in `terrain.ts`, a private `BOARD_TILE` in
+ * the rasteriser, a second `TILE` in the campaign's scene, and `TILE_MIDDLE = 16`
+ * once in each of the two backends — which is four chances to disagree about how
+ * big a cell is.
+ */
+export const TILE = 32;
+
+/** Half of it: the middle of a drawing that fills one cell. */
+export const TILE_MIDDLE = TILE / 2;
+
+/**
  * The layers a board has, deepest first.
  *
  * Order is the depth contract, and it is stated here rather than in a renderer so

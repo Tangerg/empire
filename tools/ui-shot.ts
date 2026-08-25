@@ -26,7 +26,6 @@ import { resolve } from 'node:path';
 import {
   busyOverlay,
   CANDIDATE_01_ART,
-  content,
   engine,
   mountBoard,
   SHIPPED_BOARDS,
@@ -121,8 +120,6 @@ const chosen = SUBJECTS.filter(
   (subject) => !wanted.length || wanted.some((needle) => subject.label.includes(needle)),
 );
 if (!chosen.length) throw new Error(`no screen matches ${wanted.join(' ')}`);
-// Content is loaded for its side effect on the harness; naming it keeps that honest.
-void content;
 
 /**
  * Asset references, pointed at the working copy.

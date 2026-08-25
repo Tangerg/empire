@@ -9,13 +9,10 @@ import {
 } from '@empire/battle-engine';
 import type { BoardPiece } from './board-surface';
 import { PAL } from './palette';
-import type { TileContext } from './ports';
+import { GROUND_TAGS, taggedGround, type TileContext } from './ports';
 import { terrainFromRules } from './terrain-from-rules';
 import { r2 } from './variation';
 import { groundShadow } from './shading';
-
-/** Tile edge length in SVG user units. The board scales via viewBox. */
-export const TILE = 32;
 
 type Painter = (ctx: TileContext) => string;
 
@@ -320,9 +317,10 @@ function links(content: ContentCatalog, map: GameMap, id: TerrainId, x: number, 
   if (other === id) return true;
   const a = content.terrains.get(id);
   const b = content.terrains.get(other);
-  const roadish = (t: typeof a) => t.tags.includes('road') || t.tags.includes('building');
-  if (a.tags.includes('road') && roadish(b)) return true;
-  if (a.tags.includes('blocking') && b.tags.includes('blocking')) return true;
+  // A way joins another way and the thresholds it runs into; an obstacle joins
+  // only its own kind. The tag names are `GROUND_TAGS`, stated once.
+  if (taggedGround(a, GROUND_TAGS.way) && taggedGround(b, GROUND_TAGS.way, GROUND_TAGS.settlement)) return true;
+  if (taggedGround(a, GROUND_TAGS.obstacle) && taggedGround(b, GROUND_TAGS.obstacle)) return true;
   return false;
 }
 

@@ -18,6 +18,7 @@ import {
   type BoardSurface,
   type BoardSurfaceScene,
   type BoardSurfaceFactory,
+  TILE_MIDDLE,
 } from './board-surface';
 import { clear, fromMarkup, setAttrs, svg } from './svg';
 
@@ -50,9 +51,6 @@ const STATE_CLASS: Readonly<Record<Exclude<BoardState, 'hidden'>, string>> = {
   facingLeft: 'face-left',
   selected: 'is-selected',
 };
-
-/** Half a tile: the middle of a unit's drawing, which fills one. */
-const TILE_MIDDLE = 16;
 
 /**
  * One SVG group, with the transform it is currently under.

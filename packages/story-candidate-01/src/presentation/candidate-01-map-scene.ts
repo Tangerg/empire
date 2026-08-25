@@ -11,6 +11,9 @@ import {
   runtimeAtlasCellMarkup,
   runtimeTileMarkup,
   wholeField,
+  GROUND_TAGS,
+  TILE,
+  taggedGround,
   type RuntimeTileFit,
   type BoardPiece,
   type BattleSceneContext,
@@ -24,7 +27,6 @@ import {
   CANDIDATE_FRAME_TREES,
   CANDIDATE_RIVER_STONES,
   CANDIDATE_SETTLEMENT_LIFE,
-  CANDIDATE_SETTLEMENT_TAGS,
   CANDIDATE_SHORE,
   CANDIDATE_SHORE_DECALS,
   CANDIDATE_SURFACE_FIT,
@@ -39,8 +41,6 @@ import type {
   SceneViewportProfile,
 } from '@empire/game-ui';
 
-const TILE = 32;
-
 /** The four cells a connection mask counts, in the order the kit numbers them. */
 const ORTHOGONAL = [[0, -1], [1, 0], [0, 1], [-1, 0]] as const;
 
@@ -50,11 +50,11 @@ const cellOrigin = (x: number, y: number): { x: number; y: number } => ({ x: x *
 const tileAt = (map: GameMap, x: number, y: number): TerrainId | null =>
   x < 0 || y < 0 || x >= map.width || y >= map.height ? null : map.tiles[y * map.width + x];
 
+/** Somewhere a traveller could walk from here: a way, or a threshold it runs into. */
 const isRoute = (content: ContentCatalog, map: GameMap, x: number, y: number): boolean => {
   const id = tileAt(map, x, y);
-  if (id === null) return false;
-  const tags = content.terrains.get(id).tags;
-  return tags.includes('road') || tags.includes('building') || tags.includes('outpost');
+  return id !== null
+    && taggedGround(content.terrains.get(id), GROUND_TAGS.way, GROUND_TAGS.settlement);
 };
 
 /**
@@ -237,19 +237,6 @@ const isShore = (content: ContentCatalog, map: GameMap, x: number, y: number): b
   !isWater(content, map, x, y)
   && ORTHOGONAL.some(([dx, dy]) => isWater(content, map, x + dx, y + dy));
 
-/** The eight-neighbour mask the shore band is indexed by. */
-function shoreMask(content: ContentCatalog, map: GameMap, x: number, y: number): number {
-  const bank = (dx: number, dy: number): boolean => isShore(content, map, x + dx, y + dy);
-  return (bank(0, -1) ? 1 : 0)
-    | (bank(1, -1) ? 2 : 0)
-    | (bank(1, 0) ? 4 : 0)
-    | (bank(1, 1) ? 8 : 0)
-    | (bank(0, 1) ? 16 : 0)
-    | (bank(-1, 1) ? 32 : 0)
-    | (bank(-1, 0) ? 64 : 0)
-    | (bank(-1, -1) ? 128 : 0);
-}
-
 /** One field the whole map is read through: what each cell is made of. */
 type MaterialField = (x: number, y: number) => CandidateMaterial | null;
 
@@ -258,18 +245,55 @@ const materialField = (content: ContentCatalog, map: GameMap): MaterialField => 
   return id === null ? null : candidateMaterial(content, id);
 };
 
-/** The eight-neighbour mask a blob transition sheet is indexed by. */
-function blendMask(field: MaterialField, sheet: string, x: number, y: number): number {
-  const same = (dx: number, dy: number): boolean => field(x + dx, y + dy)?.blend === sheet;
-  return (same(0, -1) ? 1 : 0)
-    | (same(1, -1) ? 2 : 0)
-    | (same(1, 0) ? 4 : 0)
-    | (same(1, 1) ? 8 : 0)
-    | (same(0, 1) ? 16 : 0)
-    | (same(-1, 1) ? 32 : 0)
-    | (same(-1, 0) ? 64 : 0)
-    | (same(-1, -1) ? 128 : 0);
+/**
+ * The eight cells a blob sheet counts, in the bit order the kit numbers them.
+ *
+ * `["N","NE","E","SE","S","SW","W","NW"]`, which every transition atlas in the
+ * manifest declares as its `bitOrder`. These are the square tiling's neighbours,
+ * written out rather than asked of the board — see `requireSquareTiling`, which is
+ * where this pack says out loud that its sheets can only paint a square field.
+ */
+const NEIGHBOURS = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]] as const;
+
+/**
+ * This kit paints square cells, and refuses anything else.
+ *
+ * Every sheet in it is a 32-unit square: the surfaces, the blob transitions
+ * indexed by eight square neighbours, the routes and waters indexed by four. A hex
+ * field has neither those neighbours nor that cell, so there is no picture to draw
+ * — and the wrong answer is to draw one anyway at `x * 32`, which is what this
+ * module did silently for any tiling the application root handed it.
+ *
+ * A refusal rather than an empty scene: composing this art for a board it cannot
+ * paint is the caller's mistake, and a battle that comes up looking like the plain
+ * ruleset would hide it.
+ */
+function requireSquareTiling(viewport: SceneViewport): void {
+  // Asked of the tiling, which owns the shape of its own cell — the same question
+  // the board asks to decide whether a tile needs clipping. Writing out four
+  // facings or eight offsets to answer it here would be this module deciding what
+  // shape somebody else's board is.
+  const corners = viewport.grid.outline().length;
+  if (corners === 4) return;
+  throw new Error(
+    `candidate-01's sheets are square; the tiling "${viewport.grid.id}" has cells with `
+    + `${corners} corners. Compose GENERIC_ART for this board, or author sheets for that tiling.`,
+  );
 }
+
+/**
+ * The eight-neighbour mask a blob transition sheet is indexed by.
+ *
+ * One of these, taking the question. There were two — one asking whether a
+ * neighbour blends with the same sheet, one asking whether it is a river bank —
+ * and they were the same eight shifts written out twice, which is one more place
+ * for a bit to be in the wrong position than the kit's `bitOrder` deserves.
+ */
+const blobMask = (x: number, y: number, joins: (x: number, y: number) => boolean): number =>
+  NEIGHBOURS.reduce(
+    (mask, [dx, dy], bit) => (joins(x + dx, y + dy) ? mask | (1 << bit) : mask),
+    0,
+  );
 
 /** The four-neighbour mask a connected sheet is indexed by. */
 function connectedMask(
@@ -316,7 +340,11 @@ function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
       });
 
       if (material.blend) {
-        const cell = CANDIDATE_01_ENVIRONMENT.blobIndex(material.blend, blendMask(field, material.blend, x, y));
+        const sheet = material.blend;
+        const cell = CANDIDATE_01_ENVIRONMENT.blobIndex(
+          sheet,
+          blobMask(x, y, (nx, ny) => field(nx, ny)?.blend === sheet),
+        );
         blends.push({ markup: atlasCellMarkup(material.blend, cell), ...at });
       }
 
@@ -324,7 +352,7 @@ function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
       if (material.blend === undefined && isShore(content, map, x, y)) {
         const cell = CANDIDATE_01_ENVIRONMENT.blobIndex(
           CANDIDATE_SHORE,
-          shoreMask(content, map, x, y),
+          blobMask(x, y, (nx, ny) => isShore(content, map, nx, ny)),
         );
         blends.push({ markup: atlasCellMarkup(CANDIDATE_SHORE, cell), ...at });
       }
@@ -434,8 +462,7 @@ function neighboursSettlement(content: ContentCatalog, map: GameMap, x: number, 
   return ORTHOGONAL.some(([dx, dy]) => {
     const id = tileAt(map, x + dx, y + dy);
     if (id === null) return false;
-    const tags = content.terrains.get(id).tags;
-    return CANDIDATE_SETTLEMENT_TAGS.some((tag) => tags.includes(tag));
+    return taggedGround(content.terrains.get(id), GROUND_TAGS.settlement);
   });
 }
 
@@ -589,6 +616,7 @@ function sceneFrameForestMarkup(viewport: SceneViewport): string {
 export function candidate01SceneFrameMarkup(
   { map, viewport }: BattleSceneContext,
 ): SceneFrameMarkup {
+  requireSquareTiling(viewport);
   // Every level of this campaign carries the pack's board style: an atlas tile and
   // a unit figure wear its shadows. It is declared as the scene's `style` rather
   // than pasted into `backdrop` — a `<style>` in the DOM tree is obeyed by the DOM
@@ -623,8 +651,9 @@ export function candidate01SceneFrameMarkup(
 
 /** Story art is pure presentation and cannot affect deterministic battle rules. */
 export function candidate01MapSceneryLayers(
-  { content, levelId, map }: BattleSceneContext,
+  { content, levelId, map, viewport }: BattleSceneContext,
 ): SceneLayers {
+  requireSquareTiling(viewport);
   return {
     ground: [...groundPieces(content, map), ...authoredGroundPieces(levelId)],
     underUnits: [

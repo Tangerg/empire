@@ -1,8 +1,6 @@
-import type { BoardPicture } from './board-surface';
+import { TILE, type BoardPicture } from './board-surface';
 import { escapeAttr as attr } from './svg';
 import { UNIT_FOOTING } from './shading';
-
-const BOARD_TILE = 32;
 
 /**
  * A generated unit spritesheet: one row of frames, and what they are for.
@@ -89,8 +87,8 @@ export function runtimeUnitPicture(sheet: RuntimeUnitSheet, team: string): Board
       frameCount: sheet.frameCount,
       // The sheet's anchor is where the figure's feet are; the board's is the
       // middle of the cell, one pixel off its floor.
-      x: BOARD_TILE / 2 - sheet.anchor.x,
-      y: BOARD_TILE - 1 - sheet.anchor.y,
+      x: TILE / 2 - sheet.anchor.x,
+      y: TILE - 1 - sheet.anchor.y,
       clips: [
         { id: 'idle', frames: [idleFrame], fps: 1, loop: true },
         { id: 'walk', frames: [...walkFrames], fps: 6.25, loop: true },

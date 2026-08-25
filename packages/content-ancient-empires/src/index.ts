@@ -4,10 +4,7 @@ import {
   ANCIENT_EMPIRES_DAMAGE_MATCHUPS,
   ANCIENT_EMPIRES_DAMAGE_TYPES,
 } from './damage';
-import {
-  ANCIENT_EMPIRES_TERRAIN_CHARACTERS,
-  ANCIENT_EMPIRES_TERRAINS,
-} from './terrain';
+import { ANCIENT_EMPIRES_TERRAIN_CHARACTERS, ANCIENT_EMPIRES_TERRAINS } from './terrain';
 import { ANCIENT_EMPIRES_UNITS } from './units';
 import { ANCIENT_EMPIRES_WEAPONS } from './weapons';
 import { ANCIENT_EMPIRES_CAREERS } from './careers';

@@ -10,6 +10,31 @@ import type { BoardPicture } from './board-surface';
  * — so a field added to the port would have reached exactly one of the three
  * painters that read it, and the two names for one thing hid that.
  */
+/**
+ * The terrain tags the art reads to knit one cell's ground to the next.
+ *
+ * Stated once, because two different questions ask it and both used to spell the
+ * answer themselves: `links` below decides whether a neighbour's *picture* joins
+ * this one, and a painted scene's route mask decides which way a road runs. The
+ * shared part is the vocabulary — what the ruleset calls a way, a threshold and an
+ * obstacle — and a vocabulary written in three places is three chances to forget
+ * `outpost`.
+ */
+export const GROUND_TAGS = {
+  /** Ground a traveller moves along. */
+  way: ['road'],
+  /** Somewhere people live, which a way runs *into* rather than stopping beside. */
+  settlement: ['building', 'outpost'],
+  /** Something standing in the way, which joins its own kind and nothing else. */
+  obstacle: ['blocking'],
+} as const;
+
+/** Does this terrain carry any of those tags? */
+export const taggedGround = (
+  terrain: { readonly tags: readonly string[] },
+  ...families: readonly (readonly string[])[]
+): boolean => families.some((family) => family.some((tag) => terrain.tags.includes(tag)));
+
 export interface TileContext {
   x: number;
   y: number;

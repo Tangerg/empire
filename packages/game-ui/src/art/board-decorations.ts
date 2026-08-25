@@ -1,7 +1,7 @@
 import type { Coord, Direction, GameMap } from '@empire/battle-engine';
 import { wholeField, type BoardPiece } from './board-surface';
 import { PAL } from './palette';
-import { TILE } from './terrain';
+import { TILE } from './board-surface';
 
 /**
  * How strongly the board wants a tile tinted.
