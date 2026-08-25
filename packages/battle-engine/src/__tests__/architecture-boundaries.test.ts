@@ -366,6 +366,54 @@ describe('dependency injection invariants', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('asks the ruleset what a rule is called', () => {
+    /*
+     * A name for a rule has one source: the thing the engine was composed with.
+     *
+     * Three modules answered "what is a resource called". The HUD asked the
+     * adapter, the demo app wrote that lookup out again, and the battle log kept a
+     * table of three ids — beside a ruleset that ships four and calls the fourth
+     * 武器次数. Five hundred and forty-one log lines in the shipped campaign
+     * printed `weapon_uses` at the player. The editor's palette printed
+     * `funds 100` from a fourth copy that skipped the lookup entirely.
+     *
+     * The same shape one layer up: the editor kept four `{ type, label }` pairs
+     * for objective kinds, one of them a second copy of the engine's own
+     * `控制全部据点` — which is how a kind a content pack registers becomes
+     * unauthorable. Its facing buttons had this exact defect and were cured; this
+     * is so the third instance is a failure rather than a discovery.
+     *
+     * The tell is narrow on purpose: a `Record<string, string>` from ids to
+     * player-facing names. That is the shape a translation table takes, and a
+     * translation table is only honest where nothing else declares the name.
+     */
+    const owners = new Map([
+      // A modifier's *source* is an open string the engine never names — a
+      // `CombatModifier` carries its own label, not its category's — so the chip
+      // wording has no other owner to defer to.
+      ['game-ui/src/ui/hud.ts', 'MODIFIER_SOURCE_LABEL'],
+      // Relations are this campaign's own invention, named by the campaign.
+      ['story-candidate-01/src/presentation/index.ts', 'RELATION_LABELS'],
+    ]);
+    const table = /(?:const|readonly)\s+(\w+)\s*:\s*(?:Readonly<)?Record<\s*string\s*,\s*string\s*>/g;
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
+      const path = relative(packagesRoot, file);
+      const code = stripComments(readFileSync(file, 'utf8'));
+      return [...code.matchAll(table)]
+        .filter(([match, name]) => {
+          const body = code.slice(code.indexOf(match) + match.length, code.indexOf(match) + match.length + 400);
+          return /[\u4e00-\u9fff]/.test(body) && owners.get(path) !== name;
+        })
+        .map(([, name]) => `${path} ${name}`);
+    });
+
+    expect(offenders).toEqual([]);
+    // The exemptions are only honest while each still holds a table.
+    for (const [path, name] of owners) {
+      expect(readFileSync(join(packagesRoot, path), 'utf8'), path).toContain(name);
+    }
+  });
+
   it('never defaults a dependency parameter to a global singleton', () => {
     const globals = [
       'TEST_CONTENT',

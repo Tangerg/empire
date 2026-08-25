@@ -506,7 +506,12 @@ export class EditorApp {
       canRedo: this.history.canRedo,
       issues,
       facings: this.facings,
+      resources: this.setup.rules.resources,
       turnOrders: this.setup.rules.turnOrders.all().map(({ id, name }) => ({ id, name })),
+      objectives: CHIP_OBJECTIVES.map((type) => ({
+        type,
+        label: this.setup.rules.objectives.get(type).label,
+      })),
       defaultTurnOrder: DEFAULT_TURN_ORDER,
       presets: [
         ...this.setup.presets.map((level) => ({ value: `b:${level.id}`, label: `内置 · ${level.name}` })),
@@ -795,6 +800,24 @@ export class EditorApp {
 }
 
 /* ------------------------------------------------------------------ helpers */
+
+/**
+ * The objective kinds a chip can author.
+ *
+ * The editor's own judgment, and it belongs next to `toggleObjective` because
+ * that is what limits it: a chip carries no payload, so a kind needing a
+ * selector, a zone or a nested objective cannot be toggled into existence, and
+ * `surviveTurns` is on the list only because the one field it needs is right
+ * below. What each is *called* comes from the registry — nine hand-written labels
+ * used to live in the properties panel, one of them a second copy of the
+ * engine's own `控制全部据点`.
+ */
+const CHIP_OBJECTIVES: readonly Objective['type'][] = [
+  'routEnemies',
+  'captureHQ',
+  'holdAllVillages',
+  'surviveTurns',
+];
 
 function toggleObjective(
   list: Objective[],

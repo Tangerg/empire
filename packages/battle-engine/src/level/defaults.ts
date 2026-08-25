@@ -99,12 +99,21 @@ export const defaultPlayers = (): PlayerConfig[] => [
  * module's. `'.'` was hard-coded here, which quietly meant "every game's blank
  * terrain is whatever the ancient-empires pack registered under a full stop".
  */
+/**
+ * What a level is called before anyone names it.
+ *
+ * Written twice: here, and again in `schema.ts` as the fallback for a document
+ * that carries no name — so a blank level and a nameless loaded one agreed only
+ * by coincidence.
+ */
+export const UNNAMED_LEVEL = Object.freeze({ id: 'untitled', name: '未命名关卡' });
+
 export function emptyLevel(content: ContentCatalog, width = 20, height = 14): LevelData {
   const row = content.terrainEncoding.defaultCharacter.repeat(width);
   return {
     schema: 2,
-    id: 'untitled',
-    name: '未命名关卡',
+    id: UNNAMED_LEVEL.id,
+    name: UNNAMED_LEVEL.name,
     description: '',
     width,
     height,

@@ -18,6 +18,7 @@ import {
   GENERIC_ART,
   icon,
   requireMountPoint,
+  resourceLabel,
   terrainSwatch,
   escapeHtml,
   unitIcon,
@@ -115,12 +116,10 @@ function byKey(key: string): Unit | undefined {
   return session.state.units.find((unit) => unit.key === key);
 }
 
-function resourceName(id: string): string {
-  // Asked, not attempted: a registry answers `tryGet` for a name it does not
-  // know, and wrapping the *committing* lookup in a catch answered "there is no
-  // such resource" and "the registry threw for some other reason" alike.
-  return engine.rules.resources.adapters.tryGet(id)?.name ?? id;
-}
+// Asked, not attempted, and asked in one place: a registry answers `tryGet` for a
+// name it does not know, and wrapping the *committing* lookup in a catch answered
+// "there is no such resource" and "the registry threw" alike.
+const resourceName = (id: string): string => resourceLabel(engine.rules.resources, id);
 
 function accountRows(subject: ResourceSubject): string {
   const rows = engine.rules.resources.adapters.keys().flatMap((id) => {

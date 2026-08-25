@@ -18,6 +18,7 @@ export * from './art/portraits';
 export * from './art/terrain';
 export * from './art/units';
 export * from './ui/board';
+export * from './ui/rule-labels';
 export * from './ui/game';
 export * from './ui/campaign-game';
 export * from './ui/html';

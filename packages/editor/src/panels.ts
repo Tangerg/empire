@@ -1,6 +1,15 @@
-import { icon, PAL, terrainSwatch, unitIcon, escapeHtml, type ArtDirection } from '@empire/game-ui';
+import {
+  amountsLabel,
+  icon,
+  PAL,
+  terrainSwatch,
+  unitIcon,
+  escapeHtml,
+  type ArtDirection,
+} from '@empire/game-ui';
 import {
   type TacticalGrid,
+  type BattleResourceSystem,
   type ContentCatalog,
   terrainCharacter,
   type LevelIssue,
@@ -25,6 +34,8 @@ import type { BrushSettings, EditorTool } from './tools';
 export interface EditorPanelView {
   readonly document: EditorDocument;
   readonly content: ContentCatalog;
+  /** The resource system of the engine this level is authored against. */
+  readonly resources: BattleResourceSystem;
   /** The art the palette draws with, composed by the application root. */
   readonly art: ArtDirection;
   /** The tiling this document plays on. A swatch is a map one cell wide. */
@@ -52,21 +63,26 @@ export interface EditorPanelView {
   readonly facings: readonly DirectionDef[];
   /** Action-order policies installed in this exact engine instance. */
   readonly turnOrders: readonly { id: string; name: string }[];
+  /**
+   * The objective kinds a chip can author, named by the ruleset.
+   *
+   * This panel kept its own table of four `{ type, label }` pairs — the same
+   * mistake as the four facing buttons above, and with the same two consequences:
+   * an objective kind a content pack registers cannot be authored, and the label
+   * beside the engine's own drifts from it. `控制全部据点` was written in both
+   * places. *Which* kinds a chip can express is still the editor's judgment, and
+   * it is stated where the chip's objective is built.
+   */
+  readonly objectives: readonly { type: Objective['type']; label: string }[];
   readonly defaultTurnOrder: string;
 }
 
-const OBJECTIVE_TYPES: { type: Objective['type']; label: string }[] = [
-  { type: 'routEnemies', label: '歼灭敌军' },
-  { type: 'captureHQ', label: '攻占城堡' },
-  { type: 'holdAllVillages', label: '控制全部据点' },
-  { type: 'surviveTurns', label: '坚守回合' },
-];
-
 const playerFunds = (player: PlayerConfig) => player.resources[FUNDS_RESOURCE]?.current ?? 0;
 
-const unitRecruitCost = (content: ContentCatalog, id: string) => content.units.get(id).recruitCosts
-  .map((cost) => `${cost.resource} ${cost.amount}`)
-  .join(' · ') || '不可招募';
+// This printed `funds 100` — the ruleset's own id, to the person authoring the
+// level — while the game two packages over printed 资金 100 from the same rules.
+const unitRecruitCost = (view: EditorPanelView, id: string) =>
+  amountsLabel(view.resources, view.content.units.get(id).recruitCosts, '不可招募');
 
 const fundsGrant = (rules: Partial<RuleSet>) =>
   rules.baseResourceGrants?.find((grant) => grant.resource === FUNDS_RESOURCE)?.amount ?? 0;
@@ -182,7 +198,7 @@ export class EditorPanels {
           ${content.units.all()
             .map(
               (definition) => `<button class="unit-chip ${brush.unitType === definition.id ? 'active' : ''}"
-                data-act="unit" data-arg="${definition.id}" title="${escapeHtml(definition.name)} · ${escapeHtml(unitRecruitCost(content, definition.id))}">
+                data-act="unit" data-arg="${definition.id}" title="${escapeHtml(definition.name)} · ${escapeHtml(unitRecruitCost(view, definition.id))}">
                 ${unitIcon(view.art, definition, ownerColor, 30)}
                 <span>${escapeHtml(definition.name)}</span>
               </button>`,
@@ -227,7 +243,7 @@ export class EditorPanels {
       <section class="card">
         <h3>通用胜利条件</h3>
         <div class="chip-row">
-          ${OBJECTIVE_TYPES.map((objective) => {
+          ${view.objectives.map((objective) => {
             const on = doc.victory.some((candidate) => candidate.type === objective.type);
             return `<button class="chip ${on ? 'on' : ''}" data-act="vObj" data-arg="${objective.type}">${objective.label}</button>`;
           }).join('')}
@@ -305,7 +321,7 @@ export class EditorPanels {
         <label class="tiny">激进<input type="number" min="0" max="1" step="0.05" data-field="p.aggression" data-id="${player.id}" value="${player.ai?.aggression ?? 0.5}"/></label>
       </div>
       <div class="chip-row">
-        ${OBJECTIVE_TYPES.map((objective) => {
+        ${view.objectives.map((objective) => {
           const on = (player.objectives ?? []).some((candidate) => candidate.type === objective.type);
           return `<button class="chip ${on ? 'on' : ''}" data-act="pObj" data-arg="${player.id}:${objective.type}">${objective.label}</button>`;
         }).join('')}

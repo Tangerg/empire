@@ -1,6 +1,6 @@
 import { StoredDocumentError } from '../domain/errors';
 import type { LevelData } from '../types';
-import { defaultPlayers, defaultVictory } from './defaults';
+import { defaultPlayers, defaultVictory, UNNAMED_LEVEL } from './defaults';
 
 /** The level document is malformed — not merely questionable, unreadable. */
 /** A level document this build cannot read; one kind of `StoredDocumentError`. */
@@ -28,8 +28,8 @@ export function normaliseLevel(raw: unknown): LevelData {
   }
   return {
     schema: 2,
-    id: loaded.id ?? 'untitled',
-    name: loaded.name ?? '未命名关卡',
+    id: loaded.id ?? UNNAMED_LEVEL.id,
+    name: loaded.name ?? UNNAMED_LEVEL.name,
     author: loaded.author,
     description: loaded.description ?? '',
     width,

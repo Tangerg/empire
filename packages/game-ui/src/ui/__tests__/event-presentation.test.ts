@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest';
+import { resourceLabel } from '../rule-labels';
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
@@ -30,6 +31,7 @@ function logContext(current: GameState): BattleLogContext {
       return unit ? TEST_CATALOG.units.get(unit.type).name : '单位';
     },
     playerName: (id) => current.players.find((player) => player.id === id)?.name ?? '？',
+    resourceName: (id) => resourceLabel(TEST_ENGINE.rules.resources, id),
   };
 }
 
@@ -70,6 +72,30 @@ describe('battle event presentation', () => {
     });
 
     expect(line).toBe(`${TEST_CATALOG.units.get(attacker.type).name} 造成 30 点伤害，目标阵亡`);
+  });
+
+  /**
+   * A resource is called what this engine calls it.
+   *
+   * The log kept a three-entry table — `funds`, `command_points`, `momentum` —
+   * beside a ruleset that also ships `weapon_uses` and names it 武器次数. So 541
+   * lines across the shipped campaign printed the ruleset's own id at the player,
+   * while the panel beside them printed the name.
+   */
+  it('names a resource the way the ruleset does, including one no table knew', () => {
+    const current = state();
+    const line = (resource: string) => DefaultBattleEventPresenters.describe(logContext(current), {
+      type: 'resourceChanged',
+      resource,
+      subject: { kind: 'player', id: 1 },
+      amount: -1,
+      current: 3,
+    });
+
+    expect(line('weapon_uses')).toContain('武器次数');
+    expect(line('funds')).toContain('资金');
+    // A resource nobody registered still reads as itself rather than as nothing.
+    expect(line('glory')).toContain('glory');
   });
 
   it('lets an event have a line without a picture, and a picture without a line', () => {

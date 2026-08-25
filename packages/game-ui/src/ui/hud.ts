@@ -3,6 +3,7 @@ import type { ArtDirection } from '../art/direction';
 import { portraitSvg } from '../art/portraits';
 import { unitIcon } from '../art/units';
 import { PAL } from '../art/palette';
+import { amountsLabel, resourceLabel } from './rule-labels';
 import {
   type BattleRuleServices,
   type CommandOption,
@@ -139,15 +140,8 @@ export interface HudHandlers {
 
 const pct = (n: number) => `${Math.round(n * 100)}%`;
 
-function resourceName(resources: BattleResourceSystem, id: string): string {
-  return resources.adapters.tryGet(id)?.name ?? id;
-}
-
-function formatAmounts(resources: BattleResourceSystem, amounts: readonly ResourceAmount[]): string {
-  return amounts.length === 0
-    ? '无'
-    : amounts.map((amount) => `${resourceName(resources, amount.resource)} ${amount.amount}`).join(' · ');
-}
+const formatAmounts = (resources: BattleResourceSystem, amounts: readonly ResourceAmount[]): string =>
+  amountsLabel(resources, amounts, '无');
 
 function accountSummary(resources: BattleResourceSystem, subject: ResourceSubject): string[] {
   return resources.adapters.keys().flatMap((id) => {
@@ -158,7 +152,7 @@ function accountSummary(resources: BattleResourceSystem, subject: ResourceSubjec
       : account.capacity === null
         ? String(account.current)
         : `${account.current}/${account.capacity}`;
-    return [`${resourceName(resources, id)} ${value}`];
+    return [`${resourceLabel(resources, id)} ${value}`];
   });
 }
 

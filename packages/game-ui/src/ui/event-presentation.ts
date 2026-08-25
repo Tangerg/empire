@@ -36,6 +36,17 @@ export interface BattleLogContext {
   /** Display name of a unit still on the field, or a neutral fallback. */
   unitName(id: number): string;
   playerName(id: number): string;
+  /**
+   * What a resource is called to a player.
+   *
+   * A question like the two above, because it has the same one answer: the
+   * adapter installed in *this* engine. It used to be a three-entry table in this
+   * module — `funds`, `command_points`, `momentum` — beside a ruleset that also
+   * ships `weapon_uses` and calls it 武器次数. So the log said `weapon_uses` while
+   * the panel two centimetres away said 武器次数, and a resource a plugin invented
+   * could only ever read as its own id.
+   */
+  resourceName(id: string): string;
 }
 
 /**
@@ -145,22 +156,6 @@ const pause = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve,
 const casualty = (killed: boolean, phrasing = '，目标阵亡') => (killed ? phrasing : '');
 
 const RANK_NAMES = ['新兵', '老兵', '精英'] as const;
-
-const RESOURCE_NAMES: Record<string, string> = {
-  funds: '资金',
-  command_points: '指挥点',
-  momentum: '气势',
-};
-
-/**
- * What a resource is called to a player.
- *
- * Exported because the battle log was not the only place that says it: the codex
- * printed a recruit cost as "funds 100", showing the ruleset's own id to the
- * person playing. A resource a plugin invented reads as its id rather than as
- * nothing, which is the same rule the holder names below follow.
- */
-export const resourceName = (id: string): string => RESOURCE_NAMES[id] ?? id;
 
 /**
  * Who a resource line is about. Open, like the holder family it reads: a
@@ -311,7 +306,7 @@ export const DefaultBattleEventPresenters = new BattleEventPresenterRegistry()
   }))
   .register(presenter({
     type: 'resourceChanged',
-    describe: ({ unitName, playerName }, event) => {
+    describe: ({ unitName, playerName, resourceName }, event) => {
       const resource = resourceName(event.resource);
       return `${holderName({ playerName, unitName }, event.subject)} ${resource} ${event.amount >= 0 ? '+' : ''}${event.amount}（${event.current}）`;
     },

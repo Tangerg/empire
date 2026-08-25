@@ -36,6 +36,7 @@ import {
   type BattleLogContext,
 } from './event-presentation';
 import { Hud, type HudView } from './hud';
+import { resourceLabel } from './rule-labels';
 import {
   DEPLOYING,
   DeploymentSelection,
@@ -628,6 +629,7 @@ export class GameController {
         return unit ? this.session.content.units.get(unit.type).name : '单位';
       },
       playerName: (id) => state.players.find((player) => player.id === id)?.name ?? '？',
+      resourceName: (id) => resourceLabel(this.session.rules.resources, id),
     };
   }
 

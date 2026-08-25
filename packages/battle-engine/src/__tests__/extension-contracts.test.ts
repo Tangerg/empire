@@ -55,6 +55,7 @@ class TestSignalAction implements ActionHandler<'testSignal'> {
 
 const testObjective: ObjectiveHandler<'testVariable'> = {
   kind: 'testVariable',
+  label: '变量达标',
   outcome: ({ state }, objective) =>
     state.scenario.variables[objective.key] === objective.equals ? 'success' : 'pending',
   describe: (objective) => `变量 ${objective.key} 等于 ${objective.equals}`,

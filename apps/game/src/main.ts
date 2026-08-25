@@ -10,6 +10,7 @@ import {
   mapFromLevel,
   resolveRules,
   type LevelData,
+  type UnitDef,
 } from '@empire/battle-engine';
 import { COMMON_CONTENT_PACK } from '@empire/content-common';
 import {
@@ -40,7 +41,7 @@ import {
   portraitSvg,
   readCustomLevels,
   requireMountPoint,
-  resourceName,
+  amountsLabel,
   mapScenePieces,
   terrainLayerPieces,
   escapeHtml,
@@ -74,8 +75,9 @@ const tilingOf = (level: LevelData) => engine.rules.grids.get(resolveRules(level
 const art = CANDIDATE_01_ART;
 const campaignAdapter = candidate01CampaignAdapter();
 
-const recruitCost = (unit: { recruitCosts: { resource: string; amount: number }[] }) =>
-  unit.recruitCosts.map((cost) => `${resourceName(cost.resource)} ${cost.amount}`).join(' · ') || '不可招募';
+// What a unit costs, in the words this engine's resources go by.
+const recruitCost = (unit: UnitDef) =>
+  amountsLabel(engine.rules.resources, unit.recruitCosts, '不可招募');
 
 const app = requireMountPoint('app');
 let active: GameController | StoryCampaignController | null = null;

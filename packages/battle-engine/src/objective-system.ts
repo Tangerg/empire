@@ -55,7 +55,24 @@ export interface ObjectiveHandler<K extends ObjectiveKind = ObjectiveKind> {
   /** The names this objective writes down, for whoever has to resolve them. */
   references?(objective: ObjectiveOf<K>): PayloadReferences;
   outcome(context: ObjectiveEvaluationContext, objective: ObjectiveOf<K>): ObjectiveOutcome;
-  describe(objective: ObjectiveOf<K>, handlers: ObjectiveHandlerRegistry): string;
+  /**
+   * What this *kind* of objective is called, with no instance to look at.
+   *
+   * Required, because someone always needs it before an objective exists: the
+   * editor's picker offered nine hand-written labels of its own, so an objective
+   * kind a content pack registered could not be authored at all — the same defect
+   * the facing buttons in that panel had, cured there and left standing here.
+   */
+  readonly label: string;
+  /**
+   * This particular objective in words, defaulting to `label`.
+   *
+   * Twelve of the seventeen shipped kinds returned a constant here, which is the
+   * label written a second time in the same object. Only the five that read the
+   * instance — a turn count, a threshold, a nested objective — say anything the
+   * label cannot.
+   */
+  describe?(objective: ObjectiveOf<K>, handlers: ObjectiveHandlerRegistry): string;
   progress(context: ObjectiveEvaluationContext, objective: ObjectiveOf<K>): string;
 }
 
@@ -144,7 +161,13 @@ export class ObjectiveHandlerRegistry extends KeyedRegistry<ObjectiveKind, Objec
 
   describe(objective: Objective): string {
     if (objective.label) return objective.label;
-    return this.get(objective.type).describe(objective as never, this);
+    const handler = this.get(objective.type);
+    return handler.describe?.(objective as never, this) ?? handler.label;
+  }
+
+  /** Every kind installed in this engine, with the name each goes by. */
+  kinds(): { type: ObjectiveKind; label: string }[] {
+    return this.keys().map((type) => ({ type, label: this.get(type).label }));
   }
 
   progress(rules: ObjectiveRules, state: GameState, owner: PlayerId, objective: Objective): string {
@@ -241,7 +264,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     outcome: ({ state, owner }) => state.players
       .filter((candidate) => areEnemies(state, candidate.id, owner))
       .every((candidate) => unitsOf(state, candidate.id).length === 0) ? 'success' : 'pending',
-    describe: () => '歼灭所有敌军',
+    label: '歼灭所有敌军',
     progress: ({ state, owner }) => {
       const left = state.players
         .filter((candidate) => areEnemies(state, candidate.id, owner))
@@ -257,7 +280,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
       return contenders.length > 0 && contenders.every((candidate) => lostHQ(content, state, candidate.id))
         ? 'success' : 'pending';
     },
-    describe: () => '攻占敌方城堡',
+    label: '攻占敌方城堡',
     progress: ({ state, owner, content }) => {
       const left = state.players
         .filter((candidate) => areEnemies(state, candidate.id, owner))
@@ -273,7 +296,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
       return sites.length > 0 && sites.every((entry) => state.map.owners[entry.index] === owner)
         ? 'success' : 'pending';
     },
-    describe: () => '控制全部据点',
+    label: '控制全部据点',
     progress: ({ state, owner, content }) => {
       const sites = state.map.tiles.map((terrain, index) => ({ terrain, index })).filter(
         (entry) => content.terrains.get(entry.terrain).capturable,
@@ -283,13 +306,14 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
   }))
   .register(objectiveHandler('surviveTurns', {
     outcome: ({ state }, objective) => state.turn > objective.turns ? 'success' : 'pending',
+    label: '坚守回合',
     describe: (objective) => `坚守 ${objective.turns} 回合`,
     progress: ({ state }, objective) => `${Math.min(state.turn, objective.turns)}/${objective.turns} 回合`,
   }))
   .register(objectiveHandler('eliminate', {
     references: (objective) => points().selector(objective.selector),
     outcome: ({ state, content }, objective) => selectUnits(content, state, objective.selector).length === 0 ? 'success' : 'pending',
-    describe: () => '消灭指定目标',
+    label: '消灭指定目标',
     progress: ({ state, content }, objective) => `剩余 ${selectUnits(content, state, objective.selector).length}`,
   }))
   .register(objectiveHandler('destroy', {
@@ -301,7 +325,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
       const structure = state.structures.find((candidate) => candidate.id === id);
       return !structure || structure.hp <= 0;
     }) ? 'success' : 'pending',
-    describe: () => '摧毁指定结构',
+    label: '摧毁指定结构',
     progress: ({ state }, objective) => {
       const left = objective.structures.filter((id) => {
         const structure = state.structures.find((candidate) => candidate.id === id);
@@ -323,7 +347,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
       const threshold = objective.minimumNeutralized ?? composite.minimumNeutralized;
       return compositeStatus(state, objective.composite).neutralized >= threshold ? 'success' : 'pending';
     },
-    describe: () => '瘫痪复合战场目标',
+    label: '瘫痪复合战场目标',
     progress: ({ state }, objective) => {
       const composite = requireComposite(state, objective.composite);
       const status = compositeStatus(state, objective.composite);
@@ -341,6 +365,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
       if (selectUnits(content, state, objective.selector).length < objective.minimumAlive) return 'failure';
       return state.turn > objective.untilTurn ? 'success' : 'pending';
     },
+    label: '保护目标',
     describe: (objective) => `保护目标至第 ${objective.untilTurn} 回合`,
     progress: ({ state, content }, objective) =>
       `${selectUnits(content, state, objective.selector).length}/${objective.minimumAlive} 存活`,
@@ -356,7 +381,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
         cells.some((cell) => sameCoord(cell, unit))).length;
       return arrived >= objective.count ? 'success' : 'pending';
     },
-    describe: () => '护送目标抵达区域',
+    label: '护送目标抵达区域',
     progress: ({ state, content }, objective) => {
       const arrived = selectUnits(content, state, objective.selector).filter((unit) =>
         zoneCells(state, objective.zone).some((cell) => sameCoord(cell, unit))).length;
@@ -371,7 +396,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
         (cell) => state.map.owners[idx(state.map, cell.x, cell.y)] === owner,
       ) ? 'success' : 'pending';
     },
-    describe: () => '控制指定区域',
+    label: '控制指定区域',
     progress: ({ state, owner }, objective) => {
       const cells = zoneCells(state, objective.zone);
       const mine = cells.filter(
@@ -385,6 +410,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
       const value = state.scenario.variables[objective.variable];
       return typeof value === 'number' && value >= objective.atLeast ? 'success' : 'pending';
     },
+    label: '达成计数',
     describe: (objective) => `达成计数 ${objective.atLeast}`,
     progress: ({ state }, objective) =>
       `${Number(state.scenario.variables[objective.variable] ?? 0)}/${objective.atLeast}`,
@@ -392,21 +418,21 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
   .register(objectiveHandler('interact', {
     outcome: ({ state }, objective) =>
       state.scenario.variables[objective.variable] === objective.equals ? 'success' : 'pending',
-    describe: () => '完成战场交互',
+    label: '完成战场交互',
     progress: pendingProgress,
   }))
   .register(objectiveHandler('all', {
     refresh: 'children',
     children: (objective) => objective.objectives,
     outcome: everyChildSucceeds,
-    describe: () => '完成全部目标',
+    label: '完成全部目标',
     progress: stageProgress,
   }))
   .register(objectiveHandler('any', {
     refresh: 'children',
     children: (objective) => objective.objectives,
     outcome: someChildSucceeds,
-    describe: () => '完成任一目标',
+    label: '完成任一目标',
     progress: stageProgress,
   }))
   // The same fold as `all`; the difference is that a sequence reopens its
@@ -415,7 +441,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     refresh: 'sequence',
     children: (objective) => objective.objectives,
     outcome: everyChildSucceeds,
-    describe: () => '完成阶段目标',
+    label: '完成阶段目标',
     progress: stageProgress,
   }))
   .register(objectiveHandler('optional', {
@@ -423,6 +449,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     refresh: 'children',
     children: (objective) => [objective.objective],
     outcome: (context, objective) => context.outcome(objective.objective),
+    label: '可选目标',
     describe: (objective, handlers) => `额外：${handlers.describe(objective.objective)}`,
     progress: (context, objective) => context.handlers.progress(context, context.state, context.owner, objective.objective),
   }))
@@ -437,6 +464,7 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     outcome: (context, objective) =>
       conditionMet(context, context.state, objective.condition)
         ? 'failure' : context.outcome(objective.objective),
+    label: '失败条件',
     describe: (objective, handlers) => handlers.describe(objective.objective),
     progress: (context, objective) => context.handlers.progress(context, context.state, context.owner, objective.objective),
   }))
