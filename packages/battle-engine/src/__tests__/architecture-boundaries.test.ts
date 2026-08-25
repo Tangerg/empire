@@ -412,6 +412,82 @@ describe('no ambient content', () => {
   });
 });
 
+describe('the guards are held to themselves', () => {
+  /**
+   * An exemption has to still exempt something.
+   *
+   * A dozen guards here name the files allowed to do the thing they forbid — the
+   * module that owns the rule, the one place a blow is settled, the tiling that
+   * declares its own facings. Those lists rot in one direction only: a file gets
+   * cleaned up, stops doing the thing, and its allowance stays. Nothing fails,
+   * because an allowance costs nothing to hold — it just quietly permits the
+   * defect to come back to a file that no longer has it.
+   *
+   * Five were stale when this was written. `battle-aggregate.ts` no longer settles
+   * a blow; `board-decorations.ts` no longer writes out facings; `scenario.ts`,
+   * `objective-system.ts` and `types.ts` no longer name a payload kind — the
+   * ladders they were exempt for are exactly what `references` replaced. All five
+   * were removed and every guard stayed green, which is the proof they were dead.
+   *
+   * This checks the guards that state their pattern inline as a literal. The rest
+   * build one from parts and cannot be read out of the source, so they are named
+   * below and counted: a new exemption list lands in one bucket or the other, and
+   * neither can grow without this failing.
+   */
+  it('keeps every exemption in this file load-bearing', () => {
+    const path = join(coreRoot, '__tests__', 'architecture-boundaries.test.ts');
+    const blocks = readFileSync(path, 'utf8').split(/\n  it\(/).slice(1);
+
+    /** Guards whose pattern is assembled at run time rather than written out. */
+    const assembled = [
+      'never cross-checks a registry against content by hand',
+      'builds every extension point on the shared registry',
+      "writes the map's spatial layers in exactly one place",
+      'asks a trigger whether it is due, never its repeat block',
+      'measures the board through its tiling, never with a fixed metric',
+      'asks one question about the right to react',
+    ];
+
+    const offenders: string[] = [];
+    let checked = 0;
+    for (const block of blocks) {
+      // A title may contain an escaped quote, and one of them does.
+      const title = (/^'((?:[^'\\]|\\.)*)'/.exec(block)?.[1] ?? '?').replace(/\\'/g, "'");
+      const list = /const (?:allowed|owners)\s*(?::[^=]+)?=\s*\[([\s\S]*?)\n?\s*\];/.exec(block);
+      if (!list) continue;
+      const inline = /return (\/(?:[^/\\\n]|\\.)+\/)\.test\(/.exec(block);
+      if (!inline) {
+        if (!assembled.includes(title)) offenders.push(`${title}: exempts files but states no pattern to check it against`);
+        continue;
+      }
+      // `join('domain', 'unit-entity.ts')` is one entry, not two literals.
+      const body = list[1]
+        .replace(/\/\/[^\n]*/g, ' ')
+        .replace(/join\(([^)]*)\)/g, (_, parts: string) =>
+          `'${[...parts.matchAll(/'([^']*)'/g)].map(([, part]) => part).join(sep)}'`);
+      const entries = [...body.matchAll(/'([^']+)'/g)].map(([, name]) => name);
+      const pattern = new RegExp(inline[1].slice(1, -1));
+      for (const entry of entries) {
+        const file = [join(coreRoot, entry), join(packagesRoot, entry)]
+          .find((candidate) => statSync(candidate, { throwIfNoEntry: false })?.isFile());
+        if (!file) {
+          offenders.push(`${title}: exempts "${entry}", which is not a file`);
+          continue;
+        }
+        if (!pattern.test(stripComments(readFileSync(file, 'utf8')))) {
+          offenders.push(`${title}: exempts "${entry}", which no longer does the thing`);
+        }
+      }
+      checked++;
+    }
+
+    // Half the exemption lists are the parseable kind; a run that found none of
+    // them would pass by having read nothing.
+    expect(checked).toBeGreaterThanOrEqual(6);
+    expect(offenders).toEqual([]);
+  });
+});
+
 describe('documentation is held to the code', () => {
   it('counts these guards for every document that states a number', () => {
     // Three documents claimed a guard count. Two of them said 41 and one said
@@ -1068,7 +1144,8 @@ describe('behaviour has an owner', () => {
     // to do that by hand, in three different orders. `resolveDamage` owns it;
     // only the aggregate beneath it may take a unit's hit points away, and only
     // the departure module may raise the fall it produces.
-    const allowed = ['damage.ts', 'unit-departure.ts', join('domain', 'battle-aggregate.ts')];
+    // `battle-aggregate.ts` was exempt here and no longer settles a blow itself.
+    const allowed = ['damage.ts', 'unit-departure.ts'];
     const offenders = runtimeTypeScriptFiles(coreRoot).flatMap((file) => {
       const name = relative(coreRoot, file);
       if (allowed.includes(name)) return [];
@@ -1155,7 +1232,8 @@ describe('behaviour has an owner', () => {
     // one before a state could be built, the sprite badge drew an empty circle,
     // the render key hashed nothing, and the editor could not author cover on
     // those boards at all. The tiling declares its facings; ask it.
-    const owners = ['battle-engine/src/tactical-grid.ts', 'game-ui/src/art/board-decorations.ts'];
+    // The decorations module was exempt and now asks the tiling like everything else.
+    const owners = ['battle-engine/src/tactical-grid.ts'];
     const offenders = everyPackageSource().flatMap((file) => {
       const name = relative(packagesRoot, file);
       if (owners.includes(name)) return [];
@@ -1175,9 +1253,9 @@ describe('behaviour has an owner', () => {
     // union grown back inside an open registry. The kinds answer for themselves
     // through `references` now, and only their own modules may name them.
     const owners = [
-      'scenario.ts',
-      'objective-system.ts',
-      'types.ts',
+      // `scenario.ts`, `objective-system.ts` and `types.ts` were exempt here, and
+      // none of them names a payload kind any more: the ladders they were exempt
+      // for are what `references` replaced.
       // A catalog judges the payloads it can judge alone, and says so in place.
       'content-pack.ts',
       // Both read `TacticEffect`: a deliberately closed two-case union — grant a
