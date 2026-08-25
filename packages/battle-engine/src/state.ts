@@ -20,9 +20,11 @@ import type {
   ResourceAccounts,
   ResourceAmount,
   LevelUnit,
+  UnitDef,
 } from './types';
 import { type ContentCatalog } from './content-pack';
 import { cloneUnitState } from './unit-state';
+import { DEFAULT_MAX_MORALE } from './vitals';
 
 const cloneResources = (resources: ResourceAccounts = {}): ResourceAccounts =>
   Object.fromEntries(Object.entries(resources).map(([id, account]) => [id, { ...account }]));
@@ -74,7 +76,7 @@ function createUnitState(
     owner: source.owner,
     x: source.x,
     y: source.y,
-    hp: clampHp(source.hp ?? def.maxHp, def.maxHp),
+    hp: placedGauge(source.hp ?? def.maxHp, def.maxHp),
     done,
     capture: 0,
     statuses: [],
@@ -92,8 +94,8 @@ function createUnitState(
     reactionUsedRound: -1,
     facing: source.facing ?? 'south',
     morale: {
-      current: Math.max(1, Math.min(def.morale?.maximum ?? 100, Math.round(source.morale ?? def.morale?.maximum ?? 100))),
-      maximum: def.morale?.maximum ?? 100,
+      current: placedGauge(source.morale ?? maximumMorale(def), maximumMorale(def)),
+      maximum: maximumMorale(def),
       resilience: Math.max(0, Math.min(0.9, def.morale?.resilience ?? 0)),
     },
     formation: source.formation ?? null,
@@ -234,7 +236,7 @@ export function createState(content: ContentCatalog, level: LevelData, options: 
       owner: entry.owner ?? 0,
       x: entry.x,
       y: entry.y,
-      hp: Math.max(0, Math.min(def.maxHp, Math.round(entry.hp ?? def.maxHp))),
+      hp: placedStructureHp(entry.hp ?? def.maxHp, def.maxHp),
       disabled: entry.disabled ?? false,
       statuses: [],
     };
@@ -310,7 +312,22 @@ export function createState(content: ContentCatalog, level: LevelData, options: 
   return state;
 }
 
-const clampHp = (hp: number, max: number) => Math.max(1, Math.min(max, Math.round(hp)));
+/**
+ * A gauge a level authored, clamped into a living unit's range.
+ *
+ * Floor 1 rather than 0: a unit a level places is alive, and so is its will to
+ * fight. Hit points and morale used to be two clamps of the same shape, one
+ * named and one written out at the call site, which is how a later reader
+ * "fixes" the inconsistency the wrong way.
+ */
+const placedGauge = (value: number, maximum: number) =>
+  Math.max(1, Math.min(maximum, Math.round(value)));
+
+/** A structure may be placed already broken, so its floor really is 0. */
+const placedStructureHp = (hp: number, maximum: number) =>
+  Math.max(0, Math.min(maximum, Math.round(hp)));
+
+const maximumMorale = (def: UnitDef): number => def.morale?.maximum ?? DEFAULT_MAX_MORALE;
 
 /** Structural clone. Used by undo and by the AI to simulate. */
 export function cloneState(state: GameState): GameState {

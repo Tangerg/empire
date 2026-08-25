@@ -1,4 +1,5 @@
 import { unitWeapons } from '../combat';
+import { gaugeRatio } from '../vitals';
 import type { ContentCatalog } from '../content-pack';
 import type { Unit, UnitTypeId, WeaponDef } from '../types';
 
@@ -28,7 +29,7 @@ export const preferredEngagementRange = (unit: Unit, content: ContentCatalog): n
 };
 
 export const hpRatio = (unit: Unit, content: ContentCatalog): number =>
-  unit.hp / content.units.get(unit.type).maxHp;
+  gaugeRatio(unit.hp, content.units.get(unit.type).maxHp);
 
 /**
  * What losing this unit would cost, as opposed to `UnitDef.value`, which is

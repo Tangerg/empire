@@ -12,6 +12,7 @@ import { awardRankProgress } from './progression';
 import { MapLayers } from './domain/map-layers';
 import { ContentRegistry } from './registry';
 import { unitAt } from './state';
+import { gaugeRatio } from './vitals';
 import { player } from './state';
 import { blockedAbilityStatus, combinedStatusModifiers } from './statuses';
 import { UnitEntity } from './domain/index';
@@ -233,7 +234,7 @@ Abilities.defineAll([
       const def = rules.content.units.get(unit.type);
       const contribution = Math.max(
         1,
-        Math.round(battleRules.captureThreshold * (unit.hp / def.maxHp)),
+        Math.round(battleRules.captureThreshold * gaugeRatio(unit.hp, def.maxHp)),
       );
       const next = layers.captureProgressAt(at) + contribution;
       if (next >= battleRules.captureThreshold) return claim();

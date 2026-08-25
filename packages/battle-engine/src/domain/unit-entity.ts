@@ -1,5 +1,6 @@
 import type { CareerId, CommanderId, Coord, Direction, FormationId, PlayerId, ReactionStance, Unit, UnitDirectiveState, UnitTypeId, UnitWeaponState, WeaponDef, WeaponId } from '../types';
 import { DomainInvariantError } from './errors';
+import { gaugeRatio } from '../vitals';
 
 /**
  * Rich runtime façade over serialisable Unit state.
@@ -69,7 +70,7 @@ export class UnitEntity {
     if (fromMaximum < 1 || toMaximum < 1) {
       throw new DomainInvariantError('health maxima must be positive');
     }
-    const scaled = Math.round(toMaximum * (this.state.hp / fromMaximum));
+    const scaled = Math.round(toMaximum * gaugeRatio(this.state.hp, fromMaximum));
     this.state.hp = Math.max(1, Math.min(toMaximum, scaled));
   }
 

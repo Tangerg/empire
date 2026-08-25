@@ -2,6 +2,7 @@ import { DomainInvariantError } from './domain/errors';
 import { UnitEntity } from './domain/unit-entity';
 import { PlayerEntity } from './domain/player-entity';
 import { inBounds } from './grid';
+import { gaugeRatio } from './vitals';
 import { addTerrainOverlay, removeTerrainOverlay } from './overlays';
 import { player, removeUnit, spawnUnit } from './state';
 import { addStatus, removeStatus } from './statuses';
@@ -221,7 +222,7 @@ export const ScenarioConditionHandlers = new ScenarioConditionHandlerRegistry(Sp
   }))
   .register(conditionHandler('unitHealth', ({ state, content }, condition) => {
     const ratios = selectUnits(content, state, condition.selector)
-      .map((unit) => unit.hp / content.units.get(unit.type).maxHp);
+      .map((unit) => gaugeRatio(unit.hp, content.units.get(unit.type).maxHp));
     if (ratios.length === 0) return false;
     if (condition.aggregate === 'any') return ratios.some((value) => compare(value, condition.op, condition.value));
     if (condition.aggregate === 'all') return ratios.every((value) => compare(value, condition.op, condition.value));

@@ -1,5 +1,6 @@
 import { idx } from './grid';
 import {
+  objectiveStatusOf,
   type ObjectiveHandlerRegistry,
   type ObjectiveKind,
   type ObjectiveOf,
@@ -211,10 +212,6 @@ export const DefaultAiObjectiveAdvisors = new AiObjectiveAdvisorRegistry()
   }));
 DefaultAiObjectiveAdvisors.seal();
 
-function runtimeStatus(state: GameState, owner: PlayerId, objective: Objective) {
-  return objective.id ? player(state, owner).objectiveStates[objective.id]?.status ?? 'active' : 'active';
-}
-
 function objectiveWeight(handlers: ObjectiveHandlerRegistry, objective: Objective): number {
   const role = handlers.role(objective);
   if (role === 'critical') return 1.4;
@@ -230,7 +227,7 @@ function activeChildren(
 ): Objective[] {
   const children = handlers.children(objective);
   const pending = children.filter((child) => {
-    const status = runtimeStatus(state, owner, child);
+    const status = objectiveStatusOf(state, owner, child);
     return status !== 'completed' && status !== 'failed' && status !== 'cancelled' && status !== 'inactive';
   });
   return handlers.refreshMode(objective) === 'sequence' ? pending.slice(0, 1) : pending;
@@ -266,7 +263,7 @@ export function buildAiMissionIntent(
   const protectedUnits = new Map<number, number>();
 
   const visit = (objective: Objective, inheritedWeight: number): void => {
-    if (runtimeStatus(state, owner, objective) !== 'active') return;
+    if (objectiveStatusOf(state, owner, objective) !== 'active') return;
     const weight = inheritedWeight * objectiveWeight(handlers, objective);
     const children = activeChildren(handlers, state, owner, objective);
     if (children.length > 0) {

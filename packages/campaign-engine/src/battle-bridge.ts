@@ -1,4 +1,6 @@
 import {
+  gaugeRatio,
+  DEFAULT_MAX_MORALE,
   normaliseLevel,
   scenarioSignalsOf,
   teamOf,
@@ -42,7 +44,7 @@ function seedLevelUnit(
   unit.unit = campaign.unitType;
   unit.owner = campaign.owner;
   unit.hp = Math.max(1, Math.round(content.units.get(campaign.unitType).maxHp * campaign.hpRatio));
-  unit.morale = Math.max(1, Math.round((content.units.get(campaign.unitType).morale?.maximum ?? 100) * campaign.moraleRatio));
+  unit.morale = Math.max(1, Math.round((content.units.get(campaign.unitType).morale?.maximum ?? DEFAULT_MAX_MORALE) * campaign.moraleRatio));
   unit.rank = campaign.rank ?? 0;
   unit.rankProgress = campaign.rankProgress ?? 0;
   unit.resources = structuredClone(campaign.resources ?? {});
@@ -152,8 +154,8 @@ export class CampaignBattleBridge {
     return {
       campaignUnit,
       disposition,
-      hpRatio: Math.max(0, Math.min(1, unit.hp / definition.maxHp)),
-      moraleRatio: Math.max(0, Math.min(1, unit.morale.current / unit.morale.maximum)),
+      hpRatio: gaugeRatio(unit.hp, definition.maxHp),
+      moraleRatio: gaugeRatio(unit.morale.current, unit.morale.maximum),
       unitType: unit.type,
       rank: unit.rank,
       rankProgress: unit.rankProgress,

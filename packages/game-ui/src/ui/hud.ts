@@ -31,6 +31,7 @@ import {
   type Unit,
   type UnitDef,
   SpellCastEntity,
+  gaugeRatio,
 } from '@empire/battle-engine';
 import {
   type BattleResourceSystem,
@@ -659,7 +660,7 @@ export class Hud {
         <div class="unit-name">${escapeHtml(definition.name)}
           <span class="team-tag" style="--team:${owner?.color}">${escapeHtml(owner?.name ?? '中立')}</span>
         </div>
-        <div class="unit-hp">${icon('heart')} ${unit.hp} / ${definition.maxHp} ${hpBar(unit.hp / definition.maxHp, 72)}</div>
+        <div class="unit-hp">${icon('heart')} ${unit.hp} / ${definition.maxHp} ${hpBar(gaugeRatio(unit.hp, definition.maxHp), 72)}</div>
         <div class="unit-blurb">${escapeHtml(definition.blurb)}</div>
       </div>
     </div>`;
@@ -880,7 +881,7 @@ export class Hud {
       <span class="ts-name">${escapeHtml(definition.name)}</span>
       ${holder ? `<em style="color:${holder.color}">${escapeHtml(holder.name)}</em>` : ''}
       <b>${state.hp} / ${definition.maxHp}</b>
-      ${hpBar(definition.maxHp > 0 ? state.hp / definition.maxHp : 1, 60)}
+      ${hpBar(gaugeRatio(state.hp, definition.maxHp), 60)}
       ${facts.length > 0 ? `<div class="fact-row">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join('')}</div>` : ''}
     </div>`;
   }
@@ -894,7 +895,7 @@ export class Hud {
       <h3 class="art-heading">${this.art.resolve((provider) => provider.iconMarkup?.('C01-HUD-05')) ?? icon('flag')}<span>作战目标</span></h3>
       <ul class="obj-list">
         ${viewer.objectives
-          .filter((objective) => !viewer.objectiveStates[objective.id!]?.hidden)
+          .filter((objective) => !viewer.objectiveStates[objective.id]?.hidden)
           .map(
             (objective) =>
               `<li>${icon('flag')}<span>${escapeHtml(objective.label ?? describeObjective(view.rules.objectives, objective))}</span><em>${escapeHtml(

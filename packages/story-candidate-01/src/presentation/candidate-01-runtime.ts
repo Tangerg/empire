@@ -1,3 +1,4 @@
+import { gaugeRatio } from '@empire/battle-engine';
 import type {
   BattlefieldMarker,
   StructureDef,
@@ -146,7 +147,7 @@ export function candidate01StructureMarkup(
   const record = candidate01Asset(topic);
   const visualState = state.hp <= def.maxHp * 0.5 || state.disabled ? 'damaged' : ownerColor ? 'captured' : 'normal';
   const frame = structureFrame(record, visualState);
-  const ratio = Math.max(0, Math.min(1, state.hp / def.maxHp));
+  const ratio = gaugeRatio(state.hp, def.maxHp);
   return `${structureAssetMarkup(record, frame, ownerColor)}
     <rect x="5" y="27" width="22" height="3" rx="1.5" fill="#201914" opacity="0.72"/>
     <rect x="5.5" y="27.5" width="${(21 * ratio).toFixed(2)}" height="2" rx="1" fill="${ratio > 0.5 ? '#66b873' : '#d85c4c'}"/>`;

@@ -75,17 +75,65 @@ function stripComments(source: string): string {
 }
 
 /**
- * Source with its string and template literals blanked out.
+ * Source with its string and template literals blanked out — but not their holes.
  *
- * Markup and prose are data here — the UI packages are mostly template literals
- * — and a guard about *code* that reads what the code prints is guarding the
- * wrong text.
+ * Markup and prose are data here, and a guard about *code* that reads what the
+ * code prints is guarding the wrong text. But this used to blank a template
+ * literal whole, `${…}` included, and the UI packages are mostly template
+ * literals: `${hpBar(unit.hp / definition.maxHp, 72)}` is code, and every guard
+ * built on this was blind to it. So the literal text goes and the holes stay.
+ *
+ * A scanner rather than a regular expression, because a hole may contain an
+ * object literal, and a template literal, which may contain another hole.
  */
 function stripStrings(source: string): string {
-  return source
-    .replace(/`(?:[^`\\]|\\.)*`/g, '``')
-    .replace(/'(?:[^'\\\n]|\\.)*'/g, "''")
-    .replace(/"(?:[^"\\\n]|\\.)*"/g, '""');
+  let out = '';
+  /** Enclosing template literals, each with the brace depth of the hole we are in. */
+  const holes: number[] = [];
+  let index = 0;
+  while (index < source.length) {
+    const character = source[index];
+    if (character === '\\' && holes.length === 0) {
+      out += character;
+      index += 1;
+      continue;
+    }
+    if (character === "'" || character === '"') {
+      const quote = /^(['"])(?:[^\\\n]|\\.)*?\1/.exec(source.slice(index));
+      out += character.repeat(2);
+      index += quote ? quote[0].length : 1;
+      continue;
+    }
+    if (character === '`') {
+      // Opening a literal, or closing the one whose text we are skipping.
+      out += '`';
+      index += 1;
+      if (holes.length > 0 && holes[holes.length - 1] === -1) holes.pop();
+      else holes.push(-1);
+      continue;
+    }
+    // -1 means "in a literal's text": skip it, and watch for a hole opening.
+    if (holes.length > 0 && holes[holes.length - 1] === -1) {
+      if (character === '$' && source[index + 1] === '{') {
+        holes[holes.length - 1] = 0;
+        out += '${';
+        index += 2;
+        continue;
+      }
+      if (character === '\\') index += 2;
+      else index += 1;
+      continue;
+    }
+    if (holes.length > 0) {
+      const depth = holes[holes.length - 1];
+      if (character === '{') holes[holes.length - 1] = depth + 1;
+      else if (character === '}' && depth === 0) holes[holes.length - 1] = -1;
+      else if (character === '}') holes[holes.length - 1] = depth - 1;
+    }
+    out += character;
+    index += 1;
+  }
+  return out;
 }
 
 /**
@@ -495,6 +543,27 @@ describe('the guards are held to themselves', () => {
     // them would pass by having read nothing.
     expect(checked).toBeGreaterThanOrEqual(6);
     expect(offenders).toEqual([]);
+  });
+
+  it('reads the code inside a template hole and the prose nowhere', () => {
+    // `stripStrings` is load-bearing for a dozen guards, and it is the kind of
+    // helper that fails silently: blank too much and every guard passes by
+    // reading nothing. It used to blank a template literal whole — holes and all
+    // — which is how a `!` assertion sat inside `${…}` in the HUD while the guard
+    // that forbids assertions was green.
+    const source = 'const row = `<b class="hp">${bar(unit.hp / def.maxHp)} ${f({ k: `${g()}` })}</b>`;';
+    const code = stripStrings(source);
+
+    // Every expression in a hole survives, including one nested a literal deep.
+    expect(code).toContain('bar(unit.hp / def.maxHp)');
+    expect(code).toContain('g()');
+    // And no part of the prose does, at any depth.
+    for (const prose of ['class=', '<b', '</b>', 'hp"']) expect(code).not.toContain(prose);
+    // A quoted string keeps its quotes and loses its content, escapes included.
+    expect(stripStrings("const s = 'it\\'s';")).toBe("const s = '';");
+    expect(stripStrings('const s = "x";')).toBe('const s = "";');
+    // Code outside any literal is untouched.
+    expect(stripStrings('a.b!.c')).toBe('a.b!.c');
   });
 });
 
@@ -2438,6 +2507,35 @@ describe('one answer per question', () => {
     // Both ports parsed, or this passes by having read no members.
     expect((declared.get('ArtProvider') ?? []).length).toBeGreaterThan(8);
     expect((declared.get('BattlePresentation') ?? []).length).toBeGreaterThan(10);
+    expect(offenders).toEqual([]);
+  });
+
+  it('reads a gauge as a fraction of itself in one place', () => {
+    // `hp / maxHp` and `morale.current / morale.maximum` were written out in
+    // twelve places with four behaviours: seven divided plainly, one guarded a
+    // maximum of zero, two clamped to 0..1, and one did both. The disagreement
+    // had reached the screen — a structure with `maxHp: 0` drew a full condition
+    // bar under the generic art and a `NaN`-wide one under the campaign's.
+    //
+    // The tell is the *left* operand: a gauge's own reading. `damage / maxHp` and
+    // `healed / def.maxHp` are a different question — how big was this compared
+    // to the target — and morale damage is scaled by exactly that, so clamping
+    // there would silently cap the blow. Which is why no exemption list is
+    // needed: those never divide *from* `.hp` or `.current`.
+    const owner = join(coreRoot, 'vitals.ts');
+    const offenders: string[] = [];
+    for (const file of [...everyPackageSource(), ...appSources(), ...toolSources()]) {
+      if (file === owner) continue;
+      const source = stripStrings(stripComments(readFileSync(file, 'utf8')));
+      source.split('\n').forEach((line, index) => {
+        if (/\.(?:hp|current)\s*\/(?!\/)/.test(line)) {
+          offenders.push(`${relative(packagesRoot, file)}:${index + 1} ${line.trim()}`);
+        }
+      });
+    }
+
+    // The owner is where the division lives, so it has to contain one.
+    expect(readFileSync(owner, 'utf8')).toContain('current / maximum');
     expect(offenders).toEqual([]);
   });
 });

@@ -1,4 +1,4 @@
-import type { UnitTypeId } from '@empire/battle-engine';
+import type { LevelData, UnitTypeId } from '@empire/battle-engine';
 import {
   ArtDirection,
   definitionKey,
@@ -113,6 +113,16 @@ const RELATION_LABELS: Readonly<Record<string, string>> = {
   'mountain-forge': '山炉氏族', 'named-dead': '归名者',
 };
 
+/**
+ * Where a level sits in the chapter, from its own `order` or from its id.
+ *
+ * Named because the briefing id is derived from it, and the two were the same
+ * expression written twice: a change to how the order is resolved would have
+ * left the briefing pointing at a different level than the one being played.
+ */
+const levelOrder = (level: LevelData): number =>
+  Number(level.extra?.order ?? level.id.slice(-2));
+
 export function candidate01CampaignAdapter(): StoryCampaignAdapter {
   return {
     title: '断冠之誓',
@@ -124,8 +134,8 @@ export function candidate01CampaignAdapter(): StoryCampaignAdapter {
     resourceLabels: { supplies: '补给', treasury: '国库' },
     chapterTitle: (chapter) => chapter === 1 ? '边境之火' : chapter === 2 ? '灰旗流亡' : '古老诸族',
     chapterOf: (level) => Number(level.extra?.chapter) || 1,
-    levelOrder: (level) => Number(level.extra?.order ?? level.id.slice(-2)),
-    briefingId: (level) => `c01/brief-${String(Number(level.extra?.order ?? level.id.slice(-2))).padStart(2, '0')}`,
+    levelOrder,
+    briefingId: (level) => `c01/brief-${String(levelOrder(level)).padStart(2, '0')}`,
     storyArt: candidate01StoryArt,
     speakerNames: CANDIDATE_01_SPEAKER_NAMES,
     level: candidate01Level,

@@ -6,6 +6,7 @@ import {
   type Unit,
   type WeaponId,
   type TacticalGrid,
+  gaugeRatio,
 } from '@empire/battle-engine';
 import { PAL } from '../art/palette';
 import { decorationsFor, type BattlePresentation } from '../art/battle-presentation';
@@ -484,7 +485,7 @@ export class BoardView {
       drawing.say('selected', !!o.selected && o.selected.x === u.x && o.selected.y === u.y);
 
       const def = this.content.units.get(u.type);
-      const ratio = u.hp / def.maxHp;
+      const ratio = gaugeRatio(u.hp, def.maxHp);
       const parts: string[] = [this.facingBadge(u)];
       if (ratio < 1) {
         const color = ratio > 0.6 ? PAL.hpGood : ratio > 0.3 ? PAL.hpMid : PAL.hpLow;

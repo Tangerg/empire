@@ -69,6 +69,7 @@ export * from './vision';
 export * from './random';
 export * from './replay';
 export * from './save-schema';
+export * from './vitals';
 export { BATTLE_SAVE_SCHEMA, BattleSaveReader } from './battle-save';
 export type {
   BattleSave,

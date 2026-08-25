@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "npm run dev --workspace @empire/game-app",
     "demo": "npm run dev --workspace @empire/engine-demo-app",
+    "editor": "npm run dev --workspace @empire/editor-app",
     "experience": "npm run dev --workspace @empire/experience-lab-app",
     "build": "npm run typecheck && npm run build:apps",
     "build:apps": "npm run build --workspace @empire/game-app && npm run build --workspace @empire/editor-app && npm run build --workspace @empire/engine-demo-app && npm run build --workspace @empire/experience-lab-app",

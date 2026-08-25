@@ -4,6 +4,7 @@ import type { Board } from './domain/board';
 import type { FormationRules } from './formations';
 import type { GridRules } from './tactical-grid';
 import { combinedStatusModifiers } from './statuses';
+import { gaugeRatio } from './vitals';
 import { hasOpposedFlanker, relativeAttackSide } from './spatial';
 import type { Coord, GameState, Unit, WeaponDef } from './types';
 import { type ContentCatalog } from './content-pack';
@@ -20,7 +21,7 @@ export const MAX_MITIGATION = 0.6;
  * not run that chain.
  */
 export const attackerStrength = (content: ContentCatalog, attacker: Unit): number =>
-  0.5 + 0.5 * (attacker.hp / content.units.get(attacker.type).maxHp);
+  0.5 + 0.5 * gaugeRatio(attacker.hp, content.units.get(attacker.type).maxHp);
 
 export type ModifierStage = 'power' | 'mitigation' | 'final';
 export type ModifierOperation = 'add' | 'multiply';

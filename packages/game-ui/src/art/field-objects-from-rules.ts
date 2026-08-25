@@ -1,4 +1,4 @@
-import type { BattlefieldMarker, StructureDef, StructureState } from '@empire/battle-engine';
+import { gaugeRatio, type BattlefieldMarker, type StructureDef, type StructureState } from '@empire/battle-engine';
 import { GROUND_TONES, PAL, shade } from './palette';
 import { nameHash, pick, r2 } from './variation';
 
@@ -55,7 +55,7 @@ export function structureFromRules(
   def: StructureDef,
   ownerColor?: string,
 ): string {
-  const ratio = def.maxHp > 0 ? Math.max(0, Math.min(1, state.hp / def.maxHp)) : 1;
+  const ratio = gaugeRatio(state.hp, def.maxHp);
   const wear = 1 - ratio;
   const raised = Math.max(def.obstructionHeight, RAISED_BY_COVER[def.cover]);
   const banner = ownerColor ?? PAL.neutral;
