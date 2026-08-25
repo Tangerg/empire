@@ -4,13 +4,17 @@ import {
   EnvironmentCatalog,
   type EnvironmentManifest,
 } from '@empire/game-ui';
+import { fixedNumbers, oneOf, type FixedNumbers } from './candidate-01-documents';
+
+/** The four depths an authored placement may sit at, as values and as a type. */
+export const PLACEMENT_LAYERS = ['foundation', 'ground-decal', 'under-units', 'over-units'] as const;
 
 export interface CandidateEnvironmentPlacement {
   readonly id?: string;
   readonly topicId?: string;
   readonly x: number;
   readonly y: number;
-  readonly layer?: 'foundation' | 'ground-decal' | 'under-units' | 'over-units';
+  readonly layer?: (typeof PLACEMENT_LAYERS)[number];
   readonly variant?: number;
   readonly scale?: number;
   readonly flip?: boolean;
@@ -21,10 +25,10 @@ export interface CandidateEnvironmentScene {
   readonly schemaVersion: string;
   readonly levelId: string;
   readonly runtimeReady: boolean;
-  readonly mapSize: readonly [number, number];
+  readonly mapSize: FixedNumbers<2>;
   readonly zones: readonly {
     readonly id: string;
-    readonly bounds: readonly [number, number, number, number];
+    readonly bounds: FixedNumbers<4>;
     readonly role: string;
   }[];
   readonly selection: {
@@ -55,14 +59,38 @@ const environmentUrls = import.meta.glob<string>(
   { eager: true, import: 'default', query: '?url' },
 );
 
-const environmentManifest = environmentManifestJson as EnvironmentManifest;
+// No assertion: the manifest's shape is a document shape, and the catalog checks
+// the parts of it a JSON import cannot state.
+const environmentManifest: EnvironmentManifest = environmentManifestJson;
 export const CANDIDATE_01_ENVIRONMENT = new EnvironmentCatalog(
   environmentManifest,
   (relativePath) => environmentUrls[`${ENVIRONMENT_ROOT}${relativePath}`],
 );
 
+/** An authored scene, read rather than asserted. See `candidate-01-documents.ts`. */
+function readScene(document: typeof twinHillsSceneJson): CandidateEnvironmentScene {
+  const subject = document.levelId;
+  return {
+    ...document,
+    mapSize: fixedNumbers(2, document.mapSize, 'mapSize', subject),
+    zones: document.zones.map((zone) => ({
+      ...zone,
+      bounds: fixedNumbers(4, zone.bounds, 'bounds', `${subject} zone ${zone.id}`),
+    })),
+    placements: document.placements.map((placement) => {
+      const { layer, ...rest } = placement;
+      return {
+        ...rest,
+        ...(layer === undefined
+          ? {}
+          : { layer: oneOf(PLACEMENT_LAYERS, layer, 'layer', `${subject} placement ${rest.id ?? rest.topicId}`) }),
+      };
+    }),
+  };
+}
+
 const scenes = new Map<string, CandidateEnvironmentScene>([
-  [twinHillsSceneJson.levelId, twinHillsSceneJson as unknown as CandidateEnvironmentScene],
+  [twinHillsSceneJson.levelId, readScene(twinHillsSceneJson)],
 ]);
 
 export function candidate01EnvironmentScene(levelId: string): CandidateEnvironmentScene | undefined {

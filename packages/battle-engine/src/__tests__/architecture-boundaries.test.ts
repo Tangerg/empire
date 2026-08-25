@@ -2899,6 +2899,17 @@ describe('one answer per question', () => {
      * same move a third way: two casts in a row so the compiler cannot object to
      * either. Six of them existed and every one had a reason, which is exactly why
      * they needed listing — the seventh would have arrived unremarked.
+     *
+     * Three of the six are gone, and listing them is what made them findable. Two
+     * were `.json` imports "narrowed to the interface it is authored against",
+     * which is what the reason *said*; what the cast actually did was switch off
+     * the compiler's check of the other twenty-eight fields, and it was hiding a
+     * manifest that says `ySort: 'bottom-anchor'` against a type that says
+     * `boolean`. Those documents are read now, at their edges, and the two things
+     * a JSON import genuinely cannot state — a closed set of names, an array meant
+     * to be a fixed length — are checked there. The third was the catalog's own
+     * assembly, which asserted away the catalog's *shape* along with its element
+     * types, so a field the catalog grew and that file forgot would have compiled.
      */
     const owners = [
       // A registry stores `Handler<Kind>` and dispatches `Handler<'destroy'>`.
@@ -2912,16 +2923,9 @@ describe('one answer per question', () => {
       'campaign-engine/src/nodes.ts',
       'campaign-engine/src/rules.ts',
       'game-ui/src/ui/event-presentation.ts',
-      // The same key correlation, one level up: a record of generic registries is
-      // the catalog whose families are each specific.
-      'battle-engine/src/content-pack.ts',
       // The boundary where an unvalidated document becomes a typed one, next to the
       // checks that earn it — that conversion is this module's whole job.
       'battle-engine/src/save-schema.ts',
-      // A `.json` import narrowed to the interface it is authored against, with the
-      // manifest's own invariants asserted immediately after.
-      'story-candidate-01/src/presentation/candidate-01-assets.ts',
-      'story-candidate-01/src/presentation/candidate-01-environment.ts',
       // A tool bridging Node's timer handle to the DOM signature it implements.
       join('..', 'tools', 'board-harness.ts'),
     ];
@@ -3197,7 +3201,12 @@ describe('one answer per question', () => {
     const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
       if (file === owner) return [];
       const code = stripStrings(stripComments(readFileSync(file, 'utf8')));
-      const named = [...code.matchAll(/(?:const|let)\s+(\w*TILE\w*)\s*=/g)].map(([, name]) => name);
+      // A *measurement*: a number, or arithmetic on the one the port declares.
+      // All four originals were that. The name alone caught `TILE_MODES`, which is
+      // the manifest's `tileMode` field as a list of the two names it may hold —
+      // not a second opinion about how wide a square is.
+      const named = [...code.matchAll(/(?:const|let)\s+(\w*TILE\w*)\s*=\s*(?:\d|TILE\b)/g)]
+        .map(([, name]) => name);
       return named.map((name) => `${relative(packagesRoot, file)}: ${name}`);
     });
 

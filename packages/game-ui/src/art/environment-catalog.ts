@@ -1,13 +1,20 @@
 import type { RuntimeCellAtlas } from './runtime-raster';
 
+/*
+ * The pair fields below are `readonly number[]`, not `readonly [number, number]`.
+ *
+ * These interfaces describe a *document* — a manifest a build tool writes and a
+ * pack imports — and JSON has no tuples, so a pack could only satisfy the tuple
+ * form with `manifestJson as EnvironmentManifest`. That assertion was the only
+ * thing standing between a generator that dropped a coordinate and an atlas cell
+ * drawn at `NaN`. The arity is checked once, on the way in, by the catalog below.
+ */
 export interface EnvironmentCellRecord {
   readonly id: string;
   readonly label?: string;
   readonly index?: number;
-  readonly footprint?: readonly [number, number];
-  readonly anchor?: readonly [number, number];
-  readonly renderLayer?: string;
-  readonly ySort?: boolean;
+  readonly footprint?: readonly number[];
+  readonly anchor?: readonly number[];
   readonly tags?: readonly string[];
   readonly passable?: boolean;
   readonly heightDelta?: number;
@@ -25,16 +32,24 @@ export interface EnvironmentAtlasRecord {
   readonly cellHeight: number;
   readonly componentCount: number;
   readonly tileMode?: string;
-  readonly anchor?: readonly [number, number];
-  readonly ySort?: boolean;
+  readonly anchor?: readonly number[];
   readonly maskOrder?: readonly number[];
   readonly variantsPerMask?: number;
   readonly cellIndex?: string;
   readonly cells?: readonly EnvironmentCellRecord[];
 }
 
+/*
+ * What the catalog reads, not everything the file holds.
+ *
+ * `schemaVersion`, `renderLayer` and `ySort` were declared here and read by
+ * nothing — and `ySort` was declared `boolean` while the shipped manifest says
+ * `'bottom-anchor'` on ten atlases, which is a sorting *mode*. Both halves of that
+ * were invisible because the one pack reading a manifest reached it through
+ * `json as EnvironmentManifest`. A document may carry more than this; the extra
+ * rides along in the record and nothing here pretends to know its type.
+ */
 export interface EnvironmentManifest {
-  readonly schemaVersion: string;
   readonly runtimeReady?: boolean;
   readonly atlases: readonly EnvironmentAtlasRecord[];
 }
@@ -54,6 +69,13 @@ export interface RuntimeEnvironmentCell {
 }
 
 export type EnvironmentUrlResolver = (relativePath: string) => string | undefined;
+
+/** A point or a size the manifest states, checked for being one. */
+function checkPair(value: readonly number[] | undefined, field: string, subject: string): void {
+  if (value && (value.length !== 2 || value.some((entry) => !Number.isFinite(entry)))) {
+    throw new Error(`Environment ${field} of ${subject} must be two finite numbers`);
+  }
+}
 
 /**
  * Runtime-facing, immutable view of an environment atlas package.
@@ -78,6 +100,8 @@ export class EnvironmentCatalog {
         throw new Error(`Environment atlas has invalid geometry: ${record.id}`);
       }
 
+      checkPair(record.anchor, 'anchor', record.id);
+
       const atlas: RuntimeEnvironmentAtlas = Object.freeze({
         ...record,
         url,
@@ -95,6 +119,8 @@ export class EnvironmentCatalog {
 
       for (const [declaredIndex, source] of (record.cells ?? []).entries()) {
         const cell = Object.freeze({ ...source, index: source.index ?? declaredIndex });
+        checkPair(cell.anchor, 'anchor', cell.id);
+        checkPair(cell.footprint, 'footprint', cell.id);
         if (this.cellsById.has(cell.id)) {
           throw new Error(`Duplicate environment cell id: ${cell.id}`);
         }

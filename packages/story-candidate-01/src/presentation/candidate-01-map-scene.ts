@@ -524,11 +524,12 @@ function sceneryPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
  */
 function ambientVillagerPieces(levelId: string): BoardPiece[] {
   if (levelId !== 'c01-01') return [];
-  return [
+  const farmers: CandidateEnvironmentPlacement[] = [
     { topicId: 'C01-MISSION-BORDER-FARMER', x: 13.8, y: 9.15, layer: 'under-units', scale: 0.88, opacity: 0.86 },
     { topicId: 'C01-MISSION-BORDER-FARMER', x: 15.4, y: 7.25, layer: 'under-units', scale: 0.82, flip: true, opacity: 0.82 },
-  ]
-    .map((placement) => topicPlacementPiece(placement as CandidateEnvironmentPlacement))
+  ];
+  return farmers
+    .map(topicPlacementPiece)
     .filter((piece): piece is BoardPiece => piece !== null);
 }
 

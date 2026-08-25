@@ -1,19 +1,35 @@
+import { fixedNumbers, oneOf } from './candidate-01-documents';
 import manifestJson from '../../assets/final-fantasy-v1/manifest-final-fantasy-v1.json';
 import tacticalHdManifestJson from '../../assets/final-fantasy-v1/manifest-tactical-runtime-hd.json';
 
-export type Candidate01AssetCategory =
-  | 'narrative-static'
-  | 'combat-unit'
-  | 'mission-unit'
-  | 'faction-kit'
-  | 'terrain'
-  | 'interactive-structure'
-  | 'battle-prop'
-  | 'equipment'
-  | 'skill'
-  | 'status'
-  | 'fx'
-  | 'hud';
+/*
+ * The closed sets this manifest is allowed to say, stated once as values.
+ *
+ * They used to be unions written in the type only, and the manifest was read with
+ * `as unknown as Candidate01AssetManifest` — which is the one way that assignment
+ * compiles, because a JSON import gives `category: string`. So the twelve names
+ * were checked against nothing: a generator that emitted `terrian` typechecked,
+ * and the asset simply never appeared. Derive the union from the list and the
+ * list is both the type and the check. See `candidate-01-documents.ts`.
+ */
+const ASSET_CATEGORIES = [
+  'narrative-static',
+  'combat-unit',
+  'mission-unit',
+  'faction-kit',
+  'terrain',
+  'interactive-structure',
+  'battle-prop',
+  'equipment',
+  'skill',
+  'status',
+  'fx',
+  'hud',
+] as const;
+const ASSET_KINDS = ['scene', 'character-card', 'key-prop'] as const;
+const TILE_MODES = ['variants', 'nesw-16'] as const;
+
+export type Candidate01AssetCategory = (typeof ASSET_CATEGORIES)[number];
 
 export interface Candidate01AssetRecord {
   assetId: string;
@@ -25,19 +41,19 @@ export interface Candidate01AssetRecord {
   height: number;
   runtimeReady: boolean;
   qualityTier: string;
-  kind?: 'scene' | 'character-card' | 'key-prop';
+  kind?: (typeof ASSET_KINDS)[number];
   frameWidth?: number;
   frameHeight?: number;
   frames?: number;
   frameOrder?: string[];
   stateOrder?: string[];
-  anchor?: [number, number];
-  footprint?: [number, number];
+  anchor?: readonly [number, number];
+  footprint?: readonly [number, number];
   tileWidth?: number;
   tileHeight?: number;
   variants?: number;
   connectionMasks?: number;
-  tileMode?: 'variants' | 'nesw-16';
+  tileMode?: (typeof TILE_MODES)[number];
   fps?: number;
   loop?: boolean;
   blendMode?: string;
@@ -62,7 +78,35 @@ export interface Candidate01RuntimeAsset extends Candidate01AssetRecord {
   url: string;
 }
 
-const manifest = manifestJson as unknown as Candidate01AssetManifest;
+/**
+ * The generated manifest, read rather than asserted.
+ *
+ * Everything the compiler *can* check against the JSON's own inferred type it
+ * does: a record that loses `width`, or gains a field the record type has no
+ * place for, is a build error. What it cannot check is what the assertion used to
+ * cover — three closed sets of names and two pairs of numbers — so those are
+ * checked here, once, at the edge where the document arrives.
+ */
+function assetRecord(raw: (typeof manifestJson)['assets'][number]): Candidate01AssetRecord {
+  // Taken out of the spread rather than overridden in it: `exactOptionalPropertyTypes`
+  // is what makes "absent" and "present as undefined" different answers here.
+  const { category, kind, tileMode, anchor, footprint, ...rest } = raw;
+  return {
+    ...rest,
+    category: oneOf(ASSET_CATEGORIES, category, 'category', raw.assetId),
+    ...(anchor === undefined ? {} : { anchor: fixedNumbers(2, anchor, 'anchor', raw.assetId) }),
+    ...(footprint === undefined ? {} : { footprint: fixedNumbers(2, footprint, 'footprint', raw.assetId) }),
+    ...(kind === undefined ? {} : { kind: oneOf(ASSET_KINDS, kind, 'kind', raw.assetId) }),
+    ...(tileMode === undefined
+      ? {}
+      : { tileMode: oneOf(TILE_MODES, tileMode, 'tileMode', raw.assetId) }),
+  };
+}
+
+const manifest: Candidate01AssetManifest = {
+  ...manifestJson,
+  assets: manifestJson.assets.map(assetRecord),
+};
 const runtimeFiles = import.meta.glob<string>(
   [
     '../../assets/final-fantasy-v1/runtime/**/*.png',
@@ -75,7 +119,8 @@ const tacticalHdFiles = import.meta.glob<string>(
   { eager: true, import: 'default', query: '?url' },
 );
 const packRoot = '../../assets/final-fantasy-v1/';
-const tacticalHdManifest = tacticalHdManifestJson as unknown as Candidate01TacticalHdManifest;
+// No assertion needed: the generated JSON already satisfies this shape.
+const tacticalHdManifest: Candidate01TacticalHdManifest = tacticalHdManifestJson;
 const tacticalHdTopics = new Map(
   tacticalHdManifest.assets.map((record) => [record.topicId, record.png] as const),
 );

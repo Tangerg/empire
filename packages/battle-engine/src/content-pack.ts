@@ -102,21 +102,41 @@ type DefinitionFamily = Exclude<keyof ContentCatalog, 'packVersions' | 'terrainE
 const definitionFamilies = (): DefinitionFamily[] =>
   Object.keys(DEFINITION_FAMILIES) as DefinitionFamily[];
 
+/**
+ * The twelve registries under their own names, each at its own definition type.
+ *
+ * `Record<DefinitionFamily, ContentRegistry<{ id: string }>>` was the same twelve
+ * keys with the element types erased, so assembling a catalog out of it needed
+ * `as unknown as ContentCatalog` — which asserted away the *shape* too. A field
+ * the catalog grew and this file forgot would then have compiled.
+ */
+type DefinitionRegistries = { [K in DefinitionFamily]: ContentCatalog[K] };
+
 /** The two families that are not id-keyed tables keep their own constructors. */
 function catalogOf(
-  registries: Record<DefinitionFamily, ContentRegistry<{ id: string }>>,
+  registries: DefinitionRegistries,
   packVersions: ContentRegistry<ContentPackVersion>,
   damageMatchups: DamageMatchupRegistry,
   terrainEncoding: TerrainEncodingRegistry,
 ): ContentCatalog {
-  return { ...registries, packVersions, damageMatchups, terrainEncoding } as unknown as ContentCatalog;
+  return { ...registries, packVersions, damageMatchups, terrainEncoding };
 }
 
+/**
+ * One builder run over every family.
+ *
+ * The single assertion left in this file, and the narrowest form of it: a builder
+ * that runs uniformly over twelve heterogeneous types can only be typed at their
+ * common shape, and `Object.fromEntries` does not carry keys. What it claims is
+ * the element types; the keys are `definitionFamilies()` and the catalog's own
+ * shape is checked by `catalogOf` above.
+ */
 function eachFamily(
   build: (family: DefinitionFamily) => ContentRegistry<{ id: string }>,
-): Record<DefinitionFamily, ContentRegistry<{ id: string }>> {
-  return Object.fromEntries(definitionFamilies().map((family) => [family, build(family)])) as
-    Record<DefinitionFamily, ContentRegistry<{ id: string }>>;
+): DefinitionRegistries {
+  return Object.fromEntries(
+    definitionFamilies().map((family) => [family, build(family)]),
+  ) as DefinitionRegistries;
 }
 
 const familyRegistry = (catalog: ContentCatalog, family: DefinitionFamily) =>
