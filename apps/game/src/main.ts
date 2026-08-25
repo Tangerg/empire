@@ -112,7 +112,7 @@ function levelCard(level: LevelData, { custom }: { custom: boolean }): string {
       <div class="level-foot">
         <button class="btn primary" data-act="play" data-arg="${escapeHtml(level.id)}">${icon('play')} 开始</button>
         <button class="btn ghost" data-act="edit" data-arg="${escapeHtml(level.id)}">${icon('grid')} 在编辑器打开</button>
-        ${custom ? `<button class="btn ghost danger" data-act="delete" data-arg="${escapeHtml(level.id)}">${icon('trash')}</button>` : ''}
+        ${custom ? `<button class="btn ghost danger" data-act="delete" data-arg="${escapeHtml(level.id)}" title="删除这张自制关卡">${icon('trash')}</button>` : ''}
       </div>
     </div>
   </div>`;

@@ -134,8 +134,8 @@ export class EditorPanels {
         <button class="btn ghost ${brush.size === 3 ? 'active' : ''}" data-act="brush" data-arg="3">3×3</button>
       </div>
       <div class="topbar-right">
-        <button class="btn ghost" data-act="undo" ${view.canUndo ? '' : 'disabled'}>${icon('undo')}</button>
-        <button class="btn ghost" data-act="redo" ${view.canRedo ? '' : 'disabled'}>${icon('play')}</button>
+        <button class="btn ghost" data-act="undo" title="撤销" ${view.canUndo ? '' : 'disabled'}>${icon('undo')}</button>
+        <button class="btn ghost" data-act="redo" title="重做" ${view.canRedo ? '' : 'disabled'}>${icon('redo')}</button>
         <button class="btn ghost" data-act="zoom" data-arg="-0.15">−</button>
         <button class="btn ghost" data-act="zoom" data-arg="0.15">+</button>
         <button class="btn" data-act="save">${icon('save')} 保存</button>
@@ -307,7 +307,7 @@ export class EditorPanels {
         <span class="dot"></span>
         <input data-field="p.name" data-id="${player.id}" value="${escapeHtml(player.name)}"/>
         <input type="color" data-field="p.color" data-id="${player.id}" value="${player.color}"/>
-        ${removable ? `<button class="btn ghost danger tiny" data-act="delPlayer" data-arg="${player.id}">${icon('trash')}</button>` : ''}
+        ${removable ? `<button class="btn ghost danger tiny" data-act="delPlayer" data-arg="${player.id}" title="删除该玩家">${icon('trash')}</button>` : ''}
       </div>
       <div class="row">
         <label class="tiny">阵营<input type="number" min="1" max="8" data-field="p.team" data-id="${player.id}" value="${player.team}"/></label>

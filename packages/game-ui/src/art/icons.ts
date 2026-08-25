@@ -10,6 +10,9 @@ const paths: Record<string, string> = {
   flag: 'M4 14V2M4 2.5h8l-2 3 2 3H4',
   hourglass: 'M4 1.5h8M4 14.5h8M5 1.5v3l3 3.5 3-3.5v-3M5 14.5v-3l3-3.5 3 3.5v3',
   undo: 'M3 8a5.5 5.5 0 1 1 5.5 5.5M3 8l3-3M3 8l3 3',
+  // The same arc mirrored: the editor's redo button wore `play` — a triangle,
+  // which reads as "start" — because this set had no other candidate.
+  redo: 'M13 8a5.5 5.5 0 1 0-5.5 5.5M13 8l-3-3M13 8l-3 3',
   boot: 'M5 2h3v7h3.5A2.5 2.5 0 0 1 14 11.5V14H5z',
   crosshair: 'M8 2v3M8 11v3M2 8h3M11 8h3M8 5.5A2.5 2.5 0 1 0 8 10.5 2.5 2.5 0 0 0 8 5.5z',
   skull: 'M8 1.5A5.5 5.5 0 0 0 2.5 7c0 2 1 3 1.5 3.5V14h8v-3.5C12.5 10 13.5 9 13.5 7A5.5 5.5 0 0 0 8 1.5zM6 7.5h.01M10 7.5h.01',

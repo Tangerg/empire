@@ -613,6 +613,36 @@ describe('the guards are held to themselves', () => {
    * below and counted: a new exemption list lands in one bucket or the other, and
    * neither can grow without this failing.
    */
+  it('runs every test it ships', () => {
+    /*
+     * `it.only` left in a file does not fail anything — it silently disables every
+     * *other* test in that file, and the run stays green with a smaller number
+     * nobody reads. `.skip` and `.todo` are the same hole with the sign flipped.
+     *
+     * Matched as a call, not as text: `'test.only'` is a legitimate intent id in
+     * `ai-intents.test.ts`, and a guard that cannot tell an id from a call would
+     * have to be turned off the first time content named something that way.
+     */
+    const files = ['packages', 'apps', 'tools'].flatMap((base) => {
+      const walk = (dir: string): string[] => readdirSync(dir, { withFileTypes: true })
+        .flatMap((entry) => {
+          if (['node_modules', 'dist', 'assets', '.git'].includes(entry.name)) return [];
+          const path = join(dir, entry.name);
+          return entry.isDirectory() ? walk(path) : (entry.name.endsWith('.test.ts') ? [path] : []);
+        });
+      return walk(join(packagesRoot, '..', base));
+    });
+    const offenders = files.flatMap((file) => {
+      const source = stripComments(readFileSync(file, 'utf8'));
+      return [...source.matchAll(/\b(?:it|test|describe)\.(only|skip|todo)\s*\(/g)]
+        .map(([, kind]) => `${relative(packagesRoot, file)} uses .${kind}`);
+    });
+
+    // A walk that found no test files would pass by having read nothing.
+    expect(files.length).toBeGreaterThan(40);
+    expect(offenders).toEqual([]);
+  });
+
   it('keeps every exemption in this file load-bearing', () => {
     const path = join(coreRoot, '__tests__', 'architecture-boundaries.test.ts');
     const blocks = readFileSync(path, 'utf8').split(/\n  it\(/).slice(1);
@@ -1832,6 +1862,35 @@ describe('behaviour has an owner', () => {
 });
 
 describe('a rendered control is answered', () => {
+  it('gives a control with no words a name anyway', () => {
+    /*
+     * A button whose whole content is an icon has nothing for a screen reader to
+     * read and nothing to hover, and this repository already knew that: the battle
+     * HUD titles every glyph button it draws. Four did not — the editor's undo,
+     * redo and delete-player, and the menu's delete-level — and the redo one was
+     * wearing `play`, a triangle that reads as "start", because the icon set had no
+     * other candidate.
+     *
+     * A label is `title` or `aria-label`. Content counts as words when anything but
+     * an `icon(...)` hole survives: `${escapeHtml(player.name)}` is a name.
+     */
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
+      const source = stripComments(readFileSync(file, 'utf8'));
+      return [...source.matchAll(/<button([^>]*)>([\s\S]{0,120}?)<\/button>/g)]
+        .filter(([, attributes, content]) => {
+          if (/\b(?:title|aria-label)=/.test(attributes!)) return false;
+          const words = content!.replace(/\$\{icon\([^)]*\)\}/g, '').replace(/\$\{[^}]*\}/g, 'WORDS');
+          return words.replace(/\s|&\w+;/g, '') === '';
+        })
+        .map(([, attributes]) => {
+          const act = /data-(?:act|campaign-act)="([\w-]+)"/.exec(attributes!);
+          return `${relative(packagesRoot, file)}: ${act ? act[1] : attributes!.trim().slice(0, 40)}`;
+        });
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('answers every intent it declares itself', () => {
     // The HUD and the editor each have a runtime test for this: render, collect
     // every `data-act`, and require the controller to handle it. Both exist
