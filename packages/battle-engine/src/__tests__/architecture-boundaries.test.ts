@@ -2588,4 +2588,94 @@ describe('one answer per question', () => {
     expect(stripComments(readFileSync(owner, 'utf8'))).toContain('instanceof Error');
     expect(offenders).toEqual([]);
   });
+
+  it('declares no stylesheet variable that nothing reads', () => {
+    // The other direction of "emits no class that nothing reads". Four custom
+    // properties were declared and read nowhere — three of them the first three
+    // lines of `.campaign-root`, where a reader would take them for the campaign's
+    // palette. A dead colour in a stylesheet looks exactly like a live one.
+    //
+    // `var(--x)` is the only way to read one from CSS, and a `style="--x:…"`
+    // attribute is the only way from a template, so this needs no exemptions.
+    const styleRoots = [
+      join(packagesRoot, 'game-ui', 'src', 'styles'),
+      join(packagesRoot, 'editor', 'src', 'styles'),
+      join(packagesRoot, 'story-candidate-01', 'src', 'styles'),
+    ];
+    const stylesheets = styleRoots.flatMap((root) =>
+      readdirSync(root).filter((entry) => entry.endsWith('.css')).map((entry) => join(root, entry)));
+    const css = stylesheets
+      .map((file) => readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, ''))
+      .join('\n');
+    const templates = [...everyPackageSource(), ...appSources()]
+      .map((file) => readFileSync(file, 'utf8'))
+      .join('\n');
+
+    // Both halves found something, or one of them is looking in the wrong place.
+    const declared = [...new Set([...css.matchAll(/(--[\w-]+)\s*:/g)].map(([, name]) => name))];
+    const read = new Set([
+      ...[...css.matchAll(/var\((--[\w-]+)/g)].map(([, name]) => name),
+      ...[...templates.matchAll(/(--[\w-]+)\s*:/g)].map(([, name]) => name),
+    ]);
+    expect(declared.length).toBeGreaterThan(20);
+    expect(read.size).toBeGreaterThan(20);
+
+    expect(declared.filter((name) => !read.has(name))).toEqual([]);
+  });
+
+  it('selects nothing the code never emits', () => {
+    // The other direction again, for rules rather than variables. A stylesheet is
+    // the one place where deleting the code that used a thing leaves the thing
+    // behind and nothing complains: a dead rule reads exactly like a live one.
+    //
+    // Two class families reach the DOM through an interpolation rather than as a
+    // literal, and both are written over an enumeration — `hud-${region}` over
+    // `HUD_REGIONS` and `layer-${name}` over `BOARD_LAYERS`. So they are expanded
+    // from those lists rather than waved through by prefix: `.hud-ghost` is an
+    // offender, and a third interpolated family fails here until it is taught.
+    const styleRoots = ['game-ui', 'editor', 'story-candidate-01']
+      .map((pkg) => join(packagesRoot, pkg, 'src', 'styles'));
+    const css = styleRoots
+      .flatMap((root) => readdirSync(root).filter((entry) => entry.endsWith('.css'))
+        .map((entry) => readFileSync(join(root, entry), 'utf8')))
+      .join('\n')
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      // A background image's file name is not a class.
+      .replace(/url\([^)]*\)/g, 'url()');
+    const emitted = [...everyPackageSource(), ...appSources()]
+      .map((file) => readFileSync(file, 'utf8'))
+      .join('\n');
+
+    const uiRoot = join(packagesRoot, 'game-ui', 'src');
+    const listed = (file: string, declaration: RegExp, member: RegExp): string[] => {
+      const block = declaration.exec(readFileSync(file, 'utf8'));
+      if (!block) throw new Error(`no ${String(declaration)} in ${file}`);
+      return [...block[1].matchAll(member)].map(([, name]) => name);
+    };
+    const interpolated = [
+      ...listed(join(uiRoot, 'ui', 'hud.ts'), /const HUD_REGIONS = \{([\s\S]*?)\n\}/, /^ {2}(\w+):/gm)
+        .map((region) => `hud-${region}`),
+      ...listed(join(uiRoot, 'art', 'board-surface.ts'), /const BOARD_LAYERS = \[([\s\S]*?)\n\]/, /'(\w+)'/g)
+        .map((layer) => `layer-${layer}`),
+    ];
+    // Both enumerations parsed, or every one of their classes reads as dead.
+    expect(interpolated.length).toBeGreaterThan(12);
+
+    const classes = [...new Set([...css.matchAll(/\.(-?[A-Za-z_][\w-]*)/g)].map(([, name]) => name))];
+    const offenders = classes
+      .filter((name) => !emitted.includes(name))
+      .filter((name) => !interpolated.includes(name));
+
+    // A data attribute has a second legitimate spelling: the DOM's camel case.
+    const camel = (attribute: string) =>
+      `dataset.${attribute.slice(5).replace(/-([a-z])/g, (_, letter: string) => letter.toUpperCase())}`;
+    for (const [, attribute] of css.matchAll(/\[(data-[\w-]+)/g)) {
+      if (!emitted.includes(attribute) && !emitted.includes(camel(attribute))) {
+        offenders.push(attribute);
+      }
+    }
+
+    expect(classes.length).toBeGreaterThan(200);
+    expect(offenders).toEqual([]);
+  });
 });
