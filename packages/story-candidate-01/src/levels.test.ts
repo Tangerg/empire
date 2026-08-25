@@ -15,12 +15,14 @@ describe('candidate-01 first three chapters', () => {
   it('ships sixteen ordered, structurally valid battles', () => {
     expect(CANDIDATE_01_LEVELS).toHaveLength(16);
     expect(new Set(CANDIDATE_01_LEVELS.map((level) => level.id)).size).toBe(16);
-    const errors = CANDIDATE_01_LEVELS.flatMap((level) =>
-      validateLevel(TEST_RULES, level)
-        .filter((issue) => issue.severity === 'error')
-        .map((issue) => `${level.id}: ${issue.message}`),
+    // Warnings too, not only errors. A shipped level that carries one is carrying a
+    // design intention nobody wired up: three of these declared a tactical zone no
+    // rule in the battle ever read, which is how `north-hill` — the hill the story
+    // tells the player to rush — came to mean nothing.
+    const findings = CANDIDATE_01_LEVELS.flatMap((level) =>
+      validateLevel(TEST_RULES, level).map((issue) => `${level.id}: ${issue.severity} ${issue.message}`),
     );
-    expect(errors).toEqual([]);
+    expect(findings).toEqual([]);
     for (const level of CANDIDATE_01_LEVELS) expect(() => new GameSession(level, TEST_ENGINE)).not.toThrow();
   });
 

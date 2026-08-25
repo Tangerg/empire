@@ -45,6 +45,23 @@ export class LevelInspection {
   readonly declarations: LevelDeclarations;
   /** Null when the terrain itself is unreadable; placement checks then abstain. */
   readonly map: GameMap | null;
+  /**
+   * Every zone this level actually names, gathered as the checks walk it.
+   *
+   * The other direction was already checked — a zone cited but not declared is an
+   * error — and this is the half that was missing. Two shipped levels declared a
+   * zone nothing read: `c01-05:west-road`, whose four cells are where a
+   * reinforcement arrives, written a second time as literal coordinates in the
+   * trigger; and `c01-01:north-hill`, the hill the story tells the player to rush,
+   * which the battle had no rule about at all.
+   *
+   * Every path that names a zone has to add it here, and there are five: a
+   * payload's references, a unit's directive, a deployment assignment, an
+   * engagement rule and a terrain overlay. Missing one is a false accusation — the
+   * first version of this check missed engagement rules and reported `middle-bridge`,
+   * which is the zone c01-02's bridge truce is *about*.
+   */
+  readonly citedZones = new Set<string>();
 
   constructor(
     readonly rules: LevelValidationRules,
@@ -343,8 +360,25 @@ const checkZones: LevelCheck = (inspection) => {
     }
   }
   for (const unit of level.units) {
-    if (unit.directive?.zone && !declarations.zones.has(unit.directive.zone)) {
+    if (!unit.directive?.zone) continue;
+    inspection.citedZones.add(unit.directive.zone);
+    if (!declarations.zones.has(unit.directive.zone)) {
       inspection.error(`单位 ${unit.key ?? unit.unit} 的战术指令引用了未知区域 ${unit.directive.zone}`);
+    }
+  }
+};
+
+/**
+ * A zone nobody reads.
+ *
+ * Runs last, because it is the sum of what every other check cited. A warning
+ * rather than an error: a level that ships one is not broken, it is carrying a
+ * design intention it never wired up — which is exactly the thing that rots.
+ */
+const checkZonesUsed: LevelCheck = (inspection) => {
+  for (const zone of inspection.level.scenario?.zones ?? []) {
+    if (!inspection.citedZones.has(zone.id)) {
+      inspection.warn(`区域 ${zone.id} 声明了但没有任何规则引用`);
     }
   }
 };
@@ -352,6 +386,7 @@ const checkZones: LevelCheck = (inspection) => {
 const checkEngagementRules: LevelCheck = (inspection) => {
   const { declarations } = inspection;
   for (const rule of inspection.level.scenario?.engagementRules ?? []) {
+    inspection.citedZones.add(rule.zone);
     if (!declarations.zones.has(rule.zone)) {
       inspection.error(`交战规则 ${rule.id} 引用了未知区域 ${rule.zone}`);
     }
@@ -378,6 +413,7 @@ const checkDeployment: LevelCheck = (inspection) => {
 
   const assigned = new Set<string>();
   for (const assignment of deployment.zones) {
+    inspection.citedZones.add(assignment.zone);
     if (!declarations.players.has(assignment.player)) {
       inspection.error(`部署区域引用了未知玩家 ${assignment.player}`);
     }
@@ -410,6 +446,7 @@ const checkOverlays: LevelCheck = (inspection) => {
   const { content, declarations } = inspection;
   for (const overlay of inspection.level.scenario?.overlays ?? []) {
     if (!content.terrainOverlays.has(overlay.type)) inspection.error(`未知地形覆盖 "${overlay.type}"`);
+    inspection.citedZones.add(overlay.zone);
     if (!declarations.zones.has(overlay.zone)) {
       inspection.error(`地形覆盖 ${overlay.id} 引用了未知区域 ${overlay.zone}`);
     }
@@ -439,7 +476,10 @@ function checkReferences(inspection: LevelInspection, by: string, cited: Payload
   const unknown = (subject: string, name: string | number): void =>
     inspection.error(`${by} 引用了未知${subject} ${name}`);
 
-  for (const id of cited.zones) if (!declarations.zones.has(id)) unknown('区域', id);
+  for (const id of cited.zones) {
+    inspection.citedZones.add(id);
+    if (!declarations.zones.has(id)) unknown('区域', id);
+  }
   for (const id of cited.players) if (!declarations.players.has(id)) unknown('玩家', id);
   for (const id of cited.structures) if (!declarations.structures.has(id)) unknown('结构', id);
   for (const id of cited.composites) if (!declarations.composites.has(id)) unknown('复合目标', id);
@@ -562,6 +602,8 @@ const LEVEL_CHECKS: readonly LevelCheck[] = [
   checkTileOwners,
   checkOpeningPosition,
   checkVictoryConditions,
+  // Last: it reads what every check above cited.
+  checkZonesUsed,
 ];
 
 /**

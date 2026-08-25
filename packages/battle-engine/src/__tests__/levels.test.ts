@@ -21,10 +21,12 @@ describe('built-in levels', () => {
 
   for (const { file, level } of levels) {
     describe(file, () => {
-      it('passes validation with no errors', () => {
+      it('passes validation with nothing to report at all', () => {
+        // Warnings included: a warning is a level carrying an intention nobody
+        // wired up, and unread warnings are how three shipped levels came to
+        // declare a tactical zone no rule ever looked at.
         const issues = testValidate(level);
-        const errors = issues.filter((i) => i.severity === 'error');
-        expect(errors, errors.map((e) => e.message).join('\n')).toEqual([]);
+        expect(issues, issues.map((issue) => `${issue.severity}: ${issue.message}`).join('\n')).toEqual([]);
       });
 
       it('has rows matching the declared size', () => {

@@ -424,13 +424,9 @@ const BATTLES: readonly BattleSpec[] = [
     objective: protectLaiya(route('击退维尔萨前锋'), '莱娅存活并击退维尔萨前锋'),
     owners: [{ x: 1, y: 3, owner: 1 }, { x: 25, y: 11, owner: 2 }, { x: 12, y: 8, owner: 0 }, { x: 14, y: 8, owner: 0 }],
     scenario: {
-      zones: [zone(
-        'north-hill',
-        { x: 7, y: 2 }, { x: 8, y: 2 }, { x: 9, y: 2 }, { x: 10, y: 2 },
-        { x: 7, y: 3 }, { x: 8, y: 3 }, { x: 9, y: 3 }, { x: 10, y: 3 },
-        { x: 7, y: 4 }, { x: 8, y: 4 }, { x: 9, y: 4 }, { x: 10, y: 4 },
-        { x: 7, y: 5 }, { x: 8, y: 5 }, { x: 9, y: 5 }, { x: 10, y: 5 },
-      )],
+      // The north hill the story tells the player to rush is high ground and a
+      // marked area in the scene document; it was *also* a tactical zone here, and
+      // no rule in this battle ever read it. A place is terrain, not a note.
       triggers: [{
         id: 'matching-orders', timing: 'afterAction',
         condition: { type: 'eventCount', event: 'death', op: 'gte', value: 1 },
@@ -565,7 +561,8 @@ const BATTLES: readonly BattleSpec[] = [
     }, '拒绝焚村令并保护苇草村'),
     owners: [{ x: 1, y: 1, owner: 1 }, { x: 18, y: 2, owner: 2 }, { x: 8, y: 11, owner: 1 }, { x: 1, y: 13, owner: 1 }, { x: 19, y: 13, owner: 0 }],
     scenario: {
-      zones: [zone('west-road', { x: 0, y: 13 }, { x: 0, y: 14 }, { x: 1, y: 14 }, { x: 2, y: 14 })],
+      // The reinforcement's arrival is the coordinate in the spawn below. It was
+      // written twice — once there and once as a `west-road` zone nothing read.
       triggers: [{
         id: 'purifier-reinforcement', timing: 'turnStart', condition: { type: 'turnAtLeast', turn: 4 },
         effects: [
