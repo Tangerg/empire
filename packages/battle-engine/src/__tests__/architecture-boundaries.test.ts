@@ -410,7 +410,8 @@ describe('dependency injection invariants', () => {
     expect(offenders).toEqual([]);
     // The exemptions are only honest while each still holds a table.
     for (const [path, name] of owners) {
-      expect(readFileSync(join(packagesRoot, path), 'utf8'), path).toContain(name);
+      // Stripped, so the sentence above naming the table is not the table.
+      expect(stripComments(readFileSync(join(packagesRoot, path), 'utf8')), path).toContain(name);
     }
   });
 
