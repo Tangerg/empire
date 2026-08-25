@@ -279,6 +279,38 @@ export const CANDIDATE_FOREST_FLOOR: CandidateScenery = {
   jitter: 8,
 };
 
+/**
+ * What stands in the cells *around* a settlement.
+ *
+ * A keep or a barracks has a painted building on its own cell, and the scenery
+ * layer is drawn over the terrain layer — so a prop placed there would stand in
+ * front of the thing it is meant to be the life of. It goes in the open ground
+ * beside it, which is also where a village keeps its stacks, its fences and its
+ * firewood.
+ */
+export const CANDIDATE_SETTLEMENT_LIFE: CandidateScenery = {
+  ids: [
+    'wheat-sheaves',
+    'wheat-bundles',
+    'grain-sacks-baskets',
+    'farm-fence-straight',
+    'farm-fence-corner',
+    'farm-handcart-tools',
+    'stone-well',
+    'livestock-pen-small',
+    'firewood-stack',
+    'field-tent-cluster',
+    'supply-tent-workyard',
+    'abandoned-cart-stop',
+  ],
+  scale: 0.3,
+  chance: 0.42,
+  jitter: 7,
+};
+
+/** The tags that make a cell a settlement, so its neighbours get dressed. */
+export const CANDIDATE_SETTLEMENT_TAGS = ['building', 'outpost'] as const;
+
 /** The conifers that stand outside the field, framing it. */
 export const CANDIDATE_FRAME_TREES = [
   'pine-tall',

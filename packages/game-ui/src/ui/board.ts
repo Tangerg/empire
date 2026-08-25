@@ -10,6 +10,7 @@ import {
 } from '@empire/battle-engine';
 import { tileGaugeBar } from '../art/gauges';
 import { PAL } from '../art/palette';
+import { UNIT_FOOTING } from '../art/shading';
 import { decorationsFor, type BattlePresentation } from '../art/battle-presentation';
 import { markerFromRules, structureFromRules } from '../art/field-objects-from-rules';
 import type { ArtDirection } from '../art/direction';
@@ -209,22 +210,35 @@ export class BoardView {
   }
 
   /**
-   * Which way a unit is looking, as one arrow turned to point at the cell it
-   * would step into.
+   * Which way a unit is looking, as a pip on the ground it stands on.
    *
-   * This used to be a four-entry table of glyphs — `north: '↑'` — which is the
-   * square board's facing set written into the sprite badge: on a hex or
-   * eight-way board every unit wore an empty badge. The tiling knows where its
-   * neighbour sits, and that is the whole answer.
+   * It was a glyph in a dark disc over the unit's shoulder — 30% of a cell wide,
+   * pure white on near-black, one per unit. Ten of those are the loudest thing on
+   * a painted field, and none of them is the game: they are the label on it.
+   *
+   * On the footing it reads as a mark somebody scuffed in the dirt, and it stays
+   * exactly as informative. The tiling says where the next cell is, which is the
+   * whole answer — this used to be a four-entry table of glyphs (`north: '↑'`),
+   * the square board's facing set written into the badge, so on a hex or
+   * eight-way board every unit wore an empty disc.
    */
   private facingBadge(unit: Unit): string {
     const grid = this.viewport.grid;
-    const dot = `<circle cx="5" cy="6" r="4.8" fill="${PAL.ink}" opacity="0.78"/>`;
-    if (!grid.directions.some((facing) => facing.id === unit.facing)) return dot;
+    const { cx, cy, rx, ry } = UNIT_FOOTING;
+    // A facing this tiling has no step for cannot be pointed at. Saying so beats
+    // pointing somewhere: the level named a direction from another board's set.
+    if (!grid.directions.some((facing) => facing.id === unit.facing)) {
+      return `<circle cx="${cx}" cy="${cy}" r="1.5" fill="${PAL.ink}" opacity="0.8"/>`;
+    }
     const from = cellCenter(this.viewport, unit);
     const to = cellCenter(this.viewport, grid.step(unit, unit.facing));
-    const turn = Math.atan2(to.y - from.y, to.x - from.x) * 180 / Math.PI + 90;
-    return `${dot}<text x="5" y="8.8" text-anchor="middle" font-size="7.5" fill="#fff" transform="rotate(${turn.toFixed(1)} 5 6)">↑</text>`;
+    const angle = Math.atan2(to.y - from.y, to.x - from.x);
+    const px = cx + Math.cos(angle) * rx;
+    const py = cy + Math.sin(angle) * ry;
+    const turn = (angle * 180 / Math.PI).toFixed(1);
+    return `<g transform="translate(${px.toFixed(2)} ${py.toFixed(2)}) rotate(${turn})">`
+      + `<path d="M2.6 0 -2.2 -2.4 -2.2 2.4z" fill="#f6efdd" stroke="${PAL.ink}"`
+      + ` stroke-width="0.7" stroke-linejoin="round" opacity="0.88"/></g>`;
   }
 
   /** Top-left of a cell, for a group that draws a tile-sized picture. */

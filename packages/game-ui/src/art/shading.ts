@@ -26,6 +26,16 @@ const WEIGHT_ALPHA: Readonly<Record<ShadowWeight, number>> = {
   heavy: 0.3,
 };
 
+/**
+ * Where a unit's feet are inside its cell, and how wide its stance reads.
+ *
+ * One fact with two readers: the team ring a raster unit stands in, and the pip
+ * that says which way it is looking. Both are marks on the ground at a figure's
+ * feet, and both used to carry their own copy of these four numbers — which is
+ * how the pip ends up floating beside the ring the first time either moves.
+ */
+export const UNIT_FOOTING = { cx: 16, cy: 29.5, rx: 11, ry: 2.25 } as const;
+
 export function groundShadow(
   at: { cx: number; cy: number },
   size: { rx: number; ry: number },

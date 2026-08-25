@@ -2895,6 +2895,27 @@ describe('one answer per question', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('writes where a unit stands in its cell exactly once', () => {
+    // Two marks are drawn at a figure's feet: the ring in its side's colour, and
+    // the pip that says which way it is looking. Both are ellipse geometry in cell
+    // coordinates, they have to agree, and each one used to carry its own copy of
+    // the numbers — which is how a pip ends up floating beside the ring the first
+    // time either is adjusted. `UNIT_FOOTING` is the fact; these are its readers.
+    const owner = join(packagesRoot, 'game-ui', 'src', 'art', 'shading.ts');
+    const offenders = [...everyPackageSource(), ...appSources()].flatMap((file) => {
+      if (file === owner) return [];
+      // Comments only. This markup lives *inside* template literals, so blanking
+      // string text — which is right for nearly every other guard here — leaves
+      // nothing for this one to match and makes it a regex that is always true.
+      // Planting `cy="29.5"` back into `board.ts` proved exactly that.
+      const code = stripComments(readFileSync(file, 'utf8'));
+      return /cy="29\.5"|rx="11"\s+ry="2\.25"/.test(code) ? [relative(packagesRoot, file)] : [];
+    });
+
+    expect(readFileSync(owner, 'utf8')).toContain('UNIT_FOOTING = { cx: 16, cy: 29.5');
+    expect(offenders).toEqual([]);
+  });
+
   it('gives a board layer no appearance the port has not named', () => {
     // A stylesheet rule on a board layer is the DOM backend's implementation of
     // something, or it is an appearance the GPU backend cannot know about. Two of

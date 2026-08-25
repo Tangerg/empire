@@ -21,6 +21,8 @@ import {
   CANDIDATE_FOREST_FLOOR,
   CANDIDATE_FOUNDATIONS,
   CANDIDATE_FRAME_TREES,
+  CANDIDATE_SETTLEMENT_LIFE,
+  CANDIDATE_SETTLEMENT_TAGS,
   CANDIDATE_SURFACE_FIT,
   candidateMaterial,
   type CandidateConnected,
@@ -327,6 +329,16 @@ function authoredPlacementPieces(
     .filter((piece): piece is BoardPiece => piece !== null);
 }
 
+/** Does open ground here sit next to somewhere people live? */
+function neighboursSettlement(content: ContentCatalog, map: GameMap, x: number, y: number): boolean {
+  return ORTHOGONAL.some(([dx, dy]) => {
+    const id = tileAt(map, x + dx, y + dy);
+    if (id === null) return false;
+    const tags = content.terrains.get(id).tags;
+    return CANDIDATE_SETTLEMENT_TAGS.some((tag) => tags.includes(tag));
+  });
+}
+
 /**
  * What stands on a cell: a tree, a rock, a wall, a haystack, a bridge deck.
  *
@@ -369,7 +381,12 @@ function sceneryPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
       // sides is what "inside" means.
       const enclosed = material.blend !== undefined
         && ORTHOGONAL.every(([dx, dy]) => field(x + dx, y + dy)?.blend === material.blend);
-      const scenery = enclosed ? CANDIDATE_FOREST_FLOOR : material.scenery;
+      const scenery = enclosed
+        ? CANDIDATE_FOREST_FLOOR
+        // Open ground next to a settlement is where its life is kept, and where
+        // its life can be drawn: the scenery layer is over the terrain layer, so a
+        // prop on the building's own cell would stand in front of the building.
+        : material.scenery ?? (neighboursSettlement(content, map, x, y) ? CANDIDATE_SETTLEMENT_LIFE : undefined);
       if (!scenery) continue;
       if (scenery.chance !== undefined && tileHash(x, y, 1119) > scenery.chance) continue;
 

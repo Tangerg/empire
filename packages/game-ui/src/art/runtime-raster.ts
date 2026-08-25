@@ -1,5 +1,6 @@
 import type { BoardPicture } from './board-surface';
 import { escapeAttr as attr } from './svg';
+import { UNIT_FOOTING } from './shading';
 
 const BOARD_TILE = 32;
 
@@ -78,8 +79,8 @@ export function runtimeUnitPicture(sheet: RuntimeUnitSheet, team: string): Board
   const color = attr(team);
   return {
     body: `<g data-runtime-raster="unit">
-    <ellipse class="runtime-unit-contact-shadow" cx="16" cy="29.2" rx="12.5" ry="4.2" fill="#0b100d" opacity="0.48"/>
-    <ellipse class="runtime-unit-team-ring" cx="16" cy="29.5" rx="11" ry="2.25" fill="none" stroke="${color}" stroke-width="1.8" opacity="1"/>
+    <ellipse class="runtime-unit-contact-shadow" cx="${UNIT_FOOTING.cx}" cy="29.2" rx="12.5" ry="4.2" fill="#0b100d" opacity="0.48"/>
+    <ellipse class="runtime-unit-team-ring" cx="${UNIT_FOOTING.cx}" cy="${UNIT_FOOTING.cy}" rx="${UNIT_FOOTING.rx}" ry="${UNIT_FOOTING.ry}" fill="none" stroke="${color}" stroke-width="1.8" opacity="1"/>
   </g>`,
     strip: {
       href: sheet.href,
