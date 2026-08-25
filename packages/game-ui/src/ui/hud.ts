@@ -99,8 +99,8 @@ export interface HudView {
   canUndo: boolean;
   messages: string[];
   /** Application-owned labels keep campaign/navigation wording out of battle rules. */
-  exitLabel?: string;
-  completionLabel?: string;
+  exitLabel?: string | undefined;
+  completionLabel?: string | undefined;
 }
 
 export interface HudHandlers {

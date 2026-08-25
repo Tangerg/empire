@@ -14,9 +14,9 @@ export interface TileContext {
   x: number;
   y: number;
   /** Presentation theme; ignored by mechanics and generic painters. */
-  theme?: string;
+  theme?: string | undefined;
   /** Owner colour for buildings; undefined = neutral. */
-  ownerColor?: string;
+  ownerColor?: string | undefined;
   /** Same-terrain neighbours, used to knit roads and water together. */
   linked: { n: boolean; e: boolean; s: boolean; w: boolean };
 }

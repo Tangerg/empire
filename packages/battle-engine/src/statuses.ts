@@ -110,7 +110,7 @@ export interface AppliedStatus {
   readonly id: StatusId;
   readonly remaining: number;
   /** The unit that caused it, when something did. */
-  readonly sourceUnitId?: number;
+  readonly sourceUnitId?: number | undefined;
 }
 
 export function addStatus(

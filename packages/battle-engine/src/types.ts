@@ -194,7 +194,7 @@ export interface UnitDef {
     resilience: number;
   };
   /** Optional carrier capability; transported units retain full identity. */
-  transport?: {
+  transport?: undefined | {
     capacity: number;
     allowedTags?: string[];
     forbiddenTags?: string[];
@@ -335,7 +335,7 @@ export interface StatusInstance {
   id: StatusId;
   remaining: number;
   stacks: number;
-  sourceUnitId?: number;
+  sourceUnitId?: number | undefined;
 }
 
 export interface StructureDef {
@@ -387,7 +387,7 @@ export interface TerrainOverlayState {
 
 export interface Unit {
   id: number;
-  key?: string;
+  key?: string | undefined;
   type: UnitTypeId;
   owner: PlayerId;
   x: number;
@@ -437,7 +437,7 @@ export type UnitDirectiveMode = string;
 /** Story-neutral tactical intent consumed by AI but serialised with the unit. */
 export interface UnitDirectiveState {
   mode: UnitDirectiveMode;
-  zone?: string;
+  zone?: string | undefined;
   waypoints: Coord[];
   cursor: number;
 }
@@ -575,25 +575,25 @@ export interface LevelTileOwner {
 
 export interface LevelUnit {
   /** Stable scenario reference, unlike the generated numeric runtime id. */
-  key?: string;
+  key?: string | undefined;
   x: number;
   y: number;
   unit: UnitTypeId;
   owner: PlayerId;
-  hp?: number;
+  hp?: number | undefined;
   commander?: CommanderId;
   rank?: UnitRank;
   rankProgress?: number;
   resources?: ResourceAccounts;
   reaction?: ReactionStance;
-  facing?: Direction;
-  career?: CareerId;
-  unlockedCareers?: CareerId[];
+  facing?: Direction | undefined;
+  career?: CareerId | undefined;
+  unlockedCareers?: CareerId[] | undefined;
   careerMastery?: Record<CareerId, number>;
-  learnedAbilities?: AbilityId[];
+  learnedAbilities?: AbilityId[] | undefined;
   morale?: number;
-  formation?: FormationId;
-  directive?: Partial<UnitDirectiveState> & Pick<UnitDirectiveState, 'mode'>;
+  formation?: FormationId | undefined;
+  directive?: Partial<UnitDirectiveState> & Pick<UnitDirectiveState, 'mode'> | undefined;
 }
 
 /** Explicitly impassable edge between two orthogonally adjacent cells. */
@@ -666,7 +666,7 @@ export interface TacticDef {
 export interface LevelStructure {
   id: StructureId;
   type: StructureTypeId;
-  owner?: PlayerId;
+  owner?: PlayerId | undefined;
   x: number;
   y: number;
   hp?: number;
@@ -700,7 +700,7 @@ export interface ZoneEngagementRule {
   id: string;
   zone: string;
   mode: 'no-attacks' | 'no-hostile-actions';
-  players?: PlayerId[];
+  players?: PlayerId[] | undefined;
 }
 
 export type ScenarioValue = number | string | boolean;
@@ -708,9 +708,9 @@ export type ScenarioValue = number | string | boolean;
 export interface UnitSelector {
   ids?: number[];
   keys?: string[];
-  owner?: PlayerId;
+  owner?: PlayerId | undefined;
   zone?: string;
-  anyTags?: string[];
+  anyTags?: string[] | undefined;
 }
 
 export interface MarkerSelector {
@@ -882,27 +882,27 @@ export interface LevelData {
   schema: 2;
   id: string;
   name: string;
-  author?: string;
+  author?: string | undefined;
   description?: string;
   width: number;
   height: number;
   terrain: string[];
   /** Flat row-major elevation values; omitted means a completely level map. */
-  elevation?: number[];
-  cliffs?: LevelCliffEdge[];
-  directionalCover?: LevelDirectionalCover[];
+  elevation?: number[] | undefined;
+  cliffs?: LevelCliffEdge[] | undefined;
+  directionalCover?: LevelDirectionalCover[] | undefined;
   owners: LevelTileOwner[];
   units: LevelUnit[];
   commanders?: LevelCommander[];
-  structures?: LevelStructure[];
-  composites?: LevelComposite[];
+  structures?: LevelStructure[] | undefined;
+  composites?: LevelComposite[] | undefined;
   players: PlayerConfig[];
   rules: Partial<RuleSet>;
   victory: Objective[];
-  scenario?: LevelScenario;
-  deployment?: LevelDeployment;
+  scenario?: LevelScenario | undefined;
+  deployment?: LevelDeployment | undefined;
   /** Opaque campaign/content metadata; the battle core does not interpret it. */
-  extra?: Record<string, unknown>;
+  extra?: Record<string, unknown> | undefined;
 }
 
 /* ------------------------------------------------------------------ state */
@@ -943,7 +943,7 @@ export interface BattlefieldMarker {
   at: Coord;
   owner: PlayerId;
   /** Corpse markers own the complete battle-local unit snapshot needed to revive it. */
-  fallenUnit?: Unit;
+  fallenUnit?: Unit | undefined;
 }
 
 export interface DeploymentAssignment {
@@ -1078,7 +1078,12 @@ export interface GameEventKindMap {
   tacticUsed: { type: 'tacticUsed'; commander: CommanderId; tactic: TacticId; target: Coord };
   reactionChanged: { type: 'reactionChanged'; unit: number; stance: ReactionStance };
   facingChanged: { type: 'facingChanged'; unit: number; from: Direction; to: Direction };
-  reactionTriggered: { type: 'reactionTriggered'; unit: number; stance: ReactionStance; protectedUnit?: number };
+  reactionTriggered: {
+    type: 'reactionTriggered';
+    unit: number;
+    stance: ReactionStance;
+    protectedUnit?: number | undefined;
+  };
   rankProgressChanged: { type: 'rankProgressChanged'; unit: number; amount: number; current: number };
   rankChanged: { type: 'rankChanged'; unit: number; from: UnitRank; to: UnitRank };
   careerProgressChanged: { type: 'careerProgressChanged'; unit: number; career: CareerId; amount: number; current: number };
@@ -1090,7 +1095,7 @@ export interface GameEventKindMap {
     type: 'attack';
     attacker: number;
     defender: number;
-    protectedUnit?: number;
+    protectedUnit?: number | undefined;
     weapon: WeaponId;
     damage: number;
     killed: boolean;
@@ -1099,7 +1104,7 @@ export interface GameEventKindMap {
     type: 'areaAttack';
     attacker: number;
     defender: number;
-    protectedUnit?: number;
+    protectedUnit?: number | undefined;
     weapon: WeaponId;
     damage: number;
     killed: boolean;
@@ -1121,7 +1126,13 @@ export interface GameEventKindMap {
   transportLost: { type: 'transportLost'; carrier: number; passengers: number[]; at: Coord };
   moraleChanged: { type: 'moraleChanged'; unit: number; amount: number; current: number; reason: string };
   unitRouted: { type: 'unitRouted'; unit: number; marker: number; at: Coord };
-  unitSurrendered: { type: 'unitSurrendered'; unit: number; marker: number; at: Coord; to?: PlayerId };
+  unitSurrendered: {
+    type: 'unitSurrendered';
+    unit: number;
+    marker: number;
+    at: Coord;
+    to?: PlayerId | undefined;
+  };
   formationChanged: { type: 'formationChanged'; unit: number; from: FormationId | null; to: FormationId | null };
   directiveChanged: { type: 'directiveChanged'; unit: number; mode: UnitDirectiveMode };
   death: { type: 'death'; unit: number; at: Coord };
@@ -1176,7 +1187,11 @@ export type GameEvent = GameEventKindMap[keyof GameEventKindMap];
  * `weaponChoices` and `selfTargeted`, and the dispatcher refuses an order that
  * disagrees with it.
  */
-export type UnitCommand = { ability: string; weapon?: WeaponId; target?: Coord };
+export type UnitCommand = {
+  ability: string;
+  weapon?: WeaponId | undefined;
+  target?: Coord | undefined;
+};
 
 /**
  * Open action family. Content packages may declaration-merge new entries and

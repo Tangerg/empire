@@ -21,9 +21,9 @@ import type { BattlefieldMarker, Coord, GameEvent, GameState, PlayerId, Unit } f
 export interface UnitReturn {
   readonly at: Coord;
   /** Whose side it rejoins; its own, if not given. */
-  readonly owner?: PlayerId;
+  readonly owner?: PlayerId | undefined;
   /** Hit points on return; the snapshot's own, if not given. */
-  readonly hp?: number;
+  readonly hp?: number | undefined;
 }
 
 /**

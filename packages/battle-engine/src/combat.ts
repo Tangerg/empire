@@ -128,19 +128,19 @@ export interface StructureCombatForecast {
 
 /** Where a strike happens. Absent coordinates default to the units' tiles. */
 export interface StrikeGeometry {
-  attackerAt?: Coord;
-  defenderAt?: Coord;
-  weapon?: WeaponId;
+  attackerAt?: Coord | undefined;
+  defenderAt?: Coord | undefined;
+  weapon?: WeaponId | undefined;
 }
 
 export interface ForecastOptions {
   /** Tile the attacker strikes from; defaults to its current tile. */
-  attackFrom?: Coord;
-  weapon?: WeaponId;
+  attackFrom?: Coord | undefined;
+  weapon?: WeaponId | undefined;
 }
 
 export interface StructureAttackOptions {
-  weapon?: WeaponId;
+  weapon?: WeaponId | undefined;
 }
 
 

@@ -34,7 +34,7 @@ export interface AbilityQuery {
   /** Did the unit actually change tiles this turn? */
   moved: boolean;
   /** Selected attack profile. Omitted for non-attack abilities. */
-  weaponId?: WeaponId;
+  weaponId?: WeaponId | undefined;
 }
 
 /**

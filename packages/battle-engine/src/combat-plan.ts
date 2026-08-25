@@ -45,7 +45,7 @@ export interface PlannedUnitHit {
   target: number;
   at: Coord;
   primary: boolean;
-  protectedUnit?: number;
+  protectedUnit?: number | undefined;
   damage: DamageBreakdown;
   hpBefore: number;
   hpAfter: number;
@@ -171,8 +171,8 @@ function hostileStructure(content: ContentCatalog, state: GameState, attacker: U
 /** Where the strike comes from and which profile is used. */
 export interface CombatPlanOptions {
   /** Tile the attacker fires from; defaults to its current tile. */
-  from?: Coord;
-  weapon?: WeaponId;
+  from?: Coord | undefined;
+  weapon?: WeaponId | undefined;
 }
 
 /**

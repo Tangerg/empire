@@ -77,9 +77,9 @@ export const testDamage = (
   state: GameState,
   attacker: Unit,
   defender: Unit,
-  defenderAt?: Coord,
-  weapon?: WeaponId,
-  attackerAt?: Coord,
+  defenderAt?: Coord | undefined,
+  weapon?: WeaponId | undefined,
+  attackerAt?: Coord | undefined,
 ) => computeDamage(TEST_RULES, state, attacker, defender, { defenderAt, weapon, attackerAt });
 
 export const testForecast = (

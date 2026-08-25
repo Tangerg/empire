@@ -167,7 +167,7 @@ function banner(flag: string): string {
  */
 export function terrainFromRules(
   terrain: TerrainDef,
-  cell: { x: number; y: number; ownerColor?: string },
+  cell: { x: number; y: number; ownerColor?: string | undefined },
 ): string {
   const reading = readTerrain(terrain);
   const tone = toneOf(terrain, reading);

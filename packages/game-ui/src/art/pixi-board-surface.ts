@@ -485,7 +485,7 @@ export class PixiBoardSurface implements BoardSurface {
  */
 async function preparePixiPainter(options: {
   /** Passed through to Pixi. Antialiasing off suits pixel art. */
-  readonly antialias?: boolean;
+  readonly antialias?: boolean | undefined;
 } = {}): Promise<ScenePainter> {
   const renderer = await autoDetectRenderer({
     antialias: options.antialias ?? false,
@@ -559,8 +559,8 @@ export const pixiBoardSurface = (
  * needs and disposes it once when the application session ends.
  */
 export async function preparePixiBoardSurface(options: {
-  readonly antialias?: boolean;
-  readonly textureResolution?: number;
+  readonly antialias?: boolean | undefined;
+  readonly textureResolution?: number | undefined;
 } = {}): Promise<ManagedBoardSurfaceFactory> {
   const painter = await preparePixiPainter({ antialias: options.antialias });
   return pixiBoardSurface(painter, new BrowserPictureTextures(options.textureResolution));

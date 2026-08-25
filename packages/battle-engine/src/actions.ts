@@ -31,7 +31,7 @@ export interface CommandOption {
   /** Stable identity in the command menu; unique even for multiple weapons. */
   key: string;
   ability: string;
-  weapon?: WeaponId;
+  weapon?: WeaponId | undefined;
   name: string;
   hint: string;
   selfTargeted: boolean;

@@ -74,7 +74,7 @@ export interface GameControllerOptions {
   /** Ruleset this battle runs on. Required: there is no ambient fallback. */
   engine: BattleEngine;
   /** How each battle event looks and reads; a content pack may replace entries. */
-  eventPresenters?: BattleEventPresenterRegistry;
+  eventPresenters?: BattleEventPresenterRegistry | undefined;
   exitLabel?: string;
   completionLabel?: string;
   /** Absent means this shell offers no save slot, and the entry stays hidden. */
@@ -90,7 +90,7 @@ export interface GameControllerOptions {
    * A default rather than a requirement, exactly like `art`: one shipped answer
    * that every shell wants, named at the one place that composes a battle.
    */
-  renderer?: BoardSurfaceFactory;
+  renderer?: BoardSurfaceFactory | undefined;
   onComplete?: (snapshot: BattleCompletionSnapshot) => void;
 }
 

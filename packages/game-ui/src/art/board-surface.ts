@@ -235,7 +235,7 @@ export const boardStripMarkup = (strip: BoardStrip, frame = 0): string =>
  */
 export interface BoardPicture {
   readonly body: string;
-  readonly strip?: BoardStrip;
+  readonly strip?: BoardStrip | undefined;
   readonly parts?: readonly BoardPart[];
 }
 
@@ -342,7 +342,7 @@ export interface BoardSurfaceScene {
   readonly originX: number;
   readonly originY: number;
   /** A theme's own name for this board, for whatever a backend does with it. */
-  readonly themeClass?: string;
+  readonly themeClass?: string | undefined;
   /** Crisp pixels suit a grid; painted scenes do not want them. */
   readonly shapeRendering: string;
   /** Art outside the tactical field, behind and in front of everything. */

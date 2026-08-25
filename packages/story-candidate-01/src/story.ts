@@ -15,7 +15,7 @@ export interface StoryPresentation {
   scene: string;
   summary: string;
   beats: StoryBeat[];
-  mission?: {
+  mission?: undefined | {
     objective: string;
     danger: string;
     lesson: string;

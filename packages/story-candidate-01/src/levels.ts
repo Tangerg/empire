@@ -36,9 +36,9 @@ interface BattleSpec {
     enemy: Coord[];
   };
   objective: Objective;
-  scenario?: LevelScenario;
-  structures?: LevelStructure[];
-  composites?: LevelData['composites'];
+  scenario?: LevelScenario | undefined;
+  structures?: LevelStructure[] | undefined;
+  composites?: LevelData['composites'] | undefined;
   owners?: LevelData['owners'];
   turnLimit?: number;
   aggression?: number;

@@ -55,7 +55,7 @@ export interface StoryPresentationView {
   location: string;
   summary: string;
   beats: readonly StoryBeatView[];
-  mission?: { objective: string; danger: string; lesson: string };
+  mission?: { objective: string; danger: string; lesson: string } | undefined;
 }
 
 export interface StoryChoiceView {

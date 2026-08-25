@@ -43,7 +43,7 @@ export interface RuntimeEnvironmentAtlas extends EnvironmentAtlasRecord {
   /** Logical-density source, useful to tools and asset diagnostics. */
   readonly url: string;
   /** Preferred presentation source when the package supplies one. */
-  readonly url2x?: string;
+  readonly url2x?: string | undefined;
   readonly pixelDensity: 1 | 2;
   readonly raster: RuntimeCellAtlas;
 }

@@ -64,7 +64,7 @@ export class ResourceAdapterRegistry extends KeyedRegistry<ResourceId, ResourceA
 
 /** What a caller has to hand when a transaction has to name its holder. */
 export interface ResourceTransactionContext {
-  player?: PlayerState;
+  player?: PlayerState | undefined;
   unit: Unit;
   weapon: WeaponId;
 }

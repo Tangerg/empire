@@ -34,14 +34,14 @@ export function makeLevel(
     commanders?: LevelCommander[];
     owners?: { x: number; y: number; owner: PlayerId }[];
     rules?: Partial<RuleSet>;
-    victory?: Objective[];
+    victory?: Objective[] | undefined;
     funds?: [number, number];
-    structures?: LevelStructure[];
-    composites?: LevelComposite[];
-    scenario?: LevelScenario;
-    deployment?: LevelDeployment;
-    elevation?: number[];
-    cliffs?: LevelCliffEdge[];
+    structures?: LevelStructure[] | undefined;
+    composites?: LevelComposite[] | undefined;
+    scenario?: LevelScenario | undefined;
+    deployment?: LevelDeployment | undefined;
+    elevation?: number[] | undefined;
+    cliffs?: LevelCliffEdge[] | undefined;
     directionalCover?: LevelDirectionalCover[];
   } = {},
 ): LevelData {

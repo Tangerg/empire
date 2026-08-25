@@ -11,17 +11,24 @@
     "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
     /*
-     * Off, and measured rather than assumed: turning it on reports 242 errors,
-     * almost all of them `{ x: T | undefined }` handed to `{ x?: T }`, and the
-     * fix at each site is either to widen the target to `T | undefined` — which
-     * lets an explicit `undefined` through and so *weakens* the "absent means no
-     * opinion" reading this repository relies on — or to spread the property
-     * conditionally at the call site. Nothing here distinguishes an absent key
-     * from a present undefined one, which is the case the flag exists for.
+     * On. It reports nothing now, and getting there was sixty errors — not the
+     * 242 I first counted, which was tsc's output *lines*: every error prints its
+     * explanation over three or four of them. Miscounting by four was the whole
+     * reason this looked like a migration instead of an afternoon.
      *
-     * `noUncheckedIndexedAccess` was measured the same way and reports 915.
+     * What it buys is real: a `{ ...source, x: maybe }` builder can no longer
+     * blank a field that was set, and this codebase is full of those. The forty
+     * fields that now say `?: T | undefined` are telling the truth — the code does
+     * write `undefined` into them, and the reading "absent means no opinion" is
+     * unharmed because nothing here distinguishes an absent key from a present
+     * undefined one.
+     *
+     * `noUncheckedIndexedAccess` stays off, and that is measured too: 915 errors,
+     * and the fix at nearly every site is either `!` — which a guard in this
+     * repository forbids outright — or a `??` fallback invented to satisfy the
+     * compiler at a place the code already knows is in range.
      */
-    "exactOptionalPropertyTypes": false,
+    "exactOptionalPropertyTypes": true,
     "isolatedModules": true,
     "skipLibCheck": true,
     "noEmit": true,

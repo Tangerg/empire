@@ -162,7 +162,7 @@ describe('a battle interrupted mid-play', () => {
     expect(() => battle.loadBattle(noTiles)).toThrow(/地图的「tiles」缺失或损坏/);
 
     const noSeed = throughDisk(good) as { state: GameState };
-    (noSeed.state.random as Partial<GameState['random']>).seed = undefined;
+    delete (noSeed.state.random as { seed?: number }).seed;
     expect(() => battle.loadBattle(noSeed)).toThrow(/随机流的「seed」缺失或损坏/);
 
     // A battle that never had a deployment is not a damaged one.

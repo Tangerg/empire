@@ -19,7 +19,7 @@ export interface ForcedMovementRequest {
   source: Coord;
   mode: ForcedMovementMode;
   distance: number;
-  collisionDamage?: number;
+  collisionDamage?: number | undefined;
 }
 
 export interface ForcedMovementResult {
