@@ -834,7 +834,11 @@ export class GameController {
       // Passengers belong to the carrier whether or not it may still act, but
       // only a commandable carrier can be told to put them down.
       passengerOptions: commandable ? this.session.passengerOptions(commandable) : [],
-      deployment: roster && { units: [...roster.units], selected: this.selection.unitId },
+      deployment: roster && {
+        units: [...roster.units],
+        selected: this.selection.unitId,
+        swaps: this.deploymentSwap(),
+      },
       targeting: this.selection.targetingLabel,
       recruitAt: this.selection.recruitAt,
       hint: this.hint(),
@@ -847,6 +851,23 @@ export class GameController {
       exitLabel: this.options.exitLabel,
       completionLabel: this.options.completionLabel,
     };
+  }
+
+  /**
+   * Whom placing the picked unit where the cursor is would send back.
+   *
+   * `DeploymentSpot.swaps` is the engine's answer and it reached nothing: the
+   * board paints every legal spot alike, so a placement that displaces a comrade
+   * looked exactly like one onto empty ground.
+   */
+  private deploymentSwap(): Unit | null {
+    const picked = this.selection.unitId;
+    const cursor = this.cursor;
+    if (picked === null || !cursor) return null;
+    const unit = this.session.unit(picked);
+    if (!unit) return null;
+    return this.session.deploymentSpots(unit)
+      .find((spot) => sameCoord(spot.at, cursor))?.swaps ?? null;
   }
 
   private hint(): string {

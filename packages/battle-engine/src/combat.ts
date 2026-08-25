@@ -109,17 +109,25 @@ export interface CombatForecast {
   attackerDies: boolean;
 }
 
+/*
+ * A forecast, not a worked solution.
+ *
+ * `DamageBreakdown` learned this already — see the modifier chain — and this type
+ * did not: it restated its own arithmetic in six more fields. Four of them
+ * (`strength`, `statusAttackMultiplier`, `targetBonusReasons`, `structureDefense`)
+ * were read by nothing at all, in production or in a test, which is what a number
+ * recomputed for the record looks like after a while. The two multipliers that are
+ * left are each read by one test, as the observable that an aura or a target bonus
+ * reached a structure at all — the chain would say it better, and that is a real
+ * remaining asymmetry, recorded in `docs/combat-engine-architecture.md`.
+ */
 export interface StructureCombatForecast {
   attacker: number;
   structure: string;
   weapon: WeaponId;
   base: number;
-  strength: number;
-  statusAttackMultiplier: number;
   commanderAttackMultiplier: number;
   targetBonusMultiplier: number;
-  targetBonusReasons: string[];
-  structureDefense: number;
   rawDamage: number;
   damage: number;
   hpAfter: number;
@@ -305,12 +313,8 @@ export function forecastStructure(
     structure: structure.id,
     weapon: weapon.id,
     base: weapon.power,
-    strength,
-    statusAttackMultiplier,
     commanderAttackMultiplier,
     targetBonusMultiplier: targetBonus.multiplier,
-    targetBonusReasons: targetBonus.reasons,
-    structureDefense: def.defense,
     rawDamage,
     damage,
     hpAfter,

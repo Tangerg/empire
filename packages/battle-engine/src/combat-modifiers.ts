@@ -45,7 +45,6 @@ export interface CombatModifier {
   stage: ModifierStage;
   operation: ModifierOperation;
   value: number;
-  details?: Record<string, number | string | boolean>;
 }
 
 export interface UnitDamageContext {
@@ -94,9 +93,7 @@ export class CombatModifierProviderRegistry extends PriorityRegistry<CombatModif
 
 export interface ModifierPipelineResult {
   modifiers: CombatModifier[];
-  powerBeforeMitigation: number;
   mitigation: number;
-  finalMultiplier: number;
   damage: number;
 }
 
@@ -152,13 +149,7 @@ export class CombatModifierPipeline {
     mitigation = Math.max(0, Math.min(this.mitigationCap, mitigation));
     const resolved = power * (1 - mitigation) * finalMultiplier + finalOffset;
 
-    return {
-      modifiers,
-      powerBeforeMitigation: power,
-      mitigation,
-      finalMultiplier,
-      damage: Math.max(1, Math.round(resolved)),
-    };
+    return { modifiers, mitigation, damage: Math.max(1, Math.round(resolved)) };
   }
 }
 
@@ -191,7 +182,6 @@ const targetTagProvider: CombatModifierProvider = {
         stage: 'power' as const,
         operation: 'multiply' as const,
         value: bonus.multiplier,
-        details: { targetTag: bonus.targetTag },
       }));
   },
 };
@@ -237,7 +227,6 @@ const rankProvider: CombatModifierProvider = {
       stage: 'power',
       operation: 'multiply',
       value: 1 + attacker.rank * 0.04,
-      details: { rank: attacker.rank },
     },
   ],
 };
@@ -270,7 +259,6 @@ const formationProvider: CombatModifierProvider = {
       stage: 'power',
       operation: 'multiply',
       value: formation.attackMultiplier,
-      details: { formation: formation.id },
     }];
   },
 };
@@ -288,7 +276,6 @@ const elevationProvider: CombatModifierProvider = {
       stage: 'power',
       operation: 'multiply',
       value: state.rules.highGroundDamageMultiplier,
-      details: { delta },
     }];
   },
 };
@@ -345,7 +332,6 @@ const coverProvider: CombatModifierProvider = {
       stage: 'mitigation',
       operation: 'add',
       value,
-      details: { level, elevationDelta },
     }];
   },
 };
@@ -378,13 +364,6 @@ const defenseProvider: CombatModifierProvider = {
         stage: 'mitigation',
         operation: 'add',
         value: unit,
-        details: {
-          base: definition.defense,
-          rankDelta: rankDefense,
-          statusDelta: status.defenseDelta,
-          commanderDelta: command.defenseDelta,
-          formationDelta: formationDefense,
-        },
       },
     ];
   },

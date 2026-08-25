@@ -303,6 +303,69 @@ describe('dependency injection invariants', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('computes no answer nobody asks for', () => {
+    /*
+     * The other half of the port rule. A port must not declare a field its module
+     * never reads; a *result* must not carry one nobody reads at all.
+     *
+     * Ten of them existed. `StructureCombatForecast` restated its own arithmetic
+     * in `strength`, `statusAttackMultiplier`, `targetBonusReasons` and
+     * `structureDefense` — the exact disease `DamageBreakdown` was cured of by the
+     * modifier chain, in the same file, left standing. `CombatModifier.details`
+     * carried a `Record` of each modifier's inputs to six write sites and no
+     * reader. And three were worse than dead: `CareerOption.mastered`,
+     * `DeploymentSpot.swaps` and `BattlefieldAudit.initialDensity` are answers the
+     * rules worked out that no interface could reach — a mastered branch, a
+     * placement that displaces a comrade, and how crowded a level is.
+     *
+     * So a field here has to be read *somewhere* — production or test, `x.field`
+     * or destructured. Writing it does not count, which is the whole point: a
+     * number computed into a record and never looked at is a comment that costs
+     * arithmetic.
+     */
+    // Tests count as readers: `BattlefieldAudit` exists to be asserted about, and
+    // a level review nobody runs in production is still a reader of every metric.
+    const haystack = [
+      ...readdirSync(packagesRoot, { withFileTypes: true })
+        .filter((entry) => entry.isDirectory())
+        .flatMap((entry) => {
+          const sources = join(packagesRoot, entry.name, 'src');
+          return statSync(sources, { throwIfNoEntry: false })?.isDirectory()
+            ? allTypeScriptFiles(sources)
+            : [];
+        }),
+      ...appSources(),
+      ...toolSources(),
+      // Comments stripped, or the paragraph above naming `CareerOption.mastered`
+      // would be a reader of it — which is exactly how the first sabotage of this
+      // guard passed while the field reached no interface at all.
+    ].map((file) => stripComments(readFileSync(file, 'utf8')));
+    const offenders = everyPackageSource().flatMap((file) => {
+      const path = relative(packagesRoot, file);
+      const source = stripComments(readFileSync(file, 'utf8'));
+      return exportedInterfaces(source)
+        .filter(({ name }) => /(?:Result|Forecast|Status|Option|Spot|Audit)$/.test(name))
+        .flatMap(({ name, body, whole }) => {
+          // Everything but the declaration itself, so a field cannot vouch for
+          // itself — and so its own module's reads still count.
+          const elsewhere = haystack.map((text) => text.replace(whole, ''));
+          return [...body.matchAll(/^ {2}(?:readonly )?(\w+)\s*[?:]/gm)]
+            .map((member) => member[1]!)
+            .filter((field) => {
+              const read = new RegExp(
+                // `x.field`, or `const { field }` / `({ field })` — not `{ field: value }`,
+                // which is a write and is what made these look alive.
+                String.raw`\.${field}\b|(?:const|let|\()\s*\{[^}]*\b${field}\s*[,}]`,
+              );
+              return !elsewhere.some((text) => read.test(text));
+            })
+            .map((field) => `${path} ${name}.${field}`);
+        });
+    });
+
+    expect(offenders).toEqual([]);
+  });
+
   it('never defaults a dependency parameter to a global singleton', () => {
     const globals = [
       'TEST_CONTENT',

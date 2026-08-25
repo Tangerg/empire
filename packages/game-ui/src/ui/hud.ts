@@ -84,7 +84,12 @@ export interface HudView {
    * player is still picking a unit and clicking a cell, so the same region says
    * so with a different list, and the dock confirms instead of ending a turn.
    */
-  deployment: { units: Unit[]; selected: number | null } | null;
+  deployment: {
+    units: Unit[];
+    selected: number | null;
+    /** Whom placing the picked unit under the cursor would send back, if anyone. */
+    swaps: Unit | null;
+  } | null;
   /** Ability whose target we are picking, if any. */
   targeting: string | null;
   recruitAt: Coord | null;
@@ -196,6 +201,20 @@ const facingLabel = (view: HudView, facing: Direction): string => {
   const named = view.rules.grids.get(view.state.rules.grid).directions
     .find((direction) => direction.id === facing);
   return `${named?.name ?? facing}${FACING_ARROW[facing] ? ` ${FACING_ARROW[facing]}` : ''}`;
+};
+
+/**
+ * Where a unit stands with one career.
+ *
+ * `CareerOption.mastered` — mastery at or past that career's threshold, which
+ * brings its `masteryAbilities` back with it — was computed by the rules and read
+ * by nobody. The panel showed mastery of the career a unit is *in*, so a branch
+ * already mastered looked exactly like one never entered.
+ */
+const careerStanding = (option: CareerOption): string => {
+  if (option.mastered) return '已精通，转职后可用该职业的精通技能';
+  if (option.unlocked) return '已解锁，可自由切换';
+  return '满足进阶条件';
 };
 
 function modifierClass(modifier: CombatModifier): string {
@@ -526,12 +545,18 @@ export class Hud {
   private renderDeployment(view: HudView): string {
     const deployment = view.deployment;
     if (!deployment) return '';
+    // The swap is legal in both directions or it is not offered at all, so naming
+    // the comrade is the whole of what the board cannot already show.
+    const swap = deployment.swaps
+      ? `<p class="hint tiny">落在此格：与${escapeHtml(view.rules.content.units.get(deployment.swaps.type).name)}换位</p>`
+      : '';
     return `<section class="plaque is-live">
       <h3>战前部署</h3>
       <div class="cmd-list">${deployment.units.map((unit) => `<button
         class="btn ${unit.id === deployment.selected ? 'primary' : 'ghost'}"
         data-act="deploy-pick" data-arg="${unit.id}" ${view.busy ? 'disabled' : ''}
         >${escapeHtml(view.rules.content.units.get(unit.type).name)} <span class="sub">${unit.x},${unit.y}</span></button>`).join('')}</div>
+      ${swap}
     </section>`;
   }
 
@@ -816,8 +841,8 @@ export class Hud {
         <h4>职业树与转职</h4>
         <div class="cmd-list">${view.careerOptions.map((option) => `<button class="btn ${option.eligible ? 'ghost' : 'disabled'}" ${option.eligible ? '' : 'disabled'}
           ${option.eligible ? `data-act="career"` : ''} data-arg="${escapeHtml(option.career.id)}"
-          title="${escapeHtml(option.reasons.join('；') || (option.unlocked ? '已解锁，可自由切换' : '满足进阶条件'))}">
-          ${escapeHtml(option.career.name)} · T${option.career.tier}${option.unlocked ? ' · 已解锁' : ''}
+          title="${escapeHtml(option.reasons.join('；') || careerStanding(option))}">
+          ${escapeHtml(option.career.name)} · T${option.career.tier}${option.mastered ? ' · 精通' : option.unlocked ? ' · 已解锁' : ''}
         </button>`).join('')}</div>
       </div>`;
   }

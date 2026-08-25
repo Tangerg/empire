@@ -57,8 +57,6 @@ export interface EnvironmentManifest {
 export interface RuntimeEnvironmentAtlas extends EnvironmentAtlasRecord {
   /** Logical-density source, useful to tools and asset diagnostics. */
   readonly url: string;
-  /** Preferred presentation source when the package supplies one. */
-  readonly url2x?: string | undefined;
   readonly pixelDensity: 1 | 2;
   readonly raster: RuntimeCellAtlas;
 }
@@ -105,7 +103,6 @@ export class EnvironmentCatalog {
       const atlas: RuntimeEnvironmentAtlas = Object.freeze({
         ...record,
         url,
-        url2x,
         pixelDensity: url2x ? 2 : 1,
         raster: Object.freeze({
           href: rasterUrl,

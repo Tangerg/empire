@@ -7,7 +7,6 @@ import type { ContentCatalog } from './content-pack';
 import type { CompositeState, Coord, GameEvent, GameState } from './types';
 
 export interface CompositeStatus {
-  total: number;
   neutralized: number;
   state: 'intact' | 'damaged' | 'neutralized';
 }
@@ -25,7 +24,6 @@ export function compositeStatus(state: GameState, id: string): CompositeStatus {
     return !structure || structure.hp <= 0 || structure.disabled;
   }).length;
   return {
-    total: composite.parts.length,
     neutralized,
     state: neutralized >= composite.minimumNeutralized
       ? 'neutralized'

@@ -333,6 +333,10 @@ deploymentRefusal(rules, state, unit, at): string | null
 
 `DamageBreakdown` 把同一份解释写了两遍。修正链是有序、带标签、对任何插件注册的 provider 开放的那一份；除此之外还有九个字段——`effectiveness`、`strength`、`terrainDefense`、`unitDefense`、`statusAttackMultiplier`、`commanderAttackMultiplier`、`commanderDefenseDelta`、`targetBonus*`、`reactionMultiplier`——每一个都是**在每次攻击时用 id 字符串从那条链里再找回来的**。
 
+同一种病还在同一个文件里活着，这一轮才清掉：`StructureCombatForecast` 把自己的算式又抄了六个字段——`strength`、`statusAttackMultiplier`、`targetBonusReasons`、`structureDefense` 四个**在生产代码和测试里都没有任何读者**，删掉；剩下 `commanderAttackMultiplier` 与 `targetBonusMultiplier` 各有一个测试读它，当作「光环/克制确实作用到了建筑上」的观察点。
+
+这是一处真实的不对称，记在这里而不是假装它不存在：单位那条路径用的是**有序、带标签、对插件开放的修正链**，建筑这条路径还是一串裸乘法。让它也走 `CombatModifierPipeline` 是对的方向，但那会改数值、改事件流、改战役结局——是一次行为变更，不是一次清理，所以没有顺手做。
+
 第二份拷贝天然只能描述核心恰好知道名字的那些贡献：插件自己的修正在链里，却不在任何字段里。而生产代码里没有任何一处读它们——HUD 渲染的是链本身。
 
 现在它是一个类，预先算好的是**问题而不是答案**：`factorOf`、`familyFactor`、`familyLabels`，以及把一项新贡献折进来的 `and`——反击和援护攻击原本是靠展开对象再补两个字段做这件事的。

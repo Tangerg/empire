@@ -835,6 +835,72 @@ const formationLevel = () => normaliseLevel({
   victory: [{ type: 'routEnemies' }],
 });
 
+/**
+ * A soldier who has already mastered a career he is not currently in.
+ *
+ * `acolyte`'s threshold is 220 uses, so 300 is mastered. A level may author that
+ * directly through `careerMastery`, which is how a save resumed mid-campaign
+ * arrives too.
+ */
+const masteryLevel = () => normaliseLevel({
+  schema: 2,
+  id: 'mastery-test',
+  // Not '精通': the level's own name lands in the HUD and would vouch for the label.
+  name: '职业树',
+  width: 4,
+  height: 2,
+  terrain: ['....', '....'],
+  units: [
+    { x: 0, y: 0, unit: 'soldier', owner: 1, careerMastery: { acolyte: 300 } },
+    { x: 1, y: 0, unit: 'soldier', owner: 1 },
+    { x: 3, y: 1, unit: 'soldier', owner: 2 },
+  ],
+  players: [
+    { id: 1, name: 'P1', team: 1, color: '#3f7fd8', controller: 'human', resources: {} },
+    { id: 2, name: 'P2', team: 2, color: '#d8483f', controller: 'human', resources: {} },
+  ],
+  rules: {},
+  victory: [{ type: 'routEnemies' }],
+});
+
+describe('what a unit has already mastered', () => {
+  let host: HTMLElement;
+
+  beforeEach(() => {
+    vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) =>
+      setTimeout(() => cb(performance.now()), 0) as unknown as number,
+    );
+    document.body.innerHTML = '<div id="app"></div>';
+    host = document.getElementById('app')!;
+  });
+
+  /**
+   * `CareerOption.mastered` was computed by the rules and read by nobody.
+   *
+   * The panel shows mastery of the career a unit is *in* — `熟练度 0/120` — and
+   * said nothing about the branches on offer, so a career already mastered (and
+   * therefore carrying its `masteryAbilities` back with it) looked exactly like one
+   * never entered.
+   */
+  it('marks a branch it has mastered, and leaves the others alone', () => {
+    const c = new GameController(masteryLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board);
+    const careers = () => hudSays(c.root).replace(/\s+/g, ' ');
+
+    click(board, { x: 0, y: 0 });
+    expect(careers()).toContain('侍祭 · T1 · 精通');
+    // The branch it has not touched is still just a branch.
+    expect(careers()).toContain('游侠 · T1');
+    expect(careers()).not.toContain('游侠 · T1 · 精通');
+
+    click(board, { x: 1, y: 0 });
+    expect(careers()).not.toContain('精通');
+    c.dispose();
+  });
+});
+
 describe('ordering a formation', () => {
   let host: HTMLElement;
 
@@ -967,6 +1033,42 @@ describe('arranging the line before the battle', () => {
     expect(moved[0].textContent).toContain('0,1');
     // Still deploying: placing a unit is not confirming the arrangement.
     expect(c.root.querySelector('[data-act="deploy-done"]')).not.toBeNull();
+
+    c.dispose();
+  });
+
+  /**
+   * Whom a placement would send back.
+   *
+   * `DeploymentSpot.swaps` is the engine's answer — a swap that would strand
+   * either unit is refused outright, so a spot that offers one is legal in both
+   * directions. It reached nothing: the board paints every legal cell the same,
+   * and the standing hint said "落在同伴身上就与它换位" without naming anybody.
+   */
+  it('names the comrade a placement would displace', async () => {
+    const c = new GameController(deploymentLevel(), () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board);
+
+    (c.root.querySelector('[data-act="deploy-pick"]') as HTMLButtonElement).click();
+    await settle();
+
+    // Empty ground in the zone: the standing hint teaches the rule, and the panel
+    // reports no particular exchange.
+    hover(board, { x: 0, y: 1 });
+    await settle();
+    expect(hudSays(c.root)).not.toContain('落在此格');
+
+    // The archer's cell, which is in the zone and occupied.
+    hover(board, { x: 1, y: 0 });
+    await settle();
+    expect(hudSays(c.root)).toContain('与边境弓手换位');
+
+    // Outside the zone there is no spot at all, so no swap either.
+    hover(board, { x: 3, y: 1 });
+    await settle();
+    expect(hudSays(c.root)).not.toContain('落在此格');
 
     c.dispose();
   });

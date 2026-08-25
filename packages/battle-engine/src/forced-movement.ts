@@ -26,7 +26,6 @@ export interface ForcedMovementResult {
   from: Coord;
   to: Coord;
   path: Coord[];
-  collided: boolean;
   killed: boolean;
 }
 
@@ -92,7 +91,7 @@ export function forceMoveUnit(
       }),
     }, emit)
     : null;
-  return { from, to: { ...to }, path, collided, killed: impact?.killed ?? false };
+  return { from, to: { ...to }, path, killed: impact?.killed ?? false };
 }
 
 /** Teleportation ignores intermediate edges, but never creates an invalid overlap. */
