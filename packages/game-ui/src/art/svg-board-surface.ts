@@ -1,5 +1,7 @@
 import { FrameAnimationSystem } from './frame-animation';
 import {
+  drawableBody,
+  GRID_ALPHA,
   BOARD_LAYERS,
   boardPiecesMarkup,
   boardStripMarkup,
@@ -92,7 +94,7 @@ class SvgDrawing implements BoardDrawing {
     picture: BoardPicture,
   ) {
     el.append(this.figure);
-    this.body(picture.body);
+    this.body(drawableBody(picture));
     if (picture.strip) this.draw(picture.strip);
     for (const part of picture.parts ?? []) this.addPart(part.role, part.markup);
   }
@@ -352,6 +354,9 @@ export class SvgBoardSurface implements BoardSurface {
 
   tactical(on: boolean): void {
     this.element.classList.toggle('is-tactical', on);
+    // The number comes from the port, not from a stylesheet: `tactical` is a
+    // method both backends implement, so both read the same two values.
+    this.layers.grid.style.opacity = String(on ? GRID_ALPHA.tactical : GRID_ALPHA.resting);
   }
 
   rescaling(on: boolean): void {

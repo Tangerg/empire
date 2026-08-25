@@ -84,13 +84,13 @@
  * showing is a question about what the player is doing, not about which pack
  * drew the tiles.
  */
+/*
+ * How visible it is comes from `GRID_ALPHA`, which both backends read: `tactical`
+ * is a port method, so the two numbers are the port's and not a stylesheet's.
+ * What is left here is how a DOM tree animates, which is nobody else's business.
+ */
 .battlefield .layer-grid {
-  opacity: 0.3;
   transition: opacity 140ms cubic-bezier(0.2, 0, 0, 1);
-}
-
-.battlefield .board.is-tactical .layer-grid {
-  opacity: 0.72;
 }
 
 /*

@@ -237,7 +237,67 @@ export interface BoardPicture {
   readonly body: string;
   readonly strip?: BoardStrip | undefined;
   readonly parts?: readonly BoardPart[];
+  /**
+   * Lifted off the ground with a dark relief, so it reads over busy terrain.
+   *
+   * Declared here because it was an appearance *only one backend could produce*:
+   * a three-layer `drop-shadow` on `.layer-units .unit` in the shared stylesheet.
+   * The DOM backend got it for nothing by being the DOM; the GPU backend could
+   * not see it, and the port never said it existed — so the difference was
+   * invisible in the code and visible only on a screen.
+   *
+   * The port carries it now and the filter is defined once, below, in markup that
+   * both backends read: the SVG tree renders it directly, and the texture baker
+   * bakes it in. `drop-shadow(dx dy r c)` is defined in terms of `feDropShadow`
+   * with `stdDeviation = r / 2`, so the two are the same effect rather than two
+   * attempts at one look.
+   */
+  readonly relief?: boolean | undefined;
 }
+
+/**
+ * The id every relief filter is referenced by.
+ *
+ * Fixed rather than serialised, for the reason the field gradients are: the
+ * definition is identical wherever it appears, so two boards in one document
+ * sharing it is the outcome we want rather than a collision.
+ */
+const RELIEF_ID = 'board-relief';
+
+/** How far the relief spills past the geometry: two down, one across, one blur. */
+export const RELIEF_SPILL = 4;
+
+const RELIEF_DEFS = `<defs><filter id="${RELIEF_ID}" x="-20%" y="-20%" width="140%" height="140%">`
+  + '<feDropShadow dx="0" dy="1" stdDeviation="0" flood-color="#000" flood-opacity="0.8"/>'
+  + '<feDropShadow dx="1" dy="0" stdDeviation="0" flood-color="#000" flood-opacity="0.42"/>'
+  + '<feDropShadow dx="0" dy="2" stdDeviation="1" flood-color="#000" flood-opacity="0.36"/>'
+  + '</filter></defs>';
+
+/**
+ * A picture's body as a backend should draw it: relief applied if it asked for it.
+ *
+ * Both backends call this instead of reading `body` straight, which is what makes
+ * the appearance one declaration rather than one stylesheet and one omission.
+ */
+export const drawableBody = (picture: BoardPicture): string =>
+  picture.relief
+    ? `${RELIEF_DEFS}<g filter="url(#${RELIEF_ID})">${picture.body}</g>`
+    : picture.body;
+
+/** Whether baked markup carries a relief, and so needs room for it. */
+export const hasRelief = (markup: string): boolean => markup.includes(`url(#${RELIEF_ID})`);
+
+/**
+ * How visible the lattice is at rest and while the player is measuring with it.
+ *
+ * Both backends had these two numbers: the GPU one as `grid.alpha = on ? 0.72 :
+ * 0.3` with a comment calling them "the whole rule", and the DOM one as two
+ * `opacity` declarations in a stylesheet. `tactical(on)` is a port method both
+ * implement, so the rule is the port's to state and neither backend's to hold a
+ * copy of. The stylesheet keeps the transition, which is how a DOM tree animates
+ * and is nobody else's business.
+ */
+export const GRID_ALPHA = { resting: 0.3, tactical: 0.72 } as const;
 
 /**
  * A picture as one SVG string: body, then strip, then parts.

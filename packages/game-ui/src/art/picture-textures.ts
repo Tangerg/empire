@@ -1,5 +1,5 @@
 import { Rectangle, Texture } from 'pixi.js';
-import type { BoardStrip } from './board-surface';
+import { hasRelief, RELIEF_SPILL, type BoardStrip } from './board-surface';
 
 /**
  * Turning a picture into textures.
@@ -117,7 +117,17 @@ export class BrowserPictureTextures implements PictureTextures {
   }
 
   private async raster(markup: string): Promise<BakedPicture> {
-    const box = this.measure(markup);
+    const measured = this.measure(markup);
+    // `getBBox` answers the geometry, and a filter draws outside it. A relief
+    // spills two down and one across, so a texture cut to the geometry would clip
+    // exactly the part that makes the sprite read over terrain.
+    const room = hasRelief(markup) ? RELIEF_SPILL : 0;
+    const box = {
+      left: measured.left - room,
+      top: measured.top - room,
+      width: measured.width + room * 2,
+      height: measured.height + room * 2,
+    };
     const width = Math.max(1, Math.ceil(box.width));
     const height = Math.max(1, Math.ceil(box.height));
     const document = `<svg xmlns="${SVG_NS}" width="${width * this.resolution}" height="${height * this.resolution}"`

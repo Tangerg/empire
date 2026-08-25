@@ -464,7 +464,10 @@ export class BoardView {
   private drawingFor(unit: Unit): BoardDrawing {
     return this.surface.unit(unit.id, () => {
       const color = this.state.players.find((p) => p.id === unit.owner)?.color ?? PAL.neutral;
-      return unitPicture(this.art, this.content.units.get(unit.type), color);
+      // Every actor on the board is lifted off the terrain. Said here because
+      // that is what the stylesheet's `.layer-units .unit` meant: it is the
+      // board's look, not the art pack's, and not the DOM backend's alone.
+      return { ...unitPicture(this.art, this.content.units.get(unit.type), color), relief: true };
     });
   }
 

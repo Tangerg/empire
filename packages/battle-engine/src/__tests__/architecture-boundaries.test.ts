@@ -2894,4 +2894,46 @@ describe('one answer per question', () => {
     expect(readFileSync(join(layer, 'level-storage.ts'), 'utf8')).toContain('localStorage');
     expect(offenders).toEqual([]);
   });
+
+  it('gives a board layer no appearance the port has not named', () => {
+    // A stylesheet rule on a board layer is the DOM backend's implementation of
+    // something, or it is an appearance the GPU backend cannot know about. Two of
+    // them were the second kind: every unit's three-layer `drop-shadow`, which the
+    // port never mentioned and only one backend could produce, and the lattice's
+    // two opacities, which `tactical(on)` *is* a port method for — the GPU backend
+    // held its own copy of the same two numbers with a comment calling them "the
+    // whole rule".
+    //
+    // The relief is declared by the picture now, defined once in markup both
+    // backends read; the two numbers are `GRID_ALPHA`, read by both. What may stay
+    // in a stylesheet is a rule whose selector names a state the port declares —
+    // `face-left` and `is-selected` are how the DOM backend draws two `BoardState`s
+    // — and anything that is not an appearance at all, like a transition or
+    // `pointer-events`.
+    const stateClasses = /const STATE_CLASS[^{]*\{([\s\S]*?)\n\}/
+      .exec(readFileSync(join(packagesRoot, 'game-ui', 'src', 'art', 'svg-board-surface.ts'), 'utf8'));
+    if (!stateClasses) throw new Error('cannot read STATE_CLASS');
+    const named = [...stateClasses[1].matchAll(/'([\w-]+)'/g)].map(([, name]) => name);
+    expect(named.length).toBeGreaterThanOrEqual(2);
+
+    const appearance = new Set(['filter', 'opacity', 'transform', 'mix-blend-mode', 'visibility', 'display']);
+    const offenders: string[] = [];
+    for (const pkg of ['game-ui', 'editor', 'story-candidate-01']) {
+      const root = join(packagesRoot, pkg, 'src', 'styles');
+      for (const entry of readdirSync(root).filter((name) => name.endsWith('.css'))) {
+        const css = readFileSync(join(root, entry), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+        for (const [, selector, body] of css.matchAll(/([^{}]*)\{([^{}]*)\}/g)) {
+          if (!selector.includes('.layer-')) continue;
+          const set = body.split(';')
+            .map((line) => line.split(':')[0].trim())
+            .filter((name) => appearance.has(name));
+          if (set.length === 0) continue;
+          if (named.some((state) => selector.includes(state))) continue;
+          offenders.push(`${entry}: ${selector.replace(/\s+/g, ' ').trim()} sets ${set.join(', ')}`);
+        }
+      }
+    }
+
+    expect(offenders).toEqual([]);
+  });
 });

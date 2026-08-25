@@ -580,11 +580,12 @@ kbd {
   pointer-events: none;
 }
 
+/*
+ * The relief that used to be here is declared by the picture now and defined once
+ * in `board-surface.ts`, in markup both backends read. It was an appearance only
+ * the DOM backend could produce, sitting in a stylesheet the port could not see.
+ */
 .layer-units .unit {
-  filter:
-    drop-shadow(0 1px 0 rgb(0 0 0 / 80%))
-    drop-shadow(1px 0 0 rgb(0 0 0 / 42%))
-    drop-shadow(0 2px 2px rgb(0 0 0 / 36%));
   transition:
     opacity 120ms ease,
     filter 120ms ease;

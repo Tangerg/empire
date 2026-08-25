@@ -1,5 +1,7 @@
 import { autoDetectRenderer, ColorMatrixFilter, Container, Sprite, Texture } from 'pixi.js';
 import {
+  drawableBody,
+  GRID_ALPHA,
   BOARD_LAYERS,
   type BoardDrawing,
   type BoardEffect,
@@ -122,7 +124,7 @@ class PixiDrawing implements BoardDrawing {
     this.figure.position.set(TILE_MIDDLE, TILE_MIDDLE);
     root.addChild(this.figure);
     this.write();
-    this.body(picture.body);
+    this.body(drawableBody(picture));
     if (picture.strip) this.draw(picture.strip);
     for (const part of picture.parts ?? []) this.addPart(part.role, part.markup);
   }
@@ -428,7 +430,7 @@ export class PixiBoardSurface implements BoardSurface {
    * is nothing to hide and these two numbers are the whole rule.
    */
   tactical(on: boolean): void {
-    this.layers.grid.alpha = on ? 0.72 : 0.3;
+    this.layers.grid.alpha = on ? GRID_ALPHA.tactical : GRID_ALPHA.resting;
   }
 
   /**
