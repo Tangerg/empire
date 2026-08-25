@@ -2,6 +2,22 @@ import { GENERIC_PRESENTATION, type BattlePresentation } from './battle-presenta
 import type { ArtProvider } from './ports';
 
 /**
+ * Two entries under one name are refused, because order would decide silently.
+ *
+ * Both lists, for the same reason: `presentationFor` takes the first that
+ * `matches`, so the same painted scene composed twice makes the second copy
+ * unreachable and nothing says so. Only the provider list was checked, which made
+ * the rule look like it was about providers rather than about composition.
+ */
+function requireDistinctIds(kind: string, entries: readonly { id: string }[]): void {
+  const seen = new Set<string>();
+  for (const entry of entries) {
+    if (seen.has(entry.id)) throw new Error(`duplicate ${kind} "${entry.id}"`);
+    seen.add(entry.id);
+  }
+}
+
+/**
  * The art one shell was handed: providers in the order they are consulted, and
  * the battle presentations it may choose from.
  *
@@ -17,11 +33,8 @@ export class ArtDirection {
     readonly providers: readonly ArtProvider[] = [],
     readonly presentations: readonly BattlePresentation[] = [],
   ) {
-    const seen = new Set<string>();
-    for (const provider of providers) {
-      if (seen.has(provider.id)) throw new Error(`duplicate art provider "${provider.id}"`);
-      seen.add(provider.id);
-    }
+    requireDistinctIds('art provider', providers);
+    requireDistinctIds('battle presentation', presentations);
   }
 
   /**

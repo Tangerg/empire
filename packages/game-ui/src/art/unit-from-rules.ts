@@ -1,5 +1,6 @@
 import type { UnitDef } from '@empire/battle-engine';
 import { PAL, shade, type SpriteColors } from './palette';
+import { nameHash, pick, r2 } from './variation';
 
 /**
  * A unit drawn from what the rules can see about it.
@@ -60,18 +61,6 @@ function readUnit(unit: UnitDef): UnitReading {
   };
 }
 
-/** A stable 0..1 from a name, so a class always looks like itself. */
-function nameHash(name: string, salt: number): number {
-  let hash = 0x811c9dc5 ^ salt;
-  for (let index = 0; index < name.length; index++) {
-    hash = Math.imul(hash ^ name.charCodeAt(index), 0x01000193) >>> 0;
-  }
-  return (hash >>> 8) / 0x01000000;
-}
-
-const pick = <T>(choices: readonly T[], at: number): T => choices[Math.floor(at * choices.length) % choices.length];
-
-const r2 = (value: number) => Math.round(value * 100) / 100;
 
 /**
  * The footing a whole movement class shares.

@@ -1,5 +1,10 @@
 import { DomainInvariantError, StoredDocumentError } from './domain/errors';
-import { readCurrentDocument } from './save-schema';
+import {
+  readCurrentDocument,
+  requireStoredShape,
+  storedField as field,
+  type StoredShape,
+} from './save-schema';
 import type { RuleReferenceRules } from './rule-references';
 import type { RuleReferenceCheckRegistry } from './rule-references';
 import type { ContentRegistry } from './registry';
@@ -108,12 +113,10 @@ class SaveInspection {
   }
 
   /** Every field of one aggregate, named in the refusal when it is wrong. */
-  requireShape<T>(value: unknown, shape: Shape<T>, owner: string): void {
-    if (!anObject(value)) this.reject(`${owner}缺失或损坏，存档内容不是一场战斗`);
-    const fields = value as Record<string, unknown>;
-    for (const [field, check] of Object.entries(shape) as [string, ShapeCheck][]) {
-      if (!check(fields[field])) this.reject(`${owner}的「${field}」缺失或损坏，存档内容不是一场战斗`);
-    }
+  requireShape<T>(value: unknown, shape: StoredShape<T>, owner: string): void {
+    requireStoredShape(value, shape, (bad) => this.reject(bad === null
+      ? `${owner}缺失或损坏，存档内容不是一场战斗`
+      : `${owner}的「${bad}」缺失或损坏，存档内容不是一场战斗`));
   }
 
   /** A save is loaded or refused; there is no half-loaded battle to play. */
@@ -126,116 +129,100 @@ type SaveCheck = (inspection: SaveInspection) => void;
 
 /* --------------------------------------------------------------- shape */
 
-/** What one raw field has to be before anything is allowed to walk it. */
-type ShapeCheck = (value: unknown) => boolean;
-
-const anArray: ShapeCheck = (value) => Array.isArray(value);
-const anObject: ShapeCheck = (value) =>
-  typeof value === 'object' && value !== null && !Array.isArray(value);
-const aNumber: ShapeCheck = (value) => typeof value === 'number' && Number.isFinite(value);
-const aString: ShapeCheck = (value) => typeof value === 'string';
-const orNull = (check: ShapeCheck): ShapeCheck => (value) => value === null || check(value);
-
 /**
- * The shape of one aggregate a save is made of.
+ * Every field of `GameState`, and what it has to be before anything walks it.
  *
- * `Record<keyof T, ShapeCheck>` is the whole point: the compiler refuses a
- * table that has not been taught a field the state grew. The condition this
- * replaces was hand-written and listed six of `GameState`'s twenty-three, so a
- * save with no `embarkedUnits` walked straight past it and died four checks
- * later with a `TypeError` — a defect's error raised for a document's problem,
- * which is exactly the distinction the error contract exists to keep.
- *
- * Depth stops where the per-field checks below take over: those know what a
- * unit or an overlay means, and this only knows that there is something there
- * to ask about.
+ * The condition this replaces was hand-written and listed six of the
+ * twenty-three, so a save with no `embarkedUnits` walked straight past it and
+ * died four checks later with a `TypeError` — a defect's error raised for a
+ * document's problem, which is exactly the distinction the error contract exists
+ * to keep. `StoredShape<GameState>` is what stops that happening again: the
+ * compiler refuses a table that has not been taught a field the state grew.
  */
-type Shape<T> = Record<keyof T, ShapeCheck>;
-
-const STATE_SHAPE: Shape<GameState> = {
-  levelId: aString,
-  levelName: aString,
-  map: anObject,
-  units: anArray,
-  structures: anArray,
-  composites: anArray,
-  embarkedUnits: anArray,
-  markers: anArray,
-  commanders: anArray,
-  players: anArray,
-  rules: anObject,
-  turn: aNumber,
-  currentPlayer: aNumber,
-  phase: aString,
-  winnerTeam: orNull(aNumber),
-  endReason: aString,
-  nextUnitId: aNumber,
-  nextMarkerId: aNumber,
-  deployment: orNull(anObject),
-  scenario: anObject,
-  turnOrder: anObject,
-  actorTurns: aNumber,
-  pendingCasts: anArray,
-  random: anObject,
+const STATE_SHAPE: StoredShape<GameState> = {
+  levelId: field.string,
+  levelName: field.string,
+  map: field.object,
+  units: field.array,
+  structures: field.array,
+  composites: field.array,
+  embarkedUnits: field.array,
+  markers: field.array,
+  commanders: field.array,
+  players: field.array,
+  rules: field.object,
+  turn: field.number,
+  currentPlayer: field.number,
+  phase: field.string,
+  winnerTeam: field.orNull(field.number),
+  endReason: field.string,
+  nextUnitId: field.number,
+  nextMarkerId: field.number,
+  deployment: field.orNull(field.object),
+  scenario: field.object,
+  turnOrder: field.object,
+  actorTurns: field.number,
+  pendingCasts: field.array,
+  random: field.object,
 };
 
-const MAP_SHAPE: Shape<GameMap> = {
-  width: aNumber,
-  height: aNumber,
-  tiles: anArray,
-  owners: anArray,
-  captureProgress: anArray,
-  elevation: anArray,
-  cliffs: anArray,
-  directionalCover: anArray,
+const MAP_SHAPE: StoredShape<GameMap> = {
+  width: field.number,
+  height: field.number,
+  tiles: field.array,
+  owners: field.array,
+  captureProgress: field.array,
+  elevation: field.array,
+  cliffs: field.array,
+  directionalCover: field.array,
 };
 
-const SCENARIO_SHAPE: Shape<ScenarioState> = {
-  variables: anObject,
-  zones: anObject,
-  overlays: anArray,
-  triggers: anArray,
-  firedTriggerIds: anArray,
-  triggerRuntime: anObject,
-  eventCounts: anObject,
-  zoneTags: anObject,
-  engagementRules: anArray,
+const SCENARIO_SHAPE: StoredShape<ScenarioState> = {
+  variables: field.object,
+  zones: field.object,
+  overlays: field.array,
+  triggers: field.array,
+  firedTriggerIds: field.array,
+  triggerRuntime: field.object,
+  eventCounts: field.object,
+  zoneTags: field.object,
+  engagementRules: field.array,
 };
 
-const TURN_ORDER_SHAPE: Shape<TurnOrderState> = {
-  policy: aString,
-  activeUnit: orNull(aNumber),
-  data: anObject,
+const TURN_ORDER_SHAPE: StoredShape<TurnOrderState> = {
+  policy: field.string,
+  activeUnit: field.orNull(field.number),
+  data: field.object,
 };
 
-const RANDOM_SHAPE: Shape<RandomState> = { seed: aNumber, counters: anObject };
+const RANDOM_SHAPE: StoredShape<RandomState> = { seed: field.number, counters: field.object };
 
-const DEPLOYMENT_SHAPE: Shape<DeploymentState> = {
-  order: anArray,
-  currentIndex: aNumber,
-  assignments: anArray,
+const DEPLOYMENT_SHAPE: StoredShape<DeploymentState> = {
+  order: field.array,
+  currentIndex: field.number,
+  assignments: field.array,
 };
 
-const HEADER_SHAPE: Shape<BattleSaveHeader> = {
-  levelId: aString,
-  levelName: aString,
-  turn: aNumber,
-  phase: aString,
+const HEADER_SHAPE: StoredShape<BattleSaveHeader> = {
+  levelId: field.string,
+  levelName: field.string,
+  turn: field.number,
+  phase: field.string,
 };
 
-const SAVE_SHAPE: Shape<BattleSave> = {
-  schema: aNumber,
-  battle: anObject,
-  ruleset: anObject,
-  savedAt: aString,
-  state: anObject,
+const SAVE_SHAPE: StoredShape<BattleSave> = {
+  schema: field.number,
+  battle: field.object,
+  ruleset: field.object,
+  savedAt: field.string,
+  state: field.object,
 };
 
 /** Enough shape to walk at all. Everything after this may assume the fields exist. */
 const checkShape: SaveCheck = (inspection) => {
   inspection.requireShape(inspection.save, SAVE_SHAPE, '存档');
   const state = inspection.state as unknown;
-  if (!anObject(state)) inspection.reject('存档内容不是一场战斗');
+  if (!field.object(state)) inspection.reject('存档内容不是一场战斗');
   inspection.requireShape(state, STATE_SHAPE, '战斗');
   const battle = state as GameState;
   inspection.requireShape(battle.map, MAP_SHAPE, '地图');
@@ -247,9 +234,9 @@ const checkShape: SaveCheck = (inspection) => {
 };
 
 const checkRuleset: SaveCheck = (inspection) => {
-  if (!anObject(inspection.save.ruleset) ||
-    !anObject(inspection.save.ruleset.plugins) ||
-    !anObject(inspection.save.ruleset.contentPacks)) {
+  if (!field.object(inspection.save.ruleset) ||
+    !field.object(inspection.save.ruleset.plugins) ||
+    !field.object(inspection.save.ruleset.contentPacks)) {
     inspection.reject('规则集版本信息缺失或损坏');
   }
   const invalidVersion = [
@@ -265,7 +252,7 @@ const checkRuleset: SaveCheck = (inspection) => {
 };
 
 const checkMetadata: SaveCheck = (inspection) => {
-  if (!aString(inspection.save.savedAt) || Number.isNaN(Date.parse(inspection.save.savedAt))) {
+  if (!field.string(inspection.save.savedAt) || Number.isNaN(Date.parse(inspection.save.savedAt))) {
     inspection.reject('保存时间缺失或损坏');
   }
   inspection.requireShape(inspection.save.battle, HEADER_SHAPE, '摘要');

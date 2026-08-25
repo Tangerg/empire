@@ -20,42 +20,16 @@
  *
  *   npx vite-node tools/board-scale.ts
  */
-import { JSDOM } from 'jsdom';
+import type { ArtDirection } from '@empire/game-ui';
+import type { LevelData, LevelTileOwner, LevelUnit } from '@empire/battle-engine';
 import {
-  ContentPackInstaller,
-  createBattleEngine,
-  createContentCatalog,
-  type LevelData,
-  type LevelTileOwner,
-  type LevelUnit,
-} from '@empire/battle-engine';
-import { COMMON_CONTENT_PACK } from '@empire/content-common';
-import { ANCIENT_EMPIRES_CONTENT_PACK, ANCIENT_EMPIRES_LEVELS } from '@empire/content-ancient-empires';
-import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS } from '@empire/story-candidate-01';
-import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
-
-const dom = new JSDOM('<!doctype html><div id="app"></div>');
-const globals = globalThis as Record<string, unknown>;
-globals.window = dom.window;
-globals.document = dom.window.document;
-globals.SVGElement = dom.window.SVGElement;
-globals.MutationObserver = dom.window.MutationObserver;
-globals.DOMParser = dom.window.DOMParser;
-globals.Node = dom.window.Node;
-globals.Element = dom.window.Element;
-globals.requestAnimationFrame = (callback: (time: number) => void) => setTimeout(() => callback(0), 0);
-globals.cancelAnimationFrame = (handle: number) => clearTimeout(handle as unknown as NodeJS.Timeout);
-
-const { BoardView, emptyOverlay, svgBoardSurface, GENERIC_ART, BOARD_LAYERS } = await import('@empire/game-ui');
-
-const content = createContentCatalog();
-new ContentPackInstaller(content).install(
-  COMMON_CONTENT_PACK,
-  ANCIENT_EMPIRES_CONTENT_PACK,
-  CANDIDATE_01_CONTENT_PACK,
-);
-const engine = createBattleEngine({ content });
-const grid = engine.rules.grids.get('square4');
+  BOARD_LAYERS,
+  CANDIDATE_01_ART,
+  emptyOverlay,
+  GENERIC_ART,
+  mountBoard,
+  shippedLevel,
+} from './board-harness';
 
 /**
  * The same level, repeated across a bigger field.
@@ -69,10 +43,11 @@ function tiled(base: LevelData, nx: number, ny: number): LevelData {
   const width = base.width * nx;
   const height = base.height * ny;
   const terrain = Array.from({ length: height }, (_, y) => base.terrain[y % base.height].repeat(nx));
-  const elevation = base.elevation && Array.from({ length: width * height }, (_, cell) => {
+  const source = base.elevation;
+  const elevation = source && Array.from({ length: width * height }, (_, cell) => {
     const x = cell % width;
     const y = Math.floor(cell / width);
-    return base.elevation![(y % base.height) * base.width + (x % base.width)];
+    return source[(y % base.height) * base.width + (x % base.width)];
   });
 
   const units: LevelUnit[] = [];
@@ -156,17 +131,10 @@ function layerCosts(root: Element): LayerCost[] {
 
 const pad = (value: string | number, width: number) => String(value).padStart(width);
 
-function measure(label: string, base: LevelData, art: unknown, nx: number, ny: number): void {
+function measure(label: string, base: LevelData, art: ArtDirection, nx: number, ny: number): void {
   const level = tiled(base, nx, ny);
-  const state = engine.createState(level);
   const started = performance.now();
-  const board = new BoardView({ content, grid, art: art as never, renderer: svgBoardSurface }, state, {
-    onTileClick: () => {},
-    onTileEnter: () => {},
-    onLeave: () => {},
-    onSecondary: () => {},
-    onScale: () => {},
-  });
+  const board = mountBoard(level, art);
   board.render(emptyOverlay());
   const built = performance.now() - started;
 
@@ -198,9 +166,9 @@ function measure(label: string, base: LevelData, art: unknown, nx: number, ny: n
   board.dispose();
 }
 
-const HEAVIEST = CANDIDATE_01_LEVELS.find((level) => level.id === 'c01-16')!;
-const PAINTED = CANDIDATE_01_LEVELS.find((level) => level.id === 'c01-01')!;
-const GENERIC = ANCIENT_EMPIRES_LEVELS[ANCIENT_EMPIRES_LEVELS.length - 1];
+const HEAVIEST = shippedLevel('c01-16');
+const PAINTED = shippedLevel('c01-01');
+const GENERIC = shippedLevel('cliff-training');
 
 console.log(`themed art · ${HEAVIEST.name} tiled`);
 for (const [nx, ny] of [[1, 1], [2, 2], [3, 3]]) measure('  ', HEAVIEST, CANDIDATE_01_ART, nx, ny);

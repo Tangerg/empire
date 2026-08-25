@@ -2,6 +2,8 @@ import { TacticalGrids, mapFromLevel } from '@empire/battle-engine';
 const SQUARE = TacticalGrids.get('square4');
 import { describe, expect, it } from 'vitest';
 import { candidate01Level, CANDIDATE_01_CONTENT_PACK } from '@empire/story-candidate-01';
+import { GENERIC_PRESENTATION } from '../battle-presentation';
+import { ArtDirection } from '../direction';
 import { createSceneViewport } from '../scene-viewport';
 import { boardPiecesMarkup } from '../board-surface';
 import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
@@ -79,5 +81,18 @@ describe('battle presentation', () => {
     expect(layers.underUnits[0].markup).toContain('field-light');
     expect(layers.underUnits[0].markup).toContain(`width="${map.width * 32}"`);
     expect(presentation.effect('unknown')).toEqual({ body: '' });
+  });
+
+  /**
+   * Composition refuses to guess. `presentationFor` takes the first entry that
+   * `matches`, so the same art composed twice makes the second copy unreachable —
+   * and only the provider list used to be checked for it.
+   */
+  it('refuses two entries under one name in either list', () => {
+    const provider = { id: 'twice' };
+    expect(() => new ArtDirection([provider, provider])).toThrow('duplicate art provider "twice"');
+    expect(() => new ArtDirection([], [GENERIC_PRESENTATION, GENERIC_PRESENTATION]))
+      .toThrow('duplicate battle presentation "generic"');
+    expect(new ArtDirection([provider], [GENERIC_PRESENTATION]).presentations).toHaveLength(1);
   });
 });

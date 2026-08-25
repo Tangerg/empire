@@ -1,6 +1,8 @@
 import type { ArtDirection } from './direction';
 import type { UnitDef, UnitTypeId } from '@empire/battle-engine';
 import { PAL, shade, spriteColors, type SpriteColors } from './palette';
+import { definitionKey } from './svg';
+import { nameHash, pick } from './variation';
 
 /**
  * Unit portraits (立绘) — 96x112 busts for the inspector panel. They share one
@@ -199,19 +201,10 @@ const portraits: Record<UnitTypeId, Portrait> = {
  * are recognisably the same soldier.
  */
 function portraitFromRules(unit: UnitDef, c: SpriteColors): string {
-  const hash = (name: string, salt: number) => {
-    let value = 0x811c9dc5 ^ salt;
-    for (let index = 0; index < name.length; index++) {
-      value = Math.imul(value ^ name.charCodeAt(index), 0x01000193) >>> 0;
-    }
-    return (value >>> 8) / 0x01000000;
-  };
-  const pick = <T>(choices: readonly T[], at: number): T =>
-    choices[Math.floor(at * choices.length) % choices.length];
-  const plate = pick([PAL.steel, PAL.steelDark, PAL.stoneLight, PAL.rock, PAL.cloth], hash(unit.armorClass, 3));
+  const plate = pick([PAL.steel, PAL.steelDark, PAL.stoneLight, PAL.rock, PAL.cloth], nameHash(unit.armorClass, 3));
   const bystander = unit.zoneOfControl === 0;
   const cloth = bystander ? PAL.cloth : c.team;
-  const crest = hash(unit.armorClass, 2);
+  const crest = nameHash(unit.armorClass, 2);
 
   const headgear = crest < 0.2
     ? `<path d="M29 56a19 19 0 0 1 38 0v4H29z" fill="${plate}"/>
@@ -245,20 +238,15 @@ function portraitFromRules(unit: UnitDef, c: SpriteColors): string {
 
   // The name decides one accent, because two types can be alike in every rule
   // this reads and still need telling apart in the inspector.
-  const trim = pick([PAL.gold, PAL.stoneLight, PAL.leaf, PAL.roof, PAL.waterLight, PAL.plaster], hash(unit.id, 5));
+  const trim = pick([PAL.gold, PAL.stoneLight, PAL.leaf, PAL.roof, PAL.waterLight, PAL.plaster], nameHash(unit.id, 5));
   return `${shoulders(c, cloth)}
     ${collar(shade(plate, -0.15))}
-    <rect x="41" y="${Math.round(88 + hash(unit.id, 6) * 12)}" width="14" height="4" rx="1.5" fill="${trim}"/>
+    <rect x="41" y="${Math.round(88 + nameHash(unit.id, 6) * 12)}" width="14" height="4" rx="1.5" fill="${trim}"/>
     ${face(48, 54, 17, { brow: shade(PAL.skinDark, -0.3) })}
     ${headgear}
     ${hafts}
     ${mark}`;
 }
-
-/** Stable SVG definition id: same drawing in, same markup out. */
-const definitionKey = (...parts: string[]): string => parts
-  .map((part) => encodeURIComponent(part).replaceAll('%', '_'))
-  .join('__');
 
 /**
  * The bust for a unit, drawn by the best answer available for it.

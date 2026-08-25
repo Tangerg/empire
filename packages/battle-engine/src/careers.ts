@@ -8,11 +8,11 @@ import type {
   CareerId,
   GameEvent,
   GameState,
-  ResourceAccounts,
   Unit,
   UnitWeaponState,
 } from './types';
 import { type ContentCatalog } from './content-pack';
+import { cloneAccounts } from './unit-state';
 
 export interface CareerOption {
   career: CareerDef;
@@ -89,9 +89,6 @@ export function careerOptions(
     })
     .sort((left, right) => left.career.tier - right.career.tier || left.career.id.localeCompare(right.career.id));
 }
-
-const cloneAccounts = (accounts: ResourceAccounts): ResourceAccounts =>
-  Object.fromEntries(Object.entries(accounts).map(([id, account]) => [id, { ...account }]));
 
 function initialWeaponState(content: ContentCatalog, unit: Unit, career: CareerDef): Record<string, UnitWeaponState> {
   const next = content.units.get(career.unitType);

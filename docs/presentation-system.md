@@ -36,17 +36,17 @@
 
 | 方法 | 解析内容 |
 | --- | --- |
-| `unitMarkup` | 棋盘单位 |
+| `unitPicture` | 棋盘单位 |
 | `unitIcon` | 菜单和列表单位图标 |
-| `terrainMarkup` | 单格地形 |
+| `terrainMarkup` | 单格地形（参数是 `TileContext`） |
 | `portraitMarkup` | 角色或兵种立绘 |
-| `structureMarkup` | 结构实例 |
 | `iconMarkup` | 通用界面图标 |
 | `abilityIcon`、`weaponIcon`、`statusIcon` | 规则对象图标 |
-| `coverMarkup`、`markerMarkup` | 空间掩体和战场 marker |
-| `weaponFx`、`effectMarkup` | 武器与语义效果 |
+| `coverMarkup` | 空间掩体 |
 
-提供者由应用组合根放入一份 `ArtDirection`，按声明顺序查询，第一个非 `null` 答案获胜。方法返回 `null` 表示不处理该 ID，解析器继续查询下一个提供者；空字符串仍是明确答案。没有模块级注册表、导入副作用或测试后清理动作。
+提供者由应用组合根放入一份 `ArtDirection`，按声明顺序查询，第一个非 `null` 答案获胜。方法返回 `null` 表示不处理该 ID，解析器继续查询下一个提供者；空字符串仍是明确答案。没有模块级注册表、导入副作用或测试后清理动作。两份列表都拒绝重名——`presentationFor` 取第一个 `matches` 的，同一套美术组合两次会让第二份永远到不了，而以前只有 provider 那一份被检查。
+
+这张表少了四行：`effectMarkup`、`structureMarkup`、`markerMarkup`、`weaponFx`。题材**都赋了值**，而任何包里都没有代码读过它们。其中三个是 `BattlePresentation` 上活字段的影子——结构、地上的痕迹、武器效果都是**一整张场景**画的东西，所以问题问在表现那一侧；而这三个里有两个在这里被赋成 `() => null`，一个提供者透过没人在听的字段说「没有意见」。现在有一条守卫同时查两件事：字段有没有被 `.读过`，以及两个端口有没有共用名字（`id` 除外——身份不是能力）。
 
 题材提供者只能把领域 ID 映射到表现。不要在提供者中读取角色剧情状态或重新计算战斗规则。
 

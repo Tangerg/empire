@@ -26,6 +26,7 @@ import {
   runtimeUnitPicture,
   type BoardPicture,
   type RuntimeCellAtlas,
+  type TileContext,
   type RuntimeUnitSheet,
 } from '@empire/game-ui';
 
@@ -68,15 +69,7 @@ function cellAtlas(record: Candidate01RuntimeAsset): RuntimeCellAtlas {
   return { href: record.url, cellWidth, cellHeight, columns: cells, rows: 1 };
 }
 
-interface RuntimeTerrainContext {
-  x: number;
-  y: number;
-  theme?: string;
-  ownerColor?: string;
-  linked: { n: boolean; e: boolean; s: boolean; w: boolean };
-}
-
-const connectionMask = (linked: RuntimeTerrainContext['linked']): number =>
+const connectionMask = (linked: TileContext['linked']): number =>
   (linked.n ? 1 : 0) | (linked.e ? 2 : 0) | (linked.s ? 4 : 0) | (linked.w ? 8 : 0);
 
 const baseTerrain = (theme?: string): RuntimeCellAtlas => cellAtlas(candidate01Asset(
@@ -112,7 +105,7 @@ export function candidate01UnitIcon(type: UnitTypeId, team: string, size: number
   return `<svg viewBox="0 -16 32 48" width="${size}" height="${size}">${boardPictureMarkup(picture)}</svg>`;
 }
 
-export function candidate01TerrainMarkup(id: TerrainId, ctx: RuntimeTerrainContext): string | null {
+export function candidate01TerrainMarkup(id: TerrainId, ctx: TileContext): string | null {
   const structureTopic = CANDIDATE_01_MAP_STRUCTURE_ART[id];
   if (structureTopic) {
     const record = candidate01Asset(structureTopic);

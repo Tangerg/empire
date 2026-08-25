@@ -35,6 +35,19 @@ export function setAttrs(el: Element, attrs: Attrs): void {
 export const escapeAttr = (value: string): string =>
   value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
 
+/**
+ * A stable SVG definition id from the parts that identify the drawing.
+ *
+ * Same drawing in, same markup out — which is what lets two boards in one
+ * document share a gradient instead of colliding over it. Here for the same
+ * reason `escapeAttr` is: the generic portrait and the campaign's portrait each
+ * had a copy, and a content id that mangles differently in the two of them is a
+ * `url(#…)` pointing at nothing.
+ */
+export const definitionKey = (...parts: string[]): string => parts
+  .map((part) => encodeURIComponent(part).replaceAll('%', '_'))
+  .join('__');
+
 /** Parse an SVG markup string into elements (used by the sprite library). */
 export function fromMarkup(markup: string): SVGGElement {
   const doc = new DOMParser().parseFromString(

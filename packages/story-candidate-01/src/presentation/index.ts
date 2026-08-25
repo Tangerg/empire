@@ -1,6 +1,8 @@
 import type { UnitTypeId } from '@empire/battle-engine';
 import {
   ArtDirection,
+  definitionKey,
+  escapeAttr as attr,
   GroundBoardDecorations,
   type ArtProvider,
   type BattlePresentation,
@@ -39,13 +41,6 @@ import {
   CANDIDATE_01_UNIT_ART,
   CANDIDATE_01_WEAPON_ART,
 } from './candidate-01-bindings';
-
-const attr = (value: string): string =>
-  value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
-
-const definitionKey = (...parts: string[]): string => parts
-  .map((part) => encodeURIComponent(part).replaceAll('%', '_'))
-  .join('__');
 
 function portraitMarkup(type: UnitTypeId, team: string): string | null {
   const characterTopic = CANDIDATE_01_CHARACTER_ART[type];
@@ -94,7 +89,6 @@ const CANDIDATE_01_ART_PROVIDER: ArtProvider = {
   unitIcon: candidate01UnitIcon,
   terrainMarkup: candidate01TerrainMarkup,
   portraitMarkup,
-  structureMarkup: () => null,
   iconMarkup: candidate01TryIconMarkup,
   abilityIcon: (ability) => CANDIDATE_01_ABILITY_ART[ability]
     ? candidate01IconMarkup(CANDIDATE_01_ABILITY_ART[ability]) : null,
@@ -105,8 +99,6 @@ const CANDIDATE_01_ART_PROVIDER: ArtProvider = {
   statusIcon: (status) => CANDIDATE_01_STATUS_ART[status]
     ? candidate01IconMarkup(CANDIDATE_01_STATUS_ART[status]) : null,
   coverMarkup: candidate01CoverPropMarkup,
-  markerMarkup: () => null,
-  weaponFx: candidate01WeaponFxTopic,
 };
 
 /** This pack's art, ready for an application root to hand to a shell. */

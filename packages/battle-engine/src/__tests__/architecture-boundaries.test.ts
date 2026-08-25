@@ -42,6 +42,16 @@ function appSources(): string[] {
     });
 }
 
+/**
+ * The rulers, which are runtime code that nothing imports.
+ *
+ * `tools/` is where the instruments that prove a refactor live. No guard read it,
+ * and three of them had grown a shared copy of the same board harness.
+ */
+function toolSources(): string[] {
+  return runtimeTypeScriptFiles(join(packagesRoot, '..', 'tools'));
+}
+
 /** Every workspace package, for the guards that are about the whole repository. */
 function everyPackageSource(): string[] {
   return readdirSync(packagesRoot, { withFileTypes: true })
@@ -2289,6 +2299,145 @@ describe('one call shape', () => {
       }
     }
 
+    expect(offenders).toEqual([]);
+  });
+});
+
+/**
+ * One question, one answer.
+ *
+ * "There should be one obvious canonical way to express each semantic
+ * operation", and "the same question answered in two places will diverge the
+ * moment a second kind of play arrives". Both of those had already happened here,
+ * repeatedly, and in the one shape a reviewer never notices: a four-line helper
+ * copied into the module that needed it.
+ */
+describe('one answer per question', () => {
+  /**
+   * Top-level declarations and their text, keyed by the name being declared.
+   *
+   * A chunk runs from the declaration line through the indented lines under it —
+   * which is a body, or a multi-line signature and then a body. Classes are
+   * deliberately not read: a class's name *is* its meaning, and three one-line
+   * `extends Error` subclasses are three different errors, not one copied thrice.
+   */
+  function topLevelDeclarations(source: string): Array<{ name: string; text: string }> {
+    const lines = source.split('\n');
+    const found: Array<{ name: string; text: string }> = [];
+    for (let index = 0; index < lines.length;) {
+      const declared = /^(?:export )?(?:const|function|type|interface) (\w+)/.exec(lines[index]);
+      if (!declared) {
+        index++;
+        continue;
+      }
+      const start = index++;
+      while (index < lines.length && (lines[index].startsWith(' ') || /^[)\]}]/.test(lines[index]))) index++;
+      found.push({ name: declared[1], text: lines.slice(start, index).join('\n') });
+    }
+    return found;
+  }
+
+  it('declares each helper in exactly one module', () => {
+    // Twelve declarations of three functions in one directory, and it was not the
+    // first time: `escapeAttr` carries a comment saying it was gathered from
+    // three private copies, and a fourth copy had appeared beside it since.
+    //
+    // What was found, all byte-identical: the shape-check vocabulary of the two
+    // save formats (which had already diverged in naming — `orNull` in one,
+    // `nullable` in the other), `cloneAccounts` twice inside the engine, the
+    // FNV-1a name hash four times under three names, `pick` four times, `r2`
+    // four times, `definitionKey` twice, `attr`/`escapeAttr` twice, and the whole
+    // board harness in three of the four rulers.
+    //
+    // The declared name is blanked before comparing, because a copy that was
+    // renamed is still a copy: `idHash`, `nameHash` and a nested `hash` were one
+    // function under three names.
+    // A rule port is exempt, and the axiom is the reason: "Ports are declared by
+    // the consumer that needs them, and `BattleRuleServices` satisfies them
+    // structurally. Needing a new rule must not add a module edge." Five sets of
+    // them are identical on purpose — `MovementRules` and `VisionRules` both want
+    // the grid and the catalog and neither may import the other's module. They
+    // are the interfaces whose name ends in `Rules`, which is the convention that
+    // says so.
+    const rulePort = /^(?:export )?interface \w+Rules\b/;
+    const seen = new Map<string, string[]>();
+    for (const file of [...everyPackageSource(), ...appSources(), ...toolSources()]) {
+      const source = stripComments(readFileSync(file, 'utf8'));
+      for (const { name, text } of topLevelDeclarations(source)) {
+        if (rulePort.test(text)) continue;
+        // Modulo the declared name and whether it is exported: a copy that was
+        // renamed on the way in, or published in one module and kept private in
+        // the other, is still a copy. Not modulo parameter names — that would be
+        // alpha-renaming, and every duplicate found here was a paste.
+        const body = text.replace(/^export /, '').split(name).join('@').replace(/\s+/g, ' ').trim();
+        // Short enough to be a coincidence rather than a copy. `{ readonly width:
+        // number; readonly height: number }` is a grid's extent in tiles and a
+        // scene's box in scene units, and merging those would be the error.
+        if (body.length < 80) continue;
+        const where = `${relative(packagesRoot, file)}#${name}`;
+        seen.set(body, [...(seen.get(body) ?? []), where]);
+      }
+    }
+
+    // A run that parsed nothing would pass by finding no pairs.
+    expect(seen.size).toBeGreaterThan(400);
+    const offenders = [...seen.values()]
+      .filter((places) => new Set(places.map((place) => place.split('#')[0])).size > 1)
+      .map((places) => places.join(' == '));
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('reads every field of an art port through that port', () => {
+    // Four fields of `ArtProvider` were assigned by the campaign and read by
+    // nothing: `effectMarkup`, `structureMarkup`, `markerMarkup`, `weaponFx`.
+    // Three were shadows of live `BattlePresentation` fields — a structure, a
+    // mark on the ground and a weapon's effect are things a *scene* draws — and
+    // two of the three were assigned `() => null`, a provider saying nothing
+    // through a field nobody was listening to.
+    //
+    // Two checks, because the two failures look different. A field nothing reads
+    // is found by looking for any read of it at all; a field that *is* read, but
+    // on the other port, is found by the two ports sharing a name.
+    const artRoot = join(packagesRoot, 'game-ui', 'src', 'art');
+    const ports = [
+      { file: join(artRoot, 'ports.ts'), name: 'ArtProvider' },
+      { file: join(artRoot, 'battle-presentation.ts'), name: 'BattlePresentation' },
+    ];
+    const sources = [...everyPackageSource(), ...appSources()]
+      .map((file) => stripComments(readFileSync(file, 'utf8')))
+      .join('\n');
+
+    const declared = new Map<string, string[]>();
+    const offenders: string[] = [];
+    for (const port of ports) {
+      const body = new RegExp(String.raw`export interface ${port.name} \{([\s\S]*?)\n\}`)
+        .exec(stripComments(readFileSync(port.file, 'utf8')));
+      if (!body) throw new Error(`no ${port.name} interface in ${port.file}`);
+      const members = [...body[1].matchAll(/^ {2}(?:readonly )?(\w+)\??[(:<]/gm)].map(([, name]) => name);
+      declared.set(port.name, members);
+      for (const member of members) {
+        // A read, not an assignment: `structureMarkup: () => null` is the
+        // campaign answering a question, and `.structureMarkup` is somebody
+        // asking it. Only the second one makes the field load-bearing.
+        if (!new RegExp(String.raw`\.${member}\b`).test(sources)) {
+          offenders.push(`${port.name}.${member} is assigned but never asked for`);
+        }
+      }
+    }
+
+    // `id` is on both by design: identity is not a capability. Everything the
+    // application root composes by name has one, and `ArtDirection` refuses two
+    // entries under the same name in either list.
+    for (const member of declared.get('ArtProvider') ?? []) {
+      if (member !== 'id' && declared.get('BattlePresentation')?.includes(member)) {
+        offenders.push(`${member} is declared by both ports; one of them is a shadow`);
+      }
+    }
+
+    // Both ports parsed, or this passes by having read no members.
+    expect((declared.get('ArtProvider') ?? []).length).toBeGreaterThan(8);
+    expect((declared.get('BattlePresentation') ?? []).length).toBeGreaterThan(10);
     expect(offenders).toEqual([]);
   });
 });

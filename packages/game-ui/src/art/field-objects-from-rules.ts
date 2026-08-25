@@ -1,5 +1,6 @@
 import type { BattlefieldMarker, StructureDef, StructureState } from '@empire/battle-engine';
 import { GROUND_TONES, PAL, shade } from './palette';
+import { nameHash, pick, r2 } from './variation';
 
 /**
  * A structure and a battlefield marker drawn from what the rules can see.
@@ -20,18 +21,6 @@ import { GROUND_TONES, PAL, shade } from './palette';
  * which is why these two functions are total.
  */
 
-/** A stable 0..1 from an id, so a structure looks the same in every battle. */
-function idHash(id: string, salt: number): number {
-  let hash = 0x811c9dc5 ^ salt;
-  for (let index = 0; index < id.length; index++) {
-    hash = Math.imul(hash ^ id.charCodeAt(index), 0x01000193) >>> 0;
-  }
-  return (hash >>> 8) / 0x01000000;
-}
-
-const r2 = (value: number) => Math.round(value * 100) / 100;
-
-const pick = <T>(choices: readonly T[], at: number): T => choices[Math.floor(at * choices.length) % choices.length];
 
 const RAISED_BY_COVER = { none: 0, half: 1.4, full: 2.8 } as const;
 
@@ -46,9 +35,9 @@ function cracks(id: string, wear: number): string {
   const count = Math.round(wear * 3);
   let out = '';
   for (let index = 0; index < count; index++) {
-    const x = r2(7 + idHash(id, 40 + index) * 18);
-    const y = r2(9 + idHash(id, 50 + index) * 12);
-    out += `<path d="M${x} ${y}l${r2(1.5 - idHash(id, 60 + index) * 3)} 4l2 3" stroke="${PAL.ink}"
+    const x = r2(7 + nameHash(id, 40 + index) * 18);
+    const y = r2(9 + nameHash(id, 50 + index) * 12);
+    out += `<path d="M${x} ${y}l${r2(1.5 - nameHash(id, 60 + index) * 3)} 4l2 3" stroke="${PAL.ink}"
       stroke-width="1" fill="none" opacity="0.55"/>`;
   }
   return out;
@@ -73,16 +62,16 @@ export function structureFromRules(
   // Masonry tone by name, as the derived terrain picks its ground tone: without
   // it two structures alike in every rule came out identically, which is the
   // same defect one step down — a gate that looks like a depot.
-  const face = shade(pick(GROUND_TONES.stone, idHash(state.type, 0)), state.disabled ? -0.32 : 0);
+  const face = shade(pick(GROUND_TONES.stone, nameHash(state.type, 0)), state.disabled ? -0.32 : 0);
   const top = shade(face, 0.24);
   const side = shade(face, -0.3);
   const height = Math.min(23, 9 + raised * 4);
   const crown = r2(27 - height);
-  const lean = idHash(state.type, 1) > 0.5 ? 1 : -1;
+  const lean = nameHash(state.type, 1) > 0.5 ? 1 : -1;
   // Two details the name decides, so structures alike in every rule still differ:
   // how many courses a wall is laid in, and how broad a fixture's footing is.
-  const courses = 3 + Math.round(idHash(state.type, 2) * 2);
-  const footing = r2(7.5 + idHash(state.type, 3) * 3);
+  const courses = 3 + Math.round(nameHash(state.type, 2) * 2);
+  const footing = r2(7.5 + nameHash(state.type, 3) * 3);
 
   // A wall fills its cell; a fixture stands on a footing in the middle of it.
   const body = def.blocksMovement
@@ -122,7 +111,7 @@ export function structureFromRules(
  */
 export function markerFromRules(marker: BattlefieldMarker, ownerColor?: string): string {
   const tint = ownerColor ?? PAL.neutral;
-  const turn = r2(-30 + idHash(marker.kind, 2) * 60);
+  const turn = r2(-30 + nameHash(marker.kind, 2) * 60);
   if (marker.fallenUnit) {
     // A body: slumped, face down, with the side's colour still on it.
     return `<g transform="rotate(${turn} 16 22)" opacity="0.82">

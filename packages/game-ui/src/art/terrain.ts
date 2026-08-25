@@ -9,25 +9,15 @@ import {
 } from '@empire/battle-engine';
 import type { BoardPiece } from './board-surface';
 import { PAL } from './palette';
+import type { TileContext } from './ports';
 import { terrainFromRules } from './terrain-from-rules';
+import { r2 } from './variation';
 
 /** Tile edge length in SVG user units. The board scales via viewBox. */
 export const TILE = 32;
 
-interface TileContext {
-  x: number;
-  y: number;
-  /** Presentation theme; ignored by mechanics and generic painters. */
-  theme?: string;
-  /** Owner colour for buildings; undefined = neutral. */
-  ownerColor?: string;
-  /** Same-terrain neighbours, used to knit roads/water together. */
-  linked: { n: boolean; e: boolean; s: boolean; w: boolean };
-}
-
 type Painter = (ctx: TileContext) => string;
 
-const r2 = (n: number) => Math.round(n * 100) / 100;
 
 /* --------------------------------------------------------------- primitives */
 

@@ -1,6 +1,7 @@
 import type { TerrainDef } from '@empire/battle-engine';
 import { tileHash } from '@empire/battle-engine';
 import { GROUND_TONES, PAL, shade } from './palette';
+import { nameHash, pick, r2 } from './variation';
 
 /**
  * A tile drawn from what the rules can see about it.
@@ -61,24 +62,6 @@ function readTerrain(terrain: TerrainDef): TerrainReading {
   };
 }
 
-/**
- * A stable 0..1 from a content id.
- *
- * `tileHash` seeds from coordinates, which is what makes one field of grass look
- * hand-laid; this seeds from the name, which is what keeps a terrain looking the
- * same in every level, every thumbnail and every editor swatch.
- */
-function idHash(id: string, salt: number): number {
-  let hash = 0x811c9dc5 ^ salt;
-  for (let index = 0; index < id.length; index++) {
-    hash = Math.imul(hash ^ id.charCodeAt(index), 0x01000193) >>> 0;
-  }
-  return (hash >>> 8) / 0x01000000;
-}
-
-const pick = <T>(choices: readonly T[], at: number): T => choices[Math.floor(at * choices.length) % choices.length];
-
-const r2 = (value: number) => Math.round(value * 100) / 100;
 
 /** The base tone, chosen by what the tile is and varied by what it is called. */
 function toneOf(terrain: TerrainDef, reading: TerrainReading): string {
@@ -91,14 +74,14 @@ function toneOf(terrain: TerrainDef, reading: TerrainReading): string {
         : GROUND_TONES.open;
   // Denser cover reads as deeper ground, so two tiles of the same family still
   // separate when the rules say one of them is better to stand behind.
-  return shade(pick(family, idHash(terrain.id, 1)), -0.1 * Math.min(1, terrain.defense * 2));
+  return shade(pick(family, nameHash(terrain.id, 1)), -0.1 * Math.min(1, terrain.defense * 2));
 }
 
 /** Speckle that keeps a field of one terrain from reading as a painted rectangle. */
 function grain(tone: string, x: number, y: number, seed: number): string {
   const light = shade(tone, 0.16);
   const dark = shade(tone, -0.16);
-  const bits = 3 + Math.round(idHash(String(seed), 2) * 2);
+  const bits = 3 + Math.round(nameHash(String(seed), 2) * 2);
   let out = `<rect width="32" height="32" fill="${tone}"/>
     <path d="M0 ${6 + Math.round(tileHash(x, y, 1) * 6)}h32v4H0z" fill="${light}" opacity="0.14"/>
     <path d="M0 ${23 - Math.round(tileHash(x, y, 2) * 5)}h32v5H0z" fill="${dark}" opacity="0.16"/>`;
@@ -141,7 +124,7 @@ function broken(tone: string, x: number, y: number, rough: number): string {
 function standing(terrain: TerrainDef, tone: string, reading: TerrainReading): string {
   const { raised, sealed } = reading;
   const height = Math.min(20, 5 + raised * 3.2);
-  const lean = idHash(terrain.id, 3) > 0.5 ? 1 : -1;
+  const lean = nameHash(terrain.id, 3) > 0.5 ? 1 : -1;
   const face = shade(tone, sealed ? 0.22 : 0.12);
   const shadowSide = shade(tone, -0.3);
   const peak = r2(28 - height);

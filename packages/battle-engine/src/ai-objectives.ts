@@ -1,20 +1,20 @@
 import { idx } from './grid';
-import { type ObjectiveHandlerRegistry, type ObjectiveKind } from './objective-system';
+import {
+  type ObjectiveHandlerRegistry,
+  type ObjectiveKind,
+  type ObjectiveOf,
+} from './objective-system';
 import { selectUnits } from './scenario';
 import { areEnemies, player, unitsOf } from './state';
 import type {
   Coord,
   GameState,
   Objective,
-  ObjectiveKindMap,
-  ObjectiveMeta,
   PlayerId,
   StructureId,
 } from './types';
 import { type ContentCatalog } from './content-pack';
 import { KeyedRegistry } from './registry';
-
-type ObjectiveOf<K extends ObjectiveKind> = ObjectiveMeta & ObjectiveKindMap[K];
 
 export interface AiDestination {
   at: Coord;

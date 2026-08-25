@@ -23,7 +23,8 @@ export type ObjectiveRefreshMode = 'self' | 'children' | 'sequence';
 /** The discriminant every objective is keyed by, named once for every consumer. */
 export type ObjectiveKind = Extract<keyof ObjectiveKindMap, string>;
 
-type ObjectiveOf<K extends ObjectiveKind> = ObjectiveMeta & ObjectiveKindMap[K];
+/** One objective of a known kind: the shared meta, plus that kind's own payload. */
+export type ObjectiveOf<K extends ObjectiveKind> = ObjectiveMeta & ObjectiveKindMap[K];
 
 /**
  * Port declared by this module: `failOn` embeds a scenario condition, so

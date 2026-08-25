@@ -1,6 +1,9 @@
 import {
   readCurrentDocument,
+  requireStoredShape,
+  storedField as field,
   StoredDocumentError,
+  type StoredShape,
 } from '@empire/battle-engine';
 import { validateCampaignDefinition, validateCampaignState } from './aggregate';
 import { CampaignInvariantError } from './errors';
@@ -70,57 +73,44 @@ export function loadCampaignSave(raw: unknown, definition: CampaignDefinition): 
   return save;
 }
 
-type ShapeCheck = (value: unknown) => boolean;
-type Shape<T> = Record<keyof T, ShapeCheck>;
-
-const anArray: ShapeCheck = Array.isArray;
-const anObject: ShapeCheck = (value) =>
-  typeof value === 'object' && value !== null && !Array.isArray(value);
-const aString: ShapeCheck = (value) => typeof value === 'string';
-const aNumber: ShapeCheck = (value) => typeof value === 'number' && Number.isFinite(value);
-const anInteger: ShapeCheck = (value) => Number.isInteger(value);
-const nullable = (check: ShapeCheck): ShapeCheck => (value) => value === null || check(value);
-
-const CAMPAIGN_SHAPE: Shape<CampaignSave['campaign']> = {
-  id: aString,
-  version: anInteger,
+const CAMPAIGN_SHAPE: StoredShape<CampaignSave['campaign']> = {
+  id: field.string,
+  version: field.integer,
 };
 
-const SAVE_SHAPE: Shape<CampaignSave> = {
-  schema: anInteger,
-  campaign: anObject,
-  contentPacks: anObject,
-  savedAt: aString,
-  state: anObject,
+const SAVE_SHAPE: StoredShape<CampaignSave> = {
+  schema: field.integer,
+  campaign: field.object,
+  contentPacks: field.object,
+  savedAt: field.string,
+  state: field.object,
 };
 
-const STATE_SHAPE: Shape<CampaignState> = {
-  definitionId: aString,
-  definitionVersion: anInteger,
-  currentNode: aString,
-  status: aString,
-  flags: anArray,
-  variables: anObject,
-  resources: anObject,
-  relations: anObject,
-  features: anArray,
-  roster: anObject,
-  completedNodes: anArray,
-  battleHistory: anArray,
-  pendingBattle: nullable(anObject),
-  battleSequence: anInteger,
+const STATE_SHAPE: StoredShape<CampaignState> = {
+  definitionId: field.string,
+  definitionVersion: field.integer,
+  currentNode: field.string,
+  status: field.string,
+  flags: field.array,
+  variables: field.object,
+  resources: field.object,
+  relations: field.object,
+  features: field.array,
+  roster: field.object,
+  completedNodes: field.array,
+  battleHistory: field.array,
+  pendingBattle: field.orNull(field.object),
+  battleSequence: field.integer,
 };
 
 function reject(message: string): never {
   throw new StoredDocumentError(`campaign save ${message}`);
 }
 
-function requireShape<T>(value: unknown, shape: Shape<T>, owner: string): void {
-  if (!anObject(value)) reject(`${owner} must be an object`);
-  const fields = value as Record<string, unknown>;
-  for (const [field, check] of Object.entries(shape) as [string, ShapeCheck][]) {
-    if (!check(fields[field])) reject(`${owner}.${field} is missing or invalid`);
-  }
+function requireShape<T>(value: unknown, shape: StoredShape<T>, owner: string): void {
+  requireStoredShape(value, shape, (bad) => reject(bad === null
+    ? `${owner} must be an object`
+    : `${owner}.${bad} is missing or invalid`));
 }
 
 function requireStringArray(value: readonly unknown[], owner: string): void {
@@ -136,8 +126,8 @@ function requireFiniteRecord(value: Record<string, number>, owner: string): void
 function requireCampaignSaveShape(save: CampaignSave): void {
   requireShape(save, SAVE_SHAPE, 'save');
   requireShape(save.campaign, CAMPAIGN_SHAPE, 'campaign');
-  if (!anObject(save.contentPacks)) reject('contentPacks must be an object');
-  if (!aString(save.savedAt) || Number.isNaN(Date.parse(save.savedAt))) reject('savedAt is invalid');
+  if (!field.object(save.contentPacks)) reject('contentPacks must be an object');
+  if (!field.string(save.savedAt) || Number.isNaN(Date.parse(save.savedAt))) reject('savedAt is invalid');
   requireShape(save.state, STATE_SHAPE, 'state');
 
   const invalidPack = Object.entries(save.contentPacks)
@@ -157,20 +147,20 @@ function requireCampaignSaveShape(save: CampaignSave): void {
     }
   }
   for (const [id, unit] of Object.entries(state.roster)) {
-    if (!anObject(unit) || typeof unit.id !== 'string' || !aNumber(unit.hpRatio) || !aNumber(unit.moraleRatio)) {
+    if (!field.object(unit) || typeof unit.id !== 'string' || !field.number(unit.hpRatio) || !field.number(unit.moraleRatio)) {
       reject(`state.roster.${id} is invalid`);
     }
   }
   for (const [index, record] of state.battleHistory.entries()) {
-    if (!anObject(record) || !aString(record.requestId) || !aString(record.node) ||
-      !aString(record.level) || !aString(record.outcome) || !anInteger(record.turns) ||
-      !anArray(record.signals)) {
+    if (!field.object(record) || !field.string(record.requestId) || !field.string(record.node) ||
+      !field.string(record.level) || !field.string(record.outcome) || !field.integer(record.turns) ||
+      !field.array(record.signals)) {
       reject(`state.battleHistory.${index} is invalid`);
     }
     requireStringArray(record.signals, `state.battleHistory.${index}.signals`);
   }
-  if (state.pendingBattle && (!aString(state.pendingBattle.requestId) ||
-    !aString(state.pendingBattle.node) || !aString(state.pendingBattle.level))) {
+  if (state.pendingBattle && (!field.string(state.pendingBattle.requestId) ||
+    !field.string(state.pendingBattle.node) || !field.string(state.pendingBattle.level))) {
     reject('state.pendingBattle is invalid');
   }
 }
