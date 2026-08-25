@@ -38,4 +38,4 @@
 
 ## 历史包
 
-旧 `runtime-v2` 已归档至 [`assets/archive/runtime-v2/`](../assets/archive/runtime-v2/README.md)。归档可读、未删除，但不再参与构建或运行时加载。
+旧 `runtime-v2` 已归档至 `assets/archive/runtime-v2/`。归档可读、未删除，但不再参与构建或运行时加载。

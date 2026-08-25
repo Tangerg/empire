@@ -3035,6 +3035,43 @@ describe('one answer per question', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('links only to files that exist', () => {
+    /*
+     * Seventy-five markdown links pointed at nothing.
+     *
+     * Two were repository documents with the relative depth wrong: an asset pack's
+     * README linked its own art-direction plate as `../../art-assets/…` when the
+     * plate lives under `docs/`. The rest were *specifications* — a table of art
+     * deliverables, each row a link to the file it was going to be — written as
+     * links to paths nothing had produced. A spec listing what to build should name
+     * the path; a link promises the reader something is there.
+     */
+    const docs: string[] = [];
+    const walk = (dir: string): void => {
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        // Dot-directories are somebody's local business: a working copy may hold
+        // an untracked archive, and its rot is not this repository's to report.
+        if (entry.name.startsWith('.') || ['node_modules', 'dist', 'assets'].includes(entry.name)) continue;
+        const path = join(dir, entry.name);
+        if (entry.isDirectory()) walk(path);
+        else if (entry.name.endsWith('.md')) docs.push(path);
+      }
+    };
+    walk(join(packagesRoot, '..'));
+
+    const broken = docs.flatMap((doc) => {
+      const text = readFileSync(doc, 'utf8');
+      return [...text.matchAll(/\]\((\.{1,2}\/[^)#\s]+|[\w./-]+\.md)(?:#[^)]*)?\)/g)]
+        .map(([, href]) => href)
+        .filter((href) => !statSync(join(dirname(doc), href), { throwIfNoEntry: false }))
+        .map((href) => `${relative(join(packagesRoot, '..'), doc)} -> ${href}`);
+    });
+
+    // A guard that found no documents would pass by having read nothing.
+    expect(docs.length).toBeGreaterThan(40);
+    expect(broken).toEqual([]);
+  });
+
   it('asks whether a cell is on the board, and where it is, in one place', () => {
     /*
      * `grid.ts` has owned both since the beginning: `inBounds(map, x, y)` and

@@ -47,7 +47,7 @@
 
 | 清单 | 当前用途 |
 | --- | --- |
-| [`manifest-runtime-v2.json`](../assets/manifest-runtime-v2.json) | 首批 27 项运行时候选 |
-| [`manifest-runtime-v2-b02.json`](../assets/manifest-runtime-v2-b02.json) | 68 项综合候选包 |
-| [`manifest-runtime-v2-b03.json`](../assets/manifest-runtime-v2-b03.json) | 28 个战斗单位候选包 |
-| [`manifest-complete.json`](../assets/manifest-complete.json) | 404 个题材 ID 与原型映射 |
+| `manifest-runtime-v2.json` | 首批 27 项运行时候选 |
+| `manifest-runtime-v2-b02.json` | 68 项综合候选包 |
+| `manifest-runtime-v2-b03.json` | 28 个战斗单位候选包 |
+| `manifest-complete.json` | 404 个题材 ID 与原型映射 |

@@ -1,28 +1,28 @@
 # 《群星熄灭之前》静态素材定制清单
 
-正式素材放在 [`../assets`](../assets/)。编号与深化稿一致。`P0` 为关键叙事资源，`P1` 为完整主线，`P2` 为生活与支线扩充。
+正式素材放在 `../assets`。编号与深化稿一致。`P0` 为关键叙事资源，`P1` 为完整主线，`P2` 为生活与支线扩充。
 
 ## 0. 已同步素材对接
 
-现有文件继续保留美术侧命名，剧本使用稳定编号。当前范围、规格和验收见[美术与素材入口](../ART-ASSETS.md)，原始 HD 映射保留在 [`manifest-hd.json`](../assets/manifest-hd.json)。`draft-v1/` 不进入游戏构建。
+现有文件继续保留美术侧命名，剧本使用稳定编号。当前范围、规格和验收见[美术与素材入口](../ART-ASSETS.md)，原始 HD 映射保留在 `manifest-hd.json`。`draft-v1/` 不进入游戏构建。
 
 | 已同步文件 | 深化编号 | 使用状态 |
 | --- | --- | --- |
-| [`mira-portrait-hd.png`](../assets/characters/mira-portrait-hd.png) | `C02-CHAR-MIRA-01` | 正式质量标杆，可直接对接第一章 |
-| [`roan-portrait-hd.png`](../assets/characters/roan-portrait-hd.png) | `C02-CHAR-ROAN-01` | 正式质量标杆；风险腕带、旧灾害官外套与撤离设备均已落实 |
-| [`naim-portrait-hd.png`](../assets/characters/naim-portrait-hd.png) | `C02-CHAR-NAIM-01` | 正式质量标杆；完整露面、爆破盒与盗接线路体现责任线 |
-| [`talos-7-portrait-hd.png`](../assets/characters/talos-7-portrait-hd.png) | `C02-CHAR-TALOS` | 正式质量标杆；方头、多代维修板与单条状态灯形成非人轮廓 |
-| [`zero-rain-tower-hd.png`](../assets/architecture/zero-rain-tower-hd.png) | `C02-ARCH-RAIN-TOWER` | 正式正常态；黑雨、地方共管仍作为后续变体 |
-| [`farlight-cargo-ship-hd.png`](../assets/architecture/farlight-cargo-ship-hd.png) | `C02-ARCH-FARLIGHT-01` | 正式初期货船态；货舱、床位和维修工作台已有可读层次 |
-| [`season-without-rain-hd.png`](../assets/scenes/season-without-rain-hd.png) | `C02-CH01-S00` | 正式赫沙失雨场景标杆 |
-| [`seven-minute-rain-hd.png`](../assets/scenes/seven-minute-rain-hd.png) | `C02-CH01-S04` | 正式七分钟雨；雨牧者、轨道伤痕、接水与不可饮用同框 |
-| [`helo-portrait-hd.png`](../assets/characters/helo-portrait-hd.png) / [`helo-walk-sheet-hd.png`](../assets/units/helo-walk-sheet-hd.png) | `C02-CHAR-HELUO` | 正式头像与四帧单位；民用船长旧夹克、货运许可、工具和载量思维已落实 |
-| [`iya-portrait-hd.png`](../assets/characters/iya-portrait-hd.png) / [`iya-walk-sheet-hd.png`](../assets/units/iya-walk-sheet-hd.png) | `C02-CHAR-IYA` | 正式头像与四帧单位；自选民用衣着、窄投影边与本地关闭控件体现私人边界 |
-| [`soler-archive-monastery-hd.png`](../assets/architecture/soler-archive-monastery-hd.png) | `C02-ARCH-SOLER-ARCHIVE` | 正式建筑；冷外层、暖内核、档案劳动和热源阶层可直接用于第三章 |
-| [`kairon-ring-node-hd.png`](../assets/architecture/kairon-ring-node-hd.png) | `C02-ARCH-RING-CITY` | 正式环都节点；轨道、分层权限门、内环洁净面和外环维修面同体 |
-| [`farlight-departure-hd.png`](../assets/scenes/farlight-departure-hd.png) | `C02-CH02-S09` | 正式起飞场景；难民、有限舱位、未装物资和赫沙沙暴同时可读 |
-| [`folding-table-covenant-hd.png`](../assets/scenes/folding-table-covenant-hd.png) | `C02-CH06-S30` | 正式星约场景；折叠桌五界材料、独立接口、伊娅门与拥挤生活舱已落实 |
-| [`campaign-props-sheet-02-hd.png`](../assets/props/campaign-props-sheet-02-hd.png) | `C02-PROP-HESHA-CUP` / `C02-PROP-ROAN-RISK-LIST` / `C02-PROP-TWO-TICKETS` / `C02-PROP-IYA-DOOR` | 正式四格图集；依次为金属杯、风险清单、两张撤离票、可关闭门控件 |
+| `mira-portrait-hd.png` | `C02-CHAR-MIRA-01` | 正式质量标杆，可直接对接第一章 |
+| `roan-portrait-hd.png` | `C02-CHAR-ROAN-01` | 正式质量标杆；风险腕带、旧灾害官外套与撤离设备均已落实 |
+| `naim-portrait-hd.png` | `C02-CHAR-NAIM-01` | 正式质量标杆；完整露面、爆破盒与盗接线路体现责任线 |
+| `talos-7-portrait-hd.png` | `C02-CHAR-TALOS` | 正式质量标杆；方头、多代维修板与单条状态灯形成非人轮廓 |
+| `zero-rain-tower-hd.png` | `C02-ARCH-RAIN-TOWER` | 正式正常态；黑雨、地方共管仍作为后续变体 |
+| `farlight-cargo-ship-hd.png` | `C02-ARCH-FARLIGHT-01` | 正式初期货船态；货舱、床位和维修工作台已有可读层次 |
+| `season-without-rain-hd.png` | `C02-CH01-S00` | 正式赫沙失雨场景标杆 |
+| `seven-minute-rain-hd.png` | `C02-CH01-S04` | 正式七分钟雨；雨牧者、轨道伤痕、接水与不可饮用同框 |
+| `helo-portrait-hd.png` / `helo-walk-sheet-hd.png` | `C02-CHAR-HELUO` | 正式头像与四帧单位；民用船长旧夹克、货运许可、工具和载量思维已落实 |
+| `iya-portrait-hd.png` / `iya-walk-sheet-hd.png` | `C02-CHAR-IYA` | 正式头像与四帧单位；自选民用衣着、窄投影边与本地关闭控件体现私人边界 |
+| `soler-archive-monastery-hd.png` | `C02-ARCH-SOLER-ARCHIVE` | 正式建筑；冷外层、暖内核、档案劳动和热源阶层可直接用于第三章 |
+| `kairon-ring-node-hd.png` | `C02-ARCH-RING-CITY` | 正式环都节点；轨道、分层权限门、内环洁净面和外环维修面同体 |
+| `farlight-departure-hd.png` | `C02-CH02-S09` | 正式起飞场景；难民、有限舱位、未装物资和赫沙沙暴同时可读 |
+| `folding-table-covenant-hd.png` | `C02-CH06-S30` | 正式星约场景；折叠桌五界材料、独立接口、伊娅门与拥挤生活舱已落实 |
+| `campaign-props-sheet-02-hd.png` | `C02-PROP-HESHA-CUP` / `C02-PROP-ROAN-RISK-LIST` / `C02-PROP-TWO-TICKETS` / `C02-PROP-IYA-DOOR` | 正式四格图集；依次为金属杯、风险清单、两张撤离票、可关闭门控件 |
 
 ## 1. 风格基准 `assets/style`
 

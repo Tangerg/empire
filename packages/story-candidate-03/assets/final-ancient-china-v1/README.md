@@ -10,7 +10,7 @@
 - 叙事原则：低奇幻、制度驱动；粮、地、税、军籍、河工、户册与证据均需要真实可视化。
 - 禁止：日本武士与忍者语汇、鸟居与日式城郭、仙侠法术、现代武器、科幻机械、照片写实、油亮 3D、像素画。
 
-基准图：[`../../../art-assets/reference/art-direction-map.png`](../../../art-assets/reference/art-direction-map.png)
+基准图：[`docs/story-candidates/candidate-03/art-assets/reference/art-direction-map.png`](../../../../docs/story-candidates/candidate-03/art-assets/reference/art-direction-map.png)
 
 ## 规模
 

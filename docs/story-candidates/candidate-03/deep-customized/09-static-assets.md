@@ -1,32 +1,32 @@
 # 《布衣定鼎》静态素材定制清单
 
-正式资源目录为 [`../assets`](../assets/)。文件名使用下列稳定编号，文本与素材可独立迭代。
+正式资源目录为 `../assets`。文件名使用下列稳定编号，文本与素材可独立迭代。
 
 优先级：`P0` 用于第一阶段关键演出，`P1` 用于完整战役，`P2` 用于支线与氛围扩充。
 
 ## 0. 已同步素材对接
 
-当前文件继续保留美术侧命名，深化稿通过稳定编号对接。当前范围、规格和验收见[美术与素材入口](../ART-ASSETS.md)，原始 HD 映射保留在 [`manifest-hd.json`](../assets/manifest-hd.json)。`draft-v1/` 不进入游戏构建。
+当前文件继续保留美术侧命名，深化稿通过稳定编号对接。当前范围、规格和验收见[美术与素材入口](../ART-ASSETS.md)，原始 HD 映射保留在 `manifest-hd.json`。`draft-v1/` 不进入游戏构建。
 
 | 已同步文件 | 深化编号 | 使用状态 |
 | --- | --- | --- |
-| [`shen-li-22-portrait-hd.png`](../assets/characters/shen-li-22-portrait-hd.png) | `C03-CHAR-SHEN-01` | 正式质量标杆；河工头巾、粗麻、量杆与账页均已落实 |
-| [`lu-qinghe-portrait-hd.png`](../assets/characters/lu-qinghe-portrait-hd.png) | `C03-CHAR-LU-01` | 正式质量标杆；炭笔、药包与旧账裙袋形成账房轮廓 |
-| [`han-yue-portrait-hd.png`](../assets/characters/han-yue-portrait-hd.png) | `C03-CHAR-HAN-01` | 正式质量标杆；铁匠烧伤、自制札甲与改制锤均可读 |
-| [`pei-zhao-portrait-hd.png`](../assets/characters/pei-zhao-portrait-hd.png) | `C03-CHAR-PEI-01` | 正式质量标杆；制式甲、图袋和克制朱砂区别于义军体系 |
-| [`jiang-zhaoye-portrait-hd.png`](../assets/characters/jiang-zhaoye-portrait-hd.png) | `C03-CHAR-JIANG-01` | 正式水盟船主锚点；防水短衣、船钩、账绳和工作束发均已落实 |
-| [`jiang-zhaoye-walk-sheet-hd.png`](../assets/units/jiang-zhaoye-walk-sheet-hd.png) | `C03-CHAR-JIANG-01`（单位） | 四帧战术单位；保留船钩、账绳和水盟独立身份，不作海盗化 |
-| [`aletan-portrait-hd.png`](../assets/characters/aletan-portrait-hd.png) | `C03-CHAR-ALATAN-01` | 正式大朔边将锚点；多文化织带、雪地骑装、复合弓与修补札甲可读 |
-| [`aletan-walk-sheet-hd.png`](../assets/units/aletan-walk-sheet-hd.png) | `C03-CHAR-ALATAN-01`（单位） | 四帧战术单位；保留边军专业性与独立盟将视觉边界 |
-| [`county-granary-hd.png`](../assets/architecture/county-granary-hd.png) | `C03-ARCH-GRANARY` | 正式县仓标杆；封门、石基、称量棚与粮囤清晰 |
-| [`huai-right-bank-dike-hd.png`](../assets/architecture/huai-right-bank-dike-hd.png) | `C03-ARCH-HUAI-DIKE-01` | 正式河堤模块；石脚、闸门、渗沟、巡检路和抢修工具齐全 |
-| [`linchuan-government-hub-hd.png`](../assets/architecture/linchuan-government-hub-hd.png) | `C03-ARCH-LINCHUAN-HUB` | 正式第三章基地；户曹、工曹、学馆、史馆和市井服务五区同院可读 |
-| [`great-lake-mixed-fleet-hd.png`](../assets/architecture/great-lake-mixed-fleet-hd.png) | `C03-ARCH-GREAT-LAKE-FLEET` | 正式大泽连营；军、粮、医、工、民功能船与栈桥构成混合水上基地 |
-| [`opening-the-county-granary-hd.png`](../assets/scenes/opening-the-county-granary-hd.png) | `C03-CH01-S03` | 正式官仓开门场景，量粮秩序与灾民压力同框 |
-| [`rain-night-crossing-hd.png`](../assets/scenes/rain-night-crossing-hd.png) | `C03-CH02-S08` | 正式雨夜渡淮，船、浮桥、浅滩三线与登记/追击层同时可读 |
-| [`great-lake-precision-fire-attack-hd.png`](../assets/scenes/great-lake-precision-fire-attack-hd.png) | `C03-CH04-S18` | 正式大泽精准火攻；受控火线、白灯绳标、撤民航道和民船同框 |
-| [`one-bowl-of-new-grain-hd.png`](../assets/scenes/one-bowl-of-new-grain-hd.png) | `C03-CH07-S35E` | 正式推荐尾声；普通食肆、无官印粮袋、公开木牌与河堤日常同框 |
-| [`campaign-props-sheet-02-hd.png`](../assets/props/campaign-props-sheet-02-hd.png) | `C03-PROP-FIRST-BANNER` · `C03-PROP-PEI-CAMPAIGN-MAP` · `C03-PROP-FIELD-MARKERS` · `C03-PROP-PEI-CLAN-ROLL` | 正式四格道具；四项证据均无可读文字，格序与机器清单一致 |
+| `shen-li-22-portrait-hd.png` | `C03-CHAR-SHEN-01` | 正式质量标杆；河工头巾、粗麻、量杆与账页均已落实 |
+| `lu-qinghe-portrait-hd.png` | `C03-CHAR-LU-01` | 正式质量标杆；炭笔、药包与旧账裙袋形成账房轮廓 |
+| `han-yue-portrait-hd.png` | `C03-CHAR-HAN-01` | 正式质量标杆；铁匠烧伤、自制札甲与改制锤均可读 |
+| `pei-zhao-portrait-hd.png` | `C03-CHAR-PEI-01` | 正式质量标杆；制式甲、图袋和克制朱砂区别于义军体系 |
+| `jiang-zhaoye-portrait-hd.png` | `C03-CHAR-JIANG-01` | 正式水盟船主锚点；防水短衣、船钩、账绳和工作束发均已落实 |
+| `jiang-zhaoye-walk-sheet-hd.png` | `C03-CHAR-JIANG-01`（单位） | 四帧战术单位；保留船钩、账绳和水盟独立身份，不作海盗化 |
+| `aletan-portrait-hd.png` | `C03-CHAR-ALATAN-01` | 正式大朔边将锚点；多文化织带、雪地骑装、复合弓与修补札甲可读 |
+| `aletan-walk-sheet-hd.png` | `C03-CHAR-ALATAN-01`（单位） | 四帧战术单位；保留边军专业性与独立盟将视觉边界 |
+| `county-granary-hd.png` | `C03-ARCH-GRANARY` | 正式县仓标杆；封门、石基、称量棚与粮囤清晰 |
+| `huai-right-bank-dike-hd.png` | `C03-ARCH-HUAI-DIKE-01` | 正式河堤模块；石脚、闸门、渗沟、巡检路和抢修工具齐全 |
+| `linchuan-government-hub-hd.png` | `C03-ARCH-LINCHUAN-HUB` | 正式第三章基地；户曹、工曹、学馆、史馆和市井服务五区同院可读 |
+| `great-lake-mixed-fleet-hd.png` | `C03-ARCH-GREAT-LAKE-FLEET` | 正式大泽连营；军、粮、医、工、民功能船与栈桥构成混合水上基地 |
+| `opening-the-county-granary-hd.png` | `C03-CH01-S03` | 正式官仓开门场景，量粮秩序与灾民压力同框 |
+| `rain-night-crossing-hd.png` | `C03-CH02-S08` | 正式雨夜渡淮，船、浮桥、浅滩三线与登记/追击层同时可读 |
+| `great-lake-precision-fire-attack-hd.png` | `C03-CH04-S18` | 正式大泽精准火攻；受控火线、白灯绳标、撤民航道和民船同框 |
+| `one-bowl-of-new-grain-hd.png` | `C03-CH07-S35E` | 正式推荐尾声；普通食肆、无官印粮袋、公开木牌与河堤日常同框 |
+| `campaign-props-sheet-02-hd.png` | `C03-PROP-FIRST-BANNER` · `C03-PROP-PEI-CAMPAIGN-MAP` · `C03-PROP-FIELD-MARKERS` · `C03-PROP-PEI-CLAN-ROLL` | 正式四格道具；四项证据均无可读文字，格序与机器清单一致 |
 
 ## 1. 风格基准 `assets/style`
 

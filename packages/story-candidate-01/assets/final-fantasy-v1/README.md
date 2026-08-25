@@ -10,7 +10,7 @@
 - 镜头：单位为游戏侧前视；地形、建筑和剧情关卡图采用高位斜俯视。
 - 禁止：写实人体比例、照片质感、厚重油画、光滑 3D、无意义的高饱和发光，以及对已有商业 IP 的直接模仿。
 
-正式定调图：[`../../art-assets/reference/art-direction-map.png`](../../art-assets/reference/art-direction-map.png)
+正式定调图：[`docs/story-candidates/candidate-01/art-assets/reference/art-direction-map.png`](../../../../docs/story-candidates/candidate-01/art-assets/reference/art-direction-map.png)
 
 ## 交付规模
 
