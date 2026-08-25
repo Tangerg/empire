@@ -1,5 +1,5 @@
 import {
-  amountsLabel,
+  recruitCostLabel,
   icon,
   PAL,
   terrainSwatch,
@@ -82,7 +82,7 @@ const playerFunds = (player: PlayerConfig) => player.resources[FUNDS_RESOURCE]?.
 // This printed `funds 100` — the ruleset's own id, to the person authoring the
 // level — while the game two packages over printed 资金 100 from the same rules.
 const unitRecruitCost = (view: EditorPanelView, id: string) =>
-  amountsLabel(view.resources, view.content.units.get(id).recruitCosts, '不可招募');
+  recruitCostLabel(view.resources, view.content.units.get(id));
 
 const fundsGrant = (rules: Partial<RuleSet>) =>
   rules.baseResourceGrants?.find((grant) => grant.resource === FUNDS_RESOURCE)?.amount ?? 0;

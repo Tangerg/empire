@@ -41,7 +41,7 @@ import {
   portraitSvg,
   readCustomLevels,
   requireMountPoint,
-  amountsLabel,
+  recruitCostLabel,
   mapScenePieces,
   terrainLayerPieces,
   escapeHtml,
@@ -76,8 +76,7 @@ const art = CANDIDATE_01_ART;
 const campaignAdapter = candidate01CampaignAdapter();
 
 // What a unit costs, in the words this engine's resources go by.
-const recruitCost = (unit: UnitDef) =>
-  amountsLabel(engine.rules.resources, unit.recruitCosts, '不可招募');
+const recruitCost = (unit: UnitDef) => recruitCostLabel(engine.rules.resources, unit);
 
 const app = requireMountPoint('app');
 let active: GameController | StoryCampaignController | null = null;

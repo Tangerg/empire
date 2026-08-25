@@ -3158,7 +3158,10 @@ describe('one answer per question', () => {
     /*
      * And `as unknown as T`, which was invisible to this guard while being the
      * same move a third way: two casts in a row so the compiler cannot object to
-     * either. Six of them existed and every one had a reason, which is exactly why
+     * either. And `as any`, the fourth, which arrived in a new ruler the moment
+     * this guard was not looking for it — the debugging protocol is untyped JSON on
+     * the wire, and `as any` is how an untyped edge spreads inward. It is a
+     * declared shape now, narrowed where the reply is read. Six of them existed and every one had a reason, which is exactly why
      * they needed listing — the seventh would have arrived unremarked.
      *
      * Three of the six are gone, and listing them is what made them findable. Two
@@ -3194,14 +3197,14 @@ describe('one answer per question', () => {
       const name = relative(packagesRoot, file);
       if (owners.includes(name)) return [];
       const code = stripComments(readFileSync(file, 'utf8'));
-      return / as never\b|\bas unknown as\b/.test(code) ? [name] : [];
+      return / as never\b|\bas unknown as\b|\bas any\b/.test(code) ? [name] : [];
     });
 
     // The list is only honest while each entry still launders something.
     expect(offenders).toEqual([]);
     for (const owner of owners) {
       const source = stripComments(readFileSync(join(packagesRoot, owner), 'utf8'));
-      expect(source, owner).toMatch(/ as never\b|\bas unknown as\b/);
+      expect(source, owner).toMatch(/ as never\b|\bas unknown as\b|\bas any\b/);
     }
   });
 

@@ -26,6 +26,25 @@ export function objectivesOf(level: LevelData, player: LevelData['players'][numb
  * Gathering is also where declaring the same name twice is caught, because that
  * is a fact about the declaration and not about any one reference to it.
  */
+/**
+ * What each family of named things in a level is called.
+ *
+ * Here because this is where a level's names are collected, and the linter's
+ * messages read from the same table: `复合目标` and `地形覆盖` were each written
+ * once here and again in `level-validation.ts`, so a family renamed in one place
+ * would have said two different things about the same document.
+ */
+export const DECLARED = Object.freeze({
+  commander: '指挥官',
+  structure: '结构',
+  composite: '复合目标',
+  zone: '区域',
+  engagementRule: '交战规则',
+  overlay: '地形覆盖',
+  trigger: '触发器',
+  player: '玩家',
+});
+
 export class LevelDeclarations {
   readonly players: ReadonlySet<number>;
   readonly unitKeys: ReadonlySet<string>;
@@ -42,13 +61,13 @@ export class LevelDeclarations {
   constructor(level: LevelData, private readonly log: LevelIssueLog) {
     this.players = this.collectPlayerIds(level);
     this.unitKeys = this.collectUnitKeys(level);
-    this.commanders = this.collectIds(level.commanders ?? [], '指挥官');
-    this.structures = this.collectIds(level.structures ?? [], '结构');
-    this.composites = this.collectIds(level.composites ?? [], '复合目标');
-    this.zones = this.collectIds(level.scenario?.zones ?? [], '区域');
-    this.engagementRules = this.collectIds(level.scenario?.engagementRules ?? [], '交战规则');
-    this.overlays = this.collectIds(level.scenario?.overlays ?? [], '地形覆盖');
-    this.triggers = this.collectIds(level.scenario?.triggers ?? [], '触发器');
+    this.commanders = this.collectIds(level.commanders ?? [], DECLARED.commander);
+    this.structures = this.collectIds(level.structures ?? [], DECLARED.structure);
+    this.composites = this.collectIds(level.composites ?? [], DECLARED.composite);
+    this.zones = this.collectIds(level.scenario?.zones ?? [], DECLARED.zone);
+    this.engagementRules = this.collectIds(level.scenario?.engagementRules ?? [], DECLARED.engagementRule);
+    this.overlays = this.collectIds(level.scenario?.overlays ?? [], DECLARED.overlay);
+    this.triggers = this.collectIds(level.scenario?.triggers ?? [], DECLARED.trigger);
     this.objectives = this.collectObjectiveIds(level);
   }
 

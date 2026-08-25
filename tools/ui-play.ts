@@ -64,20 +64,63 @@ function serve(): { close: () => void } {
   return { close: () => server.close() };
 }
 
+/**
+ * The parts of the debugging protocol this tool reads.
+ *
+ * Declared rather than `any`-ed: the protocol is untyped JSON on the wire, and
+ * `as any` is how an untyped edge spreads inward. Everything below is a *read* of a
+ * reply or an event, so `unknown` values are narrowed at the one place that knows
+ * what they are.
+ */
+interface CdpReply {
+  readonly id?: number;
+  readonly method?: string;
+  readonly error?: unknown;
+  readonly result?: CdpResult;
+  readonly params?: CdpParams;
+}
+
+interface CdpResult {
+  readonly timedOut?: boolean;
+  readonly data?: string;
+  readonly result?: { readonly value?: unknown };
+  readonly exceptionDetails?: { readonly exception?: { readonly description?: string } };
+  readonly metrics?: readonly { readonly name: string; readonly value: number }[];
+}
+
+interface CdpParams {
+  readonly type?: string;
+  readonly args?: readonly { readonly description?: string; readonly value?: unknown }[];
+  readonly entry?: { readonly level?: string; readonly text?: string; readonly url?: string };
+  readonly exceptionDetails?: {
+    readonly text?: string;
+    readonly exception?: { readonly description?: string };
+  };
+}
+
+/** A page target as `/json/list` reports it. */
+interface PageTarget {
+  readonly type: string;
+  readonly webSocketDebuggerUrl: string;
+}
+
 /** One CDP connection to the page target, with a promise per command id. */
 class Session {
   private next = 1;
-  private readonly pending = new Map<number, { resolve: (value: any) => void; reject: (error: Error) => void }>();
+  private readonly pending = new Map<
+    number,
+    { resolve: (value: CdpResult) => void; reject: (error: Error) => void }
+  >();
 
   private constructor(private readonly socket: WebSocket) {
     socket.addEventListener('message', (event) => {
-      const message = JSON.parse(String((event as MessageEvent).data));
+      const message = JSON.parse(String((event as MessageEvent).data)) as CdpReply;
       if (message.id !== undefined) {
         const waiting = this.pending.get(message.id);
         this.pending.delete(message.id);
         if (!waiting) return;
         if (message.error) waiting.reject(new Error(JSON.stringify(message.error)));
-        else waiting.resolve(message.result);
+        else waiting.resolve(message.result ?? {});
         return;
       }
       note(message);
@@ -101,7 +144,12 @@ class Session {
    * and a screenshot of a wedged renderer never comes back. A ruler that hangs is
    * worse than one that reports — it looks like a slow build.
    */
-  send(method: string, params: Record<string, unknown> = {}, what = '', deadline = 20_000): Promise<any> {
+  send(
+    method: string,
+    params: Record<string, unknown> = {},
+    what = '',
+    deadline = 20_000,
+  ): Promise<CdpResult> {
     const id = this.next++;
     this.socket.send(JSON.stringify({ id, method, params }));
     return new Promise((resolve, reject) => {
@@ -128,7 +176,7 @@ class Session {
     if (result.exceptionDetails) {
       throw new Error(result.exceptionDetails.exception?.description ?? 'page threw');
     }
-    return result.result.value as T;
+    return result.result?.value as T;
   }
 
   close(): void {
@@ -137,23 +185,25 @@ class Session {
 }
 
 /** What the page said, kept only when it is a complaint. */
-function note(message: { method?: string; params?: any }): void {
-  const { method, params } = message;
+function note(message: CdpReply): void {
+  const { method } = message;
+  const params = message.params ?? {};
   if (method === 'Runtime.exceptionThrown') {
     const detail = params.exceptionDetails;
-    trouble.push(`exception: ${detail.exception?.description ?? detail.text}`);
+    trouble.push(`exception: ${detail?.exception?.description ?? detail?.text ?? 'unknown'}`);
   }
   if (method === 'Runtime.consoleAPICalled' && (params.type === 'error' || params.type === 'assert')) {
-    trouble.push(`console.${params.type}: ${params.args.map((a: any) => a.description ?? a.value).join(' ')}`);
+    const said = (params.args ?? []).map((arg) => arg.description ?? String(arg.value)).join(' ');
+    trouble.push(`console.${params.type}: ${said}`);
   }
   if (method === 'Inspector.targetCrashed') {
     trouble.push('the page crashed');
   }
-  if (method === 'Log.entryAdded' && params.entry.level === 'error') {
+  if (method === 'Log.entryAdded' && params.entry?.level === 'error') {
     // A headless browser asks for a favicon nobody ships; that is the browser's
     // habit, not the game's defect.
     if (String(params.entry.url ?? '').endsWith('/favicon.ico')) return;
-    trouble.push(`log: ${params.entry.text} ${params.entry.url ?? ''}`);
+    trouble.push(`log: ${params.entry.text ?? ''} ${params.entry.url ?? ''}`);
   }
 }
 
@@ -199,6 +249,10 @@ const CLICK = (selector: string) => `
  * next click landed on a disabled control and the navigation after it happened
  * mid-turn, which is what made the browser miss two commands. A ruler waits for a
  * condition, not a duration.
+ *
+ * It reads the HUD's own wording, which couples this file to a string in `hud.ts`.
+ * Deliberate, and safe in the direction that matters: if the wording changes, this
+ * wait times out and says so, rather than passing for the wrong reason.
  */
 const PLAYERS_TURN = `
   const control = document.querySelector('[data-act="end"]');
@@ -250,12 +304,12 @@ async function inBrowser(run: (session: Session, tools: Tools) => Promise<void>)
   ]);
   let session: Session | null = null;
   try {
-    let targets: any[] = [];
+    let targets: PageTarget[] = [];
     for (let attempt = 0; attempt < 40 && targets.length === 0; attempt++) {
       await sleep(250);
       try {
         const listed = await fetch(`http://127.0.0.1:${port}/json/list`);
-        targets = (await listed.json() as any[]).filter((target) => target.type === 'page');
+        targets = (await listed.json() as PageTarget[]).filter((target) => target.type === 'page');
       } catch {
         targets = [];
       }

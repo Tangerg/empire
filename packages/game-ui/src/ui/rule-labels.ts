@@ -1,4 +1,4 @@
-import type { BattleResourceSystem, ResourceAmount } from '@empire/battle-engine';
+import type { BattleResourceSystem, ResourceAmount, UnitDef } from '@empire/battle-engine';
 
 /**
  * What the rules are called to a player.
@@ -30,3 +30,14 @@ export const amountsLabel = (
 ): string => (amounts.length === 0
   ? empty
   : amounts.map((amount) => `${resourceLabel(resources, amount.resource)} ${amount.amount}`).join(' · '));
+
+/**
+ * What a unit costs to recruit, or that it cannot be.
+ *
+ * Both the codex and the editor's palette answer this, and both used to write
+ * `不可招募` themselves — the one word `amountsLabel` deliberately leaves to the
+ * caller, which is right when the callers mean different things and wrong when they
+ * mean the same one.
+ */
+export const recruitCostLabel = (resources: BattleResourceSystem, unit: UnitDef): string =>
+  amountsLabel(resources, unit.recruitCosts, '不可招募');

@@ -12,7 +12,7 @@ import type {
   ScenarioCondition,
   TerrainDef,
 } from './types';
-import { LevelDeclarations, objectivesOf } from './level/declarations';
+import { DECLARED, LevelDeclarations, objectivesOf } from './level/declarations';
 import { resolveRules } from './level/defaults';
 import { scheduleOf } from './domain/scenario-trigger';
 import { declaredChildObjectives, isCompositeObjective } from './objective-model';
@@ -335,15 +335,15 @@ const checkStructures: LevelCheck = (inspection) => {
 const checkComposites: LevelCheck = (inspection) => {
   const { declarations } = inspection;
   for (const composite of inspection.level.composites ?? []) {
-    if (composite.parts.length === 0) inspection.error(`复合目标 ${composite.id} 没有部件`);
+    if (composite.parts.length === 0) inspection.error(`${DECLARED.composite} ${composite.id} 没有部件`);
     for (const part of composite.parts) {
       if (!declarations.structures.has(part)) {
-        inspection.error(`复合目标 ${composite.id} 引用了未知结构 ${part}`);
+        inspection.error(`${DECLARED.composite} ${composite.id} 引用了未知结构 ${part}`);
       }
     }
     const threshold = composite.minimumNeutralized ?? composite.parts.length;
     if (!Number.isInteger(threshold) || threshold < 1 || threshold > composite.parts.length) {
-      inspection.error(`复合目标 ${composite.id} 的瘫痪阈值无效`);
+      inspection.error(`${DECLARED.composite} ${composite.id} 的瘫痪阈值无效`);
     }
   }
 };
@@ -445,13 +445,13 @@ const checkDeployment: LevelCheck = (inspection) => {
 const checkOverlays: LevelCheck = (inspection) => {
   const { content, declarations } = inspection;
   for (const overlay of inspection.level.scenario?.overlays ?? []) {
-    if (!content.terrainOverlays.has(overlay.type)) inspection.error(`未知地形覆盖 "${overlay.type}"`);
+    if (!content.terrainOverlays.has(overlay.type)) inspection.error(`未知${DECLARED.overlay} "${overlay.type}"`);
     inspection.citedZones.add(overlay.zone);
     if (!declarations.zones.has(overlay.zone)) {
-      inspection.error(`地形覆盖 ${overlay.id} 引用了未知区域 ${overlay.zone}`);
+      inspection.error(`${DECLARED.overlay} ${overlay.id} 引用了未知${DECLARED.zone} ${overlay.zone}`);
     }
     if (overlay.remainingRounds !== undefined && overlay.remainingRounds !== null && overlay.remainingRounds < 1) {
-      inspection.error(`地形覆盖 ${overlay.id} 的持续回合必须 >= 1`);
+      inspection.error(`${DECLARED.overlay} ${overlay.id} 的持续回合必须 >= 1`);
     }
   }
 };
@@ -478,17 +478,17 @@ function checkReferences(inspection: LevelInspection, by: string, cited: Payload
 
   for (const id of cited.zones) {
     inspection.citedZones.add(id);
-    if (!declarations.zones.has(id)) unknown('区域', id);
+    if (!declarations.zones.has(id)) unknown(DECLARED.zone, id);
   }
-  for (const id of cited.players) if (!declarations.players.has(id)) unknown('玩家', id);
-  for (const id of cited.structures) if (!declarations.structures.has(id)) unknown('结构', id);
-  for (const id of cited.composites) if (!declarations.composites.has(id)) unknown('复合目标', id);
+  for (const id of cited.players) if (!declarations.players.has(id)) unknown(DECLARED.player, id);
+  for (const id of cited.structures) if (!declarations.structures.has(id)) unknown(DECLARED.structure, id);
+  for (const id of cited.composites) if (!declarations.composites.has(id)) unknown(DECLARED.composite, id);
   for (const aim of cited.objectives) {
     if (!declarations.objectivesOfPlayer(aim.player).has(aim.id)) unknown('目标', `${aim.player}:${aim.id}`);
   }
   for (const id of cited.statuses) if (!content.statuses.has(id)) unknown('状态', id);
   for (const id of cited.terrains) if (!content.terrains.has(id)) unknown('地形', id);
-  for (const id of cited.overlays) if (!content.terrainOverlays.has(id)) unknown('地形覆盖', id);
+  for (const id of cited.overlays) if (!content.terrainOverlays.has(id)) unknown(DECLARED.overlay, id);
   for (const id of cited.unitTypes) if (!content.units.has(id)) unknown('兵种', id);
   for (const at of cited.cells) {
     if (!inspection.inBounds(at)) inspection.error(`${by} 的位置越界：${at.x},${at.y}`);
