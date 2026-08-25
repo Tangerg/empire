@@ -2869,9 +2869,20 @@ describe('one answer per question', () => {
       .replace(/\/\*[\s\S]*?\*\//g, '')
       // A background image's file name is not a class.
       .replace(/url\([^)]*\)/g, 'url()');
-    const emitted = [...everyPackageSource(), ...appSources()]
-      .map((file) => readFileSync(file, 'utf8'))
+    /*
+     * Comments stripped, and matched as whole tokens.
+     *
+     * This was `emitted.includes(name)` over raw source, which is two ways for a
+     * dead rule to vouch for itself: an English sentence in a comment can contain
+     * any short class name, and a substring match makes a rule named `.who` live
+     * because something, somewhere, says "whoever". Both were found by writing that
+     * rule, deleting the markup that wore it, and watching this guard pass.
+     */
+    const emittedSource = [...everyPackageSource(), ...appSources()]
+      .map((file) => stripComments(readFileSync(file, 'utf8')))
       .join('\n');
+    const emits = (name: string): boolean =>
+      new RegExp(`(?<![\\w-])${escapeForRegExp(name)}(?![\\w-])`).test(emittedSource);
 
     const uiRoot = join(packagesRoot, 'game-ui', 'src');
     const listed = (file: string, declaration: RegExp, member: RegExp): string[] => {
@@ -2890,14 +2901,14 @@ describe('one answer per question', () => {
 
     const classes = [...new Set([...css.matchAll(/\.(-?[A-Za-z_][\w-]*)/g)].map(([, name]) => name))];
     const offenders = classes
-      .filter((name) => !emitted.includes(name))
+      .filter((name) => !emits(name))
       .filter((name) => !interpolated.includes(name));
 
     // A data attribute has a second legitimate spelling: the DOM's camel case.
     const camel = (attribute: string) =>
       `dataset.${attribute.slice(5).replace(/-([a-z])/g, (_, letter: string) => letter.toUpperCase())}`;
     for (const [, attribute] of css.matchAll(/\[(data-[\w-]+)/g)) {
-      if (!emitted.includes(attribute) && !emitted.includes(camel(attribute))) {
+      if (!emits(attribute) && !emittedSource.includes(camel(attribute))) {
         offenders.push(attribute);
       }
     }

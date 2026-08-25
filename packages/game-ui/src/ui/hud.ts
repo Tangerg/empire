@@ -930,7 +930,7 @@ export class Hud {
           .map((player) => {
             const strength = state.units.filter((unit) => unit.owner === player.id).length;
             return `<div class="roster-row" style="--team:${player.color}">
-              <span class="dot"></span>${escapeHtml(player.name)}
+              <span class="dot"></span><span class="roster-name">${escapeHtml(player.name)}</span>
               <em>${strength} 单位 · ${escapeHtml(accountSummary(view.resources, playerResource(player)).join(' · '))}</em>
             </div>`;
           })

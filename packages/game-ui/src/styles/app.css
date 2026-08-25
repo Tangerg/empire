@@ -168,6 +168,7 @@ kbd {
 }
 
 .dot {
+  flex: none;
   width: 9px;
   height: 9px;
   border-radius: 50%;
@@ -491,13 +492,29 @@ kbd {
   font-size: 12px;
 }
 
+/*
+ * A side's name is not a paragraph.
+ *
+ * The name used to be a bare text node in this flex row, which makes it an
+ * anonymous item that shrinks like any other — so 蓝军 broke across two lines to
+ * make room for its own account line in a 232px band. The name holds its width
+ * and the accounts wrap instead, which is what a list of amounts can do.
+ */
+.roster-row .roster-name {
+  flex: none;
+}
+
 .roster-row em {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 3px;
+  justify-content: flex-end;
+  gap: 0 3px;
+  min-width: 0;
   margin-left: auto;
   color: var(--text-dim);
   font-style: normal;
+  text-align: right;
 }
 
 /* -------------------------------------------------------------------- board */
