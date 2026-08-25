@@ -7,6 +7,7 @@ import {
   type WeaponId,
   type TacticalGrid,
   gaugeRatio,
+  sameCoord,
 } from '@empire/battle-engine';
 import { tileGaugeBar } from '../art/gauges';
 import { PAL } from '../art/palette';
@@ -518,7 +519,7 @@ export class BoardView {
       if (hidden) continue;
       const origin = this.origin(u);
       drawing.place(origin.x, origin.y);
-      drawing.say('selected', !!o.selected && o.selected.x === u.x && o.selected.y === u.y);
+      drawing.say('selected', !!o.selected && sameCoord(o.selected, u));
 
       const def = this.content.units.get(u.type);
       const ratio = gaugeRatio(u.hp, def.maxHp);

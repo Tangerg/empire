@@ -325,7 +325,7 @@ export class StoryCampaignController {
       ? `<button class="campaign-primary" data-campaign-act="finish">${done ? '返回主菜单' : escapeHtml(this.adapter.completionLabel)}</button>`
       : `<button class="campaign-primary" data-campaign-act="nextBeat">${lastBeat ? '继续' : '下一段'} <span>→</span></button>`;
     this.shell(`<main class="story-screen">
-      <section class="story-card" style="--beat:${this.beat}">
+      <section class="story-card">
         <div class="story-meta"><span>${escapeHtml(story.kicker)}</span><span>${escapeHtml(story.date)}</span><span>${escapeHtml(story.location)}</span></div>
         <h1>${escapeHtml(story.title)}</h1>
         <p class="story-summary">${escapeHtml(story.summary)}</p>

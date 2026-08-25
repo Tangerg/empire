@@ -1,3 +1,4 @@
+import { sameCoord } from './grid';
 import { DomainInvariantError } from './domain/errors';
 import { UnitEntity } from './domain/unit-entity';
 import { PlayerEntity } from './domain/player-entity';
@@ -56,7 +57,7 @@ function zone(state: GameState, id: string) {
 }
 
 function inZone(state: GameState, unit: Unit, zoneId: string): boolean {
-  return zone(state, zoneId).some((cell) => cell.x === unit.x && cell.y === unit.y);
+  return zone(state, zoneId).some((cell) => sameCoord(cell, unit));
 }
 
 export function selectUnits(content: ContentCatalog, state: GameState, selector: UnitSelector): Unit[] {
@@ -79,7 +80,7 @@ export function selectMarkers(state: GameState, selector: MarkerSelector): Battl
     if (selector.kind !== undefined && marker.kind !== selector.kind) return false;
     if (selector.owner !== undefined && marker.owner !== selector.owner) return false;
     if (selector.zone !== undefined && !zone(state, selector.zone).some((cell) =>
-      cell.x === marker.at.x && cell.y === marker.at.y)) return false;
+      sameCoord(cell, marker.at))) return false;
     return true;
   });
 }

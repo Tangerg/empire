@@ -1,3 +1,4 @@
+import { sameCoord } from './grid';
 import { idx } from './grid';
 import {
   objectiveStatusOf,
@@ -193,7 +194,7 @@ export const DefaultAiObjectiveAdvisors = new AiObjectiveAdvisorRegistry()
     const escorted = selectUnits(context.content, context.state, objective.selector)
       .filter((unit) => unit.owner === context.owner);
     const unarrived = escorted.filter((unit) =>
-      !cells.some((cell) => cell.x === unit.x && cell.y === unit.y));
+      !cells.some((cell) => sameCoord(cell, unit)));
     for (const unit of unarrived) context.protect(unit.id, 6);
     for (const cell of cells) {
       context.destination(cell, 12, '护送目标撤离', { unitIds: unarrived.map((unit) => unit.id) });

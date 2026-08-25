@@ -1,3 +1,4 @@
+import { sameCoord } from './grid';
 import { IllegalActionError } from './domain/errors';
 import { CommanderEntity } from './domain/commander-entity';
 import type { UnitDepartureHandler } from './unit-departure';
@@ -111,7 +112,7 @@ export function executeTactic(
   if (!leader) throw new IllegalActionError(`commander "${commanderId}" has no unit on the field`);
   const tactic = content.tactics.get(tacticId);
   const target = tactic.target === 'self' ? { x: leader.x, y: leader.y } : requestedTarget;
-  if (!target || !option.targets.some((cell) => cell.x === target.x && cell.y === target.y)) {
+  if (!target || !option.targets.some((cell) => sameCoord(cell, target))) {
     throw new IllegalActionError('illegal tactic target');
   }
 

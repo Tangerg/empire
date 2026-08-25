@@ -1,3 +1,4 @@
+import { sameCoord } from './grid';
 import type { Board } from './domain/board';
 import { boardOf, } from './domain/board';
 import { ContentRegistry } from './registry';
@@ -107,7 +108,7 @@ UnitDirectives.defineAll([
       const directive = unit.directive;
       if (directive.waypoints.length === 0) return;
       const waypoint = directive.waypoints[directive.cursor % directive.waypoints.length];
-      if (waypoint.x === at.x && waypoint.y === at.y) {
+      if (sameCoord(waypoint, at)) {
         directive.cursor = (directive.cursor + 1) % directive.waypoints.length;
       }
     },

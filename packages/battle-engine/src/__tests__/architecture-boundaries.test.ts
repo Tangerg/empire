@@ -2227,9 +2227,17 @@ describe('the battle screen is its own screen', () => {
     const CLASS_VIA_LIST = /classList\.(?:add|toggle|remove)\('([\w-]+)'/g;
     const DATA_IN_MARKUP = /(data-[a-z][\w-]*)\s*=/g;
     const DATA_AS_KEY = /'(data-[a-z][\w-]*)'\s*:/g;
+    /*
+     * And a custom property, which is the third kind of label a stylesheet reads.
+     * `--beat` rode on every story card, carrying the index of the beat being
+     * shown, and no rule had read it since whatever animation was keyed to it was
+     * removed. A `var(--x)` anywhere is a reader; setting it is not.
+     */
+    const PROPERTY_IN_MARKUP = /(--[a-z][\w-]*)\s*:/g;
 
     const classes = new Map<string, string[]>();
     const attributes = new Map<string, string[]>();
+    const properties = new Map<string, string[]>();
     for (const file of emitters) {
       const source = stripComments(readFileSync(file, 'utf8'));
       for (const pattern of [CLASS_IN_MARKUP, CLASS_AS_KEY, CLASS_VIA_LIST]) {
@@ -2244,6 +2252,9 @@ describe('the battle screen is its own screen', () => {
         for (const [, name] of source.matchAll(pattern)) {
           attributes.set(name, [...attributes.get(name) ?? [], file]);
         }
+      }
+      for (const [, name] of source.matchAll(PROPERTY_IN_MARKUP)) {
+        properties.set(name, [...properties.get(name) ?? [], file]);
       }
     }
 
@@ -2281,7 +2292,11 @@ describe('the battle screen is its own screen', () => {
     expect(classes.size).toBeGreaterThan(100);
     expect(attributes.size).toBeGreaterThan(5);
 
+    const readsProperty = (name: string): boolean =>
+      haystack.some((source) => source.includes(`var(${name}`));
     const unread = [
+      ...[...properties].filter(([name]) => !readsProperty(name))
+        .map(([name, where]) => `${name} (${relative(packagesRoot, where[0])})`),
       ...[...classes].filter(([name]) => !isRead(name, 'class'))
         .map(([name, where]) => `.${name} (${relative(packagesRoot, where[0])})`),
       ...[...attributes].filter(([name]) => !isRead(name, 'data'))
@@ -3017,6 +3032,29 @@ describe('one answer per question', () => {
       .map(([colour, files]) => `${colour}: ${files.join(', ')}`);
 
     expect(readFileSync(palette, 'utf8')).toContain('export const PAL');
+    expect(offenders).toEqual([]);
+  });
+
+  it('asks whether two cells are the same in one place', () => {
+    /*
+     * `sameCoord` has been in `grid.ts` all along, and five modules imported it.
+     * Seventeen other places wrote `a.x === b.x && a.y === b.y` out by hand —
+     * including `selection.ts`, which declared a private `sameCoord` of its own with
+     * the same name and the same body.
+     *
+     * The comparison is not hard. It is that `a.x === b.x && a.y === b.x` reads
+     * exactly like the correct one, in a line nobody looks at twice, and there were
+     * seventeen chances to type it.
+     */
+    const owner = join(packagesRoot, 'battle-engine', 'src', 'grid.ts');
+    const byHand = /(\w[\w.]*)\.x === (\w[\w.]*)\.x/;
+    const offenders = [...everyPackageSource(), ...appSources(), ...toolSources()].flatMap((file) => {
+      if (file === owner) return [];
+      const code = stripComments(readFileSync(file, 'utf8'));
+      return byHand.test(code) ? [relative(packagesRoot, file)] : [];
+    });
+
+    expect(readFileSync(owner, 'utf8')).toMatch(/export const sameCoord = /);
     expect(offenders).toEqual([]);
   });
 

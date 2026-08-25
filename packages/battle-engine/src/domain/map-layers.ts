@@ -1,4 +1,4 @@
-import { edgeKey, idx, inBounds, sharesEdge } from '../grid';
+import { edgeKey, idx, inBounds, sharesEdge, sameCoord} from '../grid';
 import type {
   Coord,
   CoverLevel,
@@ -133,7 +133,7 @@ export class MapLayers {
   }
 
   private coverEntry(at: Coord): { at: Coord; sides: DirectionalCoverSides } | undefined {
-    return this.map.directionalCover.find((cover) => cover.at.x === at.x && cover.at.y === at.y);
+    return this.map.directionalCover.find((cover) => sameCoord(cover.at, at));
   }
 
   /**

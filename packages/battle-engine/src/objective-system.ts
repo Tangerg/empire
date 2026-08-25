@@ -1,3 +1,4 @@
+import { sameCoord } from './grid';
 import { idx } from './grid';
 import { conditionMet, selectUnits } from './scenario';
 import { areEnemies, hqTilesOf, player, unitsOf } from './state';
@@ -352,13 +353,13 @@ export const ObjectiveHandlers = new ObjectiveHandlerRegistry()
     outcome: ({ state, content }, objective) => {
       const cells = zoneCells(state, objective.zone);
       const arrived = selectUnits(content, state, objective.selector).filter((unit) =>
-        cells.some((cell) => cell.x === unit.x && cell.y === unit.y)).length;
+        cells.some((cell) => sameCoord(cell, unit))).length;
       return arrived >= objective.count ? 'success' : 'pending';
     },
     describe: () => '护送目标抵达区域',
     progress: ({ state, content }, objective) => {
       const arrived = selectUnits(content, state, objective.selector).filter((unit) =>
-        zoneCells(state, objective.zone).some((cell) => cell.x === unit.x && cell.y === unit.y)).length;
+        zoneCells(state, objective.zone).some((cell) => sameCoord(cell, unit))).length;
       return `${arrived}/${objective.count} 抵达`;
     },
   }))

@@ -25,6 +25,7 @@ import {
   type TacticalGrid,
   type LevelUnit,
   type PlayerConfig,
+  sameCoord,
 } from '@empire/battle-engine';
 
 /**
@@ -264,7 +265,7 @@ export class EditorBoard {
   private isBadPlacement(u: LevelUnit): boolean {
     if (u.x < 0 || u.y < 0 || u.x >= this.map.width || u.y >= this.map.height) return true;
     if (!this.players.some((p) => p.id === u.owner)) return true;
-    if (this.units.filter((o) => o.x === u.x && o.y === u.y).length > 1) return true;
+    if (this.units.filter((o) => sameCoord(o, u)).length > 1) return true;
     const def = this.content.units.tryGet(u.unit);
     if (!def) return true;
     const terrain = this.content.terrains.get(this.map.tiles[idx(this.map, u.x, u.y)]);

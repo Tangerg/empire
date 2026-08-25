@@ -10,6 +10,7 @@ import {
   type TacticalGrid,
   type TerrainId,
   type UnitTypeId,
+  sameCoord,
 } from '@empire/battle-engine';
 import type { EditorDocument } from './document';
 
@@ -74,7 +75,7 @@ export class BrushSettings {
   sampleFrom(document: EditorDocument, at: Coord, content: ContentCatalog): void {
     const index = idx(document.map, at.x, at.y);
     this.terrain = document.map.tiles[index];
-    const unit = document.units.find((candidate) => candidate.x === at.x && candidate.y === at.y);
+    const unit = document.units.find((candidate) => sameCoord(candidate, at));
     if (unit) {
       this.unitType = unit.unit;
       this.owner = unit.owner;

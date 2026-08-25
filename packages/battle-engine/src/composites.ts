@@ -1,3 +1,4 @@
+import { sameCoord } from './grid';
 import { DomainInvariantError } from './domain/errors';
 import { BattleAggregate } from './domain/battle-aggregate';
 import { inBounds } from './grid';
@@ -52,7 +53,7 @@ export function moveComposite(
     if (!inBounds(state.map, destination.to.x, destination.to.y)) {
       throw new DomainInvariantError(`composite "${id}" would move out of bounds`);
     }
-    if (state.units.some((unit) => unit.x === destination.to.x && unit.y === destination.to.y)) {
+    if (state.units.some((unit) => sameCoord(unit, destination.to))) {
       throw new DomainInvariantError(`composite "${id}" would collide with a unit`);
     }
     const occupied = structureAt(state, destination.to.x, destination.to.y);

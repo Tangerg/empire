@@ -1,3 +1,4 @@
+import { sameCoord } from './grid';
 import { DomainInvariantError } from './domain/errors';
 import {
   type BattleResourceSystem,
@@ -459,7 +460,7 @@ export function restoreState(target: GameState, snapshot: GameState): void {
  * had to know which of them a module happened to import.
  */
 export function unitAt(state: GameState, at: Coord): Unit | undefined {
-  return state.units.find((unit) => unit.x === at.x && unit.y === at.y);
+  return state.units.find((unit) => sameCoord(unit, at));
 }
 
 export function unitById(state: GameState, id: number): Unit | undefined {

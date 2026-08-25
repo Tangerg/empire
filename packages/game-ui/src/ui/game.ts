@@ -10,6 +10,7 @@ import {
   type BattleSave,
   areEnemies,
   unitAt,
+  sameCoord,
 } from '@empire/battle-engine';
 import type {
   Action,
@@ -339,7 +340,7 @@ export class GameController {
   private get hoverTarget(): Coord | null {
     const cursor = this.cursor;
     if (!cursor) return null;
-    return this.selection.targets.some((t) => t.x === cursor.x && t.y === cursor.y) ? cursor : null;
+    return this.selection.targets.some((t) => sameCoord(t, cursor)) ? cursor : null;
   }
 
   private selectionContext(): SelectionContext {

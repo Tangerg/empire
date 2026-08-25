@@ -1,3 +1,4 @@
+import { sameCoord } from '../grid';
 import { describe, expect, it } from 'vitest';
 import { Board } from '../domain/board';
 import { TacticalGrids, type TacticalGrid } from '../tactical-grid';
@@ -168,7 +169,7 @@ describe('a battle fought on another tiling', () => {
       const [attacker, defender] = state.units;
       return battle.space
         .attackTargets(state, attacker, attacker, TEST_CONTENT.weapons.get('soldier_sword'))
-        .some((cell) => cell.x === defender.x && cell.y === defender.y);
+        .some((cell) => sameCoord(cell, defender));
     };
 
     expect(reach('square4')).toBe(false);

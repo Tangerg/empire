@@ -46,7 +46,7 @@ export function commandOptions(
   at: Coord,
 ): CommandOption[] {
   const content = rules.content;
-  const moved = !(unit.x === at.x && unit.y === at.y);
+  const moved = !(sameCoord(unit, at));
   const q: AbilityQuery = { state: state, unit, at, moved };
   const out: CommandOption[] = [];
   for (const abilityId of unitAbilityIds(content, unit)) {

@@ -32,6 +32,7 @@ import {
   type UnitDef,
   SpellCastEntity,
   gaugeRatio,
+  sameCoord,
 } from '@empire/battle-engine';
 import {
   type BattleResourceSystem,
@@ -866,7 +867,7 @@ export class Hud {
    * interface said nothing about it anywhere. This is the only readout it has.
    */
   private tileStructure(view: HudView, at: Coord): string {
-    const state = view.state.structures.find((entry) => entry.x === at.x && entry.y === at.y);
+    const state = view.state.structures.find((entry) => sameCoord(entry, at));
     if (!state) return '';
     const definition = view.rules.content.structures.get(state.type);
     const holder = view.state.players.find((player) => player.id === state.owner);

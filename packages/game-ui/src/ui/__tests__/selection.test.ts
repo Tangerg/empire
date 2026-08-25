@@ -9,6 +9,7 @@ import {
   type Coord,
   type LevelData,
   type Unit,
+  sameCoord,
 } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
 import { emptyOverlay } from '../board';
@@ -97,7 +98,7 @@ function context(session: GameSession, cursor: Coord | null = null, selection: S
     state: session.state,
     isHumanTurn: true,
     cursor,
-    hoverTarget: cursor && targets.some((t) => t.x === cursor.x && t.y === cursor.y) ? cursor : null,
+    hoverTarget: cursor && targets.some((t) => sameCoord(t, cursor)) ? cursor : null,
     canAct: (unit: Unit) => session.engine.canAct(session.state, unit),
     isVisible: () => true,
   };

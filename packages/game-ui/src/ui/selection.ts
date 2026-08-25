@@ -9,6 +9,7 @@ import {
   type GameState,
   type Unit,
   type WeaponId,
+  sameCoord,
 } from '@empire/battle-engine';
 import type { BoardOverlay } from './board';
 
@@ -46,7 +47,6 @@ export interface ClickOutcome {
   readonly action?: Action;
 }
 
-const sameCoord = (left: Coord, right: Coord): boolean => left.x === right.x && left.y === right.y;
 
 export abstract class Selection {
   /** Unit this selection is about, when it is about one. */
