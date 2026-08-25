@@ -198,7 +198,7 @@ export function unitPicture(art: ArtDirection, unit: UnitDef, team: string): Boa
   // declares a strip and `play` on its drawing is silent.
   return {
     body: sprite
-      ? `<g class="sprite-pixel" shape-rendering="crispEdges">${sprite(colors)}</g>`
+      ? `<g shape-rendering="crispEdges">${sprite(colors)}</g>`
       : unitFromRules(unit, colors),
   };
 }

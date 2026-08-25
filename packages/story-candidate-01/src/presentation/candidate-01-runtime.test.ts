@@ -22,13 +22,23 @@ describe('candidate-01 runtime art bindings', () => {
     expect(soldier.strip!.clips.find((clip) => clip.id === 'walk')!.frames).toEqual([1, 3]);
   });
 
-  /** Drawn rather than generated: no sheet, so nothing to play. */
+  /**
+   * A type this pack has no sheet for is drawn by something else, and stands still.
+   *
+   * This used to ask about `rogue`, one of the nine types the built-in levels are
+   * fought with — and the pack ships a 刺客 sheet, so what the test recorded was
+   * that nobody had bound it rather than that the fallback works. A type nobody has
+   * ever drawn is the honest subject: no sheet means no strip, so there is nothing
+   * to play, and the figure is generated from what the rules say about it.
+   */
   it('keeps the programmatic fallback for uncovered units', () => {
-    const rogue = unitPicture(art, TEST_CATALOG.units.get('rogue'), '#3f7fd8');
+    const catalog = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
+    catalog.units.define({ ...catalog.units.get('soldier'), id: 'probe.militia', name: '民兵' });
+    const probe = unitPicture(art, catalog.units.get('probe.militia'), '#3f7fd8');
 
-    expect(rogue.body).toContain('sprite-pixel');
-    expect(rogue.body).not.toContain('data-runtime-raster="unit"');
-    expect(rogue.strip).toBeUndefined();
+    expect(probe.body).not.toContain('data-runtime-raster');
+    expect(probe.body.length).toBeGreaterThan(80);
+    expect(probe.strip).toBeUndefined();
   });
 
   /**

@@ -32,6 +32,30 @@ export const CANDIDATE_01_UNIT_ART: Readonly<Partial<Record<UnitTypeId, string>>
   'c01.cemetery-colossus': 'C01-UNIT-CEMETERY-COLOSSUS',
   'c01.refugee': 'C01-MISSION-REFUGEE-ADULT',
   'c01.laborer': 'C01-MISSION-BRIDGE-LABORER',
+
+  /*
+   * The nine unit types the built-in levels are fought with.
+   *
+   * The shipped game composes this pack's art for every level in its menu,
+   * including the four built-in ones — so those were painted buildings and painted
+   * ground with nine flat vector figures walking about on them, at half the visual
+   * weight of a house. The sheets for all nine were already in the pack, matching
+   * name for name (剑士, 弓箭手, 刺客, 牧师, 法师, 骑士, 巨魔, 弩车, 古龙), and
+   * nothing referenced them.
+   *
+   * A binding table is exactly the place for this: it maps a domain id to this
+   * pack's art, and it does not care which content pack declared the id. The
+   * generated figures stay the answer for a type nobody has drawn.
+   */
+  soldier: 'C01-UNIT-SWORDSMAN',
+  archer: 'C01-UNIT-ARCHER',
+  rogue: 'C01-UNIT-ASSASSIN',
+  cleric: 'C01-UNIT-CLERIC',
+  mage: 'C01-UNIT-MAGE',
+  knight: 'C01-UNIT-KNIGHT',
+  ogre: 'C01-UNIT-TROLL',
+  ballista: 'C01-UNIT-BALLISTA',
+  dragon: 'C01-UNIT-ANCIENT-DRAGON',
 };
 
 /*
