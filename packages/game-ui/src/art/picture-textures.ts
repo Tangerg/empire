@@ -95,9 +95,7 @@ export class BrowserPictureTextures implements PictureTextures {
   bake(markup: string): Promise<BakedPicture> {
     const found = this.baked.get(markup);
     if (found) return found;
-    const pending = this.raster(markup);
-    this.baked.set(markup, pending);
-    return pending;
+    return this.remember(this.baked, markup, this.raster(markup));
   }
 
   frames(strip: BoardStrip): Promise<readonly Texture[]> {
@@ -105,8 +103,26 @@ export class BrowserPictureTextures implements PictureTextures {
     const key = `${strip.href}|${strip.frameCount}`;
     const found = this.cut.get(key);
     if (found) return found;
-    const pending = this.slice(strip);
-    this.cut.set(key, pending);
+    return this.remember(this.cut, key, this.slice(strip));
+  }
+
+  /**
+   * Caches the work, not the failure.
+   *
+   * Three caches here held a `Promise`, and a promise that rejected stayed in
+   * them — so one refused `fetch` for one tile's PNG blanked that picture for as
+   * long as the cache lived. Which is longer than a battle: the GPU backend's
+   * factory keeps one texture cache across every battle of a session, on purpose.
+   * A transient failure at the wrong moment was permanent.
+   *
+   * The returned promise is the one the caller gets, rejection and all — the
+   * `catch` here only forgets the entry, and only if it is still the current one.
+   */
+  private remember<K, T>(cache: Map<K, Promise<T>>, key: K, pending: Promise<T>): Promise<T> {
+    cache.set(key, pending);
+    pending.catch(() => {
+      if (cache.get(key) === pending) cache.delete(key);
+    });
     return pending;
   }
 
@@ -219,7 +235,6 @@ export class BrowserPictureTextures implements PictureTextures {
         reader.onerror = () => reject(new Error(`cannot read ${url}`));
         reader.readAsDataURL(blob);
       }));
-    this.assets.set(url, pending);
-    return pending;
+    return this.remember(this.assets, url, pending);
   }
 }
