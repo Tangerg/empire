@@ -445,6 +445,63 @@ function crossing(
   });
 }
 
+/**
+ * The light a place gives off.
+ *
+ * The atlases paint lit windows and burning braziers, but a painted window only
+ * glows *in its own picture*: the light never reaches the ground around it, so a
+ * village at dusk sat on grass as flat as the field a mile away. The reference
+ * this board is drawn against is full of these — a warm pool under every lit
+ * building and at each end of a bridge.
+ *
+ * Derived from the map rather than authored per level: anywhere people live gets a
+ * hearth, and a crossing gets the lamp at its head. Two sizes, one colour, and the
+ * total kept low — a light that reads as light stops reading as light the moment
+ * there is one on every cell.
+ */
+function hearthGlow(size: number, strength: number): string {
+  return `<radialGradient id="c01-hearth-${size}" cx="0.5" cy="0.5" r="0.5">`
+    + `<stop offset="0" stop-color="#ffcf85" stop-opacity="${strength}"/>`
+    + `<stop offset="0.45" stop-color="#ffb75f" stop-opacity="${(strength * 0.42).toFixed(3)}"/>`
+    + `<stop offset="1" stop-color="#ff9d3a" stop-opacity="0"/>`
+    + `</radialGradient>`;
+}
+
+/**
+ * Every pool of light as one piece, defs included.
+ *
+ * Not one piece per building, which is what this was first: the GPU backend bakes
+ * each piece into its own texture from its own markup, so a gradient defined in a
+ * *different* piece does not exist when that texture is drawn — every pool would
+ * have come out empty there while looking right in the DOM. The rule the rest of
+ * this file already follows is that a definition and what uses it cross the seam
+ * together; `genericFieldLight` is one piece for the same reason.
+ */
+function hearthPieces(content: ContentCatalog, map: GameMap): readonly BoardPiece[] {
+  const pools: string[] = [];
+  const pool = (x: number, y: number, size: number): void => {
+    const span = size * TILE;
+    pools.push(`<rect x="${((x + 0.5) * TILE - span / 2).toFixed(1)}"`
+      + ` y="${((y + 0.62) * TILE - span / 2).toFixed(1)}"`
+      + ` width="${span}" height="${span}" fill="url(#c01-hearth-${size})"/>`);
+  };
+
+  for (let y = 0; y < map.height; y++) {
+    for (let x = 0; x < map.width; x++) {
+      const id = tileAt(map, x, y);
+      if (id === null) continue;
+      if (taggedGround(content.terrains.get(id), GROUND_TAGS.settlement)) pool(x, y, 3);
+      // The head of a run of deck, where a lamp post would stand — not every plank.
+      else if (id === 'bridge' && tileAt(map, x, y - 1) !== 'bridge') pool(x, y, 2);
+    }
+  }
+  if (pools.length === 0) return [];
+  return wholeField(`<g pointer-events="none">`
+    + `<defs>${hearthGlow(3, 0.26)}${hearthGlow(2, 0.18)}</defs>`
+    + pools.join('')
+    + `</g>`);
+}
+
 /** Does open ground here sit next to somewhere people live? */
 function neighboursSettlement(content: ContentCatalog, map: GameMap, x: number, y: number): boolean {
   return ORTHOGONAL.some(([dx, dy]) => {
@@ -678,6 +735,8 @@ export function candidate01MapSceneryLayers(
   return {
     ground: [...groundPieces(content, map), ...authoredGroundPieces(levelId)],
     underUnits: [
+      // Light before the things that stand in it.
+      ...hearthPieces(content, map),
       ...sceneryPieces(content, map),
       ...authoredPlacementPieces(levelId, 'under-units'),
       ...ambientVillagerPieces(levelId),
