@@ -44,8 +44,21 @@
 .battlefield {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
+  /*
+   * Centred so that it overflows *both* ways.
+   *
+   * This was `display: grid; place-items: center`, and a grid item larger than its
+   * container is pinned to the start and overflows only at the end — so once the
+   * board filled its box with the field and let the painted margin bleed, the whole
+   * margin bled to the right, into the band the deployment roster stands in. Cells
+   * you have to click to arrange your line ended up underneath it.
+   *
+   * `margin: auto` on a flex item centres with symmetric overflow, which is the
+   * one arrangement where the field stays in the box the padding reserved for it.
+   */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: auto;
   /*
    * The standing panels are padding on the field, all four of them.
@@ -76,6 +89,7 @@
  * light falling off, not a border.
  */
 .battlefield .board {
+  margin: auto;
   border-radius: 0;
   outline: 0;
   box-shadow: 0 24px 60px rgb(0 0 0 / 52%);

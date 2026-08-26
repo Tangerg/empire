@@ -435,8 +435,13 @@ const COVERED_CELLS = `
   const scale = Math.min(box.width / view.width, box.height / view.height);
   const left = box.left + (box.width - view.width * scale) / 2 - view.x * scale;
   const top = box.top + (box.height - view.height * scale) / 2 - view.y * scale;
-  const columns = Math.round((view.width + view.x) / 32);
-  const rows = Math.round((view.height + view.y) / 32);
+  // The field, not the scene. The viewBox starts at minus the left/top inset, so
+  // subtracting it twice takes the margin off both sides — exact where the side
+  // insets match, which is how a painted scene declares them, and off by less than
+  // a cell top to bottom. Counting the whole scene put probes in the frame, which
+  // is cropped on purpose and which a panel may legitimately stand over.
+  const columns = Math.round((view.width + view.x * 2) / 32);
+  const rows = Math.round((view.height + view.y * 2) / 32);
   const covered = [];
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < columns; x++) {
@@ -583,6 +588,24 @@ async function main(): Promise<void> {
       await click('leave the battle', '[data-act="continue"], [data-act="exit"]');
       await waitFor('the title screen', `return Boolean(document.querySelector('[data-act="campaignNew"]'));`);
       await shot('back-at-the-title');
+    });
+
+    console.log('the experience lab, from its front page into the trial')
+    await inBrowser(async (session, { go, click, shot, waitFor, cells }) => {
+      /*
+       * The fourth application, and the only one no ruler had ever opened past its
+       * front page. It composes the same engine and the same art behind a single
+       * authored mission, which makes it the cheapest place for a composition
+       * mistake to hide: nothing else in this repository mounts it.
+       */
+      await go('/experience-lab/');
+      await shot('lab');
+      await click('start the trial', '.experience-start');
+      await waitFor('the trial board', `return Boolean(document.querySelector('svg.board'));`);
+      await shot('lab-battle');
+      await cells();
+      const covered = await session.eval<string[] | null>(COVERED_CELLS, 'checking the trial');
+      for (const cell of covered ?? []) trouble.push(`in the trial, the interface covers cell ${cell}`);
     });
 
     console.log('the editor handing a level to the game')
