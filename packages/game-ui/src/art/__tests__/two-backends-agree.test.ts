@@ -2,7 +2,9 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { Sprite, Texture, type Container } from 'pixi.js';
 import { ANCIENT_EMPIRES_LEVELS as BUILTIN_LEVELS } from '@empire/content-ancient-empires';
-import { createBattleEngine, type LevelData } from '@empire/battle-engine';
+import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS } from '@empire/story-candidate-01';
+import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
+import { createBattleEngine, mapFromLevel, TacticalGrids, type LevelData } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
 import { FrameClock } from './frame-clock';
 import {
@@ -11,7 +13,8 @@ import {
   type BoardStrip,
   type BoardSurfaceScene,
 } from '../board-surface';
-import { GENERIC_ART } from '../direction';
+import { ArtDirection, GENERIC_ART } from '../direction';
+import { createSceneViewport } from '../scene-viewport';
 import { SvgBoardSurface } from '../svg-board-surface';
 import { PixiBoardSurface, pixiBoardSurface, type ScenePainter } from '../pixi-board-surface';
 import type { BakedPicture, PictureTextures } from '../picture-textures';
@@ -46,6 +49,8 @@ beforeEach(() => clock.install());
 afterEach(() => clock.restore());
 
 const CATALOG = createTestCatalog();
+/** The story pack composed in, for the scene layers only that pack draws. */
+const TEST_CATALOG = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const ENGINE = createBattleEngine({ content: CATALOG });
 
 /** A rasteriser that answers instantly, so a display list needs no GPU and no wait. */
@@ -220,6 +225,58 @@ describe('two backends draw the same board', () => {
     expect(painter.disposed).toBe(1);
     expect(textures.disposed).toBe(1);
     expect(() => renderer(scene)).toThrow(/disposed/);
+  });
+
+  /**
+   * A piece is baked alone, so it has to be whole alone.
+   *
+   * The GPU backend turns each `BoardPiece` into its own texture from its own
+   * markup. A `url(#gradient)` whose `<defs>` live in a *different* piece resolves
+   * to nothing there — while the DOM backend, which puts every piece into one
+   * document, draws it perfectly. That asymmetry is invisible in a screenshot of
+   * the DOM backend and invisible to every test that only reads markup.
+   *
+   * The hearth glow was written that way first: a piece per lit building with the
+   * gradients in a piece of their own. `genericFieldLight` has always been one
+   * piece for this reason; this is the rule stated instead of remembered.
+   */
+  it('leaves no piece pointing at a definition it does not carry', () => {
+    const square = TacticalGrids.get('square4');
+    const offenders: string[] = [];
+    let pieces = 0;
+
+    for (const art of [CANDIDATE_01_ART, new ArtDirection()]) {
+      const presentation = art.presentation;
+      for (const level of CANDIDATE_01_LEVELS.slice(0, 3)) {
+        const map = mapFromLevel(TEST_CATALOG, level);
+        const viewport = createSceneViewport(
+          square,
+          map.width,
+          map.height,
+          32,
+          presentation.sceneProfile(level.id),
+        );
+        const layers = presentation.sceneLayers({
+          content: TEST_CATALOG,
+          levelId: level.id,
+          map,
+          viewport,
+        });
+        for (const [name, layer] of Object.entries(layers)) {
+          for (const piece of layer) {
+            pieces += 1;
+            const defined = new Set([...piece.markup.matchAll(/\sid="([^"]+)"/g)].map(([, id]) => id));
+            for (const [, used] of piece.markup.matchAll(/url\(#([^)]+)\)/g)) {
+              if (!defined.has(used)) offenders.push(`${presentation.id} ${name}: url(#${used})`);
+            }
+          }
+        }
+      }
+    }
+
+    // A sweep that produced no pieces would pass by having drawn nothing.
+    expect(pieces).toBeGreaterThan(1000);
+    expect([...new Set(offenders)]).toEqual([]);
   });
 
   /**
