@@ -518,24 +518,31 @@ async function main(): Promise<void> {
       await sleep(1500);
       await shot('campaign');
       /*
+       * Walked until it is a battle, rather than a fixed number of clicks.
+       *
        * The campaign screen declares its own intents under `data-campaign-act`, and
        * which one is on screen depends on where the story is: a beat advances, a
-       * fork asks, a staging screen starts the battle. Take whichever is there,
-       * four times, which is enough to cross a beat, a choice and into a battle.
+       * fork asks, a staging screen starts the fighting. Four clicks got as far as
+       * the first beat and stopped there, so the campaign's *battle* — the thing
+       * fifteen of sixteen chapters are — was never once mounted by this ruler.
        */
-      for (const step of [1, 2, 3, 4]) {
-        await click(
-          `story step ${step}`,
-          '[data-campaign-act="choose"], [data-campaign-act="nextBeat"],'
-          + ' [data-campaign-act="battle"], [data-campaign-act="aftermath"]',
-        );
-        await sleep(1500);
-        await shot(`campaign-${step}`);
+      const STORY_STEP = '[data-campaign-act="choose"], [data-campaign-act="nextBeat"],'
+        + ' [data-campaign-act="battle"], [data-campaign-act="aftermath"]';
+      let reached = false;
+      for (let step = 1; step <= 12 && !reached; step++) {
+        await click(`story step ${step}`, STORY_STEP);
+        await sleep(1200);
+        if (step <= 4) await shot(`campaign-${step}`);
+        reached = Boolean(await session.eval<unknown>(BOARD_SIZE, 'looking for the battle'));
       }
-      if (await session.eval<{ columns: number; rows: number } | null>(BOARD_SIZE)) {
-        await cells();
-        await shot('campaign-battle');
+      if (!reached) {
+        trouble.push('twelve steps into the campaign and no battle was ever mounted');
+        return;
       }
+      await shot('campaign-battle');
+      await cells();
+      const covered = await session.eval<string[] | null>(COVERED_CELLS, 'checking the campaign battle');
+      for (const cell of covered ?? []) trouble.push(`in the campaign, the interface covers cell ${cell}`);
     });
   } finally {
     server.close();
