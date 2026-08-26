@@ -122,6 +122,17 @@ export const CANDIDATE_01_BOARD_STYLE = `<style>
  * quoted class name in a comment closes the string and turns the CSS after it into
  * expressions — "map is not defined", thrown when a battle mounts.)
  */
+/*
+ * A standard reads against a roof, or it is decoration.
+ *
+ * The pennant is small and lands on top of a lit, detailed building, so it gets the
+ * same treatment the figures get: a dark seat underneath so the cloth separates
+ * from whatever it flies over.
+ */
+.candidate-map .candidate-owner-banner {
+  filter: drop-shadow(0 1px 1.1px rgb(0 0 0 / 70%));
+}
+
 .candidate-map .unit .figure {
   filter:
     drop-shadow(0 0 0.65px rgb(255 246 222 / 45%))

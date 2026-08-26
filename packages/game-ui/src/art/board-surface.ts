@@ -250,6 +250,19 @@ export interface BoardStrip {
   readonly x: number;
   readonly y: number;
   /**
+   * A colour this sheet is multiplied by, or absent for the sheet as drawn.
+   *
+   * The campaign's units are one grey army: which side a figure belongs to was
+   * readable only from the ring under its feet, so from any distance the board was
+   * a crowd. Multiplying the sheet by a lightened team colour makes an army read as
+   * blue or red the way a painted map does, without a second sheet per faction.
+   *
+   * On the strip rather than in the body markup, because both backends have to
+   * honour it: the DOM one filters the image, the GPU one tints the sprite, and
+   * multiply is the one operation that means the same thing in both.
+   */
+  readonly tint?: string | undefined;
+  /**
    * Every clip that may be played on it, by name.
    *
    * A unit's strip is played by `BoardView` through the three names a battle has
@@ -279,12 +292,36 @@ export const boardStripWindow = (strip: BoardStrip, frame: number): string =>
  * the one attribute an animation changes belongs to the element that holds it —
  * which is the element whoever built it already has.
  */
+/**
+ * The colour a strip is multiplied by, as a filter this document can reach.
+ *
+ * One definition per colour, id derived from the colour, which makes two strips of
+ * the same team share it — the same deliberate collision `field-sun` already is.
+ * The filter multiplies and then keeps the source's alpha, so the sheet's
+ * transparent background stays transparent instead of becoming a coloured square.
+ *
+ * On the `<image>`, never on the `<svg class="board-strip">` around it: a filter on
+ * that element defeats the viewport clip that shows one frame, which is the bug
+ * that once drew every unit's whole spritesheet.
+ */
+const tintId = (tint: string): string => `strip-tint-${tint.replace(/[^\w]/g, '')}`;
+
+const tintFilter = (tint: string): string =>
+  `<filter id="${tintId(tint)}" color-interpolation-filters="sRGB">`
+  + `<feFlood flood-color="${escapeAttr(tint)}" result="tint"/>`
+  + `<feBlend in="tint" in2="SourceGraphic" mode="multiply" result="mixed"/>`
+  + `<feComposite in="mixed" in2="SourceGraphic" operator="in"/>`
+  + `</filter>`;
+
 export const boardStripMarkup = (strip: BoardStrip, frame = 0): string =>
   `<svg class="board-strip" x="${strip.x}" y="${strip.y}"`
   + ` width="${strip.frameWidth}" height="${strip.frameHeight}"`
   + ` viewBox="${boardStripWindow(strip, frame)}" overflow="hidden">`
+  + (strip.tint ? `<defs>${tintFilter(strip.tint)}</defs>` : '')
   + `<image href="${escapeAttr(strip.href)}" width="${strip.frameWidth * strip.frameCount}"`
-  + ` height="${strip.frameHeight}" preserveAspectRatio="none"/></svg>`;
+  + ` height="${strip.frameHeight}" preserveAspectRatio="none"`
+  + (strip.tint ? ` filter="url(#${tintId(strip.tint)})"` : '')
+  + `/></svg>`;
 
 /**
  * A picture: a body, a strip that animates, and parts that move on their own.

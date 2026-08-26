@@ -283,13 +283,28 @@ describe('game controller', () => {
     });
     board.fitWithin(540, 380);
 
+    /*
+     * The *field* fills the box; the painted margin around it may run off.
+     *
+     * This used to assert the board element fitted inside the box, margin and all —
+     * which is why a painted battle sat small in the middle with the page showing
+     * along two edges. The trees and cliffs a scene draws around the field are
+     * decoration and exist to be cropped; the field is not, and never is.
+     */
+    const zoom = board.zoomLevel;
+    const fieldWidth = level.width * TILE * zoom;
+    const fieldHeight = level.height * TILE * zoom;
+    expect(fieldWidth).toBeLessThanOrEqual(540.01);
+    expect(fieldHeight).toBeLessThanOrEqual(380.01);
+    // Touching one of the two edges is the difference between filling and fitting.
+    expect(Math.max(fieldWidth / 540, fieldHeight / 380)).toBeCloseTo(1, 2);
+    expect(zoom).toBeGreaterThanOrEqual(0.5);
+
+    // And the element is the field plus that margin, so it is the larger of the two.
     const width = Number.parseFloat(board.el.style.width);
     const height = Number.parseFloat(board.el.style.height);
-    expect(width).toBeLessThanOrEqual(540);
-    expect(height).toBeLessThanOrEqual(380);
-    // Touching one of the two edges is the difference between filling and fitting.
-    expect(Math.max(width / 540, height / 380)).toBeCloseTo(1, 2);
-    expect(board.zoomLevel).toBeGreaterThanOrEqual(0.5);
+    expect(width).toBeGreaterThanOrEqual(fieldWidth);
+    expect(height).toBeGreaterThanOrEqual(fieldHeight);
   });
 
   it('keeps authored roads below every tactical actor', () => {

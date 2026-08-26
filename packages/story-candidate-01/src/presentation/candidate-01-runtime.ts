@@ -24,6 +24,7 @@ import {
   escapeAttr as attr,
   runtimeAtlasCellMarkup,
   runtimeUnitPicture,
+  shade,
   tileGaugeBar,
   type BoardPicture,
   type RuntimeCellAtlas,
@@ -76,14 +77,38 @@ function structureFrame(record: Candidate01RuntimeAsset, state: 'normal' | 'dama
   return index;
 }
 
+/**
+ * Whose ground this is, read from across the board.
+ *
+ * A thin ellipse under the building, which is what this was, says "owned" only to
+ * someone already looking at that tile. A painted map says it with a standard: a
+ * pole and a pennant in the holder's colour, tall enough to clear the roof, plus
+ * the faintest wash of that colour on the ground it stands on.
+ *
+ * Drawn rather than stamped, because the environment kit ships one banner in all
+ * thirty-six atlases and it is a ruin (`wasteland-broken-standard`). Vector work is
+ * already how this package draws what its sheets do not have.
+ */
+function ownerBanner(color: string): string {
+  const pole = attr(color);
+  const cloth = attr(shade(color, 0.1));
+  const shadow = attr(shade(color, -0.45));
+  return `<g class="candidate-owner-banner" pointer-events="none">`
+    + `<ellipse cx="16" cy="29.2" rx="12" ry="2.6" fill="${pole}" opacity="0.16"/>`
+    + `<path d="M7.4 20.5 L7.4 5.2" stroke="#241b14" stroke-width="1.3" stroke-linecap="round"/>`
+    + `<path d="M7.4 5.2 L7.4 4.1" stroke="${cloth}" stroke-width="1.9" stroke-linecap="round"/>`
+    + `<path d="M8.1 5.6 L16.6 8.1 L8.1 11.1 Z" fill="${cloth}" stroke="${shadow}" stroke-width="0.55"`
+    + ` stroke-linejoin="round"/>`
+    + `<path d="M8.1 5.6 L16.6 8.1 L8.1 11.1 Z" fill="none" stroke="rgb(255 255 255 / 22%)" stroke-width="0.35"/>`
+    + `</g>`;
+}
+
 function structureAssetMarkup(record: Candidate01RuntimeAsset, frame: number, ownerColor?: string): string {
   const atlas = cellAtlas(record);
   const anchor = record.anchor ?? [atlas.cellWidth / 2, atlas.cellHeight - 1];
   const x = 16 - anchor[0];
   const y = 31 - anchor[1];
-  const owner = ownerColor
-    ? `<ellipse cx="16" cy="29" rx="13" ry="2.5" fill="none" stroke="${attr(ownerColor)}" stroke-width="1.5" opacity="0.95"/>`
-    : '';
+  const owner = ownerColor ? ownerBanner(ownerColor) : '';
   return `<g data-candidate-art="structure" transform="translate(${x} ${y})">${runtimeAtlasCellMarkup(atlas, frame)}</g>${owner}`;
 }
 

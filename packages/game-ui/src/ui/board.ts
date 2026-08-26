@@ -344,10 +344,18 @@ export class BoardView {
    * of a much larger gradient — the single clearest reason the battle read as a
    * figure on a page rather than the thing being played. The zoom clamp still
    * bounds how large a tile may get; a tiny field simply stops growing there.
+   *
+   * The *field*, not the scene. A painted scene carries a margin of trees and
+   * cliffs around the tactical area, and fitting that margin inside the box too
+   * left the field small in the middle with the page showing along two edges — a
+   * map in a frame rather than a map. The margin is decoration and exists to be
+   * cropped: the board overflows its container, which centres and clips it, so the
+   * forest runs off the screen the way it does on a painted map. Nothing tactical
+   * is ever cropped, because the field itself is what fills the box.
    */
   fitWithin(width: number, height: number): void {
     if (width <= 0 || height <= 0) return;
-    this.setZoom(Math.min(width / this.viewport.sceneWidth, height / this.viewport.sceneHeight));
+    this.setZoom(Math.min(width / this.viewport.fieldWidth, height / this.viewport.fieldHeight));
   }
 
   get zoomLevel(): number {

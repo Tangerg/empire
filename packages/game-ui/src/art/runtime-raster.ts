@@ -1,6 +1,7 @@
 import { TILE, type BoardPicture } from './board-surface';
 import { escapeAttr as attr } from './svg';
 import { UNIT_FOOTING } from './shading';
+import { shade } from './palette';
 
 /**
  * A generated unit spritesheet: one row of frames, and what they are for.
@@ -75,6 +76,15 @@ export function runtimeUnitPicture(sheet: RuntimeUnitSheet, team: string): Board
   }
 
   const color = attr(team);
+  /*
+   * Multiplied by the team colour mixed most of the way to white.
+   *
+   * A multiply by the raw colour would darken a knight into a silhouette; mixed to
+   * `+0.62` it keeps the sheet's own light and shifts its hue, which is what a
+   * painted army looks like — the blue side silver-blue, the red side warm red —
+   * instead of one grey crowd told apart by the rings under its feet.
+   */
+  const tint = shade(color, 0.62);
   return {
     body: `<g data-runtime-raster="unit">
     <ellipse class="runtime-unit-contact-shadow" cx="${UNIT_FOOTING.cx}" cy="29.2" rx="12.5" ry="4.2" fill="#0b100d" opacity="0.48"/>
@@ -89,6 +99,7 @@ export function runtimeUnitPicture(sheet: RuntimeUnitSheet, team: string): Board
       // middle of the cell, one pixel off its floor.
       x: TILE / 2 - sheet.anchor.x,
       y: TILE - 1 - sheet.anchor.y,
+      tint,
       clips: [
         { id: 'idle', frames: [idleFrame], fps: 1, loop: true },
         { id: 'walk', frames: [...walkFrames], fps: 6.25, loop: true },

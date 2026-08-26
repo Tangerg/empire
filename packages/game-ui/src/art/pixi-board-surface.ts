@@ -248,6 +248,9 @@ class PixiDrawing implements BoardDrawing {
   private draw(strip: BoardStrip): void {
     const sprite = new Sprite(Texture.EMPTY);
     sprite.position.set(strip.x, strip.y);
+    // The same multiply the DOM backend writes as a filter. Pixi's `tint` is a
+    // per-sprite multiply, so the shared frame textures stay shared.
+    if (strip.tint) sprite.tint = strip.tint;
     this.figure.addChild(sprite);
 
     let frames: readonly Texture[] = [];

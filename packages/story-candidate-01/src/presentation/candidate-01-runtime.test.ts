@@ -63,17 +63,30 @@ describe('candidate-01 runtime art bindings', () => {
     }
   });
 
-  it('uses the captured building state and a dynamic owner marker', () => {
-    const castle = terrainMarkup(art, TEST_CATALOG.terrains.get('castle'), {
+  it('uses the captured building state and flies the owner\'s colours', () => {
+    const keep = (ownerColor?: string) => terrainMarkup(art, TEST_CATALOG.terrains.get('castle'), {
       x: 1,
       y: 1,
-      ownerColor: '#d8483f',
+      ...(ownerColor === undefined ? {} : { ownerColor }),
       linked: { n: false, e: false, s: false, w: false },
     });
+    const castle = keep('#d8483f');
 
     expect(castle).toContain('data-candidate-art="structure"');
     expect(castle).toContain('/struct-lorne-keep.png');
     expect(castle).toContain('x="-128"');
-    expect(castle).toContain('stroke="#d8483f"');
+
+    /*
+     * A standard, not a ring under the roof.
+     *
+     * Ownership used to be a thin ellipse on the ground, which says "owned" only to
+     * someone already looking at that tile. What the marker has to be is *the
+     * owner's*, so this asks the question that matters: the same keep under two
+     * holders is drawn two different ways, and neither is the unowned one.
+     */
+    expect(castle).toContain('candidate-owner-banner');
+    expect(castle).toContain('#d8483f');
+    expect(castle).not.toBe(keep('#3f7fd8'));
+    expect(keep()).not.toContain('candidate-owner-banner');
   });
 });

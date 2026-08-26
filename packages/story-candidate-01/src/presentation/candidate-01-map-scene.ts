@@ -637,6 +637,40 @@ export function candidate01SceneFrameMarkup(
   };
 }
 
+/**
+ * Where the light comes from.
+ *
+ * This was a flat `#f3d69a` rectangle at 3.5%, which is not light — it is a
+ * uniform tint, and a uniform tint over a painted field is the one thing that
+ * cannot make it look lit. A painted map reads as a place because the light has a
+ * *direction*: warm and strong where the sun is, falling off across the field,
+ * going slightly cool in the far corner.
+ *
+ * Additive only, and kept under a sixth of full strength: the atlases are already
+ * painted with their own light and shadow, and this sits on top of that rather
+ * than replacing it. The gradient ids are fixed rather than serialised for the same
+ * reason `field-sun` is — the definitions are identical wherever they appear, so
+ * two boards in one document sharing them is the outcome, not a collision.
+ */
+function fieldSunlight(width: number, height: number): string {
+  return `<g pointer-events="none">
+    <defs>
+      <linearGradient id="c01-field-sun" x1="0.12" y1="0" x2="0.72" y2="1">
+        <stop offset="0" stop-color="#ffeec2" stop-opacity="0.125"/>
+        <stop offset="0.42" stop-color="#ffdea4" stop-opacity="0.055"/>
+        <stop offset="1" stop-color="#9dc0dd" stop-opacity="0.045"/>
+      </linearGradient>
+      <radialGradient id="c01-field-sun-hot" cx="0.3" cy="0.08" r="0.72">
+        <stop offset="0" stop-color="#fff6da" stop-opacity="0.16"/>
+        <stop offset="0.55" stop-color="#fff6da" stop-opacity="0.045"/>
+        <stop offset="1" stop-color="#fff6da" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="${width}" height="${height}" fill="url(#c01-field-sun)"/>
+    <rect width="${width}" height="${height}" fill="url(#c01-field-sun-hot)"/>
+  </g>`;
+}
+
 /** Story art is pure presentation and cannot affect deterministic battle rules. */
 export function candidate01MapSceneryLayers(
   { content, levelId, map }: BattleSceneContext,
@@ -647,8 +681,8 @@ export function candidate01MapSceneryLayers(
       ...sceneryPieces(content, map),
       ...authoredPlacementPieces(levelId, 'under-units'),
       ...ambientVillagerPieces(levelId),
-      // A warm wash over the whole field, which is art with no place of its own.
-      ...wholeField(`<rect width="${map.width * TILE}" height="${map.height * TILE}" fill="#f3d69a" opacity="0.035"/>`),
+      // The sun, which is art with no place of its own.
+      ...wholeField(fieldSunlight(map.width * TILE, map.height * TILE)),
     ],
     overUnits: authoredPlacementPieces(levelId, 'over-units'),
   };
