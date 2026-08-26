@@ -647,6 +647,50 @@ describe('the guards are held to themselves', () => {
       .toMatch(/export const byId/);
   });
 
+  it('sends the player to another page, or nowhere', () => {
+    /*
+     * Navigating to your own page is a reload written the long way.
+     *
+     * The editor's 试玩 stashed a level and went to `./index.html`, which from the
+     * editor's own directory is the editor: the page reloaded and the level waited
+     * in session storage for a reader that never opened. The engine demo's
+     * 返回游戏 was `href="./"`, the same mistake with the same shape. The game had
+     * always written `../editor/index.html`, so the convention existed and two of
+     * the three did not follow it.
+     *
+     * Both halves are checked: a target that is the current page, and a target
+     * naming an application that does not exist. `location.reload()` is how a
+     * reload is spelled, and this guard has nothing to say about it.
+     */
+    const apps = readdirSync(join(packagesRoot, '..', 'apps'), { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name);
+    expect(apps.length).toBeGreaterThanOrEqual(4);
+
+    const offenders: string[] = [];
+    for (const file of [...everyPackageSource(), ...appSources()]) {
+      const code = stripComments(readFileSync(file, 'utf8'));
+      const targets = [
+        ...[...code.matchAll(/href=["'`]([^"'`$]+)["'`]/g)].map(([, target]) => target!),
+        ...[...code.matchAll(/location\.href\s*=\s*[`'"]([^`'"$]+)/g)].map(([, target]) => target!),
+      ];
+      for (const target of targets) {
+        if (!target.startsWith('./') && !target.startsWith('../')) continue;
+        const where = relative(packagesRoot, file);
+        if (/^\.\/(index\.html)?$/.test(target)) {
+          offenders.push(`${where} navigates to its own page ("${target}")`);
+          continue;
+        }
+        const named = /^\.\.\/([\w-]+)\//.exec(target);
+        if (named && !apps.includes(named[1]!)) {
+          offenders.push(`${where} navigates to "${target}", and there is no such app`);
+        }
+      }
+    }
+
+    expect(offenders).toEqual([]);
+  });
+
   it('runs every test it ships', () => {
     /*
      * `it.only` left in a file does not fail anything — it silently disables every

@@ -118,7 +118,7 @@ export class EditorPanels {
     const { document: doc, tool, brush } = view;
     this.topEl.innerHTML = `
       <div class="topbar-left">
-        <a class="btn ghost" href="./index.html" title="返回游戏">${icon('play')}</a>
+        <a class="btn ghost" href="../game/index.html" title="返回游戏">${icon('play')}</a>
         <input class="name-input" data-field="name" value="${escapeHtml(doc.name)}" placeholder="关卡名称" />
         <input class="id-input" data-field="id" value="${escapeHtml(doc.id)}" placeholder="id" />
       </div>
