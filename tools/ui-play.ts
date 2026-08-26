@@ -235,6 +235,16 @@ const CLICK_CELL = (x: number, y: number) => `
   return true;
 `;
 
+/** The virtual key codes a headless browser wants alongside the key names. */
+const KEY_CODES: Readonly<Record<string, number>> = {
+  ArrowLeft: 37,
+  ArrowUp: 38,
+  ArrowRight: 39,
+  ArrowDown: 40,
+  Enter: 13,
+  Escape: 27,
+};
+
 const CLICK = (selector: string) => `
   const target = document.querySelector(${JSON.stringify(selector)});
   if (!target) return false;
@@ -462,6 +472,25 @@ async function main(): Promise<void> {
       await shot('battle');
       await cells();
       await shot('after-every-cell');
+
+      /*
+       * The other half of the interface.
+       *
+       * Arrows and Enter drive the tactical layer now, and a key is not a click:
+       * it goes through the document rather than the board, and nothing else in
+       * this repository presses one against the shipped bundle.
+       */
+      for (const key of ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Enter', 'Escape']) {
+        await session.send('Input.dispatchKeyEvent', {
+          type: 'keyDown',
+          key,
+          code: key,
+          windowsVirtualKeyCode: KEY_CODES[key],
+        }, `pressing ${key}`);
+        await session.send('Input.dispatchKeyEvent', { type: 'keyUp', key, code: key }, `releasing ${key}`);
+        await sleep(250);
+      }
+      await shot('after-the-keyboard');
       const covered = await session.eval<string[] | null>(COVERED_CELLS, 'checking the field edges');
       for (const cell of covered ?? []) trouble.push(`the interface covers cell ${cell}`);
       for (const round of [1, 2]) {
