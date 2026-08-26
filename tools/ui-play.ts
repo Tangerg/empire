@@ -412,30 +412,24 @@ const COVERED_CELLS = `
   const scale = Math.min(box.width / view.width, box.height / view.height);
   const left = box.left + (box.width - view.width * scale) / 2 - view.x * scale;
   const top = box.top + (box.height - view.height * scale) / 2 - view.y * scale;
-  // Counted over the whole scene on purpose: the probes that land in the painted
-  // margin fall outside the window and are ignored below, and the ones that matter
-  // — the field's own corners and edge middles — are the innermost of them.
   const columns = Math.round((view.width + view.x) / 32);
   const rows = Math.round((view.height + view.y) / 32);
-  const probes = [];
-  for (const [x, y] of [
-    [0, 0], [columns - 1, 0], [0, rows - 1], [columns - 1, rows - 1],
-    [Math.floor(columns / 2), 0], [Math.floor(columns / 2), rows - 1],
-    [0, Math.floor(rows / 2)], [columns - 1, Math.floor(rows / 2)],
-  ]) {
-    const at = { x: left + (x + 0.5) * 32 * scale, y: top + (y + 0.5) * 32 * scale };
-    const on = document.elementFromPoint(at.x, at.y);
-    // A null hit is a point outside the window, which on a painted board is the
-    // frame being cropped on purpose — not something to report. What matters is a
-    // point that hits another element: the interface standing on the field.
-    // (No back-quotes in here: this whole probe is one template literal.)
-    if (on && !svg.contains(on)) {
+  const covered = [];
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < columns; x++) {
+      const at = { x: left + (x + 0.5) * 32 * scale, y: top + (y + 0.5) * 32 * scale };
+      const on = document.elementFromPoint(at.x, at.y);
+      // A null hit is a point outside the window, which on a painted board is the
+      // frame being cropped on purpose — not something to report. What matters is a
+      // point that hits another element: the interface standing on the field.
+      // (No back-quotes in here: this whole probe is one template literal.)
+      if (!on || svg.contains(on)) continue;
       const named = on.closest('[class]');
       const label = named ? String(named.className.baseVal ?? named.className) : on.tagName;
-      probes.push(x + ',' + y + ' under ' + label);
+      covered.push(x + ',' + y + ' under ' + label.split(' ')[0]);
     }
   }
-  return probes;
+  return covered;
 `;
 
 async function main(): Promise<void> {
@@ -491,7 +485,15 @@ async function main(): Promise<void> {
         await sleep(250);
       }
       await shot('after-the-keyboard');
-      const covered = await session.eval<string[] | null>(COVERED_CELLS, 'checking the field edges');
+      /*
+       * Every cell, not eight of them.
+       *
+       * This probed the four corners and the middle of each edge, which is where a
+       * standing panel reaches first — and misses anything that floats: the battle
+       * log, the ledger under the cursor, a toast. Four hundred `elementFromPoint`
+       * calls inside one evaluate cost nothing measurable and leave nowhere to hide.
+       */
+      const covered = await session.eval<string[] | null>(COVERED_CELLS, 'checking every cell');
       for (const cell of covered ?? []) trouble.push(`the interface covers cell ${cell}`);
       for (const round of [1, 2]) {
         await click(`end turn ${round}`, '[data-act="end"]');

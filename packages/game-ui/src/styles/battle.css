@@ -247,6 +247,26 @@
 
 /* Both bottom-left regions may be wider than their column; they grow rightwards
    over the field rather than widening the column and moving everything else. */
+/*
+ * Two cards that only report, and must not take a click.
+ *
+ * The battle log and the card describing the cell under the cursor float over the
+ * field — deliberately, they are the field talking — and `.plaque` turns pointer
+ * events back on so a panel *with controls* can be used. These have none, and the
+ * ruler caught what that costs: with the cursor anywhere, the ledger sat on cell
+ * 0,12 and that cell could not be given an order. A card you cannot press should
+ * not be a card you cannot press *through*.
+ */
+.hud-dispatch,
+.hud-dispatch .plaque,
+.hud-ledger,
+.hud-ledger .plaque {
+  /* The plaque inside as well as the region: the HUD overlay is transparent to
+     the pointer and every `.plaque` opts back in, so opting *out* has to be said
+     where the opting in was. */
+  pointer-events: none;
+}
+
 .hud-dispatch {
   grid-area: dispatch;
   align-self: end;
