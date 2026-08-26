@@ -47,7 +47,20 @@
   display: grid;
   place-items: center;
   overflow: auto;
-  padding: var(--hud-crown) var(--hud-gutter) var(--hud-dock);
+  /*
+   * The standing panels are padding on the field, all four of them.
+   *
+   * The crown and the dock were already here; the flank and the aside were not, and
+   * once the board filled its box with the *field* rather than with the field plus
+   * its painted margin, the top-left cell ended up underneath the objectives
+   * plaque. A covered cell is a cell you cannot give an order to — it looks perfect
+   * in a screenshot and a player finds it by clicking and nothing happening.
+   */
+  padding:
+    var(--hud-crown)
+    calc(var(--hud-aside) + var(--hud-gutter) * 2)
+    var(--hud-dock)
+    calc(var(--hud-flank) + var(--hud-gutter) * 2);
   background: radial-gradient(128% 96% at 50% 6%, #2b2219 0%, #140e0a 58%, #090605 100%);
   /* A game does not show scrollbars; wheel and the camera do the panning. */
   scrollbar-width: none;

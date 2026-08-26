@@ -382,6 +382,52 @@ function tools(session: Session): Tools {
   return { shot, go, click, waitFor, cells };
 }
 
+/**
+ * Whether the interface is standing on the battlefield.
+ *
+ * The board fills its box with the *field* now, so the field reaches further under
+ * the panels than it used to. A cell the HUD covers is a cell you cannot give an
+ * order to — the one failure mode that a screenshot shows as "looks great" and a
+ * player discovers by clicking and nothing happening.
+ *
+ * Asked of the four corners and the middle of each edge, which is where a panel
+ * would reach first, and asked the way the browser answers it: what is actually on
+ * top at that point.
+ */
+const COVERED_CELLS = `
+  const svg = document.querySelector('svg.board');
+  if (!svg) return null;
+  const box = svg.getBoundingClientRect();
+  const view = svg.viewBox.baseVal;
+  const scale = Math.min(box.width / view.width, box.height / view.height);
+  const left = box.left + (box.width - view.width * scale) / 2 - view.x * scale;
+  const top = box.top + (box.height - view.height * scale) / 2 - view.y * scale;
+  // Counted over the whole scene on purpose: the probes that land in the painted
+  // margin fall outside the window and are ignored below, and the ones that matter
+  // — the field's own corners and edge middles — are the innermost of them.
+  const columns = Math.round((view.width + view.x) / 32);
+  const rows = Math.round((view.height + view.y) / 32);
+  const probes = [];
+  for (const [x, y] of [
+    [0, 0], [columns - 1, 0], [0, rows - 1], [columns - 1, rows - 1],
+    [Math.floor(columns / 2), 0], [Math.floor(columns / 2), rows - 1],
+    [0, Math.floor(rows / 2)], [columns - 1, Math.floor(rows / 2)],
+  ]) {
+    const at = { x: left + (x + 0.5) * 32 * scale, y: top + (y + 0.5) * 32 * scale };
+    const on = document.elementFromPoint(at.x, at.y);
+    // A null hit is a point outside the window, which on a painted board is the
+    // frame being cropped on purpose — not something to report. What matters is a
+    // point that hits another element: the interface standing on the field.
+    // (No back-quotes in here: this whole probe is one template literal.)
+    if (on && !svg.contains(on)) {
+      const named = on.closest('[class]');
+      const label = named ? String(named.className.baseVal ?? named.className) : on.tagName;
+      probes.push(x + ',' + y + ' under ' + label);
+    }
+  }
+  return probes;
+`;
+
 async function main(): Promise<void> {
   mkdirSync(OUT, { recursive: true });
   const server = serve();
@@ -406,7 +452,7 @@ async function main(): Promise<void> {
     });
 
     console.log('a skirmish, played');
-    await inBrowser(async (_session, { go, click, shot, waitFor, cells }) => {
+    await inBrowser(async (session, { go, click, shot, waitFor, cells }) => {
       await go('/game/');
       await click('skirmish', '[data-act="skirmish"]');
       await shot('levels');
@@ -416,6 +462,8 @@ async function main(): Promise<void> {
       await shot('battle');
       await cells();
       await shot('after-every-cell');
+      const covered = await session.eval<string[] | null>(COVERED_CELLS, 'checking the field edges');
+      for (const cell of covered ?? []) trouble.push(`the interface covers cell ${cell}`);
       for (const round of [1, 2]) {
         await click(`end turn ${round}`, '[data-act="end"]');
         await waitFor(`round ${round} to come back to the player`, PLAYERS_TURN);
