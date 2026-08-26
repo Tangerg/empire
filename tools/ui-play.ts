@@ -485,6 +485,11 @@ async function main(): Promise<void> {
         await sleep(250);
       }
       await shot('after-the-keyboard');
+
+      // Again, with a unit taken up: the panel that answers "what can this one do"
+      // is only on screen then, and a probe that runs once runs before it exists.
+      const inPlay = await session.eval<string[] | null>(COVERED_CELLS, 'checking every cell mid-order');
+      for (const cell of inPlay ?? []) trouble.push(`with a unit selected, the interface covers cell ${cell}`);
       /*
        * Every cell, not eight of them.
        *

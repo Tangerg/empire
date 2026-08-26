@@ -93,8 +93,26 @@ function ownerBanner(color: string): string {
   const pole = attr(color);
   const cloth = attr(shade(color, 0.1));
   const shadow = attr(shade(color, -0.45));
+  /*
+   * The ground a holder's camp stands on, as light rather than as a ring.
+   *
+   * A hard ellipse says "this tile is owned" to someone reading tiles. A soft pool
+   * of the holder's colour says "this ground is theirs" to someone looking at the
+   * board — which is what the two camps in the reference do, and what makes a keep
+   * and the tents around it read as one place.
+   *
+   * The gradient is defined inside this tile's own markup, because that is what a
+   * piece baked alone can reach; two tiles of one holder sharing the id is the
+   * intended outcome, the definitions being identical.
+   */
+  const ground = `c01-hold-${color.replace(/[^\w]/g, '')}`;
   return `<g class="candidate-owner-banner" pointer-events="none">`
-    + `<ellipse cx="16" cy="29.2" rx="12" ry="2.6" fill="${pole}" opacity="0.16"/>`
+    + `<defs><radialGradient id="${ground}" cx="0.5" cy="0.5" r="0.5">`
+    + `<stop offset="0" stop-color="${pole}" stop-opacity="0.3"/>`
+    + `<stop offset="0.55" stop-color="${pole}" stop-opacity="0.12"/>`
+    + `<stop offset="1" stop-color="${pole}" stop-opacity="0"/>`
+    + `</radialGradient></defs>`
+    + `<rect x="-24" y="-8" width="80" height="60" fill="url(#${ground})"/>`
     + `<path d="M7.4 20.5 L7.4 5.2" stroke="#241b14" stroke-width="1.3" stroke-linecap="round"/>`
     + `<path d="M7.4 5.2 L7.4 4.1" stroke="${cloth}" stroke-width="1.9" stroke-linecap="round"/>`
     + `<path d="M8.1 5.6 L16.6 8.1 L8.1 11.1 Z" fill="${cloth}" stroke="${shadow}" stroke-width="0.55"`
