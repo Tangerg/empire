@@ -18,6 +18,14 @@
  *
  * A probe, not a test: nothing here asserts a pixel or a rule. It asserts that
  * playing the game does not throw, which is the one thing no other ruler covers.
+ *
+ * What it cannot do yet, said plainly: it drives the board by dispatching pointer
+ * events at computed coordinates, and that reaches *some* of the board's input —
+ * clicks that select and order land, and the cell sweep proves it — while a
+ * synthetic `pointermove` did not move the cursor in either a skirmish or a
+ * playtest when tried in isolation. So the recruit flow, which needs a hover and
+ * then a click on a specific tile, is still only walked by a person. Written here
+ * rather than left as a gap somebody rediscovers.
  */
 import { execFile } from 'node:child_process';
 import { createServer } from 'node:http';
@@ -597,6 +605,7 @@ async function main(): Promise<void> {
       await shot('playtest');
       const covered = await session.eval<string[] | null>(COVERED_CELLS, 'checking the playtest');
       for (const cell of covered ?? []) trouble.push(`in a playtest, the interface covers cell ${cell}`);
+
     });
 
     console.log('a campaign, entered');
