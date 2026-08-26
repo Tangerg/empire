@@ -95,7 +95,10 @@ function thumbnail(level: LevelData): string {
         fill="${color}" stroke="#0b0e14" stroke-width="2"/>`;
     })
     .join('');
-  return `<svg viewBox="0 0 ${map.width * TILE} ${map.height * TILE}" preserveAspectRatio="xMidYMid slice">
+  // `meet`, not `slice`: a card that crops the map is a card that disagrees with
+  // the size printed beside it. Whatever is left over is the same colour the
+  // battle's own surround is, so the letterbox reads as ground running out.
+  return `<svg viewBox="0 0 ${map.width * TILE} ${map.height * TILE}" preserveAspectRatio="xMidYMid meet">
     ${boardPiecesMarkup(scene.ground)}${boardPiecesMarkup(terrainLayerPieces({ art, layout: squareLayout, content }, map, colorOf))}${boardPiecesMarkup([...scene.underUnits, ...scene.overUnits])}${units}
   </svg>`;
 }
