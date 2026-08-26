@@ -72,13 +72,29 @@
   transform: scale(0.96);
 }
 
+/*
+ * A road with its stages marked, not an empty pill.
+ *
+ * The fill is zero wide at the start of a campaign, so what a player saw on the
+ * first screen was a wide empty capsule with `0/16` floating in it — a number with
+ * nothing to be a fraction *of*. The track is divided by the campaign's own battle
+ * count now, so before anything is done it already reads as sixteen stages of road.
+ */
 .campaign-progress {
   position: relative;
   height: 30px;
   overflow: hidden;
   border: 1px solid rgb(232 197 129 / 16%);
   border-radius: 999px;
-  background: rgb(255 255 255 / 5%);
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(100% / var(--segments) - 1px),
+      rgb(232 197 129 / 14%) calc(100% / var(--segments) - 1px),
+      rgb(232 197 129 / 14%) calc(100% / var(--segments))
+    ),
+    rgb(255 255 255 / 5%);
   box-shadow: inset 0 1px 3px rgb(0 0 0 / 38%);
 }
 

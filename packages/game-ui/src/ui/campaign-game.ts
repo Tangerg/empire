@@ -306,7 +306,7 @@ export class StoryCampaignController {
     this.root.innerHTML = `<header class="campaign-topbar">
       <button class="campaign-icon-button" data-campaign-act="exit" aria-label="返回主菜单">‹</button>
       <div><span>${escapeHtml(this.adapter.title)}</span><strong>第 ${chapter} 章 · ${escapeHtml(this.adapter.chapterTitle(chapter))}</strong></div>
-      <div class="campaign-progress" aria-label="战役进度"><i style="--progress:${progress}"></i><b>${completed}/${this.battleTotal}</b></div>
+      <div class="campaign-progress" aria-label="战役进度" style="--segments:${Math.max(1, this.battleTotal)}"><i style="--progress:${progress}"></i><b>${completed}/${this.battleTotal}</b></div>
     </header>
     <div class="campaign-backdrop">
       <img class="campaign-backdrop-wash" src="${scene}" alt=""/>
