@@ -521,6 +521,34 @@ async function main(): Promise<void> {
         await shot(`turn-${round}`);
       }
       /*
+       * Put down and picked up again.
+       *
+       * A battle writes itself to a browser slot and reads itself back — a
+       * round-trip through storage, a format version and a ruleset check, and the
+       * only place it happens is a person pressing two glyph buttons. Save, leave,
+       * come back, resume, and the board has to be a board again.
+       */
+      await click('save the battle', '[data-act="save"]');
+      await click('leave mid-battle', '[data-act="exit"]');
+      // Leaving a battle lands on the title, not on the list it was chosen from.
+      await waitFor('the title screen', `return Boolean(document.querySelector('[data-act="skirmish"]'));`);
+      await click('skirmish again', '[data-act="skirmish"]');
+      await click('the same level again', '[data-act="play"]');
+      await waitFor('the board', `return Boolean(document.querySelector('svg.board'));`);
+      await click('resume the saved battle', '[data-act="resume"]');
+      await sleep(900);
+      await shot('resumed');
+      const resumed = await session.eval<boolean>(
+        `const hud = document.querySelector('.battle-hud');
+         return Boolean(document.querySelector('svg.board') && hud && hud.dataset.mode !== 'over');`,
+        'checking the resumed battle',
+      );
+      if (!resumed) {
+        trouble.push('the saved battle did not come back');
+        return;
+      }
+
+      /*
        * Played to the end, because a battle that ends is a screen nothing else has
        * ever seen. Victory, defeat and a draw all arrive through the same plaque,
        * and the path out of it — the one control on that plaque — was verified by
@@ -531,7 +559,11 @@ async function main(): Promise<void> {
        */
       let over = false;
       for (let round = 3; round <= 40 && !over; round++) {
+        // A missing control means the battle is not on screen any more; grinding
+        // out thirty-nine more forty-five-second waits helps nobody.
+        const before = trouble.length;
         await click(`end turn ${round}`, '[data-act="end"]');
+        if (trouble.length > before) break;
         await waitFor(`round ${round}`, `${PLAYERS_TURN_OR_OVER}`, 45_000);
         over = Boolean(await session.eval<boolean>(BATTLE_OVER, 'asking whether it is over'));
       }
