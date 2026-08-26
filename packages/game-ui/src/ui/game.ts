@@ -10,6 +10,7 @@ import {
   type BattleSave,
   areEnemies,
   unitAt,
+  inBounds,
   sameCoord,
 } from '@empire/battle-engine';
 import type {
@@ -95,6 +96,23 @@ export interface GameControllerOptions {
   renderer?: BoardSurfaceFactory | undefined;
   onComplete?: (snapshot: BattleCompletionSnapshot) => void;
 }
+
+/**
+ * Which way each key means, before the board is asked what that way is here.
+ *
+ * WASD as well as the arrows, because a hand on the mouse for the camera wants the
+ * other hand somewhere useful.
+ */
+const ARROW_STEPS: Readonly<Record<string, readonly [number, number]>> = {
+  arrowup: [0, -1],
+  arrowdown: [0, 1],
+  arrowleft: [-1, 0],
+  arrowright: [1, 0],
+  w: [0, -1],
+  s: [0, 1],
+  a: [-1, 0],
+  d: [1, 0],
+};
 
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
@@ -302,9 +320,50 @@ export class GameController {
       ev.preventDefault();
       return this.cycleIdleUnit();
     }
+    // Commands first: `a` and `w` were an attack and a wait here long before they
+    // were also a step left and a step up, and a chosen destination is asking for
+    // an order rather than for the cursor to wander off it.
     const map: Record<string, string> = { a: 'attack', c: 'capture', h: 'heal', w: 'wait' };
-    if (map[k] && this.selection instanceof DestinationSelection) void this.chooseCommand(map[k]);
+    if (map[k] && this.selection instanceof DestinationSelection) return void this.chooseCommand(map[k]);
+
+    const step = ARROW_STEPS[k];
+    if (step) {
+      ev.preventDefault();
+      return this.moveCursor(step[0], step[1]);
+    }
+    if (k === 'enter') {
+      ev.preventDefault();
+      if (this.cursor) void this.handleClick(this.cursor);
+    }
   };
+
+  /**
+   * Walks the cursor one cell the way the board says is that way.
+   *
+   * The whole tactical layer was mouse-only: every key this handler knew was a
+   * command or a turn, and choosing a unit or a destination could only be done by
+   * pointing at it. Four arrows and Enter are the rest of the game.
+   *
+   * The direction is asked of the tiling rather than added to `x` and `y`. On a
+   * square board those are the same answer; on the eight-way board they are not,
+   * and on a hex board "left" is `hexWest`, a step this module has no business
+   * spelling. So: take every step the board admits from here, and keep the one
+   * that goes furthest in the direction pressed.
+   */
+  private moveCursor(dx: number, dy: number): void {
+    const from = this.cursor ?? this.selectedUnit ?? this.inspect;
+    if (!from) return this.cycleIdleUnit();
+    const grid = this.session.rules.space.board(this.state).grid;
+    const here = { x: from.x, y: from.y };
+    let best: { to: Coord; reach: number } | null = null;
+    for (const facing of grid.directions) {
+      const to = grid.step(here, facing.id);
+      if (!inBounds(this.state.map, to.x, to.y)) continue;
+      const reach = (to.x - here.x) * dx + (to.y - here.y) * dy;
+      if (reach > 0 && (!best || reach > best.reach)) best = { to, reach };
+    }
+    if (best) this.handleHover(best.to);
+  }
 
   /* ------------------------------------------------------------------ input */
 

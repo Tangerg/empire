@@ -104,7 +104,7 @@ export abstract class Selection {
  */
 class IdleSelection extends Selection {
   override get hint(): string {
-    return '点击你的单位开始行动；点击自己的城堡/兵营可以征募（空格切换待命单位）。';
+    return '点击你的单位开始行动；点击自己的城堡/兵营可以征募（空格切换待命单位，方向键走格、回车确认）。';
   }
 
   click(context: SelectionContext, at: Coord): ClickOutcome {

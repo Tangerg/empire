@@ -251,6 +251,62 @@ describe('game controller', () => {
    * disabled variants declared a fake `noop` intent to opt out, which meant the
    * comparison could not have been made even if someone had tried.
    */
+  /**
+   * The tactical layer, from the keyboard.
+   *
+   * Every key this screen knew was a command or a turn — end, undo, cycle, attack,
+   * wait — and choosing *a unit* or *a destination* could only be done by pointing
+   * at it. On a grid game that is half the interface missing.
+   *
+   * The direction is asked of the tiling rather than added to x and y, so this
+   * checks the answer the board gives rather than the arithmetic: pressing right
+   * from a unit's own cell puts the cursor on the cell the board says is east.
+   */
+  it('walks the cursor and commits with the keyboard', async () => {
+    const level = BUILTIN_LEVELS[0];
+    const c = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board);
+
+    const settle = async () => {
+      for (let frame = 0; frame < 12; frame++) await new Promise((resolve) => setTimeout(resolve, 0));
+    };
+    const press = (key: string) => document.dispatchEvent(
+      new window.KeyboardEvent('keydown', { key, bubbles: true, cancelable: true }),
+    );
+    const mine = level.units.find((unit) => unit.owner === 1)!;
+
+    // Nothing hovered: the first press takes up a unit that can still act.
+    press('ArrowRight');
+    await settle();
+    expect(hudSays(c.root)).not.toBe('');
+
+    // Pinned against the board's own answer rather than against arithmetic: after
+    // pressing right from a unit's cell, the screen must read exactly as it does
+    // with the pointer on the cell east of it.
+    hover(board, { x: mine.x, y: mine.y });
+    await settle();
+    const onTheUnit = hudSays(c.root);
+
+    press('ArrowRight');
+    await settle();
+    const afterTheKey = hudSays(c.root);
+
+    hover(board, { x: mine.x + 1, y: mine.y });
+    await settle();
+    expect(afterTheKey).toBe(hudSays(c.root));
+    expect(afterTheKey).not.toBe(onTheUnit);
+
+    // And Enter is the click there: back on the unit, it takes the unit up.
+    hover(board, { x: mine.x, y: mine.y });
+    await settle();
+    press('Enter');
+    await settle();
+    expect(hudSays(c.root)).toContain('结束回合');
+    c.dispose();
+  });
+
   it('answers every intent its own markup declares', () => {
     const level = BUILTIN_LEVELS[0];
     const controller = new GameController(level, () => {}, { engine: TEST_ENGINE, art: ART });
