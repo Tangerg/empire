@@ -279,6 +279,21 @@ const PLAYERS_TURN = `
  * and bottom margin, which is harmless: a click outside the field is a click on
  * nothing.
  */
+/** Whether the battle has ended, which the plaque says in one word. */
+const BATTLE_OVER = `
+  const hud = document.querySelector('.battle-hud');
+  return Boolean(hud && hud.dataset.mode === 'over');
+`;
+
+/** The player's turn, or the end of the whole thing — either ends a wait. */
+const PLAYERS_TURN_OR_OVER = `
+  const hud = document.querySelector('.battle-hud');
+  if (hud && hud.dataset.mode === 'over') return true;
+  const control = document.querySelector('[data-act="end"]');
+  const said = hud?.textContent ?? '';
+  return Boolean(control && !control.disabled && said.includes('你的回合'));
+`;
+
 const BOARD_SIZE = `
   const svg = document.querySelector('svg.board');
   if (!svg) return null;
@@ -505,8 +520,27 @@ async function main(): Promise<void> {
         await waitFor(`round ${round} to come back to the player`, PLAYERS_TURN);
         await shot(`turn-${round}`);
       }
-      // Leaving a battle goes to the title screen, which is what `renderMenu` is.
-      await click('leave the battle', '[data-act="exit"]');
+      /*
+       * Played to the end, because a battle that ends is a screen nothing else has
+       * ever seen. Victory, defeat and a draw all arrive through the same plaque,
+       * and the path out of it — the one control on that plaque — was verified by
+       * nobody: the tests stop at a dispatch and the sweep has no interface at all.
+       *
+       * Ending turns is how a ruler plays: it makes no decisions, so whatever the
+       * battle decides is the battle's own.
+       */
+      let over = false;
+      for (let round = 3; round <= 40 && !over; round++) {
+        await click(`end turn ${round}`, '[data-act="end"]');
+        await waitFor(`round ${round}`, `${PLAYERS_TURN_OR_OVER}`, 45_000);
+        over = Boolean(await session.eval<boolean>(BATTLE_OVER, 'asking whether it is over'));
+      }
+      if (!over) trouble.push('forty turns and the battle never ended');
+      else await shot('the-end');
+
+      // One door, whichever is on the screen: the ended battle's own control, or
+      // the exit a battle still in progress offers.
+      await click('leave the battle', '[data-act="continue"], [data-act="exit"]');
       await waitFor('the title screen', `return Boolean(document.querySelector('[data-act="campaignNew"]'));`);
       await shot('back-at-the-title');
     });
