@@ -96,8 +96,18 @@ export const CANDIDATE_01_BOARD_STYLE = `<style>
   filter: blur(0.55px);
 }
 
+/*
+ * The ring is a hint now, not the answer.
+ *
+ * It used to carry the whole of "whose unit is this", because the sheets are one
+ * grey army — so it was drawn at full strength and a formation read as a row of
+ * bright ellipses with figures standing in them. The figures are tinted now, so the
+ * ring can go back to what a ring is for: seating a unit on its cell and marking a
+ * hair of team colour where the feet are.
+ */
 .candidate-map .runtime-unit-team-ring {
-  stroke-width: 2.15px;
+  stroke-width: 1.45px;
+  opacity: 0.72;
 }
 
 /*

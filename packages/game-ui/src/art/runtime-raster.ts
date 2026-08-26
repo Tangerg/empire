@@ -79,12 +79,14 @@ export function runtimeUnitPicture(sheet: RuntimeUnitSheet, team: string): Board
   /*
    * Multiplied by the team colour mixed most of the way to white.
    *
-   * A multiply by the raw colour would darken a knight into a silhouette; mixed to
-   * `+0.62` it keeps the sheet's own light and shifts its hue, which is what a
-   * painted army looks like — the blue side silver-blue, the red side warm red —
-   * instead of one grey crowd told apart by the rings under its feet.
+   * A multiply by the raw colour would darken a knight into a silhouette; mixed
+   * halfway to white it keeps most of the sheet's own light while shifting its hue
+   * far enough to read, which is what a painted army looks like — the blue side
+   * silver-blue, the red side warm red — instead of one grey crowd told apart by
+   * the rings under its feet. Tried at `+0.62` first, which was too pale to carry
+   * across a field.
    */
-  const tint = shade(color, 0.62);
+  const tint = shade(color, 0.5);
   return {
     body: `<g data-runtime-raster="unit">
     <ellipse class="runtime-unit-contact-shadow" cx="${UNIT_FOOTING.cx}" cy="29.2" rx="12.5" ry="4.2" fill="#0b100d" opacity="0.48"/>

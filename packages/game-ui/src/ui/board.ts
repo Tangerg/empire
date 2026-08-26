@@ -254,9 +254,13 @@ export class BoardView {
     const px = cx + Math.cos(angle) * rx;
     const py = cy + Math.sin(angle) * ry;
     const turn = (angle * 180 / Math.PI).toFixed(1);
+    // Smaller and quieter than it was. It used to be a bright bone-white arrowhead
+    // at full strength under every figure, drawn that way when the figures were one
+    // grey army and every scrap of contrast was carrying meaning. The tint carries
+    // the side now, so this only has to say which way the unit is looking.
     return `<g transform="translate(${px.toFixed(2)} ${py.toFixed(2)}) rotate(${turn})">`
-      + `<path d="M2.6 0 -2.2 -2.4 -2.2 2.4z" fill="#f6efdd" stroke="${PAL.ink}"`
-      + ` stroke-width="0.7" stroke-linejoin="round" opacity="0.88"/></g>`;
+      + `<path d="M2.1 0 -1.8 -1.9 -1.8 1.9z" fill="#efe6d0" stroke="${PAL.ink}"`
+      + ` stroke-width="0.55" stroke-linejoin="round" opacity="0.62"/></g>`;
   }
 
   /** Top-left of a cell, for a group that draws a tile-sized picture. */
