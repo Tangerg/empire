@@ -529,6 +529,15 @@
   background: rgb(255 255 255 / 3%);
 }
 
+/*
+ * The two things a roster row shows a unit as, at one size.
+ *
+ * An authored card is an `<img>`; a unit without one gets a plate holding the
+ * portrait drawn from its own sheet, which is a `<span>` around an inline `<svg>`.
+ * They share a box — and only the box: `object-fit` and `object-position` are how
+ * a *replaced* element crops its content, so on the plate they were two
+ * declarations that could never do anything.
+ */
 .campaign-unit img,
 .campaign-unit-plate {
   flex: none;
@@ -536,12 +545,16 @@
   height: 44px;
   border: 1px solid rgb(220 185 118 / 20%);
   border-radius: 8px;
-  object-fit: cover;
-  object-position: 50% 18%;
   background: #1a1511;
   outline: 1px solid rgb(255 255 255 / 8%);
   outline-offset: -1px;
   image-rendering: auto;
+}
+
+/* Framed on the face, which only the picture that has one can be. */
+.campaign-unit img {
+  object-fit: cover;
+  object-position: 50% 18%;
 }
 
 /*
