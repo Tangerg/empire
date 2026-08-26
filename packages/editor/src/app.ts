@@ -455,7 +455,11 @@ export class EditorApp {
       return;
     }
     stashPlaytest(level);
-    location.href = './index.html';
+    // The *game*, which is a sibling of this app in the built layout. `./index.html`
+    // is this editor's own page: pressing 试玩 reloaded the editor and dropped you
+    // back on the same document you were editing, with the stashed level sitting in
+    // session storage waiting for a reader that never opened.
+    location.href = '../game/index.html';
   }
 
   private loadLevel(level: LevelData, status: string): void {

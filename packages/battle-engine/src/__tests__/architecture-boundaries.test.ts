@@ -1006,7 +1006,10 @@ describe('a content pack does not re-declare the common layer', () => {
       if (file === owner) return [];
       const code = stripComments(readFileSync(file, 'utf8'));
       // A local builder returning `MoveCosts`, or a bare positional `costs(…)`.
-      return /:\s*MoveCosts\s*=>|\bconst costs = \(/.test(code)
+      // The second is matched as a *function*: `const costs = (…) =>`. Without the
+      // arrow it also caught `const costs = (list ?? []).map(…)`, an ordinary local
+      // in `level/defaults.ts` that has nothing to do with movement.
+      return /:\s*MoveCosts\s*=>|\bconst costs = \([^)]*\)\s*(?::[^=]+)?=>/.test(code)
         ? [relative(packagesRoot, file)]
         : [];
     });

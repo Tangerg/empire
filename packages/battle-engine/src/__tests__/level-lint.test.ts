@@ -94,6 +94,23 @@ describe('level lint', () => {
     expect(new Set(homes.map((home) => `${home.x},${home.y}`)).size).toBe(2);
     expect(new Set(blank.players.map((player) => player.id)))
       .toEqual(new Set(homes.map((home) => home.owner)));
+
+    /*
+     * And can afford to use it.
+     *
+     * The first version of this gave both sides a barracks and no money: lint-clean
+     * and unplayable, which the editor's 试玩 button then handed to the game as two
+     * empty armies staring at each other. The purse is the cheapest thing that
+     * barracks makes, asked of the catalog.
+     */
+    const barracks = TEST_RULES.content.terrains.all().find((terrain) => terrain.produces.length > 0);
+    const cheapest = Math.min(...(barracks?.produces ?? [])
+      .map((id) => TEST_RULES.content.units.get(id).recruitCosts
+        .find((cost) => cost.resource === 'funds')?.amount ?? Number.POSITIVE_INFINITY));
+    expect(cheapest).toBeGreaterThan(0);
+    for (const player of blank.players) {
+      expect(player.resources.funds?.current, `player ${player.id}`).toBeGreaterThanOrEqual(cheapest);
+    }
   });
 
   it('reports an unreadable terrain document but never hides a catalog defect', () => {

@@ -545,6 +545,28 @@ async function main(): Promise<void> {
       await shot('back-at-the-title');
     });
 
+    console.log('the editor handing a level to the game')
+    await inBrowser(async (session, { go, click, shot, waitFor }) => {
+      /*
+       * The one path that crosses two applications.
+       *
+       * 试玩 stashes the level in session storage and navigates; the game reads it
+       * on load. Nothing verified the navigation, and it went to `./index.html` —
+       * which from the editor's own directory is the editor. The stash sat there
+       * waiting for a reader that never opened.
+       */
+      await go('/editor/');
+      await waitFor('the editor', `return Boolean(document.querySelector('[data-act="playtest"]'));`);
+      await click('playtest', '[data-act="playtest"]');
+      await waitFor(
+        'the game to take the level',
+        `return Boolean(document.querySelector('svg.board') && document.querySelector('[data-act="end"]'));`,
+      );
+      await shot('playtest');
+      const covered = await session.eval<string[] | null>(COVERED_CELLS, 'checking the playtest');
+      for (const cell of covered ?? []) trouble.push(`in a playtest, the interface covers cell ${cell}`);
+    });
+
     console.log('a campaign, entered');
     await inBrowser(async (session, { go, click, shot, cells }) => {
       await go('/game/');

@@ -113,6 +113,27 @@ function productionTerrain(content: ContentCatalog): TerrainDef | null {
 }
 
 /**
+ * Enough to build the cheapest thing this barracks makes, and not a coin more.
+ *
+ * A blank document used to give both sides a barracks and no money: it passed the
+ * lint, because each side had somewhere to build, and it could not be played,
+ * because neither side could build. The 试玩 button handed exactly that to the
+ * game — two empty armies staring at each other.
+ *
+ * The amount is asked of the catalog rather than picked: whatever the production
+ * terrain makes, the cheapest of those in the resource a level's players start
+ * with. So the first thing an author can do on a new map is put a unit on it.
+ */
+function openingPurse(content: ContentCatalog, barracks: TerrainDef | null): number {
+  const prices = (barracks?.produces ?? [])
+    .filter((id) => content.units.has(id))
+    .map((id) => content.units.get(id).recruitCosts
+      .find((cost) => cost.resource === FUNDS_RESOURCE)?.amount ?? 0)
+    .filter((amount) => amount > 0);
+  return prices.length === 0 ? 0 : Math.min(...prices);
+}
+
+/**
  * A blank, playable level: two sides, each with somewhere to build, the catalog's
  * blank ground and the default win conditions.
  *
@@ -135,7 +156,13 @@ export function emptyLevel(content: ContentCatalog, width = 20, height = 14): Le
   const barracks = productionTerrain(content);
   const character = barracks ? content.terrainEncoding.character(barracks.id) : null;
   const terrain = new Array(height).fill(blank.repeat(width));
-  const players = defaultPlayers();
+  const players = defaultPlayers().map((player) => ({
+    ...player,
+    resources: {
+      ...player.resources,
+      [FUNDS_RESOURCE]: { current: openingPurse(content, barracks), capacity: null },
+    },
+  }));
   // Opposite ends of the middle row, so a new document reads as two sides facing
   // each other rather than as a corner case.
   const homes = [

@@ -226,7 +226,7 @@ function render(): void {
   app.innerHTML = `<main class="demo-shell">
     <header class="demo-header">
       <div>
-        <a class="back-link" href="./">${icon('undo')} 返回游戏</a>
+        <a class="back-link" href="../game/index.html">${icon('undo')} 返回游戏</a>
         <p class="eyebrow">SRPG ENGINE / LIVE CAPABILITY DEMO</p>
         <h1>实体没有被拆散，规则可以被组合。</h1>
         <p class="lede">这不是静态原型。下面所有预测、伤害、资源扣减和事件都由正式 <code>GameSession → BattleEngine</code> 链路产生。</p>
