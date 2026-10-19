@@ -4,17 +4,17 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 241,
+    "formalBound": 249,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 28,
-      "equipment": 79,
+      "equipment": 83,
       "interactive-structure": 24,
       "mission-unit": 1,
       "narrative-static": 1,
-      "skill": 44
+      "skill": 48
     },
-    "rawPreservedTopics": 245,
+    "rawPreservedTopics": 253,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -49,7 +49,19 @@
       "sameSourceStateAndCamera": true,
       "liveGame": false
     },
-    "remainingEnvironmentIntegration": "Cliffs/camps/landmarks source families are exported, but source completion does not establish all-map placement quality. Vertical bridge consumers and fortress connectivity remain active integration work."
+    "remainingEnvironmentIntegration": "Cliffs/camps/landmarks source families are exported, but source completion does not establish all-map placement quality. Vertical bridge consumers and fortress connectivity remain active integration work.",
+    "cemeteryDecorationClearance": {
+      "level": "c01-11",
+      "changes": 7,
+      "fourTreeCrowns": "same-cell low-fern substitution",
+      "threeGraveyardDecorations": "visual footY -13.76 only",
+      "ruleChanges": false,
+      "sourcePngChanges": false,
+      "validation": "16 scene contracts and60 replays identical except intended c01-11 underUnits presentation; hidden/selection regression guards pass",
+      "remaining": "Tasha42.8% and five pre-existing >50% occlusions remain; no eighth change",
+      "evidence": "cemetery-local-clearance/before-after-labeled.png",
+      "liveGame": "pending"
+    }
   },
   "authoredTeamVariants": {
     "red-swordsman": "four poses formally bound; not an extra canonical topic"
@@ -6233,11 +6245,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-45/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-45.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native48 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SKILL-46",
@@ -6249,11 +6266,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-46/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-46.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native48 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SKILL-47",
@@ -6261,13 +6283,20 @@
       "category": "skill",
       "label": "亡者归名",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-47/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-47.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native48 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SKILL-48",
@@ -6275,13 +6304,20 @@
       "category": "skill",
       "label": "古龙盟约",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-48/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-48.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native48 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STATUS-01",
@@ -10894,13 +10930,20 @@
       "category": "equipment",
       "label": "除生机驾驶员主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-defoliator-pilot/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-defoliator-pilot.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native48 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+        "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+      }
     },
     {
       "topicId": "c02-equipment-echo-tracker",
@@ -10908,8 +10951,10 @@
       "category": "equipment",
       "label": "回声追迹者主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-echo-tracker/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10926,11 +10971,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-eco-maintainer/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-eco-maintainer.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native48 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+        "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+      }
     },
     {
       "topicId": "c02-equipment-field-medic",
@@ -11007,11 +11057,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-fungus-bed-medic/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-fungus-bed-medic.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native48 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+        "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+      }
     },
     {
       "topicId": "c02-equipment-gravity-rescuer",
@@ -11019,8 +11074,10 @@
       "category": "equipment",
       "label": "重力救援员主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-gravity-rescuer/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -11119,8 +11176,10 @@
       "category": "equipment",
       "label": "轻型机甲主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-light-mech/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -11367,13 +11426,20 @@
       "category": "equipment",
       "label": "雨牧者战斗体主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-rain-shepherd/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-rain-shepherd.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native48 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+        "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+      }
     },
     {
       "topicId": "c02-equipment-rain-tower-engineer",
@@ -11693,8 +11759,10 @@
       "category": "equipment",
       "label": "炮台工程车主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-turret-vehicle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

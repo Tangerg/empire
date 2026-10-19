@@ -1,11 +1,10 @@
 /** Snapshot pure scene projections so a presentation change can prove its scope. */
-import { createHash } from 'node:crypto';
 import { writeFileSync } from 'node:fs';
 import { content, engine, CANDIDATE_01_ART } from '../board-harness';
 import { CANDIDATE_01_LEVELS } from '../../packages/story-candidate-01/src/index';
 import { candidateReviewViewport } from './candidate_review_viewport';
 
-const hash = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
+import { reviewFingerprint as hash } from './review_fingerprint';
 const result = CANDIDATE_01_LEVELS.map(level => {
   const state = engine.createState(level);
   const context = { content, levelId: level.id, map: state.map, viewport: candidateReviewViewport(state.map) };

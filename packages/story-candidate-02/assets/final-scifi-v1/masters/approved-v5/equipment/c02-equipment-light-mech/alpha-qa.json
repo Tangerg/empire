@@ -1,0 +1,52 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-5000d7cd-d514-484f-b504-ec106e4601a1.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    59,
+    67,
+    1233,
+    1197
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    59,
+    67,
+    21,
+    57
+  ],
+  "nearOpaquePixelCountGE240": 715858,
+  "diagnostic8pxErosion": {
+    "minAlpha": 94,
+    "pixelsBelow240": 33,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 783,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black composites inspection only.",
+  "topicId": "c02-equipment-light-mech",
+  "sha256": "65bb27545c46cedf91ed51dab32249d9c612a0773cb9eee99e566ef4696ee239",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass after native source semantic review and actual48 white/black inspection: correct functional identity and main component count, thick outlines/broad cel planes, intact silhouette, no visible halo, haze, solid background or external glow. Narrow-gap antialiasing is not judged as solid-body opacity failure by supplemental morphology.",
+  "postprocessing": "Native master unchanged byte-exact copy. Diagnostic-only full-canvas48 exports and white/black composites are separate. No pixel painting, recolor or alpha cleanup.",
+  "runtimeReady": false,
+  "actual48ThreeBackgroundReview": {
+    "file": "diagnostic-native48/native48-white-black-olive.png",
+    "backgrounds": [
+      "white",
+      "black",
+      "olive RGB72,80,48"
+    ],
+    "scale": "1:1 actual48 pixels",
+    "visualResult": "Pass: readable functional silhouette and colors, no visible exterior haze/glow or solid background."
+  }
+}

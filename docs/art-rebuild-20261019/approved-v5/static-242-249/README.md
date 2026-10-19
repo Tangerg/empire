@@ -1,0 +1,3 @@
+# Static eight-topic integration
+
+C01 skill45–48 and C02 equipment ninth quartet. Original board subject/count review and actual48px white/dark/olive previews accepted. Skill45 reconstructs the complete white-stag upper silhouette from a cropped legacy source, with authored foliage occlusion rather than a hard cut; skill48 retains full opposite forearms and ring. Eco-maintainer retains its double claw and botanical dome, fungus medic retains the purple cross, rain shepherd its outlined cloud, and defoliator its cyan status window and bounded green splashes. True source alpha preserved; whole-canvas deterministic fitting only. Functional colored device surfaces remain bounded. No C02 playable mission is claimed. This does not add hero or animation completion.

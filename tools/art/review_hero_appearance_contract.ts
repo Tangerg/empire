@@ -8,7 +8,7 @@ import { CANDIDATE_01_LEVELS } from '../../packages/story-candidate-01/src/level
 import manifest from '../../packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json';
 import hdManifest from '../../packages/story-candidate-01/assets/final-fantasy-v1/manifest-tactical-runtime-hd.json';
 import teamManifest from '../../packages/story-candidate-01/assets/final-fantasy-v1/manifest-authored-team-variants.json';
-const hash = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
+import { reviewFingerprint as hash } from './review_fingerprint';
 const root = resolve(import.meta.dirname, '../..');
 const teams = [...new Set([...CANDIDATE_01_LEVELS.flatMap(level => level.players.map(player => player.color)),
   ...teamManifest.variants.map(variant => variant.teamColor)])].sort();

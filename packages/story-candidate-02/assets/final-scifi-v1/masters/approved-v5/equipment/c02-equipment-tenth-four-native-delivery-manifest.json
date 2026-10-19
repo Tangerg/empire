@@ -1,0 +1,138 @@
+{
+  "batch": "c02-equipment-tenth-four-chunky-scifi",
+  "createdAtUtc": "2026-10-19T21:30:30.439561+00:00",
+  "tool": "built-in image_gen__imagegen",
+  "transparentBackground": true,
+  "repositoryEdited": false,
+  "generatedPixelsPostprocessed": false,
+  "sourceIdentityMapping": "Original4x4 boards visually matched with topic-catalog and old runtimes: echo-tracker board03 r1c4 five dark plus one ivory sensor fins; gravity-rescuer board03 r1c2 two open-spoked rings; light-mech board02 r1c2 pedestal arm with two end jaws; turret-vehicle board02 r1c1 short-barrel turret with one antenna and three visible feet. Never sorted manifest inference.",
+  "stylePilot": "Continues parent-approved star-shield equipment pilot with broad matte contours.",
+  "runtimeScope": "48x48 anchor24,24; full native canvas contain44 with2px padding. No HD contract. C02 remains catalog-only; no playable-level verification claimed.",
+  "reviewBackgrounds": [
+    "white",
+    "black",
+    "olive RGB72,80,48"
+  ],
+  "entries": [
+    {
+      "topicId": "c02-equipment-echo-tracker",
+      "assetId": "C02-SFV1-equipment-echo-tracker",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-echo-tracker/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-echo-tracker/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-echo-tracker/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-echo-tracker/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-echo-tracker/alpha-qa.json",
+      "native48WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-echo-tracker/diagnostic-native48/native48-white-left-black-right.png",
+      "native48ThreeBackgroundReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-echo-tracker/diagnostic-native48/native48-white-black-olive.png",
+      "sha256": "522ded777bf3d2351fde50a3bc3698cb00c2def5991f29fe5b2d83578eeec64a",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 48,
+        "height": 48,
+        "anchor": [
+          24,
+          24
+        ]
+      },
+      "hdContract": null,
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false
+    },
+    {
+      "topicId": "c02-equipment-gravity-rescuer",
+      "assetId": "C02-SFV1-equipment-gravity-rescuer",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-gravity-rescuer/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-gravity-rescuer/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-gravity-rescuer/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-gravity-rescuer/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-gravity-rescuer/alpha-qa.json",
+      "native48WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-gravity-rescuer/diagnostic-native48/native48-white-left-black-right.png",
+      "native48ThreeBackgroundReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-gravity-rescuer/diagnostic-native48/native48-white-black-olive.png",
+      "sha256": "0e737042bc7a9a1128d37d7492c5cc218d5e46d4606be75f634e3489ed313f2b",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 48,
+        "height": 48,
+        "anchor": [
+          24,
+          24
+        ]
+      },
+      "hdContract": null,
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false
+    },
+    {
+      "topicId": "c02-equipment-light-mech",
+      "assetId": "C02-SFV1-equipment-light-mech",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-light-mech/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-light-mech/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-light-mech/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-light-mech/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-light-mech/alpha-qa.json",
+      "native48WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-light-mech/diagnostic-native48/native48-white-left-black-right.png",
+      "native48ThreeBackgroundReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-light-mech/diagnostic-native48/native48-white-black-olive.png",
+      "sha256": "65bb27545c46cedf91ed51dab32249d9c612a0773cb9eee99e566ef4696ee239",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 48,
+        "height": 48,
+        "anchor": [
+          24,
+          24
+        ]
+      },
+      "hdContract": null,
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false
+    },
+    {
+      "topicId": "c02-equipment-turret-vehicle",
+      "assetId": "C02-SFV1-equipment-turret-vehicle",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-turret-vehicle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-turret-vehicle/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-turret-vehicle/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-turret-vehicle/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-turret-vehicle/alpha-qa.json",
+      "native48WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-turret-vehicle/diagnostic-native48/native48-white-left-black-right.png",
+      "native48ThreeBackgroundReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-turret-vehicle/diagnostic-native48/native48-white-black-olive.png",
+      "sha256": "9bff666820660a41102126dfa1ff45130b076a3f6cb180fa8f1f5faa907e3fa8",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 48,
+        "height": 48,
+        "anchor": [
+          24,
+          24
+        ]
+      },
+      "hdContract": null,
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false
+    }
+  ]
+}
