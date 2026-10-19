@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "purpose": "isolated-style-calibration-no-production-replacement",
+  "state": "fixture-only-awaiting-target-style-prototype",
+  "levelId": "c01-02",
+  "title": "三桥河谷",
+  "source": "packages/story-candidate-01/src/levels.ts",
+  "sourceSha256": "2dd673a1119d4b00bc2fa23b5b7e65a205c1f70ab046d32208f22af8217394a3",
+  "crop": {
+    "x": 0,
+    "y": 3,
+    "width": 14,
+    "height": 10
+  },
+  "terrainRows": [
+    ".q..h.....==..",
+    "------....~~..",
+    "..T...v...~~..",
+    "..........==..",
+    ".h....T...~~..",
+    "------....~~..",
+    "..T.......==..",
+    "....h.....~~..",
+    ".v....T...~~..",
+    ".....q....~~.."
+  ],
+  "coordinates": "world coordinates retained; crop is display viewport only",
+  "actualPartyExamples": [
+    {
+      "unit": "c01.laiya",
+      "x": 1,
+      "y": 9
+    },
+    {
+      "unit": "c01.swordsman",
+      "x": 2,
+      "y": 8
+    },
+    {
+      "unit": "c01.archer",
+      "x": 2,
+      "y": 10
+    }
+  ],
+  "presentationOnlyChangesAllowed": [
+    "visual extent",
+    "density",
+    "authored environment composition within tactical topology"
+  ],
+  "unchanged": [
+    "terrain semantics",
+    "movement",
+    "attack ranges",
+    "occupancy",
+    "tactical grid",
+    "deployment"
+  ],
+  "rendererRequirements": {
+    "surfaceFit": {
+      "inset": 3,
+      "bleed": 0.5
+    },
+    "insetSampling": "26/32 source interior enlarged32/26; verify actual runtime fit before comparing",
+    "anchor": "preserve gameplay pivot; visual bounds need independent art-direction review"
+  },
+  "excludedClaims": [
+    "gameplay screenshot",
+    "user approved style",
+    "completed calibration"
+  ]
+}
