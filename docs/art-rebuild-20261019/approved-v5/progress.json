@@ -718,12 +718,14 @@
         "field-tent-cluster",
         "vilsa-camp-ground",
         "supply-tent-workyard",
-        "gray-camp-ground"
+        "gray-camp-ground",
+        "field-kitchen",
+        "wounded-shelter-ground"
       ],
-      "count": 6,
+      "count": 8,
       "export": "144/288 full-canvas registration, immutable baseline and unchanged other15 cells checked",
       "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
-      "sceneReview": "Complete firstlevel with field tents and red camp reviewed; original ground/standing layering retained. Remaining gray camp/supply tent legacy.",
+      "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe.",
       "liveGame": "pending"
     },
     "cliff-modules-temperate": {

@@ -1,0 +1,95 @@
+{
+  "asset": "wounded-shelter-ground",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved chunky matte campsite family, broad continuous soil and structural cel planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1144
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.912281
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    31,
+    100,
+    31,
+    94
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/wounded-shelter-ground-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/abandoned-cart-stop-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-kitchen/field-kitchen-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "camps-foundations",
+  "cell_index": 7,
+  "semantic_counts": {
+    "open_gray_canvas_shelter": 1,
+    "corner_supports": 4,
+    "cot_or_stretcher": 1,
+    "flag": 1,
+    "left_open_supply_crate": 1,
+    "right_large_supply_crate": 1,
+    "partly_occluded_supply_stacks": 2,
+    "large_ceramic_urn": 1,
+    "small_jug": 1,
+    "people": 0
+  },
+  "render_role": "actual CANDIDATE_FOUNDATIONS c01.field-post consumer in groundPieces; scale 0.3 at tile lower center; keep ground-foundation behavior even though canvas contains upright shelter",
+  "logical_cell": [
+    144,
+    144
+  ],
+  "hd_cell": [
+    288,
+    288
+  ],
+  "logical_anchor": [
+    72,
+    139
+  ],
+  "hd_anchor": [
+    144,
+    278
+  ],
+  "footprint": [
+    3,
+    3
+  ],
+  "obstructionHeight": 1,
+  "source_foot_semantics": "visually selected front-center soil-apron contact, slightly left of the deepest low lobe; grounded module anchor, not a cot or tent-post foot",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/wounded-shelter-ground-source-evidence.json",
+  "source_edit_count": 0,
+  "source_margin_note": "Full outline visually intact, but requested ten percent margin is not guaranteed; measured margins in QA govern review.",
+  "provisional_export": {
+    "uniform_scale_native_to_logical": 0.108,
+    "uniform_scale_native_to_hd": 0.216,
+    "logical_canvas_translation": [
+      4.284000000000006,
+      15.448000000000008
+    ],
+    "expected_strong_bounds_logical": [
+      7.632,
+      26.248,
+      136.368,
+      140.728
+    ],
+    "method": "uniform full native canvas registered by independently authored sourceFoot, not bbox",
+    "scene_review_pending": true
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

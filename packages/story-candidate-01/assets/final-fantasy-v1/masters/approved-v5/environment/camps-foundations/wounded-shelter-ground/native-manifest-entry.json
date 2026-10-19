@@ -1,0 +1,54 @@
+{
+  "identity": "wounded-shelter-ground",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/wounded-shelter-ground-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    1144
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/wounded-shelter-ground/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-cf06658f-3d8a-46b0-a93a-8c4647ce6189.png",
+  "sha256": "df80711f3edc544804d42913667f5b6bc454de74337c3d5155448c0fd9547ca1",
+  "atlas": "camps-foundations",
+  "cell_index": 7,
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/wounded-shelter-ground-source-evidence.json",
+  "runtime_contract": {
+    "logical_cell": [
+      144,
+      144
+    ],
+    "hd_cell": [
+      288,
+      288
+    ],
+    "logical_anchor": [
+      72,
+      139
+    ],
+    "hd_anchor": [
+      144,
+      278
+    ],
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "manifest_cell": {
+    "id": "wounded-shelter-ground",
+    "footprint": [
+      3,
+      3
+    ],
+    "anchor": [
+      72,
+      139
+    ],
+    "obstructionHeight": 1
+  },
+  "render_role": "actual CANDIDATE_FOUNDATIONS c01.field-post consumer in groundPieces; scale 0.3 at tile lower center; keep ground-foundation behavior even though canvas contains upright shelter"
+}
