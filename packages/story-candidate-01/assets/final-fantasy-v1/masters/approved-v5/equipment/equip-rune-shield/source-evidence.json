@@ -1,0 +1,62 @@
+{
+  "topicId": "C01-EQUIP-RUNE-SHIELD",
+  "assetId": "C01-FFV1-EQUIP-RUNE-SHIELD",
+  "label": "符文盾卫主装备",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0ef1d380-eb01-4cdf-b5df-ce95c20741a7.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-rune-shield-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-03.png, row 2 column 4 (one based)",
+    "topicIndex": 23,
+    "inspectionCropCoordinates": [
+      942,
+      316,
+      1252,
+      625
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-rune-shield.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-03.png",
+    "atlasSha256": "2d732cdc0b1b015c9dfec0f3fd4e42f2c880f179320103778e854eda96e63ee6",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-rune-shield-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "inspectedApprovedUnitReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/idle/master.png"
+  ],
+  "unitIdentityNote": "New approved rune-shield unit uses a bright orange linked-diamond vertical glyph on a many-sided shield and a differently faced hammer. Original equipment icon has four pale non-glowing angular marks around a central silver diamond boss. Original icon heraldry and rectangular hammer remain authoritative.",
+  "identityClarification": "Exactly two objects: dark steel elongated six-sided shield at left, peaked top and pointed bottom, thick silver rim and central vertical spine, raised diamond plate with faceted diamond boss, exactly four pale angular rune marks surrounding it; rectangular iron warhammer at right with brown wrapped grip and steel butt cap.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "symbolInspection": "Original upper-right rune inspected again at high magnification: its diamond-like top is open at lower-left. Selected output preserves this open hook topology, four pale marks and central diamond boss; no orange unit emblem.",
+  "preservedCandidates": [
+    "candidates/initial/raw.png (byte-identical to selected native master)",
+    "candidates/initial/prompt.txt"
+  ]
+}

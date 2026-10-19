@@ -4,23 +4,23 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 93,
+    "formalBound": 95,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 18,
-      "equipment": 18,
+      "equipment": 20,
       "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 93,
+    "rawPreservedTopics": 96,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 119
+    "registeredEnvironmentCells": 121
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 119,
+    "registeredIndividualSourceCells": 121,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -1263,8 +1263,10 @@
       "category": "combat-unit",
       "label": "战斧兵",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/axe-breaker/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -4498,13 +4500,20 @@
       "category": "equipment",
       "label": "审判官主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-inquisitor/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-inquisitor.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "unchanged native source and original equipment atlas evidence preserved",
+        "export": "native48 light/dark/olive identity and alpha passed; book distinct from shield, original four silver shield marks retained",
+        "runtimeBinding": "canonical48 icon resolved; no invented HD",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-IVRA-GROWTH",
@@ -4701,13 +4710,20 @@
       "category": "equipment",
       "label": "符文盾卫主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-rune-shield/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-rune-shield.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "unchanged native source and original equipment atlas evidence preserved",
+        "export": "native48 light/dark/olive identity and alpha passed; book distinct from shield, original four silver shield marks retained",
+        "runtimeBinding": "canonical48 icon resolved; no invented HD",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-SHAMAN",
@@ -18241,7 +18257,9 @@
         "forge-workyard",
         "livestock-pen",
         "keep-foundation",
-        "supply-yard"
+        "supply-yard",
+        "watch-post-ground",
+        "border-gate-ground"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18257,12 +18275,14 @@
           "forge-workyard",
           "livestock-pen",
           "keep-foundation",
-          "supply-yard"
+          "supply-yard",
+          "watch-post-ground",
+          "border-gate-ground"
         ],
-        "count": 12,
+        "count": 14,
         "export": "144/288 full-canvas registration, immutable baseline and every non-overridden cell checked",
         "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
-        "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe. Forge/workyard and empty livestock pen native catalog review passed; no current direct selectors found. Keep foundation and supply yard native catalog scale0.55 reviewed; actual keep ground binding scale0.3 is a distinct caller, not represented as sampled by this board. Empty courtyard/entry stairs and cargo grouping retained.",
+        "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe. Forge/workyard and empty livestock pen native catalog review passed; no current direct selectors found. Keep foundation and supply yard native catalog scale0.55 reviewed; actual keep ground binding scale0.3 is a distinct caller, not represented as sampled by this board. Empty courtyard/entry stairs and cargo grouping retained. Watch-post and open border-gate native catalog silhouettes/alpha reviewed, original groundPieces and obstruction retained; actual outpost ground0.3 distinguished from catalog0.55 probe.",
         "liveGame": "pending"
       }
     },

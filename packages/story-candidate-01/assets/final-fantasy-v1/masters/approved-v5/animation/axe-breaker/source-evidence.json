@@ -1,0 +1,96 @@
+{
+  "topicId": "C01-UNIT-AXE-BREAKER",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-AXE-BREAKER",
+    "topicId": "C01-UNIT-AXE-BREAKER",
+    "label": "战斧兵",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-axe-breaker.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-axe-breaker.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-axe-breaker.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-axebreaker-golem-shaman-javelin.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "d4b3ad5bc57f65ca25758b2394ee4d6d843460bfc0e4c0903d9a7cd2946215e8"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-axe-breaker.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "c127db7f1bcccd21b57ad0bcdc7feba654d6389414ba42ae776dcd3a528bfa1f"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-axe-breaker.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "a5f1265d8b2ef5c3f13f99e4b06ddaba1a4ef3ba91d1421b8d223d966ddfb574"
+    }
+  },
+  "status": "Source contract confirmed by coordinator; idle generation authorized",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only canonical combat-unit topic; no current campaign or built-in rule consumer/binding found. No invented binding.",
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "lines": "4-59 unit bindings, 100-123 weapon bindings",
+    "result": "No C01-UNIT-AXE-BREAKER or corresponding unit/weapon binding"
+  },
+  "ruleSearch": {
+    "paths": [
+      "packages/story-candidate-01/src/units.ts",
+      "packages/story-candidate-01/src/weapons.ts",
+      "packages/content-ancient-empires/src/units.ts",
+      "packages/content-ancient-empires/src/weapons.ts"
+    ],
+    "result": "No axe-breaker unit or weapon rule found"
+  },
+  "referenceExtraction": "Original1254x1254 board FIRST row, native unresampled row[0,0,1254,320] and idle cell[0,0,314,320]; original HD/runtime strips preserved and four64x96 HD cells extracted.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "originalIdentity": "Stocky mature tan male humanoid, charcoal-gray full beard/moustache, brown headband with one round brass-rimmed forehead lens, dark steel segmented armor, rust-red leather apron and brown boots. Original screen-left rear grip and screen-right front grip on one horizontal wooden haft; large single downward-flared steel axe blade at screen-right. No shield.",
+  "symbolReview": "One forehead lens; no faction emblem, rune, cross or glowing element.",
+  "actionContract": "Original attack nearly repeats idle and both walk frames advance the same front foot. Reconstruct clear two-handed axe chop and opposite walking contacts in existing four-slot order.",
+  "equipmentArtDifference": "Distinct C01-EQUIP-AXE-BREAKER icon is a double-bitted axe. Original unit board consistently has one downward-flared blade. Preserve each original topic identity; no silent remap or icon-driven character redesign.",
+  "scaleContract": "Idle first at approved44logical infantry body height, then one measured scale for whole canvases and measured feet. Heavy width rather than arbitrary giant height.",
+  "exclusivityCheck": "Assigned exclusively by coordinator; target folder absent before this task."
+}

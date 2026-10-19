@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 20,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 93,
+  "formalRuntimeBoundTopics": 95,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -586,6 +586,18 @@
       "export": "native48 three-background silhouette, identity and alpha review passed",
       "runtimeBinding": "canonical48 equipment icon resolved; no HD invented",
       "liveGame": "pending"
+    },
+    "C01-EQUIP-INQUISITOR": {
+      "raw": "unchanged native source and original equipment atlas evidence preserved",
+      "export": "native48 light/dark/olive identity and alpha passed; book distinct from shield, original four silver shield marks retained",
+      "runtimeBinding": "canonical48 icon resolved; no invented HD",
+      "liveGame": "pending"
+    },
+    "C01-EQUIP-RUNE-SHIELD": {
+      "raw": "unchanged native source and original equipment atlas evidence preserved",
+      "export": "native48 light/dark/olive identity and alpha passed; book distinct from shield, original four silver shield marks retained",
+      "runtimeBinding": "canonical48 icon resolved; no invented HD",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -766,12 +778,14 @@
         "forge-workyard",
         "livestock-pen",
         "keep-foundation",
-        "supply-yard"
+        "supply-yard",
+        "watch-post-ground",
+        "border-gate-ground"
       ],
-      "count": 12,
+      "count": 14,
       "export": "144/288 full-canvas registration, immutable baseline and every non-overridden cell checked",
       "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
-      "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe. Forge/workyard and empty livestock pen native catalog review passed; no current direct selectors found. Keep foundation and supply yard native catalog scale0.55 reviewed; actual keep ground binding scale0.3 is a distinct caller, not represented as sampled by this board. Empty courtyard/entry stairs and cargo grouping retained.",
+      "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe. Forge/workyard and empty livestock pen native catalog review passed; no current direct selectors found. Keep foundation and supply yard native catalog scale0.55 reviewed; actual keep ground binding scale0.3 is a distinct caller, not represented as sampled by this board. Empty courtyard/entry stairs and cargo grouping retained. Watch-post and open border-gate native catalog silhouettes/alpha reviewed, original groundPieces and obstruction retained; actual outpost ground0.3 distinguished from catalog0.55 probe.",
       "liveGame": "pending"
     },
     "cliff-modules-temperate": {

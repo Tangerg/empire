@@ -1,0 +1,54 @@
+{
+  "identity": "watch-post-ground",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/watch-post-ground-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/evidence.json",
+  "source_foot_estimate_px": [
+    665,
+    1174
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-51c08cea-8feb-42f9-b756-ffcaa264a130.png",
+  "sha256": "092016f2fb340c01ac1c4141044e1d97b98d91b45dea44a9748880f0e24e2071",
+  "atlas": "camps-foundations",
+  "cell_index": 11,
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/watch-post-ground-source-evidence.json",
+  "runtime_contract": {
+    "logical_cell": [
+      144,
+      144
+    ],
+    "hd_cell": [
+      288,
+      288
+    ],
+    "logical_anchor": [
+      72,
+      139
+    ],
+    "hd_anchor": [
+      144,
+      278
+    ],
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "manifest_cell": {
+    "id": "watch-post-ground",
+    "footprint": [
+      3,
+      3
+    ],
+    "anchor": [
+      72,
+      139
+    ],
+    "obstructionHeight": 2
+  },
+  "render_role": "actual CANDIDATE_FOUNDATIONS c01.outpost consumer in groundPieces; scale0.3 at tile lower center; preserve this ground-foundation rendering despite tower and obstructionHeight2"
+}

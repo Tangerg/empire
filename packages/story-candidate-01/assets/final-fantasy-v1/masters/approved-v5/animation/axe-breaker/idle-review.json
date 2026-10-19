@@ -1,0 +1,40 @@
+{
+  "topicId": "C01-UNIT-AXE-BREAKER",
+  "status": "Idle native QA passes; coordinator review pending before three additional poses",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/idle/master.png",
+  "nativeCanvas": [
+    1586,
+    992
+  ],
+  "sourceFoot": [
+    770,
+    963
+  ],
+  "sourceFootMidpoint": [
+    770.2168960996395,
+    958.0
+  ],
+  "bodyCrownY": 63,
+  "bodyHeight": 895.0,
+  "proposedSharedScale": {
+    "numerator": 44,
+    "denominator": 895.0,
+    "value": 0.049162011173184354
+  },
+  "identityReview": "Original single forehead lens, charcoal-gray full beard, dark segmented steel armor, rust-red bib apron and brown boots retained. One original single-bladed steel axe, both original hands on a continuous haft, head screen-right. Broad matte chunky head/hands/boots and simple planes.",
+  "alphaGate": {
+    "perimeterMaxAlpha": 1,
+    "perimeterCountAlphaGreaterThan1": 0,
+    "passed": true
+  },
+  "completeVisibleBounds": [
+    339,
+    63,
+    1450,
+    964
+  ],
+  "consumerStatus": "Catalog-only; no current rule consumer or invented binding",
+  "postprocessing": "none; native pixels and alpha unchanged",
+  "exactPrompt": "idle/prompt.txt",
+  "request": "idle/request.json"
+}

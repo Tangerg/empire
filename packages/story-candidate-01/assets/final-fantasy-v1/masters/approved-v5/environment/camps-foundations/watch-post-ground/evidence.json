@@ -1,0 +1,104 @@
+{
+  "asset": "watch-post-ground",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved chunky matte campsite family, broad continuous soil and structural cel planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    665,
+    1174
+  ],
+  "source_foot_estimate_normalized": [
+    0.530303,
+    0.936204
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    42,
+    87,
+    41,
+    72
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/watch-post-ground-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/field-kitchen/field-kitchen-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/stone-well-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/watch-post-ground/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "camps-foundations",
+  "cell_index": 11,
+  "semantic_counts": {
+    "elevated_timber_watch_platform": 1,
+    "support_legs": 4,
+    "shallow_plank_canopy": 1,
+    "ladder": 1,
+    "flag": 1,
+    "rear_fence_run": 1,
+    "front_right_broken_fence_remnant": 1,
+    "occupants": 0
+  },
+  "render_role": "actual CANDIDATE_FOUNDATIONS c01.outpost consumer in groundPieces; scale0.3 at tile lower center; preserve this ground-foundation rendering despite tower and obstructionHeight2",
+  "logical_cell": [
+    144,
+    144
+  ],
+  "hd_cell": [
+    288,
+    288
+  ],
+  "logical_anchor": [
+    72,
+    139
+  ],
+  "hd_anchor": [
+    144,
+    278
+  ],
+  "footprint": [
+    3,
+    3
+  ],
+  "obstructionHeight": 2,
+  "source_local_landmark_estimates_px": {
+    "front_right_tower_leg_contact": [
+      577,
+      837
+    ],
+    "front_ladder_foot": [
+      431,
+      870
+    ]
+  },
+  "source_foot_kind": "visible whole-ground contact",
+  "source_foot_semantics": "visually selected central foreground soil-apron contact below the tower and scattered rocks; whole clearing anchor",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/watch-post-ground-source-evidence.json",
+  "source_edit_count": 0,
+  "source_margin_note": "Full outline visually intact, but requested ten percent margin is not guaranteed; measured margins in QA govern review.",
+  "provisional_export": {
+    "uniform_scale_native_to_logical": 0.108,
+    "uniform_scale_native_to_hd": 0.216,
+    "logical_canvas_translation": [
+      0.18000000000000682,
+      12.207999999999998
+    ],
+    "expected_strong_bounds_logical": [
+      4.716,
+      21.604,
+      131.184,
+      139.864
+    ],
+    "method": "uniform full native canvas registered by independently authored sourceFoot, not bbox",
+    "scene_review_pending": true
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-INQUISITOR",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5460599447000857,
+  "nearOpaqueFractionAlphaGE250": 0.43824100994838844,
+  "nonzeroAlphaBBox": [
+    41,
+    63,
+    1216,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    49,
+    65,
+    1181,
+    1204
+  ],
+  "visibleAlphaBBoxGE128": [
+    49,
+    65,
+    1178,
+    1202
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    49,
+    65,
+    76,
+    52
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 54,
+  "sha256": "86b7126b50a448fcf1336c7587e4b7cde17eaab79d68c114a50d79a87db8f09f",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly two objects: reinforced closed charcoal book at left, four pale metal corner guards and one pale vertical cover strap with central round gold medallion; brown staff at right, one faceted amber-gold gem beneath a hooked question-mark/crook finial opening left. No shield or cross emblem.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

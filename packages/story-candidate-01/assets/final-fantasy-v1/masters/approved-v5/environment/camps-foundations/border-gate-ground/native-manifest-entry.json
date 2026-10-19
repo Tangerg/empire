@@ -1,0 +1,54 @@
+{
+  "identity": "border-gate-ground",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/border-gate-ground-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    1143
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/border-gate-ground/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-b6d88d01-7e28-443e-9ee2-c53feab1d93a.png",
+  "sha256": "1387e9c395c78d976f9a8e81d2d9766651978ee4d8d4301c1c0e71de2a39a179",
+  "atlas": "camps-foundations",
+  "cell_index": 12,
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/border-gate-ground-source-evidence.json",
+  "runtime_contract": {
+    "logical_cell": [
+      144,
+      144
+    ],
+    "hd_cell": [
+      288,
+      288
+    ],
+    "logical_anchor": [
+      72,
+      139
+    ],
+    "hd_anchor": [
+      144,
+      278
+    ],
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "manifest_cell": {
+    "id": "border-gate-ground",
+    "footprint": [
+      3,
+      3
+    ],
+    "anchor": [
+      72,
+      139
+    ],
+    "obstructionHeight": 1
+  },
+  "render_role": "catalog foundation module with upright gateposts and functional through-road; no direct consumer found in current main src; preserve bottom-anchor metadata without inventing a runtime layer"
+}
