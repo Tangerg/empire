@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-4566788b",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-4566788b.png",
+  "label": "Army medic",
+  "observed_original": "Runtime shows siege tower.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed semantic reconstruction by manifest role/ART-DIRECTION, intact matching board objects used for context. Not recovered from mislabeled slots. Exact atlas mapping unresolved.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 1,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      39,
+      1236,
+      1230
+    ],
+    "128": [
+      119,
+      255,
+      1128,
+      1026
+    ],
+    "240": [
+      120,
+      256,
+      1128,
+      1026
+    ]
+  },
+  "visual_review": "Two bandage rolls, folded linen, herb pouch and blue-green jar. Strong simple medical silhouette. Small ceramic highlight present but no modern icon or label."
+}
