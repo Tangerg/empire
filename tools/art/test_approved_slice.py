@@ -2,6 +2,7 @@ import unittest
 from PIL import Image
 from assemble_approved_slice import alpha_report
 from export_transition_overrides import replace_mask_material
+from assemble_edge_overlays import overlaps
 
 
 class ApprovedCutoutTests(unittest.TestCase):
@@ -41,6 +42,10 @@ class ApprovedCutoutTests(unittest.TestCase):
     def test_transparent_terrain_material_rejected(self):
         with self.assertRaises(ValueError):
             replace_mask_material(Image.new('RGBA',(512,96)),Image.new('RGBA',(128,128)),32)
+
+    def test_overlay_foot_protection(self):
+        self.assertTrue(overlaps([0,0,10,10],[9,9,20,20]))
+        self.assertFalse(overlaps([0,0,10,10],[10,0,20,10]))
 
 
 if __name__ == '__main__': unittest.main()

@@ -1,0 +1,24 @@
+{
+  "phase": "approved concept to bounded real-layer slice",
+  "approval": {
+    "messageId": "Sentinel_7330580e60f08191b111a4b2d50b5e82",
+    "quote": "新版本很合适啊，就是这个 feel",
+    "concept": "calibration-v5-concept/concept-v2.png"
+  },
+  "fullBulkResumed": false,
+  "completeAnimationTopics": 0,
+  "liveGameAcceptance": false,
+  "sources": {
+    "swordsman": "single idle export and static scene checked",
+    "red-swordsman": "single idle, minor authored geometry drift registered, static scene checked",
+    "pine": "transparent source and static scene checked",
+    "bridge": "transparent source and static scene checked",
+    "grass-material": "opaque material and static scene checked",
+    "water-material": "opaque source to unchanged actual water mask, static scene checked",
+    "earth-material": "revision2 selected, original rejected density retained",
+    "grass-edge": "revision2 broad flat patch, static overlay checked",
+    "bank-edge": "revision3 broad flat patch, static overlay checked"
+  },
+  "counting": "Do not count single pose as full unit animation. Concept itself adds no transparent assets. Prior bulk candidates are not re-approved automatically.",
+  "next": "blue swordsman four poses and Lorne Keep three-state pilot; other bulk remains gated"
+}

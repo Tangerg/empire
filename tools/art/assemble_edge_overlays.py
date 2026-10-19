@@ -9,6 +9,10 @@ from assemble_approved_slice import alpha_report
 NS='http://www.w3.org/2000/svg'; XLINK='http://www.w3.org/1999/xlink'
 
 
+def overlaps(a,b):
+    return a[0]<b[2] and a[2]>b[0] and a[1]<b[3] and a[3]>b[1]
+
+
 def build(config, output):
     data=json.loads(config.read_text());tree=ET.parse(data['baselineSvg']);root=tree.getroot()
     original_children=[ET.tostring(child) for child in root]
@@ -20,6 +24,10 @@ def build(config, output):
         path=Path(item['source']);image=Image.open(path);qa=alpha_report(image);bbox=qa['visibleBounds']
         extent=bbox[2]-bbox[0] if item['axis']=='width' else bbox[3]-bbox[1]
         scale=item['visibleExtent']/extent;cx,cy=item['center']
+        visible_width=(bbox[2]-bbox[0])*scale;visible_height=(bbox[3]-bbox[1])*scale
+        visible_box=[cx-visible_width/2,cy-visible_height/2,cx+visible_width/2,cy+visible_height/2]
+        if any(overlaps(visible_box,box) for box in data.get('protectedFootRects',[])):
+            raise ValueError('edge decoration intersects protected foot rectangle')
         x=cx-(bbox[0]+bbox[2])*.5*scale;y=cy-(bbox[1]+bbox[3])*.5*scale
         attrs={'href':path.resolve().as_uri(),f'{{{XLINK}}}href':path.resolve().as_uri(),
             'x':str(x),'y':str(y),'width':str(image.width*scale),'height':str(image.height*scale)}
@@ -35,6 +43,7 @@ def build(config, output):
     if [ET.tostring(child) for child in root if child is not group] != original_children:
         raise ValueError('underlying scene changed')
     report['allUnderlyingSvgElementsUnchanged']=True
+    report['protectedFootRects']=data.get('protectedFootRects',[])
     output.mkdir(parents=True,exist_ok=True)
     svg=output/'scene.svg';tree.write(svg,encoding='unicode')
     subprocess.run(['inkscape',str(svg),'--export-type=png',f'--export-filename={output/"scene@2x.png"}'],check=True,capture_output=True)
