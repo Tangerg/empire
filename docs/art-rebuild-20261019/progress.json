@@ -10393,12 +10393,13 @@
     "state": "pending-representative-scene-approval",
     "productionMutation": false,
     "fixture": "docs/art-rebuild-20261019/calibration/three-bridges-fixture.json",
-    "masterCount": 4,
+    "masterCount": 5,
     "masters": [
       "swordsman",
       "pine",
       "lorne-keep",
-      "river-material"
+      "river-material",
+      "stone-bridge"
     ],
     "scope": "Only root-authorized bounded style trials; bulk generation remains paused",
     "trialRoles": [
@@ -10407,8 +10408,7 @@
       "connector geometry diagnosis"
     ],
     "pending": [
-      "water-area geometry",
-      "bridge calibration",
+      "shore depth and material cohesion",
       "user acceptance of representative scene"
     ],
     "mechanicalScope": "unchanged actual tactical map, ownership, deployment, movement and attack rules"
