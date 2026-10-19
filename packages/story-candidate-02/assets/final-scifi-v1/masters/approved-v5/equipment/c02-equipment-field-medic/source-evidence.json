@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-field-medic",
+  "assetId": "C02-SFV1-equipment-field-medic",
+  "label": "战地医师主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 4
+  },
+  "sourceCropBox": [
+    5,
+    945,
+    309,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original equipment-board-01 visual subjects and original topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-field-medic.png",
+  "runtimeReferenceSha256": "29952503af2760563080bc0a2353b977d188270083d1882bdd137fe9c11aa178",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-79c04fb8-791d-47f6-b2da-3a7bcff81fef.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-field-medic/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original equipment-board-01 r4c1 preserved: one squat closed field-medical kit, broad ivory corner armor/charcoal seams, amber latches and top handle, bold original rust-orange medical cross on top plaque, bounded cyan side/status indicators. Cross remains readable at actual48; broad matte planes and source/48 white-black review passed, source perimeter0. No loose medical props or invented text.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}
