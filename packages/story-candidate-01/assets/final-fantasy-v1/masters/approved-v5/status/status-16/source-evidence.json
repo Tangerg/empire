@@ -1,0 +1,68 @@
+{
+  "topicId": "C01-STATUS-16",
+  "assetId": "C01-FFV1-STATUS-16",
+  "label": "地方支持",
+  "category": "status",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "directStatusBinding": null,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2d689479-4a0b-461a-b6a6-73958efebf81.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-16-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "atlasSha256": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "status-atlas-01.png, row 4 column 4 (one based)",
+    "topicIndex": 15,
+    "inspectionCropCoordinates": [
+      945,
+      945,
+      1249,
+      1249
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; source magenta and grid remain inspection only, no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-16.png",
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-16-nominal-cell.png",
+    "nominalGridCellCoordinates": [
+      942,
+      942,
+      1252,
+      1252
+    ],
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned the exact topic IDs in this batch after original source inspection. Preserve32px runtime and28px HUD. Source raw/master immutable; independent QA previews authorized."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-16-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "identityClarification": "Exactly ONE small gray-stone-and-brown-timber cottage centered above: brown pitched roof, one square gray chimney with visible hollow top, one front wooden door and one narrow right-side window as in original. Around its LOWER/side perimeter stand exactly SIX warm wooden pawn figures, each one round head over one short tapered body. Positions: upper-left beside cottage, lower-left, bottom-front-left, bottom-front-right, lower-right, upper-right beside cottage. Keep all SIX separate and visibly countable with clear gaps; no seventh figure, no hidden pawn behind house. Preserve the simple original cottage/pawn meaning, use broad simplified roof and masonry planes rather than mini bricks or tiny roof tiles. No people faces, badges, text, extra house, ground tile or scenery.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Parent owns backup/export/catalog binding. No repository or gameplay edits.",
+  "consumerStatus": "Catalog source; no direct mapping found in CANDIDATE_01_STATUS_ART. Generic lookup availability does not establish actual use."
+}

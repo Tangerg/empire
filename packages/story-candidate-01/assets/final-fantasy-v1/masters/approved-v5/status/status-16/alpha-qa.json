@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-STATUS-16",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.48187999358989037,
+  "nearOpaqueFractionAlphaGE250": 0.4966315128113164,
+  "nonzeroAlphaBBox": [
+    0,
+    63,
+    1226,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    36,
+    65,
+    1224,
+    1213
+  ],
+  "visibleAlphaBBoxGE128": [
+    38,
+    66,
+    1224,
+    1213
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    38,
+    66,
+    30,
+    41
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 10,
+  "sha256": "59f10945a70b522806a0d1256b6d81454b40c5322c7a45ad26d65c81d1fb716d",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: cottage and six separated wooden pawn silhouettes remain distinguishable. Small roof/stone details reduce to broad material planes; no extra figures."
+  ],
+  "identityVerified": "Exactly ONE small gray-stone-and-brown-timber cottage centered above: brown pitched roof, one square gray chimney with visible hollow top, one front wooden door and one narrow right-side window as in original. Around its LOWER/side perimeter stand exactly SIX warm wooden pawn figures, each one round head over one short tapered body. Positions: upper-left beside cottage, lower-left, bottom-front-left, bottom-front-right, lower-right, upper-right beside cottage. Keep all SIX separate and visibly countable with clear gaps; no seventh figure, no hidden pawn behind house. Preserve the simple original cottage/pawn meaning, use broad simplified roof and masonry planes rather than mini bricks or tiny roof tiles. No people faces, badges, text, extra house, ground tile or scenery.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-16/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: cottage and six separated wooden pawn silhouettes remain distinguishable. Small roof/stone details reduce to broad material planes; no extra figures."
+  },
+  "reviewComplete": true
+}

@@ -1,0 +1,219 @@
+{
+  "topicId": "C01-UNIT-CEMETERY-COLOSSUS",
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-colossus-ivra-wyvern-dragon.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "0388f089c7f43b805e38fea9443c9832769b27b1d1151b1a00afb103ecc0628d"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-cemetery-colossus.png",
+      "size": [
+        512,
+        128
+      ],
+      "sha256": "c62234c5e11988669652e9ab97f4ed984429740e3486044e2667311b9326b982"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-cemetery-colossus.png",
+      "size": [
+        256,
+        64
+      ],
+      "sha256": "35d0e615684e5ffa83b5e32265c4597e48ecf7ab49a89fd4e39119e853a9e793"
+    }
+  },
+  "sourceExtraction": "Unresampled crop first atlas row [0,0,1254,313], idle cell [0,0,313,313]; original magenta source left unchanged. Exact runtime HD frame cells 128x128 in source idle/walk-a/attack/walk-b order.",
+  "originalRuntimeFrames": {
+    "idle": {
+      "boundsAlphaGreaterThan127": [
+        2,
+        6,
+        126,
+        126
+      ],
+      "boundsNonzeroAlpha": [
+        2,
+        6,
+        126,
+        126
+      ]
+    },
+    "walk-a": {
+      "boundsAlphaGreaterThan127": [
+        3,
+        2,
+        124,
+        126
+      ],
+      "boundsNonzeroAlpha": [
+        3,
+        2,
+        124,
+        126
+      ]
+    },
+    "attack": {
+      "boundsAlphaGreaterThan127": [
+        4,
+        2,
+        124,
+        126
+      ],
+      "boundsNonzeroAlpha": [
+        4,
+        2,
+        124,
+        126
+      ]
+    },
+    "walk-b": {
+      "boundsAlphaGreaterThan127": [
+        2,
+        2,
+        126,
+        126
+      ],
+      "boundsNonzeroAlpha": [
+        2,
+        2,
+        126,
+        126
+      ]
+    }
+  },
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-CEMETERY-COLOSSUS",
+    "topicId": "C01-UNIT-CEMETERY-COLOSSUS",
+    "label": "墓地巨像",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-cemetery-colossus.png",
+    "width": 256,
+    "height": 64,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 64,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "footprint": [
+      2,
+      2
+    ]
+  },
+  "actualConsumers": [
+    "c01.cemetery-colossus"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 37,
+    "entry": "'c01.cemetery-colossus': { topicId: 'C01-UNIT-CEMETERY-COLOSSUS' }"
+  },
+  "initialCampaignAppearances": [
+    {
+      "levelId": "c01-11",
+      "unitKey": "colossus",
+      "position": [
+        11,
+        7
+      ],
+      "source": "packages/story-candidate-01/src/levels.ts:688-695"
+    },
+    {
+      "levelId": "c01-16",
+      "unitKey": "unflagged",
+      "position": [
+        12,
+        8
+      ],
+      "source": "packages/story-candidate-01/src/levels.ts:780-795"
+    }
+  ],
+  "consumerCorrection": "Task handoff referred to c01-15 unflagged. Current source order16 and buildLevel c01-${String(spec.order).padStart(2,0)} establish c01-16. c01-15 is the silverwood mother-root level.",
+  "ruleIdentity": {
+    "path": "packages/story-candidate-01/src/units.ts:90",
+    "id": "c01.cemetery-colossus",
+    "name": "墓园巨像",
+    "weapons": [
+      "c01.colossus-sweep"
+    ],
+    "movement": 2,
+    "movementClass": "heavy",
+    "armorClass": "heavy",
+    "tags": [
+      "monster",
+      "undead",
+      "oathbound"
+    ],
+    "blurb": "由无数无名记忆聚成的战争残响。"
+  },
+  "attackRule": {
+    "path": "packages/story-candidate-01/src/weapons.ts:149-157",
+    "id": "c01.colossus-sweep",
+    "name": "墓园横扫",
+    "power": 54,
+    "damageType": "blunt",
+    "area": "ring1",
+    "cooldown": 2,
+    "tags": [
+      "melee",
+      "undead",
+      "impact"
+    ],
+    "artTreatment": "A meaningful braced arm sweep; separate C01-FX-08 remains separate. No independent attack effects baked into character."
+  },
+  "originalIdentity": "Headless anthropomorphic graveyard assemblage: a broad warm brown soil mound body crowned by several gray rimmed tan gravestone tablets with spare vertical black inscription-like strokes and pointed dark iron fence finials. Dominant tall arched wrought-iron cemetery gate on front of torso, dark charcoal bars with muted brass horizontal braces and rivets. Broad gray slab-built shoulders, arms and massive stone fists, short two stone legs and three blocklike toes per foot. Ochre soil in large joints, sparse olive moss/grass at earth seams. Three distinct lit brass/bronze lanterns: one on screen-left low chest, two vertically staggered on screen-right shoulder/chest. Muted golden circular inset/band details on upper arms and wrists. No humanoid head, eyes, skull, banner, new rune or weapon.",
+  "symbolReview": "Preserve the original grave gate architecture and simplified tomb inscriptions, the few ring/circle gold inset details on arm bands, and three amber lanterns. No independent heraldic shield or readable new wording occurs in source. Do not add generic glowing golem chest emblem, skull face, Christian cross badge or new faction symbol. Gate spear points and original small tablet stroke shapes are architecture/source marks, not replacement heraldry.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "proposedScaleContract": {
+    "bodyTargetHeightLogicalPixels": 60,
+    "basis": "Original idle HD alpha>127 bounds [2,6,126,126] =124x120 physical pixels at2x, i.e.62x60logical; keep this broad large-unit presence beside approved44logical humans. Exact body scale will be computed using idle tallest grave tablet to mean stone-foot sole, then shared unchanged by four poses.",
+    "requestedNativeCanvas": [
+      1586,
+      992
+    ],
+    "requestedBodyNativeHeight": 850,
+    "proposedDisplayFrame": [
+      128,
+      80
+    ],
+    "proposedOrigin": [
+      8,
+      4
+    ],
+    "oldArtFrame": [
+      64,
+      64
+    ],
+    "oldArtAnchor": [
+      32,
+      63
+    ],
+    "oldArtFootprint": [
+      2,
+      2
+    ],
+    "rulesCaveat": "Art footprint [2,2] is not a claim of multi-cell gameplay occupancy; no rule, map or binding changes authorized in this worker.",
+    "registrationMethod": "Translation-only of complete common native canvas using mean two stone-foot sole-band x and lowest foot sole y. Do not crop, resize poses independently or infer foot from overall bbox."
+  },
+  "masterPolicy": "Built-in imagegen only. Preserve native generated raw/master byte-for-byte. Prompt/request hashes and reference hashes saved. Crops are source-reference inspection only. Black/white QA composites and scale inspection images are non-master evidence. No alpha cleanup, painting or recoloring by code.",
+  "status": "Scale approved; idle generation underway",
+  "coordinatorScaleApproval": "2026-10-19 21:56 UTC: Proceed idle at60logical crown-to-sole and~62wide, original headless grave-gate assemblage;1586x992 full native canvas/common foot registration. Native human-scale review required before remaining poses."
+}

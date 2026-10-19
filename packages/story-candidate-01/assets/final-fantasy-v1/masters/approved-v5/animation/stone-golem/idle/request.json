@@ -1,0 +1,19 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "transparent_background": true,
+  "promptFile": "prompt.txt",
+  "promptSha256": "bd1a87d6451ac25232ea61acae0ee4a73150884755360cf49f8c77cd222c63e1",
+  "referenced_image_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/references/source-idle-detail.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/idle/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/idle/master.png"
+  ],
+  "referenceSha256": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/references/source-idle-detail.png": "e1edede14830387f68290d7d30480aa9e0ab1d5863c164c1d20393b3d8cef0bf",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/idle/master.png": "bbfd617313dbd074f2eda6f5125a124389a2cd3069814b06995d41ead2962fa9",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/axe-breaker/idle/master.png": "4b19690ab3c7ed17cf3d1c38135697035e7d7e69d13e7d721f28fd359d3d67cc"
+  },
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-cc869bf9-6523-4c8b-8000-fd4ced7f7d0f.png",
+  "noPostprocessing": true
+}

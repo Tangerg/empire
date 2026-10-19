@@ -2048,6 +2048,19 @@
       "registration": "128logical world period with original mask alpha and indexes retained",
       "liveGame": "pending",
       "evidence": "approved-v5/forest-world-material"
+    },
+    "surface-earth": {
+      "formalRuntimeBoundCells": [
+        "earth-1",
+        "earth-2",
+        "earth-3",
+        "earth-4"
+      ],
+      "status": "four original32/64 catalog slots; source0 under exact original47alpha masks for169explicit+134shore consumers",
+      "source": "four opaque native materials preserved; no blanket recolor or blur",
+      "registration": "256logical world period, originalalpha/index/order maintained",
+      "liveGame": "pending",
+      "evidence": "approved-v5/earth-world-material"
     }
   },
   "totalCanonicalScope": 1212,
@@ -2164,6 +2177,21 @@
       "maskCount": 47,
       "maskAlpha": "exact original32/64bytes, all256 neighbor-index mappings unchanged",
       "scope": "625logical forest transition consumers across11levels;16rule/standing contracts and60replays unchanged",
+      "liveGame": "pending"
+    },
+    "earth-world-material": {
+      "status": "formal dual-consumer world material under original Blob47 alpha",
+      "sourceSlots": [
+        "surface-earth:0"
+      ],
+      "logicalPeriod": 256,
+      "nativeRaster": [
+        512,
+        1024
+      ],
+      "maskCount": 47,
+      "maskAlpha": "exact original32/64 alpha and all256 neighbor mappings",
+      "scope": "169 explicit terrain plus134 automatic shore across5levels; all16rules/standing and60replays unchanged",
       "liveGame": "pending"
     }
   },

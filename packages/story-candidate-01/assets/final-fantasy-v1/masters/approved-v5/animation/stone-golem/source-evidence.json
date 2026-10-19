@@ -1,0 +1,189 @@
+{
+  "topicId": "C01-UNIT-STONE-GOLEM",
+  "status": "Coordinator accepted idle62-logical body and144x104 frame; later poses in generation",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-STONE-GOLEM",
+    "topicId": "C01-UNIT-STONE-GOLEM",
+    "label": "\u77f3\u9b54\u50cf",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-stone-golem.png",
+    "width": 256,
+    "height": 64,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 64,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "footprint": [
+      2,
+      2
+    ]
+  },
+  "sourceBoard": "packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-axebreaker-golem-shaman-javelin.png",
+  "sourceMapping": "Second row, original unresampled [0,313,1254,627]; idle [0,313,314,627]; exact source matches runtime/HD",
+  "references": {
+    "walk-a-runtime.png": {
+      "sha256": "0a054bb1faf1ed3e56e698e5c782f9e50365156f19bfc79074d4622dcd188351",
+      "size": [
+        64,
+        64
+      ]
+    },
+    "attack-runtime-hd.png": {
+      "sha256": "dd4cf53dc3b9c07377a726b068f196b2b1635eb0702f3dd603c95f351642f230",
+      "size": [
+        128,
+        128
+      ]
+    },
+    "source-idle-cell.png": {
+      "sha256": "d06889e6d957dfe07da8c0019c58c6e697f781eb9c5626c4686a8599dd63ee34",
+      "size": [
+        314,
+        314
+      ]
+    },
+    "idle-runtime-hd.png": {
+      "sha256": "d23d08279e94495f75aa239ebffcc9f078ab571dcaaa79a13f776be5e462c1f8",
+      "size": [
+        128,
+        128
+      ]
+    },
+    "walk-b-runtime-hd.png": {
+      "sha256": "8e9432b32953ac6dc1484159ab8bbb9147ae3cc780b268e5048054be0482af77",
+      "size": [
+        128,
+        128
+      ]
+    },
+    "runtime-hd-strip.png": {
+      "sha256": "149d3ebd17d822eacac7d9cf2745da5e42e4d09bb7ab106b2799ac063a8c0f0a",
+      "size": [
+        512,
+        128
+      ]
+    },
+    "attack-runtime.png": {
+      "sha256": "89d1d3f75b91b7e446d23c67aa8e3a43568db0662c6e7e9c5a01357334f8a337",
+      "size": [
+        64,
+        64
+      ]
+    },
+    "source-idle-detail.png": {
+      "sha256": "e1edede14830387f68290d7d30480aa9e0ab1d5863c164c1d20393b3d8cef0bf",
+      "size": [
+        246,
+        276
+      ]
+    },
+    "walk-b-runtime.png": {
+      "sha256": "ce70aec560c0fe893d757a488918ab8daa9a5b1e28b60ef79707f37517caa66e",
+      "size": [
+        64,
+        64
+      ]
+    },
+    "source-board.png": {
+      "sha256": "d4b3ad5bc57f65ca25758b2394ee4d6d843460bfc0e4c0903d9a7cd2946215e8",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "source-row.png": {
+      "sha256": "f2c33013f32cfad6f771d380313b273cf33d742529c8bb9474bc0c998932560b",
+      "size": [
+        1254,
+        314
+      ]
+    },
+    "runtime-strip.png": {
+      "sha256": "ea9af9a70d05e47dc4d56eecd01a5c7ac392c0cf2c090d5b97dc2828258f8b6a",
+      "size": [
+        256,
+        64
+      ]
+    },
+    "walk-a-runtime-hd.png": {
+      "sha256": "c809c5b70ceef041dc533c5a2eea4da119a86ed2f38889ca4b2334e742713608",
+      "size": [
+        128,
+        128
+      ]
+    },
+    "idle-runtime.png": {
+      "sha256": "ae638495a1e53be2b1d745c807d6168348b97476260c415e515884f1ab3e6ac6",
+      "size": [
+        64,
+        64
+      ]
+    }
+  },
+  "actualConsumers": {
+    "file": "packages/story-candidate-01/src/levels.ts",
+    "level": "c01-14",
+    "lines": [
+      743,
+      744
+    ],
+    "keys": [
+      "golem-1",
+      "golem-2",
+      "north-golem"
+    ]
+  },
+  "binding": {
+    "file": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 33,
+    "unitType": "c01.stone-golem"
+  },
+  "rules": {
+    "file": "packages/story-candidate-01/src/units.ts",
+    "line": 86,
+    "weaponFile": "packages/story-candidate-01/src/weapons.ts",
+    "weaponLine": 118,
+    "weapon": "c01.golem-slam",
+    "damageType": "blunt",
+    "hitEffect": "forcedMove push distance1 collisionDamage10",
+    "tags": [
+      "monster",
+      "construct",
+      "forge"
+    ],
+    "movementClass": "heavy",
+    "armorClass": "heavy",
+    "specialGameplayOccupancyDeclared": false
+  },
+  "identity": "Dark charcoal/brown-grey block stone construct with rectangular head and amber slit eyes. Raised screen-left forearm and giant fists. Muted amber forked forearm glyph, angular spiral on screen-left chest, open curved hook on screen-right shoulder, tiny amber chest/belt insets. No carried weapon.",
+  "scaleProposal": {
+    "bodyHeadToMeanSoleLogicalPixels": 62,
+    "referenceHumanBodyLogicalPixels": 44,
+    "originalPresentationFootprint": [
+      2,
+      2
+    ],
+    "provisionalFrameSize": [
+      128,
+      104
+    ],
+    "method": "Measure accepted idle head and two soles; lock one shared scale and translate full authored canvases by ground-support midpoint; no independent fitting"
+  },
+  "postprocessingPolicy": "Copy all native bytes unchanged; alpha stats and black/white review are inspection derivatives only; no alpha painting, recolor, trimming or creative code edits.",
+  "idleSource": "idle/master.png",
+  "idleSha256": "70a18da32877f60f679c1b2f2814a8d38a1e0afd8722348461592f7197302451",
+  "idleScaleEvidence": "registration-evidence.json",
+  "idleReview": "idle-review.json",
+  "coordinatorIdleReview": "Accepted62-logical head-to-sole and144x104 full-canvas frame; isolated review does not count as live scene acceptance"
+}

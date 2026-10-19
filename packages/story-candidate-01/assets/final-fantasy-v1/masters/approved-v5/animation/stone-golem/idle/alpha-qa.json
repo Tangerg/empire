@@ -1,0 +1,60 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-cc869bf9-6523-4c8b-8000-fd4ced7f7d0f.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "70a18da32877f60f679c1b2f2814a8d38a1e0afd8722348461592f7197302451",
+  "bboxAlphaNonzero": [
+    0,
+    17,
+    1498,
+    978
+  ],
+  "bboxAlphaGreaterThan127": [
+    324,
+    20,
+    1267,
+    975
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1052643,
+  "alphaOnePixels": 4665,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "prompt": "prompt.txt",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        420,
+        850,
+        700,
+        991
+      ],
+      "soleY": 974,
+      "bottomBandMeanX": 557.4357142857143,
+      "threshold": 127,
+      "bottomBandRows": 4
+    },
+    "screenRight": {
+      "roi": [
+        800,
+        850,
+        1115,
+        991
+      ],
+      "soleY": 971,
+      "bottomBandMeanX": 970.0927152317881,
+      "threshold": 127,
+      "bottomBandRows": 4
+    }
+  },
+  "headTopY": 218,
+  "meanSoleY": 972.5,
+  "bodyHeightSource": 754.5,
+  "sourceSupportAnchorEstimated": [
+    764,
+    974
+  ]
+}

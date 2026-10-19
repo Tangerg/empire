@@ -1,0 +1,103 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a5a62e9b-01bf-45a7-897b-e8c8d71775b7.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "b7d00daa13b0a574601765bd3bf1aaaad90c356343afe6c9febd3e8708c35dc4",
+  "bboxAlphaNonzero": [
+    33,
+    54,
+    1462,
+    952
+  ],
+  "bboxAlphaGreaterThan127": [
+    338,
+    57,
+    1272,
+    947
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1033278,
+  "alphaOnePixels": 4813,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "foot": "screen-left",
+      "roi": [
+        515,
+        820,
+        780,
+        960
+      ],
+      "soleY": 946,
+      "bottomFourRowsMeanX": 634.7333333333333
+    },
+    {
+      "foot": "screen-right",
+      "roi": [
+        875,
+        800,
+        1135,
+        940
+      ],
+      "soleY": 924,
+      "bottomFourRowsMeanX": 1006.7767857142858
+    }
+  ],
+  "sourceFootMidpoint": [
+    820.7550595238096,
+    935.0
+  ],
+  "suggestedSourceFoot": [
+    821,
+    946
+  ],
+  "highestGraveTabletY": 57,
+  "bodyHeight": 878.0,
+  "bodyScaleNumerator": 60,
+  "bodyScaleDenominator": 878.0,
+  "proposedBodyScale": 0.0683371298405467,
+  "visibleWidthAlphaGreaterThan127": 934,
+  "projectedWidthLogicalAtProposedScale": 63.82687927107062,
+  "semanticReview": "All exact source identity features retained: headless burial mound, six gray-rim tan tablets, central arched iron gate, three amber lanterns, gray block limbs/fists/feet, muted brass circle arm insets and sparse olive moss. Broad matte cartoon planes and complete silhouette. Both feet planted, no humanoid head or generic chest rune, no baked FX.",
+  "negativeSpaceProbes": [
+    {
+      "name": "left-arm-gap",
+      "rectangle": [
+        548,
+        667,
+        555,
+        674
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "right-arm-gap",
+      "rectangle": [
+        1057,
+        647,
+        1064,
+        654
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        814,
+        859,
+        821,
+        866
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ]
+}

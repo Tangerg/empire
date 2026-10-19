@@ -15,15 +15,15 @@
       "skill": 48,
       "status": 12
     },
-    "rawPreservedTopics": 276,
+    "rawPreservedTopics": 280,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 171
+    "registeredEnvironmentCells": 175
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 171,
+    "registeredIndividualSourceCells": 175,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -34,7 +34,8 @@
       "stone-world-material",
       "graveyard-world-material",
       "forge-world-material",
-      "forest-world-material"
+      "forest-world-material",
+      "earth-world-material"
     ]
   },
   "sceneCohesion": {
@@ -161,6 +162,21 @@
       "maskCount": 47,
       "maskAlpha": "exact original32/64bytes, all256 neighbor-index mappings unchanged",
       "scope": "625logical forest transition consumers across11levels;16rule/standing contracts and60replays unchanged",
+      "liveGame": "pending"
+    },
+    "earth-world-material": {
+      "status": "formal dual-consumer world material under original Blob47 alpha",
+      "sourceSlots": [
+        "surface-earth:0"
+      ],
+      "logicalPeriod": 256,
+      "nativeRaster": [
+        512,
+        1024
+      ],
+      "maskCount": 47,
+      "maskAlpha": "exact original32/64 alpha and all256 neighbor mappings",
+      "scope": "169 explicit terrain plus134 automatic shore across5levels; all16rules/standing and60replays unchanged",
       "liveGame": "pending"
     }
   },
@@ -1504,8 +1520,10 @@
       "category": "combat-unit",
       "label": "墓地巨像",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -1998,8 +2016,11 @@
       "category": "combat-unit",
       "label": "石魔像",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/walk-a/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -6649,8 +6670,10 @@
       "category": "status",
       "label": "补给",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-15/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -6663,8 +6686,10 @@
       "category": "status",
       "label": "地方支持",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-16/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -19275,9 +19300,26 @@
     {
       "atlasId": "surface-earth",
       "baselineComponentCount": 4,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "earth-1",
+        "earth-2",
+        "earth-3",
+        "earth-4"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "formalRuntimeBoundCells": [
+          "earth-1",
+          "earth-2",
+          "earth-3",
+          "earth-4"
+        ],
+        "status": "four original32/64 catalog slots; source0 under exact original47alpha masks for169explicit+134shore consumers",
+        "source": "four opaque native materials preserved; no blanket recolor or blur",
+        "registration": "256logical world period, originalalpha/index/order maintained",
+        "liveGame": "pending",
+        "evidence": "approved-v5/earth-world-material"
+      }
     },
     {
       "atlasId": "surface-old-stone",

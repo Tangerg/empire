@@ -1,0 +1,92 @@
+{
+  "status": "Idle native and alpha self-review passed; coordinator native/human-scale acceptance pending before next poses",
+  "nativeMaster": "idle/master.png",
+  "nativeRaw": "idle/raw.png",
+  "previewTransparent": "idle/review-transparent-2x.png",
+  "humanScaleComparisons": [
+    "idle/human-scale-1x.png",
+    "idle/human-scale-2x.png",
+    "idle/human-scale-6x.png"
+  ],
+  "nativeSize": [
+    1586,
+    992
+  ],
+  "sharedScale": 0.0683371298405467,
+  "scaleFraction": "60/878",
+  "bodyTargetHeightLogicalPixels": 60,
+  "bodyReferenceSourcePixels": 878,
+  "bodyMeasurement": "Tallest grave tablet y57 to two-foot mean sole y935.0. Source sole bands: left946,right924. Exact mean x820.7551; canonical foot [821,946].",
+  "logicalVisibleWidth": 63.82687927107062,
+  "canonicalSourceFoot": [
+    821,
+    946
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "proposedCommonFrameSize": [
+    128,
+    80
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "proposedRuntimePivot": [
+    64.10478359908885,
+    68.64692482915717
+  ],
+  "fullCanvasBounds": [
+    8,
+    4,
+    116.38268792710706,
+    71.79043280182232
+  ],
+  "completeCanvasFits": true,
+  "perimeterMaxAlpha": 0,
+  "negativeSpaceProbes": [
+    {
+      "name": "left-arm-gap",
+      "rectangle": [
+        548,
+        667,
+        555,
+        674
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "right-arm-gap",
+      "rectangle": [
+        1057,
+        647,
+        1064,
+        654
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        814,
+        859,
+        821,
+        866
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "nativeMastersUnmodified": true,
+  "artFootprint": [
+    2,
+    2
+  ],
+  "gameplayOccupancyChanged": false,
+  "semanticReview": "All exact source identity features retained: headless burial mound, six gray-rim tan tablets, central arched iron gate, three amber lanterns, gray block limbs/fists/feet, muted brass circle arm insets and sparse olive moss. Broad matte cartoon planes and complete silhouette. Both feet planted, no humanoid head or generic chest rune, no baked FX.",
+  "remainingPosesGenerated": false
+}

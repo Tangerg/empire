@@ -1,0 +1,68 @@
+{
+  "topicId": "C01-STATUS-15",
+  "assetId": "C01-FFV1-STATUS-15",
+  "label": "补给",
+  "category": "status",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "directStatusBinding": null,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-21c6adda-1491-497c-8893-62a2c6a74ee7.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-15-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "atlasSha256": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "status-atlas-01.png, row 4 column 3 (one based)",
+    "topicIndex": 14,
+    "inspectionCropCoordinates": [
+      632,
+      945,
+      935,
+      1249
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; source magenta and grid remain inspection only, no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-15.png",
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-15-nominal-cell.png",
+    "nominalGridCellCoordinates": [
+      629,
+      942,
+      938,
+      1252
+    ],
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned the exact topic IDs in this batch after original source inspection. Preserve32px runtime and28px HUD. Source raw/master immutable; independent QA previews authorized."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-15-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "identityClarification": "Exactly ONE open rectangular wooden supply crate viewed from front and right, reinforced with broad dark metal corner straps and a diagonal wooden front brace. Inside LEFT is exactly ONE blue-gray bottle with a tan cork stopper, gray neck rim and simple brown rope around its neck. Inside RIGHT preserve the original bread grouping with TWO visible overlapping forms: a foreground oval tan cut face and a rounded brown rear loaf portion. Do not turn this into multiple tiny rolls, add more food, or infer hidden objects. Match original count/layout from image1. Bottle/glass remains matte blue-gray with one broad light plane; bread has only a few broad cut-face accents. No fine crumb texture, woodgrain, printed labels or lettering.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Parent owns backup/export/catalog binding. No repository or gameplay edits.",
+  "consumerStatus": "Catalog source; no direct mapping found in CANDIDATE_01_STATUS_ART. Generic lookup availability does not establish actual use."
+}

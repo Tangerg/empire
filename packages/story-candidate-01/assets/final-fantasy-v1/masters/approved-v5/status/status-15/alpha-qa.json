@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-STATUS-15",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.43354344248325616,
+  "nearOpaqueFractionAlphaGE250": 0.5540547759132498,
+  "nonzeroAlphaBBox": [
+    0,
+    85,
+    1251,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    57,
+    87,
+    1203,
+    1225
+  ],
+  "visibleAlphaBBoxGE128": [
+    58,
+    88,
+    1200,
+    1224
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    58,
+    88,
+    54,
+    30
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 75,
+  "sha256": "c1e31d030f505d1e84e4ce51984348bae9add1f0a634cbeacb933be0ddbb650f",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: supply crate with blue-gray bottle and overlapping tan bread forms remains readable. Corner straps and front brace retained; fine bread interior marks intentionally reduced."
+  ],
+  "identityVerified": "Exactly ONE open rectangular wooden supply crate viewed from front and right, reinforced with broad dark metal corner straps and a diagonal wooden front brace. Inside LEFT is exactly ONE blue-gray bottle with a tan cork stopper, gray neck rim and simple brown rope around its neck. Inside RIGHT preserve the original bread grouping with TWO visible overlapping forms: a foreground oval tan cut face and a rounded brown rear loaf portion. Do not turn this into multiple tiny rolls, add more food, or infer hidden objects. Match original count/layout from image1. Bottle/glass remains matte blue-gray with one broad light plane; bread has only a few broad cut-face accents. No fine crumb texture, woodgrain, printed labels or lettering.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-15/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: supply crate with blue-gray bottle and overlapping tan bread forms remains readable. Corner straps and front brace retained; fine bread interior marks intentionally reduced."
+  },
+  "reviewComplete": true
+}
