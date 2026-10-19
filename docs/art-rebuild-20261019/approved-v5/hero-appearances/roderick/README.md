@@ -13,3 +13,5 @@ These are actual renderer-produced SVGs rasterized offline. Live browser renderi
 ## Remaining scene readability issue
 
 The named mounted identity reads clearly in c01-01. In c01-03 and c01-10, existing foreground crowns obscure parts of the horse at its unchanged authored position. This is recorded as a scene-occlusion follow-up, not hidden by cropping or counted as live acceptance. Source identity, registered feet and formal resolver validation pass independently. A later bounded pure-decoration clearance may improve those views without moving the rule actor or revealing hidden enemies.
+
+The three-place decoration clearance is now integrated separately; see ../../roderick-clearance for complete before/after evidence. Roderick overlap fell from40.06% to0.72% in c01-03 and47.42% to0% in c01-10; rule actors, hidden visibility and terrain mechanics remain unchanged. The earlier formal-scene images intentionally preserve the discovered problem.
