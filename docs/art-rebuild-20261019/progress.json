@@ -1910,10 +1910,14 @@
     },
     {
       "topicId": "C01-EQUIP-MAGE",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-mage/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "6aaa516fed97b32c7cd934c6edeb92091f09d14b790d6089bf413597bf336f46"
     },
     {
       "topicId": "C01-EQUIP-MOBILITY-GEAR",
@@ -1965,10 +1969,14 @@
     },
     {
       "topicId": "C01-EQUIP-SPEARMAN",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-spearman/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "aa709e81b818641eb411be400d89a48930ec00a29a00b6a91c1fa89404d4c029"
     },
     {
       "topicId": "C01-EQUIP-SPIRIT-FIRE",
