@@ -1902,10 +1902,14 @@
     },
     {
       "topicId": "C01-EQUIP-HEAVY-KNIGHT",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-heavy-knight/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "a275daf0a9cc349f1ce7568700c3cf618584e52910d399d55ee171926368ecf9"
     },
     {
       "topicId": "C01-EQUIP-INQUISITOR",
@@ -1927,10 +1931,14 @@
     },
     {
       "topicId": "C01-EQUIP-KNIGHT",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-knight/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "25546858371705164bde93ac0c037eefa0fc54801c773eecef950c36d9bbe3fd"
     },
     {
       "topicId": "C01-EQUIP-LANCE-CAVALRY",
