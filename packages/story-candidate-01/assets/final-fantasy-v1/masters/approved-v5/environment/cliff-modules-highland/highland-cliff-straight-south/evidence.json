@@ -1,0 +1,94 @@
+{
+  "asset": "highland-cliff-straight-south",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved broad chunky matte gray rock planes with sparse grouped olive basal scrub",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1070
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.85327
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    40,
+    177,
+    38,
+    179
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-cliff-straight-south-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/temperate-hill-cap-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-straight-south/prompt.txt",
+  "production_status": "native catalog candidate; parent adapter not bound",
+  "atlas": "cliff-modules-highland",
+  "cell_index": 0,
+  "original_cellOrder_token": "straight-south",
+  "qualified_original_slot": "cliff-modules-highland:0:straight-south",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "catalog_only": true,
+  "actual16_level_instances": 0,
+  "original_per_cell_semantic_metadata": null,
+  "per_cell_footprint_obstruction_passability_not_invented": true,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "atlas_anchor": [
+    64,
+    127
+  ],
+  "render_role": "catalog-only independent elevation module; runtime semantic registration absent",
+  "semantic_identity": "ONE long straight narrow cliff wall made of connected tall rock columns, running diagonally across the picture from rear-left/upper-left toward near-right/lower-right exactly as the original. The top is a NARROW STRIP of exposed flat gray polygonal column caps, not a broad hilltop. The visible front wall is a continuous steep row of broad upright faceted columns. Keep the full left and right ends and the original low band of attached basal rocks with a little dry olive scrub. No corner turn, hollow, staircase, broad turf cap, extra detached wall or giant ground slab.",
+  "native_review": "One long continuous gray column cliff retains the upper-left to lower-right orientation, narrow exposed rock-cap strip, complete ends and attached basal stones. Large matte facets and sparse olive scrub replace fine cracks/grass. No broad turf cap, hollow, stair or neighbor fragment. The requested wide side margins were not fully reached, but complete strong silhouette clears every edge.",
+  "source_foot_semantics": "whole-module projected foreground baseline at x627,y1070, aligned with the nearest lower-right basal footing; not a claim that the diagonal wall physically contacts ground at its horizontal center",
+  "source_local_landmark_estimates_px": {
+    "left_rear_basal_contact": [
+      154,
+      631
+    ],
+    "middle_front_wall_basal_contact": [
+      612,
+      878
+    ],
+    "right_front_basal_contact": [
+      1097,
+      1051
+    ],
+    "left_rear_cap_center": [
+      247,
+      219
+    ],
+    "right_front_cap_center": [
+      960,
+      615
+    ]
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-straight-south/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-first-four-source-contract.json",
+  "source_crop_findings": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "source_edit_count": 0,
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

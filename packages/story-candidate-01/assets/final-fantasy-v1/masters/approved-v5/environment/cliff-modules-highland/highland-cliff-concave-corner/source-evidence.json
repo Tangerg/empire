@@ -1,0 +1,49 @@
+{
+  "atlas": "cliff-modules-highland",
+  "cell_index": 3,
+  "original_cellOrder_token": "concave-corner",
+  "qualified_slot_address": "cliff-modules-highland:3:concave-corner",
+  "working_file_alias": "highland-cliff-concave-corner",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "observed_original_geometry": "Wider, shallower three-sided inward recess, open foreground; flared left and right arms",
+  "strong_bounds": [
+    940,
+    97,
+    1242,
+    255
+  ],
+  "complete_subject_crop": [
+    932,
+    89,
+    1250,
+    263
+  ],
+  "original_fractional_slot": [
+    940.5,
+    0.0,
+    1254.0,
+    313.5
+  ],
+  "strong_silhouette_crossing_pixels": {
+    "left": 0.5,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "complete_subject_reference": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-cliff-concave-corner-complete-subject-reference.png",
+  "runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-cliff-concave-corner-original-runtime-2x-slot.png",
+  "original_cell_metadata": null,
+  "catalog_status": "catalog-only; no actual draws in16-level audit",
+  "native_metadata_policy": "Do not invent original per-cell footprint, obstruction, passability or heightDelta from temperate siblings or label alone.",
+  "generation_identity_description": "ONE WIDE inward-recessed THREE-SIDED cliff corner, with a left arm and right arm connected by a rear corner/wall. The mouth is broad and opens toward the foreground, as in the original source. Preserve the flared wider opening and shallower overall profile, distinct from the more compact and deep horseshoe in the preceding slot. Exposed flat gray column caps form a narrow connected strip across both arms and rear, with tall dark interior faces. The foreground recess is open, with only sparse attached basal rocks and dry olive scrub following the wall foot. No solid floor filling the mouth, grassy hill cap, tunnel, roof, separate pass walls, extra terrain square or giant base.",
+  "original_source_provenance": {
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/cliffs-highland-4x4-key.png": "24cc11338ee6233858315c777ca87de0bee539fee0d7c9b008732e9248851a03",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/cliffs-highland-4x4.png": "02adcbb7d42ea0e215a17871e3cd0b8a9dcdad9eed922c6f3a40dad6250a687e",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-highland@2x.png": "bbcb169bebb0cd224382a74187e93d109a32ea987acd2b7613b19f308abdab1b",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json": "ffc1f1b3a64b946ef176d9db3db5001f70b8d85d5ab442a8c12fe1ad849235a6",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/SEMANTIC-CATALOG.json": "1fece5fa9b2d6fe51c4c8bead22e136755a354242ca0ad59602e0edd1483a055"
+  },
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-first-four-source-contract.json",
+  "parent_resolution": "Preserve original slot0-3 shapes and cellOrder/index. Slot2 remains inward three-sided rock wall despite end-east token. File aliases do not create runtime IDs. Do not invent per-cell collision metadata.",
+  "approved_style_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/temperate-hill-cap-master.png"
+}
