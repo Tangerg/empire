@@ -8690,24 +8690,34 @@
       "atlasId": "forest-temperate",
       "cellId": "boulder-ferns",
       "index": 14,
-      "status": "pending",
-      "source": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/boulder-ferns/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceIntegrity": {
         "issue": "Original group crosses cell boundary; naive slot crops foliage",
         "recovery": "Use reviewed complete master reference: boulder, central sapling, right fern; document corrected framing"
+      },
+      "sourceSha256": "ce0a6087d70042afe262f82717b8bc50622c8f1824b1883608da55dce8395ef2",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
       }
     },
     {
       "atlasId": "forest-temperate",
       "cellId": "forest-floor-cluster",
       "index": 15,
-      "status": "pending",
-      "source": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/forest-floor-cluster/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceIntegrity": {
         "issue": "Original keyed master draws only15 groups; slot15 blank",
         "recovery": "Documented semantic reconstruction: low moss/leaf litter/small fern/pebbles; catalog footprint1x1 obstruction0"
+      },
+      "sourceSha256": "c3ac154ba1a2de92f4656234c33cbccc7599f4f0373edc5fd64949d52789dcc2",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
       }
     }
   ],
