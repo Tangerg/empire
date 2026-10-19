@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 27,
+  "authoredFourPoseBundles": 28,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 181,
+  "formalRuntimeBoundTopics": 182,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1143,6 +1143,13 @@
       "runtimeBinding": "canonical48x48, anchor24,24, noHD; C02 catalog-only",
       "liveGame": "pending",
       "evidence": "approved-v5/scifi-equipment-first-four/native48-review.png"
+    },
+    "C01-UNIT-IVRA-GROWTH": {
+      "raw": "four native dragon poses with preserved compact-tail revision history",
+      "export": "shared56/950.5 scale,128x80 canvas, foot registration <=1.414logical, opposite quadruped contacts and attack reviewed",
+      "runtimeBinding": "canonical+HD resolved; full c01-15 actual BoardView reviewed",
+      "liveGame": "pending",
+      "evidence": "approved-v5/animation/ivra-growth"
     }
   },
   "supplementalBundles": {
@@ -1396,6 +1403,23 @@
       "runtimeBinding": "catalog atlas cells replaced; no direct scene selectors verified, c01-01 denyAtlases retained",
       "sceneReview": "Fresh post-export native0.55 catalog sample reviewed; no direct scene selectors verified. Compound icon scale differs from single-unit scale and is not a gameplay placement recommendation. Cemetery/river-gate post-export native0.55 probe passed with stable source hashes. River gate keeps complete towers/gate/hoist/pier and local functional water; seven visible decorative piles versus original five is documented, not an exact-count recovery. Final guildhall four awnings and black fortress three flags retained. All16 native catalog samples reviewed; no direct large-landmark scene selector verified, so no production placement scale is inferred.",
       "liveGame": "pending"
+    },
+    "cliff-modules-highland": {
+      "formalRuntimeBoundCells": [
+        "straight-south",
+        "end-west",
+        "end-east",
+        "concave-corner",
+        "hill-cap",
+        "ramp-level-1",
+        "ramp-level-2",
+        "mountain-pass"
+      ],
+      "status": "catalog-only index-preserving export; no scene consumer verified",
+      "source": "8 native transparent masters",
+      "registration": "fullcanvas124logical at[2,2]; originalanchor64,127 unchanged; measured contact differs",
+      "liveGame": "pending",
+      "evidence": "approved-v5/highland-index-export"
     }
   },
   "totalCanonicalScope": 1212,
@@ -1415,7 +1439,7 @@
       "scope": "173-topic runtime snapshot; evidence verification-173"
     },
     "latestBindingAndEdges": "264 binding/asset tests passed at181 topics",
-    "artPythonLatest": "150 passed at73a9b2f including landmark contract subtests",
+    "artPythonLatest": "184 passed on181-topic pre-highland-extension snapshot; sparse worker missing-source errors separately preserved",
     "typecheckLatest": "passed at181 topics",
     "appBuildsLatest": "all4 passed at165-topic clearance checkpoint; logs preserved"
   },

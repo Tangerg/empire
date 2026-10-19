@@ -2211,6 +2211,140 @@
           }
         }
       }
+    },
+    "cliff-modules-highland": {
+      "baselines": {
+        "1x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/cliff-modules-highland.png",
+          "sha256": "2afe6284b04bbd621b630543b8be64700a18365549f6af5254e37f344f5e0c51"
+        },
+        "2x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/cliff-modules-highland@2x.png",
+          "sha256": "bbcb169bebb0cd224382a74187e93d109a32ea987acd2b7613b19f308abdab1b"
+        }
+      },
+      "cells": {
+        "straight-south": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-highland/highland-cliff-straight-south/highland-cliff-straight-south-master.png",
+          "sha256": "27fb57c009f3a50bda14f61c0ff31c8bc108130c0688a263a83ddfdd597b1e2e",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1070
+            ]
+          }
+        },
+        "end-west": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/highland-cliff-end-west-master.png",
+          "sha256": "850a749a09b8ba99323cd3790efeac543ed6c9a085d591488038d995a0eb25a7",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1118
+            ]
+          }
+        },
+        "end-east": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-highland/highland-cliff-end-east/highland-cliff-end-east-master.png",
+          "sha256": "ee83ee996e71e00d84b3ca7391d59e4f0caf71be3f7b876c0a7261554444cc02",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              990
+            ]
+          }
+        },
+        "concave-corner": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-highland/highland-cliff-concave-corner/highland-cliff-concave-corner-master.png",
+          "sha256": "442c152317d354b5fa83df8e906cdaba7fd3df6d3f0b7659b442310697e02424",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              956
+            ]
+          }
+        },
+        "hill-cap": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-highland/highland-hill-cap/highland-hill-cap-master.png",
+          "sha256": "171463b3b540968121ab54f5425890f6c19f13bcef6e2a7cb6de3e559a660d16",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1168
+            ]
+          }
+        },
+        "ramp-level-1": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-highland/highland-ramp-level-1/highland-ramp-level-1-master.png",
+          "sha256": "a043f4f8f6173ad482df95c8406c54e6def7e9f980b189f1c13514675cbdc5ba",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1136
+            ]
+          }
+        },
+        "ramp-level-2": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-highland/highland-ramp-level-2/highland-ramp-level-2-master.png",
+          "sha256": "0f632465ef8e74a2c1fac5a1ef997944173c3cac50ab6ab304b91d7da6df15de",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1160
+            ]
+          }
+        },
+        "mountain-pass": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-highland/highland-mountain-pass/highland-mountain-pass-master.png",
+          "sha256": "fc66de22decafdc8ee28ed0ec1dce3b0e9079b6b0f1609c55617b58f34479142",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1117
+            ]
+          }
+        }
+      }
     }
   }
 }

@@ -1514,13 +1514,13 @@
       "topicId": "C01-UNIT-IVRA-GROWTH",
       "label": "伊芙拉成长单位",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-ivra-growth.png",
-      "width": 256,
-      "height": 64,
+      "png": "runtime-approved-v5/combat-unit/unit-ivra-growth.png",
+      "width": 512,
+      "height": 80,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 80,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1529,13 +1529,14 @@
         "walk-b"
       ],
       "anchor": [
-        32,
-        63
+        72.56286165176223,
+        63.91478169384534
       ],
       "footprint": [
         2,
         2
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-JAVELIN-HUNTER",

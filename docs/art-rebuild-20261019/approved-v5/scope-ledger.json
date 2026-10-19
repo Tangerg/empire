@@ -4,24 +4,24 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 181,
+    "formalBound": 182,
     "boundByCategory": {
       "battle-prop": 64,
-      "combat-unit": 25,
+      "combat-unit": 26,
       "equipment": 51,
       "interactive-structure": 24,
       "mission-unit": 1,
       "skill": 16
     },
-    "rawPreservedTopics": 184,
+    "rawPreservedTopics": 186,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 139
+    "registeredEnvironmentCells": 147
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 139,
+    "registeredIndividualSourceCells": 147,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -1600,15 +1600,23 @@
       "label": "伊芙拉成长单位",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/idle/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/walk-a/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-ivra-growth.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ivra-growth.png",
+      "stageEvidence": {
+        "raw": "four native dragon poses with preserved compact-tail revision history",
+        "export": "shared56/950.5 scale,128x80 canvas, foot registration <=1.414logical, opposite quadruped contacts and attack reviewed",
+        "runtimeBinding": "canonical+HD resolved; full c01-15 actual BoardView reviewed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/animation/ivra-growth"
+      }
     },
     {
       "topicId": "C01-UNIT-JAVELIN-HUNTER",
@@ -5598,8 +5606,10 @@
       "category": "skill",
       "label": "山炉符文加固",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-19/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5612,8 +5622,10 @@
       "category": "skill",
       "label": "荒原风暴鼓舞",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-20/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -18723,9 +18735,34 @@
     {
       "atlasId": "cliff-modules-highland",
       "baselineComponentCount": 16,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "straight-south",
+        "end-west",
+        "end-east",
+        "concave-corner",
+        "hill-cap",
+        "ramp-level-1",
+        "ramp-level-2",
+        "mountain-pass"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "formalRuntimeBoundCells": [
+          "straight-south",
+          "end-west",
+          "end-east",
+          "concave-corner",
+          "hill-cap",
+          "ramp-level-1",
+          "ramp-level-2",
+          "mountain-pass"
+        ],
+        "status": "catalog-only index-preserving export; no scene consumer verified",
+        "source": "8 native transparent masters",
+        "registration": "fullcanvas124logical at[2,2]; originalanchor64,127 unchanged; measured contact differs",
+        "liveGame": "pending",
+        "evidence": "approved-v5/highland-index-export"
+      }
     },
     {
       "atlasId": "forest-existing",
