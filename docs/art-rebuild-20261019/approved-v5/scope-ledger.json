@@ -4,16 +4,16 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 165,
+    "formalBound": 173,
     "boundByCategory": {
-      "battle-prop": 60,
+      "battle-prop": 64,
       "combat-unit": 25,
       "equipment": 47,
       "interactive-structure": 24,
       "mission-unit": 1,
-      "skill": 8
+      "skill": 12
     },
-    "rawPreservedTopics": 173,
+    "rawPreservedTopics": 177,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -5391,11 +5391,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-09/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-09.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master/prompt/source evidence retained",
+        "export": "native48 skill or64 prop black/white/olive semantic and alpha review passed",
+        "runtimeBinding": "existing canonical dimensions and anchor; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-09-12/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-10",
@@ -5407,11 +5413,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-10/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-10.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master/prompt/source evidence retained",
+        "export": "native48 skill or64 prop black/white/olive semantic and alpha review passed",
+        "runtimeBinding": "existing canonical dimensions and anchor; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-09-12/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-11",
@@ -5423,11 +5435,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-11/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-11.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master/prompt/source evidence retained",
+        "export": "native48 skill or64 prop black/white/olive semantic and alpha review passed",
+        "runtimeBinding": "existing canonical dimensions and anchor; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-09-12/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-12",
@@ -5439,11 +5457,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-12/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-12.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master/prompt/source evidence retained",
+        "export": "native48 skill or64 prop black/white/olive semantic and alpha review passed",
+        "runtimeBinding": "existing canonical dimensions and anchor; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-09-12/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-13",
@@ -5451,8 +5475,10 @@
       "category": "skill",
       "label": "灰旗共誓",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-13/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5465,8 +5491,10 @@
       "category": "skill",
       "label": "洛恩封地援护",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-14/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5479,8 +5507,10 @@
       "category": "skill",
       "label": "维尔萨盾墙",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-15/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5493,8 +5523,10 @@
       "category": "skill",
       "label": "道路急行",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-16/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -9844,11 +9876,17 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-broken-rails/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-broken-rails.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master/prompt/source evidence retained",
+        "export": "native48 skill or64 prop black/white/olive semantic and alpha review passed",
+        "runtimeBinding": "existing canonical dimensions and anchor; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-props-last-four/native64-review.png"
+      }
     },
     {
       "topicId": "c02-battle-prop-bunks",
@@ -9944,11 +9982,17 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-community-repairs/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-community-repairs.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master/prompt/source evidence retained",
+        "export": "native48 skill or64 prop black/white/olive semantic and alpha review passed",
+        "runtimeBinding": "existing canonical dimensions and anchor; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-props-last-four/native64-review.png"
+      }
     },
     {
       "topicId": "c02-battle-prop-cups-cookware",
@@ -9981,11 +10025,17 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-dead-fungus-beds/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-dead-fungus-beds.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master/prompt/source evidence retained",
+        "export": "native48 skill or64 prop black/white/olive semantic and alpha review passed",
+        "runtimeBinding": "existing canonical dimensions and anchor; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-props-last-four/native64-review.png"
+      }
     },
     {
       "topicId": "c02-battle-prop-discarded-arms",
@@ -9997,11 +10047,17 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-discarded-arms/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-discarded-arms.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native master/prompt/source evidence retained",
+        "export": "native48 skill or64 prop black/white/olive semantic and alpha review passed",
+        "runtimeBinding": "existing canonical dimensions and anchor; C02 catalog-only",
+        "liveGame": "pending",
+        "evidence": "approved-v5/scifi-props-last-four/native64-review.png"
+      }
     },
     {
       "topicId": "c02-battle-prop-drying-racks",
