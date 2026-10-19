@@ -1,0 +1,109 @@
+{
+  "asset": "cemetery-chapel-compound",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-386ccc16-9197-48ef-a8d9-d04cbe3fe283.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 823612,
+  "opaque_pixels": 1004,
+  "partial_alpha_pixels": 747900,
+  "near_opaque_alpha_250_255_pixels": 724189,
+  "nonzero_alpha_bbox": [
+    0,
+    84,
+    1237,
+    1254
+  ],
+  "strong_alpha_bbox": [
+    33,
+    87,
+    1232,
+    1175
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      0,
+      84,
+      1237,
+      1254
+    ],
+    "16": [
+      33,
+      86,
+      1233,
+      1176
+    ],
+    "128": [
+      33,
+      87,
+      1232,
+      1175
+    ],
+    "250": [
+      34,
+      88,
+      1228,
+      1174
+    ]
+  },
+  "margin_pixels_LTRB": [
+    0,
+    84,
+    17,
+    0
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    33,
+    87,
+    22,
+    79
+  ],
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 1,
+      "nonzero_pixels": 1
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 1,
+      "nonzero_pixels": 6
+    }
+  },
+  "strict_perimeter_all_alpha_zero": false,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": false,
+  "sha256": "ce3f344e3d8989a07c85aced9de2c66c7737087d4b63391512c40d73db8645ac",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails.",
+  "raw_master_native_byte_identical": true,
+  "authored_foot_alpha_sample": 0
+}
