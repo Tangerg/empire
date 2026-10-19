@@ -4305,11 +4305,17 @@
     },
     {
       "topicId": "c02-battle-prop-community-repairs",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-community-repairs/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; runtime visual acceptance pending",
+        "staticVisualReview": "passed-semantic-and-native64-three-backgrounds",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-043-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "405c40a01887df445f677321c46caf8fdd35c2d0c788b56ff6fedb5d14bf799a"
@@ -4341,27 +4347,38 @@
     },
     {
       "topicId": "c02-battle-prop-dead-fungus-beds",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-dead-fungus-beds/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; runtime visual acceptance pending",
+        "staticVisualReview": "passed-semantic-and-native64-three-backgrounds",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-043-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "c17f822e2b966148f3af393ff831e568ba9061a193bfd0313d039e77dee6a313"
     },
     {
       "topicId": "c02-battle-prop-discarded-arms",
-      "status": "raw-generated",
-      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-discarded-arms/master.png",
+      "status": "exported",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-discarded-arms/revision-2/master.png",
       "verification": {
-        "state": "pending",
+        "state": "export-checked",
         "note": "Raw master preserved; runtime visual acceptance pending",
-        "staticVisualReview": "failed-exterior-haze-revision-requested"
+        "staticVisualReview": "passed-semantic-and-native64-three-backgrounds",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-043-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "2bfb0f76f7c974ef12faeab51b2278e0bd526dec2d0b29bdab40e4c66fdecebc",
-      "runtimeSelection": "legacy-baseline"
+      "sourceSha256": "860e559f2beb8393c4d794345a3010cd2238458ad1968095e7d445f3885e0525",
+      "runtimeSelection": "approved-revision-2-pending-export"
     },
     {
       "topicId": "c02-battle-prop-drying-racks",
@@ -7057,7 +7074,8 @@
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-27872fa1/master.png",
       "verification": {
         "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "sourceAlpha": "failed-edge-alpha2-revision-requested"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceSha256": "6be0e3a73ea054545b8dfcdccd7dd131b74f8f1df869c9d0cd0146c379fd4332"
