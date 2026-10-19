@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-long-beam-sniper",
+  "assetId": "C02-SFV1-equipment-long-beam-sniper",
+  "label": "长束狙击手主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 2
+  },
+  "sourceCropBox": [
+    945,
+    319,
+    1249,
+    622
+  ],
+  "sourceMappingEvidence": "Verified against full original equipment-board-01 subjects and catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-long-beam-sniper.png",
+  "runtimeReferenceSha256": "a2bca008e8a952607879172d3bbd1afcb3db6e418b69beb77cd2e9ad3455a3b3",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}

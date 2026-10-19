@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-guard-robot",
+  "assetId": "C02-SFV1-equipment-guard-robot",
+  "label": "守卫机器人主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 4
+  },
+  "sourceCropBox": [
+    945,
+    945,
+    1249,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original equipment-board-01 subjects and catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-guard-robot.png",
+  "runtimeReferenceSha256": "3f40c26a4967b030b124c5ad96d462ada85a0fe6330cc961229671025a71980e",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}

@@ -1,0 +1,96 @@
+{
+  "asset": "highland-broken-ledge",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved broad chunky matte gray rock and restrained large snow planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1183
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.943381
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 1,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    161,
+    115,
+    133,
+    60
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-broken-ledge-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/highland-cliff-end-west-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-broken-ledge/prompt.txt",
+  "production_status": "native catalog candidate; parent owns integration",
+  "atlas": "cliff-modules-highland",
+  "cell_index": 9,
+  "original_cellOrder_token": "broken-ledge",
+  "qualified_original_slot": "cliff-modules-highland:9:broken-ledge",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "catalog_only": true,
+  "actual16_level_instances_at_snapshot": 0,
+  "actual_draw_snapshot_commit": "f8789f8",
+  "original_per_cell_semantic_metadata": null,
+  "per_cell_footprint_obstruction_passability_not_invented": true,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "atlas_anchor": [
+    64,
+    127
+  ],
+  "render_role": "catalog-only independent elevation module; subsequent index-only adapter owned by parent",
+  "semantic_identity": "ONE narrow compact freestanding upright rock-column bundle. The actual original source is a solid clustered column pillar despite the legacy broken-ledge name. Preserve the tight asymmetric oblong exposed pale-gray cap, roughly six to eight large joined column-cap facets, tall steep dark gray sides and a flared base of only a few attached broad rocks. The cap is bare stone; retain only tiny restrained snow on a few front basal rocks if visible in Image 1, with sparse dry olive basal growth. It is slightly NARROWER than the next-slot broad column block, not a thin needle spire. No horizontal ledge, stepped terrace, second tower, gap, snowy upper cap or turf lid.",
+  "native_review": "Actual original narrow solid column bundle retained despite broken-ledge label. One asymmetric bare-rock cap and joined steep upright column faces taper into a few attached basal stones. Small snow touches remain confined to front foot stones; no snowy cap, horizontal ledge, terrace, detached second pillar or needle spire. Tall narrow silhouette is complete and differs from the wider preceding stepped group.",
+  "source_foot_semantics": "projected whole-pillar front baseline near the foremost basal stone, distinct from front wall contact and cap center",
+  "source_local_landmark_estimates_px": {
+    "cap_center": [
+      602,
+      280
+    ],
+    "front_wall_base": [
+      624,
+      979
+    ],
+    "front_basal_rock_contact": [
+      738,
+      1183
+    ],
+    "left_basal_contact": [
+      316,
+      945
+    ],
+    "right_basal_contact": [
+      1011,
+      1038
+    ]
+  },
+  "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-broken-ledge/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-third-four-source-contract.json",
+  "source_crop_findings": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "source_edit_count": 0,
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

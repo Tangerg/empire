@@ -1,0 +1,49 @@
+{
+  "atlas": "cliff-modules-highland",
+  "cell_index": 11,
+  "original_cellOrder_token": "talus-foot",
+  "qualified_slot_address": "cliff-modules-highland:11:talus-foot",
+  "working_file_alias": "highland-talus-foot",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "observed_original_geometry": "Snow-dusted rocky slope/rubble ramp descending toward foreground-left",
+  "strong_bounds": [
+    938,
+    680,
+    1224,
+    879
+  ],
+  "complete_subject_crop": [
+    930,
+    672,
+    1232,
+    887
+  ],
+  "original_fractional_slot": [
+    940.5,
+    627.0,
+    1254.0,
+    940.5
+  ],
+  "strong_silhouette_crossing_pixels": {
+    "left": 2.5,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "complete_subject_reference": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-talus-foot-complete-subject-reference.png",
+  "runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-talus-foot-original-runtime-2x-slot.png",
+  "original_cell_metadata": null,
+  "catalog_status": "catalog-only; no actual draws in16-level audit",
+  "native_metadata_policy": "Do not invent original per-cell footprint, obstruction, passability or heightDelta from temperate siblings or label alone.",
+  "generation_identity_description": "ONE connected snow-dusted coarse rocky talus slope. Its lowest wide entry is at the NEAR-LEFT / LOWER-LEFT and its higher narrow cap is at the REAR-RIGHT / UPPER-RIGHT, exactly like Image 1. Preserve a loose chunky surface of a small number of large angular stones and broad irregular off-white snow patches, with a low jagged right-hand cliff face that increases toward the high rear. Compared with the previously made smooth snow ramp, this source is more broken and rubble-like, with more exposed coarse stones and less continuous snow. The entire high and low ends and the original attached foot rocks are visible. No uniform engineered staircase, smooth white ski-ramp, separate column tower, two-level platform, grass top or detached rock fragment copied from an adjacent slot.",
+  "original_source_provenance": {
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/cliffs-highland-4x4-key.png": "24cc11338ee6233858315c777ca87de0bee539fee0d7c9b008732e9248851a03",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/cliffs-highland-4x4.png": "02adcbb7d42ea0e215a17871e3cd0b8a9dcdad9eed922c6f3a40dad6250a687e",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-highland@2x.png": "bbcb169bebb0cd224382a74187e93d109a32ea987acd2b7613b19f308abdab1b",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json": "ffc1f1b3a64b946ef176d9db3db5001f70b8d85d5ab442a8c12fe1ad849235a6",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/SEMANTIC-CATALOG.json": "1fece5fa9b2d6fe51c4c8bead22e136755a354242ca0ad59602e0edd1483a055"
+  },
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-third-four-source-contract.json",
+  "parent_resolution": "Preserve actual original slot8-11 shapes, original cellOrder/index, and document label/pixel mismatches. File aliases do not establish semantic runtime cells. Original per-cell collision metadata remains absent. No automatic interface connectivity asserted.",
+  "approved_style_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/highland-cliff-end-west-master.png"
+}

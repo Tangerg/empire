@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-star-vein-mage",
+  "assetId": "C02-SFV1-equipment-star-vein-mage",
+  "label": "星脉术士主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 3
+  },
+  "sourceCropBox": [
+    319,
+    632,
+    622,
+    935
+  ],
+  "sourceMappingEvidence": "Verified against full original equipment-board-01 subjects and catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-star-vein-mage.png",
+  "runtimeReferenceSha256": "22ac040d83bacee3d0b9e4cf88367196675646a778ed2b109d1af023af1d0d7a",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}

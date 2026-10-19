@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-power-swordsman",
+  "assetId": "C02-SFV1-equipment-power-swordsman",
+  "label": "动力剑士主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 1
+  },
+  "sourceCropBox": [
+    319,
+    5,
+    622,
+    309
+  ],
+  "sourceMappingEvidence": "Verified against full original equipment-board-01 subjects and catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-power-swordsman.png",
+  "runtimeReferenceSha256": "27e5e2ae22e5e79b17cb6bb6fdd3c814d64c5435f531b2fde124031d112cc8b5",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-d0e0ba16-126a-439b-94ab-96a95dfa3aea.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-power-swordsman/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original equipment-board-01 r1c2 preserved: one broad solid powered sword, ivory bevels/charcoal blade face, bounded cyan blade channel, blocky crossguard, brown segmented grip and knuckle loop. Source perimeter0; actual48 white-black review keeps blade and grip silhouette clear. Broad matte planes, no scratches or exterior energy glow.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

@@ -1,0 +1,96 @@
+{
+  "asset": "highland-cliff-convex-corner",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved broad chunky matte gray rock and restrained large snow planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1097
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.874801
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    40,
+    168,
+    20,
+    148
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-cliff-convex-corner-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/highland-cliff-end-west-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-convex-corner/prompt.txt",
+  "production_status": "native catalog candidate; parent owns integration",
+  "atlas": "cliff-modules-highland",
+  "cell_index": 8,
+  "original_cellOrder_token": "convex-corner",
+  "qualified_original_slot": "cliff-modules-highland:8:convex-corner",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "catalog_only": true,
+  "actual16_level_instances_at_snapshot": 0,
+  "actual_draw_snapshot_commit": "f8789f8",
+  "original_per_cell_semantic_metadata": null,
+  "per_cell_footprint_obstruction_passability_not_invented": true,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "atlas_anchor": [
+    64,
+    127
+  ],
+  "render_role": "catalog-only independent elevation module; subsequent index-only adapter owned by parent",
+  "semantic_identity": "ONE connected broken stepped rocky ledge. Follow the original real pixels despite the legacy convex-corner name: a tall broad block at the REAR-LEFT / UPPER-LEFT descends through several irregular large attached blocky rock terraces toward the FRONT-RIGHT / LOWER-RIGHT. Preserve exposed flat gray column caps and the many-height jagged stepped silhouette as one group, not a smooth rounded convex wall, simple ramp or freestanding tower. The broad rear cap is bare rock. A small restrained patch of off-white snow lies only among a few low front-right foot stones, as in Image 1; no snowy upper cap or large snow path. Sparse dry olive growth remains between basal rocks. No manufactured regular staircase, building, grass lid or platform under the group.",
+  "native_review": "Actual original broken stepped ledge retained despite convex-corner label: a broad high rear-left rock group descends through irregular attached column terraces to the front-right. Top remains bare stone, with only a little original-like snow among low front rocks. Complete connected silhouette and coarse matte planes; no smooth convex clone, detached pillar tip, artificial regular staircase or snow cap.",
+  "source_foot_semantics": "whole-group projected front basal baseline, separate from the high rear cap and lower-right step contacts",
+  "source_local_landmark_estimates_px": {
+    "high_rear_cap_center": [
+      612,
+      226
+    ],
+    "mid_terrace_center": [
+      733,
+      657
+    ],
+    "low_front_rock_contact": [
+      741,
+      1090
+    ],
+    "left_basal_contact": [
+      144,
+      841
+    ],
+    "right_basal_contact": [
+      1130,
+      972
+    ]
+  },
+  "source_interface_status": "visual approximate landmarks only; no automatic connection or precise port guarantee",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-convex-corner/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-third-four-source-contract.json",
+  "source_crop_findings": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "source_edit_count": 0,
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

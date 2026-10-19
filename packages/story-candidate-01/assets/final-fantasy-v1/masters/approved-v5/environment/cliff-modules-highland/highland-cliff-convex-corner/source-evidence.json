@@ -1,0 +1,50 @@
+{
+  "atlas": "cliff-modules-highland",
+  "cell_index": 8,
+  "original_cellOrder_token": "convex-corner",
+  "qualified_slot_address": "cliff-modules-highland:8:convex-corner",
+  "working_file_alias": "highland-cliff-convex-corner",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "observed_original_geometry": "Broken/stepped rocky ledge with descending block steps; differs from a simple convex corner",
+  "strong_bounds": [
+    32,
+    679,
+    290,
+    873
+  ],
+  "complete_subject_crop": [
+    24,
+    671,
+    298,
+    881
+  ],
+  "original_fractional_slot": [
+    0.0,
+    627.0,
+    313.5,
+    940.5
+  ],
+  "strong_silhouette_crossing_pixels": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "complete_subject_reference": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-cliff-convex-corner-complete-subject-reference.png",
+  "runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-cliff-convex-corner-original-runtime-2x-slot.png",
+  "original_cell_metadata": null,
+  "catalog_status": "catalog-only; no actual draws in16-level audit",
+  "native_metadata_policy": "Do not invent original per-cell footprint, obstruction, passability or heightDelta from temperate siblings or label alone.",
+  "generation_identity_description": "ONE connected broken stepped rocky ledge. Follow the original real pixels despite the legacy convex-corner name: a tall broad block at the REAR-LEFT / UPPER-LEFT descends through several irregular large attached blocky rock terraces toward the FRONT-RIGHT / LOWER-RIGHT. Preserve exposed flat gray column caps and the many-height jagged stepped silhouette as one group, not a smooth rounded convex wall, simple ramp or freestanding tower. The broad rear cap is bare rock. A small restrained patch of off-white snow lies only among a few low front-right foot stones, as in Image 1; no snowy upper cap or large snow path. Sparse dry olive growth remains between basal rocks. No manufactured regular staircase, building, grass lid or platform under the group.",
+  "original_source_provenance": {
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/cliffs-highland-4x4-key.png": "24cc11338ee6233858315c777ca87de0bee539fee0d7c9b008732e9248851a03",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/cliffs-highland-4x4.png": "02adcbb7d42ea0e215a17871e3cd0b8a9dcdad9eed922c6f3a40dad6250a687e",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-highland@2x.png": "bbcb169bebb0cd224382a74187e93d109a32ea987acd2b7613b19f308abdab1b",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json": "ffc1f1b3a64b946ef176d9db3db5001f70b8d85d5ab442a8c12fe1ad849235a6",
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/SEMANTIC-CATALOG.json": "1fece5fa9b2d6fe51c4c8bead22e136755a354242ca0ad59602e0edd1483a055"
+  },
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-third-four-source-contract.json",
+  "parent_resolution": "Preserve actual original slot8-11 shapes, original cellOrder/index, and document label/pixel mismatches. File aliases do not establish semantic runtime cells. Original per-cell collision metadata remains absent. No automatic interface connectivity asserted.",
+  "approved_style_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/highland-cliff-end-west-master.png",
+  "runtime_neighbor_contamination": "spike tip from slot12 crossing upward5.5px; excluded from new slot8 subject"
+}
