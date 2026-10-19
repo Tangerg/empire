@@ -671,23 +671,26 @@
     },
     "camps-foundations": {
       "formalRuntimeBoundCells": [
-        "abandoned-cart-stop"
+        "abandoned-cart-stop",
+        "village-square-foundation"
       ],
-      "count": 1,
+      "count": 2,
       "export": "144/288 full-canvas registration, immutable baseline and unchanged other15 cells checked",
       "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
-      "sceneReview": "chunky covered cart, barrels/crate/platform/lantern and functional muddy base preserved; original small standing placement remains, full scene integration review pending",
+      "sceneReview": "Cart standing and village square ground remain in original layers/scales; complete first/secondlevel reviewed, functional bases intact",
       "liveGame": "pending"
     },
     "cliff-modules-temperate": {
       "formalRuntimeBoundCells": [
         "temperate-hill-cap",
-        "temperate-cliff-convex-corner"
+        "temperate-cliff-convex-corner",
+        "temperate-pillar-wide",
+        "temperate-plateau-cap"
       ],
-      "count": 2,
+      "count": 4,
       "export": "128/256 full-canvas registered, strict original16 cell-order/semantic pairs and unrelated pixels retained",
       "runtimeBinding": "actual existing elevated scenery selectors, occupancy/passability untouched",
-      "sceneReview": "Complete first-level BoardView with all19 initial actors reviewed; first two broad cliff profiles preserve structural relation, remaining legacy cliffs visibly require replacement",
+      "sceneReview": "Complete firstlevel reviewed with all19 ruleactors; four new large-plane profiles coherent with trees/buildings; remaining5 active cliff identities still legacy",
       "liveGame": "pending"
     }
   },
@@ -697,20 +700,20 @@
     "focusedRuntime": 72,
     "typecheck": "passed",
     "artToolTests": 126,
-    "fullSuite": "existing jsdom scrollTo error reproduced before binding change",
+    "fullSuite": "latest full97 files/892 tests passed; prior jsdom failure remains historical evidence, no cause inferred from this successful run",
     "liveBrowser": "not validated",
     "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint",
     "fullSuiteLatestAttempt": {
-      "passed": 884,
+      "passed": 892,
       "failed": 0,
       "files": 97,
       "command": "npx vitest run --maxWorkers 2 --minWorkers 1",
       "defaultTestTimeoutUnchanged": true,
-      "scope": "7067409 six-ground-accent checkpoint; subsequent gravekeeper/gray-flag-point covered by focused binding tests"
+      "scope": "b0562c6 ranger/firstcliffpair runtime checkpoint; later atlas-only additions separately export-checked"
     },
     "latestBindingAndEdges": "89 asset/environment tests passed after ranger and first cliff pair",
     "artPythonLatest": "147 passed in exact cliff-contract engineering checkpoint",
-    "typecheckLatest": "passed at cart-stop/decal checkpoint"
+    "typecheckLatest": "passed after firstfour cliffs and village square"
   },
   "liveGameVerifiedAnimationTopics": 0,
   "materialStages": {

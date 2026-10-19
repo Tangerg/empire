@@ -1,0 +1,84 @@
+{
+  "asset": "temperate-pillar-wide",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; aligned to parent-approved hill-cap pilot broad continuous olive turf and large matte gray rock planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    696,
+    1188
+  ],
+  "source_foot_estimate_normalized": [
+    0.555024,
+    0.947368
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    79,
+    87,
+    37,
+    58
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/temperate-pillar-wide-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/temperate-hill-cap-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "cliff-modules-temperate",
+  "cell_index": 12,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "logical_anchor": [
+    64,
+    127
+  ],
+  "hd_anchor": [
+    128,
+    254
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "obstructionHeight": 2,
+  "passable": false,
+  "render_role": "independent standing elevation module; bottom-anchor; no NESW mask",
+  "semantic_identity": "One tall broad isolated pillar/butte with a smaller compact continuous top and a substantial splayed basal rock skirt. Long joined vertical gray columns distinguish it from the low hill and wide-topped plateau.",
+  "source_foot_semantics": "Foot is the visually selected front basal rock/moss contact of the whole standing pillar, rather than the upper cap center.",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-priority-four-source-evidence.json",
+  "source_crop_findings": "The full pillar starts at source y934, six pixels above the nominal quarter y940; the complete recovered cap and rear tip are preserved. No clipped top or neighbor fragment is copied.",
+  "original_complete_reference_crop": [
+    56,
+    924,
+    308,
+    1160
+  ],
+  "actual_instances_by_level": {
+    "c01-01": 9,
+    "c01-02": 0
+  },
+  "actual_scale_range": [
+    0.578,
+    0.674
+  ],
+  "source_margin_note": "Full strong silhouette complete; see numeric margins rather than claiming requested10percent was necessarily achieved.",
+  "native_raw_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/raw.png",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails.",
+  "source_foot_visual_landmark": "Forward-center basal moss contact below the foremost attached rock; slightly right of canvas center because the isometric front apron projects asymmetrically."
+}

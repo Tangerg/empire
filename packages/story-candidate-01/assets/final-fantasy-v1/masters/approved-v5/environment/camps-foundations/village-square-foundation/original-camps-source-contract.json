@@ -1,0 +1,122 @@
+{
+  "checkpoint": "7bbeb52",
+  "masterSize": [
+    1254,
+    1254
+  ],
+  "sources": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/camps-foundations-4x4-key.png": "d1aafadcb4b6e0e842d7d7d4b689b65c3c7748a2cb57f3101440c6c30508686d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/camps-foundations-4x4.png": "a0736cdce63cca6b925490669aa6355e147e45428904a7b52e7e9fc7485c2062",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations.png": "20b127dca57e4e3c5cdf79ea28a941d340057452685abb0f264f3356bb344f2d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "5c5bd292a37418297c27ce828fcf87e7d77b5c3805c825ccc59ce4e933394e95"
+  },
+  "records": [
+    {
+      "id": "village-square-foundation",
+      "atlas": "camps-foundations",
+      "index": 3,
+      "manifestCell": {
+        "id": "village-square-foundation",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 0
+      },
+      "masterQuarterBox": [
+        940,
+        0,
+        1254,
+        314
+      ],
+      "runtime2xBox": [
+        864,
+        0,
+        1152,
+        288
+      ],
+      "runtimeLogicalSize": [
+        144,
+        144
+      ],
+      "logicalContact": [
+        72,
+        139
+      ],
+      "runtime2xContact": [
+        144,
+        278
+      ],
+      "runtimeAlpha1Bounds": [
+        5.0,
+        47.0,
+        139.0,
+        139.0
+      ],
+      "runtimeAlpha128Bounds": [
+        5.5,
+        47.0,
+        138.5,
+        139.0
+      ]
+    },
+    {
+      "id": "abandoned-cart-stop",
+      "atlas": "camps-foundations",
+      "index": 13,
+      "manifestCell": {
+        "id": "abandoned-cart-stop",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "masterQuarterBox": [
+        314,
+        940,
+        627,
+        1254
+      ],
+      "runtime2xBox": [
+        288,
+        864,
+        576,
+        1152
+      ],
+      "runtimeLogicalSize": [
+        144,
+        144
+      ],
+      "logicalContact": [
+        72,
+        139
+      ],
+      "runtime2xContact": [
+        144,
+        278
+      ],
+      "runtimeAlpha1Bounds": [
+        5.0,
+        39.0,
+        139.0,
+        139.0
+      ],
+      "runtimeAlpha128Bounds": [
+        5.5,
+        39.5,
+        138.5,
+        138.5
+      ]
+    }
+  ],
+  "note": "Master quarter boundaries are diagnostic only: this 1254px sheet has fractional 313.5px quarters. New individual masters need explicit registration/sourceFoot; do not derive contact from alpha bounds."
+}

@@ -1,0 +1,93 @@
+{
+  "atlasId": "camps-foundations",
+  "cellId": "village-square-foundation",
+  "cellIndexZeroBased": 3,
+  "status": "native pilot source ready for parent review; not integrated",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-960d7ce1-8d00-4b1a-a73a-355d65f4be0a.png",
+  "localRaw": "raw.png",
+  "master": "master.png",
+  "exactPrompt": "prompt.txt",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "7bbeb52",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/camps-foundations-4x4-key.png",
+    "alphaIntermediatePath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/camps-foundations-4x4.png",
+    "atlasGrid": [
+      4,
+      4
+    ],
+    "atlasNativeSize": [
+      1254,
+      1254
+    ],
+    "diagnosticMasterQuarterCrop": [
+      940,
+      0,
+      1254,
+      314
+    ],
+    "diagnosticCropNote": "Quarter boundaries are fractional 313.5 px; rounded diagnostic crop copied byte-exact from engineer audit. The complete master and alpha sheet were inspected, with no neighboring subject contamination in this quarter. This crop is an identity reference, not a new production registration.",
+    "audit": "docs/art-rebuild-20261019/approved-v5/gray-flag-scene-audit",
+    "copiedSourceContract": "original-camps-source-contract.json",
+    "identityReference": "identity-original-master-quarter.png",
+    "runtimeReference": "identity-original-runtime2x-cell.png",
+    "atlasSha256": "d1aafadcb4b6e0e842d7d7d4b689b65c3c7748a2cb57f3101440c6c30508686d",
+    "matchesBaselineAtlasBytes": true
+  },
+  "originalRuntimeContract": {
+    "logicalCell": [
+      144,
+      144
+    ],
+    "hdCell": [
+      288,
+      288
+    ],
+    "logicalAnchor": [
+      72,
+      139
+    ],
+    "footprint": [
+      4,
+      3
+    ],
+    "obstructionHeight": 0,
+    "layer": "ground foundation; painted well/tables do not move it to standing",
+    "authoredSceneScale": 0.82,
+    "ruleVillageFoundationScale": 0.3
+  },
+  "identityClarification": "One central open circular masonry well with timber lifting mechanism, continuous paved plaza, three low table/stall stations, one slate-gray flag with pale cross, perimeter crate/tub groups. Functional floor retained intact. The open walking area remains around the well; no invented roof or building.",
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/village-square-foundation/identity-original-master-quarter.png",
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "sourceFootNative": [
+    627,
+    1088
+  ],
+  "sourceFootBasis": "Manually reviewed front-center earth-apron boundary, aligned to native canvas center. Selected on the visible ground contact edge, not computed from alpha bounds. Alpha sampled afterwards at this selected point is 243. This is a pilot registration estimate for parent review.",
+  "fullCanvasRegistration": {
+    "nativeCanvas": [
+      1254,
+      1254
+    ],
+    "preserveWholeCanvas": true,
+    "cropToAlphaBounds": false,
+    "scaleOrTranslationNotApplied": true,
+    "productionMapping": "Pending parent source-foot/full-canvas review; no runtime transform or anchor update made."
+  },
+  "semanticCaveats": [
+    "The source groups crates into broad low-detail masses. No gameplay object identity/counts are bound by this painted foundation.",
+    "Generated exterior margin is much narrower laterally than the prompt requested, but the full subject is visible; parent should review the complete canvas, not crop the alpha bounds.",
+    "Native alpha1 perimeter residue must remain unchanged in the raw source."
+  ],
+  "postprocessing": "None; native generated PNG copied byte-exact to raw.png and master.png. No cleanup, resizing or repository writes.",
+  "runtimeReady": false
+}

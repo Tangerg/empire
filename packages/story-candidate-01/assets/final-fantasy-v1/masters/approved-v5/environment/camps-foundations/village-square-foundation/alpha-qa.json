@@ -1,0 +1,65 @@
+{
+  "atlasId": "camps-foundations",
+  "cellId": "village-square-foundation",
+  "cellIndexZeroBased": 3,
+  "status": "pilot source; parent registration review pending",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.47964154259797676,
+  "nearOpaqueFractionAlphaGE250": 0.48802110757537603,
+  "canvasEdgeMaxAlpha": 1,
+  "sourceFootNative": [
+    627,
+    1088
+  ],
+  "sourceFootBasis": "Manually reviewed front-center earth-apron boundary, aligned to native canvas center. Selected on the visible ground contact edge, not computed from alpha bounds. Alpha sampled afterwards at this selected point is 243. This is a pilot registration estimate for parent review.",
+  "sourceFootAlpha": 243,
+  "fullCanvasMustBePreserved": true,
+  "sha256": "61ae8994f0db7574c7929a63f219d8bab74a25b4a31be70af3b7addc6359bfb4",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Complete open central well, three table/work-stall functions, gray cross banner and perimeter cargo groups. Opaque functional paving floor and thin irregular earth apron retained. Bold matte cel planes and thick contours, no external background. Source remains ground-layer by contract.",
+  "remarks": [
+    "Native alpha1 perimeter specks preserved without cleanup.",
+    "Lateral visible margins approximately 23 and 21px; complete silhouette remains in frame, with no alpha>=8 edge contact.",
+    "Manual front-center floor contact is independent of alpha-bbox bottom, which is recorded only as QA."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "alphaBBoxGE1": [
+    0,
+    29,
+    1237,
+    1254
+  ],
+  "alphaBBoxGE8": [
+    22,
+    212,
+    1234,
+    1105
+  ],
+  "alphaBBoxGE128": [
+    23,
+    213,
+    1233,
+    1104
+  ],
+  "alphaBBoxGE250": [
+    32,
+    216,
+    1223,
+    1098
+  ],
+  "functionalFloorAlphaSamples": {
+    "(627, 900)": 252,
+    "(500, 800)": 253,
+    "(700, 750)": 252,
+    "(450, 650)": 253
+  }
+}
