@@ -1302,13 +1302,23 @@
       "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
       "status": "pending",
       "source": null,
-      "verification": null,
+      "verification": {
+        "state": "partial-frames-only",
+        "note": "1 individual frame masters backed up; whole topic not yet accepted"
+      },
       "assignment": "redraw_grayflag_cover_props",
       "plannedFrames": [
         "normal",
         "damaged",
         "captured"
-      ]
+      ],
+      "frames": {
+        "normal": {
+          "status": "raw-generated",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/normal/master.png",
+          "sha256": "846e6c0ae75015c527836fef3d8cff10463184ebc7eb771f4e0a146237c24592"
+        }
+      }
     },
     {
       "topicId": "C01-STRUCT-OLD-CITY-TUNNEL",
