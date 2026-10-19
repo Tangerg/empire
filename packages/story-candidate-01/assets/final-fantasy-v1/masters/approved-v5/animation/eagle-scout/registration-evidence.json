@@ -1,0 +1,275 @@
+{
+  "sharedScale": 0.05508474576271186,
+  "scaleFraction": "52/944",
+  "bodyReferenceSourcePixels": 944,
+  "bodyTargetHeightLogicalPixels": 52,
+  "canonicalSourceFoot": [
+    798,
+    974
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "proposedCommonFrameSize": [
+    128,
+    80
+  ],
+  "proposedOrigin": [
+    14,
+    6
+  ],
+  "paddingPolicy": "Only transparent bottom/right padding in derived export, at most2pixels wide and1pixel high. Native raw/master untouched. No crop, per-pose fit or rescale.",
+  "registrationMethod": "Selected two supporting talon ROIs, one hind and one fore. Mean x of the bottom4 opaque-support rows for each talon; average those centers, y is lowest selected claw. Whole-canvas translation only. The idle target anchor798,974 was coordinator-approved. Rider boots excluded.",
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceSupportAnchorEstimated": [
+        798,
+        974
+      ],
+      "sourceFootMidpoint": [
+        797.9155172413793,
+        974
+      ],
+      "supportingTalonMeasurements": [
+        {
+          "roi": [
+            480,
+            820,
+            695,
+            960
+          ],
+          "bounds": [
+            480,
+            820,
+            690,
+            949
+          ],
+          "soleY": 948,
+          "bottomFourRowsMeanX": 590.9310344827586
+        },
+        {
+          "roi": [
+            885,
+            880,
+            1100,
+            990
+          ],
+          "bounds": [
+            885,
+            880,
+            1100,
+            975
+          ],
+          "soleY": 974,
+          "bottomFourRowsMeanX": 1004.9
+        }
+      ],
+      "registrationOffsetSource": [
+        0,
+        0
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "fullCanvasBoundsLogical": [
+        14.0,
+        6.0,
+        101.36440677966101,
+        60.69915254237288
+      ]
+    },
+    "walk-a": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceSupportAnchorEstimated": [
+        804,
+        968
+      ],
+      "sourceFootMidpoint": [
+        804.3318350079323,
+        968
+      ],
+      "supportingTalonMeasurements": [
+        {
+          "roi": [
+            470,
+            840,
+            690,
+            975
+          ],
+          "bounds": [
+            481,
+            840,
+            682,
+            963
+          ],
+          "soleY": 962,
+          "bottomFourRowsMeanX": 582.1475409836065
+        },
+        {
+          "roi": [
+            870,
+            850,
+            1105,
+            985
+          ],
+          "bounds": [
+            880,
+            850,
+            1097,
+            969
+          ],
+          "soleY": 968,
+          "bottomFourRowsMeanX": 1026.516129032258
+        }
+      ],
+      "registrationOffsetSource": [
+        -6,
+        6
+      ],
+      "registrationOffsetLogical": [
+        -0.3305084745762712,
+        0.3305084745762712
+      ],
+      "fullCanvasBoundsLogical": [
+        13.669491525423728,
+        6.330508474576272,
+        101.03389830508475,
+        61.02966101694915
+      ]
+    },
+    "attack": {
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceSupportAnchorEstimated": [
+        796,
+        980
+      ],
+      "sourceFootMidpoint": [
+        795.974828375286,
+        980
+      ],
+      "supportingTalonMeasurements": [
+        {
+          "roi": [
+            470,
+            840,
+            690,
+            980
+          ],
+          "bounds": [
+            480,
+            840,
+            682,
+            955
+          ],
+          "soleY": 954,
+          "bottomFourRowsMeanX": 582.2105263157895
+        },
+        {
+          "roi": [
+            895,
+            880,
+            1120,
+            990
+          ],
+          "bounds": [
+            895,
+            880,
+            1120,
+            981
+          ],
+          "soleY": 980,
+          "bottomFourRowsMeanX": 1009.7391304347826
+        }
+      ],
+      "registrationOffsetSource": [
+        2,
+        -6
+      ],
+      "registrationOffsetLogical": [
+        0.11016949152542373,
+        -0.3305084745762712
+      ],
+      "fullCanvasBoundsLogical": [
+        14.110169491525424,
+        5.669491525423728,
+        101.47457627118644,
+        60.36864406779661
+      ]
+    },
+    "walk-b": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceSupportAnchorEstimated": [
+        846,
+        970
+      ],
+      "sourceFootMidpoint": [
+        846.0751633986929,
+        970
+      ],
+      "supportingTalonMeasurements": [
+        {
+          "roi": [
+            480,
+            850,
+            700,
+            970
+          ],
+          "bounds": [
+            490,
+            850,
+            700,
+            950
+          ],
+          "soleY": 949,
+          "bottomFourRowsMeanX": 609.7777777777778
+        },
+        {
+          "roi": [
+            960,
+            855,
+            1200,
+            985
+          ],
+          "bounds": [
+            960,
+            855,
+            1181,
+            971
+          ],
+          "soleY": 970,
+          "bottomFourRowsMeanX": 1082.372549019608
+        }
+      ],
+      "registrationOffsetSource": [
+        -48,
+        4
+      ],
+      "registrationOffsetLogical": [
+        -2.6440677966101696,
+        0.22033898305084745
+      ],
+      "fullCanvasBoundsLogical": [
+        11.35593220338983,
+        6.220338983050848,
+        98.72033898305085,
+        60.91949152542373
+      ]
+    }
+  },
+  "maximumAbsoluteRegistrationLogicalPixels": 2.6440677966101696
+}

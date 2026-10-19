@@ -1,0 +1,132 @@
+{
+  "topicId": "C01-UNIT-ANCIENT-DRAGON",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-ANCIENT-DRAGON",
+    "topicId": "C01-UNIT-ANCIENT-DRAGON",
+    "label": "古龙",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-ancient-dragon.png",
+    "width": 256,
+    "height": 64,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 64,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "footprint": [
+      2,
+      2
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-ancient-dragon.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ancient-dragon.png"
+    ]
+  },
+  "sourceReferences": [
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-colossus-ivra-wyvern-dragon.png",
+      "sha256": "0388f089c7f43b805e38fea9443c9832769b27b1d1151b1a00afb103ecc0628d"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/references/source-idle-cell.png",
+      "sha256": "49690f1b6ede8a6fa1d7d263effd0c43e386934fa01d509697c8bf6a7355169b"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/references/source-row.png",
+      "sha256": "b4f50912ee9aac57954a237e9b3d7b5aa5c7439f1f66148cc444b8a3273d71e2"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/references/runtime-strip.png",
+      "sha256": "05d48d911adcda0ccfc29149b3a799ca0f29b5edc9652576b4b1a7d557566e80"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ancient-dragon/references/runtime-hd-strip.png",
+      "sha256": "7a116f8a21d567e1489dcd1748231bae0c8bc7a22de41c8a2187db84644a68e7"
+    }
+  ],
+  "sourceSlot": "Bottom/fourth row of original combat-atlas-colossus-ivra-wyvern-dragon.png. Native row crop [0,895,1254,1220], idle crop [0,895,325,1220], no resampling or alpha edits.",
+  "originalIdentity": "Mature gray stone-scaled quadruped dragon, four clawed legs plus two separate grey membranous wings, broad upright neck and segmented broad belly plates, long swept backward horn crown and angular cheek spines, amber eye with dark pupil, heavy beaked snout and downward chin point. Muted olive lichen/moss patches on grey scales, wing membranes and spines; curled heavy armored tail around rear feet. No rider, armor, harness, white juvenile scar, fire or aura.",
+  "actualBinding": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts:63",
+    "domainUnit": "dragon",
+    "topicId": "C01-UNIT-ANCIENT-DRAGON"
+  },
+  "actualLevelConsumers": [
+    {
+      "level": "three-bridges",
+      "source": "packages/content-ancient-empires/src/levels/02-three-bridges.json",
+      "owner": 1,
+      "position": [
+        5,
+        6
+      ]
+    },
+    {
+      "level": "three-bridges",
+      "source": "packages/content-ancient-empires/src/levels/02-three-bridges.json",
+      "owner": 2,
+      "position": [
+        18,
+        7
+      ]
+    }
+  ],
+  "otherConsumerRoutes": "Built-in castle production list includes dragon; dragon-lord career has unitType dragon. Any later spawned built-in dragon uses this binding.",
+  "c14Clarification": "c01-14 campaign-ivra is c01.ivra, bound to C01-UNIT-IVRA-GROWTH. The red dragon in c01-14 is not an ancient-dragon consumer.",
+  "ruleContract": {
+    "unitSource": "packages/content-ancient-empires/src/units.ts:115-129",
+    "unitId": "dragon",
+    "name": "巨龙",
+    "weapons": [
+      "dragon_breath"
+    ],
+    "maxHp": 160,
+    "movement": 5,
+    "movementClass": "flying",
+    "armorClass": "flying",
+    "tags": [
+      "monster",
+      "flying"
+    ],
+    "weaponSource": "packages/content-ancient-empires/src/weapons.ts:112-119",
+    "weaponPower": 62,
+    "damageType": "magic",
+    "maxRange": 2,
+    "area": "line"
+  },
+  "footprintContract": "Original art metadata [2,2], 64x64 frame, [32,63] anchor. Unit definition has no multi-cell footprint property; no gameplay occupancy, movement, rules or collision change.",
+  "semanticContract": "Original frame order idle,walk-a,attack,walk-b. Original board shows grounded poses with modest forepaw variations. Reconstruct clear opposite diagonal walking supports and distinct forward open-mouth breath-ready attack without baking independent breath FX.",
+  "legacyIdleExtentLogical": [
+    62,
+    58
+  ],
+  "legacyCaveat": "Idle coherent alpha component is x1..63 y5..63 on64x64. Other frames contain edge atlas contamination and variable independent old fits; do not imitate that drift.",
+  "initialScaleProposal": {
+    "candidateHornToPawHeightsLogical": [
+      64,
+      68,
+      72
+    ],
+    "preferredForGate": 68,
+    "human": 44,
+    "troll": 58,
+    "golem": 62,
+    "policy": "One idle-derived shared scale for complete native canvases, no per-pose fits. Parent actual Three Bridges full-scene gate remains required."
+  },
+  "status": "Identity and consumer audit complete; generating first idle only for scale gate"
+}

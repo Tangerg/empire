@@ -1,0 +1,127 @@
+{
+  "topicId": "C01-UNIT-EAGLE-SCOUT",
+  "canonicalContract": {
+    "assetId": "C01-FFV1-UNIT-EAGLE-SCOUT",
+    "topicId": "C01-UNIT-EAGLE-SCOUT",
+    "label": "鹰骑斥候",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-eagle-scout.png",
+    "width": 256,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      32,
+      47
+    ],
+    "footprint": [
+      2,
+      2
+    ]
+  },
+  "hdContract": {
+    "topicId": "C01-UNIT-EAGLE-SCOUT",
+    "png": "runtime-hd/combat-unit/unit-eagle-scout.png",
+    "width": 512,
+    "height": 96,
+    "pixelDensity": 2
+  },
+  "board": {
+    "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-ballista-cavalry-battlemage-eagle.png",
+    "sha256": "ad56bb98b2d14d011ac029d2ba1793ab59a45aaf81f4e6ea04ac4670b30494ea",
+    "nativeSize": [
+      1254,
+      1254
+    ],
+    "identityRow": 4,
+    "idleReferenceCrop": [
+      0,
+      900,
+      314,
+      1254
+    ],
+    "rowReferenceCrop": [
+      0,
+      900,
+      1254,
+      1220
+    ]
+  },
+  "actualConsumers": [],
+  "consumerStatus": "Canonical catalog-only topic. No definition or actor binding in CANDIDATE_01_UNIT_ART or built-in binding map. This source bundle does not invent an actual unit consumer or gameplay behavior.",
+  "consumerEvidence": [
+    "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts",
+    "packages/story-candidate-01/src/presentation/candidate-01-assets.ts",
+    "docs/art-rebuild-20261019/grayflag-topic-consumers.csv:94"
+  ],
+  "designRoleEvidence": "docs/story-candidates/candidate-01/README.md:621 describes flying reconnaissance, high vision, low durability; source board itself has four grounded poses.",
+  "identityContract": "Young tan elf, pointed ears, short charcoal hair, clean-shaven, gray-green hood down, olive tunic, brown/brass layered armor, brown boots, quiver, brown bow in forward screen-right hand, blue-gray reins in near screen-left hand. Brown eagle head/neck/body and folded wings, ochre hooked beak/eye/talons, brown saddle and blue-gray breast harness with brass rings and small diamond pendant.",
+  "anatomyAudit": "Original high-resolution board consistently shows three visible taloned legs below a long feathered body; fourth leg occluded. Preserve original quadrupedal eagle-like fantasy mount with four connected feathered legs and bird talons. Do not infer natural two-leg eagle anatomy from label; do not add lion paws or tail.",
+  "legacyFootprint": {
+    "canonicalFrameSize": [
+      64,
+      48
+    ],
+    "anchor": [
+      32,
+      47
+    ],
+    "artFootprint": [
+      2,
+      2
+    ],
+    "idleVisibleBounds": [
+      8,
+      1,
+      56,
+      47
+    ],
+    "perPoseVisibleBounds": [
+      [
+        8,
+        1,
+        56,
+        47
+      ],
+      [
+        6,
+        1,
+        57,
+        47
+      ],
+      [
+        5,
+        1,
+        59,
+        47
+      ],
+      [
+        7,
+        1,
+        56,
+        47
+      ]
+    ],
+    "idleVisibleSize": [
+      48,
+      46
+    ]
+  },
+  "originalFrameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "generationScope": "Only source bundle under assigned shared output directory. Coordinator owns export, consumer changes, tests and Git."
+}

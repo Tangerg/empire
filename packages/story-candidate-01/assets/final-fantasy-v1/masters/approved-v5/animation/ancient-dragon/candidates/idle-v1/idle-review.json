@@ -1,0 +1,80 @@
+{
+  "status": "Idle and scale gate awaiting coordinator",
+  "idleNativeSize": [
+    1586,
+    992
+  ],
+  "idleHornTopY": 23,
+  "idleLowestNearForeSoleY": 959,
+  "bodyReferenceSourcePixels": 936,
+  "preferredTargetTotalHeightLogical": 68,
+  "scale": 0.07264957264957266,
+  "visibleWidthLogical": 79.33333333333334,
+  "canonicalSourceFoot": [
+    975,
+    959
+  ],
+  "proposedCommonFrameSize": [
+    128,
+    88
+  ],
+  "proposedOrigin": [
+    6,
+    6
+  ],
+  "proposedRuntimePivot": [
+    76.83333333333334,
+    75.67094017094017
+  ],
+  "supports": {
+    "near-hind": {
+      "roi": [
+        700,
+        850,
+        775,
+        940
+      ],
+      "soleY": 936,
+      "bottomBandX": 707.25
+    },
+    "far-hind": {
+      "roi": [
+        780,
+        820,
+        895,
+        920
+      ],
+      "soleY": 907,
+      "bottomBandX": 866.6578947368421
+    },
+    "near-fore": {
+      "roi": [
+        920,
+        850,
+        1145,
+        975
+      ],
+      "soleY": 959,
+      "bottomBandX": 1035.7222222222222
+    },
+    "far-fore": {
+      "roi": [
+        1180,
+        850,
+        1400,
+        950
+      ],
+      "soleY": 938,
+      "bottomBandX": 1289.375
+    }
+  },
+  "alternatives": [
+    64,
+    68,
+    72
+  ],
+  "identityReview": "Gray mature dragon, moss patches, horn crown, segmented throat, compact tail and heavy four-paw anatomy hold; native black/white review clean. Far wing largely occluded by existing body perspective, as in original.",
+  "alphaReview": "Genuine RGBA, all substantial silhouette safely inside canvas; native perimeter has alpha1 pixels only, none>1. Preserve source, no cleanup.",
+  "fullSceneRequired": "Both three-bridges actors [5,6] owner1 and [18,7] owner2, before other poses. c01-14 red Ivra does not test this topic.",
+  "supportAnchorDerivation": "Mean of four measured bottom-four-row paw contact band x centers: (707.25+866.6578947368421+1035.7222222222222+1289.375)/4=974.7512792397661, rounded to975. Lowest near forepaw y959. Near-hind restricted x700..775 avoids overlapping tail."
+}

@@ -1,0 +1,83 @@
+{
+  "status": "Third idle candidate passes no-worse immediate-soldier positioning threshold; awaiting coordinator acceptance",
+  "selectedAttempt": "idle-v3",
+  "nativeSize": [
+    1586,
+    992
+  ],
+  "hornTopY": 22,
+  "lowestNearForePawY": 962,
+  "bodyReferenceSourcePixels": 940,
+  "targetHeightLogical": 64,
+  "scale": 0.06808510638297872,
+  "sourceFoot": [
+    1024,
+    962
+  ],
+  "sourceFootDerivation": "Mean four manually bounded visible bottom-foot-band x estimates1023.7090, rounded1024; y is lowest planted near forepaw962. Far-hind contact partly occluded by near foreleg; manual ROI estimate is explicit. No registration adjustment for occlusion.",
+  "footMeasurements": {
+    "near-hind": {
+      "roi": [
+        810,
+        850,
+        860,
+        930
+      ],
+      "soleY": 922,
+      "bottomBandX": 849.483870967742
+    },
+    "far-hind": {
+      "roi": [
+        885,
+        835,
+        923,
+        904
+      ],
+      "soleY": 903,
+      "bottomBandX": 916.3673469387755
+    },
+    "near-fore": {
+      "roi": [
+        930,
+        850,
+        1150,
+        980
+      ],
+      "soleY": 962,
+      "bottomBandX": 1033.9545454545455
+    },
+    "far-fore": {
+      "roi": [
+        1200,
+        850,
+        1400,
+        960
+      ],
+      "soleY": 939,
+      "bottomBandX": 1295.030303030303
+    }
+  },
+  "proposedFrameSize": [
+    128,
+    88
+  ],
+  "proposedOrigin": [
+    6,
+    6
+  ],
+  "proposedRuntimePivot": [
+    75.71914893617021,
+    71.49787234042553
+  ],
+  "visibleBoundsAlphaGreaterThan127": [
+    577,
+    22,
+    1395,
+    963
+  ],
+  "logicalVisibleWidth": 55.693617021276594,
+  "nativePerimeter": "maxAlpha1; no perimeter pixels>1, source preserved without cleanup",
+  "generationEdits": "Only imagegen-only folded wing/tail revisions, native raw/master exactbytes; variants1/2 retained",
+  "noClaimOfFullSceneAcceptance": true,
+  "coordinatorApproval": "2026-10-19 23:50 UTC: revision3 accepted at64/940, support[1024,962]; three poses authorized, preserving compact silhouette, and pose extremes must pass same actual-neighborhood gate."
+}

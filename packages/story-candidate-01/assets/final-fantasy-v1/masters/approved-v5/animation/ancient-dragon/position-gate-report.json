@@ -1,0 +1,494 @@
+{
+  "method": "Read-only actual engine-created Three Bridges state, actual CANDIDATE_01_ART pictures and structure transforms. Actor/structure alpha overlap at4 samples per logicalpixel, alpha>127. Full source canvases and actual pivots; no fitting. Both dragons actually face south and are NOT mirrored. No Inkscape or full-scene raster.",
+  "limitations": "Neighborhood diagram excludes scenery/trees, badge/ring/shadows and terrain materials. It is placement/overlap evidence only, NOT full-scene acceptance or live renderer validation. Original full-scene occlusion is not altered or claimed resolved.",
+  "reports": [
+    {
+      "actorId": 12,
+      "cell": [
+        5,
+        6
+      ],
+      "worldFoot": [
+        176,
+        223
+      ],
+      "facing": "south",
+      "neighborActors": [
+        {
+          "name": "soldier#1@[4, 6]",
+          "cell": [
+            4,
+            6
+          ]
+        },
+        {
+          "name": "soldier#2@[4, 8]",
+          "cell": [
+            4,
+            8
+          ]
+        },
+        {
+          "name": "soldier#3@[2, 6]",
+          "cell": [
+            2,
+            6
+          ]
+        },
+        {
+          "name": "soldier#4@[2, 8]",
+          "cell": [
+            2,
+            8
+          ]
+        },
+        {
+          "name": "archer#5@[3, 6]",
+          "cell": [
+            3,
+            6
+          ]
+        },
+        {
+          "name": "archer#6@[3, 8]",
+          "cell": [
+            3,
+            8
+          ]
+        },
+        {
+          "name": "knight#7@[5, 7]",
+          "cell": [
+            5,
+            7
+          ]
+        },
+        {
+          "name": "cleric#8@[2, 7]",
+          "cell": [
+            2,
+            7
+          ]
+        },
+        {
+          "name": "mage#9@[1, 7]",
+          "cell": [
+            1,
+            7
+          ]
+        },
+        {
+          "name": "rogue#10@[5, 8]",
+          "cell": [
+            5,
+            8
+          ]
+        },
+        {
+          "name": "ballista#11@[6, 7]",
+          "cell": [
+            6,
+            7
+          ]
+        }
+      ],
+      "nearStructures": [
+        {
+          "name": "struct-joint-granary@2x@[2.0, 4.0]",
+          "cell": [
+            2.0,
+            4.0
+          ],
+          "worldFoot": [
+            80,
+            159
+          ]
+        },
+        {
+          "name": "struct-joint-granary@2x@[6.0, 5.0]",
+          "cell": [
+            6.0,
+            5.0
+          ],
+          "worldFoot": [
+            208,
+            191
+          ]
+        },
+        {
+          "name": "struct-lorne-keep@2x@[3.0, 7.0]",
+          "cell": [
+            3.0,
+            7.0
+          ],
+          "worldFoot": [
+            112,
+            255
+          ]
+        },
+        {
+          "name": "struct-joint-granary@2x@[7.0, 9.0]",
+          "cell": [
+            7.0,
+            9.0
+          ],
+          "worldFoot": [
+            240,
+            319
+          ]
+        }
+      ],
+      "variants": {
+        "legacy": {
+          "visibleWorldBounds": [
+            145.0,
+            165.0,
+            207.0,
+            222.75
+          ],
+          "overlaps": [
+            {
+              "target": "struct-joint-granary@2x@[6.0, 5.0]",
+              "areaLogical": 625.375,
+              "targetVisibleAlphaAreaFraction": 0.12387342775081707,
+              "dragonDrawsInFront": true
+            },
+            {
+              "target": "soldier#1@[4, 6]",
+              "areaLogical": 612.3125,
+              "targetVisibleAlphaAreaFraction": 0.4080893072853751,
+              "dragonDrawsInFront": true
+            },
+            {
+              "target": "struct-lorne-keep@2x@[3.0, 7.0]",
+              "areaLogical": 55.1875,
+              "targetVisibleAlphaAreaFraction": 0.011908775810214843,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "knight#7@[5, 7]",
+              "areaLogical": 94.3125,
+              "targetVisibleAlphaAreaFraction": 0.08666436940041351,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "ballista#11@[6, 7]",
+              "areaLogical": 162.8125,
+              "targetVisibleAlphaAreaFraction": 0.08291689212846548,
+              "dragonDrawsInFront": false
+            }
+          ]
+        },
+        "64": {
+          "visibleWorldBounds": [
+            145.5,
+            159.0,
+            201.25,
+            223.0
+          ],
+          "overlaps": [
+            {
+              "target": "struct-joint-granary@2x@[6.0, 5.0]",
+              "areaLogical": 544.625,
+              "targetVisibleAlphaAreaFraction": 0.10787857779538476,
+              "dragonDrawsInFront": true
+            },
+            {
+              "target": "soldier#1@[4, 6]",
+              "areaLogical": 503.4375,
+              "targetVisibleAlphaAreaFraction": 0.33552713791810723,
+              "dragonDrawsInFront": true
+            },
+            {
+              "target": "struct-lorne-keep@2x@[3.0, 7.0]",
+              "areaLogical": 38.9375,
+              "targetVisibleAlphaAreaFraction": 0.008402228006527573,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "knight#7@[5, 7]",
+              "areaLogical": 122.8125,
+              "targetVisibleAlphaAreaFraction": 0.11285320468642315,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "ballista#11@[6, 7]",
+              "areaLogical": 152.5,
+              "targetVisibleAlphaAreaFraction": 0.07766495846197918,
+              "dragonDrawsInFront": false
+            }
+          ]
+        },
+        "68": {
+          "visibleWorldBounds": [
+            143.75,
+            155.0,
+            202.75,
+            223.0
+          ],
+          "overlaps": [
+            {
+              "target": "struct-joint-granary@2x@[6.0, 5.0]",
+              "areaLogical": 656.9375,
+              "targetVisibleAlphaAreaFraction": 0.130125284738041,
+              "dragonDrawsInFront": true
+            },
+            {
+              "target": "soldier#1@[4, 6]",
+              "areaLogical": 561.9375,
+              "targetVisibleAlphaAreaFraction": 0.37451576623484817,
+              "dragonDrawsInFront": true
+            },
+            {
+              "target": "struct-lorne-keep@2x@[3.0, 7.0]",
+              "areaLogical": 52.5,
+              "targetVisibleAlphaAreaFraction": 0.011328846750374256,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "knight#7@[5, 7]",
+              "areaLogical": 127.3125,
+              "targetVisibleAlphaAreaFraction": 0.11698828394210889,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "ballista#11@[6, 7]",
+              "areaLogical": 148.25,
+              "targetVisibleAlphaAreaFraction": 0.07550052519336665,
+              "dragonDrawsInFront": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "actorId": 24,
+      "cell": [
+        18,
+        7
+      ],
+      "worldFoot": [
+        592,
+        255
+      ],
+      "facing": "south",
+      "neighborActors": [
+        {
+          "name": "soldier#13@[19, 7]",
+          "cell": [
+            19,
+            7
+          ]
+        },
+        {
+          "name": "soldier#14@[19, 9]",
+          "cell": [
+            19,
+            9
+          ]
+        },
+        {
+          "name": "soldier#15@[21, 7]",
+          "cell": [
+            21,
+            7
+          ]
+        },
+        {
+          "name": "soldier#16@[21, 9]",
+          "cell": [
+            21,
+            9
+          ]
+        },
+        {
+          "name": "archer#17@[20, 7]",
+          "cell": [
+            20,
+            7
+          ]
+        },
+        {
+          "name": "archer#18@[20, 9]",
+          "cell": [
+            20,
+            9
+          ]
+        },
+        {
+          "name": "knight#19@[18, 8]",
+          "cell": [
+            18,
+            8
+          ]
+        },
+        {
+          "name": "cleric#20@[21, 8]",
+          "cell": [
+            21,
+            8
+          ]
+        },
+        {
+          "name": "mage#21@[22, 8]",
+          "cell": [
+            22,
+            8
+          ]
+        },
+        {
+          "name": "rogue#22@[18, 9]",
+          "cell": [
+            18,
+            9
+          ]
+        },
+        {
+          "name": "ballista#23@[17, 8]",
+          "cell": [
+            17,
+            8
+          ]
+        }
+      ],
+      "nearStructures": [
+        {
+          "name": "struct-military-registry@2x@[18.0, 4.0]",
+          "cell": [
+            18.0,
+            4.0
+          ],
+          "worldFoot": [
+            592,
+            159
+          ]
+        },
+        {
+          "name": "struct-joint-granary@2x@[16.0, 6.0]",
+          "cell": [
+            16.0,
+            6.0
+          ],
+          "worldFoot": [
+            528,
+            223
+          ]
+        },
+        {
+          "name": "struct-lorne-keep@2x@[20.0, 8.0]",
+          "cell": [
+            20.0,
+            8.0
+          ],
+          "worldFoot": [
+            656,
+            287
+          ]
+        },
+        {
+          "name": "struct-joint-granary@2x@[21.0, 11.0]",
+          "cell": [
+            21.0,
+            11.0
+          ],
+          "worldFoot": [
+            688,
+            383
+          ]
+        }
+      ],
+      "variants": {
+        "legacy": {
+          "visibleWorldBounds": [
+            561.0,
+            197.0,
+            623.0,
+            254.75
+          ],
+          "overlaps": [
+            {
+              "target": "soldier#13@[19, 7]",
+              "areaLogical": 389.5,
+              "targetVisibleAlphaAreaFraction": 0.25959095263881365,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "ballista#23@[17, 8]",
+              "areaLogical": 0.8125,
+              "targetVisibleAlphaAreaFraction": 0.0004137887131171022,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "knight#19@[18, 8]",
+              "areaLogical": 94.3125,
+              "targetVisibleAlphaAreaFraction": 0.08666436940041351,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "struct-lorne-keep@2x@[20.0, 8.0]",
+              "areaLogical": 8.8125,
+              "targetVisibleAlphaAreaFraction": 0.0018993224402925764,
+              "dragonDrawsInFront": false
+            }
+          ]
+        },
+        "64": {
+          "visibleWorldBounds": [
+            561.5,
+            191.0,
+            617.25,
+            255.0
+          ],
+          "overlaps": [
+            {
+              "target": "soldier#13@[19, 7]",
+              "areaLogical": 202.8125,
+              "targetVisibleAlphaAreaFraction": 0.13516890906818846,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "knight#19@[18, 8]",
+              "areaLogical": 122.8125,
+              "targetVisibleAlphaAreaFraction": 0.11285320468642315,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "struct-lorne-keep@2x@[20.0, 8.0]",
+              "areaLogical": 0.125,
+              "targetVisibleAlphaAreaFraction": 2.6940743833937254e-05,
+              "dragonDrawsInFront": false
+            }
+          ]
+        },
+        "68": {
+          "visibleWorldBounds": [
+            559.75,
+            187.0,
+            618.75,
+            255.0
+          ],
+          "overlaps": [
+            {
+              "target": "soldier#13@[19, 7]",
+              "areaLogical": 220.875,
+              "targetVisibleAlphaAreaFraction": 0.14720706460615654,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "knight#19@[18, 8]",
+              "areaLogical": 127.3125,
+              "targetVisibleAlphaAreaFraction": 0.11698828394210889,
+              "dragonDrawsInFront": false
+            },
+            {
+              "target": "struct-lorne-keep@2x@[20.0, 8.0]",
+              "areaLogical": 0.5625,
+              "targetVisibleAlphaAreaFraction": 0.00012123334725271765,
+              "dragonDrawsInFront": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
