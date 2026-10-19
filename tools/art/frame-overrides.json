@@ -28,6 +28,38 @@
           2
         ]
       }
+    },
+    "C01-UNIT-ARCHER": {
+      "kind": "frames-v1",
+      "frames": {
+        "idle": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/idle/master.png",
+          "sha256": "fcfc5191d0ed6601644cbc31d235e31c79e0d43a1241addadc86f952ea44ac95"
+        },
+        "walk-a": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/walk-a/master.png",
+          "sha256": "dbd93398d650b3655b3186b3d8c8d639714374983ff27c394eb6e71e8f33df6b",
+          "registrationOffset": [
+            0,
+            1
+          ]
+        },
+        "attack": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/attack/master.png",
+          "sha256": "473fee55f03ca6beb34750cf4d3b2927863785163b37d5357f969949c41361a8"
+        },
+        "walk-b": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/walk-b/master.png",
+          "sha256": "c7e6de4ed9ce8e69be4a532cc96ce202c6cbf9f9dbc8acf182a3568ed72a685a"
+        }
+      },
+      "placement": {
+        "renderWidth": 30,
+        "origin": [
+          1,
+          2
+        ]
+      }
     }
   }
 }

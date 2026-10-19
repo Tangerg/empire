@@ -497,11 +497,17 @@
     },
     {
       "topicId": "C01-UNIT-ARCHER",
-      "status": "pending",
+      "status": "exported",
       "source": null,
       "verification": {
-        "state": "partial-frames-only",
-        "note": "4 of four pose masters backed up; topic remains pending"
+        "state": "export-checked",
+        "exportCheck": "passed",
+        "exportTests": 33,
+        "evidence": "docs/art-rebuild-20261019/frame-002-export-evidence.json",
+        "semanticReview": "consistent hood/gear, oppositewalksteps, distinct fullbowdraw attack reviewed native",
+        "contact": "allfour visiblefootbase45 vsanchor47, explicit archer-specific2px tolerance; walk-a registration[0,1], sharedscale unchanged",
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "motionPlayback": "GIF prepared; no actualgame playback claim"
       },
       "assignment": "redraw_grayflag_cover_props",
       "plannedFrames": [
@@ -512,22 +518,22 @@
       ],
       "frames": {
         "idle": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/idle/master.png",
           "sha256": "fcfc5191d0ed6601644cbc31d235e31c79e0d43a1241addadc86f952ea44ac95"
         },
         "walk-a": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/walk-a/master.png",
           "sha256": "dbd93398d650b3655b3186b3d8c8d639714374983ff27c394eb6e71e8f33df6b"
         },
         "attack": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/attack/master.png",
           "sha256": "473fee55f03ca6beb34750cf4d3b2927863785163b37d5357f969949c41361a8"
         },
         "walk-b": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/walk-b/master.png",
           "sha256": "c7e6de4ed9ce8e69be4a532cc96ce202c6cbf9f9dbc8acf182a3568ed72a685a"
         }
