@@ -7177,10 +7177,14 @@
     },
     {
       "topicId": "c03-battle-prop-ba469b15",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-ba469b15/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "b5e8ae961dc1728ebb30c5e671b056849ffd857702c00bf1dd374f7f3e610c26"
     },
     {
       "topicId": "c03-battle-prop-c7e05f1c",
@@ -7287,10 +7291,14 @@
     },
     {
       "topicId": "c03-battle-prop-d983ce23",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-d983ce23/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "f88424809a9584f42104736e7744e658d86b1e85f47f276addc632b735ec954b"
     },
     {
       "topicId": "c03-battle-prop-ede52a71",
@@ -8530,6 +8538,12 @@
       "verification": {
         "state": "pending",
         "note": "Raw backed up; placement and deterministic output checks pending"
+      },
+      "staticVisualReview": {
+        "result": "passed",
+        "visibleBaseY": 91,
+        "declaredPivotY": 91,
+        "note": "Source-reference and contact review; pivot need not equal last opaque pixel"
       }
     },
     {
@@ -8543,6 +8557,12 @@
       "verification": {
         "state": "pending",
         "note": "Raw backed up; placement and deterministic output checks pending"
+      },
+      "staticVisualReview": {
+        "result": "passed",
+        "visibleBaseY": 91,
+        "declaredPivotY": 91,
+        "note": "Source-reference and contact review; pivot need not equal last opaque pixel"
       }
     },
     {
@@ -8556,6 +8576,12 @@
       "verification": {
         "state": "pending",
         "note": "Raw backed up; placement and deterministic output checks pending"
+      },
+      "staticVisualReview": {
+        "result": "passed",
+        "visibleBaseY": 91,
+        "declaredPivotY": 91,
+        "note": "Source-reference and contact review; pivot need not equal last opaque pixel"
       }
     },
     {
@@ -8563,12 +8589,18 @@
       "cellId": "pine-sapling",
       "index": 3,
       "status": "raw-generated",
-      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-sapling/master.png",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-sapling/revision-2/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "sourceSha256": "62b60dbfbbd57a47cb231a8ec78bf2c8ab065eececc826a3e118b51c85aaf35f",
+      "sourceSha256": "7ce904f2d16c7420f803fc011db077432ef0085e615a9d0ab4112adfef4d507a",
       "verification": {
         "state": "pending",
         "note": "Raw backed up; placement and deterministic output checks pending"
+      },
+      "staticVisualReview": {
+        "result": "passed",
+        "visibleBaseY": 90,
+        "declaredPivotY": 91,
+        "note": "Source-reference and contact review; pivot need not equal last opaque pixel"
       }
     },
     {
