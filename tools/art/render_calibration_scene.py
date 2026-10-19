@@ -19,7 +19,7 @@ def element(tag, attrs=None):
     return ET.Element(f'{{{NS}}}{tag}', attrs or {})
 
 
-def build(root, source, masters, output, connectors=None, only=None, water_area=None, bank=None, ground_base=None, grass_patch=None, ground_period=128):
+def build(root, source, masters, output, connectors=None, only=None, water_area=None, bank=None, ground_base=None, grass_patch=None, ground_period=128, ground_flat=False, grass_broad=False):
     data = json.loads((source / 'pieces.json').read_text())
     output.mkdir(parents=True, exist_ok=True)
     reports = []
@@ -54,7 +54,7 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
                 'sourceFoot': foot, 'logicalPerSourcePixel': scale, 'fullCanvasLogical': [width * scale, height * scale],
                 'sourceSha256': hashlib.sha256(path.read_bytes()).hexdigest()})
 
-        ground_report = append_ground(svg, defs, data['map'], ground_base, grass_patch, ground_period) if ground_base else None
+        ground_report = append_ground(svg, defs, data['map'], ground_base, grass_patch, ground_period, ground_flat, grass_broad) if ground_base else None
         water_inserted = False
         for piece in data['layers']['ground']:
             if ground_base and 'surface-meadow@2x.png' in piece['markup']:
@@ -159,6 +159,8 @@ if __name__ == '__main__':
     parser.add_argument('--bank', type=Path)
     parser.add_argument('--ground-base', type=Path)
     parser.add_argument('--grass-patch', type=Path)
+    parser.add_argument('--ground-flat', action='store_true')
+    parser.add_argument('--grass-broad', action='store_true')
     parser.add_argument('--ground-period', type=int, choices=(128,512), default=128)
     args = parser.parse_args()
-    build(args.root.resolve(), args.source.resolve(), args.masters.resolve(), args.output.resolve(), args.connectors.resolve() if args.connectors else None, args.only, args.water_area.resolve() if args.water_area else None, args.bank.resolve() if args.bank else None, args.ground_base.resolve() if args.ground_base else None, args.grass_patch.resolve() if args.grass_patch else None, args.ground_period)
+    build(args.root.resolve(), args.source.resolve(), args.masters.resolve(), args.output.resolve(), args.connectors.resolve() if args.connectors else None, args.only, args.water_area.resolve() if args.water_area else None, args.bank.resolve() if args.bank else None, args.ground_base.resolve() if args.ground_base else None, args.grass_patch.resolve() if args.grass_patch else None, args.ground_period, args.ground_flat, args.grass_broad)

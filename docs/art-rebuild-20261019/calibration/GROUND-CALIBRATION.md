@@ -9,3 +9,9 @@ Two new imagegen source identities are preserved: opaque ground-base and transpa
 These are art-study composites, not live gameplay captures. No shadows were added in this ground-only comparison. Existing omitted legacy layers and deliberate identity/state substitutions remain explicit in each provenance JSON. Gameplay, production atlases and bulk remake state are unchanged.
 
 A is substantially quieter at512 sampling; B remains earth-dominant and has more pebble detail than the official clearing reference. Neither is a full scene-style acceptance. Further changes remain bounded by the current style review.
+
+## Revised broad-mass comparison
+
+`ground-ab-broad.png` is the current A/B review board. Both now share masses centered [128,176] and [232,352] at visible width288, plus a peripheral mass at[48,384] width160. The first two alone covered38.85% of reviewed land by alpha>=128; the third raises coverage to44.04% before road overlays. A conservative lower bound treating every road cell as completely uncovered is39.43%. This measures actual alpha, not rectangular bounds, inside crop cells[0,3,14,10], excluding water/bridge cells.
+
+B uses an explicitly authored renderer background fill RGB[174,149,118], based on the measured muted earth material mean. This removes the pebble texture without altering any generated image. A retains the512-logical green source. The comparison preserves exactly the prior object's source registrations and camera. Both remain style candidates; this is no claim of final target acceptance or gameplay verification.

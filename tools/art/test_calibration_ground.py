@@ -25,6 +25,20 @@ class GroundStudyTests(unittest.TestCase):
             self.assertEqual([child.get('x') for child in clip], ['0','0'])
             self.assertEqual(map_data['tiles'], ['plain','water','road','bridge'])
 
+    def test_broad_flat_study_records_actual_alpha_coverage(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base, patch = Path(directory)/'base.png', Path(directory)/'patch.png'
+            Image.new('RGB',(20,20),(100,120,80)).save(base)
+            image=Image.new('RGBA',(20,20)); image.paste((40,70,30,255),(2,4,18,16)); image.save(patch)
+            svg, defs = element('svg',{}), element('defs',{})
+            data={'width':14,'height':14,'tiles':['plain']*196}
+            report=append_ground(svg,defs,data,base,patch,512,True,True)
+            self.assertEqual(report['flatRendererFill'],[174,149,118])
+            self.assertEqual(svg[0].get('fill'),'#ae9576')
+            self.assertEqual(len(report['patches']),3)
+            self.assertGreater(report['grassCoverage']['beforeRoadOverlayFraction'],.4)
+            self.assertLessEqual(report['grassCoverage']['beforeRoadOverlayFraction'],1)
+
     def test_rejects_transparent_base_and_opaque_patch(self):
         with tempfile.TemporaryDirectory() as directory:
             base, patch = Path(directory)/'base.png', Path(directory)/'patch.png'
