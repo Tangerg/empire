@@ -1,0 +1,3591 @@
+{
+  "kind": "offline actual BoardView/SvgBoardSurface snapshot; not live browser or GPU playback",
+  "levelId": "c01-02",
+  "renders": [
+    {
+      "filename": "runtime-legacy-order-full.svg",
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "unitCount": 20,
+      "buildingCount": 9,
+      "actors": [
+        {
+          "id": "actor:1",
+          "actorId": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            1,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            288
+          ],
+          "worldFoot": [
+            48,
+            319
+          ]
+        },
+        {
+          "id": "actor:2",
+          "actorId": 2,
+          "key": "campaign-torren",
+          "type": "c01.swordsman",
+          "cell": [
+            2,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            256
+          ],
+          "worldFoot": [
+            80,
+            287
+          ]
+        },
+        {
+          "id": "actor:3",
+          "actorId": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            2,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            320
+          ],
+          "worldFoot": [
+            80,
+            351
+          ]
+        },
+        {
+          "id": "actor:4",
+          "actorId": 4,
+          "key": "bridge-knight",
+          "type": "c01.knight",
+          "cell": [
+            3,
+            7
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            224
+          ],
+          "worldFoot": [
+            112,
+            255
+          ]
+        },
+        {
+          "id": "actor:5",
+          "actorId": 5,
+          "key": "bridge-guard-1",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            320
+          ],
+          "worldFoot": [
+            48,
+            351
+          ]
+        },
+        {
+          "id": "actor:6",
+          "actorId": 6,
+          "key": "bridge-guard-2",
+          "type": "c01.archer",
+          "cell": [
+            3,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            320
+          ],
+          "worldFoot": [
+            112,
+            351
+          ]
+        },
+        {
+          "id": "actor:7",
+          "actorId": 7,
+          "key": "refugee-1",
+          "type": "c01.refugee",
+          "cell": [
+            1,
+            11
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            352
+          ],
+          "worldFoot": [
+            48,
+            383
+          ]
+        },
+        {
+          "id": "actor:8",
+          "actorId": 8,
+          "key": "refugee-2",
+          "type": "c01.refugee",
+          "cell": [
+            2,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            384
+          ],
+          "worldFoot": [
+            80,
+            415
+          ]
+        },
+        {
+          "id": "actor:9",
+          "actorId": 9,
+          "key": "refugee-3",
+          "type": "c01.refugee",
+          "cell": [
+            3,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            384
+          ],
+          "worldFoot": [
+            112,
+            415
+          ]
+        },
+        {
+          "id": "actor:10",
+          "actorId": 10,
+          "key": "river-scout",
+          "type": "c01.swordsman",
+          "cell": [
+            5,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            160,
+            384
+          ],
+          "worldFoot": [
+            176,
+            415
+          ]
+        },
+        {
+          "id": "actor:11",
+          "actorId": 11,
+          "key": "bridge-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            2,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            288
+          ],
+          "worldFoot": [
+            80,
+            319
+          ]
+        },
+        {
+          "id": "actor:12",
+          "actorId": 12,
+          "key": "bridge-reserve",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            256
+          ],
+          "worldFoot": [
+            48,
+            287
+          ]
+        },
+        {
+          "id": "actor:13",
+          "actorId": 13,
+          "key": "cain",
+          "type": "c01.cain",
+          "cell": [
+            20,
+            4
+          ],
+          "facing": "west",
+          "origin": [
+            640,
+            128
+          ],
+          "worldFoot": [
+            656,
+            159
+          ]
+        },
+        {
+          "id": "actor:14",
+          "actorId": 14,
+          "key": "shield-1",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            3
+          ],
+          "facing": "west",
+          "origin": [
+            608,
+            96
+          ],
+          "worldFoot": [
+            624,
+            127
+          ]
+        },
+        {
+          "id": "actor:15",
+          "actorId": 15,
+          "key": "shield-2",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            5
+          ],
+          "facing": "west",
+          "origin": [
+            608,
+            160
+          ],
+          "worldFoot": [
+            624,
+            191
+          ]
+        },
+        {
+          "id": "actor:16",
+          "actorId": 16,
+          "key": "bow-1",
+          "type": "c01.archer",
+          "cell": [
+            18,
+            8
+          ],
+          "facing": "west",
+          "origin": [
+            576,
+            256
+          ],
+          "worldFoot": [
+            592,
+            287
+          ]
+        },
+        {
+          "id": "actor:17",
+          "actorId": 17,
+          "key": "unmarked-ballista",
+          "type": "c01.ballista",
+          "cell": [
+            20,
+            10
+          ],
+          "facing": "west",
+          "origin": [
+            640,
+            320
+          ],
+          "worldFoot": [
+            656,
+            351
+          ]
+        },
+        {
+          "id": "actor:18",
+          "actorId": 18,
+          "key": "north-bank-guard",
+          "type": "c01.swordsman",
+          "cell": [
+            15,
+            2
+          ],
+          "facing": "west",
+          "origin": [
+            480,
+            64
+          ],
+          "worldFoot": [
+            496,
+            95
+          ]
+        },
+        {
+          "id": "actor:19",
+          "actorId": 19,
+          "key": "south-bank-bow",
+          "type": "c01.archer",
+          "cell": [
+            16,
+            11
+          ],
+          "facing": "west",
+          "origin": [
+            512,
+            352
+          ],
+          "worldFoot": [
+            528,
+            383
+          ]
+        },
+        {
+          "id": "actor:20",
+          "actorId": 20,
+          "key": "battery-screen",
+          "type": "c01.legion-shield",
+          "cell": [
+            20,
+            12
+          ],
+          "facing": "west",
+          "origin": [
+            640,
+            384
+          ],
+          "worldFoot": [
+            656,
+            415
+          ]
+        }
+      ],
+      "standingDrawOrder": [
+        {
+          "id": "actor:18",
+          "actorId": 18,
+          "key": "north-bank-guard",
+          "type": "c01.swordsman",
+          "cell": [
+            15,
+            2
+          ],
+          "facing": "west",
+          "origin": [
+            480,
+            64
+          ],
+          "worldFoot": [
+            496,
+            95
+          ],
+          "displayIndex": 0
+        },
+        {
+          "id": "actor:14",
+          "actorId": 14,
+          "key": "shield-1",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            3
+          ],
+          "facing": "west",
+          "origin": [
+            608,
+            96
+          ],
+          "worldFoot": [
+            624,
+            127
+          ],
+          "displayIndex": 1
+        },
+        {
+          "id": "actor:13",
+          "actorId": 13,
+          "key": "cain",
+          "type": "c01.cain",
+          "cell": [
+            20,
+            4
+          ],
+          "facing": "west",
+          "origin": [
+            640,
+            128
+          ],
+          "worldFoot": [
+            656,
+            159
+          ],
+          "displayIndex": 2
+        },
+        {
+          "id": "actor:15",
+          "actorId": 15,
+          "key": "shield-2",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            5
+          ],
+          "facing": "west",
+          "origin": [
+            608,
+            160
+          ],
+          "worldFoot": [
+            624,
+            191
+          ],
+          "displayIndex": 3
+        },
+        {
+          "id": "actor:4",
+          "actorId": 4,
+          "key": "bridge-knight",
+          "type": "c01.knight",
+          "cell": [
+            3,
+            7
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            224
+          ],
+          "worldFoot": [
+            112,
+            255
+          ],
+          "displayIndex": 4
+        },
+        {
+          "id": "actor:12",
+          "actorId": 12,
+          "key": "bridge-reserve",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            256
+          ],
+          "worldFoot": [
+            48,
+            287
+          ],
+          "displayIndex": 5
+        },
+        {
+          "id": "actor:2",
+          "actorId": 2,
+          "key": "campaign-torren",
+          "type": "c01.swordsman",
+          "cell": [
+            2,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            256
+          ],
+          "worldFoot": [
+            80,
+            287
+          ],
+          "displayIndex": 6
+        },
+        {
+          "id": "actor:16",
+          "actorId": 16,
+          "key": "bow-1",
+          "type": "c01.archer",
+          "cell": [
+            18,
+            8
+          ],
+          "facing": "west",
+          "origin": [
+            576,
+            256
+          ],
+          "worldFoot": [
+            592,
+            287
+          ],
+          "displayIndex": 7
+        },
+        {
+          "id": "actor:1",
+          "actorId": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            1,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            288
+          ],
+          "worldFoot": [
+            48,
+            319
+          ],
+          "displayIndex": 8
+        },
+        {
+          "id": "actor:11",
+          "actorId": 11,
+          "key": "bridge-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            2,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            288
+          ],
+          "worldFoot": [
+            80,
+            319
+          ],
+          "displayIndex": 9
+        },
+        {
+          "id": "actor:5",
+          "actorId": 5,
+          "key": "bridge-guard-1",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            320
+          ],
+          "worldFoot": [
+            48,
+            351
+          ],
+          "displayIndex": 10
+        },
+        {
+          "id": "actor:3",
+          "actorId": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            2,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            320
+          ],
+          "worldFoot": [
+            80,
+            351
+          ],
+          "displayIndex": 11
+        },
+        {
+          "id": "actor:6",
+          "actorId": 6,
+          "key": "bridge-guard-2",
+          "type": "c01.archer",
+          "cell": [
+            3,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            320
+          ],
+          "worldFoot": [
+            112,
+            351
+          ],
+          "displayIndex": 12
+        },
+        {
+          "id": "actor:17",
+          "actorId": 17,
+          "key": "unmarked-ballista",
+          "type": "c01.ballista",
+          "cell": [
+            20,
+            10
+          ],
+          "facing": "west",
+          "origin": [
+            640,
+            320
+          ],
+          "worldFoot": [
+            656,
+            351
+          ],
+          "displayIndex": 13
+        },
+        {
+          "id": "actor:7",
+          "actorId": 7,
+          "key": "refugee-1",
+          "type": "c01.refugee",
+          "cell": [
+            1,
+            11
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            352
+          ],
+          "worldFoot": [
+            48,
+            383
+          ],
+          "displayIndex": 14
+        },
+        {
+          "id": "actor:19",
+          "actorId": 19,
+          "key": "south-bank-bow",
+          "type": "c01.archer",
+          "cell": [
+            16,
+            11
+          ],
+          "facing": "west",
+          "origin": [
+            512,
+            352
+          ],
+          "worldFoot": [
+            528,
+            383
+          ],
+          "displayIndex": 15
+        },
+        {
+          "id": "actor:8",
+          "actorId": 8,
+          "key": "refugee-2",
+          "type": "c01.refugee",
+          "cell": [
+            2,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            384
+          ],
+          "worldFoot": [
+            80,
+            415
+          ],
+          "displayIndex": 16
+        },
+        {
+          "id": "actor:9",
+          "actorId": 9,
+          "key": "refugee-3",
+          "type": "c01.refugee",
+          "cell": [
+            3,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            384
+          ],
+          "worldFoot": [
+            112,
+            415
+          ],
+          "displayIndex": 17
+        },
+        {
+          "id": "actor:10",
+          "actorId": 10,
+          "key": "river-scout",
+          "type": "c01.swordsman",
+          "cell": [
+            5,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            160,
+            384
+          ],
+          "worldFoot": [
+            176,
+            415
+          ],
+          "displayIndex": 18
+        },
+        {
+          "id": "actor:20",
+          "actorId": 20,
+          "key": "battery-screen",
+          "type": "c01.legion-shield",
+          "cell": [
+            20,
+            12
+          ],
+          "facing": "west",
+          "origin": [
+            640,
+            384
+          ],
+          "worldFoot": [
+            656,
+            415
+          ],
+          "displayIndex": 19
+        }
+      ],
+      "sourceLayerCounts": {
+        "grid": 0,
+        "terrain": 9,
+        "ground": 213,
+        "scenery": 46,
+        "foreground": 0,
+        "spatial": 7,
+        "range": 0,
+        "path": 0,
+        "cursor": 0
+      },
+      "standingSources": [
+        {
+          "layer": "terrain",
+          "index": 0,
+          "origin": [
+            64,
+            32
+          ],
+          "worldFoot": [
+            80,
+            63
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 1,
+          "origin": [
+            640,
+            32
+          ],
+          "worldFoot": [
+            656,
+            63
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 2,
+          "origin": [
+            32,
+            96
+          ],
+          "worldFoot": [
+            48,
+            127
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 3,
+          "origin": [
+            192,
+            160
+          ],
+          "worldFoot": [
+            208,
+            191
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 4,
+          "origin": [
+            448,
+            160
+          ],
+          "worldFoot": [
+            464,
+            191
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 5,
+          "origin": [
+            32,
+            352
+          ],
+          "worldFoot": [
+            48,
+            383
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 6,
+          "origin": [
+            544,
+            352
+          ],
+          "worldFoot": [
+            560,
+            383
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 7,
+          "origin": [
+            160,
+            384
+          ],
+          "worldFoot": [
+            176,
+            415
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 8,
+          "origin": [
+            640,
+            384
+          ],
+          "worldFoot": [
+            656,
+            415
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 1,
+          "origin": [
+            82.30643,
+            37.76
+          ],
+          "worldFoot": [
+            82.30643,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 2,
+          "origin": [
+            116.03956,
+            37.76
+          ],
+          "worldFoot": [
+            116.03956,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 3,
+          "origin": [
+            240.4769,
+            37.76
+          ],
+          "worldFoot": [
+            240.4769,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 4,
+          "origin": [
+            530.42046,
+            37.76
+          ],
+          "worldFoot": [
+            530.42046,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 5,
+          "origin": [
+            657.84849,
+            37.76
+          ],
+          "worldFoot": [
+            657.84849,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 6,
+          "origin": [
+            81.20701,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            81.20701,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 7,
+          "origin": [
+            115.15658,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            115.15658,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 8,
+          "origin": [
+            462.1877,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            462.1877,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 9,
+          "origin": [
+            626.02629,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            626.02629,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 10,
+          "origin": [
+            691.08392,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            691.08392,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 11,
+          "origin": [
+            175.24445,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            175.24445,
+            101.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 12,
+          "origin": [
+            588.01939,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            588.01939,
+            101.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 13,
+          "origin": [
+            656.28861,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            656.28861,
+            101.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 14,
+          "origin": [
+            14.67679,
+            133.76
+          ],
+          "worldFoot": [
+            14.67679,
+            133.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 15,
+          "origin": [
+            80.3969,
+            133.76
+          ],
+          "worldFoot": [
+            80.3969,
+            133.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 16,
+          "origin": [
+            143.8876,
+            133.76
+          ],
+          "worldFoot": [
+            143.8876,
+            133.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 18,
+          "origin": [
+            467.00055,
+            165.76
+          ],
+          "worldFoot": [
+            467.00055,
+            165.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 19,
+          "origin": [
+            80.18315,
+            197.76
+          ],
+          "worldFoot": [
+            80.18315,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 20,
+          "origin": [
+            172.7646,
+            197.76
+          ],
+          "worldFoot": [
+            172.7646,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 21,
+          "origin": [
+            434.66861,
+            197.76
+          ],
+          "worldFoot": [
+            434.66861,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 22,
+          "origin": [
+            494.96533,
+            197.76
+          ],
+          "worldFoot": [
+            494.96533,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 23,
+          "origin": [
+            626.68812,
+            197.76
+          ],
+          "worldFoot": [
+            626.68812,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 25,
+          "origin": [
+            464.13608,
+            229.76
+          ],
+          "worldFoot": [
+            464.13608,
+            229.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 26,
+          "origin": [
+            47.67445,
+            261.76
+          ],
+          "worldFoot": [
+            47.67445,
+            261.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 27,
+          "origin": [
+            204.40936,
+            261.76
+          ],
+          "worldFoot": [
+            204.40936,
+            261.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 28,
+          "origin": [
+            529.52765,
+            261.76
+          ],
+          "worldFoot": [
+            529.52765,
+            261.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 29,
+          "origin": [
+            81.46457,
+            325.76
+          ],
+          "worldFoot": [
+            81.46457,
+            325.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 31,
+          "origin": [
+            623.87202,
+            325.76
+          ],
+          "worldFoot": [
+            623.87202,
+            325.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 32,
+          "origin": [
+            143.9936,
+            357.76
+          ],
+          "worldFoot": [
+            143.9936,
+            357.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 33,
+          "origin": [
+            464.29394,
+            357.76
+          ],
+          "worldFoot": [
+            464.29394,
+            357.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 34,
+          "origin": [
+            557.01233,
+            357.76
+          ],
+          "worldFoot": [
+            557.01233,
+            357.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 35,
+          "origin": [
+            47.17862,
+            389.76
+          ],
+          "worldFoot": [
+            47.17862,
+            389.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 36,
+          "origin": [
+            209.98783,
+            389.76
+          ],
+          "worldFoot": [
+            209.98783,
+            389.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 37,
+          "origin": [
+            593.74769,
+            389.76
+          ],
+          "worldFoot": [
+            593.74769,
+            389.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 38,
+          "origin": [
+            654.1121,
+            389.76
+          ],
+          "worldFoot": [
+            654.1121,
+            389.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 39,
+          "origin": [
+            210.64054,
+            421.76
+          ],
+          "worldFoot": [
+            210.64054,
+            421.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 40,
+          "origin": [
+            461.71455,
+            421.76
+          ],
+          "worldFoot": [
+            461.71455,
+            421.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 41,
+          "origin": [
+            556.59716,
+            421.76
+          ],
+          "worldFoot": [
+            556.59716,
+            421.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 42,
+          "origin": [
+            627.06026,
+            421.76
+          ],
+          "worldFoot": [
+            627.06026,
+            421.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 43,
+          "origin": [
+            82.24793,
+            453.76
+          ],
+          "worldFoot": [
+            82.24793,
+            453.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 44,
+          "origin": [
+            590.34265,
+            453.76
+          ],
+          "worldFoot": [
+            590.34265,
+            453.76
+          ]
+        }
+      ],
+      "displayedLayerCounts": {
+        "ground": 213,
+        "terrain": 9,
+        "scenery": 46,
+        "spatial": 7,
+        "grid": 0,
+        "range": 0,
+        "path": 0,
+        "structures": 0,
+        "markers": 0,
+        "units": 20,
+        "foreground": 0,
+        "effects": 0,
+        "cursor": 0
+      },
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    },
+    {
+      "filename": "runtime-standing-full.svg",
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "unitCount": 20,
+      "buildingCount": 9,
+      "actors": [
+        {
+          "id": "actor:1",
+          "actorId": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            1,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            288
+          ],
+          "worldFoot": [
+            48,
+            319
+          ]
+        },
+        {
+          "id": "actor:2",
+          "actorId": 2,
+          "key": "campaign-torren",
+          "type": "c01.swordsman",
+          "cell": [
+            2,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            256
+          ],
+          "worldFoot": [
+            80,
+            287
+          ]
+        },
+        {
+          "id": "actor:3",
+          "actorId": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            2,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            320
+          ],
+          "worldFoot": [
+            80,
+            351
+          ]
+        },
+        {
+          "id": "actor:4",
+          "actorId": 4,
+          "key": "bridge-knight",
+          "type": "c01.knight",
+          "cell": [
+            3,
+            7
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            224
+          ],
+          "worldFoot": [
+            112,
+            255
+          ]
+        },
+        {
+          "id": "actor:5",
+          "actorId": 5,
+          "key": "bridge-guard-1",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            320
+          ],
+          "worldFoot": [
+            48,
+            351
+          ]
+        },
+        {
+          "id": "actor:6",
+          "actorId": 6,
+          "key": "bridge-guard-2",
+          "type": "c01.archer",
+          "cell": [
+            3,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            320
+          ],
+          "worldFoot": [
+            112,
+            351
+          ]
+        },
+        {
+          "id": "actor:7",
+          "actorId": 7,
+          "key": "refugee-1",
+          "type": "c01.refugee",
+          "cell": [
+            1,
+            11
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            352
+          ],
+          "worldFoot": [
+            48,
+            383
+          ]
+        },
+        {
+          "id": "actor:8",
+          "actorId": 8,
+          "key": "refugee-2",
+          "type": "c01.refugee",
+          "cell": [
+            2,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            384
+          ],
+          "worldFoot": [
+            80,
+            415
+          ]
+        },
+        {
+          "id": "actor:9",
+          "actorId": 9,
+          "key": "refugee-3",
+          "type": "c01.refugee",
+          "cell": [
+            3,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            384
+          ],
+          "worldFoot": [
+            112,
+            415
+          ]
+        },
+        {
+          "id": "actor:10",
+          "actorId": 10,
+          "key": "river-scout",
+          "type": "c01.swordsman",
+          "cell": [
+            5,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            160,
+            384
+          ],
+          "worldFoot": [
+            176,
+            415
+          ]
+        },
+        {
+          "id": "actor:11",
+          "actorId": 11,
+          "key": "bridge-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            2,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            288
+          ],
+          "worldFoot": [
+            80,
+            319
+          ]
+        },
+        {
+          "id": "actor:12",
+          "actorId": 12,
+          "key": "bridge-reserve",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            256
+          ],
+          "worldFoot": [
+            48,
+            287
+          ]
+        },
+        {
+          "id": "actor:13",
+          "actorId": 13,
+          "key": "cain",
+          "type": "c01.cain",
+          "cell": [
+            20,
+            4
+          ],
+          "facing": "west",
+          "origin": [
+            640,
+            128
+          ],
+          "worldFoot": [
+            656,
+            159
+          ]
+        },
+        {
+          "id": "actor:14",
+          "actorId": 14,
+          "key": "shield-1",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            3
+          ],
+          "facing": "west",
+          "origin": [
+            608,
+            96
+          ],
+          "worldFoot": [
+            624,
+            127
+          ]
+        },
+        {
+          "id": "actor:15",
+          "actorId": 15,
+          "key": "shield-2",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            5
+          ],
+          "facing": "west",
+          "origin": [
+            608,
+            160
+          ],
+          "worldFoot": [
+            624,
+            191
+          ]
+        },
+        {
+          "id": "actor:16",
+          "actorId": 16,
+          "key": "bow-1",
+          "type": "c01.archer",
+          "cell": [
+            18,
+            8
+          ],
+          "facing": "west",
+          "origin": [
+            576,
+            256
+          ],
+          "worldFoot": [
+            592,
+            287
+          ]
+        },
+        {
+          "id": "actor:17",
+          "actorId": 17,
+          "key": "unmarked-ballista",
+          "type": "c01.ballista",
+          "cell": [
+            20,
+            10
+          ],
+          "facing": "west",
+          "origin": [
+            640,
+            320
+          ],
+          "worldFoot": [
+            656,
+            351
+          ]
+        },
+        {
+          "id": "actor:18",
+          "actorId": 18,
+          "key": "north-bank-guard",
+          "type": "c01.swordsman",
+          "cell": [
+            15,
+            2
+          ],
+          "facing": "west",
+          "origin": [
+            480,
+            64
+          ],
+          "worldFoot": [
+            496,
+            95
+          ]
+        },
+        {
+          "id": "actor:19",
+          "actorId": 19,
+          "key": "south-bank-bow",
+          "type": "c01.archer",
+          "cell": [
+            16,
+            11
+          ],
+          "facing": "west",
+          "origin": [
+            512,
+            352
+          ],
+          "worldFoot": [
+            528,
+            383
+          ]
+        },
+        {
+          "id": "actor:20",
+          "actorId": 20,
+          "key": "battery-screen",
+          "type": "c01.legion-shield",
+          "cell": [
+            20,
+            12
+          ],
+          "facing": "west",
+          "origin": [
+            640,
+            384
+          ],
+          "worldFoot": [
+            656,
+            415
+          ]
+        }
+      ],
+      "standingDrawOrder": [
+        {
+          "id": "scenery:1",
+          "layer": "scenery",
+          "index": 1,
+          "origin": [
+            82.30643,
+            37.76
+          ],
+          "worldFoot": [
+            82.30643,
+            37.76
+          ],
+          "displayIndex": 0
+        },
+        {
+          "id": "scenery:2",
+          "layer": "scenery",
+          "index": 2,
+          "origin": [
+            116.03956,
+            37.76
+          ],
+          "worldFoot": [
+            116.03956,
+            37.76
+          ],
+          "displayIndex": 1
+        },
+        {
+          "id": "scenery:3",
+          "layer": "scenery",
+          "index": 3,
+          "origin": [
+            240.4769,
+            37.76
+          ],
+          "worldFoot": [
+            240.4769,
+            37.76
+          ],
+          "displayIndex": 2
+        },
+        {
+          "id": "scenery:4",
+          "layer": "scenery",
+          "index": 4,
+          "origin": [
+            530.42046,
+            37.76
+          ],
+          "worldFoot": [
+            530.42046,
+            37.76
+          ],
+          "displayIndex": 3
+        },
+        {
+          "id": "scenery:5",
+          "layer": "scenery",
+          "index": 5,
+          "origin": [
+            657.84849,
+            37.76
+          ],
+          "worldFoot": [
+            657.84849,
+            37.76
+          ],
+          "displayIndex": 4
+        },
+        {
+          "id": "terrain:0",
+          "layer": "terrain",
+          "index": 0,
+          "origin": [
+            64,
+            32
+          ],
+          "worldFoot": [
+            80,
+            63
+          ],
+          "displayIndex": 5
+        },
+        {
+          "id": "terrain:1",
+          "layer": "terrain",
+          "index": 1,
+          "origin": [
+            640,
+            32
+          ],
+          "worldFoot": [
+            656,
+            63
+          ],
+          "displayIndex": 6
+        },
+        {
+          "id": "scenery:6",
+          "layer": "scenery",
+          "index": 6,
+          "origin": [
+            81.20701,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            81.20701,
+            69.75999999999999
+          ],
+          "displayIndex": 7
+        },
+        {
+          "id": "scenery:7",
+          "layer": "scenery",
+          "index": 7,
+          "origin": [
+            115.15658,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            115.15658,
+            69.75999999999999
+          ],
+          "displayIndex": 8
+        },
+        {
+          "id": "scenery:8",
+          "layer": "scenery",
+          "index": 8,
+          "origin": [
+            462.1877,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            462.1877,
+            69.75999999999999
+          ],
+          "displayIndex": 9
+        },
+        {
+          "id": "scenery:9",
+          "layer": "scenery",
+          "index": 9,
+          "origin": [
+            626.02629,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            626.02629,
+            69.75999999999999
+          ],
+          "displayIndex": 10
+        },
+        {
+          "id": "scenery:10",
+          "layer": "scenery",
+          "index": 10,
+          "origin": [
+            691.08392,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            691.08392,
+            69.75999999999999
+          ],
+          "displayIndex": 11
+        },
+        {
+          "id": "actor:18",
+          "actorId": 18,
+          "key": "north-bank-guard",
+          "type": "c01.swordsman",
+          "cell": [
+            15,
+            2
+          ],
+          "facing": "west",
+          "origin": [
+            480,
+            64
+          ],
+          "worldFoot": [
+            496,
+            95
+          ],
+          "displayIndex": 12
+        },
+        {
+          "id": "scenery:11",
+          "layer": "scenery",
+          "index": 11,
+          "origin": [
+            175.24445,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            175.24445,
+            101.75999999999999
+          ],
+          "displayIndex": 13
+        },
+        {
+          "id": "scenery:12",
+          "layer": "scenery",
+          "index": 12,
+          "origin": [
+            588.01939,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            588.01939,
+            101.75999999999999
+          ],
+          "displayIndex": 14
+        },
+        {
+          "id": "scenery:13",
+          "layer": "scenery",
+          "index": 13,
+          "origin": [
+            656.28861,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            656.28861,
+            101.75999999999999
+          ],
+          "displayIndex": 15
+        },
+        {
+          "id": "terrain:2",
+          "layer": "terrain",
+          "index": 2,
+          "origin": [
+            32,
+            96
+          ],
+          "worldFoot": [
+            48,
+            127
+          ],
+          "displayIndex": 16
+        },
+        {
+          "id": "actor:14",
+          "actorId": 14,
+          "key": "shield-1",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            3
+          ],
+          "facing": "west",
+          "origin": [
+            608,
+            96
+          ],
+          "worldFoot": [
+            624,
+            127
+          ],
+          "displayIndex": 17
+        },
+        {
+          "id": "scenery:14",
+          "layer": "scenery",
+          "index": 14,
+          "origin": [
+            14.67679,
+            133.76
+          ],
+          "worldFoot": [
+            14.67679,
+            133.76
+          ],
+          "displayIndex": 18
+        },
+        {
+          "id": "scenery:15",
+          "layer": "scenery",
+          "index": 15,
+          "origin": [
+            80.3969,
+            133.76
+          ],
+          "worldFoot": [
+            80.3969,
+            133.76
+          ],
+          "displayIndex": 19
+        },
+        {
+          "id": "scenery:16",
+          "layer": "scenery",
+          "index": 16,
+          "origin": [
+            143.8876,
+            133.76
+          ],
+          "worldFoot": [
+            143.8876,
+            133.76
+          ],
+          "displayIndex": 20
+        },
+        {
+          "id": "actor:13",
+          "actorId": 13,
+          "key": "cain",
+          "type": "c01.cain",
+          "cell": [
+            20,
+            4
+          ],
+          "facing": "west",
+          "origin": [
+            640,
+            128
+          ],
+          "worldFoot": [
+            656,
+            159
+          ],
+          "displayIndex": 21
+        },
+        {
+          "id": "scenery:18",
+          "layer": "scenery",
+          "index": 18,
+          "origin": [
+            467.00055,
+            165.76
+          ],
+          "worldFoot": [
+            467.00055,
+            165.76
+          ],
+          "displayIndex": 22
+        },
+        {
+          "id": "terrain:3",
+          "layer": "terrain",
+          "index": 3,
+          "origin": [
+            192,
+            160
+          ],
+          "worldFoot": [
+            208,
+            191
+          ],
+          "displayIndex": 23
+        },
+        {
+          "id": "terrain:4",
+          "layer": "terrain",
+          "index": 4,
+          "origin": [
+            448,
+            160
+          ],
+          "worldFoot": [
+            464,
+            191
+          ],
+          "displayIndex": 24
+        },
+        {
+          "id": "actor:15",
+          "actorId": 15,
+          "key": "shield-2",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            5
+          ],
+          "facing": "west",
+          "origin": [
+            608,
+            160
+          ],
+          "worldFoot": [
+            624,
+            191
+          ],
+          "displayIndex": 25
+        },
+        {
+          "id": "scenery:19",
+          "layer": "scenery",
+          "index": 19,
+          "origin": [
+            80.18315,
+            197.76
+          ],
+          "worldFoot": [
+            80.18315,
+            197.76
+          ],
+          "displayIndex": 26
+        },
+        {
+          "id": "scenery:20",
+          "layer": "scenery",
+          "index": 20,
+          "origin": [
+            172.7646,
+            197.76
+          ],
+          "worldFoot": [
+            172.7646,
+            197.76
+          ],
+          "displayIndex": 27
+        },
+        {
+          "id": "scenery:21",
+          "layer": "scenery",
+          "index": 21,
+          "origin": [
+            434.66861,
+            197.76
+          ],
+          "worldFoot": [
+            434.66861,
+            197.76
+          ],
+          "displayIndex": 28
+        },
+        {
+          "id": "scenery:22",
+          "layer": "scenery",
+          "index": 22,
+          "origin": [
+            494.96533,
+            197.76
+          ],
+          "worldFoot": [
+            494.96533,
+            197.76
+          ],
+          "displayIndex": 29
+        },
+        {
+          "id": "scenery:23",
+          "layer": "scenery",
+          "index": 23,
+          "origin": [
+            626.68812,
+            197.76
+          ],
+          "worldFoot": [
+            626.68812,
+            197.76
+          ],
+          "displayIndex": 30
+        },
+        {
+          "id": "scenery:25",
+          "layer": "scenery",
+          "index": 25,
+          "origin": [
+            464.13608,
+            229.76
+          ],
+          "worldFoot": [
+            464.13608,
+            229.76
+          ],
+          "displayIndex": 31
+        },
+        {
+          "id": "actor:4",
+          "actorId": 4,
+          "key": "bridge-knight",
+          "type": "c01.knight",
+          "cell": [
+            3,
+            7
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            224
+          ],
+          "worldFoot": [
+            112,
+            255
+          ],
+          "displayIndex": 32
+        },
+        {
+          "id": "scenery:26",
+          "layer": "scenery",
+          "index": 26,
+          "origin": [
+            47.67445,
+            261.76
+          ],
+          "worldFoot": [
+            47.67445,
+            261.76
+          ],
+          "displayIndex": 33
+        },
+        {
+          "id": "scenery:27",
+          "layer": "scenery",
+          "index": 27,
+          "origin": [
+            204.40936,
+            261.76
+          ],
+          "worldFoot": [
+            204.40936,
+            261.76
+          ],
+          "displayIndex": 34
+        },
+        {
+          "id": "scenery:28",
+          "layer": "scenery",
+          "index": 28,
+          "origin": [
+            529.52765,
+            261.76
+          ],
+          "worldFoot": [
+            529.52765,
+            261.76
+          ],
+          "displayIndex": 35
+        },
+        {
+          "id": "actor:12",
+          "actorId": 12,
+          "key": "bridge-reserve",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            256
+          ],
+          "worldFoot": [
+            48,
+            287
+          ],
+          "displayIndex": 36
+        },
+        {
+          "id": "actor:2",
+          "actorId": 2,
+          "key": "campaign-torren",
+          "type": "c01.swordsman",
+          "cell": [
+            2,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            256
+          ],
+          "worldFoot": [
+            80,
+            287
+          ],
+          "displayIndex": 37
+        },
+        {
+          "id": "actor:16",
+          "actorId": 16,
+          "key": "bow-1",
+          "type": "c01.archer",
+          "cell": [
+            18,
+            8
+          ],
+          "facing": "west",
+          "origin": [
+            576,
+            256
+          ],
+          "worldFoot": [
+            592,
+            287
+          ],
+          "displayIndex": 38
+        },
+        {
+          "id": "actor:1",
+          "actorId": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            1,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            288
+          ],
+          "worldFoot": [
+            48,
+            319
+          ],
+          "displayIndex": 39
+        },
+        {
+          "id": "actor:11",
+          "actorId": 11,
+          "key": "bridge-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            2,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            288
+          ],
+          "worldFoot": [
+            80,
+            319
+          ],
+          "displayIndex": 40
+        },
+        {
+          "id": "scenery:29",
+          "layer": "scenery",
+          "index": 29,
+          "origin": [
+            81.46457,
+            325.76
+          ],
+          "worldFoot": [
+            81.46457,
+            325.76
+          ],
+          "displayIndex": 41
+        },
+        {
+          "id": "scenery:31",
+          "layer": "scenery",
+          "index": 31,
+          "origin": [
+            623.87202,
+            325.76
+          ],
+          "worldFoot": [
+            623.87202,
+            325.76
+          ],
+          "displayIndex": 42
+        },
+        {
+          "id": "actor:5",
+          "actorId": 5,
+          "key": "bridge-guard-1",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            320
+          ],
+          "worldFoot": [
+            48,
+            351
+          ],
+          "displayIndex": 43
+        },
+        {
+          "id": "actor:3",
+          "actorId": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            2,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            320
+          ],
+          "worldFoot": [
+            80,
+            351
+          ],
+          "displayIndex": 44
+        },
+        {
+          "id": "actor:6",
+          "actorId": 6,
+          "key": "bridge-guard-2",
+          "type": "c01.archer",
+          "cell": [
+            3,
+            10
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            320
+          ],
+          "worldFoot": [
+            112,
+            351
+          ],
+          "displayIndex": 45
+        },
+        {
+          "id": "actor:17",
+          "actorId": 17,
+          "key": "unmarked-ballista",
+          "type": "c01.ballista",
+          "cell": [
+            20,
+            10
+          ],
+          "facing": "west",
+          "origin": [
+            640,
+            320
+          ],
+          "worldFoot": [
+            656,
+            351
+          ],
+          "displayIndex": 46
+        },
+        {
+          "id": "scenery:32",
+          "layer": "scenery",
+          "index": 32,
+          "origin": [
+            143.9936,
+            357.76
+          ],
+          "worldFoot": [
+            143.9936,
+            357.76
+          ],
+          "displayIndex": 47
+        },
+        {
+          "id": "scenery:33",
+          "layer": "scenery",
+          "index": 33,
+          "origin": [
+            464.29394,
+            357.76
+          ],
+          "worldFoot": [
+            464.29394,
+            357.76
+          ],
+          "displayIndex": 48
+        },
+        {
+          "id": "scenery:34",
+          "layer": "scenery",
+          "index": 34,
+          "origin": [
+            557.01233,
+            357.76
+          ],
+          "worldFoot": [
+            557.01233,
+            357.76
+          ],
+          "displayIndex": 49
+        },
+        {
+          "id": "terrain:5",
+          "layer": "terrain",
+          "index": 5,
+          "origin": [
+            32,
+            352
+          ],
+          "worldFoot": [
+            48,
+            383
+          ],
+          "displayIndex": 50
+        },
+        {
+          "id": "actor:7",
+          "actorId": 7,
+          "key": "refugee-1",
+          "type": "c01.refugee",
+          "cell": [
+            1,
+            11
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            352
+          ],
+          "worldFoot": [
+            48,
+            383
+          ],
+          "displayIndex": 51
+        },
+        {
+          "id": "actor:19",
+          "actorId": 19,
+          "key": "south-bank-bow",
+          "type": "c01.archer",
+          "cell": [
+            16,
+            11
+          ],
+          "facing": "west",
+          "origin": [
+            512,
+            352
+          ],
+          "worldFoot": [
+            528,
+            383
+          ],
+          "displayIndex": 52
+        },
+        {
+          "id": "terrain:6",
+          "layer": "terrain",
+          "index": 6,
+          "origin": [
+            544,
+            352
+          ],
+          "worldFoot": [
+            560,
+            383
+          ],
+          "displayIndex": 53
+        },
+        {
+          "id": "scenery:35",
+          "layer": "scenery",
+          "index": 35,
+          "origin": [
+            47.17862,
+            389.76
+          ],
+          "worldFoot": [
+            47.17862,
+            389.76
+          ],
+          "displayIndex": 54
+        },
+        {
+          "id": "scenery:36",
+          "layer": "scenery",
+          "index": 36,
+          "origin": [
+            209.98783,
+            389.76
+          ],
+          "worldFoot": [
+            209.98783,
+            389.76
+          ],
+          "displayIndex": 55
+        },
+        {
+          "id": "scenery:37",
+          "layer": "scenery",
+          "index": 37,
+          "origin": [
+            593.74769,
+            389.76
+          ],
+          "worldFoot": [
+            593.74769,
+            389.76
+          ],
+          "displayIndex": 56
+        },
+        {
+          "id": "scenery:38",
+          "layer": "scenery",
+          "index": 38,
+          "origin": [
+            654.1121,
+            389.76
+          ],
+          "worldFoot": [
+            654.1121,
+            389.76
+          ],
+          "displayIndex": 57
+        },
+        {
+          "id": "actor:8",
+          "actorId": 8,
+          "key": "refugee-2",
+          "type": "c01.refugee",
+          "cell": [
+            2,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            384
+          ],
+          "worldFoot": [
+            80,
+            415
+          ],
+          "displayIndex": 58
+        },
+        {
+          "id": "actor:9",
+          "actorId": 9,
+          "key": "refugee-3",
+          "type": "c01.refugee",
+          "cell": [
+            3,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            96,
+            384
+          ],
+          "worldFoot": [
+            112,
+            415
+          ],
+          "displayIndex": 59
+        },
+        {
+          "id": "terrain:7",
+          "layer": "terrain",
+          "index": 7,
+          "origin": [
+            160,
+            384
+          ],
+          "worldFoot": [
+            176,
+            415
+          ],
+          "displayIndex": 60
+        },
+        {
+          "id": "actor:10",
+          "actorId": 10,
+          "key": "river-scout",
+          "type": "c01.swordsman",
+          "cell": [
+            5,
+            12
+          ],
+          "facing": "east",
+          "origin": [
+            160,
+            384
+          ],
+          "worldFoot": [
+            176,
+            415
+          ],
+          "displayIndex": 61
+        },
+        {
+          "id": "terrain:8",
+          "layer": "terrain",
+          "index": 8,
+          "origin": [
+            640,
+            384
+          ],
+          "worldFoot": [
+            656,
+            415
+          ],
+          "displayIndex": 62
+        },
+        {
+          "id": "actor:20",
+          "actorId": 20,
+          "key": "battery-screen",
+          "type": "c01.legion-shield",
+          "cell": [
+            20,
+            12
+          ],
+          "facing": "west",
+          "origin": [
+            640,
+            384
+          ],
+          "worldFoot": [
+            656,
+            415
+          ],
+          "displayIndex": 63
+        },
+        {
+          "id": "scenery:39",
+          "layer": "scenery",
+          "index": 39,
+          "origin": [
+            210.64054,
+            421.76
+          ],
+          "worldFoot": [
+            210.64054,
+            421.76
+          ],
+          "displayIndex": 64
+        },
+        {
+          "id": "scenery:40",
+          "layer": "scenery",
+          "index": 40,
+          "origin": [
+            461.71455,
+            421.76
+          ],
+          "worldFoot": [
+            461.71455,
+            421.76
+          ],
+          "displayIndex": 65
+        },
+        {
+          "id": "scenery:41",
+          "layer": "scenery",
+          "index": 41,
+          "origin": [
+            556.59716,
+            421.76
+          ],
+          "worldFoot": [
+            556.59716,
+            421.76
+          ],
+          "displayIndex": 66
+        },
+        {
+          "id": "scenery:42",
+          "layer": "scenery",
+          "index": 42,
+          "origin": [
+            627.06026,
+            421.76
+          ],
+          "worldFoot": [
+            627.06026,
+            421.76
+          ],
+          "displayIndex": 67
+        },
+        {
+          "id": "scenery:43",
+          "layer": "scenery",
+          "index": 43,
+          "origin": [
+            82.24793,
+            453.76
+          ],
+          "worldFoot": [
+            82.24793,
+            453.76
+          ],
+          "displayIndex": 68
+        },
+        {
+          "id": "scenery:44",
+          "layer": "scenery",
+          "index": 44,
+          "origin": [
+            590.34265,
+            453.76
+          ],
+          "worldFoot": [
+            590.34265,
+            453.76
+          ],
+          "displayIndex": 69
+        }
+      ],
+      "sourceLayerCounts": {
+        "grid": 0,
+        "terrain": 9,
+        "ground": 213,
+        "scenery": 46,
+        "foreground": 0,
+        "spatial": 7,
+        "range": 0,
+        "path": 0,
+        "cursor": 0
+      },
+      "standingSources": [
+        {
+          "layer": "terrain",
+          "index": 0,
+          "origin": [
+            64,
+            32
+          ],
+          "worldFoot": [
+            80,
+            63
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 1,
+          "origin": [
+            640,
+            32
+          ],
+          "worldFoot": [
+            656,
+            63
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 2,
+          "origin": [
+            32,
+            96
+          ],
+          "worldFoot": [
+            48,
+            127
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 3,
+          "origin": [
+            192,
+            160
+          ],
+          "worldFoot": [
+            208,
+            191
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 4,
+          "origin": [
+            448,
+            160
+          ],
+          "worldFoot": [
+            464,
+            191
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 5,
+          "origin": [
+            32,
+            352
+          ],
+          "worldFoot": [
+            48,
+            383
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 6,
+          "origin": [
+            544,
+            352
+          ],
+          "worldFoot": [
+            560,
+            383
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 7,
+          "origin": [
+            160,
+            384
+          ],
+          "worldFoot": [
+            176,
+            415
+          ]
+        },
+        {
+          "layer": "terrain",
+          "index": 8,
+          "origin": [
+            640,
+            384
+          ],
+          "worldFoot": [
+            656,
+            415
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 1,
+          "origin": [
+            82.30643,
+            37.76
+          ],
+          "worldFoot": [
+            82.30643,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 2,
+          "origin": [
+            116.03956,
+            37.76
+          ],
+          "worldFoot": [
+            116.03956,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 3,
+          "origin": [
+            240.4769,
+            37.76
+          ],
+          "worldFoot": [
+            240.4769,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 4,
+          "origin": [
+            530.42046,
+            37.76
+          ],
+          "worldFoot": [
+            530.42046,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 5,
+          "origin": [
+            657.84849,
+            37.76
+          ],
+          "worldFoot": [
+            657.84849,
+            37.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 6,
+          "origin": [
+            81.20701,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            81.20701,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 7,
+          "origin": [
+            115.15658,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            115.15658,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 8,
+          "origin": [
+            462.1877,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            462.1877,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 9,
+          "origin": [
+            626.02629,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            626.02629,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 10,
+          "origin": [
+            691.08392,
+            69.75999999999999
+          ],
+          "worldFoot": [
+            691.08392,
+            69.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 11,
+          "origin": [
+            175.24445,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            175.24445,
+            101.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 12,
+          "origin": [
+            588.01939,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            588.01939,
+            101.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 13,
+          "origin": [
+            656.28861,
+            101.75999999999999
+          ],
+          "worldFoot": [
+            656.28861,
+            101.75999999999999
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 14,
+          "origin": [
+            14.67679,
+            133.76
+          ],
+          "worldFoot": [
+            14.67679,
+            133.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 15,
+          "origin": [
+            80.3969,
+            133.76
+          ],
+          "worldFoot": [
+            80.3969,
+            133.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 16,
+          "origin": [
+            143.8876,
+            133.76
+          ],
+          "worldFoot": [
+            143.8876,
+            133.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 18,
+          "origin": [
+            467.00055,
+            165.76
+          ],
+          "worldFoot": [
+            467.00055,
+            165.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 19,
+          "origin": [
+            80.18315,
+            197.76
+          ],
+          "worldFoot": [
+            80.18315,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 20,
+          "origin": [
+            172.7646,
+            197.76
+          ],
+          "worldFoot": [
+            172.7646,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 21,
+          "origin": [
+            434.66861,
+            197.76
+          ],
+          "worldFoot": [
+            434.66861,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 22,
+          "origin": [
+            494.96533,
+            197.76
+          ],
+          "worldFoot": [
+            494.96533,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 23,
+          "origin": [
+            626.68812,
+            197.76
+          ],
+          "worldFoot": [
+            626.68812,
+            197.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 25,
+          "origin": [
+            464.13608,
+            229.76
+          ],
+          "worldFoot": [
+            464.13608,
+            229.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 26,
+          "origin": [
+            47.67445,
+            261.76
+          ],
+          "worldFoot": [
+            47.67445,
+            261.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 27,
+          "origin": [
+            204.40936,
+            261.76
+          ],
+          "worldFoot": [
+            204.40936,
+            261.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 28,
+          "origin": [
+            529.52765,
+            261.76
+          ],
+          "worldFoot": [
+            529.52765,
+            261.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 29,
+          "origin": [
+            81.46457,
+            325.76
+          ],
+          "worldFoot": [
+            81.46457,
+            325.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 31,
+          "origin": [
+            623.87202,
+            325.76
+          ],
+          "worldFoot": [
+            623.87202,
+            325.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 32,
+          "origin": [
+            143.9936,
+            357.76
+          ],
+          "worldFoot": [
+            143.9936,
+            357.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 33,
+          "origin": [
+            464.29394,
+            357.76
+          ],
+          "worldFoot": [
+            464.29394,
+            357.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 34,
+          "origin": [
+            557.01233,
+            357.76
+          ],
+          "worldFoot": [
+            557.01233,
+            357.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 35,
+          "origin": [
+            47.17862,
+            389.76
+          ],
+          "worldFoot": [
+            47.17862,
+            389.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 36,
+          "origin": [
+            209.98783,
+            389.76
+          ],
+          "worldFoot": [
+            209.98783,
+            389.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 37,
+          "origin": [
+            593.74769,
+            389.76
+          ],
+          "worldFoot": [
+            593.74769,
+            389.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 38,
+          "origin": [
+            654.1121,
+            389.76
+          ],
+          "worldFoot": [
+            654.1121,
+            389.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 39,
+          "origin": [
+            210.64054,
+            421.76
+          ],
+          "worldFoot": [
+            210.64054,
+            421.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 40,
+          "origin": [
+            461.71455,
+            421.76
+          ],
+          "worldFoot": [
+            461.71455,
+            421.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 41,
+          "origin": [
+            556.59716,
+            421.76
+          ],
+          "worldFoot": [
+            556.59716,
+            421.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 42,
+          "origin": [
+            627.06026,
+            421.76
+          ],
+          "worldFoot": [
+            627.06026,
+            421.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 43,
+          "origin": [
+            82.24793,
+            453.76
+          ],
+          "worldFoot": [
+            82.24793,
+            453.76
+          ]
+        },
+        {
+          "layer": "scenery",
+          "index": 44,
+          "origin": [
+            590.34265,
+            453.76
+          ],
+          "worldFoot": [
+            590.34265,
+            453.76
+          ]
+        }
+      ],
+      "displayedLayerCounts": {
+        "ground": 213,
+        "terrain": 0,
+        "scenery": 5,
+        "spatial": 7,
+        "grid": 0,
+        "range": 0,
+        "path": 0,
+        "structures": 0,
+        "markers": 0,
+        "units": 70,
+        "foreground": 0,
+        "effects": 0,
+        "cursor": 0
+      },
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    }
+  ],
+  "sources": {
+    "packages/game-ui/src/styles/app.css": "1828de426c9184eba0046d17d89c57c87087cd8dfb6e9bdc790e10987d9af754",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png": "fd73ff01e210d74c8e7bd5740655896628c1783e42222ccd421b58f4603929cc",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-area@2x.png": "ba34100a163de3166eea5b9956765ce87ed9bf2ae8d8930716f4fb0be15603f7",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "96700df91820c8334b7428d143016693170056ac452882cb4f6ccece26e76d68",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "5c5bd292a37418297c27ce828fcf87e7d77b5c3805c825ccc59ce4e933394e95",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-joint-granary@2x.png": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "3ceea3ad6cd60ea4e3893f5c30ed4e578a00b2096c8a9600fdd111e252f925e8",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992",
+    "packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman-red@2x.png": "acce57525056c38a6105b54b686241b90b92ee26acaa4984313e36b33e7f3e2e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-legion-shield.png": "14a826df8cb40303819af85e6c341d57051093b6f6d744efb953b18f5a5d823a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-knight.png": "27fea41556b724d3b553c34b980432ea1494fbb49736d26a56a54b02015d2053",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-gravekeeper.png": "359d6031209a8939cd47437d06a1075dc30cbf62161d5cc25bed58a8243d5126",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ballista.png": "78475b8731aad186e1a547a6ce55ca8b35d21c9d78ff75054c10626a52511b8a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-refugee-adult.png": "b9242c3a6c43e1baa058799a956db8b3fb1f9b85953ebcc9568a342cd0f98bd6"
+  },
+  "omissions": [],
+  "gameplayChanged": false,
+  "comparison": "same art and entire scene; legacy fixed-layer order versus footpoint order",
+  "limitations": [
+    "Initial poses only; no browser or GPU pixel verification",
+    "Real front canopies can occlude rear actors; no selective fading or removal is applied",
+    "Scene framing is the production viewport; the extra field-only diagnostic crops at logical map boundaries"
+  ]
+}

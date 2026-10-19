@@ -3,13 +3,16 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { relative, resolve } from 'node:path';
 import { content, engine, shippedLevel, CANDIDATE_01_ART, emptyOverlay } from '../board-harness';
-import { BoardView, SvgBoardSurface, type BoardLayer, type BoardPiece } from '@empire/game-ui';
+import { BoardDepthOrder, BoardView, CELL_FOOT, SvgBoardSurface, TILE, type BoardLayer, type BoardPiece } from '@empire/game-ui';
 
 const root = resolve(import.meta.dirname, '../..');
 const output = resolve(process.env.STANDING_REVIEW_OUTPUT ?? 'docs/art-rebuild-20261019/approved-v5/standing-depth-review');
 mkdirSync(output, { recursive: true });
 const level = shippedLevel('c01-02');
 const sources = new Map<string, string>();
+const appStylesPath = 'packages/game-ui/src/styles/app.css';
+const appStyles = readFileSync(resolve(root, appStylesPath), 'utf8');
+sources.set(appStylesPath, createHash('sha256').update(appStyles).digest('hex'));
 const renders = [];
 for (const standing of [false, true]) {
   const state = engine.createState(level);
@@ -30,6 +33,11 @@ for (const standing of [false, true]) {
   }, state, { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {}, onSecondary: () => {}, onScale: () => {} });
   board.render(emptyOverlay());
   const svg = board.el as SVGSVGElement;
+  // The renderer is mounted inside app.css in production. Keep its actual
+  // facing rule in this standalone evidence, rather than exporting bare classes.
+  const style = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+  style.textContent = appStyles;
+  svg.prepend(style);
   const [,, width, height] = svg.getAttribute('viewBox')!.split(' ').map(Number);
   svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
   svg.setAttribute('width', String(width));
@@ -39,6 +47,23 @@ for (const standing of [false, true]) {
   const buildingCount = svg.querySelectorAll('[data-candidate-art="structure"]').length;
   if (unitCount !== 20 || buildingCount !== 9) throw new Error(`incomplete c01-02 snapshot: ${unitCount} actors, ${buildingCount} buildings`);
   const filename = standing ? 'runtime-standing-full.svg' : 'runtime-legacy-order-full.svg';
+  const actors = state.units.map((unit) => ({ id: `actor:${unit.id}`, actorId: unit.id, key: unit.key,
+    type: unit.type, cell: [unit.x, unit.y], facing: unit.facing,
+    origin: [unit.x * TILE, unit.y * TILE], worldFoot: [unit.x * TILE + CELL_FOOT.x, unit.y * TILE + CELL_FOOT.y] }));
+  const order = new BoardDepthOrder<object>();
+  for (const [layer, pieces] of layers) order.replaceLayer(layer, pieces.map((piece, index) => {
+    const { foot: _foot, ...legacyPiece } = piece;
+    return {
+      piece: standing ? piece : legacyPiece,
+      drawing: { id: `${layer}:${index}`, layer, index, origin: [piece.x, piece.y],
+        ...(piece.foot ? { worldFoot: [piece.x + piece.foot.x, piece.y + piece.foot.y] } : {}) },
+    };
+  }));
+  for (const actor of actors) order.placeUnit(actor.actorId, actor, actor.origin[0], actor.origin[1]);
+  const standingDrawOrder = order.ordered('units').map((entry, index) => ({ ...entry, displayIndex: index }));
+  if (standingDrawOrder.length !== svg.querySelector('.layer-units')!.children.length) {
+    throw new Error('recorded draw order differs from actual surface');
+  }
   const markup = svg.outerHTML.replace(/href="(\/packages\/[^"?]+)(?:\?[^"]*)?"/g, (_, path: string) => {
     const file = resolve(root, `.${path}`);
     sources.set(relative(root, file), createHash('sha256').update(readFileSync(file)).digest('hex'));
@@ -46,7 +71,7 @@ for (const standing of [false, true]) {
   });
   writeFileSync(resolve(output, filename), markup);
   if (JSON.stringify(state) !== before) throw new Error('depth review changed battle state');
-  renders.push({ filename, viewport: [0, 0, width, height], unitCount, buildingCount,
+  renders.push({ filename, viewport: [0, 0, width, height], unitCount, buildingCount, actors, standingDrawOrder,
     sourceLayerCounts: Object.fromEntries([...layers].map(([layer, pieces]) => [layer, pieces.length])),
     standingSources: [...layers].flatMap(([layer, pieces]) => pieces.flatMap((piece, index) => piece.foot
       ? [{ layer, index, origin: [piece.x, piece.y], worldFoot: [piece.x + piece.foot.x, piece.y + piece.foot.y] }] : [])),

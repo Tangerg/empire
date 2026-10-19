@@ -12,6 +12,7 @@ import {
 } from './candidate-01-map-scene';
 import { CANDIDATE_01_ENVIRONMENT, candidate01EnvironmentScene } from './candidate-01-environment';
 import { boardPiecesMarkup, createSceneViewport, type BoardPiece } from '@empire/game-ui';
+import { CANDIDATE_01_HORIZONTAL_CROSSING } from './candidate-01-crossing';
 import { candidate01FieldMaterialPieces } from './candidate-01-field-material';
 
 import { createTestCatalog } from '@empire/test-content';
@@ -30,7 +31,7 @@ describe('candidate-01 authored map scenery', () => {
     const before = JSON.stringify(map);
     const layers = candidate01MapSceneryLayers(sceneContext('c01-02', map));
     expect(layers.ground.every((piece) => piece.foot === undefined)).toBe(true);
-    const bridges = layers.underUnits.filter((piece) => piece.markup.includes('crossings-fortifications'));
+    const bridges = layers.underUnits.filter((piece) => piece.markup.includes(CANDIDATE_01_HORIZONTAL_CROSSING.href));
     expect(bridges).toHaveLength(3);
     expect(bridges.every((piece) => piece.foot === undefined)).toBe(true);
     expect(layers.underUnits.filter((piece) => piece.foot)).toHaveLength(41);

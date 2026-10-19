@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import tempfile
@@ -58,13 +59,14 @@ def validate_water_render(directory, provenance):
             'comparison': 'Actual SVG raster against approved occupancy/UV calibration; transparent RGB ignored'}
 
 
-def render(directory):
+def rasterize(directory):
     names = sorted(path.stem for path in directory.glob('*.svg') if not path.name.endswith('.offline.svg'))
     with tempfile.TemporaryDirectory() as profile:
         for name in names:
             source = directory / f'{name}.svg'
             svg = ET.parse(source).getroot()
             # Keep the original runtime SVG; normalize only the offline copy.
+            normalize_actor_facing(svg)
             defs = ET.SubElement(svg, f'{{{NS}}}defs')
             flatten_viewports(svg, defs)
             normalized = directory / f'{name}.offline.svg'
@@ -75,6 +77,22 @@ def render(directory):
                                 f'--export-filename={directory / f"{name}@{density}x.png"}'],
                                env={**os.environ, 'INKSCAPE_PROFILE_DIR': profile}, check=True, capture_output=True)
             normalized.unlink()
+
+
+def normalize_actor_facing(svg):
+    """Spell the app's CSS mirror as geometry for offline renderers."""
+    for style in svg.iter(f'{{{NS}}}style'):
+        if style.text:
+            style.text = re.sub(r'\.layer-units \.unit\.face-left > \.figure\s*\{[^}]*\}', '', style.text)
+    for unit in svg.iter(f'{{{NS}}}g'):
+        if {'unit', 'face-left'} <= set(unit.get('class', '').split()):
+            for child in unit:
+                if child.get('class') == 'figure':
+                    child.set('transform', 'translate(32 0) scale(-1 1)')
+
+
+def render(directory):
+    rasterize(directory)
     provenance = json.loads((directory / 'runtime-provenance.json').read_text())
     x, y, w, h = provenance['cropWorldBox']
     crops = []
@@ -107,7 +125,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('directory', type=Path)
     parser.add_argument('--compare-directory', type=Path)
+    parser.add_argument('--scene-only', action='store_true', help='Rasterize complete runtime scene SVGs without ground crop checks')
     args = parser.parse_args()
-    print(json.dumps(render(args.directory.resolve()), indent=2))
+    if args.scene_only:
+        rasterize(args.directory.resolve())
+        print(json.dumps({'kind': 'offline runtime scene rasterization', 'browserPlayback': False}))
+    else:
+        print(json.dumps(render(args.directory.resolve()), indent=2))
     if args.compare_directory:
         print(json.dumps(compare_retained(args.directory.resolve(), args.compare_directory.resolve()), indent=2))
