@@ -4192,12 +4192,17 @@
     },
     {
       "topicId": "c02-battle-prop-permission-lights",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-permission-lights/master.png",
       "verification": {
-        "state": "pending",
+        "state": "export-checked",
         "note": "Raw master preserved; runtime visual acceptance pending",
-        "semanticReview": "passed original board review; stronger gloss pending style review"
+        "semanticReview": "passed original board review; stronger gloss pending style review",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-024-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "72fcca1f78eb4ea8a6caf96b69f026d1b5c8c2479c7d221659f9fa9eb6283c8a"
