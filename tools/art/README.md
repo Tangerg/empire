@@ -281,3 +281,16 @@ water/bridge cells and draws one source image per512logical world block. No
 baked c01-02 background, per-cell texture reset, source painting or recolor is used.
 `--check` validates source/mask reproducibility. Full native evidence and remaining
 repeat seams are documented in `docs/art-rebuild-20261019/approved-v5/water-runtime`.
+
+## Approved dirt-road connector binding
+
+`export_connector_overrides.py [--check]` reads `connector-overrides.json` and
+reuses the exact approved22logical core/one-HD-pixel shoulder geometry. Both2x
+runtime atlases match the approved export hashes; the edge companion stays blank.
+All16NESW masks ×4variants and the existing runtime atlas dimensions/paths remain.
+The1x sheet is derived by independently resizing each64px cell to32px before
+packing, avoiding the old whole-sheet cross-slot bleed. Only the outermost RGB
+pixels of open ports are then averaged against existing opposing open-port
+pixels; every alpha and interior pixel is unchanged. Reports include delta and
+pixel hashes. Every opposing port pair is exactRGBA at1x and2x. The previous
+contaminated1x pair is retained with evidence in `road-runtime/previous-whole-sheet-1x`.

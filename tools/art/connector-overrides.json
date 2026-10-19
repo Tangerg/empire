@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "atlas": "route-dirt-road",
+  "edgeAtlas": "route-edge-dirt-road",
+  "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/earth-material/revision-2/master.png",
+  "sha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+  "geometrySource": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py",
+  "geometrySha256": "8b8690a2fbca6065e85ff667eeb40241e55f065611741bb008579ce8bcc3015c",
+  "roadWidthLogical": 22,
+  "approved2xOutputs": {
+    "route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+    "route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a"
+  },
+  "previous1xOutputs": {
+    "route-dirt-road.png": "f6670b9a964f159e296d63a22db92e85b314b8dc59fa4f270ac00cd2ff1bc053",
+    "route-edge-dirt-road.png": "9634403a7054655f2eeb24f833bd741d01d72f3478aad967831ce9ee6a39970b"
+  },
+  "derivation1x": "independent-64-to-32-lanczos-then-open-port-rgb-match"
+}

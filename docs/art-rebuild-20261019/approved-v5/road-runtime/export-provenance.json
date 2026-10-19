@@ -1,0 +1,108 @@
+[
+  {
+    "atlas": "route-dirt-road",
+    "density": 1,
+    "size": [
+      512,
+      128
+    ],
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/earth-material/revision-2/master.png",
+    "sourceSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+    "geometrySource": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py",
+    "geometrySha256": "8b8690a2fbca6065e85ff667eeb40241e55f065611741bb008579ce8bcc3015c",
+    "roadWidthLogical": 22,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road.png",
+    "sha256": "184bb3c424323d523c63cadf864ad6b10f3b38fc9feabf294753f801955bf2b2",
+    "approved2xExportExact": false,
+    "derivation1x": "independent-64-to-32-lanczos-then-open-port-rgb-match",
+    "edgeMatching": {
+      "operation": "existing opposite open-port RGB average on outermost pixels only",
+      "changedPixels": 3072,
+      "maximumRGBDelta": 64,
+      "maximumPremultipliedRGBDelta": 7,
+      "maximumOpaqueRGBDelta": 7,
+      "alphaChanged": false,
+      "beforePixelSha256": "e34638d12e40a03d60be313946dac66f02c19690b0e3c9c57514ba8b9a621cfa",
+      "afterPixelSha256": "056ea1f732689771b3511b2d2f03891a0a7f57133bf041f975ee51592bb9657c"
+    },
+    "previousWholeSheet1xSha256": "f6670b9a964f159e296d63a22db92e85b314b8dc59fa4f270ac00cd2ff1bc053",
+    "topology": "NESW16 \u00d7 four identical material variants",
+    "shoulder": "approved one-HD-pixel alpha ring; blank companion avoids double borders",
+    "material": "full-source resize plus approved one-pixel edge average; no recolor or painted changes"
+  },
+  {
+    "atlas": "route-dirt-road",
+    "density": 2,
+    "size": [
+      1024,
+      256
+    ],
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/earth-material/revision-2/master.png",
+    "sourceSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+    "geometrySource": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py",
+    "geometrySha256": "8b8690a2fbca6065e85ff667eeb40241e55f065611741bb008579ce8bcc3015c",
+    "roadWidthLogical": 22,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png",
+    "sha256": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+    "approved2xExportExact": true,
+    "derivation1x": null,
+    "edgeMatching": null,
+    "previousWholeSheet1xSha256": null,
+    "topology": "NESW16 \u00d7 four identical material variants",
+    "shoulder": "approved one-HD-pixel alpha ring; blank companion avoids double borders",
+    "material": "full-source resize plus approved one-pixel edge average; no recolor or painted changes"
+  },
+  {
+    "atlas": "route-edge-dirt-road",
+    "density": 1,
+    "size": [
+      512,
+      128
+    ],
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/earth-material/revision-2/master.png",
+    "sourceSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+    "geometrySource": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py",
+    "geometrySha256": "8b8690a2fbca6065e85ff667eeb40241e55f065611741bb008579ce8bcc3015c",
+    "roadWidthLogical": 22,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road.png",
+    "sha256": "9634403a7054655f2eeb24f833bd741d01d72f3478aad967831ce9ee6a39970b",
+    "approved2xExportExact": false,
+    "derivation1x": "independent-64-to-32-lanczos-then-open-port-rgb-match",
+    "edgeMatching": {
+      "operation": "existing opposite open-port RGB average on outermost pixels only",
+      "changedPixels": 0,
+      "maximumRGBDelta": 0,
+      "maximumPremultipliedRGBDelta": 0,
+      "maximumOpaqueRGBDelta": 0,
+      "alphaChanged": false,
+      "beforePixelSha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "afterPixelSha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90"
+    },
+    "previousWholeSheet1xSha256": "9634403a7054655f2eeb24f833bd741d01d72f3478aad967831ce9ee6a39970b",
+    "topology": "NESW16 \u00d7 four identical material variants",
+    "shoulder": "approved one-HD-pixel alpha ring; blank companion avoids double borders",
+    "material": "full-source resize plus approved one-pixel edge average; no recolor or painted changes"
+  },
+  {
+    "atlas": "route-edge-dirt-road",
+    "density": 2,
+    "size": [
+      1024,
+      256
+    ],
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/earth-material/revision-2/master.png",
+    "sourceSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+    "geometrySource": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py",
+    "geometrySha256": "8b8690a2fbca6065e85ff667eeb40241e55f065611741bb008579ce8bcc3015c",
+    "roadWidthLogical": 22,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png",
+    "sha256": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+    "approved2xExportExact": true,
+    "derivation1x": null,
+    "edgeMatching": null,
+    "previousWholeSheet1xSha256": null,
+    "topology": "NESW16 \u00d7 four identical material variants",
+    "shoulder": "approved one-HD-pixel alpha ring; blank companion avoids double borders",
+    "material": "full-source resize plus approved one-pixel edge average; no recolor or painted changes"
+  }
+]

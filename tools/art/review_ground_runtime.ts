@@ -1,6 +1,6 @@
 /** Offline, full-field evidence from the real candidate BoardPieces. */
 import { createHash } from 'node:crypto';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { relative, resolve } from 'node:path';
 import { idx, mapFromLevel } from '@empire/battle-engine';
 import { boardPictureMarkup, boardPiecesMarkup, TILE } from '@empire/game-ui';
@@ -88,6 +88,8 @@ writeFileSync(resolve(output, 'runtime-provenance.json'), JSON.stringify({
   waterAndBridgeCells: map.tiles.flatMap((id, index) => id === 'water' || id === 'bridge' ? [[index % map.width, Math.floor(index / map.width)]] : []),
   layerCounts: Object.fromEntries(Object.entries(layers).map(([key, value]) => [key, value.length])),
   buildingCount: buildings.length, unitCount: units.length, buildingRegistrations,
+  connectorBinding: JSON.parse(readFileSync(resolve(root, 'tools/art/connector-overrides.json'), 'utf8')),
+  integrationOrder: 'ground, terrain buildings, under-unit scenery, units sorted by foot y/x, over-unit scenery',
   mapSha256: createHash('sha256').update(before).digest('hex'), gameplayTopologyChanged: false,
   provenance: 'candidate01MapSceneryLayers + candidate01TerrainMarkup + candidate01UnitPicture; no SVG material substitutions',
   cropWorldBox: crop,
@@ -101,6 +103,6 @@ writeFileSync(resolve(output, 'runtime-provenance.json'), JSON.stringify({
     densityWarning: 'Display 2x of the selected broad field is enlarged existing art, not new native2x source detail' },
   limitations: ['Static initial unit poses, no animation, browser or GPU playback',
     'Explicit diagnostic blue/red owner colors; no HUD, camera effects or CSS lighting',
-    'Legacy shore, road, crossings, non-base surfaces and decals remain visible; buildings may overlap'],
+    'Legacy shore, crossings, non-base surfaces and decals remain visible; buildings may overlap'],
 }, null, 2) + '\n');
 console.log(output);
