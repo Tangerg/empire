@@ -1256,13 +1256,13 @@
       "topicId": "C01-UNIT-CEMETERY-COLOSSUS",
       "label": "墓地巨像",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-cemetery-colossus.png",
-      "width": 256,
-      "height": 64,
+      "png": "runtime-approved-v5/combat-unit/unit-cemetery-colossus.png",
+      "width": 512,
+      "height": 80,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 80,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1271,13 +1271,14 @@
         "walk-b"
       ],
       "anchor": [
-        32,
-        63
+        64.10478359908885,
+        68.64692482915717
       ],
       "footprint": [
         2,
         2
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-CLERIC",
@@ -1917,13 +1918,13 @@
       "topicId": "C01-UNIT-STONE-GOLEM",
       "label": "石魔像",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-stone-golem.png",
-      "width": 256,
-      "height": 64,
+      "png": "runtime-approved-v5/combat-unit/unit-stone-golem.png",
+      "width": 576,
+      "height": 104,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 144,
+      "frameHeight": 104,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1932,13 +1933,14 @@
         "walk-b"
       ],
       "anchor": [
-        32,
-        63
+        68.78064943671305,
+        86.03711066931743
       ],
       "footprint": [
         2,
         2
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-SWORDSMAN",

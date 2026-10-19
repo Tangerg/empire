@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/walk-b/master.png"
+    },
+    "scale": 0.08217362491716368,
+    "origin": [
+      6,
+      6
+    ],
+    "frameSize": [
+      144,
+      104
+    ],
+    "sourceFoot": [
+      764,
+      974
+    ],
+    "sourceFeet": {
+      "idle": [
+        764,
+        974
+      ],
+      "walk-a": [
+        746,
+        967
+      ],
+      "attack": [
+        763,
+        975
+      ],
+      "walk-b": [
+        790,
+        975
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        1.4791252485089461,
+        0.5752153744201458
+      ],
+      "attack": [
+        0.08217362491716368,
+        -0.08217362491716368
+      ],
+      "walk-b": [
+        -2.1365142478462555,
+        -0.08217362491716368
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 2,
+    "meaning": "original block stone construct and same glyph-bearing arm; stable head-to-sole62logical with elevated fist; opposite supports and slam"
+  },
+  "authoredCanvas": [
+    1586,
+    993
+  ],
+  "logicalPivot": [
+    68.78064943671305,
+    86.03711066931743
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "70a18da32877f60f679c1b2f2814a8d38a1e0afd8722348461592f7197302451",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 11300,
+        "nearOpaquePixels": 3261,
+        "edgeMax": 0,
+        "visibleBounds": [
+          33,
+          8,
+          110,
+          86
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "70a18da32877f60f679c1b2f2814a8d38a1e0afd8722348461592f7197302451",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 45592,
+        "nearOpaquePixels": 13345,
+        "edgeMax": 0,
+        "visibleBounds": [
+          65,
+          15,
+          220,
+          172
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/walk-a/master.png",
+      "registrationOffset": [
+        1.4791252485089461,
+        0.5752153744201458
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "4103521c5b144faca60ec2ece1f9f189d6466b44766ec080dbf00b81790c0b86",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 11466,
+        "nearOpaquePixels": 3067,
+        "edgeMax": 0,
+        "visibleBounds": [
+          34,
+          8,
+          109,
+          86
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/walk-a/master.png",
+      "registrationOffset": [
+        1.4791252485089461,
+        0.5752153744201458
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "4103521c5b144faca60ec2ece1f9f189d6466b44766ec080dbf00b81790c0b86",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 46276,
+        "nearOpaquePixels": 12630,
+        "edgeMax": 0,
+        "visibleBounds": [
+          68,
+          17,
+          218,
+          172
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/attack/master.png",
+      "registrationOffset": [
+        0.08217362491716368,
+        -0.08217362491716368
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "ef49947d13654c5f2867d120b2b1cd25f664e9e5ef9a66ae9036c4620c307c35",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 11862,
+        "nearOpaquePixels": 2768,
+        "edgeMax": 0,
+        "visibleBounds": [
+          38,
+          24,
+          110,
+          86
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/attack/master.png",
+      "registrationOffset": [
+        0.08217362491716368,
+        -0.08217362491716368
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "ef49947d13654c5f2867d120b2b1cd25f664e9e5ef9a66ae9036c4620c307c35",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 47783,
+        "nearOpaquePixels": 11340,
+        "edgeMax": 0,
+        "visibleBounds": [
+          76,
+          48,
+          221,
+          172
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/walk-b/master.png",
+      "registrationOffset": [
+        -2.1365142478462555,
+        -0.08217362491716368
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "d1bcf8334e5625fd7bd5885d7c81c7bfce0a9682192e4f6c6b1b464693f0559c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 11496,
+        "nearOpaquePixels": 3070,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          8,
+          108,
+          86
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/walk-b/master.png",
+      "registrationOffset": [
+        -2.1365142478462555,
+        -0.08217362491716368
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "d1bcf8334e5625fd7bd5885d7c81c7bfce0a9682192e4f6c6b1b464693f0559c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 46426,
+        "nearOpaquePixels": 12566,
+        "edgeMax": 0,
+        "visibleBounds": [
+          61,
+          15,
+          216,
+          172
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

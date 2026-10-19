@@ -4,10 +4,10 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 279,
+    "formalBound": 281,
     "boundByCategory": {
       "battle-prop": 64,
-      "combat-unit": 28,
+      "combat-unit": 30,
       "equipment": 95,
       "interactive-structure": 24,
       "mission-unit": 1,
@@ -15,7 +15,7 @@
       "skill": 48,
       "status": 16
     },
-    "rawPreservedTopics": 285,
+    "rawPreservedTopics": 291,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1514,8 +1514,10 @@
       "category": "combat-unit",
       "label": "火炮车",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -1535,11 +1537,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cemetery-colossus/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-cemetery-colossus.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-cemetery-colossus.png",
+      "stageEvidence": {
+        "raw": "four native transparent poses, exact original construct identity and all rejected corrections preserved",
+        "export": "one shared body scale, measured feet, full-canvas1x/2x with explicit1-2px transparent padding; native pose review passed",
+        "runtimeBinding": "formal canonical and HD resolver; original footprint/rules; complete c01-11/14/16 offline scene reviewed, existing dense-scene occlusion remains a separate integration debt",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-CLERIC",
@@ -2034,11 +2041,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/stone-golem/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-stone-golem.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-stone-golem.png",
+      "stageEvidence": {
+        "raw": "four native transparent poses, exact original construct identity and all rejected corrections preserved",
+        "export": "one shared body scale, measured feet, full-canvas1x/2x with explicit1-2px transparent padding; native pose review passed",
+        "runtimeBinding": "formal canonical and HD resolver; original footprint/rules; complete c01-11/14/16 offline scene reviewed, existing dense-scene occlusion remains a separate integration debt",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-SWORDSMAN",
@@ -2212,8 +2224,13 @@
       "category": "mission-unit",
       "label": "桥梁劳工",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/walk-b/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -6799,8 +6816,10 @@
       "category": "status",
       "label": "维修目标",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-21/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -6813,8 +6832,10 @@
       "category": "status",
       "label": "破坏目标",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-22/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -6827,8 +6848,10 @@
       "category": "status",
       "label": "守时目标",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-23/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -6841,8 +6864,10 @@
       "category": "status",
       "label": "证据送达",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-24/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
