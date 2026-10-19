@@ -4,18 +4,18 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 257,
+    "formalBound": 265,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 28,
-      "equipment": 87,
+      "equipment": 91,
       "interactive-structure": 24,
       "mission-unit": 1,
       "narrative-static": 1,
       "skill": 48,
-      "status": 4
+      "status": 8
     },
-    "rawPreservedTopics": 257,
+    "rawPreservedTopics": 265,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -6382,13 +6382,20 @@
       "category": "status",
       "label": "护卫",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-03/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/status/status-03.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STATUS-04",
@@ -6438,13 +6445,20 @@
       "category": "status",
       "label": "隐蔽",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-06/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/status/status-06.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STATUS-07",
@@ -6466,13 +6480,20 @@
       "category": "status",
       "label": "受伤",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-08/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/status/status-08.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STATUS-09",
@@ -6522,13 +6543,20 @@
       "category": "status",
       "label": "士气",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-12/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/status/status-12.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STATUS-13",
@@ -10916,13 +10944,20 @@
       "category": "equipment",
       "label": "反大型定向爆破包",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-anti-large-charge/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-anti-large-charge.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native48 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+        "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+      }
     },
     {
       "topicId": "c02-equipment-antler-knight",
@@ -11272,13 +11307,20 @@
       "category": "equipment",
       "label": "磁靴牵引组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-magboot-tractor-set/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-magboot-tractor-set.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native48 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+        "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+      }
     },
     {
       "topicId": "c02-equipment-memory-monk",
@@ -11307,13 +11349,20 @@
       "category": "equipment",
       "label": "记忆孢子隔离装",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-memory-spore-isolator/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-memory-spore-isolator.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native48 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+        "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+      }
     },
     {
       "topicId": "c02-equipment-mission-evidence-box",
@@ -11321,13 +11370,20 @@
       "category": "equipment",
       "label": "任务权限证据箱",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-mission-evidence-box/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-mission-evidence-box.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native48 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+        "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+      }
     },
     {
       "topicId": "c02-equipment-multi-standard-repair-pack",
