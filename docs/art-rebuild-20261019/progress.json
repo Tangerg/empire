@@ -8786,8 +8786,11 @@
   "environmentAtlases": [
     {
       "id": "surface-meadow",
-      "status": "pending",
-      "componentCount": 4
+      "status": "exported",
+      "componentCount": 4,
+      "exportedComponents": 4,
+      "staticVisualReview": "pending-seam-and-cohesion-review",
+      "runtimeVisual": "pending-browser-socket-blocked"
     },
     {
       "id": "surface-forest-floor",
@@ -9726,52 +9729,72 @@
       "atlasId": "surface-meadow",
       "cellId": "meadow-1",
       "index": 0,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-1/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-forest-completion",
       "sourceSha256": "67f2fc5c4cdc77a1102bfeb1c456bc1173b036306cdf18b348597a6549e0758c",
       "verification": {
-        "state": "pending-all-four-sources-and-seam-cohesion-review"
+        "exportCheck": "passed",
+        "evidence": "docs/art-rebuild-20261019/surface-001-export-evidence.json",
+        "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
+        "visualSeams": "pending-review",
+        "crossAssetCoherence": "pending-review",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
       "atlasId": "surface-meadow",
       "cellId": "meadow-2",
       "index": 1,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-2/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-forest-completion",
       "sourceSha256": "3eb143144074dbb11cbac2ae678fae595f0bc78ec252fff9798e682b92c811a2",
       "verification": {
-        "state": "pending-all-four-sources-and-seam-cohesion-review"
+        "exportCheck": "passed",
+        "evidence": "docs/art-rebuild-20261019/surface-001-export-evidence.json",
+        "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
+        "visualSeams": "pending-review",
+        "crossAssetCoherence": "pending-review",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
       "atlasId": "surface-meadow",
       "cellId": "meadow-3",
       "index": 2,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-3/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-forest-completion",
       "sourceSha256": "cd4ac12b2039b9ca7a715b5c6829d428097613eed98143057b6310d829c1c3d1",
       "verification": {
-        "state": "pending-all-four-sources-and-seam-cohesion-review"
+        "exportCheck": "passed",
+        "evidence": "docs/art-rebuild-20261019/surface-001-export-evidence.json",
+        "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
+        "visualSeams": "pending-review",
+        "crossAssetCoherence": "pending-review",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
       "atlasId": "surface-meadow",
       "cellId": "meadow-4",
       "index": 3,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-4/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-forest-completion",
       "sourceSha256": "822e578760219373ab17c9220c26b68a0647e259cf1d546d439115e15f32cdc0",
       "verification": {
-        "state": "pending-all-four-sources-and-seam-cohesion-review"
+        "exportCheck": "passed",
+        "evidence": "docs/art-rebuild-20261019/surface-001-export-evidence.json",
+        "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
+        "visualSeams": "pending-review",
+        "crossAssetCoherence": "pending-review",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     }
   ],
@@ -9863,7 +9886,7 @@
     }
   ],
   "crossAssetCoherence": {
-    "status": "pending-first-meadow-exports",
+    "status": "first-meadow-composite-under-review",
     "contract": "docs/art-rebuild-20261019/cross-asset-coherence.md",
     "requiredInputs": [
       "surface-meadow",
@@ -9897,6 +9920,7 @@
         "status": "revision-requested",
         "evidence": "docs/art-rebuild-20261019/three-unit-scale.png"
       }
-    ]
+    ],
+    "currentPreview": "docs/art-rebuild-20261019/cohesion-first-meadow/cohesion-placement.json"
   }
 }
