@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-STRUCT-REFUGEE-SHELTER",
+  "mapBinding": "c01.field-post",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-05.png",
+  "sourceSHA256": "f46ed6a65049889be67a0a007b8cdc13521c83f1b8393f314b36942ca4753d0c",
+  "sourceSize": [
+    1086,
+    1448
+  ],
+  "runtimeReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-refugee-shelter.png",
+  "cells": [
+    {
+      "state": "normal",
+      "box": [
+        0,
+        420,
+        362,
+        780
+      ]
+    },
+    {
+      "state": "damaged",
+      "box": [
+        362,
+        420,
+        724,
+        780
+      ]
+    },
+    {
+      "state": "captured",
+      "box": [
+        724,
+        420,
+        1086,
+        780
+      ]
+    }
+  ],
+  "method": "Visually match all three runtime-HD states to structures-atlas-05 second row (normal, damaged, captured left to right).",
+  "stateEvidence": "Normal is a patchwork canvas A-frame hut, open front lean-to awning over bedding, left pot in stone ring, right-front pot/sack and small supply crate, right-side stacked short logs. Damaged is collapsed torn canvas with poles, scattered timber and fallen containers; no flag. Captured is intact, same base identity, with small gold, red and blue cloth ties along roof ridge. No state has a flag or invented military emblem.",
+  "runtimeAnchor": [
+    32,
+    63
+  ],
+  "runtimeFrameSize": [
+    64,
+    64
+  ],
+  "footprint": [
+    2,
+    2
+  ]
+}

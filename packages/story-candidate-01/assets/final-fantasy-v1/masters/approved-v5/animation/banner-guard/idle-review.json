@@ -1,5 +1,5 @@
 {
-  "status": "idle only; awaiting coordinator review; no further poses started",
+  "status": "Idle body framing accepted by coordinator2026-10-19; remaining3poses in progress",
   "currentCandidate": "/workspace/shared/empire-art-rebuild/approved-v5/animation/banner-guard/idle/master.png",
   "selectedAttempt": "attempt-02",
   "rejectedAttempt": "attempt-01: undersized narrow body and finial touching top edge",
@@ -32,5 +32,7 @@
   "identity": "Gray-mustached veteran, ridge kettle helmet, teal/mail tunic, brown giant gloves and boots, rectangular wood back shield, sheathed sword at hip, gray forked pennant with correct one pale bar/3ticks.",
   "rawPreserved": true,
   "exactPromptsPreserved": true,
-  "noRepositoryEdits": true
+  "noRepositoryEdits": true,
+  "lockedBodyScale": 0.05385556915544676,
+  "acceptance": "Body silhouette, large hands/head/boots and exact emblem read correctly. Preserve native canvas/body/camera; narrow margins require strict perimeter check and padded full-canvas export."
 }
