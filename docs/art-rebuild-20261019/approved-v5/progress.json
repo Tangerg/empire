@@ -2509,5 +2509,19 @@
         "liveGame": "pending"
       }
     }
+  },
+  "mapStructurePresentations": {
+    "field-post-compact": {
+      "canonicalTopic": "C01-STRUCT-REFUGEE-SHELTER",
+      "canonicalCountIncrement": 0,
+      "ruleTerrain": "c01.field-post",
+      "actualCells": 34,
+      "actualLevels": 6,
+      "stateCount": 3,
+      "export": "native full-canvas shared transform, actual1x/2x strict support alpha>=2 and zero perimeter verified",
+      "runtimeBinding": "explicit presentation variant through existing structure renderer; full six-level counts and rules verified",
+      "sceneReview": "complete c04 camp occlusion improved, none of19 worse; southwest and south patrol remain pending",
+      "liveGame": "pending"
+    }
   }
 }

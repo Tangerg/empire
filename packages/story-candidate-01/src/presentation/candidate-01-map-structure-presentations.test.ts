@@ -84,19 +84,29 @@ describe('map structure presentation contract', () => {
   });
 });
 
-describe('unactivated map structure presentation catalog', () => {
-  it('has no source activation before approved trio registration and keeps existing map rendering exact', () => {
-    expect(document.variants).toEqual([]);
-    expect(CANDIDATE_01_MAP_STRUCTURE_PRESENTATIONS.size).toBe(0);
+describe('reviewed compact field-post presentation catalog', () => {
+  it('uses the compact trio only for field-post while keeping other map identities exact', () => {
+    expect(document.variants.map(x => x.id)).toEqual(['field-post-compact']);
+    expect(CANDIDATE_01_MAP_STRUCTURE_PRESENTATIONS.size).toBe(1);
     expect(CELL_FOOT).toEqual({ x: 16, y: 31 });
     for (const [terrain, binding] of Object.entries(CANDIDATE_01_MAP_STRUCTURE_ART)) {
-      expect(binding!.presentationId).toBeUndefined();
-      expect(resolveCandidate01MapStructureArt(CANDIDATE_01_MAP_STRUCTURE_PRESENTATIONS, binding!)).toBe(candidate01Asset(binding!.topicId));
+      const selected = resolveCandidate01MapStructureArt(CANDIDATE_01_MAP_STRUCTURE_PRESENTATIONS, binding!);
+      if (terrain === 'c01.field-post') {
+        expect(binding!.presentationId).toBe('field-post-compact');
+        expect(selected.url).toContain('field-post-compact@2x.png');
+        expect(selected.presentationScale).toBe(0.5);
+        if (!selected.anchor) throw new Error('registered compact presentation must have a pivot');
+        expect(selected.anchor[0]).toBeCloseTo(32, 10);
+        expect(selected.anchor[1]).toBeCloseTo(53, 10);
+      } else {
+        expect(binding!.presentationId).toBeUndefined();
+        expect(selected).toBe(candidate01Asset(binding!.topicId));
+      }
       for (const ownerColor of [undefined, '#4d86b8', '#a8493f']) {
         const ctx = { x: 0, y: 0, linked: { n: false, e: false, s: false, w: false }, ...(ownerColor ? { ownerColor } : {}) };
         const picture = candidate01TerrainPicture(terrain, ctx);
         expect(picture.foot).toBe(CELL_FOOT);
-        expect(picture.markup).toContain(candidate01Asset(binding!.topicId).url);
+        expect(picture.markup).toContain(selected.url);
         expect(picture.markup.includes('candidate-owner-banner')).toBe(ownerColor !== undefined);
         expect(candidate01TerrainMarkup(terrain, ctx)).toBe(picture.markup);
       }

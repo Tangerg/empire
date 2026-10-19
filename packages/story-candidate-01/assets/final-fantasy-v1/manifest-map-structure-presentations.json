@@ -1,4 +1,31 @@
 {
   "schemaVersion": 1,
-  "variants": []
+  "variants": [
+    {
+      "id": "field-post-compact",
+      "topicId": "C01-STRUCT-REFUGEE-SHELTER",
+      "png": "runtime-approved-v5/map-structure-presentation/field-post-compact.png",
+      "hdPng": "runtime-approved-v5/map-structure-presentation/field-post-compact@2x.png",
+      "pixelDensity": 2,
+      "hdWidth": 384,
+      "hdHeight": 128,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 3,
+      "stateOrder": [
+        "normal",
+        "damaged",
+        "captured"
+      ],
+      "anchor": [
+        32.0,
+        53.00000000000001
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 0.5
+    }
+  ]
 }

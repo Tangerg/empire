@@ -1,0 +1,37 @@
+{
+  "codeCommits": [
+    "eb3b7bc",
+    "b8416b9",
+    "f93b2ff"
+  ],
+  "typecheck": "passed",
+  "fullSuite": {
+    "files": 118,
+    "tests": 1343,
+    "status": "passed; omitted baseline fixture files temporarily supplied as read-only links then removed"
+  },
+  "appsBuild": {
+    "count": 4,
+    "status": "passed"
+  },
+  "pythonGateTests": {
+    "count": 9,
+    "status": "passed"
+  },
+  "replay": {
+    "runs": 60,
+    "lines": 47815,
+    "byteIdentical": true
+  },
+  "variantActivation": "performed separately by coordinator on main",
+  "canonicalCountDelta": 0,
+  "mainWritesByThisVerification": false,
+  "nativeRasterGuard": {
+    "fixtureSize": [
+      120,
+      80
+    ],
+    "silhouetteArea": 100,
+    "occludedFraction": 0
+  }
+}

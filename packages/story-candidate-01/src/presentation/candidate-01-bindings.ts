@@ -84,7 +84,7 @@ export const CANDIDATE_01_MAP_STRUCTURE_ART: Readonly<Partial<Record<TerrainId, 
   barracks: { topicId: 'C01-STRUCT-MILITARY-REGISTRY' },
   castle: { topicId: 'C01-STRUCT-LORNE-KEEP' },
   'c01.outpost': { topicId: 'C01-STRUCT-LORNE-KEEP' },
-  'c01.field-post': { topicId: 'C01-STRUCT-REFUGEE-SHELTER' },
+  'c01.field-post': { topicId: 'C01-STRUCT-REFUGEE-SHELTER', presentationId: 'field-post-compact' },
   'c01.keep': { topicId: 'C01-STRUCT-LORNE-KEEP' },
 };
 

@@ -1,0 +1,225 @@
+{
+  "kind": "actual display-1x total silhouette occlusion, initial pose only",
+  "rasterSize": [
+    788,
+    584
+  ],
+  "actorCount": 19,
+  "noneIncreased": true,
+  "actors": [
+    {
+      "key": "camp-guard-1",
+      "cell": [
+        8,
+        3
+      ],
+      "before": 0.90763,
+      "decorOnly": 0.90763,
+      "activated": 0.23101,
+      "totalChange": -0.67662
+    },
+    {
+      "key": "camp-guard-2",
+      "cell": [
+        11,
+        3
+      ],
+      "before": 0.8691,
+      "decorOnly": 0.8691,
+      "activated": 0.0,
+      "totalChange": -0.8691
+    },
+    {
+      "key": "north-patrol",
+      "cell": [
+        15,
+        4
+      ],
+      "before": 0.0916,
+      "decorOnly": 0.0916,
+      "activated": 0.0916,
+      "totalChange": 0.0
+    },
+    {
+      "key": "camp-inquisitor",
+      "cell": [
+        10,
+        5
+      ],
+      "before": 0.9102,
+      "decorOnly": 0.9102,
+      "activated": 7e-05,
+      "totalChange": -0.91013
+    },
+    {
+      "key": "camp-bow",
+      "cell": [
+        8,
+        7
+      ],
+      "before": 0.82837,
+      "decorOnly": 0.82837,
+      "activated": 0.00431,
+      "totalChange": -0.82406
+    },
+    {
+      "key": "camp-mage",
+      "cell": [
+        12,
+        7
+      ],
+      "before": 0.49644,
+      "decorOnly": 0.49644,
+      "activated": 0.0,
+      "totalChange": -0.49644
+    },
+    {
+      "key": "east-patrol",
+      "cell": [
+        16,
+        8
+      ],
+      "before": 0.0,
+      "decorOnly": 0.0,
+      "activated": 0.0,
+      "totalChange": 0.0
+    },
+    {
+      "key": "campaign-torren",
+      "cell": [
+        3,
+        9
+      ],
+      "before": 0.32527,
+      "decorOnly": 0.32499,
+      "activated": 0.32499,
+      "totalChange": -0.00028
+    },
+    {
+      "key": "campaign-mirelle",
+      "cell": [
+        4,
+        9
+      ],
+      "before": 0.4712,
+      "decorOnly": 0.33553,
+      "activated": 0.33553,
+      "totalChange": -0.13567
+    },
+    {
+      "key": "scout-3",
+      "cell": [
+        5,
+        9
+      ],
+      "before": 0.19549,
+      "decorOnly": 0.18206,
+      "activated": 0.18206,
+      "totalChange": -0.01343
+    },
+    {
+      "key": "scout-reserve",
+      "cell": [
+        2,
+        10
+      ],
+      "before": 0.93568,
+      "decorOnly": 0.27256,
+      "activated": 0.27256,
+      "totalChange": -0.66312
+    },
+    {
+      "key": "campaign-laiya",
+      "cell": [
+        3,
+        10
+      ],
+      "before": 0.32103,
+      "decorOnly": 0.15196,
+      "activated": 0.15196,
+      "totalChange": -0.16907
+    },
+    {
+      "key": "campaign-elin",
+      "cell": [
+        4,
+        10
+      ],
+      "before": 0.19133,
+      "decorOnly": 0.18837,
+      "activated": 0.18837,
+      "totalChange": -0.00296
+    },
+    {
+      "key": "south-patrol",
+      "cell": [
+        14,
+        10
+      ],
+      "before": 0.85956,
+      "decorOnly": 0.85956,
+      "activated": 0.85956,
+      "totalChange": 0.0
+    },
+    {
+      "key": "scout-2",
+      "cell": [
+        3,
+        11
+      ],
+      "before": 0.22948,
+      "decorOnly": 0.20767,
+      "activated": 0.20767,
+      "totalChange": -0.02181
+    },
+    {
+      "key": "scout-cleric",
+      "cell": [
+        4,
+        11
+      ],
+      "before": 0.72389,
+      "decorOnly": 0.15553,
+      "activated": 0.15553,
+      "totalChange": -0.56836
+    },
+    {
+      "key": "scout-1",
+      "cell": [
+        5,
+        11
+      ],
+      "before": 0.81248,
+      "decorOnly": 0.64291,
+      "activated": 0.64291,
+      "totalChange": -0.16957
+    },
+    {
+      "key": "gate-reserve",
+      "cell": [
+        18,
+        12
+      ],
+      "before": 0.00108,
+      "decorOnly": 0.00108,
+      "activated": 0.00108,
+      "totalChange": 0.0
+    },
+    {
+      "key": "scout-4",
+      "cell": [
+        1,
+        13
+      ],
+      "before": 0.04739,
+      "decorOnly": 0.04739,
+      "activated": 0.04739,
+      "totalChange": 0.0
+    }
+  ],
+  "sourceReports": [
+    "/workspace/shared/empire-fieldpost-variant/native-before/c01-04/actor-occlusion.json",
+    "/workspace/shared/empire-fieldpost-variant/native-after/c01-04/actor-occlusion.json",
+    "/workspace/shared/empire-fieldpost-variant/activated/c01-04/actor-occlusion.json"
+  ]
+}
