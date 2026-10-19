@@ -1431,11 +1431,14 @@
     },
     {
       "topicId": "C01-BPROP-EVIDENCE-1",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-evidence-1/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+        "exportCheck": "passed",
+        "exportTests": 13,
+        "evidence": "docs/art-rebuild-20261019/batch-008-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceSha256": "8e902e7caa7a8e1743f9d2e4c994596829ddd903eadde3202c4f17117dd75319"
@@ -1504,11 +1507,14 @@
     },
     {
       "topicId": "C01-BPROP-FACTION-4",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-faction-4/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+        "exportCheck": "passed",
+        "exportTests": 13,
+        "evidence": "docs/art-rebuild-20261019/batch-008-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceSha256": "02eb4c5cc8c1855ac6b5967f54104af77bcfd62b89481b0e9f8169d7e29dcf63"
