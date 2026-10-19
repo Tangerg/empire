@@ -1,0 +1,954 @@
+[
+  {
+    "atlasId": "forest-temperate",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate.png",
+    "baseline": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/forest-temperate.png",
+      "sha256": "115d248676602627991f8bf24599f4203e1308232bbba523b3b7ab17faef4407"
+    },
+    "sources": {
+      "oak-ancient": {
+        "sourceSha256": "ea0407864f18b8fbfd0f838ced7898683bc0e76b8a7c36a2365e5378303cb962",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 30,
+          "coreBoundingBox": [
+            56,
+            72,
+            1226,
+            1196
+          ]
+        },
+        "offsetY2x": 8
+      },
+      "mixed-forest-dense": {
+        "sourceSha256": "402a7621fda7789174fd405c97a24e0651121f2efcd156d07f195b9e0d85af2f",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 137,
+          "coreBoundingBox": [
+            150,
+            62,
+            1142,
+            1177
+          ]
+        },
+        "offsetY2x": 10
+      },
+      "mixed-forest-edge": {
+        "sourceSha256": "ca9263a00a20d1b5747b1f549584a619289ec533dfbe090c7a09c5e2e350a68c",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 18,
+          "coreBoundingBox": [
+            55,
+            106,
+            1233,
+            1212
+          ]
+        },
+        "offsetY2x": 6
+      },
+      "fern-bed": {
+        "sourceSha256": "50a5ea42b085ff5b1b26dc56d8e1b21bb232a1ffe0bdd15a46ac1da38133f766",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 19,
+          "coreBoundingBox": [
+            48,
+            483,
+            1227,
+            1248
+          ]
+        },
+        "offsetY2x": 0
+      },
+      "oak-grove-dense": {
+        "sourceSha256": "9a6c21e053118d5a3e2fab0f4ac60dbfa6cfd218ccd00397ddc4ccb90b5fcc36",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 19,
+          "coreBoundingBox": [
+            36,
+            59,
+            1234,
+            1223
+          ]
+        },
+        "offsetY2x": 4
+      },
+      "sapling-rock-cluster": {
+        "sourceSha256": "5ccbd8df32c7d77e96724d96dca67f13d5186374c67bc95c8d85eb67a464d3f8",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            181,
+            170,
+            1095,
+            1210
+          ]
+        },
+        "offsetY2x": 6
+      },
+      "bramble-dark": {
+        "sourceSha256": "983679fed24377e505d5b52549a8b9580323fa01d9c0b8efaa9c2ffffb412380",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 12,
+          "coreBoundingBox": [
+            34,
+            402,
+            1226,
+            1231
+          ]
+        },
+        "offsetY2x": 3
+      },
+      "mixed-forest-autumn": {
+        "sourceSha256": "94ff581f0413764278694e0e9b59d2948ab7f0cb387f45d68e4371fd9066fa93",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            207,
+            142,
+            1114,
+            1183
+          ]
+        },
+        "offsetY2x": 9
+      },
+      "bramble-berries": {
+        "sourceSha256": "7bff74b8e1097a708f4ac5ebc4a574749ceb7b9ddf6111c796fbd2cb7afccf37",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 34,
+          "coreBoundingBox": [
+            130,
+            448,
+            1139,
+            1202
+          ]
+        },
+        "offsetY2x": 7
+      },
+      "stump-low": {
+        "sourceSha256": "e479117bc6092125e908156198d0d47bb1eba7029d0487af418e2a4c1f746f87",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 12,
+          "coreBoundingBox": [
+            93,
+            540,
+            1179,
+            1226
+          ]
+        },
+        "offsetY2x": 3
+      },
+      "stump-hollow": {
+        "sourceSha256": "c8bed8cba184429ec62a2c2efbd4c826dc40e6531ef942a976fcd508b559bbf8",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            79,
+            322,
+            1185,
+            1230
+          ]
+        },
+        "offsetY2x": 3
+      },
+      "fallen-hollow-log": {
+        "sourceSha256": "1a87d8292e468accb4c69c09d609993e5e2314e0b2a777fc1a641a13e7ca8aac",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            56,
+            492,
+            1204,
+            1228
+          ]
+        },
+        "offsetY2x": 3
+      },
+      "leaf-pile": {
+        "sourceSha256": "d56a362a91e2a235993720bd2147baa3e2edac4fdcbfe15e1de0d68009d7bcce",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            101,
+            390,
+            1315,
+            1086
+          ]
+        },
+        "offsetY2x": 6
+      },
+      "boulder-ferns": {
+        "sourceSha256": "ce0a6087d70042afe262f82717b8bc50622c8f1824b1883608da55dce8395ef2",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 134,
+          "coreBoundingBox": [
+            48,
+            85,
+            1394,
+            1044
+          ]
+        },
+        "offsetY2x": 7
+      }
+    },
+    "pixelSha256": "212ce5632bebdd5b81d5a8c3c14cd0f3772e9dbf17f8dcaef63a21a99bb4c454",
+    "cells": [
+      {
+        "id": "oak-ancient",
+        "index": 0,
+        "overridden": true,
+        "baselinePixelSha256": "1f2273c42798828df49c7771c32a36381154408133992de438276375a01d78ea",
+        "outputPixelSha256": "e7cab2e18754b9b3bc1da5fbf66d2ae40f5a50c02c663be73148c371b1a17519"
+      },
+      {
+        "id": "mixed-forest-autumn",
+        "index": 1,
+        "overridden": true,
+        "baselinePixelSha256": "c69683286de79ff9599c81618707e691ff4c936a9fe29cb3a0732dbf3f886111",
+        "outputPixelSha256": "ce5871e2a8fddd3bd0067235594de0e3d96066080d04ac5fbd540d3a5a2e806a"
+      },
+      {
+        "id": "mixed-forest-dense",
+        "index": 2,
+        "overridden": true,
+        "baselinePixelSha256": "32ea11601533f0284dc9afd27438882511238ddcd12c5590d54ea430d184eb76",
+        "outputPixelSha256": "78157fd2fb5322448e67884b1e78f2c06e7623f241b092c31d2469a3db7f0766"
+      },
+      {
+        "id": "oak-grove-dense",
+        "index": 3,
+        "overridden": true,
+        "baselinePixelSha256": "919f9dc303f82dc4cbb46b8ccf7b2e8dae02f2b2f11c45ac2d4c1c335988c5d4",
+        "outputPixelSha256": "0267c317faf42623024aa870fb61a679768b5a7709842b19347ff2b4b966f0e4"
+      },
+      {
+        "id": "mixed-forest-edge",
+        "index": 4,
+        "overridden": true,
+        "baselinePixelSha256": "8369d514a9c44bb2815ced9eaa4ba27a163bd3f11b89fc03b16f9f40450a715d",
+        "outputPixelSha256": "d8db37377619ad351b778bbd2b6e5f8413877ea210303fce176dc44ea018d462"
+      },
+      {
+        "id": "sapling-rock-cluster",
+        "index": 5,
+        "overridden": true,
+        "baselinePixelSha256": "fddd93627cb5ce09a39962563e1507a8c5ee65c1126f9cdb5465cf122ad62229",
+        "outputPixelSha256": "24419e67a1d0407697d1bcbc11e80c6dcc2bb416f3ac8b1833ec7bfc3a24c083"
+      },
+      {
+        "id": "bramble-dark",
+        "index": 6,
+        "overridden": true,
+        "baselinePixelSha256": "4b65b7ea25dacf9420cdb6e03228cc4384569fb5bc3d3fa6b170810a790acdd1",
+        "outputPixelSha256": "1f3602869136d8456e6ef6b7ee15379b5dd79990ac66c7d9d84593289286f9d2"
+      },
+      {
+        "id": "fern-bed",
+        "index": 7,
+        "overridden": true,
+        "baselinePixelSha256": "f1bb901ad7ba7d0d201afe07f43ab89cb5b6f5985d06fb321bb04c9e3317b094",
+        "outputPixelSha256": "829c740c114c51ce571e9067ddad5a5cee2fb54037afb4cab61fcbd4e24a8bf1"
+      },
+      {
+        "id": "bramble-berries",
+        "index": 8,
+        "overridden": true,
+        "baselinePixelSha256": "c24d67c17788f4700ae3415dbdb37e5d2a7d6b20363c997da6b31c70b8202804",
+        "outputPixelSha256": "96b40838187f826e25a7ae2ac3fc1f59c13050da028b1504e2f83189e69ebc9a"
+      },
+      {
+        "id": "stump-low",
+        "index": 9,
+        "overridden": true,
+        "baselinePixelSha256": "7ff0b66b8a9bf91e517f962f320a47e7afa78189f60897518c9f548f452bc7d2",
+        "outputPixelSha256": "3ad2628c62dbe54bfcb51e87198e8026f28c796aa4b9cc7c07379abb678f24b6"
+      },
+      {
+        "id": "stump-hollow",
+        "index": 10,
+        "overridden": true,
+        "baselinePixelSha256": "1a117c276f9fa8d05ad3fc5c1c2f667a0e4b9dc2dbfdc366f222acc765b25f9a",
+        "outputPixelSha256": "c7f0a33fa2d4d66a6efe947946f443a1b737041b9f46bc8216a20761e70985a3"
+      },
+      {
+        "id": "fallen-hollow-log",
+        "index": 11,
+        "overridden": true,
+        "baselinePixelSha256": "0f21e1bf3fe94ead7cd0491f6eec566f3a3236f0b6b00a7b31316206dcd24f3f",
+        "outputPixelSha256": "a017b502fb98c6eda35b7bd3fe7a57b98604b853d6e7e711b951fad37dbb7dd6"
+      },
+      {
+        "id": "leaf-pile",
+        "index": 12,
+        "overridden": true,
+        "baselinePixelSha256": "fc7afc4ffed2e26bf84851bffad0bd17b1300f0ef5ad46e030f6b21bd66b0c73",
+        "outputPixelSha256": "bbef6270a7209b9c4e82ddbf4d96b2bb258cf6e8881df6706e6c008c4648cf09"
+      },
+      {
+        "id": "boulder-large",
+        "index": 13,
+        "overridden": false,
+        "baselinePixelSha256": "8b273cec8855081bf9d75625668698177d72ea7ad9959dc69bfd2f1571e3b7ee",
+        "outputPixelSha256": "8b273cec8855081bf9d75625668698177d72ea7ad9959dc69bfd2f1571e3b7ee"
+      },
+      {
+        "id": "boulder-ferns",
+        "index": 14,
+        "overridden": true,
+        "baselinePixelSha256": "7cc2e6157b14f35947c99b5fe6bf1291c20b6e71a2709c559c4e3463c365be44",
+        "outputPixelSha256": "d6b79b982a99e6de31b65f88ad94a5c0da4c7c640808c8654cc16f5c63b5daf6"
+      },
+      {
+        "id": "forest-floor-cluster",
+        "index": 15,
+        "overridden": false,
+        "baselinePixelSha256": "155db094e6a89feb28a71c14315763f8d635a37e5ab8e43d79f6e3b625444c7e",
+        "outputPixelSha256": "155db094e6a89feb28a71c14315763f8d635a37e5ab8e43d79f6e3b625444c7e"
+      }
+    ]
+  },
+  {
+    "atlasId": "forest-temperate",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png",
+    "baseline": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/forest-temperate@2x.png",
+      "sha256": "795814149c5f5e07608633912167b8140e7cd648aac016d17a47c6563e162894"
+    },
+    "sources": {
+      "oak-ancient": {
+        "sourceSha256": "ea0407864f18b8fbfd0f838ced7898683bc0e76b8a7c36a2365e5378303cb962",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 30,
+          "coreBoundingBox": [
+            56,
+            72,
+            1226,
+            1196
+          ]
+        },
+        "offsetY2x": 8
+      },
+      "mixed-forest-dense": {
+        "sourceSha256": "402a7621fda7789174fd405c97a24e0651121f2efcd156d07f195b9e0d85af2f",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 137,
+          "coreBoundingBox": [
+            150,
+            62,
+            1142,
+            1177
+          ]
+        },
+        "offsetY2x": 10
+      },
+      "mixed-forest-edge": {
+        "sourceSha256": "ca9263a00a20d1b5747b1f549584a619289ec533dfbe090c7a09c5e2e350a68c",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 18,
+          "coreBoundingBox": [
+            55,
+            106,
+            1233,
+            1212
+          ]
+        },
+        "offsetY2x": 6
+      },
+      "fern-bed": {
+        "sourceSha256": "50a5ea42b085ff5b1b26dc56d8e1b21bb232a1ffe0bdd15a46ac1da38133f766",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 19,
+          "coreBoundingBox": [
+            48,
+            483,
+            1227,
+            1248
+          ]
+        },
+        "offsetY2x": 0
+      },
+      "oak-grove-dense": {
+        "sourceSha256": "9a6c21e053118d5a3e2fab0f4ac60dbfa6cfd218ccd00397ddc4ccb90b5fcc36",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 19,
+          "coreBoundingBox": [
+            36,
+            59,
+            1234,
+            1223
+          ]
+        },
+        "offsetY2x": 4
+      },
+      "sapling-rock-cluster": {
+        "sourceSha256": "5ccbd8df32c7d77e96724d96dca67f13d5186374c67bc95c8d85eb67a464d3f8",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            181,
+            170,
+            1095,
+            1210
+          ]
+        },
+        "offsetY2x": 6
+      },
+      "bramble-dark": {
+        "sourceSha256": "983679fed24377e505d5b52549a8b9580323fa01d9c0b8efaa9c2ffffb412380",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 12,
+          "coreBoundingBox": [
+            34,
+            402,
+            1226,
+            1231
+          ]
+        },
+        "offsetY2x": 3
+      },
+      "mixed-forest-autumn": {
+        "sourceSha256": "94ff581f0413764278694e0e9b59d2948ab7f0cb387f45d68e4371fd9066fa93",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            207,
+            142,
+            1114,
+            1183
+          ]
+        },
+        "offsetY2x": 9
+      },
+      "bramble-berries": {
+        "sourceSha256": "7bff74b8e1097a708f4ac5ebc4a574749ceb7b9ddf6111c796fbd2cb7afccf37",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 34,
+          "coreBoundingBox": [
+            130,
+            448,
+            1139,
+            1202
+          ]
+        },
+        "offsetY2x": 7
+      },
+      "stump-low": {
+        "sourceSha256": "e479117bc6092125e908156198d0d47bb1eba7029d0487af418e2a4c1f746f87",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 12,
+          "coreBoundingBox": [
+            93,
+            540,
+            1179,
+            1226
+          ]
+        },
+        "offsetY2x": 3
+      },
+      "stump-hollow": {
+        "sourceSha256": "c8bed8cba184429ec62a2c2efbd4c826dc40e6531ef942a976fcd508b559bbf8",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            79,
+            322,
+            1185,
+            1230
+          ]
+        },
+        "offsetY2x": 3
+      },
+      "fallen-hollow-log": {
+        "sourceSha256": "1a87d8292e468accb4c69c09d609993e5e2314e0b2a777fc1a641a13e7ca8aac",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            56,
+            492,
+            1204,
+            1228
+          ]
+        },
+        "offsetY2x": 3
+      },
+      "leaf-pile": {
+        "sourceSha256": "d56a362a91e2a235993720bd2147baa3e2edac4fdcbfe15e1de0d68009d7bcce",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            101,
+            390,
+            1315,
+            1086
+          ]
+        },
+        "offsetY2x": 6
+      },
+      "boulder-ferns": {
+        "sourceSha256": "ce0a6087d70042afe262f82717b8bc50622c8f1824b1883608da55dce8395ef2",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 134,
+          "coreBoundingBox": [
+            48,
+            85,
+            1394,
+            1044
+          ]
+        },
+        "offsetY2x": 7
+      }
+    },
+    "pixelSha256": "79aded288a410d559b1fc63789074660bf726bd0bb8c1de8b0ac3d3864a56310",
+    "cells": [
+      {
+        "id": "oak-ancient",
+        "index": 0,
+        "overridden": true,
+        "baselinePixelSha256": "fd7086ae3aff0f2d47020a66bebf7dcb28afb7f1fcec3df8e137db18dc3826d9",
+        "outputPixelSha256": "7840f717a28d489929aef5ee81cfab7a3817d80d9e10e9122b0ad9b26c17f528"
+      },
+      {
+        "id": "mixed-forest-autumn",
+        "index": 1,
+        "overridden": true,
+        "baselinePixelSha256": "0ce2d44f48eb41854862dc8e44ea6d5973225b90659d430dbc4f460ad713d7ae",
+        "outputPixelSha256": "05d65eb5a6d304d4fa6ae645bf3aec12a39fc10f6e903dd6c1fa0c166c8a386f"
+      },
+      {
+        "id": "mixed-forest-dense",
+        "index": 2,
+        "overridden": true,
+        "baselinePixelSha256": "8a0ec190e56198f409a413879637b2ab2d3b5d14f04940859aa42f5b338c8cbb",
+        "outputPixelSha256": "c8a80daede0c17f11ad0732ca1115ee0d8448891e7124edabc8fcfdbec908d21"
+      },
+      {
+        "id": "oak-grove-dense",
+        "index": 3,
+        "overridden": true,
+        "baselinePixelSha256": "91cfaa8a359d968c97d200e840dd242577811a8237a58ff4adb2e1caadf3af54",
+        "outputPixelSha256": "3fb2f639e46d6dbd676d4aa34deb50432f1d3044ce0fa197374bd61f452ed0c0"
+      },
+      {
+        "id": "mixed-forest-edge",
+        "index": 4,
+        "overridden": true,
+        "baselinePixelSha256": "23db7c01481c280369977d5482241e3bdbaeba143dc2728e20b9f3d14fd1f026",
+        "outputPixelSha256": "423f8be115c6fd50c505927ef5ffebb05e46951d34be6cbc4330c321bfc36458"
+      },
+      {
+        "id": "sapling-rock-cluster",
+        "index": 5,
+        "overridden": true,
+        "baselinePixelSha256": "f9ddb7cbd17303d7c6515e8318be2e60fac24477cd69e265064b5743eceb3f80",
+        "outputPixelSha256": "2dc85ce9d7b83e53aa975df4a6b3a0ab36fd9f63007161f3006140eb0324188a"
+      },
+      {
+        "id": "bramble-dark",
+        "index": 6,
+        "overridden": true,
+        "baselinePixelSha256": "4222c33582980fce594666e9322c1dff959d134520d78f580020afd21a567e81",
+        "outputPixelSha256": "18eec48db4faa1d9a3a8c35b71e870933e32228ca1d7e2288dafe9b6442058d8"
+      },
+      {
+        "id": "fern-bed",
+        "index": 7,
+        "overridden": true,
+        "baselinePixelSha256": "4ed6621f2cba86cfb772fed0841504757854d89992936f94fbb190064279c67d",
+        "outputPixelSha256": "4b2a5b928f6a94370c7f43e202551348967a950f1662549c91243c3dbad4e1af"
+      },
+      {
+        "id": "bramble-berries",
+        "index": 8,
+        "overridden": true,
+        "baselinePixelSha256": "15c3ca938ec5b23c5b2308de017481a0cc1bab0264df7bb1e4a2d1f127b315c6",
+        "outputPixelSha256": "1526a452895734cdac2b1d6e55112ccd7fd3bbf1bfd64f852432d49fd3e412bc"
+      },
+      {
+        "id": "stump-low",
+        "index": 9,
+        "overridden": true,
+        "baselinePixelSha256": "074f4bc5e6747f3eb5003a651e4438096dc519f2e8167a20ecd5012fc6e073fb",
+        "outputPixelSha256": "48f19b2df7ed755c6ad3de179af393f3b5c1d08b92bcdf7b66b5b35a34524377"
+      },
+      {
+        "id": "stump-hollow",
+        "index": 10,
+        "overridden": true,
+        "baselinePixelSha256": "9b70e554a7d7f15bbf60e5b8fe73ffe2dd73f7c0c4a2eca45e5a74c691a20927",
+        "outputPixelSha256": "66cb18e9bf2029a8ec64c1165feee7f0e3a46a8df8861d7b557fb40bb9aeba05"
+      },
+      {
+        "id": "fallen-hollow-log",
+        "index": 11,
+        "overridden": true,
+        "baselinePixelSha256": "e2565851bdc436a5e0e2da4a652fc3f60adb0a71123dc41475ff583bd5ca2a3b",
+        "outputPixelSha256": "2b88e97a815c6a925ecbd15dfdaa23a5efb8c1a1bee72252b8b94eb7eeef71ae"
+      },
+      {
+        "id": "leaf-pile",
+        "index": 12,
+        "overridden": true,
+        "baselinePixelSha256": "4f9f0362f844e19b3c179f5216b146270be55dd97c8b15227fe58316a1c2a04e",
+        "outputPixelSha256": "f39aa6c9007b692dc17647b5e02b4c276b7ff7ccd55516bad8fea1a99cacbb29"
+      },
+      {
+        "id": "boulder-large",
+        "index": 13,
+        "overridden": false,
+        "baselinePixelSha256": "79596f4dbbffbe362a65ae014476ab5b2a06103c1fcfb39fcac57b39c8319568",
+        "outputPixelSha256": "79596f4dbbffbe362a65ae014476ab5b2a06103c1fcfb39fcac57b39c8319568"
+      },
+      {
+        "id": "boulder-ferns",
+        "index": 14,
+        "overridden": true,
+        "baselinePixelSha256": "43737c93b24a110744e5b993fb7f4812a61a005088b272a21f10c7a30758b645",
+        "outputPixelSha256": "cac31ee1dead9948f5d4fd1fc8fd2778ed89624eaa3505a1e4dae984348039b4"
+      },
+      {
+        "id": "forest-floor-cluster",
+        "index": 15,
+        "overridden": false,
+        "baselinePixelSha256": "aa20d58d93534b091612555b9aa24de68bdb3012c3f5e736b07379b4373e7d59",
+        "outputPixelSha256": "aa20d58d93534b091612555b9aa24de68bdb3012c3f5e736b07379b4373e7d59"
+      }
+    ]
+  },
+  {
+    "atlasId": "forest-existing",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing.png",
+    "baseline": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/forest-existing.png",
+      "sha256": "830f302ca75048881d251e691eea88fde1cc107e4971024ce23bf8e92e7be7c6"
+    },
+    "sources": {
+      "pine-mature-a": {
+        "sourceSha256": "8c118e7f1003c3c416c761e2b954469bb4aa189fc58be33247f5234bdf2bb4bc",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 60,
+          "coreBoundingBox": [
+            229,
+            37,
+            1050,
+            1218
+          ]
+        },
+        "offsetY2x": 5
+      },
+      "pine-mature-b": {
+        "sourceSha256": "a79459d1ebc98c80b21dd731c4f051586870fdfe69dc2be37c4658ea0ec8a55f",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 8,
+          "coreBoundingBox": [
+            244,
+            95,
+            1010,
+            1167
+          ]
+        },
+        "offsetY2x": 10
+      }
+    },
+    "pixelSha256": "2e4b29a559af05783065636b6168ae5011cf8968f1576cf7fb339d72c3d78af1",
+    "cells": [
+      {
+        "id": "pine-tall",
+        "index": 0,
+        "overridden": false,
+        "baselinePixelSha256": "3f67cb57224fce6481392a1128d52fe85e0c84b03cc77e764dcea8b706735095",
+        "outputPixelSha256": "3f67cb57224fce6481392a1128d52fe85e0c84b03cc77e764dcea8b706735095"
+      },
+      {
+        "id": "pine-pair",
+        "index": 1,
+        "overridden": false,
+        "baselinePixelSha256": "a0e2a2643ebfa3d8dce54388015a11314c9577043220426f2486ef8dbce26b8b",
+        "outputPixelSha256": "a0e2a2643ebfa3d8dce54388015a11314c9577043220426f2486ef8dbce26b8b"
+      },
+      {
+        "id": "pine-cluster",
+        "index": 2,
+        "overridden": false,
+        "baselinePixelSha256": "fe29f6834103c2c600a8c4cf9271547d8a0c4122b0f12e5919847ec8048e7755",
+        "outputPixelSha256": "fe29f6834103c2c600a8c4cf9271547d8a0c4122b0f12e5919847ec8048e7755"
+      },
+      {
+        "id": "pine-sapling",
+        "index": 3,
+        "overridden": false,
+        "baselinePixelSha256": "73ee38cc53c2283661a81de38222568f08da6962c8cbde5883e7e890d391565e",
+        "outputPixelSha256": "73ee38cc53c2283661a81de38222568f08da6962c8cbde5883e7e890d391565e"
+      },
+      {
+        "id": "pine-underbrush-a",
+        "index": 4,
+        "overridden": false,
+        "baselinePixelSha256": "c3fb54a29316f54f99836fc72ee85c686394b1b947a73d2a3b0f8d4e5bd1da9e",
+        "outputPixelSha256": "c3fb54a29316f54f99836fc72ee85c686394b1b947a73d2a3b0f8d4e5bd1da9e"
+      },
+      {
+        "id": "pine-underbrush-b",
+        "index": 5,
+        "overridden": false,
+        "baselinePixelSha256": "909b699b4b353b9f5fcb396a517bbd37910bcf32ea0a04f485493abd07dd9532",
+        "outputPixelSha256": "909b699b4b353b9f5fcb396a517bbd37910bcf32ea0a04f485493abd07dd9532"
+      },
+      {
+        "id": "pine-underbrush-c",
+        "index": 6,
+        "overridden": false,
+        "baselinePixelSha256": "1bb3c07b4982225175bc89cfe064d49ed75416f7d4a71c8af6f466b087183575",
+        "outputPixelSha256": "1bb3c07b4982225175bc89cfe064d49ed75416f7d4a71c8af6f466b087183575"
+      },
+      {
+        "id": "pine-underbrush-d",
+        "index": 7,
+        "overridden": false,
+        "baselinePixelSha256": "3e259c5da6b726d3ec01b7eda43ad8fcab48b6a29df094f92545bb4d1bde77e3",
+        "outputPixelSha256": "3e259c5da6b726d3ec01b7eda43ad8fcab48b6a29df094f92545bb4d1bde77e3"
+      },
+      {
+        "id": "pine-dead",
+        "index": 8,
+        "overridden": false,
+        "baselinePixelSha256": "d5e0c7bce020a17cc7cfde8e38819b5c91333752003690badb58bc5764e4ff86",
+        "outputPixelSha256": "d5e0c7bce020a17cc7cfde8e38819b5c91333752003690badb58bc5764e4ff86"
+      },
+      {
+        "id": "pine-mature-a",
+        "index": 9,
+        "overridden": true,
+        "baselinePixelSha256": "1602e42836759c5cb803021261ac217fa1c2e7e5a3ccac548a27bf35066098fa",
+        "outputPixelSha256": "909067d326dc06caaed5a80bdb21e3a2d3ecb87fb9f50472d0454b5257d535b0"
+      },
+      {
+        "id": "pine-mature-b",
+        "index": 10,
+        "overridden": true,
+        "baselinePixelSha256": "68596cc06fc20ac1bcbfb18c84c0d1bbd40f39ad02d49a420022f53f3eee0006",
+        "outputPixelSha256": "97944008edd35ce6c68fd9eddd7ae62d6b888ba449cf44d286ff693e76810e21"
+      },
+      {
+        "id": "pine-mature-c",
+        "index": 11,
+        "overridden": false,
+        "baselinePixelSha256": "ca5c4014f79bd93deb0b2b101c3c1ab2bd0f94230ac99b165bddaa9b8b301a0e",
+        "outputPixelSha256": "ca5c4014f79bd93deb0b2b101c3c1ab2bd0f94230ac99b165bddaa9b8b301a0e"
+      },
+      {
+        "id": "pine-low-shrub",
+        "index": 12,
+        "overridden": false,
+        "baselinePixelSha256": "bc323cd7ae5c07e0e6386576901c4bc629c8c795d2aee9dfb540e1e93208e30f",
+        "outputPixelSha256": "bc323cd7ae5c07e0e6386576901c4bc629c8c795d2aee9dfb540e1e93208e30f"
+      },
+      {
+        "id": "pine-fallen-log",
+        "index": 13,
+        "overridden": false,
+        "baselinePixelSha256": "147e7d1cc7fa6082202a6f9c3b93fefe010440a535f4652113501e7021ecd33b",
+        "outputPixelSha256": "147e7d1cc7fa6082202a6f9c3b93fefe010440a535f4652113501e7021ecd33b"
+      },
+      {
+        "id": "pine-stump",
+        "index": 14,
+        "overridden": false,
+        "baselinePixelSha256": "6f49008669dba6613cf7db787e2a7adf2c781ff39a7c06d27ebcb98039d225c3",
+        "outputPixelSha256": "6f49008669dba6613cf7db787e2a7adf2c781ff39a7c06d27ebcb98039d225c3"
+      },
+      {
+        "id": "pine-mossy-rock",
+        "index": 15,
+        "overridden": false,
+        "baselinePixelSha256": "25123067b273e8c1e3ef53a1616ef6419e12b4d94311fb8bee2b4c3a08a641d9",
+        "outputPixelSha256": "25123067b273e8c1e3ef53a1616ef6419e12b4d94311fb8bee2b4c3a08a641d9"
+      }
+    ]
+  },
+  {
+    "atlasId": "forest-existing",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png",
+    "baseline": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/forest-existing@2x.png",
+      "sha256": "bd7b48efffde1b774c17c62d2684fdc54d808ea841d50a5b7050d5fc73fcb8ae"
+    },
+    "sources": {
+      "pine-mature-a": {
+        "sourceSha256": "8c118e7f1003c3c416c761e2b954469bb4aa189fc58be33247f5234bdf2bb4bc",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 60,
+          "coreBoundingBox": [
+            229,
+            37,
+            1050,
+            1218
+          ]
+        },
+        "offsetY2x": 5
+      },
+      "pine-mature-b": {
+        "sourceSha256": "a79459d1ebc98c80b21dd731c4f051586870fdfe69dc2be37c4658ea0ec8a55f",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 8,
+          "coreBoundingBox": [
+            244,
+            95,
+            1010,
+            1167
+          ]
+        },
+        "offsetY2x": 10
+      }
+    },
+    "pixelSha256": "54c38e7e97ead9f669acb9b19112c603db898e66d0128581f68a0fbdaeab148c",
+    "cells": [
+      {
+        "id": "pine-tall",
+        "index": 0,
+        "overridden": false,
+        "baselinePixelSha256": "679b3ed9613bbff050d17ce0d91491900bd1949cda71e3f3f1ffb6ec09fac293",
+        "outputPixelSha256": "679b3ed9613bbff050d17ce0d91491900bd1949cda71e3f3f1ffb6ec09fac293"
+      },
+      {
+        "id": "pine-pair",
+        "index": 1,
+        "overridden": false,
+        "baselinePixelSha256": "43324571981638ed4b5142e196e3e1ecdf976195c67e776e28b0f03a4008e40d",
+        "outputPixelSha256": "43324571981638ed4b5142e196e3e1ecdf976195c67e776e28b0f03a4008e40d"
+      },
+      {
+        "id": "pine-cluster",
+        "index": 2,
+        "overridden": false,
+        "baselinePixelSha256": "e079e5b8189db1e0f8c58b7d0611d7bbb642ba35a1f1a7bebce800580acb197c",
+        "outputPixelSha256": "e079e5b8189db1e0f8c58b7d0611d7bbb642ba35a1f1a7bebce800580acb197c"
+      },
+      {
+        "id": "pine-sapling",
+        "index": 3,
+        "overridden": false,
+        "baselinePixelSha256": "cc4beca5736d4a5eda95bf57a12169dcd6dc62278768d27b5b47623bae5caeb6",
+        "outputPixelSha256": "cc4beca5736d4a5eda95bf57a12169dcd6dc62278768d27b5b47623bae5caeb6"
+      },
+      {
+        "id": "pine-underbrush-a",
+        "index": 4,
+        "overridden": false,
+        "baselinePixelSha256": "8cb2deacbb9151184c7cd7b7b64d05299e14cace04224f67bc95c321870f18a5",
+        "outputPixelSha256": "8cb2deacbb9151184c7cd7b7b64d05299e14cace04224f67bc95c321870f18a5"
+      },
+      {
+        "id": "pine-underbrush-b",
+        "index": 5,
+        "overridden": false,
+        "baselinePixelSha256": "227ec7c2c21787c1599c1dbd6e7f247f1fb8207810c87f680ac3e8350ecad8cc",
+        "outputPixelSha256": "227ec7c2c21787c1599c1dbd6e7f247f1fb8207810c87f680ac3e8350ecad8cc"
+      },
+      {
+        "id": "pine-underbrush-c",
+        "index": 6,
+        "overridden": false,
+        "baselinePixelSha256": "b92ed3e0c033ad7574e7dd9c1cf586c42d8b34aa28fd1093564eceeb4644b20b",
+        "outputPixelSha256": "b92ed3e0c033ad7574e7dd9c1cf586c42d8b34aa28fd1093564eceeb4644b20b"
+      },
+      {
+        "id": "pine-underbrush-d",
+        "index": 7,
+        "overridden": false,
+        "baselinePixelSha256": "2bd2d3cb0f7dd4a85b6975366d7a657331a7752655cdde5a1f99d86123407452",
+        "outputPixelSha256": "2bd2d3cb0f7dd4a85b6975366d7a657331a7752655cdde5a1f99d86123407452"
+      },
+      {
+        "id": "pine-dead",
+        "index": 8,
+        "overridden": false,
+        "baselinePixelSha256": "a22300dc61a28a00ad83d4e9187aeb22f6cd7a3e0c8a31a1379c3ccd55ab93bb",
+        "outputPixelSha256": "a22300dc61a28a00ad83d4e9187aeb22f6cd7a3e0c8a31a1379c3ccd55ab93bb"
+      },
+      {
+        "id": "pine-mature-a",
+        "index": 9,
+        "overridden": true,
+        "baselinePixelSha256": "7211bcde9c848d02f88dff7e3ebbe173b54a0fe9b83571c6a02d8f99879b70f0",
+        "outputPixelSha256": "dc73e256d3185628aa753d43fb19d68a0e87bc7a9db29ee770f28a5307bcb6d1"
+      },
+      {
+        "id": "pine-mature-b",
+        "index": 10,
+        "overridden": true,
+        "baselinePixelSha256": "f180112413fdde9b196b751f8acb39de8d486582fa4d9c7ab53952b7cf301006",
+        "outputPixelSha256": "90a9def7677f30bd8349ee5ec646410b26522366f27dfbee952fc1c2b90e75ef"
+      },
+      {
+        "id": "pine-mature-c",
+        "index": 11,
+        "overridden": false,
+        "baselinePixelSha256": "ad23a7ac857cb0ac33909bf86f057907c8f05ab443d8c64b97c5e964f16a5788",
+        "outputPixelSha256": "ad23a7ac857cb0ac33909bf86f057907c8f05ab443d8c64b97c5e964f16a5788"
+      },
+      {
+        "id": "pine-low-shrub",
+        "index": 12,
+        "overridden": false,
+        "baselinePixelSha256": "b87856306639ad36e467938c3a21fdc81a44b569928463a4a97512fd23cb2032",
+        "outputPixelSha256": "b87856306639ad36e467938c3a21fdc81a44b569928463a4a97512fd23cb2032"
+      },
+      {
+        "id": "pine-fallen-log",
+        "index": 13,
+        "overridden": false,
+        "baselinePixelSha256": "e36c267bdee5f151bb4d246ca1aac9772fd630c3f27ad30e721acb31061ccd23",
+        "outputPixelSha256": "e36c267bdee5f151bb4d246ca1aac9772fd630c3f27ad30e721acb31061ccd23"
+      },
+      {
+        "id": "pine-stump",
+        "index": 14,
+        "overridden": false,
+        "baselinePixelSha256": "79fe1c4930d9f3f1d814429476d918486fc13e00a136a0e5c670a041858a72d0",
+        "outputPixelSha256": "79fe1c4930d9f3f1d814429476d918486fc13e00a136a0e5c670a041858a72d0"
+      },
+      {
+        "id": "pine-mossy-rock",
+        "index": 15,
+        "overridden": false,
+        "baselinePixelSha256": "e67b7420f3e9f217cdad805f5a8383c10003cda7bdaa89e8abd6532f6a9eb705",
+        "outputPixelSha256": "e67b7420f3e9f217cdad805f5a8383c10003cda7bdaa89e8abd6532f6a9eb705"
+      }
+    ]
+  }
+]

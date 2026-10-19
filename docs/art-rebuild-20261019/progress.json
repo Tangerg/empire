@@ -4294,11 +4294,17 @@
     },
     {
       "topicId": "c02-battle-prop-fuel-oxygen-tanks",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-fuel-oxygen-tanks/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; runtime visual acceptance pending",
+        "semanticReview": "passed original board arrangement review",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-035-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "2c73cacf4a7650d5e70bcc6c810c6bbc8f4a52034a549e2a8948690f112f61e4"
@@ -8720,7 +8726,7 @@
       "atlasId": "forest-temperate",
       "cellId": "boulder-ferns",
       "index": 14,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/boulder-ferns/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceIntegrity": {
@@ -8729,8 +8735,11 @@
       },
       "sourceSha256": "ce0a6087d70042afe262f82717b8bc50622c8f1824b1883608da55dce8395ef2",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-012-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
