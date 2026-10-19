@@ -499,7 +499,14 @@
       "topicId": "C01-UNIT-ARCHER",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props",
+      "plannedFrames": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ]
     },
     {
       "topicId": "C01-UNIT-ASSASSIN",
@@ -8261,13 +8268,16 @@
       "atlasId": "forest-temperate",
       "cellId": "mixed-forest-autumn",
       "index": 1,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/mixed-forest-autumn/revision-2/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "94ff581f0413764278694e0e9b59d2948ab7f0cb387f45d68e4371fd9066fa93",
       "verification": {
-        "state": "reviewed-source",
-        "note": "revision2 passes alpha0 perimeter and intactframing; offset9 reviewed"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-008-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
