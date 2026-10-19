@@ -1,0 +1,36 @@
+{
+  "status": "idle only; awaiting coordinator review; no further poses started",
+  "currentCandidate": "/workspace/shared/empire-art-rebuild/approved-v5/animation/banner-guard/idle/master.png",
+  "selectedAttempt": "attempt-02",
+  "rejectedAttempt": "attempt-01: undersized narrow body and finial touching top edge",
+  "mainHelmetTopSourceY": 164,
+  "footSupport": [
+    762.58,
+    981.0
+  ],
+  "bodyHeightSourcePixels": 817.0,
+  "bodyTargetHeightLogicalPixels": 44,
+  "suggestedBodyScale": 0.05385556915544676,
+  "equipmentExcludedFromBodyReference": [
+    "pole",
+    "flag",
+    "back shield",
+    "sheathed hip sword"
+  ],
+  "nativeSize": [
+    1586,
+    992
+  ],
+  "nativeSha256": "1307b932b2269d934b02e185dd9e61da04bc596b4deb23e50132d579e5e80205",
+  "visualBoundsAlphaGreaterThan127": [
+    392,
+    9,
+    1386,
+    982
+  ],
+  "caveat": "Pole finial9px from top and boots10px from bottom; complete shapes but margins less than requested40px. Transparent output padding can retain complete native canvas, never silhouette-fit or shrink the body.",
+  "identity": "Gray-mustached veteran, ridge kettle helmet, teal/mail tunic, brown giant gloves and boots, rectangular wood back shield, sheathed sword at hip, gray forked pennant with correct one pale bar/3ticks.",
+  "rawPreserved": true,
+  "exactPromptsPreserved": true,
+  "noRepositoryEdits": true
+}

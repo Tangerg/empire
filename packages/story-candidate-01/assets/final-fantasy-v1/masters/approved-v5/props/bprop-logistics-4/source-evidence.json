@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-BPROP-LOGISTICS-4",
+  "assetId": "C01-FFV1-BPROP-LOGISTICS-4",
+  "label": "\u6218\u5730\u836f\u7bb1",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-07768439-07f9-421c-a7ab-9300dd85d76b.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/props/identity-inspection/original-bprop-logistics-4-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/props/props-atlas-02.png, top row column 4",
+    "inspectionCropCoordinates": [
+      1332,
+      0,
+      1774,
+      442
+    ],
+    "inspectionCropTreatment": "Unscaled source-cell crop only; no pixel cleanup or alpha conversion",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/props/props-atlas-02.png",
+    "atlasSha256": "fc3b6930c71ae6d159ea48eced353a3cc5d3a05d1df5d385f14f1cb1ab76a4a7",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/identity-inspection/original-bprop-logistics-4-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "postprocessing": "None. Byte-exact native PNG copy. No output pixel cleanup, resizing, alpha editing or Git writes.",
+  "runtimeReady": false,
+  "initialGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7b14e4b2-d7b1-4c82-b1d4-b90d36f7af0e.png",
+  "refinement": {
+    "reason": "Restore three separate bandage rolls shown in original source",
+    "input": "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-logistics-4/candidate-v1.png",
+    "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-logistics-4/refinement-prompt.txt",
+    "toolInputReferencePaths": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-logistics-4/candidate-v1.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/props/identity-inspection/original-bprop-logistics-4-cell.png"
+    ],
+    "method": "built-in image_gen, no output pixel postprocessing"
+  },
+  "identityClarification": "Original source contains three bandage rolls, two corked medicine bottles and wooden splints. Initial prose overcounted the bottle caps; exact prompts are retained unchanged for provenance. The selected final output keeps the correct two bottles and restores three separate rolls.",
+  "promptFiles": [
+    "prompt.txt",
+    "refinement-prompt.txt"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "asset": "forest-floor-cluster",
+  "visual_inspection": "native output inspected directly",
+  "subject_semantics": "pass for documented reconstruction concept",
+  "style_coherence": "pass; broad chunky matte cel planes and strong dark contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    628,
+    750
+  ],
+  "source_foot_estimate_normalized": [
+    0.500797,
+    0.598086
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strong_alpha_margins_LTRB": [
+    66,
+    311,
+    85,
+    332
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/leaf-pile/leaf-pile-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-ferns/boulder-ferns-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/forest-floor-cluster/prompt.txt",
+  "provenance": "Documented concept reconstruction because original legacy slot 15 was blank/unrecoverable; not exact legacy recovery. Intended obstruction 0 and footprint 1x1.",
+  "production_status": "not integrated",
+  "legacy_slot": 15,
+  "reconstruction": true,
+  "exact_legacy_recovery": false,
+  "intended_footprint": [
+    1,
+    1
+  ],
+  "intended_obstruction": 0,
+  "inspected_unrecoverable_reference": "/workspace/shared/empire-art-rebuild/references/environment/forest-temperate/forest-floor-cluster.png"
+}

@@ -1,0 +1,43 @@
+{
+  "topicId": "C01-BPROP-FACTION-1",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6044612582638269,
+  "nearOpaqueFractionAlphaGE250": 0.3639002719209216,
+  "nonzeroAlphaBBox": [
+    0,
+    28,
+    1253,
+    1238
+  ],
+  "visibleAlphaBBoxGE8": [
+    82,
+    175,
+    1196,
+    1153
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    82,
+    175,
+    58,
+    101
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 22,
+  "sha256": "214cbf7016b3b328364e9d510e2dcf052463a77d2bd5ce481feec05ebb566292",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "identityQA": "Three gray pennants, original cross-like white faction sigils, center V notch, two braced posts retained."
+}

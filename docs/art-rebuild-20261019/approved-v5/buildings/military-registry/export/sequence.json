@@ -1,0 +1,235 @@
+{
+  "config": {
+    "frames": {
+      "normal": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/military-registry/normal/master.png",
+      "damaged": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/military-registry/damaged/master.png",
+      "captured": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/military-registry/captured/master.png"
+    },
+    "scale": 0.11930405965202982,
+    "origin": [
+      4,
+      4
+    ],
+    "frameSize": [
+      160,
+      160
+    ],
+    "sourceFoot": [
+      640,
+      1100
+    ],
+    "registrationBasis": "One shared intact foundation pivot and authored canvas. Damage rubble and collapsed roof do not redefine scale or contact; no per-state fit."
+  },
+  "authoredCanvas": [
+    1254,
+    1254
+  ],
+  "logicalPivot": [
+    80.35459817729908,
+    135.23446561723281
+  ],
+  "frames": [
+    {
+      "frame": "normal",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/military-registry/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f979cbe56fd6134d7e3fcb7f182847069335263aabee222e9aaf4e6809489c9a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 13424,
+        "nearOpaquePixels": 11477,
+        "edgeMax": 0,
+        "visibleBounds": [
+          7,
+          20,
+          151,
+          139
+        ]
+      }
+    },
+    {
+      "frame": "normal",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/military-registry/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f979cbe56fd6134d7e3fcb7f182847069335263aabee222e9aaf4e6809489c9a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 54082,
+        "nearOpaquePixels": 46390,
+        "edgeMax": 0,
+        "visibleBounds": [
+          14,
+          39,
+          302,
+          279
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/military-registry/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "32c344b3b9863f8256f99ddd7b12601796d4da4db9a0d580f06c39d7c544fa12",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 13604,
+        "nearOpaquePixels": 11083,
+        "edgeMax": 0,
+        "visibleBounds": [
+          9,
+          34,
+          152,
+          140
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/military-registry/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "32c344b3b9863f8256f99ddd7b12601796d4da4db9a0d580f06c39d7c544fa12",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 54986,
+        "nearOpaquePixels": 45005,
+        "edgeMax": 0,
+        "visibleBounds": [
+          17,
+          68,
+          305,
+          280
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/military-registry/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "993c65b715e25c4e8fe43bc36c4c716dd53f2918b846b8a7dea794976fa614b0",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 13430,
+        "nearOpaquePixels": 11526,
+        "edgeMax": 0,
+        "visibleBounds": [
+          7,
+          19,
+          151,
+          139
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/military-registry/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "993c65b715e25c4e8fe43bc36c4c716dd53f2918b846b8a7dea794976fa614b0",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 54152,
+        "nearOpaquePixels": 46591,
+        "edgeMax": 0,
+        "visibleBounds": [
+          14,
+          39,
+          302,
+          279
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

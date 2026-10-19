@@ -1,0 +1,43 @@
+{
+  "topicId": "C01-BPROP-LOGISTICS-4",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5099026019449087,
+  "nearOpaqueFractionAlphaGE250": 0.48056172401425484,
+  "nonzeroAlphaBBox": [
+    57,
+    0,
+    1236,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    117,
+    101,
+    1152,
+    1202
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    117,
+    101,
+    102,
+    52
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 24,
+  "sha256": "a3ce33863c4102b67fedcce20a00789b7625df40fea5d47492e39313aea64fac",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "identityQA": "Three separate rolled bandages, two corked medicine bottles and wooden splints match original atlas; open pale chest retained, no invented medical cross or text."
+}

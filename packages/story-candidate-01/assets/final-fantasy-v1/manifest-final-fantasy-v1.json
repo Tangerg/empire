@@ -3965,13 +3965,13 @@
       "topicId": "C01-STRUCT-MILITARY-REGISTRY",
       "label": "军籍登记点",
       "category": "interactive-structure",
-      "png": "runtime/interactive-structure/struct-military-registry.png",
-      "width": 192,
-      "height": 64,
+      "png": "runtime-approved-v5/structure/struct-military-registry.png",
+      "width": 480,
+      "height": 160,
       "runtimeReady": true,
       "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "frameWidth": 160,
+      "frameHeight": 160,
       "frames": 3,
       "stateOrder": [
         "normal",
@@ -3979,8 +3979,8 @@
         "captured"
       ],
       "anchor": [
-        32,
-        63
+        80.35459817729908,
+        135.23446561723281
       ],
       "footprint": [
         2,

@@ -1,0 +1,97 @@
+{
+  "status": "Idle candidate native review complete; awaiting coordinator acceptance before other poses",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "fullyTransparentPixels": 1013049,
+  "nearOpaquePixels": 535206,
+  "fullyOpaquePixels": 1978,
+  "partialAlphaPixels": 558285,
+  "visibleBounds": [
+    59,
+    6,
+    1546,
+    992
+  ],
+  "visibleBoundsAlphaGreaterThan127": [
+    392,
+    9,
+    1386,
+    982
+  ],
+  "edgeMax": 1,
+  "sha256": "1307b932b2269d934b02e185dd9e61da04bc596b4deb23e50132d579e5e80205",
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-9c1a2459-2be2-4870-a640-f57788e40082.png",
+  "generationTool": "built-in image_gen",
+  "transparent_background": true,
+  "masterTransform": "none; native output copied byte-for-byte",
+  "exactPromptFile": "/workspace/shared/empire-art-rebuild/approved-v5/animation/banner-guard/idle/attempt-02/prompt.txt",
+  "exactToolCallPromptVerified": true,
+  "referenceInputs": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/banner-guard/idle/attempt-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/idle/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "helmetTopSourceY": 164,
+  "helmetTopMeasurementROI": [
+    500,
+    90,
+    1030,
+    450
+  ],
+  "lowestBootContourSourceY": 981,
+  "approxBodyHeightSourcePixels": 817.0,
+  "sourceFootAnchorSuggested": [
+    763,
+    981
+  ],
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, boot-only manually isolated ROIs, lowest3rows sole contour mass centers. No pixel modification.",
+    "boots": [
+      {
+        "side": "screen-left",
+        "inspectionROI": [
+          400,
+          830,
+          730,
+          992
+        ],
+        "soleLowestContourY": 981,
+        "lowestThreeRowsXSpan": [
+          489,
+          601
+        ],
+        "soleBandCenterX": 545.0,
+        "contactInterpretation": "broad flat planted sole"
+      },
+      {
+        "side": "screen-right",
+        "inspectionROI": [
+          785,
+          830,
+          1120,
+          992
+        ],
+        "soleLowestContourY": 981,
+        "lowestThreeRowsXSpan": [
+          927,
+          1034
+        ],
+        "soleBandCenterX": 980.16,
+        "contactInterpretation": "broad flat planted sole"
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      762.58,
+      981.0
+    ]
+  },
+  "bodyBoundsInterpretation": "Main helmet top to planted-sole midpoint excludes tall pole/flag from body-scale reference. Shield and sword remain complete but are equipment, not body-height measurement.",
+  "visualReview": "Broad compact veteran body, huge head/gloves/boots, gray mustache, steel ridge kettle helmet, muted teal tunic over large stylized silver mail forms. Rectangular wooden back shield and sheathed hip sword preserved. Exactly one pale horizontal stroke crossed by3short vertical ticks on gray forked banner. Pole finial and both flag tails complete. Whole visible silhouette has top9px/bottom10px margin; closer than requested40px but no visible clipping. No ground, shadow, opaque background or halo. Native alpha=1 edge specks retained."
+}

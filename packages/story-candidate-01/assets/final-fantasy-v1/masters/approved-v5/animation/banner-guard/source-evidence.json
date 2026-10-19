@@ -1,0 +1,27 @@
+{
+  "topicId": "C01-UNIT-BANNER-GUARD",
+  "uses": [
+    "actual protagonist c01.laiya",
+    "common banner guard"
+  ],
+  "nativeMasterBoard": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-units/gray-banner-guard-source.png",
+  "nativeMasterDimensions": [
+    1672,
+    941
+  ],
+  "sourceSha256": "7df952c185deeaff176155dad26b38ad0553a78af0b771dc3a5ea5308d5b2716",
+  "originalHDFrames": "/workspace/shared/empire-art-rebuild/references/unit-banner-guard/{idle,walk-a,attack,walk-b}.png",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "sourceIdentity": "Right-facing three-quarter veteran with gray mustache, steel ridge kettle helmet with broad brim and cheek protection; desaturated teal sleeveless tunic over steel chainmail at collar, arms and hem; brown gloves, belt and boots; rectangular wooden back shield with dark metal border, worn behind screen-left shoulder; sheathed short sword angled down at screen-left hip; one wooden banner pole with steel spear finial and gray forked pennant on a short top crossbar. Pale emblem is one horizontal stroke crossed by exactly three short upright ticks.",
+  "styleAuthority": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/idle/master.png"
+  ],
+  "scalePolicy": "Do not shrink the person to fit the banner. Same giant head, compact torso, short legs and oversized gloves/boots as approved units. Main body about805 source px on1586x992 native canvas; eventual body target44logical px. Reposition the complete pole and flag into side space.",
+  "sourcePoseLimitation": "Original idle and attack are near-identical; later attack needs clearly differentiated action after idle acceptance. This task begins idle only."
+}

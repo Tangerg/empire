@@ -1,0 +1,51 @@
+{
+  "asset": "forest-floor-cluster",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-7c4ef84c-8559-49a1-b20a-fcc0738fe9fd.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 1180436,
+  "opaque_pixels": 1088,
+  "partial_alpha_pixels": 390992,
+  "near_opaque_alpha_250_255_pixels": 371402,
+  "nonzero_alpha_bbox": [
+    49,
+    81,
+    1217,
+    1230
+  ],
+  "strong_alpha_bbox": [
+    66,
+    311,
+    1169,
+    922
+  ],
+  "margin_pixels_LTRB": [
+    49,
+    81,
+    37,
+    24
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    66,
+    311,
+    85,
+    332
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "sha256": "35839570830b4197b2565604601caa0691b9fbbc23376a1dbf4389f6f8e5127b",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration"
+}

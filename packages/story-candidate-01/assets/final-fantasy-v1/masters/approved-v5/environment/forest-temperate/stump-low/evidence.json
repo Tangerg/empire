@@ -1,0 +1,35 @@
+{
+  "asset": "stump-low",
+  "visual_inspection": "native output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; broad chunky matte cel planes and strong dark contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    880
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.701754
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strong_alpha_margins_LTRB": [
+    104,
+    331,
+    104,
+    239
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/forest-temperate/stump-low.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/stump-hollow/stump-hollow-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/stump-low/prompt.txt",
+  "provenance": "Remake based on exact original stump-low subject crop and approved stump-hollow style reference.",
+  "production_status": "not integrated"
+}

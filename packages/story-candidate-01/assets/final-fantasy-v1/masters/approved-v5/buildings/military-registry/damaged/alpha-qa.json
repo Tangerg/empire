@@ -1,7 +1,7 @@
 {
   "file": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/military-registry/damaged/master.png",
   "rawIsMaster": true,
-  "sha256": "1bd37831df4ff41c37abae510e4f0eb538820b8ea1f486ef679298251f0e4dbd",
+  "sha256": "32c344b3b9863f8256f99ddd7b12601796d4da4db9a0d580f06c39d7c544fa12",
   "size": [
     1254,
     1254
@@ -11,15 +11,17 @@
     0,
     255
   ],
-  "transparentPixels": 737864,
-  "alphaAtLeast250Pixels": 795190,
+  "transparentPixels": 749465,
+  "alphaAtLeast250Pixels": 794615,
   "alphaAbove32Bounds": [
-    4,
+    39,
     251,
-    1252,
-    1143
+    1244,
+    1142
   ],
-  "visibleAlphaAbove32BorderPixels": 0,
+  "perimeterAlphaMax": 0,
+  "perimeterAlphaAbove1Pixels": 0,
+  "perimeterGatePass": true,
   "nativeCanvasPreserved": true,
   "postGenerationTransform": "none"
 }

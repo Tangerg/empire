@@ -1,0 +1,51 @@
+{
+  "asset": "stump-low",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-f52e5ac2-5f60-400d-91c7-fba1fe50d500.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 1219256,
+  "opaque_pixels": 969,
+  "partial_alpha_pixels": 352291,
+  "near_opaque_alpha_250_255_pixels": 338880,
+  "nonzero_alpha_bbox": [
+    99,
+    53,
+    1214,
+    1220
+  ],
+  "strong_alpha_bbox": [
+    104,
+    331,
+    1150,
+    1015
+  ],
+  "margin_pixels_LTRB": [
+    99,
+    53,
+    40,
+    34
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    104,
+    331,
+    104,
+    239
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "sha256": "67396950ec0cd05dde9e4960839bf749d61fb1f88a524d0efe61c65886c09213",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration"
+}

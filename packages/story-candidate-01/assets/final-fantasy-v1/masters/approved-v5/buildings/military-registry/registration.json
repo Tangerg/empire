@@ -20,14 +20,21 @@
       "prompt": "normal/prompt.txt"
     },
     "damaged": {
-      "rawSource": "exec-e1332475-4510-43cd-b2f6-9fb2b444f49e.png",
-      "prompt": "damaged/prompt-correction.txt",
+      "rawSource": "exec-709437d8-7326-4548-be2f-40b2d653a65b.png",
+      "prompt": "damaged/prompt-transparent-margin-v3.txt",
       "inputs": [
-        "damaged/raw-attempt-1.png",
-        "normal/master.png"
+        "damaged/rejected-perimeter-v1/master.png"
       ],
       "recoveredPriorRaw": "exec-fae9aa48-6de8-411d-966a-a7cf761a4af9.png",
-      "priorPrompt": "damaged/prompt-attempt-1.txt"
+      "priorPrompt": "damaged/prompt-attempt-1.txt",
+      "priorRaw": "exec-e1332475-4510-43cd-b2f6-9fb2b444f49e.png",
+      "priorCorrectionPrompt": "damaged/prompt-correction.txt",
+      "rejectedCandidates": [
+        "damaged/rejected-perimeter-v1/",
+        "damaged/rejected-perimeter-v2/"
+      ],
+      "perimeterAlphaMax": 0,
+      "perimeterAlphaAbove1Pixels": 0
     },
     "captured": {
       "rawSource": "exec-d7704bb9-bf96-4fee-ab06-a88f16dfea38.png",

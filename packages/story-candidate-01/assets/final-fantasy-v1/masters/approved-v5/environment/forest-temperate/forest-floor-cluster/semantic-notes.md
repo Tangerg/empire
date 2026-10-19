@@ -1,0 +1,5 @@
+Intentional reconstruction of the documented low moss/leaf-litter/small-fern/pebbles concept. Broad flattened dark-olive moss cushions, oversized copper/ochre leaves, two small gray pebbles and one short three-frond fern form a shallow loose organic cluster. Coarse matte cel planes and heavy dark contours match the approved family. No soil slab, terrain block, vertical soil walls, grass carpet, tall tree, large boulder or cast shadow. All component tips visible. The concept is a nonblocking decorative 1x1 footprint, obstruction 0. Source-foot estimate (628,750) lies near the middle of the low footprint, not the fern tip or lowest loose leaf.
+
+PROVENANCE LIMIT: legacy slot 15 has no recoverable complete subject, only unrelated clipped fragments. This asset must be described as a reconstruction, never exact recovery of the original. The empty/clipped legacy crop was inspected but was not used as a generation subject.
+
+Native RGBA output and alpha preserved byte-for-byte. Exact prompt saved in prompt.txt. Source foot is a visual estimate, not alpha bottom. Runtime padding, scale, anchoring and gameplay-size assessment remain for parent integration.
