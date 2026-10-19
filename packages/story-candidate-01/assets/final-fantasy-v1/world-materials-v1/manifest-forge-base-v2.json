@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 2,
+  "id": "forge-base",
+  "replaces": {
+    "atlas": "surface-forge-stone",
+    "tone": 0
+  },
+  "source": "masters/approved-v5/environment/surface-forge-stone/forge-stone-1/master.png",
+  "sourceSha256": "025bfaa1c9e17b7ea83f44851dad28bf791b0ed273d78f12864d7538b3294f9d",
+  "logicalSize": [
+    256,
+    256
+  ],
+  "rasterSize": [
+    512,
+    512
+  ],
+  "worldOrigin": [
+    0,
+    0
+  ],
+  "fit": {
+    "inset": 0,
+    "bleed": 0
+  },
+  "png": "runtime/forge-base.png",
+  "png2x": "runtime/forge-base@2x.png"
+}

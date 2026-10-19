@@ -28,6 +28,7 @@ import { CANDIDATE_01_BOARD_STYLE } from './candidate-01-board-style';
 import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from './candidate-01-field-material';
 import { CANDIDATE_01_STONE_BASE, candidate01StoneConnectorMarkup } from './candidate-01-stone-material';
 import { candidateWorldMaterialTileMarkup } from './candidate-01-world-material';
+import { CANDIDATE_01_FORGE_BASE } from './candidate-01-forge-material';
 import { CANDIDATE_01_GRAVEYARD_BASE } from './candidate-01-graveyard-material';
 import {
   CANDIDATE_FOREST_FLOOR,
@@ -50,7 +51,7 @@ import type {
   SceneViewportProfile,
 } from '@empire/game-ui';
 
-const WORLD_SURFACES = [CANDIDATE_01_STONE_BASE, CANDIDATE_01_GRAVEYARD_BASE];
+const WORLD_SURFACES = [CANDIDATE_01_STONE_BASE, CANDIDATE_01_GRAVEYARD_BASE, CANDIDATE_01_FORGE_BASE];
 
 /** The four cells a connection mask counts, in the order the kit numbers them. */
 const ORTHOGONAL = [[0, -1], [1, 0], [0, 1], [-1, 0]] as const;

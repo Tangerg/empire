@@ -124,14 +124,20 @@ class SurfaceTests(unittest.TestCase):
             export(self.root, self.catalog)
 
     def test_graveyard_four_slots_preserve_unregistered_surface_and_source_bytes(self):
+        self.verify_four_slot_surface('surface-graveyard', 'graveyard')
+
+    def test_forge_four_slots_preserve_unregistered_surface_and_source_bytes(self):
+        self.verify_four_slot_surface('surface-forge-stone', 'forge-stone')
+
+    def verify_four_slot_surface(self, atlas_id, prefix):
         manifest = json.loads(self.manifest.read_text())
-        record = {**manifest['atlases'][0], 'id': 'surface-graveyard',
-                  'cellOrder': [f'graveyard-{i}' for i in range(1, 5)],
-                  'png': 'runtime/atlas/surface-graveyard.png', 'png2x': 'runtime/atlas/surface-graveyard@2x.png'}
+        record = {**manifest['atlases'][0], 'id': atlas_id,
+                  'cellOrder': [f'{prefix}-{i}' for i in range(1, 5)],
+                  'png': f'runtime/atlas/{atlas_id}.png', 'png2x': f'runtime/atlas/{atlas_id}@2x.png'}
         manifest['atlases'].append(record)
         self.manifest.write_text(json.dumps(manifest))
         old = self.data['atlases'].pop('surface-meadow')['cells']
-        self.data['atlases']['surface-graveyard'] = {'cells': {name: old[ORDER[i]] for i, name in enumerate(record['cellOrder'])}}
+        self.data['atlases'][atlas_id] = {'cells': {name: old[ORDER[i]] for i, name in enumerate(record['cellOrder'])}}
         self.write()
         untouched = self.env / 'runtime/atlas/surface-meadow.png'
         untouched.parent.mkdir(parents=True)
@@ -148,7 +154,7 @@ class SurfaceTests(unittest.TestCase):
             self.assertEqual((self.root / source).read_bytes(), raw)
         for report, size in zip(reports, (32, 64)):
             with Image.open(self.root / report['output']) as sheet:
-                for index, entry in enumerate(self.data['atlases']['surface-graveyard']['cells'].values()):
+                for index, entry in enumerate(self.data['atlases'][atlas_id]['cells'].values()):
                     with Image.open(self.root / entry['source']) as source:
                         expected = source.convert('RGB').resize((size, size), Image.Resampling.LANCZOS)
                     cell = sheet.crop((index * size, 0, (index + 1) * size, size))

@@ -1,0 +1,72 @@
+{
+  "baseCommit": "f31930c050f5e632668c325d5604085f78dd9713",
+  "levelId": "c01-14",
+  "actorCount": 22,
+  "ruleBuildingDrawingCount": 8,
+  "viewport": [
+    0,
+    0,
+    852,
+    648
+  ],
+  "actorBindingsCellsStateStandingOrderIdentical": true,
+  "unchangedCommonPngSources": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-wasteland@2x.png": "3422fa8a2f2cf9294894f989ffc105cf55011e5eb73957c777d452126e6c6738",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/stone-base@2x.png": "d3e6b7868425e315f280e8198fe952e3e603af2dcea262e5509aed8637fd584e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png": "fd73ff01e210d74c8e7bd5740655896628c1783e42222ccd421b58f4603929cc",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-area@2x.png": "ba34100a163de3166eea5b9956765ce87ed9bf2ae8d8930716f4fb0be15603f7",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "986d0da8a5fffe61d34b7eca0a4cea7b3db3e0d3c0f136803e426d9cb13c2344",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "14965b98d009780ee104b29b34d4910ce5e0d221fc35ad06ec229ce725432b84",
+    "packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/scenery-regional@2x.png": "18cb520839b735498ee56c499dd1d32ea6ebcb73b084207354a9a27454c41c7a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-stone-golem.png": "149d3ebd17d822eacac7d9cf2745da5e42e4d09bb7ab106b2799ac063a8c0f0a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-rune-shield@2x.png": "7a2748d8cef0235137d4461171b281e205306e2c66adaef09f7ca05c2025b1ca",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png": "cc772464cc6d6e524978fa40ff58d11b10f572ccf1b18a2a5fb482b122364531",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-battle-mage@2x.png": "a0baa90bf2fba5804b282d8f7561f36ff9e99ea66cdbd87022e0837569aa6778",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-joint-granary@2x.png": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "b47e620fecd606de6ddbd524ab1b8a8e08970c3bbc74f9d3ad51ef34b0893a49",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-rune-artificer@2x.png": "ca96c7555ee47328d8d6199640fa2a4cec0767411578f79131ee76029dd0d36d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/laiya-stage01@2x.png": "e1e53f78fb7ccdb275add9322e9e7d23559af4538f0919904981999665805a57",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger@2x.png": "27d13b44ade8852fd8551953b6ec55066ec9eae0349f3dc00181388f4cac1145",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-templar@2x.png": "72fdc284c88bdd42e386ab70eb3dcdad1fa133564e56be858f70b6d0e82ed344",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ivra-growth@2x.png": "b11f59c346ff2888af9ac43766a8994ec1d83345c56856d266b04afcde6331ad",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-bridge-laborer.png": "5f8bf8edd4f6d5ea1973faabcc947750a2e69edd2ba04b9151d1ccf60c03a3e7",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992"
+  },
+  "beforeOnlyPngSources": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forge-stone@2x.png": "a8a1489dc8b30f558f81161757b0db386a4b68226a1f71328a924ecf56872374"
+  },
+  "afterOnlyPngSources": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/forge-base@2x.png": "44d7e00b8b6dd18ac664afae34b9b33dd7ddb9b113246d7fb25e5526cb197296"
+  },
+  "sceneContractCount": 16,
+  "sceneContractChanges": [
+    {
+      "level": "c01-14",
+      "fields": [
+        "groundSha256",
+        "editorGroundSha256"
+      ]
+    }
+  ],
+  "actualTone0CellCount": 252,
+  "catalogOnlyTones": [
+    1,
+    2,
+    3
+  ],
+  "liveGpu": false,
+  "completeStandingLayerSvgIdentical": true,
+  "standingLayerSvgSha256": "b166a71579b771ff9c2dccfc017aac0746930fcdb0497012514c3e2b230ac8cf"
+}

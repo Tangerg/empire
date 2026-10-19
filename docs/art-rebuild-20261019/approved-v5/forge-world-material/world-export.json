@@ -1,0 +1,102 @@
+[
+  {
+    "id": "forge-base",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forge-stone/forge-stone-1/master.png",
+    "sourceSha256": "025bfaa1c9e17b7ea83f44851dad28bf791b0ed273d78f12864d7538b3294f9d",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/forge-base.png",
+    "exportDensity": 1,
+    "size": [
+      512,
+      512
+    ],
+    "logicalSize": [
+      256,
+      256
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      2.0,
+      2.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-forge-stone",
+      "tone": 0
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "caadcfe1a33b4ddf0486c623ab3ce8bb86f885572d10956c7b298482c5a9484a",
+    "interiorPixelSha256": "6171d875584656db3ee7a8e115af6e7876970d7821e428a7c89dd9ff538d665d",
+    "edgeHashes": {
+      "top": "133ed26879a29895e1e94353f473ddcb0b9aec0f6813a8f3cfa1bad8e4732512",
+      "bottom": "133ed26879a29895e1e94353f473ddcb0b9aec0f6813a8f3cfa1bad8e4732512",
+      "left": "a77d3e82b2a69092311ca99498517af81f6797bf4a16f647ae8445e837d13169",
+      "right": "a77d3e82b2a69092311ca99498517af81f6797bf4a16f647ae8445e837d13169"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  },
+  {
+    "id": "forge-base",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forge-stone/forge-stone-1/master.png",
+    "sourceSha256": "025bfaa1c9e17b7ea83f44851dad28bf791b0ed273d78f12864d7538b3294f9d",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/forge-base@2x.png",
+    "exportDensity": 2,
+    "size": [
+      1024,
+      1024
+    ],
+    "logicalSize": [
+      256,
+      256
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      4.0,
+      4.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-forge-stone",
+      "tone": 0
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "2685b867b74740249aa55fc535abd56f947fcd162cbf2441210fd536a4cab8ff",
+    "interiorPixelSha256": "7929e4f36feaa66a9105778891e12ce1f54705afb8f83aa527ff67c537c7abb1",
+    "edgeHashes": {
+      "top": "ef06bf678e1f060a20306d3bb9bb72b3aa1e7c5fc22130e60d661632f62fea50",
+      "bottom": "ef06bf678e1f060a20306d3bb9bb72b3aa1e7c5fc22130e60d661632f62fea50",
+      "left": "8d492801d4babada5732a35a46f51f32970aa13a0f811b48e4ac933ed2c2e242",
+      "right": "8d492801d4babada5732a35a46f51f32970aa13a0f811b48e4ac933ed2c2e242"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  }
+]

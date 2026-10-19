@@ -1,0 +1,53 @@
+{
+  "sources": [
+    {
+      "cellId": "forge-stone-1",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forge-stone/forge-stone-1/master.png",
+      "sha256": "025bfaa1c9e17b7ea83f44851dad28bf791b0ed273d78f12864d7538b3294f9d",
+      "sourceBytesMatchBaseline": true,
+      "consumer": "world tone0 in c01-14"
+    },
+    {
+      "cellId": "forge-stone-2",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forge-stone/forge-stone-2/master.png",
+      "sha256": "dc58b2650678706a6b0b2c4241d27be92c37411f80fc323753c5ae5c94ec1260",
+      "sourceBytesMatchBaseline": true,
+      "consumer": "catalog-only"
+    },
+    {
+      "cellId": "forge-stone-3",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forge-stone/forge-stone-3/master.png",
+      "sha256": "1713dbd82a2b70678d74c03baec22a41e547a35b95d7596d8fc80c523f6c1011",
+      "sourceBytesMatchBaseline": true,
+      "consumer": "catalog-only"
+    },
+    {
+      "cellId": "forge-stone-4",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forge-stone/forge-stone-4/master.png",
+      "sha256": "20ddf43a02a70ddbf97207a1f98cd10f83be57d4c7e31030d7e1676e6b7ac3ed",
+      "sourceBytesMatchBaseline": true,
+      "consumer": "catalog-only"
+    }
+  ],
+  "worldInterior": [
+    {
+      "density": 1,
+      "size": [
+        512,
+        512
+      ],
+      "edgeBandPixels": 1,
+      "interiorExactLanczos": true
+    },
+    {
+      "density": 2,
+      "size": [
+        1024,
+        1024
+      ],
+      "edgeBandPixels": 1,
+      "interiorExactLanczos": true
+    }
+  ],
+  "oldCatalogFamiliesUnchanged": true
+}

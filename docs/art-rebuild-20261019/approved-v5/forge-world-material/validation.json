@@ -1,0 +1,49 @@
+{
+  "baseCommit": "f31930c050f5e632668c325d5604085f78dd9713",
+  "focusedTypescript": {
+    "passed": 21,
+    "files": 5
+  },
+  "pythonSurface": 9,
+  "pythonField": 8,
+  "typecheck": "passed",
+  "applicationBuilds": 4,
+  "sceneContracts": {
+    "count": 16,
+    "changed": [
+      {
+        "level": "c01-14",
+        "fields": [
+          "groundSha256",
+          "editorGroundSha256"
+        ]
+      }
+    ]
+  },
+  "replayRuns": 60,
+  "replayBytesIdentical": true,
+  "worldLogicalPeriod": [
+    256,
+    256
+  ],
+  "worldRasterSizes": [
+    [
+      512,
+      512
+    ],
+    [
+      1024,
+      1024
+    ]
+  ],
+  "actualTone0Cells": 252,
+  "catalogOnlyTones": [
+    1,
+    2,
+    3
+  ],
+  "helperUniqueness": "failed solely on unchanged baseline hash duplicate in review_candidate_scene_contract.ts/review_hero_appearance_contract.ts; parent owns fix",
+  "newHelperDuplicates": false,
+  "fullRepositorySuite": "not run in sparse worktree; integrated main validation separate",
+  "liveGpu": false
+}
