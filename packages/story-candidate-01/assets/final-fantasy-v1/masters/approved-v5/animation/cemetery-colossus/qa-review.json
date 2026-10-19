@@ -1,0 +1,73 @@
+{
+  "status": "Native quartet, alpha and shared-scale evidence complete; coordinator quartet and c01-11/c01-16 scene acceptance pending",
+  "topic": "C01-UNIT-CEMETERY-COLOSSUS",
+  "actualConsumers": [
+    "c01.cemetery-colossus"
+  ],
+  "actualLevels": [
+    "c01-11",
+    "c01-16"
+  ],
+  "bodyScale": "60/878",
+  "speciesScaleContract": "Accepted60logical crown-to-mean-sole height beside44logical humanoids. Idle tallest tablet y57 to mean foot sole y935 gives878nativepx. Scale60/878 shared unchanged by all4poses; no per-pose fit. Idle visible width63.827logical; source footprint[2,2] retained only as existing art metadata.",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1585,
+      992
+    ],
+    "attack": [
+      1586,
+      992
+    ],
+    "walk-b": [
+      1585,
+      992
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourcePaddingRequired": "Idle/attack native1586x992; walk-a/walk-b native1585x992. Export may pad exactly1transparent right column to common1586x992. Native masters/raw remain immutable and byte-identical to generated originals.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "Zero selected perimeter pixels alpha>1. Idle/walk-a max0; attack/walk-b max1 native low-alpha specks retained without cleanup.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPreserved": true,
+  "sixTabletsThreeLanternsTwoArmsTwoLegsChecked": true,
+  "walkContactsOppose": true,
+  "allNegativeSpaceProbesZeroAlpha": true,
+  "attackSemantics": "Braced outward forearm/fist sweep to right with counterbalancing left arm; no new weapon, face, rune or independent attack FX.",
+  "projectionVariationRequiresCoordinatorReview": "Projected widths idle63.827,walk-a75.171,attack93.690,walk-b67.244logical. Arms swing and attack extends one arm; central gate/crown physical scale remains visually consistent. Attack support midpoint moves82nativepx horizontally versus idle, requiring+5.603644647logical translation. Do not shrink attack to idle width. Actual c01-11/c01-16 whole-scene overlap review is still required before formal acceptance.",
+  "semanticContract": "Headless grave assemblage,6tablet forms,3lanterns and dominant arched iron gate. Two opposed lumbering walking contacts and meaningful braced forearm sweep. Existing colossus-sweep blunt ring1 action and C01-FX-08 remain unchanged. Art footprint[2,2] is not gameplay occupancy. c01-11 colossus and c01-16 unflagged share this exact unit topic.",
+  "symbolContract": "Preserve the original grave gate architecture and simplified tomb inscriptions, the few ring/circle gold inset details on arm bands, and three amber lanterns. No independent heraldic shield or readable new wording occurs in source. Do not add generic glowing golem chest emblem, skull face, Christian cross badge or new faction symbol. Gate spear points and original small tablet stroke shapes are architecture/source marks, not replacement heraldry.",
+  "independentFXBakedIntoCharacter": false,
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 6,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "gameplayMultiCellOccupancyClaimed": false,
+  "gameplayFixClaimed": false,
+  "requiredFurtherReview": [
+    "coordinator same-scale native quartet",
+    "actual full scene c01-11",
+    "actual full scene c01-16"
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "asset": "C01-UNIT-CEMETERY-COLOSSUS",
+  "actualConsumers": [
+    "c01.cemetery-colossus"
+  ],
+  "actualLevels": [
+    "c01-11",
+    "c01-16"
+  ],
+  "status": "Native quartet, alpha and shared-scale evidence complete; coordinator quartet and c01-11/c01-16 scene acceptance pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Built-in imagegen only. Preserve native generated raw/master byte-for-byte. Prompt/request hashes and reference hashes saved. Crops are source-reference inspection only. Black/white QA composites and scale inspection images are non-master evidence. No alpha cleanup, painting or recoloring by code.",
+  "sharedScale": 0.0683371298405467,
+  "bodyReferenceSourcePixels": 878,
+  "bodyTargetHeightLogicalPixels": 60,
+  "speciesScaleContract": "Accepted60logical crown-to-mean-sole height beside44logical humanoids. Idle tallest tablet y57 to mean foot sole y935 gives878nativepx. Scale60/878 shared unchanged by all4poses; no per-pose fit. Idle visible width63.827logical; source footprint[2,2] retained only as existing art metadata.",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/registration-evidence.json",
+  "identityContract": "Headless anthropomorphic graveyard assemblage: a broad warm brown soil mound body crowned by several gray rimmed tan gravestone tablets with spare vertical black inscription-like strokes and pointed dark iron fence finials. Dominant tall arched wrought-iron cemetery gate on front of torso, dark charcoal bars with muted brass horizontal braces and rivets. Broad gray slab-built shoulders, arms and massive stone fists, short two stone legs and three blocklike toes per foot. Ochre soil in large joints, sparse olive moss/grass at earth seams. Three distinct lit brass/bronze lanterns: one on screen-left low chest, two vertically staggered on screen-right shoulder/chest. Muted golden circular inset/band details on upper arms and wrists. No humanoid head, eyes, skull, banner, new rune or weapon.",
+  "symbolContract": "Preserve the original grave gate architecture and simplified tomb inscriptions, the few ring/circle gold inset details on arm bands, and three amber lanterns. No independent heraldic shield or readable new wording occurs in source. Do not add generic glowing golem chest emblem, skull face, Christian cross badge or new faction symbol. Gate spear points and original small tablet stroke shapes are architecture/source marks, not replacement heraldry.",
+  "semanticContract": "Headless grave assemblage,6tablet forms,3lanterns and dominant arched iron gate. Two opposed lumbering walking contacts and meaningful braced forearm sweep. Existing colossus-sweep blunt ring1 action and C01-FX-08 remain unchanged. Art footprint[2,2] is not gameplay occupancy. c01-11 colossus and c01-16 unflagged share this exact unit topic.",
+  "projectionVariation": "Projected widths idle63.827,walk-a75.171,attack93.690,walk-b67.244logical. Arms swing and attack extends one arm; central gate/crown physical scale remains visually consistent. Attack support midpoint moves82nativepx horizontally versus idle, requiring+5.603644647logical translation. Do not shrink attack to idle width. Actual c01-11/c01-16 whole-scene overlap review is still required before formal acceptance.",
+  "selectedAttempts": {
+    "idle": "first successful native output",
+    "walk-a": "first successful native output",
+    "attack": "first successful native output",
+    "walk-b": "first successful native output"
+  },
+  "idleApproval": "2026-10-19 21:59:30UTC: Viewed native2x and fullwhite. Accepted headless gate/tomb identity,60logical crown-to-sole,60/878 shared scale,128x80 fullcanvas contract. Proceed same-scale poses; final c01-11/16 scene overlap check mandatory before formal acceptance.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "6f4f0b0d6a6d457b03f662503f10068c6c8dcd54fbebcad7fd17caf36758695e",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        821,
+        946
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        338,
+        57,
+        1272,
+        947
+      ],
+      "sha256": "b7d00daa13b0a574601765bd3bf1aaaad90c356343afe6c9febd3e8708c35dc4",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a5a62e9b-01bf-45a7-897b-e8c8d71775b7.png",
+      "review": "All exact source identity features retained: headless burial mound, six gray-rim tan tablets, central arched iron gate, three amber lanterns, gray block limbs/fists/feet, muted brass circle arm insets and sparse olive moss. Broad matte cartoon planes and complete silhouette. Both feet planted, no humanoid head or generic chest rune, no baked FX.",
+      "negativeSpaceProbes": [
+        {
+          "name": "left-arm-gap",
+          "rectangle": [
+            548,
+            667,
+            555,
+            674
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "right-arm-gap",
+          "rectangle": [
+            1057,
+            647,
+            1064,
+            654
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "leg-gap",
+          "rectangle": [
+            814,
+            859,
+            821,
+            866
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        }
+      ]
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "e706cfb5795d5fa0d04a108d31202de21f723cb674877386976b1cb3c65e0119",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        847,
+        965
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        274,
+        59,
+        1374,
+        966
+      ],
+      "sha256": "e79df08e02d34e3dcfa79aa92bf440df0aa10ddd52464ae30850a5c7b4c01676",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-18980f23-94aa-4a30-b5b8-41029ce41336.png",
+      "review": "Heavy forward near-left planted stone foot and raised/rear far-right toe contact; far-right arm counter-swings forward while near-left arm swings back. Original headless mound, six tablets, three amber lamps and gate retain size and identity. No duplicated limbs or added effects.",
+      "negativeSpaceProbes": [
+        {
+          "name": "left-arm-gap",
+          "rectangle": [
+            537,
+            617,
+            544,
+            624
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "right-arm-gap",
+          "rectangle": [
+            1107,
+            717,
+            1114,
+            724
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "leg-gap",
+          "rectangle": [
+            857,
+            797,
+            864,
+            804
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        }
+      ]
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "60c1950494c493eb66e7252eb975b65f53809c32f213b0a020c1067fa6c42e29",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/attack/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        739,
+        945
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        157,
+        44,
+        1528,
+        946
+      ],
+      "sha256": "4d78b06548c2ca65fd4d17cbcf3fb9a2de02d66c534cc5740ffca8af6cbdf387",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-09dd7b8a-cbf4-4009-8599-45e777fde60d.png",
+      "review": "Clear braced broad-legged outward forearm/fist strike to screen-right, with counterbalancing left arm. Central gate, six tablets and all three amber lanterns stay legible; full right fist stays inside canvas. Attack projected width increases due to extension, not a new body scale. No detached weapon, generic rune, face or independent FX.",
+      "negativeSpaceProbes": [
+        {
+          "name": "left-arm-gap",
+          "rectangle": [
+            447,
+            612,
+            454,
+            619
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "below-sweeping-arm",
+          "rectangle": [
+            1197,
+            627,
+            1204,
+            634
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "leg-gap",
+          "rectangle": [
+            737,
+            837,
+            744,
+            844
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        }
+      ]
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "94daa53f4c0495913b38250560716949d399191b4148d0dc4717b6b2a72d8802",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        858,
+        949
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        350,
+        46,
+        1334,
+        950
+      ],
+      "sha256": "db61db98ff279c25cb21a17ee6a374a61fbcbd523cfed8715c1cc9a0080f46d8",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-83d3fb3b-4860-4cce-aa9e-719d0306d010.png",
+      "review": "Opposite contact to walk-a: far-right foot forward and planted, near-left foot back/toe contact. Near-left arm now counter-swings forward; far-right arm swings back. Exact asymmetrical tablet crown and three-lantern placement not mirrored. Broad native body/gate scale preserved.",
+      "negativeSpaceProbes": [
+        {
+          "name": "left-arm-gap",
+          "rectangle": [
+            605,
+            577,
+            612,
+            584
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "right-arm-gap",
+          "rectangle": [
+            1108,
+            677,
+            1115,
+            684
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "leg-gap",
+          "rectangle": [
+            815,
+            847,
+            822,
+            854
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        }
+      ]
+    }
+  }
+}

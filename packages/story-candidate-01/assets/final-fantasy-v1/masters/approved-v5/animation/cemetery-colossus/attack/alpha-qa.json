@@ -1,0 +1,101 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-09dd7b8a-cbf4-4009-8599-45e777fde60d.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "4d78b06548c2ca65fd4d17cbcf3fb9a2de02d66c534cc5740ffca8af6cbdf387",
+  "bboxAlphaNonzero": [
+    0,
+    19,
+    1536,
+    964
+  ],
+  "bboxAlphaGreaterThan127": [
+    157,
+    44,
+    1528,
+    946
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 965234,
+  "alphaOnePixels": 6314,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "foot": "left-braced",
+      "roi": [
+        290,
+        820,
+        570,
+        965
+      ],
+      "soleY": 945,
+      "bottomFourRowsMeanX": 426.28242074927954
+    },
+    {
+      "foot": "right-braced",
+      "roi": [
+        890,
+        810,
+        1200,
+        930
+      ],
+      "soleY": 910,
+      "bottomFourRowsMeanX": 1051.853448275862
+    }
+  ],
+  "sourceFootMidpoint": [
+    739.0679345125708,
+    927.5
+  ],
+  "suggestedSourceFoot": [
+    739,
+    945
+  ],
+  "sharedBodyScale": 0.0683371298405467,
+  "sharedScaleFraction": "60/878",
+  "bodyScaleDenominatorFromAcceptedIdle": 878,
+  "bodyScaleNumerator": 60,
+  "projectedWidthLogicalAtSharedScale": 93.69020501138952,
+  "negativeSpaceProbes": [
+    {
+      "name": "left-arm-gap",
+      "rectangle": [
+        447,
+        612,
+        454,
+        619
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "below-sweeping-arm",
+      "rectangle": [
+        1197,
+        627,
+        1204,
+        634
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        737,
+        837,
+        744,
+        844
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Clear braced broad-legged outward forearm/fist strike to screen-right, with counterbalancing left arm. Central gate, six tablets and all three amber lanterns stay legible; full right fist stays inside canvas. Attack projected width increases due to extension, not a new body scale. No detached weapon, generic rune, face or independent FX."
+}

@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-STATUS-17",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5225352238069437,
+  "nearOpaqueFractionAlphaGE250": 0.4603756019016659,
+  "nonzeroAlphaBBox": [
+    41,
+    52,
+    1222,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    76,
+    54,
+    1219,
+    1219
+  ],
+  "visibleAlphaBBoxGE128": [
+    78,
+    55,
+    1218,
+    1216
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    78,
+    55,
+    36,
+    38
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 92,
+  "sha256": "a430304edb62071f7949c1ea2b4af8dcfab67be9c190f264556f9bc9f2088f38",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: blank gray flag, ball-topped pole and concentric occupation disc remain distinct. Functional stone backing is opaque; exterior transparent. Fine stone divisions are simplified cosmetic details."
+  ],
+  "identityVerified": "Exactly ONE brown wooden flagpole rising from the middle of ONE circular concentric gray stone occupation platform, viewed slightly from above. Pole has ONE small round gray ball finial, NOT a spearhead, and two gray flag attachment collars. ONE completely BLANK gray flag streams to the RIGHT, preserving original torn/forked silhouette with two main tongues and a small secondary ragged tip in the upper tongue. No emblem. The platform is the original functional occupation disc: broad outer stone-block ring, concentric inner ring, circular center with pole socket. Keep the full functional stone disc opaque and intact, exterior transparent. Broad stone segments without miniature cracks, stipple or extra ground.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-17/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: blank gray flag, ball-topped pole and concentric occupation disc remain distinct. Functional stone backing is opaque; exterior transparent. Fine stone divisions are simplified cosmetic details."
+  },
+  "reviewComplete": true
+}

@@ -1,0 +1,101 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-18980f23-94aa-4a30-b5b8-41029ce41336.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "e79df08e02d34e3dcfa79aa92bf440df0aa10ddd52464ae30850a5c7b4c01676",
+  "bboxAlphaNonzero": [
+    33,
+    17,
+    1565,
+    970
+  ],
+  "bboxAlphaGreaterThan127": [
+    274,
+    59,
+    1374,
+    966
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1043122,
+  "alphaOnePixels": 5405,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "foot": "near-left-forward",
+      "roi": [
+        580,
+        850,
+        890,
+        980
+      ],
+      "soleY": 965,
+      "bottomFourRowsMeanX": 714.0075187969925
+    },
+    {
+      "foot": "far-right-rear",
+      "roi": [
+        890,
+        780,
+        1075,
+        910
+      ],
+      "soleY": 892,
+      "bottomFourRowsMeanX": 980.0140845070423
+    }
+  ],
+  "sourceFootMidpoint": [
+    847.0108016520173,
+    928.5
+  ],
+  "suggestedSourceFoot": [
+    847,
+    965
+  ],
+  "sharedBodyScale": 0.0683371298405467,
+  "sharedScaleFraction": "60/878",
+  "bodyScaleDenominatorFromAcceptedIdle": 878,
+  "bodyScaleNumerator": 60,
+  "projectedWidthLogicalAtSharedScale": 75.17084282460137,
+  "negativeSpaceProbes": [
+    {
+      "name": "left-arm-gap",
+      "rectangle": [
+        537,
+        617,
+        544,
+        624
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "right-arm-gap",
+      "rectangle": [
+        1107,
+        717,
+        1114,
+        724
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        857,
+        797,
+        864,
+        804
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Heavy forward near-left planted stone foot and raised/rear far-right toe contact; far-right arm counter-swings forward while near-left arm swings back. Original headless mound, six tablets, three amber lamps and gate retain size and identity. No duplicated limbs or added effects."
+}

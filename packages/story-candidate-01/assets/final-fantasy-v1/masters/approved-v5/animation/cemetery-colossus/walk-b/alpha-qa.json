@@ -1,0 +1,101 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-83d3fb3b-4860-4cce-aa9e-719d0306d010.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "db61db98ff279c25cb21a17ee6a374a61fbcbd523cfed8715c1cc9a0080f46d8",
+  "bboxAlphaNonzero": [
+    33,
+    43,
+    1571,
+    992
+  ],
+  "bboxAlphaGreaterThan127": [
+    350,
+    46,
+    1334,
+    950
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1035053,
+  "alphaOnePixels": 4195,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "foot": "near-left-rear",
+      "roi": [
+        535,
+        795,
+        750,
+        915
+      ],
+      "soleY": 895,
+      "bottomFourRowsMeanX": 637.3913043478261
+    },
+    {
+      "foot": "far-right-forward",
+      "roi": [
+        905,
+        825,
+        1240,
+        970
+      ],
+      "soleY": 949,
+      "bottomFourRowsMeanX": 1078.5
+    }
+  ],
+  "sourceFootMidpoint": [
+    857.945652173913,
+    922.0
+  ],
+  "suggestedSourceFoot": [
+    858,
+    949
+  ],
+  "sharedBodyScale": 0.0683371298405467,
+  "sharedScaleFraction": "60/878",
+  "bodyScaleDenominatorFromAcceptedIdle": 878,
+  "bodyScaleNumerator": 60,
+  "projectedWidthLogicalAtSharedScale": 67.24373576309794,
+  "negativeSpaceProbes": [
+    {
+      "name": "left-arm-gap",
+      "rectangle": [
+        605,
+        577,
+        612,
+        584
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "right-arm-gap",
+      "rectangle": [
+        1108,
+        677,
+        1115,
+        684
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        815,
+        847,
+        822,
+        854
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Opposite contact to walk-a: far-right foot forward and planted, near-left foot back/toe contact. Near-left arm now counter-swings forward; far-right arm swings back. Exact asymmetrical tablet crown and three-lantern placement not mirrored. Broad native body/gate scale preserved."
+}

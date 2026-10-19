@@ -1,0 +1,113 @@
+{
+  "artifactKind": "named-character-transparent-narrative-master",
+  "unitType": "c01.mirelle",
+  "cardTopicId": "C01-CHAR-MIREL-01",
+  "status": "Transparent portrait accepted; fullcanvas card diagnostics and provenance complete",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-mirel-01/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-mirel-01/master.png",
+  "nativeSize": [
+    1024,
+    1536
+  ],
+  "nativeMode": "RGBA",
+  "sha256": "d6354f4855b64487334b29562064866fd4bbcdc0f57016a23e602fa7cb81dbfd",
+  "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8a5cab5d-2079-4c8b-840b-7b51c5f84b47.png",
+  "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-mirel-01/prompt.txt",
+  "request": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-mirel-01/request.json",
+  "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-mirel-01/request-provenance.json",
+  "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-mirel-01/alpha-qa.json",
+  "sourcePostprocessing": "none",
+  "selectedAttempt": "attempt-01",
+  "supersededAttempts": [],
+  "identitySources": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/idle/master.png": "386d4256cef27497c6b675225284ab23106aa3b06de3a4a233a1d3a057c56654",
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/references/original-mirelle-cell.png": "330b83203315cef62bec4c5bd06ff72dcc699422e5d486fb04ee1753b5b3388e"
+  },
+  "battleSourceEvidence": "../../hero-appearances/mirelle/source-evidence.json",
+  "battleQuartetManifest": "../../hero-appearances/mirelle/bundle-manifest.json",
+  "originalNamedIdentity": "Original character-board-01 bottom-right cell3, native crop[632,632,1249,1249]; C01-CHAR-MIREL-01. Middle-aged woman explicit ART-DIRECTION.md:29, numerical age not invented.",
+  "cardCompositionContract": "Full native2:3transparent source uniformly composed into192×224 and92×112; no alpha trim. Background remains an independently authored layer owned by coordinator.",
+  "wholeCanvasPreviewTransforms": {
+    "192x224": {
+      "scale": 0.14583333333333334,
+      "offset": [
+        21.33333333333333,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        21.33333333333333,
+        0.0,
+        170.66666666666669,
+        224.0
+      ],
+      "visibleBounds": [
+        41.3125,
+        8.895833333333334,
+        164.97916666666669,
+        215.97916666666669
+      ]
+    },
+    "92x112": {
+      "scale": 0.07291666666666667,
+      "offset": [
+        8.666666666666664,
+        0.0
+      ],
+      "wholeCanvasBounds": [
+        8.666666666666664,
+        0.0,
+        83.33333333333334,
+        112.0
+      ],
+      "visibleBounds": [
+        18.65625,
+        4.447916666666667,
+        80.48958333333334,
+        107.98958333333334
+      ]
+    }
+  },
+  "semanticReview": "Same middle-aged female face, brown side-part hair, cream hood, charcoal robe and cream apron as approved battle quartet. Original linked-square/central-diamond hem, ledger angular marks, chest/belt name tags retained. Right arm/image-left supports ledger, left hand/image-right holds bronze hanging lantern. Exactly two hands, two boots and one of each item. No staff/shovel/new weapon; lantern light remains inside glass. Native white/black alpha composites are clean despite dark haze in tool inline hidden-RGB preview.",
+  "compositionReview": "New upright vertical standing portrait; complete hood, body, book, lantern and boots. Right visible margin39px is1px below the requested approximate40–70px but all contours remain complete and strict original edge gate passes. No need to pad or redraw for that nominal difference.",
+  "negativeSpaceProbes": [
+    {
+      "name": "lantern-ring-open-center",
+      "rectangle": [
+        850,
+        925,
+        857,
+        932
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "between-boots",
+      "rectangle": [
+        450,
+        1380,
+        457,
+        1387
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "lantern-to-robe",
+      "rectangle": [
+        787,
+        958,
+        794,
+        965
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "formalBinding": "Coordinator-owned; source worker does not activate runtime or alter canonical count.",
+  "coordinatorNarrativeApproval": {
+    "time": "2026-10-19 22:04UTC",
+    "review": "Full white native portrait matches mature named face, hood, ledger and portable lantern; complete boots and battle identity accepted",
+    "pending": "Parent-owned background composition, card consumers and formal named binding"
+  }
+}

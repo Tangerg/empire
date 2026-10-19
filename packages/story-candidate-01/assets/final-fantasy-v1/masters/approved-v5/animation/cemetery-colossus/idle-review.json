@@ -1,5 +1,5 @@
 {
-  "status": "Idle native and alpha self-review passed; coordinator native/human-scale acceptance pending before next poses",
+  "status": "Native quartet, alpha and shared-scale evidence complete; coordinator quartet and c01-11/c01-16 scene acceptance pending",
   "nativeMaster": "idle/master.png",
   "nativeRaw": "idle/raw.png",
   "previewTransparent": "idle/review-transparent-2x.png",
@@ -88,5 +88,8 @@
   ],
   "gameplayOccupancyChanged": false,
   "semanticReview": "All exact source identity features retained: headless burial mound, six gray-rim tan tablets, central arched iron gate, three amber lanterns, gray block limbs/fists/feet, muted brass circle arm insets and sparse olive moss. Broad matte cartoon planes and complete silhouette. Both feet planted, no humanoid head or generic chest rune, no baked FX.",
-  "remainingPosesGenerated": false
+  "remainingPosesGenerated": true,
+  "coordinatorIdleApproval": "2026-10-19 21:59:30UTC: Viewed native2x and fullwhite. Accepted headless gate/tomb identity,60logical crown-to-sole,60/878 shared scale,128x80 fullcanvas contract. Proceed same-scale poses; final c01-11/16 scene overlap check mandatory before formal acceptance.",
+  "quartetManifest": "bundle-manifest.json",
+  "sharedScaleContract": "60/878; canonicalfoot[821,946];common source1586x992;frame128x80;origin[8,4];registration limit6"
 }
