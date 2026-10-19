@@ -1,0 +1,119 @@
+{
+  "atlas": "landmarks-large",
+  "asset_count": 2,
+  "status": "native pair complete; parent registration pending",
+  "entries": [
+    {
+      "identity": "market-gate-compound",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/market-gate-compound/market-gate-compound-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/market-gate-compound/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/market-gate-compound/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/market-gate-compound/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/market-gate-compound/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1149
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 10,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/market-gate-compound/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-bcea81e0-a65c-458d-98a4-225b6e075af7.png",
+      "sha256": "ac13d081b58d4fedb0ce2b4d027179fa72923d9adfb4ed4a9e1931b55b27d840",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "market-gate-compound",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 2
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/market-gate-compound-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-third-four-consumer-contract.json"
+    },
+    {
+      "identity": "ruined-gatehouse",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/ruined-gatehouse/ruined-gatehouse-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/ruined-gatehouse/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/ruined-gatehouse/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/ruined-gatehouse/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/ruined-gatehouse/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1168
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 11,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/ruined-gatehouse/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-4371d8b9-443d-4f04-b97b-546a5914d4c9.png",
+      "sha256": "52529bf23835ac286ac92d3180dac2c54dd567b109a90e951de62efa7fbd76ac",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "ruined-gatehouse",
+        "footprint": [
+          4,
+          4
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 3
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/ruined-gatehouse-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-third-four-consumer-contract.json"
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_repository_edits": true
+}

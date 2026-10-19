@@ -1,0 +1,339 @@
+{
+  "atlas": "landmarks-large",
+  "count": 4,
+  "status": "native review only",
+  "occupancy_warning": "footprint and obstruction are original metadata, not compound visual bounds; do not infer sourceFoot from alpha bounds",
+  "entries": [
+    {
+      "identity": "frontier-longhall",
+      "cell_index": 4,
+      "semantic_counts": {
+        "main_longhall": 1,
+        "attached_entry_porch_gables": 2,
+        "front_stair": 1,
+        "tall_hanging_banner": 1,
+        "front_crates": 3
+      },
+      "count_qualifiers": {},
+      "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+      "footprint": [
+        4,
+        3
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1147
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1147, near the nearest lower-court corner fence footing; not the elevated hall doorway or stair tread",
+      "source_local_landmark_estimates_px": {
+        "nearest_front_fence_post_base": [
+          615,
+          1147
+        ],
+        "lower_path_entry_contact": [
+          401,
+          1095
+        ],
+        "main_stair_lower_contact": [
+          416,
+          850
+        ],
+        "upper_entry_threshold": [
+          489,
+          693
+        ]
+      },
+      "foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        13,
+        117,
+        12,
+        91
+      ],
+      "perimeter_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "uniform_scale_native_to_logical": 0.12121212121212122,
+        "uniform_scale_native_to_hd": 0.24242424242424243,
+        "logical_canvas_origin": [
+          4,
+          4
+        ],
+        "strong_bounds_logical": [
+          5.576,
+          18.182,
+          154.545,
+          144.97
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          143.03
+        ],
+        "catalog_anchor_not_modified": [
+          80,
+          155
+        ],
+        "method": "parent current full-canvas calibration, no alpha bbox fitting",
+        "scene_review_pending": true
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/frontier-longhall-source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/frontier-longhall/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/frontier-longhall/alpha-qa.json"
+    },
+    {
+      "identity": "walled-trade-town",
+      "cell_index": 5,
+      "semantic_counts": {
+        "tall_square_open_watchtower": 1,
+        "main_upper_gabled_house": 1,
+        "arched_market_entry": 1,
+        "right_roofed_trading_counter": 1,
+        "hoist_beam": 1,
+        "suspended_box_shaped_object": 1,
+        "long_tower_banner": 1
+      },
+      "count_qualifiers": {},
+      "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        627,
+        1155
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1155, aligned with the front masonry support; distinct from the offset lower-left entrance apron and suspended load",
+      "source_local_landmark_estimates_px": {
+        "front_masonry_footing_contact": [
+          576,
+          1155
+        ],
+        "left_entry_apron_contact": [
+          342,
+          1110
+        ],
+        "central_arch_threshold": [
+          524,
+          883
+        ],
+        "right_counter_foundation_contact": [
+          855,
+          1130
+        ]
+      },
+      "foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        60,
+        88,
+        55,
+        80
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "common_full_canvas_calibration": {
+        "uniform_scale_native_to_logical": 0.12121212121212122,
+        "uniform_scale_native_to_hd": 0.24242424242424243,
+        "logical_canvas_origin": [
+          4,
+          4
+        ],
+        "strong_bounds_logical": [
+          11.273,
+          14.667,
+          149.333,
+          146.303
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          144.0
+        ],
+        "catalog_anchor_not_modified": [
+          80,
+          155
+        ],
+        "method": "parent current full-canvas calibration, no alpha bbox fitting",
+        "scene_review_pending": true
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/walled-trade-town-source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/alpha-qa.json"
+    },
+    {
+      "identity": "field-hospital-compound",
+      "cell_index": 6,
+      "semantic_counts": {
+        "large_canvas_medical_shelters": 2,
+        "roof_blue_crosses": 2,
+        "cloth_covered_treatment_table": 1,
+        "table_blue_cross": 1,
+        "small_roofed_stone_gate_tower": 1,
+        "tower_pennant": 1,
+        "tall_hanging_medical_standard": 1,
+        "front_wall_outer_gate": 1
+      },
+      "count_qualifiers": {},
+      "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+      "footprint": [
+        4,
+        3
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1155
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1155 near the nearest front wall/foundation corner, independent of the offset outer entry and courtyard table",
+      "source_local_landmark_estimates_px": {
+        "nearest_front_wall_foundation_contact": [
+          636,
+          1158
+        ],
+        "outer_front_gate_threshold": [
+          278,
+          1014
+        ],
+        "rear_gate_tower_threshold": [
+          745,
+          708
+        ],
+        "courtyard_ground_center": [
+          596,
+          808
+        ]
+      },
+      "foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        22,
+        82,
+        23,
+        81
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "common_full_canvas_calibration": {
+        "uniform_scale_native_to_logical": 0.12121212121212122,
+        "uniform_scale_native_to_hd": 0.24242424242424243,
+        "logical_canvas_origin": [
+          4,
+          4
+        ],
+        "strong_bounds_logical": [
+          6.667,
+          13.939,
+          153.212,
+          146.182
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          144.0
+        ],
+        "catalog_anchor_not_modified": [
+          80,
+          155
+        ],
+        "method": "parent current full-canvas calibration, no alpha bbox fitting",
+        "scene_review_pending": true
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/field-hospital-compound-source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/field-hospital-compound/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/field-hospital-compound/alpha-qa.json"
+    },
+    {
+      "identity": "fortified-armory",
+      "cell_index": 7,
+      "semantic_counts": {
+        "tall_square_open_tower": 1,
+        "tall_round_open_tower": 1,
+        "low_front_round_bastion": 1,
+        "slate_gabled_storage_halls": 2,
+        "sack_benches": 2,
+        "visible_pale_sacks": 12,
+        "outer_gates": 2
+      },
+      "count_qualifiers": {},
+      "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+      "footprint": [
+        4,
+        3
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1117
+      ],
+      "source_foot_semantics": "projected whole-compound baseline at x627,y1117 near the nearest round bastion foundation contact; not the front gate stair or upper storage hall threshold",
+      "source_local_landmark_estimates_px": {
+        "front_round_bastion_foundation_contact": [
+          666,
+          1115
+        ],
+        "front_gate_stair_contact": [
+          297,
+          1033
+        ],
+        "right_gate_threshold": [
+          1000,
+          930
+        ],
+        "central_courtyard_ground": [
+          566,
+          746
+        ]
+      },
+      "foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        19,
+        146,
+        10,
+        123
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "common_full_canvas_calibration": {
+        "uniform_scale_native_to_logical": 0.12121212121212122,
+        "uniform_scale_native_to_hd": 0.24242424242424243,
+        "logical_canvas_origin": [
+          4,
+          4
+        ],
+        "strong_bounds_logical": [
+          6.303,
+          21.697,
+          154.788,
+          141.091
+        ],
+        "source_foot_projected_logical": [
+          80.0,
+          139.394
+        ],
+        "catalog_anchor_not_modified": [
+          80,
+          155
+        ],
+        "method": "parent current full-canvas calibration, no alpha bbox fitting",
+        "scene_review_pending": true
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/fortified-armory-source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/alpha-qa.json"
+    }
+  ]
+}

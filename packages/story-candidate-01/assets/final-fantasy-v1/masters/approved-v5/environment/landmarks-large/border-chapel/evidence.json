@@ -1,0 +1,119 @@
+{
+  "asset": "border-chapel",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; chunky matte architectural family, broad stone/wood/roof planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1184
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.944179
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    50,
+    62,
+    54,
+    57
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/border-chapel-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-chapel/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "landmarks-large",
+  "cell_index": 8,
+  "semantic_counts": {
+    "main_chapel_compound": 1,
+    "tall_square_bell_tower": 1,
+    "main_front_stair": 1,
+    "roof_cross": 1,
+    "small_tower_pennant": 1,
+    "tall_left_hanging_standard": 1
+  },
+  "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+  "logical_cell": [
+    160,
+    160
+  ],
+  "hd_cell": [
+    320,
+    320
+  ],
+  "logical_anchor": [
+    80,
+    155
+  ],
+  "hd_anchor": [
+    160,
+    310
+  ],
+  "footprint": [
+    3,
+    3
+  ],
+  "obstructionHeight": 2,
+  "occupancy_is_metadata_not_visual_bounds": true,
+  "source_foot_semantics": "projected whole-compound baseline at x627,y1184 near the closest front palisade/rock footing; separate from the offset entry path and elevated chapel stair",
+  "source_local_landmark_estimates_px": {
+    "nearest_front_palisade_contact": [
+      710,
+      1183
+    ],
+    "front_path_outer_contact": [
+      414,
+      1120
+    ],
+    "main_stair_lower_contact": [
+      527,
+      960
+    ],
+    "main_chapel_door_threshold": [
+      595,
+      827
+    ]
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/border-chapel-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-third-four-consumer-contract.json",
+  "source_edit_count": 0,
+  "interactive_structure_states_unchanged": true,
+  "scene_deny_atlas_unchanged": true,
+  "common_full_canvas_calibration": {
+    "uniform_scale_native_to_logical": 0.12121212121212122,
+    "uniform_scale_native_to_hd": 0.24242424242424243,
+    "logical_canvas_origin": [
+      4,
+      4
+    ],
+    "strong_bounds_logical": [
+      10.061,
+      11.515,
+      149.455,
+      149.091
+    ],
+    "source_foot_projected_logical": [
+      80.0,
+      147.515
+    ],
+    "catalog_anchor_not_modified": [
+      80,
+      155
+    ],
+    "method": "parent current full-canvas calibration, no alpha bbox fitting",
+    "scene_review_pending": true
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

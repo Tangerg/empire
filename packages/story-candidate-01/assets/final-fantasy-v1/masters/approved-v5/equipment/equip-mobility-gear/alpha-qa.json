@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-EQUIP-MOBILITY-GEAR",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6061928781646737,
+  "nearOpaqueFractionAlphaGE250": 0.3688706506006934,
+  "nonzeroAlphaBBox": [
+    0,
+    7,
+    1214,
+    1230
+  ],
+  "visibleAlphaBBoxGE8": [
+    46,
+    139,
+    1211,
+    1132
+  ],
+  "visibleAlphaBBoxGE128": [
+    46,
+    140,
+    1210,
+    1131
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    46,
+    140,
+    44,
+    123
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 1,
+  "sha256": "c963aa40b2c3584359738e86ed3cbdc739b0a6d481ee7178fe266d2021cff34e",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Rebuild exactly THREE equipment groups from source. LEFT: one thick tan rope loop/coil tied at its lower end, with iron joining rings and the source's THREE visible hooked metal climbing claws hanging downward in a compact cluster. Preserve the open rope loop and three distinct curved pointed claw silhouettes from reference 1; do not add extra hooks. CENTER: ONE empty blue-gray heavy ankle boot, toe facing lower-left, broad dark steel toe cap, brown sole, brown ankle and upper straps, ONE large square brass buckle, visibly open empty top. RIGHT: ONE upright long tapering dark iron climbing piton/spike, its head a chunky rectangular hollow socket with square opening at top, and ONE short curved hook descending along its right side. No second boot, leg, wearer, bag, extra rope bundle, invented emblem or lettering.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticCountQA": "Three equipment groups: rope loop plus three visible hanging hooked claws; one empty blue-gray boot; one square hollow-socket iron piton with one right side hook. No extra boot or limb."
+}

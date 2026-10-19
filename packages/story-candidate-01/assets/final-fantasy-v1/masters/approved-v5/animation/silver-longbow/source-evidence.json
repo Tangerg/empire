@@ -1,0 +1,170 @@
+{
+  "topicId": "C01-UNIT-SILVER-LONGBOW",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-SILVER-LONGBOW",
+    "topicId": "C01-UNIT-SILVER-LONGBOW",
+    "label": "长弓守卫",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-silver-longbow.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-silver-longbow.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-silver-longbow.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-units/silverwood-longbow-guard-source.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "353023ab83db57b4b60235e32181736ea37c46f9de690cc8b4a7cf2dd1027737"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-silver-longbow.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "5fdc8274814d9c590b1d2d865ad5817b03f38d068e3cc73ed3fa9227e4193371"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-silver-longbow.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "0723a59f1e50a356f6eb014acb5980768b1e60394d1975e9be29543bca13183a"
+    }
+  },
+  "referenceExtraction": "Full1672x941 original board; native unresampled idlecell[0,0,418,941],attackcell[836,0,1254,941],face/gear[75,250,354,618],bow[265,194,357,688]. Original HD/runtime strips preserved, four64x96 HD cells extracted. No color/alpha modification.",
+  "actualConsumers": [
+    "c01.silver-longbow"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 29,
+    "text": "'c01.silver-longbow': 'C01-UNIT-SILVER-LONGBOW'"
+  },
+  "status": "Idle approved; three poses in progress",
+  "exclusivityCheck": "Coordinator exclusive assignment, target folder absent before work",
+  "consumerStatus": "Campaign silverwood ranged guard; four verified c01-15 enemy actors; no builtin consumer found",
+  "levelEvidence": {
+    "path": "packages/story-candidate-01/src/levels.ts",
+    "lines": [
+      754,
+      757,
+      758,
+      761
+    ],
+    "levelOrder": 15,
+    "levelId": "c01-15",
+    "title": "银林长梦",
+    "actors": [
+      {
+        "key": "controlled-longbow-1",
+        "side": "enemy",
+        "unit": "c01.silver-longbow",
+        "deploymentIndex": 1,
+        "x": 14,
+        "y": 5
+      },
+      {
+        "key": "controlled-longbow-2",
+        "side": "enemy",
+        "unit": "c01.silver-longbow",
+        "deploymentIndex": 2,
+        "x": 14,
+        "y": 9
+      },
+      {
+        "key": "north-longbow",
+        "side": "enemy",
+        "unit": "c01.silver-longbow",
+        "deploymentIndex": 5,
+        "x": 8,
+        "y": 2
+      },
+      {
+        "key": "south-longbow",
+        "side": "enemy",
+        "unit": "c01.silver-longbow",
+        "deploymentIndex": 6,
+        "x": 8,
+        "y": 13
+      }
+    ]
+  },
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "originalIdentity": "Tan adult pointed-ear elf-like forest guard, short charcoal/black tousled hair, stern dark eyes/brows, clean-shaven, small metal hoop on visible screen-left ear. Dark gray hood down, sage/olive-green chest-laced split tunic, brown broad rectangular leather shoulder plates, brown diagonal strap/belt/bracers with crossed tan bindings, fingerless protection/exposed tan fingers, cream/tan furry sleeve and upper-boot trim, brown trousers and boots. Brown back quiver above screen-left shoulder with pale feather fletching; woven tan left-hip pouch with dark blue tie.",
+  "equipmentIdentity": "Original screen-right hand holds one tall pale wooden longbow at a brown wrapped grip, with tan/brown tip bindings and one dark string joining two complete tips; screen-left hand is free in idle/walks. No nocked loose arrow in idle. Quiver upper ends are feather fletching; points hidden below.",
+  "symbolReview": "No distinct original sacred/faction emblem. Preserve crossed garment lacing, fur, blue pouch tie and simple original gear, without invented rune, crest or antlers.",
+  "semanticEvidence": {
+    "unitDefinition": "packages/story-candidate-01/src/units.ts:87",
+    "name": "银林长弓",
+    "weapons": [
+      {
+        "id": "c01.longbow",
+        "definitionLines": [
+          44,
+          54
+        ],
+        "damageType": "pierce",
+        "minRange": 2,
+        "maxRange": 3,
+        "lineOfSight": "direct",
+        "bonusAgainstFlying": 1.4,
+        "tags": [
+          "ranged",
+          "projectile"
+        ]
+      }
+    ],
+    "tags": [
+      "infantry",
+      "ranged",
+      "silverwood"
+    ],
+    "armorClass": "unarmored",
+    "vision": 5,
+    "equipmentTopic": "C01-EQUIP-SILVER-LONGBOW",
+    "equipmentBindingLine": 106,
+    "separateEffectTopic": "C01-FX-03",
+    "effectBindingLine": 150
+  },
+  "ruleIllustrationReview": "Bow artwork matches sole ranged piercing longbow rule. Rebuild a physically legible single nocked arrow draw; preserve original bow-holding arm and drawing arm. Arrowhead points toward screen-right target, rear fletching/nock at cheek draw hand, shaft rests above bow grip, V-string endpoints attach actual bow tips. Independent projectile FX stays separate.",
+  "originalFrameReview": "Original third attack cell is near-idle with free hand raised only at waist; no clear nocked arrow draw. Original walks both emphasize screen-right forward contact. New quartet reconstructs clear shot and opposite contacts, not an assertion that source already had them.",
+  "scaleContract": "Coordinator approved44/836(1/19),sourcefoot[800,956],actualidle1585x992 on2026-10-19 at18:48UTC. Same body and physical bow size across quartet.",
+  "idleAttemptReview": "First generated idle has24perimeter pixels alpha>1(max3), bowtop7, boots987 and lower bow tip partly hidden behind boot; preserved rejected. Targeted imagegen attempt02 repositions body and bow without programmatic edits; complete bow ends and edgealpha0. Pending coordinator review."
+}

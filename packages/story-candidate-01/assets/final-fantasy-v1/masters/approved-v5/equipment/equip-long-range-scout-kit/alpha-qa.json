@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-EQUIP-LONG-RANGE-SCOUT-KIT",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.602396414408502,
+  "nearOpaqueFractionAlphaGE250": 0.3785557666821832,
+  "nonzeroAlphaBBox": [
+    0,
+    37,
+    1214,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    46,
+    107,
+    1207,
+    1181
+  ],
+  "visibleAlphaBBoxGE128": [
+    47,
+    108,
+    1206,
+    1179
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    47,
+    108,
+    48,
+    75
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 26,
+  "sha256": "1e892b7b51c2a52d44252f46fcb0e9a2c9e8d2a499417fd4cb24689ea27e1b81",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly THREE objects copied from reference 1. LEFT: ONE extended telescoping spyglass, dark blue-gray metal tube in three broad stepped sections with warm brass rings, diagonally lower-left to upper-right, large dark teal front lens facing lower-left. RIGHT: ONE closed cylindrical brown leather carrying tube, parallel diagonal orientation, brass-rimmed caps and ONE broad brown carrying strap making an open loop at right. LOWER CENTER: ONE small thick rectangular folded tan packet tied around its left end with a narrow double string loop; broad folded-over paper/cloth flaps at its right end. The packet's material and purpose are not uniquely clear in source, so preserve this plain folded package silhouette rather than inventing contents. No map drawing, route marks, letters, compass, food exposed, extra telescope or person.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticCountQA": "One three-section spyglass, one cylindrical capped case with a loop strap, and one tied folded packet. Source orientation preserved."
+}

@@ -1,0 +1,121 @@
+{
+  "asset": "market-gate-compound",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; chunky matte architectural family, broad stone/wood/roof planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1149
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.916268
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    31,
+    110,
+    23,
+    78
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/market-gate-compound-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/market-gate-compound/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "landmarks-large",
+  "cell_index": 10,
+  "semantic_counts": {
+    "major_round_gate_towers": 2,
+    "roofed_round_tower": 1,
+    "open_round_tower": 1,
+    "central_gateway_arch": 1,
+    "burgundy_cloth_awning": 1,
+    "cream_cloth_awnings": 2,
+    "far_left_timber_kiosk": 1,
+    "flags_total": 3
+  },
+  "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+  "logical_cell": [
+    160,
+    160
+  ],
+  "hd_cell": [
+    320,
+    320
+  ],
+  "logical_anchor": [
+    80,
+    155
+  ],
+  "hd_anchor": [
+    160,
+    310
+  ],
+  "footprint": [
+    4,
+    3
+  ],
+  "obstructionHeight": 2,
+  "occupancy_is_metadata_not_visual_bounds": true,
+  "source_foot_semantics": "projected whole-compound baseline at x627,y1149, aligned near the front paved/rock support below the market awnings; independent of the gateway threshold and kiosk",
+  "source_local_landmark_estimates_px": {
+    "front_right_awning_footing_contact": [
+      782,
+      1156
+    ],
+    "front_left_paved_court_contact": [
+      415,
+      1045
+    ],
+    "central_gateway_threshold": [
+      677,
+      815
+    ],
+    "far_left_kiosk_contact": [
+      159,
+      876
+    ]
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/market-gate-compound-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-third-four-consumer-contract.json",
+  "source_edit_count": 0,
+  "interactive_structure_states_unchanged": true,
+  "scene_deny_atlas_unchanged": true,
+  "common_full_canvas_calibration": {
+    "uniform_scale_native_to_logical": 0.12121212121212122,
+    "uniform_scale_native_to_hd": 0.24242424242424243,
+    "logical_canvas_origin": [
+      4,
+      4
+    ],
+    "strong_bounds_logical": [
+      7.758,
+      17.333,
+      153.212,
+      146.545
+    ],
+    "source_foot_projected_logical": [
+      80.0,
+      143.273
+    ],
+    "catalog_anchor_not_modified": [
+      80,
+      155
+    ],
+    "method": "parent current full-canvas calibration, no alpha bbox fitting",
+    "scene_review_pending": true
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

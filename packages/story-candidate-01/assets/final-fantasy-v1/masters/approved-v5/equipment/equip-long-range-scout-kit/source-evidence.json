@@ -1,0 +1,56 @@
+{
+  "topicId": "C01-EQUIP-LONG-RANGE-SCOUT-KIT",
+  "assetId": "C01-FFV1-EQUIP-LONG-RANGE-SCOUT-KIT",
+  "label": "长距侦察包",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-44a8dc52-2905-4234-8f1c-b8540cf60dd9.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-long-range-scout-kit-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-04.png, row 3 column 3 (one based)",
+    "topicIndex": 42,
+    "inspectionCropCoordinates": [
+      629,
+      629,
+      938,
+      938
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-long-range-scout-kit.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-04.png",
+    "atlasSha256": "f481ca178f9c37c0f8cba5c2022203ab5db798ab4b76edda022fd4b3ff0a61c5",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-long-range-scout-kit-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "inspectedApprovedUnitReferences": [],
+  "unitIdentityNote": "This is a generic equipment kit topic rather than a character identity. Original full equipment atlas and baseline equipment runtime determine objects and markings; current approved chunky equipment family determines only material/outline style.",
+  "identityClarification": "Exactly THREE objects copied from reference 1. LEFT: ONE extended telescoping spyglass, dark blue-gray metal tube in three broad stepped sections with warm brass rings, diagonally lower-left to upper-right, large dark teal front lens facing lower-left. RIGHT: ONE closed cylindrical brown leather carrying tube, parallel diagonal orientation, brass-rimmed caps and ONE broad brown carrying strap making an open loop at right. LOWER CENTER: ONE small thick rectangular folded tan packet tied around its left end with a narrow double string loop; broad folded-over paper/cloth flaps at its right end. The packet's material and purpose are not uniquely clear in source, so preserve this plain folded package silhouette rather than inventing contents. No map drawing, route marks, letters, compass, food exposed, extra telescope or person.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "semanticUncertainty": "The third object is visibly a small tied tan folded rectangular packet. Its exact contents/material are not uniquely determined; preserved the folded package and tie without inventing map lines, food or text."
+}

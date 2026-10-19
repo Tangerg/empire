@@ -1,0 +1,80 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-dcace4ac-ef9c-4097-91f4-3f6315a340ab.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "9da42312622ff0da9c817ff1a86e2db46c123dbbc6ec9a5e7e1fb1b1631990dc",
+  "bboxAlphaNonzero": [
+    41,
+    9,
+    1525,
+    962
+  ],
+  "bboxAlphaGreaterThan127": [
+    505,
+    12,
+    1270,
+    957
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1170185,
+  "alphaOnePixels": 5084,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "boot": "screen-left",
+      "roi": [
+        530,
+        850,
+        750,
+        975
+      ],
+      "soleY": 956,
+      "bottomFourRowsMeanX": 637.8130311614731
+    },
+    {
+      "boot": "screen-right",
+      "roi": [
+        800,
+        850,
+        1050,
+        975
+      ],
+      "soleY": 956,
+      "bottomFourRowsMeanX": 962.3539518900343
+    }
+  ],
+  "sourceFootMidpoint": [
+    800.0834915257537,
+    956.0
+  ],
+  "suggestedSourceFoot": [
+    800,
+    956
+  ],
+  "hairCrownY": 120,
+  "bodyHeight": 836.0,
+  "proposedBodyScale": 0.05263157894736842,
+  "bodyScaleNumerator": 44,
+  "bodyScaleDenominator": 836.0,
+  "masterRawHashMatches": true,
+  "semanticReview": "Selected corrected idle attempt02. Original short dark hair/pointed ears/ear hoop, hood-down green/brown armor and pale longbow retained. Original screen-right bow hand; screen-left hand free. Complete top and bottom bow tips, one taut string, quiver feather ends. Both feet flat and no nocked arrow. Native and white QA inspected. Perimeter gate passes with zero edge alpha.",
+  "bowSizeReference": {
+    "upperTipApprox": [
+      1157,
+      16
+    ],
+    "lowerTipApprox": [
+      1070,
+      941
+    ],
+    "verticalSpanApprox": 925,
+    "bowHeightRelativeToBodyApprox": 1.1064593301435406,
+    "notes": "Physical pale wooden longbow; no short-bow replacement. Preserve limb length/handle proportions through later rotation and draw, no independent sizing."
+  }
+}

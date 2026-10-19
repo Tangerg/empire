@@ -1,0 +1,255 @@
+{
+  "atlas": "landmarks-large",
+  "status": "second four native sources complete; runtime registration and gameplay review handled separately by parent",
+  "asset_count": 4,
+  "entries": [
+    {
+      "identity": "frontier-longhall",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/frontier-longhall/frontier-longhall-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/frontier-longhall/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/frontier-longhall/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/frontier-longhall/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/frontier-longhall/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1147
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 4,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/frontier-longhall/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-49db2cdc-b98c-4eae-ada3-fabf2252b867.png",
+      "sha256": "b8f81f24e1e0aeac4ca0fba8eaa0f3331c89ba481385bffa82ffeeaa515457b3",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "frontier-longhall",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 2
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/frontier-longhall-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-second-four-consumer-contract.json"
+    },
+    {
+      "identity": "walled-trade-town",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/walled-trade-town-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1155
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 5,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/walled-trade-town/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-dc33c60c-56f7-46cd-bf85-a8e5cd1bfb27.png",
+      "sha256": "78596ca9354a1a2e23f3981f883a0435f203d534b3b21397d7fd728c37f8cf68",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "walled-trade-town",
+        "footprint": [
+          4,
+          4
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 3
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/walled-trade-town-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-second-four-consumer-contract.json"
+    },
+    {
+      "identity": "field-hospital-compound",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/field-hospital-compound/field-hospital-compound-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/field-hospital-compound/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/field-hospital-compound/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/field-hospital-compound/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/field-hospital-compound/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1155
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 6,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/field-hospital-compound/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-567ea930-c003-47dc-a034-55a097a07e17.png",
+      "sha256": "89f5cf512d66690b49187678abe25dcf4d499889922ea13c1eba332ffc2b8f5f",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "field-hospital-compound",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 2
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/field-hospital-compound-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-second-four-consumer-contract.json"
+    },
+    {
+      "identity": "fortified-armory",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/fortified-armory-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1117
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "atlas": "landmarks-large",
+      "cell_index": 7,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/fortified-armory/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-4724c6a1-6e07-42ea-892e-0fa95fd00c63.png",
+      "sha256": "7b589d75ee7ee98b0c65f831ba252e76ed1710828935373a3254ebbae66e6bd0",
+      "runtime_contract": {
+        "logical_cell": [
+          160,
+          160
+        ],
+        "hd_cell": [
+          320,
+          320
+        ],
+        "logical_anchor": [
+          80,
+          155
+        ],
+        "hd_anchor": [
+          160,
+          310
+        ],
+        "category": "large-landmark",
+        "tileMode": "modules",
+        "ySort": "bottom-anchor"
+      },
+      "original_manifest_cell": {
+        "id": "fortified-armory",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          80,
+          155
+        ],
+        "obstructionHeight": 2
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/fortified-armory-source-evidence.json",
+      "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-second-four-consumer-contract.json"
+    }
+  ],
+  "native_pixels_untouched": true,
+  "all_native_raw_master_sha256_verified": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "all_source_gates_pass": true,
+  "runtime_contract": {
+    "logical_cell": [
+      160,
+      160
+    ],
+    "hd_cell": [
+      320,
+      320
+    ],
+    "logical_anchor": [
+      80,
+      155
+    ],
+    "hd_anchor": [
+      160,
+      310
+    ],
+    "full_native_canvas": [
+      1254,
+      1254
+    ]
+  },
+  "scene_policy": "c01-01 denyAtlases and formal interactive three-state bindings unchanged",
+  "no_repository_edits": true
+}

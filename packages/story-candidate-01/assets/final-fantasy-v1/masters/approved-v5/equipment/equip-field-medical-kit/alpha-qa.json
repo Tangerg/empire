@@ -1,0 +1,52 @@
+{
+  "topicId": "C01-EQUIP-FIELD-MEDICAL-KIT",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5023433783821596,
+  "nearOpaqueFractionAlphaGE250": 0.47435447397673536,
+  "nonzeroAlphaBBox": [
+    57,
+    25,
+    1193,
+    1230
+  ],
+  "visibleAlphaBBoxGE8": [
+    59,
+    105,
+    1191,
+    1168
+  ],
+  "visibleAlphaBBoxGE128": [
+    60,
+    106,
+    1190,
+    1167
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    60,
+    106,
+    64,
+    87
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sha256": "76c2886d0f2ac638db72df8f10446ff58ce850663148f50f1a7dd11bc9a9ac65",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Rebuild exactly the original seven individual items, arranged as the source. UPPER LEFT: EXACTLY TWO cream rolled cloth bandages, one shorter and one taller, each with a clear broad spiral on its top, the taller roll has one short unrolled flap. UPPER RIGHT: EXACTLY TWO cork-stoppered bottles, one LARGE warm amber glass bottle and one SMALL clear-gray bottle containing amber liquid. The big bottle has a plain faceted liquid volume and fill surface, NOT a medical cross or emblem. LOWER LEFT: ONE neatly folded thick cream cloth bundle held by one dark brown band. LOWER RIGHT: EXACTLY TWO separate parallel dark gray rectangular splint bars with gently rounded corners. The bars are plain solid pieces, no scissors or forceps. All seven items must be clearly separated in the compact grouping. No red cross, lettering, extra bottle, pouch, wound, person, hand or blood.",
+  "remarks": [],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticCountQA": "Two cloth rolls, two cork-stoppered bottles of different sizes, one bound folded cloth bundle and two separate dark gray splints: seven individual items."
+}

@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-EQUIP-QUARTERMASTER-SUPPLY-KIT",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.501652765377268,
+  "nearOpaqueFractionAlphaGE250": 0.4734953412238731,
+  "nonzeroAlphaBBox": [
+    0,
+    49,
+    1230,
+    1238
+  ],
+  "visibleAlphaBBoxGE8": [
+    20,
+    118,
+    1226,
+    1158
+  ],
+  "visibleAlphaBBoxGE128": [
+    20,
+    119,
+    1225,
+    1157
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    20,
+    119,
+    29,
+    97
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 11,
+  "sha256": "783f97413a50c711813ed51216055165fd2c216f4e1423aab8bcdfaf0f7b86b9",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly FOUR compact equipment groups matching reference 1. UPPER LEFT: ONE closed tall dark slate-blue ledger with a brown vertical binding strip and a brown horizontal clasp strap, a brass clasp stud, plus one small plain brass round stud near its lower-right corner. UPPER RIGHT: EXACTLY THREE iron keys hanging on ONE common large closed ring; three separate stems with chunky single notched bits. LOWER LEFT: ONE coiled yellow-brass measuring tape, one loose short end to the left ending in a small dark rectangular tab; use only sparse large engraved tick marks, no numbers or invented text. LOWER RIGHT: ONE small tied brown drawstring pouch with ONE circular brass medallion. Preserve the medallion's source geometry: thin dark central upright stem, two short diagonal outward side branches near its middle and a short forked two-branch base. This little geometric mark is not a readable letter or a new crest; match the visible reference, no starburst or replacement symbol. Keep all four groups separate and complete. No coins spilling, no extra key, scroll, scales, person or hand.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticCountQA": "Four groups: one closed ledger, exactly three keys on one ring, one coiled brass measuring tape with ticks only, and one pouch. Final medallion has separated upper side branches and lower fork rather than the initial symmetric asterisk.",
+  "refinementQA": "Initial candidate retained. Native targeted imagegen edit reviewed: three key count, open loops, ledger, tape and pouch silhouettes retained; medallion geometry corrected toward the original source."
+}

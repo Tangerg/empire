@@ -1,0 +1,68 @@
+{
+  "topicId": "C01-EQUIP-QUARTERMASTER-SUPPLY-KIT",
+  "assetId": "C01-FFV1-EQUIP-QUARTERMASTER-SUPPLY-KIT",
+  "label": "军需补给包",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a31a167b-1894-433b-a292-e4666b39a761.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-quartermaster-supply-kit-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-04.png, row 3 column 4 (one based)",
+    "topicIndex": 43,
+    "inspectionCropCoordinates": [
+      942,
+      629,
+      1252,
+      938
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-quartermaster-supply-kit.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-04.png",
+    "atlasSha256": "f481ca178f9c37c0f8cba5c2022203ab5db798ab4b76edda022fd4b3ff0a61c5",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-quartermaster-supply-kit-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "inspectedApprovedUnitReferences": [],
+  "unitIdentityNote": "This is a generic equipment kit topic rather than a character identity. Original full equipment atlas and baseline equipment runtime determine objects and markings; current approved chunky equipment family determines only material/outline style.",
+  "identityClarification": "Exactly FOUR compact equipment groups matching reference 1. UPPER LEFT: ONE closed tall dark slate-blue ledger with a brown vertical binding strip and a brown horizontal clasp strap, a brass clasp stud, plus one small plain brass round stud near its lower-right corner. UPPER RIGHT: EXACTLY THREE iron keys hanging on ONE common large closed ring; three separate stems with chunky single notched bits. LOWER LEFT: ONE coiled yellow-brass measuring tape, one loose short end to the left ending in a small dark rectangular tab; use only sparse large engraved tick marks, no numbers or invented text. LOWER RIGHT: ONE small tied brown drawstring pouch with ONE circular brass medallion. Preserve the medallion's source geometry: thin dark central upright stem, two short diagonal outward side branches near its middle and a short forked two-branch base. This little geometric mark is not a readable letter or a new crest; match the visible reference, no starburst or replacement symbol. Keep all four groups separate and complete. No coins spilling, no extra key, scroll, scales, person or hand.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt",
+    "prompt-refine-seal.txt"
+  ],
+  "refinement": {
+    "initialNativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0872f634-8187-4507-bd12-bae92653dd13.png",
+    "initialCandidate": "candidates/initial/raw.png",
+    "editInputPaths": [
+      "/workspace/scratch/84c9fe948755/generated_images/exec-0872f634-8187-4507-bd12-bae92653dd13.png",
+      "/tmp/equip-quartermaster-seal-full.png"
+    ],
+    "persistedOriginalDetail": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-quartermaster-seal-detail-nearest.png",
+    "reason": "Initial candidate collapsed branch points into a symmetric asterisk. Targeted built-in imagegen refinement restored source upper side branches and lower fork separated along the upright stem; all grouping retained.",
+    "postprocessing": "None; final raw/master are byte-exact native refinement output."
+  },
+  "semanticUncertainty": "The original pouch medallion is very small. Its literal meaning is unverified; only visible upright stem, side branches and lower fork geometry is preserved. No claim that it is a letter, crest, balance or star."
+}

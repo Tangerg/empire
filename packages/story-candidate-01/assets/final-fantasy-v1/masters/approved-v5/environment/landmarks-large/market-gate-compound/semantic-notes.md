@@ -1,0 +1,23 @@
+# market-gate-compound, landmarks-large index 10
+
+## Source identity and visual review
+ONE compact market courtyard in front of a fortified stone gateway. Exactly TWO major ROUND stone gate towers: the rear-left tower has a small low dark slate conical cap within its battlements, and the right tower has an OPEN crenellated top. A short stone gateway connects them with ONE central large arched wooden entry; broad timber beams and diagonal braces frame its upper front. Keep exactly THREE cloth market awnings: ONE muted burgundy/red awning at left of the gate, and TWO adjacent cream-white canopy stalls in the front-right. In addition retain ONE small far-left timber/slatted-roof kiosk against the left wall, distinct from the red cloth stall. Preserve exactly THREE flags: one burgundy swallowtail pennant above the left round tower, one long blue-gray hanging standard at far left, and one long burgundy hanging standard at far right; marks remain simple abstract source symbols, no lettering. A compact paved open forecourt extends in front, with the original small left-front crate group, one central-front crate, and sparse goods/barrel shapes grouped under and beside the right awnings. Preserve the low stone side walls, necessary irregular paving and narrow supporting rocks. No extra roofs, canopy stalls, towers, people or broad dirt disc.
+
+Source caveats: Whole source reaches x610, seventeen pixels left of the old nominal x627 slot boundary. The full far-left wooden kiosk and small attached accents must be recovered from complete source, not treated as a neighboring fragment. Crate totals under partly occluded stalls are not asserted.
+
+Native review: Two main rounded gate towers, one small capped and one open, retain the central timber-braced gateway. Exactly one burgundy cloth awning, two adjacent cream canopies and one distinct far-left timber kiosk are visible. Three source flag groups remain. The complete recovered left kiosk is included without copying neighboring watch-keep pixels. Compact paved forecourt and grouped supplies retained. No extra market building or broad soil base.
+
+## Original runtime semantics
+4x4 atlas, 160 logical / 320 HD cells, anchor (80,155) / (160,310), large-landmark modules, bottom-anchor ySort. Original footprint [4, 3] and obstruction 2 remain metadata, not sprite bounds or new collision geometry. Current src and scene JSON have no exact selector for this ID; c01-01 denies this atlas. Existing formal interactive structure states and bindings remain independent.
+
+## Authored source foot and functional foundation
+Source foot [627, 1149]: projected whole-compound baseline at x627,y1149, aligned near the front paved/rock support below the market awnings; independent of the gateway threshold and kiosk. It is an approximate visual registration estimate, not an alpha-bbox statistic. Physical constituent contacts and internal landmarks are separately estimated: {"front_right_awning_footing_contact": [782, 1156], "front_left_paved_court_contact": [415, 1045], "central_gateway_threshold": [677, 815], "far_left_kiosk_contact": [159, 876]}. The original enclosed floor, entry steps, terrace or narrow stone support are retained; there is no invented broad terrain slab.
+Parent reports its first landmark pair was reviewed with the full 1254-square native canvas scaled by 152/1254 into a 160 cell at origin (4,4). At that same common scale, this source has strong bounds [7.758, 17.333, 153.212, 146.545] and the authored source foot projects to [80.0, 143.273]. This is a calibration report, not a change to the catalog anchor. No tight-alpha fitting, foot normalization, source rotation or mirror was used. Scene placement/scale remains parent review.
+
+## Provenance and QA
+Exact original full board and complete subject crop inspected, source/consumer contracts and prompt saved. Source crops are diagnostic only: original fractional 313.5px quarters are never reused as new source coordinates. Native output, raw and master are byte-identical. No programmatic paint, resize, color or alpha cleanup. Requested 100px margin is separately tested; silhouette completeness and perimeter alpha <=1 are the current source gate. No repository edits.
+
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [31, 110, 23, 78]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

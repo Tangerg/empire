@@ -1,0 +1,55 @@
+{
+  "identity": "watch-keep",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/watch-keep/watch-keep-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/watch-keep/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/watch-keep/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/watch-keep/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/watch-keep/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    1191
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "atlas": "landmarks-large",
+  "cell_index": 9,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/watch-keep/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-45984792-9302-4e00-bdef-d39e4677616d.png",
+  "sha256": "a75be4855db45452721bf0091ab103630149e3a4b1e11865c5de0c7ae889e727",
+  "runtime_contract": {
+    "logical_cell": [
+      160,
+      160
+    ],
+    "hd_cell": [
+      320,
+      320
+    ],
+    "logical_anchor": [
+      80,
+      155
+    ],
+    "hd_anchor": [
+      160,
+      310
+    ],
+    "category": "large-landmark",
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "original_manifest_cell": {
+    "id": "watch-keep",
+    "footprint": [
+      4,
+      4
+    ],
+    "anchor": [
+      80,
+      155
+    ],
+    "obstructionHeight": 3
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/watch-keep-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-third-four-consumer-contract.json"
+}

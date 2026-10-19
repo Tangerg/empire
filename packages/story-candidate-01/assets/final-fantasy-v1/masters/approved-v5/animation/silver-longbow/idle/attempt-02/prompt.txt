@@ -1,0 +1,11 @@
+Use case: precise-object-edit, improve complete sprite framing and clear native transparency.
+Edit Image1, the silver-longbow idle. Keep its exact character identity and SAME physical head/body/hand/boot/BOW dimensions, same camera and costume. Change only the placement needed for full safe framing. Same landscape1586x992 transparent RGBA canvas.
+
+Keep original tan pointed-ear adult, short black hair, small left-ear hoop, clean-shaven face, gray down hood, green laced tunic, brown layered leather shoulder armor, large bracers/hands and fur-cuffed boots, back quiver and woven hip pouch with blue cord. Same chunky broad matte style, not finer or more realistic.
+
+FRAMING FIX: Move the PERSON, including head/quiver, body, pouch, legs and both boots, UP about30pixels as a whole, keeping the exact body dimensions. Boot soles should now be aroundy950-960 rather than almost touching bottom. Do not make the person smaller. Preserve two flat planted boots.
+Reposition the SAME LONG BOW to the right by about85pixels and down by about18pixels, moving its gripping hand naturally with the bow. Keep the same long pale wooden limbs, length, brown center grip and tip bindings. The upper bow tip must have at least22pixels transparent margin to top; lower bow tip must be visibly complete to the RIGHT of the boot, not hidden behind it. Leave at least25pixels clear between bow end and canvas edge. Bow is still gripped by original SCREEN-RIGHT hand, elbow naturally opening slightly, exactly two connected arms/hands. Idle screen-left hand remains free by pouch. No nocked arrow in idle.
+
+Show the complete bow curve AND one continuous taut string joining its two actual tips. Both bow ends, both feet, all quiver feathers and pointed ears are inside the canvas. The quiver upper ends remain pale fletching, not exposed arrowheads. Keep same bow length for the later animation quartet.
+
+OUTPUT GATE: Genuine native transparent alpha, absolutely empty transparent canvas perimeter on all four sides, no stray semiopaque pixels or colored haze at the bottom or any edge. Clear air around silhouette. Do not add background, floor, ground shadow, aura, glow, text, labels or watermark. Keep broad clean matte cel planes and thick silhouette contour. One complete correctly framed idle master, no cropping or external postprocessing.

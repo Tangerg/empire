@@ -1,0 +1,29 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-adce8141-097d-48f6-92ad-3c7dae274234.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "1a7672524cdaf401c76ab32962f472e96f735904d8a1176c6934ad848715f441",
+  "bboxAlphaNonzero": [
+    41,
+    5,
+    1564,
+    992
+  ],
+  "bboxAlphaGreaterThan127": [
+    515,
+    7,
+    1202,
+    988
+  ],
+  "perimeterMaxAlpha": 3,
+  "perimeterCountAlphaGreaterThan1": 24,
+  "alphaZeroPixels": 1182214,
+  "alphaOnePixels": 6118,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "selectionStatus": "Rejected perimeter gate:24edge pixels alpha>1(max3), bow top7 and soles987 leave insufficient native margins; lower bow end partly behind boot. Preserve unchanged."
+}
