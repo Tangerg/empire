@@ -175,7 +175,7 @@
       "otherDisconnectedHDComponents": 2
     }
   },
-  "status": "Bounded tail-corrected idle02 inspected; coordinator final pilot acceptance pending",
+  "status": "Native quartet and shared-scale export accepted; coordinator actual-scene review and binding underway",
   "imageGenerationStarted": true,
   "actualConsumers": [
     "c01.ivra"
@@ -387,5 +387,10 @@
       6
     ],
     "perimeterMaxAlpha": 0
-  }
+  },
+  "quartetManifest": "bundle-manifest.json",
+  "remainingPosesGenerated": true,
+  "sharedScaleContract": "56/950.5; canonical foot [994,983]; full 1586x992 common canvas; frame 128x80; origin [14,6]",
+  "coordinatorIdleApproval": "Coordinator 2026-10-19 19:46 UTC approved corrected attempt-02, shared 56/950.5, foot [994,983], frame 128x80 and origin [14,6].",
+  "coordinatorSequenceApproval": "Coordinator 2026-10-19 19:59 UTC reviewed the shared-scale 2x quartet: identity and common scale hold, the wider forward-reaching attack is reasonable, and opposite four-paw contacts are readable. Source/export sequence accepted; actual scene review and formal binding are coordinator-owned."
 }

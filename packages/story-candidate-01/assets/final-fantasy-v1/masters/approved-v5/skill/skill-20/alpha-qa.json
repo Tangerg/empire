@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-SKILL-20",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5177702484426232,
+  "nearOpaqueFractionAlphaGE250": 0.4495712603242193,
+  "nonzeroAlphaBBox": [
+    0,
+    24,
+    1230,
+    1216
+  ],
+  "visibleAlphaBBoxGE8": [
+    62,
+    161,
+    1223,
+    1136
+  ],
+  "visibleAlphaBBoxGE128": [
+    63,
+    162,
+    1222,
+    1135
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    63,
+    162,
+    32,
+    119
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 22,
+  "sha256": "3da9632ffa4c398e87c3dd1492081f5ae2d8a79248ea00a1392f1f45201a4078",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, with transparent exterior and open gaps.",
+    "No invented readable lettering, broad exterior glow, haze, scene background or added square tile.",
+    "Complete drum shell and three legs; four main shell studs; seven original wind-stroke segments, consisting of three curls plus four open arcs. No diffuse exterior haze."
+  ],
+  "identityVerified": "One complete drum on three visible legs with four main metal shell fasteners; SEVEN source wind-stroke segments, comprising three curling scrolls and four open arcs (two longer arcs overlap the drum face and two shorter arcs are on the far right). Original nominal cell clips drum left; complete-subject crop restores original body without invention.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset.",
+    "Initial prompt said five wind strokes; detailed original-source reinspection resolves seven separate segments, matching final output. Exact prompt preserved unchanged."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

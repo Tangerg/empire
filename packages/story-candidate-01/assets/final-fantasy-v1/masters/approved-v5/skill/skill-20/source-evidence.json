@@ -1,0 +1,66 @@
+{
+  "topicId": "C01-SKILL-20",
+  "assetId": "C01-FFV1-SKILL-20",
+  "label": "荒原风暴鼓舞",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-72276a83-333d-4551-9ef4-af26dde6020a.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-20-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-02.png",
+    "atlasSha256": "990143dee472244d1996c659e13eab791de28c1baad2aa362aa2cf02bb2bcd22",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-02.png, row 1 column 4 (one based)",
+    "topicIndex": 19,
+    "inspectionCropCoordinates": [
+      903,
+      2,
+      1252,
+      312
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop from original full board; no cleanup or alpha conversion. Nominal miscut cell retained separately.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-20.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent explicitly continued skill-17 through skill-20 while integrating the previous quartet; exact authored-order source semantics and original cell 19/20 cross-boundary correction were reported before generation.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-20-cell.png",
+    "nominalGridCellCoordinates": [
+      942,
+      2,
+      1252,
+      312
+    ],
+    "sourceCellCorrection": "Original board lacks visible grid lines. Equal-width nominal cell 19 includes the leftmost pixels of adjacent drum 20; nominal cell 20 clips its left side. Full-board subject-isolating crop is used, without altering original pixels."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-20-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "One complete drum on three visible legs with four main metal shell fasteners; SEVEN source wind-stroke segments, comprising three curling scrolls and four open arcs (two longer arcs overlap the drum face and two shorter arcs are on the far right). Original nominal cell clips drum left; complete-subject crop restores original body without invention.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits.",
+  "semanticReview": "Complete drum shell and three legs; four main shell studs; seven original wind-stroke segments, consisting of three curls plus four open arcs. No diffuse exterior haze.",
+  "sourceWindCountCorrection": "Post-generation enlarged original inspection resolves seven separate wind-stroke segments, not five. The initial summary/prompt merged the two long face-overlapping arcs into adjacent curls because their tails are faint. Generated source follows original reference with seven distinct segments, so retained unchanged. Exact initial prompt preserved for provenance.",
+  "postGenerationInspectionReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-20-wind-detail.png"
+}

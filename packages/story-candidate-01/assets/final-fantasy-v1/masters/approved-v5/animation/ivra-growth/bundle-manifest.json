@@ -1,0 +1,310 @@
+{
+  "asset": "C01-UNIT-IVRA-GROWTH",
+  "actualConsumers": [
+    "c01.ivra"
+  ],
+  "consumerStatus": "Actual campaign protagonist,one neutral c01-09 and seven allied appearances c01-10 through16; no built-in consumer found",
+  "status": "Native quartet and shared-scale export accepted; coordinator actual-scene review and binding underway",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Native raw/master are byte-identical; no painting, recoloring, cropping, resizing or alpha cleanup. White/black composites are QA only.",
+  "sharedScale": 0.058916359810625984,
+  "bodyReferenceSourcePixels": 950.5,
+  "bodyTargetHeightLogicalPixels": 56,
+  "speciesScaleContract": "Coordinator accepted a 56 logical-pixel young dragon versus 44 logical-pixel humans. Selected idle attempt-02 horn tip y24 to mean near-side hind/fore sole y974.5 gives 950.5 source pixels. The shared scale is 56/950.5 for every pose. Idle visible width is 1140 source pixels, or 67.164650 logical pixels after the approved bounded tail curl. Source contact anchor x averages four visible paw sole-band centers; y is the lowest paw sole. The partially hidden idle far-hind sole is explicitly an estimate from its visible part.",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/registration-evidence.json",
+  "identityContract": "Same juvenile/young copper-red dragon throughout four frames: large alert head with orange-gold eye/dark pupil, swept-back gray horns and crown/back spines, copper-brown scales, dark slate segmented throat/belly plates, four clawed legs plus two independent brown-membrane wings, long curling tail with dark segmented underside/spines, gray-earth claw tips. White branching scar-like marking on visible left neck. No rider,saddle,harness,collar,chains or armor.",
+  "symbolContract": "Preserve original small white branching neck scar/mark exactly as observed, without inventing sacred meaning or new rune. Orange eye light confined to eye, not external glow. No new heraldry.",
+  "semanticContract": "C01-UNIT-IVRA-GROWTH binds only c01.ivra. Eight initial campaign appearances: neutral caged-ivra in c01-09 and allied campaign-ivra in c01-10 through c01-16. The original second atlas row is one juvenile copper-red dragon across idle / walk-a / attack / walk-b, not four age stages. Preserve four legs, two wings, gray natural belly plates and horn crown, gold eye, and the small white branching left-neck scar. Walks show opposite diagonal paw contacts. Attack is a braced forward head and open-mouth breath-ready gesture; independent C01-FX-05 remains separate. Grounded source gait is retained despite the existing flying movement rule; no flight slot or rule change. Original 64x64 frame, anchor [32,63] and footprint [2,2] remain original ART metadata. They do not establish or introduce multi-cell gameplay occupancy. Narrative age cards and equipment icons remain separate.",
+  "projectionVariation": "Attack projected width is 1437 source pixels / 84.662809 logical pixels, versus idle 1140 / 67.164650, walk-a 1171 / 68.991057 and walk-b 1147 / 67.577065. The wider attack includes spread wings, a lowered forward-reaching head and a braced stance. It remains at exactly the same export scale; exact silhouette-size invariance is not claimed. Coordinator shared-scale native sequence review must judge this variation before formal binding.",
+  "selectedAttempts": {
+    "idle": "attempt-02: approved bounded tail curl",
+    "walk-a": "first successful native output",
+    "attack": "first successful native output",
+    "walk-b": "first successful native output"
+  },
+  "supersededAttempts": [
+    {
+      "pose": "idle",
+      "directory": "idle/attempt-01",
+      "reason": "Excessive 78.087 logical-pixel width; coordinator requested a bounded tail-only inward curl, preserving the body scale."
+    }
+  ],
+  "idleApproval": "Coordinator 2026-10-19 19:46 UTC approved corrected attempt-02, shared 56/950.5, foot [994,983], frame 128x80 and origin [14,6].",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "357ab16769abed2e7770c7b80b4ecdb9e09377802afeaa9082c52f176d053f04",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        994,
+        983
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        300,
+        24,
+        1440,
+        984
+      ],
+      "sha256": "235e8e8019d38bf9703291bcce8847661dda21c0f31e1ada9a0cf42d594363cb",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2a14bfe4-2a10-46fe-8b8c-5e28ba5f0dd6.png",
+      "review": "Corrected compact inward hooked tail completes original copper-red juvenile dragon; source graybellyscutes,gold eye,whiteforkneckscar,grayhornspines,fourlegs/twowings remain. Largehead/claws and broadmatteplanes unchanged in intent; no rider/chains or FX. NativeandwhiteQA inspected; completehorns/tail/paws,all4negative-spaceprobesalpha0,perimeteralpha0.",
+      "negativeSpaceProbes": [
+        {
+          "name": "below-near-wing",
+          "rectangle": [
+            447,
+            657,
+            454,
+            664
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "foreleg-gap",
+          "rectangle": [
+            1177,
+            852,
+            1184,
+            859
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "hindleg-gap",
+          "rectangle": [
+            797,
+            862,
+            804,
+            869
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "tail-hook-interior",
+          "rectangle": [
+            482,
+            702,
+            489,
+            709
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        }
+      ]
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "47cffe22c94db7f180cc50a194a64530fa2dc3fe5f99ef82bf9f4e6ac24856da",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-a/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        1018,
+        967
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        301,
+        11,
+        1472,
+        968
+      ],
+      "sha256": "2247fe314f6a7e527b93c4ccc09bc04b1f3dbeb8a3e030259cb61b6866408448",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2a88211f-5fa8-4dff-92a5-110cada16f57.png",
+      "review": "Clear diagonal quadruped walk: near-hind andfar-fore paws planted; near-fore andfar-hind lifted. Fourconnectedlegs/fourpawsplus twobackwings visually confirmed. Samehead/crown/neckscar/grayplates,compacthooktailleft301 retained. NativeandwhiteQA inspected; emptywing/tail/raisedpawspaces truealpha. No independentFX,rider or chains;nativeA1perimeterretained,0edgepixelsabove1.",
+      "negativeSpaceProbes": [
+        {
+          "name": "below-near-wing",
+          "rectangle": [
+            447,
+            637,
+            454,
+            644
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "raised-paw-gap",
+          "rectangle": [
+            987,
+            887,
+            994,
+            894
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "tail-hook-interior",
+          "rectangle": [
+            487,
+            687,
+            494,
+            694
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        }
+      ]
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "24807f5cbede7b95026a5cc5101d0878059f6f0014a4bc47eef8387c6c5afa93",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/attack/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        987,
+        962
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        109,
+        100,
+        1546,
+        963
+      ],
+      "sha256": "e83da9e71c4e7c5da48df41a24e32a838542be7f9633f7da2bd87d84cb4664c6",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-cbfa60b4-0ddf-4889-b30e-158f38980f39.png",
+      "review": "Four connected legs and four braced paws, with the same pair of wings, were visually checked in native and white-background views. The head and neck reach right with the mouth open, fangs and tongue contained within the mouth. White branching left-neck scar, copper-red body, gray natural belly plates, gold eye, and curled tail remain identifiable. No breath plume, aura, rider or chains. The wing spread and forward braced stance broaden the projected silhouette to 84.663 logical pixels at the unchanged shared scale, versus idle 67.165; this requires coordinator native-sequence review and is not claimed as exact size invariance.",
+      "negativeSpaceProbes": [
+        {
+          "name": "hindleg-gap",
+          "rectangle": [
+            687,
+            857,
+            694,
+            864
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "foreleg-gap",
+          "rectangle": [
+            1247,
+            897,
+            1254,
+            904
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "tail-hook-interior",
+          "rectangle": [
+            387,
+            642,
+            394,
+            649
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        }
+      ]
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "fbb28bc4fec36230dd313ec22a60eddab156a392e5e71fe26f7904685621e831",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ivra-growth/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        1017,
+        982
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        288,
+        16,
+        1435,
+        983
+      ],
+      "sha256": "84037cae336e4216ba6123420599672ee2e1c9157f2ca5f80f9215b9ad303b24",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bc2f3434-df61-4e9a-8898-d2ffa253f075.png",
+      "review": "Opposite diagonal support to walk-a: near-fore and far-hind paws planted, near-hind and far-fore raised. Four connected legs and four paws plus the same two back wings are visible. Closed mouth, gray horn crown, white left-neck scar, gray belly plates, compact tail and chunky copper-red identity retained. Native and white-background views inspected. No independent FX, rider or chains.",
+      "negativeSpaceProbes": [
+        {
+          "name": "raised-hind-paw-gap",
+          "rectangle": [
+            747,
+            897,
+            754,
+            904
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "raised-fore-paw-gap",
+          "rectangle": [
+            1257,
+            917,
+            1264,
+            924
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        },
+        {
+          "name": "tail-hook-interior",
+          "rectangle": [
+            477,
+            677,
+            484,
+            684
+          ],
+          "zeroPixels": 49,
+          "maxAlpha": 0
+        }
+      ]
+    }
+  },
+  "coordinatorSequenceApproval": "Coordinator 2026-10-19 19:59 UTC reviewed the shared-scale 2x quartet: identity and common scale hold, the wider forward-reaching attack is reasonable, and opposite four-paw contacts are readable. Source/export sequence accepted; actual scene review and formal binding are coordinator-owned."
+}

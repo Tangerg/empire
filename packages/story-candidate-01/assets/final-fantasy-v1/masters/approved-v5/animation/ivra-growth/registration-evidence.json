@@ -1,0 +1,240 @@
+{
+  "status": "Native quartet and shared-scale export accepted; coordinator actual-scene review and binding underway",
+  "sharedScale": 0.058916359810625984,
+  "scaleFraction": "56/950.5",
+  "bodyReferenceSourcePixels": 950.5,
+  "bodyTargetHeightLogicalPixels": 56,
+  "bodyMeasurement": "Coordinator accepted a 56 logical-pixel young dragon versus 44 logical-pixel humans. Selected idle attempt-02 horn tip y24 to mean near-side hind/fore sole y974.5 gives 950.5 source pixels. The shared scale is 56/950.5 for every pose. Idle visible width is 1140 source pixels, or 67.164650 logical pixels after the approved bounded tail curl. Source contact anchor x averages four visible paw sole-band centers; y is the lowest paw sole. The partially hidden idle far-hind sole is explicitly an estimate from its visible part.",
+  "canonicalSourceFoot": [
+    994,
+    983
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "paddingPolicy": "Native idle and walk-a are 1586x992; attack and walk-b are 1585x992. Export may add exactly one transparent right column to those two canvases. All native masters remain unchanged.",
+  "canvasPaddingToleranceRequired": 1,
+  "maximumPadRight": 1,
+  "maximumPadBottom": 0,
+  "proposedCommonFrameSize": [
+    128,
+    80
+  ],
+  "proposedOrigin": [
+    14,
+    6
+  ],
+  "registrationMethod": "Translate the complete native canvas at locked 56/950.5. Each paw is measured in a separate ROI at alpha >127; x is the average of four bottom-four-row sole-band centers, y is the lowest sole. Exact four-paw averages are retained.",
+  "projectionVariation": "Attack projected width is 1437 source pixels / 84.662809 logical pixels, versus idle 1140 / 67.164650, walk-a 1171 / 68.991057 and walk-b 1147 / 67.577065. The wider attack includes spread wings, a lowered forward-reaching head and a braced stance. It remains at exactly the same export scale; exact silhouette-size invariance is not claimed. Coordinator shared-scale native sequence review must judge this variation before formal binding.",
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        994,
+        983
+      ],
+      "fourPawSoleBandMidpoint": [
+        994.2759113726136,
+        957.75
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        300,
+        24,
+        1440,
+        984
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        101,
+        21,
+        1504,
+        986
+      ],
+      "logicalVisibleWidth": 67.16465018411363,
+      "proposedLogicalVisibleBounds": [
+        31.674908,
+        7.413993,
+        98.839558,
+        63.973698
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        14.0,
+        6.0,
+        107.441347,
+        64.445029
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      }
+    },
+    "walk-a": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        1018,
+        967
+      ],
+      "fourPawSoleBandMidpoint": [
+        1018.0414252414253,
+        927.0
+      ],
+      "registrationOffsetLogical": [
+        -1.413992635,
+        0.942661757
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        301,
+        11,
+        1472,
+        968
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        8,
+        1546,
+        992
+      ],
+      "logicalVisibleWidth": 68.99105733824302,
+      "proposedLogicalVisibleBounds": [
+        30.319832,
+        7.590742,
+        99.310889,
+        63.973698
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        12.586007,
+        6.942662,
+        106.027354,
+        65.387691
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      }
+    },
+    "attack": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        987,
+        962
+      ],
+      "fourPawSoleBandMidpoint": [
+        987.3996358430377,
+        930.5
+      ],
+      "registrationOffsetLogical": [
+        0.412414519,
+        1.237243556
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        109,
+        100,
+        1546,
+        963
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        25,
+        9,
+        1555,
+        967
+      ],
+      "logicalVisibleWidth": 84.66280904786954,
+      "proposedLogicalVisibleBounds": [
+        20.834298,
+        13.12888,
+        105.497107,
+        63.973698
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        14.412415,
+        7.237244,
+        107.853761,
+        65.682272
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      }
+    },
+    "walk-b": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        1017,
+        982
+      ],
+      "fourPawSoleBandMidpoint": [
+        1017.2163599690539,
+        919.5
+      ],
+      "registrationOffsetLogical": [
+        -1.355076276,
+        0.05891636
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        288,
+        16,
+        1435,
+        983
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        23,
+        13,
+        1493,
+        985
+      ],
+      "logicalVisibleWidth": 67.57706470278801,
+      "proposedLogicalVisibleBounds": [
+        29.612835,
+        7.001578,
+        97.1899,
+        63.973698
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        12.644924,
+        6.058916,
+        106.08627,
+        64.503945
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      }
+    }
+  },
+  "requiredMaximumTranslationLogicalPixels": 1.413992635,
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "translationBasis": "Largest offset is walk-a: foot [1018,967] against canonical [994,983], source delta [-24,16], logical [-1.413992635,0.942661757]. Existing limit 4 is sufficient. Every complete common canvas fits 128x80 at origin [14,6]. No independent pose fit.",
+  "coordinatorSequenceApproval": "Coordinator 2026-10-19 19:59 UTC reviewed the shared-scale 2x quartet: identity and common scale hold, the wider forward-reaching attack is reasonable, and opposite four-paw contacts are readable. Source/export sequence accepted; actual scene review and formal binding are coordinator-owned."
+}

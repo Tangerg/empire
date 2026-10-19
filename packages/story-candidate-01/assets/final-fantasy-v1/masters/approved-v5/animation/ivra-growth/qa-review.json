@@ -1,0 +1,65 @@
+{
+  "status": "Native quartet and shared-scale export accepted; coordinator actual-scene review and binding underway",
+  "topic": "C01-UNIT-IVRA-GROWTH",
+  "actualConsumers": [
+    "c01.ivra"
+  ],
+  "bodyScale": "56/950.5",
+  "speciesScaleContract": "Coordinator accepted a 56 logical-pixel young dragon versus 44 logical-pixel humans. Selected idle attempt-02 horn tip y24 to mean near-side hind/fore sole y974.5 gives 950.5 source pixels. The shared scale is 56/950.5 for every pose. Idle visible width is 1140 source pixels, or 67.164650 logical pixels after the approved bounded tail curl. Source contact anchor x averages four visible paw sole-band centers; y is the lowest paw sole. The partially hidden idle far-hind sole is explicitly an estimate from its visible part.",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1585,
+      992
+    ],
+    "walk-b": [
+      1585,
+      992
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourcePaddingRequired": "Native idle and walk-a are 1586x992; attack and walk-b are 1585x992. Export may add exactly one transparent right column to those two canvases. All native masters remain unchanged.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All selected native perimeters have zero pixels alpha >1. Idle, attack and walk-b max 0; walk-a max 1 native specks retained. No cleanup.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPreserved": true,
+  "fourConnectedLegsAndTwoWingsVisuallyChecked": true,
+  "walkContactsOppose": true,
+  "allNegativeSpaceProbesZeroAlpha": true,
+  "attackSemantics": "Four paws braced, head forward, open mouth with contained tongue and fangs; original pair of wings spread. No independent breath plume or aura.",
+  "projectionVariationRequiresCoordinatorReview": "Attack projected width is 1437 source pixels / 84.662809 logical pixels, versus idle 1140 / 67.164650, walk-a 1171 / 68.991057 and walk-b 1147 / 67.577065. The wider attack includes spread wings, a lowered forward-reaching head and a braced stance. It remains at exactly the same export scale; exact silhouette-size invariance is not claimed. Coordinator shared-scale native sequence review must judge this variation before formal binding.",
+  "semanticContract": "C01-UNIT-IVRA-GROWTH binds only c01.ivra. Eight initial campaign appearances: neutral caged-ivra in c01-09 and allied campaign-ivra in c01-10 through c01-16. The original second atlas row is one juvenile copper-red dragon across idle / walk-a / attack / walk-b, not four age stages. Preserve four legs, two wings, gray natural belly plates and horn crown, gold eye, and the small white branching left-neck scar. Walks show opposite diagonal paw contacts. Attack is a braced forward head and open-mouth breath-ready gesture; independent C01-FX-05 remains separate. Grounded source gait is retained despite the existing flying movement rule; no flight slot or rule change. Original 64x64 frame, anchor [32,63] and footprint [2,2] remain original ART metadata. They do not establish or introduce multi-cell gameplay occupancy. Narrative age cards and equipment icons remain separate.",
+  "symbolContract": "Preserve original small white branching neck scar/mark exactly as observed, without inventing sacred meaning or new rune. Orange eye light confined to eye, not external glow. No new heraldry.",
+  "independentFXBakedIntoCharacter": false,
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "gameplayMultiCellOccupancyClaimed": false,
+  "gameplayFixClaimed": false,
+  "coordinatorSequenceApproval": "Coordinator 2026-10-19 19:59 UTC reviewed the shared-scale 2x quartet: identity and common scale hold, the wider forward-reaching attack is reasonable, and opposite four-paw contacts are readable. Source/export sequence accepted; actual scene review and formal binding are coordinator-owned."
+}

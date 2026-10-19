@@ -36,3 +36,13 @@ Coordinator19:39UTC accepted56high/64–68wide target and sourceidentity, idle o
 
 ## Bounded tail correction19:46UTC
 Coordinator requested one tail-only inwardcurl170–200px,with body/head/paws/wings/scale preserved. Nativeattempt02 moves furthestleft silhouette112→300(188px),full visiblewidth1140px. Horny24 to nearpawsmean974.5 gives950.5px;proposedfinal56/950.5,width67.16465logical,sourcefoot[994,983]. No programmatic scaling or cropping. Originalattempt01/raw/prompt/QA preserved. All4limb/tail/wing probestransparent,edgealpha0. Whole native1586×992 fits128×80origin[14,6]. Await coordinator revised idle acceptance before otherposes.
+
+## Accepted idle and completed quartet, 19:59 UTC
+Coordinator accepted attempt-02 at 19:46 UTC and locked 56/950.5, foot [994,983], full canvas 1586x992, export frame 128x80, origin [14,6]. All three remaining poses are now generated and inspected. Source feet in original order: [994,983], [1018,967], [987,962], [1017,982]. Attack and walk-b require one transparent right column at common-canvas export; their native 1585x992 sources remain unchanged. Maximum measured full-canvas translation is 1.413993 logical pixels, within existing limit 4.
+
+Four-paw anatomy and the same pair of wings are clear. Walk-a plants near-hind plus far-fore; walk-b plants near-fore plus far-hind. Attack braces four paws, extends the head and opens the mouth without independent breath FX. Attack silhouette width is 84.662809 logical versus idle 67.164650 and walks 68.991057 / 67.577065; expanded wing spread and stance are documented for coordinator native-sequence review, with no exact projected-width invariance claim or per-pose fitting. White neck scar remains part of the original identity.
+
+All raw/master/native, prompt and original-reference hashes pass. All native perimeter pixels alpha >1 count zero; walk-a has retained native alpha-1 edge specks. Four idle and three per other pose 7x7 negative-space probes are fully transparent. Original attempt-01 and corrected attempt-02 are both preserved. Bundle, registration, pose review and QA files are complete. Source/export sequence approval and formal binding remain with coordinator.
+
+## Shared-scale sequence acceptance
+Coordinator 2026-10-19 19:59 UTC reviewed the shared-scale 2x quartet: identity and common scale hold, the wider forward-reaching attack is reasonable, and opposite four-paw contacts are readable. Source/export sequence accepted; actual scene review and formal binding are coordinator-owned.
