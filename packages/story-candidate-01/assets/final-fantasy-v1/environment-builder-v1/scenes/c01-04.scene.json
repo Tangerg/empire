@@ -51,6 +51,19 @@
       "authoredTerrainScenery": [
         "forest"
       ]
+    },
+    {
+      "id": "clearance-14-10",
+      "bounds": [
+        14,
+        10,
+        14,
+        10
+      ],
+      "role": "south-patrol-understory",
+      "authoredTerrainScenery": [
+        "forest"
+      ]
     }
   ],
   "placements": [
@@ -75,6 +88,14 @@
       "id": "fern-bed",
       "x": 4.582670625,
       "y": 12.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": false
+    },
+    {
+      "id": "fern-bed",
+      "x": 14.509185625,
+      "y": 10.18,
       "layer": "under-units",
       "scale": 0.48,
       "flip": false

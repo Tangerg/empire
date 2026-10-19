@@ -20,6 +20,7 @@ const specs = [
   { cell: [4, 9], terrain: 'plain', original: 'stone-well', replacement: 'stone-well', foot: [145.34498, 312] },
   { cell: [2, 10], terrain: 'forest', original: 'pine-mature-b', replacement: 'fern-bed', foot: [76.49765, 357.76] },
   { cell: [4, 12], terrain: 'forest', original: 'pine-mature-b', replacement: 'fern-bed', foot: [146.64546, 421.76] },
+  { cell: [14, 10], terrain: 'forest', original: 'oak-ancient', replacement: 'fern-bed', foot: [464.29394, 357.76] },
 ] as const;
 const contact = (piece: BoardPiece, x: number, y: number) => piece.foot !== undefined
   && Math.abs(piece.x - x) < 1e-6 && Math.abs(piece.y - y) < 1e-6;
@@ -31,7 +32,7 @@ const crop = (id: string) => {
   return `x="${-(cell.index % atlas.columns) * atlas.cellWidth}" y="${-Math.floor(cell.index / atlas.columns) * atlas.cellHeight}"`;
 };
 
-describe('Black Camp three-piece decorative clearance', () => {
+describe('Black Camp four-piece decorative clearance', () => {
   it.each(specs)('keeps the exact $terrain cell and proven original $original identity at $cell', spec => {
     const [x, y] = spec.cell;
     const before = candidate01MapSceneryLayers(baseline).underUnits;
@@ -67,19 +68,19 @@ describe('Black Camp three-piece decorative clearance', () => {
     expect(map.owners[y * map.width + x]).toBe(0);
   });
 
-  it('replaces exactly three decorations while preserving every other piece, ground, frame and editor projection', () => {
+  it('replaces exactly four decorations while preserving every other piece, ground, frame and editor projection', () => {
     expect(scene.mapSize).toEqual([20, 14]);
     expect(scene.selection.allowAtlases).toEqual(['rural-life', 'forest-temperate']);
     expect(scene.zones.map(zone => zone.bounds)).toEqual(specs.map(({ cell: [x, y] }) => [x, y, x, y]));
-    expect(scene.zones.map(zone => zone.authoredTerrainScenery)).toEqual([['plain'], ['forest'], ['forest']]);
-    expect(scene.placements).toHaveLength(3);
+    expect(scene.zones.map(zone => zone.authoredTerrainScenery)).toEqual([['plain'], ['forest'], ['forest'], ['forest']]);
+    expect(scene.placements).toHaveLength(4);
     expect(scene.roadCorridor).toBeUndefined();
     expect(scene.framePlacements).toBeUndefined();
     expect(scene.groundOutline).toBeUndefined();
     expect(scene.zones.every(zone => zone.authoredTerrainSurface === undefined)).toBe(true);
     const before = candidate01MapSceneryLayers(baseline), after = candidate01MapSceneryLayers(context);
-    expect(before.underUnits.filter(prior)).toHaveLength(3);
-    expect(after.underUnits.filter(authored)).toHaveLength(3);
+    expect(before.underUnits.filter(prior)).toHaveLength(4);
+    expect(after.underUnits.filter(authored)).toHaveLength(4);
     expect(after.underUnits.filter(piece => !authored(piece))).toEqual(before.underUnits.filter(piece => !prior(piece)));
     expect(after.underUnits).toHaveLength(before.underUnits.length);
     expect(after.ground).toEqual(before.ground);
@@ -110,6 +111,22 @@ describe('Black Camp three-piece decorative clearance', () => {
       { id: 'tent-a', cells: [{ x: 7, y: 4 }] }, { id: 'tent-b', cells: [{ x: 9, y: 6 }] },
       { id: 'tent-c', cells: [{ x: 11, y: 8 }] },
       { id: 'west-exit', cells: [{ x: 0, y: 11 }, { x: 0, y: 12 }, { x: 0, y: 13 }] },
+    ]);
+  });
+
+  it('distinguishes the same-cell patrol decoration from the scout’s rule-owned granary', () => {
+    const state = engine.createState(level);
+    expect(state.units.find(unit => unit.key === 'south-patrol')).toMatchObject({ x: 14, y: 10, owner: 2 });
+    expect(map.tiles[10 * map.width + 14]).toBe('forest');
+    expect(state.units.find(unit => unit.key === 'scout-1')).toMatchObject({ x: 5, y: 11, owner: 1 });
+    const granary = map.tiles[11 * map.width + 6];
+    expect(granary).toBe('village');
+    expect(catalog.terrains.get(granary)).toMatchObject({ capturable: true });
+    expect(scene.zones.some(zone => zone.bounds[0] === 6 && zone.bounds[1] === 11)).toBe(false);
+    expect(scene.placements.slice(0, 3)).toEqual([
+      { id: 'stone-well', x: 4.542030625, y: 8.75, layer: 'under-units', scale: 0.3720204, flip: false, standingShadow: true },
+      { id: 'fern-bed', x: 2.3905515625, y: 10.18, layer: 'under-units', scale: 0.48, flip: false },
+      { id: 'fern-bed', x: 4.582670625, y: 12.18, layer: 'under-units', scale: 0.48, flip: false },
     ]);
   });
 

@@ -39,11 +39,11 @@ describe('field-post consumers through the complete existing board path', () => 
     } finally { board.dispose(); }
   });
 
-  it('keeps c01-04 hidden selection hidden through repeated renders and movement, and restores actual standing placement', async () => {
+  it.each(['campaign-mirelle', 'south-patrol', 'scout-1'])('keeps c01-04 %s hidden through repeated selection/movement and restores its standing placement', async key => {
     const { state, board, surface } = mount('c01-04');
     try {
       const before = JSON.stringify(state);
-      const actor = state.units.find(unit => unit.key === 'campaign-mirelle')!;
+      const actor = state.units.find(unit => unit.key === key)!;
       const drawing = surface.drawnUnit(actor.id)!;
       const place = vi.spyOn(drawing, 'place');
       const overlay = emptyOverlay();
