@@ -1,0 +1,93 @@
+{
+  "topicId": "C01-STRUCT-PUBLIC-RATION-POINT",
+  "label": "公开分粮点",
+  "originalManifestEntry": {
+    "assetId": "C01-FFV1-STRUCT-PUBLIC-RATION-POINT",
+    "topicId": "C01-STRUCT-PUBLIC-RATION-POINT",
+    "label": "公开分粮点",
+    "category": "interactive-structure",
+    "png": "runtime/interactive-structure/struct-public-ration-point.png",
+    "width": 192,
+    "height": 64,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 64,
+    "frames": 3,
+    "stateOrder": [
+      "normal",
+      "damaged",
+      "captured"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "footprint": [
+      2,
+      2
+    ]
+  },
+  "selection": "Exclusive parent assignment after gray-flag-point",
+  "sourceAtlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-05.png",
+  "sourceAtlasSize": [
+    1086,
+    1448
+  ],
+  "sourceAtlasSha256": "f46ed6a65049889be67a0a007b8cdc13521c83f1b8393f314b36942ca4753d0c",
+  "sourceCellBoxes": {
+    "normal": [
+      0,
+      780,
+      362,
+      1114
+    ],
+    "damaged": [
+      362,
+      780,
+      724,
+      1114
+    ],
+    "captured": [
+      724,
+      780,
+      1086,
+      1114
+    ]
+  },
+  "sourceStateOrder": [
+    "normal",
+    "damaged",
+    "captured"
+  ],
+  "runtimeHdReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-public-ration-point.png",
+  "consumerEvidence": {
+    "status": "no-static-consumer-reference-found",
+    "audit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "directSearch": "Exact topic and runtime slug in *.ts and *.scene.json returned no matches",
+    "observedInBrowser": false,
+    "qualification": "Catalog runtime asset exists; no actual placed campaign/interactive instance proved; dynamic external input not excluded"
+  },
+  "stateIdentity": {
+    "normal": "Ochre yellow canopy timber ration stall with left amber lantern, two grain baskets, low grain tray/small box, front-left tied sack and front-right open sack/grain crate, right standing parchment tally board",
+    "damaged": "Large torn awning, broken counter and scattered boards, spilled grain, leaning fallen tally board, left lantern absent",
+    "captured": "Restored normal stall with exactly three round hanging tokens under front canopy: blue then gold then green left-to-right; no flag"
+  },
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sourceFoot": [
+    627,
+    1106
+  ],
+  "proposedLogicalVisibleWidth": 112,
+  "originalCropSha256": {
+    "normal": "c085b92c1ecf9f5b6bfff593233793f3ec864348a02dbd9e9bb732384339428d",
+    "damaged": "6d37700a4b0b4563a30654e739e7772092946f1a7314c9189079bfc586881c59",
+    "captured": "230a1b0418e9a50a856a1b97b6875a57537e4aad8587bac767308eec22a3618d"
+  },
+  "styleReference": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+  "noRepositoryWrites": true,
+  "normalVisibleWidth": 1208
+}

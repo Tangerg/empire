@@ -1,0 +1,61 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "dry-crack",
+  "cellIndexZeroBased": 7,
+  "nativeSize": [
+    1536,
+    1024
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    254
+  ],
+  "transparentFraction": 0.643011728922526,
+  "nearOpaqueFractionAlphaGE250": 0.3421134948730469,
+  "nonzeroAlphaBBox": [
+    0,
+    37,
+    1518,
+    1024
+  ],
+  "visibleAlphaBBoxGE8": [
+    87,
+    208,
+    1452,
+    855
+  ],
+  "subjectAlphaBBoxGE128": [
+    88,
+    209,
+    1452,
+    855
+  ],
+  "solidAlphaBBoxGE250": [
+    89,
+    209,
+    1451,
+    854
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    88,
+    209,
+    84,
+    169
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "suggestedRegistrationFootpointNative": [
+    770.0,
+    855
+  ],
+  "footpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding.",
+  "sha256": "2680ca53d2a9ce64943305886138d49123dc3f4ac793dfef822dff809699f3ec",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Complete low-wide subject, broad chunky matte cel planes; no foreign neighboring atlas fragments. Stone cluster preserves seven principal stones; dry-crack preserves a cohesive flat parched-earth patch with a sparse main crack network.",
+  "remarks": [
+    "Native alpha=1 fringe specks retained unchanged; not included in subject bounds or footpoint.",
+    "Native landscape canvas retained without resizing; 64/128 is the downstream square runtime cell contract. Exterior RGB haze visible in some tool previews lies outside alpha>=8 subject bounds; alpha thresholds 8/128/250 have nearly coincident bounds, with no broad visible-alpha haze."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}
