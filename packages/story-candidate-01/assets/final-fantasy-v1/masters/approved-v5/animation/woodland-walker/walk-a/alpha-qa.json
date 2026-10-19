@@ -1,0 +1,96 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a7ba9d5b-f6d1-48cc-9749-3d036aff59c0.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "eb92d72541a69382a51503b04254c34969bb013b2d3c43ce6e5081bf66175c2b",
+  "bboxAlphaNonzero": [
+    0,
+    0,
+    1558,
+    974
+  ],
+  "bboxAlphaGreaterThan127": [
+    385,
+    9,
+    1318,
+    970
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1061294,
+  "alphaOnePixels": 7943,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "rootFoot": "screen-left-root",
+      "roi": [
+        480,
+        750,
+        725,
+        930
+      ],
+      "soleY": 914,
+      "bottomFourRowsMeanX": 636.0869565217391
+    },
+    {
+      "rootFoot": "screen-right-root",
+      "roi": [
+        740,
+        830,
+        1120,
+        985
+      ],
+      "soleY": 969,
+      "bottomFourRowsMeanX": 871.7093023255813
+    }
+  ],
+  "sourceFootMidpoint": [
+    753.8981294236603,
+    941.5
+  ],
+  "suggestedSourceFoot": [
+    754,
+    969
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "staff-curl",
+      "rectangle": [
+        1213,
+        187,
+        1220,
+        194
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        747,
+        832,
+        754,
+        839
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "branch-gap",
+      "rectangle": [
+        807,
+        62,
+        814,
+        69
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Right broad root foot clearly forward/planted, left root foot lifted behind with bent wood leg; opposite contact planned forwalk-b. Exact tree face/branch crown/pale chest/leaf clothing, right curled staff and empty left hand preserved. Native and white QA inspected; curl,leg andbranch gaps transparent; no external glow or new icon. Native alpha1 perimeter specks retained;0edgepixels above1."
+}
