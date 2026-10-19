@@ -1,0 +1,52 @@
+{
+  "topicId": "c03-battle-prop-10c026c1",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-10c026c1.png",
+  "label": "sandbags/wet felt",
+  "observed_visual_description": "Tall timber/straw structure clipped at top; disconnected blue-gray cylindrical roll clipped at bottom.",
+  "source_size": [
+    64,
+    64
+  ],
+  "source_mode": "RGBA",
+  "source_alpha_extrema": [
+    0,
+    255
+  ],
+  "reason": "Original consists of clipped or unrelated atlas fragments. No generation performed. Canonical source mapping is needed before faithful remake.",
+  "generated": true,
+  "original_status": "blocked-source-integrity",
+  "reconstructed_identity": true,
+  "uncertainty": "Semantic reconstruction from manifest label and complete props board. Exact historical crop mapping is unverified; not a faithful restyle of defective runtime pixels.",
+  "generated_size": [
+    1254,
+    1254
+  ],
+  "generated_mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_zero_pixels": 978106,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      21,
+      1240,
+      1214
+    ],
+    "128": [
+      16,
+      228,
+      1235,
+      1053
+    ],
+    "240": [
+      17,
+      229,
+      1234,
+      1053
+    ]
+  },
+  "visual_review": "Complete sandbag and folded felt group, muted matte materials; no floor or clipping. Broad cloth texture slightly stronger than ideal."
+}

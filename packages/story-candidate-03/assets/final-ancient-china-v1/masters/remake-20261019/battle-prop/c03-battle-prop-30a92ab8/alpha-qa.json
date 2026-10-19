@@ -1,0 +1,52 @@
+{
+  "topicId": "c03-battle-prop-30a92ab8",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-30a92ab8.png",
+  "label": "bridgeboards",
+  "observed_visual_description": "Disconnected equipment fragments clipped on top, right, and bottom; box and tools rather than bridgeboards.",
+  "source_size": [
+    64,
+    64
+  ],
+  "source_mode": "RGBA",
+  "source_alpha_extrema": [
+    0,
+    255
+  ],
+  "reason": "Original consists of clipped or unrelated atlas fragments. No generation performed. Canonical source mapping is needed before faithful remake.",
+  "generated": true,
+  "original_status": "blocked-source-integrity",
+  "reconstructed_identity": true,
+  "uncertainty": "Semantic reconstruction from manifest label and complete props board. Exact historical crop mapping is unverified; not a faithful restyle of defective runtime pixels.",
+  "generated_size": [
+    1254,
+    1254
+  ],
+  "generated_mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_zero_pixels": 827965,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      5,
+      1226,
+      1254
+    ],
+    "128": [
+      64,
+      166,
+      1199,
+      1125
+    ],
+    "240": [
+      65,
+      167,
+      1198,
+      1124
+    ]
+  },
+  "visual_review": "Complete two-layer wooden plank bundle with twin hemp lashings and loose loop; warm matte surfaces, no floor or clipping."
+}
