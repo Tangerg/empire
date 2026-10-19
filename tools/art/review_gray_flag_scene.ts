@@ -1,6 +1,6 @@
-/** Complete c01-01 BoardView/SvgBoardSurface evidence, with actual actor bindings and no omissions. */
+/** Complete selected Gray Flag level BoardView/SvgBoardSurface evidence, with actual actor bindings and no omissions. */
 import { createHash } from 'node:crypto';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { relative, resolve } from 'node:path';
 import { content, engine, shippedLevel, CANDIDATE_01_ART, emptyOverlay } from '../board-harness';
 import { CANDIDATE_01_UNIT_ART } from '../../packages/story-candidate-01/src/presentation/candidate-01-bindings';
@@ -9,7 +9,9 @@ import { BoardDepthOrder, BoardView, CELL_FOOT, SvgBoardSurface, TILE, type Boar
 const root = resolve(import.meta.dirname, '../..');
 const output = resolve(process.env.STANDING_REVIEW_OUTPUT ?? '/tmp/empire-gray-flag-scene-review');
 mkdirSync(output, { recursive: true });
-const level = shippedLevel('c01-01');
+const requestedLevel = process.env.SCENE_REVIEW_LEVEL ?? 'c01-01';
+if (!/^c01-\d{2}$/.test(requestedLevel)) throw new Error('expected an existing c01 campaign level ID');
+const level = shippedLevel(requestedLevel);
 const sources = new Map<string, string>();
 const appStylesPath = 'packages/game-ui/src/styles/app.css';
 const appStyles = readFileSync(resolve(root, appStylesPath), 'utf8');
@@ -22,16 +24,18 @@ for (const path of [environmentPath,
   'packages/story-candidate-01/src/presentation/index.ts',
   'packages/game-ui/src/art/battlefield-layer.ts',
   'packages/game-ui/src/ui/board.ts',
-  'packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json',
   'packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts',
   'packages/story-candidate-01/src/presentation/candidate-01-road-material.ts',
-  'packages/story-candidate-01/src/presentation/candidate-01-road-corridor.ts',
   'packages/story-candidate-01/src/presentation/candidate-01-road-corridor.ts',
   'packages/story-candidate-01/src/presentation/candidate-01-environment.ts',
   'packages/story-candidate-01/src/presentation/candidate-01-world-material.ts',
   'packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-road-material-v2.json',
   'packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts',
 ]) sources.set(path, createHash('sha256').update(readFileSync(resolve(root, path))).digest('hex'));
+const authoredScenePath = `packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/${level.id}.scene.json`;
+if (existsSync(resolve(root, authoredScenePath))) {
+  sources.set(authoredScenePath, createHash('sha256').update(readFileSync(resolve(root, authoredScenePath))).digest('hex'));
+}
 const renders = [];
 {
   const state = engine.createState(level);
@@ -62,7 +66,9 @@ const renders = [];
   svg.removeAttribute('style');
   const unitCount = svg.querySelectorAll('.layer-units > .unit').length;
   const buildingCount = svg.querySelectorAll('[data-candidate-art="structure"]').length;
-  if (unitCount !== 19 || buildingCount !== 4) throw new Error(`incomplete c01-01 snapshot: ${unitCount} actors, ${buildingCount} buildings`);
+  if (unitCount !== state.units.length || (level.id === 'c01-01' && (unitCount !== 19 || buildingCount !== 4))) {
+    throw new Error(`incomplete ${level.id} snapshot: ${unitCount} actors, ${buildingCount} buildings`);
+  }
   const filename = 'runtime-standing-full.svg';
   const actors = state.units.map((unit) => ({ id: `actor:${unit.id}`, actorId: unit.id, key: unit.key,
     type: unit.type, cell: [unit.x, unit.y], facing: unit.facing,
