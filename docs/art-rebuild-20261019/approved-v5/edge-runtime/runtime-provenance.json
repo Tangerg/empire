@@ -1,0 +1,2713 @@
+{
+  "kind": "offline real BoardPieces diagnostic; not a live gameplay screenshot",
+  "levelId": "c01-02",
+  "mapSize": [
+    22,
+    14
+  ],
+  "logicalExtent": [
+    704,
+    448
+  ],
+  "material": {
+    "schemaVersion": 2,
+    "id": "meadow-base",
+    "replaces": {
+      "atlas": "surface-meadow",
+      "tone": 0
+    },
+    "source": "masters/approved-v5/grass-material/master.png",
+    "sourceSha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+    "logicalSize": [
+      1024,
+      1024
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "png": "runtime/meadow-base.png",
+    "png2x": "runtime/meadow-base@2x.png",
+    "rasterSize": [
+      512,
+      512
+    ],
+    "rasterPixelsPerWorldUnit": [
+      1,
+      1
+    ],
+    "href": "/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png"
+  },
+  "fieldPieces": [
+    {
+      "x": 112,
+      "y": 120,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"grass-road-edge\" transform=\"scale(1 1)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png\" x=\"-55.37170263788969\" y=\"-20.599520383693047\" width=\"110.2158273381295\" height=\"40.7673860911271\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 96,
+      "y": 168,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"grass-road-edge\" transform=\"scale(1 -1)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png\" x=\"-55.37170263788969\" y=\"-20.599520383693047\" width=\"110.2158273381295\" height=\"40.7673860911271\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 560,
+      "y": 120,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"grass-road-edge\" transform=\"scale(1 1)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png\" x=\"-55.37170263788969\" y=\"-20.599520383693047\" width=\"110.2158273381295\" height=\"40.7673860911271\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 560,
+      "y": 168,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"grass-road-edge\" transform=\"scale(1 -1)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png\" x=\"-55.37170263788969\" y=\"-20.599520383693047\" width=\"110.2158273381295\" height=\"40.7673860911271\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 144,
+      "y": 296,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"grass-road-edge\" transform=\"scale(1 -1)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png\" x=\"-55.37170263788969\" y=\"-20.599520383693047\" width=\"110.2158273381295\" height=\"40.7673860911271\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 560,
+      "y": 248,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"grass-road-edge\" transform=\"scale(1 1)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png\" x=\"-55.37170263788969\" y=\"-20.599520383693047\" width=\"110.2158273381295\" height=\"40.7673860911271\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 310,
+      "y": 64,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"bank-edge\" transform=\"scale(0.78125 0.78125)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png\" x=\"-25.997210599721058\" y=\"-37.31101813110181\" width=\"51.77126917712692\" height=\"74.62203626220362\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 310,
+      "y": 160,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"bank-edge\" transform=\"scale(0.78125 0.78125)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png\" x=\"-25.997210599721058\" y=\"-37.31101813110181\" width=\"51.77126917712692\" height=\"74.62203626220362\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 310,
+      "y": 256,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"bank-edge\" transform=\"scale(0.78125 0.78125)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png\" x=\"-25.997210599721058\" y=\"-37.31101813110181\" width=\"51.77126917712692\" height=\"74.62203626220362\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 310,
+      "y": 368,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"bank-edge\" transform=\"scale(1 1)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png\" x=\"-25.997210599721058\" y=\"-37.31101813110181\" width=\"51.77126917712692\" height=\"74.62203626220362\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 394,
+      "y": 64,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"bank-edge\" transform=\"scale(-0.78125 0.78125)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png\" x=\"-25.997210599721058\" y=\"-37.31101813110181\" width=\"51.77126917712692\" height=\"74.62203626220362\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 394,
+      "y": 160,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"bank-edge\" transform=\"scale(-0.78125 0.78125)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png\" x=\"-25.997210599721058\" y=\"-37.31101813110181\" width=\"51.77126917712692\" height=\"74.62203626220362\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 394,
+      "y": 256,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"bank-edge\" transform=\"scale(-0.78125 0.78125)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png\" x=\"-25.997210599721058\" y=\"-37.31101813110181\" width=\"51.77126917712692\" height=\"74.62203626220362\" preserveAspectRatio=\"none\"/></g>"
+    },
+    {
+      "x": 394,
+      "y": 368,
+      "markup": "<g class=\"candidate-ground-edge\" data-edge-decoration=\"bank-edge\" transform=\"scale(-1 1)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png\" x=\"-25.997210599721058\" y=\"-37.31101813110181\" width=\"51.77126917712692\" height=\"74.62203626220362\" preserveAspectRatio=\"none\"/></g>"
+    }
+  ],
+  "waterAndBridgeCells": [
+    [
+      10,
+      0
+    ],
+    [
+      11,
+      0
+    ],
+    [
+      10,
+      1
+    ],
+    [
+      11,
+      1
+    ],
+    [
+      10,
+      2
+    ],
+    [
+      11,
+      2
+    ],
+    [
+      10,
+      3
+    ],
+    [
+      11,
+      3
+    ],
+    [
+      10,
+      4
+    ],
+    [
+      11,
+      4
+    ],
+    [
+      10,
+      5
+    ],
+    [
+      11,
+      5
+    ],
+    [
+      10,
+      6
+    ],
+    [
+      11,
+      6
+    ],
+    [
+      10,
+      7
+    ],
+    [
+      11,
+      7
+    ],
+    [
+      10,
+      8
+    ],
+    [
+      11,
+      8
+    ],
+    [
+      10,
+      9
+    ],
+    [
+      11,
+      9
+    ],
+    [
+      10,
+      10
+    ],
+    [
+      11,
+      10
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      11,
+      11
+    ],
+    [
+      10,
+      12
+    ],
+    [
+      11,
+      12
+    ],
+    [
+      10,
+      13
+    ],
+    [
+      11,
+      13
+    ]
+  ],
+  "layerCounts": {
+    "ground": 227,
+    "underUnits": 46,
+    "overUnits": 0
+  },
+  "buildingCount": 9,
+  "unitCount": 20,
+  "buildingRegistrations": [
+    {
+      "topic": "C01-STRUCT-JOINT-GRANARY",
+      "cell": [
+        2,
+        1
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-joint-granary.png",
+      "frameSize": [
+        172,
+        172
+      ],
+      "anchor": [
+        87.44827586206897,
+        154.97931034482758
+      ],
+      "presentationScale": 0.6,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        80,
+        63
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-LORNE-KEEP",
+      "cell": [
+        20,
+        1
+      ],
+      "owner": 2,
+      "state": "captured",
+      "source": "runtime-approved-v5/structure/struct-lorne-keep.png",
+      "frameSize": [
+        160,
+        160
+      ],
+      "anchor": [
+        80.60847880299252,
+        140.21945137157107
+      ],
+      "presentationScale": 0.65,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        656,
+        63
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-LORNE-KEEP",
+      "cell": [
+        1,
+        3
+      ],
+      "owner": 1,
+      "state": "captured",
+      "source": "runtime-approved-v5/structure/struct-lorne-keep.png",
+      "frameSize": [
+        160,
+        160
+      ],
+      "anchor": [
+        80.60847880299252,
+        140.21945137157107
+      ],
+      "presentationScale": 0.65,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        48,
+        127
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-JOINT-GRANARY",
+      "cell": [
+        6,
+        5
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-joint-granary.png",
+      "frameSize": [
+        172,
+        172
+      ],
+      "anchor": [
+        87.44827586206897,
+        154.97931034482758
+      ],
+      "presentationScale": 0.6,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        208,
+        191
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-JOINT-GRANARY",
+      "cell": [
+        14,
+        5
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-joint-granary.png",
+      "frameSize": [
+        172,
+        172
+      ],
+      "anchor": [
+        87.44827586206897,
+        154.97931034482758
+      ],
+      "presentationScale": 0.6,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        464,
+        191
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-JOINT-GRANARY",
+      "cell": [
+        1,
+        11
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-joint-granary.png",
+      "frameSize": [
+        172,
+        172
+      ],
+      "anchor": [
+        87.44827586206897,
+        154.97931034482758
+      ],
+      "presentationScale": 0.6,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        48,
+        383
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-JOINT-GRANARY",
+      "cell": [
+        17,
+        11
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-joint-granary.png",
+      "frameSize": [
+        172,
+        172
+      ],
+      "anchor": [
+        87.44827586206897,
+        154.97931034482758
+      ],
+      "presentationScale": 0.6,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        560,
+        383
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-LORNE-KEEP",
+      "cell": [
+        5,
+        12
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-lorne-keep.png",
+      "frameSize": [
+        160,
+        160
+      ],
+      "anchor": [
+        80.60847880299252,
+        140.21945137157107
+      ],
+      "presentationScale": 0.65,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        176,
+        415
+      ]
+    },
+    {
+      "topic": "C01-STRUCT-LORNE-KEEP",
+      "cell": [
+        20,
+        12
+      ],
+      "owner": 0,
+      "state": "normal",
+      "source": "runtime-approved-v5/structure/struct-lorne-keep.png",
+      "frameSize": [
+        160,
+        160
+      ],
+      "anchor": [
+        80.60847880299252,
+        140.21945137157107
+      ],
+      "presentationScale": 0.65,
+      "footprint": [
+        2,
+        2
+      ],
+      "worldFoot": [
+        656,
+        415
+      ]
+    }
+  ],
+  "standingCount": 70,
+  "standingOrder": [
+    {
+      "origin": [
+        82.30643,
+        37.76
+      ],
+      "foot": [
+        82.30643,
+        37.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        116.03956,
+        37.76
+      ],
+      "foot": [
+        116.03956,
+        37.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        240.4769,
+        37.76
+      ],
+      "foot": [
+        240.4769,
+        37.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        530.42046,
+        37.76
+      ],
+      "foot": [
+        530.42046,
+        37.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        657.84849,
+        37.76
+      ],
+      "foot": [
+        657.84849,
+        37.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        64,
+        32
+      ],
+      "foot": [
+        80,
+        63
+      ],
+      "kind": "building"
+    },
+    {
+      "origin": [
+        640,
+        32
+      ],
+      "foot": [
+        656,
+        63
+      ],
+      "kind": "building"
+    },
+    {
+      "origin": [
+        81.20701,
+        69.75999999999999
+      ],
+      "foot": [
+        81.20701,
+        69.75999999999999
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        115.15658,
+        69.75999999999999
+      ],
+      "foot": [
+        115.15658,
+        69.75999999999999
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        462.1877,
+        69.75999999999999
+      ],
+      "foot": [
+        462.1877,
+        69.75999999999999
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        626.02629,
+        69.75999999999999
+      ],
+      "foot": [
+        626.02629,
+        69.75999999999999
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        691.08392,
+        69.75999999999999
+      ],
+      "foot": [
+        691.08392,
+        69.75999999999999
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        480,
+        64
+      ],
+      "foot": [
+        496,
+        95
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        175.24445,
+        101.75999999999999
+      ],
+      "foot": [
+        175.24445,
+        101.75999999999999
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        588.01939,
+        101.75999999999999
+      ],
+      "foot": [
+        588.01939,
+        101.75999999999999
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        656.28861,
+        101.75999999999999
+      ],
+      "foot": [
+        656.28861,
+        101.75999999999999
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        32,
+        96
+      ],
+      "foot": [
+        48,
+        127
+      ],
+      "kind": "building"
+    },
+    {
+      "origin": [
+        608,
+        96
+      ],
+      "foot": [
+        624,
+        127
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        14.67679,
+        133.76
+      ],
+      "foot": [
+        14.67679,
+        133.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        80.3969,
+        133.76
+      ],
+      "foot": [
+        80.3969,
+        133.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        143.8876,
+        133.76
+      ],
+      "foot": [
+        143.8876,
+        133.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        640,
+        128
+      ],
+      "foot": [
+        656,
+        159
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        467.00055,
+        165.76
+      ],
+      "foot": [
+        467.00055,
+        165.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        192,
+        160
+      ],
+      "foot": [
+        208,
+        191
+      ],
+      "kind": "building"
+    },
+    {
+      "origin": [
+        448,
+        160
+      ],
+      "foot": [
+        464,
+        191
+      ],
+      "kind": "building"
+    },
+    {
+      "origin": [
+        608,
+        160
+      ],
+      "foot": [
+        624,
+        191
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        80.18315,
+        197.76
+      ],
+      "foot": [
+        80.18315,
+        197.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        172.7646,
+        197.76
+      ],
+      "foot": [
+        172.7646,
+        197.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        434.66861,
+        197.76
+      ],
+      "foot": [
+        434.66861,
+        197.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        494.96533,
+        197.76
+      ],
+      "foot": [
+        494.96533,
+        197.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        626.68812,
+        197.76
+      ],
+      "foot": [
+        626.68812,
+        197.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        464.13608,
+        229.76
+      ],
+      "foot": [
+        464.13608,
+        229.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        96,
+        224
+      ],
+      "foot": [
+        112,
+        255
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        47.67445,
+        261.76
+      ],
+      "foot": [
+        47.67445,
+        261.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        204.40936,
+        261.76
+      ],
+      "foot": [
+        204.40936,
+        261.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        529.52765,
+        261.76
+      ],
+      "foot": [
+        529.52765,
+        261.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        32,
+        256
+      ],
+      "foot": [
+        48,
+        287
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        64,
+        256
+      ],
+      "foot": [
+        80,
+        287
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        576,
+        256
+      ],
+      "foot": [
+        592,
+        287
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        32,
+        288
+      ],
+      "foot": [
+        48,
+        319
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        64,
+        288
+      ],
+      "foot": [
+        80,
+        319
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        81.46457,
+        325.76
+      ],
+      "foot": [
+        81.46457,
+        325.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        623.87202,
+        325.76
+      ],
+      "foot": [
+        623.87202,
+        325.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        32,
+        320
+      ],
+      "foot": [
+        48,
+        351
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        64,
+        320
+      ],
+      "foot": [
+        80,
+        351
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        96,
+        320
+      ],
+      "foot": [
+        112,
+        351
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        640,
+        320
+      ],
+      "foot": [
+        656,
+        351
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        143.9936,
+        357.76
+      ],
+      "foot": [
+        143.9936,
+        357.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        464.29394,
+        357.76
+      ],
+      "foot": [
+        464.29394,
+        357.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        557.01233,
+        357.76
+      ],
+      "foot": [
+        557.01233,
+        357.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        32,
+        352
+      ],
+      "foot": [
+        48,
+        383
+      ],
+      "kind": "building"
+    },
+    {
+      "origin": [
+        32,
+        352
+      ],
+      "foot": [
+        48,
+        383
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        512,
+        352
+      ],
+      "foot": [
+        528,
+        383
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        544,
+        352
+      ],
+      "foot": [
+        560,
+        383
+      ],
+      "kind": "building"
+    },
+    {
+      "origin": [
+        47.17862,
+        389.76
+      ],
+      "foot": [
+        47.17862,
+        389.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        209.98783,
+        389.76
+      ],
+      "foot": [
+        209.98783,
+        389.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        593.74769,
+        389.76
+      ],
+      "foot": [
+        593.74769,
+        389.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        654.1121,
+        389.76
+      ],
+      "foot": [
+        654.1121,
+        389.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        64,
+        384
+      ],
+      "foot": [
+        80,
+        415
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        96,
+        384
+      ],
+      "foot": [
+        112,
+        415
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        160,
+        384
+      ],
+      "foot": [
+        176,
+        415
+      ],
+      "kind": "building"
+    },
+    {
+      "origin": [
+        160,
+        384
+      ],
+      "foot": [
+        176,
+        415
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        640,
+        384
+      ],
+      "foot": [
+        656,
+        415
+      ],
+      "kind": "building"
+    },
+    {
+      "origin": [
+        640,
+        384
+      ],
+      "foot": [
+        656,
+        415
+      ],
+      "kind": "unit"
+    },
+    {
+      "origin": [
+        210.64054,
+        421.76
+      ],
+      "foot": [
+        210.64054,
+        421.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        461.71455,
+        421.76
+      ],
+      "foot": [
+        461.71455,
+        421.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        556.59716,
+        421.76
+      ],
+      "foot": [
+        556.59716,
+        421.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        627.06026,
+        421.76
+      ],
+      "foot": [
+        627.06026,
+        421.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        82.24793,
+        453.76
+      ],
+      "foot": [
+        82.24793,
+        453.76
+      ],
+      "kind": "scenery"
+    },
+    {
+      "origin": [
+        590.34265,
+        453.76
+      ],
+      "foot": [
+        590.34265,
+        453.76
+      ],
+      "kind": "scenery"
+    }
+  ],
+  "horizontalCrossing": {
+    "schemaVersion": 1,
+    "id": "approved-stone-crossing-horizontal",
+    "orientation": "horizontal",
+    "source": "masters/approved-v5/bridge/bridge-master.png",
+    "sourceSha256": "8185b37a95725c9f6840dd1f8a15fc647706b86f9666f7e7b3dc2142d858ac15",
+    "sourceSize": [
+      1729,
+      910
+    ],
+    "sourceFoot": [
+      864,
+      418
+    ],
+    "logicalPerSourcePixel": 0.08098336948662328,
+    "png": "runtime/stone-crossing-horizontal.png",
+    "png2x": "runtime/stone-crossing-horizontal@2x.png",
+    "approvedExports": {
+      "png": "2fb201b72ceaf579ca1453a003697b612685cd3baafb63cecb92a93a718c7c58",
+      "png2x": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d"
+    },
+    "logicalSize": [
+      140.02024584237165,
+      73.69486623282718
+    ],
+    "anchor": [
+      69.96963123644251,
+      33.85104844540853
+    ],
+    "href": "/packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png"
+  },
+  "crossingPlacements": [
+    {
+      "markup": "<g class=\"candidate-environment-prop is-standing\" transform=\"translate(-69.96963123644251 -33.85104844540853)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png\" width=\"140.02024584237165\" height=\"73.69486623282718\" preserveAspectRatio=\"none\"/></g>",
+      "x": 352,
+      "y": 112
+    },
+    {
+      "markup": "<g class=\"candidate-environment-prop is-standing\" transform=\"translate(-69.96963123644251 -33.85104844540853)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png\" width=\"140.02024584237165\" height=\"73.69486623282718\" preserveAspectRatio=\"none\"/></g>",
+      "x": 352,
+      "y": 208
+    },
+    {
+      "markup": "<g class=\"candidate-environment-prop is-standing\" transform=\"translate(-69.96963123644251 -33.85104844540853)\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png\" width=\"140.02024584237165\" height=\"73.69486623282718\" preserveAspectRatio=\"none\"/></g>",
+      "x": 352,
+      "y": 304
+    }
+  ],
+  "connectorBinding": {
+    "schemaVersion": 1,
+    "atlas": "route-dirt-road",
+    "edgeAtlas": "route-edge-dirt-road",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/earth-material/revision-2/master.png",
+    "sha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+    "geometrySource": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py",
+    "geometrySha256": "8b8690a2fbca6065e85ff667eeb40241e55f065611741bb008579ce8bcc3015c",
+    "roadWidthLogical": 22,
+    "approved2xOutputs": {
+      "route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+      "route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a"
+    },
+    "previous1xOutputs": {
+      "route-dirt-road.png": "f6670b9a964f159e296d63a22db92e85b314b8dc59fa4f270ac00cd2ff1bc053",
+      "route-edge-dirt-road.png": "9634403a7054655f2eeb24f833bd741d01d72f3478aad967831ce9ee6a39970b"
+    },
+    "derivation1x": "independent-64-to-32-lanczos-then-open-port-rgb-match"
+  },
+  "edgeDecoration": {
+    "schemaVersion": 1,
+    "meaningfulAlphaMin": 2,
+    "calibration": "approved-v5/edge-registration-wide.json",
+    "geometryDependencies": [
+      {
+        "source": "tools/art/connector-overrides.json",
+        "sha256": "40a904c17622bc21df9718e7061ced83b0d034c3f7707a6a639d73f5870c6132"
+      },
+      {
+        "source": "tools/art/water_area.py",
+        "sha256": "d0b67beee65dc4f0dbc3c1a2fcdd416e1ab7e0f44735ae099cc908020639bf65"
+      }
+    ],
+    "assets": [
+      {
+        "id": "grass-road-edge",
+        "source": "masters/approved-v5/grass-edge/revision-2/original.png",
+        "sourceSha256": "8821ec714c7dacf63f62617e1a46058f15616e0be80a45fa49c24c35c0ddc23f",
+        "sourceSize": [
+          2172,
+          724
+        ],
+        "sourceAnchor": [
+          1091.5,
+          366.5
+        ],
+        "meaningfulSourceBounds": [
+          46,
+          48,
+          2138,
+          611
+        ],
+        "logicalPerSourcePixel": 0.047961630695443645,
+        "png": "runtime/grass-road-edge.png",
+        "png2x": "runtime/grass-road-edge@2x.png",
+        "sourcePadding": 63,
+        "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png",
+        "logicalSize": [
+          110.2158273381295,
+          40.7673860911271
+        ],
+        "logicalAnchor": [
+          55.37170263788969,
+          20.599520383693047
+        ]
+      },
+      {
+        "id": "bank-edge",
+        "source": "masters/approved-v5/bank-edge/revision-3/master.png",
+        "sourceSha256": "f646b69f29854ad06fe1ef83654c4c48f0b6081c4c6fffdddda616b067884be9",
+        "sourceSize": [
+          1024,
+          1536
+        ],
+        "sourceAnchor": [
+          514.5,
+          768
+        ],
+        "meaningfulSourceBounds": [
+          51,
+          49,
+          978,
+          1487
+        ],
+        "logicalPerSourcePixel": 0.044630404463040445,
+        "png": "runtime/bank-edge.png",
+        "png2x": "runtime/bank-edge@2x.png",
+        "sourcePadding": 68,
+        "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png",
+        "logicalSize": [
+          51.77126917712692,
+          74.62203626220362
+        ],
+        "logicalAnchor": [
+          25.997210599721058,
+          37.31101813110181
+        ]
+      }
+    ],
+    "scenes": [
+      {
+        "levelId": "c01-02",
+        "mapSize": [
+          22,
+          14
+        ],
+        "placements": [
+          {
+            "id": "road-margin-1",
+            "assetId": "grass-road-edge",
+            "center": [
+              112,
+              120
+            ],
+            "scale": 1,
+            "flipX": false,
+            "flipY": false,
+            "terrainSupport": {
+              "origin": [
+                0,
+                2
+              ],
+              "rows": [
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "forest",
+                  "plain"
+                ],
+                [
+                  "plain",
+                  "c01.outpost",
+                  "plain",
+                  "plain",
+                  "hill",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "road",
+                  "road",
+                  "road",
+                  "road",
+                  "road",
+                  "road",
+                  "plain"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "forest",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "village"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "grass-road-edge",
+              "source": "masters/approved-v5/grass-edge/revision-2/original.png",
+              "sourceSha256": "8821ec714c7dacf63f62617e1a46058f15616e0be80a45fa49c24c35c0ddc23f",
+              "sourceSize": [
+                2172,
+                724
+              ],
+              "sourceAnchor": [
+                1091.5,
+                366.5
+              ],
+              "meaningfulSourceBounds": [
+                46,
+                48,
+                2138,
+                611
+              ],
+              "logicalPerSourcePixel": 0.047961630695443645,
+              "png": "runtime/grass-road-edge.png",
+              "png2x": "runtime/grass-road-edge@2x.png",
+              "sourcePadding": 63,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png",
+              "logicalSize": [
+                110.2158273381295,
+                40.7673860911271
+              ],
+              "logicalAnchor": [
+                55.37170263788969,
+                20.599520383693047
+              ]
+            }
+          },
+          {
+            "id": "road-margin-2",
+            "assetId": "grass-road-edge",
+            "center": [
+              96,
+              168
+            ],
+            "scale": 1,
+            "flipX": false,
+            "flipY": true,
+            "terrainSupport": {
+              "origin": [
+                0,
+                3
+              ],
+              "rows": [
+                [
+                  "plain",
+                  "c01.outpost",
+                  "plain",
+                  "plain",
+                  "hill",
+                  "plain"
+                ],
+                [
+                  "road",
+                  "road",
+                  "road",
+                  "road",
+                  "road",
+                  "road"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "forest",
+                  "plain",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "grass-road-edge",
+              "source": "masters/approved-v5/grass-edge/revision-2/original.png",
+              "sourceSha256": "8821ec714c7dacf63f62617e1a46058f15616e0be80a45fa49c24c35c0ddc23f",
+              "sourceSize": [
+                2172,
+                724
+              ],
+              "sourceAnchor": [
+                1091.5,
+                366.5
+              ],
+              "meaningfulSourceBounds": [
+                46,
+                48,
+                2138,
+                611
+              ],
+              "logicalPerSourcePixel": 0.047961630695443645,
+              "png": "runtime/grass-road-edge.png",
+              "png2x": "runtime/grass-road-edge@2x.png",
+              "sourcePadding": 63,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png",
+              "logicalSize": [
+                110.2158273381295,
+                40.7673860911271
+              ],
+              "logicalAnchor": [
+                55.37170263788969,
+                20.599520383693047
+              ]
+            }
+          },
+          {
+            "id": "road-margin-3",
+            "assetId": "grass-road-edge",
+            "center": [
+              560,
+              120
+            ],
+            "scale": 1,
+            "flipX": false,
+            "flipY": false,
+            "terrainSupport": {
+              "origin": [
+                14,
+                2
+              ],
+              "rows": [
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "forest",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "road",
+                  "road",
+                  "road",
+                  "road",
+                  "road"
+                ],
+                [
+                  "village",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "forest",
+                  "plain"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "grass-road-edge",
+              "source": "masters/approved-v5/grass-edge/revision-2/original.png",
+              "sourceSha256": "8821ec714c7dacf63f62617e1a46058f15616e0be80a45fa49c24c35c0ddc23f",
+              "sourceSize": [
+                2172,
+                724
+              ],
+              "sourceAnchor": [
+                1091.5,
+                366.5
+              ],
+              "meaningfulSourceBounds": [
+                46,
+                48,
+                2138,
+                611
+              ],
+              "logicalPerSourcePixel": 0.047961630695443645,
+              "png": "runtime/grass-road-edge.png",
+              "png2x": "runtime/grass-road-edge@2x.png",
+              "sourcePadding": 63,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png",
+              "logicalSize": [
+                110.2158273381295,
+                40.7673860911271
+              ],
+              "logicalAnchor": [
+                55.37170263788969,
+                20.599520383693047
+              ]
+            }
+          },
+          {
+            "id": "road-margin-4",
+            "assetId": "grass-road-edge",
+            "center": [
+              560,
+              168
+            ],
+            "scale": 1,
+            "flipX": false,
+            "flipY": true,
+            "terrainSupport": {
+              "origin": [
+                14,
+                3
+              ],
+              "rows": [
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "road",
+                  "road",
+                  "road",
+                  "road",
+                  "road"
+                ],
+                [
+                  "village",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "forest",
+                  "plain"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "grass-road-edge",
+              "source": "masters/approved-v5/grass-edge/revision-2/original.png",
+              "sourceSha256": "8821ec714c7dacf63f62617e1a46058f15616e0be80a45fa49c24c35c0ddc23f",
+              "sourceSize": [
+                2172,
+                724
+              ],
+              "sourceAnchor": [
+                1091.5,
+                366.5
+              ],
+              "meaningfulSourceBounds": [
+                46,
+                48,
+                2138,
+                611
+              ],
+              "logicalPerSourcePixel": 0.047961630695443645,
+              "png": "runtime/grass-road-edge.png",
+              "png2x": "runtime/grass-road-edge@2x.png",
+              "sourcePadding": 63,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png",
+              "logicalSize": [
+                110.2158273381295,
+                40.7673860911271
+              ],
+              "logicalAnchor": [
+                55.37170263788969,
+                20.599520383693047
+              ]
+            }
+          },
+          {
+            "id": "road-margin-5",
+            "assetId": "grass-road-edge",
+            "center": [
+              144,
+              296
+            ],
+            "scale": 1,
+            "flipX": false,
+            "flipY": true,
+            "terrainSupport": {
+              "origin": [
+                1,
+                7
+              ],
+              "rows": [
+                [
+                  "hill",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "forest",
+                  "plain"
+                ],
+                [
+                  "road",
+                  "road",
+                  "road",
+                  "road",
+                  "road",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "plain",
+                  "forest",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "hill",
+                  "plain",
+                  "plain",
+                  "plain"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "grass-road-edge",
+              "source": "masters/approved-v5/grass-edge/revision-2/original.png",
+              "sourceSha256": "8821ec714c7dacf63f62617e1a46058f15616e0be80a45fa49c24c35c0ddc23f",
+              "sourceSize": [
+                2172,
+                724
+              ],
+              "sourceAnchor": [
+                1091.5,
+                366.5
+              ],
+              "meaningfulSourceBounds": [
+                46,
+                48,
+                2138,
+                611
+              ],
+              "logicalPerSourcePixel": 0.047961630695443645,
+              "png": "runtime/grass-road-edge.png",
+              "png2x": "runtime/grass-road-edge@2x.png",
+              "sourcePadding": 63,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png",
+              "logicalSize": [
+                110.2158273381295,
+                40.7673860911271
+              ],
+              "logicalAnchor": [
+                55.37170263788969,
+                20.599520383693047
+              ]
+            }
+          },
+          {
+            "id": "road-margin-6",
+            "assetId": "grass-road-edge",
+            "center": [
+              560,
+              248
+            ],
+            "scale": 1,
+            "flipX": false,
+            "flipY": false,
+            "terrainSupport": {
+              "origin": [
+                14,
+                6
+              ],
+              "rows": [
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "hill",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "road",
+                  "road",
+                  "road",
+                  "road",
+                  "road"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "plain",
+                  "forest",
+                  "plain"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "grass-road-edge",
+              "source": "masters/approved-v5/grass-edge/revision-2/original.png",
+              "sourceSha256": "8821ec714c7dacf63f62617e1a46058f15616e0be80a45fa49c24c35c0ddc23f",
+              "sourceSize": [
+                2172,
+                724
+              ],
+              "sourceAnchor": [
+                1091.5,
+                366.5
+              ],
+              "meaningfulSourceBounds": [
+                46,
+                48,
+                2138,
+                611
+              ],
+              "logicalPerSourcePixel": 0.047961630695443645,
+              "png": "runtime/grass-road-edge.png",
+              "png2x": "runtime/grass-road-edge@2x.png",
+              "sourcePadding": 63,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/grass-road-edge@2x.png",
+              "logicalSize": [
+                110.2158273381295,
+                40.7673860911271
+              ],
+              "logicalAnchor": [
+                55.37170263788969,
+                20.599520383693047
+              ]
+            }
+          },
+          {
+            "id": "bank-west-64",
+            "assetId": "bank-edge",
+            "center": [
+              310,
+              64
+            ],
+            "scale": 0.78125,
+            "flipX": false,
+            "flipY": false,
+            "terrainSupport": {
+              "origin": [
+                8,
+                0
+              ],
+              "rows": [
+                [
+                  "plain",
+                  "plain",
+                  "water",
+                  "water"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "water",
+                  "water"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "water",
+                  "water"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "bridge",
+                  "bridge"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "bank-edge",
+              "source": "masters/approved-v5/bank-edge/revision-3/master.png",
+              "sourceSha256": "f646b69f29854ad06fe1ef83654c4c48f0b6081c4c6fffdddda616b067884be9",
+              "sourceSize": [
+                1024,
+                1536
+              ],
+              "sourceAnchor": [
+                514.5,
+                768
+              ],
+              "meaningfulSourceBounds": [
+                51,
+                49,
+                978,
+                1487
+              ],
+              "logicalPerSourcePixel": 0.044630404463040445,
+              "png": "runtime/bank-edge.png",
+              "png2x": "runtime/bank-edge@2x.png",
+              "sourcePadding": 68,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png",
+              "logicalSize": [
+                51.77126917712692,
+                74.62203626220362
+              ],
+              "logicalAnchor": [
+                25.997210599721058,
+                37.31101813110181
+              ]
+            }
+          },
+          {
+            "id": "bank-west-160",
+            "assetId": "bank-edge",
+            "center": [
+              310,
+              160
+            ],
+            "scale": 0.78125,
+            "flipX": false,
+            "flipY": false,
+            "terrainSupport": {
+              "origin": [
+                8,
+                3
+              ],
+              "rows": [
+                [
+                  "plain",
+                  "plain",
+                  "bridge",
+                  "bridge"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "water",
+                  "water"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "water",
+                  "water"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "bridge",
+                  "bridge"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "bank-edge",
+              "source": "masters/approved-v5/bank-edge/revision-3/master.png",
+              "sourceSha256": "f646b69f29854ad06fe1ef83654c4c48f0b6081c4c6fffdddda616b067884be9",
+              "sourceSize": [
+                1024,
+                1536
+              ],
+              "sourceAnchor": [
+                514.5,
+                768
+              ],
+              "meaningfulSourceBounds": [
+                51,
+                49,
+                978,
+                1487
+              ],
+              "logicalPerSourcePixel": 0.044630404463040445,
+              "png": "runtime/bank-edge.png",
+              "png2x": "runtime/bank-edge@2x.png",
+              "sourcePadding": 68,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png",
+              "logicalSize": [
+                51.77126917712692,
+                74.62203626220362
+              ],
+              "logicalAnchor": [
+                25.997210599721058,
+                37.31101813110181
+              ]
+            }
+          },
+          {
+            "id": "bank-west-256",
+            "assetId": "bank-edge",
+            "center": [
+              310,
+              256
+            ],
+            "scale": 0.78125,
+            "flipX": false,
+            "flipY": false,
+            "terrainSupport": {
+              "origin": [
+                8,
+                6
+              ],
+              "rows": [
+                [
+                  "plain",
+                  "plain",
+                  "bridge",
+                  "bridge"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "water",
+                  "water"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "water",
+                  "water"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "bridge",
+                  "bridge"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "bank-edge",
+              "source": "masters/approved-v5/bank-edge/revision-3/master.png",
+              "sourceSha256": "f646b69f29854ad06fe1ef83654c4c48f0b6081c4c6fffdddda616b067884be9",
+              "sourceSize": [
+                1024,
+                1536
+              ],
+              "sourceAnchor": [
+                514.5,
+                768
+              ],
+              "meaningfulSourceBounds": [
+                51,
+                49,
+                978,
+                1487
+              ],
+              "logicalPerSourcePixel": 0.044630404463040445,
+              "png": "runtime/bank-edge.png",
+              "png2x": "runtime/bank-edge@2x.png",
+              "sourcePadding": 68,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png",
+              "logicalSize": [
+                51.77126917712692,
+                74.62203626220362
+              ],
+              "logicalAnchor": [
+                25.997210599721058,
+                37.31101813110181
+              ]
+            }
+          },
+          {
+            "id": "bank-west-368",
+            "assetId": "bank-edge",
+            "center": [
+              310,
+              368
+            ],
+            "scale": 1,
+            "flipX": false,
+            "flipY": false,
+            "terrainSupport": {
+              "origin": [
+                7,
+                9
+              ],
+              "rows": [
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "bridge",
+                  "bridge"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "water",
+                  "water"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "water",
+                  "water"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "water",
+                  "water"
+                ],
+                [
+                  "plain",
+                  "plain",
+                  "plain",
+                  "water",
+                  "water"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "bank-edge",
+              "source": "masters/approved-v5/bank-edge/revision-3/master.png",
+              "sourceSha256": "f646b69f29854ad06fe1ef83654c4c48f0b6081c4c6fffdddda616b067884be9",
+              "sourceSize": [
+                1024,
+                1536
+              ],
+              "sourceAnchor": [
+                514.5,
+                768
+              ],
+              "meaningfulSourceBounds": [
+                51,
+                49,
+                978,
+                1487
+              ],
+              "logicalPerSourcePixel": 0.044630404463040445,
+              "png": "runtime/bank-edge.png",
+              "png2x": "runtime/bank-edge@2x.png",
+              "sourcePadding": 68,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png",
+              "logicalSize": [
+                51.77126917712692,
+                74.62203626220362
+              ],
+              "logicalAnchor": [
+                25.997210599721058,
+                37.31101813110181
+              ]
+            }
+          },
+          {
+            "id": "bank-east-64",
+            "assetId": "bank-edge",
+            "center": [
+              394,
+              64
+            ],
+            "scale": 0.78125,
+            "flipX": true,
+            "flipY": false,
+            "terrainSupport": {
+              "origin": [
+                10,
+                0
+              ],
+              "rows": [
+                [
+                  "water",
+                  "water",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "water",
+                  "water",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "water",
+                  "water",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "bridge",
+                  "bridge",
+                  "plain",
+                  "plain"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "bank-edge",
+              "source": "masters/approved-v5/bank-edge/revision-3/master.png",
+              "sourceSha256": "f646b69f29854ad06fe1ef83654c4c48f0b6081c4c6fffdddda616b067884be9",
+              "sourceSize": [
+                1024,
+                1536
+              ],
+              "sourceAnchor": [
+                514.5,
+                768
+              ],
+              "meaningfulSourceBounds": [
+                51,
+                49,
+                978,
+                1487
+              ],
+              "logicalPerSourcePixel": 0.044630404463040445,
+              "png": "runtime/bank-edge.png",
+              "png2x": "runtime/bank-edge@2x.png",
+              "sourcePadding": 68,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png",
+              "logicalSize": [
+                51.77126917712692,
+                74.62203626220362
+              ],
+              "logicalAnchor": [
+                25.997210599721058,
+                37.31101813110181
+              ]
+            }
+          },
+          {
+            "id": "bank-east-160",
+            "assetId": "bank-edge",
+            "center": [
+              394,
+              160
+            ],
+            "scale": 0.78125,
+            "flipX": true,
+            "flipY": false,
+            "terrainSupport": {
+              "origin": [
+                10,
+                3
+              ],
+              "rows": [
+                [
+                  "bridge",
+                  "bridge",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "water",
+                  "water",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "water",
+                  "water",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "bridge",
+                  "bridge",
+                  "plain",
+                  "plain"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "bank-edge",
+              "source": "masters/approved-v5/bank-edge/revision-3/master.png",
+              "sourceSha256": "f646b69f29854ad06fe1ef83654c4c48f0b6081c4c6fffdddda616b067884be9",
+              "sourceSize": [
+                1024,
+                1536
+              ],
+              "sourceAnchor": [
+                514.5,
+                768
+              ],
+              "meaningfulSourceBounds": [
+                51,
+                49,
+                978,
+                1487
+              ],
+              "logicalPerSourcePixel": 0.044630404463040445,
+              "png": "runtime/bank-edge.png",
+              "png2x": "runtime/bank-edge@2x.png",
+              "sourcePadding": 68,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png",
+              "logicalSize": [
+                51.77126917712692,
+                74.62203626220362
+              ],
+              "logicalAnchor": [
+                25.997210599721058,
+                37.31101813110181
+              ]
+            }
+          },
+          {
+            "id": "bank-east-256",
+            "assetId": "bank-edge",
+            "center": [
+              394,
+              256
+            ],
+            "scale": 0.78125,
+            "flipX": true,
+            "flipY": false,
+            "terrainSupport": {
+              "origin": [
+                10,
+                6
+              ],
+              "rows": [
+                [
+                  "bridge",
+                  "bridge",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "water",
+                  "water",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "water",
+                  "water",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "bridge",
+                  "bridge",
+                  "plain",
+                  "plain"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "bank-edge",
+              "source": "masters/approved-v5/bank-edge/revision-3/master.png",
+              "sourceSha256": "f646b69f29854ad06fe1ef83654c4c48f0b6081c4c6fffdddda616b067884be9",
+              "sourceSize": [
+                1024,
+                1536
+              ],
+              "sourceAnchor": [
+                514.5,
+                768
+              ],
+              "meaningfulSourceBounds": [
+                51,
+                49,
+                978,
+                1487
+              ],
+              "logicalPerSourcePixel": 0.044630404463040445,
+              "png": "runtime/bank-edge.png",
+              "png2x": "runtime/bank-edge@2x.png",
+              "sourcePadding": 68,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png",
+              "logicalSize": [
+                51.77126917712692,
+                74.62203626220362
+              ],
+              "logicalAnchor": [
+                25.997210599721058,
+                37.31101813110181
+              ]
+            }
+          },
+          {
+            "id": "bank-east-368",
+            "assetId": "bank-edge",
+            "center": [
+              394,
+              368
+            ],
+            "scale": 1,
+            "flipX": true,
+            "flipY": false,
+            "terrainSupport": {
+              "origin": [
+                10,
+                9
+              ],
+              "rows": [
+                [
+                  "bridge",
+                  "bridge",
+                  "plain",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "water",
+                  "water",
+                  "plain",
+                  "plain",
+                  "forest"
+                ],
+                [
+                  "water",
+                  "water",
+                  "plain",
+                  "plain",
+                  "plain"
+                ],
+                [
+                  "water",
+                  "water",
+                  "plain",
+                  "plain",
+                  "hill"
+                ],
+                [
+                  "water",
+                  "water",
+                  "plain",
+                  "plain",
+                  "plain"
+                ]
+              ]
+            },
+            "asset": {
+              "id": "bank-edge",
+              "source": "masters/approved-v5/bank-edge/revision-3/master.png",
+              "sourceSha256": "f646b69f29854ad06fe1ef83654c4c48f0b6081c4c6fffdddda616b067884be9",
+              "sourceSize": [
+                1024,
+                1536
+              ],
+              "sourceAnchor": [
+                514.5,
+                768
+              ],
+              "meaningfulSourceBounds": [
+                51,
+                49,
+                978,
+                1487
+              ],
+              "logicalPerSourcePixel": 0.044630404463040445,
+              "png": "runtime/bank-edge.png",
+              "png2x": "runtime/bank-edge@2x.png",
+              "sourcePadding": 68,
+              "href": "/packages/story-candidate-01/assets/final-fantasy-v1/edge-decoration-v1/runtime/bank-edge@2x.png",
+              "logicalSize": [
+                51.77126917712692,
+                74.62203626220362
+              ],
+              "logicalAnchor": [
+                25.997210599721058,
+                37.31101813110181
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "edgeSafety": {
+    "meaningfulAlphaMin": 2,
+    "protectedInitialFeet": [
+      [
+        48,
+        319
+      ],
+      [
+        80,
+        287
+      ],
+      [
+        80,
+        351
+      ],
+      [
+        112,
+        255
+      ],
+      [
+        48,
+        351
+      ],
+      [
+        112,
+        351
+      ],
+      [
+        48,
+        383
+      ],
+      [
+        80,
+        415
+      ],
+      [
+        112,
+        415
+      ],
+      [
+        176,
+        415
+      ],
+      [
+        80,
+        319
+      ],
+      [
+        48,
+        287
+      ],
+      [
+        656,
+        159
+      ],
+      [
+        624,
+        127
+      ],
+      [
+        624,
+        191
+      ],
+      [
+        592,
+        287
+      ],
+      [
+        656,
+        351
+      ],
+      [
+        496,
+        95
+      ],
+      [
+        528,
+        383
+      ],
+      [
+        656,
+        415
+      ]
+    ],
+    "footHalfExtent": [
+      12.5,
+      4.2
+    ],
+    "maximumMeaningfulBankOverhang": 13,
+    "bridgeCells": [
+      [
+        10,
+        3
+      ],
+      [
+        11,
+        3
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        11,
+        6
+      ],
+      [
+        10,
+        9
+      ],
+      [
+        11,
+        9
+      ]
+    ],
+    "movingActors": "May cross ground overlays normally; these pieces have no standing depth and stay below all actors",
+    "coverage": "Fourteen authored c01-02 placements only; all other levels retain their existing presentation"
+  },
+  "integrationOrder": "fixed ground/light/bridge layers, then buildings/scenery/actors by shared world foot y/x; foreground above",
+  "mapSha256": "f991b517c8340aa2c9d72ec89fc699824813cce19f2528452512ffd6ad6aa2a7",
+  "gameplayTopologyChanged": false,
+  "provenance": "candidate01MapSceneryLayers + terrainLayerPieces + candidate01UnitPicture + shared BoardDepthOrder; no SVG material substitutions",
+  "cropWorldBox": [
+    256,
+    96,
+    192,
+    256
+  ],
+  "samplingComparison": {
+    "selectedRuntimePeriod": [
+      1024,
+      1024
+    ],
+    "highDensityAlternativePeriod": [
+      512,
+      512
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "selectedPixelsPerWorldUnit": [
+      1,
+      1
+    ],
+    "alternativePixelsPerWorldUnit": [
+      2,
+      2
+    ],
+    "method": "uniform placement scale of actual field BoardPieces; identical source and upper layers",
+    "status": "1024 selected at 1 source pixel/unit; 512 alternative preserves 2 source pixels/unit",
+    "densityWarning": "Display 2x of the selected broad field is enlarged existing art, not new native2x source detail"
+  },
+  "limitations": [
+    "Static initial unit poses, no animation, browser or GPU playback",
+    "Explicit diagnostic blue/red owner colors; no HUD, camera effects or CSS lighting",
+    "Legacy shore, vertical crossings, non-base surfaces and decals remain visible; footpoint occlusion may hide actors behind tall canopies; no tactical fade is applied"
+  ]
+}

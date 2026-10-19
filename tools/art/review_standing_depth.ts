@@ -7,6 +7,7 @@ import { BoardDepthOrder, BoardView, CELL_FOOT, SvgBoardSurface, TILE, type Boar
 
 const root = resolve(import.meta.dirname, '../..');
 const output = resolve(process.env.STANDING_REVIEW_OUTPUT ?? 'docs/art-rebuild-20261019/approved-v5/standing-depth-review');
+const edgeComparison = process.env.STANDING_REVIEW_COMPARISON === 'edges';
 mkdirSync(output, { recursive: true });
 const level = shippedLevel('c01-02');
 const sources = new Map<string, string>();
@@ -15,6 +16,7 @@ const appStyles = readFileSync(resolve(root, appStylesPath), 'utf8');
 sources.set(appStylesPath, createHash('sha256').update(appStyles).digest('hex'));
 const renders = [];
 for (const standing of [false, true]) {
+  const depthEnabled = edgeComparison || standing;
   const state = engine.createState(level);
   const before = JSON.stringify(state);
   const layers = new Map<BoardLayer, readonly BoardPiece[]>();
@@ -23,10 +25,12 @@ for (const standing of [false, true]) {
       const surface = new SvgBoardSurface(scene);
       const setLayer = surface.setLayer.bind(surface);
       surface.setLayer = (layer, pieces) => {
-        layers.set(layer, pieces);
-        // The comparison restores the former fixed static layers, with identical
-        // images, contacts, scales and actors. It does not remove any object.
-        setLayer(layer, standing ? pieces : pieces.map(({ foot: _foot, ...piece }) => piece));
+        const shown = edgeComparison && !standing
+          ? pieces.filter((piece) => !piece.markup.includes('candidate-ground-edge')) : pieces;
+        layers.set(layer, shown);
+        // Edge comparison changes only ground patches. Default depth comparison
+        // restores the former fixed layers with identical art and contacts.
+        setLayer(layer, depthEnabled ? shown : shown.map(({ foot: _foot, ...piece }) => piece));
       };
       return surface;
     },
@@ -46,7 +50,8 @@ for (const standing of [false, true]) {
   const unitCount = svg.querySelectorAll('.layer-units > .unit').length;
   const buildingCount = svg.querySelectorAll('[data-candidate-art="structure"]').length;
   if (unitCount !== 20 || buildingCount !== 9) throw new Error(`incomplete c01-02 snapshot: ${unitCount} actors, ${buildingCount} buildings`);
-  const filename = standing ? 'runtime-standing-full.svg' : 'runtime-legacy-order-full.svg';
+  const filename = edgeComparison ? `runtime-${standing ? 'with' : 'without'}-edges-full.svg`
+    : standing ? 'runtime-standing-full.svg' : 'runtime-legacy-order-full.svg';
   const actors = state.units.map((unit) => ({ id: `actor:${unit.id}`, actorId: unit.id, key: unit.key,
     type: unit.type, cell: [unit.x, unit.y], facing: unit.facing,
     origin: [unit.x * TILE, unit.y * TILE], worldFoot: [unit.x * TILE + CELL_FOOT.x, unit.y * TILE + CELL_FOOT.y] }));
@@ -54,7 +59,7 @@ for (const standing of [false, true]) {
   for (const [layer, pieces] of layers) order.replaceLayer(layer, pieces.map((piece, index) => {
     const { foot: _foot, ...legacyPiece } = piece;
     return {
-      piece: standing ? piece : legacyPiece,
+      piece: depthEnabled ? piece : legacyPiece,
       drawing: { id: `${layer}:${index}`, layer, index, origin: [piece.x, piece.y],
         ...(piece.foot ? { worldFoot: [piece.x + piece.foot.x, piece.y + piece.foot.y] } : {}) },
     };
@@ -72,6 +77,7 @@ for (const standing of [false, true]) {
   writeFileSync(resolve(output, filename), markup);
   if (JSON.stringify(state) !== before) throw new Error('depth review changed battle state');
   renders.push({ filename, viewport: [0, 0, width, height], unitCount, buildingCount, actors, standingDrawOrder,
+    edgeDecorationCount: svg.querySelectorAll('.candidate-ground-edge').length,
     sourceLayerCounts: Object.fromEntries([...layers].map(([layer, pieces]) => [layer, pieces.length])),
     standingSources: [...layers].flatMap(([layer, pieces]) => pieces.flatMap((piece, index) => piece.foot
       ? [{ layer, index, origin: [piece.x, piece.y], worldFoot: [piece.x + piece.foot.x, piece.y + piece.foot.y] }] : [])),
@@ -83,7 +89,9 @@ for (const standing of [false, true]) {
 writeFileSync(resolve(output, 'runtime-scene-provenance.json'), JSON.stringify({
   kind: 'offline actual BoardView/SvgBoardSurface snapshot; not live browser or GPU playback',
   levelId: level.id, renders, sources: Object.fromEntries(sources),
-  omissions: [], gameplayChanged: false, comparison: 'same art and entire scene; legacy fixed-layer order versus footpoint order',
+  omissions: [], gameplayChanged: false, comparison: edgeComparison
+    ? 'same complete production viewport and shared footpoint ordering; only the fourteen authored ground-edge overlays differ'
+    : 'same art and entire scene; legacy fixed-layer order versus footpoint order',
   limitations: ['Initial poses only; no browser or GPU pixel verification',
     'Real front canopies can occlude rear actors; no selective fading or removal is applied',
     'Scene framing is the production viewport; the extra field-only diagnostic crops at logical map boundaries'],

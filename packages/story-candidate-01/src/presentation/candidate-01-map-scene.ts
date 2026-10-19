@@ -1,4 +1,5 @@
 import { candidate01HorizontalCrossingMarkup } from './candidate-01-crossing';
+import { candidate01EdgeDecorationPieces } from './candidate-01-edge-decoration';
 import { candidate01BlobMask as blobMask } from './candidate-01-square-mask';
 import { tileHash, type ContentCatalog, type GameMap, type TerrainId, inBounds, idx} from '@empire/battle-engine';
 import { candidate01Asset } from './candidate-01-assets';
@@ -708,7 +709,7 @@ export function candidate01MapSceneryLayers(
   { content, levelId, map }: BattleSceneContext,
 ): SceneLayers {
   return {
-    ground: [...groundPieces(content, map), ...authoredGroundPieces(levelId)],
+    ground: [...groundPieces(content, map), ...authoredGroundPieces(levelId), ...candidate01EdgeDecorationPieces(levelId, map)],
     underUnits: [
       // Light before the things that stand in it.
       ...hearthPieces(content, map),

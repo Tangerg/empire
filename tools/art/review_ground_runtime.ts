@@ -13,12 +13,14 @@ import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from '../
 import { CANDIDATE_01_WATER_MATERIAL } from '../../packages/story-candidate-01/src/presentation/candidate-01-water-material';
 import { CANDIDATE_01_MAP_STRUCTURE_ART } from '../../packages/story-candidate-01/src/presentation/candidate-01-bindings';
 import { candidate01Asset } from '../../packages/story-candidate-01/src/presentation/candidate-01-assets';
+import { CANDIDATE_01_EDGE_DECORATIONS, candidate01EdgeDecorationPieces } from '../../packages/story-candidate-01/src/presentation/candidate-01-edge-decoration';
 import { CANDIDATE_01_ART } from '../../packages/story-candidate-01/src/presentation';
 import { candidateReviewViewport } from './candidate_review_viewport';
 
 const root = resolve(import.meta.dirname, '../..');
 const output = resolve(process.env.GROUND_REVIEW_OUTPUT ?? `docs/art-rebuild-20261019/approved-v5/ground-runtime-${CANDIDATE_01_FIELD_MATERIAL.logicalSize[0]}`);
 const waterReview = process.env.GROUND_REVIEW_LAYER === 'water';
+const edgeReview = process.env.GROUND_REVIEW_LAYER === 'edges';
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const level = candidate01Level('c01-02');
 const map = mapFromLevel(content, level);
@@ -47,9 +49,10 @@ const units = [...level.units].sort((a,b) => a.y-b.y || a.x-b.x).map((unit) => {
 const width = map.width * TILE;
 const height = map.height * TILE;
 const field = candidate01FieldMaterialPieces(width, height);
-const sampled = waterReview ? layers.ground.filter((piece) => piece.markup.includes('data-runtime-raster="area-water"')) : field;
+const edgePieces = candidate01EdgeDecorationPieces(level.id, map);
+const sampled = edgeReview ? edgePieces : waterReview ? layers.ground.filter((piece) => piece.markup.includes('data-runtime-raster="area-water"')) : field;
 const world = boardPiecesMarkup(sampled);
-const crop = waterReview ? [288, 96, 128, 256] : [448, 64, 256, 256];
+const crop = edgeReview ? [256, 96, 192, 256] : waterReview ? [288, 96, 128, 256] : [448, 64, 256, 256];
 const upper = boardScenePieces({ ground: layers.ground.slice(field.length), terrain: buildings,
   scenery: layers.underUnits, units, foreground: layers.overUnits });
 const integration = boardPiecesMarkup([...field, ...upper]);
@@ -78,7 +81,19 @@ for (const [name, body, box] of [
   ['field-high-density-crop-alternative', alternativeWorld, [448, 64, 256, 256]],
   ['integration-high-density-crop-alternative', alternativeIntegration, [448, 64, 256, 256]],
 ] as const) {
-  if (!waterReview || !name.includes('alternative')) writeFileSync(resolve(output, `${name}.svg`), svg(body, box));
+  if ((!waterReview && !edgeReview) || !name.includes('alternative')) writeFileSync(resolve(output, `${name}.svg`), svg(body, box));
+}
+if (edgeReview) {
+  if (buildings.length !== 9 || units.length !== 20 || edgePieces.length !== 14) throw new Error('incomplete edge comparison');
+  const withoutEdges = boardScenePieces({
+    ground: layers.ground.filter((piece) => !piece.markup.includes('candidate-ground-edge')),
+    terrain: buildings, scenery: layers.underUnits, units, foreground: layers.overUnits,
+  });
+  for (const [name, pieces] of [
+    ['integration-without-edges', withoutEdges],
+    ['road-core-full', layers.ground.filter((piece) => piece.markup.includes('class="candidate-ground-route"'))],
+    ['bank-only-full', edgePieces.filter((piece) => piece.markup.includes('data-edge-decoration="bank-edge"'))],
+  ] as const) writeFileSync(resolve(output, `${name}.svg`), svg(boardPiecesMarkup(pieces), [0, 0, width, height]));
 }
 writeFileSync(resolve(output, 'runtime-provenance.json'), JSON.stringify({
   kind: 'offline real BoardPieces diagnostic; not a live gameplay screenshot',
@@ -94,6 +109,13 @@ writeFileSync(resolve(output, 'runtime-provenance.json'), JSON.stringify({
   horizontalCrossing: CANDIDATE_01_HORIZONTAL_CROSSING,
   crossingPlacements: layers.underUnits.filter((piece) => piece.markup.includes(CANDIDATE_01_HORIZONTAL_CROSSING.href)),
   connectorBinding: JSON.parse(readFileSync(resolve(root, 'tools/art/connector-overrides.json'), 'utf8')),
+  ...(edgeReview ? { edgeDecoration: CANDIDATE_01_EDGE_DECORATIONS,
+    edgeSafety: { meaningfulAlphaMin: CANDIDATE_01_EDGE_DECORATIONS.meaningfulAlphaMin,
+      protectedInitialFeet: level.units.map((unit) => [unit.x * TILE + CELL_FOOT.x, unit.y * TILE + CELL_FOOT.y]),
+      footHalfExtent: [12.5, 4.2], maximumMeaningfulBankOverhang: 13,
+      bridgeCells: map.tiles.flatMap((id, index) => id === 'bridge' ? [[index % map.width, Math.floor(index / map.width)]] : []),
+      movingActors: 'May cross ground overlays normally; these pieces have no standing depth and stay below all actors',
+      coverage: 'Fourteen authored c01-02 placements only; all other levels retain their existing presentation' } } : {}),
   integrationOrder: 'fixed ground/light/bridge layers, then buildings/scenery/actors by shared world foot y/x; foreground above',
   mapSha256: createHash('sha256').update(before).digest('hex'), gameplayTopologyChanged: false,
   provenance: 'candidate01MapSceneryLayers + terrainLayerPieces + candidate01UnitPicture + shared BoardDepthOrder; no SVG material substitutions',

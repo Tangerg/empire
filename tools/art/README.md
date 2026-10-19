@@ -321,3 +321,35 @@ run midpoint, without changing terrain/run logic or scaling to span length.
 The old vertical crossings/fortifications atlas stays byte-identical, and the
 interactive three-state bridge topic remains separate. No authored vertical
 counterpart exists yet. Full-map native evidence is in `crossing-runtime`.
+
+## Sparse authored ground edges
+
+`export_edge_decoration.py [--check]` reads the runtime owner's
+`edge-decoration-v1/manifest-edge-decoration-v1.json`. Two immutable approved
+transparent sources receive a small transparent canvas margin and independent
+whole-canvas 1x/2x resizing. The compensating source anchor preserves world
+registration; no source pixel is cropped, painted, masked or recolored.
+The margin retains Lanczos support around faint authored perimeter pixels.
+
+The manifest owns six grass-edge and eight bank-edge placements on c01-02 only.
+Each has a frozen local terrain precondition covering its full canvas plus a
+one-cell halo. Runtime terrain disagreement suppresses that placement; the
+precondition cannot write gameplay state. Shared whole-image BoardPieces remain
+in the ground layer without standing depth. Other levels have no new coverage.
+Road/water geometry dependencies are checksummed so an export requires renewed
+layout review after those contracts change.
+
+With an explicit `GROUND_REVIEW_OUTPUT` directory,
+`GROUND_REVIEW_LAYER=edges vite-node tools/art/review_ground_runtime.ts` exports
+actual field pieces and safety masks. `render_ground_review.py DIRECTORY`
+checks road cores, bridge landings, initial feet and the 13-logical-unit near-bank
+band at both densities. Meaningful coverage starts at alpha 2/255; authored
+alpha-1 residue is retained. Fractional whole-image independent rasterization
+allows at most 2/255 alpha and premultiplied-color crop difference; existing
+opaque material crop checks remain exact. A deliberate one-pixel shift fails.
+With an explicit `STANDING_REVIEW_OUTPUT` directory,
+`STANDING_REVIEW_COMPARISON=edges vite-node tools/art/review_standing_depth.ts`
+exports the full production viewport with/without only these fourteen patches,
+both with shared standing depth. Use `render_ground_review.py DIRECTORY
+--scene-only` to rasterize it. Evidence and remaining repeated-bank visual debt
+are recorded in `docs/art-rebuild-20261019/approved-v5/edge-runtime/README.md`.

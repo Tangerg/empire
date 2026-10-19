@@ -104,11 +104,17 @@ def render(directory):
                 # Compare color channels as well: RGBA getbbox alone may ignore
                 # color differences when the alpha difference is identically zero.
                 maximum = max(channel.getextrema()[1] for channel in difference.split())
-                if kind == 'field' and maximum:
-                    raise ValueError(f'world crop changed {kind} at {density}x: max channel difference {maximum}')
+                crop_detail = {}
+                if kind == 'field':
+                    if 'edgeDecoration' in provenance:
+                        from review_edge_decoration import compare_edge_crop
+                        crop_detail = compare_edge_crop(expected, cropped.convert('RGBA'))
+                    elif maximum:
+                        raise ValueError(f'world crop changed {kind} at {density}x: max channel difference {maximum}')
                 crops.append({'kind': kind, 'density': density, 'exactPixelMatch': maximum == 0,
                               'maximumChannelDifference': maximum,
-                              'note': 'World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips'})
+                              'note': 'World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips',
+                              **crop_detail})
     provenance = json.loads((directory / 'runtime-provenance.json').read_text())
     result = {'selectedLogicalPeriod': provenance['material']['logicalSize'],
               'sourcePixelsPerWorldUnit': provenance['material']['rasterPixelsPerWorldUnit'],
@@ -117,6 +123,11 @@ def render(directory):
               'repeatSeamVisualReview': 'required separately; these tests prove phase, not artistic tiling'}
     if provenance['material']['id'] == 'water-area':
         result['waterCalibrationComparison'] = validate_water_render(directory, provenance)
+    if 'edgeDecoration' in provenance:
+        from review_edge_decoration import validate_edges
+        result = {'evidence': result['evidence'], 'cropChecks': crops, 'fullLogicalExtent': [704, 448],
+                  'browserPlayback': False, 'edgeSafety': validate_edges(directory, provenance),
+                  'sampling': 'Whole authored overlays at fixed world coordinates; no cell reset or repeating texture'}
     (directory / 'raster-validation.json').write_text(json.dumps(result, indent=2) + '\n')
     return result
 

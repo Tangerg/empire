@@ -1,0 +1,78 @@
+{
+  "evidence": "offline Inkscape display-1x/2x rendering of actual BoardPieces",
+  "cropChecks": [
+    {
+      "kind": "field",
+      "density": 1,
+      "exactPixelMatch": false,
+      "maximumChannelDifference": 85,
+      "note": "World registrations are unchanged; independently rasterized fractional images allow at most 2/255 alpha and premultiplied color difference. Near-transparent raw RGB is reported but is not a coverage change.",
+      "maximumAlphaDifference": 2,
+      "maximumPremultipliedColorDifference": 2,
+      "rasterTolerance": 2
+    },
+    {
+      "kind": "field",
+      "density": 2,
+      "exactPixelMatch": false,
+      "maximumChannelDifference": 255,
+      "note": "World registrations are unchanged; independently rasterized fractional images allow at most 2/255 alpha and premultiplied color difference. Near-transparent raw RGB is reported but is not a coverage change.",
+      "maximumAlphaDifference": 2,
+      "maximumPremultipliedColorDifference": 2,
+      "rasterTolerance": 2
+    },
+    {
+      "kind": "integration",
+      "density": 1,
+      "exactPixelMatch": false,
+      "maximumChannelDifference": 3,
+      "note": "World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips"
+    },
+    {
+      "kind": "integration",
+      "density": 2,
+      "exactPixelMatch": false,
+      "maximumChannelDifference": 2,
+      "note": "World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips"
+    }
+  ],
+  "fullLogicalExtent": [
+    704,
+    448
+  ],
+  "browserPlayback": false,
+  "edgeSafety": {
+    "checks": [
+      {
+        "density": 1,
+        "maximumAlphaInProtectedAreas": {
+          "roadCore": 0,
+          "bridgeCoreAndLandings": 0,
+          "initialActorFeet": 0,
+          "bankBeyondNearWaterBand": 0
+        },
+        "meaningfulAlphaMin": 2,
+        "allProtectedAreasClearAtMeaningfulAlpha": true
+      },
+      {
+        "density": 2,
+        "maximumAlphaInProtectedAreas": {
+          "roadCore": 0,
+          "bridgeCoreAndLandings": 0,
+          "initialActorFeet": 0,
+          "bankBeyondNearWaterBand": 0
+        },
+        "meaningfulAlphaMin": 2,
+        "allProtectedAreasClearAtMeaningfulAlpha": true
+      }
+    ],
+    "protectedInitialActorCount": 20,
+    "maximumMeaningfulBankOverhang": 13,
+    "alpha1Residue": "Preserved; reported separately from coverage at alpha >= 2/255",
+    "roadMask": "Actually rendered unchanged route layer, opaque core pixels, including settlement connectors",
+    "bridgeMask": "Actual horizontal bridge cells and their one-cell left/right landings",
+    "coverage": "Fourteen authored c01-02 placements only; all other levels retain their existing presentation",
+    "movingActors": "May cross ground overlays normally; these pieces have no standing depth and stay below all actors"
+  },
+  "sampling": "Whole authored overlays at fixed world coordinates; no cell reset or repeating texture"
+}
