@@ -1,0 +1,111 @@
+{
+  "mode": "RGBA",
+  "size": [
+    1729,
+    910
+  ],
+  "alpha_bbox_xyxy_exclusive": [
+    55,
+    58,
+    1673,
+    889
+  ],
+  "alpha_zero_pixels": 903890,
+  "alpha_opaque_pixels": 793,
+  "alpha_partial_pixels": 668707,
+  "corners_alpha": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "arch_center_alpha": 0,
+  "deck_center_xy_estimated": [
+    864,
+    418
+  ],
+  "deck_center_normalized_canvas": [
+    0.5,
+    0.4593406593406593
+  ],
+  "deck_center_basis": "Visual center of visible paving between parapets; estimated pixel coordinate, not automatic geometry detection",
+  "sha256": "8185b37a95725c9f6840dd1f8a15fc647706b86f9666f7e7b3dc2142d858ac15",
+  "source": "built-in image_gen, transparent_background=true; untouched original copied byte-for-byte",
+  "alpha_histogram_top_counts": [
+    [
+      0,
+      903890
+    ],
+    [
+      253,
+      544545
+    ],
+    [
+      252,
+      90097
+    ],
+    [
+      251,
+      7800
+    ],
+    [
+      254,
+      5041
+    ],
+    [
+      1,
+      3516
+    ],
+    [
+      250,
+      2273
+    ],
+    [
+      2,
+      1486
+    ],
+    [
+      249,
+      1346
+    ],
+    [
+      3,
+      1291
+    ],
+    [
+      248,
+      889
+    ],
+    [
+      255,
+      793
+    ]
+  ],
+  "threshold_bboxes": {
+    "8": [
+      173,
+      153,
+      1557,
+      784
+    ],
+    "32": [
+      173,
+      153,
+      1557,
+      784
+    ],
+    "128": [
+      173,
+      154,
+      1556,
+      783
+    ],
+    "250": [
+      175,
+      155,
+      1555,
+      782
+    ]
+  },
+  "visual_review": "Both white and black composites inspected. Complete bridge, four posts, open paving, front arch, approved thick outline and chunky planes. Background and arch are genuinely transparent. Very faint low-alpha pixels inflate raw bbox; use alpha>=128 bbox for visible bounds. No master modifications."
+}
