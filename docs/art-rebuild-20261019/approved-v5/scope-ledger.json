@@ -4,10 +4,10 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 126,
+    "formalBound": 127,
     "boundByCategory": {
       "battle-prop": 40,
-      "combat-unit": 21,
+      "combat-unit": 22,
       "equipment": 40,
       "interactive-structure": 24,
       "mission-unit": 1
@@ -1734,11 +1734,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-rune-artificer.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-rune-artificer.png",
+      "stageEvidence": {
+        "raw": "four native common1586x992 poses; original hammer/rune device/three charms and identity retained; rejected duplicate-step attempts preserved",
+        "export": "shared44/914 scale, measured feet, maximum2.9365 registration with limit4, no padding; native pose/alpha review passed",
+        "runtimeBinding": "canonical and HD resolver bound to existing c01.rune-artificer; shared attack slot for two existing weapons documented, FX separate",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-RUNE-SHIELD",

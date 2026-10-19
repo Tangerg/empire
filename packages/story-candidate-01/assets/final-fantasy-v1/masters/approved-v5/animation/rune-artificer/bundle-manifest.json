@@ -1,0 +1,189 @@
+{
+  "asset": "C01-UNIT-RUNE-ARTIFICER",
+  "actualConsumers": [
+    "c01.rune-artificer"
+  ],
+  "consumerStatus": "Campaign forge artificer; two verified c01-14 enemy actors",
+  "status": "Native quartet complete; coordinator final sequence review/export/binding pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Selected master/raw images are byte-identical to native outputs. No painting, recoloring, resizing, cropping or alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.04814004376367615,
+  "bodyReferenceSourcePixels": 914,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/registration-evidence.json",
+  "identityContract": "Young-adult tan human craftsperson, clean-shaven, large dark eyes, black thick side braid at screen-left and loose side curl. Dark low cylindrical work cap with brown band/rivets and single brass-rimmed flipped-up lavender-gray magnifying lens at screen-right. Slate armor with rectangular four-rivet left shoulder plate, gray collar, rust/brick-red apron, charcoal skirt, brown gloves/belt/boots. Short one-handed rectangular steel hammer in screen-left hand; open arched brass rune-tool with lower crossbar and three blue leaf-shaped pendants in screen-right hand. Silver chisel and orange-black angular inset belt plaque.",
+  "symbolContract": "Hat lens is filled lavender-gray glass; right-hand brass rune-tool center is a genuinely open transparent aperture, with three solid blue leaf pendants. Original small hammer angular-loop carving is simplified to the accepted angular diamond inset. Original orange-black belt plaque remains a separate geometric mark. No invented sacred meaning, faction symbol, rune alphabet or external glow.",
+  "semanticContract": "C01-UNIT-RUNE-ARTIFICER binds only c01.rune-artificer, with two c01-14 enemy actors, rune-rebel-2[15,7] and south-artificer[15,12]. Original idle/walk-a/attack/walk-b,32x48 frame,anchor[16,47],footprint1x1 remain the semantic contract. Short left-hand hammer matches blunt melee rune-hammer; right-hand open arched rune-tool supports range2 magic forge-burst. Both use the existing single attack slot, here a clear raised left-hand hammer strike/windup while retaining right-hand rune-tool. This shared-action limitation is documented, not silently fixed. Separate FX-04/07 remain outside character. Legacy near-idle attack and weak same-phase walks are reconstructed as meaningful action/opposite contacts; no rules changes or fifth frame.",
+  "selectedAttempts": {
+    "idle": "first successful native output",
+    "walk-a": "first successful native output",
+    "attack": "first successful native output",
+    "walk-b": "attempt-03; attempts01/02 rejected duplicate walk contact and preserved"
+  },
+  "idleApproval": "Coordinator2026-10-19 18:29UTC approved identity,44/914 scale,1586x992 canvas and foot[802,971].",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "cbdcdd6b77557b5be59dd15b3c827da16f00457f8b6e0f98ad6da857550356c9",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        802,
+        971
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        373,
+        44,
+        1228,
+        972
+      ],
+      "sha256": "5c417575c12d1fad6e3c36a69ca71b7d4050f8bc02f58f946be3d35712b87209",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-78aaeb7d-6849-4bc6-a239-7dfa97e50ee5.png",
+      "review": "Original cap/lens, tan clean-shaven face, black side braid, slate armor, rust apron, left-hand hammer and right-hand open arched rune-tool retained. Compact hammer face inset simplified to angular diamond, original orange/black belt plaque retained as broad geometric inset. No external FX. Native master and white QA inspected.",
+      "openRuneApertureProbe": {
+        "rectangle": [
+          1134,
+          390,
+          1141,
+          397
+        ],
+        "zeroPixels": 49,
+        "maxAlpha": 0
+      }
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "5245531c3b2aa672477795fdab33e255443096ecaacec6a2ad9642eaf9830313",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-a/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        741,
+        956
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        355,
+        28,
+        1240,
+        957
+      ],
+      "sha256": "739accb8dca0bc3ff82d3477c13a274a6be4c69c11a776ef48f9158da4b7b5d7",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-1f692a02-b40d-4293-9aac-50500d8d48c0.png",
+      "review": "Walk-a: original screen-right leg leads to right, screen-left leg trails with bent heel; same left lowered hammer/right arched rune-tool and three blue pendants. Same lens/head proportions. Native and white QA viewed; no baked FX.",
+      "openRuneApertureProbe": {
+        "rectangle": [
+          1147,
+          358,
+          1154,
+          365
+        ],
+        "zeroPixels": 49,
+        "maxAlpha": 0
+      }
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "b92d1350303b3fbac3221ecf955ce96428dd87783b4c46c0da706f8deed276e5",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/attack/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        781,
+        966
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        346,
+        20,
+        1302,
+        967
+      ],
+      "sha256": "b1ad7b505e05b3c2783da90ee93fc1e49d02fd5803783c597c7249d2e7becc3c",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-031c89cb-bf47-472d-bc3f-c8236b9d9f0f.png",
+      "review": "Unmistakable original screen-left hammer raised over shoulder; compact steel head retained, one handle cleanly gripped by the left fist. Screen-right hand retains open arched rune-tool with three blue pendants. Two arms/hands, wide braced feet, no baked FX. Head and lens retain approved dimensions despite bent combat pose. Native and white QA viewed.",
+      "openRuneApertureProbe": {
+        "rectangle": [
+          1218,
+          430,
+          1225,
+          437
+        ],
+        "zeroPixels": 49,
+        "maxAlpha": 0
+      }
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "936a33e753b0bcc571c126490f697e7ce310d93997c601ce6d99d9448b4f6612",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-artificer/walk-b/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        791,
+        974
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        374,
+        45,
+        1230,
+        975
+      ],
+      "sha256": "fca5cf440ae173a18ddcf6e02ffd680b4a208d2d184356ca0b0a43f441aa5473",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-eb9e79fa-0d59-4d05-bc02-cb1f065c7c21.png",
+      "review": "Selected attempt03 rebuilt from approved idle alone. Left boot now planted flat; right boot distinctly raised in recovery, with visible angled sole. This opposes walk-a right-down/left-raised contacts. Head/cap/lens and original left hammer/right rune-tool retained. Three blue pendants and belt plaque intact; real alpha arch. Native and white QA viewed. Attempts01/02 repeated walk-a contacts and are rejected/preserved.",
+      "openRuneApertureProbe": {
+        "rectangle": [
+          1134,
+          390,
+          1141,
+          397
+        ],
+        "zeroPixels": 49,
+        "maxAlpha": 0
+      }
+    }
+  }
+}

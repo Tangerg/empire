@@ -1,0 +1,339 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/walk-b/master.png"
+    },
+    "scale": 0.04814004376367615,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      802,
+      971
+    ],
+    "sourceFeet": {
+      "idle": [
+        802,
+        971
+      ],
+      "walk-a": [
+        741,
+        956
+      ],
+      "attack": [
+        781,
+        966
+      ],
+      "walk-b": [
+        791,
+        974
+      ]
+    },
+    "canvasPaddingTolerance": 0,
+    "registrationLimit": 4,
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        2.936542669584245,
+        0.7221006564551422
+      ],
+      "attack": [
+        1.0109409190371992,
+        0.24070021881838075
+      ],
+      "walk-b": [
+        0.5295404814004376,
+        -0.14442013129102846
+      ]
+    }
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    46.608315098468275,
+    50.74398249452954
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "5c417575c12d1fad6e3c36a69ca71b7d4050f8bc02f58f946be3d35712b87209",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5451,
+        "nearOpaquePixels": 1009,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          6,
+          67,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "5c417575c12d1fad6e3c36a69ca71b7d4050f8bc02f58f946be3d35712b87209",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21952,
+        "nearOpaquePixels": 4150,
+        "edgeMax": 0,
+        "visibleBounds": [
+          52,
+          12,
+          134,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/walk-a/master.png",
+      "registrationOffset": [
+        2.936542669584245,
+        0.7221006564551422
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "739accb8dca0bc3ff82d3477c13a274a6be4c69c11a776ef48f9158da4b7b5d7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5492,
+        "nearOpaquePixels": 954,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          6,
+          71,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/walk-a/master.png",
+      "registrationOffset": [
+        2.936542669584245,
+        0.7221006564551422
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "739accb8dca0bc3ff82d3477c13a274a6be4c69c11a776ef48f9158da4b7b5d7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22098,
+        "nearOpaquePixels": 3921,
+        "edgeMax": 0,
+        "visibleBounds": [
+          56,
+          12,
+          141,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/attack/master.png",
+      "registrationOffset": [
+        1.0109409190371992,
+        0.24070021881838075
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "b1ad7b505e05b3c2783da90ee93fc1e49d02fd5803783c597c7249d2e7becc3c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5333,
+        "nearOpaquePixels": 1069,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          5,
+          72,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/attack/master.png",
+      "registrationOffset": [
+        1.0109409190371992,
+        0.24070021881838075
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "b1ad7b505e05b3c2783da90ee93fc1e49d02fd5803783c597c7249d2e7becc3c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21504,
+        "nearOpaquePixels": 4429,
+        "edgeMax": 0,
+        "visibleBounds": [
+          51,
+          10,
+          143,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/walk-b/master.png",
+      "registrationOffset": [
+        0.5295404814004376,
+        -0.14442013129102846
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "fca5cf440ae173a18ddcf6e02ffd680b4a208d2d184356ca0b0a43f441aa5473",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5478,
+        "nearOpaquePixels": 986,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          6,
+          68,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-artificer/walk-b/master.png",
+      "registrationOffset": [
+        0.5295404814004376,
+        -0.14442013129102846
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "fca5cf440ae173a18ddcf6e02ffd680b4a208d2d184356ca0b0a43f441aa5473",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22061,
+        "nearOpaquePixels": 4035,
+        "edgeMax": 0,
+        "visibleBounds": [
+          53,
+          12,
+          135,
+          102
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

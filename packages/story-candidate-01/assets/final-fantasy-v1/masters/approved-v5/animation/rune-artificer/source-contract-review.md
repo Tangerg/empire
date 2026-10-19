@@ -20,4 +20,6 @@ The legacy attack is almost idle and the two legacy walk contacts are not convin
 
 ## Native preservation
 
-Approved chunky blue-swordsman/concept-v2 style is the scale/proportion authority. Idle is genuine native RGBA1586x992; body crown55 to mean boot soles969 gives914px, proposal44/914 and common foot[802,971]. Full native canvas and alpha are preserved byte-for-byte. Raw/master/exact prompt/request/QA and source hashes are retained; remaining poses await idle review before generation. Any later size discrepancy must be explicit transparent right/bottom padding only, not resampling or independently fitting poses.
+Approved chunky blue-swordsman/concept-v2 style is the scale/proportion authority. Idle is genuine native RGBA1586x992; body crown55 to mean boot soles969 gives914px, proposal44/914 and common foot[802,971]. Full native canvas and alpha are preserved byte-for-byte. Raw/master/exact prompt/request/QA and source hashes are retained; Idle was approved18:29UTC; all four poses are now complete at the same locked scale. Any later size discrepancy must be explicit transparent right/bottom padding only, not resampling or independently fitting poses.
+
+Final quartet: see bundle-manifest.json and registration-evidence.json. Four selected canvases1586x992, no padding; sourceFeet[802,971],[741,956],[781,966],[791,974]. Walk-b attempts01/02 rejected for same-phase contact; attempt03 selected. All exact prompts/native files preserved.

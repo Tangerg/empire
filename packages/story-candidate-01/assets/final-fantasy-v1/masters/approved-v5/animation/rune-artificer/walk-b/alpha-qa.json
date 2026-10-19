@@ -24,5 +24,50 @@
   "alphaOnePixels": 3867,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "boot": "supporting-screen-left",
+      "roi": [
+        490,
+        845,
+        775,
+        985
+      ],
+      "soleY": 974,
+      "bottomFourRowsMeanX": 625.090625
+    },
+    {
+      "boot": "raised-screen-right",
+      "roi": [
+        905,
+        740,
+        1180,
+        945
+      ],
+      "soleY": 934,
+      "bottomFourRowsMeanX": 956.8666666666667
+    }
+  ],
+  "sourceFootMidpoint": [
+    790.9786458333333,
+    954.0
+  ],
+  "suggestedSourceFoot": [
+    791,
+    974
+  ],
+  "lockedBodyScale": 0.04814004376367615,
+  "masterRawHashMatches": true,
+  "semanticReview": "Selected attempt03 rebuilt from approved idle alone. Left boot now planted flat; right boot distinctly raised in recovery, with visible angled sole. This opposes walk-a right-down/left-raised contacts. Head/cap/lens and original left hammer/right rune-tool retained. Three blue pendants and belt plaque intact; real alpha arch. Native and white QA viewed. Attempts01/02 repeated walk-a contacts and are rejected/preserved.",
+  "openRuneApertureProbe": {
+    "rectangle": [
+      1134,
+      390,
+      1141,
+      397
+    ],
+    "zeroPixels": 49,
+    "maxAlpha": 0
+  }
 }

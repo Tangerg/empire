@@ -1,0 +1,66 @@
+{
+  "status": "Native quartet semantic/alpha/geometry QA passes; coordinator final sequence review/export/binding pending",
+  "topic": "C01-UNIT-RUNE-ARTIFICER",
+  "actualConsumers": [
+    "c01.rune-artificer"
+  ],
+  "bodyScale": "44/914",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1586,
+      992
+    ],
+    "walk-b": [
+      1586,
+      992
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourcePaddingRequired": "All four selected native canvases are exactly1586x992; no transparent padding or source resizing required.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All selected native perimeter alpha<=1; zero silhouette alpha>1 on edges; native alpha1 specks retained.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "originalLeftHammerRightRuneToolHandsPreserved": true,
+  "runeToolApertureRealTransparencyVerifiedEveryPose": true,
+  "threeBluePendantsAndBeltPlaqueRetainedEveryPose": true,
+  "twoArmsAndTwoHandsOnly": true,
+  "equipmentCompleteEveryPose": true,
+  "walkContactsOppose": true,
+  "walkCorrection": "Attempts01/02 of walk-b repeated right-down/left-raised phase and are rejected. Attempt03 from idle alone correctly shows left-down/right-raised. All attempts retained.",
+  "attackAnatomyReview": "Unmistakable original screen-left hammer raised over shoulder; compact steel head retained, one handle cleanly gripped by the left fist. Screen-right hand retains open arched rune-tool with three blue pendants. Two arms/hands, wide braced feet, no baked FX. Head and lens retain approved dimensions despite bent combat pose. Native and white QA viewed.",
+  "semanticContract": "C01-UNIT-RUNE-ARTIFICER binds only c01.rune-artificer, with two c01-14 enemy actors, rune-rebel-2[15,7] and south-artificer[15,12]. Original idle/walk-a/attack/walk-b,32x48 frame,anchor[16,47],footprint1x1 remain the semantic contract. Short left-hand hammer matches blunt melee rune-hammer; right-hand open arched rune-tool supports range2 magic forge-burst. Both use the existing single attack slot, here a clear raised left-hand hammer strike/windup while retaining right-hand rune-tool. This shared-action limitation is documented, not silently fixed. Separate FX-04/07 remain outside character. Legacy near-idle attack and weak same-phase walks are reconstructed as meaningful action/opposite contacts; no rules changes or fifth frame.",
+  "symbolContract": "Hat lens is filled lavender-gray glass; right-hand brass rune-tool center is a genuinely open transparent aperture, with three solid blue leaf pendants. Original small hammer angular-loop carving is simplified to the accepted angular diamond inset. Original orange-black belt plaque remains a separate geometric mark. No invented sacred meaning, faction symbol, rune alphabet or external glow.",
+  "bothWeaponsShareExistingSingleActionSlot": true,
+  "independentFXBakedIntoCharacter": false,
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "gameplayFixClaimed": false
+}

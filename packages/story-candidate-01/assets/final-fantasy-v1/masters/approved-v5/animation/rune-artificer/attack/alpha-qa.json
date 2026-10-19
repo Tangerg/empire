@@ -24,5 +24,50 @@
   "alphaOnePixels": 4940,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "boot": "braced-screen-left",
+      "roi": [
+        330,
+        820,
+        610,
+        980
+      ],
+      "soleY": 953,
+      "bottomFourRowsMeanX": 454.6056338028169
+    },
+    {
+      "boot": "braced-screen-right",
+      "roi": [
+        880,
+        820,
+        1260,
+        980
+      ],
+      "soleY": 966,
+      "bottomFourRowsMeanX": 1107.714859437751
+    }
+  ],
+  "sourceFootMidpoint": [
+    781.1602466202839,
+    959.5
+  ],
+  "suggestedSourceFoot": [
+    781,
+    966
+  ],
+  "lockedBodyScale": 0.04814004376367615,
+  "masterRawHashMatches": true,
+  "semanticReview": "Unmistakable original screen-left hammer raised over shoulder; compact steel head retained, one handle cleanly gripped by the left fist. Screen-right hand retains open arched rune-tool with three blue pendants. Two arms/hands, wide braced feet, no baked FX. Head and lens retain approved dimensions despite bent combat pose. Native and white QA viewed.",
+  "openRuneApertureProbe": {
+    "rectangle": [
+      1218,
+      430,
+      1225,
+      437
+    ],
+    "zeroPixels": 49,
+    "maxAlpha": 0
+  }
 }
