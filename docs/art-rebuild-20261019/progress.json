@@ -4275,10 +4275,14 @@
     },
     {
       "topicId": "c02-battle-prop-fuel-oxygen-tanks",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-fuel-oxygen-tanks/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; runtime visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "2c73cacf4a7650d5e70bcc6c810c6bbc8f4a52034a549e2a8948690f112f61e4"
     },
     {
       "topicId": "c02-battle-prop-giant-roots",
@@ -4338,10 +4342,15 @@
     },
     {
       "topicId": "c02-battle-prop-overload-nodes",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-overload-nodes/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; runtime visual acceptance pending",
+        "alphaVisualReview": "needs imagegen revision: broad cyan haze; raw only"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "1ab7ce62e356bdba473f79a27ad9a73ee75d78579f09bbde7aef3cc2b59fbbae"
     },
     {
       "topicId": "c02-battle-prop-permission-badges",
