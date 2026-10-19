@@ -4,23 +4,23 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 87,
+    "formalBound": 93,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 18,
-      "equipment": 12,
+      "equipment": 18,
       "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 87,
+    "rawPreservedTopics": 93,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 117
+    "registeredEnvironmentCells": 119
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 117,
+    "registeredIndividualSourceCells": 119,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -4211,13 +4211,20 @@
       "category": "equipment",
       "label": "战斧兵主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-axe-breaker/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-axe-breaker.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native unchanged RGBA preserved with exact original equipment atlas evidence",
+        "export": "native48 three-background silhouette, identity and alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon resolved; no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-BALLISTA",
@@ -4239,13 +4246,20 @@
       "category": "equipment",
       "label": "旗卫主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-banner-guard/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-banner-guard.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native unchanged RGBA preserved with exact original equipment atlas evidence",
+        "export": "native48 three-background silhouette, identity and alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon resolved; no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-BATTLE-MAGE",
@@ -4253,13 +4267,20 @@
       "category": "equipment",
       "label": "战斗法师主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-battle-mage/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-battle-mage.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native unchanged RGBA preserved with exact original equipment atlas evidence",
+        "export": "native48 three-background silhouette, identity and alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon resolved; no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-BERSERKER",
@@ -4267,13 +4288,20 @@
       "category": "equipment",
       "label": "狂战士主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-berserker/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-berserker.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native unchanged RGBA preserved with exact original equipment atlas evidence",
+        "export": "native48 three-background silhouette, identity and alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon resolved; no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-BRIDGE-TOWER-TOOLS",
@@ -4554,13 +4582,20 @@
       "category": "equipment",
       "label": "军团盾卫主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-legion-shield/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-legion-shield.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native unchanged RGBA preserved with exact original equipment atlas evidence",
+        "export": "native48 three-background silhouette, identity and alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon resolved; no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-LONG-RANGE-SCOUT-KIT",
@@ -4799,13 +4834,20 @@
       "category": "equipment",
       "label": "圣殿骑士主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-templar/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-templar.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native unchanged RGBA preserved with exact original equipment atlas evidence",
+        "export": "native48 three-background silhouette, identity and alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon resolved; no HD invented",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-TROLL",
@@ -18197,7 +18239,9 @@
         "field-kitchen",
         "wounded-shelter-ground",
         "forge-workyard",
-        "livestock-pen"
+        "livestock-pen",
+        "keep-foundation",
+        "supply-yard"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18211,12 +18255,14 @@
           "field-kitchen",
           "wounded-shelter-ground",
           "forge-workyard",
-          "livestock-pen"
+          "livestock-pen",
+          "keep-foundation",
+          "supply-yard"
         ],
-        "count": 10,
-        "export": "144/288 full-canvas registration, immutable baseline and unchanged other15 cells checked",
+        "count": 12,
+        "export": "144/288 full-canvas registration, immutable baseline and every non-overridden cell checked",
         "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
-        "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe. Forge/workyard and empty livestock pen native catalog review passed; no current direct selectors found.",
+        "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe. Forge/workyard and empty livestock pen native catalog review passed; no current direct selectors found. Keep foundation and supply yard native catalog scale0.55 reviewed; actual keep ground binding scale0.3 is a distinct caller, not represented as sampled by this board. Empty courtyard/entry stairs and cargo grouping retained.",
         "liveGame": "pending"
       }
     },

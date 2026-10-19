@@ -764,12 +764,14 @@
         "field-kitchen",
         "wounded-shelter-ground",
         "forge-workyard",
-        "livestock-pen"
+        "livestock-pen",
+        "keep-foundation",
+        "supply-yard"
       ],
-      "count": 10,
-      "export": "144/288 full-canvas registration, immutable baseline and unchanged other15 cells checked",
+      "count": 12,
+      "export": "144/288 full-canvas registration, immutable baseline and every non-overridden cell checked",
       "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
-      "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe. Forge/workyard and empty livestock pen native catalog review passed; no current direct selectors found.",
+      "sceneReview": "6 earlier cells reviewed in actual full scenes; kitchen/shelter native catalog review passed. Wounded shelter retains foundation ground layer semantics; its declared field-post scale0.3 remains separate from0.55 catalog probe. Forge/workyard and empty livestock pen native catalog review passed; no current direct selectors found. Keep foundation and supply yard native catalog scale0.55 reviewed; actual keep ground binding scale0.3 is a distinct caller, not represented as sampled by this board. Empty courtyard/entry stairs and cargo grouping retained.",
       "liveGame": "pending"
     },
     "cliff-modules-temperate": {

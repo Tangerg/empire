@@ -1,0 +1,54 @@
+{
+  "identity": "supply-yard",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/supply-yard-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    1107
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/supply-yard/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-1cc20d81-b6f6-4a76-98f1-63b86666a346.png",
+  "sha256": "f4aa7972fff8a1abfb8690f85675055cc142039a05476643a652a41d2ed01a68",
+  "atlas": "camps-foundations",
+  "cell_index": 10,
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/supply-yard-source-evidence.json",
+  "runtime_contract": {
+    "logical_cell": [
+      144,
+      144
+    ],
+    "hd_cell": [
+      288,
+      288
+    ],
+    "logical_anchor": [
+      72,
+      139
+    ],
+    "hd_anchor": [
+      144,
+      278
+    ],
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "manifest_cell": {
+    "id": "supply-yard",
+    "footprint": [
+      3,
+      3
+    ],
+    "anchor": [
+      72,
+      139
+    ],
+    "obstructionHeight": 1
+  },
+  "render_role": "catalog foundation module with standing stored objects; no direct consumer found in current main src; preserve bottom-anchor metadata without inventing a runtime layer"
+}
