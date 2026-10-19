@@ -1,0 +1,3 @@
+# C01 status17-24 formal integration
+
+Eight original subjects preserve gray flag capture point, paired shields/wheel, open gate/footprints, lantern hands/broken bars, hammer/reinforced wall, broken gear/axle, hourglass/flag, and sealed tube/arrow/three portrait cards. Actual32px white/dark/olive exports and28px source previews reviewed. Small spoke/feather counts are not guaranteed separately readable at HUD size. Status24 native1307x1203 aspect is retained, no square stretch. All24 source identities now have formal catalog resolution; existing six direct condition mappings remain unchanged. No live playback acceptance claimed.

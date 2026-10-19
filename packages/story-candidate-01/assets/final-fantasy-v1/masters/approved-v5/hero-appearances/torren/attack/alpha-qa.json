@@ -24,5 +24,110 @@
   "alphaOnePixels": 6956,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "sourceFoot": [
+    534,
+    944
+  ],
+  "soleMeasurements": [
+    {
+      "boot": "image-left",
+      "roi": [
+        50,
+        790,
+        270,
+        960
+      ],
+      "soleCenterXBottomFourRows": 154.95087719298246,
+      "soleY": 907
+    },
+    {
+      "boot": "image-right",
+      "roi": [
+        730,
+        830,
+        1020,
+        980
+      ],
+      "soleCenterXBottomFourRows": 913.0936555891238,
+      "soleY": 944
+    }
+  ],
+  "sourceRegistrationOffset": [
+    208,
+    20
+  ],
+  "logicalRegistrationOffset": [
+    10.237136465324385,
+    0.9843400447427293
+  ],
+  "commonScaleRatio": "44/894",
+  "commonScale": 0.049217002237136466,
+  "commonNativeCanvas": [
+    1586,
+    992
+  ],
+  "explicitTransparentPadding": {
+    "right": 0,
+    "bottom": 0
+  },
+  "negativeSpaceProbes": [
+    {
+      "name": "open-arm-gap",
+      "rectangle": [
+        755,
+        586,
+        758,
+        589
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 9
+    },
+    {
+      "name": "between-boots",
+      "rectangle": [
+        418,
+        872,
+        425,
+        879
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Wide braced lunge and single near right arm extended to the east; intact straight blade nearly horizontal, opposite arm braces original repaired shield. Apparent thrust-like cutting key pose supplies existing slash action slot, with no duplicate blade/trail or embeddedFX. Body shifts left on authored canvas; measured whole-canvas translation restores foot alignment at unchanged scale.",
+  "fullCanvasBoundsInFrame": [
+    18.237136465324383,
+    4.984340044742729,
+    96.29530201342281,
+    53.8076062639821
+  ],
+  "visibleBoundsInFrame": [
+    21.534675615212528,
+    8.626398210290827,
+    95.85234899328859,
+    51.494407158836694
+  ],
+  "diagnosticFrame": [
+    104,
+    64
+  ],
+  "diagnosticOrigin": [
+    8,
+    4
+  ],
+  "diagnosticPerimeterMaxAlpha": 0,
+  "approximateProjectedBladeEndpoints": [
+    [
+      1035,
+      404
+    ],
+    [
+      1575,
+      416
+    ]
+  ],
+  "approximateProjectedBladeLength": 540.1333168764911,
+  "bladeMeasurementCaveat": "Manual native-image centerline endpoint estimates, not exact physical weapon size. Pose angle/perspective changes projected span; all rendered at common scale.",
+  "rawEqualsMaster": true
 }

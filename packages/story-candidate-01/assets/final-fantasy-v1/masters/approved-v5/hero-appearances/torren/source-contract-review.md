@@ -62,3 +62,11 @@ Proceed stage01 battle idle with original young face/gray kettle helmet/gray qui
 ## Actor and portrait contract22:15UTC
 
 Coordinator confirms engineering will use exactcampaign-torren plusunitTypec01.swordsman for stage01 appearance/card, leaving generic soldiers unchanged. No stage02 activation without an actual progression source. After battle quartet, transparent TORREN-01 portrait will preserve original spear and named coat/shield/face; battle keeps rule-based straight sword. This equipment distinction is explicit, not silent remapping. No selector is implemented by this source worker.
+
+## Native quartet checkpoint22:19UTC
+
+All four native RGBA sources pass the strict original perimeter gate before padding. Sizes in semantic order are1586×992,1586×992,1586×992,1585×992. Only walk-b receives one explicit transparent right column in diagnostic common-canvas export. Raw/master bytes remain unchanged.
+
+Fixed44/894; feet[742,964],[758,950],[534,944],[713,950]. The attack requires208source-pixel x alignment, equivalent10.237136465324385logical pixels. This motivates explicitlimit12; full104×64 frame/origin[8,4] holds every complete source canvas without resizing or fitting. Native2x/three-background quartet review is available atqa-common-scale/review-2x.png and awaits coordinator acceptance.
+
+Walking supports reverse clearly. Walk-a is rear-flat/forward-toe-up heel-strike; walk-b rear boot rises104source pixels with the opposite boot planted. Attack is an extended right-hand sword lunge while the left arm keeps the repaired shield. Approximate native projected blade lengths525.8/479.1/540.1/494.9 are manual projection observations, not exact physical-length claims. Cloth mottling remains the coordinator-accepted bounded style caveat.

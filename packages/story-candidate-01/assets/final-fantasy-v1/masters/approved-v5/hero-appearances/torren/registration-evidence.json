@@ -1,0 +1,378 @@
+{
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonNativeCanvas": [
+    1586,
+    992
+  ],
+  "actualNativeSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1586,
+      992
+    ],
+    "walk-b": [
+      1585,
+      992
+    ]
+  },
+  "commonScaleRatio": "44/894",
+  "commonScale": 0.049217002237136466,
+  "referenceSourceFoot": [
+    742,
+    964
+  ],
+  "sourceFeet": [
+    [
+      742,
+      964
+    ],
+    [
+      758,
+      950
+    ],
+    [
+      534,
+      944
+    ],
+    [
+      713,
+      950
+    ]
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "origin": [
+    8,
+    4
+  ],
+  "suggestedRegistrationLimit": 12,
+  "maximumMeasuredLogicalOffset": 10.237136465324385,
+  "registrationLimitEvidence": "Attack foot[534,944] differs from approved idle[742,964] by[208,20]source pixels =>[10.237136465324385,0.9843400447427293]logical. The full common canvas still fits inside104×64 at unchanged44/894. Need explicit limit12 rather than hidden fit or an unexplained exception.",
+  "maximumTransparentCanvasPadding": {
+    "right": 1,
+    "bottom": 0
+  },
+  "frameAnchor": [
+    44.51901565995526,
+    51.44519015659955
+  ],
+  "method": "Native source unchanged. Explicit right1 transparent column on walk-b only makes1586×992common canvas. One uniform44/894 scale and whole-canvas translations from actual source feet. Footx mean of both measured sole center samples (including raised leg), rounded; footy lowest sole. No per-pose fit, alpha trim or per-equipment transform.",
+  "poses": [
+    {
+      "pose": "idle",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/idle/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/idle/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0f2c5508-688b-45e9-83b7-676d1f5504d5.png",
+      "sha256": "f3987460a784cac90ccb119a8bc2742fa1ec5498b53cf42f650c56823c3ac2e1",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/idle/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/idle/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/idle/alpha-qa.json",
+      "sourceFoot": [
+        742,
+        964
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            360,
+            840,
+            650,
+            980
+          ],
+          "soleCenterXBottomFourRows": 482.3663793103448,
+          "soleY": 956
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            830,
+            850,
+            1120,
+            980
+          ],
+          "soleCenterXBottomFourRows": 1001.9416342412451,
+          "soleY": 964
+        }
+      ],
+      "sourceRegistrationOffset": [
+        0,
+        0
+      ],
+      "logicalRegistrationOffset": [
+        0.0,
+        0.0
+      ],
+      "explicitTransparentPadding": {
+        "right": 0,
+        "bottom": 0
+      },
+      "rawPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 0,
+      "fullCanvasBoundsInFrame": [
+        8.0,
+        4.0,
+        86.05816554809843,
+        52.82326621923937
+      ],
+      "visibleBoundsInFrame": [
+        23.89709172259508,
+        7.248322147651007,
+        70.50559284116332,
+        51.49440715883669
+      ],
+      "diagnosticPerimeterMaxAlpha": 0,
+      "approximateProjectedBladeLength": 525.8174588200737,
+      "semanticReview": "Young tired dark-brow face, faint stubble, original helmet/scarf/gray-brown quilted coat/bare hand/pendant/patched round woodshield. Rule-supported right-hand straight sword replaces named card spear explicitly. Two flat boots."
+    },
+    {
+      "pose": "walk-a",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/walk-a/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/walk-a/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-610f1fbe-8211-4283-af0c-149b5511ec2d.png",
+      "sha256": "2fc8434aad15673168314f4ccadf989f88ac7017c3cf036150d6de825a8a9c12",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/walk-a/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/walk-a/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/walk-a/alpha-qa.json",
+      "sourceFoot": [
+        758,
+        950
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            380,
+            830,
+            650,
+            980
+          ],
+          "soleCenterXBottomFourRows": 541.3310104529617,
+          "soleY": 944
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            930,
+            760,
+            1190,
+            980
+          ],
+          "soleCenterXBottomFourRows": 974.5688073394496,
+          "soleY": 950
+        }
+      ],
+      "sourceRegistrationOffset": [
+        -16,
+        14
+      ],
+      "logicalRegistrationOffset": [
+        -0.7874720357941835,
+        0.6890380313199105
+      ],
+      "explicitTransparentPadding": {
+        "right": 0,
+        "bottom": 0
+      },
+      "rawPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 0,
+      "fullCanvasBoundsInFrame": [
+        7.212527964205816,
+        4.68903803131991,
+        85.27069351230425,
+        53.51230425055928
+      ],
+      "visibleBoundsInFrame": [
+        24.192393736017895,
+        6.903803131991051,
+        69.52125279642058,
+        51.49440715883669
+      ],
+      "diagnosticPerimeterMaxAlpha": 0,
+      "approximateProjectedBladeLength": 479.1200267156446,
+      "semanticReview": "Image-left near/sword-side rear boot flat, image-right far/shield-side forward boot strongly toe-up with heel at contact baseline. Forward heel is6source pixels lower than rear sole; classify as heel-strike/weight-transfer, not wholly airborne. Same weapon hand and shield patch sector."
+    },
+    {
+      "pose": "attack",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/attack/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/attack/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-71fda7f0-9697-41c1-8667-42fb5619541b.png",
+      "sha256": "edc1610c48cf59e318a15007fff2ef06c0d6fe0e4298df543e293313939308e6",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/attack/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/attack/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/attack/alpha-qa.json",
+      "sourceFoot": [
+        534,
+        944
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            50,
+            790,
+            270,
+            960
+          ],
+          "soleCenterXBottomFourRows": 154.95087719298246,
+          "soleY": 907
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            730,
+            830,
+            1020,
+            980
+          ],
+          "soleCenterXBottomFourRows": 913.0936555891238,
+          "soleY": 944
+        }
+      ],
+      "sourceRegistrationOffset": [
+        208,
+        20
+      ],
+      "logicalRegistrationOffset": [
+        10.237136465324385,
+        0.9843400447427293
+      ],
+      "explicitTransparentPadding": {
+        "right": 0,
+        "bottom": 0
+      },
+      "rawPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 1,
+      "fullCanvasBoundsInFrame": [
+        18.237136465324383,
+        4.984340044742729,
+        96.29530201342281,
+        53.8076062639821
+      ],
+      "visibleBoundsInFrame": [
+        21.534675615212528,
+        8.626398210290827,
+        95.85234899328859,
+        51.494407158836694
+      ],
+      "diagnosticPerimeterMaxAlpha": 0,
+      "approximateProjectedBladeLength": 540.1333168764911,
+      "semanticReview": "Wide braced lunge and single near right arm extended to the east; intact straight blade nearly horizontal, opposite arm braces original repaired shield. Apparent thrust-like cutting key pose supplies existing slash action slot, with no duplicate blade/trail or embeddedFX. Body shifts left on authored canvas; measured whole-canvas translation restores foot alignment at unchanged scale."
+    },
+    {
+      "pose": "walk-b",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/walk-b/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/walk-b/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-1f0ce1c8-3ed7-45d9-be77-c76900900ace.png",
+      "sha256": "46a4b34a1451799c99e09e2f05f8e232f52aed14807d8b287a076d869b160b25",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/walk-b/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/walk-b/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/walk-b/alpha-qa.json",
+      "sourceFoot": [
+        713,
+        950
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            345,
+            600,
+            485,
+            860
+          ],
+          "soleCenterXBottomFourRows": 416.22222222222223,
+          "soleY": 846
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            830,
+            830,
+            1140,
+            980
+          ],
+          "soleCenterXBottomFourRows": 1010.0512820512821,
+          "soleY": 950
+        }
+      ],
+      "sourceRegistrationOffset": [
+        29,
+        14
+      ],
+      "logicalRegistrationOffset": [
+        1.4272930648769575,
+        0.6890380313199105
+      ],
+      "explicitTransparentPadding": {
+        "right": 1,
+        "bottom": 0
+      },
+      "rawPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 0,
+      "fullCanvasBoundsInFrame": [
+        9.427293064876958,
+        4.68903803131991,
+        87.48545861297539,
+        53.51230425055928
+      ],
+      "visibleBoundsInFrame": [
+        27.096196868008946,
+        7.445190156599552,
+        74.19686800894856,
+        51.49440715883669
+      ],
+      "diagnosticPerimeterMaxAlpha": 0,
+      "approximateProjectedBladeLength": 494.91918532220996,
+      "semanticReview": "Image-right far/shield-side forward boot flat; image-left near/sword-side rear boot bent and raised104source pixels above support sole, clearly opposite support from walk-a. Same face direction and sword/shield hands. No generic soldier binding implied."
+    }
+  ],
+  "status": "Coordinator native quartet and measured limit12 registration accepted; formal actor binding parent-owned",
+  "coordinatorSequenceApproval": {
+    "time": "2026-10-19 22:22UTC",
+    "review": "Consistent named identity/scale, opposite contacts and right-hand attack; full canvas retained at44/894 with documented attack limit12 accepted",
+    "pending": "Parent/engineer actual actor selector and complete scene/card checks"
+  }
+}

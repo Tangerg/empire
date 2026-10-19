@@ -1,6 +1,6 @@
 {
   "artifactKind": "named-campaign-actor-source-audit",
-  "status": "Torren battle idle approved; shared-scale quartet in progress",
+  "status": "Native battle quartet accepted; original-spear transparent portrait in progress",
   "campaignRosterId": "torren",
   "levelUnitKey": "campaign-torren",
   "actualUnitType": "c01.swordsman",
@@ -558,5 +558,25 @@
     "scope": "Engineer/parent confirms exact campaign-torren with c01.swordsman will select named stage01 appearance/card; generic soldiers unchanged, no new rule alias.",
     "stage02": "No activation without actual progression source.",
     "narrativePortrait": "After approved quartet, transparent TORREN-01 portrait retains original spear, original named face/coat/patched shield. Explicit portrait spear versus rule-based battle sword distinction."
-  }
+  },
+  "quartetManifest": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/bundle-manifest.json",
+  "sourceFeet": [
+    [
+      742,
+      964
+    ],
+    [
+      758,
+      950
+    ],
+    [
+      534,
+      944
+    ],
+    [
+      713,
+      950
+    ]
+  ],
+  "commonScaleRatio": "44/894"
 }

@@ -24,5 +24,110 @@
   "alphaOnePixels": 3140,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "sourceFoot": [
+    758,
+    950
+  ],
+  "soleMeasurements": [
+    {
+      "boot": "image-left",
+      "roi": [
+        380,
+        830,
+        650,
+        980
+      ],
+      "soleCenterXBottomFourRows": 541.3310104529617,
+      "soleY": 944
+    },
+    {
+      "boot": "image-right",
+      "roi": [
+        930,
+        760,
+        1190,
+        980
+      ],
+      "soleCenterXBottomFourRows": 974.5688073394496,
+      "soleY": 950
+    }
+  ],
+  "sourceRegistrationOffset": [
+    -16,
+    14
+  ],
+  "logicalRegistrationOffset": [
+    -0.7874720357941835,
+    0.6890380313199105
+  ],
+  "commonScaleRatio": "44/894",
+  "commonScale": 0.049217002237136466,
+  "commonNativeCanvas": [
+    1586,
+    992
+  ],
+  "explicitTransparentPadding": {
+    "right": 0,
+    "bottom": 0
+  },
+  "negativeSpaceProbes": [
+    {
+      "name": "open-arm-gap",
+      "rectangle": [
+        592,
+        496,
+        599,
+        503
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "between-boots",
+      "rectangle": [
+        766,
+        869,
+        773,
+        876
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Image-left near/sword-side rear boot flat, image-right far/shield-side forward boot strongly toe-up with heel at contact baseline. Forward heel is6source pixels lower than rear sole; classify as heel-strike/weight-transfer, not wholly airborne. Same weapon hand and shield patch sector.",
+  "fullCanvasBoundsInFrame": [
+    7.212527964205816,
+    4.68903803131991,
+    85.27069351230425,
+    53.51230425055928
+  ],
+  "visibleBoundsInFrame": [
+    24.192393736017895,
+    6.903803131991051,
+    69.52125279642058,
+    51.49440715883669
+  ],
+  "diagnosticFrame": [
+    104,
+    64
+  ],
+  "diagnosticOrigin": [
+    8,
+    4
+  ],
+  "diagnosticPerimeterMaxAlpha": 0,
+  "approximateProjectedBladeEndpoints": [
+    [
+      574,
+      588
+    ],
+    [
+      1034,
+      722
+    ]
+  ],
+  "approximateProjectedBladeLength": 479.1200267156446,
+  "bladeMeasurementCaveat": "Manual native-image centerline endpoint estimates, not exact physical weapon size. Pose angle/perspective changes projected span; all rendered at common scale.",
+  "rawEqualsMaster": true
 }

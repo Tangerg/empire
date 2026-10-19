@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/walk-a/master.png",
+      "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/carry-or-work/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/walk-b/master.png"
+    },
+    "scale": 0.04602510460251046,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      802.5,
+      980
+    ],
+    "sourceFeet": {
+      "idle": [
+        802.5,
+        980
+      ],
+      "walk-a": [
+        802.75,
+        971
+      ],
+      "carry-or-work": [
+        780.75,
+        980
+      ],
+      "walk-b": [
+        751.75,
+        966
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -0.011506276150627616,
+        0.41422594142259417
+      ],
+      "carry-or-work": [
+        1.0010460251046025,
+        0.0
+      ],
+      "walk-b": [
+        2.335774058577406,
+        0.6443514644351465
+      ]
+    },
+    "registrationLimit": 3,
+    "canvasPaddingTolerance": 2,
+    "meaning": "original noncombat timber carrier; opposite walking contacts and carry-or-work third frame"
+  },
+  "authoredCanvas": [
+    1586,
+    993
+  ],
+  "logicalPivot": [
+    44.93514644351465,
+    49.10460251046025
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "0e8f7d734443e8e7ee141c0aa90d090dfe678fe4d30c4a79aa7be4691c209ac1",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5461,
+        "nearOpaquePixels": 1033,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          5,
+          69,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "0e8f7d734443e8e7ee141c0aa90d090dfe678fe4d30c4a79aa7be4691c209ac1",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21935,
+        "nearOpaquePixels": 4212,
+        "edgeMax": 0,
+        "visibleBounds": [
+          51,
+          10,
+          138,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/walk-a/master.png",
+      "registrationOffset": [
+        -0.011506276150627616,
+        0.41422594142259417
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "445f4243c0f6ce152dfbbcfc80f0f3fb2efa3800f359ad2d3e0b49afab4d246d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5476,
+        "nearOpaquePixels": 994,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          5,
+          70,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/walk-a/master.png",
+      "registrationOffset": [
+        -0.011506276150627616,
+        0.41422594142259417
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "445f4243c0f6ce152dfbbcfc80f0f3fb2efa3800f359ad2d3e0b49afab4d246d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22015,
+        "nearOpaquePixels": 4082,
+        "edgeMax": 0,
+        "visibleBounds": [
+          52,
+          11,
+          140,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/carry-or-work/master.png",
+      "registrationOffset": [
+        1.0010460251046025,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "ba27445a9bb3ee477ea004c64e2582928d5203e74d13cb18b6afd2b3ec438d87",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5492,
+        "nearOpaquePixels": 978,
+        "edgeMax": 0,
+        "visibleBounds": [
+          23,
+          5,
+          73,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "carry-or-work",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/carry-or-work/master.png",
+      "registrationOffset": [
+        1.0010460251046025,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "ba27445a9bb3ee477ea004c64e2582928d5203e74d13cb18b6afd2b3ec438d87",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22075,
+        "nearOpaquePixels": 4009,
+        "edgeMax": 0,
+        "visibleBounds": [
+          45,
+          10,
+          146,
+          98
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/walk-b/master.png",
+      "registrationOffset": [
+        2.335774058577406,
+        0.6443514644351465
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "ea3d4643936a53ab9a131d5d95228a994c8aeb39f962d3c8414fa243ce4c1583",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5535,
+        "nearOpaquePixels": 938,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          6,
+          72,
+          49
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/walk-b/master.png",
+      "registrationOffset": [
+        2.335774058577406,
+        0.6443514644351465
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "ea3d4643936a53ab9a131d5d95228a994c8aeb39f962d3c8414fa243ce4c1583",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22244,
+        "nearOpaquePixels": 3830,
+        "edgeMax": 0,
+        "visibleBounds": [
+          58,
+          11,
+          144,
+          98
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

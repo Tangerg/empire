@@ -1,0 +1,60 @@
+{
+  "frames": {
+    "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/idle/master.png",
+    "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/walk-a/master.png",
+    "carry-or-work": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/carry-or-work/master.png",
+    "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/walk-b/master.png"
+  },
+  "scale": 0.04602510460251046,
+  "origin": [
+    8,
+    4
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "sourceFoot": [
+    802.5,
+    980
+  ],
+  "sourceFeet": {
+    "idle": [
+      802.5,
+      980
+    ],
+    "walk-a": [
+      802.75,
+      971
+    ],
+    "carry-or-work": [
+      780.75,
+      980
+    ],
+    "walk-b": [
+      751.75,
+      966
+    ]
+  },
+  "registrationOffsets": {
+    "idle": [
+      0.0,
+      0.0
+    ],
+    "walk-a": [
+      -0.011506276150627616,
+      0.41422594142259417
+    ],
+    "carry-or-work": [
+      1.0010460251046025,
+      0.0
+    ],
+    "walk-b": [
+      2.335774058577406,
+      0.6443514644351465
+    ]
+  },
+  "registrationLimit": 3,
+  "canvasPaddingTolerance": 2,
+  "meaning": "original noncombat timber carrier; opposite walking contacts and carry-or-work third frame"
+}

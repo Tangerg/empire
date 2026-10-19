@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 281,
+    "formalBound": 289,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 30,
@@ -13,9 +13,9 @@
       "mission-unit": 1,
       "narrative-static": 3,
       "skill": 48,
-      "status": 16
+      "status": 24
     },
-    "rawPreservedTopics": 291,
+    "rawPreservedTopics": 292,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -940,8 +940,11 @@
       "category": "narrative-static",
       "label": "托伦北丘士兵",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-torren-01/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-torren-01/attempt-01/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -1515,7 +1518,9 @@
       "label": "火炮车",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-a/master.png"
       ],
       "raw": "preserved",
       "export": "pending",
@@ -6756,11 +6761,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-17/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/status/status-17.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STATUS-18",
@@ -6772,11 +6782,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-18/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/status/status-18.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STATUS-19",
@@ -6788,11 +6803,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-19/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/status/status-19.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STATUS-20",
@@ -6804,11 +6824,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-20/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/status/status-20.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STATUS-21",
@@ -6820,11 +6845,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-21/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/status/status-21.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STATUS-22",
@@ -6836,11 +6866,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-22/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/status/status-22.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STATUS-23",
@@ -6852,11 +6887,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-23/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/status/status-23.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STATUS-24",
@@ -6868,11 +6908,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-24/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/status/status-24.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole authored source, prompt and original identity evidence preserved",
+        "export": "native32 white/dark/olive semantic review; actual alpha checked",
+        "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-FX-01",

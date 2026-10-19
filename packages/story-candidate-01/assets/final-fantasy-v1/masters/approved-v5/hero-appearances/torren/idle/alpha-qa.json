@@ -29,7 +29,7 @@
   "bodyTopY": 66,
   "soleMeasurements": [
     {
-      "name": "image-left-boot",
+      "boot": "image-left",
       "roi": [
         360,
         840,
@@ -40,7 +40,7 @@
       "soleY": 956
     },
     {
-      "name": "image-right-boot",
+      "boot": "image-right",
       "roi": [
         830,
         850,
@@ -69,7 +69,7 @@
   ],
   "negativeSpaceProbes": [
     {
-      "name": "under-right-arm",
+      "name": "open-arm-gap",
       "rectangle": [
         604,
         518,
@@ -91,7 +91,7 @@
       "zeroPixels": 49
     }
   ],
-  "semanticReview": "Young tired dark-brow face with light stubble, no large beard or later cheek scar; gray kettle helmet/ear guards, gray scarf, gray-brown quilted coat, source pendant, bare sword hand, brown boots and repaired wooden shield retained. Explicit rule-based right-hand straight sword replaces original portrait spear. Opposite arm remains behind shield, no duplicated hand.",
+  "semanticReview": "Young tired dark-brow face, faint stubble, original helmet/scarf/gray-brown quilted coat/bare hand/pendant/patched round woodshield. Rule-supported right-hand straight sword replaces named card spear explicitly. Two flat boots.",
   "styleCaveat": "Head/hand/boot proportions and broad steel planes match family; quilted coat still has some mottled small surface marks from original reference. Submit native44 comparison before deciding whether a targeted cleanup redraw is warranted. Source pixels unchanged.",
   "bodyMeasurementDefinition": "Helmet dome top66 to mean soles960 =>894. Footx is mean of sole bottom-four-row center samples rounded742; footy964.",
   "rawEqualsMaster": true,
@@ -107,5 +107,60 @@
       992
     ],
     "review": "Tired young face, gray helmet/quilted kit/patched shield, rule-based straight blade approved; bounded cloth mottling accepted with no increase."
-  }
+  },
+  "sourceFoot": [
+    742,
+    964
+  ],
+  "sourceRegistrationOffset": [
+    0,
+    0
+  ],
+  "logicalRegistrationOffset": [
+    0.0,
+    0.0
+  ],
+  "commonScaleRatio": "44/894",
+  "commonScale": 0.049217002237136466,
+  "commonNativeCanvas": [
+    1586,
+    992
+  ],
+  "explicitTransparentPadding": {
+    "right": 0,
+    "bottom": 0
+  },
+  "fullCanvasBoundsInFrame": [
+    8.0,
+    4.0,
+    86.05816554809843,
+    52.82326621923937
+  ],
+  "visibleBoundsInFrame": [
+    23.89709172259508,
+    7.248322147651007,
+    70.50559284116332,
+    51.49440715883669
+  ],
+  "diagnosticFrame": [
+    104,
+    64
+  ],
+  "diagnosticOrigin": [
+    8,
+    4
+  ],
+  "diagnosticPerimeterMaxAlpha": 0,
+  "approximateProjectedBladeEndpoints": [
+    [
+      570,
+      625
+    ],
+    [
+      1080,
+      753
+    ]
+  ],
+  "approximateProjectedBladeLength": 525.8174588200737,
+  "bladeMeasurementCaveat": "Manual native-image centerline endpoint estimates, not exact physical weapon size. Pose angle/perspective changes projected span; all rendered at common scale."
 }

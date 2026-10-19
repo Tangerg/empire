@@ -92,5 +92,35 @@
     "approved-v5/mission/refugee-adult/idle/master.png",
     "approved-v5/animation/engineer/idle/master.png",
     "approved-v5/hero-appearances/laiya/idle/master.png"
-  ]
+  ],
+  "status": "Native four-pose artwork complete, preserved from builtin imagegen. Export integration remains coordinator-owned.",
+  "styleReferenceProvenance": {
+    "refugee": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/idle/master.png",
+      "sha256": "eff49f455c9ace742337adffbed62be8f0e24bb879cb7ceb4238711956f49ff6",
+      "size": [
+        1585,
+        992
+      ],
+      "purpose": "Inspected style/body-scale reference, not character identity."
+    },
+    "engineer": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/idle/master.png",
+      "sha256": "20421d289c418fe43a9515f46d1ebfc3c99e19c13988d1ddcb69b04947c7883f",
+      "size": [
+        1586,
+        992
+      ],
+      "purpose": "Inspected style/body-scale reference, not character identity."
+    },
+    "named-human-laiya": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/master.png",
+      "sha256": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+      "size": [
+        1586,
+        992
+      ],
+      "purpose": "Inspected style/body-scale reference, not character identity."
+    }
+  }
 }
