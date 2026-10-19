@@ -1,0 +1,1614 @@
+{
+  "baseline": "714538b099cbe35f22865fb3b6d97a9743ca0c89",
+  "levels": [
+    {
+      "level": "c01-03",
+      "roderick": {
+        "id": 4,
+        "key": "roderick",
+        "type": "c01.roderick",
+        "owner": 1,
+        "x": 3,
+        "y": 5,
+        "hp": 135,
+        "done": false,
+        "capture": 0,
+        "statuses": [],
+        "weaponState": {
+          "c01.knight-lance": {
+            "cooldownRemaining": 0,
+            "resources": {}
+          },
+          "c01.knight-charge": {
+            "cooldownRemaining": 0,
+            "resources": {}
+          }
+        },
+        "commanderId": "enemy-command",
+        "rank": 0,
+        "rankProgress": 0,
+        "resources": {},
+        "reaction": "support",
+        "reactionUsedRound": -1,
+        "facing": "east",
+        "morale": {
+          "current": 100,
+          "maximum": 100,
+          "resilience": 0.1
+        },
+        "formation": null,
+        "directive": {
+          "mode": "assault",
+          "waypoints": [],
+          "cursor": 0
+        },
+        "career": {
+          "current": null,
+          "unlocked": [],
+          "mastery": {}
+        },
+        "learnedAbilities": []
+      },
+      "visibleToPlayers": [
+        {
+          "player": 1,
+          "visible": true
+        },
+        {
+          "player": 2,
+          "visible": true
+        }
+      ],
+      "cells": [
+        {
+          "cell": [
+            2,
+            5
+          ],
+          "terrainId": "forest",
+          "terrain": {
+            "defense": 0.2,
+            "vision": 0,
+            "opaque": true,
+            "cover": "half",
+            "obstructionHeight": 2,
+            "capturable": false,
+            "ownerTurnGrants": [],
+            "heal": 0,
+            "produces": [],
+            "hq": false,
+            "tags": [
+              "rough"
+            ],
+            "id": "forest",
+            "name": "\u68ee\u6797",
+            "cost": {
+              "foot": 2,
+              "mounted": 3,
+              "heavy": 3,
+              "flying": 1,
+              "naval": null,
+              "amphibious": 2
+            }
+          },
+          "owner": 0,
+          "structures": [],
+          "actors": [],
+          "elevation": 0
+        }
+      ],
+      "scenario": {
+        "variables": {
+          "gate_breached": 0
+        },
+        "zones": [
+          {
+            "id": "oath-node",
+            "cells": [
+              {
+                "x": 18,
+                "y": 7
+              }
+            ]
+          }
+        ],
+        "triggers": [
+          {
+            "id": "disable-redstone",
+            "timing": "afterAction",
+            "condition": {
+              "type": "unitInZone",
+              "zone": "oath-node",
+              "owner": 1
+            },
+            "effects": [
+              {
+                "type": "changeUnitOwner",
+                "selector": {
+                  "anyTags": [
+                    "oathbound"
+                  ]
+                },
+                "owner": 1
+              },
+              {
+                "type": "damageStructure",
+                "id": "redstone-node",
+                "amount": 100
+              },
+              {
+                "type": "emitSignal",
+                "signal": "redstone_node_disabled"
+              }
+            ]
+          },
+          {
+            "id": "redstone-second-wave",
+            "timing": "turnStart",
+            "condition": {
+              "type": "turnAtLeast",
+              "turn": 4
+            },
+            "effects": [
+              {
+                "type": "spawnUnits",
+                "reason": "reinforcement",
+                "ready": true,
+                "units": [
+                  {
+                    "key": "redstone-wave-guard",
+                    "x": 0,
+                    "y": 13,
+                    "unit": "c01.banner-guard",
+                    "owner": 1,
+                    "facing": "east"
+                  },
+                  {
+                    "key": "redstone-wave-engineer",
+                    "x": 1,
+                    "y": 14,
+                    "unit": "c01.engineer",
+                    "owner": 1,
+                    "facing": "east"
+                  },
+                  {
+                    "key": "redstone-wave-bow",
+                    "x": 2,
+                    "y": 14,
+                    "unit": "c01.archer",
+                    "owner": 1,
+                    "facing": "east"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "redstone-gate-breached",
+            "timing": "afterAction",
+            "condition": {
+              "type": "unitCount",
+              "selector": {
+                "keys": [
+                  "redstone-shield"
+                ]
+              },
+              "op": "lte",
+              "value": 0
+            },
+            "effects": [
+              {
+                "type": "setVariable",
+                "key": "gate_breached",
+                "value": 1
+              },
+              {
+                "type": "changeUnitOwner",
+                "selector": {
+                  "anyTags": [
+                    "oathbound"
+                  ]
+                },
+                "owner": 1
+              },
+              {
+                "type": "damageStructure",
+                "id": "redstone-node",
+                "amount": 100
+              },
+              {
+                "type": "emitSignal",
+                "signal": "redstone_gate_chain_broken"
+              }
+            ]
+          },
+          {
+            "id": "redstone-sappers-complete",
+            "timing": "turnStart",
+            "condition": {
+              "type": "turnAtLeast",
+              "turn": 15
+            },
+            "effects": [
+              {
+                "type": "setVariable",
+                "key": "gate_breached",
+                "value": 1
+              },
+              {
+                "type": "changeUnitOwner",
+                "selector": {
+                  "anyTags": [
+                    "oathbound"
+                  ]
+                },
+                "owner": 1
+              },
+              {
+                "type": "damageStructure",
+                "id": "redstone-node",
+                "amount": 100
+              },
+              {
+                "type": "emitSignal",
+                "signal": "redstone_sappers_cut_chain"
+              }
+            ]
+          }
+        ]
+      },
+      "structures": [
+        {
+          "id": "redstone-node",
+          "type": "command_node",
+          "owner": 2,
+          "x": 18,
+          "y": 7,
+          "hp": 100,
+          "disabled": false,
+          "statuses": []
+        }
+      ]
+    },
+    {
+      "level": "c01-10",
+      "roderick": {
+        "id": 12,
+        "key": "roderick",
+        "type": "c01.roderick",
+        "owner": 2,
+        "x": 18,
+        "y": 6,
+        "hp": 135,
+        "done": false,
+        "capture": 0,
+        "statuses": [],
+        "weaponState": {
+          "c01.knight-lance": {
+            "cooldownRemaining": 0,
+            "resources": {}
+          },
+          "c01.knight-charge": {
+            "cooldownRemaining": 0,
+            "resources": {}
+          }
+        },
+        "commanderId": "enemy-command",
+        "rank": 0,
+        "rankProgress": 0,
+        "resources": {},
+        "reaction": "support",
+        "reactionUsedRound": -1,
+        "facing": "west",
+        "morale": {
+          "current": 100,
+          "maximum": 100,
+          "resilience": 0.1
+        },
+        "formation": null,
+        "directive": {
+          "mode": "assault",
+          "waypoints": [],
+          "cursor": 0
+        },
+        "career": {
+          "current": null,
+          "unlocked": [],
+          "mastery": {}
+        },
+        "learnedAbilities": []
+      },
+      "visibleToPlayers": [
+        {
+          "player": 1,
+          "visible": true
+        },
+        {
+          "player": 2,
+          "visible": true
+        }
+      ],
+      "cells": [
+        {
+          "cell": [
+            19,
+            6
+          ],
+          "terrainId": "hill",
+          "terrain": {
+            "defense": 0.3,
+            "vision": 1,
+            "opaque": false,
+            "cover": "none",
+            "obstructionHeight": 0,
+            "capturable": false,
+            "ownerTurnGrants": [],
+            "heal": 0,
+            "produces": [],
+            "hq": false,
+            "tags": [
+              "rough",
+              "high"
+            ],
+            "id": "hill",
+            "name": "\u4e18\u9675",
+            "cost": {
+              "foot": 2,
+              "mounted": 3,
+              "heavy": 3,
+              "flying": 1,
+              "naval": null,
+              "amphibious": 2
+            }
+          },
+          "owner": 0,
+          "structures": [],
+          "actors": [],
+          "elevation": 1
+        },
+        {
+          "cell": [
+            17,
+            7
+          ],
+          "terrainId": "forest",
+          "terrain": {
+            "defense": 0.2,
+            "vision": 0,
+            "opaque": true,
+            "cover": "half",
+            "obstructionHeight": 2,
+            "capturable": false,
+            "ownerTurnGrants": [],
+            "heal": 0,
+            "produces": [],
+            "hq": false,
+            "tags": [
+              "rough"
+            ],
+            "id": "forest",
+            "name": "\u68ee\u6797",
+            "cost": {
+              "foot": 2,
+              "mounted": 3,
+              "heavy": 3,
+              "flying": 1,
+              "naval": null,
+              "amphibious": 2
+            }
+          },
+          "owner": 0,
+          "structures": [],
+          "actors": [],
+          "elevation": 0
+        }
+      ],
+      "scenario": {
+        "zones": [
+          {
+            "id": "east-pass",
+            "cells": [
+              {
+                "x": 23,
+                "y": 0
+              },
+              {
+                "x": 24,
+                "y": 0
+              },
+              {
+                "x": 23,
+                "y": 1
+              },
+              {
+                "x": 24,
+                "y": 1
+              },
+              {
+                "x": 23,
+                "y": 2
+              },
+              {
+                "x": 24,
+                "y": 2
+              }
+            ]
+          }
+        ],
+        "triggers": [
+          {
+            "id": "old-banner-rearguard",
+            "timing": "turnStart",
+            "condition": {
+              "type": "turnAtLeast",
+              "turn": 6
+            },
+            "effects": [
+              {
+                "type": "spawnUnits",
+                "reason": "reinforcement",
+                "ready": true,
+                "units": [
+                  {
+                    "key": "old-banner-west-knight",
+                    "x": 0,
+                    "y": 4,
+                    "unit": "c01.knight",
+                    "owner": 2,
+                    "facing": "east"
+                  },
+                  {
+                    "key": "old-banner-west-shield",
+                    "x": 0,
+                    "y": 5,
+                    "unit": "c01.legion-shield",
+                    "owner": 2,
+                    "facing": "east"
+                  },
+                  {
+                    "key": "old-banner-west-bow",
+                    "x": 1,
+                    "y": 6,
+                    "unit": "c01.archer",
+                    "owner": 2,
+                    "facing": "east"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "ivra-intervenes",
+            "timing": "turnStart",
+            "condition": {
+              "type": "turnAtLeast",
+              "turn": 4
+            },
+            "effects": [
+              {
+                "type": "changeMorale",
+                "selector": {
+                  "owner": 2
+                },
+                "amount": -18,
+                "reason": "\u5e7c\u9f99\u622a\u65ad\u8ffd\u5175"
+              },
+              {
+                "type": "emitSignal",
+                "signal": "ivra_chose_to_help"
+              }
+            ]
+          }
+        ]
+      },
+      "structures": []
+    }
+  ],
+  "props": [
+    {
+      "id": "mixed-forest-autumn",
+      "atlas": {
+        "id": "forest-temperate",
+        "png": "runtime/atlas/forest-temperate.png",
+        "png2x": "runtime/atlas/forest-temperate@2x.png",
+        "columns": 4,
+        "rows": 4,
+        "cellWidth": 96,
+        "cellHeight": 96,
+        "cellWidth2x": 192,
+        "cellHeight2x": 192,
+        "componentCount": 16,
+        "category": "forest-scenery",
+        "tileMode": "modules",
+        "cellOrder": [
+          "oak-ancient",
+          "mixed-forest-autumn",
+          "mixed-forest-dense",
+          "oak-grove-dense",
+          "mixed-forest-edge",
+          "sapling-rock-cluster",
+          "bramble-dark",
+          "fern-bed",
+          "bramble-berries",
+          "stump-low",
+          "stump-hollow",
+          "fallen-hollow-log",
+          "leaf-pile",
+          "boulder-large",
+          "boulder-ferns",
+          "forest-floor-cluster"
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "ySort": "bottom-anchor",
+        "cells": [
+          {
+            "id": "oak-ancient",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              48.89154704944178,
+              83.8676236044657
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.375
+          },
+          {
+            "id": "mixed-forest-autumn",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              48.89154704944178,
+              79.75279106858054
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.5
+          },
+          {
+            "id": "mixed-forest-dense",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              48.89154704944178,
+              83.52472089314195
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.4375
+          },
+          {
+            "id": "oak-grove-dense",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              47.8628389154705,
+              79.75279106858054
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.625
+          },
+          {
+            "id": "mixed-forest-edge",
+            "footprint": [
+              2,
+              1
+            ],
+            "anchor": [
+              48.89154704944178,
+              80.43859649122807
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.5
+          },
+          {
+            "id": "sapling-rock-cluster",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              49.577352472089316,
+              77.69537480063796
+            ],
+            "obstructionHeight": 1,
+            "presentationScale": 0.9
+          },
+          {
+            "id": "bramble-dark",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              72.89473684210526
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.8
+          },
+          {
+            "id": "fern-bed",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              70.49441786283892
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.65
+          },
+          {
+            "id": "bramble-berries",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              70.83732057416267
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.85
+          },
+          {
+            "id": "stump-low",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              48,
+              65.35087719298247
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.8
+          },
+          {
+            "id": "stump-hollow",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              73.23763955342903
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.75
+          },
+          {
+            "id": "fallen-hollow-log",
+            "footprint": [
+              2,
+              1
+            ],
+            "anchor": [
+              48.89154704944178,
+              65.00797448165869
+            ],
+            "obstructionHeight": 1,
+            "presentationScale": 0.7
+          },
+          {
+            "id": "leaf-pile",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              48.068580542264755,
+              51.634768740031895
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.4
+          },
+          {
+            "id": "boulder-large",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              48.89154704944178,
+              76.87240829346092
+            ],
+            "obstructionHeight": 1,
+            "presentationScale": 0.6
+          },
+          {
+            "id": "boulder-ferns",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              74.60925039872409
+            ],
+            "obstructionHeight": 1,
+            "presentationScale": 0.65
+          },
+          {
+            "id": "forest-floor-cluster",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              48.068580542264755,
+              56.43540669856459
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.65
+          }
+        ],
+        "url": "/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate.png",
+        "pixelDensity": 2,
+        "raster": {
+          "href": "/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png",
+          "cellWidth": 96,
+          "cellHeight": 96,
+          "columns": 4,
+          "rows": 4
+        }
+      },
+      "cell": {
+        "id": "mixed-forest-autumn",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          48.89154704944178,
+          79.75279106858054
+        ],
+        "obstructionHeight": 2,
+        "presentationScale": 1.5,
+        "index": 1
+      }
+    },
+    {
+      "id": "oak-ancient",
+      "atlas": {
+        "id": "forest-temperate",
+        "png": "runtime/atlas/forest-temperate.png",
+        "png2x": "runtime/atlas/forest-temperate@2x.png",
+        "columns": 4,
+        "rows": 4,
+        "cellWidth": 96,
+        "cellHeight": 96,
+        "cellWidth2x": 192,
+        "cellHeight2x": 192,
+        "componentCount": 16,
+        "category": "forest-scenery",
+        "tileMode": "modules",
+        "cellOrder": [
+          "oak-ancient",
+          "mixed-forest-autumn",
+          "mixed-forest-dense",
+          "oak-grove-dense",
+          "mixed-forest-edge",
+          "sapling-rock-cluster",
+          "bramble-dark",
+          "fern-bed",
+          "bramble-berries",
+          "stump-low",
+          "stump-hollow",
+          "fallen-hollow-log",
+          "leaf-pile",
+          "boulder-large",
+          "boulder-ferns",
+          "forest-floor-cluster"
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "ySort": "bottom-anchor",
+        "cells": [
+          {
+            "id": "oak-ancient",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              48.89154704944178,
+              83.8676236044657
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.375
+          },
+          {
+            "id": "mixed-forest-autumn",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              48.89154704944178,
+              79.75279106858054
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.5
+          },
+          {
+            "id": "mixed-forest-dense",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              48.89154704944178,
+              83.52472089314195
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.4375
+          },
+          {
+            "id": "oak-grove-dense",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              47.8628389154705,
+              79.75279106858054
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.625
+          },
+          {
+            "id": "mixed-forest-edge",
+            "footprint": [
+              2,
+              1
+            ],
+            "anchor": [
+              48.89154704944178,
+              80.43859649122807
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.5
+          },
+          {
+            "id": "sapling-rock-cluster",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              49.577352472089316,
+              77.69537480063796
+            ],
+            "obstructionHeight": 1,
+            "presentationScale": 0.9
+          },
+          {
+            "id": "bramble-dark",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              72.89473684210526
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.8
+          },
+          {
+            "id": "fern-bed",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              70.49441786283892
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.65
+          },
+          {
+            "id": "bramble-berries",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              70.83732057416267
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.85
+          },
+          {
+            "id": "stump-low",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              48,
+              65.35087719298247
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.8
+          },
+          {
+            "id": "stump-hollow",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              73.23763955342903
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.75
+          },
+          {
+            "id": "fallen-hollow-log",
+            "footprint": [
+              2,
+              1
+            ],
+            "anchor": [
+              48.89154704944178,
+              65.00797448165869
+            ],
+            "obstructionHeight": 1,
+            "presentationScale": 0.7
+          },
+          {
+            "id": "leaf-pile",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              48.068580542264755,
+              51.634768740031895
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.4
+          },
+          {
+            "id": "boulder-large",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              48.89154704944178,
+              76.87240829346092
+            ],
+            "obstructionHeight": 1,
+            "presentationScale": 0.6
+          },
+          {
+            "id": "boulder-ferns",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              74.60925039872409
+            ],
+            "obstructionHeight": 1,
+            "presentationScale": 0.65
+          },
+          {
+            "id": "forest-floor-cluster",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              48.068580542264755,
+              56.43540669856459
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.65
+          }
+        ],
+        "url": "/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate.png",
+        "pixelDensity": 2,
+        "raster": {
+          "href": "/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png",
+          "cellWidth": 96,
+          "cellHeight": 96,
+          "columns": 4,
+          "rows": 4
+        }
+      },
+      "cell": {
+        "id": "oak-ancient",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          48.89154704944178,
+          83.8676236044657
+        ],
+        "obstructionHeight": 2,
+        "presentationScale": 1.375,
+        "index": 0
+      }
+    },
+    {
+      "id": "fern-bed",
+      "atlas": {
+        "id": "forest-temperate",
+        "png": "runtime/atlas/forest-temperate.png",
+        "png2x": "runtime/atlas/forest-temperate@2x.png",
+        "columns": 4,
+        "rows": 4,
+        "cellWidth": 96,
+        "cellHeight": 96,
+        "cellWidth2x": 192,
+        "cellHeight2x": 192,
+        "componentCount": 16,
+        "category": "forest-scenery",
+        "tileMode": "modules",
+        "cellOrder": [
+          "oak-ancient",
+          "mixed-forest-autumn",
+          "mixed-forest-dense",
+          "oak-grove-dense",
+          "mixed-forest-edge",
+          "sapling-rock-cluster",
+          "bramble-dark",
+          "fern-bed",
+          "bramble-berries",
+          "stump-low",
+          "stump-hollow",
+          "fallen-hollow-log",
+          "leaf-pile",
+          "boulder-large",
+          "boulder-ferns",
+          "forest-floor-cluster"
+        ],
+        "anchor": [
+          48,
+          91
+        ],
+        "ySort": "bottom-anchor",
+        "cells": [
+          {
+            "id": "oak-ancient",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              48.89154704944178,
+              83.8676236044657
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.375
+          },
+          {
+            "id": "mixed-forest-autumn",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              48.89154704944178,
+              79.75279106858054
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.5
+          },
+          {
+            "id": "mixed-forest-dense",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              48.89154704944178,
+              83.52472089314195
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.4375
+          },
+          {
+            "id": "oak-grove-dense",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              47.8628389154705,
+              79.75279106858054
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.625
+          },
+          {
+            "id": "mixed-forest-edge",
+            "footprint": [
+              2,
+              1
+            ],
+            "anchor": [
+              48.89154704944178,
+              80.43859649122807
+            ],
+            "obstructionHeight": 2,
+            "presentationScale": 1.5
+          },
+          {
+            "id": "sapling-rock-cluster",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              49.577352472089316,
+              77.69537480063796
+            ],
+            "obstructionHeight": 1,
+            "presentationScale": 0.9
+          },
+          {
+            "id": "bramble-dark",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              72.89473684210526
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.8
+          },
+          {
+            "id": "fern-bed",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              70.49441786283892
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.65
+          },
+          {
+            "id": "bramble-berries",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              70.83732057416267
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.85
+          },
+          {
+            "id": "stump-low",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              48,
+              65.35087719298247
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.8
+          },
+          {
+            "id": "stump-hollow",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              73.23763955342903
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.75
+          },
+          {
+            "id": "fallen-hollow-log",
+            "footprint": [
+              2,
+              1
+            ],
+            "anchor": [
+              48.89154704944178,
+              65.00797448165869
+            ],
+            "obstructionHeight": 1,
+            "presentationScale": 0.7
+          },
+          {
+            "id": "leaf-pile",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              48.068580542264755,
+              51.634768740031895
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.4
+          },
+          {
+            "id": "boulder-large",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              48.89154704944178,
+              76.87240829346092
+            ],
+            "obstructionHeight": 1,
+            "presentationScale": 0.6
+          },
+          {
+            "id": "boulder-ferns",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              47.8628389154705,
+              74.60925039872409
+            ],
+            "obstructionHeight": 1,
+            "presentationScale": 0.65
+          },
+          {
+            "id": "forest-floor-cluster",
+            "footprint": [
+              1,
+              1
+            ],
+            "anchor": [
+              48.068580542264755,
+              56.43540669856459
+            ],
+            "obstructionHeight": 0,
+            "presentationScale": 0.65
+          }
+        ],
+        "url": "/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate.png",
+        "pixelDensity": 2,
+        "raster": {
+          "href": "/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png",
+          "cellWidth": 96,
+          "cellHeight": 96,
+          "columns": 4,
+          "rows": 4
+        }
+      },
+      "cell": {
+        "id": "fern-bed",
+        "footprint": [
+          1,
+          1
+        ],
+        "anchor": [
+          47.8628389154705,
+          70.49441786283892
+        ],
+        "obstructionHeight": 0,
+        "presentationScale": 0.65,
+        "index": 7
+      }
+    },
+    {
+      "id": "temperate-low-ledge",
+      "atlas": {
+        "id": "cliff-modules-temperate",
+        "png": "runtime/atlas/cliff-modules-temperate.png",
+        "png2x": "runtime/atlas/cliff-modules-temperate@2x.png",
+        "columns": 4,
+        "rows": 4,
+        "cellWidth": 128,
+        "cellHeight": 128,
+        "cellWidth2x": 256,
+        "cellHeight2x": 256,
+        "componentCount": 16,
+        "category": "elevation-module",
+        "tileMode": "modules",
+        "cellOrder": [
+          "straight-south",
+          "end-west",
+          "end-east",
+          "concave-corner",
+          "hill-cap",
+          "ramp-level-1",
+          "ramp-level-2",
+          "mountain-pass",
+          "convex-corner",
+          "broken-ledge",
+          "low-ledge",
+          "talus-foot",
+          "pillar-wide",
+          "pillar-narrow",
+          "ledge-end",
+          "plateau-cap"
+        ],
+        "heightDeltaRange": [
+          1,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "ySort": "bottom-anchor",
+        "rampCells": [
+          5,
+          6,
+          7
+        ],
+        "blockingByDefault": true,
+        "cells": [
+          {
+            "id": "temperate-cliff-straight-south",
+            "footprint": [
+              2,
+              1
+            ],
+            "anchor": [
+              65.28548644338119,
+              109.18979266347688
+            ],
+            "obstructionHeight": 1,
+            "passable": false
+          },
+          {
+            "id": "temperate-cliff-end-west",
+            "footprint": [
+              1,
+              2
+            ],
+            "anchor": [
+              58.85805422647528,
+              115.22169059011165
+            ],
+            "obstructionHeight": 1,
+            "passable": false
+          },
+          {
+            "id": "temperate-cliff-end-east",
+            "footprint": [
+              1,
+              2
+            ],
+            "anchor": [
+              75.96491228070175,
+              110.27751196172248
+            ],
+            "obstructionHeight": 1,
+            "passable": false
+          },
+          {
+            "id": "temperate-cliff-concave-corner",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              64,
+              96.73046251993621
+            ],
+            "obstructionHeight": 1,
+            "passable": false
+          },
+          {
+            "id": "temperate-hill-cap",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              64,
+              102.26794258373205
+            ],
+            "obstructionHeight": 1,
+            "passable": false
+          },
+          {
+            "id": "temperate-ramp-level-1",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              64,
+              111.7511961722488
+            ],
+            "heightDelta": 1,
+            "obstructionHeight": 0,
+            "passable": true
+          },
+          {
+            "id": "temperate-ramp-level-2",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              64,
+              114.33173843700159
+            ],
+            "heightDelta": 2,
+            "obstructionHeight": 0,
+            "passable": true
+          },
+          {
+            "id": "temperate-mountain-pass",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              68.35087719298245,
+              100.09250398724083
+            ],
+            "heightDelta": 1,
+            "obstructionHeight": 0,
+            "passable": true
+          },
+          {
+            "id": "temperate-cliff-convex-corner",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              64,
+              104.83891547049441
+            ],
+            "obstructionHeight": 1,
+            "passable": false
+          },
+          {
+            "id": "temperate-broken-ledge",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              64,
+              109.48644338118022
+            ],
+            "obstructionHeight": 1,
+            "passable": false
+          },
+          {
+            "id": "temperate-low-ledge",
+            "footprint": [
+              2,
+              1
+            ],
+            "anchor": [
+              68.25199362041467,
+              110.87081339712918
+            ],
+            "obstructionHeight": 1,
+            "passable": false
+          },
+          {
+            "id": "temperate-talus-foot",
+            "footprint": [
+              2,
+              1
+            ],
+            "anchor": [
+              64,
+              111.56299840510367
+            ],
+            "obstructionHeight": 0,
+            "passable": true
+          },
+          {
+            "id": "temperate-pillar-wide",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              70.82296650717703,
+              119.47368421052632
+            ],
+            "obstructionHeight": 2,
+            "passable": false
+          },
+          {
+            "id": "temperate-pillar-narrow",
+            "footprint": [
+              1,
+              2
+            ],
+            "anchor": [
+              54.90271132376395,
+              116.21052631578948
+            ],
+            "obstructionHeight": 2,
+            "passable": false
+          },
+          {
+            "id": "temperate-ledge-end",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              63.802232854864435,
+              107.90430622009569
+            ],
+            "obstructionHeight": 1,
+            "passable": false
+          },
+          {
+            "id": "temperate-plateau-cap",
+            "footprint": [
+              2,
+              2
+            ],
+            "anchor": [
+              68.25199362041467,
+              111.76076555023923
+            ],
+            "obstructionHeight": 1,
+            "passable": false
+          }
+        ],
+        "url": "/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate.png",
+        "pixelDensity": 2,
+        "raster": {
+          "href": "/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png",
+          "cellWidth": 128,
+          "cellHeight": 128,
+          "columns": 4,
+          "rows": 4
+        }
+      },
+      "cell": {
+        "id": "temperate-low-ledge",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          68.25199362041467,
+          110.87081339712918
+        ],
+        "obstructionHeight": 1,
+        "passable": false,
+        "index": 10
+      }
+    }
+  ]
+}

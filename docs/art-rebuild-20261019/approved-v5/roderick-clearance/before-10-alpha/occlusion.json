@@ -1,0 +1,1697 @@
+{
+  "kind": "actual individual scene drawings at world-aligned native pixels; source actor sprite only; all later standing and frame drawings",
+  "limitations": [
+    "offline alpha overlap, not visual recognition or live GPU",
+    "CSS shadow filters omitted"
+  ],
+  "actorCount": 21,
+  "drawingCount": 161,
+  "actors": [
+    {
+      "id": "actor:18",
+      "actorId": 18,
+      "key": "north-rider",
+      "type": "c01.knight",
+      "cell": [
+        15,
+        2
+      ],
+      "facing": "west",
+      "origin": [
+        480,
+        64
+      ],
+      "worldFoot": [
+        496,
+        95
+      ],
+      "displayIndex": 15,
+      "cropOrigin": [
+        368,
+        -97
+      ],
+      "spriteArea": 1079.4745,
+      "occludedFraction": 0.277051,
+      "covering": [
+        {
+          "id": "scenery:24",
+          "layer": "scenery",
+          "index": 24,
+          "origin": [
+            531.44403,
+            133.76
+          ],
+          "worldFoot": [
+            531.44403,
+            133.76
+          ],
+          "displayIndex": 27,
+          "cellId": "mixed-forest-edge",
+          "atlas": "forest-temperate",
+          "cropOrigin": [
+            403,
+            -59
+          ],
+          "pairwiseOverlap": 0.277051
+        }
+      ]
+    },
+    {
+      "id": "actor:16",
+      "actorId": 16,
+      "key": "royal-mage",
+      "type": "c01.battle-mage",
+      "cell": [
+        17,
+        3
+      ],
+      "facing": "west",
+      "origin": [
+        544,
+        96
+      ],
+      "worldFoot": [
+        560,
+        127
+      ],
+      "displayIndex": 21,
+      "cropOrigin": [
+        432,
+        -65
+      ],
+      "spriteArea": 1257.5373,
+      "occludedFraction": 0.760084,
+      "covering": [
+        {
+          "id": "scenery:24",
+          "layer": "scenery",
+          "index": 24,
+          "origin": [
+            531.44403,
+            133.76
+          ],
+          "worldFoot": [
+            531.44403,
+            133.76
+          ],
+          "displayIndex": 27,
+          "cellId": "mixed-forest-edge",
+          "atlas": "forest-temperate",
+          "cropOrigin": [
+            403,
+            -59
+          ],
+          "pairwiseOverlap": 0.760084
+        }
+      ]
+    },
+    {
+      "id": "actor:13",
+      "actorId": 13,
+      "key": "royal-guard-1",
+      "type": "c01.knight",
+      "cell": [
+        20,
+        4
+      ],
+      "facing": "west",
+      "origin": [
+        640,
+        128
+      ],
+      "worldFoot": [
+        656,
+        159
+      ],
+      "displayIndex": 28,
+      "cropOrigin": [
+        528,
+        -33
+      ],
+      "spriteArea": 1079.4745,
+      "occludedFraction": 0.806111,
+      "covering": [
+        {
+          "id": "scenery:28",
+          "layer": "scenery",
+          "index": 28,
+          "origin": [
+            627.10383,
+            165.76
+          ],
+          "worldFoot": [
+            627.10383,
+            165.76
+          ],
+          "displayIndex": 32,
+          "cellId": "oak-grove-dense",
+          "atlas": "forest-temperate",
+          "cropOrigin": [
+            499,
+            -27
+          ],
+          "pairwiseOverlap": 0.806111
+        }
+      ]
+    },
+    {
+      "id": "actor:4",
+      "actorId": 4,
+      "key": "campaign-mirelle",
+      "type": "c01.mirelle",
+      "cell": [
+        10,
+        5
+      ],
+      "facing": "east",
+      "origin": [
+        320,
+        160
+      ],
+      "worldFoot": [
+        336,
+        191
+      ],
+      "displayIndex": 34,
+      "cropOrigin": [
+        208,
+        -1
+      ],
+      "spriteArea": 1249.8353,
+      "occludedFraction": 0.201421,
+      "covering": [
+        {
+          "id": "actor:11",
+          "actorId": 11,
+          "key": "old-banner-guard",
+          "type": "c01.banner-guard",
+          "cell": [
+            10,
+            6
+          ],
+          "facing": "east",
+          "origin": [
+            320,
+            192
+          ],
+          "worldFoot": [
+            336,
+            223
+          ],
+          "displayIndex": 40,
+          "cropOrigin": [
+            208,
+            31
+          ],
+          "pairwiseOverlap": 0.184744
+        },
+        {
+          "id": "scenery:34",
+          "layer": "scenery",
+          "index": 34,
+          "origin": [
+            367.8503,
+            229.76
+          ],
+          "worldFoot": [
+            367.8503,
+            229.76
+          ],
+          "displayIndex": 46,
+          "cellId": "temperate-plateau-cap",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            239,
+            37
+          ],
+          "pairwiseOverlap": 0.066786
+        },
+        {
+          "id": "actor:6",
+          "actorId": 6,
+          "key": "campaign-tasha",
+          "type": "c01.tasha",
+          "cell": [
+            11,
+            6
+          ],
+          "facing": "east",
+          "origin": [
+            352,
+            192
+          ],
+          "worldFoot": [
+            368,
+            223
+          ],
+          "displayIndex": 41,
+          "cropOrigin": [
+            240,
+            31
+          ],
+          "pairwiseOverlap": 0.004213
+        }
+      ]
+    },
+    {
+      "id": "actor:2",
+      "actorId": 2,
+      "key": "campaign-torren",
+      "type": "c01.swordsman",
+      "cell": [
+        9,
+        6
+      ],
+      "facing": "east",
+      "origin": [
+        288,
+        192
+      ],
+      "worldFoot": [
+        304,
+        223
+      ],
+      "displayIndex": 39,
+      "cropOrigin": [
+        176,
+        31
+      ],
+      "spriteArea": 1489.3961,
+      "occludedFraction": 0.329352,
+      "covering": [
+        {
+          "id": "actor:11",
+          "actorId": 11,
+          "key": "old-banner-guard",
+          "type": "c01.banner-guard",
+          "cell": [
+            10,
+            6
+          ],
+          "facing": "east",
+          "origin": [
+            320,
+            192
+          ],
+          "worldFoot": [
+            336,
+            223
+          ],
+          "displayIndex": 40,
+          "cropOrigin": [
+            208,
+            31
+          ],
+          "pairwiseOverlap": 0.185893
+        },
+        {
+          "id": "actor:8",
+          "actorId": 8,
+          "key": "gray-rearguard",
+          "type": "c01.banner-guard",
+          "cell": [
+            9,
+            7
+          ],
+          "facing": "east",
+          "origin": [
+            288,
+            224
+          ],
+          "worldFoot": [
+            304,
+            255
+          ],
+          "displayIndex": 51,
+          "cropOrigin": [
+            176,
+            63
+          ],
+          "pairwiseOverlap": 0.160797
+        },
+        {
+          "id": "actor:1",
+          "actorId": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            10,
+            7
+          ],
+          "facing": "east",
+          "origin": [
+            320,
+            224
+          ],
+          "worldFoot": [
+            336,
+            255
+          ],
+          "displayIndex": 52,
+          "cropOrigin": [
+            208,
+            63
+          ],
+          "pairwiseOverlap": 0.151075
+        }
+      ]
+    },
+    {
+      "id": "actor:11",
+      "actorId": 11,
+      "key": "old-banner-guard",
+      "type": "c01.banner-guard",
+      "cell": [
+        10,
+        6
+      ],
+      "facing": "east",
+      "origin": [
+        320,
+        192
+      ],
+      "worldFoot": [
+        336,
+        223
+      ],
+      "displayIndex": 40,
+      "cropOrigin": [
+        208,
+        31
+      ],
+      "spriteArea": 1568.2,
+      "occludedFraction": 0.663154,
+      "covering": [
+        {
+          "id": "scenery:34",
+          "layer": "scenery",
+          "index": 34,
+          "origin": [
+            367.8503,
+            229.76
+          ],
+          "worldFoot": [
+            367.8503,
+            229.76
+          ],
+          "displayIndex": 46,
+          "cellId": "temperate-plateau-cap",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            239,
+            37
+          ],
+          "pairwiseOverlap": 0.516178
+        },
+        {
+          "id": "actor:6",
+          "actorId": 6,
+          "key": "campaign-tasha",
+          "type": "c01.tasha",
+          "cell": [
+            11,
+            6
+          ],
+          "facing": "east",
+          "origin": [
+            352,
+            192
+          ],
+          "worldFoot": [
+            368,
+            223
+          ],
+          "displayIndex": 41,
+          "cropOrigin": [
+            240,
+            31
+          ],
+          "pairwiseOverlap": 0.177443
+        },
+        {
+          "id": "actor:1",
+          "actorId": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            10,
+            7
+          ],
+          "facing": "east",
+          "origin": [
+            320,
+            224
+          ],
+          "worldFoot": [
+            336,
+            255
+          ],
+          "displayIndex": 52,
+          "cropOrigin": [
+            208,
+            63
+          ],
+          "pairwiseOverlap": 0.150412
+        },
+        {
+          "id": "actor:8",
+          "actorId": 8,
+          "key": "gray-rearguard",
+          "type": "c01.banner-guard",
+          "cell": [
+            9,
+            7
+          ],
+          "facing": "east",
+          "origin": [
+            288,
+            224
+          ],
+          "worldFoot": [
+            304,
+            255
+          ],
+          "displayIndex": 51,
+          "cropOrigin": [
+            176,
+            63
+          ],
+          "pairwiseOverlap": 0.125354
+        },
+        {
+          "id": "scenery:40",
+          "layer": "scenery",
+          "index": 40,
+          "origin": [
+            365.70566,
+            261.76
+          ],
+          "worldFoot": [
+            365.70566,
+            261.76
+          ],
+          "displayIndex": 55,
+          "cellId": "temperate-cliff-convex-corner",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            237,
+            69
+          ],
+          "pairwiseOverlap": 0.04215
+        },
+        {
+          "id": "scenery:35",
+          "layer": "scenery",
+          "index": 35,
+          "origin": [
+            397.5907,
+            229.76
+          ],
+          "worldFoot": [
+            397.5907,
+            229.76
+          ],
+          "displayIndex": 47,
+          "cellId": "temperate-mountain-pass",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            269,
+            37
+          ],
+          "pairwiseOverlap": 0.005312
+        }
+      ]
+    },
+    {
+      "id": "actor:6",
+      "actorId": 6,
+      "key": "campaign-tasha",
+      "type": "c01.tasha",
+      "cell": [
+        11,
+        6
+      ],
+      "facing": "east",
+      "origin": [
+        352,
+        192
+      ],
+      "worldFoot": [
+        368,
+        223
+      ],
+      "displayIndex": 41,
+      "cropOrigin": [
+        240,
+        31
+      ],
+      "spriteArea": 1197.5804,
+      "occludedFraction": 0.996441,
+      "covering": [
+        {
+          "id": "scenery:34",
+          "layer": "scenery",
+          "index": 34,
+          "origin": [
+            367.8503,
+            229.76
+          ],
+          "worldFoot": [
+            367.8503,
+            229.76
+          ],
+          "displayIndex": 46,
+          "cellId": "temperate-plateau-cap",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            239,
+            37
+          ],
+          "pairwiseOverlap": 0.992141
+        },
+        {
+          "id": "scenery:35",
+          "layer": "scenery",
+          "index": 35,
+          "origin": [
+            397.5907,
+            229.76
+          ],
+          "worldFoot": [
+            397.5907,
+            229.76
+          ],
+          "displayIndex": 47,
+          "cellId": "temperate-mountain-pass",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            269,
+            37
+          ],
+          "pairwiseOverlap": 0.493328
+        },
+        {
+          "id": "scenery:40",
+          "layer": "scenery",
+          "index": 40,
+          "origin": [
+            365.70566,
+            261.76
+          ],
+          "worldFoot": [
+            365.70566,
+            261.76
+          ],
+          "displayIndex": 55,
+          "cellId": "temperate-cliff-convex-corner",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            237,
+            69
+          ],
+          "pairwiseOverlap": 0.165423
+        },
+        {
+          "id": "scenery:41",
+          "layer": "scenery",
+          "index": 41,
+          "origin": [
+            397.58254,
+            261.76
+          ],
+          "worldFoot": [
+            397.58254,
+            261.76
+          ],
+          "displayIndex": 56,
+          "cellId": "temperate-plateau-cap",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            269,
+            69
+          ],
+          "pairwiseOverlap": 0.137259
+        }
+      ]
+    },
+    {
+      "id": "actor:12",
+      "actorId": 12,
+      "key": "roderick",
+      "type": "c01.roderick",
+      "cell": [
+        18,
+        6
+      ],
+      "facing": "west",
+      "origin": [
+        576,
+        192
+      ],
+      "worldFoot": [
+        592,
+        223
+      ],
+      "displayIndex": 42,
+      "cropOrigin": [
+        464,
+        31
+      ],
+      "spriteArea": 1834.1882,
+      "occludedFraction": 0.474168,
+      "covering": [
+        {
+          "id": "scenery:38",
+          "layer": "scenery",
+          "index": 38,
+          "origin": [
+            623.7925,
+            229.76
+          ],
+          "worldFoot": [
+            623.7925,
+            229.76
+          ],
+          "displayIndex": 50,
+          "cellId": "temperate-low-ledge",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            495,
+            37
+          ],
+          "pairwiseOverlap": 0.264534
+        },
+        {
+          "id": "scenery:44",
+          "layer": "scenery",
+          "index": 44,
+          "origin": [
+            561.13346,
+            261.76
+          ],
+          "worldFoot": [
+            561.13346,
+            261.76
+          ],
+          "displayIndex": 59,
+          "cellId": "oak-ancient",
+          "atlas": "forest-temperate",
+          "cropOrigin": [
+            433,
+            69
+          ],
+          "pairwiseOverlap": 0.209635
+        }
+      ]
+    },
+    {
+      "id": "actor:15",
+      "actorId": 15,
+      "key": "royal-bow",
+      "type": "c01.archer",
+      "cell": [
+        21,
+        6
+      ],
+      "facing": "west",
+      "origin": [
+        672,
+        192
+      ],
+      "worldFoot": [
+        688,
+        223
+      ],
+      "displayIndex": 43,
+      "cropOrigin": [
+        560,
+        31
+      ],
+      "spriteArea": 1587.5176,
+      "occludedFraction": 0.04181,
+      "covering": [
+        {
+          "id": "terrain:4",
+          "layer": "terrain",
+          "index": 4,
+          "origin": [
+            672,
+            256
+          ],
+          "worldFoot": [
+            688,
+            287
+          ],
+          "displayIndex": 64,
+          "cropOrigin": [
+            560,
+            95
+          ],
+          "pairwiseOverlap": 0.04181
+        }
+      ]
+    },
+    {
+      "id": "actor:8",
+      "actorId": 8,
+      "key": "gray-rearguard",
+      "type": "c01.banner-guard",
+      "cell": [
+        9,
+        7
+      ],
+      "facing": "east",
+      "origin": [
+        288,
+        224
+      ],
+      "worldFoot": [
+        304,
+        255
+      ],
+      "displayIndex": 51,
+      "cropOrigin": [
+        176,
+        63
+      ],
+      "spriteArea": 1568.2,
+      "occludedFraction": 0.383468,
+      "covering": [
+        {
+          "id": "actor:1",
+          "actorId": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            10,
+            7
+          ],
+          "facing": "east",
+          "origin": [
+            320,
+            224
+          ],
+          "worldFoot": [
+            336,
+            255
+          ],
+          "displayIndex": 52,
+          "cropOrigin": [
+            208,
+            63
+          ],
+          "pairwiseOverlap": 0.234091
+        },
+        {
+          "id": "actor:3",
+          "actorId": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            9,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            288,
+            256
+          ],
+          "worldFoot": [
+            304,
+            287
+          ],
+          "displayIndex": 60,
+          "cropOrigin": [
+            176,
+            95
+          ],
+          "pairwiseOverlap": 0.120949
+        },
+        {
+          "id": "actor:10",
+          "actorId": 10,
+          "key": "old-banner-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            10,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            320,
+            256
+          ],
+          "worldFoot": [
+            336,
+            287
+          ],
+          "displayIndex": 61,
+          "cropOrigin": [
+            208,
+            95
+          ],
+          "pairwiseOverlap": 0.048919
+        },
+        {
+          "id": "scenery:40",
+          "layer": "scenery",
+          "index": 40,
+          "origin": [
+            365.70566,
+            261.76
+          ],
+          "worldFoot": [
+            365.70566,
+            261.76
+          ],
+          "displayIndex": 55,
+          "cellId": "temperate-cliff-convex-corner",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            237,
+            69
+          ],
+          "pairwiseOverlap": 0.005116
+        }
+      ]
+    },
+    {
+      "id": "actor:1",
+      "actorId": 1,
+      "key": "campaign-laiya",
+      "type": "c01.laiya",
+      "cell": [
+        10,
+        7
+      ],
+      "facing": "east",
+      "origin": [
+        320,
+        224
+      ],
+      "worldFoot": [
+        336,
+        255
+      ],
+      "displayIndex": 52,
+      "cropOrigin": [
+        208,
+        63
+      ],
+      "spriteArea": 1210.1804,
+      "occludedFraction": 0.365677,
+      "covering": [
+        {
+          "id": "scenery:40",
+          "layer": "scenery",
+          "index": 40,
+          "origin": [
+            365.70566,
+            261.76
+          ],
+          "worldFoot": [
+            365.70566,
+            261.76
+          ],
+          "displayIndex": 55,
+          "cellId": "temperate-cliff-convex-corner",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            237,
+            69
+          ],
+          "pairwiseOverlap": 0.312817
+        },
+        {
+          "id": "scenery:46",
+          "layer": "scenery",
+          "index": 46,
+          "origin": [
+            365.94554,
+            293.76
+          ],
+          "worldFoot": [
+            365.94554,
+            293.76
+          ],
+          "displayIndex": 67,
+          "cellId": "temperate-pillar-wide",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            237,
+            101
+          ],
+          "pairwiseOverlap": 0.109962
+        },
+        {
+          "id": "actor:10",
+          "actorId": 10,
+          "key": "old-banner-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            10,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            320,
+            256
+          ],
+          "worldFoot": [
+            336,
+            287
+          ],
+          "displayIndex": 61,
+          "cropOrigin": [
+            208,
+            95
+          ],
+          "pairwiseOverlap": 0.074841
+        },
+        {
+          "id": "actor:7",
+          "actorId": 7,
+          "key": "campaign-ivra",
+          "type": "c01.ivra",
+          "cell": [
+            11,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            352,
+            256
+          ],
+          "worldFoot": [
+            368,
+            287
+          ],
+          "displayIndex": 62,
+          "cropOrigin": [
+            240,
+            95
+          ],
+          "pairwiseOverlap": 0.07158
+        },
+        {
+          "id": "actor:3",
+          "actorId": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            9,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            288,
+            256
+          ],
+          "worldFoot": [
+            304,
+            287
+          ],
+          "displayIndex": 60,
+          "cropOrigin": [
+            176,
+            95
+          ],
+          "pairwiseOverlap": 0.040862
+        }
+      ]
+    },
+    {
+      "id": "actor:17",
+      "actorId": 17,
+      "key": "pass-shield",
+      "type": "c01.legion-shield",
+      "cell": [
+        16,
+        7
+      ],
+      "facing": "west",
+      "origin": [
+        512,
+        224
+      ],
+      "worldFoot": [
+        528,
+        255
+      ],
+      "displayIndex": 53,
+      "cropOrigin": [
+        400,
+        63
+      ],
+      "spriteArea": 1433.6588,
+      "occludedFraction": 0.346736,
+      "covering": [
+        {
+          "id": "scenery:44",
+          "layer": "scenery",
+          "index": 44,
+          "origin": [
+            561.13346,
+            261.76
+          ],
+          "worldFoot": [
+            561.13346,
+            261.76
+          ],
+          "displayIndex": 59,
+          "cellId": "oak-ancient",
+          "atlas": "forest-temperate",
+          "cropOrigin": [
+            433,
+            69
+          ],
+          "pairwiseOverlap": 0.344347
+        },
+        {
+          "id": "scenery:43",
+          "layer": "scenery",
+          "index": 43,
+          "origin": [
+            463.4555,
+            261.76
+          ],
+          "worldFoot": [
+            463.4555,
+            261.76
+          ],
+          "displayIndex": 58,
+          "cellId": "temperate-cliff-convex-corner",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            335,
+            69
+          ],
+          "pairwiseOverlap": 0.002389
+        }
+      ]
+    },
+    {
+      "id": "actor:3",
+      "actorId": 3,
+      "key": "campaign-elin",
+      "type": "c01.archer",
+      "cell": [
+        9,
+        8
+      ],
+      "facing": "east",
+      "origin": [
+        288,
+        256
+      ],
+      "worldFoot": [
+        304,
+        287
+      ],
+      "displayIndex": 60,
+      "cropOrigin": [
+        176,
+        95
+      ],
+      "spriteArea": 1587.5176,
+      "occludedFraction": 0.211127,
+      "covering": [
+        {
+          "id": "actor:10",
+          "actorId": 10,
+          "key": "old-banner-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            10,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            320,
+            256
+          ],
+          "worldFoot": [
+            336,
+            287
+          ],
+          "displayIndex": 61,
+          "cropOrigin": [
+            208,
+            95
+          ],
+          "pairwiseOverlap": 0.210905
+        },
+        {
+          "id": "actor:7",
+          "actorId": 7,
+          "key": "campaign-ivra",
+          "type": "c01.ivra",
+          "cell": [
+            11,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            352,
+            256
+          ],
+          "worldFoot": [
+            368,
+            287
+          ],
+          "displayIndex": 62,
+          "cropOrigin": [
+            240,
+            95
+          ],
+          "pairwiseOverlap": 0.027861
+        }
+      ]
+    },
+    {
+      "id": "actor:10",
+      "actorId": 10,
+      "key": "old-banner-cleric",
+      "type": "c01.gravekeeper",
+      "cell": [
+        10,
+        8
+      ],
+      "facing": "east",
+      "origin": [
+        320,
+        256
+      ],
+      "worldFoot": [
+        336,
+        287
+      ],
+      "displayIndex": 61,
+      "cropOrigin": [
+        208,
+        95
+      ],
+      "spriteArea": 1249.8353,
+      "occludedFraction": 0.571435,
+      "covering": [
+        {
+          "id": "actor:7",
+          "actorId": 7,
+          "key": "campaign-ivra",
+          "type": "c01.ivra",
+          "cell": [
+            11,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            352,
+            256
+          ],
+          "worldFoot": [
+            368,
+            287
+          ],
+          "displayIndex": 62,
+          "cropOrigin": [
+            240,
+            95
+          ],
+          "pairwiseOverlap": 0.395331
+        },
+        {
+          "id": "scenery:46",
+          "layer": "scenery",
+          "index": 46,
+          "origin": [
+            365.94554,
+            293.76
+          ],
+          "worldFoot": [
+            365.94554,
+            293.76
+          ],
+          "displayIndex": 67,
+          "cellId": "temperate-pillar-wide",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            237,
+            101
+          ],
+          "pairwiseOverlap": 0.378809
+        },
+        {
+          "id": "actor:5",
+          "actorId": 5,
+          "key": "campaign-bran",
+          "type": "c01.bran",
+          "cell": [
+            10,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            320,
+            288
+          ],
+          "worldFoot": [
+            336,
+            319
+          ],
+          "displayIndex": 73,
+          "cropOrigin": [
+            208,
+            127
+          ],
+          "pairwiseOverlap": 0.134837
+        }
+      ]
+    },
+    {
+      "id": "actor:7",
+      "actorId": 7,
+      "key": "campaign-ivra",
+      "type": "c01.ivra",
+      "cell": [
+        11,
+        8
+      ],
+      "facing": "east",
+      "origin": [
+        352,
+        256
+      ],
+      "worldFoot": [
+        368,
+        287
+      ],
+      "displayIndex": 62,
+      "cropOrigin": [
+        240,
+        95
+      ],
+      "spriteArea": 2130.4,
+      "occludedFraction": 0.823515,
+      "covering": [
+        {
+          "id": "scenery:46",
+          "layer": "scenery",
+          "index": 46,
+          "origin": [
+            365.94554,
+            293.76
+          ],
+          "worldFoot": [
+            365.94554,
+            293.76
+          ],
+          "displayIndex": 67,
+          "cellId": "temperate-pillar-wide",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            237,
+            101
+          ],
+          "pairwiseOverlap": 0.797241
+        },
+        {
+          "id": "scenery:47",
+          "layer": "scenery",
+          "index": 47,
+          "origin": [
+            400.1677,
+            293.76
+          ],
+          "worldFoot": [
+            400.1677,
+            293.76
+          ],
+          "displayIndex": 68,
+          "cellId": "temperate-mountain-pass",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            272,
+            101
+          ],
+          "pairwiseOverlap": 0.19148
+        },
+        {
+          "id": "actor:5",
+          "actorId": 5,
+          "key": "campaign-bran",
+          "type": "c01.bran",
+          "cell": [
+            10,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            320,
+            288
+          ],
+          "worldFoot": [
+            336,
+            319
+          ],
+          "displayIndex": 73,
+          "cropOrigin": [
+            208,
+            127
+          ],
+          "pairwiseOverlap": 0.02149
+        }
+      ]
+    },
+    {
+      "id": "actor:14",
+      "actorId": 14,
+      "key": "royal-guard-2",
+      "type": "c01.legion-shield",
+      "cell": [
+        19,
+        8
+      ],
+      "facing": "west",
+      "origin": [
+        608,
+        256
+      ],
+      "worldFoot": [
+        624,
+        287
+      ],
+      "displayIndex": 63,
+      "cropOrigin": [
+        496,
+        95
+      ],
+      "spriteArea": 1433.6588,
+      "occludedFraction": 0.027361,
+      "covering": [
+        {
+          "id": "terrain:4",
+          "layer": "terrain",
+          "index": 4,
+          "origin": [
+            672,
+            256
+          ],
+          "worldFoot": [
+            688,
+            287
+          ],
+          "displayIndex": 64,
+          "cropOrigin": [
+            560,
+            95
+          ],
+          "pairwiseOverlap": 0.020497
+        },
+        {
+          "id": "terrain:6",
+          "layer": "terrain",
+          "index": 6,
+          "origin": [
+            640,
+            320
+          ],
+          "worldFoot": [
+            656,
+            351
+          ],
+          "displayIndex": 79,
+          "cropOrigin": [
+            528,
+            159
+          ],
+          "pairwiseOverlap": 0.006434
+        }
+      ]
+    },
+    {
+      "id": "actor:21",
+      "actorId": 21,
+      "key": "banner-sword",
+      "type": "c01.swordsman",
+      "cell": [
+        22,
+        8
+      ],
+      "facing": "west",
+      "origin": [
+        704,
+        256
+      ],
+      "worldFoot": [
+        720,
+        287
+      ],
+      "displayIndex": 65,
+      "cropOrigin": [
+        592,
+        95
+      ],
+      "spriteArea": 1484.9608,
+      "occludedFraction": 0.117443,
+      "covering": [
+        {
+          "id": "scenery:51",
+          "layer": "scenery",
+          "index": 51,
+          "origin": [
+            720.59143,
+            293.76
+          ],
+          "worldFoot": [
+            720.59143,
+            293.76
+          ],
+          "displayIndex": 72,
+          "cellId": "wheat-sheaves",
+          "atlas": "rural-life",
+          "cropOrigin": [
+            592,
+            101
+          ],
+          "pairwiseOverlap": 0.117443
+        }
+      ]
+    },
+    {
+      "id": "actor:5",
+      "actorId": 5,
+      "key": "campaign-bran",
+      "type": "c01.bran",
+      "cell": [
+        10,
+        9
+      ],
+      "facing": "east",
+      "origin": [
+        320,
+        288
+      ],
+      "worldFoot": [
+        336,
+        319
+      ],
+      "displayIndex": 73,
+      "cropOrigin": [
+        208,
+        127
+      ],
+      "spriteArea": 1104.7647,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:9",
+      "actorId": 9,
+      "key": "gray-scout",
+      "type": "c01.archer",
+      "cell": [
+        8,
+        10
+      ],
+      "facing": "east",
+      "origin": [
+        256,
+        320
+      ],
+      "worldFoot": [
+        272,
+        351
+      ],
+      "displayIndex": 78,
+      "cropOrigin": [
+        144,
+        159
+      ],
+      "spriteArea": 1587.5176,
+      "occludedFraction": 0.822224,
+      "covering": [
+        {
+          "id": "scenery:57",
+          "layer": "scenery",
+          "index": 57,
+          "origin": [
+            270.83909,
+            357.76
+          ],
+          "worldFoot": [
+            270.83909,
+            357.76
+          ],
+          "displayIndex": 83,
+          "cellId": "pine-mature-a",
+          "atlas": "forest-existing",
+          "cropOrigin": [
+            142,
+            165
+          ],
+          "pairwiseOverlap": 0.822224
+        }
+      ]
+    },
+    {
+      "id": "actor:20",
+      "actorId": 20,
+      "key": "pass-bow",
+      "type": "c01.archer",
+      "cell": [
+        20,
+        10
+      ],
+      "facing": "west",
+      "origin": [
+        640,
+        320
+      ],
+      "worldFoot": [
+        656,
+        351
+      ],
+      "displayIndex": 80,
+      "cropOrigin": [
+        528,
+        159
+      ],
+      "spriteArea": 1587.5176,
+      "occludedFraction": 0.098509,
+      "covering": [
+        {
+          "id": "scenery:59",
+          "layer": "scenery",
+          "index": 59,
+          "origin": [
+            620.57875,
+            357.76
+          ],
+          "worldFoot": [
+            620.57875,
+            357.76
+          ],
+          "displayIndex": 85,
+          "cellId": "field-tent-cluster",
+          "atlas": "camps-foundations",
+          "cropOrigin": [
+            492,
+            165
+          ],
+          "pairwiseOverlap": 0.050129
+        },
+        {
+          "id": "scenery:60",
+          "layer": "scenery",
+          "index": 60,
+          "origin": [
+            686.3277,
+            357.76
+          ],
+          "worldFoot": [
+            686.3277,
+            357.76
+          ],
+          "displayIndex": 86,
+          "cellId": "supply-tent-workyard",
+          "atlas": "camps-foundations",
+          "cropOrigin": [
+            558,
+            165
+          ],
+          "pairwiseOverlap": 0.034307
+        },
+        {
+          "id": "scenery:63",
+          "layer": "scenery",
+          "index": 63,
+          "origin": [
+            654.6515,
+            389.76
+          ],
+          "worldFoot": [
+            654.6515,
+            389.76
+          ],
+          "displayIndex": 90,
+          "cellId": "temperate-talus-foot",
+          "atlas": "cliff-modules-temperate",
+          "cropOrigin": [
+            526,
+            197
+          ],
+          "pairwiseOverlap": 0.014094
+        }
+      ]
+    },
+    {
+      "id": "actor:19",
+      "actorId": 19,
+      "key": "south-rider",
+      "type": "c01.knight",
+      "cell": [
+        16,
+        11
+      ],
+      "facing": "west",
+      "origin": [
+        512,
+        352
+      ],
+      "worldFoot": [
+        528,
+        383
+      ],
+      "displayIndex": 87,
+      "cropOrigin": [
+        400,
+        191
+      ],
+      "spriteArea": 1079.4745,
+      "occludedFraction": 0.313373,
+      "covering": [
+        {
+          "id": "scenery:65",
+          "layer": "scenery",
+          "index": 65,
+          "origin": [
+            555.62492,
+            421.76
+          ],
+          "worldFoot": [
+            555.62492,
+            421.76
+          ],
+          "displayIndex": 94,
+          "cellId": "mixed-forest-edge",
+          "atlas": "forest-temperate",
+          "cropOrigin": [
+            427,
+            229
+          ],
+          "pairwiseOverlap": 0.313373
+        }
+      ]
+    }
+  ]
+}

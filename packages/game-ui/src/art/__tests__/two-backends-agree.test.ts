@@ -340,7 +340,7 @@ describe('two backends draw the same board', () => {
     expect(svg.element.querySelector('.selection-cue')).toBeNull();
   });
 
-  it.each([['c01-02', 'bridge-cleric'], ['c01-11', 'echo-4']])('never projects a hidden selected actor from the actual BoardView overlay (%s)', (levelId, unitKey) => {
+  it.each([['c01-02', 'bridge-cleric'], ['c01-11', 'echo-4'], ['c01-03', 'roderick'], ['c01-10', 'roderick']])('never projects a hidden selected actor from the actual BoardView overlay (%s)', (levelId, unitKey) => {
     const level = CANDIDATE_01_LEVELS.find((candidate) => candidate.id === levelId)!;
     const engine = createBattleEngine({ content: TEST_CATALOG });
     const state = engine.createState(level);

@@ -1,0 +1,74 @@
+{
+  "baseline": "714538b099cbe35f22865fb3b6d97a9743ca0c89",
+  "kind": "actual complete offline BoardView/source-alpha comparison; not live GPU",
+  "levels": [
+    {
+      "level": "c01-03",
+      "samePngSources": 33,
+      "unchangedRuleDrawings": 28,
+      "actorCount": 19,
+      "buildingCount": 9,
+      "exactDecorationChanges": 1,
+      "occlusionChanges": [
+        {
+          "actor": "roderick",
+          "cell": [
+            3,
+            5
+          ],
+          "before": 0.400565,
+          "after": 0.007161
+        }
+      ]
+    },
+    {
+      "level": "c01-10",
+      "samePngSources": 28,
+      "unchangedRuleDrawings": 30,
+      "actorCount": 21,
+      "buildingCount": 9,
+      "exactDecorationChanges": 2,
+      "occlusionChanges": [
+        {
+          "actor": "roderick",
+          "cell": [
+            18,
+            6
+          ],
+          "before": 0.474168,
+          "after": 0.0
+        },
+        {
+          "actor": "pass-shield",
+          "cell": [
+            16,
+            7
+          ],
+          "before": 0.346736,
+          "after": 0.002389
+        }
+      ]
+    }
+  ],
+  "sceneContractDifferences": [
+    {
+      "level": "c01-03",
+      "fields": [
+        "underUnitsSha256"
+      ]
+    },
+    {
+      "level": "c01-10",
+      "fields": [
+        "underUnitsSha256"
+      ]
+    }
+  ],
+  "replayRuns": 60,
+  "replaySha256": "3ebce01a551fe642db90380e9fb774f0682c1d3a546e8ba81bb8fcab4d90e0d9",
+  "limitations": [
+    "Initial standing pose only; alpha overlap is not a recognition score",
+    "Complete diagnostic capture uses empty hidden set; visibility is separately checked against actual engine and hidden-overlay backend guards",
+    "Other existing forest, cliff and rule-building occlusions remain unchanged"
+  ]
+}
