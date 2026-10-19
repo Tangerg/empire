@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import manifest from '../../assets/final-fantasy-v1/manifest-final-fantasy-v1.json';
+import teamVariants from '../../assets/final-fantasy-v1/manifest-authored-team-variants.json';
 import hdManifest from '../../assets/final-fantasy-v1/manifest-tactical-runtime-hd.json';
 import { candidate01Asset, readCandidate01AssetRecord } from './candidate-01-assets';
 import { runtimeAtlasCellMarkup } from '@empire/game-ui';
@@ -63,5 +64,22 @@ describe('approved runtime asset documents', () => {
     expect(() => readCandidate01AssetRecord({ ...raw, frameOrder: ['idle', 'walk-a', 'attack', 'attack'] })).toThrow('inconsistent frame order');
     expect(() => readCandidate01AssetRecord({ ...raw, anchor: [48] })).toThrow('expected 2');
     expect(() => readCandidate01AssetRecord({ ...raw, anchor: [48, Number.NaN] })).toThrow('expected 2');
+  });
+});
+
+
+describe('authored red sequence file contract', () => {
+  it('keeps both densities byte-identical to the registered red export without adding a canonical topic', () => {
+    const variant = teamVariants.variants[0]!;
+    const sequence = JSON.parse(readFileSync(new URL('animation/red-swordsman/export/sequence.json', approved), 'utf8'));
+    expect(variant.anchor).toEqual(sequence.logicalPivot);
+    expect(manifest.assets.filter(a => a.topicId === variant.topicId)).toHaveLength(1);
+    for (const density of [1, 2]) {
+      const png = readFileSync(new URL(density === 1 ? variant.png : variant.hdPng, pack));
+      const exported = readFileSync(new URL(`animation/red-swordsman/export/sheet@${density}x.png`, approved));
+      expect(png.equals(exported)).toBe(true);
+      expect(png.readUInt32BE(16)).toBe(variant.frameWidth * variant.frames * density);
+      expect(png.readUInt32BE(20)).toBe(variant.frameHeight * density);
+    }
   });
 });

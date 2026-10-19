@@ -121,3 +121,19 @@ describe('registered cover proportions', () => {
     expect(full).toContain('bprop-cover-2.png');
   });
 });
+
+
+describe('authored team palette selection', () => {
+  it('selects the red authored sequence and its own pivot without changing unit rules', () => {
+    const def = TEST_CATALOG.units.get('c01.swordsman');
+    const red = unitPicture(art, def, '#a8493f');
+    const blue = unitPicture(art, def, '#4d86b8');
+    const other = unitPicture(art, def, '#ffffff');
+    expect(red.strip!.href).toContain('unit-swordsman-red@2x.png');
+    expect(blue.strip!.href).toContain('unit-swordsman@2x.png');
+    expect(other.strip!.href).toBe(blue.strip!.href);
+    expect(red.strip!.x).not.toBe(blue.strip!.x);
+    expect(red.strip!.clips).toEqual(blue.strip!.clips);
+    expect(unitPicture(art, def, '#A8493F').strip!.href).toBe(red.strip!.href);
+  });
+});

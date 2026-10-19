@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "variants": [
+    {
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "teamColor": "#a8493f",
+      "png": "runtime-approved-v5/combat-unit/unit-swordsman-red.png",
+      "hdPng": "runtime-approved-v5/combat-unit/unit-swordsman-red@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 96,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        48.27160493827161,
+        53.26913580246914
+      ]
+    }
+  ]
+}

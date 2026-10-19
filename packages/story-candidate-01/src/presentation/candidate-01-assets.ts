@@ -1,5 +1,6 @@
 import { fixedNumbers, oneOf } from './candidate-01-documents';
 import manifestJson from '../../assets/final-fantasy-v1/manifest-final-fantasy-v1.json';
+import teamVariantsJson from '../../assets/final-fantasy-v1/manifest-authored-team-variants.json';
 import tacticalHdManifestJson from '../../assets/final-fantasy-v1/manifest-tactical-runtime-hd.json';
 
 /*
@@ -200,3 +201,33 @@ export function candidate01AssetUrl(topicId: string): string {
   return candidate01Asset(topicId).url;
 }
 
+
+/** Authored palette variants reuse the same gameplay topic; colour selection is explicit art metadata. */
+const teamVariants = new Map<string, Candidate01RuntimeAsset>();
+if (teamVariantsJson.schemaVersion !== 1) throw new Error('unsupported authored team variant schema');
+for (const variant of teamVariantsJson.variants) {
+  const base = candidate01Asset(variant.topicId);
+  const key = `${variant.topicId}:${variant.teamColor.toLowerCase()}`;
+  if (!/^#[0-9a-f]{6}$/i.test(variant.teamColor) || teamVariants.has(key)) {
+    throw new Error(`invalid or duplicate authored team variant: ${key}`);
+  }
+  if (variant.pixelDensity !== 2 || variant.frames !== base.frames
+    || JSON.stringify(variant.frameOrder) !== JSON.stringify(base.frameOrder)
+    || !Number.isInteger(variant.frameWidth) || variant.frameWidth < 1
+    || !Number.isInteger(variant.frameHeight) || variant.frameHeight < 1) {
+    throw new Error(`inconsistent authored team variant geometry: ${key}`);
+  }
+  const anchor = fixedNumbers(2, variant.anchor, 'anchor', key);
+  if (anchor[0] < 0 || anchor[0] > variant.frameWidth || anchor[1] < 0 || anchor[1] > variant.frameHeight) {
+    throw new Error(`authored team variant pivot outside frame: ${key}`);
+  }
+  const url = tacticalHdFiles[`${packRoot}${variant.hdPng}`];
+  if (!url) throw new Error(`authored team variant missing from Vite graph: ${key}`);
+  teamVariants.set(key, { ...base, png: variant.png, url, anchor,
+    width: variant.frameWidth * variant.frames, height: variant.frameHeight,
+    frameWidth: variant.frameWidth, frameHeight: variant.frameHeight });
+}
+
+export function candidate01TeamAsset(topicId: string, teamColor: string): Candidate01RuntimeAsset {
+  return teamVariants.get(`${topicId}:${teamColor.toLowerCase()}`) ?? candidate01Asset(topicId);
+}

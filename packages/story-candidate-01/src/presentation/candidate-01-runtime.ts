@@ -10,6 +10,7 @@ import type {
 import {
   candidate01Asset,
   candidate01AssetUrl,
+  candidate01TeamAsset,
   candidate01TryAsset,
   type Candidate01RuntimeAsset,
 } from './candidate-01-assets';
@@ -132,7 +133,7 @@ function structureAssetMarkup(record: Candidate01RuntimeAsset, frame: number, ow
 
 export function candidate01UnitPicture(type: UnitTypeId, team: string): BoardPicture | null {
   const topic = CANDIDATE_01_UNIT_ART[type];
-  return topic ? runtimeUnitPicture(unitSheet(candidate01Asset(topic)), team) : null;
+  return topic ? runtimeUnitPicture(unitSheet(candidate01TeamAsset(topic, team)), team) : null;
 }
 
 export function candidate01UnitIcon(type: UnitTypeId, team: string, size: number): string | null {

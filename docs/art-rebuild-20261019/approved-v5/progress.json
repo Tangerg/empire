@@ -10,7 +10,7 @@
   "liveGameAcceptance": false,
   "sources": {
     "swordsman": "four poses exported and formally bound; live game pending",
-    "red-swordsman": "four poses exported; authored team selection pending",
+    "red-swordsman": "four poses exported and formal team-color resolver bound; live game pending",
     "pine": "transparent source and static scene checked",
     "bridge": "transparent source and static scene checked",
     "grass-material": "opaque material and static scene checked",
@@ -118,7 +118,7 @@
     "red-swordsman": {
       "raw": "4/4 preserved",
       "export": "passed native static and staged scene review",
-      "runtimeTeamSelection": "pending",
+      "runtimeTeamSelection": "bound via explicit authored-team-variant manifest for existing enemy palette#a8493f; own registered pivot; regression tests",
       "canonicalTopicCount": 0
     }
   },
