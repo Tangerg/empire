@@ -1,0 +1,1097 @@
+[
+  {
+    "path": "node_modules/.bin",
+    "bytes": 77,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/.bin",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "65f09418be6f47ff766952f92d2c31518d1bc54fdce7636096687c5810a426d4",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/.package-lock.json",
+    "bytes": 91,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/.package-lock.json",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "9285c991ea7d0dbf94fa609192b9a8ef683c08b16dd1242e95e5116453dcf2d8",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/.vite",
+    "bytes": 78,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/.vite",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "06d324633c838c514953281cc24e60d815210e89ea25c34adccfba87374fe696",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@asamuzakjp",
+    "bytes": 84,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@asamuzakjp",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "bed55a7c30d103ae56388d70e49af2b63ade565384aad5d54cde004c3de50515",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@bramus",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@bramus",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "fa992cc729d1edbf8ee441d048bce73962d51122a22a290d57f164fcdca09388",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@csstools",
+    "bytes": 82,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@csstools",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "dd34b2335910eee53cc23f94508eb974cf7a0a09860ef92353b6af972de983d0",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@empire/battle-engine",
+    "bytes": 88,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/packages/battle-engine",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "0899af7cc78511dd61f6053fdd084387e883f3adabea67460f148fef5952a5e4",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/campaign-engine",
+    "bytes": 90,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/packages/campaign-engine",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "d8ffb75784b0c4bd109f3470b8ee72778c11c4e0f1bffb958c69197eee4794db",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/content-ancient-empires",
+    "bytes": 98,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/packages/content-ancient-empires",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "06ddef9b9abf082708cb09a0d81ee9202d492e224f7911642b3ed0025162b768",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/content-common",
+    "bytes": 89,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/packages/content-common",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "306d2aa53dd90da63805825d9cf7f493200ebb5ae31f1785be71ed3701fd3d1a",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/editor",
+    "bytes": 81,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/packages/editor",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "0e1c70a4c3da9b2c6145040ef62ba5927ac0a6d4559df106e1c5b7f1053fd48c",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/editor-app",
+    "bytes": 77,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/apps/editor",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "8dc6d8f0bd809b3420c283b1e9f3918916601508f366625967ccab6cca8f24c8",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/engine-demo-app",
+    "bytes": 82,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/apps/engine-demo",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "8ad423b80b1dc7a08f037d12ad11a50601d570d96ad520e6bd8c4e7b4ca5f00c",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/experience-lab",
+    "bytes": 89,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/packages/experience-lab",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "ac7954ee3e928805692687021c613ad6ea7328ce8155f8e2e67f0f48fc8e7e6f",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/experience-lab-app",
+    "bytes": 85,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/apps/experience-lab",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "e84b4f0ed3c39fc5109a98f0b9c619a08a130f3e16c55993c8e8b5d1933757ee",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/game-app",
+    "bytes": 75,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/apps/game",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "e6a752f01499965d742f1c50fa3859fb9b83c1c76b79d11fd7f1a751ea2b95d4",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/game-ui",
+    "bytes": 82,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/packages/game-ui",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "cb96349f2be2653383f5a46353a7464883c68324ae7e9fa39ca3f2277834cdf1",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/story-candidate-01",
+    "bytes": 93,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/packages/story-candidate-01",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "fa297745d697bf65c4afd8e204f6d9910fb57e8a36c08050573ae4826e8fbeda",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/story-candidate-02",
+    "bytes": 93,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/packages/story-candidate-02",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "0bca8100e5508ac5c04ea32240ab9ee123d9c2e1cfc5b597536c7e660c48d4fd",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/story-candidate-03",
+    "bytes": 93,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/packages/story-candidate-03",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "7c65ac2bda171d686c1f29d0d754766f46c21532865bb0442d8d3626d02e64ca",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@empire/test-content",
+    "bytes": 87,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-next-active-audit-20261019/packages/test-content",
+    "target_exists": true,
+    "classification": "reproducible local workspace dependency symlink",
+    "sha256_of_link_text": "b2fbffeacb0e63ca28f9789d695d233b1d126812e0b09bfd015f9d5948b1dc10",
+    "retained_main_target": false,
+    "target_is_local_tracked_package": true
+  },
+  {
+    "path": "node_modules/@esbuild",
+    "bytes": 81,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@esbuild",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "c68cac330ccf2df52aab53d05bf491df58b199f3333a0cac26e965492ed0e5d7",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@exodus",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@exodus",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "23b60456312bc5b53223373779a7517695073e8c4d4b3f66c430123cd8572e8c",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@jridgewell",
+    "bytes": 84,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@jridgewell",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "9ba21cd064b6514cc024d4cfe2760437d1876027ab6ae778ff4aef5449c3b15b",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@napi-rs",
+    "bytes": 81,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@napi-rs",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "73b552f0ffc30d5f40c6d9a7b53a148653e50d7e94a80d126b3914b28270c9aa",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@pixi",
+    "bytes": 78,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@pixi",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "78384e8c64bb31e26a53699300f7819d9883d782a422ea52472d2c482dd6b01b",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@rollup",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@rollup",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "c9dbb9f0c77b6d8cc1cbf86fc199da1d5f8940b6a976da73b784c56cee4d566b",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@types",
+    "bytes": 79,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@types",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "1f2e8c47f25f82e8706370e0bced756921c9700bcff100c3f02aa922befe0db3",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@vitest",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@vitest",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "5cca922642d0a04ef991e8621fc19864114833e3da08986f5d8d64aa25d5a43f",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@webgpu",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@webgpu",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "c5e7f4a44afb3e8e12eebf5755e8da5d98cca7079486d3f56a8cce56c3120e88",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/@xmldom",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/@xmldom",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "0b26fffda57af06345b8bd9849b80815a844c2e545610ba95b89aa9e680cf62d",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/assertion-error",
+    "bytes": 88,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/assertion-error",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "b2f97401c28f9e9732e51896c8befae7624c4590169d649d55bd472cf04b125c",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/bidi-js",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/bidi-js",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "c137b5bc875e0074e4e2c3c9995ac0162858db541be3a8659f643288bf5609bb",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/braces",
+    "bytes": 79,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/braces",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "81c12509713f260c8d4e86346a0ae51f7d37b85f972bb9773212e925ae98e063",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/cac",
+    "bytes": 76,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/cac",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "9fe6b9d62e215571c45ecff9208442789dbefd5fad51214e47c8bc5bec67f9ac",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/chai",
+    "bytes": 77,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/chai",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "64941b96d9ee47fcec30a75eec8811a27f43df320dd9623e21535013bff55d11",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/check-error",
+    "bytes": 84,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/check-error",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "d8cbabe878d3a200291f9b9428a60b246cf7413737742628543a375b43665ac8",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/css-tree",
+    "bytes": 81,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/css-tree",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "4ea6f46304a23f53ab8e5349aeb2e98ba857a130ad97b05db606cc6162fbfc35",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/data-urls",
+    "bytes": 82,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/data-urls",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "53dcf84c36c8711357aab771d18f00da34f21e2e0d795783fc408f4c871855d0",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/debug",
+    "bytes": 78,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/debug",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "ec1a3e90f004b4e97120bf220ad93c6a469e4b584aac7d5eaa9332d5360754e4",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/decimal.js",
+    "bytes": 83,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/decimal.js",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "3b758904d717456c06b346202c61242189bb71f892e2496ad55cf133fa90dd98",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/deep-eql",
+    "bytes": 81,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/deep-eql",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "f8a26da2b6e105a31e02e7af40706acad9ab7c2213b14ca2932e074c7294b170",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/earcut",
+    "bytes": 79,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/earcut",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "7960c3db026d6db2286af98d7c451e0ad08c7d0e5c5b8653c079da653dd63e83",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/entities",
+    "bytes": 81,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/entities",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "8f3248d050592d4b1fb6a28fadef7810348194e25eec44215e8e23f47af382b8",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/es-module-lexer",
+    "bytes": 88,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/es-module-lexer",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "0df13d7bbf393d1d57b42d95ea79d168ccda04defb7a25484c4e4b6d195ae516",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/esbuild",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/esbuild",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "db9d7002ccce24fcb035875c9c257c6064540eb4c95f5c1af61443ebc931335e",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/estree-walker",
+    "bytes": 86,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/estree-walker",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "a071fc21d093f80fd820e6e45df68f56cda72c406bb16a8ce4e0c59bc06548bb",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/eventemitter3",
+    "bytes": 86,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/eventemitter3",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "ca482502720267bb4643f3b148eab17f949f63e70e732db23a7883fe57dbe0eb",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/expect-type",
+    "bytes": 84,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/expect-type",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "62aa3576e9aba6a56e59542612a5863b197cd55da36fd7165b8a379a000329c8",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/fill-range",
+    "bytes": 83,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/fill-range",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "07e820cb3fd2ec99c97a624abae91e29bafa62ecd8e42c710f99803758e01238",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/gifuct-js",
+    "bytes": 82,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/gifuct-js",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "383963e9283a09b20048192ad5f9622664393ac2525ea85609c57f748a3bd613",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/html-encoding-sniffer",
+    "bytes": 94,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/html-encoding-sniffer",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "6f93713274249db9f71a922e56978c4e7286f647ffde8c04cf7ea1727d6931c8",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/is-number",
+    "bytes": 82,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/is-number",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "f352ce1cb04403a3782ef4ffbcd72e86cba002d76d40246ea8ca8cc55236feba",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/is-potential-custom-element-name",
+    "bytes": 105,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/is-potential-custom-element-name",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "da563f36471237368d9792b90de35ea21ff8fc5e9d51c6874468b71bed74f4bb",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/ismobilejs",
+    "bytes": 83,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/ismobilejs",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "577400699ef0f75b0c0908e3264d150b594dd88dfbc712567e8d2b7f265584e4",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/js-binary-schema-parser",
+    "bytes": 96,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/js-binary-schema-parser",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "d58a61c1e62e6f438c7a130a7fc8054efb47a9b2a02a5b98da0897f0f4eff307",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/jsdom",
+    "bytes": 78,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/jsdom",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "579de8ba197fbe9b629e73c0eec6c7aefe750d27a3c1dcf76b2c56b01720a89b",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/loupe",
+    "bytes": 78,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/loupe",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "e87fb37976a59000d31680ab9781c1473ddd58dcc6fc14b8a9ee6ff0db1be976",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/lru-cache",
+    "bytes": 82,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/lru-cache",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "8d67a27016ba75641c0a5c654d442a589874eeef309ea765d5fdf47bc4cf935d",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/magic-string",
+    "bytes": 85,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/magic-string",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "a91554121dc4e63c23894261c54521133c676bdb6c1f1f506e3ea01d1a707718",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/mdn-data",
+    "bytes": 81,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/mdn-data",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "c81f1ce8228992c08c02446649610ab6d649b4de6dac2785ffcf0218e310f3b7",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/micromatch",
+    "bytes": 83,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/micromatch",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "ef93a9c124fade880963126a4b2fa0bd5e5357ee4be384c7074d883a981cfa71",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/ms",
+    "bytes": 75,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/ms",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "6dd35b7ce249a5c4b17f08e47ba7fe1527bdd4b539c0e70cab2d5a7d38253fef",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/nanoid",
+    "bytes": 79,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/nanoid",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "435af2f8790278a140e4121eb6f2be7c2b95c6bed803d0eb6fde273dbe32ada8",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/parse-svg-path",
+    "bytes": 87,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/parse-svg-path",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "e1d6cef3345a5e1a516ac5cc0aac7251674904f3835c710752ebac815eb6b90d",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/parse5",
+    "bytes": 79,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/parse5",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "d86b3208d158c0aff59e0f4a208c8eb2913b018af9c3fcba2f45cf942e2797de",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/pathe",
+    "bytes": 78,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/pathe",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "91ebbd647878bd5a2c5ff78659c2b967428f97ccf1b77acb6d125001e38d358a",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/pathval",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/pathval",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "7985d31d9cffb3ac41fce8a05d7b0c5c8c38755736cece701ed5becb4981bdcd",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/picocolors",
+    "bytes": 83,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/picocolors",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "96f2fd32bc3385e1c76cc6b0bb8c9a437d33c5eddd38cd0cc425bef4753c8018",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/picomatch",
+    "bytes": 82,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/picomatch",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "994443d82b72c017b1d11337208d80cc4bf72a577ec69104683cea5c6358556a",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/pixi.js",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/pixi.js",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "6381a461cf8b39484011a9b81b7fa21c8c6d396632a4650f6e452b7e0755015e",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/postcss",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/postcss",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "419fdae5b16ee44697c1a75a3787f4469dc84aa99b6b964e36faf706d964d169",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/punycode",
+    "bytes": 81,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/punycode",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "9d55331db9da68c090f98b54117c6c7f0b2d6092997f2057ada14ebf5890af68",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/require-from-string",
+    "bytes": 92,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/require-from-string",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "76c312d370a524cf08037784f5babdb067ef254fb3ff9cb176760e6b83b5cec9",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/rollup",
+    "bytes": 79,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/rollup",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "599493ae22f63ee5ee1fa757c13d3650126cfd7994f892551757c9de728c421c",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/saxes",
+    "bytes": 78,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/saxes",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "54122353ae12a0b424c8b2ab887c03b28fcafca9b398967753c9c42c19343eaf",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/siginfo",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/siginfo",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "017f9593fc0d68ed2bf18a473915a7f27ddfadc18a16428e190d83c06f217725",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/source-map-js",
+    "bytes": 86,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/source-map-js",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "d86b6547a71e8ab0f6edb47f9faf24c092a445ce0aecd68e9449222733996de6",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/stackback",
+    "bytes": 82,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/stackback",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "1e9651911e56d4339ce33ce0635c11b3c4e9d7c6484f4ed8b355471be330ad19",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/std-env",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/std-env",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "17aebd51bec685015b8b88cac97820461a66277f9020df84b08e1e6d58536caa",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/symbol-tree",
+    "bytes": 84,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/symbol-tree",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "3605b67c44f5ed18ae1dec13e1041d0c775e68acdc7d2d2f5488f92c044c060f",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/tiny-lru",
+    "bytes": 81,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/tiny-lru",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "fac6b8cb70ac3713d539bdca75c7a4575bad195c75429d82b4785198df8c9b00",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/tinybench",
+    "bytes": 82,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/tinybench",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "aebeddafed27b00391ae42ab47247f119df3841af3ae6353f06373c7c8539b27",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/tinyexec",
+    "bytes": 81,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/tinyexec",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "eb3aed112c7ff3a93848c01fc0f646ae9af25f2d69eb72699a5d6cc2833b2aa2",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/tinypool",
+    "bytes": 81,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/tinypool",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "33cfa516219628c54795fcc1449d3acadbfebd46415e42bf70b4cb074875bd89",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/tinyrainbow",
+    "bytes": 84,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/tinyrainbow",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "88fe7053e61ed6c9072b6a78d37f7c04b0d501e648c2c05d9eb63062e5778752",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/tinyspy",
+    "bytes": 80,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/tinyspy",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "6cc2973fc41d7de492e75d8a293fc6a5a6125715cde607c5aa6915d39ea56896",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/tldts",
+    "bytes": 78,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/tldts",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "94f1ef2622f32005ac6fe896de63d0280ea97207df652f45c88a1d003b94e167",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/tldts-core",
+    "bytes": 83,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/tldts-core",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "6664ab1726417aa3a57e8d5aed4a06c213cc4be4a99a7037493c442dd5796432",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/to-regex-range",
+    "bytes": 87,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/to-regex-range",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "1356343d974cd3f5f614c2071a8f134c25dc63d716e9621a12e69c47817854d0",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/tough-cookie",
+    "bytes": 85,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/tough-cookie",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "080e9e6a944f027e7b431d5737904480b8d6cea99b6a6c7719d3ebfc51bbeaf2",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/tr46",
+    "bytes": 77,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/tr46",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "3588190b22bf2b235ae9dec90b62be72a19c35d340e8edf6ecd3d17978ebe788",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/typescript",
+    "bytes": 83,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/typescript",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "bb2d18b91e67819d740bcc05c44720312449df1efd0f5d9ad53a72740852dca9",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/undici",
+    "bytes": 79,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/undici",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "16dd0f31c81bebf12032571867b14f20309292ff8740cbd32be5ddbc6f25a262",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/undici-types",
+    "bytes": 85,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/undici-types",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "05a014ad7cb71854d723f1afa9bdb613426a989d727eadda3c8f5a1acb52ef15",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/vite",
+    "bytes": 77,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/vite",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "c7f5d7b7b4ebc8d40d8aae80670e3fdeadcc883e381ca906d27bc1d27fd9cae1",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/vite-node",
+    "bytes": 82,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/vite-node",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "6b38074afc44a5fb60d78896af5f9821a7de6fb30bc0dff33208a11a189cbbf1",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/vite-plugin-singlefile",
+    "bytes": 95,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/vite-plugin-singlefile",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "34b3a0920f5b9e6352b1c53f8cdc75b53876e504d7436b04c96b0ed861d2d2bc",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/vitest",
+    "bytes": 79,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/vitest",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "3ec53c7e254e8efa963b648bd38983d2eaf2d37e47460bacc7b7075b53200317",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/w3c-xmlserializer",
+    "bytes": 90,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/w3c-xmlserializer",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "0382148b15b130adf2c2c45dc1d7391b25b395eb7f6f206780398a8d38e05bbd",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/webidl-conversions",
+    "bytes": 91,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/webidl-conversions",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "9318cfa3e140e9608734d8d85e78ecf845db0c09d677dcc0c4303c2ac153c7dc",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/whatwg-mimetype",
+    "bytes": 88,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/whatwg-mimetype",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "47ae6f7f5b694f0734197d21d8c05d623ac7c73ccb36c3307cbcd0eefb83e306",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/whatwg-url",
+    "bytes": 83,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/whatwg-url",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "cf611f3e38bc9934aebee4199bcc2885baf42973e58835dd5aaf3b0c8698320a",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/why-is-node-running",
+    "bytes": 92,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/why-is-node-running",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "91ed915c1d3683df3c2712150e7535e9633da4122b5af3acee2bf30ffeaffbc4",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/xml-name-validator",
+    "bytes": 91,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/xml-name-validator",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "312fa1ec95dc870b731cc9522573b7a373564806e1c3ca0373f5e546ce2710db",
+    "retained_main_target": true
+  },
+  {
+    "path": "node_modules/xmlchars",
+    "bytes": 81,
+    "type": "symlink",
+    "target": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/xmlchars",
+    "target_exists": true,
+    "classification": "dependency symlink to retained main",
+    "sha256_of_link_text": "7579800562ff177ec14beb0b6d3c7648c4ec3033aa6215f508197ebc4188a121",
+    "retained_main_target": true
+  },
+  {
+    "path": "tools/art/__pycache__/render_ground_review.cpython-312.pyc",
+    "bytes": 13198,
+    "type": "file",
+    "sha256": "b8485d7958fa2f9c7e570ded6cb0667e63b79b840d6a232f633bc1eb3cbb44cc",
+    "classification": "reproducible Python bytecode",
+    "source": "tools/art/render_ground_review.py",
+    "source_exists": true,
+    "source_tracked": true
+  },
+  {
+    "path": "tools/art/__pycache__/svg_viewports.cpython-312.pyc",
+    "bytes": 2524,
+    "type": "file",
+    "sha256": "879616a955cf174c60c91832a163dacad6275061a0923ec0eda2ad475aa372c7",
+    "classification": "reproducible Python bytecode",
+    "source": "tools/art/svg_viewports.py",
+    "source_exists": true,
+    "source_tracked": true
+  }
+]
