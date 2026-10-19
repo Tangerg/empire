@@ -4953,11 +4953,16 @@
     },
     {
       "topicId": "c02-equipment-long-beam-sniper",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-long-beam-sniper/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-049-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "90f73b01fc84ecf5e7d0c98b8102948f2d217d77d58010b0185db78a92c78f49"
@@ -5006,11 +5011,16 @@
     },
     {
       "topicId": "c02-equipment-power-swordsman",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-power-swordsman/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-049-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "927265b366793ca428962ef968b9702e76c206ba8c1efc2f7648b9a180c2c9aa"
@@ -7783,7 +7793,8 @@
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-4566788b/master.png",
       "verification": {
         "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "staticVisualReview": "passed-role-based-native48-three-backgrounds"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "after-evidence-revisions-source-review-first",
@@ -7921,7 +7932,8 @@
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-9ad7ca0f/master.png",
       "verification": {
         "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "staticVisualReview": "passed-role-based-native48-three-backgrounds"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "after-evidence-revisions-source-review-first",
@@ -9712,6 +9724,34 @@
       "observedOriginal": "siege tower",
       "status": "designed-semantic-reconstruction-from-role-and-intact-equipment-board",
       "uncertainty": "Exact historical atlas mapping unresolved"
+    },
+    {
+      "topicId": "c03-equip-b59c3f96",
+      "label": "旗鼓手",
+      "observedOriginal": "cannon on tripod",
+      "status": "designed-role-equipment-reconstruction",
+      "uncertainty": "Exact historical atlas mapping unresolved; scout saddle/map intentionally abstracts mounted role"
+    },
+    {
+      "topicId": "c03-equip-2be16bd2",
+      "label": "架桥营",
+      "observedOriginal": "bamboo raft",
+      "status": "designed-role-equipment-reconstruction",
+      "uncertainty": "Exact historical atlas mapping unresolved; scout saddle/map intentionally abstracts mounted role"
+    },
+    {
+      "topicId": "c03-equip-a53b725f",
+      "label": "粮秣官",
+      "observedOriginal": "red rocket rack",
+      "status": "designed-role-equipment-reconstruction",
+      "uncertainty": "Exact historical atlas mapping unresolved; scout saddle/map intentionally abstracts mounted role"
+    },
+    {
+      "topicId": "c03-equip-58b98436",
+      "label": "边军斥候",
+      "observedOriginal": "saddled horse",
+      "status": "designed-role-equipment-reconstruction",
+      "uncertainty": "Exact historical atlas mapping unresolved; scout saddle/map intentionally abstracts mounted role"
     }
   ],
   "visualReviewIssues": [
