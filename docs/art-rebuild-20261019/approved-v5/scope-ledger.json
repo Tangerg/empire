@@ -4,16 +4,16 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 190,
+    "formalBound": 194,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 26,
       "equipment": 55,
       "interactive-structure": 24,
       "mission-unit": 1,
-      "skill": 20
+      "skill": 24
     },
-    "rawPreservedTopics": 193,
+    "rawPreservedTopics": 195,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -5668,11 +5668,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-21/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-21.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "nativeRGBA/prompt and complete-subject original evidence preserved",
+        "export": "48px white/dark/olive reviewed; bounded functional light retains true transparent surroundings",
+        "runtimeBinding": "canonical48x48 anchor24,24, noHD",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-21-24/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-22",
@@ -5684,11 +5690,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-22/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-22.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "nativeRGBA/prompt and complete-subject original evidence preserved",
+        "export": "48px white/dark/olive reviewed; bounded functional light retains true transparent surroundings",
+        "runtimeBinding": "canonical48x48 anchor24,24, noHD",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-21-24/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-23",
@@ -5696,13 +5708,21 @@
       "category": "skill",
       "label": "自由之翼",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-23/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-23.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "nativeRGBA/prompt and complete-subject original evidence preserved",
+        "export": "48px white/dark/olive reviewed; bounded functional light retains true transparent surroundings",
+        "runtimeBinding": "canonical48x48 anchor24,24, noHD",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-21-24/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-24",
@@ -5710,13 +5730,21 @@
       "category": "skill",
       "label": "誓文拒绝",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-24/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-24.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "nativeRGBA/prompt and complete-subject original evidence preserved",
+        "export": "48px white/dark/olive reviewed; bounded functional light retains true transparent surroundings",
+        "runtimeBinding": "canonical48x48 anchor24,24, noHD",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-21-24/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-25",
