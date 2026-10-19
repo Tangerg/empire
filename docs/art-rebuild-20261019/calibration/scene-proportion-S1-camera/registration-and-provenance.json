@@ -1,0 +1,533 @@
+[
+  {
+    "variant": "selected-layer-area-water-bridge-bank",
+    "viewBox": [
+      -24,
+      0,
+      560,
+      448
+    ],
+    "proportionStudy": {
+      "set": "S1",
+      "humanVisibleHeight": 28,
+      "pineVisibleHeight": 64,
+      "keepVisibleWidth": 144,
+      "bridgeVisibleWidth": 96,
+      "positionsUnchanged": true,
+      "tightCamera": true
+    },
+    "cropWorld": [
+      0,
+      3,
+      14,
+      10
+    ],
+    "overscanLogical": 96,
+    "groundStudy": {
+      "base": "/workspace/shared/empire-art-rebuild/calibration-v4/ground-base/master.png",
+      "flatRendererFill": null,
+      "worldPeriodLogical": 512,
+      "pixelOperations": "resampling/compositing only; no recolor, blur, alpha cleanup or generated scatter",
+      "protectedWaterBridgeCells": [
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          11,
+          1
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          11,
+          4
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          11,
+          7
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          11,
+          8
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          10,
+          12
+        ],
+        [
+          11,
+          12
+        ],
+        [
+          10,
+          13
+        ],
+        [
+          11,
+          13
+        ]
+      ],
+      "patches": [
+        {
+          "source": "/workspace/shared/empire-art-rebuild/calibration-v4/grass-mass/master.png",
+          "visibleCenterWorld": [
+            128,
+            176
+          ],
+          "visibleWidthLogical": 288,
+          "visibleSourceBboxAlpha128": [
+            34,
+            212,
+            1396,
+            918
+          ],
+          "fullCanvasWorld": [
+            -23.189427312775337,
+            56.52863436123347,
+            302.3788546255507,
+            232.59911894273128
+          ],
+          "logicalPerSourcePixel": 0.21145374449339208
+        },
+        {
+          "source": "/workspace/shared/empire-art-rebuild/calibration-v4/grass-mass/master.png",
+          "visibleCenterWorld": [
+            232,
+            352
+          ],
+          "visibleWidthLogical": 288,
+          "visibleSourceBboxAlpha128": [
+            34,
+            212,
+            1396,
+            918
+          ],
+          "fullCanvasWorld": [
+            80.81057268722466,
+            232.52863436123346,
+            302.3788546255507,
+            232.59911894273128
+          ],
+          "logicalPerSourcePixel": 0.21145374449339208
+        },
+        {
+          "source": "/workspace/shared/empire-art-rebuild/calibration-v4/grass-mass/master.png",
+          "visibleCenterWorld": [
+            48,
+            384
+          ],
+          "visibleWidthLogical": 160,
+          "visibleSourceBboxAlpha128": [
+            34,
+            212,
+            1396,
+            918
+          ],
+          "fullCanvasWorld": [
+            -35.99412628487518,
+            317.62701908957416,
+            167.98825256975036,
+            129.22173274596182
+          ],
+          "logicalPerSourcePixel": 0.11747430249632893
+        }
+      ],
+      "grassCoverage": {
+        "alphaThreshold": 128,
+        "cropCells": [
+          0,
+          3,
+          14,
+          10
+        ],
+        "excludes": [
+          "water",
+          "bridge"
+        ],
+        "lowerBoundExcludingWholeRoadCells": 0.3943400065104167,
+        "beforeRoadOverlayFraction": 0.4403584798177083
+      },
+      "layerOrder": "base, grass masses, unchanged terrain blends/routes/water, unchanged registered objects"
+    },
+    "groundFit": {
+      "meadowInset": 0,
+      "bleed": 0.5
+    },
+    "substitutions": [
+      {
+        "identity": "riverbank-module-v2",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/riverbank-module/master-v2.png",
+        "pointWorld": [
+          320,
+          414
+        ],
+        "sourceFoot": [
+          660,
+          1475
+        ],
+        "logicalPerSourcePixel": 0.05505849965588438,
+        "fullCanvasLogical": [
+          56.3799036476256,
+          84.5698554714384
+        ],
+        "sourceSha256": "41a64761af642a1369d4139d7b064c94a96fa8752ca51451fb75ed6828d64454"
+      },
+      {
+        "identity": "pine",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
+        "pointWorld": [
+          175.24445,
+          101.75999999999999
+        ],
+        "sourceFoot": [
+          640,
+          1201
+        ],
+        "logicalPerSourcePixel": 0.05555555555555555,
+        "fullCanvasLogical": [
+          69.66666666666666,
+          69.66666666666666
+        ],
+        "sourceSha256": "c11c0cf74aca96c8397f9f0d4c7d06aebef3a9357fd26886a5364342d8fc1952"
+      },
+      {
+        "identity": "stone-bridge",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/stone-bridge/master.png",
+        "pointWorld": [
+          352,
+          112
+        ],
+        "sourceFoot": [
+          627,
+          625
+        ],
+        "logicalPerSourcePixel": 0.08094435075885328,
+        "fullCanvasLogical": [
+          101.50421585160201,
+          101.50421585160201
+        ],
+        "sourceSha256": "7cfee61ee99d83346ca9cc3d00806fc37ec5200259f768bb307a143c4e8aff8c"
+      },
+      {
+        "identity": "pine",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
+        "pointWorld": [
+          80.18315,
+          197.76
+        ],
+        "sourceFoot": [
+          640,
+          1201
+        ],
+        "logicalPerSourcePixel": 0.05555555555555555,
+        "fullCanvasLogical": [
+          69.66666666666666,
+          69.66666666666666
+        ],
+        "sourceSha256": "c11c0cf74aca96c8397f9f0d4c7d06aebef3a9357fd26886a5364342d8fc1952"
+      },
+      {
+        "identity": "stone-bridge",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/stone-bridge/master.png",
+        "pointWorld": [
+          352,
+          208
+        ],
+        "sourceFoot": [
+          627,
+          625
+        ],
+        "logicalPerSourcePixel": 0.08094435075885328,
+        "fullCanvasLogical": [
+          101.50421585160201,
+          101.50421585160201
+        ],
+        "sourceSha256": "7cfee61ee99d83346ca9cc3d00806fc37ec5200259f768bb307a143c4e8aff8c"
+      },
+      {
+        "identity": "pine",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
+        "pointWorld": [
+          204.40936,
+          261.76
+        ],
+        "sourceFoot": [
+          640,
+          1201
+        ],
+        "logicalPerSourcePixel": 0.05555555555555555,
+        "fullCanvasLogical": [
+          69.66666666666666,
+          69.66666666666666
+        ],
+        "sourceSha256": "c11c0cf74aca96c8397f9f0d4c7d06aebef3a9357fd26886a5364342d8fc1952"
+      },
+      {
+        "identity": "pine",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
+        "pointWorld": [
+          81.46457,
+          325.76
+        ],
+        "sourceFoot": [
+          640,
+          1201
+        ],
+        "logicalPerSourcePixel": 0.05555555555555555,
+        "fullCanvasLogical": [
+          69.66666666666666,
+          69.66666666666666
+        ],
+        "sourceSha256": "c11c0cf74aca96c8397f9f0d4c7d06aebef3a9357fd26886a5364342d8fc1952"
+      },
+      {
+        "identity": "stone-bridge",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/stone-bridge/master.png",
+        "pointWorld": [
+          352,
+          304
+        ],
+        "sourceFoot": [
+          627,
+          625
+        ],
+        "logicalPerSourcePixel": 0.08094435075885328,
+        "fullCanvasLogical": [
+          101.50421585160201,
+          101.50421585160201
+        ],
+        "sourceSha256": "7cfee61ee99d83346ca9cc3d00806fc37ec5200259f768bb307a143c4e8aff8c"
+      },
+      {
+        "identity": "pine",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
+        "pointWorld": [
+          209.98783,
+          389.76
+        ],
+        "sourceFoot": [
+          640,
+          1201
+        ],
+        "logicalPerSourcePixel": 0.05555555555555555,
+        "fullCanvasLogical": [
+          69.66666666666666,
+          69.66666666666666
+        ],
+        "sourceSha256": "c11c0cf74aca96c8397f9f0d4c7d06aebef3a9357fd26886a5364342d8fc1952"
+      },
+      {
+        "identity": "lorne-keep",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/lorne-keep/master.png",
+        "pointWorld": [
+          48,
+          127
+        ],
+        "sourceFoot": [
+          632,
+          1177
+        ],
+        "logicalPerSourcePixel": 0.11832374691865243,
+        "fullCanvasLogical": [
+          148.37797863599013,
+          148.37797863599013
+        ],
+        "sourceSha256": "22fa7fc759df0b1d722fac64beddac3d9c24da5d91b61d16775f56322b805562"
+      },
+      {
+        "identity": "swordsman",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
+        "pointWorld": [
+          48,
+          319
+        ],
+        "sourceFoot": [
+          641,
+          965
+        ],
+        "logicalPerSourcePixel": 0.04430379746835443,
+        "fullCanvasLogical": [
+          55.55696202531646,
+          55.55696202531646
+        ],
+        "sourceSha256": "b31371c60a0ec2a22795c7ba7fd672c6eada06081b11db0a351705b7cefbed06"
+      },
+      {
+        "identity": "swordsman",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
+        "pointWorld": [
+          80,
+          287
+        ],
+        "sourceFoot": [
+          641,
+          965
+        ],
+        "logicalPerSourcePixel": 0.04430379746835443,
+        "fullCanvasLogical": [
+          55.55696202531646,
+          55.55696202531646
+        ],
+        "sourceSha256": "b31371c60a0ec2a22795c7ba7fd672c6eada06081b11db0a351705b7cefbed06"
+      },
+      {
+        "identity": "swordsman",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
+        "pointWorld": [
+          80,
+          351
+        ],
+        "sourceFoot": [
+          641,
+          965
+        ],
+        "logicalPerSourcePixel": 0.04430379746835443,
+        "fullCanvasLogical": [
+          55.55696202531646,
+          55.55696202531646
+        ],
+        "sourceSha256": "b31371c60a0ec2a22795c7ba7fd672c6eada06081b11db0a351705b7cefbed06"
+      },
+      {
+        "identity": "swordsman",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
+        "pointWorld": [
+          112,
+          255
+        ],
+        "sourceFoot": [
+          641,
+          965
+        ],
+        "logicalPerSourcePixel": 0.04430379746835443,
+        "fullCanvasLogical": [
+          55.55696202531646,
+          55.55696202531646
+        ],
+        "sourceSha256": "b31371c60a0ec2a22795c7ba7fd672c6eada06081b11db0a351705b7cefbed06"
+      },
+      {
+        "identity": "swordsman",
+        "source": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
+        "pointWorld": [
+          48,
+          351
+        ],
+        "sourceFoot": [
+          641,
+          965
+        ],
+        "logicalPerSourcePixel": 0.04430379746835443,
+        "fullCanvasLogical": [
+          55.55696202531646,
+          55.55696202531646
+        ],
+        "sourceSha256": "b31371c60a0ec2a22795c7ba7fd672c6eada06081b11db0a351705b7cefbed06"
+      }
+    ],
+    "inputHashes": {
+      "/workspace/shared/empire-art-rebuild/calibration-v4/ground-base/master.png": "a2d026c7b83f5ba2468476539947e135a0e99263b42fa7a23f88fd992137a773",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/grass-mass/master.png": "7892e0ce3f79113674cbd3e33a9efb65c473e52278fac779bf68eee3cecfa1d3",
+      "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/water-area-uv4/water-area-64.png": "8030409f65d4c6e13c71a34733758811f2420e1920c92401810add0f0c4f9709",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/connectors-road-v2/route-dirt-road@2x.png": "3eda7d194e837275057e6f1d46d74b7caf8a55e1f98ae17beb1624fe3c955930",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/connectors-road-v2/route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/riverbank-module/master-v2.png": "41a64761af642a1369d4139d7b064c94a96fa8752ca51451fb75ed6828d64454",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png": "c11c0cf74aca96c8397f9f0d4c7d06aebef3a9357fd26886a5364342d8fc1952",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/stone-bridge/master.png": "7cfee61ee99d83346ca9cc3d00806fc37ec5200259f768bb307a143c4e8aff8c",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/lorne-keep/master.png": "22fa7fc759df0b1d722fac64beddac3d9c24da5d91b61d16775f56322b805562",
+      "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png": "b31371c60a0ec2a22795c7ba7fd672c6eada06081b11db0a351705b7cefbed06"
+    },
+    "kind": "actual-renderer-piece-art-study-not-gameplay",
+    "connectorCalibration": "/workspace/shared/empire-art-rebuild/calibration-v4/connectors-road-v2",
+    "waterAreaCalibration": "/workspace/shared/empire-art-rebuild/calibration-v4/water-area-uv4/water-area-64.png",
+    "selectionStudy": {
+      "enabled": true,
+      "unitPositions": "first five actual party deployments; all deliberately represented by one swordsman identity",
+      "forestPositions": "five actual canopy placement points represented by the same pine",
+      "omitted": "all legacy ground decals, foundation props, forest-floor blend underlays and settlement road-threshold underlays; other standing scenery, other buildings, remaining units and foreground; tactical terrain surfaces/transitions/routes/water and data unchanged"
+    },
+    "provenance": "Only listed master substitutions and explicitly named connector/water layers use new calibration; other pixels remain current branch mixed legacy/previous remake",
+    "limitations": [
+      "Buildings use normal state without owner banner for shape study; original owner data retained",
+      "Unit team is neutral blue-gray; idle frames only",
+      "No CSS lighting, shadows, animation or camera"
+    ],
+    "acceptance": "pending-user-style-review"
+  }
+]

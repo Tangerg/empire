@@ -11,6 +11,11 @@ from calibration_ground import append_ground
 
 NS = 'http://www.w3.org/2000/svg'
 XLINK = 'http://www.w3.org/1999/xlink'
+PROPORTION_SETS = {
+    'S0': {'keep':128,'human':34,'pine':90,'road':15.36},
+    'P1': {'keep':144,'human':28,'pine':76,'road':22},
+    'H1': {'keep':160,'human':34,'pine':70,'road':30},
+}
 ET.register_namespace('', NS)
 ET.register_namespace('xlink', XLINK)
 
@@ -19,14 +24,19 @@ def element(tag, attrs=None):
     return ET.Element(f'{{{NS}}}{tag}', attrs or {})
 
 
-def build(root, source, masters, output, connectors=None, only=None, water_area=None, bank=None, ground_base=None, grass_patch=None, ground_period=128, ground_flat=False, grass_broad=False):
+def build(root, source, masters, output, connectors=None, only=None, water_area=None, bank=None, ground_base=None, grass_patch=None, ground_period=128, ground_flat=False, grass_broad=False, proportion_set=None, tight_camera=False):
     data = json.loads((source / 'pieces.json').read_text())
     output.mkdir(parents=True, exist_ok=True)
     reports = []
     for name, keep_width, human_height in [('renderer-baseline', None, 44), ('trial-keep96', 96, 44), ('trial-keep144', 144, 44), ('trial-keep144-human34', 144, 34), ('selected-layer-keep128-human34', 128, 34), ('selected-layer-corrected-connectors', 128, 34), ('selected-layer-area-water', 128, 34), ('selected-layer-area-water-bridge', 128, 34), ('selected-layer-area-water-bridge-bank', 128, 34)]:
         if only and name != only: continue
         selected = name.startswith('selected-layer')
-        svg = element('svg', {'viewBox': '-96 0 640 512', 'width': '1280', 'height': '1024'})
+        tree_height = 90
+        if proportion_set:
+            preset = PROPORTION_SETS[proportion_set]
+            keep_width, human_height, tree_height = preset['keep'], preset['human'], preset['pine']
+        camera = [-24,0,560,448] if tight_camera else [-96,0,640,512]
+        svg = element('svg', {'viewBox': ' '.join(map(str,camera)), 'width': '1280', 'height': '1024'})
         defs = element('defs'); svg.append(defs)
         hashes = {}; substitutions = []; clip_index = 0
 
@@ -47,12 +57,15 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
             path = source_file or masters / identity / 'master.png'
             with Image.open(path) as image:
                 width, height = image.size
+                visible = image.convert('RGBA').getchannel('A').point(lambda value: 255 if value >= 128 else 0).getbbox()
             image = element('image', {'href': path.as_uri(), 'x': str(point[0] - foot[0] * scale),
                 'y': str(point[1] - foot[1] * scale), 'width': str(width * scale), 'height': str(height * scale)})
             svg.append(image)
             substitutions.append({'identity': identity, 'source': str(path), 'pointWorld': point,
                 'sourceFoot': foot, 'logicalPerSourcePixel': scale, 'fullCanvasLogical': [width * scale, height * scale],
-                'sourceSha256': hashlib.sha256(path.read_bytes()).hexdigest()})
+                'sourceSha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+                'alpha128SourceBounds': list(visible), 'visibleLogicalSize': [(visible[2]-visible[0])*scale,(visible[3]-visible[1])*scale],
+                'visibleWorldBounds': [point[0]+(visible[0]-foot[0])*scale,point[1]+(visible[1]-foot[1])*scale,point[0]+(visible[2]-foot[0])*scale,point[1]+(visible[3]-foot[1])*scale]})
 
         ground_report = append_ground(svg, defs, data['map'], ground_base, grass_patch, ground_period, ground_flat, grass_broad) if ground_base else None
         water_inserted = False
@@ -79,7 +92,7 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
         for index, piece in enumerate(data['layers']['underUnits']):
             if selected:
                 if index in (11, 19, 27, 29, 36):
-                    master_piece('pine', [piece['x'], piece['y']], [640, 1201], 90 / 1152)
+                    master_piece('pine', [piece['x'], piece['y']], [640, 1201], tree_height / 1152)
                 elif 'crossings-fortifications' in piece['markup']:
                     if '-bridge' in name:
                         master_piece('stone-bridge', [piece['x'], piece['y']], [627, 625], 96 / 1186)
@@ -89,7 +102,7 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
             if keep_width and index == 19:
                 if abs(piece['x'] - 80.18315) > .01 or abs(piece['y'] - 197.76) > .01:
                     raise ValueError('selected actual forest placement changed')
-                master_piece('pine', [piece['x'], piece['y']], [640, 1201], 90 / 1152)
+                master_piece('pine', [piece['x'], piece['y']], [640, 1201], tree_height / 1152)
             else: add_piece(piece, 'scenery')
         for piece in data['buildings']:
             if selected and (piece['x'], piece['y']) != (32, 96): continue
@@ -135,7 +148,7 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
         subprocess.run(['inkscape', str(svg_path), '--export-type=png', f'--export-filename={png}'], check=True, capture_output=True)
         with Image.open(png) as image:
             image.resize((640, 512), Image.Resampling.LANCZOS).save(output / f'{name}-native.png')
-        reports.append({'variant': name, 'viewBox': [-96, 0, 640, 512], 'cropWorld': [0, 3, 14, 10],
+        reports.append({'variant': name, 'viewBox': camera, 'proportionStudy': {'set': proportion_set, 'humanVisibleHeight': human_height, 'pineVisibleHeight': tree_height, 'keepVisibleWidth': keep_width, 'bridgeVisibleWidth': 96, 'roadVisualWidth': PROPORTION_SETS.get(proportion_set, PROPORTION_SETS['S0'])['road'], 'roadWidthRequest': 32 if proportion_set == 'H1' else PROPORTION_SETS.get(proportion_set, PROPORTION_SETS['S0'])['road'], 'positionsUnchanged': True, 'tightCamera': tight_camera}, 'cropWorld': [0, 3, 14, 10],
             'overscanLogical': 96, 'groundStudy': ground_report, 'groundFit': {'meadowInset': 0 if keep_width else 3, 'bleed': .5},
             'substitutions': substitutions, 'inputHashes': hashes, 'kind': 'actual-renderer-piece-art-study-not-gameplay',
             'connectorCalibration': str(connectors) if connectors and ('corrected-connectors' in name or 'area-water' in name) else None,
@@ -159,8 +172,10 @@ if __name__ == '__main__':
     parser.add_argument('--bank', type=Path)
     parser.add_argument('--ground-base', type=Path)
     parser.add_argument('--grass-patch', type=Path)
+    parser.add_argument('--proportion-set', choices=('S0','P1','H1'))
+    parser.add_argument('--tight-camera', action='store_true')
     parser.add_argument('--ground-flat', action='store_true')
     parser.add_argument('--grass-broad', action='store_true')
     parser.add_argument('--ground-period', type=int, choices=(128,512), default=128)
     args = parser.parse_args()
-    build(args.root.resolve(), args.source.resolve(), args.masters.resolve(), args.output.resolve(), args.connectors.resolve() if args.connectors else None, args.only, args.water_area.resolve() if args.water_area else None, args.bank.resolve() if args.bank else None, args.ground_base.resolve() if args.ground_base else None, args.grass_patch.resolve() if args.grass_patch else None, args.ground_period, args.ground_flat, args.grass_broad)
+    build(args.root.resolve(), args.source.resolve(), args.masters.resolve(), args.output.resolve(), args.connectors.resolve() if args.connectors else None, args.only, args.water_area.resolve() if args.water_area else None, args.bank.resolve() if args.bank else None, args.ground_base.resolve() if args.ground_base else None, args.grass_patch.resolve() if args.grass_patch else None, args.ground_period, args.ground_flat, args.grass_broad, args.proportion_set, args.tight_camera)
