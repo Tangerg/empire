@@ -1,0 +1,139 @@
+{
+  "baselineCommit": "de66ed2d56b418e435abd1ddebc77a0287de01fb",
+  "changedCellIndicesByAtlas": {
+    "forest-temperate": [
+      1,
+      5,
+      9,
+      15
+    ],
+    "forest-temperate@2x": [
+      1,
+      5,
+      9,
+      15
+    ],
+    "forest-existing": [],
+    "forest-existing@2x": [],
+    "scenery-regional": [],
+    "scenery-regional@2x": []
+  },
+  "changedCellIds": [
+    "mixed-forest-autumn",
+    "sapling-rock-cluster",
+    "stump-low",
+    "forest-floor-cluster"
+  ],
+  "metadataDelta": "Only four registered anchors and presentationScale values; all other manifest data identical",
+  "sources": {
+    "mixed-forest-autumn": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/mixed-forest-autumn/mixed-forest-autumn-master.png",
+      "sha256": "94f95dfa3d942daf5bf23b4b2febeb6d94a42afe9fac779b4a3dcce08beeb2a5",
+      "registration": {
+        "scale": 0.0685805422647528,
+        "origin": [
+          5,
+          5
+        ],
+        "sourceFoot": [
+          640,
+          1090
+        ]
+      },
+      "originalSharedBytesPreserved": true,
+      "copiedFileHashes": {
+        "alpha-qa.json": "6fc242e003f4a94cad2d80aa3cbbf4200d84aaee778d107fafbeb39bd7133025",
+        "evidence.json": "94b57d7ae21a85113887cef80285770a3770f96b486b6e4159bee6cd4fdeb9e6",
+        "mixed-forest-autumn-master.png": "94f95dfa3d942daf5bf23b4b2febeb6d94a42afe9fac779b4a3dcce08beeb2a5",
+        "prompt.txt": "15bf67cf6f8bebc0ab12bd7dab8d1c8633dff561cc4952054505353333950ba1",
+        "semantic-notes.md": "8044956c82b2356c610d3ba0ba0770d0e9871c0ba89cc069d0efe2734e8e1b20"
+      },
+      "reconstruction": false
+    },
+    "sapling-rock-cluster": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/sapling-rock-cluster/sapling-rock-cluster-master.png",
+      "sha256": "eb49874200fc99bf6b54c3545fd8c712d1963bccc1bddb1f890c66a53a2f4987",
+      "registration": {
+        "scale": 0.0685805422647528,
+        "origin": [
+          5,
+          5
+        ],
+        "sourceFoot": [
+          650,
+          1060
+        ]
+      },
+      "originalSharedBytesPreserved": true,
+      "copiedFileHashes": {
+        "alpha-qa.json": "c65a1b6a8429d8fc2f72fac45c26bf0f5b85dcfadb1aff26bf8e536966f58a0e",
+        "evidence.json": "c62b239d96b8dd27750a2c516a9a3bfabbb3d1589358ac4dff7126e244884c34",
+        "prompt.txt": "d2f9c1f3a7f2a6d808c18c2709adb36744c8cda13342b2f0ff174dd5bc718e97",
+        "sapling-rock-cluster-master.png": "eb49874200fc99bf6b54c3545fd8c712d1963bccc1bddb1f890c66a53a2f4987",
+        "semantic-notes.md": "f55cab6bf43d960410fdc4f0f3fa8c196cdaa9150850ffe396146431d5eae9b6"
+      },
+      "reconstruction": false
+    },
+    "stump-low": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/stump-low/stump-low-master.png",
+      "sha256": "67396950ec0cd05dde9e4960839bf749d61fb1f88a524d0efe61c65886c09213",
+      "registration": {
+        "scale": 0.0685805422647528,
+        "origin": [
+          5,
+          5
+        ],
+        "sourceFoot": [
+          627,
+          880
+        ]
+      },
+      "originalSharedBytesPreserved": true,
+      "copiedFileHashes": {
+        "alpha-qa.json": "5f299f1c423ba69ec6a2bf2b066d29adb6157032affe36aa177a9bdbb4618336",
+        "evidence.json": "2c7a2a02a7caefef83df2c686d044f3225c26d8a288fcbbc12a0a492119ef7a6",
+        "prompt.txt": "12269249bccea94b294d1781391fd448cde826b24e32defdf59ffbfb3d27257b",
+        "semantic-notes.md": "833d8f3a841b112d02c735ad0bbf23728344c0dee026f10193914edfadadecc6",
+        "stump-low-master.png": "67396950ec0cd05dde9e4960839bf749d61fb1f88a524d0efe61c65886c09213"
+      },
+      "reconstruction": false
+    },
+    "forest-floor-cluster": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/forest-floor-cluster/forest-floor-cluster-master.png",
+      "sha256": "35839570830b4197b2565604601caa0691b9fbbc23376a1dbf4389f6f8e5127b",
+      "registration": {
+        "scale": 0.0685805422647528,
+        "origin": [
+          5,
+          5
+        ],
+        "sourceFoot": [
+          628,
+          750
+        ]
+      },
+      "originalSharedBytesPreserved": true,
+      "copiedFileHashes": {
+        "alpha-qa.json": "7f72c1cc6fa00d8134658262437c19fc59374fd64f611e0e97ff0855609487e4",
+        "evidence.json": "3cd0c8c9569fbf7a041cc4449fa633af20c41d51300c04eb57af531147b7421d",
+        "forest-floor-cluster-master.png": "35839570830b4197b2565604601caa0691b9fbbc23376a1dbf4389f6f8e5127b",
+        "prompt.txt": "96b29c11bbaeaf1e830a246d5a318d76d2b758e6811ccfde01ceba8983f00736",
+        "semantic-notes.md": "9c4f44642b8eebc78dbae12137a0f1a092b50a1ef82aa77f6eb503bab1e0c8f8"
+      },
+      "reconstruction": true
+    }
+  },
+  "approvedTemperateRegistrations": 16,
+  "nativeDiagnostic": "native-contact.png",
+  "forestFloorProvenance": "documented concept reconstruction of unrecoverable legacy slot 15, not exact recovery",
+  "viewportRefactor": {
+    "sharedHelper": "tools/art/candidate_review_viewport.ts",
+    "consumers": [
+      "tools/art/extract_calibration_scene.ts",
+      "tools/art/review_environment_runtime.ts"
+    ],
+    "calibrationPiecesJsonAndSvgByteIdentical": true,
+    "duplicateGuardFailureReproducedBeforeFix": true
+  },
+  "browserPlayback": false
+}

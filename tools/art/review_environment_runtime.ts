@@ -2,24 +2,28 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { mapFromLevel, TacticalGrids } from '@empire/battle-engine';
-import { boardPictureMarkup, boardPiecesMarkup, createSceneViewport, runtimeAtlasCellMarkup } from '@empire/game-ui';
+import { mapFromLevel } from '@empire/battle-engine';
+import { boardPictureMarkup, boardPiecesMarkup, runtimeAtlasCellMarkup } from '@empire/game-ui';
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK, candidate01Level } from '@empire/story-candidate-01';
 import { CANDIDATE_01_ENVIRONMENT } from '../../packages/story-candidate-01/src/presentation/candidate-01-environment';
-import { candidate01MapSceneryLayers, candidate01SceneFrameMarkup, candidate01SceneProfile } from '../../packages/story-candidate-01/src/presentation/candidate-01-map-scene';
+import { candidate01MapSceneryLayers, candidate01SceneFrameMarkup } from '../../packages/story-candidate-01/src/presentation/candidate-01-map-scene';
 import { candidate01UnitPicture } from '../../packages/story-candidate-01/src/presentation/candidate-01-runtime';
+
+import { candidateReviewViewport } from './candidate_review_viewport';
 
 const root = resolve(import.meta.dirname, '../..');
 const secondSet = process.argv.includes('--second');
 const thirdSet = process.argv.includes('--third');
-if (secondSet && thirdSet) throw new Error('choose only one forest review set');
+const fourthSet = process.argv.includes('--fourth');
+const extended = thirdSet || fourthSet;
+if ([secondSet, thirdSet, fourthSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
 const output = resolve(process.env.FOREST_REVIEW_OUTPUT
-  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${thirdSet ? '-third' : secondSet ? '-second' : ''}`);
+  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const map = mapFromLevel(content, candidate01Level('c01-02'));
 map.tiles.fill('forest');
-const viewport = createSceneViewport(TacticalGrids.get('square4'), map.width, map.height, 32, candidate01SceneProfile());
+const viewport = candidateReviewViewport(map);
 const context = { content, map, viewport, levelId: 'forest-registration-review' };
 const field = boardPiecesMarkup(candidate01MapSceneryLayers(context).underUnits);
 const frame = candidate01SceneFrameMarkup(context).foreground;
@@ -33,8 +37,15 @@ interface ReviewColumn {
   readonly placement: readonly [number, number];
   readonly catalogOnly?: boolean;
   readonly reference?: boolean;
+  readonly reconstruction?: boolean;
 }
-const columns: readonly ReviewColumn[] = thirdSet ? [
+const columns: readonly ReviewColumn[] = fourthSet ? [
+  { id: 'mixed-forest-autumn', x: 85, placement: [0.74, 0.86] },
+  { id: 'sapling-rock-cluster', x: 235, placement: [0.58, 0.7] },
+  { id: 'stump-low', x: 385, placement: [0.58, 0.7] },
+  { id: 'forest-floor-cluster', x: 515, placement: [0.58, 0.7], reconstruction: true },
+  { id: 'oak-ancient', x: 675, placement: [0.74, 0.86], reference: true },
+] : thirdSet ? [
   { id: 'bramble-dark', x: 85, placement: [0.58, 0.7] },
   { id: 'bramble-berries', x: 235, placement: [0.58, 0.7] },
   { id: 'leaf-pile', x: 385, placement: [1, 1], catalogOnly: true },
@@ -53,7 +64,7 @@ const columns: readonly ReviewColumn[] = thirdSet ? [
 ];
 const reports = [];
 const pictures = [];
-for (const { id, x, placement, catalogOnly = false, reference = false } of columns) {
+for (const { id, x, placement, catalogOnly = false, reference = false, reconstruction = false } of columns) {
   const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
   const crop = `x="${-(cell.index % 4) * 96}" y="${-Math.floor(cell.index / 4) * 96}"`;
   const source = id === 'boulder-ferns' ? motherRoot
@@ -80,7 +91,7 @@ for (const { id, x, placement, catalogOnly = false, reference = false } of colum
   if (!sample) throw new Error(`no actual scene placement found: ${id}`);
   reports.push({ id, anchor: cell.anchor, footprint: cell.footprint, presentationScale,
     evidence: catalogOnly ? 'catalog-only diagnostic; no shipped scene placement' : 'sampled scene renderer markup',
-    reference,
+    reference, reconstruction,
     placementScaleRange: placement, rendererScaleRange: placement.map((value) => value * presentationScale),
     sampledRendererScaleRange: catalogOnly ? null
       : [Math.min(...samples.map((entry) => entry.scale)), Math.max(...samples.map((entry) => entry.scale))],
@@ -88,17 +99,17 @@ for (const { id, x, placement, catalogOnly = false, reference = false } of colum
   pictures.push(`<g transform="translate(${x} 145)">${sample.markup}</g>`
     + `<path d="M${x - 5} 145h10 M${x} 140v10" stroke="#ff8070" stroke-width="0.7"/>`
     + `<text x="${x}" y="176" text-anchor="middle">${id}</text>`
-    + `<text x="${x}" y="190" text-anchor="middle">${catalogOnly ? 'catalog scale' : 'scale'} ${sample.scale}</text>`);
+    + `<text x="${x}" y="190" text-anchor="middle">${reconstruction ? 'reconstructed; ' : ''}${catalogOnly ? 'catalog scale' : 'scale'} ${sample.scale}</text>`);
 }
 const human = candidate01UnitPicture('c01.swordsman', '#ffffff');
 if (!human) throw new Error('missing approved human reference');
-const humanX = thirdSet ? 820 : 660;
+const humanX = extended ? 820 : 660;
 pictures.push(`<g transform="translate(${humanX - 16} 114)">${boardPictureMarkup(human)}</g>`
   + `<text x="${humanX}" y="176" text-anchor="middle">swordsman</text>`
   + `<text x="${humanX}" y="190" text-anchor="middle">44 px visible</text>`);
 const local = (markup: string) => markup.replace(/href="(\/packages\/[^"?]+)(?:\?[^"]*)?"/g,
   (_, path: string) => `href="${pathToFileURL(resolve(root, `.${path}`)).href}"`);
-const width = thirdSet ? 900 : 740;
+const width = extended ? 900 : 740;
 const title = thirdSet
   ? 'Native 1× scene samples; leaf-pile is a catalog-only probe; red crosses mark contacts; no browser playback'
   : 'Native 1× actual renderer markup; red crosses are authored ground contacts; no browser playback';

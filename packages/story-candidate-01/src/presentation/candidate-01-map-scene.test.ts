@@ -41,6 +41,8 @@ describe('candidate-01 authored map scenery', () => {
       ['stump-hollow', 0.58, 0.7], ['fallen-hollow-log', 0.9, 0.9],
       ['bramble-dark', 0.58, 0.7], ['bramble-berries', 0.58, 0.7],
       ['boulder-ferns', 0.8, 0.92],
+      ['mixed-forest-autumn', 0.74, 0.86], ['sapling-rock-cluster', 0.58, 0.7],
+      ['stump-low', 0.58, 0.7], ['forest-floor-cluster', 0.58, 0.7],
     ] as const) {
       const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
       const crop = `x="${-(cell.index % 4) * 96}" y="${-Math.floor(cell.index / 4) * 96}"`;

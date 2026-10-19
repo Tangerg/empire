@@ -20,6 +20,10 @@ describe('candidate-01 environment builder v1.1', () => {
       { id: 'bramble-berries', foot: [625, 960], scale: 0.85, footprint: [1, 1], obstruction: 0 },
       { id: 'leaf-pile', foot: [628, 680], scale: 0.4, footprint: [1, 1], obstruction: 0 },
       { id: 'boulder-ferns', foot: [625, 1015], scale: 0.65, footprint: [1, 1], obstruction: 1 },
+      { id: 'mixed-forest-autumn', foot: [640, 1090], scale: 1.5, footprint: [2, 2], obstruction: 2 },
+      { id: 'sapling-rock-cluster', foot: [650, 1060], scale: 0.9, footprint: [1, 1], obstruction: 1 },
+      { id: 'stump-low', foot: [627, 880], scale: 0.8, footprint: [1, 1], obstruction: 0 },
+      { id: 'forest-floor-cluster', foot: [628, 750], scale: 0.65, footprint: [1, 1], obstruction: 0 },
     ];
     for (const { id, foot, scale, footprint, obstruction } of contracts) {
       const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
@@ -31,8 +35,8 @@ describe('candidate-01 environment builder v1.1', () => {
       expect(atlas.raster).toMatchObject({ cellWidth: 96, cellHeight: 96, columns: 4, rows: 4 });
       expect(atlas.raster.href).toContain('forest-temperate@2x.png');
     }
-    expect(CANDIDATE_01_ENVIRONMENT.cell('mixed-forest-autumn').cell.anchor).toEqual([48, 91]);
-    expect(CANDIDATE_01_ENVIRONMENT.cell('mixed-forest-autumn').cell.presentationScale).toBeUndefined();
+    expect(CANDIDATE_01_ENVIRONMENT.cell('pine-mature-a').cell.anchor).toEqual([48, 91]);
+    expect(CANDIDATE_01_ENVIRONMENT.cell('pine-mature-a').cell.presentationScale).toBeUndefined();
   });
 
   it('rejects invalid presentation scales at the catalog boundary', () => {

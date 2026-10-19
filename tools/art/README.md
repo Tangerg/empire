@@ -78,7 +78,7 @@ source crop, thresholding, recoloring, or repainting is performed.
 
 The approved-v5 forest masters use the complete 1254² canvas at 86 logical
 pixels, starting at [5,5]. Roots and fronds may extend below their reviewed
-contact. Other registered cells retain their previous pixels and [48,91] pivots
+contact. Other atlases' registered cells retain their previous pixels and [48,91] pivots
 through equivalent explicit registrations; `offsetY2x` is no longer supported.
 
 The manifest owns each cell's runtime anchor and optional positive
@@ -108,7 +108,14 @@ bramble, berry bramble, leaf pile, and boulder-ferns, with the prior oak as a si
 reference. Leaf pile is explicitly labeled a catalog-only draw at placement
 scale 1 because no shipped scene currently selects it; no production selector
 is changed by the diagnostic. The default set remains oak, dense forest, fern,
-and boulder.
+and boulder. Add `--fourth` and use `environment-runtime-fourth` for autumn
+forest, sapling/rock cluster, low stump, and the explicitly reconstructed forest
+floor cluster. All 16 temperate slots now have approved-v5 registrations; leaf
+pile remains catalog-only until a scene selects it.
+
+Both diagnostic tools use `candidate_review_viewport.ts` for the candidate grid,
+tile unit, and scene profile. This keeps viewport construction in one owner;
+`extract_calibration_scene.ts` and `review_environment_runtime.ts` consume it.
 
 The SVG and PNG place the four assets beside the runtime swordsman, and the JSON
 records actual sampled transforms and alpha-128 silhouette measurements. Shared

@@ -1,18 +1,19 @@
 /** Isolated real-level art evidence; does not mutate gameplay or runtime assets. */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { TacticalGrids, idx, mapFromLevel } from '@empire/battle-engine';
+import { idx, mapFromLevel } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
-import { boardPiecesMarkup, boardPictureMarkup, createSceneViewport } from '@empire/game-ui';
+import { boardPiecesMarkup, boardPictureMarkup } from '@empire/game-ui';
 import { CANDIDATE_01_CONTENT_PACK } from '../../packages/story-candidate-01/src/index';
 import { candidate01Level } from '../../packages/story-candidate-01/src/levels';
-import { candidate01MapSceneryLayers, candidate01SceneProfile } from '../../packages/story-candidate-01/src/presentation/candidate-01-map-scene';
+import { candidate01MapSceneryLayers } from '../../packages/story-candidate-01/src/presentation/candidate-01-map-scene';
 import { candidate01TerrainMarkup, candidate01UnitPicture } from '../../packages/story-candidate-01/src/presentation/candidate-01-runtime';
+import { candidateReviewViewport } from './candidate_review_viewport';
 const output = resolve(process.env.CALIBRATION_OUTPUT ?? '/workspace/shared/empire-art-rebuild/calibration-v4/actual-scene');
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const level = candidate01Level('c01-02');
 const map = mapFromLevel(content, level);
-const viewport = createSceneViewport(TacticalGrids.get('square4'), map.width, map.height, 32, candidate01SceneProfile());
+const viewport = candidateReviewViewport(map);
 const layers = candidate01MapSceneryLayers({ content, levelId: 'c01-02', map, viewport });
 const buildings = [];
 for (let y = 0; y < map.height; y++) for (let x = 0; x < map.width; x++) {
