@@ -37,6 +37,11 @@ def render_water_area(material,occupied,size=64,map_size=None):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--material',type=Path,required=True);p.add_argument('--cells-json',type=Path,required=True);p.add_argument('--output-dir',type=Path,required=True);p.add_argument('--map-size',type=int,nargs=2);a=p.parse_args();a.output_dir.mkdir(parents=True,exist_ok=True)
-    cells=json.loads(a.cells_json.read_text())
+    evidence=json.loads(a.cells_json.read_text())
+    cells=[[c['x'],c['y']] for c in evidence['waterAndBridgeCells']] if isinstance(evidence,dict) else evidence
+    if isinstance(evidence,dict):
+        declared=[evidence['mapWidth'],evidence['mapHeight']]
+        if a.map_size is not None and a.map_size!=declared:raise ValueError('map size conflicts with actual extracted evidence')
+        a.map_size=declared
     for size in (32,64):
-        im,r=render_water_area(a.material,cells,size,a.map_size);name=f'water-area-{size}.png';im.save(a.output_dir/name);r['outputSha256']=hashlib.sha256((a.output_dir/name).read_bytes()).hexdigest();(a.output_dir/f'water-area-{size}.json').write_text(json.dumps(r,indent=2)+'\n')
+        im,r=render_water_area(a.material,cells,size,a.map_size);name=f'water-area-{size}.png';im.save(a.output_dir/name);r['cellsEvidenceSha256']=hashlib.sha256(a.cells_json.read_bytes()).hexdigest();r['outputSha256']=hashlib.sha256((a.output_dir/name).read_bytes()).hexdigest();(a.output_dir/f'water-area-{size}.json').write_text(json.dumps(r,indent=2)+'\n')
