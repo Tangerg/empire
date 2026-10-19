@@ -4,10 +4,10 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 86,
+    "formalBound": 87,
     "boundByCategory": {
       "battle-prop": 32,
-      "combat-unit": 17,
+      "combat-unit": 18,
       "equipment": 12,
       "interactive-structure": 24,
       "mission-unit": 1
@@ -1707,15 +1707,22 @@
       "label": "符文盾卫",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-shield/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-shield/idle/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-shield/walk-a/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-shield/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/rune-shield/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-rune-shield.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-rune-shield.png",
+      "stageEvidence": {
+        "raw": "4 native poses preserved, corrected original shield rune and hand assignment retained",
+        "export": "shared44/904.5 scale, measured feet, maximum1.362079 registration, up to2 transparent padding pixels; native light/dark semantic review passed",
+        "runtimeBinding": "canonical and HD resolver formally bound; original rules and footprint retained",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-SHAMAN",

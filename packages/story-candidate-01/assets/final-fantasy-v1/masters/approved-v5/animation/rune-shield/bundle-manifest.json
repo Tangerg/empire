@@ -1,0 +1,147 @@
+{
+  "asset": "C01-UNIT-RUNE-SHIELD",
+  "actualConsumers": [
+    "c01.rune-shield"
+  ],
+  "status": "Native quartet complete; coordinator final sequence review/export/binding pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Every selected master/raw PNG is byte-identical to native output. No painting, recoloring, resizing, cropping or alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.048645660585959094,
+  "bodyReferenceSourcePixels": 904.5,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/registration-evidence.json",
+  "semanticContract": "C01-UNIT-RUNE-SHIELD binds only c01.rune-shield, the campaign heavy forge guard. Preserve original idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1 and fourth-row source identity. The original compact hammer/shield art matches the sole c01.rune-hammer blunt melee rule. Original attack is near-idle and original walking contacts are weak; this quartet reconstructs a clear raised-hammer melee action and opposite contacts. Shared equipment C01-EQUIP-RUNE-ARTIFICER does not remap this unit to distinct c01.rune-artificer. C01-FX-04 remains separate. No rules change or fifth pose.",
+  "symbolContract": "Accepted corrected idle is the exact quartet basis: octagonal dark shield with one central gold open elongated diamond and upper/lower crossing open forks. The tiny upper inset and dark gray center/lower panel recess details present in that accepted basis are retained consistently. No additional closed gold lower diamond, symbol transplant, new cross or external glow. The rune rotates as part of the physical shield face.",
+  "selectedAttempts": {
+    "idle": "attempt-02 targeted source-rune correction; both attempts preserved",
+    "walk-a": "first successful native output",
+    "attack": "first successful native output",
+    "walk-b": "first successful native output"
+  },
+  "idleApproval": "Coordinator2026-10-19 17:31UTC viewed and accepted corrected idle identity, full1586x992 canvas and44/904.5 scale.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "b6dcce4235da758bea1dac00ea6fe56dc0c26f32fb58342242fb1cfda7b29203",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        780,
+        973
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        304,
+        64,
+        1320,
+        974
+      ],
+      "sha256": "bbfd617313dbd074f2eda6f5125a124389a2cd3069814b06995d41ead2962fa9",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-162bb3ab-a9ae-4972-9b04-74db1ee7799a.png",
+      "review": "Accepted clean-shaven tan adult with uncovered black ponytail, broad dark steel segmented armor/lamellar skirt, square breastplate with gray diamond stud, brown gloves/belt/boots. Original screen-left short-handled rectangular hammer and screen-right octagonal shield. Large head, hands and boots; broad matte cel planes."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "cddfad20012f99354275053111545f56bd6559984402c8a75875fb83fd0b080b",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-a/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        797,
+        963
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        275,
+        66,
+        1353,
+        964
+      ],
+      "sha256": "f1a5098b7552154b93959ca9bb0479e2ca2927111146b4eb2f81d0601dff8279",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-32796992-355e-40ab-9bc4-38a5becb22aa.png",
+      "review": "Front screen-right boot advances toe-up with heel contact and visible sole; rear screen-left boot is flat and weight-bearing. Original low hammer hand and octagonal shield arm retained."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "5d0104f168ff97e98f9ae131eef08e1d0b30e90e32ac6fe340b453d23142cc1c",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/attack/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        752,
+        981
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        268,
+        11,
+        1360,
+        982
+      ],
+      "sha256": "7ed575b6a872abf333d3a03c4d05cc4a9e4028e19803eb49ee36b0a996b7b44d",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8715f9d1-1dc0-4e21-9977-cfa5004bc8ce.png",
+      "review": "Clear braced raised-hammer phase of a downward melee strike: original screen-left connected arm raises the compact rectangular hammer high beside the head, retaining its short wooden handle and round face insets. Screen-right shield arm keeps the complete shield defensively forward. Two arms total; hammer glove visible and shield hand naturally concealed behind shield. No independent impact, aura or rune FX."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "cbdede474022af8d75900bb51b5fd0d8052a52ee46530e06c439c3ba0b799c3d",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/walk-b/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        760,
+        965
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        273,
+        50,
+        1349,
+        966
+      ],
+      "sha256": "efb3d832386108ac06ade5dba090e3990804ef7e63ebebb3016991cd9a39838d",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9ca0b475-8fd2-44f1-928a-2c4dc5b78781.png",
+      "review": "Opposite walking contact: front screen-right boot flat and weight-bearing; rear screen-left heel raised, toe down. Same camera, identity, hammer and shield hands. Not mirrored or repeated walk-a."
+    }
+  }
+}

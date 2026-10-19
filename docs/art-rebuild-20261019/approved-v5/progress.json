@@ -2,7 +2,7 @@
   "phase": "approved-style full collection remake; formal runtime integration ongoing",
   "approval": {
     "messageId": "Sentinel_7330580e60f08191b111a4b2d50b5e82",
-    "quote": "\u65b0\u7248\u672c\u5f88\u5408\u9002\u554a\uff0c\u5c31\u662f\u8fd9\u4e2a feel",
+    "quote": "新版本很合适啊，就是这个 feel",
     "concept": "calibration-v5-concept/concept-v2.png"
   },
   "fullBulkResumed": true,
@@ -22,11 +22,11 @@
   "next": "Parallel first-level playable layout redesign and ongoing cliff/fortification/character remake; keep all source backups and formal stages distinct.",
   "continuationApproval": {
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
-    "quote": "\u786e\u8ba4\u4e86\uff0c\u5c31\u6309\u7167\u8fd9\u4e2a\u65b9\u5411\u505a\u5269\u4e0b\u7684"
+    "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 19,
+  "authoredFourPoseBundles": 20,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 86,
+  "formalRuntimeBoundTopics": 87,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -544,6 +544,12 @@
       "export": "one104/1046 scale and6271106 ground point, no offsets; native light/dark state review passed",
       "runtimeBinding": "canonical and HD resolver formally bound, existing footprint and rules retained",
       "liveGame": "pending"
+    },
+    "C01-UNIT-RUNE-SHIELD": {
+      "raw": "4 native poses preserved, corrected original shield rune and hand assignment retained",
+      "export": "shared44/904.5 scale, measured feet, maximum1.362079 registration, up to2 transparent padding pixels; native light/dark semantic review passed",
+      "runtimeBinding": "canonical and HD resolver formally bound; original rules and footprint retained",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -706,8 +712,8 @@
       ],
       "count": 24,
       "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
-      "runtimeBinding": "actual c01-02 ground layer samples at0.56\u20130.58 and original0.72 opacity; no scattering or placement changes",
-      "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56\u20130.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene. Stump and fallen branch retain complete source identities; native catalog probes only, no c01-02 sample. Wood/moss/plank quartet native review passed; small moss rock is an actual0.58 ground sample, others are catalog probes; firewood also has settlement-life selector at0.3, absence from selected ground sample is not proof of no consumer.",
+      "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
+      "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene. Stump and fallen branch retain complete source identities; native catalog probes only, no c01-02 sample. Wood/moss/plank quartet native review passed; small moss rock is an actual0.58 ground sample, others are catalog probes; firewood also has settlement-life selector at0.3, absence from selected ground sample is not proof of no consumer.",
       "liveGame": "pending",
       "atlasStaticReview": "All24 exact identities registered. Full original subjects reconstructed where legacy slots cropped; native matte silhouettes and transparent margins checked."
     },
@@ -774,21 +780,15 @@
     "focusedRuntime": 72,
     "typecheck": "passed",
     "artToolTests": 126,
-    "fullSuite": "latest full97 files/892 tests passed; prior jsdom failure remains historical evidence, no cause inferred from this successful run",
+    "fullSuite": "906 tests /98 files passed at8ed0cf8",
     "liveBrowser": "not validated",
     "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint",
     "fullSuiteLatestAttempt": {
-      "passed": 894,
-      "failed": 2,
-      "files": 97,
+      "passed": 906,
+      "failed": 0,
+      "files": 98,
       "command": "npx vitest run --maxWorkers 2 --minWorkers 1",
-      "scope": "9003b5b full run; old full-atlas hash assumption fixed for authorized overlays; cold public-barrel imports moved to collection, assertions/default timeout unchanged",
-      "failedFilesRerun": {
-        "passed": 108,
-        "failed": 0,
-        "files": 2,
-        "command": "npx vitest run candidate-01-crossing.test.ts architecture-boundaries.test.ts --maxWorkers 1 --minWorkers 1"
-      }
+      "scope": "8ed0cf8 integrated first-level layout main checkpoint"
     },
     "latestBindingAndEdges": "93 asset/environment tests passed after templar/forge/camps",
     "artPythonLatest": "150 passed at9003b5b; exact crossing/cliff contracts included",

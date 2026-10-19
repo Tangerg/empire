@@ -1,0 +1,65 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9ca0b475-8fd2-44f1-928a-2c4dc5b78781.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "efb3d832386108ac06ade5dba090e3990804ef7e63ebebb3016991cd9a39838d",
+  "bboxAlphaNonzero": [
+    177,
+    19,
+    1450,
+    972
+  ],
+  "bboxAlphaGreaterThan127": [
+    273,
+    50,
+    1349,
+    966
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 928966,
+  "alphaOnePixels": 3427,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        370,
+        840,
+        575,
+        966
+      ],
+      "soleY": 940,
+      "bottomBandMeanX": 510.625,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    },
+    "screenRight": {
+      "roi": [
+        805,
+        865,
+        1130,
+        987
+      ],
+      "soleY": 965,
+      "bottomBandMeanX": 1009.8625,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    }
+  },
+  "sourceFootMidpoint": [
+    760.24375,
+    952.5
+  ],
+  "suggestedSourceFoot": [
+    760,
+    965
+  ],
+  "lockedBodyScale": 0.048645660585959094,
+  "masterRawHashMatches": true,
+  "semanticReview": "Front screen-right boot is flat and weight-bearing; rear screen-left heel is raised, with toe at support level. This is opposite walk-a, not a mirror. Original low hammer hand and shield arm, octagonal plate pattern and accepted diamond/open-branch rune retained."
+}

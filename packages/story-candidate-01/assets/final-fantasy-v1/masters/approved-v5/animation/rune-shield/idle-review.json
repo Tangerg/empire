@@ -1,6 +1,6 @@
 {
   "topicId": "C01-UNIT-RUNE-SHIELD",
-  "status": "Corrected idle accepted by coordinator2026-10-19 17:31UTC; remaining poses authorized",
+  "status": "Native quartet complete; coordinator final sequence review/export/binding pending",
   "selectedAttempt": "attempt-02",
   "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/rune-shield/idle/master.png",
   "nativeCanvas": [
@@ -42,5 +42,7 @@
   "canonicalSourceFoot": [
     780,
     973
-  ]
+  ],
+  "quartetManifest": "bundle-manifest.json",
+  "remainingPosesGenerated": true
 }

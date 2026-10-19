@@ -1,0 +1,61 @@
+{
+  "status": "Native quartet semantic/alpha/geometry QA passes; coordinator final sequence review/export/binding pending",
+  "topic": "C01-UNIT-RUNE-SHIELD",
+  "actualConsumers": [
+    "c01.rune-shield"
+  ],
+  "bodyScale": "44/904.5",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1584,
+      993
+    ],
+    "attack": [
+      1584,
+      993
+    ],
+    "walk-b": [
+      1586,
+      992
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourcePaddingRequired": "Idle/walk-b native1586x992; walk-a/attack native1584x993. Common1586x993 needs only one transparent bottom row for idle/walk-b and two transparent right columns for walk-a/attack during export preparation. Native masters remain unchanged; no resizing or independent fitting.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All native perimeter alpha<=1; zero silhouette alpha>1 on edges. Native alpha=1 specks retained.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "shieldAndHammerHandsPreserved": true,
+  "equipmentCompleteEveryPose": true,
+  "symbolContract": "Accepted corrected idle is the exact quartet basis: octagonal dark shield with one central gold open elongated diamond and upper/lower crossing open forks. The tiny upper inset and dark gray center/lower panel recess details present in that accepted basis are retained consistently. No additional closed gold lower diamond, symbol transplant, new cross or external glow. The rune rotates as part of the physical shield face.",
+  "walkContactsOppose": true,
+  "attackAnatomyReview": "Clear braced raised-hammer phase of a downward melee strike: original screen-left connected arm raises the compact rectangular hammer high beside the head, retaining its short wooden handle and round face insets. Screen-right shield arm keeps the complete shield defensively forward. Two arms total; hammer glove visible and shield hand naturally concealed behind shield. No independent impact, aura or rune FX.",
+  "semanticContract": "C01-UNIT-RUNE-SHIELD binds only c01.rune-shield, the campaign heavy forge guard. Preserve original idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1 and fourth-row source identity. The original compact hammer/shield art matches the sole c01.rune-hammer blunt melee rule. Original attack is near-idle and original walking contacts are weak; this quartet reconstructs a clear raised-hammer melee action and opposite contacts. Shared equipment C01-EQUIP-RUNE-ARTIFICER does not remap this unit to distinct c01.rune-artificer. C01-FX-04 remains separate. No rules change or fifth pose.",
+  "independentFXBakedIntoCharacter": false,
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "gameplayFixClaimed": false
+}
