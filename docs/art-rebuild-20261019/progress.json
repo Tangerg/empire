@@ -4288,14 +4288,19 @@
     {
       "topicId": "c02-battle-prop-soler-heat-emblems",
       "status": "raw-generated",
-      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-soler-heat-emblems/master.png",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-soler-heat-emblems/revision-2/master.png",
       "verification": {
         "state": "pending",
         "note": "Raw master preserved; runtime visual acceptance pending",
-        "semanticReview": "needs revision: heatlamps incorrectly converted to sun-sign discs"
+        "semanticReview": "revision2 passed higher-resolution board cage/globe heatlamp comparison"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "99ece8d41bdb24a0407e8c337f56940cd3a0182b7789486a086ab4dbe473240f"
+      "sourceSha256": "98f600562a67e9359951189323551d54fd96da7671d49c47aee1119b29c179d6",
+      "revisionCandidate": {
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-soler-heat-emblems/revision-2/master.png",
+        "sha256": "98f600562a67e9359951189323551d54fd96da7671d49c47aee1119b29c179d6",
+        "status": "semantic-review-passed"
+      }
     },
     {
       "topicId": "c02-battle-prop-spare-part-racks",
