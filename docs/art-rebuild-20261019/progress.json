@@ -1910,11 +1910,14 @@
     },
     {
       "topicId": "C01-EQUIP-MAGE",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-mage/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-023-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "6aaa516fed97b32c7cd934c6edeb92091f09d14b790d6089bf413597bf336f46"
@@ -1969,11 +1972,14 @@
     },
     {
       "topicId": "C01-EQUIP-SPEARMAN",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-spearman/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-023-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "aa709e81b818641eb411be400d89a48930ec00a29a00b6a91c1fa89404d4c029"
@@ -6544,11 +6550,14 @@
     },
     {
       "topicId": "c03-battle-prop-10c026c1",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-10c026c1/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-023-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
@@ -6579,7 +6588,8 @@
       "topicId": "c03-battle-prop-2e0af0f2",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "c03-battle-prop-2e7df413",
@@ -6595,11 +6605,14 @@
     },
     {
       "topicId": "c03-battle-prop-30a92ab8",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-30a92ab8/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-023-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
@@ -6712,7 +6725,8 @@
       "topicId": "c03-battle-prop-c7e05f1c",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "c03-battle-prop-caa5ebba",
@@ -6735,7 +6749,8 @@
       "topicId": "c03-battle-prop-cd97a638",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "c03-battle-prop-cfb13cec",
@@ -6764,7 +6779,8 @@
       "topicId": "c03-battle-prop-f7033df9",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "c03-battle-prop-ff4a64b9",
