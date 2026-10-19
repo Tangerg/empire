@@ -4,16 +4,16 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 182,
+    "formalBound": 186,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 26,
       "equipment": 51,
       "interactive-structure": 24,
       "mission-unit": 1,
-      "skill": 16
+      "skill": 20
     },
-    "rawPreservedTopics": 186,
+    "rawPreservedTopics": 188,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -5578,11 +5578,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-17/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-17.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native masters and original full-subject evidence preserved; skill17 correction retained",
+        "export": "48px white/dark/olive readability reviewed; fullcanvas fit and source alpha preserved",
+        "runtimeBinding": "canonical48x48 anchor24,24, noHD",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-17-20/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-18",
@@ -5594,11 +5600,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-18/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-18.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native masters and original full-subject evidence preserved; skill17 correction retained",
+        "export": "48px white/dark/olive readability reviewed; fullcanvas fit and source alpha preserved",
+        "runtimeBinding": "canonical48x48 anchor24,24, noHD",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-17-20/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-19",
@@ -5610,11 +5622,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-19/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-19.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native masters and original full-subject evidence preserved; skill17 correction retained",
+        "export": "48px white/dark/olive readability reviewed; fullcanvas fit and source alpha preserved",
+        "runtimeBinding": "canonical48x48 anchor24,24, noHD",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-17-20/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-20",
@@ -5626,11 +5644,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-20/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-20.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native masters and original full-subject evidence preserved; skill17 correction retained",
+        "export": "48px white/dark/olive readability reviewed; fullcanvas fit and source alpha preserved",
+        "runtimeBinding": "canonical48x48 anchor24,24, noHD",
+        "liveGame": "pending",
+        "evidence": "approved-v5/skill-17-20/native48-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-21",
@@ -10810,8 +10834,10 @@
       "category": "equipment",
       "label": "长束狙击手主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-long-beam-sniper/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10922,8 +10948,10 @@
       "category": "equipment",
       "label": "动力剑士主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-power-swordsman/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
