@@ -1459,17 +1459,25 @@
     },
     {
       "topicId": "C01-BPROP-EVIDENCE-2",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-evidence-2/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "3ebc5d43d9476075944649cdb5315def92de02386b8394213eda1fa558bf32ac"
     },
     {
       "topicId": "C01-BPROP-EVIDENCE-3",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-evidence-3/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "e74387aa8ed27e87bbd20e170b082e7d6fa730b53cd063ed2ee618fea5f789cd"
     },
     {
       "topicId": "C01-BPROP-EVIDENCE-4",
