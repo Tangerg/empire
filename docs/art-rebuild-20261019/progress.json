@@ -1484,11 +1484,12 @@
     },
     {
       "topicId": "C01-BPROP-LIFE-1",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-life-1/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+        "exportCheck": "passed",
+        "evidence": "docs/art-rebuild-20261019/batch-005-export-evidence.json",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceSha256": "f953ca56fa87c42ddb2fbcd37823864b1f0e30624435252859a771947e17f486"
@@ -1541,11 +1542,12 @@
     },
     {
       "topicId": "C01-BPROP-LOGISTICS-3",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-logistics-3/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+        "exportCheck": "passed",
+        "evidence": "docs/art-rebuild-20261019/batch-005-export-evidence.json",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceSha256": "ae241761d4a035158325f951962b322c4872cc19f6eef806d243ccbebaf9d917"

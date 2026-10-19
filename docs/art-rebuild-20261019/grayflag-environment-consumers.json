@@ -1,0 +1,1710 @@
+[
+  {
+    "atlas": "surface-meadow",
+    "category": "base-surface",
+    "componentCount": 4,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 10,
+        "text": "\"surface-meadow\","
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 26,
+        "text": "export const CANDIDATE_FIELD_BASE = 'surface-meadow';"
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/surface-meadow@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "surface-forest-floor",
+    "category": "base-surface",
+    "componentCount": 4,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 11,
+        "text": "\"surface-forest-floor\","
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/surface-forest-floor@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "surface-earth",
+    "category": "base-surface",
+    "componentCount": 4,
+    "atlasReferences": [],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/surface-earth@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "surface-old-stone",
+    "category": "base-surface",
+    "componentCount": 4,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 179,
+        "text": "surface: 'surface-old-stone',"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 202,
+        "text": "surface: 'surface-old-stone',"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 206,
+        "text": "surface: 'surface-old-stone',"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 245,
+        "text": "['blocking', { surface: 'surface-old-stone' }],"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 247,
+        "text": "['urban', { surface: 'surface-old-stone' }],"
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/surface-old-stone@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "surface-snow",
+    "category": "base-surface",
+    "componentCount": 4,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 22,
+        "text": "\"surface-snow\","
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/surface-snow@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "surface-wasteland",
+    "category": "base-surface",
+    "componentCount": 4,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 23,
+        "text": "\"surface-wasteland\","
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 167,
+        "text": "surface: 'surface-wasteland',"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 218,
+        "text": "surface: 'surface-wasteland',"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 246,
+        "text": "['high', { surface: 'surface-wasteland', tone: 2 }],"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 250,
+        "text": "['molten', { surface: 'surface-wasteland' }],"
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/surface-wasteland@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "surface-graveyard",
+    "category": "base-surface",
+    "componentCount": 4,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 24,
+        "text": "\"surface-graveyard\","
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 214,
+        "text": "surface: 'surface-graveyard',"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 248,
+        "text": "['graveyard', { surface: 'surface-graveyard' }],"
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/surface-graveyard@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "surface-forge-stone",
+    "category": "base-surface",
+    "componentCount": 4,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 25,
+        "text": "\"surface-forge-stone\","
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 210,
+        "text": "surface: 'surface-forge-stone',"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 249,
+        "text": "['forge', { surface: 'surface-forge-stone' }],"
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/surface-forge-stone@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "transition-meadow-earth",
+    "category": "transition",
+    "componentCount": 47,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 194,
+        "text": "blend: 'transition-meadow-earth',"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 198,
+        "text": "blend: 'transition-meadow-earth',"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 251,
+        "text": "['burned', { blend: 'transition-meadow-earth' }],"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 252,
+        "text": "['wet', { blend: 'transition-meadow-earth' }],"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 313,
+        "text": "export const CANDIDATE_SHORE = 'transition-meadow-earth';"
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/transition-meadow-earth@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "transition-meadow-forest",
+    "category": "transition",
+    "componentCount": 47,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 12,
+        "text": "\"transition-meadow-forest\","
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 155,
+        "text": "blend: 'transition-meadow-forest',"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 224,
+        "text": "blend: 'transition-meadow-forest',"
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 253,
+        "text": "['silverwood', { blend: 'transition-meadow-forest' }],"
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/transition-meadow-forest@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "transition-meadow-snow",
+    "category": "transition",
+    "componentCount": 47,
+    "atlasReferences": [],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/transition-meadow-snow@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "transition-earth-stone",
+    "category": "transition",
+    "componentCount": 47,
+    "atlasReferences": [],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/transition-earth-stone@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "route-dirt-road",
+    "category": "route",
+    "componentCount": 64,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 13,
+        "text": "\"route-dirt-road\","
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 124,
+        "text": "atlas: 'route-dirt-road',"
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/route-dirt-road@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "route-edge-dirt-road",
+    "category": "route-edge",
+    "componentCount": 64,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 14,
+        "text": "\"route-edge-dirt-road\","
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 125,
+        "text": "edge: 'route-edge-dirt-road',"
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/route-edge-dirt-road@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "route-mud-road",
+    "category": "route",
+    "componentCount": 64,
+    "atlasReferences": [],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/route-mud-road@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "route-edge-mud-road",
+    "category": "route-edge",
+    "componentCount": 64,
+    "atlasReferences": [],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/route-edge-mud-road@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "route-stone-road",
+    "category": "route",
+    "componentCount": 64,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 203,
+        "text": "connected: { atlas: 'route-stone-road', edge: 'route-edge-stone-road', mask: 'route' },"
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/route-stone-road@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "route-edge-stone-road",
+    "category": "route-edge",
+    "componentCount": 64,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 203,
+        "text": "connected: { atlas: 'route-stone-road', edge: 'route-edge-stone-road', mask: 'route' },"
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/route-edge-stone-road@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "route-forest-trail",
+    "category": "route",
+    "componentCount": 64,
+    "atlasReferences": [],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/route-forest-trail@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "route-edge-forest-trail",
+    "category": "route-edge",
+    "componentCount": 64,
+    "atlasReferences": [],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/route-edge-forest-trail@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "water-slow-river",
+    "category": "water",
+    "componentCount": 64,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 26,
+        "text": "\"water-slow-river\","
+      },
+      {
+        "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+        "line": 129,
+        "text": "const RIVER: CandidateConnected = { atlas: 'water-slow-river', mask: 'same' };"
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/water-slow-river@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "water-shallow-stream",
+    "category": "water",
+    "componentCount": 64,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 27,
+        "text": "\"water-shallow-stream\","
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/water-shallow-stream@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "water-marsh-channel",
+    "category": "water",
+    "componentCount": 64,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 28,
+        "text": "\"water-marsh-channel\","
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/water-marsh-channel@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "water-icy-water",
+    "category": "water",
+    "componentCount": 64,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 29,
+        "text": "\"water-icy-water\","
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/water-icy-water@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "elevation-auto-temperate",
+    "category": "elevation-edge",
+    "componentCount": 16,
+    "atlasReferences": [],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/elevation-auto-temperate@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "cliff-modules-temperate",
+    "category": "elevation-module",
+    "componentCount": 16,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 15,
+        "text": "\"cliff-modules-temperate\","
+      }
+    ],
+    "cellReferences": [
+      {
+        "cell": "temperate-cliff-straight-south",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 46,
+            "text": "{ \"source\": \"GameMap.elevation\", \"value\": 2, \"visual\": \"temperate-cliff-straight-south\" }"
+          },
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 56,
+            "text": "{ \"id\": \"temperate-cliff-straight-south\", \"x\": 9.8, \"y\": 5.8, \"layer\": \"under-units\" },"
+          },
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 60,
+            "text": "{ \"id\": \"temperate-cliff-straight-south\", \"x\": 19.7, \"y\": 14.0, \"layer\": \"under-units\" },"
+          }
+        ]
+      },
+      {
+        "cell": "temperate-hill-cap",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 55,
+            "text": "{ \"id\": \"temperate-hill-cap\", \"x\": 8.1, \"y\": 5.0, \"layer\": \"under-units\" },"
+          },
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 59,
+            "text": "{ \"id\": \"temperate-hill-cap\", \"x\": 18.3, \"y\": 13.1, \"layer\": \"under-units\", \"flip\": true },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 162,
+            "text": "scenery: { ids: ['temperate-hill-cap', 'temperate-low-ledge', 'temperate-talus-foot'], scale: 0.46, jitter: 5 },"
+          }
+        ]
+      },
+      {
+        "cell": "temperate-ramp-level-2",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 58,
+            "text": "{ \"id\": \"temperate-ramp-level-2\", \"x\": 10.8, \"y\": 6.3, \"layer\": \"under-units\" },"
+          },
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 62,
+            "text": "{ \"id\": \"temperate-ramp-level-2\", \"x\": 21.0, \"y\": 13.2, \"layer\": \"under-units\", \"flip\": true },"
+          }
+        ]
+      },
+      {
+        "cell": "temperate-mountain-pass",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 170,
+            "text": "ids: ['temperate-pillar-wide', 'temperate-plateau-cap', 'temperate-mountain-pass', 'temperate-cliff-convex-corner'],"
+          }
+        ]
+      },
+      {
+        "cell": "temperate-cliff-convex-corner",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 57,
+            "text": "{ \"id\": \"temperate-cliff-convex-corner\", \"x\": 7.0, \"y\": 5.8, \"layer\": \"under-units\" },"
+          },
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 61,
+            "text": "{ \"id\": \"temperate-cliff-convex-corner\", \"x\": 17.1, \"y\": 14.1, \"layer\": \"under-units\", \"flip\": true },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 170,
+            "text": "ids: ['temperate-pillar-wide', 'temperate-plateau-cap', 'temperate-mountain-pass', 'temperate-cliff-convex-corner'],"
+          }
+        ]
+      },
+      {
+        "cell": "temperate-low-ledge",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 45,
+            "text": "{ \"source\": \"GameMap.elevation\", \"value\": 1, \"visual\": \"temperate-low-ledge\" },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 162,
+            "text": "scenery: { ids: ['temperate-hill-cap', 'temperate-low-ledge', 'temperate-talus-foot'], scale: 0.46, jitter: 5 },"
+          }
+        ]
+      },
+      {
+        "cell": "temperate-talus-foot",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 162,
+            "text": "scenery: { ids: ['temperate-hill-cap', 'temperate-low-ledge', 'temperate-talus-foot'], scale: 0.46, jitter: 5 },"
+          }
+        ]
+      },
+      {
+        "cell": "temperate-pillar-wide",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 170,
+            "text": "ids: ['temperate-pillar-wide', 'temperate-plateau-cap', 'temperate-mountain-pass', 'temperate-cliff-convex-corner'],"
+          }
+        ]
+      },
+      {
+        "cell": "temperate-plateau-cap",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 170,
+            "text": "ids: ['temperate-pillar-wide', 'temperate-plateau-cap', 'temperate-mountain-pass', 'temperate-cliff-convex-corner'],"
+          }
+        ]
+      }
+    ],
+    "png2x": "runtime/atlas/cliff-modules-temperate@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "elevation-auto-highland",
+    "category": "elevation-edge",
+    "componentCount": 16,
+    "atlasReferences": [],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/elevation-auto-highland@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "cliff-modules-highland",
+    "category": "elevation-module",
+    "componentCount": 16,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 30,
+        "text": "\"cliff-modules-highland\","
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/cliff-modules-highland@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "forest-existing",
+    "category": "forest-scenery",
+    "componentCount": 16,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 33,
+        "text": "\"forest-existing\""
+      }
+    ],
+    "cellReferences": [
+      {
+        "cell": "pine-tall",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 365,
+            "text": "'pine-tall',"
+          }
+        ]
+      },
+      {
+        "cell": "pine-pair",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 370,
+            "text": "'pine-pair',"
+          }
+        ]
+      },
+      {
+        "cell": "pine-cluster",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 108,
+            "text": "'pine-cluster',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 369,
+            "text": "'pine-cluster',"
+          }
+        ]
+      },
+      {
+        "cell": "pine-underbrush-a",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 119,
+            "text": "'pine-underbrush-a',"
+          }
+        ]
+      },
+      {
+        "cell": "pine-underbrush-c",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 120,
+            "text": "'pine-underbrush-c',"
+          }
+        ]
+      },
+      {
+        "cell": "pine-mature-a",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 106,
+            "text": "'pine-mature-a',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 366,
+            "text": "'pine-mature-a',"
+          }
+        ]
+      },
+      {
+        "cell": "pine-mature-b",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 107,
+            "text": "'pine-mature-b',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 367,
+            "text": "'pine-mature-b',"
+          }
+        ]
+      },
+      {
+        "cell": "pine-mature-c",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 368,
+            "text": "'pine-mature-c',"
+          }
+        ]
+      }
+    ],
+    "png2x": "runtime/atlas/forest-existing@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "forest-temperate",
+    "category": "forest-scenery",
+    "componentCount": 16,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 16,
+        "text": "\"forest-temperate\","
+      }
+    ],
+    "cellReferences": [
+      {
+        "cell": "oak-ancient",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 101,
+            "text": "'oak-ancient',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 225,
+            "text": "scenery: { ids: ['oak-ancient', 'oak-grove-dense', 'boulder-ferns'], scale: 0.8, jitter: 8 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 371,
+            "text": "'oak-ancient',"
+          }
+        ]
+      },
+      {
+        "cell": "mixed-forest-autumn",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 102,
+            "text": "'mixed-forest-autumn',"
+          }
+        ]
+      },
+      {
+        "cell": "mixed-forest-dense",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 103,
+            "text": "'mixed-forest-dense',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 372,
+            "text": "'mixed-forest-dense',"
+          }
+        ]
+      },
+      {
+        "cell": "oak-grove-dense",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 104,
+            "text": "'oak-grove-dense',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 225,
+            "text": "scenery: { ids: ['oak-ancient', 'oak-grove-dense', 'boulder-ferns'], scale: 0.8, jitter: 8 },"
+          }
+        ]
+      },
+      {
+        "cell": "mixed-forest-edge",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 105,
+            "text": "'mixed-forest-edge',"
+          }
+        ]
+      },
+      {
+        "cell": "sapling-rock-cluster",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 112,
+            "text": "'sapling-rock-cluster',"
+          }
+        ]
+      },
+      {
+        "cell": "bramble-dark",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 113,
+            "text": "'bramble-dark',"
+          }
+        ]
+      },
+      {
+        "cell": "fern-bed",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 114,
+            "text": "'fern-bed',"
+          }
+        ]
+      },
+      {
+        "cell": "bramble-berries",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 115,
+            "text": "'bramble-berries',"
+          }
+        ]
+      },
+      {
+        "cell": "stump-low",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 116,
+            "text": "'stump-low',"
+          }
+        ]
+      },
+      {
+        "cell": "stump-hollow",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 117,
+            "text": "'stump-hollow',"
+          }
+        ]
+      },
+      {
+        "cell": "fallen-hollow-log",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts",
+            "line": 655,
+            "text": "parts.push(environmentCellAt('fallen-hollow-log', viewport.originX + 92, viewport.sceneHeight + 4, {"
+          }
+        ]
+      },
+      {
+        "cell": "boulder-large",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts",
+            "line": 652,
+            "text": "parts.push(environmentCellAt('boulder-large', viewport.originX - 5, viewport.originY + 82, {"
+          }
+        ]
+      },
+      {
+        "cell": "boulder-ferns",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 225,
+            "text": "scenery: { ids: ['oak-ancient', 'oak-grove-dense', 'boulder-ferns'], scale: 0.8, jitter: 8 },"
+          }
+        ]
+      },
+      {
+        "cell": "forest-floor-cluster",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 118,
+            "text": "'forest-floor-cluster',"
+          }
+        ]
+      }
+    ],
+    "png2x": "runtime/atlas/forest-temperate@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "scenery-regional",
+    "category": "regional-scenery",
+    "componentCount": 16,
+    "atlasReferences": [],
+    "cellReferences": [
+      {
+        "cell": "wasteland-rock-spire",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 221,
+            "text": "scenery: { ids: ['forge-ember-pile', 'wasteland-rock-spire'], scale: 0.42, chance: 0.6 },"
+          }
+        ]
+      },
+      {
+        "cell": "grave-cross-cluster",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 215,
+            "text": "scenery: { ids: ['grave-cross-cluster', 'grave-signboards', 'grave-dead-tree', 'grave-marker-lantern'], scale: 0.42, chance: 0.55, jitter: 6 },"
+          }
+        ]
+      },
+      {
+        "cell": "grave-signboards",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 215,
+            "text": "scenery: { ids: ['grave-cross-cluster', 'grave-signboards', 'grave-dead-tree', 'grave-marker-lantern'], scale: 0.42, chance: 0.55, jitter: 6 },"
+          }
+        ]
+      },
+      {
+        "cell": "grave-dead-tree",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 215,
+            "text": "scenery: { ids: ['grave-cross-cluster', 'grave-signboards', 'grave-dead-tree', 'grave-marker-lantern'], scale: 0.42, chance: 0.55, jitter: 6 },"
+          }
+        ]
+      },
+      {
+        "cell": "grave-marker-lantern",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 215,
+            "text": "scenery: { ids: ['grave-cross-cluster', 'grave-signboards', 'grave-dead-tree', 'grave-marker-lantern'], scale: 0.42, chance: 0.55, jitter: 6 },"
+          }
+        ]
+      },
+      {
+        "cell": "forge-coal-pile",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 211,
+            "text": "scenery: { ids: ['forge-coal-pile', 'forge-ember-pile', 'forge-charcoal-kiln', 'forge-coal-sacks'], scale: 0.4, chance: 0.4 },"
+          }
+        ]
+      },
+      {
+        "cell": "forge-coal-sacks",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 211,
+            "text": "scenery: { ids: ['forge-coal-pile', 'forge-ember-pile', 'forge-charcoal-kiln', 'forge-coal-sacks'], scale: 0.4, chance: 0.4 },"
+          }
+        ]
+      },
+      {
+        "cell": "forge-ember-pile",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 211,
+            "text": "scenery: { ids: ['forge-coal-pile', 'forge-ember-pile', 'forge-charcoal-kiln', 'forge-coal-sacks'], scale: 0.4, chance: 0.4 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 221,
+            "text": "scenery: { ids: ['forge-ember-pile', 'wasteland-rock-spire'], scale: 0.42, chance: 0.6 },"
+          }
+        ]
+      },
+      {
+        "cell": "forge-charcoal-kiln",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 211,
+            "text": "scenery: { ids: ['forge-coal-pile', 'forge-ember-pile', 'forge-charcoal-kiln', 'forge-coal-sacks'], scale: 0.4, chance: 0.4 },"
+          }
+        ]
+      }
+    ],
+    "png2x": "runtime/atlas/scenery-regional@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "crossings-fortifications",
+    "category": "structure-kit",
+    "componentCount": 16,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 32,
+        "text": "\"crossings-fortifications\","
+      }
+    ],
+    "cellReferences": [
+      {
+        "cell": "wood-bridge-horizontal",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 300,
+            "text": "alongX: ['wood-bridge-horizontal', 'stone-bridge-horizontal'],"
+          }
+        ]
+      },
+      {
+        "cell": "wood-bridge-vertical",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 301,
+            "text": "alongY: ['wood-bridge-vertical', 'stone-bridge-vertical'],"
+          }
+        ]
+      },
+      {
+        "cell": "stone-bridge-horizontal",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 300,
+            "text": "alongX: ['wood-bridge-horizontal', 'stone-bridge-horizontal'],"
+          }
+        ]
+      },
+      {
+        "cell": "stone-bridge-vertical",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 301,
+            "text": "alongY: ['wood-bridge-vertical', 'stone-bridge-vertical'],"
+          }
+        ]
+      },
+      {
+        "cell": "stone-wall-straight",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 180,
+            "text": "scenery: { ids: ['stone-wall-straight', 'stone-wall-corner', 'stone-gatehouse'], scale: 0.38 },"
+          }
+        ]
+      },
+      {
+        "cell": "stone-wall-corner",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 180,
+            "text": "scenery: { ids: ['stone-wall-straight', 'stone-wall-corner', 'stone-gatehouse'], scale: 0.38 },"
+          }
+        ]
+      },
+      {
+        "cell": "stone-gatehouse",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 180,
+            "text": "scenery: { ids: ['stone-wall-straight', 'stone-wall-corner', 'stone-gatehouse'], scale: 0.38 },"
+          }
+        ]
+      }
+    ],
+    "png2x": "runtime/atlas/crossings-fortifications@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "camps-foundations",
+    "category": "foundation",
+    "componentCount": 16,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 17,
+        "text": "\"camps-foundations\","
+      }
+    ],
+    "cellReferences": [
+      {
+        "cell": "gray-camp-ground",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 49,
+            "text": "{ \"id\": \"gray-camp-ground\", \"x\": 3.2, \"y\": 11.3, \"layer\": \"foundation\", \"variant\": 0, \"scale\": 0.9 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 378,
+            "text": "barracks: 'gray-camp-ground',"
+          }
+        ]
+      },
+      {
+        "cell": "vilsa-camp-ground",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 51,
+            "text": "{ \"id\": \"vilsa-camp-ground\", \"x\": 23.5, \"y\": 10.2, \"layer\": \"foundation\", \"variant\": 1, \"scale\": 0.9 },"
+          }
+        ]
+      },
+      {
+        "cell": "keep-foundation",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 379,
+            "text": "castle: 'keep-foundation',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 382,
+            "text": "'c01.keep': 'keep-foundation',"
+          }
+        ]
+      },
+      {
+        "cell": "village-square-foundation",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 50,
+            "text": "{ \"id\": \"village-square-foundation\", \"x\": 13.5, \"y\": 9.2, \"layer\": \"foundation\", \"scale\": 0.82 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 377,
+            "text": "village: 'village-square-foundation',"
+          }
+        ]
+      },
+      {
+        "cell": "field-tent-cluster",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 64,
+            "text": "{ \"id\": \"field-tent-cluster\", \"x\": 4.4, \"y\": 12.0, \"layer\": \"under-units\", \"scale\": 0.72 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 354,
+            "text": "'field-tent-cluster',"
+          }
+        ]
+      },
+      {
+        "cell": "supply-tent-workyard",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 76,
+            "text": "{ \"id\": \"supply-tent-workyard\", \"x\": 22.5, \"y\": 10.9, \"layer\": \"under-units\", \"scale\": 0.7, \"flip\": true },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 355,
+            "text": "'supply-tent-workyard',"
+          }
+        ]
+      },
+      {
+        "cell": "wounded-shelter-ground",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 381,
+            "text": "'c01.field-post': 'wounded-shelter-ground',"
+          }
+        ]
+      },
+      {
+        "cell": "watch-post-ground",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 380,
+            "text": "'c01.outpost': 'watch-post-ground',"
+          }
+        ]
+      },
+      {
+        "cell": "abandoned-cart-stop",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 356,
+            "text": "'abandoned-cart-stop',"
+          }
+        ]
+      }
+    ],
+    "png2x": "runtime/atlas/camps-foundations@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "landmarks-large",
+    "category": "large-landmark",
+    "componentCount": 16,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 31,
+        "text": "\"landmarks-large\","
+      }
+    ],
+    "cellReferences": [],
+    "png2x": "runtime/atlas/landmarks-large@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "decals-small",
+    "category": "ground-decal",
+    "componentCount": 24,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 18,
+        "text": "\"decals-small\","
+      }
+    ],
+    "cellReferences": [
+      {
+        "cell": "grass-tuft-a",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 145,
+            "text": "'grass-tuft-a', 'grass-tuft-b', 'grass-tuft-c', 'fallen-leaves',"
+          }
+        ]
+      },
+      {
+        "cell": "grass-tuft-b",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 145,
+            "text": "'grass-tuft-a', 'grass-tuft-b', 'grass-tuft-c', 'fallen-leaves',"
+          }
+        ]
+      },
+      {
+        "cell": "grass-tuft-c",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 145,
+            "text": "'grass-tuft-a', 'grass-tuft-b', 'grass-tuft-c', 'fallen-leaves',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 161,
+            "text": "decals: { ids: ['stone-cluster-a', 'grass-tuft-c'], chance: 0.3, scale: 0.6 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 317,
+            "text": "ids: ['mud-patch', 'exposed-roots', 'stone-cluster-a', 'grass-tuft-c'],"
+          }
+        ]
+      },
+      {
+        "cell": "stone-cluster-a",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 146,
+            "text": "'stone-cluster-a', 'stone-cluster-b', 'mud-patch', 'animal-tracks',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 161,
+            "text": "decals: { ids: ['stone-cluster-a', 'grass-tuft-c'], chance: 0.3, scale: 0.6 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 317,
+            "text": "ids: ['mud-patch', 'exposed-roots', 'stone-cluster-a', 'grass-tuft-c'],"
+          }
+        ]
+      },
+      {
+        "cell": "stone-cluster-b",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 83,
+            "text": "{ \"id\": \"stone-cluster-b\", \"x\": 6.2, \"y\": 6.1, \"layer\": \"ground-decal\", \"scale\": 0.72 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 146,
+            "text": "'stone-cluster-a', 'stone-cluster-b', 'mud-patch', 'animal-tracks',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 207,
+            "text": "decals: { ids: ['stone-cluster-b', 'stone-cluster-c'], chance: 0.22, scale: 0.55 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 329,
+            "text": "ids: ['stone-cluster-b', 'stone-cluster-c', 'mossy-boulder'],"
+          }
+        ]
+      },
+      {
+        "cell": "stone-cluster-c",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 207,
+            "text": "decals: { ids: ['stone-cluster-b', 'stone-cluster-c'], chance: 0.22, scale: 0.55 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 329,
+            "text": "ids: ['stone-cluster-b', 'stone-cluster-c', 'mossy-boulder'],"
+          }
+        ]
+      },
+      {
+        "cell": "mud-patch",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 146,
+            "text": "'stone-cluster-a', 'stone-cluster-b', 'mud-patch', 'animal-tracks',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 199,
+            "text": "decals: { ids: ['mud-patch', 'exposed-roots'], chance: 0.3, scale: 0.6 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 317,
+            "text": "ids: ['mud-patch', 'exposed-roots', 'stone-cluster-a', 'grass-tuft-c'],"
+          }
+        ]
+      },
+      {
+        "cell": "dry-crack",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 195,
+            "text": "decals: { ids: ['ash-scorch', 'burned-twigs', 'dry-crack'], chance: 0.34, scale: 0.6 },"
+          }
+        ]
+      },
+      {
+        "cell": "cart-ruts",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 82,
+            "text": "{ \"id\": \"cart-ruts\", \"x\": 9.7, \"y\": 8.7, \"layer\": \"ground-decal\", \"scale\": 0.82 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 153,
+            "text": "road: { connected: DIRT_ROAD, decals: { ids: ['cart-ruts', 'bootprints'], chance: 0.16, scale: 0.55 } },"
+          }
+        ]
+      },
+      {
+        "cell": "bootprints",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 81,
+            "text": "{ \"id\": \"bootprints\", \"x\": 19.5, \"y\": 8.6, \"layer\": \"ground-decal\", \"scale\": 0.72 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 153,
+            "text": "road: { connected: DIRT_ROAD, decals: { ids: ['cart-ruts', 'bootprints'], chance: 0.16, scale: 0.55 } },"
+          }
+        ]
+      },
+      {
+        "cell": "animal-tracks",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 146,
+            "text": "'stone-cluster-a', 'stone-cluster-b', 'mud-patch', 'animal-tracks',"
+          }
+        ]
+      },
+      {
+        "cell": "fallen-leaves",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 84,
+            "text": "{ \"id\": \"fallen-leaves\", \"x\": 16.2, \"y\": 6.4, \"layer\": \"ground-decal\", \"scale\": 0.62 }"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 145,
+            "text": "'grass-tuft-a', 'grass-tuft-b', 'grass-tuft-c', 'fallen-leaves',"
+          }
+        ]
+      },
+      {
+        "cell": "burned-twigs",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 195,
+            "text": "decals: { ids: ['ash-scorch', 'burned-twigs', 'dry-crack'], chance: 0.34, scale: 0.6 },"
+          }
+        ]
+      },
+      {
+        "cell": "exposed-roots",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 147,
+            "text": "'exposed-roots', 'mossy-boulder',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 199,
+            "text": "decals: { ids: ['mud-patch', 'exposed-roots'], chance: 0.3, scale: 0.6 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 317,
+            "text": "ids: ['mud-patch', 'exposed-roots', 'stone-cluster-a', 'grass-tuft-c'],"
+          }
+        ]
+      },
+      {
+        "cell": "firewood-stack",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 353,
+            "text": "'firewood-stack',"
+          }
+        ]
+      },
+      {
+        "cell": "mossy-boulder",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 147,
+            "text": "'exposed-roots', 'mossy-boulder',"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 329,
+            "text": "ids: ['stone-cluster-b', 'stone-cluster-c', 'mossy-boulder'],"
+          }
+        ]
+      },
+      {
+        "cell": "ash-scorch",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 195,
+            "text": "decals: { ids: ['ash-scorch', 'burned-twigs', 'dry-crack'], chance: 0.34, scale: 0.6 },"
+          }
+        ]
+      }
+    ],
+    "png2x": "runtime/atlas/decals-small@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  },
+  {
+    "atlas": "rural-life",
+    "category": "rural-life",
+    "componentCount": 16,
+    "atlasReferences": [
+      {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+        "line": 19,
+        "text": "\"rural-life\""
+      }
+    ],
+    "cellReferences": [
+      {
+        "cell": "grain-drying-mat-linen",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 52,
+            "text": "{ \"id\": \"grain-drying-mat-linen\", \"x\": 11.3, \"y\": 10.3, \"layer\": \"foundation\", \"scale\": 0.68 },"
+          }
+        ]
+      },
+      {
+        "cell": "grain-drying-mat-earth",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 53,
+            "text": "{ \"id\": \"grain-drying-mat-earth\", \"x\": 16.0, \"y\": 10.3, \"layer\": \"foundation\", \"scale\": 0.68 },"
+          }
+        ]
+      },
+      {
+        "cell": "wheat-sheaves",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 68,
+            "text": "{ \"id\": \"wheat-sheaves\", \"x\": 10.9, \"y\": 8.0, \"layer\": \"under-units\", \"scale\": 0.68 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 185,
+            "text": "ids: ['wheat-sheaves', 'stone-well', 'farm-fence-straight', 'grain-sacks-baskets', 'farm-handcart-tools'],"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 345,
+            "text": "'wheat-sheaves',"
+          }
+        ]
+      },
+      {
+        "cell": "wheat-bundles",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 346,
+            "text": "'wheat-bundles',"
+          }
+        ]
+      },
+      {
+        "cell": "grain-sacks-baskets",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 69,
+            "text": "{ \"id\": \"grain-sacks-baskets\", \"x\": 15.8, \"y\": 7.8, \"layer\": \"under-units\", \"scale\": 0.66 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 185,
+            "text": "ids: ['wheat-sheaves', 'stone-well', 'farm-fence-straight', 'grain-sacks-baskets', 'farm-handcart-tools'],"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 347,
+            "text": "'grain-sacks-baskets',"
+          }
+        ]
+      },
+      {
+        "cell": "wheat-drying-rack",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 73,
+            "text": "{ \"id\": \"wheat-drying-rack\", \"x\": 16.2, \"y\": 7.2, \"layer\": \"under-units\", \"scale\": 0.6 },"
+          }
+        ]
+      },
+      {
+        "cell": "frontier-granary",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 70,
+            "text": "{ \"id\": \"frontier-granary\", \"x\": 15.7, \"y\": 9.3, \"layer\": \"under-units\", \"scale\": 0.68 },"
+          }
+        ]
+      },
+      {
+        "cell": "frontier-farmhouse",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 71,
+            "text": "{ \"id\": \"frontier-farmhouse\", \"x\": 12.5, \"y\": 7.1, \"layer\": \"under-units\", \"scale\": 0.7 },"
+          }
+        ]
+      },
+      {
+        "cell": "stone-well",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 72,
+            "text": "{ \"id\": \"stone-well\", \"x\": 13.1, \"y\": 10.9, \"layer\": \"under-units\", \"scale\": 0.58 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 185,
+            "text": "ids: ['wheat-sheaves', 'stone-well', 'farm-fence-straight', 'grain-sacks-baskets', 'farm-handcart-tools'],"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 351,
+            "text": "'stone-well',"
+          }
+        ]
+      },
+      {
+        "cell": "livestock-pen-small",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 352,
+            "text": "'livestock-pen-small',"
+          }
+        ]
+      },
+      {
+        "cell": "farm-fence-straight",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 74,
+            "text": "{ \"id\": \"farm-fence-straight\", \"x\": 10.8, \"y\": 10.8, \"layer\": \"under-units\", \"scale\": 0.58 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 185,
+            "text": "ids: ['wheat-sheaves', 'stone-well', 'farm-fence-straight', 'grain-sacks-baskets', 'farm-handcart-tools'],"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 348,
+            "text": "'farm-fence-straight',"
+          }
+        ]
+      },
+      {
+        "cell": "farm-fence-corner",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json",
+            "line": 75,
+            "text": "{ \"id\": \"farm-fence-corner\", \"x\": 16.3, \"y\": 10.9, \"layer\": \"under-units\", \"scale\": 0.58 },"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 349,
+            "text": "'farm-fence-corner',"
+          }
+        ]
+      },
+      {
+        "cell": "farm-handcart-tools",
+        "references": [
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 185,
+            "text": "ids: ['wheat-sheaves', 'stone-well', 'farm-fence-straight', 'grain-sacks-baskets', 'farm-handcart-tools'],"
+          },
+          {
+            "path": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+            "line": 350,
+            "text": "'farm-handcart-tools',"
+          }
+        ]
+      }
+    ],
+    "png2x": "runtime/atlas/rural-life@2x.png",
+    "qualification": "Atlas imports make assets available; explicit atlas reference can select cells dynamically by mask/variant. No browser observation."
+  }
+]
