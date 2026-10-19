@@ -10,16 +10,18 @@ def element(tag, attrs):
     return ET.Element(f'{{{NS}}}{tag}', {key: str(value) for key, value in attrs.items()})
 
 
-def append_ground(svg, defs, map_data, base, patch=None):
+def append_ground(svg, defs, map_data, base, patch=None, world_period=128):
+    if world_period not in (128, 512):
+        raise ValueError('ground study period must be 128 or 512 logical pixels')
     with Image.open(base) as image:
         if image.convert('RGBA').getchannel('A').getextrema() != (255, 255):
             raise ValueError('ground base must be fully opaque')
-    pattern = element('pattern', {'id': 'study-grass-base', 'patternUnits': 'userSpaceOnUse', 'width': 128, 'height': 128})
-    pattern.append(element('image', {'href': base.as_uri(), 'width': 128, 'height': 128, 'preserveAspectRatio': 'none'}))
+    pattern = element('pattern', {'id': 'study-grass-base', 'patternUnits': 'userSpaceOnUse', 'width': world_period, 'height': world_period})
+    pattern.append(element('image', {'href': base.as_uri(), 'width': world_period, 'height': world_period, 'preserveAspectRatio': 'none'}))
     defs.append(pattern)
     svg.append(element('rect', {'x': 0, 'y': 0, 'width': map_data['width'] * 32, 'height': map_data['height'] * 32, 'fill': 'url(#study-grass-base)'}))
     protected = [[i % map_data['width'], i // map_data['width']] for i, value in enumerate(map_data['tiles']) if value in ('water', 'bridge')]
-    report = {'base': str(base), 'worldPeriodLogical': 128, 'pixelOperations': 'resampling/compositing only; no recolor, blur, alpha cleanup or generated scatter', 'protectedWaterBridgeCells': protected, 'patches': []}
+    report = {'base': str(base), 'worldPeriodLogical': world_period, 'pixelOperations': 'resampling/compositing only; no recolor, blur, alpha cleanup or generated scatter', 'protectedWaterBridgeCells': protected, 'patches': []}
     if patch is None:
         return report
     with Image.open(patch) as image:
