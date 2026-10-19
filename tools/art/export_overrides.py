@@ -49,9 +49,18 @@ def validate_alpha(image: Image.Image, label: str):
     if low != 0 or high < 240:
         raise ValueError(f'{label}: expected transparent exterior and near-opaque subject')
     w, h = image.size
-    edges = ((0, 0, w, 1), (0, h - 1, w, h), (0, 0, 1, h), (w - 1, 0, w, h))
-    if any(alpha.crop(edge).getbbox() for edge in edges):
-        raise ValueError(f'{label}: outermost edge must be transparent; subject may be clipped')
+    edge_pixels = [alpha.getpixel((x, y)) for y in (0, h - 1) for x in range(w)]
+    edge_pixels += [alpha.getpixel((x, y)) for x in (0, w - 1) for y in range(1, h - 1)]
+    edge_max = max(edge_pixels)
+    # One 8-bit alpha step changes a composite channel by at most one level.
+    # Preserve that source residue; stronger edge opacity needs an art review.
+    if edge_max > 1:
+        raise ValueError(f'{label}: outer edge alpha {edge_max} exceeds 1; subject or shadow may be clipped')
+    return {
+        'edgeMaxAlpha': edge_max,
+        'edgeNonzeroPixels': sum(value > 0 for value in edge_pixels),
+        'coreBoundingBox': list(alpha.point(lambda value: 255 if value >= 240 else 0).getbbox()),
+    }
 
 
 def fit(source: Image.Image, size: tuple[int, int], padding: int) -> Image.Image:
@@ -111,7 +120,7 @@ def plan(root: Path, catalog: Path):
             if opened.format != 'PNG':
                 raise ValueError(f'{topic}: source must be PNG')
             source = opened.copy()
-        validate_alpha(source, topic)
+        source_alpha = validate_alpha(source, topic)
         exports = [(asset, 1)]
         if hd:
             if (hd['width'], hd['height'], hd['pixelDensity']) != (128, 128, 2):
@@ -126,14 +135,14 @@ def plan(root: Path, catalog: Path):
                 raise ValueError(f'duplicate destination: {target}')
             targets.add(target)
             rendered = fit(source, (record['width'], record['height']), 2 * density)
-            planned.append((topic, digest, target, rendered))
+            planned.append((topic, digest, source_alpha, target, rendered))
     return planned
 
 
 def export(root: Path, catalog: Path, check: bool = False):
     planned = plan(root, catalog)  # Validate every input before replacing any output.
     report = []
-    for topic, digest, target, rendered in planned:
+    for topic, digest, source_alpha, target, rendered in planned:
         if check:
             with Image.open(target) as current:
                 if current.mode != rendered.mode or current.size != rendered.size or current.tobytes() != rendered.tobytes():
@@ -146,7 +155,8 @@ def export(root: Path, catalog: Path, check: bool = False):
         report.append({'topicId': topic, 'sourceSha256': digest,
                        'output': str(target.relative_to(root)),
                        'pixelSha256': hashlib.sha256(rendered.tobytes()).hexdigest(),
-                       'size': list(rendered.size)})
+                       'size': list(rendered.size), 'sourceAlpha': source_alpha,
+                       'outputAlpha': validate_alpha(rendered, 'export')})
     return report
 
 

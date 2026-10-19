@@ -60,11 +60,26 @@ class ExportTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 validate_alpha(Image.new('RGBA', (4, 4), (20, 30, 40, alpha)), 'test')
 
-    def test_edge_contact_rejected(self):
+    def test_one_step_edge_residue_accepted_and_reported_without_mutation(self):
         with Image.open(self.source) as image:
-            image.putpixel((0, 20), (0, 0, 0, 255))
-            with self.assertRaises(ValueError):
-                validate_alpha(image, 'test')
+            image.putpixel((0, 20), (100, 120, 140, 1))
+            image.save(self.source)
+        self.register()
+        before = self.source.read_bytes()
+        result = export(self.root, self.catalog)
+        self.assertEqual(result[0]['sourceAlpha'], {
+            'edgeMaxAlpha': 1, 'edgeNonzeroPixels': 1,
+            'coreBoundingBox': [10, 10, 50, 50]})
+        self.assertEqual(self.source.read_bytes(), before)
+        with Image.open(self.root / result[0]['output']) as rendered:
+            self.assertEqual(rendered.getpixel((2, 22)), (100, 120, 140, 1))
+
+    def test_edge_contact_rejected(self):
+        for edge_alpha in (2, 8, 28, 240, 255):
+            with self.subTest(edge_alpha=edge_alpha), Image.open(self.source) as image:
+                image.putpixel((0, 20), (0, 0, 0, edge_alpha))
+                with self.assertRaises(ValueError):
+                    validate_alpha(image, 'test')
 
     def test_hash_mismatch_rejected_before_writes(self):
         self.source.write_bytes(self.source.read_bytes() + b'changed')
