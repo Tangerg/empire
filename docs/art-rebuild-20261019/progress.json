@@ -10390,7 +10390,7 @@
     "next": "representative actual-scene prototype and concept-gap diagnosis before bulk continuation"
   },
   "styleCalibration": {
-    "state": "pending-representative-scene-approval",
+    "state": "bounded-prototype-ready-awaiting-user-style-direction",
     "productionMutation": false,
     "fixture": "docs/art-rebuild-20261019/calibration/three-bridges-fixture.json",
     "masterCount": 7,
@@ -10416,7 +10416,15 @@
     "mechanicalScope": "unchanged actual tactical map, ownership, deployment, movement and attack rules",
     "candidateHolds": {
       "riverbank-module": "v1-rejected; v2-alpha-and-muted-palette-reviewed; one80logical-segment-in-scene-pending-user-style-acceptance",
-      "road-material": "rejected-combined-palette-too-bright-yellow"
-    }
+      "road-material": "v1-rejected; v2-muted-combined-trial-ready-awaiting-user"
+    },
+    "latestPreview": "docs/art-rebuild-20261019/calibration/scene-bounded-prototype/selected-layer-area-water-bridge-bank-2x.png",
+    "remainingIssues": [
+      "straight road and river macro layout follows existing map",
+      "remaining legacy ground details and foundations",
+      "repeated pine and swordsman are explicit identity substitutions",
+      "normal keep substitutes actual owned state",
+      "actual gameplay and camera effects unverified"
+    ]
   }
 }
