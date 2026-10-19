@@ -13,7 +13,7 @@
       "canonical": {
         "assetId": "C01-FFV1-CHAR-TORREN-01",
         "topicId": "C01-CHAR-TORREN-01",
-        "label": "托伦北丘士兵",
+        "label": "\u6258\u4f26\u5317\u4e18\u58eb\u5175",
         "category": "narrative-static",
         "png": "runtime/narrative-static/char-torren-01.png",
         "width": 192,
@@ -69,7 +69,7 @@
       "canonical": {
         "assetId": "C01-FFV1-CHAR-TORREN-02",
         "topicId": "C01-CHAR-TORREN-02",
-        "label": "托伦旧旗军官",
+        "label": "\u6258\u4f26\u65e7\u65d7\u519b\u5b98",
         "category": "narrative-static",
         "png": "runtime/narrative-static/char-torren-02.png",
         "width": 192,
@@ -126,7 +126,7 @@
     "canonical": {
       "assetId": "C01-FFV1-UNIT-SWORDSMAN",
       "topicId": "C01-UNIT-SWORDSMAN",
-      "label": "剑士",
+      "label": "\u5251\u58eb",
       "category": "combat-unit",
       "png": "runtime-approved-v5/combat-unit/unit-swordsman.png",
       "width": 384,
@@ -210,11 +210,11 @@
     "stageBoundary": "Later officer stage must not be silently used for stage01. No automatic story age/stage selection currently proven."
   },
   "rules": {
-    "unitSource": "units.ts:64 with defaults11–12",
+    "unitSource": "units.ts:64 with defaults11\u201312",
     "weapons": [
       "c01.border-blade"
     ],
-    "weaponName": "边境长剑",
+    "weaponName": "\u8fb9\u5883\u957f\u5251",
     "damageType": "slash",
     "power": 39,
     "weaponSource": "weapons.ts:5,13",
@@ -231,7 +231,7 @@
   "actualInitialPlacements": [
     {
       "levelId": "c01-01",
-      "title": "双子丘陵",
+      "title": "\u53cc\u5b50\u4e18\u9675",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -246,7 +246,7 @@
     },
     {
       "levelId": "c01-02",
-      "title": "三桥河谷",
+      "title": "\u4e09\u6865\u6cb3\u8c37",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -261,7 +261,7 @@
     },
     {
       "levelId": "c01-03",
-      "title": "赤石围城",
+      "title": "\u8d64\u77f3\u56f4\u57ce",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -276,7 +276,7 @@
     },
     {
       "levelId": "c01-04",
-      "title": "黑旗营地",
+      "title": "\u9ed1\u65d7\u8425\u5730",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -291,7 +291,7 @@
     },
     {
       "levelId": "c01-05",
-      "title": "焚村令",
+      "title": "\u711a\u6751\u4ee4",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -306,7 +306,7 @@
     },
     {
       "levelId": "c01-06",
-      "title": "白河夜渡",
+      "title": "\u767d\u6cb3\u591c\u6e21",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -321,7 +321,7 @@
     },
     {
       "levelId": "c01-07",
-      "title": "无主之城",
+      "title": "\u65e0\u4e3b\u4e4b\u57ce",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -336,7 +336,7 @@
     },
     {
       "levelId": "c01-08",
-      "title": "佣兵之价",
+      "title": "\u4f63\u5175\u4e4b\u4ef7",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -351,7 +351,7 @@
     },
     {
       "levelId": "c01-09",
-      "title": "笼中之火",
+      "title": "\u7b3c\u4e2d\u4e4b\u706b",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -366,7 +366,7 @@
     },
     {
       "levelId": "c01-10",
-      "title": "旧旗下的追兵",
+      "title": "\u65e7\u65d7\u4e0b\u7684\u8ffd\u5175",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -381,7 +381,7 @@
     },
     {
       "levelId": "c01-11",
-      "title": "无声墓园",
+      "title": "\u65e0\u58f0\u5893\u56ed",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -396,7 +396,7 @@
     },
     {
       "levelId": "c01-12",
-      "title": "沉没钟塔",
+      "title": "\u6c89\u6ca1\u949f\u5854",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -411,7 +411,7 @@
     },
     {
       "levelId": "c01-13",
-      "title": "圣城档案",
+      "title": "\u5723\u57ce\u6863\u6848",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -426,7 +426,7 @@
     },
     {
       "levelId": "c01-14",
-      "title": "山炉余烬",
+      "title": "\u5c71\u7089\u4f59\u70ec",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -441,7 +441,7 @@
     },
     {
       "levelId": "c01-15",
-      "title": "银林长梦",
+      "title": "\u94f6\u6797\u957f\u68a6",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -456,7 +456,7 @@
     },
     {
       "levelId": "c01-16",
-      "title": "记住我的名字",
+      "title": "\u8bb0\u4f4f\u6211\u7684\u540d\u5b57",
       "key": "campaign-torren",
       "campaignRosterId": "torren",
       "unitType": "c01.swordsman",
@@ -479,14 +479,14 @@
       4
     ],
     "hpUpperBound": 72,
-    "source": "campaign.ts:162–164; levels.ts TWIN_HILLS_RUSH_POSITION"
+    "source": "campaign.ts:162\u2013164; levels.ts TWIN_HILLS_RUSH_POSITION"
   },
   "narrativeContinuity": [
-    "deep-customized creative-bible54–58: young swordsman rescued by Roderick, later chooses old banner and becomes officer.",
-    "deep-novel-v2 chapter01:11–19 damaged boots replaced;113 shields bowman;121 name托伦·维斯;137 injured ankle. Do not bake permanent limp/injury into every generic animation without explicit stage/state contract.",
+    "deep-customized creative-bible54\u201358: young swordsman rescued by Roderick, later chooses old banner and becomes officer.",
+    "deep-novel-v2 chapter01:11\u201319 damaged boots replaced;113 shields bowman;121 name\u6258\u4f26\u00b7\u7ef4\u65af;137 injured ankle. Do not bake permanent limp/injury into every generic animation without explicit stage/state contract.",
     "deep-novel-v2 chapter02:371 and395: still limps, now small squad-leader band, returns to old banner.",
-    "deep-novel-v2 chapter04:399–417 later old-banner squad leader; do not infer stage02 runtime from prose alone.",
-    "deep-novel-v2 chapter07:397–399 explicitly recalls18-year-old self without later scar at Twin Hills."
+    "deep-novel-v2 chapter04:399\u2013417 later old-banner squad leader; do not infer stage02 runtime from prose alone.",
+    "deep-novel-v2 chapter07:397\u2013399 explicitly recalls18-year-old self without later scar at Twin Hills."
   ],
   "bindingAudit": {
     "currentUnitArt": "CANDIDATE_01_UNIT_ART c01.swordsman => C01-UNIT-SWORDSMAN, shared with all generic swordsmen",
@@ -508,7 +508,7 @@
     ],
     "bodyHeightMeasurement": "Helmet dome crown to mean planted sole baseline; long weapons never determine body scale",
     "camera": "Approved chunky raised three-quarter east-facing",
-    "style": "Concept-v2/native blue swordsman proportions and broad matte2–3tone shapes, large young head/bare hands/boots. Remove mottled source microtexture while keeping major patch/symbol identity.",
+    "style": "Concept-v2/native blue swordsman proportions and broad matte2\u20133tone shapes, large young head/bare hands/boots. Remove mottled source microtexture while keeping major patch/symbol identity.",
     "semanticOrder": [
       "idle",
       "walk-a",
@@ -578,5 +578,6 @@
       950
     ]
   ],
-  "commonScaleRatio": "44/894"
+  "commonScaleRatio": "44/894",
+  "sourceDeliveryStatus": "Battle quartet and original-spear transparent portrait accepted by coordinator; shared-source delivery complete; actor-specific formal integration parent-owned"
 }

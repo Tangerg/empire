@@ -1,0 +1,330 @@
+{
+  "status": "Measured whole-canvas proposal; no runtime writes",
+  "consumerClassification": "Catalog-only, not c01.supply-wagon",
+  "sharedScale": 0.06073153899240856,
+  "scaleFraction": "88/1449",
+  "scaleReference": "Coordinator accepted88 logical visible width from idle alpha>127 width1449; crew37.8 logical high beside44-high infantry. One shared scale, no independent fitting.",
+  "canonicalSourceFoot": [
+    920,
+    943
+  ],
+  "commonSourceCanvas": [
+    1536,
+    1024
+  ],
+  "paddingPolicy": "All native canvases exactly1536x1024. No padding, crop or alpha changes required.",
+  "proposedCommonFrameSize": [
+    112,
+    72
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "proposedRuntimeAnchor": [
+    63.87301587301587,
+    61.26984126984127
+  ],
+  "registrationMethod": "Mean x of two visible wheel bottom-four-row alpha>127 support bands; y nearest large wheel contact. Human boots never own pivot. Whole-canvas translation at single shared scale.",
+  "originalPresentationFootprint": [
+    2,
+    2
+  ],
+  "originalRuntimeFrameSize": [
+    64,
+    48
+  ],
+  "originalRuntimeAnchor": [
+    32,
+    47
+  ],
+  "rulesFootprintChanged": false,
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "sourceSupportAnchorEstimated": [
+        920,
+        943
+      ],
+      "wheelContacts": {
+        "nearLargeWheel": {
+          "roi": [
+            470,
+            810,
+            825,
+            975
+          ],
+          "contactY": 943,
+          "bottomBandRows": 4,
+          "meanX": 626.0625,
+          "spanX": [
+            599,
+            654
+          ]
+        },
+        "frontSmallWheel": {
+          "roi": [
+            1080,
+            810,
+            1400,
+            935
+          ],
+          "contactY": 910,
+          "bottomBandRows": 4,
+          "meanX": 1214.80814,
+          "spanX": [
+            1187,
+            1243
+          ]
+        }
+      },
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        46,
+        81,
+        1495,
+        944
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        63,
+        1499,
+        1024
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.0,
+        4.0,
+        101.28364389233954,
+        66.18909592822637
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha1 perimeter specks retained unchanged"
+      }
+    },
+    "walk-a": {
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "sourceSupportAnchorEstimated": [
+        932,
+        937
+      ],
+      "wheelContacts": {
+        "nearLargeWheel": {
+          "roi": [
+            470,
+            810,
+            825,
+            975
+          ],
+          "contactY": 937,
+          "bottomBandRows": 4,
+          "meanX": 642.520548,
+          "spanX": [
+            617,
+            669
+          ]
+        },
+        "frontSmallWheel": {
+          "roi": [
+            1080,
+            810,
+            1400,
+            935
+          ],
+          "contactY": 908,
+          "bottomBandRows": 4,
+          "meanX": 1221.836364,
+          "spanX": [
+            1195,
+            1250
+          ]
+        }
+      },
+      "registrationOffsetLogical": [
+        -0.7287784679089027,
+        0.36438923395445133
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        50,
+        79,
+        1499,
+        938
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        47,
+        1522,
+        1024
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        7.271221532091097,
+        4.364389233954451,
+        100.55486542443063,
+        66.55348516218082
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha1 perimeter specks retained unchanged"
+      }
+    },
+    "attack": {
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "sourceSupportAnchorEstimated": [
+        900,
+        927
+      ],
+      "wheelContacts": {
+        "nearLargeWheel": {
+          "roi": [
+            470,
+            810,
+            825,
+            975
+          ],
+          "contactY": 927,
+          "bottomBandRows": 4,
+          "meanX": 628.472222,
+          "spanX": [
+            603,
+            655
+          ]
+        },
+        "frontSmallWheel": {
+          "roi": [
+            1080,
+            810,
+            1400,
+            935
+          ],
+          "contactY": 898,
+          "bottomBandRows": 4,
+          "meanX": 1171.210526,
+          "spanX": [
+            1142,
+            1201
+          ]
+        }
+      },
+      "registrationOffsetLogical": [
+        1.2146307798481712,
+        0.971704623878537
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        10,
+        79,
+        1473,
+        928
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        19,
+        1476,
+        1024
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        9.214630779848171,
+        4.971704623878537,
+        102.4982746721877,
+        67.1608005521049
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha1 perimeter specks retained unchanged"
+      }
+    },
+    "walk-b": {
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "sourceSupportAnchorEstimated": [
+        928,
+        942
+      ],
+      "wheelContacts": {
+        "nearLargeWheel": {
+          "roi": [
+            470,
+            810,
+            825,
+            975
+          ],
+          "contactY": 942,
+          "bottomBandRows": 4,
+          "meanX": 635.391026,
+          "spanX": [
+            608,
+            665
+          ]
+        },
+        "frontSmallWheel": {
+          "roi": [
+            1080,
+            810,
+            1400,
+            935
+          ],
+          "contactY": 910,
+          "bottomBandRows": 4,
+          "meanX": 1221.547445,
+          "spanX": [
+            1196,
+            1248
+          ]
+        }
+      },
+      "registrationOffsetLogical": [
+        -0.4858523119392685,
+        0.06073153899240856
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        100,
+        80,
+        1499,
+        943
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        24,
+        65,
+        1506,
+        1024
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        7.514147688060731,
+        4.060731538992409,
+        100.79779158040027,
+        66.24982746721878
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "Native alpha1 perimeter specks retained unchanged"
+      }
+    }
+  },
+  "requiredMaximumTranslationLogicalPixels": 1.2146307798481712,
+  "recommendedRegistrationLimitLogicalPixels": 4
+}

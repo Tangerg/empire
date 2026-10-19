@@ -15,3 +15,7 @@ Explicit coordinator-approved distinction: original narrative portrait spear and
 Exactcampaign-torren withc01.swordsman presentation selector is parent/engineer-owned. Generic c01.swordsman identity must remain unchanged. No new rule unit and no automatic stage02 transition.
 
 Await coordinator source/card consumer review and formal activation.
+
+## Coordinator acceptance
+
+2026-10-19 22:27 UTC: white-composite source identity and alpha framing accepted. Fullcanvas 192×224 and 92×112 diagnostics are saved; the original-spear narrative versus battle-sword distinction remains explicit. No stage02 generation. Formal actor-specific integration remains coordinator-owned.

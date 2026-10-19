@@ -1,0 +1,5 @@
+# Bridge laborer formal four-pose bundle
+
+Original dark-skinned adult, short curly hair/beard, ochre waistcoat, rolled cream sleeves, patched gray-green trousers, timber, wooden mallet and rope are retained. Four poses have opposite walking contacts and a noncombat timber-work third frame, not an attack. Whole native canvases share44/956 scale and104x64 frame, origin8,4; up to2px transparent export padding, measured sole translations max2.336 logical pixels. True alpha was inspected over white/dark/olive in actual1x/2x exports. Sources are unchanged.
+
+Canonical and HD manifests preserve c01.laborer binding and1x1 art footprint. All16 rule/state/ground/standing contracts match. Complete White River and Mountain Forge views retain all actors/scenery: laborer is readable near the southwest party, but surrounding existing camp/forge clutter and other hidden-by-foreground subjects remain integration debt. This is formal binding and offline actual-renderer review, not browser/playback completion.

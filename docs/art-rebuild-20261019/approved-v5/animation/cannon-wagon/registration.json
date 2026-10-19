@@ -1,0 +1,60 @@
+{
+  "frames": {
+    "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/idle/master.png",
+    "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-a/master.png",
+    "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/attack/master.png",
+    "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-b/master.png"
+  },
+  "scale": 0.06073153899240856,
+  "origin": [
+    8,
+    4
+  ],
+  "frameSize": [
+    112,
+    72
+  ],
+  "sourceFoot": [
+    920,
+    943
+  ],
+  "sourceFeet": {
+    "idle": [
+      920,
+      943
+    ],
+    "walk-a": [
+      932,
+      937
+    ],
+    "attack": [
+      900,
+      927
+    ],
+    "walk-b": [
+      928,
+      942
+    ]
+  },
+  "registrationOffsets": {
+    "idle": [
+      0.0,
+      0.0
+    ],
+    "walk-a": [
+      -0.7287784679089027,
+      0.36438923395445133
+    ],
+    "attack": [
+      1.2146307798481712,
+      0.971704623878537
+    ],
+    "walk-b": [
+      -0.4858523119392685,
+      0.06073153899240856
+    ]
+  },
+  "registrationLimit": 2,
+  "canvasPaddingTolerance": 0,
+  "meaning": "original covered cannon cart plus single supported crew; wheel registration; catalog-only, not supply-wagon"
+}

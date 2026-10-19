@@ -4,18 +4,18 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 289,
+    "formalBound": 290,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 30,
       "equipment": 95,
       "interactive-structure": 24,
-      "mission-unit": 1,
+      "mission-unit": 2,
       "narrative-static": 3,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 292,
+    "rawPreservedTopics": 294,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1520,7 +1520,8 @@
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/idle/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-a/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-b/master.png"
       ],
       "raw": "preserved",
       "export": "pending",
@@ -2236,11 +2237,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/bridge-laborer/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-bridge-laborer.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-bridge-laborer.png",
+      "stageEvidence": {
+        "raw": "four native transparent poses, original timber/wood mallet/rope and person identity; byte-exact master pairs",
+        "export": "shared44/956 scale,104x64 frame, measured soles, full-canvas1x/2x; genuine noncombat carry-or-work third frame",
+        "runtimeBinding": "canonical and HD c01.laborer resolver; complete c01-02/14 offline review; all16 state/standing contracts identical; existing surrounding occlusion remains",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-CARAVAN-ESCORT",
@@ -7261,8 +7267,10 @@
       "category": "hud",
       "label": "友军",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-01/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -7275,8 +7283,10 @@
       "category": "hud",
       "label": "敌军",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-02/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

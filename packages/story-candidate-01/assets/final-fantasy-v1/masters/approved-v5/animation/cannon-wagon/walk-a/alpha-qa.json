@@ -26,5 +26,48 @@
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
   "masterRawHashMatches": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "wheelContacts": {
+    "nearLargeWheel": {
+      "roi": [
+        470,
+        810,
+        825,
+        975
+      ],
+      "contactY": 937,
+      "bottomBandRows": 4,
+      "meanX": 642.520548,
+      "spanX": [
+        617,
+        669
+      ]
+    },
+    "frontSmallWheel": {
+      "roi": [
+        1080,
+        810,
+        1400,
+        935
+      ],
+      "contactY": 908,
+      "bottomBandRows": 4,
+      "meanX": 1221.836364,
+      "spanX": [
+        1195,
+        1250
+      ]
+    }
+  },
+  "suggestedSourceFoot": [
+    932,
+    937
+  ],
+  "sharedScale": 0.06073153899240856,
+  "registrationOffsetLogical": [
+    -0.7287784679089027,
+    0.36438923395445133
+  ],
+  "visualQA": "Reviewed at common logical scale and on black/white diagnostic composites. Source identity, one crew, two visible wheels, no permanent exterior glow/background.",
+  "nativeCanvasUnchanged": true
 }

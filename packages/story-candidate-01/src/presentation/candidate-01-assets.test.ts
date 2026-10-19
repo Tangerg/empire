@@ -43,6 +43,7 @@ const bundles = [
   { topic: 'C01-STRUCT-BALLISTA-EMPLACEMENT', source: 'buildings/ballista-emplacement', size: [116, 116], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-STRUCT-ARCHIVE-FURNACE', source: 'buildings/archive-furnace', size: [128, 128], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-STRUCT-HOLY-MEDICINE-SHED', source: 'buildings/holy-medicine-shed', size: [120, 120], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
+  { topic: 'C01-MISSION-BRIDGE-LABORER', source: 'mission/bridge-laborer', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'carry-or-work', 'walk-b'] },
   { topic: 'C01-MISSION-REFUGEE-ADULT', source: 'mission/refugee-adult', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'carry-or-work', 'walk-b'] },
   { topic: 'C01-UNIT-LEGION-SHIELD', source: 'animation/legion-shield', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-STRUCT-FORGE-WORKSHOP', source: 'buildings/forge-workshop', size: [124, 124], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },

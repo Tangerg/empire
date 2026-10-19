@@ -1,0 +1,355 @@
+{
+  "topicId": "C01-UNIT-CANNON-WAGON",
+  "consumerClassification": "CATALOG-ONLY: no active domain unit or binding. Does not replace rule-derived c01.supply-wagon.",
+  "status": "Native quartet complete; coordinator export/review pending",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "sourceProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/source-evidence.json",
+  "sharedScale": 0.06073153899240856,
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/registration-evidence.json",
+  "poses": [
+    {
+      "pose": "idle",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/idle/raw.png",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "sha256": "68fe1ff4b65f539ed6f3135ba463f64e6f1cd1b74af086e63c1bb6d693533606",
+      "promptSha256": "993ebeb85627083943c8e3d2d19e0aa271fce2d1af6f6c3d38fc7d596f67d374",
+      "requestSha256": "90c96a0c4aecd27b405fb3382ddb945d3715ce9bd84f62c5a553486d7a474723",
+      "alphaQa": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/idle/alpha-qa.json",
+      "registration": {
+        "nativeSize": [
+          1536,
+          1024
+        ],
+        "sourceSupportAnchorEstimated": [
+          920,
+          943
+        ],
+        "wheelContacts": {
+          "nearLargeWheel": {
+            "roi": [
+              470,
+              810,
+              825,
+              975
+            ],
+            "contactY": 943,
+            "bottomBandRows": 4,
+            "meanX": 626.0625,
+            "spanX": [
+              599,
+              654
+            ]
+          },
+          "frontSmallWheel": {
+            "roi": [
+              1080,
+              810,
+              1400,
+              935
+            ],
+            "contactY": 910,
+            "bottomBandRows": 4,
+            "meanX": 1214.80814,
+            "spanX": [
+              1187,
+              1243
+            ]
+          }
+        },
+        "registrationOffsetLogical": [
+          0.0,
+          0.0
+        ],
+        "nativeVisibleBoundsAlphaGreaterThan127": [
+          46,
+          81,
+          1495,
+          944
+        ],
+        "nativeAllNonzeroAlphaBounds": [
+          0,
+          63,
+          1499,
+          1024
+        ],
+        "proposedLogicalFullCanvasBounds": [
+          8.0,
+          4.0,
+          101.28364389233954,
+          66.18909592822637
+        ],
+        "wholeCanvasFitsProposedFrame": true,
+        "perimeterGate": {
+          "maxNativePerimeterAlpha": 1,
+          "pixelsWithPerimeterAlphaGreaterThan1": 0,
+          "passesNativeSilhouettePerimeterGate": true,
+          "interpretation": "Native alpha1 perimeter specks retained unchanged"
+        }
+      }
+    },
+    {
+      "pose": "walk-a",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/walk-a/raw.png",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "sha256": "37be00b783cbdf4a401e2a7c9e99fc94e6465dc8dc8f0f5e33ae556c24f7f9c2",
+      "promptSha256": "73c44bc3a96958551bcfc1b7b46bc026981e19c137b7ca16975d218337f3687d",
+      "requestSha256": "c7e301c1213699b6f27fc94d1e32737a059ea10b39d63d9a752ddb68e63eabe9",
+      "alphaQa": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/walk-a/alpha-qa.json",
+      "registration": {
+        "nativeSize": [
+          1536,
+          1024
+        ],
+        "sourceSupportAnchorEstimated": [
+          932,
+          937
+        ],
+        "wheelContacts": {
+          "nearLargeWheel": {
+            "roi": [
+              470,
+              810,
+              825,
+              975
+            ],
+            "contactY": 937,
+            "bottomBandRows": 4,
+            "meanX": 642.520548,
+            "spanX": [
+              617,
+              669
+            ]
+          },
+          "frontSmallWheel": {
+            "roi": [
+              1080,
+              810,
+              1400,
+              935
+            ],
+            "contactY": 908,
+            "bottomBandRows": 4,
+            "meanX": 1221.836364,
+            "spanX": [
+              1195,
+              1250
+            ]
+          }
+        },
+        "registrationOffsetLogical": [
+          -0.7287784679089027,
+          0.36438923395445133
+        ],
+        "nativeVisibleBoundsAlphaGreaterThan127": [
+          50,
+          79,
+          1499,
+          938
+        ],
+        "nativeAllNonzeroAlphaBounds": [
+          0,
+          47,
+          1522,
+          1024
+        ],
+        "proposedLogicalFullCanvasBounds": [
+          7.271221532091097,
+          4.364389233954451,
+          100.55486542443063,
+          66.55348516218082
+        ],
+        "wholeCanvasFitsProposedFrame": true,
+        "perimeterGate": {
+          "maxNativePerimeterAlpha": 1,
+          "pixelsWithPerimeterAlphaGreaterThan1": 0,
+          "passesNativeSilhouettePerimeterGate": true,
+          "interpretation": "Native alpha1 perimeter specks retained unchanged"
+        }
+      }
+    },
+    {
+      "pose": "attack",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/attack/raw.png",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "sha256": "51667e0babf863c60bf00da0e777945b101865eb04ffcc3f9ddcbca8f79cc28b",
+      "promptSha256": "7e2d0666b45a1b1d1e85ae64dc00175c1f9a30e7181d43dddaaaafec216740b3",
+      "requestSha256": "9ae3f938c636c81a2000dfdc8e6c3b67d4425ee388fd6098a20aea3cf7a343c4",
+      "alphaQa": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/attack/alpha-qa.json",
+      "registration": {
+        "nativeSize": [
+          1536,
+          1024
+        ],
+        "sourceSupportAnchorEstimated": [
+          900,
+          927
+        ],
+        "wheelContacts": {
+          "nearLargeWheel": {
+            "roi": [
+              470,
+              810,
+              825,
+              975
+            ],
+            "contactY": 927,
+            "bottomBandRows": 4,
+            "meanX": 628.472222,
+            "spanX": [
+              603,
+              655
+            ]
+          },
+          "frontSmallWheel": {
+            "roi": [
+              1080,
+              810,
+              1400,
+              935
+            ],
+            "contactY": 898,
+            "bottomBandRows": 4,
+            "meanX": 1171.210526,
+            "spanX": [
+              1142,
+              1201
+            ]
+          }
+        },
+        "registrationOffsetLogical": [
+          1.2146307798481712,
+          0.971704623878537
+        ],
+        "nativeVisibleBoundsAlphaGreaterThan127": [
+          10,
+          79,
+          1473,
+          928
+        ],
+        "nativeAllNonzeroAlphaBounds": [
+          0,
+          19,
+          1476,
+          1024
+        ],
+        "proposedLogicalFullCanvasBounds": [
+          9.214630779848171,
+          4.971704623878537,
+          102.4982746721877,
+          67.1608005521049
+        ],
+        "wholeCanvasFitsProposedFrame": true,
+        "perimeterGate": {
+          "maxNativePerimeterAlpha": 1,
+          "pixelsWithPerimeterAlphaGreaterThan1": 0,
+          "passesNativeSilhouettePerimeterGate": true,
+          "interpretation": "Native alpha1 perimeter specks retained unchanged"
+        }
+      }
+    },
+    {
+      "pose": "walk-b",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/walk-b/raw.png",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "sha256": "49ea8daf2dd50af73cddb8b06fe2345e38b8b68714d2926d66a1d84be563a55c",
+      "promptSha256": "c7cebf9a553282ac04bfd131ffdf7027abb9ff04b66999261d6e931cfcaf8c80",
+      "requestSha256": "70571d0c5935fc899117ea54ea7afcd50ae8d36e232d2120233c16c16ce31d6e",
+      "alphaQa": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cannon-wagon/walk-b/alpha-qa.json",
+      "registration": {
+        "nativeSize": [
+          1536,
+          1024
+        ],
+        "sourceSupportAnchorEstimated": [
+          928,
+          942
+        ],
+        "wheelContacts": {
+          "nearLargeWheel": {
+            "roi": [
+              470,
+              810,
+              825,
+              975
+            ],
+            "contactY": 942,
+            "bottomBandRows": 4,
+            "meanX": 635.391026,
+            "spanX": [
+              608,
+              665
+            ]
+          },
+          "frontSmallWheel": {
+            "roi": [
+              1080,
+              810,
+              1400,
+              935
+            ],
+            "contactY": 910,
+            "bottomBandRows": 4,
+            "meanX": 1221.547445,
+            "spanX": [
+              1196,
+              1248
+            ]
+          }
+        },
+        "registrationOffsetLogical": [
+          -0.4858523119392685,
+          0.06073153899240856
+        ],
+        "nativeVisibleBoundsAlphaGreaterThan127": [
+          100,
+          80,
+          1499,
+          943
+        ],
+        "nativeAllNonzeroAlphaBounds": [
+          24,
+          65,
+          1506,
+          1024
+        ],
+        "proposedLogicalFullCanvasBounds": [
+          7.514147688060731,
+          4.060731538992409,
+          100.79779158040027,
+          66.24982746721878
+        ],
+        "wholeCanvasFitsProposedFrame": true,
+        "perimeterGate": {
+          "maxNativePerimeterAlpha": 1,
+          "pixelsWithPerimeterAlphaGreaterThan1": 0,
+          "passesNativeSilhouettePerimeterGate": true,
+          "interpretation": "Native alpha1 perimeter specks retained unchanged"
+        }
+      }
+    }
+  ],
+  "rejectedAttempts": [
+    "attempts/attack-01",
+    "attempts/walk-b-01"
+  ],
+  "rawMasterPolicy": "Native byte-identical unedited copies. No alpha cleanup, recolor, crop or source resampling. Diagnostic review images are derived separately only.",
+  "repositoryEdits": false,
+  "gitActions": false
+}

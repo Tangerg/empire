@@ -2203,13 +2203,13 @@
       "topicId": "C01-MISSION-BRIDGE-LABORER",
       "label": "桥梁劳工",
       "category": "mission-unit",
-      "png": "runtime/mission-unit/mission-bridge-laborer.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/mission-unit/mission-bridge-laborer.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2218,13 +2218,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        44.93514644351465,
+        49.10460251046025
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-MISSION-CARAVAN-ESCORT",

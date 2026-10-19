@@ -78,7 +78,7 @@
       "finding": "Transport load is rules-generated drawing; do not bind cannon to it"
     }
   ],
-  "identity": "One compact wooden covered cannon wagon facing right, warm brass cannon with open black muzzle and raised rings, tan canvas arched canopy, dark iron brackets, side tray of black shot, orange-red hanging panel with ochre angular emblem, large near wooden spoked wheel and partially visible smaller front wheel; one short human crew member at rear-left, black hair, red tied headband, charcoal scarf, gray short-sleeved tunic, brown leather vest/bracers/pouches, dark trousers and brown boots. No horse, extra crew, additional visible wheels or alternate siege chassis.",
+  "identity": "One compact wooden covered cannon wagon facing right, warm brass cannon with open black muzzle and raised rings, tan canvas arched canopy, dark iron brackets, side tray of black shot, orange-red hanging panel with ochre angular emblem, large near wooden spoked wheel and partially visible smaller front wheel; one short human crew member at rear-left, black hair, red tied headband, charcoal scarf, gray short-sleeved tunic, brown leather vest/bracers/pouches, dark trousers and brown boots. No horse, extra crew, additional visible wheels or alternate siege chassis. The small gray iron spanner is carried low in the crew member\u2019s free hand, as in the original board.",
   "scaleProposal": {
     "visibleWholeUnitWidthLogical": 76,
     "crewHeightLogicalApproximate": [
@@ -106,10 +106,13 @@
       920,
       943
     ],
-    "status": "Awaiting coordinator idle/scale review before remaining poses"
+    "status": "Coordinator accepted88 logical width before remaining poses; final common-scale wheel registration measured"
   },
   "tool": "built-in image_gen__imagegen",
   "postprocessing": "Native raw/master bytes immutable; diagnostic compositing and sampling only; no art alpha cleanup or recolor",
-  "status": "First idle native pair saved and submitted for coordinator review",
-  "sourceRuntimeDefectObserved": "Original runtime and runtime-hd strips visibly include a small stray head fragment from the troll row below at the bottom of each frame. The original atlas cannon row is identity authority; the unrelated row bleed is not part of the cannon and is not reproduced. Original files remain unchanged."
+  "status": "Native quartet complete; idle and88-wide scale accepted by coordinator; final quartet review/export pending",
+  "sourceRuntimeDefectObserved": "Original runtime and runtime-hd strips visibly include a small stray head fragment from the troll row below at the bottom of each frame. The original atlas cannon row is identity authority; the unrelated row bleed is not part of the cannon and is not reproduced. Original files remain unchanged.",
+  "acceptedScale": 0.06073153899240856,
+  "nativeQuartet": "bundle-manifest.json",
+  "registrationEvidence": "registration-evidence.json"
 }

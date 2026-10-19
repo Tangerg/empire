@@ -1,0 +1,73 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-16476962-faa4-4c00-8e66-40a0dc25eba0.png",
+  "size": [
+    1536,
+    1024
+  ],
+  "mode": "RGBA",
+  "sha256": "49ea8daf2dd50af73cddb8b06fe2345e38b8b68714d2926d66a1d84be563a55c",
+  "bboxAlphaNonzero": [
+    24,
+    65,
+    1506,
+    1024
+  ],
+  "bboxAlphaGreaterThan127": [
+    100,
+    80,
+    1499,
+    943
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 754999,
+  "alphaOnePixels": 6806,
+  "alphaMaximum": 254,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "masterRawHashMatches": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "wheelContacts": {
+    "nearLargeWheel": {
+      "roi": [
+        470,
+        810,
+        825,
+        975
+      ],
+      "contactY": 942,
+      "bottomBandRows": 4,
+      "meanX": 635.391026,
+      "spanX": [
+        608,
+        665
+      ]
+    },
+    "frontSmallWheel": {
+      "roi": [
+        1080,
+        810,
+        1400,
+        935
+      ],
+      "contactY": 910,
+      "bottomBandRows": 4,
+      "meanX": 1221.547445,
+      "spanX": [
+        1196,
+        1248
+      ]
+    }
+  },
+  "suggestedSourceFoot": [
+    928,
+    942
+  ],
+  "sharedScale": 0.06073153899240856,
+  "registrationOffsetLogical": [
+    -0.4858523119392685,
+    0.06073153899240856
+  ],
+  "visualQA": "Reviewed at common logical scale and on black/white diagnostic composites. Source identity, one crew, two visible wheels, no permanent exterior glow/background.",
+  "nativeCanvasUnchanged": true
+}

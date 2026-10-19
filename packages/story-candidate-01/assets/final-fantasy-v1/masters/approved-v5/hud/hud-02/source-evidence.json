@@ -1,0 +1,51 @@
+{
+  "topicId": "C01-HUD-02",
+  "assetId": "C01-FFV1-HUD-02",
+  "label": "敌军",
+  "category": "hud",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/original-hud-02-complete-subject.png",
+  "identityClarification": "Exactly ONE upright front-facing enemy heater shield, broad flattened angular shoulders and tapered pointed bottom. A dark gunmetal thick rim surrounds one broad muted brick-red face. A single dark gunmetal pentagonal tab hangs down from the top center into the red field, its downward point visible. Preserve the distinctive large red field against charcoal metal. No round boss, crest, sword or added symbol.",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/hud-atlas-01.png",
+    "atlasSha256": "5d2abd3056e883cc5bd1080a62910eb82e0b72ebcd97b3853d36075bb5f19611",
+    "atlasCell": "row 1, column 2 (one based)",
+    "inspectionCropCoordinates": [
+      319,
+      5,
+      622,
+      309
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; magenta retained for inspection, white grid excluded by five-pixel inset; no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/baseline-runtime-hud-02.png",
+    "baselineRuntimeSha256": "c2aacb1df7bc8f81eab6240a29b7cde2af3d4691a3f97cad33b077597d00aa5f",
+    "mappingAuthority": "Authored topic catalog HUD sequence, exact manifest IDs, original 4x4 master board and baseline runtime visual identity; builder build_grid_category(hud, hud-atlas-01.png 4x4, 32x32).",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md:456-471",
+    "consumer": "Registered catalog asset reachable through candidate01TryIconMarkup, default28px; no direct exact topic-ID UI callsite found in packages/apps source."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png"
+  ],
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; aspect-preserving independent previews only.",
+  "runtimeReady": false,
+  "integration": "Coordinator alone owns repository/Git backup/export/catalog binding; no repository or gameplay edits.",
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-870434f8-8c28-44e5-8e31-f94cc5d2afec.png",
+  "localRaw": "raw.png",
+  "sha256": "96bce9b503e70ad2ffb0ddce31e7da568252ba488d2d6b638b056cd23e6eac1d"
+}

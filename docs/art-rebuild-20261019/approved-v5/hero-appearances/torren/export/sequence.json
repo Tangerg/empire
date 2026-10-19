@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/walk-b/master.png"
+    },
+    "scale": 0.049217002237136466,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      742,
+      964
+    ],
+    "sourceFeet": {
+      "idle": [
+        742,
+        964
+      ],
+      "walk-a": [
+        758,
+        950
+      ],
+      "attack": [
+        534,
+        944
+      ],
+      "walk-b": [
+        713,
+        950
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -0.7874720357941835,
+        0.6890380313199105
+      ],
+      "attack": [
+        10.237136465324385,
+        0.9843400447427293
+      ],
+      "walk-b": [
+        1.4272930648769575,
+        0.6890380313199105
+      ]
+    },
+    "registrationLimit": 12,
+    "canvasPaddingTolerance": 1,
+    "meaning": "Torren stage01 named actor; original young gray-kit identity, rule swordsman attack; original spear retained on independent portrait"
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    44.51901565995526,
+    51.44519015659955
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f3987460a784cac90ccb119a8bc2742fa1ec5498b53cf42f650c56823c3ac2e1",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5299,
+        "nearOpaquePixels": 1181,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          7,
+          70,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f3987460a784cac90ccb119a8bc2742fa1ec5498b53cf42f650c56823c3ac2e1",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21323,
+        "nearOpaquePixels": 4808,
+        "edgeMax": 0,
+        "visibleBounds": [
+          48,
+          14,
+          141,
+          103
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/walk-a/master.png",
+      "registrationOffset": [
+        -0.7874720357941835,
+        0.6890380313199105
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "2fc8434aad15673168314f4ccadf989f88ac7017c3cf036150d6de825a8a9c12",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5381,
+        "nearOpaquePixels": 1059,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          7,
+          69,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/walk-a/master.png",
+      "registrationOffset": [
+        -0.7874720357941835,
+        0.6890380313199105
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "2fc8434aad15673168314f4ccadf989f88ac7017c3cf036150d6de825a8a9c12",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21670,
+        "nearOpaquePixels": 4397,
+        "edgeMax": 0,
+        "visibleBounds": [
+          48,
+          14,
+          139,
+          103
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/attack/master.png",
+      "registrationOffset": [
+        10.237136465324385,
+        0.9843400447427293
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "edc1610c48cf59e318a15007fff2ef06c0d6fe0e4298df543e293313939308e6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5386,
+        "nearOpaquePixels": 1068,
+        "edgeMax": 0,
+        "visibleBounds": [
+          22,
+          9,
+          96,
+          52
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/attack/master.png",
+      "registrationOffset": [
+        10.237136465324385,
+        0.9843400447427293
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "edc1610c48cf59e318a15007fff2ef06c0d6fe0e4298df543e293313939308e6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21672,
+        "nearOpaquePixels": 4382,
+        "edgeMax": 0,
+        "visibleBounds": [
+          43,
+          17,
+          191,
+          103
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/walk-b/master.png",
+      "registrationOffset": [
+        1.4272930648769575,
+        0.6890380313199105
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "46a4b34a1451799c99e09e2f05f8e232f52aed14807d8b287a076d869b160b25",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5409,
+        "nearOpaquePixels": 1044,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          7,
+          74,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/torren/walk-b/master.png",
+      "registrationOffset": [
+        1.4272930648769575,
+        0.6890380313199105
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "46a4b34a1451799c99e09e2f05f8e232f52aed14807d8b287a076d869b160b25",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21776,
+        "nearOpaquePixels": 4302,
+        "edgeMax": 0,
+        "visibleBounds": [
+          54,
+          15,
+          148,
+          103
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

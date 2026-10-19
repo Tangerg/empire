@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-b/master.png"
+    },
+    "scale": 0.06073153899240856,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      112,
+      72
+    ],
+    "sourceFoot": [
+      920,
+      943
+    ],
+    "sourceFeet": {
+      "idle": [
+        920,
+        943
+      ],
+      "walk-a": [
+        932,
+        937
+      ],
+      "attack": [
+        900,
+        927
+      ],
+      "walk-b": [
+        928,
+        942
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -0.7287784679089027,
+        0.36438923395445133
+      ],
+      "attack": [
+        1.2146307798481712,
+        0.971704623878537
+      ],
+      "walk-b": [
+        -0.4858523119392685,
+        0.06073153899240856
+      ]
+    },
+    "registrationLimit": 2,
+    "canvasPaddingTolerance": 0,
+    "meaning": "original covered cannon cart plus single supported crew; wheel registration; catalog-only, not supply-wagon"
+  },
+  "authoredCanvas": [
+    1536,
+    1024
+  ],
+  "logicalPivot": [
+    63.87301587301587,
+    61.26984126984127
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "68fe1ff4b65f539ed6f3135ba463f64e6f1cd1b74af086e63c1bb6d693533606",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4857,
+        "nearOpaquePixels": 2815,
+        "edgeMax": 0,
+        "visibleBounds": [
+          11,
+          9,
+          99,
+          61
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "68fe1ff4b65f539ed6f3135ba463f64e6f1cd1b74af086e63c1bb6d693533606",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 19783,
+        "nearOpaquePixels": 11587,
+        "edgeMax": 0,
+        "visibleBounds": [
+          22,
+          18,
+          198,
+          123
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-a/master.png",
+      "registrationOffset": [
+        -0.7287784679089027,
+        0.36438923395445133
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "37be00b783cbdf4a401e2a7c9e99fc94e6465dc8dc8f0f5e33ae556c24f7f9c2",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4921,
+        "nearOpaquePixels": 2764,
+        "edgeMax": 0,
+        "visibleBounds": [
+          10,
+          9,
+          98,
+          61
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-a/master.png",
+      "registrationOffset": [
+        -0.7287784679089027,
+        0.36438923395445133
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "37be00b783cbdf4a401e2a7c9e99fc94e6465dc8dc8f0f5e33ae556c24f7f9c2",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20027,
+        "nearOpaquePixels": 11370,
+        "edgeMax": 0,
+        "visibleBounds": [
+          21,
+          18,
+          197,
+          123
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/attack/master.png",
+      "registrationOffset": [
+        1.2146307798481712,
+        0.971704623878537
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "51667e0babf863c60bf00da0e777945b101865eb04ffcc3f9ddcbca8f79cc28b",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4971,
+        "nearOpaquePixels": 2687,
+        "edgeMax": 0,
+        "visibleBounds": [
+          10,
+          10,
+          99,
+          61
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/attack/master.png",
+      "registrationOffset": [
+        1.2146307798481712,
+        0.971704623878537
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "51667e0babf863c60bf00da0e777945b101865eb04ffcc3f9ddcbca8f79cc28b",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20256,
+        "nearOpaquePixels": 11032,
+        "edgeMax": 0,
+        "visibleBounds": [
+          20,
+          20,
+          197,
+          123
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-b/master.png",
+      "registrationOffset": [
+        -0.4858523119392685,
+        0.06073153899240856
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "49ea8daf2dd50af73cddb8b06fe2345e38b8b68714d2926d66a1d84be563a55c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 4885,
+        "nearOpaquePixels": 2775,
+        "edgeMax": 0,
+        "visibleBounds": [
+          14,
+          9,
+          99,
+          61
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/cannon-wagon/walk-b/master.png",
+      "registrationOffset": [
+        -0.4858523119392685,
+        0.06073153899240856
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "49ea8daf2dd50af73cddb8b06fe2345e38b8b68714d2926d66a1d84be563a55c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 19937,
+        "nearOpaquePixels": 11406,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          18,
+          197,
+          123
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

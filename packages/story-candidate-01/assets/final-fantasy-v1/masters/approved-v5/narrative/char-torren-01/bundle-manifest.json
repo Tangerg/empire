@@ -4,7 +4,7 @@
   "levelUnitKey": "campaign-torren",
   "actualUnitType": "c01.swordsman",
   "cardTopicId": "C01-CHAR-TORREN-01",
-  "status": "Transparent Torren portrait inspected; coordinator source/card trial review pending",
+  "status": "Accepted transparent narrative source; fullcanvas diagnostics complete; formal actor/card binding parent-owned",
   "raw": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-torren-01/raw.png",
   "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-torren-01/master.png",
   "nativeSize": [
@@ -30,7 +30,7 @@
   "originalNamedIdentity": "Original board06 top-left cell0 native crop[5,5,622,622], C01-CHAR-TORREN-01. Narrative identifies young swordsman and explicit18-year-old Twin Hills self in chapter07 flashback. No stage02 officer appearance imported.",
   "equipmentContract": "Explicit coordinator-approved distinction: original narrative portrait spear and repaired shield; battle right-hand straight sword follows actual border-blade/slash rules. Original spear card remains preserved as evidence, not silently overwritten or reinterpreted.",
   "actorBindingBoundary": "Exactcampaign-torren withc01.swordsman presentation selector is parent/engineer-owned. Generic c01.swordsman identity must remain unchanged. No new rule unit and no automatic stage02 transition.",
-  "cardCompositionContract": "Entire1024×1536 native transparent canvas uniformly placed into192×224 and92×112; no alpha trimming or per-element fit. Background authored separately by coordinator.",
+  "cardCompositionContract": "Entire1024\u00d71536 native transparent canvas uniformly placed into192\u00d7224 and92\u00d7112; no alpha trimming or per-element fit. Background authored separately by coordinator.",
   "wholeCanvasPreviewTransforms": {
     "192x224": {
       "scale": 0.14583333333333334,
@@ -108,5 +108,12 @@
       "zeroPixels": 49
     }
   ],
-  "formalBinding": "Parent-owned, no repository mutation by source worker"
+  "formalBinding": "Parent-owned, no repository mutation by source worker",
+  "coordinatorNarrativeApproval": {
+    "atUtc": "2026-10-19T22:27:00Z",
+    "reviewer": "coordinator",
+    "decision": "accepted",
+    "scope": "Transparent named portrait source identity and alpha framing",
+    "evidence": "Coordinator inspected white composite: tired young face, gray quilted kit, original pendant, patched shield and complete spear accepted. Fullcanvas card diagnostics completed; formal actor context and card integration remain coordinator-owned."
+  }
 }

@@ -1,0 +1,82 @@
+{
+  "verifiedAtUtc": "2026-10-19T22:28:00Z",
+  "allFiveSourcesPass": true,
+  "sourceFilesModifiedByVerification": false,
+  "checks": [
+    {
+      "asset": "idle",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "mode": "RGBA",
+      "sha256": "f3987460a784cac90ccb119a8bc2742fa1ec5498b53cf42f650c56823c3ac2e1",
+      "rawMasterBytesEqual": true,
+      "promptTextMatchesRequest": true,
+      "promptHashMatchesProvenance": true,
+      "referenceHashesMatch": true,
+      "strictPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 0
+    },
+    {
+      "asset": "walk-a",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "mode": "RGBA",
+      "sha256": "2fc8434aad15673168314f4ccadf989f88ac7017c3cf036150d6de825a8a9c12",
+      "rawMasterBytesEqual": true,
+      "promptTextMatchesRequest": true,
+      "promptHashMatchesProvenance": true,
+      "referenceHashesMatch": true,
+      "strictPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 0
+    },
+    {
+      "asset": "attack",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "mode": "RGBA",
+      "sha256": "edc1610c48cf59e318a15007fff2ef06c0d6fe0e4298df543e293313939308e6",
+      "rawMasterBytesEqual": true,
+      "promptTextMatchesRequest": true,
+      "promptHashMatchesProvenance": true,
+      "referenceHashesMatch": true,
+      "strictPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 1
+    },
+    {
+      "asset": "walk-b",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "mode": "RGBA",
+      "sha256": "46a4b34a1451799c99e09e2f05f8e232f52aed14807d8b287a076d869b160b25",
+      "rawMasterBytesEqual": true,
+      "promptTextMatchesRequest": true,
+      "promptHashMatchesProvenance": true,
+      "referenceHashesMatch": true,
+      "strictPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 0
+    },
+    {
+      "asset": "portrait",
+      "nativeSize": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "18c041c315a43e1f5a06ad623149572bf16450fd923615b42f14ab8dc62c5d22",
+      "rawMasterBytesEqual": true,
+      "promptTextMatchesRequest": true,
+      "promptHashMatchesProvenance": true,
+      "referenceHashesMatch": true,
+      "strictPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 1
+    }
+  ]
+}

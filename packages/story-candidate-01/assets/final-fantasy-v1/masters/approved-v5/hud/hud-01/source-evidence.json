@@ -1,0 +1,51 @@
+{
+  "topicId": "C01-HUD-01",
+  "assetId": "C01-FFV1-HUD-01",
+  "label": "友军",
+  "category": "hud",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/original-hud-01-complete-subject.png",
+  "identityClarification": "Exactly ONE upright front-facing gray heater shield, broad shoulders, a shallow upward peak at the top, tapering to a rounded pointed bottom. Thick silver-gray rim surrounding a plain slate-gray face. Exactly ONE round medium-blue enamel boss sits low on the shield face, on its vertical centerline, with a thin dark and silver rim. Preserve cool gray metal versus clear blue marker; the shield face has no crest or other symbol.",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/hud-atlas-01.png",
+    "atlasSha256": "5d2abd3056e883cc5bd1080a62910eb82e0b72ebcd97b3853d36075bb5f19611",
+    "atlasCell": "row 1, column 1 (one based)",
+    "inspectionCropCoordinates": [
+      5,
+      5,
+      309,
+      309
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; magenta retained for inspection, white grid excluded by five-pixel inset; no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/hud/identity-inspection/baseline-runtime-hud-01.png",
+    "baselineRuntimeSha256": "4c8a2f403686d2f4635aba2ceb6f79096a49ffc5bb1b5c6afb3be230e6c674de",
+    "mappingAuthority": "Authored topic catalog HUD sequence, exact manifest IDs, original 4x4 master board and baseline runtime visual identity; builder build_grid_category(hud, hud-atlas-01.png 4x4, 32x32).",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md:456-471",
+    "consumer": "Registered catalog asset reachable through candidate01TryIconMarkup, default28px; no direct exact topic-ID UI callsite found in packages/apps source."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png"
+  ],
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; aspect-preserving independent previews only.",
+  "runtimeReady": false,
+  "integration": "Coordinator alone owns repository/Git backup/export/catalog binding; no repository or gameplay edits.",
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-89c69ba6-d010-48c0-8480-efe7106465dc.png",
+  "localRaw": "raw.png",
+  "sha256": "ba3e1019acf57e563c2b38f1faea20daec6e59384c3f07ac34ad832c7b651f34"
+}

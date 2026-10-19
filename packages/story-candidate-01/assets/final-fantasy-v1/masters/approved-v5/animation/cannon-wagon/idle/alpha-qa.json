@@ -30,9 +30,9 @@
     "nearLargeWheel": {
       "roi": [
         470,
-        700,
         810,
-        970
+        825,
+        975
       ],
       "contactY": 943,
       "bottomBandRows": 4,
@@ -45,13 +45,13 @@
     "frontSmallWheel": {
       "roi": [
         1080,
-        790,
-        1390,
-        930
+        810,
+        1400,
+        935
       ],
       "contactY": 910,
       "bottomBandRows": 4,
-      "meanX": 1214.8081395348838,
+      "meanX": 1214.80814,
       "spanX": [
         1187,
         1243
@@ -70,5 +70,16 @@
   "wholeHeightAt76": 45.26432022084196,
   "alternative88Scale": 0.06073153899240856,
   "alternative88CrewHeight": 37.77501725327812,
-  "alphaMaximum": 254
+  "alphaMaximum": 254,
+  "suggestedSourceFoot": [
+    920,
+    943
+  ],
+  "sharedScale": 0.06073153899240856,
+  "registrationOffsetLogical": [
+    0.0,
+    0.0
+  ],
+  "visualQA": "Reviewed at common logical scale and on black/white diagnostic composites. Source identity, one crew, two visible wheels, no permanent exterior glow/background.",
+  "nativeCanvasUnchanged": true
 }

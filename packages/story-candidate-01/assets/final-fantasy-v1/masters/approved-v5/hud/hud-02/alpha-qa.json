@@ -1,0 +1,61 @@
+{
+  "topicId": "C01-HUD-02",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.541604664117885,
+  "nearOpaqueFractionAlphaGE250": 0.4505098835242376,
+  "nonzeroAlphaBBox": [
+    170,
+    71,
+    1144,
+    1155
+  ],
+  "visibleAlphaBBoxGE8": [
+    178,
+    111,
+    1077,
+    1150
+  ],
+  "visibleAlphaBBoxGE128": [
+    179,
+    112,
+    1076,
+    1149
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    178,
+    111,
+    177,
+    104
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sha256": "96bce9b503e70ad2ffb0ddce31e7da568252ba488d2d6b638b056cd23e6eac1d",
+  "matchesRawGeneratedBytes": true,
+  "identityVerified": "Exactly ONE upright front-facing enemy heater shield, broad flattened angular shoulders and tapered pointed bottom. A dark gunmetal thick rim surrounds one broad muted brick-red face. A single dark gunmetal pentagonal tab hangs down from the top center into the red field, its downward point visible. Preserve the distinctive large red field against charcoal metal. No round boss, crest, sword or added symbol.",
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "reviewComplete": true,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-02/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas aspect-preserving fit to32, then HUD downscale to28; source unmodified.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: red field and dark downward-pointed top tab remain distinct, strongly distinguished from ally gray/blue shield."
+  },
+  "visualQA": [
+    "Native image preserves original subject, composition and functional colors.",
+    "Bold contours and broad matte cel planes; no exterior haze or background.",
+    "Transparent alpha and open exterior verified numerically.",
+    "Actual32/HUD28 on white, black and olive: red field and dark downward-pointed top tab remain distinct, strongly distinguished from ally gray/blue shield."
+  ]
+}

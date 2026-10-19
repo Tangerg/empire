@@ -1,0 +1,46 @@
+{
+  "topicId": "C01-UNIT-CANNON-WAGON",
+  "consumerClassification": "Catalog-only. No claim of current map usage or replacement of rule-derived c01.supply-wagon.",
+  "status": "Worker visual/alpha/native QA passed; coordinator final review/export pending",
+  "nativeCanvas": [
+    1536,
+    1024
+  ],
+  "fourRawMasterPairsByteIdentical": true,
+  "exactPromptsAndRequestHashesVerified": true,
+  "alphaGate": "Every accepted pose has zero perimeter pixels with alpha>1. Native alpha1 specks retained unchanged, alpha peak254. No alpha cleanup.",
+  "identity": "Source original covered cart, brass gun, tan canvas, shot tray, iron brackets, orange rune panel, large near wheel and partly hidden smaller front wheel, single headband crew and spanner are preserved.",
+  "poses": {
+    "idle": "Grounded rest posture, unfired level cannon",
+    "walk-a": "Forward extended boot with opposite trailing boot lifted; rotated wheel spokes and slight body lean",
+    "attack": "Braced spread stance, recoil, panel flutter, compact muzzle flash and small smoke puff; transient attack effect only",
+    "walk-b": "Opposite planted-left/lifted-right step and different spoke phase"
+  },
+  "commonScale": 0.06073153899240856,
+  "sharedWheelPivot": [
+    920,
+    943
+  ],
+  "maximumTranslationLogical": 1.2146307798481712,
+  "recommendedFrameSize": [
+    112,
+    72
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "footprintMeaning": "Presentation manifest footprint only; no cannon domain unit exists",
+  "diagnostics": [
+    "qa-common-scale/quartet-white@4x.png",
+    "qa-common-scale/quartet-black@4x.png",
+    "qa-common-scale/quartet-native@1x.png",
+    "qa-common-scale/quartet-native@3x.png",
+    "qa-common-scale/pose-cycle-diagnostic.gif"
+  ],
+  "rejectedAttempts": {
+    "attempts/attack-01": "Overtight firing effect margin and33 native perimeter pixels alpha>1; revised through imagegen",
+    "attempts/walk-b-01": "Insufficient opposite leg phase; revised through imagegen"
+  },
+  "limitations": "Catalog-only art: no actual-scene cannon consumer exists to verify. Runtime export and bindings are coordinator-owned; no repo changes made."
+}

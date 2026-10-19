@@ -70,7 +70,7 @@
     ],
     "suggestedRegistrationLimit": 12,
     "maximumMeasuredLogicalOffset": 10.237136465324385,
-    "registrationLimitEvidence": "Attack foot[534,944] differs from approved idle[742,964] by[208,20]source pixels =>[10.237136465324385,0.9843400447427293]logical. The full common canvas still fits inside104×64 at unchanged44/894. Need explicit limit12 rather than hidden fit or an unexplained exception.",
+    "registrationLimitEvidence": "Attack foot[534,944] differs from approved idle[742,964] by[208,20]source pixels =>[10.237136465324385,0.9843400447427293]logical. The full common canvas still fits inside104\u00d764 at unchanged44/894. Need explicit limit12 rather than hidden fit or an unexplained exception.",
     "maximumTransparentCanvasPadding": {
       "right": 1,
       "bottom": 0
@@ -79,7 +79,7 @@
       44.51901565995526,
       51.44519015659955
     ],
-    "method": "Native source unchanged. Explicit right1 transparent column on walk-b only makes1586×992common canvas. One uniform44/894 scale and whole-canvas translations from actual source feet. Footx mean of both measured sole center samples (including raised leg), rounded; footy lowest sole. No per-pose fit, alpha trim or per-equipment transform.",
+    "method": "Native source unchanged. Explicit right1 transparent column on walk-b only makes1586\u00d7992common canvas. One uniform44/894 scale and whole-canvas translations from actual source feet. Footx mean of both measured sole center samples (including raised leg), rounded; footy lowest sole. No per-pose fit, alpha trim or per-equipment transform.",
     "poses": [
       {
         "pose": "idle",
@@ -398,5 +398,16 @@
     "time": "2026-10-19 22:22UTC",
     "review": "Consistent named identity/scale, opposite contacts and right-hand attack; full canvas retained at44/894 with documented attack limit12 accepted",
     "pending": "Parent/engineer actual actor selector and complete scene/card checks"
+  },
+  "narrativePortrait": {
+    "master": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-torren-01/master.png",
+    "manifest": "/workspace/shared/empire-art-rebuild/approved-v5/narrative/char-torren-01/bundle-manifest.json",
+    "sha256": "18c041c315a43e1f5a06ad623149572bf16450fd923615b42f14ab8dc62c5d22",
+    "nativeSize": [
+      1024,
+      1536
+    ],
+    "status": "Coordinator accepted source identity and alpha framing 2026-10-19T22:27Z",
+    "equipmentDistinction": "Narrative retains original right-hand spear; battle uses rule-based right-hand straight sword. Same young face, gray kit and repaired shield."
   }
 }
