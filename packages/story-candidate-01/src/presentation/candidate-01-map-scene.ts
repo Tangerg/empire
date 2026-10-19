@@ -19,8 +19,8 @@ import {
   type BattleSceneContext,
 } from '@empire/game-ui';
 import { CANDIDATE_01_BOARD_STYLE } from './candidate-01-board-style';
+import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from './candidate-01-field-material';
 import {
-  CANDIDATE_FIELD_BASE,
   CANDIDATE_FOREST_FLOOR,
   CANDIDATE_FOUNDATIONS,
   CANDIDATE_CROSSINGS,
@@ -201,22 +201,9 @@ function placementPiece(placement: CandidateEnvironmentPlacement): BoardPiece | 
 }
 
 /**
- * The ground of one cell: one tone of one material.
- *
- * *One* tone, chosen by the material. A surface sheet's four cells are not four
- * shades of one ground — the meadow's are flowering grass, bare dirt, grass over
- * stones and a blue-flowered patch. Choosing between them per cell reads as a
- * checkerboard; choosing per 4×3 block, which is what this did, reads as a
- * lattice, because the block boundaries continue across the whole field.
- * Staggering the blocks only bends the lines. They are materials, so the material
- * table picks one, and the variation on the ground comes from the decals — an
- * outline with no straight edge cannot line up with its neighbour into anything.
- *
- * One orientation, too. Mirroring the tile per cell was an attempt to break the
- * repeat for free, and it costs the same thing the four tones cost: the cell is
- * not uniform, so its bright corner lands somewhere different in each of the four
- * orientations and the field reads as a checker again. A plain repeat of soft
- * ground is quieter than any arrangement of variety at cell resolution.
+ * A legacy non-base surface, with its terrain's explicit tone and orientation.
+ * The approved meadow base is a world field; the remaining atlas cells still
+ * represent distinct materials, so neither their tone nor orientation is random.
  */
 const surfaceMarkup = (atlasId: string, tone: number): string =>
   atlasCellMarkup(atlasId, tone, { fit: CANDIDATE_SURFACE_FIT });
@@ -312,7 +299,8 @@ function connectedMask(
  */
 function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
   const field = materialField(content, map);
-  const surfaces: BoardPiece[] = [];
+  const base = CANDIDATE_01_FIELD_MATERIAL.replaces;
+  const surfaces = candidate01FieldMaterialPieces(map.width * TILE, map.height * TILE);
   const blends: BoardPiece[] = [];
   const connections: BoardPiece[] = [];
   const detail: BoardPiece[] = [];
@@ -323,10 +311,13 @@ function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
       if (id === null) continue;
       const material = candidateMaterial(content, id);
 
-      surfaces.push({
-        markup: surfaceMarkup(material.surface ?? CANDIDATE_FIELD_BASE, material.tone ?? 0),
-        ...at,
-      });
+      const atlas = material.surface ?? base.atlas;
+      const tone = material.tone ?? base.tone;
+      // Only the declared base changes. Hill tone 2 and all hard surfaces retain
+      // their own atlas pixels and fit, above the continuous world field.
+      if (atlas !== base.atlas || tone !== base.tone) {
+        surfaces.push({ markup: surfaceMarkup(atlas, tone), ...at });
+      }
 
       if (material.blend) {
         const sheet = material.blend;

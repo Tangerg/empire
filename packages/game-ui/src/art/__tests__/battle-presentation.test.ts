@@ -128,9 +128,9 @@ describe('battle presentation', () => {
     const scene = { content: TEST_CATALOG, levelId: 'c01-09', map, viewport };
 
     expect(presentation.id).toBe('candidate-01');
-    // Every cell gets a surface, and the chapter with no authored scene gets its
-    // woodland frame like every other.
-    expect(presentation.sceneLayers(scene).ground.length).toBeGreaterThanOrEqual(map.width * map.height);
+    // A broad world material covers the field without one surface stamp per
+    // tactical cell. The un-authored chapter still gets its woodland frame.
+    expect(boardPiecesMarkup(presentation.sceneLayers(scene).ground)).toContain('data-runtime-raster="world-material"');
     expect(presentation.sceneFrame(scene).foreground).toContain('is-scene-frame');
   });
 
@@ -175,8 +175,8 @@ describe('battle presentation', () => {
 
     // The picture: no scene, and the per-cell painters still carry the map.
     expect(mapScenePieces(canvas, level.id, map)).toEqual({ ground: [], underUnits: [], overUnits: [] });
-    expect(mapScenePieces({ ...canvas, grid: SQUARE }, level.id, map).ground.length)
-      .toBeGreaterThan(map.width * map.height);
+    expect(boardPiecesMarkup(mapScenePieces({ ...canvas, grid: SQUARE }, level.id, map).ground))
+      .toContain('data-runtime-raster="world-material"');
 
     // The battle: refused, naming the art and the tiling.
     expect(() => new BoardView(

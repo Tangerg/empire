@@ -22,11 +22,9 @@ import type { ContentCatalog, TerrainId } from '@empire/battle-engine';
  * scene paints every level from it.
  */
 
-/** The surface a field is painted on before anything is drawn over it. */
-export const CANDIDATE_FIELD_BASE = 'surface-meadow';
-
 /**
- * How this kit's surface cells are fitted into the cells they are drawn in.
+ * How the legacy kit's surface cells are fitted into their cells. The approved
+ * world field has its own uncropped fit in the field-material manifest.
  *
  * The sheets declare `edgeLocked: true`, which reads as a promise that their four
  * cells tile seamlessly. They do not: every cell carries a darkened border, and

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "meadow-base",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/grass-material/master.png",
+    "sourceSha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base.png",
+    "density": 1,
+    "size": [
+      512,
+      512
+    ],
+    "logicalSize": [
+      512,
+      512
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-meadow",
+      "tone": 0
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "0b2e0723beb3f406f2933581f46d95dfa3db15c954eed629b653e00f1025a6ea",
+    "interiorPixelSha256": "0ad90a4f0b33f95981d76cfb53608f8d79659fbf510d5d20fdab9f9128c82452",
+    "edgeHashes": {
+      "top": "1324b97a86c42cefcbf2d95e2ea5f27825fb6c83f76e41fbc9c40862078a7f7f",
+      "bottom": "1324b97a86c42cefcbf2d95e2ea5f27825fb6c83f76e41fbc9c40862078a7f7f",
+      "left": "6ffd2b24a94fa4010d02a2714cb261d71fc8844ba9dfbc7e3c221a824651fd05",
+      "right": "6ffd2b24a94fa4010d02a2714cb261d71fc8844ba9dfbc7e3c221a824651fd05"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  },
+  {
+    "id": "meadow-base",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/grass-material/master.png",
+    "sourceSha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png",
+    "density": 2,
+    "size": [
+      1024,
+      1024
+    ],
+    "logicalSize": [
+      512,
+      512
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-meadow",
+      "tone": 0
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "6a4df58cd2222fd8276fd5a5ec4ac8a2554282720156444525108973bed810b2",
+    "interiorPixelSha256": "e70d64df8cc2597e743285c9c5d7951da99dee899017b8eb0b8435d6d98cdc4a",
+    "edgeHashes": {
+      "top": "e770ab11749eec137c65ba24ce05545898c4270d6e5f2cb67683a3b754354c6c",
+      "bottom": "e770ab11749eec137c65ba24ce05545898c4270d6e5f2cb67683a3b754354c6c",
+      "left": "fbb7bbdb648cada93ebd3cc744a0a85afd66bafc952bc96a1d5d5feabc9ee8c9",
+      "right": "fbb7bbdb648cada93ebd3cc744a0a85afd66bafc952bc96a1d5d5feabc9ee8c9"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  }
+]

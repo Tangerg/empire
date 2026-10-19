@@ -12,6 +12,7 @@ import {
 } from './candidate-01-map-scene';
 import { CANDIDATE_01_ENVIRONMENT, candidate01EnvironmentScene } from './candidate-01-environment';
 import { boardPiecesMarkup, createSceneViewport, type BoardPiece } from '@empire/game-ui';
+import { candidate01FieldMaterialPieces } from './candidate-01-field-material';
 
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '../index';
@@ -97,27 +98,14 @@ describe('candidate-01 authored map scenery', () => {
     expect(drawn(layers.ground, 'under-units')).toBe(0);
     expect(markup.match(/candidate-environment-prop/g)?.length ?? 0).toBeGreaterThan(20);
 
-    /*
-     * The point of the change: a picture's identity is no longer its place.
-     *
-     * The ground layer used to be one string of 20,339 nodes at 81×51 with every
-     * cell's coordinates baked into its own markup. It is one surface picture per
-     * cell now, and there are four of them on the whole map.
-     */
-    expect(layers.ground.length).toBeGreaterThan(map.width * map.height);
+    // The broad base is shared in material-sized blocks; only the other two
+    // surfaces retain cell-sized pictures, with their original fit and pixels.
+    const field = candidate01FieldMaterialPieces(map.width * 32, map.height * 32);
+    expect(layers.ground.slice(0, field.length)).toEqual(field);
     const surfaces = layers.ground
-      .slice(0, map.width * map.height)
+      .filter((piece) => piece.markup.includes('/surface-'))
       .map((piece) => piece.markup);
-    /*
-     * One picture per material on the map, not one per cell and not four.
-     *
-     * Twin Hills is made of three: the meadow, the hillsides drawn in the meadow
-     * sheet's stony cell, and the scree its mountains stand on. It used to be four
-     * — one per variant of the single surface — and every arrangement of those
-     * variants across the field, by cell or by block, read as a pattern laid over
-     * the map. A sheet's cells are materials; the material table picks one each.
-     */
-    expect(new Set(surfaces).size).toBe(3);
+    expect(new Set(surfaces).size).toBe(2);
     // And every piece says where it goes, rather than carrying it inside.
     expect(layers.ground.every((piece) => !piece.markup.includes('translate') || piece.markup.includes('scale')))
       .toBe(true);
@@ -165,9 +153,9 @@ describe('candidate-01 authored map scenery', () => {
       const layers = candidate01MapSceneryLayers(sceneContext(levelId, map));
       const ground = boardPiecesMarkup(layers.ground);
 
-      // A surface under every cell, and no cell drawn twice by the surface pass.
-      expect(layers.ground.length, levelId).toBeGreaterThanOrEqual(map.width * map.height);
-      expect(ground, levelId).toContain('surface-meadow');
+      const field = candidate01FieldMaterialPieces(map.width * 32, map.height * 32);
+      expect(layers.ground.slice(0, field.length), levelId).toEqual(field);
+      expect(ground, levelId).toContain('world-materials-v1/runtime/meadow-base@2x.png');
       expect(ground, levelId).toContain('candidate-ground-route');
       expect(boardPiecesMarkup(layers.underUnits), levelId).toContain('candidate-environment-prop');
     }
@@ -195,7 +183,7 @@ describe('candidate-01 authored map scenery', () => {
     const painted = candidate01MapSceneryLayers({
       content: TEST_CATALOG, levelId: 'c01-02', map, viewport: square,
     });
-    expect(painted.ground.length).toBeGreaterThan(map.width * map.height);
+    expect(painted.ground.slice(0, 2)).toEqual(candidate01FieldMaterialPieces(map.width * 32, map.height * 32));
   });
 
   /**

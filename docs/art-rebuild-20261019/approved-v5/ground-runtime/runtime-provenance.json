@@ -1,0 +1,87 @@
+{
+  "kind": "offline real BoardPieces diagnostic; not a live gameplay screenshot",
+  "levelId": "c01-02",
+  "mapSize": [
+    22,
+    14
+  ],
+  "logicalExtent": [
+    704,
+    448
+  ],
+  "material": {
+    "schemaVersion": 1,
+    "id": "meadow-base",
+    "replaces": {
+      "atlas": "surface-meadow",
+      "tone": 0
+    },
+    "source": "masters/approved-v5/grass-material/master.png",
+    "sourceSha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+    "logicalSize": [
+      512,
+      512
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "png": "runtime/meadow-base.png",
+    "png2x": "runtime/meadow-base@2x.png",
+    "href": "/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png"
+  },
+  "fieldPieces": [
+    {
+      "x": 0,
+      "y": 0,
+      "markup": "<svg width=\"512\" height=\"448\" viewBox=\"0 0 512 448\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"world-material\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/></svg>"
+    },
+    {
+      "x": 512,
+      "y": 0,
+      "markup": "<svg width=\"192\" height=\"448\" viewBox=\"0 0 192 448\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"world-material\"><image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/></svg>"
+    }
+  ],
+  "layerCounts": {
+    "ground": 241,
+    "underUnits": 46,
+    "overUnits": 0
+  },
+  "buildingCount": 9,
+  "unitCount": 20,
+  "mapSha256": "f991b517c8340aa2c9d72ec89fc699824813cce19f2528452512ffd6ad6aa2a7",
+  "gameplayTopologyChanged": false,
+  "provenance": "candidate01MapSceneryLayers + candidate01TerrainMarkup + candidate01UnitPicture; no SVG material substitutions",
+  "cropWorldBox": [
+    448,
+    64,
+    256,
+    256
+  ],
+  "samplingComparison": {
+    "approvedRuntimePeriod": [
+      512,
+      512
+    ],
+    "diagnosticOnlyPeriod": [
+      1024,
+      1024
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "method": "uniform 2x placement scale of the actual field BoardPieces; identical source and upper layers",
+    "status": "not selected or approved for runtime",
+    "diagnosticRasterDensity": "1024px source over 1024 logical units; 2x diagnostic is an enlarged view"
+  },
+  "limitations": [
+    "Static initial unit poses, no animation, browser or GPU playback",
+    "Explicit diagnostic blue/red owner colors; no HUD, camera effects or CSS lighting",
+    "Legacy shore, water, road, non-base surfaces and decals remain visible; only base meadow changed"
+  ]
+}

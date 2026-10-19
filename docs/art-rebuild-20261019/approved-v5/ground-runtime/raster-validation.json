@@ -1,0 +1,39 @@
+{
+  "evidence": "offline Inkscape native rendering of actual BoardPieces",
+  "cropChecks": [
+    {
+      "kind": "field",
+      "density": 1,
+      "exactPixelMatch": true,
+      "maximumChannelDifference": 0,
+      "note": "World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips"
+    },
+    {
+      "kind": "field",
+      "density": 2,
+      "exactPixelMatch": true,
+      "maximumChannelDifference": 0,
+      "note": "World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips"
+    },
+    {
+      "kind": "integration",
+      "density": 1,
+      "exactPixelMatch": false,
+      "maximumChannelDifference": 1,
+      "note": "World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips"
+    },
+    {
+      "kind": "integration",
+      "density": 2,
+      "exactPixelMatch": false,
+      "maximumChannelDifference": 2,
+      "note": "World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips"
+    }
+  ],
+  "fullLogicalExtent": [
+    704,
+    448
+  ],
+  "browserPlayback": false,
+  "repeatSeamVisualReview": "required separately; these tests prove phase, not artistic tiling"
+}

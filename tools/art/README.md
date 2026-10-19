@@ -1,5 +1,51 @@
 # Registered transparent master exports
 
+## Approved broad field material
+
+`packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-field-material-v1.json`
+owns the approved field source/checksum, the exact replaced atlas/tone, logical
+sampling period, world origin, uncropped fit and both runtime paths. The typed
+`candidate-01-field-material.ts` reader and `export_field_material.py` consume
+that same declaration. This binding replaces only `surface-meadow` tone 0;
+the old atlas remains intact and hill tone 2 retains its original fit.
+
+```sh
+python3 tools/art/export_field_material.py
+python3 tools/art/export_field_material.py --check
+node_modules/.bin/vite-node tools/art/review_ground_runtime.ts
+python3 tools/art/render_ground_review.py docs/art-rebuild-20261019/approved-v5/ground-runtime
+```
+
+The immutable approved grass master is resized as a complete canvas to 512²
+and 1024². Only the opposite outermost rows/columns are matched, using the
+previously approved 1px seam operation. Interior pixels, palette and composition
+are not painted, blurred or recolored. Reports include source, interior and
+edge hashes; `--check` verifies reproducible output without writing.
+
+Runtime samples a 512×512 logical period from world origin (0,0), with explicit
+inset 0 and bleed 0. It emits self-contained material-sized BoardPieces, not
+one large source per 32px game cell. Identical blocks share markup and one HD
+asset URL across the SVG and GPU texture paths. Edge blocks clip the viewport
+without changing source dimensions. At 81×51 cells the base is 24 blocks with
+four distinct pictures, each no larger than 512×512 logical units.
+
+The diagnostic includes the entire 22×14 c01-02 field (704×448), real trees,
+structures and unit pictures, and camera crops crossing x512 at native 1×/2×.
+It is offline renderer evidence, not browser/GPU playback. Field-only crops
+match pixel-for-pixel. Composite crops record small offline antialiasing
+differences from legacy clipped props instead of claiming exact matches.
+
+The visual repeat gate is **pending**: the approved master's large planes do
+not wrap continuously at x512, despite matching outer pixels. A separately
+labeled 1024-period diagnostic uniformly scales the same field picture, keeps
+origin and upper layers unchanged, and avoids a repeat within this particular
+704px map. It is not an approved runtime selection; its 2× export is an enlarged
+diagnostic, not newly authored HD art. Larger maps would still encounter the
+repeat. Water, roads, shore masks and all other terrain material bindings remain
+unchanged in this increment.
+
+## Static transparent master exports
+
 `source-overrides.json` is the explicit source owner for remade assets. The existing final manifests remain owners of runtime identity, dimensions and anchors. This first increment supports static `battle-prop` records only; other categories are rejected rather than guessed.
 
 Register each new imagegen PNG under its campaign pack's `masters/remake/` directory, then add its stable topic ID:
