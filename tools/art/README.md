@@ -162,3 +162,15 @@ order, and records every source hash and authored placement. Native and density2
 PNGs are art-review evidence, not gameplay screenshots. Runtime team tint,
 shadows, sunlight and animation are explicitly omitted to inspect source art;
 these omissions and any non-level-specific placement choices are in the JSON.
+
+`export_transition_overrides.py` supports only `transition-meadow-forest`.
+Catalog `transition-overrides.json` has schemaVersion1 and atlases; the named
+entry contains `source`, `sha256`, and `baselines` with1x/2x source/hash entries.
+All files live under the pack's masters directory. The one generated material
+is square and fully opaque. Immutable original runtime atlases supply alpha,
+not color: all47 cell alpha channels are copied byte-for-byte, mask order stays
+unchanged, and unused cell48 is preserved entirely. The material uses only
+independent32/64 resizing plus approved one-pixel self-edge matching. There is
+no mask drawing, dilation, blur, alpha extraction, source mutation or palette
+adjustment. Run --check and preview_transition.py after export; a matching alpha
+hash is a geometry guarantee, not visual transition acceptance.
