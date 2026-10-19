@@ -693,7 +693,7 @@
       "source": null,
       "verification": {
         "state": "partial-frames-only",
-        "note": "2 of four pose masters backed up; topic remains pending"
+        "note": "3 of four pose masters backed up; topic remains pending"
       },
       "assignment": "redraw_grayflag_cover_props",
       "plannedFrames": [
@@ -712,6 +712,11 @@
           "status": "raw-generated",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/walk-a/master.png",
           "sha256": "9a4501960092fed598e8d2755b7223681bf73fff950aca7f22f5a607fe1ec55d"
+        },
+        "attack": {
+          "status": "raw-generated",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/attack/master.png",
+          "sha256": "b88bf7e68cacc63a705e6639fae1108145905c8bb8b05f794c6dc99ed279fc12"
         }
       }
     },
@@ -4108,22 +4113,22 @@
     {
       "topicId": "c02-battle-prop-five-world-flags",
       "status": "raw-generated",
-      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-five-world-flags/master.png",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-five-world-flags/revision-2/master.png",
       "verification": {
         "exportCheck": "passed",
         "exportTests": 14,
         "evidence": "docs/art-rebuild-20261019/batch-022-export-evidence.json",
         "visualAndConsumerAcceptance": "pending",
         "runtimeVisual": "pending-browser-socket-blocked",
-        "semanticReview": "needs-revision-from-higher-resolution-original",
+        "semanticReview": "revision2 passed higher-resolution original board comparison",
         "runtimeOutput": "baseline restored pending corrected generation"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "fa83207bb9afa94a871c1473e549ec25c980f9522dcc77d0baa1cdd7cd36db0a",
+      "sourceSha256": "8c83c14ebe03e91e98e237452163e6f7a7e9083fbc7c0d1e7d32e1e75b56fe5f",
       "revisionCandidate": {
         "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-five-world-flags/revision-2/master.png",
         "sha256": "8c83c14ebe03e91e98e237452163e6f7a7e9083fbc7c0d1e7d32e1e75b56fe5f",
-        "status": "semantic-review-pending"
+        "status": "semantic-review-passed"
       }
     },
     {
