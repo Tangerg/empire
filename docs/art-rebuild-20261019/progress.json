@@ -3863,11 +3863,14 @@
     },
     {
       "topicId": "c02-battle-prop-anchor-winches",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-anchor-winches/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 13,
+        "evidence": "docs/art-rebuild-20261019/batch-009-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "91e7a8d7c4fd201a4ecbccfc23644f5899dec76c4bf73846a2f53b382820854e"
@@ -3886,11 +3889,14 @@
     },
     {
       "topicId": "c02-battle-prop-cable-reels",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-cable-reels/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 13,
+        "evidence": "docs/art-rebuild-20261019/batch-009-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "9917a4638fc71919f515df896a1e56b29320246c867ac0425c2a940437236a3d"
