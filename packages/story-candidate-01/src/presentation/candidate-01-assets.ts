@@ -71,7 +71,7 @@ interface Candidate01TacticalHdManifest {
   schemaVersion: string;
   pixelDensity: number;
   assetCount: number;
-  assets: Array<{ topicId: string; png: string }>;
+  assets: Array<{ topicId: string; png: string; width: number; height: number; pixelDensity: number }>;
 }
 
 export interface Candidate01RuntimeAsset extends Candidate01AssetRecord {
@@ -87,11 +87,11 @@ export interface Candidate01RuntimeAsset extends Candidate01AssetRecord {
  * cover — three closed sets of names and two pairs of numbers — so those are
  * checked here, once, at the edge where the document arrives.
  */
-function assetRecord(raw: (typeof manifestJson)['assets'][number]): Candidate01AssetRecord {
+export function readCandidate01AssetRecord(raw: (typeof manifestJson)['assets'][number]): Candidate01AssetRecord {
   // Taken out of the spread rather than overridden in it: `exactOptionalPropertyTypes`
   // is what makes "absent" and "present as undefined" different answers here.
   const { category, kind, tileMode, anchor, footprint, ...rest } = raw;
-  return {
+  const record: Candidate01AssetRecord = {
     ...rest,
     category: oneOf(ASSET_CATEGORIES, category, 'category', raw.assetId),
     ...(anchor === undefined ? {} : { anchor: fixedNumbers(2, anchor, 'anchor', raw.assetId) }),
@@ -101,11 +101,27 @@ function assetRecord(raw: (typeof manifestJson)['assets'][number]): Candidate01A
       ? {}
       : { tileMode: oneOf(TILE_MODES, tileMode, 'tileMode', raw.assetId) }),
   };
+  if (record.frameWidth !== undefined || record.frameHeight !== undefined || record.frames !== undefined) {
+    const { frameWidth, frameHeight, frames } = record;
+    if (
+      frameWidth === undefined || !Number.isInteger(frameWidth) || frameWidth < 1
+      || frameHeight === undefined || !Number.isInteger(frameHeight) || frameHeight < 1
+      || frames === undefined || !Number.isInteger(frames) || frames < 1
+      || record.width !== frameWidth * frames || record.height !== frameHeight
+    ) {
+      throw new Error(`candidate-01: "${record.topicId}" has inconsistent frame dimensions`);
+    }
+    const order = record.frameOrder ?? record.stateOrder;
+    if (order && (order.length !== frames || new Set(order).size !== frames)) {
+      throw new Error(`candidate-01: "${record.topicId}" has inconsistent frame order`);
+    }
+  }
+  return record;
 }
 
 const manifest: Candidate01AssetManifest = {
   ...manifestJson,
-  assets: manifestJson.assets.map(assetRecord),
+  assets: manifestJson.assets.map(readCandidate01AssetRecord),
 };
 const runtimeFiles = import.meta.glob<string>(
   [
@@ -115,14 +131,17 @@ const runtimeFiles = import.meta.glob<string>(
   { eager: true, import: 'default', query: '?url' },
 );
 const tacticalHdFiles = import.meta.glob<string>(
-  '../../assets/final-fantasy-v1/runtime-hd/**/*.png',
+  [
+    '../../assets/final-fantasy-v1/runtime-hd/**/*.png',
+    '../../assets/final-fantasy-v1/runtime-approved-v5/**/*@2x.png',
+  ],
   { eager: true, import: 'default', query: '?url' },
 );
 const packRoot = '../../assets/final-fantasy-v1/';
 // No assertion needed: the generated JSON already satisfies this shape.
 const tacticalHdManifest: Candidate01TacticalHdManifest = tacticalHdManifestJson;
 const tacticalHdTopics = new Map(
-  tacticalHdManifest.assets.map((record) => [record.topicId, record.png] as const),
+  tacticalHdManifest.assets.map((record) => [record.topicId, record] as const),
 );
 
 if (
@@ -134,9 +153,16 @@ if (
 }
 
 function resolveRuntimeUrl(record: Candidate01AssetRecord): string {
-  const hdPath = tacticalHdTopics.get(record.topicId);
-  if (hdPath) {
-    const hdUrl = tacticalHdFiles[`${packRoot}${hdPath}`];
+  const hd = tacticalHdTopics.get(record.topicId);
+  if (hd) {
+    if (
+      hd.pixelDensity !== tacticalHdManifest.pixelDensity
+      || hd.width !== record.width * hd.pixelDensity
+      || hd.height !== record.height * hd.pixelDensity
+    ) {
+      throw new Error(`candidate-01 tactical HD dimensions disagree with the logical asset: ${record.topicId}`);
+    }
+    const hdUrl = tacticalHdFiles[`${packRoot}${hd.png}`];
     if (!hdUrl) throw new Error(`candidate-01 tactical HD asset is missing from the Vite graph: ${record.topicId}`);
     return hdUrl;
   }

@@ -3,6 +3,21 @@ import { runtimeAtlasCellMarkup, runtimeUnitPicture } from '../runtime-raster';
 import { boardPictureMarkup } from '../board-surface';
 
 describe('runtime raster adapter', () => {
+  it('preserves subpixel registration anchors on a larger logical frame', () => {
+    const sheet = {
+      href: '/approved/unit@2x.png', frameWidth: 96, frameHeight: 64, frameCount: 4,
+      anchor: { x: 48.44444444444444, y: 53.27777777777778 },
+      idleFrame: 0, walkFrames: [1, 3] as const, attackFrame: 2,
+    };
+    const strip = runtimeUnitPicture(sheet, '#fff').strip;
+    expect(strip).toMatchObject({ frameWidth: 96, frameHeight: 64, frameCount: 4 });
+    expect(strip!.x + sheet.anchor.x).toBe(16);
+    expect(strip!.y + sheet.anchor.y).toBe(31);
+    for (const anchor of [{ x: Number.NaN, y: 0 }, { x: 0, y: Infinity }, { x: -1, y: 0 }, { x: 97, y: 0 }, { x: 0, y: 65 }]) {
+      expect(() => runtimeUnitPicture({ ...sheet, anchor }, '#fff')).toThrow('within the frame');
+    }
+  });
+
   /**
    * A strip is data here, not a string with its own description written into it.
    *

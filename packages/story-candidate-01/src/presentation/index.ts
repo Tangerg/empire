@@ -70,11 +70,12 @@ function portraitMarkup(type: UnitTypeId, team: string): string | null {
 
   const picture = candidate01UnitPicture(type, team);
   if (!picture) return null;
-  // The sprite is drawn in a 32-wide cell reaching 16 above it, so 48 tall fills
-  // the plate at 2.333x, centred across it.
-  const scale = 112 / 48;
-  const inset = (96 - 32 * scale) / 2;
-  return `${plate}<g transform="translate(${inset.toFixed(2)} ${(16 * scale).toFixed(2)}) scale(${scale.toFixed(3)})"`
+  const strip = picture.strip;
+  if (!strip) throw new Error(`candidate-01 unit picture has no strip: ${type}`);
+  const scale = Math.min(96 / strip.frameWidth, 112 / strip.frameHeight);
+  const x = (96 - strip.frameWidth * scale) / 2 - strip.x * scale;
+  const y = (112 - strip.frameHeight * scale) / 2 - strip.y * scale;
+  return `${plate}<g transform="translate(${x} ${y}) scale(${scale})"`
     + ` class="candidate-portrait-image">${boardPictureMarkup(picture)}</g>${frame}`;
 }
 

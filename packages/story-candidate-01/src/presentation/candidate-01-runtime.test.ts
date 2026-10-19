@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { terrainMarkup, unitPicture } from '@empire/game-ui';
+import { portraitMarkup, terrainMarkup, unitPicture } from '@empire/game-ui';
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '../index';
 import { CANDIDATE_01_ART } from './index';
+import { candidate01UnitIcon } from './candidate-01-runtime';
 
 /** The pack's own art, composed rather than registered into a global. */
 const art = CANDIDATE_01_ART;
@@ -15,11 +16,22 @@ describe('candidate-01 runtime art bindings', () => {
 
     expect(soldier.body).toContain('data-runtime-raster="unit"');
     expect(soldier.strip!.href).toContain('unit-swordsman');
-    expect(soldier.strip!.href).toContain('runtime-hd/combat-unit');
-    expect(soldier.strip).toMatchObject({ frameCount: 4, frameWidth: 32, frameHeight: 48 });
+    expect(soldier.strip!.href).toContain('runtime-approved-v5/combat-unit/unit-swordsman@2x.png');
+    expect(soldier.strip).toMatchObject({ frameCount: 4, frameWidth: 96, frameHeight: 64 });
+    expect(soldier.strip!.x).toBeCloseTo(16 - 48.44444444444444, 12);
+    expect(soldier.strip!.y).toBeCloseTo(31 - 53.27777777777778, 12);
     // The manifest's frame order is what names them: idle, walk-a, attack, walk-b.
     expect(soldier.strip!.clips.find((clip) => clip.id === 'attack')!.frames).toEqual([2]);
     expect(soldier.strip!.clips.find((clip) => clip.id === 'walk')!.frames).toEqual([1, 3]);
+    expect(soldier.strip!.clips.find((clip) => clip.id === 'idle')!.frames).toEqual([0]);
+  });
+
+  it('fits icons and portraits to the approved frame instead of clipping them to 32×48', () => {
+    const icon = candidate01UnitIcon('c01.swordsman', '#3f7fd8', 48);
+    expect(icon).toContain('viewBox="-32.44444444444444 -22.27777777777778 96 64"');
+    const portrait = portraitMarkup(art, TEST_CATALOG.units.get('c01.swordsman'), '#3f7fd8');
+    expect(portrait).toContain('translate(32.44444444444444 46.27777777777778) scale(1)');
+    expect(portrait).toContain('viewBox="0 0 96 64"');
   });
 
   /**
@@ -73,8 +85,12 @@ describe('candidate-01 runtime art bindings', () => {
     const castle = keep('#d8483f');
 
     expect(castle).toContain('data-candidate-art="structure"');
-    expect(castle).toContain('/struct-lorne-keep.png');
-    expect(castle).toContain('x="-128"');
+    expect(castle).toContain('runtime-approved-v5/structure/struct-lorne-keep@2x.png');
+    expect(castle).toContain('x="-320"');
+    expect(castle).toContain('width="480" height="160"');
+    expect(castle).toContain('viewBox="0 0 160 160"');
+    expect(castle).toContain('transform="translate(-64.60847880299252 -109.21945137157107)"');
+    expect(keep()).toContain('x="0" y="0" width="480" height="160"');
 
     /*
      * A standard, not a ring under the roof.

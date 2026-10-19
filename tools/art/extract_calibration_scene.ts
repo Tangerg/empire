@@ -1,7 +1,7 @@
 /** Isolated real-level art evidence; does not mutate gameplay or runtime assets. */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { TacticalGrids, mapFromLevel } from '@empire/battle-engine';
+import { TacticalGrids, idx, mapFromLevel } from '@empire/battle-engine';
 import { createTestCatalog } from '@empire/test-content';
 import { boardPiecesMarkup, boardPictureMarkup, createSceneViewport } from '@empire/game-ui';
 import { CANDIDATE_01_CONTENT_PACK } from '../../packages/story-candidate-01/src/index';
@@ -16,7 +16,7 @@ const viewport = createSceneViewport(TacticalGrids.get('square4'), map.width, ma
 const layers = candidate01MapSceneryLayers({ content, levelId: 'c01-02', map, viewport });
 const buildings = [];
 for (let y = 0; y < map.height; y++) for (let x = 0; x < map.width; x++) {
-  const markup = candidate01TerrainMarkup(map.tiles[y * map.width + x]!, { x, y, linked: { n: false, e: false, s: false, w: false } });
+  const markup = candidate01TerrainMarkup(map.tiles[idx(map, x, y)]!, { x, y, linked: { n: false, e: false, s: false, w: false } });
   if (markup) buildings.push({ x: x * 32, y: y * 32, markup });
 }
 const units = level.units.map(unit => {

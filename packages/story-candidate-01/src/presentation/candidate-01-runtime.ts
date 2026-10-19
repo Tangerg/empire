@@ -138,8 +138,10 @@ export function candidate01UnitPicture(type: UnitTypeId, team: string): BoardPic
 export function candidate01UnitIcon(type: UnitTypeId, team: string, size: number): string | null {
   const picture = candidate01UnitPicture(type, team);
   if (!picture) return null;
+  const strip = picture.strip;
+  if (!strip) throw new Error(`candidate-01 unit picture has no strip: ${type}`);
   // An icon has no timeline, so its strip stands still on the first frame.
-  return `<svg viewBox="0 -16 32 48" width="${size}" height="${size}">${boardPictureMarkup(picture)}</svg>`;
+  return `<svg viewBox="${strip.x} ${strip.y} ${strip.frameWidth} ${strip.frameHeight}" width="${size}" height="${size}">${boardPictureMarkup(picture)}</svg>`;
 }
 
 /**

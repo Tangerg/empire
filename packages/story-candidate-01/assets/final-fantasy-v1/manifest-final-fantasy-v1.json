@@ -1921,13 +1921,13 @@
       "topicId": "C01-UNIT-SWORDSMAN",
       "label": "剑士",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-swordsman.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-swordsman.png",
+      "width": 384,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-painterly-v5",
+      "frameWidth": 96,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1936,8 +1936,8 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        48.44444444444444,
+        53.27777777777778
       ],
       "footprint": [
         1,
@@ -3911,13 +3911,13 @@
       "topicId": "C01-STRUCT-LORNE-KEEP",
       "label": "洛恩堡垒据点",
       "category": "interactive-structure",
-      "png": "runtime/interactive-structure/struct-lorne-keep.png",
-      "width": 192,
-      "height": 64,
+      "png": "runtime-approved-v5/structure/struct-lorne-keep.png",
+      "width": 480,
+      "height": 160,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-painterly-v5",
+      "frameWidth": 160,
+      "frameHeight": 160,
       "frames": 3,
       "stateOrder": [
         "normal",
@@ -3925,8 +3925,8 @@
         "captured"
       ],
       "anchor": [
-        32,
-        63
+        80.60847880299252,
+        140.21945137157107
       ],
       "footprint": [
         2,

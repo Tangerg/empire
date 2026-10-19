@@ -61,8 +61,12 @@ export function runtimeUnitPicture(sheet: RuntimeUnitSheet, team: string): Board
   finiteInt(sheet.frameWidth, 'frameWidth', 1);
   finiteInt(sheet.frameHeight, 'frameHeight', 1);
   finiteInt(sheet.frameCount, 'frameCount', 1);
-  finiteInt(sheet.anchor.x, 'anchor.x');
-  finiteInt(sheet.anchor.y, 'anchor.y');
+  for (const [axis, limit] of [['x', sheet.frameWidth], ['y', sheet.frameHeight]] as const) {
+    const value = sheet.anchor[axis];
+    if (!Number.isFinite(value) || value < 0 || value > limit) {
+      throw new Error(`anchor.${axis} must be a finite coordinate within the frame`);
+    }
+  }
 
   const { idleFrame, walkFrames, attackFrame } = sheet;
   for (const [name, value] of [
