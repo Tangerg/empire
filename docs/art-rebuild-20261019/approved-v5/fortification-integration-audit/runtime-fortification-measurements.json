@@ -1,0 +1,3514 @@
+{
+  "levelId": "c01-13",
+  "evidence": "actual BoardView source pieces and alpha128 atlas measurements; bounding-box overlap is not proof of connected stone connectors",
+  "unitCount": 24,
+  "buildingCount": 18,
+  "wallCellCount": 68,
+  "counts": {
+    "stone-gatehouse": 26,
+    "stone-wall-straight": 24,
+    "stone-wall-corner": 18
+  },
+  "adjacencyMasksNESW": {
+    "0": 11,
+    "1": 4,
+    "2": 3,
+    "3": 4,
+    "4": 4,
+    "5": 3,
+    "6": 4,
+    "7": 10,
+    "8": 3,
+    "9": 4,
+    "10": 4,
+    "12": 4,
+    "13": 10
+  },
+  "perAsset": {
+    "stone-wall-straight": {
+      "count": 24,
+      "logicalAlpha128Bounds": [
+        7.0,
+        21.5,
+        90.0,
+        76.5
+      ],
+      "actualScaleRange": [
+        0.381,
+        0.497
+      ],
+      "catalogFootprint": [
+        2,
+        1
+      ]
+    },
+    "stone-wall-corner": {
+      "count": 18,
+      "logicalAlpha128Bounds": [
+        5.5,
+        26.5,
+        91.0,
+        77.0
+      ],
+      "actualScaleRange": [
+        0.391,
+        0.497
+      ],
+      "catalogFootprint": [
+        2,
+        2
+      ]
+    },
+    "stone-gatehouse": {
+      "count": 26,
+      "logicalAlpha128Bounds": [
+        4.5,
+        13.0,
+        91.5,
+        83.0
+      ],
+      "actualScaleRange": [
+        0.382,
+        0.491
+      ],
+      "catalogFootprint": [
+        2,
+        2
+      ]
+    }
+  },
+  "adjacentPairs": [
+    {
+      "first": [
+        2,
+        2
+      ],
+      "second": [
+        2,
+        3
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 11.218,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        12,
+        2
+      ],
+      "second": [
+        13,
+        2
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-wall-corner",
+      "alphaBoundingBoxGap": -5.119,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        12,
+        2
+      ],
+      "second": [
+        12,
+        3
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -0.102,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        13,
+        2
+      ],
+      "second": [
+        13,
+        3
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 12.815,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        2,
+        3
+      ],
+      "second": [
+        2,
+        4
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-corner",
+      "alphaBoundingBoxGap": 2.553,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        12,
+        3
+      ],
+      "second": [
+        13,
+        3
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": -7.291,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        12,
+        3
+      ],
+      "second": [
+        12,
+        4
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-wall-corner",
+      "alphaBoundingBoxGap": 8.252,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        13,
+        3
+      ],
+      "second": [
+        13,
+        4
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -5.388,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        12,
+        4
+      ],
+      "second": [
+        13,
+        4
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -10.659,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        12,
+        4
+      ],
+      "second": [
+        12,
+        5
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": 0.649,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        13,
+        4
+      ],
+      "second": [
+        13,
+        5
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": 5.012,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        12,
+        5
+      ],
+      "second": [
+        13,
+        5
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -4.783,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        12,
+        5
+      ],
+      "second": [
+        12,
+        6
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -1.497,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        13,
+        5
+      ],
+      "second": [
+        13,
+        6
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 11.013,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        2,
+        6
+      ],
+      "second": [
+        3,
+        6
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": -2.976,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        3,
+        6
+      ],
+      "second": [
+        4,
+        6
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-corner",
+      "alphaBoundingBoxGap": -2.284,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        8,
+        6
+      ],
+      "second": [
+        9,
+        6
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": -11.485,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        8,
+        6
+      ],
+      "second": [
+        8,
+        7
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": 2.836,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        9,
+        6
+      ],
+      "second": [
+        9,
+        7
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 5.613,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        12,
+        6
+      ],
+      "second": [
+        13,
+        6
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": -7.975,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        16,
+        6
+      ],
+      "second": [
+        17,
+        6
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-corner",
+      "alphaBoundingBoxGap": -2.499,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        16,
+        6
+      ],
+      "second": [
+        16,
+        7
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 9.891,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        17,
+        6
+      ],
+      "second": [
+        17,
+        7
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 15.547,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        21,
+        6
+      ],
+      "second": [
+        22,
+        6
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": -5.541,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        22,
+        6
+      ],
+      "second": [
+        23,
+        6
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -7.885,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        8,
+        7
+      ],
+      "second": [
+        9,
+        7
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": -6.332,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        8,
+        7
+      ],
+      "second": [
+        8,
+        8
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-wall-corner",
+      "alphaBoundingBoxGap": 5.863,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        9,
+        7
+      ],
+      "second": [
+        9,
+        8
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 5.63,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        16,
+        7
+      ],
+      "second": [
+        17,
+        7
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": -0.042,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        16,
+        7
+      ],
+      "second": [
+        16,
+        8
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-corner",
+      "alphaBoundingBoxGap": 6.803,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        17,
+        7
+      ],
+      "second": [
+        17,
+        8
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 6.052,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        2,
+        8
+      ],
+      "second": [
+        2,
+        9
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-corner",
+      "alphaBoundingBoxGap": 4.106,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        8,
+        8
+      ],
+      "second": [
+        9,
+        8
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": -12.708,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        8,
+        8
+      ],
+      "second": [
+        8,
+        9
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 14.713,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        9,
+        8
+      ],
+      "second": [
+        9,
+        9
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -2.924,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        16,
+        8
+      ],
+      "second": [
+        17,
+        8
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": -8.36,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        16,
+        8
+      ],
+      "second": [
+        16,
+        9
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 13.575,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        17,
+        8
+      ],
+      "second": [
+        17,
+        9
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 6.962,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        23,
+        8
+      ],
+      "second": [
+        23,
+        9
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 12.875,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        2,
+        9
+      ],
+      "second": [
+        2,
+        10
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": 4.873,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        8,
+        9
+      ],
+      "second": [
+        9,
+        9
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -3.26,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        9,
+        9
+      ],
+      "second": [
+        9,
+        10
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-wall-corner",
+      "alphaBoundingBoxGap": 6.958,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        16,
+        9
+      ],
+      "second": [
+        17,
+        9
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": -4.185,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        16,
+        9
+      ],
+      "second": [
+        16,
+        10
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -5.745,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        23,
+        9
+      ],
+      "second": [
+        23,
+        10
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -2.534,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        2,
+        10
+      ],
+      "second": [
+        3,
+        10
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -3.821,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        3,
+        10
+      ],
+      "second": [
+        4,
+        10
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -3.394,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        12,
+        10
+      ],
+      "second": [
+        13,
+        10
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": -7.478,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        12,
+        10
+      ],
+      "second": [
+        12,
+        11
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-wall-corner",
+      "alphaBoundingBoxGap": 11.401,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        13,
+        10
+      ],
+      "second": [
+        13,
+        11
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": 0.297,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        21,
+        10
+      ],
+      "second": [
+        22,
+        10
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -5.889,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        22,
+        10
+      ],
+      "second": [
+        23,
+        10
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -7.644,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        12,
+        11
+      ],
+      "second": [
+        13,
+        11
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -4.649,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        12,
+        11
+      ],
+      "second": [
+        12,
+        12
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 11.426,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        13,
+        11
+      ],
+      "second": [
+        13,
+        12
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-gatehouse",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 13.614,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        2,
+        12
+      ],
+      "second": [
+        2,
+        13
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-corner",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 13.267,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        12,
+        12
+      ],
+      "second": [
+        13,
+        12
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": -4.108,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        12,
+        12
+      ],
+      "second": [
+        12,
+        13
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-wall-straight",
+      "alphaBoundingBoxGap": 6.668,
+      "guaranteedSilhouetteGap": true
+    },
+    {
+      "first": [
+        13,
+        12
+      ],
+      "second": [
+        13,
+        13
+      ],
+      "axis": "north-south",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -1.255,
+      "guaranteedSilhouetteGap": false
+    },
+    {
+      "first": [
+        12,
+        13
+      ],
+      "second": [
+        13,
+        13
+      ],
+      "axis": "east-west",
+      "firstArt": "stone-wall-straight",
+      "secondArt": "stone-gatehouse",
+      "alphaBoundingBoxGap": -5.559,
+      "guaranteedSilhouetteGap": false
+    }
+  ],
+  "pieces": [
+    {
+      "sourceId": "scenery:2",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(21.749 -36.376) scale(-0.453 0.453)",
+      "opacity": "1",
+      "origin": [
+        80,
+        101.75999999999999
+      ],
+      "worldFoot": [
+        80,
+        101.75999999999999
+      ],
+      "cell": [
+        2,
+        2
+      ],
+      "effectiveScale": 0.453,
+      "alpha128WorldBounds": [
+        60.299499999999995,
+        71.27299999999998,
+        99.7105,
+        102.98299999999999
+      ],
+      "adjacencyMaskNESW": 4
+    },
+    {
+      "sourceId": "scenery:3",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(-20.082 -26.926) scale(0.418)",
+      "opacity": "1",
+      "origin": [
+        208,
+        101.75999999999999
+      ],
+      "worldFoot": [
+        208,
+        101.75999999999999
+      ],
+      "cell": [
+        6,
+        2
+      ],
+      "effectiveScale": 0.418,
+      "alpha128WorldBounds": [
+        190.844,
+        83.82099999999998,
+        225.538,
+        106.81099999999999
+      ],
+      "adjacencyMaskNESW": 0
+    },
+    {
+      "sourceId": "scenery:4",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(25.199 -35.437) scale(-0.462 0.462)",
+      "opacity": "1",
+      "origin": [
+        400,
+        101.75999999999999
+      ],
+      "worldFoot": [
+        400,
+        101.75999999999999
+      ],
+      "cell": [
+        12,
+        2
+      ],
+      "effectiveScale": 0.462,
+      "alpha128WorldBounds": [
+        383.15700000000004,
+        78.56599999999999,
+        422.658,
+        101.89699999999999
+      ],
+      "adjacencyMaskNESW": 6
+    },
+    {
+      "sourceId": "scenery:5",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-16.672 -30.830) scale(0.402)",
+      "opacity": "1",
+      "origin": [
+        432,
+        101.75999999999999
+      ],
+      "worldFoot": [
+        432,
+        101.75999999999999
+      ],
+      "cell": [
+        13,
+        2
+      ],
+      "effectiveScale": 0.402,
+      "alpha128WorldBounds": [
+        417.539,
+        81.583,
+        451.90999999999997,
+        101.88399999999999
+      ],
+      "adjacencyMaskNESW": 12
+    },
+    {
+      "sourceId": "scenery:6",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-19.931 -36.855) scale(0.481)",
+      "opacity": "1",
+      "origin": [
+        592,
+        101.75999999999999
+      ],
+      "worldFoot": [
+        592,
+        101.75999999999999
+      ],
+      "cell": [
+        18,
+        2
+      ],
+      "effectiveScale": 0.481,
+      "alpha128WorldBounds": [
+        574.7144999999999,
+        77.6515,
+        615.8399999999999,
+        101.94200000000001
+      ],
+      "adjacencyMaskNESW": 0
+    },
+    {
+      "sourceId": "scenery:8",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(19.398 -32.444) scale(-0.404 0.404)",
+      "opacity": "1",
+      "origin": [
+        720,
+        101.75999999999999
+      ],
+      "worldFoot": [
+        720,
+        101.75999999999999
+      ],
+      "cell": [
+        22,
+        2
+      ],
+      "effectiveScale": 0.404,
+      "alpha128WorldBounds": [
+        702.432,
+        74.56799999999998,
+        737.58,
+        102.84799999999998
+      ],
+      "adjacencyMaskNESW": 0
+    },
+    {
+      "sourceId": "scenery:12",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(21.899 -29.363) scale(-0.456 0.456)",
+      "opacity": "1",
+      "origin": [
+        80,
+        133.76
+      ],
+      "worldFoot": [
+        80,
+        133.76
+      ],
+      "cell": [
+        2,
+        3
+      ],
+      "effectiveScale": 0.456,
+      "alpha128WorldBounds": [
+        60.859,
+        114.201,
+        98.707,
+        139.281
+      ],
+      "adjacencyMaskNESW": 5
+    },
+    {
+      "sourceId": "scenery:15",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(22.804 -38.140) scale(-0.475 0.475)",
+      "opacity": "1",
+      "origin": [
+        400,
+        133.76
+      ],
+      "worldFoot": [
+        400,
+        133.76
+      ],
+      "cell": [
+        12,
+        3
+      ],
+      "effectiveScale": 0.475,
+      "alpha128WorldBounds": [
+        379.3415,
+        101.79499999999999,
+        420.6665,
+        135.045
+      ],
+      "adjacencyMaskNESW": 7
+    },
+    {
+      "sourceId": "scenery:16",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(21.335 -28.607) scale(-0.444 0.444)",
+      "opacity": "1",
+      "origin": [
+        432,
+        133.76
+      ],
+      "worldFoot": [
+        432,
+        133.76
+      ],
+      "cell": [
+        13,
+        3
+      ],
+      "effectiveScale": 0.444,
+      "alpha128WorldBounds": [
+        413.375,
+        114.69899999999998,
+        450.227,
+        139.119
+      ],
+      "adjacencyMaskNESW": 13
+    },
+    {
+      "sourceId": "scenery:17",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-23.578 -39.434) scale(0.491)",
+      "opacity": "1",
+      "origin": [
+        688,
+        133.76
+      ],
+      "worldFoot": [
+        688,
+        133.76
+      ],
+      "cell": [
+        21,
+        3
+      ],
+      "effectiveScale": 0.491,
+      "alpha128WorldBounds": [
+        666.6315000000001,
+        100.70899999999999,
+        709.3485000000001,
+        135.079
+      ],
+      "adjacencyMaskNESW": 0
+    },
+    {
+      "sourceId": "scenery:19",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-19.774 -36.566) scale(0.477)",
+      "opacity": "1",
+      "origin": [
+        80,
+        165.76
+      ],
+      "worldFoot": [
+        80,
+        165.76
+      ],
+      "cell": [
+        2,
+        4
+      ],
+      "effectiveScale": 0.477,
+      "alpha128WorldBounds": [
+        62.8495,
+        141.8345,
+        103.633,
+        165.923
+      ],
+      "adjacencyMaskNESW": 1
+    },
+    {
+      "sourceId": "scenery:20",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-20.451 -37.818) scale(0.493)",
+      "opacity": "1",
+      "origin": [
+        208,
+        165.76
+      ],
+      "worldFoot": [
+        208,
+        165.76
+      ],
+      "cell": [
+        6,
+        4
+      ],
+      "effectiveScale": 0.493,
+      "alpha128WorldBounds": [
+        190.2605,
+        141.0065,
+        232.412,
+        165.903
+      ],
+      "adjacencyMaskNESW": 0
+    },
+    {
+      "sourceId": "scenery:22",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(24.415 -34.335) scale(-0.448 0.448)",
+      "opacity": "1",
+      "origin": [
+        400,
+        165.76
+      ],
+      "worldFoot": [
+        400,
+        165.76
+      ],
+      "cell": [
+        12,
+        4
+      ],
+      "effectiveScale": 0.448,
+      "alpha128WorldBounds": [
+        383.64700000000005,
+        143.29699999999997,
+        421.951,
+        165.921
+      ],
+      "adjacencyMaskNESW": 7
+    },
+    {
+      "sourceId": "scenery:23",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-22.850 -38.217) scale(0.476)",
+      "opacity": "1",
+      "origin": [
+        432,
+        165.76
+      ],
+      "worldFoot": [
+        432,
+        165.76
+      ],
+      "cell": [
+        13,
+        4
+      ],
+      "effectiveScale": 0.476,
+      "alpha128WorldBounds": [
+        411.292,
+        133.731,
+        452.70399999999995,
+        167.051
+      ],
+      "adjacencyMaskNESW": 13
+    },
+    {
+      "sourceId": "scenery:25",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-20.029 -33.498) scale(0.417)",
+      "opacity": "1",
+      "origin": [
+        592,
+        165.76
+      ],
+      "worldFoot": [
+        592,
+        165.76
+      ],
+      "cell": [
+        18,
+        4
+      ],
+      "effectiveScale": 0.417,
+      "alpha128WorldBounds": [
+        573.8475,
+        137.683,
+        610.1265,
+        166.873
+      ],
+      "adjacencyMaskNESW": 0
+    },
+    {
+      "sourceId": "scenery:27",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-18.459 -30.873) scale(0.385)",
+      "opacity": "1",
+      "origin": [
+        720,
+        165.76
+      ],
+      "worldFoot": [
+        720,
+        165.76
+      ],
+      "cell": [
+        22,
+        4
+      ],
+      "effectiveScale": 0.385,
+      "alpha128WorldBounds": [
+        703.2735,
+        139.892,
+        736.7685,
+        166.842
+      ],
+      "adjacencyMaskNESW": 0
+    },
+    {
+      "sourceId": "scenery:28",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(22.247 -37.209) scale(-0.463 0.463)",
+      "opacity": "1",
+      "origin": [
+        400,
+        197.76
+      ],
+      "worldFoot": [
+        400,
+        197.76
+      ],
+      "cell": [
+        12,
+        5
+      ],
+      "effectiveScale": 0.463,
+      "alpha128WorldBounds": [
+        379.8825,
+        166.57,
+        420.1635,
+        198.98
+      ],
+      "adjacencyMaskNESW": 7
+    },
+    {
+      "sourceId": "scenery:29",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(18.334 -30.663) scale(-0.382 0.382)",
+      "opacity": "1",
+      "origin": [
+        432,
+        197.76
+      ],
+      "worldFoot": [
+        432,
+        197.76
+      ],
+      "cell": [
+        13,
+        5
+      ],
+      "effectiveScale": 0.382,
+      "alpha128WorldBounds": [
+        415.381,
+        172.063,
+        448.615,
+        198.80299999999997
+      ],
+      "adjacencyMaskNESW": 13
+    },
+    {
+      "sourceId": "scenery:30",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-19.715 -32.974) scale(0.411)",
+      "opacity": "1",
+      "origin": [
+        80,
+        229.76
+      ],
+      "worldFoot": [
+        80,
+        229.76
+      ],
+      "cell": [
+        2,
+        6
+      ],
+      "effectiveScale": 0.411,
+      "alpha128WorldBounds": [
+        62.134499999999996,
+        202.129,
+        97.8915,
+        230.899
+      ],
+      "adjacencyMaskNESW": 2
+    },
+    {
+      "sourceId": "scenery:31",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(19.545 -26.207) scale(-0.407 0.407)",
+      "opacity": "1",
+      "origin": [
+        112,
+        229.76
+      ],
+      "worldFoot": [
+        112,
+        229.76
+      ],
+      "cell": [
+        3,
+        6
+      ],
+      "effectiveScale": 0.407,
+      "alpha128WorldBounds": [
+        94.91500000000002,
+        212.30349999999999,
+        128.69600000000003,
+        234.6885
+      ],
+      "adjacencyMaskNESW": 10
+    },
+    {
+      "sourceId": "scenery:32",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(26.274 -36.949) scale(-0.482 0.482)",
+      "opacity": "1",
+      "origin": [
+        144,
+        229.76
+      ],
+      "worldFoot": [
+        144,
+        229.76
+      ],
+      "cell": [
+        4,
+        6
+      ],
+      "effectiveScale": 0.482,
+      "alpha128WorldBounds": [
+        126.412,
+        205.58399999999997,
+        167.623,
+        229.92499999999998
+      ],
+      "adjacencyMaskNESW": 8
+    },
+    {
+      "sourceId": "scenery:33",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-19.234 -35.567) scale(0.464)",
+      "opacity": "1",
+      "origin": [
+        272,
+        229.76
+      ],
+      "worldFoot": [
+        272,
+        229.76
+      ],
+      "cell": [
+        8,
+        6
+      ],
+      "effectiveScale": 0.464,
+      "alpha128WorldBounds": [
+        255.31799999999998,
+        206.48899999999998,
+        294.99,
+        229.921
+      ],
+      "adjacencyMaskNESW": 6
+    },
+    {
+      "sourceId": "scenery:34",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(23.425 -31.410) scale(-0.488 0.488)",
+      "opacity": "1",
+      "origin": [
+        304,
+        229.76
+      ],
+      "worldFoot": [
+        304,
+        229.76
+      ],
+      "cell": [
+        9,
+        6
+      ],
+      "effectiveScale": 0.488,
+      "alpha128WorldBounds": [
+        283.505,
+        208.84199999999998,
+        324.009,
+        235.682
+      ],
+      "adjacencyMaskNESW": 12
+    },
+    {
+      "sourceId": "scenery:35",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-23.029 -38.517) scale(0.480)",
+      "opacity": "1",
+      "origin": [
+        400,
+        229.76
+      ],
+      "worldFoot": [
+        400,
+        229.76
+      ],
+      "cell": [
+        12,
+        6
+      ],
+      "effectiveScale": 0.48,
+      "alpha128WorldBounds": [
+        379.13100000000003,
+        197.483,
+        420.891,
+        231.083
+      ],
+      "adjacencyMaskNESW": 3
+    },
+    {
+      "sourceId": "scenery:36",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(-22.346 -29.963) scale(0.466)",
+      "opacity": "1",
+      "origin": [
+        432,
+        229.76
+      ],
+      "worldFoot": [
+        432,
+        229.76
+      ],
+      "cell": [
+        13,
+        6
+      ],
+      "effectiveScale": 0.466,
+      "alpha128WorldBounds": [
+        412.916,
+        209.816,
+        451.594,
+        235.446
+      ],
+      "adjacencyMaskNESW": 9
+    },
+    {
+      "sourceId": "scenery:37",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(-21.058 -28.236) scale(0.439)",
+      "opacity": "1",
+      "origin": [
+        528,
+        229.76
+      ],
+      "worldFoot": [
+        528,
+        229.76
+      ],
+      "cell": [
+        16,
+        6
+      ],
+      "effectiveScale": 0.439,
+      "alpha128WorldBounds": [
+        510.015,
+        210.9625,
+        546.452,
+        235.10750000000002
+      ],
+      "adjacencyMaskNESW": 6
+    },
+    {
+      "sourceId": "scenery:38",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-18.500 -34.210) scale(0.446)",
+      "opacity": "1",
+      "origin": [
+        560,
+        229.76
+      ],
+      "worldFoot": [
+        560,
+        229.76
+      ],
+      "cell": [
+        17,
+        6
+      ],
+      "effectiveScale": 0.446,
+      "alpha128WorldBounds": [
+        543.953,
+        207.36899999999997,
+        582.086,
+        229.892
+      ],
+      "adjacencyMaskNESW": 12
+    },
+    {
+      "sourceId": "scenery:39",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-19.177 -32.074) scale(0.400)",
+      "opacity": "1",
+      "origin": [
+        688,
+        229.76
+      ],
+      "worldFoot": [
+        688,
+        229.76
+      ],
+      "cell": [
+        21,
+        6
+      ],
+      "effectiveScale": 0.4,
+      "alpha128WorldBounds": [
+        670.6229999999999,
+        202.88599999999997,
+        705.423,
+        230.88599999999997
+      ],
+      "adjacencyMaskNESW": 2
+    },
+    {
+      "sourceId": "scenery:40",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(-23.555 -31.583) scale(0.491)",
+      "opacity": "1",
+      "origin": [
+        720,
+        229.76
+      ],
+      "worldFoot": [
+        720,
+        229.76
+      ],
+      "cell": [
+        22,
+        6
+      ],
+      "effectiveScale": 0.491,
+      "alpha128WorldBounds": [
+        699.8820000000001,
+        208.7335,
+        740.635,
+        235.7385
+      ],
+      "adjacencyMaskNESW": 10
+    },
+    {
+      "sourceId": "scenery:41",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(21.193 -35.446) scale(-0.442 0.442)",
+      "opacity": "1",
+      "origin": [
+        752,
+        229.76
+      ],
+      "worldFoot": [
+        752,
+        229.76
+      ],
+      "cell": [
+        23,
+        6
+      ],
+      "effectiveScale": 0.442,
+      "alpha128WorldBounds": [
+        732.75,
+        200.06,
+        771.204,
+        231.0
+      ],
+      "adjacencyMaskNESW": 8
+    },
+    {
+      "sourceId": "scenery:43",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(20.691 -34.606) scale(-0.431 0.431)",
+      "opacity": "1",
+      "origin": [
+        272,
+        261.76
+      ],
+      "worldFoot": [
+        272,
+        261.76
+      ],
+      "cell": [
+        8,
+        7
+      ],
+      "effectiveScale": 0.431,
+      "alpha128WorldBounds": [
+        253.25449999999998,
+        232.757,
+        290.75149999999996,
+        262.927
+      ],
+      "adjacencyMaskNESW": 7
+    },
+    {
+      "sourceId": "scenery:44",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(-22.927 -30.742) scale(0.478)",
+      "opacity": "1",
+      "origin": [
+        304,
+        261.76
+      ],
+      "worldFoot": [
+        304,
+        261.76
+      ],
+      "cell": [
+        9,
+        7
+      ],
+      "effectiveScale": 0.478,
+      "alpha128WorldBounds": [
+        284.419,
+        241.295,
+        324.09299999999996,
+        267.585
+      ],
+      "adjacencyMaskNESW": 13
+    },
+    {
+      "sourceId": "scenery:45",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(18.770 -25.168) scale(-0.391 0.391)",
+      "opacity": "1",
+      "origin": [
+        528,
+        261.76
+      ],
+      "worldFoot": [
+        528,
+        261.76
+      ],
+      "cell": [
+        16,
+        7
+      ],
+      "effectiveScale": 0.391,
+      "alpha128WorldBounds": [
+        511.58,
+        244.99849999999998,
+        544.033,
+        266.5035
+      ],
+      "adjacencyMaskNESW": 7
+    },
+    {
+      "sourceId": "scenery:46",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(18.281 -24.512) scale(-0.381 0.381)",
+      "opacity": "1",
+      "origin": [
+        560,
+        261.76
+      ],
+      "worldFoot": [
+        560,
+        261.76
+      ],
+      "cell": [
+        17,
+        7
+      ],
+      "effectiveScale": 0.381,
+      "alpha128WorldBounds": [
+        543.991,
+        245.43949999999998,
+        575.6139999999999,
+        266.3945
+      ],
+      "adjacencyMaskNESW": 13
+    },
+    {
+      "sourceId": "scenery:48",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(22.265 -29.854) scale(-0.464 0.464)",
+      "opacity": "1",
+      "origin": [
+        80,
+        293.76
+      ],
+      "worldFoot": [
+        80,
+        293.76
+      ],
+      "cell": [
+        2,
+        8
+      ],
+      "effectiveScale": 0.464,
+      "alpha128WorldBounds": [
+        60.504999999999995,
+        273.882,
+        99.017,
+        299.402
+      ],
+      "adjacencyMaskNESW": 4
+    },
+    {
+      "sourceId": "scenery:51",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-20.626 -38.140) scale(0.497)",
+      "opacity": "1",
+      "origin": [
+        272,
+        293.76
+      ],
+      "worldFoot": [
+        272,
+        293.76
+      ],
+      "cell": [
+        8,
+        8
+      ],
+      "effectiveScale": 0.497,
+      "alpha128WorldBounds": [
+        254.1075,
+        268.7905,
+        296.601,
+        293.889
+      ],
+      "adjacencyMaskNESW": 7
+    },
+    {
+      "sourceId": "scenery:52",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(23.003 -30.843) scale(-0.479 0.479)",
+      "opacity": "1",
+      "origin": [
+        304,
+        293.76
+      ],
+      "worldFoot": [
+        304,
+        293.76
+      ],
+      "cell": [
+        9,
+        8
+      ],
+      "effectiveScale": 0.479,
+      "alpha128WorldBounds": [
+        283.893,
+        273.21549999999996,
+        323.65,
+        299.5605
+      ],
+      "adjacencyMaskNESW": 13
+    },
+    {
+      "sourceId": "scenery:53",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(22.213 -31.239) scale(-0.407 0.407)",
+      "opacity": "1",
+      "origin": [
+        528,
+        293.76
+      ],
+      "worldFoot": [
+        528,
+        293.76
+      ],
+      "cell": [
+        16,
+        8
+      ],
+      "effectiveScale": 0.407,
+      "alpha128WorldBounds": [
+        513.1759999999999,
+        273.3065,
+        547.9744999999999,
+        293.86
+      ],
+      "adjacencyMaskNESW": 7
+    },
+    {
+      "sourceId": "scenery:54",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(-23.865 -31.999) scale(0.497)",
+      "opacity": "1",
+      "origin": [
+        560,
+        293.76
+      ],
+      "worldFoot": [
+        560,
+        293.76
+      ],
+      "cell": [
+        17,
+        8
+      ],
+      "effectiveScale": 0.497,
+      "alpha128WorldBounds": [
+        539.614,
+        272.44649999999996,
+        580.865,
+        299.78149999999994
+      ],
+      "adjacencyMaskNESW": 13
+    },
+    {
+      "sourceId": "scenery:58",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(20.299 -33.951) scale(-0.423 0.423)",
+      "opacity": "1",
+      "origin": [
+        752,
+        293.76
+      ],
+      "worldFoot": [
+        752,
+        293.76
+      ],
+      "cell": [
+        23,
+        8
+      ],
+      "effectiveScale": 0.423,
+      "alpha128WorldBounds": [
+        733.5944999999999,
+        265.308,
+        770.3955,
+        294.91799999999995
+      ],
+      "adjacencyMaskNESW": 4
+    },
+    {
+      "sourceId": "scenery:59",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(24.189 -34.018) scale(-0.444 0.444)",
+      "opacity": "1",
+      "origin": [
+        80,
+        325.76
+      ],
+      "worldFoot": [
+        80,
+        325.76
+      ],
+      "cell": [
+        2,
+        9
+      ],
+      "effectiveScale": 0.444,
+      "alpha128WorldBounds": [
+        63.78499999999999,
+        303.508,
+        101.74699999999999,
+        325.92999999999995
+      ],
+      "adjacencyMaskNESW": 5
+    },
+    {
+      "sourceId": "scenery:61",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(19.227 -25.780) scale(-0.401 0.401)",
+      "opacity": "1",
+      "origin": [
+        272,
+        325.76
+      ],
+      "worldFoot": [
+        272,
+        325.76
+      ],
+      "cell": [
+        8,
+        9
+      ],
+      "effectiveScale": 0.401,
+      "alpha128WorldBounds": [
+        255.13699999999997,
+        308.60150000000004,
+        288.41999999999996,
+        330.6565
+      ],
+      "adjacencyMaskNESW": 3
+    },
+    {
+      "sourceId": "scenery:62",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(20.779 -34.753) scale(-0.433 0.433)",
+      "opacity": "1",
+      "origin": [
+        304,
+        325.76
+      ],
+      "worldFoot": [
+        304,
+        325.76
+      ],
+      "cell": [
+        9,
+        9
+      ],
+      "effectiveScale": 0.433,
+      "alpha128WorldBounds": [
+        285.1595,
+        296.636,
+        322.8305,
+        326.946
+      ],
+      "adjacencyMaskNESW": 13
+    },
+    {
+      "sourceId": "scenery:63",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(-20.529 -27.527) scale(0.428)",
+      "opacity": "1",
+      "origin": [
+        528,
+        325.76
+      ],
+      "worldFoot": [
+        528,
+        325.76
+      ],
+      "cell": [
+        16,
+        9
+      ],
+      "effectiveScale": 0.428,
+      "alpha128WorldBounds": [
+        510.467,
+        307.435,
+        545.991,
+        330.975
+      ],
+      "adjacencyMaskNESW": 7
+    },
+    {
+      "sourceId": "scenery:64",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(-21.302 -28.563) scale(0.444)",
+      "opacity": "1",
+      "origin": [
+        560,
+        325.76
+      ],
+      "worldFoot": [
+        560,
+        325.76
+      ],
+      "cell": [
+        17,
+        9
+      ],
+      "effectiveScale": 0.444,
+      "alpha128WorldBounds": [
+        541.8059999999999,
+        306.743,
+        578.658,
+        331.163
+      ],
+      "adjacencyMaskNESW": 9
+    },
+    {
+      "sourceId": "scenery:65",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(-20.119 -26.976) scale(0.419)",
+      "opacity": "1",
+      "origin": [
+        752,
+        325.76
+      ],
+      "worldFoot": [
+        752,
+        325.76
+      ],
+      "cell": [
+        23,
+        9
+      ],
+      "effectiveScale": 0.419,
+      "alpha128WorldBounds": [
+        734.814,
+        307.7925,
+        769.591,
+        330.8375
+      ],
+      "adjacencyMaskNESW": 5
+    },
+    {
+      "sourceId": "scenery:66",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-19.234 -32.170) scale(0.401)",
+      "opacity": "1",
+      "origin": [
+        80,
+        357.76
+      ],
+      "worldFoot": [
+        80,
+        357.76
+      ],
+      "cell": [
+        2,
+        10
+      ],
+      "effectiveScale": 0.401,
+      "alpha128WorldBounds": [
+        62.570499999999996,
+        330.803,
+        97.45750000000001,
+        358.873
+      ],
+      "adjacencyMaskNESW": 3
+    },
+    {
+      "sourceId": "scenery:67",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(20.250 -33.869) scale(-0.422 0.422)",
+      "opacity": "1",
+      "origin": [
+        112,
+        357.76
+      ],
+      "worldFoot": [
+        112,
+        357.76
+      ],
+      "cell": [
+        3,
+        10
+      ],
+      "effectiveScale": 0.422,
+      "alpha128WorldBounds": [
+        93.637,
+        329.37699999999995,
+        130.351,
+        358.917
+      ],
+      "adjacencyMaskNESW": 10
+    },
+    {
+      "sourceId": "scenery:68",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(18.825 -31.484) scale(-0.392 0.392)",
+      "opacity": "1",
+      "origin": [
+        144,
+        357.76
+      ],
+      "worldFoot": [
+        144,
+        357.76
+      ],
+      "cell": [
+        4,
+        10
+      ],
+      "effectiveScale": 0.392,
+      "alpha128WorldBounds": [
+        126.957,
+        331.372,
+        161.06099999999998,
+        358.812
+      ],
+      "adjacencyMaskNESW": 8
+    },
+    {
+      "sourceId": "scenery:69",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-19.708 -36.443) scale(0.475)",
+      "opacity": "1",
+      "origin": [
+        304,
+        357.76
+      ],
+      "worldFoot": [
+        304,
+        357.76
+      ],
+      "cell": [
+        9,
+        10
+      ],
+      "effectiveScale": 0.475,
+      "alpha128WorldBounds": [
+        286.90450000000004,
+        333.9045,
+        327.51700000000005,
+        357.892
+      ],
+      "adjacencyMaskNESW": 1
+    },
+    {
+      "sourceId": "scenery:70",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(21.333 -30.001) scale(-0.391 0.391)",
+      "opacity": "1",
+      "origin": [
+        400,
+        357.76
+      ],
+      "worldFoot": [
+        400,
+        357.76
+      ],
+      "cell": [
+        12,
+        10
+      ],
+      "effectiveScale": 0.391,
+      "alpha128WorldBounds": [
+        385.75199999999995,
+        338.1205,
+        419.18249999999995,
+        357.866
+      ],
+      "adjacencyMaskNESW": 6
+    },
+    {
+      "sourceId": "scenery:71",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(-23.761 -31.860) scale(0.495)",
+      "opacity": "1",
+      "origin": [
+        432,
+        357.76
+      ],
+      "worldFoot": [
+        432,
+        357.76
+      ],
+      "cell": [
+        13,
+        10
+      ],
+      "effectiveScale": 0.495,
+      "alpha128WorldBounds": [
+        411.70399999999995,
+        336.54249999999996,
+        452.789,
+        363.7675
+      ],
+      "adjacencyMaskNESW": 12
+    },
+    {
+      "sourceId": "scenery:72",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-23.212 -38.822) scale(0.484)",
+      "opacity": "1",
+      "origin": [
+        528,
+        357.76
+      ],
+      "worldFoot": [
+        528,
+        357.76
+      ],
+      "cell": [
+        16,
+        10
+      ],
+      "effectiveScale": 0.484,
+      "alpha128WorldBounds": [
+        506.966,
+        325.22999999999996,
+        549.0740000000001,
+        359.11
+      ],
+      "adjacencyMaskNESW": 1
+    },
+    {
+      "sourceId": "scenery:73",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-19.172 -32.065) scale(0.399)",
+      "opacity": "1",
+      "origin": [
+        688,
+        357.76
+      ],
+      "worldFoot": [
+        688,
+        357.76
+      ],
+      "cell": [
+        21,
+        10
+      ],
+      "effectiveScale": 0.399,
+      "alpha128WorldBounds": [
+        670.6234999999999,
+        330.882,
+        705.3365,
+        358.812
+      ],
+      "adjacencyMaskNESW": 2
+    },
+    {
+      "sourceId": "scenery:74",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(22.727 -38.010) scale(-0.473 0.473)",
+      "opacity": "1",
+      "origin": [
+        720,
+        357.76
+      ],
+      "worldFoot": [
+        720,
+        357.76
+      ],
+      "cell": [
+        22,
+        10
+      ],
+      "effectiveScale": 0.473,
+      "alpha128WorldBounds": [
+        699.4475,
+        325.899,
+        740.5985,
+        359.009
+      ],
+      "adjacencyMaskNESW": 10
+    },
+    {
+      "sourceId": "scenery:75",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-21.017 -35.151) scale(0.438)",
+      "opacity": "1",
+      "origin": [
+        752,
+        357.76
+      ],
+      "worldFoot": [
+        752,
+        357.76
+      ],
+      "cell": [
+        23,
+        10
+      ],
+      "effectiveScale": 0.438,
+      "alpha128WorldBounds": [
+        732.954,
+        328.303,
+        771.06,
+        358.96299999999997
+      ],
+      "adjacencyMaskNESW": 9
+    },
+    {
+      "sourceId": "scenery:78",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(22.279 -31.332) scale(-0.409 0.409)",
+      "opacity": "1",
+      "origin": [
+        400,
+        389.76
+      ],
+      "worldFoot": [
+        400,
+        389.76
+      ],
+      "cell": [
+        12,
+        11
+      ],
+      "effectiveScale": 0.409,
+      "alpha128WorldBounds": [
+        385.06,
+        369.2665,
+        420.0295,
+        389.921
+      ],
+      "adjacencyMaskNESW": 7
+    },
+    {
+      "sourceId": "scenery:79",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(18.333 -30.662) scale(-0.382 0.382)",
+      "opacity": "1",
+      "origin": [
+        432,
+        389.76
+      ],
+      "worldFoot": [
+        432,
+        389.76
+      ],
+      "cell": [
+        13,
+        11
+      ],
+      "effectiveScale": 0.382,
+      "alpha128WorldBounds": [
+        415.38,
+        364.064,
+        448.614,
+        390.80400000000003
+      ],
+      "adjacencyMaskNESW": 13
+    },
+    {
+      "sourceId": "scenery:81",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(26.642 -37.467) scale(-0.489 0.489)",
+      "opacity": "1",
+      "origin": [
+        80,
+        421.76
+      ],
+      "worldFoot": [
+        80,
+        421.76
+      ],
+      "cell": [
+        2,
+        12
+      ],
+      "effectiveScale": 0.489,
+      "alpha128WorldBounds": [
+        62.142999999999994,
+        397.2515,
+        103.9525,
+        421.946
+      ],
+      "adjacencyMaskNESW": 4
+    },
+    {
+      "sourceId": "scenery:85",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(22.856 -30.647) scale(-0.476 0.476)",
+      "opacity": "1",
+      "origin": [
+        400,
+        421.76
+      ],
+      "worldFoot": [
+        400,
+        421.76
+      ],
+      "cell": [
+        12,
+        12
+      ],
+      "effectiveScale": 0.476,
+      "alpha128WorldBounds": [
+        380.016,
+        401.347,
+        419.524,
+        427.527
+      ],
+      "adjacencyMaskNESW": 7
+    },
+    {
+      "sourceId": "scenery:86",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(-19.412 -26.028) scale(0.404)",
+      "opacity": "1",
+      "origin": [
+        432,
+        421.76
+      ],
+      "worldFoot": [
+        432,
+        421.76
+      ],
+      "cell": [
+        13,
+        12
+      ],
+      "effectiveScale": 0.404,
+      "alpha128WorldBounds": [
+        415.416,
+        404.41799999999995,
+        448.94800000000004,
+        426.638
+      ],
+      "adjacencyMaskNESW": 13
+    },
+    {
+      "sourceId": "scenery:89",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(26.669 -37.505) scale(-0.489 0.489)",
+      "opacity": "1",
+      "origin": [
+        688,
+        421.76
+      ],
+      "worldFoot": [
+        688,
+        421.76
+      ],
+      "cell": [
+        21,
+        12
+      ],
+      "effectiveScale": 0.489,
+      "alpha128WorldBounds": [
+        670.17,
+        397.2135,
+        711.9795,
+        421.908
+      ],
+      "adjacencyMaskNESW": 0
+    },
+    {
+      "sourceId": "scenery:91",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(20.776 -27.857) scale(-0.433 0.433)",
+      "opacity": "1",
+      "origin": [
+        80,
+        453.76
+      ],
+      "worldFoot": [
+        80,
+        453.76
+      ],
+      "cell": [
+        2,
+        13
+      ],
+      "effectiveScale": 0.433,
+      "alpha128WorldBounds": [
+        61.806,
+        435.21250000000003,
+        97.74499999999999,
+        459.02750000000003
+      ],
+      "adjacencyMaskNESW": 1
+    },
+    {
+      "sourceId": "scenery:92",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(20.254 -33.875) scale(-0.422 0.422)",
+      "opacity": "1",
+      "origin": [
+        208,
+        453.76
+      ],
+      "worldFoot": [
+        208,
+        453.76
+      ],
+      "cell": [
+        6,
+        13
+      ],
+      "effectiveScale": 0.422,
+      "alpha128WorldBounds": [
+        189.641,
+        425.371,
+        226.355,
+        454.911
+      ],
+      "adjacencyMaskNESW": 0
+    },
+    {
+      "sourceId": "scenery:93",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(-21.919 -29.390) scale(0.457)",
+      "opacity": "1",
+      "origin": [
+        400,
+        453.76
+      ],
+      "worldFoot": [
+        400,
+        453.76
+      ],
+      "cell": [
+        12,
+        13
+      ],
+      "effectiveScale": 0.457,
+      "alpha128WorldBounds": [
+        381.28000000000003,
+        434.1955,
+        419.211,
+        459.33050000000003
+      ],
+      "adjacencyMaskNESW": 3
+    },
+    {
+      "sourceId": "scenery:94",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 12,
+      "cellId": "stone-gatehouse",
+      "anchor": [
+        48,
+        80.28070175438596
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(-20.247 -33.863) scale(0.422)",
+      "opacity": "1",
+      "origin": [
+        432,
+        453.76
+      ],
+      "worldFoot": [
+        432,
+        453.76
+      ],
+      "cell": [
+        13,
+        13
+      ],
+      "effectiveScale": 0.422,
+      "alpha128WorldBounds": [
+        413.652,
+        425.383,
+        450.366,
+        454.923
+      ],
+      "adjacencyMaskNESW": 9
+    },
+    {
+      "sourceId": "scenery:95",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 10,
+      "cellId": "stone-wall-straight",
+      "anchor": [
+        48,
+        64.3604465709729
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "transform": "translate(23.575 -31.610) scale(-0.491 0.491)",
+      "opacity": "1",
+      "origin": [
+        592,
+        453.76
+      ],
+      "worldFoot": [
+        592,
+        453.76
+      ],
+      "cell": [
+        18,
+        13
+      ],
+      "effectiveScale": 0.491,
+      "alpha128WorldBounds": [
+        571.385,
+        432.7065,
+        612.138,
+        459.7115
+      ],
+      "adjacencyMaskNESW": 0
+    },
+    {
+      "sourceId": "scenery:96",
+      "sourceImage": "crossings-fortifications@2x.png",
+      "atlas": "crossings-fortifications",
+      "cellIndex": 11,
+      "cellId": "stone-wall-corner",
+      "anchor": [
+        41.47049441786284,
+        76.68580542264753
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "transform": "translate(22.287 -31.343) scale(-0.409 0.409)",
+      "opacity": "1",
+      "origin": [
+        720,
+        453.76
+      ],
+      "worldFoot": [
+        720,
+        453.76
+      ],
+      "cell": [
+        22,
+        13
+      ],
+      "effectiveScale": 0.409,
+      "alpha128WorldBounds": [
+        705.068,
+        433.2555,
+        740.0375,
+        453.90999999999997
+      ],
+      "adjacencyMaskNESW": 0
+    }
+  ],
+  "pairStats": {
+    "east-west": {
+      "pairs": 25,
+      "guaranteedGaps": 0,
+      "gapMin": -12.708,
+      "gapMax": -0.042
+    },
+    "north-south": {
+      "pairs": 35,
+      "guaranteedGaps": 28,
+      "gapMin": -5.745,
+      "gapMax": 15.547
+    }
+  }
+}
