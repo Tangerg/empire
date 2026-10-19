@@ -4,16 +4,16 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 164,
+    "formalBound": 165,
     "boundByCategory": {
       "battle-prop": 60,
-      "combat-unit": 24,
+      "combat-unit": 25,
       "equipment": 47,
       "interactive-structure": 24,
       "mission-unit": 1,
       "skill": 8
     },
-    "rawPreservedTopics": 165,
+    "rawPreservedTopics": 167,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1994,14 +1994,23 @@
       "label": "林地行者",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-woodland-walker.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-woodland-walker.png",
+      "stageEvidence": {
+        "raw": "four native source poses/prompt/alpha probes retained",
+        "export": "shared46/946 scale,104x64frame, measured foot translation <=3.502px; opposite root steps and open-hand staff attack native review passed",
+        "runtimeBinding": "canonical and HD registered sequence; original1x1footprint retained",
+        "liveGame": "pending",
+        "evidence": "approved-v5/animation/woodland-walker/native-review.png"
+      }
     },
     {
       "topicId": "C01-UNIT-WYVERN-RIDER",
@@ -5382,8 +5391,10 @@
       "category": "skill",
       "label": "破甲术",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-09/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5396,8 +5407,10 @@
       "category": "skill",
       "label": "冲锋",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-10/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

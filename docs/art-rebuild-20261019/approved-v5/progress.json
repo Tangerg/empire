@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 26,
+  "authoredFourPoseBundles": 27,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 164,
+  "formalRuntimeBoundTopics": 165,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1024,6 +1024,13 @@
       "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
       "liveGame": "pending",
       "evidence": "approved-v5/static-batch-152/native-review.png"
+    },
+    "C01-UNIT-WOODLAND-WALKER": {
+      "raw": "four native source poses/prompt/alpha probes retained",
+      "export": "shared46/946 scale,104x64frame, measured foot translation <=3.502px; opposite root steps and open-hand staff attack native review passed",
+      "runtimeBinding": "canonical and HD registered sequence; original1x1footprint retained",
+      "liveGame": "pending",
+      "evidence": "approved-v5/animation/woodland-walker/native-review.png"
     }
   },
   "supplementalBundles": {

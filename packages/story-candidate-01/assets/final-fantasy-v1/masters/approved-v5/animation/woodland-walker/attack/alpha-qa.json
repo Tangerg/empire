@@ -24,5 +24,73 @@
   "alphaOnePixels": 8333,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "rootFoot": "screen-left-root",
+      "roi": [
+        320,
+        850,
+        700,
+        989
+      ],
+      "soleY": 978,
+      "bottomFourRowsMeanX": 574.5128205128206
+    },
+    {
+      "rootFoot": "screen-right-root",
+      "roi": [
+        920,
+        850,
+        1210,
+        960
+      ],
+      "soleY": 939,
+      "bottomFourRowsMeanX": 1089.6666666666667
+    }
+  ],
+  "sourceFootMidpoint": [
+    832.0897435897436,
+    958.5
+  ],
+  "suggestedSourceFoot": [
+    832,
+    978
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "staff-curl",
+      "rectangle": [
+        1378,
+        202,
+        1385,
+        209
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        747,
+        847,
+        754,
+        854
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "branch-gap",
+      "rectangle": [
+        762,
+        67,
+        769,
+        74
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Clear broad braced root stance, original-right arm extends curled wood staff toward screen-right, original-left empty palm is raised/open to direct action. Two connected arms/hands only, same trunk/crown/pale chest/leaf identity. No invented bow/sword or baked projectile/aura. Staff curl,leg andbranch gaps remain native transparent; all tips intact. Native and white QA viewed; one shared action for legacy bow/blade semantics remains explicit."
 }

@@ -24,5 +24,73 @@
   "alphaOnePixels": 6740,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "rootFoot": "screen-left-root",
+      "roi": [
+        450,
+        850,
+        790,
+        988
+      ],
+      "soleY": 976,
+      "bottomFourRowsMeanX": 639.4237288135594
+    },
+    {
+      "rootFoot": "screen-right-root",
+      "roi": [
+        835,
+        770,
+        1045,
+        895
+      ],
+      "soleY": 883,
+      "bottomFourRowsMeanX": 978.25
+    }
+  ],
+  "sourceFootMidpoint": [
+    808.8368644067797,
+    929.5
+  ],
+  "suggestedSourceFoot": [
+    809,
+    976
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "staff-curl",
+      "rectangle": [
+        1230,
+        187,
+        1237,
+        194
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        802,
+        892,
+        809,
+        899
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "branch-gap",
+      "rectangle": [
+        822,
+        62,
+        829,
+        69
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Screen-left broad root foot planted, screen-right root foot raised behind, genuinely opposite walk-a. Original-right staff and empty left hand retained. Newly visible lower staff end is rounded wood, not metal/new equipment. Same branch crown/bark face/pale chest/leaf costume and broad roots. Native and white QA inspected; open curl,leg andbranch spaces transparent, eyes confined, no external FX. Native1585x992 requires1transparent right column only."
 }

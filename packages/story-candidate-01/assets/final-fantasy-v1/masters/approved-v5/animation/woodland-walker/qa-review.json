@@ -1,0 +1,63 @@
+{
+  "status": "Native quartet/evidence complete; coordinator shared-scale sequence review pending",
+  "topic": "C01-UNIT-WOODLAND-WALKER",
+  "actualConsumers": [
+    "c01.woodland-walker"
+  ],
+  "bodyScale": "46/946",
+  "speciesScaleContract": "Original same-atlas tree full branch-crown height280px versus druid271px,ratio1.033. Coordinator approved46logical total including branch crown versus44logical human body. Idle highest branch11 to mean root sole957 gives946nativepx. Core bark-head crown approximately150 gives39.24logical, explicitly accepted in native/druid comparison19:28UTC rather than stretched to preliminary42.",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1586,
+      992
+    ],
+    "walk-b": [
+      1585,
+      992
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourcePaddingRequired": "Native idle/walk-a/attack1586x992; walk-b1585x992. Only1transparent right column needed at common-canvas export; native sources retained unchanged.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All selected native perimeters have0pixels alpha>1. Idle/attack/walk-b max0; walk-a max1 native specks retained. No cleanup.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPreserved": true,
+  "originalEquipmentHandsPreserved": true,
+  "twoArmsAndTwoHandsOnly": true,
+  "walkContactsOppose": true,
+  "threeNativeNegativeSpaceProbesPerPoseAllZero": true,
+  "attackSemantics": "Original-right arm extends same curled staff, original-left empty palm opens/raises; broad braced root stance. No bow/sword invention or external FX.",
+  "semanticContract": "C01-UNIT-WOODLAND-WALKER binds only c01.woodland-walker. Three initial c01-15 actors: allied silverwood-scout[4,14],enemy controlled-walker[17,7],east-walker[21,11]. Preserve actual tree-person source identity, original right-hand curled staff and empty left hand. Four original semantic slots idle/walk-a/attack/walk-b,32x48 original frame,anchor[16,47],footprint1x1. Walks have opposite root-foot contacts; attack is right staff aimed forward and left palm raised/open. Existing rules c01.ranger-bow and c01.border-blade conflict with original staff-only tree-person. One existing visual attack serves both weapons; no bow/sword invented, new gameplay, remap or fifth frame. Independent weapon icons and C01-FX-03/C01-FX-01 remain separate, no projectile or aura baked into character.",
+  "symbolContract": "No distinct sacred rune, cross, faction heraldry or lettering is visible on this character. Natural branch/leaf/wood shapes and small pale eyes preserved; keep branch/staff gaps genuinely transparent and do not invent glyphs or external aura.",
+  "independentFXBakedIntoCharacter": false,
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "gameplayFixClaimed": false
+}

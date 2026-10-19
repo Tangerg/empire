@@ -1,0 +1,339 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/walk-b/master.png"
+    },
+    "scale": 0.048625792811839326,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      826,
+      971
+    ],
+    "sourceFeet": {
+      "idle": [
+        826,
+        971
+      ],
+      "walk-a": [
+        754,
+        969
+      ],
+      "attack": [
+        832,
+        978
+      ],
+      "walk-b": [
+        809,
+        976
+      ]
+    },
+    "canvasPaddingTolerance": 1,
+    "registrationLimit": 4,
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        3.5010570824524314,
+        0.09725158562367865
+      ],
+      "attack": [
+        -0.29175475687103597,
+        -0.3403805496828753
+      ],
+      "walk-b": [
+        0.8266384778012685,
+        -0.24312896405919662
+      ]
+    }
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    48.164904862579284,
+    51.215644820295985
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f038d8748a3934a64d814da56a5410dfadfe81a6d6b6d55ab1de66b4abb9695e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          253
+        ],
+        "transparentPixels": 5295,
+        "nearOpaquePixels": 1000,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          5,
+          72,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f038d8748a3934a64d814da56a5410dfadfe81a6d6b6d55ab1de66b4abb9695e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21411,
+        "nearOpaquePixels": 4194,
+        "edgeMax": 0,
+        "visibleBounds": [
+          55,
+          9,
+          144,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/walk-a/master.png",
+      "registrationOffset": [
+        3.5010570824524314,
+        0.09725158562367865
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "eb92d72541a69382a51503b04254c34969bb013b2d3c43ce6e5081bf66175c2b",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5301,
+        "nearOpaquePixels": 987,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          5,
+          76,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/walk-a/master.png",
+      "registrationOffset": [
+        3.5010570824524314,
+        0.09725158562367865
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "eb92d72541a69382a51503b04254c34969bb013b2d3c43ce6e5081bf66175c2b",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21441,
+        "nearOpaquePixels": 4160,
+        "edgeMax": 0,
+        "visibleBounds": [
+          61,
+          9,
+          151,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/attack/master.png",
+      "registrationOffset": [
+        -0.29175475687103597,
+        -0.3403805496828753
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d0bf9cc23de5f839a31828fa19ff92892c77c90605d29a3e994539b985a26416",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5243,
+        "nearOpaquePixels": 1030,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          4,
+          80,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/attack/master.png",
+      "registrationOffset": [
+        -0.29175475687103597,
+        -0.3403805496828753
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d0bf9cc23de5f839a31828fa19ff92892c77c90605d29a3e994539b985a26416",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21232,
+        "nearOpaquePixels": 4348,
+        "edgeMax": 0,
+        "visibleBounds": [
+          48,
+          8,
+          161,
+          103
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/walk-b/master.png",
+      "registrationOffset": [
+        0.8266384778012685,
+        -0.24312896405919662
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "a83f6bff97a2c078825976cb485a3ffa1ce9704b18f7d3d617b4d977bd5d420c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5308,
+        "nearOpaquePixels": 964,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          4,
+          74,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/walk-b/master.png",
+      "registrationOffset": [
+        0.8266384778012685,
+        -0.24312896405919662
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "a83f6bff97a2c078825976cb485a3ffa1ce9704b18f7d3d617b4d977bd5d420c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21482,
+        "nearOpaquePixels": 4098,
+        "edgeMax": 0,
+        "visibleBounds": [
+          58,
+          9,
+          148,
+          102
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}
