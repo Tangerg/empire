@@ -51,3 +51,29 @@ class Connectors(unittest.TestCase):
   with tempfile.TemporaryDirectory() as tmp:
    build(ROOT,Path(tmp))
    with Image.open(Path(tmp)/'route-edge-dirt-road@2x.png') as im:self.assertEqual(im.getchannel('A').getextrema(),(0,0))
+ def test_variable_road_width_preserves_ports_and_joins(self):
+  mod,_=builder(ROOT)
+  for width in (15.36,22,30):
+   shapes=[geometry(mod,m,road_width_logical=width) for m in range(16)]
+   images=[compose(Image.new('RGB',(64,64),(100,120,140)),s,(72,61,45),thin=True) for s in shapes]
+   for m,im in enumerate(images):
+    for bit,point in enumerate(((32,0),(63,32),(32,63),(0,32))):
+     self.assertEqual(im.getpixel(point)[3]>128,bool(m&(1<<bit)))
+   for a in range(16):
+    for b in range(16):
+     if a&2 and b&8:self.assertEqual(images[a].crop((63,0,64,64)).tobytes(),images[b].crop((0,0,1,64)).tobytes())
+     if a&4 and b&1:self.assertEqual(images[a].crop((0,63,64,64)).tobytes(),images[b].crop((0,0,64,1)).tobytes())
+   cross_section=sum(shapes[10].getpixel((32,y))>=128 for y in range(64))
+   self.assertLessEqual(abs(cross_section/2-width),.5)
+  self.assertEqual(geometry(mod,10).tobytes(),geometry(mod,10,road_width_logical=15.36).tobytes())
+  self.assertEqual(geometry(mod,10,True,22).tobytes(),geometry(mod,10,True,30).tobytes())
+ def test_width_provenance_and_invalid_width(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   r=build(ROOT,Path(tmp)/'wide',road_width_logical=22)
+   self.assertEqual(r['roadWidthLogical'],22)
+   self.assertEqual(r['widthRatios']['road'],22/32)
+   self.assertEqual(r['outputs']['route-dirt-road@2x.png']['cells'],64)
+   for width in (0,32,-1,float('nan'),float('inf')):
+    target=Path(tmp)/'invalid'
+    with self.assertRaises(ValueError):build(ROOT,target,road_width_logical=width)
+    self.assertFalse(target.exists())
