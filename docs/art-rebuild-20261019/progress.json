@@ -4287,12 +4287,17 @@
     },
     {
       "topicId": "c02-battle-prop-soler-heat-emblems",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-soler-heat-emblems/revision-2/master.png",
       "verification": {
-        "state": "pending",
+        "state": "export-checked",
         "note": "Raw master preserved; runtime visual acceptance pending",
-        "semanticReview": "revision2 passed higher-resolution board cage/globe heatlamp comparison"
+        "semanticReview": "revision2 passed higher-resolution board cage/globe heatlamp comparison",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-028-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "98f600562a67e9359951189323551d54fd96da7671d49c47aee1119b29c179d6",
@@ -6653,7 +6658,8 @@
       "topicId": "c03-battle-prop-2e7df413",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "c03-battle-prop-2f038eea",
@@ -6689,7 +6695,8 @@
       "topicId": "c03-battle-prop-6a51fb07",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "c03-battle-prop-6ecfadac",
@@ -6731,7 +6738,8 @@
       "topicId": "c03-battle-prop-a4886438",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "c03-battle-prop-a7b85246",
@@ -6781,11 +6789,16 @@
     },
     {
       "topicId": "c03-battle-prop-c7e05f1c",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-c7e05f1c/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-028-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
@@ -6798,7 +6811,8 @@
       "topicId": "c03-battle-prop-caa5ebba",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "c03-battle-prop-cb065f97",
@@ -6865,11 +6879,16 @@
     },
     {
       "topicId": "c03-battle-prop-f7033df9",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-f7033df9/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-028-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
