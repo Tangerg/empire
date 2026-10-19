@@ -7852,14 +7852,16 @@
       "cellId": "pine-mature-a",
       "index": 9,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-mature-b",
       "index": 10,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-existing",
@@ -7941,7 +7943,8 @@
       "cellId": "mixed-forest-edge",
       "index": 4,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-temperate",
@@ -7962,7 +7965,8 @@
       "cellId": "fern-bed",
       "index": 7,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-temperate",
@@ -8019,6 +8023,20 @@
       "index": 15,
       "status": "pending",
       "source": null
+    }
+  ],
+  "baselineSemanticMismatches": [
+    {
+      "topicId": "c03-battle-prop-a7b85246",
+      "label": "翻倒粮车组",
+      "observedOriginal": "tied white sacks and rectangular tray; no cart visible",
+      "status": "preserve-original-identity-review-label-separately"
+    },
+    {
+      "topicId": "c03-battle-prop-ff4a64b9",
+      "label": "盐袋掩体组",
+      "observedOriginal": "wooden shield/weapon grouping with light sack",
+      "status": "preserve-original-identity-review-label-separately"
     }
   ]
 }
