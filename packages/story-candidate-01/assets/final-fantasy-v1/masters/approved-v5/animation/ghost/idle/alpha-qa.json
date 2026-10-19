@@ -111,8 +111,10 @@
       "zeroPixels": 49
     }
   ],
-  "semanticReview": "Original youthful bare human face, gray-brown tousled hair, sad expression, blue-gray scarf and armored coat, brown straps/belt/pouch, empty hands and warm ochre curling lower-body wisp remain. Native, white and black views inspected. Apparent spectral color is present, but substantial interior probes have alpha252–253, about99% opacity, so the requested meaningful 70–85% body opacity is NOT achieved. No external haze above alpha1; native perimeter gate passes. No programmatic alpha changes.",
+  "semanticReview": "Original youthful bare human face, gray-brown tousled hair, sad expression, blue-gray scarf and armored coat, brown straps/belt/pouch, empty hands and warm ochre curling lower-body wisp remain. Native, white and black views inspected. Apparent spectral color is present, but substantial interior probes have alpha252\u2013253, about99% opacity, so the requested meaningful 70\u201385% body opacity is NOT achieved. No external haze above alpha1; native perimeter gate passes. No programmatic alpha changes.",
   "requestedBodyTranslucencyAchieved": false,
   "status": "Identity pilot generated; body translucency requirement failed, bounded native correction proposed",
-  "alphaTargetClarification": "The 70–85% interior-opacity range was a worker prompt target, not a user-specified acceptance threshold. Coordinator 20:26 UTC permits one bounded native correction and will select the better legal native version using outer transparency, ghost semantics, readability and contained wisps; no repeated opacity-target rerolls."
+  "alphaTargetClarification": "The 70\u201385% interior-opacity range was a worker prompt target, not a user-specified acceptance threshold. Coordinator 20:26 UTC permits one bounded native correction and will select the better legal native version using outer transparency, ghost semantics, readability and contained wisps; no repeated opacity-target rerolls.",
+  "selectedAttempt": "attempt-01",
+  "selectionStatus": "preferred consistent-alpha candidate pending common-scale quartet review"
 }

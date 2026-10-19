@@ -1,0 +1,59 @@
+{
+  "atlas": "surface-graveyard",
+  "cell_index": 2,
+  "original_cellOrder_token": "graveyard-3",
+  "semantic_name_status": "exact manifest token; additional material description is visual observation, not invented semantic cell metadata",
+  "source_board_index": 10,
+  "source_crop": [
+    627,
+    627,
+    940,
+    940
+  ],
+  "swatch_dimensions": [
+    313,
+    313
+  ],
+  "original_visual_identity": "Lighter gray-brown/ochre dusty earth with scattered small gray stones and pale branching hairline root/crack markings; soil rather than fitted stone paving. Exact root-versus-crack interpretation is visually ambiguous and must not become invented objects.",
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-graveyard/graveyard-3-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-graveyard/graveyard-3-current-runtime-2x-cell.png",
+  "opaque": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "current_use": "catalog-only tone; no explicit current terrain selector chooses it",
+  "raw_runtime_opposite_edge_MAE_RGB": {
+    "LR": 0.0,
+    "TB": 0.0
+  },
+  "current_inset_core_opposite_edge_MAE_RGB": {
+    "LR": 11.435897435897436,
+    "TB": 9.083333333333334
+  },
+  "approved_generation_contract": "Parent confirmed four-source contract 2026-10-19 20:36 UTC; tone 0/1 first, then 2/3. 256 world period remains first scene-trial proposal.",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/source-contract.json",
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+  "original_full_source_sha256": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+  "reference_images_in_order": [
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-graveyard/graveyard-3-original-master-swatch.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png"
+  ],
+  "reference_roles": [
+    "original material identity and palette only; old dense detail to simplify",
+    "approved quiet broad earth-plane style only; do not copy warm tan palette or layout"
+  ],
+  "reference_sha256": {
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-graveyard/graveyard-3-original-master-swatch.png": "0965b6b7eec147a8f28949e5bafa5e4373df6ff6c587c7b24b4eae4b32682843",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53"
+  },
+  "native_request": [
+    1254,
+    1254
+  ],
+  "opaque_request": true,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "binding_status": "native source only; parent owns material sampling and seam review",
+  "prompt_sha256": "4102d33dc93f14139c667502cb486e00b0e3b827ab2356a179d4e6c3290fd730"
+}

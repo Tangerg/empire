@@ -1,0 +1,65 @@
+{
+  "asset": "graveyard-3",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "4907b41c455f1ef7413cb61833537e0c91b02d483253aee4b6ce07337f9fa36d",
+  "RGB_mean": [
+    106.98693940157048,
+    91.36362237331767,
+    68.10841543106716
+  ],
+  "RGB_std": [
+    9.64739435668971,
+    7.8189136728124815,
+    6.016867575632603
+  ],
+  "luma_mean": 93.00611363229373,
+  "luma_std": 8.022031315971324,
+  "luma_percentiles_5_50_95": [
+    80.4642,
+    92.80919999999999,
+    105.90259999999999
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 91.8980068555622,
+    "bottom": 91.47082697119218,
+    "left": 89.0240243645335,
+    "right": 87.79600744118821,
+    "central_half": 96.08713885248895
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 6.1661350345560875,
+    "top_bottom_mean_abs_RGB": 4.656299840510367,
+    "left_right_max_abs_RGB": 29.0,
+    "top_bottom_max_abs_RGB": 21.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Lighter dusty gray-brown/ochre soil with scattered gray angular stones; pale original root-or-crack ambiguity becomes subdued irregular soil seams, without invented large root objects or fitted pavement.",
+    "detail_density": "About 18-22 larger scattered stone accent groups plus some separate small stones. Roughly 6 small simplified tufts remain although the prompt requested nearly absent tufts.",
+    "scale_caveat": "Larger stone faces span about 7-14 world units at a 256-unit source period; smaller companions read around 2-5 units. Broad soil seams and mottled micro edges remain.",
+    "style_caveat": "Simple matte stones and readable broad earth color identity; residual fine low-contrast soil texture instead of wholly clean interiors. Very small added tufts are decorative variation, not a semantic change.",
+    "native_acceptance": "Opaque/dimensions passed; catalog-only variant with parent review pending, no seamlessness claim."
+  },
+  "reference_material_identity": "Lighter gray-brown/ochre dusty earth with scattered small gray stones and pale branching hairline root/crack markings; soil rather than fitted stone paving. Exact root-versus-crack interpretation is visually ambiguous and must not become invented objects.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

@@ -48,3 +48,9 @@ Initial interior probes have alpha252–253, near opaque. The numeric 70–85% o
 
 ## Bounded translucency revision measured, 20:29 UTC
 Native attempt-02 succeeds in meaningful bounded body alpha: chest median191, arm199 and lower-wisp interior197. Face stays near opaque at median253 for readability; no uniform opacity claim is made. Empty side regions have no alpha>1 pixels, all three 7x7 body-gap probes are alpha0, and perimeter alpha>1 count is zero. Full canvas remains1586x992. Largest connected alpha>64 body excluding detached fragments has crown y32 and connected-wisp tip y959, body927px, virtual anchor [831,959]. Proposed shared scale44/927, candidate104x64 at origin[8,4]. Both native attempts and exact prompts are preserved. Coordinator selection pending.
+
+## Selected idle and shared-scale approval
+Coordinator 2026-10-19 20:29 UTC reviewed black/white views and selected attempt-02: clear face and true bounded body translucency accepted. Lock shared44/927, virtual anchor[831,959], full1586x992, candidate104x64/origin[8,4], preserve identity across drifting phases and empty-hand touch.
+
+## Floating anchor and alpha-consistency review contract, 20:32 UTC
+Coordinator approved x registration using a fixed torso/belt-buckle landmark calibrated to idle, and y from the lowest connected body-wisp. Horizontal tail-tip swing must not translate the entire figure. List each landmark and offset at the unchanged shared scale. Walk-a returned near-opaque interiors (median253); continue the remaining poses, then compare the entire quartet. If the other poses are consistently near opaque, prefer comparison with original near-opaque idle attempt-01 rather than accepting one translucent idle and three opaque frames. Keep true-translucent idle attempt-02 as evidence. No repeated numeric-opacity rerolls.

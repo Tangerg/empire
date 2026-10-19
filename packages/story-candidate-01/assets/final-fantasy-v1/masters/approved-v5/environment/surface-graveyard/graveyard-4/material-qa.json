@@ -1,0 +1,65 @@
+{
+  "asset": "graveyard-4",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "f5e36939f16779d93cfec61322f0d27c76c11276866c0df43cbf34b5ddfb09d3",
+  "RGB_mean": [
+    64.70703318757965,
+    60.70854986531138,
+    60.03738594710642
+  ],
+  "RGB_std": [
+    7.139388453170644,
+    6.365805567026878,
+    6.010036870165302
+  ],
+  "luma_mean": 61.51016938473121,
+  "luma_std": 6.4759010443044875,
+  "luma_percentiles_5_50_95": [
+    51.709999999999994,
+    61.352999999999994,
+    70.9186
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 62.1674071197169,
+    "bottom": 62.75762678927432,
+    "left": 61.166264615729666,
+    "right": 59.714370638955344,
+    "central_half": 61.520192535194134
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 5.414673046251994,
+    "top_bottom_mean_abs_RGB": 4.434343434343434,
+    "left_right_max_abs_RGB": 22.0,
+    "top_bottom_max_abs_RGB": 20.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Deep cool charcoal-gray compact rocky soil, subdued gray embedded stone groups and sparse pale dry tufts. Cool dark-gray identity retained without black pools, lava, glow or cemetery objects.",
+    "detail_density": "About 20-24 distinct small accent groups, including 7 dry tufts. Broad soil values are quiet, with residual fine mottling and small ragged boundaries.",
+    "scale_caveat": "Most main stone faces span around 7-13 world units and tuft groups around 9-18 at the proposed 256-unit period; sparse but larger than the initial 2-6-unit guidance.",
+    "style_caveat": "Matte grouped stones and sparse tufts; soil remains more textured than the flat approved earth-plane reference. This is documented for scale review rather than changed by filtering.",
+    "native_acceptance": "Opaque/dimensions passed; catalog-only material candidate, no scene binding or seamlessness claim."
+  },
+  "reference_material_identity": "Deep cool charcoal/blue-gray compact rocky soil with scattered angular gray stones and sparse pale dry tufts; subdued irregular natural ground, no lava, glow, water pools or grave objects.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-graveyard",
+  "cell_index": 2,
+  "original_cellOrder_token": "graveyard-3",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-033e6c29-0e50-48b1-a36e-53e578a7cc2d.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/graveyard-3-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/source-contract.json",
+  "sha256": "4907b41c455f1ef7413cb61833537e0c91b02d483253aee4b6ce07337f9fa36d",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Lighter dusty gray-brown/ochre soil with scattered gray angular stones; pale original root-or-crack ambiguity becomes subdued irregular soil seams, without invented large root objects or fitted pavement.",
+    "detail_density": "About 18-22 larger scattered stone accent groups plus some separate small stones. Roughly 6 small simplified tufts remain although the prompt requested nearly absent tufts.",
+    "scale_caveat": "Larger stone faces span about 7-14 world units at a 256-unit source period; smaller companions read around 2-5 units. Broad soil seams and mottled micro edges remain.",
+    "style_caveat": "Simple matte stones and readable broad earth color identity; residual fine low-contrast soil texture instead of wholly clean interiors. Very small added tufts are decorative variation, not a semantic change.",
+    "native_acceptance": "Opaque/dimensions passed; catalog-only variant with parent review pending, no seamlessness claim."
+  }
+}

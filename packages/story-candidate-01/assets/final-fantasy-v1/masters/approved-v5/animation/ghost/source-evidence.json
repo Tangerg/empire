@@ -238,7 +238,7 @@
       "nonzeroPixels": 2825
     }
   },
-  "status": "Bounded body-translucency revision succeeds; coordinator idle selection pending",
+  "status": "Selected idle; remaining three poses in progress",
   "imageGenerationStarted": true,
   "actualConsumers": [
     "c01.ghost"
@@ -480,9 +480,9 @@
   "idlePilotAlphaLimitation": "Original youthful bare human face, gray-brown tousled hair, sad expression, blue-gray scarf and armored coat, brown straps/belt/pouch, empty hands and warm ochre curling lower-body wisp remain. Native, white and black views inspected. Apparent spectral color is present, but substantial interior probes have alpha252–253, about99% opacity, so the requested meaningful 70–85% body opacity is NOT achieved. No external haze above alpha1; native perimeter gate passes. No programmatic alpha changes.",
   "idleActualMeasurement": {
     "alphaThresholdGreaterThan": 64,
-    "method": "Largest 8-connected alpha>64 component, excluding detached fragments; no source pixels changed. Crown to lowest connected wisp defines pilot height.",
+    "method": "Largest 8-connected alpha>64 component, excluding detached fragments; read-only.",
     "bounds": [
-      531,
+      529,
       32,
       1050,
       960
@@ -496,36 +496,9 @@
       831,
       959
     ],
-    "bottomFourRowsMeanX": 831.1111111111111,
+    "bottomFourRowsMeanX": 830.704347826087,
     "notPhysicalFootContact": true
   },
-  "pendingIdleRevision": {
-    "candidate": "idle/attempt-02/master.png",
-    "review": "idle-translucency-review.json",
-    "actualChestAlphaMedian": 191,
-    "actualArmAlphaMedian": 199,
-    "actualLowerWispAlphaMedian": 197,
-    "faceAlphaMedian": 253,
-    "measurement": {
-      "alphaThresholdGreaterThan": 64,
-      "method": "Largest 8-connected alpha>64 component, excluding detached fragments; read-only.",
-      "bounds": [
-        529,
-        32,
-        1050,
-        960
-      ],
-      "crownY": 32,
-      "connectedWispTipY": 959,
-      "bodyHeight": 927,
-      "bodyTargetLogical": 44,
-      "proposedScale": 0.04746494066882417,
-      "suggestedVirtualHoverAnchor": [
-        831,
-        959
-      ],
-      "bottomFourRowsMeanX": 830.704347826087,
-      "notPhysicalFootContact": true
-    }
-  }
+  "coordinatorIdleApproval": "Coordinator 2026-10-19 20:29 UTC reviewed black/white views and selected attempt-02: clear face and true bounded body translucency accepted. Lock shared44/927, virtual anchor[831,959], full1586x992, candidate104x64/origin[8,4], preserve identity across drifting phases and empty-hand touch.",
+  "selectedIdleAttempt": "attempt-02"
 }
