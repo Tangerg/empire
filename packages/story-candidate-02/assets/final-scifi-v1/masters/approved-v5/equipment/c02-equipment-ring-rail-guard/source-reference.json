@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-ring-rail-guard",
+  "assetId": "C02-SFV1-equipment-ring-rail-guard",
+  "label": "环城轨卫主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-03.png",
+  "originalMasterSha256": "c37e18a461e9a713465b4f4981614dd42eeb3fb9b74b7cdb116fe0440d5c71b4",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 1
+  },
+  "sourceCropBox": [
+    5,
+    5,
+    309,
+    309
+  ],
+  "sourceMappingEvidence": "Verified visually against original full equipment board and topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-ring-rail-guard.png",
+  "runtimeReferenceSha256": "09ce74644eba940ceefbb8326cadd67535ea01c143adf2e4286ed5ec8814ef99",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}
