@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-2be16bd2",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-2be16bd2.png",
+  "label": "Bridge building corps",
+  "observed_original": "Runtime shows bamboo raft.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed role-based combination from matching board vocabulary. Not exact recovery of runtime slot. Atlas mapping unresolved.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 0,
+  "threshold_bboxes": {
+    "1": [
+      25,
+      37,
+      1214,
+      1222
+    ],
+    "128": [
+      49,
+      213,
+      1211,
+      1041
+    ],
+    "240": [
+      50,
+      213,
+      1210,
+      1040
+    ]
+  },
+  "visual_review": "Complete compact timber deck and rope coil. Portable equipment, no landscape. More than5 planks and4 lashings rather than prompt2, function intact."
+}

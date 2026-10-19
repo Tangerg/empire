@@ -4942,11 +4942,16 @@
     },
     {
       "topicId": "c02-equipment-guard-robot",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-guard-robot/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-052-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "e855885deda7230a0bfa7718027017dd37ae12555af849ac70ccb988e7ebcaf4"
@@ -5166,11 +5171,16 @@
     },
     {
       "topicId": "c02-equipment-star-vein-mage",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-star-vein-mage/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-052-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "788ebb8a07bb25a6ff70b6634f3649d6a49d35d27c7b6d2687136ce3ab976c27"
@@ -7787,11 +7797,15 @@
     },
     {
       "topicId": "c03-equip-2be16bd2",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-2be16bd2/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "source-inspection-before-generation"
+      "assignmentPhase": "source-inspection-before-generation",
+      "sourceSha256": "651eeb5a25b40482732f42ce74724f59f5bc5788ddd20fae25c8b623cdb21eac"
     },
     {
       "topicId": "c03-equip-3d86046f",
@@ -7989,11 +8003,15 @@
     },
     {
       "topicId": "c03-equip-b59c3f96",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-b59c3f96/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "source-inspection-before-generation"
+      "assignmentPhase": "source-inspection-before-generation",
+      "sourceSha256": "17a1f305cb08e1319510e3e028c0b9ee6e7825b0e364ab20fb5f661abb285f4c"
     },
     {
       "topicId": "c03-equip-c11ad030",

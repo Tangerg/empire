@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-b59c3f96",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-b59c3f96.png",
+  "label": "Signal drummer",
+  "observed_original": "Runtime shows cannon.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed role-based combination from matching board vocabulary. Not exact recovery of runtime slot. Atlas mapping unresolved.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 1,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      0,
+      1240,
+      1254
+    ],
+    "128": [
+      160,
+      133,
+      1143,
+      1121
+    ],
+    "240": [
+      161,
+      133,
+      1142,
+      1120
+    ]
+  },
+  "visual_review": "Two plain signal flags and small drum with sticks. Red saturation higher than requested dark-crimson, but no emblem/text. Matte cloth and clear signal role."
+}
