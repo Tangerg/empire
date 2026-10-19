@@ -1,0 +1,2578 @@
+{
+  "checkpoint": "c142e009db2961a68a4de1d4ee51da9cfe55e1bc",
+  "kind": "offline actual BoardView/SvgBoardSurface diagnostic; not live GPU/browser",
+  "projectionSources": {
+    "tools/art/fortification_pilot.ts": "c45397025342d03d3ec2c2df471530eed7a734a4aab5e859cda159d44bfd139a",
+    "tools/art/review_fortification_pilot.ts": "3e11945958f8dfa215c7fbf271d8980ea406285e6c5a37cd7dd3021adeb62540",
+    "packages/story-candidate-01/src/levels.ts": "bedff69291689e17c7af3d11b0b6e66472e85bf04399920c2bec67497444e2ad",
+    "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts": "a54ef0f171f49d58970d838752549bbc1caf5318265fbd3d71c6777f71f6c1a9",
+    "packages/game-ui/src/styles/app.css": "1828de426c9184eba0046d17d89c57c87087cd8dfb6e9bdc790e10987d9af754"
+  },
+  "actorCells": [
+    {
+      "id": 1,
+      "key": "campaign-laiya",
+      "type": "c01.laiya",
+      "cell": [
+        1,
+        9
+      ]
+    },
+    {
+      "id": 2,
+      "key": "campaign-torren",
+      "type": "c01.swordsman",
+      "cell": [
+        3,
+        8
+      ]
+    },
+    {
+      "id": 3,
+      "key": "campaign-elin",
+      "type": "c01.archer",
+      "cell": [
+        5,
+        10
+      ]
+    },
+    {
+      "id": 4,
+      "key": "campaign-mirelle",
+      "type": "c01.mirelle",
+      "cell": [
+        3,
+        7
+      ]
+    },
+    {
+      "id": 5,
+      "key": "campaign-bran",
+      "type": "c01.bran",
+      "cell": [
+        3,
+        11
+      ]
+    },
+    {
+      "id": 6,
+      "key": "campaign-tasha",
+      "type": "c01.tasha",
+      "cell": [
+        4,
+        9
+      ]
+    },
+    {
+      "id": 7,
+      "key": "campaign-ivra",
+      "type": "c01.ivra",
+      "cell": [
+        5,
+        12
+      ]
+    },
+    {
+      "id": 8,
+      "key": "archive-guard",
+      "type": "c01.banner-guard",
+      "cell": [
+        1,
+        13
+      ]
+    },
+    {
+      "id": 9,
+      "key": "archive-engineer",
+      "type": "c01.engineer",
+      "cell": [
+        4,
+        14
+      ]
+    },
+    {
+      "id": 10,
+      "key": "archive-bow",
+      "type": "c01.archer",
+      "cell": [
+        7,
+        13
+      ]
+    },
+    {
+      "id": 11,
+      "key": "archive-sword",
+      "type": "c01.swordsman",
+      "cell": [
+        8,
+        14
+      ]
+    },
+    {
+      "id": 12,
+      "key": "archive-cleric",
+      "type": "c01.gravekeeper",
+      "cell": [
+        6,
+        14
+      ]
+    },
+    {
+      "id": 13,
+      "key": "archive-reserve",
+      "type": "c01.banner-guard",
+      "cell": [
+        10,
+        14
+      ]
+    },
+    {
+      "id": 14,
+      "key": "archive-inquisitor",
+      "type": "c01.inquisitor",
+      "cell": [
+        10,
+        3
+      ]
+    },
+    {
+      "id": 15,
+      "key": "archive-guard-1",
+      "type": "c01.legion-shield",
+      "cell": [
+        14,
+        5
+      ]
+    },
+    {
+      "id": 16,
+      "key": "archive-guard-2",
+      "type": "c01.legion-shield",
+      "cell": [
+        12,
+        7
+      ]
+    },
+    {
+      "id": 17,
+      "key": "archive-mage",
+      "type": "c01.battle-mage",
+      "cell": [
+        15,
+        8
+      ]
+    },
+    {
+      "id": 18,
+      "key": "archive-knight",
+      "type": "c01.knight",
+      "cell": [
+        17,
+        4
+      ]
+    },
+    {
+      "id": 19,
+      "key": "west-archive-guard",
+      "type": "c01.templar",
+      "cell": [
+        8,
+        4
+      ]
+    },
+    {
+      "id": 20,
+      "key": "north-archive-bow",
+      "type": "c01.archer",
+      "cell": [
+        10,
+        1
+      ]
+    },
+    {
+      "id": 21,
+      "key": "central-archive-mage",
+      "type": "c01.battle-mage",
+      "cell": [
+        14,
+        10
+      ]
+    },
+    {
+      "id": 22,
+      "key": "east-archive-guard",
+      "type": "c01.legion-shield",
+      "cell": [
+        20,
+        7
+      ]
+    },
+    {
+      "id": 23,
+      "key": "south-archive-knight",
+      "type": "c01.knight",
+      "cell": [
+        18,
+        12
+      ]
+    },
+    {
+      "id": 24,
+      "key": "exit-inquisitor",
+      "type": "c01.inquisitor",
+      "cell": [
+        23,
+        13
+      ]
+    }
+  ],
+  "productionActivated": false,
+  "sourcePixelsEdited": false,
+  "sourceRepeat": true,
+  "cellPitch": 32,
+  "capLift": [
+    -4,
+    -16
+  ],
+  "sourcePixelsPerWorldUnit": 16,
+  "topSourceCore": [
+    115,
+    115,
+    1139,
+    1139
+  ],
+  "faceVWindow": [
+    371,
+    883
+  ],
+  "facePhysicalHeight": 32,
+  "stateUnchanged": true,
+  "levelUnchanged": true,
+  "editorUnchanged": true,
+  "levelSha256": "de2b27815ce0e90f5a889fc9d178aefa25f60c078c51ff39d545ef408620983e",
+  "captures": [
+    {
+      "name": "before",
+      "wallBindings": [
+        {
+          "cell": [
+            2,
+            2
+          ],
+          "mask": 4,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 80,
+          "y": 101.75999999999999,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "1de985e4549c8a0181daf1e7b7ec2a178d87ae3de34dffa6bea9dba9d1e5b584"
+        },
+        {
+          "cell": [
+            6,
+            2
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 208,
+          "y": 101.75999999999999,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "1a4f73db3851c1d4c55573ae9cdd943dc135c1ababbaae94af5322d7995f1d59"
+        },
+        {
+          "cell": [
+            12,
+            2
+          ],
+          "mask": 6,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 400,
+          "y": 101.75999999999999,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "0543464e3648f08195012dbcb492d651e7d0b605379d4fdd427f656d41361579"
+        },
+        {
+          "cell": [
+            13,
+            2
+          ],
+          "mask": 12,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 432,
+          "y": 101.75999999999999,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "48e3132a5a03c9271e67461de795056aba7b2a34a771d2fb5a8bab84db03223d"
+        },
+        {
+          "cell": [
+            18,
+            2
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 592,
+          "y": 101.75999999999999,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "41e3c1374cebb0c1bcae7143fda59c08547db93d27267da916bda231df27476e"
+        },
+        {
+          "cell": [
+            22,
+            2
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 720,
+          "y": 101.75999999999999,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "e49284c3c8b25a6c9a08c9206d8750f61610227bb25f0c7d422f2530a4ce31ff"
+        },
+        {
+          "cell": [
+            2,
+            3
+          ],
+          "mask": 5,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 80,
+          "y": 133.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "09c4309667b892aa2df195a7e3cfa2d6938775e0fbcbffe01e4e2fd22d71e4de"
+        },
+        {
+          "cell": [
+            12,
+            3
+          ],
+          "mask": 7,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 400,
+          "y": 133.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "5fd13c7fa68c9321c3c5fe757b7c55650ed3546bc928a3e64fafdbe862c586c2"
+        },
+        {
+          "cell": [
+            13,
+            3
+          ],
+          "mask": 13,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 432,
+          "y": 133.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "eceea977110f186de0679712c4104ed6eee91101f0de8fe08c6268f5a9a3533f"
+        },
+        {
+          "cell": [
+            21,
+            3
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 688,
+          "y": 133.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "619999d2f675528b43c08f38b68a6ac106b8f69d2ce979a97806afa43aecb003"
+        },
+        {
+          "cell": [
+            2,
+            4
+          ],
+          "mask": 1,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 80,
+          "y": 165.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "94ed12909125c51fbdd940426ae6fe949b745a31996e40a63816521abbe50884"
+        },
+        {
+          "cell": [
+            6,
+            4
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 208,
+          "y": 165.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "958df2c93bc4124dd6fdf5cdc78556f8ce8ccc320112cf667a5075679c8de777"
+        },
+        {
+          "cell": [
+            12,
+            4
+          ],
+          "mask": 7,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 400,
+          "y": 165.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "9fadd14f25b730b35142579a7ca4b7367c00848810a2e7f78c690f16ad31f28b"
+        },
+        {
+          "cell": [
+            13,
+            4
+          ],
+          "mask": 13,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 432,
+          "y": 165.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "29b062e4f79557dfb13ffca208f0c9646082d327e9213b88c41221f45d3de46a"
+        },
+        {
+          "cell": [
+            18,
+            4
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 592,
+          "y": 165.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "b5bf24ff13de060966afcd804faae8cce1c0f7648aab77db2d3d2ea1f4c158c4"
+        },
+        {
+          "cell": [
+            22,
+            4
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 720,
+          "y": 165.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "4c635f666160d554e5a1698773ec37dc47b3fd82b1b1bdce2fcf3061fc0cdb50"
+        },
+        {
+          "cell": [
+            12,
+            5
+          ],
+          "mask": 7,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 400,
+          "y": 197.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "7d61923e40cb51ae52b32ef9eec176f06046b835a253798763e8f848aabf834d"
+        },
+        {
+          "cell": [
+            13,
+            5
+          ],
+          "mask": 13,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 432,
+          "y": 197.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "6d86e71a2b40df7f99fa8dbd4a8f78ddbf80c4752efd1260b7854237c6efaad5"
+        },
+        {
+          "cell": [
+            2,
+            6
+          ],
+          "mask": 2,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 80,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "5fa9ffbb91f0a9922ce49c2e8b53295feef2167a02f795f731d8850b89461d01"
+        },
+        {
+          "cell": [
+            3,
+            6
+          ],
+          "mask": 10,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 112,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "b25a87dd7c7afef00239c37adacf222d566a7d1c2ac35fff6cd9589dad0af2ef"
+        },
+        {
+          "cell": [
+            4,
+            6
+          ],
+          "mask": 8,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 144,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "ecbe71d2a461b552b24b3fb57a42f520d1aa7c78dbba31bae4d8620828246304"
+        },
+        {
+          "cell": [
+            8,
+            6
+          ],
+          "mask": 6,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 272,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "7d99e3dfefc444a8b80253f94d61a514a3944950df46d7fc689fdf012f429330"
+        },
+        {
+          "cell": [
+            9,
+            6
+          ],
+          "mask": 12,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 304,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "85b6753791f067f14b03de12e1ed9da13c836cfe3d28b0822ebcbf82ced20b2a"
+        },
+        {
+          "cell": [
+            12,
+            6
+          ],
+          "mask": 3,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 400,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "b88fc710c9aab7ce208ea230acdc4c708287c9e21a4fd45fa7112ea33e4e9b41"
+        },
+        {
+          "cell": [
+            13,
+            6
+          ],
+          "mask": 9,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 432,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "75e2b7f67a100e49532daef680833225096d73997588964aaaa79ec5e2da7481"
+        },
+        {
+          "cell": [
+            16,
+            6
+          ],
+          "mask": 6,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 528,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "d2ad7ad8ceb2cd657138129dedd97fde70cd1d9090a7ece9c0756f4f96c6f2db"
+        },
+        {
+          "cell": [
+            17,
+            6
+          ],
+          "mask": 12,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 560,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "9a9b2661a8490a116bb4fcdc851fe019c7f87160fc0101e0a764510b4e96c5c6"
+        },
+        {
+          "cell": [
+            21,
+            6
+          ],
+          "mask": 2,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 688,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "7725b77a4b2e47efdbfa7ec78a46556703df23758a21c8237197ad8b874339d0"
+        },
+        {
+          "cell": [
+            22,
+            6
+          ],
+          "mask": 10,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 720,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "fbb5a62b6820d820351df48d784416a9b84f907c18fcb37cd64e4f9be5a1ae78"
+        },
+        {
+          "cell": [
+            23,
+            6
+          ],
+          "mask": 8,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 752,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "9f7dd066406b150766ba418e6c5eecfff4337473a8dc0b6eca8b620070a04fc9"
+        },
+        {
+          "cell": [
+            8,
+            7
+          ],
+          "mask": 7,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 272,
+          "y": 261.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "a791438e3977866360c9ab0f20b0a7faf1d40b460b2e07aa7851d2e89d2d35a2"
+        },
+        {
+          "cell": [
+            9,
+            7
+          ],
+          "mask": 13,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 304,
+          "y": 261.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "d412198cd8f6198a4705bf1360b634f7c3f4d1fd6599ace5069cdf259a0670d0"
+        },
+        {
+          "cell": [
+            16,
+            7
+          ],
+          "mask": 7,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 528,
+          "y": 261.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "5db939f4895b3f2f692006c0110bf5c7ce72f228487f052328ba419ceb40151d"
+        },
+        {
+          "cell": [
+            17,
+            7
+          ],
+          "mask": 13,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 560,
+          "y": 261.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "cc1401fbe4144746b1df3f270767911ff0fcad6ef5a78d28341593145df94862"
+        },
+        {
+          "cell": [
+            2,
+            8
+          ],
+          "mask": 4,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 80,
+          "y": 293.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "f8f950b374c89281dcbead373fa146d1ee2b7d82325b5d3ac3bb1aa517c7f345"
+        },
+        {
+          "cell": [
+            8,
+            8
+          ],
+          "mask": 7,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 272,
+          "y": 293.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "e6b4ef5d8ab20424d601fd9242b18d0908c45590ed41fafbc5da77df1eb3ccdd"
+        },
+        {
+          "cell": [
+            9,
+            8
+          ],
+          "mask": 13,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 304,
+          "y": 293.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "8149fe88c8c058f4b0a95cec0de676736544b6ea562156b74329ee7521c7c5f0"
+        },
+        {
+          "cell": [
+            16,
+            8
+          ],
+          "mask": 7,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 528,
+          "y": 293.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "66a2950394dc9a9746ecaa8e11906b736eb0c385420ab1b41908744f584ed693"
+        },
+        {
+          "cell": [
+            17,
+            8
+          ],
+          "mask": 13,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 560,
+          "y": 293.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "c3143236091808f9e618f793ec720dd40267f288e854fcea99eb3d75988f2d97"
+        },
+        {
+          "cell": [
+            23,
+            8
+          ],
+          "mask": 4,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 752,
+          "y": 293.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "e026faa9243c2e5806e1cec68e612d200c5c4a91793560a0cc4940943b9dd69b"
+        },
+        {
+          "cell": [
+            2,
+            9
+          ],
+          "mask": 5,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 80,
+          "y": 325.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "739c96c9c2a214c963181b6e4ec899d24ccfeeaa8f50a7d4006e8b30ba0753f0"
+        },
+        {
+          "cell": [
+            8,
+            9
+          ],
+          "mask": 3,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 272,
+          "y": 325.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "737a8cb8af61a7b7c77bef032534322fbb97dd0c21b1092c1a235ba1b5c19bb0"
+        },
+        {
+          "cell": [
+            9,
+            9
+          ],
+          "mask": 13,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 304,
+          "y": 325.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "134605cd138b8993111e22d8fe20cca25553e0885a9d763664b9e540d349d599"
+        },
+        {
+          "cell": [
+            16,
+            9
+          ],
+          "mask": 7,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 528,
+          "y": 325.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "bba3d17253d1c3f61afc1d8ac63d8c0542105a457b94fa88f1893b098421121a"
+        },
+        {
+          "cell": [
+            17,
+            9
+          ],
+          "mask": 9,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 560,
+          "y": 325.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "127181a7e8fd265c00dd9b917876fdb18c6e813335422c5cef30abd3a523de7d"
+        },
+        {
+          "cell": [
+            23,
+            9
+          ],
+          "mask": 5,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 752,
+          "y": 325.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "85727082692ce48b7da7e39c566a76920a036fa244d3afdfae4edd21df270656"
+        },
+        {
+          "cell": [
+            2,
+            10
+          ],
+          "mask": 3,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 80,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "161685c4bef7a4d9820f4e03ea27074f23efc73188de1679e283be617f7e368a"
+        },
+        {
+          "cell": [
+            3,
+            10
+          ],
+          "mask": 10,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 112,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "24fcf355add19e954fc58577e740cb505c6267a793038ece82892e41107824ca"
+        },
+        {
+          "cell": [
+            4,
+            10
+          ],
+          "mask": 8,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 144,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "95eac88f3fbcf3ba677ea5c4ce565246916bdfd8b436ebd918dc9193a6e036b7"
+        },
+        {
+          "cell": [
+            9,
+            10
+          ],
+          "mask": 1,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 304,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "2d1c71a5bab18f0df629be71aae40b45217a449d049a56b24d1366b4feeba8a0"
+        },
+        {
+          "cell": [
+            12,
+            10
+          ],
+          "mask": 6,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 400,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "7969f7113f796407d1563fc718ea1488d9ad8c6dac4967a38e6afac8224308bd"
+        },
+        {
+          "cell": [
+            13,
+            10
+          ],
+          "mask": 12,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 432,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "d61e4742ce80d540e60af0a94203df81e8f55c0d879e7e24454af43f6d8421ff"
+        },
+        {
+          "cell": [
+            16,
+            10
+          ],
+          "mask": 1,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 528,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "1b7b861bb7caf859a7cae4b048b7835b2820548b8a93a333fee47458c93ef0a5"
+        },
+        {
+          "cell": [
+            21,
+            10
+          ],
+          "mask": 2,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 688,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "3ba67ef4aaa550a0e1beb6aa8c30ebedc093d9dc578da42e626c16dc3bc1de59"
+        },
+        {
+          "cell": [
+            22,
+            10
+          ],
+          "mask": 10,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 720,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "feb8b5d48c85c78a2cb4915e790b31e10e841a14090d0a030f72b49285b7b02e"
+        },
+        {
+          "cell": [
+            23,
+            10
+          ],
+          "mask": 9,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 752,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "b11431b284c7d3963986f7efe8440c6d2a71800937a1c26ae4d1e408b5b88d11"
+        },
+        {
+          "cell": [
+            12,
+            11
+          ],
+          "mask": 7,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 400,
+          "y": 389.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "77b4b7e6ee5bbd980ae828aefe38a8541e4f0b1e677d9c6d05a64b3d3d03e484"
+        },
+        {
+          "cell": [
+            13,
+            11
+          ],
+          "mask": 13,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 432,
+          "y": 389.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "4f39f2f6445504ed2018b1d3e2df7aa32c97abc01d192044857dfd29e55ef05a"
+        },
+        {
+          "cell": [
+            2,
+            12
+          ],
+          "mask": 4,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 80,
+          "y": 421.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "24100657014b74b2094220662b0f5e9d3124b268250e4fdb537c55bbd6e4b1e0"
+        },
+        {
+          "cell": [
+            12,
+            12
+          ],
+          "mask": 7,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 400,
+          "y": 421.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "3ea844113f3f4d51b255ea126d99cd5bb8b02bb82df28458ed6df7d2b9e44cdc"
+        },
+        {
+          "cell": [
+            13,
+            12
+          ],
+          "mask": 13,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 432,
+          "y": 421.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "20b0c444cd6832b9bfc3eb82d0e8518dcb280e9a0a2e324aa351b1274adc3531"
+        },
+        {
+          "cell": [
+            21,
+            12
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 688,
+          "y": 421.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "51b53d37d7dc4d99dff9ef4e7f97f662fbb5b245ad975525dc35e6bf37c66f6e"
+        },
+        {
+          "cell": [
+            2,
+            13
+          ],
+          "mask": 1,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 80,
+          "y": 453.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "20886b6e86498472f275312fbf32effd8e21fd751cfe0ab8a908972d44781444"
+        },
+        {
+          "cell": [
+            6,
+            13
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 208,
+          "y": 453.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "1c26be153c6a61a19e253efdb8f91220bce9aed22e1304491cbb25a293b370db"
+        },
+        {
+          "cell": [
+            12,
+            13
+          ],
+          "mask": 3,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 400,
+          "y": 453.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "ed5c0ed9a4f1f87360c7440daba366bc3274a94908c5b05cb3175c963ad91e0a"
+        },
+        {
+          "cell": [
+            13,
+            13
+          ],
+          "mask": 9,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 432,
+          "y": 453.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "895ed99b42990be2d10308674a72c9623c243faaaa53b3b2ea541760a23f6e59"
+        },
+        {
+          "cell": [
+            18,
+            13
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 592,
+          "y": 453.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "a5cbf8a76fde53bc38a5b52d908351756ac0f7ca1cdf7f1e127ce701ab20571d"
+        },
+        {
+          "cell": [
+            22,
+            13
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 720,
+          "y": 453.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "c90c0b73811d2919d7dbc9aed0104bce6bfd6804e558fceefe55c6547247e347"
+        }
+      ],
+      "viewport": [
+        980,
+        648
+      ],
+      "actors": 24,
+      "buildings": 18,
+      "actorMarkupSha256": "38c34684f6414cc47f68322ca99f7c52d1b96cc1e47b0ed912686033ec0b4e4d",
+      "buildingMarkupSha256": "e21bbf897732476e79be94632a3c770744feae94692dd8ce7993b71fab28d963",
+      "layerHashes": {
+        "grid": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "terrain": "49e377fa31ca9ca8e7335f95089743f5e057de41bac73e424db4843f009aa8c5",
+        "ground": "b010b2c2c95a164ebcd2bd5b17267551dc9ca16ee60597149f3f88e0b338ad37",
+        "scenery": "3a6c389213fb90075338ef66a885cf448c8ed0bddd68603fe45e55690652a26a",
+        "foreground": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "spatial": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "range": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "path": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "cursor": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "stateSha256": "ec56c5b2890542a37362280e5f0728a8ef69071342d9d995d49b47ed2509a73a",
+      "sourcePngHashes": {
+        "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-old-stone@2x.png": "0fd43806cf590c8d93d020ea6ad83388c818faf0b11fcd4dbebc1a38ef27308a",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-stone-road@2x.png": "a58f35913fc156b262a9ddee0a040bd5817d33f5e09363032d498bc5d58b0ca6",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-stone-road@2x.png": "d2cc1895b8be8374ce4b8dd1e1f6b4e9b2ffc14618bc3a3e0427736b753cae83",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "986d0da8a5fffe61d34b7eca0a4cea7b3db3e0d3c0f136803e426d9cb13c2344",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "14965b98d009780ee104b29b34d4910ce5e0d221fc35ad06ec229ce725432b84",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "b47e620fecd606de6ddbd524ab1b8a8e08970c3bbc74f9d3ad51ef34b0893a49",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png": "cc772464cc6d6e524978fa40ff58d11b10f572ccf1b18a2a5fb482b122364531",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-joint-granary@2x.png": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-refugee-shelter@2x.png": "801f1c31a90cead562dc8c679774e2cc849f726ccbab8be0b908094e38faaee7",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-inquisitor@2x.png": "eb2034b791f5b0f9298466749f8ef15eee44a962a82a80e169ae6a87b7983ade",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-templar@2x.png": "72fdc284c88bdd42e386ab70eb3dcdad1fa133564e56be858f70b6d0e82ed344",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-knight@2x.png": "b908fc8b74ec665a9a66f449132a587fd5782a1e65959a3fe9ea3785ce415bba",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-battle-mage@2x.png": "a0baa90bf2fba5804b282d8f7561f36ff9e99ea66cdbd87022e0837569aa6778",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger@2x.png": "27d13b44ade8852fd8551953b6ec55066ec9eae0349f3dc00181388f4cac1145",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ivra-growth.png": "7dc4db3ff2bcb40b0dc39a877559f7be040c0257c342412d890e2a0f0e7d4857",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992"
+      }
+    },
+    {
+      "name": "partial",
+      "wallBindings": [
+        {
+          "cell": [
+            2,
+            2
+          ],
+          "mask": 4,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 80,
+          "y": 101.75999999999999,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "1de985e4549c8a0181daf1e7b7ec2a178d87ae3de34dffa6bea9dba9d1e5b584"
+        },
+        {
+          "cell": [
+            6,
+            2
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 208,
+          "y": 101.75999999999999,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "1a4f73db3851c1d4c55573ae9cdd943dc135c1ababbaae94af5322d7995f1d59"
+        },
+        {
+          "cell": [
+            12,
+            2
+          ],
+          "mask": 6,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 400,
+          "y": 101.75999999999999,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "0543464e3648f08195012dbcb492d651e7d0b605379d4fdd427f656d41361579"
+        },
+        {
+          "cell": [
+            13,
+            2
+          ],
+          "mask": 12,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 432,
+          "y": 101.75999999999999,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "48e3132a5a03c9271e67461de795056aba7b2a34a771d2fb5a8bab84db03223d"
+        },
+        {
+          "cell": [
+            18,
+            2
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 592,
+          "y": 101.75999999999999,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "41e3c1374cebb0c1bcae7143fda59c08547db93d27267da916bda231df27476e"
+        },
+        {
+          "cell": [
+            22,
+            2
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 720,
+          "y": 101.75999999999999,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "e49284c3c8b25a6c9a08c9206d8750f61610227bb25f0c7d422f2530a4ce31ff"
+        },
+        {
+          "cell": [
+            2,
+            3
+          ],
+          "mask": 5,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-5",
+          "x": 64,
+          "y": 96,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "c5500dc624c9e887129faba0a1e0ecc53f740f99e493d892fd72557651796246"
+        },
+        {
+          "cell": [
+            12,
+            3
+          ],
+          "mask": 7,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-7",
+          "x": 384,
+          "y": 96,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "0a282613e1b2698d29042083a42dcf4e8b9bfef2a5e08a9bb8ab7b6ce899a5f6"
+        },
+        {
+          "cell": [
+            13,
+            3
+          ],
+          "mask": 13,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-13",
+          "x": 416,
+          "y": 96,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "397832a9a64ba39ddac6af07e63a9e3f5776c2902f113f0f260aa50b6fa61cc6"
+        },
+        {
+          "cell": [
+            21,
+            3
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 688,
+          "y": 133.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "619999d2f675528b43c08f38b68a6ac106b8f69d2ce979a97806afa43aecb003"
+        },
+        {
+          "cell": [
+            2,
+            4
+          ],
+          "mask": 1,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 80,
+          "y": 165.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "94ed12909125c51fbdd940426ae6fe949b745a31996e40a63816521abbe50884"
+        },
+        {
+          "cell": [
+            6,
+            4
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 208,
+          "y": 165.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "958df2c93bc4124dd6fdf5cdc78556f8ce8ccc320112cf667a5075679c8de777"
+        },
+        {
+          "cell": [
+            12,
+            4
+          ],
+          "mask": 7,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-7",
+          "x": 384,
+          "y": 128,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "4582302fc83eaf8ac2031a03cf9bfe7764f702ce1ddea63b2f7493a7046984b8"
+        },
+        {
+          "cell": [
+            13,
+            4
+          ],
+          "mask": 13,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-13",
+          "x": 416,
+          "y": 128,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "fb9b0467e4f5e109481f8d2f8a0b56fc8e35e94f5c78c8199107c5c93686a83a"
+        },
+        {
+          "cell": [
+            18,
+            4
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 592,
+          "y": 165.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "b5bf24ff13de060966afcd804faae8cce1c0f7648aab77db2d3d2ea1f4c158c4"
+        },
+        {
+          "cell": [
+            22,
+            4
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 720,
+          "y": 165.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "4c635f666160d554e5a1698773ec37dc47b3fd82b1b1bdce2fcf3061fc0cdb50"
+        },
+        {
+          "cell": [
+            12,
+            5
+          ],
+          "mask": 7,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-7",
+          "x": 384,
+          "y": 160,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "9397883eaa63695b02ea7028818de44a4be0cc644daa3eaabf8d2fc7bcedf5a4"
+        },
+        {
+          "cell": [
+            13,
+            5
+          ],
+          "mask": 13,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-13",
+          "x": 416,
+          "y": 160,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "fbe24a1b3e20d0e5d47c54310be6fb71cca8688e7d78309309e878324382175d"
+        },
+        {
+          "cell": [
+            2,
+            6
+          ],
+          "mask": 2,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 80,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "5fa9ffbb91f0a9922ce49c2e8b53295feef2167a02f795f731d8850b89461d01"
+        },
+        {
+          "cell": [
+            3,
+            6
+          ],
+          "mask": 10,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-10",
+          "x": 96,
+          "y": 192,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "472c11c613e404381ed1f3f87562531ddcd75dce40cbe88bdae98631d31c882f"
+        },
+        {
+          "cell": [
+            4,
+            6
+          ],
+          "mask": 8,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 144,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "ecbe71d2a461b552b24b3fb57a42f520d1aa7c78dbba31bae4d8620828246304"
+        },
+        {
+          "cell": [
+            8,
+            6
+          ],
+          "mask": 6,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 272,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "7d99e3dfefc444a8b80253f94d61a514a3944950df46d7fc689fdf012f429330"
+        },
+        {
+          "cell": [
+            9,
+            6
+          ],
+          "mask": 12,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 304,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "85b6753791f067f14b03de12e1ed9da13c836cfe3d28b0822ebcbf82ced20b2a"
+        },
+        {
+          "cell": [
+            12,
+            6
+          ],
+          "mask": 3,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 400,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "b88fc710c9aab7ce208ea230acdc4c708287c9e21a4fd45fa7112ea33e4e9b41"
+        },
+        {
+          "cell": [
+            13,
+            6
+          ],
+          "mask": 9,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 432,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "75e2b7f67a100e49532daef680833225096d73997588964aaaa79ec5e2da7481"
+        },
+        {
+          "cell": [
+            16,
+            6
+          ],
+          "mask": 6,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 528,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "d2ad7ad8ceb2cd657138129dedd97fde70cd1d9090a7ece9c0756f4f96c6f2db"
+        },
+        {
+          "cell": [
+            17,
+            6
+          ],
+          "mask": 12,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 560,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "9a9b2661a8490a116bb4fcdc851fe019c7f87160fc0101e0a764510b4e96c5c6"
+        },
+        {
+          "cell": [
+            21,
+            6
+          ],
+          "mask": 2,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 688,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "7725b77a4b2e47efdbfa7ec78a46556703df23758a21c8237197ad8b874339d0"
+        },
+        {
+          "cell": [
+            22,
+            6
+          ],
+          "mask": 10,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-10",
+          "x": 704,
+          "y": 192,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "0d04bc04311d9308a3798a3b4ebebad6b56c7d5a2f60b17ebae64220f73c3ca3"
+        },
+        {
+          "cell": [
+            23,
+            6
+          ],
+          "mask": 8,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 752,
+          "y": 229.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "9f7dd066406b150766ba418e6c5eecfff4337473a8dc0b6eca8b620070a04fc9"
+        },
+        {
+          "cell": [
+            8,
+            7
+          ],
+          "mask": 7,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-7",
+          "x": 256,
+          "y": 224,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "cf454985c8b40626f3adef7359ac664d0c878a1be4766b9c41adbecc034a244d"
+        },
+        {
+          "cell": [
+            9,
+            7
+          ],
+          "mask": 13,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-13",
+          "x": 288,
+          "y": 224,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "5e99dab54e138864225b89a5c8f7aac734ba5d5fa64abc0ed37f70087144848b"
+        },
+        {
+          "cell": [
+            16,
+            7
+          ],
+          "mask": 7,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-7",
+          "x": 512,
+          "y": 224,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "ea4669725a7c7ed703c185c18600af7dd867cf4255eabde81910c7838091b89b"
+        },
+        {
+          "cell": [
+            17,
+            7
+          ],
+          "mask": 13,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-13",
+          "x": 544,
+          "y": 224,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "5527392008efffaf78beeb025bff0a0c0f41c35fac3640c1a549bdf706e7f0b4"
+        },
+        {
+          "cell": [
+            2,
+            8
+          ],
+          "mask": 4,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 80,
+          "y": 293.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "f8f950b374c89281dcbead373fa146d1ee2b7d82325b5d3ac3bb1aa517c7f345"
+        },
+        {
+          "cell": [
+            8,
+            8
+          ],
+          "mask": 7,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-7",
+          "x": 256,
+          "y": 256,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "06f7a01cab92399a05cfc063dcc7c6ee07a3ca650731ccf28dcbfb9c1aaf9558"
+        },
+        {
+          "cell": [
+            9,
+            8
+          ],
+          "mask": 13,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-13",
+          "x": 288,
+          "y": 256,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "08e71f894d9cc070a8c1e30b6f01aa94db42ca560323b6e6e0961fcecde691ff"
+        },
+        {
+          "cell": [
+            16,
+            8
+          ],
+          "mask": 7,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-7",
+          "x": 512,
+          "y": 256,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "11e07f014abe059da6916356dc01d734bf879405ffa78499ed40a228b70b7d3b"
+        },
+        {
+          "cell": [
+            17,
+            8
+          ],
+          "mask": 13,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-13",
+          "x": 544,
+          "y": 256,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "37f3a70a1bae682d08366f15f52c7970a14e28baf1be37a12294e36352aea5ea"
+        },
+        {
+          "cell": [
+            23,
+            8
+          ],
+          "mask": 4,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 752,
+          "y": 293.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "e026faa9243c2e5806e1cec68e612d200c5c4a91793560a0cc4940943b9dd69b"
+        },
+        {
+          "cell": [
+            2,
+            9
+          ],
+          "mask": 5,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-5",
+          "x": 64,
+          "y": 288,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "64456853ab520d69e5eaa71b11318d45d3bcc8d08c5118a795aebeb80952febb"
+        },
+        {
+          "cell": [
+            8,
+            9
+          ],
+          "mask": 3,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 272,
+          "y": 325.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "737a8cb8af61a7b7c77bef032534322fbb97dd0c21b1092c1a235ba1b5c19bb0"
+        },
+        {
+          "cell": [
+            9,
+            9
+          ],
+          "mask": 13,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-13",
+          "x": 288,
+          "y": 288,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "0ef81f78ec48324d5786c1b051b00a3216c3c6d6a9eb433e4f0482d1e7adf1c3"
+        },
+        {
+          "cell": [
+            16,
+            9
+          ],
+          "mask": 7,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-7",
+          "x": 512,
+          "y": 288,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "de8f1d0b47a11e24b9d3ae83e89d0e84155fd165965722699bbe11537efef067"
+        },
+        {
+          "cell": [
+            17,
+            9
+          ],
+          "mask": 9,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 560,
+          "y": 325.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "127181a7e8fd265c00dd9b917876fdb18c6e813335422c5cef30abd3a523de7d"
+        },
+        {
+          "cell": [
+            23,
+            9
+          ],
+          "mask": 5,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-5",
+          "x": 736,
+          "y": 288,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "9171759ed500c0a9f051adc2438073d3de6bd105e37adfa596dc618ff96f41f5"
+        },
+        {
+          "cell": [
+            2,
+            10
+          ],
+          "mask": 3,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 80,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "161685c4bef7a4d9820f4e03ea27074f23efc73188de1679e283be617f7e368a"
+        },
+        {
+          "cell": [
+            3,
+            10
+          ],
+          "mask": 10,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-10",
+          "x": 96,
+          "y": 320,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "1a7630a96346d8894f4d330bf1329248c648f1baf7a9ac94f65b7612380e6fdc"
+        },
+        {
+          "cell": [
+            4,
+            10
+          ],
+          "mask": 8,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 144,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "95eac88f3fbcf3ba677ea5c4ce565246916bdfd8b436ebd918dc9193a6e036b7"
+        },
+        {
+          "cell": [
+            9,
+            10
+          ],
+          "mask": 1,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 304,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "2d1c71a5bab18f0df629be71aae40b45217a449d049a56b24d1366b4feeba8a0"
+        },
+        {
+          "cell": [
+            12,
+            10
+          ],
+          "mask": 6,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 400,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "7969f7113f796407d1563fc718ea1488d9ad8c6dac4967a38e6afac8224308bd"
+        },
+        {
+          "cell": [
+            13,
+            10
+          ],
+          "mask": 12,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 432,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "d61e4742ce80d540e60af0a94203df81e8f55c0d879e7e24454af43f6d8421ff"
+        },
+        {
+          "cell": [
+            16,
+            10
+          ],
+          "mask": 1,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 528,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "1b7b861bb7caf859a7cae4b048b7835b2820548b8a93a333fee47458c93ef0a5"
+        },
+        {
+          "cell": [
+            21,
+            10
+          ],
+          "mask": 2,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 688,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "3ba67ef4aaa550a0e1beb6aa8c30ebedc093d9dc578da42e626c16dc3bc1de59"
+        },
+        {
+          "cell": [
+            22,
+            10
+          ],
+          "mask": 10,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-10",
+          "x": 704,
+          "y": 320,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "36b68e117a00af8d5f9839fd538777759e0e20d751fb74386b2497269a7ede46"
+        },
+        {
+          "cell": [
+            23,
+            10
+          ],
+          "mask": 9,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 752,
+          "y": 357.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "b11431b284c7d3963986f7efe8440c6d2a71800937a1c26ae4d1e408b5b88d11"
+        },
+        {
+          "cell": [
+            12,
+            11
+          ],
+          "mask": 7,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-7",
+          "x": 384,
+          "y": 352,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "0a8091412dc55ff86eb9509e775dda7de9598762d2fddaacef115e3bdcfff2c7"
+        },
+        {
+          "cell": [
+            13,
+            11
+          ],
+          "mask": 13,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-13",
+          "x": 416,
+          "y": 352,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "3797a841d5339037fc46b7498d0cf7236347fb93092d9e434961d92a3b60d9c8"
+        },
+        {
+          "cell": [
+            2,
+            12
+          ],
+          "mask": 4,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 80,
+          "y": 421.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "24100657014b74b2094220662b0f5e9d3124b268250e4fdb537c55bbd6e4b1e0"
+        },
+        {
+          "cell": [
+            12,
+            12
+          ],
+          "mask": 7,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-7",
+          "x": 384,
+          "y": 384,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "0ede545a5397e4128616b1642b11a12689b3ae86812de2a036e1a6eae3bbc32b"
+        },
+        {
+          "cell": [
+            13,
+            12
+          ],
+          "mask": 13,
+          "status": "pilot",
+          "sourceIdentity": "material-mask-13",
+          "x": 416,
+          "y": 384,
+          "foot": {
+            "x": 16,
+            "y": 32
+          },
+          "markupSha256": "dc9edabf8881b534cb480fbf589a8e81609b090ffd9af921de109dd75dbe4519"
+        },
+        {
+          "cell": [
+            21,
+            12
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 688,
+          "y": 421.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "51b53d37d7dc4d99dff9ef4e7f97f662fbb5b245ad975525dc35e6bf37c66f6e"
+        },
+        {
+          "cell": [
+            2,
+            13
+          ],
+          "mask": 1,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 80,
+          "y": 453.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "20886b6e86498472f275312fbf32effd8e21fd751cfe0ab8a908972d44781444"
+        },
+        {
+          "cell": [
+            6,
+            13
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 208,
+          "y": 453.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "1c26be153c6a61a19e253efdb8f91220bce9aed22e1304491cbb25a293b370db"
+        },
+        {
+          "cell": [
+            12,
+            13
+          ],
+          "mask": 3,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 400,
+          "y": 453.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "ed5c0ed9a4f1f87360c7440daba366bc3274a94908c5b05cb3175c963ad91e0a"
+        },
+        {
+          "cell": [
+            13,
+            13
+          ],
+          "mask": 9,
+          "status": "legacy",
+          "sourceIdentity": "stone-gatehouse",
+          "x": 432,
+          "y": 453.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "895ed99b42990be2d10308674a72c9623c243faaaa53b3b2ea541760a23f6e59"
+        },
+        {
+          "cell": [
+            18,
+            13
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-straight",
+          "x": 592,
+          "y": 453.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "a5cbf8a76fde53bc38a5b52d908351756ac0f7ca1cdf7f1e127ce701ab20571d"
+        },
+        {
+          "cell": [
+            22,
+            13
+          ],
+          "mask": 0,
+          "status": "legacy",
+          "sourceIdentity": "stone-wall-corner",
+          "x": 720,
+          "y": 453.76,
+          "foot": {
+            "x": 0,
+            "y": 0
+          },
+          "markupSha256": "c90c0b73811d2919d7dbc9aed0104bce6bfd6804e558fceefe55c6547247e347"
+        }
+      ],
+      "viewport": [
+        980,
+        648
+      ],
+      "actors": 24,
+      "buildings": 18,
+      "actorMarkupSha256": "38c34684f6414cc47f68322ca99f7c52d1b96cc1e47b0ed912686033ec0b4e4d",
+      "buildingMarkupSha256": "e21bbf897732476e79be94632a3c770744feae94692dd8ce7993b71fab28d963",
+      "layerHashes": {
+        "grid": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "terrain": "49e377fa31ca9ca8e7335f95089743f5e057de41bac73e424db4843f009aa8c5",
+        "ground": "b010b2c2c95a164ebcd2bd5b17267551dc9ca16ee60597149f3f88e0b338ad37",
+        "scenery": "9f189f16236cc1b90f12ddded68993769e91e6e8bc9e96e7bfa8879f41594643",
+        "foreground": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "spatial": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "range": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "path": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "cursor": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "stateSha256": "ec56c5b2890542a37362280e5f0728a8ef69071342d9d995d49b47ed2509a73a",
+      "sourcePngHashes": {
+        "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-old-stone@2x.png": "0fd43806cf590c8d93d020ea6ad83388c818faf0b11fcd4dbebc1a38ef27308a",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-stone-road@2x.png": "a58f35913fc156b262a9ddee0a040bd5817d33f5e09363032d498bc5d58b0ca6",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-stone-road@2x.png": "d2cc1895b8be8374ce4b8dd1e1f6b4e9b2ffc14618bc3a3e0427736b753cae83",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "986d0da8a5fffe61d34b7eca0a4cea7b3db3e0d3c0f136803e426d9cb13c2344",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "14965b98d009780ee104b29b34d4910ce5e0d221fc35ad06ec229ce725432b84",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "b47e620fecd606de6ddbd524ab1b8a8e08970c3bbc74f9d3ad51ef34b0893a49",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png": "cc772464cc6d6e524978fa40ff58d11b10f572ccf1b18a2a5fb482b122364531",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-joint-granary@2x.png": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-refugee-shelter@2x.png": "801f1c31a90cead562dc8c679774e2cc849f726ccbab8be0b908094e38faaee7",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-inquisitor@2x.png": "eb2034b791f5b0f9298466749f8ef15eee44a962a82a80e169ae6a87b7983ade",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/fortification-materials/stone-wall-face-material/master.png": "f239c6dacebdfbaccd9341d4ed0edddeea6325226eb1a568758536165325c31c",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/fortification-materials/stone-top-material/master.png": "7086ba504e68824dc94f761bda9e369229d2033d6664e79c82e1753e7d1e775f",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-templar@2x.png": "72fdc284c88bdd42e386ab70eb3dcdad1fa133564e56be858f70b6d0e82ed344",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-knight@2x.png": "b908fc8b74ec665a9a66f449132a587fd5782a1e65959a3fe9ea3785ce415bba",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-battle-mage@2x.png": "a0baa90bf2fba5804b282d8f7561f36ff9e99ea66cdbd87022e0837569aa6778",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger@2x.png": "27d13b44ade8852fd8551953b6ec55066ec9eae0349f3dc00181388f4cac1145",
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ivra-growth.png": "7dc4db3ff2bcb40b0dc39a877559f7be040c0257c342412d890e2a0f0e7d4857",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace",
+        "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992"
+      }
+    }
+  ],
+  "sources": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/fortification-materials/stone-wall-face-material/master.png": "f239c6dacebdfbaccd9341d4ed0edddeea6325226eb1a568758536165325c31c",
+    "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/fortification-materials/stone-top-material/master.png": "7086ba504e68824dc94f761bda9e369229d2033d6664e79c82e1753e7d1e775f",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-old-stone@2x.png": "0fd43806cf590c8d93d020ea6ad83388c818faf0b11fcd4dbebc1a38ef27308a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-stone-road@2x.png": "a58f35913fc156b262a9ddee0a040bd5817d33f5e09363032d498bc5d58b0ca6",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-stone-road@2x.png": "d2cc1895b8be8374ce4b8dd1e1f6b4e9b2ffc14618bc3a3e0427736b753cae83",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "986d0da8a5fffe61d34b7eca0a4cea7b3db3e0d3c0f136803e426d9cb13c2344",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "14965b98d009780ee104b29b34d4910ce5e0d221fc35ad06ec229ce725432b84",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "b47e620fecd606de6ddbd524ab1b8a8e08970c3bbc74f9d3ad51ef34b0893a49",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/crossings-fortifications@2x.png": "cc772464cc6d6e524978fa40ff58d11b10f572ccf1b18a2a5fb482b122364531",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-joint-granary@2x.png": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-refugee-shelter@2x.png": "801f1c31a90cead562dc8c679774e2cc849f726ccbab8be0b908094e38faaee7",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-inquisitor@2x.png": "eb2034b791f5b0f9298466749f8ef15eee44a962a82a80e169ae6a87b7983ade",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-templar@2x.png": "72fdc284c88bdd42e386ab70eb3dcdad1fa133564e56be858f70b6d0e82ed344",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-knight@2x.png": "b908fc8b74ec665a9a66f449132a587fd5782a1e65959a3fe9ea3785ce415bba",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-battle-mage@2x.png": "a0baa90bf2fba5804b282d8f7561f36ff9e99ea66cdbd87022e0837569aa6778",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger@2x.png": "27d13b44ade8852fd8551953b6ec55066ec9eae0349f3dc00181388f4cac1145",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ivra-growth.png": "7dc4db3ff2bcb40b0dc39a877559f7be040c0257c342412d890e2a0f0e7d4857",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992"
+  },
+  "limitations": [
+    "Only masks 5/10/7/13 are implemented; remaining 41 c01-13 wall cells are unchanged legacy",
+    "64-world-pixel core repeat; native core edges differ, no seamless claim",
+    "North/west sides are back-facing under the declared lift; state7 has full top and no camera-facing side",
+    "Material clipping establishes geometry only; final stone scale and visual relief require review"
+  ]
+}

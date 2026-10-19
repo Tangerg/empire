@@ -1,0 +1,724 @@
+{
+  "name": "open-ns",
+  "cells": [
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      1,
+      6
+    ]
+  ],
+  "box": [
+    0,
+    48,
+    96,
+    96
+  ],
+  "topology": {
+    "cells": [
+      {
+        "at": [
+          1,
+          0
+        ],
+        "mask": 4,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            false,
+            true
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          1,
+          1
+        ],
+        "mask": 5,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            false,
+            true
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          1,
+          2
+        ],
+        "mask": 5,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            true,
+            true
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          1,
+          3
+        ],
+        "mask": 5,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            true,
+            true
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          1,
+          4
+        ],
+        "mask": 5,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            true,
+            true
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          1,
+          5
+        ],
+        "mask": 5,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            true,
+            false
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          1,
+          6
+        ],
+        "mask": 1,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            true,
+            false
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      }
+    ],
+    "components": [
+      [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ]
+      ]
+    ],
+    "connections": 6,
+    "exposedEdges": 16
+  },
+  "displayed": [
+    {
+      "at": [
+        1,
+        1
+      ],
+      "mask": 5,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          false,
+          true
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            20
+          ],
+          [
+            32,
+            36
+          ],
+          [
+            32,
+            0
+          ]
+        ],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            0
+          ]
+        ],
+        "south": [],
+        "topSource": [
+          115,
+          627,
+          512,
+          512
+        ],
+        "eastSource": [
+          627,
+          371,
+          512,
+          512
+        ],
+        "southSource": [
+          115,
+          371,
+          512,
+          512
+        ]
+      }
+    },
+    {
+      "at": [
+        1,
+        2
+      ],
+      "mask": 5,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          true,
+          true
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [
+          [
+            28,
+            -20
+          ],
+          [
+            28,
+            20
+          ],
+          [
+            32,
+            36
+          ],
+          [
+            32,
+            -4
+          ]
+        ],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            0
+          ]
+        ],
+        "south": [],
+        "topSource": [
+          115,
+          1139,
+          512,
+          512
+        ],
+        "eastSource": [
+          1139,
+          371,
+          512,
+          512
+        ],
+        "southSource": [
+          115,
+          371,
+          512,
+          512
+        ]
+      }
+    },
+    {
+      "at": [
+        1,
+        3
+      ],
+      "mask": 5,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          true,
+          true
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [
+          [
+            28,
+            -20
+          ],
+          [
+            28,
+            20
+          ],
+          [
+            32,
+            36
+          ],
+          [
+            32,
+            -4
+          ]
+        ],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            0
+          ]
+        ],
+        "south": [],
+        "topSource": [
+          115,
+          1651,
+          512,
+          512
+        ],
+        "eastSource": [
+          1651,
+          371,
+          512,
+          512
+        ],
+        "southSource": [
+          115,
+          371,
+          512,
+          512
+        ]
+      }
+    },
+    {
+      "at": [
+        1,
+        4
+      ],
+      "mask": 5,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          true,
+          true
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [
+          [
+            28,
+            -20
+          ],
+          [
+            28,
+            20
+          ],
+          [
+            32,
+            36
+          ],
+          [
+            32,
+            -4
+          ]
+        ],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            0
+          ]
+        ],
+        "south": [],
+        "topSource": [
+          115,
+          2163,
+          512,
+          512
+        ],
+        "eastSource": [
+          2163,
+          371,
+          512,
+          512
+        ],
+        "southSource": [
+          115,
+          371,
+          512,
+          512
+        ]
+      }
+    },
+    {
+      "at": [
+        1,
+        5
+      ],
+      "mask": 5,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          true,
+          false
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [
+          [
+            28,
+            -20
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            -4
+          ]
+        ],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            0
+          ]
+        ],
+        "south": [],
+        "topSource": [
+          115,
+          2675,
+          512,
+          512
+        ],
+        "eastSource": [
+          2675,
+          371,
+          512,
+          512
+        ],
+        "southSource": [
+          115,
+          371,
+          512,
+          512
+        ]
+      }
+    }
+  ],
+  "boundary": "open diagnostic window into actual occupancy; end states outside window are not implemented"
+}

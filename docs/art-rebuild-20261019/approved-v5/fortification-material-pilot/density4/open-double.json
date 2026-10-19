@@ -1,0 +1,1254 @@
+{
+  "name": "open-double",
+  "cells": [
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      2,
+      6
+    ]
+  ],
+  "box": [
+    0,
+    48,
+    128,
+    96
+  ],
+  "topology": {
+    "cells": [
+      {
+        "at": [
+          1,
+          0
+        ],
+        "mask": 6,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            false,
+            false
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          2,
+          0
+        ],
+        "mask": 12,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            false,
+            true
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          1,
+          1
+        ],
+        "mask": 7,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            false,
+            false
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          2,
+          1
+        ],
+        "mask": 13,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            false,
+            true
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          1,
+          2
+        ],
+        "mask": 7,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            false,
+            false
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          2,
+          2
+        ],
+        "mask": 13,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            true,
+            true
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          1,
+          3
+        ],
+        "mask": 7,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            false,
+            false
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          2,
+          3
+        ],
+        "mask": 13,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            true,
+            true
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          1,
+          4
+        ],
+        "mask": 7,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            false,
+            false
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          2,
+          4
+        ],
+        "mask": 13,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            true,
+            true
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          1,
+          5
+        ],
+        "mask": 7,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            false,
+            false
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          2,
+          5
+        ],
+        "mask": 13,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            true,
+            false
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          1,
+          6
+        ],
+        "mask": 3,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            false,
+            false
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      },
+      {
+        "at": [
+          2,
+          6
+        ],
+        "mask": 9,
+        "component": 0,
+        "uvOrigin": [
+          1,
+          0
+        ],
+        "faceJoins": {
+          "east": [
+            true,
+            false
+          ],
+          "south": [
+            false,
+            false
+          ]
+        }
+      }
+    ],
+    "components": [
+      [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ]
+      ]
+    ],
+    "connections": 19,
+    "exposedEdges": 18
+  },
+  "displayed": [
+    {
+      "at": [
+        1,
+        1
+      ],
+      "mask": 7,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          false,
+          false
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [],
+        "south": [],
+        "topSource": [
+          115,
+          243,
+          128,
+          128
+        ],
+        "eastSource": [
+          243,
+          563,
+          128,
+          128
+        ],
+        "southSource": [
+          115,
+          563,
+          128,
+          128
+        ]
+      }
+    },
+    {
+      "at": [
+        2,
+        1
+      ],
+      "mask": 13,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          false,
+          true
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            20
+          ],
+          [
+            32,
+            36
+          ],
+          [
+            32,
+            0
+          ]
+        ],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            0
+          ]
+        ],
+        "south": [],
+        "topSource": [
+          243,
+          243,
+          128,
+          128
+        ],
+        "eastSource": [
+          243,
+          563,
+          128,
+          128
+        ],
+        "southSource": [
+          243,
+          563,
+          128,
+          128
+        ]
+      }
+    },
+    {
+      "at": [
+        1,
+        2
+      ],
+      "mask": 7,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          false,
+          false
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [],
+        "south": [],
+        "topSource": [
+          115,
+          371,
+          128,
+          128
+        ],
+        "eastSource": [
+          371,
+          563,
+          128,
+          128
+        ],
+        "southSource": [
+          115,
+          563,
+          128,
+          128
+        ]
+      }
+    },
+    {
+      "at": [
+        2,
+        2
+      ],
+      "mask": 13,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          true,
+          true
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [
+          [
+            28,
+            -20
+          ],
+          [
+            28,
+            20
+          ],
+          [
+            32,
+            36
+          ],
+          [
+            32,
+            -4
+          ]
+        ],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            0
+          ]
+        ],
+        "south": [],
+        "topSource": [
+          243,
+          371,
+          128,
+          128
+        ],
+        "eastSource": [
+          371,
+          563,
+          128,
+          128
+        ],
+        "southSource": [
+          243,
+          563,
+          128,
+          128
+        ]
+      }
+    },
+    {
+      "at": [
+        1,
+        3
+      ],
+      "mask": 7,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          false,
+          false
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [],
+        "south": [],
+        "topSource": [
+          115,
+          499,
+          128,
+          128
+        ],
+        "eastSource": [
+          499,
+          563,
+          128,
+          128
+        ],
+        "southSource": [
+          115,
+          563,
+          128,
+          128
+        ]
+      }
+    },
+    {
+      "at": [
+        2,
+        3
+      ],
+      "mask": 13,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          true,
+          true
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [
+          [
+            28,
+            -20
+          ],
+          [
+            28,
+            20
+          ],
+          [
+            32,
+            36
+          ],
+          [
+            32,
+            -4
+          ]
+        ],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            0
+          ]
+        ],
+        "south": [],
+        "topSource": [
+          243,
+          499,
+          128,
+          128
+        ],
+        "eastSource": [
+          499,
+          563,
+          128,
+          128
+        ],
+        "southSource": [
+          243,
+          563,
+          128,
+          128
+        ]
+      }
+    },
+    {
+      "at": [
+        1,
+        4
+      ],
+      "mask": 7,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          false,
+          false
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [],
+        "south": [],
+        "topSource": [
+          115,
+          627,
+          128,
+          128
+        ],
+        "eastSource": [
+          627,
+          563,
+          128,
+          128
+        ],
+        "southSource": [
+          115,
+          563,
+          128,
+          128
+        ]
+      }
+    },
+    {
+      "at": [
+        2,
+        4
+      ],
+      "mask": 13,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          true,
+          true
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [
+          [
+            28,
+            -20
+          ],
+          [
+            28,
+            20
+          ],
+          [
+            32,
+            36
+          ],
+          [
+            32,
+            -4
+          ]
+        ],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            0
+          ]
+        ],
+        "south": [],
+        "topSource": [
+          243,
+          627,
+          128,
+          128
+        ],
+        "eastSource": [
+          627,
+          563,
+          128,
+          128
+        ],
+        "southSource": [
+          243,
+          563,
+          128,
+          128
+        ]
+      }
+    },
+    {
+      "at": [
+        1,
+        5
+      ],
+      "mask": 7,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          false,
+          false
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [],
+        "south": [],
+        "topSource": [
+          115,
+          755,
+          128,
+          128
+        ],
+        "eastSource": [
+          755,
+          563,
+          128,
+          128
+        ],
+        "southSource": [
+          115,
+          563,
+          128,
+          128
+        ]
+      }
+    },
+    {
+      "at": [
+        2,
+        5
+      ],
+      "mask": 13,
+      "component": 0,
+      "uvOrigin": [
+        1,
+        0
+      ],
+      "faceJoins": {
+        "east": [
+          true,
+          false
+        ],
+        "south": [
+          false,
+          false
+        ]
+      },
+      "geometry": {
+        "paintEast": [
+          [
+            28,
+            -20
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            -4
+          ]
+        ],
+        "paintSouth": [],
+        "top": [
+          [
+            -4,
+            -16
+          ],
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            -4,
+            16
+          ]
+        ],
+        "east": [
+          [
+            28,
+            -16
+          ],
+          [
+            28,
+            16
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            0
+          ]
+        ],
+        "south": [],
+        "topSource": [
+          243,
+          755,
+          128,
+          128
+        ],
+        "eastSource": [
+          755,
+          563,
+          128,
+          128
+        ],
+        "southSource": [
+          243,
+          563,
+          128,
+          128
+        ]
+      }
+    }
+  ],
+  "boundary": "open diagnostic window into actual occupancy; end states outside window are not implemented"
+}

@@ -1,0 +1,322 @@
+{
+  "kind": "Actual initial-pose actor sprite alpha against only the 27 changed wall drawings later in actual depth order",
+  "actors": [
+    {
+      "id": 1,
+      "key": "campaign-laiya",
+      "type": "c01.laiya",
+      "cell": [
+        1,
+        9
+      ],
+      "initialSpriteArea": 1568.2,
+      "changedWallOverlapBefore": 0.021933,
+      "changedWallOverlapAfter": 0.249693,
+      "delta": 0.22776
+    },
+    {
+      "id": 2,
+      "key": "campaign-torren",
+      "type": "c01.swordsman",
+      "cell": [
+        3,
+        8
+      ],
+      "initialSpriteArea": 1489.3961,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.047505,
+      "delta": 0.047505
+    },
+    {
+      "id": 3,
+      "key": "campaign-elin",
+      "type": "c01.archer",
+      "cell": [
+        5,
+        10
+      ],
+      "initialSpriteArea": 1587.5176,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 4,
+      "key": "campaign-mirelle",
+      "type": "c01.mirelle",
+      "cell": [
+        3,
+        7
+      ],
+      "initialSpriteArea": 1249.8353,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 5,
+      "key": "campaign-bran",
+      "type": "c01.bran",
+      "cell": [
+        3,
+        11
+      ],
+      "initialSpriteArea": 1104.7647,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 6,
+      "key": "campaign-tasha",
+      "type": "c01.tasha",
+      "cell": [
+        4,
+        9
+      ],
+      "initialSpriteArea": 1197.5804,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 7,
+      "key": "campaign-ivra",
+      "type": "c01.ivra",
+      "cell": [
+        5,
+        12
+      ],
+      "initialSpriteArea": 1547.1529,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 8,
+      "key": "archive-guard",
+      "type": "c01.banner-guard",
+      "cell": [
+        1,
+        13
+      ],
+      "initialSpriteArea": 1568.2,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 9,
+      "key": "archive-engineer",
+      "type": "c01.engineer",
+      "cell": [
+        4,
+        14
+      ],
+      "initialSpriteArea": 1197.5804,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 10,
+      "key": "archive-bow",
+      "type": "c01.archer",
+      "cell": [
+        7,
+        13
+      ],
+      "initialSpriteArea": 1587.5176,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 11,
+      "key": "archive-sword",
+      "type": "c01.swordsman",
+      "cell": [
+        8,
+        14
+      ],
+      "initialSpriteArea": 1489.3961,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 12,
+      "key": "archive-cleric",
+      "type": "c01.gravekeeper",
+      "cell": [
+        6,
+        14
+      ],
+      "initialSpriteArea": 1249.8353,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 13,
+      "key": "archive-reserve",
+      "type": "c01.banner-guard",
+      "cell": [
+        10,
+        14
+      ],
+      "initialSpriteArea": 1568.2,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 14,
+      "key": "archive-inquisitor",
+      "type": "c01.inquisitor",
+      "cell": [
+        10,
+        3
+      ],
+      "initialSpriteArea": 1124.7961,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 15,
+      "key": "archive-guard-1",
+      "type": "c01.legion-shield",
+      "cell": [
+        14,
+        5
+      ],
+      "initialSpriteArea": 1433.6588,
+      "changedWallOverlapBefore": 0.088851,
+      "changedWallOverlapAfter": 0.161839,
+      "delta": 0.072987
+    },
+    {
+      "id": 16,
+      "key": "archive-guard-2",
+      "type": "c01.legion-shield",
+      "cell": [
+        12,
+        7
+      ],
+      "initialSpriteArea": 1433.6588,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 17,
+      "key": "archive-mage",
+      "type": "c01.battle-mage",
+      "cell": [
+        15,
+        8
+      ],
+      "initialSpriteArea": 1257.5373,
+      "changedWallOverlapBefore": 0.005828,
+      "changedWallOverlapAfter": 0.13496,
+      "delta": 0.129132
+    },
+    {
+      "id": 18,
+      "key": "archive-knight",
+      "type": "c01.knight",
+      "cell": [
+        17,
+        4
+      ],
+      "initialSpriteArea": 1079.4745,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 19,
+      "key": "west-archive-guard",
+      "type": "c01.templar",
+      "cell": [
+        8,
+        4
+      ],
+      "initialSpriteArea": 1219.8863,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 20,
+      "key": "north-archive-bow",
+      "type": "c01.archer",
+      "cell": [
+        10,
+        1
+      ],
+      "initialSpriteArea": 1587.5176,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 21,
+      "key": "central-archive-mage",
+      "type": "c01.battle-mage",
+      "cell": [
+        14,
+        10
+      ],
+      "initialSpriteArea": 1257.5373,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.001577,
+      "delta": 0.001577
+    },
+    {
+      "id": 22,
+      "key": "east-archive-guard",
+      "type": "c01.legion-shield",
+      "cell": [
+        20,
+        7
+      ],
+      "initialSpriteArea": 1433.6588,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 23,
+      "key": "south-archive-knight",
+      "type": "c01.knight",
+      "cell": [
+        18,
+        12
+      ],
+      "initialSpriteArea": 1079.4745,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    },
+    {
+      "id": 24,
+      "key": "exit-inquisitor",
+      "type": "c01.inquisitor",
+      "cell": [
+        23,
+        13
+      ],
+      "initialSpriteArea": 1124.7961,
+      "changedWallOverlapBefore": 0.0,
+      "changedWallOverlapAfter": 0.0,
+      "delta": 0.0
+    }
+  ],
+  "limitations": [
+    "Other legacy walls/buildings/trees are not measured by this delta check",
+    "No live GPU/browser or animation claim",
+    "Source alpha includes antialiased sprite edges; no visibility rule or fading is introduced"
+  ]
+}
