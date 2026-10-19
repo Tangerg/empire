@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-soler-heat-emblems",
+  "assetId": "C02-SFV1-battle-prop-soler-heat-emblems",
+  "label": "索勒热灯标识组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 1
+  },
+  "sourceCropBox": [
+    319,
+    5,
+    622,
+    622
+  ],
+  "sourceMappingEvidence": "Correct verified mapping: original full props-board-04 top-row visual identity matches original topic catalog positions24-27. Board03 bottom row is evidence/manifest/film/badge set and explicitly not this family. No sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-soler-heat-emblems.png",
+  "runtimeReferenceSha256": "dd15c0b387c3b40f56cc1ebac9b6a944dbf0269fba2b9ba7d51c0bd5a30f7be0",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-384317d2-1c65-4936-932b-38087c16652d.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-soler-heat-emblems/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board04 row1 col2 identity retained as EIGHT amber/orange heat-lamp and heater variants: two pole lamps, central large hooded unit, foreground broad low lantern, slender heat rod, side tapered beacon and two small heat pucks/beacons. The source is heat hardware, not sun-emblem signs. Amber cores are opaque cel planes, with no external radiating glow.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

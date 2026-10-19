@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-five-world-flags",
+  "assetId": "C02-SFV1-battle-prop-five-world-flags",
+  "label": "五界材料旗组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 1
+  },
+  "sourceCropBox": [
+    632,
+    5,
+    935,
+    622
+  ],
+  "sourceMappingEvidence": "Correct verified mapping: original full props-board-04 top-row visual identity matches original topic catalog positions24-27. Board03 bottom row is evidence/manifest/film/badge set and explicitly not this family. No sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-five-world-flags.png",
+  "runtimeReferenceSha256": "88698e973ac66f206d817ca1d78e60215fe7ca1d6b6a6fd2f0acc5526a483d52",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-adccf366-4ab4-483a-95ef-28115ef78f05.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-five-world-flags/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board04 row1 col3 identity retained: FIVE freestanding metal poles, exactly FOUR hanging planet banners plus ONE bare front-left pole. Beige/brown striped planet, teal earthlike globe, purple blue ringed planet and charcoal/orange molten planet remain distinct. No invented fifth banner and no substitution from evidence-board cells.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

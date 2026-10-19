@@ -1,0 +1,75 @@
+{
+  "status": "Native alpha/geometry and single-arrow anatomy checks pass; coordinator final bow-proportion/sequence review pending",
+  "topic": "C01-UNIT-SILVER-LONGBOW",
+  "actualConsumers": [
+    "c01.silver-longbow"
+  ],
+  "bodyScale": "44/836",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1585,
+      992
+    ],
+    "walk-a": [
+      1585,
+      992
+    ],
+    "attack": [
+      1585,
+      992
+    ],
+    "walk-b": [
+      1585,
+      992
+    ]
+  },
+  "commonSourceCanvas": [
+    1585,
+    992
+  ],
+  "sourcePaddingRequired": "All four selected native canvases1585x992; no transparent padding or source resampling required.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All four selected perimeter alpha0; no silhouette touches edge. First idle attempt failed, preserved rejected.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPreserved": true,
+  "originalBowHoldingArmPreserved": true,
+  "twoArmsAndTwoHandsOnly": true,
+  "walkContactsOppose": true,
+  "oneArrowOnlyInAttack": true,
+  "archeryAnatomy": {
+    "metalArrowheadForwardRight": true,
+    "rearFeathersAtDrawingHand": true,
+    "oneStraightShaft": true,
+    "nockStringAtDrawingHand": true,
+    "shaftRestsAboveBowHandle": true,
+    "bowHandGripsHandleOnly": true,
+    "twoStringSegmentsToActualTips": true,
+    "noDuplicateRelaxedString": true,
+    "noIndependentFX": true,
+    "nativeAndWhiteViewed": true
+  },
+  "bowLengthReview": "All full native sources retain a longbow rather than short-bow redesign; no independent scale operation. Diagnostic visible tip separation is approximately925idle,877walk-a,815attack,883walk-b. Draw flex and pose alter projection, and walking foreground boots partly overlap lower limbs; these measurements do not establish exact physical-length invariance. Coordinator native review specifically requested before binding.",
+  "bodyAndBowIndependentlyRescaled": false,
+  "semanticContract": "C01-UNIT-SILVER-LONGBOW binds only c01.silver-longbow; four c01-15 enemy actors controlled-longbow-1[14,5], controlled-longbow-2[14,9], north-longbow[8,2], south-longbow[8,13]. Original idle/walk-a/attack/walk-b,32x48 frame,anchor[16,47],footprint1x1 remain. Sole c01.longbow is range2-3 direct-line-of-sight piercing ranged weapon. Original third cell was near-idle; reconstructed attack shows one genuinely nocked arrow and two-segment drawn string. Original bow-holding arm remains forward/right; original empty arm draws at cheek. Metal arrowhead is right/forward, rear feathers/nock near left draw hand, shaft above bow grip. Two opposite walking contacts reconstructed. No rule/fifth-frame change; independent C01-FX-03 projectile/trail stays outside sprite.",
+  "symbolContract": "No distinct original sacred/faction emblem. Preserve crossed garment lacing, fur, blue pouch tie and simple original gear, without invented rune, crest or antlers.",
+  "independentFXBakedIntoCharacter": false,
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "gameplayFixClaimed": false
+}

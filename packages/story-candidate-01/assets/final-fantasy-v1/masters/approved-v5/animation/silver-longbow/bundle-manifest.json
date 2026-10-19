@@ -1,0 +1,225 @@
+{
+  "asset": "C01-UNIT-SILVER-LONGBOW",
+  "actualConsumers": [
+    "c01.silver-longbow"
+  ],
+  "consumerStatus": "Campaign ranged silverwood guard; four verified c01-15 enemies",
+  "status": "Native quartet and evidence complete; coordinator final physical-bow/sequence review and binding pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Selected raw/master byte-identical to native output. No painting,recoloring,cropping,resizing or alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.05263157894736842,
+  "bodyReferenceSourcePixels": 836,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1585,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/registration-evidence.json",
+  "identityContract": "Tan adult pointed-ear elf-like forest guard, short charcoal/black tousled hair, stern dark eyes/brows, clean-shaven, small metal hoop on visible screen-left ear. Dark gray hood down, sage/olive-green chest-laced split tunic, brown broad rectangular leather shoulder plates, brown diagonal strap/belt/bracers with crossed tan bindings, fingerless protection/exposed tan fingers, cream/tan furry sleeve and upper-boot trim, brown trousers and boots. Brown back quiver above screen-left shoulder with pale feather fletching; woven tan left-hip pouch with dark blue tie. Original screen-right hand holds one tall pale wooden longbow at a brown wrapped grip, with tan/brown tip bindings and one dark string joining two complete tips; screen-left hand is free in idle/walks. No nocked loose arrow in idle. Quiver upper ends are feather fletching; points hidden below.",
+  "symbolContract": "No distinct original sacred/faction emblem. Preserve crossed garment lacing, fur, blue pouch tie and simple original gear, without invented rune, crest or antlers.",
+  "semanticContract": "C01-UNIT-SILVER-LONGBOW binds only c01.silver-longbow; four c01-15 enemy actors controlled-longbow-1[14,5], controlled-longbow-2[14,9], north-longbow[8,2], south-longbow[8,13]. Original idle/walk-a/attack/walk-b,32x48 frame,anchor[16,47],footprint1x1 remain. Sole c01.longbow is range2-3 direct-line-of-sight piercing ranged weapon. Original third cell was near-idle; reconstructed attack shows one genuinely nocked arrow and two-segment drawn string. Original bow-holding arm remains forward/right; original empty arm draws at cheek. Metal arrowhead is right/forward, rear feathers/nock near left draw hand, shaft above bow grip. Two opposite walking contacts reconstructed. No rule/fifth-frame change; independent C01-FX-03 projectile/trail stays outside sprite.",
+  "selectedAttempts": {
+    "idle": "attempt-02; attempt01 rejected perimeter gate and lower bow visibility",
+    "walk-a": "first successful native output",
+    "attack": "first successful native output; coordinator final physical-bow proportions review pending",
+    "walk-b": "first successful native output"
+  },
+  "idleApproval": "Coordinator2026-10-19 18:48UTC accepted native1585x992 idle,44/836,sourcefoot[800,956],complete longbow and identity.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "c60d140f935030938c3ca4b8e80891716838424bdfd596a7aee70997a3eff98c",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/idle/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        800,
+        956
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        505,
+        12,
+        1270,
+        957
+      ],
+      "sha256": "9da42312622ff0da9c817ff1a86e2db46c123dbbc6ec9a5e7e1fb1b1631990dc",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-dcace4ac-ef9c-4097-91f4-3f6315a340ab.png",
+      "review": "Selected corrected idle attempt02. Original short dark hair/pointed ears/ear hoop, hood-down green/brown armor and pale longbow retained. Original screen-right bow hand; screen-left hand free. Complete top and bottom bow tips, one taut string, quiver feather ends. Both feet flat and no nocked arrow. Native and white QA inspected. Perimeter gate passes with zero edge alpha.",
+      "bowPoseReview": {
+        "upperTipApprox": [
+          1157,
+          16
+        ],
+        "lowerTipApprox": [
+          1070,
+          941
+        ],
+        "visibleVerticalTipSeparationApprox": 925,
+        "interpretation": "Apparent2D separation is diagnostic, not a body-scale denominator; changes with authored bow flex/pose and walking foreground boot overlap. All poses use the same44/836 scale. No independent bow or body resizing was applied. Coordinator must judge native physical-length consistency.",
+        "completeCanvasBowTips": true,
+        "oneString": true,
+        "originalBowHoldingArmRetained": true,
+        "looseNockedArrowCount": 0
+      }
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "2efd3d3ba28dc40d478c300cd9d6c3fd9429530dd5e186c4b583620532a2ca22",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        809,
+        955
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        492,
+        15,
+        1245,
+        956
+      ],
+      "sha256": "bd5b933c84f584094e593d738e7180320ef6261fe5f7d3b71727b33af221dd79",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-15e32ac6-7cf3-41f6-9531-b1b6871c92ba.png",
+      "review": "Walk-a clearly right support/down and left heel raised recovery; original screen-right bow hand and free screen-left hand retained. One upright pale longbow and single taut string; all arrows in quiver. Lower bow end adjacent to foreboot with small natural foreground occlusion, no canvas clipping. Native and white QA inspected.",
+      "bowPoseReview": {
+        "upperTipApprox": [
+          1127,
+          21
+        ],
+        "lowerTipApprox": [
+          1062,
+          898
+        ],
+        "visibleVerticalTipSeparationApprox": 877,
+        "interpretation": "Apparent2D separation is diagnostic, not a body-scale denominator; changes with authored bow flex/pose and walking foreground boot overlap. All poses use the same44/836 scale. No independent bow or body resizing was applied. Coordinator must judge native physical-length consistency.",
+        "completeCanvasBowTips": true,
+        "oneString": true,
+        "originalBowHoldingArmRetained": true,
+        "looseNockedArrowCount": 0
+      }
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "1e2845b9d80690a62c0a6302abbdd2357cd762abed6da45cd2ae6f09af4800af",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/attack/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        756,
+        967
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        394,
+        10,
+        1379,
+        968
+      ],
+      "sha256": "8815e397b3c973ce87087b7055a9627a9619bc8ad7ec981b0e72497ce06ef826",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-b3fdfdba-38d6-444f-93de-b7719372e014.png",
+      "review": "Single nocked arrow drawn toward cheek by original free screen-left arm; original bow arm extends right. Gray metal arrowhead faces right, pale rear fletching adjacent to draw hand, single shaft above bow grip. One V-string connects both actual tip bindings to draw/nock hand. Two arms/hands only; no second relaxed string, floating arrow or independent FX. Bow naturally flexed and visible tip separation reduced; preserve native pose, no independent scaling. Coordinator native review requested for draw anatomy and longbow proportions.",
+      "bowPoseReview": {
+        "upperTipApprox": [
+          1092,
+          17
+        ],
+        "lowerTipApprox": [
+          1083,
+          832
+        ],
+        "visibleVerticalTipSeparationApprox": 815,
+        "interpretation": "Apparent2D separation is diagnostic, not a body-scale denominator; changes with authored bow flex/pose and walking foreground boot overlap. All poses use the same44/836 scale. No independent bow or body resizing was applied. Coordinator must judge native physical-length consistency.",
+        "completeCanvasBowTips": true,
+        "oneString": true,
+        "originalBowHoldingArmRetained": true,
+        "looseNockedArrowCount": 1
+      },
+      "archeryAnatomyReview": {
+        "metalArrowheadForwardRight": true,
+        "rearFeathersAtDrawingHand": true,
+        "oneStraightShaft": true,
+        "nockStringAtDrawingHand": true,
+        "shaftRestsAboveBowHandle": true,
+        "bowHandGripsHandleOnly": true,
+        "twoStringSegmentsToActualTips": true,
+        "noDuplicateRelaxedString": true,
+        "noIndependentFX": true,
+        "nativeAndWhiteViewed": true
+      }
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "1072ee999dc3be8caf3ee741f721134286f6ca5f0044029e9b0e89750eb21bec",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/silver-longbow/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        787,
+        962
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        498,
+        11,
+        1246,
+        963
+      ],
+      "sha256": "42acbeef51fce6a106315e0e6dc718179da94d788078c035018d598e6867f87f",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-e0d4dc7c-50ae-47f4-a33c-63314c1d1d38.png",
+      "review": "Clear opposite contact to walk-a: left boot down flat and right boot raised with visible sole. Original bow arm remains on right; empty left hand by hip pouch. Long pale bow/string and both actual tips retained, partial lower-limb overlap with raised boot is natural foreground occlusion, not clipping. Arrows remain in back quiver, no nocked arrow. Native and white QA inspected.",
+      "bowPoseReview": {
+        "upperTipApprox": [
+          1119,
+          18
+        ],
+        "lowerTipApprox": [
+          1053,
+          901
+        ],
+        "visibleVerticalTipSeparationApprox": 883,
+        "interpretation": "Apparent2D separation is diagnostic, not a body-scale denominator; changes with authored bow flex/pose and walking foreground boot overlap. All poses use the same44/836 scale. No independent bow or body resizing was applied. Coordinator must judge native physical-length consistency.",
+        "completeCanvasBowTips": true,
+        "oneString": true,
+        "originalBowHoldingArmRetained": true,
+        "looseNockedArrowCount": 0
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "topicId": "C01-EQUIP-MAGE",
   "assetId": "C01-FFV1-EQUIP-MAGE",
-  "label": "\u6cd5\u5e08\u4e3b\u88c5\u5907",
+  "label": "法师主装备",
   "category": "equipment",
   "expectedRuntimeSize": [
     48,
@@ -43,5 +43,7 @@
   "runtimeReady": false,
   "promptFiles": [
     "prompt.txt"
-  ]
+  ],
+  "localRaw": "raw.png",
+  "rawArchivalNote": "Missing local raw copy restored on 2026-10-19 by byte-copying the recorded original native generator output after verifying equality with existing master and QA SHA-256; no image pixels or master changed."
 }

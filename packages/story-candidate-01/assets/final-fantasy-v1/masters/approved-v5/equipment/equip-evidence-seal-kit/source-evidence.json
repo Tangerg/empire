@@ -1,0 +1,60 @@
+{
+  "topicId": "C01-EQUIP-EVIDENCE-SEAL-KIT",
+  "assetId": "C01-FFV1-EQUIP-EVIDENCE-SEAL-KIT",
+  "label": "证据封存交互包",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-adc0d273-9957-4671-b314-4b7a73845ec3.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-evidence-seal-kit-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-04.png, row 4 column 4 (one based)",
+    "topicIndex": 47,
+    "inspectionCropCoordinates": [
+      942,
+      942,
+      1252,
+      1252
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-evidence-seal-kit.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-04.png",
+    "atlasSha256": "f481ca178f9c37c0f8cba5c2022203ab5db798ab4b76edda022fd4b3ff0a61c5",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-evidence-seal-kit-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-evidence-seal-kit-seal-detail.png"
+  ],
+  "inspectedApprovedUnitReferences": [],
+  "unitIdentityNote": "This is a generic equipment kit topic rather than a character identity. Original full equipment atlas and baseline equipment runtime determine objects and markings; current approved chunky equipment family determines only material/outline style.",
+  "identityClarification": "Exactly FIVE individual equipment objects matching source layout. LEFT: ONE tall capped tan/brass document/evidence tube, diagonally lower-left to upper-right, plain long faceted cylindrical body with broad bands and closed caps at both ends. UPPER RIGHT: ONE round dark RED WAX SEAL, slightly irregular thick wax outer edge and a recessed circular center. The central impression is the source's compact cluster of rounded lobe/petal shapes with surrounding small leaf-like impressions: use reference 4, an original detail crop, only to preserve that visible organic impression. Its literal meaning is unclear, so do not turn it into readable text, a crown, animal, skull, cross or new heraldry. Keep a simple low-relief dark red organic rounded motif. LOWER RIGHT: EXACTLY THREE separate cream rectangular BLANK tags, clipped upper corners, each with ONE hole and its own small loop of brown cord. Preserve staggered heights and orientation. No fourth tag, writing, stamp handle, open document, coins, extra tube or character.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "detailIdentityReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-evidence-seal-kit-seal-detail.png"
+  ],
+  "semanticUncertainty": "The original red wax center has an organic rounded-lobe/leaf-like impression. Its exact literal or heraldic meaning cannot be verified from the original source pixels. Preserved this bounded organic low-relief geometry without readable text or an invented identifiable emblem."
+}

@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-permission-lights",
+  "assetId": "C02-SFV1-battle-prop-permission-lights",
+  "label": "权限状态灯组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 1
+  },
+  "sourceCropBox": [
+    945,
+    5,
+    1249,
+    622
+  ],
+  "sourceMappingEvidence": "Correct verified mapping: original full props-board-04 top-row visual identity matches original topic catalog positions24-27. Board03 bottom row is evidence/manifest/film/badge set and explicitly not this family. No sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-permission-lights.png",
+  "runtimeReferenceSha256": "68abe1fbcc69ca987ad0cf641ced3d9ed1e4bf42ff304bf5a9ba55bf85ff4fd5",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2b9a6a46-bfac-4fcb-a556-2b1323b89458.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-lights/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board04 row1 col4 identity retained: FOUR cylindrical status lamps with GREEN rear-left, BLUE rear-right, RED foreground-left and AMBER/YELLOW foreground-right colors, plus THREE small controls (green puck, red puck and dark foot-switch). Solid bounded colored windows, not badges/lanyards or substitute symbols; no external glow.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

@@ -24,4 +24,6 @@ Original walking poses favor the same rightward contact; reconstruct two clearly
 
 First generated idle is preserved as rejected attempt01:24edge pixels with alpha>1(max3), low boot/bow margin and partly occluded lower bow tip. Imagegen-only attempt02 corrects framing and yields native1585x992 with all perimeter alpha0, complete bow tips and boots. No programmatic alpha cleanup, painting, recolor, crop or resampling. Exact prompts and all native/raw/master attempts retained.
 
-Selected idle hair crown120 to both boot soles956 gives836nativepx; proposed44/836(1/19),foot[800,956]. Longbow approximate vertical span925nativepx,1.106xbody. Uniform locked scale and whole-canvas translation will register all poses. Await coordinator idle review before remaining frames; any1-2px native canvas discrepancy must be explicit transparent padding only.
+Selected idle hair crown120 to both boot soles956 gives836nativepx; proposed44/836(1/19),foot[800,956]. Longbow approximate vertical span925nativepx,1.106xbody. Uniform locked scale and whole-canvas translation will register all poses. Idle approved18:48UTC and all four frames completed; final native bow-proportion/sequence review pending. any1-2px native canvas discrepancy must be explicit transparent padding only.
+
+Final selected sources: all1585x992,sourceFeet[800,956],[809,955],[756,967],[787,962],shared44/836. See bundle-manifest.json and registration-evidence.json. No source padding. Apparent drawn bow span differs under flex/pose; no claim of exact physical invariance before coordinator native review.

@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-five-world-flags",
+  "assetId": "C02-SFV1-battle-prop-five-world-flags",
+  "label": "五界材料旗组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 1
+  },
+  "sourceCropBox": [
+    632,
+    5,
+    935,
+    622
+  ],
+  "sourceMappingEvidence": "Correct verified mapping: original full props-board-04 top-row visual identity matches original topic catalog positions24-27. Board03 bottom row is evidence/manifest/film/badge set and explicitly not this family. No sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-five-world-flags.png",
+  "runtimeReferenceSha256": "88698e973ac66f206d817ca1d78e60215fe7ca1d6b6a6fd2f0acc5526a483d52",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

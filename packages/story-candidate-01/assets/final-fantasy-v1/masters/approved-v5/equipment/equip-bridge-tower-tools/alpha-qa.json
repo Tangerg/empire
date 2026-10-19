@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-EQUIP-BRIDGE-TOWER-TOOLS",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6000021621401627,
+  "nearOpaqueFractionAlphaGE250": 0.3786098201862493,
+  "nonzeroAlphaBBox": [
+    31,
+    29,
+    1222,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    60,
+    116,
+    1199,
+    1141
+  ],
+  "visibleAlphaBBoxGE128": [
+    62,
+    117,
+    1199,
+    1141
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    62,
+    117,
+    55,
+    113
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 4,
+  "sha256": "702369da6efd9250d11bde0534addd1ea2a449c9f4f115cd7d573c36d5d366c7",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly TWO functional equipment groups matching source. LEFT: ONE plain short engineering HAMMER, rectangular broad gray iron head with a few wide faceted divisions, straight brown wooden handle angled toward lower-left, little round wooden shaft end protruding on top. No rune or new symbol on hammer. RIGHT: ONE hanging single-wheel wooden PULLEY BLOCK with thick oval/circular brown wood cheeks, dark middle sheave channel, central round axle and a few large fasteners; ONE thick dark iron suspension HOOK at the top with a small open lower-left gap. One thick tan rope runs from the pulley into a neatly folded elongated double loop on the lower-right, with visible open spaces and only a few broad twist segments. Preserve this compact hammer + pulley-and-rope composition. No bridge, tower, scaffolding, extra hammer, extra pulley, worker, nails or additional tools.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticCountQA": "One plain rectangular hammer and one single pulley block with a suspension hook and one folded rope group. No extra bridge or tower parts."
+}

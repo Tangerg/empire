@@ -1,0 +1,91 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-b3fdfdba-38d6-444f-93de-b7719372e014.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "8815e397b3c973ce87087b7055a9627a9619bc8ad7ec981b0e72497ce06ef826",
+  "bboxAlphaNonzero": [
+    105,
+    7,
+    1475,
+    971
+  ],
+  "bboxAlphaGreaterThan127": [
+    394,
+    10,
+    1379,
+    968
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1208040,
+  "alphaOnePixels": 6360,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "boot": "braced-screen-left",
+      "roi": [
+        400,
+        850,
+        630,
+        982
+      ],
+      "soleY": 967,
+      "bottomFourRowsMeanX": 502.78846153846155
+    },
+    {
+      "boot": "braced-screen-right",
+      "roi": [
+        840,
+        835,
+        1120,
+        982
+      ],
+      "soleY": 957,
+      "bottomFourRowsMeanX": 1009.1909722222222
+    }
+  ],
+  "sourceFootMidpoint": [
+    755.9897168803418,
+    962.0
+  ],
+  "suggestedSourceFoot": [
+    756,
+    967
+  ],
+  "lockedBodyScale": 0.05263157894736842,
+  "masterRawHashMatches": true,
+  "semanticReview": "Single nocked arrow drawn toward cheek by original free screen-left arm; original bow arm extends right. Gray metal arrowhead faces right, pale rear fletching adjacent to draw hand, single shaft above bow grip. One V-string connects both actual tip bindings to draw/nock hand. Two arms/hands only; no second relaxed string, floating arrow or independent FX. Bow naturally flexed and visible tip separation reduced; preserve native pose, no independent scaling. Coordinator native review requested for draw anatomy and longbow proportions.",
+  "bowPoseReview": {
+    "upperTipApprox": [
+      1092,
+      17
+    ],
+    "lowerTipApprox": [
+      1083,
+      832
+    ],
+    "visibleVerticalTipSeparationApprox": 815,
+    "interpretation": "Apparent2D separation is diagnostic, not a body-scale denominator; changes with authored bow flex/pose and walking foreground boot overlap. All poses use the same44/836 scale. No independent bow or body resizing was applied. Coordinator must judge native physical-length consistency.",
+    "completeCanvasBowTips": true,
+    "oneString": true,
+    "originalBowHoldingArmRetained": true,
+    "looseNockedArrowCount": 1
+  },
+  "archeryAnatomyReview": {
+    "metalArrowheadForwardRight": true,
+    "rearFeathersAtDrawingHand": true,
+    "oneStraightShaft": true,
+    "nockStringAtDrawingHand": true,
+    "shaftRestsAboveBowHandle": true,
+    "bowHandGripsHandleOnly": true,
+    "twoStringSegmentsToActualTips": true,
+    "noDuplicateRelaxedString": true,
+    "noIndependentFX": true,
+    "nativeAndWhiteViewed": true
+  }
+}

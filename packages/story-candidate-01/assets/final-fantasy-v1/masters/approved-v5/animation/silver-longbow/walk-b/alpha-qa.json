@@ -1,0 +1,79 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-e0d4dc7c-50ae-47f4-a33c-63314c1d1d38.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "42acbeef51fce6a106315e0e6dc718179da94d788078c035018d598e6867f87f",
+  "bboxAlphaNonzero": [
+    103,
+    8,
+    1565,
+    969
+  ],
+  "bboxAlphaGreaterThan127": [
+    498,
+    11,
+    1246,
+    963
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1187956,
+  "alphaOnePixels": 5195,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "boot": "supporting-screen-left",
+      "roi": [
+        550,
+        850,
+        775,
+        982
+      ],
+      "soleY": 962,
+      "bottomFourRowsMeanX": 664.3259493670886
+    },
+    {
+      "boot": "raised-screen-right",
+      "roi": [
+        850,
+        740,
+        1095,
+        947
+      ],
+      "soleY": 940,
+      "bottomFourRowsMeanX": 909.4298245614035
+    }
+  ],
+  "sourceFootMidpoint": [
+    786.877886964246,
+    951.0
+  ],
+  "suggestedSourceFoot": [
+    787,
+    962
+  ],
+  "lockedBodyScale": 0.05263157894736842,
+  "masterRawHashMatches": true,
+  "semanticReview": "Clear opposite contact to walk-a: left boot down flat and right boot raised with visible sole. Original bow arm remains on right; empty left hand by hip pouch. Long pale bow/string and both actual tips retained, partial lower-limb overlap with raised boot is natural foreground occlusion, not clipping. Arrows remain in back quiver, no nocked arrow. Native and white QA inspected.",
+  "bowPoseReview": {
+    "upperTipApprox": [
+      1119,
+      18
+    ],
+    "lowerTipApprox": [
+      1053,
+      901
+    ],
+    "visibleVerticalTipSeparationApprox": 883,
+    "interpretation": "Apparent2D separation is diagnostic, not a body-scale denominator; changes with authored bow flex/pose and walking foreground boot overlap. All poses use the same44/836 scale. No independent bow or body resizing was applied. Coordinator must judge native physical-length consistency.",
+    "completeCanvasBowTips": true,
+    "oneString": true,
+    "originalBowHoldingArmRetained": true,
+    "looseNockedArrowCount": 0
+  }
+}

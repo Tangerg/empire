@@ -24,5 +24,56 @@
   "alphaOnePixels": 4694,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "boot": "trailing-screen-left",
+      "roi": [
+        515,
+        750,
+        705,
+        935
+      ],
+      "soleY": 924,
+      "bottomFourRowsMeanX": 647.8155339805826
+    },
+    {
+      "boot": "support-screen-right",
+      "roi": [
+        820,
+        850,
+        1074,
+        975
+      ],
+      "soleY": 955,
+      "bottomFourRowsMeanX": 969.2301255230126
+    }
+  ],
+  "sourceFootMidpoint": [
+    808.5228297517976,
+    939.5
+  ],
+  "suggestedSourceFoot": [
+    809,
+    955
+  ],
+  "lockedBodyScale": 0.05263157894736842,
+  "masterRawHashMatches": true,
+  "semanticReview": "Walk-a clearly right support/down and left heel raised recovery; original screen-right bow hand and free screen-left hand retained. One upright pale longbow and single taut string; all arrows in quiver. Lower bow end adjacent to foreboot with small natural foreground occlusion, no canvas clipping. Native and white QA inspected.",
+  "bowPoseReview": {
+    "upperTipApprox": [
+      1127,
+      21
+    ],
+    "lowerTipApprox": [
+      1062,
+      898
+    ],
+    "visibleVerticalTipSeparationApprox": 877,
+    "interpretation": "Apparent2D separation is diagnostic, not a body-scale denominator; changes with authored bow flex/pose and walking foreground boot overlap. All poses use the same44/836 scale. No independent bow or body resizing was applied. Coordinator must judge native physical-length consistency.",
+    "completeCanvasBowTips": true,
+    "oneString": true,
+    "originalBowHoldingArmRetained": true,
+    "looseNockedArrowCount": 0
+  }
 }

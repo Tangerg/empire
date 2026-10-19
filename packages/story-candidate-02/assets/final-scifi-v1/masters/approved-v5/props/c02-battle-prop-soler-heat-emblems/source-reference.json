@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-soler-heat-emblems",
+  "assetId": "C02-SFV1-battle-prop-soler-heat-emblems",
+  "label": "索勒热灯标识组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 1
+  },
+  "sourceCropBox": [
+    319,
+    5,
+    622,
+    622
+  ],
+  "sourceMappingEvidence": "Correct verified mapping: original full props-board-04 top-row visual identity matches original topic catalog positions24-27. Board03 bottom row is evidence/manifest/film/badge set and explicitly not this family. No sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-soler-heat-emblems.png",
+  "runtimeReferenceSha256": "dd15c0b387c3b40f56cc1ebac9b6a944dbf0269fba2b9ba7d51c0bd5a30f7be0",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

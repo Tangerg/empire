@@ -72,7 +72,7 @@
     "line": 29,
     "text": "'c01.silver-longbow': 'C01-UNIT-SILVER-LONGBOW'"
   },
-  "status": "Idle approved; three poses in progress",
+  "status": "Native quartet complete; coordinator final bow-proportion/sequence review pending",
   "exclusivityCheck": "Coordinator exclusive assignment, target folder absent before work",
   "consumerStatus": "Campaign silverwood ranged guard; four verified c01-15 enemy actors; no builtin consumer found",
   "levelEvidence": {
@@ -166,5 +166,6 @@
   "ruleIllustrationReview": "Bow artwork matches sole ranged piercing longbow rule. Rebuild a physically legible single nocked arrow draw; preserve original bow-holding arm and drawing arm. Arrowhead points toward screen-right target, rear fletching/nock at cheek draw hand, shaft rests above bow grip, V-string endpoints attach actual bow tips. Independent projectile FX stays separate.",
   "originalFrameReview": "Original third attack cell is near-idle with free hand raised only at waist; no clear nocked arrow draw. Original walks both emphasize screen-right forward contact. New quartet reconstructs clear shot and opposite contacts, not an assertion that source already had them.",
   "scaleContract": "Coordinator approved44/836(1/19),sourcefoot[800,956],actualidle1585x992 on2026-10-19 at18:48UTC. Same body and physical bow size across quartet.",
-  "idleAttemptReview": "First generated idle has24perimeter pixels alpha>1(max3), bowtop7, boots987 and lower bow tip partly hidden behind boot; preserved rejected. Targeted imagegen attempt02 repositions body and bow without programmatic edits; complete bow ends and edgealpha0. Pending coordinator review."
+  "idleAttemptReview": "First generated idle has24perimeter pixels alpha>1(max3), bowtop7, boots987 and lower bow tip partly hidden behind boot; preserved rejected. Targeted imagegen attempt02 repositions body and bow without programmatic edits; complete bow ends and edgealpha0. Pending coordinator review.",
+  "quartetManifest": "bundle-manifest.json"
 }

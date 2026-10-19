@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-hesha-water-signs",
+  "assetId": "C02-SFV1-battle-prop-hesha-water-signs",
+  "label": "赫沙水务标识组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 1
+  },
+  "sourceCropBox": [
+    5,
+    5,
+    309,
+    622
+  ],
+  "sourceMappingEvidence": "Correct verified mapping: original full props-board-04 top-row visual identity matches original topic catalog positions24-27. Board03 bottom row is evidence/manifest/film/badge set and explicitly not this family. No sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-hesha-water-signs.png",
+  "runtimeReferenceSha256": "b1a7a0ada6d65d960b50ffc67286a55a27b972276fe72a7e43141e6086d8e925",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a570e3cf-3fb7-40b3-93ab-557ca32c38ec.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-hesha-water-signs/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board04 row1 col1 water-drop utility-device group retained: one large central blue droplet machine and six surrounding smaller pump/pedestal/fitting pieces. Round bases, heavy pipes, opaque cyan droplets and amber couplings preserved. The source is functional water-marker hardware, not written signs or banners.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

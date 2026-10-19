@@ -1,0 +1,62 @@
+{
+  "topicId": "C01-EQUIP-ANTI-OATH-GEAR",
+  "assetId": "C01-FFV1-EQUIP-ANTI-OATH-GEAR",
+  "label": "抗誓文护具",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-09fc5064-fd82-438c-9a75-f6cf555f1b1f.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-anti-oath-gear-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-04.png, row 4 column 2 (one based)",
+    "topicIndex": 45,
+    "inspectionCropCoordinates": [
+      316,
+      942,
+      625,
+      1252
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-anti-oath-gear.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-04.png",
+    "atlasSha256": "f481ca178f9c37c0f8cba5c2022203ab5db798ab4b76edda022fd4b3ff0a61c5",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-anti-oath-gear-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-anti-oath-gear-runes-detail.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-anti-oath-gear-bracer-detail.png"
+  ],
+  "inspectedApprovedUnitReferences": [],
+  "unitIdentityNote": "This is a generic equipment kit topic rather than a character identity. Original full equipment atlas and baseline equipment runtime determine objects and markings; current approved chunky equipment family determines only material/outline style.",
+  "identityClarification": "Exactly TWO equipment groups from original reference 1. LEFT: one empty dark gray cylindrical forearm BRACER, diagonally lower-left to upper-right, visibly hollow oval lower opening, heavy silver end rims and a few large round rivets. Its front has the source's ONE silver embossed directional motif: narrow upright stem with an elongated angular faceted DIAMOND around its upper-middle, continuing downward to a large sharp V-shaped ARROWHEAD pointing toward the bracer's lower-left open end. Match the full symbol, do not substitute a cross or new rune. RIGHT: one broad golden rune bracelet/ring BROKEN INTO TWO curved pieces, lying as an incomplete oval with a clear large break at the upper-right and a smaller jagged front-left split. Keep the hollow center and original broken ends. Across the visible outer band preserve the source's SEVEN visible pale-gold rune-like engraved marks in order: a partly side-hidden short mark and an angular bow-tie/zigzag mark on the left fragment, then five distinct angular hooked/looped marks on the main front/right fragment. References 4 and 5 provide original enlarged-region identity details of the band marks and bracer emblem. Copy these shapes rather than inventing readable text. Their pale yellow brightness stays strictly within the engraved metal surfaces, no glow beyond the bracelet. No whole armor, hand, new weapon, magical cloud, loose fragments or new insignia.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "detailIdentityReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-anti-oath-gear-runes-detail.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-anti-oath-gear-bracer-detail.png"
+  ],
+  "symbolIdentity": "Silver bracer motif is a long faceted diamond on a stem terminating in a V arrow toward the open lower-left end. The gold band is broken into two arcs, with two gaps; pale-gold surface engraving preserves the seven visible source marks. No interpretation or translation of the marks is claimed."
+}

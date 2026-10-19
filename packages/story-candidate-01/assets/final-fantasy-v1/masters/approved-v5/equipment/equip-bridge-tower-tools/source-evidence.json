@@ -1,0 +1,56 @@
+{
+  "topicId": "C01-EQUIP-BRIDGE-TOWER-TOOLS",
+  "assetId": "C01-FFV1-EQUIP-BRIDGE-TOWER-TOOLS",
+  "label": "桥塔工程包",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-fc2311e2-a94c-4bef-86b6-7debda886c5d.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-bridge-tower-tools-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-04.png, row 3 column 2 (one based)",
+    "topicIndex": 41,
+    "inspectionCropCoordinates": [
+      316,
+      629,
+      625,
+      938
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-bridge-tower-tools.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-04.png",
+    "atlasSha256": "f481ca178f9c37c0f8cba5c2022203ab5db798ab4b76edda022fd4b3ff0a61c5",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-bridge-tower-tools-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "inspectedApprovedUnitReferences": [],
+  "unitIdentityNote": "This is a generic equipment kit topic rather than a character identity. Original full equipment atlas and baseline equipment runtime determine objects and markings; current approved chunky equipment family determines only material/outline style.",
+  "identityClarification": "Exactly TWO functional equipment groups matching source. LEFT: ONE plain short engineering HAMMER, rectangular broad gray iron head with a few wide faceted divisions, straight brown wooden handle angled toward lower-left, little round wooden shaft end protruding on top. No rune or new symbol on hammer. RIGHT: ONE hanging single-wheel wooden PULLEY BLOCK with thick oval/circular brown wood cheeks, dark middle sheave channel, central round axle and a few large fasteners; ONE thick dark iron suspension HOOK at the top with a small open lower-left gap. One thick tan rope runs from the pulley into a neatly folded elongated double loop on the lower-right, with visible open spaces and only a few broad twist segments. Preserve this compact hammer + pulley-and-rope composition. No bridge, tower, scaffolding, extra hammer, extra pulley, worker, nails or additional tools.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "detailIdentityReferences": []
+}

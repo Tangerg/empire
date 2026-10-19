@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-EQUIP-ANTI-OATH-GEAR",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6013217035629527,
+  "nearOpaqueFractionAlphaGE250": 0.38154587934240414,
+  "nonzeroAlphaBBox": [
+    51,
+    71,
+    1234,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    55,
+    151,
+    1200,
+    1117
+  ],
+  "visibleAlphaBBoxGE128": [
+    56,
+    152,
+    1197,
+    1116
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    56,
+    152,
+    57,
+    138
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 5,
+  "sha256": "4ffadeadfd6730fe5d107ecb3cd7651e29a391f709e69e907d1141abbd13ef4e",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly TWO equipment groups from original reference 1. LEFT: one empty dark gray cylindrical forearm BRACER, diagonally lower-left to upper-right, visibly hollow oval lower opening, heavy silver end rims and a few large round rivets. Its front has the source's ONE silver embossed directional motif: narrow upright stem with an elongated angular faceted DIAMOND around its upper-middle, continuing downward to a large sharp V-shaped ARROWHEAD pointing toward the bracer's lower-left open end. Match the full symbol, do not substitute a cross or new rune. RIGHT: one broad golden rune bracelet/ring BROKEN INTO TWO curved pieces, lying as an incomplete oval with a clear large break at the upper-right and a smaller jagged front-left split. Keep the hollow center and original broken ends. Across the visible outer band preserve the source's SEVEN visible pale-gold rune-like engraved marks in order: a partly side-hidden short mark and an angular bow-tie/zigzag mark on the left fragment, then five distinct angular hooked/looped marks on the main front/right fragment. References 4 and 5 provide original enlarged-region identity details of the band marks and bracer emblem. Copy these shapes rather than inventing readable text. Their pale yellow brightness stays strictly within the engraved metal surfaces, no glow beyond the bracelet. No whole armor, hand, new weapon, magical cloud, loose fragments or new insignia.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticCountQA": "One empty bracer, one rune band split into two curved pieces; correct arrow direction, hollow centers, source engraved marks, and two fracture gaps.",
+  "boundedBrightnessQA": "Gold marks stay on band surfaces; no broad external haze, aura or cloud."
+}

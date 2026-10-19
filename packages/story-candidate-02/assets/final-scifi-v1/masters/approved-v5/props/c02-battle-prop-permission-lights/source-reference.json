@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-permission-lights",
+  "assetId": "C02-SFV1-battle-prop-permission-lights",
+  "label": "权限状态灯组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 1
+  },
+  "sourceCropBox": [
+    945,
+    5,
+    1249,
+    622
+  ],
+  "sourceMappingEvidence": "Correct verified mapping: original full props-board-04 top-row visual identity matches original topic catalog positions24-27. Board03 bottom row is evidence/manifest/film/badge set and explicitly not this family. No sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-permission-lights.png",
+  "runtimeReferenceSha256": "68abe1fbcc69ca987ad0cf641ced3d9ed1e4bf42ff304bf5a9ba55bf85ff4fd5",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}
