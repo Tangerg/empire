@@ -1,0 +1,108 @@
+{
+  "topicId": "C01-UNIT-ENGINEER",
+  "actualConsumers": [
+    "c01.tasha",
+    "c01.engineer"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "lines": [
+      10,
+      18
+    ],
+    "text": [
+      "'c01.tasha': 'C01-UNIT-ENGINEER'",
+      "'c01.engineer': 'C01-UNIT-ENGINEER'"
+    ]
+  },
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-ENGINEER",
+    "topicId": "C01-UNIT-ENGINEER",
+    "label": "工程师",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-engineer.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-engineer.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-engineer.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-units/gray-banner-engineer-source.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "de05ade7832e67e677c8fc045d4c70c3939af63a977e8aa54b6a231e3f9fb671"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-engineer.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "a649e616d11af50a80073bf4dcb48146a073311f6b1003b0d9990a4568d0656a"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-engineer.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "f476d58f29f86fffac797fc922e30e1b92ea4b7e24c1bbdad9af0eb28e5a4175"
+    }
+  },
+  "referenceExtraction": "Native non-resampled first source board cell[0,0,418,941]; HD frames64x96. No color/alpha edits. Magenta backdrop is reference only.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityObserved": [
+    "Brown hair with low rear bun and loose side locks; stern clean-shaven adult face",
+    "Brown rounded leather work cap, rolled short brim and ear flaps",
+    "Ochre leather apron, dark teal vest, cream rolled sleeves",
+    "Brown gloves, brown boots with broad gray/tan folded cuffs",
+    "Screen-right gloved hand holds short wood-shaft double-faced steel hammer upright",
+    "Screen-left gloved hand rests on/carries a tan rope coil at hip",
+    "Steel wrench hangs from front belt; small brown pouch at screen-right hip",
+    "Full gray steel shovel/spade head behind screen-left shoulder with brown shaft strapped to back"
+  ],
+  "semanticEvidence": {
+    "unitDefinitions": "packages/story-candidate-01/src/units.ts:52-56,76",
+    "weaponDefinitions": "packages/story-candidate-01/src/weapons.ts:79-91",
+    "weapons": [
+      "c01.engineer-hammer",
+      "c01.satchel-charge"
+    ],
+    "actionSemantics": "Hammer is blunt melee/engineer; satchel-charge is ranged siege area attack. Existing common attack slot will depict clear hammer action; no separate bomb or fifth frame invented."
+  },
+  "status": "Source/idle preparation"
+}

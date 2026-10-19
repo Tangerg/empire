@@ -1,0 +1,41 @@
+{
+  "status": "Accepted; remaining three poses in progress",
+  "topic": "C01-UNIT-ENGINEER",
+  "actualConsumers": [
+    "c01.tasha",
+    "c01.engineer"
+  ],
+  "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/animation/engineer/idle/master.png",
+  "nativeSize": [
+    1586,
+    992
+  ],
+  "identityPass": true,
+  "bodyStyleReview": "Large adult head/leather cap, huge gloves/boots, broad short ochre apron/teal vest, extremely short legs",
+  "equipmentHandAssignment": "Screen-right glove holds hammer, screen-left glove holds rope coil; shovel strapped behind left shoulder, wrench front belt, pouch right hip",
+  "visibleBoundsAlphaGreaterThan127": [
+    423,
+    47,
+    1274,
+    965
+  ],
+  "bodyTop": 47,
+  "sourceFootMidpoint": [
+    818.856,
+    962.0
+  ],
+  "suggestedSourceFoot": [
+    819,
+    964
+  ],
+  "proposedBodyReferenceSourcePixels": 915.0,
+  "proposedBodyScale": 0.048087431693989074,
+  "bodyTargetHeightLogicalPixels": 44,
+  "perimeterAlphaMax": 1,
+  "perimeterAlphaGreaterThan1": 0,
+  "rawPreserved": true,
+  "exactPromptVerified": true,
+  "semanticNextPose": "Opposing walking contacts and clear hammer strike/windup in same hand; rope, back shovel and belt tools retained.",
+  "acceptedScale": "44/915",
+  "acceptanceEvidence": "Parent2026-10-19 15:00:43UTC: Engineer idle role kit and chunky silhouette good; locked44/915 and foot819,964; preserve camera/body and gear hands; keep skin/apron broad matte blocks without increased microplanes."
+}
