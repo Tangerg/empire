@@ -1,0 +1,24 @@
+{
+  "status": "Worker visual review complete; coordinator native/runtime/whole-scene acceptance pending",
+  "originalIdentity": "Pass: source fourth-row full identity retained in selected quartet. Legacy clipped runtime was not used as complete character reference.",
+  "style": "Pass: matte broad cel planes, thick outline, chunky head/hands/feet/hammer. No realistic noise or detailed fur grain.",
+  "poseSequence": "Pass:walk-a screen-right forward;walk-b screen-left forward. Attack two-handed long-haft stone-club extension;idle both feet planted.",
+  "registration": "Shared58/931 only; no independent fit. All complete canvases fit128x80. Attack translation9.282491944logical x is above a6logical generic proposal and needs coordinator-specific measured budget approval.",
+  "alpha": "All native RGBA backgrounds transparent and silhouettes fully contained. Idle/walk-a/walk-b perimeter max0;attack max1 with0perimeter pixels>1. Native faint alpha1 background speckles retained; no cleanup.",
+  "footMeasurement": "Manual foot-only ROIs, alpha>127 bottom-four-row means and lowest sole recorded in each alpha-qa.json. Full-body bounds are not foot anchors.",
+  "nativeProvenance": "All selected native/raw/master hashes verified identical. Prompt hashes and every reference hash verified. Both rejectedwalk-b attempts retained with exact requests and review reasons.",
+  "qaInspected": [
+    "idle/qa-white.png",
+    "idle/qa-black.png",
+    "idle/size-comparison-6x.png",
+    "walk-a/qa-white.png",
+    "attack/qa-white.png",
+    "walk-b/qa-white.png",
+    "walk-b/qa-black.png",
+    "quartet-labeled-4x.png",
+    "quartet-black-4x.png",
+    "quartet-white-1x.png"
+  ],
+  "liveRuntimeQA": "Not performed by worker. Coordinator to export and review true siege actors at[3,4]and[15,5]on entire map.",
+  "noRepositoryOrGitChanges": true
+}

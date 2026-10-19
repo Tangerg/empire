@@ -1,0 +1,17 @@
+# Named Bran stage01 source contract
+
+Canonical portrait topic is C01-CHAR-BRAN-01, label 布兰苇草村猎人, assetId C01-FFV1-CHAR-BRAN-01, runtime narrative-static/char-bran-01.png. Identity source is original character-board-02.png top-left, crop [0,0,627,627]. Existing runtime portrait is192×224. Narrative consumer candidate-01-story.ts line8 and portrait binding candidate-01-bindings.ts line98 use this topic. C01-CHAR-BRAN-02 is a different later free-scout commander and is excluded.
+
+Named original identity: youthful rounded clean-shaven face, wide brown eyes, heavy dark eyebrows, tousled dark-brown fringe, small reserved smile. Exact numerical age is not established by the checked story sources. Olive hood and wrapped cowl, ragged olive cape, patched gray-brown village hunting tunic and shoulder panels, bare hands and wrapped forearms, diagonal brown quiver strap, square brass belt buckle, muted olive central belt cloth, brown wrapped boots. Back quiver and pale fletched arrows, plain wooden bow in left/image-right hand, netted provision bag in right/image-left hand, rope coil at image-right waist, belt tools and loop/key-like hanging chest tool. The chest form is practical kit; no new religious or faction interpretation is assigned. No crown, royal insignia or Gray Flag emblem appears on the card.
+
+Current combat alias C01-UNIT-RANGER is generic: older angular stern face, charcoal hood, blue tunic, metal shoulder armor, gloves, drawn short blade. It may serve a generic ranger but cannot define named Bran's face, clothing or identity. This independent named appearance intentionally restores the original named card.
+
+Actual c01.bran unit in src/units.ts42–44 carries c01.ranger-bow and c01.border-blade, movement5, vision5, unarmored, hero/ranged/scout/infantry. Weapon c01.ranger-bow in src/weapons.ts56–62 is 灰境猎弓, piercing, maxRange3, arc line of sight, ranged/projectile/scout. Border blade at weapons.ts13 is 边境长剑, power39 and melee. Current four-frame order remains idle, walk-a, attack, walk-b; footprint1×1. Rules remain unchanged.
+
+The older deep-customized/09-static-assets.md19 mentions short crossbow, boot tools, singed bracer and survivor-name bag. Later deep-novel-v2 chapter06 line291 also mentions a crossbow. These text/art inconsistencies are explicitly recorded, not silently reconciled by inventing a new character. Current stage01 named card shows a simple bow and active rules specify hunting bow. The remake preserves that stage01 bow. No numerical age, later beard or stage02 equipment is imported.
+
+Battle/portrait distinction: battle frees the right hand for bow shooting and stows the original netted provisions on the belt. A plain sheathed border sword reflects the secondary rule weapon; no drawn dagger is borrowed from the generic alias. The separate full transparent portrait restores the original right-hand net bag and left-hand upright bow with source village-hunter appearance. Portrait is separately generated, never a crop from the battle sprite.
+
+Existing single attack slot depicts the primary bow shot. Both current weapons still use the same attack slot. No additional slot, weapon-dependent dispatch or gameplay change is introduced or claimed.
+
+All generated native/raw/master bytes are preserved. QA composites and uniform-scale previews are evidence only and never source masters. No alpha cleanup, painted geometry, contour trimming or per-object resize is allowed. Full authored canvas stays authoritative. No repository or Git edits occur here.

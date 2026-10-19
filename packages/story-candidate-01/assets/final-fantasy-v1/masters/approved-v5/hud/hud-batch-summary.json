@@ -1,0 +1,386 @@
+{
+  "scope": "C01-HUD-01 through C01-HUD-16",
+  "completed": 16,
+  "rejectedVersions": 0,
+  "toolCalls": 16,
+  "tool": "built-in image_gen__imagegen, one call per icon",
+  "nativeOutputSize": [
+    1254,
+    1254
+  ],
+  "runtimeContract": {
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16,
+      16
+    ],
+    "hudDisplay": 28
+  },
+  "sourceBoardBaselineVerified": true,
+  "sourceBoardSha256": "5d2abd3056e883cc5bd1080a62910eb82e0b72ebcd97b3853d36075bb5f19611",
+  "runtimeReady": false,
+  "postprocessing": "None; QA-only full-canvas aspect-preserving32 and28 previews; no code cleanup or recolor",
+  "repositoryChanges": "None by worker; coordinator owns backup/integration",
+  "caveats": [
+    "HUD06,07,09,13,14 retain native alpha1 edge residue; visible alpha>=8 silhouettes all inset.",
+    "HUD07 metal center highlight cooler than original brass; functional brown wheel/blue-gray brackets preserved.",
+    "Fine decorative details naturally compact at28px; reviewed primary silhouettes and functional colors remain distinguishable."
+  ],
+  "assets": [
+    {
+      "topicId": "C01-HUD-01",
+      "label": "友军",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-01",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "ba3e1019acf57e563c2b38f1faea20daec6e59384c3f07ac34ad832c7b651f34",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 0,
+      "visibleMargins": [
+        224,
+        124,
+        224,
+        124
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-02",
+      "label": "敌军",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-02",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "96bce9b503e70ad2ffb0ddce31e7da568252ba488d2d6b638b056cd23e6eac1d",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 0,
+      "visibleMargins": [
+        178,
+        111,
+        177,
+        104
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-03",
+      "label": "中立",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-03",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "713a6d4a55c5c30dc2450f3bee9c272e4a3412e065cf726d348d86f2f4f5227c",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 0,
+      "visibleMargins": [
+        163,
+        169,
+        165,
+        168
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-04",
+      "label": "可招降",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-04",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "b15619ec6ecf1f6ae51b13c1647822b9c586ac95cc21d9b7054f299019ccd267",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 0,
+      "visibleMargins": [
+        51,
+        221,
+        32,
+        186
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-05",
+      "label": "主目标",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-05",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "d80d0baa2d4e9924b9699d1f715f1597aa3fb0a1cb88bd7e1ce493c19bdf8dd0",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 0,
+      "visibleMargins": [
+        126,
+        49,
+        135,
+        109
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-06",
+      "label": "次要目标",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-06",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "889f5a2a29d2a0803b17ad7f5e5bc3a7e79fc728661b771b0510ce1c60a0b6fb",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 1,
+      "visibleMargins": [
+        131,
+        101,
+        132,
+        119
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-07",
+      "label": "护送目标",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-07",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "1471c2a3130af0fd0c23b698aa19c34bb1e4365062da296c75809159ec4543a9",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 1,
+      "visibleMargins": [
+        61,
+        182,
+        62,
+        191
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-08",
+      "label": "危险区域",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-08",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "ac2364c50b27a7a2e62d4747e687b5061ab547d1f8d628145fd60fcaa0de57fd",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 0,
+      "visibleMargins": [
+        49,
+        105,
+        53,
+        147
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-09",
+      "label": "补给点",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-09",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "c4c2a58dec071d571c255fe4338ed8eb43ba83c2e65dc707546a10af09bed094",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 1,
+      "visibleMargins": [
+        72,
+        204,
+        63,
+        136
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-10",
+      "label": "治疗点",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-10",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "5f9baf1fb74cbfbed9305762296dbc9baeb79e0bd3c6efe19360c6403c047644",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 0,
+      "visibleMargins": [
+        130,
+        136,
+        81,
+        137
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-11",
+      "label": "工程交互",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-11",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "ea29ca89cd25cc2b431923a7f88e2355f181d219debb8f00fb180048c174c607",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 0,
+      "visibleMargins": [
+        99,
+        54,
+        107,
+        84
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-12",
+      "label": "可破坏结构",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-12",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "9f9294d5600f20da43f10cda7e5d96faf5c0607d3bb15abe4132cfe458f5e16f",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 0,
+      "visibleMargins": [
+        128,
+        150,
+        82,
+        119
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-13",
+      "label": "可修复结构",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-13",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "082df7d1d96a309deec97fe5e7c66bd87d3b7ba603d512e6088881d3e255a3e7",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 1,
+      "visibleMargins": [
+        155,
+        136,
+        103,
+        111
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-14",
+      "label": "增援入口",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-14",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "52db49609cd17c8f20042728450d854362caaf062b7a2dfdd5d62caa9461e781",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 1,
+      "visibleMargins": [
+        46,
+        154,
+        45,
+        113
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-15",
+      "label": "撤离出口",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-15",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "fe24d0aae527364ab46338791a991e0d0366a1615e2c8279d123988719de7db3",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 0,
+      "visibleMargins": [
+        49,
+        275,
+        26,
+        218
+      ],
+      "reviewComplete": true
+    },
+    {
+      "topicId": "C01-HUD-16",
+      "label": "多阵营权限争议点",
+      "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-16",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "2c3aef53954d8fae624693e435f14bd81dd2fea66420870e7591c82d9172481b",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "canvasEdgeMaxAlpha": 0,
+      "visibleMargins": [
+        61,
+        82,
+        60,
+        107
+      ],
+      "reviewComplete": true
+    }
+  ]
+}

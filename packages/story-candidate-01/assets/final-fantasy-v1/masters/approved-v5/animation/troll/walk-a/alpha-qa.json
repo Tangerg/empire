@@ -24,5 +24,67 @@
   "alphaOnePixels": 3568,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "foot": "left-trailing",
+      "roi": [
+        500,
+        800,
+        690,
+        925
+      ],
+      "soleY": 917,
+      "bottomFourRowsMeanX": 598.7672413793103
+    },
+    {
+      "foot": "right-forward",
+      "roi": [
+        907,
+        825,
+        1192,
+        971
+      ],
+      "soleY": 959,
+      "bottomFourRowsMeanX": 976.6854838709678
+    }
+  ],
+  "sourceFootMidpoint": [
+    787.726362625139,
+    938.0
+  ],
+  "suggestedSourceFoot": [
+    788,
+    959
+  ],
+  "sharedBodyScale": 0.06229860365198711,
+  "sharedScaleFraction": "58/931",
+  "bodyReferenceSourcePixels": 931,
+  "bodyTargetHeightLogicalPixels": 58,
+  "negativeSpaceProbes": [
+    {
+      "name": "left-arm-gap",
+      "rectangle": [
+        603,
+        544,
+        608,
+        549
+      ],
+      "zeroPixels": 0,
+      "maxAlpha": 252
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        660,
+        812,
+        665,
+        817
+      ],
+      "zeroPixels": 20,
+      "maxAlpha": 5
+    }
+  ],
+  "semanticReview": "Actual walk-a shows screen-right forward heel/sole and screen-left trailing toe, free right fist forward, hammer arm back. Prompt specified the inverse but this is a valid first contact; selected walk-b is measured opposite. Full identity, outfit asymmetry, hammer and body scale retained.",
+  "contact": "Screen-right forward/low; screen-left trailing/high"
 }

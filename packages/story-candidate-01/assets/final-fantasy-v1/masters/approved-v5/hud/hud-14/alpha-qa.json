@@ -1,0 +1,61 @@
+{
+  "topicId": "C01-HUD-14",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5954896484360096,
+  "nearOpaqueFractionAlphaGE250": 0.3842491904692862,
+  "nonzeroAlphaBBox": [
+    0,
+    33,
+    1236,
+    1228
+  ],
+  "visibleAlphaBBoxGE8": [
+    46,
+    154,
+    1209,
+    1141
+  ],
+  "visibleAlphaBBoxGE128": [
+    47,
+    155,
+    1208,
+    1140
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    46,
+    154,
+    45,
+    113
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 16,
+  "sha256": "52db49609cd17c8f20042728450d854362caaf062b7a2dfdd5d62caa9461e781",
+  "matchesRawGeneratedBytes": true,
+  "identityVerified": "Exactly TWO opposing upright stone gateposts framing a transparent doorway; each has a wooden gate leaf swung inward, left leaf at left and right leaf at right. Between and below them are exactly THREE brown shoe footprints in a triangular staggered arrangement: one near lower-left, one farther up near middle-left, one at middle-right. Each individual footprint consists of one large sole shape and one separated small heel shape, six brown pieces total but only THREE shoes. They make a short path through the open gate, not stepping stones. Preserve light-gray masonry, brown gate planks, dark metal hinges and brown footprints. No flag, arrow, characters or landscape.",
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "reviewComplete": true,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-14/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas aspect-preserving fit to32, then HUD downscale to28; source unmodified.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: paired gateposts and three footprints remain identifiable; individual sole/heel gaps compress at28. Original six footprint pieces preserved at native size. Native alpha1 residue retained unchanged."
+  },
+  "visualQA": [
+    "Native image preserves original subject, composition and functional colors.",
+    "Bold contours and broad matte cel planes; no exterior haze or background.",
+    "Transparent alpha and open exterior verified numerically.",
+    "Actual32/HUD28 on white, black and olive: paired gateposts and three footprints remain identifiable; individual sole/heel gaps compress at28. Original six footprint pieces preserved at native size. Native alpha1 residue retained unchanged."
+  ]
+}

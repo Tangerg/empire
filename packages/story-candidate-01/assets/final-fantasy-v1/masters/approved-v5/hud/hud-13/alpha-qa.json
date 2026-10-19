@@ -1,0 +1,61 @@
+{
+  "topicId": "C01-HUD-13",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.47794934995891936,
+  "nearOpaqueFractionAlphaGE250": 0.5103661902327226,
+  "nonzeroAlphaBBox": [
+    0,
+    0,
+    1204,
+    1172
+  ],
+  "visibleAlphaBBoxGE8": [
+    155,
+    136,
+    1151,
+    1143
+  ],
+  "visibleAlphaBBoxGE128": [
+    156,
+    137,
+    1150,
+    1142
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    155,
+    136,
+    103,
+    111
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 2,
+  "sha256": "082df7d1d96a309deec97fe5e7c66bd87d3b7ba603d512e6088881d3e255a3e7",
+  "matchesRawGeneratedBytes": true,
+  "identityVerified": "Exactly ONE short gray stone wall fragment with a mildly uneven broken top. A thick dark iron diagonal repair brace runs from lower-left to upper-right across the front, fastened by broad rectangular plates with large round rivets at its ends. Preserve chunky gray masonry and charcoal diagonal brace; no detached hammer, tools, glowing symbol or new wall section.",
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "reviewComplete": true,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-13/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas aspect-preserving fit to32, then HUD downscale to28; source unmodified.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: stone-wall mass and diagonal dark brace remain readable. Native alpha1 residue on two edge pixels retained unchanged; meaningful bounds inset."
+  },
+  "visualQA": [
+    "Native image preserves original subject, composition and functional colors.",
+    "Bold contours and broad matte cel planes; no exterior haze or background.",
+    "Transparent alpha and open exterior verified numerically.",
+    "Actual32/HUD28 on white, black and olive: stone-wall mass and diagonal dark brace remain readable. Native alpha1 residue on two edge pixels retained unchanged; meaningful bounds inset."
+  ]
+}

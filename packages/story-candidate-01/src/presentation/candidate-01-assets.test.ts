@@ -12,6 +12,7 @@ import sourceOverrides from '../../../../tools/art/source-overrides.json';
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
 const bundles = [
+  { topic: 'C01-UNIT-JAVELIN-HUNTER', source: 'animation/javelin-hunter', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-CANNON-WAGON', source: 'animation/cannon-wagon', size: [112, 72], footprint: [2, 2], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-STONE-GOLEM', source: 'animation/stone-golem', size: [144, 104], footprint: [2, 2], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-CEMETERY-COLOSSUS', source: 'animation/cemetery-colossus', size: [128, 80], footprint: [2, 2], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },

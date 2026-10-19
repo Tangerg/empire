@@ -24,5 +24,67 @@
   "alphaOnePixels": 5075,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "foot": "left-braced",
+      "roi": [
+        170,
+        820,
+        425,
+        975
+      ],
+      "soleY": 960,
+      "bottomFourRowsMeanX": 312.0574162679426
+    },
+    {
+      "foot": "right-braced",
+      "roi": [
+        855,
+        822,
+        1140,
+        975
+      ],
+      "soleY": 959,
+      "bottomFourRowsMeanX": 1030.9529411764706
+    }
+  ],
+  "sourceFootMidpoint": [
+    671.5051787222067,
+    959.5
+  ],
+  "suggestedSourceFoot": [
+    672,
+    960
+  ],
+  "sharedBodyScale": 0.06229860365198711,
+  "sharedScaleFraction": "58/931",
+  "bodyReferenceSourcePixels": 931,
+  "bodyTargetHeightLogicalPixels": 58,
+  "negativeSpaceProbes": [
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        639,
+        865,
+        644,
+        870
+      ],
+      "zeroPixels": 25,
+      "maxAlpha": 0
+    },
+    {
+      "name": "below-haft",
+      "rectangle": [
+        1218,
+        721,
+        1223,
+        726
+      ],
+      "zeroPixels": 25,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Clear two-handed outward stone-headed blunt-club swing. Broad braced bare feet; original spiral/circular stone carvings, gray plaque, pouch, tusked face and hair retained. Larger projected width is arm/weapon extension; no per-pose scaling and no independent FX.",
+  "contact": "Both widely braced"
 }

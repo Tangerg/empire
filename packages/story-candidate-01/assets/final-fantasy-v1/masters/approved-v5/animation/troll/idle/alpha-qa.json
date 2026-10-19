@@ -27,7 +27,7 @@
   "postprocessing": "none; native source copied byte-for-byte",
   "feetMeasurement": [
     {
-      "foot": "screen-left",
+      "foot": "left-planted",
       "roi": [
         495,
         843,
@@ -38,7 +38,7 @@
       "bottomFourRowsMeanX": 617.7068965517242
     },
     {
-      "foot": "screen-right",
+      "foot": "right-planted",
       "roi": [
         1010,
         836,
@@ -58,21 +58,10 @@
     969
   ],
   "sharedBodyScale": 0.06229860365198711,
-  "sharedScaleFraction": "58/931.0",
-  "bodyReferenceSourcePixels": 931.0,
+  "sharedScaleFraction": "58/931",
+  "bodyReferenceSourcePixels": 931,
   "bodyTargetHeightLogicalPixels": 58,
   "negativeSpaceProbes": [
-    {
-      "name": "finger-gap",
-      "rectangle": [
-        1082,
-        660,
-        1087,
-        665
-      ],
-      "zeroPixels": 0,
-      "maxAlpha": 22
-    },
     {
       "name": "leg-gap",
       "rectangle": [
@@ -85,7 +74,7 @@
       "maxAlpha": 0
     },
     {
-      "name": "outside-left",
+      "name": "outer-left",
       "rectangle": [
         248,
         498,
@@ -95,5 +84,7 @@
       "zeroPixels": 25,
       "maxAlpha": 0
     }
-  ]
+  ],
+  "semanticReview": "Accepted idle: original gray-olive brute, tied-back black hair, lower ivory tusks, tan fur/brown hide, crossed harness, pouch, gray circular plaque and rectangular spiral-carved gray stone hammer. Full low carried hammer and both bare feet; no shadow/FX.",
+  "contact": "Both planted"
 }

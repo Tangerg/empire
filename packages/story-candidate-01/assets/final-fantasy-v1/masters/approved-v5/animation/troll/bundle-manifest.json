@@ -1,0 +1,183 @@
+{
+  "asset": "C01-UNIT-TROLL",
+  "actualConsumers": [
+    "ogre"
+  ],
+  "status": "Native quartet complete; coordinator final sequence/export and real siege map review pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Every selected master/raw PNG is byte-identical to native output. No painting, recoloring, resizing, cropping or alpha cleanup. Black/white composites and registered previews are inspection-only evidence.",
+  "sharedScale": 0.06229860365198711,
+  "scaleFraction": "58/931",
+  "bodyReferenceSourcePixels": 931,
+  "bodyTargetHeightLogicalPixels": 58,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/registration-evidence.json",
+  "semanticContract": "C01-UNIT-TROLL is the existing art for built-in ancient-empires ogre, sole weapon ogre_club blunt52 melee/impact. Real siege actors owner1[3,4] and owner2[15,5]. No c01 troll alias or new rule. Preserve original art footprint[2,2]. Source fourth row of combat-atlas-heavyknight-spirit-cannon-troll is authoritative complete identity because legacy runtime strip truncates head. Four poses are idle,walk-a,attack,walk-b; clear original stone-club swing and opposite actual walking contacts, no baked FX.",
+  "symbolContract": "Gray-olive skin, black bun, lower ivory tusks; earthy stitched hide and tan fur trim, crossed leather straps, brass buckles, screen-right pouch and screen-left gray circular-carved plaque. Original rectangular beveled gray stone hammer with spiral broad face and circular side; no new faction emblem, magical glyph, weapon or color changes.",
+  "idleApproval": "Coordinator2026-10-19 22:41UTC approved58logical body scale beside44human/62golem, shared58/931 and proposed128x80 frame. Final real siege map acceptance remains with coordinator.",
+  "selectedAttempts": {
+    "idle": "First native output",
+    "walk-a": "First native output, actual contact inverse of planned wording; paired with truly opposite selectedwalk-b",
+    "attack": "First native output",
+    "walk-b": "Third native output. Attempts01and02 repeatedwalk-a contact and are preserved in failed-attempt folders."
+  },
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "c95f529baabc14e33eeb136a350ada956a0c38d9a700fc487b964cdd823b5fd1",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/idle/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        821,
+        969
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        375,
+        29,
+        1164,
+        972
+      ],
+      "sha256": "22e2a842a5552e6cb511004271dfc234df1d0c45ea989d853cc6ea67ba9948e6",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bf4113cc-dec7-4ba6-875a-38668eaab965.png",
+      "nativeRawMasterByteIdentical": true,
+      "review": "Accepted idle: original gray-olive brute, tied-back black hair, lower ivory tusks, tan fur/brown hide, crossed harness, pouch, gray circular plaque and rectangular spiral-carved gray stone hammer. Full low carried hammer and both bare feet; no shadow/FX."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "011f259aef5d8a385003f3ec0414073a2d921a16aad0ff08dd6b377043b31901",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        788,
+        959
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        312,
+        26,
+        1259,
+        960
+      ],
+      "sha256": "56afb7b81630b63209c3e228caefcdcc47deb9d2706114ecf888a4ea56ddb04e",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-d7e68803-109d-4d55-854e-402faf09484d.png",
+      "nativeRawMasterByteIdentical": true,
+      "review": "Actual walk-a shows screen-right forward heel/sole and screen-left trailing toe, free right fist forward, hammer arm back. Prompt specified the inverse but this is a valid first contact; selected walk-b is measured opposite. Full identity, outfit asymmetry, hammer and body scale retained."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "50f45c76895697f53e037dd9900bcbf5b2a5558a28c61d0f02a1f23072e0a474",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/attack/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        672,
+        960
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        179,
+        27,
+        1539,
+        961
+      ],
+      "sha256": "a53a6c238ebb8e9a69aee1545e11662a14f3ed14225fde88f82d3d76ae92b5e8",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0565e96f-bcd7-4aa9-b296-39266acdead0.png",
+      "nativeRawMasterByteIdentical": true,
+      "review": "Clear two-handed outward stone-headed blunt-club swing. Broad braced bare feet; original spiral/circular stone carvings, gray plaque, pouch, tusked face and hair retained. Larger projected width is arm/weapon extension; no per-pose scaling and no independent FX."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "0c8457907ce438c15b2f00a00235a4c50ff94e7e34d8a75c894de2cac5de685a",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        823,
+        970
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        387,
+        22,
+        1190,
+        971
+      ],
+      "sha256": "d568805b0bf6dd2e4998ae228d801fe49b259836488acdc87705a0e87bf5d6c5",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c717b224-ff69-4c2c-aa87-96a096538156.png",
+      "nativeRawMasterByteIdentical": true,
+      "review": "Third native attempt selected: opposite actual contact, screen-left big forward planted foot and screen-right smaller trailing toe contact; original body, gear sides and hammer retained. Two contact-repeat attempts preserved unmodified."
+    }
+  },
+  "failedAttempts": [
+    "walk-b/attempt-01-repeated-contact",
+    "walk-b/attempt-02-repeated-contact"
+  ],
+  "proposedExport": {
+    "commonFrame": [
+      128,
+      80
+    ],
+    "origin": [
+      12,
+      4
+    ],
+    "canonicalSourceFoot": [
+      821,
+      969
+    ],
+    "commonSourceCanvas": [
+      1586,
+      993
+    ],
+    "canvasPaddingToleranceRequired": 2,
+    "maximumPadRight": 2,
+    "maximumPadBottom": 1,
+    "maximumAbsoluteRegistrationOffsetLogical": 9.282491944146079,
+    "wholeCanvasFitsAllPoses": true
+  },
+  "runtimeEdited": false,
+  "repositoryEdited": false,
+  "gitEdited": false,
+  "liveSceneAccepted": false
+}

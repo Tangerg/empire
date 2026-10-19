@@ -1,0 +1,25 @@
+{
+  "tool": "image_gen__imagegen",
+  "exactRequestFile": "request.json",
+  "exactPromptFile": "prompt.txt",
+  "promptSha256": "cccf3aa4aee6ed11b593a5f52eef9e32e237ff90adf7cecfc13f8f91495cad6b",
+  "referenceImages": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/references/original-char-bran-01-cell.png",
+      "sha256": "ac27ebb55c666a92e2babea239b69ffab853b8046b95729bf84b113a0d46b6cd"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/master.png",
+      "sha256": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/master.png",
+      "sha256": "df533ea0e65c555d7c0ec22bb4578b9d1c9ef4a85185afafb765511094481c0d"
+    }
+  ],
+  "transparent_background": true,
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5b5fa264-e761-479c-87e7-fba6435977c6.png",
+  "nativeSha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+  "rawEqualsMaster": true,
+  "exactRequestSent": true
+}

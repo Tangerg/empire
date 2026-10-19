@@ -1,0 +1,152 @@
+{
+  "topicId": "C01-CHAR-BRAN-01",
+  "namedUnit": "c01.bran",
+  "existingCombatAlias": "C01-UNIT-RANGER",
+  "newNamedAppearance": "hero-appearances/bran",
+  "portraitDestination": "narrative/char-bran-01",
+  "stage": "01, village hunter",
+  "age": "No exact numerical age found. Preserve young boyish clean-shaven original identity.",
+  "sources": [
+    {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+      "copy": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/references/original-character-board-02.png",
+      "sha256": "ba6664552ce4d93879b1c1a815303a0793034f0ab109ba6621e3ca4afd1ee21c",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-bran-01.png",
+      "copy": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/references/original-char-bran-01.png",
+      "sha256": "511767d957f981f20a9863b46c99e88afb43950ddc754d5ebb6fc70cea5359b5",
+      "size": [
+        192,
+        224
+      ]
+    },
+    {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-bran-02.png",
+      "copy": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/references/original-char-bran-02.png",
+      "sha256": "acd0a204daf47c90293d3789510b9cb3d0578461cb91d89b5cf182a658b0275d",
+      "size": [
+        192,
+        224
+      ]
+    },
+    {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/idle/master.png",
+      "copy": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/references/generic-ranger-idle.png",
+      "sha256": "37ab3fab9cb11927ddf8d5ce7281c7fbee49900c87f15f17b8272c4617b4bfd0",
+      "size": [
+        1586,
+        992
+      ]
+    },
+    {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/master.png",
+      "copy": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/references/style-laiya-idle.png",
+      "sha256": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+      "size": [
+        1586,
+        992
+      ]
+    },
+    {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/cain/idle/master.png",
+      "copy": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/references/style-cain-idle.png",
+      "sha256": "df533ea0e65c555d7c0ec22bb4578b9d1c9ef4a85185afafb765511094481c0d",
+      "size": [
+        1586,
+        992
+      ]
+    },
+    {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+      "copy": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/references/original-char-bran-01-cell.png",
+      "crop": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "purpose": "exact source identity reference; no generated master edited",
+      "sha256": "ac27ebb55c666a92e2babea239b69ffab853b8046b95729bf84b113a0d46b6cd"
+    }
+  ],
+  "rulesEvidence": {
+    "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/units.ts",
+    "lines": "42-44",
+    "weapons": [
+      "c01.ranger-bow",
+      "c01.border-blade"
+    ],
+    "movement": 5,
+    "vision": 5,
+    "armorClass": "unarmored",
+    "tags": [
+      "hero",
+      "ranged",
+      "scout",
+      "infantry"
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ]
+  },
+  "weaponEvidence": {
+    "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/weapons.ts",
+    "rangerBow": {
+      "lines": "56-62",
+      "name": "灰境猎弓",
+      "damageType": "pierce",
+      "maxRange": 3,
+      "lineOfSight": "arc",
+      "tags": [
+        "ranged",
+        "projectile",
+        "scout"
+      ]
+    },
+    "borderBlade": {
+      "line": 13,
+      "name": "边境长剑",
+      "power": 39,
+      "tags": [
+        "melee"
+      ]
+    }
+  },
+  "identity": "Young clean-shaven rounded boyish face, wide brown eyes, thick dark brows, tousled dark-brown fringe; olive hood/cowl and ragged cape; patched brown-gray hunter tunic, bare hands and wrapped forearms, cross-body strap, square-buckle belt, rope coil, small field tools/keys, back quiver, wrapped brown boots. Original wooden bow image-right, netted provision bag image-left. No crown or faction emblem.",
+  "sourceMismatches": [
+    "Generic ranger has stern angular face, charcoal hood, blue tunic, metal shoulder armor/gloves and a drawn blade; do not substitute its identity.",
+    "Older deep-customized/09-static-assets.md line19 mentions a short crossbow. Later novel has crossbow scenes. Active stage01 named board and ranger-bow rule show/require bow, so no crossbow introduced.",
+    "Actual border-blade is named a border longsword; prior generic-art notes call it short blade. Keep rules unchanged and supply a plain sheathed compact border sword in battle.",
+    "Portrait source carries netted provisions in right/image-left hand; battle keeps this netted field bag stowed at belt to free draw hand. Portrait retains original carrying pose.",
+    "Four-frame existing contract has one attack slot. Primary bow shot serves that slot; melee actions still share it. No dispatch or rules change."
+  ],
+  "status": "First named Bran stage01 battle idle candidate measured; review pending",
+  "idleCandidate": {
+    "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/master.png",
+    "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/raw.png",
+    "sha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+    "nativeSize": [
+      1586,
+      992
+    ],
+    "proposedScaleRatio": "44/958",
+    "sourceFoot": [
+      758,
+      982
+    ],
+    "review": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle-review.json",
+    "comparison": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/native-scale-comparison.png"
+  }
+}

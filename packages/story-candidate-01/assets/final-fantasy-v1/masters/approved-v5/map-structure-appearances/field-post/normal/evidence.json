@@ -1,0 +1,17 @@
+{
+  "tool": "image_gen.imagegen built-in",
+  "generatedPath": "/workspace/scratch/84c9fe948755/generated_images/exec-652795f5-479b-49fc-8115-a545d0442954.png",
+  "rawSHA256": "17fbb9319ec58739dea9ee94de54425311a57858bc8d84a555bc74c612c817b3",
+  "masterSHA256": "17fbb9319ec58739dea9ee94de54425311a57858bc8d84a555bc74c612c817b3",
+  "referenceImages": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/map-structure-appearances/field-post/rejected/normal-attempt-01/raw.png",
+      "sha256": "6d37a1751e953da7f0f75bf9fd9ee942d47bf3aed2f6256a142ed826f1d34fab",
+      "role": "exact alpha-correction target, itself generated from approved canonical shelter reference"
+    }
+  ],
+  "prompt": "prompt-correction-v2.txt",
+  "request": "request-correction-v2.json",
+  "processing": "Byte-for-byte native copies only. Separate QA derivatives are not source art.",
+  "status": "pending coordinator shape and registration gate"
+}

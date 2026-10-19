@@ -1,0 +1,26 @@
+{
+  "tool": "image_gen.imagegen built-in",
+  "generatedPath": "/workspace/scratch/84c9fe948755/generated_images/exec-652795f5-479b-49fc-8115-a545d0442954.png",
+  "nativeSHA256": "17fbb9319ec58739dea9ee94de54425311a57858bc8d84a555bc74c612c817b3",
+  "referenceImages": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/map-structure-appearances/field-post/normal/raw.png",
+      "sha256": "6d37a1751e953da7f0f75bf9fd9ee942d47bf3aed2f6256a142ed826f1d34fab",
+      "role": "exact alpha-correction target"
+    }
+  ],
+  "alphaBBoxExclusive": [
+    0,
+    69,
+    1190,
+    1206
+  ],
+  "alphaAbove1Bounds": [
+    134,
+    314,
+    1151,
+    1065
+  ],
+  "status": "initially held for native alpha1; coordinator source-contract clarification permits perimeter alpha<=1; now current normal shape/registration gate candidate, byte-identical to normal/master.png",
+  "noPostprocessing": true
+}

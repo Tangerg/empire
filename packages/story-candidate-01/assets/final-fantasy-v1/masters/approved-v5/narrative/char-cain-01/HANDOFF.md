@@ -1,5 +1,7 @@
 # Cain stage01 original-baton portrait
 
+Accepted by the coordinator at 22:43 UTC on 2026-10-19.
+
 Independent native1024×1536RGBA source; raw/master unchanged and hash-identical. See bundle-manifest.json for hash, exact request/provenance and original source.
 
 Character layer only; original capped command baton and diamond shield preserved. Battle quartet intentionally uses spear to match unchanged rules. Stage02 excluded.

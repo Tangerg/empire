@@ -1,0 +1,3 @@
+# Javelin hunter formal catalog integration
+
+Four true-alpha native poses preserve the original dark-haired hunter, ochre coat, scarf, round wooden shield, three spare javelins and held javelin. Opposite foot contacts and overhead throwing preparation are visually distinct. A single shared44/878 scale and measured feet registration preserve all authored canvases; no per-pose fitting or alpha cleanup. Actual exported frames were reviewed over white/dark/olive. Canonical and HD catalogs resolve the new sheets; this topic has no current domain unit consumer, so no in-game appearance is claimed. Rejected gear-hand and repeated-step attempts remain preserved. Live playback remains pending.

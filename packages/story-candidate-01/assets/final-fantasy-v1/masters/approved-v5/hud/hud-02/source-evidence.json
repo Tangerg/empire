@@ -33,7 +33,8 @@
     "mappingAuthority": "Authored topic catalog HUD sequence, exact manifest IDs, original 4x4 master board and baseline runtime visual identity; builder build_grid_category(hud, hud-atlas-01.png 4x4, 32x32).",
     "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
     "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md:456-471",
-    "consumer": "Registered catalog asset reachable through candidate01TryIconMarkup, default28px; no direct exact topic-ID UI callsite found in packages/apps source."
+    "consumer": "Registered catalog asset reachable through candidate01TryIconMarkup, default28px; no direct exact topic-ID UI callsite found in packages/apps source.",
+    "matchesBaselineAtlasBytes": true
   },
   "styleReferences": [
     "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
@@ -47,5 +48,6 @@
   "integration": "Coordinator alone owns repository/Git backup/export/catalog binding; no repository or gameplay edits.",
   "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-870434f8-8c28-44e5-8e31-f94cc5d2afec.png",
   "localRaw": "raw.png",
-  "sha256": "96bce9b503e70ad2ffb0ddce31e7da568252ba488d2d6b638b056cd23e6eac1d"
+  "sha256": "96bce9b503e70ad2ffb0ddce31e7da568252ba488d2d6b638b056cd23e6eac1d",
+  "nativeRawPreservation": "raw.png and master.png are byte-identical copies of tool output including native PNG metadata."
 }

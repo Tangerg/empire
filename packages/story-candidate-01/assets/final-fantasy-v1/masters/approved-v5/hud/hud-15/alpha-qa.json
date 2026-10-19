@@ -1,0 +1,61 @@
+{
+  "topicId": "C01-HUD-15",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6754932859188714,
+  "nearOpaqueFractionAlphaGE250": 0.3092706210938394,
+  "nonzeroAlphaBBox": [
+    29,
+    21,
+    1231,
+    1206
+  ],
+  "visibleAlphaBBoxGE8": [
+    49,
+    275,
+    1228,
+    1036
+  ],
+  "visibleAlphaBBoxGE128": [
+    50,
+    276,
+    1228,
+    1036
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    49,
+    275,
+    26,
+    218
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sha256": "fe24d0aae527364ab46338791a991e0d0366a1615e2c8279d123988719de7db3",
+  "matchesRawGeneratedBytes": true,
+  "identityVerified": "Exactly TWO opposing upright light-gray stone gateposts with brown wooden gate leaves framing an open transparent doorway. Beside the right gatepost stands one warm-brown pole leaning slightly right at its top, carrying one muted slate-blue right-pointing split-tail pennant. Preserve blue pennant, brown pole and doors, gray stone. No footprints, arrows, writing or figure.",
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "reviewComplete": true,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-15/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas aspect-preserving fit to32, then HUD downscale to28; source unmodified.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: open gate and single blue pennant remain readable and distinct from reinforcement gate14; no footprints."
+  },
+  "visualQA": [
+    "Native image preserves original subject, composition and functional colors.",
+    "Bold contours and broad matte cel planes; no exterior haze or background.",
+    "Transparent alpha and open exterior verified numerically.",
+    "Actual32/HUD28 on white, black and olive: open gate and single blue pennant remain readable and distinct from reinforcement gate14; no footprints."
+  ]
+}

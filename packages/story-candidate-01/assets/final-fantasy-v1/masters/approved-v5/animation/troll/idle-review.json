@@ -1,5 +1,5 @@
 {
-  "status": "Coordinator accepted idle and shared scale; remaining poses underway",
+  "status": "Coordinator accepted idle and scale; selected native quartet complete, final sequence/export/siege scene review pending",
   "nativeSize": [
     1585,
     992
@@ -15,7 +15,7 @@
   ],
   "commonSourceCanvas": [
     1586,
-    992
+    993
   ],
   "proposedCommonFrameSize": [
     128,
@@ -74,5 +74,6 @@
     }
   ],
   "nativeMastersUnmodified": true,
-  "coordinatorApproval": "2026-10-19 22:41UTC: 58-logical size comparison reviewed and approved; preserve shared58/931 and128x80 frame proposal, actual siege map review after quartet integration."
+  "coordinatorApproval": "2026-10-19 22:41UTC: 58-logical size comparison reviewed and approved; preserve shared58/931 and128x80 frame proposal, actual siege map review after quartet integration.",
+  "quartetManifest": "bundle-manifest.json"
 }

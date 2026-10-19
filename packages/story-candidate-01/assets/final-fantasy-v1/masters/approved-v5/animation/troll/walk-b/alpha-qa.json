@@ -1,0 +1,90 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c717b224-ff69-4c2c-aa87-96a096538156.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "d568805b0bf6dd2e4998ae228d801fe49b259836488acdc87705a0e87bf5d6c5",
+  "bboxAlphaNonzero": [
+    71,
+    19,
+    1549,
+    975
+  ],
+  "bboxAlphaGreaterThan127": [
+    387,
+    22,
+    1190,
+    971
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1079630,
+  "alphaOnePixels": 3292,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "foot": "left-forward",
+      "roi": [
+        380,
+        820,
+        674,
+        978
+      ],
+      "soleY": 970,
+      "bottomFourRowsMeanX": 571.0490797546013
+    },
+    {
+      "foot": "right-trailing",
+      "roi": [
+        1000,
+        807,
+        1145,
+        943
+      ],
+      "soleY": 929,
+      "bottomFourRowsMeanX": 1075.2625
+    }
+  ],
+  "sourceFootMidpoint": [
+    823.1557898773007,
+    949.5
+  ],
+  "suggestedSourceFoot": [
+    823,
+    970
+  ],
+  "sharedBodyScale": 0.06229860365198711,
+  "sharedScaleFraction": "58/931",
+  "bodyReferenceSourcePixels": 931,
+  "bodyTargetHeightLogicalPixels": 58,
+  "negativeSpaceProbes": [
+    {
+      "name": "left-arm-gap",
+      "rectangle": [
+        571,
+        544,
+        576,
+        549
+      ],
+      "zeroPixels": 25,
+      "maxAlpha": 0
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        736,
+        863,
+        741,
+        868
+      ],
+      "zeroPixels": 25,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Third native attempt selected: opposite actual contact, screen-left big forward planted foot and screen-right smaller trailing toe contact; original body, gear sides and hammer retained. Two contact-repeat attempts preserved unmodified.",
+  "contact": "Screen-left forward/low; screen-right trailing/high"
+}

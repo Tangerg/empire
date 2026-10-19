@@ -1546,13 +1546,13 @@
       "topicId": "C01-UNIT-JAVELIN-HUNTER",
       "label": "投矛猎手",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-javelin-hunter.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-javelin-hunter.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1561,13 +1561,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        44.93394077448747,
+        52.91116173120729
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-KNIGHT",

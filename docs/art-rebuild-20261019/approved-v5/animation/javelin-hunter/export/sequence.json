@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/walk-b/master.png"
+    },
+    "scale": 0.05011389521640091,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      737,
+      976
+    ],
+    "sourceFeet": {
+      "idle": [
+        737,
+        976
+      ],
+      "walk-a": [
+        697,
+        969
+      ],
+      "attack": [
+        701,
+        975
+      ],
+      "walk-b": [
+        731,
+        968
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        2.004555808656036,
+        0.35079726651480636
+      ],
+      "attack": [
+        1.8041002277904328,
+        0.05011389521640091
+      ],
+      "walk-b": [
+        0.30068337129840544,
+        0.4009111617312073
+      ]
+    },
+    "registrationLimit": 3,
+    "canvasPaddingTolerance": 2,
+    "meaning": "original plank shield and three spare plus held javelins; catalog-only"
+  },
+  "authoredCanvas": [
+    1586,
+    993
+  ],
+  "logicalPivot": [
+    44.93394077448747,
+    52.91116173120729
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "9a9618734a3e75b2c7e4531806a2049bad5fe1c4e6781c34f973eab3969b861f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5228,
+        "nearOpaquePixels": 1170,
+        "edgeMax": 0,
+        "visibleBounds": [
+          23,
+          5,
+          84,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "9a9618734a3e75b2c7e4531806a2049bad5fe1c4e6781c34f973eab3969b861f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21099,
+        "nearOpaquePixels": 4840,
+        "edgeMax": 0,
+        "visibleBounds": [
+          46,
+          10,
+          168,
+          106
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/walk-a/master.png",
+      "registrationOffset": [
+        2.004555808656036,
+        0.35079726651480636
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "6fa718372ac855af0707aa2badbb8ababe08b1f8986d9c441c8e0b7acc6e10bb",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5284,
+        "nearOpaquePixels": 1111,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          5,
+          88,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/walk-a/master.png",
+      "registrationOffset": [
+        2.004555808656036,
+        0.35079726651480636
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "6fa718372ac855af0707aa2badbb8ababe08b1f8986d9c441c8e0b7acc6e10bb",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21316,
+        "nearOpaquePixels": 4581,
+        "edgeMax": 0,
+        "visibleBounds": [
+          52,
+          10,
+          175,
+          106
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/attack/master.png",
+      "registrationOffset": [
+        1.8041002277904328,
+        0.05011389521640091
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "29850f4fba2accc200326c80abf6c3e570e710701bcb2fdc8676d31b3cacf6d3",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5170,
+        "nearOpaquePixels": 1175,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          7,
+          88,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/attack/master.png",
+      "registrationOffset": [
+        1.8041002277904328,
+        0.05011389521640091
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "29850f4fba2accc200326c80abf6c3e570e710701bcb2fdc8676d31b3cacf6d3",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20886,
+        "nearOpaquePixels": 4920,
+        "edgeMax": 0,
+        "visibleBounds": [
+          49,
+          14,
+          176,
+          106
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/walk-b/master.png",
+      "registrationOffset": [
+        0.30068337129840544,
+        0.4009111617312073
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "6819c89b27759d81a5125fed8216ff08c8bd5fe009676c7fae4ba469e9d7c930",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5308,
+        "nearOpaquePixels": 1079,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          5,
+          84,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/walk-b/master.png",
+      "registrationOffset": [
+        0.30068337129840544,
+        0.4009111617312073
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "6819c89b27759d81a5125fed8216ff08c8bd5fe009676c7fae4ba469e9d7c930",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21416,
+        "nearOpaquePixels": 4521,
+        "edgeMax": 0,
+        "visibleBounds": [
+          50,
+          10,
+          169,
+          106
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

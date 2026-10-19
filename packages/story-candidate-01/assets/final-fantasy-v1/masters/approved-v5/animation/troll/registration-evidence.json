@@ -1,0 +1,349 @@
+{
+  "status": "Measured quartet ready; coordinator sequence/export and real siege map review pending",
+  "sharedScale": 0.06229860365198711,
+  "scaleFraction": "58/931",
+  "bodyReferenceSourcePixels": 931,
+  "bodyTargetHeightLogicalPixels": 58,
+  "bodyMeasurement": "Accepted idle crown y29 to two-bare-foot mean sole y960; hammer excluded. One idle-derived scale applied unchanged to all complete canvases.",
+  "canonicalSourceFoot": [
+    821,
+    969
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "paddingPolicy": "Idle/walk-a/walk-b native1585\u00d7992, attack1584\u00d7993. Common1586\u00d7993 needs only transparent padding:1right+1bottom for idle/walks,2right for attack. Raw/master remain untouched.",
+  "canvasPaddingToleranceRequired": 2,
+  "maximumPadRight": 2,
+  "maximumPadBottom": 1,
+  "proposedCommonFrameSize": [
+    128,
+    80
+  ],
+  "proposedOrigin": [
+    12,
+    4
+  ],
+  "proposedRuntimePivot": [
+    63.14715359828142,
+    64.36734693877551
+  ],
+  "registrationMethod": "Alpha>127 foot-only ROIs. Anchor x is mean of both bottom-four-row sole-band x values, rounded once; y is lowest bare sole. Whole-canvas translation only, locked58/931 scale, no crop or individual pose fit.",
+  "originalArtFootprint": [
+    2,
+    2
+  ],
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        821,
+        969
+      ],
+      "bothBareFootSoleBandMidpoint": [
+        820.6080779054917,
+        960.0
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        375,
+        29,
+        1164,
+        972
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        25,
+        23,
+        1363,
+        976
+      ],
+      "logicalVisibleWidth": 49.15359828141783,
+      "proposedLogicalVisibleBounds": [
+        35.36197636949517,
+        5.806659505907627,
+        84.515574650913,
+        64.55424274973147
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        12.0,
+        4.0,
+        110.80558539205155,
+        65.86251342642319
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      },
+      "negativeSpaceProbes": [
+        {
+          "name": "leg-gap",
+          "rectangle": [
+            743,
+            879,
+            748,
+            884
+          ],
+          "zeroPixels": 25,
+          "maxAlpha": 0
+        },
+        {
+          "name": "outer-left",
+          "rectangle": [
+            248,
+            498,
+            253,
+            503
+          ],
+          "zeroPixels": 25,
+          "maxAlpha": 0
+        }
+      ],
+      "contact": "Both planted",
+      "review": "Accepted idle: original gray-olive brute, tied-back black hair, lower ivory tusks, tan fur/brown hide, crossed harness, pouch, gray circular plaque and rectangular spiral-carved gray stone hammer. Full low carried hammer and both bare feet; no shadow/FX."
+    },
+    "walk-a": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        788,
+        959
+      ],
+      "bothBareFootSoleBandMidpoint": [
+        787.726362625139,
+        938.0
+      ],
+      "registrationOffsetLogical": [
+        2.055853920515575,
+        0.6229860365198712
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        312,
+        26,
+        1259,
+        960
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        33,
+        23,
+        1545,
+        962
+      ],
+      "logicalVisibleWidth": 58.996777658431796,
+      "proposedLogicalVisibleBounds": [
+        33.49301825993555,
+        6.242749731471536,
+        92.48979591836735,
+        64.4296455424275
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        14.055853920515574,
+        4.622986036519871,
+        112.86143931256713,
+        66.48549946294307
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      },
+      "negativeSpaceProbes": [
+        {
+          "name": "left-arm-gap",
+          "rectangle": [
+            603,
+            544,
+            608,
+            549
+          ],
+          "zeroPixels": 0,
+          "maxAlpha": 252
+        },
+        {
+          "name": "leg-gap",
+          "rectangle": [
+            660,
+            812,
+            665,
+            817
+          ],
+          "zeroPixels": 20,
+          "maxAlpha": 5
+        }
+      ],
+      "contact": "Screen-right forward/low; screen-left trailing/high",
+      "review": "Actual walk-a shows screen-right forward heel/sole and screen-left trailing toe, free right fist forward, hammer arm back. Prompt specified the inverse but this is a valid first contact; selected walk-b is measured opposite. Full identity, outfit asymmetry, hammer and body scale retained."
+    },
+    "attack": {
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "padRight": 2,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        672,
+        960
+      ],
+      "bothBareFootSoleBandMidpoint": [
+        671.5051787222067,
+        959.5
+      ],
+      "registrationOffsetLogical": [
+        9.282491944146079,
+        0.560687432867884
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        179,
+        27,
+        1539,
+        961
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        55,
+        24,
+        1542,
+        993
+      ],
+      "logicalVisibleWidth": 84.72610096670248,
+      "proposedLogicalVisibleBounds": [
+        32.433941997851775,
+        6.242749731471537,
+        117.16004296455424,
+        64.4296455424275
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        21.28249194414608,
+        4.560687432867884,
+        120.08807733619764,
+        66.42320085929109
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      },
+      "negativeSpaceProbes": [
+        {
+          "name": "leg-gap",
+          "rectangle": [
+            639,
+            865,
+            644,
+            870
+          ],
+          "zeroPixels": 25,
+          "maxAlpha": 0
+        },
+        {
+          "name": "below-haft",
+          "rectangle": [
+            1218,
+            721,
+            1223,
+            726
+          ],
+          "zeroPixels": 25,
+          "maxAlpha": 0
+        }
+      ],
+      "contact": "Both widely braced",
+      "review": "Clear two-handed outward stone-headed blunt-club swing. Broad braced bare feet; original spiral/circular stone carvings, gray plaque, pouch, tusked face and hair retained. Larger projected width is arm/weapon extension; no per-pose scaling and no independent FX."
+    },
+    "walk-b": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        823,
+        970
+      ],
+      "bothBareFootSoleBandMidpoint": [
+        823.1557898773007,
+        949.5
+      ],
+      "registrationOffsetLogical": [
+        -0.12459720730397422,
+        -0.06229860365198711
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        387,
+        22,
+        1190,
+        971
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        71,
+        19,
+        1549,
+        975
+      ],
+      "logicalVisibleWidth": 50.02577873254565,
+      "proposedLogicalVisibleBounds": [
+        35.984962406015036,
+        5.308270676691729,
+        86.01074113856069,
+        64.4296455424275
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        11.875402792696026,
+        3.9377013963480128,
+        110.68098818474758,
+        65.80021482277121
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true
+      },
+      "negativeSpaceProbes": [
+        {
+          "name": "left-arm-gap",
+          "rectangle": [
+            571,
+            544,
+            576,
+            549
+          ],
+          "zeroPixels": 25,
+          "maxAlpha": 0
+        },
+        {
+          "name": "leg-gap",
+          "rectangle": [
+            736,
+            863,
+            741,
+            868
+          ],
+          "zeroPixels": 25,
+          "maxAlpha": 0
+        }
+      ],
+      "contact": "Screen-left forward/low; screen-right trailing/high",
+      "review": "Third native attempt selected: opposite actual contact, screen-left big forward planted foot and screen-right smaller trailing toe contact; original body, gear sides and hammer retained. Two contact-repeat attempts preserved unmodified."
+    }
+  },
+  "maximumAbsoluteRegistrationOffsetLogical": 9.282491944146079,
+  "registrationOffsetNote": "Attack moves to a wide stance left of idle source support center. Its foot-measured positive x translation exceeds6logical but complete1586\u00d7993canvas still fits128\u00d780. This is pose registration, not scaling; coordinator must accept measured offset budget and real siege overlap."
+}
