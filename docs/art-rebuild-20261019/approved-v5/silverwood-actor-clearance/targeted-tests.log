@@ -1,0 +1,23 @@
+
+ RUN  v2.1.9 /workspace/scratch/84c9fe948755/empire-layout-engineering-20261019
+
+ ✓ packages/game-ui/src/art/__tests__/board-depth-order.test.ts (3 tests) 12ms
+stderr | packages/game-ui/src/art/__tests__/two-backends-agree.test.ts
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-environment.test.ts (6 tests) 47ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-silverwood-clearance.test.ts (6 tests) 125ms
+ ✓ packages/story-candidate-01/src/presentation/candidate-01-map-scene.test.ts (11 tests) 197ms
+stderr | packages/game-ui/src/art/__tests__/two-backends-agree.test.ts > two backends draw the same board > projects only a visible selected actor above scenery, on its existing frame and lifetime
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+ ✓ packages/game-ui/src/art/__tests__/two-backends-agree.test.ts (14 tests) 1857ms
+   ✓ two backends draw the same board > never projects a hidden selected actor from the actual BoardView overlay 729ms
+   ✓ two backends draw the same board > draws every c01-02 building, scenery piece and actor through the same depth contract 441ms
+   ✓ two backends draw the same board > puts the same number of pictures in the same places in every layer 380ms
+
+ Test Files  5 passed (5)
+      Tests  40 passed (40)
+   Start at  03:32:27
+   Duration  9.89s (transform 7.04s, setup 0ms, collect 20.23s, tests 2.24s, environment 1.49s, prepare 817ms)
+

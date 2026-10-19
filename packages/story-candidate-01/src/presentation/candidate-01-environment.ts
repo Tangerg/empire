@@ -1,5 +1,6 @@
 import environmentManifestJson from '../../assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json';
 import twinHillsSceneJson from '../../assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json';
+import silverwoodSceneJson from '../../assets/final-fantasy-v1/environment-builder-v1/scenes/c01-15.scene.json';
 import {
   EnvironmentCatalog,
   type EnvironmentManifest,
@@ -20,6 +21,7 @@ export interface CandidateEnvironmentPlacement {
   readonly scale?: number;
   readonly flip?: boolean;
   readonly opacity?: number;
+  readonly standingShadow?: boolean;
 }
 
 export interface CandidateEnvironmentScene {
@@ -33,6 +35,7 @@ export interface CandidateEnvironmentScene {
     readonly bounds: FixedNumbers<4>;
     readonly role: string;
     readonly authoredTerrainScenery?: readonly string[];
+    readonly authoredTerrainSurface?: readonly string[];
   }[];
   readonly selection: {
     readonly allowAtlases: readonly string[];
@@ -77,15 +80,25 @@ export const CANDIDATE_01_ENVIRONMENT = new EnvironmentCatalog(
   (relativePath) => environmentUrls[`${ENVIRONMENT_ROOT}${relativePath}`],
 );
 
+type SceneDocument = Omit<CandidateEnvironmentScene, 'mapSize' | 'zones' | 'placements' | 'roadCorridor' | 'framePlacements' | 'groundOutline'> & {
+  readonly mapSize: readonly number[];
+  readonly zones: readonly (Omit<CandidateEnvironmentScene['zones'][number], 'bounds'> & { readonly bounds: readonly number[] })[];
+  readonly placements: readonly (Omit<CandidateEnvironmentPlacement, 'layer'> & { readonly layer?: string })[];
+  readonly roadCorridor?: Omit<CandidateRoadCorridorProfile, 'protectedCells'> & { readonly protectedCells: readonly (readonly number[])[] };
+  readonly framePlacements?: readonly (Omit<NonNullable<CandidateEnvironmentScene['framePlacements']>[number], 'contact'> & { readonly contact: readonly number[] })[];
+  readonly groundOutline?: readonly (readonly number[])[];
+};
+
 /** An authored scene, read rather than asserted. See `candidate-01-documents.ts`. */
-function readScene(document: typeof twinHillsSceneJson): CandidateEnvironmentScene {
+function readScene(document: SceneDocument): CandidateEnvironmentScene {
   const subject = document.levelId;
+  const { roadCorridor, framePlacements, groundOutline, ...required } = document;
   return {
-    ...document,
-    roadCorridor: {
-      ...document.roadCorridor,
-      protectedCells: document.roadCorridor.protectedCells.map(point => fixedNumbers(2, point, 'protected road cell', subject)),
-    },
+    ...required,
+    ...(roadCorridor ? { roadCorridor: {
+      ...roadCorridor,
+      protectedCells: roadCorridor.protectedCells.map(point => fixedNumbers(2, point, 'protected road cell', subject)),
+    } } : {}),
     mapSize: fixedNumbers(2, document.mapSize, 'mapSize', subject),
     zones: document.zones.map((zone) => ({
       ...zone,
@@ -100,16 +113,17 @@ function readScene(document: typeof twinHillsSceneJson): CandidateEnvironmentSce
           : { layer: oneOf(PLACEMENT_LAYERS, layer, 'layer', `${subject} placement ${rest.id ?? rest.topicId}`) }),
       };
     }),
-    framePlacements: document.framePlacements.map((placement) => ({
+    ...(framePlacements ? { framePlacements: framePlacements.map((placement) => ({
       ...placement,
       contact: fixedNumbers(2, placement.contact, 'contact', `${subject} frame ${placement.id}`),
-    })),
-    groundOutline: document.groundOutline.map((point) => fixedNumbers(2, point, 'ground outline point', subject)),
+    })) } : {}),
+    ...(groundOutline ? { groundOutline: groundOutline.map((point) => fixedNumbers(2, point, 'ground outline point', subject)) } : {}),
   };
 }
 
 const scenes = new Map<string, CandidateEnvironmentScene>([
   [twinHillsSceneJson.levelId, readScene(twinHillsSceneJson)],
+  [silverwoodSceneJson.levelId, readScene(silverwoodSceneJson)],
 ]);
 
 export function candidate01EnvironmentScene(levelId: string): CandidateEnvironmentScene | undefined {

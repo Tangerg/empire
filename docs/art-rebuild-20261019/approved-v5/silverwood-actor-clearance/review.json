@@ -1,0 +1,312 @@
+{
+  "kind": "same-camera complete actual BoardView offline comparison; no live GPU claim",
+  "baseline": "6ac7f6255a831d58bfe149266b023509f3fddc99",
+  "candidate": "6ac7f625 plus bounded decorative clearance",
+  "unchangedPngSources": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "986d0da8a5fffe61d34b7eca0a4cea7b3db3e0d3c0f136803e426d9cb13c2344",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "14965b98d009780ee104b29b34d4910ce5e0d221fc35ad06ec229ce725432b84",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-silver-longbow@2x.png": "12d2d9649672634337ab8057903f70ee0c139818a840b7f12c7136d742844f3d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png": "59a6e5e226f6ce004ea53f4dc36a0df9825abd7a5ef339b28977b5f70719e9b1",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-joint-granary@2x.png": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-templar@2x.png": "72fdc284c88bdd42e386ab70eb3dcdad1fa133564e56be858f70b6d0e82ed344",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "b47e620fecd606de6ddbd524ab1b8a8e08970c3bbc74f9d3ad51ef34b0893a49",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-druid@2x.png": "6949527913cb9b598b51fafcd8b0b6ffa3ef0c067e48b20511795cd473b4e34e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-woodland-walker.png": "0a9ed86c14fbb9d658d871fa51ac13fb84652799fd0023c828ccb19ddead4db6",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-inquisitor@2x.png": "eb2034b791f5b0f9298466749f8ef15eee44a962a82a80e169ae6a87b7983ade",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger@2x.png": "27d13b44ade8852fd8551953b6ec55066ec9eae0349f3dc00181388f4cac1145",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ivra-growth.png": "7dc4db3ff2bcb40b0dc39a877559f7be040c0257c342412d890e2a0f0e7d4857"
+  },
+  "unchangedRuleDrawings": [
+    "terrain:0",
+    "terrain:1",
+    "actor:16",
+    "terrain:2",
+    "actor:19",
+    "actor:12",
+    "terrain:3",
+    "actor:4",
+    "actor:2",
+    "actor:11",
+    "actor:14",
+    "actor:15",
+    "actor:1",
+    "actor:6",
+    "actor:3",
+    "terrain:4",
+    "actor:20",
+    "actor:13",
+    "terrain:5",
+    "actor:5",
+    "actor:18",
+    "actor:7",
+    "actor:21",
+    "terrain:6",
+    "actor:8",
+    "actor:22",
+    "actor:17",
+    "terrain:7",
+    "actor:9",
+    "actor:10"
+  ],
+  "initialStateSha256": "606c52f71991ceb3f8a0d67e9cbe3e74039078443ca7c4cbb2be323b3fda1f58",
+  "viewport": [
+    0,
+    0,
+    916,
+    648
+  ],
+  "unchangedOuterFrame": true,
+  "sceneContractCount": 16,
+  "sceneContractChanges": [
+    {
+      "level": "c01-15",
+      "fields": [
+        "underUnitsSha256"
+      ]
+    }
+  ],
+  "replayRunCount": 60,
+  "replaySha256": "3ebce01a551fe642db90380e9fb774f0682c1d3a546e8ba81bb8fcab4d90e0d9",
+  "occlusion": [
+    {
+      "key": "north-longbow",
+      "cell": [
+        8,
+        2
+      ],
+      "before": 0.518159,
+      "after": 0.021686,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "root-guard-1",
+      "cell": [
+        11,
+        5
+      ],
+      "before": 0.226734,
+      "after": 0.226734,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "controlled-longbow-1",
+      "cell": [
+        14,
+        5
+      ],
+      "before": 0.997738,
+      "after": 0.697712,
+      "remainingRuleBuildingOverlap": true
+    },
+    {
+      "key": "campaign-mirelle",
+      "cell": [
+        3,
+        6
+      ],
+      "before": 0.506831,
+      "after": 0.225521,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "campaign-torren",
+      "cell": [
+        2,
+        7
+      ],
+      "before": 0.294904,
+      "after": 0.264889,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "controlled-druid",
+      "cell": [
+        12,
+        7
+      ],
+      "before": 0.279093,
+      "after": 0.279093,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "controlled-walker",
+      "cell": [
+        17,
+        7
+      ],
+      "before": 0.999995,
+      "after": 0.0,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "inquisitor-handler",
+      "cell": [
+        20,
+        7
+      ],
+      "before": 0.842899,
+      "after": 0.19642,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "campaign-laiya",
+      "cell": [
+        1,
+        8
+      ],
+      "before": 0.456732,
+      "after": 0.24949,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "campaign-tasha",
+      "cell": [
+        4,
+        8
+      ],
+      "before": 0.990934,
+      "after": 0.545988,
+      "remainingRuleBuildingOverlap": true
+    },
+    {
+      "key": "campaign-elin",
+      "cell": [
+        2,
+        9
+      ],
+      "before": 0.029106,
+      "after": 0.002151,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "root-guard-2",
+      "cell": [
+        11,
+        9
+      ],
+      "before": 0.003282,
+      "after": 0.003282,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "controlled-longbow-2",
+      "cell": [
+        14,
+        9
+      ],
+      "before": 0.984007,
+      "after": 0.637379,
+      "remainingRuleBuildingOverlap": true
+    },
+    {
+      "key": "campaign-bran",
+      "cell": [
+        3,
+        10
+      ],
+      "before": 0.371956,
+      "after": 0.183774,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "east-walker",
+      "cell": [
+        21,
+        11
+      ],
+      "before": 0.849543,
+      "after": 0.07629,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "campaign-ivra",
+      "cell": [
+        5,
+        12
+      ],
+      "before": 0.723043,
+      "after": 0.049379,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "oath-druid",
+      "cell": [
+        17,
+        12
+      ],
+      "before": 0.968572,
+      "after": 0.082278,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "silverwood-guard",
+      "cell": [
+        1,
+        13
+      ],
+      "before": 0.996919,
+      "after": 0.204635,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "silverwood-witness",
+      "cell": [
+        3,
+        13
+      ],
+      "before": 0.858783,
+      "after": 0.0,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "south-longbow",
+      "cell": [
+        8,
+        13
+      ],
+      "before": 0.138759,
+      "after": 0.074435,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "silverwood-scout",
+      "cell": [
+        4,
+        14
+      ],
+      "before": 0.971242,
+      "after": 0.0,
+      "remainingRuleBuildingOverlap": false
+    },
+    {
+      "key": "silverwood-cleric",
+      "cell": [
+        7,
+        14
+      ],
+      "before": 0.960695,
+      "after": 0.198056,
+      "remainingRuleBuildingOverlap": false
+    }
+  ],
+  "limitations": [
+    "Raw sprite alpha overlap omits CSS shadow filters and is not a perceptual score",
+    "Three actors remain partly hidden by unchanged rule buildings",
+    "Old mixed decoration and actor sources remain; not overall art completion",
+    "Sparse checkout used support assets; source PNG hashes bind this comparison"
+  ]
+}

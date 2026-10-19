@@ -200,7 +200,7 @@ function placementPiece(placement: CandidateEnvironmentPlacement): BoardPiece | 
       scale: placement.scale ?? 1,
       flip: placement.flip ?? false,
       opacity: placement.opacity ?? 1,
-      className: `is-${placement.layer ?? 'under-units'}`,
+      className: `is-${placement.layer ?? 'under-units'}${placement.standingShadow ? ' is-standing' : ''}`,
     }),
     ...((placement.layer ?? 'under-units') === 'under-units' ? { foot: { x: 0, y: 0 } } : {}),
     x: placement.x * TILE,
@@ -281,9 +281,9 @@ function connectedMask(
  * so a level this pack has never seen — a built-in map, a level somebody drew in
  * the editor — is painted by the same four passes.
  */
-function authoredTerrainScenery(levelId: string, id: string, x: number, y: number): boolean {
-  return candidate01EnvironmentScene(levelId)?.zones.some(({ bounds: [left, top, right, bottom], authoredTerrainScenery }) =>
-    authoredTerrainScenery?.includes(id) && x >= left && x <= right && y >= top && y <= bottom,
+function authoredTerrain(levelId: string, id: string, x: number, y: number, property: 'authoredTerrainScenery' | 'authoredTerrainSurface'): boolean {
+  return candidate01EnvironmentScene(levelId)?.zones.some(({ bounds: [left, top, right, bottom], [property]: terrains }) =>
+    terrains?.includes(id) && x >= left && x <= right && y >= top && y <= bottom,
   ) ?? false;
 }
 
@@ -305,7 +305,7 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, ro
       const tone = material.tone ?? base.tone;
       // Explicit authored landforms share the continuous meadow. Other terrain
       // surfaces retain their declared atlas pixels and fit.
-      if ((atlas !== base.atlas || tone !== base.tone) && !authoredTerrainScenery(levelId, id, x, y)) {
+      if ((atlas !== base.atlas || tone !== base.tone) && !authoredTerrain(levelId, id, x, y, 'authoredTerrainSurface')) {
         surfaces.push({ markup: surfaceMarkup(atlas, tone), ...at });
       }
 
@@ -536,7 +536,7 @@ function sceneryPieces(content: ContentCatalog, map: GameMap, levelId: string): 
 
       // An authored landform owns its silhouette; per-cell rocks would duplicate
       // that same hill. Tactical terrain and elevation stay untouched.
-      if (authoredTerrainScenery(levelId, id, x, y)) continue;
+      if (authoredTerrain(levelId, id, x, y, 'authoredTerrainScenery')) continue;
 
       if (id === 'bridge') {
         crossing(content, map, parts, x, y);

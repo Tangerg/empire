@@ -1,0 +1,1068 @@
+[
+  {
+    "cell": [
+      7,
+      3
+    ],
+    "old": {
+      "id": "scenery:67",
+      "layer": "scenery",
+      "index": 67,
+      "origin": [
+        244.17141,
+        133.76
+      ],
+      "worldFoot": [
+        244.17141,
+        133.76
+      ],
+      "displayIndex": 69,
+      "cellId": "mixed-forest-dense",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        116,
+        -59
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 7.6303565625,
+      "y": 3.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      14,
+      5
+    ],
+    "old": {
+      "id": "scenery:106",
+      "layer": "scenery",
+      "index": 106,
+      "origin": [
+        461.93837,
+        197.76
+      ],
+      "worldFoot": [
+        461.93837,
+        197.76
+      ],
+      "displayIndex": 112,
+      "cellId": "mixed-forest-edge",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        333,
+        5
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 14.4355740625,
+      "y": 5.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      15,
+      6
+    ],
+    "old": {
+      "id": "scenery:128",
+      "layer": "scenery",
+      "index": 128,
+      "origin": [
+        495.49717,
+        229.76
+      ],
+      "worldFoot": [
+        495.49717,
+        229.76
+      ],
+      "displayIndex": 135,
+      "cellId": "oak-grove-dense",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        367,
+        37
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 15.4842865625,
+      "y": 6.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": false
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      4,
+      7
+    ],
+    "old": {
+      "id": "scenery:138",
+      "layer": "scenery",
+      "index": 138,
+      "origin": [
+        145.5525,
+        261.76
+      ],
+      "worldFoot": [
+        145.5525,
+        261.76
+      ],
+      "displayIndex": 149,
+      "cellId": "mixed-forest-dense",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        17,
+        69
+      ]
+    },
+    "new": {
+      "id": "stump-low",
+      "x": 4.548515625,
+      "y": 7.18,
+      "layer": "under-units",
+      "scale": 0.42,
+      "flip": false
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      16,
+      7
+    ],
+    "old": {
+      "id": "scenery:147",
+      "layer": "scenery",
+      "index": 147,
+      "origin": [
+        530.44424,
+        261.76
+      ],
+      "worldFoot": [
+        530.44424,
+        261.76
+      ],
+      "displayIndex": 158,
+      "cellId": "oak-ancient",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        402,
+        69
+      ]
+    },
+    "new": {
+      "id": "stump-low",
+      "x": 16.5763825,
+      "y": 7.18,
+      "layer": "under-units",
+      "scale": 0.42,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      17,
+      7
+    ],
+    "old": {
+      "id": "scenery:148",
+      "layer": "scenery",
+      "index": 148,
+      "origin": [
+        560.6297,
+        261.76
+      ],
+      "worldFoot": [
+        560.6297,
+        261.76
+      ],
+      "displayIndex": 159,
+      "cellId": "temperate-hill-cap",
+      "atlas": "cliff-modules-temperate",
+      "cropOrigin": [
+        432,
+        69
+      ]
+    },
+    "new": {
+      "id": "temperate-hill-cap",
+      "x": 17.519678125,
+      "y": 6.75,
+      "layer": "under-units",
+      "scale": 0.46085560000000003,
+      "flip": true,
+      "standingShadow": true
+    },
+    "contactDelta": [
+      0,
+      -13.76
+    ]
+  },
+  {
+    "cell": [
+      18,
+      7
+    ],
+    "old": {
+      "id": "scenery:149",
+      "layer": "scenery",
+      "index": 149,
+      "origin": [
+        589.5897,
+        261.76
+      ],
+      "worldFoot": [
+        589.5897,
+        261.76
+      ],
+      "displayIndex": 160,
+      "cellId": "temperate-low-ledge",
+      "atlas": "cliff-modules-temperate",
+      "cropOrigin": [
+        461,
+        69
+      ]
+    },
+    "new": {
+      "id": "temperate-low-ledge",
+      "x": 18.424678125,
+      "y": 6.75,
+      "layer": "under-units",
+      "scale": 0.5307388,
+      "flip": false,
+      "standingShadow": true
+    },
+    "contactDelta": [
+      0,
+      -13.76
+    ]
+  },
+  {
+    "cell": [
+      19,
+      7
+    ],
+    "old": {
+      "id": "scenery:150",
+      "layer": "scenery",
+      "index": 150,
+      "origin": [
+        627.68595,
+        261.76
+      ],
+      "worldFoot": [
+        627.68595,
+        261.76
+      ],
+      "displayIndex": 161,
+      "cellId": "oak-grove-dense",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        499,
+        69
+      ]
+    },
+    "new": {
+      "id": "stump-low",
+      "x": 19.6151859375,
+      "y": 7.18,
+      "layer": "under-units",
+      "scale": 0.42,
+      "flip": false
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      0,
+      8
+    ],
+    "old": {
+      "id": "scenery:155",
+      "layer": "scenery",
+      "index": 155,
+      "origin": [
+        14.499970000000001,
+        293.76
+      ],
+      "worldFoot": [
+        14.499970000000001,
+        293.76
+      ],
+      "displayIndex": 168,
+      "cellId": "mixed-forest-autumn",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        -114,
+        101
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 0.45312406250000004,
+      "y": 8.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      5,
+      8
+    ],
+    "old": {
+      "id": "scenery:159",
+      "layer": "scenery",
+      "index": 159,
+      "origin": [
+        172.42832,
+        293.76
+      ],
+      "worldFoot": [
+        172.42832,
+        293.76
+      ],
+      "displayIndex": 172,
+      "cellId": "oak-grove-dense",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        44,
+        101
+      ]
+    },
+    "new": {
+      "id": "stump-low",
+      "x": 5.388385,
+      "y": 8.18,
+      "layer": "under-units",
+      "scale": 0.42,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      17,
+      8
+    ],
+    "old": {
+      "id": "scenery:167",
+      "layer": "scenery",
+      "index": 167,
+      "origin": [
+        561.9984,
+        293.76
+      ],
+      "worldFoot": [
+        561.9984,
+        293.76
+      ],
+      "displayIndex": 180,
+      "cellId": "oak-ancient",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        433,
+        101
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 17.56245,
+      "y": 8.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": false
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      18,
+      8
+    ],
+    "old": {
+      "id": "scenery:168",
+      "layer": "scenery",
+      "index": 168,
+      "origin": [
+        590.66656,
+        293.76
+      ],
+      "worldFoot": [
+        590.66656,
+        293.76
+      ],
+      "displayIndex": 181,
+      "cellId": "oak-grove-dense",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        462,
+        101
+      ]
+    },
+    "new": {
+      "id": "stump-low",
+      "x": 18.45833,
+      "y": 8.18,
+      "layer": "under-units",
+      "scale": 0.42,
+      "flip": false
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      0,
+      9
+    ],
+    "old": {
+      "id": "scenery:174",
+      "layer": "scenery",
+      "index": 174,
+      "origin": [
+        15.72586,
+        325.76
+      ],
+      "worldFoot": [
+        15.72586,
+        325.76
+      ],
+      "displayIndex": 192,
+      "cellId": "oak-ancient",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        -113,
+        133
+      ]
+    },
+    "new": {
+      "id": "stump-low",
+      "x": 0.491433125,
+      "y": 9.18,
+      "layer": "under-units",
+      "scale": 0.42,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      4,
+      9
+    ],
+    "old": {
+      "id": "scenery:176",
+      "layer": "scenery",
+      "index": 176,
+      "origin": [
+        145.72926,
+        325.76
+      ],
+      "worldFoot": [
+        145.72926,
+        325.76
+      ],
+      "displayIndex": 194,
+      "cellId": "mixed-forest-edge",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        17,
+        133
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 4.554039375,
+      "y": 9.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": false
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      14,
+      9
+    ],
+    "old": {
+      "id": "scenery:183",
+      "layer": "scenery",
+      "index": 183,
+      "origin": [
+        465.24596,
+        325.76
+      ],
+      "worldFoot": [
+        465.24596,
+        325.76
+      ],
+      "displayIndex": 201,
+      "cellId": "oak-grove-dense",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        337,
+        133
+      ]
+    },
+    "new": {
+      "id": "stump-low",
+      "x": 14.53893625,
+      "y": 9.18,
+      "layer": "under-units",
+      "scale": 0.42,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      15,
+      10
+    ],
+    "old": {
+      "id": "scenery:205",
+      "layer": "scenery",
+      "index": 205,
+      "origin": [
+        498.07999,
+        357.76
+      ],
+      "worldFoot": [
+        498.07999,
+        357.76
+      ],
+      "displayIndex": 224,
+      "cellId": "pine-cluster",
+      "atlas": "forest-existing",
+      "cropOrigin": [
+        370,
+        165
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 15.5649996875,
+      "y": 10.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": false
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      4,
+      11
+    ],
+    "old": {
+      "id": "scenery:214",
+      "layer": "scenery",
+      "index": 214,
+      "origin": [
+        142.38891,
+        389.76
+      ],
+      "worldFoot": [
+        142.38891,
+        389.76
+      ],
+      "displayIndex": 234,
+      "cellId": "mixed-forest-autumn",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        14,
+        197
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 4.4496534375,
+      "y": 11.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      6,
+      12
+    ],
+    "old": {
+      "id": "scenery:233",
+      "layer": "scenery",
+      "index": 233,
+      "origin": [
+        211.01776,
+        421.76
+      ],
+      "worldFoot": [
+        211.01776,
+        421.76
+      ],
+      "displayIndex": 255,
+      "cellId": "oak-ancient",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        83,
+        229
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 6.594305,
+      "y": 12.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      17,
+      12
+    ],
+    "old": {
+      "id": "scenery:241",
+      "layer": "scenery",
+      "index": 241,
+      "origin": [
+        556.11104,
+        421.76
+      ],
+      "worldFoot": [
+        556.11104,
+        421.76
+      ],
+      "displayIndex": 263,
+      "cellId": "oak-grove-dense",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        428,
+        229
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 17.37847,
+      "y": 12.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": false
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      22,
+      12
+    ],
+    "old": {
+      "id": "scenery:246",
+      "layer": "scenery",
+      "index": 246,
+      "origin": [
+        717.73656,
+        421.76
+      ],
+      "worldFoot": [
+        717.73656,
+        421.76
+      ],
+      "displayIndex": 268,
+      "cellId": "oak-ancient",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        589,
+        229
+      ]
+    },
+    "new": {
+      "id": "stump-low",
+      "x": 22.4292675,
+      "y": 12.18,
+      "layer": "under-units",
+      "scale": 0.42,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      2,
+      13
+    ],
+    "old": {
+      "id": "scenery:249",
+      "layer": "scenery",
+      "index": 249,
+      "origin": [
+        82.24793,
+        453.76
+      ],
+      "worldFoot": [
+        82.24793,
+        453.76
+      ],
+      "displayIndex": 276,
+      "cellId": "oak-ancient",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        -46,
+        261
+      ]
+    },
+    "new": {
+      "id": "stump-low",
+      "x": 2.5702478125,
+      "y": 13.18,
+      "layer": "under-units",
+      "scale": 0.42,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      21,
+      13
+    ],
+    "old": {
+      "id": "scenery:259",
+      "layer": "scenery",
+      "index": 259,
+      "origin": [
+        689.87128,
+        453.76
+      ],
+      "worldFoot": [
+        689.87128,
+        453.76
+      ],
+      "displayIndex": 286,
+      "cellId": "oak-ancient",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        561,
+        261
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 21.5584775,
+      "y": 13.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": false
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      1,
+      14
+    ],
+    "old": {
+      "id": "scenery:262",
+      "layer": "scenery",
+      "index": 262,
+      "origin": [
+        46.24576,
+        485.76
+      ],
+      "worldFoot": [
+        46.24576,
+        485.76
+      ],
+      "displayIndex": 291,
+      "cellId": "oak-ancient",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        -82,
+        293
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 1.44518,
+      "y": 14.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      3,
+      15
+    ],
+    "old": {
+      "id": "scenery:278",
+      "layer": "scenery",
+      "index": 278,
+      "origin": [
+        112.06736,
+        517.76
+      ],
+      "worldFoot": [
+        112.06736,
+        517.76
+      ],
+      "displayIndex": 307,
+      "cellId": "oak-ancient",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        -16,
+        325
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 3.502105,
+      "y": 15.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      4,
+      15
+    ],
+    "old": {
+      "id": "scenery:279",
+      "layer": "scenery",
+      "index": 279,
+      "origin": [
+        140.0661,
+        517.76
+      ],
+      "worldFoot": [
+        140.0661,
+        517.76
+      ],
+      "displayIndex": 308,
+      "cellId": "mixed-forest-dense",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        12,
+        325
+      ]
+    },
+    "new": {
+      "id": "stump-low",
+      "x": 4.377065625,
+      "y": 15.18,
+      "layer": "under-units",
+      "scale": 0.42,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      5,
+      15
+    ],
+    "old": {
+      "id": "scenery:280",
+      "layer": "scenery",
+      "index": 280,
+      "origin": [
+        179.41928000000001,
+        517.76
+      ],
+      "worldFoot": [
+        179.41928000000001,
+        517.76
+      ],
+      "displayIndex": 309,
+      "cellId": "mixed-forest-edge",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        51,
+        325
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 5.6068525000000005,
+      "y": 15.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      7,
+      15
+    ],
+    "old": {
+      "id": "scenery:282",
+      "layer": "scenery",
+      "index": 282,
+      "origin": [
+        241.4872,
+        517.76
+      ],
+      "worldFoot": [
+        241.4872,
+        517.76
+      ],
+      "displayIndex": 311,
+      "cellId": "oak-grove-dense",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        113,
+        325
+      ]
+    },
+    "new": {
+      "id": "stump-low",
+      "x": 7.546475,
+      "y": 15.18,
+      "layer": "under-units",
+      "scale": 0.42,
+      "flip": true
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  },
+  {
+    "cell": [
+      8,
+      15
+    ],
+    "old": {
+      "id": "scenery:283",
+      "layer": "scenery",
+      "index": 283,
+      "origin": [
+        270.32645,
+        517.76
+      ],
+      "worldFoot": [
+        270.32645,
+        517.76
+      ],
+      "displayIndex": 312,
+      "cellId": "mixed-forest-edge",
+      "atlas": "forest-temperate",
+      "cropOrigin": [
+        142,
+        325
+      ]
+    },
+    "new": {
+      "id": "fern-bed",
+      "x": 8.4477015625,
+      "y": 15.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": false
+    },
+    "contactDelta": [
+      0,
+      0
+    ]
+  }
+]
