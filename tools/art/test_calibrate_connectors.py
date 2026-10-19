@@ -43,3 +43,11 @@ class Connectors(unittest.TestCase):
    self.assertEqual(r['sources']['water-slow-river']['path'],str(p))
    Image.new('RGBA',(64,64),(60,90,110,128)).save(p)
    with self.assertRaises(ValueError):build(ROOT,Path(tmp)/'bad',p)
+ def test_thin_shoulder_removes_double_border(self):
+  mod,_=builder(ROOT);shape=geometry(mod,10);tex=Image.new('RGB',(64,64),(100,120,140))
+  thin=compose(tex,shape,(72,61,45),thin=True)
+  self.assertEqual(thin.getpixel((32,32))[3],255)
+  self.assertLess(sum(thin.getchannel('A').tobytes()),sum(compose(tex,shape,(72,61,45)).getchannel('A').tobytes()))
+  with tempfile.TemporaryDirectory() as tmp:
+   build(ROOT,Path(tmp))
+   with Image.open(Path(tmp)/'route-edge-dirt-road@2x.png') as im:self.assertEqual(im.getchannel('A').getextrema(),(0,0))

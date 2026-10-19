@@ -26,3 +26,12 @@ class WaterArea(unittest.TestCase):
    im,r=render_water_area(p,[(3,4),(4,4),(3,5)],64)
    self.assertEqual(im.getchannel('A').crop((64,64,128,128)).getextrema(),(0,0))
    self.assertEqual(r['worldOriginCells'],[3,4])
+ def test_world_uv_is_continuous_not_restarted_per_cell(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   p=Path(tmp)/'material.png';im=Image.new('RGB',(64,64))
+   for y in range(64):
+    for x in range(64):im.putpixel((x,y),(x*3,y*3,90))
+   im.save(p);out,r=render_water_area(p,[(x,y) for y in range(4) for x in range(4)],64)
+   self.assertEqual(r['textureUVPeriodCells'],4)
+   self.assertLess(abs(out.getpixel((63,100))[0]-out.getpixel((64,100))[0]),5)
+   self.assertNotEqual(out.getpixel((32,100))[:3],out.getpixel((96,100))[:3])
