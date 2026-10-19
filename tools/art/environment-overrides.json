@@ -1,1 +1,27 @@
-{"schemaVersion": 1, "atlases": {}}
+{
+  "schemaVersion": 1,
+  "atlases": {
+    "forest-temperate": {
+      "baselines": {
+        "1x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/forest-temperate.png",
+          "sha256": "115d248676602627991f8bf24599f4203e1308232bbba523b3b7ab17faef4407"
+        },
+        "2x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/forest-temperate@2x.png",
+          "sha256": "795814149c5f5e07608633912167b8140e7cd648aac016d17a47c6563e162894"
+        }
+      },
+      "cells": {
+        "oak-ancient": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/oak-ancient/master.png",
+          "sha256": "ea0407864f18b8fbfd0f838ced7898683bc0e76b8a7c36a2365e5378303cb962"
+        },
+        "mixed-forest-dense": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/mixed-forest-dense/master.png",
+          "sha256": "402a7621fda7789174fd405c97a24e0651121f2efcd156d07f195b9e0d85af2f"
+        }
+      }
+    }
+  }
+}
