@@ -166,15 +166,20 @@
         "bramble-dark",
         "bramble-berries",
         "leaf-pile",
-        "boulder-ferns"
+        "boulder-ferns",
+        "mixed-forest-autumn",
+        "sapling-rock-cluster",
+        "stump-low",
+        "forest-floor-cluster"
       ],
-      "count": 12,
+      "count": 16,
       "export": "96/192 registered source contacts; unrelated atlas cells byte-identical",
       "runtimeBinding": "manifest anchors and presentationScale consumed once by actual scenery renderer; offline native contact sheet reviewed",
       "liveGame": "pending",
       "catalogOnlyNoCurrentPlacement": [
         "leaf-pile"
-      ]
+      ],
+      "atlasStaticReview": "all16 cells registered; four native class comparison sheets reviewed; actual map-level occlusion pending"
     }
   },
   "totalCanonicalScope": 1212,
