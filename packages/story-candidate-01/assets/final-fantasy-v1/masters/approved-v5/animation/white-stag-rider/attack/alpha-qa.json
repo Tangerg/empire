@@ -1,26 +1,146 @@
 {
-  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-b9ce28c0-25c8-4b71-9e44-f46971180948.png",
-  "sha256": "5b742e333f75f5c06880fd738da2d867acae0c92ec7bb4160636b1f7122ce8d9",
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-85038808-f578-4ede-a116-d94728ef879c.png",
+  "sha256": "2d5ecb13748ca206454ed7994f616c76e64e48eba2616d3afb37ae7eb0ed65f8",
   "size": [
-    1584,
-    993
+    1586,
+    992
   ],
   "mode": "RGBA",
   "alphaNonzeroBounds": [
-    0,
-    21,
-    1542,
-    977
+    85,
+    23,
+    1434,
+    976
   ],
   "alphaGreater127Bounds": [
-    148,
-    26,
-    1366,
-    972
+    243,
+    64,
+    1347,
+    954
   ],
-  "perimeterMaxAlpha": 1,
+  "perimeterMaxAlpha": 0,
   "perimeterPixelsAlphaGreaterThan1": 0,
-  "alphaZeroPixels": 1011289,
-  "alphaOnePixels": 7641,
-  "postprocessing": "None: native raw and master byte-identical tool output"
+  "alphaZeroPixels": 1060680,
+  "alphaOnePixels": 6001,
+  "postprocessing": "None: native raw and master byte-identical tool output",
+  "feetMeasurement": [
+    {
+      "hoof": "near-hind",
+      "roi": [
+        240,
+        860,
+        355,
+        960
+      ],
+      "soleY": 936,
+      "bottomFourRowsMeanX": 299.8383233532934,
+      "state": "planted"
+    },
+    {
+      "hoof": "far-hind",
+      "roi": [
+        625,
+        860,
+        755,
+        950
+      ],
+      "soleY": 927,
+      "bottomFourRowsMeanX": 696.75,
+      "state": "planted"
+    },
+    {
+      "hoof": "near-fore",
+      "roi": [
+        970,
+        875,
+        1105,
+        975
+      ],
+      "soleY": 953,
+      "bottomFourRowsMeanX": 1038.6038647342996,
+      "state": "planted"
+    },
+    {
+      "hoof": "far-fore",
+      "roi": [
+        1180,
+        860,
+        1310,
+        960
+      ],
+      "soleY": 937,
+      "bottomFourRowsMeanX": 1255.2079207920792,
+      "state": "planted"
+    }
+  ],
+  "sourceFoot": [
+    823,
+    953
+  ],
+  "sharedScale": 0.05937328202308961,
+  "sharedScaleFraction": "54/909.5",
+  "registrationOffsetLogical": [
+    -0.05937328202308961,
+    1.3062122045079714
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "padRight": 0,
+  "padBottom": 1,
+  "fullCanvasBoundsLogical": [
+    13.94062671797691,
+    7.306212204507972,
+    108.10665200659703,
+    66.26388125343595
+  ],
+  "wholeCanvasFits": true,
+  "semanticReview": "Selected attempt04. Near shoulder foreground arm clearly connects to low one-hand spear thrust; far arm holds reins as idle. Braced four-hoof stance. Spear shaft corrected without source editing; short spear remains complete and no FX added. Earlier two hand-swapped attacks and longer-shaft attempt03 retained.",
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-gap",
+      "rect": [
+        487,
+        877,
+        494,
+        884
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "middle-gap",
+      "rect": [
+        817,
+        872,
+        824,
+        879
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "fore-gap",
+      "rect": [
+        1117,
+        917,
+        1124,
+        924
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "antler-gap",
+      "rect": [
+        1147,
+        187,
+        1154,
+        194
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ]
 }

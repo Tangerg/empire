@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "poses": [
+    {
+      "pose": "idle",
+      "masterSha256": "62bc69aa400a50a381360ae9f0a97649219609b3454703022b4e60403e6bc471",
+      "rawNativeMatch": true,
+      "promptMatch": true,
+      "fullCanvasFits": true,
+      "padRight": 1,
+      "padBottom": 1,
+      "sourceEdge": 0,
+      "derived1xEdge": 0,
+      "derived2xEdge": 0
+    },
+    {
+      "pose": "walk-a",
+      "masterSha256": "9a9f54303158b67585c510ac6aa69c4f18428704c24920733d787fb679a3c357",
+      "rawNativeMatch": true,
+      "promptMatch": true,
+      "fullCanvasFits": true,
+      "padRight": 2,
+      "padBottom": 0,
+      "sourceEdge": 1,
+      "derived1xEdge": 0,
+      "derived2xEdge": 0
+    },
+    {
+      "pose": "attack",
+      "masterSha256": "2d5ecb13748ca206454ed7994f616c76e64e48eba2616d3afb37ae7eb0ed65f8",
+      "rawNativeMatch": true,
+      "promptMatch": true,
+      "fullCanvasFits": true,
+      "padRight": 0,
+      "padBottom": 1,
+      "sourceEdge": 0,
+      "derived1xEdge": 0,
+      "derived2xEdge": 0
+    },
+    {
+      "pose": "walk-b",
+      "masterSha256": "a361a59bc1b1ca0a736077064f7e7e11e6e6c822925c92f33a0b8c9cacfe88e7",
+      "rawNativeMatch": true,
+      "promptMatch": true,
+      "fullCanvasFits": true,
+      "padRight": 2,
+      "padBottom": 0,
+      "sourceEdge": 0,
+      "derived1xEdge": 0,
+      "derived2xEdge": 0
+    }
+  ],
+  "repoWrites": false,
+  "gitWrites": false,
+  "integrationOwner": "coordinator"
+}

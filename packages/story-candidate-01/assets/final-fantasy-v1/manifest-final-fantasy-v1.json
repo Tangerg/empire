@@ -1604,13 +1604,13 @@
       "topicId": "C01-UNIT-LANCE-CAVALRY",
       "label": "长枪骑兵",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-lance-cavalry.png",
-      "width": 256,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-lance-cavalry.png",
+      "width": 512,
+      "height": 80,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 80,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1619,13 +1619,14 @@
         "walk-b"
       ],
       "anchor": [
-        32,
-        47
+        55.86581469648562,
+        64.26624068157615
       ],
       "footprint": [
         2,
         2
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
@@ -2036,13 +2037,13 @@
       "topicId": "C01-UNIT-WHITE-STAG-RIDER",
       "label": "白鹿骑手",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-white-stag-rider.png",
-      "width": 256,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-white-stag-rider.png",
+      "width": 512,
+      "height": 80,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 80,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2051,13 +2052,14 @@
         "walk-b"
       ],
       "anchor": [
-        32,
-        47
+        62.804837822979664,
+        63.88894997251237
       ],
       "footprint": [
         2,
         2
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-WOLF-RIDER",

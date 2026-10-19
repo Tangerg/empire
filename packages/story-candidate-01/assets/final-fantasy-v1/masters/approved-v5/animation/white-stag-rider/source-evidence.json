@@ -62,6 +62,9 @@
   "identity": "Pointed-ear tan young adult, dark tied hair, small gold drop ear ornament verified by enlarged original crop; leaf-green armor, brown straps/boots, rear-hand short spear, forward-hand reins. White four-hoof stag, branching brown antlers, blue-gold patterned saddlecloth.",
   "method": "Built-in image_gen, native RGBA outputs retained unmodified. QA composites/resizes only. No repository or Git writes.",
   "references": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/approved-human44-master.png": "6e6e0f535d7ea725f9bca6ad42c87ee3f7a1f23c908de9d585d451f424335f95",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/approved-roderick56-master.png": "d75f827aaff16fa667939d525a853f0d25ba5950db3c3d0a911f9b53f6846a80",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/approved-wolf52-master.png": "ff238f393f6021f3dad378df1094cd601fbb6c4b2100c74663c2c27a11f56c9d",
     "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/ear-review-enlarged.png": "6e19789ceb120c3c059456ec9c6ab5db16158a7d65dfdc92aaec76cfefba8c78",
     "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/original-attack-hd.png": "b0e14971b53cfa7d23b1082a8b0449fe5f3bcd25bc0114eafe5b14156eff96a9",
     "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/original-idle-hd.png": "3461b507a4d6c720507f71a4720f7b727e1efe97232ff2dfa51d0242e6468b5b",
@@ -80,6 +83,44 @@
     "sha256": "62bc69aa400a50a381360ae9f0a97649219609b3454703022b4e60403e6bc471",
     "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/prompt.txt",
     "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/request.json",
-    "status": "Await coordinator identity/scale gate"
+    "status": "Coordinator approved identity and54logical whole-mounted scale; exact final source interval corrected to909.5before remaining generation"
+  },
+  "styleAndScaleReferences": [
+    {
+      "originalPath": "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+      "preservedCopy": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/approved-human44-master.png",
+      "sha256": "6e6e0f535d7ea725f9bca6ad42c87ee3f7a1f23c908de9d585d451f424335f95",
+      "role": "Chunky style authority and44logical body comparison"
+    },
+    {
+      "originalPath": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wolf-rider/idle/master.png",
+      "preservedCopy": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/approved-wolf52-master.png",
+      "sha256": "ff238f393f6021f3dad378df1094cd601fbb6c4b2100c74663c2c27a11f56c9d",
+      "role": "Mounted chunky style and52logical whole-body comparison"
+    },
+    {
+      "originalPath": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/master.png",
+      "preservedCopy": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/references/approved-roderick56-master.png",
+      "sha256": "d75f827aaff16fa667939d525a853f0d25ba5950db3c3d0a911f9b53f6846a80",
+      "role": "Mounted56logical scale comparison only, not used in imagegen"
+    }
+  ],
+  "scaleApprovalHistory": [
+    {
+      "time": "2026-10-19 23:08UTC",
+      "scale": "54/907.5",
+      "status": "Initial manually measured crown y60; coordinator accepted native identity/scale comparison"
+    },
+    {
+      "time": "2026-10-19 23:09UTC",
+      "scale": "54/909.5",
+      "status": "Final measured hair ROI top y58; coordinator explicitly approved correction before later poses"
+    }
+  ],
+  "sequenceStatus": "Final native quartet approved by coordinator at23:19UTC; formal export/integration pending",
+  "coordinatorFinalApproval": {
+    "time": "2026-10-19 23:19UTC",
+    "decision": "Coordinator viewed final native quartet and approved original spear/reins hands, opposite hoof contacts, compact mounted scale, final54/909.5shared registration and honest maximum2px transparent padding to1586x993. No per-pose fitting.",
+    "integration": "Coordinator owns formal export and actual output verification."
   }
 }

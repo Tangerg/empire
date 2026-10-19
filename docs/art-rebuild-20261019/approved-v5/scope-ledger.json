@@ -4,10 +4,10 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 313,
+    "formalBound": 315,
     "boundByCategory": {
       "battle-prop": 64,
-      "combat-unit": 33,
+      "combat-unit": 35,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
@@ -1849,14 +1849,22 @@
       "label": "长枪骑兵",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-lance-cavalry.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-lance-cavalry.png",
+      "stageEvidence": {
+        "raw": "four native transparent mounted poses; original rider, mount and weapon identity preserved; rejected attempts retained",
+        "export": "one shared body scale, measured feet, full-canvas1x/2x with explicit1-2px transparent padding; native pose review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored map consumer; not claimed deployed",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-LEGION-SHIELD",
@@ -2180,14 +2188,22 @@
       "label": "白鹿骑手",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-white-stag-rider.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-white-stag-rider.png",
+      "stageEvidence": {
+        "raw": "four native transparent mounted poses; original rider, mount and weapon identity preserved; rejected attempts retained",
+        "export": "one shared body scale, measured feet, full-canvas1x/2x with explicit1-2px transparent padding; native pose review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored map consumer; not claimed deployed",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-WOLF-RIDER",

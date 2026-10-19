@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/walk-b/master.png"
+    },
+    "scale": 0.05937328202308961,
+    "origin": [
+      14,
+      6
+    ],
+    "frameSize": [
+      128,
+      80
+    ],
+    "sourceFoot": [
+      822,
+      975
+    ],
+    "sourceFeet": {
+      "idle": [
+        822,
+        975
+      ],
+      "walk-a": [
+        821,
+        965
+      ],
+      "attack": [
+        823,
+        953
+      ],
+      "walk-b": [
+        817,
+        966
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.05937328202308961,
+        0.5937328202308961
+      ],
+      "attack": [
+        -0.05937328202308961,
+        1.3062122045079714
+      ],
+      "walk-b": [
+        0.29686641011544807,
+        0.5343595382078066
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 2,
+    "meaning": "Original mounted identity, opposing hoof contacts and source-consistent spear attack; one shared scale and measured full-canvas registration. Catalog-only; no actual deployed consumer."
+  },
+  "authoredCanvas": [
+    1586,
+    993
+  ],
+  "logicalPivot": [
+    62.804837822979664,
+    63.88894997251237
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "62bc69aa400a50a381360ae9f0a97649219609b3454703022b4e60403e6bc471",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          253
+        ],
+        "transparentPixels": 8232,
+        "nearOpaquePixels": 1487,
+        "edgeMax": 0,
+        "visibleBounds": [
+          38,
+          10,
+          94,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "62bc69aa400a50a381360ae9f0a97649219609b3454703022b4e60403e6bc471",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33380,
+        "nearOpaquePixels": 6358,
+        "edgeMax": 0,
+        "visibleBounds": [
+          76,
+          19,
+          189,
+          128
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/walk-a/master.png",
+      "registrationOffset": [
+        0.05937328202308961,
+        0.5937328202308961
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "9a9f54303158b67585c510ac6aa69c4f18428704c24920733d787fb679a3c357",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8293,
+        "nearOpaquePixels": 1437,
+        "edgeMax": 0,
+        "visibleBounds": [
+          36,
+          10,
+          95,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/walk-a/master.png",
+      "registrationOffset": [
+        0.05937328202308961,
+        0.5937328202308961
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "9a9f54303158b67585c510ac6aa69c4f18428704c24920733d787fb679a3c357",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33600,
+        "nearOpaquePixels": 6155,
+        "edgeMax": 0,
+        "visibleBounds": [
+          72,
+          19,
+          189,
+          128
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/attack/master.png",
+      "registrationOffset": [
+        -0.05937328202308961,
+        1.3062122045079714
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "2d5ecb13748ca206454ed7994f616c76e64e48eba2616d3afb37ae7eb0ed65f8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8235,
+        "nearOpaquePixels": 1500,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          11,
+          94,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/attack/master.png",
+      "registrationOffset": [
+        -0.05937328202308961,
+        1.3062122045079714
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "2d5ecb13748ca206454ed7994f616c76e64e48eba2616d3afb37ae7eb0ed65f8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33359,
+        "nearOpaquePixels": 6450,
+        "edgeMax": 0,
+        "visibleBounds": [
+          57,
+          22,
+          188,
+          128
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/walk-b/master.png",
+      "registrationOffset": [
+        0.29686641011544807,
+        0.5343595382078066
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "a361a59bc1b1ca0a736077064f7e7e11e6e6c822925c92f33a0b8c9cacfe88e7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8279,
+        "nearOpaquePixels": 1457,
+        "edgeMax": 0,
+        "visibleBounds": [
+          38,
+          9,
+          95,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/white-stag-rider/walk-b/master.png",
+      "registrationOffset": [
+        0.29686641011544807,
+        0.5343595382078066
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "a361a59bc1b1ca0a736077064f7e7e11e6e6c822925c92f33a0b8c9cacfe88e7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33578,
+        "nearOpaquePixels": 6210,
+        "edgeMax": 0,
+        "visibleBounds": [
+          76,
+          18,
+          190,
+          128
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

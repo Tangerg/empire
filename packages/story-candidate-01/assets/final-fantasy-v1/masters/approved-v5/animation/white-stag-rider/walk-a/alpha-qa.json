@@ -22,5 +22,125 @@
   "perimeterPixelsAlphaGreaterThan1": 0,
   "alphaZeroPixels": 1076705,
   "alphaOnePixels": 7489,
-  "postprocessing": "None: native raw and master byte-identical tool output"
+  "postprocessing": "None: native raw and master byte-identical tool output",
+  "feetMeasurement": [
+    {
+      "hoof": "near-hind",
+      "roi": [
+        370,
+        860,
+        490,
+        970
+      ],
+      "soleY": 947,
+      "bottomFourRowsMeanX": 428.86842105263156,
+      "state": "planted"
+    },
+    {
+      "hoof": "far-hind",
+      "roi": [
+        680,
+        815,
+        790,
+        915
+      ],
+      "soleY": 901,
+      "bottomFourRowsMeanX": 750.0833333333334,
+      "state": "lifted"
+    },
+    {
+      "hoof": "near-fore",
+      "roi": [
+        860,
+        780,
+        950,
+        880
+      ],
+      "soleY": 872,
+      "bottomFourRowsMeanX": 893.6545454545454,
+      "state": "lifted"
+    },
+    {
+      "hoof": "far-fore",
+      "roi": [
+        1130,
+        880,
+        1280,
+        980
+      ],
+      "soleY": 965,
+      "bottomFourRowsMeanX": 1212.8196721311476,
+      "state": "planted"
+    }
+  ],
+  "sourceFoot": [
+    821,
+    965
+  ],
+  "sharedScale": 0.05937328202308961,
+  "sharedScaleFraction": "54/909.5",
+  "registrationOffsetLogical": [
+    0.05937328202308961,
+    0.5937328202308961
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "padRight": 2,
+  "padBottom": 0,
+  "fullCanvasBoundsLogical": [
+    14.05937328202309,
+    6.593732820230896,
+    108.22539857064321,
+    65.55140186915888
+  ],
+  "wholeCanvasFits": true,
+  "semanticReview": "Near hind and far fore support. Near fore is folded/lifted; shadowed far hind is lifted. Four independent connected legs. Rider/spear/reins/antlers and torso scale stable.",
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-gap",
+      "rect": [
+        577,
+        877,
+        584,
+        884
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "middle-gap",
+      "rect": [
+        802,
+        882,
+        809,
+        889
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "fore-gap",
+      "rect": [
+        1032,
+        879,
+        1039,
+        886
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "antler-gap",
+      "rect": [
+        1147,
+        210,
+        1154,
+        217
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ]
 }

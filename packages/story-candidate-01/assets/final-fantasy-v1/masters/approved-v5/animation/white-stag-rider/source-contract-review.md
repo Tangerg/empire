@@ -9,3 +9,11 @@ Identity: one young adult tan-skinned pointed-ear bare-faced rider with dark bro
 Mount: one white/light warm-gray stag with exactly four deer legs, split dark hooves, large deer ears, dark eyes/black nose, shaggy white throat/chest, short white tail. One pair of warm tan/brown branching antlers, distinguishable from leaf armor. Brown bridle/reins and saddle. Desaturated blue saddlecloth with warm gold/tan edging and original broad triangular/curled decorative border marks, simplified for native readability rather than invented heraldry. Keep all branching tips complete and leg spaces transparent.
 
 Style: approved chunky-v5 broad matte 2–3tone planes, thick dark clean contour, large expressive head and hands, compact readable species anatomy. Use original identity image plus approved blue swordsman and wolf rider as style references only. Proposed idle complete rider crown-to-hoof height54logical (between wolf52 and armored horse Roderick56); antlers may extend naturally. Rider head/hands/boots should remain human44 world scale. Measure actual native output and send coordinator complete body comparison before other poses. Same scale and full canvas for quartet; no per-pose fit.
+
+## Coordinator gate and final sequence
+23:08UTC identity and native human/wolf/stag/Roderick54 comparison accepted. Initial manual hair top60 gave54/907.5; exact ROI found58, so before sequence generation coordinator explicitly accepted corrected54/909.5 at23:09UTC. Crown-to-mean-near-hooves909.5 is the single source interval. Native output canvas differences are preserved and expanded only by transparent padding to1586x993 in derived exports. See registration-evidence.json for full-canvas proof.
+
+Selected attack04 corrects both original-hand continuity and physical short-spear projection. Three earlier attempts remain archived. Final sequence ready for coordinator visual acceptance; catalog-only provenance unchanged.
+
+## Final coordinator acceptance,23:19UTC
+Coordinator viewed the final native quartet and approved original spear/reins hands, opposite hoof contacts, compact mounted scale, shared54/909.5 and maximum2pixel transparent padding to1586x993. Formal canonical export and actual output verification remain coordinator-owned.

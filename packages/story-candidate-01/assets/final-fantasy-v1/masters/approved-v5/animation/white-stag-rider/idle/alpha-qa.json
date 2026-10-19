@@ -34,7 +34,8 @@
         970
       ],
       "soleY": 960,
-      "bottomFourRowsMeanX": 478.7125748502994
+      "bottomFourRowsMeanX": 478.7125748502994,
+      "state": "planted"
     },
     {
       "hoof": "far-hind",
@@ -45,7 +46,8 @@
         960
       ],
       "soleY": 946,
-      "bottomFourRowsMeanX": 729.4822335025381
+      "bottomFourRowsMeanX": 729.4822335025381,
+      "state": "planted"
     },
     {
       "hoof": "near-fore",
@@ -56,7 +58,8 @@
         980
       ],
       "soleY": 975,
-      "bottomFourRowsMeanX": 923.991935483871
+      "bottomFourRowsMeanX": 923.991935483871,
+      "state": "planted"
     },
     {
       "hoof": "far-fore",
@@ -67,7 +70,8 @@
         970
       ],
       "soleY": 960,
-      "bottomFourRowsMeanX": 1156.9556962025317
+      "bottomFourRowsMeanX": 1156.9556962025317,
+      "state": "planted"
     }
   ],
   "nearSideHoofSoleMeanY": 967.5,
@@ -97,7 +101,7 @@
   ],
   "negativeSpaceProbes": [
     {
-      "name": "hindleg-gap",
+      "name": "hind-gap",
       "rect": [
         581,
         877,
@@ -119,7 +123,7 @@
       "zeroPixels": 49
     },
     {
-      "name": "foreleg-gap",
+      "name": "fore-gap",
       "rect": [
         1012,
         895,
@@ -141,6 +145,23 @@
       "zeroPixels": 49
     }
   ],
-  "semanticReview": "Original pointed ear, tied dark hair, bare face, green leaf shoulders, brown straps and boots, rear-hand short spear and forward-hand reins retained. Original ear-detail crop confirms small gold drop ornament. One white four-hoof stag, branched brown antlers, bridle and blue/gold geometric saddlecloth retained. No extra figures, effects or ground. Four complete hooves and negative spaces are readable. Native perimeter zero; all alpha-1 dust remains unchanged.",
-  "status": "Identity and measured54logical scale proposal pending coordinator gate; other poses not generated"
+  "semanticReview": "Four planted hooves; upright rider, short spear up-left in near arm and reins in far arm. Source identity preserved.",
+  "status": "Identity and measured54logical scale proposal pending coordinator gate; other poses not generated",
+  "registrationOffsetLogical": [
+    0.0,
+    0.0
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "padRight": 1,
+  "padBottom": 1,
+  "fullCanvasBoundsLogical": [
+    14.0,
+    6.0,
+    108.16602528862012,
+    64.95766904892798
+  ],
+  "wholeCanvasFits": true
 }

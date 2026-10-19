@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/walk-b/master.png"
+    },
+    "scale": 0.059637912673056445,
+    "origin": [
+      14,
+      6
+    ],
+    "frameSize": [
+      128,
+      80
+    ],
+    "sourceFoot": [
+      702,
+      977
+    ],
+    "sourceFeet": {
+      "idle": [
+        702,
+        977
+      ],
+      "walk-a": [
+        687,
+        968
+      ],
+      "attack": [
+        665,
+        964
+      ],
+      "walk-b": [
+        647,
+        975
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.8945686900958467,
+        0.536741214057508
+      ],
+      "attack": [
+        2.2066027689030885,
+        0.7752928647497338
+      ],
+      "walk-b": [
+        3.2800851970181046,
+        0.11927582534611289
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 0,
+    "meaning": "Original mounted identity, opposing hoof contacts and source-consistent spear attack; one shared scale and measured full-canvas registration. Catalog-only; no actual deployed consumer."
+  },
+  "authoredCanvas": [
+    1560,
+    1008
+  ],
+  "logicalPivot": [
+    55.86581469648562,
+    64.26624068157615
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "cee7ff7ddf94561beeb702f240a9bfbb799581aee1604dca6129ba4e628c3dce",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8311,
+        "nearOpaquePixels": 1508,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          8,
+          105,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "cee7ff7ddf94561beeb702f240a9bfbb799581aee1604dca6129ba4e628c3dce",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33673,
+        "nearOpaquePixels": 6361,
+        "edgeMax": 0,
+        "visibleBounds": [
+          55,
+          16,
+          210,
+          129
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/walk-a/master.png",
+      "registrationOffset": [
+        0.8945686900958467,
+        0.536741214057508
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f39f1eb7f3a498bc889332463a59f37cca5fadee9f5627817938a31f1bf4e56d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8362,
+        "nearOpaquePixels": 1475,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          8,
+          105,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/walk-a/master.png",
+      "registrationOffset": [
+        0.8945686900958467,
+        0.536741214057508
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "f39f1eb7f3a498bc889332463a59f37cca5fadee9f5627817938a31f1bf4e56d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33815,
+        "nearOpaquePixels": 6232,
+        "edgeMax": 0,
+        "visibleBounds": [
+          55,
+          17,
+          211,
+          129
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/attack/master.png",
+      "registrationOffset": [
+        2.2066027689030885,
+        0.7752928647497338
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "891f15951067f8eebffe0aedf68f65e3b4626d189e98338651b6d6fb2aaf00d7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8138,
+        "nearOpaquePixels": 1635,
+        "edgeMax": 0,
+        "visibleBounds": [
+          21,
+          11,
+          108,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/attack/master.png",
+      "registrationOffset": [
+        2.2066027689030885,
+        0.7752928647497338
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "891f15951067f8eebffe0aedf68f65e3b4626d189e98338651b6d6fb2aaf00d7",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33008,
+        "nearOpaquePixels": 6877,
+        "edgeMax": 0,
+        "visibleBounds": [
+          41,
+          21,
+          216,
+          129
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/walk-b/master.png",
+      "registrationOffset": [
+        3.2800851970181046,
+        0.11927582534611289
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "b20cf72ab0665b676ec8aa2f3bd48ffd19fae4cd7ed9f5c150e1b0d9cbf8d097",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8359,
+        "nearOpaquePixels": 1475,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          8,
+          108,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/lance-cavalry/walk-b/master.png",
+      "registrationOffset": [
+        3.2800851970181046,
+        0.11927582534611289
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "b20cf72ab0665b676ec8aa2f3bd48ffd19fae4cd7ed9f5c150e1b0d9cbf8d097",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33822,
+        "nearOpaquePixels": 6215,
+        "edgeMax": 0,
+        "visibleBounds": [
+          59,
+          16,
+          216,
+          129
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

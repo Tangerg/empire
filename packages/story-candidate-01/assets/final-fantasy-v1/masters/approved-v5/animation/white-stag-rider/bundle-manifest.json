@@ -1,0 +1,743 @@
+{
+  "asset": "C01-UNIT-WHITE-STAG-RIDER",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only. No unit definition, art binding, weapon rule or campaign actor found by full packages TypeScript search. README:631 describes woodland light cavalry.",
+  "status": "Native quartet and shared-scale registration approved by coordinator; formal export/integration pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Raw/master byte-identical native outputs; no source painting, cropping, recoloring, resizing or alpha cleanup. Full authored canvases retained. QA composites and deterministic full-canvas export previews only.",
+  "sharedScale": 0.05937328202308961,
+  "sharedScaleFraction": "54/909.5",
+  "bodyReferenceSourcePixels": 909.5,
+  "bodyTargetHeightLogicalPixels": 54,
+  "speciesScaleContract": "One mounted rider+stag body measured from idle hair crown y58 to mean near-side hoof soles y967.5. Coordinator approved54logical between wolf52 and Roderick56 with human44 comparison. No independent rider, mount, antler or per-pose fit.",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/registration-evidence.json",
+  "sourceFoot": [
+    822,
+    975
+  ],
+  "frameSize": [
+    128,
+    80
+  ],
+  "origin": [
+    14,
+    6
+  ],
+  "canvasPaddingToleranceRequired": 2,
+  "maximumPadRight": 2,
+  "maximumPadBottom": 1,
+  "registrationLimitRequiredLogicalPixels": 2,
+  "identityContract": "Pointed-ear tan young adult, dark tied hair, small gold drop ear ornament verified by enlarged original crop; leaf-green armor, brown straps/boots, rear-hand short spear, forward-hand reins. White four-hoof stag, branching brown antlers, blue-gold patterned saddlecloth.",
+  "symbolContract": "Only original small gold ear ornament, muted tunic trim and blue/gold triangular/curled saddlecloth border. No new emblem or effects.",
+  "semanticContract": "Catalog-only artwork: canonical64x48four poses, anchor32,47, art footprint2x2 unchanged. No current code consumer or live weapon rule. Opposite diagonal walking contacts and one-hand spear thrust clarify original source art.",
+  "selectedAttempts": {
+    "idle": "attempt01",
+    "walk-a": "attempt01",
+    "attack": "attempt04",
+    "walk-b": "attempt01"
+  },
+  "rejectedAttempts": {
+    "attack/attempt-01": "Incorrect arm assignment, overly long spear",
+    "attack/attempt-02": "Shaft shortened but arm roles still swapped",
+    "attack/attempt-03": "Arm roles corrected; shaft still about20percent long; superseded by bounded imagegen-only shortening"
+  },
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/master.png",
+      "sha256": "62bc69aa400a50a381360ae9f0a97649219609b3454703022b4e60403e6bc471",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFoot": [
+        822,
+        975
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "fullCanvasBoundsLogical": [
+        14.0,
+        6.0,
+        108.16602528862012,
+        64.95766904892798
+      ],
+      "wholeCanvasFits": true,
+      "feet": [
+        {
+          "hoof": "near-hind",
+          "roi": [
+            410,
+            865,
+            540,
+            970
+          ],
+          "soleY": 960,
+          "bottomFourRowsMeanX": 478.7125748502994,
+          "state": "planted"
+        },
+        {
+          "hoof": "far-hind",
+          "roi": [
+            650,
+            870,
+            785,
+            960
+          ],
+          "soleY": 946,
+          "bottomFourRowsMeanX": 729.4822335025381,
+          "state": "planted"
+        },
+        {
+          "hoof": "near-fore",
+          "roi": [
+            845,
+            875,
+            980,
+            980
+          ],
+          "soleY": 975,
+          "bottomFourRowsMeanX": 923.991935483871,
+          "state": "planted"
+        },
+        {
+          "hoof": "far-fore",
+          "roi": [
+            1080,
+            880,
+            1220,
+            970
+          ],
+          "soleY": 960,
+          "bottomFourRowsMeanX": 1156.9556962025317,
+          "state": "planted"
+        }
+      ],
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/alpha-qa.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/request.json",
+      "semanticReview": "Four planted hooves; upright rider, short spear up-left in near arm and reins in far arm. Source identity preserved.",
+      "export1x": {
+        "size": [
+          128,
+          80
+        ],
+        "alphaBounds": [
+          35,
+          7,
+          97,
+          65
+        ],
+        "perimeterMaxAlpha": 0
+      },
+      "export2x": {
+        "size": [
+          256,
+          160
+        ],
+        "alphaBounds": [
+          73,
+          16,
+          192,
+          130
+        ],
+        "perimeterMaxAlpha": 0
+      },
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/prompt.txt",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "7fc5df4fb0daab1fb801338fef297496cc81a2800f03edbc23bc92667dd0adad",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/idle/qa-white.png",
+      "sourceFootAnchorSuggested": [
+        822,
+        975
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        402,
+        58,
+        1359,
+        976
+      ],
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-661c376a-a9fb-4da4-a278-d2dd2a94c64d.png",
+      "nativePerimeterMaxAlpha": 0,
+      "negativeSpaceProbes": [
+        {
+          "name": "hind-gap",
+          "rect": [
+            581,
+            877,
+            588,
+            884
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "middle-gap",
+          "rect": [
+            802,
+            881,
+            809,
+            888
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "fore-gap",
+          "rect": [
+            1012,
+            895,
+            1019,
+            902
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "antler-gap",
+          "rect": [
+            1147,
+            210,
+            1154,
+            217
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "review": "Four planted hooves; upright rider, short spear up-left in near arm and reins in far arm. Source identity preserved."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-a/master.png",
+      "sha256": "9a9f54303158b67585c510ac6aa69c4f18428704c24920733d787fb679a3c357",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        821,
+        965
+      ],
+      "registrationOffsetLogical": [
+        0.05937328202308961,
+        0.5937328202308961
+      ],
+      "padRight": 2,
+      "padBottom": 0,
+      "fullCanvasBoundsLogical": [
+        14.05937328202309,
+        6.593732820230896,
+        108.22539857064321,
+        65.55140186915888
+      ],
+      "wholeCanvasFits": true,
+      "feet": [
+        {
+          "hoof": "near-hind",
+          "roi": [
+            370,
+            860,
+            490,
+            970
+          ],
+          "soleY": 947,
+          "bottomFourRowsMeanX": 428.86842105263156,
+          "state": "planted"
+        },
+        {
+          "hoof": "far-hind",
+          "roi": [
+            680,
+            815,
+            790,
+            915
+          ],
+          "soleY": 901,
+          "bottomFourRowsMeanX": 750.0833333333334,
+          "state": "lifted"
+        },
+        {
+          "hoof": "near-fore",
+          "roi": [
+            860,
+            780,
+            950,
+            880
+          ],
+          "soleY": 872,
+          "bottomFourRowsMeanX": 893.6545454545454,
+          "state": "lifted"
+        },
+        {
+          "hoof": "far-fore",
+          "roi": [
+            1130,
+            880,
+            1280,
+            980
+          ],
+          "soleY": 965,
+          "bottomFourRowsMeanX": 1212.8196721311476,
+          "state": "planted"
+        }
+      ],
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-a/alpha-qa.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-a/request.json",
+      "semanticReview": "Near hind and far fore support. Near fore is folded/lifted; shadowed far hind is lifted. Four independent connected legs. Rider/spear/reins/antlers and torso scale stable.",
+      "export1x": {
+        "size": [
+          128,
+          80
+        ],
+        "alphaBounds": [
+          34,
+          7,
+          97,
+          66
+        ],
+        "perimeterMaxAlpha": 0
+      },
+      "export2x": {
+        "size": [
+          256,
+          160
+        ],
+        "alphaBounds": [
+          70,
+          16,
+          192,
+          130
+        ],
+        "perimeterMaxAlpha": 0
+      },
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-a/prompt.txt",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "fd6b81ff31ce85dc88b98892d62784a8f5f7daa2150c05a48d942c53565c5b7c",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-a/qa-white.png",
+      "sourceFootAnchorSuggested": [
+        821,
+        965
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        373,
+        48,
+        1359,
+        966
+      ],
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c7c7be0a-c3e4-49ae-bbcd-e277a60cc48e.png",
+      "nativePerimeterMaxAlpha": 1,
+      "negativeSpaceProbes": [
+        {
+          "name": "hind-gap",
+          "rect": [
+            577,
+            877,
+            584,
+            884
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "middle-gap",
+          "rect": [
+            802,
+            882,
+            809,
+            889
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "fore-gap",
+          "rect": [
+            1032,
+            879,
+            1039,
+            886
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "antler-gap",
+          "rect": [
+            1147,
+            210,
+            1154,
+            217
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "review": "Near hind and far fore support. Near fore is folded/lifted; shadowed far hind is lifted. Four independent connected legs. Rider/spear/reins/antlers and torso scale stable."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/attack/master.png",
+      "sha256": "2d5ecb13748ca206454ed7994f616c76e64e48eba2616d3afb37ae7eb0ed65f8",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFoot": [
+        823,
+        953
+      ],
+      "registrationOffsetLogical": [
+        -0.05937328202308961,
+        1.3062122045079714
+      ],
+      "padRight": 0,
+      "padBottom": 1,
+      "fullCanvasBoundsLogical": [
+        13.94062671797691,
+        7.306212204507972,
+        108.10665200659703,
+        66.26388125343595
+      ],
+      "wholeCanvasFits": true,
+      "feet": [
+        {
+          "hoof": "near-hind",
+          "roi": [
+            240,
+            860,
+            355,
+            960
+          ],
+          "soleY": 936,
+          "bottomFourRowsMeanX": 299.8383233532934,
+          "state": "planted"
+        },
+        {
+          "hoof": "far-hind",
+          "roi": [
+            625,
+            860,
+            755,
+            950
+          ],
+          "soleY": 927,
+          "bottomFourRowsMeanX": 696.75,
+          "state": "planted"
+        },
+        {
+          "hoof": "near-fore",
+          "roi": [
+            970,
+            875,
+            1105,
+            975
+          ],
+          "soleY": 953,
+          "bottomFourRowsMeanX": 1038.6038647342996,
+          "state": "planted"
+        },
+        {
+          "hoof": "far-fore",
+          "roi": [
+            1180,
+            860,
+            1310,
+            960
+          ],
+          "soleY": 937,
+          "bottomFourRowsMeanX": 1255.2079207920792,
+          "state": "planted"
+        }
+      ],
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/attack/alpha-qa.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/attack/request.json",
+      "semanticReview": "Selected attempt04. Near shoulder foreground arm clearly connects to low one-hand spear thrust; far arm holds reins as idle. Braced four-hoof stance. Spear shaft corrected without source editing; short spear remains complete and no FX added. Earlier two hand-swapped attacks and longer-shaft attempt03 retained.",
+      "export1x": {
+        "size": [
+          128,
+          80
+        ],
+        "alphaBounds": [
+          26,
+          8,
+          96,
+          66
+        ],
+        "perimeterMaxAlpha": 0
+      },
+      "export2x": {
+        "size": [
+          256,
+          160
+        ],
+        "alphaBounds": [
+          54,
+          20,
+          190,
+          131
+        ],
+        "perimeterMaxAlpha": 0
+      },
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/attack/prompt.txt",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "e0f2eadec215e1325233831097c7f0fda2cca2a69ad01f515f7f95e2a54a484b",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/attack/qa-white.png",
+      "sourceFootAnchorSuggested": [
+        823,
+        953
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        243,
+        64,
+        1347,
+        954
+      ],
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-85038808-f578-4ede-a116-d94728ef879c.png",
+      "nativePerimeterMaxAlpha": 0,
+      "negativeSpaceProbes": [
+        {
+          "name": "hind-gap",
+          "rect": [
+            487,
+            877,
+            494,
+            884
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "middle-gap",
+          "rect": [
+            817,
+            872,
+            824,
+            879
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "fore-gap",
+          "rect": [
+            1117,
+            917,
+            1124,
+            924
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "antler-gap",
+          "rect": [
+            1147,
+            187,
+            1154,
+            194
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "review": "Selected attempt04. Near shoulder foreground arm clearly connects to low one-hand spear thrust; far arm holds reins as idle. Braced four-hoof stance. Spear shaft corrected without source editing; short spear remains complete and no FX added. Earlier two hand-swapped attacks and longer-shaft attempt03 retained."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-b/master.png",
+      "sha256": "a361a59bc1b1ca0a736077064f7e7e11e6e6c822925c92f33a0b8c9cacfe88e7",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFoot": [
+        817,
+        966
+      ],
+      "registrationOffsetLogical": [
+        0.29686641011544807,
+        0.5343595382078066
+      ],
+      "padRight": 2,
+      "padBottom": 0,
+      "fullCanvasBoundsLogical": [
+        14.296866410115449,
+        6.534359538207807,
+        108.46289169873558,
+        65.49202858713579
+      ],
+      "wholeCanvasFits": true,
+      "feet": [
+        {
+          "hoof": "near-hind",
+          "roi": [
+            615,
+            815,
+            735,
+            910
+          ],
+          "soleY": 892,
+          "bottomFourRowsMeanX": 683.7727272727273,
+          "state": "lifted"
+        },
+        {
+          "hoof": "far-hind",
+          "roi": [
+            400,
+            860,
+            520,
+            965
+          ],
+          "soleY": 944,
+          "bottomFourRowsMeanX": 463.8636363636364,
+          "state": "planted"
+        },
+        {
+          "hoof": "near-fore",
+          "roi": [
+            1000,
+            880,
+            1130,
+            980
+          ],
+          "soleY": 966,
+          "bottomFourRowsMeanX": 1071.503448275862,
+          "state": "planted"
+        },
+        {
+          "hoof": "far-fore",
+          "roi": [
+            1040,
+            770,
+            1140,
+            865
+          ],
+          "soleY": 864,
+          "bottomFourRowsMeanX": 1049.5125,
+          "state": "lifted"
+        }
+      ],
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-b/alpha-qa.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-b/request.json",
+      "semanticReview": "Far hind and near fore support. Near hind is swung forward and lifted; far fore is folded and lifted. This is opposite actual diagonal hoof contact from walk-a; four connected legs, stable rider and equipment.",
+      "export1x": {
+        "size": [
+          128,
+          80
+        ],
+        "alphaBounds": [
+          35,
+          7,
+          97,
+          66
+        ],
+        "perimeterMaxAlpha": 0
+      },
+      "export2x": {
+        "size": [
+          256,
+          160
+        ],
+        "alphaBounds": [
+          74,
+          15,
+          193,
+          131
+        ],
+        "perimeterMaxAlpha": 0
+      },
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-b/prompt.txt",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "1df83e346a0d57a1f69b88cd22ec45dfcc46a343413066baa3a025cda10aa268",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/walk-b/qa-white.png",
+      "sourceFootAnchorSuggested": [
+        817,
+        966
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        400,
+        37,
+        1361,
+        967
+      ],
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bef5b97a-6034-4c52-943c-701b0d621e25.png",
+      "nativePerimeterMaxAlpha": 0,
+      "negativeSpaceProbes": [
+        {
+          "name": "hind-gap",
+          "rect": [
+            567,
+            877,
+            574,
+            884
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "middle-gap",
+          "rect": [
+            812,
+            867,
+            819,
+            874
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "fore-gap",
+          "rect": [
+            1137,
+            872,
+            1144,
+            879
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "antler-gap",
+          "rect": [
+            1147,
+            210,
+            1154,
+            217
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "review": "Far hind and near fore support. Near hind is swung forward and lifted; far fore is folded and lifted. This is opposite actual diagonal hoof contact from walk-a; four connected legs, stable rider and equipment."
+    }
+  },
+  "projectionVariation": "Selected attack04 keeps correct near spear arm/far reins hand and shortens front wood shaft. Approximate manually inspected butt-to-tip lengths: idle~682sourcepixels; attack03~815; selected attack04~665. Small2\u20133percent shortening from idle is a plausible projected variation. Full head, shaft and butt remain visible. Minor full-canvas and silhouette shifts from imagegen are recorded; no source pixel edits. Antlers remain entirely intact.",
+  "coordinatorFinalApproval": {
+    "time": "2026-10-19 23:19UTC",
+    "decision": "Coordinator viewed final native quartet and approved original spear/reins hands, opposite hoof contacts, compact mounted scale, final54/909.5shared registration and honest maximum2px transparent padding to1586x993. No per-pose fitting.",
+    "integration": "Coordinator owns formal export and actual output verification."
+  }
+}

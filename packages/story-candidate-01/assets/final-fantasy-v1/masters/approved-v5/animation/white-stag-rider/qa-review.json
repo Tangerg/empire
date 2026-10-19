@@ -1,0 +1,37 @@
+{
+  "asset": "C01-UNIT-WHITE-STAG-RIDER",
+  "status": "Native semantic, static1x/2x and coordinator sequence review passed; formal canonical output verification coordinator-owned",
+  "nativeRGBA": true,
+  "sourcePerimeterLimit": 1,
+  "sourceAlphaCleanup": false,
+  "sourceBytesUnchanged": true,
+  "derivedPerimeterMax": 0,
+  "fullAuthoredCanvasKept": true,
+  "sourcePadding": "Common1586x993: idle1585x992 receives1right/1bottom; selected attack1586x992 receives0right/1bottom; walks1584x993 receive2right/0bottom. Only explicit transparent padding in derived export; raw/master bytes untouched.",
+  "commonScale": 0.05937328202308961,
+  "noPerPoseFit": true,
+  "actualHoofContactSemantics": {
+    "walk-a": "near-hind and far-fore planted; far-hind and near-fore lifted",
+    "walk-b": "far-hind and near-fore planted; near-hind and far-fore lifted"
+  },
+  "attack": "Near hand short-spear forward thrust and far hand reins continuity verified; complete four-hoof bracing, no independent FX. Catalog-only source semantics, no live rule invented.",
+  "previews": "/workspace/shared/empire-art-rebuild/approved-v5/animation/white-stag-rider/export-preview",
+  "gamePlayback": "Not tested. No live consumer exists for this catalog asset; 6.25fps two-frame QA GIF provided without claiming fluid attack animation.",
+  "reviewedImages": [
+    "idle/master.png",
+    "walk-a/master.png",
+    "attack/master.png",
+    "walk-b/master.png",
+    "idle/qa-white.png",
+    "attack/qa-white.png",
+    "export-preview/four-white-3x.png",
+    "export-preview/four-black-3x.png",
+    "idle-scale-white-3x.png"
+  ],
+  "derivativeNote": "Preview export uniformly resizes entire explicitly padded canvas with LANCZOS; only translation varies by measured hoof contacts. Coordinator owns canonical export/integration.",
+  "coordinatorFinalApproval": {
+    "time": "2026-10-19 23:19UTC",
+    "decision": "Coordinator viewed final native quartet and approved original spear/reins hands, opposite hoof contacts, compact mounted scale, final54/909.5shared registration and honest maximum2px transparent padding to1586x993. No per-pose fitting.",
+    "integration": "Coordinator owns formal export and actual output verification."
+  }
+}
