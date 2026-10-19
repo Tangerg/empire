@@ -1,0 +1,103 @@
+{
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "alpha_min": 0,
+  "alpha_max": 255,
+  "transparent_pixels": 1056058,
+  "partial_alpha_pixels": 515244,
+  "opaque_pixels": 1018,
+  "alpha_bbox": [
+    225,
+    37,
+    1427,
+    992
+  ],
+  "source_size": [
+    1585,
+    992
+  ],
+  "source_alpha_bbox": [
+    0,
+    29,
+    1531,
+    974
+  ],
+  "master_unmodified_imagegen_output": true,
+  "visual_qa": "Red cloth replacement successful, but geometry is not pixel-exact: unit appears slightly larger/rightward, with redrawn helmet, face, sword and boots. Same general pose/camera/silhouette design retained.",
+  "alpha_mask_iou": 0.8942750427555753,
+  "alpha_histogram_top": [
+    [
+      0,
+      1056058
+    ],
+    [
+      253,
+      413975
+    ],
+    [
+      254,
+      62468
+    ],
+    [
+      252,
+      21248
+    ],
+    [
+      1,
+      2686
+    ],
+    [
+      251,
+      1939
+    ],
+    [
+      2,
+      1442
+    ],
+    [
+      250,
+      1211
+    ],
+    [
+      255,
+      1018
+    ],
+    [
+      249,
+      878
+    ]
+  ],
+  "bbox_alpha_gt_1": [
+    323,
+    100,
+    1313,
+    915
+  ],
+  "bbox_alpha_gt_16": [
+    325,
+    102,
+    1310,
+    913
+  ],
+  "bbox_alpha_gt_127": [
+    326,
+    103,
+    1310,
+    913
+  ],
+  "bbox_alpha_gt_250": [
+    327,
+    104,
+    1309,
+    912
+  ],
+  "edge_alpha_max": [
+    0,
+    1,
+    0,
+    0
+  ]
+}
