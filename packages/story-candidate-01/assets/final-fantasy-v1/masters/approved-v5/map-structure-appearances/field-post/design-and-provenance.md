@@ -12,7 +12,7 @@ Normal source is patchwork tan/ochre, brown and slate canvas on lashed brown tim
 
 ## New compact composition
 
-One low open-front canvas station, a clear dark entrance, one rolled resting pad and one small closed supply bundle. Omit the compound/exterior prop cluster and secondary awning. Use broad chunky matte forms, strong contours, a small number of cel-shaded planes and original palette. No characters, ground plate, broad shadow, fence or extra building. The required meaningful silhouette world support (alpha>=128) is within [-14,-26,+14,0] relative to the shared physical contact, with one shared full-canvas registration across all three states. Native alpha<=1 dust is retained unchanged under the established source contract; a true-transparent derived frame margin is required.
+One low open-front canvas station, a clear dark entrance, one rolled resting pad and one small closed supply bundle. Omit the compound/exterior prop cluster and secondary awning. Use broad chunky matte forms, strong contours, a small number of cel-shaded planes and original palette. No characters, ground plate, broad shadow, fence or extra building. The required real translucent silhouette world support (alpha>=2) is within [-14,-26,+14,0] relative to the shared physical contact, with one shared full-canvas registration across all three states. Native alpha<=1 dust is retained unchanged under the established source contract; a true-transparent derived frame margin is required.
 
 ## Native-output discipline
 
@@ -20,5 +20,9 @@ Every attempt is created using the built-in `image_gen.imagegen` tool. Exact pro
 
 ## Current gate
 
-Attempts 01 and 02 were initially held because native alpha=1 dust occurs outside the visible shape, including a left-border pixel. The coordinator clarified that the established source contract permits perimeter alpha<=1 and requires unchanged native bytes, a derived true-transparent margin, meaningful alpha>=128 footprint measurement and visual black/white inspection. Attempt 02 is therefore the current normal-state gate candidate. The earlier holding records remain preserved. No code cleanup was performed. Final scale/shape gate is still pending.
+Attempts 01 and 02 were initially held because native alpha=1 dust occurs outside the visible shape, including a left-border pixel. The coordinator clarified that the established source contract permits perimeter alpha<=1 and requires unchanged native bytes, a derived true-transparent margin, alpha>=2 safety footprint measurement, separate alpha>=128/all-nonzero reporting and visual black/white inspection. Attempt 02 is therefore the current normal-state gate candidate. The earlier holding records remain preserved. No code cleanup was performed. The coordinator has now approved the three-state shape/identity gate after viewing native tiny-size white/black/olive previews. Final shared registration is scale60/1254, origin[2,2], sourceFoot[627,1065], frame64, anchor[32,52.95693779904306], presentationScale0.5. The one-native-pixel contact adjustment is common to all states and covers the antialiased physical base. Actual complete-scene and six-consumer integration review remains pending.
 
+
+## Final delivery
+
+`deliverable-manifest.json` is the entry point. `registration.json` is authoritative; the earlier `registration-proposed.json` is retained as historical pre-alpha>=2-gate evidence only. All three `raw.png` and `master.png` pairs are byte-identical native tool output. No production atlas export was created by this worker; integration owns export using the one shared registration. Every state passes the alpha>=2 world envelope. Native-alpha1 dust remains unchanged, and must not be represented as a new visible shadow.

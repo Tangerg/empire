@@ -1,0 +1,100 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bb125cf9-b7bf-4125-b4c1-e4bf4454369f.png",
+  "size": [
+    1561,
+    1008
+  ],
+  "mode": "RGBA",
+  "sha256": "fe787e65f2c06d6e78bb92bf87839b67ffce932c4802519a92ae44db4cba38e6",
+  "bboxAlphaNonzero": [
+    0,
+    21,
+    1539,
+    1008
+  ],
+  "bboxAlphaGreaterThan127": [
+    362,
+    24,
+    1344,
+    990
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1048252,
+  "alphaOnePixels": 6171,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "status": "Native idle candidate inspected; coordinator review pending",
+  "bodyTopY": 24,
+  "soleMeasurements": [
+    {
+      "name": "image-left-boot",
+      "roi": [
+        440,
+        850,
+        680,
+        1000
+      ],
+      "soleCenterXBottomFourRows": 544.1316872427983,
+      "soleY": 989
+    },
+    {
+      "name": "image-right-boot",
+      "roi": [
+        820,
+        850,
+        1100,
+        1000
+      ],
+      "soleCenterXBottomFourRows": 985.7717842323651,
+      "soleY": 988
+    }
+  ],
+  "bodyHeight": 964.5,
+  "proposedLogicalBodyHeight": 44,
+  "proposedScaleRatio": "44/964.5",
+  "proposedScale": 0.04561949196474858,
+  "proposedSourceFoot": [
+    765,
+    989
+  ],
+  "proposedFrame": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "between-boots",
+      "rectangle": [
+        692,
+        907,
+        699,
+        914
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "between-hammer-and-body",
+      "rectangle": [
+        1221,
+        695,
+        1228,
+        702
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Named adult woman with original brown swept hair/bun, brown eyes, rust coat, charcoal scarf, crossbody ledger satchel, keys, tags and wrench retained. Rule-correct engineer hammer is held in original wrench hand; wrench stowed. Small closed belt satchel represents charge. No generic helmet/apron identity.",
+  "styleReview": "Large head, broad bare hands/boots, thick contour and broad matte rust/brown/gray planes. Simple quilting, no fine realism.",
+  "bodyMeasurementDefinition": "Hair crown24 to mean boot soles; hammer and bag extent excluded. Source foot x is mean bottom-four-row boot centers and y is lower sole.",
+  "rawEqualsMaster": true,
+  "derivedPerimeterMaxAlpha": 0,
+  "derivedPerimeterNonzeroCount": 0
+}

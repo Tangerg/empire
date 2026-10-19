@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/cain/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/cain/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/cain/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/cain/walk-b/master.png"
+    },
+    "scale": 0.04821917808219178,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      681,
+      966
+    ],
+    "sourceFeet": {
+      "idle": [
+        681,
+        966
+      ],
+      "walk-a": [
+        646,
+        960
+      ],
+      "attack": [
+        531,
+        928
+      ],
+      "walk-b": [
+        709,
+        951
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        1.6876712328767125,
+        0.2893150684931507
+      ],
+      "attack": [
+        7.232876712328768,
+        1.8323287671232877
+      ],
+      "walk-b": [
+        -1.35013698630137,
+        0.7232876712328767
+      ]
+    },
+    "registrationLimit": 8,
+    "canvasPaddingTolerance": 1,
+    "meaning": "original named officer battle spear"
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    40.8372602739726,
+    50.579726027397264
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/cain/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "df533ea0e65c555d7c0ec22bb4578b9d1c9ef4a85185afafb765511094481c0d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5247,
+        "nearOpaquePixels": 1200,
+        "edgeMax": 0,
+        "visibleBounds": [
+          16,
+          6,
+          83,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/cain/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "df533ea0e65c555d7c0ec22bb4578b9d1c9ef4a85185afafb765511094481c0d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21127,
+        "nearOpaquePixels": 4934,
+        "edgeMax": 0,
+        "visibleBounds": [
+          32,
+          12,
+          165,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/cain/walk-a/master.png",
+      "registrationOffset": [
+        1.6876712328767125,
+        0.2893150684931507
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "4fc84d833104f3a79ea114aa6f57d1a0a361542dac16f114ff75087a0bde39e6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5322,
+        "nearOpaquePixels": 1117,
+        "edgeMax": 0,
+        "visibleBounds": [
+          16,
+          7,
+          84,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/cain/walk-a/master.png",
+      "registrationOffset": [
+        1.6876712328767125,
+        0.2893150684931507
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "4fc84d833104f3a79ea114aa6f57d1a0a361542dac16f114ff75087a0bde39e6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21445,
+        "nearOpaquePixels": 4593,
+        "edgeMax": 0,
+        "visibleBounds": [
+          32,
+          14,
+          169,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/cain/attack/master.png",
+      "registrationOffset": [
+        7.232876712328768,
+        1.8323287671232877
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "5272a25476e86e984b46686bdc01910b45fd6a9d0afe05dfb45d84afa524db25",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5398,
+        "nearOpaquePixels": 1050,
+        "edgeMax": 0,
+        "visibleBounds": [
+          18,
+          12,
+          91,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/cain/attack/master.png",
+      "registrationOffset": [
+        7.232876712328768,
+        1.8323287671232877
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "5272a25476e86e984b46686bdc01910b45fd6a9d0afe05dfb45d84afa524db25",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21744,
+        "nearOpaquePixels": 4314,
+        "edgeMax": 0,
+        "visibleBounds": [
+          36,
+          23,
+          182,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/cain/walk-b/master.png",
+      "registrationOffset": [
+        -1.35013698630137,
+        0.7232876712328767
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "f3d0d949498c1adf08cc9cab49a99423e1ca865b0cec39984ebeea085d4f0189",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5263,
+        "nearOpaquePixels": 1166,
+        "edgeMax": 0,
+        "visibleBounds": [
+          12,
+          7,
+          81,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/cain/walk-b/master.png",
+      "registrationOffset": [
+        -1.35013698630137,
+        0.7232876712328767
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "f3d0d949498c1adf08cc9cab49a99423e1ca865b0cec39984ebeea085d4f0189",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21217,
+        "nearOpaquePixels": 4781,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          13,
+          163,
+          101
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

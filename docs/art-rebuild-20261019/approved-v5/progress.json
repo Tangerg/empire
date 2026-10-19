@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 35,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 309,
+  "formalRuntimeBoundTopics": 310,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1928,6 +1928,12 @@
       "export": "native32 white/dark/olive semantic review; actual alpha checked",
       "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
       "liveGame": "pending"
+    },
+    "C01-CHAR-CAIN-01": {
+      "raw": "independent native1024x1536 transparent named young imperial officer with original command baton portrait; separate backdrop retained",
+      "export": "192x224 separate-background card, actual HUD96x112/icon48, native registered quartet and complete c01-01/02/12 projections reviewed",
+      "runtimeBinding": "named portrait and four-pose named spear appearance registered; original rules and generic gravekeeper remain unchanged",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -2435,13 +2441,13 @@
     }
   },
   "namedHeroAppearances": {
-    "status": "Laiya, Roderick, Mirelle and exact-actor Torren formally bound; remaining named identities in progress",
+    "status": "Laiya, Roderick, Mirelle, Torren and Cain formally bound; Bran and Tasha in progress",
     "canonicalCountIncrement": 0,
     "audit": "narrative-family-audit/hero-identity-contract.md",
     "knownMismatches": [
       "IVRA rules describe juvenile; generic growth appearance has maturity mismatch risk"
     ],
-    "nextPilot": "Cain: original officer identity audit and rule-supported spear battle appearance",
+    "nextPilot": "Bran and Tasha: original named identities audited independently",
     "cardContract": "Character master retains real RGBA transparency; any required opaque UI background is separate authored source/layer",
     "liveGameVerified": false,
     "appearances": {
@@ -2484,6 +2490,16 @@
         "cardTopic": "C01-CHAR-TORREN-01",
         "cardCanonicalCountIncrement": 1,
         "genericSwordsmen": "unchanged, no type-wide appearance",
+        "liveGame": "pending"
+      },
+      "cain-stage01": {
+        "ruleUnit": "c01.cain",
+        "baseCanonicalTopic": "C01-UNIT-LEGION-SHIELD",
+        "canonicalCountIncrement": 0,
+        "fourPoses": "shared44/912.5 body scale; measured feet and spear thrust consistent with existing rule weapon; original portrait baton retained",
+        "cardTopic": "C01-CHAR-CAIN-01",
+        "cardCanonicalCountIncrement": 1,
+        "genericLegionShield": "unchanged",
         "liveGame": "pending"
       }
     }

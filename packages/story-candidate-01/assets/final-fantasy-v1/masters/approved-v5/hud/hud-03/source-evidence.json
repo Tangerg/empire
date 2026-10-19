@@ -34,7 +34,8 @@
     "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
     "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md:456-471",
     "consumer": "Registered catalog asset reachable through candidate01TryIconMarkup, default28px; no direct exact topic-ID UI callsite found in packages/apps source.",
-    "matchesBaselineAtlasBytes": true
+    "matchesBaselineAtlasBytes": true,
+    "matchesBaselineRuntimeBytes": true
   },
   "styleReferences": [
     "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",

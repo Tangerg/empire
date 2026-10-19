@@ -1,0 +1,17 @@
+{
+  "tool": "image_gen__imagegen",
+  "exactRequestFile": "request.json",
+  "exactPromptFile": "prompt.txt",
+  "promptSha256": "d5fc2c79ce466058f63ceee5b4177f048dda80f879958ed6a779af1941b2c4b7",
+  "referenceImages": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/idle/master.png",
+      "sha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341"
+    },
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/bran/walk-a/master.png",
+      "sha256": "f2e4a6640ac36c78c7a8c6adf4cdbcd44bfc652c2e1fc249009360b0c682ed4f"
+    }
+  ],
+  "transparent_background": true
+}

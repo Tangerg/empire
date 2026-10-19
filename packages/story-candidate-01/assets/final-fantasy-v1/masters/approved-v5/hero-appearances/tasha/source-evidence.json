@@ -1,0 +1,154 @@
+{
+  "unitType": "c01.tasha",
+  "cardTopicId": "C01-CHAR-TASHA-01",
+  "currentBattleTopicId": "C01-UNIT-ENGINEER",
+  "card": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-tasha-01.png",
+    "sha256": "1bcc6c70385d1e53aa49b86aa56daf9eca4d30face27fb5bed952cb82c3be71d",
+    "size": [
+      192,
+      224
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ]
+  },
+  "originalBoard": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+    "sha256": "ba6664552ce4d93879b1c1a815303a0793034f0ab109ba6621e3ca4afd1ee21c",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "alphaExtrema": null
+  },
+  "originalBoardCell": 1,
+  "originalCropBox": [
+    632,
+    5,
+    1249,
+    622
+  ],
+  "runtimeBattle": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer.png",
+    "sha256": "bf580abb634e9f9ba03b52ab3a19afaa3f6a401199053b63dcbe841cf3921b69",
+    "size": [
+      416,
+      64
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ]
+  },
+  "runtimeBattleHd": {
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png",
+    "sha256": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
+    "size": [
+      832,
+      128
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ]
+  },
+  "publishedSequence": {
+    "path": "docs/art-rebuild-20261019/approved-v5/animation/engineer/export/sequence.json",
+    "sha256": "f95da55734b592d1bc2c580dfc0b2be0780ff42727d82c67a384224f8e91d249",
+    "matchesCurrentHdBytes": true
+  },
+  "nativeBattleFrames": {
+    "idle": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/idle/master.png",
+      "sha256": "20421d289c418fe43a9515f46d1ebfc3c99e19c13988d1ddcb69b04947c7883f",
+      "size": [
+        1586,
+        992
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    "walk-a": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-a/master.png",
+      "sha256": "42d21f6593d4ec862f1a8e098ec9092557e7a2fcf962a493c9543e2aac63021f",
+      "size": [
+        1586,
+        992
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    "attack": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/attack/master.png",
+      "sha256": "9e26deeeab73fa347ced302b9c979b599f30c5886138d18f53eed5cde205dc5a",
+      "size": [
+        1586,
+        992
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    "walk-b": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-b/master.png",
+      "sha256": "c030cc5e5d3f684cfee5c134926c4955f768192be2e00be5349a27a0bb8429e5",
+      "size": [
+        1586,
+        992
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    }
+  },
+  "copiedReferences": {
+    "references/original-character-board-02.png": {
+      "sha256": "ba6664552ce4d93879b1c1a815303a0793034f0ab109ba6621e3ca4afd1ee21c",
+      "role": "identity"
+    },
+    "references/generic-engineer-idle.png": {
+      "sha256": "20421d289c418fe43a9515f46d1ebfc3c99e19c13988d1ddcb69b04947c7883f",
+      "role": "class equipment audit only; not generation identity"
+    },
+    "references/original-char-tasha-01.png": {
+      "sha256": "1bcc6c70385d1e53aa49b86aa56daf9eca4d30face27fb5bed952cb82c3be71d",
+      "role": "identity"
+    },
+    "references/style-torren-idle.png": {
+      "sha256": "f3987460a784cac90ccb119a8bc2742fa1ec5498b53cf42f650c56823c3ac2e1",
+      "role": "approved body/style only"
+    },
+    "references/style-bran-idle.png": {
+      "sha256": "c2dee091277f7753565114bac00accb821f480d5963d999e118dbd9540f7e341",
+      "role": "approved body/style only"
+    },
+    "references/style-cain-idle.png": {
+      "sha256": "df533ea0e65c555d7c0ec22bb4578b9d1c9ef4a85185afafb765511094481c0d",
+      "role": "approved body/style only"
+    },
+    "references/original-char-tasha-01-cell.png": {
+      "sha256": "de9784640671c351197dd24195768ce4a3b81f585a2e82e6d48fd14d6c76cbf7",
+      "role": "identity"
+    }
+  },
+  "identityAudit": "source-contract-review.md",
+  "independentAppearance": "tasha-stage01",
+  "rulesMustRemainUnchanged": true,
+  "canonicalTopicDelta": 0
+}

@@ -34,7 +34,8 @@
     "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
     "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md:456-471",
     "consumer": "Direct HUD objective heading in packages/game-ui/src/ui/hud.ts:916; generic candidate01IconMarkup provider defaults28px.",
-    "matchesBaselineAtlasBytes": true
+    "matchesBaselineAtlasBytes": true,
+    "matchesBaselineRuntimeBytes": true
   },
   "styleReferences": [
     "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",

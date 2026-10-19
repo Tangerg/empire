@@ -1252,6 +1252,24 @@
     "C01-HUD-16": {
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-16/master.png",
       "sha256": "2c3aef53954d8fae624693e435f14bd81dd2fea66420870e7591c82d9172481b"
+    },
+    "C01-CHAR-CAIN-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-cain-01/master.png",
+        "sha256": "94c05055a9a4a150b359c2290dec6d13ff386272da9628b27cc1b36001edea17"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
     }
   }
 }

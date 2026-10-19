@@ -1,0 +1,68 @@
+{
+  "presentationRole": "c01.field-post",
+  "canonicalTopicId": "C01-STRUCT-REFUGEE-SHELTER",
+  "canonicalTopicsAdded": 0,
+  "purposeBuiltNewComposition": true,
+  "canonicalOriginalUnchanged": true,
+  "tool": "image_gen.imagegen built-in",
+  "nativeSourceSize": [
+    1254,
+    1254
+  ],
+  "states": {
+    "normal": {
+      "raw": "normal/raw.png",
+      "master": "normal/master.png",
+      "sha256": "17fbb9319ec58739dea9ee94de54425311a57858bc8d84a555bc74c612c817b3",
+      "rawMasterByteEqual": true,
+      "evidence": "normal/evidence.json",
+      "alphaQA": "normal/alpha-qa.json",
+      "alpha2WorldSupport": [
+        -11.794258373205741,
+        -17.966507177033492,
+        12.535885167464114,
+        0.0
+      ],
+      "alpha2EnvelopePass": true
+    },
+    "damaged": {
+      "raw": "damaged/raw.png",
+      "master": "damaged/master.png",
+      "sha256": "d358c0862e635c81d6f15a786ebeaafd24f1973b97c6ee7c091ae96a43804df9",
+      "rawMasterByteEqual": true,
+      "evidence": "damaged/evidence.json",
+      "alphaQA": "damaged/alpha-qa.json",
+      "alpha2WorldSupport": [
+        -11.794258373205741,
+        -17.99043062200957,
+        12.559808612440191,
+        0.0
+      ],
+      "alpha2EnvelopePass": true
+    },
+    "captured": {
+      "raw": "captured/raw.png",
+      "master": "captured/master.png",
+      "sha256": "9ff99f090e7fedc7c0da62ee7a50a068fbb0a10256ba1c36cac74703bd252fbc",
+      "rawMasterByteEqual": true,
+      "evidence": "captured/evidence.json",
+      "alphaQA": "captured/alpha-qa.json",
+      "alpha2WorldSupport": [
+        -11.770334928229666,
+        -17.966507177033492,
+        12.559808612440191,
+        -0.023923444976076555
+      ],
+      "alpha2EnvelopePass": true
+    }
+  },
+  "registration": "registration.json",
+  "qa": [
+    "qa/three-state-native-tiny-preview.png",
+    "qa/normal-black-white.png",
+    "qa/damaged-black-white.png",
+    "qa/captured-black-white.png",
+    "qa/three-state-alpha-report.json"
+  ],
+  "status": "three-state native art and shared source registration approved by coordinator; actual six-consumer/runtime integration gate pending"
+}

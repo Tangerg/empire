@@ -1,0 +1,64 @@
+{
+  "type": "c01.cain",
+  "context": {},
+  "binding": {
+    "topicId": "C01-UNIT-LEGION-SHIELD",
+    "appearanceId": "cain-stage01"
+  },
+  "cardTopic": "C01-CHAR-CAIN-01",
+  "sources": [
+    {
+      "href": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-cain-01.png",
+      "sha256": "25c90647fc310c75cf0d834d75677582067a03abefc6dcda58eb1670c980e227"
+    },
+    {
+      "href": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
+      "sha256": "0967c3364daa06890b5c9791b1131ffb8f312e851e3f7611141267e425d6d01f"
+    }
+  ],
+  "picture": {
+    "foot": {
+      "x": 16,
+      "y": 31
+    },
+    "body": "<g data-runtime-raster=\"unit\">\n    <ellipse class=\"runtime-unit-contact-shadow\" cx=\"16\" cy=\"29.2\" rx=\"12.5\" ry=\"4.2\" fill=\"#0b100d\" opacity=\"0.48\"/>\n    <ellipse class=\"runtime-unit-team-ring\" cx=\"16\" cy=\"29.5\" rx=\"11\" ry=\"2.25\" fill=\"none\" stroke=\"#4d86b8\" stroke-width=\"1.8\" opacity=\"1\"/>\n  </g>",
+    "strip": {
+      "href": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frameCount": 4,
+      "x": -24.837260273972603,
+      "y": -19.579726027397264,
+      "clips": [
+        {
+          "id": "idle",
+          "frames": [
+            0
+          ],
+          "fps": 1,
+          "loop": true
+        },
+        {
+          "id": "walk",
+          "frames": [
+            1,
+            3
+          ],
+          "fps": 6.25,
+          "loop": true
+        },
+        {
+          "id": "attack",
+          "frames": [
+            2
+          ],
+          "fps": 1,
+          "loop": false
+        }
+      ],
+      "playing": "idle"
+    }
+  },
+  "method": "actual game-ui portraitMarkup and candidate01UnitIcon; offline SVG projection",
+  "liveBrowserVerified": false
+}

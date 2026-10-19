@@ -1,0 +1,53 @@
+{
+  "frames": {
+    "normal": "normal/master.png",
+    "damaged": "damaged/master.png",
+    "captured": "captured/master.png"
+  },
+  "scale": 0.04784688995215311,
+  "origin": [
+    2,
+    2
+  ],
+  "frameSize": [
+    64,
+    64
+  ],
+  "sourceFoot": [
+    627,
+    1065
+  ],
+  "anchor": [
+    32,
+    52.95693779904306
+  ],
+  "presentationScale": 0.5,
+  "footprint": [
+    1,
+    1
+  ],
+  "nativeSourceSize": [
+    1254,
+    1254
+  ],
+  "registrationBasis": "One shared camera, full native canvas, source scale, physical support contact and foundation across normal, damaged and captured. Coordinator approved one shared +1 native pixel support correction after alpha>=2 measurement. No per-state fitting.",
+  "alphaPolicy": {
+    "nativePerimeterMaximum": 1,
+    "preserveNativeDust": true,
+    "sourceSafetyThreshold": 2,
+    "reportThresholds": [
+      1,
+      2,
+      128
+    ],
+    "worldEnvelope": [
+      -14,
+      -26,
+      14,
+      0
+    ],
+    "derivedTrueTransparentMarginLogical": 2
+  },
+  "artGate": "passed: coordinator inspected tiny native and white/black/olive composites",
+  "runtimeIntegrationGate": "pending"
+}

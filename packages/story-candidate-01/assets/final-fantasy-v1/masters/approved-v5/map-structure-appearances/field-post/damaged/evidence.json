@@ -1,0 +1,22 @@
+{
+  "tool": "image_gen.imagegen built-in",
+  "generatedPath": "/workspace/scratch/84c9fe948755/generated_images/exec-656f0e93-7382-42a3-8ce6-54bf4f6cb1ec.png",
+  "rawSHA256": "d358c0862e635c81d6f15a786ebeaafd24f1973b97c6ee7c091ae96a43804df9",
+  "masterSHA256": "d358c0862e635c81d6f15a786ebeaafd24f1973b97c6ee7c091ae96a43804df9",
+  "referenceImages": [
+    {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/map-structure-appearances/field-post/normal/master.png",
+      "sha256": "17fbb9319ec58739dea9ee94de54425311a57858bc8d84a555bc74c612c817b3",
+      "role": "exact normal edit target"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/refugee-shelter/damaged/master.png",
+      "sha256": "c0fe30cc9a7ddf26e60696b4cb603f498ed8920849a67e199951fad394f193c0",
+      "role": "canonical damaged state-vocabulary evidence only"
+    }
+  ],
+  "prompt": "prompt.txt",
+  "request": "request.json",
+  "processing": "Byte-for-byte native copies only. Separate QA derivatives are not source art.",
+  "status": "native state accepted after shared native-size and white/black/olive review; runtime integration still pending"
+}

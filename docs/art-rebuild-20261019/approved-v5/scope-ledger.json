@@ -4,7 +4,7 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 309,
+    "formalBound": 310,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 32,
@@ -12,7 +12,7 @@
       "hud": 16,
       "interactive-structure": 24,
       "mission-unit": 2,
-      "narrative-static": 4,
+      "narrative-static": 5,
       "skill": 48,
       "status": 24
     },
@@ -696,11 +696,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-cain-01/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-cain-01.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "independent native1024x1536 transparent named young imperial officer with original command baton portrait; separate backdrop retained",
+        "export": "192x224 separate-background card, actual HUD96x112/icon48, native registered quartet and complete c01-01/02/12 projections reviewed",
+        "runtimeBinding": "named portrait and four-pose named spear appearance registered; original rules and generic gravekeeper remain unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-CHAR-CAIN-02",

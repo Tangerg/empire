@@ -5,46 +5,70 @@
   ],
   "mode": "RGBA",
   "sha256": "17fbb9319ec58739dea9ee94de54425311a57858bc8d84a555bc74c612c817b3",
-  "allNonzeroAlphaBBoxExclusive": [
-    0,
-    69,
-    1190,
-    1206
-  ],
-  "meaningfulAlphaAtLeast128BBoxExclusive": [
-    137,
-    317,
-    1148,
-    1063
-  ],
-  "nativePerimeterAlphaMax": 1,
-  "sourceFootProposal": [
-    627,
-    1064
-  ],
-  "fullCanvasTransformCandidate": {
-    "logicalFrame": [
-      64,
-      64
+  "rawMasterByteEqual": true,
+  "alphaBoundsExclusiveByThreshold": {
+    "1": [
+      0,
+      69,
+      1190,
+      1206
     ],
-    "scale": 0.04784688995215311,
-    "origin": [
-      2,
-      2
+    "2": [
+      134,
+      314,
+      1151,
+      1065
     ],
-    "anchor": [
-      32.0,
-      52.90909090909091
-    ],
-    "presentationScale": 0.5,
-    "worldMeaningfulSupport": [
-      -11.722488038277511,
-      -17.870813397129186,
-      12.464114832535886,
-      -0.023923444976076555
-    ],
-    "derivedTrueTransparentMarginLogical": 2
+    "128": [
+      137,
+      317,
+      1148,
+      1063
+    ]
   },
-  "noSourceProcessing": true,
-  "status": "pending coordinator shape and shared-registration gate; native alpha1 permitted by coordinator source contract"
+  "nativePerimeterAlphaMax": 1,
+  "sourceFoot": [
+    627,
+    1065
+  ],
+  "sharedScale": 0.04784688995215311,
+  "sharedOrigin": [
+    2,
+    2
+  ],
+  "frameSize": [
+    64,
+    64
+  ],
+  "anchor": [
+    32,
+    52.95693779904306
+  ],
+  "presentationScale": 0.5,
+  "worldSupportByAlphaThreshold": {
+    "1": [
+      -15.0,
+      -23.827751196172247,
+      13.4688995215311,
+      3.373205741626794
+    ],
+    "2": [
+      -11.794258373205741,
+      -17.966507177033492,
+      12.535885167464114,
+      0.0
+    ],
+    "128": [
+      -11.722488038277511,
+      -17.894736842105264,
+      12.464114832535886,
+      -0.04784688995215311
+    ]
+  },
+  "alpha0Pixels": 1098362,
+  "alpha1Pixels": 3031,
+  "alpha255Pixels": 1111,
+  "nativeUnedited": true,
+  "alpha2WorldEnvelopePass": true,
+  "coordinatorArtGate": "passed, including single shared +1 native pixel contact adjustment for alpha>=2 support"
 }

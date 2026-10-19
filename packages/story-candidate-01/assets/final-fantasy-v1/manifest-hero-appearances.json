@@ -88,6 +88,28 @@
       ],
       "hdWidth": 832,
       "hdHeight": 128
+    },
+    {
+      "id": "cain-stage01",
+      "topicId": "C01-UNIT-LEGION-SHIELD",
+      "png": "runtime-approved-v5/hero-appearance/cain-stage01.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        40.8372602739726,
+        50.579726027397264
+      ],
+      "hdWidth": 832,
+      "hdHeight": 128
     }
   ],
   "teamVariants": []

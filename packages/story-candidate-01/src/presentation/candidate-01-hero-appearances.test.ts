@@ -108,17 +108,18 @@ describe('explicit hero appearance document and resolution', () => {
 
 describe('reviewed production hero catalog', () => {
   it('binds reviewed Laiya, Roderick and Mirelle while leaving generic units and authored team sources unchanged', () => {
-    expect(document.appearances.map(entry => entry.id)).toEqual(['laiya-stage01', 'roderick-stage01', 'mirelle-stage01', 'torren-stage01']);
+    expect(document.appearances.map(entry => entry.id)).toEqual(['laiya-stage01', 'roderick-stage01', 'mirelle-stage01', 'torren-stage01', 'cain-stage01']);
     expect(document.teamVariants).toEqual([]);
-    expect(CANDIDATE_01_HERO_APPEARANCES.appearances.size).toBe(4);
+    expect(CANDIDATE_01_HERO_APPEARANCES.appearances.size).toBe(5);
     expect(manifest.assetCount).toBe(404);
     expect(CANDIDATE_01_UNIT_ART['c01.laiya']).toEqual({ topicId: 'C01-UNIT-BANNER-GUARD', appearanceId: 'laiya-stage01' });
     expect(CANDIDATE_01_UNIT_ART['c01.roderick']).toEqual({ topicId: 'C01-UNIT-HEAVY-KNIGHT', appearanceId: 'roderick-stage01' });
     expect(CANDIDATE_01_UNIT_ART['c01.mirelle']).toEqual({ topicId: 'C01-UNIT-GRAVEKEEPER', appearanceId: 'mirelle-stage01' });
+    expect(CANDIDATE_01_UNIT_ART['c01.cain']).toEqual({ topicId: 'C01-UNIT-LEGION-SHIELD', appearanceId: 'cain-stage01' });
     expect(CANDIDATE_01_UNIT_ART['c01.banner-guard']).toEqual({ topicId: 'C01-UNIT-BANNER-GUARD' });
     for (const [type, binding] of Object.entries(CANDIDATE_01_UNIT_ART)) {
       if (!binding) throw new Error(`undefined art binding: ${type}`);
-      if (!['c01.laiya', 'c01.roderick', 'c01.mirelle'].includes(type)) expect(binding.appearanceId).toBeUndefined();
+      if (!['c01.laiya', 'c01.roderick', 'c01.mirelle', 'c01.cain'].includes(type)) expect(binding.appearanceId).toBeUndefined();
       for (const team of ['#a8493f', '#A8493F', '#4d5e76']) {
         const expected = binding.appearanceId
           ? CANDIDATE_01_HERO_APPEARANCES.appearances.get(binding.appearanceId)!
