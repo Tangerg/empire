@@ -1,0 +1,11 @@
+# old-stone-4: opaque world-material source
+
+Original slot3 / old-stone-4: More regular rectangular paving stones in staggered rows, worn chipped edges and sparse moss joints
+
+Native review: {"material_identity": "Same staggered rectangular paving layout and warm gray-brown palette as v1, preserved through one targeted imagegen edit.", "style": "Dense face mottling and pebble-like spots were removed in favor of two or three broad calm matte planes. Thin earthy joints remain readable with quieter edge detail; sparse olive joints retained. Some light edge bevel remains, but no heavy black grid or bright center.", "layout_preservation": "Visual inspection confirms the same rectangular courses, large/small slab placement, special narrow infill bricks and four edge compositions. No intentional brick rearrangement or density retry; native pixel identity to v1 is not claimed.", "stone_scale": "Main stone count and spacing preserved from v1; no requirement to chase10-14 count after parent review.", "candidate128_world_effect": "Full source remains intended for parent128-period scene trial, not a bound runtime texture in this source delivery.", "coverage": "1254opaque native source, no programmatic painting/filtering/cropping or seam repair."}
+
+Native1254x1254RGB, every pixel opaque. All saved master/raw copies are byte-identical to the generator source SHA1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975. No source crop, blur, offset, edge lock, paint, alpha cleanup, rotation or rescale was applied. No standing source foot, anchor, footprint or obstruction is applicable to this continuous surface. Candidate128logical world period is a parent integration decision, not a scene binding in this delivery.
+
+Periodic boundary RGB differences are measured in material-qa.json, not labeled seamless. Original code uses32logical/64HD cells with inset3 and bleed0.5 and restarts tone0 per cell. Parent owns new world UV and authorized seam engineering. Street terrain also overlays the distinct old route-stone-road and route-edge-stone-road; surface replacement alone does not eliminate their texture.
+
+Exact sent prompt, original master swatch, approved matte-style reference and source-code provenance are recorded. No repository edits.

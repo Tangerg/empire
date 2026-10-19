@@ -1,0 +1,42 @@
+{
+  "atlas": "surface-old-stone",
+  "cell_index": 3,
+  "original_cellOrder_token": "old-stone-4",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-e047e5d0-cd2f-41a1-a664-2afe9dd0f39c.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/old-stone-4-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/source-contract.json",
+  "sha256": "1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    128,
+    128
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "material_identity": "Same staggered rectangular paving layout and warm gray-brown palette as v1, preserved through one targeted imagegen edit.",
+    "style": "Dense face mottling and pebble-like spots were removed in favor of two or three broad calm matte planes. Thin earthy joints remain readable with quieter edge detail; sparse olive joints retained. Some light edge bevel remains, but no heavy black grid or bright center.",
+    "layout_preservation": "Visual inspection confirms the same rectangular courses, large/small slab placement, special narrow infill bricks and four edge compositions. No intentional brick rearrangement or density retry; native pixel identity to v1 is not claimed.",
+    "stone_scale": "Main stone count and spacing preserved from v1; no requirement to chase10-14 count after parent review.",
+    "candidate128_world_effect": "Full source remains intended for parent128-period scene trial, not a bound runtime texture in this source delivery.",
+    "coverage": "1254opaque native source, no programmatic painting/filtering/cropping or seam repair."
+  },
+  "revision": "revision-2",
+  "supersedes_visual_candidate": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/master.png",
+  "revision_method": "exactly one built-in imagegen edit, no programmatic source filter",
+  "selection_status": "recommended revised candidate for parent review"
+}

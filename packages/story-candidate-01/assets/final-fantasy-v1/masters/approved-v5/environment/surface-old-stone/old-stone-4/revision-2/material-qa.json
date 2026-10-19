@@ -1,0 +1,66 @@
+{
+  "asset": "old-stone-4",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975",
+  "RGB_mean": [
+    143.9605167769358,
+    129.05430723757343,
+    109.73084916147117
+  ],
+  "RGB_std": [
+    16.244075953751754,
+    15.760032505803071,
+    16.87158315159838
+  ],
+  "luma_mean": 130.82821371254727,
+  "luma_std": 15.91106808943575,
+  "luma_percentiles_5_50_95": [
+    96.45619999999998,
+    133.8212,
+    150.95359999999997
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 131.7661500872209,
+    "bottom": 135.8098525194378,
+    "left": 134.8588761014753,
+    "right": 133.74813497557815,
+    "central_half": 130.96175690443832
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 7.138490164805955,
+    "top_bottom_mean_abs_RGB": 41.66799574694311,
+    "left_right_max_abs_RGB": 72.0,
+    "top_bottom_max_abs_RGB": 75.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "material_identity": "Same staggered rectangular paving layout and warm gray-brown palette as v1, preserved through one targeted imagegen edit.",
+    "style": "Dense face mottling and pebble-like spots were removed in favor of two or three broad calm matte planes. Thin earthy joints remain readable with quieter edge detail; sparse olive joints retained. Some light edge bevel remains, but no heavy black grid or bright center.",
+    "layout_preservation": "Visual inspection confirms the same rectangular courses, large/small slab placement, special narrow infill bricks and four edge compositions. No intentional brick rearrangement or density retry; native pixel identity to v1 is not claimed.",
+    "stone_scale": "Main stone count and spacing preserved from v1; no requirement to chase10-14 count after parent review.",
+    "candidate128_world_effect": "Full source remains intended for parent128-period scene trial, not a bound runtime texture in this source delivery.",
+    "coverage": "1254opaque native source, no programmatic painting/filtering/cropping or seam repair."
+  },
+  "reference_material_identity": "More regular rectangular paving stones in staggered rows, worn chipped edges and sparse moss joints",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    128,
+    128
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}
