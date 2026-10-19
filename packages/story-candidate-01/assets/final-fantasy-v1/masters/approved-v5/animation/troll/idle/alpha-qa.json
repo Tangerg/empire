@@ -1,0 +1,99 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bf4113cc-dec7-4ba6-875a-38668eaab965.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "22e2a842a5552e6cb511004271dfc234df1d0c45ea989d853cc6ea67ba9948e6",
+  "bboxAlphaNonzero": [
+    25,
+    23,
+    1363,
+    976
+  ],
+  "bboxAlphaGreaterThan127": [
+    375,
+    29,
+    1164,
+    972
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1059640,
+  "alphaOnePixels": 2972,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "foot": "screen-left",
+      "roi": [
+        495,
+        843,
+        724,
+        978
+      ],
+      "soleY": 969,
+      "bottomFourRowsMeanX": 617.7068965517242
+    },
+    {
+      "foot": "screen-right",
+      "roi": [
+        1010,
+        836,
+        1120,
+        956
+      ],
+      "soleY": 951,
+      "bottomFourRowsMeanX": 1023.5092592592592
+    }
+  ],
+  "sourceFootMidpoint": [
+    820.6080779054917,
+    960.0
+  ],
+  "suggestedSourceFoot": [
+    821,
+    969
+  ],
+  "sharedBodyScale": 0.06229860365198711,
+  "sharedScaleFraction": "58/931.0",
+  "bodyReferenceSourcePixels": 931.0,
+  "bodyTargetHeightLogicalPixels": 58,
+  "negativeSpaceProbes": [
+    {
+      "name": "finger-gap",
+      "rectangle": [
+        1082,
+        660,
+        1087,
+        665
+      ],
+      "zeroPixels": 0,
+      "maxAlpha": 22
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        743,
+        879,
+        748,
+        884
+      ],
+      "zeroPixels": 25,
+      "maxAlpha": 0
+    },
+    {
+      "name": "outside-left",
+      "rectangle": [
+        248,
+        498,
+        253,
+        503
+      ],
+      "zeroPixels": 25,
+      "maxAlpha": 0
+    }
+  ]
+}

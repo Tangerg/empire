@@ -1,0 +1,50 @@
+{
+  "topicId": "C01-UNIT-TROLL",
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-heavyknight-spirit-cannon-troll.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "391ecd7a6bf91164bf08a7320454a23d9768d7247111903f14c3d3d36af96474"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-troll.png",
+      "size": [
+        512,
+        96
+      ],
+      "sha256": "516491f0b24f57c8c0b0d0d8a79fb3ac55b8dad5f7c8e43de00ca77aa7767fd4"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-troll.png",
+      "size": [
+        256,
+        48
+      ],
+      "sha256": "ae17e6163ebca2608562fde0aff31ccc49047c512ce2ddd5230b709228af18a8"
+    }
+  },
+  "sourceExtraction": "Exact unresampled full-width fourth character row [0,867,1254,1254], full idle first cell [0,867,314,1254], original opaque magenta retained. Runtime HD order idle/walk-a/attack/walk-b four 128x96 cells.",
+  "canonicalContract": {
+    "frameSize": [
+      64,
+      48
+    ],
+    "anchor": [
+      32,
+      47
+    ],
+    "footprint": [
+      2,
+      2
+    ],
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ]
+  }
+}

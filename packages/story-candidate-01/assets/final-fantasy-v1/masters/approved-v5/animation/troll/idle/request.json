@@ -1,0 +1,19 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "transparent_background": true,
+  "promptFile": "prompt.txt",
+  "promptSha256": "c95f529baabc14e33eeb136a350ada956a0c38d9a700fc487b964cdd823b5fd1",
+  "referenced_image_paths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/references/source-idle-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/idle/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/idle/master.png"
+  ],
+  "referenceSha256": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/troll/references/source-idle-cell.png": "2e3073fdf70063ce20ab872eb2a2d07891d3dbb71d4e9c0a72b4e3601543cc55",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/idle/master.png": "70a18da32877f60f679c1b2f2814a8d38a1e0afd8722348461592f7197302451",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/cemetery-colossus/idle/master.png": "b7d00daa13b0a574601765bd3bf1aaaad90c356343afe6c9febd3e8708c35dc4"
+  },
+  "noPostprocessing": true,
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bf4113cc-dec7-4ba6-875a-38668eaab965.png"
+}

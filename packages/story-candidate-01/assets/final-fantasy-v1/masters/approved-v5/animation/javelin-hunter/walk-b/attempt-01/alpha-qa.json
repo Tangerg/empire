@@ -1,0 +1,64 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-49401c78-ebac-474e-b2b6-32050039ea2c.png",
+  "size": [
+    1584,
+    993
+  ],
+  "mode": "RGBA",
+  "sha256": "1cdff6efbf14d95ec61c08ee3da5e560a10b1fb5d5e014d74ed0f889c50bc63b",
+  "bboxAlphaNonzero": [
+    33,
+    14,
+    1555,
+    977
+  ],
+  "bboxAlphaGreaterThan1": [
+    314,
+    15,
+    1555,
+    949
+  ],
+  "bboxAlphaGreaterThan127": [
+    316,
+    16,
+    1552,
+    946
+  ],
+  "alphaZeroCount": 1069065,
+  "alphaOpaqueCount": 1181,
+  "alphaSemitransparentCount": 502666,
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "boots": [
+    {
+      "roi": [
+        390,
+        780,
+        670,
+        992
+      ],
+      "soleY": 945,
+      "soleBandMeanX": 580.1919642857142
+    },
+    {
+      "roi": [
+        800,
+        780,
+        1180,
+        992
+      ],
+      "soleY": 945,
+      "soleBandMeanX": 897.728813559322
+    }
+  ],
+  "sourceFootMidpoint": [
+    738.9603889225182,
+    945.0
+  ],
+  "suggestedSourceFoot": [
+    739,
+    945
+  ],
+  "semanticReview": "REJECTED: identity/gear preserved but repeats walk-a far/right leg forward and near/left leg back. Does not provide opposite walking contacts.",
+  "nativeBytesPreserved": true
+}

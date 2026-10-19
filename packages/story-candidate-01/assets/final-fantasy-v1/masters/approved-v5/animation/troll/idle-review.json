@@ -1,0 +1,77 @@
+{
+  "status": "Await coordinator idle and scale approval",
+  "nativeSize": [
+    1585,
+    992
+  ],
+  "sharedScale": 0.06229860365198711,
+  "scaleFraction": "58/931.0",
+  "bodyReferenceSourcePixels": 931.0,
+  "bodyTargetHeightLogicalPixels": 58,
+  "bodyMeasurement": "Crown y29 to both-bare-foot mean sole y960.0; hammer excluded. Sole ROIs and mean x are in alpha QA.",
+  "canonicalSourceFoot": [
+    821,
+    969
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "proposedCommonFrameSize": [
+    128,
+    80
+  ],
+  "proposedOrigin": [
+    12,
+    4
+  ],
+  "proposedRuntimePivot": [
+    63.14715359828142,
+    64.36734693877551
+  ],
+  "artFootprint": [
+    2,
+    2
+  ],
+  "noRuleChange": true,
+  "humanReferenceBodyLogicalPixels": 44,
+  "stoneGolemReferenceBodyLogicalPixels": 62,
+  "proposedLogicalVisibleWidth": 49.15359828141783,
+  "alphaPerimeterMax": 0,
+  "negativeSpaceProbes": [
+    {
+      "name": "finger-gap",
+      "rectangle": [
+        1082,
+        660,
+        1087,
+        665
+      ],
+      "zeroPixels": 0,
+      "maxAlpha": 22
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        743,
+        879,
+        748,
+        884
+      ],
+      "zeroPixels": 25,
+      "maxAlpha": 0
+    },
+    {
+      "name": "outside-left",
+      "rectangle": [
+        248,
+        498,
+        253,
+        503
+      ],
+      "zeroPixels": 25,
+      "maxAlpha": 0
+    }
+  ],
+  "nativeMastersUnmodified": true
+}
