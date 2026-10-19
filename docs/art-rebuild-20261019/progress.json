@@ -1285,7 +1285,8 @@
       "topicId": "C01-BPROP-AFTERMATH-1",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-BPROP-AFTERMATH-2",
@@ -1319,7 +1320,8 @@
       "topicId": "C01-BPROP-AFTERMATH-4",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-BPROP-COVER-1",
@@ -1438,19 +1440,22 @@
       "topicId": "C01-BPROP-EVIDENCE-2",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "C01-BPROP-EVIDENCE-3",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "C01-BPROP-EVIDENCE-4",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "C01-BPROP-FACTION-1",
@@ -1467,17 +1472,25 @@
     },
     {
       "topicId": "C01-BPROP-FACTION-2",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-faction-2/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "b41a589028dd2d5a9ce0a9d9e26a340d70f615140f25fe6b9dc1f807ee46ee52"
     },
     {
       "topicId": "C01-BPROP-FACTION-3",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-faction-3/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "617af83346ce5d437edffc773b2f43cd76b4acc5b0748ffc5a7bbf0a7dc67a50"
     },
     {
       "topicId": "C01-BPROP-FACTION-4",
@@ -1526,19 +1539,22 @@
       "topicId": "C01-BPROP-LIFE-2",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-BPROP-LIFE-3",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-BPROP-LIFE-4",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props"
     },
     {
       "topicId": "C01-BPROP-LOGISTICS-1",
@@ -3931,7 +3947,8 @@
       "topicId": "c02-battle-prop-giant-roots",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-hesha-water-signs",
@@ -3943,7 +3960,8 @@
       "topicId": "c02-battle-prop-hull-patches",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-ice-cracks",
@@ -3979,13 +3997,15 @@
       "topicId": "c02-battle-prop-platform-shields",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-repair-arms",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-risk-list-evidence",
@@ -7635,11 +7655,130 @@
   ],
   "environmentCells": [
     {
+      "atlasId": "forest-existing",
+      "cellId": "pine-tall",
+      "index": 0,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-pair",
+      "index": 1,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-cluster",
+      "index": 2,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-sapling",
+      "index": 3,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-underbrush-a",
+      "index": 4,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-underbrush-b",
+      "index": 5,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-underbrush-c",
+      "index": 6,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-underbrush-d",
+      "index": 7,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-dead",
+      "index": 8,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-mature-a",
+      "index": 9,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-mature-b",
+      "index": 10,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-mature-c",
+      "index": 11,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-low-shrub",
+      "index": 12,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-fallen-log",
+      "index": 13,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-stump",
+      "index": 14,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-existing",
+      "cellId": "pine-mossy-rock",
+      "index": 15,
+      "status": "pending",
+      "source": null
+    },
+    {
       "atlasId": "forest-temperate",
       "cellId": "oak-ancient",
       "index": 0,
       "status": "pending",
-      "assignedTo": "redraw_grayflag_environment_trees",
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "mixed-forest-autumn",
+      "index": 1,
+      "status": "pending",
       "source": null
     },
     {
@@ -7647,7 +7786,98 @@
       "cellId": "mixed-forest-dense",
       "index": 2,
       "status": "pending",
-      "assignedTo": "redraw_grayflag_environment_trees",
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "oak-grove-dense",
+      "index": 3,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "mixed-forest-edge",
+      "index": 4,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "sapling-rock-cluster",
+      "index": 5,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "bramble-dark",
+      "index": 6,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "fern-bed",
+      "index": 7,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "bramble-berries",
+      "index": 8,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "stump-low",
+      "index": 9,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "stump-hollow",
+      "index": 10,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "fallen-hollow-log",
+      "index": 11,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "leaf-pile",
+      "index": 12,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "boulder-large",
+      "index": 13,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "boulder-ferns",
+      "index": 14,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "forest-floor-cluster",
+      "index": 15,
+      "status": "pending",
       "source": null
     }
   ]
