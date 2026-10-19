@@ -4,16 +4,16 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 199,
+    "formalBound": 207,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 27,
-      "equipment": 59,
+      "equipment": 63,
       "interactive-structure": 24,
       "mission-unit": 1,
-      "skill": 24
+      "skill": 28
     },
-    "rawPreservedTopics": 205,
+    "rawPreservedTopics": 207,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -5764,11 +5764,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-25/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-25.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source, prompt and exact original reference preserved",
+        "export": "native48 white/dark/olive identity/readability and strict alpha passed",
+        "runtimeBinding": "canonical static resolver registered, no gameplay changes",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SKILL-26",
@@ -5780,11 +5785,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-26/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-26.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source, prompt and exact original reference preserved",
+        "export": "native48 white/dark/olive identity/readability and strict alpha passed",
+        "runtimeBinding": "canonical static resolver registered, no gameplay changes",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SKILL-27",
@@ -5796,11 +5806,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-27/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-27.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source, prompt and exact original reference preserved",
+        "export": "native48 white/dark/olive identity/readability and strict alpha passed",
+        "runtimeBinding": "canonical static resolver registered, no gameplay changes",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SKILL-28",
@@ -5812,11 +5827,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-28/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-28.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source, prompt and exact original reference preserved",
+        "export": "native48 white/dark/olive identity/readability and strict alpha passed",
+        "runtimeBinding": "canonical static resolver registered, no gameplay changes",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SKILL-29",
@@ -11172,13 +11192,20 @@
       "category": "equipment",
       "label": "归零守卫主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-reset-guard/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-reset-guard.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source, prompt and exact original reference preserved",
+        "export": "native48 white/dark/olive identity/readability and strict alpha passed",
+        "runtimeBinding": "canonical static resolver registered, no gameplay changes",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-equipment-ring-rail-guard",
@@ -11294,13 +11321,20 @@
       "category": "equipment",
       "label": "断星工兵主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-starbreaker-sapper/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-starbreaker-sapper.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source, prompt and exact original reference preserved",
+        "export": "native48 white/dark/olive identity/readability and strict alpha passed",
+        "runtimeBinding": "canonical static resolver registered, no gameplay changes",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-equipment-stargate-guard",
@@ -11312,11 +11346,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-stargate-guard/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-stargate-guard.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source, prompt and exact original reference preserved",
+        "export": "native48 white/dark/olive identity/readability and strict alpha passed",
+        "runtimeBinding": "canonical static resolver registered, no gameplay changes",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-equipment-symbiotic-guard",
@@ -11398,11 +11437,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-vacuum-trooper/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-vacuum-trooper.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native transparent source, prompt and exact original reference preserved",
+        "export": "native48 white/dark/olive identity/readability and strict alpha passed",
+        "runtimeBinding": "canonical static resolver registered, no gameplay changes",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-equipment-wind-sail-skirmisher",
