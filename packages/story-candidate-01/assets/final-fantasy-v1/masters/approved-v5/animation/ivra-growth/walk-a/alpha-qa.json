@@ -1,0 +1,120 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2a88211f-5fa8-4dff-92a5-110cada16f57.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "2247fe314f6a7e527b93c4ccc09bc04b1f3dbeb8a3e030259cb61b6866408448",
+  "bboxAlphaNonzero": [
+    0,
+    8,
+    1546,
+    992
+  ],
+  "bboxAlphaGreaterThan127": [
+    301,
+    11,
+    1472,
+    968
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 938787,
+  "alphaOnePixels": 8093,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "paw": "near-hind",
+      "roi": [
+        560,
+        865,
+        780,
+        980
+      ],
+      "soleY": 967,
+      "bottomFourRowsMeanX": 688.5151515151515
+    },
+    {
+      "paw": "far-hind",
+      "roi": [
+        795,
+        780,
+        955,
+        900
+      ],
+      "soleY": 887,
+      "bottomFourRowsMeanX": 878.6410256410256
+    },
+    {
+      "paw": "near-fore",
+      "roi": [
+        1010,
+        760,
+        1195,
+        900
+      ],
+      "soleY": 887,
+      "bottomFourRowsMeanX": 1133.6666666666667
+    },
+    {
+      "paw": "far-fore",
+      "roi": [
+        1220,
+        870,
+        1485,
+        980
+      ],
+      "soleY": 967,
+      "bottomFourRowsMeanX": 1371.3428571428572
+    }
+  ],
+  "sourceFootMidpoint": [
+    1018.0414252414253,
+    927.0
+  ],
+  "suggestedSourceFoot": [
+    1018,
+    967
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "below-near-wing",
+      "rectangle": [
+        447,
+        637,
+        454,
+        644
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "raised-paw-gap",
+      "rectangle": [
+        987,
+        887,
+        994,
+        894
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "tail-hook-interior",
+      "rectangle": [
+        487,
+        687,
+        494,
+        694
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Clear diagonal quadruped walk: near-hind andfar-fore paws planted; near-fore andfar-hind lifted. Fourconnectedlegs/fourpawsplus twobackwings visually confirmed. Samehead/crown/neckscar/grayplates,compacthooktailleft301 retained. NativeandwhiteQA inspected; emptywing/tail/raisedpawspaces truealpha. No independentFX,rider or chains;nativeA1perimeterretained,0edgepixelsabove1.",
+  "visibleWidthAlphaGreaterThan127": 1171,
+  "projectedWidthLogicalAtSharedScale": 68.99105733824302
+}
