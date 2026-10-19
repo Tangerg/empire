@@ -1,0 +1,72 @@
+{
+  "topicId": "c02-equipment-defoliator-pilot",
+  "assetId": "C02-SFV1-equipment-defoliator-pilot",
+  "label": "除生机驾驶员主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-02.png",
+  "originalMasterSha256": "8d1f70efe1add62295ab36bec297b3761524a0cb6474c8ce9cd2aab4196305f4",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 4
+  },
+  "sourceCropBox": [
+    945,
+    945,
+    1249,
+    1249
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-defoliator-pilot.png",
+  "runtimeReferenceSha256": "c582f2639c405cfb30128d7344354f3165d5d9e2e98ac15f23f2031df4444c83",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a945edf1-4ed3-4ed4-aeee-e84d1e5024d5.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v2.png",
+  "promptFiles": [
+    "prompt.txt",
+    "refinement-prompt-v2.txt"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-defoliator-pilot/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/scratch/84c9fe948755/generated_images/exec-bea62644-8918-4096-a708-f4542806adff.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-defoliator-pilot/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png"
+  ],
+  "semanticNotes": "Original board02 R4C4, enlarged source and old runtime verified. One arch-shaped articulated defoliator retains green liquid vial, joint loops, lower curved blade with two triangular back teeth and separate right sickle. Original green angular cutting splash and four droplets remain hard outlined and opaque, no external gas/haze. V1 had an incorrect gray status inset in orange badge; v2 imagegen-only correction restores bounded cyan window without changing main geometry. Actual48 white/black/olive passes. Right margin26px intact, supplemental erosion low-alpha handful relates narrow gaps and is not acceptance gate.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Continues accepted star-shield equipment pilot and cargo broad matte style.",
+  "failedCandidate": "candidate-v1-failed-cyan-inset.png",
+  "failedCandidateQA": "candidate-v1-qa.json",
+  "native48ThreeBackgroundReview": "diagnostic-native48/native48-white-black-olive.png",
+  "reviewBackgroundRGB": [
+    [
+      255,
+      255,
+      255
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      72,
+      80,
+      48
+    ]
+  ]
+}

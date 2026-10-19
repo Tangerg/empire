@@ -1,0 +1,65 @@
+{
+  "asset": "wasteland-4",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "8e16adfac9c197ab621c6149f3bf45c270dbcf9f9020544f4fc7e36d7eb93e77",
+  "RGB_mean": [
+    171.4313507779889,
+    122.83811484271067,
+    67.29749331644321
+  ],
+  "RGB_std": [
+    13.266987322111033,
+    9.929999598195423,
+    3.833230707090664
+  ],
+  "luma_mean": 129.1590039283543,
+  "luma_std": 10.157467162653363,
+  "luma_percentiles_5_50_95": [
+    102.973,
+    130.5146,
+    139.7954
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 128.50080219049042,
+    "bottom": 129.03687899471691,
+    "left": 129.69760031150318,
+    "right": 128.4088275094697,
+    "central_half": 129.46019709115993
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 9.2046783625731,
+    "top_bottom_mean_abs_RGB": 6.483785220627326,
+    "left_right_max_abs_RGB": 69.0,
+    "top_bottom_max_abs_RGB": 64.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Warm ochre-brown parched clay with large irregular rounded soil plates and a sparse thin dark-brown crack network. No stone paving, vegetation, gravel, glow or water.",
+    "palette_caveat": "Brighter and more golden/orange than the original muted ochre-brown swatch; still distinct from the red scorched soil.",
+    "density_caveat": "Only about 3-5 dominant clay plates across width rather than proposed 8-12. Clean broad plate interiors with a few low-contrast value planes; this is the lowest microdetail member of the quartet.",
+    "scale_caveat": "Large clay plates can span about 50-100 world units at the 256 preview period. These natural crack marks require scale review and are not gameplay boundaries.",
+    "native_acceptance": "1254 fully opaque native candidate, catalog-only tone 3. No scene binding or natural seamlessness claim."
+  },
+  "reference_material_identity": "Warm ochre-brown dried compact clay/earth broken into irregular rounded polygon plates by narrow dark cracks, with almost no vegetation. Continuous parched ground, not fitted masonry, lava, water or a rubble pile.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

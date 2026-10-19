@@ -1,0 +1,65 @@
+{
+  "topicId": "C01-SKILL-48",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.7386722933184782,
+  "nearOpaqueFractionAlphaGE250": 0.24706775638530865,
+  "nonzeroAlphaBBox": [
+    0,
+    119,
+    1214,
+    1228
+  ],
+  "visibleAlphaBBoxGE8": [
+    48,
+    215,
+    1211,
+    1049
+  ],
+  "visibleAlphaBBoxGE128": [
+    49,
+    216,
+    1210,
+    1048
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    49,
+    216,
+    44,
+    206
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 29,
+  "sha256": "7e2480db4a2580f1ca4996faf7c2cd4ee5ed23001b000c6438763eb45c639e03",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, with transparent exterior and open gaps.",
+    "No invented readable lettering, broad exterior glow, haze, scene background or added square tile."
+  ],
+  "identityVerified": "One tan human open hand entering from left with simple bracer/cuff and one dark-gray dragon claw entering from upper-right jointly hold one segmented gray stone ring. Human palm supports left/lower ring; dragon two prominent long black claw tips touch near top and lower-inner ring with other digits overlapping. Preserve one ring and its source seams; no whole dragon or human.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticInspection": "One supporting human hand, one gray dragon claw and one segmented stone ring verified. Built-in framing/endpoint refinement finishes both finite forearm silhouettes inside canvas, preserving ring interaction and avoiding whole characters.",
+  "actual48pxPreview": {
+    "directory": "qa-preview-48",
+    "contactSheet": "../identity-inspection/skill-45-48-preview-48-contact.png",
+    "backgrounds": [
+      "white",
+      "black",
+      "olive"
+    ],
+    "method": "Full authored source canvas contained in 44x44 using LANCZOS and centered in transparent 48x48; equivalent to repository fit(). Preview only, native source immutable.",
+    "visualInspection": "Major original identity silhouettes remain distinguishable at actual48 on all three backgrounds; fine texture is not relied on."
+  }
+}

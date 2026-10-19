@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-wasteland",
+  "cell_index": 3,
+  "original_cellOrder_token": "wasteland-4",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-0a9d1202-868e-43d4-a835-e464746371af.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-4/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-4/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-4/wasteland-4-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-4/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-4/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-4/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-4/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/source-contract.json",
+  "sha256": "8e16adfac9c197ab621c6149f3bf45c270dbcf9f9020544f4fc7e36d7eb93e77",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Warm ochre-brown parched clay with large irregular rounded soil plates and a sparse thin dark-brown crack network. No stone paving, vegetation, gravel, glow or water.",
+    "palette_caveat": "Brighter and more golden/orange than the original muted ochre-brown swatch; still distinct from the red scorched soil.",
+    "density_caveat": "Only about 3-5 dominant clay plates across width rather than proposed 8-12. Clean broad plate interiors with a few low-contrast value planes; this is the lowest microdetail member of the quartet.",
+    "scale_caveat": "Large clay plates can span about 50-100 world units at the 256 preview period. These natural crack marks require scale review and are not gameplay boundaries.",
+    "native_acceptance": "1254 fully opaque native candidate, catalog-only tone 3. No scene binding or natural seamlessness claim."
+  }
+}

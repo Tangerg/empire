@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-wasteland",
+  "cell_index": 0,
+  "original_cellOrder_token": "wasteland-1",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-e9a5ea33-57ac-437c-921f-cb60bcbdeacd.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-1/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-1/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-1/wasteland-1-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-1/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-1/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-1/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-1/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/source-contract.json",
+  "sha256": "160ed4145ffc283c256501b96863cf936a82cddc933c7b977596e00dac1333fe",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Light golden tan/ochre sandy earth with broad shallow swept bands, scattered small stone groups and sparse dry olive/ochre tufts; no tall dunes or invented scenery.",
+    "palette_caveat": "Clearly brighter and more golden/yellow than the original muted tan swatch; the four-family distinction is maintained but exact color matching is not claimed.",
+    "density_caveat": "Approximately 25-35 detail groups rather than 12-18. Broad sand bands are much cleaner and less granular than the prior red/dusty candidates, though more than 6-12 regions remain.",
+    "scale_caveat": "Tuft and stone groups often span around 10-25 world units at proposed 256 period. Low-relief bands are material coloration, not a terrain height mesh or road.",
+    "native_acceptance": "1254 opaque native candidate; original tone 0 is catalog-only. No scene binding or natural seamlessness claim."
+  }
+}

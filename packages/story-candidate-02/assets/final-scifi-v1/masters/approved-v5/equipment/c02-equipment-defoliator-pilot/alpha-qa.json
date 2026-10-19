@@ -1,0 +1,54 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-a945edf1-4ed3-4ed4-aeee-e84d1e5024d5.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    49,
+    49,
+    1228,
+    1213
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    49,
+    49,
+    26,
+    41
+  ],
+  "nearOpaquePixelCountGE240": 678294,
+  "diagnostic8pxErosion": {
+    "minAlpha": 133,
+    "pixelsBelow240": 6,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 680,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black composites inspection only.",
+  "topicId": "c02-equipment-defoliator-pilot",
+  "sha256": "a9aff668ed9c25386a8ca81878abf51674736a888efdcfc1815ed563c3803bad",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass after native source semantic review and actual48 white/black/olive inspection: correct functional identity and count, thick contours, opaque equipment, intact margins, no visible exterior haze or solid background. Supplemental narrow-gap erosion is not an opacity acceptance gate.",
+  "postprocessing": "Native master unchanged byte-exact copy. Separate full-source48 diagnostic exports/composites only. No pixel painting, recolor or alpha cleanup.",
+  "runtimeReady": false,
+  "acceptedVersion": 2,
+  "failedCandidate": "candidate-v1-failed-cyan-inset.png",
+  "actual48ThreeBackgroundReview": {
+    "file": "diagnostic-native48/native48-white-black-olive.png",
+    "backgrounds": [
+      "white",
+      "black",
+      "olive RGB72,80,48"
+    ],
+    "scale": "1:1 actual48 pixels",
+    "visualResult": "Pass: readable functional silhouette and colors, no visible exterior haze/glow or solid background."
+  }
+}

@@ -1,0 +1,11 @@
+# wasteland-1: opaque world-material source
+
+Original slot0 / wasteland-1: Golden tan/ochre sandy dry earth with broad shallow diagonal swept/rippled bands, sparse small gray-brown stones and a few dry olive/ochre tufts. Warm light sand identity, not dark gray-brown soil or tall dunes.
+
+Native review: {"identity": "Light golden tan/ochre sandy earth with broad shallow swept bands, scattered small stone groups and sparse dry olive/ochre tufts; no tall dunes or invented scenery.", "palette_caveat": "Clearly brighter and more golden/yellow than the original muted tan swatch; the four-family distinction is maintained but exact color matching is not claimed.", "density_caveat": "Approximately 25-35 detail groups rather than 12-18. Broad sand bands are much cleaner and less granular than the prior red/dusty candidates, though more than 6-12 regions remain.", "scale_caveat": "Tuft and stone groups often span around 10-25 world units at proposed 256 period. Low-relief bands are material coloration, not a terrain height mesh or road.", "native_acceptance": "1254 opaque native candidate; original tone 0 is catalog-only. No scene binding or natural seamlessness claim."}
+
+Native1254x1254RGB, every pixel opaque. All saved master/raw copies are byte-identical to the generator source SHA160ed4145ffc283c256501b96863cf936a82cddc933c7b977596e00dac1333fe. No source crop, blur, offset, edge lock, paint, alpha cleanup, rotation or rescale was applied. No standing source foot, anchor, footprint or obstruction is applicable to this continuous surface. Candidate 256 logical world period is a parent integration decision, not a scene binding in this delivery.
+
+Periodic boundary RGB differences are measured in material-qa.json, not labeled seamless. Original code uses32logical/64HD cells with inset3 and bleed0.5 and restarts tone0 per cell. Parent owns new world UV and authorized seam engineering. Current tone 1 serves c01-14 with 56 cells; tone 2 serves c01-03 with 1, c01-09 with 1 and c01-10 with 28. Current c01-01 mountains are suppressed by authored surface zones. Tones 0 and 3 are catalog-only. No original wasteland Blob47 pair is counted as another painting.
+
+Exact sent prompt, original master swatch, approved quiet earth-plane style reference and source-code provenance are recorded. No repository edits.

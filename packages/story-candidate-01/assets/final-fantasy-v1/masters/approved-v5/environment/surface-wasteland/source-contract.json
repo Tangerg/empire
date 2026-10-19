@@ -1,0 +1,399 @@
+{
+  "atlas": "surface-wasteland",
+  "status": "Parent exclusive assignment and generation approved after source audit on 2026-10-19 21:06 UTC",
+  "source_inspection_commit": "2009b78",
+  "original_atlas_record": {
+    "id": "surface-wasteland",
+    "png": "runtime/atlas/surface-wasteland.png",
+    "png2x": "runtime/atlas/surface-wasteland@2x.png",
+    "columns": 4,
+    "rows": 1,
+    "cellWidth": 32,
+    "cellHeight": 32,
+    "cellWidth2x": 64,
+    "cellHeight2x": 64,
+    "componentCount": 4,
+    "category": "base-surface",
+    "tileMode": "variants",
+    "variants": 4,
+    "cellOrder": [
+      "wasteland-1",
+      "wasteland-2",
+      "wasteland-3",
+      "wasteland-4"
+    ],
+    "edgeLocked": true
+  },
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+  "source_board_dimensions": [
+    1254,
+    1254
+  ],
+  "source_board_mode": "RGB",
+  "source_board_row_zero_based": 1,
+  "source_board_indices": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "runtime_dimensions": [
+    256,
+    64
+  ],
+  "records": [
+    {
+      "atlas": "surface-wasteland",
+      "cell_index": 0,
+      "original_cellOrder_token": "wasteland-1",
+      "source_board_index": 4,
+      "source_crop": [
+        0,
+        314,
+        314,
+        627
+      ],
+      "source_crop_dimensions": [
+        314,
+        313
+      ],
+      "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-1-original-master-swatch.png",
+      "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-1-current-runtime-2x-cell.png",
+      "original_visual_identity": "Golden tan/ochre sandy dry earth with broad shallow diagonal swept/rippled bands, sparse small gray-brown stones and a few dry olive/ochre tufts. Warm light sand identity, not dark gray-brown soil or tall dunes.",
+      "original_mean_RGB": [
+        157.8833051830447,
+        127.18140656478298,
+        83.85677947131722
+      ],
+      "original_opaque": true,
+      "current_usage": "catalog-only",
+      "sourceFoot": null,
+      "anchor": null
+    },
+    {
+      "atlas": "surface-wasteland",
+      "cell_index": 1,
+      "original_cellOrder_token": "wasteland-2",
+      "source_board_index": 5,
+      "source_crop": [
+        314,
+        314,
+        627,
+        627
+      ],
+      "source_crop_dimensions": [
+        313,
+        313
+      ],
+      "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-2-original-master-swatch.png",
+      "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-2-current-runtime-2x-cell.png",
+      "original_visual_identity": "Red/rust-brown scorched dry soil with dark compact patches, gray-brown stones and dry burnt orange-brown tufts. Warm reddish identity is explicitly selected for molten terrain, but the original pixels show earth and stones, no lava pool, glowing fissures or flame.",
+      "original_mean_RGB": [
+        116.46279945697108,
+        86.6048852187937,
+        62.498810848329576
+      ],
+      "original_opaque": true,
+      "current_usage": "tone 1: c01-14 molten terrain, 56 cells",
+      "sourceFoot": null,
+      "anchor": null
+    },
+    {
+      "atlas": "surface-wasteland",
+      "cell_index": 2,
+      "original_cellOrder_token": "wasteland-3",
+      "source_board_index": 6,
+      "source_crop": [
+        627,
+        314,
+        940,
+        627
+      ],
+      "source_crop_dimensions": [
+        313,
+        313
+      ],
+      "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-3-original-master-swatch.png",
+      "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-3-current-runtime-2x-cell.png",
+      "original_visual_identity": "Muted dusty ochre/gray-brown bare rock soil with scattered small angular gray stones and subtle broad scuffed/eroded ground bands; very little vegetation. The source represents bare scree/rock soil, not old-stone paving or a new tall rock object.",
+      "original_mean_RGB": [
+        132.38928640692464,
+        106.09286611070848,
+        74.15916259224856
+      ],
+      "original_opaque": true,
+      "current_usage": "tone 2: c01-03 1 cell, c01-09 1, c01-10 28; c01-01 excluded by authored surface zones",
+      "sourceFoot": null,
+      "anchor": null
+    },
+    {
+      "atlas": "surface-wasteland",
+      "cell_index": 3,
+      "original_cellOrder_token": "wasteland-4",
+      "source_board_index": 7,
+      "source_crop": [
+        940,
+        314,
+        1254,
+        627
+      ],
+      "source_crop_dimensions": [
+        314,
+        313
+      ],
+      "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-4-original-master-swatch.png",
+      "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-4-current-runtime-2x-cell.png",
+      "original_visual_identity": "Warm ochre-brown dried compact clay/earth broken into irregular rounded polygon plates by narrow dark cracks, with almost no vegetation. Continuous parched ground, not fitted masonry, lava, water or a rubble pile.",
+      "original_mean_RGB": [
+        146.57483567692964,
+        115.59519545796789,
+        77.7187379174213
+      ],
+      "original_opaque": true,
+      "current_usage": "catalog-only",
+      "sourceFoot": null,
+      "anchor": null
+    }
+  ],
+  "current_sampling_contract": {
+    "logical_cell": [
+      32,
+      32
+    ],
+    "hd_cell": [
+      64,
+      64
+    ],
+    "inset_logical": 3,
+    "bleed_logical": 0.5,
+    "nominal_HD_core": [
+      6,
+      6,
+      58,
+      58
+    ],
+    "world_phase": "Same tone core repeats per 32 logical cell in legacy surface draw.",
+    "no_standing_foot_or_anchor": true
+  },
+  "consumer_findings": {
+    "exact_binding": "mountain -> surface-wasteland tone 2; c01.molten -> tone 1; high fallback tone 2; generic molten fallback tone 0 is not used by current c01.molten because explicit mapping wins.",
+    "current_level_counts": [
+      {
+        "level_id": "c01-01",
+        "map_source": "TWIN_HILLS",
+        "mountain_rule_cells": 25,
+        "authored_surface_suppressed_mountain_cells": 25,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-02",
+        "map_source": "THREE_BRIDGES",
+        "mountain_rule_cells": 0,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-03",
+        "map_source": "REDSTONE_SIEGE",
+        "mountain_rule_cells": 1,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 1,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-04",
+        "map_source": "BLACK_FLAG_CAMP",
+        "mountain_rule_cells": 0,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-05",
+        "map_source": "REED_VILLAGE",
+        "mountain_rule_cells": 0,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-06",
+        "map_source": "WHITE_RIVER",
+        "mountain_rule_cells": 0,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-07",
+        "map_source": "FREE_CITY",
+        "mountain_rule_cells": 0,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-08",
+        "map_source": "MERCENARY_QUARTER",
+        "mountain_rule_cells": 0,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-09",
+        "map_source": "OATH_PRISON",
+        "mountain_rule_cells": 1,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 1,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-10",
+        "map_source": "OLD_BANNER_PASS",
+        "mountain_rule_cells": 28,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 28,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-11",
+        "map_source": "SILENT_CEMETERY",
+        "mountain_rule_cells": 0,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-12",
+        "map_source": "SUNKEN_BELL",
+        "mountain_rule_cells": 0,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-13",
+        "map_source": "HOLY_ARCHIVES",
+        "mountain_rule_cells": 0,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-14",
+        "map_source": "MOUNTAIN_FORGE",
+        "mountain_rule_cells": 0,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 56
+      },
+      {
+        "level_id": "c01-15",
+        "map_source": "SILVERWOOD",
+        "mountain_rule_cells": 0,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 0
+      },
+      {
+        "level_id": "c01-16",
+        "map_source": "UNFLAGGED_MEMORY",
+        "mountain_rule_cells": 0,
+        "authored_surface_suppressed_mountain_cells": 0,
+        "tone_2_legacy_surface_cells": 0,
+        "tone_1_molten_surface_cells": 0
+      }
+    ],
+    "current_counts_basis": "Read-only reconstruction of exact current levels, ^ and m terrain mapping and authoredTerrainSurface inclusive bounds; not a fresh complete SVG runtime render.",
+    "current_total_legacy_surface_cells": 86,
+    "historical_actual_draws": {
+      "commit": "f8789f8",
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/environment/later-level-active-audit/all-level-environment-inventory.json",
+      "counts": {
+        "c01-01": {
+          "2": 28
+        },
+        "c01-02": {},
+        "c01-03": {
+          "2": 1
+        },
+        "c01-04": {},
+        "c01-05": {},
+        "c01-06": {},
+        "c01-07": {},
+        "c01-08": {},
+        "c01-09": {
+          "2": 1
+        },
+        "c01-10": {
+          "2": 28
+        },
+        "c01-11": {},
+        "c01-12": {},
+        "c01-13": {},
+        "c01-14": {
+          "1": 56
+        },
+        "c01-15": {},
+        "c01-16": {}
+      }
+    },
+    "snapshot_change": "Old c01-01 actual inventory contained 28 tone 2 pieces. Current map has 25 mountain rule cells and all 25 lie in authored surface zones, so none should be counted as legacy wasteland floor now.",
+    "catalog_only_indices": [
+      0,
+      3
+    ],
+    "standing_scenery": "Temperate cliff and wasteland/forge scenery are separate already-remade standing objects, not additions to these flat materials."
+  },
+  "confirmed_generation_contract": {
+    "native_sources": 4,
+    "exact_ids": [
+      "wasteland-1",
+      "wasteland-2",
+      "wasteland-3",
+      "wasteland-4"
+    ],
+    "native_canvas": [
+      1254,
+      1254
+    ],
+    "opaque": true,
+    "proposed_world_period": [
+      256,
+      256
+    ],
+    "generation_order": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "order_reason": "Actual-used red-brown and bare scree sources first, catalog-only sand and parched clay second; original atlas indices remain fixed.",
+    "style": "Distinct original golden tan, red/rust-brown, dusty gray-brown and warm parched ochre palettes. Large quiet matte soil shapes, sparse grouped stones/tufts, very little microtexture. Not a common gray-brown recolor across variants.",
+    "density": "For soil: about 6-12 broad earth regions total and 12-18 sparse small detail groups as guidance. For dried clay: broad irregular cracked-earth plates with a sparse narrow low-contrast crack network, no dense fine crackle or artificial stone pavement.",
+    "no_added_features": "No lava pools, fire, glow, metallic symbols, buildings or tall standing rocks; original red-brown source remains soil despite molten gameplay label.",
+    "raw_policy": "Full native source and exact prompt preserved, read-only opacity/color/periodic QA, no worker image filter/recolor/edge lock/paint/crop/rescale.",
+    "registration": "Continuous full opaque square, no source foot, standing anchor, footprint or obstruction. Parent owns seam/world sampling and actual scene acceptance."
+  },
+  "original_processing": "Original regional[1] material swatches go through 64px fit, offset/center blur and family edge averaging, then 32px resize/relock. Inspected only; not reused on new source pixels.",
+  "derived_mask_scope": "Original transition list has no wasteland pair. Four opaque native sources only; do not count renderer masks as new paintings.",
+  "source_sha256": {
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json": "403d7bb620d17d69bb111e1e6cd922eb7bb9679e98add6345f24aa9b7eac2b27",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-wasteland@2x.png": "3422fa8a2f2cf9294894f989ffc105cf55011e5eb73957c777d452126e6c6738",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-wasteland.png": "e8cf240e74c6fa4593a6242ade2c5d7a395e44e2fd680c1fdc64f53293f81195",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py": "8b8690a2fbca6065e85ff667eeb40241e55f065611741bb008579ce8bcc3015c",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/later-level-active-audit/all-level-environment-inventory.json": "f26504a62c3c24afb3c842b502af84ff31fd5853ce31746d67a111e023127ff0",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json": "ee33e10d7ff2a4fcd210e0abf7c0f688b3d3238ae27d9d044c31e1590803dff4",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-15.scene.json": "663004350202d6075e4fbd14bcba786b04cf3a4e75cc0f9afbfb3a9615d0abbc",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/levels.ts": "bedff69291689e17c7af3d11b0b6e66472e85bf04399920c2bec67497444e2ad",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/terrain.ts": "a6e118b8f4f0b429b2a567cd5bf7e25638d8c75d4d3e1e2b217116d516e61813",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts": "7cb8644b2042e74a60784082cd05855d0bef7a296c9146715bec65f3789b3792",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts": "1a6d09f8a16b408f9457fd7293ac5d9b18bf84239ad9b5da64b5a51dddccf2f1",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/content-ancient-empires/src/terrain.ts": "fe9204dc03ff6f30ca5bf750f0f41aef4f482219d7adb03a42a8a0b996e8d209"
+  },
+  "no_repository_edits": true
+}

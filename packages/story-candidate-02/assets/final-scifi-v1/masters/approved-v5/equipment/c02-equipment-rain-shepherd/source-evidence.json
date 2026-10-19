@@ -1,0 +1,64 @@
+{
+  "topicId": "c02-equipment-rain-shepherd",
+  "assetId": "C02-SFV1-equipment-rain-shepherd",
+  "label": "雨牧者战斗体主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-03.png",
+  "originalMasterSha256": "c37e18a461e9a713465b4f4981614dd42eeb3fb9b74b7cdb116fe0440d5c71b4",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 2
+  },
+  "sourceCropBox": [
+    945,
+    319,
+    1249,
+    622
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-rain-shepherd.png",
+  "runtimeReferenceSha256": "ff128952418d95efb30ce2507a02f1f81912397f23611bc657fff64390a168ea",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5a99da8b-d167-4ddd-9ad7-14458cc7777a.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-rain-shepherd/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board03 R2C4 and old runtime verified. One squat weather device retains round front port with cyan collar, short upper pipe, single antenna, bounded cyan rear ring and original cream-white cloud cluster over its top outlet. Cloud is an opaque crisp-outlined cartoon functional feature, not diffuse exterior fog; no haze beyond silhouette. Actual48 white/black/olive passes with intact frame and readable cloud/port identity. Right margin26px is narrow but complete.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently.",
+  "native48ThreeBackgroundReview": "diagnostic-native48/native48-white-black-olive.png",
+  "reviewBackgroundRGB": [
+    [
+      255,
+      255,
+      255
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      72,
+      80,
+      48
+    ]
+  ]
+}

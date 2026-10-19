@@ -1,0 +1,81 @@
+{
+  "topicId": "C01-SKILL-48",
+  "assetId": "C01-FFV1-SKILL-48",
+  "label": "古龙盟约",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-19ce7a75-51b9-4988-a39d-843a7ffc6352.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-48-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-03.png",
+    "atlasSha256": "f664dad2fcf7486124e974613c68cae528ed38e6db9ae070b91f57addf268c5d",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-03.png, row 4 column 4 (one based)",
+    "topicIndex": 47,
+    "inspectionCropCoordinates": [
+      946,
+      946,
+      1252,
+      1252
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop from original full board; no cleanup or alpha conversion. Nominal miscut cell retained separately.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-48.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned skill-45 through skill-48. Exact source identities reported first; parent explicitly authorized semantic reconstruction of damaged stag close-up with complete antler tips, natural foreground foliage occlusion of rear crop, and no invented hindquarters. Golden spirit keeps original identity, true transparent exterior and no thick haze. Independent actual-48 white/black/olive preview requested; native raw/master remains immutable.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-48-cell.png",
+    "nominalGridCellCoordinates": [
+      942,
+      942,
+      1252,
+      1252
+    ],
+    "sourceCellCorrection": "White atlas grid excluded by unscaled subject crop. No adjacent subject contamination. Original illustration uses cropped forearm endpoints. Rebuild complete finite wrist/cuff boundaries with transparent margins, preserving hands and ring rather than adding bodies."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-48-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "One tan human open hand entering from left with simple bracer/cuff and one dark-gray dragon claw entering from upper-right jointly hold one segmented gray stone ring. Human palm supports left/lower ring; dragon two prominent long black claw tips touch near top and lower-inner ring with other digits overlapping. Preserve one ring and its source seams; no whole dragon or human.",
+  "promptFiles": [
+    "prompt.txt",
+    "prompt-refine-complete-endpoints.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits.",
+  "visualInterpretationNotes": "One supporting human hand, one gray dragon claw and one segmented stone ring verified. Built-in framing/endpoint refinement finishes both finite forearm silhouettes inside canvas, preserving ring interaction and avoiding whole characters.",
+  "previewQA": "Independent actual48 white/black/olive preview, not runtime registration.",
+  "refinementHistory": [
+    {
+      "initialRawSource": "/workspace/scratch/84c9fe948755/generated_images/exec-76a3e72c-b511-41a7-9c87-e8fae41888dc.png",
+      "preservedCandidate": "candidates/initial/raw.png",
+      "reason": "Initial source ran human wrist and dragon forearm off canvas edges.",
+      "tool": "built-in image_gen__imagegen",
+      "prompt": "prompt-refine-complete-endpoints.txt",
+      "referencePaths": [
+        "/workspace/scratch/84c9fe948755/generated_images/exec-76a3e72c-b511-41a7-9c87-e8fae41888dc.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-48-complete-subject.png"
+      ],
+      "resultRawSource": "/workspace/scratch/84c9fe948755/generated_images/exec-19ce7a75-51b9-4988-a39d-843a7ffc6352.png",
+      "result": "Both forearm endpoints/spines complete inside true-alpha canvas; same two hands, ring and pose. No programmatic resizing or cleanup."
+    }
+  ]
+}

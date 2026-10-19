@@ -1,0 +1,11 @@
+# wasteland-4: opaque world-material source
+
+Original slot3 / wasteland-4: Warm ochre-brown dried compact clay/earth broken into irregular rounded polygon plates by narrow dark cracks, with almost no vegetation. Continuous parched ground, not fitted masonry, lava, water or a rubble pile.
+
+Native review: {"identity": "Warm ochre-brown parched clay with large irregular rounded soil plates and a sparse thin dark-brown crack network. No stone paving, vegetation, gravel, glow or water.", "palette_caveat": "Brighter and more golden/orange than the original muted ochre-brown swatch; still distinct from the red scorched soil.", "density_caveat": "Only about 3-5 dominant clay plates across width rather than proposed 8-12. Clean broad plate interiors with a few low-contrast value planes; this is the lowest microdetail member of the quartet.", "scale_caveat": "Large clay plates can span about 50-100 world units at the 256 preview period. These natural crack marks require scale review and are not gameplay boundaries.", "native_acceptance": "1254 fully opaque native candidate, catalog-only tone 3. No scene binding or natural seamlessness claim."}
+
+Native1254x1254RGB, every pixel opaque. All saved master/raw copies are byte-identical to the generator source SHA8e16adfac9c197ab621c6149f3bf45c270dbcf9f9020544f4fc7e36d7eb93e77. No source crop, blur, offset, edge lock, paint, alpha cleanup, rotation or rescale was applied. No standing source foot, anchor, footprint or obstruction is applicable to this continuous surface. Candidate 256 logical world period is a parent integration decision, not a scene binding in this delivery.
+
+Periodic boundary RGB differences are measured in material-qa.json, not labeled seamless. Original code uses32logical/64HD cells with inset3 and bleed0.5 and restarts tone0 per cell. Parent owns new world UV and authorized seam engineering. Current tone 1 serves c01-14 with 56 cells; tone 2 serves c01-03 with 1, c01-09 with 1 and c01-10 with 28. Current c01-01 mountains are suppressed by authored surface zones. Tones 0 and 3 are catalog-only. No original wasteland Blob47 pair is counted as another painting.
+
+Exact sent prompt, original master swatch, approved quiet earth-plane style reference and source-code provenance are recorded. No repository edits.

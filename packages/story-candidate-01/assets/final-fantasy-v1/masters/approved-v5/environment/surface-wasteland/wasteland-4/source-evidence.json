@@ -1,0 +1,55 @@
+{
+  "atlas": "surface-wasteland",
+  "cell_index": 3,
+  "original_cellOrder_token": "wasteland-4",
+  "source_board_index": 7,
+  "source_crop": [
+    940,
+    314,
+    1254,
+    627
+  ],
+  "source_crop_dimensions": [
+    314,
+    313
+  ],
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-4-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-4-current-runtime-2x-cell.png",
+  "original_visual_identity": "Warm ochre-brown dried compact clay/earth broken into irregular rounded polygon plates by narrow dark cracks, with almost no vegetation. Continuous parched ground, not fitted masonry, lava, water or a rubble pile.",
+  "original_mean_RGB": [
+    146.57483567692964,
+    115.59519545796789,
+    77.7187379174213
+  ],
+  "original_opaque": true,
+  "current_usage": "catalog-only",
+  "sourceFoot": null,
+  "anchor": null,
+  "generation_approval": "Parent confirmed exclusive wasteland quartet 2026-10-19 21:06 UTC; actual-used tone 1/2 first, retain all four distinct original colors, initial 256 preview.",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/source-contract.json",
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+  "original_full_source_sha256": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+  "reference_images_in_order": [
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-4-original-master-swatch.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png"
+  ],
+  "reference_roles": [
+    "exact original material and palette; reduce microtexture",
+    "approved quiet broad soil planes only, not a uniform palette template"
+  ],
+  "reference_sha256": {
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-wasteland/wasteland-4-original-master-swatch.png": "810251e908c52f9cbf7285f45b70522aecce5fc846e101d4dc9e69e0c993dadb",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53"
+  },
+  "native_request": [
+    1254,
+    1254
+  ],
+  "opaque_request": true,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "binding_status": "native only; parent owns seam/world sampling and actual scene review",
+  "prompt_sha256": "f517dbe0369fedb086a46be9e10c69148e65885dc440f7d4e83d2f319ae9e65d"
+}

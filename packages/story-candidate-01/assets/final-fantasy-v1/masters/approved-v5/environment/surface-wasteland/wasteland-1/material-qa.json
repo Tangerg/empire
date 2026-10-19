@@ -1,0 +1,65 @@
+{
+  "asset": "wasteland-1",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "160ed4145ffc283c256501b96863cf936a82cddc933c7b977596e00dac1333fe",
+  "RGB_mean": [
+    195.86104243136478,
+    150.0165658091873,
+    85.53239394702503
+  ],
+  "RGB_std": [
+    16.46185545278653,
+    13.47962941125936,
+    8.310531629851129
+  ],
+  "luma_mean": 155.10734433061413,
+  "luma_std": 13.589257292508725,
+  "luma_percentiles_5_50_95": [
+    138.3588,
+    156.94219999999999,
+    170.7256
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 154.3519984574362,
+    "bottom": 153.17399494617226,
+    "left": 157.20622617872806,
+    "right": 153.1637007401316,
+    "central_half": 157.1007272262566
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 9.036948431685273,
+    "top_bottom_mean_abs_RGB": 10.761297182349814,
+    "left_right_max_abs_RGB": 29.0,
+    "top_bottom_max_abs_RGB": 32.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Light golden tan/ochre sandy earth with broad shallow swept bands, scattered small stone groups and sparse dry olive/ochre tufts; no tall dunes or invented scenery.",
+    "palette_caveat": "Clearly brighter and more golden/yellow than the original muted tan swatch; the four-family distinction is maintained but exact color matching is not claimed.",
+    "density_caveat": "Approximately 25-35 detail groups rather than 12-18. Broad sand bands are much cleaner and less granular than the prior red/dusty candidates, though more than 6-12 regions remain.",
+    "scale_caveat": "Tuft and stone groups often span around 10-25 world units at proposed 256 period. Low-relief bands are material coloration, not a terrain height mesh or road.",
+    "native_acceptance": "1254 opaque native candidate; original tone 0 is catalog-only. No scene binding or natural seamlessness claim."
+  },
+  "reference_material_identity": "Golden tan/ochre sandy dry earth with broad shallow diagonal swept/rippled bands, sparse small gray-brown stones and a few dry olive/ochre tufts. Warm light sand identity, not dark gray-brown soil or tall dunes.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}
