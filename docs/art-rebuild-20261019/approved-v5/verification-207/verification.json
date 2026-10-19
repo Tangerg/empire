@@ -9,5 +9,11 @@
   "typecheck": "passed",
   "allFourAppBuilds": "passed",
   "liveBrowserVerification": false,
-  "note": "Only new raw masters/evidence were backed up while these fixed runtime/source-code tests ran; no runtime bindings changed."
+  "note": "Only new raw masters/evidence were backed up while these fixed runtime/source-code tests ran; no runtime bindings changed.",
+  "artPythonTests": {
+    "passed": 188,
+    "durationSeconds": 145.708,
+    "command": "python3 -m unittest discover -s tools/art -p 'test_*.py'",
+    "note": "Art tool code unchanged from runtime207 checkpoint; later raw sources and static registrations do not alter tested synthetic contracts."
+  }
 }

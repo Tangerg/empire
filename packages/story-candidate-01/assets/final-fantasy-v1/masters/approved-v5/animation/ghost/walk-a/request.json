@@ -1,0 +1,22 @@
+{
+  "tool": "built-in image_gen",
+  "promptSha256": "b4eaac07e515c3203d6185b4f07c4fa09e375176f6d6bfdad1711ffe077a0d44",
+  "referencedImagePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/master.png"
+  ],
+  "referencedImageSha256": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/master.png": "0e29d6bfde0d6441d28fec9a9bbb63819f5dbeb66a560aad7fc31bc1ae027e7d"
+  },
+  "transparentBackground": true,
+  "nativeCanvasRequested": [
+    1586,
+    992
+  ],
+  "pose": "walk-a",
+  "sharedScale": "44/927",
+  "action": "Forward/right hover, lower wisp trails left, far arm forward and near arm back; actual partial body alpha retained.",
+  "postGenerationReferenceArchive": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/master.png": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/attempt-02/master.png"
+  },
+  "referenceArchiveReason": "The exact call used idle/master.png while it contained selected attempt-02. The immutable identical-byte snapshot is retained in idle/attempt-02 in case final quartet alpha-consistency review selects the original idle instead. Exact call path and hash above remain unchanged."
+}
