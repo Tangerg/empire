@@ -1,0 +1,5 @@
+# Troll / existing ogre consumer
+
+Original gray-olive troll, black tied-back hair, tusks, patched fur-trim leather and gray spiral plate are retained. One shared58/931 scale,128x80 frame,origin12,4 and measured feet registration preserve all full native canvases; attack translation9.2825logical is explicitly supported by its measured source foot and10limit. Opposite walking contacts and the two-handed stone hammer strike are clear. Actual native/HD transparent exports were reviewed on white/dark/olive.
+
+The existing builtin ogre consumes this canonical topic; complete actual siege (03-siege.json) has two consumers. All rules/state/actor coordinates/facings, source layers, structures, draw order and viewport are unchanged. Offline occlusion is11.22→11.08% for[3,4],68.66→57.86% for[15,5]. The latter remains strongly blocked by actual pen/structures. Neighboring soldier[2,4] occlusion rises48.87→58.42% because of the wider troll silhouette. These are recorded integration issues, not hidden by cropping or deleting actors. Formal asset binding passes; full-scene readability and live animation remain pending.

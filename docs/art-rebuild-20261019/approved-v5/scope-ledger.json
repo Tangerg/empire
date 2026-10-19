@@ -4,10 +4,10 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 310,
+    "formalBound": 311,
     "boundByCategory": {
       "battle-prop": 64,
-      "combat-unit": 32,
+      "combat-unit": 33,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
@@ -2146,11 +2146,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-troll.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-troll.png",
+      "stageEvidence": {
+        "raw": "four native transparent poses, original troll with stone hammer and gray spiral plate; rejected repeated-step attempts preserved",
+        "export": "one shared body scale, measured feet, full-canvas1x/2x with explicit1-2px transparent padding; native pose review passed",
+        "runtimeBinding": "existing builtin ogre in actual siege; complete offline rules/actors/layers unchanged; full-scene readability held for recorded neighbor and pen occlusion",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-WHITE-STAG-RIDER",

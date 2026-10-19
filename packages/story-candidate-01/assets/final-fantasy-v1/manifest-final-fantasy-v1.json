@@ -2007,13 +2007,13 @@
       "topicId": "C01-UNIT-TROLL",
       "label": "巨魔",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-troll.png",
-      "width": 256,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-troll.png",
+      "width": 512,
+      "height": 80,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 80,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2022,13 +2022,14 @@
         "walk-b"
       ],
       "anchor": [
-        32,
-        47
+        63.14715359828142,
+        64.36734693877551
       ],
       "footprint": [
         2,
         2
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-WHITE-STAG-RIDER",

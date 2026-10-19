@@ -1,0 +1,328 @@
+{
+  "kind": "offline complete actual siege consumer comparison; not browser/GPU or live animation",
+  "checks": {
+    "levelIdUnchanged": true,
+    "levelSha256Unchanged": true,
+    "stateBeforeSha256Unchanged": true,
+    "stateAfterSha256Unchanged": true,
+    "stateUnchanged": true,
+    "levelUnchanged": true,
+    "actorsUnchanged": true,
+    "layerSha256Unchanged": true,
+    "standingDrawOrderUnchanged": true,
+    "sourceLayerCountsUnchanged": true,
+    "viewportUnchanged": true,
+    "boardWorldTransformUnchanged": true,
+    "mapSha256Unchanged": true,
+    "buildingsMarkupSha256Unchanged": true,
+    "beforeRenderPreservesState": true,
+    "afterRenderPreservesState": true,
+    "allRuntimeCodeInputsUnchanged": true,
+    "allNonTrollActorMarkupUnchanged": true,
+    "trollBindingUsesApprovedV5": true,
+    "allActorsPreserved": true,
+    "noOmissions": true,
+    "scenePixelsOutsideTrollSilhouettesUnchanged": true
+  },
+  "passed": true,
+  "changedCodePaths": [
+    "packages/story-candidate-01/src/presentation/candidate-01-assets.test.ts"
+  ],
+  "allCapturedCodeInputsIdentical": false,
+  "capturedCodeInputCount": 299,
+  "changedInputsAreTestsOnly": true,
+  "changedExistingSourcePaths": [
+    "packages/story-candidate-01/assets/final-fantasy-v1/manifest-tactical-runtime-hd.json"
+  ],
+  "removedSources": [
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-troll.png"
+  ],
+  "addedSources": [
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-troll@2x.png"
+  ],
+  "actors": [
+    {
+      "id": "actor:5",
+      "owner": 1,
+      "cell": [
+        3,
+        4
+      ],
+      "facing": "south",
+      "worldFoot": [
+        112,
+        159
+      ],
+      "screenFoot": [
+        186,
+        221
+      ],
+      "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-troll@2x.png",
+      "geometry": {
+        "before": {
+          "silhouetteWorldBounds": [
+            90,
+            113,
+            134,
+            159
+          ],
+          "silhouetteScreenBounds": [
+            164,
+            175,
+            208,
+            221
+          ]
+        },
+        "after": {
+          "silhouetteWorldBounds": [
+            83,
+            100,
+            134,
+            160
+          ],
+          "silhouetteScreenBounds": [
+            157,
+            162,
+            208,
+            222
+          ]
+        }
+      },
+      "beforeOccludedFraction": 0.11222,
+      "afterOccludedFraction": 0.110755,
+      "afterCovering": [
+        {
+          "id": "actor:2",
+          "actorId": 2,
+          "type": "knight",
+          "owner": 1,
+          "cell": [
+            3,
+            5
+          ],
+          "facing": "south",
+          "origin": [
+            96,
+            160
+          ],
+          "worldFoot": [
+            112,
+            191
+          ],
+          "displayIndex": 53,
+          "cropOrigin": [
+            -16,
+            -1
+          ],
+          "pairwiseOverlap": 0.058422
+        },
+        {
+          "id": "scenery:47",
+          "layer": "scenery",
+          "index": 47,
+          "origin": [
+            141.86313,
+            229.76
+          ],
+          "worldFoot": [
+            141.86313,
+            229.76
+          ],
+          "displayIndex": 71,
+          "cellId": "oak-grove-dense",
+          "atlas": "forest-temperate",
+          "cropOrigin": [
+            13,
+            37
+          ],
+          "pairwiseOverlap": 0.020704
+        },
+        {
+          "id": "actor:1",
+          "actorId": 1,
+          "type": "archer",
+          "owner": 1,
+          "cell": [
+            2,
+            5
+          ],
+          "facing": "south",
+          "origin": [
+            64,
+            160
+          ],
+          "worldFoot": [
+            80,
+            191
+          ],
+          "displayIndex": 52,
+          "cropOrigin": [
+            -48,
+            -1
+          ],
+          "pairwiseOverlap": 0.017598
+        },
+        {
+          "id": "scenery:33",
+          "layer": "scenery",
+          "index": 33,
+          "origin": [
+            79.61003,
+            165.76
+          ],
+          "worldFoot": [
+            79.61003,
+            165.76
+          ],
+          "displayIndex": 43,
+          "cellId": "farm-fence-corner",
+          "atlas": "rural-life",
+          "cropOrigin": [
+            -49,
+            -27
+          ],
+          "pairwiseOverlap": 0.015658
+        }
+      ]
+    },
+    {
+      "id": "actor:14",
+      "owner": 2,
+      "cell": [
+        15,
+        5
+      ],
+      "facing": "south",
+      "worldFoot": [
+        496,
+        191
+      ],
+      "screenFoot": [
+        570,
+        253
+      ],
+      "runtimeImage": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-troll@2x.png",
+      "geometry": {
+        "before": {
+          "silhouetteWorldBounds": [
+            474,
+            145,
+            518,
+            191
+          ],
+          "silhouetteScreenBounds": [
+            548,
+            207,
+            592,
+            253
+          ]
+        },
+        "after": {
+          "silhouetteWorldBounds": [
+            467,
+            132,
+            518,
+            192
+          ],
+          "silhouetteScreenBounds": [
+            541,
+            194,
+            592,
+            254
+          ]
+        }
+      },
+      "beforeOccludedFraction": 0.68661,
+      "afterOccludedFraction": 0.578555,
+      "afterCovering": [
+        {
+          "id": "scenery:42",
+          "layer": "scenery",
+          "index": 42,
+          "origin": [
+            494.96533,
+            197.76
+          ],
+          "worldFoot": [
+            494.96533,
+            197.76
+          ],
+          "displayIndex": 60,
+          "cellId": "livestock-pen-small",
+          "atlas": "rural-life",
+          "cropOrigin": [
+            366,
+            5
+          ],
+          "pairwiseOverlap": 0.456334
+        },
+        {
+          "id": "terrain:6",
+          "layer": "terrain",
+          "index": 6,
+          "origin": [
+            512,
+            192
+          ],
+          "worldFoot": [
+            528,
+            223
+          ],
+          "displayIndex": 67,
+          "cropOrigin": [
+            400,
+            31
+          ],
+          "pairwiseOverlap": 0.349398
+        }
+      ]
+    }
+  ],
+  "nonTrollOcclusionChanges": [
+    {
+      "id": "actor:8",
+      "type": "cleric",
+      "cell": [
+        2,
+        3
+      ],
+      "before": 0.999639,
+      "after": 0.999667,
+      "delta": 2.8e-05
+    },
+    {
+      "id": "actor:3",
+      "type": "soldier",
+      "cell": [
+        2,
+        4
+      ],
+      "before": 0.488721,
+      "after": 0.58423,
+      "delta": 0.095509
+    },
+    {
+      "id": "actor:19",
+      "type": "archer",
+      "cell": [
+        16,
+        4
+      ],
+      "before": 0.351312,
+      "after": 0.350483,
+      "delta": -0.000829
+    }
+  ],
+  "pixelDifferenceScreenBounds": [
+    157,
+    162,
+    592,
+    254
+  ],
+  "limitations": [
+    "Initial pose only",
+    "Offline Inkscape; facing and nested viewport geometry normalized by existing helper",
+    "Actor alpha overlap excludes badge/ring/contact shadow; CSS shadow filters omitted",
+    "No selective hiding, fading, substitutions, actor movement or rules changes"
+  ]
+}

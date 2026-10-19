@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/walk-b/master.png"
+    },
+    "scale": 0.06229860365198711,
+    "origin": [
+      12,
+      4
+    ],
+    "frameSize": [
+      128,
+      80
+    ],
+    "sourceFoot": [
+      821,
+      969
+    ],
+    "sourceFeet": {
+      "idle": [
+        821,
+        969
+      ],
+      "walk-a": [
+        788,
+        959
+      ],
+      "attack": [
+        672,
+        960
+      ],
+      "walk-b": [
+        823,
+        970
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        2.055853920515575,
+        0.6229860365198712
+      ],
+      "attack": [
+        9.282491944146079,
+        0.560687432867884
+      ],
+      "walk-b": [
+        -0.12459720730397422,
+        -0.06229860365198711
+      ]
+    },
+    "registrationLimit": 10,
+    "canvasPaddingTolerance": 2,
+    "meaning": "Original ogre/troll identity, opposing walk contacts and clear two-handed stone hammer attack; one measured idle scale, actual builtin siege review pending"
+  },
+  "authoredCanvas": [
+    1585,
+    993
+  ],
+  "logicalPivot": [
+    63.14715359828142,
+    64.36734693877551
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "22e2a842a5552e6cb511004271dfc234df1d0c45ea989d853cc6ea67ba9948e6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8145,
+        "nearOpaquePixels": 1840,
+        "edgeMax": 0,
+        "visibleBounds": [
+          35,
+          6,
+          84,
+          65
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "22e2a842a5552e6cb511004271dfc234df1d0c45ea989d853cc6ea67ba9948e6",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 32823,
+        "nearOpaquePixels": 7571,
+        "edgeMax": 0,
+        "visibleBounds": [
+          71,
+          12,
+          169,
+          129
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/walk-a/master.png",
+      "registrationOffset": [
+        2.055853920515575,
+        0.6229860365198712
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "56afb7b81630b63209c3e228caefcdcc47deb9d2706114ecf888a4ea56ddb04e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8082,
+        "nearOpaquePixels": 1861,
+        "edgeMax": 0,
+        "visibleBounds": [
+          34,
+          6,
+          92,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/walk-a/master.png",
+      "registrationOffset": [
+        2.055853920515575,
+        0.6229860365198712
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "56afb7b81630b63209c3e228caefcdcc47deb9d2706114ecf888a4ea56ddb04e",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 32609,
+        "nearOpaquePixels": 7683,
+        "edgeMax": 0,
+        "visibleBounds": [
+          67,
+          13,
+          185,
+          129
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/attack/master.png",
+      "registrationOffset": [
+        9.282491944146079,
+        0.560687432867884
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "a53a6c238ebb8e9a69aee1545e11662a14f3ed14225fde88f82d3d76ae92b5e8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7890,
+        "nearOpaquePixels": 1984,
+        "edgeMax": 0,
+        "visibleBounds": [
+          33,
+          6,
+          117,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/attack/master.png",
+      "registrationOffset": [
+        9.282491944146079,
+        0.560687432867884
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "a53a6c238ebb8e9a69aee1545e11662a14f3ed14225fde88f82d3d76ae92b5e8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 31942,
+        "nearOpaquePixels": 8243,
+        "edgeMax": 0,
+        "visibleBounds": [
+          65,
+          13,
+          234,
+          129
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/walk-b/master.png",
+      "registrationOffset": [
+        -0.12459720730397422,
+        -0.06229860365198711
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "d568805b0bf6dd2e4998ae228d801fe49b259836488acdc87705a0e87bf5d6c5",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8201,
+        "nearOpaquePixels": 1738,
+        "edgeMax": 0,
+        "visibleBounds": [
+          36,
+          5,
+          86,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/troll/walk-b/master.png",
+      "registrationOffset": [
+        -0.12459720730397422,
+        -0.06229860365198711
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "d568805b0bf6dd2e4998ae228d801fe49b259836488acdc87705a0e87bf5d6c5",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33089,
+        "nearOpaquePixels": 7178,
+        "edgeMax": 0,
+        "visibleBounds": [
+          72,
+          11,
+          172,
+          129
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}
