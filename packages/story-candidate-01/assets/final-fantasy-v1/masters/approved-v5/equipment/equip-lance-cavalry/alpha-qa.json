@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-LANCE-CAVALRY",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6862887245662366,
+  "nearOpaqueFractionAlphaGE250": 0.29464819435859474,
+  "nonzeroAlphaBBox": [
+    49,
+    21,
+    1206,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    52,
+    46,
+    1196,
+    1221
+  ],
+  "visibleAlphaBBoxGE128": [
+    52,
+    47,
+    1194,
+    1219
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    52,
+    47,
+    60,
+    35
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 3,
+  "sha256": "1a6c64e7a8e79a2ad7ef17b8ec2cf7d2872e3dc7899b13d9509a263dc8edcfde",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly THREE separate equipment objects arranged like original reference 1. LEFT: one long straight brown wooden LANCE, diagonally from lower-left to upper-middle, large silver triangular faceted spearhead pointing up-right. CENTER: one cream-colored rounded kite shield, curved upper edge and single pointed lower tip, four large blank cream panels divided by a narrow horizontal seam and ONE dark iron vertical center rib. Keep the little original large corner fasteners; shield has NO emblem, no cross motif, no boss and no tower emblem. RIGHT: ONE single iron STIRRUP with its large open interior, a broad flat footplate, and one short loop of brown leather attached above. The three items stay separate and complete. No rider, mount, saddle, extra stirrup or extra weapon.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

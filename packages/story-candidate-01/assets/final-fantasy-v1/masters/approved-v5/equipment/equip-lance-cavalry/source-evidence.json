@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-EQUIP-LANCE-CAVALRY",
+  "assetId": "C01-FFV1-EQUIP-LANCE-CAVALRY",
+  "label": "长枪骑兵主装备",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ec3eb09c-849a-49a5-bbbd-23fb84c36e5d.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-lance-cavalry-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-03.png, row 1 column 2 (one based)",
+    "topicIndex": 17,
+    "inspectionCropCoordinates": [
+      316,
+      2,
+      625,
+      312
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-lance-cavalry.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-03.png",
+    "atlasSha256": "2d732cdc0b1b015c9dfec0f3fd4e42f2c880f179320103778e854eda96e63ee6",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-lance-cavalry-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "inspectedApprovedUnitReferences": [],
+  "unitIdentityNote": "No corresponding approved unit idle source found in current approved-v5 tree; original equipment board and baseline equipment runtime remain identity authority. Existing chunky equipment family governs material style.",
+  "identityClarification": "Exactly THREE separate equipment objects arranged like original reference 1. LEFT: one long straight brown wooden LANCE, diagonally from lower-left to upper-middle, large silver triangular faceted spearhead pointing up-right. CENTER: one cream-colored rounded kite shield, curved upper edge and single pointed lower tip, four large blank cream panels divided by a narrow horizontal seam and ONE dark iron vertical center rib. Keep the little original large corner fasteners; shield has NO emblem, no cross motif, no boss and no tower emblem. RIGHT: ONE single iron STIRRUP with its large open interior, a broad flat footplate, and one short loop of brown leather attached above. The three items stay separate and complete. No rider, mount, saddle, extra stirrup or extra weapon.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}

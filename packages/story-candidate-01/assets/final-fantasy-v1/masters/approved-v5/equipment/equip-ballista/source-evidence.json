@@ -1,0 +1,57 @@
+{
+  "topicId": "C01-EQUIP-BALLISTA",
+  "assetId": "C01-FFV1-EQUIP-BALLISTA",
+  "label": "弩车主装备",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bf1c3fc0-090d-45d2-84e0-e2234f51c8d1.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-ballista-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-03.png, row 1 column 1 (one based)",
+    "topicIndex": 16,
+    "inspectionCropCoordinates": [
+      2,
+      2,
+      312,
+      312
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-ballista.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-03.png",
+    "atlasSha256": "2d732cdc0b1b015c9dfec0f3fd4e42f2c880f179320103778e854eda96e63ee6",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-ballista-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "inspectedApprovedUnitReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/idle/master.png"
+  ],
+  "unitIdentityNote": "Approved new ballista unit inspected. It includes a crewman and full wheeled cart with loaded bolt; these unit-only parts are intentionally excluded because original equipment icon is a compact windlass mechanism plus one separate bolt. Equipment atlas identity governs.",
+  "identityClarification": "Exactly TWO equipment groups matching original reference 1. LEFT: one compact wooden WINDLASS / STRING-TENSIONING FRAME seen from slightly above, as an equipment mechanism rather than an entire ballista cart: thick rear horizontal timber with two iron-capped upper brackets, thick front horizontal winding roller with iron end caps, two chunky side rails, central wooden guide plank, exposed rope lengths linking the corners and crossing across the front. ONE square iron winding housing at front with an L-shaped crank and short brown handle projecting toward lower-left. Two short simple timber feet at its base; NO wheels and NO bow arms beyond the reference. The top stays open so the broad internal planks and tension ropes remain visible. RIGHT: EXACTLY ONE separate thick short bolt, brown shaft with a few broad wrap bands, large triangular silver arrowhead pointing upper-right and faceted silver butt at bottom-left. No loaded extra bolt, no operator, no soldier or full wheeled cart.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}
