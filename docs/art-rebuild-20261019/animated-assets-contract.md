@@ -78,3 +78,24 @@ Selected swordsman common placement: renderWidth30, origin[1,2], authored
 canvas1024×1536, resized30×45. All four poses have visible bounding-box bottom45
 and output edgealpha0. Archer idle shares this placement and measurements;
 remaining archer poses require independent confirmation before completion.
+
+## Registration clarification and console pilot (2026-10-19)
+
+A manifest anchor is a placement pivot, not a requirement that the final opaque
+pixel coincide exactly with it. Preserve every declared anchor and footprint.
+Review actual legacy contact, native-size grounding, and consistency between
+states; do not request creative regeneration solely for harmless transparent
+padding or a one-pixel antialias rounding difference. Meaningful floating,
+state jitter, clipping, exterior haze, and unclear semantic identity still fail.
+
+Archer final four poses passed native static review with shared placement30/[1,2]
+and only walk-a registrationOffset[0,1]. All four visible bounds end at45;
+pose identity and opposite walk contacts were reviewed. Actual game review is
+still pending.
+
+Console C01-STRUCT-OATH-TOWER-CONSOLE normal is approved for shared renderWidth62,
+origin[1,2], source1254×1254. Visible base61 versus pivot63 is explicitly accepted
+by the coordinator; the legacy reference ends around55 logical. Remaining states
+must retain the same authored foundation placement and scale. Captured requires
+the original dark chain cue, damaged requires collapsed crystal/rubble. No alpha
+or semantic gate is relaxed by this contact decision.
