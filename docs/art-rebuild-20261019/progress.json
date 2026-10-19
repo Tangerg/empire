@@ -2176,10 +2176,14 @@
     },
     {
       "topicId": "C01-EQUIP-LEGION-SHIELD",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-legion-shield/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "20b9f06c86fdde8bd3e96f7bdfa6940654d299c867497c3b60e5fd4f7f577f12"
     },
     {
       "topicId": "C01-EQUIP-LONG-RANGE-SCOUT-KIT",
@@ -2316,10 +2320,14 @@
     },
     {
       "topicId": "C01-EQUIP-TEMPLAR",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-templar/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "56f3729769890e99e530303cf0e6e86ed274f9ff8b8a3ca2dc5d3fa45af3aaf0"
     },
     {
       "topicId": "C01-EQUIP-TROLL",
@@ -7789,12 +7797,17 @@
     },
     {
       "topicId": "c03-equip-4566788b",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-4566788b/master.png",
       "verification": {
-        "state": "pending",
+        "state": "export-checked",
         "note": "Raw master preserved; export and visual acceptance pending",
-        "staticVisualReview": "passed-role-based-native48-three-backgrounds"
+        "staticVisualReview": "passed-role-based-native48-three-backgrounds",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-050-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "after-evidence-revisions-source-review-first",
@@ -7928,12 +7941,17 @@
     },
     {
       "topicId": "c03-equip-9ad7ca0f",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-9ad7ca0f/master.png",
       "verification": {
-        "state": "pending",
+        "state": "export-checked",
         "note": "Raw master preserved; export and visual acceptance pending",
-        "staticVisualReview": "passed-role-based-native48-three-backgrounds"
+        "staticVisualReview": "passed-role-based-native48-three-backgrounds",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-050-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "after-evidence-revisions-source-review-first",
@@ -9651,19 +9669,27 @@
       "atlasId": "surface-meadow",
       "cellId": "meadow-1",
       "index": 0,
-      "status": "pending",
-      "source": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-1/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "assignmentPhase": "after-forest-completion"
+      "assignmentPhase": "after-forest-completion",
+      "sourceSha256": "67f2fc5c4cdc77a1102bfeb1c456bc1173b036306cdf18b348597a6549e0758c",
+      "verification": {
+        "state": "pending-all-four-sources-and-seam-cohesion-review"
+      }
     },
     {
       "atlasId": "surface-meadow",
       "cellId": "meadow-2",
       "index": 1,
-      "status": "pending",
-      "source": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/surface-meadow/meadow-2/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "assignmentPhase": "after-forest-completion"
+      "assignmentPhase": "after-forest-completion",
+      "sourceSha256": "3eb143144074dbb11cbac2ae678fae595f0bc78ec252fff9798e682b92c811a2",
+      "verification": {
+        "state": "pending-all-four-sources-and-seam-cohesion-review"
+      }
     },
     {
       "atlasId": "surface-meadow",
