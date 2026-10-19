@@ -26,7 +26,7 @@ describe('Three local decorative clearances around named Roderick', () => {
     const before = candidate01MapSceneryLayers({ ...context, levelId: 'unregistered-local-clearance' });
     const after = candidate01MapSceneryLayers(context);
     const original = before.underUnits.find(p => nearContact(p, originalX, (y + 1.18) * 32))!;
-    const actual = after.underUnits.filter(p => nearContact(p, ...spec.foot));
+    const actual = after.underUnits.filter(p => nearContact(p, spec.foot[0], spec.foot[1]));
     expect(original).toBeDefined();
     expect(actual).toHaveLength(1);
     const replacement = actual[0];
@@ -76,7 +76,7 @@ describe('Three local decorative clearances around named Roderick', () => {
     expect(scene.zones.every(z => z.authoredTerrainSurface === undefined)).toBe(true);
     const before = candidate01MapSceneryLayers(baseline), after = candidate01MapSceneryLayers(context);
     const prior = (p: BoardPiece) => specs.some(({cell:[x,y]}) => p.foot !== undefined && Math.floor(p.x / 32) === x && Math.abs(p.y - (y+1.18)*32) < 1e-6);
-    const authored = (p: BoardPiece) => specs.some(s => nearContact(p, ...s.foot));
+    const authored = (p: BoardPiece) => specs.some(s => nearContact(p, s.foot[0], s.foot[1]));
     expect(before.underUnits.filter(prior)).toHaveLength(specs.length);
     expect(after.underUnits.filter(authored)).toHaveLength(specs.length);
     expect(after.underUnits.filter(p => !authored(p))).toEqual(before.underUnits.filter(p => !prior(p)));
