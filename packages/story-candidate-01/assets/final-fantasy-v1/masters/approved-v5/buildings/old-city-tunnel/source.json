@@ -1,0 +1,95 @@
+{
+  "topicId": "C01-STRUCT-OLD-CITY-TUNNEL",
+  "label": "旧城地道口",
+  "originalManifestEntry": {
+    "assetId": "C01-FFV1-STRUCT-OLD-CITY-TUNNEL",
+    "topicId": "C01-STRUCT-OLD-CITY-TUNNEL",
+    "label": "旧城地道口",
+    "category": "interactive-structure",
+    "png": "runtime/interactive-structure/struct-old-city-tunnel.png",
+    "width": 192,
+    "height": 64,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 64,
+    "frames": 3,
+    "stateOrder": [
+      "normal",
+      "damaged",
+      "captured"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "footprint": [
+      2,
+      2
+    ]
+  },
+  "selection": "Exclusive parent assignment after name memorial",
+  "sourceAtlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-03.png",
+  "sourceAtlasSize": [
+    1086,
+    1448
+  ],
+  "sourceAtlasSha256": "3ea0d540978f0540a7057b9bf231896bb4249c7f91726f65a8e7152328209f4a",
+  "sourceCellBoxes": {
+    "normal": [
+      0,
+      1090,
+      362,
+      1448
+    ],
+    "damaged": [
+      362,
+      1090,
+      724,
+      1448
+    ],
+    "captured": [
+      724,
+      1090,
+      1086,
+      1448
+    ]
+  },
+  "sourceStateOrder": [
+    "normal",
+    "damaged",
+    "captured"
+  ],
+  "runtimeHdReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-old-city-tunnel.png",
+  "consumerEvidence": {
+    "status": "no-static-consumer-reference-found",
+    "audit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "directSearch": "Exact topic/runtime slug search in *.ts and *.scene.json returned no matches",
+    "observedInBrowser": false,
+    "qualification": "Existing catalog/runtime asset, no proven authored scene or interactive placement; dynamic external inputs not excluded"
+  },
+  "stateIdentity": {
+    "normal": "Thick squat stepped stone arch with closed wooden lattice gate and three horizontal bands, left iron ring, small blue water outlet bounded by rocks/reeds",
+    "damaged": "Crown/arch broken open, wooden gate leaning open to left, dark tunnel visible, local rubble and broken boards in water outlet",
+    "captured": "Intact closed portal and left ring, horizontal plus crossed gray chains on gate and one amber lantern at right jamb; no flag"
+  },
+  "waterPolicy": "Only bounded functional outlet water/reeds/rocks; genuinely clear exterior, no terrain tile",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sourceFoot": [
+    627,
+    1048
+  ],
+  "proposedLogicalVisibleWidth": 104,
+  "originalCropSha256": {
+    "normal": "48c312e87cf71a4969285ee36db9a72d998956d65b3a9e79381cf86ebdfb0a48",
+    "damaged": "53fa2265bf9993764cf4b36a1dcfece48d5de6fe954526088b354a5340c9d3bf",
+    "captured": "5ea2160b5039683ad1a67503c7eb1aa9d63ebef641a13c0b2d7fc29efd947cac"
+  },
+  "styleReference": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+  "noRepositoryWrites": true,
+  "normalVisibleWidth": 1197,
+  "acceptedLogicalVisibleWidth": 104
+}

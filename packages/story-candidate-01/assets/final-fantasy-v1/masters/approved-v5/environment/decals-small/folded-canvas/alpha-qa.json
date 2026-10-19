@@ -1,0 +1,58 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "folded-canvas",
+  "cellIndexZeroBased": 22,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6661337627089327,
+  "nearOpaqueFractionAlphaGE250": 0.32294488577540703,
+  "nonzeroAlphaBBox": [
+    13,
+    56,
+    1240,
+    1196
+  ],
+  "visibleAlphaBBoxGE8": [
+    15,
+    287,
+    1237,
+    1045
+  ],
+  "subjectAlphaBBoxGE128": [
+    16,
+    288,
+    1237,
+    1045
+  ],
+  "solidAlphaBBoxGE250": [
+    17,
+    289,
+    1236,
+    1044
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    16,
+    288,
+    17,
+    209
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "suggestedRegistrationFootpointNative": [
+    626.5,
+    1045
+  ],
+  "footpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding.",
+  "sha256": "c84b6e7b482a052de7aa0a615e225cc9401f00cab2b6d9fc13654c7d25855f81",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Complete low canvas sheet with two attached parallel curled folds, broad tan cloth planes and ragged openings. No straps, kit objects or defective registered-cell truncation. Native source has small but clear lateral margins; all edges remain inside canvas.",
+  "remarks": [],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

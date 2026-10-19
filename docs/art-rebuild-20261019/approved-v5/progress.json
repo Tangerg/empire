@@ -25,8 +25,8 @@
     "quote": "确认了，就按照这个方向做剩下的"
   },
   "authoredFourPoseBundles": 15,
-  "authoredThreeStateBundles": 19,
-  "formalRuntimeBoundTopics": 77,
+  "authoredThreeStateBundles": 20,
+  "formalRuntimeBoundTopics": 78,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -490,6 +490,12 @@
       "export": "104/1180 shared scale, fixed endpoint pillars and source foot; captured center-base local1.15px variation recorded, no whole-frame shift",
       "runtimeBinding": "canonical+HD catalog bound; no static scene consumer verified",
       "liveGame": "pending"
+    },
+    "C01-STRUCT-OLD-CITY-TUNNEL": {
+      "raw": "3 native semantic states and exact prompts retained; catalog-only source usage",
+      "export": "shared104/1197 scale and portal foundation627,1048; actual light/dark native state review passed",
+      "runtimeBinding": "canonical and HD manifest bound; no current direct scene selector found",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -646,13 +652,16 @@
         "boulder-mossy-large",
         "broken-planks",
         "abandoned-tools",
-        "rope-coil"
+        "rope-coil",
+        "folded-canvas",
+        "ash-scorch"
       ],
-      "count": 22,
+      "count": 24,
       "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
       "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
       "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene. Stump and fallen branch retain complete source identities; native catalog probes only, no c01-02 sample. Wood/moss/plank quartet native review passed; small moss rock is an actual0.58 ground sample, others are catalog probes; firewood also has settlement-life selector at0.3, absence from selected ground sample is not proof of no consumer.",
-      "liveGame": "pending"
+      "liveGame": "pending",
+      "atlasStaticReview": "All24 exact identities registered. Full original subjects reconstructed where legacy slots cropped; native matte silhouettes and transparent margins checked."
     },
     "camps-foundations": {
       "formalRuntimeBoundCells": [
@@ -682,7 +691,7 @@
       "defaultTestTimeoutUnchanged": true,
       "scope": "7067409 six-ground-accent checkpoint; subsequent gravekeeper/gray-flag-point covered by focused binding tests"
     },
-    "latestBindingAndEdges": "87 asset/environment tests passed at cart-stop/decal checkpoint",
+    "latestBindingAndEdges": "88 asset/environment tests passed after old-city tunnel and all24 ground decals",
     "artPythonLatest": "147 passed in exact cliff-contract engineering checkpoint",
     "typecheckLatest": "passed at cart-stop/decal checkpoint"
   },

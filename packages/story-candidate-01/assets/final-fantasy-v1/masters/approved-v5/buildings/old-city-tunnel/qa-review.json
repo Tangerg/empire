@@ -1,0 +1,141 @@
+{
+  "topicId": "C01-STRUCT-OLD-CITY-TUNNEL",
+  "status": "Complete native trio; source identity, actual alpha and same-scale visual QA reviewed",
+  "masterIntegrity": "All raw/master pairs byte-identical native built-in imagegen; no alpha cleanup, crop, resize, translation, repaint or per-state fit",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "perimeterGate": "Normal/damaged/captured actual maxima1/0/1; all zero edge pixels>1",
+  "sharedStructuralSourceFoot": [
+    627,
+    1048
+  ],
+  "acceptedLogicalWidth": 104,
+  "scaleApplication": "One104/1197 factor on every complete1254 native canvas",
+  "visualChecks": {
+    "normal": "Thick squat stone portal, closed wood barred gate with3horizontal bands, left iron ring, contained front outlet water/rocks/reeds",
+    "damaged": "Upper crown/arch collapse, broken gate leaning open left, visible dark stone-lined passage, local fallen blocks and board in stream; normal left ring obscured/displaced",
+    "captured": "Intact closed portal, left ring retained, one horizontal chain plus two diagonal X chains over gate and one right amber lantern; no flag or padlock",
+    "style": "Broad chunky matte stone/wood planes and dark contour, simple contained water colors",
+    "registration": "Same whole canvas/scale and accepted main stone portal baseline. Foreground water/rubble never used to shift anchor",
+    "alpha": "True RGBA exterior and complete silhouette; no opaque terrain plate or background",
+    "readability": "104logical shared-scale preview clearly separates closed gate, exposed dark passage and chained illuminated capture state"
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "sharedLogical104": "qa-logical-104.png",
+    "normal": "qa-normal-logical-104.png",
+    "groundEvidence": "qa-normal-ground-inspection.png"
+  },
+  "consumerQualification": {
+    "status": "no-static-consumer-reference-found",
+    "audit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "directSearch": "Exact topic/runtime slug search in *.ts and *.scene.json returned no matches",
+    "observedInBrowser": false,
+    "qualification": "Existing catalog/runtime asset, no proven authored scene or interactive placement; dynamic external inputs not excluded"
+  },
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        35,
+        136,
+        1232,
+        1193
+      ],
+      "alphaAbove1Bounds": [
+        32,
+        133,
+        1235,
+        1195
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-83a40f49-17f9-4ead-8ff1-0ee5132d70c7.png",
+      "sha256": "b09e62d8c21f7960765496369022f8c175b9ea82614ffd907c5327da75453620",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 672030,
+      "perimeterGate": "Actual outermost maximum alpha<=1, zero edge pixels>1",
+      "activePrompt": "prompt.txt",
+      "sharedStructuralSourceFoot": [
+        627,
+        1048
+      ],
+      "visibleSilhouetteReview": "Complete contained stone portal, wooden gate, localized water/rocks/reeds, and state rubble or chain/lantern"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 0,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        33,
+        138,
+        1231,
+        1195
+      ],
+      "alphaAbove1Bounds": [
+        31,
+        135,
+        1233,
+        1197
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a065ae9f-6beb-4355-8be5-fcadb91f9fe0.png",
+      "sha256": "315f9049b8f65177ef17deec03a4b49824c144f20b5212a8f5cc830e883441bb",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 682453,
+      "perimeterGate": "Actual outermost maximum alpha<=1, zero edge pixels>1",
+      "activePrompt": "prompt.txt",
+      "sharedStructuralSourceFoot": [
+        627,
+        1048
+      ],
+      "visibleSilhouetteReview": "Complete contained stone portal, wooden gate, localized water/rocks/reeds, and state rubble or chain/lantern"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        35,
+        135,
+        1232,
+        1194
+      ],
+      "alphaAbove1Bounds": [
+        33,
+        133,
+        1235,
+        1196
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-363ae930-13f1-4b25-9411-e58a0fc9981f.png",
+      "sha256": "80f7e7770a623bbc04b303a48c8736fcfc2acdb9bbdc316e75f4d489e0886e50",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 670919,
+      "perimeterGate": "Actual outermost maximum alpha<=1, zero edge pixels>1",
+      "activePrompt": "prompt.txt",
+      "sharedStructuralSourceFoot": [
+        627,
+        1048
+      ],
+      "visibleSilhouetteReview": "Complete contained stone portal, wooden gate, localized water/rocks/reeds, and state rubble or chain/lantern"
+    }
+  },
+  "noRepositoryWrites": true,
+  "noLiveGameClaim": true
+}

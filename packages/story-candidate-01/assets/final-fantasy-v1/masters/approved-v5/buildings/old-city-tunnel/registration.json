@@ -1,0 +1,66 @@
+{
+  "topicId": "C01-STRUCT-OLD-CITY-TUNNEL",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "normalVisibleBounds": [
+    35,
+    136,
+    1232,
+    1193
+  ],
+  "normalVisibleWidth": 1197,
+  "proposedLogicalVisibleWidth": 104,
+  "sharedScale": 0.08688387635756056,
+  "sourceFoot": [
+    627,
+    1048
+  ],
+  "structuralFootEvidence": "Shared virtual portal baseline uses lowest front-right arch-jamb foundation course aroundy1048, horizontally centered at627. Foreground water/loose rocks continue to1193 and do not define portal anchor. See qa-normal-ground-inspection.png",
+  "registrationRule": "Same full canvas and one normal-derived scale for all states, no per-state fit",
+  "postGenerationTransform": "none",
+  "status": "Complete native trio with accepted shared foundation baseline and common scale",
+  "acceptedLogicalVisibleWidth": 104,
+  "stateVisibleBounds": {
+    "normal": [
+      35,
+      136,
+      1232,
+      1193
+    ],
+    "damaged": [
+      33,
+      138,
+      1231,
+      1195
+    ],
+    "captured": [
+      35,
+      135,
+      1232,
+      1194
+    ]
+  },
+  "stateLogicalTotalWidths": {
+    "normal": 104.0,
+    "damaged": 104.08688387635756,
+    "captured": 104.0
+  },
+  "registrationOffsetsLogical": {
+    "normal": [
+      0,
+      0
+    ],
+    "damaged": [
+      0,
+      0
+    ],
+    "captured": [
+      0,
+      0
+    ]
+  },
+  "foregroundCaveat": "Water and loose rocks reach1193/1195/1194 by state. Shared structural foot1048 excludes these; same stone portal baseline kept",
+  "geometryReview": "Portal dimensions, side buttress extent and water footprint remain at common camera/scale. Damage changes upper arch and exposes passage; local foundation stones partly hidden by source-faithful rubble, no independent fit"
+}

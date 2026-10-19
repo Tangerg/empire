@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 77,
+    "formalBound": 78,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 13,
       "equipment": 12,
-      "interactive-structure": 19,
+      "interactive-structure": 20,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 78,
+    "rawPreservedTopics": 79,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 87
+    "registeredEnvironmentCells": 89
   },
   "sceneCohesion": {
     "fullMap": "standing-depth-current/full-scene-labeled.png",
@@ -3161,13 +3161,22 @@
       "category": "interactive-structure",
       "label": "旧城地道口",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/old-city-tunnel/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/old-city-tunnel/damaged/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/old-city-tunnel/normal/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-old-city-tunnel.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-old-city-tunnel.png",
+      "stageEvidence": {
+        "raw": "3 native semantic states and exact prompts retained; catalog-only source usage",
+        "export": "shared104/1197 scale and portal foundation627,1048; actual light/dark native state review passed",
+        "runtimeBinding": "canonical and HD manifest bound; no current direct scene selector found",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-PUBLIC-RATION-POINT",
@@ -18073,7 +18082,9 @@
         "boulder-mossy-large",
         "broken-planks",
         "abandoned-tools",
-        "rope-coil"
+        "rope-coil",
+        "folded-canvas",
+        "ash-scorch"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18099,13 +18110,16 @@
           "boulder-mossy-large",
           "broken-planks",
           "abandoned-tools",
-          "rope-coil"
+          "rope-coil",
+          "folded-canvas",
+          "ash-scorch"
         ],
-        "count": 22,
+        "count": 24,
         "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
         "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
         "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene. Stump and fallen branch retain complete source identities; native catalog probes only, no c01-02 sample. Wood/moss/plank quartet native review passed; small moss rock is an actual0.58 ground sample, others are catalog probes; firewood also has settlement-life selector at0.3, absence from selected ground sample is not proof of no consumer.",
-        "liveGame": "pending"
+        "liveGame": "pending",
+        "atlasStaticReview": "All24 exact identities registered. Full original subjects reconstructed where legacy slots cropped; native matte silhouettes and transparent margins checked."
       }
     },
     {

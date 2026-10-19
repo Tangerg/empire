@@ -12,6 +12,7 @@ import sourceOverrides from '../../../../tools/art/source-overrides.json';
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
 const bundles = [
+  { topic: 'C01-STRUCT-OLD-CITY-TUNNEL', source: 'buildings/old-city-tunnel', size: [116, 116], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-UNIT-BALLISTA', source: 'animation/ballista', size: [104, 64], footprint: [2, 2], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-GRAVEKEEPER', source: 'animation/gravekeeper', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-KNIGHT', source: 'animation/knight', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },

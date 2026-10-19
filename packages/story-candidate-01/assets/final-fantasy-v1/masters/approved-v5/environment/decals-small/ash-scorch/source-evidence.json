@@ -1,0 +1,104 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "ash-scorch",
+  "cellIndexZeroBased": 23,
+  "category": "ground-decal",
+  "expectedRuntimeSizes": [
+    [
+      64,
+      64
+    ],
+    [
+      128,
+      128
+    ]
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-45487079-4c08-4035-b55b-be9d6561991a.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/identity-inspection/original-ash-scorch-semantic-subject.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-selected-readability-20261019",
+    "baselineCommit": "36555c4",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+    "atlasGrid": [
+      6,
+      4
+    ],
+    "atlasNativeSize": [
+      1536,
+      1024
+    ],
+    "registeredMasterCellCrop": [
+      1280,
+      768,
+      1536,
+      1024
+    ],
+    "semanticSubjectCrop": [
+      1280,
+      640,
+      1536,
+      830
+    ],
+    "identityCropTreatment": "Unscaled original-master crops retained unchanged. Registered-cell crop preserved separately; semantic crop is identity authority after complete-sheet inspection.",
+    "crossCellContamination": "Registered row-four crop contains only the front-bottom sliver of the fire-pit stones/ash. The actual fire-pit lies mostly above that grid cell. Semantic crop restores entire pit and does not import the unrelated extra dirt patch elsewhere on the master.",
+    "audit": "docs/art-rebuild-20261019/approved-v5/ground-debris-audit/debris-inventory.json",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json",
+    "oldLogicalAnchor": [
+      32,
+      60
+    ],
+    "oldObstructionHeight": 0,
+    "oldAnchorIsNotNewSourceFootpoint": true,
+    "atlasSha256": "ec62ec03545fadca86f8c67a265633a59496cd981a92e7572cce472d54f016fd",
+    "matchesBaselineAtlasBytes": true
+  },
+  "actualConsumer": {
+    "module": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+    "renderer": "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts",
+    "existingGroundOpacity": 0.72,
+    "existingHorizontalFlip": true,
+    "observedGroundMapCounts": {
+      "c01-02": 0,
+      "c01-01": 0
+    },
+    "declaredScales": [
+      0.6
+    ],
+    "note": "Declared c01.scorched material candidate at scale0.6. No actual groundPieces samples in audited c01-01/c01-02 scenes.",
+    "registrationNotChanged": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/stone-cluster-a/stone-cluster-a-master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/identity-inspection/original-ash-scorch-semantic-subject.png",
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/stone-cluster-a/stone-cluster-a-master.png"
+  ],
+  "identityClarification": "An extinguished fire-pit remnant, not just dirt: oval charcoal-black ash/scorch ground, short charred wood remnants near the rear/center, low burned timber in the middle, and a loose incomplete ring of gray stones. Tiny muted amber residue remains within ash; no active flame or smoke. Fine grit and minor chips are nonidentity detail.",
+  "postprocessing": "None. Byte-exact native PNG copies to master.png and raw.png. No output cleanup, resizing, alpha editing or repository writes.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt",
+    "refinement-prompt.txt"
+  ],
+  "newSourceFootpointNative": [
+    643.0,
+    940
+  ],
+  "newSourceFootpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding.",
+  "initialGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f84e83aa-5445-42c3-8e88-f9f705292789.png",
+  "refinements": [
+    {
+      "prompt": "refinement-prompt.txt",
+      "editTarget": "candidate-v1.png",
+      "reason": "Initial ash surface had a distracting small tiled/mosaic pattern; built-in image edit simplified the ash regions while preserving pit geometry and native alpha.",
+      "preservedCandidate": "candidate-v1.png",
+      "postprocessing": "none"
+    }
+  ]
+}
