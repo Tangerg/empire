@@ -1,5 +1,6 @@
 import environmentManifestJson from '../../assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json';
 import twinHillsSceneJson from '../../assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json';
+import cemeterySceneJson from '../../assets/final-fantasy-v1/environment-builder-v1/scenes/c01-11.scene.json';
 import silverwoodSceneJson from '../../assets/final-fantasy-v1/environment-builder-v1/scenes/c01-15.scene.json';
 import {
   EnvironmentCatalog,
@@ -124,6 +125,7 @@ function readScene(document: SceneDocument): CandidateEnvironmentScene {
 const scenes = new Map<string, CandidateEnvironmentScene>([
   [twinHillsSceneJson.levelId, readScene(twinHillsSceneJson)],
   [silverwoodSceneJson.levelId, readScene(silverwoodSceneJson)],
+  [cemeterySceneJson.levelId, readScene(cemeterySceneJson)],
 ]);
 
 export function candidate01EnvironmentScene(levelId: string): CandidateEnvironmentScene | undefined {

@@ -1,0 +1,275 @@
+{
+  "kind": "complete actual BoardView offline SVG and source-alpha comparison, not live GPU",
+  "baseline": "current worktree; exact input hashes recorded",
+  "candidate": "current worktree; exact input hashes recorded",
+  "unchangedPngSources": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/graveyard-base@2x.png": "d91289837313c2196d0e1d47694032c64151224b1904d2d32444d18107df3141",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/stone-base@2x.png": "d3e6b7868425e315f280e8198fe952e3e603af2dcea262e5509aed8637fd584e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "986d0da8a5fffe61d34b7eca0a4cea7b3db3e0d3c0f136803e426d9cb13c2344",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "14965b98d009780ee104b29b34d4910ce5e0d221fc35ad06ec229ce725432b84",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/scenery-regional@2x.png": "18cb520839b735498ee56c499dd1d32ea6ebcb73b084207354a9a27454c41c7a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-skeleton-guard@2x.png": "65afc66a4ebfdda0681f4dee79463286e5fe574d9e3d9e6583d25815284e5572",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-inquisitor@2x.png": "eb2034b791f5b0f9298466749f8ef15eee44a962a82a80e169ae6a87b7983ade",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "b47e620fecd606de6ddbd524ab1b8a8e08970c3bbc74f9d3ad51ef34b0893a49",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ghost@2x.png": "d1b1d21357aae89f342ad3dd60c3242146c0b7a98984b6f6c507c3b56b73835e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-cemetery-colossus.png": "c62234c5e11988669652e9ab97f4ed984429740e3486044e2667311b9326b982",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger@2x.png": "27d13b44ade8852fd8551953b6ec55066ec9eae0349f3dc00181388f4cac1145",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ivra-growth@2x.png": "b11f59c346ff2888af9ac43766a8994ec1d83345c56856d266b04afcde6331ad"
+  },
+  "unchangedRuleDrawingIds": [
+    "terrain:0",
+    "terrain:1",
+    "actor:16",
+    "actor:20",
+    "terrain:2",
+    "actor:12",
+    "actor:13",
+    "actor:4",
+    "actor:18",
+    "actor:2",
+    "terrain:3",
+    "actor:11",
+    "terrain:4",
+    "actor:1",
+    "actor:6",
+    "terrain:5",
+    "actor:3",
+    "actor:14",
+    "actor:15",
+    "actor:5",
+    "actor:19",
+    "actor:7",
+    "actor:17",
+    "actor:21",
+    "terrain:6",
+    "actor:8",
+    "terrain:7",
+    "actor:9",
+    "actor:10"
+  ],
+  "viewport": [
+    0,
+    0,
+    852,
+    648
+  ],
+  "sceneContractDifferences": [
+    {
+      "level": "c01-11",
+      "fields": [
+        "underUnitsSha256"
+      ]
+    }
+  ],
+  "replayRuns": 60,
+  "replaySha256": "3ebce01a551fe642db90380e9fb774f0682c1d3a546e8ba81bb8fcab4d90e0d9",
+  "occlusion": [
+    {
+      "key": "north-echo",
+      "cell": [
+        7,
+        2
+      ],
+      "before": 0.0,
+      "after": 0.0
+    },
+    {
+      "key": "grave-inquisitor",
+      "cell": [
+        19,
+        3
+      ],
+      "before": 0.835758,
+      "after": 0.002422
+    },
+    {
+      "key": "echo-1",
+      "cell": [
+        9,
+        5
+      ],
+      "before": 0.332894,
+      "after": 0.332894
+    },
+    {
+      "key": "echo-2",
+      "cell": [
+        13,
+        5
+      ],
+      "before": 0.395543,
+      "after": 0.395543
+    },
+    {
+      "key": "campaign-mirelle",
+      "cell": [
+        3,
+        6
+      ],
+      "before": 0.715928,
+      "after": 0.009783
+    },
+    {
+      "key": "east-ghost",
+      "cell": [
+        18,
+        6
+      ],
+      "before": 0.077112,
+      "after": 0.077112
+    },
+    {
+      "key": "campaign-torren",
+      "cell": [
+        2,
+        7
+      ],
+      "before": 0.376907,
+      "after": 0.376907
+    },
+    {
+      "key": "colossus",
+      "cell": [
+        11,
+        7
+      ],
+      "before": 0.524242,
+      "after": 0.524242
+    },
+    {
+      "key": "campaign-laiya",
+      "cell": [
+        1,
+        8
+      ],
+      "before": 0.041844,
+      "after": 0.041844
+    },
+    {
+      "key": "campaign-tasha",
+      "cell": [
+        4,
+        8
+      ],
+      "before": 0.992736,
+      "after": 0.427684
+    },
+    {
+      "key": "campaign-elin",
+      "cell": [
+        2,
+        9
+      ],
+      "before": 0.486898,
+      "after": 0.486898
+    },
+    {
+      "key": "echo-3",
+      "cell": [
+        10,
+        9
+      ],
+      "before": 0.758267,
+      "after": 0.0
+    },
+    {
+      "key": "echo-4",
+      "cell": [
+        14,
+        9
+      ],
+      "before": 0.955627,
+      "after": 0.004544
+    },
+    {
+      "key": "campaign-bran",
+      "cell": [
+        3,
+        10
+      ],
+      "before": 0.572299,
+      "after": 0.572299
+    },
+    {
+      "key": "west-ghost",
+      "cell": [
+        6,
+        10
+      ],
+      "before": 0.273194,
+      "after": 0.273194
+    },
+    {
+      "key": "campaign-ivra",
+      "cell": [
+        5,
+        11
+      ],
+      "before": 0.085015,
+      "after": 0.085015
+    },
+    {
+      "key": "south-echo",
+      "cell": [
+        8,
+        12
+      ],
+      "before": 0.650699,
+      "after": 0.650699
+    },
+    {
+      "key": "ossuary-guard",
+      "cell": [
+        17,
+        12
+      ],
+      "before": 0.619055,
+      "after": 0.619055
+    },
+    {
+      "key": "gravekeeper-escort",
+      "cell": [
+        1,
+        13
+      ],
+      "before": 0.068745,
+      "after": 0.068745
+    },
+    {
+      "key": "cemetery-shield",
+      "cell": [
+        4,
+        14
+      ],
+      "before": 0.059355,
+      "after": 0.059355
+    },
+    {
+      "key": "cemetery-bow",
+      "cell": [
+        7,
+        14
+      ],
+      "before": 0.628678,
+      "after": 0.628678
+    }
+  ],
+  "limitations": [
+    "Initial static pose and raw alpha overlap, not visual recognition or all animations",
+    "Debug capture uses empty hidden-unit set; production visibility is not inferred from the 21-actor fixture",
+    "Tasha retains 42.8% overlap from unchanged neighboring dead trees plus local low dressing",
+    "Five other actors retain over 50% overlap; rule buildings, frame and mission markers stay unchanged"
+  ]
+}

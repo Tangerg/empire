@@ -1,0 +1,1700 @@
+{
+  "kind": "actual individual scene drawings at world-aligned native pixels; source actor sprite only; all later standing and frame drawings",
+  "limitations": [
+    "offline alpha overlap, not visual recognition or live GPU",
+    "CSS shadow filters omitted"
+  ],
+  "actorCount": 21,
+  "drawingCount": 262,
+  "actors": [
+    {
+      "id": "actor:16",
+      "actorId": 16,
+      "key": "north-echo",
+      "type": "c01.skeleton-guard",
+      "cell": [
+        7,
+        2
+      ],
+      "facing": "west",
+      "origin": [
+        224,
+        64
+      ],
+      "worldFoot": [
+        240,
+        95
+      ],
+      "displayIndex": 27,
+      "cropOrigin": [
+        112,
+        -97
+      ],
+      "spriteArea": 1027.3412,
+      "occludedFraction": 0.0,
+      "covering": []
+    },
+    {
+      "id": "actor:20",
+      "actorId": 20,
+      "key": "grave-inquisitor",
+      "type": "c01.inquisitor",
+      "cell": [
+        19,
+        3
+      ],
+      "facing": "west",
+      "origin": [
+        608,
+        96
+      ],
+      "worldFoot": [
+        624,
+        127
+      ],
+      "displayIndex": 40,
+      "cropOrigin": [
+        496,
+        -65
+      ],
+      "spriteArea": 1124.7961,
+      "occludedFraction": 0.835758,
+      "covering": [
+        {
+          "id": "scenery:56",
+          "layer": "scenery",
+          "index": 56,
+          "origin": [
+            627.10383,
+            165.76
+          ],
+          "worldFoot": [
+            627.10383,
+            165.76
+          ],
+          "displayIndex": 60,
+          "cellId": "oak-grove-dense",
+          "atlas": "forest-temperate",
+          "cropOrigin": [
+            499,
+            -27
+          ],
+          "pairwiseOverlap": 0.835739
+        },
+        {
+          "id": "scenery:66",
+          "layer": "scenery",
+          "index": 66,
+          "origin": [
+            625.79208,
+            197.76
+          ],
+          "worldFoot": [
+            625.79208,
+            197.76
+          ],
+          "displayIndex": 72,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            497,
+            5
+          ],
+          "pairwiseOverlap": 0.002422
+        }
+      ]
+    },
+    {
+      "id": "actor:12",
+      "actorId": 12,
+      "key": "echo-1",
+      "type": "c01.skeleton-guard",
+      "cell": [
+        9,
+        5
+      ],
+      "facing": "west",
+      "origin": [
+        288,
+        160
+      ],
+      "worldFoot": [
+        304,
+        191
+      ],
+      "displayIndex": 63,
+      "cropOrigin": [
+        176,
+        -1
+      ],
+      "spriteArea": 1027.3412,
+      "occludedFraction": 0.332894,
+      "covering": [
+        {
+          "id": "scenery:61",
+          "layer": "scenery",
+          "index": 61,
+          "origin": [
+            306.0538,
+            197.76
+          ],
+          "worldFoot": [
+            306.0538,
+            197.76
+          ],
+          "displayIndex": 67,
+          "cellId": "grave-cross-cluster",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            178,
+            5
+          ],
+          "pairwiseOverlap": 0.332894
+        }
+      ]
+    },
+    {
+      "id": "actor:13",
+      "actorId": 13,
+      "key": "echo-2",
+      "type": "c01.skeleton-guard",
+      "cell": [
+        13,
+        5
+      ],
+      "facing": "west",
+      "origin": [
+        416,
+        160
+      ],
+      "worldFoot": [
+        432,
+        191
+      ],
+      "displayIndex": 64,
+      "cropOrigin": [
+        304,
+        -1
+      ],
+      "spriteArea": 1027.3412,
+      "occludedFraction": 0.395543,
+      "covering": [
+        {
+          "id": "scenery:62",
+          "layer": "scenery",
+          "index": 62,
+          "origin": [
+            434.28738,
+            197.76
+          ],
+          "worldFoot": [
+            434.28738,
+            197.76
+          ],
+          "displayIndex": 68,
+          "cellId": "grave-marker-lantern",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            306,
+            5
+          ],
+          "pairwiseOverlap": 0.357755
+        },
+        {
+          "id": "scenery:74",
+          "layer": "scenery",
+          "index": 74,
+          "origin": [
+            464.17496,
+            229.76
+          ],
+          "worldFoot": [
+            464.17496,
+            229.76
+          ],
+          "displayIndex": 82,
+          "cellId": "mixed-forest-edge",
+          "atlas": "forest-temperate",
+          "cropOrigin": [
+            336,
+            37
+          ],
+          "pairwiseOverlap": 0.152309
+        },
+        {
+          "id": "scenery:72",
+          "layer": "scenery",
+          "index": 72,
+          "origin": [
+            397.5907,
+            229.76
+          ],
+          "worldFoot": [
+            397.5907,
+            229.76
+          ],
+          "displayIndex": 80,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            269,
+            37
+          ],
+          "pairwiseOverlap": 0.052955
+        },
+        {
+          "id": "scenery:73",
+          "layer": "scenery",
+          "index": 73,
+          "origin": [
+            429.01464,
+            229.76
+          ],
+          "worldFoot": [
+            429.01464,
+            229.76
+          ],
+          "displayIndex": 81,
+          "cellId": "grave-cross-cluster",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            301,
+            37
+          ],
+          "pairwiseOverlap": 0.015514
+        }
+      ]
+    },
+    {
+      "id": "actor:4",
+      "actorId": 4,
+      "key": "campaign-mirelle",
+      "type": "c01.mirelle",
+      "cell": [
+        3,
+        6
+      ],
+      "facing": "east",
+      "origin": [
+        96,
+        192
+      ],
+      "worldFoot": [
+        112,
+        223
+      ],
+      "displayIndex": 73,
+      "cropOrigin": [
+        -16,
+        31
+      ],
+      "spriteArea": 1249.8353,
+      "occludedFraction": 0.715928,
+      "covering": [
+        {
+          "id": "scenery:69",
+          "layer": "scenery",
+          "index": 69,
+          "origin": [
+            80.31995,
+            229.76
+          ],
+          "worldFoot": [
+            80.31995,
+            229.76
+          ],
+          "displayIndex": 77,
+          "cellId": "pine-cluster",
+          "atlas": "forest-existing",
+          "cropOrigin": [
+            -48,
+            37
+          ],
+          "pairwiseOverlap": 0.513084
+        },
+        {
+          "id": "scenery:70",
+          "layer": "scenery",
+          "index": 70,
+          "origin": [
+            112.53874,
+            229.76
+          ],
+          "worldFoot": [
+            112.53874,
+            229.76
+          ],
+          "displayIndex": 78,
+          "cellId": "grave-cross-cluster",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            -16,
+            37
+          ],
+          "pairwiseOverlap": 0.38563
+        },
+        {
+          "id": "scenery:78",
+          "layer": "scenery",
+          "index": 78,
+          "origin": [
+            112.99606,
+            261.76
+          ],
+          "worldFoot": [
+            112.99606,
+            261.76
+          ],
+          "displayIndex": 89,
+          "cellId": "grave-cross-cluster",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            -16,
+            69
+          ],
+          "pairwiseOverlap": 0.009762
+        }
+      ]
+    },
+    {
+      "id": "actor:18",
+      "actorId": 18,
+      "key": "east-ghost",
+      "type": "c01.ghost",
+      "cell": [
+        18,
+        6
+      ],
+      "facing": "west",
+      "origin": [
+        576,
+        192
+      ],
+      "worldFoot": [
+        592,
+        223
+      ],
+      "displayIndex": 74,
+      "cropOrigin": [
+        464,
+        31
+      ],
+      "spriteArea": 613.4667,
+      "occludedFraction": 0.077112,
+      "covering": [
+        {
+          "id": "scenery:75",
+          "layer": "scenery",
+          "index": 75,
+          "origin": [
+            623.751,
+            229.76
+          ],
+          "worldFoot": [
+            623.751,
+            229.76
+          ],
+          "displayIndex": 83,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            495,
+            37
+          ],
+          "pairwiseOverlap": 0.077112
+        }
+      ]
+    },
+    {
+      "id": "actor:2",
+      "actorId": 2,
+      "key": "campaign-torren",
+      "type": "c01.swordsman",
+      "cell": [
+        2,
+        7
+      ],
+      "facing": "east",
+      "origin": [
+        64,
+        224
+      ],
+      "worldFoot": [
+        80,
+        255
+      ],
+      "displayIndex": 84,
+      "cropOrigin": [
+        -48,
+        63
+      ],
+      "spriteArea": 1489.3961,
+      "occludedFraction": 0.376907,
+      "covering": [
+        {
+          "id": "terrain:4",
+          "layer": "terrain",
+          "index": 4,
+          "origin": [
+            32,
+            256
+          ],
+          "worldFoot": [
+            48,
+            287
+          ],
+          "displayIndex": 99,
+          "cropOrigin": [
+            -80,
+            95
+          ],
+          "pairwiseOverlap": 0.264822
+        },
+        {
+          "id": "actor:1",
+          "actorId": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            1,
+            8
+          ],
+          "facing": "east",
+          "origin": [
+            32,
+            256
+          ],
+          "worldFoot": [
+            48,
+            287
+          ],
+          "displayIndex": 100,
+          "cropOrigin": [
+            -80,
+            95
+          ],
+          "pairwiseOverlap": 0.124071
+        },
+        {
+          "id": "scenery:78",
+          "layer": "scenery",
+          "index": 78,
+          "origin": [
+            112.99606,
+            261.76
+          ],
+          "worldFoot": [
+            112.99606,
+            261.76
+          ],
+          "displayIndex": 89,
+          "cellId": "grave-cross-cluster",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            -16,
+            69
+          ],
+          "pairwiseOverlap": 0.094685
+        },
+        {
+          "id": "scenery:77",
+          "layer": "scenery",
+          "index": 77,
+          "origin": [
+            47.60934,
+            261.76
+          ],
+          "worldFoot": [
+            47.60934,
+            261.76
+          ],
+          "displayIndex": 88,
+          "cellId": "grave-cross-cluster",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            -81,
+            69
+          ],
+          "pairwiseOverlap": 0.042536
+        }
+      ]
+    },
+    {
+      "id": "actor:11",
+      "actorId": 11,
+      "key": "colossus",
+      "type": "c01.cemetery-colossus",
+      "cell": [
+        11,
+        7
+      ],
+      "facing": "west",
+      "origin": [
+        352,
+        224
+      ],
+      "worldFoot": [
+        368,
+        255
+      ],
+      "displayIndex": 86,
+      "cropOrigin": [
+        240,
+        63
+      ],
+      "spriteArea": 2276.8275,
+      "occludedFraction": 0.524242,
+      "covering": [
+        {
+          "id": "scenery:94",
+          "layer": "scenery",
+          "index": 94,
+          "origin": [
+            364.91831,
+            293.76
+          ],
+          "worldFoot": [
+            364.91831,
+            293.76
+          ],
+          "displayIndex": 109,
+          "cellId": "mixed-forest-autumn",
+          "atlas": "forest-temperate",
+          "cropOrigin": [
+            236,
+            101
+          ],
+          "pairwiseOverlap": 0.344642
+        },
+        {
+          "id": "scenery:82",
+          "layer": "scenery",
+          "index": 82,
+          "origin": [
+            337.20204,
+            261.76
+          ],
+          "worldFoot": [
+            337.20204,
+            261.76
+          ],
+          "displayIndex": 93,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            209,
+            69
+          ],
+          "pairwiseOverlap": 0.161139
+        },
+        {
+          "id": "scenery:83",
+          "layer": "scenery",
+          "index": 83,
+          "origin": [
+            397.58254,
+            261.76
+          ],
+          "worldFoot": [
+            397.58254,
+            261.76
+          ],
+          "displayIndex": 94,
+          "cellId": "grave-signboards",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            269,
+            69
+          ],
+          "pairwiseOverlap": 0.158548
+        },
+        {
+          "id": "scenery:93",
+          "layer": "scenery",
+          "index": 93,
+          "origin": [
+            338.5614,
+            293.76
+          ],
+          "worldFoot": [
+            338.5614,
+            293.76
+          ],
+          "displayIndex": 108,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            210,
+            101
+          ],
+          "pairwiseOverlap": 0.030069
+        }
+      ]
+    },
+    {
+      "id": "actor:1",
+      "actorId": 1,
+      "key": "campaign-laiya",
+      "type": "c01.laiya",
+      "cell": [
+        1,
+        8
+      ],
+      "facing": "east",
+      "origin": [
+        32,
+        256
+      ],
+      "worldFoot": [
+        48,
+        287
+      ],
+      "displayIndex": 100,
+      "cropOrigin": [
+        -80,
+        95
+      ],
+      "spriteArea": 1568.2,
+      "occludedFraction": 0.041844,
+      "covering": [
+        {
+          "id": "actor:3",
+          "actorId": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            2,
+            9
+          ],
+          "facing": "east",
+          "origin": [
+            64,
+            288
+          ],
+          "worldFoot": [
+            80,
+            319
+          ],
+          "displayIndex": 114,
+          "cropOrigin": [
+            -48,
+            127
+          ],
+          "pairwiseOverlap": 0.028994
+        },
+        {
+          "id": "scenery:88",
+          "layer": "scenery",
+          "index": 88,
+          "origin": [
+            14.99998,
+            293.76
+          ],
+          "worldFoot": [
+            14.99998,
+            293.76
+          ],
+          "displayIndex": 103,
+          "cellId": "grave-cross-cluster",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            -114,
+            101
+          ],
+          "pairwiseOverlap": 0.01285
+        }
+      ]
+    },
+    {
+      "id": "actor:6",
+      "actorId": 6,
+      "key": "campaign-tasha",
+      "type": "c01.tasha",
+      "cell": [
+        4,
+        8
+      ],
+      "facing": "east",
+      "origin": [
+        128,
+        256
+      ],
+      "worldFoot": [
+        144,
+        287
+      ],
+      "displayIndex": 101,
+      "cropOrigin": [
+        16,
+        95
+      ],
+      "spriteArea": 1197.5804,
+      "occludedFraction": 0.992736,
+      "covering": [
+        {
+          "id": "scenery:90",
+          "layer": "scenery",
+          "index": 90,
+          "origin": [
+            147.34611,
+            293.76
+          ],
+          "worldFoot": [
+            147.34611,
+            293.76
+          ],
+          "displayIndex": 105,
+          "cellId": "pine-cluster",
+          "atlas": "forest-existing",
+          "cropOrigin": [
+            19,
+            101
+          ],
+          "pairwiseOverlap": 0.983994
+        },
+        {
+          "id": "scenery:101",
+          "layer": "scenery",
+          "index": 101,
+          "origin": [
+            145.15284,
+            325.76
+          ],
+          "worldFoot": [
+            145.15284,
+            325.76
+          ],
+          "displayIndex": 119,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            17,
+            133
+          ],
+          "pairwiseOverlap": 0.229609
+        },
+        {
+          "id": "scenery:91",
+          "layer": "scenery",
+          "index": 91,
+          "origin": [
+            173.32124,
+            293.76
+          ],
+          "worldFoot": [
+            173.32124,
+            293.76
+          ],
+          "displayIndex": 106,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            45,
+            101
+          ],
+          "pairwiseOverlap": 0.177084
+        },
+        {
+          "id": "scenery:89",
+          "layer": "scenery",
+          "index": 89,
+          "origin": [
+            112.79518,
+            293.76
+          ],
+          "worldFoot": [
+            112.79518,
+            293.76
+          ],
+          "displayIndex": 104,
+          "cellId": "grave-signboards",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            -16,
+            101
+          ],
+          "pairwiseOverlap": 0.032504
+        }
+      ]
+    },
+    {
+      "id": "actor:3",
+      "actorId": 3,
+      "key": "campaign-elin",
+      "type": "c01.archer",
+      "cell": [
+        2,
+        9
+      ],
+      "facing": "east",
+      "origin": [
+        64,
+        288
+      ],
+      "worldFoot": [
+        80,
+        319
+      ],
+      "displayIndex": 114,
+      "cropOrigin": [
+        -48,
+        127
+      ],
+      "spriteArea": 1587.5176,
+      "occludedFraction": 0.486898,
+      "covering": [
+        {
+          "id": "scenery:109",
+          "layer": "scenery",
+          "index": 109,
+          "origin": [
+            76.49765,
+            357.76
+          ],
+          "worldFoot": [
+            76.49765,
+            357.76
+          ],
+          "displayIndex": 129,
+          "cellId": "pine-mature-b",
+          "atlas": "forest-existing",
+          "cropOrigin": [
+            -52,
+            165
+          ],
+          "pairwiseOverlap": 0.429538
+        },
+        {
+          "id": "scenery:100",
+          "layer": "scenery",
+          "index": 100,
+          "origin": [
+            113.84296,
+            325.76
+          ],
+          "worldFoot": [
+            113.84296,
+            325.76
+          ],
+          "displayIndex": 118,
+          "cellId": "grave-cross-cluster",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            -15,
+            133
+          ],
+          "pairwiseOverlap": 0.057971
+        }
+      ]
+    },
+    {
+      "id": "actor:14",
+      "actorId": 14,
+      "key": "echo-3",
+      "type": "c01.ghost",
+      "cell": [
+        10,
+        9
+      ],
+      "facing": "west",
+      "origin": [
+        320,
+        288
+      ],
+      "worldFoot": [
+        336,
+        319
+      ],
+      "displayIndex": 115,
+      "cropOrigin": [
+        208,
+        127
+      ],
+      "spriteArea": 613.4667,
+      "occludedFraction": 0.758267,
+      "covering": [
+        {
+          "id": "scenery:103",
+          "layer": "scenery",
+          "index": 103,
+          "origin": [
+            338.39988,
+            325.76
+          ],
+          "worldFoot": [
+            338.39988,
+            325.76
+          ],
+          "displayIndex": 121,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            210,
+            133
+          ],
+          "pairwiseOverlap": 0.758267
+        }
+      ]
+    },
+    {
+      "id": "actor:15",
+      "actorId": 15,
+      "key": "echo-4",
+      "type": "c01.ghost",
+      "cell": [
+        14,
+        9
+      ],
+      "facing": "west",
+      "origin": [
+        448,
+        288
+      ],
+      "worldFoot": [
+        464,
+        319
+      ],
+      "displayIndex": 116,
+      "cropOrigin": [
+        336,
+        127
+      ],
+      "spriteArea": 613.4667,
+      "occludedFraction": 0.955627,
+      "covering": [
+        {
+          "id": "scenery:114",
+          "layer": "scenery",
+          "index": 114,
+          "origin": [
+            464.29394,
+            357.76
+          ],
+          "worldFoot": [
+            464.29394,
+            357.76
+          ],
+          "displayIndex": 134,
+          "cellId": "oak-ancient",
+          "atlas": "forest-temperate",
+          "cropOrigin": [
+            336,
+            165
+          ],
+          "pairwiseOverlap": 0.952234
+        },
+        {
+          "id": "scenery:105",
+          "layer": "scenery",
+          "index": 105,
+          "origin": [
+            464.83064,
+            325.76
+          ],
+          "worldFoot": [
+            464.83064,
+            325.76
+          ],
+          "displayIndex": 123,
+          "cellId": "grave-signboards",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            336,
+            133
+          ],
+          "pairwiseOverlap": 0.422563
+        },
+        {
+          "id": "scenery:104",
+          "layer": "scenery",
+          "index": 104,
+          "origin": [
+            434.4186,
+            325.76
+          ],
+          "worldFoot": [
+            434.4186,
+            325.76
+          ],
+          "displayIndex": 122,
+          "cellId": "grave-signboards",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            306,
+            133
+          ],
+          "pairwiseOverlap": 0.004544
+        }
+      ]
+    },
+    {
+      "id": "actor:5",
+      "actorId": 5,
+      "key": "campaign-bran",
+      "type": "c01.bran",
+      "cell": [
+        3,
+        10
+      ],
+      "facing": "east",
+      "origin": [
+        96,
+        320
+      ],
+      "worldFoot": [
+        112,
+        351
+      ],
+      "displayIndex": 127,
+      "cropOrigin": [
+        -16,
+        159
+      ],
+      "spriteArea": 1104.7647,
+      "occludedFraction": 0.572299,
+      "covering": [
+        {
+          "id": "scenery:110",
+          "layer": "scenery",
+          "index": 110,
+          "origin": [
+            112.57204,
+            357.76
+          ],
+          "worldFoot": [
+            112.57204,
+            357.76
+          ],
+          "displayIndex": 130,
+          "cellId": "grave-marker-lantern",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            -16,
+            165
+          ],
+          "pairwiseOverlap": 0.480379
+        },
+        {
+          "id": "scenery:120",
+          "layer": "scenery",
+          "index": 120,
+          "origin": [
+            112.4791,
+            389.76
+          ],
+          "worldFoot": [
+            112.4791,
+            389.76
+          ],
+          "displayIndex": 141,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            -16,
+            197
+          ],
+          "pairwiseOverlap": 0.163504
+        },
+        {
+          "id": "scenery:109",
+          "layer": "scenery",
+          "index": 109,
+          "origin": [
+            76.49765,
+            357.76
+          ],
+          "worldFoot": [
+            76.49765,
+            357.76
+          ],
+          "displayIndex": 129,
+          "cellId": "pine-mature-b",
+          "atlas": "forest-existing",
+          "cropOrigin": [
+            -52,
+            165
+          ],
+          "pairwiseOverlap": 0.079697
+        },
+        {
+          "id": "scenery:111",
+          "layer": "scenery",
+          "index": 111,
+          "origin": [
+            143.99232,
+            357.76
+          ],
+          "worldFoot": [
+            143.99232,
+            357.76
+          ],
+          "displayIndex": 131,
+          "cellId": "grave-marker-lantern",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            15,
+            165
+          ],
+          "pairwiseOverlap": 0.003149
+        }
+      ]
+    },
+    {
+      "id": "actor:19",
+      "actorId": 19,
+      "key": "west-ghost",
+      "type": "c01.ghost",
+      "cell": [
+        6,
+        10
+      ],
+      "facing": "west",
+      "origin": [
+        192,
+        320
+      ],
+      "worldFoot": [
+        208,
+        351
+      ],
+      "displayIndex": 128,
+      "cropOrigin": [
+        80,
+        159
+      ],
+      "spriteArea": 613.4667,
+      "occludedFraction": 0.273194,
+      "covering": [
+        {
+          "id": "scenery:121",
+          "layer": "scenery",
+          "index": 121,
+          "origin": [
+            209.32522,
+            389.76
+          ],
+          "worldFoot": [
+            209.32522,
+            389.76
+          ],
+          "displayIndex": 142,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            81,
+            197
+          ],
+          "pairwiseOverlap": 0.271448
+        },
+        {
+          "id": "actor:7",
+          "actorId": 7,
+          "key": "campaign-ivra",
+          "type": "c01.ivra",
+          "cell": [
+            5,
+            11
+          ],
+          "facing": "east",
+          "origin": [
+            160,
+            352
+          ],
+          "worldFoot": [
+            176,
+            383
+          ],
+          "displayIndex": 139,
+          "cropOrigin": [
+            48,
+            191
+          ],
+          "pairwiseOverlap": 0.002785
+        }
+      ]
+    },
+    {
+      "id": "actor:7",
+      "actorId": 7,
+      "key": "campaign-ivra",
+      "type": "c01.ivra",
+      "cell": [
+        5,
+        11
+      ],
+      "facing": "east",
+      "origin": [
+        160,
+        352
+      ],
+      "worldFoot": [
+        176,
+        383
+      ],
+      "displayIndex": 139,
+      "cropOrigin": [
+        48,
+        191
+      ],
+      "spriteArea": 2130.4,
+      "occludedFraction": 0.085015,
+      "covering": [
+        {
+          "id": "scenery:121",
+          "layer": "scenery",
+          "index": 121,
+          "origin": [
+            209.32522,
+            389.76
+          ],
+          "worldFoot": [
+            209.32522,
+            389.76
+          ],
+          "displayIndex": 142,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            81,
+            197
+          ],
+          "pairwiseOverlap": 0.079079
+        },
+        {
+          "id": "scenery:120",
+          "layer": "scenery",
+          "index": 120,
+          "origin": [
+            112.4791,
+            389.76
+          ],
+          "worldFoot": [
+            112.4791,
+            389.76
+          ],
+          "displayIndex": 141,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            -16,
+            197
+          ],
+          "pairwiseOverlap": 0.005819
+        }
+      ]
+    },
+    {
+      "id": "actor:17",
+      "actorId": 17,
+      "key": "south-echo",
+      "type": "c01.skeleton-guard",
+      "cell": [
+        8,
+        12
+      ],
+      "facing": "west",
+      "origin": [
+        256,
+        384
+      ],
+      "worldFoot": [
+        272,
+        415
+      ],
+      "displayIndex": 151,
+      "cropOrigin": [
+        144,
+        223
+      ],
+      "spriteArea": 1027.3412,
+      "occludedFraction": 0.650699,
+      "covering": [
+        {
+          "id": "scenery:133",
+          "layer": "scenery",
+          "index": 133,
+          "origin": [
+            269.79602,
+            421.76
+          ],
+          "worldFoot": [
+            269.79602,
+            421.76
+          ],
+          "displayIndex": 156,
+          "cellId": "grave-cross-cluster",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            141,
+            229
+          ],
+          "pairwiseOverlap": 0.52484
+        },
+        {
+          "id": "scenery:143",
+          "layer": "scenery",
+          "index": 143,
+          "origin": [
+            270.42248,
+            453.76
+          ],
+          "worldFoot": [
+            270.42248,
+            453.76
+          ],
+          "displayIndex": 169,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            142,
+            261
+          ],
+          "pairwiseOverlap": 0.172789
+        },
+        {
+          "id": "scenery:134",
+          "layer": "scenery",
+          "index": 134,
+          "origin": [
+            305.39362,
+            421.76
+          ],
+          "worldFoot": [
+            305.39362,
+            421.76
+          ],
+          "displayIndex": 157,
+          "cellId": "grave-signboards",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            177,
+            229
+          ],
+          "pairwiseOverlap": 0.054519
+        }
+      ]
+    },
+    {
+      "id": "actor:21",
+      "actorId": 21,
+      "key": "ossuary-guard",
+      "type": "c01.skeleton-guard",
+      "cell": [
+        17,
+        12
+      ],
+      "facing": "west",
+      "origin": [
+        544,
+        384
+      ],
+      "worldFoot": [
+        560,
+        415
+      ],
+      "displayIndex": 152,
+      "cropOrigin": [
+        432,
+        223
+      ],
+      "spriteArea": 1027.3412,
+      "occludedFraction": 0.619055,
+      "covering": [
+        {
+          "id": "scenery:137",
+          "layer": "scenery",
+          "index": 137,
+          "origin": [
+            557.08328,
+            421.76
+          ],
+          "worldFoot": [
+            557.08328,
+            421.76
+          ],
+          "displayIndex": 160,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            429,
+            229
+          ],
+          "pairwiseOverlap": 0.618532
+        },
+        {
+          "id": "scenery:155",
+          "layer": "scenery",
+          "index": 155,
+          "origin": [
+            557.60447,
+            485.76
+          ],
+          "worldFoot": [
+            557.60447,
+            485.76
+          ],
+          "displayIndex": 183,
+          "cellId": "pine-mature-a",
+          "atlas": "forest-existing",
+          "cropOrigin": [
+            429,
+            293
+          ],
+          "pairwiseOverlap": 0.065678
+        }
+      ]
+    },
+    {
+      "id": "actor:8",
+      "actorId": 8,
+      "key": "gravekeeper-escort",
+      "type": "c01.gravekeeper",
+      "cell": [
+        1,
+        13
+      ],
+      "facing": "east",
+      "origin": [
+        32,
+        416
+      ],
+      "worldFoot": [
+        48,
+        447
+      ],
+      "displayIndex": 163,
+      "cropOrigin": [
+        -80,
+        255
+      ],
+      "spriteArea": 1249.8353,
+      "occludedFraction": 0.068745,
+      "covering": [
+        {
+          "id": "scenery:139",
+          "layer": "scenery",
+          "index": 139,
+          "origin": [
+            81.49862,
+            453.76
+          ],
+          "worldFoot": [
+            81.49862,
+            453.76
+          ],
+          "displayIndex": 165,
+          "cellId": "grave-cross-cluster",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            -47,
+            261
+          ],
+          "pairwiseOverlap": 0.041826
+        },
+        {
+          "id": "scenery:149",
+          "layer": "scenery",
+          "index": 149,
+          "origin": [
+            46.68432,
+            485.76
+          ],
+          "worldFoot": [
+            46.68432,
+            485.76
+          ],
+          "displayIndex": 177,
+          "cellId": "grave-cross-cluster",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            -82,
+            293
+          ],
+          "pairwiseOverlap": 0.026919
+        }
+      ]
+    },
+    {
+      "id": "actor:9",
+      "actorId": 9,
+      "key": "cemetery-shield",
+      "type": "c01.banner-guard",
+      "cell": [
+        4,
+        14
+      ],
+      "facing": "east",
+      "origin": [
+        128,
+        448
+      ],
+      "worldFoot": [
+        144,
+        479
+      ],
+      "displayIndex": 174,
+      "cropOrigin": [
+        16,
+        287
+      ],
+      "spriteArea": 1568.2,
+      "occludedFraction": 0.059355,
+      "covering": [
+        {
+          "id": "scenery:163",
+          "layer": "scenery",
+          "index": 163,
+          "origin": [
+            178.27952,
+            517.76
+          ],
+          "worldFoot": [
+            178.27952,
+            517.76
+          ],
+          "displayIndex": 191,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            50,
+            325
+          ],
+          "pairwiseOverlap": 0.04235
+        },
+        {
+          "id": "scenery:151",
+          "layer": "scenery",
+          "index": 151,
+          "origin": [
+            176.65316,
+            485.76
+          ],
+          "worldFoot": [
+            176.65316,
+            485.76
+          ],
+          "displayIndex": 179,
+          "cellId": "grave-cross-cluster",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            48,
+            293
+          ],
+          "pairwiseOverlap": 0.020991
+        }
+      ]
+    },
+    {
+      "id": "actor:10",
+      "actorId": 10,
+      "key": "cemetery-bow",
+      "type": "c01.archer",
+      "cell": [
+        7,
+        14
+      ],
+      "facing": "east",
+      "origin": [
+        224,
+        448
+      ],
+      "worldFoot": [
+        240,
+        479
+      ],
+      "displayIndex": 175,
+      "cropOrigin": [
+        112,
+        287
+      ],
+      "spriteArea": 1587.5176,
+      "occludedFraction": 0.628678,
+      "covering": [
+        {
+          "id": "scenery:153",
+          "layer": "scenery",
+          "index": 153,
+          "origin": [
+            238.98264,
+            485.76
+          ],
+          "worldFoot": [
+            238.98264,
+            485.76
+          ],
+          "displayIndex": 181,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            110,
+            293
+          ],
+          "pairwiseOverlap": 0.438427
+        },
+        {
+          "id": "scenery:165",
+          "layer": "scenery",
+          "index": 165,
+          "origin": [
+            241.1154,
+            517.76
+          ],
+          "worldFoot": [
+            241.1154,
+            517.76
+          ],
+          "displayIndex": 193,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            113,
+            325
+          ],
+          "pairwiseOverlap": 0.196751
+        },
+        {
+          "id": "scenery:152",
+          "layer": "scenery",
+          "index": 152,
+          "origin": [
+            203.9068,
+            485.76
+          ],
+          "worldFoot": [
+            203.9068,
+            485.76
+          ],
+          "displayIndex": 180,
+          "cellId": "pine-mature-b",
+          "atlas": "forest-existing",
+          "cropOrigin": [
+            75,
+            293
+          ],
+          "pairwiseOverlap": 0.141549
+        },
+        {
+          "id": "scenery:166",
+          "layer": "scenery",
+          "index": 166,
+          "origin": [
+            270.8843,
+            517.76
+          ],
+          "worldFoot": [
+            270.8843,
+            517.76
+          ],
+          "displayIndex": 194,
+          "cellId": "grave-dead-tree",
+          "atlas": "scenery-regional",
+          "cropOrigin": [
+            142,
+            325
+          ],
+          "pairwiseOverlap": 0.057096
+        }
+      ]
+    }
+  ]
+}

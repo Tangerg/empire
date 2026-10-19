@@ -340,13 +340,13 @@ describe('two backends draw the same board', () => {
     expect(svg.element.querySelector('.selection-cue')).toBeNull();
   });
 
-  it('never projects a hidden selected actor from the actual BoardView overlay', () => {
-    const level = CANDIDATE_01_LEVELS.find((candidate) => candidate.id === 'c01-02')!;
+  it.each([['c01-02', 'bridge-cleric'], ['c01-11', 'echo-4']])('never projects a hidden selected actor from the actual BoardView overlay (%s)', (levelId, unitKey) => {
+    const level = CANDIDATE_01_LEVELS.find((candidate) => candidate.id === levelId)!;
     const engine = createBattleEngine({ content: TEST_CATALOG });
     const state = engine.createState(level);
     const before = JSON.stringify(state);
-    const unit = state.units.find((actor) => actor.key === 'bridge-cleric')!;
-    const scene: BoardSurfaceScene = { width: 704, height: 448, originX: 0, originY: 0,
+    const unit = state.units.find((actor) => actor.key === unitKey)!;
+    const scene: BoardSurfaceScene = { width: state.map.width * 32, height: state.map.height * 32, originX: 0, originY: 0,
       shapeRendering: 'crispEdges', backdrop: '', foreground: '' };
     const svg = new SvgBoardSurface(scene);
     const gpu = new PixiBoardSurface(scene, { textures: new InstantTextures(), painter: new IdlePainter() });

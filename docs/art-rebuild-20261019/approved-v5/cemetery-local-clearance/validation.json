@@ -1,0 +1,45 @@
+{
+  "baseline": "d998fe43532873cc76e27884982dcb82b8690cf4",
+  "focusedTests": {
+    "passed": 42,
+    "files": 5,
+    "newCemeteryGuards": 5,
+    "actualCemeteryHiddenSelectionCase": true
+  },
+  "pythonAlphaAlgorithmTests": 4,
+  "typecheck": "passed",
+  "applicationBuilds": 4,
+  "sceneContracts": {
+    "count": 16,
+    "changed": [
+      {
+        "level": "c01-11",
+        "fields": [
+          "underUnitsSha256"
+        ]
+      }
+    ]
+  },
+  "replayCount": 60,
+  "replayBytesIdentical": true,
+  "productionChanges": {
+    "sceneRegistrationLines": 2,
+    "authoredCells": 7,
+    "canopyReplacements": 4,
+    "propContactShifts": 3,
+    "contactShiftLogicalY": -13.76,
+    "ruleOrActorEdits": 0,
+    "sourcePngEdits": 0
+  },
+  "samePngSourceCount": 24,
+  "fullRepositorySuite": "not rerun in sparse checkout; main validation remains separate",
+  "liveGpu": false,
+  "tashaEstimatedUnder30PercentTargetMet": false,
+  "remainingActorsAboveHalf": [
+    "colossus",
+    "campaign-bran",
+    "south-echo",
+    "ossuary-guard",
+    "cemetery-bow"
+  ]
+}

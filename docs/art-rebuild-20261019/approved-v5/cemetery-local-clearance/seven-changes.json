@@ -1,0 +1,156 @@
+[
+  {
+    "baselineVisualId": "scenery:90",
+    "terrainCell": [
+      4,
+      8
+    ],
+    "terrainId": "forest",
+    "classification": "pure procedural scenery generated from rule terrain, not a structure or trigger target",
+    "sourceCellId": "pine-cluster",
+    "sourceAtlas": "forest-existing",
+    "beforeWorldContact": [
+      147.34611,
+      293.76
+    ],
+    "afterWorldContact": [
+      147.34611,
+      293.76
+    ],
+    "action": "same-cell low fern-bed replacement, placement scale 0.48, original flip and contact",
+    "originalTransform": "translate(59.244 -97.433) scale(-1.249 1.249)",
+    "sourcePngSha256": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace"
+  },
+  {
+    "baselineVisualId": "scenery:114",
+    "terrainCell": [
+      14,
+      10
+    ],
+    "terrainId": "forest",
+    "classification": "pure procedural scenery generated from rule terrain, not a structure or trigger target",
+    "sourceCellId": "oak-ancient",
+    "sourceAtlas": "forest-temperate",
+    "beforeWorldContact": [
+      464.29394,
+      357.76
+    ],
+    "afterWorldContact": [
+      464.29394,
+      357.76
+    ],
+    "action": "same-cell low fern-bed replacement, placement scale 0.48, original flip and contact",
+    "originalTransform": "translate(-52.259 -89.644) scale(1.069)",
+    "sourcePngSha256": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992"
+  },
+  {
+    "baselineVisualId": "scenery:56",
+    "terrainCell": [
+      19,
+      4
+    ],
+    "terrainId": "forest",
+    "classification": "pure procedural scenery generated from rule terrain, not a structure or trigger target",
+    "sourceCellId": "oak-grove-dense",
+    "sourceAtlas": "forest-temperate",
+    "beforeWorldContact": [
+      627.10383,
+      165.76
+    ],
+    "afterWorldContact": [
+      627.10383,
+      165.76
+    ],
+    "action": "same-cell low fern-bed replacement, placement scale 0.48, original flip and contact",
+    "originalTransform": "translate(-57.906 -96.488) scale(1.210)",
+    "sourcePngSha256": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992"
+  },
+  {
+    "baselineVisualId": "scenery:69",
+    "terrainCell": [
+      2,
+      6
+    ],
+    "terrainId": "forest",
+    "classification": "pure procedural scenery generated from rule terrain, not a structure or trigger target",
+    "sourceCellId": "pine-cluster",
+    "sourceAtlas": "forest-existing",
+    "beforeWorldContact": [
+      80.31995,
+      229.76
+    ],
+    "afterWorldContact": [
+      80.31995,
+      229.76
+    ],
+    "action": "same-cell low fern-bed replacement, placement scale 0.48, original flip and contact",
+    "originalTransform": "translate(-56.127 -90.221) scale(1.156)",
+    "sourcePngSha256": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace"
+  },
+  {
+    "baselineVisualId": "scenery:70",
+    "terrainCell": [
+      3,
+      6
+    ],
+    "terrainId": "c01.graveyard",
+    "classification": "pure procedural scenery generated from rule terrain, not a structure or trigger target",
+    "sourceCellId": "grave-cross-cluster",
+    "sourceAtlas": "scenery-regional",
+    "beforeWorldContact": [
+      112.53874,
+      229.76
+    ],
+    "afterWorldContact": [
+      112.53874,
+      216.0
+    ],
+    "action": "retain original source/scale/flip, move contact 13.76 logical pixels north; ordinary depth order",
+    "originalTransform": "translate(30.137 -47.354) scale(-0.626 0.626)",
+    "sourcePngSha256": "18cb520839b735498ee56c499dd1d32ea6ebcb73b084207354a9a27454c41c7a"
+  },
+  {
+    "baselineVisualId": "scenery:103",
+    "terrainCell": [
+      10,
+      9
+    ],
+    "terrainId": "c01.graveyard",
+    "classification": "pure procedural scenery generated from rule terrain, not a structure or trigger target",
+    "sourceCellId": "grave-dead-tree",
+    "sourceAtlas": "scenery-regional",
+    "beforeWorldContact": [
+      338.39988,
+      325.76
+    ],
+    "afterWorldContact": [
+      338.39988,
+      312.0
+    ],
+    "action": "retain original source/scale/flip, move contact 13.76 logical pixels north; ordinary depth order",
+    "originalTransform": "translate(-44.055 -72.776) scale(0.920)",
+    "sourcePngSha256": "18cb520839b735498ee56c499dd1d32ea6ebcb73b084207354a9a27454c41c7a"
+  },
+  {
+    "baselineVisualId": "scenery:105",
+    "terrainCell": [
+      14,
+      9
+    ],
+    "terrainId": "c01.graveyard",
+    "classification": "pure procedural scenery generated from rule terrain, not a structure or trigger target",
+    "sourceCellId": "grave-signboards",
+    "sourceAtlas": "scenery-regional",
+    "beforeWorldContact": [
+      464.83064,
+      325.76
+    ],
+    "afterWorldContact": [
+      464.83064,
+      312.0
+    ],
+    "action": "retain original source/scale/flip, move contact 13.76 logical pixels north; ordinary depth order",
+    "originalTransform": "translate(25.009 -45.194) scale(-0.582 0.582)",
+    "sourcePngSha256": "18cb520839b735498ee56c499dd1d32ea6ebcb73b084207354a9a27454c41c7a"
+  }
+]
