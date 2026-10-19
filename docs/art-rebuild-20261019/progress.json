@@ -4214,7 +4214,12 @@
         "alphaReview": "needs imagegen perimeter revision: edgealpha2 exceeds established1 gate"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "87f37f599cc9ae442ac9a5cb8f09a56e5db1f84f75750897a4a9314ab8654455"
+      "sourceSha256": "87f37f599cc9ae442ac9a5cb8f09a56e5db1f84f75750897a4a9314ab8654455",
+      "revisionCandidate": {
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-drying-racks/revision-2/master.png",
+        "sha256": "4ca54c375810b28cbcf7ef9aff6f4f6fd3b00f895a3bb3d262ec9a7829bc19d4",
+        "status": "framing-and-alpha-review-pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-five-world-flags",
@@ -8613,7 +8618,11 @@
       "index": 14,
       "status": "pending",
       "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceIntegrity": {
+        "issue": "Original group crosses cell boundary; naive slot crops foliage",
+        "recovery": "Use reviewed complete master reference: boulder, central sapling, right fern; document corrected framing"
+      }
     },
     {
       "atlasId": "forest-temperate",
@@ -8621,7 +8630,11 @@
       "index": 15,
       "status": "pending",
       "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceIntegrity": {
+        "issue": "Original keyed master draws only15 groups; slot15 blank",
+        "recovery": "Documented semantic reconstruction: low moss/leaf litter/small fern/pebbles; catalog footprint1x1 obstruction0"
+      }
     }
   ],
   "baselineSemanticMismatches": [
