@@ -1,0 +1,341 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/walk-b/master.png"
+    },
+    "scale": 0.04746494066882417,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      831,
+      959
+    ],
+    "sourceFeet": {
+      "idle": [
+        831,
+        959
+      ],
+      "walk-a": [
+        833,
+        926
+      ],
+      "attack": [
+        694,
+        949
+      ],
+      "walk-b": [
+        714,
+        950
+      ]
+    },
+    "canvasPaddingTolerance": 1,
+    "registrationLimit": 7,
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -0.09492988133764833,
+        1.5663430420711975
+      ],
+      "attack": [
+        6.502696871628911,
+        0.4746494066882417
+      ],
+      "walk-b": [
+        5.553398058252427,
+        0.4271844660194175
+      ]
+    },
+    "registrationEvidence": "Floating torso registration uses belt buckle center minus fixed35.5 source pixels for x and connected wisp lowest y; no physical boot contact. Shared full canvas scale, no per-frame fit.",
+    "selection": "Near-opaque idle attempt01 selected to avoid opacity flicker against three near-opaque action poses; genuine exterior alpha retained. Translucent idle attempt02 preserved as alternative, not mixed into animation."
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    47.443365695792885,
+    49.51887810140238
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "3cc36db175643cd20f68a1fb9c1c7d5e8e6c07f50e354fae0445225cdd20bd12",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          253
+        ],
+        "transparentPixels": 5889,
+        "nearOpaquePixels": 520,
+        "edgeMax": 0,
+        "visibleBounds": [
+          33,
+          6,
+          60,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "3cc36db175643cd20f68a1fb9c1c7d5e8e6c07f50e354fae0445225cdd20bd12",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          253
+        ],
+        "transparentPixels": 23718,
+        "nearOpaquePixels": 2189,
+        "edgeMax": 0,
+        "visibleBounds": [
+          66,
+          11,
+          119,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/walk-a/master.png",
+      "registrationOffset": [
+        -0.09492988133764833,
+        1.5663430420711975
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "4213659c5cdc0110f1d3c4799aa4e4d1c5df9f40c983c0ab74cb0bfdbdd16476",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          253
+        ],
+        "transparentPixels": 5843,
+        "nearOpaquePixels": 541,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          8,
+          66,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/walk-a/master.png",
+      "registrationOffset": [
+        -0.09492988133764833,
+        1.5663430420711975
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "4213659c5cdc0110f1d3c4799aa4e4d1c5df9f40c983c0ab74cb0bfdbdd16476",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23504,
+        "nearOpaquePixels": 2320,
+        "edgeMax": 0,
+        "visibleBounds": [
+          51,
+          17,
+          133,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/attack/master.png",
+      "registrationOffset": [
+        6.502696871628911,
+        0.4746494066882417
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d2b95c9404061a89561541cbb242c1de6abd05b36fe21273ebebc2002afb9da5",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5750,
+        "nearOpaquePixels": 618,
+        "edgeMax": 0,
+        "visibleBounds": [
+          32,
+          6,
+          79,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/attack/master.png",
+      "registrationOffset": [
+        6.502696871628911,
+        0.4746494066882417
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d2b95c9404061a89561541cbb242c1de6abd05b36fe21273ebebc2002afb9da5",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23178,
+        "nearOpaquePixels": 2629,
+        "edgeMax": 0,
+        "visibleBounds": [
+          64,
+          12,
+          158,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/walk-b/master.png",
+      "registrationOffset": [
+        5.553398058252427,
+        0.4271844660194175
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "f31a9cba04426ecef6f037a54be770f83051daa57fa854cb0639a6eac490ef0d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5880,
+        "nearOpaquePixels": 517,
+        "edgeMax": 0,
+        "visibleBounds": [
+          39,
+          6,
+          70,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/walk-b/master.png",
+      "registrationOffset": [
+        5.553398058252427,
+        0.4271844660194175
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "f31a9cba04426ecef6f037a54be770f83051daa57fa854cb0639a6eac490ef0d",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 23650,
+        "nearOpaquePixels": 2233,
+        "edgeMax": 0,
+        "visibleBounds": [
+          78,
+          13,
+          139,
+          99
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

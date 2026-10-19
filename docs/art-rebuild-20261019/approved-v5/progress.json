@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 29,
+  "authoredFourPoseBundles": 30,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 215,
+  "formalRuntimeBoundTopics": 216,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1364,6 +1364,12 @@
       "export": "48px three-background semantic and alpha gates passed; faint raw radar speck preserved and invisible at48",
       "runtimeBinding": "canonical48px static resolver bound, noHD",
       "liveGame": "pending"
+    },
+    "C01-UNIT-GHOST": {
+      "raw": "four poses preserved; consistent near-opaque body chosen over mixed-alpha idle, genuine exterior transparency intact",
+      "export": "shared44/927 scale; waist-mark floating x anchor and connected-wisp y, opposite drifts and empty-hand touch visually reviewed",
+      "runtimeBinding": "canonical plus HD resolver and full c01-11 offline scene; footprint unchanged",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -1642,6 +1648,19 @@
       "registration": "fullcanvas124logical at[2,2]; originalanchor64,127 unchanged; measured contact differs",
       "liveGame": "pending",
       "evidence": "approved-v5/highland-index-export"
+    },
+    "surface-old-stone": {
+      "formalRuntimeBoundCells": [
+        "old-stone-1",
+        "old-stone-2",
+        "old-stone-3",
+        "old-stone-4"
+      ],
+      "status": "four original32/64catalog slots exported; tone0 base and tone3 paving also use128-world-period binding",
+      "source": "four opaque native sources, tone3 revision2 selected",
+      "registration": "fullcanvas sources, approved one-pixel edge matching; no foot anchor for flat material",
+      "liveGame": "pending",
+      "evidence": "approved-v5/old-stone-surface and approved-v5/stone-world-material"
     }
   },
   "totalCanonicalScope": 1212,
@@ -1702,6 +1721,21 @@
       "export": "full-canvas1x/2x and crop alpha/premultiplied tolerance2/255 validated",
       "runtimeBinding": "six grass and eight bank decorations on actual c01-02; protected road/bridge/initial feet/deep water alpha zero; terrain preconditions fail closed",
       "sceneReview": "broad edge direction accepted, repeated mirrored bank notches remain a visual limitation",
+      "liveGame": "pending"
+    },
+    "stone-world-material": {
+      "status": "formal world-aligned base and route/edge binding",
+      "sourceSlots": [
+        "surface-old-stone:0",
+        "surface-old-stone:3"
+      ],
+      "logicalPeriod": 128,
+      "nativeRaster": [
+        512,
+        1024
+      ],
+      "connectionGeometry": "original128 route/edge mask alpha states preserved exactly at1x/2x; same index and bleed",
+      "scope": "285base and250road+250edge in c01-07; shared material changes8actuallevels, map/rule/standing layers unchanged",
       "liveGame": "pending"
     }
   },

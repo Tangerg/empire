@@ -13,6 +13,7 @@ const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
 const bundles = [
   { topic: 'C01-UNIT-SKELETON-GUARD', source: 'animation/skeleton-guard', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
+  { topic: 'C01-UNIT-GHOST', source: 'animation/ghost', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-WOLF-RIDER', source: 'animation/wolf-rider', size: [128, 80], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-IVRA-GROWTH', source: 'animation/ivra-growth', size: [128, 80], footprint: [2, 2], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-WOODLAND-WALKER', source: 'animation/woodland-walker', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },

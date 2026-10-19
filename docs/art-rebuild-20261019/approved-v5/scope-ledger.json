@@ -4,31 +4,32 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 215,
+    "formalBound": 216,
     "boundByCategory": {
       "battle-prop": 64,
-      "combat-unit": 27,
+      "combat-unit": 28,
       "equipment": 67,
       "interactive-structure": 24,
       "mission-unit": 1,
       "skill": 32
     },
-    "rawPreservedTopics": 216,
+    "rawPreservedTopics": 224,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 155
+    "registeredEnvironmentCells": 159
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 155,
+    "registeredIndividualSourceCells": 159,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
       "water-area",
       "dirt-road",
       "horizontal-crossing",
-      "edge-decoration"
+      "edge-decoration",
+      "stone-world-material"
     ]
   },
   "sceneCohesion": {
@@ -87,6 +88,21 @@
       "export": "full-canvas1x/2x and crop alpha/premultiplied tolerance2/255 validated",
       "runtimeBinding": "six grass and eight bank decorations on actual c01-02; protected road/bridge/initial feet/deep water alpha zero; terrain preconditions fail closed",
       "sceneReview": "broad edge direction accepted, repeated mirrored bank notches remain a visual limitation",
+      "liveGame": "pending"
+    },
+    "stone-world-material": {
+      "status": "formal world-aligned base and route/edge binding",
+      "sourceSlots": [
+        "surface-old-stone:0",
+        "surface-old-stone:3"
+      ],
+      "logicalPeriod": 128,
+      "nativeRaster": [
+        512,
+        1024
+      ],
+      "connectionGeometry": "original128 route/edge mask alpha states preserved exactly at1x/2x; same index and bleed",
+      "scope": "285base and250road+250edge in c01-07; shared material changes8actuallevels, map/rule/standing layers unchanged",
       "liveGame": "pending"
     }
   },
@@ -1514,15 +1530,22 @@
       "label": "幽魂",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/idle/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/walk-a/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-ghost.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ghost.png",
+      "stageEvidence": {
+        "raw": "four poses preserved; consistent near-opaque body chosen over mixed-alpha idle, genuine exterior transparency intact",
+        "export": "shared44/927 scale; waist-mark floating x anchor and connected-wisp y, opposite drifts and empty-hand touch visually reviewed",
+        "runtimeBinding": "canonical plus HD resolver and full c01-11 offline scene; footprint unchanged",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-GRAVEKEEPER",
@@ -5931,8 +5954,10 @@
       "category": "skill",
       "label": "战地补给",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-33/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5945,8 +5970,10 @@
       "category": "skill",
       "label": "分粮",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-34/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5959,8 +5986,10 @@
       "category": "skill",
       "label": "急救",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-35/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5973,8 +6002,10 @@
       "category": "skill",
       "label": "抬运伤员",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-36/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10717,8 +10748,10 @@
       "category": "equipment",
       "label": "角枝骑士主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-antler-knight/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10839,8 +10872,10 @@
       "category": "equipment",
       "label": "林兽驭手主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-forest-beast-handler/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -11301,8 +11336,10 @@
       "category": "equipment",
       "label": "孢子射手主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-spore-shooter/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -11401,8 +11438,10 @@
       "category": "equipment",
       "label": "共生卫士主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-symbiotic-guard/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -18771,9 +18810,26 @@
     {
       "atlasId": "surface-old-stone",
       "baselineComponentCount": 4,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "old-stone-1",
+        "old-stone-2",
+        "old-stone-3",
+        "old-stone-4"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "formalRuntimeBoundCells": [
+          "old-stone-1",
+          "old-stone-2",
+          "old-stone-3",
+          "old-stone-4"
+        ],
+        "status": "four original32/64catalog slots exported; tone0 base and tone3 paving also use128-world-period binding",
+        "source": "four opaque native sources, tone3 revision2 selected",
+        "registration": "fullcanvas sources, approved one-pixel edge matching; no foot anchor for flat material",
+        "liveGame": "pending",
+        "evidence": "approved-v5/old-stone-surface and approved-v5/stone-world-material"
+      }
     },
     {
       "atlasId": "surface-snow",

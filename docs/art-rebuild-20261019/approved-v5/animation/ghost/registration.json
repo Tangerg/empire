@@ -1,0 +1,61 @@
+{
+  "frames": {
+    "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/idle/master.png",
+    "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/walk-a/master.png",
+    "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/attack/master.png",
+    "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/walk-b/master.png"
+  },
+  "scale": 0.04746494066882417,
+  "origin": [
+    8,
+    4
+  ],
+  "frameSize": [
+    104,
+    64
+  ],
+  "sourceFoot": [
+    831,
+    959
+  ],
+  "sourceFeet": {
+    "idle": [
+      831,
+      959
+    ],
+    "walk-a": [
+      833,
+      926
+    ],
+    "attack": [
+      694,
+      949
+    ],
+    "walk-b": [
+      714,
+      950
+    ]
+  },
+  "canvasPaddingTolerance": 1,
+  "registrationLimit": 7,
+  "registrationOffsets": {
+    "idle": [
+      0.0,
+      0.0
+    ],
+    "walk-a": [
+      -0.09492988133764833,
+      1.5663430420711975
+    ],
+    "attack": [
+      6.502696871628911,
+      0.4746494066882417
+    ],
+    "walk-b": [
+      5.553398058252427,
+      0.4271844660194175
+    ]
+  },
+  "registrationEvidence": "Floating torso registration uses belt buckle center minus fixed35.5 source pixels for x and connected wisp lowest y; no physical boot contact. Shared full canvas scale, no per-frame fit.",
+  "selection": "Near-opaque idle attempt01 selected to avoid opacity flicker against three near-opaque action poses; genuine exterior alpha retained. Translucent idle attempt02 preserved as alternative, not mixed into animation."
+}
