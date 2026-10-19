@@ -1,0 +1,3 @@
+# Original four old-stone source slots
+
+Strict surface exporter supports only the original meadow and old-stone four-source32/64 contracts. Original manifest order and metadata are unchanged. Selected stone sources0–2 are native initial masters; source3 is native revision2 with broad interior planes. Only approved outermost pixel family seam matching occurs after independent full-canvas resize; source bytes remain unchanged. Seven synthetic contract tests pass, including wrong order rejection and immutable source/manifest checks. World-material consumer integration is separate; these small catalog previews are not the actual128-world-period renderer sampling. Connector masks are deterministic derivatives, not extra authored designs. Live game remains pending.

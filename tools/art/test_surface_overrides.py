@@ -101,3 +101,24 @@ class SurfaceTests(unittest.TestCase):
         self.manifest.write_text(json.dumps(manifest))
         with self.assertRaisesRegex(ValueError, 'contract'):
             export(self.root, self.catalog)
+
+    def test_old_stone_exact_four_source_contract(self):
+        manifest = json.loads(self.manifest.read_text())
+        record = manifest['atlases'][0]
+        record.update(id='surface-old-stone', cellOrder=[f'old-stone-{i}' for i in range(1,5)],
+                      png='runtime/atlas/surface-old-stone.png', png2x='runtime/atlas/surface-old-stone@2x.png')
+        self.manifest.write_text(json.dumps(manifest))
+        old = self.data['atlases'].pop('surface-meadow')['cells']
+        self.data['atlases']['surface-old-stone'] = {'cells': {name: old[ORDER[i]] for i,name in enumerate(record['cellOrder'])}}
+        self.write()
+        before = self.manifest.read_bytes()
+        reports = export(self.root, self.catalog)
+        export(self.root, self.catalog, True)
+        self.assertEqual(before, self.manifest.read_bytes())
+        self.assertEqual([r['size'] for r in reports], [[128,32],[256,64]])
+        self.assertEqual([x['cellId'] for x in reports[0]['sources']], record['cellOrder'])
+        self.assertTrue(all(r['atlasId'] == 'surface-old-stone' for r in reports))
+        record['cellOrder'][0] = 'meadow-1'
+        self.manifest.write_text(json.dumps(manifest))
+        with self.assertRaisesRegex(ValueError, 'contract'):
+            export(self.root, self.catalog)

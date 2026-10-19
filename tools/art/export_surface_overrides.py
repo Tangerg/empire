@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export opaque meadow tiles with explicitly approved outer-pixel seam matching."""
+"""Export reviewed opaque four-source surface tiles with explicitly approved outer-pixel seam matching."""
 import argparse
 import hashlib
 import io
@@ -11,6 +11,7 @@ from export_environment_overrides import PACK
 
 CATALOG = Path('tools/art/surface-overrides.json')
 ORDER = [f'meadow-{i}' for i in range(1, 5)]
+SURFACE_ORDERS = {'surface-meadow': ORDER, 'surface-old-stone': [f'old-stone-{i}' for i in range(1, 5)]}
 
 
 def pixel_hash(image):
@@ -66,18 +67,19 @@ def plan(root, catalog):
     manifest = read_json(env / 'manifest-environment-builder-v1.json')
     planned = []
     for name, override in data['atlases'].items():
-        if name != 'surface-meadow':
+        if name not in SURFACE_ORDERS:
             raise ValueError('unsupported surface atlas')
+        order = SURFACE_ORDERS[name]
         matches = [a for a in manifest['atlases'] if a['id'] == name]
         if len(matches) != 1:
             raise ValueError('expected one surface manifest record')
         a = matches[0]
-        if (a['columns'], a['rows'], a['cellWidth'], a['cellHeight'], a['cellWidth2x'], a['cellHeight2x'], a['componentCount'], a['category'], a['tileMode'], a['variants'], a['edgeLocked'], a['cellOrder']) != (4, 1, 32, 32, 64, 64, 4, 'base-surface', 'variants', 4, True, ORDER):
-            raise ValueError('unexpected meadow contract')
-        if not isinstance(override, dict) or set(override) != {'cells'} or set(override['cells']) != set(ORDER):
-            raise ValueError('exact four meadow sources required')
+        if (a['columns'], a['rows'], a['cellWidth'], a['cellHeight'], a['cellWidth2x'], a['cellHeight2x'], a['componentCount'], a['category'], a['tileMode'], a['variants'], a['edgeLocked'], a['cellOrder']) != (4, 1, 32, 32, 64, 64, 4, 'base-surface', 'variants', 4, True, order):
+            raise ValueError('unexpected surface contract')
+        if not isinstance(override, dict) or set(override) != {'cells'} or set(override['cells']) != set(order):
+            raise ValueError('exact four surface sources required')
         sources, provenance = [], []
-        for cell_id in ORDER:
+        for cell_id in order:
             entry = override['cells'][cell_id]
             if not isinstance(entry, dict) or set(entry) != {'source', 'sha256'}:
                 raise ValueError('expected source and sha256')
@@ -107,7 +109,7 @@ def plan(root, catalog):
             reports = []
             for i, (original, cell) in enumerate(zip(before, cells)):
                 sheet.paste(cell, (i * size, 0))
-                reports.append({'cellId': ORDER[i], **seam_report(original, cell)})
+                reports.append({'cellId': order[i], **seam_report(original, cell)})
             for report in reports:
                 edges = report['edgeHashes']
                 if edges['top'] != reports[0]['edgeHashes']['bottom'] or edges['left'] != reports[0]['edgeHashes']['right']:
