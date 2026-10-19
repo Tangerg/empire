@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-fuel-oxygen-tanks",
+  "assetId": "C02-SFV1-battle-prop-fuel-oxygen-tanks",
+  "label": "燃料氧气罐危险组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-01.png",
+  "originalMasterSha256": "e5d87b0562deafaff0f1403f1ed47f3e71235ea34236bee655a601b3f68d7bc4",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 2
+  },
+  "sourceCropBox": [
+    319,
+    632,
+    622,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-01 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-fuel-oxygen-tanks.png",
+  "runtimeReferenceSha256": "c401faad488c345ba89120ce16af0d554b4bf0ae4e6676e4c14dd33d207220e0",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

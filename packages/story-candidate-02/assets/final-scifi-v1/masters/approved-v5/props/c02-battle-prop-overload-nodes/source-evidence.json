@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-overload-nodes",
+  "assetId": "C02-SFV1-battle-prop-overload-nodes",
+  "label": "过载节点危险组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-01.png",
+  "originalMasterSha256": "e5d87b0562deafaff0f1403f1ed47f3e71235ea34236bee655a601b3f68d7bc4",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 2
+  },
+  "sourceCropBox": [
+    5,
+    632,
+    309,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-01 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-overload-nodes.png",
+  "runtimeReferenceSha256": "f6d136cb76b1b627c3498c4a61093aad6ce86ddd8c0e6d1956be90ee77a59986",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9297e3b4-cebc-44c7-bd73-cee3ff52f69b.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-overload-nodes/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board01 r2c1 preserved: ten electrode terminals total, central blue energy cylinder plus nine surrounding posts distributed as three upper satellites, two lower-left paired posts, one middle-right tall post, one small center post and two lower-right paired posts. Cyan-white lightning is bounded outlined zigzag ribbon geometry, with no broad exterior glow or haze; actual64 black/white review retains discrete bolts and transparent gaps. Original magenta backdrop and cast shadows omitted. Supplemental morphology low-alpha pixels in narrow gaps are not opacity failure.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}
