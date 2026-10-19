@@ -1,0 +1,40 @@
+{
+  "topicId": "c03-battle-prop-27872fa1",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-27872fa1.png",
+  "label": "Military ID token",
+  "observed_original": "Clipped mismatched atlas fragments; token partially recognizable in military ID input.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed semantic reconstruction from manifest label, ART-DIRECTION semantic priority and inspected props board. Exact historical crop mapping unverified.",
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_zero_pixels": 800060,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      72,
+      1254,
+      1214
+    ],
+    "128": [
+      61,
+      75,
+      1249,
+      1140
+    ],
+    "240": [
+      62,
+      76,
+      1248,
+      1139
+    ]
+  },
+  "visual_review": "Round square-hole token and cord/tassel, geometric relief no readable writing. Right tassel edge has extremely narrow margin; check clipping before export."
+}
