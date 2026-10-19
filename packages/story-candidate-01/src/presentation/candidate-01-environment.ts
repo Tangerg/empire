@@ -30,12 +30,20 @@ export interface CandidateEnvironmentScene {
     readonly id: string;
     readonly bounds: FixedNumbers<4>;
     readonly role: string;
+    readonly authoredTerrainScenery?: readonly string[];
   }[];
   readonly selection: {
     readonly allowAtlases: readonly string[];
     readonly denyAtlases?: readonly string[];
   };
   readonly placements: readonly CandidateEnvironmentPlacement[];
+  readonly groundOutline?: readonly FixedNumbers<2>[];
+  readonly framePlacements?: readonly {
+    readonly id: string;
+    readonly contact: FixedNumbers<2>;
+    readonly scale: number;
+    readonly flip: boolean;
+  }[];
   readonly populationBindings?: readonly Readonly<Record<string, unknown>>[];
 }
 
@@ -86,6 +94,11 @@ function readScene(document: typeof twinHillsSceneJson): CandidateEnvironmentSce
           : { layer: oneOf(PLACEMENT_LAYERS, layer, 'layer', `${subject} placement ${rest.id ?? rest.topicId}`) }),
       };
     }),
+    framePlacements: document.framePlacements.map((placement) => ({
+      ...placement,
+      contact: fixedNumbers(2, placement.contact, 'contact', `${subject} frame ${placement.id}`),
+    })),
+    groundOutline: document.groundOutline.map((point) => fixedNumbers(2, point, 'ground outline point', subject)),
   };
 }
 

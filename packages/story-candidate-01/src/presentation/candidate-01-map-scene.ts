@@ -279,7 +279,13 @@ function connectedMask(
  * so a level this pack has never seen — a built-in map, a level somebody drew in
  * the editor — is painted by the same four passes.
  */
-function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
+function authoredTerrainScenery(levelId: string, id: string, x: number, y: number): boolean {
+  return candidate01EnvironmentScene(levelId)?.zones.some(({ bounds: [left, top, right, bottom], authoredTerrainScenery }) =>
+    authoredTerrainScenery?.includes(id) && x >= left && x <= right && y >= top && y <= bottom,
+  ) ?? false;
+}
+
+function groundPieces(content: ContentCatalog, map: GameMap, levelId: string): BoardPiece[] {
   const field = materialField(content, map);
   const base = CANDIDATE_01_FIELD_MATERIAL.replaces;
   const surfaces = candidate01FieldMaterialPieces(map.width * TILE, map.height * TILE);
@@ -295,9 +301,9 @@ function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
 
       const atlas = material.surface ?? base.atlas;
       const tone = material.tone ?? base.tone;
-      // Only the declared base changes. Hill tone 2 and all hard surfaces retain
-      // their own atlas pixels and fit, above the continuous world field.
-      if (atlas !== base.atlas || tone !== base.tone) {
+      // Explicit authored landforms share the continuous meadow. Other terrain
+      // surfaces retain their declared atlas pixels and fit.
+      if ((atlas !== base.atlas || tone !== base.tone) && !authoredTerrainScenery(levelId, id, x, y)) {
         surfaces.push({ markup: surfaceMarkup(atlas, tone), ...at });
       }
 
@@ -502,7 +508,7 @@ function neighboursSettlement(content: ContentCatalog, map: GameMap, x: number, 
  * registered separately; vertical runs retain the existing authored direction.
  * Reachable neighbouring routes still decide which direction the run carries.
  */
-function sceneryPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
+function sceneryPieces(content: ContentCatalog, map: GameMap, levelId: string): BoardPiece[] {
   const field = materialField(content, map);
   const parts: BoardPiece[] = [];
   const stand = (id: string, x: number, y: number, placing: EnvironmentCellPlacing, jitter = 0): void => {
@@ -519,6 +525,10 @@ function sceneryPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
       const id = tileAt(map, x, y);
       if (id === null) continue;
       const material = candidateMaterial(content, id);
+
+      // An authored landform owns its silhouette; per-cell rocks would duplicate
+      // that same hill. Tactical terrain and elevation stay untouched.
+      if (authoredTerrainScenery(levelId, id, x, y)) continue;
 
       if (id === 'bridge') {
         crossing(content, map, parts, x, y);
@@ -547,23 +557,6 @@ function sceneryPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
     }
   }
   return parts;
-}
-
-/**
- * Two farmers working chapter one's fields.
- *
- * Placed by coordinate, so they belong to the map those coordinates are on — the
- * same thing an authored placement is, written in a different file.
- */
-function ambientVillagerPieces(levelId: string): BoardPiece[] {
-  if (levelId !== 'c01-01') return [];
-  const farmers: CandidateEnvironmentPlacement[] = [
-    { topicId: 'C01-MISSION-BORDER-FARMER', x: 13.8, y: 9.15, layer: 'under-units', scale: 0.88, opacity: 0.86 },
-    { topicId: 'C01-MISSION-BORDER-FARMER', x: 15.4, y: 7.25, layer: 'under-units', scale: 0.82, flip: true, opacity: 0.82 },
-  ];
-  return farmers
-    .map(topicPlacementPiece)
-    .filter((piece): piece is BoardPiece => piece !== null);
 }
 
 /**
@@ -598,7 +591,13 @@ const authoredGroundPieces = (levelId: string): BoardPiece[] => [
   ...authoredPlacementPieces(levelId, 'ground-decal'),
 ];
 
-function sceneFrameForestMarkup(viewport: SceneViewport): string {
+function sceneFrameForestMarkup(viewport: SceneViewport, levelId: string): string {
+  const authored = candidate01EnvironmentScene(levelId)?.framePlacements;
+  if (authored) return authored.map(({ id, contact: [x, y], scale, flip }) =>
+    environmentCellAt(id, viewport.originX + x * TILE, viewport.originY + y * TILE, {
+      scale, flip, className: 'is-scene-frame',
+    }),
+  ).join('');
   const parts: string[] = [];
   const trees = CANDIDATE_FRAME_TREES;
   const horizontalCount = Math.ceil(viewport.sceneWidth / 54) + 2;
@@ -636,7 +635,7 @@ function sceneFrameForestMarkup(viewport: SceneViewport): string {
 
 /** Non-playable woodland surrounds, but never changes, the tactical field. */
 export function candidate01SceneFrameMarkup(
-  { map, viewport }: BattleSceneContext,
+  { levelId, map, viewport }: BattleSceneContext,
 ): SceneFrameMarkup {
   // Every level of this campaign carries the pack's board style: an atlas tile and
   // a unit figure wear its shadows. It is declared as the scene's `style` rather
@@ -648,6 +647,14 @@ export function candidate01SceneFrameMarkup(
   // chapters were a rectangle of tiles on a flat page.
   const fieldX = viewport.originX - 24;
   const fieldY = viewport.originY - 18;
+  const outline = candidate01EnvironmentScene(levelId)?.groundOutline;
+  const material = CANDIDATE_01_FIELD_MATERIAL;
+  const groundPath = outline?.map(([x, y], index) => `${index === 0 ? 'M' : 'L'}${viewport.originX + x * TILE},${viewport.originY + y * TILE}`).join(' ') + ' Z';
+  const ground = outline
+    ? `<defs><clipPath id="c01-authored-ground"><path d="${groundPath}"/></clipPath></defs>`
+      + `<g clip-path="url(#c01-authored-ground)">`
+      + [-1, 0].flatMap(y => [-1, 0].map(x => `<image href="${attr(material.href)}" x="${viewport.originX + x * material.logicalSize[0]}" y="${viewport.originY + y * material.logicalSize[1]}" width="${material.logicalSize[0]}" height="${material.logicalSize[1]}"/>`)).join('') + '</g>'
+    : `<rect x="${fieldX}" y="${fieldY}" width="${map.width * TILE + 48}" height="${map.height * TILE + 38}" rx="46" fill="url(#c01-scene-ground)" filter="url(#c01-field-shadow)"/>`;
   return {
     style: CANDIDATE_01_BOARD_STYLE,
     backdrop: `<g class="candidate-scene-backdrop" pointer-events="none" data-scene-viewport="authored-wide">
@@ -661,11 +668,11 @@ export function candidate01SceneFrameMarkup(
           <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#050c09" flood-opacity="0.66"/>
         </filter>
       </defs>
-      <rect width="${viewport.sceneWidth}" height="${viewport.sceneHeight}" rx="24" fill="#091712"/>
-      <rect x="${fieldX}" y="${fieldY}" width="${map.width * TILE + 48}" height="${map.height * TILE + 38}" rx="46" fill="url(#c01-scene-ground)" filter="url(#c01-field-shadow)"/>
+      <rect width="${viewport.sceneWidth}" height="${viewport.sceneHeight}"${outline ? '' : ' rx="24"'} fill="#091712"/>
+      ${ground}
     </g>`,
     foreground: `<g class="candidate-scene-foreground" pointer-events="none">
-      ${sceneFrameForestMarkup(viewport)}
+      ${sceneFrameForestMarkup(viewport, levelId)}
     </g>`,
   };
 }
@@ -709,13 +716,12 @@ export function candidate01MapSceneryLayers(
   { content, levelId, map }: BattleSceneContext,
 ): SceneLayers {
   return {
-    ground: [...groundPieces(content, map), ...authoredGroundPieces(levelId), ...candidate01EdgeDecorationPieces(levelId, map)],
+    ground: [...groundPieces(content, map, levelId), ...authoredGroundPieces(levelId), ...candidate01EdgeDecorationPieces(levelId, map)],
     underUnits: [
       // Light before the things that stand in it.
       ...hearthPieces(content, map),
-      ...sceneryPieces(content, map),
+      ...sceneryPieces(content, map, levelId),
       ...authoredPlacementPieces(levelId, 'under-units'),
-      ...ambientVillagerPieces(levelId),
       // The sun, which is art with no place of its own.
       ...wholeField(fieldSunlight(map.width * TILE, map.height * TILE)),
     ],

@@ -1,0 +1,36 @@
+{
+  "kind": "Clearance corrections to intermediate phase-one layout, followed by complete-frame visual review",
+  "intermediateMeasuredActors": [
+    {
+      "key": "camp-guard",
+      "cell": [
+        2,
+        7
+      ],
+      "occludedFraction": 0.57641
+    },
+    {
+      "key": "roderick-reserve",
+      "cell": [
+        2,
+        12
+      ],
+      "occludedFraction": 0.78421
+    },
+    {
+      "key": "south-bow",
+      "cell": [
+        20,
+        12
+      ],
+      "occludedFraction": 0.61841
+    }
+  ],
+  "corrections": {
+    "south-bow": "Kept (20,12); ramp (21.5,12.4,.75) -> (22.5,12.4,.65), south face (19.2,14.2,.92) -> (18.6,14.5,.86)",
+    "camp-guard": "(2,7) -> (4,7), legal unoccupied west-camp front road cell",
+    "roderick-reserve": "(2,12) -> (4,11), legal unoccupied west reserve road cell",
+    "wounded-shelter": "(3.2,12.2,.55) -> (3.8,12.8,.5)"
+  },
+  "finalReview": "Complete final initial-pose PNG inspected; all 19 actors visibly recognizable, all four buildings retained. Decorative shadows/partial rear overlaps remain natural. Final pixel-overlap percentages not recomputed; not live browser/GPU evidence."
+}

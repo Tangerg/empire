@@ -26,7 +26,7 @@ const sceneContext = (levelId: string, map: ReturnType<typeof mapFromLevel>) => 
 };
 
 describe('candidate-01 authored map scenery', () => {
-  it('keeps the farmhouse facade clear through decorative placement, without moving rule objects', () => {
+  it('places the farmhouse outside the village road while preserving normal depth', () => {
     const level = candidate01Level('c01-01');
     const engine = createBattleEngine({ content: TEST_CATALOG });
     const state = engine.createState(level);
@@ -34,10 +34,9 @@ describe('candidate-01 authored map scenery', () => {
     const before = JSON.stringify({ level, state, map });
     const farmhouse = candidate01EnvironmentScene(level.id)!.placements
       .filter((placement) => placement.id === 'frontier-farmhouse');
-    // Only the presentation owner moved: this avoids the rule granary at (12, 8).
-    // Keeping size and normal footpoint depth is part of the approved clearance.
+    // The farmhouse sits beside the yard, separate from the rule village at (12, 7).
     expect(farmhouse).toEqual([
-      { id: 'frontier-farmhouse', x: 10.8, y: 6.7, layer: 'under-units', scale: 0.7 },
+      { id: 'frontier-farmhouse', x: 11.8, y: 10.0, layer: 'under-units', scale: 0.55 },
     ]);
     const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell('frontier-farmhouse');
     const crop = `x="${-(cell.index % atlas.columns) * atlas.cellWidth}" y="${-Math.floor(cell.index / atlas.columns) * atlas.cellHeight}"`;
@@ -45,10 +44,10 @@ describe('candidate-01 authored map scenery', () => {
     const isFarmhouse = (piece: BoardPiece) => piece.markup.includes('rural-life@2x.png') && piece.markup.includes(crop);
     const rendered = layers.underUnits.filter(isFarmhouse);
     expect(rendered).toHaveLength(1);
-    expect(rendered[0].x).toBeCloseTo(345.6);
-    expect(rendered[0].y).toBeCloseTo(246.4);
+    expect(rendered[0].x).toBeCloseTo(377.6);
+    expect(rendered[0].y).toBeCloseTo(352);
     expect(rendered[0].foot).toEqual({ x: 0, y: 0 });
-    expect(rendered[0].markup).toContain('scale(0.700)');
+    expect(rendered[0].markup).toContain('scale(0.550)');
     expect(layers.ground.some(isFarmhouse)).toBe(false);
     expect(layers.overUnits.some(isFarmhouse)).toBe(false);
     expect(state.units).toHaveLength(19);
@@ -119,7 +118,7 @@ describe('candidate-01 authored map scenery', () => {
     expect(markup).toContain('data-runtime-raster="atlas-cell"');
     expect(boardPiecesMarkup(layers.ground)).toContain('candidate-ground-route');
     expect(boardPiecesMarkup(layers.ground)).toContain('candidate-ground-route-edge');
-    expect(boardPiecesMarkup(layers.ground)).toContain('surface-meadow');
+    expect(boardPiecesMarkup(layers.ground)).toContain('meadow-base@2x.png');
     /*
      * Every authored placement reaches the depth it was declared at.
      *
@@ -136,20 +135,18 @@ describe('candidate-01 authored map scenery', () => {
     expect(declared('foundation')).toBeGreaterThan(0);
     expect(drawn(layers.ground, 'foundation')).toBe(declared('foundation'));
     expect(drawn(layers.ground, 'ground-decal')).toBe(declared('ground-decal'));
-    // Plus the two ambient villagers this module places itself.
-    expect(drawn(layers.underUnits, 'under-units')).toBe(declared('under-units') + 2);
+    expect(drawn(layers.underUnits, 'under-units')).toBe(declared('under-units'));
     // And none of them landed in a layer they were not declared for.
     expect(drawn(layers.ground, 'under-units')).toBe(0);
     expect(markup.match(/candidate-environment-prop/g)?.length ?? 0).toBeGreaterThan(20);
 
-    // The broad base is shared in material-sized blocks; only the other two
-    // surfaces retain cell-sized pictures, with their original fit and pixels.
+    // The authored hills retain the continuous meadow instead of per-cell surface squares.
     const field = candidate01FieldMaterialPieces(map.width * 32, map.height * 32);
     expect(layers.ground.slice(0, field.length)).toEqual(field);
     const surfaces = layers.ground
       .filter((piece) => piece.markup.includes('/surface-'))
       .map((piece) => piece.markup);
-    expect(new Set(surfaces).size).toBe(2);
+    expect(surfaces).toEqual([]);
     // Board position stays external; area-water masks also place cells inside their shared texture block.
     expect(layers.ground.every((piece) => !piece.markup.includes('translate') || piece.markup.includes('scale') || piece.markup.includes('data-runtime-raster="area-water"')))
       .toBe(true);
@@ -163,7 +160,13 @@ describe('candidate-01 authored map scenery', () => {
     expect(viewport.sceneWidth).toBeGreaterThan(map.width * 32);
     expect(frame.backdrop).toContain('data-scene-viewport="authored-wide"');
     expect(frame.backdrop).toContain('c01-field-shadow');
-    expect(frame.foreground).toContain('is-scene-frame');
+    expect(frame.foreground.match(/is-scene-frame/g)).toHaveLength(28);
+    expect(frame.foreground).not.toMatch(/is-frame-(top|bottom|left|right)/);
+    expect(frame.backdrop).toContain('c01-authored-ground');
+    expect(frame.backdrop).toContain('meadow-base@2x.png');
+    expect(frame.backdrop).not.toContain('rx="46"');
+    const scene = candidate01EnvironmentScene('c01-01')!;
+    expect(scene.placements.filter(placement => placement.topicId === 'C01-MISSION-BORDER-FARMER')).toHaveLength(2);
   });
 
   it('does not leak authored Twin Hills dressing into other maps', () => {

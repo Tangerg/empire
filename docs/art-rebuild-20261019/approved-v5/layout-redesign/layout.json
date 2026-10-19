@@ -1,6 +1,6 @@
 {
   "schemaVersion": "empire-layout-design-v1",
-  "status": "design-spec-not-runtime-proof",
+  "status": "implemented-phase-one-layout",
   "levelId": "c01-01",
   "coordinateSystem": "zero-based x right / y down; square4; map cells authoritative",
   "mapSize": [
@@ -566,8 +566,8 @@
     },
     {
       "key": "roderick-reserve",
-      "x": 2,
-      "y": 12,
+      "x": 4,
+      "y": 11,
       "owner": 1
     },
     {
@@ -596,7 +596,7 @@
     },
     {
       "key": "camp-guard",
-      "x": 2,
+      "x": 4,
       "y": 7,
       "owner": 1
     },
@@ -656,7 +656,7 @@
     }
   ],
   "deployment": {
-    "player": "3,9 5,8 3,11 2,10 2,12 5,5 4,6 1,9 7,8 2,7 6,11",
+    "player": "3,9 5,8 3,11 2,10 4,11 5,5 4,6 1,9 7,8 4,7 6,11",
     "enemy": "17,6 20,7 21,4 24,7 13,5 22,10 20,12 25,5"
   },
   "rushTorren": {
@@ -2232,5 +2232,29 @@
     "mountedConnectedBetweenBuildings": true,
     "nearestOpposingManhattanDistance": 8,
     "rushTerrain": "^"
+  },
+  "implementationAdjustments": {
+    "camp-guard": {
+      "from": [
+        2,
+        7
+      ],
+      "to": [
+        4,
+        7
+      ],
+      "reason": "clear owned camp tower while retaining west-camp-front role"
+    },
+    "roderick-reserve": {
+      "from": [
+        2,
+        12
+      ],
+      "to": [
+        4,
+        11
+      ],
+      "reason": "clear shelter and canopy while retaining west reserve role"
+    }
   }
 }

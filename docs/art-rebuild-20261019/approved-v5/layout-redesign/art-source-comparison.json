@@ -1,0 +1,11 @@
+{
+  "kind": "Exact runtime art-source hash comparison for before/after layout captures",
+  "commonImageCount": 27,
+  "changedImages": {},
+  "beforeOnlyImages": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-wasteland@2x.png": "3422fa8a2f2cf9294894f989ffc105cf55011e5eb73957c777d452126e6c6738"
+  },
+  "afterOnlyImages": {},
+  "note": "Before-only images can disappear when duplicate per-cell hill rendering is suppressed; source bytes are not edited by this implementation."
+}

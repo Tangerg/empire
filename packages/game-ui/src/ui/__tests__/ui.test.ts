@@ -146,6 +146,19 @@ describe('game controller', () => {
     c.dispose();
   });
 
+  it('keeps authored hill elevation available in the hovered-cell inspector', () => {
+    const c = new GameController(candidate01Level('c01-01'), () => {}, { engine: TEST_ENGINE, art: ART });
+    host.append(c.root);
+    const board = c.root.querySelector('svg.board') as SVGSVGElement;
+    stubLayout(board);
+    expect(board.querySelector('.elevation-badge')).toBeNull();
+    hover(board, { x: 9, y: 4 });
+    expect(hudSays(c.root)).toContain('海拔 2');
+    hover(board, { x: 11, y: 4 });
+    expect(hudSays(c.root)).toContain('海拔 1');
+    c.dispose();
+  });
+
   /**
    * The battle is a field with an overlay on it, and nothing in between.
    *

@@ -6,7 +6,8 @@ import { GENERIC_PRESENTATION, paintsCells } from '../battle-presentation';
 import { ArtDirection } from '../direction';
 import { createSceneViewport } from '../scene-viewport';
 import { boardPiecesMarkup } from '../board-surface';
-import { mapScenePieces } from '../battlefield-layer';
+import { battlefieldFeaturePieces, mapScenePieces } from '../battlefield-layer';
+import { squareLayout } from '../board-decorations';
 import { BoardView } from '../../ui/board';
 import { svgBoardSurface } from '../svg-board-surface';
 import { CANDIDATE_01_ART } from '@empire/story-candidate-01/presentation';
@@ -20,6 +21,19 @@ const ENGINE = createBattleEngine({ content: TEST_CATALOG });
 
 
 describe('battle presentation', () => {
+  it('omits authored scene height badges before either renderer while retaining editor and other-level labels', () => {
+    const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));
+    const before = JSON.stringify(map);
+    const canvas = { art: CANDIDATE_01_ART, layout: squareLayout };
+    const badges = (levelId?: string) => battlefieldFeaturePieces({ ...canvas, ...(levelId ? { levelId } : {}) }, map)
+      .filter(piece => piece.markup.includes('elevation-badge'));
+    // Both SVG and GPU consume these same BoardPieces; this is not a CSS-only hide.
+    expect(badges('c01-01')).toEqual([]);
+    expect(badges('c01-02').length).toBeGreaterThan(0);
+    expect(badges().length).toBeGreaterThan(0);
+    expect(JSON.stringify(map)).toBe(before);
+  });
+
   it('resolves story art at the composition edge', () => {
     const presentation = CANDIDATE_01_ART.presentation;
     const map = mapFromLevel(TEST_CATALOG, candidate01Level('c01-01'));

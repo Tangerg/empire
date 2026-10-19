@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { CampaignBattleBridge, CampaignRuntime, validateCampaignDefinition } from '@empire/campaign-engine';
-import { GameSession, createBattleEngine } from '@empire/battle-engine';
+import { Battlefield, GameSession, createBattleEngine, validateLevel } from '@empire/battle-engine';
 import {
   CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN,
   applyCandidate01BattleContext,
@@ -65,8 +65,15 @@ describe('candidate-01 campaign', () => {
     const raw = runtime.beginBattle(bridge);
     const adapted = applyCandidate01BattleContext(raw, runtime.state);
     const torren = adapted.level.units.find((unit) => unit.key === 'campaign-torren');
-    expect(torren).toMatchObject({ x: 4, y: 0, hp: 72 });
-    expect(raw.level.units.find((unit) => unit.key === 'campaign-torren')).not.toMatchObject({ x: 4, y: 0 });
+    expect(torren).toMatchObject({ x: 9, y: 4, hp: 72 });
+    expect(validateLevel(TEST_ENGINE.rules, adapted.level)).toEqual([]);
+    const state = TEST_ENGINE.createState(adapted.level);
+    const at = { x: torren!.x, y: torren!.y };
+    const battlefield = new Battlefield(state, TEST_CATALOG);
+    expect(state.map.elevation[at.y * state.map.width + at.x]).toBe(2);
+    expect(adapted.level.units.filter(unit => unit.x === at.x && unit.y === at.y)).toHaveLength(1);
+    expect(battlefield.traversalCost({ x: 9, y: 5 }, at, 'foot')).not.toBeNull();
+    expect(raw.level.units.find((unit) => unit.key === 'campaign-torren')).not.toMatchObject({ x: 9, y: 4 });
   });
 
   it('turns named-hero defeat into a persistent wound while retainers remain mortal', () => {

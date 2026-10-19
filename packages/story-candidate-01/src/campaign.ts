@@ -1,5 +1,5 @@
 import type { BattleRequest, BattleResult, CampaignDefinition, CampaignEffect, CampaignNode, CampaignState } from '@empire/campaign-engine';
-import { CANDIDATE_01_LEVELS, CANDIDATE_01_ROSTER_BINDINGS } from './levels';
+import { CANDIDATE_01_LEVELS, CANDIDATE_01_ROSTER_BINDINGS, TWIN_HILLS_RUSH_POSITION } from './levels';
 
 interface ChoiceSpec {
   before: number;
@@ -161,7 +161,7 @@ export function applyCandidate01BattleContext(request: BattleRequest, state: Cam
 
   if (result.levelId === 'c01-01' && state.flags.includes('twin_hills_rushed')) {
     const torren = result.level.units.find((unit) => unit.key === 'campaign-torren');
-    if (torren) Object.assign(torren, { x: 4, y: 0, hp: Math.min(torren.hp ?? 98, 72) });
+    if (torren) Object.assign(torren, { ...TWIN_HILLS_RUSH_POSITION, hp: Math.min(torren.hp ?? 98, 72) });
   }
   if (result.levelId === 'c01-02' && state.flags.includes('bridge_no_promise') && result.level.scenario) {
     result.level.scenario.engagementRules = [];

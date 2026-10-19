@@ -1,0 +1,21 @@
+{
+  "beforeFileSha256": "af965d1720053ac60d409bf960c607714a33665e2f90854da6047e5e7f2b1cd2",
+  "afterFileSha256": "3ebce01a551fe642db90380e9fb774f0682c1d3a546e8ba81bb8fcab4d90e0d9",
+  "runCount": 60,
+  "changedRuns": [
+    "c01-01 @0.35",
+    "c01-01 @0.58",
+    "c01-01 @0.8"
+  ],
+  "unchangedRunCount": 57,
+  "beforeFirstMission": [
+    "END c01-01 winner=1 turn=10 actions=165 hash=e93b0a28 reason=敌军已被全歼",
+    "END c01-01 winner=1 turn=9 actions=143 hash=d0debb80 reason=敌军已被全歼",
+    "END c01-01 winner=1 turn=9 actions=143 hash=0d2eb220 reason=敌军已被全歼"
+  ],
+  "afterFirstMission": [
+    "END c01-01 winner=1 turn=8 actions=142 hash=3942584e reason=敌军已被全歼",
+    "END c01-01 winner=1 turn=7 actions=119 hash=f0fe6f08 reason=敌军已被全歼",
+    "END c01-01 winner=1 turn=8 actions=135 hash=ecb676a7 reason=敌军已被全歼"
+  ]
+}

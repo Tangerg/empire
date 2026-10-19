@@ -55,6 +55,8 @@ export interface BattlePresentation {
    * shows the tiles. Absent means this art paints anything.
    */
   paintsCells?(corners: number): boolean;
+  /** Numeric height labels may be redundant in a fully authored landform. */
+  elevationBadges?(levelId: string): boolean;
   sceneProfile(levelId: string): SceneViewportProfile;
   sceneFrame(scene: BattleSceneContext): SceneFrameMarkup;
   /**

@@ -149,6 +149,8 @@ function cliffMarkup(layout: BoardLayout, map: GameMap): string[] {
 export interface BattlefieldCanvas {
   readonly art: ArtDirection;
   readonly layout: BoardLayout;
+  /** Omitted by editor canvases, which always retain numeric height labels. */
+  readonly levelId?: string;
 }
 
 /**
@@ -162,7 +164,9 @@ export function battlefieldFeaturePieces(canvas: BattlefieldCanvas, map: GameMap
   const { art, layout } = canvas;
   const pieces: BoardPiece[] = [];
   const badge = layout.tileSize * 0.81;
+  const showElevation = canvas.levelId === undefined || art.presentation.elevationBadges?.(canvas.levelId) !== false;
   for (let i = 0; i < map.elevation.length; i++) {
+    if (!showElevation) break;
     const value = map.elevation[i];
     if (value === 0) continue;
     const cellX = i % map.width;

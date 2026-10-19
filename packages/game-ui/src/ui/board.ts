@@ -400,7 +400,7 @@ export class BoardView {
     this.surface.setLayer('ground', sceneLayers.ground);
     this.surface.setLayer('scenery', sceneLayers.underUnits);
     this.surface.setLayer('foreground', sceneLayers.overUnits);
-    this.surface.setLayer('spatial', battlefieldFeaturePieces({ art: this.art, layout: this.layout }, s.map));
+    this.surface.setLayer('spatial', battlefieldFeaturePieces({ art: this.art, layout: this.layout, levelId: s.levelId }, s.map));
   }
 
   render(overlay: BoardOverlay): void {

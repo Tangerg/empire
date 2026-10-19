@@ -85,6 +85,7 @@ const CANDIDATE_01_BATTLE_PRESENTATION: BattlePresentation = Object.freeze({
   // Painted scenes want the tactical layer on the ground, not ruled over it.
   decorations: GroundBoardDecorations,
   paintsCells: candidate01PaintsCells,
+  elevationBadges: (levelId: string) => levelId !== 'c01-01',
   sceneProfile: candidate01SceneProfile,
   sceneFrame: candidate01SceneFrameMarkup,
   sceneLayers: candidate01MapSceneryLayers,

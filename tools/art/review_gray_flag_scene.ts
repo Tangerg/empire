@@ -17,6 +17,11 @@ sources.set(appStylesPath, createHash('sha256').update(appStyles).digest('hex'))
 const environmentPath = 'packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json';
 const manifest = JSON.parse(readFileSync(resolve(root, environmentPath), 'utf8'));
 for (const path of [environmentPath,
+  'packages/story-candidate-01/src/levels.ts',
+  'packages/story-candidate-01/src/campaign.ts',
+  'packages/story-candidate-01/src/presentation/index.ts',
+  'packages/game-ui/src/art/battlefield-layer.ts',
+  'packages/game-ui/src/ui/board.ts',
   'packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json',
   'packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts',
   'packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts',
@@ -114,7 +119,7 @@ const renders = [];
 writeFileSync(resolve(output, 'runtime-scene-provenance.json'), JSON.stringify({
   kind: 'offline actual BoardView/SvgBoardSurface snapshot; not live browser or GPU playback',
   levelId: level.id, renders, sources: Object.fromEntries(sources),
-  checkpoint: process.env.SCENE_REVIEW_CHECKPOINT ?? 'current worktree; exact input hashes recorded', omissions: [], gameplayChanged: false, comparison: 'none; complete actual production scene',
+  checkpoint: process.env.SCENE_REVIEW_CHECKPOINT ?? 'current worktree; exact input hashes recorded', omissions: [], captureMutatesGameplay: false, comparison: 'none; complete actual production scene',
   limitations: ['Initial poses only; no browser or GPU pixel verification',
     'Real front canopies can occlude rear actors; no selective fading or removal is applied'],
 }, null, 2) + '\n');

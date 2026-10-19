@@ -807,7 +807,7 @@
     ]
   },
   {
-    "name": "proposal",
+    "name": "after",
     "validation": [],
     "pacing": {
       "id": "c01-01",
@@ -819,15 +819,15 @@
       "reinforcements": 0,
       "playerSpan": {
         "width": 7,
-        "height": 8,
-        "area": 56
+        "height": 7,
+        "area": 49
       },
       "enemySpan": {
         "width": 13,
         "height": 9,
         "area": 117
       },
-      "occupiedSectors": 8,
+      "occupiedSectors": 7,
       "closestContact": 8,
       "initialDensity": 0.04139433551198257
     },
@@ -999,8 +999,8 @@
       {
         "key": "roderick-reserve",
         "at": [
-          2,
-          12
+          4,
+          11
         ],
         "profile": "mounted",
         "admitted": true,
@@ -1011,28 +1011,28 @@
               2,
               8
             ],
-            "steps": 4
+            "steps": 5
           },
           {
             "at": [
               12,
               7
             ],
-            "steps": 15
+            "steps": 12
           },
           {
             "at": [
               15,
               9
             ],
-            "steps": 16
+            "steps": 13
           },
           {
             "at": [
               24,
               6
             ],
-            "steps": 28
+            "steps": 25
           }
         ],
         "northCrest": null
@@ -1204,7 +1204,7 @@
       {
         "key": "camp-guard",
         "at": [
-          2,
+          4,
           7
         ],
         "profile": "foot",
@@ -1216,31 +1216,31 @@
               2,
               8
             ],
-            "steps": 1
+            "steps": 3
           },
           {
             "at": [
               12,
               7
             ],
-            "steps": 10
+            "steps": 8
           },
           {
             "at": [
               15,
               9
             ],
-            "steps": 15
+            "steps": 13
           },
           {
             "at": [
               24,
               6
             ],
-            "steps": 23
+            "steps": 21
           }
         ],
-        "northCrest": 10
+        "northCrest": 8
       },
       {
         "key": "field-knight",

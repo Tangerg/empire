@@ -46,24 +46,26 @@ interface BattleSpec {
   extra?: Record<string, unknown>;
 }
 
+export const TWIN_HILLS_RUSH_POSITION: Readonly<Coord> = { x: 9, y: 4 };
+
 const TWIN_HILLS = [
-  'TTTTTTTTTTTTTTTTTTTTTTTTTTT',
-  'TTT...T......TT......T..TTT',
-  'TT...T.^^^^...T........T.TT',
-  'Tq-----^^^^h..............T',
-  'TT..T.-^^^^h.T..hhh...T..TT',
-  'T.....-^^^^.......hh......T',
-  'TT..T.-------..T........T.T',
-  'T.....-.....-.............T',
-  'T-----------v-v-----------T',
-  'T..-..........-..........-T',
-  'TT.-.hTh......--------...-T',
-  'T..-......-.....h^^^^----qT',
-  'TT.-...T..-hh.T.h^^^^h.T.TT',
-  'T..--------h....h^^^^h....T',
-  'TT...T........T..hhhh..T.TT',
-  'TTT.....T......T.....T..TTT',
-  'TTTTTTTTTTTTTTTTTTTTTTTTTTT',
+  'TTTTTTTT....TTTTTTT...TTTTT',
+  'TTTTTTT......TTTTT.....TTTT',
+  'TTTTT..h^^h..TTTT.......TTT',
+  'TTTT..h^^^^h..TT.........TT',
+  'TTT...h^^^^h..TT..........T',
+  'TT...-hh^^hh...............',
+  'T...--.hhhh--.......----q--',
+  '....-.....--v-....-----.---',
+  '..q--.-----..------....--..',
+  '--------..-....v.....---..T',
+  '-----...TT.....--------..TT',
+  '....--..TT..-----hh^^h...TT',
+  'T....-...----....h^^^^h.TTT',
+  'TT...-----......h^^^^hh.TTT',
+  'TTTT.......TT....h^^^h.TTTT',
+  'TTTTTT....TTTT....hhh.TTTTT',
+  'TTTTTTTT..TTTTT.......TTTTT',
 ];
 
 const THREE_BRIDGES = [
@@ -418,11 +420,11 @@ const BATTLES: readonly BattleSpec[] = [
       foe('camp-bow', 'c01.archer'),
     ],
     deployment: deployment(
-      '2,9 3,8 3,10 2,8 3,11 6,14 1,9 6,12 5,6 4,12 7,11',
-      '15,4 19,5 22,3 24,5 20,9 24,12 18,13 23,8',
+      '3,9 5,8 3,11 2,10 4,11 5,5 4,6 1,9 7,8 4,7 6,11',
+      '17,6 20,7 21,4 24,7 13,5 22,10 20,12 25,5',
     ),
     objective: protectLaiya(route('击退维尔萨前锋'), '莱娅存活并击退维尔萨前锋'),
-    owners: [{ x: 1, y: 3, owner: 1 }, { x: 25, y: 11, owner: 2 }, { x: 12, y: 8, owner: 0 }, { x: 14, y: 8, owner: 0 }],
+    owners: [{ x: 2, y: 8, owner: 1 }, { x: 12, y: 7, owner: 0 }, { x: 15, y: 9, owner: 0 }, { x: 24, y: 6, owner: 2 }],
     scenario: {
       // The north hill the story tells the player to rush is high ground and a
       // marked area in the scene document; it was *also* a tactical zone here, and
@@ -433,7 +435,7 @@ const BATTLES: readonly BattleSpec[] = [
         effects: [{ type: 'emitSignal', signal: 'found_matching_orders' }],
       }],
     },
-    extra: { tacticalTheme: '双高地、中央村落、三线推进与分离侦察组', recommendedTurns: 11, battleScale: 'company', fronts: 3 },
+    extra: { tacticalTheme: '错位双高地、曲折村道、南侧迂回与北丘侦察组', recommendedTurns: 11, battleScale: 'company', fronts: 3 },
   },
   {
     order: 2, chapter: 1, title: '三桥河谷', subtitle: '短暂停火，把六军之争让给过桥的平民。', map: THREE_BRIDGES,
