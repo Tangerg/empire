@@ -71,6 +71,21 @@ class EnvironmentTests(unittest.TestCase):
         self.assertEqual(source.tobytes(), original)
         self.assertEqual(small.size, (96, 96))
 
+    def test_explicit_source_placement_preserves_alpha(self):
+        entry = self.data['atlases']['forest-temperate']['cells']['cell-0']
+        entry['offsetY2x'] = 8
+        self.write_catalog()
+        reports = export(self.root, self.catalog)
+        self.assertEqual(reports[0]['sources']['cell-0']['offsetY2x'], 8)
+        with Image.open(self.root / entry['source']) as source:
+            _, normal = render_cell(source)
+            _, moved = render_cell(source, 8)
+            self.assertEqual(normal.crop((10, 10, 182, 182)).tobytes(),
+                             moved.crop((10, 18, 182, 190)).tobytes())
+            for invalid in (-11, 11, 1.5, True):
+                with self.assertRaisesRegex(ValueError, 'offsetY2x'):
+                    render_cell(source, invalid)
+
     def test_bad_later_source_prevents_writes(self):
         self.data['atlases']['forest-temperate']['cells']['cell-2'] = {'source': 'bad', 'sha256': 'bad'}
         self.write_catalog()

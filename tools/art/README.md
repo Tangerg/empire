@@ -77,3 +77,10 @@ footprints and gameplay metadata stay unchanged. All inputs validate before any
 writes. Ground, route connectivity and masks are outside this adapter's scope.
 Run this overlay after legacy builds. `--check` proves reproducibility, not visual
 acceptance: actual game screenshots and occlusion review remain separate gates.
+
+Cell entries may explicitly declare `offsetY2x` (integer -10 through10, default0)
+for reviewed root/contact placement. This translates the entire fitted canvas
+vertically without cropping it, changing scale, or altering alpha. The declared
+anchor stays fixed; placement is reported in provenance. It is never inferred
+from alpha bounds. Initial reviewed masters need +8 for oak-ancient and +10 for
+mixed-forest-dense to bring their visible root bases back near logical y91.

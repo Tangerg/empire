@@ -27,12 +27,14 @@ def load_source(root, pack, entry):
         return im.copy()
 
 
-def render_cell(source):
+def render_cell(source, offset_y_2x=0):
     # Preserve complete authored canvas including alpha1 residue. No inferred crop.
+    if type(offset_y_2x) is not int or not -10 <= offset_y_2x <= 10:
+        raise ValueError('offsetY2x must be integer between -10 and 10')
     validate_alpha(source, 'environment master')
     fitted = ImageOps.contain(source, (172, 172), Image.Resampling.LANCZOS)
     hd = Image.new('RGBA', (192, 192))
-    hd.paste(fitted, ((192 - fitted.width) // 2, 182 - fitted.height))
+    hd.paste(fitted, ((192 - fitted.width) // 2, 182 - fitted.height + offset_y_2x))
     logical = hd.resize((96, 96), Image.Resampling.LANCZOS)
     validate_alpha(hd, 'HD cell')
     validate_alpha(logical, 'logical cell')
@@ -81,9 +83,12 @@ def plan(root, catalog):
             if cell_id not in order:
                 raise ValueError('unknown environment cell')
             index = order.index(cell_id)
-            source = load_source(root, pack, entry)
-            sources[cell_id] = {'sourceSha256': entry['sha256'], 'sourceAlpha': validate_alpha(source, cell_id)}
-            cells = render_cell(source)
+            if not isinstance(entry, dict) or set(entry) not in ({'source', 'sha256'}, {'source', 'sha256', 'offsetY2x'}):
+                raise ValueError('cell expects source, sha256 and optional offsetY2x')
+            source = load_source(root, pack, {k: entry[k] for k in ('source', 'sha256')})
+            offset = entry.get('offsetY2x', 0)
+            cells = render_cell(source, offset)
+            sources[cell_id] = {'sourceSha256': entry['sha256'], 'sourceAlpha': validate_alpha(source, cell_id), 'offsetY2x': offset}
             for output, cell, size in zip(outputs, cells, (96, 192)):
                 output.paste(cell, cell_box(index, size)[:2])
             changed.add(index)
