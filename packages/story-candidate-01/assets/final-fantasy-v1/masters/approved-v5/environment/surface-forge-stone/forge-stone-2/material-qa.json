@@ -1,0 +1,65 @@
+{
+  "asset": "forge-stone-2",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "dc58b2650678706a6b0b2c4241d27be92c37411f80fc323753c5ae5c94ec1260",
+  "RGB_mean": [
+    64.88771688173603,
+    56.97620691935726,
+    50.69505874662006
+  ],
+  "RGB_std": [
+    9.109979909543194,
+    8.385475963629965,
+    9.114056405251128
+  ],
+  "luma_mean": 58.20469503928735,
+  "luma_std": 8.364206530254322,
+  "luma_percentiles_5_50_95": [
+    43.059000000000005,
+    58.7742,
+    71.41199999999999
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 58.0883382226874,
+    "bottom": 56.810336712519934,
+    "left": 57.4889907620614,
+    "right": 55.40972273724083,
+    "central_half": 59.46482371647938
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 8.281233386496545,
+    "top_bottom_mean_abs_RGB": 5.761828814460394,
+    "left_right_max_abs_RGB": 51.0,
+    "top_bottom_max_abs_RGB": 36.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Warm charcoal-gray rounded-polygon paving with prominent muted brown earth joints and medium infill stones. No orange glow, emissive specks, fire or metal symbols.",
+    "detail_density": "Approximately 5-7 main stones across width instead of requested 8-12. Broad stones have more than 2-3 small tonal face patches in places and substantial medium joint infill; source remains low-contrast.",
+    "scale_caveat": "At a 256-unit full-image period, main stones would often span about 30-65 world units. Scale remains an initial parent preview proposal, not automatic production acceptance.",
+    "style_caveat": "Dark matte rounded paving retained, warmer and somewhat more brown than original. Residual subtle face texture remains and is documented without filtering.",
+    "native_acceptance": "1254 fully opaque native; material identity retained; original tone 1 is catalog-only. No scene binding or natural seamlessness claim."
+  },
+  "reference_material_identity": "Somewhat warmer charcoal-gray rounded-polygon paving stones embedded in wider brown earthy joints/infill. A few tiny ochre specks exist in the old pixels but do not establish fire or molten metal. Preserve warm brown joint material and rounded stone identity without inventing emissive features.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

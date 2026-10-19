@@ -1,0 +1,65 @@
+{
+  "atlas": "surface-forge-stone",
+  "cell_index": 0,
+  "original_cellOrder_token": "forge-stone-1",
+  "source_board_index": 12,
+  "source_crop": [
+    0,
+    940,
+    314,
+    1254
+  ],
+  "source_crop_dimensions": [
+    314,
+    314
+  ],
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forge-stone/forge-stone-1-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forge-stone/forge-stone-1-current-runtime-2x-cell.png",
+  "current_core_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forge-stone/forge-stone-1-current-fit-core-52.png",
+  "original_visual_identity": "Cool dark charcoal/slate-blue irregular polygon paving stones, many somewhat angular and worn, with a few broad face fractures and smaller stones tightly infilling narrow dark joints. Paved continuous floor, not loose scree, metal, lava or glowing ore.",
+  "semantic_status": "Exact original manifest token; material distinction is visual observation, no invented gameplay semantic",
+  "original_mean_RGB": [
+    52.61427441275508,
+    53.31085439571585,
+    55.43723883321839
+  ],
+  "original_opaque": true,
+  "current_usage": "Actual tone 0, c01-14 MOUNTAIN_FORGE: 252 forge terrain cells",
+  "sourceFoot": null,
+  "anchor": null,
+  "runtime_edge_MAE_RGB": {
+    "left_right": 0.0,
+    "top_bottom": 0.0
+  },
+  "inset_core_edge_MAE_RGB": {
+    "left_right": 8.083333333333334,
+    "top_bottom": 7.615384615384615
+  },
+  "generation_contract_approval": "Parent confirmed exclusive assignment and generation after audit on 2026-10-19 20:56 UTC; 256 world preview, preserve original floor and palette, no invented forge effects.",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/source-contract.json",
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+  "original_full_source_sha256": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+  "reference_images_in_order": [
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-forge-stone/forge-stone-1-original-master-swatch.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png"
+  ],
+  "reference_roles": [
+    "exact original dark material identity, palette and coverage; simplify old microtexture",
+    "approved broad matte clean stone planes only; do not copy lighter color or rectangular layout"
+  ],
+  "reference_sha256": {
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-forge-stone/forge-stone-1-original-master-swatch.png": "8db5b7ac0951863c4d6bee5b30e8e78de234dfd6c41d60e810d6806e7df28af0",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png": "1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975"
+  },
+  "native_request": [
+    1254,
+    1254
+  ],
+  "opaque_request": true,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "binding_status": "native source only; parent owns runtime sampling and seam integration",
+  "prompt_sha256": "7401221f98c5059fedca2588bf905b1e6f0848b683fd006b92a590c59eb60eac"
+}

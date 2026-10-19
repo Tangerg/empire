@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-forge-stone",
+  "cell_index": 0,
+  "original_cellOrder_token": "forge-stone-1",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-283172d7-79c8-4e1d-b589-c635e8e99428.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-1/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-1/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-1/forge-stone-1-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-1/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-1/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-1/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-1/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/source-contract.json",
+  "sha256": "025bfaa1c9e17b7ea83f44851dad28bf791b0ed273d78f12864d7538b3294f9d",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Dark cool charcoal/slate-gray polygon stone paving with narrow brown-gray joints and medium infill; a few subtle broad fractures on main stones. Original dark floor identity retained, no forge objects, glow or wet sheen.",
+    "detail_density": "Approximately 5-7 main stones across the image, fewer and larger than the requested 8-12. Medium joint infill is quite abundant and some small chips remain.",
+    "scale_caveat": "Main stone widths are approximately 30-70 world units at a 256-unit full-source period, with occasional larger faces. Initial world period is a parent preview parameter, not an accepted gameplay scale.",
+    "style_caveat": "Broad quiet face planes and low-contrast dark palette. Residual fine face texture and a few ragged plane edges remain; no programmatic cleanup.",
+    "native_acceptance": "1254 fully opaque native, material identity retained. Active tone 0 source candidate for c01-14; not a scene binding or seamlessness pass."
+  }
+}

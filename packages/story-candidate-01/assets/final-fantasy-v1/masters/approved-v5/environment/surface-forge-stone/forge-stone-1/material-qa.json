@@ -1,0 +1,65 @@
+{
+  "asset": "forge-stone-1",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "025bfaa1c9e17b7ea83f44851dad28bf791b0ed273d78f12864d7538b3294f9d",
+  "RGB_mean": [
+    53.18137367123769,
+    53.04308700197645,
+    54.54960140310178
+  ],
+  "RGB_std": [
+    8.408459123076323,
+    8.79502995939104,
+    9.847586891897317
+  ],
+  "luma_mean": 53.18125708762263,
+  "luma_std": 8.735538608647174,
+  "luma_percentiles_5_50_95": [
+    37.4252,
+    53.931799999999996,
+    67.0762
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 52.399465851774316,
+    "bottom": 50.5379158592504,
+    "left": 51.281622707336524,
+    "right": 50.01992720793461,
+    "central_half": 54.677008305103655
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 6.77511961722488,
+    "top_bottom_mean_abs_RGB": 6.005050505050505,
+    "left_right_max_abs_RGB": 41.0,
+    "top_bottom_max_abs_RGB": 40.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Dark cool charcoal/slate-gray polygon stone paving with narrow brown-gray joints and medium infill; a few subtle broad fractures on main stones. Original dark floor identity retained, no forge objects, glow or wet sheen.",
+    "detail_density": "Approximately 5-7 main stones across the image, fewer and larger than the requested 8-12. Medium joint infill is quite abundant and some small chips remain.",
+    "scale_caveat": "Main stone widths are approximately 30-70 world units at a 256-unit full-source period, with occasional larger faces. Initial world period is a parent preview parameter, not an accepted gameplay scale.",
+    "style_caveat": "Broad quiet face planes and low-contrast dark palette. Residual fine face texture and a few ragged plane edges remain; no programmatic cleanup.",
+    "native_acceptance": "1254 fully opaque native, material identity retained. Active tone 0 source candidate for c01-14; not a scene binding or seamlessness pass."
+  },
+  "reference_material_identity": "Cool dark charcoal/slate-blue irregular polygon paving stones, many somewhat angular and worn, with a few broad face fractures and smaller stones tightly infilling narrow dark joints. Paved continuous floor, not loose scree, metal, lava or glowing ore.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

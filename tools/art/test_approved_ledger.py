@@ -91,3 +91,23 @@ class ApprovedLedgerTests(unittest.TestCase):
         self.assertEqual(result['summary']['rawPreservedTopics'], 1)
         self.assertEqual(result['summary']['formalBound'], 0)
         self.assertEqual(result['summary']['liveGameVerified'], 0)
+
+    def test_character_card_counts_one_topic_only_with_independent_native_character(self):
+        topic = {**self.topic, 'topicId': 'C01-CHAR-LEIA-01', 'category': 'narrative-static', 'kind': 'character-card', 'qualityTier': 'approved-chunky-v5-export-verified'}
+        self.write('pack/manifest.json', {'assets': [topic]})
+        self.write(DOC / 'canonical-topic-manifest.json', [{**topic, 'manifest': self.manifest, 'campaign': 'story-candidate-01', 'label': 'Laiya'}])
+        self.progress.update(topicStages={topic['topicId']: {'raw': 'independent transparent character and separate UI background'}}, formalRuntimeBoundTopics=1)
+        self.write(DOC / 'approved-v5/progress.json', self.progress)
+        background = self.root / 'pack/masters/approved-v5/narrative/card-background'
+        background.mkdir(parents=True)
+        (background / 'master.png').write_bytes(b'background is not a character')
+        with self.assertRaisesRegex(ValueError, 'lacks a discoverable approved native master'):
+            build(self.root)
+        character = self.root / 'pack/masters/approved-v5/narrative/char-leia-01'
+        character.mkdir(parents=True)
+        (character / 'master.png').write_bytes(b'independent character placeholder')
+        result = build(self.root)
+        self.assertEqual(result['summary']['formalBound'], 1)
+        self.assertEqual(result['summary']['rawPreservedTopics'], 1)
+        self.assertEqual(len(result['canonicalTopics'][0]['selectedRawMasters']), 1)
+        self.assertNotIn('card-background', result['canonicalTopics'][0]['selectedRawMasters'][0])
