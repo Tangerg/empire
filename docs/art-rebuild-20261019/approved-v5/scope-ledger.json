@@ -4,10 +4,10 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 80,
+    "formalBound": 81,
     "boundByCategory": {
       "battle-prop": 32,
-      "combat-unit": 14,
+      "combat-unit": 15,
       "equipment": 12,
       "interactive-structure": 21,
       "mission-unit": 1
@@ -16,7 +16,7 @@
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 96
+    "registeredEnvironmentCells": 100
   },
   "sceneCohesion": {
     "fullMap": "cliff-four-full-scene/full-scene-labeled.png",
@@ -1228,15 +1228,22 @@
       "label": "刺客",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/idle/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/walk-a/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-assassin.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-assassin.png",
+      "stageEvidence": {
+        "raw": "4 native semantic poses with original rogue double-curved-blade identity and cuff marks source evidence",
+        "export": "one44/942.5 body scale, four measured feet; attack6.442logical translation and1px canvas padding fully recorded; native light/dark motion review passed",
+        "runtimeBinding": "canonical/HD binding for existing rogue role, footprint1x1 unchanged, no new poison effects",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-AXE-BREAKER",
@@ -17867,7 +17874,9 @@
         "temperate-pillar-wide",
         "temperate-plateau-cap",
         "temperate-low-ledge",
-        "temperate-cliff-straight-south"
+        "temperate-cliff-straight-south",
+        "temperate-ramp-level-2",
+        "temperate-talus-foot"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -17877,12 +17886,14 @@
           "temperate-pillar-wide",
           "temperate-plateau-cap",
           "temperate-low-ledge",
-          "temperate-cliff-straight-south"
+          "temperate-cliff-straight-south",
+          "temperate-ramp-level-2",
+          "temperate-talus-foot"
         ],
-        "count": 6,
+        "count": 8,
         "export": "128/256 full-canvas registered, strict original16 cell-order/semantic pairs and unrelated pixels retained",
         "runtimeBinding": "actual existing elevated scenery selectors, occupancy/passability untouched",
-        "sceneReview": "Complete firstlevel reviewed with all19 ruleactors; four new large-plane profiles coherent with trees/buildings; remaining5 active cliff identities still legacy",
+        "sceneReview": "All8 registered module identities reviewed in complete firstlevel; all19 rule actors retained. One active mountain-pass identity and inactive catalog modules remain legacy.",
         "liveGame": "pending"
       }
     },
@@ -18078,18 +18089,22 @@
       "baselineComponentCount": 16,
       "registeredApprovedCells": [
         "abandoned-cart-stop",
-        "village-square-foundation"
+        "village-square-foundation",
+        "field-tent-cluster",
+        "vilsa-camp-ground"
       ],
       "liveGame": "pending",
       "stageEvidence": {
         "formalRuntimeBoundCells": [
           "abandoned-cart-stop",
-          "village-square-foundation"
+          "village-square-foundation",
+          "field-tent-cluster",
+          "vilsa-camp-ground"
         ],
-        "count": 2,
+        "count": 4,
         "export": "144/288 full-canvas registration, immutable baseline and unchanged other15 cells checked",
         "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
-        "sceneReview": "Cart standing and village square ground remain in original layers/scales; complete first/secondlevel reviewed, functional bases intact",
+        "sceneReview": "Complete firstlevel with field tents and red camp reviewed; original ground/standing layering retained. Remaining gray camp/supply tent legacy.",
         "liveGame": "pending"
       }
     },

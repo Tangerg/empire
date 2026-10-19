@@ -1,0 +1,339 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/walk-b/master.png"
+    },
+    "scale": 0.04668435013262599,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      805,
+      975
+    ],
+    "canvasPaddingTolerance": 1,
+    "registrationLimit": 7,
+    "sourceFeet": {
+      "idle": [
+        805,
+        975
+      ],
+      "walk-a": [
+        788,
+        970
+      ],
+      "attack": [
+        667,
+        965
+      ],
+      "walk-b": [
+        793,
+        967
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.7936339522546418,
+        0.23342175066312998
+      ],
+      "attack": [
+        6.442440318302387,
+        0.46684350132625996
+      ],
+      "walk-b": [
+        0.5602122015915119,
+        0.37347480106100794
+      ]
+    }
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    45.58090185676392,
+    49.51724137931034
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "43c2d9147d37bd02fbcc403bce5861e6fb06935bcedbf4484ebc6013157bd5c1",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          253
+        ],
+        "transparentPixels": 5541,
+        "nearOpaquePixels": 939,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          5,
+          67,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "43c2d9147d37bd02fbcc403bce5861e6fb06935bcedbf4484ebc6013157bd5c1",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22280,
+        "nearOpaquePixels": 3825,
+        "edgeMax": 0,
+        "visibleBounds": [
+          49,
+          10,
+          134,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/walk-a/master.png",
+      "registrationOffset": [
+        0.7936339522546418,
+        0.23342175066312998
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "d01d13af067654aeb03c82708602ea6213359a08fa109d39649f4f195a07543a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5520,
+        "nearOpaquePixels": 930,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          5,
+          68,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/walk-a/master.png",
+      "registrationOffset": [
+        0.7936339522546418,
+        0.23342175066312998
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "d01d13af067654aeb03c82708602ea6213359a08fa109d39649f4f195a07543a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22225,
+        "nearOpaquePixels": 3840,
+        "edgeMax": 0,
+        "visibleBounds": [
+          48,
+          11,
+          136,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/attack/master.png",
+      "registrationOffset": [
+        6.442440318302387,
+        0.46684350132625996
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "8c000a3cc8cc851d3dfa46ce0c9922107de456cf8f6ba384566c07a5ad55111c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5456,
+        "nearOpaquePixels": 982,
+        "edgeMax": 0,
+        "visibleBounds": [
+          23,
+          5,
+          86,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/attack/master.png",
+      "registrationOffset": [
+        6.442440318302387,
+        0.46684350132625996
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "8c000a3cc8cc851d3dfa46ce0c9922107de456cf8f6ba384566c07a5ad55111c",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21972,
+        "nearOpaquePixels": 4052,
+        "edgeMax": 0,
+        "visibleBounds": [
+          46,
+          11,
+          171,
+          99
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/walk-b/master.png",
+      "registrationOffset": [
+        0.5602122015915119,
+        0.37347480106100794
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "35a4a0b520e2f98261ddb9d0db204205fccde20b9d062490e85736ec9322a2bf",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5579,
+        "nearOpaquePixels": 896,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          6,
+          67,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/walk-b/master.png",
+      "registrationOffset": [
+        0.5602122015915119,
+        0.37347480106100794
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "35a4a0b520e2f98261ddb9d0db204205fccde20b9d062490e85736ec9322a2bf",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22439,
+        "nearOpaquePixels": 3663,
+        "edgeMax": 0,
+        "visibleBounds": [
+          49,
+          11,
+          135,
+          99
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

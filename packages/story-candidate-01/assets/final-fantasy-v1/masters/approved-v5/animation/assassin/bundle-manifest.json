@@ -1,0 +1,146 @@
+{
+  "asset": "C01-UNIT-ASSASSIN",
+  "actualConsumers": [
+    "rogue"
+  ],
+  "status": "Native quartet complete; coordinator final sequence review/export/binding pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "All selected master/raw PNGs are byte-identical to native outputs. No painting, recoloring, resizing, cropping or alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.04668435013262599,
+  "bodyReferenceSourcePixels": 942.5,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/registration-evidence.json",
+  "semanticContract": "C01-UNIT-ASSASSIN is the actual art of built-in rogue only, with no c01 campaign protagonist consumer. Canonical order idle/walk-a/attack/walk-b, original anchor[16,47] and 1x1 rules footprint remain documented. rogue_blades is piercing melee with a poisoned status effect. The source attack is visually near-idle and its walk-b repeats the first walking phase; this quartet reconstructs clear dual-dagger melee action and opposite walking contacts while preserving original face, costume and two physical weapon hands. No external poison effect or rules change is introduced.",
+  "selectedAttempts": {
+    "idle": "first successful native output",
+    "walk-a": "first successful native output",
+    "attack": "first successful native output",
+    "walk-b": "first successful native output"
+  },
+  "sourceDetailCaveat": "The original second-row source visibly has small muted reddish crossed/hatched marks on pale wrist wraps. They are retained as source cloth details; no faction, religious or magical meaning is assigned.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "89645b448153c8a2a163cfcb98aa6b43fd16590aec74b7d8d91140551efe5fed",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        805,
+        975
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        358,
+        25,
+        1263,
+        976
+      ],
+      "sha256": "43c2d9147d37bd02fbcc403bce5861e6fb06935bcedbf4484ebc6013157bd5c1",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-653a3661-ad30-4197-956f-0d73250a70c5.png",
+      "review": "Accepted exposed short black hair, close black jaw/chin beard and stern adult face. Charcoal blue-gray raised-collar long coat with cream edge/lapels, cream neck/chest and wrist wraps, brown fingerless gloves/belt/pouch/boots and olive-brown trousers. Screen-left curved dagger held down-right, screen-right upswept dagger held up-right. Broad matte chunky head/hands/boots retained."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "46136c4c52f6070a87f219b4f86208052112ca2b0dd753b655983b4f4bd1539e",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        788,
+        970
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        330,
+        24,
+        1264,
+        971
+      ],
+      "sha256": "d01d13af067654aeb03c82708602ea6213359a08fa109d39649f4f195a07543a",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-385ac81b-d5f3-4bce-88ed-21c63df3187c.png",
+      "review": "Front screen-right boot advances toe-up with heel contact and visible sole; rear screen-left boot is flat and weight-bearing. Modest arm and coat-tail motion preserves both original dagger hands and full identity."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "b78b7c1e5ac4b36c604a80288e211ce505782403eebe7c193e0f45d67908416a",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/attack/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        667,
+        965
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        184,
+        21,
+        1527,
+        966
+      ],
+      "sha256": "8c000a3cc8cc851d3dfa46ce0c9922107de456cf8f6ba384566c07a5ad55111c",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2daf8d7c-d8c5-4dc5-a1aa-e577957db100.png",
+      "review": "Clear planted forward lunge: front knee bent and rear leg braced. Original screen-right hand thrusts its own upswept dagger at chest height; original screen-left hand advances its own lower curved dagger near waist. Two connected arms, two hands and two separate grips/guards/blades are readable. Blade tips complete; no third limb, crossed arms, merged weapon, poison haze or new equipment."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "b7b2c20d70aade6a2823374a52d031a4e626d1a09102e9cb17cf92165db9b561",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/assassin/walk-b/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        793,
+        967
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        341,
+        22,
+        1261,
+        968
+      ],
+      "sha256": "35a4a0b520e2f98261ddb9d0db204205fccde20b9d062490e85736ec9322a2bf",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3de1898d-5d7d-4636-98d8-afa112001119.png",
+      "review": "Opposite walking contact: front screen-right boot is flat and weight-bearing; rear screen-left heel is lifted with toe contact. Same camera and weapon hands, not a mirrored or repeated walk-a."
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "snapshotHead": "654b382",
+  "record": {
+    "atlas": "camps-foundations",
+    "id": "vilsa-camp-ground",
+    "index": 1,
+    "cellOrderLabel": "vilsa-camp-ground",
+    "logicalCell": [
+      144,
+      144
+    ],
+    "hdCell": [
+      288,
+      288
+    ],
+    "runtimeHdBox": [
+      288,
+      0,
+      576,
+      288
+    ],
+    "logicalVisibleBoundsAlpha128": [
+      5.5,
+      23.0,
+      139.0,
+      138.5
+    ],
+    "runtimeAnchor": [
+      72,
+      139
+    ],
+    "semanticMetadata": {
+      "id": "vilsa-camp-ground",
+      "footprint": [
+        4,
+        3
+      ],
+      "anchor": [
+        72,
+        139
+      ],
+      "obstructionHeight": 0
+    },
+    "sourceQuarterBox": [
+      314,
+      0,
+      627,
+      314
+    ],
+    "dominantFullSubjectBoundsAlpha128": [
+      328,
+      54,
+      610,
+      298
+    ],
+    "sourceSubjectCrossesQuarter": false,
+    "referenceCropBox": [
+      318,
+      44,
+      620,
+      308
+    ],
+    "referencePath": "/workspace/shared/empire-art-rebuild/approved-v5/environment/next-active-source-audit/references/camps-foundations/vilsa-camp-ground-complete-subject-reference.png",
+    "sources": {
+      "master": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/camps-foundations-4x4-key.png",
+        "sha256": "d1aafadcb4b6e0e842d7d7d4b689b65c3c7748a2cb57f3101440c6c30508686d"
+      },
+      "alpha": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/camps-foundations-4x4.png",
+        "sha256": "a0736cdce63cca6b925490669aa6355e147e45428904a7b52e7e9fc7485c2062"
+      },
+      "runtimeHd": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png",
+        "sha256": "1b44da1018b7af54ae20b919409a5f6890d4371df2064f659fda54188e68dd45"
+      }
+    }
+  },
+  "notes": [
+    "Reference crops are diagnostic source pixels, not production registration coordinates",
+    "New native sources need independently reviewed sourceFoot; never infer it from an alpha bounding box",
+    "Keep all source alpha, no whole-sheet color or morphology processing, no crop-to-fit replacement",
+    "Cliffs are independent modules: 4x4,128/256,foot64/127,modules. Retain normal world foot sorting and all terrain/rule data",
+    "Camps are 4x4,144/288,defaultfoot72/139; retain per-consumer foundation versus standing classification",
+    "Only abandoned-cart-stop is already replaced in camps at this snapshot; village square is assigned separately",
+    "Rural life all 16 cells registered, including the 13 IDs active in the two initial scenes"
+  ]
+}

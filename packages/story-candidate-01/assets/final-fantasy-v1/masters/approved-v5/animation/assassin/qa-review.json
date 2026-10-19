@@ -1,0 +1,58 @@
+{
+  "status": "Native quartet semantic/alpha/geometry QA passes; coordinator final sequence review/export/binding pending",
+  "topic": "C01-UNIT-ASSASSIN",
+  "actualConsumers": [
+    "rogue"
+  ],
+  "bodyScale": "44/942.5",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1585,
+      992
+    ],
+    "attack": [
+      1586,
+      992
+    ],
+    "walk-b": [
+      1586,
+      992
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourcePaddingRequired": "Walk-a native1585x992 requires one transparent right column in export preparation only. Other native poses are1586x992. All native master/raw pixels remain unchanged; no resize, crop, alpha cleanup or independent fitting.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All native perimeter alpha<=1; zero silhouette alpha>1 on edges. Native alpha=1 specks retained.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "bothPhysicalDaggerHandsPreserved": true,
+  "walkContactsOppose": true,
+  "attackAnatomyReview": "Clear planted forward lunge: front knee bent and rear leg braced. Original screen-right hand thrusts its own upswept dagger at chest height; original screen-left hand advances its own lower curved dagger near waist. Two connected arms, two hands and two separate grips/guards/blades are readable. Blade tips complete; no third limb, crossed arms, merged weapon, poison haze or new equipment.",
+  "sourceWristMarks": "The original second-row source visibly has small muted reddish crossed/hatched marks on pale wrist wraps. They are retained as source cloth details; no faction, religious or magical meaning is assigned.",
+  "semanticContract": "C01-UNIT-ASSASSIN is the actual art of built-in rogue only, with no c01 campaign protagonist consumer. Canonical order idle/walk-a/attack/walk-b, original anchor[16,47] and 1x1 rules footprint remain documented. rogue_blades is piercing melee with a poisoned status effect. The source attack is visually near-idle and its walk-b repeats the first walking phase; this quartet reconstructs clear dual-dagger melee action and opposite walking contacts while preserving original face, costume and two physical weapon hands. No external poison effect or rules change is introduced.",
+  "registrationEvidence": "registration-evidence.json",
+  "proposedFullCanvasFit": true,
+  "recommendedRegistrationLimitLogicalPixels": 7,
+  "runtimeOrRepositoryWrites": false,
+  "gameplayFixClaimed": false
+}

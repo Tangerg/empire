@@ -1,0 +1,108 @@
+{
+  "asset": "temperate-ramp-level-2",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-baf0aaae-2127-486c-a781-56eb2284d3b4.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 914242,
+  "opaque_pixels": 1111,
+  "partial_alpha_pixels": 657163,
+  "near_opaque_alpha_250_255_pixels": 642025,
+  "nonzero_alpha_bbox": [
+    33,
+    19,
+    1236,
+    1222
+  ],
+  "strong_alpha_bbox": [
+    66,
+    174,
+    1195,
+    1144
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      33,
+      19,
+      1236,
+      1222
+    ],
+    "16": [
+      65,
+      173,
+      1195,
+      1145
+    ],
+    "128": [
+      66,
+      174,
+      1195,
+      1144
+    ],
+    "250": [
+      67,
+      175,
+      1194,
+      1143
+    ]
+  },
+  "margin_pixels_LTRB": [
+    33,
+    19,
+    18,
+    32
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    66,
+    174,
+    59,
+    110
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    }
+  },
+  "strict_perimeter_all_alpha_zero": true,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": false,
+  "sha256": "606458dfc203703364279fabf0ef2f47fa9e0338b7573dd3fbbbec142e0d1059",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails.",
+  "raw_master_native_byte_identical": true
+}

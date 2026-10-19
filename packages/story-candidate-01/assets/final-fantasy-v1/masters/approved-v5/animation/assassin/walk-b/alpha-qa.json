@@ -1,0 +1,65 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3de1898d-5d7d-4636-98d8-afa112001119.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "35a4a0b520e2f98261ddb9d0db204205fccde20b9d062490e85736ec9322a2bf",
+  "bboxAlphaNonzero": [
+    0,
+    19,
+    1542,
+    972
+  ],
+  "bboxAlphaGreaterThan127": [
+    341,
+    22,
+    1261,
+    968
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1115369,
+  "alphaOnePixels": 4392,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        440,
+        780,
+        690,
+        972
+      ],
+      "soleY": 946,
+      "bottomBandMeanX": 606.3018181818181,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    },
+    "screenRight": {
+      "roi": [
+        780,
+        815,
+        1110,
+        980
+      ],
+      "soleY": 967,
+      "bottomBandMeanX": 980.1323529411765,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    }
+  },
+  "sourceFootMidpoint": [
+    793.2170855614972,
+    956.5
+  ],
+  "suggestedSourceFoot": [
+    793,
+    967
+  ],
+  "lockedBodyScale": 0.04668435013262599,
+  "masterRawHashMatches": true,
+  "semanticReview": "Front screen-right boot flat and weight-bearing; rear screen-left heel lifted and toe contact. Opposite walking contacts, same camera and two original dagger hands."
+}

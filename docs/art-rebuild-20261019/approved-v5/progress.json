@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 16,
+  "authoredFourPoseBundles": 17,
   "authoredThreeStateBundles": 21,
-  "formalRuntimeBoundTopics": 80,
+  "formalRuntimeBoundTopics": 81,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -508,6 +508,12 @@
       "export": "shared112/1180 scale; captured fullcanvas -42native y registration from three independent static-region matches, no crop; native state review passed",
       "runtimeBinding": "canonical and HD resolver, original2x2 footprint retained; catalog-only current consumer audit",
       "liveGame": "pending"
+    },
+    "C01-UNIT-ASSASSIN": {
+      "raw": "4 native semantic poses with original rogue double-curved-blade identity and cuff marks source evidence",
+      "export": "one44/942.5 body scale, four measured feet; attack6.442logical translation and1px canvas padding fully recorded; native light/dark motion review passed",
+      "runtimeBinding": "canonical/HD binding for existing rogue role, footprint1x1 unchanged, no new poison effects",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -678,12 +684,14 @@
     "camps-foundations": {
       "formalRuntimeBoundCells": [
         "abandoned-cart-stop",
-        "village-square-foundation"
+        "village-square-foundation",
+        "field-tent-cluster",
+        "vilsa-camp-ground"
       ],
-      "count": 2,
+      "count": 4,
       "export": "144/288 full-canvas registration, immutable baseline and unchanged other15 cells checked",
       "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
-      "sceneReview": "Cart standing and village square ground remain in original layers/scales; complete first/secondlevel reviewed, functional bases intact",
+      "sceneReview": "Complete firstlevel with field tents and red camp reviewed; original ground/standing layering retained. Remaining gray camp/supply tent legacy.",
       "liveGame": "pending"
     },
     "cliff-modules-temperate": {
@@ -693,12 +701,14 @@
         "temperate-pillar-wide",
         "temperate-plateau-cap",
         "temperate-low-ledge",
-        "temperate-cliff-straight-south"
+        "temperate-cliff-straight-south",
+        "temperate-ramp-level-2",
+        "temperate-talus-foot"
       ],
-      "count": 6,
+      "count": 8,
       "export": "128/256 full-canvas registered, strict original16 cell-order/semantic pairs and unrelated pixels retained",
       "runtimeBinding": "actual existing elevated scenery selectors, occupancy/passability untouched",
-      "sceneReview": "Complete firstlevel reviewed with all19 ruleactors; four new large-plane profiles coherent with trees/buildings; remaining5 active cliff identities still legacy",
+      "sceneReview": "All8 registered module identities reviewed in complete firstlevel; all19 rule actors retained. One active mountain-pass identity and inactive catalog modules remain legacy.",
       "liveGame": "pending"
     }
   },
@@ -719,7 +729,7 @@
       "defaultTestTimeoutUnchanged": true,
       "scope": "b0562c6 ranger/firstcliffpair runtime checkpoint; later atlas-only additions separately export-checked"
     },
-    "latestBindingAndEdges": "90 asset/environment tests passed after capitalgate and nextcliffpair",
+    "latestBindingAndEdges": "91 asset/environment tests passed after assassin and ramp/talus pair",
     "artPythonLatest": "147 passed at f8789f8 integration checkpoint",
     "typecheckLatest": "passed after firstfour cliffs and village square"
   },

@@ -1,0 +1,62 @@
+{
+  "atlasId": "camps-foundations",
+  "cellId": "field-tent-cluster",
+  "cellIndexZeroBased": 4,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6584308204177255,
+  "nearOpaqueFractionAlphaGE250": 0.32856645019828096,
+  "canvasEdgeMaxAlpha": 1,
+  "sourceFootNative": [
+    627,
+    1000
+  ],
+  "sourceFootBasis": "Manually selected visible front-center earth-apron contact along the native canvas centerline after visual review. Alpha samples only validate the chosen point; no bbox-derived source foot.",
+  "sourceFootAlpha": 209,
+  "fullCanvasMustBePreserved": true,
+  "matchesRawGeneratedBytes": true,
+  "sha256": "7c168fe54e501fffa931f409f31342950a508f66eb763b0680f7c78c64ab9fa5",
+  "visualQA": "Exactly five gray-cloth tents: rear-left large rectangular peaked pavilion, rear-right large round/conical pavilion with open flap, front-left small A-frame/pyramid tent, front-right small peaked tent, and a tiny rear-center tent. Center stone-ring fire with small flame, single central-back crate, left barrel and right small bucket. Maintain collective open camp ground. Complete functional ground retained; approved chunky matte planes; transparent exterior.",
+  "remarks": [
+    "Native alpha1 perimeter residue retained unchanged."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "alphaBBoxGE1": [
+    0,
+    49,
+    1210,
+    1216
+  ],
+  "alphaBBoxGE8": [
+    111,
+    292,
+    1150,
+    1013
+  ],
+  "alphaBBoxGE128": [
+    112,
+    293,
+    1147,
+    1012
+  ],
+  "alphaBBoxGE250": [
+    113,
+    295,
+    1146,
+    1011
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    112,
+    293,
+    107,
+    242
+  ]
+}
