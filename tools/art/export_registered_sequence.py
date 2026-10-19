@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Pack a visual sequence with one shared canvas, scale, origin and pivot."""
-import argparse,hashlib,json,subprocess
+import argparse,hashlib,json,subprocess,math
 from pathlib import Path
 import xml.etree.ElementTree as ET
 from PIL import Image,ImageDraw
@@ -22,11 +22,13 @@ def validate(config):
         size=tuple(max(size[i],image.size[i]) for i in (0,1)) if size else image.size;hashes.append(hashlib.sha256(Path(path).read_bytes()).hexdigest())
     if len(set(hashes))!=len(hashes):raise ValueError('duplicate source frames')
     scale=config['scale'];origin=config['origin'];frame=config['frameSize']
+    if not math.isfinite(scale) or len(origin)!=2 or len(frame)!=2 or not all(math.isfinite(v) for v in origin):raise ValueError('finite scale and two-dimensional origin/frame required')
+    if any(type(v) is not int or v<=0 for v in frame):raise ValueError('positive integer frame dimensions required')
     if scale<=0 or any(origin[i]<0 or origin[i]+size[i]*scale>frame[i] for i in (0,1)):
         raise ValueError('full authored canvas must fit at the single shared scale')
     for name in names:
         offset=config.get('registrationOffsets',{}).get(name,[0,0])
-        if len(offset)!=2 or any(abs(v)>2 for v in offset):raise ValueError('registration translation limited to two logical pixels')
+        if len(offset)!=2 or any(not math.isfinite(v) or abs(v)>2 for v in offset):raise ValueError('registration translation limited to two logical pixels')
         if any(origin[i]+offset[i]<0 or origin[i]+offset[i]+size[i]*scale>frame[i] for i in (0,1)):raise ValueError('registration would clip full canvas')
     return size
 

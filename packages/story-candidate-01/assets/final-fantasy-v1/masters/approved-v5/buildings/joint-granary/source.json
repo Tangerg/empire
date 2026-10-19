@@ -1,0 +1,38 @@
+{
+  "topicId": "C01-STRUCT-JOINT-GRANARY",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-02.png",
+  "sha256": "9194804968ce3164104b78e0384bf35725a51bacd5d4cbe9a33993bc03569f5d",
+  "method": "Visually matched runtime-HD granary strip to atlas02 first row; left/middle/right normal/damaged/captured",
+  "cells": [
+    {
+      "state": "normal",
+      "box": [
+        0,
+        0,
+        362,
+        362
+      ]
+    },
+    {
+      "state": "damaged",
+      "box": [
+        362,
+        0,
+        724,
+        362
+      ]
+    },
+    {
+      "state": "captured",
+      "box": [
+        724,
+        0,
+        1086,
+        362
+      ]
+    }
+  ],
+  "identity": "Timber granary on stone base, dark blue-gray gable roof, roof vent, arched double door, three wheat shield banners gray/green/gold, cream right awning over sacks",
+  "damaged": "Broken roof tiles, torn collapsed right awning, hole in door, base rubble and disturbed sacks",
+  "captured": "Intact granary with three gray forked flags bearing pale radial stars on roof"
+}

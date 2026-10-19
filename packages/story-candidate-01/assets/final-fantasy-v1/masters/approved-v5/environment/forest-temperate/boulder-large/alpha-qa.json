@@ -1,0 +1,45 @@
+{
+  "asset": "boulder-large",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-5078d864-458f-482d-91f9-b21545a45c4c.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 1000305,
+  "opaque_pixels": 744,
+  "partial_alpha_pixels": 571467,
+  "near_opaque_alpha_250_255_pixels": 559463,
+  "nonzero_alpha_bbox": [
+    0,
+    96,
+    1200,
+    1182
+  ],
+  "strong_alpha_bbox": [
+    157,
+    217,
+    1119,
+    1054
+  ],
+  "margin_pixels_LTRB": [
+    0,
+    96,
+    54,
+    72
+  ],
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "sha256": "1e370b81ccda303555b954ab6fced233b07d399d74ff02a0ca4274c8bda8bc2a",
+  "production_integration_status": "raw master only; runtime sizing and anchoring pending parent integration"
+}

@@ -24,6 +24,9 @@ class RegisteredSequenceTests(unittest.TestCase):
  def test_one_pixel_canvas_padding_keeps_scale(self):
   im=Image.new('RGBA',(17,16));im.paste((90,80,70,253),(3,3,13,13));im.save(self.frames['attack']);self.c['canvasPaddingTolerance']=1
   self.assertEqual(validate(self.c),(17,16));self.assertEqual(self.c['scale'],1)
+ def test_nonfinite_scale_rejected(self):
+  self.c['scale']=float('nan')
+  with self.assertRaises(ValueError):validate(self.c)
  def test_semantic_order_required(self):
   self.c['frames']=dict(reversed(list(self.frames.items())))
   with self.assertRaises(ValueError):validate(self.c)

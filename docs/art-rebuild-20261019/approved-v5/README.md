@@ -1,15 +1,26 @@
-# Approved concept: first transparent slice
+# Approved-v5 remake
 
-User accepted concept-v2 on 2026-10-19. These are three independently generated transparent sources, not concept-background pixels: one idle swordsman, one pine and one horizontal stone bridge. Raw masters and prompts are under final-fantasy-v1/masters/approved-v5.
+The user approved the concept on 2026-10-19 at 12:19 UTC and the layered direction/full continuation at 12:47 UTC. Earlier bulk exports remain historical candidates, not approved-v5 completions.
 
-The 1x/2x PNG exports retain the full source canvas. The JSON records explicit pivot, source hash and display size. The staged six-person, three-bridge fixture retains actual terrain, fixed positions, opposing horizontal facing and runtime contact/rings. Both teams currently share a blue soldier with different team rings. This is a static assembled art study, not a browser/gameplay capture. No gameplay rules or production bindings changed. Single idle does not complete an animation topic.
+## Four independent stages
 
-Verified: genuine alpha, black/white/olive composites, native-size readability, feet/deck registration, six soldiers/three bridges, unchanged layer sources outside the three substitutions. Source edge alpha at most1 is preserved; no alpha normalization. All72 art-tool tests pass. Full style acceptance and real gameplay/occlusion remain separate. The next bounded group addresses mismatched old water/ground/bank materials and a red-team source.
+1. Raw: original generated PNG, exact prompt, reference and alpha QA preserved
+2. Export: one registered scale, native transparency/semantic/cohesion review
+3. Runtime bound: canonical manifest, texture resolver and consuming UI tested
+4. Live game verified: actual gameplay, motion, ownership/damage and occlusion observed
 
-Run tools/art/assemble_approved_slice.py with registration.json and an output directory. The fixture SVG uses the preserved cloud workspace paths, recorded explicitly; portable runtime PNGs and pivot metadata are included.
+Static Inkscape composites and GIFs are deterministic previews, not live gameplay recordings.
 
-## Second bounded group
+## Reproduce sequence exports
 
-Red cloth was authored by imagegen, with minor silhouette redraw documented and independently registered to the same44px visible height. Three red actors are mirrored left using the existing facing transform. Grass, water and earth are separate opaque material sources. The earth v1 was too orange/dense and is preserved; revision2 removes its cracks/pebbles. Existing road NESW geometry, water occupancy and shoreline47-mask alpha are retained. All74 art-tool tests pass, including unchanged alpha and unused atlas cell. Scene SVG contains no concept background.
+Run from the repository root with Python, Pillow and Inkscape installed:
 
-`material-scene-v2/scene@2x.png` is the current static layered check; `materials-before-after.png` compares the same camera/positions. Straight mask outlines and cell texture repetition remain visible limitations. No production bindings, gameplay changes, full animation acceptance or main-branch merge.
+```sh
+python3 tools/art/export_registered_sequence.py docs/art-rebuild-20261019/approved-v5/animation/swordsman/registration.json /tmp/empire-swordsman-export
+python3 tools/art/export_registered_sequence.py docs/art-rebuild-20261019/approved-v5/buildings/lorne-keep/registration.json /tmp/empire-keep-export
+python3 -m unittest discover -s tools/art -p 'test_*.py'
+```
+
+Registration configs reference immutable masters in this repository. Every pose retains its authored canvas at one shared scale; optional bounded translations align planted soles/foundations. One-pixel image-generation canvas discrepancies may be represented as transparent padding only, never separate pose scaling. Source alpha is not normalized. Runtime sheet publishing must use the canonical manifest and selected HD texture contract.
+
+The swordsman bundle has four authored poses, not a high-frame-count animation. Lorne Keep has three authored states; state reachability depends on existing game bindings and is recorded separately.

@@ -1,0 +1,235 @@
+{
+  "config": {
+    "frames": {
+      "normal": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/repairable-gate/normal/master.png",
+      "damaged": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/repairable-gate/damaged/master.png",
+      "captured": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/repairable-gate/captured/master.png"
+    },
+    "scale": 0.11950207468879669,
+    "origin": [
+      4,
+      4
+    ],
+    "frameSize": [
+      160,
+      160
+    ],
+    "sourceFoot": [
+      632,
+      1137
+    ],
+    "registrationBasis": "One intact foundation point and uniform authored scale for all states; no per-state fit."
+  },
+  "authoredCanvas": [
+    1254,
+    1254
+  ],
+  "logicalPivot": [
+    79.5253112033195,
+    139.87385892116183
+  ],
+  "frames": [
+    {
+      "frame": "normal",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/repairable-gate/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "48592670f66b7f4c027638907b273c3a887cc94a8b73b0838fa11b63d40540b0",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 14763,
+        "nearOpaquePixels": 10272,
+        "edgeMax": 0,
+        "visibleBounds": [
+          8,
+          29,
+          152,
+          140
+        ]
+      }
+    },
+    {
+      "frame": "normal",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/repairable-gate/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "48592670f66b7f4c027638907b273c3a887cc94a8b73b0838fa11b63d40540b0",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 59357,
+        "nearOpaquePixels": 41538,
+        "edgeMax": 0,
+        "visibleBounds": [
+          15,
+          58,
+          303,
+          280
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/repairable-gate/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "38e3fa99d7b858c31ac722808f7769dd5721cceee5b7b6197f15adeeacdf60f2",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 14299,
+        "nearOpaquePixels": 10602,
+        "edgeMax": 0,
+        "visibleBounds": [
+          8,
+          29,
+          152,
+          140
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/repairable-gate/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "38e3fa99d7b858c31ac722808f7769dd5721cceee5b7b6197f15adeeacdf60f2",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 57636,
+        "nearOpaquePixels": 42959,
+        "edgeMax": 0,
+        "visibleBounds": [
+          15,
+          58,
+          303,
+          280
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 1,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/repairable-gate/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "b1fadf141259ea104df0e120c601dd133cbe79dec98cf068f58cfe9e61b6e15b",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 14370,
+        "nearOpaquePixels": 10644,
+        "edgeMax": 0,
+        "visibleBounds": [
+          8,
+          29,
+          153,
+          140
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 2,
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/repairable-gate/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "b1fadf141259ea104df0e120c601dd133cbe79dec98cf068f58cfe9e61b6e15b",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 57833,
+        "nearOpaquePixels": 43066,
+        "edgeMax": 0,
+        "visibleBounds": [
+          15,
+          58,
+          305,
+          280
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

@@ -1,0 +1,34 @@
+{
+  "status": "native generation and source QA complete; production runtime integration pending",
+  "generation_mode": "built-in imagegen, exactly one call per identity",
+  "assets": [
+    {
+      "identity": "oak-ancient",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/oak-ancient/oak-ancient-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/oak-ancient/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/oak-ancient/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/oak-ancient/semantic-notes.md"
+    },
+    {
+      "identity": "mixed-forest-dense",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/mixed-forest-dense/mixed-forest-dense-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/mixed-forest-dense/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/mixed-forest-dense/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/mixed-forest-dense/semantic-notes.md"
+    },
+    {
+      "identity": "fern-bed",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/fern-bed/fern-bed-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/fern-bed/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/fern-bed/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/fern-bed/semantic-notes.md"
+    },
+    {
+      "identity": "boulder-large",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/semantic-notes.md"
+    }
+  ]
+}
