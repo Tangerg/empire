@@ -137,3 +137,20 @@ The environment adapter also accepts `scenery-regional`, whose 4×4,96/192px
 module and [48,91] anchor contract matches the forest atlases. Existing category,
 footprint, obstruction and cell order metadata are read-only. Opaque terrain
 surfaces and other module dimensions remain unsupported.
+
+## Opaque surface meadow
+
+`export_surface_overrides.py` handles only the four ordered `surface-meadow`
+materials. Catalog: `surface-overrides.json`, schemaVersion1, atlases keyed by
+`surface-meadow`, each with `cells` keyed meadow-1 through meadow-4. Each source
+has its repository-relative `source` and `sha256`, and lives under pack masters.
+Sources must be square opaque PNGs. Every family must be registered together.
+The user approved bounded seam matching: independently resize each full source
+to64 and32, then average only the outermost row/column across the four tiles.
+Interior pixels are unchanged from the corresponding plain resize. No blur,
+recolor, source mutation or neighbor-mask change occurs. All four edges match
+exactly across the family. The report records edge hashes, changed pixel counts,
+maximum channel change and source provenance. `--check` verifies reproducibility;
+`--preview-dir PATH` writes real-pixel repeated2×2 and mixed4×4 QA sheets at both
+native densities. Exact matching alone does not guarantee visually good seams;
+review these sheets and actual scene composites before visual acceptance.
