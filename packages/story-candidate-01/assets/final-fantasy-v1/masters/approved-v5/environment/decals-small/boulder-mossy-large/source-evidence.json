@@ -1,0 +1,91 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "boulder-mossy-large",
+  "cellIndexZeroBased": 18,
+  "category": "ground-decal",
+  "expectedRuntimeSizes": [
+    [
+      64,
+      64
+    ],
+    [
+      128,
+      128
+    ]
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6dce6297-44b3-4d19-812f-8d1157c515ae.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/identity-inspection/original-boulder-mossy-large-semantic-subject.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-selected-readability-20261019",
+    "baselineCommit": "36555c4",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+    "atlasGrid": [
+      6,
+      4
+    ],
+    "atlasNativeSize": [
+      1536,
+      1024
+    ],
+    "registeredMasterCellCrop": [
+      0,
+      768,
+      256,
+      1024
+    ],
+    "semanticSubjectCrop": [
+      0,
+      640,
+      256,
+      830
+    ],
+    "identityCropTreatment": "Unscaled original-master crops retained unchanged. Registered-cell crop preserved separately; semantic crop is identity authority after complete-sheet inspection.",
+    "crossCellContamination": "Registered row-four crop contains only bottom fragments of the intended boulder plus an unrelated extra dirt patch from the last authored row. Semantic crop restores the whole boulder from y640\u2013830 and excludes the dirt patch.",
+    "audit": "docs/art-rebuild-20261019/approved-v5/ground-debris-audit/debris-inventory.json",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json",
+    "oldLogicalAnchor": [
+      32,
+      60
+    ],
+    "oldObstructionHeight": 1,
+    "oldAnchorIsNotNewSourceFootpoint": true,
+    "atlasSha256": "ec62ec03545fadca86f8c67a265633a59496cd981a92e7572cce472d54f016fd",
+    "matchesBaselineAtlasBytes": true
+  },
+  "actualConsumer": {
+    "module": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+    "renderer": "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts",
+    "existingGroundOpacity": 0.72,
+    "existingHorizontalFlip": true,
+    "observedGroundMapCounts": {
+      "c01-02": 0,
+      "c01-01": 0
+    },
+    "observedGroundScales": [],
+    "note": "Declared atlas catalog component; no instances in the audited groundPieces records for c01-01/c01-02. Keep distinct identity for catalog probe.",
+    "registrationNotChanged": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/mossy-boulder/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/identity-inspection/original-boulder-mossy-large-semantic-subject.png",
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/mossy-boulder/master.png"
+  ],
+  "identityClarification": "One larger broad blocky domed rock with a flattened crown and wide sloping shoulders. A broad olive moss mantle spans the upper shoulders, descends far down the left side, and leaves large bare gray crown and front-center patches. Two companion stones near front-center/right, low base tufts. Must remain visibly broader/flatter-crowned and more moss-draped than the smaller rounded variant.",
+  "postprocessing": "None. Byte-exact native PNG copies to master.png and raw.png. No output cleanup, resizing, alpha editing or repository writes.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "newSourceFootpointNative": [
+    627.0,
+    1059
+  ],
+  "newSourceFootpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding."
+}

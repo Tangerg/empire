@@ -1,0 +1,60 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "boulder-mossy-large",
+  "cellIndexZeroBased": 18,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5670657723037477,
+  "nearOpaqueFractionAlphaGE250": 0.4245629297253573,
+  "nonzeroAlphaBBox": [
+    0,
+    53,
+    1208,
+    1214
+  ],
+  "visibleAlphaBBoxGE8": [
+    48,
+    248,
+    1206,
+    1060
+  ],
+  "subjectAlphaBBoxGE128": [
+    49,
+    249,
+    1205,
+    1059
+  ],
+  "solidAlphaBBoxGE250": [
+    50,
+    250,
+    1204,
+    1058
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    49,
+    249,
+    49,
+    195
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "suggestedRegistrationFootpointNative": [
+    627.0,
+    1059
+  ],
+  "footpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding.",
+  "sha256": "8c8062243778e365339e6f79bd0077807ce001f6883741e4895d8ee072fd3dfd",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Broad flatter-crowned blocky large boulder with connected olive mantle across shoulders, long left-side moss drape, gray top-center cap and bare front panel. Visually broader and more moss-covered than mossy-boulder; two companion stones. No unrelated lower dirt-patch fragment.",
+  "remarks": [
+    "Native alpha=1 fringe specks retained unchanged; not included in subject bounds or footpoint."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

@@ -1,0 +1,145 @@
+{
+  "topicId": "C01-STRUCT-NAME-MEMORIAL",
+  "status": "Complete native trio; semantic/native/common-scale QA passed; small captured contour variation disclosed for integration review",
+  "masterIntegrity": "All raw/master pairs byte-identical native built-in imagegen outputs, no alpha cleanup, crop, resize, translation, repaint or per-state fit",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "perimeterGate": "Normal/damaged/captured actual maxima0/0/1, all zero edge pixels>1",
+  "sharedCalibratedSourceFoot": [
+    627,
+    954
+  ],
+  "acceptedLogicalWidth": 104,
+  "scaleApplication": "One104/1180 factor for every full native1254 canvas",
+  "visualChecks": {
+    "normal": "Low curved stone wall with two finial pillars, two lit hanging lanterns and8wood tags:6main+2low",
+    "damaged": "Deep central wall collapse,4hanging tags and loose plaques, damaged left finial, left lamp hanging and right lamp fallen but amber-lit",
+    "captured": "Intact wall with gray-blue swags/pale tassels,8plaques rearranged7upper including broad rounded center+1lower-left",
+    "text": "Only abstract incised strokes, no invented names or readable letters",
+    "style": "Broad chunky matte stone/wood/brass, strong contours, low wall proportions maintained",
+    "registration": "Same whole canvas and pillar/body scale; captured middle base13native pixels lower, approximately1.15logical pixels, disclosed as local non-rigid variation; no hidden translation or fit",
+    "alpha": "True clear RGBA exterior, full silhouette contained, no backdrop tile",
+    "readability": "104common-scale preview preserves blank-name memorial identity, collapse and decorated/rearranged plaque cues"
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "sharedLogical104": "qa-logical-104.png",
+    "normal": "qa-normal-logical-104.png",
+    "optionalProposalNotApplied": "qa-logical-104-proposed-registration.png"
+  },
+  "consumerQualification": {
+    "status": "no-static-consumer-reference-found",
+    "audit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "directSearch": "Exact topic/runtime slug search in *.ts and *.scene.json returned no matches",
+    "observedInBrowser": false,
+    "qualification": "Catalog asset only on current static evidence; actual campaign placement not proved, dynamic external input not excluded"
+  },
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 0,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        37,
+        326,
+        1217,
+        954
+      ],
+      "alphaAbove1Bounds": [
+        34,
+        323,
+        1220,
+        961
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-aeaf68f9-e10e-42b9-b3f9-8c38f2754dd5.png",
+      "sha256": "c84bdeb8791fe7ac22e5943be36290bbec3b28dcdda2606d72b3b0a8b64c4bef",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 1040050,
+      "perimeterGate": "Actual outermost maximum alpha<=1; zero perimeter pixels>1",
+      "activePrompt": "prompt.txt",
+      "sharedCalibratedSourceFoot": [
+        627,
+        954
+      ],
+      "visibleSilhouetteReview": "Complete contained wall/pillars, plaques, lamps and bounded damage debris",
+      "nativeFoundationContactNote": "Normal calibrated center base954; damage retains same surviving low foundation, loose debris excluded"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 0,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        36,
+        326,
+        1219,
+        1006
+      ],
+      "alphaAbove1Bounds": [
+        34,
+        323,
+        1221,
+        1008
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-d752de35-e952-4dfe-b3bd-a14a96a01d94.png",
+      "sha256": "0af781bc5982305fa08d17773ad8fd8d64c549267d4e306dc3ce00af6f11ae30",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 1061406,
+      "perimeterGate": "Actual outermost maximum alpha<=1; zero perimeter pixels>1",
+      "activePrompt": "prompt.txt",
+      "sharedCalibratedSourceFoot": [
+        627,
+        954
+      ],
+      "visibleSilhouetteReview": "Complete contained wall/pillars, plaques, lamps and bounded damage debris",
+      "nativeFoundationContactNote": "Normal calibrated center base954; damage retains same surviving low foundation, loose debris excluded"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        36,
+        325,
+        1219,
+        980
+      ],
+      "alphaAbove1Bounds": [
+        33,
+        323,
+        1222,
+        982
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-410edb69-8c4b-4e79-afe4-03d5409bd894.png",
+      "sha256": "d78bed83cff1df5ad3550cd05556893b29d6b176900b4bd52a3ba777466fe6ff",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 1026434,
+      "perimeterGate": "Actual outermost maximum alpha<=1; zero perimeter pixels>1",
+      "activePrompt": "prompt.txt",
+      "sharedCalibratedSourceFoot": [
+        627,
+        954
+      ],
+      "visibleSilhouetteReview": "Complete contained wall/pillars, plaques, lamps and bounded damage debris",
+      "nativeFoundationContactNote": "Center base bottom967; 13native-pixel local lower-row variation, not rigid whole-wall translation"
+    }
+  },
+  "noRepositoryWrites": true,
+  "noLiveGameClaim": true
+}

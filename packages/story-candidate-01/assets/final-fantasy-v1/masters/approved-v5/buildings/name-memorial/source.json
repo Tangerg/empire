@@ -1,0 +1,95 @@
+{
+  "topicId": "C01-STRUCT-NAME-MEMORIAL",
+  "label": "墓园姓名碑",
+  "originalManifestEntry": {
+    "assetId": "C01-FFV1-STRUCT-NAME-MEMORIAL",
+    "topicId": "C01-STRUCT-NAME-MEMORIAL",
+    "label": "墓园姓名碑",
+    "category": "interactive-structure",
+    "png": "runtime/interactive-structure/struct-name-memorial.png",
+    "width": 192,
+    "height": 64,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 64,
+    "frames": 3,
+    "stateOrder": [
+      "normal",
+      "damaged",
+      "captured"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "footprint": [
+      2,
+      2
+    ]
+  },
+  "selection": "Exclusive parent assignment after public ration point",
+  "sourceAtlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-06.png",
+  "sourceAtlasSize": [
+    1254,
+    1254
+  ],
+  "sourceAtlasSha256": "5a2cd015ba3746e65a716b1296c957c1e582ca5fe301a19ab671449377181584",
+  "sourceCellBoxes": {
+    "normal": [
+      0,
+      340,
+      418,
+      591
+    ],
+    "damaged": [
+      418,
+      340,
+      836,
+      591
+    ],
+    "captured": [
+      836,
+      340,
+      1254,
+      591
+    ]
+  },
+  "sourceStateOrder": [
+    "normal",
+    "damaged",
+    "captured"
+  ],
+  "runtimeHdReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-name-memorial.png",
+  "consumerEvidence": {
+    "status": "no-static-consumer-reference-found",
+    "audit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "directSearch": "Exact topic/runtime slug search in *.ts and *.scene.json returned no matches",
+    "observedInBrowser": false,
+    "qualification": "Catalog asset only on current static evidence; actual campaign placement not proved, dynamic external input not excluded"
+  },
+  "stateIdentity": {
+    "normal": "Low curved stone memorial wall, two square finial pillars, two hanging amber lanterns, eight wooden name tags arranged six upper and two lower",
+    "damaged": "Center wall collapses, four tags remain hanging and others fall locally; right lantern falls but remains amber, left stays hanging",
+    "captured": "Intact curved wall with gray-blue swags/pale tassels; eight name tags rearranged seven upper including broad rounded central plaque and one lower-left"
+  },
+  "textPolicy": "Source inscriptions not readable; use only abstract incised strokes, never invent names or letters",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sourceFoot": [
+    627,
+    954
+  ],
+  "proposedLogicalVisibleWidth": 104,
+  "originalCropSha256": {
+    "normal": "5e186cc4e222832a418df6662ae8151a6bd4110f0962abcb12a0080e4194ed03",
+    "damaged": "1f98740bc9d93f9a6c50a7ecc13867125f81ff2f5f43bc1d2e1d19c8c9cfc029",
+    "captured": "64bb907fe77263a1f7c35d67791e93bf3ee78cefa01b66f5813f93ec802bde2a"
+  },
+  "styleReference": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+  "noRepositoryWrites": true,
+  "normalVisibleWidth": 1180,
+  "acceptedLogicalVisibleWidth": 104
+}

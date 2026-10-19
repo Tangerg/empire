@@ -1,0 +1,91 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "broken-planks",
+  "cellIndexZeroBased": 19,
+  "category": "ground-decal",
+  "expectedRuntimeSizes": [
+    [
+      64,
+      64
+    ],
+    [
+      128,
+      128
+    ]
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a0738c80-23eb-402d-9fb8-737f42530de9.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/identity-inspection/original-broken-planks-semantic-subject.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-selected-readability-20261019",
+    "baselineCommit": "36555c4",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/decals-small-6x4-key.png",
+    "atlasGrid": [
+      6,
+      4
+    ],
+    "atlasNativeSize": [
+      1536,
+      1024
+    ],
+    "registeredMasterCellCrop": [
+      256,
+      768,
+      512,
+      1024
+    ],
+    "semanticSubjectCrop": [
+      256,
+      640,
+      512,
+      830
+    ],
+    "identityCropTreatment": "Unscaled original-master crops retained unchanged. Registered-cell crop preserved separately; semantic crop is identity authority after complete-sheet inspection.",
+    "crossCellContamination": "Registered row-four crop retains only a small lower debris sliver while most of the plank subject lies in the preceding declared row. Semantic crop restores the entire broken-board group from the full master.",
+    "audit": "docs/art-rebuild-20261019/approved-v5/ground-debris-audit/debris-inventory.json",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json",
+    "oldLogicalAnchor": [
+      32,
+      60
+    ],
+    "oldObstructionHeight": 0,
+    "oldAnchorIsNotNewSourceFootpoint": true,
+    "atlasSha256": "ec62ec03545fadca86f8c67a265633a59496cd981a92e7572cce472d54f016fd",
+    "matchesBaselineAtlasBytes": true
+  },
+  "actualConsumer": {
+    "module": "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts",
+    "renderer": "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts",
+    "existingGroundOpacity": 0.72,
+    "existingHorizontalFlip": true,
+    "observedGroundMapCounts": {
+      "c01-02": 0,
+      "c01-01": 0
+    },
+    "observedGroundScales": [],
+    "note": "Declared atlas catalog component; no instances in the audited groundPieces records for c01-01/c01-02.",
+    "registrationNotChanged": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-3/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/identity-inspection/original-broken-planks-semantic-subject.png",
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-3/master.png"
+  ],
+  "identityClarification": "Low loose group of broad broken brown boards aligned roughly lower-left to upper-right, overlapping at slightly differing angles, with irregular snapped ends. Exposed metal includes a long bent nail rising near the center, a shorter forward bent nail/shaft, and two readable round nail-head cues. Not tied firewood, a fence, a sign or an intact constructed platform.",
+  "postprocessing": "None. Byte-exact native PNG copies to master.png and raw.png. No output cleanup, resizing, alpha editing or repository writes.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "newSourceFootpointNative": [
+    628.5,
+    1004
+  ],
+  "newSourceFootpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding."
+}

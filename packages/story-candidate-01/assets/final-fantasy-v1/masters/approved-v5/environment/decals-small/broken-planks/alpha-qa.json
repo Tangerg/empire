@@ -1,0 +1,58 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "broken-planks",
+  "cellIndexZeroBased": 19,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6826238969905553,
+  "nearOpaqueFractionAlphaGE250": 0.3058150123750728,
+  "nonzeroAlphaBBox": [
+    66,
+    198,
+    1202,
+    1204
+  ],
+  "visibleAlphaBBoxGE8": [
+    67,
+    289,
+    1189,
+    1005
+  ],
+  "subjectAlphaBBoxGE128": [
+    69,
+    290,
+    1188,
+    1004
+  ],
+  "solidAlphaBBoxGE250": [
+    70,
+    291,
+    1187,
+    1003
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    69,
+    290,
+    66,
+    250
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "suggestedRegistrationFootpointNative": [
+    628.5,
+    1004
+  ],
+  "footpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding.",
+  "sha256": "51d1a4777b7c0e9d56e729725ff67da31664ba81e34cb4a321a57b43079cf99f",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Complete low overlapping broken-board group with broad snapped ends, one tall bent exposed nail, shorter forward bent shaft and two board nail-head cues. No rope/bands, not round firewood, no defective atlas-slice clipping.",
+  "remarks": [],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

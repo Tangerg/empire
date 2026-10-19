@@ -1,0 +1,209 @@
+{
+  "evidence": "actual scene renderer markup rearranged onto a native-size diagnostic contact board",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "assets": [
+    {
+      "id": "firewood-stack",
+      "anchor": [
+        32.995215311004785,
+        48.688995215311
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no selected-scene placement sampled",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.55,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-18.147368421052633 -26.778947368421054) scale(0.55)\"><svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png\" x=\"-256\" y=\"-128\" width=\"384\" height=\"256\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        13.5,
+        16.0,
+        52.5,
+        48.5
+      ],
+      "nativeSampleVisibleHeight": 17.875,
+      "nativeVisibleHeightRange": [
+        16.25,
+        19.5
+      ],
+      "nativeSampleOverhangBelowContact": -0.10394736842105169
+    },
+    {
+      "id": "mossy-boulder",
+      "anchor": [
+        33.72248803827751,
+        45.7799043062201
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "sampled scene renderer markup",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": [
+        0.5,
+        0.58
+      ],
+      "sampleScale": 0.58,
+      "sampleCount": 7,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop \" transform=\"translate(-19.559 -26.552) scale(0.580)\" opacity=\"0.72\">\n    <svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png\" x=\"-320\" y=\"-128\" width=\"384\" height=\"256\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        17.5,
+        20.5,
+        50.0,
+        46.0
+      ],
+      "nativeSampleVisibleHeight": 14.79,
+      "nativeVisibleHeightRange": [
+        12.75,
+        15.299999999999999
+      ],
+      "nativeSampleOverhangBelowContact": 0.127655502392344
+    },
+    {
+      "id": "boulder-mossy-large",
+      "anchor": [
+        32,
+        48.535885167464116
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no selected-scene placement sampled",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.55,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-17.6 -26.694736842105264) scale(0.55)\"><svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png\" x=\"0\" y=\"-192\" width=\"384\" height=\"256\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        10.0,
+        17.5,
+        54.0,
+        48.5
+      ],
+      "nativeSampleVisibleHeight": 17.05,
+      "nativeVisibleHeightRange": [
+        15.5,
+        18.599999999999998
+      ],
+      "nativeSampleOverhangBelowContact": -0.01973684210526372
+    },
+    {
+      "id": "broken-planks",
+      "anchor": [
+        32.057416267942585,
+        46.430622009569376
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no selected-scene placement sampled",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.55,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-17.631578947368425 -25.53684210526316) scale(0.55)\"><svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png\" x=\"-64\" y=\"-192\" width=\"384\" height=\"256\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        10.5,
+        19.0,
+        53.5,
+        46.5
+      ],
+      "nativeSampleVisibleHeight": 15.125000000000002,
+      "nativeVisibleHeightRange": [
+        13.75,
+        16.5
+      ],
+      "nativeSampleOverhangBelowContact": 0.038157894736843195
+    },
+    {
+      "id": "oak-ancient",
+      "anchor": [
+        48.89154704944178,
+        83.8676236044657
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.375,
+      "evidence": "sampled scene renderer markup",
+      "reference": true,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.0175,
+        1.1824999999999999
+      ],
+      "sampledRendererScaleRange": [
+        1.028,
+        1.172
+      ],
+      "sampleScale": 1.102,
+      "sampleCount": 11,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop is-standing\" transform=\"translate(-53.855 -92.382) scale(1.102)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        7.0,
+        87.5,
+        89.0
+      ],
+      "nativeSampleVisibleHeight": 90.364,
+      "nativeVisibleHeightRange": [
+        83.435,
+        96.96499999999999
+      ],
+      "nativeSampleOverhangBelowContact": 5.655878787878793
+    }
+  ],
+  "offlineViewportNormalization": "nested SVG viewports expressed as equivalent clip paths for Inkscape"
+}

@@ -1,0 +1,76 @@
+{
+  "topicId": "C01-STRUCT-NAME-MEMORIAL",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "normalVisibleBounds": [
+    37,
+    326,
+    1217,
+    954
+  ],
+  "normalVisibleWidth": 1180,
+  "proposedLogicalVisibleWidth": 104,
+  "sharedScale": 0.08813559322033898,
+  "sourceFoot": [
+    627,
+    954
+  ],
+  "structuralFootEvidence": "Front center curved stone foundation is lowest normal contact, not loose props",
+  "registrationRule": "Same whole native canvas, one normal-derived scale, no per-state fit",
+  "postGenerationTransform": "none",
+  "status": "Complete native trio; captured small local contour deviation reported to parent",
+  "acceptedLogicalVisibleWidth": 104,
+  "stateVisibleBounds": {
+    "normal": [
+      37,
+      326,
+      1217,
+      954
+    ],
+    "damaged": [
+      36,
+      326,
+      1219,
+      1006
+    ],
+    "captured": [
+      36,
+      325,
+      1219,
+      980
+    ]
+  },
+  "stateLogicalTotalWidths": {
+    "normal": 104.0,
+    "damaged": 104.26440677966102,
+    "captured": 104.26440677966102
+  },
+  "registrationOffsetsLogical": {
+    "normal": [
+      0,
+      0
+    ],
+    "damaged": [
+      0,
+      0
+    ],
+    "captured": [
+      0,
+      0
+    ]
+  },
+  "capturedLocalContourDeviation": {
+    "normalCenterBaseY": 954,
+    "capturedCenterBaseY": 967,
+    "nativeDeltaY": 13,
+    "logicalDeltaY": 1.1457627118644067,
+    "rigidTranslation": false,
+    "recommendation": "Keep shared954 anchor and unchanged scale; treat1.15logical-pixel lower-row contour difference as native geometry variation",
+    "reportedToParent": true,
+    "displayOffsetApplied": false
+  },
+  "looseObjectsCaveat": "Captured low-left tag reaches980 and damaged loose rubble/fallen lamp reaches1006; neither defines wall foundation anchor",
+  "geometryReview": "End pillars and upper coping remain aligned; captured center bottom-row shape locally extends13native pixels lower. No per-state fit or master edits. Parent review of small deviation pending"
+}

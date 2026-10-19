@@ -25,8 +25,8 @@
     "quote": "确认了，就按照这个方向做剩下的"
   },
   "authoredFourPoseBundles": 15,
-  "authoredThreeStateBundles": 18,
-  "formalRuntimeBoundTopics": 76,
+  "authoredThreeStateBundles": 19,
+  "formalRuntimeBoundTopics": 77,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -484,6 +484,12 @@
       "export": "76/1509 shared scale, native opposite push steps and released-string empty-slot attack reviewed; operator retained",
       "runtimeBinding": "canonical+HD, c01.ballista and builtin ballista; original2x2 gameplay footprint unchanged",
       "liveGame": "pending"
+    },
+    "C01-STRUCT-NAME-MEMORIAL": {
+      "raw": "3/3 preserved",
+      "export": "104/1180 shared scale, fixed endpoint pillars and source foot; captured center-base local1.15px variation recorded, no whole-frame shift",
+      "runtimeBinding": "canonical+HD catalog bound; no static scene consumer verified",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -634,12 +640,16 @@
         "animal-tracks",
         "burned-twigs",
         "stump-small",
-        "branch-fallen"
+        "branch-fallen",
+        "firewood-stack",
+        "mossy-boulder",
+        "boulder-mossy-large",
+        "broken-planks"
       ],
-      "count": 16,
+      "count": 20,
       "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
       "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
-      "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene. Stump and fallen branch retain complete source identities; native catalog probes only, no c01-02 sample.",
+      "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene. Stump and fallen branch retain complete source identities; native catalog probes only, no c01-02 sample. Wood/moss/plank quartet native review passed; small moss rock is an actual0.58 ground sample, others are catalog probes; firewood also has settlement-life selector at0.3, absence from selected ground sample is not proof of no consumer.",
       "liveGame": "pending"
     }
   },

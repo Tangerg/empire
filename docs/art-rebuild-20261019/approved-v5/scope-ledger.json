@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 76,
+    "formalBound": 77,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 13,
       "equipment": 12,
-      "interactive-structure": 18,
+      "interactive-structure": 19,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 76,
+    "rawPreservedTopics": 77,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 80
+    "registeredEnvironmentCells": 84
   },
   "sceneCohesion": {
     "fullMap": "standing-depth-current/full-scene-labeled.png",
@@ -3111,13 +3111,22 @@
       "category": "interactive-structure",
       "label": "墓园姓名碑",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/name-memorial/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/name-memorial/damaged/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/name-memorial/normal/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-name-memorial.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-name-memorial.png",
+      "stageEvidence": {
+        "raw": "3/3 preserved",
+        "export": "104/1180 shared scale, fixed endpoint pillars and source foot; captured center-base local1.15px variation recorded, no whole-frame shift",
+        "runtimeBinding": "canonical+HD catalog bound; no static scene consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
@@ -18043,7 +18052,11 @@
         "animal-tracks",
         "burned-twigs",
         "stump-small",
-        "branch-fallen"
+        "branch-fallen",
+        "firewood-stack",
+        "mossy-boulder",
+        "boulder-mossy-large",
+        "broken-planks"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18063,12 +18076,16 @@
           "animal-tracks",
           "burned-twigs",
           "stump-small",
-          "branch-fallen"
+          "branch-fallen",
+          "firewood-stack",
+          "mossy-boulder",
+          "boulder-mossy-large",
+          "broken-planks"
         ],
-        "count": 16,
+        "count": 20,
         "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
         "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
-        "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene. Stump and fallen branch retain complete source identities; native catalog probes only, no c01-02 sample.",
+        "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene. Stump and fallen branch retain complete source identities; native catalog probes only, no c01-02 sample. Wood/moss/plank quartet native review passed; small moss rock is an actual0.58 ground sample, others are catalog probes; firewood also has settlement-life selector at0.3, absence from selected ground sample is not proof of no consumer.",
         "liveGame": "pending"
       }
     },

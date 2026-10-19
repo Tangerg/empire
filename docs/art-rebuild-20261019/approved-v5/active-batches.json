@@ -1,41 +1,50 @@
 {
-  "updatedUTC": "2026-10-19T16:03:40Z",
+  "updatedUTC": "2026-10-19T16:26:25Z",
   "counting": "Assignments do not imply completion; scope-ledger owns formal stages.",
   "batches": [
     {
       "family": "combat",
       "current": [
-        "C01-UNIT-GRAVEKEEPER"
+        "C01-UNIT-RANGER"
       ],
-      "next": "C01-UNIT-BALLISTA source contract review"
+      "completedInitialActorCoverage": {
+        "c01-01": "19/19",
+        "c01-02": "20/20"
+      },
+      "liveGame": "pending"
     },
     {
       "family": "interactive-structure",
       "current": [
-        "C01-STRUCT-GRAY-FLAG-POINT"
+        "C01-STRUCT-OLD-CITY-TUNNEL"
       ]
     },
     {
-      "family": "ground-decal-stone",
+      "family": "environment-major",
       "current": [
-        "mud-patch",
-        "exposed-roots"
+        "camps-foundations:abandoned-cart-stop"
       ],
-      "next": "remaining unassigned ground decals"
+      "next": [
+        "cliff-modules-temperate:hill-cap",
+        "cliff-modules-temperate:cliff-convex-corner",
+        "cliff-modules-temperate:pillar-wide",
+        "cliff-modules-temperate:plateau-cap"
+      ]
     },
     {
-      "family": "ground-decal-other",
+      "family": "ground-decals",
       "current": [
-        "stone-cluster-c",
-        "dry-crack",
-        "cart-ruts",
-        "bootprints"
-      ]
+        "abandoned-tools",
+        "rope-coil",
+        "folded-canvas",
+        "ash-scorch"
+      ],
+      "next": "camps-foundations:village-square-foundation"
     },
     {
       "family": "integration-engineering",
       "current": [
-        "c01-01 decorative farmhouse minimal visual placement correction; no gameplay mutation"
+        "strict128/256 cliff module adapter and source-index validation"
       ]
     }
   ]
