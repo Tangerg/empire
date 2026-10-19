@@ -1830,11 +1830,16 @@
     },
     {
       "topicId": "C01-EQUIP-ASSASSIN",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-assassin/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-037-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "1de54a2a8d8bb5abd8e3e919b1ddb19a2132d4ce5820d311ef3cc39332545a3a"
@@ -2060,11 +2065,16 @@
     },
     {
       "topicId": "C01-EQUIP-RANGER",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-ranger/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-037-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "70dd14badf4846bd87b4d5bfa3ad7a3057c0ecb2d2a74bd48beda25590474855"
@@ -4391,19 +4401,25 @@
     },
     {
       "topicId": "c02-battle-prop-overload-nodes",
-      "status": "raw-generated",
-      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-overload-nodes/master.png",
+      "status": "exported",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-overload-nodes/revision-2/master.png",
       "verification": {
-        "state": "pending",
+        "state": "export-checked",
         "note": "Raw master preserved; runtime visual acceptance pending",
-        "alphaVisualReview": "needs imagegen revision: broad cyan haze; raw only"
+        "alphaVisualReview": "native64 passed after imagegen revision2",
+        "semanticReview": "revision2 passed: bounded arcs, no nativecyanwash",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-037-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "1ab7ce62e356bdba473f79a27ad9a73ee75d78579f09bbde7aef3cc2b59fbbae",
+      "sourceSha256": "dbe6926ba95b251bdca90540f8b2ccfc892cda5328cbf659061b207613860c3f",
       "revisionCandidate": {
         "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-overload-nodes/revision-2/master.png",
         "sha256": "dbe6926ba95b251bdca90540f8b2ccfc892cda5328cbf659061b207613860c3f",
-        "status": "semantic-and-halo-review-pending"
+        "status": "semantic-native-review-passed"
       }
     },
     {
