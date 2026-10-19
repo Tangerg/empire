@@ -7,7 +7,7 @@ import unittest
 
 from PIL import Image
 
-from export_stone_masks import ATLAS_IDS, MANIFEST, PACK, ROOT, export
+from export_material_masks import ATLAS_IDS, MANIFEST, PACK, ROOT, export
 
 
 class StoneMaskTests(unittest.TestCase):

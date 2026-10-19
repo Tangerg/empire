@@ -129,6 +129,9 @@ class SurfaceTests(unittest.TestCase):
     def test_forge_four_slots_preserve_unregistered_surface_and_source_bytes(self):
         self.verify_four_slot_surface('surface-forge-stone', 'forge-stone')
 
+    def test_forest_four_slots_preserve_unregistered_surface_and_source_bytes(self):
+        self.verify_four_slot_surface('surface-forest-floor', 'forest-floor')
+
     def verify_four_slot_surface(self, atlas_id, prefix):
         manifest = json.loads(self.manifest.read_text())
         record = {**manifest['atlases'][0], 'id': atlas_id,

@@ -29,6 +29,7 @@ import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from './c
 import { CANDIDATE_01_STONE_BASE, candidate01StoneConnectorMarkup } from './candidate-01-stone-material';
 import { candidateWorldMaterialTileMarkup } from './candidate-01-world-material';
 import { CANDIDATE_01_FORGE_BASE } from './candidate-01-forge-material';
+import { candidate01ForestBlendMarkup } from './candidate-01-forest-material';
 import { CANDIDATE_01_GRAVEYARD_BASE } from './candidate-01-graveyard-material';
 import {
   CANDIDATE_FOREST_FLOOR,
@@ -324,7 +325,8 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, ro
           sheet,
           blobMask(x, y, (nx, ny) => field(nx, ny)?.blend === sheet),
         );
-        blends.push({ markup: atlasCellMarkup(material.blend, cell), ...at });
+        blends.push({ markup: candidate01ForestBlendMarkup(sheet, cell, at.x, at.y)
+          ?? atlasCellMarkup(sheet, cell), ...at });
       }
 
       // The mud a river leaves, before the water is drawn over it.

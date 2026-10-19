@@ -1,0 +1,65 @@
+{
+  "baseCommit": "2e72444fd27fed5fe4c9b8586970ab932040e5c3",
+  "focusedTypescript": {
+    "passed": 22,
+    "files": 5
+  },
+  "backendContractsPassed": 15,
+  "pythonMasks": 12,
+  "pythonSurface": 10,
+  "pythonField": 8,
+  "typecheck": "passed",
+  "applicationBuilds": 4,
+  "sceneContracts": {
+    "count": 16,
+    "changedLevels": 11,
+    "changedFields": [
+      "groundSha256",
+      "editorGroundSha256"
+    ],
+    "allRulesAndStandingUnchanged": true
+  },
+  "replayRuns": 60,
+  "replayBytesIdentical": true,
+  "selectedWorldPeriod": [
+    128,
+    128
+  ],
+  "diagnosticWorldPeriod": [
+    256,
+    256
+  ],
+  "worldRasterSizes": [
+    [
+      512,
+      512
+    ],
+    [
+      1024,
+      1024
+    ]
+  ],
+  "actualForestCells": 625,
+  "catalogOnlyTones": [
+    1,
+    2,
+    3
+  ],
+  "originalMaskCells": 47,
+  "technicalAlphaBytesPreservedAtDensities": [
+    32,
+    64
+  ],
+  "renderedAlphaParityAtScales": [
+    1,
+    2
+  ],
+  "helperUniqueness": "passed",
+  "widerArchitectureSubset": {
+    "passed": 20,
+    "failed": 1,
+    "reason": "45 missing historical document links in sparse checkout"
+  },
+  "fullRepositorySuite": "not run in sparse worktree; integrated main validation separate",
+  "liveGpu": false
+}

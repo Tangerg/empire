@@ -1,0 +1,218 @@
+[
+  {
+    "atlasId": "surface-forest-floor",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forest-floor.png",
+    "size": [
+      128,
+      32
+    ],
+    "sources": [
+      {
+        "cellId": "forest-floor-1",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-1/master.png",
+        "sourceSha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "forest-floor-2",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-2/master.png",
+        "sourceSha256": "9d7ac6512a6cd6fc67dd318796ed815b90676d90c8090dbcac972918da89b63d",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "forest-floor-3",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-3/master.png",
+        "sourceSha256": "249cf1dc8bd8c6b2a86468b26a2a6d263deaf3457524f593463c7655d84c117b",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "forest-floor-4",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-4/master.png",
+        "sourceSha256": "553458e3bec287749ed7a08ef064dfe628a567190f22c5a6beafe85998472f55",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      }
+    ],
+    "cells": [
+      {
+        "cellId": "forest-floor-1",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 25,
+        "interiorPixelSha256": "3f165ad88f7065c8095b2b4880f9dd8739b40212637f501600e31bec158a64ee",
+        "edgeHashes": {
+          "top": "2422729be9a4e4aec989fa223944dbf3d9ff2f70ad410364e2aa749a1de899b8",
+          "bottom": "2422729be9a4e4aec989fa223944dbf3d9ff2f70ad410364e2aa749a1de899b8",
+          "left": "0f05c8001b17010a2c8d52943b6868b54fa85aadd6d5cb16d32e187e90119c89",
+          "right": "0f05c8001b17010a2c8d52943b6868b54fa85aadd6d5cb16d32e187e90119c89"
+        },
+        "pixelSha256": "bffe68003a7e411dd3414e70c00da27f11e69125c504eb6065e0ef0f7582f96f"
+      },
+      {
+        "cellId": "forest-floor-2",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 37,
+        "interiorPixelSha256": "35ea0f51d402e01fd87280e222483b65f3c527edeb07e6127954c27a106f6c98",
+        "edgeHashes": {
+          "top": "2422729be9a4e4aec989fa223944dbf3d9ff2f70ad410364e2aa749a1de899b8",
+          "bottom": "2422729be9a4e4aec989fa223944dbf3d9ff2f70ad410364e2aa749a1de899b8",
+          "left": "0f05c8001b17010a2c8d52943b6868b54fa85aadd6d5cb16d32e187e90119c89",
+          "right": "0f05c8001b17010a2c8d52943b6868b54fa85aadd6d5cb16d32e187e90119c89"
+        },
+        "pixelSha256": "b5885cf5e7b6449d4531eb801de8446b8b9a9c4c2f3571573b1d5c2a9de8c16d"
+      },
+      {
+        "cellId": "forest-floor-3",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 36,
+        "interiorPixelSha256": "bbcc9237d8788ff06c6821099683249d9d1957312c5fb9f05ad6998fbea2dc56",
+        "edgeHashes": {
+          "top": "2422729be9a4e4aec989fa223944dbf3d9ff2f70ad410364e2aa749a1de899b8",
+          "bottom": "2422729be9a4e4aec989fa223944dbf3d9ff2f70ad410364e2aa749a1de899b8",
+          "left": "0f05c8001b17010a2c8d52943b6868b54fa85aadd6d5cb16d32e187e90119c89",
+          "right": "0f05c8001b17010a2c8d52943b6868b54fa85aadd6d5cb16d32e187e90119c89"
+        },
+        "pixelSha256": "c7be4969a235115868b09d24cf7494c1407d2a41e6476468ac7f04e3dc3ecb1b"
+      },
+      {
+        "cellId": "forest-floor-4",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 41,
+        "interiorPixelSha256": "de5444cd28a288a6a8b831294200339164ef8f96838c765b086ecc36ab94b70e",
+        "edgeHashes": {
+          "top": "2422729be9a4e4aec989fa223944dbf3d9ff2f70ad410364e2aa749a1de899b8",
+          "bottom": "2422729be9a4e4aec989fa223944dbf3d9ff2f70ad410364e2aa749a1de899b8",
+          "left": "0f05c8001b17010a2c8d52943b6868b54fa85aadd6d5cb16d32e187e90119c89",
+          "right": "0f05c8001b17010a2c8d52943b6868b54fa85aadd6d5cb16d32e187e90119c89"
+        },
+        "pixelSha256": "e4f381f09342d7a913a976f437445245b7e8b077ad57e11cdb8bd59a9a64ddb3"
+      }
+    ],
+    "derivation": "full-canvas-lanczos-resize + outermost-pixel-family-edge-average; no blur/recolor",
+    "pixelSha256": "128ddab125977e81f57f8592fda80a86578b8984640ae4bad119b0ca31dd30a8",
+    "visualSeamReview": "required-separately"
+  },
+  {
+    "atlasId": "surface-forest-floor",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forest-floor@2x.png",
+    "size": [
+      256,
+      64
+    ],
+    "sources": [
+      {
+        "cellId": "forest-floor-1",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-1/master.png",
+        "sourceSha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "forest-floor-2",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-2/master.png",
+        "sourceSha256": "9d7ac6512a6cd6fc67dd318796ed815b90676d90c8090dbcac972918da89b63d",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "forest-floor-3",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-3/master.png",
+        "sourceSha256": "249cf1dc8bd8c6b2a86468b26a2a6d263deaf3457524f593463c7655d84c117b",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "forest-floor-4",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-4/master.png",
+        "sourceSha256": "553458e3bec287749ed7a08ef064dfe628a567190f22c5a6beafe85998472f55",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      }
+    ],
+    "cells": [
+      {
+        "cellId": "forest-floor-1",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 26,
+        "interiorPixelSha256": "dab18687554e959df8dfb6d10c4ec1c08bfa429a99a31416ce8e998be79ff97f",
+        "edgeHashes": {
+          "top": "26d71eb14499a3266ec61f33e3608e70f3d5bf4ad0bc45f494455565cda5e4da",
+          "bottom": "26d71eb14499a3266ec61f33e3608e70f3d5bf4ad0bc45f494455565cda5e4da",
+          "left": "0fc042ecfcd3640da3bd8dd3d8a72430cbc9991937449708270852e1240b02b7",
+          "right": "0fc042ecfcd3640da3bd8dd3d8a72430cbc9991937449708270852e1240b02b7"
+        },
+        "pixelSha256": "1e58a6a2564b626c5195394c144d27742d7f81aba93d69a3f41f78a4c458f992"
+      },
+      {
+        "cellId": "forest-floor-2",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 45,
+        "interiorPixelSha256": "4b28402fa869ea7322a9d503120188550356b20560b0893b0d842cb97440b32a",
+        "edgeHashes": {
+          "top": "26d71eb14499a3266ec61f33e3608e70f3d5bf4ad0bc45f494455565cda5e4da",
+          "bottom": "26d71eb14499a3266ec61f33e3608e70f3d5bf4ad0bc45f494455565cda5e4da",
+          "left": "0fc042ecfcd3640da3bd8dd3d8a72430cbc9991937449708270852e1240b02b7",
+          "right": "0fc042ecfcd3640da3bd8dd3d8a72430cbc9991937449708270852e1240b02b7"
+        },
+        "pixelSha256": "c78593a90ffcfc4e8ba47f2e798b3ff09504e99750eaeb7f87ef8f80d6b422a7"
+      },
+      {
+        "cellId": "forest-floor-3",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 49,
+        "interiorPixelSha256": "1699b89d0c603c484e11ab1d2463bd164e880ba1d1dc5dee41c755288fc028e9",
+        "edgeHashes": {
+          "top": "26d71eb14499a3266ec61f33e3608e70f3d5bf4ad0bc45f494455565cda5e4da",
+          "bottom": "26d71eb14499a3266ec61f33e3608e70f3d5bf4ad0bc45f494455565cda5e4da",
+          "left": "0fc042ecfcd3640da3bd8dd3d8a72430cbc9991937449708270852e1240b02b7",
+          "right": "0fc042ecfcd3640da3bd8dd3d8a72430cbc9991937449708270852e1240b02b7"
+        },
+        "pixelSha256": "d7e48bf538284dffa8a8f4429d963dd183f32af25e52b7752ffdef12063e51a7"
+      },
+      {
+        "cellId": "forest-floor-4",
+        "edgeBandPixels": 1,
+        "changedPixels": 251,
+        "maxChannelChange": 44,
+        "interiorPixelSha256": "144d8b62343bd5989b9713a5c29d2aa3de2a09c79cea10989d000cdfbf62eb80",
+        "edgeHashes": {
+          "top": "26d71eb14499a3266ec61f33e3608e70f3d5bf4ad0bc45f494455565cda5e4da",
+          "bottom": "26d71eb14499a3266ec61f33e3608e70f3d5bf4ad0bc45f494455565cda5e4da",
+          "left": "0fc042ecfcd3640da3bd8dd3d8a72430cbc9991937449708270852e1240b02b7",
+          "right": "0fc042ecfcd3640da3bd8dd3d8a72430cbc9991937449708270852e1240b02b7"
+        },
+        "pixelSha256": "233aa91626929ee41b578f13e949d834542bff3d003e0efb98ed74ad8a1a9a17"
+      }
+    ],
+    "derivation": "full-canvas-lanczos-resize + outermost-pixel-family-edge-average; no blur/recolor",
+    "pixelSha256": "ce34a82696f3b5a6080a7d71b0b8dbe3fe87a3c426898648a4e175427d956e3b",
+    "visualSeamReview": "required-separately"
+  }
+]

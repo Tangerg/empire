@@ -1,0 +1,102 @@
+[
+  {
+    "id": "forest-floor",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-1/master.png",
+    "sourceSha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/forest-floor.png",
+    "exportDensity": 1,
+    "size": [
+      512,
+      512
+    ],
+    "logicalSize": [
+      128,
+      128
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      4.0,
+      4.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-forest-floor",
+      "tone": 0
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "3a3c3c700f20ec81cb726f11424f28c18f2e9702ad8a26e4f0385672ef30f87a",
+    "interiorPixelSha256": "8511aec67ac773a05b0b8a4991f8523c8330e013083497988c00e44ed8bee169",
+    "edgeHashes": {
+      "top": "14d0d8f992449a20df766c0b018bd92af608f2d4712f82d7ebe7870d32fa732a",
+      "bottom": "14d0d8f992449a20df766c0b018bd92af608f2d4712f82d7ebe7870d32fa732a",
+      "left": "435229a736ece9e0fbc784a90685f224ab51871d335372ea3a97dcf06ec5b2dd",
+      "right": "435229a736ece9e0fbc784a90685f224ab51871d335372ea3a97dcf06ec5b2dd"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  },
+  {
+    "id": "forest-floor",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-1/master.png",
+    "sourceSha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/forest-floor@2x.png",
+    "exportDensity": 2,
+    "size": [
+      1024,
+      1024
+    ],
+    "logicalSize": [
+      128,
+      128
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      8.0,
+      8.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-forest-floor",
+      "tone": 0
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "cfdb0b302556b5ef4042e0957eaab120cd1c5660437897983985fbc3ec8dc5f6",
+    "interiorPixelSha256": "80a56d8342a611b22f3c095300cf2b59be1a1339bf6d912abe2c4df8301cbb30",
+    "edgeHashes": {
+      "top": "caa5545c214d381ec2d441c903d854e8109d8de4a3fc0f9c7b11f1ffc9b31bf6",
+      "bottom": "caa5545c214d381ec2d441c903d854e8109d8de4a3fc0f9c7b11f1ffc9b31bf6",
+      "left": "307d9cf8ccdf02eb8cc93a9b602f5be9c1126bce29d9f1d56770e3cbd137c746",
+      "right": "307d9cf8ccdf02eb8cc93a9b602f5be9c1126bce29d9f1d56770e3cbd137c746"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  }
+]

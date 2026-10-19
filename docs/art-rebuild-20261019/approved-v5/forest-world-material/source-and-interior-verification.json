@@ -1,0 +1,64 @@
+{
+  "nativeSources": [
+    {
+      "slot": "forest-floor-1",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-1/master.png",
+      "sha256": "3a7afefff262e7ff3d9baef1f2e86bd03cefe35a40807715a5d3bde4d21ad14d",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "nativeBytesEqualToParentMain": true
+    },
+    {
+      "slot": "forest-floor-2",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-2/master.png",
+      "sha256": "9d7ac6512a6cd6fc67dd318796ed815b90676d90c8090dbcac972918da89b63d",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "nativeBytesEqualToParentMain": true
+    },
+    {
+      "slot": "forest-floor-3",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-3/master.png",
+      "sha256": "249cf1dc8bd8c6b2a86468b26a2a6d263deaf3457524f593463c7655d84c117b",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "nativeBytesEqualToParentMain": true
+    },
+    {
+      "slot": "forest-floor-4",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-forest-floor/forest-floor-4/master.png",
+      "sha256": "553458e3bec287749ed7a08ef064dfe628a567190f22c5a6beafe85998472f55",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "nativeBytesEqualToParentMain": true
+    }
+  ],
+  "worldInterior": [
+    {
+      "density": 1,
+      "allInteriorPixelsEqualFullCanvasResize": true,
+      "edgeBandPixels": 1,
+      "sha256": "bc841d77193cd7b365cdfd7076650b93f8771f1dd80e501e9e07fb17e455ef85"
+    },
+    {
+      "density": 2,
+      "allInteriorPixelsEqualFullCanvasResize": true,
+      "edgeBandPixels": 1,
+      "sha256": "d6e01a08400a3b880f7e2cedd2d041b4a4b8efba26476bf223573df6e993f167"
+    }
+  ],
+  "legacyAlphaSourcesUnchanged": true,
+  "priorSurfaceOverridesUnchanged": true
+}
