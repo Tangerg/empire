@@ -223,5 +223,10 @@
     "Static initial unit poses, no animation, browser or GPU playback",
     "Explicit diagnostic blue/red owner colors; no HUD, camera effects or CSS lighting",
     "Legacy shore, road, crossings, non-base surfaces and decals remain visible; buildings may overlap"
-  ]
+  ],
+  "retainedRasterFiles": [
+    "runtime/water-area.png",
+    "runtime/water-area@2x.png"
+  ],
+  "retentionNote": "SVG sources use the retained material period export, so later runtime sampling promotion cannot alter this evidence"
 }

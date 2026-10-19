@@ -68,8 +68,8 @@ def plan(root, manifest):
         expected = {'tileSize': 32, 'columns': 16, 'rows': 16, 'bitOrder': ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'],
                     'geometry': 'full-shared-interiors-exposed-shore-inset-concave-notch-v1',
                     'png': 'runtime/water-masks.png', 'png2x': 'runtime/water-masks@2x.png'}
-        if occupancy != expected or size != [128, 128] or raster_size != size:
-            raise ValueError('water requires approved 128-unit world sampling and complete occupancy atlas')
+        if occupancy != expected or size not in ([128, 128], [512, 512]) or raster_size != size:
+            raise ValueError('water requires reviewed 128/512-unit sampling and complete occupancy atlas')
     elif len(matches) != 1 or matches[0]['category'] != 'base-surface' or type(binding['tone']) is not int or not 0 <= binding['tone'] < matches[0]['variants']:
         raise ValueError('replacement does not identify one existing surface material')
     source = within(pack, data['source'])

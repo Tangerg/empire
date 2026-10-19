@@ -19,11 +19,11 @@ describe('approved reusable area water', () => {
   it('resolves the immutable source, native 2x period and all 256 reusable alpha cells', () => {
     const pack = resolve(import.meta.dirname, '../../assets/final-fantasy-v1');
     expect(createHash('sha256').update(readFileSync(resolve(pack, material.source))).digest('hex')).toBe(material.sourceSha256);
-    expect(material.logicalSize).toEqual([128, 128]);
+    expect(material.logicalSize).toEqual([512, 512]);
     expect(material.rasterPixelsPerWorldUnit).toEqual([2, 2]);
     expect(material.worldOrigin).toEqual([0, 0]);
     expect(material.fit).toEqual({ inset: 0, bleed: 0 });
-    for (const [path, size] of [[material.png, 128], [material.png2x, 256], [material.occupancy.png, 512], [material.occupancy.png2x, 1024]] as const) {
+    for (const [path, size] of [[material.png, 512], [material.png2x, 1024], [material.occupancy.png, 512], [material.occupancy.png2x, 1024]] as const) {
       const png = readFileSync(resolve(pack, 'world-materials-v1', path));
       expect([png.readUInt32BE(16), png.readUInt32BE(20)]).toEqual([size, size]);
     }
@@ -40,17 +40,17 @@ describe('approved reusable area water', () => {
   });
 
   it('keeps UV phase through tactical cells and period edges, without embedding a texture per cell', () => {
-    const pieces = candidate01WaterMaterialPieces(2, 14, () => true);
-    expect(pieces.map(({ x, y }) => [x, y])).toEqual([[0, 0], [0, 128], [0, 256], [0, 384]]);
+    const pieces = candidate01WaterMaterialPieces(2, 50, () => true);
+    expect(pieces.map(({ x, y }) => [x, y])).toEqual([[0, 0], [0, 512], [0, 1024], [0, 1536]]);
     expect(pieces[1].markup).toBe(pieces[2].markup);
     for (const piece of pieces) {
       expect(piece.markup.match(/href="[^\"]*\/water-area@2x.png[^\"]*"/g)).toHaveLength(1);
-      expect(piece.markup).toContain('width="128" height="128" preserveAspectRatio="none"');
+      expect(piece.markup).toContain('width="512" height="512" preserveAspectRatio="none"');
       const id = /<mask id="([^\"]+)"/.exec(piece.markup)?.[1];
       expect(piece.markup).toContain(`mask="url(#${id})"`);
     }
     expect(pieces[3].markup).toContain('width="64" height="64" viewBox="0 0 64 64"');
-    expect(candidate01WaterMaterialPieces(2, 14, () => false)).toEqual([]);
+    expect(candidate01WaterMaterialPieces(2, 50, () => false)).toEqual([]);
   });
 
   it('retains bridge underlay, source terrain semantics and actual c01-02 occupied cells', () => {
@@ -60,7 +60,7 @@ describe('approved reusable area water', () => {
     const pieces = candidate01WaterMaterialPieces(map.width, map.height, occupied);
     const layers = candidate01MapSceneryLayers({ content, levelId: 'c01-02', map, viewport: candidateReviewViewport(map) });
     expect(layers.ground.filter((piece) => piece.markup.includes('data-runtime-raster="area-water"'))).toEqual(pieces);
-    expect(pieces).toHaveLength(4);
+    expect(pieces).toHaveLength(1);
     expect(pieces.reduce((count, piece) => count + (piece.markup.match(/water-masks@2x.png/g)?.length ?? 0), 0)).toBe(28);
     expect(candidate01IsAreaWater(candidateMaterial(content, 'bridge'))).toBe(true);
     expect(candidate01IsAreaWater(candidateMaterial(content, 'road'))).toBe(false);

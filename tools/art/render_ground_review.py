@@ -41,7 +41,8 @@ def validate_water_render(directory, provenance):
     from calibrate_water_area import render_water_area
     root = Path(__file__).resolve().parents[2]
     source = root / 'packages/story-candidate-01/assets/final-fantasy-v1' / provenance['material']['source']
-    expected, _ = render_water_area(source, provenance['waterAndBridgeCells'], 64, provenance['mapSize'])
+    expected, _ = render_water_area(source, provenance['waterAndBridgeCells'], 64, provenance['mapSize'],
+                                    uv_cells=provenance['material']['logicalSize'][0] // 32)
     with Image.open(directory / 'field-full@2x.png') as image:
         actual = image.convert('RGBA')
     if actual.size != expected.size:

@@ -1,0 +1,148 @@
+[
+  {
+    "id": "water-area",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/water-material/master.png",
+    "sourceSha256": "964060ad3b47cca968a2fb26a8e5f0bee8bad630895362119c7b08385f89afff",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-area.png",
+    "exportDensity": 1,
+    "size": [
+      512,
+      512
+    ],
+    "logicalSize": [
+      512,
+      512
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      1.0,
+      1.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "water-slow-river",
+      "mask": "same"
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "7f7bc9660b7c50b4463ba6fc6dcfeb407f328bd902b535474445cd85fe68e074",
+    "interiorPixelSha256": "511c311c3927f59d26c3843706c6540800ebdd4942e746d91ba68dda119599ca",
+    "edgeHashes": {
+      "top": "75980e4271cd95ba96263fb725b70fa67d0b831a67342db75c2b0eda616dccc5",
+      "bottom": "75980e4271cd95ba96263fb725b70fa67d0b831a67342db75c2b0eda616dccc5",
+      "left": "42354315ee5795d63e1cb5f6c0cd7c6fe698c759f0a63eea421a0387fb486557",
+      "right": "42354315ee5795d63e1cb5f6c0cd7c6fe698c759f0a63eea421a0387fb486557"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  },
+  {
+    "id": "water-area",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/water-material/master.png",
+    "sourceSha256": "964060ad3b47cca968a2fb26a8e5f0bee8bad630895362119c7b08385f89afff",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-area@2x.png",
+    "exportDensity": 2,
+    "size": [
+      1024,
+      1024
+    ],
+    "logicalSize": [
+      512,
+      512
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      2.0,
+      2.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "water-slow-river",
+      "mask": "same"
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "c322fc98070794c7357e442fe0f40d63d62f7ce5452f1f76e3a94896491a1689",
+    "interiorPixelSha256": "c15d46c65d316e011f857698d67195294050ab6c6c3659aab771170497b47d52",
+    "edgeHashes": {
+      "top": "8750d1ea39c5dd2ac68442a708ceb9b3e99cfeb3306b7d7a53639782bf6cc371",
+      "bottom": "8750d1ea39c5dd2ac68442a708ceb9b3e99cfeb3306b7d7a53639782bf6cc371",
+      "left": "f0533cb70e7db4454d05b545378825b1c89ffacf3bcb5802dae8b6f4052f1e2a",
+      "right": "f0533cb70e7db4454d05b545378825b1c89ffacf3bcb5802dae8b6f4052f1e2a"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  },
+  {
+    "id": "water-occupancy-masks",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks.png",
+    "exportDensity": 1,
+    "size": [
+      512,
+      512
+    ],
+    "logicalCellSize": 32,
+    "geometry": "full-shared-interiors-exposed-shore-inset-concave-notch-v1",
+    "bitOrder": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "pixelSha256": "7a9d91369c215c277af802811d168fc49216aac9f7eed6c1ca24952fb41738a8",
+    "source": "approved reusable technical occupancy mask, not painted art"
+  },
+  {
+    "id": "water-occupancy-masks",
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png",
+    "exportDensity": 2,
+    "size": [
+      1024,
+      1024
+    ],
+    "logicalCellSize": 32,
+    "geometry": "full-shared-interiors-exposed-shore-inset-concave-notch-v1",
+    "bitOrder": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "pixelSha256": "e5b10f05409584b1612ba701f65fbed4521b187bf6a0d0cb7e18f27fa3cbf0f9",
+    "source": "approved reusable technical occupancy mask, not painted art"
+  }
+]

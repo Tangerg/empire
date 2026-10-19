@@ -81,7 +81,7 @@ writeFileSync(resolve(output, 'runtime-provenance.json'), JSON.stringify({
   provenance: 'candidate01MapSceneryLayers + candidate01TerrainMarkup + candidate01UnitPicture; no SVG material substitutions',
   cropWorldBox: crop,
   samplingComparison: waterReview ? { selectedRuntimePeriod: CANDIDATE_01_WATER_MATERIAL.logicalSize,
-    status: '128 selected; full-map visible ribbon/plane repeats at y=128/256/384, visual gate pending' } : { selectedRuntimePeriod: CANDIDATE_01_FIELD_MATERIAL.logicalSize,
+    status: process.env.GROUND_REVIEW_STATUS ?? '512 selected at native2x; 128 ribbon/plane repeat evidence retained separately' } : { selectedRuntimePeriod: CANDIDATE_01_FIELD_MATERIAL.logicalSize,
     highDensityAlternativePeriod: CANDIDATE_01_FIELD_MATERIAL.rasterSize, worldOrigin: [0, 0],
     selectedPixelsPerWorldUnit: CANDIDATE_01_FIELD_MATERIAL.rasterPixelsPerWorldUnit,
     alternativePixelsPerWorldUnit: [2, 2],

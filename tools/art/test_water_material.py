@@ -15,7 +15,7 @@ MANIFEST = PACK / 'world-materials-v1/manifest-water-material-v2.json'
 class WaterMaterialTests(unittest.TestCase):
     def test_production_source_graph_and_reproducibility(self):
         reports = export(ROOT, ROOT / MANIFEST, True)
-        self.assertEqual([r['size'] for r in reports], [[128, 128], [256, 256], [512, 512], [1024, 1024]])
+        self.assertEqual([r['size'] for r in reports], [[512, 512], [1024, 1024], [512, 512], [1024, 1024]])
         self.assertEqual(reports[1]['pixelsPerWorldUnit'], [2, 2])
         source = ROOT / reports[0]['source']
         self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(), reports[0]['sourceSha256'])
