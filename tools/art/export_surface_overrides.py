@@ -11,7 +11,8 @@ from export_environment_overrides import PACK
 
 CATALOG = Path('tools/art/surface-overrides.json')
 ORDER = [f'meadow-{i}' for i in range(1, 5)]
-SURFACE_ORDERS = {'surface-meadow': ORDER, 'surface-old-stone': [f'old-stone-{i}' for i in range(1, 5)]}
+SURFACE_ORDERS = {'surface-meadow': ORDER, 'surface-old-stone': [f'old-stone-{i}' for i in range(1, 5)],
+                  'surface-graveyard': [f'graveyard-{i}' for i in range(1, 5)]}
 
 
 def pixel_hash(image):

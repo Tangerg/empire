@@ -1,0 +1,102 @@
+[
+  {
+    "id": "graveyard-base",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+    "sourceSha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/graveyard-base.png",
+    "exportDensity": 1,
+    "size": [
+      512,
+      512
+    ],
+    "logicalSize": [
+      256,
+      256
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      2.0,
+      2.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-graveyard",
+      "tone": 0
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "430198c9b459a4ecd4c31c5ff3383e8369dd79612384e9343a8214bef247d5f0",
+    "interiorPixelSha256": "c6099c623691ba18af9fd36560d5bdf4a6da0cf90433133cdff91021d657540b",
+    "edgeHashes": {
+      "top": "4894a9cb697e9f1d38a20ee33fd6f518d2b10faff78743f8e01af4f56dceebbf",
+      "bottom": "4894a9cb697e9f1d38a20ee33fd6f518d2b10faff78743f8e01af4f56dceebbf",
+      "left": "842e56ec66bd98fc4f11d322001e5adf6acc115f943160df1116148222e98fb6",
+      "right": "842e56ec66bd98fc4f11d322001e5adf6acc115f943160df1116148222e98fb6"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  },
+  {
+    "id": "graveyard-base",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+    "sourceSha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/graveyard-base@2x.png",
+    "exportDensity": 2,
+    "size": [
+      1024,
+      1024
+    ],
+    "logicalSize": [
+      256,
+      256
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      4.0,
+      4.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-graveyard",
+      "tone": 0
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "61c96aa90b084bd2a9822c9e4274bfb70556e51f75a9c8d3d0b65c4d7011ca61",
+    "interiorPixelSha256": "af106af1a18779e57818523ec48fc53be4e67bdc4a4badd8b4a7c8a64d32b1e2",
+    "edgeHashes": {
+      "top": "db37469ab5856b6a255b78263a855e9c466fa7d90e98ec75b94403aa11fc23f4",
+      "bottom": "db37469ab5856b6a255b78263a855e9c466fa7d90e98ec75b94403aa11fc23f4",
+      "left": "113f730ed35b4ba1182e3c02758a9475e31c371d0715d102faf029f1bbb9bc8f",
+      "right": "113f730ed35b4ba1182e3c02758a9475e31c371d0715d102faf029f1bbb9bc8f"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  }
+]

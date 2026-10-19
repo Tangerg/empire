@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 2,
+  "id": "graveyard-base",
+  "replaces": {
+    "atlas": "surface-graveyard",
+    "tone": 0
+  },
+  "source": "masters/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+  "sourceSha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+  "logicalSize": [
+    256,
+    256
+  ],
+  "rasterSize": [
+    512,
+    512
+  ],
+  "worldOrigin": [
+    0,
+    0
+  ],
+  "fit": {
+    "inset": 0,
+    "bleed": 0
+  },
+  "png": "runtime/graveyard-base.png",
+  "png2x": "runtime/graveyard-base@2x.png"
+}

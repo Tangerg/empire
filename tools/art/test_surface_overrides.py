@@ -122,3 +122,38 @@ class SurfaceTests(unittest.TestCase):
         self.manifest.write_text(json.dumps(manifest))
         with self.assertRaisesRegex(ValueError, 'contract'):
             export(self.root, self.catalog)
+
+    def test_graveyard_four_slots_preserve_unregistered_surface_and_source_bytes(self):
+        manifest = json.loads(self.manifest.read_text())
+        record = {**manifest['atlases'][0], 'id': 'surface-graveyard',
+                  'cellOrder': [f'graveyard-{i}' for i in range(1, 5)],
+                  'png': 'runtime/atlas/surface-graveyard.png', 'png2x': 'runtime/atlas/surface-graveyard@2x.png'}
+        manifest['atlases'].append(record)
+        self.manifest.write_text(json.dumps(manifest))
+        old = self.data['atlases'].pop('surface-meadow')['cells']
+        self.data['atlases']['surface-graveyard'] = {'cells': {name: old[ORDER[i]] for i, name in enumerate(record['cellOrder'])}}
+        self.write()
+        untouched = self.env / 'runtime/atlas/surface-meadow.png'
+        untouched.parent.mkdir(parents=True)
+        untouched.write_bytes(b'unregistered-existing-atlas')
+        before = {entry['source']: (self.root / entry['source']).read_bytes() for entry in old.values()}
+        manifest_before = self.manifest.read_bytes()
+        reports = export(self.root, self.catalog)
+        self.assertEqual(reports, export(self.root, self.catalog, True))
+        self.assertEqual(self.manifest.read_bytes(), manifest_before)
+        self.assertEqual(untouched.read_bytes(), b'unregistered-existing-atlas')
+        self.assertEqual([r['size'] for r in reports], [[128, 32], [256, 64]])
+        self.assertEqual([cell['cellId'] for cell in reports[0]['sources']], record['cellOrder'])
+        for source, raw in before.items():
+            self.assertEqual((self.root / source).read_bytes(), raw)
+        for report, size in zip(reports, (32, 64)):
+            with Image.open(self.root / report['output']) as sheet:
+                for index, entry in enumerate(self.data['atlases']['surface-graveyard']['cells'].values()):
+                    with Image.open(self.root / entry['source']) as source:
+                        expected = source.convert('RGB').resize((size, size), Image.Resampling.LANCZOS)
+                    cell = sheet.crop((index * size, 0, (index + 1) * size, size))
+                    self.assertEqual(cell.crop((1, 1, size - 1, size - 1)).tobytes(), expected.crop((1, 1, size - 1, size - 1)).tobytes())
+        record['cellOrder'].reverse()
+        self.manifest.write_text(json.dumps(manifest))
+        with self.assertRaisesRegex(ValueError, 'contract'):
+            export(self.root, self.catalog)

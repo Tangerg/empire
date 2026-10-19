@@ -1,0 +1,218 @@
+[
+  {
+    "atlasId": "surface-graveyard",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-graveyard.png",
+    "size": [
+      128,
+      32
+    ],
+    "sources": [
+      {
+        "cellId": "graveyard-1",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+        "sourceSha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "graveyard-2",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-2/master.png",
+        "sourceSha256": "c2b4a95030ef6433f003b9966e654dc5c9e86089492e686de986c56cf2317bfa",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "graveyard-3",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-3/master.png",
+        "sourceSha256": "4907b41c455f1ef7413cb61833537e0c91b02d483253aee4b6ce07337f9fa36d",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "graveyard-4",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-4/master.png",
+        "sourceSha256": "f5e36939f16779d93cfec61322f0d27c76c11276866c0df43cbf34b5ddfb09d3",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      }
+    ],
+    "cells": [
+      {
+        "cellId": "graveyard-1",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 22,
+        "interiorPixelSha256": "bf362e209c38a3203e90e54853010c4d0553c10c8337a762aa28eb77e81f21df",
+        "edgeHashes": {
+          "top": "ae7e7b86cd23df857587cc4c5f9cf79dc07ed6d6c69ce8c67dc7ef30f96dff89",
+          "bottom": "ae7e7b86cd23df857587cc4c5f9cf79dc07ed6d6c69ce8c67dc7ef30f96dff89",
+          "left": "85c69936da5f41d1154bd4ade8538667b20403c09345977ddd472bdd34f1f1eb",
+          "right": "85c69936da5f41d1154bd4ade8538667b20403c09345977ddd472bdd34f1f1eb"
+        },
+        "pixelSha256": "8a67c9bafd9e1793f9b8442dd2615efc403433634c31ab36c2cbea058d78a226"
+      },
+      {
+        "cellId": "graveyard-2",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 19,
+        "interiorPixelSha256": "1b206eb3564ee2f1f1107e0bd665dea553195725244a2acdf968223773ed9f23",
+        "edgeHashes": {
+          "top": "ae7e7b86cd23df857587cc4c5f9cf79dc07ed6d6c69ce8c67dc7ef30f96dff89",
+          "bottom": "ae7e7b86cd23df857587cc4c5f9cf79dc07ed6d6c69ce8c67dc7ef30f96dff89",
+          "left": "85c69936da5f41d1154bd4ade8538667b20403c09345977ddd472bdd34f1f1eb",
+          "right": "85c69936da5f41d1154bd4ade8538667b20403c09345977ddd472bdd34f1f1eb"
+        },
+        "pixelSha256": "b3eeb7601682b55a03c958b4951d8d7dc612dbc27a0e131cd8e754a55d60dc3e"
+      },
+      {
+        "cellId": "graveyard-3",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 35,
+        "interiorPixelSha256": "2e76a0c257f14ec5273e436e0b6f09414b5cddbdb76400c2c9718773e9ca84fd",
+        "edgeHashes": {
+          "top": "ae7e7b86cd23df857587cc4c5f9cf79dc07ed6d6c69ce8c67dc7ef30f96dff89",
+          "bottom": "ae7e7b86cd23df857587cc4c5f9cf79dc07ed6d6c69ce8c67dc7ef30f96dff89",
+          "left": "85c69936da5f41d1154bd4ade8538667b20403c09345977ddd472bdd34f1f1eb",
+          "right": "85c69936da5f41d1154bd4ade8538667b20403c09345977ddd472bdd34f1f1eb"
+        },
+        "pixelSha256": "934397dee4d966866c4b93c26cd2468544b77ce82b763f96cc786137d93b9694"
+      },
+      {
+        "cellId": "graveyard-4",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 21,
+        "interiorPixelSha256": "b4d0f5f6c473f393b27315f7f4cfb2babf36cac1eff13c61ade71972c470b436",
+        "edgeHashes": {
+          "top": "ae7e7b86cd23df857587cc4c5f9cf79dc07ed6d6c69ce8c67dc7ef30f96dff89",
+          "bottom": "ae7e7b86cd23df857587cc4c5f9cf79dc07ed6d6c69ce8c67dc7ef30f96dff89",
+          "left": "85c69936da5f41d1154bd4ade8538667b20403c09345977ddd472bdd34f1f1eb",
+          "right": "85c69936da5f41d1154bd4ade8538667b20403c09345977ddd472bdd34f1f1eb"
+        },
+        "pixelSha256": "c6440eda25c2ec17e60c0261e3bc22c5ade99b07d5fcc40fb724b0d23f1c4621"
+      }
+    ],
+    "derivation": "full-canvas-lanczos-resize + outermost-pixel-family-edge-average; no blur/recolor",
+    "pixelSha256": "27d904a1681156395701571a5f6a59d9bbe0ee74bafe73fdb907c0c7a8b44f1e",
+    "visualSeamReview": "required-separately"
+  },
+  {
+    "atlasId": "surface-graveyard",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-graveyard@2x.png",
+    "size": [
+      256,
+      64
+    ],
+    "sources": [
+      {
+        "cellId": "graveyard-1",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+        "sourceSha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "graveyard-2",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-2/master.png",
+        "sourceSha256": "c2b4a95030ef6433f003b9966e654dc5c9e86089492e686de986c56cf2317bfa",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "graveyard-3",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-3/master.png",
+        "sourceSha256": "4907b41c455f1ef7413cb61833537e0c91b02d483253aee4b6ce07337f9fa36d",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "graveyard-4",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-4/master.png",
+        "sourceSha256": "f5e36939f16779d93cfec61322f0d27c76c11276866c0df43cbf34b5ddfb09d3",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      }
+    ],
+    "cells": [
+      {
+        "cellId": "graveyard-1",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 23,
+        "interiorPixelSha256": "18a2429c57a3476d9894f44ae2b864b97c112c7bcb3e0cdb73b977df20f6c896",
+        "edgeHashes": {
+          "top": "490337576da3db470446d5198acc072ec381da3ee74bceaa52697c7b480faa2b",
+          "bottom": "490337576da3db470446d5198acc072ec381da3ee74bceaa52697c7b480faa2b",
+          "left": "a755bb4ca0fa8ec6ce72aaf2bd3a5db3b5314c374fad41bd985364f21dd0d12b",
+          "right": "a755bb4ca0fa8ec6ce72aaf2bd3a5db3b5314c374fad41bd985364f21dd0d12b"
+        },
+        "pixelSha256": "00c597abddc76c4893a62e747dc22a2c734753df38836e509062d4fd8b8cb643"
+      },
+      {
+        "cellId": "graveyard-2",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 18,
+        "interiorPixelSha256": "19db4e9cca7ebbf25028ceb4568d0f8fce62b43dd5c914821f3c2d8da8caa0c5",
+        "edgeHashes": {
+          "top": "490337576da3db470446d5198acc072ec381da3ee74bceaa52697c7b480faa2b",
+          "bottom": "490337576da3db470446d5198acc072ec381da3ee74bceaa52697c7b480faa2b",
+          "left": "a755bb4ca0fa8ec6ce72aaf2bd3a5db3b5314c374fad41bd985364f21dd0d12b",
+          "right": "a755bb4ca0fa8ec6ce72aaf2bd3a5db3b5314c374fad41bd985364f21dd0d12b"
+        },
+        "pixelSha256": "9945430640be5bfb6dd376571ba489930c4e7250052fecec57f6d1bcdf4f08b6"
+      },
+      {
+        "cellId": "graveyard-3",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 36,
+        "interiorPixelSha256": "a8dd5ce45c7226fdb2e0fd6eacd06affd44672edf95ee8e2a4438135e7dd098a",
+        "edgeHashes": {
+          "top": "490337576da3db470446d5198acc072ec381da3ee74bceaa52697c7b480faa2b",
+          "bottom": "490337576da3db470446d5198acc072ec381da3ee74bceaa52697c7b480faa2b",
+          "left": "a755bb4ca0fa8ec6ce72aaf2bd3a5db3b5314c374fad41bd985364f21dd0d12b",
+          "right": "a755bb4ca0fa8ec6ce72aaf2bd3a5db3b5314c374fad41bd985364f21dd0d12b"
+        },
+        "pixelSha256": "0f68f0d0a120dba7dc137d272329e9bc4247717085e1a846d839e3c29d7871ad"
+      },
+      {
+        "cellId": "graveyard-4",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 23,
+        "interiorPixelSha256": "d185f5637b22f6fc056c4016978420f48ed43bd69957215ead5cde4ca637e720",
+        "edgeHashes": {
+          "top": "490337576da3db470446d5198acc072ec381da3ee74bceaa52697c7b480faa2b",
+          "bottom": "490337576da3db470446d5198acc072ec381da3ee74bceaa52697c7b480faa2b",
+          "left": "a755bb4ca0fa8ec6ce72aaf2bd3a5db3b5314c374fad41bd985364f21dd0d12b",
+          "right": "a755bb4ca0fa8ec6ce72aaf2bd3a5db3b5314c374fad41bd985364f21dd0d12b"
+        },
+        "pixelSha256": "f2a01c6d9a85780729465e3b51c1a379f8222cd4bf858a9e7e5160afefa70def"
+      }
+    ],
+    "derivation": "full-canvas-lanczos-resize + outermost-pixel-family-edge-average; no blur/recolor",
+    "pixelSha256": "fb76707924ef29081e6c21b6db627c4ea8127eba44243c5a982d6f301951162c",
+    "visualSeamReview": "required-separately"
+  }
+]

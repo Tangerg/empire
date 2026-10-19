@@ -1,0 +1,38 @@
+{
+  "baseCommit": "6dd81930765149eebc0764686bc5c676a420b919",
+  "focusedTypescript": {
+    "passed": 19,
+    "files": 4
+  },
+  "pythonSurface": {
+    "passed": 8
+  },
+  "pythonField": {
+    "passed": 8
+  },
+  "typecheck": "passed",
+  "applicationBuilds": {
+    "passed": 4
+  },
+  "replays": {
+    "runs": 60,
+    "bytesIdentical": true
+  },
+  "candidateSceneContracts": {
+    "levels": 16,
+    "onlyGroundChanges": [
+      "c01-11",
+      "c01-16"
+    ],
+    "rulesAndStandingLayersIdentical": true
+  },
+  "worldPlanePixelEquality": {
+    "displayDensities": [
+      1,
+      2
+    ],
+    "allRgbaChannelsExact": true
+  },
+  "fullRepositorySuite": "not rerun in sparse worktree; complete main validation required",
+  "liveBrowserGpu": false
+}

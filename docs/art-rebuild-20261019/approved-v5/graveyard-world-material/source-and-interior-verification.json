@@ -1,0 +1,57 @@
+{
+  "sources": [
+    {
+      "cellId": "graveyard-1",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+      "sourceSha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+      "sourceBytesMatchBaseline": true,
+      "consumer": "world tone zero in c01-11/c01-16"
+    },
+    {
+      "cellId": "graveyard-2",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-2/master.png",
+      "sourceSha256": "c2b4a95030ef6433f003b9966e654dc5c9e86089492e686de986c56cf2317bfa",
+      "sourceBytesMatchBaseline": true,
+      "consumer": "catalog-only"
+    },
+    {
+      "cellId": "graveyard-3",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-3/master.png",
+      "sourceSha256": "4907b41c455f1ef7413cb61833537e0c91b02d483253aee4b6ce07337f9fa36d",
+      "sourceBytesMatchBaseline": true,
+      "consumer": "catalog-only"
+    },
+    {
+      "cellId": "graveyard-4",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-graveyard/graveyard-4/master.png",
+      "sourceSha256": "f5e36939f16779d93cfec61322f0d27c76c11276866c0df43cbf34b5ddfb09d3",
+      "sourceBytesMatchBaseline": true,
+      "consumer": "catalog-only"
+    }
+  ],
+  "oldCatalogFamiliesUnchanged": true,
+  "worldInterior": [
+    {
+      "density": 1,
+      "size": [
+        512,
+        512
+      ],
+      "interiorExactLanczos": true,
+      "edgeBandPixels": 1,
+      "sourceUnchanged": true,
+      "interiorSha256": "c6099c623691ba18af9fd36560d5bdf4a6da0cf90433133cdff91021d657540b"
+    },
+    {
+      "density": 2,
+      "size": [
+        1024,
+        1024
+      ],
+      "interiorExactLanczos": true,
+      "edgeBandPixels": 1,
+      "sourceUnchanged": true,
+      "interiorSha256": "af106af1a18779e57818523ec48fc53be4e67bdc4a4badd8b4a7c8a64d32b1e2"
+    }
+  ]
+}

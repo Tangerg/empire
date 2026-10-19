@@ -28,6 +28,7 @@ import { CANDIDATE_01_BOARD_STYLE } from './candidate-01-board-style';
 import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from './candidate-01-field-material';
 import { CANDIDATE_01_STONE_BASE, candidate01StoneConnectorMarkup } from './candidate-01-stone-material';
 import { candidateWorldMaterialTileMarkup } from './candidate-01-world-material';
+import { CANDIDATE_01_GRAVEYARD_BASE } from './candidate-01-graveyard-material';
 import {
   CANDIDATE_FOREST_FLOOR,
   CANDIDATE_FOUNDATIONS,
@@ -48,6 +49,8 @@ import type {
   SceneViewport,
   SceneViewportProfile,
 } from '@empire/game-ui';
+
+const WORLD_SURFACES = [CANDIDATE_01_STONE_BASE, CANDIDATE_01_GRAVEYARD_BASE];
 
 /** The four cells a connection mask counts, in the order the kit numbers them. */
 const ORTHOGONAL = [[0, -1], [1, 0], [0, 1], [-1, 0]] as const;
@@ -305,12 +308,12 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, ro
 
       const atlas = material.surface ?? base.atlas;
       const tone = material.tone ?? base.tone;
-      // Explicit authored landforms share the continuous meadow. Other terrain
-      // surfaces retain their declared atlas pixels and fit.
+      // Explicit authored landforms share the continuous meadow. Registered world
+      // surfaces retain their own UV scale; other surfaces keep their atlas fit.
       if ((atlas !== base.atlas || tone !== base.tone) && !authoredTerrain(levelId, id, x, y, 'authoredTerrainSurface')) {
-        const stone = CANDIDATE_01_STONE_BASE.replaces;
-        surfaces.push({ markup: atlas === stone.atlas && tone === stone.tone
-          ? candidateWorldMaterialTileMarkup(CANDIDATE_01_STONE_BASE, at.x, at.y)
+        const world = WORLD_SURFACES.find(surface => surface.replaces.atlas === atlas && surface.replaces.tone === tone);
+        surfaces.push({ markup: world
+          ? candidateWorldMaterialTileMarkup(world, at.x, at.y)
           : surfaceMarkup(atlas, tone), ...at });
       }
 
