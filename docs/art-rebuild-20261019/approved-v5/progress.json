@@ -25,8 +25,8 @@
     "quote": "确认了，就按照这个方向做剩下的"
   },
   "authoredFourPoseBundles": 16,
-  "authoredThreeStateBundles": 20,
-  "formalRuntimeBoundTopics": 79,
+  "authoredThreeStateBundles": 21,
+  "formalRuntimeBoundTopics": 80,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -502,6 +502,12 @@
       "export": "shared44/873.5 scale, measured boot registration, up to2 native transparent padding columns; alpha/native pose review passed",
       "runtimeBinding": "canonical and HD resolver bound, original c01.bran identity and footprint retained; single attack art slot represents primary bow action",
       "liveGame": "pending"
+    },
+    "C01-STRUCT-CAPITAL-GATE": {
+      "raw": "3 native states with exact original atlas01 twin-tower identity; rejected starcrest candidate retained",
+      "export": "shared112/1180 scale; captured fullcanvas -42native y registration from three independent static-region matches, no crop; native state review passed",
+      "runtimeBinding": "canonical and HD resolver, original2x2 footprint retained; catalog-only current consumer audit",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -685,9 +691,11 @@
         "temperate-hill-cap",
         "temperate-cliff-convex-corner",
         "temperate-pillar-wide",
-        "temperate-plateau-cap"
+        "temperate-plateau-cap",
+        "temperate-low-ledge",
+        "temperate-cliff-straight-south"
       ],
-      "count": 4,
+      "count": 6,
       "export": "128/256 full-canvas registered, strict original16 cell-order/semantic pairs and unrelated pixels retained",
       "runtimeBinding": "actual existing elevated scenery selectors, occupancy/passability untouched",
       "sceneReview": "Complete firstlevel reviewed with all19 ruleactors; four new large-plane profiles coherent with trees/buildings; remaining5 active cliff identities still legacy",
@@ -711,7 +719,7 @@
       "defaultTestTimeoutUnchanged": true,
       "scope": "b0562c6 ranger/firstcliffpair runtime checkpoint; later atlas-only additions separately export-checked"
     },
-    "latestBindingAndEdges": "89 asset/environment tests passed after ranger and first cliff pair",
+    "latestBindingAndEdges": "90 asset/environment tests passed after capitalgate and nextcliffpair",
     "artPythonLatest": "147 passed at f8789f8 integration checkpoint",
     "typecheckLatest": "passed after firstfour cliffs and village square"
   },

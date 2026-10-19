@@ -1,0 +1,881 @@
+{
+  "kind": "Read-only complete-subject reference contract",
+  "snapshotHead": "654b382",
+  "records": [
+    {
+      "atlas": "cliff-modules-temperate",
+      "id": "temperate-low-ledge",
+      "index": 10,
+      "cellOrderLabel": "low-ledge",
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "runtimeHdBox": [
+        512,
+        512,
+        768,
+        768
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.0,
+        31.5,
+        121.5,
+        121.5
+      ],
+      "runtimeAnchor": [
+        64,
+        127
+      ],
+      "semanticMetadata": {
+        "id": "temperate-low-ledge",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "sourceQuarterBox": [
+        627,
+        627,
+        940,
+        940
+      ],
+      "dominantFullSubjectBoundsAlpha128": [
+        668,
+        694,
+        879,
+        858
+      ],
+      "sourceSubjectCrossesQuarter": false,
+      "referenceCropBox": [
+        658,
+        684,
+        889,
+        868
+      ],
+      "referencePath": "references/cliff-modules-temperate/temperate-low-ledge-complete-subject-reference.png",
+      "sources": {
+        "master": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/cliffs-temperate-4x4-key.png",
+          "sha256": "1f841cf9f063d0c8a22791609200f5cba1c3d7b702e07dd72e85d2514493117f"
+        },
+        "alpha": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/cliffs-temperate-4x4.png",
+          "sha256": "4da26d7c3db032136052f7fc0966f306a32c79c5af02159dbb7ea3fbfd73afba"
+        },
+        "runtimeHd": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png",
+          "sha256": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8"
+        }
+      }
+    },
+    {
+      "atlas": "cliff-modules-temperate",
+      "id": "temperate-cliff-straight-south",
+      "index": 0,
+      "cellOrderLabel": "straight-south",
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "runtimeHdBox": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.5,
+        32.0,
+        122.0,
+        122.0
+      ],
+      "runtimeAnchor": [
+        64,
+        127
+      ],
+      "semanticMetadata": {
+        "id": "temperate-cliff-straight-south",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "sourceQuarterBox": [
+        0,
+        0,
+        314,
+        314
+      ],
+      "dominantFullSubjectBoundsAlpha128": [
+        45,
+        74,
+        330,
+        283
+      ],
+      "sourceSubjectCrossesQuarter": true,
+      "referenceCropBox": [
+        35,
+        64,
+        340,
+        293
+      ],
+      "referencePath": "references/cliff-modules-temperate/temperate-cliff-straight-south-complete-subject-reference.png",
+      "sources": {
+        "master": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/cliffs-temperate-4x4-key.png",
+          "sha256": "1f841cf9f063d0c8a22791609200f5cba1c3d7b702e07dd72e85d2514493117f"
+        },
+        "alpha": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/cliffs-temperate-4x4.png",
+          "sha256": "4da26d7c3db032136052f7fc0966f306a32c79c5af02159dbb7ea3fbfd73afba"
+        },
+        "runtimeHd": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png",
+          "sha256": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8"
+        }
+      }
+    },
+    {
+      "atlas": "cliff-modules-temperate",
+      "id": "temperate-ramp-level-2",
+      "index": 6,
+      "cellOrderLabel": "ramp-level-2",
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "runtimeHdBox": [
+        512,
+        256,
+        768,
+        512
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.5,
+        30.5,
+        122.0,
+        121.5
+      ],
+      "runtimeAnchor": [
+        64,
+        127
+      ],
+      "semanticMetadata": {
+        "id": "temperate-ramp-level-2",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "heightDelta": 2,
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      "sourceQuarterBox": [
+        627,
+        314,
+        940,
+        627
+      ],
+      "dominantFullSubjectBoundsAlpha128": [
+        639,
+        347,
+        881,
+        584
+      ],
+      "sourceSubjectCrossesQuarter": false,
+      "referenceCropBox": [
+        629,
+        337,
+        891,
+        594
+      ],
+      "referencePath": "references/cliff-modules-temperate/temperate-ramp-level-2-complete-subject-reference.png",
+      "sources": {
+        "master": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/cliffs-temperate-4x4-key.png",
+          "sha256": "1f841cf9f063d0c8a22791609200f5cba1c3d7b702e07dd72e85d2514493117f"
+        },
+        "alpha": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/cliffs-temperate-4x4.png",
+          "sha256": "4da26d7c3db032136052f7fc0966f306a32c79c5af02159dbb7ea3fbfd73afba"
+        },
+        "runtimeHd": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png",
+          "sha256": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8"
+        }
+      }
+    },
+    {
+      "atlas": "cliff-modules-temperate",
+      "id": "temperate-talus-foot",
+      "index": 11,
+      "cellOrderLabel": "talus-foot",
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "runtimeHdBox": [
+        768,
+        512,
+        1024,
+        768
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        9.5,
+        6.0,
+        117.5,
+        88.0
+      ],
+      "runtimeAnchor": [
+        64,
+        127
+      ],
+      "semanticMetadata": {
+        "id": "temperate-talus-foot",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      "sourceQuarterBox": [
+        940,
+        627,
+        1254,
+        940
+      ],
+      "dominantFullSubjectBoundsAlpha128": [
+        943,
+        649,
+        1213,
+        854
+      ],
+      "sourceSubjectCrossesQuarter": false,
+      "referenceCropBox": [
+        933,
+        639,
+        1223,
+        864
+      ],
+      "referencePath": "references/cliff-modules-temperate/temperate-talus-foot-complete-subject-reference.png",
+      "sources": {
+        "master": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/cliffs-temperate-4x4-key.png",
+          "sha256": "1f841cf9f063d0c8a22791609200f5cba1c3d7b702e07dd72e85d2514493117f"
+        },
+        "alpha": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/cliffs-temperate-4x4.png",
+          "sha256": "4da26d7c3db032136052f7fc0966f306a32c79c5af02159dbb7ea3fbfd73afba"
+        },
+        "runtimeHd": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png",
+          "sha256": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8"
+        }
+      }
+    },
+    {
+      "atlas": "cliff-modules-temperate",
+      "id": "temperate-mountain-pass",
+      "index": 7,
+      "cellOrderLabel": "mountain-pass",
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "runtimeHdBox": [
+        768,
+        256,
+        1024,
+        512
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.0,
+        39.5,
+        121.5,
+        122.0
+      ],
+      "runtimeAnchor": [
+        64,
+        127
+      ],
+      "semanticMetadata": {
+        "id": "temperate-mountain-pass",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "heightDelta": 1,
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      "sourceQuarterBox": [
+        940,
+        314,
+        1254,
+        627
+      ],
+      "dominantFullSubjectBoundsAlpha128": [
+        919,
+        369,
+        1208,
+        559
+      ],
+      "sourceSubjectCrossesQuarter": true,
+      "referenceCropBox": [
+        909,
+        359,
+        1218,
+        569
+      ],
+      "referencePath": "references/cliff-modules-temperate/temperate-mountain-pass-complete-subject-reference.png",
+      "sources": {
+        "master": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/cliffs-temperate-4x4-key.png",
+          "sha256": "1f841cf9f063d0c8a22791609200f5cba1c3d7b702e07dd72e85d2514493117f"
+        },
+        "alpha": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/cliffs-temperate-4x4.png",
+          "sha256": "4da26d7c3db032136052f7fc0966f306a32c79c5af02159dbb7ea3fbfd73afba"
+        },
+        "runtimeHd": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png",
+          "sha256": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8"
+        }
+      }
+    },
+    {
+      "atlas": "camps-foundations",
+      "id": "gray-camp-ground",
+      "index": 0,
+      "cellOrderLabel": "gray-camp-ground",
+      "logicalCell": [
+        144,
+        144
+      ],
+      "hdCell": [
+        288,
+        288
+      ],
+      "runtimeHdBox": [
+        0,
+        0,
+        288,
+        288
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        5.0,
+        24.0,
+        138.5,
+        138.5
+      ],
+      "runtimeAnchor": [
+        72,
+        139
+      ],
+      "semanticMetadata": {
+        "id": "gray-camp-ground",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 0
+      },
+      "sourceQuarterBox": [
+        0,
+        0,
+        314,
+        314
+      ],
+      "dominantFullSubjectBoundsAlpha128": [
+        14,
+        54,
+        297,
+        297
+      ],
+      "sourceSubjectCrossesQuarter": false,
+      "referenceCropBox": [
+        4,
+        44,
+        307,
+        307
+      ],
+      "referencePath": "references/camps-foundations/gray-camp-ground-complete-subject-reference.png",
+      "sources": {
+        "master": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/camps-foundations-4x4-key.png",
+          "sha256": "d1aafadcb4b6e0e842d7d7d4b689b65c3c7748a2cb57f3101440c6c30508686d"
+        },
+        "alpha": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/camps-foundations-4x4.png",
+          "sha256": "a0736cdce63cca6b925490669aa6355e147e45428904a7b52e7e9fc7485c2062"
+        },
+        "runtimeHd": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png",
+          "sha256": "1b44da1018b7af54ae20b919409a5f6890d4371df2064f659fda54188e68dd45"
+        }
+      }
+    },
+    {
+      "atlas": "camps-foundations",
+      "id": "vilsa-camp-ground",
+      "index": 1,
+      "cellOrderLabel": "vilsa-camp-ground",
+      "logicalCell": [
+        144,
+        144
+      ],
+      "hdCell": [
+        288,
+        288
+      ],
+      "runtimeHdBox": [
+        288,
+        0,
+        576,
+        288
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        5.5,
+        23.0,
+        139.0,
+        138.5
+      ],
+      "runtimeAnchor": [
+        72,
+        139
+      ],
+      "semanticMetadata": {
+        "id": "vilsa-camp-ground",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 0
+      },
+      "sourceQuarterBox": [
+        314,
+        0,
+        627,
+        314
+      ],
+      "dominantFullSubjectBoundsAlpha128": [
+        328,
+        54,
+        610,
+        298
+      ],
+      "sourceSubjectCrossesQuarter": false,
+      "referenceCropBox": [
+        318,
+        44,
+        620,
+        308
+      ],
+      "referencePath": "references/camps-foundations/vilsa-camp-ground-complete-subject-reference.png",
+      "sources": {
+        "master": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/camps-foundations-4x4-key.png",
+          "sha256": "d1aafadcb4b6e0e842d7d7d4b689b65c3c7748a2cb57f3101440c6c30508686d"
+        },
+        "alpha": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/camps-foundations-4x4.png",
+          "sha256": "a0736cdce63cca6b925490669aa6355e147e45428904a7b52e7e9fc7485c2062"
+        },
+        "runtimeHd": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png",
+          "sha256": "1b44da1018b7af54ae20b919409a5f6890d4371df2064f659fda54188e68dd45"
+        }
+      }
+    },
+    {
+      "atlas": "camps-foundations",
+      "id": "village-square-foundation",
+      "index": 3,
+      "cellOrderLabel": "village-square-foundation",
+      "logicalCell": [
+        144,
+        144
+      ],
+      "hdCell": [
+        288,
+        288
+      ],
+      "runtimeHdBox": [
+        864,
+        0,
+        1152,
+        288
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        5.5,
+        47.0,
+        138.5,
+        139.0
+      ],
+      "runtimeAnchor": [
+        72,
+        139
+      ],
+      "semanticMetadata": {
+        "id": "village-square-foundation",
+        "footprint": [
+          4,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 0
+      },
+      "sourceQuarterBox": [
+        940,
+        0,
+        1254,
+        314
+      ],
+      "dominantFullSubjectBoundsAlpha128": [
+        950,
+        112,
+        1234,
+        308
+      ],
+      "sourceSubjectCrossesQuarter": false,
+      "referenceCropBox": [
+        940,
+        102,
+        1244,
+        318
+      ],
+      "referencePath": "references/camps-foundations/village-square-foundation-complete-subject-reference.png",
+      "sources": {
+        "master": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/camps-foundations-4x4-key.png",
+          "sha256": "d1aafadcb4b6e0e842d7d7d4b689b65c3c7748a2cb57f3101440c6c30508686d"
+        },
+        "alpha": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/camps-foundations-4x4.png",
+          "sha256": "a0736cdce63cca6b925490669aa6355e147e45428904a7b52e7e9fc7485c2062"
+        },
+        "runtimeHd": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png",
+          "sha256": "1b44da1018b7af54ae20b919409a5f6890d4371df2064f659fda54188e68dd45"
+        }
+      }
+    },
+    {
+      "atlas": "camps-foundations",
+      "id": "field-tent-cluster",
+      "index": 4,
+      "cellOrderLabel": "field-tent-cluster",
+      "logicalCell": [
+        144,
+        144
+      ],
+      "hdCell": [
+        288,
+        288
+      ],
+      "runtimeHdBox": [
+        0,
+        288,
+        288,
+        576
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        5.5,
+        43.5,
+        139.0,
+        138.5
+      ],
+      "runtimeAnchor": [
+        72,
+        139
+      ],
+      "semanticMetadata": {
+        "id": "field-tent-cluster",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "sourceQuarterBox": [
+        0,
+        314,
+        314,
+        627
+      ],
+      "dominantFullSubjectBoundsAlpha128": [
+        9,
+        387,
+        298,
+        593
+      ],
+      "sourceSubjectCrossesQuarter": false,
+      "referenceCropBox": [
+        0,
+        377,
+        308,
+        603
+      ],
+      "referencePath": "references/camps-foundations/field-tent-cluster-complete-subject-reference.png",
+      "sources": {
+        "master": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/camps-foundations-4x4-key.png",
+          "sha256": "d1aafadcb4b6e0e842d7d7d4b689b65c3c7748a2cb57f3101440c6c30508686d"
+        },
+        "alpha": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/camps-foundations-4x4.png",
+          "sha256": "a0736cdce63cca6b925490669aa6355e147e45428904a7b52e7e9fc7485c2062"
+        },
+        "runtimeHd": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png",
+          "sha256": "1b44da1018b7af54ae20b919409a5f6890d4371df2064f659fda54188e68dd45"
+        }
+      }
+    },
+    {
+      "atlas": "camps-foundations",
+      "id": "supply-tent-workyard",
+      "index": 5,
+      "cellOrderLabel": "supply-tent-workyard",
+      "logicalCell": [
+        144,
+        144
+      ],
+      "hdCell": [
+        288,
+        288
+      ],
+      "runtimeHdBox": [
+        288,
+        288,
+        576,
+        576
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        5.5,
+        44.0,
+        139.0,
+        138.5
+      ],
+      "runtimeAnchor": [
+        72,
+        139
+      ],
+      "semanticMetadata": {
+        "id": "supply-tent-workyard",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 1
+      },
+      "sourceQuarterBox": [
+        314,
+        314,
+        627,
+        627
+      ],
+      "dominantFullSubjectBoundsAlpha128": [
+        325,
+        377,
+        604,
+        591
+      ],
+      "sourceSubjectCrossesQuarter": false,
+      "referenceCropBox": [
+        315,
+        367,
+        614,
+        601
+      ],
+      "referencePath": "references/camps-foundations/supply-tent-workyard-complete-subject-reference.png",
+      "sources": {
+        "master": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/camps-foundations-4x4-key.png",
+          "sha256": "d1aafadcb4b6e0e842d7d7d4b689b65c3c7748a2cb57f3101440c6c30508686d"
+        },
+        "alpha": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/camps-foundations-4x4.png",
+          "sha256": "a0736cdce63cca6b925490669aa6355e147e45428904a7b52e7e9fc7485c2062"
+        },
+        "runtimeHd": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png",
+          "sha256": "1b44da1018b7af54ae20b919409a5f6890d4371df2064f659fda54188e68dd45"
+        }
+      }
+    },
+    {
+      "atlas": "camps-foundations",
+      "id": "watch-post-ground",
+      "index": 11,
+      "cellOrderLabel": "watch-post-ground",
+      "logicalCell": [
+        144,
+        144
+      ],
+      "hdCell": [
+        288,
+        288
+      ],
+      "runtimeHdBox": [
+        864,
+        576,
+        1152,
+        864
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        5.5,
+        8.5,
+        139.0,
+        138.5
+      ],
+      "runtimeAnchor": [
+        72,
+        139
+      ],
+      "semanticMetadata": {
+        "id": "watch-post-ground",
+        "footprint": [
+          3,
+          3
+        ],
+        "anchor": [
+          72,
+          139
+        ],
+        "obstructionHeight": 2
+      },
+      "sourceQuarterBox": [
+        940,
+        627,
+        1254,
+        940
+      ],
+      "dominantFullSubjectBoundsAlpha128": [
+        968,
+        665,
+        1212,
+        903
+      ],
+      "sourceSubjectCrossesQuarter": false,
+      "referenceCropBox": [
+        958,
+        655,
+        1222,
+        913
+      ],
+      "referencePath": "references/camps-foundations/watch-post-ground-complete-subject-reference.png",
+      "sources": {
+        "master": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/camps-foundations-4x4-key.png",
+          "sha256": "d1aafadcb4b6e0e842d7d7d4b689b65c3c7748a2cb57f3101440c6c30508686d"
+        },
+        "alpha": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/camps-foundations-4x4.png",
+          "sha256": "a0736cdce63cca6b925490669aa6355e147e45428904a7b52e7e9fc7485c2062"
+        },
+        "runtimeHd": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png",
+          "sha256": "1b44da1018b7af54ae20b919409a5f6890d4371df2064f659fda54188e68dd45"
+        }
+      }
+    }
+  ],
+  "notes": [
+    "Reference crops are diagnostic source pixels, not production registration coordinates",
+    "New native sources need independently reviewed sourceFoot; never infer it from an alpha bounding box",
+    "Keep all source alpha, no whole-sheet color or morphology processing, no crop-to-fit replacement",
+    "Cliffs are independent modules: 4x4,128/256,foot64/127,modules. Retain normal world foot sorting and all terrain/rule data",
+    "Camps are 4x4,144/288,defaultfoot72/139; retain per-consumer foundation versus standing classification",
+    "Only abandoned-cart-stop is already replaced in camps at this snapshot; village square is assigned separately",
+    "Rural life all 16 cells registered, including the 13 IDs active in the two initial scenes"
+  ],
+  "additionalIntegrityFindings": [
+    {
+      "id": "temperate-ramp-level-2",
+      "index": 6,
+      "foreignStrongAlphaPixels": 455,
+      "from": "temperate-mountain-pass",
+      "note": "Foreign cliff fragment appears on old runtime right edge; do not redraw it as part of the two-step ramp"
+    },
+    {
+      "id": "temperate-talus-foot",
+      "index": 11,
+      "foreignFaintAlphaPixels": 5,
+      "maximumAlpha": 19,
+      "foreignPixelBounds": [
+        1042,
+        939,
+        1082,
+        940
+      ],
+      "note": "These faint next-row pixels expand old fit_sprite alpha bbox downward, shrinking the actual talus subject; use complete subject rather than reproducing old slot padding"
+    }
+  ],
+  "registrationClarification": "The listed anchor is the original runtime anchor, not an instruction to force a new sourceFoot into it while clipping the canvas. Register the full native canvas with reviewed scale/origin/sourceFoot; the existing adapter projects the new anchor from those fields. Keep consumer world feet and placement scales unchanged."
+}

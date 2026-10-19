@@ -20,5 +20,106 @@
   "structuralFootEvidence": "Right tower foundation is lowest structural base; normal has no loose foreground debris",
   "registrationRule": "Same full native canvas, one normal-derived scale, no per-state fit",
   "postGenerationTransform": "none",
-  "status": "Normal awaiting parent review"
+  "status": "Complete native trio with parent-accepted measured captured whole-canvas registration",
+  "acceptedLogicalVisibleWidth": 112,
+  "stateVisibleBounds": {
+    "normal": [
+      50,
+      190,
+      1230,
+      1126
+    ],
+    "damaged": [
+      27,
+      189,
+      1231,
+      1151
+    ],
+    "captured": [
+      49,
+      100,
+      1231,
+      1167
+    ]
+  },
+  "stateLogicalTotalWidths": {
+    "normal": 112.0,
+    "damaged": 114.27796610169491,
+    "captured": 112.18983050847459
+  },
+  "nativeStateSourceFoot": {
+    "normal": [
+      627,
+      1126
+    ],
+    "damaged": [
+      627,
+      1126
+    ],
+    "captured": [
+      627,
+      1167
+    ]
+  },
+  "acceptedRegistrationOffsetLogical": {
+    "normal": [
+      0,
+      0
+    ],
+    "damaged": [
+      0,
+      0
+    ],
+    "captured": [
+      0,
+      -3.986440677966102
+    ]
+  },
+  "acceptedRegistrationOffsetNative": {
+    "normal": [
+      0,
+      0
+    ],
+    "damaged": [
+      0,
+      0
+    ],
+    "captured": [
+      0,
+      -42
+    ]
+  },
+  "capturedMeasurement": "Three independent surviving-body patches (left lower tower, doorway, right lower tower) all match best atdx0dy42. Actual lower alpha>32 foundation differs41 due1px contour variation; -42 body alignment leaves-1nativepixel baseline residual",
+  "measurementEvidence": "captured/registration-measurement.json",
+  "exportFrame": [
+    128,
+    128
+  ],
+  "exportOrigin": [
+    6,
+    6
+  ],
+  "completeSourceCanvasBoundsLogical": {
+    "normal": [
+      6,
+      6,
+      125.02372881355933,
+      125.02372881355933
+    ],
+    "damaged": [
+      6,
+      6,
+      125.02372881355933,
+      125.02372881355933
+    ],
+    "captured": [
+      6,
+      2.013559322033898,
+      125.02372881355933,
+      121.03728813559323
+    ]
+  },
+  "fullFrameContainmentVerified": true,
+  "debrisCaveat": "Damaged rubble reaches1151 but structural tower base remains1126. Do not fit or anchor to loose stones",
+  "geometryReview": "Normal-derived112/1180 scale shared unchanged. Captured body translated rigidly42native pixels, parent approved whole-canvas draw offset only; all native masters untouched and full native canvas preserved"
 }

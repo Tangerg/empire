@@ -1,0 +1,128 @@
+{
+  "evidence": "actual scene renderer markup rearranged onto a native-size diagnostic contact board",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "assets": [
+    {
+      "id": "temperate-low-ledge",
+      "anchor": [
+        68.25199362041467,
+        110.87081339712918
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no selected-scene placement sampled",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.55,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-37.53859649122807 -60.97894736842105) scale(0.55)\"><svg width=\"128\" height=\"128\" viewBox=\"0 0 128 128\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png\" x=\"-256\" y=\"-256\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        8.5,
+        27.5,
+        120.5,
+        111.5
+      ],
+      "nativeSampleVisibleHeight": 46.2,
+      "nativeVisibleHeightRange": [
+        42.0,
+        50.4
+      ],
+      "nativeSampleOverhangBelowContact": 0.34605263157894944
+    },
+    {
+      "id": "temperate-cliff-straight-south",
+      "anchor": [
+        65.28548644338119,
+        109.18979266347688
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no selected-scene placement sampled",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.55,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-35.90701754385966 -60.054385964912285) scale(0.55)\"><svg width=\"128\" height=\"128\" viewBox=\"0 0 128 128\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png\" x=\"0\" y=\"0\" width=\"512\" height=\"512\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        6.0,
+        25.5,
+        124.5,
+        110.0
+      ],
+      "nativeSampleVisibleHeight": 46.475,
+      "nativeVisibleHeightRange": [
+        42.25,
+        50.699999999999996
+      ],
+      "nativeSampleOverhangBelowContact": 0.44561403508771635
+    },
+    {
+      "id": "oak-ancient",
+      "anchor": [
+        48.89154704944178,
+        83.8676236044657
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.375,
+      "evidence": "sampled scene renderer markup",
+      "reference": true,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.0175,
+        1.1824999999999999
+      ],
+      "sampledRendererScaleRange": [
+        1.028,
+        1.172
+      ],
+      "sampleScale": 1.102,
+      "sampleCount": 11,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop is-standing\" transform=\"translate(-53.855 -92.382) scale(1.102)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        7.0,
+        87.5,
+        89.0
+      ],
+      "nativeSampleVisibleHeight": 90.364,
+      "nativeVisibleHeightRange": [
+        83.435,
+        96.96499999999999
+      ],
+      "nativeSampleOverhangBelowContact": 5.655878787878793
+    }
+  ],
+  "offlineViewportNormalization": "nested SVG viewports expressed as equivalent clip paths for Inkscape"
+}

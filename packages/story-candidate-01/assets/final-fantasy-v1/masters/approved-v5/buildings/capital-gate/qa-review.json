@@ -1,0 +1,193 @@
+{
+  "topicId": "C01-STRUCT-CAPITAL-GATE",
+  "status": "Complete native trio; original identity/state semantics, native alpha and registered common-scale QA visually reviewed",
+  "masterIntegrity": "All raw/master pairs byte-identical native built-in imagegen, no alpha cleanup, crop, resize, translation, repaint or per-state fit applied to masters",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "perimeterGate": "All three actual outermost maxima1; zero edge pixels>1",
+  "sharedStructuralSourceFoot": [
+    627,
+    1126
+  ],
+  "acceptedLogicalWidth": 112,
+  "scaleApplication": "One112/1180 factor on complete native canvas in all states; captured only receives approved whole-canvas drawing offset",
+  "capturedRegistration": {
+    "offsetLogical": [
+      0,
+      -3.986440677966102
+    ],
+    "offsetNative": [
+      0,
+      -42
+    ],
+    "parentAccepted": true,
+    "regionalMatchCount": 3,
+    "regionalMatchesAll": [
+      0,
+      42
+    ],
+    "measurementPath": "captured/registration-measurement.json",
+    "rawEdited": false,
+    "foundationResidualNative": -1
+  },
+  "exportContainment": {
+    "frame": [
+      128,
+      128
+    ],
+    "origin": [
+      6,
+      6
+    ],
+    "allFullSourceCanvasesContained": true,
+    "minimumCanvasY": 2.013559322033898,
+    "maximumCanvasXY": 125.02372881355933
+  },
+  "visualChecks": {
+    "normal": "Twin square crenellated towers, two burgundy/gold diamond banners, closed double timber gate and small original-type gold crossed shield mark",
+    "damaged": "Cracked/chipped towers and curtainwall, both original banners torn, right wood door leaf leaning outward, local rubble; paired foundations retained",
+    "captured": "Intact normal architecture and red banners, one charcoal gray swallowtail tower flag atLEFT and one blue swallowtail flag atRIGHT; small shield unchanged",
+    "identity": "Exact runtime-HD matched atlas01 bottom row, not atlas04 repairable-gate single timber-braced arch",
+    "heraldry": "Initial distinct5pointstar on small shield rejected; targeted correction retained small understated4direction angular cross. Original crop evidence retained",
+    "style": "Broad chunky matte planes, bold contours, readable paired-tower silhouette at112logicalwidth",
+    "registration": "Three independent native-body matches support pure42px vertical translation of captured. Registered preview aligns all three foundations without scaling or cropping",
+    "alpha": "Genuine clear exterior and complete source frame in every state"
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "registeredComparison": "qa-registered-comparison.png",
+    "sharedLogical112Registered": "qa-logical-112.png",
+    "sharedLogical112Unregistered": "qa-logical-112-native.png",
+    "normal": "qa-normal-logical-112.png"
+  },
+  "rejectedAttempts": [
+    {
+      "path": "normal/rejected-crest-v1",
+      "reason": "Distinct5pointstar invented on tiny original angular crest; corrected with source crop"
+    }
+  ],
+  "consumerQualification": {
+    "status": "no-static-consumer-reference-found",
+    "audit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "directSearch": "Exact topic/runtime slug in *.ts and *.scene.json returned no matches",
+    "observedInBrowser": false,
+    "qualification": "Catalog/runtime asset exists; actual campaign or interactive placement not proven, dynamic external input not excluded"
+  },
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        50,
+        190,
+        1230,
+        1126
+      ],
+      "alphaAbove1Bounds": [
+        47,
+        188,
+        1232,
+        1128
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-1d06b0bd-2b15-4491-9930-d5971a126087.png",
+      "sha256": "3dcf65f1e0fa4d1cc0c705446bb1dcc8c29907c9d76902bc7ee14b68dcfa4872",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "activePrompt": "prompt-crest-v2.txt",
+      "fullyTransparentPixelCount": 730738,
+      "perimeterGate": "Actual outermost maximum alpha<=1, zero edge pixels>1",
+      "sharedStructuralSourceFoot": [
+        627,
+        1126
+      ],
+      "visibleSilhouetteReview": "Complete twin-tower bases and battlements, banners, gate and contained state rubble or flags",
+      "displayRegistrationOffsetLogical": [
+        0,
+        0
+      ]
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        27,
+        189,
+        1231,
+        1151
+      ],
+      "alphaAbove1Bounds": [
+        25,
+        187,
+        1233,
+        1154
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c9e9e0fa-e3b9-4f37-a1a6-8f5ffeec148e.png",
+      "sha256": "414a570fc8fa4bb79fdb382c0e0dca70795e52b68567f53cca75047884506198",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 699973,
+      "perimeterGate": "Actual outermost maximum alpha<=1, zero edge pixels>1",
+      "activePrompt": "prompt.txt",
+      "sharedStructuralSourceFoot": [
+        627,
+        1126
+      ],
+      "visibleSilhouetteReview": "Complete twin-tower bases and battlements, banners, gate and contained state rubble or flags",
+      "displayRegistrationOffsetLogical": [
+        0,
+        0
+      ]
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        49,
+        100,
+        1231,
+        1167
+      ],
+      "alphaAbove1Bounds": [
+        47,
+        98,
+        1233,
+        1170
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9222231c-b36c-417e-a468-21531e915455.png",
+      "sha256": "f2c06c4fc03ff7f1e5a65d699e4b7ab7037c58cf2063f54ba2f0e2129a5e20d7",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 683825,
+      "perimeterGate": "Actual outermost maximum alpha<=1, zero edge pixels>1",
+      "activePrompt": "prompt.txt",
+      "sharedStructuralSourceFoot": [
+        627,
+        1126
+      ],
+      "visibleSilhouetteReview": "Complete twin-tower bases and battlements, banners, gate and contained state rubble or flags",
+      "displayRegistrationOffsetLogical": [
+        0,
+        -3.986440677966102
+      ]
+    }
+  },
+  "noRepositoryWrites": true,
+  "noLiveGameClaim": true
+}

@@ -1,0 +1,91 @@
+{
+  "asset": "temperate-cliff-straight-south",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; parent-approved cliff family broad matte gray planes and connected olive turf",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    640,
+    1084
+  ],
+  "source_foot_estimate_normalized": [
+    0.510367,
+    0.864434
+  ],
+  "source_foot_confidence": "visual estimate; projected whole-module registration where noted, not alpha bbox inference",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    39,
+    237,
+    12,
+    161
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/temperate-cliff-straight-south-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/temperate-hill-cap-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-straight-south/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "cliff-modules-temperate",
+  "cell_index": 0,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "logical_anchor": [
+    64,
+    127
+  ],
+  "hd_anchor": [
+    128,
+    254
+  ],
+  "footprint": [
+    2,
+    1
+  ],
+  "obstructionHeight": 1,
+  "passable": false,
+  "heightDelta": null,
+  "render_role": "independent elevation module; preserve passability and bottom-anchor module registration",
+  "semantic_identity": "A single long straight south-facing gray cliff wall extending diagonally from near-left to far-right, capped by a narrow continuous olive strip. Both ends are complete. The long continuous wall remains distinct from the prior round hill and corner forms.",
+  "source_foot_semantics": "Bottom-anchor module registration point: a visually projected horizontal foreground ground baseline, centered under the whole long diagonal wall. The foremost physical stone contact is near the lower-left end, not at the image center; do not misread this virtual module registration as a literal central rock contact.",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-active-four-source-evidence.json",
+  "source_crop_findings": "Original complete subject extends to x330, 16px beyond nominal quarter x314. Full right end recovered; legacy slot clipping not reproduced.",
+  "original_complete_reference_crop": [
+    35,
+    64,
+    340,
+    293
+  ],
+  "actual_consumer_summary": {
+    "atlas": "cliff-modules-temperate",
+    "cellId": "temperate-cliff-straight-south",
+    "cellIndex": 0,
+    "countsByLevel": {
+      "c01-01": 2
+    },
+    "totalCount": 2,
+    "registered": false,
+    "scaleRange": [
+      1.0,
+      1.0
+    ],
+    "sourceAlphaArea": 13123.443137254902,
+    "visibleAlphaArea": 7293.492579777008
+  },
+  "native_raw_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-straight-south/raw.png",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

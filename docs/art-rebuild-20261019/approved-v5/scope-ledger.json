@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 79,
+    "formalBound": 80,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 14,
       "equipment": 12,
-      "interactive-structure": 20,
+      "interactive-structure": 21,
       "mission-unit": 1
     },
     "rawPreservedTopics": 81,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 94
+    "registeredEnvironmentCells": 96
   },
   "sceneCohesion": {
     "fullMap": "cliff-four-full-scene/full-scene-labeled.png",
@@ -1228,7 +1228,8 @@
       "label": "刺客",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/idle/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/assassin/walk-a/master.png"
       ],
       "raw": "preserved",
       "export": "pending",
@@ -2901,14 +2902,20 @@
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/capital-gate/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/capital-gate/damaged/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/capital-gate/normal/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-capital-gate.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-capital-gate.png",
+      "stageEvidence": {
+        "raw": "3 native states with exact original atlas01 twin-tower identity; rejected starcrest candidate retained",
+        "export": "shared112/1180 scale; captured fullcanvas -42native y registration from three independent static-region matches, no crop; native state review passed",
+        "runtimeBinding": "canonical and HD resolver, original2x2 footprint retained; catalog-only current consumer audit",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-FIELD-HOSPITAL",
@@ -17858,7 +17865,9 @@
         "temperate-hill-cap",
         "temperate-cliff-convex-corner",
         "temperate-pillar-wide",
-        "temperate-plateau-cap"
+        "temperate-plateau-cap",
+        "temperate-low-ledge",
+        "temperate-cliff-straight-south"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -17866,9 +17875,11 @@
           "temperate-hill-cap",
           "temperate-cliff-convex-corner",
           "temperate-pillar-wide",
-          "temperate-plateau-cap"
+          "temperate-plateau-cap",
+          "temperate-low-ledge",
+          "temperate-cliff-straight-south"
         ],
-        "count": 4,
+        "count": 6,
         "export": "128/256 full-canvas registered, strict original16 cell-order/semantic pairs and unrelated pixels retained",
         "runtimeBinding": "actual existing elevated scenery selectors, occupancy/passability untouched",
         "sceneReview": "Complete firstlevel reviewed with all19 ruleactors; four new large-plane profiles coherent with trees/buildings; remaining5 active cliff identities still legacy",

@@ -1,0 +1,31 @@
+{
+  "snapshotCommit": "654b382ca93f3a66a648d51f12f68fa981f8471c",
+  "sourceHashes": [
+    {
+      "level": "c01-01",
+      "checkedSourceHashes": 34,
+      "allExact": true
+    },
+    {
+      "level": "c01-02",
+      "checkedSourceHashes": 29,
+      "allExact": true
+    }
+  ],
+  "trackedProductionDiff": "",
+  "maskTargetCount": 47,
+  "fullSceneCounts": [
+    [
+      "c01-01",
+      19,
+      4
+    ],
+    [
+      "c01-02",
+      20,
+      9
+    ]
+  ],
+  "tests": "No production changes; test suite not rerun. Existing actual BoardView assertions and source hash verification passed.",
+  "discardedAttempt": "Live integration atlas mutated during initial measurement; no numbers from that attempt retained here"
+}
