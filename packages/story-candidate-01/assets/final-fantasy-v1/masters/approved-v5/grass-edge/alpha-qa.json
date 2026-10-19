@@ -1,0 +1,90 @@
+{
+  "dimensions": [
+    2172,
+    724
+  ],
+  "mode": "RGBA",
+  "alpha_min_max": [
+    0,
+    255
+  ],
+  "alpha_bbox": [
+    17,
+    20,
+    2153,
+    692
+  ],
+  "transparent_pixels": 1234363,
+  "opaque_pixels": 433,
+  "partial_alpha_pixels": 337732,
+  "transparent_fraction": 0.7849545445295728,
+  "margins_left_top_right_bottom": [
+    17,
+    20,
+    19,
+    32
+  ],
+  "edge_alpha_max": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0
+  },
+  "alpha_top_counts": [
+    [
+      0,
+      1234363
+    ],
+    [
+      253,
+      193590
+    ],
+    [
+      252,
+      50923
+    ],
+    [
+      1,
+      31292
+    ],
+    [
+      251,
+      12518
+    ],
+    [
+      250,
+      6610
+    ],
+    [
+      2,
+      4864
+    ],
+    [
+      249,
+      3904
+    ],
+    [
+      3,
+      2621
+    ],
+    [
+      248,
+      2513
+    ],
+    [
+      247,
+      1851
+    ],
+    [
+      4,
+      1673
+    ]
+  ],
+  "bbox_alpha_above_128": [
+    29,
+    265,
+    2144,
+    519
+  ],
+  "visual_review": "Complete horizontal olive grass strip with sparse tufts and brown lower pockets. White composite looks clean. Black composite reveals a few colored edge pixels. Most nonzero pixels have partial alpha; preserve generated original, inspect scene integration before acceptance. Geometry is more detailed and leafy than requested broad flat planes. No opaque rectangle or clipped canvas edges."
+}
