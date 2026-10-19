@@ -1744,10 +1744,14 @@
     },
     {
       "topicId": "C01-EQUIP-ARCHER",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-archer/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "78a899105be83b4ae2f4034abf94408205ed0cd85dcbc1f756a1002607576673"
     },
     {
       "topicId": "C01-EQUIP-ASSASSIN",
@@ -1975,10 +1979,14 @@
     },
     {
       "topicId": "C01-EQUIP-SWORDSMAN",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-swordsman/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "7362ba36975e5073f9bcfcfbc40bfdb6029b192993a91da8392123f8a2dcc3f3"
     },
     {
       "topicId": "C01-EQUIP-TEMPLAR",
@@ -8071,9 +8079,14 @@
       "atlasId": "forest-temperate",
       "cellId": "mixed-forest-edge",
       "index": 4,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/mixed-forest-edge/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "ca9263a00a20d1b5747b1f549584a619289ec533dfbe090c7a09c5e2e350a68c",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-temperate",
@@ -8093,9 +8106,14 @@
       "atlasId": "forest-temperate",
       "cellId": "fern-bed",
       "index": 7,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/fern-bed/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "f4477f4761feec3154d3567dccbe7dfb1d2ad666a0c8db8aac4be4e2fe281541",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-temperate",
