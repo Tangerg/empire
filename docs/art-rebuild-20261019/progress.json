@@ -1319,11 +1319,13 @@
     },
     {
       "topicId": "C01-BPROP-COVER-2",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-cover-2/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+        "exportCheck": "passed",
+        "evidence": "docs/art-rebuild-20261019/batch-002-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "observation": "128px preview reviewed: recognizable static prop; cart includes extra sack versus original reference"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "42c14fa7ded2abb60e059b073442328f5e72abc325554a50081d8c95c1f3a695"
@@ -1342,11 +1344,13 @@
     },
     {
       "topicId": "C01-BPROP-COVER-4",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-cover-4/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+        "exportCheck": "passed",
+        "evidence": "docs/art-rebuild-20261019/batch-002-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "observation": "128px preview reviewed: recognizable static prop; cart includes extra sack versus original reference"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "b620c8ce7af13991fd09d404ad43659ee766742b8433fc050b6fbd1c0b978b10"
