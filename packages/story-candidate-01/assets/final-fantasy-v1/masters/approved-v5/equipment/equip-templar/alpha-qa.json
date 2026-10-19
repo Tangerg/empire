@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-TEMPLAR",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5334006140478061,
+  "nearOpaqueFractionAlphaGE250": 0.4512653607340084,
+  "nonzeroAlphaBBox": [
+    0,
+    23,
+    1186,
+    1206
+  ],
+  "visibleAlphaBBoxGE8": [
+    92,
+    131,
+    1160,
+    1143
+  ],
+  "visibleAlphaBBoxGE128": [
+    93,
+    132,
+    1159,
+    1142
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    93,
+    132,
+    95,
+    112
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 13,
+  "sha256": "723e37ad51bba7cd3e1728412961860690d9fbe008919d2dd76e05bb85a96170",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly two objects: a pale cream angular kite shield at left, slightly peaked top and pointed bottom, broad dark-gray vertical/horizontal cross bands, small circular bronze-steel boss at center and four corner rivets; one short broad straight sword to right, point upward/right, brown wrapped grip, steel guard and round pommel.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

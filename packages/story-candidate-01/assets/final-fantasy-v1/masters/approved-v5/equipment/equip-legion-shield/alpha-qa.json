@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-LEGION-SHIELD",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5477947442188188,
+  "nearOpaqueFractionAlphaGE250": 0.4363472295353434,
+  "nonzeroAlphaBBox": [
+    0,
+    0,
+    1196,
+    1220
+  ],
+  "visibleAlphaBBoxGE8": [
+    92,
+    67,
+    1170,
+    1174
+  ],
+  "visibleAlphaBBoxGE128": [
+    93,
+    67,
+    1167,
+    1174
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    93,
+    67,
+    87,
+    80
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 29,
+  "sha256": "f10d4c3aa8d58c6dce68adeaa676f530bbc93f1d18090d5adc8541f5046af7ea",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly two objects: one cream-faced tall kite shield at left with rounded upper shoulders and a pointed bottom, silver rim, silver cross reinforcing ribs dividing four panels, and one round silver boss at center; one short brown spear at right, tip pointing up-right with a triangular leaf-shaped steel point and steel butt cap.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

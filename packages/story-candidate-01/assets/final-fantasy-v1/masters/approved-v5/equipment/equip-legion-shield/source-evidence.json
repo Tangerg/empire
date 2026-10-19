@@ -1,0 +1,57 @@
+{
+  "topicId": "C01-EQUIP-LEGION-SHIELD",
+  "assetId": "C01-FFV1-EQUIP-LEGION-SHIELD",
+  "label": "军团盾卫主装备",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-cd0e39f6-0361-4ceb-aaac-91e508bc299a.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-legion-shield-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-01.png, row 2 column 3 (one based)",
+    "topicIndex": 6,
+    "inspectionCropCoordinates": [
+      889,
+      446,
+      1328,
+      885
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-legion-shield.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-01.png",
+    "atlasSha256": "ccc4ea6c5228785c49348a851842880fd07e6b3edb1dc65c44791cf9277199e5",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-legion-shield-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "inspectedApprovedUnitReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/legion-shield/idle/master.png"
+  ],
+  "unitIdentityNote": "New approved legion-shield unit has a tall clipped-corner shield with a single gold vertical bar. Original equipment icon instead has four cream panels, silver cross ribs and circular boss; original icon geometry wins.",
+  "identityClarification": "Exactly two objects: one cream-faced tall kite shield at left with rounded upper shoulders and a pointed bottom, silver rim, silver cross reinforcing ribs dividing four panels, and one round silver boss at center; one short brown spear at right, tip pointing up-right with a triangular leaf-shaped steel point and steel butt cap.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}

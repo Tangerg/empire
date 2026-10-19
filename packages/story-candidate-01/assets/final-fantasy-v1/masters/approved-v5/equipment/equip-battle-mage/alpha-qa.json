@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-BATTLE-MAGE",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5922756906765972,
+  "nearOpaqueFractionAlphaGE250": 0.39059443592306853,
+  "nonzeroAlphaBBox": [
+    17,
+    9,
+    1228,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    96,
+    69,
+    1214,
+    1197
+  ],
+  "visibleAlphaBBoxGE128": [
+    97,
+    69,
+    1214,
+    1195
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    97,
+    69,
+    40,
+    59
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 6,
+  "sha256": "99be372f0bfc3be4f2a7db51f535db871fb1855c379e5bc16cbad99828da3712",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly one straight short sword at left and one brown leather gauntlet at right. Sword tip points upward, gauntlet fingers toward upper-right with thumb on left. Large faceted orange-amber gem on back of hand/wrist in gold bezel and broad gold angular cuff marks from source, no staff/book/helmet or new palm emblem.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

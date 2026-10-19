@@ -1,0 +1,57 @@
+{
+  "topicId": "C01-EQUIP-TEMPLAR",
+  "assetId": "C01-FFV1-EQUIP-TEMPLAR",
+  "label": "圣殿骑士主装备",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-020023fd-cac3-4328-b551-b07ab8e16269.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-templar-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-04.png, row 1 column 2 (one based)",
+    "topicIndex": 33,
+    "inspectionCropCoordinates": [
+      316,
+      2,
+      625,
+      312
+    ],
+    "inspectionCropTreatment": "Unscaled original source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-templar.png",
+    "slotVerification": "Original full board and high-resolution cell visually matched against baseline runtime icon and current canonical manifest. Source contract confirmed with parent before generation.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-04.png",
+    "atlasSha256": "f481ca178f9c37c0f8cba5c2022203ab5db798ab4b76edda022fd4b3ff0a61c5",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-templar-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-heavy-knight/master.png"
+  ],
+  "inspectedApprovedUnitReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/idle/master.png"
+  ],
+  "unitIdentityNote": "New approved templar unit uses a shield with one gold vertical bar. The equipment original instead has dark cross bands and round boss. Preserve original pale shield, dark cross, steel sword fittings, no invented gold emblem.",
+  "identityClarification": "Exactly two objects: a pale cream angular kite shield at left, slightly peaked top and pointed bottom, broad dark-gray vertical/horizontal cross bands, small circular bronze-steel boss at center and four corner rivets; one short broad straight sword to right, point upward/right, brown wrapped grip, steel guard and round pommel.",
+  "postprocessing": "None. Byte-exact native PNG copies; no resizing, cleanup, alpha changes, or drawing. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}
