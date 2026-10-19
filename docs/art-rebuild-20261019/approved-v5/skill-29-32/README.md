@@ -1,0 +1,3 @@
+# Skill29–32 native48 review
+
+Ballista retains one bolt, turntable and stone rim; cannon retains one barrel, eight-spoke near wheel and partial rear wheel; cleansing keeps two tagged plaques with blank purple seal and four separated spill groups; tunnel keeps three vertical bars, one horizontal brace, inserted key and upper-left curved arrow. Whole subjects were recovered from the original board rather than broken grid crops. Native48 white/dark/olive silhouettes and strict alpha pass, no source pixel processing. Unchanged48²/anchor24,24; noHD.294 binding tests and typecheck passed. Live UI remains pending.

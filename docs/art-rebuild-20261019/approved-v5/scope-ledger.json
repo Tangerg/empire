@@ -4,16 +4,16 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 207,
+    "formalBound": 211,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 27,
       "equipment": 63,
       "interactive-structure": 24,
       "mission-unit": 1,
-      "skill": 28
+      "skill": 32
     },
-    "rawPreservedTopics": 207,
+    "rawPreservedTopics": 216,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1513,8 +1513,10 @@
       "category": "combat-unit",
       "label": "幽魂",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ghost/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5844,13 +5846,20 @@
       "category": "skill",
       "label": "部署弩车",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-29/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-29.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole original subjects recovered and source evidence retained",
+        "export": "native48 white/dark/olive semantic review and alpha passed",
+        "runtimeBinding": "canonical static resolver bound, unchanged48px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SKILL-30",
@@ -5858,13 +5867,20 @@
       "category": "skill",
       "label": "架设炮位",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-30/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-30.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole original subjects recovered and source evidence retained",
+        "export": "native48 white/dark/olive semantic review and alpha passed",
+        "runtimeBinding": "canonical static resolver bound, unchanged48px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SKILL-31",
@@ -5872,13 +5888,20 @@
       "category": "skill",
       "label": "清理污染",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-31/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-31.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole original subjects recovered and source evidence retained",
+        "export": "native48 white/dark/olive semantic review and alpha passed",
+        "runtimeBinding": "canonical static resolver bound, unchanged48px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SKILL-32",
@@ -5886,13 +5909,20 @@
       "category": "skill",
       "label": "开启地道",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-32/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-32.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "whole original subjects recovered and source evidence retained",
+        "export": "native48 white/dark/olive semantic review and alpha passed",
+        "runtimeBinding": "canonical static resolver bound, unchanged48px contract",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-SKILL-33",
@@ -11156,8 +11186,10 @@
       "category": "equipment",
       "label": "雨塔工程员主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-rain-tower-engineer/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -11377,8 +11409,10 @@
       "category": "equipment",
       "label": "潮锚工程员主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-tide-anchor-engineer/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -11391,8 +11425,10 @@
       "category": "equipment",
       "label": "潮鳍斥候主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-tide-fin-scout/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -11405,8 +11441,10 @@
       "category": "equipment",
       "label": "潮汐祭司主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-tide-priest/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
