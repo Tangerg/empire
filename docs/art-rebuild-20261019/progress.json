@@ -4171,7 +4171,12 @@
         "runtimeOutput": "baseline restored pending corrected generation"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "31c84593db3de5a9517983802a54dfe2e5a53db48683eefef28edd399c5dcf8b"
+      "sourceSha256": "31c84593db3de5a9517983802a54dfe2e5a53db48683eefef28edd399c5dcf8b",
+      "revisionCandidate": {
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-hesha-water-signs/revision-2/master.png",
+        "sha256": "78a2f3fb4679d5dbcadb3a0341ef6560cb02d87da2194c5dd982af94699ebc69",
+        "status": "semantic-review-pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-hull-patches",
@@ -8197,9 +8202,14 @@
       "atlasId": "forest-temperate",
       "cellId": "mixed-forest-autumn",
       "index": 1,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/mixed-forest-autumn/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "43871bfcec18391f44392bfe5c9e1334e59724268a730130b8ab84a5050bd3af",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-temperate",
@@ -8223,9 +8233,14 @@
       "atlasId": "forest-temperate",
       "cellId": "oak-grove-dense",
       "index": 3,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/oak-grove-dense/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "9a6c21e053118d5a3e2fab0f4ac60dbfa6cfd218ccd00397ddc4ccb90b5fcc36",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-temperate",
