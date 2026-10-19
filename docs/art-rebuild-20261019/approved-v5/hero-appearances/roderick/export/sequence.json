@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/walk-b/master.png"
+    },
+    "scale": 0.059134107708553325,
+    "origin": [
+      14,
+      6
+    ],
+    "frameSize": [
+      128,
+      80
+    ],
+    "sourceFoot": [
+      782,
+      975
+    ],
+    "sourceFeet": {
+      "idle": [
+        782,
+        975
+      ],
+      "walk-a": [
+        792,
+        981
+      ],
+      "attack": [
+        717,
+        959
+      ],
+      "walk-b": [
+        773,
+        980
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -0.5913410770855333,
+        -0.35480464625131997
+      ],
+      "attack": [
+        3.8437170010559663,
+        0.9461457233368532
+      ],
+      "walk-b": [
+        0.53220696937698,
+        -0.29567053854276665
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 0,
+    "meaning": "named older mounted lance mentor; personal horse authored from verified mounted rules and existing cavalry visual vocabulary, not claimed exact old portrait recovery"
+  },
+  "authoredCanvas": [
+    1560,
+    1008
+  ],
+  "logicalPivot": [
+    60.2428722280887,
+    63.65575501583949
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d75f827aaff16fa667939d525a853f0d25ba5950db3c3d0a911f9b53f6846a80",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8166,
+        "nearOpaquePixels": 1667,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          7,
+          100,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "d75f827aaff16fa667939d525a853f0d25ba5950db3c3d0a911f9b53f6846a80",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33020,
+        "nearOpaquePixels": 7010,
+        "edgeMax": 0,
+        "visibleBounds": [
+          60,
+          15,
+          200,
+          127
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/walk-a/master.png",
+      "registrationOffset": [
+        -0.5913410770855333,
+        -0.35480464625131997
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "14c6e1ea1f83a90c9e2364133eb08f333957b9e76c4e671132c761b75f871869",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8149,
+        "nearOpaquePixels": 1664,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          7,
+          99,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/walk-a/master.png",
+      "registrationOffset": [
+        -0.5913410770855333,
+        -0.35480464625131997
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "14c6e1ea1f83a90c9e2364133eb08f333957b9e76c4e671132c761b75f871869",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33015,
+        "nearOpaquePixels": 6966,
+        "edgeMax": 0,
+        "visibleBounds": [
+          55,
+          14,
+          199,
+          127
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/attack/master.png",
+      "registrationOffset": [
+        3.8437170010559663,
+        0.9461457233368532
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "cf75bff11cd8759ff2ed0cba1b0bcdeb48c98245e18d587bc277e4938ea0309f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8112,
+        "nearOpaquePixels": 1678,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          10,
+          109,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/attack/master.png",
+      "registrationOffset": [
+        3.8437170010559663,
+        0.9461457233368532
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "cf75bff11cd8759ff2ed0cba1b0bcdeb48c98245e18d587bc277e4938ea0309f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 32846,
+        "nearOpaquePixels": 7043,
+        "edgeMax": 0,
+        "visibleBounds": [
+          50,
+          20,
+          219,
+          127
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/walk-b/master.png",
+      "registrationOffset": [
+        0.53220696937698,
+        -0.29567053854276665
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "00d9ed9e94545f1a67f75b0b33b4abca8c9216dfa1eb555b18c3ef3a209a1e6a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 8181,
+        "nearOpaquePixels": 1635,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          7,
+          100,
+          64
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/roderick/walk-b/master.png",
+      "registrationOffset": [
+        0.53220696937698,
+        -0.29567053854276665
+      ],
+      "sourceCanvas": [
+        1560,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "00d9ed9e94545f1a67f75b0b33b4abca8c9216dfa1eb555b18c3ef3a209a1e6a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 33103,
+        "nearOpaquePixels": 6886,
+        "edgeMax": 0,
+        "visibleBounds": [
+          57,
+          14,
+          201,
+          127
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

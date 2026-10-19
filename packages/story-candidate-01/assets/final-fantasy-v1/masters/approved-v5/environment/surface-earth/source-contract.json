@@ -1,0 +1,396 @@
+{
+  "atlas": "surface-earth",
+  "status": "Parent approved four exact opaque sources2026-10-19 21:32 UTC after identity audit, priority actual303 transition/shore consumers",
+  "audit_utc": "2026-10-19T21:34:32.385686+00:00",
+  "source_inspection_commit": "8428108c71871834c5c811f74bbfa42c87eca965",
+  "original_atlas_record": {
+    "id": "surface-earth",
+    "png": "runtime/atlas/surface-earth.png",
+    "png2x": "runtime/atlas/surface-earth@2x.png",
+    "columns": 4,
+    "rows": 1,
+    "cellWidth": 32,
+    "cellHeight": 32,
+    "cellWidth2x": 64,
+    "cellHeight2x": 64,
+    "componentCount": 4,
+    "category": "base-surface",
+    "tileMode": "variants",
+    "variants": 4,
+    "cellOrder": [
+      "earth-1",
+      "earth-2",
+      "earth-3",
+      "earth-4"
+    ],
+    "edgeLocked": true
+  },
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+  "source_board_dimensions": [
+    1254,
+    1254
+  ],
+  "source_board_mode": "RGB",
+  "source_board_row_zero_based": 2,
+  "source_board_indices": [
+    8,
+    9,
+    10,
+    11
+  ],
+  "records": [
+    {
+      "atlas": "surface-earth",
+      "cell_index": 0,
+      "original_cellOrder_token": "earth-1",
+      "source_board_index": 8,
+      "source_crop": [
+        0,
+        627,
+        314,
+        940
+      ],
+      "source_crop_dimensions": [
+        314,
+        313
+      ],
+      "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-1-original-master-swatch.png",
+      "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-1-current-runtime-2x-cell.png",
+      "original_visual_identity": "Light dry tan compacted earth with many small gray-brown stones and subtle swept/scuffed bands.",
+      "original_mean_RGB": [
+        135.47639445676725,
+        108.55437414786024,
+        73.31882745568873
+      ],
+      "original_opaque": true,
+      "current_usage": "actual overlay source0 for transition-meadow-earth in303 current code/map-derived cells over5 levels",
+      "sourceFoot": null,
+      "anchor": null
+    },
+    {
+      "atlas": "surface-earth",
+      "cell_index": 1,
+      "original_cellOrder_token": "earth-2",
+      "source_board_index": 9,
+      "source_crop": [
+        314,
+        627,
+        627,
+        940
+      ],
+      "source_crop_dimensions": [
+        313,
+        313
+      ],
+      "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-2-original-master-swatch.png",
+      "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-2-current-runtime-2x-cell.png",
+      "original_visual_identity": "Darker damp gray-brown mud and rubble with intersecting deep brown rut bands; a genuinely wetter/darker variant.",
+      "original_mean_RGB": [
+        98.02232338801049,
+        78.61165266563913,
+        57.91886208902816
+      ],
+      "original_opaque": true,
+      "current_usage": "catalog-only in current16 levels; no direct surface or transition selector uses this variant",
+      "sourceFoot": null,
+      "anchor": null
+    },
+    {
+      "atlas": "surface-earth",
+      "cell_index": 2,
+      "original_cellOrder_token": "earth-3",
+      "source_board_index": 10,
+      "source_crop": [
+        627,
+        627,
+        940,
+        940
+      ],
+      "source_crop_dimensions": [
+        313,
+        313
+      ],
+      "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-3-original-master-swatch.png",
+      "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-3-current-runtime-2x-cell.png",
+      "original_visual_identity": "Warm ochre compacted earth with longitudinal wheel/rut bands and pebbles; track identity is already in the original pixels.",
+      "original_mean_RGB": [
+        118.97631903969624,
+        93.0847308842593,
+        61.09621410854454
+      ],
+      "original_opaque": true,
+      "current_usage": "catalog-only in current16 levels; no direct surface or transition selector uses this variant",
+      "sourceFoot": null,
+      "anchor": null
+    },
+    {
+      "atlas": "surface-earth",
+      "cell_index": 3,
+      "original_cellOrder_token": "earth-4",
+      "source_board_index": 11,
+      "source_crop": [
+        940,
+        627,
+        1254,
+        940
+      ],
+      "source_crop_dimensions": [
+        314,
+        313
+      ],
+      "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-4-original-master-swatch.png",
+      "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-4-current-runtime-2x-cell.png",
+      "original_visual_identity": "Dark gray-brown muddy ground with several small pale gray reflective puddle shapes and stones; do not erase confirmed wet/puddle identity by copying dry earth.",
+      "original_mean_RGB": [
+        96.93156427423129,
+        78.55176939826214,
+        57.08226328320547
+      ],
+      "original_opaque": true,
+      "current_usage": "catalog-only in current16 levels; no direct surface or transition selector uses this variant",
+      "sourceFoot": null,
+      "anchor": null
+    }
+  ],
+  "current_sampling_contract": {
+    "logical_surface_cell": [
+      32,
+      32
+    ],
+    "hd_surface_cell": [
+      64,
+      64
+    ],
+    "direct_surface_fit": {
+      "inset_logical": 3,
+      "bleed_logical": 0.5
+    },
+    "actual_transition_sampling": "47 existing Blob mask cells at32logical/64HD drawn via atlasCellMarkup; RGB from original earth variant0",
+    "standing_foot_or_anchor": null
+  },
+  "consumer_findings": {
+    "actual_transition": {
+      "atlas": "transition-meadow-earth",
+      "original_atlas_record": {
+        "id": "transition-meadow-earth",
+        "png": "runtime/atlas/transition-meadow-earth.png",
+        "png2x": "runtime/atlas/transition-meadow-earth@2x.png",
+        "columns": 16,
+        "rows": 3,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 47,
+        "category": "transition",
+        "tileMode": "blob-47",
+        "baseSurface": "surface-meadow",
+        "overlaySurface": "surface-earth",
+        "maskOrder": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          16,
+          17,
+          20,
+          21,
+          23,
+          28,
+          29,
+          31,
+          64,
+          65,
+          68,
+          69,
+          71,
+          80,
+          81,
+          84,
+          85,
+          87,
+          92,
+          93,
+          95,
+          112,
+          113,
+          116,
+          117,
+          119,
+          124,
+          125,
+          127,
+          193,
+          197,
+          199,
+          209,
+          213,
+          215,
+          221,
+          223,
+          241,
+          245,
+          247,
+          253,
+          255
+        ],
+        "bitOrder": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ]
+      },
+      "source_overlay_atlas": "surface-earth",
+      "source_overlay_index": 0,
+      "source_overlay_cell_id": "earth-1",
+      "source_rgb_rule": "Legacy transition_atlases uses families[overlay][0]; baseSurface is metadata. No new independent original painting per Blob47 mask.",
+      "derived_cells": 47,
+      "original_mask_order": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        16,
+        17,
+        20,
+        21,
+        23,
+        28,
+        29,
+        31,
+        64,
+        65,
+        68,
+        69,
+        71,
+        80,
+        81,
+        84,
+        85,
+        87,
+        92,
+        93,
+        95,
+        112,
+        113,
+        116,
+        117,
+        119,
+        124,
+        125,
+        127,
+        193,
+        197,
+        199,
+        209,
+        213,
+        215,
+        221,
+        223,
+        241,
+        245,
+        247,
+        253,
+        255
+      ],
+      "current_counts_by_level": {
+        "c01-02": 28,
+        "c01-05": 55,
+        "c01-06": 28,
+        "c01-12": 152,
+        "c01-14": 40
+      },
+      "current_total_cells": 303,
+      "consumer_status": "active in current 16-level maps",
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth.png",
+          "current_sha256": "8da0ee2e93c72cf7313dd088b3f0d1b67c68b2e6c5c4ac9ab555f3f185f3056d",
+          "frozen_original_sha256": "8da0ee2e93c72cf7313dd088b3f0d1b67c68b2e6c5c4ac9ab555f3f185f3056d",
+          "bytes_equal_to_frozen_original": true
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png",
+          "current_sha256": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+          "frozen_original_sha256": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+          "bytes_equal_to_frozen_original": true
+        }
+      ],
+      "pending_work": "Technical source/material resampling through existing mask topology and world UV; parent engineering owns it. Do not generate 47 independent paintings or count mask cells as native art.",
+      "current_render_path": "candidate-01-map-scene.ts: material.blend and CANDIDATE_SHORE call atlasCellMarkup directly; registered world surface replacement does not replace this RGB automatically."
+    },
+    "current_direct_surface_consumers": 0,
+    "exact_binding": "c01.scorched and c01.riverbank -> transition-meadow-earth; additionally non-water cells touching orthogonal water draw shore blend if no other material.blend",
+    "usage_breakdown": {
+      "c01-02": {
+        "shore": 28
+      },
+      "c01-05": {
+        "scorched": 55
+      },
+      "c01-06": {
+        "shore": 28
+      },
+      "c01-12": {
+        "riverbank": 114,
+        "additional_shore": 38
+      },
+      "c01-14": {
+        "shore": 40
+      }
+    },
+    "counts_basis": "Exact code/map-derived audit; no fresh rendered visible-pixel count",
+    "catalog_only_indices": [
+      1,
+      2,
+      3
+    ],
+    "existing_approved_earth_material": "Approved earth-material/revision-2 currently replaces route-dirt-road via world manifest-road-material-v2. It is style guidance, not an existing remade original four-slot family or an automatic transition replacement.",
+    "original_source0_is_dry": "Keep dry light compacted earth even where consumer is shoreline; do not add water to actual-used source0 based on its runtime role."
+  },
+  "confirmed_generation_contract": {
+    "native_sources": 4,
+    "exact_ids": [
+      "earth-1",
+      "earth-2",
+      "earth-3",
+      "earth-4"
+    ],
+    "native_canvas": [
+      1254,
+      1254
+    ],
+    "opaque": true,
+    "preview_world_periods": [
+      128,
+      256
+    ],
+    "world_period_selected": null,
+    "generation_order": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "style": "Quiet chunky broad matte close-value earth planes, sparse simplified stone groups, no fine-grain carpet; retain four original colors and dry/rut/wet identities",
+    "existing_puddle_evidence": "Original earth-4 swatch visibly contains several small gray reflective puddle shapes, confirmed by full board and individual314-square crop inspection. Preserve only this evidenced small puddle identity; do not invent blue pools, rivers, water masks or new topology. Original earth1/2/3 do not receive added pools.",
+    "registration": "Flat opaque material; no standing foot/anchor/footprint/obstruction. Original rut/puddle artwork does not create game roads or water.",
+    "raw_policy": "Native pixels and exact prompt preserved; read-only alpha/color/period QA. No source crop/filter/blur/offset/edge lock/recolor/alpha cleanup/paint."
+  },
+  "source_sha256": {
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png": "6dc76bbb51ca562cd0bf2113d2233afaee0797c9fb1e2bedea40c97ed33e4790",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-earth@2x.png": "5ff9b63606b2060afd91a3270e19d417802435b5f23edfa05cb9bce237728647",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53"
+  },
+  "complete_current_consumers_audit": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/surface-transition-completion-audit.json",
+  "no_repository_edits": true
+}

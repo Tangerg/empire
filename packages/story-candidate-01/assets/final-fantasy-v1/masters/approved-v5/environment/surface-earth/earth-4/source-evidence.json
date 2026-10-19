@@ -1,0 +1,55 @@
+{
+  "atlas": "surface-earth",
+  "cell_index": 3,
+  "original_cellOrder_token": "earth-4",
+  "source_board_index": 11,
+  "source_crop": [
+    940,
+    627,
+    1254,
+    940
+  ],
+  "source_crop_dimensions": [
+    314,
+    313
+  ],
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-4-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-4-current-runtime-2x-cell.png",
+  "original_visual_identity": "Dark gray-brown muddy ground with several small pale gray reflective puddle shapes and stones; do not erase confirmed wet/puddle identity by copying dry earth.",
+  "original_mean_RGB": [
+    96.93156427423129,
+    78.55176939826214,
+    57.08226328320547
+  ],
+  "original_opaque": true,
+  "current_usage": "catalog-only in current16 levels; no direct surface or transition selector uses this variant",
+  "sourceFoot": null,
+  "anchor": null,
+  "generation_approval": "Parent exclusive earth quartet2026-10-19 21:32 UTC: exact original slots, actual303 transition source0 priority, preserve original colors and source features, compare128/256",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/source-contract.json",
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+  "original_full_source_sha256": "6dc76bbb51ca562cd0bf2113d2233afaee0797c9fb1e2bedea40c97ed33e4790",
+  "reference_images_in_order": [
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-4-original-master-swatch.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png"
+  ],
+  "reference_roles": [
+    "exact original earth material and original palette, simplify detail",
+    "approved broad quiet plane style only; not a uniform road-tan palette"
+  ],
+  "reference_sha256": {
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-4-original-master-swatch.png": "626915ff129b2090d76f2afdffd5a4d7fefcd6a77f1ad2e4dfa16a4b00aa378b",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53"
+  },
+  "native_request": [
+    1254,
+    1254
+  ],
+  "opaque_request": true,
+  "preview_world_periods": [
+    128,
+    256
+  ],
+  "binding_status": "native only, engineering owns masks and world sampling",
+  "prompt_sha256": "fcc1911446a15420f3e6dd9095c194212d89d541b6e636d78a822637c6ce69a8"
+}

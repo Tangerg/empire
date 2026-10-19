@@ -1,0 +1,72 @@
+{
+  "asset": "earth-2",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "4edd7e0c78fd6e79bfcfa022255e52f08666d1cd58e7f839810a79279e779cc5",
+  "RGB_mean": [
+    92.67631617102784,
+    71.97530708749545,
+    50.97843010818332
+  ],
+  "RGB_std": [
+    6.20703816842404,
+    6.152836431806107,
+    5.624152394611019
+  ],
+  "luma_mean": 74.8603671007481,
+  "luma_std": 6.0665285408614915,
+  "luma_percentiles_5_50_95": [
+    65.0206,
+    75.161,
+    85.0166
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 74.32022841656698,
+    "bottom": 72.48182616377592,
+    "left": 75.69545834579347,
+    "right": 73.0657026166268,
+    "central_half": 75.0482902536614
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 3.7913343965975543,
+    "top_bottom_mean_abs_RGB": 4.049175970228601,
+    "left_right_max_abs_RGB": 15.0,
+    "top_bottom_max_abs_RGB": 14.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Dark damp gray-brown mud with two broad low-contrast diagonal rut bands crossing in the middle and sparse embedded gray-brown stone groups. Retains original crossing-rut profile without added pools or new gameplay routes.",
+    "style_review": "About twelve to fourteen stone groups, low contrast and broadly faceted shapes. Ruts are shallow broad dark bands rather than trenches. Soil is simplified from original gravel but retains more patch edges and small cloudy fragments than the strict six-to-ten-plane target.",
+    "palette_caveat": "Dark earthy gray-brown remains distinct from source1 light tan. Native mean comparison saved; no bright wet shine or blue accents.",
+    "scale_caveat": "Stone groups roughly90-170 native pixels,9-17 logical at128 or18-35 at256. Crossed rut motif spans a whole material period and may become obvious in repeats; it is catalog-only and must not create road topology.",
+    "native_acceptance": "Opaque catalog source1 candidate;128/256 preview only, no natural seamlessness or scene acceptance."
+  },
+  "reference_material_identity": "Darker damp gray-brown mud and rubble with intersecting deep brown rut bands; a genuinely wetter/darker variant.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_previews": [
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ]
+  ],
+  "world_period_selected": null,
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

@@ -1,0 +1,68 @@
+{
+  "topicId": "C01-STATUS-03",
+  "assetId": "C01-FFV1-STATUS-03",
+  "label": "护卫",
+  "category": "status",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "directStatusBinding": null,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f5a93ad5-509a-4051-b456-4bbab3fa8bd9.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-03-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "atlasSha256": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "status-atlas-01.png, row 1 column 3 (one based)",
+    "topicIndex": 2,
+    "inspectionCropCoordinates": [
+      632,
+      5,
+      935,
+      309
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; source magenta and grid remain inspection only, no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-03.png",
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-03-nominal-cell.png",
+    "nominalGridCellCoordinates": [
+      629,
+      2,
+      938,
+      312
+    ],
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset. 2026-10-19 21:33 UTC enlarged original revealed four chain links, not preliminary three; narrow oblique connector is a separate visible link. Exact original source is authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned the exact topic IDs in this batch after original source inspection. Preserve32px runtime and28px HUD. Source raw/master immutable; independent QA previews authorized."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-03-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "identityClarification": "Exactly ONE blue-gray kite shield on the left, seen front-on, with a thick pale metal rim and ONE broad cream UPWARD CHEVRON centered on the face. Preserve the original SIX visible rim rivets: top center, upper-left, upper-right, middle-left, middle-right, bottom tip. Beside it on the RIGHT preserve a short chain of exactly FOUR gray metal links, arranged diagonally upper-right to lower-left: top oval ring, elongated middle link, NARROW OBLIQUE CONNECTOR LINK, and bottom round ring. The third narrow connector is a separate link, not a highlight or continuation of another. Use chunky links with open transparent holes and clean overlaps. No pawn/person, additional shield, invented emblem or extra links.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Parent owns backup/export/catalog binding. No repository or gameplay edits.",
+  "consumerStatus": "Catalog source; no direct mapping found in CANDIDATE_01_STATUS_ART. Generic lookup availability does not establish actual use."
+}

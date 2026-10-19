@@ -1,0 +1,675 @@
+{
+  "status": "Four native poses complete, byte and strict alpha QA pass; coordinator native sequence review pending",
+  "rawNativeShaAndPromptReferenceChecks": "PASS for all4",
+  "nativeStrictAlphaPerimeter": "PASS all4, A>1count0",
+  "negativeSpaceProbes": "All12 seven-by-seven leg-gap probes have49zero-alpha pixels",
+  "registration": {
+    "status": "Four native poses complete, byte and strict alpha QA pass; coordinator native sequence review pending",
+    "sharedScale": 0.059134107708553325,
+    "scaleFraction": "56/947",
+    "bodyReferenceSourcePixels": 947,
+    "bodyTargetHeightLogicalPixels": 56,
+    "canonicalSourceFoot": [
+      782,
+      975
+    ],
+    "commonSourceCanvas": [
+      1560,
+      1008
+    ],
+    "proposedCommonFrameSize": [
+      128,
+      80
+    ],
+    "proposedOrigin": [
+      14,
+      6
+    ],
+    "recommendedRegistrationLimitLogicalPixels": 4,
+    "maximumMeasuredRegistrationLogicalPixels": 3.8437170010559663,
+    "canvasPaddingToleranceRequired": 0,
+    "maximumPadRight": 0,
+    "maximumPadBottom": 0,
+    "paddingPolicy": "All four selected native sources are1560x1008. No padding required or used. Preserve each entire original canvas and all its pixels.",
+    "registrationMethod": "Four visually inspected hoof ROIs, alpha>127; each lowest sole y and bottom4row meanx measured. x averages all four hoof centers including raised hooves for stable whole-mount anchor, y uses lowest hoof. Rider boots/stirrups never included. One common56/947 scale, whole-canvas translation only.",
+    "poses": {
+      "idle": {
+        "nativeSize": [
+          1560,
+          1008
+        ],
+        "padRight": 0,
+        "padBottom": 0,
+        "sourceSupportAnchorEstimated": [
+          782,
+          975
+        ],
+        "sourceFootMidpoint": [
+          781.5068319604754,
+          975
+        ],
+        "hoofMeasurements": [
+          {
+            "hoofIndex": 0,
+            "roi": [
+              400,
+              870,
+              550,
+              990
+            ],
+            "bounds": [
+              409,
+              870,
+              538,
+              964
+            ],
+            "soleY": 963,
+            "bottomFourRowsMeanX": 481.4145299145299
+          },
+          {
+            "hoofIndex": 1,
+            "roi": [
+              620,
+              860,
+              780,
+              970
+            ],
+            "bounds": [
+              620,
+              860,
+              755,
+              948
+            ],
+            "soleY": 947,
+            "bottomFourRowsMeanX": 700.9215686274509
+          },
+          {
+            "hoofIndex": 2,
+            "roi": [
+              780,
+              880,
+              940,
+              995
+            ],
+            "bounds": [
+              786,
+              880,
+              920,
+              976
+            ],
+            "soleY": 975,
+            "bottomFourRowsMeanX": 862.7654867256637
+          },
+          {
+            "hoofIndex": 3,
+            "roi": [
+              990,
+              870,
+              1150,
+              990
+            ],
+            "bounds": [
+              994,
+              870,
+              1140,
+              966
+            ],
+            "soleY": 965,
+            "bottomFourRowsMeanX": 1080.9257425742574
+          }
+        ],
+        "registrationOffsetSource": [
+          0,
+          0
+        ],
+        "registrationOffsetLogical": [
+          0.0,
+          0.0
+        ],
+        "fullCanvasBoundsLogical": [
+          14.0,
+          6.0,
+          106.2492080253432,
+          65.60718057022174
+        ],
+        "visibleBoundsAlphaGreaterThan127": [
+          272,
+          22,
+          1459,
+          976
+        ],
+        "projectedLanceEndpoints": [
+          [
+            356,
+            472.0
+          ],
+          [
+            1458,
+            230.5
+          ]
+        ],
+        "projectedLanceLengthSourcePixels": 1128.151696360024,
+        "nativeLanceTipRightMarginPixels": 101,
+        "negativeSpaceProbes": [
+          {
+            "name": "hind-leg-gap",
+            "rectangle": [
+              579,
+              897,
+              586,
+              904
+            ],
+            "maxAlpha": 0,
+            "zeroPixels": 49
+          },
+          {
+            "name": "middle-leg-gap",
+            "rectangle": [
+              769,
+              887,
+              776,
+              894
+            ],
+            "maxAlpha": 0,
+            "zeroPixels": 49
+          },
+          {
+            "name": "fore-leg-gap",
+            "rectangle": [
+              959,
+              897,
+              966,
+              904
+            ],
+            "maxAlpha": 0,
+            "zeroPixels": 49
+          }
+        ],
+        "semanticReview": "Approved attempt03: older exposed gray-haired/full-bearded mentor, broad matte gray armor, blue-gray scarf/tabard, original round shield and sheathed sword. Reconstructed brown horse with dark mane/tail and pale blaze, four planted hooves. Right glove alone holds lance, left glove holds reins below shaft.",
+        "projectedLanceLengthVersusIdleRatio": 1.0
+      },
+      "walk-a": {
+        "nativeSize": [
+          1560,
+          1008
+        ],
+        "padRight": 0,
+        "padBottom": 0,
+        "sourceSupportAnchorEstimated": [
+          792,
+          981
+        ],
+        "sourceFootMidpoint": [
+          791.7849474196291,
+          981
+        ],
+        "hoofMeasurements": [
+          {
+            "hoofIndex": 0,
+            "roi": [
+              380,
+              870,
+              540,
+              975
+            ],
+            "bounds": [
+              397,
+              870,
+              528,
+              955
+            ],
+            "soleY": 954,
+            "bottomFourRowsMeanX": 468.5304347826087
+          },
+          {
+            "hoofIndex": 1,
+            "roi": [
+              650,
+              825,
+              790,
+              920
+            ],
+            "bounds": [
+              650,
+              825,
+              778,
+              905
+            ],
+            "soleY": 904,
+            "bottomFourRowsMeanX": 717.3478260869565
+          },
+          {
+            "hoofIndex": 2,
+            "roi": [
+              820,
+              790,
+              930,
+              920
+            ],
+            "bounds": [
+              836,
+              790,
+              930,
+              898
+            ],
+            "soleY": 897,
+            "bottomFourRowsMeanX": 852.8493150684932
+          },
+          {
+            "hoofIndex": 3,
+            "roi": [
+              1040,
+              890,
+              1210,
+              995
+            ],
+            "bounds": [
+              1040,
+              890,
+              1190,
+              982
+            ],
+            "soleY": 981,
+            "bottomFourRowsMeanX": 1128.4122137404581
+          }
+        ],
+        "registrationOffsetSource": [
+          -10,
+          -6
+        ],
+        "registrationOffsetLogical": [
+          -0.5913410770855333,
+          -0.35480464625131997
+        ],
+        "fullCanvasBoundsLogical": [
+          13.408658922914467,
+          5.64519535374868,
+          105.65786694825766,
+          65.25237592397043
+        ],
+        "visibleBoundsAlphaGreaterThan127": [
+          241,
+          21,
+          1456,
+          982
+        ],
+        "projectedLanceEndpoints": [
+          [
+            366,
+            467.5
+          ],
+          [
+            1455,
+            221.5
+          ]
+        ],
+        "projectedLanceLengthSourcePixels": 1116.439429615418,
+        "nativeLanceTipRightMarginPixels": 104,
+        "negativeSpaceProbes": [
+          {
+            "name": "hind-leg-gap",
+            "rectangle": [
+              577,
+              904,
+              584,
+              911
+            ],
+            "maxAlpha": 0,
+            "zeroPixels": 49
+          },
+          {
+            "name": "between-raised-hooves",
+            "rectangle": [
+              797,
+              881,
+              804,
+              888
+            ],
+            "maxAlpha": 0,
+            "zeroPixels": 49
+          },
+          {
+            "name": "fore-leg-gap",
+            "rectangle": [
+              1003,
+              907,
+              1010,
+              914
+            ],
+            "maxAlpha": 0,
+            "zeroPixels": 49
+          }
+        ],
+        "semanticReview": "Four connected horse legs. Outer visible hind hoof and outer visible fore hoof support; the two central bent hooves are airborne. Valid first stride, with upper elder/gear identity preserved. Literal prompt diagonal labeling is not relied on; actual individual supports define the paired walk-b.",
+        "projectedLanceLengthVersusIdleRatio": 0.9896181809747788
+      },
+      "attack": {
+        "nativeSize": [
+          1560,
+          1008
+        ],
+        "padRight": 0,
+        "padBottom": 0,
+        "sourceSupportAnchorEstimated": [
+          717,
+          959
+        ],
+        "sourceFootMidpoint": [
+          717.09246580521,
+          959
+        ],
+        "hoofMeasurements": [
+          {
+            "hoofIndex": 0,
+            "roi": [
+              170,
+              820,
+              320,
+              950
+            ],
+            "bounds": [
+              179,
+              820,
+              306,
+              932
+            ],
+            "soleY": 931,
+            "bottomFourRowsMeanX": 252.56363636363636
+          },
+          {
+            "hoofIndex": 1,
+            "roi": [
+              500,
+              800,
+              640,
+              930
+            ],
+            "bounds": [
+              506,
+              800,
+              618,
+              916
+            ],
+            "soleY": 915,
+            "bottomFourRowsMeanX": 591.5697674418604
+          },
+          {
+            "hoofIndex": 2,
+            "roi": [
+              740,
+              850,
+              910,
+              980
+            ],
+            "bounds": [
+              766,
+              850,
+              898,
+              960
+            ],
+            "soleY": 959,
+            "bottomFourRowsMeanX": 836.3695652173913
+          },
+          {
+            "hoofIndex": 3,
+            "roi": [
+              1090,
+              840,
+              1280,
+              970
+            ],
+            "bounds": [
+              1090,
+              840,
+              1259,
+              953
+            ],
+            "soleY": 952,
+            "bottomFourRowsMeanX": 1187.8668941979522
+          }
+        ],
+        "registrationOffsetSource": [
+          65,
+          16
+        ],
+        "registrationOffsetLogical": [
+          3.8437170010559663,
+          0.9461457233368532
+        ],
+        "fullCanvasBoundsLogical": [
+          17.843717001055968,
+          6.946145723336853,
+          110.09292502639916,
+          66.5533262935586
+        ],
+        "visibleBoundsAlphaGreaterThan127": [
+          121,
+          49,
+          1555,
+          960
+        ],
+        "projectedLanceEndpoints": [
+          [
+            438,
+            344.5
+          ],
+          [
+            1554,
+            299.0
+          ]
+        ],
+        "projectedLanceLengthSourcePixels": 1116.9271462364948,
+        "nativeLanceTipRightMarginPixels": 5,
+        "negativeSpaceProbes": [
+          {
+            "name": "hind-leg-gap",
+            "rectangle": [
+              405,
+              875,
+              412,
+              882
+            ],
+            "maxAlpha": 0,
+            "zeroPixels": 49
+          },
+          {
+            "name": "middle-leg-gap",
+            "rectangle": [
+              699,
+              888,
+              706,
+              895
+            ],
+            "maxAlpha": 0,
+            "zeroPixels": 49
+          },
+          {
+            "name": "fore-leg-gap",
+            "rectangle": [
+              1003,
+              896,
+              1010,
+              903
+            ],
+            "maxAlpha": 0,
+            "zeroPixels": 49
+          }
+        ],
+        "semanticReview": "Clear forward lean and right-hand horizontal lance thrust; left glove retains reins and left forearm retains round shield. Horse drives/braces forward with all four legs retained, one hind hoof recovering above ground. Straight sword remains sheathed. Lance projected length measured from native endpoints, no attack-only extension.",
+        "projectedLanceLengthVersusIdleRatio": 0.9900504957269973
+      },
+      "walk-b": {
+        "nativeSize": [
+          1560,
+          1008
+        ],
+        "padRight": 0,
+        "padBottom": 0,
+        "sourceSupportAnchorEstimated": [
+          773,
+          980
+        ],
+        "sourceFootMidpoint": [
+          772.6911521402421,
+          980
+        ],
+        "hoofMeasurements": [
+          {
+            "hoofIndex": 0,
+            "roi": [
+              415,
+              760,
+              545,
+              890
+            ],
+            "bounds": [
+              432,
+              760,
+              545,
+              865
+            ],
+            "soleY": 864,
+            "bottomFourRowsMeanX": 446.125
+          },
+          {
+            "hoofIndex": 1,
+            "roi": [
+              625,
+              870,
+              780,
+              980
+            ],
+            "bounds": [
+              625,
+              870,
+              761,
+              960
+            ],
+            "soleY": 959,
+            "bottomFourRowsMeanX": 707.7216981132076
+          },
+          {
+            "hoofIndex": 2,
+            "roi": [
+              870,
+              890,
+              1040,
+              995
+            ],
+            "bounds": [
+              870,
+              890,
+              1025,
+              981
+            ],
+            "soleY": 980,
+            "bottomFourRowsMeanX": 966.9179104477612
+          },
+          {
+            "hoofIndex": 3,
+            "roi": [
+              970,
+              760,
+              1090,
+              900
+            ],
+            "bounds": [
+              970,
+              760,
+              1090,
+              900
+            ],
+            "soleY": 899,
+            "bottomFourRowsMeanX": 970.0
+          }
+        ],
+        "registrationOffsetSource": [
+          9,
+          -5
+        ],
+        "registrationOffsetLogical": [
+          0.53220696937698,
+          -0.29567053854276665
+        ],
+        "fullCanvasBoundsLogical": [
+          14.532206969376979,
+          5.704329461457234,
+          106.78141499472017,
+          65.31151003167898
+        ],
+        "visibleBoundsAlphaGreaterThan127": [
+          238,
+          19,
+          1459,
+          981
+        ],
+        "projectedLanceEndpoints": [
+          [
+            369,
+            467.0
+          ],
+          [
+            1458,
+            218.5
+          ]
+        ],
+        "projectedLanceLengthSourcePixels": 1116.9929498434626,
+        "nativeLanceTipRightMarginPixels": 101,
+        "negativeSpaceProbes": [
+          {
+            "name": "hind-leg-gap",
+            "rectangle": [
+              577,
+              872,
+              584,
+              879
+            ],
+            "maxAlpha": 0,
+            "zeroPixels": 49
+          },
+          {
+            "name": "middle-leg-gap",
+            "rectangle": [
+              802,
+              897,
+              809,
+              904
+            ],
+            "maxAlpha": 0,
+            "zeroPixels": 49
+          },
+          {
+            "name": "fore-leg-gap",
+            "rectangle": [
+              1077,
+              908,
+              1084,
+              915
+            ],
+            "maxAlpha": 0,
+            "zeroPixels": 49
+          }
+        ],
+        "semanticReview": "Selected attempt02 swaps both hind supports after attempt01 only reversed forelegs. Now the formerly central lifted legs support, and the formerly outer planted legs lift. Both hind and fore support relations oppose walk-a; upper older face, saddle, round shield, right-hand lance and left-hand reins remain coherent.",
+        "projectedLanceLengthVersusIdleRatio": 0.9901088244138043
+      }
+    }
+  },
+  "bodyScaleWarning": "56logical measures combined rider+horse; infantry44 is world-scale comparison, not horse scaling denominator",
+  "lanceProjection": "Native measured endpoint spans differ by less than a fewpercent, not claimed exact physical equality; no attack-only extension. Full tips retained. Attack right visible margin only5source pixels, but strict raw perimeter passes and wholecanvas export has ample frame margin.",
+  "supersededAttempts": [
+    {
+      "directory": "idle/attempt-01",
+      "reason": "Both hands on lance, left hand should hold reins"
+    },
+    {
+      "directory": "idle/attempt-02",
+      "reason": "Hands fixed; head too small/armor mottled; strict raw perimeter fails fouralpha2pixels. Not accepted through padding."
+    },
+    {
+      "directory": "walk-b/attempt-01",
+      "reason": "Only front supports oppose walk-a; hind supports repeat. Corrected natively."
+    }
+  ],
+  "pending": "Coordinator formal native export review, live scenes and hero appearance binding; separate portrait still next"
+}

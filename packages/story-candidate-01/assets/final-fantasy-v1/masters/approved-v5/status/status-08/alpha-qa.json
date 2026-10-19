@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-STATUS-08",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.45916225971627633,
+  "nearOpaqueFractionAlphaGE250": 0.5311774252217466,
+  "nonzeroAlphaBBox": [
+    0,
+    23,
+    1224,
+    1220
+  ],
+  "visibleAlphaBBoxGE8": [
+    35,
+    52,
+    1222,
+    1214
+  ],
+  "visibleAlphaBBoxGE128": [
+    36,
+    54,
+    1221,
+    1213
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    36,
+    54,
+    33,
+    41
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 23,
+  "sha256": "c2a4ccd34a18de891f920bf5720843bb361d210c1788cbabfcd5233eabbee954",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: off-white folded bundle with two red-brown stain areas and rope knot remains distinguishable from status01 green-drop bundle. Cloth seam details are subordinate."
+  ],
+  "identityVerified": "Exactly ONE folded off-white bandage bundle angled from lower-left to upper-right. Preserve TWO distinct dried reddish-brown stain regions on the cloth, a larger one above-right of the middle wrap and a smaller one below-left. These are flat bounded cloth stains only, no wet dripping blood, wound or body. The bandage is secured by a broad cream wrap and brown cord, with ONE knot at the right and TWO grouped frayed tails directed right/down. Broad folded edges and sparse seam accents, no woven grain. Although actual runtime status binding is armor_down, DO NOT replace this original bandage identity with broken armor; preserve original canonical art.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-08/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: off-white folded bundle with two red-brown stain areas and rope knot remains distinguishable from status01 green-drop bundle. Cloth seam details are subordinate."
+  },
+  "reviewComplete": true
+}

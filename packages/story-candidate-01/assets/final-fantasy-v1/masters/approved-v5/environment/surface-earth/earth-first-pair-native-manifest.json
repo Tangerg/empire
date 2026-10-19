@@ -1,0 +1,108 @@
+{
+  "atlas": "surface-earth",
+  "status": "native candidates, parent integration/scene review pending",
+  "original_atlas_contract": "4x1,32 logical/64HD; continuous opaque ground, no standing source foot",
+  "preview_world_periods": [
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ]
+  ],
+  "world_period_selected": null,
+  "entries": [
+    {
+      "atlas": "surface-earth",
+      "cell_index": 0,
+      "original_cellOrder_token": "earth-1",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-8df9fe05-6ee7-49a5-b9b6-18fe6c1b3ce1.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/earth-1-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-1/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/source-contract.json",
+      "sha256": "67b614fcc35c14211232dcc48da0a471aa684ae15878187a79344baf7e92623c",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "preview_world_periods": [
+        [
+          128,
+          128
+        ],
+        [
+          256,
+          256
+        ]
+      ],
+      "world_period_selected": null,
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Muted light tan compacted soil with sparse grouped embedded gray-brown angular stones and broad shallow diagonal scuffed/swept bands. Dry ground identity remains, without added puddles or explicit wheel tracks.",
+        "style_review": "Far fewer stones and much broader soil shapes than the original fine gravel carpet, but roughly fourteen stone groups and many more soil patch contours than the six-to-ten broad-plane target. Low-contrast residual grain and small edge scallops remain. Some stones have several faceted faces rather than only two.",
+        "palette_caveat": "Visually lighter and more golden tan than the original dusty gray-tan, though not vivid orange. Quantitative mean-color differences are saved.",
+        "scale_caveat": "Larger stone groups about80-150 native pixels:8-15 logical units at128 or16-31 at256. Broad ground bands must remain material coloration, not new roads.",
+        "native_acceptance": "Opaque actual-used source0 candidate.128/256 previews and scene/mask acceptance pending; no natural seamlessness claim."
+      }
+    },
+    {
+      "atlas": "surface-earth",
+      "cell_index": 1,
+      "original_cellOrder_token": "earth-2",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-35e8cb43-6b7c-4ae2-b089-93ac39cafd13.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/earth-2-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-2/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/source-contract.json",
+      "sha256": "4edd7e0c78fd6e79bfcfa022255e52f08666d1cd58e7f839810a79279e779cc5",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "preview_world_periods": [
+        [
+          128,
+          128
+        ],
+        [
+          256,
+          256
+        ]
+      ],
+      "world_period_selected": null,
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Dark damp gray-brown mud with two broad low-contrast diagonal rut bands crossing in the middle and sparse embedded gray-brown stone groups. Retains original crossing-rut profile without added pools or new gameplay routes.",
+        "style_review": "About twelve to fourteen stone groups, low contrast and broadly faceted shapes. Ruts are shallow broad dark bands rather than trenches. Soil is simplified from original gravel but retains more patch edges and small cloudy fragments than the strict six-to-ten-plane target.",
+        "palette_caveat": "Dark earthy gray-brown remains distinct from source1 light tan. Native mean comparison saved; no bright wet shine or blue accents.",
+        "scale_caveat": "Stone groups roughly90-170 native pixels,9-17 logical at128 or18-35 at256. Crossed rut motif spans a whole material period and may become obvious in repeats; it is catalog-only and must not create road topology.",
+        "native_acceptance": "Opaque catalog source1 candidate;128/256 preview only, no natural seamlessness or scene acceptance."
+      }
+    }
+  ],
+  "native_pixels_untouched": true,
+  "no_repository_edits": true
+}

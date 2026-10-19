@@ -1,0 +1,226 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8128f4ba-b968-48cb-9abd-e7af1548222b.png",
+  "size": [
+    1560,
+    1008
+  ],
+  "mode": "RGBA",
+  "sha256": "cf75bff11cd8759ff2ed0cba1b0bcdeb48c98245e18d587bc277e4938ea0309f",
+  "bboxAlphaNonzero": [
+    0,
+    17,
+    1560,
+    1008
+  ],
+  "bboxAlphaGreaterThan127": [
+    121,
+    49,
+    1555,
+    960
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1013567,
+  "alphaOnePixels": 8105,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "suggestedSourceFoot": [
+    717,
+    959
+  ],
+  "registrationMeasurement": {
+    "nativeSize": [
+      1560,
+      1008
+    ],
+    "padRight": 0,
+    "padBottom": 0,
+    "sourceSupportAnchorEstimated": [
+      717,
+      959
+    ],
+    "sourceFootMidpoint": [
+      717.09246580521,
+      959
+    ],
+    "hoofMeasurements": [
+      {
+        "hoofIndex": 0,
+        "roi": [
+          170,
+          820,
+          320,
+          950
+        ],
+        "bounds": [
+          179,
+          820,
+          306,
+          932
+        ],
+        "soleY": 931,
+        "bottomFourRowsMeanX": 252.56363636363636
+      },
+      {
+        "hoofIndex": 1,
+        "roi": [
+          500,
+          800,
+          640,
+          930
+        ],
+        "bounds": [
+          506,
+          800,
+          618,
+          916
+        ],
+        "soleY": 915,
+        "bottomFourRowsMeanX": 591.5697674418604
+      },
+      {
+        "hoofIndex": 2,
+        "roi": [
+          740,
+          850,
+          910,
+          980
+        ],
+        "bounds": [
+          766,
+          850,
+          898,
+          960
+        ],
+        "soleY": 959,
+        "bottomFourRowsMeanX": 836.3695652173913
+      },
+      {
+        "hoofIndex": 3,
+        "roi": [
+          1090,
+          840,
+          1280,
+          970
+        ],
+        "bounds": [
+          1090,
+          840,
+          1259,
+          953
+        ],
+        "soleY": 952,
+        "bottomFourRowsMeanX": 1187.8668941979522
+      }
+    ],
+    "registrationOffsetSource": [
+      65,
+      16
+    ],
+    "registrationOffsetLogical": [
+      3.8437170010559663,
+      0.9461457233368532
+    ],
+    "fullCanvasBoundsLogical": [
+      17.843717001055968,
+      6.946145723336853,
+      110.09292502639916,
+      66.5533262935586
+    ],
+    "visibleBoundsAlphaGreaterThan127": [
+      121,
+      49,
+      1555,
+      960
+    ],
+    "projectedLanceEndpoints": [
+      [
+        438,
+        344.5
+      ],
+      [
+        1554,
+        299.0
+      ]
+    ],
+    "projectedLanceLengthSourcePixels": 1116.9271462364948,
+    "nativeLanceTipRightMarginPixels": 5,
+    "negativeSpaceProbes": [
+      {
+        "name": "hind-leg-gap",
+        "rectangle": [
+          405,
+          875,
+          412,
+          882
+        ],
+        "maxAlpha": 0,
+        "zeroPixels": 49
+      },
+      {
+        "name": "middle-leg-gap",
+        "rectangle": [
+          699,
+          888,
+          706,
+          895
+        ],
+        "maxAlpha": 0,
+        "zeroPixels": 49
+      },
+      {
+        "name": "fore-leg-gap",
+        "rectangle": [
+          1003,
+          896,
+          1010,
+          903
+        ],
+        "maxAlpha": 0,
+        "zeroPixels": 49
+      }
+    ],
+    "semanticReview": "Clear forward lean and right-hand horizontal lance thrust; left glove retains reins and left forearm retains round shield. Horse drives/braces forward with all four legs retained, one hind hoof recovering above ground. Straight sword remains sheathed. Lance projected length measured from native endpoints, no attack-only extension."
+  },
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-leg-gap",
+      "rectangle": [
+        405,
+        875,
+        412,
+        882
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "middle-leg-gap",
+      "rectangle": [
+        699,
+        888,
+        706,
+        895
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "fore-leg-gap",
+      "rectangle": [
+        1003,
+        896,
+        1010,
+        903
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Clear forward lean and right-hand horizontal lance thrust; left glove retains reins and left forearm retains round shield. Horse drives/braces forward with all four legs retained, one hind hoof recovering above ground. Straight sword remains sheathed. Lance projected length measured from native endpoints, no attack-only extension.",
+  "sharedScale": 0.059134107708553325,
+  "scaleFraction": "56/947",
+  "strictNativePerimeterGate": "PASS, no native edge pixel alpha>1; native alpha1 samples retained unchanged",
+  "status": "Raw/source QA complete; awaiting coordinator native quartet/export review"
+}

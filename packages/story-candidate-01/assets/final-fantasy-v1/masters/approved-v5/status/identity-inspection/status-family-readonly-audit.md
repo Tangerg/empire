@@ -8,7 +8,7 @@ Original boards are byte-identical to baseline 2276a89. Authored catalog order, 
 |---|---|---|---|---|
 | C01-STATUS-01 | 中毒 | 01 / 1 / 1 | Folded off-white cloth/bandage with one olive-green poison droplet. | poisoned |
 | C01-STATUS-02 | 沉默 | 01 / 1 / 2 | One plain gray metal disc with three curved sound/wave runs on each side, six total; not a mouth or crossed-out letter. | silenced |
-| C01-STATUS-03 | 护卫 | 01 / 1 / 3 | One blue-gray shield with cream upward chevron and one short three-link gray chain beside it. | No direct mapping found |
+| C01-STATUS-03 | 护卫 | 01 / 1 / 3 | One blue-gray shield with cream upward chevron and a short FOUR-link gray chain beside it: top oval, long middle link, narrow oblique connector, bottom round ring. | No direct mapping found |
 | C01-STATUS-04 | 誓文受控 | 01 / 1 / 4 | One clenched tan hand/forearm wearing an ornate gold cuff with original scrolling line motif and tied brown cord/tails; no readable letters. | c01.oath-controlled |
 | C01-STATUS-05 | 溃退 | 01 / 2 / 1 | One tilted fallen chevron shield on bounded dirt/stones plus two separated black bootprints. | shaken |
 | C01-STATUS-06 | 隐蔽 | 01 / 2 / 2 | One deep olive hood, a fern/leaf branch and one brown boot sole. | No direct mapping found |
@@ -36,3 +36,5 @@ Boundary corrections: Atlas01 white grid excluded from all complete-subject refe
 Semantic mismatches: C01-STATUS-08 authored label is injured/blood-stained bandage, while actual armor_down binding uses it. Preserve canonical original art identity unless parent explicitly changes contract. C01-STATUS-12 authored morale banner is used for inspired. C01-STATUS-03 guard/shield-chain is cataloged but not directly bound by CANDIDATE_01_STATUS_ART; do not infer it replaces guard mechanics.
 
 No direct mapping found is not a claim of absolute non-use. Generic lookup availability does not establish an actual consumer.
+
+Inspection correction, 2026-10-19 21:33 UTC: STATUS03 has FOUR visible chain links after enlarged original inspection: top oval, long middle link, narrow connector and bottom ring. Preliminary three-link summary superseded.

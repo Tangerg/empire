@@ -1,0 +1,19 @@
+{
+  "tool": "built-in image_gen",
+  "promptSha256": "815a134d5c92ad9733f757435fe84c115aa62c49fb7fe0004c7ab0ea8afe0f72",
+  "referencedImagePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-b/attempt-01/master.png"
+  ],
+  "referencedImageSha256": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-b/attempt-01/master.png": "5708c1cfbf886f8bf5ed53cce271e673cfbedf98cb1a934b056a6ae80be3ddc7"
+  },
+  "transparentBackground": true,
+  "nativeCanvasRequested": [
+    1560,
+    1008
+  ],
+  "pose": "walk-b",
+  "sharedScale": "56/947",
+  "revision": "Targeted hind support swap; attempt01 only changed fore support, leaving hind support equal to walk-a",
+  "allowedChange": "Only two hind legs support/lift state; preserve already-opposite forelegs and entire upper identity/gear"
+}

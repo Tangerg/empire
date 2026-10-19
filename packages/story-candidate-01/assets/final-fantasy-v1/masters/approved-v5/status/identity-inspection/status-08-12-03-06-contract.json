@@ -1,0 +1,166 @@
+[
+  {
+    "topic": "C01-STATUS-08",
+    "slug": "status-08",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-08",
+    "asset": {
+      "assetId": "C01-FFV1-STATUS-08",
+      "label": "受伤"
+    },
+    "index": 7,
+    "board": "01",
+    "row": 2,
+    "col": 4,
+    "box": [
+      945,
+      319,
+      1249,
+      622
+    ],
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "sha": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-08-complete-subject.png",
+    "identity": "Exactly ONE folded off-white bandage bundle angled from lower-left to upper-right. Preserve TWO distinct dried reddish-brown stain regions on the cloth, a larger one above-right of the middle wrap and a smaller one below-left. These are flat bounded cloth stains only, no wet dripping blood, wound or body. The bandage is secured by a broad cream wrap and brown cord, with ONE knot at the right and TWO grouped frayed tails directed right/down. Broad folded edges and sparse seam accents, no woven grain. Although actual runtime status binding is armor_down, DO NOT replace this original bandage identity with broken armor; preserve original canonical art.",
+    "styles": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+    ],
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-08.png",
+    "directStatusBinding": "armor_down",
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+    "originalGridCellPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-08-nominal-cell.png",
+    "originalGridBox": [
+      942,
+      316,
+      1252,
+      625
+    ],
+    "prompt": "Use case: stylized-concept\nAsset type: C01 C01-STATUS-08 '受伤' high-resolution transparent status-icon source for native32px runtime and28px HUD display.\nInput images: Image 1 is the original source identity/composition ONLY; discard its magenta keyed backdrop. Images 2–4 are approved chunky cel style/material references ONLY; do not copy their objects.\nPrimary request: Redraw the exact original status subject in the current approved exaggerated broad-plane game-art family.\nSubject and invariants: Exactly ONE folded off-white bandage bundle angled from lower-left to upper-right. Preserve TWO distinct dried reddish-brown stain regions on the cloth, a larger one above-right of the middle wrap and a smaller one below-left. These are flat bounded cloth stains only, no wet dripping blood, wound or body. The bandage is secured by a broad cream wrap and brown cord, with ONE knot at the right and TWO grouped frayed tails directed right/down. Broad folded edges and sparse seam accents, no woven grain. Although actual runtime status binding is armor_down, DO NOT replace this original bandage identity with broken armor; preserve original canonical art.\nStyle/medium: Very bold charcoal contours, oversized chunky simple volumes, broad clean matte planes, two or three cel values. Strong compact silhouette and large functional marks readable at32 and28 pixels. No miniature woven grain, scratches, speckle, stipple, detailed metal texture or fine noise. Restrained upper-left highlights.\nComposition/framing: One complete centered square-canvas icon, original arrangement/orientations retained. All meaningful shapes inside all four edges with modest clear margins, no crop or wasted empty canvas. Preserve original object counts and open holes.\nBackground: Genuine transparent exterior and gaps. No solid backdrop, white fill, checkerboard, added generic UI plate/frame, exterior glow, mist, smoke, haze or broad cast shadow. Keep light within original object surfaces.\nText: None. No lettering or watermark.",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-41b2b1f7-647c-46cc-a028-c081fd022fc4.png"
+  },
+  {
+    "topic": "C01-STATUS-12",
+    "slug": "status-12",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-12",
+    "asset": {
+      "assetId": "C01-FFV1-STATUS-12",
+      "label": "士气"
+    },
+    "index": 11,
+    "board": "01",
+    "row": 3,
+    "col": 4,
+    "box": [
+      945,
+      632,
+      1249,
+      935
+    ],
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "sha": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-12-complete-subject.png",
+    "identity": "Exactly ONE completely BLANK gray hanging banner, forked into TWO long pointed lower tails with a clear V notch. It hangs from ONE horizontal wooden crossbar extending right from ONE brown vertical wooden pole, with ONE steel spearhead on top. Preserve TWO golden cord loops at each top attachment and the gold hanging rope/knot/tassel grouping on the left side of the cloth, as in image 1. Match original arrangement: spear pole left, hanging cloth right. Pale tan narrow edging, broad gray cloth folds, no emblem or readable text. The original gray fabric must not turn into a faction color or a chevron symbol; folds are lighting only.",
+    "styles": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+    ],
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-12.png",
+    "directStatusBinding": "inspired",
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+    "originalGridCellPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-12-nominal-cell.png",
+    "originalGridBox": [
+      942,
+      629,
+      1252,
+      938
+    ],
+    "prompt": "Use case: stylized-concept\nAsset type: C01 C01-STATUS-12 '士气' high-resolution transparent status-icon source for native32px runtime and28px HUD display.\nInput images: Image 1 is the original source identity/composition ONLY; discard its magenta keyed backdrop. Images 2–4 are approved chunky cel style/material references ONLY; do not copy their objects.\nPrimary request: Redraw the exact original status subject in the current approved exaggerated broad-plane game-art family.\nSubject and invariants: Exactly ONE completely BLANK gray hanging banner, forked into TWO long pointed lower tails with a clear V notch. It hangs from ONE horizontal wooden crossbar extending right from ONE brown vertical wooden pole, with ONE steel spearhead on top. Preserve TWO golden cord loops at each top attachment and the gold hanging rope/knot/tassel grouping on the left side of the cloth, as in image 1. Match original arrangement: spear pole left, hanging cloth right. Pale tan narrow edging, broad gray cloth folds, no emblem or readable text. The original gray fabric must not turn into a faction color or a chevron symbol; folds are lighting only.\nStyle/medium: Very bold charcoal contours, oversized chunky simple volumes, broad clean matte planes, two or three cel values. Strong compact silhouette and large functional marks readable at32 and28 pixels. No miniature woven grain, scratches, speckle, stipple, detailed metal texture or fine noise. Restrained upper-left highlights.\nComposition/framing: One complete centered square-canvas icon, original arrangement/orientations retained. All meaningful shapes inside all four edges with modest clear margins, no crop or wasted empty canvas. Preserve original object counts and open holes.\nBackground: Genuine transparent exterior and gaps. No solid backdrop, white fill, checkerboard, added generic UI plate/frame, exterior glow, mist, smoke, haze or broad cast shadow. Keep light within original object surfaces.\nText: None. No lettering or watermark.",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-22dd7b8d-e38e-4150-927a-f1d30c07091a.png"
+  },
+  {
+    "topic": "C01-STATUS-03",
+    "slug": "status-03",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-03",
+    "asset": {
+      "assetId": "C01-FFV1-STATUS-03",
+      "label": "护卫"
+    },
+    "index": 2,
+    "board": "01",
+    "row": 1,
+    "col": 3,
+    "box": [
+      632,
+      5,
+      935,
+      309
+    ],
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "sha": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-03-complete-subject.png",
+    "identity": "Exactly ONE blue-gray kite shield on the left, seen front-on, with a thick pale metal rim and ONE broad cream UPWARD CHEVRON centered on the face. Preserve the original SIX visible rim rivets: top center, upper-left, upper-right, middle-left, middle-right, bottom tip. Beside it on the RIGHT preserve a short chain of exactly FOUR gray metal links, arranged diagonally upper-right to lower-left: top oval ring, elongated middle link, NARROW OBLIQUE CONNECTOR LINK, and bottom round ring. The third narrow connector is a separate link, not a highlight or continuation of another. Use chunky links with open transparent holes and clean overlaps. No pawn/person, additional shield, invented emblem or extra links.",
+    "styles": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+    ],
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-03.png",
+    "directStatusBinding": null,
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset. 2026-10-19 21:33 UTC enlarged original revealed four chain links, not preliminary three; narrow oblique connector is a separate visible link. Exact original source is authority.",
+    "originalGridCellPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-03-nominal-cell.png",
+    "originalGridBox": [
+      629,
+      2,
+      938,
+      312
+    ],
+    "prompt": "Use case: stylized-concept\nAsset type: C01 C01-STATUS-03 '护卫' high-resolution transparent status-icon source for native32px runtime and28px HUD display.\nInput images: Image 1 is the original source identity/composition ONLY; discard its magenta keyed backdrop. Images 2–4 are approved chunky cel style/material references ONLY; do not copy their objects.\nPrimary request: Redraw the exact original status subject in the current approved exaggerated broad-plane game-art family.\nSubject and invariants: Exactly ONE blue-gray kite shield on the left, seen front-on, with a thick pale metal rim and ONE broad cream UPWARD CHEVRON centered on the face. Preserve the original SIX visible rim rivets: top center, upper-left, upper-right, middle-left, middle-right, bottom tip. Beside it on the RIGHT preserve a short chain of exactly FOUR gray metal links, arranged diagonally upper-right to lower-left: top oval ring, elongated middle link, NARROW OBLIQUE CONNECTOR LINK, and bottom round ring. The third narrow connector is a separate link, not a highlight or continuation of another. Use chunky links with open transparent holes and clean overlaps. No pawn/person, additional shield, invented emblem or extra links.\nStyle/medium: Very bold charcoal contours, oversized chunky simple volumes, broad clean matte planes, two or three cel values. Strong compact silhouette and large functional marks readable at32 and28 pixels. No miniature woven grain, scratches, speckle, stipple, detailed metal texture or fine noise. Restrained upper-left highlights.\nComposition/framing: One complete centered square-canvas icon, original arrangement/orientations retained. All meaningful shapes inside all four edges with modest clear margins, no crop or wasted empty canvas. Preserve original object counts and open holes.\nBackground: Genuine transparent exterior and gaps. No solid backdrop, white fill, checkerboard, added generic UI plate/frame, exterior glow, mist, smoke, haze or broad cast shadow. Keep light within original object surfaces.\nText: None. No lettering or watermark.",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f5a93ad5-509a-4051-b456-4bbab3fa8bd9.png"
+  },
+  {
+    "topic": "C01-STATUS-06",
+    "slug": "status-06",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-06",
+    "asset": {
+      "assetId": "C01-FFV1-STATUS-06",
+      "label": "隐蔽"
+    },
+    "index": 5,
+    "board": "01",
+    "row": 2,
+    "col": 2,
+    "box": [
+      319,
+      319,
+      622,
+      622
+    ],
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "sha": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-06-complete-subject.png",
+    "identity": "Exactly ONE EMPTY deep olive-green hood on the LEFT, no head, face or person inside. Exactly ONE golden-olive fern frond crosses diagonally from lower-left to upper-right in front of the hood; preserve its central stem and alternately branching blunt lobed leaflets, simplified into chunky readable grouped shapes rather than fine teeth. A small grouping of broad dark-green leaves sits behind the frond base as in image 1. Exactly ONE brown boot SOLE on the RIGHT with one forefoot shape and one smaller heel separated by a dark transverse sole division. It is a sole symbol, not a whole boot or wearer. Keep hood, fern and sole as distinct original components with correct olive/ochre/brown colors.",
+    "styles": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+    ],
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-06.png",
+    "directStatusBinding": null,
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+    "originalGridCellPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-06-nominal-cell.png",
+    "originalGridBox": [
+      316,
+      316,
+      625,
+      625
+    ],
+    "prompt": "Use case: stylized-concept\nAsset type: C01 C01-STATUS-06 '隐蔽' high-resolution transparent status-icon source for native32px runtime and28px HUD display.\nInput images: Image 1 is the original source identity/composition ONLY; discard its magenta keyed backdrop. Images 2–4 are approved chunky cel style/material references ONLY; do not copy their objects.\nPrimary request: Redraw the exact original status subject in the current approved exaggerated broad-plane game-art family.\nSubject and invariants: Exactly ONE EMPTY deep olive-green hood on the LEFT, no head, face or person inside. Exactly ONE golden-olive fern frond crosses diagonally from lower-left to upper-right in front of the hood; preserve its central stem and alternately branching blunt lobed leaflets, simplified into chunky readable grouped shapes rather than fine teeth. A small grouping of broad dark-green leaves sits behind the frond base as in image 1. Exactly ONE brown boot SOLE on the RIGHT with one forefoot shape and one smaller heel separated by a dark transverse sole division. It is a sole symbol, not a whole boot or wearer. Keep hood, fern and sole as distinct original components with correct olive/ochre/brown colors.\nStyle/medium: Very bold charcoal contours, oversized chunky simple volumes, broad clean matte planes, two or three cel values. Strong compact silhouette and large functional marks readable at32 and28 pixels. No miniature woven grain, scratches, speckle, stipple, detailed metal texture or fine noise. Restrained upper-left highlights.\nComposition/framing: One complete centered square-canvas icon, original arrangement/orientations retained. All meaningful shapes inside all four edges with modest clear margins, no crop or wasted empty canvas. Preserve original object counts and open holes.\nBackground: Genuine transparent exterior and gaps. No solid backdrop, white fill, checkerboard, added generic UI plate/frame, exterior glow, mist, smoke, haze or broad cast shadow. Keep light within original object surfaces.\nText: None. No lettering or watermark.",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a5380816-08f1-4944-8b8b-82542ca01782.png"
+  }
+]

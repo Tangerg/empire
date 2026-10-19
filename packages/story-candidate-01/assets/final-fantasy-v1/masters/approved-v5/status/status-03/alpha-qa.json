@@ -1,0 +1,62 @@
+{
+  "topicId": "C01-STATUS-03",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.4822119456972139,
+  "nearOpaqueFractionAlphaGE250": 0.5033500454049434,
+  "nonzeroAlphaBBox": [
+    76,
+    2,
+    1226,
+    1187
+  ],
+  "visibleAlphaBBoxGE8": [
+    79,
+    60,
+    1204,
+    1185
+  ],
+  "visibleAlphaBBoxGE128": [
+    79,
+    61,
+    1202,
+    1184
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    79,
+    61,
+    52,
+    70
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sha256": "28e8110f18da2f6c26788cacf7925480ed60dec6bd12d0d0ebdbcdc87dbb7aa0",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: chevron shield and adjacent chain remain distinct. Four links are retained in native source; small oblique connector is too small to count independently at HUD28."
+  ],
+  "identityVerified": "Exactly ONE blue-gray kite shield on the left, seen front-on, with a thick pale metal rim and ONE broad cream UPWARD CHEVRON centered on the face. Preserve the original SIX visible rim rivets: top center, upper-left, upper-right, middle-left, middle-right, bottom tip. Beside it on the RIGHT preserve a short chain of exactly FOUR gray metal links, arranged diagonally upper-right to lower-left: top oval ring, elongated middle link, NARROW OBLIQUE CONNECTOR LINK, and bottom round ring. The third narrow connector is a separate link, not a highlight or continuation of another. Use chunky links with open transparent holes and clean overlaps. No pawn/person, additional shield, invented emblem or extra links.",
+  "remarks": [],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-03/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: chevron shield and adjacent chain remain distinct. Four links are retained in native source; small oblique connector is too small to count independently at HUD28."
+  },
+  "reviewComplete": true
+}

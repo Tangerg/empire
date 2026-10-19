@@ -386,5 +386,16 @@
     "visibleWidthLogical": 70.1921858500528,
     "perimeterCaveat": "PASS: native edge has no alpha>1 pixel; no padding or alpha cleanup applied. Bottom edge alpha is exactly0.",
     "status": "Idle attempt03 candidate; raw perimeter gate passes; awaiting coordinator native proportion review before remaining poses"
-  }
+  },
+  "quartetStatus": "Four native poses complete, byte and strict alpha QA pass; coordinator native sequence review pending",
+  "registrationEvidence": "registration-evidence.json",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "sharedScaleLocked": "56/947",
+  "selectedIdle": "attempt-03",
+  "noRawEdgeGateWaiver": true
 }

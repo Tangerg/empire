@@ -1,0 +1,55 @@
+{
+  "atlas": "surface-earth",
+  "cell_index": 0,
+  "original_cellOrder_token": "earth-1",
+  "source_board_index": 8,
+  "source_crop": [
+    0,
+    627,
+    314,
+    940
+  ],
+  "source_crop_dimensions": [
+    314,
+    313
+  ],
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-1-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-1-current-runtime-2x-cell.png",
+  "original_visual_identity": "Light dry tan compacted earth with many small gray-brown stones and subtle swept/scuffed bands.",
+  "original_mean_RGB": [
+    135.47639445676725,
+    108.55437414786024,
+    73.31882745568873
+  ],
+  "original_opaque": true,
+  "current_usage": "actual overlay source0 for transition-meadow-earth in303 current code/map-derived cells over5 levels",
+  "sourceFoot": null,
+  "anchor": null,
+  "generation_approval": "Parent exclusive earth quartet2026-10-19 21:32 UTC: exact original slots, actual303 transition source0 priority, preserve original colors and source features, compare128/256",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/source-contract.json",
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+  "original_full_source_sha256": "6dc76bbb51ca562cd0bf2113d2233afaee0797c9fb1e2bedea40c97ed33e4790",
+  "reference_images_in_order": [
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-1-original-master-swatch.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png"
+  ],
+  "reference_roles": [
+    "exact original earth material and original palette, simplify detail",
+    "approved broad quiet plane style only; not a uniform road-tan palette"
+  ],
+  "reference_sha256": {
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-earth/earth-1-original-master-swatch.png": "27ce041270e24b3cff093af68fa83343ba8e1bf93e0a5c336a6545a39e547dfb",
+    "/workspace/shared/empire-art-rebuild/approved-v5/earth-material/revision-2/master.png": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53"
+  },
+  "native_request": [
+    1254,
+    1254
+  ],
+  "opaque_request": true,
+  "preview_world_periods": [
+    128,
+    256
+  ],
+  "binding_status": "native only, engineering owns masks and world sampling",
+  "prompt_sha256": "2d0cebb6d6d7f10846f7c02c5c79d84842c03f17b52bfca2f0d8d50acf95b03a"
+}

@@ -1,0 +1,24 @@
+{
+  "tool": "built-in image_gen",
+  "promptSha256": "cbf0ef2e7d6261305326932ac83d6230e4eaed14dee4b17a1e7acc6a4c019fdd",
+  "referencedImagePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-a/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/master.png"
+  ],
+  "referencedImageSha256": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-a/master.png": "14c6e1ea1f83a90c9e2364133eb08f333957b9e76c4e671132c761b75f871869",
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/master.png": "d75f827aaff16fa667939d525a853f0d25ba5950db3c3d0a911f9b53f6846a80"
+  },
+  "transparentBackground": true,
+  "nativeCanvasRequested": [
+    1560,
+    1008
+  ],
+  "pose": "walk-b",
+  "sharedScale": "56/947",
+  "idleSourceFoot": [
+    782,
+    975
+  ],
+  "semanticContract": "Reverse actual visible support/lifted state of every horse leg relative to walk-a; do not mirror the person/horse"
+}

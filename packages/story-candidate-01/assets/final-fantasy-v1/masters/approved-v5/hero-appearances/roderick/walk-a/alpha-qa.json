@@ -1,0 +1,227 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7df80139-c38d-45da-928d-541b3171689e.png",
+  "size": [
+    1560,
+    1008
+  ],
+  "mode": "RGBA",
+  "sha256": "14c6e1ea1f83a90c9e2364133eb08f333957b9e76c4e671132c761b75f871869",
+  "bboxAlphaNonzero": [
+    0,
+    18,
+    1538,
+    988
+  ],
+  "bboxAlphaGreaterThan127": [
+    241,
+    21,
+    1456,
+    982
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1026338,
+  "alphaOnePixels": 6733,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "semanticReview": "Four connected horse legs. Outer visible hind hoof and outer visible fore hoof support; the two central bent hooves are airborne. Valid first stride, with upper elder/gear identity preserved. Literal prompt diagonal labeling is not relied on; actual individual supports define the paired walk-b.",
+  "promptVersusResult": "Requested anatomical diagonal assignment is not relied on as verified. QA uses visible individual leg attachments and support/lift state; walk-b prompt explicitly reverses the actual result.",
+  "suggestedSourceFoot": [
+    792,
+    981
+  ],
+  "registrationMeasurement": {
+    "nativeSize": [
+      1560,
+      1008
+    ],
+    "padRight": 0,
+    "padBottom": 0,
+    "sourceSupportAnchorEstimated": [
+      792,
+      981
+    ],
+    "sourceFootMidpoint": [
+      791.7849474196291,
+      981
+    ],
+    "hoofMeasurements": [
+      {
+        "hoofIndex": 0,
+        "roi": [
+          380,
+          870,
+          540,
+          975
+        ],
+        "bounds": [
+          397,
+          870,
+          528,
+          955
+        ],
+        "soleY": 954,
+        "bottomFourRowsMeanX": 468.5304347826087
+      },
+      {
+        "hoofIndex": 1,
+        "roi": [
+          650,
+          825,
+          790,
+          920
+        ],
+        "bounds": [
+          650,
+          825,
+          778,
+          905
+        ],
+        "soleY": 904,
+        "bottomFourRowsMeanX": 717.3478260869565
+      },
+      {
+        "hoofIndex": 2,
+        "roi": [
+          820,
+          790,
+          930,
+          920
+        ],
+        "bounds": [
+          836,
+          790,
+          930,
+          898
+        ],
+        "soleY": 897,
+        "bottomFourRowsMeanX": 852.8493150684932
+      },
+      {
+        "hoofIndex": 3,
+        "roi": [
+          1040,
+          890,
+          1210,
+          995
+        ],
+        "bounds": [
+          1040,
+          890,
+          1190,
+          982
+        ],
+        "soleY": 981,
+        "bottomFourRowsMeanX": 1128.4122137404581
+      }
+    ],
+    "registrationOffsetSource": [
+      -10,
+      -6
+    ],
+    "registrationOffsetLogical": [
+      -0.5913410770855333,
+      -0.35480464625131997
+    ],
+    "fullCanvasBoundsLogical": [
+      13.408658922914467,
+      5.64519535374868,
+      105.65786694825766,
+      65.25237592397043
+    ],
+    "visibleBoundsAlphaGreaterThan127": [
+      241,
+      21,
+      1456,
+      982
+    ],
+    "projectedLanceEndpoints": [
+      [
+        366,
+        467.5
+      ],
+      [
+        1455,
+        221.5
+      ]
+    ],
+    "projectedLanceLengthSourcePixels": 1116.439429615418,
+    "nativeLanceTipRightMarginPixels": 104,
+    "negativeSpaceProbes": [
+      {
+        "name": "hind-leg-gap",
+        "rectangle": [
+          577,
+          904,
+          584,
+          911
+        ],
+        "maxAlpha": 0,
+        "zeroPixels": 49
+      },
+      {
+        "name": "between-raised-hooves",
+        "rectangle": [
+          797,
+          881,
+          804,
+          888
+        ],
+        "maxAlpha": 0,
+        "zeroPixels": 49
+      },
+      {
+        "name": "fore-leg-gap",
+        "rectangle": [
+          1003,
+          907,
+          1010,
+          914
+        ],
+        "maxAlpha": 0,
+        "zeroPixels": 49
+      }
+    ],
+    "semanticReview": "Four connected horse legs. Outer visible hind hoof and outer visible fore hoof support; the two central bent hooves are airborne. Valid first stride, with upper elder/gear identity preserved. Literal prompt diagonal labeling is not relied on; actual individual supports define the paired walk-b."
+  },
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-leg-gap",
+      "rectangle": [
+        577,
+        904,
+        584,
+        911
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "between-raised-hooves",
+      "rectangle": [
+        797,
+        881,
+        804,
+        888
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "fore-leg-gap",
+      "rectangle": [
+        1003,
+        907,
+        1010,
+        914
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "sharedScale": 0.059134107708553325,
+  "scaleFraction": "56/947",
+  "strictNativePerimeterGate": "PASS, no native edge pixel alpha>1; native alpha1 samples retained unchanged",
+  "status": "Raw/source QA complete; awaiting coordinator native quartet/export review"
+}

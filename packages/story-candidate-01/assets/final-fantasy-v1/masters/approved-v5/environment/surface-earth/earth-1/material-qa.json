@@ -1,0 +1,72 @@
+{
+  "asset": "earth-1",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "67b614fcc35c14211232dcc48da0a471aa684ae15878187a79344baf7e92623c",
+  "RGB_mean": [
+    157.11628562125918,
+    120.48330954979154,
+    78.86931388933404
+  ],
+  "RGB_std": [
+    9.304797320781605,
+    7.2801363976791755,
+    5.3122029303642115
+  ],
+  "luma_mean": 125.26694977590053,
+  "luma_std": 7.467000848043477,
+  "luma_percentiles_5_50_95": [
+    113.55700000000002,
+    125.7616,
+    136.6854
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 121.16452271979665,
+    "bottom": 122.97736289872408,
+    "left": 122.79412988187798,
+    "right": 120.61921004784688,
+    "central_half": 129.23276750933104
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 5.853535353535354,
+    "top_bottom_mean_abs_RGB": 7.278309409888357,
+    "left_right_max_abs_RGB": 32.0,
+    "top_bottom_max_abs_RGB": 24.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Muted light tan compacted soil with sparse grouped embedded gray-brown angular stones and broad shallow diagonal scuffed/swept bands. Dry ground identity remains, without added puddles or explicit wheel tracks.",
+    "style_review": "Far fewer stones and much broader soil shapes than the original fine gravel carpet, but roughly fourteen stone groups and many more soil patch contours than the six-to-ten broad-plane target. Low-contrast residual grain and small edge scallops remain. Some stones have several faceted faces rather than only two.",
+    "palette_caveat": "Visually lighter and more golden tan than the original dusty gray-tan, though not vivid orange. Quantitative mean-color differences are saved.",
+    "scale_caveat": "Larger stone groups about80-150 native pixels:8-15 logical units at128 or16-31 at256. Broad ground bands must remain material coloration, not new roads.",
+    "native_acceptance": "Opaque actual-used source0 candidate.128/256 previews and scene/mask acceptance pending; no natural seamlessness claim."
+  },
+  "reference_material_identity": "Light dry tan compacted earth with many small gray-brown stones and subtle swept/scuffed bands.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_previews": [
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ]
+  ],
+  "world_period_selected": null,
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

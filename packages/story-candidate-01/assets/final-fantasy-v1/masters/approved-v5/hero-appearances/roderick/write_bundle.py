@@ -1,0 +1,66 @@
+from pathlib import Path
+from PIL import Image,ImageDraw
+import numpy as np,json,hashlib,math
+b=Path(__file__).parent;order=['idle','walk-a','attack','walk-b'];s=56/947;canon=[782,975];origin=[14,6];frame=[128,80]
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+rois={
+'idle':[[400,870,550,990],[620,860,780,970],[780,880,940,995],[990,870,1150,990]],
+'walk-a':[[380,870,540,975],[650,825,790,920],[820,790,930,920],[1040,890,1210,995]],
+'attack':[[170,820,320,950],[500,800,640,930],[740,850,910,980],[1090,840,1280,970]],
+'walk-b':[[415,760,545,890],[625,870,780,980],[870,890,1040,995],[970,760,1090,900]]}
+probeCenters={
+'idle':[('hind-leg-gap',582,900),('middle-leg-gap',772,890),('fore-leg-gap',962,900)],
+'walk-a':[('hind-leg-gap',580,907),('between-raised-hooves',800,884),('fore-leg-gap',1006,910)],
+'attack':[('hind-leg-gap',408,878),('middle-leg-gap',702,891),('fore-leg-gap',1006,899)],
+'walk-b':[('hind-leg-gap',580,875),('middle-leg-gap',805,900),('fore-leg-gap',1080,911)]}
+ends={'idle':[[330,420,450,520],[1350,180,1510,290]],'walk-a':[[340,420,450,520],[1350,170,1510,280]],'attack':[[410,300,500,390],[1420,250,1560,370]],'walk-b':[[340,420,450,520],[1350,170,1510,280]]}
+sem={
+'idle':'Approved attempt03: older exposed gray-haired/full-bearded mentor, broad matte gray armor, blue-gray scarf/tabard, original round shield and sheathed sword. Reconstructed brown horse with dark mane/tail and pale blaze, four planted hooves. Right glove alone holds lance, left glove holds reins below shaft.',
+'walk-a':'Four connected horse legs. Outer visible hind hoof and outer visible fore hoof support; the two central bent hooves are airborne. Valid first stride, with upper elder/gear identity preserved. Literal prompt diagonal labeling is not relied on; actual individual supports define the paired walk-b.',
+'attack':'Clear forward lean and right-hand horizontal lance thrust; left glove retains reins and left forearm retains round shield. Horse drives/braces forward with all four legs retained, one hind hoof recovering above ground. Straight sword remains sheathed. Lance projected length measured from native endpoints, no attack-only extension.',
+'walk-b':'Selected attempt02 swaps both hind supports after attempt01 only reversed forelegs. Now the formerly central lifted legs support, and the formerly outer planted legs lift. Both hind and fore support relations oppose walk-a; upper older face, saddle, round shield, right-hand lance and left-hand reins remain coherent.'}
+imgs={p:Image.open(b/p/'master.png').convert('RGBA') for p in order};common=[max(i.width for i in imgs.values()),max(i.height for i in imgs.values())];poses={};bundleposes={}
+for pose in order:
+ d=b/pose;im=imgs[pose];a=np.array(im)[:,:,3];q=json.loads((d/'alpha-qa.json').read_text());req=json.loads((d/'request.json').read_text());assert sha(d/'master.png')==sha(d/'raw.png')==sha(q['nativeSource'])==q['sha256'];assert sha(d/'prompt.txt')==req['promptSha256'];assert q['perimeterCountAlphaGreaterThan1']==0
+ for p,h in req['referencedImageSha256'].items():assert sha(p)==h
+ feet=[]
+ for idx,(x0,y0,x1,y1) in enumerate(rois[pose]):
+  yy,xx=np.where(a[y0:y1,x0:x1]>127);yy+=y0;xx+=x0;sole=int(yy.max());band=xx[yy>sole-4];feet.append({'hoofIndex':idx,'roi':[x0,y0,x1,y1],'bounds':[int(xx.min()),int(yy.min()),int(xx.max()+1),int(yy.max()+1)],'soleY':sole,'bottomFourRowsMeanX':float(band.mean())})
+ mx=float(np.mean([f['bottomFourRowsMeanX'] for f in feet]));foot=[int(math.floor(mx+.5)),max(f['soleY'] for f in feet)];off=[canon[i]-foot[i] for i in range(2)];loff=[x*s for x in off];full=[origin[0]+loff[0],origin[1]+loff[1],origin[0]+loff[0]+common[0]*s,origin[1]+loff[1]+common[1]*s];assert full[0]>=0 and full[1]>=0 and full[2]<=frame[0] and full[3]<=frame[1]
+ probes=[]
+ for name,cx,cy in probeCenters[pose]:
+  choices=[]
+  for y in range(cy-20,cy+21):
+   for x in range(cx-20,cx+21):
+    block=a[y-3:y+4,x-3:x+4]
+    if block.shape==(7,7) and not block.any():choices.append(((x-cx)**2+(y-cy)**2,x,y))
+  assert choices,(pose,name);_,x,y=min(choices);probes.append({'name':name,'rectangle':[x-3,y-3,x+4,y+4],'maxAlpha':0,'zeroPixels':49})
+ points=[]
+ for end,(x0,y0,x1,y1) in enumerate(ends[pose]):
+  yy,xx=np.where(a[y0:y1,x0:x1]>127);yy+=y0;xx+=x0;x=int(xx.min() if end==0 else xx.max());y=float(np.mean(yy[xx==x]));points.append([x,y])
+ lanceLength=float(math.dist(*points));tipmargin=im.width-1-points[1][0]
+ measured={'nativeSize':list(im.size),'padRight':common[0]-im.width,'padBottom':common[1]-im.height,'sourceSupportAnchorEstimated':foot,'sourceFootMidpoint':[mx,foot[1]],'hoofMeasurements':feet,'registrationOffsetSource':off,'registrationOffsetLogical':loff,'fullCanvasBoundsLogical':full,'visibleBoundsAlphaGreaterThan127':q['bboxAlphaGreaterThan127'],'projectedLanceEndpoints':points,'projectedLanceLengthSourcePixels':lanceLength,'nativeLanceTipRightMarginPixels':tipmargin,'negativeSpaceProbes':probes,'semanticReview':sem[pose]}
+ poses[pose]=measured;q.update({'suggestedSourceFoot':foot,'registrationMeasurement':measured,'negativeSpaceProbes':probes,'semanticReview':sem[pose],'sharedScale':s,'scaleFraction':'56/947','strictNativePerimeterGate':'PASS, no native edge pixel alpha>1; native alpha1 samples retained unchanged','status':'Raw/source QA complete; awaiting coordinator native quartet/export review'});(d/'alpha-qa.json').write_text(json.dumps(q,ensure_ascii=False,indent=2)+'\n')
+ bundleposes[pose]={'master':str(d/'master.png'),'raw':str(d/'raw.png'),'exactPrompt':str(d/'prompt.txt'),'request':str(d/'request.json'),'exactToolCallPromptVerified':True,'exactPromptSha256':req['promptSha256'],'alphaQA':str(d/'alpha-qa.json'),'qaBlack':str(d/'qa-black.png'),'qaWhite':str(d/'qa-white.png'),'nativeSize':list(im.size),'sourceFootAnchorSuggested':foot,'visibleBoundsAlphaGreaterThan127':q['bboxAlphaGreaterThan127'],'sha256':q['sha256'],'generationSource':q['nativeSource'],'review':sem[pose]}
+maxoff=max(abs(v) for p in poses.values() for v in p['registrationOffsetLogical']);limit=max(4,math.ceil(maxoff));baseline=poses['idle']['projectedLanceLengthSourcePixels']
+for p in poses.values():p['projectedLanceLengthVersusIdleRatio']=p['projectedLanceLengthSourcePixels']/baseline
+status='Four native poses complete, byte and strict alpha QA pass; coordinator native sequence review pending'
+reg={'status':status,'sharedScale':s,'scaleFraction':'56/947','bodyReferenceSourcePixels':947,'bodyTargetHeightLogicalPixels':56,'canonicalSourceFoot':canon,'commonSourceCanvas':common,'proposedCommonFrameSize':frame,'proposedOrigin':origin,'recommendedRegistrationLimitLogicalPixels':limit,'maximumMeasuredRegistrationLogicalPixels':maxoff,'canvasPaddingToleranceRequired':0,'maximumPadRight':0,'maximumPadBottom':0,'paddingPolicy':'All four selected native sources are1560x1008. No padding required or used. Preserve each entire original canvas and all its pixels.','registrationMethod':'Four visually inspected hoof ROIs, alpha>127; each lowest sole y and bottom4row meanx measured. x averages all four hoof centers including raised hooves for stable whole-mount anchor, y uses lowest hoof. Rider boots/stirrups never included. One common56/947 scale, whole-canvas translation only.','poses':poses}
+manifest={'artifactKind':'named-hero-appearance','asset':'C01-UNIT-HEAVY-KNIGHT','baseTopicId':'C01-UNIT-HEAVY-KNIGHT','unitType':'c01.roderick','appearanceId':None,'appearanceIdStatus':'Coordinator-owned, no new canonical topic','canonicalTopicCountDelta':0,'genericTroopArtModified':False,'status':status,'frameOrder':order,'sharedScale':s,'bodyReferenceSourcePixels':947,'bodyTargetHeightLogicalPixels':56,'canonicalSourceFoot':canon,'commonSourceCanvas':common,'sourceEvidence':str(b/'source-evidence.json'),'registrationEvidence':str(b/'registration-evidence.json'),'identityContract':'Original C01-CHAR-RODERICK-01 older gray-haired/full-bearded mentor; broad matte old steel armor, blue-gray scarf/tabard, brown gear, plain round shield and straight sword. No numerical age invented; generic heavy-knight young helmeted mace/rectangular shield is independent.','weaponContract':'Actual mounted/heavy rules knight-lance and knight-charge. Approved personal brown horse/lance reconstruction based on original cavalry horse construction, not an assertion that original named card depicted a horse. Right lance hand, left round-shield arm and rein hand; original sword sheathed. Single attack slot serves both weapons, FX02/07 separate. No gameplay occupancy or weapon change.','sourcePolicy':'Native built-in imagegen raw/master bytes unmodified, exact prompt/request/reference hashes verified, failed revisions retained. QA composites/common-scale proofs are diagnostics only.','selectedAttempts':{'idle':'attempt03 larger elder head, clean armor, native edge pass','walk-a':'first native output','attack':'first native output','walk-b':'attempt02 hind-only support correction'},'supersededAttempts':[{'directory':'idle/attempt-01','reason':'Both hands on lance, left hand should hold reins'},{'directory':'idle/attempt-02','reason':'Hands fixed; head too small/armor mottled; strict raw perimeter fails fouralpha2pixels. Not accepted through padding.'},{'directory':'walk-b/attempt-01','reason':'Only front supports oppose walk-a; hind supports repeat. Corrected natively.'}],'poses':bundleposes}
+qa={'status':status,'rawNativeShaAndPromptReferenceChecks':'PASS for all4','nativeStrictAlphaPerimeter':'PASS all4, A>1count0','negativeSpaceProbes':'All12 seven-by-seven leg-gap probes have49zero-alpha pixels','registration':reg,'bodyScaleWarning':'56logical measures combined rider+horse; infantry44 is world-scale comparison, not horse scaling denominator','lanceProjection':'Native measured endpoint spans differ by less than a fewpercent, not claimed exact physical equality; no attack-only extension. Full tips retained. Attack right visible margin only5source pixels, but strict raw perimeter passes and wholecanvas export has ample frame margin.','supersededAttempts':manifest['supersededAttempts'],'pending':'Coordinator formal native export review, live scenes and hero appearance binding; separate portrait still next'}
+for name,obj in [('registration-evidence.json',reg),('bundle-manifest.json',manifest),('qa-review.json',qa)]:
+ p=b/name
+ if p.exists():
+  old=json.loads(p.read_text())
+  if 'coordinatorSequenceApproval' in old:obj['coordinatorSequenceApproval']=old['coordinatorSequenceApproval'];obj['status']=old.get('status',obj['status'])
+ p.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
+source=json.loads((b/'source-evidence.json').read_text());source['quartetStatus']=status;source['registrationEvidence']='registration-evidence.json';source['frameOrder']=order;source['sharedScaleLocked']='56/947';source['selectedIdle']='attempt-03';source['noRawEdgeGateWaiver']=True;(b/'source-evidence.json').write_text(json.dumps(source,ensure_ascii=False,indent=2)+'\n')
+# Whole native-canvas registration proof. Source files are only read, never altered.
+reviewdir=b/'qa-common-scale';reviewdir.mkdir(exist_ok=True);review=Image.new('RGB',(1024,540),(215,215,215));draw=ImageDraw.Draw(review)
+for col,pose in enumerate(order):
+ im=imgs[pose];p=poses[pose];tx=origin[0]+p['registrationOffsetLogical'][0];ty=origin[1]+p['registrationOffsetLogical'][1];sprite=im.transform(tuple(frame),Image.Transform.AFFINE,(1/s,0,-tx/s,0,1/s,-ty/s),resample=Image.Resampling.BICUBIC,fillcolor=(0,0,0,0));sprite.save(reviewdir/f'{pose}-rgba.png')
+ for row,bg in enumerate(['white','black','#65746a']):
+  tile=Image.new('RGBA',tuple(frame),bg);tile.alpha_composite(sprite);review.paste(tile.convert('RGB').resize((256,160),Image.Resampling.NEAREST),(col*256,row*180+20));draw.text((col*256+4,row*180+4),f'{pose}: foot{p["sourceSupportAnchorEstimated"]}',fill='black')
+review.save(reviewdir/'review-2x.png');(reviewdir/'transform-evidence.json').write_text(json.dumps({'kind':'Diagnostic only, not source/master','scale':s,'origin':origin,'frame':frame,'commonCanvas':common,'wholeCanvasBounds':{p:poses[p]['fullCanvasBoundsLogical'] for p in order},'sourcePixelsModified':False},indent=2)+'\n')
+(b/'pose-review.md').write_text('# Roderick named mounted quartet\n\n'+status+'\n\nShared56/947, common1560×1008, frame128×80, origin[14,6], registrationlimit'+str(limit)+'. No source padding, trim, alpha cleanup or per-pose fit.\n\n'+'\n\n'.join(f'## {p}\nSource foot{poses[p]["sourceSupportAnchorEstimated"]}; source offset{poses[p]["registrationOffsetSource"]}; logical offset{poses[p]["registrationOffsetLogical"]}.\n{sem[p]}' for p in order)+'\n\nOriginal mounted rule versus dismounted portrait completion remains explicitly documented in source-contract-review.md. Coordinator owns runtime export, complete scenes and appearance binding.\n')
+print(json.dumps({'sourceFeet':{p:poses[p]['sourceSupportAnchorEstimated'] for p in order},'sharedScale':'56/947','nativeCanvas':common,'frame':frame,'origin':origin,'limit':limit,'maxLogicalShift':maxoff,'lanceLengths':{p:poses[p]['projectedLanceLengthSourcePixels'] for p in order},'lanceRatios':{p:poses[p]['projectedLanceLengthVersusIdleRatio'] for p in order},'integrity':'PASS','review':str(reviewdir/'review-2x.png')},indent=2))

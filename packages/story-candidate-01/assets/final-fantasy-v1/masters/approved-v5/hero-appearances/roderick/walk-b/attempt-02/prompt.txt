@@ -1,0 +1,9 @@
+Use case: precise-object-edit. Correct ONLY the TWO HIND LEGS of the supplied transparent Roderick WALK-B sprite. Its front legs are already correct and MUST remain unchanged: the nearer front hoof aroundx950,y975 stays planted, and the far front folded hoof aroundx1040,y850 stays lifted.
+
+The HIND leg support currently repeats WALK-A. Swap it explicitly:
+- The rear leg presently stretching down toward screen LEFT, with its planted hoof centered aboutx450,y930, must now LIFT. Bend this same connected leg at its natural hock so its hoof floats aroundx510,y850–880, with at least70pixels of clearly transparent air below it.
+- The OTHER rear leg presently bent forward under the belly, its floating hoof centered aboutx710,y870, must now PLANT. Extend that same connected leg down to a full firm hoof aroundx650–700,y965–975. The hoof must reach the same ground line as the planted front hoof. Preserve its anatomical attachment and near/far overlap.
+
+Exactly two hind legs and two forelegs in total. Remove the old hind hoof silhouettes rather than duplicating them. Make a convincing alternate horse stride with one hind support and the opposite hind recovery; do not just translate both feet. Preserve the existing horse hindquarter volume, belly and tail. No extra limb, lost hoof or disconnected leg.
+
+Absolutely preserve the complete upper rider and horse/front-body image: elder gray-haired/bearded face and head size, all matte armor, scarf, shield, right-hand lance/left-hand reins, complete sheathed sword, saddle/stirrups, the correct two FORELEGS, horse face blaze/mane, camera and source-pixel scale. Same1560×1008 canvas, no crop/resize/mirror. The full lance and tail stay exactly the same. This is a LOCAL hind-leg support correction, not a new composition. Keep genuine transparent leg gaps, at least25clear rows below lowest hoof, no visible edge residue, ground shadow, backdrop or FX.

@@ -1,0 +1,68 @@
+{
+  "topicId": "C01-STATUS-12",
+  "assetId": "C01-FFV1-STATUS-12",
+  "label": "士气",
+  "category": "status",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "directStatusBinding": "inspired",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-22dd7b8d-e38e-4150-927a-f1d30c07091a.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-12-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "atlasSha256": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "status-atlas-01.png, row 3 column 4 (one based)",
+    "topicIndex": 11,
+    "inspectionCropCoordinates": [
+      945,
+      632,
+      1249,
+      935
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; source magenta and grid remain inspection only, no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-12.png",
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-12-nominal-cell.png",
+    "nominalGridCellCoordinates": [
+      942,
+      629,
+      1252,
+      938
+    ],
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned the exact topic IDs in this batch after original source inspection. Preserve32px runtime and28px HUD. Source raw/master immutable; independent QA previews authorized."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-12-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "identityClarification": "Exactly ONE completely BLANK gray hanging banner, forked into TWO long pointed lower tails with a clear V notch. It hangs from ONE horizontal wooden crossbar extending right from ONE brown vertical wooden pole, with ONE steel spearhead on top. Preserve TWO golden cord loops at each top attachment and the gold hanging rope/knot/tassel grouping on the left side of the cloth, as in image 1. Match original arrangement: spear pole left, hanging cloth right. Pale tan narrow edging, broad gray cloth folds, no emblem or readable text. The original gray fabric must not turn into a faction color or a chevron symbol; folds are lighting only.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Parent owns backup/export/catalog binding. No repository or gameplay edits.",
+  "semanticBindingNote": "Authored morale banner is directly bound to inspired. Original blank gray banner preserved."
+}

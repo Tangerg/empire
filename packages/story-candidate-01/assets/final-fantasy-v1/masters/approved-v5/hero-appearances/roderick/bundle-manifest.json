@@ -1,0 +1,167 @@
+{
+  "artifactKind": "named-hero-appearance",
+  "asset": "C01-UNIT-HEAVY-KNIGHT",
+  "baseTopicId": "C01-UNIT-HEAVY-KNIGHT",
+  "unitType": "c01.roderick",
+  "appearanceId": null,
+  "appearanceIdStatus": "Coordinator-owned, no new canonical topic",
+  "canonicalTopicCountDelta": 0,
+  "genericTroopArtModified": false,
+  "status": "Four native poses complete, byte and strict alpha QA pass; coordinator native sequence review pending",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "sharedScale": 0.059134107708553325,
+  "bodyReferenceSourcePixels": 947,
+  "bodyTargetHeightLogicalPixels": 56,
+  "canonicalSourceFoot": [
+    782,
+    975
+  ],
+  "commonSourceCanvas": [
+    1560,
+    1008
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/registration-evidence.json",
+  "identityContract": "Original C01-CHAR-RODERICK-01 older gray-haired/full-bearded mentor; broad matte old steel armor, blue-gray scarf/tabard, brown gear, plain round shield and straight sword. No numerical age invented; generic heavy-knight young helmeted mace/rectangular shield is independent.",
+  "weaponContract": "Actual mounted/heavy rules knight-lance and knight-charge. Approved personal brown horse/lance reconstruction based on original cavalry horse construction, not an assertion that original named card depicted a horse. Right lance hand, left round-shield arm and rein hand; original sword sheathed. Single attack slot serves both weapons, FX02/07 separate. No gameplay occupancy or weapon change.",
+  "sourcePolicy": "Native built-in imagegen raw/master bytes unmodified, exact prompt/request/reference hashes verified, failed revisions retained. QA composites/common-scale proofs are diagnostics only.",
+  "selectedAttempts": {
+    "idle": "attempt03 larger elder head, clean armor, native edge pass",
+    "walk-a": "first native output",
+    "attack": "first native output",
+    "walk-b": "attempt02 hind-only support correction"
+  },
+  "supersededAttempts": [
+    {
+      "directory": "idle/attempt-01",
+      "reason": "Both hands on lance, left hand should hold reins"
+    },
+    {
+      "directory": "idle/attempt-02",
+      "reason": "Hands fixed; head too small/armor mottled; strict raw perimeter fails fouralpha2pixels. Not accepted through padding."
+    },
+    {
+      "directory": "walk-b/attempt-01",
+      "reason": "Only front supports oppose walk-a; hind supports repeat. Corrected natively."
+    }
+  ],
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "32020b8a2f3ff6552097863365e07d9084b3425117a88bca2773148de9212a5b",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/qa-white.png",
+      "nativeSize": [
+        1560,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        782,
+        975
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        272,
+        22,
+        1459,
+        976
+      ],
+      "sha256": "d75f827aaff16fa667939d525a853f0d25ba5950db3c3d0a911f9b53f6846a80",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ea24f369-f330-4e8d-a756-28c8e8573056.png",
+      "review": "Approved attempt03: older exposed gray-haired/full-bearded mentor, broad matte gray armor, blue-gray scarf/tabard, original round shield and sheathed sword. Reconstructed brown horse with dark mane/tail and pale blaze, four planted hooves. Right glove alone holds lance, left glove holds reins below shaft."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "3cee706f70422f2e66ec806217a583d6a701d93d06edfe99af7115ad9bba791f",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-a/qa-white.png",
+      "nativeSize": [
+        1560,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        792,
+        981
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        241,
+        21,
+        1456,
+        982
+      ],
+      "sha256": "14c6e1ea1f83a90c9e2364133eb08f333957b9e76c4e671132c761b75f871869",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7df80139-c38d-45da-928d-541b3171689e.png",
+      "review": "Four connected horse legs. Outer visible hind hoof and outer visible fore hoof support; the two central bent hooves are airborne. Valid first stride, with upper elder/gear identity preserved. Literal prompt diagonal labeling is not relied on; actual individual supports define the paired walk-b."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "8dd4ea959a230f53819e5e3a11342004fe5fcd2c817ab81c8d8e589713645223",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/attack/qa-white.png",
+      "nativeSize": [
+        1560,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        717,
+        959
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        121,
+        49,
+        1555,
+        960
+      ],
+      "sha256": "cf75bff11cd8759ff2ed0cba1b0bcdeb48c98245e18d587bc277e4938ea0309f",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8128f4ba-b968-48cb-9abd-e7af1548222b.png",
+      "review": "Clear forward lean and right-hand horizontal lance thrust; left glove retains reins and left forearm retains round shield. Horse drives/braces forward with all four legs retained, one hind hoof recovering above ground. Straight sword remains sheathed. Lance projected length measured from native endpoints, no attack-only extension."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "815a134d5c92ad9733f757435fe84c115aa62c49fb7fe0004c7ab0ea8afe0f72",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/walk-b/qa-white.png",
+      "nativeSize": [
+        1560,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        773,
+        980
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        238,
+        19,
+        1459,
+        981
+      ],
+      "sha256": "00d9ed9e94545f1a67f75b0b33b4abca8c9216dfa1eb555b18c3ef3a209a1e6a",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-00af9492-2715-4835-8b2e-35e2c6d9f0b3.png",
+      "review": "Selected attempt02 swaps both hind supports after attempt01 only reversed forelegs. Now the formerly central lifted legs support, and the formerly outer planted legs lift. Both hind and fore support relations oppose walk-a; upper older face, saddle, round shield, right-hand lance and left-hand reins remain coherent."
+    }
+  }
+}

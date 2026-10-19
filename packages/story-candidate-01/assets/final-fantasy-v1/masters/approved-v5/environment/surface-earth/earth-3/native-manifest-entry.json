@@ -1,0 +1,44 @@
+{
+  "atlas": "surface-earth",
+  "cell_index": 2,
+  "original_cellOrder_token": "earth-3",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-86b949e1-85ea-4ca5-a2cb-95053c376be3.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/earth-3-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/earth-3/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-earth/source-contract.json",
+  "sha256": "a8c48428e8f349553d7fcc50736e615c95fe1fc289c50a482744c53713f945f1",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "preview_world_periods": [
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ]
+  ],
+  "world_period_selected": null,
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Warm muted ochre compacted soil with two long shallow roughly vertical curved rut bands and sparse gray-brown stone groups. Original longitudinal-track identity is retained and distinct from source2 crossing ruts.",
+    "style_review": "Broad opaque soil planes and about fourteen stone groups with very little fine gravel. Multiple secondary soil contour patches and faint texture remain. Ruts have light central bands with dark edges, making them stronger than the source subtle wheel tracks.",
+    "palette_caveat": "Visually brighter and more golden/tan than original muted ochre, close to new source1 in overall color; source distinction is carried mainly by longitudinal ruts. Quantitative color differences saved.",
+    "scale_caveat": "Stone groups around70-150 native pixels,7-15 logical at128 or14-31 at256. Ruts span full period; their slight diverging curves and repeated phase may create visible track discontinuities. This remains catalog-only material art, not new game roads.",
+    "native_acceptance": "Opaque catalog source2 candidate;128/256 preview only, no natural seamlessness or scene acceptance."
+  }
+}

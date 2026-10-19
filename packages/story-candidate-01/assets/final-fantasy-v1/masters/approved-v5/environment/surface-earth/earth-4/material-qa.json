@@ -1,0 +1,72 @@
+{
+  "asset": "earth-4",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "fde3a5007ac460df170aec643f58b3a8705186da809ce2a4ab41c37cfb748621",
+  "RGB_mean": [
+    94.59851219319867,
+    71.94618369542822,
+    47.93776915465407
+  ],
+  "RGB_std": [
+    5.9688409926675705,
+    5.202614336845665,
+    5.880131182696271
+  ],
+  "luma_mean": 75.02866120421032,
+  "luma_std": 5.183432236138505,
+  "luma_percentiles_5_50_95": [
+    67.02059999999999,
+    75.0848,
+    83.4682
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 73.14451321022729,
+    "bottom": 74.66770650667863,
+    "left": 75.39567010815391,
+    "right": 73.63014354066985,
+    "central_half": 75.83782164489433
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 4.860978203083466,
+    "top_bottom_mean_abs_RGB": 4.619351408825093,
+    "left_right_max_abs_RGB": 20.0,
+    "top_bottom_max_abs_RGB": 22.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Dark brown muddy floor with five separated dull gray reflective wet patches and sparse gray-brown stones, preserving the puddles actually visible in the original source. No blue water, new channel, water mask or added terrain topology.",
+    "style_review": "Five broad flat puddle patches have a restrained pale edge segment, with about ten stone groups and broad low-contrast mud regions. Small secondary soil patches and some low-contrast texture remain rather than the requested six-to-ten total regions. Stones have darker outlined bases and may appear slightly raised.",
+    "palette_caveat": "Brown muddy identity is retained but visually warmer/less gray than the original. Wet-patch sizes are larger and cleaner than old small irregular reflective spots; no exact feature-count equivalence is claimed.",
+    "scale_caveat": "Wet patches are around180-230 native pixels across,18-23 logical at128 or37-47 at256. Stone groups roughly80-160 native,8-16 at128 or16-33 at256. This source remains catalog-only.",
+    "native_acceptance": "Opaque catalog source3 candidate; source-evidenced small puddles only.128/256 preview and actual scene review pending; no natural seamlessness claim."
+  },
+  "reference_material_identity": "Dark gray-brown muddy ground with several small pale gray reflective puddle shapes and stones; do not erase confirmed wet/puddle identity by copying dry earth.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_previews": [
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ]
+  ],
+  "world_period_selected": null,
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

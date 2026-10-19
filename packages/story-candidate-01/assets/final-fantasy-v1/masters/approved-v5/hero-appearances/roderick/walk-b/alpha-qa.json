@@ -1,0 +1,226 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-00af9492-2715-4835-8b2e-35e2c6d9f0b3.png",
+  "size": [
+    1560,
+    1008
+  ],
+  "mode": "RGBA",
+  "sha256": "00d9ed9e94545f1a67f75b0b33b4abca8c9216dfa1eb555b18c3ef3a209a1e6a",
+  "bboxAlphaNonzero": [
+    81,
+    17,
+    1532,
+    986
+  ],
+  "bboxAlphaGreaterThan127": [
+    238,
+    19,
+    1459,
+    981
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1034291,
+  "alphaOnePixels": 5625,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "suggestedSourceFoot": [
+    773,
+    980
+  ],
+  "registrationMeasurement": {
+    "nativeSize": [
+      1560,
+      1008
+    ],
+    "padRight": 0,
+    "padBottom": 0,
+    "sourceSupportAnchorEstimated": [
+      773,
+      980
+    ],
+    "sourceFootMidpoint": [
+      772.6911521402421,
+      980
+    ],
+    "hoofMeasurements": [
+      {
+        "hoofIndex": 0,
+        "roi": [
+          415,
+          760,
+          545,
+          890
+        ],
+        "bounds": [
+          432,
+          760,
+          545,
+          865
+        ],
+        "soleY": 864,
+        "bottomFourRowsMeanX": 446.125
+      },
+      {
+        "hoofIndex": 1,
+        "roi": [
+          625,
+          870,
+          780,
+          980
+        ],
+        "bounds": [
+          625,
+          870,
+          761,
+          960
+        ],
+        "soleY": 959,
+        "bottomFourRowsMeanX": 707.7216981132076
+      },
+      {
+        "hoofIndex": 2,
+        "roi": [
+          870,
+          890,
+          1040,
+          995
+        ],
+        "bounds": [
+          870,
+          890,
+          1025,
+          981
+        ],
+        "soleY": 980,
+        "bottomFourRowsMeanX": 966.9179104477612
+      },
+      {
+        "hoofIndex": 3,
+        "roi": [
+          970,
+          760,
+          1090,
+          900
+        ],
+        "bounds": [
+          970,
+          760,
+          1090,
+          900
+        ],
+        "soleY": 899,
+        "bottomFourRowsMeanX": 970.0
+      }
+    ],
+    "registrationOffsetSource": [
+      9,
+      -5
+    ],
+    "registrationOffsetLogical": [
+      0.53220696937698,
+      -0.29567053854276665
+    ],
+    "fullCanvasBoundsLogical": [
+      14.532206969376979,
+      5.704329461457234,
+      106.78141499472017,
+      65.31151003167898
+    ],
+    "visibleBoundsAlphaGreaterThan127": [
+      238,
+      19,
+      1459,
+      981
+    ],
+    "projectedLanceEndpoints": [
+      [
+        369,
+        467.0
+      ],
+      [
+        1458,
+        218.5
+      ]
+    ],
+    "projectedLanceLengthSourcePixels": 1116.9929498434626,
+    "nativeLanceTipRightMarginPixels": 101,
+    "negativeSpaceProbes": [
+      {
+        "name": "hind-leg-gap",
+        "rectangle": [
+          577,
+          872,
+          584,
+          879
+        ],
+        "maxAlpha": 0,
+        "zeroPixels": 49
+      },
+      {
+        "name": "middle-leg-gap",
+        "rectangle": [
+          802,
+          897,
+          809,
+          904
+        ],
+        "maxAlpha": 0,
+        "zeroPixels": 49
+      },
+      {
+        "name": "fore-leg-gap",
+        "rectangle": [
+          1077,
+          908,
+          1084,
+          915
+        ],
+        "maxAlpha": 0,
+        "zeroPixels": 49
+      }
+    ],
+    "semanticReview": "Selected attempt02 swaps both hind supports after attempt01 only reversed forelegs. Now the formerly central lifted legs support, and the formerly outer planted legs lift. Both hind and fore support relations oppose walk-a; upper older face, saddle, round shield, right-hand lance and left-hand reins remain coherent."
+  },
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-leg-gap",
+      "rectangle": [
+        577,
+        872,
+        584,
+        879
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "middle-leg-gap",
+      "rectangle": [
+        802,
+        897,
+        809,
+        904
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "fore-leg-gap",
+      "rectangle": [
+        1077,
+        908,
+        1084,
+        915
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Selected attempt02 swaps both hind supports after attempt01 only reversed forelegs. Now the formerly central lifted legs support, and the formerly outer planted legs lift. Both hind and fore support relations oppose walk-a; upper older face, saddle, round shield, right-hand lance and left-hand reins remain coherent.",
+  "sharedScale": 0.059134107708553325,
+  "scaleFraction": "56/947",
+  "strictNativePerimeterGate": "PASS, no native edge pixel alpha>1; native alpha1 samples retained unchanged",
+  "status": "Raw/source QA complete; awaiting coordinator native quartet/export review"
+}

@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-STATUS-06",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.4720212703718118,
+  "nearOpaqueFractionAlphaGE250": 0.5154281419076181,
+  "nonzeroAlphaBBox": [
+    0,
+    37,
+    1202,
+    1196
+  ],
+  "visibleAlphaBBoxGE8": [
+    76,
+    70,
+    1167,
+    1173
+  ],
+  "visibleAlphaBBoxGE128": [
+    77,
+    71,
+    1166,
+    1173
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    77,
+    71,
+    88,
+    81
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 9,
+  "sha256": "d3cb1c120d6ea96ee390c59bd291556e50d6c3407b143b5e696192df10d623b9",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: empty olive hood, golden-olive diagonal fern and brown sole form three distinct components; tiny leaflet lobes simplify at HUD28 without becoming noise."
+  ],
+  "identityVerified": "Exactly ONE EMPTY deep olive-green hood on the LEFT, no head, face or person inside. Exactly ONE golden-olive fern frond crosses diagonally from lower-left to upper-right in front of the hood; preserve its central stem and alternately branching blunt lobed leaflets, simplified into chunky readable grouped shapes rather than fine teeth. A small grouping of broad dark-green leaves sits behind the frond base as in image 1. Exactly ONE brown boot SOLE on the RIGHT with one forefoot shape and one smaller heel separated by a dark transverse sole division. It is a sole symbol, not a whole boot or wearer. Keep hood, fern and sole as distinct original components with correct olive/ochre/brown colors.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-06/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: empty olive hood, golden-olive diagonal fern and brown sole form three distinct components; tiny leaflet lobes simplify at HUD28 without becoming noise."
+  },
+  "reviewComplete": true
+}

@@ -1,0 +1,72 @@
+{
+  "asset": "earth-3",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "a8c48428e8f349553d7fcc50736e615c95fe1fc289c50a482744c53713f945f1",
+  "RGB_mean": [
+    145.0933383189742,
+    108.01783765634181,
+    68.04456997575859
+  ],
+  "RGB_std": [
+    10.77958634207729,
+    8.985240959689277,
+    6.521808281642276
+  ],
+  "luma_mean": 113.01401917067933,
+  "luma_std": 9.111739628814874,
+  "luma_percentiles_5_50_95": [
+    100.12659999999998,
+    113.906,
+    127.18279999999999
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 112.07565764802632,
+    "bottom": 110.44233896281897,
+    "left": 111.1133286632775,
+    "right": 109.32694965111642,
+    "central_half": 113.80351221651999
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 6.129984051036683,
+    "top_bottom_mean_abs_RGB": 9.442583732057416,
+    "left_right_max_abs_RGB": 27.0,
+    "top_bottom_max_abs_RGB": 32.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Warm muted ochre compacted soil with two long shallow roughly vertical curved rut bands and sparse gray-brown stone groups. Original longitudinal-track identity is retained and distinct from source2 crossing ruts.",
+    "style_review": "Broad opaque soil planes and about fourteen stone groups with very little fine gravel. Multiple secondary soil contour patches and faint texture remain. Ruts have light central bands with dark edges, making them stronger than the source subtle wheel tracks.",
+    "palette_caveat": "Visually brighter and more golden/tan than original muted ochre, close to new source1 in overall color; source distinction is carried mainly by longitudinal ruts. Quantitative color differences saved.",
+    "scale_caveat": "Stone groups around70-150 native pixels,7-15 logical at128 or14-31 at256. Ruts span full period; their slight diverging curves and repeated phase may create visible track discontinuities. This remains catalog-only material art, not new game roads.",
+    "native_acceptance": "Opaque catalog source2 candidate;128/256 preview only, no natural seamlessness or scene acceptance."
+  },
+  "reference_material_identity": "Warm ochre compacted earth with longitudinal wheel/rut bands and pebbles; track identity is already in the original pixels.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_previews": [
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ]
+  ],
+  "world_period_selected": null,
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

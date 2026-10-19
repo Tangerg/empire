@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-STATUS-12",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.619035990730778,
+  "nearOpaqueFractionAlphaGE250": 0.36204337507535694,
+  "nonzeroAlphaBBox": [
+    81,
+    10,
+    1208,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    201,
+    11,
+    1098,
+    1242
+  ],
+  "visibleAlphaBBoxGE128": [
+    202,
+    13,
+    1097,
+    1241
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    202,
+    13,
+    157,
+    13
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 11,
+  "sha256": "ad926f6992e136a1e1966444b0837f976c6cf9c26191d502525b747e6e97c08a",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: blank gray two-tail banner, spear pole and gold ropes remain readable. Individual rope loops are exact at native source but not separately resolved at HUD28."
+  ],
+  "identityVerified": "Exactly ONE completely BLANK gray hanging banner, forked into TWO long pointed lower tails with a clear V notch. It hangs from ONE horizontal wooden crossbar extending right from ONE brown vertical wooden pole, with ONE steel spearhead on top. Preserve TWO golden cord loops at each top attachment and the gold hanging rope/knot/tassel grouping on the left side of the cloth, as in image 1. Match original arrangement: spear pole left, hanging cloth right. Pale tan narrow edging, broad gray cloth folds, no emblem or readable text. The original gray fabric must not turn into a faction color or a chevron symbol; folds are lighting only.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-12/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: blank gray two-tail banner, spear pole and gold ropes remain readable. Individual rope loops are exact at native source but not separately resolved at HUD28."
+  },
+  "reviewComplete": true
+}
