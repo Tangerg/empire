@@ -1,0 +1,61 @@
+{
+  "topicId": "C01-HUD-07",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5042104500049602,
+  "nearOpaqueFractionAlphaGE250": 0.46385601163994516,
+  "nonzeroAlphaBBox": [
+    0,
+    83,
+    1220,
+    1165
+  ],
+  "visibleAlphaBBoxGE8": [
+    61,
+    182,
+    1192,
+    1063
+  ],
+  "visibleAlphaBBoxGE128": [
+    62,
+    183,
+    1191,
+    1063
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    61,
+    182,
+    62,
+    191
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 27,
+  "sha256": "1471c2a3130af0fd0c23b698aa19c34bb1e4365062da296c75809159ec4543a9",
+  "matchesRawGeneratedBytes": true,
+  "identityVerified": "Exactly ONE upright wooden wagon wheel with a brass-brown rim, central metal hub, and exactly EIGHT straight spokes, surrounded left and right by two separate thick blue-gray square brackets opening inward toward the wheel. The wheel center and bracket openings are transparent. Preserve brown wheel and blue-gray bracket pair; no wagon body, extra wheel, axle or arrows.",
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "reviewComplete": true,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-07/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas aspect-preserving fit to32, then HUD downscale to28; source unmodified.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: bracket pair and eight-spoke wheel remain readable; spokes resolve at32 and compact at28. Central hub has a cooler metal highlight than the source. Native alpha1 edge residue retained; meaningful bounds inset."
+  },
+  "visualQA": [
+    "Native image preserves original subject, composition and functional colors.",
+    "Bold contours and broad matte cel planes; no exterior haze or background.",
+    "Transparent alpha and open exterior verified numerically.",
+    "Actual32/HUD28 on white, black and olive: bracket pair and eight-spoke wheel remain readable; spokes resolve at32 and compact at28. Central hub has a cooler metal highlight than the source. Native alpha1 edge residue retained; meaningful bounds inset."
+  ]
+}

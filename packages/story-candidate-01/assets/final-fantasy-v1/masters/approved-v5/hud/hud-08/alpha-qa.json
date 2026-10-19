@@ -1,0 +1,61 @@
+{
+  "topicId": "C01-HUD-08",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5523415977961432,
+  "nearOpaqueFractionAlphaGE250": 0.4377176448443132,
+  "nonzeroAlphaBBox": [
+    21,
+    57,
+    1208,
+    1238
+  ],
+  "visibleAlphaBBoxGE8": [
+    49,
+    105,
+    1201,
+    1107
+  ],
+  "visibleAlphaBBoxGE128": [
+    49,
+    106,
+    1199,
+    1106
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    49,
+    105,
+    53,
+    147
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sha256": "ac2364c50b27a7a2e62d4747e687b5061ab547d1f8d628145fd60fcaa0de57fd",
+  "matchesRawGeneratedBytes": true,
+  "identityVerified": "Exactly ONE upright triangular warning sign with rounded corners and heavy dark iron outer frame. Within it are five broad ochre rock plates arranged around a dark open-bottom central gap, with a small vivid orange-and-yellow flame visible in the lower central gap. Keep three large structural corner bolts, top and both lower corners. Preserve gold-ochre rocks, charcoal triangular rim, and orange fire; no exclamation mark, skull, text or extra symbol.",
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "reviewComplete": true,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/hud/hud-08/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas aspect-preserving fit to32, then HUD downscale to28; source unmodified.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: triangular warning silhouette, five ochre plates and contained orange flame remain distinguishable. Three corner bolts preserved at native size."
+  },
+  "visualQA": [
+    "Native image preserves original subject, composition and functional colors.",
+    "Bold contours and broad matte cel planes; no exterior haze or background.",
+    "Transparent alpha and open exterior verified numerically.",
+    "Actual32/HUD28 on white, black and olive: triangular warning silhouette, five ochre plates and contained orange flame remain distinguishable. Three corner bolts preserved at native size."
+  ]
+}
