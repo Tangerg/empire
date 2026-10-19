@@ -84,3 +84,41 @@ vertically without cropping it, changing scale, or altering alpha. The declared
 anchor stays fixed; placement is reported in provenance. It is never inferred
 from alpha bounds. Initial reviewed masters need +8 for oak-ancient and +10 for
 mixed-forest-dense to bring their visible root bases back near logical y91.
+
+## Framed units and structure states
+
+`python3 tools/art/export_frame_overrides.py [--check]` reads the separate
+`tools/art/frame-overrides.json`. The initial catalog is empty. Example topic:
+
+```json
+{"schemaVersion":1,"assets":{"C01-UNIT-SWORDSMAN":{
+  "kind":"frames-v1",
+  "frames":{
+    "idle":{"source":"PACK/masters/remake-20261019/combat-unit/unit-swordsman/idle/master.png","sha256":"SHA256"},
+    "walk-a":{"source":"PACK/masters/remake-20261019/combat-unit/unit-swordsman/walk-a/master.png","sha256":"SHA256"},
+    "attack":{"source":"PACK/masters/remake-20261019/combat-unit/unit-swordsman/attack/master.png","sha256":"SHA256"},
+    "walk-b":{"source":"PACK/masters/remake-20261019/combat-unit/unit-swordsman/walk-b/master.png","sha256":"SHA256"}
+  },
+  "placement":{"renderWidth":30,"origin":[1,1]}
+}}}
+```
+
+Replace PACK with the complete repository-relative pack path. Placement numbers
+are examples, not a reviewed swordsman transform. All authored frame canvases
+must have identical dimensions. One shared renderWidth determines aspect-
+preserving rounded height; the integer origin applies to all frames. HD doubles
+that exact rendered size and origin. Entire fitted canvas must remain inside its
+frame. No independent bbox-fitting, frame synthesis, duplication, or reflection
+is performed. Shared placement must be selected against the real generated
+masters and visible foot contact, not assumed from this example.
+
+Combat semantic keys/order: idle,walk-a,attack,walk-b. Mission: idle,walk-a,
+carry-or-work,walk-b. Structures: normal,damaged,captured (states, not a motion
+loop). Exact frame sizes/anchors and outputs are checked against manifests.
+Each source and exported cell passes alpha QA independently. Identical decoded
+source or output frames are rejected, but distinct pixels are NOT evidence of
+valid animation: identity, opposing walk steps, attack readability, stable
+foot contact, structure state consistency and native-resolution motion preview
+must be reviewed separately. The JSON report explicitly leaves semantic review
+required. The current renderer has two walk frames at6.25fps and a single attack
+pose, not a fluid attack sequence. Baked-in structure characters remain static.
