@@ -2292,10 +2292,14 @@
     },
     {
       "topicId": "C01-EQUIP-RUNE-ARTIFICER",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-rune-artificer/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "b1202263f68a938fa8599afed823816f782ba160983af69e8936b8a60e081b9f"
     },
     {
       "topicId": "C01-EQUIP-RUNE-SHIELD",
@@ -2444,10 +2448,14 @@
     },
     {
       "topicId": "C01-EQUIP-WOODLAND-WALKER",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-woodland-walker/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "cba3ffa16c238df1a1b80bad62d5a210ba638a6472277d976be2fa3cf600434e"
     },
     {
       "topicId": "C01-EQUIP-WYVERN-RIDER",
@@ -5383,19 +5391,27 @@
     },
     {
       "topicId": "c02-equipment-tide-fin-scout",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-tide-fin-scout/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_scifi_static_props",
-      "assignmentPhase": "after-vacuum-haze-correction"
+      "assignmentPhase": "after-vacuum-haze-correction",
+      "sourceSha256": "3844f2d8009ce33ba9243a8538ad14d4be09031cc18e1075de2af6fb618c6358"
     },
     {
       "topicId": "c02-equipment-tide-priest",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-tide-priest/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_scifi_static_props",
-      "assignmentPhase": "after-vacuum-haze-correction"
+      "assignmentPhase": "after-vacuum-haze-correction",
+      "sourceSha256": "a540b78a5729948c37e515c07c08b5e9825cd62f8b6f2dd44208521710e5ad70"
     },
     {
       "topicId": "c02-equipment-turret-vehicle",
@@ -5405,19 +5421,26 @@
     },
     {
       "topicId": "c02-equipment-vacuum-trooper",
-      "status": "raw-generated",
-      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-vacuum-trooper/master.png",
+      "status": "exported",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-vacuum-trooper/revision-2/master.png",
       "verification": {
-        "state": "pending",
+        "state": "export-checked",
         "note": "Raw master preserved; export and visual acceptance pending",
-        "staticVisualReview": "failed-exterior-haze-revision-requested"
+        "staticVisualReview": "failed-exterior-haze-revision-requested",
+        "staticVisual": "passed-native48-semantic-and-haze-review",
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-060-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "7d44501d326315253feb54e9d7ded488f9ab19701b0c03b98b8e513791c4ed63",
+      "sourceSha256": "d55ecbe2948700593304aaf2fe36f2f2727a9f6b268cff942c4ffe37db09cdfa",
       "revisionCandidate": {
         "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-vacuum-trooper/revision-2/master.png",
-        "status": "pending-visual-review"
-      }
+        "status": "accepted-static-review"
+      },
+      "supersededSource": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-vacuum-trooper/master.png"
     },
     {
       "topicId": "c02-equipment-wind-sail-skirmisher",
@@ -7955,11 +7978,17 @@
     },
     {
       "topicId": "c03-equip-118c7423",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-118c7423/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "staticVisual": "passed-native48-semantic-and-haze-review",
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-060-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "source-inspection-before-generation",
@@ -8190,11 +8219,17 @@
     },
     {
       "topicId": "c03-equip-76cd6822",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-76cd6822/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "staticVisual": "passed-native48-semantic-and-haze-review",
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-060-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "source-inspection-before-generation",
@@ -10306,19 +10341,33 @@
         "candidateEvidence": "docs/art-rebuild-20261019/surface-002-candidate-evidence.json"
       }
     ],
-    "currentPreview": "docs/art-rebuild-20261019/cohesion-meadow-v2-fern-v5/cohesion-placement.json"
+    "currentPreview": "docs/art-rebuild-20261019/cohesion-meadow-v2-fern-v5/cohesion-placement.json",
+    "overallUserAcceptance": "rejected-current-composite-direction"
   },
   "environmentMaterials": [
     {
       "materialId": "transition-meadow-forest/forest-floor-material",
       "atlasId": "transition-meadow-forest",
-      "status": "pending",
+      "status": "exported",
       "assignment": "redraw_grayflag_environment_trees",
-      "source": null,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/transition-meadow-forest/forest-floor-material/master.png",
       "derivedComponentCount": 47,
       "maskPolicy": "preserve-original-alpha-byte-for-byte",
       "unusedCellPolicy": "preserve-original48th-entirely",
-      "designCount": 1
+      "designCount": 1,
+      "sourceSha256": "38be84ea01f6c93be9372179058c9975d630a787668c119e3f38da2edf7f0995",
+      "verification": {
+        "exportCheck": "passed",
+        "visual": "pending-paused-concept-review",
+        "runtime": "pending"
+      }
     }
-  ]
+  ],
+  "globalQualityGate": {
+    "state": "paused-pending-user-concept-alignment",
+    "userMessageId": "Sentinel_ba9f9a24526881918d0e3b7613816d42",
+    "reason": "User reports actual composite far from approved concept. Isolated/export checks do not establish accepted overall direction.",
+    "generation": "finish-only-already-in-flight; no-new-calls",
+    "next": "representative actual-scene prototype and concept-gap diagnosis before bulk continuation"
+  }
 }
