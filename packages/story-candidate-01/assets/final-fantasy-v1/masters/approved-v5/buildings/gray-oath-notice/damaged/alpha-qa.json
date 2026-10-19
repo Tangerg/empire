@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-STRUCT-GRAY-OATH-NOTICE",
+  "state": "damaged",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "transparentFraction": 0.4806068745882395,
+  "sourceFoot": [
+    627,
+    1088
+  ],
+  "sourceFootBasis": "Manually reviewed front bench-foot ground baseline at the canvas center, interpolated from fixed left/right bench support foot contacts. This intentional ground-plane point is in a transparent gap; not the lower-left stone-foot bbox bottom. One shared point applies to all states.",
+  "sourceFootAlpha": 253,
+  "matchesRawGeneratedBytes": true,
+  "sha256": "e18098e7ed50de31f6a8d4303e3a590e757ee101528ff8db06a575e687a435e9",
+  "visualQA": "Same stand with central-left roof collapse exposing broken rafters, left flag absent, three torn hanging panels plus two fallen framed panels on ground, broken central bench/platform, cracked left post and rope around right post; stone foot locations remain fixed.",
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "alphaBBoxGE1": [
+    0,
+    27,
+    1236,
+    1254
+  ],
+  "alphaBBoxGE8": [
+    27,
+    183,
+    1234,
+    1162
+  ],
+  "alphaBBoxGE128": [
+    28,
+    184,
+    1232,
+    1161
+  ],
+  "alphaBBoxGE250": [
+    30,
+    185,
+    1231,
+    1160
+  ],
+  "remarks": [
+    "Native alpha1 residue retained unchanged."
+  ]
+}

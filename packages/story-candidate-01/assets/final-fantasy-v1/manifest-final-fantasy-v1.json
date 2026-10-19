@@ -1482,13 +1482,13 @@
       "topicId": "C01-UNIT-INQUISITOR",
       "label": "审判官",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-inquisitor.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-inquisitor.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1497,13 +1497,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        45.50084889643463,
+        52.95529145444256
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-IVRA-GROWTH",
@@ -3847,13 +3848,13 @@
       "topicId": "C01-STRUCT-GRAY-OATH-NOTICE",
       "label": "灰誓公开告示",
       "category": "interactive-structure",
-      "png": "runtime/interactive-structure/struct-gray-oath-notice.png",
-      "width": 192,
-      "height": 64,
+      "png": "runtime-approved-v5/interactive-structure/struct-gray-oath-notice.png",
+      "width": 348,
+      "height": 116,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 116,
+      "frameHeight": 116,
       "frames": 3,
       "stateOrder": [
         "normal",
@@ -3861,8 +3862,8 @@
         "captured"
       ],
       "anchor": [
-        32,
-        63
+        58.26101694915254,
+        98.89152542372881
       ],
       "footprint": [
         2,
@@ -4229,13 +4230,13 @@
       "topicId": "C01-STRUCT-WALL-LIFT-GATE",
       "label": "城墙升降门",
       "category": "interactive-structure",
-      "png": "runtime/interactive-structure/struct-wall-lift-gate.png",
-      "width": 192,
-      "height": 64,
+      "png": "runtime-approved-v5/interactive-structure/struct-wall-lift-gate.png",
+      "width": 384,
+      "height": 128,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 128,
       "frames": 3,
       "stateOrder": [
         "normal",
@@ -4243,8 +4244,8 @@
         "captured"
       ],
       "anchor": [
-        32,
-        63
+        64.34034416826003,
+        111.96558317399618
       ],
       "footprint": [
         2,

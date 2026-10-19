@@ -83,11 +83,80 @@
   ],
   "sourceFootBasis": "Manually reviewed front bench-foot ground baseline at the canvas center, interpolated from fixed left/right bench support foot contacts. This intentional ground-plane point is in a transparent gap; not the lower-left stone-foot bbox bottom. One shared point applies to all states.",
   "rawGeneratedSources": {
-    "normal": "/workspace/scratch/84c9fe948755/generated_images/exec-c47eaa0d-abfd-4bc4-83c2-8e9535f3284c.png"
+    "normal": "/workspace/scratch/84c9fe948755/generated_images/exec-c47eaa0d-abfd-4bc4-83c2-8e9535f3284c.png",
+    "damaged": "/workspace/scratch/84c9fe948755/generated_images/exec-59bc04d1-2a6a-420d-be93-7b0da9f653e3.png",
+    "captured": "/workspace/scratch/84c9fe948755/generated_images/exec-cd5f8dcc-bf6d-4a6a-b066-0b0d2ac16651.png"
   },
   "styleReferences": [
     "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
     "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
   ],
-  "postGenerationTransform": "None; copied native PNG bytes unchanged."
+  "postGenerationTransform": "None; copied native PNG bytes unchanged.",
+  "originalCropSha256": {
+    "normal": "71edd01b6df80f2607ff80d56ecf62516713368baa0c516615d417725c0a5d00",
+    "damaged": "87b988ee9f4653e8a99b4089b9e4e7458158aaaf967fcd7ab629197fbf8ca719",
+    "captured": "fd748e5ec60f51ca6ecca351d4b2d67744ca0675b0b7d19c3d5ad3dd6d29776f"
+  },
+  "normalVisibleWidth": 1180,
+  "normalParentStyleDecision": "Parent inspected normal 2026-10-19 17:18 UTC and approved it as the state-edit basis.",
+  "stateRegistrationChecks": {
+    "damaged": {
+      "leftStoneFooting": {
+        "normalRoi": [
+          70,
+          990,
+          293,
+          1155
+        ],
+        "alphaSilhouetteIoU": 0.9966654561061772
+      },
+      "rightStoneFooting": {
+        "normalRoi": [
+          1030,
+          895,
+          1194,
+          1008
+        ],
+        "alphaSilhouetteIoU": 0.9858971320218061
+      },
+      "rightFinial": {
+        "normalRoi": [
+          1020,
+          182,
+          1128,
+          305
+        ],
+        "alphaSilhouetteIoU": 0.9905795032829003
+      }
+    },
+    "captured": {
+      "leftStoneFooting": {
+        "normalRoi": [
+          70,
+          990,
+          293,
+          1155
+        ],
+        "alphaSilhouetteIoU": 0.996435290622834
+      },
+      "rightStoneFooting": {
+        "normalRoi": [
+          1030,
+          895,
+          1194,
+          1008
+        ],
+        "alphaSilhouetteIoU": 0.9956410103302084
+      },
+      "rightFinial": {
+        "normalRoi": [
+          1020,
+          182,
+          1128,
+          305
+        ],
+        "alphaSilhouetteIoU": 0.9917844860527322
+      }
+    }
+  }
 }

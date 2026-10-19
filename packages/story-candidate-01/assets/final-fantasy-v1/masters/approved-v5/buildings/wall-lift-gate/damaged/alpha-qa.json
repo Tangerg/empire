@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-STRUCT-WALL-LIFT-GATE",
+  "state": "damaged",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "transparentFraction": 0.6002597111889482,
+  "sourceFoot": [
+    627,
+    1106
+  ],
+  "sourceFootBasis": "Manually selected middle front ground-contact line of the integrated structural stone foundation under the platform at native x=627. This is above the foreground loose perimeter stones and right-pier extreme; not the alpha-bbox bottom. One normal-derived source point anchors all states.",
+  "sourceFootAlpha": 253,
+  "matchesRawGeneratedBytes": true,
+  "sha256": "8dc7ac408be416d0ba932a6bec932c109b3225263fff79982b4d78096bbb5a02",
+  "visualQA": "Same mechanism with broken/cracked left pier, split top shaft, both front suspension ropes snapped or slack, locally damaged lowered/listing timber deck and small rope/wood debris. Right winch and both original stone-foot positions persist.",
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "alphaBBoxGE1": [
+    0,
+    25,
+    1224,
+    1254
+  ],
+  "alphaBBoxGE8": [
+    125,
+    156,
+    1175,
+    1220
+  ],
+  "alphaBBoxGE128": [
+    126,
+    157,
+    1174,
+    1219
+  ],
+  "alphaBBoxGE250": [
+    127,
+    157,
+    1173,
+    1218
+  ],
+  "remarks": [
+    "Native alpha1 residue retained unchanged."
+  ]
+}

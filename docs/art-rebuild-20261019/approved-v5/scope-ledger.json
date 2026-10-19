@@ -4,23 +4,23 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 83,
+    "formalBound": 86,
     "boundByCategory": {
       "battle-prop": 32,
-      "combat-unit": 16,
+      "combat-unit": 17,
       "equipment": 12,
-      "interactive-structure": 22,
+      "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 85,
+    "rawPreservedTopics": 86,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 109
+    "registeredEnvironmentCells": 113
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 109,
+    "registeredIndividualSourceCells": 113,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -1530,15 +1530,22 @@
       "label": "审判官",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/idle/master.png",
-        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/walk-a/master.png"
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-inquisitor.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-inquisitor.png",
+      "stageEvidence": {
+        "raw": "4 native staff/shield poses, original symbols and hand assignment retained; independent FX excluded",
+        "export": "one44/883.5 body scale, measured feet, max3.984154 registration,1 bottom padding row; native motion/light/dark review passed",
+        "runtimeBinding": "canonical and HD resolver formally bound, existing footprint and rules retained",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-IVRA-GROWTH",
@@ -3048,14 +3055,21 @@
       "label": "灰誓公开告示",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/gray-oath-notice/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/gray-oath-notice/damaged/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/gray-oath-notice/normal/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-gray-oath-notice.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-gray-oath-notice.png",
+      "stageEvidence": {
+        "raw": "3 native states with4board notice canopy, original damaged boards and captured cloth/knots",
+        "export": "one104/1180 scale and6271088 ground point, no state offsets; fixed footing silhouette IoU98.6-99.7%",
+        "runtimeBinding": "canonical and HD resolver formally bound, existing footprint and rules retained",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-HOLY-MEDICINE-SHED",
@@ -3362,13 +3376,22 @@
       "category": "interactive-structure",
       "label": "城墙升降门",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/wall-lift-gate/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/wall-lift-gate/damaged/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/wall-lift-gate/normal/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-wall-lift-gate.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-wall-lift-gate.png",
+      "stageEvidence": {
+        "raw": "3 native lifting-platform states, original winch/ropes and captured square crossflag",
+        "export": "one104/1046 scale and6271106 ground point, no offsets; native light/dark state review passed",
+        "runtimeBinding": "canonical and HD resolver formally bound, existing footprint and rules retained",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
@@ -17916,7 +17939,11 @@
         "temperate-mountain-pass",
         "temperate-cliff-end-west",
         "temperate-cliff-end-east",
-        "temperate-cliff-concave-corner"
+        "temperate-cliff-concave-corner",
+        "temperate-ramp-level-1",
+        "temperate-broken-ledge",
+        "temperate-pillar-narrow",
+        "temperate-ledge-end"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -17932,12 +17959,16 @@
           "temperate-mountain-pass",
           "temperate-cliff-end-west",
           "temperate-cliff-end-east",
-          "temperate-cliff-concave-corner"
+          "temperate-cliff-concave-corner",
+          "temperate-ramp-level-1",
+          "temperate-broken-ledge",
+          "temperate-pillar-narrow",
+          "temperate-ledge-end"
         ],
-        "count": 12,
-        "export": "128/256 full-canvas registered, strict original16 cell-order/semantic pairs and unrelated pixels retained",
+        "count": 16,
+        "export": "128/256 full authored canvas; narrow-margin ramp uses120px canvas with4px margin instead of124/2 to preserve clean resampled perimeter, source unchanged; exact original semantics/order retained",
         "runtimeBinding": "actual existing elevated scenery selectors, occupancy/passability untouched",
-        "sceneReview": "First8 reviewed in complete firstlevel; next4 pass/ends/concave raw and native review; updated full-scene review pending new layout.",
+        "sceneReview": "All16 native sources and alpha/semantic contracts reviewed; first12 in existing/changed full-scene context, last4 complete atlas/native review. New layout scene integration pending.",
         "liveGame": "pending"
       }
     },

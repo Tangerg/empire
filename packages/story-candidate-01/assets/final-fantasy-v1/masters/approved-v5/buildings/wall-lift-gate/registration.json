@@ -1,0 +1,117 @@
+{
+  "topicId": "C01-STRUCT-WALL-LIFT-GATE",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "normalVisibleBounds": [
+    126,
+    160,
+    1172,
+    1219
+  ],
+  "normalVisibleWidth": 1046,
+  "sourceFoot": [
+    627,
+    1106
+  ],
+  "structuralFootEvidence": "Manually selected middle front ground-contact line of the integrated structural stone foundation under the platform at native x=627. This is above the foreground loose perimeter stones and right-pier extreme; not the alpha-bbox bottom. One normal-derived source point anchors all states.",
+  "registrationRule": "Same whole native canvas, one normal-derived scale, no per-state fit or offsets. Parent selects final runtime width.",
+  "sharedScale": null,
+  "stateVisibleBounds": {
+    "normal": [
+      126,
+      160,
+      1172,
+      1219
+    ],
+    "damaged": [
+      126,
+      157,
+      1174,
+      1219
+    ],
+    "captured": [
+      125,
+      38,
+      1174,
+      1219
+    ]
+  },
+  "registrationOffsetsLogical": {
+    "normal": [
+      0,
+      0
+    ],
+    "damaged": [
+      0,
+      0
+    ],
+    "captured": [
+      0,
+      0
+    ]
+  },
+  "stateRegistrationChecks": {
+    "damaged": {
+      "leftBaseFoot": {
+        "normalRoi": [
+          312,
+          980,
+          545,
+          1107
+        ],
+        "alphaSilhouetteIoU": 0.9852278095074505
+      },
+      "rightStoneFoundation": {
+        "normalRoi": [
+          715,
+          1004,
+          1115,
+          1221
+        ],
+        "alphaSilhouetteIoU": 0.9907912952852054
+      },
+      "rightWinchCrank": {
+        "normalRoi": [
+          900,
+          700,
+          1175,
+          900
+        ],
+        "alphaSilhouetteIoU": 0.9885386100870263
+      }
+    },
+    "captured": {
+      "leftBaseFoot": {
+        "normalRoi": [
+          312,
+          980,
+          545,
+          1107
+        ],
+        "alphaSilhouetteIoU": 0.987677643725044
+      },
+      "rightStoneFoundation": {
+        "normalRoi": [
+          715,
+          1004,
+          1115,
+          1221
+        ],
+        "alphaSilhouetteIoU": 0.9908842013564806
+      },
+      "rightWinchCrank": {
+        "normalRoi": [
+          900,
+          700,
+          1175,
+          900
+        ],
+        "alphaSilhouetteIoU": 0.9878980732128987
+      }
+    }
+  },
+  "postGenerationTransform": "none",
+  "status": "Complete native trio; parent registration review pending"
+}

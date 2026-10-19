@@ -1,0 +1,234 @@
+{
+  "config": {
+    "frames": {
+      "normal": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/wall-lift-gate/normal/master.png",
+      "damaged": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/wall-lift-gate/damaged/master.png",
+      "captured": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/wall-lift-gate/captured/master.png"
+    },
+    "scale": 0.0994263862332696,
+    "origin": [
+      2,
+      2
+    ],
+    "frameSize": [
+      128,
+      128
+    ],
+    "sourceFoot": [
+      627,
+      1106
+    ]
+  },
+  "authoredCanvas": [
+    1254,
+    1254
+  ],
+  "logicalPivot": [
+    64.34034416826003,
+    111.96558317399618
+  ],
+  "frames": [
+    {
+      "frame": "normal",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/wall-lift-gate/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "77babf056b03532ab2d8988ffd645dd54d3818446b4d8a28901b902652c90902",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 9919,
+        "nearOpaquePixels": 5831,
+        "edgeMax": 0,
+        "visibleBounds": [
+          15,
+          18,
+          119,
+          123
+        ]
+      }
+    },
+    {
+      "frame": "normal",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/wall-lift-gate/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "77babf056b03532ab2d8988ffd645dd54d3818446b4d8a28901b902652c90902",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 40105,
+        "nearOpaquePixels": 23763,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          36,
+          237,
+          246
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/wall-lift-gate/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "8dc7ac408be416d0ba932a6bec932c109b3225263fff79982b4d78096bbb5a02",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 9975,
+        "nearOpaquePixels": 5784,
+        "edgeMax": 0,
+        "visibleBounds": [
+          14,
+          18,
+          119,
+          123
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/wall-lift-gate/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "8dc7ac408be416d0ba932a6bec932c109b3225263fff79982b4d78096bbb5a02",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 40322,
+        "nearOpaquePixels": 23653,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          35,
+          237,
+          246
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/wall-lift-gate/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "0756e06da35864ff88ef51fb7768d03f698765b095240a43fa3ecf83b968d721",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 9464,
+        "nearOpaquePixels": 6181,
+        "edgeMax": 0,
+        "visibleBounds": [
+          14,
+          6,
+          119,
+          123
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/wall-lift-gate/captured/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "0756e06da35864ff88ef51fb7768d03f698765b095240a43fa3ecf83b968d721",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 38394,
+        "nearOpaquePixels": 25324,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          12,
+          237,
+          246
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

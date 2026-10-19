@@ -1,0 +1,65 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-451755a4-ebc4-49a1-8503-975b069aa43b.png",
+  "size": [
+    1561,
+    1007
+  ],
+  "mode": "RGBA",
+  "sha256": "8e52027a1d3b2e7621f9410f71501dab251c1ac399aafe93cca611271c417405",
+  "bboxAlphaNonzero": [
+    39,
+    40,
+    1529,
+    1007
+  ],
+  "bboxAlphaGreaterThan127": [
+    262,
+    78,
+    1467,
+    954
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1079251,
+  "alphaOnePixels": 5117,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        250,
+        820,
+        485,
+        980
+      ],
+      "soleY": 950,
+      "bottomBandMeanX": 365.20171673819743,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    },
+    "screenRight": {
+      "roi": [
+        800,
+        810,
+        1110,
+        980
+      ],
+      "soleY": 953,
+      "bottomBandMeanX": 981.6068111455108,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    }
+  },
+  "sourceFootMidpoint": [
+    673.4042639418542,
+    951.5
+  ],
+  "suggestedSourceFoot": [
+    673,
+    953
+  ],
+  "lockedBodyScale": 0.04980192416525184,
+  "masterRawHashMatches": true,
+  "semanticReview": "Clear forward extended original staff arm and connected glove present the tilted cross-disk/open hook in a braced casting stance, shield raised in original screen-left arm. Both boots support pose, exactly one staff/one shield, no baked independent FX."
+}

@@ -1,0 +1,147 @@
+{
+  "asset": "C01-UNIT-INQUISITOR",
+  "actualConsumers": [
+    "c01.inquisitor"
+  ],
+  "status": "Native quartet complete; coordinator final sequence review/export/binding pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Every selected master/raw PNG is byte-identical to its native output. No painting, recoloring, resizing, cropping or alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.04980192416525184,
+  "bodyReferenceSourcePixels": 883.5,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1561,
+    1008
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/registration-evidence.json",
+  "semanticContract": "C01-UNIT-INQUISITOR binds only c01.inquisitor, the campaign unit named \u5723\u8f89\u5ba1\u5224\u5b98. Keep original idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1 and exact third-row source identity. The source staff is compatible with the sole c01.inquisitor-flame range2 cross1-area magic/silence action. Original attack is visually near-idle and walk-b repeats walk-a; this quartet reconstructs a clear staff cast and opposite walking contacts. C01-EQUIP-INQUISITOR and C01-FX-06 remain separate topics; no independent spell FX is baked into this sprite and no rules change is claimed.",
+  "symbolContract": "Four-arm gold cross belongs only inside staff disk; shield keeps single narrow vertical gold bar, helmet keeps small teardrop. No symbol transplant, extra cross or rays.",
+  "selectedAttempts": {
+    "idle": "first successful native output",
+    "walk-a": "first successful native output",
+    "attack": "first successful native output",
+    "walk-b": "first successful native output"
+  },
+  "nativeCanvasAcceptance": "Coordinator2026-10-19 17:15UTC accepted actual1561x1008 idle canvas and44/883.5 scale; no regeneration or resize solely to match initial nominal dimensions.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "7a65df8a9969e77f3aaf94acd5ffa2edf6e0f857408d88a6ddffb84ca586eecd",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/idle/qa-white.png",
+      "nativeSize": [
+        1561,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        753,
+        983
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        362,
+        89,
+        1249,
+        984
+      ],
+      "sha256": "77b9e3abdad259a75625a1ab33883cc081d941ca7d22548a3a4e1775bb4767ab",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c5509060-6dd2-4e37-95e7-fe079c5272ad.png",
+      "review": "Accepted clean-shaven adult in rounded steel open-face helmet with cheek flaps and gold forehead teardrop, ivory coat/hood down, slate-blue-gray neck scarf/front panel, steel armor sections, brown diagonal strap/belt/pouch/boots and dark gloves. Screen-left rectangular shield with single gold vertical bar; screen-right wooden staff with gold four-arm-cross disk and open gray hook. Broad matte chunky body/head/hands/boots."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "23406c8553e13874216c6635c67d650a363699c3e3bc92cf3b3e7f644e2ba1fc",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-a/qa-white.png",
+      "nativeSize": [
+        1561,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        752,
+        964
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        381,
+        80,
+        1263,
+        965
+      ],
+      "sha256": "dd2d816360cd17c5b737015e3b77878b806a92bf9ce1bcdd18bb1d3802ab2246",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0afa973c-eff2-4b9d-b10e-bb3ccfd33259.png",
+      "review": "Front screen-right boot advances toe-up with heel contact and visible sole; rear screen-left boot is flat and weight-bearing. Original shield/staff hands and symbols preserved, complete hook/disk/shaft/butt retained."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "7bb0816ee5126e8ce26a19c99cd30243979ca2de64dfd2b9ba913e72bafe46bf",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/attack/qa-white.png",
+      "nativeSize": [
+        1561,
+        1007
+      ],
+      "sourceFootAnchorSuggested": [
+        673,
+        953
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        262,
+        78,
+        1467,
+        954
+      ],
+      "sha256": "8e52027a1d3b2e7621f9410f71501dab251c1ac399aafe93cca611271c417405",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-451755a4-ebc4-49a1-8503-975b069aa43b.png",
+      "review": "Original screen-right connected staff arm and glove extend forward at chest/shoulder height, presenting the tilted complete hooked cross-medallion staff in a clear braced casting gesture. Original screen-left shield arm raises the rectangular shield defensively. Both boots support the pose, exactly one staff/one shield and two arms/hands total. The staff cross rotates with its physical disk, not a new symbol. No external spell fire, aura, projectile or particles baked into the character."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "ba900ed732ebf4f52d88b66f76a7a2652dac7a01bc89ef9e5272d73f392d9c50",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/inquisitor/walk-b/qa-white.png",
+      "nativeSize": [
+        1561,
+        1008
+      ],
+      "sourceFootAnchorSuggested": [
+        781,
+        962
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        379,
+        90,
+        1256,
+        963
+      ],
+      "sha256": "5b7ec2398d9785b0820aa0bae35c65aad378ebcd5c348d8b8c62390eac9f9913",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-45ecb6aa-7314-41be-a29d-100c6623b61c.png",
+      "review": "Opposite walking contact: front screen-right boot flat and weight-bearing, rear screen-left heel raised with toe contact. Same camera and equipment hands; not mirrored or a repeated walk-a."
+    }
+  }
+}

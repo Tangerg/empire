@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-STRUCT-WALL-LIFT-GATE",
+  "state": "normal",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "transparentFraction": 0.5973376423514928,
+  "sourceFoot": [
+    627,
+    1106
+  ],
+  "sourceFootBasis": "Manually selected middle front ground-contact line of the integrated structural stone foundation under the platform at native x=627. This is above the foreground loose perimeter stones and right-pier extreme; not the alpha-bbox bottom. One normal-derived source point anchors all states.",
+  "sourceFootAlpha": 255,
+  "matchesRawGeneratedBytes": true,
+  "sha256": "77babf056b03532ab2d8988ffd645dd54d3818446b4d8a28901b902652c90902",
+  "visualQA": "Two tall stone piers with a wooden top winding shaft, outward projecting hinged timber lifting platform, exactly two taut front lifting ropes, right external wheel/axle/hand crank and separate vertical drive-rope loop. Integrated low stone foundation and shallow arched recess; no flag.",
+  "postprocessing": "none",
+  "runtimeReady": false,
+  "alphaBBoxGE1": [
+    0,
+    23,
+    1251,
+    1231
+  ],
+  "alphaBBoxGE8": [
+    125,
+    159,
+    1173,
+    1220
+  ],
+  "alphaBBoxGE128": [
+    126,
+    160,
+    1172,
+    1219
+  ],
+  "alphaBBoxGE250": [
+    127,
+    161,
+    1171,
+    1218
+  ],
+  "remarks": [
+    "Native alpha1 residue retained unchanged."
+  ]
+}

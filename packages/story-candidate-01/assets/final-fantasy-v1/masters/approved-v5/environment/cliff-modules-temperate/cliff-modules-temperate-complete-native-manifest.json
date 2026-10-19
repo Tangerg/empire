@@ -1,0 +1,818 @@
+{
+  "status": "all16 cliff-modules-temperate native sources complete and verified",
+  "atlas": "cliff-modules-temperate",
+  "native_canvas": [
+    1254,
+    1254
+  ],
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "logical_anchor": [
+    64,
+    127
+  ],
+  "hd_anchor": [
+    128,
+    254
+  ],
+  "entries": [
+    {
+      "identity": "temperate-cliff-straight-south",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-straight-south/temperate-cliff-straight-south-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-straight-south/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-straight-south/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-straight-south/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-straight-south/evidence.json",
+      "source_foot_estimate_px": [
+        640,
+        1084
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-straight-south/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-e3bfd1a6-82d5-433c-840a-38b12daddffc.png",
+      "sha256": "8709c5df488ed413cae2f4712aa59a889477fbf3de48fed9129517bd50f1c472",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 0,
+      "runtime_semantics": {
+        "id": "temperate-cliff-straight-south",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "source_foot_estimate_normalized": [
+        0.510367,
+        0.864434
+      ],
+      "strong_alpha_bounds": [
+        39,
+        237,
+        1242,
+        1093
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "identity": "temperate-cliff-end-west",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/temperate-cliff-end-west-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/evidence.json",
+      "source_foot_estimate_px": [
+        575,
+        1145
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-a27e8f76-d40d-4894-bc4f-9229e1f5c2a8.png",
+      "sha256": "943ece0d5135bb0bc8438fa6900cf024b7a5e5711bef756383b979cbd0819df8",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 1,
+      "runtime_semantics": {
+        "id": "temperate-cliff-end-west",
+        "footprint": [
+          1,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "source_foot_estimate_normalized": [
+        0.458533,
+        0.913078
+      ],
+      "strong_alpha_bounds": [
+        114,
+        132,
+        1162,
+        1155
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "identity": "temperate-cliff-end-east",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/temperate-cliff-end-east-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/evidence.json",
+      "source_foot_estimate_px": [
+        748,
+        1095
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-03161145-ed9f-4372-8645-0698362c66d0.png",
+      "sha256": "b7124e7f66d1e911a7e2250194b6e0056ec206ce00a9ee10c38fa70528a9c7be",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 2,
+      "runtime_semantics": {
+        "id": "temperate-cliff-end-east",
+        "footprint": [
+          1,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "source_foot_estimate_normalized": [
+        0.596491,
+        0.873206
+      ],
+      "strong_alpha_bounds": [
+        145,
+        160,
+        1137,
+        1105
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "identity": "temperate-cliff-concave-corner",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/temperate-cliff-concave-corner-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        958
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-1c4482ed-1d0c-4296-9da9-38339493b497.png",
+      "sha256": "b7c8252c739465ae2c6649ef3d49c0a53a566c71286ba91b17f75e44ed0783f9",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 3,
+      "runtime_semantics": {
+        "id": "temperate-cliff-concave-corner",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "source_foot_estimate_normalized": [
+        0.5,
+        0.763955
+      ],
+      "strong_alpha_bounds": [
+        76,
+        313,
+        1177,
+        966
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "identity": "temperate-hill-cap",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/temperate-hill-cap-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1014
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-80aee2b5-d73c-4f61-9cea-697e131f58ee.png",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 4,
+      "sha256": "02c2ce5266ada57e6e932ff6bd4dc7c794d8c222e3f8390bf05b1b5d7b1eeb9e",
+      "runtime_semantics": {
+        "id": "temperate-hill-cap",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "source_foot_estimate_normalized": [
+        0.5,
+        0.808612
+      ],
+      "strong_alpha_bounds": [
+        45,
+        248,
+        1212,
+        1024
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "identity": "temperate-ramp-level-1",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/temperate-ramp-level-1-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1126
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-c5aeb20e-2a47-4879-af6e-c4b5caa87faa.png",
+      "sha256": "ade9315be98a80ac6f4c95deb8e72e96f791cde1b96fa81d5c4ca6069bc72caa",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 5,
+      "runtime_semantics": {
+        "id": "temperate-ramp-level-1",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "heightDelta": 1,
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      "source_foot_estimate_normalized": [
+        0.5,
+        0.897927
+      ],
+      "strong_alpha_bounds": [
+        40,
+        243,
+        1248,
+        1134
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 1,
+        "bottom": 0
+      }
+    },
+    {
+      "identity": "temperate-ramp-level-2",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/temperate-ramp-level-2-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1136
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-baf0aaae-2127-486c-a781-56eb2284d3b4.png",
+      "sha256": "606458dfc203703364279fabf0ef2f47fa9e0338b7573dd3fbbbec142e0d1059",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 6,
+      "runtime_semantics": {
+        "id": "temperate-ramp-level-2",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "heightDelta": 2,
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      "source_foot_estimate_normalized": [
+        0.5,
+        0.905901
+      ],
+      "strong_alpha_bounds": [
+        66,
+        174,
+        1195,
+        1144
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "identity": "temperate-mountain-pass",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/temperate-mountain-pass-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/evidence.json",
+      "source_foot_estimate_px": [
+        671,
+        992
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-5f118de1-0fc2-4e21-ac0e-9f45443d3733.png",
+      "sha256": "4836058fbd9e215d87ccf6e1047fa364cccec44dbb5edfe374d580687f664c38",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 7,
+      "runtime_semantics": {
+        "id": "temperate-mountain-pass",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "heightDelta": 1,
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      "source_foot_estimate_normalized": [
+        0.535088,
+        0.791069
+      ],
+      "strong_alpha_bounds": [
+        51,
+        271,
+        1219,
+        1000
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "identity": "temperate-cliff-convex-corner",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/temperate-cliff-convex-corner-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1040
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-c9b2f835-83b6-4082-a33e-c2f937143012.png",
+      "sha256": "a3ff7ff9ef1ed845ce1d477377c285d0a08b73f35f8a9f0368af608e58d950d7",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 8,
+      "runtime_semantics": {
+        "id": "temperate-cliff-convex-corner",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "source_foot_estimate_normalized": [
+        0.5,
+        0.829346
+      ],
+      "strong_alpha_bounds": [
+        36,
+        213,
+        1223,
+        1049
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "identity": "temperate-broken-ledge",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/temperate-broken-ledge-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1087
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-95d63def-be4a-4502-adc6-d329ef0f449b.png",
+      "sha256": "d47aee9463d19a1ee1cf88c4d27092b28cdc9428529757fe2b7ac2db9d3351e5",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 9,
+      "runtime_semantics": {
+        "id": "temperate-broken-ledge",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "source_foot_estimate_normalized": [
+        0.5,
+        0.866826
+      ],
+      "strong_alpha_bounds": [
+        28,
+        239,
+        1225,
+        1095
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "identity": "temperate-low-ledge",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-low-ledge/temperate-low-ledge-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-low-ledge/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-low-ledge/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-low-ledge/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-low-ledge/evidence.json",
+      "source_foot_estimate_px": [
+        670,
+        1101
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-low-ledge/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-39f9ce22-7b1e-4de2-932f-933720594557.png",
+      "sha256": "024fd849818363827d40759ca67ef257a5944a2acb4aaf5eeafbd6f4af048811",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 10,
+      "runtime_semantics": {
+        "id": "temperate-low-ledge",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "source_foot_estimate_normalized": [
+        0.53429,
+        0.87799
+      ],
+      "strong_alpha_bounds": [
+        64,
+        257,
+        1201,
+        1110
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "identity": "temperate-talus-foot",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/temperate-talus-foot-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1108
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-92bacb91-8ab4-48d3-8c43-38799e031cf4.png",
+      "sha256": "a7eb469a4afd09a8aa571e8fb293ffae6143d850392b26e7260a5b5864c79b9f",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 11,
+      "runtime_semantics": {
+        "id": "temperate-talus-foot",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      "source_foot_estimate_normalized": [
+        0.5,
+        0.883573
+      ],
+      "strong_alpha_bounds": [
+        32,
+        224,
+        1225,
+        1116
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "identity": "temperate-pillar-wide",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/temperate-pillar-wide-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/evidence.json",
+      "source_foot_estimate_px": [
+        696,
+        1188
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-760ac60a-1639-4dbf-b69b-8b9324fe71de.png",
+      "sha256": "2bb766b7b928e76c2894a03c9c24889aea6b442ac97444292e020b69261d91b0",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 12,
+      "runtime_semantics": {
+        "id": "temperate-pillar-wide",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 2,
+        "passable": false
+      },
+      "source_foot_estimate_normalized": [
+        0.555024,
+        0.947368
+      ],
+      "strong_alpha_bounds": [
+        79,
+        87,
+        1217,
+        1196
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "identity": "temperate-pillar-narrow",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-narrow/temperate-pillar-narrow-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-narrow/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-narrow/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-narrow/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-narrow/evidence.json",
+      "source_foot_estimate_px": [
+        535,
+        1155
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-narrow/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-f62ea5ac-cd80-430f-910a-104b4eeda0d5.png",
+      "sha256": "7ca97cc3b335f0873373a0c102d024a30e8551c45c9f2b055f06c9ddc958b7b1",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 13,
+      "runtime_semantics": {
+        "id": "temperate-pillar-narrow",
+        "footprint": [
+          1,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 2,
+        "passable": false
+      },
+      "source_foot_estimate_normalized": [
+        0.426635,
+        0.921053
+      ],
+      "strong_alpha_bounds": [
+        215,
+        120,
+        1046,
+        1163
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "identity": "temperate-ledge-end",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ledge-end/temperate-ledge-end-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ledge-end/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ledge-end/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ledge-end/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ledge-end/evidence.json",
+      "source_foot_estimate_px": [
+        625,
+        1071
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ledge-end/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-e505122f-3ffd-43ec-8a5e-9c45eeb47e8f.png",
+      "sha256": "5c4a1320f32020cc69b8dde5af7f73c575952c892365675bb2ccf27723e4d0a6",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 14,
+      "runtime_semantics": {
+        "id": "temperate-ledge-end",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "source_foot_estimate_normalized": [
+        0.498405,
+        0.854067
+      ],
+      "strong_alpha_bounds": [
+        58,
+        204,
+        1213,
+        1078
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "identity": "temperate-plateau-cap",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/temperate-plateau-cap-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/evidence.json",
+      "source_foot_estimate_px": [
+        670,
+        1110
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/raw.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-1a3ceb00-b082-43b7-bde0-a6c3dacc5e47.png",
+      "sha256": "fb3f9445938c349855d8b569972353ca3183d033a31bc1ce24143de14fd7ee9b",
+      "atlas": "cliff-modules-temperate",
+      "cell_index": 15,
+      "runtime_semantics": {
+        "id": "temperate-plateau-cap",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "source_foot_estimate_normalized": [
+        0.53429,
+        0.885167
+      ],
+      "strong_alpha_bounds": [
+        64,
+        186,
+        1212,
+        1118
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    }
+  ],
+  "contact_sheet": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/cliff-modules-temperate-full16-contact.png",
+  "semantic_manifest": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/cliff-modules-temperate-semantic-manifest.json",
+  "native_pixels_untouched": true,
+  "no_repository_edits": true,
+  "integration_status": "First12 were registered by parent; final4 awaiting parent adapter/scale/foot review. This manifest asserts native source completion, not full runtime acceptance."
+}

@@ -1,0 +1,65 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-45ecb6aa-7314-41be-a29d-100c6623b61c.png",
+  "size": [
+    1561,
+    1008
+  ],
+  "mode": "RGBA",
+  "sha256": "5b7ec2398d9785b0820aa0bae35c65aad378ebcd5c348d8b8c62390eac9f9913",
+  "bboxAlphaNonzero": [
+    83,
+    49,
+    1526,
+    974
+  ],
+  "bboxAlphaGreaterThan127": [
+    379,
+    90,
+    1256,
+    963
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1123923,
+  "alphaOnePixels": 3726,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        430,
+        800,
+        650,
+        980
+      ],
+      "soleY": 947,
+      "bottomBandMeanX": 584.4179104477612,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    },
+    "screenRight": {
+      "roi": [
+        790,
+        840,
+        1110,
+        985
+      ],
+      "soleY": 962,
+      "bottomBandMeanX": 978.412213740458,
+      "alphaThreshold": 127,
+      "bottomBandRows": 4
+    }
+  },
+  "sourceFootMidpoint": [
+    781.4150620941095,
+    954.5
+  ],
+  "suggestedSourceFoot": [
+    781,
+    962
+  ],
+  "lockedBodyScale": 0.04980192416525184,
+  "masterRawHashMatches": true,
+  "semanticReview": "Front screen-right boot flat and weight-bearing, rear screen-left heel raised/toe contact. Opposite walking phases; same shield and hooked cross-disk staff hands."
+}

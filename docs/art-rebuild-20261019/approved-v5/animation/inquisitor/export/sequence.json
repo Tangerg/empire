@@ -1,0 +1,339 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/walk-b/master.png"
+    },
+    "scale": 0.04980192416525184,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      753,
+      983
+    ],
+    "sourceFeet": {
+      "idle": [
+        753,
+        983
+      ],
+      "walk-a": [
+        752,
+        964
+      ],
+      "attack": [
+        673,
+        953
+      ],
+      "walk-b": [
+        781,
+        962
+      ]
+    },
+    "canvasPaddingTolerance": 1,
+    "registrationLimit": 4,
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.04980192416525184,
+        0.9462365591397849
+      ],
+      "attack": [
+        3.984153933220147,
+        1.494057724957555
+      ],
+      "walk-b": [
+        -1.3944538766270513,
+        1.0458404074702885
+      ]
+    }
+  },
+  "authoredCanvas": [
+    1561,
+    1008
+  ],
+  "logicalPivot": [
+    45.50084889643463,
+    52.95529145444256
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "77b9e3abdad259a75625a1ab33883cc081d941ca7d22548a3a4e1775bb4767ab",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5415,
+        "nearOpaquePixels": 1058,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          8,
+          70,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "77b9e3abdad259a75625a1ab33883cc081d941ca7d22548a3a4e1775bb4767ab",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21781,
+        "nearOpaquePixels": 4312,
+        "edgeMax": 0,
+        "visibleBounds": [
+          52,
+          17,
+          140,
+          106
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/walk-a/master.png",
+      "registrationOffset": [
+        0.04980192416525184,
+        0.9462365591397849
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "dd2d816360cd17c5b737015e3b77878b806a92bf9ce1bcdd18bb1d3802ab2246",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5438,
+        "nearOpaquePixels": 1014,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          9,
+          71,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/walk-a/master.png",
+      "registrationOffset": [
+        0.04980192416525184,
+        0.9462365591397849
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "dd2d816360cd17c5b737015e3b77878b806a92bf9ce1bcdd18bb1d3802ab2246",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21882,
+        "nearOpaquePixels": 4177,
+        "edgeMax": 0,
+        "visibleBounds": [
+          54,
+          18,
+          142,
+          106
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/attack/master.png",
+      "registrationOffset": [
+        3.984153933220147,
+        1.494057724957555
+      ],
+      "sourceCanvas": [
+        1561,
+        1007
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "8e52027a1d3b2e7621f9410f71501dab251c1ac399aafe93cca611271c417405",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5340,
+        "nearOpaquePixels": 1084,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          9,
+          85,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/attack/master.png",
+      "registrationOffset": [
+        3.984153933220147,
+        1.494057724957555
+      ],
+      "sourceCanvas": [
+        1561,
+        1007
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "8e52027a1d3b2e7621f9410f71501dab251c1ac399aafe93cca611271c417405",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21513,
+        "nearOpaquePixels": 4459,
+        "edgeMax": 0,
+        "visibleBounds": [
+          50,
+          19,
+          170,
+          106
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/walk-b/master.png",
+      "registrationOffset": [
+        -1.3944538766270513,
+        1.0458404074702885
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "5b7ec2398d9785b0820aa0bae35c65aad378ebcd5c348d8b8c62390eac9f9913",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5443,
+        "nearOpaquePixels": 989,
+        "edgeMax": 0,
+        "visibleBounds": [
+          25,
+          10,
+          69,
+          53
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/inquisitor/walk-b/master.png",
+      "registrationOffset": [
+        -1.3944538766270513,
+        1.0458404074702885
+      ],
+      "sourceCanvas": [
+        1561,
+        1008
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "5b7ec2398d9785b0820aa0bae35c65aad378ebcd5c348d8b8c62390eac9f9913",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21938,
+        "nearOpaquePixels": 4086,
+        "edgeMax": 0,
+        "visibleBounds": [
+          51,
+          19,
+          138,
+          106
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

@@ -1,0 +1,83 @@
+{
+  "topicId": "C01-STRUCT-WALL-LIFT-GATE",
+  "states": [
+    "normal",
+    "damaged",
+    "captured"
+  ],
+  "stateCount": 3,
+  "genuineRGBAAll": true,
+  "nativeCanvasAll": [
+    1254,
+    1254
+  ],
+  "normalIdentity": "Winch-controlled rope lifting platform, not upright door gate",
+  "damagedIdentity": "Left pier break, split shaft, two broken/slack lifting ropes; right side drive loop and winch persist",
+  "capturedIdentity": "Only original gray flag with pale four-arm flared cross added; full mechanism kept intact",
+  "sameCameraScaleFoundation": "Visually preserved; fixed-region alpha checks stored in registration.json. No generated output transforms.",
+  "stateRegistrationChecks": {
+    "damaged": {
+      "leftBaseFoot": {
+        "normalRoi": [
+          312,
+          980,
+          545,
+          1107
+        ],
+        "alphaSilhouetteIoU": 0.9852278095074505
+      },
+      "rightStoneFoundation": {
+        "normalRoi": [
+          715,
+          1004,
+          1115,
+          1221
+        ],
+        "alphaSilhouetteIoU": 0.9907912952852054
+      },
+      "rightWinchCrank": {
+        "normalRoi": [
+          900,
+          700,
+          1175,
+          900
+        ],
+        "alphaSilhouetteIoU": 0.9885386100870263
+      }
+    },
+    "captured": {
+      "leftBaseFoot": {
+        "normalRoi": [
+          312,
+          980,
+          545,
+          1107
+        ],
+        "alphaSilhouetteIoU": 0.987677643725044
+      },
+      "rightStoneFoundation": {
+        "normalRoi": [
+          715,
+          1004,
+          1115,
+          1221
+        ],
+        "alphaSilhouetteIoU": 0.9908842013564806
+      },
+      "rightWinchCrank": {
+        "normalRoi": [
+          900,
+          700,
+          1175,
+          900
+        ],
+        "alphaSilhouetteIoU": 0.9878980732128987
+      }
+    }
+  },
+  "sourceFootShared": [
+    627,
+    1106
+  ],
+  "runtimeReady": false
+}

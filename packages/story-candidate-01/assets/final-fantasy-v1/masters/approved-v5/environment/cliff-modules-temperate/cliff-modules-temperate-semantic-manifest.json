@@ -1,0 +1,946 @@
+{
+  "atlas": "cliff-modules-temperate",
+  "contract_note": "Explicit whole-native source feet are visual estimates, not inferred from alpha bounds; projected baseline semantics are documented per asset. Preserve passability, footprint, obstruction and heightDelta.",
+  "entries": [
+    {
+      "cellId": "temperate-cliff-straight-south",
+      "index": 0,
+      "identity": "A single long straight south-facing gray cliff wall extending diagonally from near-left to far-right, capped by a narrow continuous olive strip. Both ends are complete. The long continuous wall remains distinct from the prior round hill and corner forms.",
+      "sourceFoot": [
+        640,
+        1084
+      ],
+      "sourceFootNormalized": [
+        0.510367,
+        0.864434
+      ],
+      "sourceFootMeaning": "Bottom-anchor module registration point: a visually projected horizontal foreground ground baseline, centered under the whole long diagonal wall. The foremost physical stone contact is near the lower-left end, not at the image center; do not misread this virtual module registration as a literal central rock contact.",
+      "sourceFootConfidence": "visual estimate; projected whole-module registration where noted, not alpha bbox inference",
+      "footprint": [
+        2,
+        1
+      ],
+      "obstructionHeight": 1,
+      "passable": false,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-straight-south/temperate-cliff-straight-south-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-active-four-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-straight-south/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-straight-south/alpha-qa.json",
+      "sourceCropFinding": "Original complete subject extends to x330, 16px beyond nominal quarter x314. Full right end recovered; legacy slot clipping not reproduced.",
+      "auditedInstancesByLevel": {
+        "c01-01": 2,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": [
+        1.0,
+        1.0
+      ],
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "cellId": "temperate-cliff-end-west",
+      "index": 1,
+      "identity": "One thick short west-facing cliff terminus. Its narrow oblong turf top extends from lower-left/near end toward upper-right/rear end. The capped end face and longer adjoining wall form one continuous mass, distinct from a round pillar.",
+      "sourceFoot": [
+        575,
+        1145
+      ],
+      "sourceFootNormalized": [
+        0.458533,
+        0.913078
+      ],
+      "sourceFootMeaning": "Visually selected forward basal contact/whole-module registration; not the upper cap center or an alpha-bbox-derived value.",
+      "sourceFootConfidence": "approximate visual estimate, not alpha bottom",
+      "footprint": [
+        1,
+        2
+      ],
+      "obstructionHeight": 1,
+      "passable": false,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/temperate-cliff-end-west-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-pass-ends-concave-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-west/alpha-qa.json",
+      "sourceCropFinding": "Complete original subject is inside its quarter; preserve original orientation/end face.",
+      "auditedInstancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": null,
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "cellId": "temperate-cliff-end-east",
+      "index": 2,
+      "identity": "One thick short east-facing cliff terminus, retaining the original opposing orientation: rear-left top to forward-right end, with a prominent right/front end face and receding left wall. Not a duplicate or mirrored export of the west asset; independently generated from its own original reference.",
+      "sourceFoot": [
+        748,
+        1095
+      ],
+      "sourceFootNormalized": [
+        0.596491,
+        0.873206
+      ],
+      "sourceFootMeaning": "Visually selected forward basal contact/whole-module registration; not the upper cap center or an alpha-bbox-derived value.",
+      "sourceFootConfidence": "approximate visual estimate, not alpha bottom",
+      "footprint": [
+        1,
+        2
+      ],
+      "obstructionHeight": 1,
+      "passable": false,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/temperate-cliff-end-east-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-pass-ends-concave-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-end-east/alpha-qa.json",
+      "sourceCropFinding": "Complete original subject is inside its quarter; preserve opposing original orientation/end face.",
+      "auditedInstancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": null,
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "cellId": "temperate-cliff-concave-corner",
+      "index": 3,
+      "identity": "One connected deep U-shaped inner cliff corner: left and right arms are joined by a rear wall and narrow continuous turf strip. Deep inner recess and open foreground mouth remain empty where appropriate, distinct from the shallow convex notch and the two unjoined mountain-pass walls.",
+      "sourceFoot": [
+        627,
+        958
+      ],
+      "sourceFootNormalized": [
+        0.5,
+        0.763955
+      ],
+      "sourceFootMeaning": "Projected module baseline between the two forward arm contacts. The anchor can lie in transparent foreground mouth space; it is not the bottom of the rear inner wall.",
+      "sourceFootConfidence": "approximate visual estimate, not alpha bottom",
+      "footprint": [
+        2,
+        2
+      ],
+      "obstructionHeight": 1,
+      "passable": false,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/temperate-cliff-concave-corner-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-pass-ends-concave-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-concave-corner/alpha-qa.json",
+      "sourceCropFinding": "Complete original left boundary914 extends26px left of nominal quarter940; recover complete left arm of U-shaped inner-corner module.",
+      "auditedInstancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": null,
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "cellId": "temperate-hill-cap",
+      "index": 4,
+      "identity": "one low broad connected hill with continuous turf cap and cliff skirt",
+      "sourceFoot": [
+        627,
+        1014
+      ],
+      "sourceFootNormalized": [
+        0.5,
+        0.808612
+      ],
+      "sourceFootMeaning": "central front rock/moss contact line visually selected; not alpha bbox bottom",
+      "sourceFootConfidence": "approximate visual estimate, not alpha bottom",
+      "footprint": [
+        2,
+        2
+      ],
+      "obstructionHeight": 1,
+      "passable": false,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/temperate-hill-cap-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-priority-four-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/alpha-qa.json",
+      "sourceCropFinding": null,
+      "auditedInstancesByLevel": {
+        "c01-01": 9,
+        "c01-02": 4
+      },
+      "auditedPlacementScaleRange": [
+        0.471,
+        1.0
+      ],
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "cellId": "temperate-ramp-level-1",
+      "index": 5,
+      "identity": "One continuous single-grade earthen ramp, low front-left to high rear-right, with one landing and no middle terrace or second rise. The central brown route is open and passable; gray side supports rise smoothly with the wedge.",
+      "sourceFoot": [
+        627,
+        1126
+      ],
+      "sourceFootNormalized": [
+        0.5,
+        0.897927
+      ],
+      "sourceFootMeaning": "Projected whole-module foreground baseline following the lower approach/basal rocks. Local physical contacts on the diagonal module are offset from this virtual registration point; preserve the distinction rather than deriving a foot from the alpha bbox.",
+      "sourceFootConfidence": "approximate visual estimate, not alpha bottom",
+      "footprint": [
+        2,
+        2
+      ],
+      "obstructionHeight": 0,
+      "passable": true,
+      "heightDelta": 1,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/temperate-ramp-level-1-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-final-four-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-1/alpha-qa.json",
+      "sourceCropFinding": "Dominant complete source body is contained in its nominal quarter; use the complete crop and do not copy unrelated row/slot fragments.",
+      "auditedInstancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": null,
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 0,
+        "top": 0,
+        "right": 1,
+        "bottom": 0
+      }
+    },
+    {
+      "cellId": "temperate-ramp-level-2",
+      "index": 6,
+      "identity": "A two-tier ascending earthen ramp with front-low approach, intermediate shelf and raised rear landing, distinct from every flat cap. The open brown path remains recognizable across the two ascending levels.",
+      "sourceFoot": [
+        627,
+        1136
+      ],
+      "sourceFootNormalized": [
+        0.5,
+        0.905901
+      ],
+      "sourceFootMeaning": "Projected foreground module registration at the base/approach end, retaining the atlas bottom-anchor convention. Local route toe and upper landing are separately described, not treated as ground-contact replacements.",
+      "sourceFootConfidence": "visual estimate; projected whole-module registration where noted, not alpha bbox inference",
+      "footprint": [
+        2,
+        2
+      ],
+      "obstructionHeight": 0,
+      "passable": true,
+      "heightDelta": 2,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/temperate-ramp-level-2-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-active-four-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ramp-level-2/alpha-qa.json",
+      "sourceCropFinding": "The primary ramp itself is contained in its quarter, but its old runtime slot includes an unrelated mountain-pass fragment at the right edge. Only the complete primary ramp is generated; the floating neighboring cliff is omitted.",
+      "auditedInstancesByLevel": {
+        "c01-01": 2,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": [
+        1.0,
+        1.0
+      ],
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "cellId": "temperate-mountain-pass",
+      "index": 7,
+      "identity": "Exactly two distinct rocky side walls, each with its own turf strip, flank a continuous open brown passage. No back wall, bridge or arch closes the rear gap. The complete restored left wall is present. Functional path soil remains part of the module.",
+      "sourceFoot": [
+        671,
+        992
+      ],
+      "sourceFootNormalized": [
+        0.535088,
+        0.791069
+      ],
+      "sourceFootMeaning": "Visually selected forward basal contact/whole-module registration; not the upper cap center or an alpha-bbox-derived value.",
+      "sourceFootConfidence": "approximate visual estimate, not alpha bottom",
+      "footprint": [
+        2,
+        2
+      ],
+      "obstructionHeight": 0,
+      "passable": true,
+      "heightDelta": 1,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/temperate-mountain-pass-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-pass-ends-concave-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-mountain-pass/alpha-qa.json",
+      "sourceCropFinding": "Complete original left boundary919 extends21px left of nominal quarter940; recover full left wall. Its spill had contaminated ramp-level-2 runtime slot.",
+      "auditedInstancesByLevel": {
+        "c01-01": 3,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": [
+        0.601,
+        0.605
+      ],
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "cellId": "temperate-cliff-convex-corner",
+      "index": 8,
+      "identity": "One connected bent corner cliff with a broad olive cap and distinctive shallow central front inset, a forward left wing and a joined right wall. It is not a generic round hill. The dark central seam is a genuine corner recess, not a tunnel or disconnected gap through the top.",
+      "sourceFoot": [
+        627,
+        1040
+      ],
+      "sourceFootNormalized": [
+        0.5,
+        0.829346
+      ],
+      "sourceFootMeaning": "The module foot is the visually chosen projected ground baseline at the center between its forward foot lobes, not the bottom of the recess. It may lie in transparent space between two basal contacts, as expected for an angular standing module.",
+      "sourceFootConfidence": "approximate visual estimate, not alpha bottom",
+      "footprint": [
+        2,
+        2
+      ],
+      "obstructionHeight": 1,
+      "passable": false,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/temperate-cliff-convex-corner-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-priority-four-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/alpha-qa.json",
+      "sourceCropFinding": "The runtime slot contains an unrelated detached tip from pillar-wide below. It has been omitted. The full main corner subject itself is contained in its original quarter.",
+      "auditedInstancesByLevel": {
+        "c01-01": 9,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": [
+        0.567,
+        1.0
+      ],
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "cellId": "temperate-broken-ledge",
+      "index": 9,
+      "identity": "One long irregular stepped and fractured ledge, with broad low front-left shelf and higher narrower rear-right sections. The rough wall and staggered top remain distinct from the smooth straight cliff and the passable soil ramps. No brown through-route was added.",
+      "sourceFoot": [
+        627,
+        1087
+      ],
+      "sourceFootNormalized": [
+        0.5,
+        0.866826
+      ],
+      "sourceFootMeaning": "Projected whole-module foreground baseline following the lower approach/basal rocks. Local physical contacts on the diagonal module are offset from this virtual registration point; preserve the distinction rather than deriving a foot from the alpha bbox.",
+      "sourceFootConfidence": "approximate visual estimate, not alpha bottom",
+      "footprint": [
+        2,
+        2
+      ],
+      "obstructionHeight": 1,
+      "passable": false,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/temperate-broken-ledge-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-final-four-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-broken-ledge/alpha-qa.json",
+      "sourceCropFinding": "Dominant complete source body is contained in its nominal quarter; use the complete crop and do not copy unrelated row/slot fragments.",
+      "auditedInstancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": null,
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "cellId": "temperate-low-ledge",
+      "index": 10,
+      "identity": "A single low ledge with a pronounced projecting front-left top lip, dark recessed undercut, and a rear/right rocky support. Its asymmetry and overhang are maintained, not converted to a flat circular cap.",
+      "sourceFoot": [
+        670,
+        1101
+      ],
+      "sourceFootNormalized": [
+        0.53429,
+        0.87799
+      ],
+      "sourceFootMeaning": "Whole-group projected foreground baseline below the attached front rocks. The geometric low point and local rock contacts are asymmetric; preserve explicit registration rather than forcing the visible body to a bbox center.",
+      "sourceFootConfidence": "visual estimate; projected whole-module registration where noted, not alpha bbox inference",
+      "footprint": [
+        2,
+        1
+      ],
+      "obstructionHeight": 1,
+      "passable": false,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-low-ledge/temperate-low-ledge-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-active-four-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-low-ledge/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-low-ledge/alpha-qa.json",
+      "sourceCropFinding": "No source body crosses its nominal quarter; complete profile used.",
+      "auditedInstancesByLevel": {
+        "c01-01": 9,
+        "c01-02": 1
+      },
+      "auditedPlacementScaleRange": [
+        0.493,
+        0.579
+      ],
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "cellId": "temperate-talus-foot",
+      "index": 11,
+      "identity": "A short rear cliff above a forward/left low talus fan: large fallen stones, sparse olive fringe and broad earthy interstices. Open low ground is retained rather than replacing it with a solid steep pillar.",
+      "sourceFoot": [
+        627,
+        1108
+      ],
+      "sourceFootNormalized": [
+        0.5,
+        0.883573
+      ],
+      "sourceFootMeaning": "Visually selected central foreground contact line of the low rubble/soil apron. It is the whole module footing, not the upper cliff cap or a rock summit.",
+      "sourceFootConfidence": "visual estimate; projected whole-module registration where noted, not alpha bbox inference",
+      "footprint": [
+        2,
+        1
+      ],
+      "obstructionHeight": 0,
+      "passable": true,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/temperate-talus-foot-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-active-four-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-talus-foot/alpha-qa.json",
+      "sourceCropFinding": "Complete talus subject remains within its original quarter; only the full primary subject used.",
+      "auditedInstancesByLevel": {
+        "c01-01": 5,
+        "c01-02": 2
+      },
+      "auditedPlacementScaleRange": [
+        0.472,
+        0.513
+      ],
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "cellId": "temperate-pillar-wide",
+      "index": 12,
+      "identity": "One tall broad isolated pillar/butte with a smaller compact continuous top and a substantial splayed basal rock skirt. Long joined vertical gray columns distinguish it from the low hill and wide-topped plateau.",
+      "sourceFoot": [
+        696,
+        1188
+      ],
+      "sourceFootNormalized": [
+        0.555024,
+        0.947368
+      ],
+      "sourceFootMeaning": "Foot is the visually selected front basal rock/moss contact of the whole standing pillar, rather than the upper cap center.",
+      "sourceFootConfidence": "approximate visual estimate, not alpha bottom",
+      "footprint": [
+        2,
+        2
+      ],
+      "obstructionHeight": 2,
+      "passable": false,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/temperate-pillar-wide-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-priority-four-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-wide/alpha-qa.json",
+      "sourceCropFinding": "The full pillar starts at source y934, six pixels above the nominal quarter y940; the complete recovered cap and rear tip are preserved. No clipped top or neighbor fragment is copied.",
+      "auditedInstancesByLevel": {
+        "c01-01": 9,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": [
+        0.578,
+        0.674
+      ],
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "cellId": "temperate-pillar-narrow",
+      "index": 13,
+      "identity": "One slim tall pillar with a small oblong olive top, long joined vertical rock faces and limited basal stones. It is narrower than the broad pillar, preserving1x2footprint and obstructionHeight2.",
+      "sourceFoot": [
+        535,
+        1155
+      ],
+      "sourceFootNormalized": [
+        0.426635,
+        0.921053
+      ],
+      "sourceFootMeaning": "Visually selected forward basal contact/whole-module registration; not the upper cap center or an alpha-bbox-derived value.",
+      "sourceFootConfidence": "approximate visual estimate, not alpha bottom",
+      "footprint": [
+        1,
+        2
+      ],
+      "obstructionHeight": 2,
+      "passable": false,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-narrow/temperate-pillar-narrow-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-final-four-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-narrow/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-pillar-narrow/alpha-qa.json",
+      "sourceCropFinding": "Dominant complete source body is contained in its nominal quarter; use the complete crop and do not copy unrelated row/slot fragments.",
+      "auditedInstancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": null,
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "cellId": "temperate-ledge-end",
+      "index": 14,
+      "identity": "One broad irregular oblong ledge terminus: a blunt front-left head, narrower rear-right extension, connected olive top and stout wrapped outer walls. It is wider than a pillar and has no artificial deep cantilever undercut.",
+      "sourceFoot": [
+        625,
+        1071
+      ],
+      "sourceFootNormalized": [
+        0.498405,
+        0.854067
+      ],
+      "sourceFootMeaning": "Visually selected forward basal contact/whole-module registration; not the upper cap center or an alpha-bbox-derived value.",
+      "sourceFootConfidence": "approximate visual estimate, not alpha bottom",
+      "footprint": [
+        2,
+        2
+      ],
+      "obstructionHeight": 1,
+      "passable": false,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ledge-end/temperate-ledge-end-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-final-four-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ledge-end/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-ledge-end/alpha-qa.json",
+      "sourceCropFinding": "Dominant complete source body is contained in its nominal quarter; use the complete crop and do not copy unrelated row/slot fragments.",
+      "auditedInstancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": null,
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "cellId": "temperate-plateau-cap",
+      "index": 15,
+      "identity": "One stout wide-topped plateau with a continuous flat irregular olive cap, steep joined gray walls, and attached basal rocks. The cap remains nearly as wide as the wall, distinguishing it from the smaller-topped taller pillar. The upper turf contains one small exposed flat stone.",
+      "sourceFoot": [
+        670,
+        1110
+      ],
+      "sourceFootNormalized": [
+        0.53429,
+        0.885167
+      ],
+      "sourceFootMeaning": "Foot is the visually selected central front basal rock/moss contact of the plateau, not the center of the upper turf.",
+      "sourceFootConfidence": "approximate visual estimate, not alpha bottom",
+      "footprint": [
+        2,
+        2
+      ],
+      "obstructionHeight": 1,
+      "passable": false,
+      "heightDelta": null,
+      "logicalCell": [
+        128,
+        128
+      ],
+      "hdCell": [
+        256,
+        256
+      ],
+      "logicalAnchor": [
+        64,
+        127
+      ],
+      "hdAnchor": [
+        128,
+        254
+      ],
+      "runtimeRole": "independent elevation module, bottom-anchor registration; no NESWmask",
+      "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/temperate-plateau-cap-master.png",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-priority-four-source-evidence.json",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/prompt.txt",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-plateau-cap/alpha-qa.json",
+      "sourceCropFinding": "The full plateau extends to x939, one pixel left of the nominal quarter x940. The complete subject crop preserves that original edge; no slot clipping is reproduced.",
+      "auditedInstancesByLevel": {
+        "c01-01": 9,
+        "c01-02": 0
+      },
+      "auditedPlacementScaleRange": [
+        0.566,
+        0.676
+      ],
+      "nativePixelsUntouched": true,
+      "currentSourceGatePassed": true,
+      "edgeAlphaMax": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      }
+    }
+  ],
+  "contact_sheet": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/cliff-modules-temperate-full16-contact.png"
+}

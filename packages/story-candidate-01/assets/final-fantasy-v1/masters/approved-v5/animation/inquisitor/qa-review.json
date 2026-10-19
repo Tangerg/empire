@@ -1,0 +1,61 @@
+{
+  "status": "Native quartet semantic/alpha/geometry QA passes; coordinator final sequence review/export/binding pending",
+  "topic": "C01-UNIT-INQUISITOR",
+  "actualConsumers": [
+    "c01.inquisitor"
+  ],
+  "bodyScale": "44/883.5",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1561,
+      1008
+    ],
+    "walk-a": [
+      1561,
+      1008
+    ],
+    "attack": [
+      1561,
+      1007
+    ],
+    "walk-b": [
+      1561,
+      1008
+    ]
+  },
+  "commonSourceCanvas": [
+    1561,
+    1008
+  ],
+  "sourcePaddingRequired": "Idle/walk-a/walk-b native1561x1008. Attack native1561x1007 needs only one transparent bottom row in export preparation. Common1561x1008. Accepted idle was generated at this actual size despite an initial1586x992 request; native art was retained without resizing and remaining poses used its actual canvas.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All native perimeter alpha<=1; zero silhouette alpha>1 on edges, alpha=1 specks retained.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "shieldAndStaffHandsPreserved": true,
+  "equipmentCompleteEveryPose": true,
+  "symbolContract": "Four-arm gold cross belongs only inside staff disk; shield keeps single narrow vertical gold bar, helmet keeps small teardrop. No symbol transplant, extra cross or rays.",
+  "walkContactsOppose": true,
+  "attackAnatomyReview": "Original screen-right connected staff arm and glove extend forward at chest/shoulder height, presenting the tilted complete hooked cross-medallion staff in a clear braced casting gesture. Original screen-left shield arm raises the rectangular shield defensively. Both boots support the pose, exactly one staff/one shield and two arms/hands total. The staff cross rotates with its physical disk, not a new symbol. No external spell fire, aura, projectile or particles baked into the character.",
+  "semanticContract": "C01-UNIT-INQUISITOR binds only c01.inquisitor, the campaign unit named \u5723\u8f89\u5ba1\u5224\u5b98. Keep original idle/walk-a/attack/walk-b order, anchor[16,47], footprint1x1 and exact third-row source identity. The source staff is compatible with the sole c01.inquisitor-flame range2 cross1-area magic/silence action. Original attack is visually near-idle and walk-b repeats walk-a; this quartet reconstructs a clear staff cast and opposite walking contacts. C01-EQUIP-INQUISITOR and C01-FX-06 remain separate topics; no independent spell FX is baked into this sprite and no rules change is claimed.",
+  "independentSpellFXBakedIntoCharacter": false,
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "gameplayFixClaimed": false
+}

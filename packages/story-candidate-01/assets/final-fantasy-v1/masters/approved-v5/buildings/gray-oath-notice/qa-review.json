@@ -1,0 +1,82 @@
+{
+  "topicId": "C01-STRUCT-GRAY-OATH-NOTICE",
+  "states": [
+    "normal",
+    "damaged",
+    "captured"
+  ],
+  "stateCount": 3,
+  "genuineRGBAAll": true,
+  "nativeCanvasAll": [
+    1254,
+    1254
+  ],
+  "originalCountsPreserved": "Normal/captured four panels; damaged three hanging plus two fallen panels",
+  "capturedIdentity": "Original unmarked gray flag preserved; only source cloth swags and red/blue-gray knot cues added",
+  "sameCameraScaleFoundation": "Visually preserved; fixed-region alpha checks stored in registration.json. No generated output transforms.",
+  "stateRegistrationChecks": {
+    "damaged": {
+      "leftStoneFooting": {
+        "normalRoi": [
+          70,
+          990,
+          293,
+          1155
+        ],
+        "alphaSilhouetteIoU": 0.9966654561061772
+      },
+      "rightStoneFooting": {
+        "normalRoi": [
+          1030,
+          895,
+          1194,
+          1008
+        ],
+        "alphaSilhouetteIoU": 0.9858971320218061
+      },
+      "rightFinial": {
+        "normalRoi": [
+          1020,
+          182,
+          1128,
+          305
+        ],
+        "alphaSilhouetteIoU": 0.9905795032829003
+      }
+    },
+    "captured": {
+      "leftStoneFooting": {
+        "normalRoi": [
+          70,
+          990,
+          293,
+          1155
+        ],
+        "alphaSilhouetteIoU": 0.996435290622834
+      },
+      "rightStoneFooting": {
+        "normalRoi": [
+          1030,
+          895,
+          1194,
+          1008
+        ],
+        "alphaSilhouetteIoU": 0.9956410103302084
+      },
+      "rightFinial": {
+        "normalRoi": [
+          1020,
+          182,
+          1128,
+          305
+        ],
+        "alphaSilhouetteIoU": 0.9917844860527322
+      }
+    }
+  },
+  "sourceFootShared": [
+    627,
+    1088
+  ],
+  "runtimeReady": false
+}

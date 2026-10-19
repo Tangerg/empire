@@ -1,0 +1,160 @@
+{
+  "topicId": "C01-STRUCT-WALL-LIFT-GATE",
+  "label": "城墙升降门",
+  "originalManifestEntry": {
+    "assetId": "C01-FFV1-STRUCT-WALL-LIFT-GATE",
+    "topicId": "C01-STRUCT-WALL-LIFT-GATE",
+    "label": "城墙升降门",
+    "category": "interactive-structure",
+    "png": "runtime/interactive-structure/struct-wall-lift-gate.png",
+    "width": 192,
+    "height": 64,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 64,
+    "frames": 3,
+    "stateOrder": [
+      "normal",
+      "damaged",
+      "captured"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "footprint": [
+      2,
+      2
+    ]
+  },
+  "sourceAtlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-03.png",
+  "sourceAtlasSize": [
+    1086,
+    1448
+  ],
+  "sourceAtlasSha256": "3ea0d540978f0540a7057b9bf231896bb4249c7f91726f65a8e7152328209f4a",
+  "sourceTopicIndexZeroBased": 10,
+  "sourceBoardNumber": 3,
+  "sourceNominalRowZeroBased": 2,
+  "sourceCellBoxes": {
+    "normal": [
+      0,
+      728,
+      362,
+      1085
+    ],
+    "damaged": [
+      362,
+      728,
+      724,
+      1085
+    ],
+    "captured": [
+      724,
+      728,
+      1086,
+      1085
+    ]
+  },
+  "sourceStateOrder": [
+    "normal",
+    "damaged",
+    "captured"
+  ],
+  "sourceCropNote": "Complete visually inspected third row of the full 3x4 original board, white separators excluded; no neighboring sluice/tunnel fragments.",
+  "runtimeHdReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-wall-lift-gate.png",
+  "noRepositoryWrites": true,
+  "stateIdentity": {
+    "normal": "Two tall stone piers with a wooden top winding shaft, outward projecting hinged timber lifting platform, exactly two taut front lifting ropes, right external wheel/axle/hand crank and separate vertical drive-rope loop. Integrated low stone foundation and shallow arched recess; no flag.",
+    "damaged": "Same mechanism with broken/cracked left pier, split top shaft, both front suspension ropes snapped or slack, locally damaged lowered/listing timber deck and small rope/wood debris. Right winch and both original stone-foot positions persist.",
+    "captured": "Same intact normal mechanism with one small gray roughly rectangular flag above the right pier, a pale four-arm flared cross emblem and pale trim. No additional chains, swags or second flag."
+  },
+  "mechanicalIdentityNote": "Despite the canonical gate name, the original is a rope-and-winch lifting platform/drawbridge, not an arched gatehouse with door leaves.",
+  "textPolicy": "No readable lettering. Captured emblem must remain the source pale four-arm flared cross on gray flag.",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sourceFoot": [
+    627,
+    1106
+  ],
+  "sourceFootBasis": "Manually selected middle front ground-contact line of the integrated structural stone foundation under the platform at native x=627. This is above the foreground loose perimeter stones and right-pier extreme; not the alpha-bbox bottom. One normal-derived source point anchors all states.",
+  "rawGeneratedSources": {
+    "normal": "/workspace/scratch/84c9fe948755/generated_images/exec-926a0248-7dc2-4c42-9ce8-1692c87fa34a.png",
+    "damaged": "/workspace/scratch/84c9fe948755/generated_images/exec-281a5420-9531-4fb8-a484-e567bf971e92.png",
+    "captured": "/workspace/scratch/84c9fe948755/generated_images/exec-be8fde12-6eef-40a6-a878-6dc7736099ac.png"
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/crossings-fortifications/stone-gatehouse/master.png"
+  ],
+  "postGenerationTransform": "None; copied native PNG bytes unchanged.",
+  "originalCropSha256": {
+    "normal": "bdc94e5cb3146710af84c71205622b2153f16792ec3f5b618a246e360f57c504",
+    "damaged": "a4fa2d5018f4c4909bc1fd5ce0095999492a5cfa8c459b45d66fb2dc571e3384",
+    "captured": "10d087923c5afece463c16c20d3450a0f462497e67539d61d1b9703e12ccb61f"
+  },
+  "normalVisibleWidth": 1046,
+  "stateRegistrationChecks": {
+    "damaged": {
+      "leftBaseFoot": {
+        "normalRoi": [
+          312,
+          980,
+          545,
+          1107
+        ],
+        "alphaSilhouetteIoU": 0.9852278095074505
+      },
+      "rightStoneFoundation": {
+        "normalRoi": [
+          715,
+          1004,
+          1115,
+          1221
+        ],
+        "alphaSilhouetteIoU": 0.9907912952852054
+      },
+      "rightWinchCrank": {
+        "normalRoi": [
+          900,
+          700,
+          1175,
+          900
+        ],
+        "alphaSilhouetteIoU": 0.9885386100870263
+      }
+    },
+    "captured": {
+      "leftBaseFoot": {
+        "normalRoi": [
+          312,
+          980,
+          545,
+          1107
+        ],
+        "alphaSilhouetteIoU": 0.987677643725044
+      },
+      "rightStoneFoundation": {
+        "normalRoi": [
+          715,
+          1004,
+          1115,
+          1221
+        ],
+        "alphaSilhouetteIoU": 0.9908842013564806
+      },
+      "rightWinchCrank": {
+        "normalRoi": [
+          900,
+          700,
+          1175,
+          900
+        ],
+        "alphaSilhouetteIoU": 0.9878980732128987
+      }
+    }
+  }
+}
