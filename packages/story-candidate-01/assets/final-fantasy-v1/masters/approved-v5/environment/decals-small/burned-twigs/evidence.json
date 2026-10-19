@@ -1,0 +1,81 @@
+{
+  "asset": "burned-twigs",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; low-density matte ground and woody forms with broad silhouettes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    632,
+    844
+  ],
+  "source_foot_estimate_normalized": [
+    0.503987,
+    0.673046
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    90,
+    417,
+    89,
+    380
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/decals-small/burned-twigs-complete-subject-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/exposed-roots/exposed-roots-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/decals-small/burned-twigs/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/decals-small/decals-tracks-twigs-stump-branch-source-evidence.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/decals-small/decals-tracks-twigs-stump-branch-consumer-evidence.json",
+  "original_gameplay_obstruction_height": 0,
+  "original_gameplay_footprint": [
+    1,
+    1
+  ],
+  "original_atlas_category": "ground-decal",
+  "actual_render_layer": "groundPieces detail; no standing-depth marker",
+  "original_runtime_cell_size": [
+    64,
+    64
+  ],
+  "original_runtime_cell_size_2x": [
+    128,
+    128
+  ],
+  "original_runtime_anchor": [
+    32,
+    60
+  ],
+  "original_runtime_opacity": 0.72,
+  "raw_master_opacity_preapplied": false,
+  "raw_master_only": true,
+  "no_added_ground_platform": true,
+  "no_exterior_glow": true,
+  "foot_estimate_basis": "visual measurement of forward whole-subject ground-contact line; separate from ground center and legacy fragment extrema",
+  "original_slot_zero_based": 12,
+  "source_ground_center_estimate_px": [
+    628,
+    673
+  ],
+  "original_source_crop_problem": "Exact legacy cell clips upper burned-twig pile above y512 and includes mossy-boulder upper fragment from next visual row below y670.",
+  "audited_counts": {
+    "c01-02": 0,
+    "c01-01": 0
+  },
+  "consumer_classification": "scorched selector exists; absent from two audited initial captures",
+  "visually_verified_subject_counts": {
+    "twig_heap": 1,
+    "pinecone": 1,
+    "rusty_needle_groups": 3
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

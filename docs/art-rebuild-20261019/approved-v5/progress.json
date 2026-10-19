@@ -614,12 +614,16 @@
         "grass-tuft-c",
         "fallen-leaves",
         "mud-patch",
-        "exposed-roots"
+        "exposed-roots",
+        "stone-cluster-c",
+        "dry-crack",
+        "cart-ruts",
+        "bootprints"
       ],
-      "count": 8,
+      "count": 12,
       "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
       "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
-      "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain.",
+      "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells.",
       "liveGame": "pending"
     }
   },

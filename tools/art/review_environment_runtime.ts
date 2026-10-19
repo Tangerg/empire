@@ -24,6 +24,8 @@ const lowSet = process.argv.includes('--pine-low');
 const graveSet = process.argv.includes('--regional-graves');
 const forgeSet = process.argv.includes('--regional-forge');
 const wastelandSet = process.argv.includes('--regional-wasteland');
+const requestedDecals = process.argv.find((arg) => arg.startsWith('--decal-ids='))?.slice('--decal-ids='.length).split(',') ?? [];
+if (requestedDecals.length > 4 || new Set(requestedDecals).size !== requestedDecals.length) throw new Error('choose one to four distinct decal IDs');
 const decalsFirstSet = process.argv.includes('--decals-first');
 const decalsSecondSet = process.argv.includes('--decals-second');
 const ruralFourthSet = process.argv.includes('--rural-fourth');
@@ -31,10 +33,10 @@ const ruralThirdSet = process.argv.includes('--rural-third');
 const ruralSecondSet = process.argv.includes('--rural-second');
 const ruralSet = process.argv.includes('--rural-first');
 const snowSet = process.argv.includes('--regional-snow');
-const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet || lowSet || graveSet || forgeSet || snowSet || wastelandSet || ruralSet || ruralSecondSet || ruralThirdSet || ruralFourthSet || decalsFirstSet || decalsSecondSet;
-if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet, lowSet, graveSet, forgeSet, snowSet, wastelandSet, ruralSet, ruralSecondSet, ruralThirdSet, ruralFourthSet, decalsFirstSet, decalsSecondSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
+const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet || lowSet || graveSet || forgeSet || snowSet || wastelandSet || ruralSet || ruralSecondSet || ruralThirdSet || ruralFourthSet || decalsFirstSet || decalsSecondSet || requestedDecals.length > 0;
+if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet, lowSet, graveSet, forgeSet, snowSet, wastelandSet, ruralSet, ruralSecondSet, ruralThirdSet, ruralFourthSet, decalsFirstSet, decalsSecondSet, requestedDecals.length > 0].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
 const output = resolve(process.env.FOREST_REVIEW_OUTPUT
-  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${decalsFirstSet ? '-decals-first' : decalsSecondSet ? '-decals-second' : ruralFourthSet ? '-rural-fourth' : ruralThirdSet ? '-rural-third' : ruralSecondSet ? '-rural-second' : ruralSet ? '-rural-first' : wastelandSet ? '-regional-wasteland' : forgeSet ? '-regional-forge' : snowSet ? '-regional-snow' : graveSet ? '-regional-graves' : lowSet ? '-pine-low' : matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
+  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${requestedDecals.length ? '-decals-' + requestedDecals.join('-') : decalsFirstSet ? '-decals-first' : decalsSecondSet ? '-decals-second' : ruralFourthSet ? '-rural-fourth' : ruralThirdSet ? '-rural-third' : ruralSecondSet ? '-rural-second' : ruralSet ? '-rural-first' : wastelandSet ? '-regional-wasteland' : forgeSet ? '-regional-forge' : snowSet ? '-regional-snow' : graveSet ? '-regional-graves' : lowSet ? '-pine-low' : matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const map = mapFromLevel(content, candidate01Level('c01-02'));
 map.tiles.fill('forest');
@@ -72,7 +74,10 @@ interface ReviewColumn {
   readonly reference?: boolean;
   readonly reconstruction?: boolean;
 }
-const columns: readonly ReviewColumn[] = decalsFirstSet ? [
+const columns: readonly ReviewColumn[] = requestedDecals.length ? [
+  ...requestedDecals.map((id, index) => ({ id, x: 85 + index * 145, placement: [0.5, 0.6] as const })),
+  { id: 'oak-ancient', x: 675, placement: [0.74, 0.86], reference: true },
+] : decalsFirstSet ? [
   { id: 'grass-tuft-a', x: 85, placement: [0.5, 0.6] },
   { id: 'grass-tuft-b', x: 230, placement: [0.5, 0.6] },
   { id: 'stone-cluster-a', x: 375, placement: [0.5, 0.6] },
@@ -193,11 +198,12 @@ for (const { id, x, placement, catalogOnly = false, reference = false, reconstru
     if (!transform) throw new Error(`missing prop transform: ${id}`);
     return { markup, scale: Math.abs(Number(transform[3])) };
   });
+  const catalogProbe = catalogOnly || (requestedDecals.includes(id) && samples.length === 0);
   const presentationScale = cell.presentationScale ?? 1;
   const middle = (placement[0] + placement[1]) / 2 * presentationScale;
   // Leaf pile has no shipped placement. Draw the catalog cell about its declared
   // contact for inspection, without adding it to a production scene selector.
-  if (catalogOnly) {
+  if (catalogProbe) {
     if (!cell.anchor) throw new Error(`missing catalog anchor: ${id}`);
     samples.push({ scale: middle, markup: `<g class="catalog-environment-probe"`
       + ` transform="translate(${-cell.anchor[0] * middle} ${-cell.anchor[1] * middle}) scale(${middle})">`
@@ -207,16 +213,16 @@ for (const { id, x, placement, catalogOnly = false, reference = false, reconstru
   const sample = samples[0];
   if (!sample) throw new Error(`no actual scene placement found: ${id}`);
   reports.push({ id, anchor: cell.anchor, footprint: cell.footprint, presentationScale,
-    evidence: catalogOnly ? 'catalog-only diagnostic; no shipped scene placement' : 'sampled scene renderer markup',
+    evidence: catalogProbe ? 'catalog-only diagnostic; no selected-scene placement sampled' : 'sampled scene renderer markup',
     reference, reconstruction,
     placementScaleRange: placement, rendererScaleRange: placement.map((value) => value * presentationScale),
-    sampledRendererScaleRange: catalogOnly ? null
+    sampledRendererScaleRange: catalogProbe ? null
       : [Math.min(...samples.map((entry) => entry.scale)), Math.max(...samples.map((entry) => entry.scale))],
-    sampleScale: sample.scale, sampleCount: catalogOnly ? 0 : samples.length, reviewMarkup: sample.markup });
+    sampleScale: sample.scale, sampleCount: catalogProbe ? 0 : samples.length, reviewMarkup: sample.markup });
   pictures.push(`<g transform="translate(${x} 145)">${sample.markup}</g>`
     + `<path d="M${x - 5} 145h10 M${x} 140v10" stroke="#ff8070" stroke-width="0.7"/>`
     + `<text x="${x}" y="176" text-anchor="middle">${id}</text>`
-    + `<text x="${x}" y="190" text-anchor="middle">${reconstruction ? 'reconstructed; ' : ''}${catalogOnly ? 'catalog scale' : 'scale'} ${sample.scale}</text>`);
+    + `<text x="${x}" y="190" text-anchor="middle">${reconstruction ? 'reconstructed; ' : ''}${catalogProbe ? 'catalog scale' : 'scale'} ${sample.scale}</text>`);
 }
 const human = candidate01UnitPicture('c01.swordsman', '#ffffff');
 if (!human) throw new Error('missing approved human reference');

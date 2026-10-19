@@ -1,0 +1,7 @@
+# burned-twigs
+
+Full original1536x1024 master and exact6x4 grid inspected; slot12. Exact legacy cell clips upper burned-twig pile above y512 and includes mossy-boulder upper fragment from next visual row below y670. Complete subject reference preserved. One low loose twig heap with a small number of broad readable crooked sticks, three rusty needle groups and exactly ONE small pinecone at rear-right. Muted partly charred brown wood, no active embers, flame, smoke or detached mossy boulder. Tiny original needle tangle is simplified rather than copied as hairline clutter. Source upper twig tips recovered from complete original crop. Declared c01.scorched selector scale0.6,chance0.34; zero instances in both audited initial scenes, so this is selector-backed but not a claimed visible source in those captures. Native front foot(632, 844), ground center approx(628, 673).64/128,anchor32,60,footprint1x1,obstruction0,ground-decal. Renderer opacity0.72 is not baked into source. No gameplay or layer change.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [90, 417, 89, 380]. Strict perimeter alpha-zero check: PASS. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

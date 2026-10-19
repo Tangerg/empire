@@ -1,0 +1,60 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "bootprints",
+  "cellIndexZeroBased": 9,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6352049836058902,
+  "nearOpaqueFractionAlphaGE250": 0.35043141055480515,
+  "nonzeroAlphaBBox": [
+    0,
+    37,
+    1234,
+    1206
+  ],
+  "visibleAlphaBBoxGE8": [
+    75,
+    261,
+    1182,
+    1022
+  ],
+  "subjectAlphaBBoxGE128": [
+    76,
+    261,
+    1181,
+    1021
+  ],
+  "solidAlphaBBoxGE250": [
+    77,
+    262,
+    1180,
+    1020
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    76,
+    261,
+    73,
+    233
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "suggestedRegistrationFootpointNative": [
+    628.5,
+    1021
+  ],
+  "footpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding.",
+  "sha256": "4c394d38c3d7496e996184a7fadeabc001c8c1dfafc448ddc6e4ba494d6a6aa0",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Exactly three complete recessed boot impressions, each with a forefoot and separate heel. The six segments are correctly paired into three boots. Broad tread divisions and restrained earthen planes; no foreign branch fragment.",
+  "remarks": [
+    "Native alpha=1 fringe specks retained unchanged; not included in subject bounds or footpoint."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

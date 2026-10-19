@@ -1,0 +1,60 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "cart-ruts",
+  "cellIndexZeroBased": 8,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6255344937666771,
+  "nearOpaqueFractionAlphaGE250": 0.3567346850524891,
+  "nonzeroAlphaBBox": [
+    0,
+    63,
+    1230,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    77,
+    227,
+    1209,
+    1066
+  ],
+  "subjectAlphaBBoxGE128": [
+    78,
+    228,
+    1208,
+    1065
+  ],
+  "solidAlphaBBoxGE250": [
+    79,
+    229,
+    1207,
+    1064
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    78,
+    228,
+    46,
+    189
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "suggestedRegistrationFootpointNative": [
+    643.0,
+    1065
+  ],
+  "footpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding.",
+  "sha256": "c7b0b3d5dd9bacd55964e6a08621d5dc1148ee37cbbfd341f18b2d9698762a36",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Complete broad flat earth patch with two continuous parallel wheel grooves and two chunky edge tufts. No third rut or foreign stump fragment.",
+  "remarks": [
+    "Native alpha=1 fringe specks retained unchanged; not included in subject bounds or footpoint."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}
