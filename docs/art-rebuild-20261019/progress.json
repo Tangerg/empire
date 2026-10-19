@@ -1289,22 +1289,28 @@
     },
     {
       "topicId": "C01-BPROP-AFTERMATH-2",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-aftermath-2/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+        "exportCheck": "passed",
+        "exportTests": 13,
+        "evidence": "docs/art-rebuild-20261019/batch-006-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceSha256": "482c62092fb010d3ae27f4c5418c91b57f811899d43b252db07d50d19db990d0"
     },
     {
       "topicId": "C01-BPROP-AFTERMATH-3",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-aftermath-3/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+        "exportCheck": "passed",
+        "exportTests": 13,
+        "evidence": "docs/art-rebuild-20261019/batch-006-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceSha256": "9072c64575e3eae8d8beaa55f54ce7b674852643e8b0ad429e171079d9c85d2a"
@@ -1383,11 +1389,14 @@
     },
     {
       "topicId": "C01-BPROP-ENGINEERING-2",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-engineering-2/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+        "exportCheck": "passed",
+        "exportTests": 13,
+        "evidence": "docs/art-rebuild-20261019/batch-006-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "0eedff8a3820ff3f42441ee2351d084de3de39633c3f5ed638ee09ca02b98e04"
@@ -1406,11 +1415,14 @@
     },
     {
       "topicId": "C01-BPROP-ENGINEERING-4",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-engineering-4/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+        "exportCheck": "passed",
+        "exportTests": 13,
+        "evidence": "docs/art-rebuild-20261019/batch-006-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "41592003bc0d3670d0f983c20acc3204ea8adc47d60cf549580fd048dd0cfd2e"
@@ -3841,22 +3853,28 @@
     },
     {
       "topicId": "c02-battle-prop-cargo-crates",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-cargo-crates/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 13,
+        "evidence": "docs/art-rebuild-20261019/batch-006-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "976667852c021a9fe606262aad601ad5081c7b1bed62dc5e2e917eb5e441ef97"
     },
     {
       "topicId": "c02-battle-prop-ceramic-water-tanks",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-ceramic-water-tanks/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 13,
+        "evidence": "docs/art-rebuild-20261019/batch-006-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "4417c71390e4f05049a7878442ce16a6b04a854c2b4d3ccd4ac0cc923e62a3b7"
@@ -7613,6 +7631,24 @@
       "presentationTests": 12,
       "runtimeVisual": "blocked: browser socket permission; no actual screenshot",
       "consumerEvidence": "cover-1 directly used in authored scene; other first-batch topics catalog-only at checked paths"
+    }
+  ],
+  "environmentCells": [
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "oak-ancient",
+      "index": 0,
+      "status": "pending",
+      "assignedTo": "redraw_grayflag_environment_trees",
+      "source": null
+    },
+    {
+      "atlasId": "forest-temperate",
+      "cellId": "mixed-forest-dense",
+      "index": 2,
+      "status": "pending",
+      "assignedTo": "redraw_grayflag_environment_trees",
+      "source": null
     }
   ]
 }
