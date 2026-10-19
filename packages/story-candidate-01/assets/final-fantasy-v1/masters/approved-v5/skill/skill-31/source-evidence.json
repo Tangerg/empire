@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-SKILL-31",
+  "assetId": "C01-FFV1-SKILL-31",
+  "label": "清理污染",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9159a11f-4085-4a60-86be-0385048102a0.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-31-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-02.png",
+    "atlasSha256": "990143dee472244d1996c659e13eab791de28c1baad2aa362aa2cf02bb2bcd22",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-02.png, row 4 column 3 (one based)",
+    "topicIndex": 30,
+    "inspectionCropCoordinates": [
+      608,
+      922,
+      907,
+      1252
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop from original full board; no cleanup or alpha conversion. Nominal miscut cell retained separately.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-31.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned skill-29 through skill-32 while integrating the previous quartet; exact authored-order subjects, object counts, and top/side nominal-cell clipping and contamination corrections were reported before generation.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-31-cell.png",
+    "nominalGridCellCoordinates": [
+      629,
+      942,
+      938,
+      1252
+    ],
+    "sourceCellCorrection": "Nominal top y942 clips the broom handle; left x629 clips broom/pollution and detached splashes; nominal right x938 includes neighboring skill-32 left door frame. Complete-subject crop [608,922,907,1252] retains all cleanup objects and excludes the door."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-31-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "One straw broom with wooden handle and purple binding sweeps one bounded lobed purple pollution patch. Four detached purple splash groups: one tiny left dot, one lower-left round droplet, one right round droplet and one lower-right three-lobed clump. Two overlapping beige wooden tags, each one rope loop; rear tag has a horizontal fracture, front tag has one plain blank round purple wax seal and right-side rope knot/tail. No glyph or text on seal.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits.",
+  "visualInterpretationNotes": "Two tags and two rope loops verified; front purple wax face remains blank. Four detached pollution groups verified, including one three-lobed lower-right clump; no exterior haze."
+}

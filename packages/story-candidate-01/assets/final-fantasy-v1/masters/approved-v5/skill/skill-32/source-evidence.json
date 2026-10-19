@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-SKILL-32",
+  "assetId": "C01-FFV1-SKILL-32",
+  "label": "开启地道",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6362164b-3863-4028-b632-6ebf34e44509.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-32-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-02.png",
+    "atlasSha256": "990143dee472244d1996c659e13eab791de28c1baad2aa362aa2cf02bb2bcd22",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-02.png, row 4 column 4 (one based)",
+    "topicIndex": 31,
+    "inspectionCropCoordinates": [
+      912,
+      922,
+      1252,
+      1252
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop from original full board; no cleanup or alpha conversion. Nominal miscut cell retained separately.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-32.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned skill-29 through skill-32 while integrating the previous quartet; exact authored-order subjects, object counts, and top/side nominal-cell clipping and contamination corrections were reported before generation.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-32-cell.png",
+    "nominalGridCellCoordinates": [
+      942,
+      942,
+      1252,
+      1252
+    ],
+    "sourceCellCorrection": "Nominal left x942 clips the gate outer frame. Complete-subject crop extends left to x912 in the clear gap, preserving the full frame and key while excluding the neighboring tag."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-32-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "One vertically oval round timber-and-stone tunnel gate rim, three vertical wooden bars/slats and one horizontal crossbar across dark interior. One large silver lock plate with keyhole and one inserted brass-shaft key extending right; silver bow has one continuous two-lobed opening plus one small round side hole. One gold curved arrow at lower-right sweeps from right toward upper-left, arrowhead at upper-left.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits.",
+  "visualInterpretationNotes": "Three vertical slats, one crossbar, one key, one continuous two-lobed key-bow opening plus one small side hole, and one upper-left-headed curved arrow verified. Small lock-plate fasteners and rim material segmentation are cosmetic broad-form interpretations; no added glyph or emblem."
+}
