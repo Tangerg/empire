@@ -1,0 +1,27 @@
+{
+  "frames": {
+    "normal": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "damaged": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/damaged/master.png",
+    "captured": "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/captured/master.png"
+  },
+  "scale": 0.11970074812967581,
+  "origin": [
+    4,
+    4
+  ],
+  "frameSize": [
+    160,
+    160
+  ],
+  "sourceFoot": [
+    640,
+    1138
+  ],
+  "registrationOffsets": {
+    "captured": [
+      1,
+      0
+    ]
+  },
+  "registrationBasis": "Common original foundation point, damaged rubble does not redefine pivot. Captured body drift compensated by one logical pixel horizontal translation. Gameplay2x2 unchanged."
+}

@@ -16,8 +16,10 @@ def validate(config):
     size=None;hashes=[]
     for path in config['frames'].values():
         image=Image.open(path);alpha_report(image)
-        if size and size!=image.size:raise ValueError('shared authored canvas required; no independent fit')
-        size=image.size;hashes.append(hashlib.sha256(Path(path).read_bytes()).hexdigest())
+        tolerance=config.get('canvasPaddingTolerance',0)
+        if tolerance not in (0,1):raise ValueError('only explicit one-pixel canvas padding is supported')
+        if size and any(abs(size[i]-image.size[i])>tolerance for i in (0,1)):raise ValueError('shared authored canvas required; no independent fit')
+        size=tuple(max(size[i],image.size[i]) for i in (0,1)) if size else image.size;hashes.append(hashlib.sha256(Path(path).read_bytes()).hexdigest())
     if len(set(hashes))!=len(hashes):raise ValueError('duplicate source frames')
     scale=config['scale'];origin=config['origin'];frame=config['frameSize']
     if scale<=0 or any(origin[i]<0 or origin[i]+size[i]*scale>frame[i] for i in (0,1)):
@@ -35,16 +37,17 @@ def export(config_path, output):
     for name,path in config['frames'].items():
         frames[name]={}
         offset=config.get('registrationOffsets',{}).get(name,[0,0])
+        source_size=Image.open(path).size
         for density in (1,2):
             svg=ET.Element(f'{{{NS}}}svg',{'viewBox':f'0 0 {fw} {fh}','width':str(fw*density),'height':str(fh*density)})
-            ET.SubElement(svg,f'{{{NS}}}image',{'href':Path(path).resolve().as_uri(),'x':str(origin[0]+offset[0]),'y':str(origin[1]+offset[1]),'width':str(size[0]*scale),'height':str(size[1]*scale)})
+            ET.SubElement(svg,f'{{{NS}}}image',{'href':Path(path).resolve().as_uri(),'x':str(origin[0]+offset[0]),'y':str(origin[1]+offset[1]),'width':str(source_size[0]*scale),'height':str(source_size[1]*scale)})
             svg_path=output/f'{name}@{density}x.svg';ET.ElementTree(svg).write(svg_path,encoding='unicode')
             png=output/f'{name}@{density}x.png'
             subprocess.run(['inkscape',str(svg_path),'--export-type=png',f'--export-filename={png}'],check=True,capture_output=True)
             image=Image.open(png).convert('RGBA');qa=alpha_report(image)
             if qa['edgeMax']!=0:raise ValueError('packed frame has nontransparent outer edge')
             frames[name][density]=image
-            reports.append({'frame':name,'density':density,'source':path,'registrationOffset':offset,'sourceSha256':hashlib.sha256(Path(path).read_bytes()).hexdigest(),'outputAlpha':qa})
+            reports.append({'frame':name,'density':density,'source':path,'registrationOffset':offset,'sourceCanvas':source_size,'transparentPaddingToCommonCanvas':[size[i]-source_size[i] for i in (0,1)],'sourceSha256':hashlib.sha256(Path(path).read_bytes()).hexdigest(),'outputAlpha':qa})
     for density in (1,2):
         sheet=Image.new('RGBA',(fw*density*len(frames),fh*density))
         for index,name in enumerate(frames):sheet.paste(frames[name][density],(index*fw*density,0))
