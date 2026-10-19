@@ -1,0 +1,285 @@
+{
+  "kind": "transparent-assets-in-staged-fixture-not-live-gameplay",
+  "baselineSvgSha256": "ebbdad906c8f144a728df4c7608e904ed3168166e9231edd5b57ed3f7f601a17",
+  "config": {
+    "baselineSvg": "/workspace/shared/empire-art-rebuild/calibration-v4/staged-bridgehead/selected-layer-area-water-bridge-bank.svg",
+    "assets": {
+      "swordsman": {
+        "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/swordsman/master.png",
+        "sourceFoot": [
+          800,
+          887
+        ],
+        "logicalPerSourcePixel": 0.05555555555555555,
+        "baselineSource": "/workspace/shared/empire-art-rebuild/calibration-v4/swordsman/master.png",
+        "baselineCanvas": [
+          1254,
+          1254
+        ],
+        "baselineFoot": [
+          641,
+          965
+        ],
+        "expectedInstances": 6
+      },
+      "pine": {
+        "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/pine/pine-master.png",
+        "sourceFoot": [
+          640,
+          1130
+        ],
+        "logicalPerSourcePixel": 0.08144796380090498,
+        "baselineSource": "/workspace/shared/empire-art-rebuild/calibration-v4/pine/master.png",
+        "baselineCanvas": [
+          1254,
+          1254
+        ],
+        "baselineFoot": [
+          640,
+          1201
+        ],
+        "expectedInstances": 5
+      },
+      "stone-bridge": {
+        "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/bridge/bridge-master.png",
+        "sourceFoot": [
+          864,
+          418
+        ],
+        "logicalPerSourcePixel": 0.08098336948662328,
+        "baselineSource": "/workspace/shared/empire-art-rebuild/calibration-v4/stone-bridge/master.png",
+        "baselineCanvas": [
+          1254,
+          1254
+        ],
+        "baselineFoot": [
+          627,
+          625
+        ],
+        "expectedInstances": 3
+      }
+    }
+  },
+  "assets": {
+    "swordsman": {
+      "sourceSha256": "6e6e0f535d7ea725f9bca6ad42c87ee3f7a1f23c908de9d585d451f424335f95",
+      "sourceSize": [
+        1585,
+        992
+      ],
+      "alpha": {
+        "alphaRange": [
+          0,
+          255
+        ],
+        "transparentPixels": 1074038,
+        "nearOpaquePixels": 483579,
+        "edgeMax": 1,
+        "visibleBounds": [
+          319,
+          100,
+          1281,
+          892
+        ]
+      },
+      "logicalCanvas": [
+        88.05555555555556,
+        55.11111111111111
+      ],
+      "sourceFoot": [
+        800,
+        887
+      ],
+      "pivotLogical": [
+        44.44444444444444,
+        49.27777777777778
+      ],
+      "instances": 6
+    },
+    "pine": {
+      "sourceSha256": "2ad89e25fb7f821096e1682797139eecabb228a67f13d6eca93bd01d381c06c4",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alpha": {
+        "alphaRange": [
+          0,
+          255
+        ],
+        "transparentPixels": 1055567,
+        "nearOpaquePixels": 501056,
+        "edgeMax": 0,
+        "visibleBounds": [
+          183,
+          71,
+          1083,
+          1176
+        ]
+      },
+      "logicalCanvas": [
+        102.13574660633485,
+        102.13574660633485
+      ],
+      "sourceFoot": [
+        640,
+        1130
+      ],
+      "pivotLogical": [
+        52.126696832579185,
+        92.03619909502262
+      ],
+      "instances": 5
+    },
+    "stone-bridge": {
+      "sourceSha256": "8185b37a95725c9f6840dd1f8a15fc647706b86f9666f7e7b3dc2142d858ac15",
+      "sourceSize": [
+        1729,
+        910
+      ],
+      "alpha": {
+        "alphaRange": [
+          0,
+          255
+        ],
+        "transparentPixels": 903890,
+        "nearOpaquePixels": 654383,
+        "edgeMax": 0,
+        "visibleBounds": [
+          173,
+          154,
+          1556,
+          783
+        ]
+      },
+      "logicalCanvas": [
+        140.02024584237165,
+        73.69486623282718
+      ],
+      "sourceFoot": [
+        864,
+        418
+      ],
+      "pivotLogical": [
+        69.96963123644251,
+        33.85104844540853
+      ],
+      "instances": 3
+    }
+  },
+  "placements": [
+    {
+      "identity": "swordsman",
+      "pointWorld": [
+        272.0,
+        191.0
+      ],
+      "transform": null
+    },
+    {
+      "identity": "swordsman",
+      "pointWorld": [
+        304.0,
+        223.0
+      ],
+      "transform": null
+    },
+    {
+      "identity": "swordsman",
+      "pointWorld": [
+        272.0,
+        255.0
+      ],
+      "transform": null
+    },
+    {
+      "identity": "swordsman",
+      "pointWorld": [
+        432.0,
+        191.0
+      ],
+      "transform": "translate(864,0) scale(-1,1)"
+    },
+    {
+      "identity": "swordsman",
+      "pointWorld": [
+        400.0,
+        223.0
+      ],
+      "transform": "translate(800,0) scale(-1,1)"
+    },
+    {
+      "identity": "swordsman",
+      "pointWorld": [
+        432.0,
+        255.0
+      ],
+      "transform": "translate(864,0) scale(-1,1)"
+    },
+    {
+      "identity": "pine",
+      "pointWorld": [
+        175.24445,
+        101.75999999999999
+      ],
+      "transform": null
+    },
+    {
+      "identity": "pine",
+      "pointWorld": [
+        80.18315,
+        197.76
+      ],
+      "transform": null
+    },
+    {
+      "identity": "pine",
+      "pointWorld": [
+        204.40936,
+        261.76
+      ],
+      "transform": null
+    },
+    {
+      "identity": "pine",
+      "pointWorld": [
+        81.46457,
+        325.76
+      ],
+      "transform": null
+    },
+    {
+      "identity": "pine",
+      "pointWorld": [
+        209.98783,
+        389.76
+      ],
+      "transform": null
+    },
+    {
+      "identity": "stone-bridge",
+      "pointWorld": [
+        352.0,
+        112.0
+      ],
+      "transform": null
+    },
+    {
+      "identity": "stone-bridge",
+      "pointWorld": [
+        352.0,
+        208.0
+      ],
+      "transform": null
+    },
+    {
+      "identity": "stone-bridge",
+      "pointWorld": [
+        352.0,
+        304.0
+      ],
+      "transform": null
+    }
+  ],
+  "fullAnimationComplete": false
+}
