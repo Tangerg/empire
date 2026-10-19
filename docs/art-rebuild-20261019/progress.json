@@ -4112,16 +4112,16 @@
     },
     {
       "topicId": "c02-battle-prop-five-world-flags",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-five-world-flags/revision-2/master.png",
       "verification": {
         "exportCheck": "passed",
         "exportTests": 14,
-        "evidence": "docs/art-rebuild-20261019/batch-022-export-evidence.json",
+        "evidence": "docs/art-rebuild-20261019/batch-026-export-evidence.json",
         "visualAndConsumerAcceptance": "pending",
         "runtimeVisual": "pending-browser-socket-blocked",
         "semanticReview": "revision2 passed higher-resolution original board comparison",
-        "runtimeOutput": "baseline restored pending corrected generation"
+        "state": "export-checked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "8c83c14ebe03e91e98e237452163e6f7a7e9083fbc7c0d1e7d32e1e75b56fe5f",
@@ -8360,7 +8360,7 @@
     {
       "topicId": "c02-battle-prop-five-world-flags",
       "issue": "Exact emblem linework not certified from tiny original; masterboard review requested",
-      "status": "pending-semantic-review"
+      "status": "resolved-by-reviewed-revision-2"
     },
     {
       "topicId": "c02-battle-prop-hesha-water-signs",
