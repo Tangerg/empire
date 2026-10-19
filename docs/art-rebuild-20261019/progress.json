@@ -1589,17 +1589,25 @@
     },
     {
       "topicId": "C01-BPROP-LIFE-2",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-life-2/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "cae6065864719bfc4079e71d7268368b6a2de3359553fd82a7659351a5f4dfcf"
     },
     {
       "topicId": "C01-BPROP-LIFE-3",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-life-3/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "8998c8f9c6eb46c2d15c6a35389f2d2f73a51c12128002f0ba7eaf51abefb02f"
     },
     {
       "topicId": "C01-BPROP-LIFE-4",
