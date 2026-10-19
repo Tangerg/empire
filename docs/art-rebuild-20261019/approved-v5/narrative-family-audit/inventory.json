@@ -1,0 +1,4822 @@
+{
+  "checkpoint": "23cec1657499797e1481fe7c38212a1883166bfa",
+  "readOnly": true,
+  "missingLegacyTopicSource": true,
+  "countsByKind": {
+    "scene": 41,
+    "key-prop": 17,
+    "character-card": 22
+  },
+  "boards": [
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+      "sha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+      "readSha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+      "sha256": "ba6664552ce4d93879b1c1a815303a0793034f0ab109ba6621e3ca4afd1ee21c",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        4,
+        5,
+        28,
+        29
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+      "readSha256": "ba6664552ce4d93879b1c1a815303a0793034f0ab109ba6621e3ca4afd1ee21c"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+      "sha256": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        30,
+        31,
+        32,
+        33
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+      "readSha256": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+      "sha256": "08bfe299ff2c6e807d2dc9696d954f17c7579b37c2d4953598fe5d24786a5ea5",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        34,
+        35,
+        36,
+        37
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+      "readSha256": "08bfe299ff2c6e807d2dc9696d954f17c7579b37c2d4953598fe5d24786a5ea5"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+      "sha256": "f2d77a8ca045b04c61e45c6ff852d2a11f4440b0a7da897c25288a97eceae34c",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        38,
+        39,
+        40,
+        41
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+      "readSha256": "f2d77a8ca045b04c61e45c6ff852d2a11f4440b0a7da897c25288a97eceae34c"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-06.png",
+      "sha256": "773dc261c19609d5fb8ba9c3da6955e0675c3eaa7d55dd417a9f2ca1864e4354",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        42,
+        43,
+        null,
+        null
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-06.png",
+      "readSha256": "773dc261c19609d5fb8ba9c3da6955e0675c3eaa7d55dd417a9f2ca1864e4354"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+      "sha256": "5e72a8f61548f42332a574ab7dbfae8df3b5aeebe1e7a711ac03d3d2595e0a63",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-01.png",
+      "readSha256": "fc6359c43c01d796d329921482520c2d1086bd1574cdcb9300e7bd0878378841"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+      "sha256": "e422a7910193b75879b81a44e153cf8bc477b2cd19a6fff5028f0314344fc13a",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-02.png",
+      "readSha256": "2e1c4073b3d4b98b8b234d930662a92f49e1d2f48b3bb42e57161ecf64c1e9c6"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+      "sha256": "4730c20b0193975e2962aaeb78fd0598fe05d817853161fdb044c418e1d84884",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        76,
+        73,
+        74,
+        75
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-03.png",
+      "readSha256": "c67b60447b346d606646db59b6e21f58065e6949957280e4924544fd95bc3f12"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+      "sha256": "43785a322329b9a33459e5f0224a1613a3432f083036cecff2cd508f31e9bfdc",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        77,
+        78,
+        79,
+        44
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/intermediate/alpha/narrative/props/prop-board-04.png",
+      "readSha256": "d8bb795ade200384090e47d83198f969889e89881958d44c769666891eacc170"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+      "sha256": "4ccf940515763d1b92d10fc9909e8e64ff3382d995fb5b4b9b2f8777157364be",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+      "readSha256": "4ccf940515763d1b92d10fc9909e8e64ff3382d995fb5b4b9b2f8777157364be"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+      "sha256": "891cf39f451913388f36bc16c61ad629c9c6e390a5ba4098d92a64157424ed1f",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+      "readSha256": "891cf39f451913388f36bc16c61ad629c9c6e390a5ba4098d92a64157424ed1f"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-03.png",
+      "sha256": "0d4c2aed1c0a62c9b55861234d9264873ae61dcd2eaa158c4688e26f7c60d0cf",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        22,
+        23,
+        24,
+        25
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-03.png",
+      "readSha256": "0d4c2aed1c0a62c9b55861234d9264873ae61dcd2eaa158c4688e26f7c60d0cf"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-04.png",
+      "sha256": "7642d75dd7dbd1892a5802cf62657bd9475e5d700ef7b9d177d463c877160670",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        26,
+        27,
+        45,
+        46
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-04.png",
+      "readSha256": "7642d75dd7dbd1892a5802cf62657bd9475e5d700ef7b9d177d463c877160670"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+      "sha256": "412ed4ff17d93d893e6fd6b79e2c3a9f9d6fc359b003bb354989d83ff52a200a",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+      "readSha256": "412ed4ff17d93d893e6fd6b79e2c3a9f9d6fc359b003bb354989d83ff52a200a"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+      "sha256": "d1240b9f9bfaabd4388dac4abace0c70870518b9cef2eaab8d81a2cd6e91117b",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        51,
+        52,
+        53,
+        null
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+      "readSha256": "d1240b9f9bfaabd4388dac4abace0c70870518b9cef2eaab8d81a2cd6e91117b"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+      "sha256": "2e1f6742fbfb91bd23c2f9de99ee0664e13fe37081f5ee8a282765e479c56b9d",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        54,
+        55,
+        56,
+        57
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+      "readSha256": "2e1f6742fbfb91bd23c2f9de99ee0664e13fe37081f5ee8a282765e479c56b9d"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-08.png",
+      "sha256": "dcf8beb9cd77c6f5b6884e94ae4ed18fc73c335c192bb83bfbf2b015cc107bd7",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        58,
+        59,
+        60,
+        61
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-08.png",
+      "readSha256": "dcf8beb9cd77c6f5b6884e94ae4ed18fc73c335c192bb83bfbf2b015cc107bd7"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+      "sha256": "bea6f843b636aba30bfac221569c8fb72a3c21747598a47a9920c81adfbca840",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        62,
+        63,
+        64,
+        65
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+      "readSha256": "bea6f843b636aba30bfac221569c8fb72a3c21747598a47a9920c81adfbca840"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+      "sha256": "75c85d844f0d2c0fe46974218875ee07f94ace55b97b80e6e9259d32cb5501ee",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        66,
+        67,
+        68,
+        69
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+      "readSha256": "75c85d844f0d2c0fe46974218875ee07f94ace55b97b80e6e9259d32cb5501ee"
+    },
+    {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+      "sha256": "9151b02c50d1da9d2345783c4849a90f60f2cbb133feec7a6ad4de05c6f5dd20",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "slots": [
+        70,
+        71,
+        72,
+        null
+      ],
+      "readPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+      "readSha256": "9151b02c50d1da9d2345783c4849a90f60f2cbb133feec7a6ad4de05c6f5dd20"
+    }
+  ],
+  "assets": [
+    {
+      "assetId": "C01-FFV1-ARCH-ANSEL-TOWER",
+      "topicId": "C01-ARCH-ANSEL-TOWER",
+      "label": "安瑟尔控制治疗塔",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-ansel-tower.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "cde4d258076103201b7c087736cac070e6588a9f37e9abc4b8f3d7fba61b7313",
+      "pixelSha256": "7c608851f1e414e9ffdb3da6be5baa6836b4a935f8a0ffa6ca5a4618dbdec9d7",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 68,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 68,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-BONE-TOWER",
+      "topicId": "C01-ARCH-BONE-TOWER",
+      "label": "白骨军塔",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-bone-tower.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "da5d53d267c6d7595f81438be67071d26a044b3fde4c00e983e4f642e0c9cb07",
+      "pixelSha256": "df58c96083e0ecf3312600af5fcc0185f0b0046022622fa9e2c80d075068f555",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 69,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 69,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-CAPITAL",
+      "topicId": "C01-ARCH-CAPITAL",
+      "label": "阿斯塔里亚王都",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-capital.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "a3cc65ff44d5aad8bbffacd92f1afe2bb508a66e3b9c85e6880b2d3707a35c90",
+      "pixelSha256": "b61112aa4c4eb3ddf1907d6f7ff687cdef232d33f9d7c8c115690006af176c2d",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 65,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 65,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-DRAGON-COVENANT-RUIN",
+      "topicId": "C01-ARCH-DRAGON-COVENANT-RUIN",
+      "label": "古龙盟约遗址",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-dragon-covenant-ruin.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "9d3e868e30f2b98c860185482ef09411997ee09ee1b293ce9fce65c539e23ebb",
+      "pixelSha256": "27ef5b08b7e328a3adfcffe5f6d6f7621c33ec3e7731e3583a061582239ed6e0",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 72,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 72,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-FIELD-HOSPITAL",
+      "topicId": "C01-ARCH-FIELD-HOSPITAL",
+      "label": "圣辉野战医院",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-field-hospital.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "d939e6fae22be6b341148b6f74c586ecb23030fef2986fe969bccf4afc31a126",
+      "pixelSha256": "90e7f67db257c362d0f18d5c53ce280ec02979e3e59803f62857beed6e5a3372",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 70,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 70,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-FORGE-CITY",
+      "topicId": "C01-ARCH-FORGE-CITY",
+      "label": "山炉炉城",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-forge-city.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "7d2417467060d5f227fbee5ed85e2554d959056fdffb40466318ca23efa06075",
+      "pixelSha256": "980e4474e8c84ca760a7d94a24fd385dc32cfa1af324930e016cb41ddf882d50",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 67,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 67,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-GRAY-CAMP",
+      "topicId": "C01-ARCH-GRAY-CAMP",
+      "label": "灰旗野战营",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-gray-camp.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "60f1ca51856257ca17d949d611bb5bb7172ce5d0577fec9882c8b60cf7b2417e",
+      "pixelSha256": "43ddd6863cca2633c48a4fdbde156bc1347db7019d95685e19016dcd36a210be",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 7,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 7,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-LOAK-BAKERY",
+      "topicId": "C01-ARCH-LOAK-BAKERY",
+      "label": "洛岬玛尔塔面包房",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-loak-bakery.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "7e88dde42592d1a58144ac528ebd0ba15ea09b2bbf9e1410434840e4a3ef0730",
+      "pixelSha256": "fd0ee8c79395dcfff04e1ab8d195c7fbe9759b0ea0cf0f4a664701650f45f42f",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 66,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 66,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-10.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-MERCENARY-MARKET",
+      "topicId": "C01-ARCH-MERCENARY-MARKET",
+      "label": "佣兵补给市集",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-mercenary-market.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "78938168baeb389f3200e484634adc9cb6f103c67939ee6dbf767f444b007fbf",
+      "pixelSha256": "cbcd4737394d211125c46b534e3f21033ea74eee71914bcc7775576db4ce4861",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 71,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 71,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-11.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-REDSTONE",
+      "topicId": "C01-ARCH-REDSTONE",
+      "label": "赤石誓约烽塔",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-redstone.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "2e7ad1dd8452efbcfae797fe79b733d05032acd9f07ee820c9aaa6f6bd113d4d",
+      "pixelSha256": "7308ca7b520919280dd1760be726c33228145862a0b868a681fb9e7feb907ac2",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 6,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 6,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-SILVERWOOD",
+      "topicId": "C01-ARCH-SILVERWOOD",
+      "label": "银林树城",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-silverwood.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "cf86b7aa85ea7965edbce2f5eadc4fdd19256f7c46b81630b8c6d9949e73dd16",
+      "pixelSha256": "80b071384e9edd15b6a4e74116983a93059db695ac6f286980030ea159a65bf6",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 9,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 9,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-THREE-BRIDGES",
+      "topicId": "C01-ARCH-THREE-BRIDGES",
+      "label": "三桥河谷",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-three-bridges.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "af7f3f03b759a6166b20129b3c3e450fe8c83ca596f7576ea4f0a572257b6a7c",
+      "pixelSha256": "bc9f036dad7f7cf7d84abfdcd47d1c0aca064c33f899ae4fc8295319d9894e85",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 8,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 8,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-01.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-TWIN-HILLS",
+      "topicId": "C01-ARCH-TWIN-HILLS",
+      "label": "双子丘陵战斗地点",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-twin-hills.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "69e242997eeb0d8508f44c1ff8e5c57aa8a0092e98fbb48a55790ec7cd54a2ff",
+      "pixelSha256": "a0ee6962c41f8a5faa512e3516ddd2dd77349568be3a824fc5b325835885ab15",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 63,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 63,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-ARCH-VEINPORT",
+      "topicId": "C01-ARCH-VEINPORT",
+      "label": "维恩港三阶段治理区",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/arch-veinport.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "95d35fdab085ea01ffb0d3472ef8e83f5918faba4ddbbcf93af7bb3958c26b4b",
+      "pixelSha256": "c820adf8174ba9b552d293cdbe1107ad55a18c86a2fa5b4effe1bac90102295e",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 64,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 64,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CH01-S00",
+      "topicId": "C01-CH01-S00",
+      "label": "罗德里克系护腕",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch01-s00.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "3dd8fad06b9c1c9dfdb26cdb759acdc5fbf9137c87392aa45fdcb9726b3c024f",
+      "pixelSha256": "0406344402cb327c67a9b7b0089a9fa1a6d0e9848492511ee0059a59dec89879",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.56036376953125,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 44,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.1075439453125
+        ],
+        "bounds": [
+          4,
+          6,
+          123,
+          122
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CH01-S01",
+      "topicId": "C01-CH01-S01",
+      "label": "双子丘陵初次指挥",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch01-s01.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "013d84c9390f5db09f6699aff4d321b87727a84ffd42b96b555b6d7e45010398",
+      "pixelSha256": "ac792c22b61a2be1ec3a2578e77531ecad459d67c39a51a57b17a0bd80e1ea57",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 11,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 11,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CH01-S02",
+      "topicId": "C01-CH01-S02",
+      "label": "三桥停火",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch01-s02.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "22b9fdd9ce2f7356f2c7d97b48c100ea08ac429dd7c5ebaed7bcd42e1c225032",
+      "pixelSha256": "f22a7371cc3307f810fd9d8e8e0cec8d413801fc732d1f676d2e9ce538a9730e",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 45,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-04.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 45,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-04.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CH01-S05",
+      "topicId": "C01-CH01-S05",
+      "label": "焚村后的第一面灰旗",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch01-s05.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "3a825bc91dfbbdae877b8dd5827fd6534250800030b7a6ef781167ce3040bb66",
+      "pixelSha256": "35e1bfc70475d44d1ce8e8dc2590c0427e32bbc39548fbfa1e90d60e6ce5fc41",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 10,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 10,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CH02-S06",
+      "topicId": "C01-CH02-S06",
+      "label": "白河夜渡",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch02-s06.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "c8373330d0d24c1dc12120c48b1d89923f5a394918c9bfc8a065a8444d8e2322",
+      "pixelSha256": "7230656890f84cf0886f29f62b8da9654dcffcabc7bd0afe5f84d8faeffb724d",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 12,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 12,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CH02-S09",
+      "topicId": "C01-CH02-S09",
+      "label": "伊芙拉断缰",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch02-s09.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "7c93bdde809103daf6c9556c500729cb87fcf26982e92c8d439655b8a2bbfc69",
+      "pixelSha256": "3eae70a4c3a25f6eb19e70502081a34252111023ac0b139110d66f5deb6f45f9",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 46,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-04.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 46,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-04.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CH03-S11",
+      "topicId": "C01-CH03-S11",
+      "label": "墓园姓名木片",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch03-s11.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "e0229217cec74e84fc38a3537a08e6f4f327074da6b9b2134cf8070941404e58",
+      "pixelSha256": "0bf428c5e93544af626dc40c88e0e34393ee661f1b205cbad1ffe93848a1f2ab",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 54,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "key-prop",
+          "size": [
+            128,
+            128
+          ]
+        }
+      ],
+      "catalogSlot": 54,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CH03-S14",
+      "topicId": "C01-CH03-S14",
+      "label": "山炉共同修炉",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch03-s14.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "0d8c980c9b7809279baab78ad2b50f3e3a2ceb582710967202942b1eaea537d2",
+      "pixelSha256": "d113812ef5c40742345421e0558bcd29e5929b31116c4dbba0efb1c7521b1414",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 55,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 55,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CH03-S16",
+      "topicId": "C01-CH03-S16",
+      "label": "无旗者形成",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch03-s16.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "3e5af9686c0659ab88814e1e1dd3360af9312dd62782a260f3b800911cee3396",
+      "pixelSha256": "b451603289c6bd7a78c64f6d04b6c3f440237a37c172ddad927dfdba5f82ff6e",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 47,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 47,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CH04-S19",
+      "topicId": "C01-CH04-S19",
+      "label": "龙眠共同逃生",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch04-s19.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "792948b774ca4c9193f6c03f0a1e65f935ee8460ef91396fda9ff705aeb7ce83",
+      "pixelSha256": "63f7873c5d8d497f29a21888191e8730bc014c061ea3df7c8a882337e791a1ef",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 48,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 48,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CH05-S22",
+      "topicId": "C01-CH05-S22",
+      "label": "安瑟尔秩序街道",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch05-s22.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "3bc3a78a7823c9b1a46efe9593ae83bb2be7f271e4a34a48b9598cd093712cfb",
+      "pixelSha256": "80709b5244ee79b9a36aa8db8d4994e22cd9d0ca649483a33c21f6da7597975e",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 56,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 56,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CH05-S24",
+      "topicId": "C01-CH05-S24",
+      "label": "第一次命令后的安静",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch05-s24.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "a9830b4f442cb8056e000b5849d3c616876eef74aaa4cecf89687868da743e2e",
+      "pixelSha256": "ae1a0510f931300419eb86364791f7ac8574a2747b4b9ef73b00eff5dd196df0",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 49,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 49,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CH05-S26",
+      "topicId": "C01-CH05-S26",
+      "label": "灰誓议会与灰夜",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch05-s26.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "8c736d9a0b1d777cbe6280058387e191f3d9a020d5eff2d94e164165a4be484a",
+      "pixelSha256": "b92ff7e53056e8edf5dcb75a4243c43605c674980ee444921087283e14ec22fa",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 50,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 50,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-05.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CH06-S29",
+      "topicId": "C01-CH06-S29",
+      "label": "最后誓约逐一确认",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch06-s29.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "7867e33a1a280f41c3cc5222f4af3c1625a48e853cc5da33466a33e295373936",
+      "pixelSha256": "292ca63f9303411a383332ec4688cec7f2f050108a7b698a9e61647cb353c42b",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 57,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 57,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-07.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CH06-S32",
+      "topicId": "C01-CH06-S32",
+      "label": "联盟失联后自行行动",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch06-s32.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "86fa9febf62894476a370ce38b6e838e3a93af125ed8244e2539716145c7c742",
+      "pixelSha256": "fe903df16fcecc2584378e1b166863dc99b27f74fa3805813dcaa492d6bffe72",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 51,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 51,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CH07-S33-EST",
+      "topicId": "C01-CH07-S33-EST",
+      "label": "七塔王城终局远景",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch07-s33-est.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "ea7b5d1f39a5f4e55b949a2a2673add30e343954a9d61c127acb0ad9d97533ff",
+      "pixelSha256": "d58fef28032c0ca11bd7e57250c511775f10bad6825f74ca625f998c0938a3cd",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 13,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 13,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-02.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CH07-S34",
+      "topicId": "C01-CH07-S34",
+      "label": "万人跪拜之城",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch07-s34.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "52425dcf96dcc505fc99bd299e5c1a39f0ecb38cc3e73c6fcc02c00f4d0fcecb",
+      "pixelSha256": "2862cee73f2bb708f4c622696478059a5ec9094406039b157d891573c90e6d0b",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 52,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 52,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CH07-S36E",
+      "topicId": "C01-CH07-S36E",
+      "label": "最后议会与无骑龙影",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/ch07-s36e.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "f35c7a8e963efa1410f8e4835dd14365f743d926a0f1c0bacf9edfbd12bceab1",
+      "pixelSha256": "f1a802c05dcb80bc444f136ba43f29cb08b38a636ecba8d8a70ad3d2d4244ebf",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 53,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 53,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-06.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-ADA-01",
+      "topicId": "C01-CHAR-ADA-01",
+      "label": "艾达 8 岁桥上孩子",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-ada-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "76b078f73e18ed898467f7b2d5531f38239fbf011061f5dfa9fbe4759a4204be",
+      "pixelSha256": "1f26b8944be2f2434e363d334ca405447ae434e2d6b1348a7da8798561d10da8",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 40,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 40,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-ADA-02",
+      "topicId": "C01-CHAR-ADA-02",
+      "label": "艾达 17 岁王都医师",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-ada-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "2db9c36e3c86f6660510efc2f5f57f41aa1fd5270a8d13db9a339479c12204f6",
+      "pixelSha256": "961e6aa8842cd251e438af924cf70a75ccc45ec50421a1dfd5292e32dd11c6d0",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 41,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 41,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-BRAN-01",
+      "topicId": "C01-CHAR-BRAN-01",
+      "label": "布兰苇草村猎人",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-bran-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "511767d957f981f20a9863b46c99e88afb43950ddc754d5ebb6fc70cea5359b5",
+      "pixelSha256": "afcf76686786c2684cb5e156b46165e79518d9f45193bad5bef7eeb1a845619e",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 4,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 4,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-BRAN-02",
+      "topicId": "C01-CHAR-BRAN-02",
+      "label": "布兰自由斥候指挥官",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-bran-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "acd0a204daf47c90293d3789510b9cb3d0578461cb91d89b5cf182a658b0275d",
+      "pixelSha256": "fc2d97b662c476ff6ff691795c069f39ab64fa4f4a3ff166d277ed7463b89c36",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 35,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 35,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-CAIN-01",
+      "topicId": "C01-CHAR-CAIN-01",
+      "label": "凯恩帝国敌将",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-cain-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "e776ca71e97fbed77f9d546b94155e593f8d334070db49d0fdd87f736de3e4d1",
+      "pixelSha256": "0c88a47df4de54b82119d75e727d2b0d7596a3591f138ef968a7a94a06f7eee0",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 2,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 2,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-CAIN-02",
+      "topicId": "C01-CHAR-CAIN-02",
+      "label": "凯恩独立改革军统帅",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-cain-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "e96e0b2f151bc20d2932c95b0ecac564ee86480b5da3984969f8aea4890959b6",
+      "pixelSha256": "daeecdf5bdecc8b14e5dd167fc2c0e97526c5a7134229761fcdb71aae2fb8185",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 34,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 34,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-IVRA-01",
+      "topicId": "C01-CHAR-IVRA-01",
+      "label": "伊芙拉幼龙",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-ivra-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "17eb3af3e50f7902ec50234b6ee43e36f717f125788a9528a58863ae9410f00a",
+      "pixelSha256": "89dfc5db270136fe416101a9390addf4d6f02bd37abb03f8940fbd003ba301d5",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 31,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 31,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-IVRA-02",
+      "topicId": "C01-CHAR-IVRA-02",
+      "label": "伊芙拉青年龙",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-ivra-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "14a2685a942e1ac6904c0c69e695c4aecf005d29aa8b8dec596dab55ac8708f7",
+      "pixelSha256": "0137b1442fbd0ce9e76cd57e5e42b37272ca7a89543a43f98e0c51cf4fc7fb01",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 32,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 32,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-IVRA-03",
+      "topicId": "C01-CHAR-IVRA-03",
+      "label": "伊芙拉成年指挥官",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-ivra-03.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "056dbe40c5e40610a386e327a4fa82e6f5ba452408eaa9f6e39d471b5f5ef9b3",
+      "pixelSha256": "62bc6edcc1429d4c9fe4c9636440edd8f0340bfa9ace61386eaa06fb19d328ac",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 33,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 33,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-LEIA-01",
+      "topicId": "C01-CHAR-LEIA-01",
+      "label": "莱娅 18 岁见习旗官",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-leia-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "4ee6c380f5906cf5929d9777672295bed392d33cffac62f7839ed5531b5de0c5",
+      "pixelSha256": "c7d0080945e56764eb2c96038b407ae3060d806f42f92e3c52ef36787bb4e32a",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 0,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 0,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-LEIA-02",
+      "topicId": "C01-CHAR-LEIA-02",
+      "label": "莱娅 22 岁灰旗女王",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-leia-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "52e0e1f7b728a82c00906f43c47440718776be772e84e269d6009dadc685a5e3",
+      "pixelSha256": "d6a80fdb861a33c006cea8b93d8699ac0cc602fd5cb65055ab9d2a2c1d59d071",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 28,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 28,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-LEIA-03",
+      "topicId": "C01-CHAR-LEIA-03",
+      "label": "莱娅 27 岁联盟统帅",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-leia-03.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "0f8ee484071b6a8d17eb5d2762cae7e468c0f1b7703f4f0e7f24089426dbaf51",
+      "pixelSha256": "1df03039dfc355959c5fae0f4501630b33a815e3bac13b9e7b700efc1d866cfb",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 29,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 29,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-MIREL-01",
+      "topicId": "C01-CHAR-MIREL-01",
+      "label": "米蕾尔教廷守墓人",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-mirel-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "0eeab4e732b880c2949dd29b682f5d16b83f99480f01a464cc06b4549ce36275",
+      "pixelSha256": "350b0161be2787e7066d6ae7f699d7b3b644f020ea2260f697a51820c0d66db5",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 3,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 3,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-MIREL-02",
+      "topicId": "C01-CHAR-MIREL-02",
+      "label": "米蕾尔最后誓约建立者",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-mirel-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "7970d5240f087159107f29d7e42aa25b1c90828963b631ca96ad9d8e1380a605",
+      "pixelSha256": "05c932c517b37c0498efda85e24845e98e68bdff219994bbaae36ac695e2e144",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 36,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 36,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-NOBANNER-01",
+      "topicId": "C01-CHAR-NOBANNER-01",
+      "label": "无旗者不稳定聚忆体",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-nobanner-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "a24fb262cd35e145828dc81bed3a4648fcf846999767a74e91960191bbf5fb70",
+      "pixelSha256": "1521b5e9a9af611927339dec9f029bb56442120106d329763acf8a0543966870",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 37,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 37,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-04.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-NOBANNER-02",
+      "topicId": "C01-CHAR-NOBANNER-02",
+      "label": "无旗者协调者",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-nobanner-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "d70ad9f847ea113b0c70ae42b8c8244042c8b34a1cabf7fdf38ad89fbe404b25",
+      "pixelSha256": "432d62d516cbbdffa139388b365b36bc938b8e44a2ac457ad236d804dbdbff58",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 38,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 38,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-RODERICK-01",
+      "topicId": "C01-CHAR-RODERICK-01",
+      "label": "罗德里克教程导师",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-roderick-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "bc52cc4ba161662e09e8f9605f4d16664955439e6f8ac8dc741e36c2ac5896be",
+      "pixelSha256": "1fa54eb7601344db0aae562e38983aa41c6a1115744fe33452203d4790131a9e",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 1,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 1,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-RODERICK-02",
+      "topicId": "C01-CHAR-RODERICK-02",
+      "label": "罗德里克王冠军统帅",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-roderick-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "33e1829f9efa27dc03698d097789a30ead2f52ce91d6f446301ab4558fa04200",
+      "pixelSha256": "4432307dddb31013b74a3ca8d98f1095ca23e7f5c89fa9fd570c09afc75d2cd9",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 30,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 30,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-SEVERIN",
+      "topicId": "C01-CHAR-SEVERIN",
+      "label": "摄政王塞维恩",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-severin.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "b9d2d6bff7f6b430d1bcd9a2a4da1807a973c4938f06d6fa0cc1670dda237214",
+      "pixelSha256": "c1264c517b465579c046ea7c4dba3a6fe36d5c09df0a5d2d0ed694893d87cebc",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 39,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 39,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-05.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-TASHA-01",
+      "topicId": "C01-CHAR-TASHA-01",
+      "label": "塔莎佣兵首领",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-tasha-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "1bcc6c70385d1e53aa49b86aa56daf9eca4d30face27fb5bed952cb82c3be71d",
+      "pixelSha256": "0366cd9a82341ae6412a3c383299e108b9e901dcfdba96bad6cbce951e922605",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 5,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 5,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-TORREN-01",
+      "topicId": "C01-CHAR-TORREN-01",
+      "label": "托伦北丘士兵",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-torren-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "81cd8c7b89ae4e4c164f822c51a9eaeaabaf99c99889f0169f24ae90610febe6",
+      "pixelSha256": "d1b811dce6d7ef563827029c98b6e8225c4210ab01a55d78dd342e47b5ba7cc7",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 42,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-06.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 42,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-06.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-CHAR-TORREN-02",
+      "topicId": "C01-CHAR-TORREN-02",
+      "label": "托伦旧旗军官",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-torren-02.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card",
+      "fileSha256": "b6caa67d062bc6de935fce884eee65fc0c6adb9470865b49997d71ac90153854",
+      "pixelSha256": "19475b0f144d775ada0a68c46db3465d97adbeb2f196743af3abae3dd5e9a974",
+      "mode": "RGBA",
+      "actualSize": [
+        192,
+        224
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 43,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-06.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "character-card",
+          "size": [
+            192,
+            224
+          ]
+        }
+      ],
+      "catalogSlot": 43,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-06.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-ADA-MEDICINE",
+      "topicId": "C01-PROP-ADA-MEDICINE",
+      "label": "艾达双文字药瓶",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-ada-medicine.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "6941f1c0ecebb9f7b7dfc9ce7fccefc8314654289e9de952c91a9660bf6ee938",
+      "pixelSha256": "f5c27650011668e83fa8f8e1de7f590d0e24f150cc9dfa75f9961c3a27082911",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.63824462890625,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 73,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.03460693359375
+        ],
+        "bounds": [
+          4,
+          14,
+          124,
+          114
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-CASUALTY-REGISTER",
+      "topicId": "C01-PROP-CASUALTY-REGISTER",
+      "label": "普通士兵伤亡册",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-casualty-register.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "3ac5444cb27f4c4a86cd84f91346de679504cddf0de94c1ba25224f3944ffd56",
+      "pixelSha256": "63ed185c5d0791922a82c4b3cedbdf105f2993df74cd48f4648e0e105e5a3e4b",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.4915771484375,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 77,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.04827880859375
+        ],
+        "bounds": [
+          4,
+          4,
+          123,
+          124
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-CONTROL-FRAGMENT",
+      "topicId": "C01-PROP-CONTROL-FRAGMENT",
+      "label": "控制誓文残片",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-control-fragment.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "f48ca3d28e00e467f962a8e9b51b47b3da83b5b22957f6f88df7ac9189dc04d8",
+      "pixelSha256": "2b8a8847729d04062ee951841e9cf913bae8bfe94ee4c7d206638d918a048ed6",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.7177734375,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 20,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.037109375
+        ],
+        "bounds": [
+          4,
+          5,
+          124,
+          122
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-CROWN-FRAGMENT",
+      "topicId": "C01-PROP-CROWN-FRAGMENT",
+      "label": "誓约王冠碎片",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-crown-fragment.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "f1c60f4441c0ccafb3c79387ea482658131a5e25aff4a453b6a74ef76f667d48",
+      "pixelSha256": "7a793f2d1a4be51669a6d54e2ef2d39c2aebf38904cb3841eb47665362a9439a",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.75653076171875,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 16,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.09735107421875
+        ],
+        "bounds": [
+          18,
+          23,
+          110,
+          124
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-DRAGON-ALLIANCE-CLASP",
+      "topicId": "C01-PROP-DRAGON-ALLIANCE-CLASP",
+      "label": "巨龙盟约扣",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-dragon-alliance-clasp.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "8a7b586c6e0e71ee40cb021640b89ec75a250362ad41adf21edf13295c5e92a1",
+      "pixelSha256": "aaf27005af4df28ed17116d051e80b60647838f23c004fab30172f72589c63e0",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.72320556640625,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 17,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.04461669921875
+        ],
+        "bounds": [
+          4,
+          23,
+          123,
+          124
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-EVACUATION-MAP",
+      "topicId": "C01-PROP-EVACUATION-MAP",
+      "label": "多语言撤离路线图",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-evacuation-map.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "41936ffa7628c8103122a1fe9982437bbf8d71938dfd6aa4a6fd679efb181b92",
+      "pixelSha256": "673e789ee44b33a80c892f063ce4a31d6cc20ef4f74eea175f12ce8d53274a2a",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.5054931640625,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 79,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.0460205078125
+        ],
+        "bounds": [
+          4,
+          4,
+          122,
+          122
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-EXILE-HARDTACK",
+      "topicId": "C01-PROP-EXILE-HARDTACK",
+      "label": "逃亡硬饼",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-exile-hardtack.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "4f344f76e9d044d55718d5d7691b8cb9343531ea929d329105fe9ead2e74f8da",
+      "pixelSha256": "da20f863dd41821b3158e35c52b9da53018b752b1dc58ca886cfbbd853e11422",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.62994384765625,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 19,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.02716064453125
+        ],
+        "bounds": [
+          6,
+          4,
+          122,
+          124
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-EXPIRING-MANDATE",
+      "topicId": "C01-PROP-EXPIRING-MANDATE",
+      "label": "可拆战时统帅期限扣",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-expiring-mandate.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "e57930da46d1ce19ed8a262da7341a514612b38b4b6f3d6f5dc5e6d19283e30e",
+      "pixelSha256": "359f845dfa760b1fb028f7f801bfa6f7c3378786666d206ca64d2cb6cbc65493",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.6300048828125,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 75,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.04400634765625
+        ],
+        "bounds": [
+          4,
+          17,
+          123,
+          112
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-FIRST-GREY-FLAG",
+      "topicId": "C01-PROP-FIRST-GREY-FLAG",
+      "label": "第一面灰旗",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-first-grey-flag.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "c59ed63b0ec84443bd9139dea21912b71d12c50a9dd6aecaddde842a6183f6c2",
+      "pixelSha256": "65c1a22f53386a5ac6868a79990b9ccf676b65ff96dd6bdac102424dced8b147",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.7147216796875,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 14,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.036865234375
+        ],
+        "bounds": [
+          4,
+          8,
+          123,
+          122
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-FREE-OATH-STONE",
+      "topicId": "C01-PROP-FREE-OATH-STONE",
+      "label": "自由誓石",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-free-oath-stone.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "db78fd2d869c90282e78329ffa270595238d0657308e0e33835c88922cb45399",
+      "pixelSha256": "dd85d760486e604a67d1dd467f87178a3387de124cbecd429d6534c7968469d4",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.63623046875,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 15,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-01.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.044921875
+        ],
+        "bounds": [
+          4,
+          14,
+          121,
+          122
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-GRANARY-KEY",
+      "topicId": "C01-PROP-GRANARY-KEY",
+      "label": "三方共管粮仓钥匙",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-granary-key.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "e860a3960f8f7689cb5710d20bbeae6f602f45e1091d232f93c29d399e0ae544",
+      "pixelSha256": "c6fdd9626e85e17b20ffe41255d0150b925b01728afd604b1cd52eaece89b1d1",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.76776123046875,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 78,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-04.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.12158203125
+        ],
+        "bounds": [
+          4,
+          4,
+          122,
+          124
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-IVRA-BROKEN-BRIDLE",
+      "topicId": "C01-PROP-IVRA-BROKEN-BRIDLE",
+      "label": "伊芙拉断裂缰具",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-ivra-broken-bridle.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "86f5dbe8b1fe3d1f76beb6ba68204f854a2c14af396a5fcfbffffc590552cf7d",
+      "pixelSha256": "3b27346061f600783519cda9440c437f01b496e84a33886d8b767629685fbf89",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.705322265625,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 74,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.04754638671875
+        ],
+        "bounds": [
+          12,
+          5,
+          119,
+          109
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-LEFT-GLOVE",
+      "topicId": "C01-PROP-LEFT-GLOVE",
+      "label": "莱娅左手护腕",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-left-glove.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "75494ca70afb0ca9b38409419483e4b6265cf1b14891ed20659c3cad41d4b1cf",
+      "pixelSha256": "9e7746cb94df2db8ca564a364bb100551b14d3cf9f76ad711226b407275c2876",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.74267578125,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 18,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.019775390625
+        ],
+        "bounds": [
+          22,
+          12,
+          108,
+          96
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-NAME-TAGS",
+      "topicId": "C01-PROP-NAME-TAGS",
+      "label": "墓园活人木片与亡者姓名牌",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-name-tags.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "6ae26461904fbb0ef0126db1ee28e51e3186d9429f2c234310de2ce9a0a000f5",
+      "pixelSha256": "1a7e0e412d0ca92a63088f5baf803260a4663ea0c798911d4b7d4be3b0f33822",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.564453125,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 76,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-03.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.191650390625
+        ],
+        "bounds": [
+          9,
+          5,
+          124,
+          114
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-PROP-THREE-PEOPLES-CLASP",
+      "topicId": "C01-PROP-THREE-PEOPLES-CLASP",
+      "label": "三族盟约扣件",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/prop-three-peoples-clasp.png",
+      "width": 128,
+      "height": 128,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "key-prop",
+      "fileSha256": "0c9602113d5185ddfa172325d35ba3a77b85793b8d0bc3345fbf57f4ab25f094",
+      "pixelSha256": "6c30c39577064bdb379295f428d51a1e566b439d7840900c42b8be5b546d3a1f",
+      "mode": "RGBA",
+      "actualSize": [
+        128,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.67169189453125,
+      "edgeMaxAlpha": 0,
+      "exactLegacyMatches": [],
+      "catalogSlot": 21,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/props/prop-board-02.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "legacyReproductionDifference": {
+        "meanAbsoluteRGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.05670166015625
+        ],
+        "bounds": [
+          5,
+          6,
+          123,
+          122
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-SCENE-ARCHIVE-FORGE-OPEN",
+      "topicId": "C01-SCENE-ARCHIVE-FORGE-OPEN",
+      "label": "山炉档案炉开封",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-archive-forge-open.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "f57e420e1810e8e01e9095c2b555654dbb9979d6cf2178678a32ca6b9f95911e",
+      "pixelSha256": "65b64b7b76257d8cf0bfbb0e81fffe53a8d81f3cebf90f8312b07ac57ec1127e",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 61,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-08.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 61,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-08.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-SCENE-NURSERY-DEBATE",
+      "topicId": "C01-SCENE-NURSERY-DEBATE",
+      "label": "银林育儿屋争议",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-nursery-debate.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "941b59c8a6c645c819c3bfad27caf05dd870595a0f55597ebfbbecfd2c59cb31",
+      "pixelSha256": "59368b746b9cd4e0a9bcd8c861f1af7443767c933fd7cbbd7466c78d56c645e8",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 60,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-08.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 60,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-08.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-SCENE-OLD-FLAG-HOMECOMING",
+      "topicId": "C01-SCENE-OLD-FLAG-HOMECOMING",
+      "label": "旧旗士兵归乡",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-old-flag-homecoming.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "6b16ebecc7e03b0c444cee0664ec708f3f312b656193676df6a6dfbc73a6cc3f",
+      "pixelSha256": "209f6d8e548406f57d47b8b2bdfde006e089ee50643a54411e0f8566c2cab07d",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 62,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 62,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-09.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-SCENE-PUBLIC-RATIONS",
+      "topicId": "C01-SCENE-PUBLIC-RATIONS",
+      "label": "灰旗营地公开分粮",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-public-rations.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "9c8855d7a8d1eee08828fb8baab8c3c76523693736f8bb6062924ebb8a38175c",
+      "pixelSha256": "8f175f53383decbed180e81495fe36640a37e72a77904ebeeb747e70db4e3538",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 58,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-08.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 58,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-08.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": true
+    },
+    {
+      "assetId": "C01-FFV1-SCENE-REFUGEE-BRIDGEWORK",
+      "topicId": "C01-SCENE-REFUGEE-BRIDGEWORK",
+      "label": "难民与工程师共同修桥",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/scene-refugee-bridgework.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "5d229e0da226f37e69f20078f6b3afba8dda54042a14b0740a0649050d6326e1",
+      "pixelSha256": "44ed07bfbf90ff96f3d6809b9995cafe5979a5ec7b4f236f53b5911a74069842",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 59,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-08.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 59,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-08.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-STYLE-BORDER-AUTUMN",
+      "topicId": "C01-STYLE-BORDER-AUTUMN",
+      "label": "灰境边境秋季视觉基准",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-border-autumn.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "2b96362ea410b49b3f1f0590516ade3a033472e8b6fe945d4e7f83aa0701b0df",
+      "pixelSha256": "f5bb51f8b97344847fb33dc43f35469e25083f0dc167abcd0a983202b97b1f8e",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 23,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-03.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 23,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-03.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-STYLE-CAPITAL-ORDER",
+      "topicId": "C01-STYLE-CAPITAL-ORDER",
+      "label": "阿斯塔里亚王都秩序",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-capital-order.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "d49c12f76ae8c70094862321d3c769ee82d7d698f23a731388edb23e0fb7c7ae",
+      "pixelSha256": "75c5842610d8c46f15b33f57c7ba532687e864cbc6a1b4ef672d120bacf69a05",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 27,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-04.png",
+          "boardCell": 1,
+          "cropBox": [
+            632,
+            5,
+            1249,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 27,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-04.png",
+        "boardCell": 1,
+        "cropBox": [
+          632,
+          5,
+          1249,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-STYLE-ELDER-PEOPLES",
+      "topicId": "C01-STYLE-ELDER-PEOPLES",
+      "label": "古老诸族文化并置",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-elder-peoples.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "01a1380674c09a19eae2d21045be2b6cc04bec2579550d3a21d9fcb199e292b6",
+      "pixelSha256": "dd5229a8e9cf38e472fc20b55f6ca1c6a01be2c7de0bc766262a4920acd8f25d",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 26,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-04.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 26,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-04.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-STYLE-KEYART",
+      "topicId": "C01-STYLE-KEYART",
+      "label": "莱娅面对王冠与多面军旗",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-keyart.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "c2847854599e23025757d10798253b27b4806b5fa6da769e795df916f803823c",
+      "pixelSha256": "1f9c56e6ce71efd8bbb3aecc0f9a0cb7e295241c522d435b9bccad4d2d4f7093",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 22,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-03.png",
+          "boardCell": 0,
+          "cropBox": [
+            5,
+            5,
+            622,
+            622
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 22,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-03.png",
+        "boardCell": 0,
+        "cropBox": [
+          5,
+          5,
+          622,
+          622
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-STYLE-LONG-NIGHT",
+      "topicId": "C01-STYLE-LONG-NIGHT",
+      "label": "七塔长夜灰光",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-long-night.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "f41f8c94f7c7317e58131f1278a5bb1cd385d764024cef1ff05c442504c8c063",
+      "pixelSha256": "3ba89ee5f0e0dee3725cae18252238d21fd69df53a9883aa5f6d4f4f4f01f517",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 25,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-03.png",
+          "boardCell": 3,
+          "cropBox": [
+            632,
+            632,
+            1249,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 25,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-03.png",
+        "boardCell": 3,
+        "cropBox": [
+          632,
+          632,
+          1249,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    },
+    {
+      "assetId": "C01-FFV1-STYLE-OATH-LIGHT",
+      "topicId": "C01-STYLE-OATH-LIGHT",
+      "label": "誓火视觉语言",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/style-oath-light.png",
+      "width": 256,
+      "height": 144,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "scene",
+      "fileSha256": "2ce7ea91f334d81891a03a2826516d100c496087a25b9fe6f0ed5ba93e2ac984",
+      "pixelSha256": "d38a9825947801546acccf89b0ef79a6afd12bb3900701e60879efe1db150ae5",
+      "mode": "RGBA",
+      "actualSize": [
+        256,
+        144
+      ],
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "transparentFraction": 0.0,
+      "edgeMaxAlpha": 255,
+      "exactLegacyMatches": [
+        {
+          "slot": 24,
+          "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-03.png",
+          "boardCell": 2,
+          "cropBox": [
+            5,
+            632,
+            622,
+            1249
+          ],
+          "kind": "scene",
+          "size": [
+            256,
+            144
+          ]
+        }
+      ],
+      "catalogSlot": 24,
+      "documentedSource": {
+        "board": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/scenes/scene-board-03.png",
+        "boardCell": 2,
+        "cropBox": [
+          5,
+          632,
+          622,
+          1249
+        ]
+      },
+      "hasDirectConsumer": false
+    }
+  ],
+  "speakerBeatCounts": {
+    "narrator": 7,
+    "roderick": 9,
+    "laiya": 33,
+    "cain": 8,
+    "mirelle": 12,
+    "bran": 10,
+    "tasha": 9,
+    "ivra": 3
+  },
+  "storySceneReferenceCounts": {
+    "C01-CH01-S01": 3,
+    "C01-CH01-S02": 2,
+    "C01-ARCH-REDSTONE": 6,
+    "C01-CH05-S26": 8,
+    "C01-CH01-S05": 3,
+    "C01-CH02-S06": 2,
+    "C01-SCENE-PUBLIC-RATIONS": 3,
+    "C01-CH02-S09": 2,
+    "C01-ARCH-THREE-BRIDGES": 2,
+    "C01-CH03-S14": 2,
+    "C01-ARCH-SILVERWOOD": 2
+  },
+  "noExactMatch": [
+    "C01-CH01-S00",
+    "C01-PROP-ADA-MEDICINE",
+    "C01-PROP-CASUALTY-REGISTER",
+    "C01-PROP-CONTROL-FRAGMENT",
+    "C01-PROP-CROWN-FRAGMENT",
+    "C01-PROP-DRAGON-ALLIANCE-CLASP",
+    "C01-PROP-EVACUATION-MAP",
+    "C01-PROP-EXILE-HARDTACK",
+    "C01-PROP-EXPIRING-MANDATE",
+    "C01-PROP-FIRST-GREY-FLAG",
+    "C01-PROP-FREE-OATH-STONE",
+    "C01-PROP-GRANARY-KEY",
+    "C01-PROP-IVRA-BROKEN-BRIDLE",
+    "C01-PROP-LEFT-GLOVE",
+    "C01-PROP-NAME-TAGS",
+    "C01-PROP-THREE-PEOPLES-CLASP"
+  ],
+  "directConsumerTopicIds": [
+    "C01-ARCH-REDSTONE",
+    "C01-ARCH-SILVERWOOD",
+    "C01-ARCH-THREE-BRIDGES",
+    "C01-CH01-S01",
+    "C01-CH01-S02",
+    "C01-CH01-S05",
+    "C01-CH02-S06",
+    "C01-CH02-S09",
+    "C01-CH03-S14",
+    "C01-CH05-S26",
+    "C01-CHAR-BRAN-01",
+    "C01-CHAR-CAIN-01",
+    "C01-CHAR-IVRA-01",
+    "C01-CHAR-LEIA-01",
+    "C01-CHAR-MIREL-01",
+    "C01-CHAR-RODERICK-01",
+    "C01-CHAR-TASHA-01",
+    "C01-SCENE-PUBLIC-RATIONS"
+  ],
+  "overrideNarrativeCount": 0,
+  "hdNarrativeCount": 0,
+  "contractFileHashes": {
+    "packages/story-candidate-01/src/presentation/candidate-01-story.ts": "f35bc9c0da43f598834af29a26e08eb43e5d4d46467914c5774e1ea579768068",
+    "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts": "6b60481f98d100568513955597e00c1b33f12a7f81255532cacc6e21466aea0a",
+    "packages/story-candidate-01/src/story.ts": "f0e31a172ff45a1dae57d988e8c672b87e384881e3fe3ec890b84a49588c1299",
+    "packages/game-ui/src/ui/campaign-game.ts": "4abfd0e4c1dc90d30cc30a55200db2cbf8be50e08d11172c1cf5f0e428573c97",
+    "packages/game-ui/src/styles/campaign.css": "ba9082820e208f4d3b835731d41d3c78c49de7da1bd5fb99d5ea1a1ec49cbc81",
+    "packages/story-candidate-01/src/presentation/index.ts": "6f709d780a4bf2b12d1df9b0b6cd77dfe34bf265134dc5c0e90700a5fe406633",
+    "packages/story-candidate-01/src/presentation/candidate-01-assets.ts": "20c1960e89c8766fea25017e5cd02aa0f30a90ca6bff71e58f9bb41d8e8c8a56",
+    "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py": "b533ecffd7628905c744d9ddcfa40c93f08e76800b2c4427ee7d1ca5d9d74bd7",
+    "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md": "6c3fa34dfbe5a8df87a2b2f52f9b38c26e6299e44bcfe2ff563a884d1e27aac5"
+  },
+  "exactRgbaReproductions": 64,
+  "exactRgbOnlyReproductions": 16,
+  "sourcesStableAcrossAudit": true,
+  "scope": "Read-only byte/crop/consumer audit. Visual identity review is separate; no source generation or production changes."
+}

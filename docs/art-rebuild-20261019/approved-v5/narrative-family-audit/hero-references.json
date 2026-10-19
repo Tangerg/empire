@@ -1,0 +1,852 @@
+{
+  "checkpoint": "23cec1657499797e1481fe7c38212a1883166bfa",
+  "scope": "read-only named identity references; no source generation or binding mutation",
+  "heroes": [
+    {
+      "unitType": "c01.laiya",
+      "cardTopicId": "C01-CHAR-LEIA-01",
+      "currentBattleTopicId": "C01-UNIT-BANNER-GUARD",
+      "card": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-leia-01.png",
+        "sha256": "4ee6c380f5906cf5929d9777672295bed392d33cffac62f7839ed5531b5de0c5",
+        "size": [
+          192,
+          224
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      },
+      "originalBoard": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+        "sha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "originalBoardCell": 0,
+      "originalCropBox": [
+        5,
+        5,
+        622,
+        622
+      ],
+      "runtimeBattle": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard.png",
+        "sha256": "40d5008a83da9c688cbc1d4ca57726402d8f02ea9e91dc924166bcf18bca7211",
+        "size": [
+          416,
+          64
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "runtimeBattleHd": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
+        "sha256": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+        "size": [
+          832,
+          128
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "publishedSequence": {
+        "path": "docs/art-rebuild-20261019/approved-v5/animation/banner-guard/export/sequence.json",
+        "sha256": "7b5cf7e4edfbfc737f06ee8607f3fcdb0d474eb49066ae8af133c35026393ad8",
+        "matchesCurrentHdBytes": true
+      },
+      "nativeBattleFrames": {
+        "idle": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/banner-guard/idle/master.png",
+          "sha256": "1307b932b2269d934b02e185dd9e61da04bc596b4deb23e50132d579e5e80205",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-a": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/banner-guard/walk-a/master.png",
+          "sha256": "31e2e3e3ae54bf9f1ddb5e643d5b52e86ad52baf7dc89625f01d99749016d64e",
+          "size": [
+            1585,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "attack": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/banner-guard/attack/master.png",
+          "sha256": "1b75df55149f8e643acb437ed2ac1a331d8a5eee22b2b885755aaf5d2c8c4b6b",
+          "size": [
+            1584,
+            993
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-b": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/banner-guard/walk-b/master.png",
+          "sha256": "26547ea39fd050063794e0780a3546219cebd8f0081d55b9a700c227a490266b",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        }
+      }
+    },
+    {
+      "unitType": "c01.roderick",
+      "cardTopicId": "C01-CHAR-RODERICK-01",
+      "currentBattleTopicId": "C01-UNIT-HEAVY-KNIGHT",
+      "card": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-roderick-01.png",
+        "sha256": "bc52cc4ba161662e09e8f9605f4d16664955439e6f8ac8dc741e36c2ac5896be",
+        "size": [
+          192,
+          224
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      },
+      "originalBoard": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+        "sha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "originalBoardCell": 1,
+      "originalCropBox": [
+        632,
+        5,
+        1249,
+        622
+      ],
+      "runtimeBattle": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-heavy-knight.png",
+        "sha256": "49442b6a0b12b026bcfe7e69c89520c82239a6be925a9c99008df50d37f87928",
+        "size": [
+          416,
+          64
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "runtimeBattleHd": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-heavy-knight@2x.png",
+        "sha256": "493e95a84ad64e784d8336f3a6b1bede188ad7d24842f894b550683098cf2ca0",
+        "size": [
+          832,
+          128
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "publishedSequence": {
+        "path": "docs/art-rebuild-20261019/approved-v5/animation/heavy-knight/export/sequence.json",
+        "sha256": "9dfaa90de59f008e40ca1ecb48be9d8a3821aea2c65981b26c257d026aec7fe3",
+        "matchesCurrentHdBytes": true
+      },
+      "nativeBattleFrames": {
+        "idle": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/heavy-knight/idle/master.png",
+          "sha256": "f04f1b84b595d4bc4495a00576567f9d27f6a7019d4626c4d78cab6af3865b07",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-a": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/heavy-knight/walk-a/master.png",
+          "sha256": "9cb73832adda509f1f186f302b1b4092ebcee836aced380fc6d1f53505785029",
+          "size": [
+            1584,
+            993
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "attack": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/heavy-knight/attack/master.png",
+          "sha256": "46406c9505e6af2b226dc4032549c10d69971020246ac375c0f5f55d7b7f0f60",
+          "size": [
+            1584,
+            993
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-b": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/heavy-knight/walk-b/master.png",
+          "sha256": "8be8190c92941fe14ad851eceb2ce6453aa9b778d7756a6fccfcc925ea3b3cd4",
+          "size": [
+            1584,
+            993
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        }
+      }
+    },
+    {
+      "unitType": "c01.cain",
+      "cardTopicId": "C01-CHAR-CAIN-01",
+      "currentBattleTopicId": "C01-UNIT-LEGION-SHIELD",
+      "card": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-cain-01.png",
+        "sha256": "e776ca71e97fbed77f9d546b94155e593f8d334070db49d0fdd87f736de3e4d1",
+        "size": [
+          192,
+          224
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      },
+      "originalBoard": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+        "sha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "originalBoardCell": 2,
+      "originalCropBox": [
+        5,
+        632,
+        622,
+        1249
+      ],
+      "runtimeBattle": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield.png",
+        "sha256": "392a6a27f3f6d7f5e2bd497763975c07c02d0be25c9c56c6409834eb9144fc2a",
+        "size": [
+          416,
+          64
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "runtimeBattleHd": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png",
+        "sha256": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76",
+        "size": [
+          832,
+          128
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "publishedSequence": {
+        "path": "docs/art-rebuild-20261019/approved-v5/animation/legion-shield/export/sequence.json",
+        "sha256": "c877d15f01195d5a221d1ef1c3f9546cfed927e46c701dc190db78f8187fc559",
+        "matchesCurrentHdBytes": true
+      },
+      "nativeBattleFrames": {
+        "idle": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/idle/master.png",
+          "sha256": "efb0135b69c06878d18c76edea07f30a33dfc17869308b198f908f29ad50f25f",
+          "size": [
+            1585,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-a": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/walk-a/master.png",
+          "sha256": "cd94e004d29b77be41884db7873acfddd0b5b0d4d6eade4cffbfbb10673a6694",
+          "size": [
+            1585,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "attack": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/attack/master.png",
+          "sha256": "d2aed26b3101f937688bc2e0cfbe6b525e1555ddbf123de1d25f778d003fcf4a",
+          "size": [
+            1584,
+            993
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-b": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/legion-shield/walk-b/master.png",
+          "sha256": "e12d2faa49003048bddcb7410765eeb519c30dd7539b01a00174d0cf43b8a238",
+          "size": [
+            1584,
+            993
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        }
+      }
+    },
+    {
+      "unitType": "c01.mirelle",
+      "cardTopicId": "C01-CHAR-MIREL-01",
+      "currentBattleTopicId": "C01-UNIT-GRAVEKEEPER",
+      "card": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-mirel-01.png",
+        "sha256": "0eeab4e732b880c2949dd29b682f5d16b83f99480f01a464cc06b4549ce36275",
+        "size": [
+          192,
+          224
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      },
+      "originalBoard": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+        "sha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "originalBoardCell": 3,
+      "originalCropBox": [
+        632,
+        632,
+        1249,
+        1249
+      ],
+      "runtimeBattle": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper.png",
+        "sha256": "5e1ad5ab566e6ca54ec3736e26dee48d38d07326f054ae1c728b9b48cee64d20",
+        "size": [
+          416,
+          64
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "runtimeBattleHd": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png",
+        "sha256": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+        "size": [
+          832,
+          128
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "publishedSequence": {
+        "path": "docs/art-rebuild-20261019/approved-v5/animation/gravekeeper/export/sequence.json",
+        "sha256": "3cac0216c65967b9bbc49b87e419fc894b5185a2a7c88f308afa944558d2e49a",
+        "matchesCurrentHdBytes": true
+      },
+      "nativeBattleFrames": {
+        "idle": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/idle/master.png",
+          "sha256": "ce82001cd6d41b67b3197cdbdf475a268abb3e2e6ffcbd06aa7478321bd7697b",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-a": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-a/master.png",
+          "sha256": "26c9e597dc1ba593fc31aded8922b3b409a82b31c985af4dc38c2c8c5604e98e",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "attack": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/attack/master.png",
+          "sha256": "ecb1d5f52421645ae8c19f63085e0c829220c499780e895676b590d82a281a9e",
+          "size": [
+            1585,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-b": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-b/master.png",
+          "sha256": "ebaf32053740f300a97ad62d0ec411ec0f63cbe1cd67c808d0aafb13debfc4ff",
+          "size": [
+            1585,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        }
+      }
+    },
+    {
+      "unitType": "c01.bran",
+      "cardTopicId": "C01-CHAR-BRAN-01",
+      "currentBattleTopicId": "C01-UNIT-RANGER",
+      "card": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-bran-01.png",
+        "sha256": "511767d957f981f20a9863b46c99e88afb43950ddc754d5ebb6fc70cea5359b5",
+        "size": [
+          192,
+          224
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      },
+      "originalBoard": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+        "sha256": "ba6664552ce4d93879b1c1a815303a0793034f0ab109ba6621e3ca4afd1ee21c",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "originalBoardCell": 0,
+      "originalCropBox": [
+        5,
+        5,
+        622,
+        622
+      ],
+      "runtimeBattle": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger.png",
+        "sha256": "ff5fcced27bdb2e3752f0194dde1b29020cbd5ed4f5c583592fc5e736b0db07a",
+        "size": [
+          416,
+          64
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "runtimeBattleHd": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger@2x.png",
+        "sha256": "27d13b44ade8852fd8551953b6ec55066ec9eae0349f3dc00181388f4cac1145",
+        "size": [
+          832,
+          128
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "publishedSequence": {
+        "path": "docs/art-rebuild-20261019/approved-v5/animation/ranger/export/sequence.json",
+        "sha256": "9568d88c4bd4dfe763bd6b3369072c00527eaa70db546da370f23e80b2ccd8c0",
+        "matchesCurrentHdBytes": true
+      },
+      "nativeBattleFrames": {
+        "idle": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ranger/idle/master.png",
+          "sha256": "37ab3fab9cb11927ddf8d5ce7281c7fbee49900c87f15f17b8272c4617b4bfd0",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-a": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ranger/walk-a/master.png",
+          "sha256": "7852579ffb87c42d1c6fc0dfa8335e6c66d64107e56bc3341c1ebcdbe26404e4",
+          "size": [
+            1585,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "attack": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ranger/attack/master.png",
+          "sha256": "bf02f8915db5b61de8fdae561c7013f9cc47165f6ffc3f2ba8786e72cf181dff",
+          "size": [
+            1584,
+            993
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-b": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ranger/walk-b/master.png",
+          "sha256": "9aa67b03709bf5e8900fdd10af7eb3645762e615617b3dd9b26b087da78d4268",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        }
+      }
+    },
+    {
+      "unitType": "c01.tasha",
+      "cardTopicId": "C01-CHAR-TASHA-01",
+      "currentBattleTopicId": "C01-UNIT-ENGINEER",
+      "card": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-tasha-01.png",
+        "sha256": "1bcc6c70385d1e53aa49b86aa56daf9eca4d30face27fb5bed952cb82c3be71d",
+        "size": [
+          192,
+          224
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      },
+      "originalBoard": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-02.png",
+        "sha256": "ba6664552ce4d93879b1c1a815303a0793034f0ab109ba6621e3ca4afd1ee21c",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "originalBoardCell": 1,
+      "originalCropBox": [
+        632,
+        5,
+        1249,
+        622
+      ],
+      "runtimeBattle": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer.png",
+        "sha256": "bf580abb634e9f9ba03b52ab3a19afaa3f6a401199053b63dcbe841cf3921b69",
+        "size": [
+          416,
+          64
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "runtimeBattleHd": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-engineer@2x.png",
+        "sha256": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
+        "size": [
+          832,
+          128
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "publishedSequence": {
+        "path": "docs/art-rebuild-20261019/approved-v5/animation/engineer/export/sequence.json",
+        "sha256": "f95da55734b592d1bc2c580dfc0b2be0780ff42727d82c67a384224f8e91d249",
+        "matchesCurrentHdBytes": true
+      },
+      "nativeBattleFrames": {
+        "idle": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/idle/master.png",
+          "sha256": "20421d289c418fe43a9515f46d1ebfc3c99e19c13988d1ddcb69b04947c7883f",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-a": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-a/master.png",
+          "sha256": "42d21f6593d4ec862f1a8e098ec9092557e7a2fcf962a493c9543e2aac63021f",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "attack": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/attack/master.png",
+          "sha256": "9e26deeeab73fa347ced302b9c979b599f30c5886138d18f53eed5cde205dc5a",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-b": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/engineer/walk-b/master.png",
+          "sha256": "c030cc5e5d3f684cfee5c134926c4955f768192be2e00be5349a27a0bb8429e5",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        }
+      }
+    },
+    {
+      "unitType": "c01.ivra",
+      "cardTopicId": "C01-CHAR-IVRA-01",
+      "currentBattleTopicId": "C01-UNIT-IVRA-GROWTH",
+      "card": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ivra-01.png",
+        "sha256": "17eb3af3e50f7902ec50234b6ee43e36f717f125788a9528a58863ae9410f00a",
+        "size": [
+          192,
+          224
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          255,
+          255
+        ]
+      },
+      "originalBoard": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-03.png",
+        "sha256": "d9fb50ac8c9f274e570da852b004b3404d19271d51c93513c9100e66a15f9bca",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "alphaExtrema": null
+      },
+      "originalBoardCell": 1,
+      "originalCropBox": [
+        632,
+        5,
+        1249,
+        622
+      ],
+      "runtimeBattle": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ivra-growth.png",
+        "sha256": "a4963d2b7bdee05edba69d6acaec022b294264e424e0c6c1b6fda665d85466f6",
+        "size": [
+          512,
+          80
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "runtimeBattleHd": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ivra-growth@2x.png",
+        "sha256": "b11f59c346ff2888af9ac43766a8994ec1d83345c56856d266b04afcde6331ad",
+        "size": [
+          1024,
+          160
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ]
+      },
+      "publishedSequence": {
+        "path": "docs/art-rebuild-20261019/approved-v5/animation/ivra-growth/export/sequence.json",
+        "sha256": "be8a5622bd27aafdabf69bdebdabd65e3bb1956d61570f379c0eeddaa249f1de",
+        "matchesCurrentHdBytes": true
+      },
+      "nativeBattleFrames": {
+        "idle": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/idle/master.png",
+          "sha256": "235e8e8019d38bf9703291bcce8847661dda21c0f31e1ada9a0cf42d594363cb",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-a": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/walk-a/master.png",
+          "sha256": "2247fe314f6a7e527b93c4ccc09bc04b1f3dbeb8a3e030259cb61b6866408448",
+          "size": [
+            1586,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "attack": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/attack/master.png",
+          "sha256": "e83da9e71c4e7c5da48df41a24e32a838542be7f9633f7da2bd87d84cb4664c6",
+          "size": [
+            1585,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        "walk-b": {
+          "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ivra-growth/walk-b/master.png",
+          "sha256": "84037cae336e4216ba6123420599672ee2e1c9157f2ca5f80f9215b9ad303b24",
+          "size": [
+            1585,
+            992
+          ],
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        }
+      }
+    }
+  ],
+  "contractFiles": {
+    "packages/story-candidate-01/src/units.ts": "5aec43c370aebde9587f6ef7ea564215806df9ce60a76939528e968a069ba36c",
+    "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts": "6b60481f98d100568513955597e00c1b33f12a7f81255532cacc6e21466aea0a",
+    "packages/story-candidate-01/src/presentation/candidate-01-assets.ts": "20c1960e89c8766fea25017e5cd02aa0f30a90ca6bff71e58f9bb41d8e8c8a56",
+    "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts": "84058b4b0a3f27076dffe8ffef5ee9c616be1a8db21c0bbdfbc1cc3d8039650f"
+  }
+}
