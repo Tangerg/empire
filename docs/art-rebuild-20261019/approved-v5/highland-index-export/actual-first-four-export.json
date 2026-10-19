@@ -1,0 +1,610 @@
+{
+  "kind": "isolated real-source catalog-only export, no level integration or contact calibration",
+  "catalogSha256": "9b262a855463f46809c57de35e571f892c7cd2ae968723e1ae0f036968549784",
+  "sourceManifestSha256": "403d7bb620d17d69bb111e1e6cd922eb7bb9679e98add6345f24aa9b7eac2b27",
+  "sourceHashes": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-highland.png": "2afe6284b04bbd621b630543b8be64700a18365549f6af5254e37f344f5e0c51",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-highland@2x.png": "bbcb169bebb0cd224382a74187e93d109a32ea987acd2b7613b19f308abdab1b",
+    "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-highland/highland-cliff-straight-south/highland-cliff-straight-south-master.png": "27fb57c009f3a50bda14f61c0ff31c8bc108130c0688a263a83ddfdd597b1e2e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/highland-cliff-end-west-master.png": "850a749a09b8ba99323cd3790efeac543ed6c9a085d591488038d995a0eb25a7",
+    "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-highland/highland-cliff-end-east/highland-cliff-end-east-master.png": "ee83ee996e71e00d84b3ca7391d59e4f0caf71be3f7b876c0a7261554444cc02",
+    "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-highland/highland-cliff-concave-corner/highland-cliff-concave-corner-master.png": "442c152317d354b5fa83df8e906cdaba7fd3df6d3f0b7659b442310697e02424"
+  },
+  "manifestBytesUnchanged": true,
+  "nativeSourceBytesUnchanged": true,
+  "reexportCheckPassed": true,
+  "changedIndices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "untouchedIndices": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "exports": [
+    {
+      "atlasId": "cliff-modules-highland",
+      "density": 1,
+      "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-highland.png",
+      "baseline": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/cliff-modules-highland.png",
+        "sha256": "2afe6284b04bbd621b630543b8be64700a18365549f6af5254e37f344f5e0c51"
+      },
+      "sources": {
+        "straight-south": {
+          "sourceSha256": "27fb57c009f3a50bda14f61c0ff31c8bc108130c0688a263a83ddfdd597b1e2e",
+          "sourceAlpha": {
+            "edgeMaxAlpha": 1,
+            "edgeNonzeroPixels": 53,
+            "coreBoundingBox": [
+              41,
+              178,
+              1215,
+              1075
+            ]
+          },
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1070
+            ]
+          },
+          "logicalAnchor": [
+            64,
+            127
+          ],
+          "sourceFootLogical": [
+            64.0,
+            107.8054226475279
+          ],
+          "contactCalibrated": false
+        },
+        "end-west": {
+          "sourceSha256": "850a749a09b8ba99323cd3790efeac543ed6c9a085d591488038d995a0eb25a7",
+          "sourceAlpha": {
+            "edgeMaxAlpha": 1,
+            "edgeNonzeroPixels": 33,
+            "coreBoundingBox": [
+              50,
+              163,
+              1228,
+              1127
+            ]
+          },
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1118
+            ]
+          },
+          "logicalAnchor": [
+            64,
+            127
+          ],
+          "sourceFootLogical": [
+            64.0,
+            112.5518341307815
+          ],
+          "contactCalibrated": false
+        },
+        "end-east": {
+          "sourceSha256": "ee83ee996e71e00d84b3ca7391d59e4f0caf71be3f7b876c0a7261554444cc02",
+          "sourceAlpha": {
+            "edgeMaxAlpha": 0,
+            "edgeNonzeroPixels": 0,
+            "coreBoundingBox": [
+              41,
+              289,
+              1231,
+              1000
+            ]
+          },
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              990
+            ]
+          },
+          "logicalAnchor": [
+            64,
+            127
+          ],
+          "sourceFootLogical": [
+            64.0,
+            99.89473684210526
+          ],
+          "contactCalibrated": false
+        },
+        "concave-corner": {
+          "sourceSha256": "442c152317d354b5fa83df8e906cdaba7fd3df6d3f0b7659b442310697e02424",
+          "sourceAlpha": {
+            "edgeMaxAlpha": 0,
+            "edgeNonzeroPixels": 0,
+            "coreBoundingBox": [
+              21,
+              299,
+              1238,
+              957
+            ]
+          },
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              956
+            ]
+          },
+          "logicalAnchor": [
+            64,
+            127
+          ],
+          "sourceFootLogical": [
+            64.0,
+            96.53269537480064
+          ],
+          "contactCalibrated": false
+        }
+      },
+      "pixelSha256": "05844038c74386d68656943b114cc9a25b8aa4ac3212df6bcdb71ebe431b41d7",
+      "cells": [
+        {
+          "label": "straight-south",
+          "index": 0,
+          "overridden": true,
+          "baselinePixelSha256": "25ddf0907078a0472c5763dd85b6dd3e7f8a936c6ae8b4af3f9d84528283a92d",
+          "outputPixelSha256": "7f32c03a29a9b2c716542771c24a4cf1a93ddf3897716fe1db30fed56ff3d918",
+          "visibleBoundsAlpha128": [
+            6,
+            20,
+            122,
+            108
+          ]
+        },
+        {
+          "label": "end-west",
+          "index": 1,
+          "overridden": true,
+          "baselinePixelSha256": "dbdf035675f42d6c18116de090fb7335f292b2ad79f33949d59b0ab13dc7b4fe",
+          "outputPixelSha256": "4d0331a9090c663e07b8ef630d54379a6bc092fc8e26609983a0c05108c126f2",
+          "visibleBoundsAlpha128": [
+            7,
+            18,
+            124,
+            113
+          ]
+        },
+        {
+          "label": "end-east",
+          "index": 2,
+          "overridden": true,
+          "baselinePixelSha256": "fc3f96fe91320d22a163b1341a08ed20cbc6bc4d67b586730b7b5b478c691dc8",
+          "outputPixelSha256": "ef0b6ce92abbcc899e60392e98f2f8fee08fc03eae97fa80e4759baf3e2874e4",
+          "visibleBoundsAlpha128": [
+            6,
+            30,
+            124,
+            101
+          ]
+        },
+        {
+          "label": "concave-corner",
+          "index": 3,
+          "overridden": true,
+          "baselinePixelSha256": "b91752af4d4bc02eeda0deb707ea6122a1601ddf666d6ea30d493f841434f688",
+          "outputPixelSha256": "7c6a3b8037bcc754702585561c1ef172a19c8ae7806c4311456b11c37b9c452b",
+          "visibleBoundsAlpha128": [
+            4,
+            32,
+            124,
+            97
+          ]
+        },
+        {
+          "label": "hill-cap",
+          "index": 4,
+          "overridden": false,
+          "baselinePixelSha256": "b1e50c3172cfaacc7cb7dab7bdc54e368eb05c083943ba436c60aad550ea49a2",
+          "outputPixelSha256": "b1e50c3172cfaacc7cb7dab7bdc54e368eb05c083943ba436c60aad550ea49a2"
+        },
+        {
+          "label": "ramp-level-1",
+          "index": 5,
+          "overridden": false,
+          "baselinePixelSha256": "8eec6907bf3dedf8cb17b3ef81f0cf39e4386c9b8b333baa6023764d429923b9",
+          "outputPixelSha256": "8eec6907bf3dedf8cb17b3ef81f0cf39e4386c9b8b333baa6023764d429923b9"
+        },
+        {
+          "label": "ramp-level-2",
+          "index": 6,
+          "overridden": false,
+          "baselinePixelSha256": "710b685d6fed343731afd5da89d6beaa43d2b00cbac94296d2782c2bd517d28c",
+          "outputPixelSha256": "710b685d6fed343731afd5da89d6beaa43d2b00cbac94296d2782c2bd517d28c"
+        },
+        {
+          "label": "mountain-pass",
+          "index": 7,
+          "overridden": false,
+          "baselinePixelSha256": "336db7000025e7a8a911e2d5eaa2eab26886141f4658f083a72ab94856e4c855",
+          "outputPixelSha256": "336db7000025e7a8a911e2d5eaa2eab26886141f4658f083a72ab94856e4c855"
+        },
+        {
+          "label": "convex-corner",
+          "index": 8,
+          "overridden": false,
+          "baselinePixelSha256": "f9c9045a168a6312b0e18a0aa8a3a9c853a9d0bbc7b9b47b4a30a3605671e280",
+          "outputPixelSha256": "f9c9045a168a6312b0e18a0aa8a3a9c853a9d0bbc7b9b47b4a30a3605671e280"
+        },
+        {
+          "label": "broken-ledge",
+          "index": 9,
+          "overridden": false,
+          "baselinePixelSha256": "f96629973d70208cbe12da1728259d8418f601956c017da5acfc35bf745e7fd4",
+          "outputPixelSha256": "f96629973d70208cbe12da1728259d8418f601956c017da5acfc35bf745e7fd4"
+        },
+        {
+          "label": "low-ledge",
+          "index": 10,
+          "overridden": false,
+          "baselinePixelSha256": "c6d6a750f9318ead532b9e005dc2d8e69a3780216bb30271a2860f71bf5bc70b",
+          "outputPixelSha256": "c6d6a750f9318ead532b9e005dc2d8e69a3780216bb30271a2860f71bf5bc70b"
+        },
+        {
+          "label": "talus-foot",
+          "index": 11,
+          "overridden": false,
+          "baselinePixelSha256": "4fbdb3e1386cb05cb00a7328f386068c1f7ebdee06a771fcb8e315c9597b0f5c",
+          "outputPixelSha256": "4fbdb3e1386cb05cb00a7328f386068c1f7ebdee06a771fcb8e315c9597b0f5c"
+        },
+        {
+          "label": "pillar-wide",
+          "index": 12,
+          "overridden": false,
+          "baselinePixelSha256": "feb68fefb5670f19f9acc1f40da25e9f83c63758fc814faa68a35cf125985c0e",
+          "outputPixelSha256": "feb68fefb5670f19f9acc1f40da25e9f83c63758fc814faa68a35cf125985c0e"
+        },
+        {
+          "label": "pillar-narrow",
+          "index": 13,
+          "overridden": false,
+          "baselinePixelSha256": "24fdb59bf9dd3ae54ef93237dbf0026213bdeeaa575ba00769d13b7934f394cb",
+          "outputPixelSha256": "24fdb59bf9dd3ae54ef93237dbf0026213bdeeaa575ba00769d13b7934f394cb"
+        },
+        {
+          "label": "ledge-end",
+          "index": 14,
+          "overridden": false,
+          "baselinePixelSha256": "046006b9016fb9fb9d730cb125145e3f9b448d047e78e09606bbc451780d4d77",
+          "outputPixelSha256": "046006b9016fb9fb9d730cb125145e3f9b448d047e78e09606bbc451780d4d77"
+        },
+        {
+          "label": "plateau-cap",
+          "index": 15,
+          "overridden": false,
+          "baselinePixelSha256": "6bce8012d05570de3caf6d835b92a55d3963e2cb4487856bb7839beb98b5ae11",
+          "outputPixelSha256": "6bce8012d05570de3caf6d835b92a55d3963e2cb4487856bb7839beb98b5ae11"
+        }
+      ],
+      "cellAddressing": "original-slot-label-and-index",
+      "anchorPolicy": "atlas-default-preserved",
+      "integration": "catalog-only",
+      "pngSha256": "f2ef3105f509057febe05e25b7528b920f2a2e0ba9847c3e290125dde7504f77"
+    },
+    {
+      "atlasId": "cliff-modules-highland",
+      "density": 2,
+      "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-highland@2x.png",
+      "baseline": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/cliff-modules-highland@2x.png",
+        "sha256": "bbcb169bebb0cd224382a74187e93d109a32ea987acd2b7613b19f308abdab1b"
+      },
+      "sources": {
+        "straight-south": {
+          "sourceSha256": "27fb57c009f3a50bda14f61c0ff31c8bc108130c0688a263a83ddfdd597b1e2e",
+          "sourceAlpha": {
+            "edgeMaxAlpha": 1,
+            "edgeNonzeroPixels": 53,
+            "coreBoundingBox": [
+              41,
+              178,
+              1215,
+              1075
+            ]
+          },
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1070
+            ]
+          },
+          "logicalAnchor": [
+            64,
+            127
+          ],
+          "sourceFootLogical": [
+            64.0,
+            107.8054226475279
+          ],
+          "contactCalibrated": false
+        },
+        "end-west": {
+          "sourceSha256": "850a749a09b8ba99323cd3790efeac543ed6c9a085d591488038d995a0eb25a7",
+          "sourceAlpha": {
+            "edgeMaxAlpha": 1,
+            "edgeNonzeroPixels": 33,
+            "coreBoundingBox": [
+              50,
+              163,
+              1228,
+              1127
+            ]
+          },
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1118
+            ]
+          },
+          "logicalAnchor": [
+            64,
+            127
+          ],
+          "sourceFootLogical": [
+            64.0,
+            112.5518341307815
+          ],
+          "contactCalibrated": false
+        },
+        "end-east": {
+          "sourceSha256": "ee83ee996e71e00d84b3ca7391d59e4f0caf71be3f7b876c0a7261554444cc02",
+          "sourceAlpha": {
+            "edgeMaxAlpha": 0,
+            "edgeNonzeroPixels": 0,
+            "coreBoundingBox": [
+              41,
+              289,
+              1231,
+              1000
+            ]
+          },
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              990
+            ]
+          },
+          "logicalAnchor": [
+            64,
+            127
+          ],
+          "sourceFootLogical": [
+            64.0,
+            99.89473684210526
+          ],
+          "contactCalibrated": false
+        },
+        "concave-corner": {
+          "sourceSha256": "442c152317d354b5fa83df8e906cdaba7fd3df6d3f0b7659b442310697e02424",
+          "sourceAlpha": {
+            "edgeMaxAlpha": 0,
+            "edgeNonzeroPixels": 0,
+            "coreBoundingBox": [
+              21,
+              299,
+              1238,
+              957
+            ]
+          },
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              956
+            ]
+          },
+          "logicalAnchor": [
+            64,
+            127
+          ],
+          "sourceFootLogical": [
+            64.0,
+            96.53269537480064
+          ],
+          "contactCalibrated": false
+        }
+      },
+      "pixelSha256": "a74ed737621d02a3bb123baae806e98f886e425b59d79900a678f7a23c72ef98",
+      "cells": [
+        {
+          "label": "straight-south",
+          "index": 0,
+          "overridden": true,
+          "baselinePixelSha256": "55f80258e6902ebc201a982b6653c1788931345aefac55b3e8367c17044a3e21",
+          "outputPixelSha256": "a5a66bb46c554c7b6d592ad113fa1abfa96718dcdb16f6fcdf93b9b5028186b5",
+          "visibleBoundsAlpha128": [
+            12,
+            39,
+            245,
+            217
+          ]
+        },
+        {
+          "label": "end-west",
+          "index": 1,
+          "overridden": true,
+          "baselinePixelSha256": "f3aad9374932fb7019fb636144757098268f41f0c55df04b160ea923291b6c32",
+          "outputPixelSha256": "1f4679b435e9f1acb2826fabc702dc2655a059fb880d5d8aedc551dae351bab5",
+          "visibleBoundsAlpha128": [
+            14,
+            36,
+            247,
+            227
+          ]
+        },
+        {
+          "label": "end-east",
+          "index": 2,
+          "overridden": true,
+          "baselinePixelSha256": "3f645d43e94e39e8977f4bc2d82a5a4c7144b82d4275e86f0f71a5e5a766894d",
+          "outputPixelSha256": "8d21392e3cefba88c152a2f99e4ac98e7e74fd81ba920441abc9750fb49117f8",
+          "visibleBoundsAlpha128": [
+            12,
+            61,
+            247,
+            202
+          ]
+        },
+        {
+          "label": "concave-corner",
+          "index": 3,
+          "overridden": true,
+          "baselinePixelSha256": "68ac4bbd8fd369838f8aec947cdf73b321d4601f86e99f8158c5055186d1ae13",
+          "outputPixelSha256": "bf55409c3f012065cd213037871b69844c2d980ec74e3440dde929a18624bbfb",
+          "visibleBoundsAlpha128": [
+            8,
+            63,
+            249,
+            193
+          ]
+        },
+        {
+          "label": "hill-cap",
+          "index": 4,
+          "overridden": false,
+          "baselinePixelSha256": "ee1f9bd3d76827cd140a2c5996eb787a15411f07a0a382d0f8f5094f07189402",
+          "outputPixelSha256": "ee1f9bd3d76827cd140a2c5996eb787a15411f07a0a382d0f8f5094f07189402"
+        },
+        {
+          "label": "ramp-level-1",
+          "index": 5,
+          "overridden": false,
+          "baselinePixelSha256": "494a461e521640522f129f74ffe3bdae342b2fddb48a682898a66dc2925a23ce",
+          "outputPixelSha256": "494a461e521640522f129f74ffe3bdae342b2fddb48a682898a66dc2925a23ce"
+        },
+        {
+          "label": "ramp-level-2",
+          "index": 6,
+          "overridden": false,
+          "baselinePixelSha256": "030abe21d9487153e5ae8ea284af58ff0227e59bc39dea7c42699139508d5bbd",
+          "outputPixelSha256": "030abe21d9487153e5ae8ea284af58ff0227e59bc39dea7c42699139508d5bbd"
+        },
+        {
+          "label": "mountain-pass",
+          "index": 7,
+          "overridden": false,
+          "baselinePixelSha256": "9e47e5732eaae2833a645abfc4c3f7f606492bb2cb36d04f554611cebff7c7b5",
+          "outputPixelSha256": "9e47e5732eaae2833a645abfc4c3f7f606492bb2cb36d04f554611cebff7c7b5"
+        },
+        {
+          "label": "convex-corner",
+          "index": 8,
+          "overridden": false,
+          "baselinePixelSha256": "5976c9bd9446db47470f3d27dfc191e29baf56f9c00c6dedc7c55e689e5f6cb1",
+          "outputPixelSha256": "5976c9bd9446db47470f3d27dfc191e29baf56f9c00c6dedc7c55e689e5f6cb1"
+        },
+        {
+          "label": "broken-ledge",
+          "index": 9,
+          "overridden": false,
+          "baselinePixelSha256": "6896feb69645bdedcd269c17f2dc8caf95e0c99433f1fa650a2d358890d03f33",
+          "outputPixelSha256": "6896feb69645bdedcd269c17f2dc8caf95e0c99433f1fa650a2d358890d03f33"
+        },
+        {
+          "label": "low-ledge",
+          "index": 10,
+          "overridden": false,
+          "baselinePixelSha256": "ec7c6775f5fab9c9cb7060a2a35045993486f8cab11cdee903bba857c9b016fa",
+          "outputPixelSha256": "ec7c6775f5fab9c9cb7060a2a35045993486f8cab11cdee903bba857c9b016fa"
+        },
+        {
+          "label": "talus-foot",
+          "index": 11,
+          "overridden": false,
+          "baselinePixelSha256": "b63b65eabec5b7c465d29ca89e578f1e87afa55c085fe32c6da45e147cb35bdf",
+          "outputPixelSha256": "b63b65eabec5b7c465d29ca89e578f1e87afa55c085fe32c6da45e147cb35bdf"
+        },
+        {
+          "label": "pillar-wide",
+          "index": 12,
+          "overridden": false,
+          "baselinePixelSha256": "df438a55cad4b1fb84afe2e7be9b770054fb495bbb43dee2112689a88b839475",
+          "outputPixelSha256": "df438a55cad4b1fb84afe2e7be9b770054fb495bbb43dee2112689a88b839475"
+        },
+        {
+          "label": "pillar-narrow",
+          "index": 13,
+          "overridden": false,
+          "baselinePixelSha256": "9d58ed9415476c6e12915f975571ab8f4618127804db85f104b7eb340f16196d",
+          "outputPixelSha256": "9d58ed9415476c6e12915f975571ab8f4618127804db85f104b7eb340f16196d"
+        },
+        {
+          "label": "ledge-end",
+          "index": 14,
+          "overridden": false,
+          "baselinePixelSha256": "f3f1b8462e7c8f3d63f755b1e408c6c21e94cb89662e37b40695c1f2757b3dda",
+          "outputPixelSha256": "f3f1b8462e7c8f3d63f755b1e408c6c21e94cb89662e37b40695c1f2757b3dda"
+        },
+        {
+          "label": "plateau-cap",
+          "index": 15,
+          "overridden": false,
+          "baselinePixelSha256": "aaad5d486851c4fdd3311495195bad67dd2fb2a2909690830063a6e7e450f7d3",
+          "outputPixelSha256": "aaad5d486851c4fdd3311495195bad67dd2fb2a2909690830063a6e7e450f7d3"
+        }
+      ],
+      "cellAddressing": "original-slot-label-and-index",
+      "anchorPolicy": "atlas-default-preserved",
+      "integration": "catalog-only",
+      "pngSha256": "aa86df777fd76fe8032bfdd18d365aca7928d6287835fabd6ea7091ed25463f5"
+    }
+  ]
+}

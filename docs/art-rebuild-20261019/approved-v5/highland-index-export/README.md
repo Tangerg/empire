@@ -54,6 +54,47 @@ semantic cells remain invalid for other supported atlases. A deliberate in-memor
 one-slot destination shift produced the two expected new regression failures;
 no production code was changed by the mutation check.
 
-This commit adds exporter support and tests only. The original runtime atlas,
-source registration catalog and manifest are not changed. Real-source export
-evidence follows after integrator registration; the example is not that evidence.
+The original runtime atlas, source registration catalog and manifest are not
+changed in this branch. The real-source proof below runs in an isolated temporary
+fixture; integrating the registered atlas is owned by the main integrator.
+
+## Actual original-slot 0–3 export proof
+
+`actual-first-four-export.json` records the four original master hashes, both
+original-atlas hashes, full manifest hash, all 16 before/after cell pixel hashes
+at both densities, native alpha QA and transformed source-contact estimates.
+`after@1x.png` and `after@2x.png` are the actual isolated exported atlases.
+`full-atlas-before-after.png` shows all 16 complete cells at logical density; it
+is a catalog diagnostic, not a cropped game scene or a level integration claim.
+The source registration example is separate from the measured export report.
+
+Result: only 0–3 changed. All other 12 slots are identical at both densities.
+The complete manifest and native source bytes are unchanged, and exact repeated
+export/check passes. Foot estimates remain above the preserved default anchor
+by 19.1946, 14.4482, 27.1053 and 30.4673 logical pixels respectively. Sources and
+alpha are not adjusted to conceal that missing scene calibration.
+
+To reproduce after the integrator has created immutable baseline backups:
+
+```sh
+python3 docs/art-rebuild-20261019/approved-v5/highland-index-export/verify_first_four.py \
+  --tool-root "$PWD" --source-root "$PWD" --output /tmp/highland-first-four-proof
+```
+
+The initial proof used `--original-runtime-baseline` before the first highland
+export, reading original runtime pixels into the isolated fixture. That option
+requires the exact baseline hash and intentionally fails after runtime pixels
+change; normal reproduction reads the immutable backup paths from the example.
+Only six image files and the manifest are copied, not a repository or worktree.
+The source tree is read-only. The diagnostic assembles approved sprites and text
+labels; it creates no painted source material.
+
+The full art Python sweep was also attempted in the sparse worktree: 183 tests,
+17 errors (including one class setup error), no assertion failures. These errors
+are missing sparse-checkout support: environment-builder tool (11), old edge
+runtime provenance (4), old water runtime provenance (1), and the stone-wall
+material for wall-pilot setup (1). `all-art-tests.log` preserves the failures.
+This is not a full-suite pass; the integrator validates the complete main tree.
+The focused 39-test pass and deliberately detected wrong-slot mutation are also
+retained as logs. No production renderer, map, or rules changed here, so no new
+mission replay or live GPU check is claimed.

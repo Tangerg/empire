@@ -1,0 +1,303 @@
+......./workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/assemble_approved_slice.py:20: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  edge = max(max(alpha.crop(box).getdata()) for box in
+........EEEE.EEE...........EEEE........EEEE..............................................................node:fs:622
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/fortification-materials/stone-wall-face-material/master.png'
+    at Object.openSync (node:fs:622:18)
+    at Proxy.readFileSync (node:fs:488:35)
+    at /workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/review_fortification_pilot.ts:22:53
+    at String.replace (<anonymous>)
+    at serialize (/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/review_fortification_pilot.ts:20:46)
+    at writeSvg (/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/review_fortification_pilot.ts:27:98)
+    at /workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/review_fortification_pilot.ts:44:5
+    at ViteNodeRunner.runModule (file:///workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/vite-node/dist/client.mjs:399:5)
+    at ViteNodeRunner.directRequest (file:///workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/vite-node/dist/client.mjs:381:5)
+    at ViteNodeRunner.cachedRequest (file:///workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/node_modules/vite-node/dist/client.mjs:206:14) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/fortification-materials/stone-wall-face-material/master.png'
+}
+
+Node.js v24.19.0
+E.............................................Runtime alpha fixtures: /tmp/empire-road-corridor-opuvkbv4
+......................E...
+======================================================================
+ERROR: test_all_ports_and_interior_continuity (test_calibrate_connectors.Connectors.test_all_ports_and_interior_continuity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_calibrate_connectors.py", line 8, in test_all_ports_and_interior_continuity
+    mod,_=builder(ROOT)
+          ^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/connector_geometry.py", line 10, in builder
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py'
+
+======================================================================
+ERROR: test_composed_and_shoulder_joins (test_calibrate_connectors.Connectors.test_composed_and_shoulder_joins)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_calibrate_connectors.py", line 21, in test_composed_and_shoulder_joins
+    mod,_=builder(ROOT);tex=Image.new('RGB',(64,64),(100,120,140))
+          ^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/connector_geometry.py", line 10, in builder
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py'
+
+======================================================================
+ERROR: test_explicit_generated_material (test_calibrate_connectors.Connectors.test_explicit_generated_material)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_calibrate_connectors.py", line 42, in test_explicit_generated_material
+    r=build(ROOT,Path(tmp)/'output',p)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/calibrate_connectors.py", line 16, in build
+    mod,code=builder(root);env=root/PACK/'environment-builder-v1';output.mkdir(parents=True,exist_ok=True)
+             ^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/connector_geometry.py", line 10, in builder
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py'
+
+======================================================================
+ERROR: test_outputs_and_provenance (test_calibrate_connectors.Connectors.test_outputs_and_provenance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_calibrate_connectors.py", line 31, in test_outputs_and_provenance
+    r=build(ROOT,Path(tmp));self.assertEqual(len(r['outputs']),6)
+      ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/calibrate_connectors.py", line 16, in build
+    mod,code=builder(root);env=root/PACK/'environment-builder-v1';output.mkdir(parents=True,exist_ok=True)
+             ^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/connector_geometry.py", line 10, in builder
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py'
+
+======================================================================
+ERROR: test_thin_shoulder_removes_double_border (test_calibrate_connectors.Connectors.test_thin_shoulder_removes_double_border)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_calibrate_connectors.py", line 47, in test_thin_shoulder_removes_double_border
+    mod,_=builder(ROOT);shape=geometry(mod,10);tex=Image.new('RGB',(64,64),(100,120,140))
+          ^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/connector_geometry.py", line 10, in builder
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py'
+
+======================================================================
+ERROR: test_variable_road_width_preserves_ports_and_joins (test_calibrate_connectors.Connectors.test_variable_road_width_preserves_ports_and_joins)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_calibrate_connectors.py", line 55, in test_variable_road_width_preserves_ports_and_joins
+    mod,_=builder(ROOT)
+          ^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/connector_geometry.py", line 10, in builder
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py'
+
+======================================================================
+ERROR: test_width_provenance_and_invalid_width (test_calibrate_connectors.Connectors.test_width_provenance_and_invalid_width)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_calibrate_connectors.py", line 72, in test_width_provenance_and_invalid_width
+    r=build(ROOT,Path(tmp)/'wide',road_width_logical=22)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/calibrate_connectors.py", line 16, in build
+    mod,code=builder(root);env=root/PACK/'environment-builder-v1';output.mkdir(parents=True,exist_ok=True)
+             ^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/connector_geometry.py", line 10, in builder
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py'
+
+======================================================================
+ERROR: test_all_ports_and_variants_match_at_both_densities (test_connector_overrides.ConnectorOverrides.test_all_ports_and_variants_match_at_both_densities)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_connector_overrides.py", line 46, in test_all_ports_and_variants_match_at_both_densities
+    for _, _, image, report in plan(ROOT, ROOT / CATALOG):
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/export_connector_overrides.py", line 85, in plan
+    if code != (env / 'tools/build_environment_builder_v1.py').resolve() or hashlib.sha256(code.read_bytes()).hexdigest() != data['geometrySha256']:
+                                                                                           ^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py'
+
+======================================================================
+ERROR: test_checksums_and_reproducibility (test_connector_overrides.ConnectorOverrides.test_checksums_and_reproducibility)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_connector_overrides.py", line 37, in test_checksums_and_reproducibility
+    reports = export(ROOT, ROOT / CATALOG, True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/export_connector_overrides.py", line 139, in export
+    planned = plan(root, catalog)
+              ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/export_connector_overrides.py", line 85, in plan
+    if code != (env / 'tools/build_environment_builder_v1.py').resolve() or hashlib.sha256(code.read_bytes()).hexdigest() != data['geometrySha256']:
+                                                                                           ^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py'
+
+======================================================================
+ERROR: test_isolated_resize_and_edge_match_preserve_every_alpha_and_interior_pixel (test_connector_overrides.ConnectorOverrides.test_isolated_resize_and_edge_match_preserve_every_alpha_and_interior_pixel)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_connector_overrides.py", line 61, in test_isolated_resize_and_edge_match_preserve_every_alpha_and_interior_pixel
+    native = plan(ROOT, ROOT / CATALOG)[1][2]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/export_connector_overrides.py", line 85, in plan
+    if code != (env / 'tools/build_environment_builder_v1.py').resolve() or hashlib.sha256(code.read_bytes()).hexdigest() != data['geometrySha256']:
+                                                                                           ^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py'
+
+======================================================================
+ERROR: test_unreviewed_source_or_geometry_cannot_export (test_connector_overrides.ConnectorOverrides.test_unreviewed_source_or_geometry_cannot_export)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_connector_overrides.py", line 83, in test_unreviewed_source_or_geometry_cannot_export
+    plan(ROOT, catalog)
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/export_connector_overrides.py", line 85, in plan
+    if code != (env / 'tools/build_environment_builder_v1.py').resolve() or hashlib.sha256(code.read_bytes()).hexdigest() != data['geometrySha256']:
+                                                                                           ^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py'
+
+======================================================================
+ERROR: test_actual_fractional_crops_and_rejected_coordinate_shift (test_edge_review.EdgeReviewTests.test_actual_fractional_crops_and_rejected_coordinate_shift)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_edge_review.py", line 16, in setUp
+    self.provenance = json.loads((EVIDENCE / 'runtime-provenance.json').read_text())
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/docs/art-rebuild-20261019/approved-v5/edge-runtime/runtime-provenance.json'
+
+======================================================================
+ERROR: test_actual_native_road_bridge_foot_and_near_water_masks (test_edge_review.EdgeReviewTests.test_actual_native_road_bridge_foot_and_near_water_masks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_edge_review.py", line 16, in setUp
+    self.provenance = json.loads((EVIDENCE / 'runtime-provenance.json').read_text())
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/docs/art-rebuild-20261019/approved-v5/edge-runtime/runtime-provenance.json'
+
+======================================================================
+ERROR: test_complete_production_comparison_changes_only_ground_edges (test_edge_review.EdgeReviewTests.test_complete_production_comparison_changes_only_ground_edges)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_edge_review.py", line 16, in setUp
+    self.provenance = json.loads((EVIDENCE / 'runtime-provenance.json').read_text())
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/docs/art-rebuild-20261019/approved-v5/edge-runtime/runtime-provenance.json'
+
+======================================================================
+ERROR: test_safety_guard_rejects_each_deliberate_overlap (test_edge_review.EdgeReviewTests.test_safety_guard_rejects_each_deliberate_overlap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_edge_review.py", line 16, in setUp
+    self.provenance = json.loads((EVIDENCE / 'runtime-provenance.json').read_text())
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/docs/art-rebuild-20261019/approved-v5/edge-runtime/runtime-provenance.json'
+
+======================================================================
+ERROR: setUpClass (test_fortification_pilot.FortificationPilotTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_fortification_pilot.py", line 45, in setUpClass
+    subprocess.run([str(ROOT / 'node_modules/.bin/vite-node'), 'tools/art/review_fortification_pilot.ts'], cwd=ROOT,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/node_modules/.bin/vite-node', 'tools/art/review_fortification_pilot.ts']' returned non-zero exit status 1.
+
+======================================================================
+ERROR: test_actual_runtime_occupancy_and_uv_guard_rejects_mutations (test_water_material.WaterMaterialTests.test_actual_runtime_occupancy_and_uv_guard_rejects_mutations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_water_material.py", line 45, in test_actual_runtime_occupancy_and_uv_guard_rejects_mutations
+    provenance = json.loads((evidence / 'runtime-provenance.json').read_text())
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/docs/art-rebuild-20261019/approved-v5/water-runtime/runtime-provenance.json'
+
+----------------------------------------------------------------------
+Ran 183 tests in 84.104s
+
+FAILED (errors=17)

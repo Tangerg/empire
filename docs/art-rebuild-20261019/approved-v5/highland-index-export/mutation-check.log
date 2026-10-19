@@ -1,0 +1,25 @@
+test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels (test_environment_overrides.EnvironmentTests.test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels) ...
+  test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels (test_environment_overrides.EnvironmentTests.test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels) (indices=(0, 1)) ... FAIL
+  test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels (test_environment_overrides.EnvironmentTests.test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels) (indices=(0, 1, 2, 3)) ... FAIL
+
+======================================================================
+FAIL: test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels (test_environment_overrides.EnvironmentTests.test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels) (indices=(0, 1))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_environment_overrides.py", line 185, in test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels
+    self.assertEqual(output.crop(box).tobytes(), expected.tobytes())
+AssertionError: b'\x00\x1e<\xc8\x00\x1e<\xc8\x00\x1e<\xc8\x00\x1e[212941 chars]\xc8' != b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0[185717 chars]\x00'
+
+======================================================================
+FAIL: test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels (test_environment_overrides.EnvironmentTests.test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels) (indices=(0, 1, 2, 3))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-layout-engineering-20261019/tools/art/test_environment_overrides.py", line 185, in test_highland_two_and_four_slots_preserve_empty_semantics_and_untouched_pixels
+    self.assertEqual(output.crop(box).tobytes(), expected.tobytes())
+AssertionError: b'\x00\x1e<\xc8\x00\x1e<\xc8\x00\x1e<\xc8\x00\x1e[212941 chars]\xc8' != b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0[185717 chars]\x00'
+
+----------------------------------------------------------------------
+Ran 1 test in 1.667s
+
+FAILED (failures=2)
+Expected two wrong-slot failures detected; production file unchanged.
