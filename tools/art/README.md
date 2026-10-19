@@ -101,13 +101,19 @@ and skill are 48×48 with anchor [24,24]; status and hud are32×32 with anchor
 must satisfy the same genuine-alpha contract. Whole authored canvas fitting and
 2px transparent padding remain deterministic; tiny icons still need visual review.
 
-## Environment forest cell overrides (separate from canonical topics)
+## Environment module cell overrides (separate from canonical topics)
 
 Run `python3 tools/art/export_environment_overrides.py` then the same command with
-`--check`. The supported module atlases are forest-temperate, forest-existing,
-and scenery-regional. Keep immutable copies of the original 384² and 768²
-runtime atlases under the pack masters directory before first export. Register
-their byte SHA256 as baselines; never replace them with overridden outputs.
+`--check`. The supported 4×4 module atlases have these exact manifest contracts:
+
+- forest-temperate, forest-existing, scenery-regional: 96²/192² cells,
+  384²/768² baseline atlases, default anchor [48,91]
+- rural-life: 112²/224² cells, 448²/896² baseline atlases, default anchor [56,108]
+
+Keep immutable copies of the original runtime atlases under the pack masters
+directory before first export. Register their byte SHA256 as baselines; never
+replace them with overridden outputs. Wrong cell dimensions, density, default
+anchor, grid, or baseline dimensions are rejected rather than inferred.
 
 `tools/art/environment-overrides.json` uses schemaVersion 2. Each registered cell
 contains its source path/hash and one explicit full-canvas registration:
@@ -129,8 +135,9 @@ contains its source path/hash and one explicit full-canvas registration:
 Replace PACK with the repository-relative campaign pack directory. `scale` is
 logical pixels per source pixel; `origin` is the canvas top-left in logical
 pixels, using half-pixel increments; `sourceFoot` is the reviewed ground contact
-in source pixels. The complete source is resized once at density 2, placed on a
-192² transparent cell, and downsampled to 96². The exporter projects sourceFoot
+in source pixels. The complete source is resized once at density 2, placed on the
+manifest-sized HD transparent cell, and downsampled independently to its logical
+cell size before atlas packing. The exporter projects sourceFoot
 through that same rounded raster transform into the manifest cell anchor. It
 rejects a transform that would clip the full canvas. No alpha-bounds fitting,
 source crop, thresholding, recoloring, or repainting is performed.
@@ -144,8 +151,16 @@ The manifest owns each cell's runtime anchor and optional positive
 `presentationScale`. The scene renderer multiplies presentationScale by its
 placement scale exactly once, around that anchor. Raster registration never
 uses presentationScale. Footprints, obstruction, identity, cell order, and all
-other gameplay metadata remain unchanged. The atlas-level default anchor is
-still [48,91]; registered cells supply their own anchors.
+other gameplay metadata remain unchanged. The atlas-level default anchor stays
+unchanged; registered cells supply their own anchors, including rural cells
+whose reviewed contact differs from [56,108].
+
+Rural entries use this same schema and algorithm. The current remake targets
+wheat-sheaves (slot 4), wheat-bundles (5), grain-sacks-baskets (6), and
+farm-handcart-tools (14), using the manifest's existing identities/order. Adding
+exporter support does not register or replace any of these cells; their reviewed
+sources, registrations, immutable baselines, and resulting exports must be
+committed together in a separate binding change.
 
 The adapter overlays registered cells onto checksummed baselines, preserving
 unregistered slices exactly. Reports include per-cell pixel hashes, source

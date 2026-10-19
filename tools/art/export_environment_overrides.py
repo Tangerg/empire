@@ -36,7 +36,7 @@ def point(value):
     return isinstance(value, list) and len(value) == 2 and all(finite_number(n) for n in value)
 
 
-def render_cell(source, registration):
+def render_cell(source, registration, cell_size=96):
     # One explicit full-canvas transform, including alpha1 residue. No inferred crop.
     if not isinstance(registration, dict) or set(registration) != {'scale', 'origin', 'sourceFoot'}:
         raise ValueError('registration requires scale, origin and sourceFoot')
@@ -49,13 +49,13 @@ def render_cell(source, registration):
         raise ValueError('sourceFoot must lie on the authored canvas')
     size = tuple(round(n * scale * 2) for n in source.size)
     origin_hd = tuple(round(n * 2) for n in origin)
-    if any(size[i] < 1 or origin_hd[i] + size[i] > 192 for i in (0, 1)):
+    if any(size[i] < 1 or origin_hd[i] + size[i] > cell_size * 2 for i in (0, 1)):
         raise ValueError('registration would clip the full authored canvas')
     validate_alpha(source, 'environment master')
     fitted = source.resize(size, Image.Resampling.LANCZOS)
-    hd = Image.new('RGBA', (192, 192))
+    hd = Image.new('RGBA', (cell_size * 2, cell_size * 2))
     hd.paste(fitted, origin_hd)
-    logical = hd.resize((96, 96), Image.Resampling.LANCZOS)
+    logical = hd.resize((cell_size, cell_size), Image.Resampling.LANCZOS)
     validate_alpha(hd, 'HD cell')
     validate_alpha(logical, 'logical cell')
     # Raster dimensions are rounded once at HD density; the pivot follows that
@@ -83,15 +83,17 @@ def plan(root, catalog):
     manifest = read_json(manifest_path)
     planned = []
     for atlas_id, override in data['atlases'].items():
-        if atlas_id not in ('forest-temperate', 'forest-existing', 'scenery-regional'):
+        if atlas_id not in ('forest-temperate', 'forest-existing', 'scenery-regional', 'rural-life'):
             raise ValueError('unsupported environment atlas')
         matches = [a for a in manifest['atlases'] if a['id'] == atlas_id]
         if len(matches) != 1:
             raise ValueError('atlas must have exactly one manifest record')
         atlas = matches[0]
+        cell_size, default_anchor = (112, [56, 108]) if atlas_id == 'rural-life' else (96, [48, 91])
         if (atlas['columns'], atlas['rows'], atlas['cellWidth'], atlas['cellHeight'],
-            atlas['cellWidth2x'], atlas['cellHeight2x'], atlas['anchor'], atlas['tileMode']) != (4, 4, 96, 96, 192, 192, [48, 91], 'modules'):
+            atlas['cellWidth2x'], atlas['cellHeight2x'], atlas['anchor'], atlas['tileMode']) != (4, 4, cell_size, cell_size, cell_size * 2, cell_size * 2, default_anchor, 'modules'):
             raise ValueError('unsupported scenery contract')
+        cell_sizes = (atlas['cellWidth'], atlas['cellWidth2x'])
         order = atlas['cellOrder']
         if len(order) != 16 or len(set(order)) != 16 or [c['id'] for c in atlas['cells']] != order:
             raise ValueError('inconsistent cell order')
@@ -104,7 +106,7 @@ def plan(root, catalog):
         if not isinstance(override, dict) or set(override) != {'baselines', 'cells'} or set(override['baselines']) != {'1x', '2x'} or not isinstance(override['cells'], dict):
             raise ValueError('expected baselines 1x/2x and cells')
         baselines = [load_source(root, pack, override['baselines'][k]) for k in ('1x', '2x')]
-        if [im.size for im in baselines] != [(384, 384), (768, 768)]:
+        if [im.size for im in baselines] != [(size * atlas['columns'], size * atlas['rows']) for size in cell_sizes]:
             raise ValueError('incorrect baseline atlas dimensions')
         outputs = [im.copy() for im in baselines]
         changed = set()
@@ -116,7 +118,7 @@ def plan(root, catalog):
             if not isinstance(entry, dict) or set(entry) != {'source', 'sha256', 'registration'}:
                 raise ValueError('cell expects source, sha256 and registration')
             source = load_source(root, pack, {k: entry[k] for k in ('source', 'sha256')})
-            logical, hd, anchor = render_cell(source, entry['registration'])
+            logical, hd, anchor = render_cell(source, entry['registration'], cell_sizes[0])
             metadata = atlas['cells'][index]
             if any(not math.isclose(metadata['anchor'][i], anchor[i], abs_tol=1e-10) for i in (0, 1)):
                 metadata['anchor'] = anchor
@@ -125,10 +127,10 @@ def plan(root, catalog):
                 'registration': entry['registration'], 'logicalAnchor': metadata['anchor'],
                 'presentationScale': metadata.get('presentationScale', 1),
             }
-            for output, cell, size in zip(outputs, (logical, hd), (96, 192)):
+            for output, cell, size in zip(outputs, (logical, hd), cell_sizes):
                 output.paste(cell, cell_box(index, size)[:2])
             changed.add(index)
-        for density, base, output, size, key in zip((1, 2), baselines, outputs, (96, 192), ('png', 'png2x')):
+        for density, base, output, size, key in zip((1, 2), baselines, outputs, cell_sizes, ('png', 'png2x')):
             target = within(env, atlas[key])
             if target != (env / 'runtime/atlas' / f'{atlas_id}{"@2x" if density == 2 else ""}.png').resolve():
                 raise ValueError('unexpected atlas destination')

@@ -1,3 +1,4 @@
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -47,6 +48,184 @@ class EnvironmentTests(unittest.TestCase):
 
     def write_catalog(self):
         self.catalog.write_text(json.dumps(self.data))
+
+    def configure_rural(self):
+        # Use the shipped semantic metadata rather than a parallel rural catalog.
+        path = Path(__file__).resolve().parents[2] / PACK / 'environment-builder-v1/manifest-environment-builder-v1.json'
+        atlas = next(a for a in json.loads(path.read_text())['atlases'] if a['id'] == 'rural-life')
+        baselines = {}
+        for density, size in ((1, 112), (2, 224)):
+            image = Image.new('RGBA', (size * 4, size * 4))
+            for i in range(16):
+                image.paste((i * 10, 30, 60, 200), cell_box(i, size))
+            baselines[f'{density}x'] = self.save(image, f'rural-base-{density}.png')
+        cells = {}
+        for index, cell_id in ((4, 'wheat-sheaves'), (5, 'wheat-bundles'),
+                               (6, 'grain-sacks-baskets'), (14, 'farm-handcart-tools')):
+            self.assertEqual(atlas['cellOrder'][index], cell_id)
+            atlas['cells'][index]['anchor'] = [56, 108]
+            source = Image.new('RGBA', (208, 208))
+            source.paste((index * 10, 100, 60, 253), (10, 10, 198, 198))
+            source.putpixel((0, 20), (30, 50, 70, 1))
+            cells[cell_id] = self.save(source, f'{cell_id}.png')
+            cells[cell_id]['registration'] = {'scale': 0.5, 'origin': [4, 4], 'sourceFoot': [104, 208]}
+        self.manifest.write_text(json.dumps({'atlases': [atlas]}))
+        self.data = {'schemaVersion': 2, 'atlases': {'rural-life': {'baselines': baselines, 'cells': cells}}}
+        self.write_catalog()
+
+    def test_rural_exact_slots_sizes_baselines_and_semantics(self):
+        self.configure_rural()
+        manifest_before = self.manifest.read_bytes()
+        masters_before = {p: p.read_bytes() for p in (self.pack / 'masters').rglob('*.png')}
+        reports = export(self.root, self.catalog)
+        export(self.root, self.catalog, True)
+        self.assertEqual(self.manifest.read_bytes(), manifest_before)
+        self.assertEqual({p: p.read_bytes() for p in masters_before}, masters_before)
+        for report, size in zip(reports, (112, 224)):
+            self.assertEqual(report['output'], str(PACK / 'environment-builder-v1/runtime/atlas' /
+                                                  f'rural-life{"@2x" if size == 224 else ""}.png'))
+            with Image.open(self.root / report['output']) as output:
+                self.assertEqual(output.size, (size * 4, size * 4))
+                self.assertEqual(output.mode, 'RGBA')
+                for cell in report['cells']:
+                    if cell['index'] not in (4, 5, 6, 14):
+                        self.assertFalse(cell['overridden'])
+                        self.assertEqual(cell['baselinePixelSha256'], cell['outputPixelSha256'])
+                        continue
+                    self.assertTrue(cell['overridden'])
+                    self.assertNotEqual(cell['baselinePixelSha256'], cell['outputPixelSha256'])
+                    entry = self.data['atlases']['rural-life']['cells'][cell['id']]
+                    with Image.open(self.root / entry['source']) as source:
+                        expected = Image.new('RGBA', (224, 224))
+                        expected.paste(source, (8, 8))
+                        self.assertEqual(expected.getpixel((8, 28)), (30, 50, 70, 1))
+                        if size == 112:
+                            expected = expected.resize((112, 112), Image.Resampling.LANCZOS)
+                        self.assertEqual(output.crop(cell_box(cell['index'], size)).tobytes(), expected.tobytes())
+                    self.assertEqual(report['sources'][cell['id']]['logicalAnchor'], [56, 108])
+
+    def test_rural_registration_changes_only_selected_anchor(self):
+        self.configure_rural()
+        expected = json.loads(self.manifest.read_text())
+        expected['atlases'][0]['cells'][14]['anchor'] = [56, 106]
+        self.data['atlases']['rural-life']['cells']['farm-handcart-tools']['registration']['sourceFoot'] = [104, 204]
+        self.write_catalog()
+        export(self.root, self.catalog)
+        self.assertEqual(json.loads(self.manifest.read_text()), expected)
+        export(self.root, self.catalog, True)
+
+    def test_mixed_rural_and_forest_catalog_uses_each_manifest_geometry(self):
+        forest = json.loads(self.manifest.read_text())['atlases'][0]
+        forest_override = self.data['atlases']['forest-temperate']
+        self.configure_rural()
+        rural = json.loads(self.manifest.read_text())['atlases'][0]
+        rural_override = self.data['atlases']['rural-life']
+        for atlases in ([rural, forest], [forest, rural]):
+            with self.subTest(order=[a['id'] for a in atlases]):
+                self.manifest.write_text(json.dumps({'atlases': atlases}))
+                before = self.manifest.read_bytes()
+                overrides = {'rural-life': rural_override, 'forest-temperate': forest_override}
+                self.data['atlases'] = {a['id']: overrides[a['id']] for a in atlases}
+                self.write_catalog()
+                reports = export(self.root, self.catalog)
+                export(self.root, self.catalog, True)
+                self.assertEqual(len(reports), 4)
+                self.assertEqual(self.manifest.read_bytes(), before)
+                for report in reports:
+                    size = (112 if report['atlasId'] == 'rural-life' else 96) * report['density']
+                    with Image.open(self.root / report['output']) as output:
+                        self.assertEqual(output.size, (size * 4, size * 4))
+
+    def test_rural_wrong_geometry_rejected_before_writes(self):
+        self.configure_rural()
+        original = json.loads(self.manifest.read_text())
+        for key, value in [('columns', 2), ('rows', 8), ('cellWidth', 96),
+                           ('cellHeight', 96), ('cellWidth2x', 192), ('cellHeight2x', 192),
+                           ('anchor', [48, 91]), ('tileMode', 'terrain')]:
+            with self.subTest(key=key):
+                data = copy.deepcopy(original)
+                data['atlases'][0][key] = value
+                self.manifest.write_text(json.dumps(data))
+                before = self.manifest.read_bytes()
+                with self.assertRaisesRegex(ValueError, 'unsupported scenery contract'):
+                    export(self.root, self.catalog)
+                self.assertFalse((self.env / 'runtime').exists())
+                self.assertEqual(self.manifest.read_bytes(), before)
+        # A coherent but wrong 96/192 rural contract must also be rejected.
+        data = copy.deepcopy(original)
+        data['atlases'][0].update(cellWidth=96, cellHeight=96, cellWidth2x=192,
+                                  cellHeight2x=192, anchor=[48, 91])
+        self.manifest.write_text(json.dumps(data))
+        with self.assertRaisesRegex(ValueError, 'unsupported scenery contract'):
+            export(self.root, self.catalog)
+
+    def test_forest_rejects_rural_geometry(self):
+        data = json.loads(self.manifest.read_text())
+        data['atlases'][0].update(cellWidth=112, cellHeight=112, cellWidth2x=224,
+                                  cellHeight2x=224, anchor=[56, 108])
+        self.manifest.write_text(json.dumps(data))
+        with self.assertRaisesRegex(ValueError, 'unsupported scenery contract'):
+            export(self.root, self.catalog)
+
+    def test_rural_rejects_wrong_baseline_sizes_at_both_densities(self):
+        self.configure_rural()
+        original = copy.deepcopy(self.data)
+        for density, wrong_size in ((1, 384), (2, 768)):
+            with self.subTest(density=density):
+                self.data = copy.deepcopy(original)
+                self.data['atlases']['rural-life']['baselines'][f'{density}x'] = self.save(
+                    Image.new('RGBA', (wrong_size, wrong_size)), f'wrong-{density}.png')
+                self.write_catalog()
+                with self.assertRaisesRegex(ValueError, 'baseline atlas dimensions'):
+                    export(self.root, self.catalog)
+                self.assertFalse((self.env / 'runtime').exists())
+
+    def test_rural_bad_later_source_preserves_existing_outputs_and_metadata(self):
+        self.configure_rural()
+        reports = export(self.root, self.catalog)
+        paths = [self.manifest, *(self.root / report['output'] for report in reports)]
+        before = {p: p.read_bytes() for p in paths}
+        original = copy.deepcopy(self.data)
+        invalid = Image.new('RGBA', (208, 208))
+        invalid.paste((30, 50, 70, 253), (10, 10, 198, 198))
+        invalid.putpixel((0, 20), (30, 50, 70, 2))
+        for change in [{'sha256': 'bad'}, self.save(invalid, 'clipped-source.png'),
+                       {'registration': {'scale': 0.5, 'origin': [9, 4], 'sourceFoot': [104, 208]}}]:
+            with self.subTest(change=change):
+                self.data = copy.deepcopy(original)
+                self.data['atlases']['rural-life']['cells']['farm-handcart-tools'].update(change)
+                self.write_catalog()
+                with self.assertRaises(ValueError):
+                    export(self.root, self.catalog)
+                self.assertEqual({p: p.read_bytes() for p in paths}, before)
+
+    def test_rural_complete_nonsquare_canvas_and_projected_contact(self):
+        source = Image.new('RGBA', (207, 159))
+        source.paste((20, 30, 40, 253), (10, 10, 197, 149))
+        source.putpixel((0, 20), (30, 50, 70, 1))
+        before = source.tobytes()
+        small, hd, anchor = render_cell(source, {'scale': 0.48, 'origin': [6.5, 28], 'sourceFoot': [100, 150]}, 112)
+        expected = Image.new('RGBA', (224, 224))
+        expected.paste(source.resize((199, 153), Image.Resampling.LANCZOS), (13, 56))
+        self.assertEqual(hd.tobytes(), expected.tobytes())
+        self.assertEqual(small.tobytes(), expected.resize((112, 112), Image.Resampling.LANCZOS).tobytes())
+        self.assertEqual(anchor, [6.5 + 100 * 199 / (2 * 207), 28 + 150 * 153 / (2 * 159)])
+        self.assertEqual(source.tobytes(), before)
+
+    def test_rural_check_rejects_stale_pixels_at_both_densities(self):
+        self.configure_rural()
+        reports = export(self.root, self.catalog)
+        for report in reports:
+            with self.subTest(density=report['density']):
+                target = self.root / report['output']
+                original = target.read_bytes()
+                with Image.open(target) as im:
+                    altered = im.copy()
+                altered.putpixel((0, 0), (1, 2, 3, 4))
+                altered.save(target)
+                with self.assertRaisesRegex(ValueError, 'stale environment export'):
+                    export(self.root, self.catalog, True)
+                target.write_bytes(original)
 
     def test_two_cells_preserve_fourteen_and_manifest(self):
         before = self.manifest.read_bytes()
