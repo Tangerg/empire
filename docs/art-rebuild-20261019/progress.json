@@ -4078,11 +4078,14 @@
     },
     {
       "topicId": "c02-battle-prop-five-world-flags",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-five-world-flags/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-022-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "fa83207bb9afa94a871c1473e549ec25c980f9522dcc77d0baa1cdd7cd36db0a"
@@ -4115,11 +4118,14 @@
     },
     {
       "topicId": "c02-battle-prop-hesha-water-signs",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-hesha-water-signs/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-022-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "31c84593db3de5a9517983802a54dfe2e5a53db48683eefef28edd399c5dcf8b"
@@ -8232,6 +8238,16 @@
       "topicId": "c02-battle-prop-stretcher-medkits",
       "issue": "Medical cross retained from original; review symbol suitability before release",
       "status": "pending-release-symbol-review"
+    },
+    {
+      "topicId": "c02-battle-prop-five-world-flags",
+      "issue": "Exact emblem linework not certified from tiny original; masterboard review requested",
+      "status": "pending-semantic-review"
+    },
+    {
+      "topicId": "c02-battle-prop-hesha-water-signs",
+      "issue": "Pedestal more substantial than source; scale review requested",
+      "status": "pending-static-visual-review"
     }
   ]
 }
