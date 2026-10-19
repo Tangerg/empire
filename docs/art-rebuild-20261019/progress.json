@@ -560,19 +560,19 @@
     },
     {
       "topicId": "C01-UNIT-BANNER-GUARD",
-      "status": "raw-generated",
+      "status": "exported",
       "source": null,
       "verification": {
         "state": "export-checked",
         "exportCheck": "passed",
-        "exporterTests": 42,
-        "evidence": "docs/art-rebuild-20261019/frame-004-export-evidence.json",
+        "exporterTests": 47,
+        "evidence": "docs/art-rebuild-20261019/frame-005-export-evidence.json",
         "staticVisualReview": "passed-four-semantic-poses-and-native32-HD64",
         "visibleBaseY": {
-          "idle": 46,
+          "idle": 45,
           "walk-a": 45,
-          "attack": 46,
-          "walk-b": 46
+          "attack": 45,
+          "walk-b": 44
         },
         "declaredPivotY": 47,
         "placement": {
@@ -585,9 +585,9 @@
         "registrationOffsets": "none",
         "note": "One-pixel walk contact variation accepted by visual review; shifting walk-a would fail unchanged edge alpha gate. Pivot remains unchanged.",
         "runtimeVisual": "pending-browser-socket-blocked",
-        "crossAssetScale": "failed-human-body-smaller-than-swordsman-archer",
-        "revisionRequired": "All four poses need larger body and shorter/repositioned banner within unchanged frame",
-        "overallAcceptance": "failed-cross-unit-body-scale",
+        "crossAssetScale": "passed-cohesion-v2-body-scale",
+        "revisionRequired": null,
+        "overallAcceptance": "static-pose-and-body-scale-passed-actual-playback-pending",
         "exportCheckHistory": "prior candidate export passed; active override removed and runtime restored to baseline"
       },
       "assignment": "redraw_grayflag_cover_props",
@@ -599,6 +599,29 @@
         "walk-b"
       ],
       "frames": {
+        "idle": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/idle/revisions/cohesion-v2.png",
+          "sha256": "6b6ff74aa494c9df9e3c759998ff08b0ac679d9f29122aae05ef3d90b73c67a7",
+          "status": "exported"
+        },
+        "walk-a": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-a/revisions/cohesion-v2.png",
+          "sha256": "85b1fc8c99603051fae2eef38efae77df171dbee27079197f5ce8629622bdfef",
+          "status": "exported"
+        },
+        "attack": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/attack/revisions/cohesion-v2.png",
+          "sha256": "47dcd2fe6b375dad4bd463029a748c813912670536de194fbfbe6b4a9ca71a4e",
+          "status": "exported"
+        },
+        "walk-b": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-b/revisions/cohesion-v2.png",
+          "sha256": "de62caee1912c75be0d2f1bcaf19e45f525ce522c67e3952958293b673342fbf",
+          "status": "exported"
+        }
+      },
+      "runtimeSelection": "cohesion-v2-export-checked",
+      "supersededFrameSelection": {
         "idle": {
           "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/idle/master.png",
@@ -619,8 +642,7 @@
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-b/master.png",
           "sha256": "e5dd0237ca8b9140274f96e56ad06b16db7771aadac7c9ac3ce6438d8db3810a"
         }
-      },
-      "runtimeSelection": "legacy-baseline-pending-cohesion-revision"
+      }
     },
     {
       "topicId": "C01-UNIT-BATTLE-MAGE",
@@ -7829,7 +7851,9 @@
       "topicId": "c03-equip-118c7423",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props",
+      "assignmentPhase": "source-inspection-before-generation"
     },
     {
       "topicId": "c03-equip-15c058cc",
@@ -7919,7 +7943,9 @@
       "topicId": "c03-equip-4619e546",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props",
+      "assignmentPhase": "source-inspection-before-generation"
     },
     {
       "topicId": "c03-equip-4c02a584",
@@ -7970,11 +7996,15 @@
     },
     {
       "topicId": "c03-equip-6a62b51e",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-6a62b51e/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "source-inspection-before-generation"
+      "assignmentPhase": "source-inspection-before-generation",
+      "sourceSha256": "d82d241a1675215a204a9693dcb766cb4df1806db63587be4653f03683de72bc"
     },
     {
       "topicId": "c03-equip-6d03b909",
@@ -7998,7 +8028,9 @@
       "topicId": "c03-equip-73d2bcb4",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props",
+      "assignmentPhase": "source-inspection-before-generation"
     },
     {
       "topicId": "c03-equip-747800db",
@@ -8016,7 +8048,9 @@
       "topicId": "c03-equip-76cd6822",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props",
+      "assignmentPhase": "source-inspection-before-generation"
     },
     {
       "topicId": "c03-equip-79f06a6f",
@@ -8152,11 +8186,15 @@
     },
     {
       "topicId": "c03-equip-ff5e54ed",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-ff5e54ed/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "source-inspection-before-generation"
+      "assignmentPhase": "source-inspection-before-generation",
+      "sourceSha256": "e3fced9d32d30300809501a9842d1782d11b3102eb6beb9649d43e87425bb036"
     },
     {
       "topicId": "c03-equip-shared-0adf8733",
@@ -10049,8 +10087,9 @@
       {
         "topicId": "C01-UNIT-BANNER-GUARD",
         "issue": "human body too small relative to other units",
-        "status": "revision-requested",
-        "evidence": "docs/art-rebuild-20261019/three-unit-scale.png"
+        "status": "resolved-cohesion-v2-static-review",
+        "evidence": "docs/art-rebuild-20261019/three-unit-scale.png",
+        "resolutionEvidence": "docs/art-rebuild-20261019/three-unit-scale-banner-v2.png"
       },
       {
         "atlasId": "surface-meadow",

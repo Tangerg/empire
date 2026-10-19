@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-6a62b51e",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-6a62b51e.png",
+  "label": "Iron hammer breaker",
+  "observed_original": "Runtime shows grain containers.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed role-based weapon from board material vocabulary, not recovered original mapping.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 0,
+  "threshold_bboxes": {
+    "1": [
+      33,
+      26,
+      1240,
+      1214
+    ],
+    "128": [
+      77,
+      34,
+      1204,
+      1196
+    ],
+    "240": [
+      78,
+      35,
+      1203,
+      1195
+    ]
+  },
+  "visual_review": "Chunky twin-faced square iron hammer and leather-wrapped wooden haft. No magic/ornament. Metal edge highlights stronger than ideal matte but broad form readable."
+}

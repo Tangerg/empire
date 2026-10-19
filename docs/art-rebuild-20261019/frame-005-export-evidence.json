@@ -1,0 +1,1352 @@
+[
+  {
+    "topicId": "C01-UNIT-SWORDSMAN",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-swordsman.png",
+    "size": [
+      128,
+      48
+    ],
+    "logicalAnchor": [
+      16,
+      47
+    ],
+    "placement": {
+      "renderWidth": 30,
+      "origin": [
+        1,
+        2
+      ]
+    },
+    "renderedCanvasSize": [
+      30,
+      45
+    ],
+    "sources": [
+      {
+        "pose": "idle",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/idle/master.png",
+        "sourceSha256": "af1dd6de6b519620325e99b35cbcf7de49df8e7035b59df7a36fc0ecf54a67dd",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            102,
+            190,
+            965,
+            1461
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/walk-a/master.png",
+        "sourceSha256": "9a4501960092fed598e8d2755b7223681bf73fff950aca7f22f5a607fe1ec55d",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 14,
+          "coreBoundingBox": [
+            54,
+            189,
+            987,
+            1450
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "attack",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/attack/master.png",
+        "sourceSha256": "b88bf7e68cacc63a705e6639fae1108145905c8bb8b05f794c6dc99ed279fc12",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 17,
+          "coreBoundingBox": [
+            96,
+            205,
+            999,
+            1447
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/walk-b/master.png",
+        "sourceSha256": "239a0f9acd787283161fcae9ff860a1faa97239629cbabf7fcd33f0339b25da0",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            86,
+            190,
+            992,
+            1464
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "pose": "idle",
+        "pixelSha256": "e5306e4508eedfb11e868362c8791ebd233b2e8bc57c787fcbe8534b57861aba",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            4,
+            8,
+            29,
+            44
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "pixelSha256": "f2524699e831d252ddfaa25628b8c7d4a4216878df90b28de3afafeb2499526a",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            3,
+            8,
+            29,
+            44
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "attack",
+        "pixelSha256": "7f7db4c3886a00a484c959f25fe8676bb76094f15585e1ad6a76015e496396ae",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            4,
+            9,
+            29,
+            44
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "pixelSha256": "16a2fceea044339c68680266fb40536ec5a077af0f8b19bafa4ac72e9a9950c1",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            4,
+            8,
+            30,
+            44
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "pixelSha256": "712172bde56995601b002019cacf04bda631a9583d6f341fed6df02d079ed72d",
+    "semanticAnimationReview": "required-separately"
+  },
+  {
+    "topicId": "C01-UNIT-SWORDSMAN",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-swordsman.png",
+    "size": [
+      256,
+      96
+    ],
+    "logicalAnchor": [
+      16,
+      47
+    ],
+    "placement": {
+      "renderWidth": 30,
+      "origin": [
+        1,
+        2
+      ]
+    },
+    "renderedCanvasSize": [
+      60,
+      90
+    ],
+    "sources": [
+      {
+        "pose": "idle",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/idle/master.png",
+        "sourceSha256": "af1dd6de6b519620325e99b35cbcf7de49df8e7035b59df7a36fc0ecf54a67dd",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            102,
+            190,
+            965,
+            1461
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/walk-a/master.png",
+        "sourceSha256": "9a4501960092fed598e8d2755b7223681bf73fff950aca7f22f5a607fe1ec55d",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 14,
+          "coreBoundingBox": [
+            54,
+            189,
+            987,
+            1450
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "attack",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/attack/master.png",
+        "sourceSha256": "b88bf7e68cacc63a705e6639fae1108145905c8bb8b05f794c6dc99ed279fc12",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 17,
+          "coreBoundingBox": [
+            96,
+            205,
+            999,
+            1447
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/walk-b/master.png",
+        "sourceSha256": "239a0f9acd787283161fcae9ff860a1faa97239629cbabf7fcd33f0339b25da0",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            86,
+            190,
+            992,
+            1464
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "pose": "idle",
+        "pixelSha256": "4e3a747d5cba4dbca0d0f565df4955974732976f23ae846a72756fa287dadb4e",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            8,
+            16,
+            58,
+            89
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "pixelSha256": "83db2bd3b26a272c7cfdce023ce47812f653dc6c1fb38ac9bc4d23cdc144969c",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            6,
+            16,
+            59,
+            88
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "attack",
+        "pixelSha256": "155990419302ec0b45f034f0e7881e6ac8aaee986ab67b7df901c10e82fa738f",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            8,
+            16,
+            60,
+            88
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "pixelSha256": "10f46e5a04fed5f50555bc26a1c3ef349e161717fe7d8869183ac6637c4d72a6",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            8,
+            16,
+            60,
+            89
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "pixelSha256": "84faa0611236c6763aca2762b6cc758b8221f02f30d058303c1853a8900d7ad0",
+    "semanticAnimationReview": "required-separately"
+  },
+  {
+    "topicId": "C01-UNIT-ARCHER",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-archer.png",
+    "size": [
+      128,
+      48
+    ],
+    "logicalAnchor": [
+      16,
+      47
+    ],
+    "placement": {
+      "renderWidth": 30,
+      "origin": [
+        1,
+        2
+      ]
+    },
+    "renderedCanvasSize": [
+      30,
+      45
+    ],
+    "sources": [
+      {
+        "pose": "idle",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/idle/master.png",
+        "sourceSha256": "fcfc5191d0ed6601644cbc31d235e31c79e0d43a1241addadc86f952ea44ac95",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 13,
+          "coreBoundingBox": [
+            175,
+            264,
+            971,
+            1456
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/walk-a/master.png",
+        "sourceSha256": "dbd93398d650b3655b3186b3d8c8d639714374983ff27c394eb6e71e8f33df6b",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 18,
+          "coreBoundingBox": [
+            124,
+            231,
+            982,
+            1416
+          ]
+        },
+        "registrationOffset": [
+          0,
+          1
+        ]
+      },
+      {
+        "pose": "attack",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/attack/master.png",
+        "sourceSha256": "473fee55f03ca6beb34750cf4d3b2927863785163b37d5357f969949c41361a8",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 2,
+          "coreBoundingBox": [
+            99,
+            128,
+            1009,
+            1448
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/walk-b/master.png",
+        "sourceSha256": "c7e6de4ed9ce8e69be4a532cc96ce202c6cbf9f9dbc8acf182a3568ed72a685a",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            156,
+            214,
+            1002,
+            1447
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "pose": "idle",
+        "pixelSha256": "7079801213b7b62794c0d05fb243570d06669e306cc3cc0fe7ddfded1cedd359",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            7,
+            10,
+            29,
+            44
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "pixelSha256": "db11dfdf506bed803044317675ca4229afffba39afffd71effca84221c576257",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            5,
+            10,
+            29,
+            44
+          ]
+        },
+        "registrationOffset": [
+          0,
+          1
+        ]
+      },
+      {
+        "pose": "attack",
+        "pixelSha256": "f3b6db60f5bf3850b952f10aa98f6711b8378edefa1d27ff7e5238f55c7a3fb0",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            4,
+            11,
+            29,
+            44
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "pixelSha256": "54d8cc55e2fac0892f2e630c765fdd2de93dfd482e365dc545db5a2351cc3789",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            6,
+            9,
+            29,
+            44
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "pixelSha256": "6c41286970c2dd816adc28d5f359b92af9479c2b9561a854fbd8466fea55a49b",
+    "semanticAnimationReview": "required-separately"
+  },
+  {
+    "topicId": "C01-UNIT-ARCHER",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-archer.png",
+    "size": [
+      256,
+      96
+    ],
+    "logicalAnchor": [
+      16,
+      47
+    ],
+    "placement": {
+      "renderWidth": 30,
+      "origin": [
+        1,
+        2
+      ]
+    },
+    "renderedCanvasSize": [
+      60,
+      90
+    ],
+    "sources": [
+      {
+        "pose": "idle",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/idle/master.png",
+        "sourceSha256": "fcfc5191d0ed6601644cbc31d235e31c79e0d43a1241addadc86f952ea44ac95",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 13,
+          "coreBoundingBox": [
+            175,
+            264,
+            971,
+            1456
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/walk-a/master.png",
+        "sourceSha256": "dbd93398d650b3655b3186b3d8c8d639714374983ff27c394eb6e71e8f33df6b",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 18,
+          "coreBoundingBox": [
+            124,
+            231,
+            982,
+            1416
+          ]
+        },
+        "registrationOffset": [
+          0,
+          1
+        ]
+      },
+      {
+        "pose": "attack",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/attack/master.png",
+        "sourceSha256": "473fee55f03ca6beb34750cf4d3b2927863785163b37d5357f969949c41361a8",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 2,
+          "coreBoundingBox": [
+            99,
+            128,
+            1009,
+            1448
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/walk-b/master.png",
+        "sourceSha256": "c7e6de4ed9ce8e69be4a532cc96ce202c6cbf9f9dbc8acf182a3568ed72a685a",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            156,
+            214,
+            1002,
+            1447
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "pose": "idle",
+        "pixelSha256": "41158d882c560a081fa099003b534cb1944deef444f75fd0e57ae1ff940fe260",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            13,
+            20,
+            58,
+            89
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "pixelSha256": "72e293984f4755ce8605e7e65dcc61b3d1129ccb125aa66636cc90b02a675ca8",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            10,
+            20,
+            59,
+            88
+          ]
+        },
+        "registrationOffset": [
+          0,
+          1
+        ]
+      },
+      {
+        "pose": "attack",
+        "pixelSha256": "515775bd6fd2c404c9101cf5d1502e1305400702642c2e1775588589ca0a5ba8",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            8,
+            12,
+            60,
+            88
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "pixelSha256": "eeee9dfffbb9dee0baa8b3d6cc1cf7329b668a1ecfcafb5b088532286fe4384a",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            12,
+            17,
+            60,
+            88
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "pixelSha256": "810580e5499015aaa54c0a9e1ef1c5dd1f2c04b7f1f6bd8fe70d109028f53c81",
+    "semanticAnimationReview": "required-separately"
+  },
+  {
+    "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-oath-tower-console.png",
+    "size": [
+      192,
+      64
+    ],
+    "logicalAnchor": [
+      32,
+      63
+    ],
+    "placement": {
+      "renderWidth": 62,
+      "origin": [
+        1,
+        2
+      ]
+    },
+    "renderedCanvasSize": [
+      62,
+      62
+    ],
+    "sources": [
+      {
+        "pose": "normal",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/normal/master.png",
+        "sourceSha256": "846e6c0ae75015c527836fef3d8cff10463184ebc7eb771f4e0a146237c24592",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 19,
+          "coreBoundingBox": [
+            37,
+            351,
+            1217,
+            1192
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "damaged",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/damaged/master.png",
+        "sourceSha256": "358133393960b18cdbcd2aedd8352265346df3806e8b6bbc3d8f31e24f6955ce",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            32,
+            419,
+            1221,
+            1191
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "captured",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/captured/master.png",
+        "sourceSha256": "e9a29ac7622564b3511517f18e365673f695bd152b8aba1de67a4a9e3c8fb3dc",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 2,
+          "coreBoundingBox": [
+            36,
+            351,
+            1218,
+            1192
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "pose": "normal",
+        "pixelSha256": "781be94d14b2d798fe3d8e31fd7fd43d0b3755cfbe87956051265e94169c62b6",
+        "alpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 3,
+          "coreBoundingBox": [
+            3,
+            20,
+            61,
+            60
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "damaged",
+        "pixelSha256": "5595b8662c5cf01f442740642f763c4f9d05ac98199f1cb388ee4e72c5df2dcf",
+        "alpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 4,
+          "coreBoundingBox": [
+            3,
+            23,
+            61,
+            60
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "captured",
+        "pixelSha256": "bb681a21b345c2f9a46cc4adf9181963f1dcbfb6d172b0d591d1b925ea757082",
+        "alpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 4,
+          "coreBoundingBox": [
+            3,
+            20,
+            61,
+            60
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "pixelSha256": "97fd6509b5719474c55df4b9f1383c2b2b862a418a3d6d4dae7ca6144bcd4426",
+    "semanticAnimationReview": "required-separately"
+  },
+  {
+    "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-oath-tower-console.png",
+    "size": [
+      384,
+      128
+    ],
+    "logicalAnchor": [
+      32,
+      63
+    ],
+    "placement": {
+      "renderWidth": 62,
+      "origin": [
+        1,
+        2
+      ]
+    },
+    "renderedCanvasSize": [
+      124,
+      124
+    ],
+    "sources": [
+      {
+        "pose": "normal",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/normal/master.png",
+        "sourceSha256": "846e6c0ae75015c527836fef3d8cff10463184ebc7eb771f4e0a146237c24592",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 19,
+          "coreBoundingBox": [
+            37,
+            351,
+            1217,
+            1192
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "damaged",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/damaged/master.png",
+        "sourceSha256": "358133393960b18cdbcd2aedd8352265346df3806e8b6bbc3d8f31e24f6955ce",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            32,
+            419,
+            1221,
+            1191
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "captured",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/interactive-structure/struct-oath-tower-console/captured/master.png",
+        "sourceSha256": "e9a29ac7622564b3511517f18e365673f695bd152b8aba1de67a4a9e3c8fb3dc",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 2,
+          "coreBoundingBox": [
+            36,
+            351,
+            1218,
+            1192
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "pose": "normal",
+        "pixelSha256": "a836e623d17762f0e07f0927ece4a9820b032a3d502f20195314a15aec0be67d",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            6,
+            39,
+            122,
+            121
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "damaged",
+        "pixelSha256": "6070cd3235938deacf3e8da6da798c9fd0e978580f2bf569f22a1c8c585b63a7",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            6,
+            46,
+            122,
+            121
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "captured",
+        "pixelSha256": "ff4a1ed6aba65485caab6453ff7377088d195b1055905768f85989f6175570f9",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            6,
+            39,
+            122,
+            121
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "pixelSha256": "a820f4447a9c0b15550ac06238c331dc768a14e90639c99eff10aab2a343cea1",
+    "semanticAnimationReview": "required-separately"
+  },
+  {
+    "topicId": "C01-UNIT-BANNER-GUARD",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-banner-guard.png",
+    "size": [
+      128,
+      48
+    ],
+    "logicalAnchor": [
+      16,
+      47
+    ],
+    "placement": {
+      "renderWidth": 30,
+      "origin": [
+        1,
+        2
+      ]
+    },
+    "renderedCanvasSize": [
+      30,
+      45
+    ],
+    "sources": [
+      {
+        "pose": "idle",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/idle/revisions/cohesion-v2.png",
+        "sourceSha256": "6b6ff74aa494c9df9e3c759998ff08b0ac679d9f29122aae05ef3d90b73c67a7",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 39,
+          "coreBoundingBox": [
+            198,
+            86,
+            910,
+            1460
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-a/revisions/cohesion-v2.png",
+        "sourceSha256": "85b1fc8c99603051fae2eef38efae77df171dbee27079197f5ce8629622bdfef",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            124,
+            78,
+            949,
+            1456
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "attack",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/attack/revisions/cohesion-v2.png",
+        "sourceSha256": "47dcd2fe6b375dad4bd463029a748c813912670536de194fbfbe6b4a9ca71a4e",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 23,
+          "coreBoundingBox": [
+            69,
+            10,
+            971,
+            1462
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-b/revisions/cohesion-v2.png",
+        "sourceSha256": "de62caee1912c75be0d2f1bcaf19e45f525ce522c67e3952958293b673342fbf",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            189,
+            15,
+            914,
+            1439
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "pose": "idle",
+        "pixelSha256": "ceffb101920d0ec81b096713d2253501a757d178efd0319ead42f62cebe05fe6",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            7,
+            6,
+            27,
+            44
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "pixelSha256": "71d815ea7985886569a8f25a91ad7f00b334a46d5015f881035ddec60f00ad3e",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            5,
+            6,
+            28,
+            44
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "attack",
+        "pixelSha256": "11dc9d8d2a738085f8b7f8c058ee05162167c81cc8ad020311d64c8fc0e0c437",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            4,
+            4,
+            27,
+            44
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "pixelSha256": "33e88e489d83a5fa7b3b9dbb96aac379b7cf811037fae5743d7c41cc5d085e76",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            7,
+            4,
+            27,
+            44
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "pixelSha256": "8e87c4caa5b73a5fc62bf246c0dbe9322b46259aec91cc69c0c6b54212014d1a",
+    "semanticAnimationReview": "required-separately"
+  },
+  {
+    "topicId": "C01-UNIT-BANNER-GUARD",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-banner-guard.png",
+    "size": [
+      256,
+      96
+    ],
+    "logicalAnchor": [
+      16,
+      47
+    ],
+    "placement": {
+      "renderWidth": 30,
+      "origin": [
+        1,
+        2
+      ]
+    },
+    "renderedCanvasSize": [
+      60,
+      90
+    ],
+    "sources": [
+      {
+        "pose": "idle",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/idle/revisions/cohesion-v2.png",
+        "sourceSha256": "6b6ff74aa494c9df9e3c759998ff08b0ac679d9f29122aae05ef3d90b73c67a7",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 39,
+          "coreBoundingBox": [
+            198,
+            86,
+            910,
+            1460
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-a/revisions/cohesion-v2.png",
+        "sourceSha256": "85b1fc8c99603051fae2eef38efae77df171dbee27079197f5ce8629622bdfef",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            124,
+            78,
+            949,
+            1456
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "attack",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/attack/revisions/cohesion-v2.png",
+        "sourceSha256": "47dcd2fe6b375dad4bd463029a748c813912670536de194fbfbe6b4a9ca71a4e",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 1,
+          "edgeNonzeroPixels": 23,
+          "coreBoundingBox": [
+            69,
+            10,
+            971,
+            1462
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-b/revisions/cohesion-v2.png",
+        "sourceSha256": "de62caee1912c75be0d2f1bcaf19e45f525ce522c67e3952958293b673342fbf",
+        "sourceAlpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            189,
+            15,
+            914,
+            1439
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "pose": "idle",
+        "pixelSha256": "8e3bf0d9bd2ff33db7063129f0ccc190e170fc5b18bb3c4cdecb19fa23577283",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            14,
+            10,
+            55,
+            89
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-a",
+        "pixelSha256": "317c8bc3818e53910fae993917f51f6422ad7ec15b98cbabc29c930d602cd36d",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            10,
+            9,
+            57,
+            89
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "attack",
+        "pixelSha256": "cf3fff068b77aa49124c43f22cedcb281a7874008515f8ba1c808da1a12b9e25",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            7,
+            6,
+            58,
+            89
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      },
+      {
+        "pose": "walk-b",
+        "pixelSha256": "4d3bf69a0f6e7c5bd4b3141f36e2977b850e3da1474c7a6fee64cf82eb29dc5a",
+        "alpha": {
+          "edgeMaxAlpha": 0,
+          "edgeNonzeroPixels": 0,
+          "coreBoundingBox": [
+            13,
+            6,
+            55,
+            88
+          ]
+        },
+        "registrationOffset": [
+          0,
+          0
+        ]
+      }
+    ],
+    "pixelSha256": "99aed22a57df8c1e028c78384716d4d01b9e4e675b7cf5ab6b279a1d12798ec2",
+    "semanticAnimationReview": "required-separately"
+  }
+]

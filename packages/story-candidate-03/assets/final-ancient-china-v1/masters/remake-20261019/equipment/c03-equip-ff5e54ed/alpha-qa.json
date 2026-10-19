@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-ff5e54ed",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-ff5e54ed.png",
+  "label": "Modao infantry",
+  "observed_original": "Runtime shows leaf spear.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed role-based weapon from board material vocabulary, not recovered original mapping.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 0,
+  "threshold_bboxes": {
+    "1": [
+      59,
+      29,
+      1225,
+      1220
+    ],
+    "128": [
+      62,
+      32,
+      1222,
+      1215
+    ],
+    "240": [
+      63,
+      33,
+      1221,
+      1214
+    ]
+  },
+  "visual_review": "Long straight broad single-edge blade with long wrapped haft. No Japanese motifs or symbols; intended game abstraction, not historical reconstruction claim. Blade tip narrow margin but intact."
+}

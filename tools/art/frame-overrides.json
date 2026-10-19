@@ -84,6 +84,34 @@
           2
         ]
       }
+    },
+    "C01-UNIT-BANNER-GUARD": {
+      "kind": "frames-v1",
+      "frames": {
+        "idle": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/idle/revisions/cohesion-v2.png",
+          "sha256": "6b6ff74aa494c9df9e3c759998ff08b0ac679d9f29122aae05ef3d90b73c67a7"
+        },
+        "walk-a": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-a/revisions/cohesion-v2.png",
+          "sha256": "85b1fc8c99603051fae2eef38efae77df171dbee27079197f5ce8629622bdfef"
+        },
+        "attack": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/attack/revisions/cohesion-v2.png",
+          "sha256": "47dcd2fe6b375dad4bd463029a748c813912670536de194fbfbe6b4a9ca71a4e"
+        },
+        "walk-b": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-banner-guard/walk-b/revisions/cohesion-v2.png",
+          "sha256": "de62caee1912c75be0d2f1bcaf19e45f525ce522c67e3952958293b673342fbf"
+        }
+      },
+      "placement": {
+        "renderWidth": 30,
+        "origin": [
+          1,
+          2
+        ]
+      }
     }
   }
 }
