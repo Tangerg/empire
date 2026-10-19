@@ -4842,11 +4842,15 @@
     },
     {
       "topicId": "c02-equipment-field-medic",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-field-medic/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_scifi_static_props",
-      "assignmentPhase": "after-current-battle-props"
+      "assignmentPhase": "after-current-battle-props",
+      "sourceSha256": "cf908c8fb9e9a7b0dbe6a1beb24bb7dd062307830f12edce4185bc8e2ff20716"
     },
     {
       "topicId": "c02-equipment-floating-city-guard",
@@ -4876,7 +4880,8 @@
       "topicId": "c02-equipment-guard-robot",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-heat-lamp-shield",
@@ -4906,7 +4911,8 @@
       "topicId": "c02-equipment-long-beam-sniper",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-magboot-tractor-set",
@@ -4954,7 +4960,8 @@
       "topicId": "c02-equipment-power-swordsman",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-protocol-adjudicator",
@@ -5006,11 +5013,15 @@
     },
     {
       "topicId": "c02-equipment-repair-engineer",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-repair-engineer/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_scifi_static_props",
-      "assignmentPhase": "after-current-battle-props"
+      "assignmentPhase": "after-current-battle-props",
+      "sourceSha256": "77910171f82e8580e8d45cb9b7bc1f63a3f69edc2906797340bffb7d76c1d641"
     },
     {
       "topicId": "c02-equipment-reset-guard",
@@ -5064,7 +5075,8 @@
       "topicId": "c02-equipment-star-vein-mage",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-starbreaker-sapper",
@@ -7310,14 +7322,20 @@
     },
     {
       "topicId": "c03-battle-prop-7d42603a",
-      "status": "raw-generated",
-      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-7d42603a/master.png",
+      "status": "exported",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-7d42603a/revision-2/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "staticVisualReview": "passed-revision-2-no-character-like-incisions",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-046-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
-      "sourceSha256": "f1aba23d6467f1b87b6998c4b3d46a206ee773a70076fa794b4129cbd8e832d6"
+      "sourceSha256": "154a498c9a6f140ceb5e35e2dff6a895856d518401a970aeef9ab9bd3d05d696"
     },
     {
       "topicId": "c03-battle-prop-809c152b",
@@ -8994,14 +9012,17 @@
       "atlasId": "forest-existing",
       "cellId": "pine-dead",
       "index": 8,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-dead/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-underbrush",
       "sourceSha256": "669b96a1aff1cc36a8d6cdfb3e8a78cc1cdf452f86464be08ce12107af728b4a",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-017-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
@@ -9040,14 +9061,17 @@
       "atlasId": "forest-existing",
       "cellId": "pine-mature-c",
       "index": 11,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-mature-c/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "assignmentPhase": "after-underbrush",
       "sourceSha256": "bde824d130b6874897a804c1e3b2cbb8f9247218f7a45dd1c43345f28a1bc7db",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-017-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
@@ -9530,6 +9554,34 @@
       "label": "盐袋掩体组",
       "observedOriginal": "wooden shield/weapon grouping with light sack",
       "status": "preserve-original-identity-review-label-separately"
+    },
+    {
+      "topicId": "c03-equip-4c02a584",
+      "label": "刀盾卒",
+      "observedOriginal": "straight sword only",
+      "status": "designed-semantic-reconstruction-from-role-and-intact-equipment-board",
+      "uncertainty": "Exact historical atlas mapping unresolved"
+    },
+    {
+      "topicId": "c03-equip-915fc486",
+      "label": "乡弓手",
+      "observedOriginal": "ornate red/gold beast-face shield",
+      "status": "designed-semantic-reconstruction-from-role-and-intact-equipment-board",
+      "uncertainty": "Exact historical atlas mapping unresolved"
+    },
+    {
+      "topicId": "c03-equip-9ad7ca0f",
+      "label": "长枪阵",
+      "observedOriginal": "curved saber",
+      "status": "designed-semantic-reconstruction-from-role-and-intact-equipment-board",
+      "uncertainty": "Exact historical atlas mapping unresolved"
+    },
+    {
+      "topicId": "c03-equip-4566788b",
+      "label": "军医",
+      "observedOriginal": "siege tower",
+      "status": "designed-semantic-reconstruction-from-role-and-intact-equipment-board",
+      "uncertainty": "Exact historical atlas mapping unresolved"
     }
   ],
   "visualReviewIssues": [
