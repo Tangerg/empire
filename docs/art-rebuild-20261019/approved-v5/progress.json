@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 12,
   "authoredThreeStateBundles": 14,
-  "formalRuntimeBoundTopics": 61,
+  "formalRuntimeBoundTopics": 63,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -393,6 +393,18 @@
       "export": "shared104/1152 scale, unchanged foundation, native state semantic review and alpha passed",
       "runtimeBinding": "canonical and HD catalog bound; no direct shipped scene consumer found",
       "liveGame": "pending"
+    },
+    "C01-EQUIP-KNIGHT": {
+      "raw": "preserved unchanged with original atlas evidence",
+      "export": "native48 three-background identity/alpha review passed",
+      "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
+      "liveGame": "pending"
+    },
+    "C01-EQUIP-HEAVY-KNIGHT": {
+      "raw": "preserved unchanged with original atlas evidence",
+      "export": "native48 three-background identity/alpha review passed",
+      "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -510,13 +522,17 @@
         "wheat-drying-rack",
         "stone-well",
         "livestock-pen-small",
-        "roadside-waystation"
+        "roadside-waystation",
+        "frontier-granary",
+        "frontier-farmhouse",
+        "farm-fence-straight",
+        "farm-fence-corner"
       ],
-      "count": 8,
+      "count": 12,
       "export": "112/224 full-canvas registered source feet; unselected cells byte-identical to immutable baseline",
       "runtimeBinding": "actual c01-01 rack/well and c01-02 settlement pen samples; waystation explicitly catalog-only; native112/224 with original placement scales",
       "liveGame": "pending",
-      "sceneScaleReview": "Rack/well clear at actual authored scales; pen keeps existing small settlement decoration scale, pending explicit whole-scene proportion audit. Waystation catalog-only."
+      "sceneScaleReview": "All12 subjects native reviewed. Pen presentationScale1.5 accepted from full-scene1/1.5/1.8 comparison; castle entrance and granary door core unchanged,3px right pillar overlap documented. Other scales unchanged."
     }
   },
   "totalCanonicalScope": 1212,

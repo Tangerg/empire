@@ -1,0 +1,1878 @@
+{
+  "checkpoint": "36555c4",
+  "renders": [
+    {
+      "filename": "c01-02-actual",
+      "levelId": "c01-02",
+      "penFactor": 1,
+      "kind": "actual production BoardView",
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "props": [
+        {
+          "id": "stone-well",
+          "index": 10,
+          "anchor": [
+            56.07655502392345,
+            92.5933014354067
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.328,
+          "transform": "translate(-18.383 -30.354) scale(0.328)",
+          "sourceId": "scenery:6",
+          "worldFoot": [
+            81.20701,
+            69.75999999999999
+          ],
+          "screenFoot": [
+            155.20701,
+            131.76
+          ]
+        },
+        {
+          "id": "livestock-pen-small",
+          "index": 11,
+          "anchor": [
+            59.44497607655502,
+            90.29665071770334
+          ],
+          "footprint": [
+            3,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.359,
+          "transform": "translate(-21.365 -32.453) scale(0.359)",
+          "sourceId": "scenery:9",
+          "worldFoot": [
+            626.02629,
+            69.75999999999999
+          ],
+          "screenFoot": [
+            700.02629,
+            131.76
+          ]
+        },
+        {
+          "id": "livestock-pen-small",
+          "index": 11,
+          "anchor": [
+            59.44497607655502,
+            90.29665071770334
+          ],
+          "footprint": [
+            3,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.412,
+          "transform": "translate(-24.470 -37.169) scale(0.412)",
+          "sourceId": "scenery:22",
+          "worldFoot": [
+            494.96533,
+            197.76
+          ],
+          "screenFoot": [
+            568.96533,
+            259.76
+          ]
+        },
+        {
+          "id": "livestock-pen-small",
+          "index": 11,
+          "anchor": [
+            59.44497607655502,
+            90.29665071770334
+          ],
+          "footprint": [
+            3,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.335,
+          "transform": "translate(-19.921 -30.260) scale(0.335)",
+          "sourceId": "scenery:25",
+          "worldFoot": [
+            464.13608,
+            229.76
+          ],
+          "screenFoot": [
+            538.13608,
+            291.76
+          ]
+        },
+        {
+          "id": "stone-well",
+          "index": 10,
+          "anchor": [
+            56.07655502392345,
+            92.5933014354067
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.345,
+          "transform": "translate(-19.332 -31.921) scale(0.345)",
+          "sourceId": "scenery:41",
+          "worldFoot": [
+            556.59716,
+            421.76
+          ],
+          "screenFoot": [
+            630.59716,
+            483.76
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            1,
+            9
+          ],
+          "worldFoot": [
+            48,
+            319
+          ]
+        },
+        {
+          "id": 2,
+          "key": "campaign-torren",
+          "type": "c01.swordsman",
+          "cell": [
+            2,
+            8
+          ],
+          "worldFoot": [
+            80,
+            287
+          ]
+        },
+        {
+          "id": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            2,
+            10
+          ],
+          "worldFoot": [
+            80,
+            351
+          ]
+        },
+        {
+          "id": 4,
+          "key": "bridge-knight",
+          "type": "c01.knight",
+          "cell": [
+            3,
+            7
+          ],
+          "worldFoot": [
+            112,
+            255
+          ]
+        },
+        {
+          "id": 5,
+          "key": "bridge-guard-1",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            10
+          ],
+          "worldFoot": [
+            48,
+            351
+          ]
+        },
+        {
+          "id": 6,
+          "key": "bridge-guard-2",
+          "type": "c01.archer",
+          "cell": [
+            3,
+            10
+          ],
+          "worldFoot": [
+            112,
+            351
+          ]
+        },
+        {
+          "id": 7,
+          "key": "refugee-1",
+          "type": "c01.refugee",
+          "cell": [
+            1,
+            11
+          ],
+          "worldFoot": [
+            48,
+            383
+          ]
+        },
+        {
+          "id": 8,
+          "key": "refugee-2",
+          "type": "c01.refugee",
+          "cell": [
+            2,
+            12
+          ],
+          "worldFoot": [
+            80,
+            415
+          ]
+        },
+        {
+          "id": 9,
+          "key": "refugee-3",
+          "type": "c01.refugee",
+          "cell": [
+            3,
+            12
+          ],
+          "worldFoot": [
+            112,
+            415
+          ]
+        },
+        {
+          "id": 10,
+          "key": "river-scout",
+          "type": "c01.swordsman",
+          "cell": [
+            5,
+            12
+          ],
+          "worldFoot": [
+            176,
+            415
+          ]
+        },
+        {
+          "id": 11,
+          "key": "bridge-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            2,
+            9
+          ],
+          "worldFoot": [
+            80,
+            319
+          ]
+        },
+        {
+          "id": 12,
+          "key": "bridge-reserve",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            8
+          ],
+          "worldFoot": [
+            48,
+            287
+          ]
+        },
+        {
+          "id": 13,
+          "key": "cain",
+          "type": "c01.cain",
+          "cell": [
+            20,
+            4
+          ],
+          "worldFoot": [
+            656,
+            159
+          ]
+        },
+        {
+          "id": 14,
+          "key": "shield-1",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            3
+          ],
+          "worldFoot": [
+            624,
+            127
+          ]
+        },
+        {
+          "id": 15,
+          "key": "shield-2",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            5
+          ],
+          "worldFoot": [
+            624,
+            191
+          ]
+        },
+        {
+          "id": 16,
+          "key": "bow-1",
+          "type": "c01.archer",
+          "cell": [
+            18,
+            8
+          ],
+          "worldFoot": [
+            592,
+            287
+          ]
+        },
+        {
+          "id": 17,
+          "key": "unmarked-ballista",
+          "type": "c01.ballista",
+          "cell": [
+            20,
+            10
+          ],
+          "worldFoot": [
+            656,
+            351
+          ]
+        },
+        {
+          "id": 18,
+          "key": "north-bank-guard",
+          "type": "c01.swordsman",
+          "cell": [
+            15,
+            2
+          ],
+          "worldFoot": [
+            496,
+            95
+          ]
+        },
+        {
+          "id": 19,
+          "key": "south-bank-bow",
+          "type": "c01.archer",
+          "cell": [
+            16,
+            11
+          ],
+          "worldFoot": [
+            528,
+            383
+          ]
+        },
+        {
+          "id": 20,
+          "key": "battery-screen",
+          "type": "c01.legion-shield",
+          "cell": [
+            20,
+            12
+          ],
+          "worldFoot": [
+            656,
+            415
+          ]
+        }
+      ],
+      "buildings": [
+        {
+          "sourceId": "terrain:0",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            80,
+            63
+          ]
+        },
+        {
+          "sourceId": "terrain:1",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            656,
+            63
+          ]
+        },
+        {
+          "sourceId": "terrain:2",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            48,
+            127
+          ]
+        },
+        {
+          "sourceId": "terrain:3",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            208,
+            191
+          ]
+        },
+        {
+          "sourceId": "terrain:4",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            464,
+            191
+          ]
+        },
+        {
+          "sourceId": "terrain:5",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            48,
+            383
+          ]
+        },
+        {
+          "sourceId": "terrain:6",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            560,
+            383
+          ]
+        },
+        {
+          "sourceId": "terrain:7",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            176,
+            415
+          ]
+        },
+        {
+          "sourceId": "terrain:8",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            656,
+            415
+          ]
+        }
+      ],
+      "sourceLayerCounts": {
+        "grid": 0,
+        "terrain": 9,
+        "ground": 213,
+        "scenery": 46,
+        "foreground": 0,
+        "spatial": 7,
+        "range": 0,
+        "path": 0,
+        "cursor": 0
+      },
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    },
+    {
+      "filename": "c01-02-pen-factor-1.5",
+      "levelId": "c01-02",
+      "penFactor": 1.5,
+      "kind": "diagnostic pen-only foot-pivot scale multiplier; no production changes",
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "props": [
+        {
+          "id": "stone-well",
+          "index": 10,
+          "anchor": [
+            56.07655502392345,
+            92.5933014354067
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.328,
+          "transform": "translate(-18.383 -30.354) scale(0.328)",
+          "sourceId": "scenery:6",
+          "worldFoot": [
+            81.20701,
+            69.75999999999999
+          ],
+          "screenFoot": [
+            155.20701,
+            131.76
+          ]
+        },
+        {
+          "id": "livestock-pen-small",
+          "index": 11,
+          "anchor": [
+            59.44497607655502,
+            90.29665071770334
+          ],
+          "footprint": [
+            3,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.359,
+          "transform": "translate(-21.365 -32.453) scale(0.359)",
+          "sourceId": "scenery:9",
+          "worldFoot": [
+            626.02629,
+            69.75999999999999
+          ],
+          "screenFoot": [
+            700.02629,
+            131.76
+          ]
+        },
+        {
+          "id": "livestock-pen-small",
+          "index": 11,
+          "anchor": [
+            59.44497607655502,
+            90.29665071770334
+          ],
+          "footprint": [
+            3,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.412,
+          "transform": "translate(-24.470 -37.169) scale(0.412)",
+          "sourceId": "scenery:22",
+          "worldFoot": [
+            494.96533,
+            197.76
+          ],
+          "screenFoot": [
+            568.96533,
+            259.76
+          ]
+        },
+        {
+          "id": "livestock-pen-small",
+          "index": 11,
+          "anchor": [
+            59.44497607655502,
+            90.29665071770334
+          ],
+          "footprint": [
+            3,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.335,
+          "transform": "translate(-19.921 -30.260) scale(0.335)",
+          "sourceId": "scenery:25",
+          "worldFoot": [
+            464.13608,
+            229.76
+          ],
+          "screenFoot": [
+            538.13608,
+            291.76
+          ]
+        },
+        {
+          "id": "stone-well",
+          "index": 10,
+          "anchor": [
+            56.07655502392345,
+            92.5933014354067
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.345,
+          "transform": "translate(-19.332 -31.921) scale(0.345)",
+          "sourceId": "scenery:41",
+          "worldFoot": [
+            556.59716,
+            421.76
+          ],
+          "screenFoot": [
+            630.59716,
+            483.76
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            1,
+            9
+          ],
+          "worldFoot": [
+            48,
+            319
+          ]
+        },
+        {
+          "id": 2,
+          "key": "campaign-torren",
+          "type": "c01.swordsman",
+          "cell": [
+            2,
+            8
+          ],
+          "worldFoot": [
+            80,
+            287
+          ]
+        },
+        {
+          "id": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            2,
+            10
+          ],
+          "worldFoot": [
+            80,
+            351
+          ]
+        },
+        {
+          "id": 4,
+          "key": "bridge-knight",
+          "type": "c01.knight",
+          "cell": [
+            3,
+            7
+          ],
+          "worldFoot": [
+            112,
+            255
+          ]
+        },
+        {
+          "id": 5,
+          "key": "bridge-guard-1",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            10
+          ],
+          "worldFoot": [
+            48,
+            351
+          ]
+        },
+        {
+          "id": 6,
+          "key": "bridge-guard-2",
+          "type": "c01.archer",
+          "cell": [
+            3,
+            10
+          ],
+          "worldFoot": [
+            112,
+            351
+          ]
+        },
+        {
+          "id": 7,
+          "key": "refugee-1",
+          "type": "c01.refugee",
+          "cell": [
+            1,
+            11
+          ],
+          "worldFoot": [
+            48,
+            383
+          ]
+        },
+        {
+          "id": 8,
+          "key": "refugee-2",
+          "type": "c01.refugee",
+          "cell": [
+            2,
+            12
+          ],
+          "worldFoot": [
+            80,
+            415
+          ]
+        },
+        {
+          "id": 9,
+          "key": "refugee-3",
+          "type": "c01.refugee",
+          "cell": [
+            3,
+            12
+          ],
+          "worldFoot": [
+            112,
+            415
+          ]
+        },
+        {
+          "id": 10,
+          "key": "river-scout",
+          "type": "c01.swordsman",
+          "cell": [
+            5,
+            12
+          ],
+          "worldFoot": [
+            176,
+            415
+          ]
+        },
+        {
+          "id": 11,
+          "key": "bridge-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            2,
+            9
+          ],
+          "worldFoot": [
+            80,
+            319
+          ]
+        },
+        {
+          "id": 12,
+          "key": "bridge-reserve",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            8
+          ],
+          "worldFoot": [
+            48,
+            287
+          ]
+        },
+        {
+          "id": 13,
+          "key": "cain",
+          "type": "c01.cain",
+          "cell": [
+            20,
+            4
+          ],
+          "worldFoot": [
+            656,
+            159
+          ]
+        },
+        {
+          "id": 14,
+          "key": "shield-1",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            3
+          ],
+          "worldFoot": [
+            624,
+            127
+          ]
+        },
+        {
+          "id": 15,
+          "key": "shield-2",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            5
+          ],
+          "worldFoot": [
+            624,
+            191
+          ]
+        },
+        {
+          "id": 16,
+          "key": "bow-1",
+          "type": "c01.archer",
+          "cell": [
+            18,
+            8
+          ],
+          "worldFoot": [
+            592,
+            287
+          ]
+        },
+        {
+          "id": 17,
+          "key": "unmarked-ballista",
+          "type": "c01.ballista",
+          "cell": [
+            20,
+            10
+          ],
+          "worldFoot": [
+            656,
+            351
+          ]
+        },
+        {
+          "id": 18,
+          "key": "north-bank-guard",
+          "type": "c01.swordsman",
+          "cell": [
+            15,
+            2
+          ],
+          "worldFoot": [
+            496,
+            95
+          ]
+        },
+        {
+          "id": 19,
+          "key": "south-bank-bow",
+          "type": "c01.archer",
+          "cell": [
+            16,
+            11
+          ],
+          "worldFoot": [
+            528,
+            383
+          ]
+        },
+        {
+          "id": 20,
+          "key": "battery-screen",
+          "type": "c01.legion-shield",
+          "cell": [
+            20,
+            12
+          ],
+          "worldFoot": [
+            656,
+            415
+          ]
+        }
+      ],
+      "buildings": [
+        {
+          "sourceId": "terrain:0",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            80,
+            63
+          ]
+        },
+        {
+          "sourceId": "terrain:1",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            656,
+            63
+          ]
+        },
+        {
+          "sourceId": "terrain:2",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            48,
+            127
+          ]
+        },
+        {
+          "sourceId": "terrain:3",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            208,
+            191
+          ]
+        },
+        {
+          "sourceId": "terrain:4",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            464,
+            191
+          ]
+        },
+        {
+          "sourceId": "terrain:5",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            48,
+            383
+          ]
+        },
+        {
+          "sourceId": "terrain:6",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            560,
+            383
+          ]
+        },
+        {
+          "sourceId": "terrain:7",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            176,
+            415
+          ]
+        },
+        {
+          "sourceId": "terrain:8",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            656,
+            415
+          ]
+        }
+      ],
+      "sourceLayerCounts": {
+        "grid": 0,
+        "terrain": 9,
+        "ground": 213,
+        "scenery": 46,
+        "foreground": 0,
+        "spatial": 7,
+        "range": 0,
+        "path": 0,
+        "cursor": 0
+      },
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    },
+    {
+      "filename": "c01-02-pen-factor-1.8",
+      "levelId": "c01-02",
+      "penFactor": 1.8,
+      "kind": "diagnostic pen-only foot-pivot scale multiplier; no production changes",
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "props": [
+        {
+          "id": "stone-well",
+          "index": 10,
+          "anchor": [
+            56.07655502392345,
+            92.5933014354067
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.328,
+          "transform": "translate(-18.383 -30.354) scale(0.328)",
+          "sourceId": "scenery:6",
+          "worldFoot": [
+            81.20701,
+            69.75999999999999
+          ],
+          "screenFoot": [
+            155.20701,
+            131.76
+          ]
+        },
+        {
+          "id": "livestock-pen-small",
+          "index": 11,
+          "anchor": [
+            59.44497607655502,
+            90.29665071770334
+          ],
+          "footprint": [
+            3,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.359,
+          "transform": "translate(-21.365 -32.453) scale(0.359)",
+          "sourceId": "scenery:9",
+          "worldFoot": [
+            626.02629,
+            69.75999999999999
+          ],
+          "screenFoot": [
+            700.02629,
+            131.76
+          ]
+        },
+        {
+          "id": "livestock-pen-small",
+          "index": 11,
+          "anchor": [
+            59.44497607655502,
+            90.29665071770334
+          ],
+          "footprint": [
+            3,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.412,
+          "transform": "translate(-24.470 -37.169) scale(0.412)",
+          "sourceId": "scenery:22",
+          "worldFoot": [
+            494.96533,
+            197.76
+          ],
+          "screenFoot": [
+            568.96533,
+            259.76
+          ]
+        },
+        {
+          "id": "livestock-pen-small",
+          "index": 11,
+          "anchor": [
+            59.44497607655502,
+            90.29665071770334
+          ],
+          "footprint": [
+            3,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.335,
+          "transform": "translate(-19.921 -30.260) scale(0.335)",
+          "sourceId": "scenery:25",
+          "worldFoot": [
+            464.13608,
+            229.76
+          ],
+          "screenFoot": [
+            538.13608,
+            291.76
+          ]
+        },
+        {
+          "id": "stone-well",
+          "index": 10,
+          "anchor": [
+            56.07655502392345,
+            92.5933014354067
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.345,
+          "transform": "translate(-19.332 -31.921) scale(0.345)",
+          "sourceId": "scenery:41",
+          "worldFoot": [
+            556.59716,
+            421.76
+          ],
+          "screenFoot": [
+            630.59716,
+            483.76
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            1,
+            9
+          ],
+          "worldFoot": [
+            48,
+            319
+          ]
+        },
+        {
+          "id": 2,
+          "key": "campaign-torren",
+          "type": "c01.swordsman",
+          "cell": [
+            2,
+            8
+          ],
+          "worldFoot": [
+            80,
+            287
+          ]
+        },
+        {
+          "id": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            2,
+            10
+          ],
+          "worldFoot": [
+            80,
+            351
+          ]
+        },
+        {
+          "id": 4,
+          "key": "bridge-knight",
+          "type": "c01.knight",
+          "cell": [
+            3,
+            7
+          ],
+          "worldFoot": [
+            112,
+            255
+          ]
+        },
+        {
+          "id": 5,
+          "key": "bridge-guard-1",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            10
+          ],
+          "worldFoot": [
+            48,
+            351
+          ]
+        },
+        {
+          "id": 6,
+          "key": "bridge-guard-2",
+          "type": "c01.archer",
+          "cell": [
+            3,
+            10
+          ],
+          "worldFoot": [
+            112,
+            351
+          ]
+        },
+        {
+          "id": 7,
+          "key": "refugee-1",
+          "type": "c01.refugee",
+          "cell": [
+            1,
+            11
+          ],
+          "worldFoot": [
+            48,
+            383
+          ]
+        },
+        {
+          "id": 8,
+          "key": "refugee-2",
+          "type": "c01.refugee",
+          "cell": [
+            2,
+            12
+          ],
+          "worldFoot": [
+            80,
+            415
+          ]
+        },
+        {
+          "id": 9,
+          "key": "refugee-3",
+          "type": "c01.refugee",
+          "cell": [
+            3,
+            12
+          ],
+          "worldFoot": [
+            112,
+            415
+          ]
+        },
+        {
+          "id": 10,
+          "key": "river-scout",
+          "type": "c01.swordsman",
+          "cell": [
+            5,
+            12
+          ],
+          "worldFoot": [
+            176,
+            415
+          ]
+        },
+        {
+          "id": 11,
+          "key": "bridge-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            2,
+            9
+          ],
+          "worldFoot": [
+            80,
+            319
+          ]
+        },
+        {
+          "id": 12,
+          "key": "bridge-reserve",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            8
+          ],
+          "worldFoot": [
+            48,
+            287
+          ]
+        },
+        {
+          "id": 13,
+          "key": "cain",
+          "type": "c01.cain",
+          "cell": [
+            20,
+            4
+          ],
+          "worldFoot": [
+            656,
+            159
+          ]
+        },
+        {
+          "id": 14,
+          "key": "shield-1",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            3
+          ],
+          "worldFoot": [
+            624,
+            127
+          ]
+        },
+        {
+          "id": 15,
+          "key": "shield-2",
+          "type": "c01.legion-shield",
+          "cell": [
+            19,
+            5
+          ],
+          "worldFoot": [
+            624,
+            191
+          ]
+        },
+        {
+          "id": 16,
+          "key": "bow-1",
+          "type": "c01.archer",
+          "cell": [
+            18,
+            8
+          ],
+          "worldFoot": [
+            592,
+            287
+          ]
+        },
+        {
+          "id": 17,
+          "key": "unmarked-ballista",
+          "type": "c01.ballista",
+          "cell": [
+            20,
+            10
+          ],
+          "worldFoot": [
+            656,
+            351
+          ]
+        },
+        {
+          "id": 18,
+          "key": "north-bank-guard",
+          "type": "c01.swordsman",
+          "cell": [
+            15,
+            2
+          ],
+          "worldFoot": [
+            496,
+            95
+          ]
+        },
+        {
+          "id": 19,
+          "key": "south-bank-bow",
+          "type": "c01.archer",
+          "cell": [
+            16,
+            11
+          ],
+          "worldFoot": [
+            528,
+            383
+          ]
+        },
+        {
+          "id": 20,
+          "key": "battery-screen",
+          "type": "c01.legion-shield",
+          "cell": [
+            20,
+            12
+          ],
+          "worldFoot": [
+            656,
+            415
+          ]
+        }
+      ],
+      "buildings": [
+        {
+          "sourceId": "terrain:0",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            80,
+            63
+          ]
+        },
+        {
+          "sourceId": "terrain:1",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            656,
+            63
+          ]
+        },
+        {
+          "sourceId": "terrain:2",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            48,
+            127
+          ]
+        },
+        {
+          "sourceId": "terrain:3",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            208,
+            191
+          ]
+        },
+        {
+          "sourceId": "terrain:4",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            464,
+            191
+          ]
+        },
+        {
+          "sourceId": "terrain:5",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            48,
+            383
+          ]
+        },
+        {
+          "sourceId": "terrain:6",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            560,
+            383
+          ]
+        },
+        {
+          "sourceId": "terrain:7",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            176,
+            415
+          ]
+        },
+        {
+          "sourceId": "terrain:8",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            656,
+            415
+          ]
+        }
+      ],
+      "sourceLayerCounts": {
+        "grid": 0,
+        "terrain": 9,
+        "ground": 213,
+        "scenery": 46,
+        "foreground": 0,
+        "spatial": 7,
+        "range": 0,
+        "path": 0,
+        "cursor": 0
+      },
+      "stateSha256": "87c04a72e0ff60f427171edb083cccebe06f36156dc370e788988a1a990908da"
+    },
+    {
+      "filename": "c01-01-actual",
+      "levelId": "c01-01",
+      "penFactor": 1,
+      "kind": "actual production BoardView",
+      "viewport": [
+        0,
+        0,
+        1012,
+        680
+      ],
+      "props": [
+        {
+          "id": "stone-well",
+          "index": 10,
+          "anchor": [
+            56.07655502392345,
+            92.5933014354067
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.323,
+          "transform": "translate(-18.116 -29.913) scale(0.323)",
+          "sourceId": "scenery:106",
+          "worldFoot": [
+            780.51008,
+            389.76
+          ],
+          "screenFoot": [
+            854.51008,
+            451.76
+          ]
+        },
+        {
+          "id": "stone-well",
+          "index": 10,
+          "anchor": [
+            56.07655502392345,
+            92.5933014354067
+          ],
+          "footprint": [
+            2,
+            2
+          ],
+          "presentationScale": 1,
+          "scale": 0.58,
+          "transform": "translate(-32.524 -53.704) scale(0.580)",
+          "sourceId": "scenery:195",
+          "worldFoot": [
+            419.2,
+            380.8
+          ],
+          "screenFoot": [
+            493.2,
+            442.8
+          ]
+        },
+        {
+          "id": "wheat-drying-rack",
+          "index": 7,
+          "anchor": [
+            49.72248803827751,
+            78.66028708133972
+          ],
+          "footprint": [
+            2,
+            1
+          ],
+          "presentationScale": 1,
+          "scale": 0.6,
+          "transform": "translate(-29.833 -47.196) scale(0.600)",
+          "sourceId": "scenery:196",
+          "worldFoot": [
+            518.4,
+            262.4
+          ],
+          "screenFoot": [
+            592.4,
+            324.4
+          ]
+        }
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "key": "campaign-laiya",
+          "type": "c01.laiya",
+          "cell": [
+            2,
+            9
+          ],
+          "worldFoot": [
+            80,
+            319
+          ]
+        },
+        {
+          "id": 2,
+          "key": "campaign-torren",
+          "type": "c01.swordsman",
+          "cell": [
+            3,
+            8
+          ],
+          "worldFoot": [
+            112,
+            287
+          ]
+        },
+        {
+          "id": 3,
+          "key": "campaign-elin",
+          "type": "c01.archer",
+          "cell": [
+            3,
+            10
+          ],
+          "worldFoot": [
+            112,
+            351
+          ]
+        },
+        {
+          "id": 4,
+          "key": "field-cleric",
+          "type": "c01.gravekeeper",
+          "cell": [
+            2,
+            8
+          ],
+          "worldFoot": [
+            80,
+            287
+          ]
+        },
+        {
+          "id": 5,
+          "key": "roderick-reserve",
+          "type": "c01.roderick",
+          "cell": [
+            3,
+            11
+          ],
+          "worldFoot": [
+            112,
+            383
+          ]
+        },
+        {
+          "id": 6,
+          "key": "ridge-scout",
+          "type": "c01.archer",
+          "cell": [
+            6,
+            14
+          ],
+          "worldFoot": [
+            208,
+            479
+          ]
+        },
+        {
+          "id": 7,
+          "key": "ridge-guard",
+          "type": "c01.banner-guard",
+          "cell": [
+            1,
+            9
+          ],
+          "worldFoot": [
+            48,
+            319
+          ]
+        },
+        {
+          "id": 8,
+          "key": "west-spear",
+          "type": "c01.banner-guard",
+          "cell": [
+            6,
+            12
+          ],
+          "worldFoot": [
+            208,
+            415
+          ]
+        },
+        {
+          "id": 9,
+          "key": "village-runner",
+          "type": "c01.archer",
+          "cell": [
+            5,
+            6
+          ],
+          "worldFoot": [
+            176,
+            223
+          ]
+        },
+        {
+          "id": 10,
+          "key": "camp-guard",
+          "type": "c01.legion-shield",
+          "cell": [
+            4,
+            12
+          ],
+          "worldFoot": [
+            144,
+            415
+          ]
+        },
+        {
+          "id": 11,
+          "key": "field-knight",
+          "type": "c01.knight",
+          "cell": [
+            7,
+            11
+          ],
+          "worldFoot": [
+            240,
+            383
+          ]
+        },
+        {
+          "id": 12,
+          "key": "vanguard-1",
+          "type": "c01.legion-shield",
+          "cell": [
+            15,
+            4
+          ],
+          "worldFoot": [
+            496,
+            159
+          ]
+        },
+        {
+          "id": 13,
+          "key": "vanguard-2",
+          "type": "c01.swordsman",
+          "cell": [
+            19,
+            5
+          ],
+          "worldFoot": [
+            624,
+            191
+          ]
+        },
+        {
+          "id": 14,
+          "key": "vanguard-archer",
+          "type": "c01.archer",
+          "cell": [
+            22,
+            3
+          ],
+          "worldFoot": [
+            720,
+            127
+          ]
+        },
+        {
+          "id": 15,
+          "key": "vanguard-cain",
+          "type": "c01.cain",
+          "cell": [
+            24,
+            5
+          ],
+          "worldFoot": [
+            784,
+            191
+          ]
+        },
+        {
+          "id": 16,
+          "key": "north-shield",
+          "type": "c01.legion-shield",
+          "cell": [
+            20,
+            9
+          ],
+          "worldFoot": [
+            656,
+            319
+          ]
+        },
+        {
+          "id": 17,
+          "key": "south-sword",
+          "type": "c01.swordsman",
+          "cell": [
+            24,
+            12
+          ],
+          "worldFoot": [
+            784,
+            415
+          ]
+        },
+        {
+          "id": 18,
+          "key": "south-bow",
+          "type": "c01.archer",
+          "cell": [
+            18,
+            13
+          ],
+          "worldFoot": [
+            592,
+            447
+          ]
+        },
+        {
+          "id": 19,
+          "key": "camp-bow",
+          "type": "c01.archer",
+          "cell": [
+            23,
+            8
+          ],
+          "worldFoot": [
+            752,
+            287
+          ]
+        }
+      ],
+      "buildings": [
+        {
+          "sourceId": "terrain:0",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            48,
+            127
+          ]
+        },
+        {
+          "sourceId": "terrain:1",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            400,
+            287
+          ]
+        },
+        {
+          "sourceId": "terrain:2",
+          "sourceImage": "struct-joint-granary@2x.png",
+          "worldFoot": [
+            464,
+            287
+          ]
+        },
+        {
+          "sourceId": "terrain:3",
+          "sourceImage": "struct-lorne-keep@2x.png",
+          "worldFoot": [
+            816,
+            383
+          ]
+        }
+      ],
+      "sourceLayerCounts": {
+        "grid": 0,
+        "terrain": 4,
+        "ground": 408,
+        "scenery": 206,
+        "foreground": 0,
+        "spatial": 10,
+        "range": 0,
+        "path": 0,
+        "cursor": 0
+      },
+      "stateSha256": "d8987f972460aecb8e0b811a947a6df23c6951eb62f9e3a4dddd99c84e46963e"
+    }
+  ],
+  "sources": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json": "bf3c31228b102295d9fa5d270dee8a221a7785fe3aedd877dc5c46a973d5087e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json": "6ebff22b614b08ac4092c989e5b1cc23a8eecc668324e917179b0f282ab1b7d2",
+    "packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts": "2d237f6bafa2097a1b3704a44ee20519a75f9ee1ed33440963cb92c20b45011a",
+    "packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts": "7cb8644b2042e74a60784082cd05855d0bef7a296c9146715bec65f3789b3792",
+    "packages/game-ui/src/styles/app.css": "1828de426c9184eba0046d17d89c57c87087cd8dfb6e9bdc790e10987d9af754",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/meadow-base@2x.png": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-masks@2x.png": "fd73ff01e210d74c8e7bd5740655896628c1783e42222ccd421b58f4603929cc",
+    "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/water-area@2x.png": "ba34100a163de3166eea5b9956765ce87ed9bf2ae8d8930716f4fb0be15603f7",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-dirt-road@2x.png": "ee3df059f9745c731a4d7a31d0ea5668cd764118698e0e64c144036dffca4785",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/route-edge-dirt-road@2x.png": "98646a12e1cc3c8f0bea857c11b0421e124730da1b66d7eb913e0bbd89c20b9a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png": "96700df91820c8334b7428d143016693170056ac452882cb4f6ccece26e76d68",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png": "5c5bd292a37418297c27ce828fcf87e7d77b5c3805c825ccc59ce4e933394e95",
+    "packages/story-candidate-01/assets/final-fantasy-v1/registered-crossings-v1/runtime/stone-crossing-horizontal@2x.png": "98bdd8a173461c264d52d90b1eae58d69d69da012d925d7e96364b145fb50f5d",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/rural-life@2x.png": "53ddd76ce2a9130452f6e0fd0e87a7ff6016236c99ea050acb4bab2d90ecca20",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png": "61c1ea40428c58e6d74aa4af88dd410f2b99aa04de36273fcefeb3fa0d5c9ace",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-joint-granary@2x.png": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/structure/struct-lorne-keep@2x.png": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman-red@2x.png": "acce57525056c38a6105b54b686241b90b92ee26acaa4984313e36b33e7f3e2e",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-knight.png": "27fea41556b724d3b553c34b980432ea1494fbb49736d26a56a54b02015d2053",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-swordsman@2x.png": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-archer@2x.png": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-gravekeeper.png": "359d6031209a8939cd47437d06a1075dc30cbf62161d5cc25bed58a8243d5126",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ballista.png": "78475b8731aad186e1a547a6ce55ca8b35d21c9d78ff75054c10626a52511b8a",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-refugee-adult.png": "b9242c3a6c43e1baa058799a956db8b3fb1f9b85953ebcc9568a342cd0f98bd6",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-wasteland@2x.png": "3422fa8a2f2cf9294894f989ffc105cf55011e5eb73957c777d452126e6c6738",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-border-farmer.png": "67d687630dfba0ffe1e5ec883ab9ab81d16474ffe0ec28f654073ed2ad5ce0e7",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/battle-prop/bprop-faction-3.png": "9e40ba16dad381e8fc9d1fbabc7ff265a272770c8e3d45b8d5c42f0421477bc4",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/battle-prop/bprop-faction-2.png": "ec4783d974488459b3a8477d7926aeb6c017b35dad672c8a4d3091d3c816c12c",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-wounded-shelter@2x.png": "e5a52afe0a2bc5cd862701029ba3e45088921380f3b9e0af23df9ca9cdc3d5a9",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-heavy-knight@2x.png": "493e95a84ad64e784d8336f3a6b1bede188ad7d24842f894b550683098cf2ca0",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/battle-prop/bprop-logistics-3.png": "b688b8790ba6ffc6ac58bde65067b4691c3e3d747a8ee44b83726b9e83bdc735",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/battle-prop/bprop-logistics-1.png": "110469b5ba0cda64ffd1dd2507cffe71670bc50d0fb33c2460137fcda6b7c14f",
+    "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/battle-prop/bprop-cover-2.png": "6a71345b1ccecbee95c217d3dcabdff174ffdb18ecd8d9f0c8149a36ea68474a"
+  },
+  "gameplayChanged": false,
+  "productionFilesChanged": false,
+  "omissions": [],
+  "browserPlayback": false
+}
