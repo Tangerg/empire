@@ -8,6 +8,10 @@ import {
 describe('candidate-01 environment builder v1.1', () => {
   it('retains registered pivots and semantic footprints for approved forest cells', () => {
     const contracts = [
+      { id: 'pine-low-shrub', foot: [610, 913], scale: 0.62, footprint: [1, 1], obstruction: 0 },
+      { id: 'pine-fallen-log', foot: [635, 815], scale: 0.7, footprint: [2, 1], obstruction: 1 },
+      { id: 'pine-stump', foot: [642, 879], scale: 0.68, footprint: [1, 1], obstruction: 0 },
+      { id: 'pine-mossy-rock', foot: [630, 915], scale: 0.67, footprint: [1, 1], obstruction: 1 },
       { id: 'pine-mature-a', foot: [630, 1118], scale: 1.5, footprint: [1, 1], obstruction: 2 },
       { id: 'pine-mature-b', foot: [638, 1078], scale: 1.65, footprint: [1, 1], obstruction: 2 },
       { id: 'pine-dead', foot: [655, 1107], scale: 1.2, footprint: [1, 1], obstruction: 2 },
@@ -47,8 +51,7 @@ describe('candidate-01 environment builder v1.1', () => {
       expect(atlas.raster).toMatchObject({ cellWidth: 96, cellHeight: 96, columns: 4, rows: 4 });
       expect(atlas.raster.href).toContain(`${id.startsWith('pine-') ? 'forest-existing' : 'forest-temperate'}@2x.png`);
     }
-    expect(CANDIDATE_01_ENVIRONMENT.cell('pine-stump').cell.anchor).toEqual([48, 91]);
-    expect(CANDIDATE_01_ENVIRONMENT.cell('pine-stump').cell.presentationScale).toBeUndefined();
+    expect(CANDIDATE_01_ENVIRONMENT.cell('grave-cross-cluster').cell.presentationScale).toBeUndefined();
   });
 
   it('rejects invalid presentation scales at the catalog boundary', () => {

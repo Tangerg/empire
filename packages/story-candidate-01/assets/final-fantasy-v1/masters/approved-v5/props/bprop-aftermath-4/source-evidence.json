@@ -1,0 +1,41 @@
+{
+  "topicId": "C01-BPROP-AFTERMATH-4",
+  "assetId": "C01-FFV1-BPROP-AFTERMATH-4",
+  "label": "\u5171\u540c\u4fee\u590d\u75d5\u8ff9",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8b293c6b-7c50-4287-9de2-83b08e0cec71.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/props/identity-inspection/original-bprop-aftermath-4-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/props/props-atlas-04.png, bottom row column 4",
+    "inspectionCropCoordinates": [
+      1332,
+      445,
+      1774,
+      887
+    ],
+    "inspectionCropTreatment": "Unscaled source-cell crop only; no pixel cleanup or alpha conversion",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/props/props-atlas-04.png",
+    "atlasSha256": "7f6723b17ffce9681af543fe03565034ef4dda0e7d6724b7ab94a97be6c6068a",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/identity-inspection/original-bprop-aftermath-4-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "identityClarification": "Original atlas confirms three iron-capped vertical timber braces, two stacked stitched gray patches and olive-green repair rope loops. Source authority supersedes previous chain shorthand.",
+  "postprocessing": "None. Byte-exact native PNG copy. No output pixel cleanup, resizing, alpha editing or Git writes.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}

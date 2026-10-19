@@ -1,0 +1,40 @@
+{
+  "size": [
+    1584,
+    993
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "visibleBounds": [
+    0,
+    48,
+    1474,
+    993
+  ],
+  "visibleBoundsAlphaGreaterThan127": [
+    107,
+    51,
+    1292,
+    964
+  ],
+  "fullyTransparentPixels": 908003,
+  "nearOpaquePixels": 646965,
+  "fullyOpaquePixels": 874,
+  "partialAlphaPixels": 664035,
+  "edgeMax": 1,
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-693325ff-5542-4d53-be4f-58b9058dc02b.png",
+  "sha256": "46406c9505e6af2b226dc4032549c10d69971020246ac375c0f5f55d7b7f0f60",
+  "generationTool": "built-in image_gen",
+  "transparent_background": true,
+  "exactPromptFile": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/attack/attempt-02/prompt.txt",
+  "exactToolCallPromptVerified": true,
+  "masterTransform": "None; raw and master are byte-for-byte native copies.",
+  "referenceInputs": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/attack/attempt-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/master.png"
+  ],
+  "generationNote": "Targeted native imagegen correction restored compact one-handed mace length; first long-shaft attack retained in attempt-01."
+}

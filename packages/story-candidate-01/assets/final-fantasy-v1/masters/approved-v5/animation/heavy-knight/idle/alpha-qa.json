@@ -1,5 +1,5 @@
 {
-  "status": "Idle candidate ready for coordinator review before other poses",
+  "status": "Native quartet review passed; pending coordinator export/binding",
   "size": [
     1586,
     992
@@ -29,7 +29,8 @@
   "perimeterGate": {
     "maxNativePerimeterAlpha": 0,
     "pixelsWithPerimeterAlphaGreaterThan1": 0,
-    "passes": true
+    "passesNativeSilhouettePerimeterGate": true,
+    "interpretation": "No silhouette alpha>1 crosses native perimeter. Alpha1 specks, when present, remain native and unmodified."
   },
   "source": "/workspace/scratch/84c9fe948755/generated_images/exec-fa972693-8f77-49f0-a12c-1a4d3a61f074.png",
   "sha256": "f04f1b84b595d4bc4495a00576567f9d27f6a7019d4626c4d78cab6af3865b07",
@@ -54,10 +55,10 @@
   "bodyHeightSourcePixels": 895.5,
   "sourceFootAnchorSuggested": [
     790,
-    960
+    961
   ],
   "footSupportEvidence": {
-    "measurement": "Alpha>127, manually isolated boot-only ROIs, lowest3rows sole contour mass centers. Master pixels unchanged.",
+    "measurement": "Alpha>127, boot-only manually isolated ROIs, lowest3rows sole contour mass centers. No master pixel edits.",
     "boots": [
       {
         "side": "screen-left",
@@ -72,7 +73,8 @@
           451,
           565
         ],
-        "soleBandCenterX": 507.98
+        "soleBandCenterX": 507.98,
+        "contactInterpretation": "planted rear sole"
       },
       {
         "side": "screen-right",
@@ -87,13 +89,19 @@
           1015,
           1129
         ],
-        "soleBandCenterX": 1072.56
+        "soleBandCenterX": 1072.56,
+        "contactInterpretation": "planted front sole"
       }
     ],
     "bothBootSoleBandMidpoint": [
       790.27,
       960.5
-    ]
+    ],
+    "sourceSupportAnchorEstimated": [
+      790,
+      961
+    ],
+    "anchorInterpretation": "Horizontal midpoint of two low sole bands. Vertical registration uses the lowest contacting sole/heel; raised heels and projected foot depths remain part of the pose. Idle scale reference retains exact sole midpoint960.5, giving895.5px body."
   },
-  "visualReview": "Source identity retained: clean-shaven stern man, low angular riveted helmet with side flaps, dark navy lamellar with red trim and gold shoulder cords, huge bare mace hand, leather bracers/belt/boots, rigid-shaft spiked mace with steel butt cap, chamfered cream shield with one gold vertical strip and two end studs. Second attempt increases head, hand and boot proportions, broadens armor and shortens torso. Complete weapon, shield and boots. No background, ground, halo or shadow. Native height remains larger than requested805px, so eventual45logical-pixel body height should be calibrated from measured source body rather than total silhouette."
+  "visualReview": "Accepted squat broad idle, low rigid mace and upright cream shield; both boots planted. Black and white QA inspected: no visible background, ground, shadow or halo. Thick outlines, broad matte planes and complete equipment retained."
 }

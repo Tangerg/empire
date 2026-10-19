@@ -1,0 +1,5 @@
+One squat solid cut pine stump with a broad flat tan/ochre top, exactly two simple thick angular growth-ring lines and a small center mark. The top is visibly solid with no hollow or dark hole, distinct from both temperate hollow stumps. Coarse gray-brown/umber bark planes, four short broad root flares and small muted-olive moss patches. Full roots and cut rim visible. No decorative soil platform, grass, pebbles or shadow. Source foot (642,879) is the central trunk/root contact above the lowest front root flare.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [184, 370, 185, 280]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

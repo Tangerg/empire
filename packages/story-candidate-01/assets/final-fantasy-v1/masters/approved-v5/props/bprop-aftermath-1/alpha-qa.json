@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-BPROP-AFTERMATH-1",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5981312749758985,
+  "nearOpaqueFractionAlphaGE250": 0.3901066825393191,
+  "nonzeroAlphaBBox": [
+    0,
+    79,
+    1207,
+    1214
+  ],
+  "visibleAlphaBBoxGE8": [
+    55,
+    196,
+    1204,
+    1107
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    55,
+    196,
+    50,
+    147
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 3,
+  "sha256": "cea295fd5ea5b49bf9aefe9386b6f2fcb9e120ee84cc1ebc27f93e1216d94cea",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

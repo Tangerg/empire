@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 5,
+  "authoredFourPoseBundles": 6,
   "authoredThreeStateBundles": 7,
-  "formalRuntimeBoundTopics": 35,
+  "formalRuntimeBoundTopics": 36,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -237,6 +237,12 @@
       "export": "112 logical visible kiosk; same scale and foot; native semantic review passed",
       "runtimeBinding": "128-square canonical and256-square HD, registered pivot; existing depot consumer",
       "liveGame": "pending"
+    },
+    "C01-UNIT-HEAVY-KNIGHT": {
+      "raw": "four native poses, rejected elongated mace attack preserved; exact prompts",
+      "export": "shared45px body scale; measured foot translations; opposite walks and corrected mace attack reviewed",
+      "runtimeBinding": "canonical104x64/HD208x128 frames, own pivot, authored palette protection",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -289,18 +295,27 @@
         "pine-mature-a",
         "pine-mature-b",
         "pine-dead",
-        "pine-mature-c"
+        "pine-mature-c",
+        "pine-low-shrub",
+        "pine-fallen-log",
+        "pine-stump",
+        "pine-mossy-rock"
       ],
-      "count": 12,
+      "count": 16,
       "export": "96/192 full-canvas registered; unrelated cells preserved",
       "runtimeBinding": "manifest foot pivots and presentationScale; actual renderer native samples reviewed",
       "catalogOnlyNoCurrentPlacement": [
         "pine-sapling",
         "pine-underbrush-b",
         "pine-underbrush-d",
-        "pine-dead"
+        "pine-dead",
+        "pine-low-shrub",
+        "pine-fallen-log",
+        "pine-stump",
+        "pine-mossy-rock"
       ],
-      "liveGame": "pending"
+      "liveGame": "pending",
+      "atlasStaticReview": "all16 registered and native class comparisons reviewed; actual-map occlusion/live verification pending"
     }
   },
   "totalCanonicalScope": 1212,

@@ -1447,13 +1447,13 @@
       "topicId": "C01-UNIT-HEAVY-KNIGHT",
       "label": "重装骑士",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-heavy-knight.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-heavy-knight.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1462,13 +1462,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        47.69849246231156,
+        52.29145728643216
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-INQUISITOR",

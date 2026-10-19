@@ -1,0 +1,5 @@
+One long solid fallen pine log lying from near lower-left to far upper-right, preserving the original orientation. Large jagged fractured ends, broad longitudinal gray-brown bark strips, ochre exposed wood, three attached short branch stubs and one restrained olive moss patch. Near end has dark irregular structural split recesses, but no ring-shaped hollow tube mouth. Broad clean bark planes instead of fine grain. Full broken ends and every branch tip visible, no ground bed, extra debris or shadow. Source foot (635,815) is the central lower log-body support rather than a projecting branch tip.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [75, 307, 59, 274]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

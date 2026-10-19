@@ -35,5 +35,64 @@
   "referenceInputs": [
     "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/master.png",
     "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-b/master.png"
-  ]
+  ],
+  "status": "Native quartet review passed; pending coordinator export/binding",
+  "helmetTopSourceY": 38,
+  "sourceFootAnchorSuggested": [
+    836,
+    960
+  ],
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, boot-only manually isolated ROIs, lowest3rows sole contour mass centers. No master pixel edits.",
+    "boots": [
+      {
+        "side": "screen-left",
+        "inspectionROI": [
+          370,
+          750,
+          690,
+          993
+        ],
+        "soleLowestContourY": 938,
+        "lowestThreeRowsXSpan": [
+          511,
+          586
+        ],
+        "soleBandCenterX": 548.08,
+        "contactInterpretation": "rear heel lifted, low toe"
+      },
+      {
+        "side": "screen-right",
+        "inspectionROI": [
+          890,
+          790,
+          1270,
+          993
+        ],
+        "soleLowestContourY": 960,
+        "lowestThreeRowsXSpan": [
+          1061,
+          1182
+        ],
+        "soleBandCenterX": 1123.11,
+        "contactInterpretation": "planted forward sole"
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      835.6,
+      949.0
+    ],
+    "sourceSupportAnchorEstimated": [
+      836,
+      960
+    ],
+    "anchorInterpretation": "Horizontal midpoint of two low sole bands. Vertical registration uses the lowest contacting sole/heel; raised heels and projected foot depths remain part of the pose. Idle scale reference retains exact sole midpoint960.5, giving895.5px body."
+  },
+  "perimeterGate": {
+    "maxNativePerimeterAlpha": 1,
+    "pixelsWithPerimeterAlphaGreaterThan1": 0,
+    "passesNativeSilhouettePerimeterGate": true,
+    "interpretation": "No silhouette alpha>1 crosses native perimeter. Alpha1 specks, when present, remain native and unmodified."
+  },
+  "visualReview": "Opposite contacts: forward screen-right boot planted flat; rear screen-left heel lifted. Same armor/head/bare hand/mace/shield identity and physical scale. Black and white QA inspected: no visible background, ground, shadow or halo. Thick outlines, broad matte planes and complete equipment retained."
 }

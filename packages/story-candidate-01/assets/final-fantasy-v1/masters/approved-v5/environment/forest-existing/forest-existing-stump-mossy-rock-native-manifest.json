@@ -1,0 +1,35 @@
+{
+  "status": "native masters and QA complete; production integration pending",
+  "assets": [
+    {
+      "identity": "pine-stump",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-stump/pine-stump-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-stump/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-stump/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-stump/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-stump/evidence.json",
+      "source_foot_estimate_px": [
+        642,
+        879
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "pine-mossy-rock",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mossy-rock/pine-mossy-rock-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mossy-rock/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mossy-rock/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mossy-rock/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mossy-rock/evidence.json",
+      "source_foot_estimate_px": [
+        630,
+        915
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

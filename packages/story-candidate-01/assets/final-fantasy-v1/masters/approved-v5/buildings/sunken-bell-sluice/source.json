@@ -1,0 +1,57 @@
+{
+  "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
+  "binding": "boss_part",
+  "bindingEvidence": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts:86",
+  "placementEvidence": "packages/story-candidate-01/src/levels.ts:709; campaign order12 沉没钟塔; bell-a x6y4, bell-b x16y4, bell-c x11y10",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-03.png",
+  "sourceSHA256": "3ea0d540978f0540a7057b9bf231896bb4249c7f91726f65a8e7152328209f4a",
+  "sourceSize": [
+    1086,
+    1448
+  ],
+  "cells": [
+    {
+      "state": "normal",
+      "box": [
+        0,
+        364,
+        362,
+        723
+      ]
+    },
+    {
+      "state": "damaged",
+      "box": [
+        362,
+        364,
+        724,
+        723
+      ]
+    },
+    {
+      "state": "captured",
+      "box": [
+        724,
+        364,
+        1086,
+        723
+      ]
+    }
+  ],
+  "runtimeReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-sunken-bell-sluice.png",
+  "stateEvidence": "Normal two arched timber sluice gates in gray stone wall, bronze wheel above center, local blue water pool and upright bronze bell front-center. Damaged central wall/gates/wheel broken, waterfall through center, bell tipped. Captured gates restored, wheel has dark binding bands, one right hanging amber lantern, and front bell absent. None has a flag.",
+  "originalFrameSize": [
+    64,
+    64
+  ],
+  "originalAnchor": [
+    32,
+    63
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "logicalVisibleWidthSuggestion": 112,
+  "scaleSuggestionBasis": "Includes local water/rock footprint; mechanism body compact and smaller than Keep, pending actual map-density test"
+}

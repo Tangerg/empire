@@ -1,0 +1,131 @@
+{
+  "asset": "C01-UNIT-HEAVY-KNIGHT, actual Roderick unit identity",
+  "status": "Native quartet complete; formal export/binding pending coordinator",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "All master/raw files are byte-identical copies of selected native tool outputs. No manual painting/recolor/crop/resize/alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.05025125628140704,
+  "bodyReferenceSourcePixels": 895.5,
+  "bodyTargetHeightLogicalPixels": 45,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/registration-evidence.json",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/prompt.txt",
+      "exactToolCallPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        790,
+        961
+      ],
+      "helmetTopSourceY": 65,
+      "visibleBoundsAlphaGreaterThan127": [
+        135,
+        65,
+        1424,
+        962
+      ],
+      "sha256": "f04f1b84b595d4bc4495a00576567f9d27f6a7019d4626c4d78cab6af3865b07",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-fa972693-8f77-49f0-a12c-1a4d3a61f074.png",
+      "review": "Accepted squat broad idle, low rigid mace and upright cream shield; both boots planted."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-a/prompt.txt",
+      "exactToolCallPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-a/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        826,
+        953
+      ],
+      "helmetTopSourceY": 45,
+      "visibleBoundsAlphaGreaterThan127": [
+        131,
+        45,
+        1443,
+        954
+      ],
+      "sha256": "9cb73832adda509f1f186f302b1b4092ebcee836aced380fc6d1f53505785029",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-33f65e8b-2b2b-4a97-aae4-885735848550.png",
+      "review": "Forward screen-right boot toes-up with visible sole; rear screen-left boot planted. Low mace and slightly raised shield keep both contacts readable."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/attack/prompt.txt",
+      "exactToolCallPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/attack/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        630,
+        963
+      ],
+      "helmetTopSourceY": 51,
+      "visibleBoundsAlphaGreaterThan127": [
+        107,
+        51,
+        1292,
+        964
+      ],
+      "sha256": "46406c9505e6af2b226dc4032549c10d69971020246ac375c0f5f55d7b7f0f60",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-693325ff-5542-4d53-be4f-58b9058dc02b.png",
+      "review": "Clear chest-height mace strike with extended bare fist, turned torso and broad braced lunge. Corrected the overlong first shaft so the mace remains compact and one-handed; head size/shape preserved. Entire rigid mace, shield outline and both boots visible. Mace naturally overlaps upper part of gold shield strip, whose lower segment/end stud remain visible."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-b/prompt.txt",
+      "exactToolCallPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-b/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        836,
+        960
+      ],
+      "helmetTopSourceY": 38,
+      "visibleBoundsAlphaGreaterThan127": [
+        184,
+        38,
+        1448,
+        961
+      ],
+      "sha256": "8be8190c92941fe14ad851eceb2ce6453aa9b778d7756a6fccfcc925ea3b3cd4",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8024798d-e06e-4a2c-97bd-89ab6c3260aa.png",
+      "review": "Opposite contacts: forward screen-right boot planted flat; rear screen-left heel lifted. Same armor/head/bare hand/mace/shield identity and physical scale."
+    }
+  }
+}

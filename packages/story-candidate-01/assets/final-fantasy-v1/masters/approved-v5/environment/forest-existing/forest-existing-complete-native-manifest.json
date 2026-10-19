@@ -1,0 +1,572 @@
+{
+  "family": "forest-existing",
+  "native_source_count": 16,
+  "generation_mode": "built-in image_gen.imagegen, one generation per identity",
+  "native_output_preserved_byte_for_byte": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "all_sources_pass_current_perimeter_gate": true,
+  "status": "all 16 native sources and source QA complete; runtime integration not performed",
+  "runtime_integration_complete": false,
+  "assets": [
+    {
+      "identity": "pine-mature-a",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-a/pine-mature-a-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-a/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-a/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-a/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-a/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-99545751-1b5b-4cd5-9f4b-24feef9f6551.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "1086f6c330909011d8c6664b010d8ade0a4fc562e329e7e61bcb72d099bddaa2",
+      "source_foot_estimate_px": [
+        630,
+        1118
+      ],
+      "source_foot_estimate_normalized": [
+        0.502392,
+        0.891547
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/pine-mature-a.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/pine/pine-master.png"
+      ]
+    },
+    {
+      "identity": "pine-mature-b",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-b/pine-mature-b-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-b/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-b/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-b/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-b/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-777b6226-f2a9-40a0-be9b-ea63ae6c9f72.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "2a98a53ef6ff7b7aa33c16e8aed1be40d4c30d85a81026ed5adcb93c65d5010f",
+      "source_foot_estimate_px": [
+        638,
+        1078
+      ],
+      "source_foot_estimate_normalized": [
+        0.508772,
+        0.859649
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/pine-mature-b.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/pine/pine-master.png"
+      ]
+    },
+    {
+      "identity": "pine-tall",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-tall/pine-tall-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-tall/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-tall/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-tall/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-tall/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-dfcc5a40-5623-48d6-ae40-34a57ed287ed.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "73e254c82834009d7d48cc17196c54af7a8f0b650bbf1db08802bc5e673e7a1b",
+      "source_foot_estimate_px": [
+        640,
+        1165
+      ],
+      "source_foot_estimate_normalized": [
+        0.510367,
+        0.929027
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-tall.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/pine/pine-master.png"
+      ]
+    },
+    {
+      "identity": "pine-pair",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-pair/pine-pair-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-pair/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-pair/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-pair/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-pair/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-daf66cff-71c1-47de-afd8-5f7518e0db1d.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "432a9a9377148e25c9b8c3bba4dfe688ca72a28c35c9fcdd8402dbc7264d66bb",
+      "source_foot_estimate_px": [
+        650,
+        1050
+      ],
+      "source_foot_estimate_normalized": [
+        0.518341,
+        0.837321
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-pair.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/pine/pine-master.png"
+      ]
+    },
+    {
+      "identity": "pine-cluster",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-cluster/pine-cluster-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-cluster/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-cluster/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-cluster/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-cluster/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-2e26c326-bd94-4d71-8181-b548cd7e4117.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "aa4fa7c84db2258c70e555913d85e4d5fd6135138e03586547873008d418a3fd",
+      "source_foot_estimate_px": [
+        635,
+        1065
+      ],
+      "source_foot_estimate_normalized": [
+        0.50638,
+        0.849282
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-cluster.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/pine/pine-master.png"
+      ]
+    },
+    {
+      "identity": "pine-sapling",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-sapling/pine-sapling-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-sapling/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-sapling/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-sapling/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-sapling/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-aa258a18-89fb-4c57-855c-2435a37039e8.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "6f2b4f3ce1e1680338371e1218d7ac4bbacb2d60cc0017f1ec82cf6fca5fa40c",
+      "source_foot_estimate_px": [
+        644,
+        1085
+      ],
+      "source_foot_estimate_normalized": [
+        0.513557,
+        0.865231
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-sapling.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/pine/pine-master.png"
+      ]
+    },
+    {
+      "identity": "pine-dead",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-dead/pine-dead-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-dead/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-dead/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-dead/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-dead/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-74120ac8-52e6-49f9-b60f-67b67b130a15.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "292159b3d7a124f03de0b255feb8107fc83aefda812ef81b5d0a3b797df572ee",
+      "source_foot_estimate_px": [
+        655,
+        1107
+      ],
+      "source_foot_estimate_normalized": [
+        0.522329,
+        0.882775
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-dead.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/pine/pine-master.png"
+      ]
+    },
+    {
+      "identity": "pine-mature-c",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-c/pine-mature-c-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-c/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-c/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-c/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-c/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-3d3a50a3-6a7c-4e62-85ad-00c6b4fe0044.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "2f945d2394fbc377ae005314a2d2f5ceced3af3da880f983913ea3ceed00ee7f",
+      "source_foot_estimate_px": [
+        643,
+        1116
+      ],
+      "source_foot_estimate_normalized": [
+        0.512759,
+        0.889952
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-mature-c.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/pine/pine-master.png"
+      ]
+    },
+    {
+      "identity": "pine-underbrush-a",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-a/pine-underbrush-a-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-a/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-a/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-a/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-a/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-d11d7295-5b23-44d7-bf90-26e04e6ea4b0.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "da495e806dccfdfd38f410621358c982503237d861ebe35378cc02e70d496e30",
+      "source_foot_estimate_px": [
+        638,
+        1010
+      ],
+      "source_foot_estimate_normalized": [
+        0.508772,
+        0.805423
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-underbrush-a.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/bramble-dark/bramble-dark-master.png"
+      ]
+    },
+    {
+      "identity": "pine-underbrush-b",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-b/pine-underbrush-b-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-b/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-b/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-b/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-b/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-4b10ddd3-95b4-4b2d-905a-c5dc2051afc6.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "7892a9b5c0bf237bb6f9eb2663a45157bbd67bf0dc09f02be25c5edd6524f035",
+      "source_foot_estimate_px": [
+        622,
+        914
+      ],
+      "source_foot_estimate_normalized": [
+        0.496013,
+        0.728868
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-underbrush-b.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/bramble-dark/bramble-dark-master.png"
+      ]
+    },
+    {
+      "identity": "pine-underbrush-c",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-c/pine-underbrush-c-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-c/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-c/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-c/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-c/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-6916b678-4e46-4170-9d11-bcebc34a8b95.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "a60af187c5f7fe8a358cde4aa0630c7cb6ed0a7ce98278d1a9f1b30ecb1bd188",
+      "source_foot_estimate_px": [
+        610,
+        927
+      ],
+      "source_foot_estimate_normalized": [
+        0.486443,
+        0.739234
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-underbrush-c.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/bramble-dark/bramble-dark-master.png"
+      ]
+    },
+    {
+      "identity": "pine-underbrush-d",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-d/pine-underbrush-d-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-d/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-d/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-d/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-d/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-49c1ac5f-4b40-4fc9-81e5-191915ae857a.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "35f80eac88224aee512b5c78fa24cd33f31d8437b3c21a9b787a02e6ccaf7ec7",
+      "source_foot_estimate_px": [
+        608,
+        884
+      ],
+      "source_foot_estimate_normalized": [
+        0.484848,
+        0.704944
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-underbrush-d.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/bramble-dark/bramble-dark-master.png"
+      ]
+    },
+    {
+      "identity": "pine-low-shrub",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-low-shrub/pine-low-shrub-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-low-shrub/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-low-shrub/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-low-shrub/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-low-shrub/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-98f02223-f15e-49a2-87b7-7537febabf1d.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "3470d88f5abb52974c10c3744d89627dcbecffb76c1079d17decdabda8f5990c",
+      "source_foot_estimate_px": [
+        610,
+        913
+      ],
+      "source_foot_estimate_normalized": [
+        0.486443,
+        0.72807
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-low-shrub.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-underbrush-b/pine-underbrush-b-master.png"
+      ]
+    },
+    {
+      "identity": "pine-fallen-log",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/pine-fallen-log-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-ade42be0-f709-45b0-909f-94037f7abf1e.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "2d8392ef4330c2db86bd60aa1f661173c8c19d84715f155db2b8f0eadefe1836",
+      "source_foot_estimate_px": [
+        635,
+        815
+      ],
+      "source_foot_estimate_normalized": [
+        0.50638,
+        0.64992
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-fallen-log.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/fallen-hollow-log/fallen-hollow-log-master.png"
+      ]
+    },
+    {
+      "identity": "pine-stump",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-stump/pine-stump-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-stump/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-stump/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-stump/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-stump/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-663ace87-6450-4f32-a42e-d2ba2a09169a.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "a35f48e6ec9ce7f3c3d8b66428904a5b377bc13c5b129586383f320a1ec5ff05",
+      "source_foot_estimate_px": [
+        642,
+        879
+      ],
+      "source_foot_estimate_normalized": [
+        0.511962,
+        0.700957
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-stump.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/stump-low/stump-low-master.png"
+      ]
+    },
+    {
+      "identity": "pine-mossy-rock",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mossy-rock/pine-mossy-rock-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mossy-rock/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mossy-rock/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mossy-rock/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mossy-rock/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-e865ef75-14a7-47fe-a912-e71d189d4482.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "afc68c7349716256d368656c15f913834b5da22d7e23c2d452f84c2486b889f9",
+      "source_foot_estimate_px": [
+        630,
+        915
+      ],
+      "source_foot_estimate_normalized": [
+        0.502392,
+        0.729665
+      ],
+      "source_foot_is_visual_estimate": true,
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/forest-existing/pine-mossy-rock.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ]
+    }
+  ]
+}

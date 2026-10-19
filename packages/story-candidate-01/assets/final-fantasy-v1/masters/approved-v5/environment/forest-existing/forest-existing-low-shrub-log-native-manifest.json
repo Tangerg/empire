@@ -1,0 +1,35 @@
+{
+  "status": "native masters and QA complete; production integration pending",
+  "assets": [
+    {
+      "identity": "pine-low-shrub",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-low-shrub/pine-low-shrub-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-low-shrub/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-low-shrub/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-low-shrub/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-low-shrub/evidence.json",
+      "source_foot_estimate_px": [
+        610,
+        913
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "pine-fallen-log",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/pine-fallen-log-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/evidence.json",
+      "source_foot_estimate_px": [
+        635,
+        815
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

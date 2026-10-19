@@ -36,5 +36,64 @@
     "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/master.png",
     "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-a/master.png"
   ],
-  "generationNote": "Initial tool call returned empty_string prompt error and no image; saved prompt content verified nonempty and retried successfully."
+  "generationNote": "Initial tool call returned empty_string prompt error and no image; saved prompt content verified nonempty and retried successfully.",
+  "status": "Native quartet review passed; pending coordinator export/binding",
+  "helmetTopSourceY": 45,
+  "sourceFootAnchorSuggested": [
+    826,
+    953
+  ],
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, boot-only manually isolated ROIs, lowest3rows sole contour mass centers. No master pixel edits.",
+    "boots": [
+      {
+        "side": "screen-left",
+        "inspectionROI": [
+          350,
+          790,
+          750,
+          993
+        ],
+        "soleLowestContourY": 953,
+        "lowestThreeRowsXSpan": [
+          516,
+          639
+        ],
+        "soleBandCenterX": 577.32,
+        "contactInterpretation": "planted rear sole"
+      },
+      {
+        "side": "screen-right",
+        "inspectionROI": [
+          1000,
+          750,
+          1330,
+          993
+        ],
+        "soleLowestContourY": 949,
+        "lowestThreeRowsXSpan": [
+          1053,
+          1098
+        ],
+        "soleBandCenterX": 1074.18,
+        "contactInterpretation": "forward boot toe-up, heel low"
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      825.75,
+      951.0
+    ],
+    "sourceSupportAnchorEstimated": [
+      826,
+      953
+    ],
+    "anchorInterpretation": "Horizontal midpoint of two low sole bands. Vertical registration uses the lowest contacting sole/heel; raised heels and projected foot depths remain part of the pose. Idle scale reference retains exact sole midpoint960.5, giving895.5px body."
+  },
+  "perimeterGate": {
+    "maxNativePerimeterAlpha": 0,
+    "pixelsWithPerimeterAlphaGreaterThan1": 0,
+    "passesNativeSilhouettePerimeterGate": true,
+    "interpretation": "No silhouette alpha>1 crosses native perimeter. Alpha1 specks, when present, remain native and unmodified."
+  },
+  "visualReview": "Forward screen-right boot toes-up with visible sole; rear screen-left boot planted. Low mace and slightly raised shield keep both contacts readable. Black and white QA inspected: no visible background, ground, shadow or halo. Thick outlines, broad matte planes and complete equipment retained."
 }

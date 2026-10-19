@@ -11,29 +11,89 @@
   "visibleBounds": [
     0,
     48,
-    1566,
-    975
+    1474,
+    993
   ],
   "visibleBoundsAlphaGreaterThan127": [
-    106,
+    107,
     51,
-    1563,
+    1292,
     964
   ],
-  "fullyTransparentPixels": 847971,
-  "nearOpaquePixels": 701248,
-  "fullyOpaquePixels": 1039,
-  "partialAlphaPixels": 723902,
+  "fullyTransparentPixels": 908003,
+  "nearOpaquePixels": 646965,
+  "fullyOpaquePixels": 874,
+  "partialAlphaPixels": 664035,
   "edgeMax": 1,
-  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-e1e5b680-20dc-49f4-a85e-59dbe1938758.png",
-  "sha256": "e1a76c7ea5a7e74f6c3138dfbcf31423de8f45db596586ba4ac3a0a9c51d8b07",
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-693325ff-5542-4d53-be4f-58b9058dc02b.png",
+  "sha256": "46406c9505e6af2b226dc4032549c10d69971020246ac375c0f5f55d7b7f0f60",
   "generationTool": "built-in image_gen",
   "transparent_background": true,
-  "exactPromptFile": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/attack/prompt.txt",
+  "exactPromptFile": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/attack/attempt-02/prompt.txt",
   "exactToolCallPromptVerified": true,
   "masterTransform": "None; raw and master are byte-for-byte native copies.",
   "referenceInputs": [
-    "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/master.png",
-    "/workspace/shared/empire-art-rebuild/approved-v5/animation/swordsman/attack/master.png"
-  ]
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/attack/attempt-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/master.png"
+  ],
+  "generationNote": "Targeted native imagegen correction restored compact one-handed mace length; first long-shaft attack retained in attempt-01.",
+  "status": "Native quartet review passed; pending coordinator export/binding",
+  "helmetTopSourceY": 51,
+  "sourceFootAnchorSuggested": [
+    630,
+    963
+  ],
+  "footSupportEvidence": {
+    "measurement": "Alpha>127, boot-only manually isolated ROIs, lowest3rows sole contour mass centers. No master pixel edits.",
+    "boots": [
+      {
+        "side": "screen-left",
+        "inspectionROI": [
+          90,
+          770,
+          440,
+          993
+        ],
+        "soleLowestContourY": 939,
+        "lowestThreeRowsXSpan": [
+          194,
+          289
+        ],
+        "soleBandCenterX": 241.94,
+        "contactInterpretation": "braced rear sole"
+      },
+      {
+        "side": "screen-right",
+        "inspectionROI": [
+          750,
+          790,
+          1160,
+          993
+        ],
+        "soleLowestContourY": 963,
+        "lowestThreeRowsXSpan": [
+          967,
+          1066
+        ],
+        "soleBandCenterX": 1017.26,
+        "contactInterpretation": "planted forward bent-knee sole"
+      }
+    ],
+    "bothBootSoleBandMidpoint": [
+      629.6,
+      951.0
+    ],
+    "sourceSupportAnchorEstimated": [
+      630,
+      963
+    ],
+    "anchorInterpretation": "Horizontal midpoint of two low sole bands. Vertical registration uses the lowest contacting sole/heel; raised heels and projected foot depths remain part of the pose. Idle scale reference retains exact sole midpoint960.5, giving895.5px body."
+  },
+  "perimeterGate": {
+    "maxNativePerimeterAlpha": 1,
+    "pixelsWithPerimeterAlphaGreaterThan1": 0,
+    "passesNativeSilhouettePerimeterGate": true,
+    "interpretation": "No silhouette alpha>1 crosses native perimeter. Alpha1 specks, when present, remain native and unmodified."
+  },
+  "visualReview": "Clear chest-height mace strike with extended bare fist, turned torso and broad braced lunge. Corrected the overlong first shaft so the mace remains compact and one-handed; head size/shape preserved. Entire rigid mace, shield outline and both boots visible. Mace naturally overlaps upper part of gold shield strip, whose lower segment/end stud remain visible. Black and white QA inspected: no visible background, ground, shadow or halo. Thick outlines, broad matte planes and complete equipment retained."
 }

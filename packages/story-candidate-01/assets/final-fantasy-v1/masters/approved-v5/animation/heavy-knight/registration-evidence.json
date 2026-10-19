@@ -1,0 +1,235 @@
+{
+  "status": "Measured proposal only; no runtime writes",
+  "sharedScale": 0.05025125628140704,
+  "bodyReferenceSourcePixels": 895.5,
+  "bodyTargetHeightLogicalPixels": 45,
+  "bodyMeasurement": "Accepted idle helmet top65 to exact two-sole midpoint960.5. Exclude mace/shield bounds; preserve the same common scale for all frames.",
+  "canonicalSourceFoot": [
+    790,
+    961
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "paddingPolicy": "Pad only right/bottom to1586\u00d7993, preserving every native pixel: idle+0right/+1bottom; other3poses+2right/+0bottom. No resize, crop or alpha alteration.",
+  "canvasPaddingToleranceRequired": 2,
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "registrationMethod": "Whole native canvas translation using boot-support evidence at fixed45/895.5scale; retain intended torso lean and equipment positions.",
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        790,
+        961
+      ],
+      "bothBootSoleBandMidpoint": [
+        790.27,
+        960.5
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        135,
+        65,
+        1424,
+        962
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        33,
+        62,
+        1468,
+        966
+      ],
+      "proposedLogicalVisibleBounds": [
+        14.78392,
+        7.266332,
+        79.557789,
+        52.341709
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.0,
+        4.0,
+        87.698492,
+        53.899497
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "No silhouette alpha>1 crosses native perimeter. Alpha1 specks, when present, remain native and unmodified."
+      }
+    },
+    "walk-a": {
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "padRight": 2,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        826,
+        953
+      ],
+      "bothBootSoleBandMidpoint": [
+        825.75,
+        951.0
+      ],
+      "registrationOffsetLogical": [
+        -1.809045226,
+        0.40201005
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        131,
+        45,
+        1443,
+        954
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        128,
+        42,
+        1522,
+        959
+      ],
+      "proposedLogicalVisibleBounds": [
+        12.773869,
+        6.663317,
+        78.703518,
+        52.341709
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        6.190955,
+        4.40201,
+        85.889447,
+        54.301508
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 0,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "No silhouette alpha>1 crosses native perimeter. Alpha1 specks, when present, remain native and unmodified."
+      }
+    },
+    "attack": {
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "padRight": 2,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        630,
+        963
+      ],
+      "bothBootSoleBandMidpoint": [
+        629.6,
+        951.0
+      ],
+      "registrationOffsetLogical": [
+        8.040201005,
+        -0.100502513
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        107,
+        51,
+        1292,
+        964
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        48,
+        1474,
+        993
+      ],
+      "proposedLogicalVisibleBounds": [
+        21.417085,
+        6.462312,
+        80.964824,
+        52.341709
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        16.040201,
+        3.899497,
+        95.738693,
+        53.798995
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "No silhouette alpha>1 crosses native perimeter. Alpha1 specks, when present, remain native and unmodified."
+      }
+    },
+    "walk-b": {
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "padRight": 2,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        836,
+        960
+      ],
+      "bothBootSoleBandMidpoint": [
+        835.6,
+        949.0
+      ],
+      "registrationOffsetLogical": [
+        -2.311557789,
+        0.050251256
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        184,
+        38,
+        1448,
+        961
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        34,
+        1558,
+        975
+      ],
+      "proposedLogicalVisibleBounds": [
+        14.934673,
+        5.959799,
+        78.452261,
+        52.341709
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        5.688442,
+        4.050251,
+        85.386935,
+        53.949749
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterGate": {
+        "maxNativePerimeterAlpha": 1,
+        "pixelsWithPerimeterAlphaGreaterThan1": 0,
+        "passesNativeSilhouettePerimeterGate": true,
+        "interpretation": "No silhouette alpha>1 crosses native perimeter. Alpha1 specks, when present, remain native and unmodified."
+      }
+    }
+  },
+  "requiredMaximumTranslationLogicalPixels": 8.040201005,
+  "recommendedRegistrationLimitLogicalPixels": 9,
+  "translationBasis": "Attack stance midpoint shifts left relative to idle; required x translation is measured from sole support, not torso centering. Shared scale never changes."
+}

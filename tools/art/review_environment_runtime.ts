@@ -19,10 +19,11 @@ const fourthSet = process.argv.includes('--fourth');
 const pineSet = process.argv.includes('--pine-first');
 const brushSet = process.argv.includes('--pine-underbrush');
 const matureSet = process.argv.includes('--pine-mature');
-const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet;
-if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
+const lowSet = process.argv.includes('--pine-low');
+const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet || lowSet;
+if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet, lowSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
 const output = resolve(process.env.FOREST_REVIEW_OUTPUT
-  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
+  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${lowSet ? '-pine-low' : matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const map = mapFromLevel(content, candidate01Level('c01-02'));
 map.tiles.fill('forest');
@@ -42,7 +43,13 @@ interface ReviewColumn {
   readonly reference?: boolean;
   readonly reconstruction?: boolean;
 }
-const columns: readonly ReviewColumn[] = matureSet ? [
+const columns: readonly ReviewColumn[] = lowSet ? [
+  { id: 'pine-low-shrub', x: 85, placement: [1, 1], catalogOnly: true },
+  { id: 'pine-fallen-log', x: 235, placement: [1, 1], catalogOnly: true },
+  { id: 'pine-stump', x: 385, placement: [1, 1], catalogOnly: true },
+  { id: 'pine-mossy-rock', x: 515, placement: [1, 1], catalogOnly: true },
+  { id: 'oak-ancient', x: 675, placement: [0.74, 0.86], reference: true },
+] : matureSet ? [
   { id: 'pine-mature-a', x: 85, placement: [0.74, 0.86] },
   { id: 'pine-mature-b', x: 235, placement: [0.74, 0.86] },
   { id: 'pine-dead', x: 385, placement: [1, 1], catalogOnly: true },
