@@ -1283,10 +1283,14 @@
     },
     {
       "topicId": "C01-BPROP-AFTERMATH-1",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-aftermath-1/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "34690b3c865a92096f83e593b9a351694c19bf8fa80ec4f956fb934ea52693f2"
     },
     {
       "topicId": "C01-BPROP-AFTERMATH-2",
@@ -1318,10 +1322,14 @@
     },
     {
       "topicId": "C01-BPROP-AFTERMATH-4",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-aftermath-4/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "65f2d01ae8538162cd284324b4270ac3fd3d5a48c998790c2e676e4c3364b810"
     },
     {
       "topicId": "C01-BPROP-COVER-1",
