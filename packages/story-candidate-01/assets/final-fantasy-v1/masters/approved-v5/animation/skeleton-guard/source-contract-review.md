@@ -16,7 +16,11 @@ Original illustration consistently uses spear and rectangular shield, while rule
 The sole attack slot is retained. A spear sweep is a source-faithful illustration for the existing slash action; this is an art continuity repair, not a claim that source/rule naming mismatch is fixed. Independent C01-FX-01 stays separate.
 
 ## Idle review
-Native1586×992, main helmet crown114, mean boot sole974, body860 native pixels. Proposed44/860 scale, sourcefoot[843,979]. Full spear and shield included; native perimeter alpha0. A7×7 probe in leg negative space is49 fully transparent pixels. Await coordinator idle review before remaining poses.
+Native1586×992, main helmet crown114, mean boot sole974, body860 native pixels. Proposed44/860 scale, sourcefoot[843,979]. Full spear and shield included; native perimeter alpha0. A7×7 probe in leg negative space is49 fully transparent pixels. Coordinator19:08UTC approved native/2x idle at44/860 and[843,979]; remaining three poses now complete.
 
 ## Provenance
 Exact tool-call prompt/request, unmodified raw/master, alpha QA and white/black review composites saved. Generated chest tag slots are a simple source-mark stylization; no new sacred emblem. No repository or rule edits.
+
+## Quartet delivery and remaining review
+SourceFeet idle/walk-a/attack/walk-b:[843,979],[834,967],[704,949],[855,976]. Shared44/860,common1586×992; walk-b alone1585wide needs1transparent right column at export.104×64,origin[8,4],explicit limit8 preserves all canvases; largest translation7.111627907logical for attack.
+Corrected attack keeps original-left-hand spear sweep and original-right-hand shield. First attempt was rejected for excessive approximately1500px spear span and preserved. Attempt02 reduces it to approximately1134px, versus875idle; this remains a real review concern, not automatically excused as identical physical length. Coordinator19:14UTC approved grip/anatomy/stance as current candidate, asked no more generation before native common-scale quartet review. See bundle-manifest.json,registration-evidence.json and pose-review.md.

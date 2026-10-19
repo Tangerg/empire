@@ -1,0 +1,63 @@
+{
+  "status": "Quartet/evidence complete; attack continuity and native shared-scale sequence review pending",
+  "topic": "C01-UNIT-SKELETON-GUARD",
+  "actualConsumers": [
+    "c01.skeleton-guard"
+  ],
+  "bodyScale": "44/860",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1586,
+      992
+    ],
+    "attack": [
+      1586,
+      992
+    ],
+    "walk-b": [
+      1585,
+      992
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourcePaddingRequired": "Native idle/walk-a/attack1586x992; walk-b1585x992. Preserve all native files; only1transparent right column is needed for walk-b common-source export. No resizing/cropping/alpha cleanup.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All selected native perimeters have0pixels alpha>1. Idle/walk-a/attack max0; walk-b max1 specks retained, no cleanup.",
+  "nativeAndWhiteBackgroundViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "blackAndWhiteCompositesSaved": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPreserved": true,
+  "originalEquipmentHandsPreserved": true,
+  "twoArmsAndTwoHandsOnly": true,
+  "walkContactsOppose": true,
+  "skeletalNegativeSpaceNativeProbesAllZero": true,
+  "socketAmberBoundedWithoutExternalGlow": true,
+  "semanticContract": "C01-UNIT-SKELETON-GUARD binds only c01.skeleton-guard, with eleven initial enemy actors across c01-03, c01-11, c01-12 and c01-16. Retain original idle/walk-a/attack/walk-b slots,32x48 original frame,anchor[16,47],footprint[1,1]. Original third cell was near idle and both original walks had similar contact. Reconstructed opposite walks and an original-left-hand controlled spear sweep; original-right-hand plain wooden shield retained in all poses. Existing rule weapon c01.undead-blade/回声残刃 uses slash while original illustration consistently depicts spear/shield. No sword invented, rule remap, fifth frame or gameplay fix claimed. Independent C01-FX-01 remains separate.",
+  "symbolContract": "Original two name plaques have simple dark holes/marks. Idle simplifies these into small diamond-like dark insets, not a new faction/rune symbol. Amber eye centers confined inside skull sockets. Skeletal negative spaces must stay genuine transparent alpha.",
+  "weaponContinuityReview": "Attack candidate approximate projected spear span1134px versus875idle,865walk-a,877walk-b after an imagegen-only correction of excessive first attack. Projected2Dspan is diagnostic, not proof of identical3Dlength. No independent source/weapon fit was performed. Coordinator shared-scale native sequence review must judge continuity before formal binding.",
+  "independentFXBakedIntoCharacter": false,
+  "registrationEvidence": "registration-evidence.json",
+  "recommendedRegistrationLimitLogicalPixels": 8,
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "gameplayFixClaimed": false
+}

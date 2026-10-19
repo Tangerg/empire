@@ -73,5 +73,20 @@
     "zeroPixels": 49,
     "maxAlpha": 0
   },
-  "semanticReview": "Original skeleton species, round steel helmet/chin strap, blue-gray scarf, ragged slate armor, two wooden chest name tags, left spear/right plain rectangular shield, exposed knee/toe bones retained. Eye amber confined to dark sockets. Chest tag dark slots simplified as small diamond-like insets, not new heraldic symbols; small belt-side wooden token is source-derived. Native and white QA inspected; transparent leg/arm gaps, full spear and shield."
+  "semanticReview": "Original skeleton species, round steel helmet/chin strap, blue-gray scarf, ragged slate armor, two wooden chest name tags, left spear/right plain rectangular shield, exposed knee/toe bones retained. Eye amber confined to dark sockets. Chest tag dark slots simplified as small diamond-like insets, not new heraldic symbols; small belt-side wooden token is source-derived. Native and white QA inspected; transparent leg/arm gaps, full spear and shield.",
+  "spearProjectionReview": {
+    "approximateTipButtEndpoints": [
+      [
+        399,
+        25
+      ],
+      [
+        656,
+        861
+      ]
+    ],
+    "approximateProjectedSpanPixels": 874.6113422543752,
+    "measurementMethod": "Manual visual endpoint locations; projected2Dspan only, not recovered3Dlength",
+    "limitation": "Attack candidate remains visibly longer than idle after correcting excessive first attempt; no claim of exact physical invariance or independent fit. Coordinator native shared-scale sequence review required."
+  }
 }

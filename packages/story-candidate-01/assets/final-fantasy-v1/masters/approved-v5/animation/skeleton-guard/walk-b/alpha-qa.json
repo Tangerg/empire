@@ -1,0 +1,86 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-22bf530f-0f8d-4084-a181-2e503565b6f1.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "b373fcc3b33d0c1e8aaed0b9854dbb519d2d858e9019993c6f473f4e7e7bc476",
+  "bboxAlphaNonzero": [
+    35,
+    20,
+    1549,
+    992
+  ],
+  "bboxAlphaGreaterThan127": [
+    393,
+    22,
+    1207,
+    977
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1181192,
+  "alphaOnePixels": 5062,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "boot": "screen-left",
+      "roi": [
+        590,
+        880,
+        790,
+        987
+      ],
+      "soleY": 976,
+      "bottomFourRowsMeanX": 696.7948717948718
+    },
+    {
+      "boot": "screen-right",
+      "roi": [
+        855,
+        820,
+        1060,
+        925
+      ],
+      "soleY": 914,
+      "bottomFourRowsMeanX": 1012.5283018867924
+    }
+  ],
+  "sourceFootMidpoint": [
+    854.6615868408321,
+    945.0
+  ],
+  "suggestedSourceFoot": [
+    855,
+    976
+  ],
+  "semanticReview": "Clear screen-left planted supporting boot and screen-right raised rear boot, genuinely opposite walk-a contact. Same skull/helmet, two chest tags, source-left spear/source-right plain shield. Native and white views inspected; entire spear and shield fit, amber bounded in sockets, no external aura. Unobstructed skeletal gap has true alpha. Native1585x992 needs only1transparent right column in common1586x992; perimeter retains native alpha1 specks, with0pixels above1.",
+  "skeletalNegativeSpaceProbe": {
+    "rectangle": [
+      810,
+      875,
+      817,
+      882
+    ],
+    "zeroPixels": 49,
+    "maxAlpha": 0
+  },
+  "spearProjectionReview": {
+    "approximateTipButtEndpoints": [
+      [
+        400,
+        26
+      ],
+      [
+        673,
+        859
+      ]
+    ],
+    "approximateProjectedSpanPixels": 876.5945470968891,
+    "measurementMethod": "Manual visual endpoint locations; projected2Dspan only, not recovered3Dlength",
+    "limitation": "Attack candidate remains visibly longer than idle after correcting excessive first attempt; no claim of exact physical invariance or independent fit. Coordinator native shared-scale sequence review required."
+  }
+}

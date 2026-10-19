@@ -67,5 +67,20 @@
     ],
     "zeroPixels": 49,
     "maxAlpha": 0
+  },
+  "spearProjectionReview": {
+    "approximateTipButtEndpoints": [
+      [
+        422,
+        24
+      ],
+      [
+        723,
+        835
+      ]
+    ],
+    "approximateProjectedSpanPixels": 865.0560675470695,
+    "measurementMethod": "Manual visual endpoint locations; projected2Dspan only, not recovered3Dlength",
+    "limitation": "Attack candidate remains visibly longer than idle after correcting excessive first attempt; no claim of exact physical invariance or independent fit. Coordinator native shared-scale sequence review required."
   }
 }

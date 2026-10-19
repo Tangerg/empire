@@ -1,0 +1,58 @@
+{
+  "topicId": "C01-SKILL-07",
+  "assetId": "C01-FFV1-SKILL-07",
+  "label": "治疗",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c3c9ae16-f4cd-43c5-bb51-7ef4085b0b1e.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-07-cell.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-01.png",
+    "atlasSha256": "7a6dd8241717ebdacbae85330bd6362b6b7cae98bc34544b0f5515ff9dbb5c49",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-01.png, row 2 column 3 (one based)",
+    "topicIndex": 6,
+    "inspectionCropCoordinates": [
+      629,
+      316,
+      938,
+      625
+    ],
+    "inspectionCropTreatment": "Unscaled source cell crop for identity inspection only; no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-07.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent assigned skill-05 through skill-08 after approving the first four actual-48px exports; source semantics reported before generation."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-07-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "One HEAL skill symbol copied from source: ONE squat warm bronze/brown LANTERN, capped vented top and round base, central amber glass chamber containing EXACTLY ONE pale golden flame/teardrop symbol. Its top and lower body are wrapped in broad CREAM BANDAGES: two broad crossing strips above the exposed center window, layered wrapping around its lower half, with ONE loose curled bandage tail extending RIGHT and ending in a short ragged edge. Keep the middle flame clearly visible, its brightness strictly within the glass window. This is a bandaged lantern, not a medicine bottle or mug; no handle, stopper, plus sign or medical cross. No external glow, rays, smoke, hand, wound or extra objects. Preserve full lantern and right-side cloth tail.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits.",
+  "functionalSemantics": "One bandage-wrapped bronze lantern, one internal pale-gold flame and one loose right-side bandage tail. Central amber window remains visible and brightness is confined to the lantern.",
+  "detailIdentityReferences": [],
+  "identityClarificationAdditional": "Original capped object is a vented lantern with inner flame, rather than a potion bottle; preservation follows the high-resolution original object, not the healing label alone."
+}

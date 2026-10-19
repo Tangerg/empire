@@ -1,0 +1,251 @@
+{
+  "asset": "C01-UNIT-SKELETON-GUARD",
+  "actualConsumers": [
+    "c01.skeleton-guard"
+  ],
+  "consumerStatus": "Campaign actual-used undead infantry, eleven initial enemy actors across four levels; no built-in unit consumer",
+  "status": "Quartet/evidence complete; attack continuity and native shared-scale sequence review pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Native raw/master unchanged byte-for-byte. No programmatic painting,recoloring,cropping,resizing or alpha cleanup. White/black composites are QA only.",
+  "sharedScale": 0.05116279069767442,
+  "bodyReferenceSourcePixels": 860,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/registration-evidence.json",
+  "identityContract": "True ivory-bone skeleton with exposed skull and jaw, two dark eye sockets containing small amber points, triangular nose cavity, round low steel helmet with ridge bands and brown chin strap; blue-gray scarf, ragged charcoal/slate armor and tunic, pale torn shoulder scraps, brown belt/pouch/rope; two wooden chest name tags and a small belt-side wooden token; exposed knee/shin bones and brown open-toe wrapped footwear. Original screen-left hand grips one wood-shaft spear with angular steel head, tan neck bindings and gray butt cap. Original screen-right arm holds one plain pale wooden tall rectangular shield with steel rim and rivets. Shield has no cross, stripe or heraldry.",
+  "symbolContract": "Original two name plaques have simple dark holes/marks. Idle simplifies these into small diamond-like dark insets, not a new faction/rune symbol. Amber eye centers confined inside skull sockets. Skeletal negative spaces must stay genuine transparent alpha.",
+  "semanticContract": "C01-UNIT-SKELETON-GUARD binds only c01.skeleton-guard, with eleven initial enemy actors across c01-03, c01-11, c01-12 and c01-16. Retain original idle/walk-a/attack/walk-b slots,32x48 original frame,anchor[16,47],footprint[1,1]. Original third cell was near idle and both original walks had similar contact. Reconstructed opposite walks and an original-left-hand controlled spear sweep; original-right-hand plain wooden shield retained in all poses. Existing rule weapon c01.undead-blade/回声残刃 uses slash while original illustration consistently depicts spear/shield. No sword invented, rule remap, fifth frame or gameplay fix claimed. Independent C01-FX-01 remains separate.",
+  "continuityReviewRequired": "Attack candidate approximate projected spear span1134px versus875idle,865walk-a,877walk-b after an imagegen-only correction of excessive first attack. Projected2Dspan is diagnostic, not proof of identical3Dlength. No independent source/weapon fit was performed. Coordinator shared-scale native sequence review must judge continuity before formal binding.",
+  "selectedAttempts": {
+    "idle": "first successful native output",
+    "walk-a": "first successful native output",
+    "attack": "attempt-02, targeted spear-length correction; attempt-01 preserved rejected for excessive length",
+    "walk-b": "first successful native output"
+  },
+  "idleApproval": "Coordinator2026-10-19 19:08UTC native/2x idle accepted44/860,sourcefoot[843,979].",
+  "attackCandidateReview": "Coordinator19:14UTC accepted grip/anatomy/stance for current candidate; ordered no further generation before shared-scale quartet review, spear continuity still pending.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "a7f6084a10f5fa99332c6ff2aa99fc7931ccce5ff3c23251423eb3aeadc0524f",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        843,
+        979
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        393,
+        23,
+        1198,
+        980
+      ],
+      "sha256": "eb2ff5d61e644bab5695adb047ee8198c8c19360cf40ba2e70a8a7de25937832",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6c5e0ce9-1435-488b-bc32-03c9312a1a0f.png",
+      "review": "Original skeleton species, round steel helmet/chin strap, blue-gray scarf, ragged slate armor, two wooden chest name tags, left spear/right plain rectangular shield, exposed knee/toe bones retained. Eye amber confined to dark sockets. Chest tag dark slots simplified as small diamond-like insets, not new heraldic symbols; small belt-side wooden token is source-derived. Native and white QA inspected; transparent leg/arm gaps, full spear and shield.",
+      "skeletalNegativeSpaceProbe": {
+        "rectangle": [
+          800,
+          870,
+          807,
+          877
+        ],
+        "zeroPixels": 49,
+        "maxAlpha": 0
+      },
+      "spearProjectionReview": {
+        "approximateTipButtEndpoints": [
+          [
+            399,
+            25
+          ],
+          [
+            656,
+            861
+          ]
+        ],
+        "approximateProjectedSpanPixels": 874.6113422543752,
+        "measurementMethod": "Manual visual endpoint locations; projected2Dspan only, not recovered3Dlength",
+        "limitation": "Attack candidate remains visibly longer than idle after correcting excessive first attempt; no claim of exact physical invariance or independent fit. Coordinator native shared-scale sequence review required."
+      }
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "a1e4932633c87973eb55abd78ac8940faafe9e700834a221913cb726986a4693",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-a/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        834,
+        967
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        417,
+        20,
+        1213,
+        968
+      ],
+      "sha256": "74e70e33c9eed1d743f5a99be91fe3338b96bc88886495f611941ada18ab402f",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-8a449560-0fb1-440b-840b-e1999cd5bd65.png",
+      "review": "Clear screen-right forward planted contact and screen-left rear boot lifted with bent bone knee. Same skull/helmet scale, slate/scarf costume, two chest tags, left spear/right plain shield. Native and white QA inspected; no external eye halo. Genuine transparent leg/arm gaps. Entire steel point, butt, shield and bone toes fit native canvas.",
+      "skeletalNegativeSpaceProbe": {
+        "rectangle": [
+          800,
+          860,
+          807,
+          867
+        ],
+        "zeroPixels": 49,
+        "maxAlpha": 0
+      },
+      "spearProjectionReview": {
+        "approximateTipButtEndpoints": [
+          [
+            422,
+            24
+          ],
+          [
+            723,
+            835
+          ]
+        ],
+        "approximateProjectedSpanPixels": 865.0560675470695,
+        "measurementMethod": "Manual visual endpoint locations; projected2Dspan only, not recovered3Dlength",
+        "limitation": "Attack candidate remains visibly longer than idle after correcting excessive first attempt; no claim of exact physical invariance or independent fit. Coordinator native shared-scale sequence review required."
+      }
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "e0f2d937df1d16e4a2cc5a0f597e327d6d18b7fdd535c44be94890f684543be4",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/attack/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        704,
+        949
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        309,
+        57,
+        1435,
+        950
+      ],
+      "sha256": "7ba944c880b4b06238cd46852157b79359c43a0fe3ef0521a6d6ec4e7bdd619c",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2b73f67c-571f-4462-b660-f77d1b9ec54c.png",
+      "review": "Original left hand sweeps spear diagonally right across upper body; right arm retains plain wooden shield. Clear braced stance, exactly two arms/hands and one continuous gripped spear. Current corrected candidate reduces excessive initial spear span; actual projected span remains approximately1130px versus880idle and needs shared-scale coordinator review. Native and white views inspected, eye amber confined, complete tips/feet and transparent leg gap.",
+      "skeletalNegativeSpaceProbe": {
+        "rectangle": [
+          700,
+          870,
+          707,
+          877
+        ],
+        "zeroPixels": 49,
+        "maxAlpha": 0
+      },
+      "spearProjectionReview": {
+        "approximateTipButtEndpoints": [
+          [
+            332,
+            568
+          ],
+          [
+            1428,
+            276
+          ]
+        ],
+        "approximateProjectedSpanPixels": 1134.2310170331264,
+        "measurementMethod": "Manual visual endpoint locations; projected2Dspan only, not recovered3Dlength",
+        "limitation": "Attack candidate remains visibly longer than idle after correcting excessive first attempt; no claim of exact physical invariance or independent fit. Coordinator native shared-scale sequence review required."
+      }
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "59ce98c370763e89177f50449533e267b48d4df90a8b51390aad7c004b573977",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        855,
+        976
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        393,
+        22,
+        1207,
+        977
+      ],
+      "sha256": "b373fcc3b33d0c1e8aaed0b9854dbb519d2d858e9019993c6f473f4e7e7bc476",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-22bf530f-0f8d-4084-a181-2e503565b6f1.png",
+      "review": "Clear screen-left planted supporting boot and screen-right raised rear boot, genuinely opposite walk-a contact. Same skull/helmet, two chest tags, source-left spear/source-right plain shield. Native and white views inspected; entire spear and shield fit, amber bounded in sockets, no external aura. Unobstructed skeletal gap has true alpha. Native1585x992 needs only1transparent right column in common1586x992; perimeter retains native alpha1 specks, with0pixels above1.",
+      "skeletalNegativeSpaceProbe": {
+        "rectangle": [
+          810,
+          875,
+          817,
+          882
+        ],
+        "zeroPixels": 49,
+        "maxAlpha": 0
+      },
+      "spearProjectionReview": {
+        "approximateTipButtEndpoints": [
+          [
+            400,
+            26
+          ],
+          [
+            673,
+            859
+          ]
+        ],
+        "approximateProjectedSpanPixels": 876.5945470968891,
+        "measurementMethod": "Manual visual endpoint locations; projected2Dspan only, not recovered3Dlength",
+        "limitation": "Attack candidate remains visibly longer than idle after correcting excessive first attempt; no claim of exact physical invariance or independent fit. Coordinator native shared-scale sequence review required."
+      }
+    }
+  }
+}

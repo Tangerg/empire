@@ -1,0 +1,71 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2b73f67c-571f-4462-b660-f77d1b9ec54c.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "7ba944c880b4b06238cd46852157b79359c43a0fe3ef0521a6d6ec4e7bdd619c",
+  "bboxAlphaNonzero": [
+    113,
+    55,
+    1438,
+    956
+  ],
+  "bboxAlphaGreaterThan127": [
+    309,
+    57,
+    1435,
+    950
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1124695,
+  "alphaOnePixels": 4091,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "boot": "screen-left",
+      "roi": [
+        300,
+        800,
+        530,
+        965
+      ],
+      "soleY": 945,
+      "bottomFourRowsMeanX": 420.68715083798884
+    },
+    {
+      "boot": "screen-right",
+      "roi": [
+        790,
+        815,
+        1095,
+        965
+      ],
+      "soleY": 949,
+      "bottomFourRowsMeanX": 988.1157024793388
+    }
+  ],
+  "sourceFootMidpoint": [
+    704.4014266586638,
+    947.0
+  ],
+  "suggestedSourceFoot": [
+    704,
+    949
+  ],
+  "semanticReview": "Original left hand sweeps spear diagonally right across upper body; right arm retains plain wooden shield. Clear braced stance, exactly two arms/hands and one continuous gripped spear. Current corrected candidate reduces excessive initial spear span; actual projected span remains approximately1130px versus880idle and needs shared-scale coordinator review. Native and white views inspected, eye amber confined, complete tips/feet and transparent leg gap.",
+  "skeletalNegativeSpaceProbe": {
+    "rectangle": [
+      700,
+      870,
+      707,
+      877
+    ],
+    "zeroPixels": 49,
+    "maxAlpha": 0
+  }
+}

@@ -24,5 +24,63 @@
   "alphaOnePixels": 4091,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "boot": "screen-left",
+      "roi": [
+        300,
+        800,
+        530,
+        965
+      ],
+      "soleY": 945,
+      "bottomFourRowsMeanX": 420.68715083798884
+    },
+    {
+      "boot": "screen-right",
+      "roi": [
+        790,
+        815,
+        1095,
+        965
+      ],
+      "soleY": 949,
+      "bottomFourRowsMeanX": 988.1157024793388
+    }
+  ],
+  "sourceFootMidpoint": [
+    704.4014266586638,
+    947.0
+  ],
+  "suggestedSourceFoot": [
+    704,
+    949
+  ],
+  "semanticReview": "Original left hand sweeps spear diagonally right across upper body; right arm retains plain wooden shield. Clear braced stance, exactly two arms/hands and one continuous gripped spear. Current corrected candidate reduces excessive initial spear span; actual projected span remains approximately1130px versus880idle and needs shared-scale coordinator review. Native and white views inspected, eye amber confined, complete tips/feet and transparent leg gap.",
+  "skeletalNegativeSpaceProbe": {
+    "rectangle": [
+      700,
+      870,
+      707,
+      877
+    ],
+    "zeroPixels": 49,
+    "maxAlpha": 0
+  },
+  "spearProjectionReview": {
+    "approximateTipButtEndpoints": [
+      [
+        332,
+        568
+      ],
+      [
+        1428,
+        276
+      ]
+    ],
+    "approximateProjectedSpanPixels": 1134.2310170331264,
+    "measurementMethod": "Manual visual endpoint locations; projected2Dspan only, not recovered3Dlength",
+    "limitation": "Attack candidate remains visibly longer than idle after correcting excessive first attempt; no claim of exact physical invariance or independent fit. Coordinator native shared-scale sequence review required."
+  }
 }

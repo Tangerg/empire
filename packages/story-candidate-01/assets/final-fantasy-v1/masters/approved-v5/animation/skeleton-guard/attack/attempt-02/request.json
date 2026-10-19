@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen",
+  "promptSha256": "e0f2d937df1d16e4a2cc5a0f597e327d6d18b7fdd535c44be94890f684543be4",
+  "referencedImagePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/attack/attempt-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/idle/master.png"
+  ],
+  "referencedImageSha256": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/attack/attempt-01/master.png": "a23de37f5e6709be4c20c135c1eeda2768a2541d88efb678c49003c043f12905",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/skeleton-guard/idle/master.png": "eb2ff5d61e644bab5695adb047ee8198c8c19360cf40ba2e70a8a7de25937832"
+  },
+  "transparentBackground": true,
+  "nativeCanvasRequested": [
+    1586,
+    992
+  ],
+  "pose": "attack",
+  "attempt": 2,
+  "correction": "Shorten excessive spear to idle weapon physical scale; hold character fixed"
+}
