@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-repair-engineer",
+  "assetId": "C02-SFV1-equipment-repair-engineer",
+  "label": "维修师主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 4
+  },
+  "sourceCropBox": [
+    319,
+    945,
+    622,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original equipment-board-01 visual subjects and original topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-repair-engineer.png",
+  "runtimeReferenceSha256": "1696d7ff0221091393d9a1a4c0c20bfe0cbe92dff8df3a0d89da931db49fd69a",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}

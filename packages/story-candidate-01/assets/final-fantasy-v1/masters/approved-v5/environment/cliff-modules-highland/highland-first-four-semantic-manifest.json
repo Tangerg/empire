@@ -1,0 +1,223 @@
+{
+  "atlas": "cliff-modules-highland",
+  "count": 4,
+  "status": "native catalog review only",
+  "original_cells_empty": true,
+  "per_cell_footprint_obstruction_passability_not_invented": true,
+  "original_label_pixel_mismatch": "Slot 2 end-east is a compact inward three-sided wall in the original pixels. That shape, index and original token are preserved.",
+  "source_foot_warning": "Projected whole-module registration feet are visual estimates, independent of alpha bounds and distinct from listed physical contacts. Open corners deliberately have transparent foreground feet.",
+  "entries": [
+    {
+      "working_file_alias": "highland-cliff-straight-south",
+      "registered_semantic_cell_id": null,
+      "cell_index": 0,
+      "original_cellOrder_token": "straight-south",
+      "catalog_only": true,
+      "observed_original_geometry": "Long narrow continuous bare gray cliff wall with exposed column caps and sparse dry olive foot grass",
+      "native_review": "One long continuous gray column cliff retains the upper-left to lower-right orientation, narrow exposed rock-cap strip, complete ends and attached basal stones. Large matte facets and sparse olive scrub replace fine cracks/grass. No broad turf cap, hollow, stair or neighbor fragment. The requested wide side margins were not fully reached, but complete strong silhouette clears every edge.",
+      "source_foot_estimate_px": [
+        627,
+        1070
+      ],
+      "source_foot_semantics": "whole-module projected foreground baseline at x627,y1070, aligned with the nearest lower-right basal footing; not a claim that the diagonal wall physically contacts ground at its horizontal center",
+      "source_local_landmark_estimates_px": {
+        "left_rear_basal_contact": [
+          154,
+          631
+        ],
+        "middle_front_wall_basal_contact": [
+          612,
+          878
+        ],
+        "right_front_basal_contact": [
+          1097,
+          1051
+        ],
+        "left_rear_cap_center": [
+          247,
+          219
+        ],
+        "right_front_cap_center": [
+          960,
+          615
+        ]
+      },
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        40,
+        177,
+        38,
+        179
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "original_per_cell_semantic_metadata": null,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-straight-south/source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-straight-south/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-straight-south/alpha-qa.json"
+    },
+    {
+      "working_file_alias": "highland-cliff-end-west",
+      "registered_semantic_cell_id": null,
+      "cell_index": 1,
+      "original_cellOrder_token": "end-west",
+      "catalog_only": true,
+      "observed_original_geometry": "Compact oblong bare rock block/terminus, diagonal top axis rising toward rear-right, with sparse dry olive grass",
+      "native_review": "One compact oblong rock block/terminus retains the lower-left to upper-right top axis and highest rear-right cap. Broad exposed rock top and long continuous column sides are preserved, with a few dry olive patches in original crevices and at the footing. No broad turf carpet, snow, hollow, spire or mirrored direction. Main shape is distinct from the long straight wall.",
+      "source_foot_estimate_px": [
+        627,
+        1118
+      ],
+      "source_foot_semantics": "whole-module projected foreground baseline near the front basal rock group, with x627 as central module registration; separate from the diagonal top center and physical end contacts",
+      "source_local_landmark_estimates_px": {
+        "front_near_basal_rock_contact": [
+          494,
+          1117
+        ],
+        "rear_right_basal_contact": [
+          1163,
+          821
+        ],
+        "front_left_wall_basal_contact": [
+          222,
+          966
+        ],
+        "front_cap_center": [
+          419,
+          504
+        ],
+        "rear_high_cap_center": [
+          737,
+          219
+        ]
+      },
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        49,
+        163,
+        25,
+        126
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "original_per_cell_semantic_metadata": null,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-west/alpha-qa.json"
+    },
+    {
+      "working_file_alias": "highland-cliff-end-east",
+      "registered_semantic_cell_id": null,
+      "cell_index": 2,
+      "original_cellOrder_token": "end-east",
+      "catalog_only": true,
+      "observed_original_geometry": "Compact three-sided inward recess/horseshoe cliff, open foreground; visually not a simple east terminus",
+      "native_review": "Original slot2 actual inward three-sided horseshoe wall retained despite end-east label. Left and right arms are connected by a dark rear cliff, with exposed column tops and an open alpha foreground mouth. Compact deep recess remains distinct from a flat terminus. No inferred east-facing cap, solid floor across the mouth or added turf top. Sparse attached olive scrub and rocks remain subordinate.",
+      "source_foot_estimate_px": [
+        627,
+        990
+      ],
+      "source_foot_semantics": "projected foreground baseline between the two forward arm contacts; this intentionally lies in the transparent open mouth, not on the rear cliff floor",
+      "source_local_landmark_estimates_px": {
+        "left_forward_arm_contact": [
+          212,
+          989
+        ],
+        "right_forward_arm_contact": [
+          958,
+          977
+        ],
+        "rear_inner_wall_basal_contact": [
+          647,
+          805
+        ],
+        "left_front_cap_center": [
+          247,
+          544
+        ],
+        "right_front_cap_center": [
+          1001,
+          514
+        ]
+      },
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        40,
+        288,
+        23,
+        253
+      ],
+      "perimeter_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "original_per_cell_semantic_metadata": null,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-east/source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-east/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-east/alpha-qa.json"
+    },
+    {
+      "working_file_alias": "highland-cliff-concave-corner",
+      "registered_semantic_cell_id": null,
+      "cell_index": 3,
+      "original_cellOrder_token": "concave-corner",
+      "catalog_only": true,
+      "observed_original_geometry": "Wider, shallower three-sided inward recess, open foreground; flared left and right arms",
+      "native_review": "One connected wide inward cliff corner retains both flared arms and the joining rear wall. Original broad/shallow opening distinguishes this source from slot2 compact deeper horseshoe. Exposed gray column caps and large matte faces are continuous; sparse attached scrub follows wall feet without filling the transparent foreground mouth. No snow, turf lid, tunnel or display floor. Full silhouette preserved despite narrower-than-requested side margins.",
+      "source_foot_estimate_px": [
+        627,
+        956
+      ],
+      "source_foot_semantics": "projected foreground baseline between the complete forward arm contacts, intentionally in the empty foreground opening; distinct from rear-wall basal contact",
+      "source_local_landmark_estimates_px": {
+        "left_forward_arm_contact": [
+          222,
+          944
+        ],
+        "right_forward_arm_contact": [
+          1083,
+          952
+        ],
+        "rear_inner_wall_basal_contact": [
+          633,
+          750
+        ],
+        "left_arm_cap_center": [
+          232,
+          566
+        ],
+        "right_arm_cap_center": [
+          1034,
+          568
+        ]
+      },
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        20,
+        298,
+        15,
+        296
+      ],
+      "perimeter_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "original_per_cell_semantic_metadata": null,
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-concave-corner/source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-concave-corner/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-concave-corner/alpha-qa.json"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-rail-rifleman",
+  "assetId": "C02-SFV1-equipment-rail-rifleman",
+  "label": "轨道步枪手主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 2
+  },
+  "sourceCropBox": [
+    632,
+    319,
+    935,
+    622
+  ],
+  "sourceMappingEvidence": "Verified against full original equipment-board-01 visual subjects and original topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-rail-rifleman.png",
+  "runtimeReferenceSha256": "caeefa14abb7d110ebb8b8e0c25e55ac02adde62eda6f0902ea89d77a46d37e6",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}

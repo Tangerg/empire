@@ -1,0 +1,158 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-87c776d3-7f78-4ecd-b2d9-63301620c686.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "bb3157ab8eccca79dbc9740af584c05171559683f6515668743cdb531dc138c9",
+  "bboxAlphaNonzero": [
+    25,
+    0,
+    1518,
+    987
+  ],
+  "bboxAlphaGreaterThan127": [
+    112,
+    25,
+    1436,
+    984
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 905276,
+  "alphaOnePixels": 8596,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "paw": "near-hind",
+      "roi": [
+        565,
+        865,
+        780,
+        978
+      ],
+      "soleY": 966,
+      "bottomFourRowsMeanX": 681.5365853658536
+    },
+    {
+      "paw": "far-hind-visible-part",
+      "roi": [
+        844,
+        850,
+        929,
+        920
+      ],
+      "soleY": 916,
+      "bottomFourRowsMeanX": 918.9714285714285
+    },
+    {
+      "paw": "near-fore",
+      "roi": [
+        925,
+        890,
+        1175,
+        989
+      ],
+      "soleY": 983,
+      "bottomFourRowsMeanX": 1040.0
+    },
+    {
+      "paw": "far-fore",
+      "roi": [
+        1190,
+        860,
+        1455,
+        978
+      ],
+      "soleY": 966,
+      "bottomFourRowsMeanX": 1337.1666666666667
+    }
+  ],
+  "sourceFootMidpoint": [
+    994.4186701509873,
+    957.75
+  ],
+  "suggestedSourceFoot": [
+    994,
+    983
+  ],
+  "nearSidePawMeanSoleY": 974.5,
+  "highestHornY": 25,
+  "bodyHeight": 949.5,
+  "proposedBodyScale": 0.05897840968931016,
+  "bodyScaleNumerator": 56,
+  "bodyScaleDenominator": 949.5,
+  "bodyMeasurementMethod": "Horn tip to mean near-side hind/fore paw soles,avoids far-paw perspective foreshortening; support anchor x averages4visible paw sole bands,y lowest paw. Far-hind partial occlusion andROI explicitly retained.",
+  "visibleWidthAlphaGreaterThan127": 1324,
+  "projectedWidthLogicalAtProposedScale": 78.08741442864665,
+  "targetWidthRangeLogical": [
+    64,
+    68
+  ],
+  "widthReview": "Native full tail/wing span exceeds64-68pilot width at proposed56height; approximately78logical. Do not shrink full dragon height to fit. Coordinator to review current broader silhouette or authorize compacting tail inward while preserving body scale.",
+  "semanticReview": "Source copper-red juvenile/young dragon with gold eye,gray horns/spines and natural dark belly plates,non-glowing white branching left-neck scar,four legs/two wings and complete long hooked tail. Near wing open,far wing visible,far-hind paw partially occluded but visible; no rider,harness,chains or new equipment. Strong large head/claws,broad matte wing panels; scale microtexture simplified into broad red facets. Native and whiteQA inspected. All silhouette tips complete;edge onlyalpha1native specks,0above1.",
+  "negativeSpaceProbes": [
+    {
+      "name": "below-near-wing",
+      "rectangle": [
+        447,
+        657,
+        454,
+        664
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "foreleg-gap",
+      "rectangle": [
+        1177,
+        852,
+        1184,
+        859
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "hindleg-gap",
+      "rectangle": [
+        797,
+        862,
+        804,
+        869
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "tail-hook-interior",
+      "rectangle": [
+        217,
+        727,
+        224,
+        734
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "supportAnchorCaveat": "Far-hind paw is partially hidden; its recorded visible sole-band centroid is a support-registration estimate, not a recovered hidden anatomical sole. Other3paws full. Four-leg anatomy visually confirmed.",
+  "proposedCommonFrameSize": [
+    128,
+    80
+  ],
+  "proposedOrigin": [
+    14,
+    6
+  ],
+  "proposedFullCanvasBounds": [
+    14,
+    6,
+    107.53975776724592,
+    64.50658241179568
+  ]
+}

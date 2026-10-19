@@ -1,0 +1,94 @@
+{
+  "asset": "highland-cliff-end-east",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved broad chunky matte gray rock planes with sparse grouped olive basal scrub",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    990
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.789474
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    40,
+    288,
+    23,
+    253
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-cliff-end-east-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/temperate-hill-cap-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-east/prompt.txt",
+  "production_status": "native catalog candidate; parent adapter not bound",
+  "atlas": "cliff-modules-highland",
+  "cell_index": 2,
+  "original_cellOrder_token": "end-east",
+  "qualified_original_slot": "cliff-modules-highland:2:end-east",
+  "working_alias_is_existing_runtime_cell_id": false,
+  "catalog_only": true,
+  "actual16_level_instances": 0,
+  "original_per_cell_semantic_metadata": null,
+  "per_cell_footprint_obstruction_passability_not_invented": true,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "atlas_anchor": [
+    64,
+    127
+  ],
+  "render_role": "catalog-only independent elevation module; runtime semantic registration absent",
+  "semantic_identity": "ONE COMPACT inward-recessed THREE-SIDED rock wall, shaped like a deep U or horseshoe, with left and right arms joined by the back wall. This exact original source slot has a deep open foreground recess even though its legacy label says end-east; the visible original geometry is authoritative. Preserve the narrower mouth and deeper dark interior relative to the wider next-slot corner. Its exposed gray column caps form a narrow continuous bent strip, never a solid filled plateau. Keep both complete front arm ends, the connecting rear wall, sparse small dry olive growth along their feet, and a few attached foot stones. Open foreground space remains genuinely transparent where the source opens. No new path floor covering the opening, no roof or arch, no grassy cap, no separate pillars, no simple straight east end.",
+  "native_review": "Original slot2 actual inward three-sided horseshoe wall retained despite end-east label. Left and right arms are connected by a dark rear cliff, with exposed column tops and an open alpha foreground mouth. Compact deep recess remains distinct from a flat terminus. No inferred east-facing cap, solid floor across the mouth or added turf top. Sparse attached olive scrub and rocks remain subordinate.",
+  "source_foot_semantics": "projected foreground baseline between the two forward arm contacts; this intentionally lies in the transparent open mouth, not on the rear cliff floor",
+  "source_local_landmark_estimates_px": {
+    "left_forward_arm_contact": [
+      212,
+      989
+    ],
+    "right_forward_arm_contact": [
+      958,
+      977
+    ],
+    "rear_inner_wall_basal_contact": [
+      647,
+      805
+    ],
+    "left_front_cap_center": [
+      247,
+      544
+    ],
+    "right_front_cap_center": [
+      1001,
+      514
+    ]
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-cliff-end-east/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-highland/highland-first-four-source-contract.json",
+  "source_crop_findings": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "source_edit_count": 0,
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

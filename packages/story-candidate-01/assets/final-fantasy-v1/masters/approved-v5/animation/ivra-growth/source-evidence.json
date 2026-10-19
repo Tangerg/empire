@@ -1,0 +1,391 @@
+{
+  "topicId": "C01-UNIT-IVRA-GROWTH",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-IVRA-GROWTH",
+    "topicId": "C01-UNIT-IVRA-GROWTH",
+    "label": "伊芙拉成长单位",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-ivra-growth.png",
+    "width": 256,
+    "height": 64,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 64,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "footprint": [
+      2,
+      2
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-ivra-growth.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ivra-growth.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-colossus-ivra-wyvern-dragon.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "0388f089c7f43b805e38fea9443c9832769b27b1d1151b1a00afb103ecc0628d"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ivra-growth.png",
+      "size": [
+        512,
+        128
+      ],
+      "sha256": "7dc4db3ff2bcb40b0dc39a877559f7be040c0257c342412d890e2a0f0e7d4857"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-ivra-growth.png",
+      "size": [
+        256,
+        64
+      ],
+      "sha256": "ba41595e83d2f25112f121c5ea72521d836e295d52994e86355314a5bf0a8adf"
+    }
+  },
+  "originalSourceSlot": "Second row, between cemetery-colossus and mounted wyvern row; fourth row is separate ancient gray dragon",
+  "referenceExtraction": "Complete row[0,315,1254,590],idle[0,315,325,590],head-neck[164,325,308,462] native unresampled crops; full board/strips preserved. Original HD cells128x128. No recolor or alpha changes.",
+  "originalRuntimeVisibleDiagnostics": {
+    "idle": {
+      "hdAlphaNonzeroBounds": [
+        6,
+        2,
+        122,
+        126
+      ],
+      "runtimeAlphaNonzeroBounds": [
+        3,
+        1,
+        61,
+        63
+      ],
+      "runtimeAlphaGreaterThan127Bounds": [
+        3,
+        1,
+        61,
+        63
+      ],
+      "largestConnectedHDAlphaGreaterThan127Bounds": [
+        6,
+        2,
+        122,
+        104
+      ],
+      "otherDisconnectedHDComponents": 3
+    },
+    "walk-a": {
+      "hdAlphaNonzeroBounds": [
+        5,
+        2,
+        123,
+        126
+      ],
+      "runtimeAlphaNonzeroBounds": [
+        2,
+        1,
+        61,
+        63
+      ],
+      "runtimeAlphaGreaterThan127Bounds": [
+        2,
+        1,
+        61,
+        63
+      ],
+      "largestConnectedHDAlphaGreaterThan127Bounds": [
+        5,
+        2,
+        111,
+        104
+      ],
+      "otherDisconnectedHDComponents": 3
+    },
+    "attack": {
+      "hdAlphaNonzeroBounds": [
+        2,
+        4,
+        126,
+        126
+      ],
+      "runtimeAlphaNonzeroBounds": [
+        1,
+        2,
+        63,
+        63
+      ],
+      "runtimeAlphaGreaterThan127Bounds": [
+        1,
+        2,
+        63,
+        63
+      ],
+      "largestConnectedHDAlphaGreaterThan127Bounds": [
+        2,
+        4,
+        114,
+        106
+      ],
+      "otherDisconnectedHDComponents": 4
+    },
+    "walk-b": {
+      "hdAlphaNonzeroBounds": [
+        15,
+        2,
+        113,
+        126
+      ],
+      "runtimeAlphaNonzeroBounds": [
+        7,
+        1,
+        56,
+        63
+      ],
+      "runtimeAlphaGreaterThan127Bounds": [
+        7,
+        1,
+        56,
+        63
+      ],
+      "largestConnectedHDAlphaGreaterThan127Bounds": [
+        15,
+        2,
+        113,
+        104
+      ],
+      "otherDisconnectedHDComponents": 2
+    }
+  },
+  "status": "Bounded tail-corrected idle02 inspected; coordinator final pilot acceptance pending",
+  "imageGenerationStarted": true,
+  "actualConsumers": [
+    "c01.ivra"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 11,
+    "text": "'c01.ivra': 'C01-UNIT-IVRA-GROWTH'"
+  },
+  "consumerStatus": "Actual campaign protagonist,one neutral c01-09 and seven allied appearances c01-10 through16; no built-in consumer found",
+  "actualScenePlacements": [
+    {
+      "level": "c01-09",
+      "actor": "caged-ivra",
+      "side": "neutral",
+      "position": [
+        7,
+        6
+      ],
+      "source": "levels.ts:651"
+    },
+    {
+      "level": "c01-10",
+      "actor": "campaign-ivra",
+      "side": "player",
+      "deploymentIndex": 6,
+      "position": [
+        11,
+        8
+      ],
+      "source": "levels.ts:665,670"
+    },
+    {
+      "level": "c01-11",
+      "actor": "campaign-ivra",
+      "side": "player",
+      "deploymentIndex": 6,
+      "position": [
+        5,
+        11
+      ],
+      "source": "levels.ts:689,694"
+    },
+    {
+      "level": "c01-12",
+      "actor": "campaign-ivra",
+      "side": "player",
+      "deploymentIndex": 6,
+      "position": [
+        5,
+        11
+      ],
+      "source": "levels.ts:703,708"
+    },
+    {
+      "level": "c01-13",
+      "actor": "campaign-ivra",
+      "side": "player",
+      "deploymentIndex": 6,
+      "position": [
+        5,
+        12
+      ],
+      "source": "levels.ts:727,733"
+    },
+    {
+      "level": "c01-14",
+      "actor": "campaign-ivra",
+      "side": "player",
+      "deploymentIndex": 6,
+      "position": [
+        5,
+        12
+      ],
+      "source": "levels.ts:741,748"
+    },
+    {
+      "level": "c01-15",
+      "actor": "campaign-ivra",
+      "side": "player",
+      "deploymentIndex": 6,
+      "position": [
+        5,
+        12
+      ],
+      "source": "levels.ts:755,761"
+    },
+    {
+      "level": "c01-16",
+      "actor": "campaign-ivra",
+      "side": "player",
+      "deploymentIndex": 6,
+      "position": [
+        5,
+        13
+      ],
+      "source": "levels.ts:782,793"
+    }
+  ],
+  "placementDerivation": "PARTY.ivra is hero(ivra,c01.ivra),keycampaign-ivra; baseParty adds3prefixactors,then mirelle/bran/tasha/ivra makes Ivra index6. place() maps index to deployment slot. caged-ivra has explicit coordinates.",
+  "originalIdentity": "Same juvenile/young copper-red dragon throughout four frames: large alert head with orange-gold eye/dark pupil, swept-back gray horns and crown/back spines, copper-brown scales, dark slate segmented throat/belly plates, four clawed legs plus two independent brown-membrane wings, long curling tail with dark segmented underside/spines, gray-earth claw tips. White branching scar-like marking on visible left neck. No rider,saddle,harness,collar,chains or armor.",
+  "symbolReview": "Preserve original small white branching neck scar/mark exactly as observed, without inventing sacred meaning or new rune. Orange eye light confined to eye, not external glow. No new heraldry.",
+  "originalFrameReview": "Second atlas row contains same-aged same-identity dragon in idle/walk-a/attack/walk-b. Original idle grounded four paws; two walk slots vary fore/hind contacts modestly; third attack mainly raises one forepaw and keeps mouth closed. These four cells are not four growth stages. Narrative character cardsIVRA01/02/03 are distinct subjects/ages and stay separate.",
+  "ruleContract": {
+    "unitSource": "packages/story-candidate-01/src/units.ts:58-62",
+    "unitId": "c01.ivra",
+    "name": "伊芙拉",
+    "weapons": [
+      "c01.dragon-breath"
+    ],
+    "maxHp": 145,
+    "movement": 6,
+    "movementClass": "flying",
+    "armorClass": "flying",
+    "abilities": [
+      "attack",
+      "wait"
+    ],
+    "vision": 5,
+    "tags": [
+      "hero",
+      "dragon",
+      "monster",
+      "flying"
+    ],
+    "blurbAge": "幼龙",
+    "weaponSource": "weapons.ts:139-148",
+    "weaponName": "盟约龙息",
+    "power": 58,
+    "damageType": "magic",
+    "maxRange": 2,
+    "area": "line",
+    "cooldown": 1,
+    "weaponTags": [
+      "breath",
+      "arcane",
+      "signature"
+    ]
+  },
+  "independentAssets": {
+    "portraitBinding": "c01.ivra -> C01-CHAR-IVRA-01 atcandidate-01-bindings.ts:96",
+    "equipmentBinding": "c01.dragon-breath -> C01-EQUIP-IVRA-GROWTH atline121",
+    "effectBinding": "c01.dragon-breath -> C01-FX-05 atline165",
+    "policy": "Keep original narrative stages/equipment topic/independent dragon-breathFX separate; no baked breath trail or projectile in character."
+  },
+  "semanticReview": "Source attack is not visibly breath-ready; propose reconstructing a clear forward head/open-mouth breath action with braced paws and spread-but-contained wings. Idle/walks keep grounded source quadruped language despite rule flying movementClass; no new flight animation slot or movement-rule change. Four limbs plus two wings must remain anatomically separate.",
+  "footprintClarification": "Original art manifest frame64x64,anchor[32,63],footprint[2,2] preserved as art metadata. c01.ivra UnitDef declares no footprint field; no footprint references found in battle-engine src. Do not claim a new2x2rules occupancy or change movement/collision.",
+  "sourceArtifactCaveat": "OriginalHD has disconnected bottom/edge atlas specks. Idle all-alpha extent[6,2,122,126] misleadingly yields62logicalheight; largest coherent dragon component[6,2,122,104] gives116x102HD=58x51logical. Diagnostic connected-component analysis is read-only; no original or generated alpha edited. New remake must not reproduce these unrelated specks.",
+  "scaleProposal": {
+    "humanBodyLogical": 44,
+    "originalCoherentIdleLogical": [
+      58,
+      51
+    ],
+    "proposedFullHornToPawSoleLogical": 56,
+    "ratioToApprovedHumanHeight": 1.2727272727272727,
+    "proposedTailToSnoutLogicalRange": [
+      64,
+      68
+    ],
+    "nativeCanvas": [
+      1586,
+      992
+    ],
+    "proposedNativeFullHornToPawHeightRange": [
+      890,
+      920
+    ],
+    "proposedCrownY": 40,
+    "proposedPawBaselineY": 950,
+    "proposalRationale": "Distinct young dragon moderately larger and wider than human, consistent with64x64art/2x2metadata and coherent old51highbody; not giant ancient gray dragon fromrow4. Full tail and semi-open wings stay inside landscapecanvas; size measured from idle then locked for all poses.",
+    "tentativeExportFrame": [
+      128,
+      80
+    ],
+    "exportCondition": "Only proposal before idle measurement; complete native canvas and measured contact anchor determine final shared export. No per-pose fit."
+  },
+  "actionProposal": [
+    "idle:four paws planted,head upright,semi-open original wings,tail curls left",
+    "walk-a:clear diagonal fore/hind support contacts; wing/tail balance only",
+    "attack:neck/head reaches toward screen-right,mouth open breath-ready,paws braced; independentFX05 remains external",
+    "walk-b:opposite diagonal fore/hind contacts; same wing membrane/size"
+  ],
+  "idleContractApproval": "56logical horn-to-paw height and64-68tail-to-snout width pilot accepted. Same copper-red juvenile,gray belly plates,white neck scar,gold eyes,four legs/two wings,no rider/chains. Four same-age semantic frames; laterattackopen-mouthbreathready,independentFXexternal. Tentative128x80only; idle measurement and review before3poses. Footprint art metadata only.",
+  "footprintRuleEvidence": "battle-engine/src/state.ts:463-464 unitAt finds one sameCoord unit; UnitDef types.ts:171 has no footprint field,story unit input no footprint. Art2x2metadata does not establish multi-cell collision.",
+  "idleActualMeasurement": {
+    "selectedAttempt": "attempt-02",
+    "nativeSize": [
+      1586,
+      992
+    ],
+    "hornTipY": 24,
+    "meanNearPawSoleY": 974.5,
+    "bodyHeight": 950.5,
+    "proposedScale": "56/950.5",
+    "proposedSourceFoot": [
+      994,
+      983
+    ],
+    "actualVisibleWidthPixels": 1140,
+    "actualLogicalVisibleWidth": 67.16465018411363,
+    "tailCorrection": "Native imagegen-only inward curl moved left silhouettefrom112to300,188px;body/head/paws/wings visually retained with minor nativegenerationvariation. No global fit or imageprocessing.",
+    "tentativeFrame": [
+      128,
+      80
+    ],
+    "tentativeOrigin": [
+      14,
+      6
+    ],
+    "perimeterMaxAlpha": 0
+  }
+}

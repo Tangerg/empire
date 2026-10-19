@@ -1,0 +1,159 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2a14bfe4-2a10-46fe-8b8c-5e28ba5f0dd6.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "235e8e8019d38bf9703291bcce8847661dda21c0f31e1ada9a0cf42d594363cb",
+  "bboxAlphaNonzero": [
+    101,
+    21,
+    1504,
+    986
+  ],
+  "bboxAlphaGreaterThan127": [
+    300,
+    24,
+    1440,
+    984
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 932797,
+  "alphaOnePixels": 6923,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "paw": "near-hind",
+      "roi": [
+        565,
+        865,
+        780,
+        978
+      ],
+      "soleY": 966,
+      "bottomFourRowsMeanX": 678.7346938775511
+    },
+    {
+      "paw": "far-hind-visible-part",
+      "roi": [
+        844,
+        850,
+        929,
+        920
+      ],
+      "soleY": 915,
+      "bottomFourRowsMeanX": 916.5625
+    },
+    {
+      "paw": "near-fore",
+      "roi": [
+        925,
+        890,
+        1175,
+        989
+      ],
+      "soleY": 983,
+      "bottomFourRowsMeanX": 1041.8064516129032
+    },
+    {
+      "paw": "far-fore",
+      "roi": [
+        1190,
+        860,
+        1455,
+        978
+      ],
+      "soleY": 967,
+      "bottomFourRowsMeanX": 1340.0
+    }
+  ],
+  "sourceFootMidpoint": [
+    994.2759113726136,
+    957.75
+  ],
+  "suggestedSourceFoot": [
+    994,
+    983
+  ],
+  "nearSidePawMeanSoleY": 974.5,
+  "highestHornY": 24,
+  "bodyHeight": 950.5,
+  "proposedBodyScale": 0.058916359810625984,
+  "bodyScaleNumerator": 56,
+  "bodyScaleDenominator": 950.5,
+  "bodyMeasurementMethod": "Horn tip to mean near-side hind/fore soles; support anchorx averages4visible paw sole bands,y lowest. Far-hind partial occlusion explicitly recorded.",
+  "visibleWidthAlphaGreaterThan127": 1140,
+  "projectedWidthLogicalAtProposedScale": 67.16465018411363,
+  "targetWidthRangeLogical": [
+    66,
+    70
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "below-near-wing",
+      "rectangle": [
+        447,
+        657,
+        454,
+        664
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "foreleg-gap",
+      "rectangle": [
+        1177,
+        852,
+        1184,
+        859
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "hindleg-gap",
+      "rectangle": [
+        797,
+        862,
+        804,
+        869
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "tail-hook-interior",
+      "rectangle": [
+        482,
+        702,
+        489,
+        709
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "supportAnchorCaveat": "Far-hind paw partially hidden; visible sole-band centroid is registration estimate,not recoveredhidden anatomy. Other3paws full;fourlegs/twowings visually confirmed.",
+  "tailCorrection": "Coordinator-approved single bounded tailcurl edit,attempt02. Full silhouetteleft300 versus112 inattempt01; inwardextent change188px. Wing/head/body/paw placement visually retained within minor native generation variation; no programmatic rescaling/cropping/painting.",
+  "semanticReview": "Corrected compact inward hooked tail completes original copper-red juvenile dragon; source graybellyscutes,gold eye,whiteforkneckscar,grayhornspines,fourlegs/twowings remain. Largehead/claws and broadmatteplanes unchanged in intent; no rider/chains or FX. NativeandwhiteQA inspected; completehorns/tail/paws,all4negative-spaceprobesalpha0,perimeteralpha0.",
+  "proposedCommonFrameSize": [
+    128,
+    80
+  ],
+  "proposedOrigin": [
+    14,
+    6
+  ],
+  "proposedFullCanvasBounds": [
+    14,
+    6,
+    107.44134665965281,
+    64.44502893214099
+  ],
+  "selectedAttempt": "attempt-02;attempt01preserved superseded for excessivewidth"
+}

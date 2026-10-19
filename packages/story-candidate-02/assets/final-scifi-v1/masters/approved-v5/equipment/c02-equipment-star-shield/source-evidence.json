@@ -1,0 +1,52 @@
+{
+  "topicId": "c02-equipment-star-shield",
+  "assetId": "C02-SFV1-equipment-star-shield",
+  "label": "星盾兵主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 1
+  },
+  "sourceCropBox": [
+    5,
+    5,
+    309,
+    309
+  ],
+  "sourceMappingEvidence": "Verified against full original equipment-board-01 visual subjects and original topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-star-shield.png",
+  "runtimeReferenceSha256": "1ea4f456daf5801d97d4747fb7e58ca906dae22f8fb11aab2b47407a2cebe031",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a827dde3-e83e-4ff6-8c2c-7379e1830ace.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-star-shield/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Equipment pilot. Original equipment-board-01 r1c1 preserved: one tilted oval sci-fi shield with segmented ivory/charcoal rim, amber fasteners, bounded cyan indicators and opaque cyan energy face. Original two-overlapping-triangles six-point star geometry retained; dense crack noise reduced to broad planes. Source alpha contract and actual48 white/black review passed. Category style pilot awaiting parent visual acceptance before remaining3 generation.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently.",
+  "categoryPilotReviewPending": false,
+  "categoryPilotApproval": {
+    "reviewer": "parent inventory_empire_art_rebuild",
+    "approvedAtUtc": "2026-10-19T19:46:08Z",
+    "evidence": "Parent inspected actual48 white-black: oval frame and two-triangle star readable, clear contour, bounded cyan, no exterior glow; proceed remaining3 with broad matte planes."
+  }
+}

@@ -1,0 +1,1379 @@
+{
+  "batch": "c02-all32-chunky-scifi-battle-props",
+  "createdAtUtc": "2026-10-19T19:40:02.742566+00:00",
+  "nativeSourceCount": 32,
+  "expectedOriginalTopicCount": 32,
+  "missingTopics": [],
+  "extraTopics": [],
+  "failedFinalNativeChecks": [],
+  "tool": "built-in image_gen__imagegen",
+  "transparentBackground": true,
+  "repositoryEditedByThisWorker": false,
+  "generatedSourcePixelsPostprocessed": false,
+  "scopeStatus": "All32 original C02 battle-prop native assets delivered. Parent owns runtime export and integration. This audit does not claim playable C02 levels. No new asset category started.",
+  "batchManifests": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-first-four-native-delivery-manifest.json",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-second-four-native-delivery-manifest.json",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-third-four-native-delivery-manifest.json",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-fourth-four-native-delivery-manifest.json",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-fifth-four-native-delivery-manifest.json",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-sixth-four-native-delivery-manifest.json",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-seventh-four-native-delivery-manifest.json",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-eighth-four-native-delivery-manifest.json"
+  ],
+  "entries": [
+    {
+      "topicId": "c02-battle-prop-cargo-crates",
+      "assetId": "C02-SFV1-battle-prop-cargo-crates",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/raw-native-v1.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/prompt.txt",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/alpha-qa.json",
+      "sha256": "682267c5e2703b0184fbadb07290064f38c97eb8261e209ad43a6bb2acb2bb4c",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-first-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-ceramic-water-tanks",
+      "assetId": "C02-SFV1-battle-prop-ceramic-water-tanks",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ceramic-water-tanks/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ceramic-water-tanks/raw-native-v1.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ceramic-water-tanks/prompt.txt",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ceramic-water-tanks/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ceramic-water-tanks/alpha-qa.json",
+      "sha256": "4c1f96ec5b79579fec22d3165915b11a8815e7999ad296d616e9c72dc8a2ca91",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-first-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-cable-reels",
+      "assetId": "C02-SFV1-battle-prop-cable-reels",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cable-reels/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cable-reels/raw-native-v1.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cable-reels/prompt.txt",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cable-reels/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cable-reels/alpha-qa.json",
+      "sha256": "4ae240c5206113495418ae1bb166166192cfd4e5e4cb4533d2a68bdc222fc74d",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-first-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-anchor-winches",
+      "assetId": "C02-SFV1-battle-prop-anchor-winches",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-anchor-winches/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-anchor-winches/raw-native-v1.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-anchor-winches/prompt.txt",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-anchor-winches/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-anchor-winches/alpha-qa.json",
+      "sha256": "d47f21be7a2443934fc85ce7c5369ebd0dfc4f642abb70402f2c036af1c2b5c4",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-first-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-giant-roots",
+      "assetId": "C02-SFV1-battle-prop-giant-roots",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-giant-roots/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-giant-roots/raw-native-v1.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-giant-roots/prompt.txt",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-giant-roots/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-giant-roots/alpha-qa.json",
+      "sha256": "1b0311a22c9e58ba1027736df83024fd847ae37d09b191e194d87001327eb50c",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-second-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 0,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-platform-shields",
+      "assetId": "C02-SFV1-battle-prop-platform-shields",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-platform-shields/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-platform-shields/raw-native-v1.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-platform-shields/prompt.txt",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-platform-shields/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-platform-shields/alpha-qa.json",
+      "sha256": "46f6b0e0e35abd94689b36ac042524372110ad7405005306b18a8046fe5a2976",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-second-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-hull-patches",
+      "assetId": "C02-SFV1-battle-prop-hull-patches",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-hull-patches/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-hull-patches/raw-native-v1.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-hull-patches/prompt.txt",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-hull-patches/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-hull-patches/alpha-qa.json",
+      "sha256": "dd653a9041039462632d3432cfe65179dfee132cd1ca43a3bbf9e3b11cb5023e",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-second-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-repair-arms",
+      "assetId": "C02-SFV1-battle-prop-repair-arms",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-repair-arms/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-repair-arms/raw-native-v1.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-repair-arms/prompt.txt",
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-repair-arms/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-repair-arms/alpha-qa.json",
+      "sha256": "87573552e10c711e9037477f52d2ac47486874142e750887cfc4cd6b448e6085",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-second-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 0,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-water-barrels",
+      "assetId": "C02-SFV1-battle-prop-water-barrels",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-water-barrels/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-water-barrels/raw-native-v2.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-water-barrels/prompt.txt",
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-water-barrels/refinement-prompt-v2.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-water-barrels/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-water-barrels/alpha-qa.json",
+      "sha256": "af2a54c266cce5078445da615357a31324ac49668f03932fb8d1fe4c90bdb3cf",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-third-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-seed-coolers",
+      "assetId": "C02-SFV1-battle-prop-seed-coolers",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-seed-coolers/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-seed-coolers/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-seed-coolers/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-seed-coolers/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-seed-coolers/alpha-qa.json",
+      "sha256": "a1016ffc9537a61612ca68fb21ad1bfda42bc59f887a041d99049b862cdfbac0",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-third-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-spare-part-racks",
+      "assetId": "C02-SFV1-battle-prop-spare-part-racks",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spare-part-racks/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spare-part-racks/raw-native-v3.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spare-part-racks/prompt.txt",
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spare-part-racks/refinement-prompt-v2.txt",
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spare-part-racks/refinement-prompt-v3.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spare-part-racks/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spare-part-racks/alpha-qa.json",
+      "sha256": "b65970dd3abc4f4323224db010fd1e9735785c695ddc1c6f343eba311e614c82",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-third-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-stretcher-medkits",
+      "assetId": "C02-SFV1-battle-prop-stretcher-medkits",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-stretcher-medkits/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-stretcher-medkits/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-stretcher-medkits/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-stretcher-medkits/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-stretcher-medkits/alpha-qa.json",
+      "sha256": "3575e1829fc99c692aeaaabcb76277715f29c5f1fe00009019abb6f07a5c8de0",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-third-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-five-world-flags",
+      "assetId": "C02-SFV1-battle-prop-five-world-flags",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-five-world-flags/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-five-world-flags/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-five-world-flags/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-five-world-flags/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-five-world-flags/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-five-world-flags/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "46c1760a0757359c0740e4e08918450141fe1f91215c60e0fbcd9efb3099a129",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-fourth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-hesha-water-signs",
+      "assetId": "C02-SFV1-battle-prop-hesha-water-signs",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-hesha-water-signs/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-hesha-water-signs/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-hesha-water-signs/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-hesha-water-signs/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-hesha-water-signs/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-hesha-water-signs/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "710180b64895d1163ffd75954ca4aa9f7fc75b13daf35438bdaad2413d13e084",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-fourth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-soler-heat-emblems",
+      "assetId": "C02-SFV1-battle-prop-soler-heat-emblems",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-soler-heat-emblems/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-soler-heat-emblems/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-soler-heat-emblems/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-soler-heat-emblems/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-soler-heat-emblems/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-soler-heat-emblems/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "26ec220c18c23b9873ea2e1e41e3052306697c5d34be5d781b79bc1152ac985a",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-fourth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-permission-lights",
+      "assetId": "C02-SFV1-battle-prop-permission-lights",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-lights/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-lights/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-lights/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-lights/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-lights/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-lights/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "a2eba9953efd9315d6ea4f4c69925699a2c96c71674f793af353ef23a726c2b0",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-fourth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-bunks",
+      "assetId": "C02-SFV1-battle-prop-bunks",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-bunks/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-bunks/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-bunks/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-bunks/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-bunks/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-bunks/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "1fe327f7360a0116bf66ee7cd5b44ee7d107c3546400bb6ee60324f4b39b5571",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-fifth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-cups-cookware",
+      "assetId": "C02-SFV1-battle-prop-cups-cookware",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cups-cookware/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cups-cookware/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cups-cookware/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cups-cookware/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cups-cookware/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cups-cookware/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "0f324b01508735de782601077901f48262e41d66b5a54f05e812241181da960d",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-fifth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-folding-tables",
+      "assetId": "C02-SFV1-battle-prop-folding-tables",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-folding-tables/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-folding-tables/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-folding-tables/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-folding-tables/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-folding-tables/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-folding-tables/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "dff05e4cbc34ea8bb38f2406af6097f87a3a9f30940a29d98e0398a932b14792",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-fifth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-drying-racks",
+      "assetId": "C02-SFV1-battle-prop-drying-racks",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-drying-racks/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-drying-racks/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-drying-racks/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-drying-racks/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-drying-racks/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-drying-racks/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "f070fedac9f1b71f6c0ff931e497b6be7c57d071b8d5c9a2efdcc60169256f60",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-fifth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-fuel-oxygen-tanks",
+      "assetId": "C02-SFV1-battle-prop-fuel-oxygen-tanks",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-fuel-oxygen-tanks/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-fuel-oxygen-tanks/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-fuel-oxygen-tanks/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-fuel-oxygen-tanks/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-fuel-oxygen-tanks/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-fuel-oxygen-tanks/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "6a48eb8bad0bf8f3defe75fe1d558e3a17302ba897675d02ac65d537d9e810c4",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-sixth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-overload-nodes",
+      "assetId": "C02-SFV1-battle-prop-overload-nodes",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-overload-nodes/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-overload-nodes/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-overload-nodes/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-overload-nodes/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-overload-nodes/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-overload-nodes/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "3bcbefddd8fbd26d76441efc13bbf3ed209c199b142dfcb899abaac3474f4048",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-sixth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-ice-cracks",
+      "assetId": "C02-SFV1-battle-prop-ice-cracks",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ice-cracks/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ice-cracks/raw-native-v2.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ice-cracks/prompt.txt",
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ice-cracks/refinement-prompt-v2.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ice-cracks/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ice-cracks/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ice-cracks/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "43d20b3685d1b08229fe2b57b0b2deecfa55f8788cdea7a0fa92e74d1db156e1",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-sixth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 0,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-spore-sacs",
+      "assetId": "C02-SFV1-battle-prop-spore-sacs",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spore-sacs/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spore-sacs/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spore-sacs/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spore-sacs/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spore-sacs/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-spore-sacs/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "b4d8749274d0188ff05e3d11f4fff4c891fbc4de3de5eb49c3665fc5d826dbe4",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-sixth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-risk-list-evidence",
+      "assetId": "C02-SFV1-battle-prop-risk-list-evidence",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-risk-list-evidence/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-risk-list-evidence/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-risk-list-evidence/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-risk-list-evidence/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-risk-list-evidence/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-risk-list-evidence/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "a8c813eb76192f58dfd9c55fc8c333fc85ca12ab55a8230054b17225765b2bd9",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-seventh-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-tickets-manifests",
+      "assetId": "C02-SFV1-battle-prop-tickets-manifests",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-tickets-manifests/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-tickets-manifests/raw-native-v2.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-tickets-manifests/prompt.txt",
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-tickets-manifests/refinement-prompt-v2.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-tickets-manifests/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-tickets-manifests/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-tickets-manifests/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "007ee08addd1192c274f56ada90074e87e4863d008a7aeeec66949de6146184d",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-seventh-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 0,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-physical-film",
+      "assetId": "C02-SFV1-battle-prop-physical-film",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-physical-film/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-physical-film/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-physical-film/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-physical-film/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-physical-film/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-physical-film/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "05dd7b6db3e15aeecdf6c4f8a3f1b32d97c46c350bcb6386aca710f59f5cc529",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-seventh-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-permission-badges",
+      "assetId": "C02-SFV1-battle-prop-permission-badges",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-badges/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-badges/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-badges/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-badges/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-badges/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-permission-badges/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "eacb2d49cb379ffb39b57b92318dfa4849cbbadd8e9f9f318bf280bd4fbc7d0e",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-seventh-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-broken-rails",
+      "assetId": "C02-SFV1-battle-prop-broken-rails",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-broken-rails/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-broken-rails/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-broken-rails/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-broken-rails/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-broken-rails/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-broken-rails/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "b286b1253478e6dc70a916a7ca3e9d6c9d5edbe1b9e90691433794c9b81a3580",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-eighth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-discarded-arms",
+      "assetId": "C02-SFV1-battle-prop-discarded-arms",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-discarded-arms/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-discarded-arms/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-discarded-arms/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-discarded-arms/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-discarded-arms/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-discarded-arms/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "aa699f81e9d5870ddcbdd1cc9e88e719e0be6a90da7497859f71dd3d8b4fe415",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-eighth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-dead-fungus-beds",
+      "assetId": "C02-SFV1-battle-prop-dead-fungus-beds",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-dead-fungus-beds/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-dead-fungus-beds/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-dead-fungus-beds/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-dead-fungus-beds/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-dead-fungus-beds/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-dead-fungus-beds/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "477a85bd0947ccca4a8ef58ee6cd6af7e2aefdf69be65d2909bdf964db7d46a2",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-eighth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    },
+    {
+      "topicId": "c02-battle-prop-community-repairs",
+      "assetId": "C02-SFV1-battle-prop-community-repairs",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-community-repairs/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-community-repairs/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-community-repairs/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-community-repairs/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-community-repairs/alpha-qa.json",
+      "native64WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-community-repairs/diagnostic-native64/native64-white-left-black-right.png",
+      "sha256": "f4f9ffb1c252f14aad17778b9119bb7ab80c7aac311d4c476f0b50f68fdff42c",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 64,
+        "height": 64,
+        "anchor": [
+          32,
+          32
+        ]
+      },
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false,
+      "batchManifest": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-eighth-four-native-delivery-manifest.json",
+      "finalNativeAudit": {
+        "byteExactRaw": true,
+        "recordedHashMatches": true,
+        "rgba": true,
+        "sourcePerimeterMaxAlpha": 1,
+        "sourceAlphaRange": [
+          0,
+          255
+        ],
+        "actual64PerimeterMaxAlpha": 0,
+        "allPromptEvidenceFilesExist": true,
+        "nativeCopiesReadOnly": true,
+        "matchesOriginalRuntimeContract": true
+      }
+    }
+  ]
+}

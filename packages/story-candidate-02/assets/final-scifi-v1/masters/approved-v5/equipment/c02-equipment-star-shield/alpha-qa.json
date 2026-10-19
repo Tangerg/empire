@@ -1,0 +1,48 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-a827dde3-e83e-4ff6-8c2c-7379e1830ace.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    212,
+    45,
+    1105,
+    1219
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    212,
+    45,
+    149,
+    35
+  ],
+  "nearOpaquePixelCountGE240": 741179,
+  "diagnostic8pxErosion": {
+    "minAlpha": 252,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 862,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black composites inspection only.",
+  "topicId": "c02-equipment-star-shield",
+  "sha256": "65706f0d479d3e5f6bcba479b0e9606e7e26bbc2aadbb2f2051aa61317db4b9c",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass after native source semantic review and actual48 white/black inspection: correct functional identity and main component count, thick outlines/broad cel planes, intact silhouette, no visible halo, haze, solid background or external glow. Narrow-gap antialiasing is not judged as solid-body opacity failure by supplemental morphology.",
+  "postprocessing": "Native master unchanged byte-exact copy. Diagnostic-only full-canvas48 exports and white/black composites are separate. No pixel painting, recolor or alpha cleanup.",
+  "runtimeReady": false,
+  "categoryPilotReviewPending": false,
+  "categoryPilotApproval": {
+    "reviewer": "parent inventory_empire_art_rebuild",
+    "approvedAtUtc": "2026-10-19T19:46:08Z",
+    "evidence": "Parent inspected actual48 white-black: oval frame and two-triangle star readable, clear contour, bounded cyan, no exterior glow; proceed remaining3 with broad matte planes."
+  }
+}
