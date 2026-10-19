@@ -7964,11 +7964,15 @@
     },
     {
       "topicId": "c03-equip-0137a889",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-0137a889/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "source-inspection-before-generation"
+      "assignmentPhase": "source-inspection-before-generation",
+      "sourceSha256": "bb24a0d7fd8e169486d87c51891ca87651e68ebbde19ff0716e099f5f3d2894c"
     },
     {
       "topicId": "c03-equip-0609e6e6",
@@ -10024,9 +10028,14 @@
       "atlasId": "scenery-regional",
       "cellId": "grave-signboards",
       "index": 9,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/scenery-regional/grave-signboards/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "ccab3770199467e8d96ebd8adc640328581a0b2244c258623ee444e460016f31",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "scenery-regional",

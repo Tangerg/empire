@@ -1,0 +1,49 @@
+{
+  "topicId": "c03-equip-0137a889",
+  "status": "saved-paused-style-review-not-approved-for-export",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-0137a889.png",
+  "observed_original": "Crossbow, mismatch with light cavalry role",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed saddle+dao equipment abstraction, not recovered original slot.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 1,
+  "threshold_bboxes": {
+    "1": [
+      33,
+      59,
+      1240,
+      1254
+    ],
+    "128": [
+      57,
+      132,
+      1208,
+      1108
+    ],
+    "240": [
+      58,
+      133,
+      1207,
+      1107
+    ]
+  },
+  "visual_review": "Complete brown saddle plus dao; excessive leather microtexture and bright metal edges relative to matte concept target. Saved only; all new generation stopped per style gate."
+}
