@@ -562,7 +562,15 @@
       "topicId": "C01-UNIT-BANNER-GUARD",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props",
+      "assignmentPhase": "after-equipment-quartet",
+      "plannedFrames": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ]
     },
     {
       "topicId": "C01-UNIT-BATTLE-MAGE",
@@ -8821,17 +8829,27 @@
       "atlasId": "forest-existing",
       "cellId": "pine-underbrush-c",
       "index": 6,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-underbrush-c/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "3ad4f3cf60d7e29672f0f1b1c32dbc834f4d91cbb5af9871b3fa23e1aaccdcc1",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-underbrush-d",
       "index": 7,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-underbrush-d/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "f6c9309567a69a3dd8a596608b46d355a0c168be40f33b9b4b2d958b4e5fa2d5",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-existing",
@@ -9197,6 +9215,118 @@
         "sha256": "eddca15fb12ab472d9c4d23779c327e43c06bf749ea48768afc15c9ddb33d9f8",
         "status": "framing-semantic-review-passed"
       }
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "snow-pine-cluster",
+      "index": 0,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "snow-bare-shrub",
+      "index": 1,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "ice-boulder-cluster",
+      "index": 2,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "snowdrift-rock",
+      "index": 3,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "wasteland-bramble",
+      "index": 4,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "wasteland-rock-spire",
+      "index": 5,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "wasteland-dry-grass",
+      "index": 6,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "wasteland-broken-standard",
+      "index": 7,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "grave-cross-cluster",
+      "index": 8,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "grave-signboards",
+      "index": 9,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "grave-dead-tree",
+      "index": 10,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "grave-marker-lantern",
+      "index": 11,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "forge-coal-pile",
+      "index": 12,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "forge-coal-sacks",
+      "index": 13,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "forge-ember-pile",
+      "index": 14,
+      "status": "pending",
+      "source": null
+    },
+    {
+      "atlasId": "scenery-regional",
+      "cellId": "forge-charcoal-kiln",
+      "index": 15,
+      "status": "pending",
+      "source": null
     }
   ],
   "baselineSemanticMismatches": [
