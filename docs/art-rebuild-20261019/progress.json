@@ -8948,10 +8948,15 @@
       "atlasId": "forest-existing",
       "cellId": "pine-dead",
       "index": 8,
-      "status": "pending",
-      "source": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-dead/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "assignmentPhase": "after-underbrush"
+      "assignmentPhase": "after-underbrush",
+      "sourceSha256": "669b96a1aff1cc36a8d6cdfb3e8a78cc1cdf452f86464be08ce12107af728b4a",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-existing",
@@ -8989,10 +8994,15 @@
       "atlasId": "forest-existing",
       "cellId": "pine-mature-c",
       "index": 11,
-      "status": "pending",
-      "source": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-mature-c/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "assignmentPhase": "after-underbrush"
+      "assignmentPhase": "after-underbrush",
+      "sourceSha256": "bde824d130b6874897a804c1e3b2cbb8f9247218f7a45dd1c43345f28a1bc7db",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-existing",
@@ -9017,14 +9027,18 @@
       "cellId": "pine-stump",
       "index": 14,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees",
+      "assignmentPhase": "after-current-four"
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-mossy-rock",
       "index": 15,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees",
+      "assignmentPhase": "after-current-four"
     },
     {
       "atlasId": "forest-temperate",
@@ -9420,6 +9434,42 @@
       "index": 15,
       "status": "pending",
       "source": null
+    },
+    {
+      "atlasId": "surface-meadow",
+      "cellId": "meadow-1",
+      "index": 0,
+      "status": "pending",
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees",
+      "assignmentPhase": "after-forest-completion"
+    },
+    {
+      "atlasId": "surface-meadow",
+      "cellId": "meadow-2",
+      "index": 1,
+      "status": "pending",
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees",
+      "assignmentPhase": "after-forest-completion"
+    },
+    {
+      "atlasId": "surface-meadow",
+      "cellId": "meadow-3",
+      "index": 2,
+      "status": "pending",
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees",
+      "assignmentPhase": "after-forest-completion"
+    },
+    {
+      "atlasId": "surface-meadow",
+      "cellId": "meadow-4",
+      "index": 3,
+      "status": "pending",
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees",
+      "assignmentPhase": "after-forest-completion"
     }
   ],
   "baselineSemanticMismatches": [
