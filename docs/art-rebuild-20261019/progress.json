@@ -4200,11 +4200,14 @@
     },
     {
       "topicId": "c02-battle-prop-spare-part-racks",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-spare-part-racks/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-019-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "4ddcf372d6c13064bb50216efb97571ac0baead77b1e1e3e8c75a50774acdcf3"
@@ -4217,11 +4220,14 @@
     },
     {
       "topicId": "c02-battle-prop-stretcher-medkits",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-stretcher-medkits/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-019-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "c8e44c0f6c5256a993db4e242ba355a90944924cd306dc45794da3129d217fda"
@@ -7934,26 +7940,32 @@
       "atlasId": "forest-existing",
       "cellId": "pine-mature-a",
       "index": 9,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-mature-a/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "8c118e7f1003c3c416c761e2b954469bb4aa189fc58be33247f5234bdf2bb4bc",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-003-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-mature-b",
       "index": 10,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-mature-b/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "a79459d1ebc98c80b21dd731c4f051586870fdfe69dc2be37c4658ea0ec8a55f",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-003-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
@@ -8140,6 +8152,13 @@
       "label": "盐袋掩体组",
       "observedOriginal": "wooden shield/weapon grouping with light sack",
       "status": "preserve-original-identity-review-label-separately"
+    }
+  ],
+  "visualReviewIssues": [
+    {
+      "topicId": "c02-battle-prop-stretcher-medkits",
+      "issue": "Medical cross retained from original; review symbol suitability before release",
+      "status": "pending-release-symbol-review"
     }
   ]
 }
