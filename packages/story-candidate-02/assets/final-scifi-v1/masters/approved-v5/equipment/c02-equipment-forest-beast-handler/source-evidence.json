@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-forest-beast-handler",
+  "assetId": "C02-SFV1-equipment-forest-beast-handler",
+  "label": "林兽驭手主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-02.png",
+  "originalMasterSha256": "8d1f70efe1add62295ab36bec297b3761524a0cb6474c8ce9cd2aab4196305f4",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 1
+  },
+  "sourceCropBox": [
+    945,
+    5,
+    1249,
+    309
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-forest-beast-handler.png",
+  "runtimeReferenceSha256": "13cb96e361824430555d9deabb2176e31511ce95c051980300666a9b38666abd",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-27f5e703-dcad-41ed-8de2-b343dad97b14.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-forest-beast-handler/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board02 R1C4 and runtime verified. One teal freestanding harness retains two arched straps, large buckles, hanging side loop, lower buckle tab and exactly two teal feather tufts. Central round device preserves the original cyan curved tracking/paw-like glyph, including central fork and surrounding marks, rather than replacing with readable text or animal portrait. Broad matte machinery and transparent strap holes pass actual48 black/white review; no ground shadow or outside glow.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

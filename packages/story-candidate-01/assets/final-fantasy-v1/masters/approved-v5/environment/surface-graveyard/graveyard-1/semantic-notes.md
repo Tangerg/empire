@@ -1,0 +1,11 @@
+# graveyard-1: opaque world-material source
+
+Original slot0 / graveyard-1: Dark muted brown compact soil with scattered embedded gray angular stones and sparse dry ochre/olive grass tufts; matte, with no visible puddles, grave markers, bones or symbols.
+
+Native review: {"identity": "Warm dark-brown compact soil with gray-brown angular stone groups and sparse dry ochre tufts, fully continuous opaque material. No added cemetery objects or wet pools.", "detail_density": "Roughly 15-20 recognizable accent groups, including about 9 tufts; original many tiny stones greatly reduced. Soil still has low-contrast fine mottling and ragged micro edges rather than the completely flat clean interiors requested.", "scale_caveat": "Main stone faces and tuft groups are larger than the proposed 2-6 world-unit accent size: roughly 6-14 units at 256 world period. This is a measured visual estimate, not a registration constraint.", "style_caveat": "Chunky stones but tufts have several small pointed leaves and ground has residual fine texture. Parent review at proposed world scale is needed; source preserved unchanged.", "native_acceptance": "Opaque/dimensions passed, semantic identity retained; source candidate, not claimed scene acceptance or seamlessness."}
+
+Native1254x1254RGB, every pixel opaque. All saved master/raw copies are byte-identical to the generator source SHA17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d. No source crop, blur, offset, edge lock, paint, alpha cleanup, rotation or rescale was applied. No standing source foot, anchor, footprint or obstruction is applicable to this continuous surface. Candidate 256 logical world period is a parent integration decision, not a scene binding in this delivery.
+
+Periodic boundary RGB differences are measured in material-qa.json, not labeled seamless. Original code uses32logical/64HD cells with inset3 and bleed0.5 and restarts tone0 per cell. Parent owns new world UV and authorized seam engineering. Only tone 0 is currently selected: c01-11 has 258 graveyard cells and c01-16 has 296; c01-12 has none. Tones 1-3 remain catalog-only. There is no original graveyard Blob47 derivative to count as another original painting.
+
+Exact sent prompt, original master swatch, approved quiet earth-plane style reference and source-code provenance are recorded. No repository edits.

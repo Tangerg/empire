@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-graveyard",
+  "cell_index": 1,
+  "original_cellOrder_token": "graveyard-2",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-a59200e1-1473-4167-a459-a2044a400221.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/graveyard-2-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/source-contract.json",
+  "sha256": "c2b4a95030ef6433f003b9966e654dc5c9e86089492e686de986c56cf2317bfa",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Cool muted green-gray earthy ground with sparse dry tufts, small gray stone groups and exactly two simplified bare branch/root-like forms. No cemetery objects, glow or pools.",
+    "detail_density": "About 18-22 scattered accent groups. Stone groups and tufts are much sparser than the original, but broad soil patches still carry low-contrast fine mottling and small ragged boundaries.",
+    "scale_caveat": "Main stone faces and tuft groups read about 6-16 world units at a 256-unit source period, larger than the proposed 2-6 units. The two twig groups span around 18-23 units. Scale remains a scene-trial decision.",
+    "style_caveat": "Quiet matte palette and broad base patches; residual microtexture and pointed tuft leaves remain. Not the completely smooth paper-plane soil requested.",
+    "native_acceptance": "Opaque/dimensions passed and material identity retained; parent scene review pending. No seamlessness claim."
+  }
+}

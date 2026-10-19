@@ -1,0 +1,11 @@
+# graveyard-2: opaque world-material source
+
+Original slot1 / graveyard-2: Cool muted green-gray earthy ground with scattered gray stones, dry desaturated grass tufts and a few thin bare root/twig-like forms; no standing vegetation or grave objects.
+
+Native review: {"identity": "Cool muted green-gray earthy ground with sparse dry tufts, small gray stone groups and exactly two simplified bare branch/root-like forms. No cemetery objects, glow or pools.", "detail_density": "About 18-22 scattered accent groups. Stone groups and tufts are much sparser than the original, but broad soil patches still carry low-contrast fine mottling and small ragged boundaries.", "scale_caveat": "Main stone faces and tuft groups read about 6-16 world units at a 256-unit source period, larger than the proposed 2-6 units. The two twig groups span around 18-23 units. Scale remains a scene-trial decision.", "style_caveat": "Quiet matte palette and broad base patches; residual microtexture and pointed tuft leaves remain. Not the completely smooth paper-plane soil requested.", "native_acceptance": "Opaque/dimensions passed and material identity retained; parent scene review pending. No seamlessness claim."}
+
+Native1254x1254RGB, every pixel opaque. All saved master/raw copies are byte-identical to the generator source SHAc2b4a95030ef6433f003b9966e654dc5c9e86089492e686de986c56cf2317bfa. No source crop, blur, offset, edge lock, paint, alpha cleanup, rotation or rescale was applied. No standing source foot, anchor, footprint or obstruction is applicable to this continuous surface. Candidate 256 logical world period is a parent integration decision, not a scene binding in this delivery.
+
+Periodic boundary RGB differences are measured in material-qa.json, not labeled seamless. Original code uses32logical/64HD cells with inset3 and bleed0.5 and restarts tone0 per cell. Parent owns new world UV and authorized seam engineering. Only tone 0 is currently selected: c01-11 has 258 graveyard cells and c01-16 has 296; c01-12 has none. Tones 1-3 remain catalog-only. There is no original graveyard Blob47 derivative to count as another original painting.
+
+Exact sent prompt, original master swatch, approved quiet earth-plane style reference and source-code provenance are recorded. No repository edits.

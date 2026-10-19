@@ -1,0 +1,65 @@
+{
+  "asset": "graveyard-2",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "c2b4a95030ef6433f003b9966e654dc5c9e86089492e686de986c56cf2317bfa",
+  "RGB_mean": [
+    82.31776656008587,
+    80.68299464043609,
+    66.6564302048437
+  ],
+  "RGB_std": [
+    8.314449169228448,
+    7.844825476943583,
+    6.206012811158773
+  ],
+  "luma_mean": 80.01782919830386,
+  "luma_std": 7.807818766918789,
+  "luma_percentiles_5_50_95": [
+    68.3462,
+    79.62699999999998,
+    91.90780000000001
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 79.7807429799641,
+    "bottom": 79.84386535586124,
+    "left": 78.14362427232855,
+    "right": 76.92545902611641,
+    "central_half": 81.66464219136677
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 4.7389686337054755,
+    "top_bottom_mean_abs_RGB": 4.093567251461988,
+    "left_right_max_abs_RGB": 21.0,
+    "top_bottom_max_abs_RGB": 20.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Cool muted green-gray earthy ground with sparse dry tufts, small gray stone groups and exactly two simplified bare branch/root-like forms. No cemetery objects, glow or pools.",
+    "detail_density": "About 18-22 scattered accent groups. Stone groups and tufts are much sparser than the original, but broad soil patches still carry low-contrast fine mottling and small ragged boundaries.",
+    "scale_caveat": "Main stone faces and tuft groups read about 6-16 world units at a 256-unit source period, larger than the proposed 2-6 units. The two twig groups span around 18-23 units. Scale remains a scene-trial decision.",
+    "style_caveat": "Quiet matte palette and broad base patches; residual microtexture and pointed tuft leaves remain. Not the completely smooth paper-plane soil requested.",
+    "native_acceptance": "Opaque/dimensions passed and material identity retained; parent scene review pending. No seamlessness claim."
+  },
+  "reference_material_identity": "Cool muted green-gray earthy ground with scattered gray stones, dry desaturated grass tufts and a few thin bare root/twig-like forms; no standing vegetation or grave objects.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

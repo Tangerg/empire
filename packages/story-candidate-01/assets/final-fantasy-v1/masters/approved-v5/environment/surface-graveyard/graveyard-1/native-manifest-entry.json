@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-graveyard",
+  "cell_index": 0,
+  "original_cellOrder_token": "graveyard-1",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-be67dcc0-5c14-4e90-80ea-cf330d26b040.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/graveyard-1-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/source-contract.json",
+  "sha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Warm dark-brown compact soil with gray-brown angular stone groups and sparse dry ochre tufts, fully continuous opaque material. No added cemetery objects or wet pools.",
+    "detail_density": "Roughly 15-20 recognizable accent groups, including about 9 tufts; original many tiny stones greatly reduced. Soil still has low-contrast fine mottling and ragged micro edges rather than the completely flat clean interiors requested.",
+    "scale_caveat": "Main stone faces and tuft groups are larger than the proposed 2-6 world-unit accent size: roughly 6-14 units at 256 world period. This is a measured visual estimate, not a registration constraint.",
+    "style_caveat": "Chunky stones but tufts have several small pointed leaves and ground has residual fine texture. Parent review at proposed world scale is needed; source preserved unchanged.",
+    "native_acceptance": "Opaque/dimensions passed, semantic identity retained; source candidate, not claimed scene acceptance or seamlessness."
+  }
+}
