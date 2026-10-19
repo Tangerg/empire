@@ -8435,26 +8435,32 @@
       "atlasId": "forest-temperate",
       "cellId": "bramble-berries",
       "index": 8,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/bramble-berries/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "7bff74b8e1097a708f4ac5ebc4a574749ceb7b9ddf6111c796fbd2cb7afccf37",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-009-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
       "atlasId": "forest-temperate",
       "cellId": "stump-low",
       "index": 9,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/stump-low/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "e479117bc6092125e908156198d0d47bb1eba7029d0487af418e2a4c1f746f87",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-009-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
