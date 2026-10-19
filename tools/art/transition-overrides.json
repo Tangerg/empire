@@ -1,1 +1,19 @@
-{"schemaVersion":1,"atlases":{}}
+{
+  "schemaVersion": 1,
+  "atlases": {
+    "transition-meadow-forest": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/transition-meadow-forest/forest-floor-material/master.png",
+      "sha256": "38be84ea01f6c93be9372179058c9975d630a787668c119e3f38da2edf7f0995",
+      "baselines": {
+        "1x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/transition-meadow-forest.png",
+          "sha256": "298e83c4c34cbf94c1c3a11a50bf73664fe33af7fac5f90b5af0a7213e0af6aa"
+        },
+        "2x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/baselines/transition-meadow-forest@2x.png",
+          "sha256": "23561f37b5905e04117de1e44125dc9a749c9a6ffb80dd47a7af724f6681f07e"
+        }
+      }
+    }
+  }
+}
