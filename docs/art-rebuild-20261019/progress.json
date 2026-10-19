@@ -501,7 +501,7 @@
       "source": null,
       "verification": {
         "state": "partial-frames-only",
-        "note": "Idle pending shared contact review; other poses held"
+        "note": "3 of four pose masters backed up; topic remains pending"
       },
       "assignment": "redraw_grayflag_cover_props",
       "plannedFrames": [
@@ -515,6 +515,16 @@
           "status": "raw-generated",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/idle/master.png",
           "sha256": "fcfc5191d0ed6601644cbc31d235e31c79e0d43a1241addadc86f952ea44ac95"
+        },
+        "walk-a": {
+          "status": "raw-generated",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/walk-a/master.png",
+          "sha256": "dbd93398d650b3655b3186b3d8c8d639714374983ff27c394eb6e71e8f33df6b"
+        },
+        "attack": {
+          "status": "raw-generated",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/attack/master.png",
+          "sha256": "473fee55f03ca6beb34750cf4d3b2927863785163b37d5357f969949c41361a8"
         }
       },
       "contactReviewPolicy": "Archer-specific maximum2logicalpx contact offset approved, only consistentallposes/no visiblefloat/clean nativealpha; declaredanchor unchanged, not a global tolerance"
