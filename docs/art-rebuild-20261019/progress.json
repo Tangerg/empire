@@ -499,14 +499,24 @@
       "topicId": "C01-UNIT-ARCHER",
       "status": "pending",
       "source": null,
-      "verification": null,
+      "verification": {
+        "state": "partial-frames-only",
+        "note": "Idle pending shared contact review; other poses held"
+      },
       "assignment": "redraw_grayflag_cover_props",
       "plannedFrames": [
         "idle",
         "walk-a",
         "attack",
         "walk-b"
-      ]
+      ],
+      "frames": {
+        "idle": {
+          "status": "raw-generated",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/idle/master.png",
+          "sha256": "fcfc5191d0ed6601644cbc31d235e31c79e0d43a1241addadc86f952ea44ac95"
+        }
+      }
     },
     {
       "topicId": "C01-UNIT-ASSASSIN",
@@ -1861,7 +1871,9 @@
         "exportTests": 14,
         "evidence": "docs/art-rebuild-20261019/batch-032-export-evidence.json",
         "visualAndConsumerAcceptance": "pending",
-        "runtimeVisual": "pending-browser-socket-blocked"
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "staticVisualReview": "native48px threebackground review passed",
+        "preview": "docs/art-rebuild-20261019/equipment-quartet-native.png"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "49cffdd51c414eac26afde9ccd395d58237761677c0f0f170f2c84b6b6aab428"
@@ -1889,7 +1901,9 @@
         "exportTests": 14,
         "evidence": "docs/art-rebuild-20261019/batch-032-export-evidence.json",
         "visualAndConsumerAcceptance": "pending",
-        "runtimeVisual": "pending-browser-socket-blocked"
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "staticVisualReview": "native48px threebackground review passed",
+        "preview": "docs/art-rebuild-20261019/equipment-quartet-native.png"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "14b1f52c171731991cb54cb89f231a5908a7b2d9f5bb836aaa080e12e7983536"
@@ -1929,7 +1943,9 @@
         "exportTests": 14,
         "evidence": "docs/art-rebuild-20261019/batch-030-export-evidence.json",
         "visualAndConsumerAcceptance": "pending",
-        "runtimeVisual": "pending-browser-socket-blocked"
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "staticVisualReview": "native48px threebackground review passed",
+        "preview": "docs/art-rebuild-20261019/equipment-quartet-native.png"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "a275daf0a9cc349f1ce7568700c3cf618584e52910d399d55ee171926368ecf9"
@@ -1963,7 +1979,9 @@
         "exportTests": 14,
         "evidence": "docs/art-rebuild-20261019/batch-030-export-evidence.json",
         "visualAndConsumerAcceptance": "pending",
-        "runtimeVisual": "pending-browser-socket-blocked"
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "staticVisualReview": "native48px threebackground review passed",
+        "preview": "docs/art-rebuild-20261019/equipment-quartet-native.png"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "25546858371705164bde93ac0c037eefa0fc54801c773eecef950c36d9bbe3fd"
@@ -4185,7 +4203,9 @@
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-drying-racks/master.png",
       "verification": {
         "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "note": "Raw master preserved; runtime visual acceptance pending",
+        "semanticReview": "passed higherresolution board comparison; full silhouette intact",
+        "alphaReview": "needs imagegen perimeter revision: edgealpha2 exceeds established1 gate"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "87f37f599cc9ae442ac9a5cb8f09a56e5db1f84f75750897a4a9314ab8654455"
@@ -4217,7 +4237,8 @@
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-folding-tables/master.png",
       "verification": {
         "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "note": "Raw master preserved; runtime visual acceptance pending",
+        "semanticReview": "passed higherresolution board comparison; full silhouette intact"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "f443c9a764507b5876b6256fbfc143781f01b6f2d47f0eae07a31c8687667541"
@@ -6952,22 +6973,22 @@
     {
       "topicId": "c03-battle-prop-cd97a638",
       "status": "raw-generated",
-      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-cd97a638/master.png",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-cd97a638/revision-2/master.png",
       "verification": {
         "state": "pending",
         "note": "Raw master preserved; export and visual acceptance pending",
-        "semanticReview": "needs imagegen revision: metal arrowheads and fletching at sameend"
+        "semanticReview": "revision2 passed: nocks and feathers at top, arrowheads opposite end"
       },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
         "issue": "Runtime is clipped atlas fragments",
         "recovery": "Clean semantic reconstruction based on full board visible logistics subjects and manifest labels; exact historical crop mapping unverified"
       },
-      "sourceSha256": "40fed89ed85919d2b1694e4d7cd48ba66f0f489ea3ee737fbfdfc23424af3a99",
+      "sourceSha256": "3442cfdbfc9c509c6e2e9c37f7a6a538c7df9b3e8148c26830eef75f1565c1e7",
       "revisionCandidate": {
         "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-cd97a638/revision-2/master.png",
         "sha256": "3442cfdbfc9c509c6e2e9c37f7a6a538c7df9b3e8148c26830eef75f1565c1e7",
-        "status": "semantic-review-pending"
+        "status": "semantic-review-passed"
       }
     },
     {
