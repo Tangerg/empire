@@ -2083,10 +2083,14 @@
     },
     {
       "topicId": "C01-EQUIP-EAGLE-SCOUT",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-eagle-scout/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "5a3d6b710668b7a212e7bcbdb23bc47cd6f1118c054e5be348a8b5bb4f227bda"
     },
     {
       "topicId": "C01-EQUIP-ENGINEER",
@@ -2403,10 +2407,14 @@
     },
     {
       "topicId": "C01-EQUIP-WOLF-RIDER",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-wolf-rider/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "9efdd8c12217e5adae23aeeccf6315962d9d83e707d9d1b98c7212e4f04b4385"
     },
     {
       "topicId": "C01-EQUIP-WOODLAND-WALKER",
@@ -4927,11 +4935,16 @@
     },
     {
       "topicId": "c02-equipment-boarding-team",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-boarding-team/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-056-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "2fd248ac052293044875a09a4b162d18377829fc01a374bdc97c61b45e5a1a51"
@@ -5203,11 +5216,16 @@
     },
     {
       "topicId": "c02-equipment-ring-rail-guard",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-ring-rail-guard/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-056-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "9480775d21599deebe1d14a7eae575e09eb1a9e483d9bd4e5c1d0a9f649fcea2"
@@ -5273,10 +5291,14 @@
     },
     {
       "topicId": "c02-equipment-stargate-guard",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-stargate-guard/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "3d75146a2adfe0510ea2d0c136cb5d2f94fe34b3c8d06cd4d7c4197ca4d61b16"
     },
     {
       "topicId": "c02-equipment-symbiotic-guard",
@@ -5310,10 +5332,15 @@
     },
     {
       "topicId": "c02-equipment-vacuum-trooper",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-vacuum-trooper/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "staticVisualReview": "failed-exterior-haze-revision-requested"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "7d44501d326315253feb54e9d7ded488f9ab19701b0c03b98b8e513791c4ed63"
     },
     {
       "topicId": "c02-equipment-wind-sail-skirmisher",
@@ -8014,11 +8041,16 @@
     },
     {
       "topicId": "c03-equip-6fa9292e",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-6fa9292e/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-056-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "source-inspection-before-generation",
@@ -8150,11 +8182,16 @@
     },
     {
       "topicId": "c03-equip-c11ad030",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-c11ad030/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-056-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "source-inspection-before-generation",
@@ -10036,6 +10073,34 @@
       "observedOriginal": "grain containers",
       "status": "designed-role-equipment-reconstruction",
       "uncertainty": "Exact historical atlas mapping unresolved"
+    },
+    {
+      "topicId": "c03-equip-4619e546",
+      "label": "宁朝禁军",
+      "observedOriginal": "peasant coat straw hat and pitchfork",
+      "status": "designed-role-equipment-reconstruction",
+      "uncertainty": "Exact historical atlas mapping unresolved; no invented faction emblems"
+    },
+    {
+      "topicId": "c03-equip-73d2bcb4",
+      "label": "将领亲兵",
+      "observedOriginal": "signal flags and drum",
+      "status": "designed-role-equipment-reconstruction",
+      "uncertainty": "Exact historical atlas mapping unresolved; no invented faction emblems"
+    },
+    {
+      "topicId": "c03-equip-76cd6822",
+      "label": "城门盾兵",
+      "observedOriginal": "large drum",
+      "status": "designed-role-equipment-reconstruction",
+      "uncertainty": "Exact historical atlas mapping unresolved; no invented faction emblems"
+    },
+    {
+      "topicId": "c03-equip-118c7423",
+      "label": "互市护卫",
+      "observedOriginal": "ornate hanging command tablet",
+      "status": "designed-role-equipment-reconstruction",
+      "uncertainty": "Exact historical atlas mapping unresolved; no invented faction emblems"
     }
   ],
   "visualReviewIssues": [
