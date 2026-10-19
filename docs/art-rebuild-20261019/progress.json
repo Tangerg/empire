@@ -1307,9 +1307,13 @@
     },
     {
       "topicId": "C01-BPROP-COVER-1",
-      "status": "pending",
-      "source": null,
-      "verification": null
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/art-rebuild-20261019/masters/battle-prop/bprop-cover-1/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw generated master preserved without pixel modification; not runtime accepted"
+      },
+      "sourceSha256": "c2234a533e8c3dcd0c6d864c00a0f2bbc1bed95e9abcea539a4635723ac55a90"
     },
     {
       "topicId": "C01-BPROP-COVER-2",
