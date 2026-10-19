@@ -1,0 +1,531 @@
+{
+  "topicId": "C01-UNIT-GHOST",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-GHOST",
+    "topicId": "C01-UNIT-GHOST",
+    "label": "幽魂",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-ghost.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-berserker-templar-inquisitor-ghost.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "56eee17172d98813cd91ed74627a2245ca5828232ed2b5c6282e605f920e4df7"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ghost.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "9445f40da928ccf8c6f192d80adc98e26788da989a16305112de95f97abbcf56"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-ghost.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "dfcb2f73d431a025f43d840c087232d4f8454a7de06b298a9449c804c84916b5"
+    }
+  },
+  "originalSourceSlot": "Fourth row of the complete 1254x1254 combat-atlas-berserker-templar-inquisitor-ghost.png. First three rows are separate berserker, templar and inquisitor subjects.",
+  "referenceExtraction": "Native unresampled row [0,910,1254,1254], idle [45,915,260,1234] and face/torso [80,920,215,1100] crops for inspection. Full original board and runtime/HD strips preserved byte-for-byte.",
+  "originalRuntimeAlphaDiagnostics": {
+    "idle": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        3,
+        2,
+        61,
+        94
+      ],
+      "dominantNonzeroAlpha": [
+        [
+          255,
+          2073
+        ],
+        [
+          1,
+          177
+        ],
+        [
+          254,
+          138
+        ],
+        [
+          2,
+          105
+        ],
+        [
+          253,
+          86
+        ],
+        [
+          3,
+          80
+        ],
+        [
+          252,
+          54
+        ],
+        [
+          4,
+          48
+        ]
+      ],
+      "opaquePixels": 2073,
+      "semiTransparentPixels": 1584,
+      "nonzeroPixels": 3657
+    },
+    "walk-a": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        2,
+        12,
+        62,
+        94
+      ],
+      "dominantNonzeroAlpha": [
+        [
+          255,
+          1741
+        ],
+        [
+          254,
+          140
+        ],
+        [
+          1,
+          132
+        ],
+        [
+          2,
+          98
+        ],
+        [
+          253,
+          94
+        ],
+        [
+          3,
+          79
+        ],
+        [
+          252,
+          52
+        ],
+        [
+          4,
+          41
+        ]
+      ],
+      "opaquePixels": 1741,
+      "semiTransparentPixels": 1545,
+      "nonzeroPixels": 3286
+    },
+    "attack": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        2,
+        2,
+        61,
+        94
+      ],
+      "dominantNonzeroAlpha": [
+        [
+          255,
+          2092
+        ],
+        [
+          1,
+          183
+        ],
+        [
+          2,
+          112
+        ],
+        [
+          254,
+          112
+        ],
+        [
+          3,
+          83
+        ],
+        [
+          253,
+          75
+        ],
+        [
+          252,
+          63
+        ],
+        [
+          4,
+          54
+        ]
+      ],
+      "opaquePixels": 2092,
+      "semiTransparentPixels": 1587,
+      "nonzeroPixels": 3679
+    },
+    "walk-b": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        2,
+        16,
+        62,
+        94
+      ],
+      "dominantNonzeroAlpha": [
+        [
+          255,
+          1447
+        ],
+        [
+          254,
+          128
+        ],
+        [
+          1,
+          119
+        ],
+        [
+          2,
+          90
+        ],
+        [
+          253,
+          87
+        ],
+        [
+          252,
+          73
+        ],
+        [
+          3,
+          56
+        ],
+        [
+          4,
+          33
+        ]
+      ],
+      "opaquePixels": 1447,
+      "semiTransparentPixels": 1378,
+      "nonzeroPixels": 2825
+    }
+  },
+  "status": "Bounded body-translucency revision succeeds; coordinator idle selection pending",
+  "imageGenerationStarted": true,
+  "actualConsumers": [
+    "c01.ghost"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 21,
+    "text": "'c01.ghost': 'C01-UNIT-GHOST'"
+  },
+  "consumerStatus": "Ten initial campaign enemies across c01-11, c01-12 and c01-16; two explicit c01-12 turn-5 ghost reinforcements; one experience-lab enemy-ghost actor. No distinct built-in consumer found.",
+  "actualInitialScenePlacements": [
+    {
+      "level": "c01-11",
+      "actor": "echo-3",
+      "side": "enemy",
+      "deploymentIndex": 3,
+      "position": [
+        10,
+        9
+      ],
+      "source": "levels.ts:688,691,694"
+    },
+    {
+      "level": "c01-11",
+      "actor": "echo-4",
+      "side": "enemy",
+      "deploymentIndex": 4,
+      "position": [
+        14,
+        9
+      ],
+      "source": "levels.ts:688,691,694"
+    },
+    {
+      "level": "c01-11",
+      "actor": "east-ghost",
+      "side": "enemy",
+      "deploymentIndex": 7,
+      "position": [
+        18,
+        6
+      ],
+      "source": "levels.ts:688,692,694"
+    },
+    {
+      "level": "c01-11",
+      "actor": "west-ghost",
+      "side": "enemy",
+      "deploymentIndex": 8,
+      "position": [
+        6,
+        10
+      ],
+      "source": "levels.ts:688,692,694"
+    },
+    {
+      "level": "c01-12",
+      "actor": "oath-echo-2",
+      "side": "enemy",
+      "deploymentIndex": 4,
+      "position": [
+        11,
+        10
+      ],
+      "source": "levels.ts:702,705,708"
+    },
+    {
+      "level": "c01-12",
+      "actor": "south-echo",
+      "side": "enemy",
+      "deploymentIndex": 7,
+      "position": [
+        15,
+        12
+      ],
+      "source": "levels.ts:702,706,708"
+    },
+    {
+      "level": "c01-16",
+      "actor": "memory-1",
+      "side": "enemy",
+      "deploymentIndex": 1,
+      "position": [
+        9,
+        5
+      ],
+      "source": "levels.ts:780,790,793"
+    },
+    {
+      "level": "c01-16",
+      "actor": "memory-2",
+      "side": "enemy",
+      "deploymentIndex": 2,
+      "position": [
+        15,
+        5
+      ],
+      "source": "levels.ts:780,790,793"
+    },
+    {
+      "level": "c01-16",
+      "actor": "memory-4",
+      "side": "enemy",
+      "deploymentIndex": 5,
+      "position": [
+        16,
+        10
+      ],
+      "source": "levels.ts:780,791,793"
+    },
+    {
+      "level": "c01-16",
+      "actor": "memory-6",
+      "side": "enemy",
+      "deploymentIndex": 7,
+      "position": [
+        18,
+        3
+      ],
+      "source": "levels.ts:780,791,793"
+    }
+  ],
+  "scriptedReinforcements": [
+    {
+      "level": "c01-12",
+      "trigger": "drowned-echoes",
+      "condition": "turnAtLeast 5, turnStart",
+      "actor": "drowned-echo-west",
+      "position": [
+        6,
+        0
+      ],
+      "owner": 2,
+      "facing": "south",
+      "source": "levels.ts:717-718"
+    },
+    {
+      "level": "c01-12",
+      "trigger": "drowned-echoes",
+      "condition": "turnAtLeast 5, turnStart",
+      "actor": "drowned-echo-east",
+      "position": [
+        16,
+        0
+      ],
+      "owner": 2,
+      "facing": "south",
+      "source": "levels.ts:717,719"
+    }
+  ],
+  "additionalLabPlacement": {
+    "level": "experience-lab",
+    "actor": "enemy-ghost",
+    "position": [
+      17,
+      4
+    ],
+    "owner": 2,
+    "facing": "west",
+    "source": "packages/experience-lab/src/index.ts:111"
+  },
+  "placementDerivation": "Enemy seed-array order maps to enemy deployment slots through levels.ts:384 and place at line823. Reinforcement and lab positions are explicit.",
+  "originalIdentity": "An exposed human apparition with tousled gray-brown hair, clean-shaven youthful face, dark eyes and a sorrowful expression. Blue-gray scarf and blue-gray/brown leather armored coat, brown shoulder straps with small brass round fasteners, brown belt and hip pouch. Two bare empty hands. Limbs and lower trouser/coat remnants dissolve into warm ochre-gold translucent curling wisps, with a few small close-floating fragments. No skull face, hood, horns, staff, sword or physical shield.",
+  "equipmentIdentity": "Both hands are empty in every original frame. The apparent gold fragments and fading lower body belong to the original ghost silhouette; the independent ghost-touch effect remains a separate topic.",
+  "symbolReview": "No sacred or faction emblem observed. Brass strap fasteners, buckle and pouch details are costume hardware, not invented runes. Warm ochre-gold edges are contained ghost-body styling, not an external glowing aura.",
+  "originalFrameReview": "Original idle and third attack are nearly identical upright hovering poses. Walk-a and walk-b show different arm extension and curled drifting lower-leg/wisp phases. The figure does not have ordinary planted boot contacts; lower limbs fade into connected wisps. Preserve hover semantics rather than adding a grounded infantry gait.",
+  "ruleContract": {
+    "unitSource": "packages/story-candidate-01/src/units.ts:79",
+    "unitId": "c01.ghost",
+    "name": "失名幽魂",
+    "weapons": [
+      "c01.ghost-touch"
+    ],
+    "value": 200,
+    "maxHp": 68,
+    "movement": 5,
+    "movementClass": "flying",
+    "armorClass": "unarmored",
+    "abilities": [
+      "attack",
+      "wait"
+    ],
+    "tags": [
+      "undead",
+      "oathbound",
+      "flying"
+    ],
+    "weaponSource": "weapons.ts:105",
+    "weaponName": "失名之触",
+    "power": 36,
+    "damageType": "magic",
+    "minRange": 1,
+    "maxRange": 2,
+    "weaponTags": [
+      "arcane",
+      "undead"
+    ],
+    "rangeDefaultEvidence": "packages/battle-engine/src/content-builders.ts:31-36"
+  },
+  "independentAssets": {
+    "equipmentBinding": "c01.ghost-touch -> C01-EQUIP-GHOST at candidate-01-bindings.ts:116",
+    "effectBinding": "c01.ghost-touch -> C01-FX-08 at line160",
+    "policy": "Keep equipment icon and independent ghost-touch FX separate. No attack beam, impact burst or full-canvas fog baked into the unit."
+  },
+  "alphaContract": "The source depicts a spectral faded body with gold-rim wisps. Original HD alpha is largely opaque in the central body (idle 2073 alpha255 pixels among 3657 nonzero); partial alpha is common near edges and particles. Do not claim original interior was uniformly semitransparent. Coordinator explicitly requests intentional bounded body translucency in the remake; empty canvas and limb/wisp gaps must remain truly alpha0, with no pervasive haze.",
+  "footprintClarification": "Original art frame32x48, anchor[16,47], footprint[1,1]. Rule flying/unarmored semantics remain unchanged. Hover registration uses an explicitly estimated virtual support anchor at the lower connected wisp, not fictitious boot contact.",
+  "scaleProposal": {
+    "humanBodyLogical": 44,
+    "proposedHairCrownToAttachedWispTipLogical": 44,
+    "nativeCanvas": [
+      1586,
+      992
+    ],
+    "proposedNativeCoherentHeightRange": [
+      880,
+      930
+    ],
+    "proposedLogicalWidthRange": [
+      30,
+      38
+    ],
+    "candidateExportFrame": [
+      104,
+      64
+    ],
+    "candidateOrigin": [
+      8,
+      4
+    ],
+    "rationale": "A human-sized apparition with exaggerated broad head and hands consistent with the approved chunky family. Its lower body is a connected wisp silhouette rather than planted boots. Measure coherent crown-to-attached-wisp extent from the idle, with a documented alpha threshold suited to actual intentional translucency, then lock one scale for all poses. Floating detached fragments do not determine body height."
+  },
+  "actionProposal": [
+    "idle: upright sorrowful hovering figure, empty hands lowered, attached lower wisps contained near body",
+    "walk-a: forward drift with one spectral lower-leg/wisp curl forward and the other trailing; one arm balances forward",
+    "attack: clear forward extension of an empty hand/palm toward the target for ghost-touch, other empty hand balancing; no weapon or separate impact FX",
+    "walk-b: opposite lower-leg/wisp and arm drift phase, same hover camera/body scale"
+  ],
+  "coordinatorIdleContractApproval": "2026-10-19 20:22 UTC: source-faithful ghost idle, 44 logical starting height, virtual connected-wisp anchor, no planted boots, bounded partial body alpha, empty-hand action, independent FX separate.",
+  "idlePilotAlphaLimitation": "Original youthful bare human face, gray-brown tousled hair, sad expression, blue-gray scarf and armored coat, brown straps/belt/pouch, empty hands and warm ochre curling lower-body wisp remain. Native, white and black views inspected. Apparent spectral color is present, but substantial interior probes have alpha252–253, about99% opacity, so the requested meaningful 70–85% body opacity is NOT achieved. No external haze above alpha1; native perimeter gate passes. No programmatic alpha changes.",
+  "idleActualMeasurement": {
+    "alphaThresholdGreaterThan": 64,
+    "method": "Largest 8-connected alpha>64 component, excluding detached fragments; no source pixels changed. Crown to lowest connected wisp defines pilot height.",
+    "bounds": [
+      531,
+      32,
+      1050,
+      960
+    ],
+    "crownY": 32,
+    "connectedWispTipY": 959,
+    "bodyHeight": 927,
+    "bodyTargetLogical": 44,
+    "proposedScale": 0.04746494066882417,
+    "suggestedVirtualHoverAnchor": [
+      831,
+      959
+    ],
+    "bottomFourRowsMeanX": 831.1111111111111,
+    "notPhysicalFootContact": true
+  },
+  "pendingIdleRevision": {
+    "candidate": "idle/attempt-02/master.png",
+    "review": "idle-translucency-review.json",
+    "actualChestAlphaMedian": 191,
+    "actualArmAlphaMedian": 199,
+    "actualLowerWispAlphaMedian": 197,
+    "faceAlphaMedian": 253,
+    "measurement": {
+      "alphaThresholdGreaterThan": 64,
+      "method": "Largest 8-connected alpha>64 component, excluding detached fragments; read-only.",
+      "bounds": [
+        529,
+        32,
+        1050,
+        960
+      ],
+      "crownY": 32,
+      "connectedWispTipY": 959,
+      "bodyHeight": 927,
+      "bodyTargetLogical": 44,
+      "proposedScale": 0.04746494066882417,
+      "suggestedVirtualHoverAnchor": [
+        831,
+        959
+      ],
+      "bottomFourRowsMeanX": 830.704347826087,
+      "notPhysicalFootContact": true
+    }
+  }
+}

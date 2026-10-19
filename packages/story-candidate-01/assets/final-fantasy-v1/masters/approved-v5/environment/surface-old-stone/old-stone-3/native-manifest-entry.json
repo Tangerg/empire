@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-old-stone",
+  "cell_index": 2,
+  "original_cellOrder_token": "old-stone-3",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-86715689-745e-43b3-a51f-f817009d766e.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-3/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-3/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-3/old-stone-3-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-3/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-3/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-3/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-3/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/source-contract.json",
+  "sha256": "591ca978c17b433462e42bcf768cef4511b8b0052d3e212cfcaf278bd1d50950",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    128,
+    128
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "material_identity": "Mixed irregular rounded and fractured paving stones in earthy gaps, with more angular infill than material0 and only very sparse moss.",
+    "style": "Warm gray-brown low-contrast matte groups, a few broad face divisions and rare cracks; no outer frame or center spotlight. More coarse infill and earth is visible than in the tightly packed cobble source.",
+    "stone_scale": "Visual estimate roughly5-7 main large stones across representative horizontal bands, with additional medium infill, below requested10-14 main groups. Parent accepted larger stone scale as a128-period scene trial direction for the first pair; no numeric density pass claimed.",
+    "candidate128_world_effect": "Large stones roughly18-26logical units across, with smaller infill; source retained without editing or forced density matching.",
+    "coverage": "Fully opaque edge-to-edge native material; periodic edges measured without seamlessness claim."
+  }
+}

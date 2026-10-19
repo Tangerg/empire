@@ -1,0 +1,270 @@
+{
+  "source_period_candidate": [
+    128,
+    128
+  ],
+  "all_native_opaque": true,
+  "entries": [
+    {
+      "asset": "old-stone-1",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "native_output_untouched": true,
+      "fully_opaque": true,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "alpha_255_pixels": 1572516,
+      "transparent_pixels": 0,
+      "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+      "raw_master_native_byte_identical": true,
+      "sha256": "922476bb7015b80492caf4a8192af63bfd93de813f7bcbebc67c7ec971246067",
+      "RGB_mean": [
+        134.7864301539698,
+        121.27846839078266,
+        102.92020176583259
+      ],
+      "RGB_std": [
+        17.891916842379626,
+        17.067985236404084,
+        18.778944611205056
+      ],
+      "luma_mean": 122.82479421131485,
+      "luma_std": 17.312022133249705,
+      "luma_percentiles_5_50_95": [
+        86.9588,
+        128.3106,
+        143.8132
+      ],
+      "64px_edge_band_and_center_mean_luma": {
+        "top": 127.18138166616826,
+        "bottom": 116.6132988586523,
+        "left": 125.60429396431418,
+        "right": 119.6825137210925,
+        "central_half": 122.94276861789523
+      },
+      "periodic_edge_difference_native": {
+        "left_right_mean_abs_RGB": 21.76581605528974,
+        "top_bottom_mean_abs_RGB": 18.996278575225944,
+        "left_right_max_abs_RGB": 74.0,
+        "top_bottom_max_abs_RGB": 72.0
+      },
+      "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+      "visual_review": {
+        "material_identity": "Irregular broad rounded-polygon cobbles with a small number of medium infill stones and restrained olive-earth joints.",
+        "style": "Low-contrast warm gray/taupe matte faces with broad quiet tonal facets; no outer square frame or center spotlight. Some soft irregular face shading remains, but original dense grit/chips are greatly reduced.",
+        "stone_scale": "Visual estimate approximately6-8 main cobbles across representative horizontal bands, plus infill; requested10-14 main stones was not fully achieved. Retained honestly as a candidate, not stretched or regenerated before parent review.",
+        "candidate128_world_effect": "Main stones approximately16-23logical units across by rough visual width estimates; parent should judge actual scene scale.",
+        "coverage": "Opaque edge-to-edge stones, no silhouette or margin; no natural seamlessness claim."
+      },
+      "reference_material_identity": "Irregular large rounded/polygonal old cobbles, warm weathered gray with narrow earth seams and sparse small moss",
+      "source_foot": null,
+      "anchor": null,
+      "renderer_world_period_candidate": [
+        128,
+        128
+      ],
+      "period_status": "candidate parent integration parameter, not bound by this source handoff"
+    },
+    {
+      "asset": "old-stone-2",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "native_output_untouched": true,
+      "fully_opaque": true,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "alpha_255_pixels": 1572516,
+      "transparent_pixels": 0,
+      "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+      "raw_master_native_byte_identical": true,
+      "sha256": "4427b87a7726ecc6b48d0acff1b7784218da2ae6990f1f06c4fd7d7be2a78b17",
+      "RGB_mean": [
+        119.98473592637531,
+        108.93518539715971,
+        91.53824126431782
+      ],
+      "RGB_std": [
+        16.406554660047796,
+        14.846699090327302,
+        18.99024144499024
+      ],
+      "luma_mean": 110.02826047327977,
+      "luma_std": 15.339423659281426,
+      "luma_percentiles_5_50_95": [
+        79.7486,
+        112.25959999999999,
+        132.5364
+      ],
+      "64px_edge_band_and_center_mean_luma": {
+        "top": 110.85039143989235,
+        "bottom": 107.41773381429425,
+        "left": 115.1292541716507,
+        "right": 112.30091605612041,
+        "central_half": 109.61582857671713
+      },
+      "periodic_edge_difference_native": {
+        "left_right_mean_abs_RGB": 8.001594896331738,
+        "top_bottom_mean_abs_RGB": 13.576023391812866,
+        "left_right_max_abs_RGB": 57.0,
+        "top_bottom_max_abs_RGB": 67.0
+      },
+      "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+      "visual_review": {
+        "material_identity": "Broad irregular rectangular/square flagstone slabs in loose offset courses, with olive moss in joints. Distinct from rounded cobbles.",
+        "style": "Warm gray-brown low-contrast matte faces, no square outer border or bright center. Some soft face mottling remains. Moss occurs in more joints and is more nearly continuous than the requested sparse-patch direction; noted for parent review.",
+        "stone_scale": "Visual estimate approximately4-6 main slabs across representative horizontal bands plus smaller infill, below requested10-14. No forced stretch or repeat edit; native candidate retained.",
+        "candidate128_world_effect": "Main slab widths roughly22-40logical units at128full-source period; parent should choose sample period or request one targeted density revision.",
+        "coverage": "Native opaque edge-to-edge material; not claimed seamless."
+      },
+      "reference_material_identity": "Larger irregular rectangular/square stone slabs with visible sparse olive moss in their wider joints",
+      "source_foot": null,
+      "anchor": null,
+      "renderer_world_period_candidate": [
+        128,
+        128
+      ],
+      "period_status": "candidate parent integration parameter, not bound by this source handoff"
+    },
+    {
+      "asset": "old-stone-3",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "native_output_untouched": true,
+      "fully_opaque": true,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "alpha_255_pixels": 1572516,
+      "transparent_pixels": 0,
+      "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+      "raw_master_native_byte_identical": true,
+      "sha256": "591ca978c17b433462e42bcf768cef4511b8b0052d3e212cfcaf278bd1d50950",
+      "RGB_mean": [
+        130.1462560635313,
+        118.43939330347037,
+        100.14738609972808
+      ],
+      "RGB_std": [
+        16.524538916177594,
+        16.699189189924542,
+        18.231614176551982
+      ],
+      "luma_mean": 119.60758940614913,
+      "luma_std": 16.715145661390522,
+      "luma_percentiles_5_50_95": [
+        89.38799999999999,
+        123.97479999999999,
+        142.3238
+      ],
+      "64px_edge_band_and_center_mean_luma": {
+        "top": 119.98546837370412,
+        "bottom": 115.96180196620816,
+        "left": 119.0512500398724,
+        "right": 119.59007896232058,
+        "central_half": 119.4577043891233
+      },
+      "periodic_edge_difference_native": {
+        "left_right_mean_abs_RGB": 4.891281233386496,
+        "top_bottom_mean_abs_RGB": 9.847155768208399,
+        "left_right_max_abs_RGB": 51.0,
+        "top_bottom_max_abs_RGB": 49.0
+      },
+      "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+      "visual_review": {
+        "material_identity": "Mixed irregular rounded and fractured paving stones in earthy gaps, with more angular infill than material0 and only very sparse moss.",
+        "style": "Warm gray-brown low-contrast matte groups, a few broad face divisions and rare cracks; no outer frame or center spotlight. More coarse infill and earth is visible than in the tightly packed cobble source.",
+        "stone_scale": "Visual estimate roughly5-7 main large stones across representative horizontal bands, with additional medium infill, below requested10-14 main groups. Parent accepted larger stone scale as a128-period scene trial direction for the first pair; no numeric density pass claimed.",
+        "candidate128_world_effect": "Large stones roughly18-26logical units across, with smaller infill; source retained without editing or forced density matching.",
+        "coverage": "Fully opaque edge-to-edge native material; periodic edges measured without seamlessness claim."
+      },
+      "reference_material_identity": "Mixed smaller rounded/broken stones densely set in earthy gaps; simplify into coarse grouped mixed paving rather than fine gravel noise",
+      "source_foot": null,
+      "anchor": null,
+      "renderer_world_period_candidate": [
+        128,
+        128
+      ],
+      "period_status": "candidate parent integration parameter, not bound by this source handoff"
+    },
+    {
+      "asset": "old-stone-4",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "native_output_untouched": true,
+      "fully_opaque": true,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "alpha_255_pixels": 1572516,
+      "transparent_pixels": 0,
+      "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+      "raw_master_native_byte_identical": true,
+      "sha256": "4576012e8e3659de0d44a7e13bf7b48697b4f21507b4e8489534bf5bfee1719a",
+      "RGB_mean": [
+        136.51523164152223,
+        123.22056118983845,
+        104.31758659371351
+      ],
+      "RGB_std": [
+        16.71003918549133,
+        15.953605334015469,
+        16.90618014723644
+      ],
+      "luma_mean": 124.6822133620262,
+      "luma_std": 16.138095245134135,
+      "luma_percentiles_5_50_95": [
+        90.1152,
+        127.67679999999999,
+        145.392
+      ],
+      "64px_edge_band_and_center_mean_luma": {
+        "top": 125.89803205243221,
+        "bottom": 129.02630103917463,
+        "left": 127.26610034888354,
+        "right": 127.48855980113633,
+        "central_half": 124.79163226702907
+      },
+      "periodic_edge_difference_native": {
+        "left_right_mean_abs_RGB": 7.655236576289208,
+        "top_bottom_mean_abs_RGB": 39.93620414673046,
+        "left_right_max_abs_RGB": 78.0,
+        "top_bottom_max_abs_RGB": 77.0
+      },
+      "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+      "visual_review": {
+        "material_identity": "Worn rectangular stones in clear staggered horizontal courses, thin warm-earth joints and sparse olive moss; correct road-paving family.",
+        "style": "Low-contrast warm gray-brown, no heavy black grid, dark outer frame or center spotlight. Native stone faces contain noticeably more fine mottling/chipped edge detail than the requested broad-plane style and the other three candidates. This is a disclosed style risk, not an approved chunky-style pass.",
+        "stone_scale": "Visual estimate roughly5-7 main rectangular stones across most courses, below requested10-14. Around ten horizontal courses down the canvas; geometric layout remains readable.",
+        "candidate128_world_effect": "Large rectangles roughly18-28logical units wide and11-14high at full128source period; small native mottling compresses at that scale but must be judged in the full scene.",
+        "coverage": "Fully opaque edge-to-edge native material; no edits, texture repaint or seamlessness claim."
+      },
+      "reference_material_identity": "More regular rectangular paving stones in staggered rows, worn chipped edges and sparse moss joints",
+      "source_foot": null,
+      "anchor": null,
+      "renderer_world_period_candidate": [
+        128,
+        128
+      ],
+      "period_status": "candidate parent integration parameter, not bound by this source handoff"
+    }
+  ],
+  "measurements_not_scene_validation": true
+}

@@ -1,0 +1,78 @@
+{
+  "atlas": "surface-old-stone",
+  "cell_index": 2,
+  "original_cellOrder_token": "old-stone-3",
+  "source_board_index": 14,
+  "source_master_crop": [
+    627,
+    940,
+    940,
+    1254
+  ],
+  "source_swatch_dimensions": [
+    313,
+    314
+  ],
+  "original_visual_identity": "Mixed smaller rounded/broken stones densely set in earthy gaps; simplify into coarse grouped mixed paving rather than fine gravel noise",
+  "source_mode": "RGB",
+  "material_is_fully_opaque": true,
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-old-stone/old-stone-3-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-old-stone/old-stone-3-current-runtime-2x-cell.png",
+  "current_visible_source_core_nominal_px": [
+    6,
+    6,
+    58,
+    58
+  ],
+  "raw_runtime_opposite_edge_mean_absolute_RGB_difference": {
+    "left_right": 0.0,
+    "top_bottom": 0.0
+  },
+  "inset_core_opposite_edge_mean_absolute_RGB_difference": {
+    "left_right": 14.006410256410257,
+    "top_bottom": 16.083333333333332
+  },
+  "current_c01_07_surface_instances": 0,
+  "current_use": "catalog-only material tone; no explicit current terrain selector chooses this tone",
+  "sourceFoot": null,
+  "anchor": null,
+  "footprint": null,
+  "obstruction": null,
+  "original_source_sha256": {
+    "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png": "6dc76bbb51ca562cd0bf2113d2233afaee0797c9fb1e2bedea40c97ed33e4790",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-old-stone@2x.png": "0fd43806cf590c8d93d020ea6ad83388c818faf0b11fcd4dbebc1a38ef27308a",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-old-stone.png": "2c3f6a0277230d134ed7c25c7bf2a5cdd14036cb133230a1d438d4f34e11a513",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py": "8b8690a2fbca6065e85ff667eeb40241e55f065611741bb008579ce8bcc3015c",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts": "7cb8644b2042e74a60784082cd05855d0bef7a296c9146715bec65f3789b3792",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts": "fb0e9ba2566ed4680d3e041709f86e976fbdcba9298a60cd05954c75347d95ad",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/game-ui/src/art/runtime-raster.ts": "6417cce6991a3166ab140dd0b376f682c8736d4f630e8866b3c5983b2c0d68ea"
+  },
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/source-contract.json",
+  "approved_style_reference": "/workspace/shared/empire-fortification-topology-plan/material-sources/stone-top-material/master.png",
+  "native_generation_contract": {
+    "source_dimensions": [
+      1254,
+      1254
+    ],
+    "opaque": true,
+    "native_modes_allowed": [
+      "RGB",
+      "RGBA with all alpha255"
+    ],
+    "source_scope": "four separate full edge-to-edge stone materials, no silhouettes or empty margins",
+    "source_foot": null,
+    "world_sampling_candidate_logical_period": [
+      128,
+      128
+    ],
+    "world_sampling_is_parent_integration_decision": true,
+    "nominal_horizontal_stone_count": "approximately10-14 broad main stones across full source; not a precise pixel guarantee",
+    "rendering": "broad matte low-contrast warm-gray/gray-brown planes; sparse olive moss, very few chips; no dense micrograin, bright central patch, dark outer border, perspective, side walls, road edge or painted geometry masks",
+    "raw_policy": "save untouched generator bytes; no worker blur, offset, edge lock, paint, alpha cleanup or pre-crop",
+    "seam_policy": "measure periodic edge differences and repetition honestly; no natural seamlessness claim; parent owns authorized technical seam and world sampling integration",
+    "style_reference": "/workspace/shared/empire-fortification-topology-plan/material-sources/stone-top-material/master.png",
+    "style_reference_role": "approved coarse matte stone treatment/palette only; do not copy its larger4-stone scale or brick layout"
+  },
+  "exact_material_prompt": "EXACT MATERIAL 2 / old-stone-3: mixed irregular rounded and fractured stone paving in earth joints, retaining a more BROKEN/MIXED-STONE character than the uniform large cobbles. Simplify the original dense small rubble into roughly ten to fourteen main broad stone GROUPS across the full image, each group a few joined broad shapes, without a dense tiny gravel carpet. A few medium infill stones, muted warm gray/taupe, thin earthy gaps, extremely sparse moss. No large rectangular flagstone courses or regular brick grid.",
+  "current_consumer_note": "c01.street overlays legacy route-stone-road and route-edge-stone-road above surface. Approved world road matcher replaces only route-dirt-road. Updating surface alone cannot remove remaining old stone-road pattern. transition-earth-stone also derives from original old-stone-1 but has no actual draws in historical16-level audit."
+}

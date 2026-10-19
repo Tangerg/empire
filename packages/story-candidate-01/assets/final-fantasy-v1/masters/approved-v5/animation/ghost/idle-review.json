@@ -1,0 +1,118 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-70004aea-3d5b-4ee4-90aa-f33f4cfadf1b.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "3cc36db175643cd20f68a1fb9c1c7d5e8e6c07f50e354fae0445225cdd20bd12",
+  "bboxAlphaNonzero": [
+    0,
+    22,
+    1550,
+    992
+  ],
+  "bboxAlphaGreaterThan127": [
+    531,
+    33,
+    1090,
+    959
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1265593,
+  "alphaOnePixels": 17490,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "coherentBodyMeasurement": {
+    "alphaThresholdGreaterThan": 64,
+    "method": "Largest 8-connected alpha>64 component, excluding detached fragments; no source pixels changed. Crown to lowest connected wisp defines pilot height.",
+    "bounds": [
+      531,
+      32,
+      1050,
+      960
+    ],
+    "crownY": 32,
+    "connectedWispTipY": 959,
+    "bodyHeight": 927,
+    "bodyTargetLogical": 44,
+    "proposedScale": 0.04746494066882417,
+    "suggestedVirtualHoverAnchor": [
+      831,
+      959
+    ],
+    "bottomFourRowsMeanX": 831.1111111111111,
+    "notPhysicalFootContact": true
+  },
+  "interiorAlphaProbes": [
+    {
+      "name": "face",
+      "rectangle": [
+        800,
+        160,
+        900,
+        260
+      ],
+      "min": 252,
+      "max": 253,
+      "median": 253.0,
+      "pixelCount": 10000
+    },
+    {
+      "name": "chest",
+      "rectangle": [
+        790,
+        410,
+        880,
+        475
+      ],
+      "min": 252,
+      "max": 253,
+      "median": 253.0,
+      "pixelCount": 5850
+    },
+    {
+      "name": "arm",
+      "rectangle": [
+        610,
+        420,
+        645,
+        460
+      ],
+      "min": 245,
+      "max": 253,
+      "median": 253.0,
+      "pixelCount": 1400
+    }
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "left-arm-torso-gap",
+      "rectangle": [
+        692,
+        502,
+        699,
+        509
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "lower-wisp-curl-gap",
+      "rectangle": [
+        773,
+        888,
+        780,
+        895
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Original youthful bare human face, gray-brown tousled hair, sad expression, blue-gray scarf and armored coat, brown straps/belt/pouch, empty hands and warm ochre curling lower-body wisp remain. Native, white and black views inspected. Apparent spectral color is present, but substantial interior probes have alpha252–253, about99% opacity, so the requested meaningful 70–85% body opacity is NOT achieved. No external haze above alpha1; native perimeter gate passes. No programmatic alpha changes.",
+  "requestedBodyTranslucencyAchieved": false,
+  "status": "Identity pilot generated; body translucency requirement failed, bounded native correction proposed",
+  "alphaTargetClarification": "The 70–85% interior-opacity range was a worker prompt target, not a user-specified acceptance threshold. Coordinator 20:26 UTC permits one bounded native correction and will select the better legal native version using outer transparency, ghost semantics, readability and contained wisps; no repeated opacity-target rerolls."
+}

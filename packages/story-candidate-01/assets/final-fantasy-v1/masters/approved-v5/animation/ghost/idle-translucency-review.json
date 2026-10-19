@@ -1,0 +1,189 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-12020c46-9ef7-4917-96d2-09ce6dce03c1.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "0e29d6bfde0d6441d28fec9a9bbb63819f5dbeb66a560aad7fc31bc1ae027e7d",
+  "bboxAlphaNonzero": [
+    49,
+    30,
+    1538,
+    992
+  ],
+  "bboxAlphaGreaterThan127": [
+    529,
+    32,
+    1093,
+    959
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1267259,
+  "alphaOnePixels": 12394,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "interiorAlphaProbes": [
+    {
+      "name": "face",
+      "rectangle": [
+        800,
+        160,
+        900,
+        260
+      ],
+      "min": 251,
+      "max": 254,
+      "median": 253.0,
+      "pixelCount": 10000,
+      "alphaGreaterThan1Pixels": 10000
+    },
+    {
+      "name": "chest",
+      "rectangle": [
+        790,
+        410,
+        880,
+        475
+      ],
+      "min": 183,
+      "max": 247,
+      "median": 191.0,
+      "pixelCount": 5850,
+      "alphaGreaterThan1Pixels": 5850
+    },
+    {
+      "name": "arm",
+      "rectangle": [
+        610,
+        420,
+        645,
+        460
+      ],
+      "min": 177,
+      "max": 249,
+      "median": 199.0,
+      "pixelCount": 1400,
+      "alphaGreaterThan1Pixels": 1400
+    },
+    {
+      "name": "empty-left",
+      "rectangle": [
+        100,
+        100,
+        300,
+        850
+      ],
+      "min": 0,
+      "max": 1,
+      "median": 0.0,
+      "pixelCount": 150000,
+      "alphaGreaterThan1Pixels": 0
+    },
+    {
+      "name": "empty-right",
+      "rectangle": [
+        1300,
+        100,
+        1500,
+        850
+      ],
+      "min": 0,
+      "max": 1,
+      "median": 0.0,
+      "pixelCount": 150000,
+      "alphaGreaterThan1Pixels": 0
+    },
+    {
+      "name": "lower-wisp-interior",
+      "rectangle": [
+        795,
+        825,
+        820,
+        850
+      ],
+      "min": 187,
+      "max": 247,
+      "median": 197.0,
+      "pixelCount": 625,
+      "alphaGreaterThan1Pixels": 625
+    },
+    {
+      "name": "connected-wisp-base",
+      "rectangle": [
+        800,
+        730,
+        850,
+        755
+      ],
+      "min": 179,
+      "max": 245,
+      "median": 214.0,
+      "pixelCount": 1250,
+      "alphaGreaterThan1Pixels": 1250
+    }
+  ],
+  "coherentBodyMeasurement": {
+    "alphaThresholdGreaterThan": 64,
+    "method": "Largest 8-connected alpha>64 component, excluding detached fragments; read-only.",
+    "bounds": [
+      529,
+      32,
+      1050,
+      960
+    ],
+    "crownY": 32,
+    "connectedWispTipY": 959,
+    "bodyHeight": 927,
+    "bodyTargetLogical": 44,
+    "proposedScale": 0.04746494066882417,
+    "suggestedVirtualHoverAnchor": [
+      831,
+      959
+    ],
+    "bottomFourRowsMeanX": 830.704347826087,
+    "notPhysicalFootContact": true
+  },
+  "alphaTargetClarification": "Coordinator authorized one bounded native correction, not repeated numeric opacity rerolls. Numerical 70–85% opacity was a worker prompt target, not a user hard requirement. Final choice uses real outer transparency, ghost semantics, readability and contained wisps.",
+  "semanticReview": "Bounded native translucency revision retains original sorrowful face, hair, scarf, coat, empty hands, ochre lower wisp and compact fragments. Actual chest alpha median191 and arm median199 establish meaningful native body translucency; face stays near-opaque at median253 for readability. This is genuine partial alpha in the body, not only edge antialiasing or a painted gray overlay. Empty side rectangles have zero pixels alpha>1, and the strict native perimeter gate passes. White and black composites inspected; no full-canvas haze. Coherent crown and attached-wisp anchor remain [831,959], with 927px body height. No additional reroll or programmatic alpha change.",
+  "requestedBodyTranslucencyAchieved": true,
+  "status": "Single authorized revision inspected; bounded body transparency achieved; coordinator idle selection pending",
+  "negativeSpaceProbes": [
+    {
+      "name": "left-arm-torso-gap",
+      "rectangle": [
+        692,
+        502,
+        699,
+        509
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "right-arm-torso-gap",
+      "rectangle": [
+        951,
+        624,
+        958,
+        631
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "lower-wisp-curl-gap",
+      "rectangle": [
+        775,
+        887,
+        782,
+        894
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "bodyTranslucencyCaveat": "The face is still near opaque. Verified partial alpha is in substantial chest and arm interior areas; no uniform whole-character opacity is claimed."
+}

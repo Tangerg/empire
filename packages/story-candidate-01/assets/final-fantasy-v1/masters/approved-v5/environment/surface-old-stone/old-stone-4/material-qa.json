@@ -1,0 +1,65 @@
+{
+  "asset": "old-stone-4",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "4576012e8e3659de0d44a7e13bf7b48697b4f21507b4e8489534bf5bfee1719a",
+  "RGB_mean": [
+    136.51523164152223,
+    123.22056118983845,
+    104.31758659371351
+  ],
+  "RGB_std": [
+    16.71003918549133,
+    15.953605334015469,
+    16.90618014723644
+  ],
+  "luma_mean": 124.6822133620262,
+  "luma_std": 16.138095245134135,
+  "luma_percentiles_5_50_95": [
+    90.1152,
+    127.67679999999999,
+    145.392
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 125.89803205243221,
+    "bottom": 129.02630103917463,
+    "left": 127.26610034888354,
+    "right": 127.48855980113633,
+    "central_half": 124.79163226702907
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 7.655236576289208,
+    "top_bottom_mean_abs_RGB": 39.93620414673046,
+    "left_right_max_abs_RGB": 78.0,
+    "top_bottom_max_abs_RGB": 77.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "material_identity": "Worn rectangular stones in clear staggered horizontal courses, thin warm-earth joints and sparse olive moss; correct road-paving family.",
+    "style": "Low-contrast warm gray-brown, no heavy black grid, dark outer frame or center spotlight. Native stone faces contain noticeably more fine mottling/chipped edge detail than the requested broad-plane style and the other three candidates. This is a disclosed style risk, not an approved chunky-style pass.",
+    "stone_scale": "Visual estimate roughly5-7 main rectangular stones across most courses, below requested10-14. Around ten horizontal courses down the canvas; geometric layout remains readable.",
+    "candidate128_world_effect": "Large rectangles roughly18-28logical units wide and11-14high at full128source period; small native mottling compresses at that scale but must be judged in the full scene.",
+    "coverage": "Fully opaque edge-to-edge native material; no edits, texture repaint or seamlessness claim."
+  },
+  "reference_material_identity": "More regular rectangular paving stones in staggered rows, worn chipped edges and sparse moss joints",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    128,
+    128
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

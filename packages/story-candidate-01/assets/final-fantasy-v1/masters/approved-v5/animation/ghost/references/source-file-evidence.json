@@ -1,0 +1,210 @@
+{
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-berserker-templar-inquisitor-ghost.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "56eee17172d98813cd91ed74627a2245ca5828232ed2b5c6282e605f920e4df7"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ghost.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "9445f40da928ccf8c6f192d80adc98e26788da989a16305112de95f97abbcf56"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-ghost.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "dfcb2f73d431a025f43d840c087232d4f8454a7de06b298a9449c804c84916b5"
+    }
+  },
+  "diagnostics": {
+    "idle": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        3,
+        2,
+        61,
+        94
+      ],
+      "dominantNonzeroAlpha": [
+        [
+          255,
+          2073
+        ],
+        [
+          1,
+          177
+        ],
+        [
+          254,
+          138
+        ],
+        [
+          2,
+          105
+        ],
+        [
+          253,
+          86
+        ],
+        [
+          3,
+          80
+        ],
+        [
+          252,
+          54
+        ],
+        [
+          4,
+          48
+        ]
+      ],
+      "opaquePixels": 2073,
+      "semiTransparentPixels": 1584,
+      "nonzeroPixels": 3657
+    },
+    "walk-a": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        2,
+        12,
+        62,
+        94
+      ],
+      "dominantNonzeroAlpha": [
+        [
+          255,
+          1741
+        ],
+        [
+          254,
+          140
+        ],
+        [
+          1,
+          132
+        ],
+        [
+          2,
+          98
+        ],
+        [
+          253,
+          94
+        ],
+        [
+          3,
+          79
+        ],
+        [
+          252,
+          52
+        ],
+        [
+          4,
+          41
+        ]
+      ],
+      "opaquePixels": 1741,
+      "semiTransparentPixels": 1545,
+      "nonzeroPixels": 3286
+    },
+    "attack": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        2,
+        2,
+        61,
+        94
+      ],
+      "dominantNonzeroAlpha": [
+        [
+          255,
+          2092
+        ],
+        [
+          1,
+          183
+        ],
+        [
+          2,
+          112
+        ],
+        [
+          254,
+          112
+        ],
+        [
+          3,
+          83
+        ],
+        [
+          253,
+          75
+        ],
+        [
+          252,
+          63
+        ],
+        [
+          4,
+          54
+        ]
+      ],
+      "opaquePixels": 2092,
+      "semiTransparentPixels": 1587,
+      "nonzeroPixels": 3679
+    },
+    "walk-b": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        2,
+        16,
+        62,
+        94
+      ],
+      "dominantNonzeroAlpha": [
+        [
+          255,
+          1447
+        ],
+        [
+          254,
+          128
+        ],
+        [
+          1,
+          119
+        ],
+        [
+          2,
+          90
+        ],
+        [
+          253,
+          87
+        ],
+        [
+          252,
+          73
+        ],
+        [
+          3,
+          56
+        ],
+        [
+          4,
+          33
+        ]
+      ],
+      "opaquePixels": 1447,
+      "semiTransparentPixels": 1378,
+      "nonzeroPixels": 2825
+    }
+  }
+}
