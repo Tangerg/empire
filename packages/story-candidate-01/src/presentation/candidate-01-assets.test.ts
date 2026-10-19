@@ -95,19 +95,27 @@ describe('authored red sequence file contract', () => {
 });
 
 
-describe('approved static prop bindings', () => {
+describe('approved static asset bindings', () => {
   const props = Object.entries(sourceOverrides.assets)
-    .filter(([, entry]) => entry.source.includes('/masters/approved-v5/props/'))
+    .filter(([, entry]) => entry.source.includes('/masters/approved-v5/props/') || entry.source.includes('/masters/approved-v5/equipment/'))
     .map(([topic]) => topic);
-  it.each(props)('resolves %s through the canonical 64/128 runtime files', (topic) => {
+  it.each(props)('resolves %s through its exact canonical density contract', (topic) => {
     const record = candidate01Asset(topic);
     const hd = hdManifest.assets.find(entry => entry.topicId === topic);
     expect(record.qualityTier).toBe('approved-chunky-v5-export-verified');
-    expect([record.width, record.height]).toEqual([64, 64]);
-    expect(hd).toBeDefined();
-    if (!hd) throw new Error(`missing prop HD ${topic}`);
-    expect(record.url).toContain(hd.png);
-    for (const [path, size] of [[record.png, 64], [hd.png, 128]] as const) {
+    const size = topic.startsWith('C01-EQUIP-') ? 48 : 64;
+    expect([record.width, record.height]).toEqual([size, size]);
+    const outputs: Array<readonly [string, number]> = [[record.png, size]];
+    if (size === 64) {
+      expect(hd).toBeDefined();
+      if (!hd) throw new Error(`missing prop HD ${topic}`);
+      expect(record.url).toContain(hd.png);
+      outputs.push([hd.png, 128]);
+    } else {
+      expect(hd).toBeUndefined();
+      expect(record.url).toContain(record.png);
+    }
+    for (const [path, size] of outputs) {
       const bytes = readFileSync(new URL(path, pack));
       expect([bytes.readUInt32BE(16), bytes.readUInt32BE(20)]).toEqual([size, size]);
       expect(bytes[25]).toBe(6); // PNG RGBA colour type, not an opaque RGB export.
