@@ -1,0 +1,329 @@
+{
+  "asset": "C01-UNIT-EAGLE-SCOUT",
+  "actualConsumers": [],
+  "consumerStatus": "Catalog-only canonical topic; no C01 unit-art binding or invented live consumer.",
+  "status": "Source bundle ready for coordinator preservation and actual export review; source identity, actions, scale, registration and strict alpha gates pass. Not counted as formal runtime completion.",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Native raw/master byte-identical to imagegen output, made read-only. No code alpha cleanup, painting, recoloring, cropping or rescaling. All derived composites are explicitly QA-only.",
+  "sharedScale": 0.05508474576271186,
+  "scaleFraction": "52/944",
+  "bodyReferenceSourcePixels": 944,
+  "bodyTargetHeightLogicalPixels": 52,
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/registration-evidence.json",
+  "identityContract": "Young tan elf, pointed ears, short charcoal hair, clean-shaven, gray-green hood down, olive tunic, brown/brass layered armor, brown boots, quiver, brown bow in forward screen-right hand, blue-gray reins in near screen-left hand. Brown eagle head/neck/body and folded wings, ochre hooked beak/eye/talons, brown saddle and blue-gray breast harness with brass rings and small diamond pendant.",
+  "speciesScaleContract": "Coordinator-approved52/944: hair crown y17 to mean near hind/front claw soles y961. Whole mounted rider+eagle-like body compared with legacy46px, wolf52, stag54, cavalry56. All poses share this scale; no independent rider/mount/bow/feather fitting.",
+  "anatomyContract": "Original high-resolution board depicts a four-legged fully feathered eagle-like mount, with three feet visible and one occluded. Four connected feathered legs and bird talons retained; folded wings and eagle head. No natural two-leg eagle substitution, lion paws/tail or invented flight.",
+  "idleApproval": {
+    "time": "2026-10-19 23:44 UTC",
+    "scaleFraction": "52/944",
+    "sourceFoot": [
+      798,
+      974
+    ],
+    "review": "Coordinator viewed mounted family comparison and approved original identity, restrained52scale and common authored sequence."
+  },
+  "selectedAttempts": {
+    "idle": "attempt01",
+    "walk-a": "attempt01",
+    "attack": "attempt03: physical bow clearance, perimeteralpha0",
+    "walk-b": "attempt02: reverse foreleg support phase"
+  },
+  "supersededAttempts": [
+    {
+      "pose": "attack",
+      "directory": "attack/rejected-attempt-01-perimeter-alpha3",
+      "reason": "18native top-row pixels atx980..997 exceeded perimeter gate; maximumalpha3."
+    },
+    {
+      "pose": "attack",
+      "directory": "attack/rejected-attempt-02-perimeter-alpha4",
+      "reason": "Transparency-only retry still failed source perimeter gate; maximumalpha4."
+    },
+    {
+      "pose": "walk-b",
+      "directory": "walk-b/rejected-attempt-01-repeated-foreleg-phase",
+      "reason": "Repeated front-foot support phase fromwalk-a; targeted imagegen correction selected."
+    }
+  ],
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/idle/request.json",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/idle/provenance.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "ab57bcdc7ea83a195483058a7589b4021f205811ea9218d1b4bd6a3bba57f8cc",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/idle/qa-white.png",
+      "qaGray": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/idle/qa-gray.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        798,
+        974
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        260,
+        17,
+        1330,
+        975
+      ],
+      "sha256": "03901897edc868172ce54bb0ff6c60d1f39a647bbbc3a711bb7376519e029175",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-375a4aef-b436-452a-874a-9502c16b7776.png",
+      "review": "Upright elf with forward bow hand and near reins hand; four planted bird-talon feet, wings folded. Original colors, gear, species silhouette and chest harness retained.",
+      "negativeSpaceProbes": [
+        {
+          "name": "bow-opening",
+          "rectangle": [
+            920,
+            230,
+            927,
+            237
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "hind-gap",
+          "rectangle": [
+            680,
+            838,
+            687,
+            845
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "perimeterMaxAlpha": 1
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-a/request.json",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-a/provenance.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "b4624e824edfdb68d2b63d1c08b74fbc3d5608e9cf47df089ac2d6255a56d498",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-a/qa-white.png",
+      "qaGray": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-a/qa-gray.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        804,
+        968
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        252,
+        16,
+        1332,
+        969
+      ],
+      "sha256": "05e70be7c8bbef806c80b66765edc7b997a7f2f12c522545bad1d1f7dc0615c9",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2e1857b5-0f4c-49de-b396-3405dd80e098.png",
+      "review": "Clear grounded walking phase: one hind and one fore foot planted while the other hind and fore feet lift and bend. Same body, rider, bow/reins hands and folded wings.",
+      "negativeSpaceProbes": [
+        {
+          "name": "bow-opening",
+          "rectangle": [
+            920,
+            230,
+            927,
+            237
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "below-raised-hind",
+          "rectangle": [
+            760,
+            920,
+            767,
+            927
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "below-raised-front",
+          "rectangle": [
+            1140,
+            910,
+            1147,
+            917
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "perimeterMaxAlpha": 1
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/attack/request.json",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/attack/provenance.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "ac34bb9aec2fe80a9671b00d715d0a73d262b0a0446daf8304e4537ac7af4eae",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/attack/qa-white.png",
+      "qaGray": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/attack/qa-gray.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        795,
+        979
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        250,
+        22,
+        1346,
+        980
+      ],
+      "sha256": "85d3701f90b0af73223158aa085a64494514ede856e9f0ea01f53f4001fe9da1",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-aa0f405b-fc35-4135-b752-717e8675d9e4.png",
+      "review": "Both arms visibly use one drawn brown shortbow, original forward hand grips bow, near hand draws string beside cheek. One nocked horizontal arrow points right; reins drape from saddle. Four taloned legs remain planted, wings folded. Selected third native attempt provides bow clearance and alpha0 perimeter.",
+      "negativeSpaceProbes": [
+        {
+          "name": "bow-opening",
+          "rectangle": [
+            990,
+            165,
+            997,
+            172
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "hind-gap",
+          "rectangle": [
+            680,
+            838,
+            687,
+            845
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "under-arrow",
+          "rectangle": [
+            900,
+            176,
+            907,
+            183
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "perimeterMaxAlpha": 0
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-b/request.json",
+      "provenance": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-b/provenance.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "687d11ab2b6180249a8a8dbf47e6544a8a2fa611ebfa879d3494898c53bd52e2",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-b/qa-white.png",
+      "qaGray": "/workspace/shared/empire-art-rebuild/approved-v5/animation/eagle-scout/walk-b/qa-gray.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        846,
+        970
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        248,
+        18,
+        1333,
+        971
+      ],
+      "sha256": "11447896542f7e9cde533307918f408f1f1f7bdd72a70dd0310050af11582906",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c9ee7416-e701-4a26-bb19-048395c82a26.png",
+      "review": "Opposite limb-support phase: raised rear leg crosses in front of its supporting counterpart and the large near-front feathered leg lifts forward, revealing the planted far-front leg. Four attached taloned legs remain readable. This is a stylized pacing walk, not a claim of recovered diagonal trot biomechanics.",
+      "negativeSpaceProbes": [
+        {
+          "name": "bow-opening",
+          "rectangle": [
+            920,
+            230,
+            927,
+            237
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "below-raised-hind",
+          "rectangle": [
+            720,
+            910,
+            727,
+            917
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "below-raised-front",
+          "rectangle": [
+            1160,
+            850,
+            1167,
+            857
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "perimeterMaxAlpha": 0
+    }
+  },
+  "coordinatorSequenceReview": {
+    "time": "2026-10-19 23:54 UTC",
+    "review": "Native quartet identity/action direction accepted. Corrected attack registration and quartet refreshed; every selected source now passes original alpha<=1 gate. Formal export and actual-export review remain coordinator-owned.",
+    "scaleFraction": "52/944",
+    "frameSize": [
+      128,
+      80
+    ],
+    "origin": [
+      14,
+      6
+    ],
+    "paddingTolerance": 2,
+    "actualExportReviewed": false
+  }
+}

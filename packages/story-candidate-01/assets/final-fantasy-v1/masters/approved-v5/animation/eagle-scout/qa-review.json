@@ -1,0 +1,33 @@
+{
+  "status": "Source bundle ready for coordinator preservation and actual export review; source identity, actions, scale, registration and strict alpha gates pass. Not counted as formal runtime completion.",
+  "nativeBackgroundsInspected": [
+    "black",
+    "white",
+    "gray"
+  ],
+  "genuineRGBA": true,
+  "fourUniqueNativeHashes": true,
+  "sourcePerimeterGate": {
+    "maximumAllowedAlpha": 1,
+    "observed": {
+      "idle": 1,
+      "walk-a": 1,
+      "attack": 0,
+      "walk-b": 0
+    },
+    "pass": true
+  },
+  "registrationGate": {
+    "maximumAllowedLogicalPixels": 4,
+    "observed": 2.6440677966101696,
+    "pass": true
+  },
+  "unmodifiedNativeSourceHashesVerified": true,
+  "physicalIdentityAndGearPreserved": true,
+  "distinctSemanticActionsReviewed": true,
+  "oppositeWalkSupportReviewed": true,
+  "runtimeExportOrTestsPerformed": false,
+  "repositoryOrGitWritesPerformed": false,
+  "formalExportOwner": "Coordinator",
+  "reviewCaveat": "The grounded poses preserve source art despite flying-reconnaissance design role. The source has no current runtime consumer. Walk cycle is stylized pacing; do not claim a recovered diagonal trot."
+}

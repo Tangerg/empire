@@ -9,3 +9,7 @@ Canonical sheet256×48, four64×48frames, anchor[32,47], footprint[2,2]. Frame o
 Proposed new scale52/944: native hair crown y17 to mean near hind/front claw soles y961. Whole mounted body uses one scale, compared against wolf52, stag54, cavalry56 and legacy46 silhouette. No independent rider, mount, feather, bow or per-pose fit. Source body and ground support determine registration, never the rider boot. Native1586×992full canvas is retained, including alpha1 boundary samples.
 
 All art is generated via built-in imagegen. Master and raw are immutable byte-identical copies of the generated PNG. QA backgrounds, source reference crops, scale comparison and registration measurements are diagnostic only. No source cleanup, recolor or programmatic art painting.
+
+## Final source sequence
+
+Coordinator approved the idle scale and identity at23:44UTC and native sequence action direction by23:54UTC. Corrected attack now has perimeteralpha0; all selected sources meet the unchanged alpha<=1gate. Common canvas1586×993 uses maximum2pixels transparent derived padding. Maximum measured registration2.6440677966logical pixels. Source bundle is ready; no formal export, repository change or runtime completion is claimed.

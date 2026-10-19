@@ -4,10 +4,10 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 318,
+    "formalBound": 319,
     "boundByCategory": {
       "battle-prop": 64,
-      "combat-unit": 36,
+      "combat-unit": 37,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
@@ -16,7 +16,7 @@
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 318,
+    "rawPreservedTopics": 320,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1385,8 +1385,10 @@
       "category": "combat-unit",
       "label": "古龙",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ancient-dragon/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -1663,13 +1665,23 @@
       "category": "combat-unit",
       "label": "鹰骑斥候",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/eagle-scout/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/eagle-scout/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/eagle-scout/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/eagle-scout/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-eagle-scout.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-eagle-scout.png",
+      "stageEvidence": {
+        "raw": "four native transparent mounted poses; original rider, mount and weapon identity preserved; rejected attempts retained",
+        "export": "one shared body scale, measured feet, full-canvas1x/2x with explicit1-2px transparent padding; native pose review passed",
+        "runtimeBinding": "canonical and HD catalog resolver; no current domain or authored map consumer; not claimed deployed",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-ENGINEER",

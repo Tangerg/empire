@@ -12,6 +12,7 @@ import sourceOverrides from '../../../../tools/art/source-overrides.json';
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
 const bundles = [
+  { topic: 'C01-UNIT-EAGLE-SCOUT', source: 'animation/eagle-scout', size: [128, 80], footprint: [2, 2], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-MISSION-BORDER-FARMER', source: 'mission/border-farmer', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'carry-or-work', 'walk-b'] },
   { topic: 'C01-UNIT-SPIRIT-FIRE', source: 'animation/spirit-fire', size: [116, 76], footprint: [2, 2], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-MISSION-REFUGEE-CHILD', source: 'mission/refugee-child', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'carry-or-work', 'walk-b'] },

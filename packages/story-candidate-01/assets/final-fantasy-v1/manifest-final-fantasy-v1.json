@@ -1344,13 +1344,13 @@
       "topicId": "C01-UNIT-EAGLE-SCOUT",
       "label": "鹰骑斥候",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-eagle-scout.png",
-      "width": 256,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-eagle-scout.png",
+      "width": 512,
+      "height": 80,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 80,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1359,13 +1359,14 @@
         "walk-b"
       ],
       "anchor": [
-        32,
-        47
+        57.95762711864407,
+        59.652542372881356
       ],
       "footprint": [
         2,
         2
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-ENGINEER",

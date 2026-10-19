@@ -1,4 +1,5 @@
 {
+  "status": "Source bundle ready for coordinator preservation and actual export review; source identity, actions, scale, registration and strict alpha gates pass. Not counted as formal runtime completion.",
   "sharedScale": 0.05508474576271186,
   "scaleFraction": "52/944",
   "bodyReferenceSourcePixels": 944,
@@ -19,8 +20,13 @@
     14,
     6
   ],
-  "paddingPolicy": "Only transparent bottom/right padding in derived export, at most2pixels wide and1pixel high. Native raw/master untouched. No crop, per-pose fit or rescale.",
-  "registrationMethod": "Selected two supporting talon ROIs, one hind and one fore. Mean x of the bottom4 opaque-support rows for each talon; average those centers, y is lowest selected claw. Whole-canvas translation only. The idle target anchor798,974 was coordinator-approved. Rider boots excluded.",
+  "proposedLogicalAnchor": [
+    57.95762711864407,
+    59.652542372881356
+  ],
+  "canvasPaddingToleranceRequired": 2,
+  "paddingPolicy": "Only transparent bottom/right padding in derived export; at most2pixels width and1pixel height. Every native source pixel retained. Native raw/master untouched. No crop, per-pose fit or art rescale.",
+  "registrationMethod": "Two selected supporting talon ROIs, one hind and one fore. Mean x of bottom4 alpha>127 support rows for each talon, then average centers; y is lowest selected claw. Only whole-canvas translation. Idle anchor798,974 is coordinator-approved. Rider boots excluded.",
   "poses": {
     "idle": {
       "nativeSize": [
@@ -82,6 +88,10 @@
         6.0,
         101.36440677966101,
         60.69915254237288
+      ],
+      "paddingNeeded": [
+        0,
+        1
       ]
     },
     "walk-a": {
@@ -144,6 +154,10 @@
         6.330508474576272,
         101.03389830508475,
         61.02966101694915
+      ],
+      "paddingNeeded": [
+        0,
+        1
       ]
     },
     "attack": {
@@ -152,12 +166,12 @@
         993
       ],
       "sourceSupportAnchorEstimated": [
-        796,
-        980
+        795,
+        979
       ],
       "sourceFootMidpoint": [
-        795.974828375286,
-        980
+        795.4694976076555,
+        979
       ],
       "supportingTalonMeasurements": [
         {
@@ -168,13 +182,13 @@
             980
           ],
           "bounds": [
-            480,
+            479,
             840,
-            682,
+            683,
             955
           ],
           "soleY": 954,
-          "bottomFourRowsMeanX": 582.2105263157895
+          "bottomFourRowsMeanX": 580.0526315789474
         },
         {
           "roi": [
@@ -187,25 +201,29 @@
             895,
             880,
             1120,
-            981
+            980
           ],
-          "soleY": 980,
-          "bottomFourRowsMeanX": 1009.7391304347826
+          "soleY": 979,
+          "bottomFourRowsMeanX": 1010.8863636363636
         }
       ],
       "registrationOffsetSource": [
-        2,
-        -6
+        3,
+        -5
       ],
       "registrationOffsetLogical": [
-        0.11016949152542373,
-        -0.3305084745762712
+        0.1652542372881356,
+        -0.2754237288135593
       ],
       "fullCanvasBoundsLogical": [
-        14.110169491525424,
-        5.669491525423728,
-        101.47457627118644,
-        60.36864406779661
+        14.165254237288135,
+        5.72457627118644,
+        101.52966101694915,
+        60.42372881355932
+      ],
+      "paddingNeeded": [
+        2,
+        0
       ]
     },
     "walk-b": {
@@ -268,6 +286,10 @@
         6.220338983050848,
         98.72033898305085,
         60.91949152542373
+      ],
+      "paddingNeeded": [
+        0,
+        1
       ]
     }
   },
