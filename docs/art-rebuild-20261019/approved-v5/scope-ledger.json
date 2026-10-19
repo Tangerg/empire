@@ -4,16 +4,16 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 152,
+    "formalBound": 164,
     "boundByCategory": {
-      "battle-prop": 52,
+      "battle-prop": 60,
       "combat-unit": 24,
       "equipment": 47,
       "interactive-structure": 24,
       "mission-unit": 1,
-      "skill": 4
+      "skill": 8
     },
-    "rawPreservedTopics": 158,
+    "rawPreservedTopics": 165,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1993,8 +1993,10 @@
       "category": "combat-unit",
       "label": "林地行者",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/woodland-walker/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5296,11 +5298,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-05/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-05.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native source/prompt and original board identity preserved; rejected revisions retained",
+        "export": "native48 skill or64 prop white/dark/olive alpha and functional symbol review passed",
+        "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/static-batch-152/native-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-06",
@@ -5312,11 +5320,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-06/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-06.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native source/prompt and original board identity preserved; rejected revisions retained",
+        "export": "native48 skill or64 prop white/dark/olive alpha and functional symbol review passed",
+        "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/static-batch-152/native-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-07",
@@ -5328,11 +5342,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-07/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-07.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native source/prompt and original board identity preserved; rejected revisions retained",
+        "export": "native48 skill or64 prop white/dark/olive alpha and functional symbol review passed",
+        "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/static-batch-152/native-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-08",
@@ -5344,11 +5364,17 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-08/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/skill/skill-08.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native source/prompt and original board identity preserved; rejected revisions retained",
+        "export": "native48 skill or64 prop white/dark/olive alpha and functional symbol review passed",
+        "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/static-batch-152/native-review.png"
+      }
     },
     {
       "topicId": "C01-SKILL-09",
@@ -10029,11 +10055,17 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-fuel-oxygen-tanks/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-fuel-oxygen-tanks.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native source/prompt and original board identity preserved; rejected revisions retained",
+        "export": "native48 skill or64 prop white/dark/olive alpha and functional symbol review passed",
+        "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/static-batch-152/native-review.png"
+      }
     },
     {
       "topicId": "c02-battle-prop-giant-roots",
@@ -10104,13 +10136,21 @@
       "category": "battle-prop",
       "label": "冰裂危险组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-ice-cracks/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-ice-cracks.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native source/prompt and original board identity preserved; rejected revisions retained",
+        "export": "native48 skill or64 prop white/dark/olive alpha and functional symbol review passed",
+        "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/static-batch-152/native-review.png"
+      }
     },
     {
       "topicId": "c02-battle-prop-overload-nodes",
@@ -10122,11 +10162,17 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-overload-nodes/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-overload-nodes.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native source/prompt and original board identity preserved; rejected revisions retained",
+        "export": "native48 skill or64 prop white/dark/olive alpha and functional symbol review passed",
+        "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/static-batch-152/native-review.png"
+      }
     },
     {
       "topicId": "c02-battle-prop-permission-badges",
@@ -10134,13 +10180,21 @@
       "category": "battle-prop",
       "label": "权限牌证据组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-permission-badges/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-permission-badges.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native source/prompt and original board identity preserved; rejected revisions retained",
+        "export": "native48 skill or64 prop white/dark/olive alpha and functional symbol review passed",
+        "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/static-batch-152/native-review.png"
+      }
     },
     {
       "topicId": "c02-battle-prop-permission-lights",
@@ -10169,13 +10223,21 @@
       "category": "battle-prop",
       "label": "实体胶片证据组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-physical-film/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-physical-film.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native source/prompt and original board identity preserved; rejected revisions retained",
+        "export": "native48 skill or64 prop white/dark/olive alpha and functional symbol review passed",
+        "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/static-batch-152/native-review.png"
+      }
     },
     {
       "topicId": "c02-battle-prop-platform-shields",
@@ -10225,13 +10287,21 @@
       "category": "battle-prop",
       "label": "风险清单证据组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-risk-list-evidence/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-risk-list-evidence.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native source/prompt and original board identity preserved; rejected revisions retained",
+        "export": "native48 skill or64 prop white/dark/olive alpha and functional symbol review passed",
+        "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/static-batch-152/native-review.png"
+      }
     },
     {
       "topicId": "c02-battle-prop-seed-coolers",
@@ -10302,13 +10372,21 @@
       "category": "battle-prop",
       "label": "孢子囊危险组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-spore-sacs/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-spore-sacs.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native source/prompt and original board identity preserved; rejected revisions retained",
+        "export": "native48 skill or64 prop white/dark/olive alpha and functional symbol review passed",
+        "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/static-batch-152/native-review.png"
+      }
     },
     {
       "topicId": "c02-battle-prop-stretcher-medkits",
@@ -10337,13 +10415,21 @@
       "category": "battle-prop",
       "label": "票与货单证据组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-tickets-manifests/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-tickets-manifests.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native source/prompt and original board identity preserved; rejected revisions retained",
+        "export": "native48 skill or64 prop white/dark/olive alpha and functional symbol review passed",
+        "runtimeBinding": "existing canonical dimensions/anchor preserved; C02 catalog-only, no implemented campaign claimed",
+        "liveGame": "pending",
+        "evidence": "approved-v5/static-batch-152/native-review.png"
+      }
     },
     {
       "topicId": "c02-battle-prop-water-barrels",

@@ -1,0 +1,3 @@
+Twelve static topics formally bound
+
+C01 skills05–08 use48px icon contract; C02 hazards and evidence groups use64px prop contract. Native white/dark/olive composites were inspected with source-board semantic evidence. Full authored canvases and alpha are preserved. Tickets v1 edge-alpha failure and corrected v2 remain in source history. C02 is catalog-only and has no implemented campaign playback claim. These12 bring canonical formal bindings from152 to164; derived copies and source revisions add zero. Export/check, targeted catalog/resolver tests and typecheck passed. Browser gameplay remains pending.
