@@ -1,0 +1,82 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ccc53aff-9762-443e-a79c-d7a5ba30256c.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "914d78729dbe3636868b038797a8768dfc7c3cf30effa3e40d2a277bbde6d42c",
+  "bboxAlphaNonzero": [
+    27,
+    41,
+    1571,
+    992
+  ],
+  "bboxAlphaGreaterThan127": [
+    31,
+    44,
+    1562,
+    976
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 811337,
+  "alphaOnePixels": 5841,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "wheelContacts": {
+    "nearRearWheel": {
+      "roi": [
+        380,
+        760,
+        635,
+        945
+      ],
+      "contactY": 915,
+      "bottomBandRows": 4,
+      "meanX": 503.522,
+      "spanX": [
+        474,
+        535
+      ]
+    },
+    "nearFrontWheel": {
+      "roi": [
+        810,
+        840,
+        1085,
+        991
+      ],
+      "contactY": 975,
+      "bottomBandRows": 4,
+      "meanX": 939.574,
+      "spanX": [
+        909,
+        972
+      ]
+    },
+    "farFrontWheel": {
+      "roi": [
+        1320,
+        760,
+        1490,
+        930
+      ],
+      "contactY": 895,
+      "bottomBandRows": 4,
+      "meanX": 1352.704,
+      "spanX": [
+        1326,
+        1381
+      ]
+    }
+  },
+  "suggestedSourceFoot": [
+    932,
+    975
+  ],
+  "sourceFootMethod": "Mean x of three visible wheel bottom-four-row support bands; y is nearest/front wheel lowest contact. Occluded fourth contact is not invented.",
+  "lockedWholeUnitScale": "76/1509",
+  "masterRawHashMatches": true
+}

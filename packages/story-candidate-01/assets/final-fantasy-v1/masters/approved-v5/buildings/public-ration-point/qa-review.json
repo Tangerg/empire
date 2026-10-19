@@ -1,0 +1,146 @@
+{
+  "topicId": "C01-STRUCT-PUBLIC-RATION-POINT",
+  "status": "Complete native trio; original states and native/shared-scale previews visually reviewed",
+  "masterIntegrity": "All active raw/master pairs are byte-identical native built-in imagegen outputs; no alpha cleaning, resize, crop, translation, repaint or per-state fit",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "perimeterGate": "All three actual outermost maxima1; zero edge pixels>1",
+  "sharedStructuralSourceFoot": [
+    627,
+    1106
+  ],
+  "acceptedLogicalWidth": 112,
+  "scaleApplication": "One112/1208 factor on each complete native1254 square canvas",
+  "visualChecks": {
+    "normal": "Broad ochre canopy on timber stall with grain tubs/tray/box, left amber lantern, side sacks and grain crate, right tall parchment tally board",
+    "damaged": "Torn canopy and exposed rafters, cracked/broken top boards with full lower counter frame retained, empty broken containers, fallen grain and board, lantern removed",
+    "captured": "Same intact normal stall plus exactly three circular tokens hanging under front canopy, blue/gold/green from left to right; no flag",
+    "style": "Chunky broad matte planes, strong dark outlines and simplified readable grain masses",
+    "registration": "Normal/captured structural frame stable. Damagev2 fixes v1 counter contraction; shared foot remains front counter leg1106, not lower sacks/grain",
+    "alpha": "True clear RGBA exterior and complete asset with no ground tile or perimeter residue",
+    "nativeReadability": "112 logical common-scale preview retains strong canopy/grain/board identity and distinct damage/three-token cues"
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "sharedLogical112": "qa-logical-112.png",
+    "normal": "qa-normal-logical-112.png"
+  },
+  "rejectedAttempts": [
+    {
+      "path": "damaged/rejected-registration-v1",
+      "reason": "Lower counter frame shrank/retreated; alpha passed but shared structural registration did not"
+    }
+  ],
+  "consumerQualification": {
+    "status": "no-static-consumer-reference-found",
+    "audit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "directSearch": "Exact topic and runtime slug in *.ts and *.scene.json returned no matches",
+    "observedInBrowser": false,
+    "qualification": "Catalog runtime asset exists; no actual placed campaign/interactive instance proved; dynamic external input not excluded"
+  },
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        24,
+        179,
+        1232,
+        1124
+      ],
+      "alphaAbove1Bounds": [
+        22,
+        178,
+        1234,
+        1126
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3a12ab86-9284-4170-a79b-a497cc6d56db.png",
+      "sha256": "5abfcd309d1c288a3b733263750523866d5cc12d94bc56fc3357793633ecebd0",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 731590,
+      "perimeterGate": "Actual outermost maximum alpha<=1; zero perimeter pixels>1",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1106
+      ],
+      "visibleSilhouetteReview": "Complete contained canopy/frame/counter, tally board, supplies and bounded loose damage"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        26,
+        177,
+        1235,
+        1132
+      ],
+      "alphaAbove1Bounds": [
+        24,
+        177,
+        1237,
+        1134
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-75cf838b-abbd-4cc6-9617-db0b4834b65b.png",
+      "sha256": "d4ac3d0fc8ce4101ffca2098b94454e4e2d2816fdabe5bde9c1050d7bd8ea30e",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "activePrompt": "prompt-locked-counter-v2.txt",
+      "fullyTransparentPixelCount": 716801,
+      "perimeterGate": "Actual outermost maximum alpha<=1; zero perimeter pixels>1",
+      "foundationSourceFoot": [
+        627,
+        1106
+      ],
+      "visibleSilhouetteReview": "Complete contained canopy/frame/counter, tally board, supplies and bounded loose damage"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        24,
+        178,
+        1234,
+        1125
+      ],
+      "alphaAbove1Bounds": [
+        22,
+        177,
+        1236,
+        1128
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-20536db3-1d95-4582-9c28-4e8d21162b95.png",
+      "sha256": "8a143851af5cbf683623414fe4d8dd8ff739d77da3d8c648de248997eb9f5959",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 729941,
+      "perimeterGate": "Actual outermost maximum alpha<=1; zero perimeter pixels>1",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1106
+      ],
+      "visibleSilhouetteReview": "Complete contained canopy/frame/counter, tally board, supplies and bounded loose damage"
+    }
+  },
+  "noRepositoryWrites": true,
+  "noLiveGameClaim": true
+}

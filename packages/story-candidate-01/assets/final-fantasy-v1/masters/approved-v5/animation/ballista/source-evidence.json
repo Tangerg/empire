@@ -1,0 +1,149 @@
+{
+  "topicId": "C01-UNIT-BALLISTA",
+  "actualConsumers": [
+    "c01.ballista",
+    "ballista (built-in)"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "lines": [
+      24,
+      57
+    ]
+  },
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-BALLISTA",
+    "topicId": "C01-UNIT-BALLISTA",
+    "label": "弩车",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-ballista.png",
+    "width": 256,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      32,
+      47
+    ],
+    "footprint": [
+      2,
+      2
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-ballista.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ballista.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-ballista-cavalry-battlemage-eagle.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "ad56bb98b2d14d011ac029d2ba1793ab59a45aaf81f4e6ea04ac4670b30494ea"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ballista.png",
+      "size": [
+        512,
+        96
+      ],
+      "sha256": "78475b8731aad186e1a547a6ce55ca8b35d21c9d78ff75054c10626a52511b8a"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-ballista.png",
+      "size": [
+        256,
+        48
+      ],
+      "sha256": "4de563fb8a170c4308891a8ad8d9ee282028393a0878f6a73758629c9bece572"
+    }
+  },
+  "referenceExtraction": "Unresampled first-row crop [0,0,1254,310] and idle cell [0,0,314,310]. The second row starts below this crop. Original magenta backdrop is source reference only; no alpha or color edits. HD cells 128x96 preserve exact four-frame order.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "originalIdentity": "One human imperial operator behind a four-wheeled heavy wooden crossbow cart. Angular segmented steel helmet with cheek/neck flaps, clean-shaven stern adult face, navy lamellar armor with red edging, short gold shoulder cord, brown boots and bracers, bare hands on rear controls. Thick warm-brown timber frame and base, blocky upright posts, steel brackets and caps, wooden disc wheels with ringed rims and hubs, rope bowstring, loaded heavy steel-tipped bolt aiming right. No shield, handheld spear, platform, horse or second crew member.",
+  "semanticEvidence": {
+    "unit": "src/units.ts:82",
+    "weapon": "src/weapons.ts:125-137",
+    "weaponId": "c01.ballista",
+    "name": "城防重弩",
+    "range": [
+      2,
+      4
+    ],
+    "damageType": "pierce",
+    "moveAndAttack": false,
+    "tags": [
+      "ranged",
+      "siege"
+    ],
+    "actualSceneExamples": [
+      {
+        "chapterOrder": 2,
+        "actor": "unmarked-ballista",
+        "cell": [
+          20,
+          10
+        ]
+      },
+      {
+        "chapterOrder": 3,
+        "actor": "redstone-ballista",
+        "cell": [
+          20,
+          6
+        ]
+      },
+      {
+        "chapterOrder": 6,
+        "actor": "pursuer-ballista",
+        "cell": [
+          1,
+          12
+        ]
+      }
+    ],
+    "sceneCoordinateBasis": "src/levels.ts enemy order matched to deployment list at lines 442-445, 464-467 and 585-588; source declarations, not a new live-browser claim"
+  },
+  "scaleContract": {
+    "initialTargetLogicalVisibleWidth": 76,
+    "humanProportions": "Operator compared visually against approved 44-high standing infantry; do not force bent operating pose to 44 height",
+    "registration": "Whole native canvas; common scale derived from accepted idle complete unit visible width; register chassis wheel-ground contact, not human feet",
+    "oldRuntimeFrame": [
+      64,
+      48
+    ],
+    "oldFootprint": [
+      2,
+      2
+    ],
+    "oldAnchor": [
+      32,
+      47
+    ],
+    "newDisplayCanvas": "May grow to preserve full native art; rules footprint remains unchanged"
+  },
+  "status": "Original source preserved; native idle ready for coordinator review; remaining three poses not generated",
+  "idleReview": "idle-review.json",
+  "idleNativeMaster": "idle/master.png"
+}

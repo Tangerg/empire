@@ -1,0 +1,114 @@
+{
+  "status": "Accepted; remaining three poses in progress",
+  "topic": "C01-UNIT-BALLISTA",
+  "actualConsumers": [
+    "c01.ballista",
+    "ballista (built-in)"
+  ],
+  "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ballista/idle/master.png",
+  "nativeSize": [
+    1585,
+    992
+  ],
+  "visibleBoundsAlphaGreaterThan127": [
+    57,
+    36,
+    1566,
+    984
+  ],
+  "completeVisibleWidthSourcePixels": 1509,
+  "proposedVisibleWidthLogical": 76,
+  "proposedSharedScale": 0.05036447978793903,
+  "proposedScaleFraction": "76/1509",
+  "logicalVisibleSize": [
+    76,
+    47.7455268389662
+  ],
+  "wheelContacts": {
+    "nearRearWheel": {
+      "roi": [
+        380,
+        760,
+        635,
+        945
+      ],
+      "contactY": 924,
+      "bottomBandRows": 4,
+      "meanX": 486.541,
+      "spanX": [
+        458,
+        518
+      ]
+    },
+    "nearFrontWheel": {
+      "roi": [
+        810,
+        840,
+        1085,
+        991
+      ],
+      "contactY": 983,
+      "bottomBandRows": 4,
+      "meanX": 927.626,
+      "spanX": [
+        900,
+        958
+      ]
+    },
+    "farFrontWheel": {
+      "roi": [
+        1320,
+        760,
+        1490,
+        930
+      ],
+      "contactY": 898,
+      "bottomBandRows": 4,
+      "meanX": 1351.311,
+      "spanX": [
+        1323,
+        1380
+      ]
+    }
+  },
+  "suggestedSourceFoot": [
+    922,
+    983
+  ],
+  "sourceFootMethod": "Mean x of three visible wheel bottom-four-row support bands; y is nearest/front wheel lowest contact. Fourth far-rear wheel exists but its ground contact is occluded and is not invented.",
+  "operatorReference": {
+    "helmetTopY": 36,
+    "exposedRearBootLowestY": 854,
+    "helmetToVisibleBootSourcePixels": 818,
+    "logicalHelmetToVisibleBoot": 41.198144466534124,
+    "interpretation": "Approximate comparison only. Operator bent/operating pose, opposite boot partly occluded by carriage. Not forced to standing infantry 44 logical height."
+  },
+  "identityReview": "One large-headed clean-shaven imperial operator, navy/red lamellar, steel helmet/cheek flaps, bare hands on rear controls. Complete connected wooden crossbow chassis, four disc wheels (far-rear partly occluded), metal caps/brackets, rope string and right-facing broad steel bolt. No missing operator or cropped mechanism.",
+  "renderingReview": "Broad matte wood/armor planes and strong contours; large hands/boots/wheels, few structural bolts, no wood grain or external effects.",
+  "perimeterAlphaMax": 1,
+  "perimeterAlphaGreaterThan1": 0,
+  "rawPreserved": true,
+  "exactPromptVerified": true,
+  "remainingPosesGenerated": false,
+  "oldRulesFootprint": [
+    2,
+    2
+  ],
+  "oldRuntimeFrame": [
+    64,
+    48
+  ],
+  "fourFrameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "nextGate": "Coordinator reviews idle mechanical scale and ground anchor before walking/loading/shooting frames.",
+  "acceptedScale": "76/1509",
+  "acceptedSourceFoot": [
+    922,
+    983
+  ],
+  "acceptanceEvidence": "Parent2026-10-19 16:11UTC: native and76-wide beside44-high swordsman reviewed; mechanical width/operator mass/wood beams/bolt readable. Continue common scale and wheel-ground basis, opposing pushing steps/wheel rotation and clear string/shooting action without breathing scale."
+}

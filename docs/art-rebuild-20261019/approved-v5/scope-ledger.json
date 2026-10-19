@@ -4,19 +4,19 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 74,
+    "formalBound": 75,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 12,
       "equipment": 12,
-      "interactive-structure": 17,
+      "interactive-structure": 18,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 75,
+    "rawPreservedTopics": 76,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 76
+    "registeredEnvironmentCells": 78
   },
   "sceneCohesion": {
     "fullMap": "standing-depth-current/full-scene-labeled.png",
@@ -1253,8 +1253,12 @@
       "category": "combat-unit",
       "label": "弩车",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ballista/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ballista/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ballista/walk-b/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -3154,14 +3158,20 @@
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/public-ration-point/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/public-ration-point/damaged/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/public-ration-point/normal/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/interactive-structure/struct-public-ration-point.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/interactive-structure/struct-public-ration-point.png",
+      "stageEvidence": {
+        "raw": "3/3 preserved; rejected damaged foundation attempt retained",
+        "export": "shared112/1208 scale, unchanged counter feet; torn canopy and three colored occupation medallions reviewed",
+        "runtimeBinding": "canonical+HD catalog bound; no static scene consumer verified",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-STRUCT-REFUGEE-SHELTER",
@@ -18023,7 +18033,9 @@
         "stone-cluster-c",
         "dry-crack",
         "cart-ruts",
-        "bootprints"
+        "bootprints",
+        "animal-tracks",
+        "burned-twigs"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18039,12 +18051,14 @@
           "stone-cluster-c",
           "dry-crack",
           "cart-ruts",
-          "bootprints"
+          "bootprints",
+          "animal-tracks",
+          "burned-twigs"
         ],
-        "count": 12,
+        "count": 14,
         "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
         "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
-        "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells.",
+        "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene.",
         "liveGame": "pending"
       }
     },

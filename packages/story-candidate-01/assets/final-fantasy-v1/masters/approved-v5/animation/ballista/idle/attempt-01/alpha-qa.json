@@ -1,0 +1,91 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-40455ea5-7a01-46be-a3a0-c92b6cf4089b.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "0dfb631783dc73e6106102d7ba3b06cd7218f06599ef52375bbfba1da62ba3b3",
+  "bboxAlphaNonzero": [
+    0,
+    32,
+    1569,
+    992
+  ],
+  "bboxAlphaGreaterThan127": [
+    57,
+    36,
+    1566,
+    984
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 777863,
+  "alphaOnePixels": 7870,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "wheelContacts": {
+    "nearRearWheel": {
+      "roi": [
+        380,
+        760,
+        635,
+        945
+      ],
+      "contactY": 924,
+      "bottomBandRows": 4,
+      "meanX": 486.541,
+      "spanX": [
+        458,
+        518
+      ]
+    },
+    "nearFrontWheel": {
+      "roi": [
+        810,
+        840,
+        1085,
+        991
+      ],
+      "contactY": 983,
+      "bottomBandRows": 4,
+      "meanX": 927.626,
+      "spanX": [
+        900,
+        958
+      ]
+    },
+    "farFrontWheel": {
+      "roi": [
+        1320,
+        760,
+        1490,
+        930
+      ],
+      "contactY": 898,
+      "bottomBandRows": 4,
+      "meanX": 1351.311,
+      "spanX": [
+        1323,
+        1380
+      ]
+    }
+  },
+  "suggestedSourceFoot": [
+    922,
+    983
+  ],
+  "sourceFootMethod": "Mean x of three visible wheel bottom-four-row support bands; y is nearest/front wheel lowest contact. Fourth far-rear wheel exists but its ground contact is occluded and is not invented.",
+  "proposedVisibleUnitWidthLogical": 76,
+  "visibleUnitWidthSourcePixels": 1509,
+  "proposedWholeUnitScale": 0.05036447978793903,
+  "operatorReference": {
+    "helmetTopY": 36,
+    "exposedRearBootLowestY": 854,
+    "helmetToVisibleBootSourcePixels": 818,
+    "logicalHelmetToVisibleBoot": 41.198144466534124,
+    "interpretation": "Approximate comparison only. Operator bent/operating pose, opposite boot partly occluded by carriage. Not forced to standing infantry 44 logical height."
+  },
+  "masterRawHashMatches": true
+}

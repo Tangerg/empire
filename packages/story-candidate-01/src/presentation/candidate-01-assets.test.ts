@@ -14,6 +14,7 @@ const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', i
 const bundles = [
   { topic: 'C01-UNIT-GRAVEKEEPER', source: 'animation/gravekeeper', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-KNIGHT', source: 'animation/knight', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
+  { topic: 'C01-STRUCT-PUBLIC-RATION-POINT', source: 'buildings/public-ration-point', size: [124, 124], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-STRUCT-GRAY-FLAG-POINT', source: 'buildings/gray-flag-point', size: [106, 106], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-STRUCT-BALLISTA-EMPLACEMENT', source: 'buildings/ballista-emplacement', size: [116, 116], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-STRUCT-ARCHIVE-FURNACE', source: 'buildings/archive-furnace', size: [128, 128], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
