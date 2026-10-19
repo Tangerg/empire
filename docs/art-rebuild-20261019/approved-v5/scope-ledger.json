@@ -12,11 +12,23 @@
       "interactive-structure": 21,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 81,
+    "rawPreservedTopics": 83,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
     "registeredEnvironmentCells": 100
+  },
+  "environmentAccounting": {
+    "baselinePhysicalComponents": 1188,
+    "registeredIndividualSourceCells": 100,
+    "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
+    "separateBindings": [
+      "meadow-base",
+      "water-area",
+      "dirt-road",
+      "horizontal-crossing",
+      "edge-decoration"
+    ]
   },
   "sceneCohesion": {
     "fullMap": "cliff-four-full-scene/full-scene-labeled.png",
@@ -1815,8 +1827,11 @@
       "category": "combat-unit",
       "label": "圣殿骑士",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/templar/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/templar/walk-a/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -2953,8 +2968,11 @@
       "category": "interactive-structure",
       "label": "山炉炮位",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-gun-position/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/forge-gun-position/normal/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

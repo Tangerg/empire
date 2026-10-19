@@ -1,0 +1,95 @@
+{
+  "topicId": "C01-STRUCT-FORGE-GUN-POSITION",
+  "label": "山炉炮位",
+  "originalManifestEntry": {
+    "assetId": "C01-FFV1-STRUCT-FORGE-GUN-POSITION",
+    "topicId": "C01-STRUCT-FORGE-GUN-POSITION",
+    "label": "山炉炮位",
+    "category": "interactive-structure",
+    "png": "runtime/interactive-structure/struct-forge-gun-position.png",
+    "width": 192,
+    "height": 64,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 64,
+    "frames": 3,
+    "stateOrder": [
+      "normal",
+      "damaged",
+      "captured"
+    ],
+    "anchor": [
+      32,
+      63
+    ],
+    "footprint": [
+      2,
+      2
+    ]
+  },
+  "originalAtlas": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-04-source-4col.png",
+  "originalAtlasSha256": "6a66e37ca1925fb36f0905e4df6a9b472a0fd77b01e189441eb7c2bb5df6a216",
+  "originalAtlasSize": [
+    1672,
+    941
+  ],
+  "originalCropBoxes": {
+    "normal": [
+      0,
+      534,
+      418,
+      736
+    ],
+    "damaged": [
+      418,
+      534,
+      836,
+      736
+    ],
+    "captured": [
+      836,
+      534,
+      1254,
+      736
+    ]
+  },
+  "originalCropSha256": {
+    "normal": "8045e4afd4f6ddce278f0adc26c5723f01fb4a61068855cf373b8260067c44ae",
+    "damaged": "b8dc3b00ece11119ce08ecd1671853cec6d7412f500326f95471e470bbd316a4",
+    "captured": "233eaa939d6f89cf2e843318a0bad8eb5f53ebaa6d96cde6b8409edc14bbebfe"
+  },
+  "runtimeHdReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-forge-gun-position.png",
+  "sourceMappingNote": "Atlas04 third row columns1-3 defines exact three states. Runtime-HD strip also contains upper contamination from preceding ballista row; do not copy it. No cannon barrel or ballista unit in this asset.",
+  "sourceSemantics": {
+    "normal": "Low polygonal stone gun emplacement, central brass ring/open cylindrical mounting socket/front-left beam, rear-right ammunition cabinet with cannonballs, angular-mark brass front plate",
+    "damaged": "Broken center socket and forward beam, broken front-left parapet and rubble, damaged ammunition cabinet without intact displayed cannonballs",
+    "captured": "Intact original mounting mechanism and ammunition cabinet; added amber lantern at right and heavy chain along outer front-right wall. No flag"
+  },
+  "consumerQualification": {
+    "status": "no-static-consumer-reference-found",
+    "audit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "directSearch": "Exact topic/runtime slug in *.ts and *.scene.json returned no matches",
+    "observedInBrowser": false,
+    "qualification": "Catalog/runtime asset exists; actual authored campaign placement unproven, dynamic external input not excluded"
+  },
+  "suggestedLogicalWidth": 104,
+  "normalContract": "1254-square native transparent canvas, full low wide base, normal-derived shared scale, actual structural source foot to be measured from generated normal; source camera and topology retained",
+  "styleReference": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+  "actualNormalNativeCanvas": [
+    1536,
+    1024
+  ],
+  "proposedSharedSourceFoot": [
+    768,
+    952
+  ],
+  "normalVisibleWidth": 1469,
+  "normalCanvasVariance": "Parent accepted original native1536x1024; preserve unchanged and match both state canvases.",
+  "acceptedLogicalWidth": 104,
+  "sharedScale": 0.07079646017699115,
+  "sharedSourceFoot": [
+    768,
+    952
+  ]
+}

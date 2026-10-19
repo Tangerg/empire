@@ -1,0 +1,121 @@
+{
+  "topicId": "C01-UNIT-TEMPLAR",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-TEMPLAR",
+    "topicId": "C01-UNIT-TEMPLAR",
+    "label": "圣殿骑士",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-templar.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-templar.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-templar.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-berserker-templar-inquisitor-ghost.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "56eee17172d98813cd91ed74627a2245ca5828232ed2b5c6282e605f920e4df7"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-templar.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "fa412e85b9ee9859493a0a49673d1945b4a489038f28724b9b8afdc611a4a20b"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-templar.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "a06efa15a97adcd27d002318128dac1b5646b08313014b6760f58c22fe6c5140"
+    }
+  },
+  "status": "Identity verified; idle generation pending; continuity/action plan sent to coordinator",
+  "actualConsumers": [
+    "c01.templar"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 23,
+    "text": "'c01.templar': 'C01-UNIT-TEMPLAR'"
+  },
+  "referenceExtraction": "Native unresampled atlas SECOND row [0,320,1254,630], idle cell [0,320,314,630]. Complete original board and HD/runtime strips preserved unchanged. Four HD cells64x96 cropped without resampling.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "originalIdentity": "Older adult human with uncovered swept-back gray hair, short gray beard and moustache, tan face. Ivory/cream gold-trimmed armored surcoat, gray steel shoulders/vambraces/hip plates/knees/greaves/boots, brown gold-buckle belt, bare hands. Screen-left short steel sword with gold straight guard. Screen-right tall cream/light-gray rounded-corner tapered shield with metal rim and ONE long gold vertical bar, no cross.",
+  "semanticEvidence": {
+    "unitDefinition": "packages/story-candidate-01/src/units.ts:81",
+    "weaponDefinitions": [
+      "packages/story-candidate-01/src/weapons.ts:27-33",
+      "packages/story-candidate-01/src/weapons.ts:107-116"
+    ],
+    "weapons": [
+      "c01.legion-spear",
+      "c01.inquisitor-flame"
+    ],
+    "unitTags": [
+      "infantry",
+      "guard",
+      "oathbound"
+    ],
+    "armorClass": "heavy",
+    "defaultReaction": "guard",
+    "primaryWeapon": "piercing melee formation/anti-cavalry spear",
+    "secondaryWeapon": "range2 cross1-area magic with silenced status duration1"
+  },
+  "sourceDiscrepancies": [
+    {
+      "kind": "source equipment continuity",
+      "detail": "Original board and HD idle/attack show sword and shield; both walking cells remove shield and put a second sword in its hand. Proposed remake retains accepted idle sword/shield across all four poses."
+    },
+    {
+      "kind": "gameplay-to-art mismatch",
+      "detail": "Actual c01.templar rules use legion-spear plus inquisitor-flame, but canonical source is uncovered gray-haired sword/shield veteran. Preserve original artwork identity, document mismatch, no silent remap or claim of rule correction."
+    },
+    {
+      "kind": "single action slot",
+      "detail": "Existing four-frame contract has one attack slot shared by both rules weapons. Proposed source-faithful sword thrust remains a shared visual limitation; no new fifth pose or dispatch change."
+    }
+  ],
+  "symbolReview": "No cross in original templar shield. Gold vertical bar only. Cross-bearing round staff belongs to distinct inquisitor row below, not templar.",
+  "consumerStatus": "Campaign c01.templar appears in multiple level definitions; not a built-in or protagonist binding. No current live actor count claimed.",
+  "scaleContract": "Approved chunky human44logical body family; idle first then locked scale and full-canvas foot registration.",
+  "continuityPlanApproval": "Coordinator2026-10-19 16:54UTC approved preserving original idle sword/shield in all four frames, correcting walking shield disappearance, documenting weapon-rule mismatch and single-action-slot limitation, without changing rules."
+}

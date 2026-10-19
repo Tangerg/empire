@@ -1,0 +1,44 @@
+{
+  "topicId": "C01-UNIT-TEMPLAR",
+  "status": "Accepted by coordinator2026-10-19 16:56UTC; remaining poses authorized",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/templar/idle/master.png",
+  "nativeCanvas": [
+    1585,
+    992
+  ],
+  "sourceFoot": [
+    753,
+    973
+  ],
+  "sourceFootMidpoint": [
+    752.83097369807,
+    968.5
+  ],
+  "bodyCrownY": 24,
+  "bodyHeight": 944.5,
+  "proposedSharedScale": {
+    "numerator": 44,
+    "denominator": 944.5,
+    "value": 0.046585494970884066
+  },
+  "identityReview": "Uncovered swept-back gray hair/short gray beard, ivory/gold and steel armor, bare sword hand screen-left, tall cream shield with one gold vertical bar screen-right. No cross, spear or invented symbol. Broad matte chunky body, large head/hand/boots; complete sword/shield/feet.",
+  "alphaGate": {
+    "perimeterMaxAlpha": 1,
+    "perimeterCountAlphaGreaterThan1": 0,
+    "passed": true
+  },
+  "completeVisibleBounds": [
+    335,
+    24,
+    1250,
+    974
+  ],
+  "postprocessing": "none; native pixels and alpha unchanged",
+  "exactPrompt": "idle/prompt.txt",
+  "request": "idle/request.json",
+  "lockedSharedScale": 0.046585494970884066,
+  "canonicalSourceFoot": [
+    753,
+    973
+  ]
+}

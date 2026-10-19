@@ -66,6 +66,12 @@ def build(root=ROOT):
                         'liveGameVerified': 0, 'environmentAtlasScope': len(environment),
                         'environmentComponentScope': sum(e['baselineComponentCount'] for e in environment),
                         'registeredEnvironmentCells': sum(len(e['registeredApprovedCells']) for e in environment)},
+            'environmentAccounting': {
+                'baselinePhysicalComponents': sum(e['baselineComponentCount'] for e in environment),
+                'registeredIndividualSourceCells': sum(len(e['registeredApprovedCells']) for e in environment),
+                'warning': 'Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.',
+                'separateBindings': list(progress.get('materialStages', {})),
+            },
             'sceneCohesion': progress.get('integrationGate', {'status': 'pending'}),
             'authoredTeamVariants': {'red-swordsman': 'four poses formally bound; not an extra canonical topic'},
             'replacementMaterialBindings': progress.get('materialStages', {}),
