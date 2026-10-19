@@ -8301,17 +8301,27 @@
       "atlasId": "forest-temperate",
       "cellId": "sapling-rock-cluster",
       "index": 5,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/sapling-rock-cluster/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "5ccbd8df32c7d77e96724d96dca67f13d5186374c67bc95c8d85eb67a464d3f8",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-temperate",
       "cellId": "bramble-dark",
       "index": 6,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/bramble-dark/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "983679fed24377e505d5b52549a8b9580323fa01d9c0b8efaa9c2ffffb412380",
+      "verification": {
+        "state": "pending",
+        "note": "Raw backed up; placement and deterministic output checks pending"
+      }
     },
     {
       "atlasId": "forest-temperate",
@@ -8339,28 +8349,32 @@
       "cellId": "bramble-berries",
       "index": 8,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-temperate",
       "cellId": "stump-low",
       "index": 9,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-temperate",
       "cellId": "stump-hollow",
       "index": 10,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-temperate",
       "cellId": "fallen-hollow-log",
       "index": 11,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-temperate",
