@@ -1,0 +1,304 @@
+{
+  "topicId": "C01-UNIT-WOLF-RIDER",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+    "topicId": "C01-UNIT-WOLF-RIDER",
+    "label": "狼骑兵",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-wolf-rider.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-units/wasteland-wolf-rider-source.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "29f6c73205b9bc6afe2c444966e91c93ece308abff7c184f2b735291c8716b5d"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-wolf-rider.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "f65ff3e485449d41a87fedc38180de9650c8c02dff9e26a300cc4f1178d87396"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-wolf-rider.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "f64e9c35c145c43ddcebfe730832ddd833c3f68bb41d3fe9906b82dcf986aa6c"
+    }
+  },
+  "originalSourceSlot": "Dedicated full four-frame source board wasteland-wolf-rider-source.png, 1672x941, left-to-right idle / walk-a / attack / walk-b. No equipment icon used to infer rider identity.",
+  "referenceExtraction": "Original idle crop [15,180,418,745] and rider/gear detail [105,185,380,610] are native unresampled crops for inspection only. Full source board and strips preserved byte-for-byte. Original HD cells are 64x96.",
+  "originalRuntimeVisibleDiagnostics": {
+    "idle": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        2,
+        7,
+        62,
+        94
+      ],
+      "logicalWidth": 30.0,
+      "logicalHeight": 43.5
+    },
+    "walk-a": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        2,
+        13,
+        62,
+        94
+      ],
+      "logicalWidth": 30.0,
+      "logicalHeight": 40.5
+    },
+    "attack": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        2,
+        13,
+        62,
+        94
+      ],
+      "logicalWidth": 30.0,
+      "logicalHeight": 40.5
+    },
+    "walk-b": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        3,
+        2,
+        61,
+        94
+      ],
+      "logicalWidth": 29.0,
+      "logicalHeight": 46.0
+    }
+  },
+  "status": "Idle candidate inspected; coordinator body scale and pose expansion approval pending",
+  "imageGenerationStarted": true,
+  "actualConsumers": [
+    "c01.wolf-rider"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 19,
+    "text": "'c01.wolf-rider': 'C01-UNIT-WOLF-RIDER'"
+  },
+  "consumerStatus": "Actual campaign unit: six initial enemies across c01-07 and c01-08. Additionally experience-lab has the allied gray-wolf actor. No distinct built-in consumer found.",
+  "actualScenePlacements": [
+    {
+      "level": "c01-07",
+      "actor": "raider-1",
+      "side": "enemy",
+      "deploymentIndex": 0,
+      "position": [
+        1,
+        3
+      ],
+      "source": "levels.ts:610,613,616"
+    },
+    {
+      "level": "c01-07",
+      "actor": "raider-2",
+      "side": "enemy",
+      "deploymentIndex": 1,
+      "position": [
+        5,
+        6
+      ],
+      "source": "levels.ts:610,613,616"
+    },
+    {
+      "level": "c01-07",
+      "actor": "north-raider",
+      "side": "enemy",
+      "deploymentIndex": 7,
+      "position": [
+        8,
+        2
+      ],
+      "source": "levels.ts:610,614,616"
+    },
+    {
+      "level": "c01-08",
+      "actor": "thief-chief",
+      "side": "enemy",
+      "deploymentIndex": 0,
+      "position": [
+        10,
+        2
+      ],
+      "source": "levels.ts:627,630,633"
+    },
+    {
+      "level": "c01-08",
+      "actor": "thief-3",
+      "side": "enemy",
+      "deploymentIndex": 3,
+      "position": [
+        19,
+        5
+      ],
+      "source": "levels.ts:627,630,633"
+    },
+    {
+      "level": "c01-08",
+      "actor": "south-thief",
+      "side": "enemy",
+      "deploymentIndex": 7,
+      "position": [
+        12,
+        12
+      ],
+      "source": "levels.ts:627,631,633"
+    },
+    {
+      "level": "experience-lab",
+      "actor": "gray-wolf",
+      "side": "owner 1",
+      "position": [
+        7,
+        14
+      ],
+      "source": "packages/experience-lab/src/index.ts:99"
+    }
+  ],
+  "placementDerivation": "The enemy seed array index maps to the same index of parsed enemy deployment coordinates via levels.ts:384 and place at line 823. Lab actor has explicit coordinates.",
+  "originalIdentity": "One bare-faced, dark-eyed rider with tan skin, long black braid and short face-framing hair, brown stitched fur-edged cap, small gold drop earring, cream/tan laced tunic, blue-gray near shoulder plate in idle, brown bracers and cross-body leather strap, dark trousers and tall brown boots. Seated on a stocky gray-brown wolf with cream cheek/chest fur, pointed ears, amber-brown eyes, large paws and a hanging bushy tail. Rope chest harness and rust-red-bordered saddle blanket remain distinct from wolf fur.",
+  "equipmentIdentity": "Both hands hold the same short wooden-shaft spear with a steel leaf/triangular point aimed upper-right. Near bare hand is the rear grip at screen-left/lower shaft; far hand has a pale cloth wrap at the forward screen-right grip. A small plain round brown side shield is behind the forward forearm. No sword, bow, antlers or mount armor.",
+  "symbolReview": "No faction emblem on the plain round brown shield. Keep the small pale gray angular border marks on the rust-edged saddle blanket as observed decorative marks, without inventing runic meaning. Gold drop earring and chest tie knot are costume details, not heraldry.",
+  "originalFrameReview": "All four original cells retain the same wolf/rider/spear identity. Wolf gait differences are modest. Original third attack remains a near-idle spear hold rather than a clear thrust. The blue-gray near shoulder plate visible in idle and walk-a disappears into tan cloth in attack and walk-b; the remake should consistently retain the verified idle plate and record this continuity repair.",
+  "ruleContract": {
+    "unitSource": "packages/story-candidate-01/src/units.ts:77",
+    "unitId": "c01.wolf-rider",
+    "name": "荒原狼骑",
+    "weapons": [
+      "c01.wolf-spear"
+    ],
+    "value": 300,
+    "maxHp": 102,
+    "movement": 7,
+    "movementClass": "mounted",
+    "tags": [
+      "cavalry",
+      "wasteland"
+    ],
+    "weaponSource": "weapons.ts:103",
+    "weaponName": "荒原骑矛",
+    "power": 45,
+    "damageType": "pierce",
+    "weaponTags": [
+      "melee",
+      "mounted"
+    ],
+    "minRange": 1,
+    "maxRange": 1,
+    "rangeDefaultEvidence": "packages/battle-engine/src/content-builders.ts:31-36"
+  },
+  "independentAssets": {
+    "equipmentBinding": "c01.wolf-spear -> C01-EQUIP-WOLF-RIDER at candidate-01-bindings.ts:114",
+    "effectBinding": "c01.wolf-spear -> C01-FX-02 at line158",
+    "policy": "Equipment icon and independent thrust impact FX remain separate. No speed trails, slash arcs or glow painted into the unit."
+  },
+  "semanticReview": "Mounted wolf plus spear is consistent with actual rules. Attack should be a clear two-hand spear thrust, with the wolf braced or lunging and the side shield retained. Opposite wolf diagonal steps should carry the seated rider, with one shared camera and scale.",
+  "footprintClarification": "Original art contract is 32x48, anchor [16,47], footprint [1,1]. This describes the legacy art; it is not a reason to shrink the mount/rider to a 44-high standing human. No gameplay footprint or movement rule changes.",
+  "scaleProposal": {
+    "humanBodyLogical": 44,
+    "originalIdleWholeLogical": [
+      30,
+      43.5
+    ],
+    "proposedWholeMountedHeightLogical": 52,
+    "ratioToApprovedHumanHeight": 1.1818181818181819,
+    "proposedTailToSnoutWidthLogicalRange": [
+      60,
+      72
+    ],
+    "proposedSeatedRiderCapToBootHeightLogicalRange": [
+      35,
+      39
+    ],
+    "proposedWolfEarToPawHeightLogicalRange": [
+      28,
+      32
+    ],
+    "nativeCanvas": [
+      1586,
+      992
+    ],
+    "proposedNativeCapToLowestPawHeightRange": [
+      880,
+      930
+    ],
+    "candidateExportFrame": [
+      128,
+      80
+    ],
+    "candidateOrigin": [
+      14,
+      6
+    ],
+    "rationale": "A seated rider keeps head, hand and boot mass comparable with the approved 44-high human family. The mount increases the whole unit to a proposed 52-high silhouette, below the accepted 56-high juvenile dragon, with a broad 48-54-wide wolf rather than a vertically cramped legacy frame. Actual idle measurement and side-by-side native review lock one final scale for all poses; no independent per-pose fitting.",
+    "proposedWholeMountedHeightLogicalRange": [
+      48,
+      52
+    ]
+  },
+  "actionProposal": [
+    "idle: all four wolf paws grounded; rider upright with two hands on diagonal spear; original side shield and cap/braid retained",
+    "walk-a: one diagonal wolf paw pair supports while opposite pair steps; rider follows saddle without changing body size",
+    "attack: rider leans into clear two-hand spear thrust toward screen-right, wolf braces/lunges; shield retained; no independent FX",
+    "walk-b: opposite diagonal wolf contacts from walk-a; same rider, wolf, spear, saddle and shield"
+  ],
+  "coordinatorIdleContractApproval": "2026-10-19 20:02 UTC: complete wolf/rider idle, unified verified shoulder plate/side shield/wrapped hand/saddle blanket, whole combination 48–52 high and 60–72 wide; actual measurement determines shared scale before remaining poses. Rule 1x1 unchanged.",
+  "idleActualMeasurement": {
+    "nativeSize": [
+      1586,
+      992
+    ],
+    "capTopY": 56,
+    "meanNearPawSoleY": 961.5,
+    "bodyHeight": 905.5,
+    "proposedScale": "52/905.5",
+    "proposedSourceFoot": [
+      828,
+      970
+    ],
+    "actualVisibleWidthPixels": 997,
+    "actualLogicalVisibleWidth": 57.254555494202094,
+    "widthCaveat": "Actual width 57.254555 is slightly below the initial 60–72 pilot target. No independent wolf expansion or rider shrinking was applied. Await coordinator native proportion review before changes or other poses.",
+    "candidateFrame": [
+      128,
+      80
+    ],
+    "candidateOrigin": [
+      14,
+      6
+    ],
+    "perimeterMaxAlpha": 1
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6d0905a5-8979-499e-bbb1-f2cd63d2f3a4.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "ff238f393f6021f3dad378df1094cd601fbb6c4b2100c74663c2c27a11f56c9d",
+  "bboxAlphaNonzero": [
+    0,
+    19,
+    1524,
+    976
+  ],
+  "bboxAlphaGreaterThan127": [
+    276,
+    56,
+    1273,
+    971
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1056134,
+  "alphaOnePixels": 7437,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "paw": "near-hind",
+      "roi": [
+        430,
+        840,
+        605,
+        965
+      ],
+      "soleY": 953,
+      "bottomFourRowsMeanX": 505.74074074074076
+    },
+    {
+      "paw": "far-hind",
+      "roi": [
+        645,
+        830,
+        820,
+        950
+      ],
+      "soleY": 934,
+      "bottomFourRowsMeanX": 736.1408450704225
+    },
+    {
+      "paw": "near-fore",
+      "roi": [
+        835,
+        850,
+        1030,
+        984
+      ],
+      "soleY": 970,
+      "bottomFourRowsMeanX": 925.8403755868544
+    },
+    {
+      "paw": "far-fore",
+      "roi": [
+        1050,
+        840,
+        1240,
+        970
+      ],
+      "soleY": 955,
+      "bottomFourRowsMeanX": 1144.5656108597284
+    }
+  ],
+  "sourceFootMidpoint": [
+    828.0718930644366,
+    953.0
+  ],
+  "suggestedSourceFoot": [
+    828,
+    970
+  ],
+  "nearSidePawMeanSoleY": 961.5,
+  "highestCapY": 56,
+  "bodyHeight": 905.5,
+  "proposedBodyScale": 0.05742683600220872,
+  "bodyScaleNumerator": 52,
+  "bodyScaleDenominator": 905.5,
+  "bodyMeasurementMethod": "Full mounted combination: cap top to mean near-side hind/fore wolf paw soles. Contact anchor x averages all four paw sole-band centers; y is the lowest wolf sole. Rider boot is not the ground anchor.",
+  "visibleWidthAlphaGreaterThan127": 997,
+  "projectedWidthLogicalAtProposedScale": 57.254555494202094,
+  "targetWidthRangeLogical": [
+    60,
+    72
+  ],
+  "widthCaveat": "Actual width 57.254555 is slightly below the initial 60–72 pilot target. No independent wolf expansion or rider shrinking was applied. Await coordinator native proportion review before changes or other poses.",
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-paw-gap",
+      "rectangle": [
+        612,
+        897,
+        619,
+        904
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "fore-paw-gap",
+      "rectangle": [
+        1022,
+        897,
+        1029,
+        904
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "spear-wolf-gap",
+      "rectangle": [
+        1002,
+        402,
+        1009,
+        409
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Native and white-background views inspected. Original bare face, dark braid, fur-edged stitched cap, gold earring, cream laced tunic, near steel shoulder plate, brown bracers, dark trousers and large boot retained. Bare rear hand and pale wrapped forward hand hold one complete spear; plain round side shield remains behind forearm. Four connected wolf legs and paws, large gray-brown head with cream cheek/chest masses, complete bushy tail, rope chest harness and rust-edged saddle blanket are distinct. Broad matte planes and chunky hands/head match the approved family. No rider facial hair, new heraldry, independent FX or ground shadow. Native alpha-1 perimeter specks retained; no pixels alpha >1 on the perimeter.",
+  "proposedCommonFrameSize": [
+    128,
+    80
+  ],
+  "proposedOrigin": [
+    14,
+    6
+  ],
+  "proposedFullCanvasBounds": [
+    14,
+    6,
+    105.07896189950303,
+    62.96742131419105
+  ],
+  "status": "Idle candidate inspected; coordinator body scale and pose expansion approval pending"
+}

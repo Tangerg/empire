@@ -1,0 +1,70 @@
+{
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-units/wasteland-wolf-rider-source.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "29f6c73205b9bc6afe2c444966e91c93ece308abff7c184f2b735291c8716b5d"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-wolf-rider.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "f65ff3e485449d41a87fedc38180de9650c8c02dff9e26a300cc4f1178d87396"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-wolf-rider.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "f64e9c35c145c43ddcebfe730832ddd833c3f68bb41d3fe9906b82dcf986aa6c"
+    }
+  },
+  "diagnostics": {
+    "idle": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        2,
+        7,
+        62,
+        94
+      ],
+      "logicalWidth": 30.0,
+      "logicalHeight": 43.5
+    },
+    "walk-a": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        2,
+        13,
+        62,
+        94
+      ],
+      "logicalWidth": 30.0,
+      "logicalHeight": 40.5
+    },
+    "attack": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        2,
+        13,
+        62,
+        94
+      ],
+      "logicalWidth": 30.0,
+      "logicalHeight": 40.5
+    },
+    "walk-b": {
+      "hdVisibleBoundsAlphaGreaterThan127": [
+        3,
+        2,
+        61,
+        94
+      ],
+      "logicalWidth": 29.0,
+      "logicalHeight": 46.0
+    }
+  }
+}
