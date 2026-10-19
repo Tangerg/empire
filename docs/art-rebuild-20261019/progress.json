@@ -6660,14 +6660,18 @@
     },
     {
       "topicId": "c03-battle-prop-2e0af0f2",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-2e0af0f2/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
         "issue": "Runtime is clipped atlas fragments",
         "recovery": "Clean semantic reconstruction based on full board visible logistics subjects and manifest labels; exact historical crop mapping unverified"
-      }
+      },
+      "sourceSha256": "d8bfb3dca32427bc3da395b2b4664b8365917ebba411cbbe1a6dc4da45ed1b6e"
     },
     {
       "topicId": "c03-battle-prop-2e7df413",
@@ -6851,14 +6855,18 @@
     },
     {
       "topicId": "c03-battle-prop-cd97a638",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-cd97a638/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
         "issue": "Runtime is clipped atlas fragments",
         "recovery": "Clean semantic reconstruction based on full board visible logistics subjects and manifest labels; exact historical crop mapping unverified"
-      }
+      },
+      "sourceSha256": "40fed89ed85919d2b1694e4d7cd48ba66f0f489ea3ee737fbfdfc23424af3a99"
     },
     {
       "topicId": "c03-battle-prop-cfb13cec",
@@ -8254,12 +8262,12 @@
       "cellId": "mixed-forest-autumn",
       "index": 1,
       "status": "raw-generated",
-      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/mixed-forest-autumn/master.png",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/mixed-forest-autumn/revision-2/master.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "sourceSha256": "43871bfcec18391f44392bfe5c9e1334e59724268a730130b8ab84a5050bd3af",
+      "sourceSha256": "94ff581f0413764278694e0e9b59d2948ab7f0cb387f45d68e4371fd9066fa93",
       "verification": {
-        "state": "needs-revision",
-        "reason": "source perimeter alpha2 exceeds established alpha1 gate; original retained"
+        "state": "reviewed-source",
+        "note": "revision2 passes alpha0 perimeter and intactframing; offset9 reviewed"
       }
     },
     {

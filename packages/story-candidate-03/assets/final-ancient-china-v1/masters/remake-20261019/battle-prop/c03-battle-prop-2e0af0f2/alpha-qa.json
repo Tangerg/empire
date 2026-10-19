@@ -1,0 +1,40 @@
+{
+  "topicId": "c03-battle-prop-2e0af0f2",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-2e0af0f2.png",
+  "label": "Medicine chest",
+  "observed_original": "Runtime clipped fire arrows and unrelated fragments.",
+  "reconstructed_identity": true,
+  "uncertainty": "Semantic reconstruction from manifest label and full props board; historical crop mapping unverified. Not an exact restyle of corrupted runtime.",
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_zero_pixels": 672862,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      19,
+      1206,
+      1254
+    ],
+    "128": [
+      97,
+      56,
+      1190,
+      1204
+    ],
+    "240": [
+      98,
+      57,
+      1189,
+      1203
+    ]
+  },
+  "visual_review": "Complete open chest, linen packs and ceramic jars. Small ceramic highlights stronger than fully matte ideal; no text/cross or floor."
+}
