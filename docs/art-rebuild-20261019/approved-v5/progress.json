@@ -19,14 +19,14 @@
     "bank-edge": "revision3 broad flat patch, static overlay checked"
   },
   "counting": "Do not count single pose as full unit animation. Concept itself adds no transparent assets. Prior bulk candidates are not re-approved automatically.",
-  "next": "Parallel remaining artwork and scene integration; first-level continuous road checkpoint verified, grid-shaped route silhouette remains.",
+  "next": "Continue remaining art, full-scene integration and wall connectivity pilot; first-level curved road checkpoint verified.",
   "continuationApproval": {
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
   "authoredFourPoseBundles": 24,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 127,
+  "formalRuntimeBoundTopics": 135,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -790,6 +790,54 @@
       "export": "shared44/914 scale, measured feet, maximum2.9365 registration with limit4, no padding; native pose/alpha review passed",
       "runtimeBinding": "canonical and HD resolver bound to existing c01.rune-artificer; shared attack slot for two existing weapons documented, FX separate",
       "liveGame": "pending"
+    },
+    "C01-EQUIP-FIELD-MEDICAL-KIT": {
+      "raw": "native original, prompt and source evidence preserved",
+      "export": "native alpha and white/dark semantic review passed",
+      "runtimeBinding": "canonical equipment48 resolver and static binding regression tested",
+      "liveGame": "pending"
+    },
+    "C01-EQUIP-LONG-RANGE-SCOUT-KIT": {
+      "raw": "native original, prompt and source evidence preserved",
+      "export": "native alpha and white/dark semantic review passed",
+      "runtimeBinding": "canonical equipment48 resolver and static binding regression tested",
+      "liveGame": "pending"
+    },
+    "C01-EQUIP-MOBILITY-GEAR": {
+      "raw": "native original, prompt and source evidence preserved",
+      "export": "native alpha and white/dark semantic review passed",
+      "runtimeBinding": "canonical equipment48 resolver and static binding regression tested",
+      "liveGame": "pending"
+    },
+    "C01-EQUIP-QUARTERMASTER-SUPPLY-KIT": {
+      "raw": "native original, prompt and source evidence preserved",
+      "export": "native alpha and white/dark semantic review passed",
+      "runtimeBinding": "canonical equipment48 resolver and static binding regression tested",
+      "liveGame": "pending"
+    },
+    "c02-battle-prop-seed-coolers": {
+      "raw": "native original, prompt and source evidence preserved",
+      "export": "native alpha and white/dark semantic review passed",
+      "runtimeBinding": "canonical manifest and original resolver dimensions verified; C02 catalog only, no implemented campaign gameplay claim",
+      "liveGame": "pending"
+    },
+    "c02-battle-prop-spare-part-racks": {
+      "raw": "native original, prompt and source evidence preserved",
+      "export": "native alpha and white/dark semantic review passed",
+      "runtimeBinding": "canonical manifest and original resolver dimensions verified; C02 catalog only, no implemented campaign gameplay claim",
+      "liveGame": "pending"
+    },
+    "c02-battle-prop-stretcher-medkits": {
+      "raw": "native original, prompt and source evidence preserved",
+      "export": "native alpha and white/dark semantic review passed",
+      "runtimeBinding": "canonical manifest and original resolver dimensions verified; C02 catalog only, no implemented campaign gameplay claim",
+      "liveGame": "pending"
+    },
+    "c02-battle-prop-water-barrels": {
+      "raw": "native original, prompt and source evidence preserved",
+      "export": "native alpha and white/dark semantic review passed",
+      "runtimeBinding": "canonical manifest and original resolver dimensions verified; C02 catalog only, no implemented campaign gameplay claim",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -1028,12 +1076,16 @@
         "frontier-longhall",
         "walled-trade-town",
         "field-hospital-compound",
-        "fortified-armory"
+        "fortified-armory",
+        "border-chapel",
+        "watch-keep",
+        "market-gate-compound",
+        "ruined-gatehouse"
       ],
-      "count": 8,
-      "export": "160/320 full authored canvas, measured contacts, original metadata/order and untouched8 baseline cells verified",
+      "count": 12,
+      "export": "160/320 full-canvas registration; original metadata/order and untouched four baseline cells preserved",
       "runtimeBinding": "catalog atlas cells replaced; no direct scene selectors verified, c01-01 denyAtlases retained",
-      "sceneReview": "native0.55 catalog sample passed; no actual scene selector verified, scale is not a production-placement recommendation",
+      "sceneReview": "Fresh post-export native0.55 catalog sample reviewed; no direct scene selectors verified. Compound icon scale differs from single-unit scale and is not a gameplay placement recommendation.",
       "liveGame": "pending"
     }
   },

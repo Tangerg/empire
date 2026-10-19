@@ -4,23 +4,23 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 127,
+    "formalBound": 135,
     "boundByCategory": {
-      "battle-prop": 40,
+      "battle-prop": 44,
       "combat-unit": 22,
-      "equipment": 40,
+      "equipment": 44,
       "interactive-structure": 24,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 129,
+    "rawPreservedTopics": 136,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 131
+    "registeredEnvironmentCells": 135
   },
   "environmentAccounting": {
     "baselinePhysicalComponents": 1188,
-    "registeredIndividualSourceCells": 131,
+    "registeredIndividualSourceCells": 135,
     "warning": "Baseline components include derived mask/connector variants. Registered individual cells exclude separate world-material, connector, water-area and crossing bindings. Their ratio is not overall art completion; do not add environment cells to canonical topics.",
     "separateBindings": [
       "meadow-base",
@@ -1789,8 +1789,11 @@
       "category": "combat-unit",
       "label": "长弓守卫",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/silver-longbow/walk-a/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -4529,13 +4532,20 @@
       "category": "equipment",
       "label": "战地治疗包",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-field-medical-kit/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-field-medical-kit.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native original, prompt and source evidence preserved",
+        "export": "native alpha and white/dark semantic review passed",
+        "runtimeBinding": "canonical equipment48 resolver and static binding regression tested",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-GHOST",
@@ -4732,13 +4742,20 @@
       "category": "equipment",
       "label": "长距侦察包",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-long-range-scout-kit/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-long-range-scout-kit.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native original, prompt and source evidence preserved",
+        "export": "native alpha and white/dark semantic review passed",
+        "runtimeBinding": "canonical equipment48 resolver and static binding regression tested",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-MAGE",
@@ -4767,13 +4784,20 @@
       "category": "equipment",
       "label": "涉水攀岩机动具",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-mobility-gear/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-mobility-gear.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native original, prompt and source evidence preserved",
+        "export": "native alpha and white/dark semantic review passed",
+        "runtimeBinding": "canonical equipment48 resolver and static binding regression tested",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-QUARTERMASTER-SUPPLY-KIT",
@@ -4781,13 +4805,20 @@
       "category": "equipment",
       "label": "军需补给包",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-quartermaster-supply-kit/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-quartermaster-supply-kit.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native original, prompt and source evidence preserved",
+        "export": "native alpha and white/dark semantic review passed",
+        "runtimeBinding": "canonical equipment48 resolver and static binding regression tested",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-RANGER",
@@ -10070,11 +10101,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-seed-coolers/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-seed-coolers.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native original, prompt and source evidence preserved",
+        "export": "native alpha and white/dark semantic review passed",
+        "runtimeBinding": "canonical manifest and original resolver dimensions verified; C02 catalog only, no implemented campaign gameplay claim",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-soler-heat-emblems",
@@ -10096,13 +10132,20 @@
       "category": "battle-prop",
       "label": "备件架后勤组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-spare-part-racks/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-spare-part-racks.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native original, prompt and source evidence preserved",
+        "export": "native alpha and white/dark semantic review passed",
+        "runtimeBinding": "canonical manifest and original resolver dimensions verified; C02 catalog only, no implemented campaign gameplay claim",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-spore-sacs",
@@ -10124,13 +10167,20 @@
       "category": "battle-prop",
       "label": "担架药箱后勤组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-stretcher-medkits/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-stretcher-medkits.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native original, prompt and source evidence preserved",
+        "export": "native alpha and white/dark semantic review passed",
+        "runtimeBinding": "canonical manifest and original resolver dimensions verified; C02 catalog only, no implemented campaign gameplay claim",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-tickets-manifests",
@@ -10156,11 +10206,16 @@
         "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-water-barrels/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-water-barrels.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "native original, prompt and source evidence preserved",
+        "export": "native alpha and white/dark semantic review passed",
+        "runtimeBinding": "canonical manifest and original resolver dimensions verified; C02 catalog only, no implemented campaign gameplay claim",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "c02-equipment-anti-large-charge",
@@ -18544,7 +18599,11 @@
         "frontier-longhall",
         "walled-trade-town",
         "field-hospital-compound",
-        "fortified-armory"
+        "fortified-armory",
+        "border-chapel",
+        "watch-keep",
+        "market-gate-compound",
+        "ruined-gatehouse"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18556,12 +18615,16 @@
           "frontier-longhall",
           "walled-trade-town",
           "field-hospital-compound",
-          "fortified-armory"
+          "fortified-armory",
+          "border-chapel",
+          "watch-keep",
+          "market-gate-compound",
+          "ruined-gatehouse"
         ],
-        "count": 8,
-        "export": "160/320 full authored canvas, measured contacts, original metadata/order and untouched8 baseline cells verified",
+        "count": 12,
+        "export": "160/320 full-canvas registration; original metadata/order and untouched four baseline cells preserved",
         "runtimeBinding": "catalog atlas cells replaced; no direct scene selectors verified, c01-01 denyAtlases retained",
-        "sceneReview": "native0.55 catalog sample passed; no actual scene selector verified, scale is not a production-placement recommendation",
+        "sceneReview": "Fresh post-export native0.55 catalog sample reviewed; no direct scene selectors verified. Compound icon scale differs from single-unit scale and is not a gameplay placement recommendation.",
         "liveGame": "pending"
       }
     },
