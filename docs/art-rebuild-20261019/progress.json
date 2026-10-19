@@ -1852,11 +1852,16 @@
     },
     {
       "topicId": "C01-EQUIP-CLERIC",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-cleric/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-032-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "49cffdd51c414eac26afde9ccd395d58237761677c0f0f170f2c84b6b6aab428"
@@ -1875,11 +1880,16 @@
     },
     {
       "topicId": "C01-EQUIP-ENGINEER",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-engineer/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-032-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "14b1f52c171731991cb54cb89f231a5908a7b2d9f5bb836aaa080e12e7983536"
