@@ -1,0 +1,124 @@
+{
+  "asset": "black-oath-fortress",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; chunky matte architectural family, broad stone/wood/roof planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1176
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.937799
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    26,
+    79,
+    13,
+    71
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/black-oath-fortress-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/black-oath-fortress/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "landmarks-large",
+  "cell_index": 15,
+  "semantic_counts": {
+    "dominant_square_watchtower": 1,
+    "lower_connected_hall_podium": 1,
+    "outer_barred_gate": 1,
+    "front_stone_approach": 1,
+    "long_hanging_dark_standards": 2,
+    "top_swallowtail_pennant": 1,
+    "flags_total": 3
+  },
+  "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+  "logical_cell": [
+    160,
+    160
+  ],
+  "hd_cell": [
+    320,
+    320
+  ],
+  "logical_anchor": [
+    80,
+    155
+  ],
+  "hd_anchor": [
+    160,
+    310
+  ],
+  "footprint": [
+    4,
+    4
+  ],
+  "obstructionHeight": 3,
+  "occupancy_is_metadata_not_visual_bounds": true,
+  "source_foot_semantics": "projected whole-compound baseline at x627,y1176 near the closest foreground rock/wall footing; separate from the offset entrance stair and raised inner hall",
+  "source_local_landmark_estimates_px": {
+    "nearest_front_rock_footing_contact": [
+      745,
+      1179
+    ],
+    "front_stair_approach_contact": [
+      387,
+      1153
+    ],
+    "front_barred_gate_threshold": [
+      456,
+      1004
+    ],
+    "inner_hall_front_arch_threshold": [
+      518,
+      788
+    ],
+    "right_standard_pole_base": [
+      1025,
+      929
+    ]
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/black-oath-fortress-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-fourth-four-consumer-contract.json",
+  "source_edit_count": 0,
+  "interactive_structure_states_unchanged": true,
+  "scene_deny_atlas_unchanged": true,
+  "common_full_canvas_calibration": {
+    "uniform_scale_native_to_logical": 0.12121212121212122,
+    "uniform_scale_native_to_hd": 0.24242424242424243,
+    "logical_canvas_origin": [
+      4,
+      4
+    ],
+    "strong_bounds_logical": [
+      7.152,
+      13.576,
+      154.424,
+      147.394
+    ],
+    "source_foot_projected_logical": [
+      80.0,
+      146.545
+    ],
+    "catalog_anchor_not_modified": [
+      80,
+      155
+    ],
+    "method": "parent current full-canvas calibration, no alpha bbox fitting",
+    "scene_review_pending": true
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

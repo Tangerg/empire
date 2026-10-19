@@ -1,0 +1,122 @@
+{
+  "asset": "guildhall-market",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; chunky matte architectural family, broad stone/wood/roof planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1164
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.92823
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    25,
+    102,
+    25,
+    78
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/guildhall-market-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/guildhall-market/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "landmarks-large",
+  "cell_index": 14,
+  "semantic_counts": {
+    "main_timber_guildhall": 1,
+    "projecting_front_entry_gable": 1,
+    "main_stone_stair": 1,
+    "cloth_canopy_stalls": 4,
+    "raised_front_stall_platform": 1
+  },
+  "render_role": "catalog large-landmark module with upright compound architecture and integrated functional foundation; no exact current consumer, c01-01 denies atlas",
+  "logical_cell": [
+    160,
+    160
+  ],
+  "hd_cell": [
+    320,
+    320
+  ],
+  "logical_anchor": [
+    80,
+    155
+  ],
+  "hd_anchor": [
+    160,
+    310
+  ],
+  "footprint": [
+    4,
+    3
+  ],
+  "obstructionHeight": 2,
+  "occupancy_is_metadata_not_visual_bounds": true,
+  "source_foot_semantics": "projected whole-compound baseline at x627,y1164 aligned near the foreground paved footing beneath the raised stall; distinct from main hall and stall stairs",
+  "source_local_landmark_estimates_px": {
+    "front_stall_platform_footing_contact": [
+      749,
+      1147
+    ],
+    "nearest_paved_perimeter_contact": [
+      741,
+      1170
+    ],
+    "main_hall_stair_lower_contact": [
+      549,
+      796
+    ],
+    "front_stall_stair_lower_contact": [
+      503,
+      1053
+    ],
+    "main_hall_door_threshold": [
+      603,
+      659
+    ]
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/guildhall-market-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-fourth-four-consumer-contract.json",
+  "source_edit_count": 0,
+  "interactive_structure_states_unchanged": true,
+  "scene_deny_atlas_unchanged": true,
+  "common_full_canvas_calibration": {
+    "uniform_scale_native_to_logical": 0.12121212121212122,
+    "uniform_scale_native_to_hd": 0.24242424242424243,
+    "logical_canvas_origin": [
+      4,
+      4
+    ],
+    "strong_bounds_logical": [
+      7.03,
+      16.364,
+      152.97,
+      146.545
+    ],
+    "source_foot_projected_logical": [
+      80.0,
+      145.091
+    ],
+    "catalog_anchor_not_modified": [
+      80,
+      155
+    ],
+    "method": "parent current full-canvas calibration, no alpha bbox fitting",
+    "scene_review_pending": true
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}
