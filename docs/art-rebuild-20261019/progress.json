@@ -1924,10 +1924,14 @@
     },
     {
       "topicId": "C01-EQUIP-BATTLE-MAGE",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-battle-mage/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "a9998382a6d88754cfb68f43db8f061e67ccb1d3c29a2d476fad63fb386d757d"
     },
     {
       "topicId": "C01-EQUIP-BERSERKER",
@@ -1984,10 +1988,14 @@
     },
     {
       "topicId": "C01-EQUIP-DRUID",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-druid/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "a0d867bce75666537786e4e58609c06ca9a0e9dd72374b12c1a8cfeaba910f3f"
     },
     {
       "topicId": "C01-EQUIP-EAGLE-SCOUT",
@@ -4946,11 +4954,15 @@
     },
     {
       "topicId": "c02-equipment-rail-rifleman",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-rail-rifleman/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_scifi_static_props",
-      "assignmentPhase": "after-current-battle-props"
+      "assignmentPhase": "after-current-battle-props",
+      "sourceSha256": "1e8c6a264276e591cafca092d2fec73783ce77ee7e6bd40d920ea78fa65ce689"
     },
     {
       "topicId": "c02-equipment-rain-shepherd",
@@ -5004,11 +5016,15 @@
     },
     {
       "topicId": "c02-equipment-star-shield",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-star-shield/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_scifi_static_props",
-      "assignmentPhase": "after-current-battle-props"
+      "assignmentPhase": "after-current-battle-props",
+      "sourceSha256": "e200a1dc97a06136d5168fe39cc3718e0586babf12d98d63f9c8e743915094a0"
     },
     {
       "topicId": "c02-equipment-star-vein-mage",
@@ -7642,7 +7658,9 @@
       "topicId": "c03-equip-4566788b",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props",
+      "assignmentPhase": "after-evidence-revisions-source-review-first"
     },
     {
       "topicId": "c03-equip-4619e546",
@@ -7654,7 +7672,9 @@
       "topicId": "c03-equip-4c02a584",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props",
+      "assignmentPhase": "after-evidence-revisions-source-review-first"
     },
     {
       "topicId": "c03-equip-4dad36ef",
@@ -7738,7 +7758,9 @@
       "topicId": "c03-equip-915fc486",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props",
+      "assignmentPhase": "after-evidence-revisions-source-review-first"
     },
     {
       "topicId": "c03-equip-9881f2a3",
@@ -7750,7 +7772,9 @@
       "topicId": "c03-equip-9ad7ca0f",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_support_props",
+      "assignmentPhase": "after-evidence-revisions-source-review-first"
     },
     {
       "topicId": "c03-equip-a53b725f",
@@ -8903,13 +8927,16 @@
       "atlasId": "forest-existing",
       "cellId": "pine-underbrush-d",
       "index": 7,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-existing/pine-underbrush-d/revision-2/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "8ff7be11328b1609992ddc8a91789f91f5642e68efc5875808afdc7b08df89f5",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-016-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "staticVisualReview": {
         "result": "passed",
@@ -9425,5 +9452,28 @@
       "issue": "Pedestal more substantial than source; scale review requested",
       "status": "resolved-by-reviewed-revision-2"
     }
-  ]
+  ],
+  "crossAssetCoherence": {
+    "status": "pending-first-meadow-exports",
+    "contract": "docs/art-rebuild-20261019/cross-asset-coherence.md",
+    "requiredInputs": [
+      "surface-meadow",
+      "forest-modules",
+      "combat-unit",
+      "interactive-structure"
+    ],
+    "evidenceType": "deterministic-real-export-composite",
+    "runtimeAcceptance": "separate-pending",
+    "checks": [
+      "palette",
+      "illumination",
+      "contour",
+      "camera",
+      "relative-scale",
+      "detail-density",
+      "contact",
+      "occlusion",
+      "gameplay-readability"
+    ]
+  }
 }
