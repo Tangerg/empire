@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-drying-racks",
+  "assetId": "C02-SFV1-battle-prop-drying-racks",
+  "label": "晾衣架生活组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-03.png",
+  "originalMasterSha256": "b40bca22db30225e1d37f990946bd07a4a3a89d338c674f23c0e13d57e975b74",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 1
+  },
+  "sourceCropBox": [
+    945,
+    5,
+    1249,
+    622
+  ],
+  "sourceMappingEvidence": "Verified directly against original full props-board-03 top-row visual identities and original topic-catalog positions16-19; row-major4x2 mapping. No sorted final manifest inference.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-drying-racks.png",
+  "runtimeReferenceSha256": "eefc563cfe02343f194b65c7db80821c0888b9547bc562fd69c89db954dd8257",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

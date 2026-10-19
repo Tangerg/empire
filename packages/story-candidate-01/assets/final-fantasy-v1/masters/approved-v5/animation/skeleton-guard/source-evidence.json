@@ -1,0 +1,194 @@
+{
+  "topicId": "C01-UNIT-SKELETON-GUARD",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-SKELETON-GUARD",
+    "topicId": "C01-UNIT-SKELETON-GUARD",
+    "label": "骸骨卫士",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-skeleton-guard.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-skeleton-guard.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-skeleton-guard.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-units/named-skeleton-guard-source.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "180cc60cbedbbd3084b287791983cf12305040e2f07e00c7e7b8faab90be75ab"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-skeleton-guard.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "40b3d0e8bc416ea3243071645a8d86da6e18ea98c0bcf04838f076149e87eb18"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-skeleton-guard.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "03903df9b65cea4edceff35251982891edb98ec7f28e06b4649d631f4518a80a"
+    }
+  },
+  "actualConsumers": [
+    "c01.skeleton-guard"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 20,
+    "text": "'c01.skeleton-guard': 'C01-UNIT-SKELETON-GUARD'"
+  },
+  "referenceExtraction": "Original1672x941 complete four-character board, idle[0,0,418,941],face[128,200,313,390],gear[79,350,389,660], all native unresampled. Original HD/runtime strips preserved and HD64x96 cells extracted. No color/alpha changes.",
+  "status": "Original identity and actual scene contract verified; native idle awaiting coordinator review",
+  "exclusivityCheck": "Coordinator assigned skeleton-guard only19:00UTC; target absent before work; tree-person explicitly unassigned",
+  "originalIdentity": "True ivory-bone skeleton with exposed skull and jaw, two dark eye sockets containing small amber points, triangular nose cavity, round low steel helmet with ridge bands and brown chin strap; blue-gray scarf, ragged charcoal/slate armor and tunic, pale torn shoulder scraps, brown belt/pouch/rope; two wooden chest name tags and a small belt-side wooden token; exposed knee/shin bones and brown open-toe wrapped footwear.",
+  "equipmentIdentity": "Original screen-left hand grips one wood-shaft spear with angular steel head, tan neck bindings and gray butt cap. Original screen-right arm holds one plain pale wooden tall rectangular shield with steel rim and rivets. Shield has no cross, stripe or heraldry.",
+  "symbolReview": "Original two name plaques have simple dark holes/marks. Idle simplifies these into small diamond-like dark insets, not a new faction/rune symbol. Amber eye centers confined inside skull sockets. Skeletal negative spaces must stay genuine transparent alpha.",
+  "originalFrameReview": "Complete source board has four horizontal character cells. Original third attack cell is near idle; original walk-a and walk-b repeat a similar screen-right-foot-forward phase. Reconstruct a meaningful original-hand spear sweep and genuinely opposite walking contacts; preserve all equipment.",
+  "ruleContract": {
+    "unitSource": "packages/story-candidate-01/src/units.ts:78",
+    "unitId": "c01.skeleton-guard",
+    "unitName": "骸骨守卫",
+    "weaponIds": [
+      "c01.undead-blade"
+    ],
+    "unitTags": [
+      "undead",
+      "oathbound",
+      "infantry"
+    ],
+    "weaponSource": "packages/story-candidate-01/src/weapons.ts:104",
+    "weaponName": "回声残刃",
+    "damageType": "slash",
+    "power": 34,
+    "weaponTags": [
+      "melee",
+      "undead"
+    ]
+  },
+  "existingSemanticMismatch": "Original illustration consistently uses spear and rectangular shield, while rule ID/name is undead-blade/回声残刃 and damageType slash. Coordinator explicitly approved preserving original spear and using a clear spear sweep in the existing attack slot. No sword invented, no rule remap or gameplay fix claimed.",
+  "independentAssets": {
+    "equipmentTopic": "C01-EQUIP-SKELETON-GUARD",
+    "equipmentBindingLine": 115,
+    "effectTopic": "C01-FX-01",
+    "effectBindingLine": 159,
+    "policy": "Original independent equipment icon and FX remain separate; no baked glow, aura, slash trail or projectile."
+  },
+  "consumerStatus": "Campaign actual-used undead infantry, eleven initial enemy actors across four levels; no built-in unit consumer",
+  "actualScenePlacements": [
+    {
+      "level": "c01-03",
+      "title": "赤石围城",
+      "sourceLines": "levels.ts:463-469",
+      "actors": {
+        "oath-guard-1": [
+          18,
+          2
+        ],
+        "oath-guard-2": [
+          18,
+          4
+        ]
+      }
+    },
+    {
+      "level": "c01-11",
+      "title": "无声墓园",
+      "sourceLines": "levels.ts:688-694",
+      "actors": {
+        "echo-1": [
+          9,
+          5
+        ],
+        "echo-2": [
+          13,
+          5
+        ],
+        "north-echo": [
+          7,
+          2
+        ],
+        "south-echo": [
+          8,
+          12
+        ],
+        "ossuary-guard": [
+          17,
+          12
+        ]
+      }
+    },
+    {
+      "level": "c01-12",
+      "title": "沉没钟塔",
+      "sourceLines": "levels.ts:702-708",
+      "actors": {
+        "oath-echo-1": [
+          11,
+          4
+        ],
+        "north-echo": [
+          10,
+          2
+        ]
+      }
+    },
+    {
+      "level": "c01-16",
+      "title": "记住我的名字",
+      "sourceLines": "levels.ts:780,790-793",
+      "actors": {
+        "memory-3": [
+          10,
+          11
+        ],
+        "memory-5": [
+          7,
+          12
+        ]
+      }
+    }
+  ],
+  "placementDerivation": "levels.ts place() seeds.map index uses matching deployment slot unless explicit coordinates; buildLevel order gives c01-NN. Verified source actor order and deployment strings directly.",
+  "poseContract": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "approvalScope": "Coordinator assigned exclusive skeleton-guard quartet19:00UTC, idle first for common-scale review; woodland-walker remains unassigned.",
+  "rawPolicy": "Native built-in imagegen RGBA outputs preserved byte-for-byte as raw/master. No painted recoloring, resizing, cropping, alpha cleanup or independent pose fit."
+}
