@@ -24,8 +24,18 @@ def element(tag, attrs=None):
     return ET.Element(f'{{{NS}}}{tag}', attrs or {})
 
 
-def build(root, source, masters, output, connectors=None, only=None, water_area=None, bank=None, ground_base=None, grass_patch=None, ground_period=128, ground_flat=False, grass_broad=False, proportion_set=None, tight_camera=False):
+def validate_stage(stage):
+    units = stage['units']
+    if not stage.get('stateUnchanged') or len(units) != 6 or not all(unit['canReceiveFoot'] for unit in units):
+        raise ValueError('staged fixture must have six validated cells and untouched actual state')
+    if len({(unit['x'],unit['y']) for unit in units}) != 6 or sorted(unit['owner'] for unit in units) != [1,1,1,2,2,2]:
+        raise ValueError('staged fixture must have distinct cells and exactly three actors per team')
+
+
+def build(root, source, masters, output, connectors=None, only=None, water_area=None, bank=None, ground_base=None, grass_patch=None, ground_period=128, ground_flat=False, grass_broad=False, proportion_set=None, tight_camera=False, staged_fixture=None):
     data = json.loads((source / 'pieces.json').read_text())
+    stage = json.loads(staged_fixture.read_text()) if staged_fixture else None
+    if stage: validate_stage(stage)
     output.mkdir(parents=True, exist_ok=True)
     reports = []
     for name, keep_width, human_height in [('renderer-baseline', None, 44), ('trial-keep96', 96, 44), ('trial-keep144', 144, 44), ('trial-keep144-human34', 144, 34), ('selected-layer-keep128-human34', 128, 34), ('selected-layer-corrected-connectors', 128, 34), ('selected-layer-area-water', 128, 34), ('selected-layer-area-water-bridge', 128, 34), ('selected-layer-area-water-bridge-bank', 128, 34)]:
@@ -35,8 +45,9 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
         if proportion_set:
             preset = PROPORTION_SETS[proportion_set]
             keep_width, human_height, tree_height = preset['keep'], preset['human'], preset['pine']
-        camera = [-24,0,560,448] if tight_camera else [-96,0,640,512]
-        svg = element('svg', {'viewBox': ' '.join(map(str,camera)), 'width': '1280', 'height': '1024'})
+        camera = stage['camera'] if stage else ([-24,0,560,448] if tight_camera else [-96,0,640,512])
+        native_size = (448,280) if stage else (640,512)
+        svg = element('svg', {'viewBox': ' '.join(map(str,camera)), 'width': str(native_size[0]*2), 'height': str(native_size[1]*2)})
         defs = element('defs'); svg.append(defs)
         hashes = {}; substitutions = []; clip_index = 0
 
@@ -109,9 +120,14 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
             if keep_width and (piece['x'], piece['y']) == (32, 96):
                 master_piece('lorne-keep', [48, 127], [632, 1177], keep_width / 1217)
             else: add_piece(piece, 'building')
-        for index, piece in enumerate(data['units']):
+        displayed_units = [{'x':u['x']*32,'y':u['y']*32,'owner':u['owner']} for u in stage['units']] if stage else data['units']
+        for index, piece in enumerate(displayed_units):
             if selected:
-                if index < 5:
+                if stage or index < 5:
+                    if stage:
+                        marker = stage['markerContract']; contact = marker['contact']; ring = marker['ring']
+                        svg.append(element('ellipse', {'cx':str(piece['x']+contact['cx']), 'cy':str(piece['y']+contact['cy']), 'rx':str(contact['rx']), 'ry':str(contact['ry']), 'fill':contact['fill'], 'opacity':str(contact['opacity'])}))
+                        svg.append(element('ellipse', {'cx':str(piece['x']+ring['cx']), 'cy':str(piece['y']+ring['cy']), 'rx':str(ring['rx']), 'ry':str(ring['ry']), 'fill':ring['fill'], 'stroke':marker['colors'][str(piece['owner'])], 'stroke-width':str(ring['strokeWidth'])}))
                     master_piece('swordsman', [piece['x'] + 16, piece['y'] + 31], [641, 965], human_height / 632)
                 continue
             if keep_width and (piece['x'], piece['y']) == (64, 256):
@@ -147,15 +163,15 @@ def build(root, source, masters, output, connectors=None, only=None, water_area=
         png = output / f'{name}-2x.png'
         subprocess.run(['inkscape', str(svg_path), '--export-type=png', f'--export-filename={png}'], check=True, capture_output=True)
         with Image.open(png) as image:
-            image.resize((640, 512), Image.Resampling.LANCZOS).save(output / f'{name}-native.png')
-        reports.append({'variant': name, 'viewBox': camera, 'proportionStudy': {'set': proportion_set, 'humanVisibleHeight': human_height, 'pineVisibleHeight': tree_height, 'keepVisibleWidth': keep_width, 'bridgeVisibleWidth': 96, 'roadVisualWidth': PROPORTION_SETS.get(proportion_set, PROPORTION_SETS['S0'])['road'], 'roadWidthRequest': 32 if proportion_set == 'H1' else PROPORTION_SETS.get(proportion_set, PROPORTION_SETS['S0'])['road'], 'positionsUnchanged': True, 'tightCamera': tight_camera}, 'cropWorld': [0, 3, 14, 10],
-            'overscanLogical': 96, 'groundStudy': ground_report, 'groundFit': {'meadowInset': 0 if keep_width else 3, 'bleed': .5},
+            image.resize(native_size, Image.Resampling.LANCZOS).save(output / f'{name}-native.png')
+        reports.append({'variant': name, 'stagedFixture': stage, 'viewBox': camera, 'proportionStudy': {'set': proportion_set, 'humanVisibleHeight': human_height, 'pineVisibleHeight': tree_height, 'keepVisibleWidth': keep_width, 'bridgeVisibleWidth': 96, 'roadVisualWidth': PROPORTION_SETS.get(proportion_set, PROPORTION_SETS['S0'])['road'], 'roadWidthRequest': 32 if proportion_set == 'H1' else PROPORTION_SETS.get(proportion_set, PROPORTION_SETS['S0'])['road'], 'positionsUnchanged': not bool(stage), 'tightCamera': tight_camera}, 'cropWorld': [value/32 for value in camera] if stage else [0, 3, 14, 10],
+            'overscanLogical': 0 if stage else 96, 'groundStudy': ground_report, 'groundFit': {'meadowInset': 0 if keep_width else 3, 'bleed': .5},
             'substitutions': substitutions, 'inputHashes': hashes, 'kind': 'actual-renderer-piece-art-study-not-gameplay',
             'connectorCalibration': str(connectors) if connectors and ('corrected-connectors' in name or 'area-water' in name) else None,
             'waterAreaCalibration': str(water_area) if water_area and 'area-water' in name else None,
-            'selectionStudy': {'enabled': selected, 'unitPositions': 'first five actual party deployments; all deliberately represented by one swordsman identity' if selected else 'actual original identities except selected Torren', 'forestPositions': 'five actual canopy placement points represented by the same pine' if selected else 'one pine substitution', 'omitted': 'all legacy ground decals, foundation props, forest-floor blend underlays and settlement road-threshold underlays; other standing scenery, other buildings, remaining units and foreground; tactical terrain surfaces/transitions/routes/water and data unchanged' if selected else 'none beyond stated effects'},
+            'selectionStudy': {'enabled': selected, 'unitPositions': ('six validated staged cells, deliberately not initial deployment; shared swordsman identity with team rings' if stage else 'first five actual party deployments; all deliberately represented by one swordsman identity') if selected else 'actual original identities except selected Torren', 'forestPositions': 'five actual canopy placement points represented by the same pine' if selected else 'one pine substitution', 'omitted': 'all legacy ground decals, foundation props, forest-floor blend underlays and settlement road-threshold underlays; other standing scenery, other buildings, remaining units and foreground; tactical terrain surfaces/transitions/routes/water and data unchanged' if selected else 'none beyond stated effects'},
             'provenance': 'Only listed master substitutions and explicitly named connector/water layers use new calibration; other pixels remain current branch mixed legacy/previous remake',
-            'limitations': data['presentationSubstitutions'], 'acceptance': 'pending-user-style-review'})
+            'limitations': (['STAGED six-unit encounter, not original deployment or observed gameplay', 'Shared swordsman identity and same facing for both teams', 'Runtime contact ellipse and team rings restored; no dynamic lighting, animation or combat UI', 'Selected scenery omissions remain explicit'] if stage else data['presentationSubstitutions']), 'acceptance': 'pending-user-style-review'})
     (output / 'registration-and-provenance.json').write_text(json.dumps(reports, indent=2) + '\n')
     return reports
 
@@ -172,10 +188,11 @@ if __name__ == '__main__':
     parser.add_argument('--bank', type=Path)
     parser.add_argument('--ground-base', type=Path)
     parser.add_argument('--grass-patch', type=Path)
+    parser.add_argument('--staged-fixture', type=Path)
     parser.add_argument('--proportion-set', choices=('S0','P1','H1'))
     parser.add_argument('--tight-camera', action='store_true')
     parser.add_argument('--ground-flat', action='store_true')
     parser.add_argument('--grass-broad', action='store_true')
     parser.add_argument('--ground-period', type=int, choices=(128,512), default=128)
     args = parser.parse_args()
-    build(args.root.resolve(), args.source.resolve(), args.masters.resolve(), args.output.resolve(), args.connectors.resolve() if args.connectors else None, args.only, args.water_area.resolve() if args.water_area else None, args.bank.resolve() if args.bank else None, args.ground_base.resolve() if args.ground_base else None, args.grass_patch.resolve() if args.grass_patch else None, args.ground_period, args.ground_flat, args.grass_broad, args.proportion_set, args.tight_camera)
+    build(args.root.resolve(), args.source.resolve(), args.masters.resolve(), args.output.resolve(), args.connectors.resolve() if args.connectors else None, args.only, args.water_area.resolve() if args.water_area else None, args.bank.resolve() if args.bank else None, args.ground_base.resolve() if args.ground_base else None, args.grass_patch.resolve() if args.grass_patch else None, args.ground_period, args.ground_flat, args.grass_broad, args.proportion_set, args.tight_camera, args.staged_fixture.resolve() if args.staged_fixture else None)
