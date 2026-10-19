@@ -30,6 +30,7 @@ import { CANDIDATE_01_STONE_BASE, candidate01StoneConnectorMarkup } from './cand
 import { candidateWorldMaterialTileMarkup } from './candidate-01-world-material';
 import { CANDIDATE_01_FORGE_BASE } from './candidate-01-forge-material';
 import { candidate01ForestBlendMarkup } from './candidate-01-forest-material';
+import { candidate01EarthBlendMarkup } from './candidate-01-earth-material';
 import { CANDIDATE_01_GRAVEYARD_BASE } from './candidate-01-graveyard-material';
 import {
   CANDIDATE_FOREST_FLOOR,
@@ -101,6 +102,13 @@ function atlasCellMarkup(
   // box and the seam between two of them is covered twice.
   const figure = runtimeTileMarkup(atlas.raster, cell, fit ?? { bleed: 0.5 });
   return className ? `<g class="${className}">${figure}</g>` : figure;
+}
+
+/** Both terrain interiors and generated banks use the same material replacement policy. */
+function blendCellMarkup(atlasId: string, cell: number, at: { x: number; y: number }): string {
+  return candidate01ForestBlendMarkup(atlasId, cell, at.x, at.y)
+    ?? candidate01EarthBlendMarkup(atlasId, cell, at.x, at.y)
+    ?? atlasCellMarkup(atlasId, cell);
 }
 
 /**
@@ -325,8 +333,7 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, ro
           sheet,
           blobMask(x, y, (nx, ny) => field(nx, ny)?.blend === sheet),
         );
-        blends.push({ markup: candidate01ForestBlendMarkup(sheet, cell, at.x, at.y)
-          ?? atlasCellMarkup(sheet, cell), ...at });
+        blends.push({ markup: blendCellMarkup(sheet, cell, at), ...at });
       }
 
       // The mud a river leaves, before the water is drawn over it.
@@ -335,7 +342,7 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, ro
           CANDIDATE_SHORE,
           blobMask(x, y, (nx, ny) => isShore(content, map, nx, ny)),
         );
-        blends.push({ markup: atlasCellMarkup(CANDIDATE_SHORE, cell), ...at });
+        blends.push({ markup: blendCellMarkup(CANDIDATE_SHORE, cell, at), ...at });
       }
 
       if (material.connected && !candidate01IsAreaWater(material) && !(roadCorridor && candidate01IsAreaRoad(material))) {

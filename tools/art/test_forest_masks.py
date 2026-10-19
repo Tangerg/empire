@@ -11,11 +11,14 @@ from export_material_masks import BLOB_ORDER, PACK, ROOT, export
 
 
 class ForestMaskTests(unittest.TestCase):
+    atlas_id = 'transition-meadow-forest'
+    material_name = 'forest'
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        relative = PACK / 'world-materials-v1/manifest-forest-blend-masks-v1.json'
+        relative = PACK / f'world-materials-v1/manifest-{self.material_name}-blend-masks-v1.json'
         self.manifest = self.root / relative
         self.manifest.parent.mkdir(parents=True)
         self.document = json.loads((ROOT / relative).read_text())
@@ -23,7 +26,7 @@ class ForestMaskTests(unittest.TestCase):
         self.environment.mkdir()
         self.catalog = self.environment / 'manifest-environment-builder-v1.json'
         actual = json.loads((ROOT / PACK / 'environment-builder-v1/manifest-environment-builder-v1.json').read_text())
-        self.atlas = next(a for a in actual['atlases'] if a['id'] == 'transition-meadow-forest')
+        self.atlas = next(a for a in actual['atlases'] if a['id'] == self.atlas_id)
         for key in ['png', 'png2x']:
             source = ROOT / PACK / 'environment-builder-v1' / self.atlas[key]
             target = self.environment / self.atlas[key]
@@ -57,7 +60,7 @@ class ForestMaskTests(unittest.TestCase):
         self.assertEqual(sources, {p: p.read_bytes() for p in sources})
         self.assertEqual(catalog_before, self.catalog.read_bytes())
 
-    def test_old_forest_rgb_is_discarded_even_on_semitransparent_edges(self):
+    def test_old_material_rgb_is_discarded_even_on_semitransparent_edges(self):
         before = [(self.root / r['output']).read_bytes() for r in export(self.root, self.manifest)]
         for key, hash_key in [('png', 'sourceSha256'), ('png2x', 'sourceSha2562x')]:
             path = self.environment / self.atlas[key]
@@ -69,10 +72,10 @@ class ForestMaskTests(unittest.TestCase):
         self.write()
         self.assertEqual(before, [(self.root / r['output']).read_bytes() for r in export(self.root, self.manifest)])
 
-    def test_geometry_order_and_binding_must_match_the_actual_forest_atlas(self):
+    def test_geometry_order_and_binding_must_match_the_actual_atlas(self):
         original = copy.deepcopy(self.atlas)
         for key, value in [('rows', 4), ('componentCount', 48), ('maskOrder', BLOB_ORDER[::-1]),
-                           ('bitOrder', ['N', 'E', 'S', 'W']), ('overlaySurface', 'surface-earth')]:
+                           ('bitOrder', ['N', 'E', 'S', 'W']), ('overlaySurface', 'surface-snow')]:
             with self.subTest(key=key):
                 self.atlas = {**original, key: value}
                 self.write()
@@ -86,7 +89,7 @@ class ForestMaskTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'SHA-256'):
             export(self.root, self.manifest)
         self.assertFalse((self.manifest.parent / 'runtime').exists())
-        self.document['atlases'][0]['id'] = 'transition-meadow-earth'
+        self.document['atlases'][0]['id'] = 'transition-meadow-snow'
         self.write()
         with self.assertRaisesRegex(ValueError, 'reviewed'):
             export(self.root, self.manifest)

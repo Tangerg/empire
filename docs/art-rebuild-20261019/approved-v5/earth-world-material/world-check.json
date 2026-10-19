@@ -1,0 +1,102 @@
+[
+  {
+    "id": "earth-floor",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-earth/earth-1/master.png",
+    "sourceSha256": "67b614fcc35c14211232dcc48da0a471aa684ae15878187a79344baf7e92623c",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/earth-floor.png",
+    "exportDensity": 1,
+    "size": [
+      512,
+      512
+    ],
+    "logicalSize": [
+      256,
+      256
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      2.0,
+      2.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-earth",
+      "tone": 0
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "9e291b5eceaecccf493e87414f2c18742adbfc660c64eff88f8d7e8867f56111",
+    "interiorPixelSha256": "65b8785038eeaac12c413b26b8adac8d6278d736a090fa1af87e6607160d812c",
+    "edgeHashes": {
+      "top": "9fac2901bccb2d7fae34025d03f6c052d63ebf7fabd207dd1415a0eba2bd8b91",
+      "bottom": "9fac2901bccb2d7fae34025d03f6c052d63ebf7fabd207dd1415a0eba2bd8b91",
+      "left": "e68a894e5604a643d9de87846e0acf78ba142903354333aedf6a562c7cc6fb3b",
+      "right": "e68a894e5604a643d9de87846e0acf78ba142903354333aedf6a562c7cc6fb3b"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  },
+  {
+    "id": "earth-floor",
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-earth/earth-1/master.png",
+    "sourceSha256": "67b614fcc35c14211232dcc48da0a471aa684ae15878187a79344baf7e92623c",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/runtime/earth-floor@2x.png",
+    "exportDensity": 2,
+    "size": [
+      1024,
+      1024
+    ],
+    "logicalSize": [
+      256,
+      256
+    ],
+    "rasterSize": [
+      512,
+      512
+    ],
+    "pixelsPerWorldUnit": [
+      4.0,
+      4.0
+    ],
+    "worldOrigin": [
+      0,
+      0
+    ],
+    "fit": {
+      "inset": 0,
+      "bleed": 0
+    },
+    "replaces": {
+      "atlas": "surface-earth",
+      "tone": 0
+    },
+    "edgeBandPixels": 1,
+    "derivation": "full-canvas-lanczos-resize + opposite-outermost-pixel-average; no crop, blur, recolor or painting",
+    "pixelSha256": "3f008d8aba2c5caf6ae5e8681fe608d7065071e4ea24d23b6e6444364c468984",
+    "interiorPixelSha256": "6437745c0dbdf28e23e7c75cd472fe9bb4279e2f5bb795379ce6e49b5f29a8a6",
+    "edgeHashes": {
+      "top": "3c9daa945b7d5db1719104560bbcd16389cf30c3324949021b72ef155e40cb09",
+      "bottom": "3c9daa945b7d5db1719104560bbcd16389cf30c3324949021b72ef155e40cb09",
+      "left": "136d60804d7a07797422a699dc5683d91e66e66cc50fe8f6d7a13812d8a7c1fe",
+      "right": "136d60804d7a07797422a699dc5683d91e66e66cc50fe8f6d7a13812d8a7c1fe"
+    },
+    "visualRepeatReview": "required; matching border pixels does not prove large-plane continuity"
+  }
+]

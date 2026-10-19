@@ -1,6 +1,7 @@
 import type { CandidateMaterial } from './candidate-01-terrain-materials';
 import { escapeAttr, runtimeTileMarkup, TILE, type RuntimeCellAtlas, type RuntimeTileFit } from '@empire/game-ui';
 import { fixedNumbers, type FixedNumbers } from './candidate-01-documents';
+import { CANDIDATE_01_ENVIRONMENT } from './candidate-01-environment';
 
 /** Shared source identity, sampling scale and raster density for world materials. */
 export interface CandidateWorldMaterial {
@@ -63,6 +64,13 @@ export function readCandidateOccupancyAtlas(occupancy: {
   if (!href) throw new Error(`candidate-01: missing world occupancy atlas ${occupancy.png2x}`);
   return { href, cellWidth: occupancy.tileSize, cellHeight: occupancy.tileSize,
     columns: occupancy.columns, rows: occupancy.rows };
+}
+
+/** Technical alpha keeps the existing atlas geometry and replaces only its image. */
+export function readCandidateWorldMaskAtlas(spec: { readonly id: string; readonly png: string; readonly png2x: string }): RuntimeCellAtlas {
+  const href = candidateWorldMaterialUrls[`${ROOT}${spec.png2x}`];
+  if (!href || !candidateWorldMaterialUrls[`${ROOT}${spec.png}`]) throw new Error(`candidate-01: missing material mask ${spec.id}`);
+  return { ...CANDIDATE_01_ENVIRONMENT.atlas(spec.id).raster, href };
 }
 
 /** One binding decides which existing connected terrain material an area replaces. */

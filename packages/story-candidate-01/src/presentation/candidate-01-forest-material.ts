@@ -1,7 +1,6 @@
 import document from '../../assets/final-fantasy-v1/world-materials-v1/manifest-forest-floor-v2.json';
 import masksDocument from '../../assets/final-fantasy-v1/world-materials-v1/manifest-forest-blend-masks-v1.json';
-import { CANDIDATE_01_ENVIRONMENT } from './candidate-01-environment';
-import { candidateWorldMaterialTileMarkup, candidateWorldMaterialUrls, readCandidateWorldMaterial } from './candidate-01-world-material';
+import { candidateWorldMaterialTileMarkup, readCandidateWorldMaskAtlas, readCandidateWorldMaterial } from './candidate-01-world-material';
 
 export const CANDIDATE_01_FOREST_FLOOR = readCandidateWorldMaterial(document);
 if (CANDIDATE_01_FOREST_FLOOR.replaces.atlas !== 'surface-forest-floor'
@@ -13,10 +12,7 @@ if (CANDIDATE_01_FOREST_FLOOR.replaces.atlas !== 'surface-forest-floor'
   throw new Error('candidate-01: forest floor requires reviewed tone-zero sampling and the original forest blend masks');
 }
 const spec = masksDocument.atlases[0];
-const root = '../../assets/final-fantasy-v1/world-materials-v1/';
-const href = candidateWorldMaterialUrls[`${root}${spec.png2x}`];
-if (!href || !candidateWorldMaterialUrls[`${root}${spec.png}`]) throw new Error('candidate-01: missing forest blend alpha');
-const mask = { ...CANDIDATE_01_ENVIRONMENT.atlas(spec.id).raster, href };
+const mask = readCandidateWorldMaskAtlas(spec);
 
 /** The existing Blob47 index owns coverage; world coordinates own the material sample. */
 export function candidate01ForestBlendMarkup(atlasId: string, cell: number, worldX: number, worldY: number): string | null {

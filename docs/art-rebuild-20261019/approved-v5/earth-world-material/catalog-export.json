@@ -1,0 +1,218 @@
+[
+  {
+    "atlasId": "surface-earth",
+    "density": 1,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-earth.png",
+    "size": [
+      128,
+      32
+    ],
+    "sources": [
+      {
+        "cellId": "earth-1",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-earth/earth-1/master.png",
+        "sourceSha256": "67b614fcc35c14211232dcc48da0a471aa684ae15878187a79344baf7e92623c",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "earth-2",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-earth/earth-2/master.png",
+        "sourceSha256": "4edd7e0c78fd6e79bfcfa022255e52f08666d1cd58e7f839810a79279e779cc5",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "earth-3",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-earth/earth-3/master.png",
+        "sourceSha256": "a8c48428e8f349553d7fcc50736e615c95fe1fc289c50a482744c53713f945f1",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "earth-4",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-earth/earth-4/master.png",
+        "sourceSha256": "fde3a5007ac460df170aec643f58b3a8705186da809ce2a4ab41c37cfb748621",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      }
+    ],
+    "cells": [
+      {
+        "cellId": "earth-1",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 50,
+        "interiorPixelSha256": "018486ef347139abf40d7a3db585897dc36129e687d7918f25d1c82529d81b7d",
+        "edgeHashes": {
+          "top": "bf7212ee58bf52926cd01c77706dd70f44143274b13a57ab0caf29dcbba84b0e",
+          "bottom": "bf7212ee58bf52926cd01c77706dd70f44143274b13a57ab0caf29dcbba84b0e",
+          "left": "02dac631706344ae7b641ad36ed5607f5ef20eb17fb973239aff2325971cb384",
+          "right": "02dac631706344ae7b641ad36ed5607f5ef20eb17fb973239aff2325971cb384"
+        },
+        "pixelSha256": "8a51f78a2a6e15286e34ae788fb724aa3cc6524a460c4a0c7338f54a66098edd"
+      },
+      {
+        "cellId": "earth-2",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 40,
+        "interiorPixelSha256": "cd3141ed8eccc6a48ef0611c63bc58c59cb3f19e9791718e4216f567c011018e",
+        "edgeHashes": {
+          "top": "bf7212ee58bf52926cd01c77706dd70f44143274b13a57ab0caf29dcbba84b0e",
+          "bottom": "bf7212ee58bf52926cd01c77706dd70f44143274b13a57ab0caf29dcbba84b0e",
+          "left": "02dac631706344ae7b641ad36ed5607f5ef20eb17fb973239aff2325971cb384",
+          "right": "02dac631706344ae7b641ad36ed5607f5ef20eb17fb973239aff2325971cb384"
+        },
+        "pixelSha256": "9c94014b74cc0cec5a653c2cd23c550010e56248d9669e5718b1e2970da142c2"
+      },
+      {
+        "cellId": "earth-3",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 42,
+        "interiorPixelSha256": "79ee293dc708d936abe27f56d5b737365c29f321c553fc3cfd3af67aef551250",
+        "edgeHashes": {
+          "top": "bf7212ee58bf52926cd01c77706dd70f44143274b13a57ab0caf29dcbba84b0e",
+          "bottom": "bf7212ee58bf52926cd01c77706dd70f44143274b13a57ab0caf29dcbba84b0e",
+          "left": "02dac631706344ae7b641ad36ed5607f5ef20eb17fb973239aff2325971cb384",
+          "right": "02dac631706344ae7b641ad36ed5607f5ef20eb17fb973239aff2325971cb384"
+        },
+        "pixelSha256": "13990e41160dc1cf9cf2f7a9fd7e6a4b9074344e0309865bb9412551bf2124d6"
+      },
+      {
+        "cellId": "earth-4",
+        "edgeBandPixels": 1,
+        "changedPixels": 124,
+        "maxChannelChange": 38,
+        "interiorPixelSha256": "b849e32ee443a0af738b52c7cb5e6efe5f6adbb66efe0761921ced448afe0d3b",
+        "edgeHashes": {
+          "top": "bf7212ee58bf52926cd01c77706dd70f44143274b13a57ab0caf29dcbba84b0e",
+          "bottom": "bf7212ee58bf52926cd01c77706dd70f44143274b13a57ab0caf29dcbba84b0e",
+          "left": "02dac631706344ae7b641ad36ed5607f5ef20eb17fb973239aff2325971cb384",
+          "right": "02dac631706344ae7b641ad36ed5607f5ef20eb17fb973239aff2325971cb384"
+        },
+        "pixelSha256": "982fd451b6d1f84d3115a6ef2dae51b429dad62a3a9e57675ebe10439a29389d"
+      }
+    ],
+    "derivation": "full-canvas-lanczos-resize + outermost-pixel-family-edge-average; no blur/recolor",
+    "pixelSha256": "040437a9e07a839af636a762099450b84e9a5e3c63547b7676b88b1c0e125fa4",
+    "visualSeamReview": "required-separately"
+  },
+  {
+    "atlasId": "surface-earth",
+    "density": 2,
+    "output": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-earth@2x.png",
+    "size": [
+      256,
+      64
+    ],
+    "sources": [
+      {
+        "cellId": "earth-1",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-earth/earth-1/master.png",
+        "sourceSha256": "67b614fcc35c14211232dcc48da0a471aa684ae15878187a79344baf7e92623c",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "earth-2",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-earth/earth-2/master.png",
+        "sourceSha256": "4edd7e0c78fd6e79bfcfa022255e52f08666d1cd58e7f839810a79279e779cc5",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "earth-3",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-earth/earth-3/master.png",
+        "sourceSha256": "a8c48428e8f349553d7fcc50736e615c95fe1fc289c50a482744c53713f945f1",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      },
+      {
+        "cellId": "earth-4",
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/surface-earth/earth-4/master.png",
+        "sourceSha256": "fde3a5007ac460df170aec643f58b3a8705186da809ce2a4ab41c37cfb748621",
+        "sourceSize": [
+          1254,
+          1254
+        ]
+      }
+    ],
+    "cells": [
+      {
+        "cellId": "earth-1",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 51,
+        "interiorPixelSha256": "87280895f39c79128984f38943a2219e0b4cf7eecb0f61905253f1ab8154ccd6",
+        "edgeHashes": {
+          "top": "76e3e4d093975e2f4c9b9402c252783c62be8e576b4c94331cd4b3d566a0d126",
+          "bottom": "76e3e4d093975e2f4c9b9402c252783c62be8e576b4c94331cd4b3d566a0d126",
+          "left": "ce72089d0066a75f17234a723f51c02a5db7331bbf455cf97d3cc639f2816e3d",
+          "right": "ce72089d0066a75f17234a723f51c02a5db7331bbf455cf97d3cc639f2816e3d"
+        },
+        "pixelSha256": "c8dab9c27e449f7b7d6f543f7fb5cb523784fb5f49ecbb6d40f2a1524039b476"
+      },
+      {
+        "cellId": "earth-2",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 40,
+        "interiorPixelSha256": "ad49024eb1eebaf992f9f5450055e2360bdb135507ef325d904fd5eb3369ce31",
+        "edgeHashes": {
+          "top": "76e3e4d093975e2f4c9b9402c252783c62be8e576b4c94331cd4b3d566a0d126",
+          "bottom": "76e3e4d093975e2f4c9b9402c252783c62be8e576b4c94331cd4b3d566a0d126",
+          "left": "ce72089d0066a75f17234a723f51c02a5db7331bbf455cf97d3cc639f2816e3d",
+          "right": "ce72089d0066a75f17234a723f51c02a5db7331bbf455cf97d3cc639f2816e3d"
+        },
+        "pixelSha256": "3c57fa4af02e530f8983b87ed6cb42be5b1a70bcddd2075dbe6fef29c4fb5621"
+      },
+      {
+        "cellId": "earth-3",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 43,
+        "interiorPixelSha256": "743512d0fa21dfa92084802c3af2f79517f721f0137c15f1e9c1c172213d76c5",
+        "edgeHashes": {
+          "top": "76e3e4d093975e2f4c9b9402c252783c62be8e576b4c94331cd4b3d566a0d126",
+          "bottom": "76e3e4d093975e2f4c9b9402c252783c62be8e576b4c94331cd4b3d566a0d126",
+          "left": "ce72089d0066a75f17234a723f51c02a5db7331bbf455cf97d3cc639f2816e3d",
+          "right": "ce72089d0066a75f17234a723f51c02a5db7331bbf455cf97d3cc639f2816e3d"
+        },
+        "pixelSha256": "7684fed4b5659743635e34ef556ca0a6d64908feaf476ba38983600ba75d7c7c"
+      },
+      {
+        "cellId": "earth-4",
+        "edgeBandPixels": 1,
+        "changedPixels": 252,
+        "maxChannelChange": 40,
+        "interiorPixelSha256": "7ee654ded20b88f8acc3611546720524fca92495f6a721cb700391377f31a9b9",
+        "edgeHashes": {
+          "top": "76e3e4d093975e2f4c9b9402c252783c62be8e576b4c94331cd4b3d566a0d126",
+          "bottom": "76e3e4d093975e2f4c9b9402c252783c62be8e576b4c94331cd4b3d566a0d126",
+          "left": "ce72089d0066a75f17234a723f51c02a5db7331bbf455cf97d3cc639f2816e3d",
+          "right": "ce72089d0066a75f17234a723f51c02a5db7331bbf455cf97d3cc639f2816e3d"
+        },
+        "pixelSha256": "a3431070809e240bf8790fdcf6d6405b80d8bfbefdd89407ad9d3388e4d459f3"
+      }
+    ],
+    "derivation": "full-canvas-lanczos-resize + outermost-pixel-family-edge-average; no blur/recolor",
+    "pixelSha256": "19241f92f7e6f59dda86df8d99c89a4a05ede3bf2b7c0924f2e514dc87d60693",
+    "visualSeamReview": "required-separately"
+  }
+]

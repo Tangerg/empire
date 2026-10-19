@@ -12,7 +12,7 @@ from export_environment_overrides import PACK
 
 MANIFEST = PACK / 'world-materials-v1/manifest-stone-connectors-v1.json'
 ATLAS_IDS = ('route-stone-road', 'route-edge-stone-road')
-FOREST_IDS = ('transition-meadow-forest',)
+BLOB_SURFACES = {'transition-meadow-forest': 'surface-forest-floor', 'transition-meadow-earth': 'surface-earth'}
 BLOB_ORDER = [0, 1, 4, 5, 7, 16, 17, 20, 21, 23, 28, 29, 31, 64, 65, 68, 69, 71,
               80, 81, 84, 85, 87, 92, 93, 95, 112, 113, 116, 117, 119, 124, 125, 127,
               193, 197, 199, 209, 213, 215, 221, 223, 241, 245, 247, 253, 255]
@@ -22,8 +22,9 @@ def plan(root: Path, manifest: Path):
     document = read_json(manifest)
     if set(document) != {'schemaVersion', 'atlases'} or document['schemaVersion'] != 1:
         raise ValueError('expected material mask schemaVersion 1')
-    if not isinstance(document['atlases'], list) or tuple(a.get('id') for a in document['atlases']) not in (ATLAS_IDS, FOREST_IDS):
-        raise ValueError('expected reviewed stone pair or forest blend in existing layer order')
+    allowed_groups = [ATLAS_IDS, *((atlas_id,) for atlas_id in BLOB_SURFACES)]
+    if not isinstance(document['atlases'], list) or tuple(a.get('id') for a in document['atlases']) not in allowed_groups:
+        raise ValueError('expected reviewed stone pair or one registered blob blend in existing layer order')
     environment = root / PACK / 'environment-builder-v1'
     catalog = read_json(environment / 'manifest-environment-builder-v1.json')
     planned = []
@@ -34,16 +35,16 @@ def plan(root: Path, manifest: Path):
         if len(matches) != 1:
             raise ValueError('material mask must resolve one existing atlas')
         atlas = matches[0]
-        forest = spec['id'] in FOREST_IDS
-        rows, count = (3, 47) if forest else (4, 64)
+        blend = spec['id'] in BLOB_SURFACES
+        rows, count = (3, 47) if blend else (4, 64)
         if (atlas['columns'], atlas['rows'], atlas['cellWidth'], atlas['cellHeight'],
                 atlas['cellWidth2x'], atlas['cellHeight2x'], atlas['componentCount']) != (16, rows, 32, 32, 64, 64, count):
             raise ValueError('existing material mask geometry changed')
-        if forest:
+        if blend:
             if (atlas['category'], atlas['tileMode'], atlas['baseSurface'], atlas['overlaySurface'],
                     atlas['maskOrder'], atlas['bitOrder']) != ('transition', 'blob-47', 'surface-meadow',
-                    'surface-forest-floor', BLOB_ORDER, ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']):
-                raise ValueError('existing forest blend semantic order changed')
+                    BLOB_SURFACES[spec['id']], BLOB_ORDER, ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']):
+                raise ValueError('existing blob blend semantic order changed')
         elif (atlas['tileMode'] != 'nesw-16-variants' or atlas['maskOrder'] != list(range(16))
                 or atlas['variantsPerMask'] != 4 or atlas['bitOrder'] != ['N', 'E', 'S', 'W']
                 or atlas['cellIndex'] != 'mask * 4 + variant'):
@@ -57,8 +58,8 @@ def plan(root: Path, manifest: Path):
                 if opened.format != 'PNG' or opened.mode != 'RGBA' or opened.size != (512 * density, rows * 32 * density):
                     raise ValueError('expected existing RGBA material mask dimensions')
                 alpha = opened.getchannel('A')
-            if forest and alpha.crop((15 * 32 * density, 2 * 32 * density, 16 * 32 * density, 3 * 32 * density)).getextrema() != (0, 0):
-                raise ValueError('forest blend padding slot must remain transparent')
+            if blend and alpha.crop((15 * 32 * density, 2 * 32 * density, 16 * 32 * density, 3 * 32 * density)).getextrema() != (0, 0):
+                raise ValueError('blob blend padding slot must remain transparent')
             image = Image.new('RGBA', alpha.size, (255, 255, 255, 255))
             image.putalpha(alpha)
             target = within(manifest.parent, spec[key])
