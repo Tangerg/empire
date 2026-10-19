@@ -501,7 +501,7 @@
       "source": null,
       "verification": {
         "state": "partial-frames-only",
-        "note": "3 of four pose masters backed up; topic remains pending"
+        "note": "4 of four pose masters backed up; topic remains pending"
       },
       "assignment": "redraw_grayflag_cover_props",
       "plannedFrames": [
@@ -525,6 +525,11 @@
           "status": "raw-generated",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/attack/master.png",
           "sha256": "473fee55f03ca6beb34750cf4d3b2927863785163b37d5357f969949c41361a8"
+        },
+        "walk-b": {
+          "status": "raw-generated",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-archer/walk-b/master.png",
+          "sha256": "c7e6de4ed9ce8e69be4a532cc96ce202c6cbf9f9dbc8acf182a3568ed72a685a"
         }
       },
       "contactReviewPolicy": "Archer-specific maximum2logicalpx contact offset approved, only consistentallposes/no visiblefloat/clean nativealpha; declaredanchor unchanged, not a global tolerance"
@@ -1821,7 +1826,8 @@
       "topicId": "C01-EQUIP-ASSASSIN",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-AXE-BREAKER",
@@ -1977,7 +1983,8 @@
       "topicId": "C01-EQUIP-JAVELIN-HUNTER",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-KNIGHT",
@@ -2045,7 +2052,8 @@
       "topicId": "C01-EQUIP-RANGER",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-RUNE-ARTIFICER",
@@ -2069,7 +2077,8 @@
       "topicId": "C01-EQUIP-SILVER-LONGBOW",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-SKELETON-GUARD",
