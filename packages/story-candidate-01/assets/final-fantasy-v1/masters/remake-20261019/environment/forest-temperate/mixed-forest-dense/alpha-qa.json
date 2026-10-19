@@ -1,0 +1,67 @@
+{
+  "mode": "RGBA",
+  "size": [
+    1254,
+    1254
+  ],
+  "sha256": "402a7621fda7789174fd405c97a24e0651121f2efcd156d07f195b9e0d85af2f",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_bbox": [
+    0,
+    0,
+    1248,
+    1254
+  ],
+  "transparent_pixels": 820294,
+  "opaque_pixels": 645,
+  "partial_alpha_pixels": 751577,
+  "boundary_max_alpha": 1,
+  "tool": "built-in image_gen",
+  "reference": "full original forest-temperate atlas slot 2 and approved map style",
+  "raw_master_unchanged": true,
+  "alpha_histogram_most_common": [
+    [
+      0,
+      820294
+    ],
+    [
+      253,
+      324087
+    ],
+    [
+      252,
+      320154
+    ],
+    [
+      251,
+      27476
+    ],
+    [
+      1,
+      12437
+    ],
+    [
+      250,
+      11593
+    ],
+    [
+      249,
+      6782
+    ],
+    [
+      2,
+      4569
+    ]
+  ],
+  "visible_bbox_alpha_over_8": [
+    148,
+    59,
+    1144,
+    1180
+  ],
+  "hygiene_warning": "Generated alpha=1 residue reaches perimeter; preserve immutable raw and use deterministic full-canvas fit. Runtime compositing and anchor acceptance pending.",
+  "visual_review": "Complete isolated silhouette with matte layered foliage, visible trunks/branches/roots. No broad ground shadow or rectangular platform. Mixed group retains compact local original rocks and low foliage."
+}

@@ -1487,10 +1487,14 @@
     },
     {
       "topicId": "C01-BPROP-EVIDENCE-4",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-evidence-4/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "9cda46a19ceb76eebd0a79af86e3c607830c5f0180f1f9e0d068defa630debcd"
     },
     {
       "topicId": "C01-BPROP-FACTION-1",
@@ -1617,10 +1621,14 @@
     },
     {
       "topicId": "C01-BPROP-LIFE-4",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_support_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/battle-prop/bprop-life-4/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; exported and in-game QA not yet accepted"
+      },
+      "assignment": "redraw_grayflag_support_props",
+      "sourceSha256": "9b1f93cbc38b6941ae4d5ba7ded3b1e9267127c76c75ca6dafbafcdce40cde38"
     },
     {
       "topicId": "C01-BPROP-LOGISTICS-1",
@@ -7906,9 +7914,14 @@
       "atlasId": "forest-temperate",
       "cellId": "mixed-forest-dense",
       "index": 2,
-      "status": "pending",
-      "source": null,
-      "assignment": "redraw_grayflag_environment_trees"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/mixed-forest-dense/master.png",
+      "assignment": "redraw_grayflag_environment_trees",
+      "sourceSha256": "402a7621fda7789174fd405c97a24e0651121f2efcd156d07f195b9e0d85af2f",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; environment adapter acceptance pending"
+      }
     },
     {
       "atlasId": "forest-temperate",
