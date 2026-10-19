@@ -12,7 +12,7 @@
     "red-swordsman": "four poses exported and formal team-color resolver bound; live game pending",
     "pine": "transparent source and static scene checked",
     "bridge": "transparent source and static scene checked",
-    "grass-material": "opaque material and static scene checked",
+    "grass-material": "formally bound world-coordinate base meadow with1024 logical sampling, source density1px/logical; full-map offline review; larger-map periodicity still pending",
     "water-material": "opaque source to unchanged actual water mask, static scene checked",
     "earth-material": "revision2 selected, original rejected density retained",
     "grass-edge": "revision2 broad flat patch, static overlay checked",
@@ -312,5 +312,14 @@
     "fullSuite": "existing jsdom scrollTo error reproduced before binding change",
     "liveBrowser": "not validated"
   },
-  "liveGameVerifiedAnimationTopics": 0
+  "liveGameVerifiedAnimationTopics": 0,
+  "materialStages": {
+    "meadow-base": {
+      "raw": "approved source preserved unchanged",
+      "export": "512/1024 physical raster pair, hashes and technical seam deltas checked",
+      "runtimeBinding": "typed world material manifest,1024 sampling origin0, uncropped; canonical ground consumer",
+      "liveGame": "pending",
+      "limits": "1 source pixel per logical world unit; not native2x detail at1024 period; only base meadowtone0, legacy other materials remain"
+    }
+  }
 }
