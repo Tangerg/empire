@@ -1,0 +1,281 @@
+{
+  "level": "c01-02",
+  "mapCells": [
+    22,
+    14
+  ],
+  "mapWorld": [
+    0,
+    0,
+    704,
+    448
+  ],
+  "groups": {
+    "1": {
+      "count": 12,
+      "cellInclusiveBounds": [
+        1,
+        7,
+        5,
+        12
+      ],
+      "worldDeploymentCellBounds": [
+        32,
+        224,
+        192,
+        416
+      ],
+      "units": [
+        {
+          "key": "campaign-laiya",
+          "x": 1,
+          "y": 9,
+          "unit": "c01.laiya",
+          "owner": 1,
+          "facing": "east",
+          "formation": "formation-defensive"
+        },
+        {
+          "key": "campaign-torren",
+          "x": 2,
+          "y": 8,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east"
+        },
+        {
+          "key": "campaign-elin",
+          "x": 2,
+          "y": 10,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east"
+        },
+        {
+          "key": "bridge-knight",
+          "x": 3,
+          "y": 7,
+          "unit": "c01.knight",
+          "owner": 1,
+          "facing": "east"
+        },
+        {
+          "key": "bridge-guard-1",
+          "x": 1,
+          "y": 10,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east"
+        },
+        {
+          "key": "bridge-guard-2",
+          "x": 3,
+          "y": 10,
+          "unit": "c01.archer",
+          "owner": 1,
+          "facing": "east"
+        },
+        {
+          "key": "refugee-1",
+          "x": 1,
+          "y": 11,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east"
+        },
+        {
+          "key": "refugee-2",
+          "x": 2,
+          "y": 12,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east"
+        },
+        {
+          "key": "refugee-3",
+          "x": 3,
+          "y": 12,
+          "unit": "c01.refugee",
+          "owner": 1,
+          "facing": "east"
+        },
+        {
+          "key": "river-scout",
+          "x": 5,
+          "y": 12,
+          "unit": "c01.swordsman",
+          "owner": 1,
+          "facing": "east"
+        },
+        {
+          "key": "bridge-cleric",
+          "x": 2,
+          "y": 9,
+          "unit": "c01.gravekeeper",
+          "owner": 1,
+          "facing": "east"
+        },
+        {
+          "key": "bridge-reserve",
+          "x": 1,
+          "y": 8,
+          "unit": "c01.banner-guard",
+          "owner": 1,
+          "facing": "east"
+        }
+      ]
+    },
+    "2": {
+      "count": 8,
+      "cellInclusiveBounds": [
+        15,
+        2,
+        20,
+        12
+      ],
+      "worldDeploymentCellBounds": [
+        480,
+        64,
+        672,
+        416
+      ],
+      "units": [
+        {
+          "key": "cain",
+          "x": 20,
+          "y": 4,
+          "unit": "c01.cain",
+          "owner": 2,
+          "facing": "west"
+        },
+        {
+          "key": "shield-1",
+          "x": 19,
+          "y": 3,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west"
+        },
+        {
+          "key": "shield-2",
+          "x": 19,
+          "y": 5,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west"
+        },
+        {
+          "key": "bow-1",
+          "x": 18,
+          "y": 8,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west"
+        },
+        {
+          "key": "unmarked-ballista",
+          "x": 20,
+          "y": 10,
+          "unit": "c01.ballista",
+          "owner": 2,
+          "facing": "west"
+        },
+        {
+          "key": "north-bank-guard",
+          "x": 15,
+          "y": 2,
+          "unit": "c01.swordsman",
+          "owner": 2,
+          "facing": "west"
+        },
+        {
+          "key": "south-bank-bow",
+          "x": 16,
+          "y": 11,
+          "unit": "c01.archer",
+          "owner": 2,
+          "facing": "west"
+        },
+        {
+          "key": "battery-screen",
+          "x": 20,
+          "y": 12,
+          "unit": "c01.legion-shield",
+          "owner": 2,
+          "facing": "west"
+        }
+      ]
+    }
+  },
+  "riverCells": {
+    "x": [
+      10,
+      11
+    ],
+    "y": [
+      0,
+      13
+    ]
+  },
+  "bridgeRows": [
+    3,
+    6,
+    9
+  ],
+  "frontlineCandidates": {
+    "owner1MostEast": {
+      "key": "river-scout",
+      "cell": [
+        5,
+        12
+      ]
+    },
+    "owner2Westmost": {
+      "key": "north-bank-guard",
+      "cell": [
+        15,
+        2
+      ]
+    },
+    "owner2SouthBank": {
+      "key": "south-bank-bow",
+      "cell": [
+        16,
+        11
+      ]
+    }
+  },
+  "framingOptions": [
+    {
+      "name": "whole level",
+      "world": [
+        0,
+        0,
+        704,
+        448
+      ],
+      "meaning": "all deployments/buildings and three crossings"
+    },
+    {
+      "name": "deployment overview",
+      "world": [
+        16,
+        32,
+        672,
+        416
+      ],
+      "meaning": "both complete faction deployment bounds, less margin; edge terrain may crop"
+    },
+    {
+      "name": "central crossings detail",
+      "world": [
+        256,
+        48,
+        320,
+        352
+      ],
+      "meaning": "three bridges and river approaches; intentionally excludes most initial deployment, not a full battle view"
+    }
+  ],
+  "limits": "Initial authored deployments, not observed current combat frontlines. Neutral idle unit art and normal building art are extraction substitutions; owner labels here come from actual level data."
+}
