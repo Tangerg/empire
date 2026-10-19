@@ -1,0 +1,39 @@
+{
+  "status": "Idle accepted; native quartet complete",
+  "topic": "C01-UNIT-BATTLE-MAGE",
+  "actualConsumer": "c01.battle-mage; campaign ranged arcane unit",
+  "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/idle/master.png",
+  "nativeSize": [
+    1586,
+    992
+  ],
+  "identityPass": true,
+  "bodyStyleReview": "Broad plated torso, huge young-adult pointed-ear head, large sword hand/rune palm and huge boots; same chunky family",
+  "equipmentHandAssignment": "Screen-left hand holds shortsword; screen-right open rune palm; helmet carried at screen-right hip, not worn",
+  "visibleBoundsAlphaGreaterThan127": [
+    304,
+    54,
+    1313,
+    953
+  ],
+  "bodyTop": 54,
+  "sourceFootMidpoint": [
+    774.697,
+    947.0
+  ],
+  "suggestedSourceFoot": [
+    775,
+    952
+  ],
+  "proposedBodyReferenceSourcePixels": 893.0,
+  "proposedBodyScale": 0.04927211646136618,
+  "bodyTargetHeightLogicalPixels": 44,
+  "perimeterAlphaMax": 1,
+  "perimeterAlphaGreaterThan1": 0,
+  "rawPreserved": true,
+  "exactPromptVerified": true,
+  "semanticNextPose": "Opposite walking contacts and clear palm-forward oath-bolt casting; shortsword stays in original hand; no external glow.",
+  "acceptedScale": "44/893",
+  "acceptanceEvidence": "Parent2026-10-19 14:44:54UTC: Battle-mage idle visually accepted; common44/893 scale and foot775,952; preserve hands, opposite walks and rune-palm ranged spell attack.",
+  "quartetManifest": "bundle-manifest.json"
+}

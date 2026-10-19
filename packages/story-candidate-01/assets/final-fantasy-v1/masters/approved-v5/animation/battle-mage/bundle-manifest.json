@@ -1,0 +1,141 @@
+{
+  "asset": "C01-UNIT-BATTLE-MAGE",
+  "actualConsumer": "c01.battle-mage, campaign ranged arcane unit; distinct from built-in mage/C01-UNIT-MAGE",
+  "status": "Native quartet complete; formal export/binding pending coordinator",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "All master/raw files are byte-identical to selected native tool outputs. No painting/recolor/crop/resize/alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.04927211646136618,
+  "bodyReferenceSourcePixels": 893,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/registration-evidence.json",
+  "semanticContract": "Existing idle/walk-a/attack/walk-b. c01.oath-bolt is ranged arcane magical damage; action visibly extends rune palm while preserving shortsword, no new action/effect asset.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "c4f3f9d586eaab723c29efb12c5647fc4100509388e6b4562ea15f653d9ae1d1",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        775,
+        952
+      ],
+      "hairTopSourceY": 54,
+      "visibleBoundsAlphaGreaterThan127": [
+        304,
+        54,
+        1313,
+        953
+      ],
+      "sha256": "6172eadfe541bd80ef90fabcfc764e5cf31572bcdcc78187855d04fcb3e5b241",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c747dcd9-ef8e-4b80-bb42-c40610594a9e.png",
+      "review": "Accepted young pointed-ear armored caster, large black-haired head, broad navy/red planes, lowered shortsword in screen-left bare hand, raised screen-right rune palm, spare helmet at right hip."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "4b446e146b3cc710ae5fc8b82062f8831584a3d66ea8fbe67196c10ddf7cc4c4",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-a/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        733,
+        952
+      ],
+      "hairTopSourceY": 57,
+      "visibleBoundsAlphaGreaterThan127": [
+        290,
+        57,
+        1324,
+        953
+      ],
+      "sha256": "08ebf412280a6a88950b6ee2d26c6dbb2ade72a020e094e7143a79410a5e8737",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-1010e764-a667-4a30-9187-d4b719d304ec.png",
+      "review": "Front screen-right boot toe-up/heel-contact with dark sole visible; rear screen-left boot flat. Correct sword/rune hands and carried helmet retained."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "afe6fad176339f369ceee06bceff576b64d161e7cea82e13d1078cf5f2fa0c20",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/attack/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        719,
+        944
+      ],
+      "hairTopSourceY": 57,
+      "visibleBoundsAlphaGreaterThan127": [
+        224,
+        57,
+        1511,
+        945
+      ],
+      "sha256": "0effb73dae0585a724e682555c0e229e67a40ecf37b3f1691fac7a4a2d284481",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-92a35e7f-d68f-40a5-bc3c-ca7024a37a5e.png",
+      "review": "Clear ranged oath-bolt casting: screen-right rune palm extended forward, five spread fingers with circle/diamond palm mark and angular forearm rune; sword remains low in screen-left bare hand. Braced stance and focused face, spare hip helmet intact. No external glow, projectile or aura."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "f0a1be53bf82bc7ed13cbfc68369bc8efd462fd137a61c4ce95bda3eb1833b5f",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/battle-mage/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        784,
+        945
+      ],
+      "hairTopSourceY": 55,
+      "visibleBoundsAlphaGreaterThan127": [
+        316,
+        55,
+        1320,
+        946
+      ],
+      "sha256": "141f3e35fb2932be96a11c0f86518482df7700fac14ea70192ce8af9f4315d39",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-53c9d063-425b-4ab1-b0ea-3d3882626d65.png",
+      "review": "Opposite contacts: front screen-right boot flat and weight-bearing, rear screen-left heel raised/toe down. Two distinct boots, same physical equipment hands and hip helmet."
+    }
+  }
+}

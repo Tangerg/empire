@@ -1,0 +1,209 @@
+{
+  "evidence": "actual scene renderer markup rearranged onto a native-size diagnostic contact board",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "assets": [
+    {
+      "id": "wasteland-bramble",
+      "anchor": [
+        47.931419457735245,
+        74.60925039872409
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 0.8,
+      "evidence": "catalog-only diagnostic; no shipped scene placement",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        1,
+        1
+      ],
+      "rendererScaleRange": [
+        0.8,
+        0.8
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.8,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-38.3451355661882 -59.68740031897927) scale(0.8)\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/scenery-regional@2x.png\" x=\"0\" y=\"-96\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        17.0,
+        22.0,
+        83.5,
+        79.5
+      ],
+      "nativeSampleVisibleHeight": 46.0,
+      "nativeVisibleHeightRange": [
+        46.0,
+        46.0
+      ],
+      "nativeSampleOverhangBelowContact": 3.9125996810207315
+    },
+    {
+      "id": "wasteland-rock-spire",
+      "anchor": [
+        49.09728867623605,
+        78.38118022328548
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1.4,
+      "evidence": "sampled scene renderer markup",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.42,
+        0.54
+      ],
+      "rendererScaleRange": [
+        0.588,
+        0.756
+      ],
+      "sampledRendererScaleRange": [
+        0.589,
+        0.755
+      ],
+      "sampleScale": 0.671,
+      "sampleCount": 82,
+      "reviewMarkup": "<g class=\"candidate-environment-prop is-standing\" transform=\"translate(-32.952 -52.607) scale(0.671)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/scenery-regional@2x.png\" x=\"-96\" y=\"-96\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        14.0,
+        15.5,
+        83.0,
+        84.0
+      ],
+      "nativeSampleVisibleHeight": 45.9635,
+      "nativeVisibleHeightRange": [
+        40.278,
+        51.786
+      ],
+      "nativeSampleOverhangBelowContact": 3.770228070175441
+    },
+    {
+      "id": "wasteland-dry-grass",
+      "anchor": [
+        48.27432216905901,
+        76.3237639553429
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 0.7,
+      "evidence": "catalog-only diagnostic; no shipped scene placement",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        1,
+        1
+      ],
+      "rendererScaleRange": [
+        0.7,
+        0.7
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.7,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-33.792025518341305 -53.42663476874002) scale(0.7)\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/scenery-regional@2x.png\" x=\"-192\" y=\"-96\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        17.5,
+        15.0,
+        82.5,
+        81.0
+      ],
+      "nativeSampleVisibleHeight": 46.199999999999996,
+      "nativeVisibleHeightRange": [
+        46.199999999999996,
+        46.199999999999996
+      ],
+      "nativeSampleOverhangBelowContact": 3.2733652312599713
+    },
+    {
+      "id": "wasteland-broken-standard",
+      "anchor": [
+        48.89154704944178,
+        80.78149920255183
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no shipped scene placement",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        1,
+        1
+      ],
+      "rendererScaleRange": [
+        1,
+        1
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 1,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-48.89154704944178 -80.78149920255183) scale(1)\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/scenery-regional@2x.png\" x=\"-288\" y=\"-96\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        24.0,
+        10.5,
+        77.5,
+        85.5
+      ],
+      "nativeSampleVisibleHeight": 75.0,
+      "nativeVisibleHeightRange": [
+        75.0,
+        75.0
+      ],
+      "nativeSampleOverhangBelowContact": 4.718500797448172
+    },
+    {
+      "id": "oak-ancient",
+      "anchor": [
+        48.89154704944178,
+        83.8676236044657
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.375,
+      "evidence": "sampled scene renderer markup",
+      "reference": true,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.0175,
+        1.1824999999999999
+      ],
+      "sampledRendererScaleRange": [
+        1.028,
+        1.172
+      ],
+      "sampleScale": 1.102,
+      "sampleCount": 11,
+      "reviewMarkup": "<g class=\"candidate-environment-prop is-standing\" transform=\"translate(-53.855 -92.382) scale(1.102)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        7.0,
+        87.5,
+        89.0
+      ],
+      "nativeSampleVisibleHeight": 90.364,
+      "nativeVisibleHeightRange": [
+        83.435,
+        96.96499999999999
+      ],
+      "nativeSampleOverhangBelowContact": 5.655878787878793
+    }
+  ],
+  "offlineViewportNormalization": "nested SVG viewports expressed as equivalent clip paths for Inkscape"
+}

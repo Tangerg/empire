@@ -1,0 +1,210 @@
+{
+  "family": "scenery-regional",
+  "subset": "wasteland quartet",
+  "status": "all four native masters and QA complete; runtime integration pending",
+  "asset_count": 4,
+  "all_native_sources_byte_identical_to_generated_outputs": true,
+  "all_current_alpha_gates_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "no_programmatic_paint_or_alpha_cleanup": true,
+  "runtime_integrated": false,
+  "reference_provenance": "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/wasteland-original-reference-evidence.json",
+  "assets": [
+    {
+      "identity": "wasteland-bramble",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-bramble/wasteland-bramble-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-bramble/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-bramble/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-bramble/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-bramble/evidence.json",
+      "source_foot_estimate_px": [
+        626,
+        1015
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "8f3ddeda7b52ee00123c04d432ad8a63bb39e45d61fa3c963fb7240acd8d90fb",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-9140e78c-f124-428f-8753-26a9839fe7a5.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.499203,
+        0.80941
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/wasteland-bramble.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/bramble-dark/bramble-dark-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        176,
+        243,
+        110,
+        166
+      ],
+      "original_slot_zero_based": 4,
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1
+    },
+    {
+      "identity": "wasteland-rock-spire",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-rock-spire/wasteland-rock-spire-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-rock-spire/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-rock-spire/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-rock-spire/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-rock-spire/evidence.json",
+      "source_foot_estimate_px": [
+        643,
+        1070
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "e5b0e4af2706e6bd3581164c085cce54ce239d352063604dc48e8ba67d7132b5",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-758c1def-f0b6-4ada-a77c-143e3ff99103.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.512759,
+        0.85327
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/wasteland-rock-spire.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        129,
+        152,
+        120,
+        103
+      ],
+      "original_slot_zero_based": 5,
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1
+    },
+    {
+      "identity": "wasteland-dry-grass",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/wasteland-dry-grass-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/evidence.json",
+      "source_foot_estimate_px": [
+        631,
+        1040
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "14a8e2a5fbfed10e02dbc6d505efc991e636c80366a88645923c3d9cb71d3619",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-4d4e0f0b-d408-46eb-ac7c-bc9718123a6f.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.50319,
+        0.829346
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/wasteland-dry-grass.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-cluster/pine-cluster-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        180,
+        145,
+        116,
+        144
+      ],
+      "original_slot_zero_based": 6,
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 0
+    },
+    {
+      "identity": "wasteland-broken-standard",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/wasteland-broken-standard-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/evidence.json",
+      "source_foot_estimate_px": [
+        640,
+        1105
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "c1f3741a1e80efc3201d2b30262bcf2b713f0531ddfd0a421d3e3a9baca26b6f",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-dbfcbd61-d967-42af-be7d-48573d90bea9.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.510367,
+        0.88118
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/wasteland-broken-standard.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/grave-signboards-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        277,
+        77,
+        195,
+        81
+      ],
+      "original_slot_zero_based": 7,
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1
+    }
+  ]
+}

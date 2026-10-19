@@ -11,7 +11,7 @@
     "swordsman": "four poses exported and formally bound; live game pending",
     "red-swordsman": "four poses exported and formal team-color resolver bound; live game pending",
     "pine": "transparent source and static scene checked",
-    "bridge": "transparent source and static scene checked",
+    "bridge": "formal registered horizontal crossing from unchanged approved source; vertical legacy retained",
     "grass-material": "formally bound world-coordinate base meadow with1024 logical sampling, source density1px/logical; full-map offline review; larger-map periodicity still pending",
     "water-material": "formal world occupancy/UV binding,512logical period/native2x; no topology change",
     "earth-material": "revision2 selected, original rejected density retained",
@@ -19,14 +19,14 @@
     "bank-edge": "revision3 broad flat patch, static overlay checked"
   },
   "counting": "Do not count single pose as full unit animation. Concept itself adds no transparent assets. Prior bulk candidates are not re-approved automatically.",
-  "next": "Formal water/road/crossing sampling; cleric motion; final hazard props; regional forge and remaining collection",
+  "next": "Cross-object foot depth and full-map integration review; remaining approved-style collection",
   "continuationApproval": {
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "\u786e\u8ba4\u4e86\uff0c\u5c31\u6309\u7167\u8fd9\u4e2a\u65b9\u5411\u505a\u5269\u4e0b\u7684"
   },
-  "authoredFourPoseBundles": 8,
-  "authoredThreeStateBundles": 10,
-  "formalRuntimeBoundTopics": 53,
+  "authoredFourPoseBundles": 9,
+  "authoredThreeStateBundles": 11,
+  "formalRuntimeBoundTopics": 55,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -345,6 +345,18 @@
       "export": "one shared scale/full-canvas contact registration; native semantic motion/state review passed",
       "runtimeBinding": "bulkhead resolver; no authored campaign placement found",
       "liveGame": "pending"
+    },
+    "C01-UNIT-BATTLE-MAGE": {
+      "raw": "native frames/prompts/source evidence preserved",
+      "export": "shared full canvas scale/foot registration and black-white-olive native semantic review passed",
+      "runtimeBinding": "campaign c01.battle-mage rune action resolver; canonical/HD parser contract regression",
+      "liveGame": "pending"
+    },
+    "C01-STRUCT-WOUNDED-SHELTER": {
+      "raw": "native frames/prompts/source evidence preserved",
+      "export": "shared full canvas scale/foot registration and black-white-olive native semantic review passed",
+      "runtimeBinding": "authored c01-01 scene prop at4.9,10 scale.7; not refugee shelter; canonical/HD parser contract regression",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -432,9 +444,13 @@
         "snow-pine-cluster",
         "snow-bare-shrub",
         "ice-boulder-cluster",
-        "snowdrift-rock"
+        "snowdrift-rock",
+        "wasteland-bramble",
+        "wasteland-rock-spire",
+        "wasteland-dry-grass",
+        "wasteland-broken-standard"
       ],
-      "count": 12,
+      "count": 16,
       "export": "96/192 registered full source canvases, unrelated cells preserved",
       "runtimeBinding": "registered atlas resolver; forge/grave actual renderer samples and explicitly catalog-only snow samples reviewed",
       "liveGame": "pending",
@@ -442,16 +458,20 @@
         "snow-pine-cluster",
         "snow-bare-shrub",
         "ice-boulder-cluster",
-        "snowdrift-rock"
-      ]
+        "snowdrift-rock",
+        "wasteland-bramble",
+        "wasteland-dry-grass",
+        "wasteland-broken-standard"
+      ],
+      "atlasStaticReview": "all16 regional identities registered; native class samples reviewed; actual full-map cohesion/live pending"
     }
   },
   "totalCanonicalScope": 1212,
   "priorTechnicalExportsRequireStyleReview": true,
   "tests": {
-    "focusedRuntime": 61,
+    "focusedRuntime": 67,
     "typecheck": "passed",
-    "artToolTests": 106,
+    "artToolTests": 117,
     "fullSuite": "existing jsdom scrollTo error reproduced before binding change",
     "liveBrowser": "not validated"
   },
@@ -474,6 +494,12 @@
       "raw": "approved earthy material and2x connector bytes preserved",
       "export": "isolated1x cell downsample with bounded outeredgeRGB match; alpha and interior unchanged; allports exact1x/2x",
       "runtimeBinding": "existing connected masks/roadcells, core22logical, blank redundant edgeatlas",
+      "liveGame": "pending"
+    },
+    "horizontal-crossing": {
+      "raw": "approved transparent source unchanged",
+      "export": "registered full-canvas1x/2x with original crossing midpoint",
+      "runtimeBinding": "three actual horizontal c01-02 runs, topology unchanged; vertical crossings legacy",
       "liveGame": "pending"
     }
   },

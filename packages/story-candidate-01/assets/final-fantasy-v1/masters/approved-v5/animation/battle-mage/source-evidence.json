@@ -1,0 +1,101 @@
+{
+  "topicId": "C01-UNIT-BATTLE-MAGE",
+  "actualConsumer": "c01.battle-mage, campaign ranged arcane unit; distinct from built-in mage/C01-UNIT-MAGE",
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 25,
+    "text": "'c01.battle-mage': 'C01-UNIT-BATTLE-MAGE'"
+  },
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-BATTLE-MAGE",
+    "topicId": "C01-UNIT-BATTLE-MAGE",
+    "label": "战斗法师",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-battle-mage.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-battle-mage.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-battle-mage.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-ballista-cavalry-battlemage-eagle.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "ad56bb98b2d14d011ac029d2ba1793ab59a45aaf81f4e6ea04ac4670b30494ea"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-battle-mage.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "24b69844dc0f2cae61fcf1be45f1e7df11f2e1a5b91cd8061ea9e5a513431e72"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-battle-mage.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "f7a634beb1d9c4cf581424e65c78b1f67542a5b5e54b473a2a03e775c0160f76"
+    }
+  },
+  "referenceExtraction": "Native non-resampled source third-character-row crop[0,615,1254,895], first cell[0,615,314,895]; HD frames64x96. Crop deliberately stops before next-row eagle-rider hair starts, unlike a blind atlas-quarter crop. No color/alpha edits. Original magenta backdrop used as reference only.",
+  "sourceArtifactCaveat": "Runtime-HD strip visibly includes small partial eagle-rider head fragments along its bottom. These are from next atlas row, not battle-mage identity; do not reproduce.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "semanticEvidence": {
+    "unitDefinition": "packages/story-candidate-01/src/units.ts:83",
+    "weaponDefinition": "packages/story-candidate-01/src/weapons.ts:138",
+    "weaponId": "c01.oath-bolt",
+    "weaponName": "誓火弹",
+    "damageType": "magic",
+    "maxRange": 2,
+    "tags": [
+      "arcane",
+      "ranged"
+    ],
+    "actionRequirement": "Clear palm-forward rune casting while preserving shortsword in original opposite hand; no external glow haze."
+  },
+  "status": "Native quartet complete; originals and exact source crops preserved",
+  "identityObserved": [
+    "Young clean-shaven adult, short side-swept black hair and pointed ears; no worn helmet",
+    "Dark navy/blue-gray plate armor with brass details, large shoulder pauldrons, burgundy/red collar/sleeves/skirt",
+    "Brown belt/pouch and spare gray steel helmet hanging at screen-right hip",
+    "Screen-left hand holds compact lowered steel shortsword; opposite arm has open golden rune palm/forearm",
+    "Steel knee guards, brown strapped boots"
+  ]
+}

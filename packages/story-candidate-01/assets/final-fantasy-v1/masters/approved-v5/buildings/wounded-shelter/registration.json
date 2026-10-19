@@ -1,0 +1,47 @@
+{
+  "topicId": "C01-STRUCT-WOUNDED-SHELTER",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sourceFoot": [
+    627,
+    1126
+  ],
+  "normalVisibleBoundsAlphaAbove32": [
+    20,
+    176,
+    1243,
+    1126
+  ],
+  "normalVisibleWidth": 1223,
+  "parentAcceptedLogicalVisibleWidth": 112,
+  "sharedScaleSuggestion": 0.09157808667211774,
+  "fullCanvasLogicalWidth": 114.83892068683565,
+  "normalVisibleLogicalHeight": 86.99918233851186,
+  "stateTransforms": "none; use one shared normal-derived scale and sourceFoot for all full canvases; no per-state fitting",
+  "parentAcceptance": "2026-10-19: distinct medical tent identity, matte grouped blankets, no backdrop. Proceed112 logical total width and shared foot627,1126 across damaged/captured; preserve cot/crutch placement and original bandage emblem.",
+  "stateBoundsAlphaAbove32": {
+    "normal": [
+      20,
+      176,
+      1243,
+      1126
+    ],
+    "damaged": [
+      21,
+      176,
+      1243,
+      1125
+    ],
+    "captured": [
+      18,
+      171,
+      1244,
+      1127
+    ]
+  },
+  "registrationQualification": "Native shared canvas and main cot/base footprint are visually retained. Captured local edges drift by a few pixels; damaged accessories change locally as required by source semantics. No claim of pixel-identical AI geometry.",
+  "logicalWidthQualification": "112 is normal-derived shared calibration; captured visible width1226 at same scale is about112.27. Do not fit independently.",
+  "status": "all native states complete and reviewed; actual dense-map integration remains parent-owned"
+}

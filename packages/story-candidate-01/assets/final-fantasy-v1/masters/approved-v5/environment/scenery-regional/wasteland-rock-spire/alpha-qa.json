@@ -1,0 +1,107 @@
+{
+  "asset": "wasteland-rock-spire",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-758c1def-f0b6-4ada-a77c-143e3ff99103.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 981570,
+  "opaque_pixels": 1566,
+  "partial_alpha_pixels": 589380,
+  "near_opaque_alpha_250_255_pixels": 571574,
+  "nonzero_alpha_bbox": [
+    126,
+    88,
+    1154,
+    1254
+  ],
+  "strong_alpha_bbox": [
+    129,
+    152,
+    1134,
+    1151
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      126,
+      88,
+      1154,
+      1254
+    ],
+    "16": [
+      128,
+      151,
+      1135,
+      1152
+    ],
+    "128": [
+      129,
+      152,
+      1134,
+      1151
+    ],
+    "250": [
+      130,
+      152,
+      1134,
+      1151
+    ]
+  },
+  "margin_pixels_LTRB": [
+    126,
+    88,
+    100,
+    0
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    129,
+    152,
+    120,
+    103
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 1,
+      "nonzero_pixels": 16
+    }
+  },
+  "strict_perimeter_all_alpha_zero": false,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": false,
+  "sha256": "e5b0e4af2706e6bd3581164c085cce54ce239d352063604dc48e8ba67d7132b5",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

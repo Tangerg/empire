@@ -1167,13 +1167,13 @@
       "topicId": "C01-UNIT-BATTLE-MAGE",
       "label": "战斗法师",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-battle-mage.png",
-      "width": 128,
-      "height": 48,
+      "png": "runtime-approved-v5/combat-unit/unit-battle-mage.png",
+      "width": 416,
+      "height": 64,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 32,
-      "frameHeight": 48,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1182,13 +1182,14 @@
         "walk-b"
       ],
       "anchor": [
-        16,
-        47
+        46.18589025755879,
+        50.9070548712206
       ],
       "footprint": [
         1,
         1
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-BERSERKER",
@@ -4273,13 +4274,13 @@
       "topicId": "C01-STRUCT-WOUNDED-SHELTER",
       "label": "伤兵棚",
       "category": "interactive-structure",
-      "png": "runtime/interactive-structure/struct-wounded-shelter.png",
-      "width": 192,
-      "height": 64,
+      "png": "runtime-approved-v5/interactive-structure/struct-wounded-shelter.png",
+      "width": 384,
+      "height": 128,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 128,
       "frames": 3,
       "stateOrder": [
         "normal",
@@ -4287,8 +4288,8 @@
         "captured"
       ],
       "anchor": [
-        32,
-        63
+        61.419460343417825,
+        107.11692559280458
       ],
       "footprint": [
         2,

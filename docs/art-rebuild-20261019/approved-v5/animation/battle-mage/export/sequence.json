@@ -1,0 +1,335 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/battle-mage/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/battle-mage/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/battle-mage/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/battle-mage/walk-b/master.png"
+    },
+    "scale": 0.04927211646136618,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      775,
+      952
+    ],
+    "sourceFeet": {
+      "idle": [
+        775,
+        952
+      ],
+      "walk-a": [
+        733,
+        952
+      ],
+      "attack": [
+        719,
+        944
+      ],
+      "walk-b": [
+        784,
+        945
+      ]
+    },
+    "registrationLimit": 3,
+    "canvasPaddingTolerance": 1,
+    "registrationOffsets": {
+      "walk-a": [
+        2.0694288913773797,
+        0.0
+      ],
+      "attack": [
+        2.759238521836506,
+        0.39417693169092943
+      ],
+      "walk-b": [
+        -0.44344904815229563,
+        0.34490481522956323
+      ]
+    }
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    46.18589025755879,
+    50.9070548712206
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/battle-mage/idle/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "6172eadfe541bd80ef90fabcfc764e5cf31572bcdcc78187855d04fcb3e5b241",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5269,
+        "nearOpaquePixels": 1176,
+        "edgeMax": 0,
+        "visibleBounds": [
+          23,
+          7,
+          73,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/battle-mage/idle/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "6172eadfe541bd80ef90fabcfc764e5cf31572bcdcc78187855d04fcb3e5b241",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21221,
+        "nearOpaquePixels": 4822,
+        "edgeMax": 0,
+        "visibleBounds": [
+          46,
+          13,
+          145,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/battle-mage/walk-a/master.png",
+      "registrationOffset": [
+        2.0694288913773797,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "08ebf412280a6a88950b6ee2d26c6dbb2ade72a020e094e7143a79410a5e8737",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5249,
+        "nearOpaquePixels": 1173,
+        "edgeMax": 0,
+        "visibleBounds": [
+          24,
+          7,
+          75,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/battle-mage/walk-a/master.png",
+      "registrationOffset": [
+        2.0694288913773797,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "08ebf412280a6a88950b6ee2d26c6dbb2ade72a020e094e7143a79410a5e8737",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21159,
+        "nearOpaquePixels": 4843,
+        "edgeMax": 0,
+        "visibleBounds": [
+          49,
+          14,
+          151,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/battle-mage/attack/master.png",
+      "registrationOffset": [
+        2.759238521836506,
+        0.39417693169092943
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "0effb73dae0585a724e682555c0e229e67a40ecf37b3f1691fac7a4a2d284481",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5157,
+        "nearOpaquePixels": 1253,
+        "edgeMax": 0,
+        "visibleBounds": [
+          22,
+          7,
+          85,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/battle-mage/attack/master.png",
+      "registrationOffset": [
+        2.759238521836506,
+        0.39417693169092943
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "0effb73dae0585a724e682555c0e229e67a40ecf37b3f1691fac7a4a2d284481",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20772,
+        "nearOpaquePixels": 5158,
+        "edgeMax": 0,
+        "visibleBounds": [
+          44,
+          14,
+          170,
+          102
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/battle-mage/walk-b/master.png",
+      "registrationOffset": [
+        -0.44344904815229563,
+        0.34490481522956323
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "141f3e35fb2932be96a11c0f86518482df7700fac14ea70192ce8af9f4315d39",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5304,
+        "nearOpaquePixels": 1136,
+        "edgeMax": 0,
+        "visibleBounds": [
+          23,
+          7,
+          73,
+          51
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/battle-mage/walk-b/master.png",
+      "registrationOffset": [
+        -0.44344904815229563,
+        0.34490481522956323
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "141f3e35fb2932be96a11c0f86518482df7700fac14ea70192ce8af9f4315d39",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21346,
+        "nearOpaquePixels": 4671,
+        "edgeMax": 0,
+        "visibleBounds": [
+          46,
+          14,
+          145,
+          102
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

@@ -1,0 +1,36 @@
+{
+  "status": "native masters and source QA complete; production integration pending",
+  "reference_provenance": "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/wasteland-original-reference-evidence.json",
+  "assets": [
+    {
+      "identity": "wasteland-dry-grass",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/wasteland-dry-grass-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/evidence.json",
+      "source_foot_estimate_px": [
+        631,
+        1040
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "wasteland-broken-standard",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/wasteland-broken-standard-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/evidence.json",
+      "source_foot_estimate_px": [
+        640,
+        1105
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

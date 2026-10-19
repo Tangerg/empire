@@ -1,0 +1,886 @@
+{
+  "family": "scenery-regional",
+  "status": "all 16 approved-style native sources and QA complete; integration review pending",
+  "asset_count": 16,
+  "catalog_source": "/workspace/shared/empire-art-rebuild/environment-atlas-manifest.json",
+  "cell_order": [
+    "snow-pine-cluster",
+    "snow-bare-shrub",
+    "ice-boulder-cluster",
+    "snowdrift-rock",
+    "wasteland-bramble",
+    "wasteland-rock-spire",
+    "wasteland-dry-grass",
+    "wasteland-broken-standard",
+    "grave-cross-cluster",
+    "grave-signboards",
+    "grave-dead-tree",
+    "grave-marker-lantern",
+    "forge-coal-pile",
+    "forge-coal-sacks",
+    "forge-ember-pile",
+    "forge-charcoal-kiln"
+  ],
+  "all_native_sources_byte_identical_to_generated_outputs": true,
+  "all_current_alpha_gates_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "no_programmatic_paint_or_alpha_cleanup": true,
+  "all_source_canvas_dimensions": [
+    1254,
+    1254
+  ],
+  "runtime_integration_not_claimed": true,
+  "assets": [
+    {
+      "identity": "snow-pine-cluster",
+      "slot_zero_based": 0,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/snow-pine-cluster-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-47d4a699-48c3-4a66-904b-6ba6dac6c933.png",
+      "sha256": "ada6fdcf892e4690c955be10680839f8853098e0241d1533c03dbf248b3127f2",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/snow-pine-cluster.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-cluster/pine-cluster-master.png"
+      ],
+      "source_foot_estimate_px": [
+        641,
+        1132
+      ],
+      "source_foot_estimate_normalized": [
+        0.511164,
+        0.902711
+      ],
+      "original_gameplay_footprint": [
+        2,
+        2
+      ],
+      "original_gameplay_obstruction_height": 2,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": false,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        117,
+        96,
+        86,
+        54
+      ]
+    },
+    {
+      "identity": "snow-bare-shrub",
+      "slot_zero_based": 1,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-bare-shrub/snow-bare-shrub-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-9ed0a2cd-1df2-4c68-9b47-01f6844fdd0d.png",
+      "sha256": "1f8975b22b347f15ce94c6715c363907858e5985c53ccf686085d54ab9398a0e",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-bare-shrub/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-bare-shrub/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-bare-shrub/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-bare-shrub/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/snow-bare-shrub.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-dead/pine-dead-master.png"
+      ],
+      "source_foot_estimate_px": [
+        626,
+        1030
+      ],
+      "source_foot_estimate_normalized": [
+        0.499203,
+        0.821372
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": false,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        139,
+        177,
+        125,
+        162
+      ]
+    },
+    {
+      "identity": "ice-boulder-cluster",
+      "slot_zero_based": 2,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/ice-boulder-cluster-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-c7dc5d59-6254-499e-b21c-fc80cd587395.png",
+      "sha256": "0232f161a7580fe5a0d56f12f667726f6b3a479e35462286a5a10e548b0f226c",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/ice-boulder-cluster.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/snow-pine-cluster-master.png"
+      ],
+      "source_foot_estimate_px": [
+        631,
+        1043
+      ],
+      "source_foot_estimate_normalized": [
+        0.50319,
+        0.831738
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": false,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        88,
+        176,
+        80,
+        141
+      ]
+    },
+    {
+      "identity": "snowdrift-rock",
+      "slot_zero_based": 3,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/snowdrift-rock-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-060fd422-88e1-4b09-9fb7-6816f5d07ddd.png",
+      "sha256": "ee9e0a5fbd7e52fdd6df8c18d9a39c0ae4b2c5c42b3e17759e49993208f640fa",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/snowdrift-rock.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/snow-pine-cluster-master.png"
+      ],
+      "source_foot_estimate_px": [
+        643,
+        973
+      ],
+      "source_foot_estimate_normalized": [
+        0.512759,
+        0.775917
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 0,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        90,
+        260,
+        51,
+        180
+      ]
+    },
+    {
+      "identity": "wasteland-bramble",
+      "slot_zero_based": 4,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-bramble/wasteland-bramble-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-9140e78c-f124-428f-8753-26a9839fe7a5.png",
+      "sha256": "8f3ddeda7b52ee00123c04d432ad8a63bb39e45d61fa3c963fb7240acd8d90fb",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-bramble/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-bramble/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-bramble/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-bramble/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/wasteland-bramble.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/bramble-dark/bramble-dark-master.png"
+      ],
+      "source_foot_estimate_px": [
+        626,
+        1015
+      ],
+      "source_foot_estimate_normalized": [
+        0.499203,
+        0.80941
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": false,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        176,
+        243,
+        110,
+        166
+      ]
+    },
+    {
+      "identity": "wasteland-rock-spire",
+      "slot_zero_based": 5,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-rock-spire/wasteland-rock-spire-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-758c1def-f0b6-4ada-a77c-143e3ff99103.png",
+      "sha256": "e5b0e4af2706e6bd3581164c085cce54ce239d352063604dc48e8ba67d7132b5",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-rock-spire/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-rock-spire/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-rock-spire/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-rock-spire/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/wasteland-rock-spire.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ],
+      "source_foot_estimate_px": [
+        643,
+        1070
+      ],
+      "source_foot_estimate_normalized": [
+        0.512759,
+        0.85327
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": false,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        129,
+        152,
+        120,
+        103
+      ]
+    },
+    {
+      "identity": "wasteland-dry-grass",
+      "slot_zero_based": 6,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/wasteland-dry-grass-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-4d4e0f0b-d408-46eb-ac7c-bc9718123a6f.png",
+      "sha256": "14a8e2a5fbfed10e02dbc6d505efc991e636c80366a88645923c3d9cb71d3619",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-dry-grass/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/wasteland-dry-grass.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-cluster/pine-cluster-master.png"
+      ],
+      "source_foot_estimate_px": [
+        631,
+        1040
+      ],
+      "source_foot_estimate_normalized": [
+        0.50319,
+        0.829346
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 0,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": false,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        180,
+        145,
+        116,
+        144
+      ]
+    },
+    {
+      "identity": "wasteland-broken-standard",
+      "slot_zero_based": 7,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/wasteland-broken-standard-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-dbfcbd61-d967-42af-be7d-48573d90bea9.png",
+      "sha256": "c1f3741a1e80efc3201d2b30262bcf2b713f0531ddfd0a421d3e3a9baca26b6f",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/wasteland-broken-standard/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/wasteland-broken-standard.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/grave-signboards-master.png"
+      ],
+      "source_foot_estimate_px": [
+        640,
+        1105
+      ],
+      "source_foot_estimate_normalized": [
+        0.510367,
+        0.88118
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": false,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        277,
+        77,
+        195,
+        81
+      ]
+    },
+    {
+      "identity": "grave-cross-cluster",
+      "slot_zero_based": 8,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/grave-cross-cluster-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-221a0592-f15b-4a5d-86d4-2c4b7fc1beef.png",
+      "sha256": "e0bf7e40b9592e76cddfcc9259eebecb3c2ac19c5e2c3a7e705831a2703552ae",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/grave-cross-cluster.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ],
+      "source_foot_estimate_px": [
+        625,
+        1030
+      ],
+      "source_foot_estimate_normalized": [
+        0.498405,
+        0.821372
+      ],
+      "original_gameplay_footprint": [
+        2,
+        2
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": false,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        198,
+        163,
+        194,
+        111
+      ]
+    },
+    {
+      "identity": "grave-signboards",
+      "slot_zero_based": 9,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/grave-signboards-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-983498fc-3f74-44c6-b2f0-6acc5984d237.png",
+      "sha256": "4c6af833419b9731a2b73a11370cb5b9e604136dcd0699e909a8c288d3ef778c",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/grave-signboards.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/pine-fallen-log-master.png"
+      ],
+      "source_foot_estimate_px": [
+        700,
+        1060
+      ],
+      "source_foot_estimate_normalized": [
+        0.558214,
+        0.845295
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": false,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        133,
+        139,
+        77,
+        134
+      ]
+    },
+    {
+      "identity": "grave-dead-tree",
+      "slot_zero_based": 10,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/grave-dead-tree-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-336351ff-3560-4902-bfc0-725d65a00eed.png",
+      "sha256": "297204aae4ba95f2b1fc51717cba96d9e443db23d6d0c37f81982187fa03b058",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/grave-dead-tree.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-dead/pine-dead-master.png"
+      ],
+      "source_foot_estimate_px": [
+        625,
+        1080
+      ],
+      "source_foot_estimate_normalized": [
+        0.498405,
+        0.861244
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 2,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        130,
+        77,
+        122,
+        68
+      ]
+    },
+    {
+      "identity": "grave-marker-lantern",
+      "slot_zero_based": 11,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/grave-marker-lantern-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-1cadfe47-6c83-4105-9762-efe55a6d2d49.png",
+      "sha256": "e608c17fab2ce212064968820c4e5d01dd56f84b769454cc2213db9ec9b5a7e5",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/grave-marker-lantern.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ],
+      "source_foot_estimate_px": [
+        650,
+        1055
+      ],
+      "source_foot_estimate_normalized": [
+        0.518341,
+        0.841308
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": false,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        143,
+        137,
+        143,
+        130
+      ]
+    },
+    {
+      "identity": "forge-coal-pile",
+      "slot_zero_based": 12,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-pile/forge-coal-pile-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-718cc718-1747-414a-87ae-909176583bd4.png",
+      "sha256": "588906ed6b3cce571c9e13db3529a5d41992240ba01fec774468051c8b64c06f",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-pile/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-pile/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-pile/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-pile/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/forge-coal-pile.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ],
+      "source_foot_estimate_px": [
+        626,
+        966
+      ],
+      "source_foot_estimate_normalized": [
+        0.499203,
+        0.770335
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": false,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        91,
+        213,
+        47,
+        186
+      ]
+    },
+    {
+      "identity": "forge-coal-sacks",
+      "slot_zero_based": 13,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-sacks/forge-coal-sacks-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-ac274598-30cb-434f-b592-6cce15b19993.png",
+      "sha256": "e74145373ad23c8459ebd7f3b205c42873e99003a3a795e139ab2b235f8d017e",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-sacks/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-sacks/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-sacks/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-coal-sacks/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/forge-coal-sacks.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/pine-fallen-log-master.png"
+      ],
+      "source_foot_estimate_px": [
+        635,
+        1000
+      ],
+      "source_foot_estimate_normalized": [
+        0.50638,
+        0.797448
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        50,
+        214,
+        47,
+        165
+      ]
+    },
+    {
+      "identity": "forge-ember-pile",
+      "slot_zero_based": 14,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/forge-ember-pile-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-f1b724b5-7d49-4ef1-a39e-03da9aa7f193.png",
+      "sha256": "4539550f0d6e9ebc13d785f70233dba9d9db57afe1cc11b425dae472bcfb0088",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-ember-pile/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/forge-ember-pile.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ],
+      "source_foot_estimate_px": [
+        635,
+        924
+      ],
+      "source_foot_estimate_normalized": [
+        0.50638,
+        0.736842
+      ],
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        88,
+        298,
+        76,
+        253
+      ]
+    },
+    {
+      "identity": "forge-charcoal-kiln",
+      "slot_zero_based": 15,
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/forge-charcoal-kiln-master.png",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-5a9ec019-d4b9-441d-8c6b-a7fc758a6844.png",
+      "sha256": "ab99082d90097266128722820797803089e4e9df522676198316645891ed4602",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/prompt.txt",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/evidence.json",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/forge-charcoal-kiln/semantic-notes.md",
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/forge-charcoal-kiln.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ],
+      "source_foot_estimate_px": [
+        626,
+        1000
+      ],
+      "source_foot_estimate_normalized": [
+        0.499203,
+        0.797448
+      ],
+      "original_gameplay_footprint": [
+        2,
+        2
+      ],
+      "original_gameplay_obstruction_height": 2,
+      "original_runtime_anchor": [
+        48,
+        91
+      ],
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "strict_perimeter_all_alpha_zero": false,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        176,
+        240,
+        176,
+        210
+      ]
+    }
+  ]
+}

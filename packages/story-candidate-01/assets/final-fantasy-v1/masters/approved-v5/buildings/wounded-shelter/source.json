@@ -1,0 +1,80 @@
+{
+  "topicId": "C01-STRUCT-WOUNDED-SHELTER",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-05.png",
+  "sourceSHA256": "f46ed6a65049889be67a0a007b8cdc13521c83f1b8393f314b36942ca4753d0c",
+  "sourceSize": [
+    1086,
+    1448
+  ],
+  "cells": [
+    {
+      "state": "normal",
+      "box": [
+        0,
+        1114,
+        362,
+        1448
+      ]
+    },
+    {
+      "state": "damaged",
+      "box": [
+        362,
+        1114,
+        724,
+        1448
+      ]
+    },
+    {
+      "state": "captured",
+      "box": [
+        724,
+        1114,
+        1086,
+        1448
+      ]
+    }
+  ],
+  "runtimeReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-wounded-shelter.png",
+  "consumerStatus": "Actual authored c01-01 scene placement, x4.9,y10.0, layer under-units, scale0.7. Authored reference verified, browser observation not claimed.",
+  "consumerReference": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json:65",
+  "originalFrameSize": [
+    64,
+    64
+  ],
+  "originalAnchor": [
+    32,
+    63
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "suggestedLogicalVisibleWidth": 112,
+  "stateEvidence": "Normal charcoal-gray canvas tent with open left-front cot, amber hanging lantern at far left, front blue/green blanket rack and upright wooden crutches at right. Damaged has large roof holes and tears, collapsed poles, fallen left lantern, rolled bedding and toppled right crutches; no flag. Captured is intact with a small gray square hanging on front-right roof/wall, original pale interwoven bandage rosette emblem, and blue/green blankets reordered; no roof flag.",
+  "distinctionFromRefugeeShelter": "Not the patchwork refugee hut with projecting awning, cooking pot and woodpile. Wounded shelter has unified charcoal-gray cloth, a cot, blanket rack, lantern and crutches. Not the white medical tent in atlas05 first row; do not add a large cross.",
+  "parentAcceptedLogicalVisibleWidth": 112,
+  "sourceFoot": [
+    627,
+    1126
+  ],
+  "stateOriginalCropSHA256": {
+    "normal": "c0c0a46579fcd8b6ba38e922109eaa673a9935a211acf6bf7b9d6c1cba3f8784",
+    "damaged": "cb127e4349bde1025c2c507bbdea3a009e5b6060f70e94048a0e51ff276cba0f",
+    "captured": "2f96315564da5bda35f279c81b0c0344983ca8b138558ffe6f10b1bdfb0c8c26"
+  },
+  "consumerEvidence": {
+    "scene": "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json:65",
+    "sceneEntry": {
+      "topicId": "C01-STRUCT-WOUNDED-SHELTER",
+      "x": 4.9,
+      "y": 10.0,
+      "layer": "under-units",
+      "scale": 0.7
+    },
+    "catalogAudit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "auditEvidence": "static-consumer-reference",
+    "observedInBrowser": false,
+    "qualification": "Authored scene reference verified; whether current live scene renders it is not established by this raw-art task."
+  }
+}

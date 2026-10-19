@@ -1,0 +1,107 @@
+{
+  "topicId": "C01-STRUCT-WOUNDED-SHELTER",
+  "status": "native trio complete; common-scale visual QA completed",
+  "masterIntegrity": "All raw/master pairs byte-identical native built-in imagegen outputs. No crop, resize, alpha editing or other post-generation transforms",
+  "perimeterGate": "Each state actual outermost perimeter alpha maximum1; zero edge pixels >1. Gate unchanged.",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sharedSourceFoot": [
+    627,
+    1126
+  ],
+  "acceptedLogicalWidth": 112,
+  "scaleApplication": "normal-visible-width-derived one factor112/1223 for each complete1254 native canvas; no per-state fit",
+  "visualChecks": {
+    "normal": "Intact charcoal-gray canvas A-frame shelter, open left cot and amber lantern, green-blue front blanket rack, two upright right crutches",
+    "damaged": "Large ragged roof/wall holes, snapped front pole and slack roof, rolled entrance bedroll, fallen lantern and collapsed right crutch group; localized complete debris",
+    "captured": "Intact shelter with modest gray square badge reproducing pale interwoven bandage symbol; blue dominant front blankets and gray-green lower patches; no roof flag",
+    "style": "Chunky grouped poles, cloth planes and blankets with bold outlines; restrained matte palette",
+    "registration": "Main cot and tent base hold common position/canvas; damage accessories alter locally without changing global fit. Small local AI edge drift is not represented as exact identity.",
+    "background": "Genuine transparent exterior and cutouts, no terrain/background slab, complete contained silhouette",
+    "scale": "Shared112 logical total-width preview reviewed; native badge is readable, game-size badge resolves as pale bandage mark. Dense-map integration still needs visual scale gate.",
+    "distinctFromRefugee": "No patchwork colored roof or projecting awning/cooking pot/woodpile; dark uniform treatment tent and cot/crutches remain unique"
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "sharedLogical112": "qa-logical-112.png"
+  },
+  "consumerQualification": "Actual authored c01-01 scene placement, x4.9,y10.0, layer under-units, scale0.7. Authored reference verified, browser observation not claimed.",
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        20,
+        176,
+        1243,
+        1126
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bf397493-0a72-41af-968f-ca2d0b99265b.png",
+      "sha256": "edf98698e88cfb16f37988b0003d6304f8a181eebc5fd96084166042768aa3a7",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 802826,
+      "nonOpaquePixelCount": 1570580,
+      "perimeterGate": "maximum alpha <=1 and zero pixels >1",
+      "visibleSilhouetteReview": "complete; no clipped poles, lantern, blanket rack, crutches or debris",
+      "canvasRegistration": "native full canvas unchanged; same sourceFoot and one shared scale"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        21,
+        176,
+        1243,
+        1125
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4013ca86-da2b-45c6-b73e-d2d3a98c7a06.png",
+      "sha256": "34317928bcbddb6ce5dc87e9aa32d712edbab3d6d1248b039fc1a3b1e19ea16c",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 853572,
+      "nonOpaquePixelCount": 1571713,
+      "perimeterGate": "maximum alpha <=1 and zero pixels >1",
+      "visibleSilhouetteReview": "complete; no clipped poles, lantern, blanket rack, crutches or debris",
+      "canvasRegistration": "native full canvas unchanged; same sourceFoot and one shared scale"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        18,
+        171,
+        1244,
+        1127
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2c573dc3-3c0a-4f42-8b54-4590083c9c51.png",
+      "sha256": "6801fb29764aefac87801ff419dbc5123c37d09f25e8e268e397fbaa93239286",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 793813,
+      "nonOpaquePixelCount": 1571309,
+      "perimeterGate": "maximum alpha <=1 and zero pixels >1",
+      "visibleSilhouetteReview": "complete; no clipped poles, lantern, blanket rack, crutches or debris",
+      "canvasRegistration": "native full canvas unchanged; same sourceFoot and one shared scale"
+    }
+  },
+  "noRepositoryWrites": true,
+  "noLiveGameClaim": true
+}

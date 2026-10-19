@@ -8,6 +8,11 @@ import {
 describe('candidate-01 environment builder v1.1', () => {
   it('retains registered pivots and semantic footprints for approved forest cells', () => {
     const contracts = [
+      { id: 'wasteland-bramble', foot: [626, 1015], scale: 0.8, footprint: [1, 1], obstruction: 1 },
+      { id: 'wasteland-rock-spire', foot: [643, 1070], scale: 1.4, footprint: [1, 1], obstruction: 1 },
+      { id: 'wasteland-dry-grass', foot: [631, 1040], scale: 0.7, footprint: [1, 1], obstruction: 0 },
+      { id: 'wasteland-broken-standard', foot: [640, 1105], scale: 1.0, footprint: [1, 1], obstruction: 1 },
+
       { id: 'forge-coal-pile', foot: [626, 966], scale: 1.1, footprint: [1, 1], obstruction: 1 },
       { id: 'forge-coal-sacks', foot: [635, 1000], scale: 1.6, footprint: [1, 1], obstruction: 1 },
       { id: 'forge-ember-pile', foot: [635, 924], scale: 1.1, footprint: [1, 1], obstruction: 1 },
@@ -63,7 +68,7 @@ describe('candidate-01 environment builder v1.1', () => {
       expect(atlas.raster).toMatchObject({ cellWidth: 96, cellHeight: 96, columns: 4, rows: 4 });
       expect(atlas.raster.href).toContain(`${['grave-', 'forge-', 'snow', 'ice-', 'wasteland-'].some(prefix => id.startsWith(prefix)) ? 'scenery-regional' : id.startsWith('pine-') ? 'forest-existing' : 'forest-temperate'}@2x.png`);
     }
-    expect(CANDIDATE_01_ENVIRONMENT.cell('wasteland-bramble').cell.presentationScale).toBeUndefined();
+    expect(CANDIDATE_01_ENVIRONMENT.cell('wheat-sheaves').cell.presentationScale).toBeUndefined();
   });
 
   it('rejects invalid presentation scales at the catalog boundary', () => {

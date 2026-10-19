@@ -22,11 +22,12 @@ const matureSet = process.argv.includes('--pine-mature');
 const lowSet = process.argv.includes('--pine-low');
 const graveSet = process.argv.includes('--regional-graves');
 const forgeSet = process.argv.includes('--regional-forge');
+const wastelandSet = process.argv.includes('--regional-wasteland');
 const snowSet = process.argv.includes('--regional-snow');
-const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet || lowSet || graveSet || forgeSet || snowSet;
-if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet, lowSet, graveSet, forgeSet, snowSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
+const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet || lowSet || graveSet || forgeSet || snowSet || wastelandSet;
+if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet, lowSet, graveSet, forgeSet, snowSet, wastelandSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
 const output = resolve(process.env.FOREST_REVIEW_OUTPUT
-  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${forgeSet ? '-regional-forge' : snowSet ? '-regional-snow' : graveSet ? '-regional-graves' : lowSet ? '-pine-low' : matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
+  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${wastelandSet ? '-regional-wasteland' : forgeSet ? '-regional-forge' : snowSet ? '-regional-snow' : graveSet ? '-regional-graves' : lowSet ? '-pine-low' : matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const map = mapFromLevel(content, candidate01Level('c01-02'));
 map.tiles.fill('forest');
@@ -43,6 +44,9 @@ const graves = boardPiecesMarkup(candidate01MapSceneryLayers({ ...context, map: 
 const forgeMap = mapFromLevel(content, candidate01Level('c01-02'));
 forgeMap.tiles.fill('c01.forge');
 const forges = boardPiecesMarkup(candidate01MapSceneryLayers({ ...context, map: forgeMap }).underUnits);
+const moltenMap = mapFromLevel(content, candidate01Level('c01-02'));
+moltenMap.tiles.fill('c01.molten');
+const molten = boardPiecesMarkup(candidate01MapSceneryLayers({ ...context, map: moltenMap }).underUnits);
 const props = (markup: string) => markup.match(/<g class="candidate-environment-prop [\s\S]*?<\/svg>\s*<\/g>/g) ?? [];
 interface ReviewColumn {
   readonly id: string;
@@ -52,7 +56,13 @@ interface ReviewColumn {
   readonly reference?: boolean;
   readonly reconstruction?: boolean;
 }
-const columns: readonly ReviewColumn[] = forgeSet ? [
+const columns: readonly ReviewColumn[] = wastelandSet ? [
+  { id: 'wasteland-bramble', x: 85, placement: [1, 1], catalogOnly: true },
+  { id: 'wasteland-rock-spire', x: 230, placement: [0.42, 0.54] },
+  { id: 'wasteland-dry-grass', x: 375, placement: [1, 1], catalogOnly: true },
+  { id: 'wasteland-broken-standard', x: 520, placement: [1, 1], catalogOnly: true },
+  { id: 'oak-ancient', x: 675, placement: [0.74, 0.86], reference: true },
+] : forgeSet ? [
   { id: 'forge-coal-pile', x: 85, placement: [0.4, 0.52] },
   { id: 'forge-coal-sacks', x: 235, placement: [0.4, 0.52] },
   { id: 'forge-ember-pile', x: 385, placement: [0.4, 0.52] },
@@ -122,7 +132,7 @@ const pictures = [];
 for (const { id, x, placement, catalogOnly = false, reference = false, reconstruction = false } of columns) {
   const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
   const crop = `x="${-(cell.index % 4) * 96}" y="${-Math.floor(cell.index / 4) * 96}"`;
-  const source = id.startsWith('forge-') ? forges : id.startsWith('grave-') ? graves : id === 'boulder-ferns' ? motherRoot
+  const source = id.startsWith('wasteland-') ? molten : id.startsWith('forge-') ? forges : id.startsWith('grave-') ? graves : id === 'boulder-ferns' ? motherRoot
     : ['boulder-large', 'fallen-hollow-log', 'pine-tall', 'pine-pair', 'pine-mature-c'].includes(id) ? frame : field;
   const matches = props(source)
     .filter((markup) => markup.includes(`${atlas.id}@2x.png`) && markup.includes(crop));
