@@ -1,0 +1,57 @@
+{
+  "topicId": "C01-STRUCT-ARCHIVE-FURNACE",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-06.png",
+  "sourceSHA256": "5a2cd015ba3746e65a716b1296c957c1e582ca5fe301a19ab671449377181584",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "cells": [
+    {
+      "state": "normal",
+      "box": [
+        0,
+        0,
+        418,
+        340
+      ]
+    },
+    {
+      "state": "damaged",
+      "box": [
+        418,
+        0,
+        836,
+        340
+      ]
+    },
+    {
+      "state": "captured",
+      "box": [
+        836,
+        0,
+        1254,
+        340
+      ]
+    }
+  ],
+  "runtimeReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-archive-furnace.png",
+  "consumerAudit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+  "consumerStatus": "All10 remaining original interactive-structure topics have no static consumer reference in current audit; direct source/scene search confirmed no references. Selected first unfinished original-manifest entry. No live gameplay usage claimed.",
+  "selectionReason": "First unfinished topic in original manifest interactive-structure category order after skipping completed14 topics. Actual-consumer priority checked first; none of remaining10 has verified static consumer.",
+  "originalFrameSize": [
+    64,
+    64
+  ],
+  "originalAnchor": [
+    32,
+    63
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "suggestedLogicalVisibleWidth": 112,
+  "stateEvidence": "Normal squat stone-and-brass archive furnace with stacked brass drawer bays, blue-gray hipped roof, open central circular vent, separate rear-right chimney, front lit narrow furnace and brass-rimmed handwheel. Damaged roof collapsed into open center, chimney rim broken, some side drawers pulled out onto local rubble; furnace remains lit. Captured intact with amber lantern on central vent, slate-gray fabric swags around upper parapet, pale gray hanging tassels and more pointed brass corner finials; no flag.",
+  "capturedCameraQualification": "Original captured board cell slightly changes viewing angle and visible drawer bays. Generated captured state will retain normal camera, base and visible drawer arrangement, transferring original captured lantern/drapes/tassel/finial cues without importing a rotated foundation."
+}

@@ -1,0 +1,236 @@
+{
+  "status": "Original foot knight identity approved for chunky redraw; idle preparation",
+  "topicId": "C01-UNIT-KNIGHT",
+  "actualConsumers": [
+    "c01.knight",
+    "knight (built-in)"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "campaignLine": 15,
+    "builtInLine": 55,
+    "mapping": "Both c01.knight and built-in knight explicitly map to C01-UNIT-KNIGHT. No campaign unit-art binding to C01-UNIT-LANCE-CAVALRY appears in this table."
+  },
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-KNIGHT",
+    "topicId": "C01-UNIT-KNIGHT",
+    "label": "骑士",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-knight.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-knight.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-knight.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-ranger-assassin-mage-knight.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "106fa7d2969edddf6d6a700577eb599ded691423c28e0dced1a956c9a0cbd0eb"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-knight.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "27fea41556b724d3b553c34b980432ea1494fbb49736d26a56a54b02015d2053"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-knight.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "0a3dee41959a73afa99c7034dc4e8fa8e56a384a5340f574bab52f449b43dec3"
+    },
+    "comparison-cavalry-source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-ballista-cavalry-battlemage-eagle.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "ad56bb98b2d14d011ac029d2ba1793ab59a45aaf81f4e6ea04ac4670b30494ea"
+    },
+    "comparison-cavalry-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-lance-cavalry.png",
+      "size": [
+        512,
+        96
+      ],
+      "sha256": "a7499d0fda2ca425bf64b12c5eaadf010c5eed25639e1c20335765594f0bdde6"
+    }
+  },
+  "referenceExtraction": "Native unresampled fourth character row[0,930,1254,1254] includes complete helmet crown; first cell[0,930,314,1254]. Original magenta background retained. HD frames64x96.",
+  "hdFrameEvidence": [
+    {
+      "pose": "idle",
+      "size": [
+        64,
+        96
+      ],
+      "bboxAlphaGreaterThan127": [
+        2,
+        16,
+        62,
+        94
+      ]
+    },
+    {
+      "pose": "walk-a",
+      "size": [
+        64,
+        96
+      ],
+      "bboxAlphaGreaterThan127": [
+        2,
+        21,
+        62,
+        94
+      ]
+    },
+    {
+      "pose": "attack",
+      "size": [
+        64,
+        96
+      ],
+      "bboxAlphaGreaterThan127": [
+        2,
+        12,
+        62,
+        94
+      ]
+    },
+    {
+      "pose": "walk-b",
+      "size": [
+        64,
+        96
+      ],
+      "bboxAlphaGreaterThan127": [
+        2,
+        16,
+        62,
+        94
+      ]
+    }
+  ],
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "sourceIdentity": [
+    "Unmounted bearded adult male soldier, steel rounded segmented helmet with raised central seam and cheek flaps",
+    "Cream/tan riveted plate armor with red piping over chainmail, brown belt and gloves, large cuffed brown boots with small spurs",
+    "Screen-left brown gloved hand holds a short straight silver sword downward across body; screen-right arm carries an oval/pointed-bottom dark olive-brown shield with metal rim and weathered gold central decorative motif",
+    "No horse or reins anywhere in the knight row or current HD strip"
+  ],
+  "sceneEvidence": {
+    "level": "c01-02",
+    "actor": "bridge-knight",
+    "cell": [
+      3,
+      7
+    ],
+    "owner": 1,
+    "facing": "east",
+    "mapCells": [
+      22,
+      14
+    ],
+    "mapWorld": [
+      704,
+      448
+    ],
+    "tileWorldBounds": [
+      96,
+      224,
+      128,
+      256
+    ],
+    "source": "packages/story-candidate-01/src/levels.ts:399-403,440,445; calibration-v4/full-level-diagnostic/whole-level-layout.json:55-60"
+  },
+  "distinctCavalry": {
+    "canonicalTopic": {
+      "assetId": "C01-FFV1-UNIT-LANCE-CAVALRY",
+      "topicId": "C01-UNIT-LANCE-CAVALRY",
+      "label": "长枪骑兵",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-lance-cavalry.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "campaign": "story-candidate-01",
+      "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-lance-cavalry.png",
+      "status": "pending-redraw",
+      "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+      "alpha_requirement": "genuine-transparent-background",
+      "derived_outputs": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-lance-cavalry.png"
+      ]
+    },
+    "sourceIdentity": "Mounted clean-shaven imperial soldier in navy/red lamellar, angular steel helmet, cream gold-strip shield and long spear, riding brown horse with dark mane/tail, cream nose marking, bridle/reins, saddle and red/navy barding",
+    "runtimeHDSize": [
+      512,
+      96
+    ],
+    "campaignBinding": "No unit binding; only c01.knight-charge equipment art maps to C01-EQUIP-LANCE-CAVALRY, not this unit topic."
+  },
+  "semanticMismatch": {
+    "unitDefinition": "packages/story-candidate-01/src/units.ts:67 declares c01.knight mounted cavalry with lance and charge; image explicitly remains foot sword/shield",
+    "evidenceOfArtBindingError": "No explicit evidence authorizes changing the stable art mapping. Knight and lance-cavalry are separate manifest topics with different source boards, frame widths and footprints. Preserve knight original identity pending coordinator direction.",
+    "recommendedTreatment": "Redraw exact C01-UNIT-KNIGHT as chunky foot sword/shield at approved44logical human body height; record gameplay/art mismatch separately. Do not invent horse or remap to distinct cavalry."
+  },
+  "coordinatorDirection": "Parent2026-10-19 15:36:35UTC: preserve exact C01-UNIT-KNIGHT mapping, foot sword/shield at44logical body height; retain steel helmet, cream/red riveted armor, beard and gold branching shield mark. Record mounted/lance mismatch in source-contract-review and bundle QA; no remap or gameplay-semantic fix is performed."
+}

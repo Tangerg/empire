@@ -4,15 +4,15 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 63,
+    "formalBound": 65,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 10,
-      "equipment": 6,
+      "equipment": 8,
       "interactive-structure": 14,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 63,
+    "rawPreservedTopics": 67,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -1527,8 +1527,12 @@
       "category": "combat-unit",
       "label": "骑士",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/knight/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/knight/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/knight/walk-b/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -2808,8 +2812,10 @@
       "category": "interactive-structure",
       "label": "山炉档案炉",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/archive-furnace/normal/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -4131,13 +4137,20 @@
       "category": "equipment",
       "label": "牧师主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-cleric/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-cleric.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "preserved unchanged with original atlas evidence",
+        "export": "native48 three-background identity/alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-DRUID",
@@ -4173,13 +4186,20 @@
       "category": "equipment",
       "label": "工程师主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-engineer/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-engineer.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "preserved unchanged with original atlas evidence",
+        "export": "native48 three-background identity/alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-EVIDENCE-SEAL-KIT",

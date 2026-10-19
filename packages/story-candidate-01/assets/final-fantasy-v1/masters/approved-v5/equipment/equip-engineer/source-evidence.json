@@ -1,0 +1,49 @@
+{
+  "topicId": "C01-EQUIP-ENGINEER",
+  "assetId": "C01-FFV1-EQUIP-ENGINEER",
+  "label": "\u5de5\u7a0b\u5e08\u4e3b\u88c5\u5907",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-348de047-88ac-44c0-a049-8a9779ddf62a.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-engineer-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-01.png, bottom row column 1",
+    "inspectionCropCoordinates": [
+      0,
+      445,
+      442,
+      887
+    ],
+    "inspectionCropTreatment": "Unscaled source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-engineer.png",
+    "slotVerification": "Original full board and high-resolution crop visually matched against baseline runtime icon and canonical current manifest topic.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-01.png",
+    "atlasSha256": "ccc4ea6c5228785c49348a851842880fd07e6b3edb1dc65c44791cf9277199e5",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-spearman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-engineer-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-spearman/master.png"
+  ],
+  "identityClarification": "Original three-item tool grouping retained: long-handled rectangular-head hammer, one coiled rope, D-handle broad pointed shovel. No claw-hammer/axe substitution or added tools.",
+  "postprocessing": "None. Byte-exact native PNG copies to master.png and raw.png. No pixel cleanup, resizing, alpha editing or Git writes. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}

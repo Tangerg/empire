@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 12,
   "authoredThreeStateBundles": 14,
-  "formalRuntimeBoundTopics": 63,
+  "formalRuntimeBoundTopics": 65,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -405,6 +405,18 @@
       "export": "native48 three-background identity/alpha review passed",
       "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
       "liveGame": "pending"
+    },
+    "C01-EQUIP-CLERIC": {
+      "raw": "preserved unchanged with original atlas evidence",
+      "export": "native48 three-background identity/alpha review passed",
+      "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
+      "liveGame": "pending"
+    },
+    "C01-EQUIP-ENGINEER": {
+      "raw": "preserved unchanged with original atlas evidence",
+      "export": "native48 three-background identity/alpha review passed",
+      "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -552,7 +564,9 @@
       "defaultTestTimeoutUnchanged": true,
       "scope": "integrated selected-readability and legion/forge checkpoint before edge-decoration/refugee additions"
     },
-    "latestBindingAndEdges": "68 passed after refugee and edge binding"
+    "latestBindingAndEdges": "68 passed after refugee and edge binding",
+    "artPythonLatest": "137 passed",
+    "typecheckLatest": "passed at a334a32"
   },
   "liveGameVerifiedAnimationTopics": 0,
   "materialStages": {

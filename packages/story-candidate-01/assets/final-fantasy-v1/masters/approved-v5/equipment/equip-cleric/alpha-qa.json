@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-EQUIP-CLERIC",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5262706388996996,
+  "nearOpaqueFractionAlphaGE250": 0.45531619392107936,
+  "nonzeroAlphaBBox": [
+    0,
+    23,
+    1226,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    51,
+    74,
+    1204,
+    1195
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    51,
+    74,
+    50,
+    59
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 21,
+  "sha256": "0ed70726e13ca24e8c8e8e99a71f1d1ce2ef21b34dabcbcf42e575c0a56840f4",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}
