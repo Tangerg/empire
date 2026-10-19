@@ -2176,11 +2176,16 @@
     },
     {
       "topicId": "C01-EQUIP-LEGION-SHIELD",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-legion-shield/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-051-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "20b9f06c86fdde8bd3e96f7bdfa6940654d299c867497c3b60e5fd4f7f577f12"
@@ -2320,11 +2325,16 @@
     },
     {
       "topicId": "C01-EQUIP-TEMPLAR",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-templar/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-051-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "56f3729769890e99e530303cf0e6e86ed274f9ff8b8a3ca2dc5d3fa45af3aaf0"
@@ -4867,7 +4877,8 @@
       "topicId": "c02-equipment-boarding-team",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-defoliator-pilot",
@@ -4908,7 +4919,8 @@
       "topicId": "c02-equipment-floating-city-guard",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-forest-beast-handler",
@@ -4930,10 +4942,14 @@
     },
     {
       "topicId": "c02-equipment-guard-robot",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-guard-robot/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "e855885deda7230a0bfa7718027017dd37ae12555af849ac70ccb988e7ebcaf4"
     },
     {
       "topicId": "c02-equipment-heat-lamp-shield",
@@ -4945,7 +4961,8 @@
       "topicId": "c02-equipment-hover-lancer",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-ice-hook-hunter",
@@ -5108,7 +5125,8 @@
       "topicId": "c02-equipment-ring-rail-guard",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-sand-rider",
@@ -5148,10 +5166,14 @@
     },
     {
       "topicId": "c02-equipment-star-vein-mage",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-star-vein-mage/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "788ebb8a07bb25a6ff70b6634f3649d6a49d35d27c7b6d2687136ce3ab976c27"
     },
     {
       "topicId": "c02-equipment-starbreaker-sapper",
