@@ -4045,10 +4045,14 @@
     },
     {
       "topicId": "c02-battle-prop-hull-patches",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-hull-patches/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; runtime visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "20b2acac76c9a82bb654630016e78e2891b96b1842f99dbf2a964c8915dafd48"
     },
     {
       "topicId": "c02-battle-prop-ice-cracks",
@@ -4096,10 +4100,14 @@
     },
     {
       "topicId": "c02-battle-prop-repair-arms",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-repair-arms/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; runtime visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "1e31c6df717279e8fa288c8388f47280621608c12745cb334b9b5a8465f9ec48"
     },
     {
       "topicId": "c02-battle-prop-risk-list-evidence",
@@ -4111,7 +4119,8 @@
       "topicId": "c02-battle-prop-seed-coolers",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-soler-heat-emblems",
@@ -4123,7 +4132,8 @@
       "topicId": "c02-battle-prop-spare-part-racks",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-spore-sacs",
@@ -4135,7 +4145,8 @@
       "topicId": "c02-battle-prop-stretcher-medkits",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-tickets-manifests",
@@ -4147,7 +4158,8 @@
       "topicId": "c02-battle-prop-water-barrels",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-anti-large-charge",
