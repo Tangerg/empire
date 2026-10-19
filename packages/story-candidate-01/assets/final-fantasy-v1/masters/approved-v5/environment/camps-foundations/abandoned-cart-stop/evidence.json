@@ -1,0 +1,110 @@
+{
+  "asset": "abandoned-cart-stop",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved chunky matte rural cart/waystation family, broad calm mud planes and clear structural contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1054
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.84051
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    104,
+    237,
+    84,
+    183
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/abandoned-cart-stop-master-quarter.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/farm-handcart-tools/farm-handcart-tools-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/roadside-waystation-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "camps-foundations",
+  "cell_index": 13,
+  "semantic_counts": {
+    "covered_wagon": 1,
+    "visible_near_side_wheels": 2,
+    "forward_shafts": 2,
+    "barrels": 2,
+    "open_crate": 1,
+    "low_wooden_table_or_platform": 1,
+    "lantern_post": 1,
+    "hanging_lantern": 1
+  },
+  "ground_preservation": "functional opaque muddy stopping-place and curved ruts retained; genuinely transparent exterior",
+  "render_role": "standing settlement scenery; do not set lying or move to ground-decal layer",
+  "logical_cell": [
+    144,
+    144
+  ],
+  "hd_cell": [
+    288,
+    288
+  ],
+  "logical_anchor": [
+    72,
+    139
+  ],
+  "hd_anchor": [
+    144,
+    278
+  ],
+  "footprint": [
+    3,
+    3
+  ],
+  "obstructionHeight": 1,
+  "source_foot_semantics": "visually selected forward contact edge of whole functional muddy stopping-place; retains group standing registration; not alpha bottom",
+  "source_local_wheel_contact_estimates_px": [
+    [
+      445,
+      557
+    ],
+    [
+      550,
+      664
+    ]
+  ],
+  "ground_center_estimate_px": [
+    635,
+    739
+  ],
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/camps-foundations/abandoned-cart-stop-source-evidence.json",
+  "source_edit_count": 1,
+  "initial_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/attempts/initial-native.png",
+  "initial_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/camps-foundations/abandoned-cart-stop/prompt-initial.txt",
+  "source_margin_note": "Complete strong silhouette, horizontal margins 104/84 pixels are below requested 10 percent but safely clear; native faint alpha1 edge residue preserved under current gate.",
+  "provisional_export": {
+    "uniform_scale_native_to_logical": 0.124,
+    "uniform_scale_native_to_hd": 0.248,
+    "logical_canvas_translation": [
+      -5.748,
+      8.304
+    ],
+    "method": "preserve full native canvas; map explicit sourceFoot to contractual anchor; no bbox normalization",
+    "expected_strong_bounds_logical": [
+      7.148,
+      37.692,
+      139.332,
+      141.108
+    ],
+    "scene_review_pending": true
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

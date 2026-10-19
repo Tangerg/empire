@@ -19,7 +19,7 @@
     "bank-edge": "revision3 broad flat patch, static overlay checked"
   },
   "counting": "Do not count single pose as full unit animation. Concept itself adds no transparent assets. Prior bulk candidates are not re-approved automatically.",
-  "next": "Cross-object foot depth and full-map integration review; remaining approved-style collection",
+  "next": "Finish final ground decals, four high-coverage cliff modules, ranger poses and old-city tunnel states; retain full-map cohesion gate.",
   "continuationApproval": {
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
@@ -644,12 +644,24 @@
         "firewood-stack",
         "mossy-boulder",
         "boulder-mossy-large",
-        "broken-planks"
+        "broken-planks",
+        "abandoned-tools",
+        "rope-coil"
       ],
-      "count": 20,
+      "count": 22,
       "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
       "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
       "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene. Stump and fallen branch retain complete source identities; native catalog probes only, no c01-02 sample. Wood/moss/plank quartet native review passed; small moss rock is an actual0.58 ground sample, others are catalog probes; firewood also has settlement-life selector at0.3, absence from selected ground sample is not proof of no consumer.",
+      "liveGame": "pending"
+    },
+    "camps-foundations": {
+      "formalRuntimeBoundCells": [
+        "abandoned-cart-stop"
+      ],
+      "count": 1,
+      "export": "144/288 full-canvas registration, immutable baseline and unchanged other15 cells checked",
+      "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
+      "sceneReview": "chunky covered cart, barrels/crate/platform/lantern and functional muddy base preserved; original small standing placement remains, full scene integration review pending",
       "liveGame": "pending"
     }
   },
@@ -670,9 +682,9 @@
       "defaultTestTimeoutUnchanged": true,
       "scope": "7067409 six-ground-accent checkpoint; subsequent gravekeeper/gray-flag-point covered by focused binding tests"
     },
-    "latestBindingAndEdges": "75 asset binding tests passed before ballista emplacement addition",
-    "artPythonLatest": "144 passed",
-    "typecheckLatest": "passed at75f66fb plus decal review tools"
+    "latestBindingAndEdges": "87 asset/environment tests passed at cart-stop/decal checkpoint",
+    "artPythonLatest": "147 passed in exact cliff-contract engineering checkpoint",
+    "typecheckLatest": "passed at cart-stop/decal checkpoint"
   },
   "liveGameVerifiedAnimationTopics": 0,
   "materialStages": {

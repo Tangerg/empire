@@ -1,0 +1,117 @@
+{
+  "topicId": "C01-UNIT-RANGER",
+  "actualConsumers": [
+    "c01.bran"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 8,
+    "text": "'c01.bran': 'C01-UNIT-RANGER'"
+  },
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-RANGER",
+    "topicId": "C01-UNIT-RANGER",
+    "label": "游侠",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-ranger.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-ranger.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ranger.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-ranger-assassin-mage-knight.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "106fa7d2969edddf6d6a700577eb599ded691423c28e0dced1a956c9a0cbd0eb"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-ranger.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "632e7d8e88e79497e68d66f1a1ee9cbd3b97d8394602e31cf023c6b5e5fad2e0"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-ranger.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "6bffa4df28eab48d9ffe55cbae2472e4ffc7834d3d4661119c28a866d6e1cf2f"
+    }
+  },
+  "referenceExtraction": "Unresampled atlas first-row crop [0,0,1254,330] and first idle cell [0,0,314,330]. Stops before assassin hair at the next row. Original magenta backdrop is reference only; no alpha/color changes. Four runtime-HD frames cropped at native64x96.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "originalIdentity": "Clean-shaven young adult human with short brown bangs, serious face, deep charcoal hood raised and wrapped scarf/cowl, blue-gray belted tunic with long split hem, olive-gray studded shoulder caps, brown leather gloves/bracers/belt/boots, hip quiver with several arrows. Screen-left glove carries a short steel blade low; screen-right glove holds a short curved wooden bow upright with taut string. No helmet, shield, staff, animal or pointed elf ears.",
+  "semanticEvidence": {
+    "unitDefinition": "src/units.ts:41-45",
+    "weaponDefinitions": [
+      "src/weapons.ts:13",
+      "src/weapons.ts:55-63"
+    ],
+    "weapons": [
+      "c01.ranger-bow",
+      "c01.border-blade"
+    ],
+    "primaryBow": {
+      "name": "灰境猎弓",
+      "damageType": "pierce",
+      "maxRange": 3,
+      "lineOfSight": "arc",
+      "tags": [
+        "ranged",
+        "projectile",
+        "scout"
+      ]
+    },
+    "secondaryBlade": {
+      "name": "边境长剑",
+      "damageType": "slash",
+      "tags": [
+        "melee"
+      ]
+    },
+    "oneActionSlot": "Parent approved primary-bow shooting in the single attack slot, with short blade temporarily in original waist scabbard and original bow hand retained. Both c01.ranger-bow and c01.border-blade still share this existing action animation, an explicit limitation; no rules change."
+  },
+  "identityDistinctions": "Equipment C01-EQUIP-RANGER and portrait C01-CHAR-BRAN-01 are separate topics; neither substitutes for this actual combat-unit source. c01.archer and c01.woodland-walker have separate art bindings even though they also use ranger-bow.",
+  "scaleContract": "Approved chunky human family, about44logical standing body height; preserve full landscape native canvas. Idle first, then shared scale and measured feet for remaining poses.",
+  "status": "Original source preserved; idle native ready for review; remaining poses not generated",
+  "actionPlanApproval": "Parent2026-10-19 16:23UTC accepted original dual-wield idle and primary bow attack with blade sheathed; idle first for44-high human scale review.",
+  "idleReview": "idle-review.json"
+}

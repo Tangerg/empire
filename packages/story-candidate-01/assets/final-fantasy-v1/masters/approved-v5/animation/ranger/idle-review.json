@@ -1,0 +1,46 @@
+{
+  "status": "Accepted; remaining three poses in progress",
+  "topic": "C01-UNIT-RANGER",
+  "actualConsumers": [
+    "c01.bran"
+  ],
+  "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/idle/master.png",
+  "nativeSize": [
+    1586,
+    992
+  ],
+  "identityReview": "Clean-shaven brown-haired adult with raised charcoal hood/cowl, muted blue-gray split tunic, olive-gray shoulder caps, brown gloves/bracers/boots, belt quiver and waist scabbard. Screen-left glove retains short blade; screen-right glove retains short wooden bow.",
+  "styleReview": "Huge head, hands, boots and broad torso; thick contours, broad matte cloth/leather/steel planes, few studs and no realistic leather microtexture.",
+  "visibleBoundsAlphaGreaterThan127": [
+    408,
+    75,
+    1233,
+    950
+  ],
+  "bodyTop": 75,
+  "sourceFootMidpoint": [
+    813.367,
+    948.5
+  ],
+  "suggestedSourceFoot": [
+    813,
+    949
+  ],
+  "proposedBodyReferenceSourcePixels": 873.5,
+  "proposedBodyScale": 0.05037206639954207,
+  "proposedScaleFraction": "44/873.5",
+  "bodyTargetHeightLogicalPixels": 44,
+  "perimeterAlphaMax": 1,
+  "perimeterAlphaGreaterThan1": 0,
+  "rawPreserved": true,
+  "exactPromptVerified": true,
+  "remainingPosesGenerated": false,
+  "plannedAction": "Parent-approved primary bow draw/shot, short blade temporarily sheathed to free its original hand; original bow hand remains.",
+  "existingActionLimitation": "One attack slot is still shared by ranger-bow and border-blade. No rules change or extra animation slot claimed.",
+  "acceptedScale": "44/873.5",
+  "acceptedSourceFoot": [
+    813,
+    949
+  ],
+  "acceptanceEvidence": "Parent2026-10-19 16:27UTC: original hood/brown hair/clean-shaven face/blue-gray clothes and original blade/bow hands clear; chunky style accepted. Continue same scale, verify attack sheathed blade and natural draw hand/string/single-arrow relation."
+}

@@ -1,0 +1,128 @@
+{
+  "evidence": "actual scene renderer markup rearranged onto a native-size diagnostic contact board",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "assets": [
+    {
+      "id": "abandoned-tools",
+      "anchor": [
+        32.01913875598086,
+        49.301435406698566
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no selected-scene placement sampled",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.55,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-17.610526315789475 -27.115789473684213) scale(0.55)\"><svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png\" x=\"-128\" y=\"-192\" width=\"384\" height=\"256\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        10.0,
+        14.5,
+        54.0,
+        49.5
+      ],
+      "nativeSampleVisibleHeight": 19.25,
+      "nativeVisibleHeightRange": [
+        17.5,
+        21.0
+      ],
+      "nativeSampleOverhangBelowContact": 0.10921052631578868
+    },
+    {
+      "id": "rope-coil",
+      "anchor": [
+        32.688995215311,
+        48.8421052631579
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "catalog-only diagnostic; no selected-scene placement sampled",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.55,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-17.978947368421053 -26.863157894736847) scale(0.55)\"><svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/decals-small@2x.png\" x=\"-192\" y=\"-192\" width=\"384\" height=\"256\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.0,
+        17.5,
+        54.5,
+        49.0
+      ],
+      "nativeSampleVisibleHeight": 17.325000000000003,
+      "nativeVisibleHeightRange": [
+        15.75,
+        18.9
+      ],
+      "nativeSampleOverhangBelowContact": 0.08684210526315646
+    },
+    {
+      "id": "oak-ancient",
+      "anchor": [
+        48.89154704944178,
+        83.8676236044657
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.375,
+      "evidence": "sampled scene renderer markup",
+      "reference": true,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.0175,
+        1.1824999999999999
+      ],
+      "sampledRendererScaleRange": [
+        1.028,
+        1.172
+      ],
+      "sampleScale": 1.102,
+      "sampleCount": 11,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop is-standing\" transform=\"translate(-53.855 -92.382) scale(1.102)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        7.0,
+        87.5,
+        89.0
+      ],
+      "nativeSampleVisibleHeight": 90.364,
+      "nativeVisibleHeightRange": [
+        83.435,
+        96.96499999999999
+      ],
+      "nativeSampleOverhangBelowContact": 5.655878787878793
+    }
+  ],
+  "offlineViewportNormalization": "nested SVG viewports expressed as equivalent clip paths for Inkscape"
+}

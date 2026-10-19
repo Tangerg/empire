@@ -1328,6 +1328,65 @@
               1004
             ]
           }
+        },
+        "abandoned-tools": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/decals-small/abandoned-tools/master.png",
+          "sha256": "f696d473fa239d959bd19dfe4c619917d989803f13ac8fcd12c99059d1552698",
+          "registration": {
+            "scale": 0.03827751196172249,
+            "origin": [
+              8,
+              8
+            ],
+            "sourceFoot": [
+              627.5,
+              1079
+            ]
+          }
+        },
+        "rope-coil": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/decals-small/rope-coil/master.png",
+          "sha256": "f51cca5f192ed7ca4ce222fdceae699d376afb2587ecf4019305fca0aec949d3",
+          "registration": {
+            "scale": 0.03827751196172249,
+            "origin": [
+              8,
+              8
+            ],
+            "sourceFoot": [
+              645,
+              1067
+            ]
+          }
+        }
+      }
+    },
+    "camps-foundations": {
+      "baselines": {
+        "1x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/camps-foundations.png",
+          "sha256": "20b127dca57e4e3c5cdf79ea28a941d340057452685abb0f264f3356bb344f2d"
+        },
+        "2x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/camps-foundations@2x.png",
+          "sha256": "5c5bd292a37418297c27ce828fcf87e7d77b5c3805c825ccc59ce4e933394e95"
+        }
+      },
+      "cells": {
+        "abandoned-cart-stop": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/camps-foundations/abandoned-cart-stop/abandoned-cart-stop-master.png",
+          "sha256": "d6fca81800922e3934083481cd557522d6746141c8591bc8ee4d41cb159d36f0",
+          "registration": {
+            "scale": 0.10366826156299841,
+            "origin": [
+              7,
+              7
+            ],
+            "sourceFoot": [
+              627,
+              1054
+            ]
+          }
         }
       }
     }

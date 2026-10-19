@@ -1,0 +1,60 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "abandoned-tools",
+  "cellIndexZeroBased": 20,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.684099239689771,
+  "nearOpaqueFractionAlphaGE250": 0.29643005222204416,
+  "nonzeroAlphaBBox": [
+    0,
+    31,
+    1248,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    52,
+    167,
+    1202,
+    1079
+  ],
+  "subjectAlphaBBoxGE128": [
+    55,
+    168,
+    1200,
+    1079
+  ],
+  "solidAlphaBBoxGE250": [
+    56,
+    169,
+    1198,
+    1078
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    55,
+    168,
+    54,
+    175
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "suggestedRegistrationFootpointNative": [
+    627.5,
+    1079
+  ],
+  "footpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding.",
+  "sha256": "f696d473fa239d959bd19dfe4c619917d989803f13ac8fcd12c99059d1552698",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Exactly one straight-handled shovel plus one double-pointed pickaxe, both complete, on a restrained irregular earth patch. No D-grip, hammer or third tool.",
+  "remarks": [
+    "Native alpha=1 fringe specks retained unchanged; not included in subject bounds or footpoint."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

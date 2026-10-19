@@ -1,0 +1,70 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a134cbc1-d5d8-4778-8a6c-5cd21afa8656.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "37ab3fab9cb11927ddf8d5ce7281c7fbee49900c87f15f17b8272c4617b4bfd0",
+  "bboxAlphaNonzero": [
+    63,
+    72,
+    1524,
+    992
+  ],
+  "bboxAlphaGreaterThan127": [
+    408,
+    75,
+    1233,
+    950
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1122153,
+  "alphaOnePixels": 3897,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        520,
+        835,
+        740,
+        975
+      ],
+      "soleY": 949,
+      "bottomBandRows": 4,
+      "meanX": 629.398,
+      "spanX": [
+        580,
+        678
+      ]
+    },
+    "screenRight": {
+      "roi": [
+        820,
+        825,
+        1110,
+        975
+      ],
+      "soleY": 948,
+      "bottomBandRows": 4,
+      "meanX": 997.335,
+      "spanX": [
+        944,
+        1051
+      ]
+    }
+  },
+  "sourceFootMidpoint": [
+    813.367,
+    948.5
+  ],
+  "suggestedSourceFoot": [
+    813,
+    949
+  ],
+  "proposedBodyScale": "44/873.5",
+  "masterRawHashMatches": true
+}

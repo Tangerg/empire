@@ -1,0 +1,134 @@
+{
+  "evidence": "actual scene renderer markup rearranged onto a native-size diagnostic contact board",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "assets": [
+    {
+      "id": "abandoned-cart-stop",
+      "anchor": [
+        72,
+        116.26634768740031
+      ],
+      "footprint": [
+        3,
+        3
+      ],
+      "presentationScale": 1,
+      "evidence": "sampled scene renderer markup",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": [
+        0.302,
+        0.357
+      ],
+      "sampleScale": 0.357,
+      "sampleCount": 4,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop is-standing\" transform=\"translate(25.708 -41.514) scale(-0.357 0.357)\" opacity=\"1\">\n    <svg width=\"144\" height=\"144\" viewBox=\"0 0 144 144\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png\" x=\"-144\" y=\"-432\" width=\"576\" height=\"576\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        18.0,
+        31.5,
+        128.5,
+        118.0
+      ],
+      "nativeSampleVisibleHeight": 30.880499999999998,
+      "nativeVisibleHeightRange": [
+        43.25,
+        51.9
+      ],
+      "nativeSampleOverhangBelowContact": 0.6189138755980884
+    },
+    {
+      "id": "village-square-foundation",
+      "anchor": [
+        72,
+        139
+      ],
+      "footprint": [
+        4,
+        3
+      ],
+      "presentationScale": 1,
+      "evidence": "sampled scene renderer markup",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.5,
+        0.6
+      ],
+      "rendererScaleRange": [
+        0.5,
+        0.6
+      ],
+      "sampledRendererScaleRange": [
+        0.3,
+        0.82
+      ],
+      "sampleScale": 0.3,
+      "sampleCount": 3,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop \" transform=\"translate(-21.600 -41.700) scale(0.300)\" opacity=\"1\">\n    <svg width=\"144\" height=\"144\" viewBox=\"0 0 144 144\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/camps-foundations@2x.png\" x=\"-432\" y=\"0\" width=\"576\" height=\"576\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        5.5,
+        47.0,
+        138.5,
+        139.0
+      ],
+      "nativeSampleVisibleHeight": 27.599999999999998,
+      "nativeVisibleHeightRange": [
+        46.0,
+        55.199999999999996
+      ],
+      "nativeSampleOverhangBelowContact": 0.0
+    },
+    {
+      "id": "oak-ancient",
+      "anchor": [
+        48.89154704944178,
+        83.8676236044657
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.375,
+      "evidence": "sampled scene renderer markup",
+      "reference": true,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.0175,
+        1.1824999999999999
+      ],
+      "sampledRendererScaleRange": [
+        1.028,
+        1.172
+      ],
+      "sampleScale": 1.102,
+      "sampleCount": 11,
+      "reviewMarkup": "<g xmlns=\"http://www.w3.org/2000/svg\" class=\"candidate-environment-prop is-standing\" transform=\"translate(-53.855 -92.382) scale(1.102)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        7.0,
+        87.5,
+        89.0
+      ],
+      "nativeSampleVisibleHeight": 90.364,
+      "nativeVisibleHeightRange": [
+        83.435,
+        96.96499999999999
+      ],
+      "nativeSampleOverhangBelowContact": 5.655878787878793
+    }
+  ],
+  "offlineViewportNormalization": "nested SVG viewports expressed as equivalent clip paths for Inkscape"
+}

@@ -24,8 +24,8 @@ const lowSet = process.argv.includes('--pine-low');
 const graveSet = process.argv.includes('--regional-graves');
 const forgeSet = process.argv.includes('--regional-forge');
 const wastelandSet = process.argv.includes('--regional-wasteland');
-const requestedDecals = process.argv.find((arg) => arg.startsWith('--decal-ids='))?.slice('--decal-ids='.length).split(',') ?? [];
-if (requestedDecals.length > 4 || new Set(requestedDecals).size !== requestedDecals.length) throw new Error('choose one to four distinct decal IDs');
+const requestedCells = process.argv.find((arg) => arg.startsWith('--cell-ids='))?.slice('--cell-ids='.length).split(',') ?? [];
+if (requestedCells.length > 4 || new Set(requestedCells).size !== requestedCells.length) throw new Error('choose one to four distinct environment cell IDs');
 const decalsFirstSet = process.argv.includes('--decals-first');
 const decalsSecondSet = process.argv.includes('--decals-second');
 const ruralFourthSet = process.argv.includes('--rural-fourth');
@@ -33,10 +33,10 @@ const ruralThirdSet = process.argv.includes('--rural-third');
 const ruralSecondSet = process.argv.includes('--rural-second');
 const ruralSet = process.argv.includes('--rural-first');
 const snowSet = process.argv.includes('--regional-snow');
-const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet || lowSet || graveSet || forgeSet || snowSet || wastelandSet || ruralSet || ruralSecondSet || ruralThirdSet || ruralFourthSet || decalsFirstSet || decalsSecondSet || requestedDecals.length > 0;
-if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet, lowSet, graveSet, forgeSet, snowSet, wastelandSet, ruralSet, ruralSecondSet, ruralThirdSet, ruralFourthSet, decalsFirstSet, decalsSecondSet, requestedDecals.length > 0].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
+const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet || lowSet || graveSet || forgeSet || snowSet || wastelandSet || ruralSet || ruralSecondSet || ruralThirdSet || ruralFourthSet || decalsFirstSet || decalsSecondSet || requestedCells.length > 0;
+if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet, lowSet, graveSet, forgeSet, snowSet, wastelandSet, ruralSet, ruralSecondSet, ruralThirdSet, ruralFourthSet, decalsFirstSet, decalsSecondSet, requestedCells.length > 0].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
 const output = resolve(process.env.FOREST_REVIEW_OUTPUT
-  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${requestedDecals.length ? '-decals-' + requestedDecals.join('-') : decalsFirstSet ? '-decals-first' : decalsSecondSet ? '-decals-second' : ruralFourthSet ? '-rural-fourth' : ruralThirdSet ? '-rural-third' : ruralSecondSet ? '-rural-second' : ruralSet ? '-rural-first' : wastelandSet ? '-regional-wasteland' : forgeSet ? '-regional-forge' : snowSet ? '-regional-snow' : graveSet ? '-regional-graves' : lowSet ? '-pine-low' : matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
+  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${requestedCells.length ? '-cells-' + requestedCells.join('-') : decalsFirstSet ? '-decals-first' : decalsSecondSet ? '-decals-second' : ruralFourthSet ? '-rural-fourth' : ruralThirdSet ? '-rural-third' : ruralSecondSet ? '-rural-second' : ruralSet ? '-rural-first' : wastelandSet ? '-regional-wasteland' : forgeSet ? '-regional-forge' : snowSet ? '-regional-snow' : graveSet ? '-regional-graves' : lowSet ? '-pine-low' : matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const map = mapFromLevel(content, candidate01Level('c01-02'));
 map.tiles.fill('forest');
@@ -74,8 +74,8 @@ interface ReviewColumn {
   readonly reference?: boolean;
   readonly reconstruction?: boolean;
 }
-const columns: readonly ReviewColumn[] = requestedDecals.length ? [
-  ...requestedDecals.map((id, index) => ({ id, x: 85 + index * 145, placement: [0.5, 0.6] as const })),
+const columns: readonly ReviewColumn[] = requestedCells.length ? [
+  ...requestedCells.map((id, index) => ({ id, x: 85 + index * 145, placement: [0.5, 0.6] as const })),
   { id: 'oak-ancient', x: 675, placement: [0.74, 0.86], reference: true },
 ] : decalsFirstSet ? [
   { id: 'grass-tuft-a', x: 85, placement: [0.5, 0.6] },
@@ -189,7 +189,7 @@ const pictures = [];
 for (const { id, x, placement, catalogOnly = false, reference = false, reconstruction = false } of columns) {
   const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
   const crop = `x="${-(cell.index % atlas.raster.columns) * atlas.raster.cellWidth}" y="${-Math.floor(cell.index / atlas.raster.columns) * atlas.raster.cellHeight}"`;
-  const source = atlas.id === 'decals-small' ? actualGround : ['grain-drying-mat-linen', 'grain-drying-mat-earth'].includes(id) ? authoredRuralGround : ['wheat-drying-rack', 'stone-well', 'frontier-granary', 'frontier-farmhouse', 'farm-fence-straight', 'farm-fence-corner'].includes(id) ? authoredRural : ['wheat-sheaves', 'wheat-bundles', 'grain-sacks-baskets', 'farm-handcart-tools', 'livestock-pen-small'].includes(id) ? rural : id.startsWith('wasteland-') ? molten : id.startsWith('forge-') ? forges : id.startsWith('grave-') ? graves : id === 'boulder-ferns' ? motherRoot
+  const source = id === 'village-square-foundation' ? authoredRuralGround : id === 'abandoned-cart-stop' ? rural : atlas.id === 'decals-small' ? actualGround : ['grain-drying-mat-linen', 'grain-drying-mat-earth'].includes(id) ? authoredRuralGround : ['wheat-drying-rack', 'stone-well', 'frontier-granary', 'frontier-farmhouse', 'farm-fence-straight', 'farm-fence-corner'].includes(id) ? authoredRural : ['wheat-sheaves', 'wheat-bundles', 'grain-sacks-baskets', 'farm-handcart-tools', 'livestock-pen-small'].includes(id) ? rural : id.startsWith('wasteland-') ? molten : id.startsWith('forge-') ? forges : id.startsWith('grave-') ? graves : id === 'boulder-ferns' ? motherRoot
     : ['boulder-large', 'fallen-hollow-log', 'pine-tall', 'pine-pair', 'pine-mature-c'].includes(id) ? frame : field;
   const matches = props(source)
     .filter((markup) => markup.includes(`${atlas.id}@2x.png`) && markup.includes(crop));
@@ -198,7 +198,7 @@ for (const { id, x, placement, catalogOnly = false, reference = false, reconstru
     if (!transform) throw new Error(`missing prop transform: ${id}`);
     return { markup, scale: Math.abs(Number(transform[3])) };
   });
-  const catalogProbe = catalogOnly || (requestedDecals.includes(id) && samples.length === 0);
+  const catalogProbe = catalogOnly || (requestedCells.includes(id) && samples.length === 0);
   const presentationScale = cell.presentationScale ?? 1;
   const middle = (placement[0] + placement[1]) / 2 * presentationScale;
   // Leaf pile has no shipped placement. Draw the catalog cell about its declared

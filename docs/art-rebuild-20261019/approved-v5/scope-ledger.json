@@ -12,11 +12,11 @@
       "interactive-structure": 19,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 77,
+    "rawPreservedTopics": 78,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 84
+    "registeredEnvironmentCells": 87
   },
   "sceneCohesion": {
     "fullMap": "standing-depth-current/full-scene-labeled.png",
@@ -1634,8 +1634,12 @@
       "category": "combat-unit",
       "label": "游侠",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ranger/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ranger/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ranger/walk-b/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -18022,9 +18026,20 @@
     {
       "atlasId": "camps-foundations",
       "baselineComponentCount": 16,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "abandoned-cart-stop"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "formalRuntimeBoundCells": [
+          "abandoned-cart-stop"
+        ],
+        "count": 1,
+        "export": "144/288 full-canvas registration, immutable baseline and unchanged other15 cells checked",
+        "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
+        "sceneReview": "chunky covered cart, barrels/crate/platform/lantern and functional muddy base preserved; original small standing placement remains, full scene integration review pending",
+        "liveGame": "pending"
+      }
     },
     {
       "atlasId": "landmarks-large",
@@ -18056,7 +18071,9 @@
         "firewood-stack",
         "mossy-boulder",
         "boulder-mossy-large",
-        "broken-planks"
+        "broken-planks",
+        "abandoned-tools",
+        "rope-coil"
       ],
       "liveGame": "pending",
       "stageEvidence": {
@@ -18080,9 +18097,11 @@
           "firewood-stack",
           "mossy-boulder",
           "boulder-mossy-large",
-          "broken-planks"
+          "broken-planks",
+          "abandoned-tools",
+          "rope-coil"
         ],
-        "count": 20,
+        "count": 22,
         "export": "64/128 full-canvas registration; original6-column cell geometry and untouched cells preserved",
         "runtimeBinding": "actual c01-02 ground layer samples at0.56–0.58 and original0.72 opacity; no scattering or placement changes",
         "sceneScaleReview": "Eight high-frequency grass/stone/leaves/mud/roots groups inspected at actual0.56–0.58 and0.72opacity. Original misplaced neighbouring fragments excluded with source provenance. Full scene retains all placements; other old decorations remain. Next four native reviewed: cart-ruts3 and bootprints1 actual c01-02 placements at0.55; stone-c/dry-crack explicitly catalog probes, no selected-scene sample. Landscape1536x1024 raw sources remain intact in64/128 cells. Three cloven hoof marks and cone/twig group native reviewed; five actual c01-02 hoof-mark instances, burned-twigs catalog-only in this scene. Stump and fallen branch retain complete source identities; native catalog probes only, no c01-02 sample. Wood/moss/plank quartet native review passed; small moss rock is an actual0.58 ground sample, others are catalog probes; firewood also has settlement-life selector at0.3, absence from selected ground sample is not proof of no consumer.",

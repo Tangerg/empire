@@ -1,0 +1,58 @@
+{
+  "atlasId": "decals-small",
+  "cellId": "rope-coil",
+  "cellIndexZeroBased": 21,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6944756046997296,
+  "nearOpaqueFractionAlphaGE250": 0.2915563339260141,
+  "nonzeroAlphaBBox": [
+    33,
+    55,
+    1218,
+    1228
+  ],
+  "visibleAlphaBBoxGE8": [
+    75,
+    244,
+    1215,
+    1068
+  ],
+  "subjectAlphaBBoxGE128": [
+    76,
+    244,
+    1214,
+    1067
+  ],
+  "solidAlphaBBoxGE250": [
+    77,
+    245,
+    1213,
+    1066
+  ],
+  "subjectMarginsPixelsL_T_R_B": [
+    76,
+    244,
+    40,
+    187
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "suggestedRegistrationFootpointNative": [
+    645.0,
+    1067
+  ],
+  "footpointBasis": "Measured alpha>=128 subject-bounds bottom-center in native pixels; isolated alpha=1 residue is excluded. This is a proposed flat-decal registration reference, not reuse of legacy anchor and not a runtime binding.",
+  "sha256": "f51cca5f192ed7ca4ce222fdceae699d376afb2587ecf4019305fca0aec949d3",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "One loose coiled rope with broad oval turns, central opening, two free coarse-frayed ends and no tools/metal attachments. Transparent center preserved.",
+  "remarks": [],
+  "postprocessing": "none",
+  "runtimeReady": false
+}
