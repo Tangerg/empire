@@ -26,9 +26,11 @@ def validate(config):
     if any(type(v) is not int or v<=0 for v in frame):raise ValueError('positive integer frame dimensions required')
     if scale<=0 or any(origin[i]<0 or origin[i]+size[i]*scale>frame[i] for i in (0,1)):
         raise ValueError('full authored canvas must fit at the single shared scale')
+    limit=config.get('registrationLimit',2)
+    if not math.isfinite(limit) or not 0<=limit<=4:raise ValueError('explicit registration limit must be between zero and four logical pixels')
     for name in names:
         offset=config.get('registrationOffsets',{}).get(name,[0,0])
-        if len(offset)!=2 or any(not math.isfinite(v) or abs(v)>2 for v in offset):raise ValueError('registration translation limited to two logical pixels')
+        if len(offset)!=2 or any(not math.isfinite(v) or abs(v)>limit for v in offset):raise ValueError('registration translation exceeds recorded logical-pixel limit')
         if any(origin[i]+offset[i]<0 or origin[i]+offset[i]+size[i]*scale>frame[i] for i in (0,1)):raise ValueError('registration would clip full canvas')
     return size
 

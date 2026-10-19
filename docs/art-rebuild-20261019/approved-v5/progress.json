@@ -27,5 +27,74 @@
   },
   "authoredFourPoseBundles": 2,
   "authoredThreeStateBundles": 2,
-  "formalRuntimeBoundTopics": 0
+  "formalRuntimeBoundTopics": 3,
+  "topicStages": {
+    "C01-UNIT-SWORDSMAN": {
+      "raw": "4/4 preserved",
+      "export": "passed shared-scale and native semantic review",
+      "runtimeBinding": "passed manifest + HD resolver + full-frame UI regression tests",
+      "liveGame": "pending"
+    },
+    "C01-STRUCT-LORNE-KEEP": {
+      "raw": "3/3 preserved",
+      "export": "passed shared-scale and native semantic review",
+      "runtimeBinding": "passed manifest + HD resolver + full-frame UI regression tests",
+      "liveGame": "pending"
+    },
+    "C01-STRUCT-REPAIRABLE-GATE": {
+      "raw": "3/3 preserved",
+      "export": "passed shared-scale and native semantic review",
+      "runtimeBinding": "passed manifest + HD resolver + full-frame UI regression tests",
+      "liveGame": "pending"
+    },
+    "C01-UNIT-ARCHER": {
+      "raw": "idle preserved; remaining poses in progress",
+      "export": "pending",
+      "runtimeBinding": "pending",
+      "liveGame": "pending"
+    }
+  },
+  "supplementalBundles": {
+    "red-swordsman": {
+      "raw": "4/4 preserved",
+      "export": "passed native static and staged scene review",
+      "runtimeTeamSelection": "pending",
+      "canonicalTopicCount": 0
+    }
+  },
+  "environmentCells": {
+    "oak-ancient": {
+      "raw": "preserved",
+      "export": "pending registered atlas",
+      "runtimeBinding": "pending",
+      "liveGame": "pending"
+    },
+    "mixed-forest-dense": {
+      "raw": "preserved",
+      "export": "pending registered atlas",
+      "runtimeBinding": "pending",
+      "liveGame": "pending"
+    },
+    "fern-bed": {
+      "raw": "preserved",
+      "export": "pending registered atlas",
+      "runtimeBinding": "pending",
+      "liveGame": "pending"
+    },
+    "boulder-large": {
+      "raw": "preserved",
+      "export": "pending registered atlas",
+      "runtimeBinding": "pending",
+      "liveGame": "pending"
+    }
+  },
+  "totalCanonicalScope": 1212,
+  "priorTechnicalExportsRequireStyleReview": true,
+  "tests": {
+    "focusedRuntime": 14,
+    "typecheck": "passed",
+    "artToolTests": 83,
+    "fullSuite": "existing jsdom scrollTo error reproduced before binding change",
+    "liveBrowser": "not validated"
+  }
 }

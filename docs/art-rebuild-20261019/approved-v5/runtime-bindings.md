@@ -19,8 +19,7 @@ exports under `animation/swordsman/export` and `buildings/lorne-keep/export` in
 this directory. `tools/art/export_registered_sequence.py` and each bundle's
 `registration.json` are their generation source. The swordsman's superseded
 entry in `tools/art/frame-overrides.json` has been removed; the old small-frame
-exporter must not regenerate these topics. Registration configs currently carry
-workspace source paths; portable source-path migration is a separate task.
+exporter must not regenerate these topics. Registration configs reference repository-relative immutable master paths and run from the repository root.
 
 The board uses full logical frames and exact fractional pivots. HD density only
 changes sampling resolution. Unit icons and roster/inspector portraits now fit
@@ -55,3 +54,7 @@ occlusion acceptance remain separate checks; static tests do not establish them.
   pre-binding HEAD presentation files and manifests restored. Parallel-load
   architecture timeout and SVG-clock failures passed when rerun in isolation
 - No browser playback or visual occlusion review was performed
+
+## Repairable Gate integration
+
+C01-STRUCT-REPAIRABLE-GATE now uses the same160×160 logical /320×320 HD three-state contract, with its own registered source foundation. The existing gate binding and damage/ownership selectors are unchanged. Its sheet hash, frame/state order, manifest geometry and footprint are covered by the same regression matrix. Integration rerun:14 focused tests and TypeScript typecheck passed.

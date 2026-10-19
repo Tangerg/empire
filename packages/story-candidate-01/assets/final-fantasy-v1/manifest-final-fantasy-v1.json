@@ -4127,13 +4127,13 @@
       "topicId": "C01-STRUCT-REPAIRABLE-GATE",
       "label": "可修城门",
       "category": "interactive-structure",
-      "png": "runtime/interactive-structure/struct-repairable-gate.png",
-      "width": 192,
-      "height": 64,
+      "png": "runtime-approved-v5/structure/struct-repairable-gate.png",
+      "width": 480,
+      "height": 160,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5",
+      "frameWidth": 160,
+      "frameHeight": 160,
       "frames": 3,
       "stateOrder": [
         "normal",
@@ -4141,8 +4141,8 @@
         "captured"
       ],
       "anchor": [
-        32,
-        63
+        79.5253112033195,
+        139.87385892116183
       ],
       "footprint": [
         2,
