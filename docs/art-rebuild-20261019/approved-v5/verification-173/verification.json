@@ -1,0 +1,12 @@
+{
+  "runtimeSnapshotCommit": "411c8dc",
+  "canonicalTopics": 173,
+  "environmentCells": 139,
+  "testFiles": 103,
+  "testsPassed": 1104,
+  "durationSeconds": 191.81,
+  "command": "npx vitest run --maxWorkers=2 --minWorkers=1",
+  "typecheck": "passed",
+  "liveBrowserVerification": false,
+  "note": "Bounded worker rerun passed the entire suite; previous timeout evidence remains preserved."
+}
