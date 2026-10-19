@@ -4036,7 +4036,8 @@
       "topicId": "c02-battle-prop-bunks",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-cable-reels",
@@ -4090,7 +4091,8 @@
       "topicId": "c02-battle-prop-cups-cookware",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-dead-fungus-beds",
@@ -4108,7 +4110,8 @@
       "topicId": "c02-battle-prop-drying-racks",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-five-world-flags",
@@ -4135,7 +4138,8 @@
       "topicId": "c02-battle-prop-folding-tables",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-fuel-oxygen-tanks",
@@ -4159,23 +4163,23 @@
     },
     {
       "topicId": "c02-battle-prop-hesha-water-signs",
-      "status": "raw-generated",
-      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-hesha-water-signs/master.png",
+      "status": "exported",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-hesha-water-signs/revision-2/master.png",
       "verification": {
         "exportCheck": "passed",
         "exportTests": 14,
-        "evidence": "docs/art-rebuild-20261019/batch-022-export-evidence.json",
+        "evidence": "docs/art-rebuild-20261019/batch-027-export-evidence.json",
         "visualAndConsumerAcceptance": "pending",
         "runtimeVisual": "pending-browser-socket-blocked",
-        "semanticReview": "needs-revision-from-higher-resolution-original",
-        "runtimeOutput": "baseline restored pending corrected generation"
+        "semanticReview": "revision2 passed original board loose-device silhouette comparison",
+        "state": "export-checked"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "31c84593db3de5a9517983802a54dfe2e5a53db48683eefef28edd399c5dcf8b",
+      "sourceSha256": "78a2f3fb4679d5dbcadb3a0341ef6560cb02d87da2194c5dd982af94699ebc69",
       "revisionCandidate": {
         "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-hesha-water-signs/revision-2/master.png",
         "sha256": "78a2f3fb4679d5dbcadb3a0341ef6560cb02d87da2194c5dd982af94699ebc69",
-        "status": "semantic-review-pending"
+        "status": "semantic-review-passed"
       }
     },
     {
@@ -8207,8 +8211,8 @@
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "43871bfcec18391f44392bfe5c9e1334e59724268a730130b8ab84a5050bd3af",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "state": "needs-revision",
+        "reason": "source perimeter alpha2 exceeds established alpha1 gate; original retained"
       }
     },
     {
@@ -8233,13 +8237,16 @@
       "atlasId": "forest-temperate",
       "cellId": "oak-grove-dense",
       "index": 3,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/oak-grove-dense/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "9a6c21e053118d5a3e2fab0f4ac60dbfa6cfd218ccd00397ddc4ccb90b5fcc36",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-006-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
@@ -8380,7 +8387,7 @@
     {
       "topicId": "c02-battle-prop-hesha-water-signs",
       "issue": "Pedestal more substantial than source; scale review requested",
-      "status": "pending-static-visual-review"
+      "status": "resolved-by-reviewed-revision-2"
     }
   ]
 }
