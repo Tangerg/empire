@@ -134,6 +134,10 @@ describe('authored team palette selection', () => {
     expect(other.strip!.href).toBe(blue.strip!.href);
     expect(red.strip!.x).not.toBe(blue.strip!.x);
     expect(red.strip!.clips).toEqual(blue.strip!.clips);
+    expect(red.strip!.tint).toBeUndefined();
+    expect(blue.strip!.tint).toBeUndefined();
+    expect(red.body).toContain('#a8493f');
+    expect(blue.body).toContain('#4d86b8');
     expect(unitPicture(art, def, '#A8493F').strip!.href).toBe(red.strip!.href);
   });
 });

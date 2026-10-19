@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-BPROP-ENGINEERING-2",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5913109946099118,
+  "nearOpaqueFractionAlphaGE250": 0.3948125170109557,
+  "nonzeroAlphaBBox": [
+    0,
+    71,
+    1228,
+    1158
+  ],
+  "visibleAlphaBBoxGE8": [
+    112,
+    162,
+    1191,
+    1080
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    112,
+    162,
+    63,
+    174
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 9,
+  "sha256": "37c4a103b997913ed941f9d6f65618a7659a9bf7936b61a73207a62bf81986f3",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

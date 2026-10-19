@@ -59,6 +59,7 @@ export interface Candidate01AssetRecord {
   loop?: boolean;
   blendMode?: string;
   presentationScale?: number;
+  preserveAuthoredPalette?: boolean;
 }
 
 interface Candidate01AssetManifest {

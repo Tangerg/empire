@@ -133,7 +133,16 @@ function structureAssetMarkup(record: Candidate01RuntimeAsset, frame: number, ow
 
 export function candidate01UnitPicture(type: UnitTypeId, team: string): BoardPicture | null {
   const topic = CANDIDATE_01_UNIT_ART[type];
-  return topic ? runtimeUnitPicture(unitSheet(candidate01TeamAsset(topic, team)), team) : null;
+  if (!topic) return null;
+  const record = candidate01TeamAsset(topic, team);
+  const picture = runtimeUnitPicture(unitSheet(record), team);
+  if (record.preserveAuthoredPalette && picture.strip) {
+    // These sources already carry reviewed cloth/metal palettes. Keep the team
+    // ring, but do not multiply their authored pixels by a second team colour.
+    const { tint: _tint, ...strip } = picture.strip;
+    return { ...picture, strip };
+  }
+  return picture;
 }
 
 export function candidate01UnitIcon(type: UnitTypeId, team: string, size: number): string | null {
