@@ -1,0 +1,38 @@
+{
+  "asset_id": "c02-equipment-boarding-team",
+  "runtime_contract": [
+    48,
+    48
+  ],
+  "anchor": [
+    24,
+    24
+  ],
+  "mode": "RGBA",
+  "size": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "edge_alpha_max": 1,
+  "transparent_pixels": 796301,
+  "opaque_pixels": 1441,
+  "partial_alpha_pixels": 774774,
+  "alpha_bbox": [
+    0,
+    29,
+    1219,
+    1254
+  ],
+  "alpha_bbox_over_128": [
+    61,
+    62,
+    1189,
+    1133
+  ],
+  "pixel_cleanup": false,
+  "visual_review": "Matched source board to runtime, preserves distinct shield shape and companion saw/baton; no broad haze."
+}

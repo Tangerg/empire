@@ -2127,11 +2127,18 @@
     },
     {
       "topicId": "C01-EQUIP-INQUISITOR",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-inquisitor/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "staticVisualReview": "passed-source-or-documented-role-and-native48",
+        "identityNote": "Original equipment-atlas-04 row0col2 is a reinforced closed dark book with brass cover medallion and hooked amber staff; earlier reviewer shield noun was corrected, no art remap",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-054-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "da411a038d3ea9b3e4018c449f910be8f6e2e82fa8ffa7a94f1eb0c803a2d61e"
@@ -2256,11 +2263,17 @@
     },
     {
       "topicId": "C01-EQUIP-RUNE-SHIELD",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-rune-shield/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "staticVisualReview": "passed-source-or-documented-role-and-native48",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-054-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "35dbb144b76b3490f785a682322d37bc57d79a08931bc33bef98c6c6e3d70985"
@@ -4888,10 +4901,14 @@
     },
     {
       "topicId": "c02-equipment-boarding-team",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-boarding-team/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "2fd248ac052293044875a09a4b162d18377829fc01a374bdc97c61b45e5a1a51"
     },
     {
       "topicId": "c02-equipment-defoliator-pilot",
@@ -5145,14 +5162,19 @@
       "topicId": "c02-equipment-reset-guard",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-ring-rail-guard",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-ring-rail-guard/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "9480775d21599deebe1d14a7eae575e09eb1a9e483d9bd4e5c1d0a9f649fcea2"
     },
     {
       "topicId": "c02-equipment-sand-rider",
@@ -5210,13 +5232,15 @@
       "topicId": "c02-equipment-starbreaker-sapper",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-stargate-guard",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-symbiotic-guard",
@@ -5252,7 +5276,8 @@
       "topicId": "c02-equipment-vacuum-trooper",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-equipment-wind-sail-skirmisher",
@@ -7907,11 +7932,17 @@
     },
     {
       "topicId": "c03-equip-58b98436",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-58b98436/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "staticVisualReview": "passed-source-or-documented-role-and-native48",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-054-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "source-inspection-before-generation",
@@ -8030,11 +8061,17 @@
     },
     {
       "topicId": "c03-equip-a53b725f",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-a53b725f/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "staticVisualReview": "passed-source-or-documented-role-and-native48",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-054-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "source-inspection-before-generation",
@@ -10001,6 +10038,12 @@
         "cellId": "fern-bed",
         "issue": "yellow foliage too prominent against shared scene palette",
         "status": "harmonization-after-ground-revision"
+      },
+      {
+        "atlasId": "surface-meadow",
+        "issue": "mixed-version family produces dark grid seam",
+        "status": "candidate-rejected-runtime-returned-to-v1-family",
+        "candidateEvidence": "docs/art-rebuild-20261019/surface-002-candidate-evidence.json"
       }
     ],
     "currentPreview": "docs/art-rebuild-20261019/cohesion-first-meadow/cohesion-placement.json"

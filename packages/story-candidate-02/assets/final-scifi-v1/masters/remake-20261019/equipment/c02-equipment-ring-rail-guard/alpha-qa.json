@@ -1,0 +1,38 @@
+{
+  "asset_id": "c02-equipment-ring-rail-guard",
+  "runtime_contract": [
+    48,
+    48
+  ],
+  "anchor": [
+    24,
+    24
+  ],
+  "mode": "RGBA",
+  "size": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "edge_alpha_max": 0,
+  "transparent_pixels": 927605,
+  "opaque_pixels": 1319,
+  "partial_alpha_pixels": 643592,
+  "alpha_bbox": [
+    23,
+    43,
+    1234,
+    1222
+  ],
+  "alpha_bbox_over_128": [
+    234,
+    47,
+    1115,
+    1152
+  ],
+  "pixel_cleanup": false,
+  "visual_review": "Matched source board to runtime, preserves distinct shield shape and companion saw/baton; no broad haze."
+}
