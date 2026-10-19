@@ -693,7 +693,7 @@
       "source": null,
       "verification": {
         "state": "partial-frames-only",
-        "note": "3 of four pose masters backed up; topic remains pending"
+        "note": "4 of four pose masters backed up; topic remains pending"
       },
       "assignment": "redraw_grayflag_cover_props",
       "plannedFrames": [
@@ -717,6 +717,11 @@
           "status": "raw-generated",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/attack/master.png",
           "sha256": "b88bf7e68cacc63a705e6639fae1108145905c8bb8b05f794c6dc99ed279fc12"
+        },
+        "walk-b": {
+          "status": "raw-generated",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/walk-b/master.png",
+          "sha256": "239a0f9acd787283161fcae9ff860a1faa97239629cbabf7fcd33f0339b25da0"
         }
       }
     },
@@ -1836,7 +1841,8 @@
       "topicId": "C01-EQUIP-CLERIC",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-DRUID",
@@ -1854,7 +1860,8 @@
       "topicId": "C01-EQUIP-ENGINEER",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-EVIDENCE-SEAL-KIT",
@@ -1884,7 +1891,8 @@
       "topicId": "C01-EQUIP-HEAVY-KNIGHT",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-INQUISITOR",
@@ -1908,7 +1916,8 @@
       "topicId": "C01-EQUIP-KNIGHT",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-LANCE-CAVALRY",
