@@ -2323,7 +2323,13 @@
       "status": "pending",
       "source": null,
       "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "assignment": "redraw_grayflag_cover_props",
+      "generationBlocker": {
+        "state": "tool-safety-rejection-no-image",
+        "evidence": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-shaman/generation-status.txt",
+        "prompt": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-shaman/failed-prompt.txt",
+        "retry": "held-for-review"
+      }
     },
     {
       "topicId": "C01-EQUIP-SILVER-LONGBOW",
