@@ -689,11 +689,17 @@
     },
     {
       "topicId": "C01-UNIT-SWORDSMAN",
-      "status": "pending",
+      "status": "exported",
       "source": null,
       "verification": {
-        "state": "partial-frames-only",
-        "note": "4 of four pose masters backed up; topic remains pending"
+        "state": "export-checked",
+        "exportCheck": "passed",
+        "exportTests": 31,
+        "evidence": "docs/art-rebuild-20261019/frame-001-export-evidence.json",
+        "semanticReview": "fourpose identity, oppositewalksteps, attackpose reviewed in raw/native images",
+        "contact": "allfour visiblefootbase45 vsdeclaredanchor47; explicitlyapproved2pxpilot tolerance",
+        "runtimeVisual": "pending-browser-socket-blocked",
+        "motionPlayback": "GIF prepared; no claimed actual game playback review"
       },
       "assignment": "redraw_grayflag_cover_props",
       "plannedFrames": [
@@ -704,22 +710,22 @@
       ],
       "frames": {
         "idle": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/idle/master.png",
           "sha256": "af1dd6de6b519620325e99b35cbcf7de49df8e7035b59df7a36fc0ecf54a67dd"
         },
         "walk-a": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/walk-a/master.png",
           "sha256": "9a4501960092fed598e8d2755b7223681bf73fff950aca7f22f5a607fe1ec55d"
         },
         "attack": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/attack/master.png",
           "sha256": "b88bf7e68cacc63a705e6639fae1108145905c8bb8b05f794c6dc99ed279fc12"
         },
         "walk-b": {
-          "status": "raw-generated",
+          "status": "exported",
           "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/walk-b/master.png",
           "sha256": "239a0f9acd787283161fcae9ff860a1faa97239629cbabf7fcd33f0339b25da0"
         }

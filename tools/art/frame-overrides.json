@@ -1,1 +1,33 @@
-{"schemaVersion":1,"assets":{}}
+{
+  "schemaVersion": 1,
+  "assets": {
+    "C01-UNIT-SWORDSMAN": {
+      "kind": "frames-v1",
+      "frames": {
+        "idle": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/idle/master.png",
+          "sha256": "af1dd6de6b519620325e99b35cbcf7de49df8e7035b59df7a36fc0ecf54a67dd"
+        },
+        "walk-a": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/walk-a/master.png",
+          "sha256": "9a4501960092fed598e8d2755b7223681bf73fff950aca7f22f5a607fe1ec55d"
+        },
+        "attack": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/attack/master.png",
+          "sha256": "b88bf7e68cacc63a705e6639fae1108145905c8bb8b05f794c6dc99ed279fc12"
+        },
+        "walk-b": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/combat-unit/unit-swordsman/walk-b/master.png",
+          "sha256": "239a0f9acd787283161fcae9ff860a1faa97239629cbabf7fcd33f0339b25da0"
+        }
+      },
+      "placement": {
+        "renderWidth": 30,
+        "origin": [
+          1,
+          2
+        ]
+      }
+    }
+  }
+}
