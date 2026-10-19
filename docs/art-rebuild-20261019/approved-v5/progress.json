@@ -1251,10 +1251,24 @@
     }
   },
   "integrationGate": {
-    "fullMap": "road-presentation/integrated-main/full-scene-labeled.png",
+    "fullMap": "road-turn-shapes/integrated-main/full-scene-labeled.png",
     "secondLevel": "cart-stop-full-scene/full-scene-labeled.png",
-    "status": "Full firstlevel19/19 and secondlevel20/20 initial ruleactors use approved art. All objects retained, shared foot-depth and selected-visible-only cue retained. Decorative farmer NPCs, remaining cliff/camp identities and other terrain material families remain legacy; no overall completion claim.",
-    "pureDecorationAdjustment": "frontier farmhouse moved only visually from12.5,7.1 to10.8,6.7, validated no rule identity; audit farm-house clearance documents",
-    "liveGame": "pending"
+    "status": "Complete first-level and second-level initial actor sets use approved art; later-level mixture and dense forest occlusion remain unresolved. Full first-level layout and curved-road presentation are verified offline, with shared foot-depth and selected-visible-only cue. No overall scene or live-game completion claim.",
+    "liveGame": "pending",
+    "historicalPureDecorationAdjustment": "frontier farmhouse moved only visually from12.5,7.1 to10.8,6.7, validated no rule identity; audit farm-house clearance documents",
+    "laterLevelVisibility": {
+      "levelId": "c01-15",
+      "evidence": "silver-longbow-full-scene/runtime-standing-full@1x.png",
+      "actualActors": 22,
+      "structureDrawings": 8,
+      "status": "held: dense forest placements obscure multiple actual actors",
+      "newLongbowBindings": 4,
+      "remainingLegacyActorTypes": [
+        "c01.ivra-growth",
+        "c01.woodland-walker"
+      ],
+      "constraints": "Preserve rules-hidden actor privacy, passability, occupancy and complete scene evidence; no crop/removal to conceal the problem."
+    },
+    "remainingEnvironmentIntegration": "Cliffs/camps/landmarks source families are exported, but source completion does not establish all-map placement quality. Vertical bridge consumers and fortress connectivity remain active integration work."
   }
 }
