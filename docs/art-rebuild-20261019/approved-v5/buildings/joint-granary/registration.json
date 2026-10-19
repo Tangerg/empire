@@ -1,0 +1,28 @@
+{
+  "frames": {
+    "normal": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/joint-granary/normal/master.png",
+    "damaged": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/joint-granary/damaged/master.png",
+    "captured": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/joint-granary/captured/master.png"
+  },
+  "scale": 0.12413793103448276,
+  "origin": [
+    8,
+    8
+  ],
+  "frameSize": [
+    172,
+    172
+  ],
+  "sourceFoot": [
+    640,
+    1184
+  ],
+  "registrationLimit": 4,
+  "registrationOffsets": {
+    "captured": [
+      0,
+      -3.972413793103448
+    ]
+  },
+  "registrationBasis": "Shared full authored canvas and building scale. Captured intact foundation is authored 32 source pixels lower; translate whole frame by -32 source pixels. Damage rubble does not redefine foundation."
+}

@@ -9,6 +9,7 @@ import { runtimeAtlasCellMarkup } from '@empire/game-ui';
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
 const bundles = [
+  { topic: 'C01-STRUCT-JOINT-GRANARY', source: 'buildings/joint-granary', size: [172, 172], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-UNIT-SWORDSMAN', source: 'animation/swordsman', size: [96, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-ARCHER', source: 'animation/archer', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-STRUCT-LORNE-KEEP', source: 'buildings/lorne-keep', size: [160, 160], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },

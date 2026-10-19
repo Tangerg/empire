@@ -1,0 +1,43 @@
+{
+  "topicId": "C01-BPROP-LOGISTICS-3",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6241462725975443,
+  "nearOpaqueFractionAlphaGE250": 0.36204846246397493,
+  "nonzeroAlphaBBox": [
+    0,
+    21,
+    1242,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    147,
+    231,
+    1126,
+    1109
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    147,
+    231,
+    128,
+    145
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 40,
+  "sha256": "c3ba3c1870628a9e45f35314476121c2a7da3186ebd9bb2849edf878ed90fc6b",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping, very bold outlines, chunky volumes, broad matte cel planes, no fine surface texture, no backdrop or cast shadow.",
+  "identityQA": "Original rack composition retained, including rope, two iron bracket plates, thick spare wheel, five iron-tipped shafts and the small left-side metal spare visible in original atlas.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette does not approach canvas edge."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

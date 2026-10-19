@@ -1,0 +1,242 @@
+{
+  "config": {
+    "frames": {
+      "normal": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/joint-granary/normal/master.png",
+      "damaged": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/joint-granary/damaged/master.png",
+      "captured": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/joint-granary/captured/master.png"
+    },
+    "scale": 0.12413793103448276,
+    "origin": [
+      8,
+      8
+    ],
+    "frameSize": [
+      172,
+      172
+    ],
+    "sourceFoot": [
+      640,
+      1184
+    ],
+    "registrationLimit": 4,
+    "registrationOffsets": {
+      "captured": [
+        0,
+        -3.972413793103448
+      ]
+    },
+    "registrationBasis": "Shared full authored canvas and building scale. Captured intact foundation is authored 32 source pixels lower; translate whole frame by -32 source pixels. Damage rubble does not redefine foundation."
+  },
+  "authoredCanvas": [
+    1254,
+    1254
+  ],
+  "logicalPivot": [
+    87.44827586206897,
+    154.97931034482758
+  ],
+  "frames": [
+    {
+      "frame": "normal",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/joint-granary/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "19fb9f226ecefd3a9e4b81935f18383c7dff546d488f993e39051c0d75623e6f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 16300,
+        "nearOpaquePixels": 12663,
+        "edgeMax": 0,
+        "visibleBounds": [
+          14,
+          26,
+          158,
+          157
+        ]
+      }
+    },
+    {
+      "frame": "normal",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/joint-granary/normal/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "19fb9f226ecefd3a9e4b81935f18383c7dff546d488f993e39051c0d75623e6f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 65592,
+        "nearOpaquePixels": 51053,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          51,
+          316,
+          315
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/joint-granary/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "fc7e39d04de6a800706703b2b4dbd1a40708fc388b5929c89e49741847e18f87",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 16224,
+        "nearOpaquePixels": 12664,
+        "edgeMax": 0,
+        "visibleBounds": [
+          14,
+          26,
+          158,
+          155
+        ]
+      }
+    },
+    {
+      "frame": "damaged",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/joint-granary/damaged/master.png",
+      "registrationOffset": [
+        0,
+        0
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "fc7e39d04de6a800706703b2b4dbd1a40708fc388b5929c89e49741847e18f87",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 65337,
+        "nearOpaquePixels": 51127,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          52,
+          316,
+          310
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/joint-granary/captured/master.png",
+      "registrationOffset": [
+        0,
+        -3.972413793103448
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "9c2642a7a4321737257f18b538c6482f4a5176de15602ebb0e0c8d1c9ef755ef",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 14876,
+        "nearOpaquePixels": 13779,
+        "edgeMax": 0,
+        "visibleBounds": [
+          14,
+          9,
+          158,
+          157
+        ]
+      }
+    },
+    {
+      "frame": "captured",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/joint-granary/captured/master.png",
+      "registrationOffset": [
+        0,
+        -3.972413793103448
+      ],
+      "sourceCanvas": [
+        1254,
+        1254
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "9c2642a7a4321737257f18b538c6482f4a5176de15602ebb0e0c8d1c9ef755ef",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 60136,
+        "nearOpaquePixels": 55680,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          19,
+          316,
+          315
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

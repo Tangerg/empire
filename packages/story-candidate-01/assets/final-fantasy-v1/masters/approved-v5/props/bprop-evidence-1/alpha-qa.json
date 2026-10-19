@@ -1,0 +1,43 @@
+{
+  "topicId": "C01-BPROP-EVIDENCE-1",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5851857787138572,
+  "nearOpaqueFractionAlphaGE250": 0.3954452609703176,
+  "nonzeroAlphaBBox": [
+    0,
+    39,
+    1228,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    117,
+    173,
+    1189,
+    1188
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    117,
+    173,
+    65,
+    66
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 60,
+  "sha256": "8d1b20c47655782329e79e289679985e78f75c39c784fac6ff63392f9b9c2702",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping, very bold outlines, chunky volumes, broad matte cel planes, no fine surface texture, no backdrop or cast shadow.",
+  "identityQA": "Closed ledger, three separate tally-marked identity tags and one pale quill retained; no readable names or added title.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette does not approach canvas edge."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}
