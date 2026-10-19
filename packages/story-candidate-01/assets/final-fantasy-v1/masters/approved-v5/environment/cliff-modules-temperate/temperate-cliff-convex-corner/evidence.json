@@ -1,0 +1,83 @@
+{
+  "asset": "temperate-cliff-convex-corner",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; aligned to parent-approved hill-cap pilot broad continuous olive turf and large matte gray rock planes",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1040
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.829346
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    36,
+    213,
+    31,
+    205
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/temperate-cliff-convex-corner-complete-subject-reference.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/temperate-hill-cap-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/prompt.txt",
+  "production_status": "not integrated",
+  "atlas": "cliff-modules-temperate",
+  "cell_index": 8,
+  "logical_cell": [
+    128,
+    128
+  ],
+  "hd_cell": [
+    256,
+    256
+  ],
+  "logical_anchor": [
+    64,
+    127
+  ],
+  "hd_anchor": [
+    128,
+    254
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "obstructionHeight": 1,
+  "passable": false,
+  "render_role": "independent standing elevation module; bottom-anchor; no NESW mask",
+  "semantic_identity": "One connected bent corner cliff with a broad olive cap and distinctive shallow central front inset, a forward left wing and a joined right wall. It is not a generic round hill. The dark central seam is a genuine corner recess, not a tunnel or disconnected gap through the top.",
+  "source_foot_semantics": "The module foot is the visually chosen projected ground baseline at the center between its forward foot lobes, not the bottom of the recess. It may lie in transparent space between two basal contacts, as expected for an angular standing module.",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/cliff-modules-temperate/cliff-priority-four-source-evidence.json",
+  "source_crop_findings": "The runtime slot contains an unrelated detached tip from pillar-wide below. It has been omitted. The full main corner subject itself is contained in its original quarter.",
+  "original_complete_reference_crop": [
+    34,
+    640,
+    311,
+    849
+  ],
+  "actual_instances_by_level": {
+    "c01-01": 9,
+    "c01-02": 0
+  },
+  "actual_scale_range": [
+    0.567,
+    1.0
+  ],
+  "source_margin_note": "Full strong silhouette complete; see numeric margins rather than claiming requested10percent was necessarily achieved.",
+  "native_raw_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/raw.png",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

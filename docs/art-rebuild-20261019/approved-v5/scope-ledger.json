@@ -4,10 +4,10 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 78,
+    "formalBound": 79,
     "boundByCategory": {
       "battle-prop": 32,
-      "combat-unit": 13,
+      "combat-unit": 14,
       "equipment": 12,
       "interactive-structure": 20,
       "mission-unit": 1
@@ -16,7 +16,7 @@
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
-    "registeredEnvironmentCells": 89
+    "registeredEnvironmentCells": 91
   },
   "sceneCohesion": {
     "fullMap": "standing-depth-current/full-scene-labeled.png",
@@ -1635,16 +1635,22 @@
       "label": "游侠",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
       "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ranger/attack/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ranger/idle/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ranger/walk-a/master.png",
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/ranger/walk-b/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-ranger.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-ranger.png",
+      "stageEvidence": {
+        "raw": "4 native semantic poses preserved, short-bow attack correction retained alongside rejected longer-bow candidate",
+        "export": "shared44/873.5 scale, measured boot registration, up to2 native transparent padding columns; alpha/native pose review passed",
+        "runtimeBinding": "canonical and HD resolver bound, original c01.bran identity and footprint retained; single attack art slot represents primary bow action",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-RUNE-ARTIFICER",
@@ -17841,9 +17847,22 @@
     {
       "atlasId": "cliff-modules-temperate",
       "baselineComponentCount": 16,
-      "registeredApprovedCells": [],
+      "registeredApprovedCells": [
+        "temperate-hill-cap",
+        "temperate-cliff-convex-corner"
+      ],
       "liveGame": "pending",
-      "stageEvidence": null
+      "stageEvidence": {
+        "formalRuntimeBoundCells": [
+          "temperate-hill-cap",
+          "temperate-cliff-convex-corner"
+        ],
+        "count": 2,
+        "export": "128/256 full-canvas registered, strict original16 cell-order/semantic pairs and unrelated pixels retained",
+        "runtimeBinding": "actual existing elevated scenery selectors, occupancy/passability untouched",
+        "sceneReview": "Complete first-level BoardView with all19 initial actors reviewed; first two broad cliff profiles preserve structural relation, remaining legacy cliffs visibly require replacement",
+        "liveGame": "pending"
+      }
     },
     {
       "atlasId": "elevation-auto-highland",

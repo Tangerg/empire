@@ -1,0 +1,58 @@
+{
+  "status": "Native quartet semantic/alpha/geometry QA passes; coordinator final sequence review/export/binding pending",
+  "topic": "C01-UNIT-RANGER",
+  "actualConsumers": [
+    "c01.bran"
+  ],
+  "bodyScale": "44/873.5",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1586,
+      992
+    ],
+    "walk-a": [
+      1585,
+      992
+    ],
+    "attack": [
+      1584,
+      993
+    ],
+    "walk-b": [
+      1586,
+      992
+    ]
+  },
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourcePaddingRequired": "Idle and walk-b: native1586x992, pad one transparent bottom row. Walk-a: native1585x992, pad one right column and one bottom row. Selected attack: native1584x993, pad two right columns. Padding happens only in export preparation; native master/raw files remain unchanged. No resize/crop/alpha cleanup or independent fitting.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "Native perimeter alpha<=1 in every selected frame; zero silhouette alpha>1 on edges. Alpha=1 specks retained unchanged.",
+  "blackAndWhiteCompositesVisuallyInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "bowHandPreserved": true,
+  "idleAndWalkBladeHandPreserved": true,
+  "walkContactsOppose": true,
+  "attackAnatomyReview": "Clear braced full-draw bow shot. Short blade is completely sheathed at original screen-left hip, with only hilt/guard/pommel visible. Original bow hand extends the compact short bow; original blade hand draws the string near the cheek. Exactly two connected gloved hands and one nocked arrow with one shaft, one steel head and one fletching group. V string connects bow tips to drawing fingers, partly occluded by the face. No hand holds a blade while drawing.",
+  "shortBowScaleCorrection": "First attack had an over-tall bow. It is preserved in attack/attempt-01 with exact prompt/raw/QA. Selected native attempt-02 restores compact original short-bow size while retaining the human stance, sheathed blade and credible single-arrow draw. No programmatic image editing was used.",
+  "semanticContract": "C01-UNIT-RANGER is the actual c01.bran combat-unit artwork, distinct from equipment C01-EQUIP-RANGER and portrait C01-CHAR-BRAN-01. Retain idle / walk-a / attack / walk-b order, original 1x1 rules footprint, and source hooded human identity. Primary ranger-bow is a range-3 piercing arc projectile weapon; border-blade is the secondary slash/melee weapon. The one existing attack slot shows the primary bow at full draw with the short blade safely sheathed.",
+  "existingActionLimitation": {
+    "status": "Existing single-attack-slot limitation retained and documented",
+    "detail": "c01.bran has c01.ranger-bow and c01.border-blade, but the original four-frame strip supplies one attack slot. The accepted primary-bow shooting pose is shared by both weapon actions. No extra slot, gameplay change or weapon-specific animation dispatch is introduced or claimed.",
+    "approvedVisualPlan": "Idle and walks retain the carried short blade and bow in their original physical hands. Attack temporarily sheathes the blade to free its hand for drawing, while preserving the original bow hand.",
+    "evidence": "source-contract-review.md"
+  },
+  "registrationEvidence": "registration-evidence.json",
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false,
+  "weaponSpecificAnimationFixClaimed": false
+}

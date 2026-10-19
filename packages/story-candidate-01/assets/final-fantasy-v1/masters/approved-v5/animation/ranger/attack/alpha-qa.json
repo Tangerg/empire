@@ -1,0 +1,71 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c18d1f7e-f8bb-4691-ab4e-d045621b0f08.png",
+  "size": [
+    1584,
+    993
+  ],
+  "mode": "RGBA",
+  "sha256": "bf02f8915db5b61de8fdae561c7013f9cc47165f6ffc3f2ba8786e72cf181dff",
+  "bboxAlphaNonzero": [
+    65,
+    37,
+    1542,
+    976
+  ],
+  "bboxAlphaGreaterThan127": [
+    419,
+    77,
+    1389,
+    959
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1136049,
+  "alphaOnePixels": 4499,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        430,
+        840,
+        710,
+        980
+      ],
+      "soleY": 958,
+      "bottomBandRows": 4,
+      "meanX": 544.309,
+      "spanX": [
+        491,
+        597
+      ]
+    },
+    "screenRight": {
+      "roi": [
+        900,
+        835,
+        1190,
+        980
+      ],
+      "soleY": 956,
+      "bottomBandRows": 4,
+      "meanX": 1078.84,
+      "spanX": [
+        1023,
+        1133
+      ]
+    }
+  },
+  "sourceFootMidpoint": [
+    811.574,
+    957.0
+  ],
+  "suggestedSourceFoot": [
+    812,
+    958
+  ],
+  "lockedBodyScale": "44/873.5",
+  "masterRawHashMatches": true,
+  "bowSizeReview": "Selected second attempt restores compact short-bow span roughly y128-617, allowing natural flex relative to idle roughly y298-813. First attempt oversized bow is preserved separately."
+}

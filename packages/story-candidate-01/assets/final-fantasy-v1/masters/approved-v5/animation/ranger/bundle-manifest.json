@@ -1,0 +1,152 @@
+{
+  "asset": "C01-UNIT-RANGER",
+  "actualConsumers": [
+    "c01.bran"
+  ],
+  "status": "Native quartet complete; coordinator sequence review/export/binding pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "All selected master/raw files are byte-identical to native tool outputs. No painting, recoloring, resizing, cropping or alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.05037206639954207,
+  "bodyReferenceSourcePixels": 873.5,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/registration-evidence.json",
+  "semanticContract": "C01-UNIT-RANGER is the actual c01.bran combat-unit artwork, distinct from equipment C01-EQUIP-RANGER and portrait C01-CHAR-BRAN-01. Retain idle / walk-a / attack / walk-b order, original 1x1 rules footprint, and source hooded human identity. Primary ranger-bow is a range-3 piercing arc projectile weapon; border-blade is the secondary slash/melee weapon. The one existing attack slot shows the primary bow at full draw with the short blade safely sheathed.",
+  "existingActionLimitation": {
+    "status": "Existing single-attack-slot limitation retained and documented",
+    "detail": "c01.bran has c01.ranger-bow and c01.border-blade, but the original four-frame strip supplies one attack slot. The accepted primary-bow shooting pose is shared by both weapon actions. No extra slot, gameplay change or weapon-specific animation dispatch is introduced or claimed.",
+    "approvedVisualPlan": "Idle and walks retain the carried short blade and bow in their original physical hands. Attack temporarily sheathes the blade to free its hand for drawing, while preserving the original bow hand.",
+    "evidence": "source-contract-review.md"
+  },
+  "selectedAttempts": {
+    "idle": "attempt-01",
+    "walk-a": "first successful native output",
+    "attack": "attempt-02",
+    "walk-b": "first successful native output"
+  },
+  "attackCorrection": "First attack had an over-tall bow. It is preserved in attack/attempt-01 with exact prompt/raw/QA. Selected native attempt-02 restores compact original short-bow size while retaining the human stance, sheathed blade and credible single-arrow draw. No programmatic image editing was used.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "7996be5caeadeb6c5720f25d952982309e2cd2bb6cafb9e3863a89f6ae932aed",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        813,
+        949
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        408,
+        75,
+        1233,
+        950
+      ],
+      "sha256": "37ab3fab9cb11927ddf8d5ce7281c7fbee49900c87f15f17b8272c4617b4bfd0",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a134cbc1-d5d8-4778-8a6c-5cd21afa8656.png",
+      "review": "Accepted clean-shaven brown-haired adult human in raised charcoal hood/cowl, blue-gray split tunic, olive-gray shoulder caps, brown gloves/bracers/boots, brass buckle, diagonal chest strap and hip quiver/scabbard. Original screen-left hand carries short blade; original screen-right hand holds short wooden bow."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "309065496ce0dc3f53503352acfb50b913fecabb96a5c81428508916c093b877",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        799,
+        957
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        388,
+        67,
+        1239,
+        958
+      ],
+      "sha256": "7852579ffb87c42d1c6fc0dfa8335e6c66d64107e56bc3341c1ebcdbe26404e4",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-1e94b725-d549-4716-87de-13f2b9c95a3a.png",
+      "review": "Front screen-right boot advances toe-up with heel contact and visible sole; rear screen-left boot is flat and weight-bearing. Same original blade/bow hands and full costume, quiver and scabbard."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "9c168792e4e680ec8c0e01f9edc410556804fcaa80761a69be61d18aa4968990",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/attack/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        812,
+        958
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        419,
+        77,
+        1389,
+        959
+      ],
+      "sha256": "bf02f8915db5b61de8fdae561c7013f9cc47165f6ffc3f2ba8786e72cf181dff",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c18d1f7e-f8bb-4691-ab4e-d045621b0f08.png",
+      "review": "Clear braced full-draw bow shot. Short blade is completely sheathed at original screen-left hip, with only hilt/guard/pommel visible. Original bow hand extends the compact short bow; original blade hand draws the string near the cheek. Exactly two connected gloved hands and one nocked arrow with one shaft, one steel head and one fletching group. V string connects bow tips to drawing fingers, partly occluded by the face. No hand holds a blade while drawing."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "b7ab08ef2a44053ec0a0f341446baeb61c2a32dc1107b0219cb1e612cb5e4a0e",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ranger/walk-b/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        844,
+        934
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        408,
+        71,
+        1252,
+        935
+      ],
+      "sha256": "9aa67b03709bf5e8900fdd10af7eb3645762e615617b3dd9b26b087da78d4268",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a200f080-692f-4dd3-baaf-950d3c2c4a56.png",
+      "review": "Opposite contact: front screen-right boot flat and weight-bearing; rear screen-left heel raised with toe contact. Same chunky head/body, original weapon hands, short blade, bow, quiver and scabbard."
+    }
+  }
+}

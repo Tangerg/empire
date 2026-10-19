@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 15,
+  "authoredFourPoseBundles": 16,
   "authoredThreeStateBundles": 20,
-  "formalRuntimeBoundTopics": 78,
+  "formalRuntimeBoundTopics": 79,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -496,6 +496,12 @@
       "export": "shared104/1197 scale and portal foundation627,1048; actual light/dark native state review passed",
       "runtimeBinding": "canonical and HD manifest bound; no current direct scene selector found",
       "liveGame": "pending"
+    },
+    "C01-UNIT-RANGER": {
+      "raw": "4 native semantic poses preserved, short-bow attack correction retained alongside rejected longer-bow candidate",
+      "export": "shared44/873.5 scale, measured boot registration, up to2 native transparent padding columns; alpha/native pose review passed",
+      "runtimeBinding": "canonical and HD resolver bound, original c01.bran identity and footprint retained; single attack art slot represents primary bow action",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -672,6 +678,17 @@
       "runtimeBinding": "existing standing scenery selectors/scales retained; native sample0.357 reviewed; functionality and terrain unchanged",
       "sceneReview": "chunky covered cart, barrels/crate/platform/lantern and functional muddy base preserved; original small standing placement remains, full scene integration review pending",
       "liveGame": "pending"
+    },
+    "cliff-modules-temperate": {
+      "formalRuntimeBoundCells": [
+        "temperate-hill-cap",
+        "temperate-cliff-convex-corner"
+      ],
+      "count": 2,
+      "export": "128/256 full-canvas registered, strict original16 cell-order/semantic pairs and unrelated pixels retained",
+      "runtimeBinding": "actual existing elevated scenery selectors, occupancy/passability untouched",
+      "sceneReview": "Complete first-level BoardView with all19 initial actors reviewed; first two broad cliff profiles preserve structural relation, remaining legacy cliffs visibly require replacement",
+      "liveGame": "pending"
     }
   },
   "totalCanonicalScope": 1212,
@@ -691,7 +708,7 @@
       "defaultTestTimeoutUnchanged": true,
       "scope": "7067409 six-ground-accent checkpoint; subsequent gravekeeper/gray-flag-point covered by focused binding tests"
     },
-    "latestBindingAndEdges": "88 asset/environment tests passed after old-city tunnel and all24 ground decals",
+    "latestBindingAndEdges": "89 asset/environment tests passed after ranger and first cliff pair",
     "artPythonLatest": "147 passed in exact cliff-contract engineering checkpoint",
     "typecheckLatest": "passed at cart-stop/decal checkpoint"
   },

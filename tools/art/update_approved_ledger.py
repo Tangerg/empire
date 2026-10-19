@@ -78,7 +78,7 @@ if __name__ == '__main__':
     output.write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + '\n')
     with output.with_suffix('.csv').open('w') as handle:
         fields = ['topicId', 'campaign', 'category', 'label', 'raw', 'export', 'formalBinding', 'liveGame', 'runtimePath']
-        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction='ignore')
+        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction='ignore', lineterminator='\n')
         writer.writeheader()
         writer.writerows(ledger['canonicalTopics'])
     print(json.dumps(ledger['summary'], indent=2))

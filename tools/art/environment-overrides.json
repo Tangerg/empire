@@ -1419,6 +1419,50 @@
           }
         }
       }
+    },
+    "cliff-modules-temperate": {
+      "baselines": {
+        "1x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/cliff-modules-temperate.png",
+          "sha256": "4580f4a694ba72e879cc9d822c810847ff36086991b1265c70c26ef142e179a5"
+        },
+        "2x": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/baselines/cliff-modules-temperate@2x.png",
+          "sha256": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8"
+        }
+      },
+      "cells": {
+        "temperate-hill-cap": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-temperate/temperate-hill-cap/temperate-hill-cap-master.png",
+          "sha256": "02c2ce5266ada57e6e932ff6bd4dc7c794d8c222e3f8390bf05b1b5d7b1eeb9e",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1014
+            ]
+          }
+        },
+        "temperate-cliff-convex-corner": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/cliff-modules-temperate/temperate-cliff-convex-corner/temperate-cliff-convex-corner-master.png",
+          "sha256": "a3ff7ff9ef1ed845ce1d477377c285d0a08b73f35f8a9f0368af608e58d950d7",
+          "registration": {
+            "scale": 0.09888357256778309,
+            "origin": [
+              2,
+              2
+            ],
+            "sourceFoot": [
+              627,
+              1040
+            ]
+          }
+        }
+      }
     }
   }
 }

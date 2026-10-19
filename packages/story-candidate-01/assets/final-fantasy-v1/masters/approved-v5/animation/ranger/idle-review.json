@@ -1,5 +1,5 @@
 {
-  "status": "Accepted; remaining three poses in progress",
+  "status": "Native quartet complete; coordinator final sequence review/export/binding pending",
   "topic": "C01-UNIT-RANGER",
   "actualConsumers": [
     "c01.bran"
@@ -34,7 +34,7 @@
   "perimeterAlphaGreaterThan1": 0,
   "rawPreserved": true,
   "exactPromptVerified": true,
-  "remainingPosesGenerated": false,
+  "remainingPosesGenerated": true,
   "plannedAction": "Parent-approved primary bow draw/shot, short blade temporarily sheathed to free its original hand; original bow hand remains.",
   "existingActionLimitation": "One attack slot is still shared by ranger-bow and border-blade. No rules change or extra animation slot claimed.",
   "acceptedScale": "44/873.5",
@@ -42,5 +42,6 @@
     813,
     949
   ],
-  "acceptanceEvidence": "Parent2026-10-19 16:27UTC: original hood/brown hair/clean-shaven face/blue-gray clothes and original blade/bow hands clear; chunky style accepted. Continue same scale, verify attack sheathed blade and natural draw hand/string/single-arrow relation."
+  "acceptanceEvidence": "Parent2026-10-19 16:27UTC: original hood/brown hair/clean-shaven face/blue-gray clothes and original blade/bow hands clear; chunky style accepted. Continue same scale, verify attack sheathed blade and natural draw hand/string/single-arrow relation.",
+  "quartetManifest": "bundle-manifest.json"
 }
