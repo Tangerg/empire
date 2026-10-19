@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-risk-list-evidence",
+  "assetId": "C02-SFV1-battle-prop-risk-list-evidence",
+  "label": "风险清单证据组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-03.png",
+  "originalMasterSha256": "b40bca22db30225e1d37f990946bd07a4a3a89d338c674f23c0e13d57e975b74",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 2
+  },
+  "sourceCropBox": [
+    5,
+    632,
+    309,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-03 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-risk-list-evidence.png",
+  "runtimeReferenceSha256": "84a68c4299ec50c449843c3f8f0e244a765059693efd3f54c2dca43163239fd6",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4af701a1-c846-485c-932c-17c117100c11.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-risk-list-evidence/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board03 r2c1 preserved: exactly three clipboards, rear warning/hazard list with two triangle-exclamation marks plus fan/trefoil icons, front-left checklist with four empty boxes and amber check, front-right warning sheet. No invented readable words, only abstract document bars. Broad matte planes, thick outlines, opaque material, actual64 black/white review pass.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

@@ -1,0 +1,54 @@
+{
+  "topicId": "c02-battle-prop-tickets-manifests",
+  "assetId": "C02-SFV1-battle-prop-tickets-manifests",
+  "label": "票与货单证据组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-03.png",
+  "originalMasterSha256": "b40bca22db30225e1d37f990946bd07a4a3a89d338c674f23c0e13d57e975b74",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 2
+  },
+  "sourceCropBox": [
+    319,
+    632,
+    622,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-03 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-tickets-manifests.png",
+  "runtimeReferenceSha256": "2f27b045961a0c80412d095297498c582a1c462369d2eff8c20e32647aca13bb",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-d1d8bc9c-6802-4d78-985b-c44b962ed719.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v2.png",
+  "promptFiles": [
+    "prompt.txt",
+    "refinement-prompt-v2.txt"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-tickets-manifests/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/scratch/84c9fe948755/generated_images/exec-b8ba4297-9110-41e5-8835-e0cfc5edbe12.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-tickets-manifests/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png"
+  ],
+  "failedCandidate": "candidate-v1-failed-perimeter-alpha.png",
+  "failedCandidateQA": "candidate-v1-alpha-qa.json",
+  "semanticNotes": "Original board03 r2c2 preserved: two tickets with teal/amber borders, original top-view spacecraft silhouette on each, notched stubs and abstract barcode/document bars; one cargo-manifest clipboard with grid, crate pictograms and square box stamp. No invented readable text. V1 failed perimeter maxalpha3 and had bottom margin1px. Imagegen correction v2 retains identities with larger safe margins; source and actual64 black/white review passed. Native64 artwork is correspondingly smaller than v1 but all three objects and main functional marks remain visible.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo-pilot style, current original subject verified independently."
+}

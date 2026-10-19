@@ -1,0 +1,37 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-b8ba4297-9110-41e5-8835-e0cfc5edbe12.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 3,
+  "canvasEdgeAlpha2PlusCount": 26,
+  "visibleAlphaBBoxGE8": [
+    153,
+    59,
+    1083,
+    1253
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    153,
+    59,
+    171,
+    1
+  ],
+  "nearOpaquePixelCountGE240": 694242,
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual64EdgeMaxAlpha": 0,
+  "actual64NearOpaquePixelsGE240": 1447,
+  "formalSourceContractPass": false,
+  "derivation": "Diagnostic only; full-source Lanczos contain60x60 centered64x64 with2px padding. Native source unchanged. White/black composites inspection only.",
+  "rejectionReason": "Formal source contract failure:26 canvas-edge pixels alpha2+, max3. Visible bottom margin1px. Correct only with built-in imagegen; native source kept unchanged."
+}

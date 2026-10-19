@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-physical-film",
+  "assetId": "C02-SFV1-battle-prop-physical-film",
+  "label": "实体胶片证据组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-03.png",
+  "originalMasterSha256": "b40bca22db30225e1d37f990946bd07a4a3a89d338c674f23c0e13d57e975b74",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 2
+  },
+  "sourceCropBox": [
+    632,
+    632,
+    935,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-03 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-physical-film.png",
+  "runtimeReferenceSha256": "3799558681f487944b5d654eded83615977ff03c373dd85d0e4468cd8a2d444c",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f1865858-de01-47de-8847-ac3416a5148e.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-physical-film/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board03 r2c3 preserved: two cylindrical physical-film reels/canisters (amber shorter left, dark taller right), one short curled perforation-marked filmstrip attached to right reel, one rectangular gray/charcoal film-viewing cassette with bounded opaque cyan window. Thick rims, broad matte planes and no screen stand/hologram. Actual64 white/black review passed with full silhouettes and no external cyan haze.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

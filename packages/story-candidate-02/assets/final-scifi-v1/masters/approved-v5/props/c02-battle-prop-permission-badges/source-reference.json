@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-permission-badges",
+  "assetId": "C02-SFV1-battle-prop-permission-badges",
+  "label": "权限牌证据组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-03.png",
+  "originalMasterSha256": "b40bca22db30225e1d37f990946bd07a4a3a89d338c674f23c0e13d57e975b74",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 2
+  },
+  "sourceCropBox": [
+    945,
+    632,
+    1249,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-03 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-permission-badges.png",
+  "runtimeReferenceSha256": "3715a97633e984f6abf3f2ef2f916932de656fa01c2f7b55bf6e58dbb52e7ced",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

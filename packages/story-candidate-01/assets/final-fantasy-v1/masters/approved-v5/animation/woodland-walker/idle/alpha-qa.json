@@ -1,0 +1,106 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4de93714-0114-45ed-a3d2-db0c01b8dfc9.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "f038d8748a3934a64d814da56a5410dfadfe81a6d6b6d55ab1de66b4abb9695e",
+  "bboxAlphaNonzero": [
+    25,
+    8,
+    1556,
+    974
+  ],
+  "bboxAlphaGreaterThan127": [
+    405,
+    11,
+    1313,
+    972
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1058553,
+  "alphaOnePixels": 7636,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "rootFoot": "screen-left-root",
+      "roi": [
+        455,
+        850,
+        800,
+        985
+      ],
+      "soleY": 971,
+      "bottomFourRowsMeanX": 681.9375
+    },
+    {
+      "rootFoot": "screen-right-root",
+      "roi": [
+        810,
+        830,
+        1080,
+        960
+      ],
+      "soleY": 943,
+      "bottomFourRowsMeanX": 971.0410958904109
+    }
+  ],
+  "sourceFootMidpoint": [
+    826.4892979452054,
+    957.0
+  ],
+  "suggestedSourceFoot": [
+    826,
+    971
+  ],
+  "highestCrownBranchY": 11,
+  "branchCrownToMeanRootSoleHeight": 946.0,
+  "proposedBodyScale": 0.048625792811839326,
+  "bodyScaleNumerator": 46,
+  "bodyScaleDenominator": 946.0,
+  "speciesScaleContract": "46logical total including highest crown branch; humans44logical body. Do not apply44core plus branch height.",
+  "coreBarkHeadCrownApproximateY": 150,
+  "coreBarkHeadCrownToMeanRootSoleHeightApproximate": 807.0,
+  "coreHeightLogicalApproximate": 39.241014799154335,
+  "negativeSpaceProbes": [
+    {
+      "name": "staff-curl",
+      "rectangle": [
+        1208,
+        197,
+        1215,
+        204
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "leg-gap",
+      "rectangle": [
+        792,
+        827,
+        799,
+        834
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "branch-gap",
+      "rectangle": [
+        800,
+        65,
+        807,
+        72
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "masterRawHashMatches": true,
+  "semanticReview": "Original tree-person species and solemn bark face, branch crown, pale split-wood beard/chest, olive leaf shoulder/waist/forearm layers, broad root feet, simple brown slotted belt, original-right curled wood staff and empty left wood hand retained. Small pale eyes bounded in face. No bow/sword/extra symbols. Native and white QA inspected, open staff curl and limb/branch negative spaces genuine alpha. Root and branch tips complete, no external aura; broad silhouette with some natural wood/leaf facets, coordinator style/scale review requested."
+}

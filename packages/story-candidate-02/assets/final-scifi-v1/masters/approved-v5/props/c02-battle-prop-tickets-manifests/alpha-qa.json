@@ -1,0 +1,42 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-d1d8bc9c-6802-4d78-985b-c44b962ed719.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    304,
+    249,
+    951,
+    1090
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    304,
+    249,
+    303,
+    164
+  ],
+  "nearOpaquePixelCountGE240": 340054,
+  "diagnostic8pxErosion": {
+    "minAlpha": 251,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual64EdgeMaxAlpha": 0,
+  "actual64NearOpaquePixelsGE240": 678,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain60x60 centered64x64 with2px padding. Native source unchanged. White/black composites inspection only.",
+  "topicId": "c02-battle-prop-tickets-manifests",
+  "sha256": "007ee08addd1192c274f56ada90074e87e4863d008a7aeeec66949de6146184d",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Original board03 r2c2 preserved: two tickets with teal/amber borders, original top-view spacecraft silhouette on each, notched stubs and abstract barcode/document bars; one cargo-manifest clipboard with grid, crate pictograms and square box stamp. No invented readable text. V1 failed perimeter maxalpha3 and had bottom margin1px. Imagegen correction v2 retains identities with larger safe margins; source and actual64 black/white review passed. Native64 artwork is correspondingly smaller than v1 but all three objects and main functional marks remain visible.",
+  "postprocessing": "Native master is byte-exact imagegen output. Only diagnostic64 full-source Lanczos contain60 and white/black composites; no generated source pixel editing.",
+  "runtimeReady": false
+}

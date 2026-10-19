@@ -1,0 +1,37 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-4b07c51c-9907-4690-baf3-d79dc1870c39.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 2,
+  "canvasEdgeAlpha2PlusCount": 16,
+  "visibleAlphaBBoxGE8": [
+    140,
+    13,
+    1142,
+    1249
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    140,
+    13,
+    112,
+    5
+  ],
+  "nearOpaquePixelCountGE240": 649029,
+  "diagnostic8pxErosion": {
+    "minAlpha": 8,
+    "pixelsBelow240": 96,
+    "notAcceptanceGate": true
+  },
+  "actual64EdgeMaxAlpha": 0,
+  "actual64NearOpaquePixelsGE240": 1263,
+  "formalSourceContractPass": false,
+  "derivation": "Diagnostic only; full-source Lanczos contain60x60 centered64x64 with2px padding. Native source unchanged. White/black composites inspection only.",
+  "rejectionReason": "Formal source contract failure: sixteen canvas-edge pixels have alpha2, while perimeter maximum allowed1. Native margin bottom5px intact but too close. Correct with built-in imagegen only, retain v1 unchanged."
+}

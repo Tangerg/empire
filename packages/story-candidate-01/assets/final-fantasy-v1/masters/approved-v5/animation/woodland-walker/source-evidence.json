@@ -1,0 +1,248 @@
+{
+  "topicId": "C01-UNIT-WOODLAND-WALKER",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-WOODLAND-WALKER",
+    "topicId": "C01-UNIT-WOODLAND-WALKER",
+    "label": "林地行者",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-woodland-walker.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-woodland-walker.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-woodland-walker.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-walker-druid-stag-runeshield.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "f882ce4361b4f5307a84f1183666fd6f53ae362e7fe0fe71db19ad71d3f21085"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-woodland-walker.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "0a9ed86c14fbb9d658d871fa51ac13fb84652799fd0023c828ccb19ddead4db6"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-woodland-walker.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "c4b7adcd1c3de9ead069b87dee3567a480d1aa65ecd8d908b69f5d9dbc891ea5"
+    }
+  },
+  "originalRow": "First row of four-row atlas, woodland-walker/druid/stag/rune-shield",
+  "referenceExtraction": "Full first row[0,0,1254,314] and complete idle character[0,0,350,330] are native unresampled crops. Idle extends past nominal314cell border at staff tip, so wider crop preserves it. Druid comparison[0,314,314,628]. Original HD/runtime strips and four HD64x96 cells preserved. No recolor or alpha edits.",
+  "sourceScaleDiagnostics": {
+    "tree-idle": {
+      "cell": [
+        0,
+        0,
+        314,
+        314
+      ],
+      "approximateForegroundBoundsInBoard": [
+        67,
+        31,
+        314,
+        311
+      ],
+      "approximateHeight": 280,
+      "method": "Read-only diagnostic color-mask of original magenta source, not output alpha processing; includes branch tips/staff, must interpret visually",
+      "measurementNote": "Initial nominal314wide diagnostic clips only far-right staff edge, not highest branch or lowest root; complete idle reference is350wide. Height280 remains valid."
+    },
+    "druid-idle": {
+      "cell": [
+        0,
+        314,
+        314,
+        628
+      ],
+      "approximateForegroundBoundsInBoard": [
+        90,
+        347,
+        292,
+        618
+      ],
+      "approximateHeight": 271,
+      "method": "Read-only diagnostic color-mask of original magenta source, not output alpha processing; includes branch tips/staff, must interpret visually"
+    }
+  },
+  "status": "Native idle saved and visually inspected; coordinator common-scale/outline review pending",
+  "imageGenerationStarted": true,
+  "actualConsumers": [
+    "c01.woodland-walker"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 30,
+    "text": "'c01.woodland-walker': 'C01-UNIT-WOODLAND-WALKER'"
+  },
+  "consumerStatus": "Campaign actual-used tree-person source identity; no built-in consumer found",
+  "originalIdentity": "Living tree-person, not a human or elf wearing bark armor. Brown bark face with small pale amber eyes under branching crown, long pale split-wood beard/chest strips, branch growth from head/shoulders, olive leaf layers at shoulders/forearms/waist, woody torso and thick wood hands, broad root-toed feet; simple brown belt with slots. No human flesh, boots, pants or helmet.",
+  "equipmentIdentity": "Original screen-right wood hand grips one crooked wooden staff with tightly curled hook top, small leaves and vine/twine binding. Original screen-left wood hand is empty. No bow, quiver, sword or shield in original four character cells.",
+  "symbolReview": "No distinct sacred rune, cross, faction heraldry or lettering is visible on this character. Natural branch/leaf/wood shapes and small pale eyes preserved; keep branch/staff gaps genuinely transparent and do not invent glyphs or external aura.",
+  "originalFrameReview": "Four cells ordered idle,walk-a,attack,walk-b. Original third cell is near idle and retains same staff; walks have modest root-foot changes, not a strong clear opposite-contact cycle. New four semantics should retain idle,opposite root-foot steps,clear original-right-hand staff-forward gesture; no invented bow/sword.",
+  "ruleContract": {
+    "unitSource": "packages/story-candidate-01/src/units.ts:88",
+    "unitId": "c01.woodland-walker",
+    "unitName": "林地行者",
+    "weaponIds": [
+      "c01.ranger-bow",
+      "c01.border-blade"
+    ],
+    "unitTags": [
+      "infantry",
+      "ranged",
+      "scout",
+      "silverwood"
+    ],
+    "movement": 6,
+    "vision": 5,
+    "weapons": [
+      {
+        "id": "c01.ranger-bow",
+        "source": "weapons.ts:55-63",
+        "name": "灰境猎弓",
+        "power": 35,
+        "damageType": "pierce",
+        "maxRange": 3,
+        "lineOfSight": "arc",
+        "tags": [
+          "ranged",
+          "projectile",
+          "scout"
+        ]
+      },
+      {
+        "id": "c01.border-blade",
+        "source": "weapons.ts:13",
+        "name": "边境长剑",
+        "power": 39,
+        "tags": [
+          "melee"
+        ]
+      }
+    ]
+  },
+  "existingSemanticMismatch": "Actual binding points woodland scout rules using bow and sword to an original tree-person with a wood staff. Preserve verified species/gear rather than redesign from rule labels or equipment icon. Proposed staff-forward targeting/casting gesture shares existing one attack slot for two weapons; no rule/FX/binding edits and no claim gameplay semantics fixed.",
+  "independentAssets": {
+    "equipmentTopics": [
+      "C01-EQUIP-RANGER",
+      "C01-EQUIP-SWORDSMAN"
+    ],
+    "effectTopics": [
+      "C01-FX-03",
+      "C01-FX-01"
+    ],
+    "policy": "Rule-bound independent equipment/FX stay separate; new character must not bake arrow projectile, slash effect, aura or glow."
+  },
+  "scaleProposal": {
+    "humanApprovedBodyHeightLogical": 44,
+    "treeOriginalFullHeightIncludingBranches": 280,
+    "sameAtlasDruidOriginalHeight": 271,
+    "originalHeightRatio": 1.033210332103321,
+    "proposedTreeTotalBranchTipToRootSoleLogical": 46,
+    "proposedTreeCoreBarkHeadCrownToRootSoleLogicalApproximate": 42,
+    "rationale": "Original same-atlas tree-person is only1.03times human-height, wider through branches/root feet. Preserve compact broad tree-person silhouette, no arbitrary giant scale.46total is a small conservative exaggeration for branch-crown legibility; do not force44core plus huge branches.",
+    "proposedNativeCanvas": [
+      1586,
+      992
+    ],
+    "proposedNativeFullHeightRange": [
+      900,
+      930
+    ],
+    "measurementPolicy": "Final shared scale46/measured-idle highest-branch-to-mean-root-sole height, with separate core height noted; all poses retain full canvas and same scale. Coordinator agreement required before generation."
+  },
+  "actualScenePlacements": [
+    {
+      "level": "c01-15",
+      "title": "银林长梦",
+      "side": "player",
+      "actor": "silverwood-scout",
+      "deploymentIndex": 8,
+      "position": [
+        4,
+        14
+      ],
+      "source": "levels.ts:755,761; baseParty prepends3actors at401-405"
+    },
+    {
+      "level": "c01-15",
+      "title": "银林长梦",
+      "side": "enemy",
+      "actor": "controlled-walker",
+      "deploymentIndex": 3,
+      "position": [
+        17,
+        7
+      ],
+      "source": "levels.ts:757,761"
+    },
+    {
+      "level": "c01-15",
+      "title": "银林长梦",
+      "side": "enemy",
+      "actor": "east-walker",
+      "deploymentIndex": 7,
+      "position": [
+        21,
+        11
+      ],
+      "source": "levels.ts:758,761"
+    }
+  ],
+  "contractApproval": "Coordinator2026-10-19 19:21UTC approved idle pilot46logical including branch crown,based on measured original1.03x druid ratio. Preserve tree identity/root feet/leaf clothing/curl staff. Attack later aims original staff and opens free hand; single action for legacy bow/blade mismatch explicit, independentFX retained. Idle review before pose expansion.",
+  "idleMeasuredScale": {
+    "nativeSize": [
+      1586,
+      992
+    ],
+    "highestBranchY": 11,
+    "meanRootSoleY": 957,
+    "fullHeight": 946,
+    "proposedScale": "46/946",
+    "proposedSourceFoot": [
+      826,
+      971
+    ],
+    "coreHeadCrownApproximateY": 150,
+    "coreHeightLogicalApproximate": 39.241014799154335,
+    "caveat": "Large branch crown gives smaller core than42logical preliminary proposal; coordinator native human comparison requested before pose expansion.",
+    "alphaPerimeterMax": 0,
+    "negativeSpaceProbes": "Three7x7probes at staff curl,leg gap,branch gap all alpha0"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-tickets-manifests",
+  "assetId": "C02-SFV1-battle-prop-tickets-manifests",
+  "label": "票与货单证据组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-03.png",
+  "originalMasterSha256": "b40bca22db30225e1d37f990946bd07a4a3a89d338c674f23c0e13d57e975b74",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 2
+  },
+  "sourceCropBox": [
+    319,
+    632,
+    622,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-03 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-tickets-manifests.png",
+  "runtimeReferenceSha256": "2f27b045961a0c80412d095297498c582a1c462369d2eff8c20e32647aca13bb",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

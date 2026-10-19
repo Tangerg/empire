@@ -1,0 +1,42 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-f1865858-de01-47de-8847-ac3416a5148e.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    123,
+    70,
+    1181,
+    1223
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    123,
+    70,
+    73,
+    31
+  ],
+  "nearOpaquePixelCountGE240": 778816,
+  "diagnostic8pxErosion": {
+    "minAlpha": 248,
+    "pixelsBelow240": 0,
+    "notAcceptanceGate": true
+  },
+  "actual64EdgeMaxAlpha": 0,
+  "actual64NearOpaquePixelsGE240": 1677,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain60x60 centered64x64 with2px padding. Native source unchanged. White/black composites inspection only.",
+  "topicId": "c02-battle-prop-physical-film",
+  "sha256": "05dd7b6db3e15aeecdf6c4f8a3f1b32d97c46c350bcb6386aca710f59f5cc529",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass after native source semantic review and actual64 white/black inspection: correct functional identity and main component count, thick outlines/broad cel planes, intact silhouette, no visible halo, haze, solid background or external glow. Narrow-gap antialiasing is not judged as solid-body opacity failure by supplemental morphology.",
+  "postprocessing": "Native master unchanged byte-exact copy. Diagnostic-only full-canvas64 exports and white/black composites are separate. No pixel painting, recolor or alpha cleanup.",
+  "runtimeReady": false
+}

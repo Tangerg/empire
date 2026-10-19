@@ -1,0 +1,42 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-e4a7c84b-6ec7-4051-a092-bd8b603518ed.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    224,
+    124,
+    1084,
+    1174
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    224,
+    124,
+    170,
+    80
+  ],
+  "nearOpaquePixelCountGE240": 431645,
+  "diagnostic8pxErosion": {
+    "minAlpha": 25,
+    "pixelsBelow240": 68,
+    "notAcceptanceGate": true
+  },
+  "actual64EdgeMaxAlpha": 0,
+  "actual64NearOpaquePixelsGE240": 818,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain60x60 centered64x64 with2px padding. Native source unchanged. White/black composites inspection only.",
+  "topicId": "c02-battle-prop-ice-cracks",
+  "sha256": "43d20b3685d1b08229fe2b57b0b2deecfa55f8788cdea7a0fa92e74d1db156e1",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Original board01 r2c3 preserved: six principal formations, three upright ice clusters and three low fractured ice-slab patches with original placement/size hierarchy. Opaque blue/white broad faceted planes and thick dark contours; no cyan fog. V1 rejected for16 perimeter pixels at alpha2; imagegen correction v2 adds intact margin and true zero-alpha perimeter. Source and actual64 white/black review passed; no programmatic alpha cleanup.",
+  "postprocessing": "Native master is byte-exact imagegen output. Only diagnostic64 full-source Lanczos contain60 and white/black composites; no generated source pixel editing.",
+  "runtimeReady": false
+}

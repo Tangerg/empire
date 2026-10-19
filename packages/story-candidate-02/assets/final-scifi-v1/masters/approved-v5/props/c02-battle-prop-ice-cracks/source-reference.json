@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-ice-cracks",
+  "assetId": "C02-SFV1-battle-prop-ice-cracks",
+  "label": "冰裂危险组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-01.png",
+  "originalMasterSha256": "e5d87b0562deafaff0f1403f1ed47f3e71235ea34236bee655a601b3f68d7bc4",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 2
+  },
+  "sourceCropBox": [
+    632,
+    632,
+    935,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-01 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-ice-cracks.png",
+  "runtimeReferenceSha256": "6db94d843295e75810d8a56461272ff5bae6297edb29ee9f86b082929efaaa9c",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

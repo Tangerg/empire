@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-spore-sacs",
+  "assetId": "C02-SFV1-battle-prop-spore-sacs",
+  "label": "孢子囊危险组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-01.png",
+  "originalMasterSha256": "e5d87b0562deafaff0f1403f1ed47f3e71235ea34236bee655a601b3f68d7bc4",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 2
+  },
+  "sourceCropBox": [
+    945,
+    632,
+    1249,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-01 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-spore-sacs.png",
+  "runtimeReferenceSha256": "16933fc556873c001353df9b2589875876861199e464c8a6beb23818afb5dd21",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

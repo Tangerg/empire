@@ -1,0 +1,54 @@
+{
+  "topicId": "c02-battle-prop-ice-cracks",
+  "assetId": "C02-SFV1-battle-prop-ice-cracks",
+  "label": "冰裂危险组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-01.png",
+  "originalMasterSha256": "e5d87b0562deafaff0f1403f1ed47f3e71235ea34236bee655a601b3f68d7bc4",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 2
+  },
+  "sourceCropBox": [
+    632,
+    632,
+    935,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-01 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-ice-cracks.png",
+  "runtimeReferenceSha256": "6db94d843295e75810d8a56461272ff5bae6297edb29ee9f86b082929efaaa9c",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-e4a7c84b-6ec7-4051-a092-bd8b603518ed.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v2.png",
+  "promptFiles": [
+    "prompt.txt",
+    "refinement-prompt-v2.txt"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ice-cracks/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/scratch/84c9fe948755/generated_images/exec-4b07c51c-9907-4690-baf3-d79dc1870c39.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ice-cracks/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png"
+  ],
+  "failedCandidate": "candidate-v1-failed-perimeter-alpha.png",
+  "failedCandidateQA": "candidate-v1-alpha-qa.json",
+  "semanticNotes": "Original board01 r2c3 preserved: six principal formations, three upright ice clusters and three low fractured ice-slab patches with original placement/size hierarchy. Opaque blue/white broad faceted planes and thick dark contours; no cyan fog. V1 rejected for16 perimeter pixels at alpha2; imagegen correction v2 adds intact margin and true zero-alpha perimeter. Source and actual64 white/black review passed; no programmatic alpha cleanup.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo-pilot style, current original subject verified independently."
+}
