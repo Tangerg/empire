@@ -34,10 +34,12 @@ describe('candidate-01 authored map scenery', () => {
     for (const [id, minPlacement, maxPlacement] of [
       ['oak-ancient', 0.74, 0.86], ['mixed-forest-dense', 0.74, 0.86],
       ['fern-bed', 0.58, 0.7], ['boulder-large', 1.05, 1.05],
+      ['oak-grove-dense', 0.74, 0.86], ['mixed-forest-edge', 0.74, 0.86],
+      ['stump-hollow', 0.58, 0.7], ['fallen-hollow-log', 0.9, 0.9],
     ] as const) {
       const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
       const crop = `x="${-(cell.index % 4) * 96}" y="${-Math.floor(cell.index / 4) * 96}"`;
-      const matches = props(id === 'boulder-large' ? frame : field)
+      const matches = props(id === 'boulder-large' || id === 'fallen-hollow-log' ? frame : field)
         .filter((markup) => markup.includes('forest-temperate@2x.png') && markup.includes(crop));
       expect(matches.length, id).toBeGreaterThan(0);
       for (const markup of matches) {

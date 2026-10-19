@@ -12,6 +12,10 @@ describe('candidate-01 environment builder v1.1', () => {
       { id: 'mixed-forest-dense', foot: [640, 1145], scale: 1.4375, footprint: [2, 2], obstruction: 2 },
       { id: 'fern-bed', foot: [625, 955], scale: 0.65, footprint: [1, 1], obstruction: 0 },
       { id: 'boulder-large', foot: [640, 1048], scale: 0.6, footprint: [1, 1], obstruction: 1 },
+      { id: 'oak-grove-dense', foot: [625, 1090], scale: 1.625, footprint: [2, 2], obstruction: 2 },
+      { id: 'mixed-forest-edge', foot: [640, 1100], scale: 1.5, footprint: [2, 1], obstruction: 2 },
+      { id: 'stump-hollow', foot: [625, 995], scale: 0.75, footprint: [1, 1], obstruction: 0 },
+      { id: 'fallen-hollow-log', foot: [640, 875], scale: 0.7, footprint: [2, 1], obstruction: 1 },
     ];
     for (const { id, foot, scale, footprint, obstruction } of contracts) {
       const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);

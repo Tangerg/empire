@@ -1,0 +1,96 @@
+{
+  "baselineCommit": "8c021f934d26f0da428085d19663f29fc0ac615f",
+  "changedCellIndicesByAtlas": {
+    "forest-temperate": [
+      3,
+      4,
+      10,
+      11
+    ],
+    "forest-temperate@2x": [
+      3,
+      4,
+      10,
+      11
+    ],
+    "forest-existing": [],
+    "forest-existing@2x": [],
+    "scenery-regional": [],
+    "scenery-regional@2x": []
+  },
+  "changedCellIds": [
+    "oak-grove-dense",
+    "mixed-forest-edge",
+    "stump-hollow",
+    "fallen-hollow-log"
+  ],
+  "metadataDelta": "Only four registered anchors and presentationScale values; all other manifest data identical",
+  "sources": {
+    "oak-grove-dense": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/oak-grove-dense/oak-grove-dense-master.png",
+      "sha256": "c7776284c9904e73c08e85d9bed4b4f9f080e7ffc3c8ef75ed25f3f2e55d9b87",
+      "registration": {
+        "scale": 0.0685805422647528,
+        "origin": [
+          5,
+          5
+        ],
+        "sourceFoot": [
+          625,
+          1090
+        ]
+      },
+      "originalSharedBytesPreserved": true
+    },
+    "mixed-forest-edge": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/mixed-forest-edge/mixed-forest-edge-master.png",
+      "sha256": "b553937eed0ce4e543bf9881f41d15aacbfa13ca7bc765f4d0ea533b64ce1b64",
+      "registration": {
+        "scale": 0.0685805422647528,
+        "origin": [
+          5,
+          5
+        ],
+        "sourceFoot": [
+          640,
+          1100
+        ]
+      },
+      "originalSharedBytesPreserved": true
+    },
+    "stump-hollow": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/stump-hollow/stump-hollow-master.png",
+      "sha256": "81fb5fa05cf4ef57098c87575d75a64de8903b1420c92e6a9c76bcc59519c9c5",
+      "registration": {
+        "scale": 0.0685805422647528,
+        "origin": [
+          5,
+          5
+        ],
+        "sourceFoot": [
+          625,
+          995
+        ]
+      },
+      "originalSharedBytesPreserved": true
+    },
+    "fallen-hollow-log": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/forest-temperate/fallen-hollow-log/fallen-hollow-log-master.png",
+      "sha256": "147cdc6f7e8544336e1d1e09e29840e8f2a330360c99c652f78398e3d5ad0a93",
+      "registration": {
+        "scale": 0.0685805422647528,
+        "origin": [
+          5,
+          5
+        ],
+        "sourceFoot": [
+          640,
+          875
+        ]
+      },
+      "originalSharedBytesPreserved": true
+    }
+  },
+  "nativeDiagnostic": "native-contact.png",
+  "browserPlayback": false
+}

@@ -1,0 +1,164 @@
+{
+  "evidence": "actual scene renderer markup rearranged onto a native-size diagnostic contact board",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "assets": [
+    {
+      "id": "oak-grove-dense",
+      "anchor": [
+        47.8628389154705,
+        79.75279106858054
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.625,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.2025,
+        1.3975
+      ],
+      "sampledRendererScaleRange": [
+        1.225,
+        1.368
+      ],
+      "sampleScale": 1.298,
+      "sampleCount": 9,
+      "reviewMarkup": "<g class=\"candidate-environment-prop is-standing\" transform=\"translate(62.464 -103.489) scale(-1.298 1.298)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"-288\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        10.5,
+        16.0,
+        85.0,
+        83.0
+      ],
+      "nativeSampleVisibleHeight": 86.96600000000001,
+      "nativeVisibleHeightRange": [
+        80.5675,
+        93.6325
+      ],
+      "nativeSampleOverhangBelowContact": 4.214877192982465
+    },
+    {
+      "id": "mixed-forest-edge",
+      "anchor": [
+        48.89154704944178,
+        80.43859649122807
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "presentationScale": 1.5,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.1099999999999999,
+        1.29
+      ],
+      "sampledRendererScaleRange": [
+        1.15,
+        1.274
+      ],
+      "sampleScale": 1.182,
+      "sampleCount": 7,
+      "reviewMarkup": "<g class=\"candidate-environment-prop is-standing\" transform=\"translate(-57.799 -95.093) scale(1.182)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"0\" y=\"-96\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        13.0,
+        86.5,
+        84.0
+      ],
+      "nativeSampleVisibleHeight": 83.922,
+      "nativeVisibleHeightRange": [
+        78.80999999999999,
+        91.59
+      ],
+      "nativeSampleOverhangBelowContact": 4.209578947368423
+    },
+    {
+      "id": "stump-hollow",
+      "anchor": [
+        47.8628389154705,
+        73.23763955342903
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 0.75,
+      "placementScaleRange": [
+        0.58,
+        0.7
+      ],
+      "rendererScaleRange": [
+        0.43499999999999994,
+        0.5249999999999999
+      ],
+      "sampledRendererScaleRange": [
+        0.439,
+        0.522
+      ],
+      "sampleScale": 0.48,
+      "sampleCount": 15,
+      "reviewMarkup": "<g class=\"candidate-environment-prop \" transform=\"translate(-22.953 -35.121) scale(0.480)\" opacity=\"0.9\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"-192\" y=\"-192\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        14.5,
+        13.0,
+        81.5,
+        84.5
+      ],
+      "nativeSampleVisibleHeight": 34.32,
+      "nativeVisibleHeightRange": [
+        31.102499999999996,
+        37.537499999999994
+      ],
+      "nativeSampleOverhangBelowContact": 5.405933014354064
+    },
+    {
+      "id": "fallen-hollow-log",
+      "anchor": [
+        48.89154704944178,
+        65.00797448165869
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "presentationScale": 0.7,
+      "placementScaleRange": [
+        0.9,
+        0.9
+      ],
+      "rendererScaleRange": [
+        0.63,
+        0.63
+      ],
+      "sampledRendererScaleRange": [
+        0.63,
+        0.63
+      ],
+      "sampleScale": 0.63,
+      "sampleCount": 1,
+      "reviewMarkup": "<g class=\"candidate-environment-prop is-scene-frame\" transform=\"translate(29.678 -40.955) scale(-0.630 0.630)\" opacity=\"0.96\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"-288\" y=\"-192\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        9.0,
+        24.5,
+        88.0,
+        76.5
+      ],
+      "nativeSampleVisibleHeight": 32.76,
+      "nativeVisibleHeightRange": [
+        32.76,
+        32.76
+      ],
+      "nativeSampleOverhangBelowContact": 7.239976076555024
+    }
+  ],
+  "offlineViewportNormalization": "nested SVG viewports expressed as equivalent clip paths for Inkscape"
+}

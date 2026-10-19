@@ -76,7 +76,7 @@ through that same rounded raster transform into the manifest cell anchor. It
 rejects a transform that would clip the full canvas. No alpha-bounds fitting,
 source crop, thresholding, recoloring, or repainting is performed.
 
-The four approved-v5 forest masters use the complete 1254² canvas at 86 logical
+The approved-v5 forest masters use the complete 1254² canvas at 86 logical
 pixels, starting at [5,5]. Roots and fronds may extend below their reviewed
 contact. Other registered cells retain their previous pixels and [48,91] pivots
 through equivalent explicit registrations; `offsetY2x` is no longer supported.
@@ -100,6 +100,10 @@ For a native-size diagnostic using actual renderer markup:
 node_modules/.bin/vite-node tools/art/review_environment_runtime.ts
 python3 tools/art/render_environment_review.py docs/art-rebuild-20261019/approved-v5/environment-runtime
 ```
+
+Add `--second` to the TypeScript command to review grove, edge, hollow stump,
+and fallen log; pass the resulting `environment-runtime-second` directory to
+the Python command. The default set remains oak, dense forest, fern, and boulder.
 
 The SVG and PNG place the four assets beside the runtime swordsman, and the JSON
 records actual sampled transforms and alpha-128 silhouette measurements. Shared

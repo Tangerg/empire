@@ -11,7 +11,9 @@ import { candidate01MapSceneryLayers, candidate01SceneFrameMarkup, candidate01Sc
 import { candidate01UnitPicture } from '../../packages/story-candidate-01/src/presentation/candidate-01-runtime';
 
 const root = resolve(import.meta.dirname, '../..');
-const output = resolve(process.env.FOREST_REVIEW_OUTPUT ?? 'docs/art-rebuild-20261019/approved-v5/environment-runtime');
+const secondSet = process.argv.includes('--second');
+const output = resolve(process.env.FOREST_REVIEW_OUTPUT
+  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${secondSet ? '-second' : ''}`);
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const map = mapFromLevel(content, candidate01Level('c01-02'));
 map.tiles.fill('forest');
@@ -20,7 +22,12 @@ const context = { content, map, viewport, levelId: 'forest-registration-review' 
 const field = boardPiecesMarkup(candidate01MapSceneryLayers(context).underUnits);
 const frame = candidate01SceneFrameMarkup(context).foreground;
 const props = (markup: string) => markup.match(/<g class="candidate-environment-prop [\s\S]*?<\/svg>\s*<\/g>/g) ?? [];
-const columns = [
+const columns = secondSet ? [
+  { id: 'oak-grove-dense', x: 85, placement: [0.74, 0.86] },
+  { id: 'mixed-forest-edge', x: 235, placement: [0.74, 0.86] },
+  { id: 'stump-hollow', x: 385, placement: [0.58, 0.7] },
+  { id: 'fallen-hollow-log', x: 515, placement: [0.9, 0.9] },
+] : [
   { id: 'oak-ancient', x: 85, placement: [0.74, 0.86] },
   { id: 'mixed-forest-dense', x: 235, placement: [0.74, 0.86] },
   { id: 'fern-bed', x: 385, placement: [0.58, 0.7] },
@@ -31,7 +38,7 @@ const pictures = [];
 for (const { id, x, placement } of columns) {
   const { cell } = CANDIDATE_01_ENVIRONMENT.cell(id);
   const crop = `x="${-(cell.index % 4) * 96}" y="${-Math.floor(cell.index / 4) * 96}"`;
-  const matches = props(id === 'boulder-large' ? frame : field)
+  const matches = props(id === 'boulder-large' || id === 'fallen-hollow-log' ? frame : field)
     .filter((markup) => markup.includes('forest-temperate@2x.png') && markup.includes(crop));
   const samples = matches.map((markup) => {
     const transform = /transform="translate\(([-\d.]+) ([-\d.]+)\) scale\(([-\d.]+)/.exec(markup);
