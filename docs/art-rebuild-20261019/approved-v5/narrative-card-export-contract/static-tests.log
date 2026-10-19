@@ -1,0 +1,20 @@
+test_duplicate_keys_rejected (test_export_overrides.ExportTests.test_duplicate_keys_rejected) ... ok
+test_edge_contact_rejected (test_export_overrides.ExportTests.test_edge_contact_rejected) ... ok
+test_empty_catalog_no_changes (test_export_overrides.ExportTests.test_empty_catalog_no_changes) ... ok
+test_export_both_densities_and_check (test_export_overrides.ExportTests.test_export_both_densities_and_check) ... ok
+test_fit_preserves_authored_alpha_without_double_mask (test_export_overrides.ExportTests.test_fit_preserves_authored_alpha_without_double_mask) ... ok
+test_hash_mismatch_rejected_before_writes (test_export_overrides.ExportTests.test_hash_mismatch_rejected_before_writes) ... ok
+test_later_invalid_entry_prevents_all_writes (test_export_overrides.ExportTests.test_later_invalid_entry_prevents_all_writes) ... ok
+test_one_step_edge_residue_accepted_and_reported_without_mutation (test_export_overrides.ExportTests.test_one_step_edge_residue_accepted_and_reported_without_mutation) ... ok
+test_opaque_and_empty_rejected (test_export_overrides.ExportTests.test_opaque_and_empty_rejected) ... ok
+test_registered_battle_prop_anchor_is_metadata_not_pixel_transform (test_export_overrides.ExportTests.test_registered_battle_prop_anchor_is_metadata_not_pixel_transform) ... ok
+test_source_escape_rejected (test_export_overrides.ExportTests.test_source_escape_rejected) ... ok
+test_stale_export_rejected (test_export_overrides.ExportTests.test_stale_export_rejected) ... ok
+test_static_icon_contracts (test_export_overrides.ExportTests.test_static_icon_contracts) ... ok
+test_unknown_topic_rejected (test_export_overrides.ExportTests.test_unknown_topic_rejected) ... ok
+test_unsupported_category_rejected (test_export_overrides.ExportTests.test_unsupported_category_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.103s
+
+OK

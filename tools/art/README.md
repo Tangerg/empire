@@ -407,3 +407,61 @@ These compound catalog landmarks are independent of the interactive three-state
 structure topics. Export support does not add a scene selector or override an
 existing level's denied-atlas policy. The module tests cover mixed geometry,
 unchanged source bytes/other cells, metadata preservation and invalid dimensions.
+
+## Gray Flag narrative character-card compositions
+
+Only existing `story-candidate-01` manifest records with category
+`narrative-static`, kind `character-card`, and size192×224 are supported. The
+manifest owns the topic ID, kind, size and runtime path. A registered card has
+this distinct entry in the same `source-overrides.json` catalog:
+
+```json
+{
+  "kind": "character-card-composite-v1",
+  "character": {
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/leia-01/character.png",
+    "sha256": "actual character PNG file SHA-256"
+  },
+  "background": {
+    "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/leia-01/background.png",
+    "sha256": "actual independently authored background PNG file SHA-256"
+  },
+  "placement": { "renderWidth": 192, "origin": [0, 16] }
+}
+```
+
+Place that object under the exact owned topic ID, e.g. `C01-CHAR-LEIA-01`.
+Paths/hashes above are an unregistered schema example, not existing approved
+masters. The example placement fits a square character canvas at192² within the
+192×224 card. `renderWidth` and `origin` are integer output pixels; the entire
+character canvas is uniformly resized, preserving aspect up to nearest-pixel
+height rounding. Every canvas edge must fit inside the output. No alpha-bbox
+crop, flip, rotation, recoloring, background removal or source rewrite occurs.
+
+The character must be genuine RGBA with transparent exterior and near-opaque
+subject, following the existing alpha0/edge≤1 contract. Native RGB/opaque RGBA
+character masters are rejected. A separate background must be RGB or fully
+opaque RGBA. Center-cover resampling fills the card; the report records its exact
+source crop box, independent source hashes/sizes/modes, character alpha QA and
+placement. The result is an **opaque RGBA UI composition**, not evidence that a
+transparent character master was authored correctly. Keep the original RGBA
+character file as the reusable source. Human review must reject faux alpha,
+wrong identity or an isolated prop accidentally registered as a character; pixel
+validation cannot establish semantics.
+
+Commands are the existing `export_overrides.py` / `--check`. All registered inputs
+are validated before any output writes. Existing static icon/prop registrations
+retain their original schema, pixels, alpha QA and reports. No narrative source,
+background or production catalog entry is included in this tooling change.
+There is no scene/key-prop reclassification, HD contract or UI change.
+
+Verify the new source/composition in the real dialogue92×112, mobile64×88,
+roster44², and96×112 HUD slice consumers before publishing. Preserve named hero
+identity instead of copying an incompatible generic battle face; see
+`docs/art-rebuild-20261019/approved-v5/narrative-family-audit/hero-identity-contract.md`.
+Run focused fixtures with:
+
+```sh
+python3 -m unittest discover -s tools/art -p 'test_export_overrides.py' -v
+python3 -m unittest discover -s tools/art -p 'test_narrative_card_overrides.py' -v
+```

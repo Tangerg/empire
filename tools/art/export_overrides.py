@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export explicitly registered RGBA masters without running the legacy art builders."""
+"""Export registered masters and explicit character/background card compositions."""
 from __future__ import annotations
 
 import argparse
@@ -93,6 +93,75 @@ def records(root: Path):
     return result
 
 
+def read_source(root: Path, pack: Path, spec, label: str):
+    if not isinstance(spec, dict) or set(spec) != {'source', 'sha256'}:
+        raise ValueError(f'{label}: expected source and sha256 only')
+    path = within(root, spec['source'])
+    if not path.is_relative_to((pack / 'masters').resolve()):
+        raise ValueError(f'{label}: source must be in its pack masters directory')
+    raw = path.read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != spec['sha256']:
+        raise ValueError(f'{label}: source SHA-256 mismatch')
+    with Image.open(io.BytesIO(raw)) as opened:
+        if opened.format != 'PNG':
+            raise ValueError(f'{label}: source must be PNG')
+        source = opened.copy()
+    return source, digest
+
+
+def compose_character_card(root: Path, pack: Path, asset, hd, override):
+    topic = asset['topicId']
+    if (pack != root / 'packages/story-candidate-01/assets/final-fantasy-v1'
+            or asset.get('kind') != 'character-card'
+            or (asset['width'], asset['height']) != (192, 224)
+            or asset.get('frames') or asset.get('variants') or hd):
+        raise ValueError(f'{topic}: only existing Gray Flag 192x224 character-card contracts supported')
+    if (not isinstance(override, dict)
+            or set(override) != {'kind', 'character', 'background', 'placement'}
+            or override['kind'] != 'character-card-composite-v1'):
+        raise ValueError(f'{topic}: expected character-card-composite-v1 with character, background and placement')
+    character, character_hash = read_source(root, pack, override['character'], f'{topic} character')
+    character_alpha = validate_alpha(character, f'{topic} character')
+    background, background_hash = read_source(root, pack, override['background'], f'{topic} background')
+    if (background.mode not in ('RGB', 'RGBA')
+            or (background.mode == 'RGBA' and background.getchannel('A').getextrema() != (255, 255))):
+        raise ValueError(f'{topic}: background must be RGB or fully opaque RGBA')
+    placement = override['placement']
+    if not isinstance(placement, dict) or set(placement) != {'renderWidth', 'origin'}:
+        raise ValueError(f'{topic}: expected renderWidth and origin placement')
+    width, origin = placement['renderWidth'], placement['origin']
+    if (type(width) is not int or not 1 <= width <= 192
+            or not isinstance(origin, list) or len(origin) != 2
+            or any(type(value) is not int or value < 0 for value in origin)):
+        raise ValueError(f'{topic}: placement requires positive integer width and nonnegative integer origin')
+    height = round(character.height * width / character.width)
+    if height < 1 or origin[0] + width > 192 or origin[1] + height > 224:
+        raise ValueError(f'{topic}: complete character canvas must fit inside the card')
+    # Cover is intentional only for the independent background. Character alpha
+    # and the entire authored foreground canvas are retained, without bbox fitting.
+    crop_width = min(background.width, background.height * 192 / 224)
+    crop_height = min(background.height, background.width * 224 / 192)
+    left, top = (background.width - crop_width) / 2, (background.height - crop_height) / 2
+    rendered = ImageOps.fit(background.convert('RGBA'), (192, 224), Image.Resampling.LANCZOS)
+    rendered.alpha_composite(character.resize((width, height), Image.Resampling.LANCZOS), tuple(origin))
+    provenance = {
+        'kind': override['kind'],
+        'sources': {
+            'character': {**override['character'], 'size': list(character.size), 'mode': character.mode,
+                          'sha256': character_hash, 'alpha': character_alpha},
+            'background': {**override['background'], 'size': list(background.size), 'mode': background.mode,
+                           'sha256': background_hash},
+        },
+        'characterPlacement': {**placement, 'renderSize': [width, height], 'crop': None},
+        'backgroundFit': {'method': 'center-cover', 'sourceCropBox':
+                          [left, top, left + crop_width, top + crop_height]},
+        'outputAlpha': {'extrema': list(rendered.getchannel('A').getextrema()),
+                        'meaning': 'opaque UI composition; transparent character source remains independent'},
+    }
+    return rendered, provenance
+
+
 def plan(root: Path, catalog: Path):
     data = read_json(catalog)
     if data.get('schemaVersion') != 1 or not isinstance(data.get('assets'), dict):
@@ -106,35 +175,32 @@ def plan(root: Path, catalog: Path):
         pack, asset, hd = known[topic]
         category = asset['category']
         contracts = {'battle-prop': 64, 'equipment': 48, 'skill': 48, 'status': 32, 'hud': 32}
-        if category not in contracts or asset.get('frames') or asset.get('variants'):
+        if category == 'narrative-static':
+            rendered, provenance = compose_character_card(root, pack, asset, hd, override)
+            exports = [(asset, 1, rendered, provenance)]
+        elif category not in contracts or asset.get('frames') or asset.get('variants'):
             raise ValueError(f'{topic}: only static battle-prop/equipment/skill/status/hud exports supported')
-        side = contracts[category]
-        anchor = asset.get('anchor')
-        valid_anchor = (isinstance(anchor, list) and len(anchor) == 2
-                        and all(isinstance(v, (int, float)) and math.isfinite(v) and 0 <= v <= side for v in anchor))
-        if ((asset['width'], asset['height']) != (side, side) or not valid_anchor
-                or (category != 'battle-prop' and anchor != [side // 2, side // 2])):
-            raise ValueError(f'{topic}: unsupported logical size/anchor')
-        if not isinstance(override, dict) or set(override) != {'source', 'sha256'}:
-            raise ValueError(f'{topic}: expected source and sha256 only')
-        source_path = within(root, override['source'])
-        if not source_path.is_relative_to((pack / 'masters').resolve()):
-            raise ValueError(f'{topic}: source must be in its pack masters directory')
-        raw = source_path.read_bytes()
-        digest = hashlib.sha256(raw).hexdigest()
-        if digest != override['sha256']:
-            raise ValueError(f'{topic}: source SHA-256 mismatch')
-        with Image.open(io.BytesIO(raw)) as opened:
-            if opened.format != 'PNG':
-                raise ValueError(f'{topic}: source must be PNG')
-            source = opened.copy()
-        source_alpha = validate_alpha(source, topic)
-        exports = [(asset, 1)]
-        if hd:
-            if category != 'battle-prop' or (hd['width'], hd['height'], hd['pixelDensity']) != (128, 128, 2):
-                raise ValueError(f'{topic}: unsupported HD contract')
-            exports.append((hd, 2))
-        for record, density in exports:
+        else:
+            side = contracts[category]
+            anchor = asset.get('anchor')
+            valid_anchor = (isinstance(anchor, list) and len(anchor) == 2
+                            and all(isinstance(v, (int, float)) and math.isfinite(v) and 0 <= v <= side for v in anchor))
+            if ((asset['width'], asset['height']) != (side, side) or not valid_anchor
+                    or (category != 'battle-prop' and anchor != [side // 2, side // 2])):
+                raise ValueError(f'{topic}: unsupported logical size/anchor')
+            source, digest = read_source(root, pack, override, topic)
+            source_alpha = validate_alpha(source, topic)
+            records_to_export = [(asset, 1)]
+            if hd:
+                if category != 'battle-prop' or (hd['width'], hd['height'], hd['pixelDensity']) != (128, 128, 2):
+                    raise ValueError(f'{topic}: unsupported HD contract')
+                records_to_export.append((hd, 2))
+            exports = []
+            for record, density in records_to_export:
+                rendered = fit(source, (record['width'], record['height']), 2 * density)
+                exports.append((record, density, rendered, {'sourceSha256': digest,
+                                'sourceAlpha': source_alpha, 'outputAlpha': validate_alpha(rendered, 'export')}))
+        for record, density, rendered, provenance in exports:
             target = within(pack, record['png'])
             expected_dir = pack / ('runtime-hd' if density == 2 else 'runtime') / category
             if target.parent != expected_dir.resolve() or target.suffix != '.png':
@@ -142,15 +208,14 @@ def plan(root: Path, catalog: Path):
             if target in targets:
                 raise ValueError(f'duplicate destination: {target}')
             targets.add(target)
-            rendered = fit(source, (record['width'], record['height']), 2 * density)
-            planned.append((topic, digest, source_alpha, target, rendered))
+            planned.append((topic, provenance, target, rendered))
     return planned
 
 
 def export(root: Path, catalog: Path, check: bool = False):
     planned = plan(root, catalog)  # Validate every input before replacing any output.
     report = []
-    for topic, digest, source_alpha, target, rendered in planned:
+    for topic, provenance, target, rendered in planned:
         if check:
             with Image.open(target) as current:
                 if current.mode != rendered.mode or current.size != rendered.size or current.tobytes() != rendered.tobytes():
@@ -160,11 +225,10 @@ def export(root: Path, catalog: Path, check: bool = False):
             buffer = io.BytesIO()
             rendered.save(buffer, format='PNG', optimize=True)
             target.write_bytes(buffer.getvalue())
-        report.append({'topicId': topic, 'sourceSha256': digest,
+        report.append({'topicId': topic, **provenance,
                        'output': str(target.relative_to(root)),
                        'pixelSha256': hashlib.sha256(rendered.tobytes()).hexdigest(),
-                       'size': list(rendered.size), 'sourceAlpha': source_alpha,
-                       'outputAlpha': validate_alpha(rendered, 'export')})
+                       'size': list(rendered.size)})
     return report
 
 
