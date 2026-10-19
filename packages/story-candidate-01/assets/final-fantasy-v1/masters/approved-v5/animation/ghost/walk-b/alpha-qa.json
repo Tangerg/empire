@@ -26,5 +26,132 @@
   "exactPromptVerified": true,
   "postprocessing": "none; native source copied byte-for-byte",
   "selectedAttempt": "attempt-02",
-  "selectionStatus": "preferred consistent-alpha candidate pending common-scale quartet review"
+  "selectionStatus": "preferred consistent-alpha candidate pending common-scale quartet review",
+  "suggestedSourceFoot": [
+    714,
+    950
+  ],
+  "sourceFootMidpoint": [
+    714.0,
+    950
+  ],
+  "virtualAnchorNotFootContact": true,
+  "coherentBodyMeasurement": {
+    "alphaThresholdGreaterThan": 64,
+    "bounds": [
+      590,
+      39,
+      1120,
+      951
+    ],
+    "lowestConnectedWispY": 950,
+    "bottomFourRowsMeanXDiagnosticOnly": 1017.0803571428571
+  },
+  "beltBuckleLandmark": {
+    "inspectionROI": [
+      720,
+      503,
+      783,
+      560
+    ],
+    "goldBoundsInclusive": [
+      725,
+      510,
+      774,
+      553
+    ],
+    "centerX": 749.5,
+    "fixedIdleCalibrationOffsetX": -35.5,
+    "calibratedSourceXBeforeRounding": 714.0
+  },
+  "interiorAlphaProbes": [
+    {
+      "name": "face",
+      "rectangle": [
+        765,
+        170,
+        825,
+        240
+      ],
+      "min": 253,
+      "max": 254,
+      "median": 253.0
+    },
+    {
+      "name": "chest",
+      "rectangle": [
+        705,
+        410,
+        775,
+        465
+      ],
+      "min": 253,
+      "max": 253,
+      "median": 253.0
+    },
+    {
+      "name": "arm",
+      "rectangle": [
+        895,
+        395,
+        925,
+        435
+      ],
+      "min": 253,
+      "max": 253,
+      "median": 253.0
+    },
+    {
+      "name": "lower-wisp",
+      "rectangle": [
+        1005,
+        765,
+        1055,
+        795
+      ],
+      "min": 252,
+      "max": 253,
+      "median": 253.0
+    }
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "near-arm-gap",
+      "rectangle": [
+        613,
+        604,
+        620,
+        611
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49,
+      "pixelsAlphaGreaterThan1": 0
+    },
+    {
+      "name": "far-arm-gap",
+      "rectangle": [
+        930,
+        605,
+        937,
+        612
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49,
+      "pixelsAlphaGreaterThan1": 0
+    },
+    {
+      "name": "lower-curl",
+      "rectangle": [
+        936,
+        837,
+        943,
+        844
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49,
+      "pixelsAlphaGreaterThan1": 0
+    }
+  ],
+  "semanticReview": "Opposite relaxed near-arm-forward/far-arm-back hover and lower wisp curling right. Selected attempt-02 restores scarf tails to the original left side and removes the erroneously mirrored right hip pouch. The original near-side pouch is naturally mostly occluded by the forward hand; only its brown edge remains visible. Coordinator accepted this occlusion. Head/hair/camera and rightward wisp action preserved.",
+  "selectedBodyAlpha": "Near opaque interiors; meaningful partial alpha of idle attempt-02 deliberately not mixed into selected animation."
 }

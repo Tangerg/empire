@@ -238,7 +238,7 @@
       "nonzeroPixels": 2825
     }
   },
-  "status": "Selected idle; remaining three poses in progress",
+  "status": "Native source and common-scale sequence accepted; actual scene integration verification underway with coordinator",
   "imageGenerationStarted": true,
   "actualConsumers": [
     "c01.ghost"
@@ -500,5 +500,7 @@
     "notPhysicalFootContact": true
   },
   "coordinatorIdleApproval": "Coordinator 2026-10-19 20:29 UTC reviewed black/white views and selected attempt-02: clear face and true bounded body translucency accepted. Lock shared44/927, virtual anchor[831,959], full1586x992, candidate104x64/origin[8,4], preserve identity across drifting phases and empty-hand touch.",
-  "selectedIdleAttempt": "attempt-02"
+  "selectedIdleAttempt": "attempt-02",
+  "coordinatorSequenceApproval": "Coordinator 2026-10-19 20:43 UTC reviewed native common-scale quartet: identity, opposite curling hover phases and extended-palm attack pass. Selected idle attempt-01 matches other poses near-opaque body alpha; successful translucent attempt-02 retained as alternate evidence only. Shared44/927, measured floating anchors and full-canvas registration accepted. Actual c01-11 BoardView verification and formal binding are coordinator-owned and still underway.",
+  "quartetManifest": "bundle-manifest.json"
 }

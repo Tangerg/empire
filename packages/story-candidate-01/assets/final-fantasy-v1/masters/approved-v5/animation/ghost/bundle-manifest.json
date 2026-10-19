@@ -1,0 +1,205 @@
+{
+  "asset": "C01-UNIT-GHOST",
+  "actualConsumers": [
+    "c01.ghost"
+  ],
+  "status": "Native source and common-scale sequence accepted; actual scene integration verification underway with coordinator",
+  "generationTool": "built-in image_gen",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "sharedScale": 0.04746494066882417,
+  "bodyReferenceSourcePixels": 927,
+  "bodyTargetHeightLogicalPixels": 44,
+  "canonicalSourceFoot": [
+    831,
+    959
+  ],
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "masterPolicy": "Native tool output, raw and master are byte-identical. No painting, recolor, crop, resize or alpha cleanup of masters. QA composites and uniform-scale proof images are diagnostics only.",
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/registration-evidence.json",
+  "sourceContract": "Fourth row of original berserker/templar/inquisitor/ghost combat atlas. Original four32x48 frames: idle, walk-a, attack, walk-b; art anchor16,47 and footprint1x1. Actual c01.ghost flying/unarmored unit uses ghost-touch magic36 range1-2; empty-handed touch is source-faithful. Equipment icon and FX08 remain separate. Ten initial campaign actors, two delayed reinforcements and one lab consumer are evidenced. No rule changes.",
+  "identityContract": "Youthful clean-shaven sorrowful human ghost, exposed gray-brown hair, blue-gray scarf/armored coat, brown straps/belt/near-side hip pouch, brass round fittings, two empty hands and warm ochre attached lower wisp plus compact close fragments. No skull/hood/weapon invented.",
+  "selectedAttempts": {
+    "idle": "attempt-01, preferred consistent near-opaque animation candidate",
+    "walk-a": "first native output",
+    "attack": "first native output",
+    "walk-b": "attempt-02, coordinator-approved costume-side continuity correction"
+  },
+  "supersededAttempts": [
+    {
+      "path": "idle/attempt-02",
+      "reason": "Successful genuine bounded body translucency retained as evidence; other three actions returned near-opaque interiors, so using this as sole translucent frame would produce opacity flashing."
+    },
+    {
+      "path": "walk-b/attempt-01",
+      "reason": "Pouch and scarf attachment side were erroneously mirrored; one targeted correction approved and selected."
+    }
+  ],
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "bb87c0032b40290558d9b16ccb8ca039ccc297a1f19a8a901e037fce6d97dc02",
+      "verifiedGenerationReferences": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/references/original-idle-native-crop.png": {
+          "sha256": "77e3bdaaf390170423a149696e26bd8c09d8ccdaab9056592c9c26d547f865cd",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/references/original-idle-native-crop.png",
+          "immutableArchiveUsed": false
+        },
+        "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png": {
+          "sha256": "6e6e0f535d7ea725f9bca6ad42c87ee3f7a1f23c908de9d585d451f424335f95",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png",
+          "immutableArchiveUsed": false
+        },
+        "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png": {
+          "sha256": "f8436bcb2ce9498f41534380b4d1a02524bd46ea5564a94c656110c123cee0e6",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+          "immutableArchiveUsed": false
+        }
+      },
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        831,
+        959
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        531,
+        33,
+        1090,
+        959
+      ],
+      "sha256": "3cc36db175643cd20f68a1fb9c1c7d5e8e6c07f50e354fae0445225cdd20bd12",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-70004aea-3d5b-4ee4-90aa-f33f4cfadf1b.png",
+      "review": "Upright hovering idle, two empty hands down. Youthful clean-shaven sorrowful human face, gray-brown hair, blue-gray scarf/coat, brown near-side pouch/belt, brass fittings and compact ochre lower wisp retained. Selected original near-opaque attempt-01 to match all three action frames; meaningful translucent attempt-02 remains preserved separately."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "b4eaac07e515c3203d6185b4f07c4fa09e375176f6d6bfdad1711ffe077a0d44",
+      "verifiedGenerationReferences": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/master.png": {
+          "sha256": "0e29d6bfde0d6441d28fec9a9bbb63819f5dbeb66a560aad7fc31bc1ae027e7d",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/attempt-02/master.png",
+          "immutableArchiveUsed": true
+        }
+      },
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-a/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        833,
+        926
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        373,
+        59,
+        1230,
+        927
+      ],
+      "sha256": "4213659c5cdc0110f1d3c4799aa4e4d1c5df9f40c983c0ab74cb0bfdbdd16476",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f4f21d63-5361-49fd-822d-68dd27496350.png",
+      "review": "Relaxed forward hover, far arm extended low to the right and near arm trailing; connected lower wisp curls left. Two empty hands, no invented planted boots. Source face, scarf, pouch and coat retained. Native, white and black views inspected."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "6d0c50cc64086da968a71ec15c58467fae7e1ab4ac324bc7bf27237be720c1e5",
+      "verifiedGenerationReferences": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/attempt-02/master.png": {
+          "sha256": "0e29d6bfde0d6441d28fec9a9bbb63819f5dbeb66a560aad7fc31bc1ae027e7d",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/attempt-02/master.png",
+          "immutableArchiveUsed": false
+        }
+      },
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/attack/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        694,
+        949
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        364,
+        36,
+        1363,
+        950
+      ],
+      "sha256": "d2b95c9404061a89561541cbb242c1de6abd05b36fe21273ebebc2002afb9da5",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a9209fac-7eb1-4c04-98bc-c89bdde39f3b.png",
+      "review": "Clear extended open far palm toward screen-right, torso leaning forward, near empty hand balancing low; exactly two arms/hands and readable fingers. Lower connected wisp trails behind. No physical weapon, orb, rune, beam or independent ghost-touch FX."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "ba09b719e158a2da06116fcc9aae61468f36d478e879f06faeb65c1b187d4567",
+      "verifiedGenerationReferences": {
+        "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-b/attempt-01/master.png": {
+          "sha256": "3523863c97c81230328581ad4a4b49f51722afc71f2fce8c6fdb962cd0d88ed5",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-b/attempt-01/master.png",
+          "immutableArchiveUsed": false
+        },
+        "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/attempt-01/master.png": {
+          "sha256": "3cc36db175643cd20f68a1fb9c1c7d5e8e6c07f50e354fae0445225cdd20bd12",
+          "verifiedAt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/idle/attempt-01/master.png",
+          "immutableArchiveUsed": false
+        }
+      },
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/ghost/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        714,
+        950
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        534,
+        39,
+        1183,
+        950
+      ],
+      "sha256": "f31a9cba04426ecef6f037a54be770f83051daa57fa854cb0639a6eac490ef0d",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-43015e12-d3fb-4f77-8751-da7026acad39.png",
+      "review": "Opposite relaxed near-arm-forward/far-arm-back hover and lower wisp curling right. Selected attempt-02 restores scarf tails to the original left side and removes the erroneously mirrored right hip pouch. The original near-side pouch is naturally mostly occluded by the forward hand; only its brown edge remains visible. Coordinator accepted this occlusion. Head/hair/camera and rightward wisp action preserved."
+    }
+  },
+  "coordinatorSequenceApproval": "Coordinator 2026-10-19 20:43 UTC reviewed native common-scale quartet: identity, opposite curling hover phases and extended-palm attack pass. Selected idle attempt-01 matches other poses near-opaque body alpha; successful translucent attempt-02 retained as alternate evidence only. Shared44/927, measured floating anchors and full-canvas registration accepted. Actual c01-11 BoardView verification and formal binding are coordinator-owned and still underway.",
+  "quartetManifest": "bundle-manifest.json"
+}

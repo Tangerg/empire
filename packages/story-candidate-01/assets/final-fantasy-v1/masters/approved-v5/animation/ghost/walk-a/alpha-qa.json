@@ -34,11 +34,7 @@
       927
     ],
     "lowestConnectedWispY": 926,
-    "bottomFourRowsMeanX": 562.5620437956204,
-    "tipOnlyHoverAnchor": [
-      563,
-      926
-    ]
+    "bottomFourRowsMeanXDiagnosticOnly": 562.5620437956204
   },
   "interiorAlphaProbes": [
     {
@@ -66,7 +62,7 @@
       "median": 253.0
     },
     {
-      "name": "near-arm",
+      "name": "arm",
       "rectangle": [
         625,
         435,
@@ -90,5 +86,70 @@
       "median": 253.0
     }
   ],
-  "semanticReview": "Rightward hover with lower connected wisp trailing left, far empty hand forward and near hand trailing back/down. Original face, scarf, coat, belt/pouch and bounded ochre wisps retained. No physical boots or added weapon. Native and white/dark composites pending visual inspection; alpha samples recorded. Because the wisp tip swings sideways, its x coordinate is not a stable physical support center; coordinator anchor-method review is needed."
+  "semanticReview": "Relaxed forward hover, far arm extended low to the right and near arm trailing; connected lower wisp curls left. Two empty hands, no invented planted boots. Source face, scarf, pouch and coat retained. Native, white and black views inspected.",
+  "suggestedSourceFoot": [
+    833,
+    926
+  ],
+  "sourceFootMidpoint": [
+    832.5,
+    926
+  ],
+  "virtualAnchorNotFootContact": true,
+  "beltBuckleLandmark": {
+    "inspectionROI": [
+      837,
+      536,
+      902,
+      592
+    ],
+    "goldBoundsInclusive": [
+      841,
+      539,
+      895,
+      585
+    ],
+    "centerX": 868.0,
+    "fixedIdleCalibrationOffsetX": -35.5,
+    "calibratedSourceXBeforeRounding": 832.5
+  },
+  "negativeSpaceProbes": [
+    {
+      "name": "near-arm-torso",
+      "rectangle": [
+        680,
+        510,
+        687,
+        517
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49,
+      "pixelsAlphaGreaterThan1": 0
+    },
+    {
+      "name": "under-far-arm",
+      "rectangle": [
+        980,
+        575,
+        987,
+        582
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49,
+      "pixelsAlphaGreaterThan1": 0
+    },
+    {
+      "name": "lower-curl",
+      "rectangle": [
+        590,
+        825,
+        597,
+        832
+      ],
+      "maxAlpha": 1,
+      "zeroPixels": 41,
+      "pixelsAlphaGreaterThan1": 0
+    }
+  ],
+  "selectedBodyAlpha": "Near opaque interiors; meaningful partial alpha of idle attempt-02 deliberately not mixed into selected animation."
 }

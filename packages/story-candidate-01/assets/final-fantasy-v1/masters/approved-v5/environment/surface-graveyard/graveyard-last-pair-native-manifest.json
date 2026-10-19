@@ -1,12 +1,53 @@
 {
   "atlas": "surface-graveyard",
-  "status": "native source candidates, parent scene review pending",
-  "original_atlas_contract": "4 x 1, 32 logical / 64 HD; continuous opaque ground, no source foot",
-  "world_period_proposal": [
+  "status": "all four native opaque material candidates saved; parent sampling and scene review pending",
+  "native_pixels_untouched": true,
+  "all_native_raw_master_sha256_verified": true,
+  "all_exact_prompt_sha256_verified": true,
+  "full_native_canvas": [
+    1254,
+    1254
+  ],
+  "all_pixels_opaque": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "source_period_candidate": [
     256,
     256
   ],
-  "sources": [
+  "parent_direction": "256 world period is the first scene-trial proposal; source soil moody but not black, sparse grouped detail; parent owns seam/world sampling",
+  "original_atlas_contract": {
+    "columns": 4,
+    "rows": 1,
+    "logical_cell": [
+      32,
+      32
+    ],
+    "hd_cell": [
+      64,
+      64
+    ],
+    "cellOrder": [
+      "graveyard-1",
+      "graveyard-2",
+      "graveyard-3",
+      "graveyard-4"
+    ]
+  },
+  "actual_consumers": {
+    "graveyard-1": {
+      "c01-11": 258,
+      "c01-16": 296
+    },
+    "graveyard-2": "catalog-only",
+    "graveyard-3": "catalog-only",
+    "graveyard-4": "catalog-only"
+  },
+  "c01-12_graveyard_count": 0,
+  "no_seamlessness_claim": true,
+  "no_repository_edits": true,
+  "asset_count": 2,
+  "entries": [
     {
       "atlas": "surface-graveyard",
       "cell_index": 2,
@@ -81,7 +122,5 @@
         "native_acceptance": "Opaque/dimensions passed; catalog-only material candidate, no scene binding or seamlessness claim."
       }
     }
-  ],
-  "native_pixels_untouched": true,
-  "no_repository_edits": true
+  ]
 }

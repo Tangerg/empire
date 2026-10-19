@@ -27,24 +27,14 @@
   "postprocessing": "none; native source copied byte-for-byte",
   "coherentBodyMeasurement": {
     "alphaThresholdGreaterThan": 64,
-    "method": "Largest 8-connected alpha>64 component, excluding detached fragments; no source pixels changed. Crown to lowest connected wisp defines pilot height.",
     "bounds": [
       531,
       32,
       1050,
       960
     ],
-    "crownY": 32,
-    "connectedWispTipY": 959,
-    "bodyHeight": 927,
-    "bodyTargetLogical": 44,
-    "proposedScale": 0.04746494066882417,
-    "suggestedVirtualHoverAnchor": [
-      831,
-      959
-    ],
-    "bottomFourRowsMeanX": 831.1111111111111,
-    "notPhysicalFootContact": true
+    "lowestConnectedWispY": 959,
+    "bottomFourRowsMeanXDiagnosticOnly": 831.1111111111111
   },
   "interiorAlphaProbes": [
     {
@@ -57,8 +47,7 @@
       ],
       "min": 252,
       "max": 253,
-      "median": 253.0,
-      "pixelCount": 10000
+      "median": 253.0
     },
     {
       "name": "chest",
@@ -70,8 +59,7 @@
       ],
       "min": 252,
       "max": 253,
-      "median": 253.0,
-      "pixelCount": 5850
+      "median": 253.0
     },
     {
       "name": "arm",
@@ -83,13 +71,24 @@
       ],
       "min": 245,
       "max": 253,
-      "median": 253.0,
-      "pixelCount": 1400
+      "median": 253.0
+    },
+    {
+      "name": "lower-wisp",
+      "rectangle": [
+        795,
+        825,
+        820,
+        850
+      ],
+      "min": 252,
+      "max": 253,
+      "median": 253.0
     }
   ],
   "negativeSpaceProbes": [
     {
-      "name": "left-arm-torso-gap",
+      "name": "near-arm-torso",
       "rectangle": [
         692,
         502,
@@ -97,24 +96,65 @@
         509
       ],
       "maxAlpha": 0,
-      "zeroPixels": 49
+      "zeroPixels": 49,
+      "pixelsAlphaGreaterThan1": 0
     },
     {
-      "name": "lower-wisp-curl-gap",
+      "name": "far-arm-torso",
       "rectangle": [
-        773,
-        888,
-        780,
-        895
+        951,
+        624,
+        958,
+        631
+      ],
+      "maxAlpha": 1,
+      "zeroPixels": 42,
+      "pixelsAlphaGreaterThan1": 0
+    },
+    {
+      "name": "lower-curl",
+      "rectangle": [
+        775,
+        887,
+        782,
+        894
       ],
       "maxAlpha": 0,
-      "zeroPixels": 49
+      "zeroPixels": 49,
+      "pixelsAlphaGreaterThan1": 0
     }
   ],
-  "semanticReview": "Original youthful bare human face, gray-brown tousled hair, sad expression, blue-gray scarf and armored coat, brown straps/belt/pouch, empty hands and warm ochre curling lower-body wisp remain. Native, white and black views inspected. Apparent spectral color is present, but substantial interior probes have alpha252\u2013253, about99% opacity, so the requested meaningful 70\u201385% body opacity is NOT achieved. No external haze above alpha1; native perimeter gate passes. No programmatic alpha changes.",
+  "semanticReview": "Upright hovering idle, two empty hands down. Youthful clean-shaven sorrowful human face, gray-brown hair, blue-gray scarf/coat, brown near-side pouch/belt, brass fittings and compact ochre lower wisp retained. Selected original near-opaque attempt-01 to match all three action frames; meaningful translucent attempt-02 remains preserved separately.",
   "requestedBodyTranslucencyAchieved": false,
   "status": "Identity pilot generated; body translucency requirement failed, bounded native correction proposed",
-  "alphaTargetClarification": "The 70\u201385% interior-opacity range was a worker prompt target, not a user-specified acceptance threshold. Coordinator 20:26 UTC permits one bounded native correction and will select the better legal native version using outer transparency, ghost semantics, readability and contained wisps; no repeated opacity-target rerolls.",
+  "alphaTargetClarification": "The 70–85% interior-opacity range was a worker prompt target, not a user-specified acceptance threshold. Coordinator 20:26 UTC permits one bounded native correction and will select the better legal native version using outer transparency, ghost semantics, readability and contained wisps; no repeated opacity-target rerolls.",
   "selectedAttempt": "attempt-01",
-  "selectionStatus": "preferred consistent-alpha candidate pending common-scale quartet review"
+  "selectionStatus": "preferred consistent-alpha candidate pending common-scale quartet review",
+  "suggestedSourceFoot": [
+    831,
+    959
+  ],
+  "sourceFootMidpoint": [
+    831.0,
+    959
+  ],
+  "virtualAnchorNotFootContact": true,
+  "beltBuckleLandmark": {
+    "inspectionROI": [
+      837,
+      507,
+      899,
+      562
+    ],
+    "goldBoundsInclusive": [
+      842,
+      512,
+      891,
+      555
+    ],
+    "centerX": 866.5,
+    "fixedIdleCalibrationOffsetX": -35.5,
+    "calibratedSourceXBeforeRounding": 831.0
+  },
+  "selectedBodyAlpha": "Near opaque interiors; meaningful partial alpha of idle attempt-02 deliberately not mixed into selected animation."
 }

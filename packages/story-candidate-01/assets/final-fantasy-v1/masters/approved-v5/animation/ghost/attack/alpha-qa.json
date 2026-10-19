@@ -24,5 +24,132 @@
   "alphaOnePixels": 12232,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "suggestedSourceFoot": [
+    694,
+    949
+  ],
+  "sourceFootMidpoint": [
+    694.0,
+    949
+  ],
+  "virtualAnchorNotFootContact": true,
+  "coherentBodyMeasurement": {
+    "alphaThresholdGreaterThan": 64,
+    "bounds": [
+      376,
+      36,
+      1363,
+      950
+    ],
+    "lowestConnectedWispY": 949,
+    "bottomFourRowsMeanXDiagnosticOnly": 578.7857142857143
+  },
+  "beltBuckleLandmark": {
+    "inspectionROI": [
+      697,
+      514,
+      764,
+      569
+    ],
+    "goldBoundsInclusive": [
+      699,
+      516,
+      760,
+      565
+    ],
+    "centerX": 729.5,
+    "fixedIdleCalibrationOffsetX": -35.5,
+    "calibratedSourceXBeforeRounding": 694.0
+  },
+  "interiorAlphaProbes": [
+    {
+      "name": "face",
+      "rectangle": [
+        810,
+        170,
+        900,
+        250
+      ],
+      "min": 253,
+      "max": 254,
+      "median": 253.0
+    },
+    {
+      "name": "chest",
+      "rectangle": [
+        710,
+        410,
+        780,
+        460
+      ],
+      "min": 253,
+      "max": 253,
+      "median": 253.0
+    },
+    {
+      "name": "arm",
+      "rectangle": [
+        1050,
+        330,
+        1110,
+        365
+      ],
+      "min": 252,
+      "max": 253,
+      "median": 253.0
+    },
+    {
+      "name": "lower-wisp",
+      "rectangle": [
+        540,
+        775,
+        590,
+        810
+      ],
+      "min": 252,
+      "max": 253,
+      "median": 253.0
+    }
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "near-arm-torso",
+      "rectangle": [
+        560,
+        435,
+        567,
+        442
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49,
+      "pixelsAlphaGreaterThan1": 0
+    },
+    {
+      "name": "near-hand-pouch",
+      "rectangle": [
+        512,
+        510,
+        519,
+        517
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49,
+      "pixelsAlphaGreaterThan1": 0
+    },
+    {
+      "name": "lower-curl",
+      "rectangle": [
+        620,
+        842,
+        627,
+        849
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49,
+      "pixelsAlphaGreaterThan1": 0
+    }
+  ],
+  "semanticReview": "Clear extended open far palm toward screen-right, torso leaning forward, near empty hand balancing low; exactly two arms/hands and readable fingers. Lower connected wisp trails behind. No physical weapon, orb, rune, beam or independent ghost-touch FX.",
+  "selectedBodyAlpha": "Near opaque interiors; meaningful partial alpha of idle attempt-02 deliberately not mixed into selected animation."
 }

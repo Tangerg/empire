@@ -1,0 +1,481 @@
+{
+  "status": "Native source and common-scale sequence accepted; actual scene integration verification underway with coordinator",
+  "topic": "C01-UNIT-GHOST",
+  "actualConsumers": [
+    "c01.ghost"
+  ],
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "registeredVirtualHoverAnchorNotFootContact": true,
+  "identityAndTwoHandsInspected": true,
+  "oppositeDriftingPhases": true,
+  "attackSemantics": "Forward empty open-palm ghost touch; independent FX remains separate.",
+  "selectedIdleAlphaReason": "All selected poses have near-opaque face/chest/arm/wisp interior median253. This matches the original source mostly-opaque central alpha. The successful translucent idle attempt-02 has chest191/arm199/wisp197 but is preserved rather than mixed with opaque action frames. No uniform true body-translucency claim for the selected quartet.",
+  "coordinatorWalkBCorrectionApproval": "2026-10-19 20:41 UTC: left pouch naturally occluded by forward hand accepted, erroneous right pouch removed and scarf side restored; select attempt-02, no more revisions.",
+  "nativeWhiteBlackViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "independentFXBakedIntoCharacter": false,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "poses": {
+    "idle": {
+      "interiorAlphaProbes": [
+        {
+          "name": "face",
+          "rectangle": [
+            800,
+            160,
+            900,
+            260
+          ],
+          "min": 252,
+          "max": 253,
+          "median": 253.0
+        },
+        {
+          "name": "chest",
+          "rectangle": [
+            790,
+            410,
+            880,
+            475
+          ],
+          "min": 252,
+          "max": 253,
+          "median": 253.0
+        },
+        {
+          "name": "arm",
+          "rectangle": [
+            610,
+            420,
+            645,
+            460
+          ],
+          "min": 245,
+          "max": 253,
+          "median": 253.0
+        },
+        {
+          "name": "lower-wisp",
+          "rectangle": [
+            795,
+            825,
+            820,
+            850
+          ],
+          "min": 252,
+          "max": 253,
+          "median": 253.0
+        }
+      ],
+      "negativeSpaceProbes": [
+        {
+          "name": "near-arm-torso",
+          "rectangle": [
+            692,
+            502,
+            699,
+            509
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49,
+          "pixelsAlphaGreaterThan1": 0
+        },
+        {
+          "name": "far-arm-torso",
+          "rectangle": [
+            951,
+            624,
+            958,
+            631
+          ],
+          "maxAlpha": 1,
+          "zeroPixels": 42,
+          "pixelsAlphaGreaterThan1": 0
+        },
+        {
+          "name": "lower-curl",
+          "rectangle": [
+            775,
+            887,
+            782,
+            894
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49,
+          "pixelsAlphaGreaterThan1": 0
+        }
+      ],
+      "sourceVirtualAnchor": [
+        831,
+        959
+      ],
+      "landmark": {
+        "inspectionROI": [
+          837,
+          507,
+          899,
+          562
+        ],
+        "goldBoundsInclusive": [
+          842,
+          512,
+          891,
+          555
+        ],
+        "centerX": 866.5,
+        "fixedIdleCalibrationOffsetX": -35.5,
+        "calibratedSourceXBeforeRounding": 831.0
+      },
+      "perimeterCountAlphaGreaterThan1": 0
+    },
+    "walk-a": {
+      "interiorAlphaProbes": [
+        {
+          "name": "face",
+          "rectangle": [
+            850,
+            180,
+            930,
+            265
+          ],
+          "min": 252,
+          "max": 254,
+          "median": 253.0
+        },
+        {
+          "name": "chest",
+          "rectangle": [
+            830,
+            440,
+            900,
+            505
+          ],
+          "min": 252,
+          "max": 254,
+          "median": 253.0
+        },
+        {
+          "name": "arm",
+          "rectangle": [
+            625,
+            435,
+            655,
+            475
+          ],
+          "min": 252,
+          "max": 253,
+          "median": 253.0
+        },
+        {
+          "name": "lower-wisp",
+          "rectangle": [
+            500,
+            755,
+            550,
+            780
+          ],
+          "min": 252,
+          "max": 253,
+          "median": 253.0
+        }
+      ],
+      "negativeSpaceProbes": [
+        {
+          "name": "near-arm-torso",
+          "rectangle": [
+            680,
+            510,
+            687,
+            517
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49,
+          "pixelsAlphaGreaterThan1": 0
+        },
+        {
+          "name": "under-far-arm",
+          "rectangle": [
+            980,
+            575,
+            987,
+            582
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49,
+          "pixelsAlphaGreaterThan1": 0
+        },
+        {
+          "name": "lower-curl",
+          "rectangle": [
+            590,
+            825,
+            597,
+            832
+          ],
+          "maxAlpha": 1,
+          "zeroPixels": 41,
+          "pixelsAlphaGreaterThan1": 0
+        }
+      ],
+      "sourceVirtualAnchor": [
+        833,
+        926
+      ],
+      "landmark": {
+        "inspectionROI": [
+          837,
+          536,
+          902,
+          592
+        ],
+        "goldBoundsInclusive": [
+          841,
+          539,
+          895,
+          585
+        ],
+        "centerX": 868.0,
+        "fixedIdleCalibrationOffsetX": -35.5,
+        "calibratedSourceXBeforeRounding": 832.5
+      },
+      "perimeterCountAlphaGreaterThan1": 0
+    },
+    "attack": {
+      "interiorAlphaProbes": [
+        {
+          "name": "face",
+          "rectangle": [
+            810,
+            170,
+            900,
+            250
+          ],
+          "min": 253,
+          "max": 254,
+          "median": 253.0
+        },
+        {
+          "name": "chest",
+          "rectangle": [
+            710,
+            410,
+            780,
+            460
+          ],
+          "min": 253,
+          "max": 253,
+          "median": 253.0
+        },
+        {
+          "name": "arm",
+          "rectangle": [
+            1050,
+            330,
+            1110,
+            365
+          ],
+          "min": 252,
+          "max": 253,
+          "median": 253.0
+        },
+        {
+          "name": "lower-wisp",
+          "rectangle": [
+            540,
+            775,
+            590,
+            810
+          ],
+          "min": 252,
+          "max": 253,
+          "median": 253.0
+        }
+      ],
+      "negativeSpaceProbes": [
+        {
+          "name": "near-arm-torso",
+          "rectangle": [
+            560,
+            435,
+            567,
+            442
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49,
+          "pixelsAlphaGreaterThan1": 0
+        },
+        {
+          "name": "near-hand-pouch",
+          "rectangle": [
+            512,
+            510,
+            519,
+            517
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49,
+          "pixelsAlphaGreaterThan1": 0
+        },
+        {
+          "name": "lower-curl",
+          "rectangle": [
+            620,
+            842,
+            627,
+            849
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49,
+          "pixelsAlphaGreaterThan1": 0
+        }
+      ],
+      "sourceVirtualAnchor": [
+        694,
+        949
+      ],
+      "landmark": {
+        "inspectionROI": [
+          697,
+          514,
+          764,
+          569
+        ],
+        "goldBoundsInclusive": [
+          699,
+          516,
+          760,
+          565
+        ],
+        "centerX": 729.5,
+        "fixedIdleCalibrationOffsetX": -35.5,
+        "calibratedSourceXBeforeRounding": 694.0
+      },
+      "perimeterCountAlphaGreaterThan1": 0
+    },
+    "walk-b": {
+      "interiorAlphaProbes": [
+        {
+          "name": "face",
+          "rectangle": [
+            765,
+            170,
+            825,
+            240
+          ],
+          "min": 253,
+          "max": 254,
+          "median": 253.0
+        },
+        {
+          "name": "chest",
+          "rectangle": [
+            705,
+            410,
+            775,
+            465
+          ],
+          "min": 253,
+          "max": 253,
+          "median": 253.0
+        },
+        {
+          "name": "arm",
+          "rectangle": [
+            895,
+            395,
+            925,
+            435
+          ],
+          "min": 253,
+          "max": 253,
+          "median": 253.0
+        },
+        {
+          "name": "lower-wisp",
+          "rectangle": [
+            1005,
+            765,
+            1055,
+            795
+          ],
+          "min": 252,
+          "max": 253,
+          "median": 253.0
+        }
+      ],
+      "negativeSpaceProbes": [
+        {
+          "name": "near-arm-gap",
+          "rectangle": [
+            613,
+            604,
+            620,
+            611
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49,
+          "pixelsAlphaGreaterThan1": 0
+        },
+        {
+          "name": "far-arm-gap",
+          "rectangle": [
+            930,
+            605,
+            937,
+            612
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49,
+          "pixelsAlphaGreaterThan1": 0
+        },
+        {
+          "name": "lower-curl",
+          "rectangle": [
+            936,
+            837,
+            943,
+            844
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49,
+          "pixelsAlphaGreaterThan1": 0
+        }
+      ],
+      "sourceVirtualAnchor": [
+        714,
+        950
+      ],
+      "landmark": {
+        "inspectionROI": [
+          720,
+          503,
+          783,
+          560
+        ],
+        "goldBoundsInclusive": [
+          725,
+          510,
+          774,
+          553
+        ],
+        "centerX": 749.5,
+        "fixedIdleCalibrationOffsetX": -35.5,
+        "calibratedSourceXBeforeRounding": 714.0
+      },
+      "perimeterCountAlphaGreaterThan1": 0
+    }
+  },
+  "recommendedRegistrationLimitLogicalPixels": 7,
+  "allFullCanvasesFit": true,
+  "alphaGapCaveat": "All12 gap probes have zero pixels alpha>1. Eleven have49 alpha0 pixels; walk-a lower-curl probe has41 alpha0 and8 native alpha1 pixels. These native specks remain unchanged.",
+  "uniformScaleProof": "qa-common-scale/review-2x.png is diagnostic only: same44/927 affine transform on whole canvases, measured translation, bicubic resampling; white/black backgrounds and nearest2x display. Never used as native master.",
+  "coordinatorSequenceApproval": "Coordinator 2026-10-19 20:43 UTC reviewed native common-scale quartet: identity, opposite curling hover phases and extended-palm attack pass. Selected idle attempt-01 matches other poses near-opaque body alpha; successful translucent attempt-02 retained as alternate evidence only. Shared44/927, measured floating anchors and full-canvas registration accepted. Actual c01-11 BoardView verification and formal binding are coordinator-owned and still underway.",
+  "quartetManifest": "bundle-manifest.json"
+}

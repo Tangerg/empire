@@ -1,0 +1,200 @@
+{
+  "atlas": "surface-graveyard",
+  "status": "all four native opaque material candidates saved; parent sampling and scene review pending",
+  "asset_count": 4,
+  "entries": [
+    {
+      "atlas": "surface-graveyard",
+      "cell_index": 0,
+      "original_cellOrder_token": "graveyard-1",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-be67dcc0-5c14-4e90-80ea-cf330d26b040.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/graveyard-1-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/source-contract.json",
+      "sha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "proposed_world_period": [
+        256,
+        256
+      ],
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Warm dark-brown compact soil with gray-brown angular stone groups and sparse dry ochre tufts, fully continuous opaque material. No added cemetery objects or wet pools.",
+        "detail_density": "Roughly 15-20 recognizable accent groups, including about 9 tufts; original many tiny stones greatly reduced. Soil still has low-contrast fine mottling and ragged micro edges rather than the completely flat clean interiors requested.",
+        "scale_caveat": "Main stone faces and tuft groups are larger than the proposed 2-6 world-unit accent size: roughly 6-14 units at 256 world period. This is a measured visual estimate, not a registration constraint.",
+        "style_caveat": "Chunky stones but tufts have several small pointed leaves and ground has residual fine texture. Parent review at proposed world scale is needed; source preserved unchanged.",
+        "native_acceptance": "Opaque/dimensions passed, semantic identity retained; source candidate, not claimed scene acceptance or seamlessness."
+      }
+    },
+    {
+      "atlas": "surface-graveyard",
+      "cell_index": 1,
+      "original_cellOrder_token": "graveyard-2",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-a59200e1-1473-4167-a459-a2044a400221.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/graveyard-2-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/source-contract.json",
+      "sha256": "c2b4a95030ef6433f003b9966e654dc5c9e86089492e686de986c56cf2317bfa",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "proposed_world_period": [
+        256,
+        256
+      ],
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Cool muted green-gray earthy ground with sparse dry tufts, small gray stone groups and exactly two simplified bare branch/root-like forms. No cemetery objects, glow or pools.",
+        "detail_density": "About 18-22 scattered accent groups. Stone groups and tufts are much sparser than the original, but broad soil patches still carry low-contrast fine mottling and small ragged boundaries.",
+        "scale_caveat": "Main stone faces and tuft groups read about 6-16 world units at a 256-unit source period, larger than the proposed 2-6 units. The two twig groups span around 18-23 units. Scale remains a scene-trial decision.",
+        "style_caveat": "Quiet matte palette and broad base patches; residual microtexture and pointed tuft leaves remain. Not the completely smooth paper-plane soil requested.",
+        "native_acceptance": "Opaque/dimensions passed and material identity retained; parent scene review pending. No seamlessness claim."
+      }
+    },
+    {
+      "atlas": "surface-graveyard",
+      "cell_index": 2,
+      "original_cellOrder_token": "graveyard-3",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-033e6c29-0e50-48b1-a36e-53e578a7cc2d.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/graveyard-3-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/source-contract.json",
+      "sha256": "4907b41c455f1ef7413cb61833537e0c91b02d483253aee4b6ce07337f9fa36d",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "proposed_world_period": [
+        256,
+        256
+      ],
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Lighter dusty gray-brown/ochre soil with scattered gray angular stones; pale original root-or-crack ambiguity becomes subdued irregular soil seams, without invented large root objects or fitted pavement.",
+        "detail_density": "About 18-22 larger scattered stone accent groups plus some separate small stones. Roughly 6 small simplified tufts remain although the prompt requested nearly absent tufts.",
+        "scale_caveat": "Larger stone faces span about 7-14 world units at a 256-unit source period; smaller companions read around 2-5 units. Broad soil seams and mottled micro edges remain.",
+        "style_caveat": "Simple matte stones and readable broad earth color identity; residual fine low-contrast soil texture instead of wholly clean interiors. Very small added tufts are decorative variation, not a semantic change.",
+        "native_acceptance": "Opaque/dimensions passed; catalog-only variant with parent review pending, no seamlessness claim."
+      }
+    },
+    {
+      "atlas": "surface-graveyard",
+      "cell_index": 3,
+      "original_cellOrder_token": "graveyard-4",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-316a8a32-0180-4ecf-ab1d-9d633ec05879.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-4/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-4/master.png",
+      "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-4/graveyard-4-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-4/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-4/material-qa.json",
+      "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-4/alpha-qa.json",
+      "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-4/source-evidence.json",
+      "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/source-contract.json",
+      "sha256": "f5e36939f16779d93cfec61322f0d27c76c11276866c0df43cbf34b5ddfb09d3",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "native_mode": "RGB",
+      "fully_opaque": true,
+      "native_pixels_untouched": true,
+      "sourceFoot": null,
+      "anchor": null,
+      "proposed_world_period": [
+        256,
+        256
+      ],
+      "world_period_and_seam_integration_owner": "parent",
+      "production_status": "native candidate, not bound",
+      "visual_review": {
+        "identity": "Deep cool charcoal-gray compact rocky soil, subdued gray embedded stone groups and sparse pale dry tufts. Cool dark-gray identity retained without black pools, lava, glow or cemetery objects.",
+        "detail_density": "About 20-24 distinct small accent groups, including 7 dry tufts. Broad soil values are quiet, with residual fine mottling and small ragged boundaries.",
+        "scale_caveat": "Most main stone faces span around 7-13 world units and tuft groups around 9-18 at the proposed 256-unit period; sparse but larger than the initial 2-6-unit guidance.",
+        "style_caveat": "Matte grouped stones and sparse tufts; soil remains more textured than the flat approved earth-plane reference. This is documented for scale review rather than changed by filtering.",
+        "native_acceptance": "Opaque/dimensions passed; catalog-only material candidate, no scene binding or seamlessness claim."
+      }
+    }
+  ],
+  "native_pixels_untouched": true,
+  "all_native_raw_master_sha256_verified": true,
+  "all_exact_prompt_sha256_verified": true,
+  "full_native_canvas": [
+    1254,
+    1254
+  ],
+  "all_pixels_opaque": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "source_period_candidate": [
+    256,
+    256
+  ],
+  "parent_direction": "256 world period is the first scene-trial proposal; source soil moody but not black, sparse grouped detail; parent owns seam/world sampling",
+  "original_atlas_contract": {
+    "columns": 4,
+    "rows": 1,
+    "logical_cell": [
+      32,
+      32
+    ],
+    "hd_cell": [
+      64,
+      64
+    ],
+    "cellOrder": [
+      "graveyard-1",
+      "graveyard-2",
+      "graveyard-3",
+      "graveyard-4"
+    ]
+  },
+  "actual_consumers": {
+    "graveyard-1": {
+      "c01-11": 258,
+      "c01-16": 296
+    },
+    "graveyard-2": "catalog-only",
+    "graveyard-3": "catalog-only",
+    "graveyard-4": "catalog-only"
+  },
+  "c01-12_graveyard_count": 0,
+  "no_seamlessness_claim": true,
+  "no_repository_edits": true
+}

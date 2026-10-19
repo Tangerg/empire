@@ -1,0 +1,337 @@
+{
+  "status": "Native source and common-scale sequence accepted; actual scene integration verification underway with coordinator",
+  "sharedScale": 0.04746494066882417,
+  "scaleFraction": "44/927",
+  "bodyReferenceSourcePixels": 927,
+  "bodyTargetHeightLogicalPixels": 44,
+  "canonicalSourceFoot": [
+    831,
+    959
+  ],
+  "virtualAnchorNotPhysicalFootContact": true,
+  "commonSourceCanvas": [
+    1586,
+    992
+  ],
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "canvasPaddingToleranceRequired": 1,
+  "maximumPadRight": 1,
+  "maximumPadBottom": 0,
+  "paddingPolicy": "Only selected walk-b is native1585x992 and requires one transparent right column at export; all other native canvases1586x992. Originals remain unmodified.",
+  "registrationMethod": "Read-only gold belt-buckle center x calibrated to canonical idle x831, using fixed -35.5 native-pixel offset. Lowest pixel y of largest8-connected alpha>64 body component supplies hover anchor y; detached fragments excluded. Tail-tip x is diagnostic only and does not move the torso. Round final source x half-up to integer; one shared full-canvas scale, no individual fitting.",
+  "landmarkMask": "Within documented manually inspected buckle ROI only: R>150, G>105, B<145, G-B>35, R-G<100. Gold bounds are inclusive. No source pixels changed.",
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        831,
+        959
+      ],
+      "unroundedCalibratedAnchor": [
+        831.0,
+        959
+      ],
+      "beltBuckleLandmark": {
+        "inspectionROI": [
+          837,
+          507,
+          899,
+          562
+        ],
+        "goldBoundsInclusive": [
+          842,
+          512,
+          891,
+          555
+        ],
+        "centerX": 866.5,
+        "fixedIdleCalibrationOffsetX": -35.5,
+        "calibratedSourceXBeforeRounding": 831.0
+      },
+      "connectedBodyBounds": [
+        531,
+        32,
+        1050,
+        960
+      ],
+      "tailTipXDiagnosticOnly": 831.1111111111111,
+      "registrationOffsetSource": [
+        0,
+        0
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        531,
+        33,
+        1090,
+        959
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        0,
+        22,
+        1550,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        33.20388349514563,
+        5.566343042071198,
+        59.73678532901834,
+        49.51887810140238
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.0,
+        4.0,
+        83.27939590075513,
+        51.085221143473575
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterMaxAlpha": 1,
+      "perimeterCountAlphaGreaterThan1": 0
+    },
+    "walk-a": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        833,
+        926
+      ],
+      "unroundedCalibratedAnchor": [
+        832.5,
+        926
+      ],
+      "beltBuckleLandmark": {
+        "inspectionROI": [
+          837,
+          536,
+          902,
+          592
+        ],
+        "goldBoundsInclusive": [
+          841,
+          539,
+          895,
+          585
+        ],
+        "centerX": 868.0,
+        "fixedIdleCalibrationOffsetX": -35.5,
+        "calibratedSourceXBeforeRounding": 832.5
+      },
+      "connectedBodyBounds": [
+        445,
+        59,
+        1221,
+        927
+      ],
+      "tailTipXDiagnosticOnly": 562.5620437956204,
+      "registrationOffsetSource": [
+        -2,
+        33
+      ],
+      "registrationOffsetLogical": [
+        -0.09492988133764833,
+        1.5663430420711975
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        373,
+        59,
+        1230,
+        927
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        27,
+        23,
+        1518,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        25.609492988133766,
+        8.366774541531823,
+        66.28694714131608,
+        49.566343042071196
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        7.905070118662351,
+        5.566343042071198,
+        83.18446601941748,
+        52.65156418554477
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterMaxAlpha": 1,
+      "perimeterCountAlphaGreaterThan1": 0
+    },
+    "attack": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        694,
+        949
+      ],
+      "unroundedCalibratedAnchor": [
+        694.0,
+        949
+      ],
+      "beltBuckleLandmark": {
+        "inspectionROI": [
+          697,
+          514,
+          764,
+          569
+        ],
+        "goldBoundsInclusive": [
+          699,
+          516,
+          760,
+          565
+        ],
+        "centerX": 729.5,
+        "fixedIdleCalibrationOffsetX": -35.5,
+        "calibratedSourceXBeforeRounding": 694.0
+      },
+      "connectedBodyBounds": [
+        376,
+        36,
+        1363,
+        950
+      ],
+      "tailTipXDiagnosticOnly": 578.7857142857143,
+      "registrationOffsetSource": [
+        137,
+        10
+      ],
+      "registrationOffsetLogical": [
+        6.502696871628911,
+        0.4746494066882417
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        364,
+        36,
+        1363,
+        950
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        59,
+        33,
+        1530,
+        960
+      ],
+      "proposedLogicalVisibleBounds": [
+        31.779935275080906,
+        6.183387270765912,
+        79.19741100323625,
+        49.5663430420712
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        14.50269687162891,
+        4.474649406688242,
+        89.78209277238405,
+        51.55987055016182
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterMaxAlpha": 0,
+      "perimeterCountAlphaGreaterThan1": 0
+    },
+    "walk-b": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        714,
+        950
+      ],
+      "unroundedCalibratedAnchor": [
+        714.0,
+        950
+      ],
+      "beltBuckleLandmark": {
+        "inspectionROI": [
+          720,
+          503,
+          783,
+          560
+        ],
+        "goldBoundsInclusive": [
+          725,
+          510,
+          774,
+          553
+        ],
+        "centerX": 749.5,
+        "fixedIdleCalibrationOffsetX": -35.5,
+        "calibratedSourceXBeforeRounding": 714.0
+      },
+      "connectedBodyBounds": [
+        590,
+        39,
+        1120,
+        951
+      ],
+      "tailTipXDiagnosticOnly": 1017.0803571428571,
+      "registrationOffsetSource": [
+        117,
+        9
+      ],
+      "registrationOffsetLogical": [
+        5.553398058252427,
+        0.4271844660194175
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        534,
+        39,
+        1183,
+        950
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        23,
+        36,
+        1517,
+        958
+      ],
+      "proposedLogicalVisibleBounds": [
+        38.89967637540453,
+        6.2783171521035595,
+        69.70442286947141,
+        49.51887810140238
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        13.553398058252426,
+        4.427184466019417,
+        88.83279395900756,
+        51.512405609492994
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterMaxAlpha": 0,
+      "perimeterCountAlphaGreaterThan1": 0
+    }
+  },
+  "requiredMaximumTranslationLogicalPixels": 6.502696871628911,
+  "recommendedRegistrationLimitLogicalPixels": 7,
+  "translationBasis": "Attack buckle center729.5 versus idle866.5 gives source horizontal shift137 and logical shift6.502696872. A measured explicit limit7 accommodates this, with every complete padded canvas fitting104x64 at origin8,4. The swinging lower-tip x is never used.",
+  "coordinatorSequenceApproval": "Coordinator 2026-10-19 20:43 UTC reviewed native common-scale quartet: identity, opposite curling hover phases and extended-palm attack pass. Selected idle attempt-01 matches other poses near-opaque body alpha; successful translucent attempt-02 retained as alternate evidence only. Shared44/927, measured floating anchors and full-canvas registration accepted. Actual c01-11 BoardView verification and formal binding are coordinator-owned and still underway.",
+  "quartetManifest": "bundle-manifest.json"
+}
