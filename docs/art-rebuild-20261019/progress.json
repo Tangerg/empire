@@ -1895,10 +1895,14 @@
     },
     {
       "topicId": "C01-EQUIP-AXE-BREAKER",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-axe-breaker/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "6b573b25898395642e5df32121dee159f12bdcb4237ab30c12337347bffe44b6"
     },
     {
       "topicId": "C01-EQUIP-BALLISTA",
@@ -1921,10 +1925,14 @@
     },
     {
       "topicId": "C01-EQUIP-BERSERKER",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-berserker/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "8696e5b9d417ed7b96aad5c9ec4ab30ed5aa4ca0a6695acdef12e4b8b0b2abda"
     },
     {
       "topicId": "C01-EQUIP-BRIDGE-TOWER-TOOLS",
