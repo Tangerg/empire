@@ -1852,10 +1852,14 @@
     },
     {
       "topicId": "C01-EQUIP-CLERIC",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-cleric/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "49cffdd51c414eac26afde9ccd395d58237761677c0f0f170f2c84b6b6aab428"
     },
     {
       "topicId": "C01-EQUIP-DRUID",
@@ -1871,10 +1875,14 @@
     },
     {
       "topicId": "C01-EQUIP-ENGINEER",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-engineer/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "14b1f52c171731991cb54cb89f231a5908a7b2d9f5bb836aaa080e12e7983536"
     },
     {
       "topicId": "C01-EQUIP-EVIDENCE-SEAL-KIT",
