@@ -1,5 +1,5 @@
 {
-  "status": "Native quartet complete; coordinator shared-scale sequence review pending, especially attack spear projection",
+  "status": "Native quartet complete with approved attack revision; coordinator final shared-scale sequence review pending",
   "topic": "C01-UNIT-WOLF-RIDER",
   "actualConsumers": [
     "c01.wolf-rider"
@@ -16,7 +16,7 @@
       992
     ],
     "attack": [
-      1586,
+      1585,
       992
     ],
     "walk-b": [
@@ -28,7 +28,7 @@
     1586,
     992
   ],
-  "sourcePaddingRequired": "Idle, attack and walk-b are native 1586x992; walk-a is 1585x992. Exactly one transparent right column at export resolves the canvas discrepancy; native sources remain unmodified.",
+  "sourcePaddingRequired": "Idle and walk-b are native 1586x992; walk-a and selected attack attempt-02 are 1585x992. Exactly one transparent right column at export resolves those two discrepancies; native sources remain unmodified.",
   "nativeMastersUnmodified": true,
   "allRawMasterNativeHashesMatch": true,
   "allExactPromptsVerified": true,
@@ -53,7 +53,7 @@
   "walkContactsOppose": true,
   "allThreeNegativeSpaceProbesPerPoseZeroAlpha": true,
   "attackSemantics": "Two-hand forward spear thrust and four-paw braced wolf lunge; no independent FX.",
-  "projectionVariationRequiresCoordinatorReview": "Native visual butt-to-tip estimates give idle spear span 820.41 source pixels, walk-a 821.77, attack 1133.76 and walk-b 807.77. Attack is visibly about 38.2% longer in projected span than idle. It was requested at the same physical length but the output differs; no exact-length continuity claim, hidden rescale or automatic foreshortening justification is made. The braced stance plus extended spear gives attack total width 84.647156 logical, versus idle 57.254555 and walks 61.733849 / 61.791276. Coordinator native shared-scale sequence review must decide whether this projection variation is acceptable or needs a bounded weapon-only correction.",
+  "acceptedProjectionRevisionAndCaveats": "Original attack attempt-01 had an excessive 1133.76px projected spear span and was rejected by the coordinator. It is preserved in attack/attempt-01. A single imagegen-only shaft shortening produced selected attempt-02 at 871.735px, versus idle 820.41, walk-a 821.77 and walk-b 807.77. This restrained 6.3% span difference from idle was approved on 2026-10-19 at 20:18 UTC. The selected tip x1391 exceeds the pilot target by 21px; coordinator explicitly accepted it without further rerolls. Minor collateral redraw differences are disclosed and accepted: paw soles +2–3px, foot [751,950] versus [753,948], forward grip approximately 15–20px left. No hidden body or weapon scaling. Attack total width is now 75.745997 logical, with the braced wolf and forward spear, compared with idle 57.254555 and walks 61.733849 / 61.791276. Final shared-scale sequence review remains coordinator-owned.",
   "semanticContract": "C01-UNIT-WOLF-RIDER binds c01.wolf-rider, with six initial campaign enemies across c01-07 and c01-08 plus the experience-lab gray-wolf actor. Dedicated original four-frame board, order idle / walk-a / attack / walk-b. Original 32x48 frame, anchor [16,47], art footprint [1,1]; no rule footprint change. Mounted wolf and two-hand spear agree with wolf-spear rules: pierce 45, melee/mounted, range 1. Preserve the original rider face, cap/braid, shoulder plate, small round side shield, pale wrapped forward hand, wolf/harness and saddle blanket. The shoulder plate disappears in the original attack and walk-b; consistent idle armor is an intentional continuity repair, not exact frame replication. Opposite wolf diagonal steps and clear braced two-hand spear thrust replace the original subtle actions. Equipment icon and C01-FX-02 stay independent.",
   "symbolContract": "No faction emblem on the plain round brown shield. Keep the small pale gray angular border marks on the rust-edged saddle blanket as observed decorative marks, without inventing runic meaning. Gold drop earring and chest tie knot are costume details, not heraldry.",
   "independentFXBakedIntoCharacter": false,
@@ -62,5 +62,6 @@
   "proposedFullCanvasFit": true,
   "runtimeOrRepositoryWrites": false,
   "weaponRulesChanged": false,
-  "gameplayFootprintChanged": false
+  "gameplayFootprintChanged": false,
+  "coordinatorAttackCorrectionApproval": "Coordinator 2026-10-19 20:18 UTC reviewed and selected attack attempt-02: shortened spear is appropriate, two-hand thrust and wolf/rider scale hold. Source paw shifts of 2–3px and forward-hand shift around 15px are accepted redraw differences, registered honestly. Tip 21px beyond the pilot target does not warrant another generation. Attempt-01 is preserved."
 }

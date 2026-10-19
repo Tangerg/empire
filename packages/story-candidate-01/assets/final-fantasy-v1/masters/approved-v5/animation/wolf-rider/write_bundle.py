@@ -6,7 +6,7 @@ poses=['idle','walk-a','attack','walk-b']
 scale=52/905.5
 canonical,canvas,frame,origin=[828,970],[1586,992],[128,80],[14,6]
 source=json.loads((b/'source-evidence.json').read_text())
-status='Native quartet complete; coordinator shared-scale sequence review pending, especially attack spear projection'
+status='Native quartet complete with approved attack revision; coordinator final shared-scale sequence review pending'
 contract=('C01-UNIT-WOLF-RIDER binds c01.wolf-rider, with six initial campaign enemies across c01-07 and c01-08 plus the experience-lab gray-wolf actor. '
           'Dedicated original four-frame board, order idle / walk-a / attack / walk-b. Original 32x48 frame, anchor [16,47], art footprint [1,1]; no rule footprint change. '
           'Mounted wolf and two-hand spear agree with wolf-spear rules: pierce 45, melee/mounted, range 1. '
@@ -16,11 +16,12 @@ contract=('C01-UNIT-WOLF-RIDER binds c01.wolf-rider, with six initial campaign e
 scale_basis=('Coordinator accepted the complete mounted silhouette at 52 logical pixels. Idle cap top y56 to mean near-side hind/fore wolf sole y961.5 gives 905.5 native pixels. '
              'One locked 52/905.5 scale applies to all full canvases. The actual idle visible width 57.254555 logical was explicitly accepted without forcing the preliminary 60 lower bound. '
              'The rider is not independently resized, and the wolf volume is not separately fitted. The wolf paw anchor, not the rider boot, determines ground registration.')
-padding='Idle, attack and walk-b are native 1586x992; walk-a is 1585x992. Exactly one transparent right column at export resolves the canvas discrepancy; native sources remain unmodified.'
-variation=('Native visual butt-to-tip estimates give idle spear span 820.41 source pixels, walk-a 821.77, attack 1133.76 and walk-b 807.77. '
-           'Attack is visibly about 38.2% longer in projected span than idle. It was requested at the same physical length but the output differs; no exact-length continuity claim, hidden rescale or automatic foreshortening justification is made. '
-           'The braced stance plus extended spear gives attack total width 84.647156 logical, versus idle 57.254555 and walks 61.733849 / 61.791276. '
-           'Coordinator native shared-scale sequence review must decide whether this projection variation is acceptable or needs a bounded weapon-only correction.')
+padding='Idle and walk-b are native 1586x992; walk-a and selected attack attempt-02 are 1585x992. Exactly one transparent right column at export resolves those two discrepancies; native sources remain unmodified.'
+variation=('Original attack attempt-01 had an excessive 1133.76px projected spear span and was rejected by the coordinator. It is preserved in attack/attempt-01. '
+           'A single imagegen-only shaft shortening produced selected attempt-02 at 871.735px, versus idle 820.41, walk-a 821.77 and walk-b 807.77. This restrained 6.3% span difference from idle was approved on 2026-10-19 at 20:18 UTC. '
+           'The selected tip x1391 exceeds the pilot target by 21px; coordinator explicitly accepted it without further rerolls. '
+           'Minor collateral redraw differences are disclosed and accepted: paw soles +2–3px, foot [751,950] versus [753,948], forward grip approximately 15–20px left. No hidden body or weapon scaling. '
+           'Attack total width is now 75.745997 logical, with the braced wolf and forward spear, compared with idle 57.254555 and walks 61.733849 / 61.791276. Final shared-scale sequence review remains coordinator-owned.')
 reg={'status':status,'sharedScale':scale,'scaleFraction':'52/905.5','bodyReferenceSourcePixels':905.5,'bodyTargetHeightLogicalPixels':52,
      'bodyMeasurement':scale_basis,'canonicalSourceFoot':canonical,'commonSourceCanvas':canvas,'paddingPolicy':padding,'canvasPaddingToleranceRequired':1,
      'maximumPadRight':1,'maximumPadBottom':0,'proposedCommonFrameSize':frame,'proposedOrigin':origin,
@@ -30,7 +31,7 @@ manifest={'asset':'C01-UNIT-WOLF-RIDER','actualConsumers':['c01.wolf-rider'],'co
           'sharedScale':scale,'bodyReferenceSourcePixels':905.5,'bodyTargetHeightLogicalPixels':52,'speciesScaleContract':scale_basis,
           'frameOrder':poses,'commonSourceCanvas':canvas,'sourceEvidence':str(b/'source-evidence.json'),'registrationEvidence':str(b/'registration-evidence.json'),
           'identityContract':source['originalIdentity']+' '+source['equipmentIdentity'],'symbolContract':source['symbolReview'],'semanticContract':contract,
-          'projectionVariation':variation,'selectedAttempts':{p:'first successful native output' for p in poses},
+          'projectionVariation':variation,'selectedAttempts':{p:('attempt-02: coordinator-approved bounded shaft shortening' if p=='attack' else 'first successful native output') for p in poses},
           'idleApproval':'Coordinator 2026-10-19 20:06 UTC accepted 52/905.5, foot [828,970], 1586x992 full canvas, candidate 128x80 / origin [14,6]; actual width 57.254555 accepted.','poses':{}}
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -57,7 +58,7 @@ for pose in poses:
 for filename,record in source['references'].items():assert sha(b/'references'/filename)==record['sha256']
 reg['requiredMaximumTranslationLogicalPixels']=max(abs(v) for r in reg['poses'].values() for v in r['registrationOffsetLogical'])
 reg['recommendedRegistrationLimitLogicalPixels']=5
-reg['translationBasis']='Attack foot [753,948] versus canonical [828,970] gives source delta [75,22], maximum logical x shift 4.3070127. Existing limit 4 is insufficient; explicit limit 5 is supported by these measured feet. Every full canvas fits 128x80 at origin [14,6].'
+reg['translationBasis']='Selected attack foot [751,950] versus canonical [828,970] gives source delta [77,20], maximum logical x shift 4.421866372. Existing limit 4 is insufficient; explicit limit 5 is supported by these measured feet. Every full canvas fits 128x80 at origin [14,6].'
 qa={'status':status,'topic':manifest['asset'],'actualConsumers':manifest['actualConsumers'],'bodyScale':'52/905.5','speciesScaleContract':scale_basis,
     'selectedNativeCanvasSizes':{p:manifest['poses'][p]['nativeSize'] for p in poses},'commonSourceCanvas':canvas,'sourcePaddingRequired':padding,
     'nativeMastersUnmodified':True,'allRawMasterNativeHashesMatch':True,'allExactPromptsVerified':True,
@@ -65,9 +66,13 @@ qa={'status':status,'topic':manifest['asset'],'actualConsumers':manifest['actual
     'nativeAndWhiteBackgroundViewsInspected':poses,'blackAndWhiteCompositesSaved':poses,'identityPreserved':True,
     'fourConnectedWolfLegsAndPawsVisuallyChecked':True,'oneWolfTailAndOneSeatedRider':True,'twoRiderHandsOnOneSpear':True,'originalSideShieldRetainedAllPoses':True,
     'walkContactsOppose':True,'allThreeNegativeSpaceProbesPerPoseZeroAlpha':True,'attackSemantics':'Two-hand forward spear thrust and four-paw braced wolf lunge; no independent FX.',
-    'projectionVariationRequiresCoordinatorReview':variation,'semanticContract':contract,'symbolContract':source['symbolReview'],'independentFXBakedIntoCharacter':False,
+    'acceptedProjectionRevisionAndCaveats':variation,'semanticContract':contract,'symbolContract':source['symbolReview'],'independentFXBakedIntoCharacter':False,
     'registrationEvidence':'registration-evidence.json','recommendedRegistrationLimitLogicalPixels':5,'proposedFullCanvasFit':all(r['wholeCanvasFitsProposedFrame'] for r in reg['poses'].values()),
     'runtimeOrRepositoryWrites':False,'weaponRulesChanged':False,'gameplayFootprintChanged':False}
+
+manifest['supersededAttempts']=[{'pose':'attack','directory':'attack/attempt-01','reason':'Excessive projected spear length; coordinator rejected and requested one bounded shaft shortening.'}]
+manifest['coordinatorAttackCorrectionApproval']='Coordinator 2026-10-19 20:18 UTC reviewed and selected attack attempt-02: shortened spear is appropriate, two-hand thrust and wolf/rider scale hold. Source paw shifts of 2–3px and forward-hand shift around 15px are accepted redraw differences, registered honestly. Tip 21px beyond the pilot target does not warrant another generation. Attempt-01 is preserved.'
+qa['coordinatorAttackCorrectionApproval']='Coordinator 2026-10-19 20:18 UTC reviewed and selected attack attempt-02: shortened spear is appropriate, two-hand thrust and wolf/rider scale hold. Source paw shifts of 2–3px and forward-hand shift around 15px are accepted redraw differences, registered honestly. Tip 21px beyond the pilot target does not warrant another generation. Attempt-01 is preserved.'
 for filename,data in [('registration-evidence.json',reg),('bundle-manifest.json',manifest),('qa-review.json',qa)]:
  dest=b/filename
  if dest.exists():
@@ -82,6 +87,6 @@ lines=['# Wolf-rider four-pose review','',contract,'','## Original identity and 
 for pose in poses:
  r,p=reg['poses'][pose],manifest['poses'][pose]
  lines+=['### '+pose,p['review'],f"Source foot {r['sourceSupportAnchorEstimated']}; exact four-paw sole midpoint {r['fourPawSoleBandMidpoint']}; full-canvas offset {r['registrationOffsetLogical']}; native visible bounds {r['nativeVisibleBoundsAlphaGreaterThan127']}; full logical canvas {r['proposedLogicalFullCanvasBounds']}.",'']
-lines+=['## Provenance and alpha','All four selected outputs are their first native successes, preserved byte-for-byte as raw/master. Exact prompts, requests and original/reference hashes verified. Native and white views inspected; black/white composites saved. Three 7x7 negative-space probes per pose are completely transparent. No programmatic art edits, alpha cleanup or repository changes.','', 'Coordinator shared-scale native sequence review is pending, with spear projection variation explicitly raised.']
+lines+=['## Provenance and alpha','Idle and both walks are first native successes; attack is selected attempt-02, with rejected attempt-01 preserved. All selected native outputs are preserved byte-for-byte as raw/master. Exact prompts, requests and original/reference hashes verified. Native and white views inspected; black/white composites saved. Three 7x7 negative-space probes per pose are completely transparent. No programmatic art edits, alpha cleanup or repository changes.','', 'Coordinator approved the bounded attack correction; final shared-scale native sequence review is pending.']
 (b/'pose-review.md').write_text('\n'.join(lines)+'\n')
 print(json.dumps({'manifest':str(b/'bundle-manifest.json'),'sourceFeet':{p:reg['poses'][p]['sourceSupportAnchorEstimated'] for p in poses},'maximumTranslationLogical':reg['requiredMaximumTranslationLogicalPixels'],'fullCanvasBounds':{p:reg['poses'][p]['proposedLogicalFullCanvasBounds'] for p in poses},'integrityChecks':'PASS'},indent=2))

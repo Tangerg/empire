@@ -98,7 +98,7 @@
       "logicalHeight": 46.0
     }
   },
-  "status": "Native quartet complete; coordinator shared-scale sequence review pending, especially attack spear projection",
+  "status": "Native quartet complete with approved attack revision; coordinator final shared-scale sequence review pending",
   "imageGenerationStarted": true,
   "actualConsumers": [
     "c01.wolf-rider"
@@ -304,5 +304,7 @@
   "coordinatorIdleApproval": "Coordinator 2026-10-19 20:06 UTC accepted idle proportions and actual width 57.254555 without forcing the initial 60 lower bound. Locked shared scale 52/905.5, source foot [828,970], full 1586x992 canvas, candidate 128x80 frame and origin [14,6]. Continue opposite steps and clear two-hand thrust; no per-pose fit.",
   "quartetManifest": "bundle-manifest.json",
   "remainingPosesGenerated": true,
-  "sharedScaleContract": "52/905.5; foot [828,970]; full 1586x992 canvas; frame 128x80; origin [14,6]"
+  "sharedScaleContract": "52/905.5; foot [828,970]; full 1586x992 canvas; frame 128x80; origin [14,6]",
+  "coordinatorAttackCorrectionApproval": "Coordinator 2026-10-19 20:18 UTC reviewed and selected attack attempt-02: shortened spear is appropriate, two-hand thrust and wolf/rider scale hold. Source paw shifts of 2–3px and forward-hand shift around 15px are accepted redraw differences, registered honestly. Tip 21px beyond the pilot target does not warrant another generation. Attempt-01 is preserved.",
+  "selectedAttackAttempt": "attempt-02"
 }

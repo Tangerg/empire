@@ -1,5 +1,5 @@
 {
-  "status": "Native quartet complete; coordinator shared-scale sequence review pending, especially attack spear projection",
+  "status": "Native quartet complete with approved attack revision; coordinator final shared-scale sequence review pending",
   "sharedScale": 0.05742683600220872,
   "scaleFraction": "52/905.5",
   "bodyReferenceSourcePixels": 905.5,
@@ -13,7 +13,7 @@
     1586,
     992
   ],
-  "paddingPolicy": "Idle, attack and walk-b are native 1586x992; walk-a is 1585x992. Exactly one transparent right column at export resolves the canvas discrepancy; native sources remain unmodified.",
+  "paddingPolicy": "Idle and walk-b are native 1586x992; walk-a and selected attack attempt-02 are 1585x992. Exactly one transparent right column at export resolves those two discrepancies; native sources remain unmodified.",
   "canvasPaddingToleranceRequired": 1,
   "maximumPadRight": 1,
   "maximumPadBottom": 0,
@@ -131,47 +131,47 @@
     },
     "attack": {
       "nativeSize": [
-        1586,
+        1585,
         992
       ],
-      "padRight": 0,
+      "padRight": 1,
       "padBottom": 0,
       "sourceSupportAnchorEstimated": [
-        753,
-        948
+        751,
+        950
       ],
       "fourPawSoleBandMidpoint": [
-        752.7648543239072,
-        916.75
+        751.2425536655237,
+        919.0
       ],
       "registrationOffsetLogical": [
-        4.3070127,
-        1.263390392
+        4.421866372,
+        1.14853672
       ],
       "nativeVisibleBoundsAlphaGreaterThan127": [
-        75,
-        60,
-        1549,
-        949
+        73,
+        57,
+        1392,
+        951
       ],
       "nativeAllNonzeroAlphaBounds": [
         0,
-        33,
-        1558,
-        957
+        54,
+        1491,
+        960
       ],
-      "logicalVisibleWidth": 84.64715626725565,
+      "logicalVisibleWidth": 75.7459966869133,
       "proposedLogicalVisibleBounds": [
         22.614025,
-        10.709001,
-        107.261182,
+        10.421866,
+        98.360022,
         61.761458
       ],
       "proposedLogicalFullCanvasBounds": [
-        18.307013,
-        7.26339,
-        109.385975,
-        64.230812
+        18.421866,
+        7.148537,
+        109.500828,
+        64.115958
       ],
       "wholeCanvasFitsProposedFrame": true,
       "perimeterGate": {
@@ -232,7 +232,7 @@
       }
     }
   },
-  "requiredMaximumTranslationLogicalPixels": 4.3070127,
+  "requiredMaximumTranslationLogicalPixels": 4.421866372,
   "recommendedRegistrationLimitLogicalPixels": 5,
-  "translationBasis": "Attack foot [753,948] versus canonical [828,970] gives source delta [75,22], maximum logical x shift 4.3070127. Existing limit 4 is insufficient; explicit limit 5 is supported by these measured feet. Every full canvas fits 128x80 at origin [14,6]."
+  "translationBasis": "Selected attack foot [751,950] versus canonical [828,970] gives source delta [77,20], maximum logical x shift 4.421866372. Existing limit 4 is insufficient; explicit limit 5 is supported by these measured feet. Every full canvas fits 128x80 at origin [14,6]."
 }

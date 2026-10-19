@@ -43,3 +43,10 @@ Native RGBA 1586x992. Visible alpha >127 bounds [276,56,1273,971]. Cap top y56 t
 
 ## Idle accepted, shared quartet contract locked
 Coordinator 2026-10-19 20:06 UTC accepted idle proportions and actual width 57.254555 without forcing the initial 60 lower bound. Locked shared scale 52/905.5, source foot [828,970], full 1586x992 canvas, candidate 128x80 frame and origin [14,6]. Continue opposite steps and clear two-hand thrust; no per-pose fit.
+
+## Bounded attack correction requested, 20:15 UTC
+Coordinator inspected attack v1 and rejected its approximately 40% extra projected spear length as unjustified by arm extension. Preserve v1. One imagegen-only edit is authorized: shorten front/rear wood shaft to about 850–900 source pixels overall spear projection, tip approximately x1320–1370, retaining original metal-head physical size, rider/wolf body, hands, full canvas and paw registration. Any collateral body change must be reported rather than accepted silently.
+
+## Selected attack revision, 20:18 UTC
+Coordinator 2026-10-19 20:18 UTC reviewed and selected attack attempt-02: shortened spear is appropriate, two-hand thrust and wolf/rider scale hold. Source paw shifts of 2–3px and forward-hand shift around 15px are accepted redraw differences, registered honestly. Tip 21px beyond the pilot target does not warrant another generation. Attempt-01 is preserved.
+Final attack source foot [751,950], native 1585x992. Approximate spear span 871.735px; full visible width 75.745997 logical at unchanged 52/905.5. One transparent right column is needed for both walk-a and selected attack. Original attack v1 remains immutable in attempt-01.

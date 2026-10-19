@@ -1,0 +1,253 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2c1855c9-c147-4730-8780-9a60d04712fa.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "ebf27d908f8e98bbe27007704073ec88cc5f1662e40c7fee409004d75383a753",
+  "bboxAlphaNonzero": [
+    0,
+    54,
+    1491,
+    960
+  ],
+  "bboxAlphaGreaterThan127": [
+    73,
+    57,
+    1392,
+    951
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 977973,
+  "alphaOnePixels": 4661,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "paw": "near-hind",
+      "roi": [
+        135,
+        800,
+        330,
+        920
+      ],
+      "soleY": 905,
+      "bottomFourRowsMeanX": 235.28169014084506
+    },
+    {
+      "paw": "far-hind",
+      "roi": [
+        500,
+        770,
+        730,
+        920
+      ],
+      "soleY": 896,
+      "bottomFourRowsMeanX": 630.3705722070845
+    },
+    {
+      "paw": "near-fore",
+      "roi": [
+        800,
+        840,
+        1040,
+        970
+      ],
+      "soleY": 950,
+      "bottomFourRowsMeanX": 929.9483870967742
+    },
+    {
+      "paw": "far-fore",
+      "roi": [
+        1100,
+        800,
+        1330,
+        940
+      ],
+      "soleY": 925,
+      "bottomFourRowsMeanX": 1209.3695652173913
+    }
+  ],
+  "sourceFootMidpoint": [
+    751.2425536655237,
+    919.0
+  ],
+  "suggestedSourceFoot": [
+    751,
+    950
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-paw-gap",
+      "rectangle": [
+        397,
+        847,
+        404,
+        854
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "fore-paw-gap",
+      "rectangle": [
+        1067,
+        917,
+        1074,
+        924
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "under-belly-gap",
+      "rectangle": [
+        732,
+        847,
+        739,
+        854
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "spearProjectionMeasurement": {
+    "estimatedButtAndTipSourceCoordinates": [
+      [
+        522,
+        404
+      ],
+      [
+        1391,
+        335
+      ]
+    ],
+    "approximateProjectedSpanSourcePixels": 871.7350514921377,
+    "approximateProjectedSpanLogicalPixels": 50.06098583941597,
+    "method": "Native visual endpoint estimates; not a recovered 3D length."
+  },
+  "bodyLandmarkComparison": {
+    "cap": {
+      "attempt01Bounds": [
+        614,
+        60,
+        888,
+        220
+      ],
+      "attempt02Bounds": [
+        608,
+        57,
+        886,
+        220
+      ],
+      "delta": [
+        -6,
+        -3,
+        -2,
+        0
+      ],
+      "roi": [
+        600,
+        20,
+        920,
+        220
+      ]
+    },
+    "wolf-head": {
+      "attempt01Bounds": [
+        850,
+        430,
+        1210,
+        750
+      ],
+      "attempt02Bounds": [
+        850,
+        430,
+        1210,
+        750
+      ],
+      "delta": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "roi": [
+        850,
+        430,
+        1240,
+        750
+      ]
+    },
+    "tail": {
+      "attempt01Bounds": [
+        75,
+        464,
+        500,
+        730
+      ],
+      "attempt02Bounds": [
+        73,
+        463,
+        500,
+        730
+      ],
+      "delta": [
+        -2,
+        -1,
+        0,
+        0
+      ],
+      "roi": [
+        20,
+        450,
+        500,
+        730
+      ]
+    },
+    "near-boot": {
+      "attempt01Bounds": [
+        480,
+        580,
+        710,
+        755
+      ],
+      "attempt02Bounds": [
+        480,
+        580,
+        710,
+        755
+      ],
+      "delta": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "roi": [
+        480,
+        580,
+        710,
+        755
+      ]
+    }
+  },
+  "visibleWidthAlphaGreaterThan127": 1319,
+  "projectedWidthLogicalAtSharedScale": 75.7459966869133,
+  "selectionStatus": "Selected attack revision, coordinator approved 20:18 UTC",
+  "semanticReview": "Selected bounded imagegen shaft-shortening revision. Approximate spear projection is 871.735 source pixels, within requested 850–900, with the same straight two-hand thrust and plain side shield. Original rider/wolf anatomy and scale remain visually coherent. Tip x1391 is 21px beyond the preliminary upper target and explicitly accepted. Native body differences are measured: source foot [751,950] versus v1 [753,948], four paw soles move 2–3px and forward hand about 15–20px left; these are accepted redraw differences, not hidden scaling. Original v1 is preserved. No independent FX or programmatic body/weapon edits.",
+  "readOnlySilhouetteDiagnostic": {
+    "excludedWeaponAndHandsRectangle": [
+      400,
+      280,
+      1585,
+      445
+    ],
+    "bodyMaskIntersectionOverUnion": 0.9821382168888207,
+    "caveat": "Binary alpha >127 masks compared at native coordinates without translation/resampling. This is a diagnostic, not proof of pixel-identical body. One absent right source column is transparent."
+  },
+  "coordinatorAttackCorrectionApproval": "Coordinator 2026-10-19 20:18 UTC reviewed and selected attack attempt-02: shortened spear is appropriate, two-hand thrust and wolf/rider scale hold. Source paw shifts of 2–3px and forward-hand shift around 15px are accepted redraw differences, registered honestly. Tip 21px beyond the pilot target does not warrant another generation. Attempt-01 is preserved."
+}

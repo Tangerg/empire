@@ -4,7 +4,7 @@
     "c01.wolf-rider"
   ],
   "consumerStatus": "Actual campaign unit: six initial enemies across c01-07 and c01-08. Additionally experience-lab has the allied gray-wolf actor. No distinct built-in consumer found.",
-  "status": "Native quartet complete; coordinator shared-scale sequence review pending, especially attack spear projection",
+  "status": "Native quartet complete with approved attack revision; coordinator final shared-scale sequence review pending",
   "generationTool": "built-in image_gen",
   "masterPolicy": "All master/raw images are byte-identical native tool outputs. No painting, recoloring, cropping, resizing or alpha cleanup. White/black images are QA composites only.",
   "sharedScale": 0.05742683600220872,
@@ -26,11 +26,11 @@
   "identityContract": "One bare-faced, dark-eyed rider with tan skin, long black braid and short face-framing hair, brown stitched fur-edged cap, small gold drop earring, cream/tan laced tunic, blue-gray near shoulder plate in idle, brown bracers and cross-body leather strap, dark trousers and tall brown boots. Seated on a stocky gray-brown wolf with cream cheek/chest fur, pointed ears, amber-brown eyes, large paws and a hanging bushy tail. Rope chest harness and rust-red-bordered saddle blanket remain distinct from wolf fur. Both hands hold the same short wooden-shaft spear with a steel leaf/triangular point aimed upper-right. Near bare hand is the rear grip at screen-left/lower shaft; far hand has a pale cloth wrap at the forward screen-right grip. A small plain round brown side shield is behind the forward forearm. No sword, bow, antlers or mount armor.",
   "symbolContract": "No faction emblem on the plain round brown shield. Keep the small pale gray angular border marks on the rust-edged saddle blanket as observed decorative marks, without inventing runic meaning. Gold drop earring and chest tie knot are costume details, not heraldry.",
   "semanticContract": "C01-UNIT-WOLF-RIDER binds c01.wolf-rider, with six initial campaign enemies across c01-07 and c01-08 plus the experience-lab gray-wolf actor. Dedicated original four-frame board, order idle / walk-a / attack / walk-b. Original 32x48 frame, anchor [16,47], art footprint [1,1]; no rule footprint change. Mounted wolf and two-hand spear agree with wolf-spear rules: pierce 45, melee/mounted, range 1. Preserve the original rider face, cap/braid, shoulder plate, small round side shield, pale wrapped forward hand, wolf/harness and saddle blanket. The shoulder plate disappears in the original attack and walk-b; consistent idle armor is an intentional continuity repair, not exact frame replication. Opposite wolf diagonal steps and clear braced two-hand spear thrust replace the original subtle actions. Equipment icon and C01-FX-02 stay independent.",
-  "projectionVariation": "Native visual butt-to-tip estimates give idle spear span 820.41 source pixels, walk-a 821.77, attack 1133.76 and walk-b 807.77. Attack is visibly about 38.2% longer in projected span than idle. It was requested at the same physical length but the output differs; no exact-length continuity claim, hidden rescale or automatic foreshortening justification is made. The braced stance plus extended spear gives attack total width 84.647156 logical, versus idle 57.254555 and walks 61.733849 / 61.791276. Coordinator native shared-scale sequence review must decide whether this projection variation is acceptable or needs a bounded weapon-only correction.",
+  "projectionVariation": "Original attack attempt-01 had an excessive 1133.76px projected spear span and was rejected by the coordinator. It is preserved in attack/attempt-01. A single imagegen-only shaft shortening produced selected attempt-02 at 871.735px, versus idle 820.41, walk-a 821.77 and walk-b 807.77. This restrained 6.3% span difference from idle was approved on 2026-10-19 at 20:18 UTC. The selected tip x1391 exceeds the pilot target by 21px; coordinator explicitly accepted it without further rerolls. Minor collateral redraw differences are disclosed and accepted: paw soles +2–3px, foot [751,950] versus [753,948], forward grip approximately 15–20px left. No hidden body or weapon scaling. Attack total width is now 75.745997 logical, with the braced wolf and forward spear, compared with idle 57.254555 and walks 61.733849 / 61.791276. Final shared-scale sequence review remains coordinator-owned.",
   "selectedAttempts": {
     "idle": "first successful native output",
     "walk-a": "first successful native output",
-    "attack": "first successful native output",
+    "attack": "attempt-02: coordinator-approved bounded shaft shortening",
     "walk-b": "first successful native output"
   },
   "idleApproval": "Coordinator 2026-10-19 20:06 UTC accepted 52/905.5, foot [828,970], 1586x992 full canvas, candidate 128x80 / origin [14,6]; actual width 57.254555 accepted.",
@@ -197,27 +197,27 @@
       "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wolf-rider/attack/prompt.txt",
       "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wolf-rider/attack/request.json",
       "exactToolCallPromptVerified": true,
-      "exactPromptSha256": "2dc6a5d6af0094fca257bb51bf19c0d8c3a86ce0fe5a29e73886ff6a44ee84ae",
+      "exactPromptSha256": "8058223de001d652c9326aecf74aad417a0298ca59200cac6094442c2a1d1674",
       "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wolf-rider/attack/alpha-qa.json",
       "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wolf-rider/attack/qa-black.png",
       "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/wolf-rider/attack/qa-white.png",
       "nativeSize": [
-        1586,
+        1585,
         992
       ],
       "sourceFootAnchorSuggested": [
-        753,
-        948
+        751,
+        950
       ],
       "visibleBoundsAlphaGreaterThan127": [
-        75,
-        60,
-        1549,
-        949
+        73,
+        57,
+        1392,
+        951
       ],
-      "sha256": "116132c7c2a3e7577b81fbb59bbc4454a0687ca12bd013289d9f248409d74935",
-      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ff3cbf33-5344-4be3-b95c-46521b5fc92c.png",
-      "review": "Clear forward lean and two-hand spear thrust while the wolf braces all four paws in a wide stance. Four connected wolf legs, one full bushy tail, two rider arms/hands on one shaft, and the attached plain round side shield are visually verified in native and white-background views. Cap, braid, shoulder plate, face, clothing, harness and saddle blanket remain coherent. Forward hand remains pale against the bare near hand; fine wrap divisions are simplified. No independent impact FX or ground shadow. The projected spear span is materially longer than idle; this variation is explicitly recorded for native sequence review, not claimed as exact length continuity.",
+      "sha256": "ebf27d908f8e98bbe27007704073ec88cc5f1662e40c7fee409004d75383a753",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2c1855c9-c147-4730-8780-9a60d04712fa.png",
+      "review": "Selected bounded imagegen shaft-shortening revision. Approximate spear projection is 871.735 source pixels, within requested 850–900, with the same straight two-hand thrust and plain side shield. Original rider/wolf anatomy and scale remain visually coherent. Tip x1391 is 21px beyond the preliminary upper target and explicitly accepted. Native body differences are measured: source foot [751,950] versus v1 [753,948], four paw soles move 2–3px and forward hand about 15–20px left; these are accepted redraw differences, not hidden scaling. Original v1 is preserved. No independent FX or programmatic body/weapon edits.",
       "negativeSpaceProbes": [
         {
           "name": "hind-paw-gap",
@@ -256,17 +256,17 @@
       "spearProjectionMeasurement": {
         "estimatedButtAndTipSourceCoordinates": [
           [
-            417,
-            411
+            522,
+            404
           ],
           [
-            1548,
-            332
+            1391,
+            335
           ]
         ],
-        "approximateProjectedSpanSourcePixels": 1133.755705608576,
-        "approximateProjectedSpanLogicalPixels": 65.10800297255211,
-        "method": "Native visual endpoint estimates along the spear overall butt-to-tip line; not a claim of recovered 3D weapon length."
+        "approximateProjectedSpanSourcePixels": 871.7350514921377,
+        "approximateProjectedSpanLogicalPixels": 50.06098583941597,
+        "method": "Native visual endpoint estimates; not a recovered 3D length."
       }
     },
     "walk-b": {
@@ -347,5 +347,13 @@
         "method": "Native visual endpoint estimates along the spear overall butt-to-tip line; not a claim of recovered 3D weapon length."
       }
     }
-  }
+  },
+  "supersededAttempts": [
+    {
+      "pose": "attack",
+      "directory": "attack/attempt-01",
+      "reason": "Excessive projected spear length; coordinator rejected and requested one bounded shaft shortening."
+    }
+  ],
+  "coordinatorAttackCorrectionApproval": "Coordinator 2026-10-19 20:18 UTC reviewed and selected attack attempt-02: shortened spear is appropriate, two-hand thrust and wolf/rider scale hold. Source paw shifts of 2–3px and forward-hand shift around 15px are accepted redraw differences, registered honestly. Tip 21px beyond the pilot target does not warrant another generation. Attempt-01 is preserved."
 }
