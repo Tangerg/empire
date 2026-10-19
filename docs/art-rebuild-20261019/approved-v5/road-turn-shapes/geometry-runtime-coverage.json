@@ -1,0 +1,53 @@
+{
+  "paintedCells": 84,
+  "cardinalEdges": 99,
+  "chains": 46,
+  "width": 32,
+  "maxTangentCut": 22,
+  "maxPlainOverhang": 2,
+  "oldSingleLaneWidth": 22,
+  "newSingleLaneWidth": 32,
+  "oldDoubleLaneWidth": 54,
+  "newDoubleLaneWidth": 64,
+  "oldAreaAtAlpha128": 64046,
+  "newAreaAtAlpha128": 80455.75,
+  "areaIncreasePercent": 25.621818692814546,
+  "approvedProposal2xAlphaPixelIdentical": true,
+  "excludedCellMaximumAlpha": 0,
+  "minimumShared22PixelPortAlpha": 255,
+  "nativeFullFrameChangedPixels": 12712,
+  "changesOutside3PixelRoadBoundaryBand": 0,
+  "sampling": [
+    {
+      "density": 1,
+      "centerDiskSampleMinimumAlpha": 219,
+      "paintAreaAtAlpha128": 80443.0,
+      "outsideRoadUnionAreaAtAlpha128": 3.0,
+      "outsideRoadCells": [
+        [
+          6,
+          12
+        ]
+      ],
+      "maximumRasterOverhangIncludingAA": 1.0,
+      "roadComponents": 1,
+      "grassHoles": 2
+    },
+    {
+      "density": 2,
+      "centerDiskSampleMinimumAlpha": 255,
+      "paintAreaAtAlpha128": 80455.75,
+      "outsideRoadUnionAreaAtAlpha128": 2.75,
+      "outsideRoadCells": [
+        [
+          6,
+          12
+        ]
+      ],
+      "maximumRasterOverhangIncludingAA": 1.0,
+      "roadComponents": 1,
+      "grassHoles": 2
+    }
+  ],
+  "nativeAaCaveat": "All fully-inside radius8 pixel areas are opaque. At1x some edge pixels centered inside the disk include exterior AA (minimum219); all2x disk sample points are255. Exact continuous geometry rotations pass; Inkscape directional AA is confined to partially covered pixels."
+}

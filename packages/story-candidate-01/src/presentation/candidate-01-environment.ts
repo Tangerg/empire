@@ -4,6 +4,7 @@ import {
   EnvironmentCatalog,
   type EnvironmentManifest,
 } from '@empire/game-ui';
+import type { CandidateRoadCorridorProfile } from './candidate-01-road-corridor';
 import { fixedNumbers, oneOf, type FixedNumbers } from './candidate-01-documents';
 
 /** The four depths an authored placement may sit at, as values and as a type. */
@@ -25,7 +26,7 @@ export interface CandidateEnvironmentScene {
   readonly schemaVersion: string;
   readonly levelId: string;
   readonly runtimeReady: boolean;
-  readonly roadMaterial?: 'continuous-earth';
+  readonly roadCorridor?: CandidateRoadCorridorProfile;
   readonly mapSize: FixedNumbers<2>;
   readonly zones: readonly {
     readonly id: string;
@@ -81,7 +82,10 @@ function readScene(document: typeof twinHillsSceneJson): CandidateEnvironmentSce
   const subject = document.levelId;
   return {
     ...document,
-    roadMaterial: oneOf(['continuous-earth'] as const, document.roadMaterial, 'roadMaterial', subject),
+    roadCorridor: {
+      ...document.roadCorridor,
+      protectedCells: document.roadCorridor.protectedCells.map(point => fixedNumbers(2, point, 'protected road cell', subject)),
+    },
     mapSize: fixedNumbers(2, document.mapSize, 'mapSize', subject),
     zones: document.zones.map((zone) => ({
       ...zone,

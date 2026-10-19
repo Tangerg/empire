@@ -4,7 +4,12 @@
   "levelId": "c01-01",
   "title": "双子丘陵",
   "runtimeReady": false,
-  "roadMaterial": "continuous-earth",
+  "roadCorridor": {
+    "width": 32,
+    "maxTangentCut": 22,
+    "maxPlainOverhang": 2,
+    "protectedCells": [[11, 8], [12, 8]]
+  },
   "mapSize": [
     27,
     17

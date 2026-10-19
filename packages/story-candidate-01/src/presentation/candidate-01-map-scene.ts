@@ -1,3 +1,4 @@
+import type { CandidateRoadCorridorProfile } from './candidate-01-road-corridor';
 import { candidate01IsAreaRoad, candidate01RoadMaterialPieces } from './candidate-01-road-material';
 import { candidate01HorizontalCrossingMarkup } from './candidate-01-crossing';
 import { candidate01EdgeDecorationPieces } from './candidate-01-edge-decoration';
@@ -286,7 +287,7 @@ function authoredTerrainScenery(levelId: string, id: string, x: number, y: numbe
   ) ?? false;
 }
 
-function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, continuousRoad: boolean): BoardPiece[] {
+function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, roadCorridor: CandidateRoadCorridorProfile | undefined): BoardPiece[] {
   const field = materialField(content, map);
   const base = CANDIDATE_01_FIELD_MATERIAL.replaces;
   const surfaces = candidate01FieldMaterialPieces(map.width * TILE, map.height * TILE);
@@ -326,7 +327,7 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, co
         blends.push({ markup: atlasCellMarkup(CANDIDATE_SHORE, cell), ...at });
       }
 
-      if (material.connected && !candidate01IsAreaWater(material) && !(continuousRoad && candidate01IsAreaRoad(material))) {
+      if (material.connected && !candidate01IsAreaWater(material) && !(roadCorridor && candidate01IsAreaRoad(material))) {
         const mask = connectedMask(content, field, map, material.connected, x, y);
         const variant = Math.floor(tileHash(x, y, 1102) * 4);
         const cell = CANDIDATE_01_ENVIRONMENT.connectedIndex(material.connected.atlas, mask, variant);
@@ -377,9 +378,11 @@ function groundPieces(content: ContentCatalog, map: GameMap, levelId: string, co
     }
   }
   const water = candidate01WaterMaterialPieces(map.width, map.height, (x, y) => isWater(content, map, x, y));
-  const road = continuousRoad ? candidate01RoadMaterialPieces(map.width, map.height,
+  const road = roadCorridor ? candidate01RoadMaterialPieces(map.width, map.height,
     (x, y) => candidate01IsAreaRoad(candidateMaterial(content, map.tiles[idx(map, x, y)])),
     (x, y) => isRoute(content, map, x, y),
+    (x, y) => tileAt(map, x, y) === 'plain',
+    roadCorridor,
   ) : [];
   return [...surfaces, ...blends, ...water, ...connections, ...road, ...detail];
 }
@@ -720,9 +723,9 @@ function fieldSunlight(width: number, height: number): string {
 export function candidate01MapSceneryLayers(
   { content, levelId, map, editing }: BattleSceneContext,
 ): SceneLayers {
-  const continuousRoad = editing !== true && candidate01EnvironmentScene(levelId)?.roadMaterial === 'continuous-earth';
+  const roadCorridor = editing === true ? undefined : candidate01EnvironmentScene(levelId)?.roadCorridor;
   return {
-    ground: [...groundPieces(content, map, levelId, continuousRoad), ...authoredGroundPieces(levelId), ...candidate01EdgeDecorationPieces(levelId, map)],
+    ground: [...groundPieces(content, map, levelId, roadCorridor), ...authoredGroundPieces(levelId), ...candidate01EdgeDecorationPieces(levelId, map)],
     underUnits: [
       // Light before the things that stand in it.
       ...hearthPieces(content, map),

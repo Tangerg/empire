@@ -85,21 +85,21 @@ describe('battle presentation', () => {
     const groundWith = (content: typeof TEST_CATALOG) =>
       boardPiecesMarkup(presentation.sceneLayers({ content, levelId: 'c01-01', map, viewport }).ground);
 
-    // Same roads, knitted differently: with nothing to link to, every road cell
-    // falls to the sheet's unconnected mask.
+    // Paint binding owns the same cells; catalog route tags own connections.
     const original = groundWith(TEST_CATALOG);
     const changed = groundWith(withoutRoutes);
+    const geometry = (markup: string) => {
+      const match = /data-runtime-raster="area-road">([\s\S]*?)<\/svg>/.exec(markup);
+      if (!match) throw new Error('expected runtime area-road geometry');
+      return match[1];
+    };
     expect(original).toContain('data-runtime-raster="area-road"');
     expect(changed).toContain('data-runtime-raster="area-road"');
     expect(changed).not.toBe(original);
+    expect([...geometry(original).matchAll(/<path /g)].length).toBeGreaterThan(0);
+    expect([...geometry(changed).matchAll(/<path /g)]).toHaveLength(0);
+    expect([...geometry(changed).matchAll(/<circle /g)]).toHaveLength(84);
 
-    const roadCells = (markup: string) => new Set(
-      [...markup.matchAll(/road-masks@2x\.png" x="(-?\d+)" y="(-?\d+)"/g)].map(([, x, y]) => `${x},${y}`),
-    );
-    // The area profile carries all eight neighbors; removing route tags leaves
-    // only the isolated-cell mask, while paint ownership stays unchanged.
-    expect(roadCells(original).size).toBeGreaterThan(1);
-    expect(roadCells(changed).size).toBe(1);
   });
 
   /** A terrain the pack never named is painted from what the rules say about it. */

@@ -1,0 +1,62 @@
+{
+  "handoffUtc": "2026-10-19T18:43:46Z",
+  "branchBaseline": "5d59a23ac5bd44571e3cdae37a44f624330865e1",
+  "typecheck": "passed",
+  "roadUnitTests": {
+    "passed": 11,
+    "includesExact256RotationGeometry": true
+  },
+  "catalogPresentationIsolation": "passed in frozen full run",
+  "pythonCorridorTests": {
+    "passed": 5,
+    "patterns": 256,
+    "densities": [
+      1,
+      2
+    ],
+    "deliberateMutationGuards": true
+  },
+  "existingFieldWaterPythonTests": {
+    "passed": 12
+  },
+  "materialExportCheck": "passed; source/export artifacts unchanged",
+  "replay": {
+    "runs": 60,
+    "byteIdentical": true
+  },
+  "sceneProjectionComparison": {
+    "levels": 16,
+    "onlyChange": "c01-01 normal-play ground"
+  },
+  "fullFrozenSuite": {
+    "status": "running",
+    "command": "npm test -- --maxWorkers=1 --minWorkers=1",
+    "knownFailuresAtHandoff": 0,
+    "logIsPartialSnapshot": true
+  },
+  "initialParallelFullRun": {
+    "passed": 926,
+    "failed": 5,
+    "files": 99,
+    "resolved": [
+      "catalog route tags now own graph connectivity",
+      "uses shared inBounds",
+      "missing sparse documentation targets linked for test support"
+    ],
+    "nonSourceFailures": [
+      "game-entry5s timeout under concurrent load",
+      "two-backend frame-clock assertion under concurrent load"
+    ],
+    "unchangedSingleWorkerRetests": "game-entry and all14 two-backend tests passed in intermediate single-worker run"
+  },
+  "intermediateSingleWorkerRun": "Not final verification: overlapped a function-signature edit and used a non-DOM test environment; both issues corrected before frozen run",
+  "temporarySupportLinks": {
+    "count": 6487,
+    "staged": 0,
+    "cleanup": "after full suite completes",
+    "baseline": "read-only main art/docs support; integrator owns fixed-checkpoint full validation"
+  },
+  "capture": "actual BoardView/SvgBoardSurface, offline Inkscape",
+  "liveBrowserGpuPixels": "not run",
+  "appBuilds": "not run in this bounded worktree; integrator will validate fixed main"
+}
