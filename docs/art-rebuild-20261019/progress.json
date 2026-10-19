@@ -8308,28 +8308,32 @@
       "cellId": "pine-tall",
       "index": 0,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-pair",
       "index": 1,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-cluster",
       "index": 2,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-existing",
       "cellId": "pine-sapling",
       "index": 3,
       "status": "pending",
-      "source": null
+      "source": null,
+      "assignment": "redraw_grayflag_environment_trees"
     },
     {
       "atlasId": "forest-existing",
@@ -8638,13 +8642,16 @@
       "atlasId": "forest-temperate",
       "cellId": "leaf-pile",
       "index": 12,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/leaf-pile/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "d56a362a91e2a235993720bd2147baa3e2edac4fdcbfe15e1de0d68009d7bcce",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-011-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
@@ -8656,8 +8663,8 @@
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "26832d2209824e4c9aa593914789fb48cfa2d04cf7e2622cce94c1dff38d83fb",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "state": "needs-framing-revision",
+        "note": "contactrequires19HD beyondsafeoffset10; do notcropcanvas or expandbound"
       }
     },
     {

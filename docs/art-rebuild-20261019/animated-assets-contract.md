@@ -60,3 +60,21 @@ Machine gates: exact semantic set/order, frame/strip dimensions, source hashes, 
 Human visual gates at native resolution and2×: identity/costume stable; same facing/camera; feet and root contact stable; walk-a/b visibly opposite meaningful leg/arm positions; attack reads as attack with weapon/limbs intact; idle distinct where appropriate; structure states preserve geometry with clear damage/ownership differences. Inspect an alternating6.25fps walk preview for popping/sliding and static contact overlay. Do not claim smooth animation from two poses or classify arbitrary noise differences as valid movement.
 
 Pilot recommendation: one common32×48 humanoid combat unit plus one64×64 structure only after icon and forest batches are integrated. One accepted4-frame unit is four source poses but one canonical completed topic; one accepted3-state structure is three source images but one topic. Do not count unreviewed generated poses as completed assets.
+
+## Pilot acceptance decision (2026-10-19)
+
+Applies only to C01-UNIT-SWORDSMAN and C01-UNIT-ARCHER humanoid pilots, not other
+units, structures, or environment cells: parent approved up to2 logical pixels
+between declared anchor y47 and the measured visible contact bound, provided
+all four poses retain consistent scale/contact and do not visibly float in
+neutral-background comparison. Record actual per-pose alpha>64 bounding-box
+bottom and inspection evidence. Keep declared anchors unchanged. This is an
+explicit visual acceptance tolerance, not an exporter change or alpha exception.
+Raw transparent perimeter remains<=1; exported perimeter and no-visible-haze
+review still apply independently. Actual game/loop playback acceptance remains
+pending until observed, even when contact sheets and generated previews pass.
+
+Selected swordsman common placement: renderWidth30, origin[1,2], authored
+canvas1024×1536, resized30×45. All four poses have visible bounding-box bottom45
+and output edgealpha0. Archer idle shares this placement and measurements;
+remaining archer poses require independent confirmation before completion.
