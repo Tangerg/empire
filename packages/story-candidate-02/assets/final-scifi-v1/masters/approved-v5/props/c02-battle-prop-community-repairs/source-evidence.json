@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-community-repairs",
+  "assetId": "C02-SFV1-battle-prop-community-repairs",
+  "label": "社区修复痕迹组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 2
+  },
+  "sourceCropBox": [
+    945,
+    632,
+    1249,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-04 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-community-repairs.png",
+  "runtimeReferenceSha256": "9fa1a89eb57ab8259b746e56355a718b0f4576ab9d5d9225bfc736a7409970eb",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f8a16422-ca4e-4fd9-ad26-871bb9d943b6.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-community-repairs/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board04 r2c4 preserved: exactly five main patched panels in tan/gray/blue, attached top disc, lower blue irregular panel with two amber stripes, chunky linked cable runs, separate circular rotor, small bottom connector with ring terminal and small cyan-button control module. Broad matte planes, large bolts/patch seams, no fine scratch noise. Source and actual64 black/white review passed with no external haze.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

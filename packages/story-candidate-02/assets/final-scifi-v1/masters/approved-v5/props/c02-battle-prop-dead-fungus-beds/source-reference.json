@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-dead-fungus-beds",
+  "assetId": "C02-SFV1-battle-prop-dead-fungus-beds",
+  "label": "枯死菌床战后组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 2
+  },
+  "sourceCropBox": [
+    632,
+    632,
+    935,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-04 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-dead-fungus-beds.png",
+  "runtimeReferenceSha256": "fe33bc274f65f6b531d7eb6f670cc34d7b9234801ff2211d4097b163733fcbc8",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-battle-prop-dead-fungus-beds",
+  "assetId": "C02-SFV1-battle-prop-dead-fungus-beds",
+  "label": "枯死菌床战后组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 2
+  },
+  "sourceCropBox": [
+    632,
+    632,
+    935,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-04 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-dead-fungus-beds.png",
+  "runtimeReferenceSha256": "fe33bc274f65f6b531d7eb6f670cc34d7b9234801ff2211d4097b163733fcbc8",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f3aa9894-e6ba-4695-9971-1fb9b49887c1.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-dead-fungus-beds/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board04 r2c3 preserved: one continuous irregular dead-fungus bed, raised rear section, two rear-left tall hollow caps, collapsed left cap and two front hollow stumps, subordinate dead stems, right purple bulb growth and ochre seedpod cups. Muted dusty mauve/plum/ochre, broad hard-edged mat and large roots replace microtexture; exterior is genuinely transparent without gray dust, spores or glow. Actual64 black/white review passed.",
+  "native64Review": "diagnostic-native64/native64-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

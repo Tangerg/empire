@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-battle-prop-community-repairs",
+  "assetId": "C02-SFV1-battle-prop-community-repairs",
+  "label": "社区修复痕迹组",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-04.png",
+  "originalMasterSha256": "c064575738533d18bee5393a68739027bf09a35c45bf5c66499eed66b9dfbc01",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 2
+  },
+  "sourceCropBox": [
+    945,
+    632,
+    1249,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified against full original props-board-04 bottom-row visual identities and original topic-catalog order. Original row-major4x2, not sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-community-repairs.png",
+  "runtimeReferenceSha256": "9fa1a89eb57ab8259b746e56355a718b0f4576ab9d5d9225bfc736a7409970eb",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}
