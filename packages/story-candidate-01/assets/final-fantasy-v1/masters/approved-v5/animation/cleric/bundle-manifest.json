@@ -1,0 +1,141 @@
+{
+  "asset": "C01-UNIT-CLERIC",
+  "actualConsumer": "Built-in engine cleric, not chapter gravekeeper/Mirelle",
+  "status": "Native quartet complete; formal export/binding pending coordinator",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "All master/raw files are byte-identical copies of selected native tool outputs. No manual painting/recolor/crop/resize/alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.04983012457531144,
+  "bodyReferenceSourcePixels": 883,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1585,
+    992
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/registration-evidence.json",
+  "semanticContract": "The existing four-frame contract remains idle/walk-a/attack/walk-b. Attack is a raised compact mace action credible for blunt melee. Heal currently shares the action animation contract; there is no support-only replacement or fifth frame.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/idle/prompt.txt",
+      "exactToolCallPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/idle/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        784,
+        948
+      ],
+      "hoodTopSourceY": 61,
+      "visibleBoundsAlphaGreaterThan127": [
+        273,
+        61,
+        1321,
+        949
+      ],
+      "sha256": "776edbd6f504a650a69440b108f254262d04a827a625e3b9a4a307d3b5df496b",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-5c3dfe7e-7f4c-4d18-993c-ee32bd985424.png",
+      "review": "Accepted broad squat idle; huge hooded adult head and hands, both broad boots planted. Low compact mace and upright candle lantern.",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/idle/request.json",
+      "exactPromptSha256": "6051ce55c1f619cc936a3077324dc2728cd8a6162162fe271eb22656f8b9d4b7"
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-a/prompt.txt",
+      "exactToolCallPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        729,
+        948
+      ],
+      "hoodTopSourceY": 26,
+      "visibleBoundsAlphaGreaterThan127": [
+        282,
+        26,
+        1348,
+        949
+      ],
+      "sha256": "52dd0f70b49cdcb5b0c8fc341298ed5e47dab0a09b4b00cc66ede7f134c196ac",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-787aca83-9be6-4692-bfcd-01665a3f1da1.png",
+      "review": "Front screen-right boot toe-up/heel-contact with dark underside visible; rear screen-left boot flat. Moderate torso rise from stride without independent rescaling.",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-a/request.json",
+      "exactPromptSha256": "592d17dfb534da2723904336082bd84c35b5593a2bc56bdeaf0788fba211f950"
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/attack/prompt.txt",
+      "exactToolCallPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/attack/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        710,
+        917
+      ],
+      "hoodTopSourceY": 77,
+      "visibleBoundsAlphaGreaterThan127": [
+        182,
+        18,
+        1384,
+        918
+      ],
+      "sha256": "cc26b6b2189a6f957f3f5941863bac73a4a4de5d70bf0ec02309ca6b83169311",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ee247262-c9d8-43dc-a859-26a7a0181b4d.png",
+      "review": "Compact raised-mace windup with wide braced stance. Patched shoulder arm retains mace, unpatched far arm holds lantern. Entire steel head/spikes and lantern intact; face unobscured. First attack attempt swapped equipment hands and is retained as rejected; attempt02 corrects the arm assignment.",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/attack/request.json",
+      "exactPromptSha256": "3914c9952eea3ba2f22d97917044d63e57cccf38916952f0ed27af72090ac714"
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-b/prompt.txt",
+      "exactToolCallPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        808,
+        932
+      ],
+      "hoodTopSourceY": 59,
+      "visibleBoundsAlphaGreaterThan127": [
+        288,
+        59,
+        1325,
+        933
+      ],
+      "sha256": "024597a57c45720d9d8d9c756760c0a5e1f6b411abe21fdbd7d9f15dbcf6d029",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-28da40ba-72d1-4658-b687-95b04a3742b6.png",
+      "review": "Opposite contacts: front screen-right boot flat and weight-bearing; rear screen-left heel raised/toe down. Both boots readable; same mace/lantern assignment.",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/walk-b/request.json",
+      "exactPromptSha256": "ca5f121f5d83bcc99963ed7df437519ffa1d79b909fa7d587eadba79379fd2d3"
+    }
+  }
+}

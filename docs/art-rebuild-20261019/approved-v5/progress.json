@@ -2,7 +2,7 @@
   "phase": "approved-style full collection remake; formal runtime integration ongoing",
   "approval": {
     "messageId": "Sentinel_7330580e60f08191b111a4b2d50b5e82",
-    "quote": "新版本很合适啊，就是这个 feel",
+    "quote": "\u65b0\u7248\u672c\u5f88\u5408\u9002\u554a\uff0c\u5c31\u662f\u8fd9\u4e2a feel",
     "concept": "calibration-v5-concept/concept-v2.png"
   },
   "fullBulkResumed": true,
@@ -19,14 +19,14 @@
     "bank-edge": "revision3 broad flat patch, static overlay checked"
   },
   "counting": "Do not count single pose as full unit animation. Concept itself adds no transparent assets. Prior bulk candidates are not re-approved automatically.",
-  "next": "Continue formal ground sampling, forest-existing cells, heavy-knight motion, console states and remaining props.",
+  "next": "Formal water/road/crossing sampling; cleric motion; final hazard props; regional forge and remaining collection",
   "continuationApproval": {
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
-    "quote": "确认了，就按照这个方向做剩下的"
+    "quote": "\u786e\u8ba4\u4e86\uff0c\u5c31\u6309\u7167\u8fd9\u4e2a\u65b9\u5411\u505a\u5269\u4e0b\u7684"
   },
   "authoredFourPoseBundles": 6,
-  "authoredThreeStateBundles": 7,
-  "formalRuntimeBoundTopics": 36,
+  "authoredThreeStateBundles": 8,
+  "formalRuntimeBoundTopics": 41,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -243,6 +243,36 @@
       "export": "shared45px body scale; measured foot translations; opposite walks and corrected mace attack reviewed",
       "runtimeBinding": "canonical104x64/HD208x128 frames, own pivot, authored palette protection",
       "liveGame": "pending"
+    },
+    "C01-BPROP-AFTERMATH-1": {
+      "raw": "native approved chunky master, exact prompt, baseline board evidence preserved",
+      "export": "64/128 true-alpha and light/dark native semantic review passed",
+      "runtimeBinding": "canonical resolver/HD URL and RGBA dimensions regression checked",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-AFTERMATH-4": {
+      "raw": "native approved chunky master, exact prompt, baseline board evidence preserved",
+      "export": "64/128 true-alpha and light/dark native semantic review passed",
+      "runtimeBinding": "canonical resolver/HD URL and RGBA dimensions regression checked",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-LIFE-3": {
+      "raw": "native approved chunky master, exact prompt, baseline board evidence preserved",
+      "export": "64/128 true-alpha and light/dark native semantic review passed",
+      "runtimeBinding": "canonical resolver/HD URL and RGBA dimensions regression checked",
+      "liveGame": "pending"
+    },
+    "C01-BPROP-LIFE-4": {
+      "raw": "native approved chunky master, exact prompt, baseline board evidence preserved",
+      "export": "64/128 true-alpha and light/dark native semantic review passed",
+      "runtimeBinding": "canonical resolver/HD URL and RGBA dimensions regression checked",
+      "liveGame": "pending"
+    },
+    "C01-STRUCT-SUNKEN-BELL-SLUICE": {
+      "raw": "three selected native states and rejected floating-fragment revision preserved",
+      "export": "shared112 logical width and fixed foundation; alpha and native state review passed",
+      "runtimeBinding": "canonical128 square/HD256 sheet and existing boss_part resolver; campaign12 bell nodes",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -316,14 +346,26 @@
       ],
       "liveGame": "pending",
       "atlasStaticReview": "all16 registered and native class comparisons reviewed; actual-map occlusion/live verification pending"
+    },
+    "scenery-regional": {
+      "formalRuntimeBoundCells": [
+        "grave-cross-cluster",
+        "grave-signboards",
+        "grave-dead-tree",
+        "grave-marker-lantern"
+      ],
+      "count": 4,
+      "export": "96/192 registered full source canvases, unrelated cells preserved",
+      "runtimeBinding": "actual graveyard renderer with authored anchors/presentationScale, native contact review passed",
+      "liveGame": "pending"
     }
   },
   "totalCanonicalScope": 1212,
   "priorTechnicalExportsRequireStyleReview": true,
   "tests": {
-    "focusedRuntime": 15,
+    "focusedRuntime": 49,
     "typecheck": "passed",
-    "artToolTests": 83,
+    "artToolTests": 102,
     "fullSuite": "existing jsdom scrollTo error reproduced before binding change",
     "liveBrowser": "not validated"
   },

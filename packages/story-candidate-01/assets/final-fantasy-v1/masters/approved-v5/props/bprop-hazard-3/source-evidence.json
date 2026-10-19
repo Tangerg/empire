@@ -1,0 +1,41 @@
+{
+  "topicId": "C01-BPROP-HAZARD-3",
+  "assetId": "C01-FFV1-BPROP-HAZARD-3",
+  "label": "\u5931\u63a7\u8a93\u77f3",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-de3389a5-135b-4c4e-a453-a7b84336cece.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/props/identity-inspection/original-bprop-hazard-3-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/props/props-atlas-01.png, bottom row column 3",
+    "inspectionCropCoordinates": [
+      840,
+      475,
+      1255,
+      941
+    ],
+    "inspectionCropTreatment": "Unscaled source-cell crop only; no pixel cleanup or alpha conversion; full original atlas also visually inspected",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/props/props-atlas-01.png",
+    "atlasSha256": "d172b42ad63c32f1a97ccc378a42c947b87e1f2b5d529ca6758f447b56b49ae5",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/identity-inspection/original-bprop-hazard-3-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/lorne-keep/normal/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "identityClarification": "Original tapered gray oathstone with exactly two bronze rune bands retained. Abstract angular glyphs represent the original fantasy marks, no readable words. Amber bright cues stay inside the bands; no exterior glow.",
+  "postprocessing": "None. Byte-exact native PNG copy. No output pixel cleanup, resizing, alpha editing or Git writes.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}

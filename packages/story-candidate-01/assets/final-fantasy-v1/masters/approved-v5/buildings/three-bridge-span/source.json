@@ -1,0 +1,55 @@
+{
+  "topicId": "C01-STRUCT-THREE-BRIDGE-SPAN",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-03.png",
+  "sourceSHA256": "3ea0d540978f0540a7057b9bf231896bb4249c7f91726f65a8e7152328209f4a",
+  "sourceSize": [
+    1086,
+    1448
+  ],
+  "cells": [
+    {
+      "state": "normal",
+      "box": [
+        0,
+        0,
+        362,
+        364
+      ]
+    },
+    {
+      "state": "damaged",
+      "box": [
+        362,
+        0,
+        724,
+        364
+      ]
+    },
+    {
+      "state": "captured",
+      "box": [
+        724,
+        0,
+        1086,
+        364
+      ]
+    }
+  ],
+  "runtimeReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-three-bridge-span.png",
+  "consumerStatus": "Manifest/runtime-HD catalog asset exists, but no direct source code binding or campaign placement found for exact interactive topic. This is NOT C01-ARCH-THREE-BRIDGES and not the horizontal stone map-crossing decoration.",
+  "stateEvidence": "Normal short oblique plank span connecting two pairs of chunky stone piers, two rope side rails and local water/rocks/reeds. Damaged center deck collapses, ropes snap, rear stone caps damaged to reveal timber core; four footing positions persist. Captured restores bridge and adds one dark gray hanging rectangular pennant with pale four-armed flared cross on rear-right pier.",
+  "orientation": "Three-quarter view, travel axis slants from upper-left toward lower-right across image; planks span the deck width between parallel rope rails. Do not flatten into a horizontal stone arch.",
+  "originalFrameSize": [
+    64,
+    64
+  ],
+  "originalAnchor": [
+    32,
+    63
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "suggestedLogicalVisibleWidth": 112
+}

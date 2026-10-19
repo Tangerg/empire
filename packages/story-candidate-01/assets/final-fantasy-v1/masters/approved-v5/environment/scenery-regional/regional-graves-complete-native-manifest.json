@@ -1,0 +1,143 @@
+{
+  "asset_group": "regional-graves",
+  "native_source_count": 4,
+  "generation_mode": "built-in image_gen.imagegen, one generation per identity",
+  "native_output_preserved_byte_for_byte": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "status": "all four grave sources and source QA complete; runtime integration not performed",
+  "runtime_integration_complete": false,
+  "assets": [
+    {
+      "identity": "grave-cross-cluster",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/grave-cross-cluster-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-221a0592-f15b-4a5d-86d4-2c4b7fc1beef.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "e0bf7e40b9592e76cddfcc9259eebecb3c2ac19c5e2c3a7e705831a2703552ae",
+      "source_foot_estimate_px": [
+        625,
+        1030
+      ],
+      "source_foot_estimate_normalized": [
+        0.498405,
+        0.821372
+      ],
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/grave-cross-cluster.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ]
+    },
+    {
+      "identity": "grave-signboards",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/grave-signboards-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-983498fc-3f74-44c6-b2f0-6acc5984d237.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "4c6af833419b9731a2b73a11370cb5b9e604136dcd0699e909a8c288d3ef778c",
+      "source_foot_estimate_px": [
+        700,
+        1060
+      ],
+      "source_foot_estimate_normalized": [
+        0.558214,
+        0.845295
+      ],
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/grave-signboards.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/pine-fallen-log-master.png"
+      ]
+    },
+    {
+      "identity": "grave-dead-tree",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/grave-dead-tree-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-336351ff-3560-4902-bfc0-725d65a00eed.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "297204aae4ba95f2b1fc51717cba96d9e443db23d6d0c37f81982187fa03b058",
+      "source_foot_estimate_px": [
+        625,
+        1080
+      ],
+      "source_foot_estimate_normalized": [
+        0.498405,
+        0.861244
+      ],
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/grave-dead-tree.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-dead/pine-dead-master.png"
+      ]
+    },
+    {
+      "identity": "grave-marker-lantern",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/grave-marker-lantern-master.png",
+      "exact_prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/alpha-qa.json",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/evidence.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/semantic-notes.md",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-1cadfe47-6c83-4105-9762-efe55a6d2d49.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "e608c17fab2ce212064968820c4e5d01dd56f84b769454cc2213db9ec9b5a7e5",
+      "source_foot_estimate_px": [
+        650,
+        1055
+      ],
+      "source_foot_estimate_normalized": [
+        0.518341,
+        0.841308
+      ],
+      "source_perimeter_gate_pass": true,
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "source_references": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/grave-marker-lantern.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png"
+      ]
+    }
+  ]
+}

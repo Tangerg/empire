@@ -1,5 +1,10 @@
 # Empire 全量美术重制基线
 
+## 当前生效标准
+
+用户于2026-10-19 12:19 UTC批准夸张大头、大手、大武器和大块哑光树冠的concept-v2，并于12:47 UTC确认实际分层效果及全量继续。当前验收标准、四阶段进度以 [approved-v5/README.md](approved-v5/README.md) 和 [approved-v5/progress.json](approved-v5/progress.json) 为准。此前细节版素材与本目录progress.json仅保留历史，不能自动计入新版完成数。下文盘点基线和固定范围仍有效，旧风格描述/试点偏移容差不替代当前逐族注册合同。
+
+
 基线：2276a89f75b5a6734e6347f62941d4a0e5b37d03（远端 main 已核对）。设计参考：样例提交 ac2a95ef923ea040620b8691d5733365a36ca0a4 的三个 matte-detail-v3 场景。采用哑光、克制色彩、丰富但分层的手绘卡通细节；不复制商业 IP。
 
 ## 固定范围和计数
@@ -9,7 +14,7 @@
 - 原始1896个图片文件中1857个位于生产包，39个是文档截图/历史参考样例，保留不重画。生产文件含205母图、169中间图、21预览、1285运行图、177高清运行图。
 - 177高清图中176对应正式题材，另1张连续地表来自已有地形母图。另有旧森林图集依赖，单独跟踪，不能遗漏也不能重复算题材。
 - 29组字节完全相同的文件已列出；其余不同字节并不代表独立设计。
-- 盘点创建时尚未重制题材；当前状态以 progress.json 为准。raw-generated 只表示新母图保全，不表示可直接用于游戏。
+- 盘点创建时尚未重制题材；当前状态以 approved-v5/progress.json 为准。raw-generated 只表示新母图保全，不表示可直接用于游戏。
 
 ## 交付顺序
 
@@ -34,7 +39,7 @@
 - file-inventory.json：所有基线图片的尺寸、模式、alpha分布、字节哈希、角色分类；没有修改图片像素。
 - environment-atlas-manifest.json：36图集的尺寸、组件、类别与运行路径。
 - byte-identical-groups.json：完全重复文件，仅辅助避免重复生产。
-- progress.json：重制状态唯一记录；只根据对应证据推进，不能以复制次数增加进度。
+- progress.json：早期细节版历史状态，已被approved-v5进度取代；保留审计证据，不计为当前风格完成。
 
 已核实灰旗消费链：candidate-01-assets.ts 读取正式与高清 manifest；candidate-01-runtime.ts / candidate-01-story.ts 消费资产；candidate-01-environment.ts 和 candidate-01-map-scene.ts 消费环境图集。其它题材当前是内容包；本清单不声称已在游戏内逐项使用或完成视觉验收。
 

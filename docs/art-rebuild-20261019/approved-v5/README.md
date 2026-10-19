@@ -21,7 +21,7 @@ python3 tools/art/export_registered_sequence.py docs/art-rebuild-20261019/approv
 python3 -m unittest discover -s tools/art -p 'test_*.py'
 ```
 
-Registration configs reference immutable masters in this repository. Every pose retains its authored canvas at one shared scale; optional bounded translations align planted soles/foundations. One-pixel image-generation canvas discrepancies may be represented as transparent padding only, never separate pose scaling. Source alpha is not normalized. Runtime sheet publishing must use the canonical manifest and selected HD texture contract.
+Registration configs reference immutable masters in this repository. Every pose retains its authored canvas at one shared scale; optional bounded translations align planted soles/foundations. Explicitly measured one- or two-pixel image-generation canvas discrepancies may be represented as transparent padding only, never separate pose scaling. Source alpha is not normalized. Runtime sheet publishing must use the canonical manifest and selected HD texture contract.
 
 The swordsman bundle has four authored poses, not a high-frame-count animation. Lorne Keep has three authored states; state reachability depends on existing game bindings and is recorded separately.
 
@@ -44,3 +44,13 @@ whole-canvas translation at the unchanged scale, with a wider transparent frame,
 aligns the planted support; no body scaling or source-pixel cleanup is applied.
 Translations above four logical pixels require explicit measured source feet
 for every pose, exact derivation from those feet, and full-canvas bounds checks.
+
+## Formal world ground and full-map evidence
+
+The broad meadow now has one typed source/UV/binding manifest. The selected
+1024-logical-unit period uses the unchanged 1024px physical raster: one source
+pixel per world unit, not fabricated native2x detail. The preserved512 alternative
+shows a real large-plane repeat seam. Full704x448 actual-renderer diagnostics
+retain every initial actor/building and expose remaining large-building overlap
+and legacy road/water/bridge layers. They are static offline evidence, not live
+GPU or browser acceptance. Other material families remain separately tracked.

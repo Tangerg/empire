@@ -1,0 +1,107 @@
+{
+  "asset": "grave-signboards",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-983498fc-3f74-44c6-b2f0-6acc5984d237.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 1074191,
+  "opaque_pixels": 1534,
+  "partial_alpha_pixels": 496791,
+  "near_opaque_alpha_250_255_pixels": 458978,
+  "nonzero_alpha_bbox": [
+    0,
+    33,
+    1240,
+    1254
+  ],
+  "strong_alpha_bbox": [
+    133,
+    139,
+    1177,
+    1120
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      0,
+      33,
+      1240,
+      1254
+    ],
+    "16": [
+      132,
+      138,
+      1178,
+      1121
+    ],
+    "128": [
+      133,
+      139,
+      1177,
+      1120
+    ],
+    "250": [
+      134,
+      140,
+      1175,
+      1120
+    ]
+  },
+  "margin_pixels_LTRB": [
+    0,
+    33,
+    14,
+    0
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    133,
+    139,
+    77,
+    134
+  ],
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 1,
+      "nonzero_pixels": 23
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 1,
+      "nonzero_pixels": 1
+    }
+  },
+  "strict_perimeter_all_alpha_zero": false,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": false,
+  "sha256": "4c6af833419b9731a2b73a11370cb5b9e604136dcd0699e909a8c288d3ef778c",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

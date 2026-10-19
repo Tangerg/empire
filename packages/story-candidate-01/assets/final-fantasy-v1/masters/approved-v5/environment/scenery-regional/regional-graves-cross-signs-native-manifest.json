@@ -1,0 +1,35 @@
+{
+  "status": "native masters and QA complete; production integration pending",
+  "assets": [
+    {
+      "identity": "grave-cross-cluster",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/grave-cross-cluster-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-cross-cluster/evidence.json",
+      "source_foot_estimate_px": [
+        625,
+        1030
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "grave-signboards",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/grave-signboards-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/evidence.json",
+      "source_foot_estimate_px": [
+        700,
+        1060
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

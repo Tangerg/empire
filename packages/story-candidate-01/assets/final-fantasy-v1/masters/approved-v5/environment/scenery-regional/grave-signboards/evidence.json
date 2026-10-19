@@ -1,0 +1,44 @@
+{
+  "asset": "grave-signboards",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; broad matte wood planes, heavy outlines and simplified rope/cloth",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    700,
+    1060
+  ],
+  "source_foot_estimate_normalized": [
+    0.558214,
+    0.845295
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strong_alpha_margins_LTRB": [
+    133,
+    139,
+    77,
+    134
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/grave-signboards.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-fallen-log/pine-fallen-log-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-signboards/prompt.txt",
+  "production_status": "not integrated",
+  "visually_verified_subject_counts": {
+    "posts": 3,
+    "large_sign_planks": 4,
+    "small_sign_planks": 2
+  },
+  "lettering_check": "all sign planks blank; no invented lettering, arrows or symbols",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

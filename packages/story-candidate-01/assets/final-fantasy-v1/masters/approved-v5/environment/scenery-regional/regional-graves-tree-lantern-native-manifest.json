@@ -1,0 +1,35 @@
+{
+  "status": "native masters and QA complete; production integration pending",
+  "assets": [
+    {
+      "identity": "grave-dead-tree",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/grave-dead-tree-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-dead-tree/evidence.json",
+      "source_foot_estimate_px": [
+        625,
+        1080
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "grave-marker-lantern",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/grave-marker-lantern-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/grave-marker-lantern/evidence.json",
+      "source_foot_estimate_px": [
+        650,
+        1055
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

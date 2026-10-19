@@ -1,0 +1,5 @@
+Three separate wooden posts: tall left sign with four blank rough planks, short foreground sign with two blank planks, and tall bare right post with three broad rope bands and one small torn dark ribbon. A few large nail heads, broad matte tan/gray-brown wood faces and thick outlines. All boards are unlettered, with no arrows, invented words or symbols. Rope and cloth are only small original structural accents; no hanging figure or object. Full post ends and ribbon tips visible. No ground bed, stones, grass or platform. Source foot (700,1060) lies between the three grounded post bottoms.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [133, 139, 77, 134]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

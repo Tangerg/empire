@@ -1,0 +1,5 @@
+One tall central blocky stone cross on its own two-step plinth, surrounded by exactly three separate rounded gravestones: small left, taller rear-right and small front-right. Each small stone has one simple engraved cross; no lettering, names or dates. Broad warm-gray faces, charcoal side planes, strong dark outlines and very few structural chips. Marker plinths are intrinsic structural feet; no old paving plaza, soil bed, grass or broad ground platform. Full silhouettes visible with separate readable grave shapes. Source foot (625,1030) is near the shared grounded marker-footprint center, not the lowest front-right marker corner.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [198, 163, 194, 111]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

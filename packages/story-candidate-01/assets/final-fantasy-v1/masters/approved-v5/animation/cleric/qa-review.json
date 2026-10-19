@@ -1,0 +1,31 @@
+{
+  "status": "Native quartet visual/geometry QA passes; coordinator export/binding pending",
+  "topic": "C01-UNIT-CLERIC",
+  "sameNativeCanvas": [
+    1585,
+    992
+  ],
+  "bodyScale": "44/883",
+  "nativeMastersUnmodified": true,
+  "allRawMasterHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All selected master perimeter alpha<=1, zero alpha>1 pixels on edges. No alpha cleanup performed.",
+  "blackAndWhiteCompositesVisuallyInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "walkContactsOppose": true,
+  "attackSemanticsPass": "Raised compact mace attack, with correct original physical hand assignment; intact lantern and contained candle flame.",
+  "semanticContract": "The existing four-frame contract remains idle/walk-a/attack/walk-b. Attack is a raised compact mace action credible for blunt melee. Heal currently shares the action animation contract; there is no support-only replacement or fifth frame.",
+  "sourceIdentityCaveat": "Engine calls blunt melee weapon cleric_staff; original drawn source is a short rigid spiked mace, retained faithfully.",
+  "attemptHistory": {
+    "idle": "attempt01 accepted",
+    "attack": "attempt01 rejected for switched arm/equipment assignment; attempt02 corrected and selected"
+  },
+  "registrationEvidence": "registration-evidence.json",
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false
+}

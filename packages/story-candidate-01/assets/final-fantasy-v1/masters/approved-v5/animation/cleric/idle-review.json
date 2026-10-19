@@ -1,0 +1,62 @@
+{
+  "status": "Idle accepted; native quartet complete",
+  "selectedAttempt": "attempt-01",
+  "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/animation/cleric/idle/master.png",
+  "identityPass": true,
+  "bodyStyleReview": "Broad squat torso, large adult hooded head, oversized bare hands and boots; distinct lantern cleric rather than generic sword unit",
+  "nativeSize": [
+    1585,
+    992
+  ],
+  "bodyTop": 61,
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        390,
+        820,
+        680,
+        980
+      ],
+      "soleY": 948,
+      "bottomBandRows": 4,
+      "meanX": 534.875,
+      "spanX": [
+        472,
+        597
+      ]
+    },
+    "screenRight": {
+      "roi": [
+        820,
+        800,
+        1180,
+        980
+      ],
+      "soleY": 940,
+      "bottomBandRows": 4,
+      "meanX": 1032.197,
+      "spanX": [
+        977,
+        1086
+      ]
+    }
+  },
+  "sourceFootMidpoint": [
+    783.536,
+    944.0
+  ],
+  "suggestedSourceFoot": [
+    784,
+    948
+  ],
+  "proposedBodyScale": 0.04983012457531144,
+  "scaleDefinition": "44 logical pixels divided by source hood crown to mean sole height; keep common scale for future poses after acceptance",
+  "perimeterAlphaMax": 1,
+  "perimeterAlphaGreaterThan1": 0,
+  "rawPreserved": true,
+  "exactPromptVerified": true,
+  "semanticNextPose": "Opposing walks; ability/attack pose raises and presents lantern while retaining the short mace. Subject to parent review.",
+  "acceptedScale": "44/883",
+  "acceptanceEvidence": "Parent message2026-10-19 14:15:36UTC: Cleric idle reviewed and accepted; continue three poses with shared44/883 scale and measured foot.",
+  "quartetManifest": "bundle-manifest.json"
+}

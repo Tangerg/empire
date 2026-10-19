@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-BPROP-LIFE-4",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6601115664323924,
+  "nearOpaqueFractionAlphaGE250": 0.3104725166548385,
+  "nonzeroAlphaBBox": [
+    27,
+    39,
+    1242,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    31,
+    185,
+    1234,
+    1085
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    31,
+    185,
+    20,
+    169
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 3,
+  "sha256": "2b11321a7e6b60b6e4cb5c79ad59a4007408ce10bd5088ebcce85a4dbb197dc8",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

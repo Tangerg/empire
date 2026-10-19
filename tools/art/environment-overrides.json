@@ -522,17 +522,62 @@
       },
       "cells": {
         "grave-cross-cluster": {
-          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/scenery-regional/grave-cross-cluster/master.png",
-          "sha256": "5c79115e5a1acd82b2f29f8bf38911fcb1993133b8c7cae7009615cf3d7d36e8",
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/scenery-regional/grave-cross-cluster/grave-cross-cluster-master.png",
+          "sha256": "e0bf7e40b9592e76cddfcc9259eebecb3c2ac19c5e2c3a7e705831a2703552ae",
           "registration": {
             "scale": 0.0685805422647528,
             "origin": [
-              5.0,
-              10.0
+              5,
+              5
             ],
             "sourceFoot": [
-              627.0,
-              1181.093023255814
+              625,
+              1030
+            ]
+          }
+        },
+        "grave-signboards": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/scenery-regional/grave-signboards/grave-signboards-master.png",
+          "sha256": "4c6af833419b9731a2b73a11370cb5b9e604136dcd0699e909a8c288d3ef778c",
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5,
+              5
+            ],
+            "sourceFoot": [
+              700,
+              1060
+            ]
+          }
+        },
+        "grave-dead-tree": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/scenery-regional/grave-dead-tree/grave-dead-tree-master.png",
+          "sha256": "297204aae4ba95f2b1fc51717cba96d9e443db23d6d0c37f81982187fa03b058",
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5,
+              5
+            ],
+            "sourceFoot": [
+              625,
+              1080
+            ]
+          }
+        },
+        "grave-marker-lantern": {
+          "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/environment/scenery-regional/grave-marker-lantern/grave-marker-lantern-master.png",
+          "sha256": "e608c17fab2ce212064968820c4e5d01dd56f84b769454cc2213db9ec9b5a7e5",
+          "registration": {
+            "scale": 0.0685805422647528,
+            "origin": [
+              5,
+              5
+            ],
+            "sourceFoot": [
+              650,
+              1055
             ]
           }
         }

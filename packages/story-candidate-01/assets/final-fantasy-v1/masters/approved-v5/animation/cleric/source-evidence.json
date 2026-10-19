@@ -1,0 +1,105 @@
+{
+  "topicId": "C01-UNIT-CLERIC",
+  "actualConsumer": "cleric (built-in engine unit); not c01.mirelle or c01.gravekeeper",
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 53,
+    "text": "cleric: 'C01-UNIT-CLERIC'"
+  },
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-CLERIC",
+    "topicId": "C01-UNIT-CLERIC",
+    "label": "牧师",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-cleric.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-cleric.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-cleric.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-units/gray-banner-cleric-source.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ff91ab4786170883fb47d69ad812a74ced6c047dd3cc60e1c250cd12c4bd1fbb"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-cleric.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "36a0a79a41913deb1f3e483038f74813fbca875efb53375b43d22ddde9e55af3"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-cleric.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "2d9f178ac14a311d3e4c40fc49fa9e750e1cb69d2caba4e5fb4ae31c3c0b90df"
+    }
+  },
+  "referenceExtraction": "Native non-resampled crops only: HD frames64x96; first source-board cell[0,0,418,941]. No color/alpha edits. Original board background is magenta; use only for identity.",
+  "identityObserved": [
+    "Clean-shaven gray-haired adult; stern, lined face",
+    "Patched charcoal hood and short shoulder cape secured by small bronze loop clasp",
+    "Blue-gray quilted tunic, cream sleeves, charcoal wrist wraps",
+    "Brown belt with buckle, rolled pale scroll on screen-left, brown pouch and pale tags on opposite side",
+    "Bare hands and large brown boots",
+    "Short rigid dark steel/gray mace with spiked steel head, no chain",
+    "Black/dark iron rectangular candle lantern with amber panes and yellow candle, carried by top loop in screen-right hand"
+  ],
+  "styleAuthority": [
+    "../swordsman",
+    "../spearman",
+    "../banner-guard"
+  ],
+  "status": "Native quartet complete; original references preserved",
+  "semanticEvidence": {
+    "unitDefinition": "packages/content-ancient-empires/src/units.ts:49-60",
+    "abilities": [
+      "heal",
+      "attack",
+      "capture",
+      "wait"
+    ],
+    "weaponDefinition": "packages/content-ancient-empires/src/weapons.ts:41",
+    "engineWeapon": "cleric_staff",
+    "damageType": "blunt",
+    "tags": [
+      "melee"
+    ],
+    "sourceArtAuthority": "Original master and runtime HD depict a short rigid spiked mace plus candle lantern; retain drawn identity despite engine weapon label.",
+    "animationContract": "Existing four-frame idle/walk-a/attack/walk-b contract preserved. Attack is compact blunt mace strike. Heal currently shares the existing action animation contract; no separate support-only/fifth frame."
+  }
+}

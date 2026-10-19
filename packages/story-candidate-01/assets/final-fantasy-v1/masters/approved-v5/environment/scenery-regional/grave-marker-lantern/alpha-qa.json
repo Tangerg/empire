@@ -1,0 +1,107 @@
+{
+  "asset": "grave-marker-lantern",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-1cadfe47-6c83-4105-9762-efe55a6d2d49.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 990074,
+  "opaque_pixels": 1747,
+  "partial_alpha_pixels": 580695,
+  "near_opaque_alpha_250_255_pixels": 565012,
+  "nonzero_alpha_bbox": [
+    0,
+    77,
+    1206,
+    1254
+  ],
+  "strong_alpha_bbox": [
+    143,
+    137,
+    1111,
+    1124
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      0,
+      77,
+      1206,
+      1254
+    ],
+    "16": [
+      142,
+      136,
+      1112,
+      1125
+    ],
+    "128": [
+      143,
+      137,
+      1111,
+      1124
+    ],
+    "250": [
+      144,
+      137,
+      1111,
+      1123
+    ]
+  },
+  "margin_pixels_LTRB": [
+    0,
+    77,
+    48,
+    0
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    143,
+    137,
+    143,
+    130
+  ],
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 1,
+      "nonzero_pixels": 3
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 1,
+      "nonzero_pixels": 10
+    }
+  },
+  "strict_perimeter_all_alpha_zero": false,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": true,
+  "sha256": "e608c17fab2ce212064968820c4e5d01dd56f84b769454cc2213db9ec9b5a7e5",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

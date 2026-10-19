@@ -1,0 +1,5 @@
+One old completely leafless gnarled broadleaf tree with two heavy interwoven trunk strands, a broad asymmetric open crown of coarse forked limbs and thick sweeping root flares. Clearly distinct from the narrow pine snag: broad twisting trunk, spreading left/right limbs and no remaining needle tufts. A handful of large gray-brown/umber and warm-tan angular wood planes, deep broad twist grooves and strong dark outline replace fine bark texture. Every root and branch tip visible, no surrounding loose rocks, grass, soil bed or platform. Source foot (625,1080) is the central rooted trunk support above the lowest front root flare.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [130, 77, 122, 68]. Strict perimeter alpha-zero check: PASS. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

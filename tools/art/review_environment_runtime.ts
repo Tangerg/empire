@@ -20,10 +20,11 @@ const pineSet = process.argv.includes('--pine-first');
 const brushSet = process.argv.includes('--pine-underbrush');
 const matureSet = process.argv.includes('--pine-mature');
 const lowSet = process.argv.includes('--pine-low');
-const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet || lowSet;
-if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet, lowSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
+const graveSet = process.argv.includes('--regional-graves');
+const extended = thirdSet || fourthSet || pineSet || brushSet || matureSet || lowSet || graveSet;
+if ([secondSet, thirdSet, fourthSet, pineSet, brushSet, matureSet, lowSet, graveSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
 const output = resolve(process.env.FOREST_REVIEW_OUTPUT
-  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${lowSet ? '-pine-low' : matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
+  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${graveSet ? '-regional-graves' : lowSet ? '-pine-low' : matureSet ? '-pine-mature' : brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const map = mapFromLevel(content, candidate01Level('c01-02'));
 map.tiles.fill('forest');
@@ -34,6 +35,9 @@ const frame = candidate01SceneFrameMarkup(context).foreground;
 const motherRootMap = mapFromLevel(content, candidate01Level('c01-02'));
 motherRootMap.tiles.fill('c01.mother-root');
 const motherRoot = boardPiecesMarkup(candidate01MapSceneryLayers({ ...context, map: motherRootMap }).underUnits);
+const graveMap = mapFromLevel(content, candidate01Level('c01-02'));
+graveMap.tiles.fill('c01.graveyard');
+const graves = boardPiecesMarkup(candidate01MapSceneryLayers({ ...context, map: graveMap }).underUnits);
 const props = (markup: string) => markup.match(/<g class="candidate-environment-prop [\s\S]*?<\/svg>\s*<\/g>/g) ?? [];
 interface ReviewColumn {
   readonly id: string;
@@ -43,7 +47,13 @@ interface ReviewColumn {
   readonly reference?: boolean;
   readonly reconstruction?: boolean;
 }
-const columns: readonly ReviewColumn[] = lowSet ? [
+const columns: readonly ReviewColumn[] = graveSet ? [
+  { id: 'grave-cross-cluster', x: 85, placement: [0.42, 0.42] },
+  { id: 'grave-signboards', x: 235, placement: [0.42, 0.42] },
+  { id: 'grave-dead-tree', x: 385, placement: [0.42, 0.42] },
+  { id: 'grave-marker-lantern', x: 515, placement: [0.42, 0.42] },
+  { id: 'oak-ancient', x: 675, placement: [0.74, 0.86], reference: true },
+] : lowSet ? [
   { id: 'pine-low-shrub', x: 85, placement: [1, 1], catalogOnly: true },
   { id: 'pine-fallen-log', x: 235, placement: [1, 1], catalogOnly: true },
   { id: 'pine-stump', x: 385, placement: [1, 1], catalogOnly: true },
@@ -95,7 +105,7 @@ const pictures = [];
 for (const { id, x, placement, catalogOnly = false, reference = false, reconstruction = false } of columns) {
   const { cell, atlas } = CANDIDATE_01_ENVIRONMENT.cell(id);
   const crop = `x="${-(cell.index % 4) * 96}" y="${-Math.floor(cell.index / 4) * 96}"`;
-  const source = id === 'boulder-ferns' ? motherRoot
+  const source = id.startsWith('grave-') ? graves : id === 'boulder-ferns' ? motherRoot
     : ['boulder-large', 'fallen-hollow-log', 'pine-tall', 'pine-pair', 'pine-mature-c'].includes(id) ? frame : field;
   const matches = props(source)
     .filter((markup) => markup.includes(`${atlas.id}@2x.png`) && markup.includes(crop));

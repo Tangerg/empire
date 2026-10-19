@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-BPROP-HAZARD-3",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6105623090639459,
+  "nearOpaqueFractionAlphaGE250": 0.3778098283260711,
+  "nonzeroAlphaBBox": [
+    0,
+    53,
+    1228,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    142,
+    56,
+    1135,
+    1214
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    142,
+    56,
+    119,
+    40
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 26,
+  "sha256": "c70f9586ef74254a3729c7fe82226beb355118a099ca2bf64dfff112c4dc67e9",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}
