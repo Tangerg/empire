@@ -1302,7 +1302,13 @@
       "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props",
+      "plannedFrames": [
+        "normal",
+        "damaged",
+        "captured"
+      ]
     },
     {
       "topicId": "C01-STRUCT-OLD-CITY-TUNNEL",
@@ -8374,8 +8380,14 @@
     },
     {
       "id": "forest-temperate",
-      "status": "pending",
-      "componentCount": 16
+      "status": "exported",
+      "componentCount": 16,
+      "verification": {
+        "cellCount": 16,
+        "exportCheck": "passed",
+        "wholeAtlasVisualReview": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
+      }
     },
     {
       "id": "scenery-regional",
@@ -8795,18 +8807,21 @@
       "atlasId": "forest-temperate",
       "cellId": "boulder-large",
       "index": 13,
-      "status": "raw-generated",
-      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/boulder-large/master.png",
+      "status": "exported",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/boulder-large/revisions/master-v3.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "sourceSha256": "26832d2209824e4c9aa593914789fb48cfa2d04cf7e2622cce94c1dff38d83fb",
+      "sourceSha256": "34a48295f49a1c1a078b69a1220e4f77468f4c5a27c36df5b4001d0ecc1124af",
       "verification": {
-        "state": "needs-framing-revision",
-        "note": "contactrequires19HD beyondsafeoffset10; do notcropcanvas or expandbound"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-013-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "revisionCandidate": {
         "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/boulder-large/revisions/master-v3.png",
         "sha256": "34a48295f49a1c1a078b69a1220e4f77468f4c5a27c36df5b4001d0ecc1124af",
-        "status": "framing-review-pending"
+        "status": "framing-semantic-review-passed"
       }
     },
     {
@@ -8833,22 +8848,25 @@
       "atlasId": "forest-temperate",
       "cellId": "forest-floor-cluster",
       "index": 15,
-      "status": "raw-generated",
-      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/forest-floor-cluster/master.png",
+      "status": "exported",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/forest-floor-cluster/revisions/master-v2.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceIntegrity": {
         "issue": "Original keyed master draws only15 groups; slot15 blank",
         "recovery": "Documented semantic reconstruction: low moss/leaf litter/small fern/pebbles; catalog footprint1x1 obstruction0"
       },
-      "sourceSha256": "c3ac154ba1a2de92f4656234c33cbccc7599f4f0373edc5fd64949d52789dcc2",
+      "sourceSha256": "eddca15fb12ab472d9c4d23779c327e43c06bf749ea48768afc15c9ddb33d9f8",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-013-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "revisionCandidate": {
         "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/forest-floor-cluster/revisions/master-v2.png",
         "sha256": "eddca15fb12ab472d9c4d23779c327e43c06bf749ea48768afc15c9ddb33d9f8",
-        "status": "framing-review-pending"
+        "status": "framing-semantic-review-passed"
       }
     }
   ],
