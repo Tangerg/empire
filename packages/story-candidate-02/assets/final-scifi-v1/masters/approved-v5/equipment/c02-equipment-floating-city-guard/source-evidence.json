@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-floating-city-guard",
+  "assetId": "C02-SFV1-equipment-floating-city-guard",
+  "label": "浮城枪卫主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-02.png",
+  "originalMasterSha256": "8d1f70efe1add62295ab36bec297b3761524a0cb6474c8ce9cd2aab4196305f4",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 4
+  },
+  "sourceCropBox": [
+    5,
+    945,
+    309,
+    1249
+  ],
+  "sourceMappingEvidence": "Verified visually against original full equipment board and topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-floating-city-guard.png",
+  "runtimeReferenceSha256": "85484a9290d9844f39ed00ba92c9bb7453af1ffb7fbfffe2930e8f612aa30e02",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4d8fd718-9b2c-4f4e-8303-41414b4dd030.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-floating-city-guard/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original equipment-board-02 r4c1 preserved: one compact ivory/graphite gun with top cyan power cell, open skeletal rear stock, one grip and two capped forward guide rods. Cyan is bounded in opaque cell/rod hardware and slots, no free beam or exterior glow. Broad matte surfaces and actual48 white-black review passed; source perimeter0. Right source margin18px is narrow but complete and actual48 remains padded.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

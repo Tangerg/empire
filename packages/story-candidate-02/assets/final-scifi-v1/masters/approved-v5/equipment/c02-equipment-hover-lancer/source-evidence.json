@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-hover-lancer",
+  "assetId": "C02-SFV1-equipment-hover-lancer",
+  "label": "悬浮枪骑主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 2
+  },
+  "sourceCropBox": [
+    5,
+    319,
+    309,
+    622
+  ],
+  "sourceMappingEvidence": "Verified visually against original full equipment board and topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-hover-lancer.png",
+  "runtimeReferenceSha256": "c47f41a987345b7ca30989c761bc6ad749743cf961688cbf61938c6a7f200614",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-92604b44-fa3d-4771-8d1b-5411208ea106.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-hover-lancer/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original equipment-board-01 r2c1 preserved: one long-shaft powered lance, solid ivory spear point, four metal stabilizer fins (two teal forward and two gray rear), bounded cyan core/collars, amber butt point. Broad matte geometry, intact shaft/fins; source perimeter0 and actual48 white-black review passed without halo.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}
