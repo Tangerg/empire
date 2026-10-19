@@ -1,0 +1,65 @@
+{
+  "topicId": "C01-SKILL-41",
+  "assetId": "C01-FFV1-SKILL-41",
+  "label": "双旗推进",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ab1642b8-aee0-4a53-92bf-5615e9ff999f.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-41-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-03.png",
+    "atlasSha256": "f664dad2fcf7486124e974613c68cae528ed38e6db9ae070b91f57addf268c5d",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-03.png, row 3 column 1 (one based)",
+    "topicIndex": 40,
+    "inspectionCropCoordinates": [
+      4,
+      631,
+      307,
+      936
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop from original full board; no cleanup or alpha conversion. Nominal miscut cell retained separately.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-41.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned skill-41 through skill-44; exact authored-order subjects, major counts, heraldry, nine-object token group and original white-grid exclusion were reported before generation. Parent requested independent actual-48 white/black/olive preview QA while native raw/master remains immutable.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-41-cell.png",
+    "nominalGridCellCoordinates": [
+      2,
+      629,
+      312,
+      938
+    ],
+    "sourceCellCorrection": "Original atlas-03 white divider slivers appear in nominal two-pixel-inset crops. Complete-subject crop excludes divider lines only; full subject and motion strokes retained, no adjacent subject contamination."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-41-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-41-left-streaks-detail.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-41-right-streaks-detail.png"
+  ],
+  "identityClarification": "Two tall hanging forked/fringed banners on individual wooden poles with bronze spearhead finials and crossbars. Left charcoal banner has two opposing cream triangular fields meeting at center in a sideways bow-tie/hourglass motif; right blue-gray banner has one broad upward cream chevron. Left has nine visible horizontal motion runs including central curved return; right five separated runs.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits."
+}

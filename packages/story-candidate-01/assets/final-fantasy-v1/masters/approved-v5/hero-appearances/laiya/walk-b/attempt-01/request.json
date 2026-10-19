@@ -1,0 +1,22 @@
+{
+  "tool": "built-in image_gen",
+  "promptSha256": "1c43cb470b240a0c19f06a9032c043593abd36859c1ebd5ec605d24fde936ac5",
+  "referencedImagePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-a/master.png"
+  ],
+  "referencedImageSha256": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/master.png": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-a/master.png": "9b4d29a97707e01ae30080042938567e68e0185bcaa57586d100c7e88ff3d16a"
+  },
+  "transparentBackground": true,
+  "nativeCanvasRequested": [
+    1586,
+    992
+  ],
+  "pose": "walk-b",
+  "namedUnit": "c01.laiya",
+  "baseTopic": "C01-UNIT-BANNER-GUARD",
+  "sharedScale": "44/784",
+  "action": "Reverse actual walk-a leg roles, no mirrored costume or hand assignment."
+}
