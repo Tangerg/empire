@@ -4214,11 +4214,16 @@
     },
     {
       "topicId": "c02-battle-prop-broken-rails",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-broken-rails/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; runtime visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; runtime visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-042-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "80d438feef2ae52fca0b7185fff7675de9ca53313fcc7364c4b69767e7964bd4"
@@ -4284,10 +4289,14 @@
     },
     {
       "topicId": "c02-battle-prop-community-repairs",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-community-repairs/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; runtime visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "405c40a01887df445f677321c46caf8fdd35c2d0c788b56ff6fedb5d14bf799a"
     },
     {
       "topicId": "c02-battle-prop-cups-cookware",
@@ -4316,10 +4325,14 @@
     },
     {
       "topicId": "c02-battle-prop-dead-fungus-beds",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-dead-fungus-beds/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; runtime visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "c17f822e2b966148f3af393ff831e568ba9061a193bfd0313d039e77dee6a313"
     },
     {
       "topicId": "c02-battle-prop-discarded-arms",
