@@ -1,0 +1,66 @@
+{
+  "asset": "snow-4",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "19d95e2543c4a5d9bbc279e1e4b7e5d60f24f0af4163e6d51dc8d68ff2835ec1",
+  "RGB_mean": [
+    167.77705664044117,
+    179.6979897183876,
+    196.20368123440397
+  ],
+  "RGB_std": [
+    32.42450195738064,
+    31.457274282128694,
+    30.947422941748666
+  ],
+  "luma_mean": 178.35531027347255,
+  "luma_std": 31.598841296937028,
+  "luma_percentiles_5_50_95": [
+    136.6762,
+    170.32319999999999,
+    219.1656
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 174.2612551360646,
+    "bottom": 179.48590504385967,
+    "left": 172.2000147727273,
+    "right": 170.22804466457336,
+    "central_half": 175.13242875218057
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 18.88702817650186,
+    "top_bottom_mean_abs_RGB": 20.31366294524189,
+    "left_right_max_abs_RGB": 78.0,
+    "top_bottom_max_abs_RGB": 86.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Darker cool gray-blue stony substrate interleaved with pale snow/frost sheets, scattered gray stones and a few flat pale branching surface marks. No pools, open water, roots or other identified new objects.",
+    "ambiguous_source_marks": "Three prominent pale branching strokes plus a small fourth faint one remain. Their physical meaning is not assigned in source metadata; they are not registered as ice, cracks, roots or gameplay hazards.",
+    "detail_density": "Approximately 18-22 stone groups, near but above requested density. Dark substrate has more small angular facets and mottled detail than the clean broad-plane target; pale snow remains in broad connected swaths.",
+    "scale_caveat": "Main stone faces and groups are roughly 8-24 world units across at proposed 256 period; larger than initial 3-8-unit guidance. Source shifts brighter/bluer than original but remains distinctly darker than snow-1/2.",
+    "style_caveat": "Broad snow coverage and chunky rocks are readable; the dark crust is the most finely textured of the four new snow sources. No programmatic filtering or corrections applied.",
+    "native_acceptance": "1254 full opacity and material identity retained. Catalog-only preview candidate, no current gameplay/scene integration and no natural seamlessness claim."
+  },
+  "reference_material_identity": "Darker cool gray-blue stony ground with thin irregular pale snow/frost coverage, scattered angular gray stones and several pale branching linear forms. Root-versus-frost/crack interpretation is ambiguous; preserve a few simplified pale linear marks without inventing ice pools, crystalline fissures or raised root structures.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

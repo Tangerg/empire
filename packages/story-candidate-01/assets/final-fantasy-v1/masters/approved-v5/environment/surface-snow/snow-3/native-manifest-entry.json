@@ -1,0 +1,38 @@
+{
+  "atlas": "surface-snow",
+  "cell_index": 2,
+  "original_cellOrder_token": "snow-3",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-985ab144-a2a2-401f-b071-be5e72c07595.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-3/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-3/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-3/snow-3-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-3/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-3/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-3/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-3/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/source-contract.json",
+  "sha256": "a68cb73536fdd58c641a59c58abb9ac7e95a9fbe358d74b8a9ad0582c0211d4c",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Broad connected pale snow sheets interrupted by exposed muted olive-brown earth, small gray stones and dry ochre/olive tuft groups. Defining mixed snow/earth/grass identity retained, no water or invented objects.",
+    "detail_density": "About 20-25 tuft or stone accent groups, somewhat above proposal. Tuft leaves are grouped broad shapes, and much of the snow is connected, with more shallow facet subdivisions than 6-12 total regions.",
+    "scale_caveat": "Tufts and stone groups often span about 12-25 world units at the proposed 256 period, larger than 3-8-unit guidance. Sparse coverage rather than fine grass carpet.",
+    "composition_caveat": "One irregular exposed-earth ribbon runs down the central region and diagonally to the lower right. This is texture coverage, not an authored route or gameplay corridor; the repeated preview should be reviewed for an unintended path-like reading.",
+    "style_caveat": "Broad chunky matte snow and vegetation; earth has some small tonal patches. Main snow palette is brighter/bluer than the original while olive exposed ground is retained.",
+    "native_acceptance": "1254 opaque native identity candidate; catalog-only with no scene binding or seamlessness claim."
+  }
+}

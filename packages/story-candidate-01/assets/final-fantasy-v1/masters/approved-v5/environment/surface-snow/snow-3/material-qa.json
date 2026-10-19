@@ -1,0 +1,66 @@
+{
+  "asset": "snow-3",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "a68cb73536fdd58c641a59c58abb9ac7e95a9fbe358d74b8a9ad0582c0211d4c",
+  "RGB_mean": [
+    186.6192197726446,
+    193.147846508398,
+    198.19054877661023
+  ],
+  "RGB_std": [
+    32.47382231039736,
+    39.77515746089631,
+    55.55179242090916
+  ],
+  "luma_mean": 192.12394356814173,
+  "luma_std": 39.19192120224079,
+  "luma_percentiles_5_50_95": [
+    120.1846,
+    209.1828,
+    228.16160000000002
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 194.9955333308413,
+    "bottom": 190.64932108751992,
+    "left": 186.61685831588915,
+    "right": 181.7342848833732,
+    "central_half": 187.56358214177044
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 36.50797448165869,
+    "top_bottom_mean_abs_RGB": 37.49069643806486,
+    "left_right_max_abs_RGB": 157.0,
+    "top_bottom_max_abs_RGB": 143.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Broad connected pale snow sheets interrupted by exposed muted olive-brown earth, small gray stones and dry ochre/olive tuft groups. Defining mixed snow/earth/grass identity retained, no water or invented objects.",
+    "detail_density": "About 20-25 tuft or stone accent groups, somewhat above proposal. Tuft leaves are grouped broad shapes, and much of the snow is connected, with more shallow facet subdivisions than 6-12 total regions.",
+    "scale_caveat": "Tufts and stone groups often span about 12-25 world units at the proposed 256 period, larger than 3-8-unit guidance. Sparse coverage rather than fine grass carpet.",
+    "composition_caveat": "One irregular exposed-earth ribbon runs down the central region and diagonally to the lower right. This is texture coverage, not an authored route or gameplay corridor; the repeated preview should be reviewed for an unintended path-like reading.",
+    "style_caveat": "Broad chunky matte snow and vegetation; earth has some small tonal patches. Main snow palette is brighter/bluer than the original while olive exposed ground is retained.",
+    "native_acceptance": "1254 opaque native identity candidate; catalog-only with no scene binding or seamlessness claim."
+  },
+  "reference_material_identity": "Patchy cool pale snow interleaved with exposed muted olive-brown earth and numerous dry ochre/olive grass tufts, plus small stones. The snow/earth contrast and remaining dry vegetation are defining, rather than uniform snow coverage.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

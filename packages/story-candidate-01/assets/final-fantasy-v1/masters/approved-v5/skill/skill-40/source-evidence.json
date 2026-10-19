@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-SKILL-40",
+  "assetId": "C01-FFV1-SKILL-40",
+  "label": "撤离引导",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-27a9eb5a-d40d-4359-9b5c-9e14edf277f7.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-40-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-03.png",
+    "atlasSha256": "f664dad2fcf7486124e974613c68cae528ed38e6db9ae070b91f57addf268c5d",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-03.png, row 2 column 4 (one based)",
+    "topicIndex": 39,
+    "inspectionCropCoordinates": [
+      946,
+      318,
+      1252,
+      622
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop from original full board; no cleanup or alpha conversion. Nominal miscut cell retained separately.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-40.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned skill-37 through skill-40; exact authored-order subjects, object/symbol counts, functional ground retention and white grid exclusion were reported before generation.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-40-cell.png",
+    "nominalGridCellCoordinates": [
+      942,
+      316,
+      1252,
+      625
+    ],
+    "sourceCellCorrection": "Original atlas-03 has white grid dividers; nominal two-pixel-inset crop includes white divider slivers. Complete-subject crop excludes only grid lines while preserving the full subject. No neighboring object contamination observed."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-40-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "One blank gray triangular pennant pointing right on one wooden pole with two pale binding collars, ragged lower edge. Five round flat stepping stones lead from large cool-gray foreground stone toward upper-right smaller warm-gray stones, within bounded grassy path. Two small conifer trees, one left behind pole and one upper-right; grouped shrubs remain around path. No people, arrows or flag emblem.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits.",
+  "visualInterpretationNotes": "One right-pointing blank gray ragged flag, two pole collars, five stepping stones and two conifers verified. Functional grassy path retained; no invented flag emblem."
+}

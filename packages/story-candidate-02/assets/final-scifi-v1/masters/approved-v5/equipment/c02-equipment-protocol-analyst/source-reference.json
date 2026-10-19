@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-protocol-analyst",
+  "assetId": "C02-SFV1-equipment-protocol-analyst",
+  "label": "协议分析员主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 4
+  },
+  "sourceCropBox": [
+    632,
+    945,
+    935,
+    1249
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-protocol-analyst.png",
+  "runtimeReferenceSha256": "bb8af239519fa044644e7a2515c90f25d0ecc7d15f3587bf85bfcba6b8f01bb6",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}

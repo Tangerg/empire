@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-protocol-adjudicator",
+  "assetId": "C02-SFV1-equipment-protocol-adjudicator",
+  "label": "协议裁定员主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-03.png",
+  "originalMasterSha256": "c37e18a461e9a713465b4f4981614dd42eeb3fb9b74b7cdb116fe0440d5c71b4",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 2
+  },
+  "sourceCropBox": [
+    319,
+    319,
+    622,
+    622
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-protocol-adjudicator.png",
+  "runtimeReferenceSha256": "4f1d909ba862a8d49cd289ada504309db4a766bace8796525f3861c2e9517d51",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9f928c0e-33d3-4acd-9303-e504a847650c.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-protocol-adjudicator/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board03 R2C2 and old runtime verified. Exactly two staggered optical modules retained, upper-left larger and lower-right smaller, with exactly two forward-facing cyan circular lenses. Ivory block housings, graphite ribbed barrels, ochre panels and cyan status windows follow source. No role-name gavel, figure, gun grip or extra lens invented. Actual48 black/white review preserves double-lens silhouette and all cyan light remains hardware-bounded.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

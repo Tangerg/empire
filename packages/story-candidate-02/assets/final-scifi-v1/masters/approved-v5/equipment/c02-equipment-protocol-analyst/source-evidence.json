@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-protocol-analyst",
+  "assetId": "C02-SFV1-equipment-protocol-analyst",
+  "label": "协议分析员主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 4
+  },
+  "sourceCropBox": [
+    632,
+    945,
+    935,
+    1249
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-protocol-analyst.png",
+  "runtimeReferenceSha256": "bb8af239519fa044644e7a2515c90f25d0ecc7d15f3587bf85bfcba6b8f01bb6",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-e57e2b4b-9466-463c-b7f7-c46e7ed64b84.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-protocol-analyst/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board01 R4C3 and old runtime verified. One portrait radar terminal preserves centered concentric cyan target with axis lines and simplified technical grid, one upper-right antenna, ivory corner guards, ochre side tab and cyan lower-right inset. Diagram remains different from memory-monk square circuit. No readable invented text or character. Actual48 keeps antenna and radar center readable; no screen glow outside hardware.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

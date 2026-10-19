@@ -1,0 +1,65 @@
+{
+  "asset": "snow-2",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "0d97d4a3d13dc15a9a0904614190f6d2c9ea6bd400015f7946d6f075af481744",
+  "RGB_mean": [
+    185.28822345845765,
+    198.86367006758596,
+    213.7199640575994
+  ],
+  "RGB_std": [
+    14.858787301553647,
+    12.93758386328325,
+    10.755100548784943
+  ],
+  "luma_mean": 197.05015454456424,
+  "luma_std": 13.145102457578858,
+  "luma_percentiles_5_50_95": [
+    176.902,
+    199.10660000000001,
+    212.80859999999998
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 193.74483116028708,
+    "bottom": 194.82660048096093,
+    "left": 191.4719829694976,
+    "right": 190.3339796002791,
+    "central_half": 200.9689219598158
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 9.211057947900054,
+    "top_bottom_mean_abs_RGB": 9.135832004253057,
+    "left_right_max_abs_RGB": 37.0,
+    "top_bottom_max_abs_RGB": 37.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Continuous cooler blue-gray compacted snow with broad pale scuffed bands and scattered flat-topped gray stone groups. Lower white coverage and bluer/shadier sheets distinguish it from snow-1. No earth patches, grass, water or glossy ice.",
+    "detail_density": "Approximately 22-27 visible stone groups rather than the proposed 12-18. Shallow broad sheets retain many secondary small value facets, above the requested 6-12 total regions.",
+    "scale_caveat": "Larger grouped stones span about 10-24 world units at 256 period; single main faces mostly about 7-16. Source count and scale deviations are documented as decorative, not gameplay changes.",
+    "style_caveat": "Broad matte snowy sheets and chunky stone faces, with some soft low-contrast fill texture and small facet boundaries still present. No aggressive black outlines or bright white glare.",
+    "native_acceptance": "1254 fully opaque native; identity retained; catalog-only preview candidate, no campaign scene pass or natural seamlessness claim."
+  },
+  "reference_material_identity": "Cooler blue-gray near-continuous snow cover with a more compacted/scuffed and fragmented snow surface, scattered gray stones and almost no vegetation. Less white and more cyan-blue than slot 0. The pixels do not establish open water or a glossy ice sheet.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

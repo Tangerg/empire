@@ -1,0 +1,66 @@
+{
+  "atlas": "surface-snow",
+  "cell_index": 3,
+  "original_cellOrder_token": "snow-4",
+  "source_board_index": 3,
+  "source_crop": [
+    940,
+    0,
+    1254,
+    314
+  ],
+  "source_crop_dimensions": [
+    314,
+    314
+  ],
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-snow/snow-4-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-snow/snow-4-current-runtime-2x-cell.png",
+  "current_core_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-snow/snow-4-current-fit-core-52.png",
+  "original_visual_identity": "Darker cool gray-blue stony ground with thin irregular pale snow/frost coverage, scattered angular gray stones and several pale branching linear forms. Root-versus-frost/crack interpretation is ambiguous; preserve a few simplified pale linear marks without inventing ice pools, crystalline fissures or raised root structures.",
+  "semantic_status": "exact original cellOrder name; material description is visual observation, not a newly registered semantic or rule",
+  "original_mean_RGB": [
+    138.40943851677554,
+    146.84252910868594,
+    154.77758732605784
+  ],
+  "original_luma_mean": 145.62256525214005,
+  "original_opaque": true,
+  "current_usage": "catalog-only in the current 16 candidate campaign levels",
+  "sourceFoot": null,
+  "anchor": null,
+  "runtime_edge_MAE_RGB": {
+    "left_right": 0.0,
+    "top_bottom": 0.0
+  },
+  "inset_core_edge_MAE_RGB": {
+    "left_right": 19.474358974358974,
+    "top_bottom": 19.608974358974358
+  },
+  "generation_contract_approval": "Parent confirmed on 2026-10-19 20:46 UTC: four opaque snow sources, first 1/2 then 3/4; all catalog-only, 256 is preview proposal.",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/source-contract.json",
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+  "original_full_source_sha256": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+  "reference_images_in_order": [
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-snow/snow-4-original-master-swatch.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/highland-hill-cap-master.png"
+  ],
+  "reference_roles": [
+    "exact original material identity, coverage and palette; simplify old dense detail",
+    "approved clean broad snow-plane style on top only; do not copy cliff object or transparency"
+  ],
+  "reference_sha256": {
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-snow/snow-4-original-master-swatch.png": "cc48ac7e802f1bc2d4e2be56f4811a4da6da956bf25b9857f48a64a4e581f13b",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/highland-hill-cap-master.png": "171463b3b540968121ab54f5425890f6c19f13bcef6e2a7cb6de3e559a660d16"
+  },
+  "native_request": [
+    1254,
+    1254
+  ],
+  "opaque_request": true,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "binding_status": "all four catalog-only native sources; no current campaign placement or consumer change",
+  "prompt_sha256": "5e92a8576ec0ef0d2d5aa1635c5e551efe7cfaf27692969956b46ffd2b6e806e"
+}

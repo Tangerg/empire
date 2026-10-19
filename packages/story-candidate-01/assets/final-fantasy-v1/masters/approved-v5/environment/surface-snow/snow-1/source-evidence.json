@@ -1,0 +1,66 @@
+{
+  "atlas": "surface-snow",
+  "cell_index": 0,
+  "original_cellOrder_token": "snow-1",
+  "source_board_index": 0,
+  "source_crop": [
+    0,
+    0,
+    314,
+    314
+  ],
+  "source_crop_dimensions": [
+    314,
+    314
+  ],
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-snow/snow-1-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-snow/snow-1-current-runtime-2x-cell.png",
+  "current_core_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-snow/snow-1-current-fit-core-52.png",
+  "original_visual_identity": "Pale gray-white near-continuous snow cover with broad shallow irregular drift/crust planes, scattered exposed cool-gray angular stones and almost no visible vegetation. Lightest overall variant; not a white recolor of bare brown soil.",
+  "semantic_status": "exact original cellOrder name; material description is visual observation, not a newly registered semantic or rule",
+  "original_mean_RGB": [
+    184.0135299606475,
+    190.6183212300702,
+    195.2651730293318
+  ],
+  "original_luma_mean": 189.54964530609757,
+  "original_opaque": true,
+  "current_usage": "catalog-only in the current 16 candidate campaign levels",
+  "sourceFoot": null,
+  "anchor": null,
+  "runtime_edge_MAE_RGB": {
+    "left_right": 0.0,
+    "top_bottom": 0.0
+  },
+  "inset_core_edge_MAE_RGB": {
+    "left_right": 12.153846153846153,
+    "top_bottom": 13.544871794871796
+  },
+  "generation_contract_approval": "Parent confirmed on 2026-10-19 20:46 UTC: four opaque snow sources, first 1/2 then 3/4; all catalog-only, 256 is preview proposal.",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/source-contract.json",
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+  "original_full_source_sha256": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+  "reference_images_in_order": [
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-snow/snow-1-original-master-swatch.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/highland-hill-cap-master.png"
+  ],
+  "reference_roles": [
+    "exact original material identity, coverage and palette; simplify old dense detail",
+    "approved clean broad snow-plane style on top only; do not copy cliff object or transparency"
+  ],
+  "reference_sha256": {
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-snow/snow-1-original-master-swatch.png": "5b1269d5145a6b9c25bea04c976d2519e2335f525750fd10dada326ee88951e6",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/cliff-modules-highland/highland-hill-cap/highland-hill-cap-master.png": "171463b3b540968121ab54f5425890f6c19f13bcef6e2a7cb6de3e559a660d16"
+  },
+  "native_request": [
+    1254,
+    1254
+  ],
+  "opaque_request": true,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "binding_status": "all four catalog-only native sources; no current campaign placement or consumer change",
+  "prompt_sha256": "50360272eeac141b59e01a59f6586a1747b919090ef7d89022ad5bc9ad32070f"
+}

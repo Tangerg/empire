@@ -1,0 +1,65 @@
+{
+  "asset": "snow-1",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "78b0a0b3abfadbb6c007e1540619799797207ccc6bd9ca24f36f42b40c5ed2be",
+  "RGB_mean": [
+    206.27269992801345,
+    217.98314484558503,
+    233.57759221527795
+  ],
+  "RGB_std": [
+    17.628005477410678,
+    16.02508449788907,
+    13.845696612272906
+  ],
+  "luma_mean": 216.61942335620117,
+  "luma_std": 16.143336641572887,
+  "luma_percentiles_5_50_95": [
+    196.97419999999997,
+    221.31920000000002,
+    231.2338
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 214.44944212270735,
+    "bottom": 211.959400782496,
+    "left": 212.1178050089713,
+    "right": 209.25704860197368,
+    "central_half": 219.24853956955664
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 7.918128654970761,
+    "top_bottom_mean_abs_RGB": 7.913078149920255,
+    "left_right_max_abs_RGB": 32.0,
+    "top_bottom_max_abs_RGB": 34.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Light cool gray-white continuous snow cover with shallow blue-gray depressions and scattered small snow-capped gray stone groups. No exposed brown earth, vegetation, water or standing scene objects.",
+    "detail_density": "Around 25-30 visible stone accent groups, above the suggested 12-18. Snow remains continuous but subdivides into more shallow value patches than the requested 6-12 total broad regions.",
+    "scale_caveat": "Larger stone groups span roughly 10-22 world units at the proposed 256 period; many individual stone faces are about 6-15. Decorative scale is larger than initial 3-8-unit guidance.",
+    "style_caveat": "Much cleaner light snow faces than original with restrained low-contrast shading; some shallow facet subdivisions and softly textured fill remain. Source is a material candidate for catalog preview, not a scene pass.",
+    "native_acceptance": "1254 opaque native and snow identity passed. All current campaign consumers remain absent. No natural seamlessness claim."
+  },
+  "reference_material_identity": "Pale gray-white near-continuous snow cover with broad shallow irregular drift/crust planes, scattered exposed cool-gray angular stones and almost no visible vegetation. Lightest overall variant; not a white recolor of bare brown soil.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

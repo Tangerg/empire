@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-snow",
+  "cell_index": 0,
+  "original_cellOrder_token": "snow-1",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-f0ef6c10-9803-4853-bc03-196649a47a6f.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-1/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-1/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-1/snow-1-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-1/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-1/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-1/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-1/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/source-contract.json",
+  "sha256": "78b0a0b3abfadbb6c007e1540619799797207ccc6bd9ca24f36f42b40c5ed2be",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Light cool gray-white continuous snow cover with shallow blue-gray depressions and scattered small snow-capped gray stone groups. No exposed brown earth, vegetation, water or standing scene objects.",
+    "detail_density": "Around 25-30 visible stone accent groups, above the suggested 12-18. Snow remains continuous but subdivides into more shallow value patches than the requested 6-12 total broad regions.",
+    "scale_caveat": "Larger stone groups span roughly 10-22 world units at the proposed 256 period; many individual stone faces are about 6-15. Decorative scale is larger than initial 3-8-unit guidance.",
+    "style_caveat": "Much cleaner light snow faces than original with restrained low-contrast shading; some shallow facet subdivisions and softly textured fill remain. Source is a material candidate for catalog preview, not a scene pass.",
+    "native_acceptance": "1254 opaque native and snow identity passed. All current campaign consumers remain absent. No natural seamlessness claim."
+  }
+}

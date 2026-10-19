@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-SKILL-39",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.4596042266024638,
+  "nearOpaqueFractionAlphaGE250": 0.5152386366815982,
+  "nonzeroAlphaBBox": [
+    0,
+    61,
+    1233,
+    1191
+  ],
+  "visibleAlphaBBoxGE8": [
+    26,
+    87,
+    1230,
+    1188
+  ],
+  "visibleAlphaBBoxGE128": [
+    26,
+    87,
+    1229,
+    1188
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    26,
+    87,
+    25,
+    66
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 5,
+  "sha256": "5c22b3f70a9c1323cea9a4efb1e9acb1d8bb308d8767191b88970d3112c6c6b9",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, with transparent exterior and open gaps.",
+    "No invented readable lettering, broad exterior glow, haze, scene background or added square tile."
+  ],
+  "identityVerified": "One bronze hanging bell with one clapper on timber post/crossbeam/bracket and diagonal brace. Exactly one D-handled shovel center, one two-ended pickaxe leaning right, and one short sledgehammer far right. One low five-stone wall at lower-left (two upper, three lower visible) plus bounded grass/soil vegetation beneath all objects. No mobilized people or extra tools.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticInspection": "One bell and single clapper, one shovel, one pickaxe and one sledgehammer verified. Final lower-left wall clearly has five stones: two upper, three lower, including the small lower-left stone revealed by imagegen refinement. Bounded grass/soil remains functional icon content."
+}

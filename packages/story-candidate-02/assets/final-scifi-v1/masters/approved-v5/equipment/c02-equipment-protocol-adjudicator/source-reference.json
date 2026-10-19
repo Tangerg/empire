@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-protocol-adjudicator",
+  "assetId": "C02-SFV1-equipment-protocol-adjudicator",
+  "label": "协议裁定员主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-03.png",
+  "originalMasterSha256": "c37e18a461e9a713465b4f4981614dd42eeb3fb9b74b7cdb116fe0440d5c71b4",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 2
+  },
+  "sourceCropBox": [
+    319,
+    319,
+    622,
+    622
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-protocol-adjudicator.png",
+  "runtimeReferenceSha256": "4f1d909ba862a8d49cd289ada504309db4a766bace8796525f3861c2e9517d51",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}

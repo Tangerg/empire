@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-snow",
+  "cell_index": 1,
+  "original_cellOrder_token": "snow-2",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-2f20fa4b-edec-43b9-8e38-f6a0a10f3323.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-2/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-2/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-2/snow-2-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-2/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-2/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-2/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-2/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/source-contract.json",
+  "sha256": "0d97d4a3d13dc15a9a0904614190f6d2c9ea6bd400015f7946d6f075af481744",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Continuous cooler blue-gray compacted snow with broad pale scuffed bands and scattered flat-topped gray stone groups. Lower white coverage and bluer/shadier sheets distinguish it from snow-1. No earth patches, grass, water or glossy ice.",
+    "detail_density": "Approximately 22-27 visible stone groups rather than the proposed 12-18. Shallow broad sheets retain many secondary small value facets, above the requested 6-12 total regions.",
+    "scale_caveat": "Larger grouped stones span about 10-24 world units at 256 period; single main faces mostly about 7-16. Source count and scale deviations are documented as decorative, not gameplay changes.",
+    "style_caveat": "Broad matte snowy sheets and chunky stone faces, with some soft low-contrast fill texture and small facet boundaries still present. No aggressive black outlines or bright white glare.",
+    "native_acceptance": "1254 fully opaque native; identity retained; catalog-only preview candidate, no campaign scene pass or natural seamlessness claim."
+  }
+}

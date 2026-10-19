@@ -1,0 +1,80 @@
+{
+  "topicId": "C01-SKILL-39",
+  "assetId": "C01-FFV1-SKILL-39",
+  "label": "地方动员",
+  "category": "skill",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "runtimeAnchor": [
+    24,
+    24
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-909982b8-d959-4376-81cc-d9224e42d26b.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-39-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/skills/skills-atlas-03.png",
+    "atlasSha256": "f664dad2fcf7486124e974613c68cae528ed38e6db9ae070b91f57addf268c5d",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "skills-atlas-03.png, row 2 column 3 (one based)",
+    "topicIndex": 38,
+    "inspectionCropCoordinates": [
+      631,
+      318,
+      936,
+      622
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop from original full board; no cleanup or alpha conversion. Nominal miscut cell retained separately.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/baseline-runtime-skill-39.png",
+    "mappingAuthority": "Authored topic-catalog skill sequence cross-checked by exact topicId against canonical manifest and by full-board/high-resolution visual match with baseline runtime. Not inferred from sorted manifest positions. Legacy builder TOPIC_SOURCE manifest-complete.json is absent in this repository; not used as sole mapping authority.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned skill-37 through skill-40; exact authored-order subjects, object/symbol counts, functional ground retention and white grid exclusion were reported before generation.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-39-cell.png",
+    "nominalGridCellCoordinates": [
+      629,
+      316,
+      938,
+      625
+    ],
+    "sourceCellCorrection": "Original atlas-03 has white grid dividers; nominal two-pixel-inset crop includes white divider slivers. Complete-subject crop excludes only grid lines while preserving the full subject. No neighboring object contamination observed."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-39-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "One bronze hanging bell with one clapper on timber post/crossbeam/bracket and diagonal brace. Exactly one D-handled shovel center, one two-ended pickaxe leaning right, and one short sledgehammer far right. One low five-stone wall at lower-left (two upper, three lower visible) plus bounded grass/soil vegetation beneath all objects. No mobilized people or extra tools.",
+  "promptFiles": [
+    "prompt.txt",
+    "prompt-refine-five-stones.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Runtime export and catalog binding remain parent-owned; no gameplay or repository edits.",
+  "visualInterpretationNotes": "One bell and single clapper, one shovel, one pickaxe and one sledgehammer verified. Final lower-left wall clearly has five stones: two upper, three lower, including the small lower-left stone revealed by imagegen refinement. Bounded grass/soil remains functional icon content.",
+  "refinementHistory": [
+    {
+      "initialRawSource": "/workspace/scratch/84c9fe948755/generated_images/exec-22c0f3a7-3ce4-46af-8608-3ba75765b140.png",
+      "preservedCandidate": "candidates/initial/raw.png",
+      "reason": "Small original lower-left fifth masonry stone hidden/omitted in initial generation.",
+      "tool": "built-in image_gen__imagegen",
+      "prompt": "prompt-refine-five-stones.txt",
+      "referencePaths": [
+        "/workspace/scratch/84c9fe948755/generated_images/exec-22c0f3a7-3ce4-46af-8608-3ba75765b140.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/skill/identity-inspection/original-skill-39-complete-subject.png"
+      ],
+      "resultRawSource": "/workspace/scratch/84c9fe948755/generated_images/exec-909982b8-d959-4376-81cc-d9224e42d26b.png",
+      "result": "Five stones now clearly visible in two-upper/three-lower arrangement; main subject unchanged."
+    }
+  ]
+}

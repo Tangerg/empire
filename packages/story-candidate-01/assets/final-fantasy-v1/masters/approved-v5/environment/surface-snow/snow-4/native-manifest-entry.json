@@ -1,0 +1,38 @@
+{
+  "atlas": "surface-snow",
+  "cell_index": 3,
+  "original_cellOrder_token": "snow-4",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-6fe2d33c-f778-4881-9b8f-2bba2c3bf2f2.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-4/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-4/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-4/snow-4-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-4/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-4/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-4/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-4/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/source-contract.json",
+  "sha256": "19d95e2543c4a5d9bbc279e1e4b7e5d60f24f0af4163e6d51dc8d68ff2835ec1",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Darker cool gray-blue stony substrate interleaved with pale snow/frost sheets, scattered gray stones and a few flat pale branching surface marks. No pools, open water, roots or other identified new objects.",
+    "ambiguous_source_marks": "Three prominent pale branching strokes plus a small fourth faint one remain. Their physical meaning is not assigned in source metadata; they are not registered as ice, cracks, roots or gameplay hazards.",
+    "detail_density": "Approximately 18-22 stone groups, near but above requested density. Dark substrate has more small angular facets and mottled detail than the clean broad-plane target; pale snow remains in broad connected swaths.",
+    "scale_caveat": "Main stone faces and groups are roughly 8-24 world units across at proposed 256 period; larger than initial 3-8-unit guidance. Source shifts brighter/bluer than original but remains distinctly darker than snow-1/2.",
+    "style_caveat": "Broad snow coverage and chunky rocks are readable; the dark crust is the most finely textured of the four new snow sources. No programmatic filtering or corrections applied.",
+    "native_acceptance": "1254 full opacity and material identity retained. Catalog-only preview candidate, no current gameplay/scene integration and no natural seamlessness claim."
+  }
+}
