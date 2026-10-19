@@ -90,11 +90,11 @@ class SurfaceTests(unittest.TestCase):
         self.assertFalse((self.env / 'runtime').exists())
 
     def test_unknown_surface_and_changed_order_rejected(self):
-        self.data['atlases']['surface-snow'] = self.data['atlases'].pop('surface-meadow')
+        self.data['atlases']['surface-unknown'] = self.data['atlases'].pop('surface-meadow')
         self.write()
         with self.assertRaisesRegex(ValueError, 'unsupported'):
             export(self.root, self.catalog)
-        self.data['atlases']['surface-meadow'] = self.data['atlases'].pop('surface-snow')
+        self.data['atlases']['surface-meadow'] = self.data['atlases'].pop('surface-unknown')
         self.write()
         manifest = json.loads(self.manifest.read_text())
         manifest['atlases'][0]['cellOrder'].reverse()
@@ -134,6 +134,12 @@ class SurfaceTests(unittest.TestCase):
 
     def test_earth_four_slots_preserve_unregistered_surface_and_source_bytes(self):
         self.verify_four_slot_surface('surface-earth', 'earth')
+
+    def test_wasteland_four_slots_preserve_unregistered_surface_and_source_bytes(self):
+        self.verify_four_slot_surface('surface-wasteland', 'wasteland')
+
+    def test_snow_four_slots_preserve_unregistered_surface_and_source_bytes(self):
+        self.verify_four_slot_surface('surface-snow', 'snow')
 
     def verify_four_slot_surface(self, atlas_id, prefix):
         manifest = json.loads(self.manifest.read_text())

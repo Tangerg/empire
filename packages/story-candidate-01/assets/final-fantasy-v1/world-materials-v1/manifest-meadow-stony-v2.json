@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 2,
+  "id": "meadow-stony",
+  "replaces": {
+    "atlas": "surface-meadow",
+    "tone": 2
+  },
+  "source": "masters/approved-v5/environment/surface-meadow/meadow-3/master.png",
+  "logicalSize": [
+    128,
+    128
+  ],
+  "rasterSize": [
+    512,
+    512
+  ],
+  "worldOrigin": [
+    0,
+    0
+  ],
+  "fit": {
+    "inset": 0,
+    "bleed": 0
+  },
+  "png": "runtime/meadow-stony.png",
+  "png2x": "runtime/meadow-stony@2x.png",
+  "sourceSha256": "5ebcf899dfadb9a81b5cafe77fd33a270c262730968ef039492c95d9688785ea"
+}

@@ -289,11 +289,12 @@ not automatic pose fitting. Archer walk-a's reviewed[0,1] correction with common
 renderWidth30/origin[1,2] preserves its entire30×45 canvas and aligns contact with
 idle; it does not change the declared anchor or semantic frame order.
 
-## Opaque surface meadow
+## Opaque surface catalogs
 
-`export_surface_overrides.py` handles only the four ordered `surface-meadow`
-materials. Catalog: `surface-overrides.json`, schemaVersion1, atlases keyed by
-`surface-meadow`, each with `cells` keyed meadow-1 through meadow-4. Each source
+`export_surface_overrides.py` handles the eight original four-slot surface
+families: meadow, forest floor, earth, old stone, snow, wasteland, graveyard and
+forge stone. Catalog: `surface-overrides.json`, schemaVersion1, atlases keyed by
+their declared atlas ID, each with `cells` in its original cell order. Each source
 has its repository-relative `source` and `sha256`, and lives under pack masters.
 Sources must be square opaque PNGs. Every family must be registered together.
 The user approved bounded seam matching: independently resize each full source
@@ -305,6 +306,15 @@ maximum channel change and source provenance. `--check` verifies reproducibility
 `--preview-dir PATH` writes real-pixel repeated2×2 and mixed4×4 QA sheets at both
 native densities. Exact matching alone does not guarantee visually good seams;
 review these sheets and actual scene composites before visual acceptance.
+
+Catalog registration does not invent terrain consumers. The current meadow hill
+uses original tone2 (`meadow-3`); scorched wasteland uses tone1 (`wasteland-2`),
+and mountain scree uses tone2 (`wasteland-3`). Their three explicit world-material
+manifests use the shared `export_field_material.py` exporter and the existing
+atlas/tone matcher in `candidate-01-map-scene.ts`. Other newly registered meadow,
+wasteland and snow tones remain catalog-only; no snow terrain or blend is added.
+The approved meadow tone0 world base, authored terrain suppression, transition
+alphas, standing pieces and gameplay terrain table retain their existing owners.
 
 `preview_cohesion.py --root REPOSITORY --output-dir DIRECTORY` builds three
 real-export comparison panels: normal/idle, damaged/walk-a, captured/walk-b.

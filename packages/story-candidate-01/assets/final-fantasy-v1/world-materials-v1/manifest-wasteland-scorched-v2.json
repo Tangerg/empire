@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 2,
+  "id": "wasteland-scorched",
+  "replaces": {
+    "atlas": "surface-wasteland",
+    "tone": 1
+  },
+  "source": "masters/approved-v5/environment/surface-wasteland/wasteland-2/master.png",
+  "logicalSize": [
+    128,
+    128
+  ],
+  "rasterSize": [
+    512,
+    512
+  ],
+  "worldOrigin": [
+    0,
+    0
+  ],
+  "fit": {
+    "inset": 0,
+    "bleed": 0
+  },
+  "png": "runtime/wasteland-scorched.png",
+  "png2x": "runtime/wasteland-scorched@2x.png",
+  "sourceSha256": "2f5b3576b4387ce993f2dc2b646d0b63969a8775b930a1b4e17b9576cbdc4972"
+}

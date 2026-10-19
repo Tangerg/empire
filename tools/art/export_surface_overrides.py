@@ -15,7 +15,9 @@ SURFACE_ORDERS = {'surface-meadow': ORDER, 'surface-old-stone': [f'old-stone-{i}
                   'surface-graveyard': [f'graveyard-{i}' for i in range(1, 5)],
                   'surface-forge-stone': [f'forge-stone-{i}' for i in range(1, 5)],
                   'surface-forest-floor': [f'forest-floor-{i}' for i in range(1, 5)],
-                  'surface-earth': [f'earth-{i}' for i in range(1, 5)]}
+                  'surface-earth': [f'earth-{i}' for i in range(1, 5)],
+                  'surface-wasteland': [f'wasteland-{i}' for i in range(1, 5)],
+                  'surface-snow': [f'snow-{i}' for i in range(1, 5)]}
 
 
 def pixel_hash(image):

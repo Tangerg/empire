@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 2,
+  "id": "wasteland-scree",
+  "replaces": {
+    "atlas": "surface-wasteland",
+    "tone": 2
+  },
+  "source": "masters/approved-v5/environment/surface-wasteland/wasteland-3/master.png",
+  "logicalSize": [
+    128,
+    128
+  ],
+  "rasterSize": [
+    512,
+    512
+  ],
+  "worldOrigin": [
+    0,
+    0
+  ],
+  "fit": {
+    "inset": 0,
+    "bleed": 0
+  },
+  "png": "runtime/wasteland-scree.png",
+  "png2x": "runtime/wasteland-scree@2x.png",
+  "sourceSha256": "79ebc9aa69129cd424892264571f55bfaff599a20d12360bcc383988ab92be74"
+}
