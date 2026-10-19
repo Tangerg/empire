@@ -108,9 +108,9 @@ describe('explicit hero appearance document and resolution', () => {
 
 describe('reviewed production hero catalog', () => {
   it('binds reviewed Laiya, Roderick and Mirelle while leaving generic units and authored team sources unchanged', () => {
-    expect(document.appearances.map(entry => entry.id)).toEqual(['laiya-stage01', 'roderick-stage01', 'mirelle-stage01']);
+    expect(document.appearances.map(entry => entry.id)).toEqual(['laiya-stage01', 'roderick-stage01', 'mirelle-stage01', 'torren-stage01']);
     expect(document.teamVariants).toEqual([]);
-    expect(CANDIDATE_01_HERO_APPEARANCES.appearances.size).toBe(3);
+    expect(CANDIDATE_01_HERO_APPEARANCES.appearances.size).toBe(4);
     expect(manifest.assetCount).toBe(404);
     expect(CANDIDATE_01_UNIT_ART['c01.laiya']).toEqual({ topicId: 'C01-UNIT-BANNER-GUARD', appearanceId: 'laiya-stage01' });
     expect(CANDIDATE_01_UNIT_ART['c01.roderick']).toEqual({ topicId: 'C01-UNIT-HEAVY-KNIGHT', appearanceId: 'roderick-stage01' });

@@ -4,18 +4,18 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 291,
+    "formalBound": 292,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 31,
       "equipment": 95,
       "interactive-structure": 24,
       "mission-unit": 2,
-      "narrative-static": 3,
+      "narrative-static": 4,
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 294,
+    "rawPreservedTopics": 301,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -945,11 +945,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-torren-01/attempt-01/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-torren-01.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "independent native transparent young Torren portrait with original spear; battle sword distinction explicitly tied to existing rule weapon",
+        "export": "192x224 separate-background card, actual HUD96x112/icon48, native registered quartet and complete c01-01/07 projections reviewed",
+        "runtimeBinding": "exact campaign-torren actor key + c01.swordsman expected type; all generic swordsmen remain original",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-CHAR-TORREN-02",
@@ -1772,8 +1777,12 @@
       "category": "combat-unit",
       "label": "投矛猎手",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/javelin-hunter/walk-a/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -7304,8 +7313,10 @@
       "category": "hud",
       "label": "中立",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-03/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -7318,8 +7329,10 @@
       "category": "hud",
       "label": "可招降",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-04/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -7332,8 +7345,10 @@
       "category": "hud",
       "label": "主目标",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-05/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -7346,8 +7361,10 @@
       "category": "hud",
       "label": "次要目标",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-06/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -7360,8 +7377,10 @@
       "category": "hud",
       "label": "护送目标",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-07/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -7374,8 +7393,10 @@
       "category": "hud",
       "label": "危险区域",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hud/hud-08/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

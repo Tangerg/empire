@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 34,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 291,
+  "formalRuntimeBoundTopics": 292,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1820,6 +1820,12 @@
       "export": "one shared body scale, measured feet, full-canvas1x/2x with explicit1-2px transparent padding; native pose review passed",
       "runtimeBinding": "canonical and HD catalog resolver; no domain unit consumer, explicitly not c01.supply-wagon",
       "liveGame": "pending"
+    },
+    "C01-CHAR-TORREN-01": {
+      "raw": "independent native transparent young Torren portrait with original spear; battle sword distinction explicitly tied to existing rule weapon",
+      "export": "192x224 separate-background card, actual HUD96x112/icon48, native registered quartet and complete c01-01/07 projections reviewed",
+      "runtimeBinding": "exact campaign-torren actor key + c01.swordsman expected type; all generic swordsmen remain original",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -2327,13 +2333,13 @@
     }
   },
   "namedHeroAppearances": {
-    "status": "Laiya, Roderick and Mirelle named four-pose appearances plus independent transparent-source cards formally bound; four named identities pending",
+    "status": "Laiya, Roderick, Mirelle and exact-actor Torren formally bound; remaining named identities in progress",
     "canonicalCountIncrement": 0,
     "audit": "narrative-family-audit/hero-identity-contract.md",
     "knownMismatches": [
       "IVRA rules describe juvenile; generic growth appearance has maturity mismatch risk"
     ],
-    "nextPilot": "Torren: inspect original named identity before authoring",
+    "nextPilot": "Cain: original officer identity audit and rule-supported spear battle appearance",
     "cardContract": "Character master retains real RGBA transparency; any required opaque UI background is separate authored source/layer",
     "liveGameVerified": false,
     "appearances": {
@@ -2365,6 +2371,17 @@
         "cardTopic": "C01-CHAR-MIREL-01",
         "cardCanonicalCountIncrement": 1,
         "genericGravekeeper": "unchanged",
+        "liveGame": "pending"
+      },
+      "torren-stage01": {
+        "actorKey": "campaign-torren",
+        "ruleUnit": "c01.swordsman",
+        "baseCanonicalTopic": "C01-UNIT-SWORDSMAN",
+        "canonicalCountIncrement": 0,
+        "fourPoses": "shared44/894 scale, measured attack translation10.237 within explicit12 limit, full authored canvases retained",
+        "cardTopic": "C01-CHAR-TORREN-01",
+        "cardCanonicalCountIncrement": 1,
+        "genericSwordsmen": "unchanged, no type-wide appearance",
         "liveGame": "pending"
       }
     }

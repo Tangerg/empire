@@ -34,9 +34,12 @@ export function readCandidate01ActorArt(
   return actors;
 }
 
-// Register campaign-torren only after his stage01 sheet/card are reviewed. Stage02
-// has no progression owner; no key, unit alias or appearance is inferred for it.
-export const CANDIDATE_01_ACTOR_ART = readCandidate01ActorArt(CANDIDATE_01_HERO_APPEARANCES, {});
+// Reviewed stage01 belongs only to this campaign actor. Stage02 has no progression owner.
+export const CANDIDATE_01_ACTOR_ART = readCandidate01ActorArt(CANDIDATE_01_HERO_APPEARANCES, {
+  'campaign-torren': { expectedUnitType: 'c01.swordsman',
+    unitArt: { topicId: 'C01-UNIT-SWORDSMAN', appearanceId: 'torren-stage01' },
+    characterTopicId: 'C01-CHAR-TORREN-01' },
+});
 
 /** Board, icon, portrait and diagnostics share this one explicit identity choice. */
 export function resolveCandidate01PresentationBinding(

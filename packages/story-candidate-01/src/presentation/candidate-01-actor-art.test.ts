@@ -66,9 +66,9 @@ describe('explicit actor presentation bindings', () => {
   });
 });
 
-describe('unactivated actor catalog', () => {
+describe('reviewed exact-actor catalog', () => {
   it('preserves pictures/icons/portraits of all shipped actors and every type-only binding', () => {
-    expect(CANDIDATE_01_ACTOR_ART.size).toBe(0);
+    expect(CANDIDATE_01_ACTOR_ART.size).toBe(1);
     const portrait = (type: string, team: string, actorKey?: string) =>
       CANDIDATE_01_ART.resolve(provider => provider.portraitMarkup?.(type, team, { actorKey }));
     const actors = CANDIDATE_01_LEVELS.flatMap(level => level.units.map(actor => ({ actor,
@@ -77,6 +77,14 @@ describe('unactivated actor catalog', () => {
     expect(actors.filter(({ actor }) => actor.unit === 'c01.swordsman' && actor.key !== 'campaign-torren')).toHaveLength(29);
     for (const { actor, team } of actors) {
       const context = { actorKey: actor.key };
+      if (actor.key === 'campaign-torren') {
+        expect(actor.unit).toBe('c01.swordsman');
+        expect(candidate01UnitPicture(actor.unit, team, context)?.strip?.href).toContain('hero-appearance/torren-stage01@2x.png');
+        expect(candidate01UnitIcon(actor.unit, team, 32, context)).toContain('hero-appearance/torren-stage01@2x.png');
+        expect(portrait(actor.unit, team, actor.key)).toContain('char-torren-01.png');
+        expect(candidate01UnitPicture(actor.unit, team, context)).not.toEqual(candidate01UnitPicture(actor.unit, team));
+        continue;
+      }
       expect(candidate01UnitPicture(actor.unit, team, context)).toEqual(candidate01UnitPicture(actor.unit, team));
       expect(candidate01UnitIcon(actor.unit, team, 32, context)).toBe(candidate01UnitIcon(actor.unit, team, 32));
       expect(portrait(actor.unit, team, actor.key)).toBe(portrait(actor.unit, team));

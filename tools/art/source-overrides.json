@@ -1170,6 +1170,24 @@
     "C01-STATUS-24": {
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/status/status-24/master.png",
       "sha256": "daafe34d5fd83976c24ce3e15e164b39f6a521a352eb9ecdf17532eacbec1cb8"
+    },
+    "C01-CHAR-TORREN-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-torren-01/master.png",
+        "sha256": "18c041c315a43e1f5a06ad623149572bf16450fd923615b42f14ab8dc62c5d22"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
     }
   }
 }
