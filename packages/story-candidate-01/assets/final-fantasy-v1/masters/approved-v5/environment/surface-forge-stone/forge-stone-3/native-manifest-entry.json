@@ -1,0 +1,37 @@
+{
+  "atlas": "surface-forge-stone",
+  "cell_index": 2,
+  "original_cellOrder_token": "forge-stone-3",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-531439cd-ce1a-4ce1-8b0d-74a829513db8.png",
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-3/raw.png",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-3/master.png",
+  "named_master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-3/forge-stone-3-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-3/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-3/material-qa.json",
+  "alpha_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-3/alpha-qa.json",
+  "source_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-3/source-evidence.json",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/source-contract.json",
+  "sha256": "1713dbd82a2b70678d74c03baec22a41e547a35b95d7596d8fc80c523f6c1011",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "fully_opaque": true,
+  "native_pixels_untouched": true,
+  "sourceFoot": null,
+  "anchor": null,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "world_period_and_seam_integration_owner": "parent",
+  "production_status": "native candidate, not bound",
+  "visual_review": {
+    "identity": "Muted brown compact earth with incomplete rectangular paving remnants at upper right and lower left, plus scattered angular stone groups. Original interrupted-paving identity and two main remnant locations retained; no continuous cobble floor, curving road, fire or symbols.",
+    "detail_density": "Earth uses broad dark/light patches but retains many smaller low-contrast patch edges. Scattered stone groups are more numerous and larger than the quiet sparse target. Remnant paving faces have some extra small mottled planes.",
+    "scale_caveat": "Largest paving blocks would span about 30-55 world units at a 256-unit period; smaller scattered stones commonly about 7-18 units. These are visual material marks, not new collision objects.",
+    "style_caveat": "Some loose stones show shallow visible side faces and may read slightly raised. The soil is the most detailed component and is documented rather than programmatically smoothed. Original overall brown identity remains close.",
+    "native_acceptance": "1254 fully opaque native; original tone 2 catalog-only, no runtime binding or natural seamlessness claim."
+  }
+}

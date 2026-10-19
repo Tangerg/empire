@@ -1,0 +1,73 @@
+{
+  "topicId": "c02-equipment-wind-sail-skirmisher",
+  "assetId": "C02-SFV1-equipment-wind-sail-skirmisher",
+  "label": "风帆散兵主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-02.png",
+  "originalMasterSha256": "8d1f70efe1add62295ab36bec297b3761524a0cb6474c8ce9cd2aab4196305f4",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 3
+  },
+  "sourceCropBox": [
+    319,
+    632,
+    622,
+    935
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-wind-sail-skirmisher.png",
+  "runtimeReferenceSha256": "03ae15cb4abf8e33fa7208d8e5e24689141d89f8a4bde886cfd73531913c7fbd",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-290ac95f-896e-4858-961c-5e533bc8d245.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v2.png",
+  "promptFiles": [
+    "prompt.txt",
+    "refinement-prompt-v2.txt"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-wind-sail-skirmisher/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/scratch/84c9fe948755/generated_images/exec-95b4c48a-644c-4402-8871-7c0dc86e9ac2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-wind-sail-skirmisher/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png"
+  ],
+  "semanticNotes": "Original board02 R3C2 and runtime verified. Original enlarged source clearly has FIVE visible front projectile tips: three shafts in front and two partly occluded tips behind. Earlier verbal/prompt count of three was an undercount; v1 produced four and is retained rejected for semantic count. V2 corrects to exactly five visible pointed projectiles while retaining one triangular ivory sail with two cloth panels, cyan frame, central mast, ochre corner ties, ivory/graphite launcher, cyan slots and bounded violet collars. Actual48 white/black/olive review passes, no outside glow. Native right margin30px remains intact.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Continues accepted star-shield equipment pilot and cargo broad matte style.",
+  "failedCandidate": "candidate-v1-failed-projectile-count.png",
+  "failedCandidateQA": "candidate-v1-qa.json",
+  "sourceDetailReview": "source-detail-enlarged-review.png",
+  "native48ThreeBackgroundReview": "diagnostic-native48/native48-white-black-olive.png",
+  "reviewBackgroundRGB": [
+    [
+      255,
+      255,
+      255
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      72,
+      80,
+      48
+    ]
+  ]
+}

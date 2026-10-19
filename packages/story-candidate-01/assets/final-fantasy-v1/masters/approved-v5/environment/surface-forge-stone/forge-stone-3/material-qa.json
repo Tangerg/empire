@@ -1,0 +1,65 @@
+{
+  "asset": "forge-stone-3",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "1713dbd82a2b70678d74c03baec22a41e547a35b95d7596d8fc80c523f6c1011",
+  "RGB_mean": [
+    64.96776503386928,
+    55.59524291008804,
+    47.13052776569523
+  ],
+  "RGB_std": [
+    9.207680885337812,
+    7.2880534482648045,
+    6.109483157468931
+  ],
+  "luma_mean": 56.97668868017877,
+  "luma_std": 7.50364913913529,
+  "luma_percentiles_5_50_95": [
+    44.9828,
+    56.8424,
+    69.2504
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 54.94229225727672,
+    "bottom": 55.312995030901114,
+    "left": 54.09456707785087,
+    "right": 53.951793505781495,
+    "central_half": 58.493196666700484
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 7.617490696438065,
+    "top_bottom_mean_abs_RGB": 6.639021796916534,
+    "left_right_max_abs_RGB": 30.0,
+    "top_bottom_max_abs_RGB": 30.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Muted brown compact earth with incomplete rectangular paving remnants at upper right and lower left, plus scattered angular stone groups. Original interrupted-paving identity and two main remnant locations retained; no continuous cobble floor, curving road, fire or symbols.",
+    "detail_density": "Earth uses broad dark/light patches but retains many smaller low-contrast patch edges. Scattered stone groups are more numerous and larger than the quiet sparse target. Remnant paving faces have some extra small mottled planes.",
+    "scale_caveat": "Largest paving blocks would span about 30-55 world units at a 256-unit period; smaller scattered stones commonly about 7-18 units. These are visual material marks, not new collision objects.",
+    "style_caveat": "Some loose stones show shallow visible side faces and may read slightly raised. The soil is the most detailed component and is documented rather than programmatically smoothed. Original overall brown identity remains close.",
+    "native_acceptance": "1254 fully opaque native; original tone 2 catalog-only, no runtime binding or natural seamlessness claim."
+  },
+  "reference_material_identity": "Brown dusty/sooty compact earth and small angular gravel, with interrupted remnants of rectangular stone paving in the upper-right and lower-left areas. Predominantly exposed ground between incomplete paving patches, not one intact cobbled field or a newly drawn road.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

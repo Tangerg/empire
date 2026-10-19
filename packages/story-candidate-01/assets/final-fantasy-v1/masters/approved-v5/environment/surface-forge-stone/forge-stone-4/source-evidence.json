@@ -1,0 +1,65 @@
+{
+  "atlas": "surface-forge-stone",
+  "cell_index": 3,
+  "original_cellOrder_token": "forge-stone-4",
+  "source_board_index": 15,
+  "source_crop": [
+    940,
+    940,
+    1254,
+    1254
+  ],
+  "source_crop_dimensions": [
+    314,
+    314
+  ],
+  "original_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forge-stone/forge-stone-4-original-master-swatch.png",
+  "current_runtime_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forge-stone/forge-stone-4-current-runtime-2x-cell.png",
+  "current_core_reference": "/workspace/shared/empire-art-rebuild/references/environment/surface-forge-stone/forge-stone-4-current-fit-core-52.png",
+  "original_visual_identity": "Deep cool blue-charcoal paving of broad rounded-polygon stones with small angular joint infill. Cleaner, smoother larger stone faces and less obvious fracture detail than slot 0; dark continuous floor with restrained cool color, not glowing lava or a metal plate.",
+  "semantic_status": "Exact original manifest token; material distinction is visual observation, no invented gameplay semantic",
+  "original_mean_RGB": [
+    55.619203618808065,
+    57.382378595480546,
+    59.23254493082884
+  ],
+  "original_opaque": true,
+  "current_usage": "Catalog-only tone; no current selector chooses it",
+  "sourceFoot": null,
+  "anchor": null,
+  "runtime_edge_MAE_RGB": {
+    "left_right": 0.0,
+    "top_bottom": 0.0
+  },
+  "inset_core_edge_MAE_RGB": {
+    "left_right": 5.666666666666667,
+    "top_bottom": 6.967948717948718
+  },
+  "generation_contract_approval": "Parent confirmed exclusive assignment and generation after audit on 2026-10-19 20:56 UTC; 256 world preview, preserve original floor and palette, no invented forge effects.",
+  "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/source-contract.json",
+  "original_full_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+  "original_full_source_sha256": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+  "reference_images_in_order": [
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-forge-stone/forge-stone-4-original-master-swatch.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png"
+  ],
+  "reference_roles": [
+    "exact original dark material identity, palette and coverage; simplify old microtexture",
+    "approved broad matte clean stone planes only; do not copy lighter color or rectangular layout"
+  ],
+  "reference_sha256": {
+    "/workspace/shared/empire-art-rebuild/references/environment/surface-forge-stone/forge-stone-4-original-master-swatch.png": "286aec90fd6f92188897f2487cde150620c8a9205885ea9001fd74d495164a23",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png": "1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975"
+  },
+  "native_request": [
+    1254,
+    1254
+  ],
+  "opaque_request": true,
+  "proposed_world_period": [
+    256,
+    256
+  ],
+  "binding_status": "native source only; parent owns runtime sampling and seam integration",
+  "prompt_sha256": "83ec9d4a05585a17cbb60eafd28eefc255950b071cccd0eebaa5c19a6b110558"
+}

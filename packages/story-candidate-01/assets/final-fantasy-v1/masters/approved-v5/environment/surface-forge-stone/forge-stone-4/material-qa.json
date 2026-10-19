@@ -1,0 +1,66 @@
+{
+  "asset": "forge-stone-4",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "native_mode": "RGB",
+  "native_output_untouched": true,
+  "fully_opaque": true,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "alpha_255_pixels": 1572516,
+  "transparent_pixels": 0,
+  "material_gate": "full opaque coverage, not transparent-sprite perimeter gate",
+  "raw_master_native_byte_identical": true,
+  "sha256": "20ddf43a02a70ddbf97207a1f98cd10f83be57d4c7e31030d7e1676e6b7ac3ed",
+  "RGB_mean": [
+    58.504780873453754,
+    57.860646250976146,
+    57.560337700856465
+  ],
+  "RGB_std": [
+    7.669391601207041,
+    8.306101755280153,
+    9.147599550685463
+  ],
+  "luma_mean": 57.97590699439624,
+  "luma_std": 8.202459648823428,
+  "luma_percentiles_5_50_95": [
+    42.349000000000004,
+    59.0682,
+    68.92779999999999
+  ],
+  "64px_edge_band_and_center_mean_luma": {
+    "top": 56.27582998903509,
+    "bottom": 55.85953984998007,
+    "left": 56.568865216307806,
+    "right": 54.05144187848883,
+    "central_half": 59.743630435818886
+  },
+  "periodic_edge_difference_native": {
+    "left_right_mean_abs_RGB": 8.690590111642743,
+    "top_bottom_mean_abs_RGB": 8.667995746943115,
+    "left_right_max_abs_RGB": 35.0,
+    "top_bottom_max_abs_RGB": 46.0
+  },
+  "seam_status": "not claimed seamless; periodic difference measured without offset, blur, edge lock or paint",
+  "visual_review": {
+    "identity": "Deep cool charcoal-blue-gray rounded-polygon paving with broad smoother main faces and subdued medium joint infill. Less fractured and cleaner than forge-stone-1, no invented fire, metal, glow or water.",
+    "detail_density": "Approximately 4-6 dominant main stones across width, fewer/larger than proposed 8-12; many medium infill stones remain. Large faces use broad low-contrast gray planes with minimal cracks.",
+    "scale_caveat": "Main stones often span about 40-80 world units at the proposed 256-unit period. Preview scale is not final production acceptance and does not alter rules.",
+    "style_caveat": "This is the cleanest large-face paving of the quartet, though small joint stones and soft face mottling remain. Native pixels preserved without smoothing.",
+    "native_acceptance": "1254 fully opaque native, smooth cool paving identity retained. Original tone 3 catalog-only, no scene binding or natural seamlessness claim.",
+    "palette_caveat": "The overall RGB mean is approximately 58.5/57.9/57.6, more neutral and very slightly warmer than the original 55.6/57.4/59.2. The original cool-blue cast has been weakened, not exactly matched."
+  },
+  "reference_material_identity": "Deep cool blue-charcoal paving of broad rounded-polygon stones with small angular joint infill. Cleaner, smoother larger stone faces and less obvious fracture detail than slot 0; dark continuous floor with restrained cool color, not glowing lava or a metal plate.",
+  "source_foot": null,
+  "anchor": null,
+  "renderer_world_period_candidate": [
+    256,
+    256
+  ],
+  "period_status": "candidate parent integration parameter, not bound by this source handoff"
+}

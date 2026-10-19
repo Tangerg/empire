@@ -1,0 +1,54 @@
+{
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-290ac95f-896e-4858-961c-5e533bc8d245.png",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "visibleAlphaBBoxGE8": [
+    81,
+    82,
+    1224,
+    1164
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    81,
+    82,
+    30,
+    90
+  ],
+  "nearOpaquePixelCountGE240": 648448,
+  "diagnostic8pxErosion": {
+    "minAlpha": 235,
+    "pixelsBelow240": 1,
+    "notAcceptanceGate": true
+  },
+  "actual48EdgeMaxAlpha": 0,
+  "actual48NearOpaquePixelsGE240": 705,
+  "formalSourceContractPass": true,
+  "derivation": "Diagnostic only; full-source Lanczos contain44x44 centered48x48 with2px padding. Native source unchanged. White/black composites inspection only.",
+  "topicId": "c02-equipment-wind-sail-skirmisher",
+  "sha256": "40ec783f4652f49aeb67ef3b99985e2cc4d6b88206ad78bcc0115ca7763cb2a1",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass after native semantic count review and actual48 white/black/olive inspection. Five distinct front tips, intact silhouette, opaque hardware/cloth, no visible outer haze or solid background. Narrow-gap antialiasing is not a morphology-based opacity failure.",
+  "postprocessing": "Native master unchanged byte-exact copy. Separate full-source48 diagnostic exports/composites only. No pixel painting, recolor or alpha cleanup.",
+  "runtimeReady": false,
+  "acceptedVersion": 2,
+  "failedCandidate": "candidate-v1-failed-projectile-count.png",
+  "actual48ThreeBackgroundReview": {
+    "file": "diagnostic-native48/native48-white-black-olive.png",
+    "backgrounds": [
+      "white",
+      "black",
+      "olive RGB72,80,48"
+    ],
+    "scale": "1:1 actual48 pixels",
+    "visualResult": "Pass: readable functional silhouette and colors, no visible exterior haze/glow or solid background."
+  }
+}
