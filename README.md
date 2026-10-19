@@ -16,7 +16,7 @@ npm run dev
 ```bash
 npm run demo
 npm run experience
-npm run dev --workspace @empire/editor-app
+npm run editor
 ```
 
 这些命令分别启动战斗引擎能力 Demo、单关体验应用和关卡编辑器。开发入口使用 Vite 本地服务器，不能直接通过 `file://` 打开源码 HTML。
