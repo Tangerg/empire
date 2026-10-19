@@ -4951,11 +4951,16 @@
     },
     {
       "topicId": "c02-equipment-floating-city-guard",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-floating-city-guard/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-055-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "3391bcd2639ac2ccd23ce2730e2f2b6a76a5223405f801aa4b0242b552b1ad28"
@@ -5002,11 +5007,16 @@
     },
     {
       "topicId": "c02-equipment-hover-lancer",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-hover-lancer/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-055-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "02a78cd7be326a8fc790c614c8b947fbf109b344ea990748072e08aa39bed9c6"
@@ -9755,13 +9765,16 @@
       "atlasId": "scenery-regional",
       "cellId": "grave-cross-cluster",
       "index": 8,
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/scenery-regional/grave-cross-cluster/master.png",
       "assignment": "redraw_grayflag_environment_trees",
       "sourceSha256": "5c79115e5a1acd82b2f29f8bf38911fcb1993133b8c7cae7009615cf3d7d36e8",
       "verification": {
-        "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "exportCheck": "passed",
+        "tests": 22,
+        "evidence": "docs/art-rebuild-20261019/environment-020-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
     {
