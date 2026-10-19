@@ -128,6 +128,23 @@ class ExportTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'only static'):
             export(self.root, self.catalog)
 
+    def test_static_icon_contracts(self):
+        manifest = self.pack / 'manifest-final-fantasy-v1.json'
+        data = json.loads(manifest.read_text())
+        (self.pack / 'manifest-tactical-runtime-hd.json').unlink()
+        for category, side in [('equipment', 48), ('skill', 48), ('status', 32), ('hud', 32)]:
+            with self.subTest(category=category):
+                data['assets'][0].update(category=category, width=side, height=side,
+                                         anchor=[side // 2, side // 2], png=f'runtime/{category}/icon.png')
+                manifest.write_text(json.dumps(data))
+                result = export(self.root, self.catalog)
+                self.assertEqual([r['size'] for r in result], [[side, side]])
+                export(self.root, self.catalog, True)
+                data['assets'][0]['anchor'] = [0, 0]
+                manifest.write_text(json.dumps(data))
+                with self.assertRaisesRegex(ValueError, 'size/anchor'):
+                    export(self.root, self.catalog)
+
     def test_empty_catalog_no_changes(self):
         self.catalog.write_text('{"schemaVersion": 1, "assets": {}}')
         self.assertEqual(export(self.root, self.catalog), [])

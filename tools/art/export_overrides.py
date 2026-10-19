@@ -103,9 +103,12 @@ def plan(root: Path, catalog: Path):
         if topic not in known:
             raise ValueError(f'unknown topic: {topic}')
         pack, asset, hd = known[topic]
-        if asset['category'] != 'battle-prop' or asset.get('frames') or asset.get('variants'):
-            raise ValueError(f'{topic}: only static battle-prop exports supported')
-        if (asset['width'], asset['height'], asset.get('anchor')) != (64, 64, [32, 32]):
+        category = asset['category']
+        contracts = {'battle-prop': 64, 'equipment': 48, 'skill': 48, 'status': 32, 'hud': 32}
+        if category not in contracts or asset.get('frames') or asset.get('variants'):
+            raise ValueError(f'{topic}: only static battle-prop/equipment/skill/status/hud exports supported')
+        side = contracts[category]
+        if (asset['width'], asset['height'], asset.get('anchor')) != (side, side, [side // 2, side // 2]):
             raise ValueError(f'{topic}: unsupported logical size/anchor')
         if not isinstance(override, dict) or set(override) != {'source', 'sha256'}:
             raise ValueError(f'{topic}: expected source and sha256 only')
@@ -123,12 +126,12 @@ def plan(root: Path, catalog: Path):
         source_alpha = validate_alpha(source, topic)
         exports = [(asset, 1)]
         if hd:
-            if (hd['width'], hd['height'], hd['pixelDensity']) != (128, 128, 2):
+            if category != 'battle-prop' or (hd['width'], hd['height'], hd['pixelDensity']) != (128, 128, 2):
                 raise ValueError(f'{topic}: unsupported HD contract')
             exports.append((hd, 2))
         for record, density in exports:
             target = within(pack, record['png'])
-            expected_dir = pack / ('runtime-hd' if density == 2 else 'runtime') / 'battle-prop'
+            expected_dir = pack / ('runtime-hd' if density == 2 else 'runtime') / category
             if target.parent != expected_dir.resolve() or target.suffix != '.png':
                 raise ValueError(f'{topic}: unexpected export path')
             if target in targets:

@@ -35,3 +35,9 @@ Inputs require a transparent exterior, some zero alpha and a near-opaque subject
 `--check` compares decoded output pixels and dimensions against current source derivation without writing. After any legacy regeneration, run this exporter and check again: legacy scripts do not know these overrides and can overwrite their destinations. The two commands are the explicit final overlay stage, not competing manually maintained runtime sources. Commit the master, catalog entry and both derived outputs together. The JSON report lists source and pixel hashes for reproducibility within the same Pillow version; resampling may differ across Pillow versions.
 
 Future sprite-sheet and environment contracts should be added only with their real consumer requirements and tests. Do not flatten animated or connected assets into this static format.
+
+Static icon categories are also supported across all three campaigns: equipment
+and skill are 48×48 with anchor [24,24]; status and hud are32×32 with anchor
+[16,16]. Each uses its own runtime/category directory and no HD entry. Sources
+must satisfy the same genuine-alpha contract. Whole authored canvas fitting and
+2px transparent padding remain deterministic; tiny icons still need visual review.
