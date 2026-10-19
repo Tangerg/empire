@@ -1,0 +1,21 @@
+{
+  "codeCheckpoint": "c3944ae",
+  "fixedMainFullSuite": {
+    "passed": 1031,
+    "files": 100
+  },
+  "typecheck": "passed",
+  "applicationBuilds": [
+    "game",
+    "editor",
+    "engine-demo",
+    "experience-lab"
+  ],
+  "roadCriticalTests": 11,
+  "fixedMainFocusedTests": 136,
+  "inputHashRecheck": "all captured sources match",
+  "liveGame": "not verified; actual BoardView offline SVG rasterization",
+  "roadOnlyDelta": "84 cells/99 edges retained; continuous32px corridor,22px tangent cuts,max2px plain-only shoulder; only actual overspill2.75 square px in plain6,12",
+  "replay": "worker60 streams byte-identical, same production code; record in parent directory",
+  "priorWorkerFrozenSuite": "931/932; unmodified mixed-real/virtual test clock issue documented separately; current fixed main run1031/1031 passed"
+}
