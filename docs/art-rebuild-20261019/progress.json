@@ -2002,11 +2002,16 @@
     },
     {
       "topicId": "C01-EQUIP-JAVELIN-HUNTER",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-javelin-hunter/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-038-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "8181685720ea0c0330c077489afa5dbc598174acaece44699ccdb0c097783c9e"
@@ -2109,11 +2114,16 @@
     },
     {
       "topicId": "C01-EQUIP-SILVER-LONGBOW",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-silver-longbow/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-038-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "e2b376a663201acc2419adc4938a24c111d7f70affbe40a45ae3e190c81cd2a5"
@@ -4562,19 +4572,25 @@
     },
     {
       "topicId": "c02-battle-prop-spore-sacs",
-      "status": "raw-generated",
-      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-spore-sacs/master.png",
+      "status": "exported",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-spore-sacs/revision-2/master.png",
       "verification": {
-        "state": "pending",
+        "state": "export-checked",
         "note": "Raw master preserved; runtime visual acceptance pending",
-        "alphaVisualReview": "needs imagegen revision: visible broad purple halo, raw only"
+        "alphaVisualReview": "purple halo removed by imagegen, no visible nativefringe",
+        "semanticReview": "revision2 six variants match original board, native64 review passed",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-038-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "0162cc4f13e01d817f31d8a067d24825e607ad95d6d4da8561b734cb6f7033df",
+      "sourceSha256": "2c0aa3abdd949a8490801ec1c42f267a72151f6500a7c322fbfc2dcc081010b5",
       "revisionCandidate": {
         "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-spore-sacs/revision-2/master.png",
         "sha256": "2c0aa3abdd949a8490801ec1c42f267a72151f6500a7c322fbfc2dcc081010b5",
-        "status": "semantic-and-halo-review-pending"
+        "status": "semantic-native-review-passed"
       }
     },
     {
