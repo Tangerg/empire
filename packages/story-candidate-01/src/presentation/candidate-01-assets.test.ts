@@ -10,6 +10,7 @@ import { runtimeAtlasCellMarkup } from '@empire/game-ui';
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
 const bundles = [
+  { topic: 'C01-STRUCT-OATH-TOWER-CONSOLE', source: 'buildings/oath-tower-console', size: [112, 112], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-UNIT-BANNER-GUARD', source: 'animation/banner-guard', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-STRUCT-REFUGEE-SHELTER', source: 'buildings/refugee-shelter', size: [160, 160], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-STRUCT-MILITARY-REGISTRY', source: 'buildings/military-registry', size: [160, 160], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
