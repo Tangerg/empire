@@ -1,0 +1,63 @@
+{
+  "topicId": "C01-STATUS-02",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6943859394753377,
+  "nearOpaqueFractionAlphaGE250": 0.29372928478947113,
+  "nonzeroAlphaBBox": [
+    0,
+    200,
+    1218,
+    1083
+  ],
+  "visibleAlphaBBoxGE8": [
+    78,
+    270,
+    1177,
+    979
+  ],
+  "visibleAlphaBBoxGE128": [
+    79,
+    272,
+    1176,
+    977
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    79,
+    272,
+    78,
+    277
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 31,
+  "sha256": "141a055d5d27ef194d3913d7dc2bf9be78923833eefcfc510a01f26f27df43a8",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "At native32 and HUD28 on white/black/olive, blank gray disc and bilateral triple-wave silhouette remain recognizable. Individual wave gaps are finer at28, but no wave count or symbol was changed."
+  ],
+  "identityVerified": "Exactly ONE plain gray metal circular disc with simple concentric raised rims and a completely blank center, seen almost front-on. Exactly THREE thick separated curved wave arms emerge on the LEFT and exactly THREE on the RIGHT, SIX in total. Match image 1: short broad horizontal wavy strokes, dark charcoal, parallel with generous transparent gaps. Disc remains gray, not blue. No crossed-out mark, mouth, letter, skull, or added emblem. Rims are functional original object surfaces, not a generic added UI frame.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "At native32 and HUD28 on white/black/olive, blank gray disc and bilateral triple-wave silhouette remain recognizable. Individual wave gaps are finer at28, but no wave count or symbol was changed."
+  }
+}

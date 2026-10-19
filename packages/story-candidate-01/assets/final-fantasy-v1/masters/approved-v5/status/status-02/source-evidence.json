@@ -1,0 +1,65 @@
+{
+  "topicId": "C01-STATUS-02",
+  "assetId": "C01-FFV1-STATUS-02",
+  "label": "沉默",
+  "category": "status",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "directStatusBinding": "silenced",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0cef946d-0cbd-4ec7-adc3-e8a4b9d044aa.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-02-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "atlasSha256": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "status-atlas-01.png, row 1 column 2 (one based)",
+    "topicIndex": 1,
+    "inspectionCropCoordinates": [
+      319,
+      5,
+      622,
+      309
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; source magenta and grid remain inspection only, no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-02.png",
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-02-nominal-cell.png",
+    "nominalGridCellCoordinates": [
+      316,
+      2,
+      625,
+      312
+    ],
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively authorized first actual consumers status01/02/04/05 after full24 source inspection. Preserve32px runtime and28px HUD. Source raw/master immutable; independent QA previews authorized."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-02-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+  ],
+  "identityClarification": "Exactly ONE plain gray metal circular disc with simple concentric raised rims and a completely blank center, seen almost front-on. Exactly THREE thick separated curved wave arms emerge on the LEFT and exactly THREE on the RIGHT, SIX in total. Match image 1: short broad horizontal wavy strokes, dark charcoal, parallel with generous transparent gaps. Disc remains gray, not blue. No crossed-out mark, mouth, letter, skull, or added emblem. Rims are functional original object surfaces, not a generic added UI frame.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Parent owns backup/export/catalog binding. No repository or gameplay edits."
+}

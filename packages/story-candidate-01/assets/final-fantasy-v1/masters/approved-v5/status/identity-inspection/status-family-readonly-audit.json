@@ -1,0 +1,1015 @@
+{
+  "scope": "Read-only source and consumer audit only; no new images generated or repository edits.",
+  "category": "C01 status",
+  "count": 24,
+  "nativeRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "legacyBuilder": "packages/story-candidate-01/assets/final-fantasy-v1/tools/build_final_fantasy_v1.py:263-280,475",
+  "exporter": "tools/art/export_overrides.py supports status32, fit full authored source into28x28 plus2px padding; no source crop.",
+  "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+  "sourceBoards": {
+    "01": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+      "grid": [
+        4,
+        4
+      ],
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "sha256": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+      "matchesBaseline2276a89": true
+    },
+    "02": {
+      "path": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-02.png",
+      "grid": [
+        4,
+        2
+      ],
+      "nativeSize": [
+        1774,
+        887
+      ],
+      "sha256": "f10d9f5a15e15cdea261cc72eba879a241a74b8509d16acb3c290fcc54b9d6e0",
+      "matchesBaseline2276a89": true
+    }
+  },
+  "directBindings": {
+    "poisoned": "C01-STATUS-01",
+    "silenced": "C01-STATUS-02",
+    "c01.oath-controlled": "C01-STATUS-04",
+    "shaken": "C01-STATUS-05",
+    "armor_down": "C01-STATUS-08",
+    "inspired": "C01-STATUS-12"
+  },
+  "consumerEvidence": [
+    "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts:130-137",
+    "packages/story-candidate-01/src/presentation/index.ts:120-121",
+    "packages/game-ui/src/ui/hud.ts:747-768",
+    "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts:263-280"
+  ],
+  "semanticMismatchesToPreserve": [
+    "C01-STATUS-08 authored label is injured/blood-stained bandage, while actual armor_down binding uses it. Preserve canonical original art identity unless parent explicitly changes contract.",
+    "C01-STATUS-12 authored morale banner is used for inspired.",
+    "C01-STATUS-03 guard/shield-chain is cataloged but not directly bound by CANDIDATE_01_STATUS_ART; do not infer it replaces guard mechanics."
+  ],
+  "generationHeld": false,
+  "assets": [
+    {
+      "topicId": "C01-STATUS-01",
+      "assetId": "C01-FFV1-STATUS-01",
+      "label": "中毒",
+      "authoredIndex": 0,
+      "runtimePng": "runtime/status/status-01.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 1,
+      "column": 1,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-01-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-01-nominal-cell.png",
+      "nominalBox": [
+        2,
+        2,
+        312,
+        312
+      ],
+      "completeSubjectBox": [
+        5,
+        5,
+        309,
+        309
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-01.png",
+      "visibleSubjectSummary": "Folded off-white cloth/bandage with one olive-green poison droplet.",
+      "functionalGrouping": "condition-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": "poisoned",
+      "consumerStatus": "Direct statusIcon mapping and unitCondition HUD path verified"
+    },
+    {
+      "topicId": "C01-STATUS-02",
+      "assetId": "C01-FFV1-STATUS-02",
+      "label": "沉默",
+      "authoredIndex": 1,
+      "runtimePng": "runtime/status/status-02.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 1,
+      "column": 2,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-02-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-02-nominal-cell.png",
+      "nominalBox": [
+        316,
+        2,
+        625,
+        312
+      ],
+      "completeSubjectBox": [
+        319,
+        5,
+        622,
+        309
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-02.png",
+      "visibleSubjectSummary": "One plain gray metal disc with three curved sound/wave runs on each side, six total; not a mouth or crossed-out letter.",
+      "functionalGrouping": "condition-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": "silenced",
+      "consumerStatus": "Direct statusIcon mapping and unitCondition HUD path verified"
+    },
+    {
+      "topicId": "C01-STATUS-03",
+      "assetId": "C01-FFV1-STATUS-03",
+      "label": "护卫",
+      "authoredIndex": 2,
+      "runtimePng": "runtime/status/status-03.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 1,
+      "column": 3,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-03-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-03-nominal-cell.png",
+      "nominalBox": [
+        629,
+        2,
+        938,
+        312
+      ],
+      "completeSubjectBox": [
+        632,
+        5,
+        935,
+        309
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-03.png",
+      "visibleSubjectSummary": "One blue-gray shield with cream upward chevron and one short three-link gray chain beside it.",
+      "functionalGrouping": "condition-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-04",
+      "assetId": "C01-FFV1-STATUS-04",
+      "label": "誓文受控",
+      "authoredIndex": 3,
+      "runtimePng": "runtime/status/status-04.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 1,
+      "column": 4,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-04-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-04-nominal-cell.png",
+      "nominalBox": [
+        942,
+        2,
+        1252,
+        312
+      ],
+      "completeSubjectBox": [
+        945,
+        5,
+        1249,
+        309
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-04.png",
+      "visibleSubjectSummary": "One clenched tan hand/forearm wearing an ornate gold cuff with original scrolling line motif and tied brown cord/tails; no readable letters.",
+      "functionalGrouping": "condition-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": "c01.oath-controlled",
+      "consumerStatus": "Direct statusIcon mapping and unitCondition HUD path verified"
+    },
+    {
+      "topicId": "C01-STATUS-05",
+      "assetId": "C01-FFV1-STATUS-05",
+      "label": "溃退",
+      "authoredIndex": 4,
+      "runtimePng": "runtime/status/status-05.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 2,
+      "column": 1,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-05-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-05-nominal-cell.png",
+      "nominalBox": [
+        2,
+        316,
+        312,
+        625
+      ],
+      "completeSubjectBox": [
+        5,
+        319,
+        309,
+        622
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-05.png",
+      "visibleSubjectSummary": "One tilted fallen chevron shield on bounded dirt/stones plus two separated black bootprints.",
+      "functionalGrouping": "condition-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": "shaken",
+      "consumerStatus": "Direct statusIcon mapping and unitCondition HUD path verified"
+    },
+    {
+      "topicId": "C01-STATUS-06",
+      "assetId": "C01-FFV1-STATUS-06",
+      "label": "隐蔽",
+      "authoredIndex": 5,
+      "runtimePng": "runtime/status/status-06.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 2,
+      "column": 2,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-06-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-06-nominal-cell.png",
+      "nominalBox": [
+        316,
+        316,
+        625,
+        625
+      ],
+      "completeSubjectBox": [
+        319,
+        319,
+        622,
+        622
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-06.png",
+      "visibleSubjectSummary": "One deep olive hood, a fern/leaf branch and one brown boot sole.",
+      "functionalGrouping": "condition-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-07",
+      "assetId": "C01-FFV1-STATUS-07",
+      "label": "风暴暴露",
+      "authoredIndex": 6,
+      "runtimePng": "runtime/status/status-07.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 2,
+      "column": 3,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-07-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-07-nominal-cell.png",
+      "nominalBox": [
+        629,
+        316,
+        938,
+        625
+      ],
+      "completeSubjectBox": [
+        632,
+        319,
+        935,
+        622
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-07.png",
+      "visibleSubjectSummary": "One gray pawn beneath three broad curled wind assemblies and three small accent arcs, with eleven diagonal rain strokes: six left and five right. Bounded stroke shapes, no added fog.",
+      "functionalGrouping": "condition-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-08",
+      "assetId": "C01-FFV1-STATUS-08",
+      "label": "受伤",
+      "authoredIndex": 7,
+      "runtimePng": "runtime/status/status-08.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 2,
+      "column": 4,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-08-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-08-nominal-cell.png",
+      "nominalBox": [
+        942,
+        316,
+        1252,
+        625
+      ],
+      "completeSubjectBox": [
+        945,
+        319,
+        1249,
+        622
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-08.png",
+      "visibleSubjectSummary": "One folded off-white blood-stained bandage tied with brown cord; object-only injury cue.",
+      "functionalGrouping": "condition-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": "armor_down",
+      "consumerStatus": "Direct statusIcon mapping and unitCondition HUD path verified"
+    },
+    {
+      "topicId": "C01-STATUS-09",
+      "assetId": "C01-FFV1-STATUS-09",
+      "label": "资金",
+      "authoredIndex": 8,
+      "runtimePng": "runtime/status/status-09.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 3,
+      "column": 1,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-09-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-09-nominal-cell.png",
+      "nominalBox": [
+        2,
+        629,
+        312,
+        938
+      ],
+      "completeSubjectBox": [
+        5,
+        632,
+        309,
+        935
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-09.png",
+      "visibleSubjectSummary": "Four coin groups: rear-left four bronze coins, front-left one bronze coin, rear-right six visibly layered silver coins, front-right two silver coins. Coins have concentric rims and blank faces; partially overlapping stack edges are visible, not separately inferred hidden coins.",
+      "functionalGrouping": "resource/morale/support-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-10",
+      "assetId": "C01-FFV1-STATUS-10",
+      "label": "粮秣",
+      "authoredIndex": 9,
+      "runtimePng": "runtime/status/status-10.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 3,
+      "column": 2,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-10-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-10-nominal-cell.png",
+      "nominalBox": [
+        316,
+        629,
+        625,
+        938
+      ],
+      "completeSubjectBox": [
+        319,
+        632,
+        622,
+        935
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-10.png",
+      "visibleSubjectSummary": "One open grain sack with visible grain and one scored brown loaf.",
+      "functionalGrouping": "resource/morale/support-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-11",
+      "assetId": "C01-FFV1-STATUS-11",
+      "label": "弹药",
+      "authoredIndex": 10,
+      "runtimePng": "runtime/status/status-11.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 3,
+      "column": 3,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-11-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-11-nominal-cell.png",
+      "nominalBox": [
+        629,
+        629,
+        938,
+        938
+      ],
+      "completeSubjectBox": [
+        632,
+        632,
+        935,
+        935
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-11.png",
+      "visibleSubjectSummary": "One wooden quiver holding two visible arrow shafts, each with two pale fletching faces (four feather faces total), beside one low powder container with one metal measuring dipper holding dark powder.",
+      "functionalGrouping": "resource/morale/support-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-12",
+      "assetId": "C01-FFV1-STATUS-12",
+      "label": "士气",
+      "authoredIndex": 11,
+      "runtimePng": "runtime/status/status-12.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 3,
+      "column": 4,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-12-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-12-nominal-cell.png",
+      "nominalBox": [
+        942,
+        629,
+        1252,
+        938
+      ],
+      "completeSubjectBox": [
+        945,
+        632,
+        1249,
+        935
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-12.png",
+      "visibleSubjectSummary": "One plain gray forked hanging banner on spear-topped wooden pole with gold ties/tassels.",
+      "functionalGrouping": "resource/morale/support-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": "inspired",
+      "consumerStatus": "Direct statusIcon mapping and unitCondition HUD path verified"
+    },
+    {
+      "topicId": "C01-STATUS-13",
+      "assetId": "C01-FFV1-STATUS-13",
+      "label": "誓约权限",
+      "authoredIndex": 12,
+      "runtimePng": "runtime/status/status-13.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 4,
+      "column": 1,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-13-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-13-nominal-cell.png",
+      "nominalBox": [
+        2,
+        942,
+        312,
+        1252
+      ],
+      "completeSubjectBox": [
+        5,
+        945,
+        309,
+        1249
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-13.png",
+      "visibleSubjectSummary": "One bronze circular permission-ring motif with three attached hollow loop lobes; preserve open top/loop structure.",
+      "functionalGrouping": "resource/morale/support-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-14",
+      "assetId": "C01-FFV1-STATUS-14",
+      "label": "工程材料",
+      "authoredIndex": 13,
+      "runtimePng": "runtime/status/status-14.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 4,
+      "column": 2,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-14-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-14-nominal-cell.png",
+      "nominalBox": [
+        316,
+        942,
+        625,
+        1252
+      ],
+      "completeSubjectBox": [
+        319,
+        945,
+        622,
+        1249
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-14.png",
+      "visibleSubjectSummary": "Timber plank bundle, one perforated L-shaped iron bracket, and one rope coil with loose tail.",
+      "functionalGrouping": "resource/morale/support-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-15",
+      "assetId": "C01-FFV1-STATUS-15",
+      "label": "补给",
+      "authoredIndex": 14,
+      "runtimePng": "runtime/status/status-15.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 4,
+      "column": 3,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-15-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-15-nominal-cell.png",
+      "nominalBox": [
+        629,
+        942,
+        938,
+        1252
+      ],
+      "completeSubjectBox": [
+        632,
+        945,
+        935,
+        1249
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-15.png",
+      "visibleSubjectSummary": "One wooden supply crate with one corked blue-gray bottle and visible bread forms.",
+      "functionalGrouping": "resource/morale/support-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-16",
+      "assetId": "C01-FFV1-STATUS-16",
+      "label": "地方支持",
+      "authoredIndex": 15,
+      "runtimePng": "runtime/status/status-16.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "01",
+      "row": 4,
+      "column": 4,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-16-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-16-nominal-cell.png",
+      "nominalBox": [
+        942,
+        942,
+        1252,
+        1252
+      ],
+      "completeSubjectBox": [
+        945,
+        945,
+        1249,
+        1249
+      ],
+      "sourceCropNotes": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-16.png",
+      "visibleSubjectSummary": "One small cottage surrounded by six wooden pawn figures.",
+      "functionalGrouping": "resource/morale/support-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-17",
+      "assetId": "C01-FFV1-STATUS-17",
+      "label": "占领目标",
+      "authoredIndex": 16,
+      "runtimePng": "runtime/status/status-17.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "02",
+      "row": 1,
+      "column": 1,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-17-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-17-nominal-cell.png",
+      "nominalBox": [
+        2,
+        2,
+        442,
+        442
+      ],
+      "completeSubjectBox": [
+        5,
+        5,
+        439,
+        439
+      ],
+      "sourceCropNotes": "No grid lines; complete subject retained in nominal interior.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-17.png",
+      "visibleSubjectSummary": "One gray forked flag on a concentric round stone occupation platform.",
+      "functionalGrouping": "objective-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-18",
+      "assetId": "C01-FFV1-STATUS-18",
+      "label": "护送目标",
+      "authoredIndex": 17,
+      "runtimePng": "runtime/status/status-18.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "02",
+      "row": 1,
+      "column": 2,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-18-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-18-nominal-cell.png",
+      "nominalBox": [
+        446,
+        2,
+        885,
+        442
+      ],
+      "completeSubjectBox": [
+        449,
+        5,
+        882,
+        439
+      ],
+      "sourceCropNotes": "No grid lines; complete subject retained in nominal interior.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-18.png",
+      "visibleSubjectSummary": "Two tall blue-gray cream-chevron shields flank one wooden wheel.",
+      "functionalGrouping": "objective-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-19",
+      "assetId": "C01-FFV1-STATUS-19",
+      "label": "撤离目标",
+      "authoredIndex": 18,
+      "runtimePng": "runtime/status/status-19.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "02",
+      "row": 1,
+      "column": 3,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-19-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-19-nominal-cell.png",
+      "nominalBox": [
+        889,
+        2,
+        1328,
+        442
+      ],
+      "completeSubjectBox": [
+        892,
+        5,
+        1325,
+        439
+      ],
+      "sourceCropNotes": "No grid lines; complete subject retained in nominal interior.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-19.png",
+      "visibleSubjectSummary": "Two opened wooden palisade gate leaves frame seven receding black bootprints; each print contains sole and heel shapes. Original wooden uprights, iron straps and rope lashings remain functional parts.",
+      "functionalGrouping": "objective-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-20",
+      "assetId": "C01-FFV1-STATUS-20",
+      "label": "救援目标",
+      "authoredIndex": 19,
+      "runtimePng": "runtime/status/status-20.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "02",
+      "row": 1,
+      "column": 4,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-20-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-20-nominal-cell.png",
+      "nominalBox": [
+        1332,
+        2,
+        1772,
+        442
+      ],
+      "completeSubjectBox": [
+        1335,
+        5,
+        1769,
+        439
+      ],
+      "sourceCropNotes": "No grid lines; complete subject retained in nominal interior.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-20.png",
+      "visibleSubjectSummary": "Two bracered human hands protect one lit lantern above broken iron-bar fragments.",
+      "functionalGrouping": "objective-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-21",
+      "assetId": "C01-FFV1-STATUS-21",
+      "label": "维修目标",
+      "authoredIndex": 20,
+      "runtimePng": "runtime/status/status-21.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "02",
+      "row": 2,
+      "column": 1,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-21-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-21-nominal-cell.png",
+      "nominalBox": [
+        2,
+        446,
+        442,
+        885
+      ],
+      "completeSubjectBox": [
+        5,
+        449,
+        439,
+        882
+      ],
+      "sourceCropNotes": "No grid lines; complete subject retained in nominal interior.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-21.png",
+      "visibleSubjectSummary": "One stone-headed hammer against block-stone wall pieces reinforced with iron plates.",
+      "functionalGrouping": "objective-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-22",
+      "assetId": "C01-FFV1-STATUS-22",
+      "label": "破坏目标",
+      "authoredIndex": 21,
+      "runtimePng": "runtime/status/status-22.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "02",
+      "row": 2,
+      "column": 2,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-22-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-22-nominal-cell.png",
+      "nominalBox": [
+        446,
+        446,
+        885,
+        885
+      ],
+      "completeSubjectBox": [
+        449,
+        449,
+        882,
+        882
+      ],
+      "sourceCropNotes": "No grid lines; complete subject retained in nominal interior.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-22.png",
+      "visibleSubjectSummary": "One broken wooden/bronze gear with missing rim section and one separate gray shaft.",
+      "functionalGrouping": "objective-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-23",
+      "assetId": "C01-FFV1-STATUS-23",
+      "label": "守时目标",
+      "authoredIndex": 22,
+      "runtimePng": "runtime/status/status-23.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "02",
+      "row": 2,
+      "column": 3,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-23-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-23-nominal-cell.png",
+      "nominalBox": [
+        889,
+        446,
+        1328,
+        885
+      ],
+      "completeSubjectBox": [
+        889,
+        445,
+        1291,
+        885
+      ],
+      "sourceCropNotes": "Nominal cell right edge contains the neighboring status24 glass-tube fragment. Subject-only original crop stops before that tube.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-23.png",
+      "visibleSubjectSummary": "One hourglass tied beside one ragged gray flag on a wooden pole.",
+      "functionalGrouping": "objective-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    },
+    {
+      "topicId": "C01-STATUS-24",
+      "assetId": "C01-FFV1-STATUS-24",
+      "label": "证据送达",
+      "authoredIndex": 23,
+      "runtimePng": "runtime/status/status-24.png",
+      "runtimeSize": [
+        32,
+        32
+      ],
+      "anchor": [
+        16,
+        16
+      ],
+      "board": "02",
+      "row": 2,
+      "column": 4,
+      "originalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-24-complete-subject.png",
+      "nominalReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-24-nominal-cell.png",
+      "nominalBox": [
+        1332,
+        446,
+        1772,
+        885
+      ],
+      "completeSubjectBox": [
+        1294,
+        445,
+        1772,
+        885
+      ],
+      "sourceCropNotes": "Original glass tube crosses the nominal left grid boundary. Full-board crop extends left to retain its intact bottom cap; nominal crop retained as evidence.",
+      "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-24.png",
+      "visibleSubjectSummary": "One sealed glass document tube with original wax seal, one right arrow and three linked blank identity tags each bearing one person-bust silhouette.",
+      "functionalGrouping": "objective-like",
+      "functionalGroupingAuthority": "Descriptive inference from authored labels and visible originals, not a new gameplay taxonomy.",
+      "directStatusBinding": null,
+      "consumerStatus": "No direct topic/role consumer found in repository code search; generic icon lookup can resolve catalog assets but does not establish actual use."
+    }
+  ],
+  "auditComplete": true,
+  "authorizedPilotTopicIds": [
+    "C01-STATUS-01",
+    "C01-STATUS-02",
+    "C01-STATUS-04",
+    "C01-STATUS-05"
+  ],
+  "generationAuthorizationNote": "Parent authorized first four actual consumers after full source inspection on 2026-10-19 21:20 UTC. Other status identities remain audited only pending batch assignment.",
+  "sourceBoundaryCorrections": [
+    "Atlas01 white grid excluded from all complete-subject references.",
+    "Atlas02 status23 nominal cell includes part of status24 document tube; complete23 x889..1291 and complete24 x1294..1772 preserve each actual subject without contamination."
+  ]
+}

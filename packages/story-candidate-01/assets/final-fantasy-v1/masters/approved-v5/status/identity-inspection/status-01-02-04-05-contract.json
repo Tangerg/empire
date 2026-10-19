@@ -1,0 +1,160 @@
+[
+  {
+    "topic": "C01-STATUS-01",
+    "slug": "status-01",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01",
+    "asset": {
+      "assetId": "C01-FFV1-STATUS-01",
+      "label": "中毒"
+    },
+    "index": 0,
+    "board": "01",
+    "row": 1,
+    "col": 1,
+    "box": [
+      5,
+      5,
+      309,
+      309
+    ],
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "sha": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-01-complete-subject.png",
+    "identity": "Exactly ONE folded off-white bandage/cloth bundle, diagonally angled from lower-left to upper-right as in image 1. The cloth has a broad middle wrapping band and clearly readable folded ends. Exactly ONE large olive-green teardrop poison symbol rests on the middle band, tip pointing upward, rounded base downward. Preserve the strong olive-green versus cream color contrast. Simplify stitching to a few broad seam accents; no woven grain.",
+    "styles": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+    ],
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-01.png",
+    "directStatusBinding": "poisoned",
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+    "originalGridCellPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-01-nominal-cell.png",
+    "originalGridBox": [
+      2,
+      2,
+      312,
+      312
+    ],
+    "prompt": "Use case: stylized-concept\nAsset type: C01 C01-STATUS-01 '中毒' transparent fantasy strategy status icon. Native output is a high-resolution RGBA source; it must remain exceptionally clear after full-canvas fitting into a 32px runtime icon and displaying at 28px in the HUD.\nInput images: Image 1 is the exact original source identity and composition reference only, with magenta key background to discard. Images 2 and 3 are APPROVED chunky cel style/material references only; do not copy their objects.\nPrimary request: Redraw only this exact status identity in the approved exaggerated broad-plane game-art style.\nSubject and invariants: Exactly ONE folded off-white bandage/cloth bundle, diagonally angled from lower-left to upper-right as in image 1. The cloth has a broad middle wrapping band and clearly readable folded ends. Exactly ONE large olive-green teardrop poison symbol rests on the middle band, tip pointing upward, rounded base downward. Preserve the strong olive-green versus cream color contrast. Simplify stitching to a few broad seam accents; no woven grain.\nStyle/medium: Oversized chunky simplified volumes, bold charcoal outlines, broad clean matte color planes with two or three cel values, strong silhouette and low detail density. Large readable symbol proportions. Never inherit miniature fabric weave, scratches, stipple, tiny metal mottling or wood grain from the original. Restrained upper-left highlights, no glossy plastic.\nComposition/framing: One compact centered complete icon on a square canvas, original arrangement and orientations retained. Entire meaningful silhouette comfortably inside all four edges with a small generous margin, no tight crop. Avoid empty wasted canvas.\nBackground: Genuine transparency with transparent exterior and open gaps. All light is contained within object surfaces. No colored backdrop, white fill, checkerboard, broad drop shadow, external glow, mist, smoke or haze. Retain original bounded functional backing object only where explicitly specified.\nText: None. No readable lettering, watermark, added symbol, frame or UI plate.",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-32813214-f95e-4b2a-8c28-9b7989c11428.png"
+  },
+  {
+    "topic": "C01-STATUS-02",
+    "slug": "status-02",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02",
+    "asset": {
+      "assetId": "C01-FFV1-STATUS-02",
+      "label": "沉默"
+    },
+    "index": 1,
+    "board": "01",
+    "row": 1,
+    "col": 2,
+    "box": [
+      319,
+      5,
+      622,
+      309
+    ],
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "sha": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-02-complete-subject.png",
+    "identity": "Exactly ONE plain gray metal circular disc with simple concentric raised rims and a completely blank center, seen almost front-on. Exactly THREE thick separated curved wave arms emerge on the LEFT and exactly THREE on the RIGHT, SIX in total. Match image 1: short broad horizontal wavy strokes, dark charcoal, parallel with generous transparent gaps. Disc remains gray, not blue. No crossed-out mark, mouth, letter, skull, or added emblem. Rims are functional original object surfaces, not a generic added UI frame.",
+    "styles": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+    ],
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-02.png",
+    "directStatusBinding": "silenced",
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+    "originalGridCellPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-02-nominal-cell.png",
+    "originalGridBox": [
+      316,
+      2,
+      625,
+      312
+    ],
+    "prompt": "Use case: stylized-concept\nAsset type: C01 C01-STATUS-02 '沉默' transparent fantasy strategy status icon. Native output is a high-resolution RGBA source; it must remain exceptionally clear after full-canvas fitting into a 32px runtime icon and displaying at 28px in the HUD.\nInput images: Image 1 is the exact original source identity and composition reference only, with magenta key background to discard. Images 2 and 3 are APPROVED chunky cel style/material references only; do not copy their objects.\nPrimary request: Redraw only this exact status identity in the approved exaggerated broad-plane game-art style.\nSubject and invariants: Exactly ONE plain gray metal circular disc with simple concentric raised rims and a completely blank center, seen almost front-on. Exactly THREE thick separated curved wave arms emerge on the LEFT and exactly THREE on the RIGHT, SIX in total. Match image 1: short broad horizontal wavy strokes, dark charcoal, parallel with generous transparent gaps. Disc remains gray, not blue. No crossed-out mark, mouth, letter, skull, or added emblem. Rims are functional original object surfaces, not a generic added UI frame.\nStyle/medium: Oversized chunky simplified volumes, bold charcoal outlines, broad clean matte color planes with two or three cel values, strong silhouette and low detail density. Large readable symbol proportions. Never inherit miniature fabric weave, scratches, stipple, tiny metal mottling or wood grain from the original. Restrained upper-left highlights, no glossy plastic.\nComposition/framing: One compact centered complete icon on a square canvas, original arrangement and orientations retained. Entire meaningful silhouette comfortably inside all four edges with a small generous margin, no tight crop. Avoid empty wasted canvas.\nBackground: Genuine transparency with transparent exterior and open gaps. All light is contained within object surfaces. No colored backdrop, white fill, checkerboard, broad drop shadow, external glow, mist, smoke or haze. Retain original bounded functional backing object only where explicitly specified.\nText: None. No readable lettering, watermark, added symbol, frame or UI plate.",
+    "generatedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0cef946d-0cbd-4ec7-adc3-e8a4b9d044aa.png"
+  },
+  {
+    "topic": "C01-STATUS-04",
+    "slug": "status-04",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-04",
+    "asset": {
+      "assetId": "C01-FFV1-STATUS-04",
+      "label": "誓文受控"
+    },
+    "index": 3,
+    "board": "01",
+    "row": 1,
+    "col": 4,
+    "box": [
+      945,
+      5,
+      1249,
+      309
+    ],
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "sha": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-04-complete-subject.png",
+    "identity": "Exactly ONE clenched tan hand and short forearm pointing diagonally upward-right, wearing ONE broad antique-gold cuff. Preserve original cuff symbol: ONE continuous serpentine scrolling line with curled ends and TWO separate small rounded bosses around it. This is an ornamental scroll, not writing. On the cuff lower-right, preserve ONE brown rope knot ending in exactly TWO short visible tails. Keep clear cuff/hand/rope silhouettes. The original forearm fades at lower-left: make a clean finite softly rounded illustrated endpoint inside generous transparent margins, not a canvas-edge crop, no blood or anatomical cut surface. Do not add sleeve, handcuffs, chains, additional hands or letters.",
+    "styles": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+    ],
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-04.png",
+    "directStatusBinding": "c01.oath-controlled",
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+    "originalGridCellPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-04-nominal-cell.png",
+    "originalGridBox": [
+      942,
+      2,
+      1252,
+      312
+    ],
+    "prompt": "Use case: stylized-concept\nAsset type: C01 C01-STATUS-04 '誓文受控' transparent fantasy strategy status icon. Native output is a high-resolution RGBA source; it must remain exceptionally clear after full-canvas fitting into a 32px runtime icon and displaying at 28px in the HUD.\nInput images: Image 1 is the exact original source identity and composition reference only, with magenta key background to discard. Images 2 and 3 are APPROVED chunky cel style/material references only; do not copy their objects.\nPrimary request: Redraw only this exact status identity in the approved exaggerated broad-plane game-art style.\nSubject and invariants: Exactly ONE clenched tan hand and short forearm pointing diagonally upward-right, wearing ONE broad antique-gold cuff. Preserve original cuff symbol: ONE continuous serpentine scrolling line with curled ends and TWO separate small rounded bosses around it. This is an ornamental scroll, not writing. On the cuff lower-right, preserve ONE brown rope knot ending in exactly TWO short visible tails. Keep clear cuff/hand/rope silhouettes. The original forearm fades at lower-left: make a clean finite softly rounded illustrated endpoint inside generous transparent margins, not a canvas-edge crop, no blood or anatomical cut surface. Do not add sleeve, handcuffs, chains, additional hands or letters.\nStyle/medium: Oversized chunky simplified volumes, bold charcoal outlines, broad clean matte color planes with two or three cel values, strong silhouette and low detail density. Large readable symbol proportions. Never inherit miniature fabric weave, scratches, stipple, tiny metal mottling or wood grain from the original. Restrained upper-left highlights, no glossy plastic.\nComposition/framing: One compact centered complete icon on a square canvas, original arrangement and orientations retained. Entire meaningful silhouette comfortably inside all four edges with a small generous margin, no tight crop. Avoid empty wasted canvas.\nBackground: Genuine transparency with transparent exterior and open gaps. All light is contained within object surfaces. No colored backdrop, white fill, checkerboard, broad drop shadow, external glow, mist, smoke or haze. Retain original bounded functional backing object only where explicitly specified.\nText: None. No readable lettering, watermark, added symbol, frame or UI plate."
+  },
+  {
+    "topic": "C01-STATUS-05",
+    "slug": "status-05",
+    "dir": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-05",
+    "asset": {
+      "assetId": "C01-FFV1-STATUS-05",
+      "label": "溃退"
+    },
+    "index": 4,
+    "board": "01",
+    "row": 2,
+    "col": 1,
+    "box": [
+      5,
+      319,
+      309,
+      622
+    ],
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-01.png",
+    "sha": "ba66be12b27ca760855e7ac4bec85d1ea1d11e12b9606c6d187a696364d1c642",
+    "identityPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-05-complete-subject.png",
+    "identity": "Exactly ONE tilted fallen slate-blue kite shield on a SMALL bounded brown dirt patch with a few broad stones. Preserve its pale metal rim and original cream angular upward-chevron heraldic band seen in perspective, matching image 1 rather than inventing a new emblem. To the RIGHT of the shield there are exactly TWO separate dark charcoal bootprints arranged on a diagonal, one above-left of the other; each print has one larger toe/sole and one separate smaller heel. Keep both pairs of sole/heel shapes legible with clear transparent gaps. This dirt is the original functional footing only, confined directly under the shield; no broad exterior cast shadow. No people, additional footprints, letters or extra objects.",
+    "styles": [
+      "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+      "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-swordsman/master.png"
+    ],
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-05.png",
+    "directStatusBinding": "shaken",
+    "sourceCellCorrection": "Atlas01 white grid excluded by five-pixel source-cell inset.",
+    "originalGridCellPath": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-05-nominal-cell.png",
+    "originalGridBox": [
+      2,
+      316,
+      312,
+      625
+    ],
+    "prompt": "Use case: stylized-concept\nAsset type: C01 C01-STATUS-05 '溃退' transparent fantasy strategy status icon. Native output is a high-resolution RGBA source; it must remain exceptionally clear after full-canvas fitting into a 32px runtime icon and displaying at 28px in the HUD.\nInput images: Image 1 is the exact original source identity and composition reference only, with magenta key background to discard. Images 2 and 3 are APPROVED chunky cel style/material references only; do not copy their objects.\nPrimary request: Redraw only this exact status identity in the approved exaggerated broad-plane game-art style.\nSubject and invariants: Exactly ONE tilted fallen slate-blue kite shield on a SMALL bounded brown dirt patch with a few broad stones. Preserve its pale metal rim and original cream angular upward-chevron heraldic band seen in perspective, matching image 1 rather than inventing a new emblem. To the RIGHT of the shield there are exactly TWO separate dark charcoal bootprints arranged on a diagonal, one above-left of the other; each print has one larger toe/sole and one separate smaller heel. Keep both pairs of sole/heel shapes legible with clear transparent gaps. This dirt is the original functional footing only, confined directly under the shield; no broad exterior cast shadow. No people, additional footprints, letters or extra objects.\nStyle/medium: Oversized chunky simplified volumes, bold charcoal outlines, broad clean matte color planes with two or three cel values, strong silhouette and low detail density. Large readable symbol proportions. Never inherit miniature fabric weave, scratches, stipple, tiny metal mottling or wood grain from the original. Restrained upper-left highlights, no glossy plastic.\nComposition/framing: One compact centered complete icon on a square canvas, original arrangement and orientations retained. Entire meaningful silhouette comfortably inside all four edges with a small generous margin, no tight crop. Avoid empty wasted canvas.\nBackground: Genuine transparency with transparent exterior and open gaps. All light is contained within object surfaces. No colored backdrop, white fill, checkerboard, broad drop shadow, external glow, mist, smoke or haze. Retain original bounded functional backing object only where explicitly specified.\nText: None. No readable lettering, watermark, added symbol, frame or UI plate."
+  }
+]

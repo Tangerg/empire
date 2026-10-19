@@ -1,0 +1,63 @@
+{
+  "topicId": "C01-STATUS-01",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.5271183250281715,
+  "nearOpaqueFractionAlphaGE250": 0.46438382820906116,
+  "nonzeroAlphaBBox": [
+    0,
+    23,
+    1224,
+    1208
+  ],
+  "visibleAlphaBBoxGE8": [
+    77,
+    114,
+    1198,
+    1196
+  ],
+  "visibleAlphaBBoxGE128": [
+    77,
+    115,
+    1198,
+    1193
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    77,
+    115,
+    56,
+    61
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 17,
+  "sha256": "920e48a14c34d3ac04ab4c1b98cb1bc848807c4df6a99988f73b979a23b8ff17",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "At native32 and HUD28 on white/black/olive, cream folded bundle and single olive poison drop remain distinct; stitching becomes secondary edge accents."
+  ],
+  "identityVerified": "Exactly ONE folded off-white bandage/cloth bundle, diagonally angled from lower-left to upper-right as in image 1. The cloth has a broad middle wrapping band and clearly readable folded ends. Exactly ONE large olive-green teardrop poison symbol rests on the middle band, tip pointing upward, rounded base downward. Preserve the strong olive-green versus cream color contrast. Simplify stitching to a few broad seam accents; no woven grain.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "At native32 and HUD28 on white/black/olive, cream folded bundle and single olive poison drop remain distinct; stitching becomes secondary edge accents."
+  }
+}
