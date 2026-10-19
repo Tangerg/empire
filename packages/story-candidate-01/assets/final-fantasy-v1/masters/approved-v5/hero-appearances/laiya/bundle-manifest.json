@@ -1,0 +1,167 @@
+{
+  "artifactKind": "named-hero-appearance",
+  "asset": "C01-UNIT-BANNER-GUARD",
+  "baseTopicId": "C01-UNIT-BANNER-GUARD",
+  "unitType": "c01.laiya",
+  "appearanceId": null,
+  "appearanceIdStatus": "Coordinator-owned presentation interface; no canonical topic invented",
+  "canonicalTopicCountDelta": 0,
+  "genericTroopArtModified": false,
+  "status": "Complete named hero quartet ready for coordinator common-scale/native review; no formal appearance binding claimed",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "sharedScale": 0.05612244897959184,
+  "bodyReferenceSourcePixels": 784,
+  "bodyTargetHeightLogicalPixels": 44,
+  "canonicalSourceFoot": [
+    879,
+    985
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/registration-evidence.json",
+  "identityContract": "Named original C01-CHAR-LEIA-01:18-year-old woman, brown side braid, exposed head, gray-blue quilted/mail-edged armor, short wrap/silver clasp, brown belt/trousers/boots, left steel wrist guard, plain torn gray banner held in right hand. Original named flag has no heraldry. No generic older male face/helmet/back shield or generic white flag marks.",
+  "weaponContract": "c01.laiya uses border-blade and gray-oath. Coordinator explicitly approved adding one modest short straight sword in complete belt scabbard absent from original named portrait. Sword remains sheathed during idle/walks, left hand draws for attack while right retains banner; empty scabbard stays at original hip. Single attack slot serves both rule weapons; independent FX01/06 not baked into art. No weapon/rule changes.",
+  "sourcePolicy": "Every selected raw/master/native source is byte-identical built-in image_gen output. Exact prompts/request/reference hashes preserved. QA white/black and common-scale proofs are diagnostics only.",
+  "selectedAttempts": {
+    "idle": "first native output",
+    "walk-a": "first native output",
+    "attack": "attempt-02 bounded blade-length correction",
+    "walk-b": "attempt-03 opposite-support pose from approved idle"
+  },
+  "supersededAttempts": [
+    {
+      "directory": "attack/attempt-01",
+      "reason": "Exposed blade about315px too long for modest scabbard; native-only correction requested."
+    },
+    {
+      "directory": "walk-b/attempt-01",
+      "reason": "Same supporting leg aswalk-a; failed opposite step."
+    },
+    {
+      "directory": "walk-b/attempt-02",
+      "reason": "Targeted lower-leg edit still kept wrong same-side support; not accepted."
+    }
+  ],
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "98040e516d8c8ac43db89802fc57aaa90a0e9de07d4e1a555f07b1838ba1cc06",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        879,
+        985
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        377,
+        14,
+        1128,
+        986
+      ],
+      "sha256": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a61a89d6-fe89-4016-8e18-61b385886762.png",
+      "review": "Approved named Laiya idle, exposed18-year-old female face/brown side braid, original right hand holds plain torn gray banner, left wrist guard visible, modest short sword fully sheathed at original right hip. Calm two-boot support."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "3732a60651813422ce62a83f1e96745c6ecbbd76e7dcef5eda7d0ca55f110484",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        847,
+        983
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        380,
+        10,
+        1130,
+        984
+      ],
+      "sha256": "9b4d29a97707e01ae30080042938567e68e0185bcaa57586d100c7e88ff3d16a",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a12347c0-bafc-4026-b50e-a3f5a51aa2b8.png",
+      "review": "Forward stride, image-right boot in heel-strike with toe up, opposite scabbard-side boot trailing. Right hand retains banner and left guarded arm stays empty. Short sword remains fully sheathed, braid and equipment sides preserved."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "df4912e4f97f94b0f66aacc9fce96e90b02802f763e05d50a5d51b82bc99b3b2",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/attack/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        849,
+        981
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        244,
+        11,
+        1436,
+        982
+      ],
+      "sha256": "9f72242b1fdd0c7312adaaa04b300b0184921065708251a1302f5040369a0c9b",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2ec39e1b-257b-48f2-9ca8-252d00700f3e.png",
+      "review": "Selected attempt-02: clear left-hand compact straight-sword strike, original wrist guard on sword arm, right hand retains full plain gray banner. Empty open-mouth scabbard remains attached to original right hip; no duplicate hilt or raised scabbard. Both boots brace. Exposed blade shortened by native imagegen from about315 to195-200px; no programmatic weapon edit."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "24d01fe55afd798665d65a3620de3908f4c42f1f71fa2eb6bc57b57831749365",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        834,
+        972
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        374,
+        13,
+        1137,
+        973
+      ],
+      "sha256": "3424220d8b14c66f918b5718ba50b1b9ce6c9b7d64a38dcf309b418a2debb653",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-b030721b-5d38-4e11-8cbf-b6818e5a207f.png",
+      "review": "Selected attempt-03: opposite support is actually present. Image-left/scabbard-side boot planted low at y972, other whole boot lifted with lowest pixel y883,89source pixels higher. Face/camera/right banner hand/left wrist guard/braid/sheath side retained. It is a raised-knee recovery step rather than an exact mirrored silhouette of walk-a. Attempts01/02 retained because they kept the same incorrect supporting leg."
+    }
+  }
+}

@@ -1,0 +1,381 @@
+{
+  "status": "Complete named hero quartet ready for coordinator common-scale/native review; no formal appearance binding claimed",
+  "sharedScale": 0.05612244897959184,
+  "scaleFraction": "44/784",
+  "bodyReferenceSourcePixels": 784,
+  "bodyTargetHeightLogicalPixels": 44,
+  "canonicalSourceFoot": [
+    879,
+    985
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "proposedCommonFrameSize": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    6,
+    4
+  ],
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "canvasPaddingToleranceRequired": 2,
+  "maximumPadRight": 2,
+  "maximumPadBottom": 1,
+  "paddingPolicy": "All original canvases preserved byte-for-byte. Common1586x993: idle1586x992 needs1transparent bottom row; walk-a and selectedwalk-b1585x992 need1right column+1bottom row; selectedattack1584x993 needs2right columns. No cropping, stretching or per-pose fit.",
+  "registrationMethod": "Separate visually inspected boot ROIs, alpha>127. Each boot sole is its lowest pixel; bottom4rows meanx per boot, averaged across two boots. Source y is lowest boot sole; pole tip excluded. Whole-canvas translation at shared44/784. Raised boot remains measured for stable two-leg center, not falsely labeled planted.",
+  "poses": {
+    "idle": {
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "padRight": 0,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        879,
+        985
+      ],
+      "sourceFootMidpoint": [
+        878.6116748768472,
+        985
+      ],
+      "bootMeasurements": [
+        {
+          "roi": [
+            630,
+            840,
+            850,
+            990
+          ],
+          "bounds": [
+            631,
+            840,
+            850,
+            974
+          ],
+          "soleY": 973,
+          "bottomFourRowsMeanX": 712.78
+        },
+        {
+          "roi": [
+            930,
+            840,
+            1140,
+            990
+          ],
+          "bounds": [
+            930,
+            840,
+            1128,
+            986
+          ],
+          "soleY": 985,
+          "bottomFourRowsMeanX": 1044.4433497536945
+        }
+      ],
+      "hairCrownDiagnosticY": 195,
+      "flagFinialTopY": 14,
+      "registrationOffsetSource": [
+        0,
+        0
+      ],
+      "registrationOffsetLogical": [
+        0.0,
+        0.0
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        377,
+        14,
+        1128,
+        986
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        137,
+        11,
+        1562,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        27.158163265306122,
+        4.785714285714286,
+        69.3061224489796,
+        59.33673469387755
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        6.0,
+        4.0,
+        95.01020408163265,
+        59.72959183673469
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterMaxAlpha": 1,
+      "perimeterCountAlphaGreaterThan1": 0
+    },
+    "walk-a": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        847,
+        983
+      ],
+      "sourceFootMidpoint": [
+        847.3210661313706,
+        983
+      ],
+      "bootMeasurements": [
+        {
+          "roi": [
+            690,
+            840,
+            830,
+            990
+          ],
+          "bounds": [
+            690,
+            840,
+            811,
+            967
+          ],
+          "soleY": 966,
+          "bottomFourRowsMeanX": 752.655737704918
+        },
+        {
+          "roi": [
+            900,
+            840,
+            1150,
+            990
+          ],
+          "bounds": [
+            900,
+            840,
+            1130,
+            984
+          ],
+          "soleY": 983,
+          "bottomFourRowsMeanX": 941.9863945578231
+        }
+      ],
+      "hairCrownDiagnosticY": 192,
+      "flagFinialTopY": 10,
+      "registrationOffsetSource": [
+        32,
+        2
+      ],
+      "registrationOffsetLogical": [
+        1.7959183673469388,
+        0.11224489795918367
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        380,
+        10,
+        1130,
+        984
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        67,
+        8,
+        1513,
+        992
+      ],
+      "proposedLogicalVisibleBounds": [
+        29.122448979591837,
+        4.673469387755103,
+        71.21428571428571,
+        59.33673469387755
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        7.795918367346939,
+        4.112244897959184,
+        96.8061224489796,
+        59.84183673469388
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterMaxAlpha": 1,
+      "perimeterCountAlphaGreaterThan1": 0
+    },
+    "attack": {
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "padRight": 2,
+      "padBottom": 0,
+      "sourceSupportAnchorEstimated": [
+        849,
+        981
+      ],
+      "sourceFootMidpoint": [
+        849.4636217948718,
+        981
+      ],
+      "bootMeasurements": [
+        {
+          "roi": [
+            475,
+            840,
+            675,
+            980
+          ],
+          "bounds": [
+            482,
+            840,
+            675,
+            960
+          ],
+          "soleY": 959,
+          "bottomFourRowsMeanX": 554.8605769230769
+        },
+        {
+          "roi": [
+            985,
+            840,
+            1240,
+            992
+          ],
+          "bounds": [
+            991,
+            840,
+            1231,
+            982
+          ],
+          "soleY": 981,
+          "bottomFourRowsMeanX": 1144.0666666666666
+        }
+      ],
+      "hairCrownDiagnosticY": 191,
+      "flagFinialTopY": 11,
+      "registrationOffsetSource": [
+        30,
+        4
+      ],
+      "registrationOffsetLogical": [
+        1.683673469387755,
+        0.22448979591836735
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        244,
+        11,
+        1436,
+        982
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        57,
+        8,
+        1570,
+        985
+      ],
+      "proposedLogicalVisibleBounds": [
+        21.377551020408163,
+        4.841836734693877,
+        88.27551020408163,
+        59.33673469387755
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        7.683673469387755,
+        4.224489795918367,
+        96.6938775510204,
+        59.95408163265306
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterMaxAlpha": 0,
+      "perimeterCountAlphaGreaterThan1": 0
+    },
+    "walk-b": {
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "padRight": 1,
+      "padBottom": 1,
+      "sourceSupportAnchorEstimated": [
+        834,
+        972
+      ],
+      "sourceFootMidpoint": [
+        834.1041718815186,
+        972
+      ],
+      "bootMeasurements": [
+        {
+          "roi": [
+            630,
+            840,
+            850,
+            990
+          ],
+          "bounds": [
+            631,
+            840,
+            843,
+            973
+          ],
+          "soleY": 972,
+          "bottomFourRowsMeanX": 710.435294117647
+        },
+        {
+          "roi": [
+            915,
+            750,
+            1110,
+            910
+          ],
+          "bounds": [
+            915,
+            750,
+            1093,
+            884
+          ],
+          "soleY": 883,
+          "bottomFourRowsMeanX": 957.7730496453901
+        }
+      ],
+      "hairCrownDiagnosticY": 193,
+      "flagFinialTopY": 13,
+      "registrationOffsetSource": [
+        45,
+        13
+      ],
+      "registrationOffsetLogical": [
+        2.5255102040816326,
+        0.7295918367346939
+      ],
+      "nativeVisibleBoundsAlphaGreaterThan127": [
+        374,
+        13,
+        1137,
+        973
+      ],
+      "nativeAllNonzeroAlphaBounds": [
+        39,
+        10,
+        1547,
+        976
+      ],
+      "proposedLogicalVisibleBounds": [
+        29.515306122448976,
+        5.459183673469388,
+        72.33673469387755,
+        59.336734693877546
+      ],
+      "proposedLogicalFullCanvasBounds": [
+        8.525510204081632,
+        4.729591836734694,
+        97.53571428571428,
+        60.45918367346938
+      ],
+      "wholeCanvasFitsProposedFrame": true,
+      "perimeterMaxAlpha": 0,
+      "perimeterCountAlphaGreaterThan1": 0
+    }
+  },
+  "requiredMaximumTranslationLogicalPixels": 2.5255102040816326,
+  "translationBasis": "Selectedwalk-b anchor834,972 versus idle879,985 needs source delta45,13, maximum2.525510204logical. Existing explicit limit4 is sufficient. Every complete1586x993 padded canvas fits104x64 at origin6,4."
+}

@@ -1,28 +1,111 @@
 {
-  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-d878f826-1026-43ee-9df9-44e3b88387ae.png",
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-b030721b-5d38-4e11-8cbf-b6818e5a207f.png",
   "size": [
-    1586,
+    1585,
     992
   ],
   "mode": "RGBA",
-  "sha256": "d9cd51c645584b069b66862eacf195c005e7114842511f73134c5ac706738424",
+  "sha256": "3424220d8b14c66f918b5718ba50b1b9ce6c9b7d64a38dcf309b418a2debb653",
   "bboxAlphaNonzero": [
-    47,
-    4,
-    1524,
+    39,
+    10,
+    1547,
     976
   ],
   "bboxAlphaGreaterThan127": [
-    377,
-    7,
-    1157,
-    971
+    374,
+    13,
+    1137,
+    973
   ],
   "perimeterMaxAlpha": 0,
   "perimeterCountAlphaGreaterThan1": 0,
-  "alphaZeroPixels": 1206132,
-  "alphaOnePixels": 5875,
+  "alphaZeroPixels": 1191532,
+  "alphaOnePixels": 3871,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "suggestedSourceFoot": [
+    834,
+    972
+  ],
+  "sourceFootMidpoint": [
+    834.1041718815186,
+    972
+  ],
+  "bootMeasurements": [
+    {
+      "roi": [
+        630,
+        840,
+        850,
+        990
+      ],
+      "bounds": [
+        631,
+        840,
+        843,
+        973
+      ],
+      "soleY": 972,
+      "bottomFourRowsMeanX": 710.435294117647
+    },
+    {
+      "roi": [
+        915,
+        750,
+        1110,
+        910
+      ],
+      "bounds": [
+        915,
+        750,
+        1093,
+        884
+      ],
+      "soleY": 883,
+      "bottomFourRowsMeanX": 957.7730496453901
+    }
+  ],
+  "hairCrownDiagnosticY": 193,
+  "flagFinialTopY": 13,
+  "negativeSpaceProbes": [
+    {
+      "name": "legs",
+      "rectangle": [
+        875,
+        860,
+        882,
+        867
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "flag-arm",
+      "rectangle": [
+        552,
+        535,
+        559,
+        542
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "scabbard-pole",
+      "rectangle": [
+        675,
+        733,
+        682,
+        740
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Selected attempt-03: opposite support is actually present. Image-left/scabbard-side boot planted low at y972, other whole boot lifted with lowest pixel y883,89source pixels higher. Face/camera/right banner hand/left wrist guard/braid/sheath side retained. It is a raised-knee recovery step rather than an exact mirrored silhouette of walk-a. Attempts01/02 retained because they kept the same incorrect supporting leg.",
+  "selectedAttempt": "attempt-03 opposite-support pose from approved idle",
+  "sharedScale": "44/784",
+  "status": "Complete named hero quartet ready for coordinator common-scale/native review; no formal appearance binding claimed"
 }

@@ -90,13 +90,13 @@
       64
     ],
     "candidateOrigin": [
-      8,
+      6,
       4
     ],
     "logicalFullCanvasBounds": [
-      8,
+      6,
       4,
-      97.01020408163265,
+      95.01020408163265,
       59.673469387755105
     ]
   },
@@ -117,7 +117,7 @@
       "zeroPixels": 49
     },
     {
-      "name": "flag-to-arm-gap",
+      "name": "flag-to-arm",
       "rectangle": [
         552,
         535,
@@ -128,7 +128,7 @@
       "zeroPixels": 49
     },
     {
-      "name": "scabbard-to-pole-gap",
+      "name": "scabbard-to-pole",
       "rectangle": [
         673,
         741,
@@ -139,6 +139,53 @@
       "zeroPixels": 49
     }
   ],
-  "semanticReview": "Independent named18-year-old female Laiya: brown side braid, exposed face, original right-hand plain torn gray banner at image-left, original left steel wrist guard at image-right, gray-blue quilted/mail-edged armor, brown belt/trousers/boots. Added one complete modest sheathed short straight sword per coordinator approval; original card has no visible sword. No generic banner-guard moustache, helmet, back shield or white flag emblem. Whole finial/flag/pole/sheath/boots visible. Native and white/black composites inspected.",
-  "status": "Idle candidate only, awaiting coordinator native identity/body-scale and appearance-interface approval; no other poses generated"
+  "semanticReview": "Approved named Laiya idle, exposed18-year-old female face/brown side braid, original right hand holds plain torn gray banner, left wrist guard visible, modest short sword fully sheathed at original right hip. Calm two-boot support.",
+  "status": "Complete named hero quartet ready for coordinator common-scale/native review; no formal appearance binding claimed",
+  "coordinatorIdleApproval": "Coordinator2026-10-19 20:50UTC accepted named identity and chunky body. Continue common44/784,104x64,origin[6,4],sourceFoot[879,985]; complete three poses before appearance binding.",
+  "candidateOrigin": [
+    6,
+    4
+  ],
+  "sourceFootMidpoint": [
+    878.6116748768472,
+    985
+  ],
+  "bootMeasurements": [
+    {
+      "roi": [
+        630,
+        840,
+        850,
+        990
+      ],
+      "bounds": [
+        631,
+        840,
+        850,
+        974
+      ],
+      "soleY": 973,
+      "bottomFourRowsMeanX": 712.78
+    },
+    {
+      "roi": [
+        930,
+        840,
+        1140,
+        990
+      ],
+      "bounds": [
+        930,
+        840,
+        1128,
+        986
+      ],
+      "soleY": 985,
+      "bottomFourRowsMeanX": 1044.4433497536945
+    }
+  ],
+  "hairCrownDiagnosticY": 195,
+  "flagFinialTopY": 14,
+  "selectedAttempt": "first native output",
+  "sharedScale": "44/784"
 }

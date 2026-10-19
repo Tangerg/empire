@@ -1,20 +1,19 @@
 {
   "tool": "built-in image_gen",
-  "promptSha256": "2e2edc93df4adfa3061916fb1731b0cdba1c5a687f6c23ff4d4454dec6b6493e",
+  "promptSha256": "df4912e4f97f94b0f66aacc9fce96e90b02802f763e05d50a5d51b82bc99b3b2",
   "referencedImagePaths": [
-    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/master.png"
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/attack/attempt-01/master.png"
   ],
   "referencedImageSha256": {
-    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/idle/master.png": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a"
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/laiya/attack/attempt-01/master.png": "c3f146e3e3b978ce654055923d12692ff3140278b186a21a55e437e22aba8c43"
   },
   "transparentBackground": true,
   "nativeCanvasRequested": [
-    1586,
-    992
+    1584,
+    993
   ],
   "pose": "attack",
-  "namedUnit": "c01.laiya",
-  "baseTopic": "C01-UNIT-BANNER-GUARD",
-  "sharedScale": "44/784",
-  "handContract": "Left guarded forearm draws sword; right hand retains banner; empty sheath remains original right hip."
+  "attempt": "02",
+  "action": "Only shorten exposed steel blade from315 to190-220native pixels; preserve hilt/hands/body/empty sheath.",
+  "approval": "Coordinator2026-10-19 20:55UTC authorized one bounded blade-length correction and preserving v1."
 }

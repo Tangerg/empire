@@ -1,0 +1,211 @@
+{
+  "status": "Complete named hero quartet ready for coordinator common-scale/native review; no formal appearance binding claimed",
+  "artifactKind": "named-hero-appearance",
+  "unitType": "c01.laiya",
+  "baseTopicId": "C01-UNIT-BANNER-GUARD",
+  "newCanonicalTopics": 0,
+  "bodyScale": "44/784",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptAndReferenceHashesVerified": true,
+  "originalNamedFemaleIdentityRetained": true,
+  "plainUnmarkedFlagAllPoses": true,
+  "rightHandFlagAndLeftWristGuardAllPoses": true,
+  "oneSwordAndOriginalHipScabbardAllPoses": true,
+  "attackSwordDrawnAndScabbardEmptyAtWaist": true,
+  "oppositeSupportWalksVisuallyChecked": true,
+  "independentFXBakedIntoCharacter": false,
+  "runtimeOrRepositoryWrites": false,
+  "weaponRulesChanged": false,
+  "gameplayFootprintChanged": false,
+  "proposedFullCanvasFit": true,
+  "recommendedRegistrationLimitLogicalPixels": 4,
+  "alphaPerimeterGate": "All selected native perimeters have zero alpha>1 pixels. Idle/walk-a max1 native specks retained; attack/walk-b max0.",
+  "revisionCaveats": "Attack correction leaves both boot soles at959/981; upper banner shifts around12native px to right and contours have minor redraw differences. No global resize. Walk-b needed3native candidates: onlyattempt03 actually changes support. Its raised boot is89nativepx above planted sole, a clearly exaggerated but readable recovery step. No hidden claim that prior failed poses passed.",
+  "poses": {
+    "idle": {
+      "sourceFoot": [
+        879,
+        985
+      ],
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "negativeSpaceProbes": [
+        {
+          "name": "between-boots",
+          "rectangle": [
+            878,
+            860,
+            885,
+            867
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "flag-to-arm",
+          "rectangle": [
+            552,
+            535,
+            559,
+            542
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "scabbard-to-pole",
+          "rectangle": [
+            673,
+            741,
+            680,
+            748
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "perimeterCountAlphaGreaterThan1": 0
+    },
+    "walk-a": {
+      "sourceFoot": [
+        847,
+        983
+      ],
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "negativeSpaceProbes": [
+        {
+          "name": "legs",
+          "rectangle": [
+            850,
+            890,
+            857,
+            897
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "pole-sheath",
+          "rectangle": [
+            683,
+            705,
+            690,
+            712
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "under-guarded-arm",
+          "rectangle": [
+            1020,
+            745,
+            1027,
+            752
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "perimeterCountAlphaGreaterThan1": 0
+    },
+    "attack": {
+      "sourceFoot": [
+        849,
+        981
+      ],
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "negativeSpaceProbes": [
+        {
+          "name": "legs",
+          "rectangle": [
+            800,
+            850,
+            807,
+            857
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "under-sword-arm",
+          "rectangle": [
+            1060,
+            600,
+            1067,
+            607
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "sheath-pole",
+          "rectangle": [
+            568,
+            690,
+            575,
+            697
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "perimeterCountAlphaGreaterThan1": 0
+    },
+    "walk-b": {
+      "sourceFoot": [
+        834,
+        972
+      ],
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "negativeSpaceProbes": [
+        {
+          "name": "legs",
+          "rectangle": [
+            875,
+            860,
+            882,
+            867
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "flag-arm",
+          "rectangle": [
+            552,
+            535,
+            559,
+            542
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        },
+        {
+          "name": "scabbard-pole",
+          "rectangle": [
+            675,
+            733,
+            682,
+            740
+          ],
+          "maxAlpha": 0,
+          "zeroPixels": 49
+        }
+      ],
+      "perimeterCountAlphaGreaterThan1": 0
+    }
+  }
+}

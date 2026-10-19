@@ -1,28 +1,111 @@
 {
-  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c5346d94-fbea-4d75-a39f-a347d2c5e54b.png",
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2ec39e1b-257b-48f2-9ca8-252d00700f3e.png",
   "size": [
     1584,
     993
   ],
   "mode": "RGBA",
-  "sha256": "c3f146e3e3b978ce654055923d12692ff3140278b186a21a55e437e22aba8c43",
+  "sha256": "9f72242b1fdd0c7312adaaa04b300b0184921065708251a1302f5040369a0c9b",
   "bboxAlphaNonzero": [
-    0,
+    57,
     8,
-    1560,
-    993
+    1570,
+    985
   ],
   "bboxAlphaGreaterThan127": [
-    232,
-    10,
-    1557,
+    244,
+    11,
+    1436,
     982
   ],
-  "perimeterMaxAlpha": 1,
+  "perimeterMaxAlpha": 0,
   "perimeterCountAlphaGreaterThan1": 0,
-  "alphaZeroPixels": 1126380,
-  "alphaOnePixels": 8039,
+  "alphaZeroPixels": 1134243,
+  "alphaOnePixels": 5341,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "suggestedSourceFoot": [
+    849,
+    981
+  ],
+  "sourceFootMidpoint": [
+    849.4636217948718,
+    981
+  ],
+  "bootMeasurements": [
+    {
+      "roi": [
+        475,
+        840,
+        675,
+        980
+      ],
+      "bounds": [
+        482,
+        840,
+        675,
+        960
+      ],
+      "soleY": 959,
+      "bottomFourRowsMeanX": 554.8605769230769
+    },
+    {
+      "roi": [
+        985,
+        840,
+        1240,
+        992
+      ],
+      "bounds": [
+        991,
+        840,
+        1231,
+        982
+      ],
+      "soleY": 981,
+      "bottomFourRowsMeanX": 1144.0666666666666
+    }
+  ],
+  "hairCrownDiagnosticY": 191,
+  "flagFinialTopY": 11,
+  "negativeSpaceProbes": [
+    {
+      "name": "legs",
+      "rectangle": [
+        800,
+        850,
+        807,
+        857
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "under-sword-arm",
+      "rectangle": [
+        1060,
+        600,
+        1067,
+        607
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "sheath-pole",
+      "rectangle": [
+        568,
+        690,
+        575,
+        697
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Selected attempt-02: clear left-hand compact straight-sword strike, original wrist guard on sword arm, right hand retains full plain gray banner. Empty open-mouth scabbard remains attached to original right hip; no duplicate hilt or raised scabbard. Both boots brace. Exposed blade shortened by native imagegen from about315 to195-200px; no programmatic weapon edit.",
+  "selectedAttempt": "attempt-02 bounded blade-length correction",
+  "sharedScale": "44/784",
+  "status": "Complete named hero quartet ready for coordinator common-scale/native review; no formal appearance binding claimed"
 }

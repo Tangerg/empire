@@ -1,0 +1,153 @@
+{
+  "scope": "Read-only Laiya reference and idle composition proposal; no generation or repository changes",
+  "utc": "2026-10-19T20:45:00Z",
+  "proposal": "laiya-battle-idle-proposal.md",
+  "identityReference": {
+    "unitType": "c01.laiya",
+    "cardTopicId": "C01-CHAR-LEIA-01",
+    "currentBattleTopicId": "C01-UNIT-BANNER-GUARD",
+    "card": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-leia-01.png",
+      "sha256": "4ee6c380f5906cf5929d9777672295bed392d33cffac62f7839ed5531b5de0c5",
+      "size": [
+        192,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "originalBoard": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+      "sha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "originalBoardCell": 0,
+    "originalCropBox": [
+      5,
+      5,
+      622,
+      622
+    ],
+    "runtimeBattle": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard.png",
+      "sha256": "40d5008a83da9c688cbc1d4ca57726402d8f02ea9e91dc924166bcf18bca7211",
+      "size": [
+        416,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    "runtimeBattleHd": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
+      "sha256": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+      "size": [
+        832,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    "publishedSequence": {
+      "path": "docs/art-rebuild-20261019/approved-v5/animation/banner-guard/export/sequence.json",
+      "sha256": "7b5cf7e4edfbfc737f06ee8607f3fcdb0d474eb49066ae8af133c35026393ad8",
+      "matchesCurrentHdBytes": true
+    },
+    "nativeBattleFrames": {
+      "idle": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/banner-guard/idle/master.png",
+        "sha256": "1307b932b2269d934b02e185dd9e61da04bc596b4deb23e50132d579e5e80205",
+        "size": [
+          1586,
+          992
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "walk-a": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/banner-guard/walk-a/master.png",
+        "sha256": "31e2e3e3ae54bf9f1ddb5e643d5b52e86ad52baf7dc89625f01d99749016d64e",
+        "size": [
+          1585,
+          992
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "attack": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/banner-guard/attack/master.png",
+        "sha256": "1b75df55149f8e643acb437ed2ac1a331d8a5eee22b2b885755aaf5d2c8c4b6b",
+        "size": [
+          1584,
+          993
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "walk-b": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/banner-guard/walk-b/master.png",
+        "sha256": "26547ea39fd050063794e0780a3546219cebd8f0081d55b9a700c227a490266b",
+        "size": [
+          1586,
+          992
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      }
+    }
+  },
+  "verifiedReferences": {
+    "card": {
+      "actualSha256": "4ee6c380f5906cf5929d9777672295bed392d33cffac62f7839ed5531b5de0c5",
+      "matchesAudit": true
+    },
+    "originalBoard": {
+      "actualSha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb",
+      "matchesAudit": true
+    },
+    "runtimeBattle": {
+      "actualSha256": "40d5008a83da9c688cbc1d4ca57726402d8f02ea9e91dc924166bcf18bca7211",
+      "matchesAudit": true
+    },
+    "runtimeBattleHd": {
+      "actualSha256": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
+      "matchesAudit": true
+    }
+  },
+  "pending": "Coordinator idle/native-scale review and appearance-interface contract before other3poses.",
+  "status": "Idle approved; remaining three poses in progress",
+  "generationAuthorization": "Coordinator2026-10-19 20:46UTC explicitly approved one independent transparent idle, plain flag and original hand assignment; modest complete short-sword scabbard addition; wait on remaining poses.",
+  "idleNativeSha256": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+  "idleReview": "idle-review.json",
+  "coordinatorIdleApproval": "Coordinator2026-10-19 20:50UTC accepted named identity and chunky body. Continue common44/784,104x64,origin[6,4],sourceFoot[879,985]; complete three poses before appearance binding.",
+  "candidateOrigin": [
+    6,
+    4
+  ]
+}

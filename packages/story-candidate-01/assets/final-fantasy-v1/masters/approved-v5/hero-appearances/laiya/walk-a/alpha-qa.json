@@ -24,5 +24,88 @@
   "alphaOnePixels": 3943,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "suggestedSourceFoot": [
+    847,
+    983
+  ],
+  "sourceFootMidpoint": [
+    847.3210661313706,
+    983
+  ],
+  "bootMeasurements": [
+    {
+      "roi": [
+        690,
+        840,
+        830,
+        990
+      ],
+      "bounds": [
+        690,
+        840,
+        811,
+        967
+      ],
+      "soleY": 966,
+      "bottomFourRowsMeanX": 752.655737704918
+    },
+    {
+      "roi": [
+        900,
+        840,
+        1150,
+        990
+      ],
+      "bounds": [
+        900,
+        840,
+        1130,
+        984
+      ],
+      "soleY": 983,
+      "bottomFourRowsMeanX": 941.9863945578231
+    }
+  ],
+  "hairCrownDiagnosticY": 192,
+  "flagFinialTopY": 10,
+  "negativeSpaceProbes": [
+    {
+      "name": "legs",
+      "rectangle": [
+        850,
+        890,
+        857,
+        897
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "pole-sheath",
+      "rectangle": [
+        683,
+        705,
+        690,
+        712
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "under-guarded-arm",
+      "rectangle": [
+        1020,
+        745,
+        1027,
+        752
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Forward stride, image-right boot in heel-strike with toe up, opposite scabbard-side boot trailing. Right hand retains banner and left guarded arm stays empty. Short sword remains fully sheathed, braid and equipment sides preserved.",
+  "selectedAttempt": "first native output",
+  "sharedScale": "44/784",
+  "status": "Complete named hero quartet ready for coordinator common-scale/native review; no formal appearance binding claimed"
 }

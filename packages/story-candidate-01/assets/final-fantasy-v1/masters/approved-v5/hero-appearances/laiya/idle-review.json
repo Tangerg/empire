@@ -1,0 +1,149 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a61a89d6-fe89-4016-8e18-61b385886762.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+  "bboxAlphaNonzero": [
+    137,
+    11,
+    1562,
+    992
+  ],
+  "bboxAlphaGreaterThan127": [
+    377,
+    14,
+    1128,
+    986
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1170055,
+  "alphaOnePixels": 5147,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "bodyMeasurement": {
+    "hairROI": [
+      730,
+      150,
+      1100,
+      480
+    ],
+    "hairCrownY": 195,
+    "bootMeasurements": {
+      "image-left-boot": {
+        "roi": [
+          630,
+          840,
+          850,
+          990
+        ],
+        "bounds": [
+          631,
+          840,
+          850,
+          974
+        ],
+        "soleY": 973,
+        "bottomFourRowsMeanX": 712.78
+      },
+      "image-right-boot": {
+        "roi": [
+          930,
+          840,
+          1140,
+          990
+        ],
+        "bounds": [
+          930,
+          840,
+          1128,
+          986
+        ],
+        "soleY": 985,
+        "bottomFourRowsMeanX": 1044.4433497536945
+      }
+    },
+    "meanBootSoleY": 979.0,
+    "bodyHeightSourcePixels": 784.0,
+    "bodyTargetLogicalPixels": 44,
+    "proposedSharedScale": 0.05612244897959184,
+    "scaleFraction": "44/784",
+    "proposedSourceFoot": [
+      879,
+      985
+    ],
+    "sourceFootMeanXBeforeRounding": 878.6116748768472,
+    "finialTopY": 14,
+    "flagTopToLowestBootSourcePixels": 971,
+    "flagTopToLowestBootLogicalPixels": 54.494897959183675,
+    "bodyScaleExcludesFlag": true,
+    "nativeCanvas": [
+      1586,
+      992
+    ],
+    "candidateFrame": [
+      104,
+      64
+    ],
+    "candidateOrigin": [
+      6,
+      4
+    ],
+    "logicalFullCanvasBounds": [
+      6,
+      4,
+      95.01020408163265,
+      59.673469387755105
+    ]
+  },
+  "suggestedSourceFoot": [
+    879,
+    985
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "between-boots",
+      "rectangle": [
+        878,
+        860,
+        885,
+        867
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "flag-to-arm-gap",
+      "rectangle": [
+        552,
+        535,
+        559,
+        542
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "scabbard-to-pole-gap",
+      "rectangle": [
+        673,
+        741,
+        680,
+        748
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Independent named18-year-old female Laiya: brown side braid, exposed face, original right-hand plain torn gray banner at image-left, original left steel wrist guard at image-right, gray-blue quilted/mail-edged armor, brown belt/trousers/boots. Added one complete modest sheathed short straight sword per coordinator approval; original card has no visible sword. No generic banner-guard moustache, helmet, back shield or white flag emblem. Whole finial/flag/pole/sheath/boots visible. Native and white/black composites inspected.",
+  "status": "Idle approved; remaining three poses in progress",
+  "coordinatorIdleApproval": "Coordinator2026-10-19 20:50UTC accepted named identity and chunky body. Continue common44/784,104x64,origin[6,4],sourceFoot[879,985]; complete three poses before appearance binding.",
+  "candidateOrigin": [
+    6,
+    4
+  ]
+}

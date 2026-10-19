@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/attack/attempt-02/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/walk-b/attempt-03/master.png"
+    },
+    "scale": 0.05612244897959184,
+    "origin": [
+      6,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      879,
+      985
+    ],
+    "sourceFeet": {
+      "idle": [
+        879,
+        985
+      ],
+      "walk-a": [
+        847,
+        983
+      ],
+      "attack": [
+        849,
+        981
+      ],
+      "walk-b": [
+        834,
+        972
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        1.7959183673469388,
+        0.11224489795918367
+      ],
+      "attack": [
+        1.683673469387755,
+        0.22448979591836735
+      ],
+      "walk-b": [
+        2.5255102040816326,
+        0.7295918367346939
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 2,
+    "meaning": "named Laiya age18 appearance, not generic banner-guard replacement; exact shared body scale; feet measured by support soles"
+  },
+  "authoredCanvas": [
+    1586,
+    993
+  ],
+  "logicalPivot": [
+    55.33163265306123,
+    59.28061224489796
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          253
+        ],
+        "transparentPixels": 5265,
+        "nearOpaquePixels": 1083,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          5,
+          69,
+          59
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "2e7578fefd6ff0978498b771fa8e6f53bafd4b2f38d3f9ecdca18a49bc429a1a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21303,
+        "nearOpaquePixels": 4562,
+        "edgeMax": 0,
+        "visibleBounds": [
+          54,
+          10,
+          139,
+          119
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/walk-a/master.png",
+      "registrationOffset": [
+        1.7959183673469388,
+        0.11224489795918367
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "9b4d29a97707e01ae30080042938567e68e0185bcaa57586d100c7e88ff3d16a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5361,
+        "nearOpaquePixels": 961,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          5,
+          71,
+          59
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/walk-a/master.png",
+      "registrationOffset": [
+        1.7959183673469388,
+        0.11224489795918367
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "9b4d29a97707e01ae30080042938567e68e0185bcaa57586d100c7e88ff3d16a",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21719,
+        "nearOpaquePixels": 4093,
+        "edgeMax": 0,
+        "visibleBounds": [
+          58,
+          10,
+          142,
+          119
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/attack/attempt-02/master.png",
+      "registrationOffset": [
+        1.683673469387755,
+        0.22448979591836735
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "9f72242b1fdd0c7312adaaa04b300b0184921065708251a1302f5040369a0c9b",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5106,
+        "nearOpaquePixels": 1154,
+        "edgeMax": 0,
+        "visibleBounds": [
+          21,
+          5,
+          88,
+          59
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/attack/attempt-02/master.png",
+      "registrationOffset": [
+        1.683673469387755,
+        0.22448979591836735
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "9f72242b1fdd0c7312adaaa04b300b0184921065708251a1302f5040369a0c9b",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 20782,
+        "nearOpaquePixels": 4893,
+        "edgeMax": 0,
+        "visibleBounds": [
+          43,
+          10,
+          176,
+          119
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/walk-b/attempt-03/master.png",
+      "registrationOffset": [
+        2.5255102040816326,
+        0.7295918367346939
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "3424220d8b14c66f918b5718ba50b1b9ce6c9b7d64a38dcf309b418a2debb653",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5337,
+        "nearOpaquePixels": 1001,
+        "edgeMax": 0,
+        "visibleBounds": [
+          30,
+          6,
+          72,
+          59
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/laiya/walk-b/attempt-03/master.png",
+      "registrationOffset": [
+        2.5255102040816326,
+        0.7295918367346939
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "3424220d8b14c66f918b5718ba50b1b9ce6c9b7d64a38dcf309b418a2debb653",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21575,
+        "nearOpaquePixels": 4264,
+        "edgeMax": 0,
+        "visibleBounds": [
+          59,
+          11,
+          145,
+          119
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

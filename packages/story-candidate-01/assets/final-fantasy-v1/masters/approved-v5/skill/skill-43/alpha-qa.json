@@ -1,0 +1,65 @@
+{
+  "topicId": "C01-SKILL-43",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6051092643890428,
+  "nearOpaqueFractionAlphaGE250": 0.36872947556654434,
+  "nonzeroAlphaBBox": [
+    55,
+    15,
+    1224,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    66,
+    64,
+    1203,
+    1170
+  ],
+  "visibleAlphaBBoxGE128": [
+    67,
+    65,
+    1203,
+    1170
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    67,
+    65,
+    51,
+    84
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 19,
+  "sha256": "55b7759ffb6db716fad35eeeeb38d8ca91d46cc621002e4e1c9d5a2b563049ff",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, with transparent exterior and open gaps.",
+    "No invented readable lettering, broad exterior glow, haze, scene background or added square tile."
+  ],
+  "identityVerified": "Nine separate oath objects arranged in an open-centered ring: upper-left wood-faced bronze-rim disc with small drop/flame boss; upper-center steel disc with eight-point star; upper-right five-leaf twig; right paired oval links with short stub; lower-right russet hexagonal badge with one silver flame/drop inset; bottom chunky bronze seven-lobed/toothed gear with polygon hole; lower-left gray inset rectangular tablet; left-lower tied brown sack; left-upper carved brown pendant with rope bow/frayed tail. No words.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "semanticInspection": "Nine separate tokens in original open-centered clockwise order verified. Eight-point star, five-leaf twig, two oval links, one silver drop/flame badge inset and seven uneven gear tooth lobes preserved. No invented lettering or emblems.",
+  "actual48pxPreview": {
+    "directory": "qa-preview-48",
+    "contactSheet": "../identity-inspection/skill-41-44-preview-48-contact.png",
+    "backgrounds": [
+      "white",
+      "black",
+      "olive"
+    ],
+    "method": "Full authored source canvas contained in 44x44 using LANCZOS and centered in transparent 48x48, same fit() as repository exporter. Preview only; source bytes unmodified.",
+    "visualInspection": "Complete major silhouettes and identity groups distinguishable on all three backgrounds. Fine decorative detail and small individual token interiors are represented by native source; no claim that each fine detail is independently readable at 48px."
+  }
+}
