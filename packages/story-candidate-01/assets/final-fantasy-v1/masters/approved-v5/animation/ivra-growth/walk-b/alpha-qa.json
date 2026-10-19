@@ -1,0 +1,121 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bc2f3434-df61-4e9a-8898-d2ffa253f075.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "84037cae336e4216ba6123420599672ee2e1c9157f2ca5f80f9215b9ad303b24",
+  "bboxAlphaNonzero": [
+    23,
+    13,
+    1493,
+    985
+  ],
+  "bboxAlphaGreaterThan127": [
+    288,
+    16,
+    1435,
+    983
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 951354,
+  "alphaOnePixels": 6578,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "paw": "near-hind",
+      "roi": [
+        605,
+        750,
+        765,
+        890
+      ],
+      "soleY": 875,
+      "bottomFourRowsMeanX": 685.3589743589744
+    },
+    {
+      "paw": "far-hind",
+      "roi": [
+        800,
+        825,
+        940,
+        930
+      ],
+      "soleY": 924,
+      "bottomFourRowsMeanX": 910.1034482758621
+    },
+    {
+      "paw": "near-fore",
+      "roi": [
+        945,
+        875,
+        1200,
+        990
+      ],
+      "soleY": 982,
+      "bottomFourRowsMeanX": 1063.9655172413793
+    },
+    {
+      "paw": "far-fore",
+      "roi": [
+        1280,
+        775,
+        1450,
+        910
+      ],
+      "soleY": 897,
+      "bottomFourRowsMeanX": 1409.4375
+    }
+  ],
+  "sourceFootMidpoint": [
+    1017.2163599690539,
+    919.5
+  ],
+  "suggestedSourceFoot": [
+    1017,
+    982
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "raised-hind-paw-gap",
+      "rectangle": [
+        747,
+        897,
+        754,
+        904
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "raised-fore-paw-gap",
+      "rectangle": [
+        1257,
+        917,
+        1264,
+        924
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "tail-hook-interior",
+      "rectangle": [
+        477,
+        677,
+        484,
+        684
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Opposite diagonal support to walk-a: near-fore and far-hind paws planted, near-hind and far-fore raised. Four connected legs and four paws plus the same two back wings are visible. Closed mouth, gray horn crown, white left-neck scar, gray belly plates, compact tail and chunky copper-red identity retained. Native and white-background views inspected. No independent FX, rider or chains.",
+  "visibleWidthAlphaGreaterThan127": 1147,
+  "projectedWidthLogicalAtSharedScale": 67.57706470278801,
+  "pawRoiCaveat": "Far-hind ROI stops at x940 to exclude the neighboring near-fore leg. The actual far-hind lowest claw band at x905–915, y921–924 is included in full."
+}

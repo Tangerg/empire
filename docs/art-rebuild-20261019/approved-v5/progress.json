@@ -1404,20 +1404,20 @@
     "focusedRuntime": 72,
     "typecheck": "passed",
     "artToolTests": 126,
-    "fullSuite": "929/929 tests across99 files at7c69f53",
+    "fullSuite": "1104/1104 across103 files at411c8dc runtime snapshot",
     "liveBrowser": "not validated",
     "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint",
     "fullSuiteLatestAttempt": {
-      "passed": 929,
+      "passed": 1104,
       "failed": 0,
-      "files": 99,
-      "command": "npx vitest run --maxWorkers 2 --minWorkers 1",
-      "scope": "fixed7c69f53 integrated road/main checkpoint"
+      "files": 103,
+      "command": "npx vitest run --maxWorkers=2 --minWorkers=1",
+      "scope": "173-topic runtime snapshot; evidence verification-173"
     },
-    "latestBindingAndEdges": "93 asset/environment tests passed after templar/forge/camps",
+    "latestBindingAndEdges": "264 binding/asset tests passed at181 topics",
     "artPythonLatest": "150 passed at73a9b2f including landmark contract subtests",
-    "typecheckLatest": "passed at7c69f53",
-    "appBuildsLatest": "all4 passed at7c69f53"
+    "typecheckLatest": "passed at181 topics",
+    "appBuildsLatest": "all4 passed at165-topic clearance checkpoint; logs preserved"
   },
   "liveGameVerifiedAnimationTopics": 0,
   "materialStages": {

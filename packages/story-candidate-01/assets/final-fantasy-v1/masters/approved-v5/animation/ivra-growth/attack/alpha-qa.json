@@ -1,0 +1,120 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-cbfa60b4-0ddf-4889-b30e-158f38980f39.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "e83da9e71c4e7c5da48df41a24e32a838542be7f9633f7da2bd87d84cb4664c6",
+  "bboxAlphaNonzero": [
+    25,
+    9,
+    1555,
+    967
+  ],
+  "bboxAlphaGreaterThan127": [
+    109,
+    100,
+    1546,
+    963
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 825403,
+  "alphaOnePixels": 8016,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "feetMeasurement": [
+    {
+      "paw": "near-hind",
+      "roi": [
+        410,
+        830,
+        650,
+        950
+      ],
+      "soleY": 932,
+      "bottomFourRowsMeanX": 535.9591836734694
+    },
+    {
+      "paw": "far-hind",
+      "roi": [
+        740,
+        810,
+        930,
+        905
+      ],
+      "soleY": 890,
+      "bottomFourRowsMeanX": 864.6111111111111
+    },
+    {
+      "paw": "near-fore",
+      "roi": [
+        940,
+        860,
+        1250,
+        980
+      ],
+      "soleY": 962,
+      "bottomFourRowsMeanX": 1112.6949152542372
+    },
+    {
+      "paw": "far-fore",
+      "roi": [
+        1270,
+        825,
+        1560,
+        955
+      ],
+      "soleY": 938,
+      "bottomFourRowsMeanX": 1436.3333333333333
+    }
+  ],
+  "sourceFootMidpoint": [
+    987.3996358430377,
+    930.5
+  ],
+  "suggestedSourceFoot": [
+    987,
+    962
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "hindleg-gap",
+      "rectangle": [
+        687,
+        857,
+        694,
+        864
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "foreleg-gap",
+      "rectangle": [
+        1247,
+        897,
+        1254,
+        904
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "tail-hook-interior",
+      "rectangle": [
+        387,
+        642,
+        394,
+        649
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "semanticReview": "Four connected legs and four braced paws, with the same pair of wings, were visually checked in native and white-background views. The head and neck reach right with the mouth open, fangs and tongue contained within the mouth. White branching left-neck scar, copper-red body, gray natural belly plates, gold eye, and curled tail remain identifiable. No breath plume, aura, rider or chains. The wing spread and forward braced stance broaden the projected silhouette to 84.665 logical pixels at the unchanged shared scale, versus idle 67.165; this requires coordinator native-sequence review and is not claimed as exact size invariance.",
+  "visibleWidthAlphaGreaterThan127": 1437,
+  "projectedWidthLogicalAtSharedScale": 84.66280904786954
+}
