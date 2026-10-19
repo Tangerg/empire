@@ -1,0 +1,41 @@
+{
+  "topicId": "c02-battle-prop-anchor-winches",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-02.png",
+  "originalMasterSha256": "5da84be37462ae7332ef56b28eeccef9a442513ac75f59fe12e758a8f8b0809b",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 2
+  },
+  "sourceCropBox": [
+    632,
+    632,
+    935,
+    1249
+  ],
+  "sourceMappingEvidence": "Original visual source board inspection cross-checked against docs/story-candidates/candidate-02/art-assets/07-topic-catalog.md battle-prop order (lines 255-269), consistent with build_final_scifi_v1.py build_grid_category row-major 4x2 mapping. The old manifest-complete.json input is absent; no sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-anchor-winches.png",
+  "runtimeReferenceSha256": "116303cd944ee0343c8f474d81cad8b4c682050149ad329b4695647de0f7277d",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-e9b82fb3-2e29-400b-890f-c45b5a47c512.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "prompt": "prompt.txt",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-anchor-winches/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "One large powered winch between ivory armored arch housings, graphite-blue coiled cable, right-side docking bollard, bounded cyan indicators and amber control lever, with a heavy connected two-fluked marine anchor in front. Original marine-engineering identity and three-quarter arrangement retained.",
+  "stylePilotApprovedByParent": "Cargo pilot visually approved by inventory parent at 2026-10-19 18:07 UTC; final runtime review remains pending."
+}

@@ -1,0 +1,48 @@
+{
+  "topicId": "C01-UNIT-DRUID",
+  "status": "Idle visually approved by coordinator2026-10-19 18:14UTC; remaining poses authorized",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/druid/idle/master.png",
+  "nativeCanvas": [
+    1586,
+    992
+  ],
+  "sourceFoot": [
+    770,
+    966
+  ],
+  "sourceFootMidpoint": [
+    769.6781879194631,
+    961.5
+  ],
+  "bodyCrownY": 40,
+  "bodyHeight": 921.5,
+  "proposedSharedScale": {
+    "numerator": 44,
+    "denominator": 921.5,
+    "value": 0.04774823657080846
+  },
+  "identityReview": "Original silver-gray short hair, clean-shaven tan human face/rounded ears, sage scarf and leaf capelets, cream-green bordered robe, basket and pale-blue bottle retained. Original right hand holds open spiral wooden staff, left hand rests free at basket. Broad head/hands/boots and matte planes.",
+  "symbolReview": "Staff central aperture has genuine transparent alpha and is not a gem. Original geometric green robe motifs simplified as broad arch/lozenge border marks without new asserted religious/faction meaning.",
+  "alphaGate": {
+    "perimeterMaxAlpha": 0,
+    "perimeterCountAlphaGreaterThan1": 0,
+    "passed": true
+  },
+  "completeVisibleBounds": [
+    395,
+    40,
+    1248,
+    967
+  ],
+  "actualConsumers": [
+    "c01.druid"
+  ],
+  "postprocessing": "none; native pixels/alpha unchanged",
+  "exactPrompt": "idle/prompt.txt",
+  "request": "idle/request.json",
+  "lockedSharedScale": 0.04774823657080846,
+  "canonicalSourceFoot": [
+    770,
+    966
+  ]
+}

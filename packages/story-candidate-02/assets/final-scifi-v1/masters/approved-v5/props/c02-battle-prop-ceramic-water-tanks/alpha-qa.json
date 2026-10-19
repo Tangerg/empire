@@ -1,0 +1,39 @@
+{
+  "topicId": "c02-battle-prop-ceramic-water-tanks",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "canvasEdgeAlpha1Count": 11,
+  "transparentFraction": 0.5581564829865007,
+  "opaqueFractionAlphaGE240": 0.4339294480946458,
+  "visibleAlphaBBoxGE8": [
+    101,
+    142,
+    1158,
+    1148
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    101,
+    142,
+    96,
+    106
+  ],
+  "interiorCoreDefinition": "binary erosion of alpha>=8 silhouette by 8 native pixels (1254px source)",
+  "interiorCoreMinimumAlpha": 250,
+  "interiorCoreBelow240Count": 0,
+  "nearContourFourPixelInsetMinimumAlpha": 189,
+  "nearContourFourPixelInsetBelow240Count": 5,
+  "sha256": "4c1f96ec5b79579fec22d3165915b11a8815e7999ad296d616e9c72dc8a2ca91",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable science-fiction functional silhouette, exaggerated chunky volumes, bold near-black contours, broad matte cel planes; no visible halo, glow or cast shadow. Native perimeter alpha 1 residue retained unchanged.",
+  "postprocessing": "None; byte-exact native image copies only",
+  "runtimeReady": false
+}

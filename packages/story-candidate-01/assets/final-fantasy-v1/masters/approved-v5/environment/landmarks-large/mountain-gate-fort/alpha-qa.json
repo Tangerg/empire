@@ -1,0 +1,109 @@
+{
+  "asset": "mountain-gate-fort",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-b7c7e086-f3df-46eb-a51f-4abe057a2f52.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 655797,
+  "opaque_pixels": 1811,
+  "partial_alpha_pixels": 914908,
+  "near_opaque_alpha_250_255_pixels": 889270,
+  "nonzero_alpha_bbox": [
+    0,
+    52,
+    1243,
+    1254
+  ],
+  "strong_alpha_bbox": [
+    20,
+    57,
+    1241,
+    1203
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      0,
+      52,
+      1243,
+      1254
+    ],
+    "16": [
+      19,
+      57,
+      1241,
+      1203
+    ],
+    "128": [
+      20,
+      57,
+      1241,
+      1203
+    ],
+    "250": [
+      21,
+      59,
+      1239,
+      1202
+    ]
+  },
+  "margin_pixels_LTRB": [
+    0,
+    52,
+    11,
+    0
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    20,
+    57,
+    13,
+    51
+  ],
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 1,
+      "nonzero_pixels": 13
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 1,
+      "nonzero_pixels": 1
+    }
+  },
+  "strict_perimeter_all_alpha_zero": false,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 1
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": false,
+  "sha256": "1c6d4ad06ad4751c1f6d928b0ee7f9f93940ed6655154ebbc3546e134cb1b6db",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails.",
+  "raw_master_native_byte_identical": true,
+  "authored_foot_alpha_sample": 0
+}

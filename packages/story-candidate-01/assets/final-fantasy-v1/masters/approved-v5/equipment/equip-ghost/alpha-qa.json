@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-GHOST",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.543879998677279,
+  "nearOpaqueFractionAlphaGE250": 0.435605742644272,
+  "nonzeroAlphaBBox": [
+    0,
+    2,
+    1246,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    63,
+    108,
+    1213,
+    1160
+  ],
+  "visibleAlphaBBoxGE128": [
+    64,
+    109,
+    1212,
+    1159
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    64,
+    109,
+    42,
+    95
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 50,
+  "sha256": "cfd986fdc4664eeb4d96ed30ce1a7da163b51e5cf392abe2d2bac3993a90e8a7",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly three objects: ragged dark blue-gray apron at left with neck loop, one brass buckle and one patch pocket; one blank brown wood tag tied to a rope loop at upper-right/center; one separate amber faceted crystal at lower-right. No spectral body, ghost face, weapons or added glyph.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

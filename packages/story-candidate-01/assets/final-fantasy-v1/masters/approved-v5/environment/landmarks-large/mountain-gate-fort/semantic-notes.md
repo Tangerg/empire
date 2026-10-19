@@ -1,0 +1,24 @@
+# mountain-gate-fort, landmarks-large index3
+
+## Original identity and native review
+One complete mountain pass gatehouse wedged between TWO tall jagged gray rock-cliff groups, left and right. Exactly TWO tall square masonry gate towers flank one very large central arched CLOSED dark timber/iron portcullis. Each tall tower has one muted reddish-brown flared hipped/pyramidal roof, dark upper openings, and one long muted blue hanging banner with a simple pale source mark. A short battlement/walkway spans between the tall towers above the gate. At lower front-left and lower front-right retain exactly TWO smaller open wooden sentry booths, each with a matching reddish-brown pyramidal roof. Thus FOUR roof structures overall: two main gate towers plus two small booths. One narrow paved stone approach extends from the gateway toward the lower-left foreground, with low stone parapet edging. Preserve the tall gray hanging standard behind the left tower and one small gray pennant above the central wall. Keep all side rock pinnacles and the complete paved approach as integral original foundation, no wide added earth disc. No extra towers, arch spanning the cliff tops, moat, people or trees.
+
+Cliff-embedded closed-gate compound, distinct from compact repairable/capital/wall-lift interactive gates. Side jagged rock groups and front approach are required identity, not optional decorative backing.
+
+Native visual review: Exactly two tall square gate towers, two small lower open wooden sentry booths and four red-brown roofs retained. One closed central timber/iron gate, a short upper connecting battlement, two blue tower banners, one rear gray hanging standard and one small central gray pennant preserved. Two large jagged side cliff groups and the lower-left paved approach with low parapets remain integral. No added landscape or broad earth disc.
+
+## Semantic, occupancy and consumer contract
+Original atlas is4x4, 160 logical /320 HD, anchor(80,155)/(160,310), category large-landmark, bottom-anchor ySort. Original occupancy metadata footprint4x4 and obstructionHeight3 are retained. Occupancy is metadata, NOT a measured sprite rectangle, a new collision mask or a request to add a square ground tile.
+Current main src has no direct selector for this environment ID; c01-01.scene.json explicitly denies landmarks-large and an existing test locks that policy. This compound is a distinct catalog environment identity, not an additional normal/damaged/captured state of any of the24 finished interactive structures. C01-STRUCT-LORNE-KEEP and existing gate topics retain their own bindings and geometry. No scene allowlist, footprint, interaction/state binding or repository file was changed.
+
+## Visual foundation and authored source foot
+SourceFoot(627, 1184) is visually authored projected whole-compound registration baseline at x627,y1184, referenced to the nearest approach/parapet foundation contacts; this projection lies in transparent space rather than forcing the offset approach or a cliff tip to the canvas center. It was chosen on direct native visual review, never computed from global alpha bounds. Physical constituent contacts/landmarks are separately estimated: {"front_approach_paving_contact": [308, 1183], "front_right_parapet_rock_contact": [430, 1184], "central_gate_threshold": [584, 803], "right_cliff_contact": [1068, 1143]}. They are for review, not occupancy cells. The visual base includes only the original tight foundation, stone approach or integral rock support, no extra broad soil slab.
+Provisional full-canvas uniform export factor .12 logical/native (.24 HD/native) maps that sourceFoot to(80,155), with translation(4.760,12.920) and measured strong-alpha logical bounds[7.16, 19.76, 153.68, 157.28]. This is a calibration suggestion for the parent's tested160/320 adapter, not a tight-alpha crop. Preserve the entire1254 square and review scene scale independently. Native margins are measured in QA; requests for100px were not guaranteed despite complete silhouettes and passing perimeter gate.
+
+## Provenance
+Original full1254 atlas and complete subject crop were inspected; fractional313.5 source quarters are diagnostic only. Exact prompt and source/consumer contracts are saved. Native output was copied byte-exact into raw.png and master with no image cleanup, painting, color adjustment, resize or alpha normalization. Parent handles runtime integration separately.
+
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [20, 57, 13, 51]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

@@ -1,0 +1,55 @@
+{
+  "identity": "mountain-gate-fort",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/mountain-gate-fort/mountain-gate-fort-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/mountain-gate-fort/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/mountain-gate-fort/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/mountain-gate-fort/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/mountain-gate-fort/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    1184
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "atlas": "landmarks-large",
+  "cell_index": 3,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/mountain-gate-fort/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-b7c7e086-f3df-46eb-a51f-4abe057a2f52.png",
+  "sha256": "1c6d4ad06ad4751c1f6d928b0ee7f9f93940ed6655154ebbc3546e134cb1b6db",
+  "runtime_contract": {
+    "logical_cell": [
+      160,
+      160
+    ],
+    "hd_cell": [
+      320,
+      320
+    ],
+    "logical_anchor": [
+      80,
+      155
+    ],
+    "hd_anchor": [
+      160,
+      310
+    ],
+    "category": "large-landmark",
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "original_manifest_cell": {
+    "id": "mountain-gate-fort",
+    "footprint": [
+      4,
+      4
+    ],
+    "anchor": [
+      80,
+      155
+    ],
+    "obstructionHeight": 3
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/mountain-gate-fort-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-first-four-consumer-contract.json"
+}

@@ -1,0 +1,24 @@
+# vilsa-stone-castle, landmarks-large index2
+
+## Original identity and native review
+One complete gray stone castle with a visible inner courtyard and distinctive FOUR major towers in original positions: rear-left TALL SQUARE open crenellated tower; rear-middle slender ROUND tower with a dark slate conical roof; rear-right broad ROUND OPEN crenellated tower; front-right ROUND tower with a dark slate conical roof. Exactly two major towers are roofed and two are open battlements. Keep the connected enclosing curtain walls and broad corner buttresses as walls, not extra tall towers. Preserve the timber-framed connected slate-gabled halls inside the left/middle courtyard, plus a low inner room at right. Main arched closed wooden gate and short stone approach at lower-left/front; one smaller arched side doorway remains on the lower-right wall. Exactly TWO small gray pennants: one above the rear-middle roof and one on rear-right open tower. No long colorful hanging banners. No identical Lorne-style four round towers, no central square roofed keep, moat, trees or people.
+
+Must remain distinct from Lorne castle: one square tower and one open round tower, courtyard and two roofed round towers; no large burgundy/blue banners. Subordinate roof bays are connected hall masses rather than separately counted buildings.
+
+Native visual review: Four major towers preserved in distinct source positions: one rear-left square open tower, one rear-right round open tower, and two slate-roofed round towers. Exactly two gray pennants and no colorful hanging banners. Connected inner gabled halls and courtyard remain visible. Two OUTER wooden arch entries retained; inner hall doors are subordinate architecture and are not included in that exterior-entry count. Walls and foreground buttresses remain low enclosing structure, not additional major towers.
+
+## Semantic, occupancy and consumer contract
+Original atlas is4x4, 160 logical /320 HD, anchor(80,155)/(160,310), category large-landmark, bottom-anchor ySort. Original occupancy metadata footprint4x4 and obstructionHeight3 are retained. Occupancy is metadata, NOT a measured sprite rectangle, a new collision mask or a request to add a square ground tile.
+Current main src has no direct selector for this environment ID; c01-01.scene.json explicitly denies landmarks-large and an existing test locks that policy. This compound is a distinct catalog environment identity, not an additional normal/damaged/captured state of any of the24 finished interactive structures. C01-STRUCT-LORNE-KEEP and existing gate topics retain their own bindings and geometry. No scene allowlist, footprint, interaction/state binding or repository file was changed.
+
+## Visual foundation and authored source foot
+SourceFoot(627, 1195) is visually authored projected whole-compound registration baseline at x627,y1195, aligned near the foreground corner foundation contact; the chosen projection lies in transparent space and is intentionally not a physical center pixel or an alpha-bbox minimum. It was chosen on direct native visual review, never computed from global alpha bounds. Physical constituent contacts/landmarks are separately estimated: {"main_gate_front_apron_contact": [286, 1119], "front_corner_masonry_contact": [797, 1195], "inner_courtyard_ground": [640, 799], "side_gate_threshold": [1007, 1021]}. They are for review, not occupancy cells. The visual base includes only the original tight foundation, stone approach or integral rock support, no extra broad soil slab.
+Provisional full-canvas uniform export factor .12 logical/native (.24 HD/native) maps that sourceFoot to(80,155), with translation(4.760,11.600) and measured strong-alpha logical bounds[9.56, 17.24, 151.88, 157.28]. This is a calibration suggestion for the parent's tested160/320 adapter, not a tight-alpha crop. Preserve the entire1254 square and review scene scale independently. Native margins are measured in QA; requests for100px were not guaranteed despite complete silhouettes and passing perimeter gate.
+
+## Provenance
+Original full1254 atlas and complete subject crop were inspected; fractional313.5 source quarters are diagnostic only. Exact prompt and source/consumer contracts are saved. Native output was copied byte-exact into raw.png and master with no image cleanup, painting, color adjustment, resize or alpha normalization. Parent handles runtime integration separately.
+
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [40, 47, 28, 40]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

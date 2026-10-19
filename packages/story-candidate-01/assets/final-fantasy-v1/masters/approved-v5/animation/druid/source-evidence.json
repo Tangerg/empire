@@ -1,0 +1,145 @@
+{
+  "topicId": "C01-UNIT-DRUID",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-DRUID",
+    "topicId": "C01-UNIT-DRUID",
+    "label": "德鲁伊",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-druid.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-druid.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-druid.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-walker-druid-stag-runeshield.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "f882ce4361b4f5307a84f1183666fd6f53ae362e7fe0fe71db19ad71d3f21085"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-druid.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "b9a1dd7ca2308a564a252030560b0d4f7aea472308d5d80f44b757300fae8cb8"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-druid.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "447b1fa86ecbd4bcf505d6549966bedb5f62ffac6b05d019b617eb8a410016c6"
+    }
+  },
+  "status": "Source identity/contract reported before generation; idle authorized",
+  "actualConsumers": [
+    "c01.druid"
+  ],
+  "consumerStatus": "Campaign Silverwood druid; three c01-15 actors verified",
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 31,
+    "text": "'c01.druid': 'C01-UNIT-DRUID'"
+  },
+  "levelEvidence": {
+    "path": "packages/story-candidate-01/src/levels.ts",
+    "lines": [
+      757,
+      758,
+      760
+    ],
+    "levelOrder": 15,
+    "title": "银林长梦",
+    "actors": [
+      {
+        "key": "controlled-druid",
+        "unit": "c01.druid",
+        "side": "enemy"
+      },
+      {
+        "key": "oath-druid",
+        "unit": "c01.druid",
+        "side": "enemy"
+      },
+      {
+        "key": "silverwood-witness",
+        "unit": "c01.druid",
+        "side": "neutral",
+        "owner": 3,
+        "x": 3,
+        "y": 13
+      }
+    ]
+  },
+  "referenceExtraction": "Original1254x1254 board SECOND row; native unresampled row[0,330,1254,630],idle[0,330,314,630],staff detail[208,375,298,500],robe detail[105,540,232,606]. Original HD/runtime strips preserved unchanged; four64x96 cells extracted.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "originalIdentity": "Mature tan/brown human elder with short silver-gray hair/eyebrows, ordinary rounded ears and clean-shaven chin. Green scarf, small leaf clasp, broad tan/green tiered leaf shoulder capelets, pale yellow-cream robe with green leaf/arch/geometric border trim, sage cloth sleeves, brown diagonal strap/belt/boots. Left-hip woven herb basket with leaves and front-left pale-blue potion bottle. Right hand holds one wooden open-spiral staff with rope/leaf sprigs; left hand free.",
+  "symbolReview": "Staff center is an open aperture showing original magenta backdrop, not a pink crystal/orb. Preserve open wood spiral, leaves/rope and simplified original green robe-border motifs; no new cross, rune or antlers.",
+  "semanticEvidence": {
+    "unitDefinition": "packages/story-candidate-01/src/units.ts:89",
+    "weaponDefinition": "packages/story-candidate-01/src/weapons.ts:138",
+    "weapons": [
+      "c01.oath-bolt"
+    ],
+    "name": "银林德鲁伊",
+    "damageType": "magic",
+    "maxRange": 2,
+    "abilities": [
+      "heal",
+      "attack",
+      "capture",
+      "wait"
+    ],
+    "tags": [
+      "infantry",
+      "support",
+      "arcane",
+      "silverwood"
+    ],
+    "sharedEquipmentTopic": "C01-EQUIP-BATTLE-MAGE",
+    "equipmentBindingLine": 120,
+    "sharedEffectTopic": "C01-FX-06",
+    "effectBindingLine": 164
+  },
+  "actionContract": "Original attack is visually near-idle. Reconstruct clear forward staff casting plus supporting empty-hand gesture and opposite walking contacts. The existing single action slot also serves heal; retain four-frame contract, no fifth pose/rules change. Keep independent magic FX separate.",
+  "ruleIllustrationReview": "Ranged magic rule is compatible with staff-casting animation. Shared BATTLE-MAGE equipment/FX does not redefine the original druid appearance or staff as a sword; no silent remap.",
+  "scaleContract": "Approved44logical humanoid body after idle measurement; shared full-canvas scale and measured feet, no independent fitting.",
+  "exclusivityCheck": "Coordinator exclusive assignment; target directory absent before work."
+}

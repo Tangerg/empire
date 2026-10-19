@@ -1,0 +1,53 @@
+{
+  "topicId": "C01-EQUIP-SKELETON-GUARD",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6035067369743774,
+  "nearOpaqueFractionAlphaGE250": 0.379495661729356,
+  "nonzeroAlphaBBox": [
+    0,
+    2,
+    1211,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    83,
+    76,
+    1147,
+    1209
+  ],
+  "visibleAlphaBBoxGE128": [
+    86,
+    77,
+    1146,
+    1209
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    86,
+    77,
+    108,
+    45
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 14,
+  "sha256": "d8938d03208b32b5b44c6c27f3d2012633d1deabc77dbdee5460d6fa43ec7d4c",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete silhouettes and required equipment counts visually verified against original source.",
+    "Approved broad matte planes and bold contours; no scene, card or invented readable lettering.",
+    "True transparent exterior and interior gaps; no broad shadow or halo."
+  ],
+  "identityVerified": "Exactly three objects: empty domed steel helmet with short central nasal guard upper-left, blue-gray plank rectangular shield lower-left with silver rim and round center boss, one short steel-point spear at right. Original full atlas itself cuts the shield bottom; complete only the existing rectangle/planks/rim without invented heraldry.",
+  "remarks": [
+    "Native faint alpha-1 residue retained; alpha-128 subject bounds are comfortably inset, no edge-clipped subject."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false
+}

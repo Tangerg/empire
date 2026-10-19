@@ -1,0 +1,28 @@
+{
+  "topicId": "c02-battle-prop-cable-reels",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-02.png",
+  "originalMasterSha256": "5da84be37462ae7332ef56b28eeccef9a442513ac75f59fe12e758a8f8b0809b",
+  "sourceCellOneBased": {
+    "column": 2,
+    "row": 2
+  },
+  "sourceCropBox": [
+    319,
+    632,
+    622,
+    1249
+  ],
+  "sourceMappingEvidence": "Original visual source board inspection cross-checked against docs/story-candidates/candidate-02/art-assets/07-topic-catalog.md battle-prop order (lines 255-269), consistent with build_final_scifi_v1.py build_grid_category row-major 4x2 mapping. The old manifest-complete.json input is absent; no sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-cable-reels.png",
+  "runtimeReferenceSha256": "5b4fe7b1b57411328083b2ae0a384580cd0883493144fc76279b9820fb72cedf",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only"
+}

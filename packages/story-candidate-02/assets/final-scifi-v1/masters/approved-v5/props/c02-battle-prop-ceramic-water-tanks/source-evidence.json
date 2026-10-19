@@ -1,0 +1,41 @@
+{
+  "topicId": "c02-battle-prop-ceramic-water-tanks",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/props/props-board-01.png",
+  "originalMasterSha256": "e5d87b0562deafaff0f1403f1ed47f3e71235ea34236bee655a601b3f68d7bc4",
+  "sourceCellOneBased": {
+    "column": 1,
+    "row": 1
+  },
+  "sourceCropBox": [
+    5,
+    5,
+    309,
+    622
+  ],
+  "sourceMappingEvidence": "Original visual source board inspection cross-checked against docs/story-candidates/candidate-02/art-assets/07-topic-catalog.md battle-prop order (lines 255-269), consistent with build_final_scifi_v1.py build_grid_category row-major 4x2 mapping. The old manifest-complete.json input is absent; no sorted final manifest inference used.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/battle-prop/battle-prop-ceramic-water-tanks.png",
+  "runtimeReferenceSha256": "424a73c44ccc252279222838a17fabdb00b08779174c2322aa7d32f999249da8",
+  "runtimeContract": {
+    "width": 64,
+    "height": 64,
+    "anchor": [
+      32,
+      32
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "none for generated native assets; source reference board crop only",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-417131bd-8e30-4cbe-93c6-df3b330e0444.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "prompt": "prompt.txt",
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-ceramic-water-tanks/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-logistics-1/master.png"
+  ],
+  "semanticNotes": "Three stout cream ceramic water tanks in a compact cover cluster, retaining the original broad-neck water openings, teal zigzag seals, dark structural base collars and ivory vessel identity. Large industrial clasp and short valve keep sci-fi utility context; pattern simplified into broad shapes.",
+  "stylePilotApprovedByParent": "Cargo pilot visually approved by inventory parent at 2026-10-19 18:07 UTC; final runtime review remains pending."
+}

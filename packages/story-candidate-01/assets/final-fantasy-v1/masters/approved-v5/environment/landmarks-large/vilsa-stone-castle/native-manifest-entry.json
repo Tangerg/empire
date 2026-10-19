@@ -1,0 +1,55 @@
+{
+  "identity": "vilsa-stone-castle",
+  "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/vilsa-stone-castle/vilsa-stone-castle-master.png",
+  "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/vilsa-stone-castle/prompt.txt",
+  "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/vilsa-stone-castle/alpha-qa.json",
+  "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/vilsa-stone-castle/semantic-notes.md",
+  "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/vilsa-stone-castle/evidence.json",
+  "source_foot_estimate_px": [
+    627,
+    1195
+  ],
+  "strict_perimeter_all_alpha_zero": false,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "atlas": "landmarks-large",
+  "cell_index": 2,
+  "raw": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/vilsa-stone-castle/raw.png",
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-84488cc7-e392-48bf-ab58-6f07bd65d60e.png",
+  "sha256": "4d5a71ee674404e103f038d1115e916c20e3f66e1487cc32d878a2add766579b",
+  "runtime_contract": {
+    "logical_cell": [
+      160,
+      160
+    ],
+    "hd_cell": [
+      320,
+      320
+    ],
+    "logical_anchor": [
+      80,
+      155
+    ],
+    "hd_anchor": [
+      160,
+      310
+    ],
+    "category": "large-landmark",
+    "tileMode": "modules",
+    "ySort": "bottom-anchor"
+  },
+  "original_manifest_cell": {
+    "id": "vilsa-stone-castle",
+    "footprint": [
+      4,
+      4
+    ],
+    "anchor": [
+      80,
+      155
+    ],
+    "obstructionHeight": 3
+  },
+  "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/vilsa-stone-castle-source-evidence.json",
+  "consumer_contract": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/landmarks-first-four-consumer-contract.json"
+}

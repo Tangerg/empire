@@ -1,0 +1,39 @@
+{
+  "topicId": "c02-battle-prop-anchor-winches",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeAlpha2PlusCount": 0,
+  "canvasEdgeAlpha1Count": 9,
+  "transparentFraction": 0.5710937122420376,
+  "opaqueFractionAlphaGE240": 0.4132988154015603,
+  "visibleAlphaBBoxGE8": [
+    142,
+    57,
+    1194,
+    1206
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    142,
+    57,
+    60,
+    48
+  ],
+  "interiorCoreDefinition": "binary erosion of alpha>=8 silhouette by 8 native pixels (1254px source)",
+  "interiorCoreMinimumAlpha": 251,
+  "interiorCoreBelow240Count": 0,
+  "nearContourFourPixelInsetMinimumAlpha": 245,
+  "nearContourFourPixelInsetBelow240Count": 0,
+  "sha256": "d47f21be7a2443934fc85ce7c5369ebd0dfc4f642abb70402f2c036af1c2b5c4",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable science-fiction functional silhouette, exaggerated chunky volumes, bold near-black contours, broad matte cel planes; no visible halo, glow or cast shadow. Native perimeter alpha 1 residue retained unchanged.",
+  "postprocessing": "None; byte-exact native image copies only",
+  "runtimeReady": false
+}

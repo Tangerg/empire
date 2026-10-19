@@ -1,0 +1,300 @@
+{
+  "atlas": "landmarks-large",
+  "count": 4,
+  "status": "native review only",
+  "occupancy_warning": "footprint and obstruction are original metadata, not compound visual bounds; do not infer sourceFoot from alpha bounds",
+  "entries": [
+    {
+      "identity": "border-palisade-fort",
+      "cell_index": 0,
+      "semantic_counts": {
+        "central_raised_gray_pavilion_hall": 1,
+        "flanking_gray_awnings": 2,
+        "front_guard_booth": 1,
+        "front_stone_gateway": 1,
+        "swallowtail_flags": 2
+      },
+      "count_qualifiers": {},
+      "render_role": "catalog large-landmark module with upright compound geometry; no direct current consumer and c01-01 explicitly denies this atlas",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 2,
+      "source_foot_estimate_px": [
+        627,
+        1176
+      ],
+      "source_foot_semantics": "visually selected central foreground contact of the rocky compound footing, near the frontmost central rock cluster; distinct from the offset gate threshold",
+      "source_local_landmark_estimates_px": {
+        "front_gate_threshold_center": [
+          425,
+          1121
+        ],
+        "inner_stair_base": [
+          614,
+          831
+        ],
+        "central_compound_ground_projection": [
+          675,
+          870
+        ]
+      },
+      "foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        32,
+        26,
+        26,
+        61
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "provisional_export": {
+        "uniform_scale_native_to_logical": 0.12,
+        "uniform_scale_native_to_hd": 0.24,
+        "logical_canvas_translation": [
+          4.760000000000005,
+          13.879999999999995
+        ],
+        "expected_strong_bounds_logical": [
+          8.6,
+          17.0,
+          152.12,
+          157.04
+        ],
+        "method": "full native canvas registered via independent visual sourceFoot; not alpha bbox",
+        "scene_review_pending": true
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/border-palisade-fort-source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/border-palisade-fort/alpha-qa.json"
+    },
+    {
+      "identity": "lorne-stone-castle",
+      "cell_index": 1,
+      "semantic_counts": {
+        "major_round_towers": 4,
+        "round_conical_roofs": 3,
+        "open_round_battlement_top": 1,
+        "central_square_roofed_hall": 1,
+        "burgundy_front_banners": 2,
+        "muted_blue_vertical_banners": 2,
+        "small_roof_pennants": 3
+      },
+      "count_qualifiers": {},
+      "render_role": "catalog large-landmark module with upright compound geometry; no direct current consumer and c01-01 explicitly denies this atlas",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        672,
+        1204
+      ],
+      "source_foot_semantics": "visually selected foreground contact of the nearest round tower masonry base; intentional x672 offset follows the compound geometry, not full-canvas center or alpha bottom",
+      "source_local_landmark_estimates_px": {
+        "front_gate_stair_contact": [
+          431,
+          1178
+        ],
+        "foreground_round_tower_base": [
+          672,
+          1204
+        ],
+        "right_annex_door_threshold": [
+          971,
+          1116
+        ]
+      },
+      "foot_alpha_sample": 252,
+      "strong_alpha_margins_LTRB": [
+        44,
+        27,
+        41,
+        24
+      ],
+      "perimeter_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "provisional_export": {
+        "uniform_scale_native_to_logical": 0.12,
+        "uniform_scale_native_to_hd": 0.24,
+        "logical_canvas_translation": [
+          -0.6400000000000006,
+          10.52000000000001
+        ],
+        "expected_strong_bounds_logical": [
+          4.64,
+          13.76,
+          144.92,
+          158.12
+        ],
+        "method": "full native canvas registered via independent visual sourceFoot; not alpha bbox",
+        "scene_review_pending": true
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/lorne-stone-castle-source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/lorne-stone-castle/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/lorne-stone-castle/alpha-qa.json"
+    },
+    {
+      "identity": "vilsa-stone-castle",
+      "cell_index": 2,
+      "semantic_counts": {
+        "major_towers": 4,
+        "square_open_tower": 1,
+        "round_open_tower": 1,
+        "round_roofed_towers": 2,
+        "small_gray_pennants": 2,
+        "wooden_arch_entries": 2
+      },
+      "count_qualifiers": {
+        "wooden_arch_entries": "Exactly two OUTER entries. Visible subordinate inner-hall doors are excluded."
+      },
+      "render_role": "catalog large-landmark module with upright compound geometry; no direct current consumer and c01-01 explicitly denies this atlas",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        627,
+        1195
+      ],
+      "source_foot_semantics": "visually authored projected whole-compound registration baseline at x627,y1195, aligned near the foreground corner foundation contact; the chosen projection lies in transparent space and is intentionally not a physical center pixel or an alpha-bbox minimum",
+      "source_local_landmark_estimates_px": {
+        "main_gate_front_apron_contact": [
+          286,
+          1119
+        ],
+        "front_corner_masonry_contact": [
+          797,
+          1195
+        ],
+        "inner_courtyard_ground": [
+          640,
+          799
+        ],
+        "side_gate_threshold": [
+          1007,
+          1021
+        ]
+      },
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        40,
+        47,
+        28,
+        40
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "provisional_export": {
+        "uniform_scale_native_to_logical": 0.12,
+        "uniform_scale_native_to_hd": 0.24,
+        "logical_canvas_translation": [
+          4.760000000000005,
+          11.599999999999994
+        ],
+        "expected_strong_bounds_logical": [
+          9.56,
+          17.24,
+          151.88,
+          157.28
+        ],
+        "method": "full native canvas registered via independent visual sourceFoot; not alpha bbox",
+        "scene_review_pending": true
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/vilsa-stone-castle-source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/vilsa-stone-castle/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/vilsa-stone-castle/alpha-qa.json"
+    },
+    {
+      "identity": "mountain-gate-fort",
+      "cell_index": 3,
+      "semantic_counts": {
+        "tall_square_gate_towers": 2,
+        "small_front_sentry_booths": 2,
+        "reddish_brown_roofs": 4,
+        "side_cliff_groups": 2,
+        "central_closed_portcullis": 1,
+        "blue_tower_banners": 2,
+        "rear_gray_hanging_standard": 1,
+        "small_central_pennant": 1
+      },
+      "count_qualifiers": {},
+      "render_role": "catalog large-landmark module with upright compound geometry; no direct current consumer and c01-01 explicitly denies this atlas",
+      "footprint": [
+        4,
+        4
+      ],
+      "obstructionHeight": 3,
+      "source_foot_estimate_px": [
+        627,
+        1184
+      ],
+      "source_foot_semantics": "visually authored projected whole-compound registration baseline at x627,y1184, referenced to the nearest approach/parapet foundation contacts; this projection lies in transparent space rather than forcing the offset approach or a cliff tip to the canvas center",
+      "source_local_landmark_estimates_px": {
+        "front_approach_paving_contact": [
+          308,
+          1183
+        ],
+        "front_right_parapet_rock_contact": [
+          430,
+          1184
+        ],
+        "central_gate_threshold": [
+          584,
+          803
+        ],
+        "right_cliff_contact": [
+          1068,
+          1143
+        ]
+      },
+      "foot_alpha_sample": 0,
+      "strong_alpha_margins_LTRB": [
+        20,
+        57,
+        13,
+        51
+      ],
+      "perimeter_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "provisional_export": {
+        "uniform_scale_native_to_logical": 0.12,
+        "uniform_scale_native_to_hd": 0.24,
+        "logical_canvas_translation": [
+          4.760000000000005,
+          12.920000000000016
+        ],
+        "expected_strong_bounds_logical": [
+          7.16,
+          19.76,
+          153.68,
+          157.28
+        ],
+        "method": "full native canvas registered via independent visual sourceFoot; not alpha bbox",
+        "scene_review_pending": true
+      },
+      "source_evidence": "/workspace/shared/empire-art-rebuild/references/environment/landmarks-large/mountain-gate-fort-source-evidence.json",
+      "native_evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/mountain-gate-fort/evidence.json",
+      "native_qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/landmarks-large/mountain-gate-fort/alpha-qa.json"
+    }
+  ]
+}
