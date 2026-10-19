@@ -1,0 +1,61 @@
+{
+  "frames": {
+    "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/idle/master.png",
+    "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/walk-a/master.png",
+    "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/attack/master.png",
+    "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/walk-b/master.png"
+  },
+  "scale": 0.06382978723404255,
+  "origin": [
+    6,
+    5
+  ],
+  "frameSize": [
+    116,
+    76
+  ],
+  "sourceFoot": [
+    870,
+    958
+  ],
+  "sourceFeet": {
+    "idle": [
+      870,
+      958
+    ],
+    "walk-a": [
+      939,
+      944
+    ],
+    "attack": [
+      784,
+      969
+    ],
+    "walk-b": [
+      901,
+      954
+    ]
+  },
+  "registrationOffsets": {
+    "idle": [
+      0.0,
+      0.0
+    ],
+    "walk-a": [
+      -4.404255319148936,
+      0.8936170212765957
+    ],
+    "attack": [
+      5.489361702127659,
+      -0.702127659574468
+    ],
+    "walk-b": [
+      -1.978723404255319,
+      0.2553191489361702
+    ]
+  },
+  "registrationLimit": 6,
+  "canvasPaddingTolerance": 2,
+  "virtualAnchorNotPhysicalFootContact": true,
+  "meaning": "Original floating stone-mask spirit with bounded gold/blue wisps. Virtual hover anchors calibrated to rigid chin, not invented feet; common source scale, catalog-only consumer."
+}

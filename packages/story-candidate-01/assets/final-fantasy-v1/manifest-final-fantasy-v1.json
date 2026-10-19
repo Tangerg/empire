@@ -1893,13 +1893,13 @@
       "topicId": "C01-UNIT-SPIRIT-FIRE",
       "label": "灵火精怪",
       "category": "combat-unit",
-      "png": "runtime/combat-unit/unit-spirit-fire.png",
-      "width": 256,
-      "height": 64,
+      "png": "runtime-approved-v5/combat-unit/unit-spirit-fire.png",
+      "width": 464,
+      "height": 76,
       "runtimeReady": true,
-      "qualityTier": "final-cartoon-fantasy-v1",
-      "frameWidth": 64,
-      "frameHeight": 64,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 116,
+      "frameHeight": 76,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1908,13 +1908,14 @@
         "walk-b"
       ],
       "anchor": [
-        32,
-        63
+        61.531914893617014,
+        66.14893617021276
       ],
       "footprint": [
         2,
         2
-      ]
+      ],
+      "preserveAuthoredPalette": true
     },
     {
       "assetId": "C01-FFV1-UNIT-STONE-GOLEM",

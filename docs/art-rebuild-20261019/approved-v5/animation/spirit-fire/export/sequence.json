@@ -1,0 +1,341 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/walk-b/master.png"
+    },
+    "scale": 0.06382978723404255,
+    "origin": [
+      6,
+      5
+    ],
+    "frameSize": [
+      116,
+      76
+    ],
+    "sourceFoot": [
+      870,
+      958
+    ],
+    "sourceFeet": {
+      "idle": [
+        870,
+        958
+      ],
+      "walk-a": [
+        939,
+        944
+      ],
+      "attack": [
+        784,
+        969
+      ],
+      "walk-b": [
+        901,
+        954
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        -4.404255319148936,
+        0.8936170212765957
+      ],
+      "attack": [
+        5.489361702127659,
+        -0.702127659574468
+      ],
+      "walk-b": [
+        -1.978723404255319,
+        0.2553191489361702
+      ]
+    },
+    "registrationLimit": 6,
+    "canvasPaddingTolerance": 2,
+    "virtualAnchorNotPhysicalFootContact": true,
+    "meaning": "Original floating stone-mask spirit with bounded gold/blue wisps. Virtual hover anchors calibrated to rigid chin, not invented feet; common source scale, catalog-only consumer."
+  },
+  "authoredCanvas": [
+    1586,
+    993
+  ],
+  "logicalPivot": [
+    61.531914893617014,
+    66.14893617021276
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "79cf647e0103a34e447a00c56c24c472683e0a8aca8def08ca7fe70e6585ac55",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7194,
+        "nearOpaquePixels": 1249,
+        "edgeMax": 0,
+        "visibleBounds": [
+          36,
+          6,
+          78,
+          66
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "79cf647e0103a34e447a00c56c24c472683e0a8aca8def08ca7fe70e6585ac55",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 29079,
+        "nearOpaquePixels": 5304,
+        "edgeMax": 0,
+        "visibleBounds": [
+          72,
+          13,
+          156,
+          132
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/walk-a/master.png",
+      "registrationOffset": [
+        -4.404255319148936,
+        0.8936170212765957
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "4fded1153c3a49cadc662510e2fbfc84a13da05d8af0b813891340a90b489ccd",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7059,
+        "nearOpaquePixels": 1309,
+        "edgeMax": 0,
+        "visibleBounds": [
+          27,
+          8,
+          77,
+          65
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/walk-a/master.png",
+      "registrationOffset": [
+        -4.404255319148936,
+        0.8936170212765957
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        1
+      ],
+      "sourceSha256": "4fded1153c3a49cadc662510e2fbfc84a13da05d8af0b813891340a90b489ccd",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 28625,
+        "nearOpaquePixels": 5603,
+        "edgeMax": 0,
+        "visibleBounds": [
+          53,
+          16,
+          155,
+          130
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/attack/master.png",
+      "registrationOffset": [
+        5.489361702127659,
+        -0.702127659574468
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "b004b04c315ad413e11a038fa8ff1b47f9d381f37fa9bb9352ede49f67e62512",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 6910,
+        "nearOpaquePixels": 1382,
+        "edgeMax": 0,
+        "visibleBounds": [
+          35,
+          7,
+          100,
+          66
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/attack/master.png",
+      "registrationOffset": [
+        5.489361702127659,
+        -0.702127659574468
+      ],
+      "sourceCanvas": [
+        1584,
+        993
+      ],
+      "transparentPaddingToCommonCanvas": [
+        2,
+        0
+      ],
+      "sourceSha256": "b004b04c315ad413e11a038fa8ff1b47f9d381f37fa9bb9352ede49f67e62512",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 28141,
+        "nearOpaquePixels": 5937,
+        "edgeMax": 0,
+        "visibleBounds": [
+          71,
+          13,
+          199,
+          132
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/walk-b/master.png",
+      "registrationOffset": [
+        -1.978723404255319,
+        0.2553191489361702
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "5ffdb79b7c652eb3d7ea64866d53ef68515b052d2309f1b90d9fdcfb7cdfcc20",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 7215,
+        "nearOpaquePixels": 1229,
+        "edgeMax": 0,
+        "visibleBounds": [
+          36,
+          7,
+          81,
+          65
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/walk-b/master.png",
+      "registrationOffset": [
+        -1.978723404255319,
+        0.2553191489361702
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        1
+      ],
+      "sourceSha256": "5ffdb79b7c652eb3d7ea64866d53ef68515b052d2309f1b90d9fdcfb7cdfcc20",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 29185,
+        "nearOpaquePixels": 5204,
+        "edgeMax": 0,
+        "visibleBounds": [
+          72,
+          14,
+          161,
+          131
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

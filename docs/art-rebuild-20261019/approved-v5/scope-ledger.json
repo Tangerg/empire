@@ -4,10 +4,10 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 316,
+    "formalBound": 317,
     "boundByCategory": {
       "battle-prop": 64,
-      "combat-unit": 35,
+      "combat-unit": 36,
       "equipment": 95,
       "hud": 16,
       "interactive-structure": 24,
@@ -16,7 +16,7 @@
       "skill": 48,
       "status": 24
     },
-    "rawPreservedTopics": 316,
+    "rawPreservedTopics": 318,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -2101,13 +2101,23 @@
       "category": "combat-unit",
       "label": "灵火精怪",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/attack/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/spirit-fire/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-spirit-fire.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-spirit-fire.png",
+      "stageEvidence": {
+        "raw": "four native transparent floating stone-mask poses with original bounded gold and blue wisps; rejected rigid-mask scale drift preserved",
+        "export": "one shared60/940 scale, measured virtual chin-calibrated hover anchors, full-canvas1x/2x with explicit2px padding; actual native three-background review passed",
+        "runtimeBinding": "canonical and HD catalog resolver only; no current domain or map consumer; no invented ground-contact semantics",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-UNIT-STONE-GOLEM",
@@ -2311,8 +2321,10 @@
       "category": "mission-unit",
       "label": "边境农户",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/border-farmer/idle/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -2339,7 +2351,7 @@
       "stageEvidence": {
         "raw": "four native transparent poses, original timber/wood mallet/rope and person identity; byte-exact master pairs",
         "export": "shared44/956 scale,104x64 frame, measured soles, full-canvas1x/2x; genuine noncombat carry-or-work third frame",
-        "runtimeBinding": "canonical and HD c01.laborer resolver; complete c01-02/14 offline review; all16 state/standing contracts identical; existing surrounding occlusion remains",
+        "runtimeBinding": "canonical and HD c01.laborer resolver; all16-level audit finds2 actual actors in c01-06/14. Retained c01-02 capture is a negative control, not laborer deployment evidence. Complete c01-14 offline view retains existing surrounding occlusion; all16 state/standing contracts unchanged",
         "liveGame": "pending"
       }
     },
@@ -2545,7 +2557,7 @@
       "stageEvidence": {
         "raw": "4/4 preserved",
         "export": "shared44/935 scale, measured foot registration, exact carry-or-work third frame and native three-background review passed",
-        "runtimeBinding": "canonical and HD mission resolver bound with authored civilian palette; three c01.refugee actors",
+        "runtimeBinding": "canonical and HD mission resolver with authored civilian palette; all16-level audit finds9 c01.refugee actors acrossc01-02/05/06",
         "liveGame": "pending"
       }
     },
