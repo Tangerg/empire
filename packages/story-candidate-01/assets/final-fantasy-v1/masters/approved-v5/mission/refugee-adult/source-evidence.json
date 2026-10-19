@@ -1,0 +1,115 @@
+{
+  "topicId": "C01-MISSION-REFUGEE-ADULT",
+  "category": "mission-unit",
+  "actualConsumers": [
+    "c01.refugee"
+  ],
+  "bindingEvidence": {
+    "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "line": 33
+  },
+  "visibleLevelEvidence": {
+    "path": "packages/story-candidate-01/src/levels.ts",
+    "lines": [
+      440,
+      448
+    ],
+    "actors": [
+      "refugee-1",
+      "refugee-2",
+      "refugee-3"
+    ],
+    "objective": "Escort three civilians to east safety"
+  },
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-MISSION-REFUGEE-ADULT",
+    "topicId": "C01-MISSION-REFUGEE-ADULT",
+    "label": "难民成人",
+    "category": "mission-unit",
+    "png": "runtime/mission-unit/mission-refugee-adult.png",
+    "width": 128,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 32,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "carry-or-work",
+      "walk-b"
+    ],
+    "anchor": [
+      16,
+      47
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "campaign": "story-candidate-01",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-refugee-adult.png",
+    "status": "pending-redraw",
+    "source_mapping_status": "requires-explicit-reconstruction-original-topic-order-source-missing",
+    "alpha_requirement": "genuine-transparent-background",
+    "derived_outputs": [
+      "packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-refugee-adult.png"
+    ]
+  },
+  "references": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/mission-atlases/mission-atlas-farmer-refugees-driver.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "b650742d5e60bf2c9362a98a5f3db3c54db9fd2dc8266fea94d4c0b813a0083f"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/mission-unit/mission-refugee-adult.png",
+      "size": [
+        256,
+        96
+      ],
+      "sha256": "b9242c3a6c43e1baa058799a956db8b3fb1f9b85953ebcc9568a342cd0f98bd6"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-refugee-adult.png",
+      "size": [
+        128,
+        48
+      ],
+      "sha256": "98f88d6713967cd83b30c030e094c6ea3939267fd60b4d71b89013a74a80e23f"
+    }
+  },
+  "referenceExtraction": "Native non-resampled second atlas row[0,314,1254,627], first cell[0,314,314,627]. HD fourframes64x96. No color/alpha edits. Magenta background is reference only.",
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "identityObserved": [
+    "Worried tired adult man, tousled short dark brown hair, short dark beard and mustache; no headgear",
+    "Long worn brown hooded coat with hood down, blue-gray stitched patch on screen-left upper sleeve",
+    "Muted gray tunic with dark ties/buttons, thin belt, dark trousers and brown cuffed boots",
+    "Screen-left bare hand holds a dark metal cooking pot by its arched wire bail handle",
+    "Screen-right bare hand cradles a rolled olive/brown blanket against the shoulder/chest, with rolled spiral end and short hanging fringes",
+    "Civilian belongings only; no weapon or armor"
+  ],
+  "semanticEvidence": {
+    "unitDefinitions": "packages/story-candidate-01/src/units.ts:91",
+    "weaponDefinitions": "packages/story-candidate-01/src/weapons.ts:14",
+    "abilities": [
+      "wait"
+    ],
+    "tags": [
+      "civilian",
+      "escort"
+    ],
+    "actionSemantics": "Original mission animation third slot is carry-or-work, not attack. Preserve noncombat civilian: adjust/support blanket or carefully lift pot while retaining both belongings. c01.civilian-tool exists as a low-power improvised definition, but no invented visible weapon or combat pose."
+  },
+  "status": "Native quartet complete; originals and exact source crops preserved"
+}

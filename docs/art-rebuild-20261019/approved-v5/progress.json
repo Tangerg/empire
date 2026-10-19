@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "确认了，就按照这个方向做剩下的"
   },
-  "authoredFourPoseBundles": 11,
+  "authoredFourPoseBundles": 12,
   "authoredThreeStateBundles": 13,
-  "formalRuntimeBoundTopics": 59,
+  "formalRuntimeBoundTopics": 60,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -381,6 +381,12 @@
       "export": "shared112/1200 scale, stable foundation and native three-background state review passed",
       "runtimeBinding": "canonical and HD catalog bound; no direct shipped scene consumer found",
       "liveGame": "pending"
+    },
+    "C01-MISSION-REFUGEE-ADULT": {
+      "raw": "4/4 preserved",
+      "export": "shared44/935 scale, measured foot registration, exact carry-or-work third frame and native three-background review passed",
+      "runtimeBinding": "canonical and HD mission resolver bound with authored civilian palette; three c01.refugee actors",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -517,11 +523,14 @@
     "liveBrowser": "not validated",
     "standingDepthCheckpoint": "855 tests, typecheck, four app builds and60 byte-identical replay cases passed in isolated engineering checkpoint",
     "fullSuiteLatestAttempt": {
-      "passed": 859,
-      "failed": 1,
-      "failure": "architecture-boundaries dynamic import exceeded default5000ms; all104 architecture tests pass with explicit20000ms diagnostic retry",
-      "notClaimedFullDefaultPass": true
-    }
+      "passed": 863,
+      "failed": 0,
+      "files": 96,
+      "command": "npx vitest run --maxWorkers 2 --minWorkers 1",
+      "defaultTestTimeoutUnchanged": true,
+      "scope": "integrated selected-readability and legion/forge checkpoint before edge-decoration/refugee additions"
+    },
+    "latestBindingAndEdges": "68 passed after refugee and edge binding"
   },
   "liveGameVerifiedAnimationTopics": 0,
   "materialStages": {
@@ -548,6 +557,13 @@
       "raw": "approved transparent source unchanged",
       "export": "registered full-canvas1x/2x with original crossing midpoint",
       "runtimeBinding": "three actual horizontal c01-02 runs, topology unchanged; vertical crossings legacy",
+      "liveGame": "pending"
+    },
+    "edge-decoration": {
+      "raw": "two approved transparent sources retained unchanged",
+      "export": "full-canvas1x/2x and crop alpha/premultiplied tolerance2/255 validated",
+      "runtimeBinding": "six grass and eight bank decorations on actual c01-02; protected road/bridge/initial feet/deep water alpha zero; terrain preconditions fail closed",
+      "sceneReview": "broad edge direction accepted, repeated mirrored bank notches remain a visual limitation",
       "liveGame": "pending"
     }
   },

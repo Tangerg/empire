@@ -1,0 +1,72 @@
+{
+  "topicId": "C01-STRUCT-HOLY-MEDICINE-SHED",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/structures/structures-atlas-02.png",
+  "sourceSHA256": "9194804968ce3164104b78e0384bf35725a51bacd5d4cbe9a33993bc03569f5d",
+  "sourceSize": [
+    1086,
+    1448
+  ],
+  "cells": [
+    {
+      "state": "normal",
+      "box": [
+        0,
+        725,
+        362,
+        1086
+      ]
+    },
+    {
+      "state": "damaged",
+      "box": [
+        362,
+        725,
+        724,
+        1086
+      ]
+    },
+    {
+      "state": "captured",
+      "box": [
+        724,
+        725,
+        1086,
+        1086
+      ]
+    }
+  ],
+  "runtimeReference": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/interactive-structure/struct-holy-medicine-shed.png",
+  "consumerAudit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+  "originalFrameSize": [
+    64,
+    64
+  ],
+  "originalAnchor": [
+    32,
+    63
+  ],
+  "footprint": [
+    2,
+    2
+  ],
+  "suggestedLogicalVisibleWidth": 104,
+  "selectionReason": "Next original atlas02 functional workshop/shed row immediately below Forge Workshop; not in completed family directories.",
+  "consumerStatus": "Manifest/runtime-HD asset exists. Exact-topic audit finds no static consumer reference, source binding or authored scene placement; no live rendering claimed.",
+  "stateEvidence": "Normal compact timber/stone apothecary with blue-gray roof tiles, cream front awning marked with green medical plus, left hanging wooden sign with amber bottle icon, right open medicine cupboard with amber/gray jars, and stone steps/base. Damaged roof and awning holes, medical plus lost in hole, broken cupboard doors/shelves and scattered bottles/boards. Captured intact, awning plus changed to slate-gray, right amber lantern added and one gray forked rooftop pennant with pale radial star added; bottle sign and cupboard retained.",
+  "parentAcceptedLogicalVisibleWidth": 104,
+  "sourceFoot": [
+    627,
+    1148
+  ],
+  "stateOriginalCropSHA256": {
+    "normal": "3fbd6ff328a255ad44dbc0ed33bc1d094db11445fdf4126652b14a68610045b4",
+    "damaged": "886ae6510cbaa25a3d309d5b2c17b0865fc333692298962ce81e8b4d665a50a6",
+    "captured": "41739f9c987c26e981afef526676802d3f31aea8c790e1570445682b302827bb"
+  },
+  "consumerEvidence": {
+    "auditEvidence": "no-static-consumer-reference-found",
+    "references": [],
+    "observedInBrowser": false,
+    "qualification": "Manifest/runtime-HD exists, no static source binding or authored scene placement found. Catalog-only status preserved."
+  }
+}

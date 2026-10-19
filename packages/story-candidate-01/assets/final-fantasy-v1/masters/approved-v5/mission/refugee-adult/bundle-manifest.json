@@ -1,0 +1,141 @@
+{
+  "asset": "C01-MISSION-REFUGEE-ADULT",
+  "category": "mission-unit",
+  "actualConsumers": [
+    "c01.refugee"
+  ],
+  "status": "Native quartet complete; coordinator export/binding pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Selected master/raw PNGs are byte-identical to native tool outputs. No painting/recolor/resize/crop/alpha cleanup. Black/white composites are QA only.",
+  "sharedScale": 0.047058823529411764,
+  "bodyReferenceSourcePixels": 935,
+  "bodyTargetHeightLogicalPixels": 44,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "palettePolicy": "Preserve authored brown/olive/gray civilian palette",
+  "commonSourceCanvas": [
+    1585,
+    993
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/registration-evidence.json",
+  "semanticContract": "Exact mission order idle/walk-a/carry-or-work/walk-b. c01.refugee is a civilian escort with wait ability; the third slot carefully lifts/checks the existing pot while retaining the blanket. No visible weapon or attack is invented. Preserve authored civilian palette.",
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "0713f1eb466724adffc73403cb5e8157fc279befc55b3cb4d2ca09cebe13d1ab",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/idle/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        836,
+        974
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        394,
+        36,
+        1175,
+        975
+      ],
+      "sha256": "eff49f455c9ace742337adffbed62be8f0e24bb879cb7ceb4238711956f49ff6",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-77c91eb8-b1c8-456e-a8b3-f6f9fb4b25aa.png",
+      "review": "Accepted worried bearded adult with tousled dark hair, large bare hands and brown boots, patched brown hood-down coat, gray tunic and dark trousers. Screen-left hand carries open iron cooking pot by bail, screen-right hand hugs rolled olive blanket."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "60df340c1f21a1542be0c3c4b2b591a1f8dc7e97790ae72c26eedee55e38d28f",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        828,
+        966
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        360,
+        37,
+        1163,
+        967
+      ],
+      "sha256": "4056476d4c02bfaa832cc4c54cf4a5185cee9af7c878fd0c9e9c6c0d94898124",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-3b42a781-4e5e-4b58-8b8d-8710ec3050f1.png",
+      "review": "Front screen-right boot toe-up with heel contact and dark sole visible; rear screen-left boot flat. Pot swings gently and stays intact; blanket and original physical hand assignments retained."
+    },
+    "carry-or-work": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/carry-or-work/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/carry-or-work/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/carry-or-work/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/carry-or-work/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "b542c110efe2616d2c9654df6b5920d78e0283bb5f0cde787fc9a63d06b4e9f8",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/carry-or-work/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/carry-or-work/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/carry-or-work/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        828,
+        970
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        388,
+        35,
+        1168,
+        971
+      ],
+      "sha256": "9b45d942261b11821ecc2dd45553446bf17e1892e6080afbe464a80eab361d14",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4dfee370-a052-42d4-a387-231b2b9fe98c.png",
+      "review": "Clear noncombat belongings-handling action: screen-left elbow bends to lift upright pot toward waist, worried face glances down to check it; screen-right hand continues hugging rolled blanket. Both feet stable. No weapon, swing, throw, impact or attack gesture."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "8ed89a9b87f41103ca36aa9e70f874d2e46cd3cc9e9e900819059abc77243147",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/walk-b/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        858,
+        959
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        367,
+        37,
+        1169,
+        960
+      ],
+      "sha256": "2dae2ca23b0ec7df2f025425e75fa9e5c29b7ac1709009f44afe6d4db30e30bb",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-443b5eec-7047-485f-b7a1-030148dc34fc.png",
+      "review": "Opposite contacts: front screen-right boot flat and weight-bearing, rear screen-left heel raised with toe down. Same clothing, pot, blanket, camera and body proportions."
+    }
+  }
+}

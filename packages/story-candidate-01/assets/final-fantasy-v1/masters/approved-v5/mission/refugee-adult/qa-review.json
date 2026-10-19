@@ -1,0 +1,47 @@
+{
+  "status": "Native quartet visual/geometry QA passes; coordinator export/binding pending",
+  "topic": "C01-MISSION-REFUGEE-ADULT",
+  "category": "mission-unit",
+  "actualConsumers": [
+    "c01.refugee"
+  ],
+  "bodyScale": "44/935",
+  "selectedNativeCanvasSizes": {
+    "idle": [
+      1585,
+      992
+    ],
+    "walk-a": [
+      1585,
+      992
+    ],
+    "carry-or-work": [
+      1584,
+      993
+    ],
+    "walk-b": [
+      1585,
+      992
+    ]
+  },
+  "sourcePaddingRequired": "Common1585x993: idle/walk-a/walk-b one bottom row; carry-or-work one right column. None applied to native masters.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "alphaPerimeterGate": "All perimeter alpha<=1; zero silhouette alpha>1 on edges; no alpha cleanup. Idle/carry perimeter alpha exactly0.",
+  "blackAndWhiteCompositesVisuallyInspected": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "identityPass": true,
+  "belongingsHandsPreserved": true,
+  "walkContactsOppose": true,
+  "carryWorkSemanticsPass": "Clear noncombat belongings-handling action: screen-left elbow bends to lift upright pot toward waist, worried face glances down to check it; screen-right hand continues hugging rolled blanket. Both feet stable. No weapon, swing, throw, impact or attack gesture.",
+  "semanticContract": "Exact mission order idle/walk-a/carry-or-work/walk-b. c01.refugee is a civilian escort with wait ability; the third slot carefully lifts/checks the existing pot while retaining the blanket. No visible weapon or attack is invented. Preserve authored civilian palette.",
+  "palettePolicy": "Preserve authored brown/olive/gray civilian palette",
+  "registrationEvidence": "registration-evidence.json",
+  "proposedFullCanvasFit": true,
+  "runtimeOrRepositoryWrites": false
+}

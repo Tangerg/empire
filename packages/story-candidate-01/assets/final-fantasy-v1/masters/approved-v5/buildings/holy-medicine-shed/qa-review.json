@@ -1,0 +1,133 @@
+{
+  "topicId": "C01-STRUCT-HOLY-MEDICINE-SHED",
+  "status": "complete native trio; common-scale visual QA reviewed",
+  "masterIntegrity": "Every raw/master pair is byte-identical native built-in imagegen. No alpha cleanup, crop, resize, painting or registration transform performed on masters.",
+  "perimeterGate": "All three actual perimeter maxima1; zero pixels>1. Threshold unchanged.",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sharedFoundationSourceFoot": [
+    627,
+    1148
+  ],
+  "acceptedLogicalWidth": 104,
+  "scaleApplication": "One104/1152 factor applied to complete1254 canvases, no per-state fit",
+  "visualChecks": {
+    "normal": "Intact blue-gray tiled wooden/stone apothecary, cream awning with green medical plus, left amber bottle sign, right open medicine cupboard and stone steps",
+    "damaged": "Central roof and awning holes, green plus removed, fractured right gable and cupboard, detached leaning door and grounded tray/jars; bottle sign remains",
+    "captured": "Intact structure, awning plus becomes slate-gray, one original pale-radial-star gray forked roof pennant, one right amber lantern, source bottle sign/cupboard retained",
+    "style": "Chunky broad matte planes, bold outlines, simplified grouped jars; no fine-grain clutter",
+    "registration": "Same foundation and stone steps. SourceFoot is structural baseline1148 even though detached damaged panel reaches1176. No baseline derived from rubble.",
+    "alpha": "True RGBA exterior and appropriate gaps, complete silhouettes and clear edges; no terrain/backdrop",
+    "scale": "Shared104px preview reviewed; capture symbol and lantern distinct, damaged loss of cross/roof integrity readable. Live-map scale gate remains separate."
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "sharedLogical104": "qa-logical-104.png"
+  },
+  "consumerQualification": "Manifest/runtime-HD asset exists. Exact-topic audit finds no static consumer reference, source binding or authored scene placement; no live rendering claimed.",
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        40,
+        150,
+        1192,
+        1148
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4218a630-3c46-4ebb-bda0-864d41337c85.png",
+      "sha256": "b25e9527a60876f5a76c0f1ebd504e365d7d4d4d5ad6bad7aca1b78f45cfd678",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "alphaAbove1Bounds": [
+        37,
+        147,
+        1194,
+        1150
+      ],
+      "fullyTransparentPixelCount": 722459,
+      "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+      "visibleSilhouetteReview": "complete contained roof/sign/cabinet/debris/flag/lantern as applicable",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1148
+      ]
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        40,
+        150,
+        1189,
+        1176
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2b7f43c4-3f03-4d72-82b9-e46ece4945da.png",
+      "sha256": "5503442f2164f344ed68de4863b2fb9b3c322f4979be28136bf67e0f29cbae21",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "alphaAbove1Bounds": [
+        38,
+        148,
+        1192,
+        1179
+      ],
+      "fullyTransparentPixelCount": 701634,
+      "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+      "visibleSilhouetteReview": "complete contained roof/sign/cabinet/debris/flag/lantern as applicable",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1148
+      ]
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        40,
+        105,
+        1218,
+        1148
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-397c8c62-b7e2-4fe0-99eb-3a42c6e891c3.png",
+      "sha256": "7ce6a47c78a8befbfcb50f9b8dc75b000d8bd5fcecb281b74620a759f9a522be",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "alphaAbove1Bounds": [
+        36,
+        102,
+        1221,
+        1151
+      ],
+      "fullyTransparentPixelCount": 678761,
+      "perimeterGate": "actual outermost maximum alpha<=1 and zero perimeter pixels>1",
+      "visibleSilhouetteReview": "complete contained roof/sign/cabinet/debris/flag/lantern as applicable",
+      "activePrompt": "prompt.txt",
+      "foundationSourceFoot": [
+        627,
+        1148
+      ]
+    }
+  },
+  "noRepositoryWrites": true,
+  "noLiveGameClaim": true
+}

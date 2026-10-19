@@ -1,0 +1,48 @@
+{
+  "status": "Idle accepted; native quartet complete",
+  "topic": "C01-MISSION-REFUGEE-ADULT",
+  "category": "mission-unit",
+  "actualConsumers": [
+    "c01.refugee"
+  ],
+  "nativeMaster": "/workspace/shared/empire-art-rebuild/approved-v5/mission/refugee-adult/idle/master.png",
+  "nativeSize": [
+    1585,
+    992
+  ],
+  "identityPass": true,
+  "bodyStyleReview": "Large worried bearded adult head, huge bare hands and boots, broad patched brown coat and very short legs; muted original civilian palette",
+  "equipmentHandAssignment": "Screen-left bare hand carries open iron cooking pot by bail; screen-right bare hand cradles olive rolled blanket",
+  "visibleBoundsAlphaGreaterThan127": [
+    394,
+    36,
+    1175,
+    975
+  ],
+  "bodyTop": 36,
+  "sourceFootMidpoint": [
+    836.218,
+    971.0
+  ],
+  "suggestedSourceFoot": [
+    836,
+    974
+  ],
+  "proposedBodyReferenceSourcePixels": 935.0,
+  "proposedBodyScale": 0.047058823529411764,
+  "bodyTargetHeightLogicalPixels": 44,
+  "perimeterAlphaMax": 0,
+  "perimeterAlphaGreaterThan1": 0,
+  "rawPreserved": true,
+  "exactPromptVerified": true,
+  "actionOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "semanticNextPose": "Opposing walking contacts; third slot gentle carry/work gesture lifting pot or adjusting blanket, preserving belongings and original hand assignment.",
+  "acceptedScale": "44/935",
+  "acceptanceEvidence": "Parent2026-10-19 15:25:48UTC approved bold outline, head/hand proportions and pot/blanket identity. Continue same scale; carry-or-work must visibly carry/organize items, never attack, preserving current clothing and belongings.",
+  "quartetManifest": "bundle-manifest.json"
+}

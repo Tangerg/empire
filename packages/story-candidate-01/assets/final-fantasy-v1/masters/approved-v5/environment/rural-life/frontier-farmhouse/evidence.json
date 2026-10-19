@@ -1,0 +1,87 @@
+{
+  "asset": "frontier-farmhouse",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved chunky matte timber, masonry and broad grouped roof planes with bold dark contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    634,
+    1018
+  ],
+  "source_foot_estimate_normalized": [
+    0.505582,
+    0.811802
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    47,
+    160,
+    33,
+    101
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/rural-life/frontier-farmhouse.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/roadside-waystation/roadside-waystation-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/buildings/joint-granary/normal/master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/frontier-farmhouse/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-houses-fences-original-reference-evidence.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-houses-fences-consumer-evidence.json",
+  "original_gameplay_obstruction_height": 2,
+  "original_render_layer": "under-units",
+  "original_runtime_cell_size": [
+    112,
+    112
+  ],
+  "original_runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "original_runtime_anchor": [
+    56,
+    108
+  ],
+  "raw_master_only": true,
+  "no_added_ground_platform": true,
+  "no_exterior_glow": true,
+  "original_slot_zero_based": 9,
+  "original_gameplay_footprint": [
+    3,
+    2
+  ],
+  "visually_verified_subject_counts": {
+    "farmhouse_building": 1,
+    "thatch_roof": 1,
+    "chimney": 1,
+    "windows": 2,
+    "entrance": 1,
+    "barrels": 2
+  },
+  "foot_estimate_basis": "front house foundation/entrance-step contact line, not lower surrounding fence/soil silhouette",
+  "legacy_reference_foot_estimate_px": [
+    157,
+    249
+  ],
+  "legacy_reference_dimensions": [
+    313,
+    313
+  ],
+  "scale_recommendation": {
+    "authored_placement_scale": 0.7,
+    "initial_presentation_scale": 1.0,
+    "native_mapping": "same full1254 canvas mapping as other rural112 sources; preserve intrinsic aspect ratio",
+    "relative_size": "modestly wider3x2 house than2x2 granary; not strategic keep scale",
+    "validation_status": "recommendation only; parent in-scene unit comparison required"
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

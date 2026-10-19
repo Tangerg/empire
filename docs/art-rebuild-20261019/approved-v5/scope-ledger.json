@@ -4,14 +4,15 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 59,
+    "formalBound": 60,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 10,
       "equipment": 4,
-      "interactive-structure": 13
+      "interactive-structure": 13,
+      "mission-unit": 1
     },
-    "rawPreservedTopics": 59,
+    "rawPreservedTopics": 61,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -49,6 +50,13 @@
       "raw": "approved transparent source unchanged",
       "export": "registered full-canvas1x/2x with original crossing midpoint",
       "runtimeBinding": "three actual horizontal c01-02 runs, topology unchanged; vertical crossings legacy",
+      "liveGame": "pending"
+    },
+    "edge-decoration": {
+      "raw": "two approved transparent sources retained unchanged",
+      "export": "full-canvas1x/2x and crop alpha/premultiplied tolerance2/255 validated",
+      "runtimeBinding": "six grass and eight bank decorations on actual c01-02; protected road/bridge/initial feet/deep water alpha zero; terrain preconditions fail closed",
+      "sceneReview": "broad edge direction accepted, repeated mirrored bank notches remain a visual limitation",
       "liveGame": "pending"
     }
   },
@@ -2062,13 +2070,23 @@
       "category": "mission-unit",
       "label": "难民成人",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-adult/carry-or-work/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-adult/idle/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-adult/walk-a/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/mission/refugee-adult/walk-b/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
-      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/mission-unit/mission-refugee-adult.png",
-      "stageEvidence": null
+      "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/mission-unit/mission-refugee-adult.png",
+      "stageEvidence": {
+        "raw": "4/4 preserved",
+        "export": "shared44/935 scale, measured foot registration, exact carry-or-work third frame and native three-background review passed",
+        "runtimeBinding": "canonical and HD mission resolver bound with authored civilian palette; three c01.refugee actors",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-MISSION-REFUGEE-CHILD",
@@ -2920,8 +2938,12 @@
       "category": "interactive-structure",
       "label": "圣辉药棚",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/holy-medicine-shed/captured/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/holy-medicine-shed/damaged/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/buildings/holy-medicine-shed/normal/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
