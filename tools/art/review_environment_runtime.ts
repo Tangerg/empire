@@ -17,10 +17,11 @@ const secondSet = process.argv.includes('--second');
 const thirdSet = process.argv.includes('--third');
 const fourthSet = process.argv.includes('--fourth');
 const pineSet = process.argv.includes('--pine-first');
-const extended = thirdSet || fourthSet || pineSet;
-if ([secondSet, thirdSet, fourthSet, pineSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
+const brushSet = process.argv.includes('--pine-underbrush');
+const extended = thirdSet || fourthSet || pineSet || brushSet;
+if ([secondSet, thirdSet, fourthSet, pineSet, brushSet].filter(Boolean).length > 1) throw new Error('choose only one forest review set');
 const output = resolve(process.env.FOREST_REVIEW_OUTPUT
-  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
+  ?? `docs/art-rebuild-20261019/approved-v5/environment-runtime${brushSet ? '-pine-underbrush' : pineSet ? '-pine-first' : fourthSet ? '-fourth' : thirdSet ? '-third' : secondSet ? '-second' : ''}`);
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const map = mapFromLevel(content, candidate01Level('c01-02'));
 map.tiles.fill('forest');
@@ -40,7 +41,13 @@ interface ReviewColumn {
   readonly reference?: boolean;
   readonly reconstruction?: boolean;
 }
-const columns: readonly ReviewColumn[] = pineSet ? [
+const columns: readonly ReviewColumn[] = brushSet ? [
+  { id: 'pine-underbrush-a', x: 85, placement: [0.58, 0.7] },
+  { id: 'pine-underbrush-b', x: 235, placement: [1, 1], catalogOnly: true },
+  { id: 'pine-underbrush-c', x: 385, placement: [0.58, 0.7] },
+  { id: 'pine-underbrush-d', x: 515, placement: [1, 1], catalogOnly: true },
+  { id: 'oak-ancient', x: 675, placement: [0.74, 0.86], reference: true },
+] : pineSet ? [
   { id: 'pine-tall', x: 85, placement: [0.86, 1.06] },
   { id: 'pine-pair', x: 235, placement: [0.86, 1.06] },
   { id: 'pine-cluster', x: 385, placement: [0.74, 0.86] },

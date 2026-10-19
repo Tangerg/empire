@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-BPROP-EVIDENCE-3",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6168693991030934,
+  "nearOpaqueFractionAlphaGE250": 0.3554564786622203,
+  "nonzeroAlphaBBox": [
+    0,
+    32,
+    1244,
+    1232
+  ],
+  "visibleAlphaBBoxGE8": [
+    86,
+    147,
+    1189,
+    1131
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    86,
+    147,
+    65,
+    123
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 1,
+  "sha256": "bec5f8a9da06dd71b53f15c6a9d04830312d8a2fc803ed1e91c781d63a143576",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

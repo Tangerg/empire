@@ -1,0 +1,40 @@
+{
+  "size": [
+    1584,
+    993
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "visibleBounds": [
+    128,
+    42,
+    1522,
+    959
+  ],
+  "visibleBoundsAlphaGreaterThan127": [
+    131,
+    45,
+    1443,
+    954
+  ],
+  "fullyTransparentPixels": 851751,
+  "nearOpaquePixels": 702428,
+  "fullyOpaquePixels": 915,
+  "partialAlphaPixels": 720246,
+  "edgeMax": 0,
+  "source": "/workspace/scratch/84c9fe948755/generated_images/exec-33f65e8b-2b2b-4a97-aae4-885735848550.png",
+  "sha256": "9cb73832adda509f1f186f302b1b4092ebcee836aced380fc6d1f53505785029",
+  "generationTool": "built-in image_gen",
+  "transparent_background": true,
+  "exactPromptFile": "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/walk-a/prompt.txt",
+  "exactToolCallPromptVerified": true,
+  "masterTransform": "None; raw and master are byte-for-byte native copies.",
+  "referenceInputs": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/heavy-knight/idle/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/animation/spearman/walk-a/master.png"
+  ],
+  "generationNote": "Initial tool call returned empty_string prompt error and no image; saved prompt content verified nonempty and retried successfully."
+}

@@ -1,0 +1,5 @@
+One shorter narrower dense mature pine, compact closed conical crown with a small asymmetric left-leaning top tuft. Tightly overlapping broad canopy tiers cover most of the lower trunk, leaving a short rooted brown base. Distinctly denser and less open than mature A. Strong dark outlines, broad dark green/teal planes and subdued olive highlights match the approved pine. No fine needles or brushy texture. All tips visible. Source foot (638,1078) is the small lower trunk/root contact above the front root tip.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [327, 187, 315, 138]. Strict perimeter alpha-zero check: FAIL, faint native edge alpha retained and explicitly recorded. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

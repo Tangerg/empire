@@ -1,0 +1,212 @@
+{
+  "evidence": "actual scene renderer markup rearranged onto a native-size diagnostic contact board",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "assets": [
+    {
+      "id": "pine-underbrush-a",
+      "anchor": [
+        48.75438596491228,
+        74.26634768740031
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 0.8,
+      "evidence": "sampled scene renderer markup",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.58,
+        0.7
+      ],
+      "rendererScaleRange": [
+        0.46399999999999997,
+        0.5599999999999999
+      ],
+      "sampledRendererScaleRange": [
+        0.468,
+        0.558
+      ],
+      "sampleScale": 0.5,
+      "sampleCount": 13,
+      "reviewMarkup": "<g class=\"candidate-environment-prop \" transform=\"translate(23.640 -37.160) scale(-0.500 0.500)\" opacity=\"0.9\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png\" x=\"0\" y=\"-96\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        25.0,
+        24.5,
+        74.5,
+        75.0
+      ],
+      "nativeSampleVisibleHeight": 25.25,
+      "nativeVisibleHeightRange": [
+        23.432,
+        28.279999999999998
+      ],
+      "nativeSampleOverhangBelowContact": 0.36682615629984383
+    },
+    {
+      "id": "pine-underbrush-b",
+      "anchor": [
+        47.65709728867623,
+        67.68261562998404
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 0.65,
+      "evidence": "catalog-only diagnostic; no shipped scene placement",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        1,
+        1
+      ],
+      "rendererScaleRange": [
+        0.65,
+        0.65
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.65,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-30.977113237639553 -43.99370015948963) scale(0.65)\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png\" x=\"-96\" y=\"-96\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        20.0,
+        28.5,
+        77.0,
+        69.5
+      ],
+      "nativeSampleVisibleHeight": 26.650000000000002,
+      "nativeVisibleHeightRange": [
+        26.650000000000002,
+        26.650000000000002
+      ],
+      "nativeSampleOverhangBelowContact": 1.1812998405103727
+    },
+    {
+      "id": "pine-underbrush-c",
+      "anchor": [
+        46.834130781499205,
+        68.57416267942584
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 1,
+      "evidence": "sampled scene renderer markup",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.58,
+        0.7
+      ],
+      "rendererScaleRange": [
+        0.58,
+        0.7
+      ],
+      "sampledRendererScaleRange": [
+        0.582,
+        0.69
+      ],
+      "sampleScale": 0.637,
+      "sampleCount": 18,
+      "reviewMarkup": "<g class=\"candidate-environment-prop \" transform=\"translate(31.322 -43.686) scale(-0.637 0.637)\" opacity=\"0.9\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png\" x=\"-192\" y=\"-96\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        14.5,
+        30.5,
+        84.0,
+        70.0
+      ],
+      "nativeSampleVisibleHeight": 25.1615,
+      "nativeVisibleHeightRange": [
+        22.91,
+        27.65
+      ],
+      "nativeSampleOverhangBelowContact": 0.9082583732057403
+    },
+    {
+      "id": "pine-underbrush-d",
+      "anchor": [
+        46.696969696969695,
+        65.62519936204146
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 0.75,
+      "evidence": "catalog-only diagnostic; no shipped scene placement",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        1,
+        1
+      ],
+      "rendererScaleRange": [
+        0.75,
+        0.75
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.75,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-35.02272727272727 -49.21889952153109) scale(0.75)\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-existing@2x.png\" x=\"-288\" y=\"-96\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        10.0,
+        34.5,
+        87.5,
+        69.0
+      ],
+      "nativeSampleVisibleHeight": 25.875,
+      "nativeVisibleHeightRange": [
+        25.875,
+        25.875
+      ],
+      "nativeSampleOverhangBelowContact": 2.5311004784689075
+    },
+    {
+      "id": "oak-ancient",
+      "anchor": [
+        48.89154704944178,
+        83.8676236044657
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.375,
+      "evidence": "sampled scene renderer markup",
+      "reference": true,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.0175,
+        1.1824999999999999
+      ],
+      "sampledRendererScaleRange": [
+        1.028,
+        1.172
+      ],
+      "sampleScale": 1.102,
+      "sampleCount": 11,
+      "reviewMarkup": "<g class=\"candidate-environment-prop is-standing\" transform=\"translate(-53.855 -92.382) scale(1.102)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        7.0,
+        87.5,
+        89.0
+      ],
+      "nativeSampleVisibleHeight": 90.364,
+      "nativeVisibleHeightRange": [
+        83.435,
+        96.96499999999999
+      ],
+      "nativeSampleOverhangBelowContact": 5.655878787878793
+    }
+  ],
+  "offlineViewportNormalization": "nested SVG viewports expressed as equivalent clip paths for Inkscape"
+}

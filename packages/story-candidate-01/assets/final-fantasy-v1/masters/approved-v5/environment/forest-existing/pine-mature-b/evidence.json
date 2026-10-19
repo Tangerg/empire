@@ -1,0 +1,40 @@
+{
+  "asset": "pine-mature-b",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; approved pine broad angular matte planes and bold dark contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    638,
+    1078
+  ],
+  "source_foot_estimate_normalized": [
+    0.508772,
+    0.859649
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": false,
+  "edge_alpha_max": {
+    "left": 1,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    327,
+    187,
+    315,
+    138
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/pine-mature-b.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/pine/pine-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-mature-b/prompt.txt",
+  "production_status": "not integrated",
+  "visually_verified_tree_count": 1,
+  "silhouette_identity": "shorter narrower dense conical mature pine with short exposed lower trunk and left-leaning summit",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

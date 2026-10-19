@@ -8,6 +8,10 @@ import {
 describe('candidate-01 environment builder v1.1', () => {
   it('retains registered pivots and semantic footprints for approved forest cells', () => {
     const contracts = [
+      { id: 'pine-underbrush-a', foot: [638, 1010], scale: 0.8, footprint: [1, 1], obstruction: 0 },
+      { id: 'pine-underbrush-b', foot: [622, 914], scale: 0.65, footprint: [1, 1], obstruction: 0 },
+      { id: 'pine-underbrush-c', foot: [610, 927], scale: 1, footprint: [1, 1], obstruction: 0 },
+      { id: 'pine-underbrush-d', foot: [608, 884], scale: 0.75, footprint: [1, 1], obstruction: 0 },
       { id: 'pine-tall', foot: [640, 1165], scale: 1.2, footprint: [1, 1], obstruction: 2 },
       { id: 'pine-pair', foot: [650, 1050], scale: 1.4, footprint: [2, 1], obstruction: 2 },
       { id: 'pine-cluster', foot: [635, 1065], scale: 1.5, footprint: [2, 2], obstruction: 2 },
