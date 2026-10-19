@@ -1,0 +1,30 @@
+{
+  "topicId": "c02-equipment-tide-priest",
+  "assetId": "C02-SFV1-equipment-tide-priest",
+  "label": "潮汐祭司主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 3
+  },
+  "sourceCropBox": [
+    632,
+    632,
+    935,
+    935
+  ],
+  "sourceMappingEvidence": "Verified visually against original full equipment board and topic-catalog order (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-tide-priest.png",
+  "runtimeReferenceSha256": "627336281aa5386c5252a66c24e7d6106376deef6d09b1ce62236fa8d73f71ed",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics."
+}

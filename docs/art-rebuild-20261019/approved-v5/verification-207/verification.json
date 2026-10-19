@@ -1,0 +1,13 @@
+{
+  "runtimeSnapshotCommit": "c5b52645a50c678a28135adf4292a442034cd41c",
+  "canonicalTopics": 207,
+  "environmentCells": 155,
+  "testFiles": 103,
+  "testsPassed": 1138,
+  "durationSeconds": 152.56,
+  "command": "npx vitest run --maxWorkers=2 --minWorkers=1",
+  "typecheck": "passed",
+  "allFourAppBuilds": "passed",
+  "liveBrowserVerification": false,
+  "note": "Only new raw masters/evidence were backed up while these fixed runtime/source-code tests ran; no runtime bindings changed."
+}
