@@ -7810,11 +7810,17 @@
     },
     {
       "topicId": "c03-equip-2be16bd2",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-2be16bd2/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "staticVisualReview": "passed-role-based-native48",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-053-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "source-inspection-before-generation",
@@ -8016,11 +8022,18 @@
     },
     {
       "topicId": "c03-equip-b59c3f96",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-b59c3f96/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "staticVisualReview": "passed-role-based-native48",
+        "paletteNote": "Brighter red signal flag is accepted as functional accent; revisit in campaign-wide UI cohesion",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-053-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_support_props",
       "assignmentPhase": "source-inspection-before-generation",
@@ -8789,7 +8802,7 @@
       "status": "exported",
       "componentCount": 4,
       "exportedComponents": 4,
-      "staticVisualReview": "pending-seam-and-cohesion-review",
+      "staticVisualReview": "export-checked-cohesion-revision-required",
       "runtimeVisual": "pending-browser-socket-blocked"
     },
     {
@@ -9739,7 +9752,7 @@
         "evidence": "docs/art-rebuild-20261019/surface-001-export-evidence.json",
         "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
         "visualSeams": "pending-review",
-        "crossAssetCoherence": "pending-review",
+        "crossAssetCoherence": "pending-imagegen-quieter-ground-revision",
         "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
@@ -9757,7 +9770,7 @@
         "evidence": "docs/art-rebuild-20261019/surface-001-export-evidence.json",
         "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
         "visualSeams": "pending-review",
-        "crossAssetCoherence": "pending-review",
+        "crossAssetCoherence": "pending-imagegen-quieter-ground-revision",
         "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
@@ -9775,7 +9788,7 @@
         "evidence": "docs/art-rebuild-20261019/surface-001-export-evidence.json",
         "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
         "visualSeams": "pending-review",
-        "crossAssetCoherence": "pending-review",
+        "crossAssetCoherence": "pending-imagegen-quieter-ground-revision",
         "runtimeVisual": "pending-browser-socket-blocked"
       }
     },
@@ -9793,7 +9806,7 @@
         "evidence": "docs/art-rebuild-20261019/surface-001-export-evidence.json",
         "edgeOperation": "approved-outermost-one-pixel-family-matching-only",
         "visualSeams": "pending-review",
-        "crossAssetCoherence": "pending-review",
+        "crossAssetCoherence": "pending-imagegen-quieter-ground-revision",
         "runtimeVisual": "pending-browser-socket-blocked"
       }
     }
@@ -9886,7 +9899,7 @@
     }
   ],
   "crossAssetCoherence": {
-    "status": "first-meadow-composite-under-review",
+    "status": "revision-required-ground-and-fern",
     "contract": "docs/art-rebuild-20261019/cross-asset-coherence.md",
     "requiredInputs": [
       "surface-meadow",
@@ -9919,6 +9932,18 @@
         "issue": "human body too small relative to other units",
         "status": "revision-requested",
         "evidence": "docs/art-rebuild-20261019/three-unit-scale.png"
+      },
+      {
+        "atlasId": "surface-meadow",
+        "issue": "high-frequency yellow speckle competes with actors",
+        "status": "imagegen-revision-requested",
+        "evidence": "docs/art-rebuild-20261019/cohesion-first-meadow/cohesion-2x.png"
+      },
+      {
+        "atlasId": "forest-temperate",
+        "cellId": "fern-bed",
+        "issue": "yellow foliage too prominent against shared scene palette",
+        "status": "harmonization-after-ground-revision"
       }
     ],
     "currentPreview": "docs/art-rebuild-20261019/cohesion-first-meadow/cohesion-placement.json"
