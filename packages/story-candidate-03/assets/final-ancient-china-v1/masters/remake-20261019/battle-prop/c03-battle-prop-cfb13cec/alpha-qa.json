@@ -1,0 +1,52 @@
+{
+  "topicId": "c03-battle-prop-cfb13cec",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-cfb13cec.png",
+  "label": "wooden stakes",
+  "observed_visual_description": "Two buckets clipped at right/top with disconnected blue-gray cloth fragment below; no recognizable wooden stakes.",
+  "source_size": [
+    64,
+    64
+  ],
+  "source_mode": "RGBA",
+  "source_alpha_extrema": [
+    0,
+    255
+  ],
+  "reason": "Original consists of clipped or unrelated atlas fragments. No generation performed. Canonical source mapping is needed before faithful remake.",
+  "generated": true,
+  "original_status": "blocked-source-integrity",
+  "reconstructed_identity": true,
+  "uncertainty": "Semantic reconstruction from manifest label and complete props board. Exact historical crop mapping is unverified; not a faithful restyle of defective runtime pixels.",
+  "generated_size": [
+    1254,
+    1254
+  ],
+  "generated_mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_zero_pixels": 939614,
+  "threshold_bboxes": {
+    "1": [
+      37,
+      9,
+      1222,
+      1254
+    ],
+    "128": [
+      244,
+      113,
+      1060,
+      1151
+    ],
+    "240": [
+      245,
+      114,
+      1060,
+      1150
+    ]
+  },
+  "visual_review": "Complete bound sharpened wooden stakes and two loose foreground pieces. Six obvious upright points rather than prompt seven; semantic identity intact. Matte, no background."
+}

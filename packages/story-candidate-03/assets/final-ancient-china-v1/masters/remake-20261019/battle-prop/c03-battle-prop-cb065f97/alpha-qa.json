@@ -1,0 +1,52 @@
+{
+  "topicId": "c03-battle-prop-cb065f97",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/battle-prop/battle-prop-cb065f97.png",
+  "label": "rope coil",
+  "observed_visual_description": "Medical/equipment box cropped at top/right; disconnected lower tray and narrow left fragments; no recognizable rope coil.",
+  "source_size": [
+    64,
+    64
+  ],
+  "source_mode": "RGBA",
+  "source_alpha_extrema": [
+    0,
+    255
+  ],
+  "reason": "Original consists of clipped or unrelated atlas fragments. No generation performed. Canonical source mapping is needed before faithful remake.",
+  "generated": true,
+  "original_status": "blocked-source-integrity",
+  "reconstructed_identity": true,
+  "uncertainty": "Semantic reconstruction from manifest label and complete props board. Exact historical crop mapping is unverified; not a faithful restyle of defective runtime pixels.",
+  "generated_size": [
+    1254,
+    1254
+  ],
+  "generated_mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_zero_pixels": 722976,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      39,
+      1234,
+      1254
+    ],
+    "128": [
+      118,
+      115,
+      1208,
+      1158
+    ],
+    "240": [
+      118,
+      115,
+      1207,
+      1157
+    ]
+  },
+  "visual_review": "Complete hemp rope coil with trailing smaller loop over timber offcuts. Matte outlined rope segments and no background."
+}

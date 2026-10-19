@@ -6771,14 +6771,18 @@
     },
     {
       "topicId": "c03-battle-prop-cb065f97",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-cb065f97/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
         "issue": "Original runtime has hard-cropped mixed fragments",
         "recovery": "Inspect masterboard + semantic label before clean reconstruction; original slot mapping not established"
-      }
+      },
+      "sourceSha256": "869220fb139a9813a857a1c9194c93e1c1ba70eb5ea4779cd6bd5ea0abdd732a"
     },
     {
       "topicId": "c03-battle-prop-cd97a638",
@@ -6789,14 +6793,18 @@
     },
     {
       "topicId": "c03-battle-prop-cfb13cec",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/battle-prop/c03-battle-prop-cfb13cec/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
       "sourceIntegrity": {
         "issue": "Original runtime has hard-cropped mixed fragments",
         "recovery": "Inspect masterboard + semantic label before clean reconstruction; original slot mapping not established"
-      }
+      },
+      "sourceSha256": "79e1afac6cd8937bbef52666b495834f56884bafe19ebd733e92a7ddede0793f"
     },
     {
       "topicId": "c03-battle-prop-d983ce23",
@@ -8225,17 +8233,18 @@
       "cellId": "fern-bed",
       "index": 7,
       "status": "raw-generated",
-      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/fern-bed/master.png",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/fern-bed/revisions/master-v4.png",
       "assignment": "redraw_grayflag_environment_trees",
-      "sourceSha256": "f4477f4761feec3154d3567dccbe7dfb1d2ad666a0c8db8aac4be4e2fe281541",
+      "sourceSha256": "50a5ea42b085ff5b1b26dc56d8e1b21bb232a1ffe0bdd15a46ac1da38133f766",
       "verification": {
         "state": "pending",
-        "note": "Raw backed up; placement and deterministic output checks pending"
+        "note": "Raw backed up; placement and deterministic output checks pending",
+        "contactReview": "v4 intact; visible root91logical, outeredge0 afterexport"
       },
       "revisionCandidate": {
         "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/environment/forest-temperate/fern-bed/revisions/master-v4.png",
         "sha256": "50a5ea42b085ff5b1b26dc56d8e1b21bb232a1ffe0bdd15a46ac1da38133f766",
-        "status": "contact-review-pending"
+        "status": "contact-reviewed"
       }
     },
     {
