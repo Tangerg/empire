@@ -1354,17 +1354,13 @@
     "liveGame": "pending",
     "historicalPureDecorationAdjustment": "frontier farmhouse moved only visually from12.5,7.1 to10.8,6.7, validated no rule identity; audit farm-house clearance documents",
     "laterLevelVisibility": {
-      "levelId": "c01-15",
-      "evidence": "silver-longbow-full-scene/runtime-standing-full@1x.png",
-      "actualActors": 22,
-      "structureDrawings": 8,
-      "status": "held: dense forest placements obscure multiple actual actors",
-      "newLongbowBindings": 4,
-      "remainingLegacyActorTypes": [
-        "c01.ivra-growth",
-        "c01.woodland-walker"
-      ],
-      "constraints": "Preserve rules-hidden actor privacy, passability, occupancy and complete scene evidence; no crop/removal to conceal the problem."
+      "level": "c01-15",
+      "status": "bounded decoration clearance formally integrated; three rule-building overlaps remain",
+      "evidence": "approved-v5/silverwood-clearance-current/current-full-labeled.png",
+      "actors": 22,
+      "ruleStructures": 8,
+      "sameSourceStateAndCamera": true,
+      "liveGame": false
     },
     "remainingEnvironmentIntegration": "Cliffs/camps/landmarks source families are exported, but source completion does not establish all-map placement quality. Vertical bridge consumers and fortress connectivity remain active integration work."
   }

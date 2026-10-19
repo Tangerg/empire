@@ -13,7 +13,7 @@
       "mission-unit": 1,
       "skill": 8
     },
-    "rawPreservedTopics": 167,
+    "rawPreservedTopics": 173,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -38,17 +38,13 @@
     "liveGame": "pending",
     "historicalPureDecorationAdjustment": "frontier farmhouse moved only visually from12.5,7.1 to10.8,6.7, validated no rule identity; audit farm-house clearance documents",
     "laterLevelVisibility": {
-      "levelId": "c01-15",
-      "evidence": "silver-longbow-full-scene/runtime-standing-full@1x.png",
-      "actualActors": 22,
-      "structureDrawings": 8,
-      "status": "held: dense forest placements obscure multiple actual actors",
-      "newLongbowBindings": 4,
-      "remainingLegacyActorTypes": [
-        "c01.ivra-growth",
-        "c01.woodland-walker"
-      ],
-      "constraints": "Preserve rules-hidden actor privacy, passability, occupancy and complete scene evidence; no crop/removal to conceal the problem."
+      "level": "c01-15",
+      "status": "bounded decoration clearance formally integrated; three rule-building overlaps remain",
+      "evidence": "approved-v5/silverwood-clearance-current/current-full-labeled.png",
+      "actors": 22,
+      "ruleStructures": 8,
+      "sameSourceStateAndCamera": true,
+      "liveGame": false
     },
     "remainingEnvironmentIntegration": "Cliffs/camps/landmarks source families are exported, but source completion does not establish all-map placement quality. Vertical bridge consumers and fortress connectivity remain active integration work."
   },
@@ -5423,8 +5419,10 @@
       "category": "skill",
       "label": "修复",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-11/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -5437,8 +5435,10 @@
       "category": "skill",
       "label": "指挥延伸",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-12/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -9840,8 +9840,10 @@
       "category": "battle-prop",
       "label": "断轨战后组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-broken-rails/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -9938,8 +9940,10 @@
       "category": "battle-prop",
       "label": "社区修复痕迹组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-community-repairs/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -9973,8 +9977,10 @@
       "category": "battle-prop",
       "label": "枯死菌床战后组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-dead-fungus-beds/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -9987,8 +9993,10 @@
       "category": "battle-prop",
       "label": "弃械战后组",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/props/c02-battle-prop-discarded-arms/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
