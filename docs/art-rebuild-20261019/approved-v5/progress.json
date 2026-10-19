@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 30,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 240,
+  "formalRuntimeBoundTopics": 241,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1514,6 +1514,12 @@
       "export": "native48 white/dark/olive semantic review; actual alpha checked",
       "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
       "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+    },
+    "C01-CHAR-LEIA-01": {
+      "raw": "independent native1024x1536 RGBA character, source identity and separate opaque backdrop preserved",
+      "export": "192x224 layered card;92x112 dialogue and44px roster size review passed",
+      "runtimeBinding": "named card URL shared across dialogue/roster/HUD; named combat appearance independently registered",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -1927,17 +1933,28 @@
     "remainingEnvironmentIntegration": "Cliffs/camps/landmarks source families are exported, but source completion does not establish all-map placement quality. Vertical bridge consumers and fortress connectivity remain active integration work."
   },
   "namedHeroAppearances": {
-    "status": "seven identities audited; independent appearance variants pending",
+    "status": "Laiya complete named four-pose appearance and independent portrait/card formally bound; six other named identities pending",
     "canonicalCountIncrement": 0,
     "audit": "narrative-family-audit/hero-identity-contract.md",
     "knownMismatches": [
-      "Laiya named young woman currently resolves generic older male banner guard",
       "Roderick named older mounted lance mentor resolves generic younger foot heavy knight",
       "Mirelle named woman resolves generic bearded male gravekeeper",
       "IVRA rules describe juvenile; generic growth appearance has maturity mismatch risk"
     ],
-    "nextPilot": "Laiya transparent named identity, complete four poses and separate card-source consistency; generic troops remain independently valid",
+    "nextPilot": "Roderick: verify older mounted lance mentor identity; generic heavy knight preserved",
     "cardContract": "Character master retains real RGBA transparency; any required opaque UI background is separate authored source/layer",
-    "liveGameVerified": false
+    "liveGameVerified": false,
+    "appearances": {
+      "laiya-stage01": {
+        "ruleUnit": "c01.laiya",
+        "baseCanonicalTopic": "C01-UNIT-BANNER-GUARD",
+        "canonicalCountIncrement": 0,
+        "fourPoses": "reviewed, shared body scale and support-foot registration",
+        "cardTopic": "C01-CHAR-LEIA-01",
+        "cardCanonicalCountIncrement": 1,
+        "genericBannerGuard": "unchanged",
+        "liveGame": "pending"
+      }
+    }
   }
 }

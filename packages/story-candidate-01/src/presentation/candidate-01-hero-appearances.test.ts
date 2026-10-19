@@ -106,15 +106,26 @@ describe('explicit hero appearance document and resolution', () => {
   });
 });
 
-describe('unactivated production hero catalog', () => {
-  it('contains no incomplete appearances and leaves every current unit and authored team source unchanged', () => {
-    expect(document).toEqual({ schemaVersion: 1, appearances: [], teamVariants: [] });
-    expect(CANDIDATE_01_HERO_APPEARANCES.appearances.size).toBe(0);
+describe('reviewed production hero catalog', () => {
+  it('binds only reviewed Laiya while leaving generic units and authored team sources unchanged', () => {
+    expect(document.appearances.map(entry => entry.id)).toEqual(['laiya-stage01']);
+    expect(document.teamVariants).toEqual([]);
+    expect(CANDIDATE_01_HERO_APPEARANCES.appearances.size).toBe(1);
+    expect(manifest.assetCount).toBe(404);
+    expect(CANDIDATE_01_UNIT_ART['c01.laiya']).toEqual({ topicId: 'C01-UNIT-BANNER-GUARD', appearanceId: 'laiya-stage01' });
+    expect(CANDIDATE_01_UNIT_ART['c01.banner-guard']).toEqual({ topicId: 'C01-UNIT-BANNER-GUARD' });
     for (const [type, binding] of Object.entries(CANDIDATE_01_UNIT_ART)) {
       if (!binding) throw new Error(`undefined art binding: ${type}`);
-      expect(binding.appearanceId).toBeUndefined();
+      if (type !== 'c01.laiya') expect(binding.appearanceId).toBeUndefined();
       for (const team of ['#a8493f', '#A8493F', '#4d5e76']) {
-        const expected = candidate01TeamAsset(binding.topicId, team);
+        const expected = type === 'c01.laiya'
+          ? CANDIDATE_01_HERO_APPEARANCES.appearances.get('laiya-stage01')!
+          : candidate01TeamAsset(binding.topicId, team);
+        if (type === 'c01.laiya') {
+          expect(expected.url).toContain('hero-appearance/laiya-stage01@2x.png');
+          expect(expected.footprint).toEqual(candidate01Asset('C01-UNIT-BANNER-GUARD').footprint);
+          expect(expected.url).not.toBe(candidate01TeamAsset(binding.topicId, team).url);
+        }
         expect(resolveCandidate01UnitArt(CANDIDATE_01_HERO_APPEARANCES, binding, team)).toBe(expected);
         const picture = candidate01UnitPicture(type, team)!;
         expect(picture.strip?.href).toBe(expected.url);

@@ -3,6 +3,8 @@ import { portraitMarkup, terrainMarkup, unitPicture } from '@empire/game-ui';
 import { createTestCatalog } from '@empire/test-content';
 import { CANDIDATE_01_CONTENT_PACK } from '../index';
 import { CANDIDATE_01_ART } from './index';
+import { CANDIDATE_01_PORTRAITS } from './candidate-01-story';
+import { CANDIDATE_01_CHARACTER_ART } from './candidate-01-bindings';
 import { candidate01Asset } from './candidate-01-assets';
 import { candidate01UnitIcon, candidate01CoverPropMarkup } from './candidate-01-runtime';
 
@@ -33,6 +35,22 @@ describe('candidate-01 runtime art bindings', () => {
     const portrait = portraitMarkup(art, TEST_CATALOG.units.get('c01.swordsman'), '#3f7fd8');
     expect(portrait).toContain('translate(32.44444444444444 46.27777777777778) scale(1)');
     expect(portrait).toContain('viewBox="0 0 96 64"');
+  });
+
+  it('keeps Laiya named card and four-pose appearance separate from the generic banner guard', () => {
+    const named = unitPicture(art, TEST_CATALOG.units.get('c01.laiya'), '#a8493f');
+    const generic = unitPicture(art, TEST_CATALOG.units.get('c01.banner-guard'), '#a8493f');
+    expect(named.strip?.href).toContain('hero-appearance/laiya-stage01@2x.png');
+    expect(generic.strip?.href).toContain('combat-unit/unit-banner-guard@2x.png');
+    expect(named.strip?.frameCount).toBe(4);
+    expect(named.strip?.clips.find(clip => clip.id === 'walk')?.frames).toEqual([1, 3]);
+    expect(CANDIDATE_01_CHARACTER_ART['c01.laiya']).toBe('C01-CHAR-LEIA-01');
+    const card = candidate01Asset('C01-CHAR-LEIA-01');
+    expect(card.qualityTier).toBe('approved-chunky-v5-export-verified');
+    expect([card.width, card.height]).toEqual([192, 224]);
+    expect(CANDIDATE_01_PORTRAITS.laiya).toBe(card.url);
+    expect(portraitMarkup(art, TEST_CATALOG.units.get('c01.laiya'), '#a8493f')).toContain(card.url);
+    expect(portraitMarkup(art, TEST_CATALOG.units.get('c01.laiya'), '#a8493f')).not.toContain('unit-banner-guard');
   });
 
   /**

@@ -1,0 +1,61 @@
+{
+  "kind": "character-card-composite-v1",
+  "sources": {
+    "character": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/master.png",
+      "sha256": "a79b77e68655da4893ab97b6686eb5864d947297ebd578ea5b3da22237349878",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha": {
+        "edgeMaxAlpha": 1,
+        "edgeNonzeroPixels": 13,
+        "coreBoundingBox": [
+          72,
+          22,
+          976,
+          1504
+        ]
+      }
+    },
+    "background": {
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+      "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    }
+  },
+  "characterPlacement": {
+    "renderWidth": 144,
+    "origin": [
+      24,
+      4
+    ],
+    "renderSize": [
+      144,
+      216
+    ],
+    "crop": null
+  },
+  "backgroundFit": {
+    "method": "center-cover",
+    "sourceCropBox": [
+      89.57142857142856,
+      0.0,
+      1164.4285714285716,
+      1254.0
+    ]
+  },
+  "outputAlpha": {
+    "extrema": [
+      255,
+      255
+    ],
+    "meaning": "opaque UI composition; transparent character source remains independent"
+  }
+}

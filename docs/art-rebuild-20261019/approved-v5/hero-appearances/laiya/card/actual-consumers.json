@@ -1,0 +1,63 @@
+{
+  "type": "c01.laiya",
+  "binding": {
+    "topicId": "C01-UNIT-BANNER-GUARD",
+    "appearanceId": "laiya-stage01"
+  },
+  "cardTopic": "C01-CHAR-LEIA-01",
+  "sources": [
+    {
+      "href": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-leia-01.png",
+      "sha256": "43ae13b305aa88868779cad493e8796c0aa4b5fb3d11e524c23f94977daf7de1"
+    },
+    {
+      "href": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/laiya-stage01@2x.png",
+      "sha256": "e1e53f78fb7ccdb275add9322e9e7d23559af4538f0919904981999665805a57"
+    }
+  ],
+  "picture": {
+    "foot": {
+      "x": 16,
+      "y": 31
+    },
+    "body": "<g data-runtime-raster=\"unit\">\n    <ellipse class=\"runtime-unit-contact-shadow\" cx=\"16\" cy=\"29.2\" rx=\"12.5\" ry=\"4.2\" fill=\"#0b100d\" opacity=\"0.48\"/>\n    <ellipse class=\"runtime-unit-team-ring\" cx=\"16\" cy=\"29.5\" rx=\"11\" ry=\"2.25\" fill=\"none\" stroke=\"#4d86b8\" stroke-width=\"1.8\" opacity=\"1\"/>\n  </g>",
+    "strip": {
+      "href": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/hero-appearance/laiya-stage01@2x.png",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frameCount": 4,
+      "x": -39.33163265306123,
+      "y": -28.28061224489796,
+      "clips": [
+        {
+          "id": "idle",
+          "frames": [
+            0
+          ],
+          "fps": 1,
+          "loop": true
+        },
+        {
+          "id": "walk",
+          "frames": [
+            1,
+            3
+          ],
+          "fps": 6.25,
+          "loop": true
+        },
+        {
+          "id": "attack",
+          "frames": [
+            2
+          ],
+          "fps": 1,
+          "loop": false
+        }
+      ],
+      "playing": "idle"
+    }
+  },
+  "method": "actual game-ui portraitMarkup and candidate01UnitIcon; offline SVG projection",
+  "liveBrowserVerified": false
+}

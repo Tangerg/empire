@@ -4,16 +4,17 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 240,
+    "formalBound": 241,
     "boundByCategory": {
       "battle-prop": 64,
       "combat-unit": 28,
       "equipment": 79,
       "interactive-structure": 24,
       "mission-unit": 1,
+      "narrative-static": 1,
       "skill": 44
     },
-    "rawPreservedTopics": 240,
+    "rawPreservedTopics": 245,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -701,13 +702,21 @@
       "category": "narrative-static",
       "label": "莱娅 18 岁见习旗官",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/master.png",
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/attempt-01/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-leia-01.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "independent native1024x1536 RGBA character, source identity and separate opaque backdrop preserved",
+        "export": "192x224 layered card;92x112 dialogue and44px roster size review passed",
+        "runtimeBinding": "named card URL shared across dialogue/roster/HUD; named combat appearance independently registered",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-CHAR-LEIA-02",
@@ -6220,8 +6229,10 @@
       "category": "skill",
       "label": "白鹿穿林",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-45/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -6234,8 +6245,10 @@
       "category": "skill",
       "label": "符文过载",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/skill/skill-46/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10909,8 +10922,10 @@
       "category": "equipment",
       "label": "生态维护体主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-eco-maintainer/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",
@@ -10988,8 +11003,10 @@
       "category": "equipment",
       "label": "菌床医师主装备",
       "baselineManifest": "packages/story-candidate-02/assets/final-scifi-v1/manifest-final-scifi-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-fungus-bed-medic/master.png"
+      ],
+      "raw": "preserved",
       "export": "pending",
       "formalBinding": "pending",
       "liveGame": "pending",

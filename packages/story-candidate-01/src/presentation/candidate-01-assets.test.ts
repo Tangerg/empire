@@ -141,6 +141,7 @@ describe('authored red sequence file contract', () => {
 describe('approved static asset bindings', () => {
   const props = Object.entries(sourceOverrides.assets)
     .filter(([topic, entry]) => manifest.assets.some(asset => asset.topicId === topic)
+      && 'source' in entry
       && (entry.source.includes('/masters/approved-v5/props/') || entry.source.includes('/masters/approved-v5/equipment/')))
     .map(([topic]) => topic);
   it.each(props)('resolves %s through its exact canonical density contract', (topic) => {

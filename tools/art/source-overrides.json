@@ -940,6 +940,24 @@
     "c02-equipment-wind-sail-skirmisher": {
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/approved-v5/equipment/c02-equipment-wind-sail-skirmisher/master.png",
       "sha256": "40ec783f4652f49aeb67ef3b99985e2cc4d6b88206ad78bcc0115ca7763cb2a1"
+    },
+    "C01-CHAR-LEIA-01": {
+      "kind": "character-card-composite-v1",
+      "character": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/char-leia-01/master.png",
+        "sha256": "a79b77e68655da4893ab97b6686eb5864d947297ebd578ea5b3da22237349878"
+      },
+      "background": {
+        "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/narrative/card-background/master.png",
+        "sha256": "1bd8be4226f767b3a68e77c9260a771aa24859331f318361a0423de4485b2ade"
+      },
+      "placement": {
+        "renderWidth": 144,
+        "origin": [
+          24,
+          4
+        ]
+      }
     }
   }
 }
