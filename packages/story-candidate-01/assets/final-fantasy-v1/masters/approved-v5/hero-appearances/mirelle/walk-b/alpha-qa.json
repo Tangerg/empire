@@ -24,5 +24,110 @@
   "alphaOnePixels": 3926,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "soleMeasurements": [
+    {
+      "boot": "image-left",
+      "roi": [
+        395,
+        650,
+        550,
+        880
+      ],
+      "soleCenterXBottomFourRows": 489.26027397260276,
+      "soleY": 867
+    },
+    {
+      "boot": "image-right",
+      "roi": [
+        830,
+        850,
+        1090,
+        980
+      ],
+      "soleCenterXBottomFourRows": 978.2137931034483,
+      "soleY": 959
+    }
+  ],
+  "sourceFoot": [
+    734,
+    959
+  ],
+  "sourceRegistrationOffset": [
+    24,
+    8
+  ],
+  "logicalRegistrationOffset": [
+    1.149075081610446,
+    0.383025027203482
+  ],
+  "commonScale": 0.04787812840043525,
+  "commonScaleRatio": "44/919",
+  "nativeCanvasRetained": true,
+  "commonCanvas": [
+    1586,
+    992
+  ],
+  "explicitTransparentPadding": {
+    "right": 1,
+    "bottom": 0
+  },
+  "negativeSpaceProbes": [
+    {
+      "name": "lantern-ring",
+      "rectangle": [
+        1116,
+        520,
+        1121,
+        525
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 25
+    },
+    {
+      "name": "between-boots",
+      "rectangle": [
+        746,
+        916,
+        753,
+        923
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "lantern-to-body",
+      "rectangle": [
+        1010,
+        672,
+        1017,
+        679
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Lantern-side image-right forward boot flat and bearing weight; book-side image-left rear leg bent and raised92px above the support sole, reversing the walking support emphasis. Cloth follows the stride; hands/gear and face orientation stay unchanged. The lift is higher than prompt target but remains a clear opposite step.",
+  "fullCanvasBoundsInFrame": [
+    9.149075081610446,
+    4.383025027203482,
+    85.08378672470076,
+    51.87812840043525
+  ],
+  "visibleBoundsInFrame": [
+    28.635473340587595,
+    6.585418933623504,
+    69.47551686615887,
+    50.34602829162132
+  ],
+  "diagnosticFrame": [
+    104,
+    64
+  ],
+  "diagnosticOrigin": [
+    8,
+    4
+  ],
+  "diagnosticPerimeterMaxAlpha": 0,
+  "rawEqualsMaster": true
 }

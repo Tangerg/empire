@@ -24,5 +24,110 @@
   "alphaOnePixels": 3961,
   "exactPromptFile": "prompt.txt",
   "exactPromptVerified": true,
-  "postprocessing": "none; native source copied byte-for-byte"
+  "postprocessing": "none; native source copied byte-for-byte",
+  "soleMeasurements": [
+    {
+      "boot": "image-left",
+      "roi": [
+        470,
+        830,
+        680,
+        980
+      ],
+      "soleCenterXBottomFourRows": 602.2100840336135,
+      "soleY": 952
+    },
+    {
+      "boot": "image-right",
+      "roi": [
+        850,
+        800,
+        1110,
+        980
+      ],
+      "soleCenterXBottomFourRows": 911.8227848101266,
+      "soleY": 960
+    }
+  ],
+  "sourceFoot": [
+    757,
+    960
+  ],
+  "sourceRegistrationOffset": [
+    1,
+    7
+  ],
+  "logicalRegistrationOffset": [
+    0.04787812840043525,
+    0.33514689880304677
+  ],
+  "commonScale": 0.04787812840043525,
+  "commonScaleRatio": "44/919",
+  "nativeCanvasRetained": true,
+  "commonCanvas": [
+    1586,
+    992
+  ],
+  "explicitTransparentPadding": {
+    "right": 0,
+    "bottom": 0
+  },
+  "negativeSpaceProbes": [
+    {
+      "name": "lantern-ring",
+      "rectangle": [
+        1167,
+        523,
+        1174,
+        530
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "between-boots",
+      "rectangle": [
+        776,
+        916,
+        783,
+        923
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "lantern-to-body",
+      "rectangle": [
+        1010,
+        692,
+        1017,
+        699
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Near/book-side image-left rear boot is flat; lantern-side image-right forward boot is strongly toe-up, with the heel near the ground baseline. The generated heel is8px below the other sole, so do not claim the entire forward boot is airborne or the requested925px sole target was exactly followed. This is a heel-strike/weight-transfer walking contact.",
+  "fullCanvasBoundsInFrame": [
+    8.047878128400436,
+    4.335146898803047,
+    83.98258977149075,
+    51.83025027203482
+  ],
+  "visibleBoundsInFrame": [
+    28.013057671381937,
+    6.537540805223069,
+    68.5658324265506,
+    50.34602829162132
+  ],
+  "diagnosticFrame": [
+    104,
+    64
+  ],
+  "diagnosticOrigin": [
+    8,
+    4
+  ],
+  "diagnosticPerimeterMaxAlpha": 0,
+  "rawEqualsMaster": true
 }

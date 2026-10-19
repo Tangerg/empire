@@ -51,3 +51,13 @@ Read-only source-derived from baseParty slot3 and place(); owner1/east. No live-
 Await coordinator idle contract before generating. Then inspect native source, strict perimeter alpha, body scale and actual foot; hold three-pose expansion for review. Separate fullbody transparent portrait follows the approved battle identity. No repository writes, rule changes, background extraction, per-frame fitting or automatic production activation.
 
 Coordinator approved the proposed handheld-lantern/ledger idle contract at 21:50 UTC. First idle may be generated; remaining poses still await idle review.
+
+## Native quartet checkpoint (22:01 UTC)
+
+Approved idle locks body44/919 and reference foot[758,967]. All four native masters now exist and remain byte-identical to built-in imagegen raw outputs. Actual native sizes are1585×992,1586×992,1585×992,1585×992 in semantic order. All strict original perimeter gates pass before any padding. A single right transparent column aligns the three1585px sources to the1586×992 common canvas for diagnostic export only. No source is cropped, resized, recolored or alpha-cleaned.
+
+Measured source feet are[758,967],[757,960],[732,956],[734,959]. Fixed104×64/origin[8,4] accommodates every complete source canvas; largest registration component is1.244831 logical pixels. Suggested standard limit4. Full per-pose bounds and independent native size/hash evidence are in registration-evidence.json.
+
+Walk-a forward foot is strongly toe-up with the heel8source pixels below the rear flat sole; it reads as heel-strike/weight transfer, so the original request for a wholly airborne forward boot is not claimed as exact output. Walk-b shows the opposite foot flat with the book-side rear foot bent and raised92source pixels. The native2x sequence is submitted for coordinator review rather than silently declaring numerical prompt compliance.
+
+Every ring/limb gap is genuinely alpha0 in inspected sample regions. Walk-b ring aperture is narrow: its fully clear sampled square is5×5 rather than7×7; native antialias and low-alpha edge traces are preserved. No opaque background or glow was reconstructed.

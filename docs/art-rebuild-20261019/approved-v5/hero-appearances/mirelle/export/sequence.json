@@ -1,0 +1,340 @@
+{
+  "config": {
+    "frames": {
+      "idle": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/mirelle/idle/master.png",
+      "walk-a": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/mirelle/walk-a/master.png",
+      "attack": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/mirelle/attack/master.png",
+      "walk-b": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/mirelle/walk-b/master.png"
+    },
+    "scale": 0.04787812840043525,
+    "origin": [
+      8,
+      4
+    ],
+    "frameSize": [
+      104,
+      64
+    ],
+    "sourceFoot": [
+      758,
+      967
+    ],
+    "sourceFeet": {
+      "idle": [
+        758,
+        967
+      ],
+      "walk-a": [
+        757,
+        960
+      ],
+      "attack": [
+        732,
+        956
+      ],
+      "walk-b": [
+        734,
+        959
+      ]
+    },
+    "registrationOffsets": {
+      "idle": [
+        0.0,
+        0.0
+      ],
+      "walk-a": [
+        0.04787812840043525,
+        0.33514689880304677
+      ],
+      "attack": [
+        1.2448313384113165,
+        0.5266594124047878
+      ],
+      "walk-b": [
+        1.149075081610446,
+        0.383025027203482
+      ]
+    },
+    "registrationLimit": 4,
+    "canvasPaddingTolerance": 1,
+    "meaning": "named middle-aged woman with handheld lantern and ledger; no inferred staff pole or generic male gravekeeper identity"
+  },
+  "authoredCanvas": [
+    1586,
+    992
+  ],
+  "logicalPivot": [
+    44.291621327529924,
+    50.29815016322089
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/mirelle/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "386d4256cef27497c6b675225284ab23106aa3b06de3a4a233a1d3a057c56654",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5443,
+        "nearOpaquePixels": 1051,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          6,
+          67,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "idle",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/mirelle/idle/master.png",
+      "registrationOffset": [
+        0.0,
+        0.0
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "386d4256cef27497c6b675225284ab23106aa3b06de3a4a233a1d3a057c56654",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21867,
+        "nearOpaquePixels": 4297,
+        "edgeMax": 0,
+        "visibleBounds": [
+          56,
+          13,
+          133,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/mirelle/walk-a/master.png",
+      "registrationOffset": [
+        0.04787812840043525,
+        0.33514689880304677
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "2fd86ccd676d82ee0e9b38f6081d1191773ec39d0cbd574d1af0bb7bfdd17f08",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5485,
+        "nearOpaquePixels": 992,
+        "edgeMax": 0,
+        "visibleBounds": [
+          28,
+          7,
+          68,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-a",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/mirelle/walk-a/master.png",
+      "registrationOffset": [
+        0.04787812840043525,
+        0.33514689880304677
+      ],
+      "sourceCanvas": [
+        1586,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        0,
+        0
+      ],
+      "sourceSha256": "2fd86ccd676d82ee0e9b38f6081d1191773ec39d0cbd574d1af0bb7bfdd17f08",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22065,
+        "nearOpaquePixels": 4083,
+        "edgeMax": 0,
+        "visibleBounds": [
+          56,
+          13,
+          137,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/mirelle/attack/master.png",
+      "registrationOffset": [
+        1.2448313384113165,
+        0.5266594124047878
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "92ec7cf69648a58bf499875f6e6dd7936acf82f5da738652b6040f74e295e7d8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5343,
+        "nearOpaquePixels": 1111,
+        "edgeMax": 0,
+        "visibleBounds": [
+          26,
+          7,
+          74,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "attack",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/mirelle/attack/master.png",
+      "registrationOffset": [
+        1.2448313384113165,
+        0.5266594124047878
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "92ec7cf69648a58bf499875f6e6dd7936acf82f5da738652b6040f74e295e7d8",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 21527,
+        "nearOpaquePixels": 4567,
+        "edgeMax": 0,
+        "visibleBounds": [
+          53,
+          14,
+          147,
+          101
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 1,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/mirelle/walk-b/master.png",
+      "registrationOffset": [
+        1.149075081610446,
+        0.383025027203482
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "35d3bd747cd33e29a8dfcf27f814d07eb1b9acad5e25a7235d8c8f87e396528f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 5495,
+        "nearOpaquePixels": 972,
+        "edgeMax": 0,
+        "visibleBounds": [
+          29,
+          7,
+          69,
+          50
+        ]
+      }
+    },
+    {
+      "frame": "walk-b",
+      "density": 2,
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/hero-appearances/mirelle/walk-b/master.png",
+      "registrationOffset": [
+        1.149075081610446,
+        0.383025027203482
+      ],
+      "sourceCanvas": [
+        1585,
+        992
+      ],
+      "transparentPaddingToCommonCanvas": [
+        1,
+        0
+      ],
+      "sourceSha256": "35d3bd747cd33e29a8dfcf27f814d07eb1b9acad5e25a7235d8c8f87e396528f",
+      "outputAlpha": {
+        "alphaRange": [
+          0,
+          254
+        ],
+        "transparentPixels": 22121,
+        "nearOpaquePixels": 4011,
+        "edgeMax": 0,
+        "visibleBounds": [
+          57,
+          13,
+          139,
+          101
+        ]
+      }
+    }
+  ],
+  "independentFrameFit": false,
+  "gameplayFootprintChanged": false,
+  "semanticMotionReview": "required separately; distinct hashes alone are insufficient",
+  "liveGamePlayback": "not performed"
+}

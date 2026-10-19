@@ -4,7 +4,7 @@
   "baseTopicId": "C01-UNIT-GRAVEKEEPER",
   "artifactKind": "named-hero-appearance",
   "canonicalTopicCountDelta": 0,
-  "status": "Idle approved; native quartet in progress",
+  "status": "Four native sources complete; shared-scale diagnostic awaiting coordinator review",
   "canonicalEntries": {
     "C01-CHAR-MIREL-01": {
       "assetId": "C01-FFV1-CHAR-MIREL-01",
@@ -523,5 +523,25 @@
       1585,
       992
     ]
-  }
+  },
+  "quartetManifest": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/bundle-manifest.json",
+  "commonScaleRatio": "44/919",
+  "sourceFeet": [
+    [
+      758,
+      967
+    ],
+    [
+      757,
+      960
+    ],
+    [
+      732,
+      956
+    ],
+    [
+      734,
+      959
+    ]
+  ]
 }

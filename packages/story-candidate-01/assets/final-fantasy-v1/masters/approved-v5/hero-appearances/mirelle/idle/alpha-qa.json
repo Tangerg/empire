@@ -29,7 +29,7 @@
   "bodyTopY": 47,
   "soleMeasurements": [
     {
-      "name": "image-left-boot",
+      "boot": "image-left",
       "roi": [
         450,
         850,
@@ -40,7 +40,7 @@
       "soleY": 967
     },
     {
-      "name": "image-right-boot",
+      "boot": "image-right",
       "roi": [
         800,
         850,
@@ -68,7 +68,7 @@
   ],
   "negativeSpaceProbes": [
     {
-      "name": "lantern-handle-open-center",
+      "name": "lantern-ring",
       "rectangle": [
         1139,
         520,
@@ -90,7 +90,7 @@
       "zeroPixels": 49
     },
     {
-      "name": "between-lantern-and-body",
+      "name": "lantern-to-body",
       "rectangle": [
         1015,
         660,
@@ -101,7 +101,7 @@
       "zeroPixels": 49
     }
   ],
-  "semanticReview": "Middle-aged female face and cream hood, dark hair, charcoal robe/cream front, original hem geometry, chest/belt name tags, right-arm ledger/image-left and left-hand hanging lantern/image-right intact. Two large gloved hands, two boots. No staff or shovel. Lantern light remains bounded to glass body; no external FX. Broad proportions and clean matte cloth masses match approved family; mature cheek lines remain readable.",
+  "semanticReview": "Steady two-boot stance, closed ledger right arm/image-left; hanging lantern left hand/image-right. Mature female face, original cream hood/charcoal outfit/tags/hem geometry.",
   "nativeCanvasDiscrepancy": "1585×992 vs requested1586×992; retain unchanged raw. If future frames differ, explicit transparent shared-canvas alignment only after raw gate.",
   "rawEqualsMaster": true,
   "visibleBoundsAlphaGreaterThan127": [
@@ -122,5 +122,49 @@
       1585,
       992
     ]
-  }
+  },
+  "sourceFoot": [
+    758,
+    967
+  ],
+  "sourceRegistrationOffset": [
+    0,
+    0
+  ],
+  "logicalRegistrationOffset": [
+    0.0,
+    0.0
+  ],
+  "commonScale": 0.04787812840043525,
+  "commonScaleRatio": "44/919",
+  "nativeCanvasRetained": true,
+  "commonCanvas": [
+    1586,
+    992
+  ],
+  "explicitTransparentPadding": {
+    "right": 1,
+    "bottom": 0
+  },
+  "fullCanvasBoundsInFrame": [
+    8.0,
+    4.0,
+    83.93471164309031,
+    51.49510337323177
+  ],
+  "visibleBoundsInFrame": [
+    27.9651795429815,
+    6.250272034820457,
+    66.65070729053318,
+    50.34602829162132
+  ],
+  "diagnosticFrame": [
+    104,
+    64
+  ],
+  "diagnosticOrigin": [
+    8,
+    4
+  ],
+  "diagnosticPerimeterMaxAlpha": 0
 }

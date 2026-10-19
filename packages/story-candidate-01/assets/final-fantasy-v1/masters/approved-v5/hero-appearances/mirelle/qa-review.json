@@ -1,0 +1,331 @@
+{
+  "status": "All four native sources complete; coordinator common-scale quartet review pending",
+  "allStrictNativePerimetersPass": true,
+  "allRawMasterBytesEqual": true,
+  "exactPromptAndReferenceHashesVerified": true,
+  "noProgrammaticAlphaCleanupOrRecolor": true,
+  "allWholeNativeCanvasesFit": true,
+  "commonScaleRatio": "44/919",
+  "sourceFeet": [
+    [
+      758,
+      967
+    ],
+    [
+      757,
+      960
+    ],
+    [
+      732,
+      956
+    ],
+    [
+      734,
+      959
+    ]
+  ],
+  "paddingContract": {
+    "right": 1,
+    "bottom": 0
+  },
+  "maximumMeasuredLogicalOffset": 1.2448313384113165,
+  "semanticLimitations": [
+    "Rule lantern-staff name does not describe a pole in original named art; handheld lantern is approved source-faithful equipment.",
+    "Existing single attack slot serves both magic weapons and healing contract; independent FX04/06 remains separate.",
+    "Walk-a forward boot heel is at the contact baseline rather than fully airborne; walk-b reverses support emphasis and visibly lifts the other boot. No claim that numeric prompt targets exactly describe generated anatomy."
+  ],
+  "poses": [
+    {
+      "pose": "idle",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/idle/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/idle/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4f2a444a-eb61-44c8-8b77-46b87993c767.png",
+      "sha256": "386d4256cef27497c6b675225284ab23106aa3b06de3a4a233a1d3a057c56654",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/idle/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/idle/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/idle/alpha-qa.json",
+      "sourceFoot": [
+        758,
+        967
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            450,
+            850,
+            650,
+            982
+          ],
+          "soleCenterXBottomFourRows": 553.3369963369963,
+          "soleY": 967
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            800,
+            850,
+            1060,
+            982
+          ],
+          "soleCenterXBottomFourRows": 961.8067226890756,
+          "soleY": 965
+        }
+      ],
+      "sourceRegistrationOffset": [
+        0,
+        0
+      ],
+      "logicalRegistrationOffset": [
+        0.0,
+        0.0
+      ],
+      "explicitTransparentPadding": {
+        "right": 1,
+        "bottom": 0
+      },
+      "rawPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 0,
+      "fullCanvasBoundsInFrame": [
+        8.0,
+        4.0,
+        83.93471164309031,
+        51.49510337323177
+      ],
+      "visibleBoundsInFrame": [
+        27.9651795429815,
+        6.250272034820457,
+        66.65070729053318,
+        50.34602829162132
+      ],
+      "diagnosticPerimeterMaxAlpha": 0,
+      "semanticReview": "Steady two-boot stance, closed ledger right arm/image-left; hanging lantern left hand/image-right. Mature female face, original cream hood/charcoal outfit/tags/hem geometry."
+    },
+    {
+      "pose": "walk-a",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/walk-a/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/walk-a/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0f7e622d-d8d7-451e-a8bd-89d2e027e538.png",
+      "sha256": "2fd86ccd676d82ee0e9b38f6081d1191773ec39d0cbd574d1af0bb7bfdd17f08",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/walk-a/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/walk-a/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/walk-a/alpha-qa.json",
+      "sourceFoot": [
+        757,
+        960
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            470,
+            830,
+            680,
+            980
+          ],
+          "soleCenterXBottomFourRows": 602.2100840336135,
+          "soleY": 952
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            850,
+            800,
+            1110,
+            980
+          ],
+          "soleCenterXBottomFourRows": 911.8227848101266,
+          "soleY": 960
+        }
+      ],
+      "sourceRegistrationOffset": [
+        1,
+        7
+      ],
+      "logicalRegistrationOffset": [
+        0.04787812840043525,
+        0.33514689880304677
+      ],
+      "explicitTransparentPadding": {
+        "right": 0,
+        "bottom": 0
+      },
+      "rawPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 1,
+      "fullCanvasBoundsInFrame": [
+        8.047878128400436,
+        4.335146898803047,
+        83.98258977149075,
+        51.83025027203482
+      ],
+      "visibleBoundsInFrame": [
+        28.013057671381937,
+        6.537540805223069,
+        68.5658324265506,
+        50.34602829162132
+      ],
+      "diagnosticPerimeterMaxAlpha": 0,
+      "semanticReview": "Near/book-side image-left rear boot is flat; lantern-side image-right forward boot is strongly toe-up, with the heel near the ground baseline. The generated heel is8px below the other sole, so do not claim the entire forward boot is airborne or the requested925px sole target was exactly followed. This is a heel-strike/weight-transfer walking contact."
+    },
+    {
+      "pose": "attack",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/attack/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/attack/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-a8e2efc6-d3b4-4de1-8946-1880bde4ca87.png",
+      "sha256": "92ec7cf69648a58bf499875f6e6dd7936acf82f5da738652b6040f74e295e7d8",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/attack/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/attack/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/attack/alpha-qa.json",
+      "sourceFoot": [
+        732,
+        956
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            340,
+            820,
+            540,
+            980
+          ],
+          "soleCenterXBottomFourRows": 447.0590551181102,
+          "soleY": 955
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            860,
+            830,
+            1120,
+            980
+          ],
+          "soleCenterXBottomFourRows": 1017.5748987854251,
+          "soleY": 956
+        }
+      ],
+      "sourceRegistrationOffset": [
+        26,
+        11
+      ],
+      "logicalRegistrationOffset": [
+        1.2448313384113165,
+        0.5266594124047878
+      ],
+      "explicitTransparentPadding": {
+        "right": 1,
+        "bottom": 0
+      },
+      "rawPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 0,
+      "fullCanvasBoundsInFrame": [
+        9.244831338411316,
+        4.526659412404788,
+        85.17954298150163,
+        52.02176278563656
+      ],
+      "visibleBoundsInFrame": [
+        26.385201305767136,
+        6.872687704026116,
+        73.64091403699673,
+        50.34602829162133
+      ],
+      "diagnosticPerimeterMaxAlpha": 0,
+      "semanticReview": "Braced wide stance and focused mature face; left arm/image-right extended forward/up with the original upright lantern hanging naturally from one ring grip; right arm retains closed ledger. No pole, detached glow or projectile."
+    },
+    {
+      "pose": "walk-b",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/walk-b/raw.png",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/walk-b/master.png",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c3a08b3f-ee0b-41a1-af9b-3e8b117677bd.png",
+      "sha256": "35d3bd747cd33e29a8dfcf27f814d07eb1b9acad5e25a7235d8c8f87e396528f",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/walk-b/request.json",
+      "promptProvenance": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/walk-b/request-provenance.json",
+      "exactPromptVerified": true,
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/walk-b/alpha-qa.json",
+      "sourceFoot": [
+        734,
+        959
+      ],
+      "soleMeasurements": [
+        {
+          "boot": "image-left",
+          "roi": [
+            395,
+            650,
+            550,
+            880
+          ],
+          "soleCenterXBottomFourRows": 489.26027397260276,
+          "soleY": 867
+        },
+        {
+          "boot": "image-right",
+          "roi": [
+            830,
+            850,
+            1090,
+            980
+          ],
+          "soleCenterXBottomFourRows": 978.2137931034483,
+          "soleY": 959
+        }
+      ],
+      "sourceRegistrationOffset": [
+        24,
+        8
+      ],
+      "logicalRegistrationOffset": [
+        1.149075081610446,
+        0.383025027203482
+      ],
+      "explicitTransparentPadding": {
+        "right": 1,
+        "bottom": 0
+      },
+      "rawPerimeterCountAlphaGreaterThan1": 0,
+      "rawPerimeterMaxAlpha": 0,
+      "fullCanvasBoundsInFrame": [
+        9.149075081610446,
+        4.383025027203482,
+        85.08378672470076,
+        51.87812840043525
+      ],
+      "visibleBoundsInFrame": [
+        28.635473340587595,
+        6.585418933623504,
+        69.47551686615887,
+        50.34602829162132
+      ],
+      "diagnosticPerimeterMaxAlpha": 0,
+      "semanticReview": "Lantern-side image-right forward boot flat and bearing weight; book-side image-left rear leg bent and raised92px above the support sole, reversing the walking support emphasis. Cloth follows the stride; hands/gear and face orientation stay unchanged. The lift is higher than prompt target but remains a clear opposite step."
+    }
+  ]
+}
