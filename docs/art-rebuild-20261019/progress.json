@@ -4385,13 +4385,19 @@
         "alphaVisualReview": "needs imagegen revision: broad cyan haze; raw only"
       },
       "assignment": "redraw_scifi_static_props",
-      "sourceSha256": "1ab7ce62e356bdba473f79a27ad9a73ee75d78579f09bbde7aef3cc2b59fbbae"
+      "sourceSha256": "1ab7ce62e356bdba473f79a27ad9a73ee75d78579f09bbde7aef3cc2b59fbbae",
+      "revisionCandidate": {
+        "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-overload-nodes/revision-2/master.png",
+        "sha256": "dbe6926ba95b251bdca90540f8b2ccfc892cda5328cbf659061b207613860c3f",
+        "status": "semantic-and-halo-review-pending"
+      }
     },
     {
       "topicId": "c02-battle-prop-permission-badges",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-permission-lights",
@@ -4414,7 +4420,8 @@
       "topicId": "c02-battle-prop-physical-film",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-platform-shields",
@@ -4448,7 +4455,8 @@
       "topicId": "c02-battle-prop-risk-list-evidence",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-seed-coolers",
@@ -4530,7 +4538,8 @@
       "topicId": "c02-battle-prop-tickets-manifests",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-water-barrels",
