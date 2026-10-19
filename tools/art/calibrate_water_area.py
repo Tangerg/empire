@@ -2,22 +2,9 @@
 """Calibration-only area water over explicitly supplied, unchanged water cells."""
 import argparse,hashlib,json
 from pathlib import Path
-from PIL import Image,ImageDraw
-from export_surface_overrides import match_edges
+from PIL import Image
+from water_area import water_area_mask, water_period
 NEIGHBORS=[(0,-1),(1,-1),(1,0),(1,1),(0,1),(-1,1),(-1,0),(-1,-1)]
-
-def water_area_mask(size,mask8):
-    if not 0<=mask8<=255 or size not in (32,64):raise ValueError('expected8bit mask and32/64 tile')
-    scale=4;s=size*scale;inset=round(s*.10)
-    n,ne,e,se,south,sw,w,nw=[bool(mask8&(1<<i)) for i in range(8)]
-    out=Image.new('L',(s,s));d=ImageDraw.Draw(out)
-    # Full shared edges; inset only at exposed shores. No cross-cell painting.
-    d.rectangle((0 if w else inset,0 if n else inset,s-1 if e else s-inset-1,s-1 if south else s-inset-1),fill=255)
-    # Preserve a concave land notch only where two cardinal water neighbors
-    # meet a genuinely absent diagonal. This never hollows a2xN interior.
-    for a,b,diagonal,cx,cy in [(n,w,nw,0,0),(n,e,ne,s,0),(south,e,se,s,s),(south,w,sw,0,s)]:
-        if a and b and not diagonal:d.ellipse((cx-inset,cy-inset,cx+inset,cy+inset),fill=0)
-    return out.resize((size,size),Image.Resampling.LANCZOS)
 
 def render_water_area(material,occupied,size=64,map_size=None,uv_cells=4):
     cells={tuple(p) for p in occupied}
@@ -26,15 +13,7 @@ def render_water_area(material,occupied,size=64,map_size=None,uv_cells=4):
     if source.width!=source.height or source.width<64 or source.convert('RGBA').getchannel('A').getextrema()!=(255,255):raise ValueError('square opaque material required')
     if type(uv_cells)!=int or uv_cells<1:raise ValueError('positive integer UV period required')
     period=size*uv_cells
-    tile=source.convert('RGB').resize((period,period),Image.Resampling.LANCZOS)
-    # Same bounded one-pixel opposite-edge matching at the larger UV period.
-    corner=tuple(round(sum(tile.getpixel((x,y))[c] for x,y in [(0,0),(period-1,0),(0,period-1),(period-1,period-1)])/4) for c in range(3))
-    for i in range(1,period-1):
-        horizontal=tuple(round((tile.getpixel((i,0))[c]+tile.getpixel((i,period-1))[c])/2) for c in range(3))
-        vertical=tuple(round((tile.getpixel((0,i))[c]+tile.getpixel((period-1,i))[c])/2) for c in range(3))
-        tile.putpixel((i,0),horizontal);tile.putpixel((i,period-1),horizontal)
-        tile.putpixel((0,i),vertical);tile.putpixel((period-1,i),vertical)
-    for xy in [(0,0),(period-1,0),(0,period-1),(period-1,period-1)]:tile.putpixel(xy,corner)
+    tile=water_period(source,period)
     left=min(x for x,y in cells);top=min(y for x,y in cells);right=max(x for x,y in cells)+1;bottom=max(y for x,y in cells)+1
     if map_size is not None:
         if len(map_size)!=2 or any(type(v)!=int or v<=0 for v in map_size) or any(x<0 or y<0 or x>=map_size[0] or y>=map_size[1] for x,y in cells):raise ValueError('cells outside declared map')

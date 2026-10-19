@@ -1,0 +1,54 @@
+{
+  "selectedLogicalPeriod": [
+    128,
+    128
+  ],
+  "sourcePixelsPerWorldUnit": [
+    2,
+    2
+  ],
+  "evidence": "offline Inkscape display-1x/2x rendering of actual BoardPieces",
+  "cropChecks": [
+    {
+      "kind": "field",
+      "density": 1,
+      "exactPixelMatch": true,
+      "maximumChannelDifference": 0,
+      "note": "World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips"
+    },
+    {
+      "kind": "field",
+      "density": 2,
+      "exactPixelMatch": true,
+      "maximumChannelDifference": 0,
+      "note": "World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips"
+    },
+    {
+      "kind": "integration",
+      "density": 1,
+      "exactPixelMatch": false,
+      "maximumChannelDifference": 2,
+      "note": "World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips"
+    },
+    {
+      "kind": "integration",
+      "density": 2,
+      "exactPixelMatch": false,
+      "maximumChannelDifference": 1,
+      "note": "World material requires exact pixels; integration also contains independently antialiased legacy atlas/prop clips"
+    }
+  ],
+  "fullLogicalExtent": [
+    704,
+    448
+  ],
+  "browserPlayback": false,
+  "repeatSeamVisualReview": "required separately; these tests prove phase, not artistic tiling",
+  "waterCalibrationComparison": {
+    "native2xAlphaExact": true,
+    "native2xOpaqueRGBExact": true,
+    "outsideOccupiedCellsAlpha": 0,
+    "waterAndBridgeCellCount": 28,
+    "comparison": "Actual SVG raster against approved occupancy/UV calibration; transparent RGB ignored"
+  }
+}

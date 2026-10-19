@@ -37,6 +37,26 @@ def compare_retained(directory, baseline):
     return result
 
 
+def validate_water_render(directory, provenance):
+    from calibrate_water_area import render_water_area
+    root = Path(__file__).resolve().parents[2]
+    source = root / 'packages/story-candidate-01/assets/final-fantasy-v1' / provenance['material']['source']
+    expected, _ = render_water_area(source, provenance['waterAndBridgeCells'], 64, provenance['mapSize'])
+    with Image.open(directory / 'field-full@2x.png') as image:
+        actual = image.convert('RGBA')
+    if actual.size != expected.size:
+        raise ValueError('runtime water extent differs from the actual map')
+    difference = ImageChops.difference(actual, expected)
+    if difference.getchannel('A').getextrema()[1]:
+        raise ValueError('runtime water alpha differs from the approved occupancy geometry')
+    opaque = expected.getchannel('A').point(lambda value: 255 if value == 255 else 0)
+    if any(ImageChops.multiply(channel, opaque).getextrema()[1] for channel in difference.split()[:3]):
+        raise ValueError('runtime water RGB differs from world-coordinate material sampling')
+    return {'native2xAlphaExact': True, 'native2xOpaqueRGBExact': True,
+            'outsideOccupiedCellsAlpha': 0, 'waterAndBridgeCellCount': len(provenance['waterAndBridgeCells']),
+            'comparison': 'Actual SVG raster against approved occupancy/UV calibration; transparent RGB ignored'}
+
+
 def render(directory):
     names = sorted(path.stem for path in directory.glob('*.svg') if not path.name.endswith('.offline.svg'))
     with tempfile.TemporaryDirectory() as profile:
@@ -54,11 +74,13 @@ def render(directory):
                                 f'--export-filename={directory / f"{name}@{density}x.png"}'],
                                env={**os.environ, 'INKSCAPE_PROFILE_DIR': profile}, check=True, capture_output=True)
             normalized.unlink()
+    provenance = json.loads((directory / 'runtime-provenance.json').read_text())
+    x, y, w, h = provenance['cropWorldBox']
     crops = []
     for kind in ('field', 'integration'):
         for density in (1, 2):
             with Image.open(directory / f'{kind}-full@{density}x.png') as full, Image.open(directory / f'{kind}-seam-crop@{density}x.png') as cropped:
-                expected = full.crop(tuple(n * density for n in (448, 64, 704, 320))).convert('RGBA')
+                expected = full.crop(tuple(n * density for n in (x, y, x + w, y + h))).convert('RGBA')
                 difference = ImageChops.difference(expected, cropped.convert('RGBA'))
                 # Compare color channels as well: RGBA getbbox alone may ignore
                 # color differences when the alpha difference is identically zero.
@@ -74,6 +96,8 @@ def render(directory):
               'evidence': 'offline Inkscape display-1x/2x rendering of actual BoardPieces', 'cropChecks': crops,
               'fullLogicalExtent': [704, 448], 'browserPlayback': False,
               'repeatSeamVisualReview': 'required separately; these tests prove phase, not artistic tiling'}
+    if provenance['material']['id'] == 'water-area':
+        result['waterCalibrationComparison'] = validate_water_render(directory, provenance)
     (directory / 'raster-validation.json').write_text(json.dumps(result, indent=2) + '\n')
     return result
 

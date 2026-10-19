@@ -9,10 +9,12 @@ import { CANDIDATE_01_CONTENT_PACK, candidate01Level } from '@empire/story-candi
 import { candidate01MapSceneryLayers } from '../../packages/story-candidate-01/src/presentation/candidate-01-map-scene';
 import { candidate01TerrainMarkup, candidate01UnitPicture } from '../../packages/story-candidate-01/src/presentation/candidate-01-runtime';
 import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from '../../packages/story-candidate-01/src/presentation/candidate-01-field-material';
+import { CANDIDATE_01_WATER_MATERIAL } from '../../packages/story-candidate-01/src/presentation/candidate-01-water-material';
 import { candidateReviewViewport } from './candidate_review_viewport';
 
 const root = resolve(import.meta.dirname, '../..');
 const output = resolve(process.env.GROUND_REVIEW_OUTPUT ?? `docs/art-rebuild-20261019/approved-v5/ground-runtime-${CANDIDATE_01_FIELD_MATERIAL.logicalSize[0]}`);
+const waterReview = process.env.GROUND_REVIEW_LAYER === 'water';
 const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const level = candidate01Level('c01-02');
 const map = mapFromLevel(content, level);
@@ -36,7 +38,9 @@ const units = level.units.map((unit) => {
 const width = map.width * TILE;
 const height = map.height * TILE;
 const field = candidate01FieldMaterialPieces(width, height);
-const world = boardPiecesMarkup(field);
+const sampled = waterReview ? layers.ground.filter((piece) => piece.markup.includes('data-runtime-raster="area-water"')) : field;
+const world = boardPiecesMarkup(sampled);
+const crop = waterReview ? [288, 96, 128, 256] : [448, 64, 256, 256];
 const upper = [...layers.ground.slice(field.length), ...layers.underUnits, ...buildings, ...units, ...layers.overUnits];
 const integration = boardPiecesMarkup([...field, ...upper]);
 // Preserve the 512-unit/native-2x alternative without changing source pixels.
@@ -57,23 +61,27 @@ mkdirSync(output, { recursive: true });
 for (const [name, body, box] of [
   ['field-full', world, [0, 0, width, height]],
   ['integration-full', integration, [0, 0, width, height]],
-  ['field-seam-crop', world, [448, 64, 256, 256]],
-  ['integration-seam-crop', integration, [448, 64, 256, 256]],
+  ['field-seam-crop', world, crop],
+  ['integration-seam-crop', integration, crop],
   ['field-high-density-alternative', alternativeWorld, [0, 0, width, height]],
   ['integration-high-density-alternative', alternativeIntegration, [0, 0, width, height]],
   ['field-high-density-crop-alternative', alternativeWorld, [448, 64, 256, 256]],
   ['integration-high-density-crop-alternative', alternativeIntegration, [448, 64, 256, 256]],
-] as const) writeFileSync(resolve(output, `${name}.svg`), svg(body, box));
+] as const) {
+  if (!waterReview || !name.includes('alternative')) writeFileSync(resolve(output, `${name}.svg`), svg(body, box));
+}
 writeFileSync(resolve(output, 'runtime-provenance.json'), JSON.stringify({
   kind: 'offline real BoardPieces diagnostic; not a live gameplay screenshot',
   levelId: level.id, mapSize: [map.width, map.height], logicalExtent: [width, height],
-  material: CANDIDATE_01_FIELD_MATERIAL, fieldPieces: field,
+  material: waterReview ? CANDIDATE_01_WATER_MATERIAL : CANDIDATE_01_FIELD_MATERIAL, fieldPieces: sampled,
+  waterAndBridgeCells: map.tiles.flatMap((id, index) => id === 'water' || id === 'bridge' ? [[index % map.width, Math.floor(index / map.width)]] : []),
   layerCounts: Object.fromEntries(Object.entries(layers).map(([key, value]) => [key, value.length])),
   buildingCount: buildings.length, unitCount: units.length,
   mapSha256: createHash('sha256').update(before).digest('hex'), gameplayTopologyChanged: false,
   provenance: 'candidate01MapSceneryLayers + candidate01TerrainMarkup + candidate01UnitPicture; no SVG material substitutions',
-  cropWorldBox: [448, 64, 256, 256],
-  samplingComparison: { selectedRuntimePeriod: CANDIDATE_01_FIELD_MATERIAL.logicalSize,
+  cropWorldBox: crop,
+  samplingComparison: waterReview ? { selectedRuntimePeriod: CANDIDATE_01_WATER_MATERIAL.logicalSize,
+    status: '128 selected; full-map visible ribbon/plane repeats at y=128/256/384, visual gate pending' } : { selectedRuntimePeriod: CANDIDATE_01_FIELD_MATERIAL.logicalSize,
     highDensityAlternativePeriod: CANDIDATE_01_FIELD_MATERIAL.rasterSize, worldOrigin: [0, 0],
     selectedPixelsPerWorldUnit: CANDIDATE_01_FIELD_MATERIAL.rasterPixelsPerWorldUnit,
     alternativePixelsPerWorldUnit: [2, 2],
@@ -82,6 +90,6 @@ writeFileSync(resolve(output, 'runtime-provenance.json'), JSON.stringify({
     densityWarning: 'Display 2x of the selected broad field is enlarged existing art, not new native2x source detail' },
   limitations: ['Static initial unit poses, no animation, browser or GPU playback',
     'Explicit diagnostic blue/red owner colors; no HUD, camera effects or CSS lighting',
-    'Legacy shore, water, road, non-base surfaces and decals remain visible; only base meadow changed'],
+    'Legacy shore, road, crossings, non-base surfaces and decals remain visible; buildings may overlap'],
 }, null, 2) + '\n');
 console.log(output);

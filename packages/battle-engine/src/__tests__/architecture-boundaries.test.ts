@@ -1854,6 +1854,9 @@ describe('behaviour has an owner', () => {
       'utf8',
     );
     expect(painted).toMatch(/candidate01PaintsCells = \(corners: number\)/);
+    expect(painted).toContain("from './candidate-01-square-mask'");
+    const water = readFileSync(join(packagesRoot, 'story-candidate-01', 'src', 'presentation', 'candidate-01-water-material.ts'), 'utf8');
+    expect(water).toContain("from './candidate-01-square-mask'");
     const port = readFileSync(join(packagesRoot, 'game-ui', 'src', 'ui', 'board.ts'), 'utf8');
     expect(port).toMatch(/paintsCells\(this\.presentation, corners\)/);
     expect(offenders).toEqual([]);
@@ -1898,6 +1901,8 @@ describe('behaviour has an owner', () => {
       // may not do is draw a board it cannot paint, and it refuses one instead,
       // asking the tiling for the shape of its own cell.
       join('story-candidate-01', 'src', 'presentation', 'candidate-01-map-scene.ts'),
+      // The same square-sheet mask owner is shared by transitions and area water.
+      join('story-candidate-01', 'src', 'presentation', 'candidate-01-square-mask.ts'),
     ];
     // Every workspace package and every application entry point, because the
     // module that measures is exactly the one nobody thinks to scan.
@@ -1922,6 +1927,9 @@ describe('behaviour has an owner', () => {
       'utf8',
     );
     expect(painted).toMatch(/candidate01PaintsCells = \(corners: number\)/);
+    expect(painted).toContain("from './candidate-01-square-mask'");
+    const water = readFileSync(join(packagesRoot, 'story-candidate-01', 'src', 'presentation', 'candidate-01-water-material.ts'), 'utf8');
+    expect(water).toContain("from './candidate-01-square-mask'");
     const port = readFileSync(join(packagesRoot, 'game-ui', 'src', 'ui', 'board.ts'), 'utf8');
     expect(port).toMatch(/paintsCells\(this\.presentation, corners\)/);
     expect(offenders).toEqual([]);

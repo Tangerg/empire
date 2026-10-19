@@ -108,7 +108,7 @@ describe('battle presentation', () => {
     const ground = boardPiecesMarkup(
       presentation.sceneLayers({ content: catalog, levelId: 'probe', map, viewport }).ground,
     );
-    expect(ground).toContain('water-slow-river');
+    expect(ground).toContain('water-area@2x.png');
   });
 
   it('paints a level the campaign never authored a scene for', () => {

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export the approved world field without changing its UV scale or source art."""
+"""Export approved world materials without changing their UV scale or source art."""
 import argparse
 import hashlib
 import io
@@ -42,7 +42,8 @@ def pixel_hash(image):
 def plan(root, manifest):
     data = read_json(manifest)
     required = {'schemaVersion', 'id', 'replaces', 'source', 'sourceSha256', 'logicalSize', 'rasterSize', 'worldOrigin', 'fit', 'png', 'png2x'}
-    if set(data) != required or data['schemaVersion'] != 2:
+    water = 'occupancy' in data
+    if set(data) != required | ({'occupancy'} if water else set()) or data['schemaVersion'] != 2:
         raise ValueError('expected field material schemaVersion 2')
     size = data['logicalSize']
     if not isinstance(size, list) or len(size) != 2 or any(type(n) is not int or n < 3 for n in size):
@@ -55,12 +56,21 @@ def plan(root, manifest):
     if data['worldOrigin'] != [0, 0] or data['fit'] != {'inset': 0, 'bleed': 0}:
         raise ValueError('world field requires zero origin and uncropped fit')
     binding = data['replaces']
-    if not isinstance(binding, dict) or set(binding) != {'atlas', 'tone'}:
-        raise ValueError('expected an explicit atlas/tone replacement')
+    if not isinstance(binding, dict) or set(binding) != ({'atlas', 'mask'} if water else {'atlas', 'tone'}):
+        raise ValueError('expected an explicit material replacement')
     pack = root / PACK
     environment = read_json(pack / 'environment-builder-v1/manifest-environment-builder-v1.json')
     matches = [atlas for atlas in environment['atlases'] if atlas['id'] == binding['atlas']]
-    if len(matches) != 1 or matches[0]['category'] != 'base-surface' or type(binding['tone']) is not int or not 0 <= binding['tone'] < matches[0]['variants']:
+    if water:
+        if len(matches) != 1 or binding != {'atlas': 'water-slow-river', 'mask': 'same'}:
+            raise ValueError('replacement does not identify the existing water material')
+        occupancy = data['occupancy']
+        expected = {'tileSize': 32, 'columns': 16, 'rows': 16, 'bitOrder': ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'],
+                    'geometry': 'full-shared-interiors-exposed-shore-inset-concave-notch-v1',
+                    'png': 'runtime/water-masks.png', 'png2x': 'runtime/water-masks@2x.png'}
+        if occupancy != expected or size != [128, 128] or raster_size != size:
+            raise ValueError('water requires approved 128-unit world sampling and complete occupancy atlas')
+    elif len(matches) != 1 or matches[0]['category'] != 'base-surface' or type(binding['tone']) is not int or not 0 <= binding['tone'] < matches[0]['variants']:
         raise ValueError('replacement does not identify one existing surface material')
     source = within(pack, data['source'])
     if not source.is_relative_to((pack / 'masters').resolve()):
@@ -83,7 +93,11 @@ def plan(root, manifest):
             raise ValueError('field output must be a PNG in its runtime directory')
         dimensions = tuple(n * density for n in raster_size)
         resized = image.resize(dimensions, Image.Resampling.LANCZOS)
-        exported = match_period_edges(resized)
+        if water:
+            from water_area import water_period
+            exported = water_period(image, dimensions[0])
+        else:
+            exported = match_period_edges(resized)
         width, height = dimensions
         report = {
             'id': data['id'], 'source': str(source.relative_to(root)),
@@ -103,6 +117,22 @@ def plan(root, manifest):
         planned.append((target, exported, report))
     if planned[0][0] == planned[1][0]:
         raise ValueError('density outputs must have distinct paths')
+    if water:
+        from water_area import water_area_mask
+        for density, key in ((1, 'png'), (2, 'png2x')):
+            cell_size = occupancy['tileSize'] * density
+            atlas = Image.new('RGBA', (cell_size * 16, cell_size * 16))
+            for mask in range(256):
+                cell = Image.new('RGBA', (cell_size, cell_size), (255, 255, 255, 255))
+                cell.putalpha(water_area_mask(cell_size, mask))
+                atlas.paste(cell, (mask % 16 * cell_size, mask // 16 * cell_size))
+            target = within(manifest.parent, occupancy[key])
+            planned.append((target, atlas, {'id': 'water-occupancy-masks', 'output': str(target.relative_to(root)),
+                           'exportDensity': density, 'size': list(atlas.size), 'logicalCellSize': occupancy['tileSize'],
+                           'geometry': occupancy['geometry'], 'bitOrder': occupancy['bitOrder'],
+                           'pixelSha256': pixel_hash(atlas), 'source': 'approved reusable technical occupancy mask, not painted art'}))
+    if len({target for target, _, _ in planned}) != len(planned):
+        raise ValueError('material and mask outputs must have distinct paths')
     return planned
 
 
@@ -122,5 +152,6 @@ def export(root, manifest, check=False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
+    parser.add_argument('--manifest', type=Path, default=MANIFEST)
     args = parser.parse_args()
-    print(json.dumps(export(ROOT, ROOT / MANIFEST, args.check), indent=2))
+    print(json.dumps(export(ROOT, ROOT / args.manifest, args.check), indent=2))

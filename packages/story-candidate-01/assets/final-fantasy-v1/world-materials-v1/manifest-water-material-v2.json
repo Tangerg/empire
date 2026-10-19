@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 2,
+  "id": "water-area",
+  "replaces": {
+    "atlas": "water-slow-river",
+    "mask": "same"
+  },
+  "source": "masters/approved-v5/water-material/master.png",
+  "sourceSha256": "964060ad3b47cca968a2fb26a8e5f0bee8bad630895362119c7b08385f89afff",
+  "logicalSize": [
+    128,
+    128
+  ],
+  "rasterSize": [
+    128,
+    128
+  ],
+  "worldOrigin": [
+    0,
+    0
+  ],
+  "fit": {
+    "inset": 0,
+    "bleed": 0
+  },
+  "png": "runtime/water-area.png",
+  "png2x": "runtime/water-area@2x.png",
+  "occupancy": {
+    "tileSize": 32,
+    "columns": 16,
+    "rows": 16,
+    "bitOrder": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "geometry": "full-shared-interiors-exposed-shore-inset-concave-notch-v1",
+    "png": "runtime/water-masks.png",
+    "png2x": "runtime/water-masks@2x.png"
+  }
+}

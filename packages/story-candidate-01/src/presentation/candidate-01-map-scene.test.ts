@@ -106,8 +106,8 @@ describe('candidate-01 authored map scenery', () => {
       .filter((piece) => piece.markup.includes('/surface-'))
       .map((piece) => piece.markup);
     expect(new Set(surfaces).size).toBe(2);
-    // And every piece says where it goes, rather than carrying it inside.
-    expect(layers.ground.every((piece) => !piece.markup.includes('translate') || piece.markup.includes('scale')))
+    // Board position stays external; area-water masks also place cells inside their shared texture block.
+    expect(layers.ground.every((piece) => !piece.markup.includes('translate') || piece.markup.includes('scale') || piece.markup.includes('data-runtime-raster="area-water"')))
       .toBe(true);
   });
 
@@ -203,7 +203,7 @@ describe('candidate-01 authored map scenery', () => {
 
     expect(map.tiles).toContain('water');
     expect(map.tiles).toContain('bridge');
-    expect(ground).toContain('water-slow-river');
+    expect(ground).toContain('water-area@2x.png');
     expect(ground).toContain('transition-meadow-forest');
     expect(standing).toContain('crossings-fortifications');
     // A wood's edge carries the tall-prop shadow; its inside carries undergrowth.

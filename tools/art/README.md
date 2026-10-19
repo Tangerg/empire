@@ -267,3 +267,16 @@ independent32/64 resizing plus approved one-pixel self-edge matching. There is
 no mask drawing, dilation, blur, alpha extraction, source mutation or palette
 adjustment. Run --check and preview_transition.py after export; a matching alpha
 hash is a geometry guarantee, not visual transition acceptance.
+
+## Formal reusable area water
+
+The world-material exporter also reads `world-materials-v1/manifest-water-material-v2.json`
+with `--manifest`. Its checksummed approved source is resized full-canvas at
+128/256 physical pixels, with only the approved outermost-pixel average. The
+separate white/alpha mask atlases contain all 256 eight-neighbour states at32/64
+pixels. `water_area.py` owns the previously approved occupancy geometry; both
+calibration and formal export use it. The runtime selects masks from actual
+water/bridge cells and draws one source image per128logical world block. No
+baked c01-02 background, per-cell texture reset, source painting or recolor is used.
+`--check` validates source/mask reproducibility. Full native evidence and remaining
+repeat seams are documented in `docs/art-rebuild-20261019/approved-v5/water-runtime`.

@@ -1,3 +1,4 @@
+import { candidate01BlobMask as blobMask } from './candidate-01-square-mask';
 import { tileHash, type ContentCatalog, type GameMap, type TerrainId, inBounds, idx} from '@empire/battle-engine';
 import { candidate01Asset } from './candidate-01-assets';
 import {
@@ -18,6 +19,7 @@ import {
   type BoardPiece,
   type BattleSceneContext,
 } from '@empire/game-ui';
+import { candidate01IsAreaWater, candidate01WaterMaterialPieces } from './candidate-01-water-material';
 import { CANDIDATE_01_BOARD_STYLE } from './candidate-01-board-style';
 import { CANDIDATE_01_FIELD_MATERIAL, candidate01FieldMaterialPieces } from './candidate-01-field-material';
 import {
@@ -211,7 +213,7 @@ const surfaceMarkup = (atlasId: string, tone: number): string =>
 /** Does this cell hold water? A crossing does: the river runs under its deck. */
 const isWater = (content: ContentCatalog, map: GameMap, x: number, y: number): boolean => {
   const id = tileAt(map, x, y);
-  return id !== null && candidateMaterial(content, id).connected?.mask === 'same';
+  return id !== null && candidate01IsAreaWater(candidateMaterial(content, id));
 };
 
 /**
@@ -234,16 +236,6 @@ const materialField = (content: ContentCatalog, map: GameMap): MaterialField => 
 };
 
 /**
- * The eight cells a blob sheet counts, in the bit order the kit numbers them.
- *
- * `["N","NE","E","SE","S","SW","W","NW"]`, which every transition atlas in the
- * manifest declares as its `bitOrder`. These are the square tiling's neighbours,
- * written out rather than asked of the board — see `candidate01PaintsCells`, which
- * is where this pack says out loud that its sheets only fit a square field.
- */
-const NEIGHBOURS = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]] as const;
-
-/**
  * This kit paints square cells and nothing else.
  *
  * Every sheet in it is a 32-unit square: the surfaces, the blob transitions
@@ -256,20 +248,6 @@ const NEIGHBOURS = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], 
  * a map owe the reader different things — see `BattlePresentation.paintsCells`.
  */
 export const candidate01PaintsCells = (corners: number): boolean => corners === 4;
-
-/**
- * The eight-neighbour mask a blob transition sheet is indexed by.
- *
- * One of these, taking the question. There were two — one asking whether a
- * neighbour blends with the same sheet, one asking whether it is a river bank —
- * and they were the same eight shifts written out twice, which is one more place
- * for a bit to be in the wrong position than the kit's `bitOrder` deserves.
- */
-const blobMask = (x: number, y: number, joins: (x: number, y: number) => boolean): number =>
-  NEIGHBOURS.reduce(
-    (mask, [dx, dy], bit) => (joins(x + dx, y + dy) ? mask | (1 << bit) : mask),
-    0,
-  );
 
 /** The four-neighbour mask a connected sheet is indexed by. */
 function connectedMask(
@@ -337,7 +315,7 @@ function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
         blends.push({ markup: atlasCellMarkup(CANDIDATE_SHORE, cell), ...at });
       }
 
-      if (material.connected) {
+      if (material.connected && !candidate01IsAreaWater(material)) {
         const mask = connectedMask(content, field, map, material.connected, x, y);
         const variant = Math.floor(tileHash(x, y, 1102) * 4);
         const cell = CANDIDATE_01_ENVIRONMENT.connectedIndex(material.connected.atlas, mask, variant);
@@ -387,7 +365,8 @@ function groundPieces(content: ContentCatalog, map: GameMap): BoardPiece[] {
       }
     }
   }
-  return [...surfaces, ...blends, ...connections, ...detail];
+  const water = candidate01WaterMaterialPieces(map.width, map.height, (x, y) => isWater(content, map, x, y));
+  return [...surfaces, ...blends, ...water, ...connections, ...detail];
 }
 
 function authoredPlacementPieces(
