@@ -36,9 +36,13 @@ def render(directory):
     environment = ROOT / PACK / 'environment-builder-v1'
     manifest = json.loads((environment / 'manifest-environment-builder-v1.json').read_text())
     for asset in report['assets']:
-        atlas = next(a for a in manifest['atlases'] if asset['id'] in a.get('cellOrder', []) )
+        matches = [(atlas, cell.get('index', index))
+                   for atlas in manifest['atlases']
+                   for index, cell in enumerate(atlas.get('cells', [])) if cell['id'] == asset['id']]
+        if len(matches) != 1:
+            raise ValueError(f'expected one semantic environment cell: {asset["id"]}')
+        atlas, index = matches[0]
         with Image.open(environment / atlas['png2x']) as image:
-            index = atlas['cellOrder'].index(asset['id'])
             alpha = image.crop(cell_box(index, atlas['cellWidth2x'], atlas['columns'])).getchannel('A')
             bounds = alpha.point(lambda value: 255 if value >= 128 else 0).getbbox()
             logical_bounds = [value / 2 for value in bounds]

@@ -1,0 +1,2110 @@
+{
+  "kind": "Read-only actual whole-scene cliff source audit",
+  "sourceWorkingTreeHead": "73d8db5 at inspection; exact source and capture hashes below",
+  "sources": {
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/cliffs-temperate-4x4-key.png": "1f841cf9f063d0c8a22791609200f5cba1c3d7b702e07dd72e85d2514493117f",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/intermediate/alpha/cliffs-temperate-4x4.png": "4da26d7c3db032136052f7fc0966f306a32c79c5af02159dbb7ea3fbfd73afba",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate.png": "4580f4a694ba72e879cc9d822c810847ff36086991b1265c70c26ef142e179a5",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png": "8d710897d4f850facb37f1dd9168f27c9cc749fb23e66b13eb85b12afc0e70a8",
+    "packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/elevation-auto-temperate@2x.png": "68628001321a94216f970940cfae24fd7f2071952079eef01fb22b232209a10a"
+  },
+  "atlas": {
+    "id": "cliff-modules-temperate",
+    "png": "runtime/atlas/cliff-modules-temperate.png",
+    "png2x": "runtime/atlas/cliff-modules-temperate@2x.png",
+    "columns": 4,
+    "rows": 4,
+    "cellWidth": 128,
+    "cellHeight": 128,
+    "cellWidth2x": 256,
+    "cellHeight2x": 256,
+    "componentCount": 16,
+    "category": "elevation-module",
+    "tileMode": "modules",
+    "cellOrder": [
+      "straight-south",
+      "end-west",
+      "end-east",
+      "concave-corner",
+      "hill-cap",
+      "ramp-level-1",
+      "ramp-level-2",
+      "mountain-pass",
+      "convex-corner",
+      "broken-ledge",
+      "low-ledge",
+      "talus-foot",
+      "pillar-wide",
+      "pillar-narrow",
+      "ledge-end",
+      "plateau-cap"
+    ],
+    "heightDeltaRange": [
+      1,
+      2
+    ],
+    "anchor": [
+      64,
+      127
+    ],
+    "ySort": "bottom-anchor",
+    "rampCells": [
+      5,
+      6,
+      7
+    ],
+    "blockingByDefault": true,
+    "cells": [
+      {
+        "id": "temperate-cliff-straight-south",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      {
+        "id": "temperate-cliff-end-west",
+        "footprint": [
+          1,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      {
+        "id": "temperate-cliff-end-east",
+        "footprint": [
+          1,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      {
+        "id": "temperate-cliff-concave-corner",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      {
+        "id": "temperate-hill-cap",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      {
+        "id": "temperate-ramp-level-1",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "heightDelta": 1,
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      {
+        "id": "temperate-ramp-level-2",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "heightDelta": 2,
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      {
+        "id": "temperate-mountain-pass",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "heightDelta": 1,
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      {
+        "id": "temperate-cliff-convex-corner",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      {
+        "id": "temperate-broken-ledge",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      {
+        "id": "temperate-low-ledge",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      {
+        "id": "temperate-talus-foot",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      {
+        "id": "temperate-pillar-wide",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 2,
+        "passable": false
+      },
+      {
+        "id": "temperate-pillar-narrow",
+        "footprint": [
+          1,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 2,
+        "passable": false
+      },
+      {
+        "id": "temperate-ledge-end",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      {
+        "id": "temperate-plateau-cap",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "level": "c01-01",
+      "snapshotDirectory": "docs/art-rebuild-20261019/approved-v5/first-level-integrated-current",
+      "snapshotSvgSha256": "d55ac6cc1c3ab2cd53b80ce0a6425a77310e2bebf70dd64cf66c60cdc1bdfdc7",
+      "snapshotProvenanceSha256": "daaa6889e584ee8e27dc1c54e24ac3094267f218de858e3ffc5932fd3b403e7f",
+      "viewport": [
+        0,
+        0,
+        1012,
+        680
+      ],
+      "actorCount": 19,
+      "ruleBuildingCount": 4,
+      "cliffInstances": [
+        {
+          "id": "temperate-plateau-cap",
+          "index": 15,
+          "scale": 0.676,
+          "sourceId": "scenery:40",
+          "worldFoot": [
+            241.3764,
+            101.75999999999999
+          ],
+          "displayIndex": 39,
+          "flip": true
+        },
+        {
+          "id": "temperate-pillar-wide",
+          "index": 12,
+          "scale": 0.586,
+          "sourceId": "scenery:41",
+          "worldFoot": [
+            274.25606,
+            101.75999999999999
+          ],
+          "displayIndex": 40,
+          "flip": true
+        },
+        {
+          "id": "temperate-plateau-cap",
+          "index": 15,
+          "scale": 0.575,
+          "sourceId": "scenery:42",
+          "worldFoot": [
+            302.31076,
+            101.75999999999999
+          ],
+          "displayIndex": 41,
+          "flip": false
+        },
+        {
+          "id": "temperate-mountain-pass",
+          "index": 7,
+          "scale": 0.601,
+          "sourceId": "scenery:43",
+          "worldFoot": [
+            338.74566,
+            101.75999999999999
+          ],
+          "displayIndex": 42,
+          "flip": false
+        },
+        {
+          "id": "temperate-plateau-cap",
+          "index": 15,
+          "scale": 0.623,
+          "sourceId": "scenery:50",
+          "worldFoot": [
+            242.78094,
+            133.76
+          ],
+          "displayIndex": 51,
+          "flip": true
+        },
+        {
+          "id": "temperate-pillar-wide",
+          "index": 12,
+          "scale": 0.654,
+          "sourceId": "scenery:51",
+          "worldFoot": [
+            270.0782,
+            133.76
+          ],
+          "displayIndex": 52,
+          "flip": true
+        },
+        {
+          "id": "temperate-plateau-cap",
+          "index": 15,
+          "scale": 0.612,
+          "sourceId": "scenery:52",
+          "worldFoot": [
+            305.38246,
+            133.76
+          ],
+          "displayIndex": 53,
+          "flip": true
+        },
+        {
+          "id": "temperate-mountain-pass",
+          "index": 7,
+          "scale": 0.603,
+          "sourceId": "scenery:53",
+          "worldFoot": [
+            335.47692,
+            133.76
+          ],
+          "displayIndex": 54,
+          "flip": false
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 0.485,
+          "sourceId": "scenery:54",
+          "worldFoot": [
+            369.1869,
+            133.76
+          ],
+          "displayIndex": 55,
+          "flip": true
+        },
+        {
+          "id": "temperate-cliff-convex-corner",
+          "index": 8,
+          "scale": 0.647,
+          "sourceId": "scenery:59",
+          "worldFoot": [
+            241.18818,
+            165.76
+          ],
+          "displayIndex": 61,
+          "flip": true
+        },
+        {
+          "id": "temperate-cliff-convex-corner",
+          "index": 8,
+          "scale": 0.66,
+          "sourceId": "scenery:60",
+          "worldFoot": [
+            273.1784,
+            165.76
+          ],
+          "displayIndex": 62,
+          "flip": true
+        },
+        {
+          "id": "temperate-pillar-wide",
+          "index": 12,
+          "scale": 0.66,
+          "sourceId": "scenery:61",
+          "worldFoot": [
+            303.26158,
+            165.76
+          ],
+          "displayIndex": 63,
+          "flip": false
+        },
+        {
+          "id": "temperate-plateau-cap",
+          "index": 15,
+          "scale": 0.584,
+          "sourceId": "scenery:62",
+          "worldFoot": [
+            337.26912,
+            165.76
+          ],
+          "displayIndex": 64,
+          "flip": false
+        },
+        {
+          "id": "temperate-low-ledge",
+          "index": 10,
+          "scale": 0.579,
+          "sourceId": "scenery:63",
+          "worldFoot": [
+            366.38825,
+            165.76
+          ],
+          "displayIndex": 65,
+          "flip": false
+        },
+        {
+          "id": "temperate-talus-foot",
+          "index": 11,
+          "scale": 0.472,
+          "sourceId": "scenery:65",
+          "worldFoot": [
+            527.77495,
+            165.76
+          ],
+          "displayIndex": 67,
+          "flip": true
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 0.492,
+          "sourceId": "scenery:66",
+          "worldFoot": [
+            557.8846,
+            165.76
+          ],
+          "displayIndex": 68,
+          "flip": false
+        },
+        {
+          "id": "temperate-talus-foot",
+          "index": 11,
+          "scale": 0.497,
+          "sourceId": "scenery:67",
+          "worldFoot": [
+            591.6071,
+            165.76
+          ],
+          "displayIndex": 69,
+          "flip": false
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 1.0,
+          "sourceId": "scenery:179",
+          "worldFoot": [
+            259.2,
+            192
+          ],
+          "displayIndex": 75,
+          "flip": false
+        },
+        {
+          "id": "temperate-pillar-wide",
+          "index": 12,
+          "scale": 0.6,
+          "sourceId": "scenery:72",
+          "worldFoot": [
+            240.74616,
+            197.76
+          ],
+          "displayIndex": 77,
+          "flip": false
+        },
+        {
+          "id": "temperate-plateau-cap",
+          "index": 15,
+          "scale": 0.574,
+          "sourceId": "scenery:73",
+          "worldFoot": [
+            269.22698,
+            197.76
+          ],
+          "displayIndex": 78,
+          "flip": true
+        },
+        {
+          "id": "temperate-pillar-wide",
+          "index": 12,
+          "scale": 0.578,
+          "sourceId": "scenery:74",
+          "worldFoot": [
+            306.0538,
+            197.76
+          ],
+          "displayIndex": 79,
+          "flip": false
+        },
+        {
+          "id": "temperate-plateau-cap",
+          "index": 15,
+          "scale": 0.645,
+          "sourceId": "scenery:75",
+          "worldFoot": [
+            333.53334,
+            197.76
+          ],
+          "displayIndex": 80,
+          "flip": false
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 0.501,
+          "sourceId": "scenery:76",
+          "worldFoot": [
+            592.87245,
+            197.76
+          ],
+          "displayIndex": 81,
+          "flip": true
+        },
+        {
+          "id": "temperate-low-ledge",
+          "index": 10,
+          "scale": 0.567,
+          "sourceId": "scenery:77",
+          "worldFoot": [
+            625.4934,
+            197.76
+          ],
+          "displayIndex": 82,
+          "flip": false
+        },
+        {
+          "id": "temperate-cliff-convex-corner",
+          "index": 8,
+          "scale": 1.0,
+          "sourceId": "scenery:181",
+          "worldFoot": [
+            224,
+            217.6
+          ],
+          "displayIndex": 84,
+          "flip": false
+        },
+        {
+          "id": "temperate-cliff-straight-south",
+          "index": 0,
+          "scale": 1.0,
+          "sourceId": "scenery:180",
+          "worldFoot": [
+            313.6,
+            217.6
+          ],
+          "displayIndex": 85,
+          "flip": false
+        },
+        {
+          "id": "temperate-ramp-level-2",
+          "index": 6,
+          "scale": 1.0,
+          "sourceId": "scenery:182",
+          "worldFoot": [
+            345.6,
+            233.6
+          ],
+          "displayIndex": 93,
+          "flip": false
+        },
+        {
+          "id": "temperate-low-ledge",
+          "index": 10,
+          "scale": 0.551,
+          "sourceId": "scenery:96",
+          "worldFoot": [
+            173.8281,
+            357.76
+          ],
+          "displayIndex": 124,
+          "flip": true
+        },
+        {
+          "id": "temperate-low-ledge",
+          "index": 10,
+          "scale": 0.544,
+          "sourceId": "scenery:98",
+          "worldFoot": [
+            241.70375,
+            357.76
+          ],
+          "displayIndex": 126,
+          "flip": true
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 0.528,
+          "sourceId": "scenery:101",
+          "worldFoot": [
+            527.6211,
+            389.76
+          ],
+          "displayIndex": 136,
+          "flip": false
+        },
+        {
+          "id": "temperate-plateau-cap",
+          "index": 15,
+          "scale": 0.566,
+          "sourceId": "scenery:102",
+          "worldFoot": [
+            557.90276,
+            389.76
+          ],
+          "displayIndex": 137,
+          "flip": true
+        },
+        {
+          "id": "temperate-plateau-cap",
+          "index": 15,
+          "scale": 0.652,
+          "sourceId": "scenery:103",
+          "worldFoot": [
+            593.49802,
+            389.76
+          ],
+          "displayIndex": 138,
+          "flip": false
+        },
+        {
+          "id": "temperate-pillar-wide",
+          "index": 12,
+          "scale": 0.674,
+          "sourceId": "scenery:104",
+          "worldFoot": [
+            625.52364,
+            389.76
+          ],
+          "displayIndex": 139,
+          "flip": false
+        },
+        {
+          "id": "temperate-cliff-convex-corner",
+          "index": 8,
+          "scale": 0.6,
+          "sourceId": "scenery:105",
+          "worldFoot": [
+            654.3818,
+            389.76
+          ],
+          "displayIndex": 140,
+          "flip": false
+        },
+        {
+          "id": "temperate-low-ledge",
+          "index": 10,
+          "scale": 0.544,
+          "sourceId": "scenery:111",
+          "worldFoot": [
+            366.6481,
+            421.76
+          ],
+          "displayIndex": 153,
+          "flip": false
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 0.556,
+          "sourceId": "scenery:112",
+          "worldFoot": [
+            401.8257,
+            421.76
+          ],
+          "displayIndex": 154,
+          "flip": true
+        },
+        {
+          "id": "temperate-low-ledge",
+          "index": 10,
+          "scale": 0.521,
+          "sourceId": "scenery:114",
+          "worldFoot": [
+            529.2724,
+            421.76
+          ],
+          "displayIndex": 156,
+          "flip": false
+        },
+        {
+          "id": "temperate-mountain-pass",
+          "index": 7,
+          "scale": 0.605,
+          "sourceId": "scenery:115",
+          "worldFoot": [
+            557.08328,
+            421.76
+          ],
+          "displayIndex": 157,
+          "flip": false
+        },
+        {
+          "id": "temperate-cliff-convex-corner",
+          "index": 8,
+          "scale": 0.613,
+          "sourceId": "scenery:116",
+          "worldFoot": [
+            590.43526,
+            421.76
+          ],
+          "displayIndex": 158,
+          "flip": false
+        },
+        {
+          "id": "temperate-pillar-wide",
+          "index": 12,
+          "scale": 0.608,
+          "sourceId": "scenery:117",
+          "worldFoot": [
+            626.62308,
+            421.76
+          ],
+          "displayIndex": 159,
+          "flip": false
+        },
+        {
+          "id": "temperate-cliff-convex-corner",
+          "index": 8,
+          "scale": 0.678,
+          "sourceId": "scenery:118",
+          "worldFoot": [
+            654.28598,
+            421.76
+          ],
+          "displayIndex": 160,
+          "flip": false
+        },
+        {
+          "id": "temperate-low-ledge",
+          "index": 10,
+          "scale": 0.569,
+          "sourceId": "scenery:119",
+          "worldFoot": [
+            688.14895,
+            421.76
+          ],
+          "displayIndex": 161,
+          "flip": true
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 1.0,
+          "sourceId": "scenery:183",
+          "worldFoot": [
+            585.6,
+            451.2
+          ],
+          "displayIndex": 166,
+          "flip": true
+        },
+        {
+          "id": "temperate-low-ledge",
+          "index": 10,
+          "scale": 0.505,
+          "sourceId": "scenery:124",
+          "worldFoot": [
+            366.66485,
+            453.76
+          ],
+          "displayIndex": 168,
+          "flip": false
+        },
+        {
+          "id": "temperate-low-ledge",
+          "index": 10,
+          "scale": 0.542,
+          "sourceId": "scenery:125",
+          "worldFoot": [
+            525.9606,
+            453.76
+          ],
+          "displayIndex": 169,
+          "flip": true
+        },
+        {
+          "id": "temperate-pillar-wide",
+          "index": 12,
+          "scale": 0.595,
+          "sourceId": "scenery:126",
+          "worldFoot": [
+            561.0212,
+            453.76
+          ],
+          "displayIndex": 170,
+          "flip": false
+        },
+        {
+          "id": "temperate-pillar-wide",
+          "index": 12,
+          "scale": 0.671,
+          "sourceId": "scenery:127",
+          "worldFoot": [
+            590.8951,
+            453.76
+          ],
+          "displayIndex": 171,
+          "flip": true
+        },
+        {
+          "id": "temperate-cliff-convex-corner",
+          "index": 8,
+          "scale": 0.567,
+          "sourceId": "scenery:128",
+          "worldFoot": [
+            622.16934,
+            453.76
+          ],
+          "displayIndex": 172,
+          "flip": true
+        },
+        {
+          "id": "temperate-cliff-convex-corner",
+          "index": 8,
+          "scale": 0.637,
+          "sourceId": "scenery:129",
+          "worldFoot": [
+            654.17486,
+            453.76
+          ],
+          "displayIndex": 173,
+          "flip": false
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 0.541,
+          "sourceId": "scenery:130",
+          "worldFoot": [
+            689.0396,
+            453.76
+          ],
+          "displayIndex": 174,
+          "flip": false
+        },
+        {
+          "id": "temperate-ramp-level-2",
+          "index": 6,
+          "scale": 1.0,
+          "sourceId": "scenery:186",
+          "worldFoot": [
+            672,
+            454.4
+          ],
+          "displayIndex": 176,
+          "flip": true
+        },
+        {
+          "id": "temperate-cliff-straight-south",
+          "index": 0,
+          "scale": 1.0,
+          "sourceId": "scenery:184",
+          "worldFoot": [
+            630.4,
+            480
+          ],
+          "displayIndex": 178,
+          "flip": false
+        },
+        {
+          "id": "temperate-cliff-convex-corner",
+          "index": 8,
+          "scale": 1.0,
+          "sourceId": "scenery:185",
+          "worldFoot": [
+            547.2,
+            483.2
+          ],
+          "displayIndex": 179,
+          "flip": true
+        },
+        {
+          "id": "temperate-talus-foot",
+          "index": 11,
+          "scale": 0.513,
+          "sourceId": "scenery:136",
+          "worldFoot": [
+            558.66915,
+            485.76
+          ],
+          "displayIndex": 184,
+          "flip": true
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 0.567,
+          "sourceId": "scenery:137",
+          "worldFoot": [
+            591.1369,
+            485.76
+          ],
+          "displayIndex": 185,
+          "flip": false
+        },
+        {
+          "id": "temperate-talus-foot",
+          "index": 11,
+          "scale": 0.474,
+          "sourceId": "scenery:138",
+          "worldFoot": [
+            625.3281,
+            485.76
+          ],
+          "displayIndex": 186,
+          "flip": true
+        },
+        {
+          "id": "temperate-talus-foot",
+          "index": 11,
+          "scale": 0.473,
+          "sourceId": "scenery:139",
+          "worldFoot": [
+            657.4063,
+            485.76
+          ],
+          "displayIndex": 187,
+          "flip": true
+        }
+      ],
+      "automaticElevationAtlasUses": 0,
+      "highlandCliffUses": 0
+    },
+    {
+      "level": "c01-02",
+      "snapshotDirectory": "docs/art-rebuild-20261019/approved-v5/ground-eight-gravekeeper-current",
+      "snapshotSvgSha256": "ac17515cbc766dbe8f31cbfc987cf47eb79bc368fbef8e7fbf993ed0d6c1e067",
+      "snapshotProvenanceSha256": "ead505c81922fcb5b4cb67a9632fb0079c44746b3c844bf96d34879485403974",
+      "viewport": [
+        0,
+        0,
+        852,
+        584
+      ],
+      "actorCount": 20,
+      "ruleBuildingCount": 9,
+      "cliffInstances": [
+        {
+          "id": "temperate-talus-foot",
+          "index": 11,
+          "scale": 0.491,
+          "sourceId": "scenery:3",
+          "worldFoot": [
+            240.4769,
+            37.76
+          ],
+          "displayIndex": 2,
+          "flip": false
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 0.525,
+          "sourceId": "scenery:8",
+          "worldFoot": [
+            462.1877,
+            69.75999999999999
+          ],
+          "displayIndex": 9,
+          "flip": false
+        },
+        {
+          "id": "temperate-low-ledge",
+          "index": 10,
+          "scale": 0.493,
+          "sourceId": "scenery:16",
+          "worldFoot": [
+            143.8876,
+            133.76
+          ],
+          "displayIndex": 20,
+          "flip": false
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 0.503,
+          "sourceId": "scenery:26",
+          "worldFoot": [
+            47.67445,
+            261.76
+          ],
+          "displayIndex": 33,
+          "flip": true
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 0.471,
+          "sourceId": "scenery:28",
+          "worldFoot": [
+            529.52765,
+            261.76
+          ],
+          "displayIndex": 35,
+          "flip": true
+        },
+        {
+          "id": "temperate-talus-foot",
+          "index": 11,
+          "scale": 0.472,
+          "sourceId": "scenery:32",
+          "worldFoot": [
+            143.9936,
+            357.76
+          ],
+          "displayIndex": 47,
+          "flip": true
+        },
+        {
+          "id": "temperate-hill-cap",
+          "index": 4,
+          "scale": 0.522,
+          "sourceId": "scenery:40",
+          "worldFoot": [
+            461.71455,
+            421.76
+          ],
+          "displayIndex": 65,
+          "flip": false
+        }
+      ],
+      "automaticElevationAtlasUses": 0,
+      "highlandCliffUses": 0
+    }
+  ],
+  "cells": [
+    {
+      "index": 0,
+      "id": "temperate-cliff-straight-south",
+      "cellOrderLabel": "straight-south",
+      "semanticMetadata": {
+        "id": "temperate-cliff-straight-south",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "priority": false,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.5,
+        32.0,
+        122.0,
+        122.0
+      ],
+      "sourceQuarterBox": [
+        0,
+        0,
+        314,
+        314
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        45,
+        74,
+        330,
+        283
+      ],
+      "sourceSubjectCrossesNominalQuarter": true,
+      "instancesByLevel": {
+        "c01-01": 2,
+        "c01-02": 0
+      },
+      "placementScaleRange": [
+        1.0,
+        1.0
+      ],
+      "displayVisibleSizeRange": [
+        [
+          115.5,
+          90.0
+        ],
+        [
+          115.5,
+          90.0
+        ]
+      ],
+      "alphaAreaWeightedByAllPlacementScales": 13123.41568627451
+    },
+    {
+      "index": 1,
+      "id": "temperate-cliff-end-west",
+      "cellOrderLabel": "end-west",
+      "semanticMetadata": {
+        "id": "temperate-cliff-end-west",
+        "footprint": [
+          1,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "priority": false,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        256,
+        0,
+        512,
+        256
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.0,
+        36.5,
+        121.5,
+        121.5
+      ],
+      "sourceQuarterBox": [
+        314,
+        0,
+        627,
+        314
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        392,
+        77,
+        587,
+        279
+      ],
+      "sourceSubjectCrossesNominalQuarter": false,
+      "instancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "placementScaleRange": null,
+      "displayVisibleSizeRange": null,
+      "alphaAreaWeightedByAllPlacementScales": 0
+    },
+    {
+      "index": 2,
+      "id": "temperate-cliff-end-east",
+      "cellOrderLabel": "end-east",
+      "semanticMetadata": {
+        "id": "temperate-cliff-end-east",
+        "footprint": [
+          1,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "priority": false,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        512,
+        0,
+        768,
+        256
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.5,
+        39.5,
+        122.0,
+        121.5
+      ],
+      "sourceQuarterBox": [
+        627,
+        0,
+        940,
+        314
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        660,
+        81,
+        862,
+        280
+      ],
+      "sourceSubjectCrossesNominalQuarter": false,
+      "instancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "placementScaleRange": null,
+      "displayVisibleSizeRange": null,
+      "alphaAreaWeightedByAllPlacementScales": 0
+    },
+    {
+      "index": 3,
+      "id": "temperate-cliff-concave-corner",
+      "cellOrderLabel": "concave-corner",
+      "semanticMetadata": {
+        "id": "temperate-cliff-concave-corner",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "priority": false,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        768,
+        0,
+        1024,
+        256
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.0,
+        47.5,
+        122.0,
+        122.0
+      ],
+      "sourceQuarterBox": [
+        940,
+        0,
+        1254,
+        314
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        914,
+        99,
+        1208,
+        271
+      ],
+      "sourceSubjectCrossesNominalQuarter": true,
+      "instancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "placementScaleRange": null,
+      "displayVisibleSizeRange": null,
+      "alphaAreaWeightedByAllPlacementScales": 0
+    },
+    {
+      "index": 4,
+      "id": "temperate-hill-cap",
+      "cellOrderLabel": "hill-cap",
+      "semanticMetadata": {
+        "id": "temperate-hill-cap",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "priority": true,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        0,
+        256,
+        256,
+        512
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.5,
+        42.0,
+        121.5,
+        121.5
+      ],
+      "sourceQuarterBox": [
+        0,
+        314,
+        314,
+        627
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        48,
+        375,
+        312,
+        557
+      ],
+      "sourceSubjectCrossesNominalQuarter": false,
+      "instancesByLevel": {
+        "c01-01": 9,
+        "c01-02": 4
+      },
+      "placementScaleRange": [
+        0.471,
+        1.0
+      ],
+      "displayVisibleSizeRange": [
+        [
+          54.16,
+          37.44
+        ],
+        [
+          115.0,
+          79.5
+        ]
+      ],
+      "alphaAreaWeightedByAllPlacementScales": 29774.088525891177,
+      "completeReferenceCrop": [
+        38,
+        365,
+        322,
+        567
+      ]
+    },
+    {
+      "index": 5,
+      "id": "temperate-ramp-level-1",
+      "cellOrderLabel": "ramp-level-1",
+      "semanticMetadata": {
+        "id": "temperate-ramp-level-1",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "heightDelta": 1,
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      "priority": false,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        256,
+        256,
+        512,
+        512
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.0,
+        31.5,
+        121.5,
+        121.5
+      ],
+      "sourceQuarterBox": [
+        314,
+        314,
+        627,
+        627
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        352,
+        380,
+        596,
+        570
+      ],
+      "sourceSubjectCrossesNominalQuarter": false,
+      "instancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "placementScaleRange": null,
+      "displayVisibleSizeRange": null,
+      "alphaAreaWeightedByAllPlacementScales": 0
+    },
+    {
+      "index": 6,
+      "id": "temperate-ramp-level-2",
+      "cellOrderLabel": "ramp-level-2",
+      "semanticMetadata": {
+        "id": "temperate-ramp-level-2",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "heightDelta": 2,
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      "priority": false,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        512,
+        256,
+        768,
+        512
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.5,
+        30.5,
+        122.0,
+        121.5
+      ],
+      "sourceQuarterBox": [
+        627,
+        314,
+        940,
+        627
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        639,
+        347,
+        881,
+        584
+      ],
+      "sourceSubjectCrossesNominalQuarter": false,
+      "instancesByLevel": {
+        "c01-01": 2,
+        "c01-02": 0
+      },
+      "placementScaleRange": [
+        1.0,
+        1.0
+      ],
+      "displayVisibleSizeRange": [
+        [
+          115.5,
+          91.0
+        ],
+        [
+          115.5,
+          91.0
+        ]
+      ],
+      "alphaAreaWeightedByAllPlacementScales": 10624.03137254902
+    },
+    {
+      "index": 7,
+      "id": "temperate-mountain-pass",
+      "cellOrderLabel": "mountain-pass",
+      "semanticMetadata": {
+        "id": "temperate-mountain-pass",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "heightDelta": 1,
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      "priority": false,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        768,
+        256,
+        1024,
+        512
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.0,
+        39.5,
+        121.5,
+        122.0
+      ],
+      "sourceQuarterBox": [
+        940,
+        314,
+        1254,
+        627
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        919,
+        369,
+        1208,
+        559
+      ],
+      "sourceSubjectCrossesNominalQuarter": true,
+      "instancesByLevel": {
+        "c01-01": 3,
+        "c01-02": 0
+      },
+      "placementScaleRange": [
+        0.601,
+        0.605
+      ],
+      "displayVisibleSizeRange": [
+        [
+          69.42,
+          49.58
+        ],
+        [
+          69.88,
+          49.91
+        ]
+      ],
+      "alphaAreaWeightedByAllPlacementScales": 7256.124267053921
+    },
+    {
+      "index": 8,
+      "id": "temperate-cliff-convex-corner",
+      "cellOrderLabel": "convex-corner",
+      "semanticMetadata": {
+        "id": "temperate-cliff-convex-corner",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "priority": true,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        0,
+        512,
+        256,
+        768
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        12.5,
+        6.0,
+        115.0,
+        122.0
+      ],
+      "sourceQuarterBox": [
+        0,
+        627,
+        314,
+        940
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        44,
+        650,
+        301,
+        839
+      ],
+      "sourceSubjectCrossesNominalQuarter": false,
+      "instancesByLevel": {
+        "c01-01": 9,
+        "c01-02": 0
+      },
+      "placementScaleRange": [
+        0.567,
+        1.0
+      ],
+      "displayVisibleSizeRange": [
+        [
+          58.12,
+          65.77
+        ],
+        [
+          102.5,
+          116.0
+        ]
+      ],
+      "alphaAreaWeightedByAllPlacementScales": 26701.80261976471,
+      "completeReferenceCrop": [
+        34,
+        640,
+        311,
+        849
+      ]
+    },
+    {
+      "index": 9,
+      "id": "temperate-broken-ledge",
+      "cellOrderLabel": "broken-ledge",
+      "semanticMetadata": {
+        "id": "temperate-broken-ledge",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "priority": false,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        256,
+        512,
+        512,
+        768
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.0,
+        35.5,
+        121.5,
+        121.5
+      ],
+      "sourceQuarterBox": [
+        314,
+        627,
+        627,
+        940
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        345,
+        645,
+        619,
+        850
+      ],
+      "sourceSubjectCrossesNominalQuarter": false,
+      "instancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "placementScaleRange": null,
+      "displayVisibleSizeRange": null,
+      "alphaAreaWeightedByAllPlacementScales": 0
+    },
+    {
+      "index": 10,
+      "id": "temperate-low-ledge",
+      "cellOrderLabel": "low-ledge",
+      "semanticMetadata": {
+        "id": "temperate-low-ledge",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "priority": false,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        512,
+        512,
+        768,
+        768
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.0,
+        31.5,
+        121.5,
+        121.5
+      ],
+      "sourceQuarterBox": [
+        627,
+        627,
+        940,
+        940
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        668,
+        694,
+        879,
+        858
+      ],
+      "sourceSubjectCrossesNominalQuarter": false,
+      "instancesByLevel": {
+        "c01-01": 9,
+        "c01-02": 1
+      },
+      "placementScaleRange": [
+        0.493,
+        0.579
+      ],
+      "displayVisibleSizeRange": [
+        [
+          56.94,
+          44.37
+        ],
+        [
+          66.87,
+          52.11
+        ]
+      ],
+      "alphaAreaWeightedByAllPlacementScales": 18773.040134155883
+    },
+    {
+      "index": 11,
+      "id": "temperate-talus-foot",
+      "cellOrderLabel": "talus-foot",
+      "semanticMetadata": {
+        "id": "temperate-talus-foot",
+        "footprint": [
+          2,
+          1
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 0,
+        "passable": true
+      },
+      "priority": false,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        768,
+        512,
+        1024,
+        768
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        9.5,
+        6.0,
+        117.5,
+        88.0
+      ],
+      "sourceQuarterBox": [
+        940,
+        627,
+        1254,
+        940
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        943,
+        649,
+        1213,
+        854
+      ],
+      "sourceSubjectCrossesNominalQuarter": false,
+      "instancesByLevel": {
+        "c01-01": 5,
+        "c01-02": 2
+      },
+      "placementScaleRange": [
+        0.472,
+        0.513
+      ],
+      "displayVisibleSizeRange": [
+        [
+          50.98,
+          38.7
+        ],
+        [
+          55.4,
+          42.07
+        ]
+      ],
+      "alphaAreaWeightedByAllPlacementScales": 8839.0056940549
+    },
+    {
+      "index": 12,
+      "id": "temperate-pillar-wide",
+      "cellOrderLabel": "pillar-wide",
+      "semanticMetadata": {
+        "id": "temperate-pillar-wide",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 2,
+        "passable": false
+      },
+      "priority": true,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        0,
+        768,
+        256,
+        1024
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.5,
+        17.5,
+        121.5,
+        121.5
+      ],
+      "sourceQuarterBox": [
+        0,
+        940,
+        314,
+        1254
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        66,
+        934,
+        298,
+        1150
+      ],
+      "sourceSubjectCrossesNominalQuarter": true,
+      "instancesByLevel": {
+        "c01-01": 9,
+        "c01-02": 0
+      },
+      "placementScaleRange": [
+        0.578,
+        0.674
+      ],
+      "displayVisibleSizeRange": [
+        [
+          66.47,
+          60.11
+        ],
+        [
+          77.51,
+          70.1
+        ]
+      ],
+      "alphaAreaWeightedByAllPlacementScales": 26504.918961394116,
+      "completeReferenceCrop": [
+        56,
+        924,
+        308,
+        1160
+      ]
+    },
+    {
+      "index": 13,
+      "id": "temperate-pillar-narrow",
+      "cellOrderLabel": "pillar-narrow",
+      "semanticMetadata": {
+        "id": "temperate-pillar-narrow",
+        "footprint": [
+          1,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 2,
+        "passable": false
+      },
+      "priority": false,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        256,
+        768,
+        512,
+        1024
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        10.0,
+        6.0,
+        118.0,
+        122.0
+      ],
+      "sourceQuarterBox": [
+        314,
+        940,
+        627,
+        1254
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        370,
+        953,
+        549,
+        1145
+      ],
+      "sourceSubjectCrossesNominalQuarter": false,
+      "instancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "placementScaleRange": null,
+      "displayVisibleSizeRange": null,
+      "alphaAreaWeightedByAllPlacementScales": 0
+    },
+    {
+      "index": 14,
+      "id": "temperate-ledge-end",
+      "cellOrderLabel": "ledge-end",
+      "semanticMetadata": {
+        "id": "temperate-ledge-end",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "priority": false,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        512,
+        768,
+        768,
+        1024
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.5,
+        45.0,
+        122.0,
+        122.0
+      ],
+      "sourceQuarterBox": [
+        627,
+        940,
+        940,
+        1254
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        648,
+        948,
+        885,
+        1143
+      ],
+      "sourceSubjectCrossesNominalQuarter": false,
+      "instancesByLevel": {
+        "c01-01": 0,
+        "c01-02": 0
+      },
+      "placementScaleRange": null,
+      "displayVisibleSizeRange": null,
+      "alphaAreaWeightedByAllPlacementScales": 0
+    },
+    {
+      "index": 15,
+      "id": "temperate-plateau-cap",
+      "cellOrderLabel": "plateau-cap",
+      "semanticMetadata": {
+        "id": "temperate-plateau-cap",
+        "footprint": [
+          2,
+          2
+        ],
+        "anchor": [
+          64,
+          127
+        ],
+        "obstructionHeight": 1,
+        "passable": false
+      },
+      "priority": true,
+      "runtimeLogicalSize": [
+        128,
+        128
+      ],
+      "runtimeHdBox": [
+        768,
+        768,
+        1024,
+        1024
+      ],
+      "logicalVisibleBoundsAlpha128": [
+        6.0,
+        28.5,
+        121.5,
+        121.5
+      ],
+      "sourceQuarterBox": [
+        940,
+        940,
+        1254,
+        1254
+      ],
+      "dominantCompleteSubjectBoundsAlpha128": [
+        939,
+        940,
+        1198,
+        1148
+      ],
+      "sourceSubjectCrossesNominalQuarter": true,
+      "instancesByLevel": {
+        "c01-01": 9,
+        "c01-02": 0
+      },
+      "placementScaleRange": [
+        0.566,
+        0.676
+      ],
+      "displayVisibleSizeRange": [
+        [
+          65.37,
+          52.64
+        ],
+        [
+          78.08,
+          62.87
+        ]
+      ],
+      "alphaAreaWeightedByAllPlacementScales": 25150.447282302943,
+      "completeReferenceCrop": [
+        929,
+        930,
+        1208,
+        1158
+      ]
+    }
+  ],
+  "priorityIndices": [
+    4,
+    8,
+    12,
+    15
+  ],
+  "priorityInstanceCount": 40,
+  "totalInstanceCount": 64,
+  "priorityAlphaAreaFraction": 0.6484754672938856,
+  "maskFinding": "Actual selected cliff modules are independent RGBA sprites, no NESW/Blob mask. Automatic elevation atlases are unused in both actual captures.",
+  "limitations": [
+    "Alpha-weighted source area is pre-occlusion, not screen-visible area",
+    "Source reference crops preserve whole dominant subjects plus 10px padding; they are not production registration metadata",
+    "Snapshot art outside cliffs may predate later integration; all cliff source hashes were checked against current integration"
+  ],
+  "legacyBoundingBoxCaveat": "Slot 8 includes a fragment of slot 12 subject; its alpha-bounds display height includes that unrelated tip. See complete subject references."
+}

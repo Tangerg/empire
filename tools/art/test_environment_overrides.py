@@ -51,7 +51,7 @@ class EnvironmentTests(unittest.TestCase):
     def write_catalog(self):
         self.catalog.write_text(json.dumps(self.data))
 
-    def configure_ground_modules(self, atlas_id):
+    def configure_modules(self, atlas_id):
         path = Path(__file__).resolve().parents[2] / PACK / 'environment-builder-v1/manifest-environment-builder-v1.json'
         atlas = next(a for a in json.loads(path.read_text())['atlases'] if a['id'] == atlas_id)
         columns, rows, size = atlas['columns'], atlas['rows'], atlas['cellWidth']
@@ -61,19 +61,24 @@ class EnvironmentTests(unittest.TestCase):
             for index in range(columns * rows):
                 image.paste((index * 9, 30, 60, 200), cell_box(index, size * density, columns))
             baselines[f'{density}x'] = self.save(image, f'{atlas_id}-base-{density}.png')
-        indices = (6, 13, 23) if atlas_id == 'decals-small' else (3, 11, 13)
+        indices = {
+            'decals-small': (6, 13, 23),
+            'camps-foundations': (3, 11, 13),
+            'cliff-modules-temperate': (4, 8, 12, 15),
+        }[atlas_id]
         cells = {}
         for index in indices:
             cell = atlas['cells'][index]
             cell['anchor'] = list(atlas['anchor'])
             cell['presentationScale'] = 0.75
-            source_size = 2 * (size - 8)
+            origin = 0 if atlas_id == 'cliff-modules-temperate' else 4
+            source_size = 2 * (size - origin * 2)
             source = Image.new('RGBA', (source_size, source_size))
             source.paste((index * 9, 100, 60, 253), (10, 10, source_size - 10, source_size - 10))
             source.putpixel((0, 20), (30, 50, 70, 1))
             entry = self.save(source, f'{atlas_id}-{cell["id"]}.png')
-            entry['registration'] = {'scale': 0.5, 'origin': [4, 4],
-                                     'sourceFoot': [(n - 4) * 2 for n in atlas['anchor']]}
+            entry['registration'] = {'scale': 0.5, 'origin': [origin, origin],
+                                     'sourceFoot': [(n - origin) * 2 for n in atlas['anchor']]}
             cells[cell['id']] = entry
         self.manifest.write_text(json.dumps({'atlases': [atlas]}))
         self.data = {'schemaVersion': 2, 'atlases': {atlas_id: {'baselines': baselines, 'cells': cells}}}
@@ -86,15 +91,19 @@ class EnvironmentTests(unittest.TestCase):
         self.assertEqual(cell_box(23, 128, 6), (640, 384, 768, 512))
         self.assertEqual(cell_box(13, 288), (288, 864, 576, 1152))
 
-    def test_decal_and_camp_exact_slots_alpha_baselines_and_semantics(self):
-        for atlas_id in ('decals-small', 'camps-foundations'):
+    def test_module_exact_slots_alpha_baselines_and_semantics(self):
+        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate'):
             with self.subTest(atlas=atlas_id):
-                indices = self.configure_ground_modules(atlas_id)
+                indices = self.configure_modules(atlas_id)
                 manifest_before = self.manifest.read_bytes()
                 atlas = json.loads(manifest_before)['atlases'][0]
-                self.assertEqual([atlas['cellOrder'][i] for i in indices],
-                                 ['mud-patch', 'exposed-roots', 'ash-scorch'] if atlas_id == 'decals-small'
-                                 else ['village-square-foundation', 'watch-post-ground', 'abandoned-cart-stop'])
+                expected_ids = {
+                    'decals-small': ['mud-patch', 'exposed-roots', 'ash-scorch'],
+                    'camps-foundations': ['village-square-foundation', 'watch-post-ground', 'abandoned-cart-stop'],
+                    'cliff-modules-temperate': ['temperate-hill-cap', 'temperate-cliff-convex-corner',
+                                              'temperate-pillar-wide', 'temperate-plateau-cap'],
+                }
+                self.assertEqual([atlas['cells'][i]['id'] for i in indices], expected_ids[atlas_id])
                 masters_before = {p: p.read_bytes() for p in (self.pack / 'masters').rglob('*.png')}
                 reports = export(self.root, self.catalog)
                 export(self.root, self.catalog, True)
@@ -120,18 +129,19 @@ class EnvironmentTests(unittest.TestCase):
                                 with Image.open(self.root / entry['source']) as source:
                                     hd_size = atlas['cellWidth2x']
                                     expected = Image.new('RGBA', (hd_size, hd_size))
-                                    expected.paste(source, (8, 8))
-                                    self.assertEqual(expected.getpixel((8, 28)), (30, 50, 70, 1))
+                                    offset = 0 if atlas_id == 'cliff-modules-temperate' else 8
+                                    expected.paste(source, (offset, offset))
+                                    self.assertEqual(expected.getpixel((offset, offset + 20)), (30, 50, 70, 1))
                                     if report['density'] == 1:
                                         expected = expected.resize((size, size), Image.Resampling.LANCZOS)
                                     self.assertEqual(output.crop(box).tobytes(), expected.tobytes())
                                 self.assertEqual(report['sources'][cell['id']]['logicalAnchor'], atlas['anchor'])
                                 self.assertEqual(report['sources'][cell['id']]['presentationScale'], 0.75)
 
-    def test_decal_and_camp_registration_changes_only_selected_anchor(self):
-        for atlas_id in ('decals-small', 'camps-foundations'):
+    def test_module_registration_changes_only_selected_anchor(self):
+        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate'):
             with self.subTest(atlas=atlas_id):
-                indices = self.configure_ground_modules(atlas_id)
+                indices = self.configure_modules(atlas_id)
                 expected = json.loads(self.manifest.read_text())
                 cell = expected['atlases'][0]['cells'][indices[-1]]
                 cell['anchor'][1] -= 2
@@ -141,9 +151,9 @@ class EnvironmentTests(unittest.TestCase):
                 self.assertEqual(json.loads(self.manifest.read_text()), expected)
                 export(self.root, self.catalog, True)
 
-    def test_decal_and_camp_wrong_contracts_rejected_before_writes(self):
-        for atlas_id in ('decals-small', 'camps-foundations'):
-            self.configure_ground_modules(atlas_id)
+    def test_module_wrong_contracts_rejected_before_writes(self):
+        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate'):
+            self.configure_modules(atlas_id)
             original = json.loads(self.manifest.read_text())
             for key, value in [('columns', 5), ('rows', 5), ('cellWidth', 96), ('cellHeight', 96),
                                ('cellWidth2x', 192), ('cellHeight2x', 192), ('anchor', [48, 91]),
@@ -164,9 +174,9 @@ class EnvironmentTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'inconsistent cell order'):
                 export(self.root, self.catalog)
 
-    def test_decal_and_camp_wrong_baseline_dimensions_rejected(self):
-        for atlas_id in ('decals-small', 'camps-foundations'):
-            self.configure_ground_modules(atlas_id)
+    def test_module_wrong_baseline_dimensions_rejected(self):
+        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate'):
+            self.configure_modules(atlas_id)
             original = copy.deepcopy(self.data)
             for density in (1, 2):
                 with self.subTest(atlas=atlas_id, density=density):
@@ -178,11 +188,11 @@ class EnvironmentTests(unittest.TestCase):
                         export(self.root, self.catalog)
                     self.assertFalse((self.env / 'runtime').exists())
 
-    def test_mixed_forest_decal_and_camp_geometry_is_local_to_each_atlas(self):
+    def test_mixed_module_geometry_is_local_to_each_atlas(self):
         atlases = [json.loads(self.manifest.read_text())['atlases'][0]]
         overrides = dict(self.data['atlases'])
-        for atlas_id in ('decals-small', 'camps-foundations'):
-            self.configure_ground_modules(atlas_id)
+        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate'):
+            self.configure_modules(atlas_id)
             atlases.append(json.loads(self.manifest.read_text())['atlases'][0])
             overrides.update(self.data['atlases'])
         for order in (atlases, list(reversed(atlases))):
@@ -192,7 +202,7 @@ class EnvironmentTests(unittest.TestCase):
             self.write_catalog()
             reports = export(self.root, self.catalog)
             export(self.root, self.catalog, True)
-            self.assertEqual(len(reports), 6)
+            self.assertEqual(len(reports), 8)
             self.assertEqual(self.manifest.read_bytes(), before)
             for report in reports:
                 atlas = next(a for a in order if a['id'] == report['atlasId'])
@@ -201,7 +211,7 @@ class EnvironmentTests(unittest.TestCase):
                     self.assertEqual(output.size, (size * atlas['columns'], size * atlas['rows']))
 
     def test_six_column_review_measures_correct_nonfirst_row(self):
-        self.configure_ground_modules('decals-small')
+        self.configure_modules('decals-small')
         export(self.root, self.catalog)
         directory = self.root / 'review'
         directory.mkdir()
@@ -215,6 +225,66 @@ class EnvironmentTests(unittest.TestCase):
         self.assertAlmostEqual(asset['nativeSampleVisibleHeight'], 46 * 0.56)
         self.assertEqual(asset['nativeVisibleHeightRange'], [46 * 0.56, 46 * 0.58])
         self.assertAlmostEqual(asset['nativeSampleOverhangBelowContact'], -5 * 0.56)
+
+    def test_cliff_labels_and_semantic_ids_remain_exactly_paired(self):
+        self.configure_modules('cliff-modules-temperate')
+        original = json.loads(self.manifest.read_text())
+        for fields in [('cellOrder',), ('cells',), ('cellOrder', 'cells')]:
+            with self.subTest(fields=fields):
+                changed = copy.deepcopy(original)
+                for field in fields:
+                    values = changed['atlases'][0][field]
+                    values[4], values[8] = values[8], values[4]
+                self.manifest.write_text(json.dumps(changed))
+                before = self.manifest.read_bytes()
+                with self.assertRaisesRegex(ValueError, 'cliff label/semantic cell order'):
+                    export(self.root, self.catalog)
+                self.assertFalse((self.env / 'runtime').exists())
+                self.assertEqual(self.manifest.read_bytes(), before)
+        self.manifest.write_text(json.dumps(original))
+        cells = self.data['atlases']['cliff-modules-temperate']['cells']
+        cells['hill-cap'] = cells.pop('temperate-hill-cap')
+        self.write_catalog()
+        with self.assertRaisesRegex(ValueError, 'unknown environment cell'):
+            export(self.root, self.catalog)
+
+    def test_cliff_export_does_not_change_automatic_elevation_masks_or_contract(self):
+        self.configure_modules('cliff-modules-temperate')
+        shipped_path = Path(__file__).resolve().parents[2] / PACK / 'environment-builder-v1/manifest-environment-builder-v1.json'
+        shipped = json.loads(shipped_path.read_text())
+        document = json.loads(self.manifest.read_text())
+        document['elevationContract'] = shipped['elevationContract']
+        automatic = next(a for a in shipped['atlases'] if a['id'] == 'elevation-auto-temperate')
+        document['atlases'].append(automatic)
+        self.manifest.write_text(json.dumps(document))
+        before = self.manifest.read_bytes()
+        masks = {}
+        for name, size in ((automatic['png'], (512, 48)), (automatic['png2x'], (1024, 96))):
+            path = self.env / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            Image.new('RGBA', size, (50, 60, 70, 180)).save(path)
+            masks[path] = path.read_bytes()
+        export(self.root, self.catalog)
+        export(self.root, self.catalog, True)
+        self.assertEqual(self.manifest.read_bytes(), before)
+        self.assertEqual({p: p.read_bytes() for p in masks}, masks)
+
+    def test_cliff_review_measures_128_pixel_slot_and_registered_contact(self):
+        self.configure_modules('cliff-modules-temperate')
+        export(self.root, self.catalog)
+        directory = self.root / 'review'
+        directory.mkdir()
+        (directory / 'native-contact.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg"/>')
+        (directory / 'runtime-scale-report.json').write_text(json.dumps({'assets': [
+            {'id': 'temperate-cliff-convex-corner', 'sampleScale': 0.6,
+             'rendererScaleRange': [0.56, 1], 'anchor': [64, 127]}]}))
+        with patch.object(render_environment_review, 'ROOT', self.root), patch.object(render_environment_review.subprocess, 'run'):
+            report = render_environment_review.render(directory)
+        asset = report['assets'][0]
+        self.assertEqual(asset['logicalVisibleBoundsAlpha128'], [5, 5, 123, 123])
+        self.assertAlmostEqual(asset['nativeSampleVisibleHeight'], 118 * 0.6)
+        self.assertEqual(asset['nativeVisibleHeightRange'], [118 * 0.56, 118])
+        self.assertAlmostEqual(asset['nativeSampleOverhangBelowContact'], -4 * 0.6)
 
     def configure_rural(self):
         # Use the shipped semantic metadata rather than a parallel rural catalog.

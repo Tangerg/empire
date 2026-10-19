@@ -12,6 +12,27 @@ from export_overrides import ROOT, read_json, within, validate_alpha
 PACK = Path('packages/story-candidate-01/assets/final-fantasy-v1')
 CATALOG = Path('tools/art/environment-overrides.json')
 
+# This legacy sheet names its slots differently from its semantic cells. Keep
+# the exact paired order; neither labels nor runtime indices may be rewritten.
+TEMPERATE_CLIFF_SLOTS = [
+    ('straight-south', 'temperate-cliff-straight-south'),
+    ('end-west', 'temperate-cliff-end-west'),
+    ('end-east', 'temperate-cliff-end-east'),
+    ('concave-corner', 'temperate-cliff-concave-corner'),
+    ('hill-cap', 'temperate-hill-cap'),
+    ('ramp-level-1', 'temperate-ramp-level-1'),
+    ('ramp-level-2', 'temperate-ramp-level-2'),
+    ('mountain-pass', 'temperate-mountain-pass'),
+    ('convex-corner', 'temperate-cliff-convex-corner'),
+    ('broken-ledge', 'temperate-broken-ledge'),
+    ('low-ledge', 'temperate-low-ledge'),
+    ('talus-foot', 'temperate-talus-foot'),
+    ('pillar-wide', 'temperate-pillar-wide'),
+    ('pillar-narrow', 'temperate-pillar-narrow'),
+    ('ledge-end', 'temperate-ledge-end'),
+    ('plateau-cap', 'temperate-plateau-cap'),
+]
+
 
 def load_source(root, pack, entry):
     if not isinstance(entry, dict) or set(entry) != {'source', 'sha256'}:
@@ -89,6 +110,7 @@ def plan(root, catalog):
         'rural-life': (4, 112, [56, 108]),
         'decals-small': (6, 64, [32, 60]),
         'camps-foundations': (4, 144, [72, 139]),
+        'cliff-modules-temperate': (4, 128, [64, 127]),
     }
     for atlas_id, override in data['atlases'].items():
         if atlas_id not in contracts:
@@ -105,8 +127,15 @@ def plan(root, catalog):
                                         cell_size * 2, default_anchor, 'modules', cell_count):
             raise ValueError('unsupported scenery contract')
         cell_sizes = (atlas['cellWidth'], atlas['cellWidth2x'])
-        order = atlas['cellOrder']
-        if len(order) != cell_count or len(set(order)) != cell_count or [c['id'] for c in atlas['cells']] != order:
+        labels = atlas['cellOrder']
+        order = [c['id'] for c in atlas['cells']]
+        if (len(labels) != cell_count or len(set(labels)) != cell_count
+                or len(order) != cell_count or len(set(order)) != cell_count):
+            raise ValueError('inconsistent cell order')
+        if atlas_id == 'cliff-modules-temperate':
+            if list(zip(labels, order)) != TEMPERATE_CLIFF_SLOTS:
+                raise ValueError('inconsistent cliff label/semantic cell order')
+        elif labels != order:
             raise ValueError('inconsistent cell order')
         for cell in atlas['cells']:
             if not point(cell['anchor']):

@@ -113,11 +113,26 @@ Run `python3 tools/art/export_environment_overrides.py` then the same command wi
   default anchor [32,60]
 - camps-foundations: 4×4 / 16 slots, 144²/288² cells, 576²/1152² baseline atlases,
   default anchor [72,139]
+- cliff-modules-temperate: 4×4 / 16 slots, 128²/256² cells, 512²/1024² baseline
+  atlases, default anchor [64,127]. Its fixed legacy `cellOrder` short labels are
+  checked against the exact semantic `cells[].id` pair at each index. Register
+  overrides by the full semantic ID, such as `temperate-hill-cap`, never `hill-cap`.
+  The exporter preserves both naming arrays and all elevation/ramp/footprint
+  metadata. It does not support or regenerate the separate `elevation-auto-*`
+  NESW mask atlases.
 
 All use `tileMode: modules`. Packing, unchanged-cell checks, and review measurements
 use the validated atlas column count, including non-first-row six-column cells.
 The shared `cell_box(index, size, columns=4)` helper retains its four-column default
 for existing callers; atlas-aware callers pass the manifest's actual columns.
+
+Cliff module sources must be complete independently authored RGBA subjects. The
+legacy 1254² master is not an exact 4×4 integer-cell sheet: some subjects cross
+the nominal quarter boundaries, and its old alpha-bounding-box fit can include
+neighbour fragments. Do not use those clipped slots as new master sources or
+infer a source foot from their alpha bounds. Review the full original subject
+and register one full canvas with an explicit source foot, using the same export
+path as other modules. Unselected baseline cells remain pixel-identical.
 
 Keep immutable copies of the original runtime atlases under the pack masters
 directory before first export. Register their byte SHA256 as baselines; never

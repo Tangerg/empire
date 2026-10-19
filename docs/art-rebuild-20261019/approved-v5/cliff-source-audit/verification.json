@@ -1,0 +1,59 @@
+{
+  "baseCommit": "bde655c",
+  "supportedAtlas": "cliff-modules-temperate",
+  "contract": {
+    "columns": 4,
+    "rows": 4,
+    "logicalCell": [
+      128,
+      128
+    ],
+    "hdCell": [
+      256,
+      256
+    ],
+    "defaultAnchor": [
+      64,
+      127
+    ],
+    "slots": 16,
+    "tileMode": "modules"
+  },
+  "pythonSuite": {
+    "command": "python -m unittest discover -s tools/art -p 'test_*.py'",
+    "testsPassed": 147,
+    "failures": 0
+  },
+  "environmentSuite": {
+    "testsPassed": 31,
+    "failures": 0
+  },
+  "mutationGuards": [
+    {
+      "mutation": "Disable fixed cliff label/semantic pairing guard",
+      "outcome": "regression fails as expected"
+    },
+    {
+      "mutation": "Offset every output slot by one",
+      "outcome": "exact-slot regression fails as expected"
+    }
+  ],
+  "existingProductionCheck": {
+    "command": "python tools/art/export_environment_overrides.py --check",
+    "outputsPassed": 8,
+    "atlases": [
+      "forest-existing",
+      "forest-temperate",
+      "rural-life",
+      "scenery-regional"
+    ]
+  },
+  "cliffCatalogRegistered": false,
+  "productionAssetsChanged": false,
+  "rendererChanged": false,
+  "gameplayChanged": false,
+  "automaticElevationMasksChanged": false,
+  "initialFailureResolved": "New 128px cliff review test exposed short-label lookup in existing Python review helper; changed reader to actual semantic cells[].id and reran all 147 tests",
+  "typecheckVitestReplay": "not rerun for Python-only contract extension; prior scene checkpoint passed 885 Vitest tests and exact 60-level replays",
+  "browserOrGpuPixelValidation": false
+}
