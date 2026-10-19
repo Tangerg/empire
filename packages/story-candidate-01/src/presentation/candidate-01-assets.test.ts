@@ -12,6 +12,9 @@ import sourceOverrides from '../../../../tools/art/source-overrides.json';
 const pack = new URL('../../assets/final-fantasy-v1/', import.meta.url);
 const approved = new URL('../../../../docs/art-rebuild-20261019/approved-v5/', import.meta.url);
 const bundles = [
+  { topic: 'C01-UNIT-MAGE', source: 'animation/mage', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
+  { topic: 'C01-STRUCT-THREE-BRIDGE-SPAN', source: 'buildings/three-bridge-span', size: [128, 128], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
+  { topic: 'C01-STRUCT-WASTELAND-CHEVAUX', source: 'buildings/wasteland-chevaux', size: [128, 128], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },
   { topic: 'C01-UNIT-CLERIC', source: 'animation/cleric', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-UNIT-HEAVY-KNIGHT', source: 'animation/heavy-knight', size: [104, 64], footprint: [1, 1], frames: ['idle', 'walk-a', 'attack', 'walk-b'] },
   { topic: 'C01-STRUCT-SUNKEN-BELL-SLUICE', source: 'buildings/sunken-bell-sluice', size: [128, 128], footprint: [2, 2], frames: ['normal', 'damaged', 'captured'] },

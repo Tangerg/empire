@@ -1,0 +1,212 @@
+{
+  "family": "scenery-regional",
+  "subset": "snow quartet",
+  "status": "all four native masters and QA complete; runtime integration pending",
+  "asset_count": 4,
+  "all_native_sources_byte_identical_to_generated_outputs": true,
+  "all_current_alpha_gates_pass": true,
+  "source_perimeter_max_allowed_alpha": 1,
+  "no_programmatic_paint_or_alpha_cleanup": true,
+  "runtime_integrated": false,
+  "reference_provenance": "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/snow-original-reference-evidence.json",
+  "assets": [
+    {
+      "identity": "snow-pine-cluster",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/snow-pine-cluster-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/evidence.json",
+      "source_foot_estimate_px": [
+        641,
+        1132
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "ada6fdcf892e4690c955be10680839f8853098e0241d1533c03dbf248b3127f2",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-47d4a699-48c3-4a66-904b-6ba6dac6c933.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.511164,
+        0.902711
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/snow-pine-cluster.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-cluster/pine-cluster-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        117,
+        96,
+        86,
+        54
+      ],
+      "original_slot_zero_based": 0,
+      "original_gameplay_footprint": [
+        2,
+        2
+      ],
+      "original_gameplay_obstruction_height": 2
+    },
+    {
+      "identity": "snow-bare-shrub",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-bare-shrub/snow-bare-shrub-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-bare-shrub/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-bare-shrub/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-bare-shrub/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-bare-shrub/evidence.json",
+      "source_foot_estimate_px": [
+        626,
+        1030
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "1f8975b22b347f15ce94c6715c363907858e5985c53ccf686085d54ab9398a0e",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-9ed0a2cd-1df2-4c68-9b47-01f6844fdd0d.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.499203,
+        0.821372
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/snow-bare-shrub.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-existing/pine-dead/pine-dead-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        139,
+        177,
+        125,
+        162
+      ],
+      "original_slot_zero_based": 1,
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1
+    },
+    {
+      "identity": "ice-boulder-cluster",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/ice-boulder-cluster-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/evidence.json",
+      "source_foot_estimate_px": [
+        631,
+        1043
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "0232f161a7580fe5a0d56f12f667726f6b3a479e35462286a5a10e548b0f226c",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-c7dc5d59-6254-499e-b21c-fc80cd587395.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.50319,
+        0.831738
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/ice-boulder-cluster.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/snow-pine-cluster-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 1,
+        "top": 0,
+        "right": 0,
+        "bottom": 1
+      },
+      "strong_alpha_margins_LTRB": [
+        88,
+        176,
+        80,
+        141
+      ],
+      "original_slot_zero_based": 2,
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 1
+    },
+    {
+      "identity": "snowdrift-rock",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/snowdrift-rock-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/evidence.json",
+      "source_foot_estimate_px": [
+        643,
+        973
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1,
+      "sha256": "ee9e0a5fbd7e52fdd6df8c18d9a39c0ae4b2c5c42b3e17759e49993208f640fa",
+      "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-060fd422-88e1-4b09-9fb7-6816f5d07ddd.png",
+      "native_output_untouched": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "source_foot_estimate_normalized": [
+        0.512759,
+        0.775917
+      ],
+      "reference_paths": [
+        "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/snowdrift-rock.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png",
+        "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/snow-pine-cluster-master.png"
+      ],
+      "edge_alpha_max": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "strong_alpha_margins_LTRB": [
+        90,
+        260,
+        51,
+        180
+      ],
+      "original_slot_zero_based": 3,
+      "original_gameplay_footprint": [
+        1,
+        1
+      ],
+      "original_gameplay_obstruction_height": 0
+    }
+  ]
+}

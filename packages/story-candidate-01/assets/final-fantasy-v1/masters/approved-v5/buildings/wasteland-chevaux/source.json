@@ -51,5 +51,25 @@
     2
   ],
   "suggestedLogicalVisibleWidth": 104,
-  "stateEvidence": "Normal low oblique linked row of crossed sharpened timber stakes with golden ochre rope lashings, patterned hanging wooden tabs, and separate gray rock foot clusters. Damaged snapped/tipped central stakes and broken lashings with fragments, retained end-footing extent. Captured intact crossed stakes, steel-gray reinforcements/wrappings and a pale hanging cloth at left; normal decorative wooden tabs removed, no flag."
+  "stateEvidence": "Normal low oblique linked row of crossed sharpened timber stakes with golden ochre rope lashings, patterned hanging wooden tabs, and separate gray rock foot clusters. Damaged snapped/tipped central stakes and broken lashings with fragments, retained end-footing extent. Captured intact crossed stakes, steel-gray reinforcements/wrappings and a pale hanging cloth at left; normal decorative wooden tabs removed, no flag.",
+  "parentAcceptedLogicalVisibleWidth": 104,
+  "sourceFoot": [
+    627,
+    1040
+  ],
+  "stateOriginalCropSHA256": {
+    "normal": "cba78a0e5f9cba79958b4726136c171a378adfc5fbaa8113dd635080cb236a7f",
+    "damaged": "ebaa9ac02136d13ef52808e121ea5a3f73563a0d4b39fb669af641fa3481fcf0",
+    "captured": "1a9713d866d9138e3ec77c9793a64fd82c74da6e1db4b7d87b6373270167ed55"
+  },
+  "consumerEvidence": {
+    "binding": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts:85",
+    "bindingText": "bulkhead: 'C01-STRUCT-WASTELAND-CHEVAUX',",
+    "definition": "packages/content-common/src/structures.ts:24",
+    "definitionType": "blocking structure, 120hp, full cover, blocks vision, obstructionHeight3",
+    "catalogAudit": "docs/art-rebuild-20261019/grayflag-topic-consumers.json",
+    "auditEvidence": "static-consumer-reference",
+    "observedInBrowser": false,
+    "placementQualification": "No placed bulkhead instance found in source TypeScript; static binding is established, live usage is not claimed."
+  }
 }

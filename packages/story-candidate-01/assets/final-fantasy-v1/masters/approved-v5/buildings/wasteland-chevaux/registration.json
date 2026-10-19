@@ -1,4 +1,5 @@
 {
+  "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
   "nativeCanvas": [
     1254,
     1254
@@ -14,8 +15,33 @@
     1040
   ],
   "normalVisibleWidth": 1187,
-  "proposedLogicalVisibleWidth": 104,
+  "parentAcceptedLogicalVisibleWidth": 104,
   "sharedScaleSuggestion": 0.08761583824768324,
-  "stateTransforms": "none; native full canvases remain unchanged; one shared scale only",
-  "status": "normal for parent review; state edits pending"
+  "fullCanvasLogicalWidth": 109.87026116259477,
+  "normalVisibleLogicalHeight": 53.62089300758214,
+  "stateTransforms": "none; use one shared normal-derived scale and sourceFoot for all full canvases; no per-state fitting",
+  "parentAcceptance": "2026-10-19: broad chunky timber and stone/rope source grouping clear; shared104 logical total width and sourceFoot627,1040; same low foundation across states; no new flag",
+  "stateBoundsAlphaAbove32": {
+    "normal": [
+      38,
+      428,
+      1225,
+      1040
+    ],
+    "damaged": [
+      37,
+      429,
+      1226,
+      1041
+    ],
+    "captured": [
+      38,
+      427,
+      1225,
+      1041
+    ]
+  },
+  "registrationQualification": "The same native canvas and same major rock foot positions are visually maintained. AI state edits have small local edge changes; this does not claim exact pixel identity. Outer visible extents vary by at most one pixel per side except no consequential change.",
+  "logicalWidthQualification": "104 is a shared normal-derived calibration. Damaged native silhouette is two pixels wider, so its final shared-scale width is about104.18; do not fit independently.",
+  "status": "all native states complete and reviewed; dense-map formal integration remains parent-owned"
 }

@@ -1,0 +1,206 @@
+{
+  "evidence": "actual scene renderer markup rearranged onto a native-size diagnostic contact board",
+  "gameplayChanged": false,
+  "browserPlayback": false,
+  "assets": [
+    {
+      "id": "snow-pine-cluster",
+      "anchor": [
+        48.96012759170654,
+        82.63317384370016
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.1,
+      "evidence": "catalog-only diagnostic; no shipped scene placement",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        1,
+        1
+      ],
+      "rendererScaleRange": [
+        1.1,
+        1.1
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 1.1,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-53.8561403508772 -90.89649122807019) scale(1.1)\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/scenery-regional@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        13.0,
+        11.5,
+        85.0,
+        87.0
+      ],
+      "nativeSampleVisibleHeight": 83.05000000000001,
+      "nativeVisibleHeightRange": [
+        83.05000000000001,
+        83.05000000000001
+      ],
+      "nativeSampleOverhangBelowContact": 4.80350877192982
+    },
+    {
+      "id": "snow-bare-shrub",
+      "anchor": [
+        47.931419457735245,
+        75.63795853269538
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 0.7,
+      "evidence": "catalog-only diagnostic; no shipped scene placement",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        1,
+        1
+      ],
+      "rendererScaleRange": [
+        0.7,
+        0.7
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.7,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-33.55199362041467 -52.94657097288676) scale(0.7)\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/scenery-regional@2x.png\" x=\"-96\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        14.5,
+        17.0,
+        82.5,
+        80.0
+      ],
+      "nativeSampleVisibleHeight": 44.099999999999994,
+      "nativeVisibleHeightRange": [
+        44.099999999999994,
+        44.099999999999994
+      ],
+      "nativeSampleOverhangBelowContact": 3.0534290271132347
+    },
+    {
+      "id": "ice-boulder-cluster",
+      "anchor": [
+        48.27432216905901,
+        76.52950558213716
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 0.9,
+      "evidence": "catalog-only diagnostic; no shipped scene placement",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        1,
+        1
+      ],
+      "rendererScaleRange": [
+        0.9,
+        0.9
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.9,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-43.446889952153114 -68.87655502392344) scale(0.9)\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/scenery-regional@2x.png\" x=\"-192\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.0,
+        17.0,
+        85.5,
+        81.5
+      ],
+      "nativeSampleVisibleHeight": 58.050000000000004,
+      "nativeVisibleHeightRange": [
+        58.050000000000004,
+        58.050000000000004
+      ],
+      "nativeSampleOverhangBelowContact": 4.4734449760765544
+    },
+    {
+      "id": "snowdrift-rock",
+      "anchor": [
+        49.09728867623605,
+        71.72886762360447
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "presentationScale": 0.8,
+      "evidence": "catalog-only diagnostic; no shipped scene placement",
+      "reference": false,
+      "reconstruction": false,
+      "placementScaleRange": [
+        1,
+        1
+      ],
+      "rendererScaleRange": [
+        0.8,
+        0.8
+      ],
+      "sampledRendererScaleRange": null,
+      "sampleScale": 0.8,
+      "sampleCount": 0,
+      "reviewMarkup": "<g class=\"catalog-environment-probe\" transform=\"translate(-39.27783094098884 -57.38309409888358) scale(0.8)\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/scenery-regional@2x.png\" x=\"-288\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg></g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        23.0,
+        87.5,
+        78.5
+      ],
+      "nativeSampleVisibleHeight": 44.400000000000006,
+      "nativeVisibleHeightRange": [
+        44.400000000000006,
+        44.400000000000006
+      ],
+      "nativeSampleOverhangBelowContact": 5.416905901116422
+    },
+    {
+      "id": "oak-ancient",
+      "anchor": [
+        48.89154704944178,
+        83.8676236044657
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "presentationScale": 1.375,
+      "evidence": "sampled scene renderer markup",
+      "reference": true,
+      "reconstruction": false,
+      "placementScaleRange": [
+        0.74,
+        0.86
+      ],
+      "rendererScaleRange": [
+        1.0175,
+        1.1824999999999999
+      ],
+      "sampledRendererScaleRange": [
+        1.028,
+        1.172
+      ],
+      "sampleScale": 1.102,
+      "sampleCount": 11,
+      "reviewMarkup": "<g class=\"candidate-environment-prop is-standing\" transform=\"translate(-53.855 -92.382) scale(1.102)\" opacity=\"1\">\n    <svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" overflow=\"hidden\" shape-rendering=\"crispEdges\" data-runtime-raster=\"atlas-cell\">\n    <image href=\"/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/forest-temperate@2x.png\" x=\"0\" y=\"0\" width=\"384\" height=\"384\" preserveAspectRatio=\"none\"/>\n  </svg>\n  </g>",
+      "logicalVisibleBoundsAlpha128": [
+        11.5,
+        7.0,
+        87.5,
+        89.0
+      ],
+      "nativeSampleVisibleHeight": 90.364,
+      "nativeVisibleHeightRange": [
+        83.435,
+        96.96499999999999
+      ],
+      "nativeSampleOverhangBelowContact": 5.655878787878793
+    }
+  ],
+  "offlineViewportNormalization": "nested SVG viewports expressed as equivalent clip paths for Inkscape"
+}

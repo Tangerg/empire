@@ -24,9 +24,9 @@
     "messageId": "Sentinel_fc5fd92f5ce881919d872672767d9767",
     "quote": "\u786e\u8ba4\u4e86\uff0c\u5c31\u6309\u7167\u8fd9\u4e2a\u65b9\u5411\u505a\u5269\u4e0b\u7684"
   },
-  "authoredFourPoseBundles": 7,
-  "authoredThreeStateBundles": 8,
-  "formalRuntimeBoundTopics": 50,
+  "authoredFourPoseBundles": 8,
+  "authoredThreeStateBundles": 10,
+  "formalRuntimeBoundTopics": 53,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -327,6 +327,24 @@
       "export": "48 square genuine alpha and native black/white/olive semantic review passed",
       "runtimeBinding": "existing canonical resolver references replaced bytes; density regression checked",
       "liveGame": "pending"
+    },
+    "C01-UNIT-MAGE": {
+      "raw": "4 native frames, exact prompts and source evidence preserved",
+      "export": "one shared scale/full-canvas contact registration; native semantic motion/state review passed",
+      "runtimeBinding": "built-in mage resolver; distinct from campaign battle-mage",
+      "liveGame": "pending"
+    },
+    "C01-STRUCT-THREE-BRIDGE-SPAN": {
+      "raw": "3 native frames, exact prompts and source evidence preserved",
+      "export": "one shared scale/full-canvas contact registration; native semantic motion/state review passed",
+      "runtimeBinding": "catalog and HD resolver; no active consumer found, not decorative map crossing",
+      "liveGame": "pending"
+    },
+    "C01-STRUCT-WASTELAND-CHEVAUX": {
+      "raw": "3 native frames, exact prompts and source evidence preserved",
+      "export": "one shared scale/full-canvas contact registration; native semantic motion/state review passed",
+      "runtimeBinding": "bulkhead resolver; no authored campaign placement found",
+      "liveGame": "pending"
     }
   },
   "supplementalBundles": {
@@ -406,12 +424,26 @@
         "grave-cross-cluster",
         "grave-signboards",
         "grave-dead-tree",
-        "grave-marker-lantern"
+        "grave-marker-lantern",
+        "forge-coal-pile",
+        "forge-coal-sacks",
+        "forge-ember-pile",
+        "forge-charcoal-kiln",
+        "snow-pine-cluster",
+        "snow-bare-shrub",
+        "ice-boulder-cluster",
+        "snowdrift-rock"
       ],
-      "count": 4,
+      "count": 12,
       "export": "96/192 registered full source canvases, unrelated cells preserved",
-      "runtimeBinding": "actual graveyard renderer with authored anchors/presentationScale, native contact review passed",
-      "liveGame": "pending"
+      "runtimeBinding": "registered atlas resolver; forge/grave actual renderer samples and explicitly catalog-only snow samples reviewed",
+      "liveGame": "pending",
+      "catalogOnlyNoCurrentPlacement": [
+        "snow-pine-cluster",
+        "snow-bare-shrub",
+        "ice-boulder-cluster",
+        "snowdrift-rock"
+      ]
     }
   },
   "totalCanonicalScope": 1212,
@@ -436,6 +468,12 @@
       "raw": "approved opaque source unchanged",
       "export": "512/1024 textures, all256 neighbour masks and exact native crop comparisons",
       "runtimeBinding": "actual water/bridge occupancy,512 logical world sampling at native2x density;28 cells on fullc01-02",
+      "liveGame": "pending"
+    },
+    "dirt-road": {
+      "raw": "approved earthy material and2x connector bytes preserved",
+      "export": "isolated1x cell downsample with bounded outeredgeRGB match; alpha and interior unchanged; allports exact1x/2x",
+      "runtimeBinding": "existing connected masks/roadcells, core22logical, blank redundant edgeatlas",
       "liveGame": "pending"
     }
   },

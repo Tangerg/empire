@@ -1,0 +1,107 @@
+{
+  "asset": "snowdrift-rock",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-060fd422-88e1-4b09-9fb7-6816f5d07ddd.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 1012952,
+  "opaque_pixels": 1347,
+  "partial_alpha_pixels": 558217,
+  "near_opaque_alpha_250_255_pixels": 541068,
+  "nonzero_alpha_bbox": [
+    41,
+    238,
+    1238,
+    1228
+  ],
+  "strong_alpha_bbox": [
+    90,
+    260,
+    1203,
+    1074
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      41,
+      238,
+      1238,
+      1228
+    ],
+    "16": [
+      90,
+      259,
+      1203,
+      1075
+    ],
+    "128": [
+      90,
+      260,
+      1203,
+      1074
+    ],
+    "250": [
+      91,
+      261,
+      1202,
+      1073
+    ]
+  },
+  "margin_pixels_LTRB": [
+    41,
+    238,
+    16,
+    26
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    90,
+    260,
+    51,
+    180
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    }
+  },
+  "strict_perimeter_all_alpha_zero": true,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": false,
+  "sha256": "ee9e0a5fbd7e52fdd6df8c18d9a39c0ae4b2c5c42b3e17759e49993208f640fa",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

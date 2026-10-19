@@ -1,0 +1,36 @@
+{
+  "status": "native masters and source QA complete; production integration pending",
+  "reference_provenance": "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/snow-original-reference-evidence.json",
+  "assets": [
+    {
+      "identity": "ice-boulder-cluster",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/ice-boulder-cluster-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/ice-boulder-cluster/evidence.json",
+      "source_foot_estimate_px": [
+        631,
+        1043
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "snowdrift-rock",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/snowdrift-rock-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/evidence.json",
+      "source_foot_estimate_px": [
+        643,
+        973
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

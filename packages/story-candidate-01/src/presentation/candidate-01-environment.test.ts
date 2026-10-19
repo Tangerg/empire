@@ -8,6 +8,14 @@ import {
 describe('candidate-01 environment builder v1.1', () => {
   it('retains registered pivots and semantic footprints for approved forest cells', () => {
     const contracts = [
+      { id: 'forge-coal-pile', foot: [626, 966], scale: 1.1, footprint: [1, 1], obstruction: 1 },
+      { id: 'forge-coal-sacks', foot: [635, 1000], scale: 1.6, footprint: [1, 1], obstruction: 1 },
+      { id: 'forge-ember-pile', foot: [635, 924], scale: 1.1, footprint: [1, 1], obstruction: 1 },
+      { id: 'forge-charcoal-kiln', foot: [626, 1000], scale: 1.7, footprint: [2, 2], obstruction: 2 },
+      { id: 'snow-pine-cluster', foot: [641, 1132], scale: 1.1, footprint: [2, 2], obstruction: 2 },
+      { id: 'snow-bare-shrub', foot: [626, 1030], scale: 0.7, footprint: [1, 1], obstruction: 1 },
+      { id: 'ice-boulder-cluster', foot: [631, 1043], scale: 0.9, footprint: [1, 1], obstruction: 1 },
+      { id: 'snowdrift-rock', foot: [643, 973], scale: 0.8, footprint: [1, 1], obstruction: 0 },
       { id: 'grave-cross-cluster', foot: [625, 1030], scale: 1.4, footprint: [2, 2], obstruction: 1 },
       { id: 'grave-signboards', foot: [700, 1060], scale: 1.2, footprint: [1, 1], obstruction: 1 },
       { id: 'grave-dead-tree', foot: [625, 1080], scale: 2, footprint: [1, 1], obstruction: 2 },
@@ -53,9 +61,9 @@ describe('candidate-01 environment builder v1.1', () => {
       expect(cell.footprint).toEqual(footprint);
       expect(cell.obstructionHeight).toBe(obstruction);
       expect(atlas.raster).toMatchObject({ cellWidth: 96, cellHeight: 96, columns: 4, rows: 4 });
-      expect(atlas.raster.href).toContain(`${id.startsWith('grave-') ? 'scenery-regional' : id.startsWith('pine-') ? 'forest-existing' : 'forest-temperate'}@2x.png`);
+      expect(atlas.raster.href).toContain(`${['grave-', 'forge-', 'snow', 'ice-', 'wasteland-'].some(prefix => id.startsWith(prefix)) ? 'scenery-regional' : id.startsWith('pine-') ? 'forest-existing' : 'forest-temperate'}@2x.png`);
     }
-    expect(CANDIDATE_01_ENVIRONMENT.cell('snow-pine-cluster').cell.presentationScale).toBeUndefined();
+    expect(CANDIDATE_01_ENVIRONMENT.cell('wasteland-bramble').cell.presentationScale).toBeUndefined();
   });
 
   it('rejects invalid presentation scales at the catalog boundary', () => {

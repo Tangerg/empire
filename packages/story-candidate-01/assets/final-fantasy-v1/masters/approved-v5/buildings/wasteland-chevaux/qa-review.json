@@ -1,0 +1,109 @@
+{
+  "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
+  "status": "native trio complete; common-scale visual QA completed",
+  "masterIntegrity": "All raw and master pairs are byte-identical native imagegen files; no crop, resize, paint, alpha cleanup or post-generation transforms",
+  "perimeterGate": "Each state maximum outermost alpha1; zero edge pixels >1. Gate has not been relaxed.",
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sharedSourceFoot": [
+    627,
+    1040
+  ],
+  "acceptedLogicalWidth": 104,
+  "scaleApplication": "normal-visible-width-derived single factor104/1187 for every full1254 canvas; no per-state fit",
+  "visualChecks": {
+    "normal": "Intact low linked crossed timber obstacle; golden ochre lashings, four large patterned hanging tabs, pale pointed stake tips and separate chunky rock foot groups",
+    "damaged": "Middle crossed timbers snapped and collapsed into a low central gap; retained end supports and rock footing positions; complete bounded ground debris, no floating fragments",
+    "captured": "Intact timber arrangement and rock feet; four normal wood tabs removed; steel-gray reinforcement wrappings with a few tan ties; one large pale forked hanging cloth at left; no flag",
+    "style": "Broad wood/stone cel planes with bold dark outlines; small-display silhouette distinct among states",
+    "registration": "Major foot clusters visually registered across all native states. Some local native AI edge drift exists; no pixel-identical geometry claim.",
+    "background": "True RGBA exterior and open gaps; no background tile; full subject contained",
+    "scale": "104px total-width preview read on dark green background using same full-canvas scale; dense-map integration visual scale gate is still required"
+  },
+  "previews": {
+    "nativeComparison": "qa-same-canvas.png",
+    "sharedLogical104": "qa-logical-104.png"
+  },
+  "consumerQualification": "Actual bulkhead binding in candidate-01-bindings.ts:85. bulkhead defined in content-common/src/structures.ts:24. No placed bulkhead instance found in campaign or experience-lab TypeScript.",
+  "stateMetrics": {
+    "normal": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        38,
+        428,
+        1225,
+        1040
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0a0d4d35-883c-4cfd-827a-ac4e0df685bf.png",
+      "sha256": "3b2f0de01871f41df98b47efa5e3ac25d0bd0183226ce54e7e9b421ef7806002",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 1128282,
+      "nonOpaquePixelCount": 1570972,
+      "alphaAtOrBelow1Bounds": "perimeter only: pass",
+      "perimeterGate": "maximum alpha <=1 and zero pixels >1",
+      "visibleSilhouetteReview": "complete; no clipped stake, rock, rope tail or ground debris",
+      "canvasRegistration": "native full canvas unchanged; same sourceFoot and one shared scale"
+    },
+    "damaged": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        37,
+        429,
+        1226,
+        1041
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-d9f5cef6-5f0c-4503-8180-9e4f26f07541.png",
+      "sha256": "184520e0b597a4c6db10108c15a6df426bb1281e91d7a6b96e195cc91327e2c8",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 1190768,
+      "nonOpaquePixelCount": 1570819,
+      "alphaAtOrBelow1Bounds": "perimeter only: pass",
+      "perimeterGate": "maximum alpha <=1 and zero pixels >1",
+      "visibleSilhouetteReview": "complete; no clipped stake, rock, rope tail or ground debris",
+      "canvasRegistration": "native full canvas unchanged; same sourceFoot and one shared scale"
+    },
+    "captured": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "perimeterAlphaMax": 1,
+      "perimeterAbove1Pixels": 0,
+      "alphaAbove32Bounds": [
+        38,
+        427,
+        1225,
+        1041
+      ],
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-fc4472d7-a7e7-48b5-8583-a2cf9384a0f3.png",
+      "sha256": "2ac048f6931a4e43ecd6167eba706b1740a8d6c67e6bd3fe90f50ea56b0a7d7a",
+      "postGenerationTransform": "none",
+      "nativeRawEqualsMaster": true,
+      "fullyTransparentPixelCount": 1130125,
+      "nonOpaquePixelCount": 1570775,
+      "alphaAtOrBelow1Bounds": "perimeter only: pass",
+      "perimeterGate": "maximum alpha <=1 and zero pixels >1",
+      "visibleSilhouetteReview": "complete; no clipped stake, rock, rope tail or ground debris",
+      "canvasRegistration": "native full canvas unchanged; same sourceFoot and one shared scale"
+    }
+  },
+  "noRepositoryWrites": true,
+  "noLiveGameClaim": true
+}

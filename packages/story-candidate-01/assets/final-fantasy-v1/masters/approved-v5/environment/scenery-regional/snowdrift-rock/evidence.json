@@ -1,0 +1,49 @@
+{
+  "asset": "snowdrift-rock",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "physical wind-swept snowdrift over low rocks with one small dry tuft; no log",
+  "style_coherence": "pass; broad matte snow and stone planes, subdued blue-gray palette and bold contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    643,
+    973
+  ],
+  "source_foot_estimate_normalized": [
+    0.512759,
+    0.775917
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    90,
+    260,
+    51,
+    180
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/snowdrift-rock.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/forest-temperate/boulder-large/boulder-large-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snow-pine-cluster/snow-pine-cluster-master.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/scenery-regional/snowdrift-rock/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/scenery-regional/snow-original-reference-evidence.json",
+  "no_ground_square_or_added_platform": true,
+  "no_exterior_glow": true,
+  "original_gameplay_footprint": [
+    1,
+    1
+  ],
+  "original_slot_zero_based": 3,
+  "original_gameplay_obstruction_height": 0,
+  "drift_direction": "foreground-left low to rear-right swept crests",
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}
