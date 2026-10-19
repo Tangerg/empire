@@ -108,6 +108,10 @@ Run `python3 tools/art/export_environment_overrides.py` then the same command wi
 
 - forest-temperate, forest-existing, scenery-regional: 4×4 / 16 slots, 96²/192² cells,
   384²/768² baseline atlases, default anchor [48,91]
+- crossings-fortifications: 4×4 / 16 slots, 96²/192² cells, 384²/768² baseline
+  atlases, default anchor [48,91]. Both naming arrays and any explicit cell
+  indices must preserve the exact shipped bridge/wall slot order. Bridge/wall
+  classification, footprint and obstruction metadata are retained unchanged.
 - rural-life: 4×4 / 16 slots, 112²/224² cells, 448²/896² baseline atlases, default anchor [56,108]
 - decals-small: 6×4 / 24 slots, 64²/128² cells, 384×256 / 768×512 baseline atlases,
   default anchor [32,60]
@@ -133,6 +137,14 @@ neighbour fragments. Do not use those clipped slots as new master sources or
 infer a source foot from their alpha bounds. Review the full original subject
 and register one full canvas with an explicit source foot, using the same export
 path as other modules. Unselected baseline cells remain pixel-identical.
+
+Fortification modules use that same full-canvas registration. The renderer draws
+walls by their registered foot, but existing vertical bridges use `lying: true`:
+their cell centre [48,48], not the registered foot, meets the bridge-run midpoint.
+Review bridge art against that centre contract; this exporter does not reinterpret
+bridge orientation, change terrain topology, or replace the separate horizontal
+crossing source. Inspect whole source subjects before authoring: the old gatehouse
+and horizontal wooden bridge extend into neighbouring quarter slots.
 
 Keep immutable copies of the original runtime atlases under the pack masters
 directory before first export. Register their byte SHA256 as baselines; never

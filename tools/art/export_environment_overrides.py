@@ -33,6 +33,15 @@ TEMPERATE_CLIFF_SLOTS = [
     ('plateau-cap', 'temperate-plateau-cap'),
 ]
 
+FORTIFICATION_SLOTS = [
+    'wood-bridge-horizontal', 'wood-bridge-vertical',
+    'stone-bridge-horizontal', 'stone-bridge-vertical',
+    'wood-bridgehead-west', 'wood-bridgehead-east',
+    'palisade-straight', 'palisade-corner', 'palisade-gate', 'palisade-breach',
+    'stone-wall-straight', 'stone-wall-corner', 'stone-gatehouse',
+    'stone-wall-breach', 'watchtower-wood', 'wood-barricade',
+]
+
 
 def load_source(root, pack, entry):
     if not isinstance(entry, dict) or set(entry) != {'source', 'sha256'}:
@@ -111,6 +120,7 @@ def plan(root, catalog):
         'decals-small': (6, 64, [32, 60]),
         'camps-foundations': (4, 144, [72, 139]),
         'cliff-modules-temperate': (4, 128, [64, 127]),
+        'crossings-fortifications': (4, 96, [48, 91]),
     }
     for atlas_id, override in data['atlases'].items():
         if atlas_id not in contracts:
@@ -135,6 +145,12 @@ def plan(root, catalog):
         if atlas_id == 'cliff-modules-temperate':
             if list(zip(labels, order)) != TEMPERATE_CLIFF_SLOTS:
                 raise ValueError('inconsistent cliff label/semantic cell order')
+        elif atlas_id == 'crossings-fortifications':
+            if (labels != FORTIFICATION_SLOTS or order != FORTIFICATION_SLOTS
+                    or any(type(cell.get('index', index)) is not int
+                           or cell.get('index', index) != index
+                           for index, cell in enumerate(atlas['cells']))):
+                raise ValueError('inconsistent fortification cell order')
         elif labels != order:
             raise ValueError('inconsistent cell order')
         for cell in atlas['cells']:

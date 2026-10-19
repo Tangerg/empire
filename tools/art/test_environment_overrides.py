@@ -65,6 +65,7 @@ class EnvironmentTests(unittest.TestCase):
             'decals-small': (6, 13, 23),
             'camps-foundations': (3, 11, 13),
             'cliff-modules-temperate': (4, 8, 12, 15),
+            'crossings-fortifications': (1, 3, 10, 11, 12),
         }[atlas_id]
         cells = {}
         for index in indices:
@@ -92,7 +93,7 @@ class EnvironmentTests(unittest.TestCase):
         self.assertEqual(cell_box(13, 288), (288, 864, 576, 1152))
 
     def test_module_exact_slots_alpha_baselines_and_semantics(self):
-        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate'):
+        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate', 'crossings-fortifications'):
             with self.subTest(atlas=atlas_id):
                 indices = self.configure_modules(atlas_id)
                 manifest_before = self.manifest.read_bytes()
@@ -102,6 +103,8 @@ class EnvironmentTests(unittest.TestCase):
                     'camps-foundations': ['village-square-foundation', 'watch-post-ground', 'abandoned-cart-stop'],
                     'cliff-modules-temperate': ['temperate-hill-cap', 'temperate-cliff-convex-corner',
                                               'temperate-pillar-wide', 'temperate-plateau-cap'],
+                    'crossings-fortifications': ['wood-bridge-vertical', 'stone-bridge-vertical',
+                                                'stone-wall-straight', 'stone-wall-corner', 'stone-gatehouse'],
                 }
                 self.assertEqual([atlas['cells'][i]['id'] for i in indices], expected_ids[atlas_id])
                 masters_before = {p: p.read_bytes() for p in (self.pack / 'masters').rglob('*.png')}
@@ -139,7 +142,7 @@ class EnvironmentTests(unittest.TestCase):
                                 self.assertEqual(report['sources'][cell['id']]['presentationScale'], 0.75)
 
     def test_module_registration_changes_only_selected_anchor(self):
-        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate'):
+        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate', 'crossings-fortifications'):
             with self.subTest(atlas=atlas_id):
                 indices = self.configure_modules(atlas_id)
                 expected = json.loads(self.manifest.read_text())
@@ -152,12 +155,16 @@ class EnvironmentTests(unittest.TestCase):
                 export(self.root, self.catalog, True)
 
     def test_module_wrong_contracts_rejected_before_writes(self):
-        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate'):
+        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate', 'crossings-fortifications'):
             self.configure_modules(atlas_id)
             original = json.loads(self.manifest.read_text())
-            for key, value in [('columns', 5), ('rows', 5), ('cellWidth', 96), ('cellHeight', 96),
-                               ('cellWidth2x', 192), ('cellHeight2x', 192), ('anchor', [48, 91]),
-                               ('tileMode', 'variants'), ('componentCount', 15)]:
+            atlas = original['atlases'][0]
+            wrong_values = [(key, atlas[key] + 1) for key in
+                            ('columns', 'rows', 'cellWidth', 'cellHeight', 'cellWidth2x',
+                             'cellHeight2x', 'componentCount')]
+            wrong_values += [('anchor', [atlas['anchor'][0] + 1, atlas['anchor'][1]]),
+                             ('tileMode', 'variants')]
+            for key, value in wrong_values:
                 with self.subTest(atlas=atlas_id, key=key):
                     changed = copy.deepcopy(original)
                     changed['atlases'][0][key] = value
@@ -175,14 +182,14 @@ class EnvironmentTests(unittest.TestCase):
                 export(self.root, self.catalog)
 
     def test_module_wrong_baseline_dimensions_rejected(self):
-        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate'):
+        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate', 'crossings-fortifications'):
             self.configure_modules(atlas_id)
             original = copy.deepcopy(self.data)
             for density in (1, 2):
                 with self.subTest(atlas=atlas_id, density=density):
                     self.data = copy.deepcopy(original)
                     self.data['atlases'][atlas_id]['baselines'][f'{density}x'] = self.save(
-                        Image.new('RGBA', (384 * density, 384 * density)), f'{atlas_id}-wrong-{density}.png')
+                        Image.new('RGBA', (385 * density, 384 * density)), f'{atlas_id}-wrong-{density}.png')
                     self.write_catalog()
                     with self.assertRaisesRegex(ValueError, 'baseline atlas dimensions'):
                         export(self.root, self.catalog)
@@ -191,7 +198,7 @@ class EnvironmentTests(unittest.TestCase):
     def test_mixed_module_geometry_is_local_to_each_atlas(self):
         atlases = [json.loads(self.manifest.read_text())['atlases'][0]]
         overrides = dict(self.data['atlases'])
-        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate'):
+        for atlas_id in ('decals-small', 'camps-foundations', 'cliff-modules-temperate', 'crossings-fortifications'):
             self.configure_modules(atlas_id)
             atlases.append(json.loads(self.manifest.read_text())['atlases'][0])
             overrides.update(self.data['atlases'])
@@ -202,7 +209,7 @@ class EnvironmentTests(unittest.TestCase):
             self.write_catalog()
             reports = export(self.root, self.catalog)
             export(self.root, self.catalog, True)
-            self.assertEqual(len(reports), 8)
+            self.assertEqual(len(reports), 10)
             self.assertEqual(self.manifest.read_bytes(), before)
             for report in reports:
                 atlas = next(a for a in order if a['id'] == report['atlasId'])
@@ -247,6 +254,56 @@ class EnvironmentTests(unittest.TestCase):
         self.write_catalog()
         with self.assertRaisesRegex(ValueError, 'unknown environment cell'):
             export(self.root, self.catalog)
+
+    def test_fortification_semantic_order_is_fixed_even_if_both_arrays_are_swapped(self):
+        self.configure_modules('crossings-fortifications')
+        original = json.loads(self.manifest.read_text())
+        for fields in [('cellOrder',), ('cells',), ('cellOrder', 'cells')]:
+            with self.subTest(fields=fields):
+                changed = copy.deepcopy(original)
+                for field in fields:
+                    values = changed['atlases'][0][field]
+                    values[1], values[12] = values[12], values[1]
+                self.manifest.write_text(json.dumps(changed))
+                before = self.manifest.read_bytes()
+                with self.assertRaisesRegex(ValueError, 'fortification cell order'):
+                    export(self.root, self.catalog)
+                self.assertFalse((self.env / 'runtime').exists())
+                self.assertEqual(self.manifest.read_bytes(), before)
+
+    def test_fortification_explicit_slot_indices_cannot_redirect_the_runtime_cell(self):
+        self.configure_modules('crossings-fortifications')
+        original = json.loads(self.manifest.read_text())
+        for index in (11, True, 10.0):
+            with self.subTest(index=index):
+                changed = copy.deepcopy(original)
+                changed['atlases'][0]['cells'][10]['index'] = index
+                self.manifest.write_text(json.dumps(changed))
+                with self.assertRaisesRegex(ValueError, 'fortification cell order'):
+                    export(self.root, self.catalog)
+                self.assertFalse((self.env / 'runtime').exists())
+
+    def test_fortification_export_preserves_bridge_classification_and_other_ground_outputs(self):
+        self.configure_modules('crossings-fortifications')
+        document = json.loads(self.manifest.read_text())
+        atlas = document['atlases'][0]
+        self.assertEqual(atlas['bridgeCells'], [0, 1, 2, 3, 4, 5])
+        self.assertEqual(atlas['wallCells'], list(range(6, 16)))
+        self.assertEqual(atlas['cells'][1]['obstructionHeight'], 0)
+        self.assertEqual(atlas['cells'][3]['obstructionHeight'], 1)
+        self.assertEqual(atlas['cells'][12]['obstructionHeight'], 2)
+        before = self.manifest.read_bytes()
+        other_outputs = {}
+        for name in ('route-dirt-road', 'route-edge-dirt-road', 'water-slow-river'):
+            for density in (1, 2):
+                path = self.env / 'runtime/atlas' / f'{name}{"@2x" if density == 2 else ""}.png'
+                path.parent.mkdir(parents=True, exist_ok=True)
+                Image.new('RGBA', (32 * density, 32 * density), (50, 60, 70, 180)).save(path)
+                other_outputs[path] = path.read_bytes()
+        export(self.root, self.catalog)
+        export(self.root, self.catalog, True)
+        self.assertEqual(self.manifest.read_bytes(), before)
+        self.assertEqual({path: path.read_bytes() for path in other_outputs}, other_outputs)
 
     def test_cliff_export_does_not_change_automatic_elevation_masks_or_contract(self):
         self.configure_modules('cliff-modules-temperate')
