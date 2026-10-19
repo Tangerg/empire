@@ -4184,7 +4184,8 @@
       "topicId": "c02-battle-prop-broken-rails",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-bunks",
@@ -4249,7 +4250,8 @@
       "topicId": "c02-battle-prop-community-repairs",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-cups-cookware",
@@ -4280,13 +4282,15 @@
       "topicId": "c02-battle-prop-dead-fungus-beds",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-discarded-arms",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_scifi_static_props"
     },
     {
       "topicId": "c02-battle-prop-drying-racks",
@@ -4486,10 +4490,14 @@
     },
     {
       "topicId": "c02-battle-prop-physical-film",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-physical-film/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; runtime visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "eb4189a3ae90ac04243eb0971817365da6c44d7166565a33b1706506b7845a73"
     },
     {
       "topicId": "c02-battle-prop-platform-shields",
@@ -4619,10 +4627,14 @@
     },
     {
       "topicId": "c02-battle-prop-tickets-manifests",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_scifi_static_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/battle-prop/c02-battle-prop-tickets-manifests/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; runtime visual acceptance pending"
+      },
+      "assignment": "redraw_scifi_static_props",
+      "sourceSha256": "e0ed8a2cbafadeed24123a3438b7a454d5f5c7dca771b8921cfefd630929777a"
     },
     {
       "topicId": "c02-battle-prop-water-barrels",
