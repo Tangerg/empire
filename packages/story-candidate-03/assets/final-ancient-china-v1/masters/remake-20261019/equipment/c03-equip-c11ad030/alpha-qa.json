@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-c11ad030",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-c11ad030.png",
+  "label": "Armored cavalry",
+  "observed_original": "Runtime shows spear.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed role-based combination from matching board vocabulary, not recovered original mapping.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 1,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      39,
+      1232,
+      1198
+    ],
+    "128": [
+      114,
+      216,
+      1204,
+      1016
+    ],
+    "240": [
+      115,
+      217,
+      1203,
+      1015
+    ]
+  },
+  "visual_review": "Empty plain iron helmet with lamellar neck plates and small saddle. No face/emblem. Helmet metallic highlights moderately strong; role distinct from scout."
+}

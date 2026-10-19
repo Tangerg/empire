@@ -2063,7 +2063,8 @@
       "topicId": "C01-EQUIP-EAGLE-SCOUT",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-ENGINEER",
@@ -2375,13 +2376,15 @@
       "topicId": "C01-EQUIP-WHITE-STAG-RIDER",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-WOLF-RIDER",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-WOODLAND-WALKER",
@@ -2393,7 +2396,8 @@
       "topicId": "C01-EQUIP-WYVERN-RIDER",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-SKILL-01",
@@ -7970,11 +7974,15 @@
     },
     {
       "topicId": "c03-equip-6fa9292e",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-6fa9292e/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "source-inspection-before-generation"
+      "assignmentPhase": "source-inspection-before-generation",
+      "sourceSha256": "2ff795f027de637e4669a6216759945079e83d602b45468df9108267cdd3105a"
     },
     {
       "topicId": "c03-equip-73d2bcb4",
@@ -8098,11 +8106,15 @@
     },
     {
       "topicId": "c03-equip-c11ad030",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-c11ad030/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "source-inspection-before-generation"
+      "assignmentPhase": "source-inspection-before-generation",
+      "sourceSha256": "737552be6989730479c5add967c1c20ce842430a8a0398350d244b3dbf656fe8"
     },
     {
       "topicId": "c03-equip-c30bf360",

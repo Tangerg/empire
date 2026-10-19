@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-6fa9292e",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-6fa9292e.png",
+  "label": "Heavy crossbow corps",
+  "observed_original": "Runtime shows round shield.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed role-based combination from matching board vocabulary, not recovered original mapping.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 1,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      93,
+      1238,
+      1214
+    ],
+    "128": [
+      106,
+      213,
+      1228,
+      1041
+    ],
+    "240": [
+      107,
+      214,
+      1227,
+      1041
+    ]
+  },
+  "visual_review": "Complete wooden crossbow plus3bolts. Clear transverse bow/string and correctly opposite-end tips/fletching. No modern firearm fixtures."
+}
