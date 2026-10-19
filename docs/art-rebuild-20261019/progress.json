@@ -2083,11 +2083,16 @@
     },
     {
       "topicId": "C01-EQUIP-EAGLE-SCOUT",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-eagle-scout/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-058-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "5a3d6b710668b7a212e7bcbdb23bc47cd6f1118c054e5be348a8b5bb4f227bda"
@@ -2132,7 +2137,8 @@
       "topicId": "C01-EQUIP-GRAVEKEEPER",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-HEAVY-KNIGHT",
@@ -2286,7 +2292,8 @@
       "topicId": "C01-EQUIP-RUNE-ARTIFICER",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-RUNE-SHIELD",
@@ -2309,7 +2316,8 @@
       "topicId": "C01-EQUIP-SHAMAN",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-SILVER-LONGBOW",
@@ -2400,18 +2408,27 @@
     },
     {
       "topicId": "C01-EQUIP-WHITE-STAG-RIDER",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
-    },
-    {
-      "topicId": "C01-EQUIP-WOLF-RIDER",
       "status": "raw-generated",
-      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-wolf-rider/master.png",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-white-stag-rider/master.png",
       "verification": {
         "state": "pending",
         "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "5109f417f47932e242fa07d1680bc7c9e454b5178a4bf9a77a0ae17440aeab23"
+    },
+    {
+      "topicId": "C01-EQUIP-WOLF-RIDER",
+      "status": "exported",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-wolf-rider/master.png",
+      "verification": {
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-058-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_grayflag_cover_props",
       "sourceSha256": "9efdd8c12217e5adae23aeeccf6315962d9d83e707d9d1b98c7212e4f04b4385"
@@ -2420,14 +2437,19 @@
       "topicId": "C01-EQUIP-WOODLAND-WALKER",
       "status": "pending",
       "source": null,
-      "verification": null
+      "verification": null,
+      "assignment": "redraw_grayflag_cover_props"
     },
     {
       "topicId": "C01-EQUIP-WYVERN-RIDER",
-      "status": "pending",
-      "source": null,
-      "verification": null,
-      "assignment": "redraw_grayflag_cover_props"
+      "status": "raw-generated",
+      "source": "packages/story-candidate-01/assets/final-fantasy-v1/masters/remake-20261019/equipment/c01-equip-wyvern-rider/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
+      "assignment": "redraw_grayflag_cover_props",
+      "sourceSha256": "1c0667f296843a7f1f88bd357883cabcd8fd4d38a5037b1b5785223db2c46121"
     },
     {
       "topicId": "C01-SKILL-01",
@@ -5291,11 +5313,16 @@
     },
     {
       "topicId": "c02-equipment-stargate-guard",
-      "status": "raw-generated",
+      "status": "exported",
       "source": "packages/story-candidate-02/assets/final-scifi-v1/masters/remake-20261019/equipment/c02-equipment-stargate-guard/master.png",
       "verification": {
-        "state": "pending",
-        "note": "Raw master preserved; export and visual acceptance pending"
+        "state": "export-checked",
+        "note": "Raw master preserved; export and visual acceptance pending",
+        "exportCheck": "passed",
+        "exportTests": 14,
+        "evidence": "docs/art-rebuild-20261019/batch-058-export-evidence.json",
+        "visualAndConsumerAcceptance": "pending",
+        "runtimeVisual": "pending-browser-socket-blocked"
       },
       "assignment": "redraw_scifi_static_props",
       "sourceSha256": "3d75146a2adfe0510ea2d0c136cb5d2f94fe34b3c8d06cd4d7c4197ca4d61b16"
@@ -7968,11 +7995,15 @@
     },
     {
       "topicId": "c03-equip-4619e546",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-4619e546/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "source-inspection-before-generation"
+      "assignmentPhase": "source-inspection-before-generation",
+      "sourceSha256": "fe80f26b271a6660382fb4eab3de2d4e145d2e149bd9b905c1bec20fa5c1b83c"
     },
     {
       "topicId": "c03-equip-4c02a584",
@@ -8063,11 +8094,15 @@
     },
     {
       "topicId": "c03-equip-73d2bcb4",
-      "status": "pending",
-      "source": null,
-      "verification": null,
+      "status": "raw-generated",
+      "source": "packages/story-candidate-03/assets/final-ancient-china-v1/masters/remake-20261019/equipment/c03-equip-73d2bcb4/master.png",
+      "verification": {
+        "state": "pending",
+        "note": "Raw master preserved; export and visual acceptance pending"
+      },
       "assignment": "redraw_grayflag_support_props",
-      "assignmentPhase": "source-inspection-before-generation"
+      "assignmentPhase": "source-inspection-before-generation",
+      "sourceSha256": "af83ff03c98f80b70be3bb1eb3e246ba58f10a4657a6b05adf14d00b22ce2c7b"
     },
     {
       "topicId": "c03-equip-747800db",

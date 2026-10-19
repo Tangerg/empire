@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-4619e546",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-4619e546.png",
+  "label": "Ning imperial guard",
+  "observed_original": "Runtime shows peasant coat/hat/pitchfork.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed role-based combination from board vocabulary and established art-direction colors, not recovered original mapping.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 1,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      47,
+      1238,
+      1254
+    ],
+    "128": [
+      57,
+      80,
+      1206,
+      1173
+    ],
+    "240": [
+      58,
+      81,
+      1205,
+      1172
+    ]
+  },
+  "visual_review": "Empty lamellar cuirass with indigo and restrained gold trim, straight sword. No beast emblem. Sword guard has small geometric decoration, no text."
+}

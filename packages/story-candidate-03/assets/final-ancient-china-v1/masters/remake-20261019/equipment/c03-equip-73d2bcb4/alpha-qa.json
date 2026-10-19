@@ -1,0 +1,50 @@
+{
+  "topicId": "c03-equip-73d2bcb4",
+  "status": "newmaster-pending-runtimebuild",
+  "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-03/assets/final-ancient-china-v1/runtime/equipment/equip-73d2bcb4.png",
+  "label": "General bodyguard",
+  "observed_original": "Runtime shows flags/drum.",
+  "reconstructed_identity": true,
+  "uncertainty": "Designed role-based combination from board vocabulary and established art-direction colors, not recovered original mapping.",
+  "runtime_contract": {
+    "size": [
+      48,
+      48
+    ],
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "boundary_alpha_max": 1,
+  "threshold_bboxes": {
+    "1": [
+      0,
+      85,
+      1230,
+      1234
+    ],
+    "128": [
+      143,
+      88,
+      1224,
+      1170
+    ],
+    "240": [
+      144,
+      89,
+      1223,
+      1169
+    ]
+  },
+  "visual_review": "Empty helmet and halberd, no face/emblem. Red plume larger than requested small tassel; semantic role readable."
+}
