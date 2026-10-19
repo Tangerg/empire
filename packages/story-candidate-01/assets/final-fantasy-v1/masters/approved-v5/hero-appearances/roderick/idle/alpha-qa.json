@@ -1,0 +1,199 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ea24f369-f330-4e8d-a756-28c8e8573056.png",
+  "size": [
+    1560,
+    1008
+  ],
+  "mode": "RGBA",
+  "sha256": "d75f827aaff16fa667939d525a853f0d25ba5950db3c3d0a911f9b53f6846a80",
+  "bboxAlphaNonzero": [
+    0,
+    19,
+    1524,
+    979
+  ],
+  "bboxAlphaGreaterThan127": [
+    272,
+    22,
+    1459,
+    976
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1025198,
+  "alphaOnePixels": 6276,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "bodyMeasurement": {
+    "hairROI": [
+      590,
+      0,
+      815,
+      230
+    ],
+    "hairCrownY": 22,
+    "hoofMeasurements": {
+      "near-hind": {
+        "roi": [
+          400,
+          870,
+          550,
+          990
+        ],
+        "soleY": 963,
+        "bottomFourRowsMeanX": 481.4145299145299
+      },
+      "far-hind": {
+        "roi": [
+          620,
+          860,
+          780,
+          970
+        ],
+        "soleY": 947,
+        "bottomFourRowsMeanX": 700.9215686274509
+      },
+      "near-fore": {
+        "roi": [
+          780,
+          880,
+          940,
+          995
+        ],
+        "soleY": 975,
+        "bottomFourRowsMeanX": 862.7654867256637
+      },
+      "far-fore": {
+        "roi": [
+          990,
+          870,
+          1150,
+          990
+        ],
+        "soleY": 965,
+        "bottomFourRowsMeanX": 1080.9257425742574
+      }
+    },
+    "meanNearSideHoofSoleY": 969.0,
+    "combinedHeightSourcePixels": 947.0,
+    "combinedTargetLogicalPixels": 56,
+    "proposedSharedScale": 0.059134107708553325,
+    "scaleFraction": "56/947",
+    "proposedSourceFoot": [
+      782,
+      975
+    ],
+    "sourceFootMeanXBeforeRounding": 781.5068319604754,
+    "anchorMethod": "x average four hoof bottom-band centers, y lowest hoof; rider boots/stirrups excluded. Height is hair crown to mean near-side hind/fore hoof soles.",
+    "nativeCanvas": [
+      1560,
+      1008
+    ],
+    "visibleWidthSourcePixels": 1187,
+    "visibleWidthLogical": 70.1921858500528,
+    "candidateFrame": [
+      128,
+      80
+    ],
+    "candidateOrigin": [
+      14,
+      6
+    ],
+    "nativeLogicalFullCanvasBounds": [
+      14,
+      6,
+      106.2492080253432,
+      65.60718057022174
+    ],
+    "proposedExplicitCanvasPadding": {
+      "commonCanvasCandidate": [
+        1560,
+        1008
+      ],
+      "rightColumns": 0,
+      "bottomRows": 0,
+      "status": "None needed for raw acceptance; native perimeter gate passes. Final animation alignment canvas awaits all pose sizes."
+    }
+  },
+  "suggestedSourceFoot": [
+    782,
+    975
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-leg-gap",
+      "rectangle": [
+        579,
+        897,
+        586,
+        904
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "middle-leg-gap",
+      "rectangle": [
+        769,
+        887,
+        776,
+        894
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "fore-leg-gap",
+      "rectangle": [
+        959,
+        897,
+        966,
+        904
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "lance-to-horse-gap",
+      "rectangle": [
+        1126,
+        333,
+        1133,
+        340
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "perimeterPixelsAlphaGreaterThan1": {
+    "top": [],
+    "bottom": [],
+    "left": [],
+    "right": []
+  },
+  "strictNativePerimeterGate": "PASS: native edge has no alpha>1 pixel; no padding or alpha cleanup applied. Bottom edge alpha is exactly0.",
+  "lowestVisibleHoofY": 975,
+  "fullyTransparentBottomRows": 29,
+  "selectedAttempt": "attempt-03",
+  "revisionReview": "Coordinator-directed larger older head/beard and simplified broad matte armor achieved. Left hand still holds reins below shaft, right hand retains lance. Native redraw returns1560x1008 versus prior1584x993; horse silhouette/lance span shift modestly, not pixel-identical. No programmatic scale/alpha edits. Final idle scale is not locked until coordinator review.",
+  "nativeHeadEstimate": {
+    "method": "Manually inspected approximate hair/beard outline, excluding scarf; not an alpha component boundary",
+    "attempt02Bounds": [
+      615,
+      14,
+      803,
+      211
+    ],
+    "attempt03Bounds": [
+      587,
+      22,
+      813,
+      247
+    ],
+    "approximateWidthRatio": 1.202127659574468,
+    "approximateHeightRatio": 1.1421319796954315
+  },
+  "semanticReview": "Older exposed gray hair/full beard and original face retained, head/beard enlarged approximately15–20percent; breastplate/pauldrons/gauntlets now broad matte blocks without mottled chip texture. Round shield, correct right-lance and left-reins hand assignment, sheathed sword, brown four-hoof horse with black mane/tail and pale blaze stay coherent. Full lance tips/tail/hooves and transparent leg openings present. No external FX.",
+  "status": "Idle attempt03 candidate; raw perimeter gate passes; awaiting coordinator native proportion review before remaining poses"
+}

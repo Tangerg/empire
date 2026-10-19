@@ -1,0 +1,245 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-358af160-95c4-4846-882d-dd36ba99a7fa.png",
+  "size": [
+    1584,
+    993
+  ],
+  "mode": "RGBA",
+  "sha256": "743cd18a3d2a3ea1affc49ee1a6e21d61e5d2aced5314dd2ea4ae0a004dc88a0",
+  "bboxAlphaNonzero": [
+    41,
+    11,
+    1562,
+    993
+  ],
+  "bboxAlphaGreaterThan127": [
+    266,
+    14,
+    1502,
+    985
+  ],
+  "perimeterMaxAlpha": 2,
+  "perimeterCountAlphaGreaterThan1": 4,
+  "alphaZeroPixels": 997615,
+  "alphaOnePixels": 5826,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "bodyMeasurement": {
+    "hairROI": [
+      590,
+      0,
+      815,
+      230
+    ],
+    "hairCrownY": 14,
+    "hoofMeasurements": {
+      "near-hind": {
+        "roi": [
+          400,
+          880,
+          550,
+          990
+        ],
+        "soleY": 973,
+        "bottomFourRowsMeanX": 482.19026548672565
+      },
+      "far-hind": {
+        "roi": [
+          630,
+          870,
+          780,
+          970
+        ],
+        "soleY": 954,
+        "bottomFourRowsMeanX": 712.860824742268
+      },
+      "near-fore": {
+        "roi": [
+          800,
+          890,
+          950,
+          992
+        ],
+        "soleY": 984,
+        "bottomFourRowsMeanX": 879.8796296296297
+      },
+      "far-fore": {
+        "roi": [
+          1010,
+          880,
+          1180,
+          990
+        ],
+        "soleY": 974,
+        "bottomFourRowsMeanX": 1101.0922330097087
+      }
+    },
+    "meanNearSideHoofSoleY": 978.5,
+    "combinedHeightSourcePixels": 964.5,
+    "combinedTargetLogicalPixels": 56,
+    "proposedSharedScale": 0.058061171591498185,
+    "scaleFraction": "56/964.5",
+    "proposedSourceFoot": [
+      794,
+      984
+    ],
+    "sourceFootMeanXBeforeRounding": 794.005738217083,
+    "anchorMethod": "x average four hoof bottom-band centers, y lowest hoof; rider boots/stirrups excluded. Height is hair crown to mean near-side hind/fore hoof soles.",
+    "nativeCanvas": [
+      1584,
+      993
+    ],
+    "visibleWidthSourcePixels": 1236,
+    "visibleWidthLogical": 71.76360808709175,
+    "candidateFrame": [
+      128,
+      80
+    ],
+    "candidateOrigin": [
+      14,
+      6
+    ],
+    "nativeLogicalFullCanvasBounds": [
+      14,
+      6,
+      105.96889580093313,
+      63.6547433903577
+    ],
+    "proposedExplicitCanvasPadding": {
+      "commonCanvasCandidate": [
+        1586,
+        994
+      ],
+      "rightColumns": 2,
+      "bottomRows": 1,
+      "status": "Proposal only, native master untouched; coordinator approval required for four A2 bottom-edge pixels."
+    }
+  },
+  "suggestedSourceFoot": [
+    794,
+    984
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "hind-leg-gap",
+      "rectangle": [
+        583,
+        904,
+        590,
+        911
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "middle-leg-gap",
+      "rectangle": [
+        775,
+        898,
+        782,
+        905
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "fore-leg-gap",
+      "rectangle": [
+        979,
+        903,
+        986,
+        910
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    },
+    {
+      "name": "lance-to-horse-gap",
+      "rectangle": [
+        1104,
+        264,
+        1111,
+        271
+      ],
+      "zeroPixels": 49,
+      "maxAlpha": 0
+    }
+  ],
+  "perimeterPixelsAlphaGreaterThan1": {
+    "top": [],
+    "bottom": [
+      {
+        "coordinateAlongEdge": 899,
+        "alpha": 2
+      },
+      {
+        "coordinateAlongEdge": 900,
+        "alpha": 2
+      },
+      {
+        "coordinateAlongEdge": 901,
+        "alpha": 2
+      },
+      {
+        "coordinateAlongEdge": 902,
+        "alpha": 2
+      }
+    ],
+    "left": [],
+    "right": []
+  },
+  "strictNativePerimeterGate": "FAIL: four alpha2 pixels at bottom edge x899..902,y992, all other edge pixels A0. No edge pixel A>2; no visible body clipping. Raw samples retained, no cleanup.",
+  "lowestVisibleHoofY": 984,
+  "lowestRowsEvidence": {
+    "984": {
+      "maxAlpha": 179,
+      "countAlphaGreaterThan127": 22,
+      "countAlphaGreaterThan2": 50
+    },
+    "985": {
+      "maxAlpha": 4,
+      "countAlphaGreaterThan127": 0,
+      "countAlphaGreaterThan2": 4
+    },
+    "986": {
+      "maxAlpha": 3,
+      "countAlphaGreaterThan127": 0,
+      "countAlphaGreaterThan2": 8
+    },
+    "987": {
+      "maxAlpha": 1,
+      "countAlphaGreaterThan127": 0,
+      "countAlphaGreaterThan2": 0
+    },
+    "988": {
+      "maxAlpha": 1,
+      "countAlphaGreaterThan127": 0,
+      "countAlphaGreaterThan2": 0
+    },
+    "989": {
+      "maxAlpha": 1,
+      "countAlphaGreaterThan127": 0,
+      "countAlphaGreaterThan2": 0
+    },
+    "990": {
+      "maxAlpha": 1,
+      "countAlphaGreaterThan127": 0,
+      "countAlphaGreaterThan2": 0
+    },
+    "991": {
+      "maxAlpha": 1,
+      "countAlphaGreaterThan127": 0,
+      "countAlphaGreaterThan2": 0
+    },
+    "992": {
+      "maxAlpha": 2,
+      "countAlphaGreaterThan127": 0,
+      "countAlphaGreaterThan2": 0
+    }
+  },
+  "selectedAttempt": "attempt-02",
+  "revisionReview": "Targeted left-hand correction succeeds: left glove no longer grips lance, now holds reins below shaft. Right hand retains lance, round shield remains on left arm. Source size changes1585x992 to1584x993; hoof center/sole change around1px, unchanged body scale observed. Original attempt-01 preserved for two-hand lance defect.",
+  "semanticReview": "Older exposed gray hair/full beard, original gray heavy armor, blue-gray scarf/tabard, plain round shield retained. Brown horse, dark mane/tail, pale face blaze, four planted hooves, complete lance both ends, sheathed straight sword and stirrups. Two rider hands: right lance, left reins. All transparent leg gaps inspected. Person and horse proportions require coordinator comparison against approved44 infantry/52 wolf rider. Armor has more small matte wear patches than the simplest approved swordsman; reported for native style review rather than automatically claimed exact style match.",
+  "status": "Idle revised candidate; awaiting coordinator native identity/proportion and explicit padding review before remaining poses"
+}

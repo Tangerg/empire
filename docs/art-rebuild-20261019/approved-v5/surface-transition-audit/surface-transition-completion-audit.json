@@ -1,0 +1,3148 @@
+{
+  "audit_utc": "2026-10-19T21:24:00.194070+00:00",
+  "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+  "commit_at_audit": "9dd042c0e14015696e837daf13593bdb95268c89",
+  "audit_scope": "Original 36-atlas inventory; detailed completion status restricted to 8 surface and 4 transition atlases. Other 24 listed for scope accounting, not newly verified here.",
+  "all_original_36_atlases": [
+    {
+      "id": "surface-meadow",
+      "componentCount": 4,
+      "category": "base-surface",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "surface-forest-floor",
+      "componentCount": 4,
+      "category": "base-surface",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "surface-earth",
+      "componentCount": 4,
+      "category": "base-surface",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "surface-old-stone",
+      "componentCount": 4,
+      "category": "base-surface",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "surface-snow",
+      "componentCount": 4,
+      "category": "base-surface",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "surface-wasteland",
+      "componentCount": 4,
+      "category": "base-surface",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "surface-graveyard",
+      "componentCount": 4,
+      "category": "base-surface",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "surface-forge-stone",
+      "componentCount": 4,
+      "category": "base-surface",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "transition-meadow-earth",
+      "componentCount": 47,
+      "category": "transition",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "transition-meadow-forest",
+      "componentCount": 47,
+      "category": "transition",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "transition-meadow-snow",
+      "componentCount": 47,
+      "category": "transition",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "transition-earth-stone",
+      "componentCount": 47,
+      "category": "transition",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "route-dirt-road",
+      "componentCount": 64,
+      "category": "route",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "route-edge-dirt-road",
+      "componentCount": 64,
+      "category": "route-edge",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "route-mud-road",
+      "componentCount": 64,
+      "category": "route",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "route-edge-mud-road",
+      "componentCount": 64,
+      "category": "route-edge",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "route-stone-road",
+      "componentCount": 64,
+      "category": "route",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "route-edge-stone-road",
+      "componentCount": 64,
+      "category": "route-edge",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "route-forest-trail",
+      "componentCount": 64,
+      "category": "route",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "route-edge-forest-trail",
+      "componentCount": 64,
+      "category": "route-edge",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "water-slow-river",
+      "componentCount": 64,
+      "category": "water",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "water-shallow-stream",
+      "componentCount": 64,
+      "category": "water",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "water-marsh-channel",
+      "componentCount": 64,
+      "category": "water",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "water-icy-water",
+      "componentCount": 64,
+      "category": "water",
+      "cellWidth": 32,
+      "cellHeight": 32
+    },
+    {
+      "id": "elevation-auto-temperate",
+      "componentCount": 16,
+      "category": "elevation-edge",
+      "cellWidth": 32,
+      "cellHeight": 48
+    },
+    {
+      "id": "cliff-modules-temperate",
+      "componentCount": 16,
+      "category": "elevation-module",
+      "cellWidth": 128,
+      "cellHeight": 128
+    },
+    {
+      "id": "elevation-auto-highland",
+      "componentCount": 16,
+      "category": "elevation-edge",
+      "cellWidth": 32,
+      "cellHeight": 48
+    },
+    {
+      "id": "cliff-modules-highland",
+      "componentCount": 16,
+      "category": "elevation-module",
+      "cellWidth": 128,
+      "cellHeight": 128
+    },
+    {
+      "id": "forest-existing",
+      "componentCount": 16,
+      "category": "forest-scenery",
+      "cellWidth": 96,
+      "cellHeight": 96
+    },
+    {
+      "id": "forest-temperate",
+      "componentCount": 16,
+      "category": "forest-scenery",
+      "cellWidth": 96,
+      "cellHeight": 96
+    },
+    {
+      "id": "scenery-regional",
+      "componentCount": 16,
+      "category": "regional-scenery",
+      "cellWidth": 96,
+      "cellHeight": 96
+    },
+    {
+      "id": "crossings-fortifications",
+      "componentCount": 16,
+      "category": "structure-kit",
+      "cellWidth": 96,
+      "cellHeight": 96
+    },
+    {
+      "id": "camps-foundations",
+      "componentCount": 16,
+      "category": "foundation",
+      "cellWidth": 144,
+      "cellHeight": 144
+    },
+    {
+      "id": "landmarks-large",
+      "componentCount": 16,
+      "category": "large-landmark",
+      "cellWidth": 160,
+      "cellHeight": 160
+    },
+    {
+      "id": "decals-small",
+      "componentCount": 24,
+      "category": "ground-decal",
+      "cellWidth": 64,
+      "cellHeight": 64
+    },
+    {
+      "id": "rural-life",
+      "componentCount": 16,
+      "category": "rural-life",
+      "cellWidth": 112,
+      "cellHeight": 112
+    }
+  ],
+  "source_accounting": {
+    "surface_atlases": 8,
+    "original_surface_material_slots": 32,
+    "exact_cell_aligned_new_native_sources_saved": 20,
+    "functional_world_meadow_tone_0_replacement": 1,
+    "still_not_individually_remade_surface_slots": 11,
+    "pending_surface_cells": [
+      {
+        "atlas": "surface-meadow",
+        "cell_id": "meadow-2",
+        "index": 1
+      },
+      {
+        "atlas": "surface-meadow",
+        "cell_id": "meadow-3",
+        "index": 2
+      },
+      {
+        "atlas": "surface-meadow",
+        "cell_id": "meadow-4",
+        "index": 3
+      },
+      {
+        "atlas": "surface-forest-floor",
+        "cell_id": "forest-floor-1",
+        "index": 0
+      },
+      {
+        "atlas": "surface-forest-floor",
+        "cell_id": "forest-floor-2",
+        "index": 1
+      },
+      {
+        "atlas": "surface-forest-floor",
+        "cell_id": "forest-floor-3",
+        "index": 2
+      },
+      {
+        "atlas": "surface-forest-floor",
+        "cell_id": "forest-floor-4",
+        "index": 3
+      },
+      {
+        "atlas": "surface-earth",
+        "cell_id": "earth-1",
+        "index": 0
+      },
+      {
+        "atlas": "surface-earth",
+        "cell_id": "earth-2",
+        "index": 1
+      },
+      {
+        "atlas": "surface-earth",
+        "cell_id": "earth-3",
+        "index": 2
+      },
+      {
+        "atlas": "surface-earth",
+        "cell_id": "earth-4",
+        "index": 3
+      }
+    ],
+    "transition_atlases": 4,
+    "derived_Blob47_cells": 188,
+    "independent_paintings_needed_for_188_masks": 0,
+    "note": "20 exact native sources plus the existing functional meadow base cover 21 roles. This does not certify 21 formal runtime slots updated. All four transition RGB/mask atlases remain byte-identical to frozen original at this snapshot."
+  },
+  "surfaces": [
+    {
+      "atlas": "surface-meadow",
+      "original_atlas_record": {
+        "id": "surface-meadow",
+        "png": "runtime/atlas/surface-meadow.png",
+        "png2x": "runtime/atlas/surface-meadow@2x.png",
+        "columns": 4,
+        "rows": 1,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 4,
+        "category": "base-surface",
+        "tileMode": "variants",
+        "variants": 4,
+        "cellOrder": [
+          "meadow-1",
+          "meadow-2",
+          "meadow-3",
+          "meadow-4"
+        ],
+        "edgeLocked": true
+      },
+      "source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+      "source_board_sha256": "6dc76bbb51ca562cd0bf2113d2233afaee0797c9fb1e2bedea40c97ed33e4790",
+      "source_board_dimensions": [
+        1254,
+        1254
+      ],
+      "source_board_mode": "RGB",
+      "cells": [
+        {
+          "cell_id": "meadow-1",
+          "index": 0,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 0,
+          "board_index": 0,
+          "crop_box_integer_diagnostic": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "functional approved world-material replacement exists; not a newly authored four-cell meadow family",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/grass-material/master.png",
+          "selected_native_sha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+          "world_material_manifest": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-field-material-v2.json",
+          "all_current_levels_use_as_world_base": true,
+          "original_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/original-pending-references/meadow-1-original-master-swatch.png",
+          "original_visual_identity": "Dense muted olive-green meadow with small yellow flowers, leafy grass and scattered gray stones; this original composition was functionally superseded by the approved continuous grass material."
+        },
+        {
+          "cell_id": "meadow-2",
+          "index": 1,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 0,
+          "board_index": 1,
+          "crop_box_integer_diagnostic": [
+            314,
+            0,
+            627,
+            314
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "not individually remade",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "original_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/original-pending-references/meadow-2-original-master-swatch.png",
+          "original_visual_identity": "Yellow-olive grass and low leafy growth around substantial light tan bare-earth patches with small stones; more exposed soil than meadow-1."
+        },
+        {
+          "cell_id": "meadow-3",
+          "index": 2,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 0,
+          "board_index": 2,
+          "crop_box_integer_diagnostic": [
+            627,
+            0,
+            940,
+            314
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "not individually remade",
+          "current_direct_counts_by_level": {
+            "c01-02": 7,
+            "c01-03": 7,
+            "c01-04": 6,
+            "c01-05": 6,
+            "c01-06": 6,
+            "c01-09": 5,
+            "c01-10": 13,
+            "c01-12": 6,
+            "c01-15": 12
+          },
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "original_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/original-pending-references/meadow-3-original-master-swatch.png",
+          "original_visual_identity": "Olive grass broken by brown earth and larger/denser gray stones; actual hill tone 2, distinct from uniformly grassy meadow."
+        },
+        {
+          "cell_id": "meadow-4",
+          "index": 3,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 0,
+          "board_index": 3,
+          "crop_box_integer_diagnostic": [
+            940,
+            0,
+            1254,
+            314
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "not individually remade",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "original_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/original-pending-references/meadow-4-original-master-swatch.png",
+          "original_visual_identity": "Darker green/olive meadow with small pale blue-white flowers and comparatively continuous grass."
+        }
+      ],
+      "current_world_material_bindings": [
+        {
+          "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-field-material-v2.json",
+          "sha256": "a50710b24bb5546d4e08ab820a2a17490d836a0baea24176efefb85d612d5718",
+          "id": "meadow-base",
+          "replaces": {
+            "atlas": "surface-meadow",
+            "tone": 0
+          },
+          "source": "masters/approved-v5/grass-material/master.png",
+          "sourceSha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+          "logicalSize": [
+            1024,
+            1024
+          ],
+          "fit": {
+            "inset": 0,
+            "bleed": 0
+          }
+        }
+      ],
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow.png",
+          "current_sha256": "09bebc2a1b32798d1953104eda95ce0b134d476bcbcfa1cb6ebbe82126711efd",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow.png",
+          "frozen_original_sha256": "09bebc2a1b32798d1953104eda95ce0b134d476bcbcfa1cb6ebbe82126711efd",
+          "bytes_equal_to_frozen_original": true
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png",
+          "current_sha256": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-meadow@2x.png",
+          "frozen_original_sha256": "77d477ec3b7eb7e11be0e5deecd263882c9aaad3f6d30bd9998d77a2e5a8b60e",
+          "bytes_equal_to_frozen_original": true
+        }
+      ],
+      "scene_acceptance": "Native availability and manifest bindings are audited; no fresh full-scene acceptance performed by this worker."
+    },
+    {
+      "atlas": "surface-forest-floor",
+      "original_atlas_record": {
+        "id": "surface-forest-floor",
+        "png": "runtime/atlas/surface-forest-floor.png",
+        "png2x": "runtime/atlas/surface-forest-floor@2x.png",
+        "columns": 4,
+        "rows": 1,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 4,
+        "category": "base-surface",
+        "tileMode": "variants",
+        "variants": 4,
+        "cellOrder": [
+          "forest-floor-1",
+          "forest-floor-2",
+          "forest-floor-3",
+          "forest-floor-4"
+        ],
+        "edgeLocked": true
+      },
+      "source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+      "source_board_sha256": "6dc76bbb51ca562cd0bf2113d2233afaee0797c9fb1e2bedea40c97ed33e4790",
+      "source_board_dimensions": [
+        1254,
+        1254
+      ],
+      "source_board_mode": "RGB",
+      "cells": [
+        {
+          "cell_id": "forest-floor-1",
+          "index": 0,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 1,
+          "board_index": 4,
+          "crop_box_integer_diagnostic": [
+            0,
+            314,
+            314,
+            627
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "not individually remade",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "original_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/original-pending-references/forest-floor-1-original-master-swatch.png",
+          "original_visual_identity": "Dark brown earth beneath mixed green/olive and brown broadleaf litter, a few pebbles and twigs.",
+          "current_derived_transition_consumers": {
+            "transition": "transition-meadow-forest",
+            "cells": 625,
+            "note": "Source overlay variant 0 is baked into all 47 legacy blob shapes. Current renderer draws those shapes, not surface-forest-floor directly."
+          }
+        },
+        {
+          "cell_id": "forest-floor-2",
+          "index": 1,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 1,
+          "board_index": 5,
+          "crop_box_integer_diagnostic": [
+            314,
+            314,
+            627,
+            627
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "not individually remade",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "original_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/original-pending-references/forest-floor-2-original-master-swatch.png",
+          "original_visual_identity": "Lighter yellow-olive leaf litter with long thin branches/roots crossing the ground and occasional gray stones."
+        },
+        {
+          "cell_id": "forest-floor-3",
+          "index": 2,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 1,
+          "board_index": 6,
+          "crop_box_integer_diagnostic": [
+            627,
+            314,
+            940,
+            627
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "not individually remade",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "original_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/original-pending-references/forest-floor-3-original-master-swatch.png",
+          "original_visual_identity": "Exposed deep brown earth with orange-brown needle/twig/root tracery, sparse ochre leaves and small stones."
+        },
+        {
+          "cell_id": "forest-floor-4",
+          "index": 3,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 1,
+          "board_index": 7,
+          "crop_box_integer_diagnostic": [
+            940,
+            314,
+            1254,
+            627
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "not individually remade",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "original_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/original-pending-references/forest-floor-4-original-master-swatch.png",
+          "original_visual_identity": "Dense ochre/brown oak-like leaf litter and scattered gray pebbles on brown earth; visibly browner than slots 0/1."
+        }
+      ],
+      "current_world_material_bindings": [],
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forest-floor.png",
+          "current_sha256": "419caa7bf4d899ac61ecb73669899d7ee433415605d1e25450ceb4596484f202",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forest-floor.png",
+          "frozen_original_sha256": "419caa7bf4d899ac61ecb73669899d7ee433415605d1e25450ceb4596484f202",
+          "bytes_equal_to_frozen_original": true
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forest-floor@2x.png",
+          "current_sha256": "ff0b2b2d87a9dc18d37d600d2e44dd6f7c435df788b2b4fb82582498a7ee6f3e",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forest-floor@2x.png",
+          "frozen_original_sha256": "ff0b2b2d87a9dc18d37d600d2e44dd6f7c435df788b2b4fb82582498a7ee6f3e",
+          "bytes_equal_to_frozen_original": true
+        }
+      ],
+      "scene_acceptance": "Native availability and manifest bindings are audited; no fresh full-scene acceptance performed by this worker."
+    },
+    {
+      "atlas": "surface-earth",
+      "original_atlas_record": {
+        "id": "surface-earth",
+        "png": "runtime/atlas/surface-earth.png",
+        "png2x": "runtime/atlas/surface-earth@2x.png",
+        "columns": 4,
+        "rows": 1,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 4,
+        "category": "base-surface",
+        "tileMode": "variants",
+        "variants": 4,
+        "cellOrder": [
+          "earth-1",
+          "earth-2",
+          "earth-3",
+          "earth-4"
+        ],
+        "edgeLocked": true
+      },
+      "source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+      "source_board_sha256": "6dc76bbb51ca562cd0bf2113d2233afaee0797c9fb1e2bedea40c97ed33e4790",
+      "source_board_dimensions": [
+        1254,
+        1254
+      ],
+      "source_board_mode": "RGB",
+      "cells": [
+        {
+          "cell_id": "earth-1",
+          "index": 0,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 2,
+          "board_index": 8,
+          "crop_box_integer_diagnostic": [
+            0,
+            627,
+            314,
+            940
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "not individually remade",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "original_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/original-pending-references/earth-1-original-master-swatch.png",
+          "original_visual_identity": "Light dry tan compacted earth with many small gray-brown stones and subtle swept/scuffed bands.",
+          "current_derived_transition_consumers": {
+            "transition": "transition-meadow-earth",
+            "cells": 303,
+            "note": "Source overlay variant 0 is baked into all 47 legacy blob shapes, used for scorched fields, riverbanks and shore overlays. Approved road-earth replaces route-dirt-road only."
+          }
+        },
+        {
+          "cell_id": "earth-2",
+          "index": 1,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 2,
+          "board_index": 9,
+          "crop_box_integer_diagnostic": [
+            314,
+            627,
+            627,
+            940
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "not individually remade",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "original_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/original-pending-references/earth-2-original-master-swatch.png",
+          "original_visual_identity": "Darker damp gray-brown mud and rubble with intersecting deep brown rut bands; a genuinely wetter/darker variant."
+        },
+        {
+          "cell_id": "earth-3",
+          "index": 2,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 2,
+          "board_index": 10,
+          "crop_box_integer_diagnostic": [
+            627,
+            627,
+            940,
+            940
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "not individually remade",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "original_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/original-pending-references/earth-3-original-master-swatch.png",
+          "original_visual_identity": "Warm ochre compacted earth with longitudinal wheel/rut bands and pebbles; track identity is already in the original pixels."
+        },
+        {
+          "cell_id": "earth-4",
+          "index": 3,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 2,
+          "board_index": 11,
+          "crop_box_integer_diagnostic": [
+            940,
+            627,
+            1254,
+            940
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "not individually remade",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "original_reference": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-transition-completion-audit/original-pending-references/earth-4-original-master-swatch.png",
+          "original_visual_identity": "Dark gray-brown muddy ground with several small pale gray reflective puddle shapes and stones; do not erase confirmed wet/puddle identity by copying dry earth."
+        }
+      ],
+      "current_world_material_bindings": [],
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-earth.png",
+          "current_sha256": "e10e8d3f16d5d895a5fc1b70164c9ff93f75aa4cb6887d39f5e5d72de01c4d42",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-earth.png",
+          "frozen_original_sha256": "e10e8d3f16d5d895a5fc1b70164c9ff93f75aa4cb6887d39f5e5d72de01c4d42",
+          "bytes_equal_to_frozen_original": true
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-earth@2x.png",
+          "current_sha256": "5ff9b63606b2060afd91a3270e19d417802435b5f23edfa05cb9bce237728647",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-earth@2x.png",
+          "frozen_original_sha256": "5ff9b63606b2060afd91a3270e19d417802435b5f23edfa05cb9bce237728647",
+          "bytes_equal_to_frozen_original": true
+        }
+      ],
+      "scene_acceptance": "Native availability and manifest bindings are audited; no fresh full-scene acceptance performed by this worker."
+    },
+    {
+      "atlas": "surface-old-stone",
+      "original_atlas_record": {
+        "id": "surface-old-stone",
+        "png": "runtime/atlas/surface-old-stone.png",
+        "png2x": "runtime/atlas/surface-old-stone@2x.png",
+        "columns": 4,
+        "rows": 1,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 4,
+        "category": "base-surface",
+        "tileMode": "variants",
+        "variants": 4,
+        "cellOrder": [
+          "old-stone-1",
+          "old-stone-2",
+          "old-stone-3",
+          "old-stone-4"
+        ],
+        "edgeLocked": true
+      },
+      "source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+      "source_board_sha256": "6dc76bbb51ca562cd0bf2113d2233afaee0797c9fb1e2bedea40c97ed33e4790",
+      "source_board_dimensions": [
+        1254,
+        1254
+      ],
+      "source_board_mode": "RGB",
+      "cells": [
+        {
+          "cell_id": "old-stone-1",
+          "index": 0,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 3,
+          "board_index": 12,
+          "crop_box_integer_diagnostic": [
+            0,
+            940,
+            314,
+            1254
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {
+            "c01-03": 29,
+            "c01-07": 285,
+            "c01-08": 257,
+            "c01-09": 39,
+            "c01-11": 62,
+            "c01-13": 350,
+            "c01-14": 20,
+            "c01-16": 95
+          },
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-1/master.png",
+          "selected_native_sha256": "922476bb7015b80492caf4a8192af63bfd93de813f7bcbebc67c7ec971246067",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/source-contract.json"
+        },
+        {
+          "cell_id": "old-stone-2",
+          "index": 1,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 3,
+          "board_index": 13,
+          "crop_box_integer_diagnostic": [
+            314,
+            940,
+            627,
+            1254
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-2/master.png",
+          "selected_native_sha256": "4427b87a7726ecc6b48d0acff1b7784218da2ae6990f1f06c4fd7d7be2a78b17",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/source-contract.json"
+        },
+        {
+          "cell_id": "old-stone-3",
+          "index": 2,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 3,
+          "board_index": 14,
+          "crop_box_integer_diagnostic": [
+            627,
+            940,
+            940,
+            1254
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-3/master.png",
+          "selected_native_sha256": "591ca978c17b433462e42bcf768cef4511b8b0052d3e212cfcaf278bd1d50950",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/source-contract.json"
+        },
+        {
+          "cell_id": "old-stone-4",
+          "index": 3,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-common-4x4.png",
+          "board_row": 3,
+          "board_index": 15,
+          "crop_box_integer_diagnostic": [
+            940,
+            940,
+            1254,
+            1254
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png",
+          "selected_native_sha256": "1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-old-stone/source-contract.json"
+        }
+      ],
+      "current_world_material_bindings": [
+        {
+          "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-stone-base-v2.json",
+          "sha256": "3244fc37b153efc856aeead60efab21ebd177ca7c65bcf2758e0f2c83517b401",
+          "id": "stone-base",
+          "replaces": {
+            "atlas": "surface-old-stone",
+            "tone": 0
+          },
+          "source": "masters/approved-v5/environment/surface-old-stone/old-stone-1/master.png",
+          "sourceSha256": "922476bb7015b80492caf4a8192af63bfd93de813f7bcbebc67c7ec971246067",
+          "logicalSize": [
+            128,
+            128
+          ],
+          "fit": {
+            "inset": 0,
+            "bleed": 0
+          }
+        },
+        {
+          "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-stone-paving-v2.json",
+          "sha256": "eb62144b88f0accf3bc05a91a8ea0b920173d2f77a500be56a82b9976f5219dd",
+          "id": "stone-paving",
+          "replaces": {
+            "atlas": "surface-old-stone",
+            "tone": 3
+          },
+          "source": "masters/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png",
+          "sourceSha256": "1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975",
+          "logicalSize": [
+            128,
+            128
+          ],
+          "fit": {
+            "inset": 0,
+            "bleed": 0
+          }
+        }
+      ],
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-old-stone.png",
+          "current_sha256": "6a46752fb351d8f8444c5c4a4f1bdb933ec18af9d140013da61a4ce04d59b883",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-old-stone.png",
+          "frozen_original_sha256": "2c3f6a0277230d134ed7c25c7bf2a5cdd14036cb133230a1d438d4f34e11a513",
+          "bytes_equal_to_frozen_original": false
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-old-stone@2x.png",
+          "current_sha256": "a47db6b160b315a019f3c8464ecf1fa65df89a3a78a2fb893345e88d46acaee8",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-old-stone@2x.png",
+          "frozen_original_sha256": "0fd43806cf590c8d93d020ea6ad83388c818faf0b11fcd4dbebc1a38ef27308a",
+          "bytes_equal_to_frozen_original": false
+        }
+      ],
+      "scene_acceptance": "Native availability and manifest bindings are audited; no fresh full-scene acceptance performed by this worker."
+    },
+    {
+      "atlas": "surface-snow",
+      "original_atlas_record": {
+        "id": "surface-snow",
+        "png": "runtime/atlas/surface-snow.png",
+        "png2x": "runtime/atlas/surface-snow@2x.png",
+        "columns": 4,
+        "rows": 1,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 4,
+        "category": "base-surface",
+        "tileMode": "variants",
+        "variants": 4,
+        "cellOrder": [
+          "snow-1",
+          "snow-2",
+          "snow-3",
+          "snow-4"
+        ],
+        "edgeLocked": true
+      },
+      "source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+      "source_board_sha256": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+      "source_board_dimensions": [
+        1254,
+        1254
+      ],
+      "source_board_mode": "RGB",
+      "cells": [
+        {
+          "cell_id": "snow-1",
+          "index": 0,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 0,
+          "board_index": 0,
+          "crop_box_integer_diagnostic": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-1/master.png",
+          "selected_native_sha256": "78b0a0b3abfadbb6c007e1540619799797207ccc6bd9ca24f36f42b40c5ed2be",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/source-contract.json"
+        },
+        {
+          "cell_id": "snow-2",
+          "index": 1,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 0,
+          "board_index": 1,
+          "crop_box_integer_diagnostic": [
+            314,
+            0,
+            627,
+            314
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-2/master.png",
+          "selected_native_sha256": "0d97d4a3d13dc15a9a0904614190f6d2c9ea6bd400015f7946d6f075af481744",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/source-contract.json"
+        },
+        {
+          "cell_id": "snow-3",
+          "index": 2,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 0,
+          "board_index": 2,
+          "crop_box_integer_diagnostic": [
+            627,
+            0,
+            940,
+            314
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-3/master.png",
+          "selected_native_sha256": "a68cb73536fdd58c641a59c58abb9ac7e95a9fbe358d74b8a9ad0582c0211d4c",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/source-contract.json"
+        },
+        {
+          "cell_id": "snow-4",
+          "index": 3,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 0,
+          "board_index": 3,
+          "crop_box_integer_diagnostic": [
+            940,
+            0,
+            1254,
+            314
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/snow-4/master.png",
+          "selected_native_sha256": "19d95e2543c4a5d9bbc279e1e4b7e5d60f24f0af4163e6d51dc8d68ff2835ec1",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-snow/source-contract.json"
+        }
+      ],
+      "current_world_material_bindings": [],
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-snow.png",
+          "current_sha256": "9acbbcc3a298102c7e43450a47b198b864791711cda3b3a422c0ea743ffebb6a",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-snow.png",
+          "frozen_original_sha256": "9acbbcc3a298102c7e43450a47b198b864791711cda3b3a422c0ea743ffebb6a",
+          "bytes_equal_to_frozen_original": true
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-snow@2x.png",
+          "current_sha256": "d66fe49a492318476f68a2ca9b4d73dcf09b54c1ee3a887f7cc30d6b54317030",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-snow@2x.png",
+          "frozen_original_sha256": "d66fe49a492318476f68a2ca9b4d73dcf09b54c1ee3a887f7cc30d6b54317030",
+          "bytes_equal_to_frozen_original": true
+        }
+      ],
+      "scene_acceptance": "Native availability and manifest bindings are audited; no fresh full-scene acceptance performed by this worker."
+    },
+    {
+      "atlas": "surface-wasteland",
+      "original_atlas_record": {
+        "id": "surface-wasteland",
+        "png": "runtime/atlas/surface-wasteland.png",
+        "png2x": "runtime/atlas/surface-wasteland@2x.png",
+        "columns": 4,
+        "rows": 1,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 4,
+        "category": "base-surface",
+        "tileMode": "variants",
+        "variants": 4,
+        "cellOrder": [
+          "wasteland-1",
+          "wasteland-2",
+          "wasteland-3",
+          "wasteland-4"
+        ],
+        "edgeLocked": true
+      },
+      "source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+      "source_board_sha256": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+      "source_board_dimensions": [
+        1254,
+        1254
+      ],
+      "source_board_mode": "RGB",
+      "cells": [
+        {
+          "cell_id": "wasteland-1",
+          "index": 0,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 1,
+          "board_index": 4,
+          "crop_box_integer_diagnostic": [
+            0,
+            314,
+            314,
+            627
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-1/master.png",
+          "selected_native_sha256": "160ed4145ffc283c256501b96863cf936a82cddc933c7b977596e00dac1333fe",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/source-contract.json"
+        },
+        {
+          "cell_id": "wasteland-2",
+          "index": 1,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 1,
+          "board_index": 5,
+          "crop_box_integer_diagnostic": [
+            314,
+            314,
+            627,
+            627
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {
+            "c01-14": 56
+          },
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-2/master.png",
+          "selected_native_sha256": "2f5b3576b4387ce993f2dc2b646d0b63969a8775b930a1b4e17b9576cbdc4972",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/source-contract.json"
+        },
+        {
+          "cell_id": "wasteland-3",
+          "index": 2,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 1,
+          "board_index": 6,
+          "crop_box_integer_diagnostic": [
+            627,
+            314,
+            940,
+            627
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {
+            "c01-03": 1,
+            "c01-09": 1,
+            "c01-10": 28
+          },
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-3/master.png",
+          "selected_native_sha256": "79ebc9aa69129cd424892264571f55bfaff599a20d12360bcc383988ab92be74",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/source-contract.json"
+        },
+        {
+          "cell_id": "wasteland-4",
+          "index": 3,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 1,
+          "board_index": 7,
+          "crop_box_integer_diagnostic": [
+            940,
+            314,
+            1254,
+            627
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/wasteland-4/master.png",
+          "selected_native_sha256": "8e16adfac9c197ab621c6149f3bf45c270dbcf9f9020544f4fc7e36d7eb93e77",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-wasteland/source-contract.json"
+        }
+      ],
+      "current_world_material_bindings": [],
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-wasteland.png",
+          "current_sha256": "e8cf240e74c6fa4593a6242ade2c5d7a395e44e2fd680c1fdc64f53293f81195",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-wasteland.png",
+          "frozen_original_sha256": "e8cf240e74c6fa4593a6242ade2c5d7a395e44e2fd680c1fdc64f53293f81195",
+          "bytes_equal_to_frozen_original": true
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-wasteland@2x.png",
+          "current_sha256": "3422fa8a2f2cf9294894f989ffc105cf55011e5eb73957c777d452126e6c6738",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-wasteland@2x.png",
+          "frozen_original_sha256": "3422fa8a2f2cf9294894f989ffc105cf55011e5eb73957c777d452126e6c6738",
+          "bytes_equal_to_frozen_original": true
+        }
+      ],
+      "scene_acceptance": "Native availability and manifest bindings are audited; no fresh full-scene acceptance performed by this worker."
+    },
+    {
+      "atlas": "surface-graveyard",
+      "original_atlas_record": {
+        "id": "surface-graveyard",
+        "png": "runtime/atlas/surface-graveyard.png",
+        "png2x": "runtime/atlas/surface-graveyard@2x.png",
+        "columns": 4,
+        "rows": 1,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 4,
+        "category": "base-surface",
+        "tileMode": "variants",
+        "variants": 4,
+        "cellOrder": [
+          "graveyard-1",
+          "graveyard-2",
+          "graveyard-3",
+          "graveyard-4"
+        ],
+        "edgeLocked": true
+      },
+      "source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+      "source_board_sha256": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+      "source_board_dimensions": [
+        1254,
+        1254
+      ],
+      "source_board_mode": "RGB",
+      "cells": [
+        {
+          "cell_id": "graveyard-1",
+          "index": 0,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 2,
+          "board_index": 8,
+          "crop_box_integer_diagnostic": [
+            0,
+            627,
+            314,
+            940
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {
+            "c01-11": 258,
+            "c01-16": 296
+          },
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+          "selected_native_sha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/source-contract.json"
+        },
+        {
+          "cell_id": "graveyard-2",
+          "index": 1,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 2,
+          "board_index": 9,
+          "crop_box_integer_diagnostic": [
+            314,
+            627,
+            627,
+            940
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-2/master.png",
+          "selected_native_sha256": "c2b4a95030ef6433f003b9966e654dc5c9e86089492e686de986c56cf2317bfa",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/source-contract.json"
+        },
+        {
+          "cell_id": "graveyard-3",
+          "index": 2,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 2,
+          "board_index": 10,
+          "crop_box_integer_diagnostic": [
+            627,
+            627,
+            940,
+            940
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-3/master.png",
+          "selected_native_sha256": "4907b41c455f1ef7413cb61833537e0c91b02d483253aee4b6ce07337f9fa36d",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/source-contract.json"
+        },
+        {
+          "cell_id": "graveyard-4",
+          "index": 3,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 2,
+          "board_index": 11,
+          "crop_box_integer_diagnostic": [
+            940,
+            627,
+            1254,
+            940
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/graveyard-4/master.png",
+          "selected_native_sha256": "f5e36939f16779d93cfec61322f0d27c76c11276866c0df43cbf34b5ddfb09d3",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-graveyard/source-contract.json"
+        }
+      ],
+      "current_world_material_bindings": [
+        {
+          "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-graveyard-base-v2.json",
+          "sha256": "febfd306ff3b4d2493038b1ac162f9866be3d3de2a6ffb4d5611ff3968790812",
+          "id": "graveyard-base",
+          "replaces": {
+            "atlas": "surface-graveyard",
+            "tone": 0
+          },
+          "source": "masters/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+          "sourceSha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+          "logicalSize": [
+            256,
+            256
+          ],
+          "fit": {
+            "inset": 0,
+            "bleed": 0
+          }
+        }
+      ],
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-graveyard.png",
+          "current_sha256": "095ea15e25301343af6548c85f0ed8c93353512bc55cfd39ca38326e77111cb6",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-graveyard.png",
+          "frozen_original_sha256": "2d64063ffd6d10c3c19917ab349cd7b5ad6c82b9576c6ca3dafc50fdaf88e372",
+          "bytes_equal_to_frozen_original": false
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-graveyard@2x.png",
+          "current_sha256": "5049628976a7a2012ee7c68b06e06735457879cc4a4aaf2171e27608172abce8",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-graveyard@2x.png",
+          "frozen_original_sha256": "206e4858cab48f95324bbb992b9a6d3a151ec4a6d5f85377ace52da6376a3be4",
+          "bytes_equal_to_frozen_original": false
+        }
+      ],
+      "scene_acceptance": "Native availability and manifest bindings are audited; no fresh full-scene acceptance performed by this worker."
+    },
+    {
+      "atlas": "surface-forge-stone",
+      "original_atlas_record": {
+        "id": "surface-forge-stone",
+        "png": "runtime/atlas/surface-forge-stone.png",
+        "png2x": "runtime/atlas/surface-forge-stone@2x.png",
+        "columns": 4,
+        "rows": 1,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 4,
+        "category": "base-surface",
+        "tileMode": "variants",
+        "variants": 4,
+        "cellOrder": [
+          "forge-stone-1",
+          "forge-stone-2",
+          "forge-stone-3",
+          "forge-stone-4"
+        ],
+        "edgeLocked": true
+      },
+      "source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+      "source_board_sha256": "a65e68af440346d9ca39e0586ef976168b6bdb45edb9acfb6653cd455ae15d0c",
+      "source_board_dimensions": [
+        1254,
+        1254
+      ],
+      "source_board_mode": "RGB",
+      "cells": [
+        {
+          "cell_id": "forge-stone-1",
+          "index": 0,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 3,
+          "board_index": 12,
+          "crop_box_integer_diagnostic": [
+            0,
+            940,
+            314,
+            1254
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {
+            "c01-14": 252
+          },
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-1/master.png",
+          "selected_native_sha256": "025bfaa1c9e17b7ea83f44851dad28bf791b0ed273d78f12864d7538b3294f9d",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/source-contract.json"
+        },
+        {
+          "cell_id": "forge-stone-2",
+          "index": 1,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 3,
+          "board_index": 13,
+          "crop_box_integer_diagnostic": [
+            314,
+            940,
+            627,
+            1254
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-2/master.png",
+          "selected_native_sha256": "dc58b2650678706a6b0b2c4241d27be92c37411f80fc323753c5ae5c94ec1260",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/source-contract.json"
+        },
+        {
+          "cell_id": "forge-stone-3",
+          "index": 2,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 3,
+          "board_index": 14,
+          "crop_box_integer_diagnostic": [
+            627,
+            940,
+            940,
+            1254
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-3/master.png",
+          "selected_native_sha256": "1713dbd82a2b70678d74c03baec22a41e547a35b95d7596d8fc80c523f6c1011",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/source-contract.json"
+        },
+        {
+          "cell_id": "forge-stone-4",
+          "index": 3,
+          "original_source_board": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/masters/surface-regional-4x4.png",
+          "board_row": 3,
+          "board_index": 15,
+          "crop_box_integer_diagnostic": [
+            940,
+            940,
+            1254,
+            1254
+          ],
+          "original_fractional_cell_size": [
+            313.5,
+            313.5
+          ],
+          "native_rebuild_status": "exact original-index native candidate saved",
+          "current_direct_counts_by_level": {},
+          "standing_sourceFoot": null,
+          "standing_anchor": null,
+          "selected_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/forge-stone-4/master.png",
+          "selected_native_sha256": "20ddf43a02a70ddbf97207a1f98cd10f83be57d4c7e31030d7e1676e6b7ac3ed",
+          "native_dimensions": [
+            1254,
+            1254
+          ],
+          "source_contract": "/workspace/shared/empire-art-rebuild/approved-v5/environment/surface-forge-stone/source-contract.json"
+        }
+      ],
+      "current_world_material_bindings": [],
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forge-stone.png",
+          "current_sha256": "2eaba66b2005bf0f91ef9b44dd6c26eebdaf7195561276c19feda7dabb57873b",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forge-stone.png",
+          "frozen_original_sha256": "2eaba66b2005bf0f91ef9b44dd6c26eebdaf7195561276c19feda7dabb57873b",
+          "bytes_equal_to_frozen_original": true
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forge-stone@2x.png",
+          "current_sha256": "a8a1489dc8b30f558f81161757b0db386a4b68226a1f71328a924ecf56872374",
+          "frozen_original_file": "/workspace/scratch/84c9fe948755/empire-atlas-contracts-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/surface-forge-stone@2x.png",
+          "frozen_original_sha256": "a8a1489dc8b30f558f81161757b0db386a4b68226a1f71328a924ecf56872374",
+          "bytes_equal_to_frozen_original": true
+        }
+      ],
+      "scene_acceptance": "Native availability and manifest bindings are audited; no fresh full-scene acceptance performed by this worker."
+    }
+  ],
+  "transitions": [
+    {
+      "atlas": "transition-meadow-earth",
+      "original_atlas_record": {
+        "id": "transition-meadow-earth",
+        "png": "runtime/atlas/transition-meadow-earth.png",
+        "png2x": "runtime/atlas/transition-meadow-earth@2x.png",
+        "columns": 16,
+        "rows": 3,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 47,
+        "category": "transition",
+        "tileMode": "blob-47",
+        "baseSurface": "surface-meadow",
+        "overlaySurface": "surface-earth",
+        "maskOrder": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          16,
+          17,
+          20,
+          21,
+          23,
+          28,
+          29,
+          31,
+          64,
+          65,
+          68,
+          69,
+          71,
+          80,
+          81,
+          84,
+          85,
+          87,
+          92,
+          93,
+          95,
+          112,
+          113,
+          116,
+          117,
+          119,
+          124,
+          125,
+          127,
+          193,
+          197,
+          199,
+          209,
+          213,
+          215,
+          221,
+          223,
+          241,
+          245,
+          247,
+          253,
+          255
+        ],
+        "bitOrder": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ]
+      },
+      "source_overlay_atlas": "surface-earth",
+      "source_overlay_index": 0,
+      "source_overlay_cell_id": "earth-1",
+      "source_rgb_rule": "Legacy transition_atlases uses families[overlay][0]; baseSurface is metadata. No new independent original painting per Blob47 mask.",
+      "derived_cells": 47,
+      "original_mask_order": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        16,
+        17,
+        20,
+        21,
+        23,
+        28,
+        29,
+        31,
+        64,
+        65,
+        68,
+        69,
+        71,
+        80,
+        81,
+        84,
+        85,
+        87,
+        92,
+        93,
+        95,
+        112,
+        113,
+        116,
+        117,
+        119,
+        124,
+        125,
+        127,
+        193,
+        197,
+        199,
+        209,
+        213,
+        215,
+        221,
+        223,
+        241,
+        245,
+        247,
+        253,
+        255
+      ],
+      "current_counts_by_level": {
+        "c01-02": 28,
+        "c01-05": 55,
+        "c01-06": 28,
+        "c01-12": 152,
+        "c01-14": 40
+      },
+      "current_total_cells": 303,
+      "consumer_status": "active in current 16-level maps",
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth.png",
+          "current_sha256": "8da0ee2e93c72cf7313dd088b3f0d1b67c68b2e6c5c4ac9ab555f3f185f3056d",
+          "frozen_original_sha256": "8da0ee2e93c72cf7313dd088b3f0d1b67c68b2e6c5c4ac9ab555f3f185f3056d",
+          "bytes_equal_to_frozen_original": true
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-earth@2x.png",
+          "current_sha256": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+          "frozen_original_sha256": "605565a83535a3d241130a26ba6689d2a47f7fdd052c9a496f750a0dd297a41f",
+          "bytes_equal_to_frozen_original": true
+        }
+      ],
+      "pending_work": "Technical source/material resampling through existing mask topology and world UV; parent engineering owns it. Do not generate 47 independent paintings or count mask cells as native art.",
+      "current_render_path": "candidate-01-map-scene.ts: material.blend and CANDIDATE_SHORE call atlasCellMarkup directly; registered world surface replacement does not replace this RGB automatically."
+    },
+    {
+      "atlas": "transition-meadow-forest",
+      "original_atlas_record": {
+        "id": "transition-meadow-forest",
+        "png": "runtime/atlas/transition-meadow-forest.png",
+        "png2x": "runtime/atlas/transition-meadow-forest@2x.png",
+        "columns": 16,
+        "rows": 3,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 47,
+        "category": "transition",
+        "tileMode": "blob-47",
+        "baseSurface": "surface-meadow",
+        "overlaySurface": "surface-forest-floor",
+        "maskOrder": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          16,
+          17,
+          20,
+          21,
+          23,
+          28,
+          29,
+          31,
+          64,
+          65,
+          68,
+          69,
+          71,
+          80,
+          81,
+          84,
+          85,
+          87,
+          92,
+          93,
+          95,
+          112,
+          113,
+          116,
+          117,
+          119,
+          124,
+          125,
+          127,
+          193,
+          197,
+          199,
+          209,
+          213,
+          215,
+          221,
+          223,
+          241,
+          245,
+          247,
+          253,
+          255
+        ],
+        "bitOrder": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ]
+      },
+      "source_overlay_atlas": "surface-forest-floor",
+      "source_overlay_index": 0,
+      "source_overlay_cell_id": "forest-floor-1",
+      "source_rgb_rule": "Legacy transition_atlases uses families[overlay][0]; baseSurface is metadata. No new independent original painting per Blob47 mask.",
+      "derived_cells": 47,
+      "original_mask_order": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        16,
+        17,
+        20,
+        21,
+        23,
+        28,
+        29,
+        31,
+        64,
+        65,
+        68,
+        69,
+        71,
+        80,
+        81,
+        84,
+        85,
+        87,
+        92,
+        93,
+        95,
+        112,
+        113,
+        116,
+        117,
+        119,
+        124,
+        125,
+        127,
+        193,
+        197,
+        199,
+        209,
+        213,
+        215,
+        221,
+        223,
+        241,
+        245,
+        247,
+        253,
+        255
+      ],
+      "current_counts_by_level": {
+        "c01-01": 126,
+        "c01-02": 13,
+        "c01-03": 9,
+        "c01-04": 17,
+        "c01-05": 11,
+        "c01-06": 12,
+        "c01-09": 11,
+        "c01-10": 13,
+        "c01-11": 24,
+        "c01-15": 364,
+        "c01-16": 25
+      },
+      "current_total_cells": 625,
+      "consumer_status": "active in current 16-level maps",
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest.png",
+          "current_sha256": "b1db29710a97577ca55d4f19f43bf44de3f7aee772ff23d12caf3bde72f9e0ca",
+          "frozen_original_sha256": "b1db29710a97577ca55d4f19f43bf44de3f7aee772ff23d12caf3bde72f9e0ca",
+          "bytes_equal_to_frozen_original": true
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-forest@2x.png",
+          "current_sha256": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+          "frozen_original_sha256": "28446a20e295434fa8d5aa8175ba591522c9849283fee3f8f7350cb2820ea932",
+          "bytes_equal_to_frozen_original": true
+        }
+      ],
+      "pending_work": "Technical source/material resampling through existing mask topology and world UV; parent engineering owns it. Do not generate 47 independent paintings or count mask cells as native art.",
+      "current_render_path": "candidate-01-map-scene.ts: material.blend and CANDIDATE_SHORE call atlasCellMarkup directly; registered world surface replacement does not replace this RGB automatically."
+    },
+    {
+      "atlas": "transition-meadow-snow",
+      "original_atlas_record": {
+        "id": "transition-meadow-snow",
+        "png": "runtime/atlas/transition-meadow-snow.png",
+        "png2x": "runtime/atlas/transition-meadow-snow@2x.png",
+        "columns": 16,
+        "rows": 3,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 47,
+        "category": "transition",
+        "tileMode": "blob-47",
+        "baseSurface": "surface-meadow",
+        "overlaySurface": "surface-snow",
+        "maskOrder": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          16,
+          17,
+          20,
+          21,
+          23,
+          28,
+          29,
+          31,
+          64,
+          65,
+          68,
+          69,
+          71,
+          80,
+          81,
+          84,
+          85,
+          87,
+          92,
+          93,
+          95,
+          112,
+          113,
+          116,
+          117,
+          119,
+          124,
+          125,
+          127,
+          193,
+          197,
+          199,
+          209,
+          213,
+          215,
+          221,
+          223,
+          241,
+          245,
+          247,
+          253,
+          255
+        ],
+        "bitOrder": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ]
+      },
+      "source_overlay_atlas": "surface-snow",
+      "source_overlay_index": 0,
+      "source_overlay_cell_id": "snow-1",
+      "source_rgb_rule": "Legacy transition_atlases uses families[overlay][0]; baseSurface is metadata. No new independent original painting per Blob47 mask.",
+      "derived_cells": 47,
+      "original_mask_order": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        16,
+        17,
+        20,
+        21,
+        23,
+        28,
+        29,
+        31,
+        64,
+        65,
+        68,
+        69,
+        71,
+        80,
+        81,
+        84,
+        85,
+        87,
+        92,
+        93,
+        95,
+        112,
+        113,
+        116,
+        117,
+        119,
+        124,
+        125,
+        127,
+        193,
+        197,
+        199,
+        209,
+        213,
+        215,
+        221,
+        223,
+        241,
+        245,
+        247,
+        253,
+        255
+      ],
+      "current_counts_by_level": {},
+      "current_total_cells": 0,
+      "consumer_status": "catalog-only in current 16-level selectors/maps",
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-snow.png",
+          "current_sha256": "2c6e7bcc40c7fb6de4caeb9b8b062bcbc58d6014f160abd72e528b05a07ad99e",
+          "frozen_original_sha256": "2c6e7bcc40c7fb6de4caeb9b8b062bcbc58d6014f160abd72e528b05a07ad99e",
+          "bytes_equal_to_frozen_original": true
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-meadow-snow@2x.png",
+          "current_sha256": "0d8b058b3cf1e518a9633e5c27115a2974496968c8e0d5f6f133eab6b1c2015e",
+          "frozen_original_sha256": "0d8b058b3cf1e518a9633e5c27115a2974496968c8e0d5f6f133eab6b1c2015e",
+          "bytes_equal_to_frozen_original": true
+        }
+      ],
+      "pending_work": "Technical source/material resampling through existing mask topology and world UV; parent engineering owns it. Do not generate 47 independent paintings or count mask cells as native art.",
+      "current_render_path": "candidate-01-map-scene.ts: material.blend and CANDIDATE_SHORE call atlasCellMarkup directly; registered world surface replacement does not replace this RGB automatically."
+    },
+    {
+      "atlas": "transition-earth-stone",
+      "original_atlas_record": {
+        "id": "transition-earth-stone",
+        "png": "runtime/atlas/transition-earth-stone.png",
+        "png2x": "runtime/atlas/transition-earth-stone@2x.png",
+        "columns": 16,
+        "rows": 3,
+        "cellWidth": 32,
+        "cellHeight": 32,
+        "cellWidth2x": 64,
+        "cellHeight2x": 64,
+        "componentCount": 47,
+        "category": "transition",
+        "tileMode": "blob-47",
+        "baseSurface": "surface-earth",
+        "overlaySurface": "surface-old-stone",
+        "maskOrder": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          16,
+          17,
+          20,
+          21,
+          23,
+          28,
+          29,
+          31,
+          64,
+          65,
+          68,
+          69,
+          71,
+          80,
+          81,
+          84,
+          85,
+          87,
+          92,
+          93,
+          95,
+          112,
+          113,
+          116,
+          117,
+          119,
+          124,
+          125,
+          127,
+          193,
+          197,
+          199,
+          209,
+          213,
+          215,
+          221,
+          223,
+          241,
+          245,
+          247,
+          253,
+          255
+        ],
+        "bitOrder": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ]
+      },
+      "source_overlay_atlas": "surface-old-stone",
+      "source_overlay_index": 0,
+      "source_overlay_cell_id": "old-stone-1",
+      "source_rgb_rule": "Legacy transition_atlases uses families[overlay][0]; baseSurface is metadata. No new independent original painting per Blob47 mask.",
+      "derived_cells": 47,
+      "original_mask_order": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        16,
+        17,
+        20,
+        21,
+        23,
+        28,
+        29,
+        31,
+        64,
+        65,
+        68,
+        69,
+        71,
+        80,
+        81,
+        84,
+        85,
+        87,
+        92,
+        93,
+        95,
+        112,
+        113,
+        116,
+        117,
+        119,
+        124,
+        125,
+        127,
+        193,
+        197,
+        199,
+        209,
+        213,
+        215,
+        221,
+        223,
+        241,
+        245,
+        247,
+        253,
+        255
+      ],
+      "current_counts_by_level": {},
+      "current_total_cells": 0,
+      "consumer_status": "catalog-only in current 16-level selectors/maps",
+      "runtime_file_comparison": [
+        {
+          "density_key": "png",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-earth-stone.png",
+          "current_sha256": "cb6d3618ca61b6758bd3cf76d18b99fba27a6f62c09d07ba0be6a5646ac7bca8",
+          "frozen_original_sha256": "cb6d3618ca61b6758bd3cf76d18b99fba27a6f62c09d07ba0be6a5646ac7bca8",
+          "bytes_equal_to_frozen_original": true
+        },
+        {
+          "density_key": "png2x",
+          "current_file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/runtime/atlas/transition-earth-stone@2x.png",
+          "current_sha256": "0888d88284b6fdf6df905fc56147728d3c8dd695810471245d336ed59ee7d4e7",
+          "frozen_original_sha256": "0888d88284b6fdf6df905fc56147728d3c8dd695810471245d336ed59ee7d4e7",
+          "bytes_equal_to_frozen_original": true
+        }
+      ],
+      "pending_work": "Technical source/material resampling through existing mask topology and world UV; parent engineering owns it. Do not generate 47 independent paintings or count mask cells as native art.",
+      "current_render_path": "candidate-01-map-scene.ts: material.blend and CANDIDATE_SHORE call atlasCellMarkup directly; registered world surface replacement does not replace this RGB automatically."
+    }
+  ],
+  "current_level_usage": [
+    {
+      "level_id": "c01-01",
+      "map_id": "TWIN_HILLS",
+      "map_dimensions": [
+        27,
+        17
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        "T": 126,
+        ".": 197,
+        "h": 27,
+        "^": 25,
+        "-": 80,
+        "q": 2,
+        "v": 2
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {},
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {},
+        "surface-snow": {},
+        "surface-wasteland": {},
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {},
+        "transition-meadow-forest": {
+          "derived_overlay_0": 126
+        },
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-02",
+      "map_id": "THREE_BRIDGES",
+      "map_dimensions": [
+        22,
+        14
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        ".": 227,
+        "T": 13,
+        "h": 7,
+        "~": 22,
+        "v": 5,
+        "q": 4,
+        "=": 6,
+        "-": 24
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {
+          "2": 7
+        },
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {},
+        "surface-snow": {},
+        "surface-wasteland": {},
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {
+          "derived_overlay_0": 28
+        },
+        "transition-meadow-forest": {
+          "derived_overlay_0": 13
+        },
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-03",
+      "map_id": "REDSTONE_SIEGE",
+      "map_dimensions": [
+        22,
+        15
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        ".": 250,
+        "T": 9,
+        "h": 7,
+        "#": 29,
+        "-": 26,
+        "K": 1,
+        "q": 3,
+        "B": 1,
+        "v": 3,
+        "^": 1
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {
+          "2": 7
+        },
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {
+          "0": 29
+        },
+        "surface-snow": {},
+        "surface-wasteland": {
+          "2": 1
+        },
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {},
+        "transition-meadow-forest": {
+          "derived_overlay_0": 9
+        },
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-04",
+      "map_id": "BLACK_FLAG_CAMP",
+      "map_dimensions": [
+        20,
+        14
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        ".": 221,
+        "T": 17,
+        "q": 4,
+        "-": 11,
+        "h": 6,
+        "B": 19,
+        "v": 2
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {
+          "2": 6
+        },
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {},
+        "surface-snow": {},
+        "surface-wasteland": {},
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {},
+        "transition-meadow-forest": {
+          "derived_overlay_0": 17
+        },
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-05",
+      "map_id": "REED_VILLAGE",
+      "map_dimensions": [
+        21,
+        15
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        ".": 219,
+        "T": 11,
+        "s": 55,
+        "q": 5,
+        "v": 7,
+        "h": 6,
+        "-": 12
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {
+          "2": 6
+        },
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {},
+        "surface-snow": {},
+        "surface-wasteland": {},
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {
+          "derived_overlay_0": 55
+        },
+        "transition-meadow-forest": {
+          "derived_overlay_0": 11
+        },
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-06",
+      "map_id": "WHITE_RIVER",
+      "map_dimensions": [
+        24,
+        14
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        ".": 258,
+        "T": 12,
+        "h": 6,
+        "~": 22,
+        "q": 5,
+        "v": 5,
+        "=": 6,
+        "-": 22
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {
+          "2": 6
+        },
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {},
+        "surface-snow": {},
+        "surface-wasteland": {},
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {
+          "derived_overlay_0": 28
+        },
+        "transition-meadow-forest": {
+          "derived_overlay_0": 12
+        },
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-07",
+      "map_id": "FREE_CITY",
+      "map_dimensions": [
+        23,
+        15
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        "p": 250,
+        "q": 4,
+        "-": 44,
+        "#": 35,
+        "v": 8,
+        "B": 4
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {},
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {
+          "0": 285
+        },
+        "surface-snow": {},
+        "surface-wasteland": {},
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {},
+        "transition-meadow-forest": {},
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-08",
+      "map_id": "MERCENARY_QUARTER",
+      "map_dimensions": [
+        22,
+        14
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        "p": 227,
+        "q": 4,
+        "-": 35,
+        "#": 30,
+        "v": 8,
+        "B": 4
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {},
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {
+          "0": 257
+        },
+        "surface-snow": {},
+        "surface-wasteland": {},
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {},
+        "transition-meadow-forest": {},
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-09",
+      "map_id": "OATH_PRISON",
+      "map_dimensions": [
+        21,
+        15
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        ".": 237,
+        "T": 11,
+        "o": 31,
+        "q": 4,
+        "h": 5,
+        "-": 15,
+        "B": 2,
+        "#": 8,
+        "v": 1,
+        "^": 1
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {
+          "2": 5
+        },
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {
+          "0": 39
+        },
+        "surface-snow": {},
+        "surface-wasteland": {
+          "2": 1
+        },
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {},
+        "transition-meadow-forest": {
+          "derived_overlay_0": 11
+        },
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-10",
+      "map_id": "OLD_BANNER_PASS",
+      "map_dimensions": [
+        25,
+        14
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        ".": 270,
+        "T": 13,
+        "^": 28,
+        "h": 13,
+        "q": 5,
+        "-": 17,
+        "v": 4
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {
+          "2": 13
+        },
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {},
+        "surface-snow": {},
+        "surface-wasteland": {
+          "2": 28
+        },
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {},
+        "transition-meadow-forest": {
+          "derived_overlay_0": 13
+        },
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-11",
+      "map_id": "SILENT_CEMETERY",
+      "map_dimensions": [
+        22,
+        16
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        "g": 258,
+        "T": 24,
+        "o": 62,
+        "q": 8
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {},
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {
+          "0": 62
+        },
+        "surface-snow": {},
+        "surface-wasteland": {},
+        "surface-graveyard": {
+          "0": 258
+        },
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {},
+        "transition-meadow-forest": {
+          "derived_overlay_0": 24
+        },
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-12",
+      "map_id": "SUNKEN_BELL",
+      "map_dimensions": [
+        23,
+        15
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        "r": 114,
+        ".": 129,
+        "~": 66,
+        "q": 4,
+        "=": 24,
+        "v": 2,
+        "h": 6
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {
+          "2": 6
+        },
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {},
+        "surface-snow": {},
+        "surface-wasteland": {},
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {
+          "derived_overlay_0": 152
+        },
+        "transition-meadow-forest": {},
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-13",
+      "map_id": "HOLY_ARCHIVES",
+      "map_dimensions": [
+        26,
+        16
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        "p": 282,
+        "q": 4,
+        "-": 48,
+        "#": 68,
+        "v": 10,
+        "B": 4
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {},
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {
+          "0": 350
+        },
+        "surface-snow": {},
+        "surface-wasteland": {},
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {},
+        "transition-meadow-forest": {},
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-14",
+      "map_id": "MOUNTAIN_FORGE",
+      "map_dimensions": [
+        22,
+        16
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        "f": 252,
+        "m": 56,
+        "q": 4,
+        "#": 20,
+        "=": 16,
+        "v": 4
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {},
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {
+          "0": 20
+        },
+        "surface-snow": {},
+        "surface-wasteland": {
+          "1": 56
+        },
+        "surface-graveyard": {},
+        "surface-forge-stone": {
+          "0": 252
+        },
+        "transition-meadow-earth": {
+          "derived_overlay_0": 40
+        },
+        "transition-meadow-forest": {},
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-15",
+      "map_id": "SILVERWOOD",
+      "map_dimensions": [
+        24,
+        16
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        "T": 185,
+        "R": 179,
+        "q": 4,
+        "h": 12,
+        "v": 4
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {
+          "2": 12
+        },
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {},
+        "surface-snow": {},
+        "surface-wasteland": {},
+        "surface-graveyard": {},
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {},
+        "transition-meadow-forest": {
+          "derived_overlay_0": 364
+        },
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    },
+    {
+      "level_id": "c01-16",
+      "map_id": "UNFLAGGED_MEMORY",
+      "map_dimensions": [
+        25,
+        17
+      ],
+      "base_meadow_world_field_present": true,
+      "rule_character_counts": {
+        "g": 296,
+        "T": 25,
+        "o": 95,
+        "q": 9
+      },
+      "derived_surface_overlay_counts": {
+        "surface-meadow": {},
+        "surface-forest-floor": {},
+        "surface-earth": {},
+        "surface-old-stone": {
+          "0": 95
+        },
+        "surface-snow": {},
+        "surface-wasteland": {},
+        "surface-graveyard": {
+          "0": 296
+        },
+        "surface-forge-stone": {},
+        "transition-meadow-earth": {},
+        "transition-meadow-forest": {
+          "derived_overlay_0": 25
+        },
+        "transition-meadow-snow": {},
+        "transition-earth-stone": {}
+      },
+      "counts_basis": "Read-only exact current map/selector reconstruction with authoredTerrainSurface suppression; not a fresh SVG or screenshot render. Meadow base is a world field covering the map, not one discrete atlas draw per cell."
+    }
+  ],
+  "world_material_manifests": [
+    {
+      "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-field-material-v2.json",
+      "sha256": "a50710b24bb5546d4e08ab820a2a17490d836a0baea24176efefb85d612d5718",
+      "id": "meadow-base",
+      "replaces": {
+        "atlas": "surface-meadow",
+        "tone": 0
+      },
+      "source": "masters/approved-v5/grass-material/master.png",
+      "sourceSha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+      "logicalSize": [
+        1024,
+        1024
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      }
+    },
+    {
+      "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-graveyard-base-v2.json",
+      "sha256": "febfd306ff3b4d2493038b1ac162f9866be3d3de2a6ffb4d5611ff3968790812",
+      "id": "graveyard-base",
+      "replaces": {
+        "atlas": "surface-graveyard",
+        "tone": 0
+      },
+      "source": "masters/approved-v5/environment/surface-graveyard/graveyard-1/master.png",
+      "sourceSha256": "17d2b4c721069da94d4e348d7601e8f551cfd3ac354d12e8c037022069d54c2d",
+      "logicalSize": [
+        256,
+        256
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      }
+    },
+    {
+      "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-road-material-v2.json",
+      "sha256": "d870cf164c04afb1ee11dfb037be8eaf596106713992eaf3a7d9ef8ea4645bf6",
+      "id": "road-earth",
+      "replaces": {
+        "atlas": "route-dirt-road",
+        "mask": "route"
+      },
+      "source": "masters/approved-v5/earth-material/revision-2/master.png",
+      "sourceSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+      "logicalSize": [
+        1024,
+        1024
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      }
+    },
+    {
+      "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-stone-base-v2.json",
+      "sha256": "3244fc37b153efc856aeead60efab21ebd177ca7c65bcf2758e0f2c83517b401",
+      "id": "stone-base",
+      "replaces": {
+        "atlas": "surface-old-stone",
+        "tone": 0
+      },
+      "source": "masters/approved-v5/environment/surface-old-stone/old-stone-1/master.png",
+      "sourceSha256": "922476bb7015b80492caf4a8192af63bfd93de813f7bcbebc67c7ec971246067",
+      "logicalSize": [
+        128,
+        128
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      }
+    },
+    {
+      "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-stone-connectors-v1.json",
+      "sha256": "615ed7732203eab9257660dab69581777de1891bc8734c28901395437e05b679",
+      "id": null,
+      "replaces": null,
+      "source": null,
+      "sourceSha256": null,
+      "logicalSize": null,
+      "fit": null
+    },
+    {
+      "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-stone-paving-v2.json",
+      "sha256": "eb62144b88f0accf3bc05a91a8ea0b920173d2f77a500be56a82b9976f5219dd",
+      "id": "stone-paving",
+      "replaces": {
+        "atlas": "surface-old-stone",
+        "tone": 3
+      },
+      "source": "masters/approved-v5/environment/surface-old-stone/old-stone-4/revision-2/master.png",
+      "sourceSha256": "1c6ee055ab6b72aadcac9e1084b883585abec3e9cf626cd21cd6908ac20af975",
+      "logicalSize": [
+        128,
+        128
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      }
+    },
+    {
+      "file": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/world-materials-v1/manifest-water-material-v2.json",
+      "sha256": "339ade571f29df3b2b94e5e550424f49689c54479e81812d1c24b5d5d0d4c97b",
+      "id": "water-area",
+      "replaces": {
+        "atlas": "water-slow-river",
+        "mask": "same"
+      },
+      "source": "masters/approved-v5/water-material/master.png",
+      "sourceSha256": "964060ad3b47cca968a2fb26a8e5f0bee8bad630895362119c7b08385f89afff",
+      "logicalSize": [
+        512,
+        512
+      ],
+      "fit": {
+        "inset": 0,
+        "bleed": 0
+      }
+    }
+  ],
+  "priority_recommendation": [
+    {
+      "rank": 1,
+      "atlas": "surface-forest-floor",
+      "ids": [
+        "forest-floor-1",
+        "forest-floor-2",
+        "forest-floor-3",
+        "forest-floor-4"
+      ],
+      "reason": "625 active legacy forest-blend cells over 11 levels, including 364 in c01-15 and 126 in c01-01. Four original palette/leaf/needle identities can be audited and generated together.",
+      "proposed_preview_world_period": [
+        256,
+        256
+      ],
+      "approval": "proposal only; no image generation started for this family by this audit"
+    },
+    {
+      "rank": 2,
+      "atlas": "surface-earth",
+      "ids": [
+        "earth-1",
+        "earth-2",
+        "earth-3",
+        "earth-4"
+      ],
+      "reason": "303 active legacy earth-blend/shore cells over 5 levels. Original dry earth, damp cross-rutted mud, longitudinal ruts and puddled mud are distinct. Separate approved road-earth exists but is not an exact four-cell replacement.",
+      "proposed_preview_world_period": [
+        256,
+        256
+      ]
+    },
+    {
+      "rank": 3,
+      "atlas": "surface-meadow",
+      "ids": [
+        "meadow-2",
+        "meadow-3",
+        "meadow-4"
+      ],
+      "reason": "Meadow-3 tone2 remains active on 68 hill cells across 9 levels; meadow2/4 catalog-only. Approved continuous meadow base is already used on all16 maps.",
+      "proposed_preview_world_period": "Compare with the existing 1024 logical grass base; a 256 local broken-grass variant is only a proposed preview, not an approved runtime period."
+    }
+  ],
+  "source_hashes": {
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/manifest-environment-builder-v1.json": "403d7bb620d17d69bb111e1e6cd922eb7bb9679e98add6345f24aa9b7eac2b27",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/levels.ts": "bedff69291689e17c7af3d11b0b6e66472e85bf04399920c2bec67497444e2ad",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/terrain.ts": "a6e118b8f4f0b429b2a567cd5bf7e25638d8c75d4d3e1e2b217116d516e61813",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-terrain-materials.ts": "7cb8644b2042e74a60784082cd05855d0bef7a296c9146715bec65f3789b3792",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-map-scene.ts": "1a6d09f8a16b408f9457fd7293ac5d9b18bf84239ad9b5da64b5a51dddccf2f1",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/src/presentation/candidate-01-water-material.ts": "39abe007daf6ce3cccb481963d830a6a0a1d467ad6e27fbec3c4d91bc498d19a",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/tools/build_environment_builder_v1.py": "8b8690a2fbca6065e85ff667eeb40241e55f065611741bb008579ce8bcc3015c",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-01.scene.json": "ee33e10d7ff2a4fcd210e0abf7c0f688b3d3238ae27d9d044c31e1590803dff4",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-11.scene.json": "7328d971a69f42dd237bd84cc61ecfa5f9dead7985ee6e183964ede342820b61",
+    "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/environment-builder-v1/scenes/c01-15.scene.json": "663004350202d6075e4fbd14bcba786b04cf3a4e75cc0f9afbfb3a9615d0abbc"
+  },
+  "constraints": [
+    "Native art untouched; diagnostic crops/contact only.",
+    "No new native source or transition mask generated in this audit.",
+    "No repository writes, commits or extra checkout.",
+    "Counts are current code/map-derived, not a fresh full-render actual pixel count; occluded surface cells may contribute no visible pixels.",
+    "World periods are proposals where not already bound; no seamlessness claim."
+  ]
+}

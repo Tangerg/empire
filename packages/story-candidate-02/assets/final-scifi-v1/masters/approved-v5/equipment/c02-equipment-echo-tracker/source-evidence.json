@@ -1,0 +1,64 @@
+{
+  "topicId": "c02-equipment-echo-tracker",
+  "assetId": "C02-SFV1-equipment-echo-tracker",
+  "label": "回声追迹者主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-03.png",
+  "originalMasterSha256": "c37e18a461e9a713465b4f4981614dd42eeb3fb9b74b7cdb116fe0440d5c71b4",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 1
+  },
+  "sourceCropBox": [
+    945,
+    5,
+    1249,
+    309
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-echo-tracker.png",
+  "runtimeReferenceSha256": "0cda0794e11fb24944c393ec056ebc09893fb440848908f1a8f27ce4992430c1",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-7fe78aeb-d8d4-4b14-b507-3669c792999e.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-echo-tracker/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board03 R1C4 and old runtime verified. One sensor array retains exactly five dark upright fins plus one short ivory front panel, six total, on stepped round pedestal. Bounded cyan end/windows, ochre hinges, front control tab and lower-right cable loop preserved. Actual48 white/black/olive keeps fan silhouette and six-panel layout legible with transparent separations, no projected wave halo. Top margin26px intact.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently.",
+  "native48ThreeBackgroundReview": "diagnostic-native48/native48-white-black-olive.png",
+  "reviewBackgroundRGB": [
+    [
+      255,
+      255,
+      255
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      72,
+      80,
+      48
+    ]
+  ]
+}

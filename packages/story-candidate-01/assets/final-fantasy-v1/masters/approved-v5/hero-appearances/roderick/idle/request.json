@@ -1,0 +1,21 @@
+{
+  "tool": "built-in image_gen",
+  "promptSha256": "32020b8a2f3ff6552097863365e07d9084b3425117a88bca2773148de9212a5b",
+  "referencedImagePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/attempt-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png"
+  ],
+  "referencedImageSha256": {
+    "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/idle/attempt-02/master.png": "743cd18a3d2a3ea1affc49ee1a6e21d61e5d2aced5314dd2ea4ae0a004dc88a0",
+    "/workspace/shared/empire-art-rebuild/approved-v5/swordsman/master.png": "6e6e0f535d7ea725f9bca6ad42c87ee3f7a1f23c908de9d585d451f424335f95"
+  },
+  "transparentBackground": true,
+  "nativeCanvasRequested": [
+    1584,
+    1024
+  ],
+  "pose": "idle",
+  "revision": "Coordinator targeted head+armor revision2026-10-19 21:24UTC",
+  "allowedChanges": "Rider head/beard15–20percent larger,2–3broad matte armor planes, extra genuine transparent canvas below hooves; horse/gear/stance/source pixel scale preserved",
+  "strictRawEdgeGate": "No relaxation. Earlier four alpha2 pixels are not accepted or hidden by programmatic padding."
+}

@@ -1,0 +1,39 @@
+{
+  "currentCandidate": "attempt-03",
+  "coordinatorApproval": "pending revised idle review",
+  "attempts": [
+    {
+      "attempt": "attempt-01",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c9ba2ada-5691-4e65-b24f-a138e2aa7b4e.png",
+      "sha256": "91406126e11bdba02346c91e2d4a6662a47e08484320c5b4ae6dc11797df94bb",
+      "size": [
+        1585,
+        992
+      ],
+      "promptSha256": "7b8e579c74955c6a35695bbb4b82717682570a587507484e197446018abed726",
+      "status": "retained original, rejected for both hands on lance"
+    },
+    {
+      "attempt": "attempt-02",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-358af160-95c4-4846-882d-dd36ba99a7fa.png",
+      "sha256": "743cd18a3d2a3ea1affc49ee1a6e21d61e5d2aced5314dd2ea4ae0a004dc88a0",
+      "size": [
+        1584,
+        993
+      ],
+      "promptSha256": "5fded7b882836f517d9f7e4f2b12d58fda3f83da0df1a4586d6cbb6ee1a1c8de",
+      "status": "retained superseded candidate, correct hand/reins but undersized head/mottled armor and failed strict native edge gate"
+    },
+    {
+      "attempt": "attempt-03",
+      "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ea24f369-f330-4e8d-a756-28c8e8573056.png",
+      "sha256": "d75f827aaff16fa667939d525a853f0d25ba5950db3c3d0a911f9b53f6846a80",
+      "size": [
+        1560,
+        1008
+      ],
+      "promptSha256": "32020b8a2f3ff6552097863365e07d9084b3425117a88bca2773148de9212a5b",
+      "status": "current revised candidate, enlarged head and broad matte armor; native strict perimeter PASS; pending scale approval"
+    }
+  ]
+}

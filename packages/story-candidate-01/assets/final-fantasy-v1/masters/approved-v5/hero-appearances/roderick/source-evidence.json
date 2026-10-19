@@ -1,0 +1,390 @@
+{
+  "unitType": "c01.roderick",
+  "cardTopicId": "C01-CHAR-RODERICK-01",
+  "baseTopicId": "C01-UNIT-HEAVY-KNIGHT",
+  "artifactKind": "named-hero-appearance",
+  "canonicalTopicCountDelta": 0,
+  "sourceStatus": "Read-only source audit complete; coordinator approved mounted idle contract at 2026-10-19 21:15 UTC; idle generation next",
+  "canonicalEntries": {
+    "C01-CHAR-RODERICK-01": {
+      "assetId": "C01-FFV1-CHAR-RODERICK-01",
+      "topicId": "C01-CHAR-RODERICK-01",
+      "label": "罗德里克教程导师",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-roderick-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card"
+    },
+    "C01-UNIT-HEAVY-KNIGHT": {
+      "assetId": "C01-FFV1-UNIT-HEAVY-KNIGHT",
+      "topicId": "C01-UNIT-HEAVY-KNIGHT",
+      "label": "重装骑士",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-heavy-knight.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        47.69849246231156,
+        52.29145728643216
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true
+    },
+    "C01-UNIT-LANCE-CAVALRY": {
+      "assetId": "C01-FFV1-UNIT-LANCE-CAVALRY",
+      "topicId": "C01-UNIT-LANCE-CAVALRY",
+      "label": "长枪骑兵",
+      "category": "combat-unit",
+      "png": "runtime/combat-unit/unit-lance-cavalry.png",
+      "width": 256,
+      "height": 48,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "frameWidth": 64,
+      "frameHeight": 48,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "footprint": [
+        2,
+        2
+      ]
+    }
+  },
+  "references": {
+    "original-named-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+      "sha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "role": "Named identity"
+    },
+    "original-named-card.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-roderick-01.png",
+      "sha256": "bc52cc4ba161662e09e8f9605f4d16664955439e6f8ac8dc741e36c2ac5896be",
+      "size": [
+        192,
+        224
+      ],
+      "mode": "RGBA",
+      "role": "Named identity"
+    },
+    "original-cavalry-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-ballista-cavalry-battlemage-eagle.png",
+      "sha256": "ad56bb98b2d14d011ac029d2ba1793ab59a45aaf81f4e6ea04ac4670b30494ea",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "role": "Mount construction only, never the rider face"
+    },
+    "original-cavalry-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-lance-cavalry.png",
+      "sha256": "a7499d0fda2ca425bf64b12c5eaadf010c5eed25639e1c20335765594f0bdde6",
+      "size": [
+        512,
+        96
+      ],
+      "mode": "RGBA",
+      "role": "Mount construction only, never the rider face"
+    },
+    "original-cavalry-runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-lance-cavalry.png",
+      "sha256": "d77b3ab4136c07fa144c1e3fb960992359e74945a0f223bb11db88dfdf6897b3",
+      "size": [
+        256,
+        48
+      ],
+      "mode": "RGBA",
+      "role": "Mount construction only, never the rider face"
+    },
+    "current-generic-heavy-knight-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-heavy-knight@2x.png",
+      "sha256": "493e95a84ad64e784d8336f3a6b1bede188ad7d24842f894b550683098cf2ca0",
+      "size": [
+        832,
+        128
+      ],
+      "mode": "RGBA",
+      "role": "Current incorrect generic alias; no named identity authority"
+    },
+    "roderick-original-cell-native.png": {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/references/original-named-board.png",
+      "crop": [
+        632,
+        5,
+        1249,
+        622
+      ],
+      "operation": "Native unresampled reference crop, no alpha extraction or art modification",
+      "sha256": "9da1be81f06c8a00d272d86732a35f25f96aea0e316f1ea4081e77115151e8eb",
+      "size": [
+        617,
+        617
+      ]
+    },
+    "original-cavalry-row-native.png": {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/references/original-cavalry-board.png",
+      "crop": [
+        0,
+        315,
+        1254,
+        616
+      ],
+      "operation": "Native unresampled reference crop, no alpha extraction or art modification",
+      "sha256": "eedbae78902010ae11ed4adc7ee3473c11ab9363e8eb6d5c3ffd42fbc021bff7",
+      "size": [
+        1254,
+        301
+      ]
+    },
+    "original-cavalry-idle-native.png": {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/references/original-cavalry-board.png",
+      "crop": [
+        0,
+        315,
+        340,
+        616
+      ],
+      "operation": "Native unresampled reference crop, no alpha extraction or art modification",
+      "sha256": "d34e54142246fda74a89b488a776bb8bfad27feccbaf04487d9f96a37e17ab76",
+      "size": [
+        340,
+        301
+      ]
+    },
+    "original-cavalry-idle-hd.png": {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/references/original-cavalry-hd-strip.png",
+      "crop": [
+        0,
+        0,
+        128,
+        96
+      ],
+      "sha256": "9e2687684a089f7b454426f848b3b22ce3ab7819d3767154173d4e804c38fe52",
+      "size": [
+        128,
+        96
+      ]
+    },
+    "original-cavalry-walk-a-hd.png": {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/references/original-cavalry-hd-strip.png",
+      "crop": [
+        128,
+        0,
+        256,
+        96
+      ],
+      "sha256": "e5952a2434cdc1ec9916031976983e4b30cba3c18706a75713eafd19ae2538de",
+      "size": [
+        128,
+        96
+      ]
+    },
+    "original-cavalry-attack-hd.png": {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/references/original-cavalry-hd-strip.png",
+      "crop": [
+        256,
+        0,
+        384,
+        96
+      ],
+      "sha256": "0e5f743c2b651d71272e08f9c248c8a9a4809f7f245c9dd2eb015bccb7dfc088",
+      "size": [
+        128,
+        96
+      ]
+    },
+    "original-cavalry-walk-b-hd.png": {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/references/original-cavalry-hd-strip.png",
+      "crop": [
+        384,
+        0,
+        512,
+        96
+      ],
+      "sha256": "e236085ad086858b22f89265f2892d8ee4cb8ec1fea1bd0445758df555789ad6",
+      "size": [
+        128,
+        96
+      ]
+    },
+    "original-horse-construction-native.png": {
+      "source": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/roderick/references/original-cavalry-board.png",
+      "crop": [
+        20,
+        392,
+        255,
+        603
+      ],
+      "operation": "Native reference crop for horse body/head/tack only, no resampling or alpha changes. Partial original rider legs remain; these are not Roderick identity authority.",
+      "sha256": "f4cd2536fa267afe2a92f7779af612c366b5ed1151a0262394fc9c4bf7bf8183",
+      "size": [
+        235,
+        211
+      ]
+    }
+  },
+  "identity": {
+    "age": "Older mentor; no verified numerical age",
+    "face": "Exposed swept-back gray hair; thick full gray beard and moustache, strong dark brows, lined mature face",
+    "costume": "Old gray steel breastplate, broad steel shoulders/gauntlets, blue-gray scarf and hanging tunic panel, brown belt and pouch, brown/gray armored boots",
+    "originalHands": "Anatomical right hand (image left) holds lowered broad straight sword; left hand (image right) carries plain dark round shield, metal rim, rivets and central boss",
+    "symbols": "No added heraldry or new shield emblem"
+  },
+  "mountAndLanceDerivation": {
+    "ruleSupport": "units.ts:29-34 mounted/heavy, cavalry, knight-lance and knight-charge",
+    "narrativeSupport": "deep-novel-v2/01-border-fire-novel.md:113-115 horse arrival and explicit dismount to rescue Torren",
+    "constructionReference": "C01-UNIT-LANCE-CAVALRY, second row of original 1254x1254 combat atlas; four columns idle/walk-a/attack/walk-b",
+    "horse": "Brown horse, dark mane/tail, pale forehead/nose blaze, bridle/reins, saddle, stirrups, four hooves",
+    "lance": "Plain wood shaft and diamond/leaf-shaped steel head, carried horizontally forward in the original horse unit",
+    "limitations": "The original named portrait is dismounted and has no personal horse or lance. This is coordinator-approved mounted personal equipment design derived from rules and existing horse construction, not an asserted original named horse. Generic rider face/helmet/rectangular shield/navy-red uniform are not copied."
+  },
+  "rules": {
+    "movementClass": "mounted",
+    "armorClass": "heavy",
+    "weapons": [
+      "c01.knight-lance",
+      "c01.knight-charge"
+    ],
+    "knightLance": {
+      "power": 50,
+      "damageType": "pierce"
+    },
+    "knightCharge": {
+      "power": 60,
+      "cooldown": 2,
+      "canCounter": false,
+      "push": 1,
+      "collisionDamage": 8,
+      "damageType": "slash inherited from weapon helper"
+    },
+    "singleActionLimitation": "One four-frame attack slot supplies both weapons; depict an unmistakable mounted lance thrust/charge-ready lean. No rule rewrite or fifth pose. Existing C01-FX-02 / C01-FX-07 remain independent."
+  },
+  "bindingsEvidence": {
+    "file": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+    "battleLine": 11,
+    "namedCardLine": 96,
+    "equipmentLines": [
+      109,
+      110
+    ],
+    "fxLines": [
+      153,
+      154
+    ],
+    "distinctCavalryConsumer": "No actual unit-art binding to C01-UNIT-LANCE-CAVALRY; its equipment icon is knight-charge only. No remap or new binding performed by this worker."
+  },
+  "actualPlacements": [
+    {
+      "level": "c01-01",
+      "key": "roderick-reserve",
+      "owner": 1,
+      "position": [
+        4,
+        11
+      ],
+      "facing": "east",
+      "source": "levels.ts:410-424 player slot index4"
+    },
+    {
+      "level": "c01-03",
+      "key": "roderick",
+      "owner": 1,
+      "position": [
+        3,
+        5
+      ],
+      "facing": "east",
+      "source": "levels.ts:463-470 player slot index3"
+    },
+    {
+      "level": "c01-10",
+      "key": "roderick",
+      "owner": 2,
+      "position": [
+        18,
+        6
+      ],
+      "facing": "west",
+      "source": "levels.ts:664-670 enemy slot index0"
+    }
+  ],
+  "placementMethod": "Direct seed/deployment pairing under place() in levels.ts:822-837. Read-only analysis of current source. No live scene verification by this worker.",
+  "idleContract": {
+    "nativeCanvasTarget": [
+      1586,
+      992
+    ],
+    "combinedVisibleHeightLogical": [
+      54,
+      56
+    ],
+    "combinedWidthWithLanceLogical": [
+      72,
+      80
+    ],
+    "riderScale": "Head/hands in same world scale as approved 44-high infantry; do not shrink rider to fit horse/lance",
+    "hands": "Right hand lance; left forearm original round shield and reins; original straight sword sheathed at hip",
+    "frameCandidate": [
+      128,
+      80
+    ],
+    "scaleLock": "Measure native idle and compare to formal infantry and approved mounted family before choosing one shared uniform scale",
+    "registration": "Four-hoof ground contact reference, never saddle or lance tip",
+    "semanticOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "footprint": "Base appearance remains heavy-knight canonical footprint1x1; mounted source cavalry2x2 is reference-art metadata only, not a gameplay occupancy change"
+  },
+  "approvedByCoordinator": "骑乘契约通过 at2026-10-19 21:15 UTC. Idle only, then shared-scale review before remaining three poses.",
+  "authorshipBoundary": "Shared source/evidence only; no repository, rules, bindings or Git changes",
+  "idleNativeReview": {
+    "selectedAttempt": "attempt-03",
+    "nativeSha256": "d75f827aaff16fa667939d525a853f0d25ba5950db3c3d0a911f9b53f6846a80",
+    "nativeSize": [
+      1560,
+      1008
+    ],
+    "scaleProposal": "56/947",
+    "sourceFoot": [
+      782,
+      975
+    ],
+    "visibleWidthLogical": 70.1921858500528,
+    "perimeterCaveat": "PASS: native edge has no alpha>1 pixel; no padding or alpha cleanup applied. Bottom edge alpha is exactly0.",
+    "status": "Idle attempt03 candidate; raw perimeter gate passes; awaiting coordinator native proportion review before remaining poses"
+  }
+}
