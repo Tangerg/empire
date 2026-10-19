@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-memory-monk",
+  "assetId": "C02-SFV1-equipment-memory-monk",
+  "label": "记忆修士主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-01.png",
+  "originalMasterSha256": "75d7e53657454c1cd564311da8e8b94494bda8ce1a9813d918a26e81fb8d3c85",
+  "sourceCellOneBased": {
+    "column": 4,
+    "row": 3
+  },
+  "sourceCropBox": [
+    945,
+    632,
+    1249,
+    935
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-memory-monk.png",
+  "runtimeReferenceSha256": "bad0e82a9365b5178eb84f8c87a1e50ffdf58efaca20c285592a9cfad6b569a8",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-bf18ebe0-38f5-4af0-af14-76cd4fb88b2e.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-memory-monk/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board01 R3C4 and runtime verified. One flat reinforced memory slate preserves white offset square/circuit diagram plus small round node on opaque cyan screen, four round corner lamps, two cyan edge bars and two opposite ochre clasps. No radar substitution, text, antenna or character. Broad matte body with bounded indicators; actual48 keeps its square circuit identity and distinct flat slate silhouette without halo.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

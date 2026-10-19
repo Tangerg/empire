@@ -1,0 +1,46 @@
+{
+  "topicId": "c02-equipment-physical-archive-keeper",
+  "assetId": "C02-SFV1-equipment-physical-archive-keeper",
+  "label": "物理档案守护员主装备",
+  "originalMaster": "packages/story-candidate-02/assets/final-scifi-v1/masters/equipment/equipment-board-03.png",
+  "originalMasterSha256": "c37e18a461e9a713465b4f4981614dd42eeb3fb9b74b7cdb116fe0440d5c71b4",
+  "sourceCellOneBased": {
+    "column": 3,
+    "row": 1
+  },
+  "sourceCropBox": [
+    632,
+    5,
+    935,
+    309
+  ],
+  "sourceMappingEvidence": "Original full equipment boards visually checked, then topic-catalog order and old runtime matched (4x4 row-major); never sorted final manifest order.",
+  "runtimeReference": "packages/story-candidate-02/assets/final-scifi-v1/runtime/equipment/equipment-physical-archive-keeper.png",
+  "runtimeReferenceSha256": "feaa8d1ac2e65b8b22d9b6d7f5c57ea483067a89bb589db41e8972d5c74d5e65",
+  "runtimeContract": {
+    "width": 48,
+    "height": 48,
+    "anchor": [
+      24,
+      24
+    ]
+  },
+  "formalRuntimeIntegration": false,
+  "postprocessing": "No generated source pixel modification; only original reference crop and separate QA diagnostics.",
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-77ffd096-cf9c-4947-9c01-3bb8e4003f6d.png",
+  "nativeMaster": "master.png",
+  "immutableRaw": "raw-native-v1.png",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "toolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-physical-archive-keeper/source-master-slot.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/scifi/props/c02-battle-prop-cargo-crates/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/props/bprop-engineering-1/master.png"
+  ],
+  "semanticNotes": "Original board03 R1C3 and runtime verified. One olive archive case retains one top carry handle, thick ivory corner guards, ochre panels, one front cyan bar and distinctive right-side mechanical wheel with one downward crank and outward grip. Actual48 shows the crank silhouette and handle, avoiding a generic-crate identity. Large matte planes replace fine scratches, all light bounded and no exterior shadow or haze.",
+  "native48Review": "diagnostic-native48/native48-white-left-black-right.png",
+  "visualStyle": "Previously accepted chunky cargo pilot and quartet style; current source identity verified independently."
+}

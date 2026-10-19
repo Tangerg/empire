@@ -1,0 +1,13 @@
+{
+  "runtimeSnapshotCommit": "45cac3a092785c33187ff90e99b52d280ac52cfc",
+  "canonicalTopics": 216,
+  "registeredEnvironmentCells": 159,
+  "testFiles": 105,
+  "testsPassed": 1153,
+  "durationSeconds": 172.73,
+  "typecheck": "passed",
+  "allFourAppBuilds": "passed",
+  "command": "npx vitest run --maxWorkers=2 --minWorkers=1 && npm run build",
+  "liveBrowserVerification": false,
+  "note": "Full integration tree includes all files missing from the sparse worker checkout. No source/test relaxation. New raw backups during run did not change runtime snapshot."
+}
