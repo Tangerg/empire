@@ -1,0 +1,44 @@
+{
+  "status": "Worker native visual/alpha/source-scale QA complete; coordinator sequence/export and real c01-14 scene review pending",
+  "topic": "C01-UNIT-STONE-GOLEM",
+  "bodyScale": "62/754.5",
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourcePaddingRequired": "Idle and attack1586x992: pad1 transparent bottom row. Walk-a1585x992: pad1 right column and1 bottom row. Walk-b1584x993: pad2 right columns. Export preparation only, native bytes remain unchanged.",
+  "nativeMastersUnmodified": true,
+  "allRawMasterNativeHashesMatch": true,
+  "allExactPromptsVerified": true,
+  "allFourDistinctDecodedRGBA": true,
+  "nativeBlackWhiteViewsInspected": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "alphaPerimeterGate": "All selected native perimeter alpha<=1; zero>1 perimeter pixels; residue untouched",
+  "identityPass": true,
+  "sourceGlyphFamiliesPreserved": true,
+  "forkedGlyphStaysOnOriginalArmEveryPose": true,
+  "walkContactsOppose": true,
+  "attackAnatomyReview": "Originally raised screen-left rune forearm now swings diagonally down-right, clenched fist in front of left torso/knee. Other arm and both feet brace. Exact arm identity retained; no new weapon, effects or impact debris. Head and torso return to accepted idle scale.",
+  "headTopSourceYByPose": {
+    "idle": 218,
+    "walk-a": 216,
+    "attack": 217,
+    "walk-b": 218
+  },
+  "independentFXBakedIntoCharacter": false,
+  "proposedFullCanvasFits": true,
+  "runtimeOrRepositoryWrites": false,
+  "gameplayFootprintChanged": false,
+  "finalSceneReview": "Coordinator to inspect actual c01-14 standing and adjacent actor overlap; isolated asset review is not live acceptance",
+  "rejectedCandidates": {
+    "attack/candidate-v1": "Glyph transferred to opposite arm",
+    "attack/candidate-v2": "Body grew beyond accepted source scale",
+    "attack/candidate-v3": "Over-shrunk source with exterior haze",
+    "walk-b/candidate-v1": "Same lead-leg arrangement as walk-a",
+    "walk-b/candidate-v2": "Topology edit did not exchange support"
+  }
+}

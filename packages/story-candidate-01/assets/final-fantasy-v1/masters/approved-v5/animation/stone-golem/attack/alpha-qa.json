@@ -1,27 +1,70 @@
 {
-  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-cb11f528-9488-4dc3-835a-a1ae49e42b9d.png",
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2c1a7977-58d2-4415-bfd7-c3efabb2f955.png",
   "size": [
-    1585,
+    1586,
     992
   ],
   "mode": "RGBA",
-  "sha256": "42a72946567b6410c4db990bf8e0b2e1f63c79d675874b1224acd5ebff4ed74e",
+  "sha256": "ef49947d13654c5f2867d120b2b1cd25f664e9e5ef9a66ae9036c4620c307c35",
   "bboxAlphaNonzero": [
-    35,
-    35,
-    1533,
-    974
+    133,
+    150,
+    1478,
+    978
   ],
   "bboxAlphaGreaterThan127": [
-    334,
-    136,
-    1221,
-    950
+    386,
+    217,
+    1268,
+    976
   ],
   "perimeterMaxAlpha": 0,
   "perimeterCountAlphaGreaterThan1": 0,
-  "alphaZeroPixels": 1053861,
-  "alphaOnePixels": 3941,
+  "alphaZeroPixels": 1132610,
+  "alphaOnePixels": 2825,
   "postprocessing": "none; native source copied byte-for-byte",
-  "prompt": "prompt.txt"
+  "prompt": "prompt.txt",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        420,
+        850,
+        710,
+        990
+      ],
+      "soleOrLiftedFootBottomY": 975,
+      "bottomBandMeanX": 553.3148936170213,
+      "threshold": 127,
+      "bottomBandRows": 4,
+      "role": "braced planted"
+    },
+    "screenRight": {
+      "roi": [
+        800,
+        850,
+        1120,
+        990
+      ],
+      "soleOrLiftedFootBottomY": 972,
+      "bottomBandMeanX": 972.6168831168832,
+      "threshold": 127,
+      "bottomBandRows": 4,
+      "role": "braced planted"
+    }
+  },
+  "headTopY": 217,
+  "meanFootBottomY": 973.5,
+  "sourceFootMidpoint": [
+    762.9658883669522,
+    973.5
+  ],
+  "suggestedSourceFoot": [
+    763,
+    975
+  ],
+  "sourceSupportAnchorEstimated": [
+    763,
+    975
+  ],
+  "semanticReview": "Originally raised screen-left rune forearm now swings diagonally down-right, clenched fist in front of left torso/knee. Other arm and both feet brace. Exact arm identity retained; no new weapon, effects or impact debris. Head and torso return to accepted idle scale."
 }

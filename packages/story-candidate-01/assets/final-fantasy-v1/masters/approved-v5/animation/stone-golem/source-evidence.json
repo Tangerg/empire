@@ -1,6 +1,6 @@
 {
   "topicId": "C01-UNIT-STONE-GOLEM",
-  "status": "Coordinator accepted idle62-logical body and144x104 frame; later poses in generation",
+  "status": "Native quartet complete; coordinator final sequence review/export and c01-14 scene overlap review pending",
   "canonicalTopic": {
     "assetId": "C01-FFV1-UNIT-STONE-GOLEM",
     "topicId": "C01-UNIT-STONE-GOLEM",
@@ -175,15 +175,30 @@
       2
     ],
     "provisionalFrameSize": [
-      128,
+      144,
       104
     ],
-    "method": "Measure accepted idle head and two soles; lock one shared scale and translate full authored canvases by ground-support midpoint; no independent fitting"
+    "method": "Measure accepted idle head and two soles; lock one shared scale and translate full authored canvases by ground-support midpoint; no independent fitting",
+    "status": "Accepted by coordinator after idle review",
+    "selectedSharedScale": "62/754.5",
+    "selectedCommonSourceCanvas": [
+      1586,
+      993
+    ],
+    "registrationEvidence": "registration-evidence.json"
   },
   "postprocessingPolicy": "Copy all native bytes unchanged; alpha stats and black/white review are inspection derivatives only; no alpha painting, recolor, trimming or creative code edits.",
   "idleSource": "idle/master.png",
   "idleSha256": "70a18da32877f60f679c1b2f2814a8d38a1e0afd8722348461592f7197302451",
   "idleScaleEvidence": "registration-evidence.json",
   "idleReview": "idle-review.json",
-  "coordinatorIdleReview": "Accepted62-logical head-to-sole and144x104 full-canvas frame; isolated review does not count as live scene acceptance"
+  "coordinatorIdleReview": "Accepted62-logical head-to-sole and144x104 full-canvas frame; isolated review does not count as live scene acceptance",
+  "quartetManifest": "bundle-manifest.json",
+  "identityContract": "Dark charcoal/brown-grey chunky block stone construct, rectangular head, amber slit eyes, stacked thick limbs, huge fists and flat stone feet. Forked angular amber stem plus small insets on screen-left forearm, open angular spiral on screen-left chest, open hook on screen-right shoulder, small chest/belt insets. No carried weapon or new symbols.",
+  "selectedAttempts": {
+    "idle": "v1",
+    "walk-a": "v1",
+    "attack": "v4, fresh one-arm-only edit of approved idle",
+    "walk-b": "v3, fresh opposite-support edit of approved idle"
+  }
 }

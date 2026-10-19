@@ -1,0 +1,28 @@
+{
+  "nativeSourceImmutable": true,
+  "masterSha256": "68969aaf1b11fc1690fd1d6fc8579c197c8ed7eaf9754e965c4c34fe86aee0f8",
+  "runtime32": "Pillow ImageOps.contain full authored canvas into28x28, LANCZOS; centered in32x32 RGBA,2px padding. No alpha-bbox crop. Matches exporter full-canvas contract.",
+  "hud28": "Runtime32 resized to28x28 LANCZOS as deterministic QA approximation of browser32-source/28-CSS display. Browser resampling can differ.",
+  "backgrounds": {
+    "white": [
+      255,
+      255,
+      255
+    ],
+    "black": [
+      0,
+      0,
+      0
+    ],
+    "olive": [
+      87,
+      96,
+      63
+    ]
+  },
+  "actualDisplaySizes": [
+    32,
+    28
+  ],
+  "reviewStatus": "Visually reviewed at actual32 and28 on white/black/olive"
+}

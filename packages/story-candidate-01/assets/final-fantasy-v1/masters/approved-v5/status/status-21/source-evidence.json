@@ -1,0 +1,68 @@
+{
+  "topicId": "C01-STATUS-21",
+  "assetId": "C01-FFV1-STATUS-21",
+  "label": "维修目标",
+  "category": "status",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "directStatusBinding": null,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-34c494b8-f87f-43af-b8c7-ab5a9f0e66ff.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-21-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-02.png",
+    "atlasSha256": "f10d9f5a15e15cdea261cc72eba879a241a74b8509d16acb3c290fcc54b9d6e0",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "status-atlas-02.png, row 2 column 1 (one based)",
+    "topicIndex": 20,
+    "inspectionCropCoordinates": [
+      5,
+      449,
+      439,
+      882
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; source magenta and grid remain inspection only, no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-21.png",
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-21-nominal-cell.png",
+    "nominalGridCellCoordinates": [
+      2,
+      446,
+      442,
+      885
+    ],
+    "sourceCellCorrection": "No grid lines; complete subject retained in nominal interior.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned the exact topic IDs in this batch after original source inspection. Preserve32px runtime and28px HUD. Source raw/master immutable; independent QA previews authorized."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-21-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "identityClarification": "Exactly ONE heavy rectangular gray stone-headed hammer with a wide iron band around the head, brown wooden shaft and broad gray shaft collars, angled from upper-left head toward lower-right handle end. It crosses ONE compact L-like masonry repair assembly: a taller broken stone wall section on RIGHT/REAR and a low block course at LEFT/FRONT. Preserve the TWO visible rectangular iron reinforcing plates on the wall, one front and one upright right, and the original metal clamp/shaft relationship shown in image1. Large gray-beige stone blocks, broad few cracks, dark iron straps and warm brown shaft. No additional hammer, wrench, tools, text or detached rubble. No fine stone chips, speckle or woodgrain.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Parent owns backup/export/catalog binding. No repository or gameplay edits.",
+  "consumerStatus": "Catalog objective icon; no direct mapping found in CANDIDATE_01_STATUS_ART. Generic lookup availability does not establish actual use."
+}

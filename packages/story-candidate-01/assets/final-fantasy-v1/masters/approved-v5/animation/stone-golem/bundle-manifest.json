@@ -1,0 +1,150 @@
+{
+  "asset": "C01-UNIT-STONE-GOLEM",
+  "actualConsumers": [
+    "c01-14:golem-1",
+    "c01-14:golem-2",
+    "c01-14:north-golem"
+  ],
+  "consumerStatus": "Bound c01.stone-golem heavy forge construct, sole blunt melee golem-slam with push effect",
+  "status": "Native quartet complete; coordinator final sequence review/export and c01-14 scene overlap review pending",
+  "generationTool": "built-in image_gen",
+  "masterPolicy": "Native raw/master files copied byte-for-byte from built-in outputs. No code alpha painting, recolor, trimming, source resizing or independent pose fitting. Black/white and logical review images are inspection derivatives only.",
+  "sharedScale": 0.08217362491716368,
+  "bodyReferenceSourcePixels": 754.5,
+  "bodyTargetHeightLogicalPixels": 62,
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "attack",
+    "walk-b"
+  ],
+  "commonSourceCanvas": [
+    1586,
+    993
+  ],
+  "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/source-evidence.json",
+  "registrationEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/registration-evidence.json",
+  "identityContract": "Dark charcoal/brown-grey chunky block stone construct, rectangular head, amber slit eyes, stacked thick limbs, huge fists and flat stone feet. Forked angular amber stem plus small insets on screen-left forearm, open angular spiral on screen-left chest, open hook on screen-right shoulder, small chest/belt insets. No carried weapon or new symbols.",
+  "semanticContract": "Original four-slot order idle,walk-a,attack,walk-b. Manifest art footprint[2,2] remains; actual gameplay definition has no special expanded occupancy. No gameplay rule changes. Heavy unarmed stone-fist slam, opposite walking support. No added FX or weapon.",
+  "idleApproval": "Coordinator accepted62-logical head-to-sole,144x104 full-canvas frame and raised fist~78logical after comparison against44human; isolated approval does not count as live scene acceptance.",
+  "selectedAttempts": {
+    "idle": "v1",
+    "walk-a": "v1",
+    "attack": "v4, fresh one-arm-only edit of approved idle",
+    "walk-b": "v3, fresh opposite-support edit of approved idle"
+  },
+  "poses": {
+    "idle": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/idle/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/idle/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/idle/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/idle/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "bd1a87d6451ac25232ea61acae0ee4a73150884755360cf49f8c77cd222c63e1",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/idle/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/idle/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/idle/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        764,
+        974
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        324,
+        20,
+        1267,
+        975
+      ],
+      "sha256": "70a18da32877f60f679c1b2f2814a8d38a1e0afd8722348461592f7197302451",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-cc869bf9-6523-4c8b-8000-fd4ced7f7d0f.png",
+      "review": "Approved large block-stone golem, head-to-mean-sole62logical beside44human; raised screen-left rune forearm, plain low screen-right fist, original amber marks and dark stone palette."
+    },
+    "walk-a": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-a/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-a/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-a/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-a/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "5adf8d53399619f1258843c1f31f5cb2b1b4af5fa4b3fe697543ecc54425ad8a",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-a/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-a/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-a/qa-white.png",
+      "nativeSize": [
+        1585,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        746,
+        967
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        323,
+        21,
+        1236,
+        968
+      ],
+      "sha256": "4103521c5b144faca60ec2ece1f9f189d6466b44766ec080dbf00b81790c0b86",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-221a180e-8711-4618-81f5-895f1bb911d6.png",
+      "review": "Screen-right foot advances with heel-down/toe-up; screen-left foot remains behind. Raised rune forearm retained, plain other arm shifts slightly. Same head/block scale and original glyph locations."
+    },
+    "attack": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/attack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/attack/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/attack/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/attack/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "342302eb7b6646d8133e0379dbddfcc05772e41c509ed652986929ae3f674b73",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/attack/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/attack/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/attack/qa-white.png",
+      "nativeSize": [
+        1586,
+        992
+      ],
+      "sourceFootAnchorSuggested": [
+        763,
+        975
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        386,
+        217,
+        1268,
+        976
+      ],
+      "sha256": "ef49947d13654c5f2867d120b2b1cd25f664e9e5ef9a66ae9036c4620c307c35",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-2c1a7977-58d2-4415-bfd7-c3efabb2f955.png",
+      "review": "Originally raised screen-left rune forearm now swings diagonally down-right, clenched fist in front of left torso/knee. Other arm and both feet brace. Exact arm identity retained; no new weapon, effects or impact debris. Head and torso return to accepted idle scale."
+    },
+    "walk-b": {
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-b/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-b/raw.png",
+      "exactPrompt": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-b/prompt.txt",
+      "request": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-b/request.json",
+      "exactToolCallPromptVerified": true,
+      "exactPromptSha256": "c00e96f292e147af7371da710d36ff504cacbbdae7e68af011ee632289ef5a84",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-b/alpha-qa.json",
+      "qaBlack": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-b/qa-black.png",
+      "qaWhite": "/workspace/shared/empire-art-rebuild/approved-v5/animation/stone-golem/walk-b/qa-white.png",
+      "nativeSize": [
+        1584,
+        993
+      ],
+      "sourceFootAnchorSuggested": [
+        790,
+        975
+      ],
+      "visibleBoundsAlphaGreaterThan127": [
+        323,
+        19,
+        1268,
+        976
+      ],
+      "sha256": "d1bcf8334e5625fd7bd5885d7c81c7bfce0a9682192e4f6c6b1b464693f0559c",
+      "generationSource": "/workspace/scratch/84c9fe948755/generated_images/exec-ffa11bc8-6e2e-46f8-9120-bc956735a3dc.png",
+      "review": "Opposite support state: screen-left foot forward/flat/weight-bearing; screen-right leg bends back with foot lifted and transparent space under it. Upper body remains at idle scale. Distinct from walk-a heel-leading right-foot advance."
+    }
+  }
+}

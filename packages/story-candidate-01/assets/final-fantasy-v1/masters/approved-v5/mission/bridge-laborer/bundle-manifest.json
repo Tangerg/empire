@@ -1,0 +1,54 @@
+{
+  "topicId": "C01-MISSION-BRIDGE-LABORER",
+  "status": "Complete native quartet, QA and measured registration proposal; coordinator handles export/binding.",
+  "frameOrder": [
+    "idle",
+    "walk-a",
+    "carry-or-work",
+    "walk-b"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "nativeArtPolicy": "All raw/master pairs byte-identical native tool outputs, write-protected, no crop/recolor/alpha cleanup/per-pose fitting.",
+  "sourceEvidence": "source-evidence.json",
+  "registrationEvidence": "registration-evidence.json",
+  "qa": [
+    "qa-native44-black-white.png",
+    "qa-native44-black-white-3x.png",
+    "qa-native-quartet-white.png",
+    "qa-sequence.gif"
+  ],
+  "poses": {
+    "idle": {
+      "raw": "idle/raw.png",
+      "master": "idle/master.png",
+      "request": "idle/request.json",
+      "prompt": "idle/prompt.txt",
+      "alphaQA": "idle/alpha-qa.json",
+      "sha256": "0e8f7d734443e8e7ee141c0aa90d090dfe678fe4d30c4a79aa7be4691c209ac1"
+    },
+    "walk-a": {
+      "raw": "walk-a/raw.png",
+      "master": "walk-a/master.png",
+      "request": "walk-a/request.json",
+      "prompt": "walk-a/prompt.txt",
+      "alphaQA": "walk-a/alpha-qa.json",
+      "sha256": "445f4243c0f6ce152dfbbcfc80f0f3fb2efa3800f359ad2d3e0b49afab4d246d"
+    },
+    "carry-or-work": {
+      "raw": "carry-or-work/raw.png",
+      "master": "carry-or-work/master.png",
+      "request": "carry-or-work/request.json",
+      "prompt": "carry-or-work/prompt.txt",
+      "alphaQA": "carry-or-work/alpha-qa.json",
+      "sha256": "ba27445a9bb3ee477ea004c64e2582928d5203e74d13cb18b6afd2b3ec438d87"
+    },
+    "walk-b": {
+      "raw": "walk-b/raw.png",
+      "master": "walk-b/master.png",
+      "request": "walk-b/request.json",
+      "prompt": "walk-b/prompt.txt",
+      "alphaQA": "walk-b/alpha-qa.json",
+      "sha256": "ea3d4643936a53ab9a131d5d95228a994c8aeb39f962d3c8414fa243ce4c1583"
+    }
+  }
+}

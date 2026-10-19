@@ -1,0 +1,68 @@
+{
+  "topicId": "C01-STATUS-23",
+  "assetId": "C01-FFV1-STATUS-23",
+  "label": "守时目标",
+  "category": "status",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "directStatusBinding": null,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9a9dc76a-cbf2-4cc9-835d-d1bad897d939.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-23-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-02.png",
+    "atlasSha256": "f10d9f5a15e15cdea261cc72eba879a241a74b8509d16acb3c290fcc54b9d6e0",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "status-atlas-02.png, row 2 column 3 (one based)",
+    "topicIndex": 22,
+    "inspectionCropCoordinates": [
+      889,
+      445,
+      1291,
+      885
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; source magenta and grid remain inspection only, no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-23.png",
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-23-nominal-cell.png",
+    "nominalGridCellCoordinates": [
+      889,
+      446,
+      1328,
+      885
+    ],
+    "sourceCellCorrection": "Nominal cell right edge contains the neighboring status24 glass-tube fragment. Subject-only original crop stops before that tube.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned the exact topic IDs in this batch after original source inspection. Preserve32px runtime and28px HUD. Source raw/master immutable; independent QA previews authorized."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-23-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "identityClarification": "Exactly ONE upright hourglass at LEFT, with broad brown wood top/base, clear bounded glass and tan sand collecting in its bottom bulb; preserve the thin sand flow between bulbs. It is tied with thick brown rope beside ONE dark-brown wooden flagpole topped by a round gray ball and small gray collar. ONE completely BLANK ragged gray flag extends to the RIGHT, preserving its original broad torn/lobed silhouette and pointed lower tips from image1, no emblem or text. Preserve the original rope wraps linking hourglass waist and pole, including lower pole wrap. Complete the two-object group with modest margins. No neighboring document tube or fragments: original nominal cell had adjacent status24 contamination, but image1 is the verified clean complete-subject reference.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Parent owns backup/export/catalog binding. No repository or gameplay edits.",
+  "consumerStatus": "Catalog objective icon; no direct mapping found in CANDIDATE_01_STATUS_ART. Generic lookup availability does not establish actual use."
+}

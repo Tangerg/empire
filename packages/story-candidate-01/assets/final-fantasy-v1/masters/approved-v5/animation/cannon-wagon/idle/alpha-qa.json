@@ -1,0 +1,74 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-f4fc0516-f2a4-496c-af4a-5bf5b8e842b9.png",
+  "size": [
+    1536,
+    1024
+  ],
+  "mode": "RGBA",
+  "sha256": "68fe1ff4b65f539ed6f3135ba463f64e6f1cd1b74af086e63c1bb6d693533606",
+  "bboxAlphaNonzero": [
+    0,
+    63,
+    1499,
+    1024
+  ],
+  "bboxAlphaGreaterThan127": [
+    46,
+    81,
+    1495,
+    944
+  ],
+  "perimeterMaxAlpha": 1,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 744447,
+  "alphaOnePixels": 6610,
+  "alphaOpaquePixels": 0,
+  "rawMasterIdentical": true,
+  "postprocessing": "None: exact raw/master native copies",
+  "visualReview": "Black and white composites show clean silhouette and transparent gaps; the tool preview glow was hidden RGB visualization, not visible composited haze. Native low alpha=1 perimeter specks retained. Native RGBA has peak alpha 254, no forced alpha normalization.",
+  "wheelContacts": {
+    "nearLargeWheel": {
+      "roi": [
+        470,
+        700,
+        810,
+        970
+      ],
+      "contactY": 943,
+      "bottomBandRows": 4,
+      "meanX": 626.0625,
+      "spanX": [
+        599,
+        654
+      ]
+    },
+    "frontSmallWheel": {
+      "roi": [
+        1080,
+        790,
+        1390,
+        930
+      ],
+      "contactY": 910,
+      "bottomBandRows": 4,
+      "meanX": 1214.8081395348838,
+      "spanX": [
+        1187,
+        1243
+      ]
+    }
+  },
+  "sourceSupportAnchorEstimated": [
+    920,
+    943
+  ],
+  "visibleWidthSource": 1449,
+  "proposedSharedScale76": 0.05244996549344375,
+  "crewHeadTopY": 289,
+  "crewBootLowestY": 911,
+  "crewHeightAt76": 32.623878536922014,
+  "wholeHeightAt76": 45.26432022084196,
+  "alternative88Scale": 0.06073153899240856,
+  "alternative88CrewHeight": 37.77501725327812,
+  "alphaMaximum": 254
+}

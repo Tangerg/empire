@@ -1,6 +1,6 @@
 {
   "artifactKind": "named-campaign-actor-source-audit",
-  "status": "Coordinator approved stage01 battle idle with rule-based straight-sword substitution; source generation in progress, no binding",
+  "status": "Torren battle idle approved; shared-scale quartet in progress",
   "campaignRosterId": "torren",
   "levelUnitKey": "campaign-torren",
   "actualUnitType": "c01.swordsman",
@@ -523,5 +523,40 @@
     "scope": "Stage01 young face/gray kettle helmet/gray quilted coat/scarf/patched roundshield, right-hand straight sword for actual border-blade/slash.44logical human scale. Actor selector implementation separate; do not globally bind generic swordsmen.",
     "portrait": "Original narrative spear source preserved; no new portrait generated yet.",
     "stage02": "Separate original later officer role, no automatic outfit/face progression"
+  },
+  "idleCandidate": {
+    "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/idle/master.png",
+    "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/idle/raw.png",
+    "sha256": "f3987460a784cac90ccb119a8bc2742fa1ec5498b53cf42f650c56823c3ac2e1",
+    "nativeSize": [
+      1586,
+      992
+    ],
+    "proposedScaleRatio": "44/894",
+    "sourceFoot": [
+      742,
+      964
+    ],
+    "review": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/idle-review.json",
+    "comparison": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/torren/idle/native-scale-comparison.png"
+  },
+  "coordinatorIdleApproval": {
+    "time": "2026-10-19 22:12UTC",
+    "scaleRatio": "44/894",
+    "sourceFoot": [
+      742,
+      964
+    ],
+    "canvas": [
+      1586,
+      992
+    ],
+    "review": "Tired young face, gray helmet/quilted kit/patched shield, rule-based straight blade approved; bounded cloth mottling accepted with no increase."
+  },
+  "actorSelectorContract": {
+    "time": "2026-10-19 22:15UTC",
+    "scope": "Engineer/parent confirms exact campaign-torren with c01.swordsman will select named stage01 appearance/card; generic soldiers unchanged, no new rule alias.",
+    "stage02": "No activation without actual progression source.",
+    "narrativePortrait": "After approved quartet, transparent TORREN-01 portrait retains original spear, original named face/coat/patched shield. Explicit portrait spear versus rule-based battle sword distinction."
   }
 }

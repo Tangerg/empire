@@ -58,3 +58,7 @@ One complete1586×992RGBA candidate,44logical helmet-crown-to-sole body. Approve
 ## Coordinator contract22:08UTC
 
 Proceed stage01 battle idle with original young face/gray kettle helmet/gray quilted coat/scarf/patched round shield and a right-hand straight sword for border-blade/slash. This is an explicit rule-supported weapon substitution from the original spear card. Original spear portrait remains immutable source. Native44logical body and complete landscape canvas. Actor selector is separate engineering work, so raw source generation may proceed without global generic troop binding. Stage02 is separate; no portrait generated yet.
+
+## Actor and portrait contract22:15UTC
+
+Coordinator confirms engineering will use exactcampaign-torren plusunitTypec01.swordsman for stage01 appearance/card, leaving generic soldiers unchanged. No stage02 activation without an actual progression source. After battle quartet, transparent TORREN-01 portrait will preserve original spear and named coat/shield/face; battle keeps rule-based straight sword. This equipment distinction is explicit, not silent remapping. No selector is implemented by this source worker.

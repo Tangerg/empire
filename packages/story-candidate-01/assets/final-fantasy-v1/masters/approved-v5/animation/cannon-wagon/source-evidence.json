@@ -1,0 +1,115 @@
+{
+  "topicId": "C01-UNIT-CANNON-WAGON",
+  "sourceReferences": {
+    "source-board.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/combat-atlases/combat-atlas-heavyknight-spirit-cannon-troll.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "391ecd7a6bf91164bf08a7320454a23d9768d7247111903f14c3d3d36af96474"
+    },
+    "runtime-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime/combat-unit/unit-cannon-wagon.png",
+      "size": [
+        256,
+        48
+      ],
+      "sha256": "92c2312196e3a7633b12a7963bb2354729e2d16fad345e52f1c53294fbe2f898"
+    },
+    "runtime-hd-strip.png": {
+      "source": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/combat-unit/unit-cannon-wagon.png",
+      "size": [
+        512,
+        96
+      ],
+      "sha256": "c82cca99a264798c99fad76304ebf55571a61836120949b7cc533d15c5655705"
+    }
+  },
+  "originalAtlasLocation": "Third row, four poses; crop [0,620,1254,866] and idle cell [0,620,314,866], no source pixel editing or resampling",
+  "canonicalTopic": {
+    "assetId": "C01-FFV1-UNIT-CANNON-WAGON",
+    "topicId": "C01-UNIT-CANNON-WAGON",
+    "label": "\u706b\u70ae\u8f66",
+    "category": "combat-unit",
+    "png": "runtime/combat-unit/unit-cannon-wagon.png",
+    "width": 256,
+    "height": 48,
+    "runtimeReady": true,
+    "qualityTier": "final-cartoon-fantasy-v1",
+    "frameWidth": 64,
+    "frameHeight": 48,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "anchor": [
+      32,
+      47
+    ],
+    "footprint": [
+      2,
+      2
+    ]
+  },
+  "consumerClassification": "catalog-only; no current domain unit or candidate-01 binding; documentation and asset catalogs only",
+  "consumerTrace": [
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts",
+      "finding": "No C01-UNIT-CANNON-WAGON binding"
+    },
+    {
+      "path": "packages/story-candidate-01/src/presentation/candidate-01-runtime.ts:137-140",
+      "finding": "Unbound unit returns null"
+    },
+    {
+      "path": "packages/game-ui/src/art/units.ts:192-203",
+      "finding": "Unbound unit resolves hand-drawn sprite or unitFromRules"
+    },
+    {
+      "path": "packages/story-candidate-01/src/units.ts:71-74",
+      "finding": "c01.supply-wagon is distinct wait-only transport, not a cannon"
+    },
+    {
+      "path": "packages/game-ui/src/art/unit-from-rules.ts:139-144",
+      "finding": "Transport load is rules-generated drawing; do not bind cannon to it"
+    }
+  ],
+  "identity": "One compact wooden covered cannon wagon facing right, warm brass cannon with open black muzzle and raised rings, tan canvas arched canopy, dark iron brackets, side tray of black shot, orange-red hanging panel with ochre angular emblem, large near wooden spoked wheel and partially visible smaller front wheel; one short human crew member at rear-left, black hair, red tied headband, charcoal scarf, gray short-sleeved tunic, brown leather vest/bracers/pouches, dark trousers and brown boots. No horse, extra crew, additional visible wheels or alternate siege chassis.",
+  "scaleProposal": {
+    "visibleWholeUnitWidthLogical": 76,
+    "crewHeightLogicalApproximate": [
+      38,
+      40
+    ],
+    "canopyHeightLogicalApproximate": [
+      50,
+      55
+    ],
+    "scaleBasis": "Whole assembly width with human scale comparison, never independent fit per pose",
+    "anchorBasis": "Two visible wheel-ground contact x midpoint, y nearest large wheel ground contact; human feet do not own anchor",
+    "manifestFootprint": [
+      2,
+      2
+    ],
+    "rulesFootprint": "No domain unit exists; manifest presentation footprint only",
+    "measuredIdleVisibleWidth": 1449,
+    "measuredIdleCrewHeightSource": 622,
+    "candidate76CrewHeight": 32.6238785369,
+    "recommendedVisibleWidthLogical": 88,
+    "recommendedCrewHeightLogical": 37.7750172533,
+    "recommendedWholeWagonHeightLogical": 52.4168391994,
+    "proposedNativeWheelContactAnchor": [
+      920,
+      943
+    ],
+    "status": "Awaiting coordinator idle/scale review before remaining poses"
+  },
+  "tool": "built-in image_gen__imagegen",
+  "postprocessing": "Native raw/master bytes immutable; diagnostic compositing and sampling only; no art alpha cleanup or recolor",
+  "status": "First idle native pair saved and submitted for coordinator review",
+  "sourceRuntimeDefectObserved": "Original runtime and runtime-hd strips visibly include a small stray head fragment from the troll row below at the bottom of each frame. The original atlas cannon row is identity authority; the unrelated row bleed is not part of the cannon and is not reproduced. Original files remain unchanged."
+}

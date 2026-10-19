@@ -1,0 +1,65 @@
+{
+  "topicId": "C01-STATUS-24",
+  "nativeSize": [
+    1307,
+    1203
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6730184230828183,
+  "nearOpaqueFractionAlphaGE250": 0.30860365027243164,
+  "nonzeroAlphaBBox": [
+    22,
+    19,
+    1287,
+    1203
+  ],
+  "visibleAlphaBBoxGE8": [
+    25,
+    212,
+    1278,
+    1029
+  ],
+  "visibleAlphaBBoxGE128": [
+    25,
+    213,
+    1277,
+    1028
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    25,
+    213,
+    30,
+    175
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 1,
+  "sha256": "daafe34d5fd83976c24ce3e15e164b39f6a521a352eb9ecdf17532eacbec1cb8",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: full sealed glass document tube, rightward arrow and three bust-marked tags remain distinguishable. Tiny seal relief is preserved as an abstract shape at native resolution and is not semantically/readably identifiable atHUD28; no invented text. Complete bottom cap restored from full original board reference."
+  ],
+  "identityVerified": "At LEFT preserve exactly ONE sealed pale blue-green glass document tube, diagonally rising toward upper-right, with complete dark-gray metal top collar and bottom cap, tan cork top, and one rolled brown document visible inside. A brown cord wraps it and carries ONE round bronze/wax seal plus two short grouped tails. Preserve the tiny original seal relief as an abstract raised silhouette by following the LAST reference detail exactly; do not interpret it as readable text or invent a new heraldic emblem. In the CENTER is exactly ONE short dark-gray horizontal arrow pointing RIGHT. At RIGHT are exactly THREE tan identity tags suspended/linked by brown cord, center tag highest and left/right lower; EACH tag bears exactly ONE plain dark head-and-shoulders human silhouette, three busts total, no words or facial features. Preserve tag holes, full glass tube bottom cap and transparent gaps. No extra tags, people, letter, stamp text or generic UI backing. Image1 contains the full original tube extending across a nominal grid boundary; do not reproduce the old cut-off cap.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset.",
+    "Built-in final native output is1307x1203, slightly non-square. Raw/master preserve this full canvas without crop or resize; runtime32 fit andHUD28 previews keep original aspect ratio."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-24/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: full sealed glass document tube, rightward arrow and three bust-marked tags remain distinguishable. Tiny seal relief is preserved as an abstract shape at native resolution and is not semantically/readably identifiable atHUD28; no invented text. Complete bottom cap restored from full original board reference."
+  },
+  "reviewComplete": true
+}

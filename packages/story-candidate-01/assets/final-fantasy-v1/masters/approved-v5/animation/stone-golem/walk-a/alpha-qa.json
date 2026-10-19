@@ -23,5 +23,48 @@
   "alphaZeroPixels": 1078096,
   "alphaOnePixels": 3779,
   "postprocessing": "none; native source copied byte-for-byte",
-  "prompt": "prompt.txt"
+  "prompt": "prompt.txt",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        420,
+        820,
+        710,
+        990
+      ],
+      "soleOrLiftedFootBottomY": 948,
+      "bottomBandMeanX": 563.955326460481,
+      "threshold": 127,
+      "bottomBandRows": 4,
+      "role": "rear planted"
+    },
+    "screenRight": {
+      "roi": [
+        860,
+        810,
+        1210,
+        990
+      ],
+      "soleOrLiftedFootBottomY": 967,
+      "bottomBandMeanX": 927.0877192982456,
+      "threshold": 127,
+      "bottomBandRows": 4,
+      "role": "front heel-down/toe-up"
+    }
+  },
+  "headTopY": 216,
+  "meanFootBottomY": 957.5,
+  "sourceFootMidpoint": [
+    745.5215228793634,
+    957.5
+  ],
+  "suggestedSourceFoot": [
+    746,
+    967
+  ],
+  "sourceSupportAnchorEstimated": [
+    746,
+    967
+  ],
+  "semanticReview": "Screen-right foot advances with heel-down/toe-up; screen-left foot remains behind. Raised rune forearm retained, plain other arm shifts slightly. Same head/block scale and original glyph locations."
 }

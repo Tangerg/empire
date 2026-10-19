@@ -1,0 +1,15 @@
+{
+  "status": "Native art pass; final runtime scene/export QA remains with coordinator.",
+  "identity": "Original source face, skin, hair/beard, vest/shirt/trousers/patch/belt/pouch/boots, squared timber, wooden mallet and hip rope retained.",
+  "style": "Approved chunky matte broad shapes with clear hands and boots, same44logical adult body class as accepted humans.",
+  "poses": {
+    "idle": "Both boots planted, beam shoulder-supported, mallet lowered.",
+    "walk-a": "Patched far leg leads at screen-right; unpatched near leg trails left; mallet rearward.",
+    "carry-or-work": "Timber lowered across waist, right hand supports it, left hand makes controlled mallet seating tap; planted stance, no combat gesture.",
+    "walk-b": "Unpatched near leg leads at screen-right; patched far leg trails left; mallet shifted forward. Whole character is not mirrored."
+  },
+  "alpha": "All genuine RGBA with large fully-transparent background. Three poses retain native alpha1 perimeter specks; no alpha>1 silhouette touches edge. No alpha changes.",
+  "cameraScale": "All nominal1585x992; native tool variance1584-1586wide,992-993high documented for export-only transparent padding tolerance2. Single44/956scale and measured whole-canvas foot translations.",
+  "noRuleChanges": true,
+  "noRepositoryEdits": true
+}

@@ -23,5 +23,48 @@
   "alphaZeroPixels": 1083167,
   "alphaOnePixels": 3551,
   "postprocessing": "none; native source copied byte-for-byte",
-  "prompt": "prompt.txt"
+  "prompt": "prompt.txt",
+  "feet": {
+    "screenLeft": {
+      "roi": [
+        450,
+        850,
+        750,
+        992
+      ],
+      "soleOrLiftedFootBottomY": 975,
+      "bottomBandMeanX": 611.3561253561254,
+      "threshold": 127,
+      "bottomBandRows": 4,
+      "role": "front planted weight-bearing"
+    },
+    "screenRight": {
+      "roi": [
+        850,
+        810,
+        1050,
+        960
+      ],
+      "soleOrLiftedFootBottomY": 943,
+      "bottomBandMeanX": 968.6103896103896,
+      "threshold": 127,
+      "bottomBandRows": 4,
+      "role": "trailing lifted"
+    }
+  },
+  "headTopY": 218,
+  "meanFootBottomY": 959.0,
+  "sourceFootMidpoint": [
+    789.9832574832575,
+    959.0
+  ],
+  "suggestedSourceFoot": [
+    790,
+    975
+  ],
+  "sourceSupportAnchorEstimated": [
+    790,
+    975
+  ],
+  "semanticReview": "Opposite support state: screen-left foot forward/flat/weight-bearing; screen-right leg bends back with foot lifted and transparent space under it. Upper body remains at idle scale. Distinct from walk-a heel-leading right-foot advance."
 }

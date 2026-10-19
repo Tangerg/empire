@@ -1,0 +1,68 @@
+{
+  "topicId": "C01-STATUS-22",
+  "assetId": "C01-FFV1-STATUS-22",
+  "label": "破坏目标",
+  "category": "status",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "directStatusBinding": null,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-9a4ca2cd-5269-4af8-85c0-f1b5d207a198.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-22-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-02.png",
+    "atlasSha256": "f10d9f5a15e15cdea261cc72eba879a241a74b8509d16acb3c290fcc54b9d6e0",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "status-atlas-02.png, row 2 column 2 (one based)",
+    "topicIndex": 21,
+    "inspectionCropCoordinates": [
+      449,
+      449,
+      882,
+      882
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; source magenta and grid remain inspection only, no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-22.png",
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-22-nominal-cell.png",
+    "nominalGridCellCoordinates": [
+      446,
+      446,
+      885,
+      885
+    ],
+    "sourceCellCorrection": "No grid lines; complete subject retained in nominal interior.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned the exact topic IDs in this batch after original source inspection. Preserve32px runtime and28px HUD. Source raw/master immutable; independent QA previews authorized."
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-22-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "identityClarification": "Exactly ONE broken wooden-and-bronze gear at LEFT/UPPER, with a large missing outer-rim arc on its RIGHT side, NOT a complete gear. Preserve exactly SEVEN visible wooden spokes: FIVE intact spokes connecting hub to surviving rim, and TWO broken projecting spoke stubs pointing right and lower-right into the missing arc. Preserve exactly NINE remaining broad external gear teeth distributed along the surviving C-shaped bronze-rim arc, as in image1. A round dark-gray metal hub remains at its center. At RIGHT/LOWER is exactly ONE separate dark-gray axle/shaft, diagonal lower-left to upper-right, with one thick round cap/flange at EACH end. Keep gear and shaft detached with a transparent gap. No wheel repair, missing arc restored, extra cog, tools, rubble or lettering.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Parent owns backup/export/catalog binding. No repository or gameplay edits.",
+  "consumerStatus": "Catalog objective icon; no direct mapping found in CANDIDATE_01_STATUS_ART. Generic lookup availability does not establish actual use."
+}

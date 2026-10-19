@@ -32,10 +32,11 @@
         700,
         991
       ],
-      "soleY": 974,
+      "soleOrLiftedFootBottomY": 974,
       "bottomBandMeanX": 557.4357142857143,
       "threshold": 127,
-      "bottomBandRows": 4
+      "bottomBandRows": 4,
+      "role": "planted"
     },
     "screenRight": {
       "roi": [
@@ -44,10 +45,11 @@
         1115,
         991
       ],
-      "soleY": 971,
+      "soleOrLiftedFootBottomY": 971,
       "bottomBandMeanX": 970.0927152317881,
       "threshold": 127,
-      "bottomBandRows": 4
+      "bottomBandRows": 4,
+      "role": "planted"
     }
   },
   "headTopY": 218,
@@ -56,5 +58,15 @@
   "sourceSupportAnchorEstimated": [
     764,
     974
-  ]
+  ],
+  "meanFootBottomY": 972.5,
+  "sourceFootMidpoint": [
+    763.7642147587512,
+    972.5
+  ],
+  "suggestedSourceFoot": [
+    764,
+    974
+  ],
+  "semanticReview": "Approved large block-stone golem, head-to-mean-sole62logical beside44human; raised screen-left rune forearm, plain low screen-right fist, original amber marks and dark stone palette."
 }

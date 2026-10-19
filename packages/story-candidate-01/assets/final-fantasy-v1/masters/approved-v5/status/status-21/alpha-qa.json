@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-STATUS-21",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.39373589839467454,
+  "nearOpaqueFractionAlphaGE250": 0.5898324722928098,
+  "nonzeroAlphaBBox": [
+    0,
+    0,
+    1253,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    97,
+    85,
+    1182,
+    1192
+  ],
+  "visibleAlphaBBoxGE128": [
+    98,
+    86,
+    1181,
+    1189
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    98,
+    86,
+    73,
+    65
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 128,
+  "sha256": "4fbf99bef3ea36fda96730bf2ee7b7cf9872503ad406e3a84e80c1e617fcc137",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: diagonal stone hammer across reinforced masonry remains recognizable. Functional iron plates and shaft retained; tiny cracks/studs are subordinate."
+  ],
+  "identityVerified": "Exactly ONE heavy rectangular gray stone-headed hammer with a wide iron band around the head, brown wooden shaft and broad gray shaft collars, angled from upper-left head toward lower-right handle end. It crosses ONE compact L-like masonry repair assembly: a taller broken stone wall section on RIGHT/REAR and a low block course at LEFT/FRONT. Preserve the TWO visible rectangular iron reinforcing plates on the wall, one front and one upright right, and the original metal clamp/shaft relationship shown in image1. Large gray-beige stone blocks, broad few cracks, dark iron straps and warm brown shaft. No additional hammer, wrench, tools, text or detached rubble. No fine stone chips, speckle or woodgrain.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-21/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: diagonal stone hammer across reinforced masonry remains recognizable. Functional iron plates and shaft retained; tiny cracks/studs are subordinate."
+  },
+  "reviewComplete": true
+}

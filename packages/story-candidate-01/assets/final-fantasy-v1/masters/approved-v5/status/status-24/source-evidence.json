@@ -1,0 +1,83 @@
+{
+  "topicId": "C01-STATUS-24",
+  "assetId": "C01-FFV1-STATUS-24",
+  "label": "证据送达",
+  "category": "status",
+  "expectedRuntimeSize": [
+    32,
+    32
+  ],
+  "runtimeAnchor": [
+    16,
+    16
+  ],
+  "hudDefaultDisplayPixels": 28,
+  "directStatusBinding": null,
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-6d23ce43-50cc-4e83-a2b3-b6fe51919edb.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-24-complete-subject.png",
+  "originalSourceEvidence": {
+    "baselineCommit": "2276a89",
+    "atlasPath": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019/packages/story-candidate-01/assets/final-fantasy-v1/masters/status-hud/status-atlas-02.png",
+    "atlasSha256": "f10d9f5a15e15cdea261cc72eba879a241a74b8509d16acb3c290fcc54b9d6e0",
+    "matchesBaselineAtlasBytes": true,
+    "atlasCell": "status-atlas-02.png, row 2 column 4 (one based)",
+    "topicIndex": 23,
+    "inspectionCropCoordinates": [
+      1294,
+      445,
+      1772,
+      885
+    ],
+    "inspectionCropTreatment": "Unscaled complete-subject crop; source magenta and grid remain inspection only, no cleanup or alpha conversion.",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/baseline-runtime-status-24.png",
+    "mappingAuthority": "Authored topic-catalog status sequence + exact manifest IDs + original full boards + baseline runtime visual identity. Legacy builder explicitly declares atlas01 4x4, atlas02 4x2. No sorted manifest assumptions.",
+    "nominalGridCellReference": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-24-nominal-cell.png",
+    "nominalGridCellCoordinates": [
+      1332,
+      446,
+      1772,
+      885
+    ],
+    "sourceCellCorrection": "Original glass tube crosses the nominal left grid boundary. Full-board crop extends left to retain its intact bottom cap; nominal crop retained as evidence.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "topicCatalog": "docs/story-candidates/candidate-01/art-assets/07-topic-catalog.md",
+    "contractApproval": "Parent exclusively assigned the exact topic IDs in this batch after original source inspection. Preserve32px runtime and28px HUD. Source raw/master immutable; independent QA previews authorized.",
+    "sealDetailCrop": {
+      "boxInCompleteSubject": [
+        90,
+        260,
+        169,
+        337
+      ],
+      "enlargedForInspectionOnly": [
+        632,
+        616
+      ],
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-24-seal-detail-enlarged.png"
+    }
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-24-complete-subject.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-01/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/status-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/skill/skill-02/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/status/identity-inspection/original-status-24-seal-detail-enlarged.png"
+  ],
+  "identityClarification": "At LEFT preserve exactly ONE sealed pale blue-green glass document tube, diagonally rising toward upper-right, with complete dark-gray metal top collar and bottom cap, tan cork top, and one rolled brown document visible inside. A brown cord wraps it and carries ONE round bronze/wax seal plus two short grouped tails. Preserve the tiny original seal relief as an abstract raised silhouette by following the LAST reference detail exactly; do not interpret it as readable text or invent a new heraldic emblem. In the CENTER is exactly ONE short dark-gray horizontal arrow pointing RIGHT. At RIGHT are exactly THREE tan identity tags suspended/linked by brown cord, center tag highest and left/right lower; EACH tag bears exactly ONE plain dark head-and-shoulders human silhouette, three busts total, no words or facial features. Preserve tag holes, full glass tube bottom cap and transparent gaps. No extra tags, people, letter, stamp text or generic UI backing. Image1 contains the full original tube extending across a nominal grid boundary; do not reproduce the old cut-off cap.",
+  "promptFiles": [
+    "prompt.txt"
+  ],
+  "postprocessing": "None. Byte-exact native raw/master copies; no resizing, cleanup, alpha edits or programmatic drawing.",
+  "runtimeReady": false,
+  "integration": "Parent owns backup/export/catalog binding. No repository or gameplay edits.",
+  "consumerStatus": "Catalog objective icon; no direct mapping found in CANDIDATE_01_STATUS_ART. Generic lookup availability does not establish actual use.",
+  "sealReliefInterpretation": "Original tiny raised seal mark lacks reliable readable semantic identity. Preserve its observed abstract outline using enlarged original crop, without naming it as a letter or inventing role heraldry."
+}

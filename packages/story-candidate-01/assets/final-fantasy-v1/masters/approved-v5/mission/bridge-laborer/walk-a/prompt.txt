@@ -1,0 +1,12 @@
+Use case: identity-preserve.
+Asset type: C01-MISSION-BRIDGE-LABORER WALK-A animation master, one full-body adult.
+
+Edit the accepted bridge-laborer idle image1 into a clearly readable WALK-A contact pose. Preserve exactly the same dark-brown-skinned adult man, curly short black hair, short black beard/mustache, face, ochre vest, rolled cream sleeves, gray-green trousers, tan patch on far screen-right knee, bare hands, brown pouch, brass buckle, tan hip rope, huge brown boots, wooden mallet and long squared shoulder timber. Preserve the same broad chunky proportions, near-black contour, matte colors, large shading planes and original camera.
+
+Keep this exact physical limb/equipment identity: raised hand on screen-right supports the squared beam on the shoulder, lowered hand on screen-left holds the wooden mallet. The beam stays horizontal-diagonal across shoulder and extends beyond both sides of torso. Do not swap hands, change timber length or invent/remove objects.
+
+Pose WALK-A: walking purposefully toward screen-right with the FAR leg, recognizable by the tan knee patch from screen-right in idle, reaching forward to screen-right; its enormous boot makes a clear forward heel contact. The NEAR unpatched leg, from screen-left in idle, is behind under the left hip, with heel raised and toe supporting/pushing off. Show clear leg separation, believable short stride and slight forward torso lean, not a wide athletic lunge. Mallet swings slightly rearward with the free arm, while the beam-supporting arm stays steady. Face stays calm and focused, eyes looking screen-right. Walking must be visibly different from idle.
+
+Registration invariants: retain landscape1585x992 transparent canvas, identical camera and character body scale to image1. Crown stays near y24–40, contacting soles near y975–980, support midpoint near x800. Do not zoom, crop, independently fit or shrink the whole character. Complete beam ends, hair, mallet, rope and boots inside canvas with transparent margin. Retain true transparent alpha; no floor, shadow, background, text or multiple characters.
+
+Use image1 as the exact art and identity authority; change only physical pose needed for WALK-A. No mirroring of the whole character, no recoloring, no skin lightening, no metal hammer, no combat attack or extra prop.

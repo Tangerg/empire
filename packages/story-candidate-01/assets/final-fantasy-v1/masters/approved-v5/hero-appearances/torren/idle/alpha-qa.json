@@ -1,0 +1,111 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-0f2c5508-688b-45e9-83b7-676d1f5504d5.png",
+  "size": [
+    1586,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "f3987460a784cac90ccb119a8bc2742fa1ec5498b53cf42f650c56823c3ac2e1",
+  "bboxAlphaNonzero": [
+    277,
+    62,
+    1330,
+    970
+  ],
+  "bboxAlphaGreaterThan127": [
+    323,
+    66,
+    1270,
+    965
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1045613,
+  "alphaOnePixels": 2892,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "status": "Coordinator approved named idle identity/scale; remaining poses authorized",
+  "bodyTopY": 66,
+  "soleMeasurements": [
+    {
+      "name": "image-left-boot",
+      "roi": [
+        360,
+        840,
+        650,
+        980
+      ],
+      "soleCenterXBottomFourRows": 482.3663793103448,
+      "soleY": 956
+    },
+    {
+      "name": "image-right-boot",
+      "roi": [
+        830,
+        850,
+        1120,
+        980
+      ],
+      "soleCenterXBottomFourRows": 1001.9416342412451,
+      "soleY": 964
+    }
+  ],
+  "bodyHeight": 894.0,
+  "proposedLogicalBodyHeight": 44,
+  "proposedScaleRatio": "44/894",
+  "proposedScale": 0.049217002237136466,
+  "proposedSourceFoot": [
+    742,
+    964
+  ],
+  "proposedFrame": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "under-right-arm",
+      "rectangle": [
+        604,
+        518,
+        611,
+        525
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "between-boots",
+      "rectangle": [
+        682,
+        894,
+        689,
+        901
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Young tired dark-brow face with light stubble, no large beard or later cheek scar; gray kettle helmet/ear guards, gray scarf, gray-brown quilted coat, source pendant, bare sword hand, brown boots and repaired wooden shield retained. Explicit rule-based right-hand straight sword replaces original portrait spear. Opposite arm remains behind shield, no duplicated hand.",
+  "styleCaveat": "Head/hand/boot proportions and broad steel planes match family; quilted coat still has some mottled small surface marks from original reference. Submit native44 comparison before deciding whether a targeted cleanup redraw is warranted. Source pixels unchanged.",
+  "bodyMeasurementDefinition": "Helmet dome top66 to mean soles960 =>894. Footx is mean of sole bottom-four-row center samples rounded742; footy964.",
+  "rawEqualsMaster": true,
+  "coordinatorIdleApproval": {
+    "time": "2026-10-19 22:12UTC",
+    "scaleRatio": "44/894",
+    "sourceFoot": [
+      742,
+      964
+    ],
+    "canvas": [
+      1586,
+      992
+    ],
+    "review": "Tired young face, gray helmet/quilted kit/patched shield, rule-based straight blade approved; bounded cloth mottling accepted with no increase."
+  }
+}
