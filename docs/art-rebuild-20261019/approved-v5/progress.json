@@ -26,7 +26,7 @@
   },
   "authoredFourPoseBundles": 30,
   "authoredThreeStateBundles": 24,
-  "formalRuntimeBoundTopics": 265,
+  "formalRuntimeBoundTopics": 274,
   "topicStages": {
     "C01-UNIT-SWORDSMAN": {
       "raw": "4/4 preserved",
@@ -1664,6 +1664,60 @@
       "export": "native48 white/dark/olive semantic review; actual alpha checked",
       "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
       "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+    },
+    "C01-CHAR-RODERICK-01": {
+      "raw": "independent native1024x1536 transparent named older mentor portrait; selected correction removes extra blade; separate backdrop retained",
+      "export": "192x224 independent-background card; actual HUD96x112 and48px icon reviewed; complete c01-01/03/10 scene review",
+      "runtimeBinding": "named portrait and four-pose mounted appearance registered; cavalry rules and generic heavy knight remain unchanged",
+      "liveGame": "pending"
+    },
+    "C01-STATUS-07": {
+      "raw": "whole authored source, prompt and original identity evidence preserved",
+      "export": "native32 white/dark/olive semantic review; actual alpha checked",
+      "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+      "liveGame": "pending"
+    },
+    "C01-STATUS-09": {
+      "raw": "whole authored source, prompt and original identity evidence preserved",
+      "export": "native32 white/dark/olive semantic review; actual alpha checked",
+      "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+      "liveGame": "pending"
+    },
+    "C01-STATUS-10": {
+      "raw": "whole authored source, prompt and original identity evidence preserved",
+      "export": "native32 white/dark/olive semantic review; actual alpha checked",
+      "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+      "liveGame": "pending"
+    },
+    "C01-STATUS-11": {
+      "raw": "whole authored source, prompt and original identity evidence preserved",
+      "export": "native32 white/dark/olive semantic review; actual alpha checked",
+      "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged32px contract",
+      "liveGame": "pending"
+    },
+    "c02-equipment-sealed-medical-kit": {
+      "raw": "whole authored source, prompt and original identity evidence preserved",
+      "export": "native48 white/dark/olive semantic review; actual alpha checked",
+      "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+      "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+    },
+    "c02-equipment-multi-standard-repair-pack": {
+      "raw": "whole authored source, prompt and original identity evidence preserved",
+      "export": "native48 white/dark/olive semantic review; actual alpha checked",
+      "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+      "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+    },
+    "c02-equipment-offline-scout-instrument": {
+      "raw": "whole authored source, prompt and original identity evidence preserved",
+      "export": "native48 white/dark/olive semantic review; actual alpha checked",
+      "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+      "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
+    },
+    "c02-equipment-public-supply-crate": {
+      "raw": "whole authored source, prompt and original identity evidence preserved",
+      "export": "native48 white/dark/olive semantic review; actual alpha checked",
+      "runtimeBinding": "canonical static catalog and URL resolver bound; unchanged48px contract",
+      "liveGame": "pending; C02 catalog-only, no playable consumer claimed"
     }
   },
   "supplementalBundles": {
@@ -2143,15 +2197,14 @@
     }
   },
   "namedHeroAppearances": {
-    "status": "Laiya complete named four-pose appearance and independent portrait/card formally bound; six other named identities pending",
+    "status": "Laiya and Roderick named four-pose appearances plus independent transparent-source cards formally bound; five named identities pending",
     "canonicalCountIncrement": 0,
     "audit": "narrative-family-audit/hero-identity-contract.md",
     "knownMismatches": [
-      "Roderick named older mounted lance mentor resolves generic younger foot heavy knight",
       "Mirelle named woman resolves generic bearded male gravekeeper",
       "IVRA rules describe juvenile; generic growth appearance has maturity mismatch risk"
     ],
-    "nextPilot": "Roderick: verify older mounted lance mentor identity; generic heavy knight preserved",
+    "nextPilot": "Mirelle: verified middle-aged named ledger and handheld lantern identity",
     "cardContract": "Character master retains real RGBA transparency; any required opaque UI background is separate authored source/layer",
     "liveGameVerified": false,
     "appearances": {
@@ -2163,6 +2216,16 @@
         "cardTopic": "C01-CHAR-LEIA-01",
         "cardCanonicalCountIncrement": 1,
         "genericBannerGuard": "unchanged",
+        "liveGame": "pending"
+      },
+      "roderick-stage01": {
+        "ruleUnit": "c01.roderick",
+        "baseCanonicalTopic": "C01-UNIT-HEAVY-KNIGHT",
+        "canonicalCountIncrement": 0,
+        "fourPoses": "shared56-logical mounted body scale and support-foot registration; personal horse authored from verified mounted rules",
+        "cardTopic": "C01-CHAR-RODERICK-01",
+        "cardCanonicalCountIncrement": 1,
+        "genericHeavyKnight": "unchanged",
         "liveGame": "pending"
       }
     }

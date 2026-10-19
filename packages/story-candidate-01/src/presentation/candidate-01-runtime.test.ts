@@ -53,6 +53,22 @@ describe('candidate-01 runtime art bindings', () => {
     expect(portraitMarkup(art, TEST_CATALOG.units.get('c01.laiya'), '#a8493f')).not.toContain('unit-banner-guard');
   });
 
+  it('binds Roderick to the reviewed mounted named appearance and transparent-source card', () => {
+    const rule = TEST_CATALOG.units.get('c01.roderick');
+    const named = unitPicture(art, rule, '#4d86b8');
+    const generic = candidate01Asset('C01-UNIT-HEAVY-KNIGHT');
+    expect(named.strip?.href).toContain('hero-appearance/roderick-stage01@2x.png');
+    expect(named.strip).toMatchObject({ frameCount: 4, frameWidth: 128, frameHeight: 80 });
+    expect(named.strip?.clips.find(clip => clip.id === 'walk')?.frames).toEqual([1, 3]);
+    expect(generic.url).toContain('combat-unit/unit-heavy-knight@2x.png');
+    expect(CANDIDATE_01_CHARACTER_ART['c01.roderick']).toBe('C01-CHAR-RODERICK-01');
+    const card = candidate01Asset('C01-CHAR-RODERICK-01');
+    expect(card.qualityTier).toBe('approved-chunky-v5-export-verified');
+    expect([card.width, card.height]).toEqual([192, 224]);
+    expect(CANDIDATE_01_PORTRAITS.roderick).toBe(card.url);
+    expect(portraitMarkup(art, rule, '#4d86b8')).toContain(card.url);
+  });
+
   /**
    * A type this pack has no sheet for is drawn by something else, and stands still.
    *

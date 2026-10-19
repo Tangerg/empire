@@ -1,0 +1,64 @@
+{
+  "topicId": "C01-STATUS-13",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.6480525476370351,
+  "nearOpaqueFractionAlphaGE250": 0.3331005853040605,
+  "nonzeroAlphaBBox": [
+    0,
+    85,
+    1240,
+    1166
+  ],
+  "visibleAlphaBBoxGE8": [
+    39,
+    97,
+    1207,
+    1113
+  ],
+  "visibleAlphaBBoxGE128": [
+    40,
+    98,
+    1207,
+    1112
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    40,
+    98,
+    47,
+    142
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 10,
+  "sha256": "d11f792b2a994a72003a58fa1f1a432ff9c3cc0a4cc2e9e65391256002a151c7",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: bronze three-lobe permission ring retains the empty center and three inward-opening lobe gaps; no filled badge or added rune."
+  ],
+  "identityVerified": "Exactly ONE antique-bronze circular permission-ring motif matching the precise outline in image 1. It has a large empty central opening and exactly THREE hollow outward loop lobes at TOP, LOWER-LEFT and LOWER-RIGHT. Crucially each loop has an inward-facing GAP connecting its inner hole to the large central opening: preserve all three gaps, do not close them into solid torus loops or fill the center. Top lobe is smaller and upright, two lower lobes rounded and larger. Retain the original connected curved-ring silhouette and beveled bronze thickness, no added key, chain, lettering, gemstone or invented rune. The three lobe holes, inward gaps and main center are genuinely transparent.",
+  "remarks": [
+    "Native alpha-1 edge residue retained; meaningful subject bounds are inset."
+  ],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-13/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: bronze three-lobe permission ring retains the empty center and three inward-opening lobe gaps; no filled badge or added rune."
+  },
+  "reviewComplete": true
+}

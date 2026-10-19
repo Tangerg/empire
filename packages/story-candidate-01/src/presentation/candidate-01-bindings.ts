@@ -8,7 +8,7 @@ export interface Candidate01UnitArtBinding {
 /** Engine ids stay story-agnostic; this table is the only unit-to-art translation. */
 export const CANDIDATE_01_UNIT_ART: Readonly<Partial<Record<UnitTypeId, Candidate01UnitArtBinding>>> = {
   'c01.laiya': { topicId: 'C01-UNIT-BANNER-GUARD', appearanceId: 'laiya-stage01' },
-  'c01.roderick': { topicId: 'C01-UNIT-HEAVY-KNIGHT' },
+  'c01.roderick': { topicId: 'C01-UNIT-HEAVY-KNIGHT', appearanceId: 'roderick-stage01' },
   'c01.cain': { topicId: 'C01-UNIT-LEGION-SHIELD' },
   'c01.bran': { topicId: 'C01-UNIT-RANGER' },
   'c01.mirelle': { topicId: 'C01-UNIT-GRAVEKEEPER' },

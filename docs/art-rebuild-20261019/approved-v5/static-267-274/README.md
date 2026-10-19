@@ -1,0 +1,3 @@
+# Final C02 equipment and C01 status quartet
+
+C01 status07/09/10/11 at32px and HUD28px; C02 final equipment quartet at48px. Raw native bytes and original board identity preserved. Weather pawn, copper/silver coins, grain/bread and arrow/powder identities remain distinct at native size. Sealed medical stretcher, repair pack, handheld scout instrument and public supply crate preserve actual original subjects and bounded colored hardware. All source and output alpha gates pass; white/dark/olive previews inspected. C02 equipment now48/48 canonical catalog entries bound; no playable C02 mission is claimed. Status now12/24. Browser/live acceptance remains pending.

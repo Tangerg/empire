@@ -1,0 +1,527 @@
+{
+  "unitType": "c01.mirelle",
+  "cardTopicId": "C01-CHAR-MIREL-01",
+  "baseTopicId": "C01-UNIT-GRAVEKEEPER",
+  "artifactKind": "named-hero-appearance",
+  "canonicalTopicCountDelta": 0,
+  "status": "Idle approved; native quartet in progress",
+  "canonicalEntries": {
+    "C01-CHAR-MIREL-01": {
+      "assetId": "C01-FFV1-CHAR-MIREL-01",
+      "topicId": "C01-CHAR-MIREL-01",
+      "label": "米蕾尔教廷守墓人",
+      "category": "narrative-static",
+      "png": "runtime/narrative-static/char-mirel-01.png",
+      "width": 192,
+      "height": 224,
+      "runtimeReady": true,
+      "qualityTier": "final-cartoon-fantasy-v1",
+      "kind": "character-card"
+    },
+    "C01-UNIT-GRAVEKEEPER": {
+      "assetId": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "topicId": "C01-UNIT-GRAVEKEEPER",
+      "label": "守墓人",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-gravekeeper.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        48.81159420289855,
+        52.02229654403567
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true
+    }
+  },
+  "references": {
+    "generic-gravekeeper-hd.png": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/references/generic-gravekeeper-hd.png",
+      "sha256": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+      "size": [
+        832,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    "original-character-board-01.png": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/references/original-character-board-01.png",
+      "sha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "original-mirelle-cell.png": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/references/original-mirelle-cell.png",
+      "sha256": "330b83203315cef62bec4c5bd06ff72dcc699422e5d486fb04ee1753b5b3388e",
+      "size": [
+        617,
+        617
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "original-char-mirel-01.png": {
+      "path": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/references/original-char-mirel-01.png",
+      "sha256": "0eeab4e732b880c2949dd29b682f5d16b83f99480f01a464cc06b4549ce36275",
+      "size": [
+        192,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        255,
+        255
+      ]
+    }
+  },
+  "originalBoardCell": 3,
+  "originalCropBox": [
+    632,
+    632,
+    1249,
+    1249
+  ],
+  "sourceCropProcedure": "Exact native crop; no resizing, background removal or alpha reconstruction",
+  "codeAndNarrativeHashes": {
+    "packages/story-candidate-01/src/units.ts": "5aec43c370aebde9587f6ef7ea564215806df9ce60a76939528e968a069ba36c",
+    "packages/story-candidate-01/src/weapons.ts": "0c6136b2a46146e05c1ee2de109b656edd5fc597c4b59908951a28e4d4f668ef",
+    "packages/story-candidate-01/src/levels.ts": "bedff69291689e17c7af3d11b0b6e66472e85bf04399920c2bec67497444e2ad",
+    "packages/story-candidate-01/src/presentation/candidate-01-bindings.ts": "730631065e68294d147a2541dbc058394dfc4c94aa3a229ebf1d3d556d4109a8",
+    "packages/story-candidate-01/assets/final-fantasy-v1/ART-DIRECTION.md": "06c6cc519f4f2dda0534667aa81b8e35b203557f0fa922f11e60c84a878a2f2f",
+    "docs/story-candidates/candidate-01/01-border-fire.md": "5db9f2732418ae2602e2cdc8a222c567fc67cf0f3c3097212a60aa002e893c2f",
+    "docs/story-candidates/candidate-01/deep-novel-v2/01-border-fire-novel.md": "c6907417589d8457dc1ad2c8306fa0e033ea8b903227e46fa5d428775ea9cdfb"
+  },
+  "originalReferenceAudit": {
+    "unitType": "c01.mirelle",
+    "cardTopicId": "C01-CHAR-MIREL-01",
+    "currentBattleTopicId": "C01-UNIT-GRAVEKEEPER",
+    "card": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-mirel-01.png",
+      "sha256": "0eeab4e732b880c2949dd29b682f5d16b83f99480f01a464cc06b4549ce36275",
+      "size": [
+        192,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        255,
+        255
+      ]
+    },
+    "originalBoard": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/narrative/characters/character-board-01.png",
+      "sha256": "9d93fcc20b50af8568eeba7803b774bd0475d4c7ea6a7a706241cb5b89290efb",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    "originalBoardCell": 3,
+    "originalCropBox": [
+      632,
+      632,
+      1249,
+      1249
+    ],
+    "runtimeBattle": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper.png",
+      "sha256": "5e1ad5ab566e6ca54ec3736e26dee48d38d07326f054ae1c728b9b48cee64d20",
+      "size": [
+        416,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    "runtimeBattleHd": {
+      "path": "packages/story-candidate-01/assets/final-fantasy-v1/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png",
+      "sha256": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
+      "size": [
+        832,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    "publishedSequence": {
+      "path": "docs/art-rebuild-20261019/approved-v5/animation/gravekeeper/export/sequence.json",
+      "sha256": "3cac0216c65967b9bbc49b87e419fc894b5185a2a7c88f308afa944558d2e49a",
+      "matchesCurrentHdBytes": true
+    },
+    "nativeBattleFrames": {
+      "idle": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/idle/master.png",
+        "sha256": "ce82001cd6d41b67b3197cdbdf475a268abb3e2e6ffcbd06aa7478321bd7697b",
+        "size": [
+          1586,
+          992
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "walk-a": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-a/master.png",
+        "sha256": "26c9e597dc1ba593fc31aded8922b3b409a82b31c985af4dc38c2c8c5604e98e",
+        "size": [
+          1586,
+          992
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "attack": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/attack/master.png",
+        "sha256": "ecb1d5f52421645ae8c19f63085e0c829220c499780e895676b590d82a281a9e",
+        "size": [
+          1585,
+          992
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "walk-b": {
+        "path": "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/animation/gravekeeper/walk-b/master.png",
+        "sha256": "ebaf32053740f300a97ad62d0ec411ec0f63cbe1cd67c808d0aafb13debfc4ff",
+        "size": [
+          1585,
+          992
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      }
+    }
+  },
+  "identity": {
+    "age": "Middle-aged woman, explicit ART-DIRECTION.md line 29; no numeric age invented",
+    "face": "Mature lined face, large dark eyes, dark brown side-parted hair under light hood; no beard",
+    "costume": "Ivory/cream hood and cowl; charcoal navy outer robe; cream apron/front panel; pale cuffs; brown leather gloves, belt, cross-body strap, belt pouch and broad low boots",
+    "equipmentHands": "Anatomical right arm (image-left) supports thick brown name ledger; anatomical left hand (image-right) grips ring of bronze hanging lantern",
+    "symbols": "Preserve source angular ledger marks, linked square hem corners with central diamond, rectangular chest tag and overlapping hanging belt name tags with short line marks. No invented emblem or religious interpretation.",
+    "lantern": "Bronze rectangular hanging lantern with closed roof/base and crossed mullions; contained amber light, no external aura",
+    "notFromGeneric": "Named source has no shovel. Generic gravekeeper male face/shovel remains a separate troop identity."
+  },
+  "rules": {
+    "weapons": [
+      {
+        "id": "c01.lantern-staff",
+        "name": "守墓灯杖",
+        "damageType": "magic",
+        "power": 24,
+        "maxRange": 2,
+        "independentFx": "C01-FX-04"
+      },
+      {
+        "id": "c01.oath-dispel",
+        "name": "断誓灯火",
+        "damageType": "magic",
+        "power": 43,
+        "maxRange": 2,
+        "cooldown": 2,
+        "independentFx": "C01-FX-06",
+        "hitEffect": "remove c01.oath-controlled"
+      }
+    ],
+    "abilities": [
+      "heal",
+      "attack",
+      "capture",
+      "wait"
+    ],
+    "armorClass": "unarmored",
+    "movement": 3,
+    "sourceLines": {
+      "units.ts": "49–54",
+      "weapons.ts": "64–78",
+      "candidate-01-bindings.ts": "14, 99, 113–114, 157–158"
+    }
+  },
+  "semanticLimitations": [
+    "Rule weapon name contains staff, but original named card depicts a portable lantern without pole. Proposed source-faithful visual is handheld lantern casting; do not mutate weapon rules.",
+    "One existing attack slot supplies both magic weapons and current healing animation contract; no fifth pose or independent spell FX is embedded.",
+    "Current generic male shovel-bearing GRAVEKEEPER is a presentation alias mismatch for named Mirelle, not evidence that the named heroine is male."
+  ],
+  "placements": [
+    {
+      "levelId": "c01-04",
+      "title": "黑旗营地",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        4,
+        9
+      ],
+      "sourceLine": 519
+    },
+    {
+      "levelId": "c01-05",
+      "title": "焚村令",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        8,
+        5
+      ],
+      "sourceLine": 551
+    },
+    {
+      "levelId": "c01-06",
+      "title": "白河夜渡",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        8,
+        10
+      ],
+      "sourceLine": 584
+    },
+    {
+      "levelId": "c01-07",
+      "title": "无主之城",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        8,
+        8
+      ],
+      "sourceLine": 610
+    },
+    {
+      "levelId": "c01-08",
+      "title": "佣兵之价",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        5,
+        7
+      ],
+      "sourceLine": 627
+    },
+    {
+      "levelId": "c01-09",
+      "title": "笼中之火",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        3,
+        8
+      ],
+      "sourceLine": 645
+    },
+    {
+      "levelId": "c01-10",
+      "title": "旧旗下的追兵",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        10,
+        5
+      ],
+      "sourceLine": 664
+    },
+    {
+      "levelId": "c01-11",
+      "title": "无声墓园",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        3,
+        6
+      ],
+      "sourceLine": 688
+    },
+    {
+      "levelId": "c01-12",
+      "title": "沉没钟塔",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        3,
+        5
+      ],
+      "sourceLine": 702
+    },
+    {
+      "levelId": "c01-13",
+      "title": "圣城档案",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        3,
+        7
+      ],
+      "sourceLine": 726
+    },
+    {
+      "levelId": "c01-14",
+      "title": "山炉余烬",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        3,
+        6
+      ],
+      "sourceLine": 740
+    },
+    {
+      "levelId": "c01-15",
+      "title": "银林长梦",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        3,
+        6
+      ],
+      "sourceLine": 754
+    },
+    {
+      "levelId": "c01-16",
+      "title": "记住我的名字",
+      "unitKey": "campaign-mirelle",
+      "unitType": "c01.mirelle",
+      "owner": 1,
+      "facing": "east",
+      "playerSlotIndex": 3,
+      "position": [
+        3,
+        7
+      ],
+      "sourceLine": 780
+    }
+  ],
+  "placementDerivation": "Read-only deterministic source derivation: levels.ts baseParty lines401–406 contributes three actors, every PARTY.mirelle is first extra => player slot3; place lines823–837 applies matching coordinate with default owner1/east. Not a live rendered screenshot.",
+  "idleProposal": {
+    "canvas": [
+      1586,
+      992
+    ],
+    "bodyHeightLogical": 44,
+    "measure": "Hood crown to mean planted boot soles; record actual two sole ROIs and common foot before locking scale",
+    "style": "Approved concept-v2 and blue swordsman broad matte cel planes, oversized head, broad gloved hands and boots; retain middle-aged face",
+    "pose": "Fullbody three-quarter east; right arm holds closed brown name ledger close to ribs; left hand holds warm enclosed lantern by ring, clear negative space around lantern and wrist",
+    "frameCandidate": [
+      104,
+      64
+    ],
+    "scale": "TBD from inspected idle, then locked for all four whole native canvases",
+    "semanticOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "attackProposal": "Plant both boots, lean slightly forward and extend/raise lantern in left hand toward target while retaining/opening ledger in right arm; clear active casting, no shovel/pole invented and no detached aura",
+    "walkProposal": "Opposite left/right boot contacts, robe follows stride without hiding support inversion; hands and equipment assignment constant",
+    "safetyMargins": "Full native RGBA; complete hood/boots/book/lantern with transparent perimeter, strict A>1 perimeter count0; no padding to hide failed native edge",
+    "bindingBoundary": "Parent owns named appearance resolver, full consumers/card and formal binding; generic topic and rules unchanged"
+  },
+  "coordinatorIdleContractApproval": {
+    "time": "2026-10-19 21:50UTC",
+    "scope": "Verified middle-aged named identity, handheld lantern and retained ledger; no invented staff pole. 44 logical hood-to-sole body; review first idle before three poses."
+  },
+  "idleCandidate": {
+    "raw": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/idle/raw.png",
+    "master": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/idle/master.png",
+    "sha256": "386d4256cef27497c6b675225284ab23106aa3b06de3a4a233a1d3a057c56654",
+    "nativeSize": [
+      1585,
+      992
+    ],
+    "proposedScaleRatio": "44/919",
+    "sourceFoot": [
+      758,
+      967
+    ],
+    "review": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/idle-review.json",
+    "comparison": "/workspace/shared/empire-art-rebuild/approved-v5/hero-appearances/mirelle/idle/native-scale-comparison.png"
+  },
+  "coordinatorIdleApproval": {
+    "time": "2026-10-19 21:54UTC",
+    "scaleRatio": "44/919",
+    "sourceFoot": [
+      758,
+      967
+    ],
+    "canvas": [
+      1585,
+      992
+    ]
+  }
+}

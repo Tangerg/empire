@@ -1,0 +1,35 @@
+{
+  "auditedAtUtc": "2026-10-19T21:52:22.383031+00:00",
+  "scope": "C02 equipment accepted native source delivery; not formal runtime integration or gameplay",
+  "batchManifests": 12,
+  "entriesPerBatch": 4,
+  "expectedTopics": 48,
+  "uniqueDeliveredTopics": 48,
+  "missing": [],
+  "duplicates": [],
+  "extraTopics": [],
+  "acceptedMasterRawFiles": 96,
+  "acceptedFileMode": "0444",
+  "masterRawOriginalGeneratedBytesAndRecordedSHA256Match": 48,
+  "requiredEvidenceExists": 48,
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "nativeMode": "RGBA",
+  "nativePerimeterMaxAlphaCounts": {
+    "0": 13,
+    "1": 35
+  },
+  "actualDiagnosticSize": [
+    48,
+    48
+  ],
+  "actualDiagnosticMode": "RGBA",
+  "actualDiagnosticPerimeterAlpha0Count": 48,
+  "rejectedAttemptsExcluded": 2,
+  "nativeSourceReadyCount": 48,
+  "runtimeExportedCount": 0,
+  "runtimeLiveVerifiedCount": 0,
+  "exceptions": []
+}

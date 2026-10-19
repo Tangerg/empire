@@ -1,0 +1,126 @@
+{
+  "nativeSource": "/workspace/scratch/84c9fe948755/generated_images/exec-4f2a444a-eb61-44c8-8b77-46b87993c767.png",
+  "size": [
+    1585,
+    992
+  ],
+  "mode": "RGBA",
+  "sha256": "386d4256cef27497c6b675225284ab23106aa3b06de3a4a233a1d3a057c56654",
+  "bboxAlphaNonzero": [
+    41,
+    21,
+    1395,
+    976
+  ],
+  "bboxAlphaGreaterThan127": [
+    417,
+    47,
+    1225,
+    968
+  ],
+  "perimeterMaxAlpha": 0,
+  "perimeterCountAlphaGreaterThan1": 0,
+  "alphaZeroPixels": 1071098,
+  "alphaOnePixels": 3340,
+  "exactPromptFile": "prompt.txt",
+  "exactPromptVerified": true,
+  "postprocessing": "none; native source copied byte-for-byte",
+  "status": "Coordinator approved idle identity and native44 scale; remaining poses authorized",
+  "bodyTopY": 47,
+  "soleMeasurements": [
+    {
+      "name": "image-left-boot",
+      "roi": [
+        450,
+        850,
+        650,
+        982
+      ],
+      "soleCenterXBottomFourRows": 553.3369963369963,
+      "soleY": 967
+    },
+    {
+      "name": "image-right-boot",
+      "roi": [
+        800,
+        850,
+        1060,
+        982
+      ],
+      "soleCenterXBottomFourRows": 961.8067226890756,
+      "soleY": 965
+    }
+  ],
+  "bodyHeight": 919.0,
+  "proposedLogicalBodyHeight": 44,
+  "proposedScale": 0.04787812840043525,
+  "proposedSourceFoot": [
+    758,
+    967
+  ],
+  "proposedFrame": [
+    104,
+    64
+  ],
+  "proposedOrigin": [
+    8,
+    4
+  ],
+  "negativeSpaceProbes": [
+    {
+      "name": "lantern-handle-open-center",
+      "rectangle": [
+        1139,
+        520,
+        1146,
+        527
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "between-boots",
+      "rectangle": [
+        720,
+        930,
+        727,
+        937
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    },
+    {
+      "name": "between-lantern-and-body",
+      "rectangle": [
+        1015,
+        660,
+        1022,
+        667
+      ],
+      "maxAlpha": 0,
+      "zeroPixels": 49
+    }
+  ],
+  "semanticReview": "Middle-aged female face and cream hood, dark hair, charcoal robe/cream front, original hem geometry, chest/belt name tags, right-arm ledger/image-left and left-hand hanging lantern/image-right intact. Two large gloved hands, two boots. No staff or shovel. Lantern light remains bounded to glass body; no external FX. Broad proportions and clean matte cloth masses match approved family; mature cheek lines remain readable.",
+  "nativeCanvasDiscrepancy": "1585×992 vs requested1586×992; retain unchanged raw. If future frames differ, explicit transparent shared-canvas alignment only after raw gate.",
+  "rawEqualsMaster": true,
+  "visibleBoundsAlphaGreaterThan127": [
+    417,
+    47,
+    1225,
+    968
+  ],
+  "bodyMeasurementDefinition": "Hood crown y47 to mean sole y966 =919; common foot horizontal mean of two sole center samples rounded758, lowest sole967.",
+  "coordinatorIdleApproval": {
+    "time": "2026-10-19 21:54UTC",
+    "scaleRatio": "44/919",
+    "sourceFoot": [
+      758,
+      967
+    ],
+    "nativeCanvas": [
+      1585,
+      992
+    ]
+  }
+}

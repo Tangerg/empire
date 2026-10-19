@@ -107,23 +107,24 @@ describe('explicit hero appearance document and resolution', () => {
 });
 
 describe('reviewed production hero catalog', () => {
-  it('binds only reviewed Laiya while leaving generic units and authored team sources unchanged', () => {
-    expect(document.appearances.map(entry => entry.id)).toEqual(['laiya-stage01']);
+  it('binds reviewed Laiya and Roderick while leaving generic units and authored team sources unchanged', () => {
+    expect(document.appearances.map(entry => entry.id)).toEqual(['laiya-stage01', 'roderick-stage01']);
     expect(document.teamVariants).toEqual([]);
-    expect(CANDIDATE_01_HERO_APPEARANCES.appearances.size).toBe(1);
+    expect(CANDIDATE_01_HERO_APPEARANCES.appearances.size).toBe(2);
     expect(manifest.assetCount).toBe(404);
     expect(CANDIDATE_01_UNIT_ART['c01.laiya']).toEqual({ topicId: 'C01-UNIT-BANNER-GUARD', appearanceId: 'laiya-stage01' });
+    expect(CANDIDATE_01_UNIT_ART['c01.roderick']).toEqual({ topicId: 'C01-UNIT-HEAVY-KNIGHT', appearanceId: 'roderick-stage01' });
     expect(CANDIDATE_01_UNIT_ART['c01.banner-guard']).toEqual({ topicId: 'C01-UNIT-BANNER-GUARD' });
     for (const [type, binding] of Object.entries(CANDIDATE_01_UNIT_ART)) {
       if (!binding) throw new Error(`undefined art binding: ${type}`);
-      if (type !== 'c01.laiya') expect(binding.appearanceId).toBeUndefined();
+      if (!['c01.laiya', 'c01.roderick'].includes(type)) expect(binding.appearanceId).toBeUndefined();
       for (const team of ['#a8493f', '#A8493F', '#4d5e76']) {
-        const expected = type === 'c01.laiya'
-          ? CANDIDATE_01_HERO_APPEARANCES.appearances.get('laiya-stage01')!
+        const expected = binding.appearanceId
+          ? CANDIDATE_01_HERO_APPEARANCES.appearances.get(binding.appearanceId)!
           : candidate01TeamAsset(binding.topicId, team);
-        if (type === 'c01.laiya') {
-          expect(expected.url).toContain('hero-appearance/laiya-stage01@2x.png');
-          expect(expected.footprint).toEqual(candidate01Asset('C01-UNIT-BANNER-GUARD').footprint);
+        if (binding.appearanceId) {
+          expect(expected.url).toContain(`hero-appearance/${binding.appearanceId}@2x.png`);
+          expect(expected.footprint).toEqual(candidate01Asset(binding.topicId).footprint);
           expect(expected.url).not.toBe(candidate01TeamAsset(binding.topicId, team).url);
         }
         expect(resolveCandidate01UnitArt(CANDIDATE_01_HERO_APPEARANCES, binding, team)).toBe(expected);

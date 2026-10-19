@@ -1,0 +1,138 @@
+{
+  "batch": "c02-equipment-twelfth-four-chunky-scifi",
+  "createdAtUtc": "2026-10-19T21:50:45.621340+00:00",
+  "tool": "built-in image_gen__imagegen",
+  "transparentBackground": true,
+  "repositoryEdited": false,
+  "generatedPixelsPostprocessed": false,
+  "sourceIdentityMapping": "Original board03 row3, visually matched with old runtimes and topic-catalog: sealed-medical-kit C1 medical stretcher pod; multi-standard-repair-pack C2 pack with top roll and side canister; offline-scout-instrument C3 handheld cyan radar; public-supply-crate C4 cubic blue-banded case with cyan branching plaque glyph. Never sorted manifest inference.",
+  "stylePilot": "Continues parent-approved star-shield equipment pilot with broad matte contours.",
+  "runtimeScope": "48x48 anchor24,24; full native canvas contain44 with2px padding. No HD contract. C02 remains catalog-only; no playable-level verification claimed.",
+  "reviewBackgrounds": [
+    "white",
+    "black",
+    "olive RGB72,80,48"
+  ],
+  "entries": [
+    {
+      "topicId": "c02-equipment-sealed-medical-kit",
+      "assetId": "C02-SFV1-equipment-sealed-medical-kit",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-sealed-medical-kit/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-sealed-medical-kit/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-sealed-medical-kit/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-sealed-medical-kit/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-sealed-medical-kit/alpha-qa.json",
+      "native48WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-sealed-medical-kit/diagnostic-native48/native48-white-left-black-right.png",
+      "native48ThreeBackgroundReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-sealed-medical-kit/diagnostic-native48/native48-white-black-olive.png",
+      "sha256": "4e21ad35e0125c19b8d0e27905fe7e1f68d77722e24dfb2fe7f0678056c96468",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 48,
+        "height": 48,
+        "anchor": [
+          24,
+          24
+        ]
+      },
+      "hdContract": null,
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false
+    },
+    {
+      "topicId": "c02-equipment-multi-standard-repair-pack",
+      "assetId": "C02-SFV1-equipment-multi-standard-repair-pack",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-multi-standard-repair-pack/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-multi-standard-repair-pack/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-multi-standard-repair-pack/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-multi-standard-repair-pack/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-multi-standard-repair-pack/alpha-qa.json",
+      "native48WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-multi-standard-repair-pack/diagnostic-native48/native48-white-left-black-right.png",
+      "native48ThreeBackgroundReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-multi-standard-repair-pack/diagnostic-native48/native48-white-black-olive.png",
+      "sha256": "0aa593cb35c49622ff79b6d649ea66e4bc0e040aa9daebf122ca8a7ba2a6ff03",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 48,
+        "height": 48,
+        "anchor": [
+          24,
+          24
+        ]
+      },
+      "hdContract": null,
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false
+    },
+    {
+      "topicId": "c02-equipment-offline-scout-instrument",
+      "assetId": "C02-SFV1-equipment-offline-scout-instrument",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-offline-scout-instrument/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-offline-scout-instrument/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-offline-scout-instrument/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-offline-scout-instrument/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-offline-scout-instrument/alpha-qa.json",
+      "native48WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-offline-scout-instrument/diagnostic-native48/native48-white-left-black-right.png",
+      "native48ThreeBackgroundReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-offline-scout-instrument/diagnostic-native48/native48-white-black-olive.png",
+      "sha256": "b86bffbae1f93edb1a6c4c240a0bee3dcf4613f7908769a70ffdf49d6ca46f49",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 48,
+        "height": 48,
+        "anchor": [
+          24,
+          24
+        ]
+      },
+      "hdContract": null,
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false
+    },
+    {
+      "topicId": "c02-equipment-public-supply-crate",
+      "assetId": "C02-SFV1-equipment-public-supply-crate",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-public-supply-crate/master.png",
+      "raw": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-public-supply-crate/raw-native-v1.png",
+      "promptFiles": [
+        "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-public-supply-crate/prompt.txt"
+      ],
+      "sourceEvidence": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-public-supply-crate/source-evidence.json",
+      "alphaQA": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-public-supply-crate/alpha-qa.json",
+      "native48WhiteBlackReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-public-supply-crate/diagnostic-native48/native48-white-left-black-right.png",
+      "native48ThreeBackgroundReview": "/workspace/shared/empire-art-rebuild/approved-v5/scifi/equipment/c02-equipment-public-supply-crate/diagnostic-native48/native48-white-black-olive.png",
+      "sha256": "a877c0c6c7420cb1893adb77df659f8613913f4cac681bce3073a901e6a4c3b4",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "runtimeContract": {
+        "width": 48,
+        "height": 48,
+        "anchor": [
+          24,
+          24
+        ]
+      },
+      "hdContract": null,
+      "nativeSourceReady": true,
+      "runtimeExported": false,
+      "runtimeLiveVerified": false
+    }
+  ]
+}

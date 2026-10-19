@@ -1,0 +1,62 @@
+{
+  "topicId": "C01-STATUS-14",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.4888395412192944,
+  "nearOpaqueFractionAlphaGE250": 0.4986893615072915,
+  "nonzeroAlphaBBox": [
+    41,
+    23,
+    1238,
+    1198
+  ],
+  "visibleAlphaBBoxGE8": [
+    55,
+    80,
+    1235,
+    1157
+  ],
+  "visibleAlphaBBoxGE128": [
+    58,
+    80,
+    1233,
+    1156
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    58,
+    80,
+    21,
+    98
+  ],
+  "canvasEdgeMaxAlpha": 0,
+  "canvasEdgeNonzeroPixelCount": 0,
+  "sha256": "642a9f72b4be6527fe584f8eea66a7467023ce0b9b1ab9c2a5aeb8d7dbd6a99a",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": [
+    "Complete original functional subject and major symbol counts/directions visually inspected.",
+    "Bold outlines and broad cel material planes, transparent exterior/open gaps.",
+    "No invented readable lettering, broad exterior glow, haze or added UI plate.",
+    "Actual32/HUD28 on white, black and olive: timber, L bracket and rope coil remain three distinct material groups. Native three beams and five bracket holes verified; all individual holes are not separately countable at28."
+  ],
+  "identityVerified": "Exactly THREE stacked rectangular timber beams behind, warm brown, aligned diagonally from lower-left to upper-right as in image 1. In FRONT sits exactly ONE dark-gray L-shaped iron angle bracket, bent90 degrees: a tall upright plate and short horizontal foot. Preserve exactly FOUR circular bolt holes in the upright plate in two columns/two rows, and exactly ONE circular hole in the horizontal foot, FIVE holes total. Holes reveal background or original wooden beam where physically behind them. To the RIGHT is exactly ONE coiled brown rope assembly with a visible central hole and one loose tail curling down-right, as in original. Broad chunky square timber ends, solid plate geometry and thick rope turns; no added tool, nails, lettering or extra plank. No wood grain or tiny braid noise.",
+  "remarks": [],
+  "postprocessing": "None",
+  "runtimeReady": false,
+  "independentPreview": {
+    "directory": "/workspace/shared/empire-art-rebuild/approved-v5/status/status-14/qa-preview-32-28",
+    "sizes": [
+      32,
+      28
+    ],
+    "method": "Full-canvas runtime fit then HUD downscale; previews only, master unchanged.",
+    "visualReview": "Actual32/HUD28 on white, black and olive: timber, L bracket and rope coil remain three distinct material groups. Native three beams and five bracket holes verified; all individual holes are not separately countable at28."
+  },
+  "reviewComplete": true
+}

@@ -22,6 +22,28 @@
       ],
       "hdWidth": 832,
       "hdHeight": 128
+    },
+    {
+      "id": "roderick-stage01",
+      "topicId": "C01-UNIT-HEAVY-KNIGHT",
+      "png": "runtime-approved-v5/hero-appearance/roderick-stage01.png",
+      "hdPng": "runtime-approved-v5/hero-appearance/roderick-stage01@2x.png",
+      "pixelDensity": 2,
+      "frameWidth": 128,
+      "frameHeight": 80,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        60.2428722280887,
+        63.65575501583949
+      ],
+      "hdWidth": 1024,
+      "hdHeight": 160
     }
   ],
   "teamVariants": []
