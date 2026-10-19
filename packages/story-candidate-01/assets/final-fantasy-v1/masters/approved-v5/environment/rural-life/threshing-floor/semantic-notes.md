@@ -1,0 +1,7 @@
+# Threshing floor
+
+Exact rural-life slot3, full original atlas and alpha cell inspected. One low circular threshing surface in oval projection, one ring of broad gray boundary stones, one central upright wooden post and rope collar, and one shallow grain pile. Functional brown floor remains near-opaque with three broad concentric scoring rings. Exterior is genuinely transparent, not a well opening or erased floor. One targeted native imagegen refinement simplified the initial dense grain pile into a small number of coarse elongated wheat kernels for low-resolution readability. Original native candidate and exact initial/final prompts preserved under attempts and prompt-initial.txt; no pixel/alpha cleanup. Native front-rim landmark(627,1030) is the foremost outer stone-ring ground contact, NOT the center-post base. Ground center approx(628,685). Legacy source front rim(157,279) on314x314.112/224 anchor56,108,footprint2x2,obstruction0,foundation. Catalog available only: no explicit current scene or random selector occurrence found; not asserted as the source of an observed old circular platform.
+
+Native output and alpha preserved byte-for-byte. Source foot is a visual estimate. Strong-alpha LTRB margins: [54, 264, 52, 214]. Strict perimeter alpha-zero check: PASS. No programmatic paint, color changes or alpha cleanup. Runtime scale, padding, anchoring and gameplay-size validation remain for parent integration.
+
+Current source perimeter gate passes: native alpha-1 residue is retained unchanged; alpha 2 or greater would fail.

@@ -1,0 +1,42 @@
+{
+  "topicId": "C01-EQUIP-JAVELIN-HUNTER",
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentFraction": 0.49374569161776416,
+  "nearOpaqueFractionAlphaGE250": 0.47798814129713146,
+  "nonzeroAlphaBBox": [
+    0,
+    51,
+    1240,
+    1254
+  ],
+  "visibleAlphaBBoxGE8": [
+    57,
+    71,
+    1188,
+    1162
+  ],
+  "visibleMarginsPixelsL_T_R_B": [
+    57,
+    71,
+    66,
+    92
+  ],
+  "canvasEdgeMaxAlpha": 1,
+  "canvasEdgeNonzeroPixelCount": 32,
+  "sha256": "5f9d9eb6530e4a2260a65dde6b67107fdb08adb0eea87bb39cdde81fdfc36cf2",
+  "matchesRawGeneratedBytes": true,
+  "visualQA": "Pass: complete recognizable grouping verified against original atlas, bold outlines, chunky volumes, broad matte cel planes, no miniature surface texture, no backdrop or cast shadow.",
+  "remarks": [
+    "Native edge-alpha=1 specks retained unchanged; visible silhouette clear of canvas edges."
+  ],
+  "postprocessing": "none",
+  "runtimeReady": false
+}

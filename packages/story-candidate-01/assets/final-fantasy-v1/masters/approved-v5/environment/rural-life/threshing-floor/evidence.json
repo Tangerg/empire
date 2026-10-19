@@ -1,0 +1,114 @@
+{
+  "asset": "threshing-floor",
+  "visual_inspection": "native generated output inspected directly",
+  "subject_semantics": "pass",
+  "style_coherence": "pass; broad matte functional floor and harvested-grain groups with bold contours",
+  "native_output_untouched": true,
+  "source_foot_estimate_px": [
+    627,
+    1030
+  ],
+  "source_foot_estimate_normalized": [
+    0.5,
+    0.821372
+  ],
+  "source_foot_confidence": "approximate visual estimate, not alpha bottom",
+  "strict_perimeter_all_alpha_zero": true,
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strong_alpha_margins_LTRB": [
+    54,
+    264,
+    52,
+    214
+  ],
+  "reference_paths": [
+    "/workspace/shared/empire-art-rebuild/references/environment/rural-life/threshing-floor.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/stone-well/stone-well-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-sacks-baskets/grain-sacks-baskets-master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/threshing-floor/attempts/initial-native.png"
+  ],
+  "exact_final_prompt_path": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/threshing-floor/prompt.txt",
+  "production_status": "not integrated",
+  "source_provenance_manifest": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-foundations-source-inspection.json",
+  "consumer_evidence": "/workspace/shared/empire-art-rebuild/references/environment/rural-life/rural-foundations-consumer-evidence.json",
+  "original_gameplay_obstruction_height": 0,
+  "original_gameplay_footprint": [
+    2,
+    2
+  ],
+  "original_render_layer": "foundation",
+  "original_runtime_cell_size": [
+    112,
+    112
+  ],
+  "original_runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "original_runtime_anchor": [
+    56,
+    108
+  ],
+  "raw_master_only": true,
+  "functional_ground_surface_preserved": true,
+  "no_added_external_ground_platform": true,
+  "no_exterior_glow": true,
+  "consumer_classification": "catalog available; no explicit current scene or procedural selector occurrence found",
+  "renderer_ground_contract": "Authored foundation would use normal cell/atlas anchor, not lying:true or center; original renderLayer foundation and obstruction0 retained.",
+  "scale_recommendation": {
+    "authored_placement_scale": null,
+    "initial_presentation_scale": 1.0,
+    "native_mapping": "same full1254-to-rural112 canvas mapping; preserve floor shape and full rim",
+    "validation_status": "catalog-only source; no existing authored scale to preserve or runtime occurrence claimed"
+  },
+  "original_slot_zero_based": 3,
+  "source_ground_center_estimate_px": [
+    628,
+    685
+  ],
+  "foot_estimate_basis": "foremost outer stone-ring ground contact, distinct from center-post base",
+  "legacy_reference_foot_estimate_px": [
+    157,
+    279
+  ],
+  "legacy_reference_dimensions": [
+    314,
+    314
+  ],
+  "visually_verified_subject_counts": {
+    "circular_threshing_surface": 1,
+    "stone_perimeter_ring": 1,
+    "center_post": 1,
+    "grain_pile": 1
+  },
+  "generation_history": [
+    {
+      "stage": "initial",
+      "source": "/workspace/scratch/84c9fe948755/generated_images/exec-ab859bbc-8e9b-43c2-833d-d82545b34e1c.png",
+      "preserved_native": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/threshing-floor/attempts/initial-native.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/threshing-floor/prompt-initial.txt"
+    },
+    {
+      "stage": "targeted_native_grain_simplification",
+      "source": "/workspace/scratch/84c9fe948755/generated_images/exec-f53fd311-b5ed-4796-a1b3-f8509d97c5e0.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/threshing-floor/prompt.txt",
+      "edit_reference": "/workspace/scratch/84c9fe948755/generated_images/exec-ab859bbc-8e9b-43c2-833d-d82545b34e1c.png"
+    }
+  ],
+  "functional_interior_alpha_check": {
+    "sample_region": "inner ellipse: ((x-628)/450)^2+((y-685)/235)^2<0.6",
+    "minimum_alpha": 252,
+    "maximum_alpha": 254,
+    "sample_pixels": 199337,
+    "alpha_below_250_pixels": 0,
+    "interpretation": "Functional surface interior near-opaque; native fractional alpha retained without cleanup."
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

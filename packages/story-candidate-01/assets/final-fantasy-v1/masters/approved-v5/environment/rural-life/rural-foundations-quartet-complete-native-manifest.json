@@ -1,0 +1,78 @@
+{
+  "status": "Allfour native functional foundations complete; linen/earth active consumers distinguished from dark/threshing catalog-only",
+  "runtime_cell_size": [
+    112,
+    112
+  ],
+  "runtime_cell_size_2x": [
+    224,
+    224
+  ],
+  "original_runtime_anchor": [
+    56,
+    108
+  ],
+  "render_layer": "foundation",
+  "assets": [
+    {
+      "identity": "grain-drying-mat-dark",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-dark/grain-drying-mat-dark-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-dark/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-dark/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-dark/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-dark/evidence.json",
+      "source_foot_estimate_px": [
+        643,
+        1028
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "grain-drying-mat-linen",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-linen/grain-drying-mat-linen-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-linen/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-linen/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-linen/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-linen/evidence.json",
+      "source_foot_estimate_px": [
+        628,
+        1044
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "grain-drying-mat-earth",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-earth/grain-drying-mat-earth-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-earth/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-earth/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-earth/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/grain-drying-mat-earth/evidence.json",
+      "source_foot_estimate_px": [
+        628,
+        1024
+      ],
+      "strict_perimeter_all_alpha_zero": false,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    },
+    {
+      "identity": "threshing-floor",
+      "master": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/threshing-floor/threshing-floor-master.png",
+      "prompt": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/threshing-floor/prompt.txt",
+      "qa": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/threshing-floor/alpha-qa.json",
+      "semantic_notes": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/threshing-floor/semantic-notes.md",
+      "evidence": "/workspace/shared/empire-art-rebuild/approved-v5/environment/rural-life/threshing-floor/evidence.json",
+      "source_foot_estimate_px": [
+        627,
+        1030
+      ],
+      "strict_perimeter_all_alpha_zero": true,
+      "source_perimeter_gate_pass": true,
+      "source_perimeter_max_allowed_alpha": 1
+    }
+  ]
+}

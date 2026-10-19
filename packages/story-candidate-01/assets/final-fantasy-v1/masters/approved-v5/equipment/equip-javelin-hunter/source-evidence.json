@@ -1,0 +1,49 @@
+{
+  "topicId": "C01-EQUIP-JAVELIN-HUNTER",
+  "assetId": "C01-FFV1-EQUIP-JAVELIN-HUNTER",
+  "label": "\u6295\u77db\u730e\u624b\u4e3b\u88c5\u5907",
+  "category": "equipment",
+  "expectedRuntimeSize": [
+    48,
+    48
+  ],
+  "tool": "built-in image_gen__imagegen",
+  "transparent_background": true,
+  "rawGeneratedSource": "/workspace/scratch/84c9fe948755/generated_images/exec-c5550273-a7e5-474f-82a6-e0f82543a5c4.png",
+  "localRaw": "raw.png",
+  "identityReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-javelin-hunter-cell.png",
+  "originalSourceEvidence": {
+    "repository": "/workspace/scratch/84c9fe948755/empire-art-rebuild-20261019",
+    "baselineCommit": "2276a89",
+    "atlasCell": "masters/equipment/equipment-atlas-03.png, row 3 column 4",
+    "inspectionCropCoordinates": [
+      942,
+      628,
+      1254,
+      939
+    ],
+    "inspectionCropTreatment": "Unscaled source-cell crop only; no pixel cleanup or alpha conversion",
+    "baselineRuntimeReference": "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/baseline-runtime-equip-javelin-hunter.png",
+    "slotVerification": "Original full board and high-resolution crop visually matched against baseline runtime icon and canonical current manifest topic.",
+    "manifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
+    "atlasPath": "packages/story-candidate-01/assets/final-fantasy-v1/masters/equipment/equipment-atlas-03.png",
+    "atlasSha256": "2d732cdc0b1b015c9dfec0f3fd4e42f2c880f179320103778e854eda96e63ee6",
+    "matchesBaselineAtlasBytes": true
+  },
+  "styleReferences": [
+    "/workspace/shared/empire-art-rebuild/calibration-v5-concept/concept-v2.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-archer/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-spearman/master.png"
+  ],
+  "initialToolInputReferencePaths": [
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/identity-inspection/original-equip-javelin-hunter-cell.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-archer/master.png",
+    "/workspace/shared/empire-art-rebuild/approved-v5/equipment/equip-spearman/master.png"
+  ],
+  "identityClarification": "Source authority confirms exactly three javelins plus one oval hide shield. Original irregular rust-brown radial patch, central gray boss and rope-laced rim preserved; no animal emblem invented.",
+  "postprocessing": "None. Byte-exact native PNG copies to master.png and raw.png. No pixel cleanup, resizing, alpha editing or Git writes. Runtime export/binding remains separate.",
+  "runtimeReady": false,
+  "promptFiles": [
+    "prompt.txt"
+  ]
+}

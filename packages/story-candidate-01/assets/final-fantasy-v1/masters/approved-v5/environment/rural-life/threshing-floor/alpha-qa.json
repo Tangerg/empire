@@ -1,0 +1,115 @@
+{
+  "asset": "threshing-floor",
+  "generator": "built-in image_gen.imagegen",
+  "native_output_untouched": true,
+  "native_source": "/workspace/scratch/84c9fe948755/generated_images/exec-f53fd311-b5ed-4796-a1b3-f8509d97c5e0.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_pixels": 927844,
+  "opaque_pixels": 917,
+  "partial_alpha_pixels": 643755,
+  "near_opaque_alpha_250_255_pixels": 631030,
+  "nonzero_alpha_bbox": [
+    51,
+    212,
+    1206,
+    1045
+  ],
+  "strong_alpha_bbox": [
+    54,
+    264,
+    1202,
+    1040
+  ],
+  "alpha_threshold_bboxes": {
+    "1": [
+      51,
+      212,
+      1206,
+      1045
+    ],
+    "16": [
+      53,
+      264,
+      1203,
+      1041
+    ],
+    "128": [
+      54,
+      264,
+      1202,
+      1040
+    ],
+    "250": [
+      56,
+      266,
+      1201,
+      1039
+    ]
+  },
+  "margin_pixels_LTRB": [
+    51,
+    212,
+    48,
+    209
+  ],
+  "strong_alpha_margin_pixels_LTRB": [
+    54,
+    264,
+    52,
+    214
+  ],
+  "edge_alpha_max": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "strict_perimeter_details": {
+    "left": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "top": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "right": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    },
+    "bottom": {
+      "max_alpha": 0,
+      "nonzero_pixels": 0
+    }
+  },
+  "strict_perimeter_all_alpha_zero": true,
+  "eight_pixel_edge_band_max_alpha": {
+    "left": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "complete_strong_alpha_silhouette_clear_of_canvas_edges": true,
+  "requested_ten_percent_strong_alpha_margin_met": false,
+  "sha256": "da35db8959eb6e60f319cced3a6a4025290f0d6f96b4185a3679698a969e9be1",
+  "production_integration_status": "native master only; runtime sizing and anchoring pending parent integration",
+  "functional_interior_alpha_check": {
+    "sample_region": "inner ellipse: ((x-628)/450)^2+((y-685)/235)^2<0.6",
+    "minimum_alpha": 252,
+    "maximum_alpha": 254,
+    "sample_pixels": 199337,
+    "alpha_below_250_pixels": 0,
+    "interpretation": "Functional surface interior near-opaque; native fractional alpha retained without cleanup."
+  },
+  "source_perimeter_max_allowed_alpha": 1,
+  "source_perimeter_gate_pass": true,
+  "source_perimeter_policy": "Native alpha-1 residue preserved unchanged; outer-edge alpha 2 or greater fails."
+}

@@ -4,15 +4,15 @@
   "counting": "One canonical identity, not frame/HD/copy. Environment components and authored team variants are separate. Old detailed-style exports add zero.",
   "summary": {
     "canonicalScope": 1212,
-    "formalBound": 67,
+    "formalBound": 71,
     "boundByCategory": {
       "battle-prop": 32,
       "combat-unit": 11,
-      "equipment": 8,
+      "equipment": 12,
       "interactive-structure": 15,
       "mission-unit": 1
     },
-    "rawPreservedTopics": 69,
+    "rawPreservedTopics": 71,
     "liveGameVerified": 0,
     "environmentAtlasScope": 36,
     "environmentComponentScope": 1188,
@@ -4029,11 +4029,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-assassin/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-assassin.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "preserved unchanged with original atlas evidence",
+        "export": "native48 three-background identity/alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-AXE-BREAKER",
@@ -4328,13 +4333,20 @@
       "category": "equipment",
       "label": "投矛猎手主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-javelin-hunter/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-javelin-hunter.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "preserved unchanged with original atlas evidence",
+        "export": "native48 three-background identity/alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-KNIGHT",
@@ -4458,11 +4470,16 @@
         "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-ranger/master.png"
       ],
       "raw": "preserved",
-      "export": "pending",
-      "formalBinding": "pending",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-ranger.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "preserved unchanged with original atlas evidence",
+        "export": "native48 three-background identity/alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-RUNE-ARTIFICER",
@@ -4512,13 +4529,20 @@
       "category": "equipment",
       "label": "长弓守卫主装备",
       "baselineManifest": "packages/story-candidate-01/assets/final-fantasy-v1/manifest-final-fantasy-v1.json",
-      "selectedRawMasters": [],
-      "raw": "pending",
-      "export": "pending",
-      "formalBinding": "pending",
+      "selectedRawMasters": [
+        "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/equipment/equip-silver-longbow/master.png"
+      ],
+      "raw": "preserved",
+      "export": "reviewed",
+      "formalBinding": "bound",
       "liveGame": "pending",
       "runtimePath": "packages/story-candidate-01/assets/final-fantasy-v1/runtime/equipment/equip-silver-longbow.png",
-      "stageEvidence": null
+      "stageEvidence": {
+        "raw": "preserved unchanged with original atlas evidence",
+        "export": "native48 three-background identity/alpha review passed",
+        "runtimeBinding": "canonical48 equipment icon resolved; no invented HD variant",
+        "liveGame": "pending"
+      }
     },
     {
       "topicId": "C01-EQUIP-SKELETON-GUARD",
